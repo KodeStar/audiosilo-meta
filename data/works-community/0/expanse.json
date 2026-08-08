@@ -1211,6 +1211,169 @@
         "work": "extras"
       }
     },
+    "eye-of-the-needle": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Die Nadel",
+              "The Needle"
+            ],
+            "description": "A deeply embedded German intelligence agent operating alone in wartime Britain. Patient, observant, and skilled at radio work and disguise, he is known to his handlers by a name referring to the slim blade he carries. His loyalty is entirely to his mission, and he treats anyone who uncovers him as an immediate threat.",
+            "id": "henry-faber",
+            "name": "Henry Faber",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A historian brought into British counter-intelligence because his academic knowledge and analytical patience suit a difficult hunt. He studies the traces left by an elusive German agent and works to identify the pattern connecting several deaths and intelligence failures.",
+            "id": "percival-godliman",
+            "name": "Percival Godliman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fred Bloggs"
+            ],
+            "description": "A former police detective working with Godliman in counter-intelligence. Direct and persistent, he supplies investigative experience to the search for the German agent and follows the human trail behind the intercepted signals and killings.",
+            "id": "frederick-bloggs",
+            "name": "Frederick Bloggs",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman whose marriage begins under the shadow of a catastrophic accident. Years later she lives in isolation with her husband and child on a small island off the Scottish coast, maintaining the household while enduring David's bitterness and emotional withdrawal.",
+            "id": "lucy-rose",
+            "name": "Lucy Rose",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lucy's husband, once an ambitious trainee pilot. An accident on their wedding day costs him both legs and ends his hope of flying in the war. On the island he manages a farm from his wheelchair but has become proud, angry, and distant from his wife.",
+            "id": "david-rose",
+            "name": "David Rose",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jo"
+            ],
+            "description": "The young son of Lucy and David Rose. He lives with his parents on their isolated island and gives Lucy a source of affection and purpose amid the strain of the marriage.",
+            "id": "jonathan-rose",
+            "name": "Jonathan Rose",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly shepherd who also lives on the island with the Rose family. His familiarity with the land and its few inhabitants makes him an important part of the small community when a stranger is washed ashore.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A London woman who rents a room to Faber during the early war years. Her growing interest in her quiet lodger brings her dangerously close to discovering the radio and secret work concealed behind his ordinary appearance.",
+            "id": "mrs-garden",
+            "name": "Mrs Garden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of German military intelligence and the distant authority behind Faber's assignment. He values the agent's independence and waits for evidence that can settle where the Allied invasion will fall.",
+            "id": "admiral-canaris",
+            "name": "Admiral Canaris",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "eye-of-the-needle"
+      },
+      "recaps": {
+        "ending": "Lucy discovers that Faber is not merely a shipwreck survivor but the German agent carrying proof that the Allied force aimed at Calais is a deception. David confronts him and is killed, leaving Lucy as the only person on the island able to stop the intelligence from reaching Germany. She protects her son, resists Faber's attempts to control the household, and prevents him from completing his escape and communication. Their final struggle ends with Faber dead before he can deliver his photographs. Godliman and Bloggs reach the island after following the agent's route, but Lucy has already preserved the secret on which the coming invasion depends. Germany receives no reliable correction to the false picture of Allied intentions, so the deception remains intact and the Normandy landings can proceed without Faber's warning changing the defenders' plans.",
+        "in_short": "In 1944, German agent Henry Faber uncovers the central Allied deception protecting the planned invasion of Normandy: the army apparently assembling to attack Calais is largely fictitious. He photographs the evidence and races north while British investigators Percival Godliman and Frederick Bloggs reconstruct his identity and pursue him. A storm wrecks Faber's escape boat near an isolated Scottish island occupied by embittered former pilot David Rose, his lonely wife Lucy, and their son. Lucy and Faber become lovers before David discovers the spy's secret and is killed in a confrontation. Once Lucy understands both the murder and the importance of Faber's photographs, she turns against him. She prevents him from transmitting the intelligence or escaping to German help, and Faber dies in the final struggle. The British deception survives, leaving Germany unprepared for the true invasion route.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Henry Faber lives under an assumed ordinary identity in wartime Britain while secretly transmitting intelligence to Germany. He works alone and communicates by radio, avoiding the networks already vulnerable to British counter-intelligence. When his London landlady discovers enough to expose him, he kills her with the narrow blade that gives him his German code name, the Needle, and disappears before the authorities understand the significance of the crime. His ability to pass as English and his willingness to remove witnesses make him unusually difficult to trace. British security officers begin to connect unexplained deaths and compromised information to the possibility that a highly effective German agent is still active inside the country.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Percival Godliman, a historian recruited into intelligence work, and former detective Frederick Bloggs begin assembling the scattered evidence around the unknown agent. Rather than relying on a conventional spy ring, their opponent appears to have survived through solitude, discipline, and infrequent contact with Germany. Elsewhere, Lucy and David Rose's marriage is transformed on their wedding day when a traffic accident leaves David without his legs and ends his expected career as a pilot. They eventually withdraw with their young son to a remote island off the Scottish coast. David can manage the farm from a wheelchair, but disappointment has hardened into anger and isolation. Lucy maintains the family while the emotional and physical distance between the couple grows, leaving all three members of the household unusually cut off from help.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faber investigates the large Allied formation supposedly preparing to invade France through Calais. He penetrates the restricted area and discovers that much of the force is an elaborate deception built from dummy equipment, misleading signals, and carefully managed appearances. The finding points to an invasion somewhere else, and photographic proof could change German defensive plans. Faber takes the evidence and begins a dangerous journey toward a rendezvous from which it can be sent directly to Germany. Godliman and Bloggs identify more of his methods and history, turning a theoretical search into a pursuit of a particular man. Faber remains ahead of them, but every contact, stolen conveyance, and dead witness narrows the gap while increasing the urgency of preventing his photographs from leaving Britain.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faber reaches the coast and attempts to make his escape by sea, but violent weather destroys the boat and casts him ashore on the island where the Roses live. Lucy shelters the injured stranger, who gives a plausible account of himself while assessing how he can regain contact with Germany. The island's isolation offers concealment but also leaves him dependent on the few residents. Lucy is drawn to Faber's attention and vitality after years of rejection by David, and they begin an affair. Faber's mission remains his priority, however, and he studies the available boat and radio while hiding the significance of the film he carries. On the mainland, Godliman and Bloggs follow his route north and recognize that the agent is trying to reach German naval help before the invasion begins.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "David's suspicion of the stranger grows, and he discovers that Faber is carrying secret photographs rather than merely recovering from a wreck. Their confrontation becomes fatal: Faber kills David and attempts to make the death appear accidental. Lucy finds enough evidence to understand that her husband has been murdered and that the man she trusted is a German spy. Her grief is joined by the realization that Faber's information must be important enough to justify every killing along his route. With her son still on the island and help not yet present, she conceals what she knows and looks for ways to disable Faber's communications and escape. Faber, sensing resistance, becomes increasingly willing to use the same violence against the remaining household that protected his mission elsewhere.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucy openly turns against Faber after learning the truth about David and the photographs. Alone except for her child, she frustrates his efforts to send a warning and prevents him from using the island as the final stage of his escape. Faber tries to reach the German help waiting beyond the island, knowing that proof of the false Calais army could redirect enemy forces before the Allied landings. Lucy's resistance forces a final struggle in which Faber is killed before he can deliver the intelligence. Godliman and Bloggs arrive after tracing him to the island and find that the civilian they hoped to protect has already stopped the agent. The photographs and their strategic meaning remain in British hands. With no authenticated message from Faber, the German command continues to accept the Allied deception, and the true invasion of Normandy retains the surprise for which so many false signals were created.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "eye-of-the-needle"
+      }
+    },
     "fade-out": {
       "characters": {
         "characters": [

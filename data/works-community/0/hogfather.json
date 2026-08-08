@@ -4150,6 +4150,130 @@
         "work": "hunger"
       }
     },
+    "hunger-knut-hamsun": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Andreas Tangen"
+            ],
+            "description": "An unnamed young writer trying to survive in Kristiania through occasional newspaper sales. He begins the story nearly penniless, hungry, and in danger of losing his room. Proud and intensely self-conscious, he alternates between lucid observation, grand plans, impulsive generosity, and distorted thinking as deprivation wears down his body and judgment. Andreas Tangen is one of the names he invents for himself.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young woman whom the narrator notices walking with an older companion. He follows and startles her, privately giving her the invented name Ylajali before he knows who she is. She becomes the focus of his romantic imagination and one of his few sustained connections with another person.",
+            "id": "ylajali",
+            "name": "Ylajali",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An editor who considers the narrator's submissions and sometimes pays for work he can use. His office represents the narrator's best hope of turning his thoughts into food and lodging, though pride and unstable concentration complicate every visit.",
+            "id": "the-editor",
+            "name": "The Editor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An acquaintance from whom the narrator hopes to borrow money. Hans Pauli is usually absent or unable to help when sought, making him less a dependable rescuer than a reminder of the ordinary social life from which the narrator is slipping.",
+            "id": "hans-pauli",
+            "name": "Hans Pauli",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The keeper of a lodging house where the narrator stays when his circumstances have sharply deteriorated. Focused on rent and the demands of her crowded household, she tolerates him only while she thinks payment may still be possible.",
+            "id": "the-landlady",
+            "name": "The Landlady",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A shopkeeper whose assistant mistakenly gives the narrator too much change. The error offers immediate relief from hunger but also becomes a moral burden that the narrator cannot set aside.",
+            "id": "the-grocer",
+            "name": "The Grocer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The master of a ship preparing to leave Kristiania. He initially doubts that the weakened narrator is fit for work, but represents a final chance to exchange the city and failed writing life for physical labor elsewhere.",
+            "id": "the-ship-captain",
+            "name": "The Ship Captain",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hunger-knut-hamsun"
+      },
+      "recaps": {
+        "ending": "After a shop assistant accidentally gives him excessive change, the narrator eats but becomes tormented by the belief that he has acted dishonestly. His effort to dispose of or account for the money brings no lasting relief. His lodging becomes untenable, his writing has ceased to offer a credible escape, and his connection with Ylajali ends without giving him a stable place in her life. At the harbor he asks for work aboard a ship bound away from Kristiania. Though visibly weakened and inexperienced, he persuades the captain to take him on. He leaves the city as a deckhand, exchanging the repetitive cycle of hunger, failed writing, pride, and humiliation for an uncertain life at sea. The departure is practical rather than triumphant: his artistic ambitions and poverty remain unresolved, but he has finally broken the pattern that kept him wandering the same streets.",
+        "in_short": "An unnamed aspiring writer wanders Kristiania with almost no food, repeatedly losing rooms and pawning possessions while trying to sell articles. Hunger affects his body, attention, pride, and sense of reality. Small successes briefly rescue him, but he gives money away, rejects assistance, invents stories, and sabotages opportunities rather than admit need. He becomes fascinated with a young woman he calls Ylajali, and their encounters offer intimacy without overcoming the gulf created by his instability. Each return of poverty is harsher: he cannot reliably write, eat, or maintain lodging, and an accidental overpayment at a shop produces as much guilt as relief. With no durable place in the city, he finally persuades a ship's captain to employ him and sails away as a deckhand.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed young writer is close to eviction from his room in Kristiania. He walks the city hoping to place an article, pawns his waistcoat, and endures hunger while trying to preserve the appearance of independence. His pride turns every practical choice into a test of character: after obtaining a little money, he gives much of it to a suffering stranger and soon has nothing again. Hunger sharpens his perceptions but also produces erratic impulses and invented explanations. He notices a young woman walking with an older companion, follows her, and silently names her Ylajali. A newspaper editor accepts one of his pieces and pays him, creating a brief interval in which food and shelter seem possible. The success does not solve the pattern of poverty, self-invention, and refusal to seek help plainly.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator's money disappears and he returns to the streets, searching for acquaintances, work, and ideas that might be sold. He tries to write while hunger prevents sustained thought, and ordinary objects or remarks take on exaggerated importance. Too proud to describe his condition honestly, he gives false names and elaborate accounts of himself. At one point he seeks shelter through the police but presents himself in a way that keeps him from receiving the most useful assistance. Physical weakness makes food difficult to tolerate even when he obtains it. He repeatedly imagines that a finished essay, play, or philosophical insight will restore him, only to lose the thread. The city remains full of food, rooms, and purposeful people, but he cannot enter that ordinary life for long.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Another small payment gives the narrator temporary stability and renews his confidence. He encounters Ylajali again and learns that she remembers him. Their conversation moves between attraction and discomfort because he hides his poverty behind performance, sudden claims, and changes of mood. He is invited into closer company but cannot sustain the ease or honesty that intimacy requires. Hunger and shame intrude on his romantic hopes just as they intrude on his writing. When the encounter ends, he is again alone and conscious that imagination has made Ylajali into something no actual relationship could easily match. His brief access to money, affection, and creative purpose has once more failed to become a durable change.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator reaches his worst physical and financial condition in a crowded lodging house whose keeper has little patience for unpaid rent. Writing no longer offers a reliable rescue, and his behavior shifts between desperation, anger, and rigid moral scruples. A shop assistant mistakenly gives him more change than he is owed. He uses the money for food, then becomes consumed by guilt and tries to rid himself of the benefit, gaining neither peace nor security. His connection with Ylajali closes without overcoming his concealment and instability. Facing eviction and another cycle of wandering, he goes to the harbor and asks for work on a departing ship. The captain doubts his strength, but the narrator persuades him to offer a berth. He sails from Kristiania as a deckhand, leaving the city and his failed routine behind without knowing what will follow.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hunger-knut-hamsun"
+      }
+    },
     "hunted-the-iron-druid-chronicles-book-6": {
       "characters": {
         "characters": [

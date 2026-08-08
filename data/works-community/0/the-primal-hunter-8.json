@@ -3117,6 +3117,312 @@
         "work": "the-relentless-moon"
       }
     },
+    "the-reluctant-dragon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thoughtful, book-loving country boy who understands both the villagers' stories about dragons and the reality of the mild creature living nearby. He treats the dragon as a person, carries messages between him and Saint George, and looks for a solution that will satisfy the village without causing needless harm.",
+            "id": "the-boy",
+            "name": "The Boy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Reluctant Dragon"
+            ],
+            "description": "A large dragon who has settled comfortably in a cave near the village. Contrary to traditional expectations, he dislikes violence, enjoys composing poetry, and would rather discuss art and meals than terrorize anyone. His refusal to behave like a storybook monster creates a problem once the villagers demand a heroic fight.",
+            "id": "the-dragon",
+            "name": "The Dragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "St George"
+            ],
+            "description": "A celebrated professional dragon-slayer summoned by the villagers. Courteous and practical when the boy introduces him to the dragon, he listens before acting and recognizes that the usual heroic solution does not fit the situation.",
+            "id": "saint-george",
+            "name": "Saint George",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The boy's father, a shepherd who first discovers enormous tracks and the dragon's cave while tending his flock. Frightened by what he assumes the creature must be, he reports the danger at home and helps set the village's alarm in motion.",
+            "id": "the-shepherd",
+            "name": "The Shepherd",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The boy's practical mother, who hears her husband's report of the dragon and accepts that her son is the family member best equipped by his reading to investigate it.",
+            "id": "the-boys-mother",
+            "name": "The Boy's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The local people who interpret the dragon through familiar tales and expect him to threaten them. Their insistence on a public contest makes it necessary for the boy, the dragon, and Saint George to produce a convincing resolution.",
+            "id": "the-villagers",
+            "name": "The Villagers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-reluctant-dragon"
+      },
+      "recaps": {
+        "ending": "The boy introduces Saint George to the dragon and discovers that neither wants a genuine battle. Because the villagers will accept nothing less than a heroic victory, the three arrange a staged fight. George and the dragon perform an impressive contest before the crowd, with the dragon taking care to present a suitably fearsome appearance. George appears to defeat him without inflicting a fatal wound, then announces that the dragon has reformed and can live peacefully among them. The satisfied villagers replace fear with celebration. At the feast, dragon and dragon-slayer become admired companions, while the boy's knowledge of the truth allows the harmless dragon to keep his home without either side losing face.",
+        "in_short": "A shepherd discovers a dragon living near his village, but his well-read son finds that the supposed monster is a gentle poet who dislikes fighting. The villagers nevertheless summon Saint George and expect a traditional dragon-slaying. The boy brings George and the dragon together, and the two agree that a real battle would be pointless. To meet the villagers' expectations, they stage a convincing public combat in which George seems to subdue rather than kill the dragon. George declares the creature reformed, the village celebrates, and the dragon is accepted as a peaceful neighbour. The boy's willingness to judge both figures by their conduct, rather than by legend, saves them from being trapped in their assigned roles.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A shepherd finds signs of a dragon near his flock and returns home frightened, but his bookish son volunteers to investigate. At the cave the boy meets a large, courteous dragon who prefers poetry, comfort, and conversation to fighting. The two become friends. When news spreads, the villagers treat the dragon as a conventional menace and summon Saint George to destroy him. The boy explains that the creature has harmed no one, then introduces the famous dragon-slayer to his supposed enemy. George and the dragon quickly agree that they have no reason for a genuine fight, but the village expects a spectacle and will not readily accept peaceful coexistence. With the boy acting as intermediary, they plan a staged battle. Before the assembled crowd, George and the dragon give a convincing performance in which the dragon is apparently defeated but survives. George presents him as reformed, and the villagers welcome the outcome with a feast. The dragon keeps his home, George preserves his heroic reputation, and the boy's practical understanding resolves a conflict created by old stories rather than actual danger.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-reluctant-dragon"
+      }
+    },
+    "the-remains-of-the-day": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Stevens"
+            ],
+            "description": "The long-serving English butler of Darlington Hall and the novel's narrator. Formal, exacting, and deeply invested in the dignity of his profession, he measures his life by the quality of service he gave his former employer. A rare motoring trip gives him time to reconsider the judgments and sacrifices hidden beneath that standard.",
+            "id": "mr-stevens",
+            "name": "Mr Stevens",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wealthy American who now owns Darlington Hall. Informal and fond of teasing Stevens, he encourages the butler to borrow his car for a holiday while he is away. His smaller modern household requires a style of service different from the grand establishment Stevens once knew.",
+            "id": "mr-farraday",
+            "name": "Mr Farraday",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs Benn"
+            ],
+            "description": "The former housekeeper of Darlington Hall, remembered by Stevens under the name she used before marriage. Energetic, capable, and willing to challenge his judgments, she worked beside him during the house's busiest years. A recent letter from her helps prompt his journey to the West Country.",
+            "id": "miss-kenton",
+            "name": "Miss Kenton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Stevens's late employer, an English aristocrat who used Darlington Hall for private international meetings between the world wars. Stevens remembers him as honorable and public-spirited, although his name later became associated with political disgrace and sympathy toward Nazi Germany.",
+            "id": "lord-darlington",
+            "name": "Lord Darlington",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Stevens senior"
+            ],
+            "description": "Stevens's father, himself an accomplished butler, who joins the Darlington Hall staff late in life. Severe, emotionally restrained, and committed to service, he represents the professional ideal Stevens admires even as age begins to limit his physical ability.",
+            "id": "william-stevens",
+            "name": "William Stevens",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Senator Lewis"
+            ],
+            "description": "An American senator who attends Lord Darlington's international conference after the First World War. Direct and politically experienced, he opposes the gathering's attempt to soften the settlement imposed on Germany and doubts that well-meaning private gentlemen can manage international affairs.",
+            "id": "mr-lewis",
+            "name": "Mr Lewis",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French delegate at Lord Darlington's 1923 conference. Pain from an injured foot and his suspicion of the American position add practical and diplomatic pressure to the gathering Stevens must manage.",
+            "id": "monsieur-dupont",
+            "name": "Monsieur Dupont",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mr Cardinal"
+            ],
+            "description": "The journalist godson of Lord Darlington. Familiar with the political world surrounding the house, he is fond of his godfather but increasingly disturbed by the influence foreign agents exert over him.",
+            "id": "reginald-cardinal",
+            "name": "Reginald Cardinal",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A socialist resident of the village where Stevens is stranded for a night. Proud of ordinary citizens' political rights, he argues that dignity belongs to people who participate in public decisions, not only to gentlemen and their servants.",
+            "id": "harry-smith",
+            "name": "Harry Smith",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local physician who meets Stevens after the butler spends a night among villagers who mistake him for a gentleman. His questions are courteous but penetrating, and he sees through Stevens's borrowed manner more clearly than the other guests do.",
+            "id": "dr-carlisle",
+            "name": "Dr Carlisle",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Jewish maid employed at Darlington Hall alongside her sister. Their satisfactory work becomes irrelevant when Lord Darlington orders that both women be dismissed, forcing Miss Kenton and Stevens to decide how far professional duty should accommodate an unjust command.",
+            "id": "ruth",
+            "name": "Ruth",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A maid hired at Darlington Hall under Miss Kenton's supervision. Her romance with another servant and eventual departure intensify Miss Kenton's awareness that her own life has narrowed to work and to an emotionally guarded colleague.",
+            "id": "lisa",
+            "name": "Lisa",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-remains-of-the-day"
+      },
+      "recaps": {
+        "ending": "Stevens meets Miss Kenton, now Mrs Benn, and learns that her letter did not mean she was preparing to leave her husband permanently. She admits that she sometimes imagines the life she and Stevens might have had, but she has come to value her marriage, expects a grandchild, and returns to her husband. Stevens conceals his own feeling and parts from her with conventional good wishes. At Weymouth, he talks with a retired butler and finally acknowledges the limits of claiming only to have served: Lord Darlington made grave political mistakes, while Stevens surrendered his own judgment and cannot even say the errors were his to make. The realization leaves him grieving both his employer's failure and his lost possibility with Miss Kenton. The stranger urges him to value the evening that remains rather than the day already spent. Watching people enjoy the pier lights together, Stevens decides to return to Darlington Hall and improve his skill at light conversation so he can respond more warmly to Mr Farraday. This modest resolution does not undo the past, but it directs his remaining professional and emotional life toward a small change.",
+        "in_short": "In the 1950s, the formal butler Stevens drives across England to visit Miss Kenton, the former housekeeper of Darlington Hall, hoping she may return to help with staffing. His journey prompts memories of service between the wars. Stevens prized professional dignity above emotion: he continued managing a conference while his father died upstairs, obeyed when Lord Darlington dismissed two Jewish maids, and failed to answer Miss Kenton's attempts at intimacy. He also defended Darlington, whose idealism made him useful to Nazi interests. Miss Kenton, now Mrs Benn, tells Stevens she sometimes wonders about a life with him but will remain with her husband and family. At Weymouth, Stevens admits that his total trust in Darlington cost him the chance to exercise his own judgment or build a personal life. Unable to recover what has passed, he resolves to make better use of what remains by learning the warm conversational ease his current American employer values.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In July 1956, Mr Farraday, the American owner of Darlington Hall, encourages his butler Stevens to take a holiday in the household's car. Stevens has rarely traveled for pleasure, but a letter from the former housekeeper Miss Kenton seems to express nostalgia for the hall and possible unhappiness in her marriage. Because the reduced staff is struggling, he frames a visit to her as a professional effort to recruit an experienced housekeeper. He sets out for the West Country with a carefully planned route. The unfamiliar landscape produces both pride in England and unease at being away from the house. In Salisbury he begins considering what makes a butler “great,” linking professional dignity to emotional control and service in an important household. He also confronts the damaged reputation of his former employer, Lord Darlington, whose political activities before the Second World War later brought public disgrace. Stevens sometimes denies having worked for him when questioned by strangers, yet continues to insist inwardly that Darlington was an honorable gentleman. His journey is therefore already divided between a practical staffing mission and an unacknowledged review of his own past.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Continuing from Salisbury, Stevens develops his idea of dignity through stories about earlier butlers, especially his father. He admires a professional who remains composed under insult or danger and treats the suppression of private feeling as evidence of greatness. His elderly father once embodied that ideal and later joined the staff at Darlington Hall under Stevens's authority. Age, however, had begun to impair the older man's balance and judgment. Miss Kenton, newly appointed as housekeeper, noticed these failures and confronted Stevens with them. Stevens treated her concern as a staffing matter rather than an emotional or family problem. Their early relationship was capable but combative: she challenged his impersonal decisions, while he guarded the boundaries of his office. As the car crosses an England different from the enclosed world of the hall, Stevens continues to evaluate life through professional standards. That framework gives his memories order, but it also keeps him from naming embarrassment, affection, fear, or regret directly.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near Mortimer's Pond, Stevens recalls more of the period when his father served at Darlington Hall. Miss Kenton repeatedly tried to make him recognize that the older man could no longer perform demanding tasks safely. After Stevens senior fell while carrying a tray, Stevens reduced his duties. He delivered the decision in formal professional language, and his father received it with equal restraint. The exchange demonstrates the code both men share but leaves their relationship almost untouched at the personal level. Miss Kenton also tested Stevens's emotional defenses in smaller ways, bringing flowers to his room and trying to discover what he was reading. He resisted each attempt to make his private self visible and characterized their encounters as disruptions of work. Meanwhile, Lord Darlington was preparing to use his house for gatherings intended to influence European affairs after the First World War. Stevens saw these events as the highest setting in which a butler might serve. His ambition to run the household flawlessly became inseparable from his trust that the gentlemen meeting upstairs would use their power wisely.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevens's central example of professional triumph is Lord Darlington's 1923 conference, called to ease the punitive conditions imposed on Germany after the war. European delegates maneuver privately while the American senator Mr Lewis argues that international policy cannot safely be left to honorable amateurs. Stevens manages the large household through illness, diplomatic tension, and constant demands. During the conference his father's health collapses. Miss Kenton tells Stevens that the old man is dying upstairs, but Stevens remains with the guests until his duties allow a brief visit. His father tries to speak personally to him; Stevens answers with reassurance about the work and returns downstairs. He continues serving while Miss Kenton attends the deathbed and later informs him that his father has died. Stevens suppresses visible grief and completes the conference, remembering the night as proof that he attained the dignity required of a great butler. Yet the memory also shows the cost of his definition: his finest professional performance coincides with his refusal to be present as a son.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the trip continues, Stevens revisits Lord Darlington's later political choices. Influenced by antisemitic ideas circulating among his associates, Darlington ordered two Jewish housemaids dismissed solely because of their background. Miss Kenton protested and threatened to resign. Stevens personally disliked the decision but insisted that staff must obey their employer and refused to join her. She remained at the hall, unable at that moment to sacrifice her position, and later regretted not acting. Darlington eventually admitted the dismissal had been wrong and asked that the women be found, but they could not be restored to their former places. Stevens treats this reversal as evidence of Darlington's decency, while his own account reveals how professional obedience enabled the original injustice. In the present, encounters with ordinary English people keep raising questions about dignity and judgment outside great houses. Stevens remains reluctant to accept that loyalty may require moral evaluation rather than merely flawless execution.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A shortage of fuel and a car problem leave Stevens overnight in a village, where residents mistake his formal speech and fine borrowed car for signs that he is a gentleman. Their political discussion challenges his assumptions. Harry Smith connects dignity with the right and responsibility of ordinary people to form judgments, while Stevens has built his life around serving supposedly superior judgment in others. Dr Carlisle later recognizes that Stevens is a butler and treats the discovery without contempt. Stevens also remembers the final decline of his relationship with Miss Kenton. She hired a maid, Lisa, who later left to marry, prompting difficult conversations about whether service alone could make a life. Miss Kenton began meeting a former acquaintance and eventually announced that she had accepted his marriage proposal. Stevens responded only with professional courtesy. That same evening, Lord Darlington's godson Reginald Cardinal warned that German agents were using Darlington's sincerity to advance Nazi aims. Stevens heard the warning but continued attending to household tasks. When he found Miss Kenton crying in her room, he did not ask her to stay or reveal his feelings. Public and private opportunities for judgment passed together.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevens reaches Little Compton and meets Miss Kenton, now Mrs Benn, after roughly twenty years apart. Their conversation is cordial and full of shared memories, but it corrects the hope Stevens drew from her letter. She did once leave her husband for several days, yet has returned and does not intend to abandon her marriage. Her daughter is expecting a child, and the prospect of becoming a grandmother has helped her recognize the attachment and stability she has built. Mrs Benn admits that in low moments she has wondered what life with Stevens might have been, a confession that makes him privately confront the possibility they lost. He nevertheless maintains his composure and encourages her to value her husband and family. They part at a bus stop, and Stevens watches her leave in the rain. His supposed recruitment mission is over: she will not return to Darlington Hall, and the staffing problem will have to be solved without her. More importantly, the professional explanation for his journey can no longer conceal that he came seeking a personal past that cannot be resumed.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two evenings later at Weymouth, Stevens sits on the pier and talks with a retired butler. For the first time he states the central failure more plainly. Lord Darlington at least made his own choices, however disastrous, whereas Stevens surrendered judgment to his employer and therefore cannot even claim the dignity of having made his own mistakes. His loyalty helped sustain a man manipulated by Nazi interests, and his emotional discipline cost him a possible life with Miss Kenton. The retired butler urges him to stop measuring everything by the day already gone and to value the evening that remains. As the pier lights come on and strangers share a moment of pleasure, Stevens notices that warmth between people often grows through casual teasing. He decides to practice this conversational skill so that he can respond better to Mr Farraday on returning to Darlington Hall. The resolution is small and remains expressed as professional improvement, but it marks a shift toward recognizing another person's emotional needs. Stevens cannot repair his father's death, Darlington's politics, or Miss Kenton's departure; he can only use the remainder of his life with greater awareness.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-remains-of-the-day"
+      }
+    },
     "the-reptile-room": {
       "characters": {
         "characters": [
