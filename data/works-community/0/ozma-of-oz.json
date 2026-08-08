@@ -561,6 +561,164 @@
         "work": "pale-demon"
       }
     },
+    "pale-fire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The self-appointed editor of John Shade's final poem and author of its foreword, commentary, and index. A recent colleague and neighbor of the poet, he is vain, lonely, intrusive, and convinced that Shade's work encodes the extraordinary personal history Kinbote says he shared with him.",
+            "id": "charles-kinbote",
+            "name": "Charles Kinbote",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "An eminent American poet who has completed a 999-line autobiographical poem titled Pale Fire shortly before his death. He is Kinbote's colleague and neighbor, although Kinbote's account makes the closeness of their friendship difficult to judge.",
+            "id": "john-shade",
+            "name": "John Shade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "John Shade's wife, intelligent, protective, and openly impatient with Kinbote's attempts to monopolize her husband. She appears in both the history surrounding the manuscript and the domestic life remembered in the poem.",
+            "id": "sybil-shade",
+            "name": "Sybil Shade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A faculty colleague whose minor role in the manuscript's history becomes a grievance in Kinbote's foreword. Kinbote treats his ordinary social contact with Shade as an intrusion and gives him an outsized place in his resentments.",
+            "id": "gerald-emerald",
+            "name": "Gerald Emerald",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The owner of the house rented by Kinbote during his association with Shade. A local judge, he is absent from the household for much of Kinbote's narrative, but his home and public office become important to the circumstances of Shade's death.",
+            "id": "judge-goldsworth",
+            "name": "Judge Goldsworth",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "John and Sybil Shade's daughter. In the poem she is remembered as an awkward, sensitive child whose unhappiness and isolation troubled her parents and whose death permanently reshaped their lives.",
+            "id": "hazel-shade",
+            "name": "Hazel Shade",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exiled ruler at the center of Kinbote's commentary, said to have escaped revolutionary Zembla through a hidden passage and crossed Europe in disguise. Kinbote presents the king's flight as the true subject he expected Shade to place inside the poem.",
+            "id": "king-charles-the-beloved",
+            "name": "King Charles the Beloved",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jacques d'Argus",
+              "Jack Grey"
+            ],
+            "description": "A revolutionary operative whom Kinbote identifies as the assassin sent across Europe to kill Zembla's escaped king. His confused journey is reconstructed across the commentary and gradually converges on the Shades' neighborhood.",
+            "id": "jakob-gradus",
+            "name": "Jakob Gradus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Zemblan actress and the estranged wife of King Charles in Kinbote's royal history. Their marriage does not provide the intimacy expected of it, yet Kinbote portrays her with tenderness and imagines the exiled king regretting the pain caused to her.",
+            "id": "queen-disa",
+            "name": "Queen Disa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated Zemblan actor and loyal supporter of the deposed king. Within Kinbote's account he assists the royal escape and represents the network of theatrical and political allies scattered outside Zembla.",
+            "id": "odon",
+            "name": "Odon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pale-fire"
+      },
+      "recaps": {
+        "ending": "Kinbote's commentary links Shade's death to two incompatible stories. In Kinbote's Zemblan narrative, the revolutionary Gradus has crossed Europe to assassinate the escaped King Charles and mistakenly shoots Shade outside Kinbote's rented house. Elsewhere the gunman is Jack Grey, an escaped patient seeking revenge on Judge Goldsworth, the house's owner, with Shade again the accidental victim. Kinbote claims Shade's unfinished poem and supplies the missing thousandth line by returning to its first. The closing notes and index strengthen the suspicion that the editor's royal history is a private delusion by connecting his account with V. Botkin, a Russian-born American scholar. The book leaves no external narrator to settle every contradiction, but its apparatus exposes how Kinbote has occupied Shade's poem with his own invented or distorted identity. Shade remains dead, Sybil has lost control of the manuscript, and Kinbote imagines further versions of himself as he closes the edition.",
+        "in_short": "Poet John Shade writes a 999-line autobiographical poem about childhood, marriage, the death of his daughter Hazel, and his search for evidence that consciousness survives death. His neighbor Charles Kinbote obtains the manuscript after Shade is shot and publishes it with an immense commentary. Kinbote insists that he is really the exiled King Charles of Zembla, that he gave Shade the material for an epic of royal escape, and that the killer was the Zemblan agent Gradus. Yet Shade's poem scarcely supports this tale, and the notes repeatedly abandon textual explanation for Kinbote's obsessions. A second account identifies the shooter as Jack Grey, an escaped patient targeting Judge Goldsworth, whose house Kinbote rents. The closing apparatus associates Kinbote's account with the Russian scholar V. Botkin, suggesting another identity behind the royal fantasy. The work ends without a single authoritative solution, setting Shade's humane meditation against Kinbote's effort to seize and rewrite it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Charles Kinbote introduces Pale Fire, a 999-line poem by his recently murdered colleague John Shade. He says Shade composed it during the summer in four cantos and implies that only Kinbote can explain its true subject. Kinbote describes himself as Shade's intimate confidant, though his anecdotes also show Sybil Shade avoiding him and colleagues regarding him with unease. He has obtained the manuscript and publishes it without Sybil's cooperation, directing readers to use his commentary as the key to the poem. The foreword also places Kinbote in the house of Judge Goldsworth across from the Shades and identifies the manuscript's completion and Shade's death as closely connected events. Even before the poem begins, the editorial apparatus raises doubts about Kinbote's reliability and ownership of the story.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shade's first two cantos look back on his childhood, his parents' early deaths, physical vulnerability, and the growth of his imaginative life. Natural patterns, reflections, and coincidences feed his interest in whether the visible world contains signs of another order. The poem then turns to his marriage with Sybil and their shared domestic history. Their daughter Hazel grows up painfully conscious of her appearance and social isolation. After a failed date and a solitary journey home, she takes her own life. Shade and Sybil are left to live with the loss. The personal history in the poem differs sharply from the royal and political subject Kinbote promised in his foreword, centering instead on family, mortality, and the need to find meaning without falsifying grief.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the final cantos, Shade describes a temporary collapse that gives him what seems like a glimpse beyond death. He later reads of another person's similar vision, including the same striking image, and seeks her out. A correction reveals that the apparent match resulted from a misprint, destroying the simple proof he hoped to find. Shade nevertheless comes to trust not a coded message but the possibility of design expressed through artistic pattern, coincidence, and human consciousness. He returns to the immediate summer evening, his marriage, and the act of composing the poem. The text stops at line 999 as Shade prepares to cross the lane. Kinbote later argues that the absent thousandth line should repeat the opening line, making the poem circular.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kinbote's commentary rarely confines itself to explaining Shade's lines. It develops a separate history of Zembla, where King Charles the Beloved is deposed by revolutionaries, escapes imprisonment through a secret passage, and flees the country with help from loyalists including the actor Odon. The regime sends Jakob Gradus to kill him. Kinbote identifies himself with the exiled king and claims he supplied this material to Shade, reading scattered words in the poem as hidden confirmation. Gradus's erratic journey is made to approach New Wye as Shade finishes writing. Outside Kinbote's rented house, the gunman shoots Shade. Kinbote also records the less romantic identity of Jack Grey, an escaped patient pursuing Judge Goldsworth, suggesting that Shade was killed by mistake. He takes charge of the manuscript after the shooting and bends its missing ending toward his own story.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The index extends Kinbote's effort to make Zembla the organizing subject of Shade's poem, cataloguing its geography, royal family, revolutionaries, and aliases alongside the people of New Wye. At the same time, the closing apparatus exposes fractures in the editor's identity. Its treatment of V. Botkin, an American scholar of Russian origin mentioned near the end of the commentary, supports the possibility that the exiled king is a persona created by a disturbed academic. No independent voice confirms whether every Zemblan detail is invented, distorted, or displaced, but the poem itself remains largely indifferent to Kinbote's royal saga. Shade is dead, Sybil has been displaced as the manuscript's custodian, and Kinbote concludes by imagining that he may continue in new roles. The finished book therefore leaves Shade's meditation intact while revealing the commentary as an attempted appropriation by an editor whose self-explanation cannot be trusted.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pale-fire"
+      }
+    },
     "pandemonium": {
       "characters": {
         "characters": [
