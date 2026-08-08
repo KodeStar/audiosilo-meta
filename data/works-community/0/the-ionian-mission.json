@@ -5310,6 +5310,134 @@
         "work": "the-kraken-wakes"
       }
     },
+    "the-kreutzer-sonata": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A solitary, agitated passenger who enters a railway-carriage discussion about marriage and identifies himself as a man who killed his wife. He asks the unnamed narrator to hear the history behind that public fact. His long account is shaped by shame, jealousy, rigid ideas about sexuality, and an effort to explain conduct he now views with horror.",
+            "id": "pozdnyshev",
+            "name": "Pozdnyshev",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The quiet fellow traveler who listens after the other passengers leave and records Pozdnyshev's confession. He offers little judgment, serving mainly as the audience for the man's increasingly personal account.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A confident passenger who argues that affection and personal choice should govern marriage. Her disagreement with an older merchant helps turn a casual railway conversation into a debate over love, divorce, authority, and the unequal standards applied to husbands and wives.",
+            "id": "woman-passenger",
+            "name": "The woman passenger",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly merchant traveling in the same carriage. He defends patriarchal marriage and obedience, provoking the argument that first draws Pozdnyshev into the conversation.",
+            "id": "old-merchant",
+            "name": "The old merchant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A lawyer among the railway passengers who joins the opening discussion of marriage and divorce. His questions help expose the deep disagreement between the merchant's traditional rules and the woman passenger's emphasis on love.",
+            "id": "lawyer",
+            "name": "The lawyer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young woman Pozdnyshev courts and marries after deciding that her beauty and family background make her a suitable wife. At this point in his account she is known only through his limited, self-critical recollection of their courtship and early expectations.",
+            "id": "pozdnyshevs-wife",
+            "name": "Pozdnyshev's wife",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable violinist who becomes acquainted with Pozdnyshev's household. His musical skill makes him a natural partner for Pozdnyshev's wife, an able pianist, and Pozdnyshev is unsettled by the ease with which the two musicians work together.",
+            "id": "trukhachevsky",
+            "name": "Trukhachevsky",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kreutzer-sonata"
+      },
+      "recaps": {
+        "ending": "Pozdnyshev returns home unexpectedly and finds Trukhachevsky dining with his wife. Convinced that his suspicions have been confirmed, he attacks the violinist, who escapes, then stabs his wife. As she dies, her response and the sight of their children begin to break through his jealous certainty. Pozdnyshev is later acquitted, his violence treated as a crime committed under marital provocation, but he does not present that verdict as moral release. Only when he sees his wife's body does he fully recognize her as a separate human being whom he has destroyed and cannot restore. On the train he finishes his confession by acknowledging the enormity of the act and asking the narrator's forgiveness before they part.",
+        "in_short": "During a railway journey, passengers debate whether marriage should rest on love, obedience, or social convention. One traveler, Pozdnyshev, reveals that he killed his wife and recounts the life that led to the crime. He describes a youth shaped by sexual double standards, a courtship based on physical attraction, and a marriage marked by resentment, quarrels, and possessiveness. After his wife resumes music, she performs Beethoven's Kreutzer Sonata with the violinist Trukhachevsky. Pozdnyshev interprets their artistic intimacy as sexual betrayal, though he has no proof. Returning early from a trip, he finds them together, attacks the fleeing violinist, and fatally stabs his wife. He is acquitted under the era's indulgent view of jealous husbands, but the sight of her dying and then dead makes him understand that his suspicions never justified treating her as his possession. His train confession ends not in vindication but in belated remorse.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Travelers sharing a railway carriage begin discussing a recent divorce case. An older merchant insists that a wife must obey her husband, while a woman passenger and a lawyer defend education, freedom of choice, and marriage based on love. A tense, gray-haired man repeatedly interrupts their claims. After most of the group leaves, he challenges the idea that romantic preference can sustain lifelong marriage. He then identifies himself as Pozdnyshev, whose name the narrator recognizes from a notorious trial: he killed his wife. Rather than conceal the fact, Pozdnyshev offers to explain how his marriage reached that end, and the narrator agrees to listen.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pozdnyshev begins with his youth, describing how respectable male society encouraged sexual experience while preserving an outward ideal of purity. He argues that this divided standard damaged his ability to regard women as complete human beings. His monologue broadens into an attack on fashionable courtship, romantic language, and the economic and social arrangements surrounding marriage. Although his conclusions are severe and often sweeping, he implicates himself rather than claiming innocence. He presents his later jealousy as the product of habits and beliefs established long before he met his wife.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pozdnyshev chooses his future wife largely for her beauty and convinces himself that desire is love. Their engagement already contains tension, and the honeymoon exposes how little mutual understanding lies beneath their expectations. Marriage becomes a cycle of physical reconciliation and bitter argument. The birth of children does not create stability: illness, medical advice, nursing, and disagreements over child-rearing become new sources of accusation. Pozdnyshev increasingly treats the household as a contest for power while also recognizing, in retrospect, that he and his wife are trapped in roles neither can make humane.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the children grow older, Pozdnyshev's wife regains health, confidence, and an interest in music. The violinist Trukhachevsky enters their social circle, and Pozdnyshev invites him to perform with her at home. Their rehearsal makes him jealous, yet pride and the wish to appear unconcerned keep him from withdrawing the invitation. At a gathering the pair play Beethoven's Kreutzer Sonata. Pozdnyshev is shaken by the music and by the intense coordination between the performers, interpreting an artistic partnership as evidence of a private bond. He leaves on business soon afterward. A letter from his wife mentions that Trukhachevsky has visited, and Pozdnyshev's suspicion grows into certainty despite the absence of proof. He abandons the trip and starts home unexpectedly.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During his return journey, Pozdnyshev repeatedly imagines his wife and Trukhachevsky together. Each imagined detail strengthens the next until he can no longer distinguish evidence from the story jealousy has built. Reaching home late, he learns that the violinist is there and arms himself. He finds the two musicians at the dining table; the scene itself establishes no affair, but their alarm confirms his suspicions in his own mind. He attacks, and Trukhachevsky escapes. Pozdnyshev then stabs his wife. As the household wakes and medical help arrives, his anger gives way only slowly to an understanding of what he has done. She dies after rejecting his effort to make the attack her fault, leaving their children without a mother. Pozdnyshev spends time in prison but is acquitted, the court accepting the killing as an act of provoked jealousy. He does not treat that verdict as exoneration. Seeing his wife's body finally forces him to recognize her as a person beyond his claims of ownership and to understand that no explanation can undo her death. He completes his confession by asking the narrator's forgiveness before the men separate.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kreutzer-sonata"
+      }
+    },
     "the-labours-of-hercules": {
       "characters": {
         "characters": [
