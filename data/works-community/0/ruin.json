@@ -2939,6 +2939,166 @@
         "work": "salome"
       }
     },
+    "salvation-of-a-saint": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A celebrated patchwork artist and teacher married to Yoshitaka Mashiba. Composed and observant, she has built an elegant home around her husband's exacting expectations, including his belief that marriage exists to produce children.",
+            "id": "ayane-mashiba",
+            "name": "Ayane Mashiba",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ayane's wealthy businessman husband. He treats marriage as an agreement contingent on having a child and tells Ayane that he wants a divorce when their first anniversary arrives without a pregnancy.",
+            "id": "yoshitaka-mashiba",
+            "name": "Yoshitaka Mashiba",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ayane's younger assistant and pupil in patchwork. She moves easily through the Mashibas' home and social circle and is drawn into the investigation when Yoshitaka dies while Ayane is away.",
+            "id": "hiromi-wakayama",
+            "name": "Hiromi Wakayama",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tokyo homicide detective assigned to Yoshitaka's death. Experienced and intuitive, he is strongly impressed by Ayane, which makes his reading of her behavior more sympathetic than that of his junior colleague.",
+            "id": "shunpei-kusanagi",
+            "name": "Shunpei Kusanagi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A younger detective working with Kusanagi. Careful about domestic details and unwilling to accept the most convenient theory, she suspects that Ayane's apparent impossibility as a murderer may itself be central to the case.",
+            "id": "kaoru-utsumi",
+            "name": "Kaoru Utsumi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The senior officer supervising the Mashiba investigation. He balances competing theories within the team and presses for an explanation that accounts for both the poison and the opportunity to administer it.",
+            "id": "mamiya",
+            "name": "Mamiya",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physicist at Imperial University whom Kusanagi consults on cases involving apparently impossible mechanisms. Known to the police as Detective Galileo, he is more interested in whether a theory can work than in preserving anyone's preferred suspect.",
+            "id": "manabu-yukawa",
+            "name": "Manabu Yukawa",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friend and business associate of Yoshitaka who socialized with both Mashibas. His account of the marriage and its place within their circle helps the detectives reconstruct the victim's relationships.",
+            "id": "tatsuhiko-ikai",
+            "name": "Tatsuhiko Ikai",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tatsuhiko's wife and Ayane's friend. She offers the investigators another view of the Mashiba marriage and of Ayane's conduct before the fatal weekend.",
+            "id": "yukiko-ikai",
+            "name": "Yukiko Ikai",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "salvation-of-a-saint"
+      },
+      "recaps": {
+        "ending": "Yukawa concludes that Ayane prepared the murder long before her trip by placing arsenic in the household water-filter apparatus. For roughly a year she controlled its use and repeatedly prevented the poison from reaching Yoshitaka; leaving him without her protection was the final act that allowed the contaminated water to be used for his coffee. The physical setup explains how she could cause his death while maintaining an alibi far from Tokyo. It also gives Yukawa's phrase “salvation of a saint” its force: every ordinary day that Ayane kept the trap dormant was a day she chose to save the husband who had placed a deadline on their marriage. Once the detectives demonstrate the mechanism and confront her with the linked evidence, Ayane admits what she did and is arrested. Kusanagi must abandon the personal trust he developed in her, while Utsumi's early suspicion is vindicated. Hiromi, pregnant with Yoshitaka's child, is left to decide her future after the affair and murder.",
+        "in_short": "When businessman Yoshitaka Mashiba tells his wife Ayane that their childless marriage is over, she leaves Tokyo to visit her parents. He is then found dead from arsenic in coffee, creating an impossible case: Ayane has the clearest motive but an alibi, while her assistant Hiromi, who was having an affair with Yoshitaka, had access to the house. Detectives Shunpei Kusanagi and Kaoru Utsumi divide over Ayane, with Kusanagi increasingly charmed by her and Utsumi increasingly suspicious. Physicist Manabu Yukawa examines the household's water and coffee routines. He determines that Ayane had hidden arsenic in the water-filter system long before and had personally kept the poisoned route from being used, effectively preserving Yoshitaka's life each day until she left him to trigger it. The evidence forces Ayane's confession and arrest. Hiromi remains pregnant with Yoshitaka's child, and Kusanagi is left chastened by how thoroughly sympathy distorted his judgment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Tokyo detective Shunpei Kusanagi has repeatedly consulted his university friend Manabu Yukawa, a physicist whose rigorous explanations of apparently impossible events have earned him the police nickname Detective Galileo. Their methods differ: Kusanagi reads people and pursues conventional evidence, while Yukawa tests whether the physical account of a crime can actually work.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yoshitaka Mashiba tells his wife Ayane that he wants to end their marriage because she has not become pregnant within the period he allowed. Ayane soon leaves Tokyo to visit her parents in Hokkaido, apparently giving the couple time apart. While she is away, Yoshitaka is found dead at home after drinking coffee poisoned with arsenic. Ayane's assistant Hiromi Wakayama discovers him and becomes an immediate focus because she could enter the house. Detectives Shunpei Kusanagi and Kaoru Utsumi confront a basic contradiction: the wife has an obvious reason to want Yoshitaka dead but was far away when the fatal drink was prepared, while the woman with opportunity has not yet supplied a clear motive.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation maps the Mashiba household's routines. Poison was present in Yoshitaka's coffee, but ordinary sources in the kitchen do not yield a simple explanation that fits all the tests and witness accounts. Hiromi admits that she and Yoshitaka were having an affair, giving her both access and a reason to fear discovery. Ayane returns and behaves with striking composure. Kusanagi is drawn to her intelligence and apparent dignity, and he increasingly looks for an account in which she is another person injured by Yoshitaka. Utsumi instead notices how precisely Ayane understands the domestic details on which the murder depended. Their disagreement leads Utsumi to seek help from physicist Manabu Yukawa.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yukawa approaches the case as a problem of mechanism: if Ayane arranged the poisoning, the method must have been set before she left and must still explain why nobody else was harmed. The detectives examine bottled water, tap water, coffee preparation, and the household filter rather than assuming the poison was simply poured into the fatal cup. Interviews with the Mashibas' friends show that Yoshitaka applied a cold rule to intimate relationships: a wife who could not give him a child would be replaced. Hiromi's affair fits that pattern and deepens Ayane's motive, but it also makes Hiromi a plausible alternative suspect. Kusanagi's attachment to Ayane continues to affect how he weighs the two women.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Forensic details keep undermining the obvious versions of events. Neither Hiromi's access nor Ayane's motive alone explains how arsenic reached only the relevant coffee while Ayane was hundreds of miles away. Utsumi reconstructs small acts of household management that others dismissed as routine and becomes convinced that Ayane exercised control over the water supply even in her absence. Yukawa tests increasingly elaborate possibilities and recognizes that the case may depend not on a device activated at a precise time, but on a dangerous condition deliberately held in check. The question changes from how Ayane could poison Yoshitaka from Hokkaido to how she might have stopped him from being poisoned during every earlier day she was home.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yukawa focuses on the water-filter apparatus and the history of its use. He develops a theory in which arsenic had been placed within the household system long before Yoshitaka's death. Ayane's daily control of coffee and water prevented the contaminated portion from reaching him. Her journey did not require her to administer poison remotely; it removed the person who had been keeping an existing trap harmless. The theory accounts for the distant alibi, the clean-looking kitchen, and Ayane's intense attention to domestic procedure. Kusanagi resists the implication because he has come to trust Ayane, but the investigation now has a physical explanation capable of connecting her preparations to the fatal cup.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The detectives and Yukawa establish that Ayane concealed arsenic in the water-filter system well before the fatal weekend. For about a year she personally controlled the system and kept Yoshitaka from receiving the poison, saving him day after day even though the means of his death was already present. When the deadline he had imposed on their childless marriage expired and he moved toward Hiromi, Ayane left for Hokkaido and allowed the dormant arrangement to supply the water used in his coffee. Confronted with the mechanism and the supporting evidence, she confesses and is arrested. Kusanagi must accept that his feelings made him defend her, while Utsumi's attention to the domestic evidence proved decisive. Hiromi is left pregnant with Yoshitaka's child, carrying the future he demanded but did not live to see.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "salvation-of-a-saint"
+      }
+    },
     "samson-agonistes": {
       "characters": {
         "characters": [
