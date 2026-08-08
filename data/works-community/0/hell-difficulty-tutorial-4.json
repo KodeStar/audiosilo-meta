@@ -2534,6 +2534,187 @@
         "work": "hexed"
       }
     },
+    "hhhh": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The self-conscious storyteller who is trying to write about Operation Anthropoid while repeatedly questioning his memory, his research, and the liberties taken by historical fiction. His interruptions make the construction of the book part of its subject.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Hangman of Prague"
+            ],
+            "description": "A senior Nazi security official whose career and assassination form the historical center of the narrative. Intelligent, ambitious, and remorseless, he rises through the SS and becomes acting ruler of the occupied Czech lands.",
+            "id": "reinhard-heydrich",
+            "name": "Reinhard Heydrich",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Slovak soldier selected by the Czechoslovak government-in-exile for Operation Anthropoid. Trained in Britain and parachuted into the occupied homeland, he is tasked with attacking Heydrich alongside Jan Kubiš.",
+            "id": "jozef-gabcik",
+            "name": "Jozef Gabčík",
+            "reveal": {
+              "chapter": 145
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Czech soldier paired with Jozef Gabčík for Operation Anthropoid. Quietly determined and trained in exile, he returns by parachute to help carry out the exceptionally dangerous mission against Heydrich.",
+            "id": "jan-kubis",
+            "name": "Jan Kubiš",
+            "reveal": {
+              "chapter": 150
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the SS and Heydrich's superior. He recognizes Heydrich's administrative and intelligence talents and gives him increasing power within the Nazi police system.",
+            "id": "heinrich-himmler",
+            "name": "Heinrich Himmler",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of Nazi Germany, shown using Heydrich and the security apparatus to destroy political opposition and impose terror across occupied Europe.",
+            "id": "adolf-hitler",
+            "name": "Adolf Hitler",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Czechoslovak paratrooper and resistance fighter who helps the Anthropoid team prepare the attack. His knowledge of Prague and willingness to expose himself make him an important operational ally.",
+            "id": "josef-valcik",
+            "name": "Josef Valčík",
+            "reveal": {
+              "chapter": 180
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Czechoslovak officer parachuted into the occupied country with another mission. He becomes the senior soldier among the men later sheltered together by the Prague resistance.",
+            "id": "adolf-opalka",
+            "name": "Adolf Opálka",
+            "reveal": {
+              "chapter": 185
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Czech resistance organizer who coordinates hiding places and practical support for the parachutists in Prague while living under the constant threat of German surveillance.",
+            "id": "jan-zelenka-hajsky",
+            "name": "Jan Zelenka-Hajský",
+            "reveal": {
+              "chapter": 185
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Prague woman whose family gives the parachutists shelter and assistance. Her home is one of the fragile links connecting the exiled soldiers to the domestic resistance.",
+            "id": "marie-moravec",
+            "name": "Marie Moravec",
+            "reveal": {
+              "chapter": 190
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Czech paratrooper who returns from Britain on a separate mission and joins the network supporting the men of Operation Anthropoid. Like the others, he depends on civilians who risk execution by hiding them.",
+            "id": "karel-curda",
+            "name": "Karel Čurda",
+            "reveal": {
+              "chapter": 190
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hhhh"
+      },
+      "recaps": {
+        "ending": "After Heydrich dies of his wounds, the German authorities unleash mass arrests and executions and destroy Lidice in a campaign of collective punishment. Karel Čurda eventually gives the Gestapo information that exposes the resistance network. Under torture, the Moravec family is forced into further disclosures, leading the Germans to the Orthodox church where the parachutists are concealed. The men resist a vastly larger SS force for hours, first from the gallery and then from the flooded crypt. None is captured alive: Opálka, Kubiš, Gabčík, Valčík, and their companions die in the battle or take their own lives when escape is impossible. The narrator closes with the cost of their mission and with his own inability to make their real lives fully present through fiction, while insisting on the courage of the people who chose to resist.",
+        "in_short": "A present-day narrator tries to reconstruct the lives of Jozef Gabčík and Jan Kubiš, the Czechoslovak soldiers sent from Britain to assassinate Reinhard Heydrich, while openly disputing his own inventions and the distortions of historical storytelling. The book traces Heydrich's ascent through the Nazi security state and his brutal rule in Prague, then follows the parachutists into hiding with the Czech resistance. On 27 May 1942 Gabčík's gun fails, but Kubiš's bomb wounds Heydrich, who later dies. Nazi reprisals kill many innocent people and erase Lidice. After Karel Čurda betrays the resistance network, German forces find the parachutists in a Prague church. The seven men hold out against overwhelming forces before all are killed or die by suicide. Their mission succeeds at a terrible cost, and the narrator ends by honoring their resistance while acknowledging the limits of turning documented lives into a novel.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator begins an account of the assassination of Reinhard Heydrich but repeatedly steps outside it to explain how uncertainly a writer approaches real people. He recalls becoming fascinated by Prague, the wartime resistance, and the two parachutists at the center of the mission. Each attempt to make the past vivid raises a problem: invented thoughts and decorative details may create a smoother novel while replacing evidence with fantasy. Heydrich nevertheless emerges as the book's dark focus, and the narrator establishes that the story will move between his own act of reconstruction, Heydrich's career, and the men sent to kill him.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Heydrich's path into Nazism takes shape. After an early naval career ends in disgrace, he enters the SS and wins Heinrich Himmler's confidence by building an intelligence service. He becomes central to the expanding machinery of surveillance, arrest, and political murder. Rival institutions and personal ambition help him accumulate authority rather than restrain him. The narrator pauses over gaps in the record and corrects scenes he fears he has made too novelistic, keeping the difference between known history and plausible invention visible.",
+            "through": {
+              "chapter": 120
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Heydrich advances to the top of the Nazi security system and helps organize persecution on a continental scale. Sent to Prague as acting Reich Protector, he combines selective concessions with terror, ordering arrests and executions while trying to make occupation more productive for Germany. Abroad, the Czechoslovak government needs an act that will demonstrate continued national resistance. Jozef Gabčík and Jan Kubiš are trained in Britain for Operation Anthropoid, whose target is Heydrich himself, and prepare to return to a country where discovery will endanger every civilian who aids them.",
+            "through": {
+              "chapter": 170
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gabčík and Kubiš are dropped into the occupied Czech lands and make contact with resistance families who provide papers, rooms, intelligence, and transport. Other parachutists, including Josef Valčík and Adolf Opálka, enter the same precarious network. The operatives study Heydrich's journeys and settle on a sharp Prague bend where his car must slow. They understand that escape is unlikely and that German reprisals may be severe, but continue because killing so powerful an occupier would have military and political meaning beyond the two attackers' survival.",
+            "through": {
+              "chapter": 195
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On 27 May 1942, Gabčík steps in front of Heydrich's open car, but his submachine gun fails. Kubiš throws the adapted bomb instead; it explodes beside the vehicle and wounds Heydrich. The attackers escape the scene with help from the resistance while the Germans begin a vast manhunt. Heydrich at first survives and receives treatment, but his condition deteriorates and he dies. The assassination achieves its objective, yet it gives the occupation authorities the occasion for indiscriminate vengeance against prisoners, resistance contacts, and communities with no connection to the attack.",
+            "through": {
+              "chapter": 220
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nazis answer Heydrich's death with executions, terror, and the destruction of Lidice. Rewards and threats close around the underground network. Karel Čurda, one of the returned parachutists, goes to the Gestapo and identifies people who helped the soldiers. The trail leads to the Moravec family and, through brutal interrogation, toward the Orthodox church in Prague where the wanted men have taken refuge. The church's priests and lay supporters are now endangered along with the fighters they shelter.",
+            "through": {
+              "chapter": 242
+            }
+          },
+          {
+            "scope": "book",
+            "text": "German forces surround the church. Opálka, Kubiš, and another defender fight from the gallery until they are killed or fatally wounded. Gabčík, Valčík, and the remaining parachutists hold the crypt below as the attackers use gunfire, gas, and water in an attempt to drive them out. Escape proves impossible, and the defenders die without surrendering. The resistance network and the church community pay heavily, as do civilians swept up in the reprisals. Returning to the problem that has interrupted him throughout, the narrator acknowledges that facts cannot restore the dead or grant access to their private minds. He ends by affirming the parachutists' courage and the importance of remembering their choice without pretending that fiction can possess them.",
+            "through": {
+              "chapter": 257
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hhhh"
+      }
+    },
     "high-fidelity-nick-hornby": {
       "characters": {
         "characters": [
