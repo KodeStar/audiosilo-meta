@@ -2741,6 +2741,91 @@
         "work": "the-outsiders"
       }
     },
+    "the-overcoat": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Akaky Akakievich"
+            ],
+            "description": "A low-ranking civil servant in a government department in Saint Petersburg. His entire working life centers on copying documents, a task he performs with care and genuine pleasure. Poor, quiet, and socially defenseless, he endures his colleagues' ridicule with little resistance and has almost no life beyond his handwriting and routine.",
+            "id": "akaky-akakievich-bashmachkin",
+            "name": "Akaky Akakievich Bashmachkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The tailor Akaky consults about his threadbare cloak. Formerly a serf, he has one damaged eye, drinks heavily on holidays, and becomes immovable about professional matters when sober. He declares the old garment beyond repair and insists that Akaky must pay for a new overcoat.",
+            "id": "petrovich",
+            "name": "Petrovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akaky's elderly landlady, who rents him his modest room and is one of the few people connected to his private life. After his overcoat is stolen, she advises him to seek help through the police rather than rely on the local watchman.",
+            "id": "landlady",
+            "name": "Akaky's landlady",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior official approached after ordinary efforts to recover Akaky's stolen coat fail. Recently promoted and anxious to display the dignity of his rank, he relies on ceremony and intimidation. He rebukes the frightened clerk instead of attending to the request for help.",
+            "id": "important-person",
+            "name": "The important person",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A comparatively new employee in Akaky's department. He initially joins the other clerks in mocking the copyist, but Akaky's distressed appeal makes him recognize the cruelty beneath their amusement and alters how he sees his colleagues.",
+            "id": "young-clerk",
+            "name": "The young clerk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-overcoat"
+      },
+      "recaps": {
+        "ending": "After the important person humiliates him, Akaky becomes feverish and dies. His death barely disturbs the department, which soon fills his position. Reports then spread of a dead clerk haunting Saint Petersburg and tearing overcoats from passersby. The important person feels some remorse and decides to inquire after Akaky, only to learn that he is dead. Later, while traveling to an evening engagement, the official is confronted by the apparition, which recognizes him and takes his expensive coat. The shock makes the official more restrained with his subordinates. Sightings of the small clerk-like ghost cease after it has obtained that coat, though a larger and more threatening apparition is subsequently reported elsewhere in the city, leaving the supernatural explanation deliberately unsettled.",
+        "in_short": "Akaky Akakievich Bashmachkin is an impoverished Saint Petersburg clerk devoted to copying documents and ignored or mocked by his colleagues. When his old cloak can no longer be repaired, he makes severe economies to commission a new overcoat from the tailor Petrovich. The garment briefly transforms how others treat him, and coworkers celebrate it at a party, but thieves seize it on his walk home. Police efforts lead nowhere. A senior official concerned with displaying his rank angrily dismisses Akaky's plea for help. Akaky falls ill after the encounter and dies, almost unnoticed by his department. Soon a ghost said to be the dead clerk begins stealing coats throughout the city. It finally confronts the important person and takes his overcoat, after which that official behaves less harshly and sightings of Akaky's apparition stop.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Akaky Akakievich Bashmachkin holds a minor post in a Saint Petersburg department and finds contentment in copying official papers. His coworkers make him a target of jokes, but he rarely protests. Winter exposes the failure of his worn cloak. The tailor Petrovich refuses to patch it again, forcing Akaky to save for a new overcoat by cutting his already meager expenses. The finished garment brings warmth, pride, and sudden attention from colleagues, who draw him to an evening party in its honor. On the way home, robbers take it from him. Neither a watchman nor the police restore it. Through a colleague, Akaky reaches a high-ranking official, but the man uses the interview to demonstrate his authority and frightens Akaky away. Akaky becomes gravely ill and dies soon afterward, with little notice at work. A coat-stealing ghost then troubles the city. The important person, belatedly remorseful, encounters the apparition and loses his own fine overcoat to it. His conduct toward subordinates softens, and the ghost identified with Akaky is no longer seen.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-overcoat"
+      }
+    },
     "the-overlook": {
       "characters": {
         "characters": [
@@ -4268,6 +4353,242 @@
         "work": "the-phantom-of-the-opera-with-ebook"
       }
     },
+    "the-pickwick-papers": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The founder and president of the Pickwick Club, a prosperous retired businessman whose round spectacles and immense curiosity accompany him on journeys to observe English life. He is trusting, dignified, and easily drawn into misunderstandings, yet his generosity and loyalty become the moral center of the club's comic adventures.",
+            "id": "samuel-pickwick",
+            "name": "Samuel Pickwick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sam"
+            ],
+            "description": "A quick-witted young boot cleaner at the White Hart Inn. His alertness, practical sense, and gift for vivid comparisons impress Mr. Pickwick, who decides that such a capable servant would be useful on his travels.",
+            "id": "samuel-weller",
+            "name": "Samuel Weller",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger member of the Pickwick Club who presents himself as a sportsman despite having little command of horses, guns, skates, or other athletic pursuits. His efforts to preserve that reputation repeatedly produce accidents and embarrassment.",
+            "id": "nathaniel-winkle",
+            "name": "Nathaniel Winkle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pickwickian who regards himself as a poet and carefully observes scenes that might inspire verse, though he is seldom shown writing any. Quiet and romantic, he travels with Pickwick, Tupman, and Winkle as the club's chronicler of poetic feeling.",
+            "id": "augustus-snodgrass",
+            "name": "Augustus Snodgrass",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stout, middle-aged Pickwickian devoted to romance. He readily falls in love and approaches courtship with confidence out of proportion to his success, making him particularly vulnerable to jealousy and manipulation.",
+            "id": "tracy-tupman",
+            "name": "Tracy Tupman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A thin, flashy traveling actor who speaks in clipped bursts and rapidly invents impressive stories. He joins the Pickwickians after helping them out of a street quarrel and appears worldly, amusing, and useful, though his borrowed clothes and casual claims make his reliability uncertain.",
+            "id": "alfred-jingle",
+            "name": "Alfred Jingle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jingle's servant, who presents himself to Pickwick as a miserable dependent eager to expose his master's wrongdoing. His humble manner and apparent distress make his warnings seem credible when the Pickwickians encounter Jingle again.",
+            "id": "job-trotter",
+            "name": "Job Trotter",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The warm, boisterous owner of Manor Farm at Dingley Dell. He welcomes the Pickwickians into a large household of relatives, friends, servants, and animals, and enjoys practical jokes, sport, food, and company.",
+            "id": "mr-wardle",
+            "name": "Mr. Wardle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Wardle's unmarried sister. Past youth but still eager for romance, she receives Tupman's attention at Dingley Dell and becomes the focus of a rivalry when Jingle recognizes an opportunity.",
+            "id": "rachel-wardle",
+            "name": "Rachel Wardle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Mr. Wardle's daughters at Dingley Dell. Her warmth and good sense attract Snodgrass, whose poetic temperament becomes more practical whenever she is near.",
+            "id": "emily-wardle",
+            "name": "Emily Wardle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Pickwick's widowed landlady. When he awkwardly explains that he intends to bring another man into the household as a servant, she mistakes his words for a marriage proposal and faints in his arms just as several friends enter.",
+            "id": "martha-bardell",
+            "name": "Mrs. Bardell",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, brisk attorney who acts for Mr. Wardle and becomes Mr. Pickwick's legal adviser. Familiar with elections, settlements, and the less dignified realities of the law, he repeatedly gives practical counsel that Pickwick's sense of honor does not always allow him to accept.",
+            "id": "mr-perker",
+            "name": "Mr. Perker",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the attorneys representing Mrs. Bardell in her breach-of-promise action. With his partner Fogg, he treats the misunderstanding as profitable business and pursues Pickwick through formal notices, witnesses, and costs.",
+            "id": "mr-dodson",
+            "name": "Mr. Dodson",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Tony Weller"
+            ],
+            "description": "Sam Weller's father, a veteran coachman with strong opinions about marriage, widows, lawyers, and temperance advocates. He is proud of Sam and quickly recognizes Mr. Pickwick as a master worthy of his son's loyalty.",
+            "id": "mr-weller-senior",
+            "name": "Mr. Weller Senior",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sister of Benjamin Allen and a pupil at a girls' school near Bury St. Edmunds. Winkle first hears of her through her brother and Bob Sawyer, who assume that family friendship gives Bob a claim on her affection.",
+            "id": "arabella-allen",
+            "name": "Arabella Allen",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical student and friend of Benjamin Allen. Sociable, noisy, and chronically short of money, he invites the Pickwickians into the disorder of his lodgings and expects eventually to marry Benjamin's sister Arabella.",
+            "id": "bob-sawyer",
+            "name": "Bob Sawyer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pickwick-papers"
+      },
+      "recaps": {
+        "ending": "Pickwick uses his money and influence to repair much of the harm accumulated during the journeys. He pays the legal costs that free Mrs. Bardell and himself from the Fleet, helps Winkle and Arabella reconcile with her brother and Winkle's father, and assists the destitute Jingle and Job Trotter in making a new start in the West Indies. Snodgrass marries Emily after Mr. Wardle's resistance is overcome. Tony Weller exposes Stiggins, settles his affairs after his wife's death, and rejects retirement in favor of continuing to work. The Pickwick Club is dissolved as its members enter settled domestic lives. Pickwick retires to a house at Dulwich, where he remains a loved friend to the younger families. Sam marries Mary but refuses to leave his master, so the couple stays in Pickwick's household. The adventures end with Pickwick surrounded by the people whose lives his loyalty and generosity have improved.",
+        "in_short": "Samuel Pickwick forms a traveling club with Winkle, Snodgrass, and Tupman, whose attempts to study English life lead through elections, country visits, romantic mistakes, and repeated encounters with the scheming actor Alfred Jingle. Pickwick hires the resourceful Sam Weller, who becomes his devoted servant and practical guide. A misunderstood conversation with his landlady, Mrs. Bardell, produces a breach-of-promise suit. After losing at trial, Pickwick refuses on principle to pay and is imprisoned for debt in the Fleet, where he sees the human cost of the legal system and finds Jingle and Job Trotter destitute. He ultimately pays the costs to free Mrs. Bardell, helps Jingle and Job emigrate, and reconciles several young couples. Winkle marries Arabella Allen, Snodgrass marries Emily Wardle, and Sam marries Mary while remaining with Pickwick. The club dissolves, and Pickwick retires to Dulwich as the benevolent center of the extended community created by the journeys.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Samuel Pickwick establishes a corresponding society whose traveling members are Nathaniel Winkle, Augustus Snodgrass, Tracy Tupman, and himself. Their first expedition quickly turns chaotic: a cabman's suspicions lead to a fight, and a fast-talking stranger named Alfred Jingle helps them escape. Jingle then borrows Winkle's coat, creating a misunderstanding with an army doctor that nearly ends in a duel. At Rochester, the Pickwickians attend military exercises and meet the hospitable Mr. Wardle, who invites them to Manor Farm at Dingley Dell. The visit includes hazardous attempts at riding and driving, a card party, stories told by the company, and a shooting expedition that exposes Winkle's lack of sporting skill. A cricket match brings Dingley Dell together with the rival All-Muggleton club, while Jingle remains an entertaining but disruptive companion. Tupman begins courting Wardle's sister Rachel, and Snodgrass is drawn to Wardle's daughter Emily.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pickwick Club's journey begins with mishaps around Rochester and a visit to Mr. Wardle's household at Dingley Dell. The actor Alfred Jingle, first welcomed as an amusing traveler, takes advantage of Tupman's courtship of Rachel Wardle and elopes with her. Pickwick and Wardle pursue the couple to London and stop the marriage by paying Jingle to abandon it, establishing a lasting hostility between him and Pickwick. Back at his London lodgings, Pickwick tells Mrs. Bardell that he plans to hire a servant. She mistakes the awkward conversation for a proposal, collapses into his arms, and is discovered there by the other Pickwickians. Unaware of the legal consequences, Pickwick continues to Eatanswill, where rival political parties conduct a corrupt and disorderly election. Mr. Perker guides him through the contest. At a literary public breakfast, Pickwick unexpectedly recognizes Jingle, who has attached himself to another wealthy circle, and resolves to expose him before he can exploit anyone else.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pickwick's attempt to expose Jingle is defeated by Job Trotter, Jingle's servant, who gains his sympathy with tears and a false warning. The resulting pursuit leaves Pickwick trapped at night in the grounds of a girls' school and makes him look like an intruder. He is also formally notified that Mrs. Bardell is suing him for breach of promise, represented by Dodson and Fogg. Pickwick indignantly rejects any settlement, while his new servant Sam Weller supplies the practical intelligence that the Pickwickians lack. Sam meets his father Tony, a coachman whose second wife is under the influence of the hypocritical temperance preacher Mr. Stiggins. During a journey to Ipswich, Pickwick accidentally enters the wrong hotel bedroom and encounters a middle-aged woman in curl papers. Her admirer, Peter Magnus, sees the aftermath and assumes the worst. Jealous accusations and a confused confrontation bring Pickwick, Tupman, and Snodgrass before the local authorities, with Sam preparing to uncover the trick that has complicated matters further.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Ipswich, Sam exposes Jingle and Job Trotter, who have been deceiving the magistrate Mr. Nupkins and courting his daughter under false pretenses. The discovery clears the Pickwickians and forces the pair to flee again. The action brought by Mrs. Bardell continues toward trial. Sam visits his father's home and sees how Mr. Stiggins exploits Mrs. Weller's religious enthusiasm for food, drink, and influence. The Pickwickians then return to Dingley Dell for Christmas, joining feasts, games, dancing, and the wedding of Wardle's daughter Isabella to Mr. Trundle. A tale of a bitter sexton carried away by goblins reinforces the season's movement toward fellowship. The visitors meet medical students Benjamin Allen and Bob Sawyer. Winkle learns of Benjamin's sister Arabella and becomes interested in her, despite the expectation that she will marry Bob. On the ice, Winkle's claims of skill once again collapse, and Pickwick himself falls through before being rescued. By the end of the holiday, the travelers' comic adventures have become entangled with serious courtship and the approaching lawsuit.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The case of Bardell against Pickwick reaches court. Dodson and Fogg use Mrs. Bardell's friends, Pickwick's unfortunate notes, and the witnesses to her collapse to turn a misunderstanding into a convincing promise of marriage. The speech for the plaintiff presents innocent phrases as romantic evidence, and the jury awards damages against Pickwick. He refuses to pay either the judgment or the attorneys' costs, accepting the risk of debtor's prison rather than endorse what he considers a fraud. Before the consequences arrive, the Pickwickians travel to Bath, where social ceremonies create new embarrassments. Winkle's attention is fixed on Arabella Allen, and he leaves the party to pursue her, placing himself at odds with her brother Benjamin and Bob Sawyer. Sam, meanwhile, handles private errands for his master and advances his own courtship of Mary, a servant at Dingley Dell. Pickwick's loyalty to his friends remains firm, but his legal defeat and stubborn sense of honor now threaten his freedom.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Because he will not pay the judgment in Mrs. Bardell's case, Pickwick is committed to the Fleet Prison. The comic travels give way to his close view of debtors trapped by fees, poverty, and hopeless legal proceedings. He encounters Alfred Jingle and Job Trotter there in severe distress. Although they repeatedly deceived him, he gives them food and aid. Sam refuses to abandon his master and arranges to be arrested for a supposed debt so that he can enter the Fleet as a prisoner and continue serving him. Pickwick is moved by the loyalty but announces that he will not allow Sam to sacrifice his own life indefinitely. He withdraws from much of the prison's society after seeing how confinement degrades its inhabitants. At the same time, Winkle is behaving secretly outside the prison, and the reason for his disappearance remains unclear to his friends. Pickwick's original refusal to compromise has become a test not merely of pride but of how to act justly when other people are suffering alongside him.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winkle reappears and reveals that he has married Arabella Allen without the consent of her brother or his own father. Pickwick's concern for the couple proves stronger than his anger at being kept uninformed. He leaves the Fleet after arranging payment of the Bardell judgment and costs, a decision made when Mrs. Bardell herself is imprisoned for the legal fees owed to Dodson and Fogg and asks his forgiveness. He then works to reconcile the newlyweds with Benjamin Allen and Bob Sawyer. The mission gains unexpected help from Arabella's loyal servant and from people who recognize Pickwick's good intentions. In the Weller household, Mrs. Weller dies and leaves Tony responsible for settling her affairs. The preacher Stiggins attempts to secure his own advantage, but Tony finally exposes his drinking and greed and drives him away. Pickwick also continues helping Jingle and Job Trotter, treating their collapse as an opportunity for reform rather than revenge. The club's adventures are moving toward permanent marriages, reconciliations, and farewells.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pickwick completes the settlements created by the journeys. Through Mr. Perker he provides Jingle and Job Trotter with the means to emigrate to the West Indies, where later reports say they establish respectable lives. He helps secure acceptance of Winkle and Arabella's marriage from both families. Snodgrass and Emily Wardle's concealed attachment is revealed; after resistance and confusion, Mr. Wardle consents and they marry. Tony Weller settles the estate left by his wife and refuses an idle retirement, preferring to remain a coachman. Pickwick decides that the original purpose of the traveling club has run its course and dissolves it. He takes a house at Dulwich and becomes a regular, beloved presence in the lives of the married couples and their children. Sam marries Mary, but neither marriage nor an offer of independence will persuade him to leave Pickwick, so the Wellers remain in his household. Pickwick's curiosity began the travels, but his kindness creates their lasting result: a broad circle of friends and families held together after the comic disputes have ended.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pickwick-papers"
+      }
+    },
     "the-picture-of-dorian-gray": {
       "characters": {
         "characters": [
@@ -4397,6 +4718,146 @@
           }
         ],
         "work": "the-picture-of-dorian-gray"
+      }
+    },
+    "the-picture-of-dorian-gray-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A remarkably handsome young man whose portrait Basil Hallward is painting. At first inexperienced and open-hearted, he becomes newly conscious of his youth and beauty after meeting Lord Henry Wotton.",
+            "id": "dorian-gray",
+            "name": "Dorian Gray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A serious artist who regards his portrait of Dorian as his finest work. He is deeply attached to Dorian and worries that Lord Henry's clever, cynical ideas will have a damaging influence on him.",
+            "id": "basil-hallward",
+            "name": "Basil Hallward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harry"
+            ],
+            "description": "Basil's worldly friend, a wealthy and persuasive aristocrat who delights in provocative theories about pleasure, morality, and society. His praise of youth and beauty immediately fascinates Dorian.",
+            "id": "lord-henry-wotton",
+            "name": "Lord Henry Wotton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful young actress performing in a poor London theatre. Dorian falls in love with the heroines she portrays before he knows her well outside the theatre, while she sees him as a romantic figure from a different world.",
+            "id": "sibyl-vane",
+            "name": "Sibyl Vane",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sibyl's protective brother, preparing to leave England as a sailor. Suspicious of the unknown gentleman courting his sister, he makes clear that he will defend her if she is harmed.",
+            "id": "james-vane",
+            "name": "James Vane",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sibyl and James's mother, a former actress concerned with the family's debts and her daughter's future. She is more impressed than James by the wealth and position of Sibyl's admirer.",
+            "id": "mrs-vane",
+            "name": "Mrs Vane",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A scientist who was once close to Dorian but now wants no association with him. Dorian seeks him out because his chemical knowledge can solve an urgent and disturbing problem.",
+            "id": "alan-campbell",
+            "name": "Alan Campbell",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman from a country village whom Dorian has been courting. He presents his decision not to take advantage of her affection as evidence that he may still be able to change his life.",
+            "id": "hetty-merton",
+            "name": "Hetty Merton",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-picture-of-dorian-gray-adaptation"
+      },
+      "recaps": {
+        "ending": "After James Vane's accidental death removes the immediate threat to him, Dorian decides that he will become good. He tells Lord Henry that he has spared a village girl named Hetty Merton, but Henry doubts that this single act proves any real reform. Dorian examines the portrait, expecting it to improve, and instead sees fresh evidence of hypocrisy. Believing the picture to be the last witness to his crimes, he takes the knife used against Basil and stabs it. His servants hear a cry and enter the locked room. The portrait has recovered its original image of the beautiful young Dorian, while an aged and repellent dead man lies on the floor with the knife in his heart. The servants identify the body as Dorian only by its rings.",
+        "in_short": "Artist Basil Hallward paints a portrait of the beautiful young Dorian Gray. Influenced by Lord Henry Wotton's worship of youth, Dorian wishes that the picture would age in his place. The wish comes true: after he cruelly rejects the actress Sibyl Vane and she dies, the portrait changes while his face remains young. Dorian hides it and spends years pursuing pleasure while the picture records his corruption. When Basil confronts him, Dorian shows him the portrait and kills him, then forces Alan Campbell to destroy the body. Sibyl's brother James seeks revenge but dies accidentally before reaching him. Dorian attempts a shallow reform and discovers that the portrait also exposes his hypocrisy. He stabs it, hoping to destroy the evidence. Instead Dorian dies as an old, disfigured man, while the portrait returns to its original beauty.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In his London studio, Basil Hallward completes a portrait of his beautiful young friend Dorian Gray. Basil's visitor Lord Henry Wotton meets Dorian and argues that youth and beauty matter more than conventional virtue. Dorian is captivated and suddenly fears growing old. When he sees Basil's finished painting, he wishes that it could bear the signs of age while he remained young. Basil gives him the portrait, though he dislikes Lord Henry's growing influence over him.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorian becomes a close companion of Lord Henry and absorbs his fascination with beauty, sensation, and self-indulgence. The portrait hangs in Dorian's home as a reminder of the wish he made in Basil's studio. Basil remains uneasy about the friendship, believing Lord Henry treats influence as an experiment and may lead the inexperienced Dorian away from his better nature.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorian falls in love with Sibyl Vane, a gifted young actress in a shabby theatre, and becomes engaged to her. Her brother James distrusts the wealthy admirer she calls her prince and vows to punish him if she is hurt before leaving as a sailor. When Dorian brings Basil and Lord Henry to see Sibyl act, her performance is suddenly poor: real love has made theatrical passion seem false to her. Humiliated, Dorian rejects her cruelly. At home he notices that the portrait's expression has changed. He decides to apologize, but Lord Henry arrives with news that Sibyl has died. Dorian allows Henry to recast the death as a beautiful tragedy and chooses not to examine his own responsibility too closely.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorian conceals the altered portrait in a locked room and spends years pursuing new sensations while remaining outwardly young. Rumors spread about ruined friendships and damaged lives, but his unchanged appearance helps him escape their consequences. The portrait grows older and more corrupt in his place. Basil confronts Dorian before leaving London and urges him to answer the accusations. Dorian shows him the hidden picture, then kills him in a burst of rage. He summons the scientist Alan Campbell and, using a secret as leverage, forces him to use chemicals to dispose of Basil's body. The portrait now bears further signs of Dorian's crime.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "James Vane returns and hunts the man responsible for Sibyl's death. Dorian initially escapes by pointing to his youthful face: after so many years, he cannot appear old enough to be Sibyl's former lover. James later learns that Dorian's appearance has not changed and follows him to his country estate, but is accidentally shot and killed during a hunt. Relieved, Dorian claims he will reform and tells Lord Henry that he has spared a village girl, Hetty Merton. The portrait shows hypocrisy rather than improvement. Dorian tries to destroy it with the knife that killed Basil. His servants find the portrait restored to its original beauty and an old, hideous man dead beneath it. They recognize Dorian's body only from his rings.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-picture-of-dorian-gray-adaptation"
       }
     },
     "the-pillars-of-the-earth": {
@@ -5407,6 +5868,186 @@
           }
         ],
         "work": "the-portrait-of-a-lady"
+      }
+    },
+    "the-power": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A teenage girl from a London crime family who discovers an exceptionally strong electrical power when men attack her mother's home. Bold, practical, and already familiar with violence, she is unable to save her mother but becomes determined to identify who ordered the killing.",
+            "id": "roxy-monke",
+            "name": "Roxy Monke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A foster child living under the control of an abusive guardian. An inner voice coaches her to use her newly awakened power, offering the certainty and protection she has never received from the adults around her.",
+            "id": "allie-montgomery-taylor",
+            "name": "Allie Montgomery-Taylor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Nigerian man who records a girl's first public display of the power and uploads the video. The attention it receives gives him a vocation as a reporter documenting the rapidly changing relations between women and men around the world.",
+            "id": "tunde-edo",
+            "name": "Tunde Edo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An ambitious American mayor and the mother of two daughters. She responds to the emergence of the power as both a parent concerned for Jocelyn and a politician alert to how a change in physical power will reshape public authority.",
+            "id": "margot-cleary",
+            "name": "Margot Cleary",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Margot's older daughter, whose electrical ability develops unpredictably. Her difficulty controlling it leaves her isolated at the same time that public culture increasingly treats the power as the defining sign of female confidence.",
+            "id": "jocelyn-cleary",
+            "name": "Jocelyn Cleary",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roxy's father, a powerful London criminal whose organization extends protection to her after her mother's murder. He recognizes the value of her extraordinary ability but continues to conduct family relationships through hierarchy, secrecy, and business advantage.",
+            "id": "bernie-monke",
+            "name": "Bernie Monke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roxy's older half-brother and a member of Bernie Monke's organization. He lacks the new physical advantage women possess and must renegotiate his standing within both the family and its criminal business.",
+            "id": "darrell-monke",
+            "name": "Darrell Monke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A London crime boss and rival of Bernie Monke. The attack on Roxy's mother is traced to her organization, making her the first target of Roxy's search for revenge.",
+            "id": "primrose",
+            "name": "Primrose",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The nun responsible for a convent that shelters girls. She gives Allie refuge and watches a new religious movement take shape around claims that the power has revealed a female aspect of divinity.",
+            "id": "sister-maria-ignacia",
+            "name": "Sister Maria Ignacia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The glamorous wife of Moldova's authoritarian president. Treated as an ornament and subjected to his violence, she observes the arrival of the power in a country where women have been systematically exploited.",
+            "id": "tatiana-moskalev",
+            "name": "Tatiana Moskalev",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy Jocelyn meets at a training camp for young people learning to control electrical ability. He has a skein and can use the power, a circumstance that complicates the increasingly rigid division of society into powerful women and vulnerable men.",
+            "id": "ryan",
+            "name": "Ryan",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The presence Allie hears within her mind. It offers tactical advice, interprets events as proof of Allie's special purpose, and encourages her to turn private survival into public religious authority.",
+            "id": "the-voice",
+            "name": "The Voice",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-power"
+      },
+      "recaps": {
+        "ending": "The new order reproduces and intensifies many of the abuses it displaced. In Bessapara, Tatiana's rule becomes erratic and murderous, while Mother Eve's inner voice presses her toward a cleansing global conflict. Roxy, betrayed by her own family and robbed of her skein for Darrell's benefit, eventually takes her power back but rejects Eve's effort to control her. Tatiana is killed during the struggle around Eve, and Bessapara collapses into war. Tunde's years of reporting leave him endangered and dispossessed of control over his own account. Margot, having risen through American politics, accepts catastrophic violence as the route to a stable female-led future. Nations use nuclear and conventional weapons, destroying existing civilization and killing on an immense scale. The framing correspondence occurs thousands of years later, when male author Neil Adam Armon sends this historical novel to Naomi Alderman. Their exchange reveals a society that considers female dominance natural and treats the old patriarchal world as implausible; Naomi even suggests that Neil use a woman's name to help the book find readers.",
+        "in_short": "Girls develop organs called skeins that let them discharge electricity, and they can awaken the same ability in older women. Roxy Monke uses her exceptional strength within a London crime family; abused foster child Allie becomes the religious leader Mother Eve; Tunde Edo documents the worldwide reversal in physical power; and Mayor Margot Cleary converts the change into political advancement while her daughter Jocelyn struggles to control it. Revolt liberates women from violent regimes, but new institutions soon normalize the humiliation and exploitation of men. Tatiana Moskalev seizes Moldova and creates Bessapara, where Mother Eve becomes influential. Roxy's family steals her skein for her brother, and she later reclaims it. As Bessapara fragments and Eve's guiding voice demands a decisive reset, Margot and other leaders permit global war. Civilization is destroyed and rebuilt as a matriarchy. Millennia later, that society regards the former dominance of men as almost unbelievable.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A manuscript framed as a historical novel begins near the emergence of a new biological ability. Teenage girls develop skeins that produce controlled electrical shocks, and can awaken dormant skeins in adult women. In London, Roxy Monke shocks one of the men murdering her mother but cannot prevent the killing. In the United States, abused foster child Allie listens to an inner voice that teaches her how to turn her power against her guardian, then runs away. In Nigeria, Tunde Edo films Enuma demonstrating the ability and becomes associated with footage that spreads around the world. Mayor Margot Cleary tries to manage the political response while concealing her own awakened power and worrying about her daughter Jocelyn, whose control is unreliable. What first appears to be a series of isolated incidents is becoming a permanent reversal in who can most easily inflict physical force.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Allie finds safety at a convent and remakes herself as Mother Eve, claiming that the power reveals a female form of God. Her apparent insight and ability to demonstrate control draw followers, while the voice in her mind continues to guide her. Roxy investigates her mother's death and enters the Monke family's criminal operations, where her unusually strong power makes her valuable. Tunde begins traveling as a journalist, recording uprisings and the mixture of liberation, fear, and retaliation surrounding the change. Margot promotes training programs that publicly promise safety while privately giving her a political base. In Moldova, women trafficked and abused under President Moskalev's regime revolt. His wife Tatiana, herself a victim of his violence, uses the upheaval to move from ceremonial first lady toward actual rule.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The power is now embedded in institutions. Margot's initiatives help propel her into higher office, even as Jocelyn's uneven ability makes the family's private life harder and an incident at a training camp reveals how dangerous enforced confidence can be. Jocelyn forms a bond with Ryan, a boy who can use the power, placing both of them outside the simple categories promoted by the new culture. Mother Eve's movement expands internationally and develops doctrine, ceremony, and political influence. Roxy helps distribute a drug that amplifies electrical ability, extending the Monke business across borders. Tatiana establishes the new state of Bessapara in former Moldova. Initially presented as a refuge for women, it increasingly restricts men and uses gendered violence as an instrument of state power. Tunde's reporting shows that freedom from male domination has not ended domination itself.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mother Eve joins Tatiana in Bessapara and becomes a spiritual authority within the new regime. Their alliance is unstable: Eve needs state protection, while Tatiana wants religious approval and grows increasingly suspicious and cruel. Reports of assaults on men are minimized or treated as deserved reversals. Tunde enters dangerous conflicts to document what the official narratives omit and finds that his sex now makes him both vulnerable and easy to discredit. Roxy's international operation and connection to Eve give her influence independent of her father. Margot continues to rise by presenting herself as a disciplined manager of the changed world, but political calculation repeatedly takes priority over Jocelyn's needs. Across these stories, the power has ceased to be a novelty; it now supports laws, markets, faiths, and national myths that portray female control as inevitable.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The alliances sustaining the new order begin to fracture. Tatiana's government turns openly repressive and her behavior becomes unpredictable. Mother Eve's voice urges her to interpret escalating violence as necessary to a larger purpose. Within the Monke family, Bernie and Darrell betray Roxy: her skein is surgically removed and transplanted into Darrell, giving a man access to the ability and leaving Roxy without the physical force on which her status had come to depend. She survives, learns that she can still perceive the electrical currents in others, and ultimately takes her power back from Darrell. The betrayal ends her loyalty to the criminal empire that had claimed to protect her. Tunde also finds that documenting history does not guarantee ownership or safety; as war approaches, the testimony he gathered can be appropriated by people with more institutional power.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bessapara descends into internal violence and international war. Tatiana is killed amid the struggle around Mother Eve, but Eve does not establish a humane alternative. Guided by the voice, she accepts the idea that only a devastating break can secure the new order. Roxy refuses to submit to Eve and escapes. Margot and other political leaders likewise choose escalation, reasoning that destruction will allow society to be rebuilt on terms they can control. The resulting global conflict uses nuclear weapons and collapses modern civilization, killing on a vast scale. Thousands of years later, the manuscript's frame returns: Neil Adam Armon has written this account for Naomi Alderman in a settled matriarchal culture. Naomi questions whether men could ever have held the authority the novel gives them and suggests Neil publish under a woman's name. The exchange shows how completely contingent power has been recast as timeless biological destiny.",
+            "through": {
+              "chapter": 48
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-power"
       }
     },
     "the-power-of-six": {

@@ -1722,6 +1722,219 @@
         "work": "the-best-christmas-pageant-ever"
       }
     },
+    "the-big-sleep-raymond-chandler": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A private detective in Los Angeles, hired by the wealthy and ailing General Sternwood to stop a blackmailer targeting his younger daughter. Marlowe is observant, stubborn, and unwilling to abandon a case merely because his client has not told him everything.",
+            "id": "philip-marlowe",
+            "name": "Philip Marlowe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elderly, severely ill oil millionaire who receives Marlowe in the overheated orchid house at his estate. He asks the detective to deal with Arthur Geiger's attempt to extort money over Carmen and also speaks with affection of Rusty Regan, his vanished son-in-law.",
+            "id": "general-sternwood",
+            "name": "General Sternwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Sternwood's younger daughter, a beautiful and impulsive young woman whom Marlowe meets in the entrance hall. She behaves flirtatiously and childishly, and her involvement with Arthur Geiger is the immediate cause of Marlowe's employment.",
+            "id": "carmen-sternwood",
+            "name": "Carmen Sternwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sternwood family's formal and capable butler. He receives Marlowe at the mansion, manages access to the general, and discreetly keeps the household functioning amid the family's troubles.",
+            "id": "norris",
+            "name": "Norris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mrs. Regan"
+            ],
+            "description": "General Sternwood's elder daughter and Rusty Regan's wife. Intelligent, poised, and direct, she questions Marlowe about why her father hired him and suspects that the investigation concerns her missing husband rather than Carmen's blackmailer.",
+            "id": "vivian-regan",
+            "name": "Vivian Regan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dealer in rare books whose expensive shop also serves a concealed, disreputable trade. His demand for payment from General Sternwood over Carmen places him at the center of Marlowe's first assignment.",
+            "id": "arthur-geiger",
+            "name": "Arthur Geiger",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The blonde clerk at Geiger's shop. She is guarded when Marlowe poses as a book collector and appears to understand that the shop's public business is a front for something else.",
+            "id": "agnes-lozelle",
+            "name": "Agnes Lozelle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A detective in the district attorney's office and an old professional contact of Marlowe's. He gives Marlowe official information when he can and acts as a practical link between the private investigation and the police.",
+            "id": "bernie-ohls",
+            "name": "Bernie Ohls",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished nightclub owner and gambler who owns the house in which Geiger operated. He arrives while Marlowe is searching it and takes a cool, proprietary interest in the detective's questions about Geiger and Rusty Regan.",
+            "id": "eddie-mars",
+            "name": "Eddie Mars",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small-time criminal connected to both Agnes and Geiger's illicit business. Marlowe tracks him down after evidence taken from Geiger's house begins circulating as a fresh means of blackmail.",
+            "id": "joe-brody",
+            "name": "Joe Brody",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Geiger's intensely loyal young companion. He follows the upheaval surrounding Geiger's death and acts violently against the man he believes responsible.",
+            "id": "carol-lundgren",
+            "name": "Carol Lundgren",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A police investigator assigned to missing-person cases. He tells Marlowe what the authorities have learned about Rusty Regan and explains why they are not convinced that Regan met with violence.",
+            "id": "captain-gregory",
+            "name": "Captain Gregory",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A slight, shabby criminal associate of Agnes who approaches Marlowe with information for sale. His devotion to Agnes makes him useful to her, while his unease around Eddie Mars's organization shows how dangerous the inquiry has become.",
+            "id": "harry-jones",
+            "name": "Harry Jones",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruthless gunman working for Eddie Mars. He pursues the trail leading toward Mars's missing wife and is prepared to use kidnapping and murder to prevent Marlowe from following it.",
+            "id": "lash-canino",
+            "name": "Lash Canino",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Silver-Wig"
+            ],
+            "description": "Eddie Mars's wife, whom police believe ran away with Rusty Regan. Marlowe instead finds her hidden under guard, a discovery that casts doubt on the accepted story of both disappearances.",
+            "id": "mona-mars",
+            "name": "Mona Mars",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-big-sleep-raymond-chandler"
+      },
+      "recaps": {
+        "ending": "After surviving Canino and discovering that Mona Mars was hidden rather than traveling with Regan, Marlowe returns to the Sternwoods determined to resolve the remaining mystery. Carmen asks him to teach her to shoot at the family's abandoned oil field, then fires at him with a pistol he has secretly loaded with blanks. Her collapse after the attempt confirms the pattern he suspected. Marlowe confronts Vivian, who admits that Carmen killed Rusty Regan after he rejected her advances. Vivian turned to Eddie Mars for help; Mars concealed Regan's body in an oil sump and then used the secret to control her and profit from her gambling. Marlowe agrees to keep the truth from General Sternwood if Carmen is placed in secure psychiatric care and taken away. The official mysteries therefore remain unresolved, Mars remains at large, and the general is spared knowledge of Regan's fate. Marlowe leaves thinking of Regan dead beneath the oil field and of Mona Mars, whose loyalty was exploited by her husband.",
+        "in_short": "Los Angeles private detective Philip Marlowe is hired by dying millionaire General Sternwood to stop Arthur Geiger from blackmailing the family over Carmen Sternwood. Geiger is murdered, compromising photographs of Carmen disappear, and the investigation exposes a chain of blackmailers and criminals. Marlowe clears away the immediate Geiger case but continues looking into the disappearance of Rusty Regan, husband of Carmen's elder sister Vivian. Gangster Eddie Mars appears connected to Regan's supposed flight with Mars's wife Mona. After Mars's gunman kills an informant and captures Marlowe, Mona helps the detective escape and Marlowe kills the gunman. He eventually discovers that Mona never fled with Regan: Carmen killed Regan after he rejected her, Vivian had Mars hide the body, and Mars has blackmailed Vivian ever since. Marlowe promises silence if Carmen is institutionalized, protecting the ailing general from the truth while leaving Mars unpunished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Private detective Philip Marlowe visits the Sternwood mansion, where elderly General Sternwood hires him to stop Arthur Geiger from demanding money over notes signed by the general's younger daughter, Carmen. The general has endured an earlier blackmail attempt involving a man named Joe Brody. He also misses Rusty Regan, the former bootlegger who married his elder daughter Vivian and disappeared about a month earlier, though finding Regan is not Marlowe's stated assignment. Carmen behaves provocatively when Marlowe arrives. Vivian later questions him and assumes her father really wants Regan found, but Marlowe refuses to discuss his instructions. He investigates Geiger's supposed rare-book shop, recognizes that its trade is a front, and follows Geiger home. During a rainy evening watch, Carmen enters the house while Marlowe waits outside.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shots and a scream draw Marlowe into Geiger's house. He finds Geiger dead and Carmen drugged and nearly incoherent in front of a concealed camera; its photographic plate holder is missing. Marlowe takes Carmen home and returns, only to find Geiger's body gone. Eddie Mars, a gambler who owns the house, arrives and questions him. Meanwhile the Sternwoods' chauffeur, Owen Taylor, is found dead in a car pulled from the water. Evidence suggests Taylor went to Geiger's house, took the missing photograph, and may have killed Geiger, but the circumstances of Taylor's own death are uncertain. Marlowe tries to limit the scandal around Carmen while tracking the missing evidence and whoever removed Geiger's body.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marlowe follows Geiger's clerk Agnes to Joe Brody, who has taken over Geiger's illicit stock and possesses the compromising photograph of Carmen. During Marlowe's confrontation with Brody and Agnes, Carmen arrives with a gun and demands the picture. Marlowe disarms her and recovers it. Before Brody can fully explain his part in the affair, Carol Lundgren shoots him at the apartment door, believing Brody killed Geiger. Marlowe catches Lundgren and leads the police to Geiger's concealed body. The immediate blackmail plot can now be presented as a struggle among Geiger, Taylor, Brody, and Lundgren, shielding Carmen and the Sternwood family from public exposure. Yet the explanation does not account for Rusty Regan, and Marlowe remains troubled by Eddie Mars's interest in both the family and the case.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Although the Geiger case is effectively closed, Marlowe continues to examine Regan's disappearance. He sees Vivian gambling heavily at Eddie Mars's club and helps her after an apparent robbery, but distrusts both the incident and her evasions. When she later tries to draw close to him, he rejects the attempt and presses her about Mars. Captain Gregory of the missing-persons bureau explains that the police have considered the possibility that Regan left with Mona Mars. Because the pair had reason and opportunity to disappear and no body has been found, the official investigation has stalled. Marlowe suspects the story is too convenient, particularly because Mars benefits from it and has influence over Vivian.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry Jones, a minor criminal devoted to Agnes, offers to sell Marlowe the location of Mona Mars. Mars's gunman Lash Canino follows the same lead and poisons Jones after extracting what he knows. Agnes supplies the address, which takes Marlowe to a remote repair garage. Canino and the garage owner overpower him and hold him captive, but Mona releases him. She says that she has been in hiding for her husband and denies having run away with Regan, destroying the central assumption behind the police theory. Marlowe arranges an ambush outside and kills Canino in the ensuing gunfight. He survives with proof that Mars manufactured at least part of the disappearance story, but he still does not know what happened to Regan.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marlowe returns to General Sternwood, who rebukes him for pursuing Regan after completing the job he was given. Still unwilling to leave the mystery alone, Marlowe accompanies Carmen to the abandoned Sternwood oil field after she asks him to teach her to shoot. He has loaded her pistol with blanks, and she attempts to kill him before collapsing. The attack leads him to confront Vivian with the truth. Carmen killed Rusty Regan at the oil field after he rejected her sexual advance. Vivian sought Eddie Mars's help to protect her sister and father; Mars disposed of Regan's body in an oil sump and has since blackmailed Vivian while drawing money from her at his tables. Marlowe gives Vivian a short deadline to place Carmen in secure care and take her away. In return he will not tell the police or the general. Regan remains officially missing, and Mars escapes legal consequences, while Marlowe leaves with the truth but no clean victory.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-big-sleep-raymond-chandler"
+      }
+    },
     "the-black-box": {
       "characters": {
         "characters": [

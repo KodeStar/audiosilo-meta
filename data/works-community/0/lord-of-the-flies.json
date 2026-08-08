@@ -267,6 +267,384 @@
         "work": "lords-and-ladies"
       }
     },
+    "lorna-doone": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A farmer's son from Exmoor who narrates the story from boyhood into adulthood. After his father is killed during a raid blamed on the Doones, John grows into an exceptionally strong but peaceable young man. His loyalty to his family coexists with a private attachment to Lorna, even though she lives among the clan his neighbors fear and hate.",
+            "id": "john-ridd",
+            "name": "John Ridd",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young girl John encounters in the secluded valley occupied by the Doones. She is being raised within the outlaw clan but dislikes its violence and lives under close control. Her kindness and loneliness make a lasting impression on John.",
+            "id": "lorna-doone",
+            "name": "Lorna Doone",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "John's widowed mother, who manages the Ridd household and farm after her husband's murder. Practical, devout, and protective of her children, she distrusts any connection with the Doones.",
+            "id": "sarah-ridd",
+            "name": "Sarah Ridd",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's clever younger sister. More observant and bookish than the rest of the household, she often understands the motives and dangers around the family before John does.",
+            "id": "lizzie-ridd",
+            "name": "Lizzie Ridd",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's warm-hearted younger sister, closely involved in the domestic life of Plover's Barrows. Her future becomes linked with Tom Faggus, despite the risks attached to his outlaw reputation.",
+            "id": "annie-ridd",
+            "name": "Annie Ridd",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A notorious highwayman and gifted horseman who is nevertheless a trusted friend of the Ridd family. His daring and knowledge of the countryside repeatedly make him a useful ally.",
+            "id": "tom-faggus",
+            "name": "Tom Faggus",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crown officer sent west to investigate the Doones and later the political unrest surrounding Monmouth's cause. He recognizes John's usefulness and courage, though his official plans can draw the Ridd family into danger.",
+            "id": "jeremy-stickles",
+            "name": "Jeremy Stickles",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strongest and most feared of the younger Doones, violent, possessive, and accustomed to taking what he wants. He regards Lorna as his intended wife and treats John's growing connection with her as a direct challenge.",
+            "id": "carver-doone",
+            "name": "Carver Doone",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly head of the Doone settlement and Lorna's guardian. His authority offers her some protection from the clan's younger men, but age and illness steadily weaken his control.",
+            "id": "sir-ensor-doone",
+            "name": "Sir Ensor Doone",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A calculating elder of the Doone clan whose influence rests on strategy rather than Carver's physical force. He works to preserve the family's power and is dangerous precisely because he plans beyond the immediate quarrel.",
+            "id": "counsellor-doone",
+            "name": "Counsellor Doone",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lorna's devoted attendant within the Doone valley. She helps Lorna communicate and act despite the clan's surveillance, accepting considerable personal risk.",
+            "id": "gwenny-carfax",
+            "name": "Gwenny Carfax",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's wealthy great-uncle, a shrewd and suspicious businessman. Family duty draws John into protecting him, while his household introduces John to his spirited daughter Ruth.",
+            "id": "reuben-huckaback",
+            "name": "Reuben Huckaback",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Reuben Huckaback's daughter and John's cousin. Intelligent, lively, and direct, she becomes fond of John but sees that his deepest loyalty lies elsewhere.",
+            "id": "ruth-huckaback",
+            "name": "Ruth Huckaback",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lorna-doone"
+      },
+      "recaps": {
+        "ending": "John and Lorna are finally able to marry after her recovery of her family identity and property. During the wedding, Carver Doone shoots Lorna and escapes, leaving her apparently dying. John pursues him across Exmoor and, after their confrontation, Carver is swallowed by a bog. John returns expecting the worst, but Lorna's wound is not fatal and she recovers. The destruction of the Doone stronghold and the deaths or dispersal of its leaders end the clan's domination of the district. John and Lorna settle into married life at Plover's Barrows, while the surviving members of the Ridd household also move toward peaceful domestic futures. John's public honors matter less to him than the restoration of his home and the survival of the woman he has loved since childhood.",
+        "in_short": "John Ridd grows up on Exmoor after his father is murdered in violence associated with the outlaw Doones. As a boy he enters their hidden valley and meets Lorna, a girl held within the clan; as adults they fall in love despite the feud and Carver Doone's determination to marry her. John helps Lorna escape and learns that she was abducted from a noble family as a child. Political upheaval, inheritance claims, and renewed attacks repeatedly separate them, while John aids the authorities against both rebels and the Doones. The outlaw settlement is eventually broken, but Carver survives long enough to shoot Lorna at her wedding to John. John pursues him, and Carver dies in a bog. Lorna survives her wound, and she and John return to a quieter married life at the Ridd farm.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "John Ridd recalls leaving school as a boy and returning across Exmoor to his family's farm, Plover's Barrows. The district lives in fear of the Doones, a once-gentle family turned outlaw clan whose raids go largely unpunished. John's father is murdered on the road in an attack attributed to them, forcing his mother and children to carry on the farm without him. John later ventures into the Doones' isolated valley and meets a frightened girl named Lorna. Although she belongs to the household of his family's enemies, she helps him escape the dangerous enclosure. Their brief meeting fixes itself in John's memory as he returns to his ordinary life and grows toward adulthood.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass, and John becomes a farmer of remarkable size and strength while remaining reluctant to use violence. The Doones continue to prey on neighboring families. Drawn by his memory of Lorna, John finds his way back into their valley and discovers her grown up but still under the clan's control. Their affection begins to deepen in secret. Lorna fears Carver Doone, who assumes that she will become his wife, and she cannot safely defy the family without help. John's commitment to her places him between his love for an individual Doone and his duty to a household that still mourns his father's death.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Lorna maintain their hidden courtship with help from Lorna's attendant, Gwenny. Sir Ensor's declining health leaves Lorna increasingly exposed to Carver and the Counsellor, whose plans depend on keeping her within the settlement. Around Plover's Barrows, John's sisters and his adventurous friend Tom Faggus develop attachments and plans of their own. Crown agent Jeremy Stickles also recruits John's local knowledge as official interest in the Doones grows. John wants to rescue Lorna without bringing a destructive reprisal upon his mother, sisters, tenants, and neighbors, but the clan's tightening control makes delay increasingly dangerous.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John succeeds in bringing Lorna out of the Doone valley, and she is welcomed at Plover's Barrows despite Sarah Ridd's initial fear of her name. Evidence about Lorna's childhood reveals that she was not born a Doone: the clan abducted her when they attacked her noble family, and she is the heiress to their title and estates. This discovery gives her powerful protectors but also takes her away from John into a social world where he believes a yeoman farmer cannot follow. Their separation is compounded by unrest around the Duke of Monmouth's challenge to the crown. John becomes involved with royal officers and must balance public obligations against the safety of his family and Lorna.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Monmouth rising brings fighting and punishment into the west. John serves the royal side while trying to limit harm to people caught in the conflict, and his conduct earns official recognition. The political crisis does not remove the older local danger: the Doones attack Plover's Barrows, and the Ridd household suffers a devastating loss. John and the authorities then move decisively against the outlaw settlement. Its defenses are overcome and its power broken, although Carver escapes the destruction. With Lorna's rank acknowledged and the chief obstacle between her and John apparently removed, their marriage can at last be planned, but Carver remains free and intent on revenge.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Lorna marry, but Carver Doone appears at the wedding and shoots Lorna before escaping. Believing her mortally wounded, John follows Carver across the moor. The pursuit ends at a bog, where Carver sinks beyond rescue while John survives. John returns to learn that Lorna is still alive; careful nursing brings her through the wound. The Doone clan no longer controls the district, and its surviving enemies cannot restore its former power. John values neither his honors nor Lorna's rank as much as their shared life, and the couple settles at Plover's Barrows. The long feud closes with the farm and family restored to peace rather than with John adopting the violent identity of the men he defeated.",
+            "through": {
+              "chapter": 75
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lorna-doone"
+      }
+    },
+    "lorna-doone-naxos": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A farmer's son from Exmoor who narrates the story from boyhood into adulthood. After his father is killed during a raid blamed on the Doones, John grows into an exceptionally strong but peaceable young man. His loyalty to his family coexists with a private attachment to Lorna, even though she lives among the clan his neighbors fear and hate.",
+            "id": "john-ridd",
+            "name": "John Ridd",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young girl John encounters in the secluded valley occupied by the Doones. She is being raised within the outlaw clan but dislikes its violence and lives under close control. Her kindness and loneliness make a lasting impression on John.",
+            "id": "lorna-doone-naxos",
+            "name": "Lorna Doone",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "John's widowed mother, who manages the Ridd household and farm after her husband's murder. Practical, devout, and protective of her children, she distrusts any connection with the Doones.",
+            "id": "sarah-ridd",
+            "name": "Sarah Ridd",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's clever younger sister. More observant and bookish than the rest of the household, she often understands the motives and dangers around the family before John does.",
+            "id": "lizzie-ridd",
+            "name": "Lizzie Ridd",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's warm-hearted younger sister, closely involved in the domestic life of Plover's Barrows. Her future becomes linked with Tom Faggus, despite the risks attached to his outlaw reputation.",
+            "id": "annie-ridd",
+            "name": "Annie Ridd",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A notorious highwayman and gifted horseman who is nevertheless a trusted friend of the Ridd family. His daring and knowledge of the countryside repeatedly make him a useful ally.",
+            "id": "tom-faggus",
+            "name": "Tom Faggus",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crown officer sent west to investigate the Doones and later the political unrest surrounding Monmouth's cause. He recognizes John's usefulness and courage, though his official plans can draw the Ridd family into danger.",
+            "id": "jeremy-stickles",
+            "name": "Jeremy Stickles",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strongest and most feared of the younger Doones, violent, possessive, and accustomed to taking what he wants. He regards Lorna as his intended wife and treats John's growing connection with her as a direct challenge.",
+            "id": "carver-doone",
+            "name": "Carver Doone",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly head of the Doone settlement and Lorna's guardian. His authority offers her some protection from the clan's younger men, but age and illness steadily weaken his control.",
+            "id": "sir-ensor-doone",
+            "name": "Sir Ensor Doone",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A calculating elder of the Doone clan whose influence rests on strategy rather than Carver's physical force. He works to preserve the family's power and is dangerous precisely because he plans beyond the immediate quarrel.",
+            "id": "counsellor-doone",
+            "name": "Counsellor Doone",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lorna's devoted attendant within the Doone valley. She helps Lorna communicate and act despite the clan's surveillance, accepting considerable personal risk.",
+            "id": "gwenny-carfax",
+            "name": "Gwenny Carfax",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's wealthy great-uncle, a shrewd and suspicious businessman. Family duty draws John into protecting him, while his household introduces John to his spirited daughter Ruth.",
+            "id": "reuben-huckaback",
+            "name": "Reuben Huckaback",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Reuben Huckaback's daughter and John's cousin. Intelligent, lively, and direct, she becomes fond of John but sees that his deepest loyalty lies elsewhere.",
+            "id": "ruth-huckaback",
+            "name": "Ruth Huckaback",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lorna-doone-naxos"
+      },
+      "recaps": {
+        "ending": "John and Lorna are finally able to marry after her recovery of her family identity and property. During the wedding, Carver Doone shoots Lorna and escapes, leaving her apparently dying. John pursues him across Exmoor and, after their confrontation, Carver is swallowed by a bog. John returns expecting the worst, but Lorna's wound is not fatal and she recovers. The destruction of the Doone stronghold and the deaths or dispersal of its leaders end the clan's domination of the district. John and Lorna settle into married life at Plover's Barrows, while the surviving members of the Ridd household also move toward peaceful domestic futures. John's public honors matter less to him than the restoration of his home and the survival of the woman he has loved since childhood.",
+        "in_short": "John Ridd grows up on Exmoor after his father is murdered in violence associated with the outlaw Doones. As a boy he enters their hidden valley and meets Lorna, a girl held within the clan; as adults they fall in love despite the feud and Carver Doone's determination to marry her. John helps Lorna escape and learns that she was abducted from a noble family as a child. Political upheaval, inheritance claims, and renewed attacks repeatedly separate them, while John aids the authorities against both rebels and the Doones. The outlaw settlement is eventually broken, but Carver survives long enough to shoot Lorna at her wedding to John. John pursues him, and Carver dies in a bog. Lorna survives her wound, and she and John return to a quieter married life at the Ridd farm.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "John Ridd recalls leaving school as a boy and returning across Exmoor to his family's farm, Plover's Barrows. The district lives in fear of the Doones, a once-gentle family turned outlaw clan whose raids go largely unpunished. John's father is murdered on the road in an attack attributed to them, forcing his mother and children to carry on the farm without him. John later ventures into the Doones' isolated valley and meets a frightened girl named Lorna. Although she belongs to the household of his family's enemies, she helps him escape the dangerous enclosure. Their brief meeting fixes itself in John's memory as he returns to his ordinary life and grows toward adulthood.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass, and John becomes a farmer of remarkable size and strength while remaining reluctant to use violence. The Doones continue to prey on neighboring families. Drawn by his memory of Lorna, John finds his way back into their valley and discovers her grown up but still under the clan's control. Their affection begins to deepen in secret. Lorna fears Carver Doone, who assumes that she will become his wife, and she cannot safely defy the family without help. John's commitment to her places him between his love for an individual Doone and his duty to a household that still mourns his father's death.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Lorna maintain their hidden courtship with help from Lorna's attendant, Gwenny. Sir Ensor's declining health leaves Lorna increasingly exposed to Carver and the Counsellor, whose plans depend on keeping her within the settlement. Around Plover's Barrows, John's sisters and his adventurous friend Tom Faggus develop attachments and plans of their own. Crown agent Jeremy Stickles also recruits John's local knowledge as official interest in the Doones grows. John wants to rescue Lorna without bringing a destructive reprisal upon his mother, sisters, tenants, and neighbors, but the clan's tightening control makes delay increasingly dangerous.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John succeeds in bringing Lorna out of the Doone valley, and she is welcomed at Plover's Barrows despite Sarah Ridd's initial fear of her name. Evidence about Lorna's childhood reveals that she was not born a Doone: the clan abducted her when they attacked her noble family, and she is the heiress to their title and estates. This discovery gives her powerful protectors but also takes her away from John into a social world where he believes a yeoman farmer cannot follow. Their separation is compounded by unrest around the Duke of Monmouth's challenge to the crown. John becomes involved with royal officers and must balance public obligations against the safety of his family and Lorna.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Monmouth rising brings fighting and punishment into the west. John serves the royal side while trying to limit harm to people caught in the conflict, and his conduct earns official recognition. The political crisis does not remove the older local danger: the Doones attack Plover's Barrows, and the Ridd household suffers a devastating loss. John and the authorities then move decisively against the outlaw settlement. Its defenses are overcome and its power broken, although Carver escapes the destruction. With Lorna's rank acknowledged and the chief obstacle between her and John apparently removed, their marriage can at last be planned, but Carver remains free and intent on revenge.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Lorna marry, but Carver Doone appears at the wedding and shoots Lorna before escaping. Believing her mortally wounded, John follows Carver across the moor. The pursuit ends at a bog, where Carver sinks beyond rescue while John survives. John returns to learn that Lorna is still alive; careful nursing brings her through the wound. The Doone clan no longer controls the district, and its surviving enemies cannot restore its former power. John values neither his honors nor Lorna's rank as much as their shared life, and the couple settles at Plover's Barrows. The long feud closes with the farm and family restored to peace rather than with John adopting the violent identity of the men he defeated.",
+            "through": {
+              "chapter": 75
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lorna-doone-naxos"
+      }
+    },
     "lost-horizon": {
       "characters": {
         "characters": [

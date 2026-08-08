@@ -995,6 +995,156 @@
         "work": "knight-of-shadows"
       }
     },
+    "kokoro": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "I"
+            ],
+            "description": "The unnamed young narrator, a university student when he encounters Sensei at Kamakura. Drawn to the older man's reserve and melancholy, he repeatedly visits him in Tokyo and hopes to learn the reason for his isolation.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Teacher"
+            ],
+            "description": "A private, educated man whom the narrator first notices at a beach near Kamakura. He lives in Tokyo without a profession, visits a friend's grave each month, and responds to the narrator's admiration with kindness tempered by a deep mistrust of himself and others.",
+            "id": "sensei",
+            "name": "Sensei",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sensei's wife",
+              "Ojosan"
+            ],
+            "description": "Sensei's warm and sociable wife. She receives the narrator readily at their quiet home, but she cannot fully explain her husband's sadness or the private history he keeps from her.",
+            "id": "shizu",
+            "name": "Shizu",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's aging father, proud of his son's university education and living in the country after retirement. A serious chronic illness makes the narrator's visits home increasingly urgent.",
+            "id": "narrators-father",
+            "name": "The narrator's father",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's practical, attentive mother. She cares for her ailing husband at the family home and presses her son to seek Sensei's help in finding a position.",
+            "id": "narrators-mother",
+            "name": "The narrator's mother",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sensei's uncle, who assumes responsibility for the orphaned young man's family property. Sensei initially trusts him as a parental figure while continuing his education.",
+            "id": "senseis-uncle",
+            "name": "Sensei's uncle",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the widow"
+            ],
+            "description": "The widowed woman who rents Sensei a room after he moves away from his relatives. She runs the household with her unmarried daughter and gradually treats the solitary student as part of the family.",
+            "id": "shizus-mother",
+            "name": "Shizu's mother",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sensei's childhood friend and fellow student, an austere young man committed to spiritual and intellectual self-discipline. Estranged from his adoptive family after pursuing a path they opposed, he accepts Sensei's offer of a place in the widow's household.",
+            "id": "k",
+            "name": "K",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kokoro"
+      },
+      "recaps": {
+        "ending": "Sensei's letter explains that, after K admitted loving Shizu, Sensei acted first and privately secured her mother's consent to marry. K learned of the engagement and killed himself, leaving a note that did not disclose the rivalry. Sensei preserved that silence and married Shizu, but guilt over his selfishness poisoned the marriage from within even though she never learned its cause. He continued visiting K's grave and came to regard himself as morally unfit for ordinary life. The death of Emperor Meiji and General Nogi's subsequent suicide give him a historical occasion for the death he has long contemplated. Sensei writes his confession to the narrator before taking his own life, asking that its contents be withheld from Shizu. The novel ends with the narrator traveling back toward Tokyo while his own father remains close to death, carrying Sensei's testament and the burden of knowledge denied to Sensei's wife.",
+        "in_short": "A university student befriends a withdrawn older man he calls Sensei and becomes fascinated by his mistrust, childless marriage, and monthly visits to a friend's grave. When the student returns home, his father grows gravely ill. A long letter arrives from Sensei, and the student leaves for Tokyo while reading it. Sensei recounts how an uncle cheated him after his parents died, leaving him unable to trust. Living with a widow and her daughter Shizu, he invited his ascetic friend K to join them. Both men loved Shizu. After K confessed his feelings, Sensei secretly arranged his own marriage to her; K then killed himself. Sensei married Shizu but concealed the cause of his guilt and spent his life mourning K. Prompted by the end of the Meiji era and General Nogi's suicide, Sensei writes this confession before killing himself. The student carries the letter toward Tokyo, caught between his dying father and his dead mentor.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "While staying at the seaside in Kamakura, a young university student notices an older Japanese man accompanied by a foreigner. He begins following and then speaking to the man, whom he comes to call Sensei. Sensei accepts the student's company but warns that intimacy will eventually disappoint him. Back in Tokyo, the student visits Sensei and his wife, Shizu. Their household appears affectionate yet shadowed by an unexplained sorrow. Sensei has no occupation, distrusts human motives, and makes a monthly visit to a grave at Zoshigaya. He refuses to identify the dead person or let the student accompany him, increasing the student's desire to understand him.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator's attachment to Sensei deepens through repeated visits and conversations. Sensei speaks as someone whose faith in other people and in himself was destroyed by experience, yet he delays the promised explanation. Shizu admits that she does not know the full source of her husband's unhappiness and wonders whether she is somehow responsible. Sensei's secrecy, his grave visits, and the couple's lack of children all seem connected, but the narrator cannot assemble them into a history. After finishing his studies, he leaves Tokyo for his family home because his father's health is failing, still expecting that Sensei will one day tell him the truth.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At home, the narrator finds his father proud of the graduation but weakened by kidney disease. Family attention shifts between hopes for the narrator's career and fear of the father's death. The end of the Meiji emperor's life deepens the household's sense that an era is passing. The narrator writes to Sensei for help finding work and receives no useful answer. As his father declines sharply, a substantial letter from Sensei arrives. Its opening indicates that it is the personal explanation Sensei had promised and carries the gravity of a final statement. Torn between duties, the narrator abruptly boards a train for Tokyo and continues reading while his father remains near death.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sensei's testament begins with his youth. After both parents die, he entrusts his inheritance to an uncle he loves and respects. Gradually he discovers that the uncle has managed the estate for his own family's benefit and hoped to bind the remaining property to himself through marriage. The betrayal leaves Sensei financially reduced and permanently suspicious of human motives. He breaks with his relatives and moves to Tokyo, taking a room in the home of a widow and her daughter, Shizu. Their openness begins to soften his isolation, and he falls in love with Shizu while remaining unsure whether affection can be trusted. He later brings his boyhood friend K into the same household, hoping to rescue him from poverty and estrangement.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K follows a severe ideal of self-denial and initially seems indifferent to domestic life, but Sensei grows jealous as K and Shizu become closer. When K admits that he loves her, Sensei exploits his friend's ideals to discourage him, then secretly asks Shizu's mother for permission to marry Shizu. She accepts. Before Sensei can confess what he has done, K learns of the engagement and kills himself. K's final note does not expose their rivalry, allowing Sensei to keep his conduct hidden. Sensei marries Shizu but cannot free himself from responsibility for K's death. He visits K's grave, withdraws from society, and conceals the source of his guilt from his wife. Years later, Emperor Meiji dies and General Nogi kills himself. Sensei takes these events as the close of the age to which he belongs. He sends the narrator his confession before ending his own life, asking him not to reveal it to Shizu. The narrator reads the letter on the train to Tokyo while his father is also near death.",
+            "through": {
+              "chapter": 110
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kokoro"
+      }
+    },
     "la-dame-aux-camelias-camille": {
       "characters": {
         "characters": [
