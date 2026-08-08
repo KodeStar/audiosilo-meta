@@ -3727,6 +3727,159 @@
         ],
         "work": "exit-strategy"
       }
+    },
+    "exit-west": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man living with his parents in a city sliding toward civil war. He works at an advertising agency and attends an evening class, where he meets Nadia. Thoughtful, courteous, and attached to his family and religious practice, he is drawn to Nadia's independence even when it unsettles him.",
+            "id": "saeed",
+            "name": "Saeed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young woman who lives alone, works for an insurance company, and wears a concealing black robe partly to discourage unwanted attention rather than as an expression of faith. Direct, self-contained, and willing to defy social expectations, she begins seeing Saeed as their city grows more dangerous.",
+            "id": "nadia",
+            "name": "Nadia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Saeed's gentle, educated father, a university professor whose routines and memories tie him closely to the city. He welcomes Nadia into the family home when conditions deteriorate.",
+            "id": "saeeds-father",
+            "name": "Saeed's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Saeed's affectionate mother, who shares a long, companionable marriage with his father and worries about her son's safety as violence spreads through the city.",
+            "id": "saeeds-mother",
+            "name": "Saeed's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A secretive man who, for a high fee, arranges access to one of the mysterious doors said to carry people instantly to distant countries. Nadia and Saeed must decide whether his promised route is genuine.",
+            "id": "the-agent",
+            "name": "The agent",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young volunteer on Mykonos who befriends Nadia amid the migrant camp. Her local knowledge and sympathy offer Nadia and Saeed a possible route away from the island.",
+            "id": "mykonos-girl",
+            "name": "The Mykonos girl",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly religious leader whom Saeed encounters among London's displaced communities. His group gives Saeed fellowship and a way to preserve faith and continuity while living far from home.",
+            "id": "the-preacher",
+            "name": "The preacher",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The preacher's warm, capable daughter, active in the religious community that attracts Saeed. She shares his concern for migrants and becomes an increasingly important companion to him.",
+            "id": "the-preachers-daughter",
+            "name": "The preacher's daughter",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman in Marin who makes music and works alongside Nadia in the food cooperative. She belongs to the new network of friends through which Nadia builds a life independent of Saeed.",
+            "id": "the-musician",
+            "name": "The musician",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "exit-west"
+      },
+      "recaps": {
+        "ending": "In Marin, Nadia and Saeed finally acknowledge that the love which carried them out of their city no longer fits the people they have become. They separate gently. Saeed grows close to the preacher's daughter and remains connected to faith and migrant service, while Nadia stays with the cooperative and pursues relationships and work on her own terms. The narrative then moves fifty years ahead. Nadia returns to their transformed home city and meets Saeed in a café. Both have lived long lives apart. They remember their youth without attempting to restore it, and Saeed suggests that they might someday visit the Chilean desert to see the stars. They part with the possibility left open, their reunion affirming the importance of their shared past while accepting that migration, time, and choice have carried them into different futures.",
+        "in_short": "In a city falling into civil war, reserved Saeed and fiercely independent Nadia fall in love. As militants seize control and Saeed's mother is killed, the couple use a mysterious door that transports them to Mykonos, joining a worldwide movement of refugees through portals that ignore borders. They later pass to London, where migrants occupy an empty mansion and face violent hostility before a labor-and-housing settlement forms. Moving again to Marin, California, they discover that exile has changed them differently: Saeed seeks faith, community, and cultural continuity, while Nadia embraces new work, friendships, and relationships. They separate with affection rather than betrayal. Fifty years later they meet in their old city, now peaceful and altered, and recall who they were together. Their tentative plan to see the stars leaves them connected by memory even after their lives have diverged.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In an unnamed city where armed conflict is becoming part of daily life, Saeed notices Nadia in an evening class and invites her for coffee. He is a gentle young advertising worker who lives with his parents and retains a quiet religious faith. Nadia is more independent: she has left her family, supports herself through insurance work, rides a motorcycle, and uses her black robe as protection from intrusive men. Their first meetings are cautious but charged with interest. Checkpoints, surveillance, and distant explosions make ordinary courtship increasingly difficult, while rumors spread of dark doors through which people can emerge in faraway places. Saeed and Nadia become lovers, although their different beliefs and temperaments are already visible. Their private attachment grows at the same time that public space in the city is shrinking under violence.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conflict reaches deeper into Saeed and Nadia's lives. Militants take territory, communications fail, and movement through the city becomes perilous. After Saeed's mother is killed by a stray bullet, Nadia moves into the family home and shares the grief of Saeed and his father. The stories about doors prove true: portals are opening across the world, allowing people to step from one country into another. Nadia contacts an agent who secures them access to one. Saeed wants his father to come, but the older man chooses to remain near his wife's grave and asks Nadia to stay with his son. With no safe future left in the city, the couple pass through the guarded portal together and emerge on the Greek island of Mykonos.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nadia and Saeed pass through a guarded door and emerge on the Greek island of Mykonos. Their sudden journey leaves them among thousands of other displaced people living in a makeshift camp, with little food, shelter, or certainty. The island is strained but not wholly hostile, and Nadia befriends a local volunteer who helps them learn of another usable door. The couple's bond remains a source of safety, but exile sharpens their differences: Saeed turns toward prayer and fellow countrymen, while Nadia is more willing to form connections across cultures and adapt to unfamiliar surroundings. Helped by the young woman Nadia met, they reach a portal leading away from the island and step through into a wealthy house in London.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London, Nadia and Saeed join migrants occupying a grand empty house. Rooms and resources are divided among groups from many places, and the building becomes a crowded new community. Outside, established residents demand that the newcomers be removed. Hostility escalates, utilities are cut, and armed forces surround migrant districts, raising the prospect of mass violence. The assault is ultimately halted. A political compromise begins replacing expulsion with organized labor: migrants work on infrastructure and new housing in exchange for wages and a place in planned settlements around the city. Nadia and Saeed move from the mansion to a worker camp in the London halo, alive and temporarily secure. Their different responses to displacement are becoming more visible, and the shared purpose that sustained their escape is weakening.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The London building project offers routine and the promise of a small home, but Nadia and Saeed's intimacy continues to fade. Saeed spends more time with the preacher's community and his daughter; Nadia seeks spaces where origins matter less. They eventually take another door, this time to Marin, California. There they live among migrants in a landscape of improvised dwellings and shifting communities. Nadia works at a food cooperative and forms friendships with her coworkers, including a musician, while Saeed deepens his involvement with religious service and grows close to the preacher's daughter. Neither is openly cruel to the other, yet each increasingly represents a past the other cannot inhabit. They understand that surviving the same journey has not ensured a shared destination.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nadia and Saeed bring their relationship to a gentle end, recognizing that affection and gratitude remain even though desire and direction have changed. Nadia continues her independent life and relationships in Marin; Saeed builds a future shaped by faith, service, and his closeness to the preacher's daughter. Decades pass. Fifty years after leaving, Nadia visits the city of their youth, which has survived and changed beyond recognition. She and Saeed meet in a café as elderly people and talk about their families, their separate lives, and the time they shared. Saeed recalls his youthful wish to show her the stars above the Chilean desert and suggests that they might still go. They make no firm promise. Their meeting closes the story on recognition rather than reunion: they cannot return to their former selves, but neither distance nor time has erased what they once meant to each other.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "exit-west"
+      }
     }
   }
 }

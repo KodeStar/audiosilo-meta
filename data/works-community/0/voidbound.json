@@ -1946,6 +1946,600 @@
         "work": "war-and-peace-amazonclassics-edition"
       }
     },
+    "war-horse": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A red-bay farm horse who narrates the story. Bought as a frightened young animal at auction, Joey learns to trust Albert Narracott and responds to patience, voice, and touch more than force. His loyalty to people and other horses carries him through work and danger he cannot fully understand.",
+            "id": "joey",
+            "name": "Joey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The farmer's son who names, gentles, and trains Joey. Albert treats the horse as a friend, speaking to him constantly and earning his complete trust. Though still young, he assumes responsibility for Joey's care and protects him from his father's temper.",
+            "id": "albert-narracott",
+            "name": "Albert Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's father, a struggling Devon farmer who buys Joey impulsively after drinking at an auction. Proud, volatile, and burdened by money worries, he can be harsh with both his son and the horse, although he depends on their work.",
+            "id": "ted-narracott",
+            "name": "Ted Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's mother, who manages the Narracott household with patience and practical good sense. She understands her husband's pride and drinking but sympathizes with Albert's devotion to Joey.",
+            "id": "rose-narracott",
+            "name": "Rose Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Narracotts' experienced farm horse. Calm and strong, Zoey helps the younger Joey learn farm work and provides him with reassuring equine companionship.",
+            "id": "zoey",
+            "name": "Zoey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The cavalry officer who buys Joey for army service. Captain Nicholls is a skilled, considerate horseman who recognizes Joey's quality and promises Albert that he will care for him. He also sends Albert a drawing of Joey from camp.",
+            "id": "captain-nicholls",
+            "name": "Captain Nicholls",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful black cavalry horse ridden by Captain Stewart. Proud and initially aloof, Topthorn becomes Joey's closest equine companion as the two train and serve together.",
+            "id": "topthorn",
+            "name": "Topthorn",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cavalry officer and Topthorn's devoted rider. Captain Stewart is competitive with Captain Nicholls but shares his respect for fine horses and handles Topthorn with affection and skill.",
+            "id": "captain-stewart",
+            "name": "Captain Stewart",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British cavalryman assigned to ride Joey after Captain Nicholls. Trooper Warren is nervous and less naturally accomplished on horseback, but he is gentle and comes to rely on Joey's steadiness.",
+            "id": "trooper-warren",
+            "name": "Trooper Warren",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A German officer who takes charge of Joey and Topthorn after their capture. He respects the horses, protects them from rough treatment, and puts them to work pulling wounded soldiers rather than treating them as trophies.",
+            "id": "the-hauptmann",
+            "name": "The Hauptmann",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German soldier devoted to his younger brother, Michael. Gunther's concern for Michael is stronger than his obedience to the army, and he uses the captured horses in an attempt to keep the brothers together and away from the fighting.",
+            "id": "gunther",
+            "name": "Gunther",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Gunther's younger brother, a German soldier selected to continue toward the front. His vulnerability prompts Gunther to take a desperate risk on his behalf.",
+            "id": "michael",
+            "name": "Michael",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young French girl who lives on a farm with her grandfather. Frail but determined, Emilie becomes deeply attached to Joey and Topthorn when the horses arrive there and treats them as beloved companions.",
+            "id": "emilie",
+            "name": "Emilie",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emilie's grandfather, a French farmer raising her after the loss of the rest of their family. Protective and compassionate, he cares for Joey and Topthorn and understands how much hope the horses give Emilie.",
+            "id": "emilies-grandfather",
+            "name": "Emilie's grandfather",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German artilleryman assigned to drive and care for Joey and Topthorn. Friedrich speaks openly to the horses about his fear and his dislike of war, finding in their company a refuge from the role of soldier.",
+            "id": "friedrich",
+            "name": "Friedrich",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's friend and fellow soldier, serving with him in the veterinary corps. David knows how long Albert has searched for Joey and supports his hope that the horse may still be found.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse"
+      },
+      "recaps": {
+        "ending": "In a British veterinary hospital, Joey hears Albert's familiar call and answers it, reuniting horse and owner after years of separation. Albert helps nurse him through illness and injury. When the war ends, the army announces that its surviving horses will be sold in France rather than shipped home. Albert and his comrades raise money to buy Joey, but a butcher bids against them. Emilie's grandfather outbids the butcher. He has searched for Joey because Emilie, who has died, loved the horse and asked that he be found. Once he understands Albert's bond with Joey, he lets Albert take him home in return for a promise to keep Emilie's memory alive. Joey returns to Devon, where Albert's parents welcome him and Albert eventually marries Maisie. The reunion restores the partnership broken when Joey was sold, while the memories of Topthorn, Emilie, Friedrich, and the many others lost to the war remain part of Joey's homecoming.",
+        "in_short": "Farm boy Albert Narracott raises a horse named Joey, but his indebted father sells Joey to the British cavalry at the start of the First World War. Joey serves under Captain Nicholls, befriends the black horse Topthorn, and passes through battles and several owners after both horses are captured by the Germans. They pull ambulances and artillery, find temporary peace with a French girl named Emilie and her grandfather, and endure the deaths of soldiers and horses around them. Topthorn dies from exhaustion, and Joey escapes into no man's land, where British and German soldiers cooperate to rescue him. Taken to a British veterinary unit, he is recognized by Albert, who enlisted in hopes of finding him. After the war, Emilie's grandfather saves Joey from a butcher at auction and allows Albert to take him home. Joey returns to Devon with Albert, their long separation finally ended.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Joey, a young red-bay horse, is bought at a Devon auction by farmer Ted Narracott, whose drinking and pride have pushed him to pay more than the family can afford. Ted's son Albert patiently gentles the frightened horse, names him, and becomes his trusted companion. With help from the older farm horse Zoey, Albert trains Joey to work the land as well as carry a rider. Their success saves Joey from being sold, but the farm remains under financial pressure. When the First World War begins, Ted sells Joey to the army without Albert's knowledge. Captain Nicholls buys him for the cavalry and promises the devastated Albert that he will care for him. Albert is too young to enlist, so Joey leaves for military service while the boy vows that they will meet again.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey trains with Captain Nicholls and meets Topthorn, a powerful black horse ridden by Captain Stewart. Competition turns into a close bond between the horses. Sent to France, the cavalry confronts wire, machine guns, and artillery that make its traditional tactics disastrously vulnerable. Captain Nicholls is killed in a charge, and the anxious Trooper Warren becomes Joey's rider. Joey's steadiness helps Warren, while Topthorn remains his constant companion. In another action the horses carry Warren and Stewart into enemy positions and are captured by German troops. A German officer recognizes their value and spares them. With their British riders taken prisoner, Joey and Topthorn are harnessed to pull an ambulance, beginning a new period of service on the other side of the lines.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey and Topthorn pull wounded men for the Germans and are treated with respect by soldiers who see how hard they work. Gunther, desperate to protect his younger brother Michael from being sent toward the front, uses the horses to escape with him. The brothers hide with Joey and Topthorn but are found and shot for desertion, leaving the horses unattended. They wander to a French farm belonging to a young girl, Emilie, and her grandfather. Emilie, whose family has been devastated by the war, gives the horses affection and careful attention. For a time the farm offers peace, food, and safety. Emilie's health is fragile, and her grandfather worries about the depth of her attachment, but he also sees that caring for Joey and Topthorn restores some of her happiness. The war remains nearby, making their refuge uncertain.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "German troops requisition Joey and Topthorn from Emilie's farm and put them to work hauling heavy artillery. The labor is relentless, with inadequate food, deep mud, and brutal weather wearing down the teams. Friedrich, a German soldier who cares for the horses, confides that he is no natural warrior and tries to shield them where he can. Topthorn's great strength cannot last indefinitely. He collapses and dies, leaving Joey beside the companion who has shared nearly all his wartime life. Soon afterward a shell kills Friedrich. Terrified and alone during the bombardment, Joey runs. He encounters a tank, flees across shattered ground, and becomes caught and injured in barbed wire in no man's land, stranded between the opposing trenches with neither side initially able to reach him.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A British soldier and a German soldier emerge under a temporary truce to free Joey from the wire. Working together, they cut him loose and settle which side will take him with a coin toss. The British soldier wins, and Joey is led into the British lines. His wounds and exhausted condition send him to a veterinary hospital, where the staff also identify a serious illness and begin treatment. Albert, now old enough to serve, has joined the veterinary corps and has continued looking for Joey despite having little reason to expect success. At the hospital Joey hears the distinctive call Albert used on the farm and responds. Albert recognizes Joey's markings and manner, and the two are reunited. With Albert and his friend David helping care for him, Joey begins the difficult recovery that may allow both of them to survive the war.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey recovers under Albert's care, and the war finally ends. The soldiers expect the surviving horses to go home, but the army decides to auction them in France. Albert's comrades pool their money so he can bid for Joey. A butcher drives the price upward, threatening Joey with slaughter, until an elderly French farmer wins the auction. The buyer is Emilie's grandfather. Emilie has died, and he has searched for Joey because of her love for the horse and her wish that he be safe. After hearing Albert's story and seeing their bond, the grandfather agrees that Joey belongs with him. He lets Albert take Joey in exchange for the promise that Emilie will be remembered. Albert and Joey return to Devon, where the family receives them and Albert later marries Maisie. Their partnership resumes at home, marked by the people and horses they lost along the way.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse"
+      }
+    },
+    "war-horse-40th-anniversary-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A red-bay farm horse who narrates the story. Bought as a young colt at auction, he is frightened and unused to people until Albert approaches him with patience. Joey learns farm work and responds strongly to familiar voices, forming a powerful bond with the boy.",
+            "id": "joey",
+            "name": "Joey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The farmer's young son, who immediately takes responsibility for the nervous colt his father brings home. Albert trains and cares for Joey with unusual gentleness and regards him as his closest companion.",
+            "id": "albert-narracott",
+            "name": "Albert Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's proud, quick-tempered father, whose drinking and rivalry with another farmer lead him to buy Joey for more than the family can readily afford. He expects the horse to earn his keep on the farm.",
+            "id": "alberts-father",
+            "name": "Albert's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's practical and sympathetic mother. She understands both the farm's precarious finances and her son's devotion to Joey, and often tries to soften the conflict between Albert and his father.",
+            "id": "alberts-mother",
+            "name": "Albert's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Narracotts' steady older farm horse. Zoey's calm presence helps Joey settle into farm life, and she works beside him when he is first taught to pull a plough.",
+            "id": "zoey",
+            "name": "Zoey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A British cavalry officer who buys Joey for army service after war begins. A confident horseman with a considerate manner, he promises the distressed Albert that he will look after the horse and write about his progress.",
+            "id": "captain-nicholls",
+            "name": "Captain Nicholls",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, powerful black cavalry horse admired for his strength and composure. He becomes Joey's inseparable companion during training and their service in France.",
+            "id": "topthorn",
+            "name": "Topthorn",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Topthorn's cavalry officer and Captain Nicholls's friend. He is an accomplished rider who treats the two horses with respect as the regiment prepares to fight in France.",
+            "id": "captain-stewart",
+            "name": "Captain Stewart",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young cavalryman assigned to ride Joey after Captain Nicholls. Warren is not a naturally assured rider, but he is kind to Joey and draws confidence from the horse.",
+            "id": "trooper-warren",
+            "name": "Trooper Warren",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German officer who takes charge of Joey and Topthorn after their capture. He values the horses and assigns them to pull an ambulance, hoping the work will keep them away from direct fighting.",
+            "id": "hauptmann",
+            "name": "Hauptmann",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frail French girl living with her grandfather on a farm used by German troops. Emilie adores Joey and Topthorn, tends them attentively, and gives them the feeling of having a home again.",
+            "id": "emilie",
+            "name": "Emilie",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emilie's protective grandfather, a farmer living under occupation. He is wary of the soldiers but grateful for the comfort the horses bring his granddaughter.",
+            "id": "emilies-grandfather",
+            "name": "Emilie's grandfather",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German artilleryman assigned to care for the gun team's horses. Friedrich dislikes being a soldier and speaks to Joey and Topthorn as companions, doing what he can to protect them from exhaustion.",
+            "id": "friedrich",
+            "name": "Friedrich",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's close friend in the British Army veterinary corps. Cheerful and loyal, David works beside Albert among the wounded horses and supports his conviction that Joey may still be found.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse-40th-anniversary-edition"
+      },
+      "recaps": {
+        "ending": "After the armistice, the army decides to auction its surviving horses in France rather than transport them to Britain. Albert and his comrades collect their money to buy Joey, but an elderly French farmer wins the bidding. He is Emilie's grandfather and explains that Emilie died after the horses were taken away; he bought Joey in her memory. When he understands the depth of Albert's bond with the horse, he lets Albert take Joey home on the condition that Emilie's story will be remembered. Albert and Joey return to Devon. Albert eventually marries Maisie, the girl who had waited for him, and Joey settles back into peaceful farm life. The reunion does not erase the losses of the war, including Topthorn, Friedrich, David, and Emilie, but Joey ends his account safe with the person who first earned his trust.",
+        "in_short": "Joey, a farm horse raised by Albert Narracott in Devon, is sold to the British cavalry when the First World War begins. In France he serves first as a cavalry mount beside the black horse Topthorn, then is captured by German troops. The two horses pull an ambulance, spend a brief peaceful period with a French girl named Emilie, and are later forced into exhausting artillery work. Topthorn dies, and shellfire drives Joey alone into no man's land, where British and German soldiers cooperate to rescue him. Taken to a British veterinary hospital, Joey is recognized by Albert, who has enlisted in hopes of finding him. Joey survives illness and the war, but the army plans to sell him. Emilie's grandfather buys him at auction, then yields him to Albert after hearing their history. Albert brings Joey home to Devon, giving the horse a peaceful life while preserving the memory of those lost during the war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Joey remembers being separated from his mother and sold at a country auction to a Devon farmer who has been drinking and is determined to outbid a rival. At the Narracott farm, the frightened colt meets the farmer's son Albert, whose calm voice and steady care win his trust. Albert names him Joey and teaches him to accept a halter and respond to commands. Because the family needs Joey to work rather than merely be ridden, Albert must train him quickly to plough alongside the older mare Zoey. Horse and boy succeed despite the father's doubts, and Joey helps save the farm's crop. When war begins, financial pressure and drink lead Albert's father to sell Joey to the army without warning. Captain Nicholls promises the devastated Albert that he will care for Joey. Albert is too young to enlist, so Joey leaves for military service without him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey trains as a cavalry horse and forms a close partnership with Topthorn, a powerful black horse ridden by Captain Stewart. Captain Nicholls keeps his promise to Albert and handles Joey kindly. The regiment crosses to France, where the landscape initially seems quiet, but its first mounted attack exposes the horses to machine guns and barbed wire. Captain Nicholls is killed, and the less confident Trooper Warren becomes Joey's rider. In a later charge, Joey and Topthorn carry Warren and Stewart through the enemy position but are surrounded beyond British lines. German soldiers capture the men and horses. A German officer, Hauptmann, admires the horses and spares them from harsher treatment by assigning them to pull a medical wagon. Joey and Topthorn, once cavalry mounts, begin carrying wounded soldiers from both armies away from the fighting.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under German control, Joey and Topthorn pull an ambulance and are handled with care. They are quartered at the farm of an elderly Frenchman and his granddaughter Emilie. The lonely, often ill girl becomes devoted to the horses, feeding and grooming them whenever she is able. For a time the work and the farm offer relief from battle, and Emilie's grandfather hopes the horses can remain. The respite ends when an artillery unit arrives and requisitions them to haul heavy guns. Their new work is relentless: teams struggle through mud with inadequate food and little rest, and other horses collapse under the strain. Joey and Topthorn survive partly because their earlier farm training taught them to pull together. Emilie and her grandfather can do nothing as the army takes the horses away again.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey and Topthorn continue hauling German artillery through worsening conditions. Friedrich, a soldier who would rather care for horses than fight, becomes their groom and treats them with kindness. The gun team loses horses to exhaustion and violence, leaving the survivors with still more work. Topthorn, weakened by months of strain, finally collapses and dies beside Joey. Friedrich stays with Joey as shelling begins, but he too is killed. Terrified and suddenly without either companion, Joey bolts across the battlefield. He runs blindly among trenches, explosions, and wire until an injury stops him in the exposed ground between the armies. By nightfall he is alone in no man's land, visible to soldiers on both sides but belonging to neither.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trapped and wounded in no man's land, Joey draws the attention of both trenches. A British soldier and a German soldier come out under white flags and work together to free him from the wire. They settle possession with a coin toss, part amicably, and Joey is led to the British side. The army sends him to a veterinary hospital, where his wounds can be cleaned and treated. Joey is once again among British voices and receiving care rather than being driven back into service, though the staff initially see him as one more injured animal brought in from the battlefield.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the veterinary hospital, Albert recognizes Joey after using the distinctive call with which he trained him in Devon. Their reunion confirms that both have survived years of separation, and Albert resumes caring for the horse. Joey then develops tetanus, and the veterinary staff initially fear he cannot be saved, but Albert and the others persuade the officer in charge to attempt treatment. Joey recovers. The war continues to take lives around them, including Albert's friend David, before the armistice finally ends the fighting. Peace does not guarantee that horse and owner can remain together: the army announces that its horses will be sold locally instead of shipped home. Albert's comrades pool their money so that he can bid for Joey at auction, but they face buyers with greater resources, including one seeking horses for meat.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the army auction, Albert and his comrades try to buy Joey, but an elderly French farmer makes the winning bid. The buyer is Emilie's grandfather. He reveals that Emilie died after Joey and Topthorn were taken from the farm and that he has searched for Joey because the horse represented her happiest wartime memories. Once Albert tells him their story, the grandfather accepts that Joey belongs with the boy who raised him. He gives Joey to Albert, asking only that Emilie be remembered. Albert brings Joey back to Devon after the war and later marries Maisie. Joey returns to farm life with Albert, ending his long passage through cavalry service, capture, forced labor, battlefield injury, and illness in the home where he first learned to trust a person.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse-40th-anniversary-edition"
+      }
+    },
+    "war-horse-the-story-in-concert": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A red-bay farm horse who narrates the story. Bought as a frightened young animal at auction, Joey learns to trust Albert Narracott and responds to patience, voice, and touch more than force. His loyalty to people and other horses carries him through work and danger he cannot fully understand.",
+            "id": "joey",
+            "name": "Joey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The farmer's son who names, gentles, and trains Joey. Albert treats the horse as a friend, speaking to him constantly and earning his complete trust. Though still young, he assumes responsibility for Joey's care and protects him from his father's temper.",
+            "id": "albert-narracott",
+            "name": "Albert Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's father, a struggling Devon farmer who buys Joey impulsively after drinking at an auction. Proud, volatile, and burdened by money worries, he can be harsh with both his son and the horse, although he depends on their work.",
+            "id": "ted-narracott",
+            "name": "Ted Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's mother, who manages the Narracott household with patience and practical good sense. She understands her husband's pride and drinking but sympathizes with Albert's devotion to Joey.",
+            "id": "rose-narracott",
+            "name": "Rose Narracott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cavalry officer who buys Joey for army service. Captain Nicholls is a skilled, considerate horseman who recognizes Joey's quality and promises Albert that he will care for him.",
+            "id": "captain-nicholls",
+            "name": "Captain Nicholls",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful black cavalry horse ridden by Captain Stewart. Proud and initially aloof, Topthorn becomes Joey's closest equine companion as the two train and serve together.",
+            "id": "topthorn",
+            "name": "Topthorn",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cavalry officer and Topthorn's devoted rider. Captain Stewart is competitive with Captain Nicholls but shares his respect for fine horses and handles Topthorn with affection and skill.",
+            "id": "captain-stewart",
+            "name": "Captain Stewart",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British cavalryman assigned to ride Joey after Captain Nicholls. Trooper Warren is nervous and less naturally accomplished on horseback, but he is gentle and comes to rely on Joey's steadiness.",
+            "id": "trooper-warren",
+            "name": "Trooper Warren",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young French girl who lives on a farm with her grandfather. Frail but determined, Emilie becomes deeply attached to Joey and Topthorn when the horses arrive there and treats them as beloved companions.",
+            "id": "emilie",
+            "name": "Emilie",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emilie's grandfather, a French farmer raising her after the loss of the rest of their family. Protective and compassionate, he cares for Joey and Topthorn and understands how much hope the horses give Emilie.",
+            "id": "emilies-grandfather",
+            "name": "Emilie's grandfather",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German artilleryman assigned to drive and care for Joey and Topthorn. Friedrich speaks openly to the horses about his fear and his dislike of war, finding in their company a refuge from the role of soldier.",
+            "id": "friedrich",
+            "name": "Friedrich",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert's friend and fellow soldier, serving with him in the veterinary corps. David knows how long Albert has searched for Joey and supports his hope that the horse may still be found.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse-the-story-in-concert"
+      },
+      "recaps": {
+        "ending": "In a British veterinary hospital, Joey hears Albert's familiar call and answers it, reuniting horse and owner after years of separation. Albert helps nurse him through illness and injury. When the war ends, the army announces that its surviving horses will be sold in France. Albert and his comrades raise money to buy Joey, but Emilie's grandfather wins the auction, saving Joey from a butcher. He has searched for the horse because Emilie, who has died, loved him and wanted him kept safe. Once the grandfather understands Albert's bond with Joey, he allows Albert to take him home in exchange for a promise to preserve Emilie's memory. Joey returns to Devon with Albert. Their reunion restores the partnership broken when Joey was sold, while the memories of Topthorn, Emilie, Friedrich, and the many others lost to the war remain part of the homecoming.",
+        "in_short": "Farm boy Albert Narracott raises a horse named Joey, but his indebted father sells Joey to the British cavalry at the start of the First World War. Joey serves under Captain Nicholls, befriends the black horse Topthorn, and passes through battles and several owners after the horses are captured by the Germans. They pull ambulances and artillery, find temporary peace with a French girl named Emilie and her grandfather, and endure the deaths of soldiers and horses around them. Topthorn dies from exhaustion, and Joey escapes into no man's land, where British and German soldiers cooperate to rescue him. Taken to a British veterinary unit, he is recognized by Albert, who enlisted in hopes of finding him. After the war, Emilie's grandfather saves Joey from a butcher at auction and allows Albert to take him home. Joey returns to Devon with Albert, their long separation finally ended.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Joey is bought at a Devon auction by farmer Ted Narracott, whose drinking and pride have pushed him to pay more than the family can afford. Ted's son Albert patiently gentles the horse, names him, and becomes his trusted companion. Albert trains Joey for farm work, proving his usefulness and protecting him from sale for a time. When the First World War begins, Ted secretly sells Joey to the army. Captain Nicholls buys him for the cavalry and promises the devastated Albert that he will care for him. Albert is too young to enlist, so Joey leaves for military service while the boy vows that they will meet again.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey trains with Captain Nicholls and befriends Topthorn, the powerful black horse ridden by Captain Stewart. Sent to France, the cavalry encounters wire, machine guns, and artillery that make mounted charges disastrous. Captain Nicholls is killed, and the anxious Trooper Warren becomes Joey's rider. Topthorn remains Joey's steady companion as their unit suffers further losses. In another action, the horses carry their riders into enemy positions and are captured by German troops. A German officer recognizes their value and spares them. With the British riders taken prisoner, Joey and Topthorn are harnessed to pull wounded soldiers, beginning service on the other side of the lines.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joey and Topthorn pull ambulances for the Germans and are treated with respect by soldiers who see their courage and strength. After further upheaval they wander to a French farm belonging to a young girl, Emilie, and her grandfather. Emilie's family has been devastated by the war, and the two horses give her affection, purpose, and hope. Her grandfather cares for them and worries about her fragile health, but he sees the happiness they bring. For a time the farm offers Joey and Topthorn peace, reliable food, and safety away from military labor. The fighting remains close, however, and the family has little power to prevent an army from reclaiming useful horses.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "German troops take Joey and Topthorn from Emilie's farm and use them to haul heavy artillery. Mud, hunger, cold, and overwork wear down the teams. Friedrich, a German soldier who cares for the horses, admits his fear and his hatred of the war, finding comfort in their company. Topthorn eventually collapses and dies, leaving Joey beside the companion who has shared almost all of his wartime life. A shell then kills Friedrich. Alone and terrified during the bombardment, Joey runs across the battlefield, meets the frightening bulk of a tank, and becomes caught and wounded in barbed wire in no man's land. He is trapped between the British and German trenches, visible to both armies but unable to free himself.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A British soldier and a German soldier come out under a brief truce to cut Joey free, cooperating before a coin toss sends him to the British side. He is treated at a veterinary hospital, where Albert is serving after enlisting in the hope of finding him. Joey recognizes Albert's familiar call and answers, bringing about their reunion. When the war ends, the army auctions its surviving horses. Albert's comrades collect money for him, but Emilie's grandfather wins Joey, outbidding a butcher. Emilie has died, and her grandfather has searched for the horse she loved. After seeing Albert and Joey together, he allows Albert to take Joey home on the condition that Emilie be remembered. Albert and Joey return to Devon, ending the separation that began with the sale to the cavalry.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-horse-the-story-in-concert"
+      }
+    },
     "war-lord": {
       "characters": {
         "characters": [

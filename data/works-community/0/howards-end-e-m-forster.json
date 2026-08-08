@@ -1956,6 +1956,143 @@
         "work": "i-shall-wear-midnight"
       }
     },
+    "i-the-jury": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A New York private investigator and former soldier. After finding his closest friend murdered, Hammer treats the case as a personal debt and declares that he will kill the murderer himself once he has proof.",
+            "id": "mike-hammer",
+            "name": "Mike Hammer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hammer's close friend and wartime comrade, found shot in his apartment at the opening of the case. Williams once saved Hammer's life, making his death the private investigator's overriding concern.",
+            "id": "jack-williams",
+            "name": "Jack Williams",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A New York homicide detective and Hammer's friend. Chambers leads the official investigation into Jack Williams's death, sharing information with Hammer while warning him that personal vengeance is not lawful police work.",
+            "id": "pat-chambers",
+            "name": "Pat Chambers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poised psychiatrist connected to several people in Jack Williams's circle. Intelligent and self-possessed, she offers Hammer professional insight into the case, and a strong mutual attraction develops between them.",
+            "id": "charlotte-manning",
+            "name": "Charlotte Manning",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hammer's capable secretary and investigative assistant. Velda manages his office, pursues leads, and understands both his methods and the danger created by his promise to avenge Williams.",
+            "id": "velda",
+            "name": "Velda",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vulnerable young woman whose past links Jack Williams to the city's narcotics and vice world. Her efforts to rebuild her life make her both a source of information and a possible target.",
+            "id": "myrna-devlin",
+            "name": "Myrna Devlin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished figure in the criminal underworld whose business interests make him relevant to Hammer's inquiry. Hammer regards his organization as one possible link between Williams's private concerns and the murder.",
+            "id": "george-kalecki",
+            "name": "George Kalecki",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young man in Charlotte Manning's social and professional orbit. His relationships and movements draw Hammer's attention as the inquiry expands beyond the room where Williams died.",
+            "id": "hal-kines",
+            "name": "Hal Kines",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "i-the-jury"
+      },
+      "recaps": {
+        "ending": "Mike Hammer determines that Charlotte Manning, the woman he has come to love, killed Jack Williams and manipulated the later violence around the investigation. Her medical standing and composed assistance had allowed her to remain close to the inquiry while concealing her own criminal connections. Hammer confronts her privately and lays out the case rather than turning immediately to Pat Chambers. Charlotte attempts to use Hammer's feelings and attraction to disarm his resolve, but he follows through on the promise made beside Jack's body. He shoots her in the abdomen, deliberately mirroring the slow death inflicted on his friend. Charlotte asks how he could do it; Hammer answers that it was easy. The murder is solved, but the ending makes clear that Hammer has acted as self-appointed judge and executioner rather than delivering the killer to legal trial.",
+        "in_short": "Private investigator Mike Hammer finds his wartime friend Jack Williams murdered and vows to execute the killer personally. Working uneasily beside homicide detective Pat Chambers, he follows Williams's contacts into a network involving narcotics, vice, vulnerable young people, and psychiatrist Charlotte Manning. Further violence removes witnesses and complicates the distinction between the central murder and the criminal operations surrounding it. Hammer uses his secretary Velda, police information, intimidation, and armed confrontations to eliminate suspects. At the same time, he becomes romantically involved with Charlotte, whose poise and apparent helpfulness place her above his suspicion. The accumulated evidence finally shows that Charlotte killed Jack and concealed her role behind the other crimes. Hammer confronts her alone. When she tries to exploit his desire for her, he shoots her in the abdomen, fulfilling his promise to Jack instead of making an arrest. The case closes with Hammer acting as the jury and carrying out his own sentence.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Private investigator Mike Hammer is called to the apartment of Jack Williams, his closest friend and former wartime comrade. Williams has been shot in the abdomen and left to die slowly. Homicide detective Pat Chambers controls the official scene, but Hammer immediately makes the crime personal: because Jack once saved his life, he promises the dead man that he will find and kill the murderer. The shot, the room, and the people known to have contact with Williams provide the first leads. Hammer begins questioning those contacts while his secretary Velda helps organize the search. Pat warns Hammer that solving a murder does not authorize an execution, but the warning does not change his stated purpose.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hammer and Pat Chambers pursue overlapping versions of the investigation. With help from his secretary Velda, Hammer traces Williams's concern for people caught in narcotics and vice, including Myrna Devlin, and looks for the criminal interests that might have wanted him silent. George Kalecki's underworld connections make him a natural suspect, while Hal Kines and other members of Charlotte Manning's circle provide a second set of personal relationships to examine. Charlotte offers insight into the people involved and grows closer to Hammer. He is willing to threaten or fight men who block him, but the expanding list of motives gives him no single proven killer. The case now connects Jack's private loyalties, illicit business, and the lives of Charlotte's patients and acquaintances.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Further attacks and deaths show that the murderer is still protecting a secret and may be monitoring Hammer's progress. He tests alibis, compares the victims' relationships, and pushes into the narcotics organization suggested by Williams's contacts. Some dangerous figures are guilty of other crimes but do not fit the physical and chronological facts of Jack's shooting. Pat continues to supply official findings while trying to keep Hammer from turning every confrontation into a killing. Charlotte remains apparently helpful and becomes Hammer's principal emotional refuge during the investigation. That intimacy makes her part of his private future even as her access to the people in the case gives her unusual knowledge of its details.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hammer's pressure breaks open the surrounding criminal activity, but eliminating its obvious enforcers does not fully explain Jack Williams's murder. The sequence of later crimes indicates a killer who can move among respectable people as well as the underworld and who understands how the victims are connected. Hammer revisits statements that initially seemed harmless and notices where knowledge, opportunity, and motive overlap. His relationship with Charlotte Manning deepens, creating a conflict between the evidence and the person he wants to trust. By narrowing the timeline and separating the vice operation from the hand that shot Jack, he approaches a conclusion that the official investigation has not yet acted upon.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hammer concludes that Charlotte Manning killed Jack Williams and used her respected position, her knowledge of the people around him, and the surrounding criminal network to deflect suspicion. The later violence was part of protecting that concealment. Instead of bringing Pat Chambers to make an arrest, Hammer confronts Charlotte alone and explains what the clues establish. Charlotte attempts to exploit his love and physical desire, expecting their intimacy to overcome his accusation. Hammer remains committed to the vow he made over Jack's body. He shoots her in the abdomen, inflicting the same kind of death as Jack's, and answers her disbelief without remorse. The murderer is identified and killed, but there is no trial: Hammer has chosen to serve as investigator, jury, and executioner.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "i-the-jury"
+      }
+    },
     "if-beale-street-could-talk": {
       "characters": {
         "characters": [
@@ -2287,6 +2424,164 @@
           }
         ],
         "work": "illuminae"
+      }
+    },
+    "im-not-scared": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A nine-year-old boy living in the tiny southern Italian settlement of Acqua Traverse during the intensely hot summer of 1978. Curious, impulsive, and protective of his younger sister, he ranges through the surrounding fields with the other village children and narrates what he gradually understands about the adults around him.",
+            "id": "michele-amitrano",
+            "name": "Michele Amitrano",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Michele's younger sister, who tries to keep up with the older children despite the heat and rough country. Michele feels responsible for her and turns back when she is left behind during their race.",
+            "id": "maria-amitrano",
+            "name": "Maria Amitrano",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skull"
+            ],
+            "description": "The domineering leader of the local children's group. He sets races and penalties and uses his position to intimidate the others, especially Barbara.",
+            "id": "antonio-natale",
+            "name": "Antonio Natale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A girl in Michele's group who is frequently mocked by Skull. When he devises a humiliating penalty for her after a race, Michele intervenes and takes the forfeit in her place.",
+            "id": "barbara-mura",
+            "name": "Barbara Mura",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Michele's closest companions among the village children. Friendship does not prevent him from yielding to pressure when Michele's secret becomes valuable to the older boys.",
+            "id": "salvatore-scardaccione",
+            "name": "Salvatore Scardaccione",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pale, filthy boy whom Michele discovers concealed in a covered hole near an abandoned farmhouse. He is weak, frightened, and often confused, and the chain around his ankle makes clear that someone is keeping him there.",
+            "id": "filippo-carducci",
+            "name": "Filippo Carducci",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Michele and Maria's father, a truck driver whose periods away from home give his returns special importance to the children. Michele admires his strength and wants his approval.",
+            "id": "pino-amitrano",
+            "name": "Pino Amitrano",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Michele and Maria's mother, who manages the household and tries to control the children during the long, oppressive summer. She is affectionate but strained by circumstances Michele does not yet understand.",
+            "id": "teresa-amitrano",
+            "name": "Teresa Amitrano",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coarse visitor from the north who stays with the Amitrano family. His presence unsettles Michele, and his manner suggests authority over business that the village adults keep from their children.",
+            "id": "sergio-materia",
+            "name": "Sergio Materia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Skull's older brother, a threatening young man whom Michele encounters near the place where Filippo is imprisoned. His appearance confirms that adults and older boys are watching the hiding place.",
+            "id": "felice-natale",
+            "name": "Felice Natale",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "im-not-scared"
+      },
+      "recaps": {
+        "ending": "Michele overhears the kidnappers decide that Filippo must be killed and learns that his own father has been chosen to do it. He slips out at night, finds Filippo at a new hiding place, and frees him, insisting that the exhausted boy escape first. Michele is still emerging when Pino arrives with a gun and, unable to identify the figure in the darkness, shoots his son. Realizing what he has done, Pino carries the wounded Michele and calls for help. A helicopter and armed authorities arrive as the kidnapping collapses. Michele's attempt to rescue Filippo succeeds, but the book ends with him badly wounded in his father's arms and with the moral order of his childhood destroyed: the father he trusted was part of the crime, yet that same father is desperately trying to save him.",
+        "in_short": "During the summer of 1978, nine-year-old Michele Amitrano discovers a chained boy hidden in a hole near an abandoned farmhouse outside his tiny Italian village. He secretly brings the captive food and water and learns that he is Filippo Carducci, a kidnapped child from Milan. Television reports and overheard conversations reveal that Michele's father Pino and other local adults are the kidnappers, directed by the visiting Sergio Materia. Michele's friend Salvatore betrays the secret, and Felice Natale catches Michele visiting Filippo, after which Pino orders his son to stay away. When the adults decide Filippo must be killed, Michele runs to the new hiding place and frees him. Pino arrives to carry out the murder and accidentally shoots Michele in the darkness. As police close in by helicopter, Pino recognizes his wounded son and tries to save him. Filippo escapes, while Michele's survival is left unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the parched summer of 1978, nine-year-old Michele Amitrano roams the countryside around Acqua Traverse with his younger sister Maria and a group of village children. Their leader, Antonio, known as Skull, imposes a humiliating penalty on Barbara after a race. Michele takes the penalty for her and climbs through a derelict farmhouse. Returning to retrieve his sister's lost glasses, he discovers a concealed pit nearby. At first he thinks the filthy shape inside may be a corpse, but he realizes it is a living boy. The child is weak, confused, and chained by the ankle. Michele tells no adult. His imagination supplies supernatural explanations, yet the chain and the boy's condition point to deliberate imprisonment. He begins returning alone, caught between fear of the place and concern for the captive.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michele brings water and food to the hidden boy and cautiously speaks with him. The captive gives his name as Filippo and is so disoriented that he sometimes doubts whether he or Michele is real. At home, Michele's truck-driver father Pino returns, accompanied by Sergio Materia, an unpleasant visitor from northern Italy who takes over Michele's room. The adults' guarded meetings and Sergio's authority make the household tense. Michele sees a television report about a boy kidnapped from a wealthy Milan family and recognizes Filippo. The report includes the kidnappers' threats and the family's appeal for his release. Michele now understands that the prisoner is neither a monster nor an abandoned child: he is the victim of a crime whose perpetrators must be close enough to tend and guard him.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clues in the adults' conversations force Michele toward a more painful conclusion. Pino, Sergio, and other people from Acqua Traverse are involved in Filippo's kidnapping. Michele nevertheless continues visiting and tries to comfort Filippo with food, talk, and promises. He confides in his friend Salvatore, who trades the information to Skull in return for a coveted driving lesson. Skull's older brother Felice catches Michele at the hiding place and handles him violently. When the betrayal reaches the adults, Pino confronts his son and makes him swear never to go back. Michele obeys outwardly, but his trust in his father has been broken. The village that once seemed merely isolated now appears organized around a secret in which familiar adults share responsibility.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The kidnappers move Filippo after Michele's visits expose the original hiding place. Michele is frightened of his father and of Felice, but he remains preoccupied with the captive boy. By listening to an adult meeting, he learns that the police pressure is increasing and that Sergio believes Filippo should be killed to remove the evidence. The group draws lots or otherwise assigns the killing, and the responsibility falls to Pino. Michele can no longer preserve any belief that his father is only marginally involved. With no adult he can safely ask for help and little time before the planned murder, he decides to break his promise and find Filippo himself.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michele leaves home at night and locates Filippo in a new concealed place. He removes the restraint and helps the exhausted boy climb toward freedom, refusing to save himself first. Filippo gets away, but Michele is still near the opening when Pino arrives to carry out the killing. Seeing movement in the darkness and believing it to be the captive, Pino fires and hits Michele. He immediately recognizes his son, gathers him up, and desperately calls for help. A helicopter and armed authorities descend as the kidnapping scheme collapses. Michele has succeeded in freeing Filippo, but he is gravely wounded by the father whose crime he tried to undo. The ending does not confirm Michele's recovery; it leaves him in Pino's arms as the police arrive, with the child's physical fate uncertain and his former faith in the adults irreparably lost.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "im-not-scared"
       }
     },
     "immensee": {
