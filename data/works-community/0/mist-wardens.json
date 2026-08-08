@@ -450,6 +450,224 @@
         "work": "mist-wardens"
       }
     },
+    "mistborn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A famous skaa thief known as the Survivor of Hathsin, the only prisoner believed to have escaped the Lord Ruler's lethal mines. The scars covering his arms testify to that imprisonment. Charismatic, irreverent toward noble authority, and extraordinarily skilled with Allomancy, he has returned to the capital intending to end the Final Empire.",
+            "id": "kelsier",
+            "name": "Kelsier",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wary teenage thief in Camon's crew who has survived abuse by making herself inconspicuous. She believes her brother Reen abandoned her but lives by his lessons about betrayal. What she calls Luck is actually an unusual ability to influence people, and Kelsier recognizes that her power is much greater than she knows.",
+            "id": "vin",
+            "name": "Vin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The immortal ruler and living god of the Final Empire, whose victory over the Deepness a thousand years earlier is the foundation of the state religion. He governs from Kredik Shaw through noble houses, obligators, and Steel Inquisitors while the skaa labor under his law.",
+            "id": "the-lord-ruler",
+            "name": "The Lord Ruler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Kelsier's closest friend and organizer, a skaa who lacks Allomantic powers but knows Luthadel's criminal networks and handles the practical side of the crew's operations. Steady and skeptical, he balances Kelsier's appetite for dramatic risks.",
+            "id": "dockson",
+            "name": "Dockson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A refined member of Kelsier's crew and a Soother, able to dampen selected emotions. He uses polished manners and calculated indolence as tools, specializing in manipulation, recruitment, and negotiation.",
+            "id": "breeze",
+            "name": "Breeze",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ham"
+            ],
+            "description": "A Thug who burns pewter for enhanced strength and endurance. Despite his work as the crew's fighter and trainer, he is genial and habitually turns discussions toward moral and political questions.",
+            "id": "hammond",
+            "name": "Hammond",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gruff skaa Smoker who leads a shop of apprentices and can hide nearby Allomancy from detection. He distrusts Kelsier's grand promises but provides the crew with a secure base and trains Vin in controlling copper.",
+            "id": "clubs",
+            "name": "Clubs",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Spook"
+            ],
+            "description": "Clubs's teenage nephew and a Tineye, able to sharpen his senses by burning tin. Shy around Vin and difficult to understand because of his heavy street slang, he serves as a lookout and runner for the crew.",
+            "id": "lestibournes",
+            "name": "Lestibournes",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kelsier's older brother, a stern former rebel who once opposed the Final Empire more openly than Kelsier did. Unlike his brother, he has no Allomantic powers, and the losses surrounding Kelsier's earlier schemes have left a deep division between them.",
+            "id": "marsh",
+            "name": "Marsh",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Terrisman steward assigned to help Vin enter noble society under an assumed identity. Patient, observant, and trained in languages, history, and etiquette, he also quietly preserves religions erased during the Lord Ruler's conquest.",
+            "id": "sazed",
+            "name": "Sazed",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A minor nobleman lending his name and appearance to the crew's plan. Presented to society as Valette Renoux's uncle, he operates from a country mansion that serves as cover for training and supply work.",
+            "id": "lord-renoux",
+            "name": "Lord Renoux",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The idealistic heir of House Venture, Luthadel's most powerful noble family. Vin first finds him reading alone at a ball rather than courting influence. His blunt manner conceals a serious interest in forbidden political ideas and dissatisfaction with the nobility's rule.",
+            "id": "elend-venture",
+            "name": "Elend Venture",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp and socially formidable noblewoman allied with House Venture. She quickly identifies Vin's Valette persona as a possible rival for Elend's attention and treats the newcomer with controlled hostility.",
+            "id": "shan-elariel",
+            "name": "Shan Elariel",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A skaa rebel leader whose movement gives Kelsier's plan its political cause and initial manpower. He wants a real uprising but is uneasy about trusting thieves and Allomancers with the future of his followers.",
+            "id": "yeden",
+            "name": "Yeden",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mistborn"
+      },
+      "recaps": {
+        "ending": "Kelsier's public death becomes the martyrdom that drives Luthadel's skaa into revolt. Vin is captured while confronting the Lord Ruler and learns that he is Rashek, the Terrisman who killed the prophesied hero Alendi, took the power at the Well of Ascension, and maintained his youth by combining Feruchemy with Allomancy. Marsh, transformed into a Steel Inquisitor but still resisting the regime, kills the other Inquisitors by removing the spikes that sustain them. Guided by the mists, Vin tears away the Lord Ruler's metalminds; without their stored youth, he rapidly ages, and she kills him. The thousand-year empire falls. Elend Venture survives the fighting and is chosen to lead a new government, with the crew backing his attempt to replace imperial tyranny with representative rule. Vin accepts both her love for Elend and the trust offered by her friends, while Sazed reminds her that victory has opened an uncertain future rather than solved every problem.",
+        "in_short": "In the ash-covered Final Empire, the immortal Lord Ruler dominates nobles and enslaved skaa. Kelsier, a charismatic Mistborn and survivor of the Pits of Hathsin, recruits Vin, an abused street thief who does not know she is Mistborn, into a crew planning the impossible: destabilize the noble houses, raise a skaa army, and overthrow the regime. As Vin learns Allomancy and infiltrates high society, she falls for idealistic noble heir Elend Venture. The army is destroyed, the Ministry closes in, and Kelsier deliberately turns his own death at the Lord Ruler's hands into the spark for a mass uprising. Vin discovers that the ruler is Rashek, a Terrisman who stole a prophesied hero's power and uses Feruchemy with Allomancy to appear immortal. With help from Marsh, now an Inquisitor, she strips away his stored youth and kills him. Elend becomes king of the liberated capital, and Vin finally chooses trust and connection over the isolation that kept her alive.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Final Empire has endured for a thousand years under the supposedly immortal Lord Ruler. Ash falls from a red sky, noble houses control wealth and Allomancy, and the skaa majority live as slaves. Kelsier, a powerful Mistborn scarred by the Pits of Hathsin, kills a brutal plantation lord and encourages the local skaa to resist. In Luthadel, teenage thief Vin survives within Camon's crew by expecting betrayal and using an ability she calls Luck to subtly influence emotions. Kelsier recognizes her as a Mistborn and removes her from Camon's control. He gathers Dockson, Breeze, Hammond, Clubs, and the rebel Yeden around a plan to overthrow the Lord Ruler. The crew will build an army, provoke war among the noble houses, undermine the regime's economy, and use the Lord Ruler's own legend against him.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kelsier begins teaching Vin the metals of Allomancy. She learns to Push and Pull on metal, strengthen her body, sharpen her senses, and affect emotions, while discovering the exhilaration of moving above the city in the mists. The crew establishes itself in Clubs's shop, and Kelsier's estranged brother Marsh agrees to help despite doubting the plan. Lord Renoux provides a noble identity and country base for the operation. To gather intelligence and influence house rivalries, Vin will enter Luthadel society as Renoux's shy niece, Valette. Sazed, a learned Terrisman steward, prepares her in etiquette and history. Vin remains convinced that the crew will eventually abandon her, but Kelsier insists that friendship and trust are what distinguish his group from the brutal gangs she has known.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vin attends noble balls as Valette Renoux while continuing her Allomantic training. She meets Elend Venture, heir to the most powerful house, reading political philosophy instead of participating in courtship. His frankness interests her even though Kelsier warns that nobles are enemies and sources of intelligence. Vin learns to navigate rivalries among the houses and draws the hostility of Shan Elariel. Kelsier attacks imperial wealth and spreads the Survivor's reputation while Ham and Breeze recruit and train skaa soldiers. During a covert expedition into Kredik Shaw, Vin and Kelsier encounter the terrifying Steel Inquisitors. Vin is badly injured during their escape, demonstrating both the regime's power and the unusual interest the Inquisitors take in her. Sazed nurses her while the crew keeps the larger plan moving.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After recovering, Vin returns to noble society and grows closer to Elend, whose dissatisfaction with the existing order appears sincere. Her role becomes emotionally dangerous because Valette is invented, yet her feelings are not. The crew's campaign also advances: noble houses answer sabotage and rumor with assassinations and open conflict, the skaa force grows outside the city, and Marsh infiltrates the Steel Ministry to learn about the Inquisitors. Kelsier encourages belief in the Survivor as part of the rebellion, making some friends uneasy about how readily he manipulates hope. Vin researches the Lord Ruler's rise through a journal attributed to the prophesied hero who traveled to the Well of Ascension. Its uncertain, compassionate writer seems unlike the tyrant ruling the empire, creating a mystery at the center of imperial history.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pressure on the plan exposes its weaknesses. Vin learns that Elend and his friends have discussed reforms, but their privilege and limited understanding of skaa suffering leave her unsure how far to trust them. Her deceptions strain the relationship from both sides. Yeden, seeking a decisive achievement for the rebellion, takes the skaa army into action without the crew's approval. Imperial forces destroy it, killing most of the soldiers and erasing the military foundation of Kelsier's plan. Marsh disappears during his Ministry infiltration, and signs at his station lead the crew to believe he has been killed. Instead of abandoning the rebellion, Kelsier turns toward a more personal and symbolic strategy, relying on the skaa's willingness to believe that the Survivor can challenge what they have been taught is eternal.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kelsier returns to the Pits of Hathsin, where prisoners harvest the crystals that produce atium, the empire's most valuable Allomantic metal. He destroys the crystal formations and frees captives, striking at the Lord Ruler's wealth and at the place meant to have broken him. In Luthadel, the noble house war becomes overt. Shan Elariel reveals herself as Mistborn and attacks Vin, who survives the duel and kills her. Vin also discovers that Kelsier arranged events that endangered Elend, forcing her to confront how ruthlessly her mentor will pursue the rebellion. The crew has lost its army and Marsh, the Ministry is closing in, and Kelsier's actions have made compromise impossible, but his attacks have also proved that imperial power can bleed.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ministry exposes Lord Renoux's operation and prepares a public execution. Kelsier's crew attempts a rescue, and Vin helps save the captured skaa, but Kelsier remains behind to face an Inquisitor before the watching crowd. He defeats the creature in a spectacular fight, showing that a symbol of imperial terror can be killed. The Lord Ruler then appears and kills Kelsier with effortless force. Kelsier's death is part of his final plan: a disguised kandra later appears wearing his form, convincing the skaa that the Survivor has returned. The city erupts in rebellion, inspired by his sacrifice. Vin grieves and understands that Kelsier deliberately made himself a martyr to give the uprising the faith it lacked. She prepares to confront the Lord Ruler while Elend tries to protect people amid the collapse of noble authority.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vin enters Kredik Shaw but is captured and brought before the Lord Ruler. The old journal's writer was Alendi, the expected Hero of Ages, but the ruler is Rashek, the Terrisman who murdered him and took the power at the Well of Ascension. Rashek's apparent immortality comes from combining Allomancy with Feruchemy and storing youth in metalminds. Marsh reappears as a Steel Inquisitor: the Ministry transformed him, but he retained enough independence to kill other Inquisitors by tearing out the spikes that sustain them. The mists respond to Vin as she fights. She Pulls away the Lord Ruler's metal bracelets, depriving him of stored youth; he ages into a frail ancient man, and she kills him. The empire falls. Elend is selected as king of a new government, and the surviving crew supports him. Vin chooses to return to Elend and accept the trust she once believed impossible, while the liberated city faces an uncertain future.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mistborn"
+      }
+    },
     "mistress-of-the-empire": {
       "characters": {
         "characters": [

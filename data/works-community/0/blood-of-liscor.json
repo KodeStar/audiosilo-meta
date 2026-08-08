@@ -2707,6 +2707,179 @@
         ],
         "work": "bound"
       }
+    },
+    "bram-stokers-classic-dracula-annotated": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young English solicitor sent to Transylvania to complete Count Dracula's purchase of an estate near London. Conscientious and observant, he records the unfamiliar country and his increasingly unsettling stay in a private journal.",
+            "id": "jonathan-harker",
+            "name": "Jonathan Harker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Transylvanian nobleman who has bought Carfax, an old English estate. He receives Jonathan alone in his remote castle and shows an intense interest in English customs, speech, and geography. His courtesy cannot disguise the restrictions he places on his guest.",
+            "id": "count-dracula",
+            "name": "Count Dracula",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Jonathan's fiancée, an assistant schoolmistress who practices shorthand and typing so she can help him in his profession. Practical, compassionate, and alert to the people around her, she exchanges letters with her closest friend, Lucy Westenra.",
+            "id": "mina-murray",
+            "name": "Mina Murray",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mina's warm and affectionate friend, living with her widowed mother. Three men propose to her on the same day, and she accepts Arthur Holmwood while hoping to remain friends with the other two.",
+            "id": "lucy-westenra",
+            "name": "Lucy Westenra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who directs a private asylum adjoining the neglected Carfax estate. After Lucy refuses his marriage proposal, he turns to work and keeps a phonograph diary, paying particular attention to a patient whose compulsions he hopes to understand.",
+            "id": "john-seward",
+            "name": "Dr. John Seward",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Art"
+            ],
+            "description": "Lucy Westenra's chosen fiancé and the son of Lord Godalming. He is a close friend of both John Seward and Quincey Morris, the two unsuccessful suitors, and is called Art by his friends.",
+            "id": "arthur-holmwood",
+            "name": "Arthur Holmwood",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American adventurer from Texas and one of Lucy's three suitors. He accepts her refusal without resentment, offers his friendship if she ever needs help, and speaks with a direct, informal manner.",
+            "id": "quincey-morris",
+            "name": "Quincey Morris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient in Seward's asylum who consumes flies and spiders in the belief that living creatures can add their lives to his own. His orderly reasoning about this practice interests Seward, who hopes the unusual case will reveal a governing obsession.",
+            "id": "renfield",
+            "name": "R. M. Renfield",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Dutch physician, philosopher, and scholar whom Seward calls in when Lucy's wasting illness defeats ordinary diagnosis. His speech is idiosyncratic, but his devotion to his patient is absolute and his range of knowledge extends beyond conventional medicine.",
+            "id": "abraham-van-helsing",
+            "name": "Professor Abraham Van Helsing",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucy's widowed mother, with whom Lucy lives before her marriage. She is affectionate toward her daughter and interested in Lucy's future happiness.",
+            "id": "mrs-westenra",
+            "name": "Mrs. Westenra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jonathan's employer, an elderly Exeter solicitor who has entrusted him with the Dracula property transaction and treated him with paternal kindness.",
+            "id": "peter-hawkins",
+            "name": "Mr. Peter Hawkins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "bram-stokers-classic-dracula-annotated"
+      },
+      "recaps": {
+        "ending": "Dracula retreats from England toward his castle with the hunters following by train, boat, horse, and carriage. Mina's psychic link helps them predict his route but also places her at risk of becoming like him. Van Helsing protects Mina near the castle, enters it, and destroys the three vampire women. At sunset Jonathan, Seward, Arthur, and Quincey intercept the group carrying Dracula's box. Jonathan cuts Dracula's throat while Quincey drives a knife into his heart; the Count's body disintegrates and Mina's mark disappears. Quincey has been mortally wounded in the struggle and dies knowing that Mina is free. Seven years later, Jonathan and Mina have a son whose names commemorate their companions, especially Quincey, and the surviving friends return to Transylvania together. Their assembled records are the chief evidence of what happened, while their shared survival and the child give the ordeal a peaceful human conclusion.",
+        "in_short": "Solicitor Jonathan Harker visits Count Dracula in Transylvania and discovers that his host is a vampire preparing to move to England. Dracula travels to Whitby, preys on Lucy Westenra, and leaves her to rise as a vampire despite the efforts of her fiancé Arthur, her other suitors Seward and Quincey, and Professor Van Helsing. After freeing Lucy from that state, they join Jonathan and Mina Harker to hunt Dracula through London and destroy his hiding places. Dracula retaliates by forcing Mina to drink his blood, creating a link that threatens her but also lets the hunters track him. He escapes toward Transylvania in his last box of native earth. The group pursues him to the castle, where Van Helsing destroys the three vampire women and the others intercept Dracula before sunset. Jonathan and Quincey kill him; Mina is released from the curse, though Quincey dies from his wounds. Years later the surviving friends remain united, and Jonathan and Mina name their son in memory of him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "English solicitor Jonathan Harker travels through Transylvania to conclude Count Dracula's purchase of Carfax, an old estate outside London. Local people fear his destination and press protective gifts on him. At the isolated castle, Dracula welcomes Jonathan but no servants ever appear. Jonathan notices that the Count has no reflection, possesses extraordinary strength, and reacts violently to blood. Locked doors and sheer walls make clear that Jonathan is a prisoner. He sees Dracula crawl headfirst down the castle wall and later encounters three predatory women, whom the Count drives away while promising them a later victim. Jonathan finds Dracula lying unnaturally in a box of earth and learns that many such boxes are being prepared for transport. Dracula uses Jonathan's clothes to create the impression that the Englishman has left the castle. Realizing that his host intends to abandon him to the women, Jonathan sends Mina a final note and prepares a desperate attempt to escape.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In England, Mina Murray waits anxiously for Jonathan while staying with her friend Lucy Westenra at Whitby. Lucy has accepted Arthur Holmwood's proposal after also receiving proposals from Dr. John Seward and the American Quincey Morris. Seward, who runs an asylum beside Carfax, studies Renfield, a patient who devours small living creatures and speaks of a coming master. A violent storm drives a deserted ship, the Demeter, into Whitby harbor. Its captain is found dead at the wheel, its crew has vanished, and a large dog escapes ashore; the cargo consists of boxes of earth consigned to Carfax. Lucy's sleepwalking worsens. Mina follows her one night to the churchyard and glimpses a dark figure bending over her. Two small wounds appear on Lucy's throat, and her health begins to fail. Mina then receives word that Jonathan has reached a hospital in Budapest, deeply traumatized and unable to explain his experiences. She leaves Whitby to care for him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mina finds Jonathan physically weak and fearful that his castle journal records either madness or something real. They marry before returning to England. Meanwhile Lucy's unexplained blood loss becomes critical. Seward calls in his former teacher, Professor Van Helsing, who arranges repeated transfusions from Arthur, Seward, Quincey, and himself. He also surrounds Lucy with garlic and insists that she never be left unguarded. Mrs. Westenra, unaware of the reason, removes the garlic. Later a wolf crashes through the bedroom window, terrifying Mrs. Westenra to death and leaving Lucy exposed. Although Van Helsing and Seward resume treatment, Lucy dies after alternately pleading with Arthur and showing a disturbing change in manner. Van Helsing prevents Arthur from kissing her at the last moment. He does not yet give the grieving men a full explanation, but his precautions around Lucy's body show that he believes her death has not ended the danger.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reports of a mysterious woman luring children near Hampstead support Van Helsing's fear that Lucy has become one of the undead. He leads Seward, Arthur, and Quincey to her tomb, where they see her moving outside the grave and preying on a child. The next night Arthur releases Lucy from that existence while Van Helsing completes the rites that return peace to her body. Van Helsing then explains that the vampire responsible must be found and destroyed. Jonathan, now back in Exeter with Mina, recognizes Count Dracula on a London street. After Mr. Hawkins dies and leaves the Harkers his property, Jonathan and Mina make contact with Seward and Van Helsing. Mina types the separate journals, letters, newspaper reports, and phonograph records into a shared chronological account. The assembled documents place Jonathan's experiences, the voyage of the Demeter, Lucy's death, and Renfield's behavior within the same investigation.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunters break into Carfax and other properties, bless Dracula's boxes of earth, and deny him most of his resting places. Excluding Mina from their councils leaves her vulnerable. Renfield attempts to resist the master he had welcomed and is fatally injured; before dying, he tells Seward that Dracula has been visiting Mina. The men rush to her room and find Dracula forcing her to drink his blood after feeding on her, while Jonathan lies unconscious. Dracula escapes, destroys many of their papers, and declares that Mina will become bound to him. Van Helsing uses a sacred wafer to protect her, but it burns a mark into her forehead. The unwanted connection also gives the group an advantage: under hypnosis at dawn and sunset, Mina can sense Dracula's surroundings. After the hunters neutralize his remaining London boxes and confront him, Dracula flees England in the last box aboard a ship bound east. The group traces him toward Varna, determined to reach his castle before Mina's transformation advances too far.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dracula's ship changes course and lands at Galatz before the hunters can intercept it. Mina uses schedules, shipping information, and her psychic impressions to infer his route toward the Transylvanian castle. The group divides: Van Helsing takes Mina toward the castle while Jonathan, Seward, Arthur, and Quincey pursue the box by river and road. As Mina grows pale and the vampire women try to call her to them, Van Helsing keeps her inside a protective circle. He enters the castle and destroys the three women, then seals Dracula's tomb. Near sunset the other hunters intercept a band carrying Dracula's box. In the fight Quincey is badly wounded, but Jonathan cuts Dracula's throat and Quincey drives a knife into his heart just before daylight fails. Dracula disintegrates, the mark vanishes from Mina's forehead, and Quincey dies after seeing that she is safe. Seven years later Jonathan and Mina have a son named in memory of their companions, and the survivors revisit the scene together, bound by the record of what they endured.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "bram-stokers-classic-dracula-annotated"
+      }
     }
   }
 }
