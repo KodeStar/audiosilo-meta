@@ -2085,6 +2085,170 @@
         "work": "the-firm"
       }
     },
+    "the-fishermen": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ben"
+            ],
+            "description": "The fourth of the Agwu brothers and the adult narrator looking back on their childhood in Akure. At nine, Benjamin follows his older brothers to the forbidden river and observes the fear that enters the family after their encounter with Abulu.",
+            "id": "benjamin-agwu",
+            "name": "Benjamin Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The eldest of the four brothers, fifteen years old and the natural leader of their expeditions. Ikenna has been expected to set an example for the younger boys, but the authority he gains during their father's absence also leaves him isolated from them.",
+            "id": "ikenna-agwu",
+            "name": "Ikenna Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Agwu brother, fourteen, close enough in age to Ikenna to be both his companion and challenger. Boja joins the fishing trips and initially shares the easy alliance of the four oldest boys.",
+            "id": "boja-agwu",
+            "name": "Boja Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third of the four older brothers. Obembe is eleven, intellectually curious, and especially drawn to stories and explanations. He fishes with Ikenna, Boja, and Benjamin and later tries to reason about what Abulu has told them.",
+            "id": "obembe-agwu",
+            "name": "Obembe Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Father"
+            ],
+            "description": "The boys' strict father, a Central Bank employee whose transfer from Akure to Yola removes the household's main authority. He has ambitious plans for his sons and believes discipline and education can direct each of them toward an important profession.",
+            "id": "eme-agwu",
+            "name": "Eme Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mother"
+            ],
+            "description": "The mother of the Agwu children, left to manage the large household when her husband is transferred north. She is loving and resourceful but cannot reproduce the control her husband exercised over the four older boys.",
+            "id": "mama-agwu",
+            "name": "Mama Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger Agwu boy, still a small child when his four oldest brothers begin fishing. David remains largely outside their secret expeditions but is exposed to the changes overtaking the household.",
+            "id": "david-agwu",
+            "name": "David Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The youngest Agwu child and the sister of the five boys. Nkem is a toddler at the beginning of Benjamin's account and depends on the family whose stability is about to be tested.",
+            "id": "nkem-agwu",
+            "name": "Nkem Agwu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local boy whose talk of catching fish helps inspire the Agwu brothers to try the Omi-Ala. His suggestion contributes to the secret routine they develop after their father leaves Akure.",
+            "id": "solomon",
+            "name": "Solomon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A homeless and mentally ill man who wanders Akure delivering prophecies that local people fear. At the river he tells Ikenna that a fisherman will kill him, introducing an idea that the eldest brother cannot dismiss.",
+            "id": "abulu",
+            "name": "Abulu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fishermen"
+      },
+      "recaps": {
+        "ending": "Obembe and Benjamin retaliate against Abulu for the prophecy they believe destroyed their brothers. Their attack kills him, but it does not restore the family: Obembe escapes, while Benjamin is caught and sentenced to eight years in prison. Ikenna is already dead from the fight with Boja, and Boja has killed himself in the well after realizing what he had done. The parents lose the future Eme had planned for his sons, and the surviving children inherit the consequences of both the prophecy and their responses to it. Benjamin's adult narration turns the brothers' brief season as fishermen into the origin of a family catastrophe. Whether Abulu truly foresaw events remains less important than the way fear, suspicion, violence, and revenge made his words come true.",
+        "in_short": "In 1990s Akure, a bank employee's transfer leaves his four oldest sons beyond his daily supervision. Ikenna, Boja, Obembe, and nine-year-old Benjamin begin fishing at the forbidden Omi-Ala River. There the feared madman Abulu predicts that Ikenna will be killed by a fisherman. Because the brothers have made themselves fishermen, Ikenna becomes suspicious and violently withdraws from them. His fear poisons the family despite his parents' attempts to break its hold. A fight between Ikenna and Boja ends with Boja killing Ikenna; overwhelmed, Boja then drowns himself in the family well. Obembe convinces Benjamin that Abulu must pay for setting the disaster in motion. They kill him, but Obembe escapes and Benjamin is arrested and sentenced to eight years. Looking back as an adult, Benjamin presents the prophecy as a force made real through belief, fractured brotherhood, and revenge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1990s Akure, Nigeria, Eme Agwu is transferred by the Central Bank to distant Yola. He leaves his wife to manage their six children and expects the four oldest sons to maintain the disciplined future he has planned for them. Instead, fifteen-year-old Ikenna, Boja, Obembe, and nine-year-old Benjamin use their new freedom to visit the Omi-Ala, a river their community regards as polluted and dangerous. They become secret fishermen, building a world of adventure beyond school and home. At the river they encounter Abulu, a homeless man feared for disturbing behavior and prophecies that seem to come true. He tells Ikenna that a fisherman will cause his death. Since Ikenna and his brothers have now taken that identity for themselves, the prediction gives ordinary family closeness a threatening new meaning.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ikenna cannot set Abulu's words aside. He stops treating his brothers as trusted companions, separates himself from their shared life, and reacts to them with suspicion and increasing aggression. The prediction gains power because almost any action can now look like evidence that one of the fishermen will kill him. Eme returns, learns that the boys disobeyed him, and punishes them, but paternal authority cannot undo what happened at the river. The family tries religious reassurance, argument, and discipline without reaching Ikenna. His fear hardens into a hostile identity that bewilders the younger boys and brings conflict into the house. Benjamin watches the eldest brother they once followed become someone who sees danger in the very bond that had joined them.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hostility between Ikenna and Boja erupts into a physical fight. Boja fatally wounds Ikenna, making Abulu's prophecy appear fulfilled by one of the brothers who fished the Omi-Ala. The act is not planned murder but the culmination of fear, anger, and the collapse of restraint inside the family. Confronted with what he has done, Boja disappears. The family searches until his body is found in their well: he has drowned himself. The Agwus must therefore mourn two sons at once, one killed by his brother and the other by his own remorse. Their father's grand expectations and their mother's efforts to hold the household together give way to grief. Obembe and Benjamin, the two surviving members of the fishing group, are left to decide where responsibility for the disaster lies.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Ikenna's killing and Boja's suicide, Obembe constructs an explanation that places decisive blame on Abulu. He argues that the prophecy entered Ikenna's mind like a poison and caused the chain of suspicion and violence. For Benjamin, this story offers a target for grief that otherwise has nowhere to go. The brothers begin planning retaliation against the man at the river instead of accepting that punishing him cannot recover the dead. Their shared purpose briefly recreates the alliance they once had as fishermen, but it is now organized around revenge. The adults remain absorbed in mourning and the damaged family, while Obembe and Benjamin move toward another act that will extend rather than end the prophecy's consequences.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Obembe and Benjamin carry out their revenge on Abulu, and the attack kills him. The death cannot reverse the prophecy or restore Ikenna and Boja. Obembe gets away, but Benjamin is arrested and ultimately sentenced to eight years in prison, bearing the public penalty for the brothers' act while still a child. Eme and Mama are left with two dead sons, one absent son, and another imprisoned, the opposite of the prosperous future the father once mapped for his family. Benjamin's retrospective narration preserves the four boys as they were when they first became fishermen, but it also shows how Abulu's words achieved authority through the responses of those who heard them. The prediction became self-fulfilling: Ikenna's terror broke the brotherhood, and the survivors' need to avenge that destruction carried the family into further loss.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fishermen"
+      }
+    },
     "the-flame-bearer": {
       "characters": {
         "characters": [

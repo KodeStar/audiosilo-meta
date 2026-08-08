@@ -1588,6 +1588,177 @@
         "work": "garden-of-sanctuary"
       }
     },
+    "garnering": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Thomas Gradgrind's daughter, raised to suppress imagination and feeling. After an unhappy marriage to Bounderby and a dangerous emotional attachment to James Harthouse, she has returned to her father rather than betray her marriage and now faces the collapse of the principles on which she was educated.",
+            "id": "louisa-gradgrind",
+            "name": "Louisa Gradgrind",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Louisa and Tom's father, a prominent advocate of education based entirely on facts and calculation. Louisa's breakdown has forced him to recognize that his system failed to prepare her for emotional life, and he begins this final part humbled and anxious to help her.",
+            "id": "thomas-gradgrind",
+            "name": "Thomas Gradgrind",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former circus child whom Gradgrind took into his household and educated. Her empathy survived his system, and she now provides Louisa with the patient care and moral clarity that the Gradgrind family cannot supply for itself.",
+            "id": "sissy-jupe",
+            "name": "Sissy Jupe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Coketown manufacturer and banker who married Louisa after building his reputation on a story of childhood abandonment and self-made success. Proud, controlling, and more concerned with his public dignity than Louisa's distress, he treats her return to her father as defiance.",
+            "id": "josiah-bounderby",
+            "name": "Josiah Bounderby",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A compassionate factory worker and Stephen Blackpool's closest friend. She has defended his character while he is suspected of robbing Bounderby's bank and waits for his promised return to Coketown so that he can clear his name.",
+            "id": "rachael",
+            "name": "Rachael",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An honest factory worker who was dismissed and then suspected of the bank robbery after leaving Coketown. Returning secretly to defend himself, he falls into an abandoned mine shaft. He is rescued alive but mortally injured and uses his last strength to direct Gradgrind toward the truth.",
+            "id": "stephen-blackpool",
+            "name": "Stephen Blackpool",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gradgrind's selfish son and Louisa's younger brother. When the bank robbery is traced back to him, he admits exploiting Stephen's movements to divert suspicion and looks to his family to save him from arrest.",
+            "id": "tom-gradgrind",
+            "name": "Tom Gradgrind",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The kindly, practical manager of the travelling circus in which Sissy grew up. Still grateful for her loyalty to his people, he shelters Tom and helps the Gradgrinds attempt an escape that respectable society will not provide.",
+            "id": "mr-sleary",
+            "name": "Mr. Sleary",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former pupil of Gradgrind's school who now works for Bounderby's bank. Trained to pursue his own material advantage, he tracks Tom to the circus and refuses Gradgrind's pleas for mercy because surrendering the fugitive would not benefit him.",
+            "id": "bitzer",
+            "name": "Bitzer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bounderby's watchful former housekeeper, whose hostility toward Louisa and suspicion of others have helped her maintain influence over him. She brings an elderly woman to Bounderby believing that she has solved the bank robbery, only to expose a different secret.",
+            "id": "mrs-sparsit",
+            "name": "Mrs. Sparsit",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly woman who has quietly travelled to Coketown to catch glimpses of Bounderby. When Mrs. Sparsit drags her forward as a suspected criminal, she reveals that she is Bounderby's loving mother and disproves his lifelong account of having been abandoned as a child.",
+            "id": "mrs-pegler",
+            "name": "Mrs. Pegler",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "garnering"
+      },
+      "recaps": {
+        "ending": "Tom's attempted escape succeeds through Sleary's ingenuity, despite Bitzer's effort to capture him. Tom lives abroad but becomes remorseful and dies before he can return to Louisa. Mrs. Sparsit's attempt to identify a criminal instead exposes Bounderby's central lie: Mrs. Pegler is his affectionate mother, not a parent who abandoned him, and his supposedly destitute childhood was an invention. He dismisses Mrs. Sparsit and dies suddenly a few years later. Gradgrind abandons his rigid faith in calculation, acts with greater humility, and accepts the political cost of advocating compassion. Stephen Blackpool has died after clearing his moral name, and Rachael continues her quiet life of work and kindness. Sissy marries and raises a loving family. Louisa does not have children of her own or resume her marriage, but she shares closely in Sissy's family life and becomes gentler and more understanding than her upbringing allowed. The final outcomes reject Bounderby's self-myth and Gradgrind's old philosophy in favor of loyalty, imagination, and care.",
+        "in_short": "In the final part of Hard Times, Louisa's collapse makes Gradgrind recognize the failure of his fact-bound philosophy, while Bounderby ends their marriage when she will not return to him. Sissy sends Harthouse away and supports Louisa. Rachael discovers that Stephen Blackpool, returning to clear himself of the bank robbery, has fallen into an abandoned mine shaft; he is rescued but dies after pointing Gradgrind toward Tom. Tom confesses to the theft and escapes overseas with help from Sleary's circus, despite Bitzer's pursuit. Mrs. Sparsit then produces Mrs. Pegler as a supposed suspect, accidentally revealing her as Bounderby's devoted mother and proving his tale of abandonment false. Bounderby later dies, Tom dies abroad after repenting, and Gradgrind becomes more humane. Sissy forms a happy family, while Louisa remains childless but finds purpose and affection among Sissy's children.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in Hard Times, Thomas Gradgrind raised his children Louisa and Tom according to a philosophy of facts, utility, and self-interest. He also brought Sissy Jupe, the daughter of a vanished circus performer, into his household, though her compassion resisted his teaching. Louisa married the much older industrialist Josiah Bounderby largely to protect Tom's position at Bounderby's bank. Factory worker Stephen Blackpool, trapped in a disastrous marriage, was dismissed after refusing to join a union and refusing to inform on his fellow workers. Before leaving Coketown, he was persuaded by Tom to wait conspicuously near the bank; after the bank was robbed, those movements made Stephen the chief suspect. Meanwhile, the polished visitor James Harthouse pursued the unhappy Louisa. Instead of leaving with him, she fled to her father, admitted her emotional crisis, and collapsed, forcing Gradgrind to confront the damage caused by his education.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Louisa remains at her father's house after rejecting Harthouse and leaving Bounderby. Her physical and emotional collapse has broken Gradgrind's confidence in the system that taught her to distrust imagination and feeling. In their conversations he admits that the education he imposed failed to prepare her for the needs of her own heart, while she struggles to understand a life whose guiding rules have proved inadequate. Sissy quietly tends Louisa, supplying patience and sympathy that the household's old philosophy cannot provide. Gradgrind begins to replace certainty with humility, but neither he nor Louisa yet knows how to repair the consequences of her upbringing, her marriage, or the sacrifices she made for Tom.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gradgrind has begun to accept that his fact-bound upbringing failed Louisa. Sissy takes action where he cannot: she meets James Harthouse, tells him plainly that his continued presence will harm Louisa, and persuades him to leave Coketown. Bounderby refuses any private, compassionate settlement. He gives Louisa a short deadline to return and, when she remains with her father, announces the end of their household and sends her belongings back. His response turns a painful separation into a matter of pride and public posture. Louisa therefore remains under her father's protection, Harthouse departs, and Gradgrind must face both the ruin of the marriage he encouraged and the limits of the principles by which he arranged his family's lives. The bank robbery remains unsolved, with the absent Stephen Blackpool still carrying public suspicion.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Louisa's marriage has effectively ended, Harthouse has departed, and Gradgrind's household now relies on Sissy's steadiness. Rachael and Sissy search for Stephen after his unexplained failure to return. Clues near an abandoned mine working lead them to realize that he has fallen into the deep shaft while approaching Coketown. A difficult rescue brings him to the surface alive but gravely injured. Stephen explains that he was returning to answer the accusation against him and maintains that he never robbed the bank. With Rachael beside him, he forgives those who misjudged him and dies. Before his death he urges Gradgrind to question Tom about the circumstances that made Stephen appear suspicious. The advice shifts attention from the convenient outsider toward Gradgrind's own family and makes clearing Stephen's name inseparable from discovering who used him.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephen has died after the mine-shaft rescue, but his last words direct Gradgrind toward Tom. Confronted by Gradgrind and Louisa, Tom admits robbing Bounderby's bank and arranging Stephen's conspicuous presence nearby so that suspicion would fall on him. Sissy has anticipated the danger and guided Tom to the travelling circus where she grew up. Sleary and the performers conceal him and prepare to send him abroad. Bitzer, now a bank employee shaped by Gradgrind's lessons in self-interest, tracks Tom down and intends to surrender him for professional advantage. Gradgrind appeals for mercy, only to hear his former educational principles returned as reasons for refusing it. Sleary and the circus people outmaneuver Bitzer, allowing Tom to get away. The loyalty of people once dismissed as irrational succeeds where Gradgrind's respectable system offers no help.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom escapes overseas with the circus's help, although exile separates him permanently from Louisa and he dies abroad after becoming remorseful. Mrs. Sparsit, convinced that she has uncovered the bank robbery's secret, brings the elderly Mrs. Pegler before Bounderby. The confrontation instead reveals that Mrs. Pegler is Bounderby's affectionate mother and that his famous story of abandonment and extreme childhood poverty is false. Bounderby dismisses Mrs. Sparsit and dies suddenly several years later. Gradgrind permanently softens his philosophy, placing faith and compassion above strict calculation even when former political allies reject him. Rachael continues a humble life marked by kindness after Stephen's death. Sissy marries and raises a happy family. Louisa never has children of her own and does not return to Bounderby, but she becomes closely involved with Sissy's children and learns to foster the tenderness and imagination denied in her own upbringing.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "garnering"
+      }
+    },
     "gathering-blue": {
       "characters": {
         "characters": [
