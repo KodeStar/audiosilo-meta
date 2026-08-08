@@ -490,6 +490,215 @@
         "work": "without-fail"
       }
     },
+    "wives-and-daughters": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young daughter of Hollingford's widowed doctor. Molly has grown up close to her father and outside fashionable society, becoming observant, direct, and considerate. A childhood visit to the Cumnor estate first exposes her to the confusing rules of rank and adult attention. As she grows older, her father's patients and the neighbouring Hamley family draw her into relationships whose tensions she often understands better than the adults around her.",
+            "id": "molly-gibson",
+            "name": "Molly Gibson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mr Gibson"
+            ],
+            "description": "Molly's father, a respected country doctor and widower in Hollingford. He is affectionate, practical, and accustomed to managing other people's emergencies, but less perceptive about the emotional consequences of decisions inside his own home. His easy professional manner gives Molly contact with families across the town's social divisions.",
+            "id": "doctor-gibson",
+            "name": "Doctor Gibson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger daughter of Lord and Lady Cumnor. Lady Harriet is socially confident, intelligent, and less bound by ceremony than her position might suggest. She takes a friendly interest in Molly after meeting her at the Towers and can use the Cumnor family's influence with a tact that its more formal members lack.",
+            "id": "lady-harriet-cumnor",
+            "name": "Lady Harriet Cumnor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An outspoken Hollingford spinster who lives with her sister and has long known the Gibsons. Miss Browning is fond of Molly and eager for local news. Her blunt judgments and constant conversation make her both a loyal family friend and an efficient carrier of the town's opinions.",
+            "id": "miss-browning",
+            "name": "Miss Browning",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young assistant in Doctor Gibson's practice. Mr Coxe mistakes Molly's kindness and frequent presence for encouragement and develops an attachment that alarms her father. His awkward interest helps persuade Doctor Gibson that his motherless daughter can no longer be left without closer supervision.",
+            "id": "mr-coxe",
+            "name": "Mr Coxe",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The proud, traditional owner of Hamley Hall. The Squire values his family's long local history and wants his sons to preserve it, although the estate's finances are strained. He is hearty and hospitable with Molly but impatient with learning, social ambition, and anything that appears to threaten his idea of the Hamleys.",
+            "id": "squire-hamley",
+            "name": "Squire Hamley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs Hamley"
+            ],
+            "description": "The Squire's gentle, cultivated wife and the mother of Osborne and Roger. In fragile health, she welcomes Molly to Hamley Hall and gives her the warmth of an older female friend. She is proud of both sons but especially invested in the brilliant future expected for Osborne.",
+            "id": "mrs-hamley",
+            "name": "Mrs Hamley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder Hamley son, admired for his looks, manners, and literary promise. His family expects his university success to restore distinction to their name, yet his expensive habits and guarded behaviour create friction with his father. Molly encounters a charming but troubled young man unable to explain the source of his secrecy.",
+            "id": "osborne-hamley",
+            "name": "Osborne Hamley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger Hamley son, less polished than Osborne but vigorous, candid, and serious about natural science. Roger's family initially treats him as the dependable second son rather than its great hope. His generosity and intellectual purpose quickly make him a trusted friend to Molly.",
+            "id": "roger-hamley",
+            "name": "Roger Hamley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs Kirkpatrick",
+              "Mrs Gibson"
+            ],
+            "description": "A handsome widow who once served as a governess in the Cumnor household and has maintained useful connections there. Clare is gracious, self-conscious about status, and skilled at presenting her preferences as social necessities. Doctor Gibson considers her capable of giving Molly the guidance and companionship his household lacks.",
+            "id": "clare-kirkpatrick",
+            "name": "Clare Kirkpatrick",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clare's beautiful daughter and Molly's new stepsister. Cynthia has spent much of her youth away at school and returns with charm, quick intelligence, and an ability to attract attention without seeming to seek it. She is affectionate toward Molly but wary of promises and reluctant to let either her mother or her admirers know everything about her past.",
+            "id": "cynthia-kirkpatrick",
+            "name": "Cynthia Kirkpatrick",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cumnors' forceful land agent, whose business often brings him to Hollingford and Hamley. Mr Preston is polished and persistent, and he appears to have known Cynthia during her earlier stays near the Towers. His manner toward her suggests claims that she does not want discussed openly.",
+            "id": "mr-preston",
+            "name": "Mr Preston",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Hamley"
+            ],
+            "description": "Osborne's French widow, whose marriage to him was kept from the Hamley family. Aimée is young, modest, and devoted to their small son. Her arrival makes the private burden behind Osborne's divided life visible to the father from whom he concealed it.",
+            "id": "aimee-hamley",
+            "name": "Aimée Hamley",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wives-and-daughters"
+      },
+      "recaps": {
+        "ending": "The published novel stops before its planned final resolution because Elizabeth Gaskell died while it was still appearing in parts. By the surviving close, Osborne has died and the Squire has learned of his secret marriage. His first shock gives way to acceptance of Aimée and her child, who secure a future at Hamley. Cynthia has ended her engagement to Roger and becomes engaged to Mr Henderson, a match she enters more honestly than her earlier attachments. Roger returns from his scientific expedition to find that Cynthia's choice no longer wounds him as he expected. He begins to recognize that Molly's constancy, intelligence, and quiet care matter more deeply to him. Molly has loved him without declaring it. The text ends as their new understanding is forming, before Roger makes a proposal. The continuation described to the magazine's readers indicates that Gaskell intended Roger and Molly to marry, but that marriage is not dramatized in the completed manuscript.",
+        "in_short": "Molly Gibson, the devoted daughter of a widowed country doctor, is sent among the Hamleys and becomes close to brothers Osborne and Roger. Her father marries the socially ambitious widow Clare Kirkpatrick, bringing Clare's beautiful daughter Cynthia into Molly's home. Roger falls for Cynthia and becomes engaged to her before leaving on a scientific expedition, although Cynthia has concealed an earlier engagement to the controlling Mr Preston. Molly helps free her from Preston and bears damaging gossip without exposing her stepsister. Cynthia eventually ends her engagement to Roger and later chooses Mr Henderson. Meanwhile Osborne dies after secretly marrying a Frenchwoman, Aimée, and the grieving Squire ultimately receives her and his grandson. Roger returns to discover that his feeling for Cynthia has passed and that he loves the steadfast Molly. Gaskell died before completing the last movement: the surviving novel ends before his proposal, though the announced intended conclusion was their marriage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "As a child, Molly Gibson becomes stranded after a grand open day at the Cumnors' estate and receives an early lesson in social rank and adult carelessness. Years later she lives contentedly in Hollingford with her widowed father, the town's doctor. When his assistant Mr Coxe develops an embarrassing attachment to her, Doctor Gibson sends Molly for an extended stay at Hamley Hall. She grows fond of the invalid Mrs Hamley and the blunt Squire, and hears about their two sons: handsome, accomplished Osborne, the family's pride, and the more practical Roger. The visit gives Molly a second household in which she is valued, while her father begins to think that she needs a woman permanently at home to guide her.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Doctor Gibson decides to marry Clare Kirkpatrick, a well-connected widow formerly employed by the Cumnors. Molly is hurt that the plan was settled before she could absorb it, but tries to support her father's happiness. Clare enters the Gibson home with polished manners, strong opinions about appearances, and a tendency to rearrange life around her own comfort. Her daughter Cynthia, still away at school, is expected to join them. At Hamley, the parents' hopes for Osborne are becoming a source of distress: his university career and spending have disappointed the Squire, while Osborne will not explain the private anxieties behind his conduct. Roger, previously overshadowed by his brother, shows steadiness and growing promise in natural science.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cynthia comes home and quickly becomes close to Molly. Her beauty and ease win admiration, while Molly sees the insecurity beneath her light manner and the strain in her relationship with Clare. The two stepsisters form a genuine bond despite Clare's small manipulations and different treatment of them. Mrs Hamley's health declines, deepening the unease at Hamley Hall. Osborne remains secretive and at odds with the Squire, whereas Roger's work earns increasing respect. Molly is drawn to Roger's openness and kindness, but his attention begins to settle on Cynthia. Cynthia accepts admiration readily while resisting questions about feelings and about people she knew before her return to Hollingford.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Mrs Hamley's death, grief and financial worry sharpen the divisions at Hamley. Osborne continues to hide the marriage that explains his debts and absences: he has a French wife whom he believes his proud father will reject. Roger, meanwhile, falls decisively in love with Cynthia. She accepts his proposal even though she cannot match his wholehearted devotion, and they become engaged before he leaves on a scientific expedition to Africa. Molly suppresses her own love for Roger and supports both of them. Mr Preston's appearances unsettle Cynthia. It becomes clear to Molly that his hold over her is not merely an unwanted acquaintance and that Cynthia fears a claim rooted in her earlier life near the Cumnor estate.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cynthia confides that, when younger and dependent on others, she accepted money and attention from Mr Preston and promised to marry him. He now refuses to return her letters and treats the old promise as binding, although she wants no such marriage and is engaged to Roger. Molly intervenes, meeting Preston to recover the letters and protect Cynthia. Their meetings are observed and misread, exposing Molly rather than Cynthia to Hollingford gossip. Molly will not clear herself by betraying her stepsister's confidence. Lady Harriet eventually understands enough to support Molly publicly and break the force of the scandal. The episode frees Cynthia from Preston, but it also makes plain that her engagement to the absent Roger rests on feelings much less certain than his.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Osborne's failing health ends in his death before he can reconcile fully with the Squire or introduce the family he has hidden. Roger, returning when he can from his expedition, helps reveal that Osborne married Aimée, a young Frenchwoman, and left a child. The disclosure overturns the Squire's assumptions about his elder son. His anger and shock gradually yield to affection for his daughter-in-law and grandson, giving Aimée a place at Hamley. Cynthia accepts that she cannot honestly marry Roger and breaks their engagement. Her decision causes pain but prevents a marriage founded on gratitude and evasion. Molly remains loyal to both, still concealing her own feelings while Roger's long absence and the changes at Hamley alter the future everyone had expected.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cynthia becomes engaged to Mr Henderson, approaching the match with greater frankness about her nature and past. Roger returns from Africa with his scientific reputation established and discovers that Cynthia's new choice does not revive his former heartbreak. Instead, he begins to see Molly differently: her sympathy for his family, intelligent interest in his work, and unwavering honesty have made her central to his life. Molly has loved him quietly and assumes that love will remain unspoken. The surviving manuscript ends while Roger is moving toward acknowledging and declaring his feelings, so there is no completed proposal or wedding scene. Because Gaskell died before finishing the novel, its actual close is a suspended but strongly directed reconciliation. A note supplied with the publication records the intended outcome that Roger and Molly would marry; Osborne's widow and son, meanwhile, have been accepted into the Hamley household.",
+            "through": {
+              "chapter": 60
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wives-and-daughters"
+      }
+    },
     "wolfsong": {
       "characters": {
         "characters": [

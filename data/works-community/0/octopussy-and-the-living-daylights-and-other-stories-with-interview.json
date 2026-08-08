@@ -3372,6 +3372,238 @@
         "work": "oroonoko"
       }
     },
+    "orwell-collection": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The prize Middle White boar at Manor Farm, respected by the other animals for his age and wisdom. Near the end of his life he gathers them to describe a future without human masters and teaches them a song of liberation, giving the rebellion its first shared vision.",
+            "id": "old-major",
+            "name": "Old Major",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large Berkshire boar who helps turn Old Major's ideas into a doctrine for the farm animals. He is quiet, forceful, and less persuasive in public than Snowball, with whom he shares leadership after the rebellion.",
+            "id": "napoleon",
+            "name": "Napoleon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An energetic young boar and one of the chief organizers of the animals' new society. More inventive and eloquent than Napoleon, he throws himself into committees, education, and plans for improving the farm.",
+            "id": "snowball",
+            "name": "Snowball",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, agile pig with a gift for turning disputed claims into convincing explanations. He becomes the leadership's principal speaker to the other animals.",
+            "id": "squealer",
+            "name": "Squealer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge cart-horse whose strength and steady labor make him indispensable to the farm. He is loyal, modest, and slow to question those he trusts, answering difficulties by resolving to work harder.",
+            "id": "boxer",
+            "name": "Boxer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A motherly cart-horse and Boxer's close companion. She is dependable and compassionate, and although she struggles to read, she notices when the principles of the rebellion no longer seem to match life on the farm.",
+            "id": "clover",
+            "name": "Clover",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The farm's elderly donkey, known for a sour manner, an unwillingness to show enthusiasm, and the belief that life changes little. He can read as well as any animal but usually keeps what he understands to himself.",
+            "id": "benjamin",
+            "name": "Benjamin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The careless, often drunken owner of Manor Farm. His neglect leaves the animals hungry and helps provoke the uprising that drives him from the property.",
+            "id": "mr-jones",
+            "name": "Mr. Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A tame raven who tells the animals about Sugarcandy Mountain, a paradise awaiting them after death. He does no work, disappears when Jones is expelled, and remains associated with promises that distract from present hardship.",
+            "id": "moses",
+            "name": "Moses",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A records clerk in the Ministry of Truth who secretly hates the totalitarian Party ruling Oceania. Frail, observant, and thirty-nine years old, he begins a private diary despite knowing that independent thought can lead to death.",
+            "id": "winston-smith",
+            "name": "Winston Smith",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young woman with dark hair who works in the Ministry's Fiction Department and wears the sash of the Junior Anti-Sex League. Winston repeatedly notices her and initially fears that her apparent orthodoxy may conceal an interest in reporting him.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Inner Party official with an intelligent, controlled presence. A brief look exchanged at the Ministry makes Winston imagine that O'Brien may share his hatred of the Party, although he has no evidence that this hope is safe.",
+            "id": "obrien",
+            "name": "O'Brien",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The remote, mustachioed face displayed throughout Oceania under the Party's claim that he watches everyone. Whether he is a person or a symbol is unclear, but he is presented as the beloved protector at the center of public loyalty.",
+            "id": "big-brother",
+            "name": "Big Brother",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The official enemy of Oceania and alleged leader of a secret counterrevolutionary network called the Brotherhood. His image is used during public rituals of hatred, and Winston finds himself resisting the emotions the Party demands toward him.",
+            "id": "emmanuel-goldstein",
+            "name": "Emmanuel Goldstein",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Winston's neighbor at Victory Mansions, an enthusiastic Party functionary devoted to organized activities and communal displays of loyalty. His unruly children have been trained to suspect enemies everywhere, including inside their home.",
+            "id": "tom-parsons",
+            "name": "Tom Parsons",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly dealer in the proletarian district who sells Winston an old notebook and later shows him a private room above his secondhand shop. His apparent attachment to objects and memories from before the Party appeals to Winston.",
+            "id": "mr-charrington",
+            "name": "Mr. Charrington",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A philologist working with Winston on the latest edition of the Newspeak dictionary. Intelligent and openly fascinated by the destruction of words, he explains how the Party intends to make rebellious thought impossible by shrinking language itself.",
+            "id": "syme",
+            "name": "Syme",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "orwell-collection"
+      },
+      "recaps": {
+        "ending": "The collection closes with the destruction of Winston's inner resistance. After arresting him in the rented room, the Thought Police place him in the Ministry of Love, where O'Brien reveals that he has always served the Party. Torture forces Winston to accept the Party's power over fact, memory, and identity. In Room 101, the threatened use of rats makes him betray Julia by begging that the punishment be inflicted on her instead. Released into a diminished life, Winston later meets Julia; both admit that they betrayed the other, and their former bond is gone. As Oceania celebrates a military victory, Winston finally accepts Big Brother without reservation. This conclusion follows *Animal Farm*'s earlier ending, in which the pigs become indistinguishable from the human owners they replaced, leaving the other animals with neither equality nor the language needed to challenge their rulers.",
+        "in_short": "This collection joins two fables of authoritarian rule. In *Animal Farm*, exploited farm animals overthrow Mr. Jones and try to build an equal society. The pigs take control, Napoleon drives out Snowball, and Squealer continually revises the past while the animals labor under worsening conditions. Boxer is discarded when he can no longer work, and the pigs ultimately adopt human habits and privileges until the two groups cannot be distinguished. In *Nineteen Eighty-Four*, Winston Smith secretly resists Oceania's Party, which controls history, language, and private life. He and Julia begin an illegal affair and approach O'Brien in the belief that he belongs to a resistance. O'Brien is instead a loyal Party official who arranges their arrest. Under torture Winston abandons his trust in reality and, when confronted with his worst fear, betrays Julia. Released and emotionally emptied, he comes to love Big Brother.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Manor Farm, the elderly boar Old Major gathers the animals and argues that human ownership is the source of their hunger and labor. He imagines a rebellion after which animals will live for themselves, and he warns that they must not copy human vices. After he dies, the pigs Napoleon, Snowball, and Squealer organize his ideas into Animalism. When the drunken farmer Mr. Jones neglects to feed the animals, they break into the food stores and spontaneously drive him and his men away. They rename the property Animal Farm, destroy many signs of servitude, and paint seven principles of equality on the barn. The pigs take charge of planning because they can read, while the other animals begin the harvest with a sense that their work now belongs to them. The disappearance of the milk raises the first quiet question about how equally the new society's goods will be shared.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The animals complete a successful harvest, with the powerful cart-horse Boxer setting an example of tireless work. The pigs supervise rather than perform physical labor, and Squealer explains that they need the farm's milk and apples for the sake of everyone. Snowball pursues education and committees while Napoleon takes several puppies away to raise privately. Jones and neighboring farmers attempt to retake the property, but Snowball's preparations help the animals repel them in the Battle of the Cowshed. Conflict then sharpens between Snowball and Napoleon. Snowball proposes a windmill that could eventually reduce labor; Napoleon opposes him and releases the now-grown dogs, who chase Snowball from the farm. Napoleon ends open debate and takes control. He soon adopts the windmill plan as his own, while Squealer persuades the animals that Snowball had been dangerous and Napoleon's apparent opposition was tactical.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Napoleon's rule grows harsher as the animals build and rebuild the windmill through hunger, bad weather, and attacks. The pigs trade with humans, move into the farmhouse, alter the written commandments, and use confessions and executions to eliminate supposed enemies. Snowball is blamed for every failure while the animals' memories are repeatedly contradicted by Squealer. Boxer responds by working still harder. After he is injured and collapses, the pigs claim he is being sent for medical care, but Benjamin reads the vehicle's sign and discovers that Boxer has been sold to a horse slaughterer. Squealer denies this and later the pigs acquire more whisky. Years pass; the farm becomes productive but most animals remain poor. The pigs walk upright, carry whips, and reduce the commandments to a claim that some animals are more equal than others. Watching Napoleon dine and quarrel with neighboring farmers, the animals outside can no longer distinguish pigs from men.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection turns to Oceania, a state governed by the Party and the omnipresent image of Big Brother. Winston Smith works at the Ministry of Truth, rewriting old records so the Party's latest claims always appear correct. Secretly disgusted by the regime, he begins a diary, an act that exposes him to death for thoughtcrime. He is haunted by uncertain memories of childhood and by a rare piece of evidence proving that the Party falsified the past. Winston learns how Newspeak is being designed to remove the words needed for unapproved ideas. He notices O'Brien, an Inner Party official whom he hopes may be sympathetic, and a dark-haired young woman he suspects of spying on him. Searching a poor district for reliable memories, he finds that an old man's recollections offer no clear comparison with life before the Revolution. He buys a glass paperweight from Mr. Charrington, whose secondhand shop and upstairs room preserve traces of a vanished private world.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dark-haired woman secretly passes Winston a note saying that she loves him. After careful planning they meet away from surveillance. She is Julia, outwardly active in Party organizations but privately contemptuous of its control over pleasure and personal choice. They begin an affair in the countryside and later rent the room above Mr. Charrington's shop, treating it as a refuge from telescreens. Julia brings small luxuries obtained through illicit channels, and the room gives them a fragile imitation of domestic life. Winston and Julia differ in their rebellion: he longs to understand and oppose the entire system, while she concentrates on evading it in her own life. Syme, Winston's intelligent colleague, disappears and is removed from official existence. The ease of that erasure confirms the danger around the lovers, but they continue to treat the room as a private world.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "O'Brien approaches Winston and gives him an address under the pretext of lending him a Newspeak dictionary. Winston and Julia visit his luxurious flat and openly declare their opposition to the Party. O'Brien claims to represent Goldstein's Brotherhood, questions how far they will go, and promises Winston a forbidden political book. During Hate Week, Oceania's official enemy changes in the middle of a speech; the population instantly redirects its fury, while Winston and his colleagues make every past record agree that the new enemy has always been the enemy. Winston receives Goldstein's book and reads its account of permanent war and social hierarchy with Julia above the shop. A hidden telescreen then answers them. Troops break in, and Mr. Charrington reveals himself as an officer of the Thought Police. The room was a trap, and Winston and Julia are arrested.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "O'Brien continues Winston's reconstruction until Winston can repeat the Party's claims and no longer trusts any standard of truth outside its authority. Yet his emotional loyalty to Julia survives, so he is taken to Room 101, where each prisoner faces the thing he fears most. For Winston it is rats. When O'Brien threatens to set them on his face, Winston begs him to do it to Julia instead, surrendering the last relationship he had believed private. The Party releases him. He spends his days drinking at the Chestnut Tree Café, doing minor work, and waiting for official announcements. He meets Julia once; both admit they betrayed the other, and neither wants to restore the affair. During news of an Oceania victory, Winston experiences the approved public emotion as his own. The independent self that began the diary has been destroyed, and he loves Big Brother. Together with *Animal Farm*'s final transformation of pigs into masters, the collection ends with both rebellions absorbed or defeated by systems that control memory and loyalty.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "orwell-collection"
+      }
+    },
     "oscar-wildes-the-canterville-ghost": {
       "characters": {
         "characters": [
@@ -4494,6 +4726,174 @@
           }
         ],
         "work": "out-of-oz"
+      }
+    },
+    "out-of-sight-elmore-leonard": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran bank robber serving a long sentence in Florida. Courteous, observant, and drawn to improvisation, he escapes prison knowing that another conviction would likely keep him confined for the rest of his life.",
+            "id": "jack-foley",
+            "name": "Jack Foley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A deputy United States marshal who arrives at the prison during Foley's escape and is taken hostage. Armed, experienced, and resistant to intimidation, she finds herself sharing the getaway car's trunk with the fugitive she is supposed to capture.",
+            "id": "karen-sisco",
+            "name": "Karen Sisco",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Foley's loyal friend and getaway driver. Older and more cautious than some of the criminals around them, he helps organize the escape and remains Foley's most dependable partner afterward.",
+            "id": "buddy-bragg",
+            "name": "Buddy Bragg",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clumsy fellow escapee who joins Foley and Buddy after leaving prison. He talks beyond his competence and becomes interested in a larger robbery discussed by men Foley knew while incarcerated.",
+            "id": "glenn-michaels",
+            "name": "Glenn Michaels",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Karen's father, a private investigator and former law-enforcement officer. He gives his daughter practical advice without assuming that her judgment needs to be replaced by his own.",
+            "id": "marshall-sisco",
+            "name": "Marshall Sisco",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Foley's former wife in Miami, who has moved on from their marriage but still knows his habits well enough to understand the danger surrounding his escape.",
+            "id": "adele",
+            "name": "Adele",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Snoopy"
+            ],
+            "description": "A violent Detroit criminal Foley knew in prison. He is assembling a crew to rob a wealthy former inmate and regards brutality as a natural part of the plan.",
+            "id": "maurice-miller",
+            "name": "Maurice Miller",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy Detroit man who once boasted in prison about valuables kept at his home. His careless talk makes his house the target of more than one group of criminals.",
+            "id": "richard-ripley",
+            "name": "Richard Ripley",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Maurice's robbery crew whose cruelty toward people he considers powerless makes him especially dangerous inside Ripley's house.",
+            "id": "kenneth",
+            "name": "Kenneth",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "White Boy Bob"
+            ],
+            "description": "A reckless member of Maurice's Detroit crew, conspicuous among the group's armed men and not nearly as controlled as the situation requires.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "out-of-sight-elmore-leonard"
+      },
+      "recaps": {
+        "ending": "Foley and Buddy enter Ripley's house while Maurice Miller's more violent crew is carrying out the same robbery. The invasion rapidly collapses: Bob dies through his own mishandling of a gun, and Foley shoots Kenneth to stop his attack on Midge. Foley then kills Maurice during the final armed confrontation. Karen arrives with law enforcement and finds Foley still inside. Their attraction does not erase their opposing roles; she shoots and wounds him when he refuses to surrender cleanly, then takes him into custody. Buddy gets away, but Foley faces another long federal sentence. Karen remains personally interested in him and arranges to accompany his prison transport, where he is placed with a man known for escaping custody. Foley ends the book captured yet attentive to the possibility that Karen has deliberately left the future less final than an ordinary arrest would make it.",
+        "in_short": "Career bank robber Jack Foley escapes a Florida prison with help from Buddy Bragg and accidentally takes deputy U.S. marshal Karen Sisco hostage. Confined together in a car trunk, fugitive and marshal develop an immediate attraction that persists after Foley releases her. Foley, Buddy, and unreliable escapee Glenn Michaels head to Detroit to steal diamonds from Richard Ripley, a wealthy former inmate who advertised his hidden fortune in prison. Violent criminal Maurice Miller is targeting the same house. Karen follows the case to Detroit and meets Foley privately at a hotel, where both temporarily set aside the pursuit. The rival crews converge at Ripley's home. Foley kills Kenneth to protect the housekeeper and kills Maurice in the final confrontation; another robber dies through his own recklessness. Karen then shoots Foley when he will not surrender and arrests him. She accompanies his prison transport and places him beside a seasoned escape artist, leaving their pursuit and mutual fascination open beyond his capture.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Career bank robber Jack Foley is serving a lengthy sentence at a Florida prison and knows that another conviction could end any realistic hope of freedom. Buddy Bragg organizes an escape, but deputy U.S. marshal Karen Sisco happens upon it while visiting the institution. Foley takes Karen's weapon and brings her into the getaway car's trunk with him while Buddy drives. In the cramped darkness, Foley and Karen speak with an intimacy at odds with their positions as fugitive and marshal. Foley neither harms nor crudely threatens her, but she makes clear that she remains a law officer studying her captor and waiting for an opening.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Foley and Buddy get clear of the prison and release Karen rather than keeping a hostage. Fellow escapee Glenn Michaels attaches himself to them, though neither older man fully trusts his judgment. Karen returns to the investigation with Foley's voice and manner fixed in her mind. Her father, Marshall Sisco, recognizes both the professional danger and her unusual interest in the man. Foley reconnects with his former wife Adele and considers his limited choices. Instead of disappearing quietly, he is drawn toward one more lucrative robbery, a possibility based on information shared in prison.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The proposed target is Richard Ripley, a wealthy Detroit businessman who once served time and boasted to other inmates about uncut diamonds hidden in his home. Foley and Buddy travel north, with Glenn hoping to participate. They learn that Maurice Miller, a violent Detroit criminal Foley knew in prison, is also planning to invade Ripley's house with his own armed crew. Foley wants the score but dislikes Maurice and understands that the other group's methods could turn theft into murder. Karen follows the escape case and the leads around Foley, moving closer to Detroit while deciding how much of her fascination is useful instinct and how much is personal.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Detroit, Foley and Karen become aware of each other outside the simple chase. They meet in a hotel bar without pretending not to know who the other is. For one night they set aside the arrest and the escape, acting on the attraction that began in the trunk, though neither imagines that their official roles have permanently changed. Afterward Karen resumes the hunt and Foley resumes planning the Ripley robbery with Buddy. Glenn drifts toward Maurice's crew and exposes more of the competing plan. The approaching break-in now threatens to put Foley inside a house with criminals whose appetite for violence he does not share, while Karen is close enough to intervene.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maurice brings Kenneth, Bob, and the rest of his crew to Ripley's home, expecting to force the owner to reveal the diamonds. Foley and Buddy also move on the house, accepting that the rival robbery cannot be avoided. Ripley and his housekeeper Midge are placed in immediate danger as Maurice's men search and threaten. Karen and other officers close in through the connections among the escaped prisoners and the Detroit target. Foley's interest in the diamonds is increasingly overtaken by the need to control men who treat the occupants as disposable. The robbery becomes a test of whether he can remain merely a thief once armed violence begins around him.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The home invasion disintegrates. Bob dies through his own reckless handling of a firearm. When Kenneth attacks Midge, Foley shoots him, choosing to protect her rather than preserve solidarity with the robbers. Foley then kills Maurice in the final armed confrontation. Karen reaches the house and faces Foley after the other immediate threats have fallen. Their night together does not change her duty or his refusal to submit: when he will not surrender cleanly, she shoots him in the leg and arrests him. Buddy escapes, while Foley is returned to federal custody facing another long sentence. Karen accompanies the prison transport and arranges for Foley to ride beside an inmate with a history of ingenious escapes. Foley recognizes that his capture may not be the absolute end of their pursuit, and their attraction remains bound to the contest between escape and arrest.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "out-of-sight-elmore-leonard"
       }
     },
     "outlander": {

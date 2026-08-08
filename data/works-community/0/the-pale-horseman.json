@@ -145,6 +145,113 @@
         "work": "the-pale-horseman"
       }
     },
+    "the-pardoners-tale": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A church official traveling with the Canterbury pilgrims who openly explains how he makes money by preaching against greed while displaying false relics. He admits that profit, not moral reform, motivates him, then tells an example about the destructive power of avarice.",
+            "id": "the-pardoner",
+            "name": "The Pardoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The leader of the pilgrimage party, who asks the Pardoner for a tale with a moral lesson. He listens to the Pardoner's account of his methods before hearing the tale itself.",
+            "id": "the-host",
+            "name": "The Host",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Three unnamed young men whose lives center on drinking, gambling, swearing, and excess. On hearing that a companion has died, they make a reckless oath to seek out and kill Death.",
+            "id": "the-three-rioters",
+            "name": "The Three Rioters",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A child serving in the tavern who identifies the passing funeral as that of one of the rioters' companions. He reports that many people in the district have recently died and attributes the deaths to a figure called Death.",
+            "id": "the-tavern-boy",
+            "name": "The Tavern Boy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An aged wanderer whom the three rioters meet on the road. He says that he longs to die but cannot find anyone willing to exchange youth for his age, and he directs the men toward an oak where he says they will find Death.",
+            "id": "the-old-man",
+            "name": "The Old Man",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drug seller in a nearby town from whom the youngest rioter requests a powerful poison, claiming that he needs to kill vermin. The apothecary supplies a substance potent enough to cause rapid death.",
+            "id": "the-apothecary",
+            "name": "The Apothecary",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow pilgrim who intervenes after the Pardoner and the Host exchange angry words following the tale. He restores peace between them and allows the company to continue its journey.",
+            "id": "the-knight",
+            "name": "The Knight",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pardoners-tale"
+      },
+      "recaps": {
+        "ending": "The youngest rioter returns from town with food, wine, and poison hidden in two bottles. His companions kill him as planned, intending to divide the treasure between themselves. They then drink the poisoned wine and die, so all three find Death beside the gold they hoped to possess. The Pardoner closes with a conventional warning against greed and other sins, then immediately tries to sell pardons and access to his supposed relics to the very pilgrims who have heard him admit that these objects are fraudulent. He singles out the Host, who responds with an angry and insulting refusal. The Knight steps between them and urges reconciliation; the Pardoner and Host make peace, and the pilgrimage continues.",
+        "in_short": "The Pardoner admits to the Canterbury pilgrims that he preaches against greed solely to earn money, using practiced sermons and false relics to manipulate congregations. He then tells of three drunken rioters who vow to kill Death after a companion dies. An old man directs them to an oak, where they find a cache of gold instead. Greed displaces their fellowship: two plan to murder the youngest, while he buys poison to kill them and keep all the treasure. The pair stab him when he returns, then drink his poisoned wine and die. After using their fate to condemn avarice, the Pardoner tries to sell pardons and relics to his fellow travelers despite having exposed his fraud. The Host angrily rejects him, and the Knight brokers a reconciliation so the group can proceed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At the Host's request, the Pardoner introduces his tale by revealing his own methods. Although his sermons repeatedly condemn greed, his real purpose is to collect money. He displays objects he falsely identifies as holy relics, offers supposed spiritual benefits, and uses the same stock moral examples in different places. He is candid with the pilgrims that he does not practice the virtues he recommends and has no wish to rescue his listeners from sin. Even so, he maintains that a morally corrupt speaker can tell a morally useful story. He prepares to demonstrate this with a tale centered on avarice.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three young rioters are drinking when a funeral passes. Learning that the dead man was their companion and that many others have recently died, they swear to hunt down and kill Death. On the road, an old man directs them to an oak, where they find a large quantity of gold. They abandon their quest and decide to move the treasure after dark. The youngest goes to town for provisions; the other two plan to stab him on his return. He independently buys poison and adds it to two wine bottles so he can kill his companions and keep the gold. When he returns, the pair murder him, then drink the poisoned wine and die. The Pardoner ends by warning against greed but at once offers his fraudulent pardons and relics to the pilgrims. The Host rejects him angrily, and the Knight intervenes to reconcile them before the journey continues.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pardoners-tale"
+      }
+    },
     "the-patchwork-girl-of-oz": {
       "characters": {
         "characters": [

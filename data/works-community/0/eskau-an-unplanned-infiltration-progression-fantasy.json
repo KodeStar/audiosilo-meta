@@ -910,6 +910,296 @@
         "work": "eternitys-battleship"
       }
     },
+    "ethan-frome": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An engineer temporarily assigned to Starkfield who becomes curious about Ethan Frome, a visibly injured and unusually reserved local man. A winter journey and an enforced stay at the Frome farm give him access to the household behind the town's fragments of gossip.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fifty-two-year-old Starkfield farmer whose damaged body and bleak, solitary manner make him look much older. Once physically powerful, he now moves with difficulty and earns a meager living hauling goods. The narrator is struck by the endurance suggested by his appearance and by the ruin of his circumstances.",
+            "id": "ethan-frome",
+            "name": "Ethan Frome",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former stage driver and longtime Starkfield observer who first identifies Ethan for the narrator. His recollections establish that Ethan's injuries came from a serious accident many years earlier.",
+            "id": "harmon-gow",
+            "name": "Harmon Gow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mrs. Ned Hale"
+            ],
+            "description": "A Starkfield widow who knew the Fromes when she was young. She offers the narrator a more compassionate view of Ethan than local rumor does, though painful knowledge makes her reluctant to tell everything she remembers.",
+            "id": "ruth-hale",
+            "name": "Ruth Hale",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zeena"
+            ],
+            "description": "Ethan's older wife, who once nursed his sick mother and then married him. She is preoccupied with her own poor health and depends on patent remedies and medical consultations. At the opening of Ethan's remembered story, she and Ethan share a strained, nearly silent household.",
+            "id": "zenobia-frome",
+            "name": "Zenobia Frome",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zeena's young cousin, taken into the Frome household because she has little money and can help with domestic work. Mattie is inexperienced at chores but warm, responsive, and delighted by small pleasures. Her presence brings companionship and brightness to Ethan's constricted life.",
+            "id": "mattie-silver",
+            "name": "Mattie Silver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The well-to-do son of Starkfield's Irish grocer. Sociable and self-assured, he pays attention to Mattie at village gatherings and appears to Ethan to be a plausible rival for her affection.",
+            "id": "denis-eady",
+            "name": "Denis Eady",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hired man at the Frome farm, quiet and dependable. He assists Ethan with hauling and farm work and generally avoids involvement in the household's tensions.",
+            "id": "jotham-powell",
+            "name": "Jotham Powell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Starkfield builder and Ruth's father. He owes Ethan money for lumber but is himself short of cash, leaving Ethan unable to obtain the payment he needs when his situation becomes urgent.",
+            "id": "andrew-hale",
+            "name": "Andrew Hale",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "ethan-frome"
+      },
+      "recaps": {
+        "ending": "Unable to secure money for an escape, Ethan prepares to take Mattie to the station while Zeena remains determined to send her away. Ethan and Mattie prolong their last journey and go sledding. Mattie proposes that they steer into a large elm so they can die together rather than be separated. Ethan agrees, but their suicide attempt fails: both survive with severe injuries. More than twenty years later, the frame narrator enters the Frome farmhouse and discovers the result. Ethan is crippled and worn down, Mattie is also disabled and has become bitter and demanding, and Zeena—formerly the household's invalid—cares for them. Ruth Hale observes that the three might have been better off if Mattie had died. The attempted escape has fixed all three in the same impoverished house, with their earlier roles grimly reversed and no prospect of release.",
+        "in_short": "In wintry Starkfield, the young Ethan Frome is trapped by poverty and a joyless marriage to the sickly Zeena. He falls in love with Zeena's cousin Mattie Silver, whose warmth briefly transforms his isolated life. After Zeena travels to consult a doctor, Ethan and Mattie spend an evening alone, but their hope is shadowed when Zeena returns and announces that she will dismiss Mattie and hire another girl. Ethan considers fleeing with Mattie but cannot obtain the money and cannot abandon his obligations. Driving her to the station, he agrees to Mattie's proposal that they die together by steering a sled into an elm. They survive the crash, permanently injured. Decades later, Ethan is crippled, Mattie has become an embittered invalid, and Zeena cares for both of them in the decaying Frome farmhouse.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed engineer spending a winter in Starkfield becomes fascinated by Ethan Frome, a silent, badly injured farmer known to have been hurt in an accident long ago. When severe weather forces the narrator to shelter at the Frome farm, the narrative turns back to Ethan's youth. Young Ethan waits outside a church social for Mattie Silver, the impoverished cousin of his wife, Zeena. Mattie has come to help in the Frome household, and her liveliness has awakened Ethan's affection. He watches her with Denis Eady, then walks her home through the snow. Their mutual attraction becomes apparent, but at the farmhouse Zeena waits up for them, a reminder of the marriage and duties enclosing Ethan.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zeena announces that she will spend the night away in order to consult a new doctor. Ethan welcomes the rare chance to be alone with Mattie, though farm business and the failure of his debtor Andrew Hale to pay promptly emphasize how little freedom money could buy him. That evening Mattie prepares a special supper and uses Zeena's treasured red glass pickle dish. The cat knocks it down and breaks it, and Ethan hides the pieces with the intention of replacing it before Zeena notices. He and Mattie enjoy a brief imitation of domestic happiness, but neither can bring their feelings into the open. Their evening ends without a declaration, leaving the broken dish as a concealed threat.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zeena returns from her medical consultation claiming that she is seriously ill and must hire a stronger servant. Because the Fromes cannot support two helpers, she has decided to dismiss Mattie and send her away immediately. Ethan protests but has no financial answer to Zeena's plan. During their argument, Zeena discovers the broken pickle dish and correctly understands that Mattie used it. The damage confirms her hostility and removes any hope that she will reconsider. Ethan tells Mattie that he will not let her go, but he has neither a workable plan nor the money to make that promise real.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ethan imagines running west with Mattie and even begins a farewell letter to Zeena, but poverty, debt, and responsibility make flight impossible. He cannot bring himself to obtain money from the sympathetic Hales under false pretenses. Zeena therefore proceeds with Mattie's dismissal. Ethan drives Mattie toward the station, delaying their separation by visiting a place associated with their happier moments and by taking a final sled ride. Mattie proposes that they deliberately strike a large elm and die together. Ethan agrees, but the collision does not kill them. In the frame narrative more than twenty years later, the narrator finds Ethan crippled in the farmhouse with Zeena and Mattie. Mattie, also permanently disabled, has become harsh and querulous, while Zeena has become her caregiver. The failed suicide has bound all three into decades of poverty, pain, and mutual dependence.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "ethan-frome"
+      }
+    },
+    "ethan-frome-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An engineer temporarily assigned to Starkfield who becomes curious about Ethan Frome, a visibly injured and unusually reserved local man. A winter journey and an enforced stay at the Frome farm give him access to the household behind the town's fragments of gossip.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fifty-two-year-old Starkfield farmer whose damaged body and bleak, solitary manner make him look much older. Once physically powerful, he now moves with difficulty and earns a meager living hauling goods. The narrator is struck by the endurance suggested by his appearance and by the ruin of his circumstances.",
+            "id": "ethan-frome",
+            "name": "Ethan Frome",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former stage driver and longtime Starkfield observer who first identifies Ethan for the narrator. His recollections establish that Ethan's injuries came from a serious accident many years earlier.",
+            "id": "harmon-gow",
+            "name": "Harmon Gow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mrs. Ned Hale"
+            ],
+            "description": "A Starkfield widow who knew the Fromes when she was young. She offers the narrator a more compassionate view of Ethan than local rumor does, though painful knowledge makes her reluctant to tell everything she remembers.",
+            "id": "ruth-hale",
+            "name": "Ruth Hale",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zeena"
+            ],
+            "description": "Ethan's older wife, who once nursed his sick mother and then married him. She is preoccupied with her own poor health and depends on patent remedies and medical consultations. At the opening of Ethan's remembered story, she and Ethan share a strained, nearly silent household.",
+            "id": "zenobia-frome",
+            "name": "Zenobia Frome",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zeena's young cousin, taken into the Frome household because she has little money and can help with domestic work. Mattie is inexperienced at chores but warm, responsive, and delighted by small pleasures. Her presence brings companionship and brightness to Ethan's constricted life.",
+            "id": "mattie-silver",
+            "name": "Mattie Silver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The well-to-do son of Starkfield's Irish grocer. Sociable and self-assured, he pays attention to Mattie at village gatherings and appears to Ethan to be a plausible rival for her affection.",
+            "id": "denis-eady",
+            "name": "Denis Eady",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hired man at the Frome farm, quiet and dependable. He assists Ethan with hauling and farm work and generally avoids involvement in the household's tensions.",
+            "id": "jotham-powell",
+            "name": "Jotham Powell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Starkfield builder and Ruth's father. He owes Ethan money for lumber but is himself short of cash, leaving Ethan unable to obtain the payment he needs when his situation becomes urgent.",
+            "id": "andrew-hale",
+            "name": "Andrew Hale",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "ethan-frome-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Unable to secure money for an escape, Ethan prepares to take Mattie to the station while Zeena remains determined to send her away. Ethan and Mattie prolong their last journey and go sledding. Mattie proposes that they steer into a large elm so they can die together rather than be separated. Ethan agrees, but their suicide attempt fails: both survive with severe injuries. More than twenty years later, the frame narrator enters the Frome farmhouse and discovers the result. Ethan is crippled and worn down, Mattie is also disabled and has become bitter and demanding, and Zeena—formerly the household's invalid—cares for them. Ruth Hale observes that the three might have been better off if Mattie had died. The attempted escape has fixed all three in the same impoverished house, with their earlier roles grimly reversed and no prospect of release.",
+        "in_short": "In wintry Starkfield, the young Ethan Frome is trapped by poverty and a joyless marriage to the sickly Zeena. He falls in love with Zeena's cousin Mattie Silver, whose warmth briefly transforms his isolated life. After Zeena travels to consult a doctor, Ethan and Mattie spend an evening alone, but their hope is shadowed when Zeena returns and announces that she will dismiss Mattie and hire another girl. Ethan considers fleeing with Mattie but cannot obtain the money and cannot abandon his obligations. Driving her to the station, he agrees to Mattie's proposal that they die together by steering a sled into an elm. They survive the crash, permanently injured. Decades later, Ethan is crippled, Mattie has become an embittered invalid, and Zeena cares for both of them in the decaying Frome farmhouse.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed engineer spending a winter in Starkfield becomes fascinated by Ethan Frome, a silent, badly injured farmer known to have been hurt in an accident long ago. When severe weather forces the narrator to shelter at the Frome farm, the narrative turns back to Ethan's youth. Young Ethan waits outside a church social for Mattie Silver, the impoverished cousin of his wife, Zeena. Mattie has come to help in the Frome household, and her liveliness has awakened Ethan's affection. He watches her with Denis Eady, then walks her home through the snow. Their mutual attraction becomes apparent, but at the farmhouse Zeena waits up for them, a reminder of the marriage and duties enclosing Ethan.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zeena announces that she will spend the night away in order to consult a new doctor. Ethan welcomes the rare chance to be alone with Mattie, though farm business and the failure of his debtor Andrew Hale to pay promptly emphasize how little freedom money could buy him. That evening Mattie prepares a special supper and uses Zeena's treasured red glass pickle dish. The cat knocks it down and breaks it, and Ethan hides the pieces with the intention of replacing it before Zeena notices. He and Mattie enjoy a brief imitation of domestic happiness, but neither can bring their feelings into the open. Their evening ends without a declaration, leaving the broken dish as a concealed threat.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zeena returns from her medical consultation claiming that she is seriously ill and must hire a stronger servant. Because the Fromes cannot support two helpers, she has decided to dismiss Mattie and send her away immediately. Ethan protests but has no financial answer to Zeena's plan. During their argument, Zeena discovers the broken pickle dish and correctly understands that Mattie used it. The damage confirms her hostility and removes any hope that she will reconsider. Ethan tells Mattie that he will not let her go, but he has neither a workable plan nor the money to make that promise real.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ethan imagines running west with Mattie and even begins a farewell letter to Zeena, but poverty, debt, and responsibility make flight impossible. He cannot bring himself to obtain money from the sympathetic Hales under false pretenses. Zeena therefore proceeds with Mattie's dismissal. Ethan drives Mattie toward the station, delaying their separation by visiting a place associated with their happier moments and by taking a final sled ride. Mattie proposes that they deliberately strike a large elm and die together. Ethan agrees, but the collision does not kill them. In the frame narrative more than twenty years later, the narrator finds Ethan crippled in the farmhouse with Zeena and Mattie. Mattie, also permanently disabled, has become harsh and querulous, while Zeena has become her caregiver. The failed suicide has bound all three into decades of poverty, pain, and mutual dependence.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "ethan-frome-amazonclassics-edition"
+      }
+    },
     "eugene-onegin": {
       "characters": {
         "characters": [
