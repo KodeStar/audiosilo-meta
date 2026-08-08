@@ -1140,6 +1140,141 @@
         "work": "voyager"
       }
     },
+    "waiting-for-the-barbarians": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Magistrate"
+            ],
+            "description": "The unnamed civil administrator of a remote frontier settlement of the Empire. Nearing retirement, he prefers routine, local accommodation, and his archaeological interests to military action. The arrival of the Third Bureau forces him to confront how much his quiet administration depends on imperial power.",
+            "id": "magistrate",
+            "name": "The Magistrate",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An officer of the Empire's Third Bureau who comes to the frontier to investigate reports of unrest among the nomadic people beyond the border. Joll wears dark glasses and treats pain as a reliable route to confession, bringing the methods of the imperial security service into the Magistrate's previously quiet settlement.",
+            "id": "colonel-joll",
+            "name": "Colonel Joll",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elderly man brought into the settlement with a younger relative after soldiers detain them near the frontier. He says they came to seek medicine, but Joll treats him as a source of military information about the people the Empire calls barbarians.",
+            "id": "old-prisoner",
+            "name": "The Old Prisoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Boy"
+            ],
+            "description": "The old prisoner's young companion. Frightened and dependent on the adults holding him, he is questioned by Joll after the old man dies in custody.",
+            "id": "prisoners-grandson",
+            "name": "The Prisoner's Grandson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Girl"
+            ],
+            "description": "A young woman from the nomadic people beyond the frontier, left begging in the settlement after an imperial roundup. Interrogation has damaged her eyesight and injured her feet and ankles. The Magistrate takes her into his rooms, but her reserve prevents him from turning care into easy understanding.",
+            "id": "barbarian-girl",
+            "name": "The Barbarian Girl",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger Third Bureau officer who assumes authority at the settlement after the Magistrate's arrest. Mandel is polished, contemptuous, and willing to use imprisonment, deprivation, and public humiliation against a man who has been declared an enemy of the Empire.",
+            "id": "officer-mandel",
+            "name": "Officer Mandel",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "waiting-for-the-barbarians"
+      },
+      "recaps": {
+        "ending": "The imperial campaign against the supposed barbarian threat collapses without producing the invasion it was meant to prevent. Soldiers return exhausted and diminished, and Colonel Joll passes through the settlement with his authority visibly broken before the remaining forces withdraw. Many townspeople flee in expectation of an attack, but the nomadic people never arrive. No formal order restores the Magistrate; he simply resumes administrative work because someone must organize food, shelter, and winter preparations for those who remain. His body and status have been permanently marked by detention, and he has gained no complete understanding of the young woman he returned to her people. Snow covers the frontier. The settlement waits for an enemy constructed by imperial fear, while the Magistrate recognizes that his efforts to explain his experience have not brought him to a satisfying conclusion.",
+        "in_short": "An aging Magistrate administers a remote imperial settlement until Colonel Joll of the Third Bureau arrives to investigate an alleged barbarian uprising. Joll tortures prisoners and leads raids that create the hostility he claims to be uncovering. After the soldiers depart, the Magistrate shelters a young nomadic woman whose sight and feet were damaged in custody. Unable to understand either her suffering or his own motives, he escorts her back to her people. On returning, he is arrested for aiding the enemy. Imprisonment, beatings, and public humiliation strip him of office and expose the violence beneath imperial law. He protests when Joll tortures new captives, while an army marches into the wilderness. The expedition fails, discipline collapses, and the troops abandon the frontier. The expected invasion never comes. Without formal reinstatement, the Magistrate again organizes the settlement for winter, left with damaged faith in the Empire and no neat account of what he has learned.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The unnamed Magistrate has spent years administering a quiet frontier settlement of the Empire and expects to finish his career without major disturbance. Colonel Joll of the Third Bureau arrives in dark glasses to investigate rumors that the nomadic people beyond the border are preparing an attack. Local soldiers bring in an old man and his grandson, travelers who say they came for medicine. Joll interrogates them as enemy informants. The old man dies in custody, and the boy is tortured until he gives the answers his questioners seek. Joll then uses those answers to justify a wider expedition. Soldiers return with more prisoners, including families who pose no evident military threat. The Magistrate is disturbed by the treatment of the captives but continues to cooperate with the machinery of detention, telling himself that Joll's methods are temporary and separate from his own administration.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Joll and the expedition leave, the Magistrate tries to restore the settlement's ordinary routine. A young nomadic woman remains behind, begging in the streets. Her eyesight has been damaged and her feet and ankles injured during imperial interrogation. The Magistrate takes her into his rooms and repeatedly washes and massages her feet. Their intimacy is uncertain: he is fascinated by the marks left on her body but cannot recover a complete account of what was done or understand what she wants from him. His care is entangled with desire, guilt, and the same wish to interpret her that shaped Joll's questioning. The woman remains guarded and refuses to become a simple object of rescue. As winter passes, the Magistrate becomes dissatisfied with keeping her in a dependent position and decides that he must return her to her own people beyond the frontier.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Magistrate leads a small party across the difficult landscape to return the young woman to her people. The journey exposes the soldiers to cold, fatigue, and uncertainty far from the settlement. The Magistrate and the woman briefly become sexual partners, but this does not resolve the distance between them. When they meet a group of nomads, she chooses to go with them. The Magistrate hands her over with gifts and turns back, unsure how she will describe him or whether his act has repaired anything. On reaching the settlement, he finds that imperial forces have returned and his position has been taken from him. His unauthorized journey is interpreted as contact with the enemy. He is arrested, confined, and accused of treason without a hearing. The legal order he once represented offers no protection once the Third Bureau has classified him as disloyal.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Held indefinitely and denied the privileges of his former office, the Magistrate experiences hunger, filth, isolation, and the gradual loss of a stable public identity. Officer Mandel oversees the settlement and treats him as an object of contempt rather than a prisoner entitled to charges or trial. Colonel Joll returns with another group of captives. They are bound and displayed before the townspeople as proof of the barbarian danger. When Joll prepares a public beating, the Magistrate pushes into the square and denounces the cruelty, insisting that the prisoners are human beings rather than signs of an enemy conspiracy. His protest does not stop the punishment. He is beaten and subjected to a staged public humiliation that turns his body into a warning to the settlement. The Empire's claim to defend civilization is contradicted openly by the conduct of its agents.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After his public punishment, the Magistrate is no longer kept under the same strict confinement, but he has neither office nor secure place in the community. He depends on food and shelter offered irregularly by people who once answered to him. The imperial army has marched into the wilderness to destroy the force it expects to find there. Instead of a quick victory, reports bring anxiety, desertion, and evidence that the expedition cannot sustain itself in the frontier landscape. The soldiers who return are exhausted and depleted. The settlement's confidence collapses as residents anticipate retaliation and prepare to leave. Mandel and the remaining officials maintain a show of command, but the Empire's representatives are increasingly concerned with their own departure. The threat used to justify torture and occupation remains unseen, while the institutions supposedly protecting the town begin to abandon it.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The failed expedition breaks apart. Colonel Joll returns through the settlement with reduced forces and diminished authority, unwilling to answer the Magistrate's questions about the campaign. Imperial troops and officials withdraw, leaving the frontier they had claimed to defend. Many residents flee as well, convinced that a barbarian attack must follow, but no invading army appears. The Magistrate receives no formal judgment or reinstatement. Because basic work still needs to be done, he resumes practical leadership and organizes the remaining townspeople to gather food, repair shelters, and prepare for winter. His treatment has destroyed his former confidence in the Empire, yet he cannot place himself wholly outside the system he served. He also cannot turn his relationship with the young woman into a clear lesson or claim to have understood her. Snow arrives while the settlement waits for an enemy that imperial violence helped imagine. The Magistrate ends still searching for an adequate account of what has happened and aware that he has not found one.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "waiting-for-the-barbarians"
+      }
+    },
     "waking-gods": {
       "characters": {
         "characters": [
