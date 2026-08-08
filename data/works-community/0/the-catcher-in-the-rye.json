@@ -2279,6 +2279,115 @@
         "work": "the-collector-john-fowles"
       }
     },
+    "the-color-out-of-space": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An engineer surveying land west of Arkham for a new reservoir. Troubled by the area's lifeless gray waste and by local reluctance to discuss it, he seeks out Ammi Pierce and records the older man's account of what happened there decades earlier.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elderly Arkham resident who lives near the ruined Gardner farm. Dismissed by many neighbors as unreliable, he is nevertheless the principal surviving witness to the strange decline of the land and family after an unusual object falls from the sky.",
+            "id": "ammi-pierce",
+            "name": "Ammi Pierce",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farmer who lives with his wife and three sons in the hills west of Arkham. After a meteorite lands beside his well, he watches his flourishing farm become tainted and his household fall into isolation, illness, and fear.",
+            "id": "nahum-gardner",
+            "name": "Nahum Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nahum Gardner's wife and the mother of their three sons. As the farm changes around the family, her health and behavior deteriorate until Nahum confines her in an upstairs room.",
+            "id": "mrs-gardner",
+            "name": "Mrs. Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Gardner son. He tries to help his family as the farm's animals, plants, and water become increasingly unnatural, but the mounting horror also overwhelms him.",
+            "id": "thaddeus-gardner",
+            "name": "Thaddeus Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Nahum and Mrs. Gardner's three sons, living on the isolated family farm when the object from the sky contaminates the surrounding land.",
+            "id": "merwin-gardner",
+            "name": "Merwin Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The youngest of the Gardner sons. He remains with his family as the blight around their farmhouse deepens and contact with their neighbors dwindles.",
+            "id": "zenas-gardner",
+            "name": "Zenas Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Researchers from Miskatonic University who examine the fallen mass. Their tests reveal properties that do not fit familiar terrestrial materials, but the sample steadily dwindles and leaves them without a lasting specimen or a satisfactory explanation.",
+            "id": "miskatonic-professors",
+            "name": "The Miskatonic professors",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-color-out-of-space"
+      },
+      "recaps": {
+        "ending": "Ammi and several officials enter the nearly abandoned Gardner farm, where they find Nahum dying and the household destroyed. Evidence recovered from the well points to the missing family members, while an influence below begins to stir. After nightfall, the farm's remaining vegetation shines and writhes as the same impossible color gathers over the well. It surges upward and departs into the sky, tearing apart the farmstead and leaving the blasted land behind. Ammi sees a smaller trace fail to escape and sink back into the well. Years later, the narrator accepts that Ammi's account explains the dead landscape better than any ordinary theory. He abandons his survey work rather than help flood the site for Arkham's reservoir, fearing that the water would spread whatever remains beneath the heath.",
+        "in_short": "A reservoir surveyor investigates a barren gray tract west of Arkham and hears its history from Ammi Pierce. In 1882, a strange meteorite landed near farmer Nahum Gardner's well. University researchers could neither classify nor preserve its material, which displayed an unprecedented color and gradually vanished. The next season brought enormous but inedible crops, deformed animals, altered vegetation, and a steady collapse of the Gardner family's health and sanity. One by one the family members died or disappeared as the farm lost all ordinary life. When Ammi returned with officials, they found the last ruins of the household and signs of horror in the well. That night, the color rose from the farm and shot into space, though Ammi saw a remnant fall back. The land became the blasted heath. Convinced that something still waits underground, the surveyor refuses to continue planning a reservoir that would cover the site and carry its water toward Arkham.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An engineer surveying a future reservoir west of Arkham finds a desolate tract known locally as the blasted heath. Seeking an explanation, he visits Ammi Pierce, who recalls the Gardner farm before the land died. In 1882, a meteorite struck beside the farm's well. Scientists from Miskatonic University found that its substance resisted normal tests, steadily shrank, and contained a small globule displaying a color outside ordinary experience. The material soon disappeared, but the following growing season produced huge crops that tasted foul. Plants, animals, and the landscape then developed unnatural shapes and behavior. The Gardners became isolated as Nahum's wife lost her sanity and his sons sickened or vanished. Ammi eventually accompanied officials to the farm, where they found Nahum dying, the house nearly deserted, and terrible evidence in the well. After dark, the trees and vegetation shone and moved while the color gathered over the property. It burst from the well, destroyed the farmstead, and streamed into the sky; Ammi alone saw a smaller remnant sink back into the earth. The surrounding acres became gray and lifeless. Accepting that the threat may remain below, the narrator leaves the reservoir project rather than help submerge the heath and distribute its water.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-color-out-of-space"
+      }
+    },
     "the-colour-of-magic": {
       "characters": {
         "characters": [
@@ -3712,6 +3821,143 @@
           }
         ],
         "work": "the-courtship-of-miles-standish"
+      }
+    },
+    "the-cricket-in-times-square": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A resourceful mouse who lives in a disused drainpipe in the Times Square subway station. He knows how to survive on what travelers leave behind and is intensely curious when an unfamiliar chirping reaches his corner of the station.",
+            "id": "tucker-mouse",
+            "name": "Tucker Mouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of the Bellini family, who help run a small newsstand in the Times Square subway station. Gentle and attentive to animals, he finds a frightened cricket among the papers and decides to care for him.",
+            "id": "mario-bellini",
+            "name": "Mario Bellini",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A country cricket from Connecticut who is accidentally carried to New York in a picnic basket. The crowded subway is bewildering after the quiet meadow he knows, but Mario's kindness gives him a safe place while he considers how he might ever get home.",
+            "id": "chester-cricket",
+            "name": "Chester Cricket",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A large alley cat and Tucker's close friend. His friendship with a mouse surprises Chester, but Harry is calm, loyal, and familiar with the city beyond the station.",
+            "id": "harry-cat",
+            "name": "Harry Cat",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mario's practical mother and one of the owners of the family newsstand. Worried about cleanliness, money, and the survival of the business, she initially regards the cricket as another pest in the subway.",
+            "id": "mama-bellini",
+            "name": "Mama Bellini",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mario's father and Mama Bellini's partner at the newsstand. More easygoing than his wife, he is willing to let Mario keep the cricket as long as the boy accepts responsibility for it.",
+            "id": "papa-bellini",
+            "name": "Papa Bellini",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly shopkeeper in Chinatown who recognizes what kind of creature Mario has found and treats Chester with respect. He shares Chinese traditions about crickets and helps Mario provide the food and surroundings Chester needs.",
+            "id": "sai-fong",
+            "name": "Sai Fong",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A music teacher and regular customer of the Bellinis. His trained ear recognizes that Chester's chirping reproduces real melodies with remarkable accuracy, and he understands that the cricket's gift deserves wider notice.",
+            "id": "mr-smedley",
+            "name": "Mr. Smedley",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-cricket-in-times-square"
+      },
+      "recaps": {
+        "ending": "Chester's scheduled performances make him famous and bring enough customers to secure the Bellinis' newsstand, but the noise, crowds, and obligation to perform leave him longing for his Connecticut meadow. Tucker and Harry understand that success in New York cannot replace the home Chester wants. After a final concert, they help him reach Grand Central and board a train headed toward Connecticut. Mario is saddened when he learns that Chester has gone, yet he accepts that keeping his friend in the city would have been wrong. The Bellinis' business remains restored by the attention Chester brought it. Chester travels back to the country, while Tucker and Harry return to their station lives and begin thinking about visiting him there someday.",
+        "in_short": "Chester Cricket is accidentally carried from a Connecticut meadow to the Times Square subway station, where Mario Bellini shelters him at his family's struggling newsstand. Chester befriends Tucker Mouse and Harry Cat, learns to navigate the city, and survives mishaps that cost the Bellinis money and nearly destroy their stand. His ability to reproduce music eventually wins over Mama Bellini and attracts the attention of music teacher Mr. Smedley. Public performances turn Chester into a sensation, drawing crowds that rescue the newsstand from financial trouble. Fame also makes Chester miserable: he misses the quiet country and does not want his gift to become a permanent job. Once the Bellinis are secure, Tucker and Harry help him board a train for Connecticut. Mario lets his friend go, and Chester returns home after changing the fortunes of everyone he met in Times Square.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Tucker Mouse, who lives near the Bellini newsstand in the Times Square subway station, hears a sound unlike the city's usual machinery and traffic. Mario Bellini, the boy who helps his parents at the stand, follows the chirping and finds a cricket buried among the newspapers. The cricket is Chester, a resident of a Connecticut meadow who climbed into a picnic basket for food and was unknowingly carried onto a train to New York. Frightened by the station and unable to find a route home, Chester accepts Mario's protection. Mario persuades his skeptical parents to let the cricket remain at the newsstand, giving the stranded visitor a temporary home in the middle of the city.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chester settles beside the Bellinis' newsstand after his accidental journey from Connecticut. Mario cares for him, while Tucker Mouse and Tucker's friend Harry Cat introduce themselves and show that even natural enemies can become companions in the subway. Mario takes Chester to Chinatown, where Sai Fong explains the respect traditionally given to crickets and helps Mario understand his guest. Mario also obtains an ornate cricket cage. Although it is intended as a generous gift, Chester is more comfortable when he can choose whether to be inside it. He remains overwhelmed by New York, but the friendship of Mario, Tucker, and Harry gives him a small community within the station.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chester's new life is threatened when he eats part of a two-dollar bill belonging to the Bellinis while asleep. Mama Bellini insists that the missing money be repaid. Tucker reluctantly opens the cache of coins he has spent years collecting, and the friends replace the loss. Later, after a generous meal, Tucker and Harry hold a celebration with Chester in the newsstand. Their dancing and excitement end in an accident with matches, starting a fire that damages the stand. The mishap makes Chester fear that he brings trouble to the people who have helped him, and it confirms Mama Bellini's belief that keeping him has become a costly risk.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the eaten money and the fire, Chester considers himself a jinx and is confined to his cage. His prospects change when his chirping reveals an extraordinary ability: he can reproduce music he has heard with precision and feeling. Mama Bellini, moved by a familiar Italian melody, begins to see him differently. Mr. Smedley, a music teacher who visits the stand, recognizes that Chester is not making ordinary cricket sounds but performing recognizable compositions. His enthusiasm turns the friends' private discovery into an opportunity that may repair both Chester's reputation and the Bellinis' failing business.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Word of Chester's musical gift spreads, and his performances draw large crowds into the Times Square station. The attention brings customers to the Bellinis and saves their newsstand, while Chester becomes a celebrated attraction. The success costs him the freedom and quiet he valued in Connecticut, and he grows homesick under the pressure of performing on schedule. Once he has done enough to secure the Bellinis' future, he decides to leave. Tucker and Harry help him make his way to Grand Central and onto a train bound for Connecticut after a final concert. Mario is hurt to lose him but understands why he went. Chester returns to his meadow, the newsstand remains prosperous, and Tucker and Harry are left imagining a country visit to their absent friend.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-cricket-in-times-square"
       }
     },
     "the-crossing-cormac-mccarthy": {

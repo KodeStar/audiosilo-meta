@@ -2151,6 +2151,220 @@
         "work": "the-icebound-land"
       }
     },
+    "the-idiot-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Prince Lev Nikolayevich Myshkin"
+            ],
+            "description": "An impoverished twenty-six-year-old prince returning to Russia after several years of treatment for epilepsy in Switzerland. Open, compassionate, and strikingly free of social calculation, he is often taken for a fool even when he understands the pain and vanity around him with unusual clarity.",
+            "id": "prince-myshkin",
+            "name": "Prince Myshkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Parfyon Semyonovich Rogozhin"
+            ],
+            "description": "A merchant's son whom Myshkin meets on the train to Saint Petersburg. He is returning after inheriting a large fortune and speaks with consuming intensity about Nastasya Filippovna, for whom he is prepared to spend recklessly.",
+            "id": "parfyon-rogozhin",
+            "name": "Parfyon Rogozhin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative minor official who meets Myshkin and Rogozhin on the train. Quick to gather information and attach himself to wealthy or useful people, he shifts between comic servility, shrewd observation, and occasional concern for others.",
+            "id": "lukyan-lebedev",
+            "name": "Lukyan Lebedev",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Ivan Fyodorovich Yepanchin"
+            ],
+            "description": "A prosperous general and distant relation of Myshkin's. Practical and socially ambitious, he receives the unknown prince cautiously and is surprised by his intelligence and candor.",
+            "id": "general-yepanchin",
+            "name": "General Yepanchin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ganya"
+            ],
+            "description": "General Yepanchin's secretary, a clever and proud young man from a financially strained family. He is considering a marriage to Nastasya Filippovna that could bring him money and advancement, though the arrangement wounds his pride and divides his household.",
+            "id": "gavril-ivolgin",
+            "name": "Gavril Ardalionovich Ivolgin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nastasya Filippovna Barashkova"
+            ],
+            "description": "A celebrated and socially vulnerable young woman whose portrait immediately affects Myshkin. Orphaned and raised under Totsky's control, she is being urged toward marriage with Ganya while wealthy men negotiate her future around a large payment.",
+            "id": "nastasya-filippovna",
+            "name": "Nastasya Filippovna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Yepanchin's forceful wife and mother of three daughters. She is impulsive, proud of her family, and intrigued by Myshkin's apparent innocence, partly because they share the Myshkin family name.",
+            "id": "lizaveta-prokofyevna",
+            "name": "Lizaveta Prokofyevna Yepanchina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Yepanchin daughter. Intelligent, beautiful, and guarded behind teasing behavior, she is curious about Myshkin but resists being interpreted or managed by her family.",
+            "id": "aglaya-yepanchina",
+            "name": "Aglaya Yepanchina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy landowner who became Nastasya Filippovna's guardian after her father's death and shaped her upbringing for his own benefit. He now wants to free himself for a respectable marriage and supports a financial arrangement intended to marry her to Ganya.",
+            "id": "afanasy-totsky",
+            "name": "Afanasiy Ivanovich Totsky",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ganya's adolescent brother, friendly, direct, and less constrained by status than the adults around him. He takes quickly to Myshkin and becomes a dependable messenger and companion.",
+            "id": "kolya-ivolgin",
+            "name": "Kolya Ivolgin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ganya and Kolya's father, a retired general who tells grandiose and frequently impossible stories about his past. His household treats his fabrications with weary familiarity, while Myshkin responds without humiliating him.",
+            "id": "general-ivolgin",
+            "name": "General Ardalion Ivolgin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gravely ill young man in Kolya's circle who knows he has little time left. Proud, intellectually combative, and desperate to retain control over how others see him, he reacts sharply to pity and to Myshkin's compassion.",
+            "id": "ippolit-terentyev",
+            "name": "Ippolit Terentyev",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evgeny Pavlovich"
+            ],
+            "description": "A wealthy and polished young officer moving in the Yepanchins' social circle. He is regarded as a suitable match for Aglaya and observes Myshkin with a mixture of skepticism, intelligence, and growing sympathy.",
+            "id": "evgeny-radomsky",
+            "name": "Evgeny Pavlovich Radomsky",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Aglaya arranges a meeting with Nastasya Filippovna, hoping to settle which woman Myshkin truly loves. Their confrontation becomes cruel and competitive. When Nastasya collapses, Myshkin turns to comfort her, and Aglaya leaves, understanding his choice as a rejection. Myshkin prepares to marry Nastasya, but she panics at the church and escapes with Rogozhin. Myshkin follows them to Saint Petersburg and finds Rogozhin in his darkened house beside Nastasya's murdered body. He stays with the delirious killer through the night, soothing him as his own mind fails. Rogozhin is later convicted and sent to Siberia. Myshkin returns to the Swiss clinic in a state from which recovery appears unlikely. Aglaya hastily marries a Polish émigré whose claims and political cause estrange her from her family. The Yepanchins visit Myshkin abroad, while Evgeny Pavlovich remains attentive to him. The attempt to save everyone has ended without rescuing Nastasya, Rogozhin, Aglaya, or the prince himself.",
+        "in_short": "Prince Myshkin returns to Russia after treatment for epilepsy and enters a society driven by money, vanity, desire, and shame. His compassion draws him toward Nastasya Filippovna, who has been exploited by her guardian and alternates between seeking rescue and accepting others' condemnation. The wealthy, obsessive Rogozhin also pursues her. Myshkin unexpectedly inherits a fortune, but wealth does not make him socially adept or able to heal those around him. In Pavlovsk he grows close to Aglaya Yepanchina while remaining bound to Nastasya by pity and love. A confrontation between the two women forces the conflict into the open: Myshkin turns to Nastasya, losing Aglaya. Nastasya agrees to marry him but flees from the wedding with Rogozhin, who murders her. Myshkin finds them beside her body and relapses into profound illness; Rogozhin is sent to Siberia, and Aglaya makes an unhappy break with her family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Prince Lev Myshkin returns to Russia after years in a Swiss clinic for epilepsy. On the train he meets Parfyon Rogozhin, newly enriched by an inheritance and passionately fixated on Nastasya Filippovna, and the inquisitive clerk Lebedev. In Saint Petersburg, Myshkin calls on his distant relation General Yepanchin despite having almost no money or prospects. His direct manner first seems naive, but his memories of Switzerland and his reflections on suffering hold the general's attention. Myshkin meets the secretary Ganya and sees a portrait of Nastasya, whose expression fascinates and troubles him. He learns that Ganya may marry her in return for a substantial payment, even though she has long been controlled by the wealthy Totsky and is also being pursued by Rogozhin.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Myshkin meets General Yepanchin's wife and daughters, including the proud youngest, Aglaya, and impresses them with his candor. Lodging with Ganya's family, he walks into a bitter conflict over Ganya's proposed marriage. Nastasya arrives without warning, followed by Rogozhin and a noisy group offering her one hundred thousand rubles. Ganya nearly strikes his sister during the humiliation, and Myshkin intervenes. At Nastasya's birthday gathering, she asks Myshkin whether she should marry Ganya and accepts his judgment that she should not. News then confirms that Myshkin has inherited a fortune, and he offers to marry her himself. Convinced that she would ruin him, Nastasya rejects his rescue, throws Rogozhin's money into a fire as a test for Ganya, and leaves with Rogozhin. Myshkin follows, beginning a destructive triangle among compassion, possession, and self-condemnation.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After months away, Myshkin returns to Saint Petersburg and visits Rogozhin's gloomy house. Their conversation reveals that Nastasya has repeatedly moved between them, promising herself to one and then fleeing toward the other. Myshkin insists that his feeling for her is compassion rather than rivalry, and the men exchange crosses in a gesture of brotherhood. Yet Myshkin senses Rogozhin watching him and later believes he is being followed. At a hotel stairway Rogozhin raises a knife against him, but Myshkin suffers an epileptic seizure before the blow lands, and Rogozhin runs away. Myshkin recovers in Pavlovsk among the Yepanchins and other acquaintances, but the emotional conflict has followed him there.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Pavlovsk, a group led by Burdovsky publicly claims that Myshkin's former benefactor was Burdovsky's father and demands money as a moral debt. Their newspaper attack is based on false information, but Myshkin still offers assistance, frustrating both his defenders and his accusers. The dying Ippolit, one of the group, rejects being reduced to an object of pity. Social visits become increasingly volatile as Myshkin's generosity exposes the self-interest and embarrassment of nearly everyone present. Nastasya also reappears at the edge of the Yepanchins' circle, publicly meddling in Evgeny Pavlovich's affairs. Her behavior threatens Aglaya's reputation and makes Myshkin's continuing bond with her impossible for the family to ignore.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ippolit gathers the company and reads a long statement about illness, death, and his refusal to submit quietly to a world he finds indifferent. He then attempts to shoot himself, but the pistol fails because the cap is missing, leaving everyone uncertain whether the failure was accidental. Myshkin continues meeting Aglaya, who is drawn to him but also mocks his humility and tests whether he can act with dignity. Their private understanding begins to look like a possible engagement. At the same time, Nastasya sends Aglaya letters urging her to marry Myshkin, as if she could arrange his salvation while excluding herself. Instead of resolving the triangle, the letters bind the two women more tightly to each other's fear and pride.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Yepanchins begin treating Myshkin as Aglaya's likely suitor, though both young people resist stating the matter plainly. A formal gathering meant to introduce him to important acquaintances ends badly when anxiety and moral passion carry him into an excited speech; he breaks a valuable vase and then suffers a seizure. Aglaya does not abandon him, but her family worries that affection cannot overcome his illness and social vulnerability. Around them, the Ivolgin family deteriorates: General Ivolgin's lies and drinking culminate in a stroke and death. Aglaya finally arranges a direct meeting with Nastasya, intending to confront the woman whose letters and claim on Myshkin have overshadowed their relationship.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aglaya and Nastasya meet with Myshkin and Rogozhin present. Their attempt at clarification becomes a contest of pride and suffering. Aglaya accuses Nastasya of performing her misery and controlling Myshkin; Nastasya retaliates by asserting that she can command him. When Nastasya collapses, Myshkin instinctively goes to her, and Aglaya leaves. He soon plans to marry Nastasya, but on the wedding day she becomes terrified and runs to Rogozhin, who takes her away. Myshkin tracks them to Saint Petersburg. Rogozhin leads him to Nastasya's body: he has killed her and hidden with her in his house. Myshkin remains beside Rogozhin through the night, comforting him as his own reason disintegrates. Rogozhin is sentenced to Siberia, while Myshkin returns to the Swiss clinic with little hope of recovery. Aglaya marries a Polish émigré and becomes estranged from her family, leaving the surviving circle scattered and chastened.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-amazonclassics-edition"
+      }
+    },
     "the-idiot-blackstone": {
       "characters": {
         "characters": [
@@ -2617,6 +2831,220 @@
         "work": "the-idiot-dramatized"
       }
     },
+    "the-idiot-fyodor-dostoyevsky": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Prince Lev Nikolayevich Myshkin"
+            ],
+            "description": "An impoverished twenty-six-year-old prince returning to Russia after several years of treatment for epilepsy in Switzerland. Open, compassionate, and strikingly free of social calculation, he is often taken for a fool even when he understands the pain and vanity around him with unusual clarity.",
+            "id": "prince-myshkin",
+            "name": "Prince Myshkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Parfyon Semyonovich Rogozhin"
+            ],
+            "description": "A merchant's son whom Myshkin meets on the train to Saint Petersburg. He is returning after inheriting a large fortune and speaks with consuming intensity about Nastasya Filippovna, for whom he is prepared to spend recklessly.",
+            "id": "parfyon-rogozhin",
+            "name": "Parfyon Rogozhin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative minor official who meets Myshkin and Rogozhin on the train. Quick to gather information and attach himself to wealthy or useful people, he shifts between comic servility, shrewd observation, and occasional concern for others.",
+            "id": "lukyan-lebedev",
+            "name": "Lukyan Lebedev",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Ivan Fyodorovich Yepanchin"
+            ],
+            "description": "A prosperous general and distant relation of Myshkin's. Practical and socially ambitious, he receives the unknown prince cautiously and is surprised by his intelligence and candor.",
+            "id": "general-yepanchin",
+            "name": "General Yepanchin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ganya"
+            ],
+            "description": "General Yepanchin's secretary, a clever and proud young man from a financially strained family. He is considering a marriage to Nastasya Filippovna that could bring him money and advancement, though the arrangement wounds his pride and divides his household.",
+            "id": "gavril-ivolgin",
+            "name": "Gavril Ardalionovich Ivolgin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nastasya Filippovna Barashkova"
+            ],
+            "description": "A celebrated and socially vulnerable young woman whose portrait immediately affects Myshkin. Orphaned and raised under Totsky's control, she is being urged toward marriage with Ganya while wealthy men negotiate her future around a large payment.",
+            "id": "nastasya-filippovna",
+            "name": "Nastasya Filippovna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Yepanchin's forceful wife and mother of three daughters. She is impulsive, proud of her family, and intrigued by Myshkin's apparent innocence, partly because they share the Myshkin family name.",
+            "id": "lizaveta-prokofyevna",
+            "name": "Lizaveta Prokofyevna Yepanchina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Yepanchin daughter. Intelligent, beautiful, and guarded behind teasing behavior, she is curious about Myshkin but resists being interpreted or managed by her family.",
+            "id": "aglaya-yepanchina",
+            "name": "Aglaya Yepanchina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy landowner who became Nastasya Filippovna's guardian after her father's death and shaped her upbringing for his own benefit. He now wants to free himself for a respectable marriage and supports a financial arrangement intended to marry her to Ganya.",
+            "id": "afanasy-totsky",
+            "name": "Afanasiy Ivanovich Totsky",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ganya's adolescent brother, friendly, direct, and less constrained by status than the adults around him. He takes quickly to Myshkin and becomes a dependable messenger and companion.",
+            "id": "kolya-ivolgin",
+            "name": "Kolya Ivolgin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ganya and Kolya's father, a retired general who tells grandiose and frequently impossible stories about his past. His household treats his fabrications with weary familiarity, while Myshkin responds without humiliating him.",
+            "id": "general-ivolgin",
+            "name": "General Ardalion Ivolgin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gravely ill young man in Kolya's circle who knows he has little time left. Proud, intellectually combative, and desperate to retain control over how others see him, he reacts sharply to pity and to Myshkin's compassion.",
+            "id": "ippolit-terentyev",
+            "name": "Ippolit Terentyev",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evgeny Pavlovich"
+            ],
+            "description": "A wealthy and polished young officer moving in the Yepanchins' social circle. He is regarded as a suitable match for Aglaya and observes Myshkin with a mixture of skepticism, intelligence, and growing sympathy.",
+            "id": "evgeny-radomsky",
+            "name": "Evgeny Pavlovich Radomsky",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-fyodor-dostoyevsky"
+      },
+      "recaps": {
+        "ending": "Aglaya arranges a meeting with Nastasya Filippovna, hoping to settle which woman Myshkin truly loves. Their confrontation becomes cruel and competitive. When Nastasya collapses, Myshkin turns to comfort her, and Aglaya leaves, understanding his choice as a rejection. Myshkin prepares to marry Nastasya, but she panics at the church and escapes with Rogozhin. Myshkin follows them to Saint Petersburg and finds Rogozhin in his darkened house beside Nastasya's murdered body. He stays with the delirious killer through the night, soothing him as his own mind fails. Rogozhin is later convicted and sent to Siberia. Myshkin returns to the Swiss clinic in a state from which recovery appears unlikely. Aglaya hastily marries a Polish émigré whose claims and political cause estrange her from her family. The Yepanchins visit Myshkin abroad, while Evgeny Pavlovich remains attentive to him. The attempt to save everyone has ended without rescuing Nastasya, Rogozhin, Aglaya, or the prince himself.",
+        "in_short": "Prince Myshkin returns to Russia after treatment for epilepsy and enters a society driven by money, vanity, desire, and shame. His compassion draws him toward Nastasya Filippovna, who has been exploited by her guardian and alternates between seeking rescue and accepting others' condemnation. The wealthy, obsessive Rogozhin also pursues her. Myshkin unexpectedly inherits a fortune, but wealth does not make him socially adept or able to heal those around him. In Pavlovsk he grows close to Aglaya Yepanchina while remaining bound to Nastasya by pity and love. A confrontation between the two women forces the conflict into the open: Myshkin turns to Nastasya, losing Aglaya. Nastasya agrees to marry him but flees from the wedding with Rogozhin, who murders her. Myshkin finds them beside her body and relapses into profound illness; Rogozhin is sent to Siberia, and Aglaya makes an unhappy break with her family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Prince Lev Myshkin returns to Russia after years in a Swiss clinic for epilepsy. On the train he meets Parfyon Rogozhin, newly enriched by an inheritance and passionately fixated on Nastasya Filippovna, and the inquisitive clerk Lebedev. In Saint Petersburg, Myshkin calls on his distant relation General Yepanchin despite having almost no money or prospects. His direct manner first seems naive, but his memories of Switzerland and his reflections on suffering hold the general's attention. Myshkin meets the secretary Ganya and sees a portrait of Nastasya, whose expression fascinates and troubles him. He learns that Ganya may marry her in return for a substantial payment, even though she has long been controlled by the wealthy Totsky and is also being pursued by Rogozhin.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Myshkin meets General Yepanchin's wife and daughters, including the proud youngest, Aglaya, and impresses them with his candor. Lodging with Ganya's family, he walks into a bitter conflict over Ganya's proposed marriage. Nastasya arrives without warning, followed by Rogozhin and a noisy group offering her one hundred thousand rubles. Ganya nearly strikes his sister during the humiliation, and Myshkin intervenes. At Nastasya's birthday gathering, she asks Myshkin whether she should marry Ganya and accepts his judgment that she should not. News then confirms that Myshkin has inherited a fortune, and he offers to marry her himself. Convinced that she would ruin him, Nastasya rejects his rescue, throws Rogozhin's money into a fire as a test for Ganya, and leaves with Rogozhin. Myshkin follows, beginning a destructive triangle among compassion, possession, and self-condemnation.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After months away, Myshkin returns to Saint Petersburg and visits Rogozhin's gloomy house. Their conversation reveals that Nastasya has repeatedly moved between them, promising herself to one and then fleeing toward the other. Myshkin insists that his feeling for her is compassion rather than rivalry, and the men exchange crosses in a gesture of brotherhood. Yet Myshkin senses Rogozhin watching him and later believes he is being followed. At a hotel stairway Rogozhin raises a knife against him, but Myshkin suffers an epileptic seizure before the blow lands, and Rogozhin runs away. Myshkin recovers in Pavlovsk among the Yepanchins and other acquaintances, but the emotional conflict has followed him there.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Pavlovsk, a group led by Burdovsky publicly claims that Myshkin's former benefactor was Burdovsky's father and demands money as a moral debt. Their newspaper attack is based on false information, but Myshkin still offers assistance, frustrating both his defenders and his accusers. The dying Ippolit, one of the group, rejects being reduced to an object of pity. Social visits become increasingly volatile as Myshkin's generosity exposes the self-interest and embarrassment of nearly everyone present. Nastasya also reappears at the edge of the Yepanchins' circle, publicly meddling in Evgeny Pavlovich's affairs. Her behavior threatens Aglaya's reputation and makes Myshkin's continuing bond with her impossible for the family to ignore.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ippolit gathers the company and reads a long statement about illness, death, and his refusal to submit quietly to a world he finds indifferent. He then attempts to shoot himself, but the pistol fails because the cap is missing, leaving everyone uncertain whether the failure was accidental. Myshkin continues meeting Aglaya, who is drawn to him but also mocks his humility and tests whether he can act with dignity. Their private understanding begins to look like a possible engagement. At the same time, Nastasya sends Aglaya letters urging her to marry Myshkin, as if she could arrange his salvation while excluding herself. Instead of resolving the triangle, the letters bind the two women more tightly to each other's fear and pride.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Yepanchins begin treating Myshkin as Aglaya's likely suitor, though both young people resist stating the matter plainly. A formal gathering meant to introduce him to important acquaintances ends badly when anxiety and moral passion carry him into an excited speech; he breaks a valuable vase and then suffers a seizure. Aglaya does not abandon him, but her family worries that affection cannot overcome his illness and social vulnerability. Around them, the Ivolgin family deteriorates: General Ivolgin's lies and drinking culminate in a stroke and death. Aglaya finally arranges a direct meeting with Nastasya, intending to confront the woman whose letters and claim on Myshkin have overshadowed their relationship.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aglaya and Nastasya meet with Myshkin and Rogozhin present. Their attempt at clarification becomes a contest of pride and suffering. Aglaya accuses Nastasya of performing her misery and controlling Myshkin; Nastasya retaliates by asserting that she can command him. When Nastasya collapses, Myshkin instinctively goes to her, and Aglaya leaves. He soon plans to marry Nastasya, but on the wedding day she becomes terrified and runs to Rogozhin, who takes her away. Myshkin tracks them to Saint Petersburg. Rogozhin leads him to Nastasya's body: he has killed her and hidden with her in his house. Myshkin remains beside Rogozhin through the night, comforting him as his own reason disintegrates. Rogozhin is sentenced to Siberia, while Myshkin returns to the Swiss clinic with little hope of recovery. Aglaya marries a Polish émigré and becomes estranged from her family, leaving the surviving circle scattered and chastened.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-fyodor-dostoyevsky"
+      }
+    },
     "the-idiot-tantor": {
       "characters": {
         "characters": [
@@ -2969,6 +3397,181 @@
           }
         ],
         "work": "the-importance-of-being-earnest"
+      }
+    },
+    "the-incredible-and-sad-tale-of-innocent-erendira-and-her-heartless-grandmother": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A poor villager who discovers an ancient winged man lying helpless in the mud behind his house after days of rain. He and his wife confine the stranger in their chicken coop while deciding what the discovery may be worth.",
+            "id": "pelayo",
+            "name": "Pelayo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Pelayo's wife, who quickly turns public curiosity about the winged captive into admission money. The resulting income transforms her family's circumstances, even as the old man remains neglected in their yard.",
+            "id": "elisenda",
+            "name": "Elisenda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Angel"
+            ],
+            "description": "An extremely old, filthy, nearly toothless man with enormous wings who appears in Pelayo's courtyard. He speaks in an unknown language, endures confinement and gawking crowds with little resistance, and never fits the explanations imposed on him.",
+            "id": "the-old-man-with-wings",
+            "name": "The Old Man with Wings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The village priest who examines the winged man and warns the crowd that wings alone do not prove holiness. He writes to church authorities for guidance while the public's fascination moves faster than any official judgment.",
+            "id": "father-gonzaga",
+            "name": "Father Gonzaga",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drowned stranger whose extraordinarily large and beautiful body washes up beside an isolated seaside village. The women preparing him for burial imagine the life he might have led and name him Esteban, and their response changes how the whole village sees itself.",
+            "id": "esteban",
+            "name": "Esteban",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An ambitious senator campaigning for reelection despite knowing that he is terminally ill. His practiced promises and public spectacle are interrupted when he becomes fascinated by a young woman sent to ask him for a favor.",
+            "id": "onesimo-sanchez",
+            "name": "Onésimo Sánchez",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The daughter of an outlaw living in the desert settlement where Senator Sánchez campaigns. Her father sends her to secure official help, but her encounter with the senator develops beyond the transaction planned for her.",
+            "id": "laura-farina",
+            "name": "Laura Farina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cruel traveling showman who claims miraculous powers and makes a living through staged wonders, salesmanship, and intimidation. He takes on a younger assistant whom he exploits and publicly humiliates.",
+            "id": "blacaman-the-bad",
+            "name": "Blacamán the Bad",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The abused apprentice and narrator of Blacamán's story. After suffering under the older performer's control, he discovers that his own healing power is genuine and begins to reverse their positions.",
+            "id": "blacaman-the-good",
+            "name": "Blacamán the Good",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Eréndira"
+            ],
+            "description": "A fourteen-year-old girl exhausted by endless domestic service to her grandmother in their isolated desert mansion. After an accidental fire destroys the house, her grandmother declares her responsible for the loss and forces her to work off an impossible debt.",
+            "id": "innocent-erendira",
+            "name": "Innocent Eréndira",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Grandmother"
+            ],
+            "description": "Eréndira's immense, domineering grandmother, who treats the girl's labor and body as assets under her control. She turns their wandering household into a profitable business and continually recalculates the invented debt that keeps Eréndira captive.",
+            "id": "erendiras-grandmother",
+            "name": "Eréndira's Grandmother",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sheltered young man from a prosperous family of orange growers. He becomes devoted to Eréndira after meeting her at her grandmother's traveling tent and tries to help her escape despite the grandmother's vigilance.",
+            "id": "ulises",
+            "name": "Ulises",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-incredible-and-sad-tale-of-innocent-erendira-and-her-heartless-grandmother"
+      },
+      "recaps": {
+        "ending": "Ulises returns to Eréndira and makes repeated attempts to kill her grandmother. Poison and an explosion fail, but he finally attacks the old woman with a knife and kills her after a prolonged struggle. Instead of joining him, Eréndira takes the grandmother's vest filled with gold and runs alone into the desert. Ulises, bloodied and exhausted, calls after her but cannot follow. She disappears beyond the horizon and is never seen again. The grandmother's control is broken, yet the story does not turn the escape into a shared romantic future: Eréndira claims the portable wealth produced by her exploitation and leaves both her abuser and would-be rescuer behind.",
+        "in_short": "Seven stories place the marvelous beside hardship without separating one from the other. An aged winged man becomes a profitable attraction before recovering and flying away; a coastal village remakes itself after adopting a magnificent drowned stranger as one of its own; and a dying senator's affair with Laura Farina becomes the scandal attached to his final months. Other narrators confront a phantom ship and a fraudulent miracle worker whose abused apprentice develops real power. In the title tale, fourteen-year-old Eréndira accidentally burns down her grandmother's mansion and is forced into sexual exploitation to repay an endlessly inflated debt. She falls in love with Ulises, who helps her escape but cannot initially free her from the grandmother. After his poison and explosives fail, he kills the old woman with a knife. Eréndira takes the grandmother's gold and runs away alone, leaving Ulises behind.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "After heavy rain, Pelayo finds a decrepit old man with enormous wings collapsed in his courtyard. He and Elisenda shut the stranger in a chicken coop, and villagers arrive with competing theories about what he is. Father Gonzaga doubts that the captive is an angel and seeks guidance from church authorities, but the crowd treats him as a source of cures and entertainment. Pelayo and Elisenda charge admission and become wealthy. Public interest shifts to a more understandable traveling marvel, leaving the old man neglected. Years later his feathers recover; he struggles into the air and flies away while Elisenda watches him vanish. The next story moves to a coastal settlement where an uncanny scent from the sea briefly revives hopes and memories among residents accustomed to disappointment, then recedes without permanently changing their material lives.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Children discover the body of an unknown drowned man on the shore of a tiny village. As the women clean the exceptionally large and handsome corpse, they imagine the difficulties and generosity of his life and give him the name Esteban. The men confirm that he belongs to no neighboring community. By the time the village gives him an elaborate burial at sea, everyone has claimed kinship with him. They resolve to widen their doors, strengthen their houses, and plant flowers so their home will be worthy of his memory. In the next story, Senator Onésimo Sánchez campaigns through a desert town while secretly counting down the months left before his predicted death. He falls in love with Laura Farina, whose father sent her to obtain a favor. Their relationship becomes public, and the senator dies on schedule with the scandal and Laura's presence defining his last days.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A boy repeatedly sees a vast ocean liner passing where no ship can be, but the adults mock his reports. Determined to prove the apparition, he guides the ghost ship toward land with a light. The enormous vessel enters the village and establishes the truth of the vision through its catastrophic arrival. In the following story, Blacamán the Bad travels as a false healer, staging wonders and abusing the boy he has taken as an assistant. The apprentice eventually discovers a genuine ability to restore the dead. Renaming himself Blacamán the Good, he uses his gift to prosper and turns on his former master. He revives the older man only to keep him confined in a tomb where repeated death and restoration become punishment for the cruelty once inflicted on him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fourteen-year-old Eréndira serves her grandmother without rest in a desert mansion. After she falls asleep and a candle sets the house ablaze, the grandmother makes her responsible for the entire imagined value of the loss. She sells Eréndira's sexual services and carries her from town to town, growing rich while continually extending the debt. Missionaries temporarily remove the girl, but the grandmother recovers control. Ulises, the son of orange growers, falls in love with Eréndira and helps her flee; the grandmother tracks them down and takes her back. At Eréndira's urging, Ulises tries poison and then explosives, but the old woman survives both. He finally kills her with a knife. Eréndira seizes the vest holding the grandmother's gold and runs into the desert alone. She does not wait for Ulises, who is too injured to pursue her, and she disappears beyond reach.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-incredible-and-sad-tale-of-innocent-erendira-and-her-heartless-grandmother"
       }
     },
     "the-incredible-shrinking-man": {

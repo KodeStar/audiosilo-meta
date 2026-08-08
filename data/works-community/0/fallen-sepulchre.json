@@ -4015,6 +4015,157 @@
         ],
         "work": "fermentation"
       }
+    },
+    "fevre-dream": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A massive, plain-spoken Mississippi River steamboat captain whose struggling company has been devastated by financial losses. Marsh loves boats, competition, and the river with an intensity that outweighs comfort or social approval. A mysterious investor's offer gives him the chance to build the fastest and finest steamer he can imagine, though the partnership comes with unusual conditions.",
+            "id": "abner-marsh",
+            "name": "Abner Marsh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pale, wealthy stranger who offers to rescue Marsh's company and finance an extraordinary new steamboat. York is polished, private, and accustomed to command. He insists on sharing the captaincy, keeps nocturnal hours, and reserves the right to divert the boat without explaining his business, leaving Marsh unsure what his partner truly wants.",
+            "id": "joshua-york",
+            "name": "Joshua York",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marsh's trusted clerk and business aide. Jeffers helps manage the practical affairs surrounding the new steamer and serves as a steady member of the captain's circle as York's unexplained demands begin to disrupt ordinary river business.",
+            "id": "jonathon-jeffers",
+            "name": "Jonathon Jeffers",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled river pilot hired for the Fevre Dream. Framm's experience helps turn the costly new vessel into a formidable packet boat capable of pursuing Marsh's ambition to surpass every rival on the Mississippi.",
+            "id": "karl-framm",
+            "name": "Karl Framm",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Fevre Dream's cook, valued by Marsh as part of the working community aboard the new boat. His position below decks places him among crew members most exposed when the dangers surrounding York's secret business reach the vessel.",
+            "id": "toby-lanyard",
+            "name": "Toby Lanyard",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vicious human attendant who serves Damon Julian and helps conceal his master's predatory household. Sour Billy combines cruelty with a calculating instinct for survival. He knows enough about Julian's kind to fear them, envy their long lives, and exploit the human world on their behalf.",
+            "id": "sour-billy-tipton",
+            "name": "Sour Billy Tipton",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ancient ruler of a violent community that treats human beings as prey. Julian is outwardly youthful and composed, but he enforces obedience through fear and an instinctive authority over others of his kind. He regards Joshua York's effort to end their dependence on blood as both weakness and a challenge to his supremacy.",
+            "id": "damon-julian",
+            "name": "Damon Julian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the night people living under Damon Julian's rule. Valerie accepts the predatory order Julian protects and stands with his household when Joshua York arrives offering a different future for their kind.",
+            "id": "valerie",
+            "name": "Valerie",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "fevre-dream"
+      },
+      "recaps": {
+        "ending": "Marsh returns to the captive Joshua and helps create another chance to challenge Damon Julian. Joshua has learned that Julian's mastery is not an unbreakable supernatural law: it depends on submission and can be resisted. In their final struggle Joshua overcomes and kills Julian, ending his domination of the surviving night people. Sour Billy's pursuit of borrowed immortality also ends in death, and the ruined Fevre Dream can no longer serve as Julian's hunting ground. Joshua resumes his effort to free his people from bloodlust, while Marsh survives to see that his long loyalty was not wasted. The steamboat that embodied their partnership is lost, but its name and story endure. In the epilogue, Joshua remains unchanged by age and continues the work, whereas Marsh reaches the end of a human lifetime remembered as the captain of the Fevre Dream.",
+        "in_short": "In 1857, ruined Mississippi steamboat captain Abner Marsh accepts financing from the enigmatic Joshua York to build the magnificent Fevre Dream. York and his nocturnal companions are vampires, or night people, but York has developed a drink that controls their need for human blood and hopes to reform his species. Marsh becomes his ally. Their project is shattered by Damon Julian, an ancient bloodmaster who believes humans are prey and mentally dominates other night people. Julian defeats Joshua, seizes the steamer, and turns it into a place of slaughter while Marsh escapes. Years of war and searching follow before an older Marsh finds the boat and helps Joshua resist captivity. Joshua finally rejects Julian's authority, kills him, and frees the survivors from his rule. The Fevre Dream is lost and Julian's human servant Sour Billy dies, but Joshua continues seeking a lasting cure, carrying forward the purpose he and Marsh chose together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1857, Captain Abner Marsh is trying to preserve what remains of his Mississippi River steamboat company after severe losses. Joshua York, an elegant stranger with ample money, proposes a partnership. He will pay for a new vessel grander and faster than anything Marsh has owned, but he demands equal command, private quarters, and freedom to alter their route for unexplained business. Marsh distrusts the secrecy yet cannot resist the chance to realize his greatest professional ambition. The agreement launches construction of the Fevre Dream, a lavish and powerful packet boat intended to compete with the finest steamers on the river. York's wealth and confidence make the project possible, while his pale appearance, avoidance of daylight, and unusual household begin raising questions that Marsh cannot yet answer.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Fevre Dream enters service with Marsh overseeing the practical business of passengers, freight, and navigation while York keeps mostly to the night. The new steamer proves the exceptional vessel Marsh wanted, and he becomes absorbed in testing it against the river's celebrated boats. York repeatedly places his private mission ahead of schedules and profit, bringing aboard pale companions who share his habits and secrecy. Their presence unsettles the crew, and the closed rooms, strange provisions, and unexplained nighttime movements strain the partnership. Marsh nevertheless sees that York is not simply using the boat for ordinary crime or profit. He begins pressing for the truth, forced to decide whether loyalty to his dream vessel can coexist with continued ignorance about its co-captain.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marsh learns that Joshua and his companions are members of a separate, long-lived people whose bodies cannot tolerate sunlight and whose hunger has made human blood their traditional food. Joshua rejects the belief that killing is their unavoidable nature. He has created a substitute drink that suppresses the red thirst, and he is traveling to find others of his kind and offer them a life without hunting. His secrecy has protected both his people and the humans around them, but it has also made Marsh suspect the worst. Faced with the truth, Marsh judges Joshua by his choices rather than his species and agrees to help. Their partnership becomes a moral alliance: the Fevre Dream will continue carrying Joshua's mission along the river, even as reports of another, far more violent group suggest that not all night people want to change.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joshua seeks out Damon Julian, an ancient leader surrounded by night people who openly prey on humans. Julian's estate is maintained with the help of Sour Billy Tipton, a cruel human servant who disposes of evidence and hopes to profit from his masters' longevity. Joshua believes the substitute drink can prove that their species need not live by murder, but Julian sees restraint as a denial of their rightful power. More dangerously, he is a bloodmaster whose presence compels instinctive obedience from other night people. Joshua's confidence in reason and reform leaves him unprepared for that authority. The meeting turns from attempted persuasion into a contest for control, putting both Joshua's followers and the Fevre Dream within Julian's reach.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Damon Julian defeats Joshua through the bloodmaster's power to command others of their race. Julian and his followers take the Fevre Dream, destroy the reforming community Joshua was assembling, and use the vessel according to their own predatory customs. Crew members and bystanders pay the price as the steamer ceases to be the hopeful enterprise Marsh built. Marsh resists Julian's attempt to reduce him to another disposable human and escapes, but he must leave Joshua in captivity. The loss takes from him both his beloved boat and the partner whose purpose he has come to share. Rather than accept that Julian's victory is final, Marsh commits himself to finding the vanished steamer and freeing Joshua, even as the country moves toward upheaval and the river world changes around him.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass through the Civil War and its aftermath while Marsh follows rumors of the Fevre Dream. Age, disrupted river traffic, and Sour Billy's efforts to protect Julian's secrets repeatedly obstruct him, yet he refuses to abandon Joshua. Julian keeps Joshua alive in degradation, using his defeat as proof that resistance is futile, while the captured steamer decays along with its original purpose. Marsh gradually closes in on the vessel and the hidden community using it. His long search is no longer an attempt to recover a valuable boat: it is a commitment to the partner he left in captivity and to the possibility that Julian's violent rule can still be ended.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marsh helps Joshua break out of the helplessness that Damon Julian has cultivated in him. Joshua comes to understand that a bloodmaster's rule depends on the obedience of those who accept it, not on an authority that can never be opposed. In the final confrontation he resists Julian directly, overcomes him, and kills him, freeing the remaining night people from their ancient leader. Sour Billy's attempt to attach himself to their power and longevity ends with his own death. The Fevre Dream, already corrupted and ruined under Julian, is lost, but the purpose for which Joshua commissioned it survives. Joshua continues working toward a life in which his species can master the red thirst without murder. Marsh lives out his mortal span knowing that his friendship and persistence helped make that future possible; the epilogue preserves him in memory as the captain of the Fevre Dream while the ageless Joshua carries on their unfinished work.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "fevre-dream"
+      }
     }
   }
 }
