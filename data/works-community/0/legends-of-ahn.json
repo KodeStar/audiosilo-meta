@@ -925,6 +925,469 @@
         "work": "legions-fifth-vault"
       }
     },
+    "les-mis-eacute-rables": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Monsieur Madeleine",
+              "Ultime Fauchelevent"
+            ],
+            "description": "A former tree-pruner imprisoned for stealing bread for his sister's hungry children, then held for years after repeated escape attempts. Nineteen years in the penal system have left him embittered and feared wherever his yellow passport identifies him as a convict. He arrives in Digne exhausted, barred from inns, and expecting rejection.",
+            "id": "jean-valjean",
+            "name": "Jean Valjean",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Monseigneur Bienvenu"
+            ],
+            "description": "The elderly bishop of Digne, known for living simply and giving most of his income to people in need. He welcomes strangers without asking whether they deserve help and offers Valjean food and a bed when the rest of the town refuses him shelter.",
+            "id": "charles-francois-bienvenu-myriel",
+            "name": "Charles-François-Bienvenu Myriel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young working-class woman from Montreuil-sur-Mer who comes to Paris and joins three other women in a circle of students and lovers. Sincere and inexperienced, she is deeply attached to the charming student Tholomyès and takes their relationship seriously.",
+            "id": "fantine",
+            "name": "Fantine",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Euphrasie",
+              "the Lark"
+            ],
+            "description": "Fantine's small daughter. Fantine meets Madame Thénardier while the innkeeper's wife is watching her own two girls and, seeing what appears to be a happy family, asks the woman to foster Cosette while she seeks work.",
+            "id": "cosette",
+            "name": "Cosette",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police inspector shaped by an absolute belief in law and social order. Born in prison and determined to stand on the side of authority, he distrusts the prosperous mayor Madeleine and is especially alert to signs that a supposedly respectable man may be concealing a criminal past.",
+            "id": "javert",
+            "name": "Javert",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An innkeeper at Montfermeil who once profited by appearing heroic after Waterloo. He agrees to foster Cosette for payment and quickly calculates how the arrangement can be made more profitable.",
+            "id": "monsieur-thenardier",
+            "name": "Monsieur Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Madame Thénardier"
+            ],
+            "description": "The forceful co-owner of the Montfermeil inn and mother of Éponine and Azelma. Fantine first sees her showing affection to her daughters and mistakes that display for evidence that she will offer Cosette the same care.",
+            "id": "madame-thenardier",
+            "name": "Madame Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging carter in Montreuil-sur-Mer who is trapped beneath his overturned cart. The accident creates a public test for Mayor Madeleine, since lifting the vehicle seems to require strength that might draw Inspector Javert's attention.",
+            "id": "fauchelevent",
+            "name": "Fauchelevent",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A serious young Parisian raised in his royalist grandfather's household and kept apart from his father. He has inherited his family's hostile account of that absent parent and knows little about the conflict that determined his childhood.",
+            "id": "marius-pontmercy",
+            "name": "Marius Pontmercy",
+            "reveal": {
+              "chapter": 168
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Marius's wealthy, sharp-tongued maternal grandfather, a proud royalist who has raised the boy. He loves Marius possessively but mocks the memory and politics of Marius's father, making affection and control difficult to separate in their household.",
+            "id": "monsieur-gillenormand",
+            "name": "Monsieur Gillenormand",
+            "reveal": {
+              "chapter": 160
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Thénardiers' elder daughter, now living in poverty in Paris. Thin, streetwise, and accustomed to helping her father beg, she approaches Marius as a possible source of money and takes a quick personal interest in him.",
+            "id": "eponine-thenardier",
+            "name": "Éponine Thénardier",
+            "reveal": {
+              "chapter": 201
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The neglected young son of the Thénardiers, living largely on the Paris streets. Resourceful, cheerful, and independent despite hunger and danger, he knows the city's hidden corners and moves easily among beggars, students, and other street children.",
+            "id": "gavroche",
+            "name": "Gavroche",
+            "reveal": {
+              "chapter": 148
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The intense leader of the Friends of the ABC, a republican student society. He is wholly committed to political liberty and treats the prospect of insurrection with disciplined seriousness, organizing his companions around a cause larger than any private ambition.",
+            "id": "enjolras",
+            "name": "Enjolras",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Friends of the ABC and the first of the group to befriend Marius. Sociable and generous, he gives Marius a place to stay and draws him into a circle where republican politics, fellowship, and debate are inseparable.",
+            "id": "courfeyrac",
+            "name": "Courfeyrac",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly churchwarden and amateur botanist whom Marius knows through his father's history. Gentle, poor, and devoted to books and plants, he becomes a surrogate family connection for Marius after the young man breaks with his grandfather.",
+            "id": "mabeuf",
+            "name": "Monsieur Mabeuf",
+            "reveal": {
+              "chapter": 169
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-mis-eacute-rables"
+      },
+      "recaps": {
+        "ending": "Valjean carries the unconscious Marius away from the fallen barricade through the Paris sewers. At the outlet he meets Thénardier, who unknowingly helps him escape while taking a scrap from Marius's coat as possible evidence. Javert permits Valjean to deliver Marius to Gillenormand and then lets Valjean go; unable to reconcile that mercy with his lifelong faith in inflexible law, Javert kills himself. Marius recovers and marries Cosette. Valjean tells Marius that he is a former convict and withdraws from the couple, allowing Marius to assume the worst about him. Thénardier later tries to sell Marius proof that Valjean is a murderer, but his evidence instead reveals that Valjean saved Marius and that Thénardier was the criminal at the sewer. Marius and Cosette hurry to Valjean, finally understanding his sacrifice. They reconcile with him shortly before he dies peacefully, sustained by their love and by the bishop's candlesticks, the enduring emblem of the mercy that redirected his life.",
+        "in_short": "After nineteen years in prison, Jean Valjean is met with distrust until Bishop Myriel answers his theft with mercy. Valjean builds a new life as the mayor Madeleine but exposes himself to save an innocent man and promises the dying Fantine that he will care for her daughter. He rescues Cosette from the abusive Thénardiers and raises her in concealment while Inspector Javert continues his pursuit. Years later Cosette and the impoverished student Marius fall in love. During the 1832 Paris uprising, Marius joins his republican friends at a barricade; Valjean follows, spares Javert, and carries the wounded Marius to safety through the sewers. Javert, unable to reconcile Valjean's goodness with his own rigid creed, takes his life. Marius marries Cosette but briefly separates her from Valjean after learning of his conviction. Thénardier's attempted blackmail proves that Valjean saved Marius, and the couple reaches Valjean in time for a final reconciliation before his peaceful death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bishop Myriel lives modestly in Digne and directs his wealth toward people in need. When the newly released convict Jean Valjean is refused shelter throughout the town, Myriel welcomes him. Valjean steals the bishop's silver, but after the police bring him back, Myriel claims the silver was a gift and adds two candlesticks, asking Valjean to use this mercy to become an honest man. Valjean's bitter habits do not disappear at once: he takes a coin from the child Petit Gervais, then recognizes with horror that he has repeated the cruelty the world showed him. Years later, under the name Monsieur Madeleine, he becomes a successful manufacturer and benevolent mayor of Montreuil-sur-Mer. Fantine, abandoned by her lover and supporting her daughter Cosette from afar, loses her factory job and is driven into destitution as the Thénardiers continually raise the price of the child's care. Madeleine intervenes when Inspector Javert arrests her and promises to bring Cosette to her.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Madeleine learns that another man, Champmathieu, is about to be condemned as Jean Valjean. After an agonizing struggle between safety and conscience, he goes to court and reveals his identity, saving the innocent defendant. He returns to Fantine, but Javert arrives to arrest him; the shock and Javert's harsh disclosure destroy Fantine's last hope, and she dies before seeing Cosette. Valjean escapes custody long enough to secure money for the child, is recaptured, and later escapes again. He finds Cosette doing exhausting work at the Thénardiers' inn, pays their demands, and takes her away despite their attempt to keep control of a profitable ward. In Paris, Valjean gives Cosette the secure affection she has never known, but Javert tracks them. They escape over a wall into the Petit-Picpus convent, where Fauchelevent, the man Valjean once rescued from beneath a cart, shelters them. Valjean becomes an assistant gardener and Cosette enters the convent school, giving both a protected home for several years.",
+            "through": {
+              "chapter": 146
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marius Pontmercy grows up under his royalist grandfather Gillenormand, believing his absent father abandoned him. After his father's death, Marius discovers that Colonel Pontmercy loved him and stayed away only because Gillenormand threatened to disinherit the boy. Marius embraces his father's memory and Bonapartist politics, quarrels with his grandfather, and chooses poverty. He befriends the republican students known as the Friends of the ABC but remains politically independent. In the Luxembourg Garden he repeatedly sees Cosette with Valjean, and the two young people fall in love without yet speaking. Marius loses sight of her after Valjean notices his attention. Living beside the destitute Jondrette family, Marius realizes they are the Thénardiers and overhears their plan to rob a charitable visitor who is really Valjean. He alerts Javert, then hesitates when he learns the intended victim's captor once saved his father at Waterloo. The police raid the room, but Valjean escapes before Javert can identify him, while the Thénardiers are arrested.",
+            "through": {
+              "chapter": 222
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Éponine, in love with Marius, finds Cosette's new address for him. Marius and Cosette meet secretly in the garden and declare their love, while Valjean remains unaware of their relationship. Thénardier escapes prison and brings a gang to rob Valjean's house, but Éponine prevents the attack by threatening to raise an alarm. Political tension grows in Paris as republican organizers prepare for unrest. When Valjean decides to leave for England, Cosette sends word to Marius; Éponine intercepts the message and, despairing of winning him, draws him toward the coming insurrection. Marius asks Gillenormand for permission to marry Cosette, but his grandfather's insulting response drives him away. After General Lamarque's funeral, the Friends of the ABC build a barricade in the Rue de la Chanvrerie. Javert enters disguised as a volunteer but is exposed as a police spy. Marius arrives, saves the barricade by threatening to ignite its powder, and becomes one of its defenders. Éponine dies after shielding him from a shot and gives him Cosette's withheld letter.",
+            "through": {
+              "chapter": 298
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marius sends a farewell message to Cosette through Gavroche, hoping also to remove the boy from danger. The message instead reaches Valjean, who discovers the lovers' bond and goes armed to the barricade. He helps its defenders and asks to execute the captured Javert, but privately cuts the inspector's bonds and releases him. Government forces close in. Gavroche is killed while collecting ammunition from fallen soldiers, and Enjolras's companions die as the barricade is overrun. Valjean takes the gravely wounded Marius into the sewers. The journey nearly exhausts him, but he reaches a locked outlet where Thénardier, hiding nearby, mistakes him for a murderer and opens the gate in exchange for money while secretly taking cloth from Marius's coat. Javert is waiting outside. Valjean asks only to return Marius to his family and briefly go home; Javert, confronted with the mercy of the man who spared him, allows both requests and then departs instead of making the arrest.",
+            "through": {
+              "chapter": 345
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Javert cannot fit Valjean's conduct into his belief that law and moral worth are identical. Rather than accept either mercy or a transformed understanding of justice, he drowns himself in the Seine. Marius slowly recovers under Gillenormand's care, is reconciled with his grandfather, and marries Cosette. Valjean gives Cosette the fortune he had preserved for her, then confesses his criminal past to Marius. Although Marius permits limited visits, his distrust leads Valjean to withdraw, and separation from Cosette leaves the older man failing rapidly. Thénardier approaches Marius under a false name and tries to prove that Valjean is a thief and murderer. Instead, the information shows that Valjean earned Cosette's money honestly and carried Marius alive through the sewer; the strip of coat Thénardier kept confirms the rescue. Marius pays him to leave France, and Thénardier departs for America. Marius and Cosette hurry to Valjean and ask forgiveness. Reunited with the two people he loves, Valjean dies peacefully as the bishop's silver candlesticks burn beside him.",
+            "through": {
+              "chapter": 365
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-mis-eacute-rables"
+      }
+    },
+    "les-mis-eacute-rables-translated-by-julie-rose": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Monsieur Bienvenu"
+            ],
+            "description": "The elderly bishop of Digne, known for giving most of his income and comfort to people in need. His household is simple and his hospitality extends even to those the town fears or rejects.",
+            "id": "charles-francois-bienvenu-myriel",
+            "name": "Charles-François-Bienvenu Myriel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Monsieur Madeleine",
+              "Prisoner 24601"
+            ],
+            "description": "A recently released convict who served nineteen years after stealing bread and attempting to escape. Extraordinary physical strength and long punishment have made him bitter and suspicious. Carrying the yellow passport that marks his past, he is refused lodging until Bishop Myriel welcomes him.",
+            "id": "jean-valjean",
+            "name": "Jean Valjean",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young working-class woman from Montreuil-sur-Mer who comes to Paris and joins three other women in a carefree circle of students and lovers. She is sincere in her love for Tholomyès and more vulnerable than her companions understand.",
+            "id": "fantine",
+            "name": "Fantine",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Thénardier",
+              "the Thénardiess"
+            ],
+            "description": "The wife of an innkeeper at Montfermeil. Fantine sees her caring for her own daughters and trusts her to foster the child Cosette, without recognizing the calculation behind the woman's welcoming manner.",
+            "id": "madame-thenardier",
+            "name": "Madame Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jondrette"
+            ],
+            "description": "An innkeeper at Montfermeil who agrees to care for Fantine's daughter. Outwardly accommodating, he is alert to every opportunity for payment and lets supposed expenses steadily expand once the arrangement is made.",
+            "id": "monsieur-thenardier",
+            "name": "Monsieur Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Euphrasie"
+            ],
+            "description": "Fantine's small daughter, left at the Thénardiers' inn while her mother seeks work. She begins as a trusting child among the innkeeper's two daughters, unaware that the adults' arrangement will shape her life.",
+            "id": "cosette",
+            "name": "Cosette",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A police inspector in Montreuil-sur-Mer whose belief in law and fixed social categories is absolute. He distrusts the benevolent mayor Monsieur Madeleine because the man's immense strength and guarded past remind him of a former convict.",
+            "id": "javert",
+            "name": "Javert",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Baron de Pontmercy"
+            ],
+            "description": "A serious young man raised by his wealthy royalist grandfather, Monsieur Gillenormand, apart from the father he has been taught to disregard. Learning more about his father's life forces him to reconsider the political and family beliefs in which he grew up.",
+            "id": "marius-pontmercy",
+            "name": "Marius Pontmercy",
+            "reveal": {
+              "chapter": 168
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Marius's very elderly maternal grandfather, a proud royalist with a forceful temper and a genuine but possessive love for his grandson. His household represents the security Marius risks when their political and family disagreements become open.",
+            "id": "monsieur-gillenormand",
+            "name": "Monsieur Gillenormand",
+            "reveal": {
+              "chapter": 160
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful street child of Paris, cheerful despite hunger and neglect. He sleeps where he can, knows the city's hidden corners, and readily helps people even when he has almost nothing himself.",
+            "id": "gavroche",
+            "name": "Gavroche",
+            "reveal": {
+              "chapter": 147
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The charismatic leader of the republican student group known as the Friends of the ABC. Austere, eloquent, and wholly committed to political liberty, he inspires the others while keeping his personal life subordinate to the cause.",
+            "id": "enjolras",
+            "name": "Enjolras",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marius's warm and sociable student friend, a member of the Friends of the ABC. He gives Marius lodging when the younger man breaks with his grandfather and serves as his entry into a circle of republican thinkers and activists.",
+            "id": "courfeyrac",
+            "name": "Courfeyrac",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Jondrette girl"
+            ],
+            "description": "The elder daughter of the impoverished Jondrette family, now living near Marius in the Gorbeau tenement. Thin, neglected, and accustomed to street life, she approaches him to beg and quickly takes a personal interest in him.",
+            "id": "eponine",
+            "name": "Éponine",
+            "reveal": {
+              "chapter": 201
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging churchwarden and amateur botanist who was a friend of Marius's father. Gentle, poor, and politically detached, he offers Marius companionship and a living connection to the parent he barely knew.",
+            "id": "monsieur-mabeuf",
+            "name": "Monsieur Mabeuf",
+            "reveal": {
+              "chapter": 169
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-mis-eacute-rables-translated-by-julie-rose"
+      },
+      "recaps": {
+        "ending": "Marius recovers under Gillenormand's roof and marries Cosette. Valjean gives her a large fortune but privately tells Marius that he is a former convict. Marius misreads this confession and gradually excludes Valjean from their home, leaving him isolated. Thénardier later tries to sell Marius damaging information, but his evidence instead reveals that Valjean saved Marius from the barricade and that Monsieur Madeleine's money was honestly earned. Marius and Cosette hurry to Valjean and learn the full extent of his protection and sacrifice. Their reconciliation comes as he is dying. Valjean blesses them, gives Cosette the truth about Fantine, and dies peacefully with the bishop's candlesticks nearby. He is buried in an unmarked grave. Javert, unable to reconcile Valjean's mercy with his own absolute faith in the law, has already drowned himself in the Seine; Thénardier departs for America after receiving money from Marius.",
+        "in_short": "Released after nineteen years in prison, Jean Valjean is transformed by Bishop Myriel's mercy and builds a new life as the charitable mayor Monsieur Madeleine. Pursued by Inspector Javert, he promises the dying Fantine to protect her daughter Cosette, rescues the abused child from the Thénardiers, and raises her in hiding. Years later Cosette and the impoverished student Marius fall in love as republican unrest grows in Paris. At the 1832 barricade, Valjean spares Javert, protects the rebels, and carries the wounded Marius through the sewers; the uprising is crushed and Gavroche, Éponine, Enjolras, and the other insurgents die. Javert releases Valjean and then kills himself because mercy has broken his moral certainty. Marius marries Cosette but shuns Valjean after learning of his conviction. Thénardier inadvertently proves Valjean's heroism, allowing the couple to reconcile with him shortly before his peaceful death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bishop Myriel of Digne lives with radical generosity, giving up comfort and status to serve people others dismiss. Jean Valjean arrives after nineteen years in prison, branded by a yellow passport and refused shelter throughout the town. Myriel welcomes him, but Valjean steals his silver and is caught. The bishop tells the police the silver was a gift and adds his candlesticks, asking Valjean to use the mercy to become an honest man. Soon afterward Valjean steals a coin from the child Petit Gervais almost by reflex. Realizing what he has done, he is overwhelmed by remorse and begins the moral struggle that will direct the rest of his life.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fantine is abandoned by the student Tholomyès and leaves her daughter Cosette with the Thénardiers while she seeks work. The innkeepers exploit both mother and child, inventing expenses while treating Cosette as a servant. In Montreuil-sur-Mer, a prosperous manufacturer and mayor called Monsieur Madeleine has transformed the town through industry and charity; he is Jean Valjean under a new identity. Fantine loses her job, sells her possessions, hair, and teeth, and enters prostitution to meet the Thénardiers' demands. After Javert arrests her, Madeleine intervenes and promises to bring Cosette. A case of mistaken identity forces Valjean to reveal himself to save an innocent man. Javert confronts him beside the dying Fantine, who dies without seeing Cosette. Valjean escapes custody after arranging her burial.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After another period of imprisonment and an apparent death at sea, Valjean reaches Montfermeil. Cosette, now eight, is abused and overworked at the Thénardier inn while their daughters are indulged. Valjean meets her carrying water at night, protects her during the Christmas market, pays the innkeepers, and takes her away despite Thénardier's attempt to demand more money. The two travel toward Paris. Cosette slowly learns that she is safe and comes to love Valjean as her father, while he discovers in caring for her an attachment stronger than the solitary benevolence of his earlier life.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Javert traces Valjean and Cosette to the Gorbeau tenement and pursues them through nighttime Paris. Valjean escapes over a wall into the Petit-Picpus convent, where he finds Fauchelevent, a gardener whose life he once saved. With Fauchelevent's help, Valjean establishes a secure identity and remains at the convent as an assistant gardener while Cosette is educated there. Years of seclusion give them safety from the police. Eventually Valjean decides that Cosette should have a life beyond the convent, and they return to the city under assumed names, living quietly in several houses while he continues charitable visits among the poor.",
+            "through": {
+              "chapter": 146
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The focus shifts to Marius Pontmercy, raised by his royalist grandfather Gillenormand and taught to think poorly of his absent father. After his father's death, Marius learns that Colonel Pontmercy loved him and had been kept away. He embraces his father's memory, adopts Bonapartist and republican views, and quarrels with his grandfather, choosing poverty and independence. Courfeyrac introduces him to the Friends of the ABC, a republican circle led by Enjolras, though Marius remains apart from their organized politics. In the Luxembourg Garden he repeatedly sees an older man and a young woman: Valjean and the now-grown Cosette. His curiosity becomes love, but his clumsy attempt to discover their address alarms Valjean, who moves away.",
+            "through": {
+              "chapter": 181
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living in the Gorbeau tenement, Marius encounters the destitute Jondrettes and recognizes their father as Thénardier, whom he believes once saved Colonel Pontmercy at Waterloo. He also discovers that the family's intended victim is Valjean, brought there by charity with Cosette. Thénardier and the Patron-Minette gang prepare an ambush. Torn by his debt to his father's supposed rescuer, Marius alerts Javert but hesitates to give the signal during the attack. He finally intervenes by using a message from Éponine to frighten the criminals, and the police arrest them while Valjean slips away. Marius is left without Cosette's address, and his obligation to Thénardier remains founded on a misunderstanding: at Waterloo the innkeeper was robbing, not rescuing, Pontmercy.",
+            "through": {
+              "chapter": 222
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Éponine finds Cosette's home for Marius, allowing the young couple to meet secretly in the garden and pledge themselves to each other. Valjean, disturbed by danger and Cosette's growing independence, plans to leave for England. Marius asks Gillenormand for permission to marry and leaves in anger when the old man insults Cosette. With hope collapsing, he joins his republican friends as the June 1832 uprising begins. Enjolras and the Friends of the ABC build a barricade at the Corinthe tavern. Éponine dies protecting Marius and gives him Cosette's letter. Marius sends a farewell message to Cosette; Valjean intercepts it, learns of their love, and goes armed to the barricade.",
+            "through": {
+              "chapter": 298
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valjean joins the barricade's defenders, saves a man under fire, and asks to execute the captured Javert. Once alone with the inspector, he cuts his bonds and lets him go. The army's final assaults close in. Gavroche is shot while collecting ammunition from fallen soldiers, Mabeuf and the student rebels die, and Enjolras is executed after the position falls. Valjean carries the unconscious Marius away through an opening and descends into the sewers, still determined to save the young man Cosette loves.",
+            "through": {
+              "chapter": 322
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valjean carries the gravely wounded Marius away through the Paris sewers. Thénardier, hiding there, assumes Valjean has murdered the young man and opens a locked gate in exchange for money, secretly tearing cloth from Marius's coat as evidence. Javert waits outside; Valjean asks first to deliver Marius to Gillenormand and then to say farewell to Cosette. Instead of arresting him, Javert lets him go, then kills himself because Valjean's mercy has made his rigid idea of justice impossible to sustain. Marius recovers and marries Cosette. After revealing his criminal past to Marius, Valjean is gradually shut out of their lives and begins to fail. Thénardier's attempt at blackmail proves that Valjean saved Marius and earned Cosette's fortune honestly. Marius and Cosette reach Valjean in time to reconcile; he tells Cosette about Fantine, blesses the couple, and dies peacefully beside Myriel's candlesticks.",
+            "through": {
+              "chapter": 365
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-mis-eacute-rables-translated-by-julie-rose"
+      }
+    },
     "les-miserables": {
       "characters": {
         "characters": [
@@ -1053,6 +1516,248 @@
           }
         ],
         "work": "les-miserables"
+      }
+    },
+    "les-miserables-abr": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Monsieur Bienvenu"
+            ],
+            "description": "The elderly bishop of Digne, known for giving most of his income and comfort to people in need. His household is simple and his hospitality extends even to those the town fears or rejects.",
+            "id": "charles-francois-bienvenu-myriel",
+            "name": "Charles-François-Bienvenu Myriel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Monsieur Madeleine",
+              "Prisoner 24601"
+            ],
+            "description": "A recently released convict who served nineteen years after stealing bread and attempting to escape. Extraordinary physical strength and long punishment have made him bitter and suspicious. Carrying the yellow passport that marks his past, he is refused lodging until Bishop Myriel welcomes him.",
+            "id": "jean-valjean",
+            "name": "Jean Valjean",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young working-class woman from Montreuil-sur-Mer who comes to Paris and joins three other women in a carefree circle of students and lovers. She is sincere in her love for Tholomyès and more vulnerable than her companions understand.",
+            "id": "fantine",
+            "name": "Fantine",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Thénardier",
+              "the Thénardiess"
+            ],
+            "description": "The wife of an innkeeper at Montfermeil. Fantine sees her caring for her own daughters and trusts her to foster the child Cosette, without recognizing the calculation behind the woman's welcoming manner.",
+            "id": "madame-thenardier",
+            "name": "Madame Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jondrette"
+            ],
+            "description": "An innkeeper at Montfermeil who agrees to care for Fantine's daughter. Outwardly accommodating, he is alert to every opportunity for payment and lets supposed expenses steadily expand once the arrangement is made.",
+            "id": "monsieur-thenardier",
+            "name": "Monsieur Thénardier",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Euphrasie"
+            ],
+            "description": "Fantine's small daughter, left at the Thénardiers' inn while her mother seeks work. She begins as a trusting child among the innkeeper's two daughters, unaware that the adults' arrangement will shape her life.",
+            "id": "cosette",
+            "name": "Cosette",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A police inspector in Montreuil-sur-Mer whose belief in law and fixed social categories is absolute. He distrusts the benevolent mayor Monsieur Madeleine because the man's immense strength and guarded past remind him of a former convict.",
+            "id": "javert",
+            "name": "Javert",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Baron de Pontmercy"
+            ],
+            "description": "A serious young man raised by his wealthy royalist grandfather, Monsieur Gillenormand, apart from the father he has been taught to disregard. Learning more about his father's life forces him to reconsider the political and family beliefs in which he grew up.",
+            "id": "marius-pontmercy",
+            "name": "Marius Pontmercy",
+            "reveal": {
+              "chapter": 168
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Marius's very elderly maternal grandfather, a proud royalist with a forceful temper and a genuine but possessive love for his grandson. His household represents the security Marius risks when their political and family disagreements become open.",
+            "id": "monsieur-gillenormand",
+            "name": "Monsieur Gillenormand",
+            "reveal": {
+              "chapter": 160
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful street child of Paris, cheerful despite hunger and neglect. He sleeps where he can, knows the city's hidden corners, and readily helps people even when he has almost nothing himself.",
+            "id": "gavroche",
+            "name": "Gavroche",
+            "reveal": {
+              "chapter": 147
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The charismatic leader of the republican student group known as the Friends of the ABC. Austere, eloquent, and wholly committed to political liberty, he inspires the others while keeping his personal life subordinate to the cause.",
+            "id": "enjolras",
+            "name": "Enjolras",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marius's warm and sociable student friend, a member of the Friends of the ABC. He gives Marius lodging when the younger man breaks with his grandfather and serves as his entry into a circle of republican thinkers and activists.",
+            "id": "courfeyrac",
+            "name": "Courfeyrac",
+            "reveal": {
+              "chapter": 176
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Jondrette girl"
+            ],
+            "description": "The elder daughter of the impoverished Jondrette family, now living near Marius in the Gorbeau tenement. Thin, neglected, and accustomed to street life, she approaches him to beg and quickly takes a personal interest in him.",
+            "id": "eponine",
+            "name": "Éponine",
+            "reveal": {
+              "chapter": 201
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging churchwarden and amateur botanist who was a friend of Marius's father. Gentle, poor, and politically detached, he offers Marius companionship and a living connection to the parent he barely knew.",
+            "id": "monsieur-mabeuf",
+            "name": "Monsieur Mabeuf",
+            "reveal": {
+              "chapter": 169
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-miserables-abr"
+      },
+      "recaps": {
+        "ending": "Marius recovers under Gillenormand's roof and marries Cosette. Valjean gives her a large fortune but privately tells Marius that he is a former convict. Marius misreads this confession and gradually excludes Valjean from their home, leaving him isolated. Thénardier later tries to sell Marius damaging information, but his evidence instead reveals that Valjean saved Marius from the barricade and that Monsieur Madeleine's money was honestly earned. Marius and Cosette hurry to Valjean and learn the full extent of his protection and sacrifice. Their reconciliation comes as he is dying. Valjean blesses them, gives Cosette the truth about Fantine, and dies peacefully with the bishop's candlesticks nearby. He is buried in an unmarked grave. Javert, unable to reconcile Valjean's mercy with his own absolute faith in the law, has already drowned himself in the Seine; Thénardier departs for America after receiving money from Marius.",
+        "in_short": "Released after nineteen years in prison, Jean Valjean is transformed by Bishop Myriel's mercy and builds a new life as the charitable mayor Monsieur Madeleine. Pursued by Inspector Javert, he promises the dying Fantine to protect her daughter Cosette, rescues the abused child from the Thénardiers, and raises her in hiding. Years later Cosette and the impoverished student Marius fall in love as republican unrest grows in Paris. At the 1832 barricade, Valjean spares Javert, protects the rebels, and carries the wounded Marius through the sewers; the uprising is crushed and Gavroche, Éponine, Enjolras, and the other insurgents die. Javert releases Valjean and then kills himself because mercy has broken his moral certainty. Marius marries Cosette but shuns Valjean after learning of his conviction. Thénardier inadvertently proves Valjean's heroism, allowing the couple to reconcile with him shortly before his peaceful death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bishop Myriel of Digne lives with radical generosity, giving up comfort and status to serve people others dismiss. Jean Valjean arrives after nineteen years in prison, branded by a yellow passport and refused shelter throughout the town. Myriel welcomes him, but Valjean steals his silver and is caught. The bishop tells the police the silver was a gift and adds his candlesticks, asking Valjean to use the mercy to become an honest man. Soon afterward Valjean steals a coin from the child Petit Gervais almost by reflex. Realizing what he has done, he is overwhelmed by remorse and begins the moral struggle that will direct the rest of his life.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fantine is abandoned by the student Tholomyès and leaves her daughter Cosette with the Thénardiers while she seeks work. The innkeepers exploit both mother and child, inventing expenses while treating Cosette as a servant. In Montreuil-sur-Mer, a prosperous manufacturer and mayor called Monsieur Madeleine has transformed the town through industry and charity; he is Jean Valjean under a new identity. Fantine loses her job, sells her possessions, hair, and teeth, and enters prostitution to meet the Thénardiers' demands. After Javert arrests her, Madeleine intervenes and promises to bring Cosette. A case of mistaken identity forces Valjean to reveal himself to save an innocent man. Javert confronts him beside the dying Fantine, who dies without seeing Cosette. Valjean escapes custody after arranging her burial.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After another period of imprisonment and an apparent death at sea, Valjean reaches Montfermeil. Cosette, now eight, is abused and overworked at the Thénardier inn while their daughters are indulged. Valjean meets her carrying water at night, protects her during the Christmas market, pays the innkeepers, and takes her away despite Thénardier's attempt to demand more money. The two travel toward Paris. Cosette slowly learns that she is safe and comes to love Valjean as her father, while he discovers in caring for her an attachment stronger than the solitary benevolence of his earlier life.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Javert traces Valjean and Cosette to the Gorbeau tenement and pursues them through nighttime Paris. Valjean escapes over a wall into the Petit-Picpus convent, where he finds Fauchelevent, a gardener whose life he once saved. With Fauchelevent's help, Valjean establishes a secure identity and remains at the convent as an assistant gardener while Cosette is educated there. Years of seclusion give them safety from the police. Eventually Valjean decides that Cosette should have a life beyond the convent, and they return to the city under assumed names, living quietly in several houses while he continues charitable visits among the poor.",
+            "through": {
+              "chapter": 146
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The focus shifts to Marius Pontmercy, raised by his royalist grandfather Gillenormand and taught to think poorly of his absent father. After his father's death, Marius learns that Colonel Pontmercy loved him and had been kept away. He embraces his father's memory, adopts Bonapartist and republican views, and quarrels with his grandfather, choosing poverty and independence. Courfeyrac introduces him to the Friends of the ABC, a republican circle led by Enjolras, though Marius remains apart from their organized politics. In the Luxembourg Garden he repeatedly sees an older man and a young woman: Valjean and the now-grown Cosette. His curiosity becomes love, but his clumsy attempt to discover their address alarms Valjean, who moves away.",
+            "through": {
+              "chapter": 181
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living in the Gorbeau tenement, Marius encounters the destitute Jondrettes and recognizes their father as Thénardier, whom he believes once saved Colonel Pontmercy at Waterloo. He also discovers that the family's intended victim is Valjean, brought there by charity with Cosette. Thénardier and the Patron-Minette gang prepare an ambush. Torn by his debt to his father's supposed rescuer, Marius alerts Javert but hesitates to give the signal during the attack. He finally intervenes by using a message from Éponine to frighten the criminals, and the police arrest them while Valjean slips away. Marius is left without Cosette's address, and his obligation to Thénardier remains founded on a misunderstanding: at Waterloo the innkeeper was robbing, not rescuing, Pontmercy.",
+            "through": {
+              "chapter": 222
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Éponine finds Cosette's home for Marius, allowing the young couple to meet secretly in the garden and pledge themselves to each other. Valjean, disturbed by danger and Cosette's growing independence, plans to leave for England. Marius asks Gillenormand for permission to marry and leaves in anger when the old man insults Cosette. With hope collapsing, he joins his republican friends as the June 1832 uprising begins. Enjolras and the Friends of the ABC build a barricade at the Corinthe tavern. Éponine dies protecting Marius and gives him Cosette's letter. Marius sends a farewell message to Cosette; Valjean intercepts it, learns of their love, and goes armed to the barricade.",
+            "through": {
+              "chapter": 298
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valjean joins the barricade's defenders, saves a man under fire, and asks to execute the captured Javert. Once alone with the inspector, he cuts his bonds and lets him go. The army's final assaults close in. Gavroche is shot while collecting ammunition from fallen soldiers, Mabeuf and the student rebels die, and Enjolras is executed after the position falls. Valjean carries the unconscious Marius away through an opening and descends into the sewers, still determined to save the young man Cosette loves.",
+            "through": {
+              "chapter": 322
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valjean carries the gravely wounded Marius away through the Paris sewers. Thénardier, hiding there, assumes Valjean has murdered the young man and opens a locked gate in exchange for money, secretly tearing cloth from Marius's coat as evidence. Javert waits outside; Valjean asks first to deliver Marius to Gillenormand and then to say farewell to Cosette. Instead of arresting him, Javert lets him go, then kills himself because Valjean's mercy has made his rigid idea of justice impossible to sustain. Marius recovers and marries Cosette. After revealing his criminal past to Marius, Valjean is gradually shut out of their lives and begins to fail. Thénardier's attempt at blackmail proves that Valjean saved Marius and earned Cosette's fortune honestly. Marius and Cosette reach Valjean in time to reconcile; he tells Cosette about Fantine, blesses the couple, and dies peacefully beside Myriel's candlesticks.",
+            "through": {
+              "chapter": 365
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-miserables-abr"
       }
     },
     "leviathan-falls": {
