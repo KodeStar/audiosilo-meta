@@ -3036,6 +3036,150 @@
         "work": "verity-colleen-hoover"
       }
     },
+    "veronika-decides-to-die": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A twenty-four-year-old woman in Ljubljana whose life appears orderly and secure but feels exhausted of possibility. Convinced that every future year will merely repeat what she already knows, she takes an overdose in her rented room and waits to die. She is intelligent, self-contained, and more concerned with controlling her end than with explaining her despair to anyone else.",
+            "id": "veronika",
+            "name": "Veronika",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The psychiatrist in charge of Villete, the private mental hospital where Veronika wakes after her suicide attempt. He studies the emotional bitterness he calls Vitriol and is interested in whether an awareness of death can alter the way a person chooses to live.",
+            "id": "dr-igor",
+            "name": "Dr. Igor",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient at Villete being treated for depression. Warm, candid, and more experienced with the institution than Veronika, she explains its routines and the informal society created by patients who no longer have to meet the outside world's standard of normality.",
+            "id": "zedka",
+            "name": "Zedka",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man diagnosed with schizophrenia who spends long periods silent and withdrawn at Villete. He appears unreachable, yet listens intently when Veronika plays the hospital piano, becoming the first audience before whom she allows a neglected part of herself to emerge.",
+            "id": "eduard",
+            "name": "Eduard",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former lawyer who entered Villete after panic attacks overturned her successful professional life. She is influential among the long-term patients and initially regards Veronika's disruption of their protected routines with impatience.",
+            "id": "mari",
+            "name": "Mari",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Veronika's mother, who believed she had given her daughter stability and every reasonable opportunity. She comes to Villete after the suicide attempt carrying grief, confusion, and the painful knowledge that parental love did not reveal how empty Veronika felt.",
+            "id": "veronikas-mother",
+            "name": "Veronika's Mother",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Eduard's father, a Yugoslav diplomat whose career depends on discipline and respectable appearances. He expects his son to pursue a similarly approved path and interprets Eduard's artistic ambitions and psychological collapse through the demands of family status.",
+            "id": "eduards-father",
+            "name": "Eduard's Father",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Eduard's mother, who tries to protect her son while remaining constrained by her husband's expectations and by fear of scandal. Her concern cannot bridge the widening distance between Eduard's inner life and the future his parents planned for him.",
+            "id": "eduards-mother",
+            "name": "Eduard's Mother",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "veronika-decides-to-die"
+      },
+      "recaps": {
+        "ending": "Veronika and Eduard leave Villete and spend what she believes is her final night in Ljubljana, eating, drinking, talking, and moving through the city without seeking permission. Veronika wakes after expecting her heart to stop and interprets the continuing time as an unexpected gift. She and Eduard remain outside the institution, ready to pursue a life neither had been willing to claim. The final disclosure belongs to Dr. Igor: Veronika's heart was not irreparably damaged by the overdose. He induced symptoms that supported his false prognosis so that certainty of imminent death would break through her passivity and test his theory about Vitriol, the spiritual bitterness produced by fear and conformity. His methods remain concealed from Veronika, who can therefore continue treating each day as borrowed time. Around them, Zedka has completed treatment and Mari has left Villete to seek purposeful work, while Eduard's renewed connection to desire and art carries him away from his former withdrawal.",
+        "in_short": "Veronika, a young woman in Ljubljana numbed by the predictability of her life, attempts suicide and wakes in Villete, a mental hospital. Dr. Igor tells her that the overdose has fatally damaged her heart and she has only days left. Waiting for death loosens the restraint that governed her life: she befriends Zedka and Mari, returns to the piano, expresses anger and desire, and forms a bond with Eduard, a silent young man diagnosed with schizophrenia. Her willingness to live openly also pushes other patients to reconsider the safety of remaining institutionalized. Veronika and Eduard escape and spend a night in the city, choosing experience despite her expected death. She survives the night. Unknown to her, Igor lied about the terminal damage and used medication to mimic heart symptoms as an experiment in whether awareness of death could restore the will to live. Veronika leaves believing every additional day is a miracle and therefore worth inhabiting fully.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Ljubljana, twenty-four-year-old Veronika decides to die, not because of a single catastrophe but because she believes her safe, repetitive life has exhausted its possibilities and will end only in decline. She takes sleeping pills in her rented room and writes a final letter before losing consciousness. Instead of dying, she wakes in Villete, a private mental hospital. The institution removes the privacy and control she tried to preserve, while her failed suicide draws grief and bewilderment from her family. Dr. Igor tells Veronika that the overdose badly damaged her heart and that she has only a few days to live. Angry that her attempt has merely created a slower death under supervision, she initially wants only a way to finish what she began.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Veronika begins learning Villete's routines from Zedka, a patient being treated for depression. Zedka explains that some residents remain after they could leave because the hospital frees them from the judgments and responsibilities of ordinary life. Veronika observes the informal group of long-term patients and sees that the line between illness and accepted behavior is less stable than she assumed. Her terminal prognosis gives her little reason to accommodate the group or protect her reputation. She finds the hospital piano and begins playing, recovering a form of expression she abandoned while constructing a sensible adult life. Eduard, a silent young man diagnosed with schizophrenia, listens. Although he does not respond conventionally, his attention creates a connection that neither explanation nor polite conversation could have produced.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With death seemingly close, Veronika stops trying to appear composed. She voices anger, challenges the habits of patients who have made Villete a refuge, and plays the piano with increasing intensity. Mari, a former lawyer whose panic attacks drove her from a successful career, initially resents the disturbance but is forced to examine her own decision to remain protected inside the institution. Veronika's relationship with Eduard deepens through music and shared presence rather than ordinary conversation. The hospital still treats her as a patient to be watched, but she begins to feel desire, curiosity, and attachment precisely when she has been told there is no future in which to use them. Her remaining days cease to be passive waiting and become a test of how much unlived life can fit into the time she believes is left.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Veronika acts on impulses she had long suppressed, allowing herself sexual desire and emotional risk without asking whether either is respectable. Eduard continues to emerge from his withdrawal in response to her music and directness. The histories of the other patients clarify how fear of judgment helped confine them: Zedka's depression grew around an impossible attachment, Mari's panic destroyed her confidence in the public identity she had built, and Eduard retreated after pressure and illness displaced his ambition to become an artist. Veronika's certainty that she is dying unsettles their compromises. If life is finite, safety inside Villete begins to look less like protection and more like surrender. Mari starts considering a return to the world, and Eduard's attention shifts from passive listening toward choosing what he wants.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The changes set in motion around Veronika become decisions. Zedka completes her treatment and leaves Villete accepting that emotional pain and unusual experiences need not prevent her from living. Mari resolves to give up the institution's shelter and use her abilities in service of people facing the consequences of war. Eduard's past reveals the collision between his parents' diplomatic ambitions for him and his own desire to paint; his bond with Veronika revives that abandoned purpose. Veronika, meanwhile, experiences worsening symptoms that appear to confirm Dr. Igor's warning. She no longer wants death, but the deadline makes delay impossible. She and Eduard prepare to leave Villete and spend the remaining time in the city rather than under observation, accepting the risk of freedom over the certainty of confinement.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Veronika and Eduard escape Villete and spend the night in Ljubljana eating, drinking, talking, and moving through familiar places with a new sense of choice. Veronika expects her damaged heart to stop, but she wakes beside Eduard after the night has passed. Believing she has received time she was not promised, she is prepared to treat continued life as a daily gift, and Eduard is ready to return to art rather than the passive identity imposed on him. Dr. Igor privately records the outcome of his experiment. Veronika was not terminally ill: he used medication and a false diagnosis to produce convincing symptoms and certainty of death, hoping the shock would counter the emotional poison he calls Vitriol. Veronika does not learn of the deception. She and Eduard remain free, while the other departures from Villete show the wider effect of her late, urgent choice to live.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "veronika-decides-to-die"
+      }
+    },
     "vicious-v-e-schwab": {
       "characters": {
         "characters": [

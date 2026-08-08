@@ -1113,6 +1113,171 @@
         "work": "journey-to-the-centre-of-the-earth"
       }
     },
+    "journeys-end": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young officer newly posted to C Company in the British front line. He requested the assignment because he knew Stanhope at school and still regards him as a model of courage. His eagerness and innocence expose how far the war has changed the man he remembers.",
+            "id": "james-raleigh",
+            "name": "Second Lieutenant James Raleigh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The exhausted commander of C Company, after three years of almost continuous front-line service. He was a celebrated athlete and senior pupil at Raleigh's school, and is engaged to Raleigh's sister. He now relies heavily on whisky to master his fear while maintaining exacting standards as an officer.",
+            "id": "dennis-stanhope",
+            "name": "Captain Dennis Stanhope",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Uncle"
+            ],
+            "description": "Stanhope's older, steady second-in-command, affectionately nicknamed Uncle by the company. A former schoolmaster with a calm manner and a fondness for Lewis Carroll, he understands Stanhope's strain and quietly protects both his commander and the younger officers.",
+            "id": "osborne",
+            "name": "Lieutenant Osborne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cheerful, rotund officer whose talk of food, gardening, and home helps make trench life bearable. His unshowy endurance and practical good sense contrast with both Raleigh's idealism and Stanhope's frayed intensity.",
+            "id": "trotter",
+            "name": "Second Lieutenant Trotter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer preparing to leave the company as its tour in the line begins. His account of the dugout, the rats, and the enemy's proximity establishes the routine discomfort and danger into which Raleigh arrives.",
+            "id": "hardy",
+            "name": "Captain Hardy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The company cook, heard and seen around the officers' dugout. He answers complaints about the meals with literal explanations and keeps the domestic machinery of the mess going amid shortages and shellfire.",
+            "id": "mason",
+            "name": "Private Mason",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior officer who brings Stanhope intelligence that a German offensive is expected and relays orders from brigade. He admires C Company but is constrained by commanders who treat the men as pieces in a larger operation.",
+            "id": "the-colonel",
+            "name": "The Colonel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior officer suffering from acute fear and what he calls neuralgia. He wants to report sick and leave the line, bringing Stanhope's harsh ideas about duty into direct conflict with another man's breaking point.",
+            "id": "hibbert",
+            "name": "Second Lieutenant Hibbert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young German soldier captured during the British raid. Frightened and closely questioned, he carries papers that confirm the timing of the expected attack.",
+            "id": "the-young-german-soldier",
+            "name": "The Young German Soldier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The experienced senior non-commissioned officer who reports to Stanhope and helps execute the company's orders as the German assault begins.",
+            "id": "the-sergeant-major",
+            "name": "The Sergeant-Major",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "journeys-end"
+      },
+      "recaps": {
+        "ending": "The German bombardment opens at dawn. Raleigh is carried into the dugout with a severe spinal wound, unable to move his legs. Stanhope places him in Osborne's former bed and, dropping his habitual severity, comforts him and promises to have him taken to hospital. When duty calls Stanhope briefly back to the trench, Raleigh dies alone. Stanhope returns, sees that he is dead, and remains with him for a moment before climbing back to command the company. The shelling intensifies; a shell strikes the dugout, extinguishing the candle and burying the room while the battle continues above. Osborne has already died in the futile raid, and Stanhope's depleted company faces the German attack with its remaining officers and men.",
+        "in_short": "In March 1918, young Raleigh joins a British infantry company in the trenches because its commander, Stanhope, was his schoolboy hero. He finds an exhausted officer who has survived three years at the front by drinking heavily, yet still commands with courage and discipline. Osborne, Stanhope's older second-in-command, mediates between them as the company learns that a German offensive is imminent. Brigade nevertheless orders a raid: Osborne is killed, Raleigh helps capture a German soldier, and the intelligence confirms the attack without changing the plan. Stanhope also prevents the terrified Hibbert from leaving, partly by admitting their shared fear. When the offensive begins, Raleigh is mortally wounded. Stanhope comforts him in the dugout, but Raleigh dies while Stanhope returns to duty. A shell then strikes the dugout as the company meets the assault above.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In a British officers' dugout near Saint-Quentin in March 1918, Hardy hands the position over to Osborne and warns that a major German attack is expected within days. Second Lieutenant Raleigh arrives, delighted to have secured a posting to the company commanded by Captain Stanhope, an older schoolmate whom he worshipped. Osborne gently prepares him for the fact that three years of command have changed Stanhope. The captain is tense, irritable, and dependent on whisky, but his officers insist that he remains an exceptional commander. Stanhope is alarmed by Raleigh's arrival because he is engaged to Raleigh's sister and fears the young man will tell her what he has become. When he learns that Raleigh has written home, he demands to censor the letter; Osborne reads it and finds only praise for Stanhope.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The company waits under the pressure of the expected assault. Trotter preserves an ordinary routine through meals and conversation, while Hibbert complains of neuralgia and says he must report sick. The Colonel brings orders for a raid on the German line to obtain a prisoner and intelligence. Despite Stanhope's objections that the enemy will be ready and that the operation can reveal little the officers do not already suspect, brigade insists that it go ahead. Osborne and Raleigh are selected to lead it, and the company must prepare for the raid while still making ready for the larger attack expected soon afterward.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stanhope decides that Hibbert's neuralgia is fear and refuses to let him leave on the eve of battle. Their confrontation escalates until Stanhope threatens to shoot him for desertion, but he then admits that he too is frightened and persuades Hibbert that they can endure the remaining hours together. Preparations for the raid continue while Osborne and Raleigh speak of home. Osborne gives Raleigh his wedding ring and asks him to send it to his wife if he is killed, though both avoid naming the exchange as a farewell. Stanhope's anger and drinking sharpen because he knows the operation is needless and cannot change the orders.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The raid crosses no-man's-land under covering fire. Raleigh returns with a captured young German, but Osborne and several soldiers are killed. Papers taken from the prisoner confirm that the German attack will begin early the next morning, information that does nothing to restore the men lost obtaining it. Raleigh comes back physically safe and briefly caught in the excitement surrounding the successful capture, but Osborne's death removes the officer who had quietly held the company together and protected both Raleigh and Stanhope.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The officers gather for dinner while the expected attack is only hours away. Raleigh stays away, unable to join a celebration after Osborne's death. Stanhope initially interprets the absence as a judgment on his drinking, then furiously rebukes Raleigh for failing to honor Osborne by attending. His anger exposes grief he cannot express directly. Trotter and the other remaining officers try to preserve routine as the company prepares for dawn. The raid's supposed success has left them with confirmation of the attack, fewer men to face it, and no change in their orders.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At dawn the German bombardment begins. Stanhope sends the men to their positions and remains in command as casualties mount. Raleigh is brought down to the dugout with his spine badly wounded and his legs paralysed. Stanhope lays him in Osborne's bed, speaks gently to him, and promises that stretcher-bearers will take him to hospital. He must leave when the Sergeant-Major calls him back to the line. Raleigh dies during Stanhope's brief absence. Stanhope returns, realizes what has happened, and sits beside him before duty draws him upstairs again. Soon afterward a shell hits the dugout, collapsing it and putting out the candle. The company continues facing the assault above, with Osborne and Raleigh dead and Stanhope still bound to his command.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "journeys-end"
+      }
+    },
     "julius-caesar": {
       "characters": {
         "characters": [
