@@ -3410,6 +3410,127 @@
         "work": "the-adventure-of-the-devils-foot"
       }
     },
+    "the-adventure-of-the-second-stain": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective asked to recover a missing state paper whose publication could provoke a European war. Holmes treats the political stakes seriously but insists that the small circle with access to the document must contain the explanation. He connects the theft to a nearby murder and uses a displaced carpet stain to reconstruct what happened after the killing.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "Holmes's friend and the narrator of the case. Watson accompanies Holmes during the confidential visit from government leaders and the later examination of the murder scene, recording a solution that the detective keeps from his official clients.",
+            "id": "john-watson",
+            "name": "Dr John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Bellinger"
+            ],
+            "description": "The British prime minister, who comes privately to Baker Street because a letter from a foreign ruler has vanished. Controlled and authoritative, he believes disclosure could destabilize Europe and refuses to reveal more of the document than Holmes needs to know.",
+            "id": "lord-bellinger",
+            "name": "Lord Bellinger",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The secretary for European affairs and custodian of the missing letter. Hope kept it in a locked dispatch box at home and is horrified that it disappeared despite his careful routine. His public duty and his trust in his wife are both implicated in the mystery.",
+            "id": "trelawney-hope",
+            "name": "Trelawney Hope",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Hilda"
+            ],
+            "description": "Trelawney Hope's wife, who secretly visits Holmes after the officials leave. She asks what damage the stolen paper could do while insisting that her husband has not confided its contents to her. Holmes recognizes that her fear is personal as well as patriotic.",
+            "id": "hilda-trelawney-hope",
+            "name": "Lady Hilda Trelawney Hope",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A London resident known to the authorities as an international agent. Lucas is found stabbed in his house on the same night the state letter disappears. The investigation reveals that he also used another identity in Paris and had been blackmailing Lady Hilda.",
+            "id": "eduardo-lucas",
+            "name": "Eduardo Lucas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard inspector investigating Eduardo Lucas's murder. Lestrade brings Holmes back to the scene after noticing that a bloodstain on the carpet no longer matches the stain on the floor beneath it, an inconsistency that reveals a hidden compartment.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Fournaye"
+            ],
+            "description": "The Parisian wife of the man who lived in London as Eduardo Lucas. Driven by jealousy after discovering his double life, she follows him to his house and kills him during a confrontation, unintentionally creating the opportunity for the stolen state paper to be recovered.",
+            "id": "madame-henri-fournaye",
+            "name": "Madame Henri Fournaye",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-second-stain"
+      },
+      "recaps": {
+        "ending": "Holmes identifies Lady Hilda as the person who removed the state letter from her husband's dispatch box. Eduardo Lucas had obtained an indiscreet letter she wrote before her marriage and threatened to expose it unless she brought him the diplomatic paper. While she was delivering it, Lucas's jealous wife arrived and killed him; hidden nearby, Lady Hilda saw Lucas place the paper beneath a loose section of floor. She later returned and shifted the bloodstained carpet to retrieve it, producing the mismatch that attracted Lestrade's attention. Holmes compels her to surrender the paper but protects her marriage and reputation. Following his instructions, she replaces it in the dispatch box before Trelawney Hope and Lord Bellinger return. Holmes then invites Hope to search again. The letter is found, and the prime minister concludes that it was never stolen. Holmes leaves both officials unaware of Lady Hilda's theft, the blackmail, and his intervention.",
+        "in_short": "Prime Minister Lord Bellinger and European secretary Trelawney Hope ask Sherlock Holmes to recover a stolen letter whose publication could cause an international crisis. The disappearance coincides with the murder of suspected agent Eduardo Lucas. A bloodstained carpet at Lucas's house has been shifted, revealing a hiding place beneath the floor. Holmes traces the second visitor to Hope's wife, Lady Hilda. Lucas had blackmailed her over a compromising letter from before her marriage and forced her to steal the state paper. Lucas's jealous wife killed him while Lady Hilda was concealed in the room, allowing her to see where he hid the document and recover it later. Holmes persuades Lady Hilda to give him the paper and has her replace it in her husband's dispatch box. When Hope searches again, he finds it. Holmes preserves Lady Hilda's secret and lets the government believe the dangerous document had never left its keeper's possession.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Prime Minister Lord Bellinger and the secretary for European affairs, Trelawney Hope, visit Sherlock Holmes about a letter stolen from Hope's locked dispatch box. Written by a foreign ruler, it could provoke war if published. Only a few people knew Hope possessed it, and the officials demand absolute secrecy. After they leave, Lady Hilda Hope privately asks Holmes about the danger while claiming ignorance of the document itself. Holmes considers several international agents who might exploit it. One, Eduardo Lucas, was stabbed at his London home on the night of the theft. The murder initially appears domestic when the police learn that Lucas lived under another identity in Paris and was killed by his jealous wife, Madame Fournaye. Lestrade later draws Holmes's attention to a bloodstain on Lucas's carpet that does not align with the stain on the boards. The carpet was moved after the murder, exposing a concealed space beneath the floor. Holmes confronts Lady Hilda. She admits that Lucas blackmailed her with an indiscreet premarital letter and demanded the state paper in exchange. Hidden during Lucas's fatal confrontation with his wife, she saw him conceal the stolen document and later returned to recover it, shifting the carpet. Holmes makes her surrender the letter and replace it in her husband's dispatch box. Hope then finds it during a new search, allowing Holmes to protect Lady Hilda and resolve the international danger without revealing the truth to his official clients.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-second-stain"
+      }
+    },
     "the-adventures-of-pinocchio": {
       "characters": {
         "characters": [

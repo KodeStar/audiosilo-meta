@@ -3362,6 +3362,249 @@
         "work": "kim-jiyoung-born-1982"
       }
     },
+    "king-arthur": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unrecognized son of King Uther, raised in Sir Ector's household without knowing his birth. As a young man he draws the sword fixed in the stone, the sign that identifies the rightful king of Britain. He must then persuade resistant nobles that birth and the marvel truly give him the crown.",
+            "id": "king-arthur",
+            "name": "King Arthur",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A magician and counsellor who arranged Arthur's upbringing and understands the meaning of the sword in the stone. He guides the young king with prophecy and strategy, often knowing the dangers around Arthur before the king recognizes them himself.",
+            "id": "merlin",
+            "name": "Merlin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The honorable lord who brings Arthur up as a son. When Arthur's claim to the crown becomes clear, Ector accepts the revelation and asks that his natural son Kay should remain close to the new king.",
+            "id": "sir-ector",
+            "name": "Sir Ector",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sir Ector's son and Arthur's foster brother. His forgotten sword sends Arthur looking for a replacement and thereby leads Arthur to draw the sword from the stone. Kay initially claims the deed, but acknowledges the truth when tested.",
+            "id": "sir-kay",
+            "name": "Sir Kay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable king and wandering knight devoted to hunting the mysterious Questing Beast. He defeats the inexperienced Arthur in single combat before Merlin intervenes, and later becomes one of the distinguished knights connected with Arthur's court.",
+            "id": "king-pellinore",
+            "name": "King Pellinore",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mysterious woman who appears upon a lake with the sword Excalibur. She grants the weapon to Arthur in return for a future request, placing one of the king's greatest protections in his hands while leaving the price unsettled.",
+            "id": "lady-of-the-lake",
+            "name": "The Lady of the Lake",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fierce knight released from imprisonment at Arthur's court after drawing a sword that no other knight can free. His courage and rash sense of justice begin a chain of adventures shadowed by a curse.",
+            "id": "sir-balin",
+            "name": "Sir Balin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Balin's loyal brother and fellow knight. He searches for Balin after their separation, unaware that enchantment and concealed identities are drawing both men toward a disastrous meeting.",
+            "id": "sir-balan",
+            "name": "Sir Balan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The daughter of King Leodegrance, chosen by Arthur as his queen. Her marriage brings the Round Table to Arthur's court as a wedding gift, helping establish the fellowship that will define his reign.",
+            "id": "queen-guenevere",
+            "name": "Queen Guenevere",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman associated with the Lady of the Lake who attracts Merlin's devotion. As he follows her, she learns his arts and seeks a way to free herself from his unwanted pursuit, despite his knowledge that she will be the cause of his disappearance.",
+            "id": "nimue",
+            "name": "Nimue",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the most celebrated knights gathered around Arthur's Round Table. His strength, courtesy, and success in battle make him central to the fellowship and a trusted defender of the queen.",
+            "id": "sir-lancelot",
+            "name": "Sir Lancelot",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arthur's nephew and a prominent knight of the Round Table. Proud of his family and his honor, he serves the king loyally, though kinship and vengeance can weigh as heavily with him as the unity of the court.",
+            "id": "sir-gawain",
+            "name": "Sir Gawain",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Morgan le Fay"
+            ],
+            "description": "Arthur's half-sister, a queen with formidable knowledge of enchantment. Her hostility becomes open when she arranges magical attempts on Arthur's life and seeks to turn his own sword against him.",
+            "id": "morgan-le-fay",
+            "name": "Morgan le Fay",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Beaumains"
+            ],
+            "description": "A young man who arrives at court without declaring his lineage and asks only for food and lodging for a year. Assigned mockingly to the kitchens, he later requests an adventure and proves through repeated combats that his humble place concealed a trained knight.",
+            "id": "sir-gareth",
+            "name": "Sir Gareth",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp-tongued young woman who comes to Arthur's court seeking a champion for her besieged sister. She objects when the supposed kitchen servant Beaumains is sent with her and repeatedly scorns him even as he overcomes every danger on their road.",
+            "id": "lynette",
+            "name": "Lynette",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young knight destined for the highest spiritual achievement of the Round Table. His arrival fulfills prophecies surrounding the perilous empty seat, and his purity marks him as the leader of the quest for the Holy Grail.",
+            "id": "sir-galahad",
+            "name": "Sir Galahad",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Fair Maid of Astolat"
+            ],
+            "description": "A nobleman's daughter who gives Lancelot shelter before a tournament. She falls deeply in love with him and asks him to carry her token when he rides disguised, mistaking his kindness and acceptance of the favor for hope of a future together.",
+            "id": "elaine-of-astolat",
+            "name": "Elaine of Astolat",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arthur's treacherous nephew, who joins the effort to expose Lancelot and Guenevere and uses the resulting division of the Round Table to seek power for himself.",
+            "id": "sir-mordred",
+            "name": "Sir Mordred",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "king-arthur"
+      },
+      "recaps": {
+        "ending": "The exposure of Lancelot and Guenevere breaks the Round Table into hostile loyalties. Lancelot rescues the queen from execution, killing knights including Gareth and Gaheris in the struggle, and Gawain's demand for vengeance drives Arthur into war against Lancelot in France. While Arthur is away, Mordred seizes the kingdom and claims the queen. Arthur returns to fight him. Gawain dies after acknowledging that his feud helped cause the ruin and urges Arthur to seek Lancelot's aid. In the last battle nearly all the remaining knights are killed; Arthur kills Mordred but receives a mortal wound. Bedivere returns Excalibur to the lake, and Arthur is carried away toward Avalon. Guenevere withdraws to a convent and dies there. Lancelot returns too late, renounces warfare, and enters a religious life with surviving companions. After learning of Guenevere's death, he also dies. The fellowship ends, leaving Arthur's reign as a lost ideal rather than a continuing kingdom.",
+        "in_short": "Young Arthur proves his royal birth by drawing a sword from a stone and, guided by Merlin, establishes his rule. He receives Excalibur, marries Guenevere, and gathers the Round Table. The knights' adventures include Balin's cursed tragedy, Morgan le Fay's plots, Gareth's rise from kitchen servant to champion, and the quest for the Holy Grail, achieved fully only by Galahad. The fellowship's worldly glory hides its fatal weakness: Lancelot and Guenevere love one another. Elaine of Astolat dies after Lancelot cannot return her love, and Mordred helps expose the queen's relationship with him. Lancelot rescues Guenevere from execution, killing Gawain's brothers and dividing the knights. Arthur leaves Britain to fight Lancelot; Mordred usurps the throne. Arthur returns and kills Mordred but is mortally wounded. Excalibur is cast back into the lake and Arthur is borne toward Avalon. Guenevere becomes a nun, Lancelot a monk, and both die after the Round Table has passed away.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Britain lacks an accepted king after Uther's death. Merlin has placed Uther's son Arthur in the household of Sir Ector, where the boy grows up believing he is Ector's natural son and Kay's younger foster brother. At a gathering called to resolve the succession, a sword appears fixed in a stone with a declaration that whoever draws it is the rightful king. The leading nobles fail. When Kay needs a sword, Arthur casually pulls out the mysterious weapon and brings it to him. Repeated public tests confirm that only Arthur can remove it. Ector reveals that Arthur is not his son, and after resistance from proud barons, Arthur is crowned. Still young and inexperienced, he meets King Pellinore, who is pursuing the strange Questing Beast. Arthur challenges him and is defeated; Merlin intervenes to save the king and warns him about the consequences his choices will have.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Arthur's first sword is broken in combat, Merlin leads him to a lake where a mysterious lady offers him Excalibur in exchange for a future service. The sword gives Arthur a great weapon, while its scabbard protects its bearer from loss of blood. At court, Balin alone succeeds in drawing an enchanted sword from a maiden's scabbard. He refuses to return it and soon kills the Lady of the Lake over an old grievance, bringing Arthur's anger and a curse upon himself. Balin's violent adventures culminate in the Dolorous Stroke, a blow that devastates a land. Later, forced to fight an unknown knight while both carry concealed shields, Balin discovers too late that his opponent is his brother Balan. Each has mortally wounded the other. Their deaths complete the warning attached to Balin's sword and leave behind a tragedy that later knights will remember.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur chooses Guenevere, daughter of King Leodegrance, as his queen. Her father sends the great Round Table with her, and Arthur gathers a fellowship of knights pledged to honorable conduct, loyal service, and the defense of those who seek aid. Among them are Lancelot, Gawain, Pellinore, and other champions whose adventures give the court its renown. Merlin, meanwhile, becomes devoted to Nimue, the Lady of the Lake. Although he foresees that his attachment will end his freedom, he follows her and teaches her much of his magic. Troubled by him and armed with what she has learned, Nimue uses an enchantment to imprison Merlin permanently beneath a stone. Arthur loses the counsellor who made his reign possible, and the Round Table must continue without Merlin's direct guidance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Morgan le Fay, Arthur's half-sister, makes repeated attempts to destroy him. She sends a deadly enchanted mantle whose danger Arthur avoids, steals Excalibur and its protective scabbard, and gives the sword to Accolon so that he can unknowingly fight Arthur with it. Arthur survives the duel, recovers Excalibur, and learns the source of the plot, but Morgan escapes after throwing the scabbard away where it cannot be recovered. Later a nameless young man comes to court and asks to be fed for a year. Kay calls him Beaumains and places him in the kitchens. When Lynette arrives seeking a champion to rescue her sister, Beaumains claims the adventure. Lynette mocks his apparent low birth, but he defeats a succession of increasingly dangerous knights and frees the besieged lady. He is revealed as Gareth, Gawain's brother, and earns his place at the Round Table by achievement rather than announced rank.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Galahad arrives at Camelot and safely takes the perilous seat long kept empty for the knight destined to achieve the Holy Grail. A vision of the sacred vessel inspires the Round Table to undertake a quest that scatters the fellowship. Earthly prowess is not enough: many knights fail because of pride, violence, or divided loyalties. Lancelot is granted only a limited vision, while Galahad, Percival, and Bors reach the quest's conclusion; Galahad's perfect fulfillment ends with his death and passage from the world. The knights who return find the fellowship diminished. Later, a knight dies after eating a poisoned apple at a meal given by Guenevere, and the queen is accused of murder. Lancelot returns to champion her against Sir Mador, defeating him in the formal combat. Nimue then identifies the true culprit, clearing Guenevere and saving her from condemnation.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elaine of Astolat shelters Lancelot before a tournament and persuades him to wear her token while he competes in disguise. She nurses him after he is wounded and falls in love, but he cannot offer marriage or return her feeling. Elaine dies, and a boat carries her body and explanatory letter to Camelot, making her sorrow public. The concealed love between Lancelot and Guenevere is then exposed by Mordred and other hostile knights. Lancelot rescues Guenevere from execution, killing Gareth and Gaheris during the violent escape. Gawain demands vengeance, and Arthur follows Lancelot to war in France. Mordred uses the king's absence to seize Britain and claim Guenevere. Arthur returns; Gawain dies regretting the feud, and the final battle destroys both armies. Arthur kills Mordred but is mortally wounded. Bedivere returns Excalibur to the lake, and Arthur is carried toward Avalon. Guenevere enters a convent, while Lancelot returns too late, becomes a monk, and dies after the fellowship and its age have ended.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "king-arthur"
+      }
+    },
     "king-kong": {
       "characters": {
         "characters": [
