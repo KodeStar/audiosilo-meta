@@ -2827,6 +2827,184 @@
         "work": "the-magus-john-fowles"
       }
     },
+    "the-man-who-laughs": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An itinerant philosopher, healer, playwright, and showman who travels in a small wagon. Cynical in speech but compassionate in practice, he shares his life with the trained wolf Homo and survives by selling remedies and staging performances.",
+            "id": "ursus",
+            "name": "Ursus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ursus's tame wolf and constant companion. Intelligent, disciplined, and gentler than many of the people around him, Homo helps draw the wagon and belongs to the small family Ursus builds.",
+            "id": "homo",
+            "name": "Homo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ten-year-old boy abandoned on the coast during a winter storm. His mouth has been permanently shaped into a grin by deliberate mutilation, so that strangers read laughter in his face regardless of his feelings. He nevertheless shows courage and compassion when he finds an infant in the snow.",
+            "id": "gwynplaine",
+            "name": "Gwynplaine",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A blind infant whom Gwynplaine finds beside her dead mother in the snow. He carries her toward shelter despite his own exhaustion, and Ursus takes responsibility for them both.",
+            "id": "dea",
+            "name": "Dea",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A court-dependent who has advanced by attaching himself to powerful people and collecting secrets. Patient, resentful, and skilled at appearing useful, he looks for chances to profit from the vulnerabilities of the aristocrats around him.",
+            "id": "barkilphedro",
+            "name": "Barkilphedro",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duchess Josiana"
+            ],
+            "description": "A wealthy duchess and the illegitimate half-sister of Queen Anne. Beautiful, privileged, and bored by conventional admiration, she becomes fascinated by Gwynplaine because his appearance and low social station offer a sensation outside her ordered world.",
+            "id": "josiana",
+            "name": "Josiana",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tom-Jim-Jack"
+            ],
+            "description": "A strong, good-natured nobleman who sometimes moves among ordinary people under the name Tom-Jim-Jack. He is connected to Duchess Josiana by a marriage arranged for reasons of rank and inheritance.",
+            "id": "david-dirry-moir",
+            "name": "David Dirry-Moir",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The reigning queen, politically wary of her half-sister Josiana and attentive to questions of title and inheritance. Court dependents study her wishes closely because their positions can turn on her favor.",
+            "id": "queen-anne",
+            "name": "Queen Anne",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A criminal associated with the mutilation of children for profit. His recognition of Gwynplaine and testimony about the boy's origins give the authorities a way to recover a history that had been deliberately erased.",
+            "id": "hardquanonne",
+            "name": "Hardquanonne",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord Fermain Clancharlie"
+            ],
+            "description": "Gwynplaine's father, an English nobleman punished for remaining loyal to the Commonwealth after the Restoration. The fate of his title and infant heir forms the concealed political history behind Gwynplaine's abandonment.",
+            "id": "lord-linnaeus-clancharlie",
+            "name": "Lord Linnaeus Clancharlie",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-who-laughs"
+      },
+      "recaps": {
+        "ending": "After being recognized as Lord Fermain Clancharlie, Gwynplaine rejects Josiana's invitation and tries to defend the poor before the House of Lords. The peers answer his appeal with laughter, reducing both his face and his testimony to entertainment. He abandons his recovered rank and returns to the life he chose, but Ursus and Dea have been expelled from England and are already sailing away. Gwynplaine reaches their vessel and is reunited with them. Dea, physically frail and overwhelmed by the separation and reunion, dies in his arms after affirming her love. Gwynplaine walks to the edge of the ship and lets himself fall into the sea. Homo looks over the rail and howls, leaving Ursus and the wolf as the survivors of the family.",
+        "in_short": "Gwynplaine, a boy whose face was surgically fixed into a grin, is abandoned during a storm and rescues the blind infant Dea. The showman Ursus raises them, and as adults they perform together, with audiences laughing at Gwynplaine while Dea loves him without seeing his scars. Duchess Josiana becomes erotically fascinated by him. Evidence then reveals that Gwynplaine is really Lord Fermain Clancharlie, an abducted noble heir. Taken from his family and restored to Parliament, he tries to tell the Lords about the suffering of the poor, but they laugh at him. He rejects aristocratic life and seeks Dea, only to find that Ursus's company has been banished and is sailing away. Reunited aboard ship, Dea dies in his arms, and Gwynplaine throws himself into the sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ursus travels with the wolf Homo, earning a living through remedies, philosophy, and small theatrical shows. The narrative also explains the child-buyers who alter children for profit. On a bitter winter night, such a group leaves England by boat and deliberately abandons a ten-year-old boy on the coast. The child, Gwynplaine, has been mutilated so that his mouth forms a permanent grin. He begins crossing the dangerous, frozen landscape alone, struggling toward distant signs of habitation.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At sea, the people who abandoned Gwynplaine are caught in a catastrophic storm. As their vessel fails, they put a written confession into a sealed container and cast it into the water before they drown. On land, Gwynplaine continues through the snow, passing a hanged body and following the traces of human habitation. Though close to collapse himself, he responds when he hears a faint sound near a dead woman and discovers that the infant in her arms is still alive.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gwynplaine carries the blind infant to Ursus, who reluctantly but compassionately takes in both children. The girl is named Dea. Years pass, and the improvised household becomes a traveling theatrical company. Gwynplaine's fixed smile supplies the public attraction, while Dea grows into a gifted performer who understands his kindness without seeing the face at which audiences laugh. Their affection is mutual and innocent. The company prospers modestly and travels to London, where its popular show brings Gwynplaine before a much larger audience.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Around the performers, aristocratic lives are governed by title, inheritance, and court rivalry. Duchess Josiana is rich, independent, and bored; David Dirry-Moir is intended as her husband; Queen Anne watches the arrangement; and Barkilphedro advances by gathering information while presenting himself as a grateful dependent. Josiana attends Gwynplaine's performance and becomes fascinated by the contrast between his despised appearance and the emotional force he projects onstage. Ursus distrusts attention from officials and the powerful, knowing their interest can destroy people who live outside rank.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Josiana's fascination develops into a private summons. She treats Gwynplaine as an extraordinary experience that can relieve her boredom, drawing him toward a world utterly unlike his life with Dea. Barkilphedro, meanwhile, recognizes that old records and royal rivalries may give him leverage. Gwynplaine remains attached to Dea but is shaken by Josiana's desire and by the social power surrounding her. Ursus grows increasingly fearful as official interest closes around the troupe.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The authorities abruptly take Gwynplaine away, leaving Ursus unsure whether he has been imprisoned or killed. The investigation connects him with Hardquanonne, one of the men involved in mutilating children. A confession recovered from the sea and testimony about Gwynplaine's scars establish that he is the missing son of Lord Linnaeus Clancharlie and is legally Lord Fermain Clancharlie. The state restores his title and property, transforming him in an instant from a fairground performer into a peer while separating him from the family that raised him. His recovered position also makes him the intended husband of Josiana.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Isolated amid luxury, Gwynplaine rejects Josiana's invitation and recoils from the court's treatment of people as pieces in an inheritance plan. At the House of Lords he tries to use his new standing to describe the hunger and suffering he has witnessed, but the peers laugh at his face and dismiss him. He abandons his recovered rank and searches for Ursus and Dea, finding that officials have expelled their company from England. He reaches their departing vessel and is reunited with them. The strain is too great for Dea's failing health; she dies in his arms. Gwynplaine then walks to the ship's edge and falls into the sea. Homo's howl alerts Ursus, who survives with the wolf.",
+            "through": {
+              "chapter": 117
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-who-laughs"
+      }
+    },
     "the-man-who-was-thursday-annotated": {
       "characters": {
         "characters": [
