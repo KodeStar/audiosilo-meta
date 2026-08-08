@@ -893,6 +893,343 @@
         "work": "gideon-the-ninth"
       }
     },
+    "giovannis-room": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An American living in France who narrates the story from a rented house in the south, on the night before Giovanni is to be executed. He has spent much of his life trying to fit an image of conventional masculinity and has difficulty admitting what he wants. His fiancée, Hella, is away in Spain deciding whether to marry him, while his memories return to his youth in America and his time with Giovanni in Paris.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "David's American fiancée. Intelligent and independent, she has gone to Spain alone to consider his proposal and what marriage would require of her. Her absence gives David freedom he is unwilling to examine honestly.",
+            "id": "hella",
+            "name": "Hella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boyhood friend whose intimate encounter with David awakens feelings that David immediately rejects. The memory remains a formative example of David responding to desire with shame and flight.",
+            "id": "joey",
+            "name": "Joey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "David's widowed father, who tries to relate to his son as a companion rather than an authority figure. His ideas about manhood and his concern over David's direction help shape the expectations David carries into adulthood.",
+            "id": "davids-father",
+            "name": "David's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older Belgian American in Paris who moves through the city's gay social world with money, experience, and an often painful awareness of how affection and dependence become entangled. He lends David money and brings him to Guillaume's bar.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wealthy owner of a Paris bar frequented by Jacques and other men. Vain and socially powerful within his circle, he employs Giovanni as a bartender and treats the people around him as sources of attention or advantage.",
+            "id": "guillaume",
+            "name": "Guillaume",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A handsome young Italian working behind the bar at Guillaume's establishment. He is direct, quick-witted, and newly arrived in David's life, and the immediate attraction between them unsettles David.",
+            "id": "giovanni",
+            "name": "Giovanni",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An acquaintance in Guillaume's late-night circle, known for entertaining the others with stories and gossip as they drift between bars and restaurants.",
+            "id": "pierre",
+            "name": "Pierre",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An American woman in Paris whom David seeks out while trying to prove something to himself about his desires. She responds sincerely to his attention and does not know that his motives are divided.",
+            "id": "sue",
+            "name": "Sue",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "giovannis-room"
+      },
+      "recaps": {
+        "ending": "After David abandons their life together, Giovanni returns in desperation to Guillaume's bar. Guillaume exploits him and then refuses to help him; Giovanni kills Guillaume and is captured after a futile attempt to escape. He is sentenced to death. Meanwhile, David attempts to resume a conventional future with Hella, but he continues seeking men and cannot give her the honest commitment she expects. Hella discovers the truth, understands that their planned marriage cannot survive it, and leaves to return to America. On the morning set for Giovanni's execution, David remains alone in southern France, imagining Giovanni's final moments and confronting the destruction caused by his fear and denial. He tears up the official notice of the execution, but the wind blows its pieces back toward him, leaving him unable to discard either Giovanni's memory or his responsibility.",
+        "in_short": "David, an American in France, remembers the choices that brought him to the eve of Giovanni's execution. While his fiancée Hella is in Spain considering marriage, David meets Giovanni, an Italian bartender, through his older acquaintance Jacques. David moves into Giovanni's cramped Paris room, and the two begin an intense relationship, but David's shame makes him resist any future Giovanni imagines. When Hella returns, David leaves Giovanni and tries to restore the heterosexual life he believes he should want. Abandoned and without work, Giovanni goes back to the bar owner Guillaume; after Guillaume uses and rejects him, Giovanni kills him and is condemned to death. David's effort to live with Hella fails as he continues pursuing men. She discovers the truth and leaves for America. Alone on the morning of Giovanni's execution, David can no longer avoid the human cost of his denial.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "David spends a sleepless night in a house in southern France. Hella, the woman he expected to marry, has left, and Giovanni is scheduled to be executed in Paris at dawn. David looks back on the evasions that brought them to this point. After losing his mother as a child, he grew up with a father who wanted them to be companions and who held conventional ideas about how a man should live. As an adolescent, David shared a joyful and intimate night with his friend Joey, then recoiled the next morning and treated Joey cruelly. Rather than acknowledge the desire the encounter exposed, he tried to bury it. As an adult he drifted to Paris, became involved with Hella, and proposed marriage. She went alone to Spain to decide what she wanted, leaving David with little money and no settled plan while he waited for her answer.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Short of money, David contacts Jacques, an older acquaintance who lends him cash and takes him out for the evening. At Guillaume's bar, David meets Giovanni, the striking Italian bartender. Their attraction is immediate, though David hides behind mockery and insists to himself that he can remain detached. Jacques recognizes what is happening and urges David not to answer every possibility of affection with shame, even as Jacques's own loneliness and use of money complicate his advice. After the bar closes, the group continues through the Paris night. David and Giovanni talk more privately, and Giovanni's confidence draws David past his resistance. By morning they leave together, beginning a relationship David wants while already fearing what it means.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "David moves into Giovanni's small room in a Paris suburb. The enclosed, unfinished space becomes their shared world as they settle into an intense domestic life. Giovanni speaks of his past in Italy, including the loss that drove him away, and imagines that the room and their relationship can be remade. David feels both tenderness and confinement. He cannot accept the life Giovanni offers as a legitimate future and treats Hella's eventual return as an escape route. As money grows scarce and Giovanni loses his position at Guillaume's bar, strain replaces the freedom of their first nights. David withdraws emotionally and seeks distance, while Giovanni understands that David is preparing to leave but cannot make him speak honestly about it.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hella returns from Spain ready to accept David's proposal and build a married life. David leaves Giovanni and resumes his relationship with her, presenting their reunion as the answer to his uncertainty. Yet he cannot simply erase the life in Giovanni's room. He seeks out Sue, an American woman, and sleeps with her in an attempt to reassure himself, then recognizes that he has used her and retreats from the intimacy she hopes might continue. Giovanni, unemployed and abandoned, becomes increasingly desperate. When David encounters him again, Giovanni accuses him of choosing safety and social approval over love. David still refuses to alter his course, leaving Giovanni with little support beyond men such as Jacques, whose offers carry their own imbalance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Giovanni returns to Guillaume hoping to recover his job. Guillaume makes his help conditional on sex and then dismisses Giovanni afterward. Enraged and humiliated, Giovanni strangles him. He takes money and tries to escape, but the police capture him; he is convicted and sentenced to the guillotine. David and Hella leave Paris for the south of France, attempting to live as an ordinary engaged couple, but David remains restless and unavailable. He spends nights away and pursues encounters with men. Hella finally finds him with a sailor and sees that the future he promised her was founded on concealment. Grieving and angry, she decides to return to America without him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alone after Hella's departure, David waits through the last hours before Giovanni's execution. He imagines Giovanni in prison with his lawyer and a priest, approaching death while David remains free. The distance cannot protect David from recognizing that his fear shaped the choices that isolated Giovanni and wounded Hella. At dawn, Giovanni is executed. David prepares to leave the rented house and tries to cast away the notice reporting Giovanni's fate by tearing it into pieces. The wind catches the fragments and carries them back toward him. The gesture fails to sever him from the past, and the story ends with David facing the memory and responsibility he has repeatedly tried to escape.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "giovannis-room"
+      }
+    },
+    "girl-with-a-pearl-earring": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old girl from a Delft tile-painter's family whose finances collapse after her father is blinded in a kiln accident. Quiet, observant, and unusually alert to color and arrangement, she becomes a maid in Johannes Vermeer's crowded Catholic household. She must navigate unfamiliar religious customs, domestic rivalries, and the dangerous social distance between servant and master.",
+            "id": "griet",
+            "name": "Griet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The master"
+            ],
+            "description": "The Delft painter in whose house Griet takes service. Absorbed in the slow production of his pictures, he admits few people to his studio and depends on his mother-in-law to protect the household finances. He notices Griet's instinctive visual judgment and gradually gives her responsibilities connected with his work.",
+            "id": "johannes-vermeer",
+            "name": "Johannes Vermeer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Catharina"
+            ],
+            "description": "Vermeer's wife and the frequently pregnant mother of his children. Emotional, possessive, and excluded from her husband's studio, she regards Griet with suspicion. The household's dependence on her wealthy mother limits her authority even inside her own home.",
+            "id": "catharina-vermeer",
+            "name": "Catharina Vermeer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catharina's formidable mother, who manages the Vermeer household's money and understands that the painter's work must be protected from daily disorder. Practical and watchful, she recognizes Griet's usefulness and gives her some protection while expecting discretion and loyalty in return.",
+            "id": "maria-thins",
+            "name": "Maria Thins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vermeers' senior maid and cook, established in the household before Griet arrives. She teaches the newcomer its routines but guards her own status and resents any special privilege Griet receives. Her knowledge of family tensions makes her both a guide and a rival.",
+            "id": "tanneke",
+            "name": "Tanneke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cornelia"
+            ],
+            "description": "One of Catharina and Vermeer's daughters, old enough to understand the household's rivalries. Sharp, jealous, and deliberately troublesome, she quickly senses Griet's vulnerable position and looks for ways to make the maid appear dishonest or disobedient.",
+            "id": "cornelia-vermeer",
+            "name": "Cornelia Vermeer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Maertge"
+            ],
+            "description": "The Vermeers' eldest daughter, closer to Griet in age than the younger children. She is less hostile than Cornelia and sometimes provides Griet with quiet companionship, though the difference between daughter and servant always remains.",
+            "id": "maertge-vermeer",
+            "name": "Maertge Vermeer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Van Ruijven"
+            ],
+            "description": "A wealthy Delft patron who buys Vermeer's paintings and enjoys exercising power over the painter's household. His attention to Griet is intrusive from their first meeting, and his money makes it difficult for the family to reject him outright.",
+            "id": "pieter-van-ruijven",
+            "name": "Pieter van Ruijven",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The butcher's son"
+            ],
+            "description": "The butcher's son who meets Griet when she shops for the Vermeer household. Direct, patient, and firmly rooted in her own Protestant social world, he begins courting her despite her reserve and offers a future very different from the secretive life of the studio.",
+            "id": "pieter",
+            "name": "Pieter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Griet's father, once a skilled painter of Delft tiles. A kiln explosion has left him blind and unable to work, forcing Griet to earn wages as a servant. He remains interested in the pictures she sees and is proud of the craft he can no longer practice.",
+            "id": "griets-father",
+            "name": "Griet's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Griet's practical Protestant mother, who arranges her place with the Catholic Vermeers after the family loses its income. Concerned with survival and reputation, she expects Griet's wages and urges her toward the security represented by Pieter.",
+            "id": "griets-mother",
+            "name": "Griet's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Griet's younger brother, apprenticed at the tile factory where their father once worked. His path shows the limited future available to the family after the accident, while his wages and prospects remain uncertain.",
+            "id": "frans",
+            "name": "Frans",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "girl-with-a-pearl-earring"
+      },
+      "recaps": {
+        "ending": "After Catharina discovers that Griet has worn her pearl earrings for the portrait, the confrontation becomes impossible to contain. Griet leaves the Vermeer house without waiting to be formally dismissed and returns to the life available to her own class. She marries Pieter, works in the butcher's trade, and has children. Ten years later, following Vermeer's death, Tanneke summons her to Maria Thins. Vermeer's estate is burdened by debt, but his will directs that Catharina's pearl earrings be given to Griet. Griet understands the bequest as a private acknowledgment of the portrait and of the part she played in his work. She cannot safely wear such conspicuous objects and does not preserve them as relics: she sells them, pays what the Vermeer household owes at the butcher's shop, and keeps the remaining money. The transaction converts the dangerous intimacy of the studio into something that can support the separate life she has made.",
+        "in_short": "In 1660s Delft, sixteen-year-old Griet becomes a servant in painter Johannes Vermeer's Catholic household after an accident blinds her tile-painter father. Her eye for color draws her into Vermeer's guarded studio, where she cleans, mixes pigments, and quietly assists his work. His patron Van Ruijven takes an unwelcome interest in her and commissions a painting of her alone. Vermeer has Griet pierce her ear and wear his wife's pearl earring for the portrait, intensifying Catharina's jealousy and placing Griet's reputation at risk. When Catharina discovers the arrangement, Griet leaves and later marries Pieter, the butcher's son. A decade afterward, Vermeer dies in debt but leaves the earrings to Griet. She sells them, settles his household's butcher bill, and keeps the balance, closing the hidden connection between artist, servant, and painting on her own practical terms.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1664, a kiln accident blinds Griet's father and ends his work as a Delft tile painter. Sixteen-year-old Griet must enter service to support her Protestant family. She is hired by the large Catholic household of painter Johannes Vermeer and his wife, Catharina, under the supervision of Catharina's mother, Maria Thins. Griet learns a complex domestic order: senior maid Tanneke guards her status, young Cornelia creates trouble, and Catharina is quick to suspect the newcomer. Griet's special duty is cleaning Vermeer's studio without disturbing any object. Her care and her instinct for composition catch the painter's attention. He begins to ask her opinions and lets her observe how light, color, and placement shape a picture. Outside the house, Griet meets Pieter, the butcher's son, whose interest in her is open and socially acceptable. Inside it, the rich patron Van Ruijven notices her in a more threatening way. Griet's ability earns her access to the studio but also sets her apart from the other servants and deepens Catharina's unease.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "By 1665, Griet's work for Vermeer has moved beyond cleaning. In secrecy she grinds materials and mixes colors, learning the physical labor behind his paintings while hiding this privilege from Catharina. The studio offers intellectual freedom, yet every visit also increases her exposure to gossip and jealousy. Pieter continues his courtship and becomes a link to Griet's family and the secure future her mother wants. Griet is drawn instead toward Vermeer's disciplined attention, though he remains her employer and rarely explains what he expects. Van Ruijven's interest grows more dangerous because he has previously compromised a maid and because his purchases help sustain the household. A painting that places Griet near him would leave her vulnerable. Maria Thins therefore balances the patron's demands against the need to protect both Griet and Vermeer's productivity. Griet increasingly understands that the beauty created upstairs depends on bargains made elsewhere in the house, and that her insight does not give her the social power to control those bargains.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1666, Van Ruijven commissions a picture of Griet by herself. The work allows Vermeer to avoid placing her directly in a scene with the patron, but it turns Griet into the object of sustained observation. Vermeer decides that the portrait needs one of Catharina's pearl earrings. Because Griet's ears are not pierced and the jewelry is far above her station, the request crosses religious, domestic, and social boundaries. She pierces an ear and poses in private, while Maria Thins helps keep the arrangement from Catharina. The portrait captures the visual understanding between painter and maid, but Vermeer does not protect Griet from the consequences of creating it. Pieter recognizes that something binds her to the household yet continues to offer marriage. Cornelia eventually helps bring the concealed earring to Catharina's attention. Catharina enters the studio, sees the portrait, and realizes that Griet has worn her jewelry. Her anger confirms that Griet can no longer remain in the house. Griet leaves immediately, ending both her service and her access to Vermeer's work.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Griet returns to her own community, marries Pieter, and builds a practical life in the butcher's trade. Ten years after she left the Vermeer household, Tanneke calls her back following the painter's death. Vermeer has died with substantial debts, leaving Catharina and the children in financial difficulty. Maria Thins tells Griet that his will singled her out: she is to receive the pearl earrings used in the portrait. The gift is a private final recognition, but it is also an awkward burden. The earrings belong to the world of wealthy Catholic women and cannot be worn by a butcher's wife without questions. Griet sells them. From the proceeds she pays the outstanding account the Vermeer family owes to Pieter's business, then keeps what remains. By converting the pearls into money, she accepts Vermeer's acknowledgment without allowing it to disrupt her marriage or determine her identity. The portrait survives elsewhere, while Griet closes the account between the household she served and the life she chose after leaving it.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "girl-with-a-pearl-earring"
+      }
+    },
     "glass-houses": {
       "characters": {
         "characters": [

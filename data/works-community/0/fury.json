@@ -1966,6 +1966,414 @@
         ],
         "work": "gemina"
       }
+    },
+    "gemma-arterton-reads-alice-through-the-looking-glass-famous-fiction": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A curious child who imagines the world beyond a drawing-room mirror and passes through it. Once there, she accepts a chessboard landscape as a challenge and sets out to cross it as a White Pawn in hopes of becoming a queen.",
+            "id": "alice",
+            "name": "Alice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alice's mischievous black kitten, blamed for tangling yarn as Alice invents explanations about the world inside the looking-glass. The kitten remains in the ordinary drawing room when Alice crosses the mirror.",
+            "id": "kitty",
+            "name": "Kitty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A brisk chess queen whom Alice meets after entering the garden of live flowers. She explains that the countryside is a giant chessboard, makes Alice a White Pawn, and outlines the route by which she may reach the eighth square and become a queen.",
+            "id": "red-queen",
+            "name": "Red Queen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large insect who speaks with Alice on the train and later in the wood. He explains local insects with punning names and asks what becomes of a person's identity when names have been forgotten.",
+            "id": "gnat",
+            "name": "Gnat",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A round little man marked with his name and standing beside his twin. He and Tweedledee extend a simple greeting into an argument, recite a long poem, and claim that Alice exists only as part of the sleeping Red King's dream.",
+            "id": "tweedledum",
+            "name": "Tweedledum",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tweedledum's matching twin, distinguished mainly by the label on his collar. He joins in the brothers' elaborate logic and prepares to fight Tweedledum over a damaged rattle before a monstrous crow interrupts them.",
+            "id": "tweedledee",
+            "name": "Tweedledee",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chess king found asleep beneath a tree. The twins say he is dreaming about Alice and argue that she would vanish if he woke, leaving her unable to prove that she is more real than the dreamer.",
+            "id": "red-king",
+            "name": "Red King",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A distracted chess queen who runs while holding a shawl and speaks of remembering events in both directions. She crosses a brook with Alice and then appears as an elderly Sheep keeping a shop whose shelves evade close inspection.",
+            "id": "white-queen",
+            "name": "White Queen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An egg-shaped figure sitting on a narrow wall. Confident that names and words must obey him, he disputes Alice's understanding of language and explains the difficult vocabulary of the poem she found in the looking-glass house.",
+            "id": "humpty-dumpty",
+            "name": "Humpty Dumpty",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chess king attended by two messengers and an immense military force. He brings Alice to watch the Lion and Unicorn fight for his crown and treats their repeated contests as a scheduled public event.",
+            "id": "white-king",
+            "name": "White King",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful animal engaged in a recurring fight with the Unicorn for the White King's crown. He pauses the contest for refreshments and regards Alice as an unfamiliar creature from a fabulous story.",
+            "id": "lion",
+            "name": "Lion",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Lion's elegant horned opponent in the struggle for the crown. On meeting Alice, he agrees to believe in her if she will believe in him, since each considers the other a legendary monster.",
+            "id": "unicorn",
+            "name": "Unicorn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gentle, eccentric chessman who repeatedly falls from his horse while escorting Alice through a forest. He offers a succession of impractical inventions and sings her a farewell song before she crosses the final brook.",
+            "id": "white-knight",
+            "name": "White Knight",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "gemma-arterton-reads-alice-through-the-looking-glass-famous-fiction"
+      },
+      "recaps": {
+        "ending": "At the banquet marking Alice's promotion, the guests and food become increasingly unruly while the Red and White Queens subject her to more impossible rules. Alice finally seizes the Red Queen as the source of the disorder and shakes her. The chess queen dwindles into Kitty, the black kitten Alice had been holding before crossing the mirror. Alice wakes in the drawing room, tries to assign the looking-glass characters to her two kittens, and wonders whether the adventure was her dream or the Red King's. The book leaves that question unresolved, closing on the possibility that life itself may be a dream.",
+        "in_short": "Alice climbs through a mirror into a reversed world laid out as a chessboard. The Red Queen appoints her a White Pawn and promises that reaching the eighth square will make her a queen. Alice travels by train, passes through a wood where names disappear, hears Tweedledum and Tweedledee argue that she is part of the Red King's dream, shops with the White Queen in the form of a Sheep, and debates language with Humpty Dumpty. She watches the Lion and Unicorn fight, is rescued from a Red Knight by the kindly White Knight, and crosses the final brook. Once crowned, Alice attends a banquet governed by the Red and White Queens, but its rules and guests dissolve into chaos. She grabs and shakes the Red Queen, then wakes holding her kitten Kitty. Unsure whose dream the journey was, Alice leaves the reality of the looking-glass world unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "While playing with two kittens, Alice imagines a room on the other side of the drawing-room mirror. The glass turns passable, and she enters a reversed house where chess pieces move and speak without noticing her. She finds a book whose poem can be read only in a mirror, then leaves the house for a garden. Paths repeatedly return her to the building until she learns to walk in the opposite direction from her goal. After conversing with live flowers, Alice meets the Red Queen. The Queen reveals that the countryside is a giant chessboard and assigns Alice the role of a White Pawn. If Alice crosses the squares to the eighth rank, she may become a queen. She begins the journey by running with the Queen merely to remain in the same place.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice crosses the first brook aboard a crowded train whose passengers speak in riddles and demand that she have a ticket. After the carriage leaps over another brook, she walks with a Gnat who describes looking-glass insects. In a wood that removes names, Alice briefly travels beside a Fawn; once their identities return, it flees from her as a human. She then meets Tweedledum and Tweedledee. The twins turn greetings into formal arguments, perform a long poem about the Walrus and the Carpenter, and show Alice the sleeping Red King. They insist that Alice is only a figure in his dream. The brothers prepare for battle over a broken rattle, but a huge crow sends everyone running for cover.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice meets the White Queen, whose shawl and thoughts are in disorder and whose memory includes the future. After they cross a brook together, the Queen becomes a Sheep running a shop. The shelves seem full until Alice looks directly at them, and a rowing excursion appears inside the shop before Alice buys an egg. The egg grows into Humpty Dumpty seated on a wall. He argues that Alice's name should describe her shape, claims authority over the meanings of words, and interprets the unfamiliar expressions in the looking-glass poem. After reciting another poem, he dismisses Alice with a farewell that she recognizes as deliberately discourteous. A tremendous crash follows as she walks away.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The crash summons the White King's enormous army to Humpty Dumpty's wall. Alice meets the King and his two messengers, Haigha and Hatta, then watches the Lion and Unicorn repeatedly fight for the crown. The combatants stop for bread and cake, treat Alice as a legendary creature, and are driven away by drumming. In the next square, a Red Knight claims Alice as his prisoner, but a White Knight defeats him and escorts her through the wood. The kindly but impractical Knight repeatedly falls from his horse while demonstrating inventions. He sings a parting song, and Alice crosses the final brook. A crown appears on her head: she has reached the eighth square and become a queen.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Red and White Queens examine the newly crowned Alice with impossible questions, contradictory arithmetic, and rules that prevent straightforward answers. They fall asleep against her, then disappear. Alice finds an invitation to her own dinner and enters a crowded banquet. The guests criticize her manners despite giving her no usable guidance, while dishes are introduced as social guests and therefore cannot easily be served. Alice attempts to make a speech, but the room destabilizes: the candles rise, utensils animate, and the Queens shrink and tumble into the food. Deciding that she has endured enough, Alice turns on the Red Queen as the apparent cause of the confusion.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice grabs the Red Queen and shakes her as the banquet collapses. The Queen becomes smaller and softer until Alice discovers that she is holding Kitty in the ordinary drawing room. Awake again, Alice blames the black kitten for the Red Queen's behavior and tries to identify Snowdrop with the White Queen. She continues to puzzle over the chess journey and especially the sleeping Red King. Since the twins claimed that Alice existed only in his dream, she cannot decide whether she dreamed the King or was herself dreamed by him. The story closes without resolving whose dream contained the other.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "gemma-arterton-reads-alice-through-the-looking-glass-famous-fiction"
+      }
+    },
+    "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An imaginative and forthright child who follows a waistcoated rabbit down a hole and enters a place where size, language, and manners continually change. She tries to apply the lessons and social rules she knows, but curiosity repeatedly draws her farther into Wonderland.",
+            "id": "alice",
+            "name": "Alice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A hurried white rabbit wearing a waistcoat and carrying a watch. His alarm about being late first draws Alice underground, and his dropped fan and gloves give her an early reason to explore.",
+            "id": "white-rabbit",
+            "name": "White Rabbit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A touchy creature Alice meets while both are swimming in the pool made by her tears. He dislikes her innocent talk about cats and dogs but agrees to tell his history once everyone reaches shore.",
+            "id": "mouse",
+            "name": "Mouse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solemn bird who takes charge after the animals escape the pool. He organizes a shapeless race so everyone can dry off and declares every participant a winner.",
+            "id": "dodo",
+            "name": "Dodo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bill"
+            ],
+            "description": "A lizard employed by the White Rabbit. He is sent down a chimney when the suddenly enormous Alice becomes trapped in the Rabbit's house, with an abrupt result for the reluctant helper.",
+            "id": "bill-the-lizard",
+            "name": "Bill the Lizard",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A blue caterpillar seated on a mushroom and smoking a hookah. He questions Alice about who she is, challenges her recitation, and gives reserved but useful advice about how the mushroom affects her height.",
+            "id": "caterpillar",
+            "name": "Caterpillar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noblewoman whose crowded kitchen is filled with pepper, noise, and disorder. She thrusts a howling baby into Alice's care while treating violence and argument as ordinary household behavior.",
+            "id": "duchess",
+            "name": "Duchess",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duchess's grinning cat, able to vanish gradually and sometimes leave only its smile behind. Calm amid Wonderland's disorder, it directs Alice toward the March Hare and the Hatter while insisting that madness is universal there.",
+            "id": "cheshire-cat",
+            "name": "Cheshire Cat",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mad Hatter"
+            ],
+            "description": "A hat-maker occupying a perpetual tea party with the March Hare and Dormouse. He answers questions with riddles, quarrels over conversational rules, and explains that his dispute with Time has left the table fixed at tea-time.",
+            "id": "hatter",
+            "name": "Hatter",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Hatter's excitable companion at a crowded tea table. He offers Alice nonexistent wine, contradicts ordinary etiquette, and joins the Hatter in interrupting both their guest and the Dormouse.",
+            "id": "march-hare",
+            "name": "March Hare",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sleepy member of the tea party, used as a cushion by his companions and repeatedly roused to tell a wandering story about three sisters living at the bottom of a well.",
+            "id": "dormouse",
+            "name": "Dormouse",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Queen of Hearts"
+            ],
+            "description": "Wonderland's furious queen, instantly recognizable to the card courtiers and gardeners. She answers mistakes and disagreement with orders for beheading and dominates the croquet ground through fear rather than fair rules.",
+            "id": "queen-of-hearts",
+            "name": "Queen of Hearts",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "King of Hearts"
+            ],
+            "description": "The Queen's milder husband, who follows her through the croquet ground and quietly tries to reduce the damage caused by her sentences. His authority appears secondary to hers.",
+            "id": "king-of-hearts",
+            "name": "King of Hearts",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A creature with the head and wings of an eagle and the body of a lion. At the Queen's direction, he escorts Alice to hear the Mock Turtle's history and impatiently keeps the melancholy speaker moving.",
+            "id": "gryphon",
+            "name": "Gryphon",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sorrowful creature who claims a youth as a real turtle and describes an undersea school. He and the Gryphon explain their lessons and demonstrate the Lobster Quadrille for Alice.",
+            "id": "mock-turtle",
+            "name": "Mock Turtle",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
+      },
+      "recaps": {
+        "ending": "At the Knave of Hearts' trial, the court treats rumor, a meaningless poem, and the King's invented procedures as evidence. Having grown to her full size, Alice openly rejects the proceedings. The Queen orders her execution, but Alice declares that the court is only a pack of cards. The cards fly at her, and she wakes on the riverbank with her sister brushing fallen leaves from her face. Alice recounts the dream and runs home for tea. Her sister remains behind, imagines Wonderland and its strange inhabitants, and pictures Alice growing into an adult who will preserve the sympathy and imagination of childhood.",
+        "in_short": "Bored beside her sister, Alice follows a waistcoated White Rabbit underground and enters Wonderland. Changes of size repeatedly frustrate her attempt to reach a beautiful garden, while the creatures she meets turn lessons, manners, games, and conversation into absurd contests. She joins a race with no real rules, receives cryptic advice from a Caterpillar, encounters the violent Duchess and the vanishing Cheshire Cat, and endures an endless tea party with the Hatter, March Hare, and Dormouse. In the garden she meets the tyrannical Queen of Hearts, plays chaotic croquet, and hears the Mock Turtle's account of his education. Alice then attends the Knave of Hearts' trial for stealing tarts. As the court invents evidence and procedure, she grows to full size and challenges it. When the cards attack, she awakens beside her sister and realizes that Wonderland was a dream.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Alice leaves her sister on the riverbank to follow a talking White Rabbit carrying a watch. She falls slowly down a deep shaft into a hall of locked doors. A tiny key opens a passage to a beautiful garden, but Alice is too large to enter. A bottle makes her shrink, after she has left the key out of reach, and a cake then makes her grow enormously. Distressed by the constant changes, she weeps enough to flood the hall. The returning Rabbit mistakes her for a servant and drops his fan and gloves; the fan shrinks her again. Alice falls into her own pool of tears and meets a Mouse among the birds and animals swimming there.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The soaked company reaches shore. The Mouse attempts to dry everyone with a historical lecture, while the Dodo proposes a circular race with no fixed beginning or end. When it stops, he declares everyone a winner and Alice distributes prizes. Her talk of her cat Dinah frightens the animals away. The White Rabbit then orders Alice to fetch his gloves and fan. In his house she drinks from another bottle and grows until she fills the building. The Rabbit sends Bill the Lizard down the chimney, but Alice kicks him out. Pebbles thrown through the window turn into cakes; eating one shrinks Alice enough to escape. In the woods she meets a puppy enormous in relation to her and searches for a way to regain a useful height.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A blue Caterpillar questions Alice about her unstable identity and tells her that opposite sides of his mushroom will alter her size. After experiments leave her neck stretched above the trees and mistaken for a serpent by a pigeon, she balances the mushroom pieces and approaches a small house. Inside, the Duchess, her Cook, a baby, and a grinning Cheshire Cat occupy a pepper-filled kitchen. Alice carries the violently handled baby outside, where it changes into a pig. The Cheshire Cat explains that the local inhabitants are mad and offers directions to the March Hare and the Hatter. It disappears while leaving its grin behind, and Alice chooses the March Hare's house, adjusting herself to a larger but manageable size before approaching.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice finds the March Hare, Hatter, and Dormouse crowded at a large tea table. Their riddles have no answers, their rules constantly shift, and the Hatter says a quarrel with Time has trapped them at six o'clock. After the Dormouse's story is repeatedly interrupted, Alice leaves and finally finds a route into the garden. There, card-shaped gardeners are painting white roses red to conceal an error. The King and Queen of Hearts arrive with their court. The Queen repeatedly demands executions and forces Alice into a croquet game played with flamingos, hedgehogs, and moving card-soldiers instead of normal equipment. The Cheshire Cat appears above the ground, creating an argument about whether a head without a body can be beheaded. Alice survives the Queen's anger as the game collapses into disorder.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Duchess returns from custody and walks with Alice, finding morals in everything until the Queen drives her away. The Queen then sends Alice with the Gryphon to meet the Mock Turtle. The Mock Turtle gives a tearful account of his childhood, his school beneath the sea, and a curriculum built from distorted versions of ordinary subjects. He and the Gryphon describe and perform the Lobster Quadrille, then ask Alice about her adventures. Her attempts to repeat familiar verses again produce altered nonsense. Their songs and explanations are interrupted by the announcement that a trial is beginning, and the Gryphon rushes Alice back to the royal court.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Knave of Hearts is tried for stealing the Queen's tarts, with the King acting as judge and a jury of animals struggling to write anything sensible. The Hatter, the Duchess's Cook, and Alice are called as witnesses. None supplies reliable evidence, and the court treats an unsigned poem as proof by assigning meanings it does not contain. Alice begins growing during the hearing and becomes confident enough to challenge the King's invented rules and the Queen's demand for punishment before a verdict. When the Queen orders her execution, Alice says the court is merely a pack of cards. The cards swarm over her, and she wakes beside her sister on the riverbank. She tells her sister the dream and runs home, while her sister reflects on the strange vision and Alice's future.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
+      }
     }
   }
 }

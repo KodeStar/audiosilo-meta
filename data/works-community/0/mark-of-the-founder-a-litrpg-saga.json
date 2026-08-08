@@ -881,6 +881,123 @@
         "work": "master-and-commander-patrick-obrian"
       }
     },
+    "master-and-man": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A prosperous provincial merchant, landowner, and church elder who measures success through bargains and possessions. Eager to buy a valuable grove before rival buyers reach it, he insists on traveling into worsening winter weather with his servant Nikita.",
+            "id": "vasili-andreevich-brekhunov",
+            "name": "Vasili Andreevich Brekhunov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Vasili's aging servant, an experienced and capable worker who is poorly paid partly because past drinking has left him dependent on his employer. Now sober and gentle with animals, he recognizes the storm's danger but submits to his master's decisions.",
+            "id": "nikita",
+            "name": "Nikita",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Vasili's practical wife. More cautious than her husband, she insists that he take Nikita on the journey rather than face the snow alone, despite Vasili's confidence in his own judgment.",
+            "id": "vasilis-wife",
+            "name": "Vasili's wife",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The sturdy bay gelding harnessed to Vasili's sledge. Nikita understands and cares for the horse, relying on its senses when wind and snow erase the road.",
+            "id": "mukhorty",
+            "name": "Mukhorty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cheerful young peasant at the village where the travelers take shelter. He quotes a familiar adventure story and guides Vasili and Nikita back toward the road when Vasili refuses to remain safely indoors.",
+            "id": "petrushka",
+            "name": "Petrushka",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "master-and-man"
+      },
+      "recaps": {
+        "ending": "After his failed attempt to escape alone, Vasili returns by chance to the stranded sledge and finds Nikita close to freezing. His fear and calculations give way to an unfamiliar certainty that Nikita's life is bound to his own. Vasili lies across the servant to shield and warm him, and he remains there through the storm. He experiences his approaching death as a release from the isolated self that had valued profit above other people. Searchers find the sledge after the weather clears: Mukhorty and Vasili are dead, but Nikita is alive beneath his master's body. Nikita loses some toes but recovers and lives for about twenty more years. When his own death eventually comes, he meets it with the same patient acceptance that sustained him in the snow. Vasili fails to acquire the grove that drove the journey, but his final act saves the man he had habitually exploited.",
+        "in_short": "Merchant Vasili Andreevich Brekhunov sets out during a snowstorm to secure a profitable forest purchase, taking his underpaid servant Nikita and the horse Mukhorty. Vasili repeatedly puts the bargain ahead of warnings, refusing safe lodging after the travelers lose their way. They become stranded in open country as snow buries the sledge. Nikita tends the horse and prepares calmly for death, while Vasili calculates his wealth and resents the delay. Panicking, Vasili abandons Nikita and tries to escape on horseback, but he loses Mukhorty and circles back to the sledge. Finding Nikita near death, Vasili undergoes a profound change: he covers the servant with his own body and understands saving Nikita as more important than preserving himself. Vasili freezes, but his warmth keeps Nikita alive until rescuers arrive. Mukhorty also dies. Nikita recovers, though he loses toes, and lives many more years before accepting his eventual death peacefully.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Vasili Andreevich Brekhunov, a wealthy and self-satisfied merchant, is determined to reach a neighboring landowner and buy a grove at a favorable price before competitors intervene. A winter storm is rising, but he treats the journey as another display of his energy and business skill. At his wife's insistence, he takes his servant Nikita, an experienced laborer whose poverty and past drinking allow Vasili to underpay him while claiming generosity. Nikita prepares the horse Mukhorty and joins his master in the sledge. The two leave despite worsening wind and snow, with Vasili focused on the money he expects to make and Nikita attentive to the road and the animal.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Snow quickly obscures the route. Vasili and Nikita miss turns and wander until they reach a village, where householders offer food, warmth, and a place to stay. Nikita favors waiting out the weather, but Vasili remains anxious about completing the forest deal and insists on leaving again. A young villager, Petrushka, guides them part of the way and points them toward the proper road. Once the guide turns back, the storm erases the tracks and landmarks. Vasili's confidence repeatedly overrides Nikita's practical caution, even though their return to inhabited places has already shown how badly they have misjudged the route.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers lose the road again, and Mukhorty struggles through deep snow and uneven ground. After circling through the same country and failing to find reliable shelter, they can no longer continue. Nikita uses his knowledge to secure the horse and arrange what protection the sledge can provide. He settles down with the resigned understanding that they may remain trapped until morning or die there. Vasili is less able to accept stillness. Wrapped against the cold, he continues calculating the value of his property, the grove, and the advantages he believes his cleverness has earned, trying to defend himself from fear with thoughts of ownership and profit.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the night deepens, Nikita grows dangerously cold but faces the possibility of death with religious trust and little resentment. Vasili becomes increasingly terrified. Unwilling to remain beside his servant, he mounts Mukhorty and attempts to reach safety alone. The blizzard leaves him unable to judge direction. The horse eventually escapes him, and Vasili continues on foot, discovering that his desperate flight has brought him in a circle back to the sledge. His effort to save himself by abandoning Nikita has achieved nothing, and the possessions and business calculations that usually support his confidence can offer no help in the storm.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the sledge, Vasili finds Nikita almost frozen and hears him speak as if arranging the few responsibilities that will survive him. Vasili suddenly stops experiencing the servant as merely part of his property and work. He places his body over Nikita, using his coat and warmth to protect him from the snow. The act produces a sense of purpose unlike the satisfaction he has sought in buying and selling. As Vasili weakens, the boundary between his own welfare and Nikita's seems to disappear; preserving the other man's life feels like his own true life. He remains in place and accepts death with a calm that his wealth had never given him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When villagers find the buried sledge after the storm, Mukhorty has frozen and Vasili lies dead over Nikita. The master's body and final warmth have kept the servant alive. Nikita is rescued and recovers, though frostbite costs him some toes. Vasili never reaches the forest purchase for which he risked both lives; the man who treated profit and possession as proof of worth dies only after acting without calculation for someone he had exploited. Nikita lives for roughly another twenty years, continuing his modest working life. When death finally comes to him, he accepts it without the panic that once seized Vasili in the snow, trusting that he is passing into the care of the same master he has served throughout life.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "master-and-man"
+      }
+    },
     "master-harold-and-the-boys": {
       "characters": {
         "characters": [
