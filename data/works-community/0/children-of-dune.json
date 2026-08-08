@@ -3976,6 +3976,295 @@
         "work": "classic-adventures-of-sherlock-holmes-red-headed-league"
       }
     },
+    "classic-thrillers": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An English explorer writing to his sister from an Arctic expedition. His ship finds Victor Frankenstein exhausted on the ice, and Walton records the stranger's history while facing his own dangerous ambition.",
+            "id": "robert-walton",
+            "name": "Robert Walton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Genevan raised in a close and prosperous family. Fascinated first by obsolete alchemists and then by modern science, he goes to the University of Ingolstadt with an intense desire to discover the basis of life.",
+            "id": "victor-frankenstein",
+            "name": "Victor Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Victor's adopted cousin and intended future wife, brought into the Frankenstein household as a child. Affectionate, perceptive, and devoted to the family, she remains in Geneva while Victor studies abroad.",
+            "id": "elizabeth-lavenza",
+            "name": "Elizabeth Lavenza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's closest boyhood friend, imaginative and humane where Victor is obsessive. He follows Victor to Ingolstadt and nurses him through a severe collapse.",
+            "id": "henry-clerval",
+            "name": "Henry Clerval",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Creature",
+              "The Monster"
+            ],
+            "description": "The living being assembled and animated by Victor after years of secret study. Enormous and physically powerful, he reaches toward his creator at his first awakening, but Victor recoils from his appearance and abandons him.",
+            "id": "victors-creation",
+            "name": "Victor's Creation",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted young woman in the Frankenstein household who is especially attached to Victor's family. After William's death, circumstantial evidence places her under suspicion despite the family's belief in her innocence.",
+            "id": "justine-moritz",
+            "name": "Justine Moritz",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly blind exile living with his son and daughter in poverty. His gentle manner and inability to judge by appearance make him the person Victor's creation hopes will hear him fairly.",
+            "id": "de-lacey",
+            "name": "De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "De Lacey's son, living in exile with his father and sister. The hidden creation learns language and human relationships by observing Felix teach Safie and care for the household.",
+            "id": "felix-de-lacey",
+            "name": "Felix De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman who travels to join Felix after their earlier separation. As Felix teaches her French, the concealed creation follows the same lessons and learns about history and society.",
+            "id": "safie",
+            "name": "Safie",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly qualified English solicitor traveling to Transylvania to complete Count Dracula's purchase of an estate near London. Methodical and initially eager to please his client, he becomes alarmed by the castle's isolation and his host's complete control.",
+            "id": "jonathan-harker",
+            "name": "Jonathan Harker",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Transylvanian nobleman who receives Jonathan at his remote castle. Courtly and well informed about England, he is the only apparent resident and controls every aspect of his guest's stay.",
+            "id": "count-dracula",
+            "name": "Count Dracula",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "Jonathan's fiancée, a practical young schoolmistress who practices shorthand and typing so she can assist him. She corresponds closely with Lucy Westenra while waiting for news of Jonathan's journey.",
+            "id": "mina-murray",
+            "name": "Mina Murray",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mina's affectionate friend, admired by three suitors and engaged to Arthur Holmwood. Cheerful and open with Mina, she begins sleepwalking during their stay at Whitby.",
+            "id": "lucy-westenra",
+            "name": "Lucy Westenra",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr. Seward"
+            ],
+            "description": "A physician who directs a private asylum and records his observations on a phonograph. After Lucy declines his proposal, he concentrates on a disturbed patient named Renfield.",
+            "id": "john-seward",
+            "name": "Dr. John Seward",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucy's chosen fiancé, an English gentleman and the son of Lord Godalming. He remains close friends with her other suitors, Seward and Quincey Morris.",
+            "id": "arthur-holmwood",
+            "name": "Arthur Holmwood",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American adventurer and one of Lucy's three suitors. He accepts her rejection honorably and preserves his friendship with Arthur and Seward.",
+            "id": "quincey-morris",
+            "name": "Quincey Morris",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient in Seward's asylum whose consuming interest in flies, spiders, birds, and other living creatures suggests a private system behind his apparent madness.",
+            "id": "renfield",
+            "name": "R. M. Renfield",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Seward's former teacher, summoned from Amsterdam when Lucy's unexplained weakness defeats ordinary treatment. Learned, forceful, and open to possibilities his companions dismiss, he directs her care.",
+            "id": "abraham-van-helsing",
+            "name": "Professor Abraham Van Helsing",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "classic-thrillers"
+      },
+      "recaps": {
+        "ending": "Frankenstein ends in the Arctic after Victor has pursued his creation across Europe and onto the ice. Victor dies aboard Walton's ship without taking revenge. The creation comes to mourn him, accepts responsibility for the deaths, and says he will destroy himself before disappearing into the darkness. Dracula ends near the count's Transylvanian castle. Mina's link to him helps the hunters intercept the final box of earth before sunset. Jonathan and Quincey force it open and kill Dracula; Mina's mark vanishes, but Quincey dies from his wounds. Years later, Jonathan and Mina have a son named for their dead friend, while Arthur and Seward have also found happiness. The surviving records remain as the group's evidence of what occurred.",
+        "in_short": "In Frankenstein, ambitious student Victor Frankenstein makes a living being, rejects it, and watches it turn against everyone he loves after repeated human rejection. The creation demands a companion; Victor begins one, destroys it, and is punished through the deaths of Henry and Elizabeth. Victor pursues his creation into the Arctic, dies aboard Robert Walton's ship, and is mourned by the remorseful being, who departs intending to die. In Dracula, solicitor Jonathan Harker discovers that his Transylvanian client is a vampire moving to England. Dracula preys on Lucy Westenra and later Mina Harker. Van Helsing unites Lucy's friends with Jonathan and Mina to destroy the undead Lucy, purge Dracula's London refuges, and chase him home. They kill Dracula before sunset outside his castle, freeing Mina, though Quincey Morris dies in the fight.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Arctic explorer Robert Walton rescues an exhausted stranger, Victor Frankenstein, who begins explaining how ambition brought him to the ice. Victor grew up in Geneva with Elizabeth Lavenza and his friend Henry Clerval. At Ingolstadt, his fascination with natural philosophy becomes an obsession with creating life. Working alone and neglecting his health, he assembles and animates a large human form. The result horrifies him. He runs from the being he has made, and when he returns it is gone. Henry arrives and nurses Victor through a long illness, while Victor keeps the cause of his collapse secret.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor returns toward Geneva after learning that his young brother William has been murdered. Near the city he sees his creation and concludes that it killed the boy, but he cannot accuse a being no one else knows exists. Justine Moritz is charged after a keepsake belonging to William is found on her. Although Elizabeth and Victor believe her innocent, Justine is convicted and executed. Victor is consumed by guilt because his secret experiment has caused both deaths, yet he remains silent. Seeking relief in the mountains, he encounters the creation, who speaks to him with unexpected intelligence and asks Victor to hear his history before judging him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The creation tells Victor that he awoke confused and alone, learned to survive outdoors, and was repeatedly attacked because of his appearance. He found shelter beside the cottage of the exiled De Lacey family and secretly assisted them by gathering wood. By watching Felix, Agatha, and their blind father, he learned affection, speech, and social behavior. Safie's arrival allowed him to follow her language lessons and acquire wider knowledge of human history and inequality. The family's love gives him hope of companionship, but it also makes him understand his own isolation and the contrast between his generous intentions and the fear his appearance causes.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After educating himself from books and Victor's abandoned notes, the creation approaches the blind De Lacey, hoping to be heard without prejudice. The others return, react violently, and flee the cottage. Enraged by this final rejection, he burns their home and seeks Victor. He kills William after learning the boy is a Frankenstein and plants evidence on the sleeping Justine. He now demands that Victor make a female being like him, promising that the pair will withdraw permanently from humanity. Victor is repelled but accepts responsibility for his creation's solitude and agrees. The creation leaves him to fulfill the promise.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor travels with Henry to Britain, then isolates himself on an Orkney island to construct the promised companion. Fearing that a second being could reject the bargain or reproduce, he destroys the unfinished body while his first creation watches. The creation vows to be present on Victor's wedding night. Victor disposes of the remains at sea, drifts to Ireland, and is arrested when a murdered man is found. The victim is Henry Clerval, killed by the creation. Victor collapses and is eventually cleared when evidence establishes that he arrived after the murder. His father brings him home, where Victor prepares to marry Elizabeth while interpreting the threat as a warning against himself.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the wedding night the creation kills Elizabeth while Victor searches for an attack directed at himself. Victor's father soon dies in grief. With his family destroyed, Victor reveals enough to a magistrate to demand a pursuit, then follows the creation across Europe and into the Arctic, sustained by traces and taunting messages. His account completed aboard Walton's trapped ship, Victor urges resistance to the crew's wish to turn back but dies before he can continue the chase. Walton then finds the creation mourning over Victor's body. The being acknowledges that revenge brought misery rather than comfort, declares that he will end his own life, and disappears across the ice as Walton's expedition retreats south.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A new narrative begins with solicitor Jonathan Harker traveling to Count Dracula's castle to complete the count's purchase of an English estate. Local warnings give way to stranger discoveries: Dracula has no servants, casts no reflection, moves down the castle wall, and keeps Jonathan effectively imprisoned. Three predatory women approach Jonathan, but Dracula reserves him for himself and later gives the women a child. Jonathan discovers the count resting in a box of earth and understands that Dracula plans to travel with many similar boxes. Left behind as the castle is prepared for departure, Jonathan attempts a desperate escape.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mina Murray stays at Whitby with her friend Lucy Westenra, whose sleepwalking grows worse. A deserted ship crashes into the harbor during a storm; its dead captain is tied to the wheel, its cargo consists of boxes of earth, and a large dog leaps ashore. Mina later finds Lucy outdoors with a dark figure bending over her and notices marks on Lucy's throat. News finally arrives that Jonathan is alive but ill in Budapest, and Mina travels to him. They marry before returning to England. Lucy meanwhile weakens despite returning home, and Dr. Seward asks his former teacher Van Helsing to investigate her inexplicable loss of blood.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Van Helsing recognizes a danger the others do not yet understand. Lucy receives blood transfusions from Arthur, Seward, Quincey, and Van Helsing, while garlic is placed around her room. Her mother unknowingly removes the protection. A wolf breaks the window, Mrs. Westenra dies from shock, and Lucy is again attacked. She dies despite the men's efforts. Reports then describe children returning home with small wounds after encounters with a beautiful woman. Van Helsing shows Seward that Lucy's coffin is empty at night and that the returned figure is no longer the friend they knew. He begins teaching the group how a vampire can be confined and released from its condition.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur, Seward, and Quincey join Van Helsing at Lucy's tomb and see the vampire carrying a child. Arthur drives a stake through her heart while the others complete the rites that end her undead existence. Jonathan's account then connects Lucy's attacker with Count Dracula. Mina gathers diaries, letters, clippings, and phonograph records into a single chronology so the group can work from shared evidence. They identify Dracula's purchased properties and the boxes of native earth that allow him to rest in England. United by Lucy's death, they plan to locate each refuge, make it unusable, and force Dracula into a final vulnerable position.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunters investigate Dracula's houses and track the movement of his earth boxes. Jonathan sees the count in London and confirms that he appears younger after feeding. The group enters the Carfax property, where rats swarm at Dracula's command, and sterilizes the boxes they find with sacred wafers. Renfield's behavior changes with the count's proximity: he pleads to be released from Seward's asylum and warns that remaining there will endanger others, but cannot give a clear explanation. As the men concentrate on the search, they try to spare Mina further distress and leave her outside their councils, unintentionally isolating her from the protection of the group.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dracula attacks Renfield after the patient attempts to resist him, then forces Mina to drink his blood while Jonathan lies unconscious. Van Helsing's sacred wafer burns Mina's forehead, showing that she is being drawn toward the vampire's condition. The group confronts Dracula and destroys most of his remaining refuges, but he escapes England with his last box of earth. Mina's involuntary link to him becomes useful: under hypnosis at dawn and dusk she senses water and shipboard sounds. The hunters travel toward Varna to intercept him, only to learn that the vessel has diverted to Galatz. They divide their route while accepting that Dracula can also gain information through Mina's connection.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit continues across eastern Europe. Mina and Van Helsing travel toward Castle Dracula while the others follow the final earth box by river and road. Van Helsing protects Mina inside a circle and destroys the three vampire women in the castle. Near sunset, Jonathan, Seward, Arthur, and Quincey intercept the wagon carrying Dracula's box. Jonathan cuts the count's throat as Quincey drives a knife into his heart; Dracula disintegrates, and the mark on Mina's forehead disappears. Quincey, mortally wounded in the fight, dies knowing she is free. Seven years later Jonathan and Mina have a son named Quincey, and the surviving friends preserve their assembled records as testimony to their victory.",
+            "through": {
+              "chapter": 51
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "classic-thrillers"
+      }
+    },
     "clear-and-present-danger": {
       "characters": {
         "characters": [
