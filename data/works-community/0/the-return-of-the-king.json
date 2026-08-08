@@ -5527,6 +5527,186 @@
         "work": "the-secret-adversary-classic-tales-edition"
       }
     },
+    "the-secret-agent": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A London shopkeeper who secretly supplies information to a foreign embassy while allowing a small circle of anarchists to use his premises. Heavy, indolent, and protective of his comfortable domestic routine, he is ordered by his embassy contact to create an outrage dramatic enough to provoke a British crackdown.",
+            "id": "adolf-verloc",
+            "name": "Adolf Verloc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Verloc's much younger wife, who helps run the shop and has built her life around providing security for her widowed mother and vulnerable brother. Her calm, reserved manner conceals the strength of her devotion to Stevie.",
+            "id": "winnie-verloc",
+            "name": "Winnie Verloc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Winnie's younger brother, a sensitive and intellectually disabled young man who lives with the Verlocs. He reacts intensely to tales of cruelty or suffering and depends on Winnie for reassurance and protection.",
+            "id": "stevie",
+            "name": "Stevie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Winnie and Stevie's elderly mother, who shares the Verloc household at the opening. Aware of her infirmity and anxious that Stevie should remain secure, she tries not to burden her daughter's marriage.",
+            "id": "mrs-verlocs-mother",
+            "name": "Mrs Verloc's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A forceful official at the foreign embassy who regards Verloc's reports as inadequate. He demands an attack on a target associated with science, believing public alarm will force Britain to act against political exiles.",
+            "id": "mr-vladimir",
+            "name": "Mr Vladimir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former medical student and member of Verloc's revolutionary circle. Energetic and opportunistic, he is more interested in women and self-preservation than in sacrificing himself for doctrine.",
+            "id": "alexander-ossipon",
+            "name": "Alexander Ossipon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly anarchist orator whose fierce rhetoric survives despite age, illness, and dependence on others. He attends the gatherings at Verloc's shop and voices contempt for conventional morality.",
+            "id": "karl-yundt",
+            "name": "Karl Yundt",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A well-born political idealist associated with Verloc's group. Having served a prison term, he now lives quietly in the country under the patronage of a sympathetic society lady and is valued by the police as a comparatively harmless revolutionary.",
+            "id": "michaelis",
+            "name": "Michaelis",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solitary bomb maker who carries an explosive device on his body so that anyone attempting to arrest him risks being destroyed with him. He rejects gradual political reform and treats indiscriminate destruction as a weapon against society itself.",
+            "id": "the-professor",
+            "name": "The Professor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Scotland Yard detective experienced in monitoring London's anarchist circles. Practical and confident in informants and physical evidence, he recognizes a clue recovered after the Greenwich explosion.",
+            "id": "chief-inspector-heat",
+            "name": "Chief Inspector Heat",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The official responsible for the police investigation into the Greenwich bombing. Intellectually independent and wary of Heat's reliance on secret informants, he takes personal charge of tracing the attack's political connections.",
+            "id": "the-assistant-commissioner",
+            "name": "The Assistant Commissioner",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Home Secretary, a powerful and overworked statesman to whom the Assistant Commissioner reports. He authorizes an unofficial approach intended to contain the diplomatic consequences of the bombing.",
+            "id": "sir-ethelred",
+            "name": "Sir Ethelred",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-secret-agent"
+      },
+      "recaps": {
+        "ending": "After killing Verloc, Winnie seeks help from Ossipon and offers him Verloc's money if he will escape with her. Ossipon initially agrees, but fear and self-interest overcome him. He takes the money and abandons her aboard a cross-Channel train. With nowhere to turn and convinced that capture is inevitable, Winnie jumps from the ferry and drowns. Ossipon later reads the report of her death and is haunted by her final despair, though he remains free. The police and political authorities contain the diplomatic scandal surrounding the Greenwich bombing. The Professor, unchanged and still carrying explosives, walks through London among the public he despises. Verloc, Winnie, and Stevie are all dead, while the institutions and revolutionary circles that used or observed them continue largely intact.",
+        "in_short": "Adolf Verloc, a London shopkeeper and informer, is ordered by a foreign embassy official to stage a bombing that will provoke repression of political radicals. He involves his vulnerable brother-in-law Stevie in an attempt on Greenwich Observatory, but Stevie trips while carrying the bomb and is killed by the explosion. Scotland Yard traces a scrap of clothing to Verloc. His wife, Winnie, learns that her husband caused the death of the brother she devoted her life to protecting and kills Verloc with a carving knife. She turns to the anarchist Ossipon for escape, offering him Verloc's savings, but he takes the money and abandons her. Winnie drowns herself during the Channel crossing. The authorities limit the political damage, while the bomb maker known as the Professor remains at large and committed to destruction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Adolf Verloc runs a shabby London shop with his wife Winnie, her younger brother Stevie, and their elderly mother. The shop also serves as a meeting place for political radicals, while Verloc secretly reports on them to a foreign embassy. Summoned by Mr Vladimir, Verloc is told that his passive intelligence work is no longer useful. Vladimir orders him to arrange a spectacular attack on Greenwich Observatory, chosen as a symbol of science, so that frightened British authorities will restrict foreign revolutionaries. Verloc returns home burdened by an assignment that threatens the undemanding domestic life he values.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Verloc's associates include the womanizing Ossipon, the elderly agitator Yundt, and Michaelis, a former prisoner now living under wealthy protection. None offers an obvious solution to Vladimir's demand. Another revolutionary, the Professor, makes bombs and carries a detonator that would kill him and anyone arresting him. News arrives that a man has been blown apart near Greenwich Observatory before reaching the target. The Professor meets Ossipon and confirms that he supplied an explosive, but he cares more about his own doctrine of destruction than the dead carrier's identity. Scotland Yard begins investigating the failed attack.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chief Inspector Heat examines the Greenwich scene and recovers a label from the dead man's coat. He recognizes it as connected to Verloc, one of the informants the police have quietly protected. The Assistant Commissioner dislikes Heat's dependence on such arrangements and takes control of the case, partly to prevent suspicion from settling on Michaelis. At home, Winnie's mother moves to an institution so that her presence will not strain Winnie's marriage, leaving Stevie entirely within the Verloc household. Verloc has been taking Stevie on walks and encouraging his anger at injustice, while Winnie assumes her husband is kindly helping her brother.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Assistant Commissioner reports privately to Home Secretary Sir Ethelred, then traces Verloc's embassy connection through an unofficial visit to Vladimir. The authorities now understand that the bombing arose from foreign manipulation rather than a broad anarchist conspiracy. Heat visits the Verloc shop and reveals that the dead bomber wore an overcoat identified with Stevie. Verloc has returned from the Continent and realizes that the police evidence points directly to him. Winnie overhears enough to learn that Stevie died in the explosion. Verloc explains that he enlisted Stevie to carry the bomb and that the young man stumbled on the way to the observatory. The domestic security Winnie thought her marriage provided is exposed as an illusion.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Consumed by the loss of Stevie and by Verloc's responsibility for it, Winnie takes a carving knife and kills her husband as he rests on the sofa. Ossipon arrives expecting to find Verloc and instead discovers the body. Winnie asks him to help her flee and offers him Verloc's money. Believing she may have substantial savings and attracted to her, Ossipon agrees to accompany her toward the coast. As he understands more fully what she has done, however, he becomes frightened that association with her will lead to his own arrest. Winnie's hope of rescue depends on a man whose first loyalty is to himself.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ossipon takes Verloc's money and abandons Winnie on the train bound for the Channel crossing. Alone, fearing capture, and unable to imagine a life after Stevie's death, Winnie jumps from the ferry and drowns. A newspaper later reports the unidentified woman's suicide. Ossipon remains free but is disturbed by her fate and by the words with which she entrusted herself to him. The official investigation avoids a wider scandal: Verloc and the immediate witnesses are dead, and the embassy's role does not lead to public upheaval. The Professor continues to move through crowded London with explosives on his person, convinced of his war against society. The machinery of government, espionage, and political extremism survives the family it destroyed.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-secret-agent"
+      }
+    },
     "the-secret-garden-amazonclassics-edition": {
       "characters": {
         "characters": [

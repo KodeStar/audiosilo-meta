@@ -172,6 +172,214 @@
         "work": "catching-fire"
       }
     },
+    "catherine-called-birdy": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Birdy",
+              "Little Bird"
+            ],
+            "description": "The fourteen-year-old daughter of a minor English knight, recording a year of her life in 1290 and 1291 at her brother Edward's request. Sharp-eyed, restless, and resistant to the narrow future prescribed for a nobleman's daughter, she would rather tend animals, listen at doors, or join village life than sew, spin, and prepare for marriage. She meets her father's matchmaking plans with schemes intended to repel every suitor.",
+            "id": "catherine",
+            "name": "Catherine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Catherine's father"
+            ],
+            "description": "Catherine's forceful, quick-tempered father and lord of the manor. He is determined to arrange a profitable marriage for his daughter and treats her objections as disobedience, making him the immediate obstacle to the independent life she imagines.",
+            "id": "sir-rollo",
+            "name": "Sir Rollo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Catherine's mother"
+            ],
+            "description": "Catherine's mother, a capable and compassionate manager of the manor household. Frequently pregnant and often occupied with domestic responsibilities, she tries to guide her daughter toward patience and practical judgment while softening the effects of Sir Rollo's temper.",
+            "id": "lady-aislinn",
+            "name": "Lady Aislinn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catherine's favorite brother, who is training for religious life away from home. He has asked her to keep the diary that forms her account, hoping that regular writing will encourage reflection. Catherine trusts his kindness and addresses many of her thoughts to him.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catherine's eldest brother and his father's heir. Loud, conventional, and frequently insensitive, he shares Sir Rollo's assumption that rank and family advantage should govern marriage.",
+            "id": "robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Catherine's older brothers, serving away from the manor. His greater freedom as a young man contributes to Catherine's anger at the different futures allowed to sons and daughters.",
+            "id": "thomas",
+            "name": "Thomas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A resourceful village boy who tends goats and is one of Catherine's closest everyday companions. His work, songs, and practical ambitions give her a view of life beyond the manor's formal expectations.",
+            "id": "perkin",
+            "name": "Perkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catherine's nurse and attendant, responsible for teaching her the domestic accomplishments expected of a gentlewoman. She endures Catherine's evasions and complaints while continuing to press her toward spinning, sewing, and respectable conduct.",
+            "id": "morwenna",
+            "name": "Morwenna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman who works in the manor dairy and shares news and conversation with Catherine. Her responsibilities and prospects remind Catherine that women outside the gentry face restrictions of their own.",
+            "id": "meg",
+            "name": "Meg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Catherine's admired uncle, newly returned from years of travel and fighting. Handsome, sociable, and apparently free to choose his direction, he represents the adventurous life Catherine wishes were available to her.",
+            "id": "uncle-george",
+            "name": "Uncle George",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catherine's beautiful young friend from a neighboring noble household. Aelis is subject to the same marriage bargaining that Catherine dreads, despite having feelings and preferences her family is prepared to disregard.",
+            "id": "aelis",
+            "name": "Aelis",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wealthy older lord whom Catherine privately names for his coarse beard. Once Sir Rollo accepts him as a prospective husband, Catherine's usual efforts to frighten away suitors no longer seem sufficient, and the proposed match becomes the central threat to her freedom.",
+            "id": "shaggy-beard",
+            "name": "Shaggy Beard",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy, unconventional older woman associated with Uncle George. Her lively independence and disregard for ordinary expectations intrigue Catherine, although her circumstances also show that freedom can depend on money and social position.",
+            "id": "ethelfritha",
+            "name": "Ethelfritha",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shaggy Beard's son, a young man Catherine finds far less alarming than his father. His courtesy creates a possibility that the future attached to the proposed marriage arrangement may not be the one she has feared.",
+            "id": "stephen",
+            "name": "Stephen",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "catherine-called-birdy"
+      },
+      "recaps": {
+        "ending": "Faced with an approaching marriage to Shaggy Beard, Catherine leaves home and seeks refuge with Uncle George and Ethelfritha. The visit forces her to see that escape by itself will not give her command of her life: depending on relatives would simply place her choices in different hands. She returns to the manor prepared to meet the arrangement without surrendering her inner judgment. Before the marriage can occur, news arrives that Shaggy Beard has died. His son Stephen, young and considerate where his father was repellent, becomes the prospective match in his place, and Catherine receives the change with relief and hope. Her year of writing closes without granting her the unrestricted life she once imagined, but she has gained a more practical idea of freedom. She understands that choice can include how she responds, whom she helps, and what self she preserves even inside the limits imposed by family, class, and her period.",
+        "in_short": "In medieval England, fourteen-year-old Catherine records a year at her father's manor while resisting the marriage he intends to arrange for profit. She dodges household lessons, befriends workers and villagers, observes the hardships around her, and drives away potential husbands with calculated bad behavior. Her admired Uncle George returns from abroad, but his frustrated attachment to Catherine's friend Aelis shows that even adults cannot always marry as they choose. Catherine's situation worsens when Sir Rollo promises her to the rich older man she calls Shaggy Beard. She finally runs to George and his unconventional wife Ethelfritha, then realizes that hiding with them would exchange one form of dependence for another. Catherine returns home resolved to retain her own mind whatever happens. Shaggy Beard dies before the wedding, and his much kinder son Stephen becomes the likely bridegroom, ending the diary on an unexpectedly hopeful note.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Fourteen-year-old Catherine begins a diary at the request of her brother Edward, who is away preparing for religious life. At her family's small English manor she is expected to learn spinning, sewing, household management, and the submissive behavior suitable for a gentlewoman. She would rather spend time outdoors with Perkin, listen to village news, and invent ways to avoid work under Morwenna's supervision. Catherine describes her mother, Lady Aislinn, with affection and her father, Sir Rollo, with exasperation and fear. Rollo regards his daughter chiefly as an opportunity for a useful marriage alliance and has begun considering possible husbands. Catherine answers the prospect with resistance, convinced that marriage would end what little freedom she has. The return of her widely traveled Uncle George seems to offer proof that life can contain adventure and choice, although Catherine has not yet understood how strongly rank, money, and family duty govern him as well.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine continues turning the manor's routines, holy days, visitors, and village incidents into a private argument against becoming the obedient lady her parents expect. Sir Rollo brings possible husbands into her orbit, and she uses dirt, rudeness, bad manners, and other performances to make herself appear unsuitable. Her small successes encourage her to believe every match can be defeated if she is inventive enough. Meanwhile she grows close to Aelis, a beautiful girl whose noble family is also planning her future. Aelis and Uncle George develop an attachment, but affection carries little authority against the arrangements made by their elders. Watching their hopes narrow complicates Catherine's belief that only girls of her own age are denied choices. Her friendship with Perkin and her attention to servants and villagers also expose lives governed by work and necessity rather than romance. Catherine remains determined to escape marriage, but the year is steadily showing her that privilege and constraint can exist together.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winter brings more lessons in the limited power of personal wishes. The future imagined by Aelis and George is displaced by family advantage, leaving Catherine angry at the adults who treat marriage as property and policy. Sir Rollo's own search becomes more serious when a wealthy older lord appears. Catherine calls him Shaggy Beard and finds both his manners and the prospect of living under his authority repellent. She attempts the same sort of sabotage that discouraged earlier visitors, but wealth makes him attractive to her father and her behavior no longer controls the outcome. Rollo agrees to the match, turning a distant fear into an approaching obligation. Lady Aislinn counsels endurance and practical thought rather than open revolt, advice Catherine initially hears as surrender. Her diary remains the place where she can say what she cannot safely say to her father, preserving a voice even as her formal choices diminish.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the seasons change, Catherine's promised marriage hangs over ordinary manor life. She searches prayers, saints' stories, tricks, and family connections for a way out, but none supplies a dependable rescue. Events among the people around her repeatedly challenge her simple division between captive women and free men. Her mother meets pain and responsibility with strength; workers make choices within severe economic limits; and George cannot shape his life entirely around romantic feeling. Catherine also sees how hunger, sickness, punishment, and social exclusion make her own protected status valuable even when it is restrictive. These observations do not reconcile her to Shaggy Beard, but they widen the questions in her diary. She begins to consider whether freedom can mean acting with compassion and judgment inside circumstances she did not choose, rather than merely escaping every duty. The idea remains incomplete, and she continues to hope that some outside event will cancel the marriage.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine becomes acquainted with Ethelfritha, an unconventional and financially independent older woman whose conduct ignores many of the rules Catherine has been taught. Ethelfritha's connection with Uncle George gives Catherine a household that looks, from a distance, like a possible refuge. At home the marriage preparations continue, and Catherine's protests have less effect as the agreement becomes a matter between men and estates. She feels betrayed by the family members who cannot or will not overrule her father. Yet she also becomes more conscious of the ways her own impulsive judgments have hurt others, particularly when she assumes that their choices should serve the story she wants. The gap between romantic escape and workable independence grows clearer. Catherine has not accepted the match, but she is gradually replacing fantasies of rescue with a harder understanding: no single destination can remove every obligation, and keeping her sense of self may require courage that cannot be supplied by a clever trick.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With her wedding to Shaggy Beard drawing near, Catherine finally leaves the manor and goes to Uncle George and Ethelfritha. Reaching them does not produce the absolute freedom she expected. She would still live by another household's resources and permission, while her flight would affect people she loves. Catherine chooses to return and face the future, not because the proposed husband has become acceptable, but because she recognizes that running away cannot by itself make her independent. Soon afterward, the arrangement changes decisively: Shaggy Beard dies before the marriage. His son Stephen, who is young and treats Catherine with courtesy, becomes the prospective husband instead. Catherine is openly relieved and hopeful about this unexpected outcome. The diary ends after a year in which she has failed to overturn the social order around her but has changed her understanding of resistance. She retains her questioning voice and claims the inward freedom to judge, care, and choose her response even when many outward decisions remain beyond her control.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "catherine-called-birdy"
+      }
+    },
     "chains-a-litrpg-adventure": {
       "characters": {
         "characters": [
