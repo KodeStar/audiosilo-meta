@@ -3374,6 +3374,309 @@
         "work": "the-story-of-dr-doolittle"
       }
     },
+    "the-strange-case-of-dr-jekyll-and-mr-hyde-plus-markheim": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A reserved London lawyer whose concern over Dr. Jekyll's will draws him into the mystery surrounding Edward Hyde. Loyal, patient, and slow to condemn his friends, he serves as the principal investigator and observer of Jekyll's case.",
+            "id": "gabriel-john-utterson",
+            "name": "Gabriel John Utterson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Utterson's relative and walking companion. He tells how a disturbing man named Hyde knocked down a child and then obtained compensation through a doorway associated with the respected Dr. Jekyll.",
+            "id": "richard-enfield",
+            "name": "Richard Enfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, unsettling man who arouses instinctive dislike in nearly everyone he meets. He has free access to Jekyll's property and is named as Jekyll's heir, prompting fears that he is exploiting a hidden scandal.",
+            "id": "edward-hyde",
+            "name": "Edward Hyde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy doctor and experimental scientist who is one of Utterson's oldest friends. He refuses to explain why his will favors Hyde, asking only that Utterson protect Hyde's interests if Jekyll disappears.",
+            "id": "henry-jekyll",
+            "name": "Dr. Henry Jekyll",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected physician estranged from Jekyll over Jekyll's unorthodox research. Utterson consults him about their mutual friend, though Lanyon initially knows nothing of Hyde.",
+            "id": "hastie-lanyon",
+            "name": "Dr. Hastie Lanyon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jekyll's loyal butler, familiar with the doctor's habits and deeply uneasy about Hyde's authority in the household. His observations become vital when Jekyll shuts himself inside the laboratory.",
+            "id": "poole",
+            "name": "Poole",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly member of Parliament and client of Utterson. A maid witnesses his courteous nighttime approach to Hyde, followed by Hyde's sudden and fatal attack.",
+            "id": "sir-danvers-carew",
+            "name": "Sir Danvers Carew",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Scotland Yard officer investigating Carew's death. He takes Utterson to search Hyde's rooms, where they find signs of a hurried flight.",
+            "id": "inspector-newcomen",
+            "name": "Inspector Newcomen",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man who enters an antique dealer's shop late on Christmas Day, claiming to need a present for a woman. Preoccupied with chance, guilt, and the possibility of escaping judgment, he kills the dealer and searches the premises for money while fearing discovery.",
+            "id": "markheim",
+            "name": "Markheim",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An antique dealer who recognizes Markheim as an unreliable customer and treats his request with suspicion. Alone with him in the closed shop, the dealer is murdered while looking for a suitable gift.",
+            "id": "the-dealer",
+            "name": "The dealer",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The visitor"
+            ],
+            "description": "A mysterious figure who appears inside the locked shop after the murder. Whether supernatural or a form of Markheim's conscience remains unresolved. He knows Markheim's history and temptations, and offers to direct him toward the dealer's money while challenging his explanations for his life.",
+            "id": "the-stranger",
+            "name": "The stranger",
+            "reveal": {
+              "chapter": 11
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-strange-case-of-dr-jekyll-and-mr-hyde-plus-markheim"
+      },
+      "recaps": {
+        "ending": "In Jekyll and Hyde, Lanyon's narrative reveals that Hyde drank a chemical mixture and transformed into Jekyll before him. Jekyll's confession explains that he created the drug to separate his conflicting impulses, but Hyde became increasingly dominant and violent. When the original chemical could not be reproduced, Jekyll lost control of the transformations. Utterson and Poole find Hyde dead in the laboratory, while the documents account for Jekyll's disappearance and the end of their shared life. In Markheim, the murderer debates with a mysterious visitor who knows his past and offers practical help in further wrongdoing. Markheim rejects the claim that he is wholly committed to evil and chooses to stop. When the dealer's maid returns, he opens the door, tells her that he killed her master, and asks her to call the police. The stranger disappears with an expression that suggests Markheim's surrender has defeated the role he came to play.",
+        "in_short": "The collection pairs two studies of divided moral identity. In The Strange Case of Dr. Jekyll and Mr. Hyde, lawyer Gabriel Utterson investigates the bond between his friend Henry Jekyll and the violent Edward Hyde. After Hyde murders Sir Danvers Carew and Jekyll retreats from society, documents left by Jekyll and Dr. Lanyon disclose that Jekyll and Hyde are transformations of the same man, produced by an experimental drug. Jekyll loses control of the change and dies as Hyde when the drug can no longer restore him. In Markheim, a man murders an antique dealer during a robbery and is confronted by a mysterious visitor who knows his crimes and offers to help him continue. Their argument forces Markheim to recognize that he can still choose his next act. He refuses further wrongdoing and confesses to the returning maid, accepting arrest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Lawyer Gabriel Utterson learns from Richard Enfield that a disturbing man named Edward Hyde once knocked down a child and then paid compensation with a cheque linked to Dr. Henry Jekyll. Jekyll's will leaves his estate to Hyde if he dies or disappears. Utterson consults Dr. Lanyon, who has fallen out with Jekyll over his unusual research, then watches the mysterious doorway until he meets Hyde. Jekyll's butler confirms that Hyde has a key and authority over the servants. Utterson suspects that Hyde is blackmailing his old friend.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jekyll refuses to explain the relationship but claims he can end it whenever he wishes. Months later a maid sees Hyde beat the elderly Sir Danvers Carew to death. Utterson identifies the murder weapon as part of a cane he gave Jekyll and assists Inspector Newcomen in searching Hyde's Soho rooms. Hyde has fled, leaving possessions behind. The police struggle to trace him because witnesses agree only on the powerful aversion his appearance provokes.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jekyll says he has broken with Hyde and shows Utterson a letter promising that Hyde will disappear. Similarities between Hyde's handwriting and Jekyll's suggest that Jekyll may have composed the letter himself. Jekyll briefly resumes his social life, then withdraws again. Lanyon becomes mortally ill after an unexplained shock and leaves Utterson a sealed account to be read only after Jekyll's death or disappearance. Following Lanyon's death, Jekyll remains inaccessible.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Utterson and Enfield see Jekyll recoil in terror at his window, Poole reports that someone unlike his master is locked in Jekyll's laboratory and urgently seeking a particular chemical. Utterson and Poole break in and find Hyde dead from poison, wearing Jekyll's oversized clothes. Jekyll is missing, but he has left papers for Utterson. Lanyon's narrative says Hyde mixed and drank chemicals, then transformed into Jekyll before him. Jekyll's confession explains that his drug gave bodily form to a side of himself freed from restraint. Hyde grew stronger, murdered Carew, and eventually appeared without the drug. The original chemical depended on an unknown impurity; unable to reproduce it, Jekyll could no longer prevent Hyde from taking over. His statement anticipates the death that Utterson and Poole discover.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the second story, Markheim visits an antique dealer on Christmas Day and asks to buy a gift. Once they are alone, he murders the dealer and begins searching for money, tormented by noises, mirrors, and the prospect of discovery. A stranger enters the locked shop and demonstrates intimate knowledge of Markheim's life. He offers to help locate the money and argues that Markheim's pattern of choices already defines him. Markheim tries to distinguish the better self he once hoped to be from the crimes committed under pressure, but the visitor strips away his excuses and points out that the returning maid poses another obstacle. Markheim finally decides that, even if he cannot undo his past, he can refuse to deepen it. He rejects further help. When the maid arrives, he tells her that he killed the dealer and instructs her to summon the police. The stranger vanishes, seemingly answered by Markheim's decision to surrender.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-strange-case-of-dr-jekyll-and-mr-hyde-plus-markheim"
+      }
+    },
+    "the-strange-case-of-dr-jekyll-mr-hyde": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A reserved London lawyer who values loyalty, discretion, and reason. When a troubling provision in his friend Henry Jekyll's will names Edward Hyde as beneficiary, Utterson begins a patient investigation. His concern for Jekyll makes him the principal observer of the mystery.",
+            "id": "gabriel-john-utterson",
+            "name": "Gabriel John Utterson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Utterson's distant relative and regular walking companion. Usually taciturn, he tells Utterson how he once saw a sinister-looking man named Hyde knock down a child and then obtain compensation by entering a neglected doorway connected to a respectable household.",
+            "id": "richard-enfield",
+            "name": "Richard Enfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, unsettling man whose appearance inspires immediate aversion even though observers cannot agree on any precise deformity. He has access to a mysterious building in Soho and is named as the heir to Dr. Jekyll's fortune, leading Utterson to suspect coercion or concealed wrongdoing.",
+            "id": "edward-hyde",
+            "name": "Edward Hyde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy physician and experimental scientist, known for generosity and sociability, who is one of Utterson's oldest friends. His will gives his property to the disturbing Edward Hyde if he dies or disappears, and he refuses to explain the connection beyond insisting that Hyde must be protected.",
+            "id": "henry-jekyll",
+            "name": "Dr. Henry Jekyll",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected doctor and former close friend of Jekyll. He and Jekyll have become estranged over Jekyll's unorthodox research, which Lanyon dismisses as scientifically unsound. Utterson turns to him for information about Jekyll's increasingly troubling affairs.",
+            "id": "hastie-lanyon",
+            "name": "Dr. Hastie Lanyon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jekyll's faithful butler. He understands the routines of the doctor's household, knows that Hyde has been granted unusual freedom there, and shares Utterson's unease about the stranger's authority.",
+            "id": "poole",
+            "name": "Poole",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly and courteous member of Parliament who is also Utterson's client. A maid sees him politely address Hyde in a nighttime street encounter before Hyde suddenly attacks him with exceptional violence.",
+            "id": "sir-danvers-carew",
+            "name": "Sir Danvers Carew",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Scotland Yard officer investigating Carew's death. Utterson accompanies him to Hyde's rooms, where the disorder and abandoned possessions suggest that Hyde has fled in haste.",
+            "id": "inspector-newcomen",
+            "name": "Inspector Newcomen",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-strange-case-of-dr-jekyll-mr-hyde"
+      },
+      "recaps": {
+        "ending": "Jekyll's confession explains that he created a drug to separate the conflicting sides of his nature. Taking it changed him into Hyde, a younger figure free of Jekyll's conscience and social restraints. Jekyll initially treated the transformation as secret liberty, but Hyde grew stronger and committed increasingly brutal acts, including Carew's murder. Eventually Jekyll began changing without the drug. After his supply failed, repeated attempts to reproduce it did not work because the original ingredient had contained an unknown impurity. Trapped in the laboratory and facing permanent transformation, Jekyll completed his account. When Utterson and Poole break in, they find Hyde dead in Jekyll's oversized clothes; Jekyll himself has vanished. Lanyon is already dead after witnessing the transformation, and the documents he and Jekyll leave reveal the truth. Jekyll expects his own life to end with Hyde's and closes his statement uncertain which identity will meet death.",
+        "in_short": "London lawyer Gabriel Utterson becomes concerned when his friend Dr. Henry Jekyll names the repellent Edward Hyde as heir and grants him access to his home. Hyde's violence escalates from trampling a child to murdering Sir Danvers Carew. Jekyll claims to have ended the association, but later withdraws from society, while their mutual friend Dr. Lanyon dies after a devastating shock. When Jekyll's butler fears someone has replaced his master, he and Utterson force their way into the laboratory and find Hyde dead. Letters disclose that Jekyll developed a drug that transformed him into Hyde, allowing him to act without his ordinary conscience. The transformations became involuntary, and the original drug could not be reproduced. Unable to prevent Hyde from taking over permanently, Jekyll records the truth before the shared life of Jekyll and Hyde ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During one of their Sunday walks through London, lawyer Gabriel Utterson and his relative Richard Enfield pass a neglected door. Enfield recalls seeing a small, disturbing man named Edward Hyde trample a child there, then avoid scandal by paying the family with a cheque bearing the respected Dr. Henry Jekyll's name. Utterson is alarmed because Jekyll's will leaves everything to Hyde if Jekyll dies or disappears. Dr. Lanyon, another old friend, knows nothing useful and says he has fallen out with Jekyll over his strange scientific interests. Utterson watches the doorway until he meets Hyde, whose presence produces powerful dislike. Hyde gives him an address in Soho. Utterson then learns from Jekyll's butler, Poole, that Hyde has a key and that the servants have orders to obey him. Utterson fears Hyde has learned a secret with which to blackmail Jekyll.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Utterson questions Jekyll, who will not explain his bond with Hyde but insists he can end it whenever he chooses and asks Utterson to honor the will. Nearly a year later, a maid witnesses Hyde encounter the elderly Sir Danvers Carew in the street. Carew addresses him courteously, but Hyde erupts into violence and beats him to death with a cane. A letter on the body brings the police to Utterson, who identifies the murder weapon as part of a cane he once gave Jekyll. Inspector Newcomen and Utterson search Hyde's disordered Soho rooms and find the other half of the cane, but Hyde has disappeared. His accounts remain untouched, and the police have difficulty tracing a man whose appearance no witness can describe consistently.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Carew's murder, Jekyll assures Utterson that he has finished with Hyde and produces a letter apparently written by Hyde promising to vanish. Utterson's clerk, Mr. Guest, observes that its handwriting strongly resembles Jekyll's, though with a different slant, deepening the suspicion that Jekyll forged it. For a time Jekyll returns to his friends and charitable life. He then abruptly isolates himself. Lanyon, visibly shaken and gravely ill, refuses to discuss Jekyll and leaves Utterson a sealed narrative to be opened only after Jekyll's death or disappearance. Lanyon soon dies. Bound by the instructions, Utterson stores the document unread and continues trying unsuccessfully to see Jekyll.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Utterson and Enfield glimpse Jekyll at an upstairs window. Their conversation ends when terror suddenly crosses Jekyll's face and he shuts the window. Later Poole comes to Utterson in distress, convinced that something terrible has happened in Jekyll's locked laboratory. The servants have heard weeping and received written demands for a particular chemical, while the figure briefly seen inside seems too small to be Jekyll. Utterson and Poole force the door. They find Hyde dying from poison and dressed in clothes much too large for him, but there is no trace of Jekyll. The room contains a new will naming Utterson, a note directing him to Lanyon's sealed account, and Jekyll's own confession. The mystery now depends on those documents.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lanyon's account says Jekyll sent him urgent instructions to retrieve a drawer of chemicals from the laboratory and give it to a visitor at midnight. Hyde arrived, mixed a drug, drank it, and transformed before Lanyon's eyes into Jekyll. The sight destroyed Lanyon's health and ended his confidence in the limits of nature. Jekyll's confession then supplies the full history. Hoping to divide the moral conflict within himself, Jekyll made a drug that changed him physically into Hyde, a younger identity able to pursue forbidden desires without Jekyll's reputation bearing the cost. Hyde grew more powerful and violent, eventually murdering Carew. Jekyll tried to stop, but began transforming involuntarily. His remaining chemical depended on an impurity in the original batch and every replacement failed. Knowing he would soon become Hyde permanently, Jekyll wrote the confession. Utterson and Poole have therefore found the end of a single shared life: Hyde dead, Jekyll gone, and the truth preserved in the papers.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-strange-case-of-dr-jekyll-mr-hyde"
+      }
+    },
     "the-stranger": {
       "characters": {
         "characters": [

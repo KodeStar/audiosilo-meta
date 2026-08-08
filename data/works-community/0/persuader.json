@@ -2619,6 +2619,169 @@
         "work": "pollyanna-with-ebook"
       }
     },
+    "pompeii": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Aquarius"
+            ],
+            "description": "A young Roman water engineer sent to Misenum to take charge of the Aqua Augusta after the previous aquarius disappears. Conscientious, technically gifted, and more comfortable with measurements than local politics, he must quickly diagnose why the great aqueduct serving the towns around the Bay of Naples is failing.",
+            "id": "marcus-attilius-primus",
+            "name": "Marcus Attilius Primus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The experienced foreman of the aqueduct maintenance crew. He resents the arrival of a younger outsider as aquarius and knows more than he readily shares about the system, its workers, and the missing engineer who previously commanded them.",
+            "id": "corax",
+            "name": "Corax",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Attilius's predecessor as aquarius of the Augusta, missing before the new engineer arrives. His unexplained absence and incomplete records leave Attilius with both an urgent technical crisis and a mystery involving the people who benefited from his work.",
+            "id": "exomnius",
+            "name": "Exomnius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Pliny the Elder"
+            ],
+            "description": "The admiral commanding Rome's fleet at Misenum, as well as a renowned investigator and author of works on the natural world. Corpulent and asthmatic but intellectually tireless, he respects careful observation and gives Attilius the authority needed to pursue the aqueduct failure.",
+            "id": "gaius-plinius-secundus",
+            "name": "Gaius Plinius Secundus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pliny the Younger"
+            ],
+            "description": "The admiral's scholarly teenage nephew, living and studying in his uncle's household at Misenum. He observes Pliny's habits closely and shares his curiosity, though he does not yet possess the older man's authority or experience.",
+            "id": "gaius-plinius-caecilius-secundus",
+            "name": "Gaius Plinius Caecilius Secundus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The strong-willed daughter of the wealthy freedman Ampliatus. Troubled by her father's cruelty and ambitions, she seeks Attilius's help when the water on the family estate turns poisonous, giving him an important local sign of the wider disturbance.",
+            "id": "corelia-ampliata",
+            "name": "Corelia Ampliata",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former slave who has become one of Pompeii's richest and most influential businessmen. He uses patronage, intimidation, and his knowledge of the city's weaknesses to expand his power, and he treats the aqueduct and those who maintain it as pieces in his political plans.",
+            "id": "numerius-popidius-ampliatus",
+            "name": "Numerius Popidius Ampliatus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The young son of Ampliatus. His father uses the boy's freeborn status and public honors to advance a family whose wealth cannot erase the social limits attached to Ampliatus's own past as a slave.",
+            "id": "celsinus",
+            "name": "Celsinus",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Roman woman at a coastal villa beneath Vesuvius who appeals to Pliny's fleet for evacuation when the eruption makes escape by land impossible. Her message helps turn the admiral's scientific expedition into a rescue mission.",
+            "id": "rectina",
+            "name": "Rectina",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend of Pliny who owns a villa at Stabiae. Trapped by adverse winds and the worsening eruption, he receives the admiral and his party while ash and volcanic debris continue to fall across the bay.",
+            "id": "pomponianus",
+            "name": "Pomponianus",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pompeii"
+      },
+      "recaps": {
+        "ending": "Pliny's rescue fleet reaches Stabiae but cannot immediately leave because of the wind and sea. After a night of falling ash and repeated tremors, the admiral collapses and dies while his companions escape. Attilius returns to devastated Pompeii for Corelia rather than abandoning her. As Vesuvius produces its final, lethal surges, the pair take shelter within the underground water system that Attilius understands better than anyone around him. The aqueduct protects them while the city above is overwhelmed and buried. They emerge alive after the disaster, their disappearance from the public record leaving their later life unstated. Pompeii and the neighboring settlements are destroyed, and the bay's familiar landscape is permanently changed; the engineered water network that drove the investigation becomes the means by which Attilius and Corelia survive.",
+        "in_short": "In AD 79, engineer Marcus Attilius arrives at Misenum to replace the missing aquarius responsible for the Aqua Augusta. When the water supply to the towns around the Bay of Naples abruptly fails, he follows evidence of poisoned water, damaged channels, and local corruption toward Vesuvius. In Pompeii he clashes with the powerful freedman Ampliatus and grows close to Ampliatus's daughter Corelia. Attilius and his crew repair a break near the mountain, but the disturbances are warnings of an eruption no one understands. Vesuvius explodes, burying Pompeii in falling debris. Admiral Pliny leads the fleet across the bay to rescue civilians and dies at Stabiae. Attilius returns for Corelia, and together they survive the final volcanic surges by sheltering in the aqueduct, emerging after the cities around them have been destroyed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the summer of AD 79, Marcus Attilius Primus arrives at the Roman naval base of Misenum as the new aquarius responsible for the Aqua Augusta. The vast aqueduct supplies communities around the Bay of Naples, and its maintenance crew is uneasy under an outsider, especially the foreman Corax. Attilius's predecessor, Exomnius, vanished without explanation. Almost immediately, the reservoir at Misenum begins dropping and reports arrive that water has failed across the bay. Attilius rules out an ordinary local obstruction and seeks help from Pliny, the fleet commander and celebrated student of nature. The scale of the crisis means the damaged section must be found quickly before the region's stored water is exhausted.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence leads Attilius to Pompeii, where the wealthy freedman Ampliatus has built political influence around money, favors, and control of public works. Ampliatus's daughter Corelia shows Attilius that fish on the family estate have died after the water changed, an indication that the disturbance beneath the region is affecting more than the aqueduct's flow. Attilius resists pressure to treat the problem as a convenient commercial dispute. With official authority from Pliny, he organizes men and equipment to trace the Augusta toward Vesuvius. The missing Exomnius remains an additional warning: local interests have reason to conceal how water has been diverted and who has profited from it.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Attilius and the maintenance party locate the damaged aqueduct near Vesuvius and begin an urgent repair in oppressive heat. The ground is unstable, springs behave strangely, and sulfurous contamination points to powerful changes below the mountain, but the Romans have no reliable framework for predicting what follows. Conflict within the crew and the legacy of Exomnius's dealings complicate the work. Attilius nevertheless gets the channel functioning again, restoring the movement of water through the Augusta. The engineering success proves temporary in a larger sense: the same subterranean forces that broke the conduit are intensifying, and the mountain begins to reveal that the water failure was only a preliminary symptom.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vesuvius erupts, sending a towering cloud of ash and stone above the bay. Pompeii is battered by falling pumice as roofs become overloaded and roads fill, while residents struggle to decide whether to shelter or flee. From Misenum, Pliny initially approaches the phenomenon as a rare natural event worth observing. A plea for help from the threatened coast changes the purpose of his expedition, and he orders naval vessels across the bay to evacuate people cut off by land. Attilius understands that Corelia remains in Pompeii and that the restored aqueduct may offer routes and shelter unavailable to the panicked crowds. The disaster separates the engineer's personal mission from the fleet's broader rescue attempt.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pliny reaches Stabiae, where the winds prevent an easy withdrawal. He tries to steady those around him, but after a night of ash, tremors, and poisonous air he collapses and dies while the surviving party escapes. Attilius returns into Pompeii and finds Corelia as the eruption enters its most destructive phase. The falling pumice is followed by fast, lethal surges from Vesuvius that overwhelm the city and everyone exposed above ground. Drawing on his knowledge of the waterworks, Attilius leads Corelia into the underground aqueduct. Its enclosed channel shields them as Pompeii is buried. The pair emerge alive after the final devastation, while Pompeii, Herculaneum, and the familiar coastline have been transformed. Their later lives are left outside the historical record, but the system Attilius fought to repair ultimately saves them.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pompeii"
+      }
+    },
     "portal-to-nova-roma": {
       "characters": {
         "characters": [
