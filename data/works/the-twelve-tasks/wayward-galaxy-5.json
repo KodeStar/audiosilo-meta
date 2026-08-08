@@ -5299,6 +5299,16 @@
       "authors": [
         "yevgeny-zamyatin"
       ],
+      "credits": [
+        {
+          "person": "bela-shayevich",
+          "role": "translator"
+        },
+        {
+          "person": "margaret-atwood",
+          "role": "introduction"
+        }
+      ],
       "genres": [
         "post-apocalyptic",
         "science-fiction"
@@ -5330,6 +5340,34 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B004TBQWV2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "we"
+        },
+        "harry-shaw-2021": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B08XBZM33B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71S-IBnXIkL.jpg",
+          "id": "harry-shaw-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "harry-shaw"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2021-02-26",
+          "runtime_min": 443,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B08XBZM33B",
               "type": "libex-import"
             }
           ],
@@ -5370,6 +5408,10 @@
             {
               "asin": "006306846X",
               "region": "us"
+            },
+            {
+              "asin": "0771001738",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71wioPuRqVL.jpg",
@@ -5388,6 +5430,11 @@
             {
               "imported_at": "2026-08-07",
               "ref": "006306846X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-08",
+              "ref": "0771001738",
               "type": "libex-import"
             }
           ],
@@ -5454,6 +5501,16 @@
         {
           "imported_at": "2026-08-07",
           "ref": "B088FYZQD9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B08XBZM33B",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "0771001738",
           "type": "libex-import"
         }
       ],

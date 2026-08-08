@@ -15429,6 +15429,81 @@
         }
       ],
       "title": "Moby Dick (Classic Drama)"
+    },
+    "moby-dick-dramatized": {
+      "added_at": "2026-08-08",
+      "authors": [
+        "herman-melville"
+      ],
+      "genres": [
+        "action-adventure",
+        "classics",
+        "drama-plays",
+        "literary-fiction"
+      ],
+      "id": "moby-dick-dramatized",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "full-cast-2001": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002UZZ91S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1748695,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1761466,
+              "start_ms": 1748695,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1722596,
+              "start_ms": 3510161,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1710568,
+              "start_ms": 5232757,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41vtGGDhlEL.jpg",
+          "id": "full-cast-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2001-02-02",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002UZZ91S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick-dramatized"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002UZZ91S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Moby Dick (Dramatized)"
     }
   }
 }

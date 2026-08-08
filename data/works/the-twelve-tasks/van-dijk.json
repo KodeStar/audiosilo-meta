@@ -8427,6 +8427,12 @@
       "authors": [
         "william-makepeace-thackeray"
       ],
+      "credits": [
+        {
+          "person": "john-carey",
+          "role": "introduction"
+        }
+      ],
       "genres": [
         "classics"
       ],
@@ -8545,12 +8551,45 @@
             }
           ],
           "work": "vanity-fair"
+        },
+        "tom-bateman-2020": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "024144103X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Cq38jBT1L.jpg",
+          "id": "tom-bateman-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-bateman"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2020-11-26",
+          "runtime_min": 2069,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "024144103X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vanity-fair"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-07",
           "ref": "1603691499",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "024144103X",
           "type": "libex-import"
         }
       ],
