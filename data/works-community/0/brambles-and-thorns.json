@@ -2675,6 +2675,153 @@
         "work": "brief-cases"
       }
     },
+    "bright-lights-big-city": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "You"
+            ],
+            "description": "The unnamed young man addressed throughout the novel in the second person. He works in fact verification at a prestigious Manhattan magazine but spends his nights moving through clubs with cocaine, alcohol, and strangers. Exhausted and unreliable, he is avoiding the recent collapse of his marriage and the growing consequences of his behavior.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's wealthy, socially connected companion in New York nightlife. Tad always seems to know of another party, club, or supply of cocaine and treats every consequence as a temporary inconvenience. His energy and confidence make him an appealing guide for someone determined not to go home and think.",
+            "id": "tad-allagash",
+            "name": "Tad Allagash",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's wife, a striking young woman from outside New York whose modeling career accelerated after the couple moved to the city. She has recently left the marriage with little explanation. Her absence dominates the narrator's memories and fuels his compulsive interest in the fashion world.",
+            "id": "amanda",
+            "name": "Amanda",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exacting head of the magazine's fact-checking department. Clara values accuracy, composure, and professional standards. The narrator's lateness and increasingly erratic work make her both an authority he fears and a measure of how far his functioning has deteriorated.",
+            "id": "clara-tillinghast",
+            "name": "Clara Tillinghast",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colleague in the magazine's fact-checking department. Megan notices the narrator's distress beneath his excuses and offers practical sympathy even as his professional mistakes become harder for coworkers to cover.",
+            "id": "megan-avery",
+            "name": "Megan Avery",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman the narrator meets during his nights out. Vicky is part of the social and fashion orbit he associates with Amanda, but she responds to him as a person rather than as a route back into his vanished marriage. His inability to be candid limits the connection.",
+            "id": "vicky",
+            "name": "Vicky",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The narrator's brother, who comes to New York after repeated attempts to reach him. Michael is direct about the family loss the narrator has buried and tries to bring him home for a memorial observance, exposing how thoroughly the narrator has confused avoidance with independence.",
+            "id": "michael",
+            "name": "Michael",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's mother, seen in memories of her final illness. Her death left him with grief he has displaced into his obsession with Amanda, his failing job, and an exhausting cycle of intoxication. Remembering her forces him to recognize the loss beneath his recent collapse.",
+            "id": "narrator-mother",
+            "name": "The Narrator's Mother",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bright-lights-big-city"
+      },
+      "recaps": {
+        "ending": "After losing his job and exhausting his attempts to keep Amanda psychologically present, the narrator can no longer maintain the fiction that his crisis is only about a failed marriage or a bad run of nights. His brother Michael's visit and memories of their mother's last illness reveal the grief he has avoided since her death. Amanda remains gone, and an encounter with her does not provide reconciliation or a satisfying explanation. The glamorous city life represented by Tad continues without offering the narrator any real refuge. At dawn, depleted after another night out, he reaches a bakery as workers are producing the day's bread. He obtains a fresh loaf and begins eating it outside. The ordinary physical need for food, together with the memory of his mother, breaks through his numbness and allows him to grieve. There is no instant recovery: he is unemployed, separated, and still responsible for the damage he has done. The close offers a first moment of honesty and an intention to rebuild basic habits and knowledge gradually, rather than another promise of escape.",
+        "in_short": "An unnamed young fact-checker at an elite Manhattan magazine spends his nights using cocaine and following Tad Allagash through fashionable clubs. By day he arrives late, makes mistakes, and fixates on tabloid stories instead of working. His model wife Amanda has abruptly left him, and he haunts the fashion world in hopes of seeing or understanding her. His professional collapse ends in dismissal, while parties and brief connections fail to relieve his isolation. When his brother Michael arrives, it becomes clear that the narrator has also been evading the anniversary of their mother's death and the memories of her final illness. Amanda does not return, and the city's constant stimulation offers no resolution. After another long night, the narrator obtains a fresh loaf from a bakery at dawn. Eating it finally brings his buried grief to the surface. The novel ends without repairing his life, but with his first honest recognition that recovery will require patient attention to the most basic parts of living.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed young man moves through a Manhattan nightclub late at night, looking for cocaine, company, and any reason not to return to his apartment. His friend Tad Allagash serves as a tireless guide to the city's wealthy and fashionable social circuit. By morning, the narrator must report to the fact-checking department of a prestigious magazine, where his exhaustion and lateness are becoming impossible to disguise from Clara Tillinghast and his coworkers. His attention repeatedly drifts to a lurid tabloid story about a fetus in a comatose woman, an image of suspended life that he follows more closely than his own responsibilities. The immediate cause of his disarray appears to be Amanda, his model wife, who has recently left him. He continues to behave as if the next club, drug, or sighting might explain her departure.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At work, the narrator struggles to verify a difficult article and covers his failures with delay and improvisation. Megan Avery shows concern, but sympathy cannot restore the concentration he no longer brings to the job. His memories trace how he and Amanda came to New York together and how her modeling career drew her into a world that seemed to leave him behind. At night he continues going out with Tad and meets Vicky, but he cannot sustain a straightforward connection because every new encounter is entangled with Amanda. His apartment, work, and social life all preserve traces of the marriage while offering no real account of why it ended. The narrator's use of cocaine and alcohol keeps him active, but his choices increasingly narrow rather than expand his life.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator's professional evasions finally fail. Unable to complete the verification expected of him and no longer trusted to work accurately, he is dismissed from the magazine. Losing the job removes one of the last structures separating his nighttime excess from the rest of his life. Tad treats the setback as another reason to go out, and the narrator follows, still hoping the fashion circuit will lead him to Amanda. Encounters with models and partygoers make clear that he wants strangers to supply an explanation only Amanda could give. He alternates between self-pity, resentment, and fantasies of reunion while avoiding the practical consequences of unemployment. The city's bright surfaces remain available to him, but they no longer conceal how alone and disoriented he has become.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael, the narrator's brother, arrives after failing to reach him by telephone. His presence connects the chaotic New York present to the family life the narrator has been refusing to discuss. Michael wants him to come home and confront an anniversary of their mother's death, but the narrator initially resists and lashes out. The visit reveals that Amanda's departure is not the only loss driving his collapse. The narrator has redirected older grief into relentless nightlife and into the hope that solving the marriage will repair everything else. Michael cannot force him to return home or become sober, but he breaks the isolation that allowed the narrator to treat his history as irrelevant. After Michael leaves, the narrator continues into the city, now less able to deny what he is avoiding.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator's efforts to reach Amanda through her modeling world bring no reconciliation. Seeing her again does not supply the intimacy or clear explanation he has imagined, and she remains committed to the life she chose after leaving him. Memories of his mother's terminal illness become more direct. He recalls the helplessness of watching her die and recognizes that he never allowed himself to mourn before attaching all his pain to Amanda's departure. Tad's parties, drugs, and constant motion now appear less like freedom than a system for postponing stillness. With his marriage over and his job gone, the narrator approaches the end of the night without another convincing distraction to pursue.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After one more passage through the depleted end of Manhattan nightlife, the narrator reaches a bakery at dawn and obtains a loaf while it is still warm. Hunger gives him a simple need that cannot be argued away or converted into an image. As he eats, thoughts of his mother and the losses he has buried finally become grief rather than another reason to seek stimulation. Amanda does not return, Tad does not rescue him, and the magazine job remains lost. The narrator is left with the damage produced by months of dishonesty, cocaine use, and neglect. Yet the closing moment differs from his earlier cycles because he recognizes that there is no glamorous shortcut back to a functioning life. He resolves to begin again gradually, learning how to meet ordinary needs and face the truth of what has happened.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bright-lights-big-city"
+      }
+    },
     "brisingr": {
       "characters": {
         "characters": [

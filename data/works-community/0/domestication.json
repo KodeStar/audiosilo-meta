@@ -575,6 +575,224 @@
         "work": "don-quixote-amazonclassics-edition"
       }
     },
+    "don-quixote-james-harris": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An aging country gentleman of La Mancha whose constant reading of chivalric romances convinces him to become a knight-errant. Taking a grand new name, an old suit of armor, and his worn horse, he sets out to defend the helpless and win fame for his chosen lady. His courtesy and courage are genuine, but he forces ordinary people and objects into the patterns of his books and resists every correction.",
+            "id": "don-quixote",
+            "name": "Don Quixote",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Aldonza Lorenzo"
+            ],
+            "description": "A farm woman from a nearby village whom Don Quixote has admired from afar and renames as the noble lady of his devotion. She does not participate in his decision, and the exalted Dulcinea he describes belongs largely to his imagination.",
+            "id": "dulcinea-del-toboso",
+            "name": "Dulcinea del Toboso",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first innkeeper Don Quixote encounters. Don Quixote mistakes his inn for a castle and asks to be knighted; the amused and practical host plays along in hopes of sending his troublesome guest onward quickly.",
+            "id": "the-first-innkeeper",
+            "name": "The First Innkeeper",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Don Quixote's niece, who shares his household and is alarmed by the madness his books have encouraged. With the housekeeper and her uncle's friends, she tries to remove the romances and keep him safely at home.",
+            "id": "don-quixotes-niece",
+            "name": "Don Quixote's Niece",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The village priest and an old friend of Don Quixote. Concerned for the gentleman's health, he helps bring him home after the first expedition and examines the library that seems to have fueled his delusions.",
+            "id": "pero-perez",
+            "name": "Pero Perez",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Nicholas"
+            ],
+            "description": "The village barber and one of Don Quixote's friends. He joins the priest and the household in trying to cure the would-be knight and becomes a willing participant in their practical deceptions.",
+            "id": "nicholas-the-barber",
+            "name": "Nicholas the Barber",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor, practical farmer from Don Quixote's village, recruited as a squire with promises that he may govern an island. Sancho is attached to food, wages, and proverbs, and he can see much that his master misreads, yet ambition and growing affection keep him on the road.",
+            "id": "sancho-panza",
+            "name": "Sancho Panza",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant at an inn where Don Quixote and Sancho lodge. She is blunt, compassionate in practical matters, and drawn into confusion when Don Quixote interprets a nocturnal encounter according to his romantic fantasies.",
+            "id": "maritornes",
+            "name": "Maritornes",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A clever galley prisoner with a long criminal record who is being marched to punishment with other convicts. He speaks readily for the group when Don Quixote questions them and treats the knight's intervention as an opportunity rather than an obligation.",
+            "id": "gines-de-pasamonte",
+            "name": "Gines de Pasamonte",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A disheveled young gentleman hiding in the Sierra Morena. Betrayal in love has driven him into grief, rage, and isolation; when calm, he begins telling Don Quixote and his companions how friendship and courtship brought him there.",
+            "id": "cardenio",
+            "name": "Cardenio",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful young woman found in the mountains disguised in male clothing. She has fled after Don Fernando broke the promises he made to her, and she agrees to impersonate a distressed princess as part of the priest's effort to lead Don Quixote home.",
+            "id": "dorothea",
+            "name": "Dorothea",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recent graduate from Don Quixote's village who tells him that an account of his first adventures has already become famous. Intelligent and playful, he engages seriously with the question of how the published history represents its living subjects.",
+            "id": "samson-carrasco",
+            "name": "Samson Carrasco",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sancho's sensible wife, introduced at home as he prepares for another journey. She distrusts extravagant promises of advancement and wants any improved fortune to provide solid security for their children rather than empty rank.",
+            "id": "teresa-panza",
+            "name": "Teresa Panza",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aristocratic couple who recognize Don Quixote and Sancho from the printed history of their adventures. They welcome the travelers with elaborate respect and invite them to their estate, treating the pair's beliefs as material for courtly entertainment.",
+            "id": "the-duke-and-duchess",
+            "name": "The Duke and Duchess",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "don-quixote-james-harris"
+      },
+      "recaps": {
+        "ending": "After the Knight of the White Moon defeats Don Quixote in Barcelona, the terms of the combat require him to abandon knight-errantry for a year. Don Quixote and Sancho travel home, briefly imagining a pastoral life they might take up instead. Once in his village, Don Quixote falls ill. He sleeps, wakes with his reason restored, rejects the chivalric romances that governed his adventures, and identifies himself again as Alonso Quijano. Sancho urges him to rise for another outing, but his former master calmly makes his will, provides for his household, and dies in his bed among his friends. The narrator closes the history by insisting that Don Quixote's story has reached its definitive end and should not be subjected to false continuations. Sancho survives him, having lost both the promised rewards of adventure and a companion he had come to love.",
+        "in_short": "A country gentleman maddened by chivalric romances renames himself Don Quixote and rides out to revive knight-errantry. With the farmer Sancho Panza as his squire, he transforms inns into castles, windmills into giants, and chance encounters into quests, often causing injuries while sincerely trying to serve justice. Friends eventually return him home, but a published account of the adventures helps inspire a second expedition. Aristocrats who know the book stage cruel entertainments around the pair, while Sancho briefly and capably governs a mock island. Don Quixote continues toward Barcelona, where Samson Carrasco, disguised as the Knight of the White Moon, defeats him and compels him to stop adventuring. Back in his village, Don Quixote becomes ill, regains his sanity, renounces the romances, makes his will, and dies as Alonso Quijano. Sancho, who has grown loyal beyond his original hope of profit, tries in vain to revive his master's old dream.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A modest gentleman in La Mancha has read so many tales of knight-errantry that he decides they are literal history and that the world needs a new wandering knight. He calls himself Don Quixote, names his old horse Rocinante, and dedicates his service to an idealized village woman he calls Dulcinea del Toboso. On his first outing, he mistakes an inn for a castle and persuades its innkeeper to perform a mock knighting ceremony. His attempt to protect a beaten farm boy fails once he rides away, and merchants who will not praise Dulcinea leave him injured. A neighbor brings him home. His niece, housekeeper, the priest Pero Perez, and the barber Nicholas remove much of his library and wall up the room, but the cure does not hold. Don Quixote recruits the farmer Sancho Panza as his squire by promising him the governorship of an island. On their second departure, Don Quixote attacks windmills he believes are giants and blames the defeat on an enchanter when a sail hurls him down.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Don Quixote and Sancho continue through a world that rarely matches the romances governing the knight's judgment. Don Quixote fights travelers, mistakes sheep for opposing armies, endures the frightening sound of fulling hammers, and claims a barber's basin as a famous enchanted helmet. Both men suffer beatings, hunger, and humiliations, while Sancho repeatedly asks about the island and wages he was promised. At an inn, Don Quixote's imagined courtly encounter creates a chaotic night involving the servant Maritornes, and Sancho is later tossed in a blanket when his master refuses payment. Don Quixote also prepares a supposed healing balm whose effects are largely disastrous. Meeting a chain of prisoners being marched to the galleys, he decides that forced captivity violates his duty to the oppressed. He attacks the guards and frees the men, led by Gines de Pasamonte. When he orders them to present themselves to Dulcinea, they turn on their liberator and pelt the knight and squire with stones before scattering, leaving the pair exposed to pursuit by the authorities.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To avoid the officers searching for the freed galley slaves, Don Quixote and Sancho enter the Sierra Morena. There they meet Cardenio, a gentleman driven into the wilderness after his friend Don Fernando pursued Cardenio's beloved Luscinda despite having promised marriage to Dorothea. Don Quixote chooses the mountains as the stage for a penitential display in Dulcinea's honor and sends Sancho away with a letter to her, although Sancho has never met her. On the road, Sancho encounters the priest and barber, who are searching for the pair. They find Dorothea, hear her connected account of Don Fernando's betrayal, and enlist her in a plan: disguised as Princess Micomicona, she asks Don Quixote to defend her distant kingdom so that he will follow them toward home. The performance succeeds. Their party returns to the inn, where stories and travelers begin converging. While asleep, Don Quixote attacks wineskins he imagines to be an enemy giant, covering the room with wine while believing that he has completed Dorothea's quest.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the inn, the separate stories resolve around Don Quixote's continuing delusion. Don Fernando arrives with Luscinda; confronted by Cardenio and Dorothea, he releases Luscinda and accepts his obligation to Dorothea, reuniting both couples. Other arrivals bring further histories of captivity, separation, and reunion. Don Quixote remains convinced that the inn is a castle and becomes involved in another fight before the company settles its disputes and accounts. To return him safely to La Mancha, the priest and barber construct a cage and persuade Don Quixote that enchantment requires him to travel in it. He accepts the explanation because it preserves the logic of his vocation. A canon debates the faults of implausible chivalric books with the priest, yet Don Quixote's conduct supplies its own answer when he attacks a religious procession that he mistakes for kidnappers. Wounded again, he is delivered to his village in the cage. His household receives him, while Sancho returns to Teresa still convinced that their adventures may eventually produce wealth and a governorship.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Don Quixote has spent weeks recovering at home when the graduate Samson Carrasco brings startling news: a printed history of the knight and Sancho is widely read. The two subjects discuss its accuracy, omissions, and popularity, turning their earlier journey into a public reputation that shapes what follows. Despite opposition from his niece and housekeeper, Don Quixote plans a third expedition. Sancho negotiates with Teresa over the prospects for their family and rejoins his master. Their first destination is El Toboso, where Don Quixote hopes to receive Dulcinea's blessing. Because Sancho never delivered the earlier letter and cannot produce the noblewoman his master imagines, he points to a passing peasant woman and claims that she is Dulcinea under enchantment. Don Quixote sees only the ordinary woman but accepts enchantment as the explanation, leaving him distressed and giving Sancho temporary control over the fantasy. They then meet actors traveling in costume, another encounter in which appearances and assigned roles complicate Don Quixote's effort to distinguish adventure from performance.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Samson Carrasco, disguised as the Knight of the Mirrors, tries to defeat Don Quixote and order him home, but Don Quixote wins the encounter and interprets Samson's familiar face as another enchantment. He later earns the title Knight of the Lions by challenging caged lions that decline to attack him. At the wedding of Camacho and Quiteria, the apparently dying Basilio uses a staged suicide to secure Quiteria's consent to marry him, then reveals that the wound was a trick; Don Quixote defends the couple's choice. The knight descends into the Cave of Montesinos and returns claiming visionary experiences that even Sancho doubts. A traveling puppet master called Master Peter loses his show when Don Quixote attacks the puppets to rescue their characters, then receives payment for the damage. After more encounters, Don Quixote and Sancho meet a duke and duchess who have read the published history. The aristocrats welcome them as celebrated figures and invite them to an estate where they can turn the visitors' expectations into elaborate entertainments.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The duke and duchess use servants, costumes, machinery, and invented messages to make Don Quixote's chivalric world appear real. Their pageants declare that Dulcinea can be disenchanted only if Sancho gives himself thousands of lashes, a remedy he continually postpones. They also stage the Countess Trifaldi's appeal and send knight and squire blindfolded onto a wooden horse, convincing them that a stationary performance is an airborne quest. The duke fulfills Don Quixote's promise by appointing Sancho governor of the supposed island of Barataria. Although the appointment is a joke, Sancho surprises the household with practical judgments in the disputes presented to him. The regime also controls his food and surrounds him with fabricated danger. After a mock assault leaves him exhausted and trampled, Sancho resigns, preferring his freedom to hollow authority. On the return journey he falls into a pit and is eventually reunited with Don Quixote. Both men have now experienced the aristocrats' fantasy from different sides: Don Quixote remains eager for adventures, while Sancho has tested the promised governorship and willingly abandoned it.",
+            "through": {
+              "chapter": 107
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Don Quixote and Sancho leave the ducal estate and head toward Barcelona. They encounter Roque Guinart's bandits, then enter the city and see the sea for the first time. There Don Quixote is challenged by the Knight of the White Moon, who is actually Samson Carrasco making another attempt to cure him. Don Quixote loses and must accept the victor's condition that he abandon knight-errantry for a year. The defeated pair turn homeward. Sancho, hoping to preserve the dream, pretends to complete the lashes assigned for Dulcinea's disenchantment, and the companions consider becoming pastoral shepherds during the enforced retirement. Back in the village, Don Quixote falls sick. After sleeping, he wakes sane, calls himself Alonso Quijano, condemns the romances that misled him, confesses, and makes his will. Sancho begs him not to die and proposes another outing, but Alonso provides for his household and dies among his friends. His death closes both the adventures and the possibility that another writer might authentically continue them.",
+            "through": {
+              "chapter": 126
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "don-quixote-james-harris"
+      }
+    },
     "don-quixote-miguel-de-cervantes": {
       "characters": {
         "characters": [

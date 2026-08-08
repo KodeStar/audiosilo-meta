@@ -2151,6 +2151,214 @@
         "work": "the-icebound-land"
       }
     },
+    "the-ickabog": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fred the Fearless"
+            ],
+            "description": "The vain and pampered king of Cornucopia. He prefers fine clothes, flattering portraits, and public admiration to the work of governing. His title celebrates a largely imaginary courage, and his dependence on agreeable courtiers makes him easily manipulated.",
+            "id": "king-fred",
+            "name": "King Fred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of King Fred's closest lords and advisers. Smooth, calculating, and contemptuous of ordinary people, he protects his influence by flattering the king and treating any threat to courtly comfort as an enemy.",
+            "id": "lord-spittleworth",
+            "name": "Lord Spittleworth",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spittleworth's companion at court and another of King Fred's favored advisers. He shares Spittleworth's appetite for privilege and mockery, though he is less intelligent and more readily frightened.",
+            "id": "lord-flapoon",
+            "name": "Lord Flapoon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young daughter of the royal carpenter. Daisy is observant, outspoken, and unwilling to accept a comforting claim merely because an adult in authority makes it. Her friendship with Bert Beamish is strained by their disagreement over the legendary Ickabog.",
+            "id": "daisy-dovetail",
+            "name": "Daisy Dovetail",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The royal carpenter and Daisy's widowed father. A skilled, honest craftsman, he tries to protect his daughter while continuing to serve a court whose demands have already brought sorrow to his family.",
+            "id": "mr-dovetail",
+            "name": "Mr. Dovetail",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daisy's best friend and the son of Major and Mrs. Beamish. Bert is loyal and proud of his parents, especially his father's military service. Childhood certainty about the Ickabog tale causes a painful quarrel between him and Daisy.",
+            "id": "bert-beamish",
+            "name": "Bert Beamish",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The king's head pastry chef and Bert's mother. Her skill helps make Chouxville famous for its cakes. She is practical, loving, and far more willing than the king's courtiers to question a story that does not fit the facts.",
+            "id": "mrs-beamish",
+            "name": "Mrs. Beamish",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer of the Royal Guard, husband to the palace pastry chef and father of Bert. Major Beamish is an honorable soldier selected to join the king's expedition into the northern marshes.",
+            "id": "major-beamish",
+            "name": "Major Beamish",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A decent officer in the Royal Guard who is caught inside Spittleworth's expanding deception. His knowledge of what happened in the marshes makes obedience dangerous, but resistance would also put him and others at risk.",
+            "id": "captain-goodfellow",
+            "name": "Captain Goodfellow",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A court lady who recognizes Spittleworth's dishonesty and is not impressed by his power. Her intelligence and moral courage make her a quiet opponent of the new order he is building around the king.",
+            "id": "lady-eslanda",
+            "name": "Lady Eslanda",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The harsh proprietor of an orphanage that profits by keeping its children hungry, frightened, and obedient. She cooperates with powerful officials when doing so preserves her control and income.",
+            "id": "ma-grunter",
+            "name": "Ma Grunter",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A boy living in Ma Grunter's orphanage. Roderick is the son of a soldier entangled in the official Ickabog story, and his knowledge and loyalties become important to the other children confined there.",
+            "id": "roderick-roach",
+            "name": "Roderick Roach",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resilient girl in Ma Grunter's orphanage who becomes one of Daisy's trusted companions. Years of deprivation have made her cautious, resourceful, and alert to the dangers posed by adults who claim authority over the children.",
+            "id": "martha",
+            "name": "Martha",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large creature living in the remote marshlands north of Cornucopia. Long dismissed by most southerners as a legend, it is intelligent, capable of speech, and governed by a strange life cycle that connects a parent's final emotions to the nature of its offspring.",
+            "id": "the-ickabog",
+            "name": "The Ickabog",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ickabog"
+      },
+      "recaps": {
+        "ending": "Daisy, Bert, Martha, and Roderick bring the real Ickabog south, hoping its appearance will expose the fraud committed in its name. Daisy's kindness gives the creature hope that humans and Ickabogs need not be enemies. At the capital, the truth breaks Spittleworth's hold over the frightened population and saves the prisoners he intended to kill. The Ickabog dies in the act of producing its offspring, but because its final feelings have changed, the newborn creature is gentle rather than murderous. Spittleworth is captured and punished, his collaborators lose their power, and the people imprisoned through his lies are freed. Fred gives up the throne after acknowledging his cowardice and failures. Cornucopia replaces the corrupt court with fairer government, repairs the communities impoverished by taxation, and treats the surviving Ickabog as a neighbor rather than a monster. The children and the adults who resisted the conspiracy are reunited with those they feared dead and help rebuild the country.",
+        "in_short": "In prosperous Cornucopia, vain King Fred is manipulated by Lords Spittleworth and Flapoon after a disastrous expedition into the northern marshes ends with Major Beamish shot dead by accident. Spittleworth blames the legendary Ickabog, silences witnesses, and turns the invented threat into a system of taxes, troops, executions, and imprisonment. Daisy Dovetail and Bert Beamish lose their families to the conspiracy and eventually meet in Ma Grunter's brutal orphanage. With Martha and Roderick, they escape north and discover that the Ickabog is real but not the creature described by the regime. They persuade it to travel to the capital and reveal the truth. The resulting uprising frees Spittleworth's prisoners, ends his rule, and forces Fred to abdicate. The Ickabog dies producing a gentle offspring whose nature reflects its new hope in people. Cornucopia rebuilds under fairer government, and humans and Ickabogs learn to live without the fear on which Spittleworth's power depended.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Cornucopia is a small, wealthy kingdom famed for the pastries of Chouxville, the cheeses of Kurdsburg, and the wine of Jeroboam. Its northern Marshlands are poor and associated with stories of the Ickabog, a monster most people regard as imaginary. King Fred, who calls himself fearless, cares chiefly for clothes, ceremonies, and praise. His companions Lords Spittleworth and Flapoon encourage his vanity because it gives them influence. In Chouxville, young Daisy Dovetail lives with her father, the royal carpenter, and is friends with Bert Beamish, whose mother runs the palace kitchens and whose father serves in the Royal Guard. Grief caused by one of Fred's selfish demands leads Daisy to criticize the king publicly. Fred resents the challenge, while disagreement over whether the Ickabog exists damages Daisy and Bert's friendship.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A frightened man from the Marshlands petitions Fred for help, claiming the Ickabog has taken a beloved animal. Stung by suggestions that he is cowardly, Fred leads a royal expedition north with Spittleworth, Flapoon, and members of the guard. In darkness and bad weather, the party becomes confused. Flapoon fires his weapon and accidentally kills Major Beamish. Spittleworth immediately invents a different account: the Ickabog attacked and killed the officer. He pressures those present to support the lie and persuades the shaken king that admitting the accident would ruin him. The expedition returns with a heroic story and a dead soldier blamed on a monster. Mrs. Beamish and Bert mourn, while the official explanation begins to transform an old legend into a national emergency.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Spittleworth turns the supposed Ickabog threat into a means of governing Cornucopia. New taxes pay for soldiers, weapons, and an Ickabog Defense Brigade, while staged evidence and forced testimony manufacture fresh attacks. Anyone who questions the story risks being called a traitor. King Fred accepts each escalation because Spittleworth flatters him and hides the suffering outside the palace. Honest witnesses are threatened, removed, or imprisoned, and Captain Goodfellow is trapped by what he knows. Lady Eslanda quietly distrusts Spittleworth. Mrs. Beamish notices contradictions surrounding her husband's death and seeks answers. The kingdom's famous towns begin to lose their prosperity under the growing taxes, but fear and censorship prevent most citizens from comparing what they know.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conspiracy expands beyond its first lie. Spittleworth imprisons people who could expose him and uses threats against their families to force skilled citizens to create false evidence of the monster. Reports of Ickabog attacks justify further arrests and executions, even as hunger spreads through a country that was once rich. Daisy and Bert are separately deprived of their remaining parents and placed in Ma Grunter's orphanage, where children are underfed and punished while the proprietor keeps the money intended for them. Years pass under Spittleworth's rule. The king remains sheltered and weak, while those who still resist must communicate cautiously from prisons, court, and the impoverished towns.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daisy and Bert encounter one another again in the orphanage and gradually overcome the hostility created by loss and misinformation. They form a bond with Martha and Roderick, whose family is also connected to Spittleworth's crimes. The children learn enough about the regime's lies to understand that remaining at the orphanage offers no safety. They escape Ma Grunter and head north through a country damaged by fear, taxation, and shortages. Pursuit and winter weather drive them toward the Marshlands, the very place the government has taught everyone to dread. Their journey brings together separate pieces of the conspiracy and gives them a chance to seek living proof against Spittleworth, although they do not yet know whether the creature at the center of the story exists.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the marshes the children discover a real Ickabog. It can speak and is very different from Spittleworth's fabricated descriptions, though fear and hunger have made it dangerous. They learn that an Ickabog dies when it produces young and that its feelings at that moment shape the temperament of the next generation. The creature expects cruelty from humans and imagines creating offspring that will be feared. Daisy argues that people are capable of kindness and that Spittleworth, not an entire species, created Cornucopia's persecution. The children persuade the Ickabog to travel south with them. Their plan is to reveal it publicly, disprove the official lies, and stop the executions Spittleworth is preparing for the people who know the truth.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daisy, Bert, Martha, and Roderick reach the capital with the Ickabog as Spittleworth prepares to eliminate his prisoners. The creature's arrival proves that the regime's detailed stories were false and helps ordinary people and soldiers turn against the men who exploited them. Prisoners including the children's surviving family and allies are freed, and Spittleworth is captured. Fred finally faces the consequences of surrendering judgment to flatterers and gives up the throne. The Ickabog dies while producing its young, but Daisy's compassion has replaced its hatred with hope, so the newborn is gentle. Spittleworth and his collaborators are punished, the unjust laws and taxes are ended, and Cornucopia begins restoring its towns and caring for children harmed by the old government. The surviving Ickabog is accepted peacefully, making cooperation rather than fear the basis of the kingdom's future.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ickabog"
+      }
+    },
     "the-idiot-amazonclassics-edition": {
       "characters": {
         "characters": [

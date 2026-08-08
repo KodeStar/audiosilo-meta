@@ -3257,6 +3257,294 @@
         "work": "the-austere-academy"
       }
     },
+    "the-autobiography-of-an-ex-colored-man": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed speaker who presents his life as a private confession. Light-skinned, musically gifted, and raised away from the Southern racial order, he begins childhood without understanding that society classifies him as Black. His account follows the formation of that identity and the choices he later makes about whether to live publicly within it.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's devoted mother, a skilled seamstress who leaves Georgia and builds a modest home for them in Connecticut. She teaches him music, protects him from the full history of his parentage while he is young, and anchors his early sense of security.",
+            "id": "the-narrators-mother",
+            "name": "The Narrator's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's white father, a prosperous Southern man who does not live with him and his mother. His occasional visits and financial support reveal an important but constrained family bond shaped by the racial conventions surrounding them.",
+            "id": "the-narrators-father",
+            "name": "The Narrator's Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired schoolmate known by a descriptive nickname. He belongs to the group of Black pupils and becomes one of the narrator's friends after a classroom incident forces the narrator to recognize how others classify him.",
+            "id": "red-head",
+            "name": "Red Head",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally capable Black schoolmate whose intelligence, dignity, and public speaking win broad admiration. The narrator regards him with a mixture of friendship and rivalry and uses him as an early measure of achievement within the community he has only just learned is also his own.",
+            "id": "shiny",
+            "name": "Shiny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's music teacher, who recognizes his unusual ear and gives discipline to his natural ability at the piano. Under her instruction, music becomes both his strongest accomplishment and an important source of ambition.",
+            "id": "the-music-teacher",
+            "name": "The Music Teacher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy white traveler who hears the narrator play ragtime in New York and hires him as a personal musician. Cultivated, restless, and generous on his own terms, he gives the narrator access to European society while treating exceptional musical performance as a private luxury.",
+            "id": "the-millionaire",
+            "name": "The Millionaire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white woman whom the narrator meets after establishing himself in New York. Their attachment requires him to disclose the ancestry he has concealed in public, making their courtship a direct test of the life he has chosen.",
+            "id": "the-narrators-wife",
+            "name": "The Narrator's Wife",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-autobiography-of-an-ex-colored-man"
+      },
+      "recaps": {
+        "ending": "After witnessing a lynching, the narrator abandons his plan to develop Black folk music into concert compositions and decides to pass as white. He settles in New York, enters business, and accumulates money while keeping his ancestry private. He falls in love with a white widow and tells her the truth before they marry. Though initially shaken, she chooses him; they have two children, and she later dies. The narrator devotes himself to providing security for the children and maintains the identity that white society assigns him. Materially, the decision succeeds, but his closing judgment is uneasy. Watching prominent Black Americans commit themselves to collective advancement, he feels that safety has cost him participation in a cause larger than himself. He ends with the sense that he traded a valuable birthright for comfort and has become an observer of the history he might have helped make.",
+        "in_short": "An unnamed light-skinned man recounts learning at school that he is considered Black, despite having been raised in Connecticut by his Black mother with financial help from his absent white father. After his mother's death, theft prevents him from entering college, and work in Jacksonville introduces him to varied Black communities. In New York he becomes a celebrated ragtime pianist and travels in Europe as a wealthy white man's personal musician. He leaves that security intending to use Black folk music as the basis for serious composition, but in the South he witnesses a lynching. Horrified by the murder and by the vulnerability imposed on Black life, he decides to pass as white. He succeeds in business, reveals his ancestry to the white woman he loves, marries her, and raises their children after her death. His safe, prosperous life remains shadowed by regret that he surrendered a public Black identity and a possible role in racial progress.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The unnamed narrator begins by saying that he will disclose a secret known only to a few people. He recalls a comfortable early childhood in a small Connecticut town, where his mother supports them through sewing and teaches him at the piano. A well-dressed white man visits occasionally and provides money; the boy gradually understands that this distant figure is his father, though the household arrangement is never publicly acknowledged. At school, the narrator excels and assumes that he belongs to the same racial category as the white children around him. During an exercise, a teacher tells him not to stand with the white pupils. The correction shocks him into recognizing that society sees him as Black. He studies his appearance in a mirror and begins to reinterpret his mother, his classmates, and himself. He grows closer to Black schoolmates known as Red Head and Shiny, while his musical ability develops under a teacher's guidance. Shiny's accomplishments and proud graduation speech offer an early example of public racial dignity that the narrator admires but does not yet know how to claim.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the narrator completes school, his mother dies, leaving him grief-stricken but determined to pursue education. He travels south intending to enroll at Atlanta University. On arrival he is excited by the concentration of Black students and institutions, but his inexperience makes him careless: money hidden in his room is stolen, and he can no longer pay his way. Too ashamed and uncertain to return north, he searches for work and continues to Florida. In Jacksonville he finds employment in a cigar factory. The job gives him stability and introduces him to a complex Black urban community divided by education, occupation, complexion, and social aspiration. He learns elements of Spanish from Cuban workers, resumes playing music, and moves among people whose lives do not fit the simplified picture of race he carried south. The prospect of college recedes as he becomes competent and comfortable in the city, though music remains the talent that seems capable of leading him elsewhere.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When changes in the cigar trade disrupt his work, the narrator heads to New York. The scale and energy of the city fascinate him, and his piano skill brings him into nightlife far removed from the respectable circles he knew in Jacksonville. He becomes absorbed in ragtime, learning to reshape popular melodies through rhythm and improvisation. In clubs and private rooms he encounters gambling, conspicuous spending, and men whose status depends on entertainment or illicit business. His success at the keyboard wins attention, but it also keeps him within an enclosed world where artistic talent is valued mainly for the excitement it provides. The narrator observes divisions among Black New Yorkers and recognizes that white patrons can enter this nightlife without sharing its risks. His facility with ragtime nevertheless makes him locally distinctive and prepares the chance meeting that changes his circumstances.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A wealthy white man hears the narrator play and hires him as a personal musician. The arrangement removes the narrator from financial uncertainty and carries him abroad. In Paris and other European cities, he performs privately, encounters art and cultivated society, and experiences racial attitudes that differ from those of the United States. His patron appreciates his ability and treats him generously, yet the narrator begins to feel that comfortable dependence is narrowing his purpose. Hearing European classical music strengthens an ambition to create concert works founded on the melodies and rhythms of Black American life. He concludes that ragtime contains artistic possibilities broader than novelty or private amusement. Against his employer's wishes, he gives up the protected position and returns to the United States, planning to travel through the South, study folk and religious music directly, and transform that material into compositions that will earn recognition for both the music and its creators.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in the South, the narrator listens closely to sermons, spirituals, work songs, and everyday speech, convinced that this material can support a distinctive American art. He also studies the social order surrounding it, seeing Black communities from a position made ambiguous by his ability to be taken for white. His artistic plan collapses after he witnesses a white mob burn a Black man alive. The spectacle horrifies him not only because of the victim's suffering but because respectable onlookers accept collective murder as public entertainment. Fear, shame, and anger replace his confidence that art can overcome the conditions he has observed. Rather than identify himself openly with the people under attack, he decides that his light complexion offers an escape. He abandons the musical project and resolves to live as a white man, treating concealment as protection from the arbitrary violence and humiliation he now associates with a publicly Black identity.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator returns to New York, passes as white, enters business, and builds a secure income. His new identity closes off the artistic and collective ambitions that once drew him south, but it shields him from racial barriers and allows him to move through society without challenge. He falls in love with a white widow and, before marriage, tells her about his parentage. She is distressed by the disclosure but ultimately chooses to marry him. They have two children; after her death, he organizes his life around the children's safety and future, preserving the public identity on which their position rests. He achieves the conventional success he sought, yet the memoir ends in regret rather than triumph. When he sees prominent Black men working openly for their community, he feels small beside their commitment. His private relics of the past remind him that by purchasing security he also surrendered music, solidarity, and a possible share in racial progress. He judges the bargain as the sale of a birthright for material comfort.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-autobiography-of-an-ex-colored-man"
+      }
+    },
+    "the-autobiography-of-an-ex-colored-man-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed speaker who presents his life as a private confession. Light-skinned, musically gifted, and raised away from the Southern racial order, he begins childhood without understanding that society classifies him as Black. His account follows the formation of that identity and the choices he later makes about whether to live publicly within it.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's devoted mother, a skilled seamstress who leaves Georgia and builds a modest home for them in Connecticut. She teaches him music, protects him from the full history of his parentage while he is young, and anchors his early sense of security.",
+            "id": "the-narrators-mother",
+            "name": "The Narrator's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's white father, a prosperous Southern man who does not live with him and his mother. His occasional visits and financial support reveal an important but constrained family bond shaped by the racial conventions surrounding them.",
+            "id": "the-narrators-father",
+            "name": "The Narrator's Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired schoolmate known by a descriptive nickname. He belongs to the group of Black pupils and becomes one of the narrator's friends after a classroom incident forces the narrator to recognize how others classify him.",
+            "id": "red-head",
+            "name": "Red Head",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally capable Black schoolmate whose intelligence, dignity, and public speaking win broad admiration. The narrator regards him with a mixture of friendship and rivalry and uses him as an early measure of achievement within the community he has only just learned is also his own.",
+            "id": "shiny",
+            "name": "Shiny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's music teacher, who recognizes his unusual ear and gives discipline to his natural ability at the piano. Under her instruction, music becomes both his strongest accomplishment and an important source of ambition.",
+            "id": "the-music-teacher",
+            "name": "The Music Teacher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy white traveler who hears the narrator play ragtime in New York and hires him as a personal musician. Cultivated, restless, and generous on his own terms, he gives the narrator access to European society while treating exceptional musical performance as a private luxury.",
+            "id": "the-millionaire",
+            "name": "The Millionaire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white woman whom the narrator meets after establishing himself in New York. Their attachment requires him to disclose the ancestry he has concealed in public, making their courtship a direct test of the life he has chosen.",
+            "id": "the-narrators-wife",
+            "name": "The Narrator's Wife",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-autobiography-of-an-ex-colored-man-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "After witnessing a lynching, the narrator abandons his plan to develop Black folk music into concert compositions and decides to pass as white. He settles in New York, enters business, and accumulates money while keeping his ancestry private. He falls in love with a white widow and tells her the truth before they marry. Though initially shaken, she chooses him; they have two children, and she later dies. The narrator devotes himself to providing security for the children and maintains the identity that white society assigns him. Materially, the decision succeeds, but his closing judgment is uneasy. Watching prominent Black Americans commit themselves to collective advancement, he feels that safety has cost him participation in a cause larger than himself. He ends with the sense that he traded a valuable birthright for comfort and has become an observer of the history he might have helped make.",
+        "in_short": "An unnamed light-skinned man recounts learning at school that he is considered Black, despite having been raised in Connecticut by his Black mother with financial help from his absent white father. After his mother's death, theft prevents him from entering college, and work in Jacksonville introduces him to varied Black communities. In New York he becomes a celebrated ragtime pianist and travels in Europe as a wealthy white man's personal musician. He leaves that security intending to use Black folk music as the basis for serious composition, but in the South he witnesses a lynching. Horrified by the murder and by the vulnerability imposed on Black life, he decides to pass as white. He succeeds in business, reveals his ancestry to the white woman he loves, marries her, and raises their children after her death. His safe, prosperous life remains shadowed by regret that he surrendered a public Black identity and a possible role in racial progress.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The unnamed narrator begins by saying that he will disclose a secret known only to a few people. He recalls a comfortable early childhood in a small Connecticut town, where his mother supports them through sewing and teaches him at the piano. A well-dressed white man visits occasionally and provides money; the boy gradually understands that this distant figure is his father, though the household arrangement is never publicly acknowledged. At school, the narrator excels and assumes that he belongs to the same racial category as the white children around him. During an exercise, a teacher tells him not to stand with the white pupils. The correction shocks him into recognizing that society sees him as Black. He studies his appearance in a mirror and begins to reinterpret his mother, his classmates, and himself. He grows closer to Black schoolmates known as Red Head and Shiny, while his musical ability develops under a teacher's guidance. Shiny's accomplishments and proud graduation speech offer an early example of public racial dignity that the narrator admires but does not yet know how to claim.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the narrator completes school, his mother dies, leaving him grief-stricken but determined to pursue education. He travels south intending to enroll at Atlanta University. On arrival he is excited by the concentration of Black students and institutions, but his inexperience makes him careless: money hidden in his room is stolen, and he can no longer pay his way. Too ashamed and uncertain to return north, he searches for work and continues to Florida. In Jacksonville he finds employment in a cigar factory. The job gives him stability and introduces him to a complex Black urban community divided by education, occupation, complexion, and social aspiration. He learns elements of Spanish from Cuban workers, resumes playing music, and moves among people whose lives do not fit the simplified picture of race he carried south. The prospect of college recedes as he becomes competent and comfortable in the city, though music remains the talent that seems capable of leading him elsewhere.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When changes in the cigar trade disrupt his work, the narrator heads to New York. The scale and energy of the city fascinate him, and his piano skill brings him into nightlife far removed from the respectable circles he knew in Jacksonville. He becomes absorbed in ragtime, learning to reshape popular melodies through rhythm and improvisation. In clubs and private rooms he encounters gambling, conspicuous spending, and men whose status depends on entertainment or illicit business. His success at the keyboard wins attention, but it also keeps him within an enclosed world where artistic talent is valued mainly for the excitement it provides. The narrator observes divisions among Black New Yorkers and recognizes that white patrons can enter this nightlife without sharing its risks. His facility with ragtime nevertheless makes him locally distinctive and prepares the chance meeting that changes his circumstances.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A wealthy white man hears the narrator play and hires him as a personal musician. The arrangement removes the narrator from financial uncertainty and carries him abroad. In Paris and other European cities, he performs privately, encounters art and cultivated society, and experiences racial attitudes that differ from those of the United States. His patron appreciates his ability and treats him generously, yet the narrator begins to feel that comfortable dependence is narrowing his purpose. Hearing European classical music strengthens an ambition to create concert works founded on the melodies and rhythms of Black American life. He concludes that ragtime contains artistic possibilities broader than novelty or private amusement. Against his employer's wishes, he gives up the protected position and returns to the United States, planning to travel through the South, study folk and religious music directly, and transform that material into compositions that will earn recognition for both the music and its creators.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in the South, the narrator listens closely to sermons, spirituals, work songs, and everyday speech, convinced that this material can support a distinctive American art. He also studies the social order surrounding it, seeing Black communities from a position made ambiguous by his ability to be taken for white. His artistic plan collapses after he witnesses a white mob burn a Black man alive. The spectacle horrifies him not only because of the victim's suffering but because respectable onlookers accept collective murder as public entertainment. Fear, shame, and anger replace his confidence that art can overcome the conditions he has observed. Rather than identify himself openly with the people under attack, he decides that his light complexion offers an escape. He abandons the musical project and resolves to live as a white man, treating concealment as protection from the arbitrary violence and humiliation he now associates with a publicly Black identity.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator returns to New York, passes as white, enters business, and builds a secure income. His new identity closes off the artistic and collective ambitions that once drew him south, but it shields him from racial barriers and allows him to move through society without challenge. He falls in love with a white widow and, before marriage, tells her about his parentage. She is distressed by the disclosure but ultimately chooses to marry him. They have two children; after her death, he organizes his life around the children's safety and future, preserving the public identity on which their position rests. He achieves the conventional success he sought, yet the memoir ends in regret rather than triumph. When he sees prominent Black men working openly for their community, he feels small beside their commitment. His private relics of the past remind him that by purchasing security he also surrendered music, solidarity, and a possible share in racial progress. He judges the bargain as the sale of a birthright for material comfort.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-autobiography-of-an-ex-colored-man-amazonclassics-edition"
+      }
+    },
     "the-autobiography-of-miss-jane-pittman": {
       "characters": {
         "characters": [
