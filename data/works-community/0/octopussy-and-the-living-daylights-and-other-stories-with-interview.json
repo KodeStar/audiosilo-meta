@@ -460,6 +460,112 @@
         "work": "of-mice-and-men"
       }
     },
+    "olalla-classic-tales-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed soldier recovering from wounds received during service in Spain. His doctor sends him to lodge with an impoverished aristocratic family in an isolated mountain residence, where his fascination with the household grows into a consuming attachment.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The physician overseeing the narrator's recovery. He recommends the remote residencia for clean air and quiet, while warning that its once-prominent family has declined and should not be questioned too closely.",
+            "id": "the-doctor",
+            "name": "The Doctor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The son of the family at the residencia, a handsome, good-natured young man with limited understanding. He escorts the narrator into the mountains and spends most of his time on simple outdoor pursuits.",
+            "id": "felipe",
+            "name": "Felipe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Señora"
+            ],
+            "description": "Felipe and Olalla's widowed mother, still strikingly beautiful despite the family's decay. She lives in indolent isolation at the residencia, responding to the world through appetite and sudden emotion more than conversation or reflection.",
+            "id": "felipe-and-olallas-mother",
+            "name": "Felipe and Olalla's Mother",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The secluded daughter of the household, educated, devout, and intellectually unlike her mother and brother. The narrator becomes absorbed by signs of her presence before meeting her and is overwhelmed when they finally speak, while Olalla treats their attraction with grave restraint.",
+            "id": "olalla",
+            "name": "Olalla",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "olalla-classic-tales-edition"
+      },
+      "recaps": {
+        "ending": "After the Señora attacks the wounded narrator at the sight of his blood, Olalla intervenes and tends him. The violence confirms Olalla's belief that degeneration and dangerous impulses run through her family. The narrator begs her to leave the residencia and marry him, but she refuses to risk passing the family's inheritance onward or drawing him into its corruption. She understands renunciation as the moral freedom available to her and chooses duty, faith, and isolation over their mutual love. The narrator leaves the house but remains for a time in the nearby village, still hoping she will reconsider. On his final departure he sees Olalla beside a roadside crucifix. She directs his attention to the image of sacrifice, silently reaffirming the principle behind her choice. They part permanently, with their love acknowledged but unfulfilled.",
+        "in_short": "An unnamed soldier recuperating in Spain goes to an isolated residencia occupied by the last members of a decayed aristocratic family: a beautiful, indolent mother, her simple son Felipe, and her secluded daughter Olalla. The soldier is disturbed by the household and by an ancestral portrait, yet falls in love with Olalla before they have properly met. Olalla returns his love but fears the violent and diminished traits she believes her family transmits. When the narrator accidentally cuts himself, her mother is driven into a savage attack by the sight of blood, and Olalla rescues him. He asks Olalla to escape and marry him. She refuses, choosing not to continue the family line or expose him to its inheritance. The narrator eventually departs, seeing her one last time beneath a roadside crucifix that expresses the sacrifice by which she has chosen to live.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed soldier recovering from wounds in Spain has regained strength but still needs fresh air and quiet. His doctor arranges for him to stay at a remote residencia in the mountains. The house belongs to the remnants of an old noble family, now poor and withdrawn, and the doctor cautions him to respect their privacy. Felipe, the family's handsome but simple-minded son, guides him through the rugged country to the neglected mansion. The narrator finds the residence sombre and almost lifeless. Felipe is friendly and eager to please, but offers little companionship beyond practical matters and outdoor activity. The narrator learns that Felipe's mother and sister also live there, though the women remain out of sight. The silence of the house and the suggestion of a distinguished past leave him curious about his hosts.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator settles into the residencia and studies its signs of decline. A portrait of a beautiful female ancestor strongly affects him, combining attraction with a sense of something predatory. He meets Felipe's mother, a still-beautiful woman whose languor and self-absorption make ordinary conversation difficult. Her life seems governed by immediate sensation rather than thought. Felipe remains amiable and childlike. Olalla, the daughter, is still largely absent, but the narrator discovers evidence of her intelligence and education in the household and begins imagining her character from what she has written. The contrast between Olalla's apparent mind and the diminished lives of her mother and brother intensifies his fascination. Before a real relationship has begun, he has made the unseen daughter the focus of his hopes and curiosity.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator finally encounters Olalla and finds that her beauty, intelligence, and gravity exceed the person he imagined. Their attraction is immediate and mutual, but Olalla resists surrendering to it. She is painfully conscious of the contrast between her spiritual aspirations and the condition of her family. The narrator declares his love and presses for a future together, while she warns him away without denying her own feelings. Tension within the residencia culminates when the narrator accidentally cuts his hand while trying to force a window. The sight and smell of his blood transform the Señora's languor into sudden violence, and she attacks him. Olalla rushes in, pulls her mother away, and cares for the injured man. The episode turns Olalla's fear of her family's inherited nature into an immediate danger rather than an abstract concern.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Recovering from the attack, the narrator asks Olalla to leave the residencia and marry him. Their love is openly acknowledged, but Olalla refuses. She believes the family's physical and moral decline is carried in its blood and that she must not risk continuing it or binding the narrator to it. Her faith gives her a model of freedom through deliberate sacrifice: she cannot choose her inheritance, but she can choose not to pass it on. The narrator leaves the mansion yet lingers in the nearby village, unable to abandon hope immediately. When he finally departs the region, he sees Olalla once more beside a roadside crucifix. She points him toward the image of suffering willingly accepted, reinforcing the meaning of her decision. They separate without marrying, and Olalla remains with her family in chosen renunciation.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "olalla-classic-tales-edition"
+      }
+    },
     "old-goriot": {
       "characters": {
         "characters": [
