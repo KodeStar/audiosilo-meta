@@ -2268,6 +2268,97 @@
         "work": "just-so-stories"
       }
     },
+    "kabuliwala": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator's lively five-year-old daughter, endlessly curious and rarely silent. She is initially wary of the Afghan street seller outside her home, but his patient humor turns their encounters into an affectionate ritual.",
+            "id": "mini",
+            "name": "Mini",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Kabuliwala"
+            ],
+            "description": "An Afghan fruit seller who walks the streets of Calcutta carrying a large bag of goods. Far from his own young daughter, he forms a warm friendship with Mini and recognizes in her chatter and trust the child he left at home.",
+            "id": "rahmun",
+            "name": "Rahmun",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mini's father"
+            ],
+            "description": "A writer and Mini's observant father, who narrates the friendship between his daughter and Rahmun. More receptive to the visitor than his anxious wife, he eventually understands that his own feelings as a father are shared by the man from Kabul.",
+            "id": "the-narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mini's mother"
+            ],
+            "description": "Mini's cautious mother, who fears that the unfamiliar itinerant seller may be dangerous. Her suspicion contrasts with Mini's easy friendship and her husband's willingness to welcome Rahmun into the household.",
+            "id": "the-narrators-wife",
+            "name": "The narrator's wife",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A customer who refuses to pay Rahmun for a shawl. Their dispute becomes violent, leading to Rahmun's arrest and separating him from Mini for years.",
+            "id": "the-debtor",
+            "name": "The debtor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kabuliwala"
+      },
+      "recaps": {
+        "ending": "On Mini's wedding day, Rahmun returns after years in prison expecting to resume their old friendship. The grown bride no longer knows him, and her shy reserve replaces the fearless conversation he remembers. He then unfolds the inked handprint of his own daughter, kept through his long absence. Mini's father suddenly sees him not as a foreign peddler or a convicted man but as another parent who has lost years with his child. He gives Rahmun money to travel home to Afghanistan, even though the gift requires cutting some of the wedding's planned display. Rahmun leaves with hope of finding his daughter, while Mini's father accepts a quieter celebration in exchange for helping reunite another family.",
+        "in_short": "In Calcutta, talkative five-year-old Mini befriends Rahmun, an Afghan fruit seller living far from his own daughter. Their teasing conversations and regular visits overcome Mini's first fear and her mother's suspicion. When a debtor refuses to pay him, Rahmun stabs the man during the quarrel and is sent to prison. Years later he is released and visits Mini's house on her wedding day, still imagining her as the child he knew. The grown Mini barely remembers him. Rahmun shows her father the inked handprint of his own daughter, revealing the grief beneath his attachment to Mini. Recognizing a fellow father's loss, the narrator gives him money to return to Afghanistan, sacrificing some wedding festivities so Rahmun may try to see his daughter again.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Five-year-old Mini fills her writer father's days with questions and stories. When she calls to an Afghan fruit seller passing the house, she becomes frightened by his large bag, but the visitor, Rahmun, wins her trust. He returns often with nuts and fruit, and the pair develop familiar jokes. Mini's mother remains suspicious, while her father is moved by the friendship and by Rahmun's stories of travel. One day Rahmun quarrels with a customer who denies owing him money for a shawl. Rahmun wounds the man and is imprisoned. Years pass. On Mini's wedding day, the newly released Rahmun visits the house, expecting the little friend he remembers. The grown Mini appears in bridal dress and no longer shares their old ease. Rahmun finally understands how much time has passed for his own daughter in Afghanistan. He shows Mini's father a paper bearing the child's handprint. Recognizing Rahmun's parental grief, the narrator gives him money for the journey home and reduces the wedding's planned illumination and music to meet the cost. Rahmun leaves hoping to reunite with his daughter.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kabuliwala"
+      }
+    },
     "kafka-on-the-shore": {
       "characters": {
         "characters": [
@@ -3723,6 +3814,186 @@
           }
         ],
         "work": "kim-jiyoung-born-1982"
+      }
+    },
+    "kindred-octavia-e-butler": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Black writer living in 1970s California who is abruptly pulled into the past whenever a white Maryland boy named Rufus is in mortal danger. Practical and observant, she quickly understands that surviving the slaveholding society around him will require restraint as well as courage.",
+            "id": "dana-franklin",
+            "name": "Dana Franklin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dana's white husband, also a writer. He witnesses her disappearances without initially understanding them and helps her test what little she knows about the force taking her into the past.",
+            "id": "kevin-franklin",
+            "name": "Kevin Franklin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young white boy in antebellum Maryland whose moments of danger summon Dana across time. He is a Weylin heir and one of Dana's ancestors, making his survival essential to her own existence despite the power he will inherit.",
+            "id": "rufus-weylin",
+            "name": "Rufus Weylin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rufus's stern father and the owner of a Maryland plantation. He expects absolute obedience from his family and from the people he enslaves, and he regards Dana's literacy and independence with suspicion.",
+            "id": "tom-weylin",
+            "name": "Tom Weylin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Rufus's anxious, possessive mother. She indulges her son while treating enslaved workers as people whose needs and relationships matter only when they serve her household.",
+            "id": "margaret-weylin",
+            "name": "Margaret Weylin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A free Black girl who grows up near Rufus and knows him from childhood. Independent and direct, she is wary of Dana and refuses to accept Rufus's assumptions about what he may demand from her.",
+            "id": "alice-greenwood",
+            "name": "Alice Greenwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy enslaved by the Weylins who becomes Rufus's companion and personal servant. Intelligent and eager to learn, he secretly receives reading lessons from Dana despite the danger.",
+            "id": "nigel",
+            "name": "Nigel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Weylin plantation's cook, an enslaved woman whose authority in the kitchen gives her a limited refuge from field labor. She has endured the sale of most of her children and is cautious about trusting Dana.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sarah's daughter, an enslaved young woman who cannot speak but communicates clearly through gesture and expression. She sees more than the white household realizes and becomes one of Dana's allies.",
+            "id": "carrie",
+            "name": "Carrie",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enslaved field hand and Nigel's father. His quiet authority and independent judgment make him valuable to the plantation and threatening to Tom Weylin.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A free Black man who is devoted to Alice. His attempt to build a life with her places both of them in direct conflict with Rufus and the slaveholding system that protects him.",
+            "id": "isaac-jackson",
+            "name": "Isaac Jackson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enslaved woman on the Weylin plantation who resents Dana's unusual access to Rufus and the relative protection it seems to provide. Her hostility grows from the unequal pressures within the enslaved community.",
+            "id": "liza",
+            "name": "Liza",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kindred-octavia-e-butler"
+      },
+      "recaps": {
+        "ending": "After Alice's death, Rufus sells several enslaved people and becomes increasingly dependent on Dana. When he tries to force Dana into taking Alice's place, Dana kills him in self-defense. She is pulled back to 1976 as he dies, but part of her arm remains trapped where Rufus was holding it; Kevin finds her grievously injured and she survives after an amputation. Dana and Kevin later travel to Maryland to look for documentary traces of the Weylin plantation. They find only a partial record: the plantation was sold after Rufus's death, and newspaper notices report his death and the supposed loss of enslaved people in a fire. The archival gaps underscore how little of the enslaved community's experience entered the official record. Dana has preserved her own existence and escaped Rufus, but she returns permanently marked by the history she was forced to inhabit.",
+        "in_short": "Dana, a Black writer in 1976 California, is repeatedly transported to antebellum Maryland whenever her white ancestor Rufus Weylin is in danger. She saves him as a child and returns at later stages of his life, discovering that her family line depends on Rufus fathering a child with Alice Greenwood, a free Black girl he comes to control and enslave. Dana's white husband Kevin is carried into the past with her during one trip and is stranded there for years before they reunite. Dana tries to protect the Weylin plantation's enslaved people, teach literacy, and limit Rufus's cruelty, but her dependence on his survival repeatedly compromises her. Alice bears Rufus children under coercion and eventually dies by suicide after he deceives her about their fate. When Rufus then tries to possess Dana, she kills him and returns home with her arm trapped in the past and lost. She survives, permanently scarred, with only fragmentary historical records confirming what she endured.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1976, Dana Franklin and her husband Kevin are unpacking in their new California home when Dana suddenly appears beside a river in another time. She rescues a drowning red-haired boy, Rufus, but his terrified mother attacks her and a man points a gun at her. Dana returns home almost immediately. A second summons takes her to Rufus's bedroom after he has set fire to his curtains. She learns that she is in Maryland decades before the Civil War and that Rufus belongs to the Weylin family named in her family records. Those records also name Alice Greenwood, a free Black girl, as the mother of Dana's ancestor. Dana realizes that Rufus's life is somehow linked to hers and that she may keep being called back whenever he is endangered.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dana remains in the past long enough to meet the Weylin household and the people it enslaves. Tom Weylin is violent, suspicious, and angered by Dana's education; Rufus's mother Margaret alternates between indulgence toward her son and contempt toward Black people. Dana finds allies in the cook Sarah, Sarah's daughter Carrie, and the boys Nigel and Luke. She secretly begins teaching Nigel to read. After a patrol attacks Alice's family, Dana intervenes and is beaten, an injury that sends her back to Kevin. The experience teaches Dana that knowledge of history offers little physical protection inside a society organized around slavery, and that Rufus's childhood affection for her does not erase the authority he is being taught to exercise.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dana is summoned again when Rufus, now a young man, is being beaten by Alice's husband, Isaac Jackson. Rufus had attempted to force himself on Alice, and Isaac attacked him in response. Dana helps Rufus survive, but Rufus uses white authorities to pursue the couple. Isaac is mutilated and sold away, while Alice is enslaved by the Weylins. Kevin is pulled into the past with Dana and poses as her owner so they can move through Maryland with slightly less danger. When Dana tries to leave Rufus after he breaks a promise, she is caught and whipped. Her injury returns her to 1976, but Kevin is left behind in the nineteenth century.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dana's next return comes after several years have passed for Kevin. She finds him and they travel toward freedom, but their marriage is strained by the habits and dangers each has acquired in the past. They eventually make it home together. Later Rufus summons Dana after a drunken accident. Tom Weylin blames her when she cannot save him from a heart attack, and Rufus takes control of the plantation. Dana resumes teaching and caring for people there while trying to steer Rufus away from his father's brutality. Rufus nevertheless uses his ownership of Alice and threats against others to compel her continued relationship with him. Dana is increasingly forced into the role of intermediary between them, helping Alice survive while knowing that Rufus must father Dana's ancestor.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass on the plantation. Alice has several children by Rufus, including Hagar, the child required for Dana's family line to continue. Dana's attempts to help other enslaved people carry severe consequences: when she encourages Sam James's interest in education, Rufus sells him away out of jealousy. Dana cuts her wrists to force a return to 1976, then is called back when Rufus needs her again. Alice, desperate to escape, discovers that Rufus has deceived her into believing he sold their children. Believing she has lost them, she dies by suicide. Rufus's possessiveness, once directed at Alice, now settles more openly on Dana, while Dana's ancestral reason for keeping him alive has ended with Hagar's birth.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Alice's death, Rufus sells people from the plantation and tries to make Dana fill the place Alice occupied in his life. When he restrains and attempts to possess her, Dana stabs him. His death sends her back to 1976, but the arm he was holding remains fused into the wall and is lost; Kevin gets her medical help. Once Dana recovers, she and Kevin visit Maryland to search archives for the fates of the Weylin community. They learn that the plantation was sold after Rufus died and find a report that conceals much of what happened by attributing deaths and disappearances to a fire. No official account preserves the lives Dana knew in full. Dana is safely in her own time, but her missing arm makes the violence of slavery a permanent part of her present.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kindred-octavia-e-butler"
       }
     },
     "king-arthur": {

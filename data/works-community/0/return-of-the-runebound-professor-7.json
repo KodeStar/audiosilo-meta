@@ -3384,6 +3384,142 @@
         "work": "rip-van-winkle-and-the-legend-of-sleepy-hollow"
       }
     },
+    "ripleys-game": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An affluent American living at Belle Ombre in the French countryside with his wife, Héloïse. Cultivated, observant, and outwardly settled, he has a concealed history of fraud and murder. When an associate asks him to carry out a killing, Ripley declines the job but turns the request into a private experiment involving a local man who recently offended him.",
+            "id": "tom-ripley",
+            "name": "Tom Ripley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An English picture framer living near Fontainebleau with his wife and young son. He has leukemia and fears that his illness will return, leaving his family without enough money. Fundamentally law-abiding and inexperienced with violence, he becomes vulnerable to an offer designed around that fear.",
+            "id": "jonathan-trevanny",
+            "name": "Jonathan Trevanny",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jonathan's English wife and the mother of their son. Practical and attentive, she knows the seriousness of her husband's illness and notices the evasions surrounding his unexplained travel and money.",
+            "id": "simone-trevanny",
+            "name": "Simone Trevanny",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American criminal associate of Ripley's who arranges illicit operations from Hamburg. He wants two Mafia figures killed and first approaches Ripley to do the work. When Ripley refuses, Minot seeks a less obvious and more disposable recruit.",
+            "id": "reeves-minot",
+            "name": "Reeves Minot",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Heloise Plisson Ripley"
+            ],
+            "description": "Ripley's French wife, whose wealth and family connections help sustain their comfortable life at Belle Ombre. She accepts much of her husband's secrecy without knowing the immediate scheme that begins while she is away.",
+            "id": "heloise-ripley",
+            "name": "Héloïse Ripley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The housekeeper at Belle Ombre. Loyal, discreet, and accustomed to Ripley's habits, she helps maintain the composed domestic setting that surrounds his hidden criminal life.",
+            "id": "madame-annette",
+            "name": "Madame Annette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ripleys-game"
+      },
+      "recaps": {
+        "ending": "The criminal organization traces the killings back toward Ripley and Trevanny. After an attack at Belle Ombre, the danger shifts to the Trevanny home. Jonathan, already gravely ill, intervenes when gunmen threaten Ripley and is shot while helping to save him. He dies from the wound, leaving Simone and their son with the money earned from the murders but without a full account of how he became involved. Ripley suppresses evidence and tries to keep his own role separate from Jonathan's death. Héloïse returns, and the routines of Belle Ombre resume, yet Ripley's retaliatory game has cost the life of the ordinary man he selected as a pawn. Simone remains suspicious of him, while Reeves Minot's scheme has exposed Ripley to an organized enemy that may not accept the official explanations.",
+        "in_short": "Criminal fixer Reeves Minot asks Tom Ripley to kill Mafia figures threatening his interests. Ripley refuses but, after taking offense at a slight from terminally ill picture framer Jonathan Trevanny, suggests that Minot recruit him. False reports about Jonathan's health and the promise of money for his family persuade him to murder a man in Hamburg. Minot demands another killing aboard a train; Ripley unexpectedly joins Jonathan and helps complete it. Jonathan's wife, Simone, grows suspicious, while the victims' associates pursue Minot and then the two killers. Ripley shelters Jonathan and fights off attackers at Belle Ombre, but the danger reaches Jonathan's home. Jonathan saves Ripley during the final attack and is fatally shot. Ripley conceals what he can and returns to his domestic life, leaving Simone with money, grief, and doubts about his part in her husband's transformation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Tom Ripley is an American expatriate established in France with his wealthy wife, Héloïse. His comfortable life rests partly on crimes he has successfully hidden, including murder, impersonation, and involvement in forged art. He has repeatedly protected himself through improvisation and by managing what other people believe, and he remains willing to use violence when his security is threatened.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom Ripley is living quietly at Belle Ombre when his associate Reeves Minot asks him to murder two men connected with organized crime. Ripley refuses to become Minot's hired killer. At a social gathering he has also encountered Jonathan Trevanny, an English picture framer with leukemia, and has taken offense at a remark casting doubt on Ripley's honesty. Jonathan's illness and his anxiety about providing for his wife, Simone, and their son give Ripley an idea: an apparently ordinary dying man would be an unlikely suspect and might be persuaded to accept a dangerous commission.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ripley directs Minot toward Jonathan and helps unsettle the framer by spreading the suggestion that his latest medical results are worse than his doctor admits. Minot offers Jonathan a large payment to kill a Mafia figure in Hamburg, presenting the money as security for his family after his expected death. Jonathan is appalled but also frightened by the prospect of leaving Simone with little. He travels to Germany under cover of a medical consultation, caught between the moral boundary he has always observed and the practical temptation Minot has constructed around his illness.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Hamburg, Jonathan follows Minot's instructions and shoots the selected man in a station. He returns to France shaken but with the promised money placed where it can benefit his family. The crime does not end his obligation. Minot presses him to carry out a second and more difficult killing on a train, against another member of the same criminal network. Simone notices inconsistencies in Jonathan's account of his travels and treatment, while Jonathan finds that the first murder has not brought the clean financial resolution he imagined.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan boards the train for the second assignment, but Ripley, curious and increasingly responsible for what he set in motion, appears and assists him. In the confined passageways and compartments, the planned single killing expands into a struggle with more than one gangster. Ripley's experience with violence helps them overcome the men and dispose of the bodies from the moving train. Jonathan survives, but the operation binds him directly to Ripley and increases the likelihood of retaliation. The killings can no longer be treated as an isolated transaction arranged by Minot.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Simone's suspicion intensifies as she uncovers evidence of Jonathan's unexplained movements and contact with Ripley. At the same time, associates of the murdered men strike back. Minot becomes a target, and Ripley expects the search to reach France. Jonathan comes to Belle Ombre, where Ripley prepares defenses and the two confront armed intruders. They survive the attack, but the threat has not been eliminated. Jonathan's effort to earn a final safeguard for his family has instead brought organized violence close to his wife and child.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The retaliation reaches the Trevanny home. During the final confrontation Jonathan acts to protect Ripley and is shot. Already weakened by leukemia, he dies from the wound. Ripley manages the aftermath to prevent the authorities and Simone from learning the complete chain linking Minot's proposal, the two murders, and his own manipulation of Jonathan. The money remains for Jonathan's family, but it has been purchased at the cost he hoped his illness, rather than violence, would eventually exact. Héloïse returns to Belle Ombre and Ripley resumes the appearance of ordinary domestic life. Simone is left grieving and distrustful, with Ripley's exact responsibility concealed but not entirely beyond her suspicion.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ripleys-game"
+      }
+    },
     "rise-of-a-merchant-prince": {
       "characters": {
         "characters": [
