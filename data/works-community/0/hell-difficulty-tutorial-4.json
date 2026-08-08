@@ -1937,6 +1937,214 @@
         "work": "henry-iv-pt-2"
       }
     },
+    "henry-v": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "King Henry V",
+              "Harry"
+            ],
+            "description": "The young king of England, formerly known for an unruly youth but now intent on governing with discipline. He asks church leaders to establish whether he has a lawful hereditary claim to the French crown before choosing war.",
+            "id": "henry-v",
+            "name": "Henry V",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The senior English churchman who explains the legal and genealogical case for Henry's claim in France. He also hopes that supporting the king's campaign will protect church property from a proposed parliamentary seizure.",
+            "id": "archbishop-of-canterbury",
+            "name": "Archbishop of Canterbury",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Henry's uncle and a trusted English nobleman. He supports the French claim and serves as the king's senior messenger and representative during the campaign.",
+            "id": "duke-of-exeter",
+            "name": "Duke of Exeter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of the French king and Henry's confident rival. He treats the English claim lightly and sends Henry a mocking gift intended to recall the new king's irresponsible youth.",
+            "id": "dauphin",
+            "name": "Dauphin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An argumentative former soldier from Henry's youthful circle. Hoping to profit from the war in France, he quarrels with Nym and serves under Captain Fluellen.",
+            "id": "pistol",
+            "name": "Pistol",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier and former companion of Pistol and Bardolph. He resents Pistol's marriage to the Hostess and joins the expedition to France despite the hostility between them.",
+            "id": "nym",
+            "name": "Nym",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-faced former companion of Henry who enlists for the French campaign with Pistol and Nym. His old familiarity with the king offers him no exemption from the army's laws.",
+            "id": "bardolph",
+            "name": "Bardolph",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Quickly"
+            ],
+            "description": "The London innkeeper now married to Pistol. She tries to settle the quarrel among the departing soldiers and tends the dying Falstaff before the army sails.",
+            "id": "hostess",
+            "name": "Hostess",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An English nobleman and close companion of Henry who joins a plot against the king shortly before the invasion. Henry regards his apparent loyalty as especially trustworthy.",
+            "id": "lord-scrope",
+            "name": "Lord Scrope",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Welsh captain in Henry's army, proud of military learning, discipline, and his national identity. He supervises operations at Harfleur and expects soldiers of every rank to obey the law.",
+            "id": "fluellen",
+            "name": "Fluellen",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Princess Katherine"
+            ],
+            "description": "The daughter of the French king. Curious about the language of England, she asks her attendant Alice to teach her basic English words while the war develops beyond the court.",
+            "id": "katherine",
+            "name": "Katherine",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Katherine's attendant, who has spent time in England and gives the princess an informal lesson in English. She accompanies Katherine at the French court.",
+            "id": "alice",
+            "name": "Alice",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A French herald who carries formal messages between the armies. He repeatedly communicates demands and assessments without sharing the Dauphin's mockery of Henry.",
+            "id": "montjoy",
+            "name": "Montjoy",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English soldier in the depleted army before Agincourt. Speaking to a disguised Henry, he questions how much responsibility a king bears for the deaths of subjects who fight at his command.",
+            "id": "michael-williams",
+            "name": "Michael Williams",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-v"
+      },
+      "recaps": {
+        "ending": "After the English victory at Agincourt, Henry returns to France to negotiate a settlement with King Charles. The treaty names Henry as Charles's heir and requires Henry to marry Princess Katherine, joining the two royal houses. While the senior negotiators settle the terms, Henry courts Katherine in a mixture of English and French. She cannot personally decide the marriage, but the political agreement already makes the match part of the peace. The French king accepts Henry as his son and heir, and the company prays that the union will end the long conflict between the kingdoms. The closing epilogue looks beyond the play: Henry's achievements will not last, because he will die young and his infant son will inherit both crowns amid renewed war and the loss of France.",
+        "in_short": "Henry V accepts a church-backed claim to the French throne and answers the Dauphin's mockery by preparing an invasion. He exposes and executes three English conspirators, captures Harfleur, and marches a sick, depleted army toward Calais. On the eve of Agincourt, Henry moves among his soldiers in disguise and reflects on kingship and responsibility. The French expect an easy victory, but the English defeat their much larger force, and Henry attributes the result to divine favor. In the ensuing peace, the French king recognizes Henry as heir to France and approves his marriage to Princess Katherine. Henry courts her as the treaty is settled. An epilogue notes that he dies young and that his son's reign will lose the French conquests, making the triumph temporary.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A chorus asks the audience to imagine the courts and battlefields that the stage cannot fully represent. At Henry's court, the Archbishop of Canterbury and Bishop of Ely discuss the king's transformation from an undisciplined prince into a serious ruler. They also fear a proposal to take church wealth and hope to direct Henry's attention toward France. Canterbury presents a long hereditary argument that French law does not bar Henry's claim through a female ancestor. Henry insists that the advice be honest because war will cost many lives. His nobles support the claim. The French Dauphin answers through ambassadors with a mocking gift of tennis balls, implying Henry is still suited only to games. Henry treats the insult as a challenge and orders preparations for war.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London, Pistol, Nym, Bardolph, and the Hostess prepare for the campaign while settling personal quarrels. Falstaff dies offstage as his former companions depart. At Southampton, Henry reveals that he knows Cambridge, Scrope, and Grey have accepted French support for a plot against him. He first has them endorse strict punishment in another case, then gives them evidence of their own treason. Scrope's betrayal wounds him most because the man appeared to be a trusted friend. All three accept their sentences, and Henry orders their execution. With the threat behind the lines removed, the English fleet sails for France. In the French court, King Charles prepares a defense while the Dauphin remains dismissive; Exeter arrives as Henry's ambassador and formally demands the crown.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Henry's army besieges Harfleur. He rallies his troops for another assault and threatens the town with the violence that will follow if resistance continues. The governor, unable to obtain relief from the Dauphin, surrenders. Henry orders Exeter to govern the town and show mercy to its inhabitants. Disease and exhaustion have sharply reduced the English force, but Henry decides to march toward Calais rather than remain at Harfleur. Among the soldiers, Captain Fluellen insists on discipline and military method, while the Boy recognizes that Pistol, Nym, and Bardolph are more interested in plunder than honor. Bardolph is caught robbing a church. Henry upholds the death sentence despite their former friendship, making clear that the army's rules apply even to men he once knew closely.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The French forces gather in superior numbers and expect to crush the weakened English army. Montjoy demands Henry's surrender, but Henry refuses while making no boast about his chances. On the night before Agincourt, French nobles pass the time with confidence and impatience. Henry borrows a cloak and walks anonymously among his own sentries. Soldiers Bates, Court, and Williams question whether the king shares responsibility for the souls and deaths of men sent into a doubtful battle. Henry argues that each person remains responsible for his own moral state, though after they leave he reflects on the burdens of monarchy and prays that his father's seizure of the crown will not be held against the army. He and Williams exchange gloves as pledges to continue their quarrel after the battle.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As battle approaches, Westmoreland wishes for more English troops, but Henry declares that the small company will share greater honor if it wins. The English meet the French at Agincourt and break their attack despite being heavily outnumbered. Pistol captures a French soldier for ransom, while the Boy guarding the baggage is among those killed when the French raid the camp. Henry, fearing a renewed attack, orders the prisoners killed; when he learns of the slaughter at the baggage, he condemns the act. The French finally concede defeat. The casualty lists show enormous French losses and relatively few English dead. Henry forbids proud claims that English strength alone produced the result and orders that the victory be attributed to God. He later reveals his disguise to Williams and rewards the soldier after Fluellen helps settle their glove challenge.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Agincourt, the English return to France for peace negotiations. Fluellen forces Pistol to eat a leek after Pistol mocked his Welsh identity; Pistol, having lost his companions and learned that the Hostess has died, plans to return to England and live by deception. At the French palace, King Charles, Queen Isabel, Burgundy, and the English nobles negotiate. Burgundy describes a country damaged by prolonged war and urges reconciliation. Henry's terms make him heir to the French throne and husband to Princess Katherine. Left with Katherine and Alice, Henry courts the princess across their language barrier. Katherine says the marriage depends on her father's will, and the returning rulers approve the match. The treaty is accepted in hopes of lasting peace. The epilogue records that Henry dies young, leaving an infant heir under whom civil disorder returns and England loses France.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-v"
+      }
+    },
     "heretics-of-dune": {
       "characters": {
         "characters": [
