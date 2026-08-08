@@ -2053,6 +2053,225 @@
         "work": "seduce-me-at-sunrise"
       }
     },
+    "seedfolks": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A nine-year-old Vietnamese American girl who lives beside a rubbish-filled vacant lot in Cleveland. Hoping to feel connected to the father she never knew, she secretly plants lima beans there in the cold soil. Her small private act becomes the beginning of the community garden.",
+            "id": "kim",
+            "name": "Kim",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elderly Romanian immigrant who has watched the neighborhood from her apartment for many years. Suspicious when she sees Kim burying something in the vacant lot, she investigates and accidentally harms one of the seedlings before realizing that the girl has planted beans.",
+            "id": "ana",
+            "name": "Ana",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A school janitor whose life has been shaped by other people's demands. Ana asks him to help save Kim's damaged bean plants, and caring for them gives him a task he has chosen for himself. His childhood on a Kentucky farm gives him practical knowledge of growing things.",
+            "id": "wendell",
+            "name": "Wendell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Guatemalan boy who has learned English more quickly than the older members of his family and often serves as their interpreter. In the garden, he discovers that language is not the only kind of expertise when his great-uncle immediately understands the soil and plants.",
+            "id": "gonzalo",
+            "name": "Gonzalo",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tío Juan"
+            ],
+            "description": "Gonzalo's elderly great-uncle, a former farmer from Guatemala who is isolated in Cleveland because he speaks no English. The vacant lot restores his confidence: he reads the ground, improvises tools, and begins cultivating a plot without needing translation.",
+            "id": "juan",
+            "name": "Juan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A determined woman who wants to grow goldenrod in memory of her grandmother. Confronted by the lot's heaps of refuse, she carries a bag of its most revolting rubbish through city offices until officials can no longer ignore the neighborhood's problem.",
+            "id": "leona",
+            "name": "Leona",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A retired man who enjoys bringing strangers together. He sees the emerging garden as a chance to make the neighborhood more humane, hires help for his own plot, and notices that the gardeners' fences and groupings reproduce some of the divisions found outside the lot.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Haitian boy whose father takes over the plot Sam has paid someone to cultivate. The family plants baby lettuce as a business venture, placing adult hopes and financial pressure on a crop that is vulnerable to heat and other setbacks.",
+            "id": "virgil",
+            "name": "Virgil",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Korean immigrant who withdrew from other people after a violent robbery at her dry-cleaning shop. The sight of neighbors working in the garden draws her out again, and she joins them by planting hot peppers and contributing funnels so that water can reach the dry soil more effectively.",
+            "id": "sae-young",
+            "name": "Sae Young",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A physically imposing young man who plants tomatoes as part of his effort to win back Lateesha, a woman he once neglected. He guards the plants closely and employs Royce to watch them, but his private display gradually draws him into the garden's wider community.",
+            "id": "curtis",
+            "name": "Curtis",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A homeless teenager who initially sleeps in the garden. Curtis hires him to protect a valuable tomato crop, and the work gives Royce a recognized place among the gardeners, who begin feeding him and treating him as part of their community.",
+            "id": "royce",
+            "name": "Royce",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British nurse who cares for Mr. Myles, an elderly man who communicates only through gestures. When he signals that he wants to visit the garden, she helps him establish a flower bed and finds herself becoming an eager gardener as well.",
+            "id": "nora",
+            "name": "Nora",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nora's elderly client, who uses a wheelchair and can no longer speak. He makes his wish to join the garden clear by pointing, then selects flowers by responding to their pictures, asserting preferences that his physical condition often keeps hidden.",
+            "id": "mr-myles",
+            "name": "Mr. Myles",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pregnant Mexican American teenager who is resentfully attending a program for expectant mothers. At first she has little interest in the group's garden plot or in her pregnancy, but watching the plants endure and change begins to alter how she imagines the life ahead of her.",
+            "id": "maricela",
+            "name": "Maricela",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Indian immigrant who runs a fabric shop and grows eggplants in the lot. The garden lets him meet neighbors who had previously been only distant faces or stereotypes to one another, though he also witnesses how quickly fear can revive old divisions.",
+            "id": "amir",
+            "name": "Amir",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A woman who considers herself a watcher rather than a gardener. Remembering ancestors who planted their first crops after reaching freedom, she observes the lot through its first year and recognizes its growers as a new group of seedfolks putting down roots.",
+            "id": "florence",
+            "name": "Florence",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "seedfolks"
+      },
+      "recaps": {
+        "ending": "By the end of the growing season, the garden has changed both the vacant lot and the relationships around it. People who once knew one another only as members of unfamiliar ethnic or social groups have exchanged food, advice, labor, and protection. Royce has gained a place in the community, Sae Young has recovered some trust in strangers, and Maricela has begun to see new life with less despair. The cold eventually empties the plots and leaves Florence worried that the community may vanish as quickly as the plants. In early spring, however, she sees Kim return to the lot and kneel in the same place to plant lima beans again. The act that began the garden is repeated, showing that the shared project will continue into another year.",
+        "in_short": "In a Cleveland neighborhood divided by language, age, ethnicity, and poverty, nine-year-old Kim plants lima beans in a rubbish-filled vacant lot to honor the father she never knew. Ana notices the child, Wendell tends the seedlings, and one resident after another begins cultivating the ground. Their accounts show the lot being cleared and transformed into a community garden. Gonzalo sees his isolated great-uncle recover his authority as a farmer; Leona forces the city to remove the rubbish; Sae Young regains trust after a traumatic robbery; Curtis uses tomatoes to reach out to a former girlfriend; and other growers find livelihood, purpose, or companionship. The garden does not erase conflict, and fences sometimes reproduce the neighborhood's divisions, but shared work and harvests create connections that did not exist before. After winter arrives, Florence sees Kim return to plant lima beans again, beginning the garden's second cycle.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Kim, a nine-year-old Vietnamese American girl, slips into a rubbish-filled vacant lot beside her Cleveland apartment building and plants lima beans. She wants to honor the father who died before she was born and imagines that tending a crop will let his spirit recognize her as his daughter. Ana, an elderly Romanian neighbor, watches from her window and suspects that Kim has hidden something illicit. When she digs up the spot to investigate, she discovers the beans and realizes she has damaged one. Troubled by what she has done, she asks Wendell, a janitor with farming experience, for help restoring the seedlings.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wendell revives Kim's beans and, tired of spending his life responding to other people's problems, clears a patch where he can plant something of his own. The lot begins to offer its neighbors new roles. Gonzalo, a Guatemalan boy accustomed to translating for his family, follows his wandering great-uncle Juan there. In the city Juan has seemed helpless because he speaks no English, but among soil and seedlings the former farmer immediately becomes capable and purposeful. Gonzalo recognizes that the balance between them has reversed: the old man understands this world without an interpreter. With more than one person now cultivating the ground, Kim's secret memorial is becoming a shared garden.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leona decides to plant goldenrod in memory of her grandmother but first confronts the mountains of refuse covering the lot. After telephone calls bring no action, she carries a leaking bag of the worst rubbish into a public office and waits until officials respond; the city finally clears the site. Sam, a retired man who makes a habit of talking to strangers, sees the garden as a small paradise where the neighborhood might meet. He arranges for a teenager to prepare a plot and plant pumpkins for him. Yet he also notices that gardeners cluster by background and put up fences, bringing the surrounding community's separations into the new space even as they work beside one another.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Virgil's father tries to turn the garden into income by crowding a plot with baby lettuce, but heat and practical difficulties threaten his plans. Sae Young, a Korean shopkeeper left fearful and isolated after a violent robbery, is drawn to the sight of people working together. She plants hot peppers and supplies funnels that make watering easier, gradually recovering a sense of safety among neighbors. Curtis plants tomatoes where Lateesha, the woman he hopes to win back, will see them. Protective of the crop, he pays a homeless teenager named Royce to guard it. The gardeners begin bringing Royce food and including him in their work, giving him an accepted place in the community rather than treating him as an intruder.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nora, a British nurse, brings her nonverbal client Mr. Myles to the garden after he signals his interest. She helps him choose and plant flowers, and the activity reveals preferences and enthusiasm that his disabilities had concealed from others. Maricela arrives with a program for pregnant teenagers, angry about her pregnancy and indifferent to the assigned plot. As the season turns, she observes that plants can look finished and still carry the beginnings of future growth. The garden does not solve her situation, but it helps her imagine change and approach the child she is carrying with less rejection. The lot has now become a place where vulnerable people can exercise choice and see themselves differently.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Amir, an Indian fabric-shop owner who grows eggplants, reflects that the garden has introduced people who previously passed one another as strangers. He sees neighbors share produce and knowledge, although a tense misunderstanding also shows that suspicion has not disappeared. Florence, who calls herself a watcher rather than a gardener, compares the growers to ancestors who established themselves by planting in new ground. The harvest and cold weather eventually empty the lot, and she fears the fragile community will not return. Then, in early spring, Florence sees Kim come back to the original patch and plant lima beans once more. The girl's private memorial begins another growing season, confirming that the garden and the connections formed around it have survived the winter.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "seedfolks"
+      }
+    },
     "sense-and-sensibility": {
       "characters": {
         "characters": [
