@@ -2374,6 +2374,112 @@
         ],
         "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
       }
+    },
+    "georges-marvelous-medicine": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eight-year-old boy living on a farm with his parents and grandmother. Left alone to give Grandma her regular medicine, he decides to replace it with a concoction of his own in the hope of changing her unpleasant behavior.",
+            "id": "george-kranky",
+            "name": "George Kranky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Grandma"
+            ],
+            "description": "George's elderly maternal grandmother, who lives with the Kranky family. She orders George about, complains constantly, and frightens him with claims about strange powers and habits. Her scheduled spoonful of brown medicine gives George the opportunity for his experiment.",
+            "id": "grandma",
+            "name": "Grandma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "George's mother and Grandma's daughter. Before leaving to shop, she tells George to remain at home and give Grandma her medicine at the proper time, trusting him with what appears to be a simple household task.",
+            "id": "mrs-kranky",
+            "name": "Mrs. Kranky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George's father, a farmer with an intense interest in making his livestock larger. When he sees the extraordinary growth caused by George's mixture, he immediately thinks of its agricultural possibilities and presses George to reproduce it.",
+            "id": "mr-kranky",
+            "name": "Mr. Kranky",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farmyard hen chosen by George as the first test subject after Grandma's transformation. A small dose makes the bird grow to an enormous size, demonstrating that the mixture affects animals as dramatically as people.",
+            "id": "brown-hen",
+            "name": "The Brown Hen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "georges-marvelous-medicine"
+      },
+      "recaps": {
+        "ending": "Mr. Kranky insists that George reproduce the original growth medicine for use on farm animals, but George cannot remember every ingredient or quantity. Three new mixtures produce different and impractical effects. The fourth does the reverse of the first: anything that drinks it becomes smaller. Grandma, still demanding more medicine, mistakes this batch for her usual dose and drinks it before George can stop her. She shrinks rapidly, becomes too small to see, and finally disappears altogether. Mrs. Kranky is initially shocked at the loss of her mother, while Mr. Kranky accepts the outcome with relief. George is left contemplating the unsettling result of an experiment that began as a plan to alter Grandma and grew beyond anything he could control. No usable formula for the original marvelous medicine survives.",
+        "in_short": "Eight-year-old George Kranky is left to give medicine to his bullying grandmother. Hoping to transform her, he empties a wide range of household substances into a saucepan, boils the mixture, and pours it into her medicine bottle. One spoonful makes Grandma shoot upward until she is taller than the house. The medicine also makes farm animals gigantic, exciting George's farmer father, who wants the formula reproduced. George cannot remember the exact recipe, and three attempted replacements cause odd, unusable forms of growth. A fourth mixture causes shrinking instead. Grandma drinks it by mistake and dwindles until she vanishes. The original growth formula is lost, the agricultural scheme fails, and the Kranky family is left without Grandma.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "George Kranky is left at home with his hostile grandmother while his mother goes shopping. Grandma belittles him, makes alarming claims about what elderly people can do, and orders him to bring her regular brown medicine at eleven o'clock. George decides that an ordinary dose will not improve her. Moving through the house, garage, and farm shed, he combines soaps, cosmetics, cleaning products, animal remedies, paint, and other substances, taking care not to use the medicines reserved for his parents. He heats the mixture in a large saucepan until it resembles Grandma's usual medicine, cools it, and fills the familiar bottle. The result is not a real treatment but an unpredictable experiment assembled from whatever George can find.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At medicine time, George gives Grandma a spoonful of his new mixture. She heats up, bursts upward from her chair, and grows through the ceilings and roof until her upper body towers over the house. George is alarmed but also fascinated that his invention has worked so dramatically. When he tests the remaining mixture on a chicken, the bird grows to an extraordinary size as well. The effect is therefore not unique to Grandma and appears capable of transforming the farm's animals.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "George gives measured doses to more farm animals, including pigs, cattle, sheep, a pony, and a goat, and each becomes gigantic. His parents return to find both the livestock and Grandma enormously enlarged. Because Grandma is still protruding through the roof, Mr. Kranky brings in a crane to lift her out of the house. Far from being disturbed by the experiment, he is thrilled by the possibility of producing huge animals and vastly more food. He demands that George make another batch so the effect can be repeated and exploited on the farm. George explains that he did not record the many ingredients, but his father insists that they reconstruct the formula together.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "George and Mr. Kranky try repeatedly to recreate the marvelous medicine. Because the original was improvised, every missed ingredient or altered amount changes the result. The second mixture produces excessive long-legged growth, the third creates another distorted form, and neither gives Mr. Kranky the useful giant animals he wants. Their fourth attempt has the opposite effect: a chicken that samples it becomes smaller. Before George can explain, Grandma demands her medicine and swallows a spoonful of this shrinking batch. She dwindles rapidly from adult size to a tiny figure and then disappears completely. Mrs. Kranky is shocked, but Mr. Kranky soon treats Grandma's absence as a benefit. The family never recovers the successful formula, and George is left wondering at the strange power his unrepeatable experiment released.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "georges-marvelous-medicine"
+      }
     }
   }
 }

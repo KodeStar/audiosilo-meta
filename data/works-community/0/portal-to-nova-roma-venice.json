@@ -3295,6 +3295,162 @@
         "work": "ps-i-love-you"
       }
     },
+    "psycho-robert-bloch": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The isolated proprietor of the Bates Motel, a middle-aged man who lives with his mother in the house above the cabins. Intelligent and interested in psychology and the occult, he is painfully self-conscious about his appearance and remains emotionally dependent on his domineering parent.",
+            "id": "norman-bates",
+            "name": "Norman Bates",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mother"
+            ],
+            "description": "Norman's possessive mother, heard arguing with him in the house above the motel. She ridicules his interest in a female guest and resents any sign that he might form a life beyond their home.",
+            "id": "mrs-bates",
+            "name": "Mrs. Bates",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A trusted employee in a real-estate office who impulsively steals forty thousand dollars entrusted to her employer. Hoping the money will let her marry Sam Loomis and escape a frustrating life, she drives away and eventually stops at the nearly deserted Bates Motel.",
+            "id": "mary-crane",
+            "name": "Mary Crane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mary's employer, who asks her to deposit a client's forty-thousand-dollar cash payment. He trusts her with the errand and does not initially suspect that she plans to leave town with the money.",
+            "id": "mr-lowery",
+            "name": "Mr. Lowery",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Mary's boyfriend, who runs a hardware store burdened by debts and obligations from his former marriage. He wants to marry Mary but has insisted they wait until his finances improve, a delay that helps drive her reckless attempt to obtain money for them.",
+            "id": "sam-loomis",
+            "name": "Sam Loomis",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mary's younger sister. Practical and persistent, she contacts Sam after Mary disappears and joins him in trying to reconstruct the route Mary took with the missing money.",
+            "id": "lila-crane",
+            "name": "Lila Crane",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A private investigator hired to recover the stolen money. Methodical rather than theatrical, he traces Mary's journey by interviewing motel owners and becomes suspicious when Norman gives evasive answers about the missing guest.",
+            "id": "milton-arbogast",
+            "name": "Milton Arbogast",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local sheriff consulted by Sam and Lila after Arbogast disappears. He knows the Bates family history and tells them that Norman's mother was buried years ago, making reports of an old woman at the house deeply troubling.",
+            "id": "sheriff-chambers",
+            "name": "Sheriff Chambers",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The psychiatrist who explains Norman's condition after his arrest. He reconstructs the murder of Norman's mother, the preservation of her body, and the creation of a separate Mother personality that took control when Norman felt threatened by his own attachments.",
+            "id": "dr-steiner",
+            "name": "Dr. Steiner",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "psycho-robert-bloch"
+      },
+      "recaps": {
+        "ending": "At the Bates house, Lila discovers the preserved corpse of Norman's mother. Norman enters dressed in her clothing and attacks Lila with a knife, but Sam intervenes and subdues him. The subsequent examination establishes that Norman murdered his mother and her lover years earlier, then stole and preserved her body. Unable to bear both the crime and his attachment to her, he developed a separate Mother personality. That personality had increasingly taken control and committed the murders of Mary Crane and Milton Arbogast whenever Norman's interest in another person threatened their closed world. Norman is confined to an institution, where the Mother identity completes its domination of his mind. In his final internal state, Mother regards Norman as the violent one and imagines proving her own harmlessness by sitting perfectly still, leaving the original Norman effectively absent.",
+        "in_short": "Mary Crane steals forty thousand dollars from her employer, intending to use it to build a life with her indebted boyfriend, Sam Loomis. On her flight she stops at the isolated Bates Motel, run by the awkward Norman Bates and overshadowed by his abusive mother. Mary decides to return the money, but a figure resembling an old woman murders her in the shower. Norman conceals the body and car. Mary's sister Lila, Sam, and private investigator Milton Arbogast trace her to the motel; Arbogast is also murdered after entering the Bates house. Lila and Sam return to investigate and discover that Mrs. Bates has long been dead. Lila finds her preserved corpse, then Norman attacks while dressed as Mother. Sam stops him. Authorities conclude that Norman murdered and preserved his mother, created a separate Mother personality, and killed Mary and Arbogast under its control. Institutionalized, Norman disappears beneath that personality.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Norman Bates lives with his domineering mother beside the failing motel they operate on an old highway. He spends much of his time reading, drinking secretly, and retreating from her contempt. Elsewhere, Mary Crane is entrusted with forty thousand dollars paid in cash to her real-estate employer. Frustrated that debt prevents her from marrying her boyfriend Sam Loomis, she impulsively keeps the money and leaves town. As she drives, fear of discovery makes every encounter seem threatening, but she continues toward Sam. Bad weather and an accidental turn onto the old road eventually bring her to the isolated Bates Motel.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mary is the motel's only guest. Norman invites her to eat with him and talks about his interest in psychology, his isolation, and the burden of caring for his mother. Mary hears the older woman furiously objecting to Norman's attention to her. Their conversation makes Mary confront her own attempt to escape responsibility, and she resolves to return the stolen money. Before she can leave, a figure resembling an old woman enters her bathroom and kills her with a knife while she showers. Norman, horrified by what has happened, assumes his mother is responsible. He methodically cleans the room, places Mary's body and possessions in her car, and sinks it in the swamp, never noticing the money hidden among her things.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mary's disappearance draws together the people searching for her. Her sister Lila goes to Sam, suspecting that Mary intended to meet him, but he has neither seen Mary nor received the stolen money. Milton Arbogast, a private investigator working to recover the cash, questions them and begins tracing Mary's route through motel registers. Norman tries to restore his ordinary routine while concealing the crime and managing his volatile mother. Arbogast's systematic search brings him closer to the Bates property, where an out-of-the-way motel and its nervous proprietor may provide the first firm evidence of where Mary stopped.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arbogast questions Norman and catches inconsistencies in his account of Mary's stay. Norman admits that Mary was there but insists she left, and he refuses to let the investigator speak to his mother. Arbogast telephones Sam and Lila to report the lead, then returns to search further. He enters the house above the motel, where a knife-wielding figure attacks and kills him. When Arbogast fails to call again, Sam and Lila realize that the Bates Motel is connected not only to Mary's disappearance but now to the investigator's. They decide that waiting for him is no longer safe and seek help from local authorities.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sam and Lila tell Sheriff Chambers that Arbogast saw a woman at the Bates house. Chambers reveals that Norman's mother died years earlier in an apparent murder-suicide involving the man she planned to marry; Norman later suffered a breakdown. The contradiction makes the house more alarming, but an initial check produces no open admission from Norman. Unsatisfied, Sam and Lila pose as a married couple and rent a cabin at the motel. Their plan is to divide the search: Sam will keep Norman occupied while Lila examines the house for Mary, Arbogast, or evidence of what happened to them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Sam questions Norman, Lila searches the Bates house and discovers the preserved corpse of Mrs. Bates. Norman, dressed as his mother, attacks Lila, but Sam reaches them and overpowers him. The investigation establishes that Norman killed his mother and her lover years before, stole her body, and maintained the illusion that she remained alive. His mind divided into separate identities, with the jealous Mother personality taking control to murder Mary and Arbogast. Norman is committed to an institution rather than treated as an ordinary criminal. There the Mother identity takes complete possession, internally blaming Norman for the violence and resolving to appear harmless. Mary and Arbogast are dead, and Norman's original personality is no longer accessible.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "psycho-robert-bloch"
+      }
+    },
     "puddnhead-wilson": {
       "characters": {
         "characters": [

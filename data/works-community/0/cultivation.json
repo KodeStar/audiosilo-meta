@@ -3987,6 +3987,238 @@
         "work": "dead-reckoning-charlaine-harris"
       }
     },
+    "dead-souls-nikolai-gogol": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Pavel Ivanovich"
+            ],
+            "description": "A polished traveler of middling rank who arrives in a provincial town with two servants and no obvious business. He carefully flatters officials and landowners, gathering information about their estates while presenting himself as respectable, agreeable, and unremarkable.",
+            "id": "pavel-ivanovich-chichikov",
+            "name": "Pavel Ivanovich Chichikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Chichikov's coachman, responsible for the britzka and its three horses. He is sociable, frequently careless, and prone to drinking, and his uncertain sense of direction repeatedly shapes his master's travels between estates.",
+            "id": "selifan",
+            "name": "Selifan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chichikov's taciturn valet. Petrushka wears a distinctive old coat, reads without much concern for meaning, and brings his own habits and atmosphere into the rooms he prepares for his master.",
+            "id": "petrushka",
+            "name": "Petrushka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sentimental landowner whose refined phrases and plans for improvements never become practical action. He welcomes Chichikov with elaborate warmth and is the first person from whom Chichikov asks to acquire serfs who remain on the tax register although they have died.",
+            "id": "manilov",
+            "name": "Manilov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nastasya Petrovna"
+            ],
+            "description": "A widowed landowner who gives Chichikov shelter after he loses the road in a storm. Practical but deeply cautious about any unfamiliar bargain, she fears selling too cheaply and treats deceased serfs as another commodity whose market price she may not understand.",
+            "id": "korobochka",
+            "name": "Korobochka",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noisy, impulsive landowner and compulsive gambler whom Chichikov meets again at an inn. Nozdryov lies, boasts, quarrels, and tries to turn every transaction into a game or an exchange on his own terms, making him dangerous to a scheme that depends on discretion.",
+            "id": "nozdryov",
+            "name": "Nozdryov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavy, blunt landowner whose solid house and possessions resemble his own practical temperament. Unlike Chichikov's more dreamy or erratic hosts, he immediately treats the proposed transfer of dead serfs as hard bargaining and praises each deceased worker as valuable property.",
+            "id": "sobakevich",
+            "name": "Sobakevich",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A once-prosperous landowner whose miserliness has reduced his estate and household to decay. Suspicious of everyone and unable to use what he hoards, he nevertheless has many dead or runaway serfs still burdening his tax register, making him especially receptive to Chichikov's offer.",
+            "id": "plyushkin",
+            "name": "Plyushkin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The provincial governor's young daughter, recently returned from her education and conspicuous to Chichikov at a ball. His attention to her disrupts the careful social performance by which he has won the town's approval.",
+            "id": "the-governors-daughter",
+            "name": "The governor's daughter",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An army veteran whose history is told by the postmaster as a proposed explanation for Chichikov's identity. After losing an arm and a leg in war, Kopeikin seeks government help in the capital but encounters delay and indifference.",
+            "id": "captain-kopeikin",
+            "name": "Captain Kopeikin",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Andrei Ivanovich"
+            ],
+            "description": "An educated landowner encountered when Chichikov resumes his travels. Tentetnikov has withdrawn to his estate after disappointed ambitions and fallen into inactivity, though his attachment to General Betrishchev's daughter still connects him to neighboring society.",
+            "id": "andrei-ivanovich-tentetnikov",
+            "name": "Andrei Ivanovich Tentetnikov",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A proud, imposing landowner and retired general who has quarreled with Tentetnikov. Chichikov seeks his favor and tries to use the estrangement, and the general's affection for his daughter, as openings for new social and financial maneuvers.",
+            "id": "general-betrishchev",
+            "name": "General Betrishchev",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Betrishchev's spirited daughter and the woman Tentetnikov loves. Her presence gives emotional weight to the estrangement between the two men and to Chichikov's attempt to present himself as their useful intermediary.",
+            "id": "ulinka",
+            "name": "Ulinka",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy, energetic estate manager whose productive farming and disciplined household contrast with the neglect found elsewhere. Chichikov is impressed by the profits that practical work can produce, though he remains more attracted to shortcuts than to sustained reform.",
+            "id": "kostanzhoglo",
+            "name": "Kostanzhoglo",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bankrupt gentleman whose neglected estate is offered for sale. Generous impulses and disorderly spending have left him unable to support his large household, and his distress creates another opportunity for Chichikov to acquire property through borrowed money and advantageous paperwork.",
+            "id": "khlobuev",
+            "name": "Khlobuev",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rich, influential man with a reputation for moral seriousness and direct speech. When Chichikov's renewed dealings bring him into grave legal danger, Murazov urges him to abandon fraud and redirect his abilities toward an honest life.",
+            "id": "murazov",
+            "name": "Murazov",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-souls-nikolai-gogol"
+      },
+      "recaps": {
+        "ending": "The surviving second part does not provide a completed ending. After returning to schemes involving land, credit, and official documents, Chichikov becomes entangled in a serious forgery case and is arrested under a newly severe governor-general. In confinement he is stripped of the signs of prosperity on which his identity depends and despairs over the collapse of his position. Murazov visits him, identifies his talent and persistence as qualities wasted on fraud, and presses him to make a genuine moral change. Murazov also appeals to the authorities, while other officials continue trying to manipulate the case for money and advantage. The extant manuscript breaks off amid these efforts, with Chichikov's legal fate and promised reform unresolved. Gogol destroyed much of the continuation, so the intended completion of Chichikov's journey and the broader design of the poem cannot be recovered from the text that remains.",
+        "in_short": "Pavel Chichikov arrives in a provincial town and charms its officials before visiting nearby landowners with an unusual offer: he will take legal ownership of serfs who have died since the last census but remain taxable on paper. Manilov gives them away, Korobochka sells cautiously, Nozdryov disrupts the scheme, Sobakevich bargains, and the miser Plyushkin gladly transfers many names. Chichikov plans to use these paper holdings as security and present himself as wealthy. Rumor first makes him a celebrated landowner, then turns against him when his dealings are exposed and wild theories spread about his identity; he flees. His history reveals a career built on ingratiation, accumulation, and official fraud. In the unfinished second part he resumes schemes among another group of landowners, is drawn into forged documents, and is arrested. The moralist Murazov urges him to reform, but the surviving manuscript ends before either his legal case or his moral future is settled.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Pavel Ivanovich Chichikov arrives in an unnamed provincial capital with his coachman Selifan and valet Petrushka. He quickly calls on the governor and other leading officials, praising each man and avoiding firm statements about his own purpose. His careful manners win invitations to dinners and a ball, where he meets several landowners. He first visits Manilov, a pleasant but idle estate owner given to vague ideals. Chichikov finally reveals his business: he wants the legal names of male serfs who have died since the last census but remain registered, leaving their owners liable for taxes. Because the transaction would relieve him of a useless burden, Manilov agrees to transfer the names without payment and treats the bargain as an act of friendship. Chichikov leaves with the first group of the paper property he calls dead souls.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Selifan loses the road during a storm, Chichikov spends the night at the estate of the widow Korobochka. She understands ordinary farm goods but is alarmed by the novelty of selling the names of dead serfs. Chichikov alternates explanations, pressure, and promises of future business until she agrees, though she remains worried that she has accepted too little. At an inn he encounters Nozdryov, a boastful gambler who drags him home. Nozdryov refuses a straightforward sale and tries to attach the dead souls to unwanted horses, dogs, and games of chance. When Chichikov will not cooperate, their quarrel nearly becomes violent before an official arrives on another matter. Chichikov escapes without a purchase, but Nozdryov now knows enough to threaten the secrecy of the plan.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chichikov next bargains with Sobakevich, a blunt and calculating landowner. Sobakevich immediately recognizes that Chichikov expects some benefit and demands payment, describing each deceased serf's trade and virtues as if the man were still marketable. They eventually agree on a price and carefully record the names. From him Chichikov learns about Plyushkin, an extremely rich landowner whose miserliness has ruined his estate. Plyushkin hoards worthless scraps while food and buildings decay, and many of his serfs have died or run away. Because he still owes taxes on them, he gladly lets Chichikov assume the registered dead and also sells him the names of runaways. Chichikov returns to town pleased with a substantial list acquired through a mixture of gifts and purchases.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chichikov and the officials complete deeds that make his purchases appear to be an ordinary transfer of living serfs for resettlement elsewhere. At the ensuing celebration, the town treats him as a substantial proprietor and speculates approvingly about his fortune and marriage prospects. The attention expands into social enthusiasm, particularly among the town's women. At the governor's ball Chichikov becomes absorbed in the governor's young daughter and neglects the admirers whose approval helped establish him. Nozdryov then loudly asks him about the dead souls, confusing the guests and giving the first public clue that the transactions are not what they seem. Chichikov leaves angry, while Korobochka reaches town to discover whether other buyers would have paid more, bringing another threat to his carefully managed reputation.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Korobochka's inquiries and Nozdryov's talk set off a wave of rumor. The town combines Chichikov's secret purchases with his attention to the governor's daughter, producing theories that he plans an abduction or is a dangerous criminal in disguise. Officials who once welcomed him become frightened that an inspection or scandal will expose their own misconduct. Their conference generates increasingly implausible guesses, including the postmaster's tale of the disabled Captain Kopeikin, until the strain contributes to the prosecutor's sudden death. Chichikov, recovering from illness and initially unaware of the change, finds doors closed to him. Nozdryov finally tells him the circulating stories. He leaves town hurriedly. The narrative then gives his history: trained from childhood to save money and please superiors, Chichikov repeatedly advanced through charm and corrupt ventures, lost his gains when schemes were exposed, and devised the dead-souls plan as his next route to wealth.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the surviving continuation, Chichikov reappears on the estate of Andrei Tentetnikov, an educated man whose early hopes have given way to isolation and inactivity. Tentetnikov is estranged from the neighboring General Betrishchev but remains attached to the general's daughter, Ulina. Chichikov presents himself as a possible reconciler and wins access to the general through flattery and invented family business. He moves among a new set of estates, adapting his story to each household and seeking property and registered souls that can restore his fortunes. The social world has changed, but his method remains the same: identify another person's vanity, grievance, boredom, or need, then make himself appear useful to it.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chichikov encounters sharp contrasts among the later landowners. Kostanzhoglo runs a productive estate through close attention and work, while the generous but disorderly Khlobuev has driven his property toward sale. Chichikov admires the profits of honest management but tries to acquire opportunity through loans, influence, and documents rather than adopting its discipline. His renewed maneuvers eventually involve a forged will and competing officials, and a new governor-general's campaign against corruption places him under arrest. In confinement Chichikov loses the clothes, possessions, and public standing that sustained his self-image. The wealthy moralist Murazov urges him to recognize that his energy and adaptability could serve a life other than fraud and attempts to obtain mercy, while corrupt intermediaries continue seeking advantage from the case. The manuscript breaks off before the prosecution, Murazov's intervention, or Chichikov's promised reform reaches a resolution; the novel's second part survives only in incomplete form.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-souls-nikolai-gogol"
+      }
+    },
     "dead-to-the-world": {
       "characters": {
         "characters": [
