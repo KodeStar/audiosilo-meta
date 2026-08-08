@@ -2617,6 +2617,219 @@
         "work": "the-idiot-dramatized"
       }
     },
+    "the-idiot-tantor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Prince Myshkin"
+            ],
+            "description": "An impoverished young prince returning to Russia after years of treatment for epilepsy in Switzerland. Open, compassionate, and almost incapable of social calculation, he is often taken for a fool because he speaks without the defensive pride expected in Petersburg society. He hopes to reconnect with a distant relation in the Yepanchin family.",
+            "id": "lev-nikolayevich-myshkin",
+            "name": "Lev Nikolayevich Myshkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Rogozhin"
+            ],
+            "description": "A passionate young merchant's son whom Myshkin meets on the train to Petersburg. Newly enriched by his father's death, he is returning after an absence and speaks with consuming intensity about Nastasya Filippovna, for whom he is ready to spend a fortune. He responds to Myshkin's frankness with an immediate, unstable warmth.",
+            "id": "parfyon-semyonovich-rogozhin",
+            "name": "Parfyon Semyonovich Rogozhin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative civil servant encountered on the train by Myshkin and Rogozhin. He has a talent for collecting family histories, scandals, and financial details, and attaches himself readily to people who may become useful. His comic intrusiveness coexists with sharp observation and a precarious domestic life.",
+            "id": "lukyan-timofeyevich-lebedev",
+            "name": "Lukyan Timofeyevich Lebedev",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous general and businessman married to Myshkin's distant relative Lizaveta Prokofyevna. He receives the poorly dressed prince cautiously but recognizes both his intelligence and possible family claim. His household and business dealings connect Myshkin to Ganya and Nastasya Filippovna.",
+            "id": "general-yepanchin",
+            "name": "General Yepanchin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ganya"
+            ],
+            "description": "General Yepanchin's ambitious young secretary, from a respectable but financially strained family. He is considering marriage to Nastasya Filippovna in exchange for a large settlement, although desire, shame, and fear of public humiliation make him deeply divided about the arrangement.",
+            "id": "gavril-ardalionovich-ivolgin",
+            "name": "Gavril Ardalionovich Ivolgin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nastasya Filippovna"
+            ],
+            "description": "A striking young woman raised and educated under the control of the wealthy Totsky after being orphaned on one of his estates. Petersburg society treats her as both scandalous and marriageable. Conscious of the exploitation behind her position, she alternates between proud defiance and a damaging belief that she deserves contempt.",
+            "id": "nastasya-filippovna-barashkova",
+            "name": "Nastasya Filippovna Barashkova",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "General Yepanchin's outspoken wife and a distant member of the same princely family as Myshkin. Impulsive, suspicious of social maneuvering, and devoted to her three daughters, she is intrigued by the prince's simplicity and repeatedly draws him into the family's intimate affairs.",
+            "id": "lizaveta-prokofyevna-yepanchina",
+            "name": "Lizaveta Prokofyevna Yepanchina",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Aglaya"
+            ],
+            "description": "The youngest Yepanchin daughter, beautiful, intelligent, and restless beneath the expectations attached to an eligible society marriage. Her family regards her as the most striking and strong-willed of the three sisters.",
+            "id": "aglaya-ivanovna-yepanchina",
+            "name": "Aglaya Ivanovna Yepanchina",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ganya's younger sister, practical and direct in a household strained by debt and her father's unreliability. She opposes a marriage that would bring money at the cost of family humiliation and is prepared to challenge her brother when ambition overrides affection.",
+            "id": "varvara-ardalionovna-ivolgina",
+            "name": "Varvara Ardalionovna Ivolgina",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Ivolgin"
+            ],
+            "description": "Ganya's father, a retired general whose family lives with the consequences of his drinking and grandiose inventions. He tells elaborate stories of distinguished connections and past heroism, making it difficult to separate his genuine memories and need for respect from habitual falsehood.",
+            "id": "ardalion-alexandrovich-ivolgin",
+            "name": "Ardalion Alexandrovich Ivolgin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kolya"
+            ],
+            "description": "Ganya's adolescent brother, lively, independent-minded, and less burdened by social ambition than the adults around him. He quickly befriends Myshkin and moves easily between households, often carrying news or providing companionship when older characters withdraw into pride.",
+            "id": "nikolay-ardalionovich-ivolgin",
+            "name": "Nikolay Ardalionovich Ivolgin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A consumptive young man connected to Kolya and to the circle around Lebedev. Intellectually combative and painfully aware that he is dying, he resents pity and wants his final months to demonstrate complete independence. His arguments with Myshkin turn mortality into a public and personal challenge.",
+            "id": "ippolit-terentyev",
+            "name": "Ippolit Terentyev",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yevgeny Pavlovich"
+            ],
+            "description": "A polished young man from the Yepanchins' social circle, wealthy, well connected, and regarded as a suitable possible husband for Aglaya. His ease and conventional social competence contrast with Myshkin's anxious sincerity.",
+            "id": "yevgeny-pavlovich-radomsky",
+            "name": "Yevgeny Pavlovich Radomsky",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-tantor"
+      },
+      "recaps": {
+        "ending": "Aglaya arranges a confrontation with Nastasya Filippovna, but the meeting becomes a contest of pride and suffering. When Nastasya collapses, Myshkin turns toward her, and Aglaya leaves, convinced she has lost him. Myshkin prepares to marry Nastasya, hoping love and care can free her from self-contempt. At the church, however, she flees with Rogozhin. Myshkin follows them to Petersburg and finds Rogozhin beside Nastasya's body after he has murdered her. The two men keep vigil through the night, with Myshkin comforting the killer as his own mind gives way. Rogozhin is later tried and sent to hard labor in Siberia. Myshkin's collapse is lasting, and he returns to the Swiss institution in essentially the same helpless condition as before his journey to Russia. Ippolit dies from his illness. The Yepanchins leave Russia; Aglaya becomes involved with a Polish émigré who deceives her and draws her away from her family and faith. Yevgeny Pavlovich remains concerned for Myshkin. The prince's compassion changes individual lives but cannot rescue Nastasya, cure Rogozhin's possessiveness, or survive the destructive claims placed upon it.",
+        "in_short": "Prince Lev Myshkin returns to Russia after treatment for epilepsy and enters Petersburg society with an openness many mistake for stupidity. He becomes entangled with Nastasya Filippovna, a woman traumatized by exploitation and convinced she is ruined, and Rogozhin, whose love for her is possessive and violent. Myshkin's pity and love offer Nastasya another life, but she repeatedly flees him for Rogozhin. At the same time, Myshkin and the proud young Aglaya Yepanchina develop an unstable attachment shaped by idealization, embarrassment, and jealousy. Around them, families pursue money, status, and moral certainty, while the dying Ippolit challenges Myshkin's faith in compassion. Aglaya's confrontation with Nastasya destroys her bond with the prince. Nastasya agrees to marry Myshkin but escapes with Rogozhin at the wedding; Rogozhin murders her. Myshkin finds them and suffers a final mental collapse while comforting Rogozhin. He returns to institutional care, Rogozhin goes to Siberia, and Aglaya is drawn into an unhappy life abroad.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Prince Lev Myshkin returns to Russia after several years in a Swiss clinic, nearly penniless and still vulnerable to epileptic seizures. On the train he meets Parfyon Rogozhin, newly wealthy after his father's death, and Lebedev, a civil servant who knows Petersburg's scandals. Rogozhin describes his obsession with Nastasya Filippovna, a beautiful woman whose guardian Totsky exploited her and now wants to settle money on her so he can marry elsewhere. Myshkin calls on General Yepanchin, husband of his distant relative Lizaveta Prokofyevna, and impresses the family with his frankness and calligraphy. He also meets the general's secretary Ganya Ivolgin, who is considering marrying Nastasya for a large payment despite his shame about the bargain. A portrait of Nastasya affects Myshkin strongly. He takes a room with Ganya's strained family and is drawn at once into their conflict over the proposed marriage.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nastasya arrives at the Ivolgins' home and deliberately exposes the family's resentments, while Rogozhin appears with a disorderly group and offers an enormous sum for her. Ganya's humiliation leads him to raise a hand against his sister Varya; Myshkin intervenes and receives the blow instead. At Nastasya's birthday gathering, she asks Myshkin whether she should marry Ganya and accepts his judgment that she should not. Myshkin then offers to marry her himself, insisting that she is not defined by what Totsky did to her. News of a possible inheritance makes his proposal financially credible. Nastasya is moved but cannot believe herself fit for the life he imagines. She subjects Ganya to a final test involving Rogozhin's money, rejects the respectable settlement, and leaves with Rogozhin. Myshkin follows, not as a rival seeking possession but because he fears what their destructive passion will produce.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After several months away, Myshkin has received a substantial inheritance and attempted to settle numerous claims upon it. His relations with Nastasya and Rogozhin have become a repeated cycle: Nastasya approaches marriage with one man, then flees toward the other, while Rogozhin's jealousy darkens into violence. Back in Petersburg, Myshkin visits Rogozhin's shadowed house. They exchange crosses and speak like brothers, yet Myshkin senses that Rogozhin may kill either Nastasya or him. Later Rogozhin follows the prince and raises a knife, but Myshkin suffers a seizure at the instant of attack and survives. He recovers in Pavlovsk among Lebedev, Kolya, and the Yepanchin family. A group of young men, including Burdovsky and the dying Ippolit, publicly demand part of Myshkin's fortune through a false claim about his benefactor. Although their case is discredited, Myshkin responds with generosity that embarrasses allies who wanted him to defend himself more firmly.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life in Pavlovsk brings Myshkin repeatedly into the Yepanchins' circle, where his connection with Aglaya becomes the subject of family hope, mockery, and confusion. Aglaya is attracted to his moral seriousness but resents being treated as an innocent girl or as a cure for his concern with Nastasya. She tests him through teasing, secret meetings, and allusions to an idealized knight, while Yevgeny Pavlovich appears as a socially conventional alternative. Nastasya remains nearby and intervenes publicly in the Yepanchins' affairs, apparently trying to arrange Aglaya's future while also making herself impossible to forget. During a gathering for Myshkin's birthday, Ippolit reads a long statement about illness, isolation, and his refusal to submit meekly to death. He then tries to shoot himself, but the weapon fails to fire. The guests dispute whether the failure was deliberate, leaving Ippolit alive and humiliated in the face of the pity he rejects.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aglaya's family increasingly treats her attachment to Myshkin as a possible engagement, though neither she nor the prince can state a stable understanding of what they want. Myshkin loves Aglaya, but his enduring compassion for Nastasya is inseparable from dread that she will be destroyed. At a formal gathering intended to introduce him to influential society, he becomes overexcited, breaks a valuable vase he had been warned about, launches into an earnest speech, and suffers another seizure. The Yepanchins are embarrassed, yet Aglaya continues to seek clarity from him. Nastasya's presence makes that impossible. Aglaya finally decides to meet her directly, hoping to force a choice and to determine whether Myshkin's bond with Nastasya is love, pity, or a form of mutual idealization. Every participant approaches the confrontation with a different hope, and Myshkin lacks the emotional boundaries needed to protect either woman from the other.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aglaya confronts Nastasya, but their conversation turns cruel as each attacks the other's claim upon Myshkin. When Nastasya breaks down, Myshkin instinctively goes to her. Aglaya leaves, and the possibility of their marriage collapses. Myshkin now prepares to marry Nastasya, who briefly believes his devotion may make a new life possible. At the wedding itself she panics and runs to Rogozhin, who takes her away. Myshkin tracks them to Petersburg and finds Rogozhin in his house beside Nastasya's murdered body. Rogozhin has killed the woman he could neither trust nor release. Myshkin remains with him through the night, responding to horror with helpless tenderness until his own reason collapses. Rogozhin is convicted and sent to Siberian hard labor. Myshkin returns to the Swiss clinic with little prospect of recovery. Ippolit dies, and the Yepanchins travel abroad, where Aglaya falls under the influence of a deceptive Polish émigré and becomes estranged from her family. Myshkin's radical compassion has exposed the people around him but has not saved Nastasya, Rogozhin, Aglaya, or himself.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-idiot-tantor"
+      }
+    },
     "the-importance-of-being-earnest": {
       "characters": {
         "characters": [

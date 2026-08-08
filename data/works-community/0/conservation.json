@@ -3266,6 +3266,241 @@
         "work": "crime-and-punishment"
       }
     },
+    "crime-and-punishment-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Rodya",
+              "Rodion Romanovich"
+            ],
+            "description": "An impoverished former student living in a cramped St. Petersburg room. Proud, isolated, and feverishly preoccupied with a secret plan, he begins the novel rehearsing a visit to a pawnbroker while wavering between disgust and determination.",
+            "id": "rodion-raskolnikov",
+            "name": "Rodion Raskolnikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Pawnbroker"
+            ],
+            "description": "An elderly pawnbroker who lends Raskolnikov small sums against his few possessions. Suspicious and exacting in business, she lives in a carefully secured apartment that Raskolnikov visits while covertly studying its layout and routines.",
+            "id": "alyona-ivanovna",
+            "name": "Alyona Ivanovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dismissed government clerk whom Raskolnikov meets in a tavern. Talkative, self-accusing, and unable to stop drinking, he has consumed money desperately needed by his sick wife and children and relates the suffering his failures have imposed on the family.",
+            "id": "semyon-marmeladov",
+            "name": "Semyon Marmeladov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marmeladov's consumptive wife, educated beyond her present circumstances and struggling to maintain dignity in a crowded, impoverished household. Illness, hunger, and her husband's drinking leave her volatile, but her anger is bound to an increasingly desperate effort to protect the children.",
+            "id": "katerina-ivanovna",
+            "name": "Katerina Ivanovna",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sonya",
+              "Sofya Semyonovna"
+            ],
+            "description": "Marmeladov's quiet eldest daughter. Driven by the family's hunger to earn money through sex work, she lives apart because of the social stigma but continues to support her father, stepmother, and younger siblings.",
+            "id": "sofya-marmeladova",
+            "name": "Sofya Marmeladova",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pulkheria Alexandrovna"
+            ],
+            "description": "Raskolnikov's widowed mother, introduced through an affectionate letter filled with family news and hopes for his future. She has little money but places intense faith in her son and plans to come to St. Petersburg with his sister.",
+            "id": "pulcheria-raskolnikova",
+            "name": "Pulcheria Raskolnikova",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dunya",
+              "Avdotya Romanovna"
+            ],
+            "description": "Raskolnikov's intelligent and resolute sister. After enduring damaging rumors while employed as a governess, she accepts a marriage proposal from Pyotr Luzhin, believing the practical match may also allow her to help her mother and brother.",
+            "id": "avdotya-raskolnikova",
+            "name": "Avdotya Raskolnikova",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pyotr Petrovich"
+            ],
+            "description": "Dunya's financially secure fiancé, a lawyer and businessman preparing to establish himself in St. Petersburg. He presents the marriage as a respectable opportunity and values the gratitude he expects from a wife with fewer resources than himself.",
+            "id": "pyotr-luzhin",
+            "name": "Pyotr Luzhin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant in Raskolnikov's lodging house who brings him food and watches over him during his periods of illness. Practical, amused by his strange behavior, and more compassionate than her teasing manner first suggests, she provides much of his limited contact with ordinary domestic life.",
+            "id": "nastasya",
+            "name": "Nastasya",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dmitri Prokofych"
+            ],
+            "description": "Raskolnikov's former university friend, energetic, sociable, and capable of living on very little through translation and other work. When Raskolnikov approaches him in a confused state, Razumikhin responds with practical help rather than resentment at their long separation.",
+            "id": "dmitri-razumikhin",
+            "name": "Dmitri Razumikhin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young doctor and friend of Razumikhin who attends Raskolnikov during his fever. He treats the illness as both physical and nervous, observing the patient's agitation with professional concern.",
+            "id": "zosimov",
+            "name": "Zosimov",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A police clerk who first sees Raskolnikov at the station after a summons concerning his landlady's debt. Curious and self-important, he later becomes the audience for Raskolnikov's reckless conversation about the pawnbroker's murder.",
+            "id": "alexander-zametov",
+            "name": "Alexander Zametov",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Porfiry Petrovich"
+            ],
+            "description": "The examining magistrate responsible for investigating the pawnbroker's murder and a relative of Razumikhin. Informal and conversational in manner, he is interested in Raskolnikov's published argument about whether extraordinary people may cross ordinary moral and legal boundaries.",
+            "id": "porfiry-petrovich",
+            "name": "Porfiry Petrovich",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Arkady Ivanovich"
+            ],
+            "description": "The landowner in whose household Dunya served as a governess. While married, he pursued her and allowed damaging rumors about her conduct to spread until evidence of her innocence was made public. He is presented in the family's early account as persistent and morally dangerous.",
+            "id": "arkady-svidrigailov",
+            "name": "Arkady Svidrigailov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Raskolnikov goes to the police and confesses that he murdered Alyona Ivanovna and Lizaveta. He is sentenced to eight years of penal servitude in Siberia, with his illness, confused mental state, voluntary confession, and acts of generosity counting in his favor. Dunya marries Razumikhin, who plans for them eventually to settle near him. Their mother dies after retreating into fantasies about her son's future. Sonya follows Raskolnikov to Siberia and wins the affection of the prisoners, though he initially remains emotionally remote and still regards his crime mainly as a failed test of his own strength. After illness and a disturbing dream of a worldwide plague of absolute certainty, he recognizes his love for Sonya and accepts hers. He takes up the New Testament she has given him. The novel closes at the beginning rather than the completion of his moral renewal, with years of punishment still ahead but genuine connection and transformation finally possible.",
+        "in_short": "Rodion Raskolnikov, an impoverished former student in St. Petersburg, convinces himself that an extraordinary person may cross moral limits for a higher purpose. He murders the pawnbroker Alyona Ivanovna and unexpectedly kills her sister Lizaveta, but gains nothing useful and falls into fever, fear, and isolation. The investigating magistrate Porfiry steadily presses him while his loyal friend Razumikhin supports his mother and sister. Raskolnikov is drawn to Sonya Marmeladova, a young woman driven into sex work to feed her family, and finally confesses the murders to her. Meanwhile Dunya escapes the control of her calculating fiancé Luzhin and the dangerous Svidrigailov; Luzhin is exposed and Svidrigailov kills himself after releasing Dunya. Urged by Sonya, Raskolnikov confesses to the police and is sent to Siberia. Sonya follows. His pride survives punishment at first, but illness and her steadfast love begin a spiritual renewal that the ending presents as only just underway.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rodion Raskolnikov, an impoverished former student in St. Petersburg, visits the pawnbroker Alyona Ivanovna under the pretense of pledging a watch while studying her apartment and habits. In a tavern he meets the drunken clerk Marmeladov, who describes how his failures have reduced his sick wife Katerina and their children to hunger and driven his daughter Sonya into sex work. Raskolnikov escorts him home and secretly leaves money. A letter from his mother explains that his sister Dunya has survived a scandal involving her employer Svidrigailov and is now engaged to the prosperous Luzhin. Raskolnikov suspects she is sacrificing herself for the family. Tormented by poverty, pride, and his theory that exceptional people may violate ordinary law, he prepares to kill Alyona. He murders her with an axe, then also kills her gentle sister Lizaveta when she unexpectedly enters. Interrupted by visitors outside the door, he narrowly escapes with a few stolen objects, leaving much of the pawnbroker's wealth untouched.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the murders, Raskolnikov hides the stolen objects without examining them and sinks into fever and confusion. A police summons turns out to concern a debt to his landlady, but he faints after overhearing officers discuss the killings. His former university friend Razumikhin finds him and brings food, work, and medical help, while the servant Nastasya and the doctor Zosimov attend him. News of the investigation intensifies his fear: innocent painters who were working in the building have drawn suspicion, and police clerk Zametov watches Raskolnikov's strange reactions. Luzhin visits and presents views about self-interest that provoke Raskolnikov into driving him away. Once able to leave his room, Raskolnikov meets Zametov in a tavern and recklessly explains how a clever murderer might have hidden the loot, almost confessing in the form of a taunt. He returns to the pawnbroker's building, asks workers about the blood, and invites suspicion. His behavior increasingly suggests that he is torn between concealment, self-punishment, and a desire to be discovered.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raskolnikov finds Marmeladov mortally injured beneath a carriage and helps carry him home. Sonya arrives in time for her father to die, and Raskolnikov gives Katerina nearly all the money his mother has sent him. The act briefly restores his sense of connection. His mother Pulcheria and sister Dunya reach St. Petersburg, but he reacts to them with agitation and insists Dunya break her engagement to Luzhin. Razumikhin becomes their dependable guide and is immediately drawn to Dunya. Sonya visits to invite Raskolnikov to Marmeladov's funeral, bringing his family and the Marmeladovs into uneasy contact. Seeking information about the pledged objects he left with Alyona, Raskolnikov asks Razumikhin to introduce him to Porfiry Petrovich, the investigating magistrate. Porfiry questions him about an article in which he argued that extraordinary individuals may sometimes have the right to transgress the law for a greater end. Raskolnikov senses a psychological trap. Afterward, a stranger in the street calls him a murderer, deepening his panic and forcing him to confront the weakness beneath his grand theory.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Svidrigailov, Dunya's recently widowed former employer, visits Raskolnikov and offers money if Dunya will abandon Luzhin, while insisting that his own intentions are harmless. At a tense family meeting, Luzhin demands that Dunya choose between him and her brother. His controlling behavior and distortions are exposed, and Dunya ends the engagement. Raskolnikov then distances himself even from his mother and sister, leaving Razumikhin to care for them. He visits Sonya and challenges her faith in the face of her family's misery. She reads the account of Lazarus being raised, and Raskolnikov tells her that he will soon reveal who killed Lizaveta. At a second interview, Porfiry presses him through insinuation and apparent knowledge, but the painter Nikolai suddenly enters and confesses to the murders. The interruption prevents an immediate confrontation. A man who had accused Raskolnikov then apologizes, explaining that he overheard the exchange at the pawnbroker's building. Though temporarily relieved, Raskolnikov knows Porfiry's suspicion has not disappeared.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Luzhin tries to restore his reputation by secretly placing money in Sonya's pocket and then publicly accusing her of theft at Katerina's memorial meal. His roommate Lebezyatnikov witnessed the act and exposes the scheme, while Raskolnikov explains Luzhin's motive. Afterward Raskolnikov tells Sonya that he killed Alyona and Lizaveta. He struggles to explain why: money was only a pretext, and the crime was meant to prove that he could step beyond ordinary moral limits. Sonya responds with horror and compassion, urges him to confess publicly, and promises not to abandon him. Unknown to them, Svidrigailov listens from the neighboring room. Katerina, evicted and mentally unraveling, takes her children into the street to perform for money. She collapses from her illness and dies in Sonya's room. Svidrigailov announces that he will pay for the funeral and provide for the children, and reveals to Raskolnikov that he knows the confession. Raskolnikov is now caught between Porfiry's suspicion, Sonya's demand for repentance, and Svidrigailov's dangerous knowledge.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Porfiry visits Raskolnikov privately and states that he knows Raskolnikov is the murderer, despite Nikolai's false confession. He has not yet arrested him, instead urging him to confess and accept suffering before the evidence becomes decisive. Raskolnikov seeks out Svidrigailov, fearing what he may do to Dunya. Svidrigailov describes his morally empty life and his continued desire for her, then uses his knowledge of Raskolnikov's secret to lure Dunya to a locked room. He offers to save her brother if she will yield to him. Dunya produces a revolver and fires, grazing him, but cannot bring herself to kill him. When Svidrigailov realizes she will never love him, he unlocks the door and lets her go. Her refusal leaves him without the future he had imagined. Raskolnikov remains unaware of the exact confrontation, while the paths of the two men—one still wavering before confession, the other facing the collapse of his last attachment—move toward separate decisions.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Svidrigailov distributes money to Sonya, Dunya, and others, spends a night troubled by dreams and visions, then shoots himself. Raskolnikov says farewell to his mother and Dunya without fully explaining himself. Sonya gives him a cross and urges him to acknowledge the murder openly. He goes to the police station, briefly leaves after hearing of Svidrigailov's death, then returns and confesses that he killed Alyona and Lizaveta. The court sentences him to eight years of penal servitude in Siberia, taking account of his confession, illness, and earlier generosity. Dunya marries Razumikhin; Pulcheria retreats into fantasies about her son's absence and dies. Sonya settles near the prison and visits faithfully. Raskolnikov initially remains proud and emotionally isolated, regretting his failure more than his crime. After an illness and a nightmare of a plague that makes everyone certain of possessing the truth, he finally recognizes his love for Sonya and accepts hers. He takes up her New Testament. His sentence continues, but the novel ends with the beginning of a moral and spiritual renewal.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment-amazonclassics-edition"
+      }
+    },
     "crime-and-punishment-audio-connoisseur-edition": {
       "characters": {
         "characters": [
@@ -3485,6 +3720,211 @@
           }
         ],
         "work": "crime-and-punishment-audio-connoisseur-edition"
+      }
+    },
+    "crime-and-punishment-fyodor-dostoyevsky": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Rodya",
+              "Rodion Romanovich"
+            ],
+            "description": "An impoverished former student living in a cramped St Petersburg room. Proud, isolated, and feverishly preoccupied with an idea he has not fully admitted even to himself, he has stopped supporting himself through lessons and avoids his landlady because he owes rent.",
+            "id": "rodion-raskolnikov",
+            "name": "Rodion Raskolnikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Pawnbroker"
+            ],
+            "description": "An elderly pawnbroker from whom Raskolnikov has borrowed money against small valuables. Suspicious and exacting in business, she lives with her younger half-sister Lizaveta.",
+            "id": "alyona-ivanovna",
+            "name": "Alyona Ivanovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A disgraced former government clerk whom Raskolnikov meets in a tavern. Talkative and already drunk, he describes how his alcoholism has impoverished his family and openly recognizes the suffering he causes without being able to stop.",
+            "id": "semyon-marmeladov",
+            "name": "Semyon Marmeladov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sonia",
+              "Sofya Semyonovna"
+            ],
+            "description": "Marmeladov's quiet eldest daughter. Poverty has driven her into registered sex work so that she can bring money to her father's household, a sacrifice he recounts with shame.",
+            "id": "sofya-marmeladova",
+            "name": "Sofya Marmeladova",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marmeladov's proud, ill, and desperate wife. Born into a more secure social position, she tries to preserve standards of cleanliness and respectability while caring for three children in severe poverty.",
+            "id": "katerina-ivanovna",
+            "name": "Katerina Ivanovna",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dunya",
+              "Avdotya Romanovna"
+            ],
+            "description": "Raskolnikov's intelligent and resolute younger sister. After leaving a difficult position as a governess, she becomes engaged to Pyotr Luzhin in hopes of securing a stable future and helping her family.",
+            "id": "avdotya-raskolnikova",
+            "name": "Avdotya Raskolnikova",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raskolnikov's devoted mother, who writes to him with family news and places great hope in his abilities. Her limited income and concern for both children make Dunya's coming marriage seem especially consequential.",
+            "id": "pulcheria-alexandrovna",
+            "name": "Pulcheria Alexandrovna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dunya's newly accepted fiancé, a self-made lawyer who presents marriage as practical mutual advancement. His preference for a poor bride who will feel indebted to him immediately alarms Raskolnikov.",
+            "id": "pyotr-luzhin",
+            "name": "Pyotr Luzhin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A landowner in whose household Dunya worked as a governess. His pursuit of her caused scandal and forced her to leave, although evidence later cleared her of encouraging him.",
+            "id": "arkady-svidrigailov",
+            "name": "Arkady Svidrigailov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dmitri Prokofych"
+            ],
+            "description": "Raskolnikov's energetic former university friend. Sociable, generous, and willing to find work despite his own poverty, he begins caring for Raskolnikov during the latter's feverish illness.",
+            "id": "dmitri-razumikhin",
+            "name": "Dmitri Razumikhin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police clerk who takes an interest in Raskolnikov during the investigation of the pawnbroker's death. Casual and somewhat vain in manner, he frequents a tavern where Raskolnikov draws him into a dangerous conversation about the crime.",
+            "id": "alexander-zamyotov",
+            "name": "Alexander Zamyotov",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The examining magistrate responsible for investigating the pawnbroker's murder. Informal, humorous, and psychologically observant, he discusses Raskolnikov's published theory about exceptional people while quietly testing his reactions.",
+            "id": "porfiry-petrovich",
+            "name": "Porfiry Petrovich",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment-fyodor-dostoyevsky"
+      },
+      "recaps": {
+        "ending": "Raskolnikov confesses to the police and is sentenced to eight years of penal servitude in Siberia. Sonia follows him and maintains contact despite his initial coldness. Dunya marries Razumikhin, who plans for them eventually to move nearer to Raskolnikov, while Pulcheria dies after an illness shaped by confused hopes for her son's future. In prison Raskolnikov still regards his crime chiefly as a failed test of his own strength and remains apart from the other convicts. After illness and a disturbing dream of a worldwide plague of certainty, his attitude begins to change. He recognizes his love for Sonia and accepts her devotion, and she understands that the emotional barrier between them has broken. The novel closes at the beginning of his moral renewal rather than its completion: nearly seven years of his sentence remain, but confession and punishment have opened the possibility of a different life.",
+        "in_short": "Impoverished former student Rodion Raskolnikov develops a theory that exceptional people may cross moral boundaries for a higher purpose. He murders a pawnbroker and, when her sister unexpectedly appears, kills her as well, but gains almost nothing and falls into fever, fear, and isolation. The magistrate Porfiry gradually presses him through psychological suspicion. Meanwhile Raskolnikov becomes close to Sonia, a young woman driven into sex work to support her family, and clashes with the controlling Luzhin and the dangerous Svidrigailov over his sister Dunya. He eventually admits the murders to Sonia. After Svidrigailov fails to win Dunya and kills himself, Raskolnikov confesses publicly and to the police. Sentenced to Siberia, he initially remains proud and emotionally detached. Sonia follows him, and after illness he finally acknowledges his love for her. Punishment does not itself resolve his ideas, but the ending presents their relationship as the beginning of repentance and renewal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rodion Raskolnikov, an impoverished former student in St Petersburg, visits the pawnbroker Alyona Ivanovna while secretly rehearsing a violent plan. In a tavern he hears the ruined clerk Marmeladov describe his family's poverty and the sacrifice of his daughter Sonia. A letter from Raskolnikov's mother reports that his sister Dunya has accepted Pyotr Luzhin, a prosperous man whose desire for an indebted wife angers him. Chance information tells Raskolnikov when Alyona will be alone. After hesitation and a childhood dream about cruelty, he takes an axe to her flat and kills her. Her gentle half-sister Lizaveta returns unexpectedly, and he kills her too. Disturbed visitors nearly discover him, but he escapes without being seen, carrying a few stolen pledges he has barely examined.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The morning after the murders, Raskolnikov is summoned to a police office over an unpaid debt and nearly collapses when officers discuss the killings. He hides the stolen objects under a stone rather than profiting from them, then falls into a prolonged fever. His friend Razumikhin nurses him and tries to restore his connection to ordinary life. Luzhin visits and quarrels with him over the planned marriage to Dunya. In a tavern, Raskolnikov unsettles the police clerk Zamyotov by describing how the murderer might have concealed the loot, then revisits the crime scene. Soon afterward Marmeladov is struck by a carriage. Raskolnikov helps carry him home, where he dies before Katerina Ivanovna and the children. Raskolnikov gives the destitute family his remaining money and returns home to find his mother and Dunya waiting.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raskolnikov's family is alarmed by his illness and hostility, while Razumikhin quickly becomes their practical protector. Sonia visits to invite Raskolnikov to Marmeladov's funeral. He then accompanies Razumikhin to see Porfiry Petrovich, the magistrate investigating the murders. Porfiry raises an article in which Raskolnikov argued that rare, historically important people may be entitled to break laws when pursuing a larger purpose. Their apparently casual discussion becomes a psychological test, and Raskolnikov leaves convinced that Porfiry suspects him. On the street, an unknown man calls him a murderer. Exhausted, Raskolnikov dreams again of Alyona, then wakes to find Arkady Svidrigailov, the former employer who pursued Dunya, sitting in his room.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Svidrigailov says his wife has died and offers Dunya money if she abandons Luzhin. Raskolnikov refuses to assist him. At a meeting demanded by Luzhin, Dunya recognizes his controlling behavior and ends their engagement; Razumikhin begins imagining a shared future with the family. Raskolnikov nevertheless withdraws from them and turns toward Sonia. In her room he challenges her religious faith and asks her to read the raising of Lazarus, while promising to tell her who killed Lizaveta. Porfiry subjects him to a second, more aggressive interview and suggests that the criminal will eventually come forward through psychological necessity. Just as the pressure peaks, Nikolai, a workman previously questioned in the case, bursts in and confesses, giving Raskolnikov a temporary reprieve without removing Porfiry's suspicion.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Luzhin attempts to discredit Sonia by secretly placing money in her pocket and then accusing her of theft, but his roommate Lebezyatnikov witnessed the act and exposes the scheme. Katerina Ivanovna's grief and illness deepen into a public breakdown; after forcing the children to perform in the street, she collapses and dies in Sonia's room. Raskolnikov keeps his promise to Sonia and confesses that he murdered Alyona and Lizaveta. He tries to explain the act through poverty, ambition, and his theory that a person like Napoleon may step over others, but admits that he was chiefly testing whether he himself dared to cross the boundary. Sonia urges him to accept suffering and make a public confession. Unknown to them, Svidrigailov has overheard the confession from the adjoining room.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Porfiry visits Raskolnikov privately and states that he knows Raskolnikov committed the murders, though he lacks decisive evidence. He urges a voluntary confession and predicts that suffering may restore him. Svidrigailov uses what he overheard to bring Dunya to his rooms and tries to coerce her into accepting him in exchange for helping her brother. She fires a pistol at him but cannot kill him; when he understands that she will never love him, he lets her go. After arranging money for Sonia and the Marmeladov children, Svidrigailov spends a night troubled by dreams and kills himself. Raskolnikov says farewell to his mother without fully explaining, receives a cross from Sonia, and goes to a public square. He kneels and kisses the ground, then enters the police station and confesses to killing Alyona and Lizaveta.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At trial, Raskolnikov's confession, illness, previous acts of generosity, and failure to use the stolen goods help reduce his sentence to eight years in Siberia. Dunya marries Razumikhin; Pulcheria dies while clinging to confused hopes about her son. Sonia settles near the prison and visits Raskolnikov, although he initially treats her and the other convicts with emotional distance. He still sees his deed as an error of execution rather than a moral wrong. During an illness he dreams of an epidemic in which everyone believes himself uniquely certain, reducing the world to conflict. Afterward, meeting Sonia by the river, he finally recognizes that he loves her and accepts her love. Their reconciliation marks the start of a transformation that the novel leaves for the future: his sentence continues, but his defensive theory and isolation have begun to yield.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment-fyodor-dostoyevsky"
       }
     },
     "crime-punishment": {

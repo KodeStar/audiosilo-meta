@@ -3564,6 +3564,143 @@
         "work": "the-emerald-city-of-oz"
       }
     },
+    "the-emperor-jones": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An American former railway porter and escaped prisoner who has made himself emperor of a Caribbean island. Intelligent, theatrical, and ruthless, he has enriched himself through taxes while controlling the islanders with fear and a story that only a silver bullet can kill him. He keeps such a bullet for himself and has prepared an escape route through the forest.",
+            "id": "brutus-jones",
+            "name": "Brutus Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A white English trader who conducts business on the island and speaks to Jones with a mixture of contempt, familiarity, and fascination. He brings news that the people have deserted the town and that an uprising has begun.",
+            "id": "henry-smithers",
+            "name": "Henry Smithers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The islander leading the revolt against Jones. Before Jones enters the forest, Smithers reports that Lem has gathered armed followers and is directing the pursuit.",
+            "id": "lem",
+            "name": "Lem",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A man from Jones's American past who appears in the forest as a silent apparition, crouched over a game of dice. Jones recognizes him as the man he killed during a gambling dispute.",
+            "id": "jeff",
+            "name": "Jeff",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An apparition of the prison official Jones attacked during his escape from a chain gang. He appears with the guards who oversee the spectral prisoners laboring in the forest.",
+            "id": "prison-guard",
+            "name": "Prison Guard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A silent figure in the forest vision of an American slave market. He displays Jones to unseen buyers and calls for bids, placing Jones within an ordeal inherited from generations before his own life.",
+            "id": "auctioneer",
+            "name": "Auctioneer",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy-looking buyer in Jones's slave-auction vision. He examines Jones as property and bids for him while the surrounding crowd remains unseen.",
+            "id": "planter",
+            "name": "Planter",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ritual figure who emerges in Jones's deepest forest vision. His dance summons a vast crocodile-shaped presence and casts Jones as an offering, confronting the fugitive with a terror older than his personal memories.",
+            "id": "witch-doctor",
+            "name": "Witch Doctor",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-emperor-jones"
+      },
+      "recaps": {
+        "ending": "After spending the night moving in circles through the forest, Jones reaches the edge near the point where he entered it. His revolver is empty: successive visions forced him to fire every ordinary round and finally the silver bullet he had reserved for himself. At dawn Lem and his soldiers close in. They have accepted Jones's claim that only silver can kill him strongly enough to melt coins into ammunition, and their gunfire kills him. Lem's men carry the body away. Smithers, who has watched the pursuit, is startled that the apparently superstitious rebels defeated Jones by following the very legend he created to secure his power. The forest escape plan, the hidden supplies, and the mythology that supported his rule all turn against him, and the revolt ends his brief empire.",
+        "in_short": "Brutus Jones, an escaped American prisoner who has installed himself as ruler of a Caribbean island, learns from the trader Smithers that his subjects have revolted. Confident in a planned escape route and in the legend that only a silver bullet can kill him, Jones enters the forest. His hidden supplies are gone, the rebels' drum continues through the night, and fear destroys his sense of direction. He encounters visions that move backward through his own violence and a broader racial past: the man he killed, a chain gang, a slave auction, and a ritual sacrifice before a crocodile god. He fires at each terror until even the silver bullet is gone. At dawn he emerges near where he began. Lem's soldiers, having made silver bullets because they believe Jones's legend, shoot him dead. The invented superstition that helped him rule therefore helps his pursuers destroy him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Brutus Jones rules a small Caribbean island from an almost deserted palace. An American former railway porter, he escaped prison after killing one man in a dice game and attacking a guard, then used confidence, violence, and his knowledge of white colonial methods to seize power. He has taxed the islanders heavily and encouraged a legend that ordinary weapons cannot harm him; only a silver bullet can do so, and he keeps one for use on himself if capture becomes unavoidable. The English trader Henry Smithers arrives with news that the town has emptied and Lem is leading a rebellion. Jones is not surprised. He changes into a uniform chosen for flight and sets out for the forest, where he believes food is hidden along a route to the coast. A distant drum begins as the rebels organize their pursuit.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jones reaches the forest at dusk, still confident that his preparations will keep him ahead of the rebels. He discovers that the food he buried beneath a marked stone has been removed. As darkness deepens, the steady drum accelerates and his composure begins to fail. He cannot find the route he planned and is disturbed by small, shapeless creatures that seem to form around him. He fires his revolver to drive the figures away. The shot gives him momentary relief, but it also spends one of his limited cartridges and shows that terror is already overcoming the careful calculation with which he entered the forest.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lost in the forest, Jones encounters a silent vision of Jeff, the man he killed during a gambling quarrel in the United States. Jeff crouches over dice as though the fatal game were recurring. Jones shoots at him and the apparition vanishes. The next vision places Jones back on a prison chain gang, forced to labor with other convicts while an armed guard oversees them. Jones relives his violent escape and again fires at the figure threatening him. Each shot removes the immediate vision, but the past returns in an earlier and less personal form, while the quickening drum and Jones's discarded clothing mark the collapse of his authority and self-command.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jones's visions move beyond his own memories. He finds himself on an auction block, inspected by a planter and offered for sale by an auctioneer to an unseen crowd. He fires again, breaking the scene but using more ammunition. Deeper in the forest, a witch doctor dances out a ritual in which Jones becomes the intended sacrifice to a huge crocodile-like god. With his ordinary cartridges gone, Jones fires the silver bullet he had saved for himself. The creature disappears, but Jones is now defenseless. He has traveled through images of personal guilt, imprisonment, enslavement, and ritual terror without finding the escape route, and dawn approaches as the rebels close in.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At dawn Smithers waits with Lem and the rebel soldiers at the forest's edge. Jones has unknowingly traveled in a circle and emerges close to where he began, exhausted and without ammunition after firing at the night's apparitions. The pursuers shoot and kill him. Lem explains that his men melted silver coins to make bullets because they believed Jones's assertion that no other kind could harm him. They carry the body away while Smithers reacts with astonished respect for the determination of the hunt. Jones's escape scheme has failed completely: the missing provisions left him vulnerable, fear kept him trapped in the forest, and the supernatural claim he used to intimidate the islanders gave them the means and confidence to end his rule.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-emperor-jones"
+      }
+    },
     "the-emperor-of-nihon-ja": {
       "characters": {
         "characters": [

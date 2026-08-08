@@ -2293,6 +2293,161 @@
         "work": "fahrenheit-451"
       }
     },
+    "fail-safe-eugene-burdick": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A senior Air Force officer and bomber pilot troubled by a recurring dream in which a bullfighter kills a bull before a cheering crowd. He is disciplined, thoughtful, and conscious that the nuclear system he serves may demand an unbearable personal act.",
+            "id": "warren-black",
+            "name": "General Warren Black",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An influential civilian strategist who argues that nuclear conflict can be analyzed rationally and, under some conditions, survived or even won. Brilliant and emotionally detached, he presses political and military leaders to think beyond conventional moral limits.",
+            "id": "professor-groeteschele",
+            "name": "Professor Groeteschele",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commanding general at Strategic Air Command headquarters in Omaha. Responsible for the bombers, tracking systems, and communications at the center of the crisis, he must improvise when rigid safeguards produce an event their designers believed impossible.",
+            "id": "general-bogan",
+            "name": "General Bogan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Air Force colonel serving in the Omaha command center. Aggressive and deeply suspicious of the Soviet Union, he interprets the emergency through his conviction that hesitation may allow an enemy victory.",
+            "id": "colonel-cascio",
+            "name": "Colonel Cascio",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of a Vindicator bomber group sent toward its designated fail-safe point during an alert. His training requires him to accept only properly authenticated orders once an attack code is received, protecting the mission from enemy deception but sharply limiting human intervention.",
+            "id": "jack-grady",
+            "name": "Colonel Jack Grady",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed American president, forced to manage an accidental nuclear attack through secure telephone links rather than direct control of the aircraft. Calm and decisive, he treats preventing a full war as his responsibility even when every available choice carries enormous loss.",
+            "id": "the-president",
+            "name": "The President",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young presidential aide with fluent Russian who serves as interpreter on the emergency line to Moscow. He must convey not only literal statements but tone and intent while the two governments decide whether they can trust one another.",
+            "id": "peter-buck",
+            "name": "Peter Buck",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Soviet government, reached by the American president after the bomber group crosses its fail-safe boundary. He must judge whether the claim of an accident is genuine while preparing to defend his country and contain pressure for retaliation.",
+            "id": "soviet-premier",
+            "name": "The Soviet Premier",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Soviet officer directing the air defense of Moscow. Through the emergency contact between governments, he works with information supplied by the Americans while committing Soviet interceptors and missiles against the approaching bombers.",
+            "id": "marshal-nevsky",
+            "name": "Marshal Nevsky",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Black's wife, living in New York with their children. Her presence there gives Black an immediate family stake in decisions that national leaders discuss in terms of cities, deterrence, and strategic balance.",
+            "id": "betty-black",
+            "name": "Betty Black",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "fail-safe-eugene-burdick"
+      },
+      "recaps": {
+        "ending": "The joint American-Soviet effort destroys most of the accidental attack force, but Grady's surviving bomber reaches Moscow and releases its weapons. The Soviet capital is annihilated. To convince the Soviet Premier that the strike truly was an accident and remove the strategic advantage created by Moscow's destruction, the President carries out the guarantee he offered earlier: the United States will destroy one of its own comparable cities. He chooses New York and orders General Warren Black to make the attack. Black obeys despite knowing that his wife and children are in the city. After dropping the bombs, he takes poison, and the recurring bullfight image that has haunted him finally becomes clear as an image of his own role and death. New York is destroyed along with Moscow. The exchange prevents immediate escalation into a general nuclear war, but only through the deliberate sacrifice of millions of Americans to restore a balance both governments can accept. The President and Premier remain in contact, left to contain the consequences of a catastrophe produced not by an intentional first strike but by automation, doctrine, and systems too rigid to recall the people carrying out their orders.",
+        "in_short": "A technical failure sends Colonel Jack Grady's nuclear bomber group beyond its fail-safe point with an authenticated order to attack Moscow. Jamming and strict security procedures make the crews reject every recall as possible Soviet deception. President of the United States tells the Soviet Premier the truth, shares flight information, and helps Soviet defenses attack the American planes. At Strategic Air Command, General Bogan struggles to regain control while Colonel Cascio tries to force a more aggressive response. Most bombers are stopped, but Grady reaches Moscow and destroys it. To prove the attack was accidental and prevent all-out retaliation, the President honors a terrible pledge: General Warren Black bombs New York, where Black's own family lives, creating an equivalent American loss. Black then kills himself. Moscow and New York are gone, and a wider nuclear exchange is avoided, exposing how machinery, inflexible orders, and deterrence logic can turn a small error into mass destruction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "American nuclear forces operate under procedures designed to respond instantly to a Soviet attack and to resist false orders. General Warren Black, an Air Force officer haunted by a recurring bullfight dream, and Professor Groeteschele, a civilian theorist confident that nuclear war can be treated as a strategic calculation, represent different responses to that system. At Strategic Air Command in Omaha, General Bogan supervises an alert triggered by an unidentified aircraft. Colonel Jack Grady's group of Vindicator bombers moves to its fail-safe point, where it should circle until recalled or properly ordered forward. A technical malfunction transmits the authenticated attack instruction. The bombers turn toward Moscow even though no Soviet first strike has occurred.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bogan's command recognizes that Grady's group has crossed the fail-safe boundary by mistake. Attempts to recall it fail because Soviet jamming blocks communications and because the crews are trained to distrust voice commands once they possess a valid attack code. The President moves to secure communications with Omaha and Moscow, assisted by the Russian-speaking Peter Buck. He informs the Soviet Premier that the approaching aircraft are American and that their mission is accidental. The admission risks exposing American capabilities and could itself be interpreted as deception, but secrecy would make Soviet retaliation almost certain. Groeteschele argues that the accident could be exploited rather than stopped, while the President commits himself to cooperation.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The President gives the Soviets detailed information about the bombers' route, equipment, and defensive methods so that Marshal Nevsky can improve Moscow's chances of stopping them. American fighters are sent after Grady's formation, but range and fuel limits prevent them from providing a reliable solution. The President speaks directly to Grady when contact briefly becomes possible, yet Grady follows his standing orders and treats the unauthenticated recall as a potential enemy trick. Soviet interceptors and missiles engage the bombers while their electronic defenses create false targets and confusion. Several aircraft are destroyed, but the formation continues. Each protective layer works according to its design while making the central mistake harder to reverse.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pressure rises in the Omaha command center as the surviving bombers approach Moscow. Colonel Cascio, convinced that the Soviets are using the incident to weaken the United States, tries to seize control and force a more aggressive course. Bogan and the other officers stop him, preserving civilian authority and the effort to limit the attack. The President offers the Soviet Premier a concrete guarantee of American good faith: if Moscow is destroyed, he will order the destruction of New York as an equivalent loss. General Black is assigned the possible mission. Because his wife and children are in New York, the pledge turns an abstract balance of cities into a direct command to sacrifice his own family. Soviet defenses eliminate more of Grady's group, but at least one bomber remains capable of reaching the target.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Colonel Grady's surviving bomber penetrates the Soviet defenses and destroys Moscow. The President immediately fulfills the condition he set to prevent the Soviet Union from answering with a general attack. He orders General Warren Black to bomb New York, sacrificing an American city to demonstrate that Moscow's destruction was accidental and to erase any strategic gain. Black carries out the order although his wife and children are among those below. He then takes poison, and his recurring vision of a bullfight resolves into an understanding of his own part in the sacrifice. New York and Moscow are both destroyed, while the President and Soviet Premier remain in contact and avert a wider exchange. The immediate war is prevented, but millions die because a mistaken signal became irreversible once joined to automated warning, rigid authentication rules, and nuclear deterrence doctrine.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "fail-safe-eugene-burdick"
+      }
+    },
     "fairest": {
       "characters": {
         "characters": [

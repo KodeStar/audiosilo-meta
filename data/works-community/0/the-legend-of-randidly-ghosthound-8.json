@@ -3727,6 +3727,239 @@
         "work": "the-little-prince"
       }
     },
+    "the-little-prince-a-little-princess": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An aviator who tells of his childhood fascination with drawing and of the adults who failed to understand it. Years later, a mechanical failure leaves him alone in the Sahara with limited water, where an unexpected young visitor asks him to draw a sheep.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A grave, persistent child who appears in the desert and asks the stranded aviator for a drawing of a sheep. He seems unconcerned by the emptiness around them and answers few direct questions, but his own remarks gradually suggest that he has come from somewhere very far away.",
+            "id": "the-little-prince",
+            "name": "The Little Prince",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A beautiful and demanding flower who grows on the little prince's tiny home. She is proud of her appearance, asks for careful protection, and disguises her vulnerability behind contradictory claims that leave her devoted gardener unsure how to understand her.",
+            "id": "the-rose",
+            "name": "The Rose",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The solitary ruler of the first small planet the little prince visits. Delighted to have a subject, he issues commands only when circumstances make obedience likely and insists that his authority extends over everything he can see.",
+            "id": "the-king",
+            "name": "The King",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A slender desert snake who speaks in riddles when the little prince reaches Earth. He claims that his bite can return even a powerful traveler to the place from which that traveler came.",
+            "id": "the-snake",
+            "name": "The Snake",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wild animal who asks the little prince to form a bond with him gradually, through patience and repeated meetings. He explains that such a bond makes two otherwise ordinary beings unique to one another and brings responsibility as well as happiness.",
+            "id": "the-fox",
+            "name": "The Fox",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clever, imaginative girl brought from India to Miss Minchin's London school by her affectionate father. Accustomed to comfort but more interested in stories and make-believe than display, Sara treats the poorer children and servants with the same courtesy she gives her classmates.",
+            "id": "sara-crewe",
+            "name": "Sara Crewe",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ralph Crewe"
+            ],
+            "description": "Sara's young widowed father, an army officer who has raised her in India and is deeply attached to her. He brings her to school in London because he believes the climate and education will be better for her, sparing no expense for her comfort before their painful separation.",
+            "id": "captain-crewe",
+            "name": "Captain Crewe",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of the London boarding school to which Captain Crewe entrusts Sara. She flatters wealthy parents and makes Sara the school's prized pupil, but her deference is commercial rather than affectionate, and she privately resents the child's composure and independence.",
+            "id": "miss-minchin",
+            "name": "Miss Minchin",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The school's oldest pupil and its acknowledged social leader. Jealous of the attention Sara receives, she treats the younger girl's accomplishments and popularity as threats to her own standing.",
+            "id": "lavinia-herbert",
+            "name": "Lavinia Herbert",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A timid, struggling pupil who finds lessons difficult and is frequently mocked for it. Sara's willingness to help without humiliating her quickly wins her trust and loyalty.",
+            "id": "ermengarde-st-john",
+            "name": "Ermengarde St. John",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A very young pupil who has lost her mother and responds to distress with loud tantrums. Sara calms her by appealing to her imagination, after which Lottie attaches herself to Sara as an adopted older sister.",
+            "id": "lottie-legh",
+            "name": "Lottie Legh",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An underfed scullery maid at Miss Minchin's school, worked hard and treated as beneath notice. Sara discovers her resting in the nursery and offers kindness instead of punishment, beginning a friendship across the rigid boundary between pupil and servant.",
+            "id": "becky",
+            "name": "Becky",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sick and troubled man newly arrived in the house beside the school. After a long search abroad, he has come to London burdened by guilt over a business venture with a dead friend and by his failure to find that friend's missing daughter.",
+            "id": "mr-carrisford",
+            "name": "Mr. Carrisford",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Carrisford's solicitor and trusted friend, whose lively family Sara can see from the school attic. He continues the search for Captain Crewe's daughter while managing the practical affairs surrounding Carrisford's recovered fortune.",
+            "id": "mr-carmichael",
+            "name": "Mr. Carmichael",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Carrisford's Indian servant, observant, agile, and curious about the poorly dressed girl living in the neighboring attic. From the roof and windows he can see conditions that are hidden from the comfortable rooms below.",
+            "id": "ram-dass",
+            "name": "Ram Dass",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-little-prince-a-little-princess"
+      },
+      "recaps": {
+        "ending": "After the little prince submits to the snake's bite, the aviator finds no body and concludes that his friend has returned to his asteroid and the rose he loves. The aviator repairs his aircraft and survives, but remains uncertain whether the sheep has eaten the rose; that unanswered possibility changes how he hears the stars. In the second story, Sara crosses into Mr. Carrisford's house while retrieving his escaped monkey. Carrisford and Carmichael realize that she is Captain Crewe's missing daughter, whose fortune has survived and greatly increased. Sara leaves Miss Minchin's control, takes Becky with her, and makes a home with Carrisford. Miss Minchin cannot persuade Sara to return, while the school learns that the servant it scorned is an heiress. Remembering hunger, Sara arranges with a baker to feed needy children. She then encounters the beggar girl Anne working safely in that bakery, confirming that an earlier act of generosity has continued beyond her own rescue.",
+        "in_short": "A pilot stranded in the Sahara meets a little prince who has left his asteroid and a beloved but difficult rose. The child's accounts of lonely adults on tiny planets and his meetings on Earth expose the limits of status, possession, and hurried knowledge. A fox teaches him that patient attachment creates responsibility, and the prince accepts a snake's bite so he can return home; the pilot survives, forever changed by their friendship. The volume then follows Sara Crewe, a wealthy, imaginative pupil at Miss Minchin's school. When her father dies and his fortune seems lost, Miss Minchin turns her into an overworked servant. Sara endures hunger without surrendering her generosity. Her father's remorseful business partner, Mr. Carrisford, unknowingly moves next door and secretly improves her attic. When Sara enters his house to recover a monkey, he discovers that she is the missing heiress he has sought. Her fortune restored, Sara takes Becky into her new home and creates a lasting arrangement to feed hungry children.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An aviator recalls how adults misunderstood the drawings he made as a child, teaching him to hide his imaginative life. Years later, his aircraft fails over the Sahara, leaving him alone with little water and no mechanic. At dawn, a mysterious boy calmly asks him to draw a sheep. The boy rejects several attempts but accepts a drawing of a box said to contain the animal he wants. Through their conversations, the aviator infers that the child comes from a very small planet, probably the asteroid known to astronomers as B-612. The little prince is concerned that a sheep might eat young plants. He explains that baobabs must be removed before they grow large enough to damage his home and that, on his tiny world, moving a chair lets him watch repeated sunsets. His quiet sadness and searching questions begin to draw the stranded adult away from practical worries and into the child's way of seeing.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The little prince describes the flower who appeared on his asteroid. Beautiful, proud, and easily hurt, she demanded his care while concealing her affection behind vanity and inconsistent claims. Too inexperienced to understand her, he cleaned his volcanoes, uprooted the last baobab shoots, and left. His travels take him to a sequence of tiny planets, each occupied by one adult trapped in a narrow idea of importance: a king seeking subjects, a vain man seeking admiration, a drinker ashamed of drinking, and a businessman claiming ownership of the stars by counting them. The little prince then meets a lamplighter who endlessly lights and extinguishes a lamp as his planet turns ever faster. He respects the lamplighter's devotion to something beyond himself, even though the task has become absurd. A geographer records distant places without exploring them and tells him that flowers are temporary. Alarmed for the rose he abandoned, the prince nevertheless follows the geographer's advice and sets out for Earth.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The little prince lands in an empty desert on Earth and meets a snake who speaks of having the power to send travelers back to where they came from. He crosses a harsh landscape, hears only his own words returned by an echo, and climbs a mountain without finding the people he expected. A garden filled with roses then overturns his belief that his own flower is unique, leaving him grief-stricken. A fox asks to be tamed, meaning that the two should patiently create a bond. Through a ritual of regular meetings, they become important to one another. The fox teaches the prince that his rose is unique not because no other rose resembles her, but because of the time and care he has given her. Their friendship also teaches him that loving someone carries an enduring responsibility. He returns to the rose garden able to distinguish appearance from relationship, then says goodbye to the fox with a clearer understanding of what he owes the flower on his asteroid.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The little prince meets a railway switchman who sorts rushing passengers and a merchant who sells pills intended to save the time spent drinking. Back in the desert, the aviator's water is nearly gone. He and the prince walk through the night and find a well whose rope, pulley, and shared effort make its water meaningful. As the aviator finishes repairing his aircraft, he realizes that the anniversary of the prince's arrival on Earth is near. The prince has arranged to meet the snake at the place where he first landed. He explains that his body is too heavy to carry home and asks the aviator not to mistake its apparent death for the end of his journey. The snake bites him, and he falls silently. By morning there is no body. The aviator escapes the desert and, years later, still hears his friend's laughter in the stars. Because he forgot to draw a strap for the sheep's muzzle, he cannot know whether the rose remains safe, leaving the fate of one small flower to transform the meaning of the entire sky.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The volume's second story begins with Captain Crewe bringing his seven-year-old daughter Sara from India to Miss Minchin's London boarding school. His wealth makes her the school's show pupil, but Sara's intelligence, storytelling, and courtesy matter more to her than special rooms or expensive clothes. She befriends Ermengarde, who struggles with lessons, comforts the motherless child Lottie, and secretly welcomes Becky, an exhausted scullery maid, into her room. Lavinia, the oldest pupil, resents Sara's influence. Years pass, and Captain Crewe invests his fortune in diamond mines with an old friend. During an elaborate birthday celebration, a solicitor reports that Crewe has died after the investment seemed to fail, leaving debts and no provision for his daughter. Furious at losing money she expected to receive, Miss Minchin strips Sara of her possessions and moves her into the attic. Rather than send the child away, she keeps her as an unpaid servant expected to teach younger pupils and perform errands.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sara's new life consists of cold rooms, inadequate food, hard errands, and constant orders from Miss Minchin and the cook. Becky remains her friend in the neighboring attic, while Ermengarde and Lottie visit when they can. Sara uses imagination to preserve her dignity, picturing herself as a prisoner or a princess whose conduct does not depend on wealth. A family moves into the house next door with an ill man whom Sara calls the Indian gentleman. He is Mr. Carrisford, Captain Crewe's former business partner. The diamond venture did not fail; Carrisford has returned rich but guilt-ridden, believing his actions contributed to Crewe's death. With his solicitor, Mr. Carmichael, he has been searching for Crewe's daughter, mistakenly following a lead to Russia. Sara knows none of this. She watches the Carmichael children from the attic, while Carrisford's Indian servant Ram Dass notices her through the adjoining roof spaces and becomes aware of the hardship in which she and Becky live.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On a bitter day, Sara finds a coin and uses it to buy buns. Though desperately hungry, she gives most of them to an even hungrier child named Anne. The baker who witnesses the act takes Anne in. Later, Ermengarde brings food from a family hamper to the attic, where Sara turns the meal with Becky into an imagined banquet. Miss Minchin discovers them and ends it, but Ram Dass has seen enough to tell Carrisford. While Sara is away, Ram Dass crosses the roof and transforms the attic with warm bedding, food, books, and a fire. The improvements reappear after each day of labor, making Sara and Becky feel that the magic of their make-believe has become real. Carrisford thinks he is helping an unknown neglected child while his unsuccessful search for Captain Crewe's daughter continues. Sara also returns Carrisford's escaped monkey, but the animal later reaches her attic again, creating another connection between the neighboring houses.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The monkey's second escape brings Sara into Carrisford's house, where casual questions reveal that she is Captain Crewe's daughter and the missing child he has searched for. The supposed loss has become a large fortune, and Carrisford is able to end both her poverty and his guilty uncertainty. Miss Minchin arrives to assert control but has no claim over Sara or her property. Sara refuses to return to the school, though she remains composed toward the woman who mistreated her. She moves into Carrisford's home and brings Becky out of service to live with her. The girls at the school learn that the attic servant was an heiress all along, exposing how entirely Miss Minchin based her treatment on money. Sara does not forget the hunger she experienced. She visits the bakery and funds an arrangement under which hungry children can receive food. There she recognizes Anne, now clean, safe, and working for the baker. Sara's fortunes have reversed, but the ending places its emphasis on the empathy she carried through deprivation and can now extend with lasting practical effect.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-little-prince-a-little-princess"
+      }
+    },
     "the-little-sisters-of-eluria": {
       "characters": {
         "characters": [

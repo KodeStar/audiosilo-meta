@@ -2707,6 +2707,215 @@
         "work": "demon-copperhead"
       }
     },
+    "demons-fyodor-dostoyevsky": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An aging intellectual who has spent many years in Varvara Petrovna's household as her friend, dependent, and former tutor to her son. He thinks of himself as a persecuted liberal thinker, though his provincial circle offers him comfort and admiration.",
+            "id": "stepan-trofimovich-verkhovensky",
+            "name": "Stepan Trofimovich Verkhovensky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy, commanding widow and the mother of Nikolai Stavrogin. She has supported Stepan Trofimovich for years, alternating between protectiveness, control, admiration, and frustration.",
+            "id": "varvara-petrovna-stavrogina",
+            "name": "Varvara Petrovna Stavrogina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Stavrogin"
+            ],
+            "description": "Varvara Petrovna's handsome and enigmatic son, formerly tutored by Stepan Trofimovich. His return to the province follows years of travel and an earlier visit marked by a series of inexplicable public insults.",
+            "id": "nikolai-vsevolodovich-stavrogin",
+            "name": "Nikolai Vsevolodovich Stavrogin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former serf from Varvara Petrovna's estate and once a student influenced by Stepan Trofimovich. Earnest, angry, and searching for a basis for national and religious belief, he has returned from involvement with radical circles abroad.",
+            "id": "ivan-pavlovich-shatov",
+            "name": "Ivan Pavlovich Shatov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dasha"
+            ],
+            "description": "Varvara Petrovna's young companion and Shatov's sister. Quiet, practical, and trusted within the Stavrogin household, she has been the subject of local speculation about Nikolai's past.",
+            "id": "darya-pavlovna-shatova",
+            "name": "Darya Pavlovna Shatova",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Liza"
+            ],
+            "description": "The spirited daughter of Praskovya Drozdova and a young woman with a complicated history of attraction to Stavrogin. Her family returns to the province while questions about marriages and past attachments dominate local society.",
+            "id": "lizaveta-nikolaevna-tushina",
+            "name": "Lizaveta Nikolaevna Tushina",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marya Timofeyevna"
+            ],
+            "description": "Captain Lebyadkin's physically disabled and psychologically vulnerable sister. She lives in neglected conditions and speaks in a visionary, disjointed way about a secret change in her social position.",
+            "id": "marya-lebyadkina",
+            "name": "Marya Lebyadkina",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marya's coarse, frequently drunken brother, a former army captain who mistreats her and seeks money through threats and hints about secrets known to him.",
+            "id": "captain-lebyadkin",
+            "name": "Captain Lebyadkin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Stepan Trofimovich's estranged son, returning from political activity in the capital and abroad. Energetic, familiar, and skilled at learning other people's vulnerabilities, he quickly inserts himself into the households and disputes of the town.",
+            "id": "pyotr-stepanovich-verkhovensky",
+            "name": "Pyotr Stepanovich Verkhovensky",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "A civil engineer acquainted with Shatov and the radical group. He calmly advances a theory that complete freedom requires conquering fear of death, treating his own future suicide as a philosophical demonstration.",
+            "id": "alexei-nilich-kirillov",
+            "name": "Alexei Nilich Kirillov",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The provincial governor, a conscientious but insecure administrator who wants to appear modern and competent. Political unease, social rivalry, and his wife's independent initiatives place increasing pressure on him.",
+            "id": "andrey-antonovich-von-lembke",
+            "name": "Andrey Antonovich von Lembke",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The governor's ambitious wife and a leader of provincial society. She hopes to combine fashionable cultural patronage with benevolent public activity and takes charge of preparations for a large literary fête.",
+            "id": "yulia-mikhaylovna-von-lembke",
+            "name": "Yulia Mikhaylovna von Lembke",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An escaped convict who has returned secretly to the district. Violent and opportunistic, he offers criminal services to people whose political schemes or private problems may give him cover.",
+            "id": "fedka-the-convict",
+            "name": "Fedka the Convict",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A minor official and host of a gathering of local radicals. He accepts Pyotr's claim that their small circle forms part of a much larger revolutionary organization.",
+            "id": "virginsky",
+            "name": "Virginsky",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "demons-fyodor-dostoyevsky"
+      },
+      "recaps": {
+        "ending": "After Shatov's murder, the conspirators begin to break under fear and guilt. Kirillov kills himself after Pyotr forces him to leave a false confession that shields the group. Shatov's abandoned wife and her newborn also die, and information from the surviving conspirators allows the authorities to reconstruct much of the plot, although Pyotr escapes abroad. Stepan Trofimovich leaves town in a final effort to free himself from dependence, falls ill on the road, and undergoes a religious change before dying with Varvara Petrovna beside him. Nikolai Stavrogin withdraws to his family estate. Darya receives a letter proposing that she join him in a secluded life, but before any plan can be carried out he hangs himself. A note at the scene emphasizes that he acted deliberately. The provincial conspiracy is exposed and dispersed, but the ending presents its violence as the result of broader moral and intellectual disintegration rather than a danger removed with one organizer's flight.",
+        "in_short": "In a provincial Russian town, the returning radical organizer Pyotr Verkhovensky exploits the vanities, grievances, and ideas surrounding the enigmatic Nikolai Stavrogin. He persuades a small local cell that it belongs to a nationwide revolutionary network and seeks to bind it through crime. Stavrogin refuses the leadership Pyotr imagines for him, while his secret marriage to the vulnerable Marya Lebyadkina entangles his relations with Liza and Darya. During a disastrous public fête, fires spread through the town; Marya and her brother are murdered, and Liza is killed by a hostile crowd after leaving Stavrogin. Pyotr then leads the cell in murdering Shatov as a supposed informer and coerces Kirillov's suicide note to conceal the crime. The conspiracy collapses and Pyotr escapes. Stepan Trofimovich dies after a late spiritual awakening, and Stavrogin, unable to accept any sustaining commitment, hangs himself. The town survives, but its social pretensions and abstract doctrines have been converted into manipulation, isolation, and death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator recounts the long, dependent friendship between the wealthy Varvara Petrovna Stavrogina and Stepan Trofimovich Verkhovensky, an aging liberal intellectual who once tutored her son Nikolai. Their provincial circle treats Stepan as an important thinker while he relies on Varvara for his livelihood. News and rumors revive interest in Nikolai Stavrogin, whose earlier stay in town included a series of bizarre public insults. Several younger figures connected with him have also returned from abroad or the capital: Shatov, Kirillov, Darya, and Liza. Varvara tries to manage a possible marriage between Stepan and Darya, partly to settle troubling gossip. At a crowded confrontation in her drawing room, Captain Lebyadkin and his disabled sister Marya appear, and Marya's claims imply a concealed bond with Nikolai. Nikolai and Stepan's son Pyotr arrive, intensifying rather than resolving the scandal.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stavrogin moves through a series of nighttime encounters that expose the people gathered around him. Kirillov explains his intention to overcome fear through suicide. Shatov confronts Stavrogin over abandoned religious and national ideas, and Stavrogin acknowledges his secret marriage to Marya Lebyadkina. He warns Lebyadkin against using the marriage for blackmail and recognizes that Fedka, an escaped convict, may turn veiled wishes into violence. Stavrogin later accepts a duel after a public insult and deliberately fires away from his opponent, preserving an appearance of courage without killing him. Meanwhile Pyotr becomes indispensable to Yulia Mikhaylovna, the governor's socially ambitious wife, as preparations continue for a literary fête. Labor unrest and signs of organized agitation unsettle the town, while Pyotr presents himself as the person best able to explain or contain them.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pyotr reveals the structure of his political method. At Virginsky's house he dominates a confused meeting of radicals and encourages the members to imagine that their small group is one unit in a vast secret network. He identifies Shatov, who wants to withdraw, as a potential informer and begins preparing the others to treat his death as necessary. In private, Pyotr urges Stavrogin to become the symbolic leader of a campaign built on scandal, disorder, and manufactured faith; Stavrogin refuses the role and regards Pyotr with contempt. Pyotr nevertheless keeps exploiting the weaknesses of the governor's household, the fête organizers, and the Lebyadkins. Stavrogin's relationships remain unresolved: he is secretly married to Marya, Liza is still drawn to him, and Darya knows enough of his despair to fear what he may do. The approaching fête concentrates the town's social ambition and political tension in one public event.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The literary fête becomes a humiliating spectacle. Speakers antagonize the audience, social divisions erupt, and Yulia Mikhaylovna loses control of the event she intended as a triumph. That night fires break out across the town. Captain Lebyadkin, Marya, and their servant are found murdered in their burning house, crimes carried out by Fedka amid the disorder. Liza, who has spent the night with Stavrogin, learns of the deaths and understands that his knowledge and inaction connect him morally to what happened even if he did not strike the blows. She leaves him and goes toward the fire, where a hostile crowd, inflamed by rumors, attacks and kills her. The governor suffers a breakdown as the town descends into panic. Stavrogin's refusal to commit himself has not kept him outside events; the people closest to his concealed life have paid for the schemes operating around him.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shatov's estranged wife Marie returns unexpectedly and gives birth with his help. The prospect of caring for her and the child offers him a new direction just as Pyotr summons him to recover a hidden printing press. At the isolated meeting place, Pyotr and the members of the cell murder Shatov and throw his body into a pond, hoping shared guilt will prevent betrayal. The killing instead exposes their fear and weakens Pyotr's control. He then goes to Kirillov, whose planned suicide has long been part of his cover story. Pyotr forces him to write a note assuming responsibility for Shatov's death. Kirillov resists Pyotr's authority but finally kills himself. The conspirators now have the appearance of an explanation for the murder, but their conduct, witnesses, and growing panic make the deception unstable.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conspiracy disintegrates after Shatov's murder. Marie and her newborn die, and members of the cell confess or provide evidence that allows the authorities to uncover the group's actions; Pyotr alone succeeds in escaping abroad. Stepan Trofimovich, shaken by the collapse of his social world, leaves town on foot. He falls ill while traveling with a kindly book seller, Sofya Matveyevna, and turns toward religious belief before Varvara Petrovna finds him. He dies after a final reconciliation with her. Stavrogin retreats to his mother's estate and sends Darya a letter proposing an isolated future together, but his plan offers no genuine renewal. Before she can join him, he hangs himself. The carefully prepared note and physical evidence rule out accident. The town is left to account for murders, suicides, disgrace, and madness produced by Pyotr's organization and by the deeper emptiness he learned to exploit.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "demons-fyodor-dostoyevsky"
+      }
+    },
     "desire-under-the-elms": {
       "characters": {
         "characters": [
