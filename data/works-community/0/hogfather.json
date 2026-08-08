@@ -5231,6 +5231,97 @@
         "work": "in-the-afterlight"
       }
     },
+    "in-the-penal-colony": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A foreign visitor invited to observe an execution on a remote penal island. He listens carefully to the officer's explanation of the colony's elaborate apparatus but remains detached from the system and unwilling to endorse it.",
+            "id": "the-explorer",
+            "name": "The Explorer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The last devoted defender of the former commandant's judicial system. He maintains and operates the execution apparatus, explains its workings with reverence, and hopes the visiting explorer will help preserve it.",
+            "id": "the-officer",
+            "name": "The Officer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prisoner sentenced for disobedience and disrespect toward a superior. He does not understand the officer's language and has not been told either the charge or the sentence awaiting him.",
+            "id": "the-condemned-man",
+            "name": "The Condemned Man",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guard assigned to hold the condemned man and assist at the execution. He shares the prisoner's limited understanding of the officer's explanations and watches events with curiosity.",
+            "id": "the-soldier",
+            "name": "The Soldier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The colony's deceased former ruler, designer of the execution machine, and author of its procedures and inscribed judgments. His remaining followers regard his severe order as a lost ideal.",
+            "id": "the-old-commandant",
+            "name": "The Old Commandant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The island's current ruler, who has reduced support for the old commandant's apparatus without openly abolishing it. The officer regards his reforms and public meetings as threats to the former system.",
+            "id": "the-new-commandant",
+            "name": "The New Commandant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "in-the-penal-colony"
+      },
+      "recaps": {
+        "ending": "When the explorer refuses to defend the old regime, the officer releases the condemned man and places himself in the apparatus, setting it to inscribe a demand for justice. The neglected machine breaks apart as it operates and kills him quickly instead of carrying out the long ritual he had described; his face shows none of the understanding he believed the process bestowed. The explorer then visits the old commandant's grave beneath a teahouse, where an inscription predicts that the dead ruler's followers will restore him. At the harbor, the explorer leaves the colony alone. The soldier and the former prisoner try to follow, but he prevents them from boarding his boat, separating himself from both the obsolete punishment system and those still confined under the colony's rule.",
+        "in_short": "A visiting explorer on a penal island is shown an execution machine by the officer who remains devoted to the dead commandant who designed it. The apparatus slowly carves a prisoner's violated rule into his body, although the prisoner has never been told his charge or allowed a defense. The officer believes the ordeal produces enlightenment and asks the explorer to support the fading practice before the reforming new commandant. The explorer refuses. Accepting that the system has lost its last chance of survival, the officer frees the condemned man and submits himself to the machine. It malfunctions and kills him abruptly, without the revelation he expected. After seeing the old commandant's grave and its promise of a future return, the explorer departs alone, refusing passage to the soldier and the released prisoner.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a remote penal island, a foreign explorer attends the planned execution of a soldier condemned for failing to obey a superior. An officer proudly demonstrates the former commandant's apparatus: a bed restrains the prisoner while a moving harrow inscribes the broken rule into his body over many hours. The prisoner has received no hearing and does not even know his sentence. The officer believes the suffering eventually makes the judgment clear to its victim, but admits that the new commandant has allowed the machine and its ritual to decay. He asks the visitor to praise the practice publicly. The explorer refuses to support it. Concluding that the old system cannot survive, the officer frees the prisoner, programs the command to be just, and straps himself into the apparatus. The machine collapses mechanically and kills him at once, denying him the spiritual transformation he expected. The explorer visits the old commandant's concealed grave, whose inscription promises his return, then leaves by boat. He bars the soldier and the freed man from coming with him.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "in-the-penal-colony"
+      }
+    },
     "inaras-grace": {
       "characters": {
         "characters": [

@@ -5414,6 +5414,118 @@
         "work": "collapse"
       }
     },
+    "colonia-penitenciara": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A foreign visitor invited to observe an execution in a remote penal colony. He approaches the event as an outsider and listens carefully to the officer's explanation, while his hosts assume that his opinion may influence the colony's future practices.",
+            "id": "the-explorer",
+            "name": "The Explorer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The military official responsible for operating the colony's execution apparatus. Proud of its elaborate construction and deeply loyal to the former commandant who designed it, he personally prepares the condemned man for punishment and explains the procedure to the visiting explorer.",
+            "id": "the-officer",
+            "name": "The Officer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier sentenced to the apparatus after failing in his duty toward a superior. He has not been told his sentence and has had no opportunity to defend himself. Chained nearby, he cannot understand the language in which the officer and explorer discuss his fate.",
+            "id": "the-condemned-man",
+            "name": "The Condemned Man",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guard assigned to control the condemned man and assist with the execution. He follows the officer's practical directions and watches the apparatus with curiosity.",
+            "id": "the-soldier",
+            "name": "The Soldier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The colony's deceased former ruler and the designer of its punishment machine. The officer remembers him as a commander, judge, engineer, and public authority whose executions once attracted large crowds.",
+            "id": "the-old-commandant",
+            "name": "The Old Commandant",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The colony's current ruler, who has withdrawn support from the execution apparatus and from the officer who maintains it. Although he has not formally abolished the old practice, the officer believes he is allowing it to disappear through neglect and changing public opinion.",
+            "id": "the-new-commandant",
+            "name": "The New Commandant",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "colonia-penitenciara"
+      },
+      "recaps": {
+        "ending": "When the explorer refuses to endorse the old punishment system, the officer releases the condemned man and submits himself to the apparatus with the judgment that he should be just. The neglected machine breaks down during the execution. Its mechanisms spill apart and it kills the officer rapidly, without the prolonged process or moment of understanding that he had described. The explorer finds no sign of revelation on the corpse. He then visits the colony's teahouse with the soldier and the freed prisoner. Beneath a table lies the old commandant's grave, whose inscription predicts that he will return and recover power. The explorer goes to the harbor and departs alone. The soldier and former prisoner run after him and appear ready to join him, but he prevents them from boarding his boat, leaving them in the colony as he rows toward the waiting ship.",
+        "in_short": "A foreign explorer visits a penal colony to witness an execution conducted by an officer devoted to the former commandant's methods. The condemned man has not been told his offense or allowed a defense. The officer explains that an intricate apparatus inscribes the violated commandment into a prisoner's body until death, supposedly bringing understanding through suffering. Because the new commandant is quietly abandoning the practice, the officer asks the visitor to praise it publicly. The explorer refuses and intends to state his opposition. Accepting that the system cannot survive, the officer frees the prisoner and places himself in the machine under a judgment demanding justice. The decaying apparatus malfunctions and kills him without the revelation he expected. After seeing the old commandant's grave and its promise of his return, the explorer leaves by boat and prevents the soldier and freed man from escaping with him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A foreign explorer visiting a remote penal colony is invited to witness an execution. In a barren valley, an officer prepares a large, aging apparatus while a soldier guards the chained condemned man. The officer proudly begins explaining the machine, which was designed under the colony's former commandant. Its components restrain the prisoner, draw the sentence on his body with needles, and eventually kill him. The condemned man watches without understanding the conversation. The explorer learns that the prisoner has not even been told what judgment has been passed on him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The officer explains that he serves as judge as well as executioner and treats guilt as unquestionable. The condemned soldier was reported for sleeping while on guard and then challenging the superior who struck him awake; he has received no hearing or chance to answer the charge. The apparatus is meant to carve the commandment he violated into him over many hours. According to the officer, the prisoner gradually understands the inscription through the pain before dying. He recalls the former commandant's rule as the machine's great period, when executions drew crowds and the entire colony accepted the ritual. Under the new commandant, spare parts, public support, and official enthusiasm are disappearing. The explorer becomes increasingly disturbed by both the procedure and its complete absence of due process.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Believing the explorer has influence, the officer asks him to defend the apparatus at a public meeting and defeat the new commandant's expected attempt to end it. The explorer refuses. He says he will not make a public spectacle, but he will give the commandant his honest judgment that the practice is unjust. The officer accepts that his cause is lost. He frees the astonished condemned man, removes his own uniform, and programs the apparatus with a judgment directing him to be just. He then straps himself into the machine. The soldier and released prisoner remain nearby, while the explorer watches the officer submit to the same system he had defended.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The poorly maintained apparatus fails as it executes the officer. Gears break loose, its intended slow operation collapses, and the machine drives its needles through him, killing him quickly instead of producing the insight he expected. The explorer sees no transformed expression on the dead officer's face. He later visits a teahouse with the soldier and the freed prisoner and is shown the old commandant's grave beneath a table. Its inscription promises that the former ruler will rise again and regain the colony. At the harbor, the explorer boards a boat to return to his ship. The other two men run after him, apparently hoping to leave as well, but he deliberately keeps them from climbing aboard and departs alone.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "colonia-penitenciara"
+      }
+    },
     "columbus-day": {
       "characters": {
         "characters": [
