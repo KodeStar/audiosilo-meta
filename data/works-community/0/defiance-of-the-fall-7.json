@@ -2455,6 +2455,258 @@
         "work": "demian"
       }
     },
+    "demon-copperhead": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Demon Copperhead",
+              "Damon Fields"
+            ],
+            "description": "The red-haired narrator, born to a teenage single mother in a trailer in Lee County, Virginia. Quick-witted, observant, and gifted at drawing, he learns early to read danger and make himself useful. His nickname grows from his first name and appearance. He tells his life retrospectively, but at the opening he is a child whose security depends on his mother and the neighboring Peggot family.",
+            "id": "demon",
+            "name": "Demon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mom"
+            ],
+            "description": "Demon's young mother, who is raising him alone when the story begins. She loves her son but has little money, limited support, and a history of addiction. Her vulnerability leaves both of them exposed to people who offer stability while seeking control.",
+            "id": "demon-mother",
+            "name": "Demon's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Peggot"
+            ],
+            "description": "The practical, generous neighbor who helps deliver Demon and repeatedly gives him food, shelter, and a place within her large family. She is Maggot's grandmother and one of the first adults Demon can rely on.",
+            "id": "mrs-peggot",
+            "name": "Nance Peggot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maggot"
+            ],
+            "description": "Demon's closest childhood friend and the Peggots' grandson. His unconventional clothes and manner make him a target at school, but with Demon he shares the loyalty and ease of two boys who have grown up almost as family.",
+            "id": "maggot-peggot",
+            "name": "Matthew Peggot",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Stoner"
+            ],
+            "description": "The man who courts and marries Demon's mother. He presents himself as an answer to the family's insecurity, then imposes rigid authority in their home and treats Demon with hostility and violence.",
+            "id": "murrell-stone",
+            "name": "Murrell Stone",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A nurse in the Peggot family whose confidence and independence impress Demon. She lives away from Lee County but remains deeply involved with her relatives, especially her daughter Emmy, and acts decisively when they are in trouble.",
+            "id": "june-peggot",
+            "name": "June Peggot",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "June's daughter, remembered by Demon from childhood as poised, ambitious, and almost impossibly glamorous. She and Demon are linked through the Peggot family even when their lives take very different paths.",
+            "id": "emmy-peggot",
+            "name": "Emmy Peggot",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Creaky"
+            ],
+            "description": "An elderly farmer who takes boys placed by social services and expects them to earn their keep through exhausting work. His overcrowded household gives Demon shelter without safety, affection, or a genuine childhood.",
+            "id": "crickson",
+            "name": "Mr. Crickson",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Fast Forward"
+            ],
+            "description": "The charismatic older boy who dominates the foster boys at Crickson's farm. A talented athlete and confident storyteller, he appears to Demon as a model of strength and worldly success, though his influence over younger people is unsettling.",
+            "id": "sterling-ford",
+            "name": "Sterling Ford",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tommy Waddles"
+            ],
+            "description": "A gentle fellow foster child at Crickson's farm who is mocked for his size. He works steadily, avoids the other boys' contests for status, and shares Demon's interest in pictures and storytelling.",
+            "id": "tommy-waddell",
+            "name": "Tommy Waddell",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Demon's paternal grandmother, a formidable woman who had wanted a different life for her daughter and distrusts men as caretakers. When Demon reaches her, she cannot simply take him in, but she uses her judgment and resources to find him a better home.",
+            "id": "betsy-woodall",
+            "name": "Betsy Woodall",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Coach"
+            ],
+            "description": "The high-school football coach who gives Demon a room in his large, disordered house. Grieving his wife and absorbed in his team, he is an imperfect guardian, but he recognizes Demon's athletic ability and offers him belonging and opportunity.",
+            "id": "coach-winfield",
+            "name": "Coach Winfield",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Angus"
+            ],
+            "description": "Coach Winfield's daughter, a sharp, self-possessed girl who initially treats Demon as another complication in the household. She understands her father's weaknesses, sees through local social performances, and becomes Demon's candid guide to his new life.",
+            "id": "agnes-winfield",
+            "name": "Agnes Winfield",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teacher who notices Demon's intelligence and refuses to accept the low expectations placed on poor children from the county. He introduces Demon to a broader account of Appalachian history and encourages him to value his talent for art.",
+            "id": "mr-armstrong",
+            "name": "Mr. Armstrong",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fragile, appealing girl whom Demon meets through the social world around the football team. She lives with her ailing father and shares Demon's wish to escape pain, drawing him into an intense relationship at a time when both are vulnerable.",
+            "id": "dori",
+            "name": "Dori",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "demon-copperhead"
+      },
+      "recaps": {
+        "ending": "After Dori's death and the collapse of his addicted life, Demon accepts help and leaves Lee County for treatment. Recovery takes time, distance, and repeated effort rather than a single transformation. He reconnects with his gift for drawing and, working with Tommy, turns the experiences of local children into a successful comic strip. Emmy is rescued from the exploitation surrounding Fast Forward, but the confrontation at Devil's Bathtub kills both Fast Forward and Hammer: Fast Forward falls, and Hammer dies trying to save him. Years later Demon returns with a steadier life and a clearer understanding of the people and systems that failed him. Angus has built an independent future of her own, and their long friendship becomes an acknowledged love. The novel closes with the two of them setting out for the Atlantic coast, where Demon will finally see the ocean he has imagined since childhood.",
+        "in_short": "Damon Fields, known as Demon Copperhead, grows up poor in rural southwest Virginia. After his young mother's marriage turns abusive and she dies from an overdose, the foster-care system moves him through homes that exploit his labor and leave him hungry. He eventually reaches his paternal grandmother, who arranges a home with Coach Winfield. Demon becomes a football star and finds intellectual and artistic encouragement, but a knee injury leads to prescribed opioids and then addiction. His relationship with Dori binds two vulnerable young people in a life organized around drugs, ending with her overdose. Addiction also damages the Peggot family, while the admired Fast Forward is exposed as a destructive force; a final confrontation kills Fast Forward and Hammer. Demon enters treatment, gets sober, and builds a career from his drawing with Tommy. Returning years later, he recognizes that Angus has been his most steadfast companion. They begin a life together and drive toward the ocean.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Damon Fields is born in a trailer in Lee County, Virginia, to a teenage mother with few resources and a history of addiction. His father died before his birth, leaving the boy to construct an identity from scraps of family history and his own copper-colored hair. The Peggots next door supply much of the steadiness his home lacks: Mrs. Peggot helps at his birth, and her grandson Maggot becomes his closest friend. Demon learns early how poverty, absent adults, and public contempt shape children's choices. His mother loves him, but her desire for security makes the attention of Murrell Stone seem like an opportunity. Demon distrusts the newcomer, whose interest in controlling the household is already becoming clear.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Demon's mother marries Murrell Stone, whom the boy calls Stoner. Once established in the home, Stoner isolates and abuses Demon while demanding obedience from both mother and son. Demon's mother returns to drugs under the strain and enters treatment, leaving Demon dependent on adults who do not protect him. The wider Peggot family briefly shows him a more secure world, and he learns more about the father he never knew, but these connections cannot keep his own household intact. After a disastrous attempt at reunion, his mother dies from an overdose. Demon is left without a parent, and decisions about his future pass to social services and men who view him as a burden or a source of labor.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Placed at Mr. Crickson's farm, Demon joins other foster boys who work long hours and receive little care. Hunger, dangerous labor, and competition govern the household. The charismatic older boy Sterling Ford, called Fast Forward, commands the others' admiration; Demon is especially eager for his approval. Tommy Waddell offers a quieter form of companionship and shares Demon's interest in drawing. The placement teaches Demon that nominal rescue can reproduce exploitation when no adult closely examines a child's daily life. He survives by working, observing the hierarchy among the boys, and holding onto the thought that another home might eventually be possible.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Demon's next placement, with the McCobbs, exchanges farm labor for a different form of neglect. The indebted family depends on his support payment and sends him to salvage valuable material from refuse while he remains underfed and excluded. Realizing that no official rescue is coming, Demon leaves and undertakes a hazardous journey to find his father's mother, Betsy Woodall. Betsy is unwilling to repeat the past by raising another boy herself, yet she takes his claim seriously. She arranges for him to live with Coach Winfield, creating the first placement shaped by a genuine effort to match his needs rather than extract money or work from him.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Coach Winfield's house, Demon gains food, privacy, and a recognized place at school. The coach sees his speed and builds him into a football player, giving the boy status in a community where the sport carries enormous weight. The coach's daughter Angus is initially skeptical but becomes an incisive friend who helps Demon navigate the household and its blind spots. Mr. Armstrong challenges the contempt directed at Appalachia and encourages Demon to see both the forces acting on his region and the value of his own artistic ability. For the first time he can imagine several futures. Yet the praise surrounding football also makes his body an asset others are willing to risk, and older connections, including Fast Forward, remain powerful in his social world.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A serious knee injury ends Demon's effortless progress in football. Pain treatment introduces him to prescription opioids, and medical reassurance makes the danger easy to dismiss. He continues playing and becomes dependent while the people invested in the team focus on keeping him functional. Demon falls in love with Dori, another vulnerable young person living under the strain of caring for a sick parent. Their tenderness is real, but drugs increasingly organize their time, money, and loyalties. Around them, the same pills circulate through schools, clinics, and families, turning private injuries into a regional disaster. Demon's hard-won home and prospects begin to erode as he chooses immediate relief over the people trying to reach him.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Demon and Dori settle into an addicted life in which ordinary responsibilities become difficult and every plan is shaped by obtaining drugs. After her father's death, Dori has even less protection, and Demon's attempts to care for her cannot overcome their shared dependence. She dies from an overdose, leaving him grieving, guilty, and still using. The Peggot family is also pulled into crisis through Emmy's involvement with Fast Forward and the drug economy around him. Demon can no longer maintain the belief that Fast Forward represents freedom or success. With football gone, Dori dead, and his body and relationships failing, he reaches the limit of the survival strategies that carried him through childhood.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The effort to recover Emmy brings the long history with Fast Forward to a violent conclusion at Devil's Bathtub. Fast Forward falls to his death, and Hammer dies after trying to save him. Demon survives but must finally leave the patterns and places sustaining his addiction. With help, he enters treatment away from Lee County and gradually builds a sober life. His talent for drawing becomes work: in collaboration with Tommy, he creates a comic centered on the experiences of Appalachian children and finds an audience without disguising where he came from. Years later he returns able to see his past with greater clarity. Angus, always one of the few people to treat him as an equal, has pursued her own education and future. They recognize their friendship as love and set out together for the coast, ending with Demon on his way to see the ocean for the first time.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "demon-copperhead"
+      }
+    },
     "desire-under-the-elms": {
       "characters": {
         "characters": [

@@ -4476,6 +4476,186 @@
         "work": "jane-eyre-rnib-edition"
       }
     },
+    "jar-city": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran Reykjavik detective whose patient, solitary methods are better suited to old secrets than to office politics. Erlendur is divorced and has a painfully distant relationship with his two adult children. The apparently ordinary murder of an elderly man strikes him as less simple than it first appears.",
+            "id": "erlendur-sveinsson",
+            "name": "Erlendur Sveinsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A younger detective on Erlendur's team, educated in the United States and inclined toward modern procedures. He is impatient with Erlendur's instinctive approach but remains an important investigator on the case.",
+            "id": "sigurdur-oli",
+            "name": "Sigurdur Oli",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A detective working with Erlendur and Sigurdur Oli. Elinborg is observant and practical, and she helps trace the victim's history while balancing police work with family life.",
+            "id": "elinborg",
+            "name": "Elinborg",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly man found murdered in his basement flat in Nordurmyri. Holberg lived alone and initially seems to have been the random victim of a clumsy burglary, but the cryptic note left on his body suggests that someone wanted his past examined.",
+            "id": "holberg",
+            "name": "Holberg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Erlendur's adult daughter, who struggles with drug dependence and confronts her father about his long absence from her life. Pregnant and uncertain about her future, Eva Lind moves unpredictably between asking him for help and accusing him of failing his family.",
+            "id": "eva-lind",
+            "name": "Eva Lind",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Erlendur's adult son and Eva Lind's brother. Sindri has his own history of addiction and shares the consequences of Erlendur's separation from their mother, though he engages with his father less forcefully than Eva does.",
+            "id": "sindri-snaer",
+            "name": "Sindri Snaer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired senior police officer and Erlendur's former mentor. Marion remembers investigative practices and institutional habits from the period when the events behind Holberg's murder first reached the authorities.",
+            "id": "marion-briem",
+            "name": "Marion Briem",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman who accused Holberg of rape many years before his death. Kolbrun's complaint was dismissed, leaving her to bear the crime's consequences with little help from the police or her community.",
+            "id": "kolbrun",
+            "name": "Kolbrun",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kolbrun's sister and a keeper of the family's painful history. She tells Erlendur what happened after the old rape allegation and gives the investigation a view of Holberg that the original police record failed to preserve.",
+            "id": "elin",
+            "name": "Elin",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kolbrun's daughter, conceived after the assault and dead in childhood from a rare illness. A photograph connected with Audur's grave becomes one of the clues showing Erlendur that the murder is rooted in family history.",
+            "id": "audur",
+            "name": "Audur",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old associate of Holberg whose name emerges as detectives reconstruct the victim's conduct toward women. Runar is reluctant to discuss their shared past and the people harmed by it.",
+            "id": "runar",
+            "name": "Runar",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man whose young daughter died from a rare hereditary disease. His search for an explanation brings him into contact with Iceland's unusually traceable family records and with the history Erlendur is uncovering.",
+            "id": "einar-orn",
+            "name": "Einar Orn",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jar-city"
+      },
+      "recaps": {
+        "ending": "Erlendur establishes that Einar Orn is a son conceived when Holberg raped Kolbrun. Einar learned the truth after his own young daughter died from the same rare hereditary disease that killed his half-sister Audur. He confronted Holberg and killed him, leaving a note intended to identify the victim with the man who had transmitted both violence and illness through the family. Audur's preserved brain, removed for medical study and kept among the hospital's old organ collection, supplies the genetic evidence behind the case. Einar recovers it and returns it to Audur's grave before dying by suicide, so there is no trial. The investigation exposes not only a murderer but the lasting damage caused when Kolbrun's rape allegation was dismissed decades earlier. Erlendur remains entangled with his pregnant, drug-dependent daughter Eva Lind, whose anger forces him to face his own failures as a father even as he solves another family's buried history.",
+        "in_short": "Reykjavik detective Erlendur investigates the bludgeoning of Holberg, an elderly man found with a cryptic note and a photograph of a child's grave. The trail leads to Kolbrun, whose rape allegation against Holberg was dismissed decades earlier, and to Audur, the daughter conceived by that assault who died from a rare brain disease. Medical records, genealogy, and an old hospital collection of preserved organs reveal that the illness passed through Holberg's family. Einar Orn, another son conceived through Holberg's violence, discovered his parentage after his own daughter died from the same condition. He confronted and killed Holberg, then sought Audur's preserved brain as proof and returned it to her grave. Einar dies by suicide before arrest. Alongside the case, Erlendur struggles with Eva Lind, his pregnant, drug-dependent daughter, whose demands expose the emotional damage caused by his abandonment of his family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A child discovers the body of an elderly man named Holberg in a basement flat in Reykjavik's Nordurmyri district. He has been killed with a heavy glass ashtray. The scene at first looks like a crude, impulsive robbery, but a short message left on the body makes Inspector Erlendur suspect that the killer wanted the police to connect the death with something in Holberg's identity. Erlendur investigates with Sigurdur Oli and Elinborg. Their methods differ: the younger detectives favor a direct modern inquiry, while Erlendur dwells on the personal meaning of the few objects left behind. A photograph associated with a child's grave provides the first indication that the case reaches far into the past.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The detectives discover that Holberg was not an inoffensive pensioner. Many years earlier, a woman named Kolbrun accused him of rape, but the complaint was treated dismissively and did not lead to justice. Kolbrun later gave birth to a daughter, Audur, and the child died young from a rare brain disease. Kolbrun's sister Elin describes the devastation that followed and the isolation in which Kolbrun lived. The grave in the photograph is Audur's, making the old assault central to the murder rather than incidental background. Erlendur begins reconstructing both Holberg's associates and the official handling of Kolbrun's report, aided by memories from his retired former superior Marion Briem.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erlendur's team questions people connected with Holberg and finds evidence of a pattern of sexual violence rather than a single allegation. Runar, one of Holberg's old associates, is evasive about what the men did and about another man who disappeared. The investigation of Audur's death raises a further mystery: a post-mortem examination was performed because her disease was unusual, and part of the medical record no longer fits what the family believed had happened to her remains. Erlendur orders Audur's grave opened. The findings confirm that evidence from the child's body was retained elsewhere, shifting the inquiry from old police files toward hospital pathology and genetic inheritance.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search reaches an obsolete hospital collection known informally as Jar City, where organs and tissue from past autopsies were stored. Audur's brain was preserved because of the rare disease that killed her. Modern genetic records make it possible to trace hereditary illness through Iceland's closely documented population, suggesting that another branch of Holberg's family may have encountered the same condition. Someone has a strong reason to seek both Audur's medical evidence and the truth of Holberg's paternity. Away from the case, Erlendur's pregnant daughter Eva Lind moves in and out of his life while struggling with drugs. Her accusations about his abandonment of the family force him to confront a different kind of damage passed from parent to child.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hereditary trail leads to Einar Orn, whose young daughter died from the same rare disease as Audur. Einar used family and genetic information to learn that Holberg was his biological father and that his own life began with another assault. His daughter's death therefore exposed both the source of the illness and a history of violence concealed from him. Erlendur recognizes that the message on Holberg's body expresses this forced identification between father and son. Einar confronted Holberg with what he had learned and killed him during the encounter. The remaining search centers on Audur's preserved brain, which has disappeared from the hospital collection and can provide tangible proof of the connection.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erlendur completes the chain linking Holberg, Kolbrun, Audur, Einar Orn, and Einar's dead daughter. Holberg fathered both Audur and Einar through rape, and the rare fatal disease carried through him destroyed the next generation of both families. Einar killed Holberg after discovering that history. He takes Audur's preserved brain from Jar City and returns it to the child's grave, restoring what the hospital kept from her family. Einar then dies by suicide before the police can bring him to trial. The case closes with its evidence assembled but without a conventional arrest, exposing the cost of the authorities' original failure to take Kolbrun seriously. Erlendur's contact with Eva Lind remains difficult and unresolved; solving the buried parentage in the murder case does not repair his own history as an absent father, though he is less able to avoid it.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jar-city"
+      }
+    },
     "jazz": {
       "characters": {
         "characters": [
