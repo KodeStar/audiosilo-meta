@@ -2525,6 +2525,161 @@
         "work": "the-magic-faraway-tree"
       }
     },
+    "the-magic-mountain": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young shipbuilding engineer from Hamburg who travels to the Berghof sanatorium for a three-week visit with his cousin Joachim. Respectable, inexperienced, and receptive to the people around him, he soon finds the mountain's routines and altered sense of time more absorbing than the practical life below.",
+            "id": "hans-castorp",
+            "name": "Hans Castorp",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hans's cousin, a patient at the Berghof. Joachim wants to recover and return to his military career, and he treats the sanatorium's regimen with dutiful seriousness despite his impatience to resume ordinary life.",
+            "id": "joachim-ziemssen",
+            "name": "Joachim Ziemssen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Italian writer and Berghof patient who befriends Hans. Eloquent and argumentative, he champions reason, humanism, political liberty, and active engagement with life, treating Hans as a pupil whose passivity he must resist.",
+            "id": "lodovico-settembrini",
+            "name": "Lodovico Settembrini",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A married Russian patient whose careless entrance into the dining room repeatedly draws Hans's attention. Her appearance recalls a schoolboy attachment from his past, and his fascination with her becomes part of his surrender to life at the sanatorium.",
+            "id": "clavdia-chauchat",
+            "name": "Clavdia Chauchat",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior physician at the Berghof, physically imposing and given to blunt humour. He diagnoses and manages the residents' illnesses while also painting as an amateur, and his authority helps convert Hans from visitor to patient.",
+            "id": "hofrat-behrens",
+            "name": "Hofrat Behrens",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sanatorium's assistant physician, who lectures patients about the hidden psychological sources of illness. His analytical manner and interest in dreams introduce Hans to another of the mountain's competing systems of explanation.",
+            "id": "dr-krokowski",
+            "name": "Dr Krokowski",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A small, intellectually formidable former Jesuit who lives near the sanatorium. He challenges Settembrini with arguments joining religious authority, revolution, suffering, and radical social change, drawing Hans into their prolonged conflict of ideas.",
+            "id": "leo-naphta",
+            "name": "Leo Naphta",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Dutch colonial planter who arrives with Clavdia. His immense presence, emotional force, and instinctive authority impress the sanatorium community even when he cannot turn his convictions into precise arguments.",
+            "id": "mynheer-peeperkorn",
+            "name": "Mynheer Peeperkorn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative Berghof patient whose confident misunderstandings and complaints make her a recurring presence at Hans's dining table. Her absorption in ailments reflects the enclosed social world that initially surprises him.",
+            "id": "frau-stohr",
+            "name": "Frau Stöhr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hans's uncle from Hamburg, who comes to the Berghof intending to remove him from what the family regards as an unhealthy delay. His brisk practical outlook proves poorly matched to the mountain's atmosphere.",
+            "id": "james-tienappel",
+            "name": "James Tienappel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-magic-mountain"
+      },
+      "recaps": {
+        "ending": "After seven years at the Berghof, Hans has outlived or lost the relationships that structured his education there. Joachim has died following his premature return to military life; Peeperkorn has killed himself; Clavdia has departed; and Naphta, provoked into a duel with Settembrini, shoots himself when Settembrini refuses to aim at him. Europe moves from cultural exhaustion into war. The outbreak of the First World War finally breaks the sanatorium's suspended time and sends Hans down from the mountain. He appears as an ordinary soldier in a muddy battle, moving among explosions and the deaths of other young men. The narrator does not disclose whether he survives. Hans's private course of illness, desire, argument, and reflection thus ends inside a mass historical catastrophe, with only an uncertain hope that some form of love or humane feeling might emerge from the violence.",
+        "in_short": "Hamburg engineer Hans Castorp visits his tubercular cousin Joachim at a Swiss sanatorium for three weeks and remains for seven years after doctors find signs of illness in him. The Berghof removes him from ordinary time and becomes an education through disease, desire, and rival ideas. He falls in love with Clavdia Chauchat; listens to the humanist Settembrini and the authoritarian revolutionary Naphta dispute civilization; and, after nearly dying in a snowstorm, glimpses an ethic grounded in sympathy rather than abstract extremes. Joachim leaves to become a soldier, returns sicker, and dies. Clavdia later returns with the charismatic Peeperkorn, who kills himself. Naphta also kills himself after a failed duel with Settembrini. When the First World War begins, Hans finally descends and enters battle as a common soldier. His survival is left unknown.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Hans Castorp, a young engineer from Hamburg, travels by train to a tuberculosis sanatorium high above Davos. He expects to remain only three weeks as a visitor to his cousin Joachim Ziemssen, who longs to recover and resume military service. Joachim introduces a world governed by temperature taking, rest cures, rich meals, medical authority, and an elastic sense of time. Hans is unsettled by the frank proximity of illness and death, yet he is also fascinated by the separation from ordinary obligations. His own physical discomfort begins almost immediately, making the boundary between healthy visitor and patient less secure than he assumes.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hans settles into the Berghof's routines and meets the figures who will shape his stay. Lodovico Settembrini, an Italian humanist, urges him to resist the mountain's passivity and return to useful life. Hans becomes captivated by Clavdia Chauchat, a married Russian patient whose features recall an intense schoolboy memory. Doctors Behrens and Krokowski examine Hans and interpret both body and mind through their professional systems. A fever and a suspicious area in his lungs lead Behrens to recommend that Hans remain for treatment. The proposed three-week visit stretches into months. Hans learns to classify fellow patients by illness and prognosis, while Joachim's disciplined wish to leave throws Hans's growing accommodation into relief.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Time at the Berghof becomes repetitive and difficult to measure. Hans studies anatomy and mortality while his desire for Clavdia intensifies. At the sanatorium's carnival celebration, social restraints loosen. Hans speaks privately with Clavdia, confesses his attraction, and borrows a pencil from her in deliberate echo of his childhood fixation. She is due to leave, and their encounter gives his passion a temporary consummation without creating a stable relationship. Clavdia departs the next day. Hans nevertheless stays on the mountain. Even a visit from his practical uncle James Tienappel fails to return him to Hamburg; the visitor is quickly unnerved by the place and leaves alone. Hans's identity as a patient has become stronger than his former plans.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Settembrini introduces Hans to Leo Naphta, whose defence of religious authority, suffering, and revolutionary coercion opposes Settembrini's faith in liberal reason. Their debates turn Hans's education into a contest between incompatible intellectual systems. Joachim, unwilling to sacrifice his vocation indefinitely, leaves the sanatorium against medical advice and enters military service. Hans remains. During a solitary ski excursion, he is caught in a snowstorm and nearly freezes. In a dreamlike vision he sees humane community threatened by ritual violence and concludes that neither worship of death nor pure rational abstraction is sufficient. He survives and returns, though the insight does not permanently free him from the mountain. Joachim eventually comes back gravely ill and dies, devastating Hans and exposing the cost of both departure and delay.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clavdia returns accompanied by Mynheer Peeperkorn, a wealthy Dutch planter whose commanding personality overshadows the intellectual precision of others. Hans is jealous but forms an unusual bond with him, and his relationship with Clavdia settles into a changed understanding. Peeperkorn, aware of his decline, kills himself; Clavdia leaves again. The sanatorium turns toward diversions, including séances, one of which seems to summon Joachim's image. Settembrini and Naphta's arguments end in a pistol duel. Settembrini refuses to aim at his opponent, and Naphta shoots himself. Seven years after Hans's three-week visit began, the First World War shatters the Berghof's suspended routine. Hans descends and appears as an ordinary soldier in a muddy battle. The narrative loses sight of him amid explosions and deaths, leaving his survival unknown and any humane meaning he carries into the catastrophe uncertain.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-magic-mountain"
+      }
+    },
     "the-magic-of-oz": {
       "characters": {
         "characters": [
