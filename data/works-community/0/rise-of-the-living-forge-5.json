@@ -3562,6 +3562,141 @@
         "work": "rosemarys-baby"
       }
     },
+    "rosencrantz-and-guildenstern-are-dead": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A minor courtier summoned with Guildenstern to Elsinore by a royal message neither man fully understands. He is more inclined to accept immediate appearances and practical comforts, though he shares his companion's uncertainty about their identity, purpose, and freedom.",
+            "id": "rosencrantz",
+            "name": "Rosencrantz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rosencrantz's companion and fellow courtier, called to the Danish court to assist an old acquaintance. More analytical and anxious than Rosencrantz, he tries to use logic, probability, and language to understand a world whose rules keep shifting around them.",
+            "id": "guildenstern",
+            "name": "Guildenstern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Player King"
+            ],
+            "description": "The leader of a traveling company of Tragedians. He treats performance as a trade and regards entrances, exits, violence, and death as patterns an experienced actor can recognize. His theatrical certainty challenges Guildenstern's demand for a reality outside performance.",
+            "id": "the-player",
+            "name": "The Player",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young member of the Tragedians whom the Player presents as part of the company's available entertainment. He participates in the troupe's performances and demonstrations.",
+            "id": "alfred",
+            "name": "Alfred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The prince of Denmark and an old acquaintance of Rosencrantz and Guildenstern. At Elsinore he appears disturbed and speaks in ways they cannot interpret, while the royal court asks them to discover the cause of his behavior.",
+            "id": "hamlet",
+            "name": "Hamlet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Denmark, who has summoned Rosencrantz and Guildenstern to learn what troubles Hamlet. He welcomes them as useful friends of the prince and gives their uncertain journey an official purpose.",
+            "id": "claudius",
+            "name": "Claudius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Denmark and Hamlet's mother. Alongside Claudius, she asks the two courtiers to use their old friendship with her son to discover why he has changed.",
+            "id": "gertrude",
+            "name": "Gertrude",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A royal counsellor whose confident explanations and directions are part of the court business that repeatedly sweeps the two protagonists into events they barely comprehend.",
+            "id": "polonius",
+            "name": "Polonius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Polonius's daughter, caught in Hamlet's troubled relationship with the court. Rosencrantz and Guildenstern see fragments of her distress but never gain the context needed to help her.",
+            "id": "ophelia",
+            "name": "Ophelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "rosencrantz-and-guildenstern-are-dead"
+      },
+      "recaps": {
+        "ending": "On the ship to England, Rosencrantz and Guildenstern discover that the royal letter orders Hamlet's execution. While they sleep, Hamlet replaces it with a command that they themselves be killed. Pirates attack; Hamlet disappears with them, leaving the courtiers to continue toward England with the altered letter. Guildenstern tries to resist the Player's claim that death is simply another predictable exit and stabs him, only to find that the weapon and death were theatrical effects. The Tragedians perform the deaths awaiting the characters from Hamlet. Rosencrantz then accepts his disappearance, and Guildenstern follows after one last failed attempt to understand when choice became impossible. The action shifts to the end of Hamlet, where an English ambassador reports that Rosencrantz and Guildenstern are dead. Horatio remains to explain the larger tragedy, while the two men whose perspective the play followed have vanished without discovering whether they could ever have changed their assigned end.",
+        "in_short": "Rosencrantz and Guildenstern, two minor figures from Hamlet, are summoned to Denmark without understanding why. A run of impossible coin tosses introduces a world in which probability, identity, and memory offer no secure guidance. Claudius and Gertrude ask them to discover the cause of Hamlet's strange behavior, but the courtiers can neither question him effectively nor grasp the deadly court plot unfolding around them. A company of Tragedians, led by the Player, repeatedly anticipates events and treats death as a rehearsed theatrical pattern. After Hamlet kills Polonius, the pair escort him to England with a sealed execution order. They learn its contents but do not act decisively; Hamlet secretly changes the letter so that England will execute them instead and escapes during a pirate attack. Rosencrantz and Guildenstern disappear as their deaths are announced in the concluding scene of Hamlet, never resolving whether fate, the script, or their own passivity determined the outcome.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rosencrantz and Guildenstern travel in response to a royal summons they can barely remember receiving. Rosencrantz repeatedly tosses heads, an impossible sequence that makes Guildenstern question probability and the nature of the world around them. They meet a troupe of traveling actors led by the Player, whose commercial view of performance unsettles them. Without a clear transition, the travelers find themselves at Elsinore amid the events of Hamlet. Claudius and Gertrude greet the two men, sometimes seeming to confuse their names, and ask them to discover what has caused Hamlet's strange behavior. Rosencrantz and Guildenstern rehearse questioning one another but remain unsure what they know. Their encounter with Hamlet produces riddles rather than an explanation. The court has supplied them with a task, but neither their friendship with the prince nor their reasoning gives them command of it.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rosencrantz and Guildenstern wait inside the Danish court while crucial events occur around or beyond them. Hamlet seems to outmaneuver their attempts to examine him, and the pair cannot decide whether his madness is genuine. The Tragedians arrive to perform for the court, and their rehearsal includes a ruler's murder and the execution of two courtiers closely resembling Rosencrantz and Guildenstern. The protagonists fail to recognize the forecast. After the staged murder provokes Claudius and Hamlet kills Polonius, the two men are ordered to escort Hamlet to England. They accept the sealed royal letter and their new assignment without learning its contents. Their position has grown more dangerous, but their experience remains fragmented: they see entrances, exits, and consequences while the motives linking them belong to someone else's story.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aboard ship, Rosencrantz and Guildenstern struggle to imagine what they will do when they reach England. They open Claudius's letter and learn that it orders Hamlet's death, yet cannot turn that knowledge into decisive resistance. Hamlet secretly substitutes a letter commanding their deaths instead. A pirate attack interrupts the voyage and Hamlet disappears, leaving the pair with the Tragedians and the fatal document. Guildenstern challenges the Player's confidence about theatrical death and appears to kill him, but the act proves another performance. The troupe then enacts the deaths concluding Hamlet. Rosencrantz disappears after accepting that his life is ending; Guildenstern follows, still unable to locate the moment when another choice was possible. In the restored final scene of Hamlet, an ambassador from England announces their deaths. Horatio remains to tell the principal tragedy, while the two courtiers end as a brief report inside it.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "rosencrantz-and-guildenstern-are-dead"
+      }
+    },
     "royal-assassin": {
       "characters": {
         "characters": [

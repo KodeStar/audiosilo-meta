@@ -1468,6 +1468,366 @@
         "work": "joyland"
       }
     },
+    "jude-the-obscure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphaned village boy distressed by the departure of his schoolmaster, Phillotson, from Marygreen. Sensitive and eager for learning, he treasures the older man's promise to remember him and send books.",
+            "id": "jude-fawley",
+            "name": "Jude Fawley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The village schoolmaster at Marygreen and an early model for Jude's ambitions. He leaves for Christminster hoping study there will lead to a university degree and ordination, and his departure gives the young Jude a powerful image of a larger intellectual world.",
+            "id": "richard-phillotson",
+            "name": "Richard Phillotson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jude's elderly great-aunt and guardian in Marygreen. Blunt and pessimistic about the Fawley family, she warns that marriage has repeatedly brought its members unhappiness and discourages Jude's idealized plans.",
+            "id": "drusilla-fawley",
+            "name": "Drusilla Fawley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A traveling seller of remedies who claims enough learning to impress the young Jude. He promises to obtain Latin and Greek grammars in exchange for Jude's assistance, encouraging the boy's hopes while proving unreliable.",
+            "id": "physician-vilbert",
+            "name": "Physician Vilbert",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A lively young woman from near Marygreen who attracts Jude while he is working toward his scholarly plans. Practical, physically confident, and deliberately flirtatious, she turns a chance encounter into an invitation to join her and her companions.",
+            "id": "arabella-donn",
+            "name": "Arabella Donn",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arabella's companion, who joins her in discussing how to secure Jude's attention and supports her practical approach to courtship.",
+            "id": "anny",
+            "name": "Anny",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jude's cousin, known to him first through family talk and then encountered in Christminster, where she works for a maker of religious objects. Her intelligence and apparent independence intensify his wish to know her despite the family warning against contact.",
+            "id": "sue-bridehead",
+            "name": "Sue Bridehead",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A friend and colleague of Phillotson who listens as the schoolmaster confronts the collapse of his marriage. He represents the conventional judgment Phillotson risks when deciding whether to release an unwilling wife.",
+            "id": "gillingham",
+            "name": "Gillingham",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Little Father Time"
+            ],
+            "description": "Jude and Arabella's solemn young son, sent to live with Jude and Sue after spending his early childhood away from them. Quiet, prematurely grave, and anxious about the cost of his own existence, he joins a household already living under financial and social pressure.",
+            "id": "father-time",
+            "name": "Father Time",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arabella's second husband, an Australian publican whom she married while her marriage to Jude still legally existed. His death leaves her free to return to England and reopen her connection with Jude.",
+            "id": "cartlett",
+            "name": "Cartlett",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jude-the-obscure"
+      },
+      "recaps": {
+        "ending": "After the children's deaths, Sue interprets the catastrophe as punishment for rejecting religious and marital convention. She separates from Jude and returns to Phillotson, eventually submitting to a renewed marriage and a physical relationship she does not desire. Arabella draws the sick and despairing Jude back into marriage with her. Jude makes a final journey through severe weather to see Sue at Marygreen; they acknowledge that their love persists, but Sue refuses to leave the penitential life she has chosen. His health ruined, Jude returns to Christminster and dies alone while public celebrations fill the city. Arabella is absent and already considering a future with Physician Vilbert. She later tells a visitor that Sue will never find peace with Phillotson because she truly belongs with Jude. Jude dies excluded from the university world he once revered, and Sue remains alive but bound by guilt to the institution both had tried to escape.",
+        "in_short": "Poor and self-educated, Jude Fawley dreams of studying at Christminster, but an early marriage to Arabella Donn collapses and the university rejects him. He falls in love with his unconventional cousin Sue Bridehead, though she marries his former teacher Phillotson. Phillotson releases the unhappy Sue to Jude at great personal cost. Jude and Sue live together, obtain divorces, and raise children but avoid remarriage, enduring social exclusion and unstable work. Jude's son by Arabella, the morbid child called Father Time, kills Sue's two younger children and himself after concluding that the family cannot afford to exist; Sue then loses another baby. Broken by guilt, Sue returns to Phillotson and Jude is maneuvered back into marriage with Arabella. Still loving each other, Jude and Sue separate under the authority of beliefs they cannot reconcile. Jude dies neglected in Christminster, while Sue remains in a penitential marriage and Arabella looks toward another partner.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jude Fawley is an orphan raised by his great-aunt Drusilla in Marygreen. When schoolmaster Richard Phillotson leaves for Christminster to pursue university study and ordination, the city becomes the center of Jude's imagination. Poor but determined, he teaches himself Latin and Greek while working, eventually training as a stonemason so that he can earn a living among Christminster's historic buildings. Drusilla warns him that marriage has brought misery to their family. Jude's disciplined plans are disrupted when he meets Arabella Donn, a vigorous young woman who deliberately attracts him. Their physical relationship advances quickly. Arabella tells Jude she is pregnant, and his sense of duty overwhelms his academic timetable. They marry, though Jude already senses the distance between his idealized view of love and Arabella's practical, sometimes deceptive conduct.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude discovers that Arabella was mistaken or dishonest about being pregnant and that she has altered her appearance to attract him. The marriage becomes bitter. After a quarrel and a disturbing incident involving a pig they have raised, Arabella leaves Jude and eventually emigrates to Australia with her family. Jude is legally married but alone. Freed from their household, he resumes the project that preceded Arabella and walks toward Christminster. He also thinks about his cousin Sue Bridehead, whom his aunt has warned him to avoid because the two sides of the family are estranged. By the end of his Marygreen life, Jude has learned enough to approach the university city as a working adult, but his failed marriage and divided desires accompany him.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Christminster, Jude works as a stone mason and studies the colleges from outside. He finds Sue employed by a religious-art manufacturer and is drawn to her intelligence and independence, though he conceals his marriage. He helps her obtain work with Phillotson, now a modest schoolmaster rather than the university graduate Jude had imagined. Sue and Phillotson become engaged. When Jude finally seeks guidance from a college, a master advises him to remain in his trade, confirming that poverty and lack of formal preparation bar his way. In despair Jude drinks and publicly recites Latin, then turns from his clerical ambitions. He tells Sue about Arabella; Sue reveals her engagement, and their emotional intimacy becomes harder to deny. Arabella, now in Australia, has entered another marriage. Sue ultimately proceeds toward training and marriage with Phillotson, while Jude's religious and academic plans both lose their former certainty.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude moves to Melchester to study for the church while Sue trains as a teacher nearby. Institutional rules and gossip restrict their meetings. After punishment and confinement at the training school, Sue escapes by crossing a cold river and reaches Jude's lodging, an action that leads to her expulsion. Their attraction is evident, but Sue resists sexual intimacy and repeatedly changes how she defines their bond. Jude remains married to Arabella and tries to behave honorably. Sue, disturbed by the consequences of her closeness to Jude and by his admission that he loves her, returns to Phillotson. Despite profound uncertainty, she marries him. Jude abandons the idea of ordination, recognizing that his attachment to Sue conflicts with the moral role he had hoped to occupy. Sue's wedding closes one path without ending the connection between the cousins.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sue finds married life with Phillotson physically intolerable and admits that she loves Jude. Phillotson, after struggling with jealousy and convention, permits her to leave and live with Jude rather than compel her to remain. His decision shocks colleagues and costs him his school and social standing. Jude and Sue reunite, but Sue still fears marriage and sexual possession; their life together begins in emotional closeness and uncertainty. Jude starts divorce proceedings against Arabella, while Phillotson allows Sue to seek a divorce without publicly accusing her. Arabella reappears in England after the death of her Australian husband, and her presence unsettles the couple. Jude and Sue are eventually free in law to marry, yet their knowledge of their first marriages and Sue's resistance to formal vows make them hesitate.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude and Sue continue as an unmarried couple. They plan ceremonies more than once but recoil from the legal and emotional meanings attached to marriage. Over time they become lovers and have children, supporting themselves through Jude's stone work and Sue's sale of small goods at fairs and church events. Their refusal to present a conventional household brings gossip, lost employment, and repeated moves. Arabella reveals that she and Jude have a son, a grave child raised abroad, and sends him to live with Jude and Sue. Nicknamed Father Time because of his old, anxious manner, he struggles to feel welcome in a family under economic strain. Sue tells others that she and Jude are married when necessary, yet their vulnerability to suspicion persists. Their declining prospects eventually leave Jude longing to return to Christminster, the city that once represented his ambitions.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christminster is celebrating its colleges while Jude, Sue, Father Time, and the younger children arrive poor and tired. Jude publicly reflects on how the city excluded him. Lodging-house prejudice against the unmarried couple leaves Sue and the children in cramped rooms while Jude sleeps elsewhere. Overwhelmed, Sue tells Father Time that another baby is coming and speaks despairingly about the family's burdens. The boy concludes that children are the cause of their hardship. He kills Jude and Sue's two younger children and then himself, leaving a message explaining that there were too many of them. Sue, pregnant, later loses the expected child. The catastrophe destroys her former resistance to conventional religion. She comes to believe that her life with Jude and her departure from Phillotson caused the punishment. Jude rejects that interpretation, but cannot reach her through grief. Sue decides that they must separate and that she must return to her legal and religious duty as she now understands it.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sue returns to Phillotson and remarries him, accepting a life of penitence despite her continuing love for Jude. Arabella takes advantage of Jude's illness, loneliness, and drinking to maneuver him into marrying her again. Neither restored marriage repairs the damage. Jude travels through harsh weather to Marygreen for a final meeting with Sue. Their love remains evident, but Sue refuses to abandon the religious submission she has chosen, and Jude returns to Christminster with his health broken. He dies alone in his room while Arabella is away among the crowds attending the city's celebrations. She is already interested again in Physician Vilbert and treats Jude's death as an inconvenience to her plans. Sue remains with Phillotson, forcing herself to fulfill a marital bond she does not desire. Jude's life ends within hearing of the academic city that inspired him but never admitted him, while the relationship that gave him companionship survives only as grief and renunciation.",
+            "through": {
+              "chapter": 54
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jude-the-obscure"
+      }
+    },
+    "jude-the-obscure-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan raised by his great-aunt in Marygreen. Jude is a serious, compassionate boy whose longing for education fixes on the distant university city of Christminster. He teaches himself Latin and Greek while working, hoping eventually to enter the church, but has little money or social guidance to help him cross the barriers between his village life and academic ambition.",
+            "id": "jude-fawley",
+            "name": "Jude Fawley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The village schoolmaster at Marygreen, whose departure for Christminster awakens Jude's desire for learning. He is thoughtful and earnest, and intends to improve his prospects by pursuing a university degree and entering the church.",
+            "id": "richard-phillotson",
+            "name": "Richard Phillotson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jude's elderly great-aunt and guardian, a baker who is practical, severe, and skeptical of grand ambitions. She warns Jude that marriage has brought unhappiness to his family and speaks darkly of the Fawleys' history.",
+            "id": "drusilla-fawley",
+            "name": "Drusilla Fawley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A traveling seller of medicines who lends Jude books and encourages his attempt to teach himself classical languages, though his casual promises and questionable remedies make him an unreliable adviser.",
+            "id": "vilbert",
+            "name": "Vilbert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The lively daughter of a pig breeder near Marygreen. Direct, physically confident, and practical, she notices the shy young stonemason and draws him away from his studies into a courtship shaped by desire and unequal expectations.",
+            "id": "arabella-donn",
+            "name": "Arabella Donn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arabella's friend and confidante, who helps her navigate her courtship of Jude. Anny is more candid than Arabella and sometimes exposes the calculation behind their plans.",
+            "id": "anny",
+            "name": "Anny",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jude's cousin, first encountered in Christminster working in an ecclesiastical shop. Intelligent, unconventional, and resistant to inherited beliefs, she combines emotional reserve with a strong need for sympathy. Jude is fascinated by her independence and by the kinship between them, although their great-aunt has warned against closeness between the two branches of the family.",
+            "id": "susanna-bridehead",
+            "name": "Sue Bridehead",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Phillotson's friend and fellow schoolmaster. He listens when Phillotson faces a painful domestic decision and represents the respectable opinion against which Phillotson measures his conscience.",
+            "id": "gillingham",
+            "name": "Gillingham",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Little Father Time"
+            ],
+            "description": "Arabella and Jude's solemn young son, sent from Australia to live with his father. Small, quiet, and prematurely burdened by adult anxieties, he seems to expect hardship before it is explained to him and struggles to believe that there is room for him in the household.",
+            "id": "father-time",
+            "name": "Father Time",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arabella's Australian husband, a hotel manager who comes with her to England. He is a practical, comparatively prosperous man and is unaware at first of the full complexity of Arabella's earlier marriage.",
+            "id": "cartlett",
+            "name": "Cartlett",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly family friend who assists Jude and Sue during their later difficulties. Mrs. Edlin is plain-spoken and kind, offering practical help without sharing the harsh moral judgment they meet elsewhere.",
+            "id": "widow-edlin",
+            "name": "Widow Edlin",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jude-the-obscure-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "After the children's deaths, Sue comes to regard the catastrophe as punishment for rejecting marriage and religion. She leaves Jude and returns to Phillotson, eventually resuming their marriage despite her continuing attachment to Jude. Arabella maneuvers the ill and despondent Jude into marrying her again. Jude makes one last journey through bad weather to see Sue, but she refuses to abandon the penance she has chosen. His health worsens in Christminster while Arabella pursues amusement and renewed attention from Vilbert. Jude dies alone in his room during the university's Remembrance celebrations, his youthful academic hopes answered only by sounds from the city outside. Arabella quickly turns toward another possible match. Sue remains with Phillotson, having forced herself back into a union she once escaped, while the society that excluded Jude continues unchanged.",
+        "in_short": "Jude Fawley, a poor village orphan, dreams of studying at Christminster but is diverted into a disastrous marriage with Arabella Donn. After she leaves him, he reaches the university city only to find its colleges closed to a working stonemason. He falls in love with his intellectually independent cousin Sue Bridehead, yet both remain entangled in marriage: Sue weds Jude's former teacher Phillotson, then leaves him to live with Jude. Divorced but distrustful of marriage, Jude and Sue build an unofficial family with Jude and Arabella's grave young son, Father Time, and two children of their own. Poverty and public disapproval follow them. When Sue speaks of their children as an unbearable burden, Father Time kills the younger children and himself. Broken by the loss, Sue returns to Phillotson as religious penance, while Jude remarries Arabella. Sick and abandoned, Jude dies in Christminster without attaining either education or a lasting life with Sue.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the village of Marygreen, orphaned Jude Fawley is distressed when his schoolmaster, Richard Phillotson, leaves for Christminster to pursue higher learning. Raised by his stern great-aunt Drusilla, Jude begins to imagine the distant university city as the center of the life he wants. He struggles to educate himself while working, first trying to learn Latin and Greek from books and later becoming a skilled stonemason. His plans are interrupted when he meets Arabella Donn, the confident daughter of a pig breeder. She draws him into a physical relationship and tells him she may be pregnant. Feeling responsible, Jude marries her. Their temperaments and expectations prove incompatible, and Arabella reveals that the pregnancy was uncertain. After bitter quarrels she leaves him and eventually travels to Australia. Jude, still legally married but alone, turns again toward Christminster and the ambitions he postponed.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude settles in Christminster and finds work repairing the stone of its colleges, living physically close to academic life while remaining socially outside it. He seeks his old teacher Phillotson, who has not fulfilled his own university plan and now teaches locally. Jude also locates his cousin Sue Bridehead, an intelligent and skeptical young woman employed in a religious-art shop. Their shared curiosity and unconventional instincts draw them together, though their family has warned that Fawley marriages end badly. Conscious of his existing marriage and hoping to keep Sue near without compromising her, Jude helps her obtain work as Phillotson's assistant. He writes to college authorities for advice about admission and receives a discouraging answer telling him to remain in his trade. The reply exposes how unrealistic his hopes have been. His academic and clerical ambitions weaken as his emotional dependence on Sue grows.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sue enters a teacher-training school in Melchester but finds its strict rules oppressive. Her closeness with Jude intensifies, even as she alternately invites and resists his affection. After she leaves the school without permission to spend time with him, she is punished; rather than submit, she departs permanently. Jude, increasingly doubtful about becoming a clergyman, admits that he is married to Arabella. The disclosure wounds Sue and clarifies the barrier between them. Seeking security and trying to master feelings she distrusts, Sue agrees to marry Phillotson, who has become devoted to her. Jude cannot prevent the match and remains divided between religious aspiration, his legal bond to Arabella, and love for his cousin. Sue's marriage takes place despite her evident unease, placing both cousins inside unions that conflict with their strongest attachments.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sue's marriage to Phillotson becomes intolerable to her because she recoils from marital intimacy and continues to love Jude. She finally asks her husband to let her leave and live with Jude without deception. Phillotson, after agonizing over duty and consulting his friend Gillingham, decides that forcing her to stay would be cruel. His generosity brings severe consequences: public opinion turns against him and he loses his school position. Sue joins Jude, but her fear of physical possession and of repeating conventional marriage remains. Arabella has returned from Australia and encounters Jude again, making Sue sharply aware that his first marriage still exists. Jude and Sue live together in an emotionally intense but unsettled partnership, trying to act honestly while the institutions around them recognize only their legal spouses.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude and Sue obtain divorces but decide against marrying each other, convinced that a ceremony might damage the freely chosen bond they value. Their refusal makes housing and steady work harder to secure, and they move repeatedly while presenting themselves ambiguously to avoid scandal. Sue eventually becomes Jude's partner fully, and they have children. Arabella, whose Australian husband Cartlett later dies, sends Jude the grave young son born from their marriage. Called Father Time because of his prematurely careworn manner, the boy joins Jude and Sue's household. Jude's health and employment become less reliable, while Sue's opposition to marriage is tested by the practical penalties placed on the family. They travel back toward Christminster with the children, the city still symbolizing the education and recognition Jude never obtained.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Christminster, Jude and Sue struggle to find lodging because they are unmarried and have several children. Jude is ill, and the family is divided temporarily among cramped rooms. Overwhelmed, Sue tells Father Time that another child is expected and speaks despairingly about the difficulty of supporting so many. The boy interprets her distress with terrible literalness. He kills Jude and Sue's two younger children and then himself, leaving a note explaining that there were too many of them. Sue loses the baby she was carrying. The deaths destroy the beliefs on which she and Jude built their life: Sue concludes that their suffering is divine punishment for leaving their lawful spouses and begins turning toward an austere form of Christianity. Jude rejects that interpretation, but grief no longer unites them. Sue decides she must return to Phillotson, while Arabella again moves closer to the weakened Jude.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sue leaves Jude and returns to Phillotson, believing that resuming her marriage is a religious duty and forcing herself to accept a relationship she had escaped. Phillotson, whose earlier mercy cost him his career, takes her back. Arabella exploits Jude's illness, loneliness, and drink to arrange their remarriage. Jude remains attached to Sue and makes a final journey through cold rain to see her, but she refuses to reverse her decision even though their feelings persist. His exertion worsens his health. Back in Christminster, Jude declines while Arabella spends time away and renews her interest in the medicine seller Vilbert. During the university's Remembrance festivities, Jude dies alone, still excluded from the institution that inspired his childhood hopes. Arabella treats his death mainly as an obstacle to her next arrangement. Sue remains in self-imposed submission with Phillotson, and Jude's aspirations for learning, spiritual purpose, and an honest domestic life all end without social recognition.",
+            "through": {
+              "chapter": 53
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jude-the-obscure-amazonclassics-edition"
+      }
+    },
     "julie-of-the-wolves": {
       "characters": {
         "characters": [

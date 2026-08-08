@@ -5670,6 +5670,245 @@
         "work": "the-velveteen-rabbit"
       }
     },
+    "the-very-best-of-willa-cather-my-antonia-and-o-pioneers": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan from Virginia sent to grow up with his grandparents on the Nebraska prairie. He is the reflective narrator of the first novel, looking back on the immigrant neighbors and landscapes that formed his imagination.",
+            "id": "jim-burden",
+            "name": "Jim Burden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A spirited Bohemian girl who arrives in Nebraska with her immigrant family. Older than Jim and eager to learn English, she becomes his closest childhood friend and his most enduring personal connection to the prairie.",
+            "id": "antonia-shimerda",
+            "name": "Ántonia Shimerda",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jim's maternal grandmother, a capable farm woman who gives him a stable home after his parents' deaths. Her brisk generosity extends to immigrant neighbors whose first Nebraska winter exposes them to severe hardship.",
+            "id": "mrs-burden",
+            "name": "Mrs. Burden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ántonia's educated and deeply homesick father. A musician in Bohemia, he is poorly prepared for isolated farm life but remains gentle and values learning, asking Jim to teach his daughter English.",
+            "id": "mr-shimerda",
+            "name": "Mr. Shimerda",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Norwegian immigrant girl from a large, impoverished family. Independent and ambitious beyond the expectations of farm life, she later draws Jim toward a more worldly version of the freedom he associates with the hired girls.",
+            "id": "lena-lingard",
+            "name": "Lena Lingard",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Black Hawk moneylender who is feared for vindictiveness and manipulation. When Ántonia works in his household, his schemes make the apparently respectable home a place of particular danger.",
+            "id": "wick-cutter",
+            "name": "Wick Cutter",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A railway conductor who courts Ántonia when she is a self-supporting young woman. His confident promises appear to offer her a future beyond domestic service and the family farm.",
+            "id": "larry-donovan",
+            "name": "Larry Donovan",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anton Cuzak"
+            ],
+            "description": "Ántonia's warm and sociable Bohemian husband. His earlier life was more urban and unsettled, but on the Nebraska farm he takes pride in the energetic household the couple have created.",
+            "id": "anton-cuzak",
+            "name": "Cuzak",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest child of Swedish immigrant farmers and the central figure of the second novel. Calm, intelligent, and unusually confident in the prairie land's future, she accepts responsibility for holding her family farm together.",
+            "id": "alexandra-bergson",
+            "name": "Alexandra Bergson",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alexandra's youngest brother, still a sensitive boy when the second novel opens. She directs much of her labor and ambition toward giving him the education and broader life unavailable to the older Bergsons.",
+            "id": "emil-bergson",
+            "name": "Emil Bergson",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alexandra's thoughtful childhood friend and neighbor. Attentive to beauty but uncertain of his own economic place, he belongs emotionally to the Divide even when his family's discouragement sends him elsewhere.",
+            "id": "carl-linstrum",
+            "name": "Carl Linstrum",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Bergson family's Swedish immigrant patriarch, worn down by years of unsuccessful farming. As he approaches death, he recognizes Alexandra's superior judgment and gives her responsibility for the land and her brothers.",
+            "id": "john-bergson",
+            "name": "John Bergson",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crazy Ivar"
+            ],
+            "description": "An eccentric Norwegian settler who lives simply and understands animals, weather, and prairie conditions. Neighbors ridicule him, but Alexandra recognizes the practical value of his knowledge.",
+            "id": "ivar",
+            "name": "Ivar",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marie Tovesky"
+            ],
+            "description": "Alexandra's lively French-Bohemian neighbor and the young wife of Frank Shabata. Her warmth, beauty, and instinctive pleasure in company make her attractive to the people around her despite strain within her marriage.",
+            "id": "marie-shabata",
+            "name": "Marie Shabata",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marie's older husband, a proud farmer who broods over disappointments and distrusts his wife's sociability. His jealousy makes the Shabata household increasingly tense.",
+            "id": "frank-shabata",
+            "name": "Frank Shabata",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emil's cheerful friend from the local French Catholic community. Recently married and vigorously engaged with work and family, he presents Emil with an image of settled adulthood.",
+            "id": "amedee-chevalier",
+            "name": "Amédée Chevalier",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-very-best-of-willa-cather-my-antonia-and-o-pioneers"
+      },
+      "recaps": {
+        "ending": "The volume's second novel ends after Frank Shabata discovers his wife Marie with Emil Bergson beneath a mulberry tree and shoots them both. Alexandra, devastated by the death of the younger brother she raised, visits Frank in prison. Recognizing his remorse and misery, she promises to support a future pardon instead of seeking revenge. Carl Linstrum returns from Alaska and joins Alexandra at the farm. Grief has stripped away her older brothers' power to dictate her choices, and she and Carl decide to marry. Alexandra keeps faith with Ivar and accepts companionship without surrendering her bond to the land. The close leaves both novels' heroines marked by severe labor and loss but enduring: Ántonia within the abundant family she built with Cuzak, Alexandra beside Carl on the Nebraska farm whose future she foresaw.",
+        "in_short": "In *My Ántonia*, orphaned Jim Burden grows up in Nebraska beside Bohemian immigrant Ántonia Shimerda. Poverty and her father's suicide force Ántonia into hard labor; later she joins Black Hawk's independent hired girls. Jim leaves for education, while Ántonia is abandoned pregnant by Larry Donovan. Decades later he finds her thriving on a farm with husband Anton Cuzak and their large family, and renews their bond. In *O Pioneers!*, Alexandra Bergson preserves her Swedish American family's failing homestead by trusting the land when others leave. Prosperity brings conflict with her conventional brothers, and her beloved younger brother Emil falls in love with married neighbor Marie Shabata. Marie's jealous husband Frank kills them. Alexandra responds with mercy, seeks Frank's pardon, and chooses at last to marry her loyal friend Carl Linstrum. Across both novels, Nebraska shapes lives through hardship, memory, work, and renewal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ten-year-old Jim Burden, newly orphaned, travels from Virginia to his grandparents' Nebraska farm. The same train carries the Shimerdas, Bohemian immigrants who will live nearby. Jim adjusts to the scale and strangeness of the prairie under the care of his capable grandparents and their farmhands. He soon meets Ántonia Shimerda, a vivid, eager girl a few years older than he is. Her family has arrived with little English, inadequate equipment, and a poor dugout sold to them at an inflated price. Ántonia's educated father asks Jim to help her learn the language. Their lessons and shared exploration make them close companions, while the contrast between the secure Burden household and the Shimerdas' precarious start becomes increasingly clear.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Shimerdas' first winter brings hunger, isolation, and despair. Mr. Shimerda, unable to adapt to the life his family has chosen, kills himself. Jim's grandfather helps provide a dignified burial when religious and practical obstacles divide the neighbors. Afterward, Ántonia's brother Ambrosch directs the family labor, and Ántonia gives up regular lessons to work heavily in the fields. Jim admires her endurance but mourns the loss of their earlier freedom. Over time the farms become more established, and Jim meets other immigrant children, including the independent Lena Lingard. The Burdens eventually leave their farm for Black Hawk so Jim can attend school. Ántonia remains in the country, and the move ends the period when the two friends shared daily prairie life.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ántonia comes to Black Hawk as a domestic worker for the Harlings and becomes part of the energetic social world of immigrant hired girls. She leaves that household rather than give up dances and takes a position with the Cutters. Wick Cutter later arranges to return when Ántonia should be alone; sensing danger, she asks Jim to occupy her room while she stays elsewhere. Cutter attacks Jim in the dark before realizing the substitution, while Ántonia remains safe. Jim graduates and studies in Lincoln, where Lena Lingard, now a successful dressmaker, reenters his life. Their intimacy begins to distract him from study. When his mentor Gaston Cleric moves to Harvard, Jim follows him east, choosing education and distance over a settled life with Lena.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jim returns to Nebraska and learns that railway conductor Larry Donovan promised to marry Ántonia, took her money, and abandoned her while she was pregnant. At the Shimerda farm he finds her openly devoted to her daughter and still full of attachment to the land. They part affectionately. About twenty years later Jim visits again. Ántonia is married to Anton Cuzak and presides over a large, vigorous family on a productive farm. Work has aged her, but Jim recognizes the vitality he treasured in childhood. He befriends her children and plans to remain connected. Walking an old road afterward, he understands that Ántonia and their shared prairie past have become permanent sources of meaning in his life. This completes *My Ántonia*, the first novel in the volume.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The volume has completed Jim Burden's lifelong remembrance of Ántonia Shimerda, ending with her thriving farm family and their renewed friendship. *O Pioneers!* then begins on another Nebraska homestead. Swedish immigrant John Bergson is dying after years of unsuccessful farming. He entrusts his eldest child Alexandra with the land and with guiding her brothers Oscar, Lou, and young Emil. As drought and crop failures drive neighboring families away, Alexandra studies the country and seeks advice from the eccentric but knowledgeable Ivar. She concludes that the region will recover and persuades her doubtful brothers to mortgage their existing property in order to buy more land cheaply. The choice risks the family's security but expresses her conviction that they must understand and cooperate with the prairie rather than merely resist it.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the first novel closes with Ántonia established among her family, the second follows Alexandra Bergson's transformation of a failing homestead. Sixteen years after her risky land purchases, the Bergsons are prosperous. Alexandra manages an impressive farm, while Oscar and Lou live nearby and Emil has received an education. Her childhood friend Carl Linstrum returns after years of uncertain work, and their old affection revives. Emil, meanwhile, is strongly drawn to Alexandra's lively married neighbor Marie Shabata. Oscar and Lou fear that Carl might marry Alexandra and gain an interest in property they regard as belonging to the family. Their hostility convinces Carl to seek success in Alaska before asking Alexandra for a shared future. Emil also leaves for Mexico, hoping distance will end an attachment he cannot honorably pursue.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The volume's first heroine, Ántonia, has endured abandonment and built a sustaining family; its second, Alexandra, now faces a loss her practical foresight cannot prevent. Emil returns from Mexico still in love with Marie, whose marriage to the jealous Frank Shabata remains unhappy. Both try to restrain their feelings. The sudden death of Emil's newly married friend Amédée confronts him with life's brevity. Before leaving again, Emil goes to say farewell to Marie. They meet beneath a mulberry tree and finally acknowledge their love. Frank comes upon them with a gun and shoots both. Ivar finds their bodies. Alexandra is crushed by Emil's death and by the knowledge that she failed to see the danger growing close to her home. Frank is arrested for the killings.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Emil and Marie's deaths, Alexandra visits Frank in prison. She sees not only the man who killed her brother but a broken person living with an irreversible act, and she promises to help seek his pardon. Her mercy does not undo the deaths; it determines how she will carry them. Carl returns from Alaska and comes back to the Bergson farm. Alexandra acknowledges her loneliness and her need for his companionship, no longer permitting Oscar and Lou's objections to govern her. She and Carl decide to marry, and she continues to give Ivar a home. The collection therefore closes with two different forms of prairie endurance: Jim's Ántonia surrounded by the family and abundance she created, and Alexandra accepting love after achievement, isolation, and grief. Neither woman's relation to the land prevents suffering, but both shape durable lives within it.",
+            "through": {
+              "chapter": 77
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-very-best-of-willa-cather-my-antonia-and-o-pioneers"
+      }
+    },
     "the-vile-village": {
       "characters": {
         "characters": [

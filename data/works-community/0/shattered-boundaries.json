@@ -2876,6 +2876,169 @@
         "work": "shipping-news"
       }
     },
+    "shoeless-joe": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Iowa farmer, baseball devotee, husband, and father who takes a mysterious instruction literally enough to build part of a ballpark in his cornfield. He is willing to risk money and credibility for the possibility that a lost piece of baseball can live again.",
+            "id": "ray-kinsella",
+            "name": "Ray Kinsella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ray's wife, whose trust in him is practical rather than naive. She accepts the strange baseball field growing beside their home and supports his search for what the voice is asking, even as the farm's finances tighten.",
+            "id": "annie-kinsella",
+            "name": "Annie Kinsella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ray and Annie's young daughter. She shares the household's ability to see the ballplayers in the field and treats their presence with the direct acceptance of a child.",
+            "id": "karin-kinsella",
+            "name": "Karin Kinsella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shoeless Joe"
+            ],
+            "description": "The gifted outfielder banned from organized baseball after the 1919 World Series scandal. He is the first player to appear on Ray's field, grateful for a place where he can play again, and becomes the link between the visible farm and the team emerging from the corn.",
+            "id": "joe-jackson",
+            "name": "Joe Jackson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated, intensely private writer who has withdrawn from public life. Ray becomes convinced that the next message from the field concerns him and travels east to seek him despite having no invitation or reasonable explanation.",
+            "id": "j-d-salinger",
+            "name": "J. D. Salinger",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Moonlight Graham",
+              "Doc Graham",
+              "Archie"
+            ],
+            "description": "Archibald Graham, remembered in baseball records for a single major-league appearance in which he never came to bat. Ray and Salinger seek the later history of the obscure player and discover that his life became far more consequential away from the ballpark.",
+            "id": "archibald-graham",
+            "name": "Archibald Graham",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly former owner of Ray's farm, proud of a claimed connection to the Chicago Cubs. His baseball identity matters deeply to him, even where memory, aspiration, and the official record do not align neatly.",
+            "id": "eddie-scissons",
+            "name": "Eddie Scissons",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Annie's brother, who regards Ray's field as wasted farmland and the family's debt as an approaching crisis. He presses for a conventional financial solution because he cannot initially see what Ray, Annie, and Karin see.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ray's estranged twin brother, long absent from the family and living a wandering life. His return to Iowa makes the field part of a family reunion as well as a baseball miracle.",
+            "id": "richard-kinsella",
+            "name": "Richard Kinsella",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ray and Richard's deceased father, whose stories gave Ray his lifelong attachment to baseball. The field holds out the possibility that the game's unfinished family connections can be restored as well as its historical losses.",
+            "id": "john-kinsella",
+            "name": "John Kinsella",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shoeless-joe"
+      },
+      "recaps": {
+        "ending": "The impossible ballgame becomes a gathering of several unfinished lives. The young Archie Graham finally plays with great players, then gives up that renewed chance when Karin needs medical help; crossing out of the field, he becomes the elderly Doctor Graham and cannot return to youth, but accepts the choice. Mark is at last able to see the players and understand why the field must remain. J. D. Salinger is invited beyond the outfield and walks into the corn with the team, choosing the unknown continuation offered there. Ray's estranged twin Richard returns, and the final players include Ray's father, John Kinsella, restored as a young catcher. Ray introduces him to the family John never knew and asks him to play catch. The field thus fulfills a need deeper than the return of banned ballplayers: it gives Ray a peaceful reunion with his father and binds baseball memory to forgiveness. The threat to the farm is answered by the visitors the field will draw, while the closing game of catch completes Ray's personal journey.",
+        "in_short": "Iowa farmer Ray Kinsella hears a voice telling him to build a baseball field in his corn, and he obeys despite the financial risk. Shoeless Joe Jackson and other dead players appear there, able to play again beyond the judgments that ended their careers. Further messages lead Ray to the reclusive writer J. D. Salinger and then to Archibald \"Moonlight\" Graham, whose only major-league game never included an at-bat. Ray meets Graham as an old doctor and later brings a young version of him home. As creditors close in, the field gathers banned players, Graham, Ray's estranged brother, and finally Ray's dead father. Young Graham abandons his baseball chance to save Ray's daughter and becomes the doctor again. Salinger follows the players into the corn, Mark finally sees them, and Ray plays catch with his restored father. The field survives as a place where lost possibilities and family bonds receive another chance.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ray Kinsella lives on an Iowa farm with his wife, Annie, and their daughter, Karin. While walking through his corn, he hears a voice instructing him to build a baseball field. He interprets the message as a promise that Shoeless Joe Jackson, the banned star his father taught him to admire, will be able to play again. With Annie's support, Ray sacrifices productive acreage and money to construct the left-field portion of a ballpark. For months nothing happens. Then Joe appears, unmistakably young and eager to play, and other members of the 1919 Chicago team begin joining him. Ray, Annie, and Karin can see them, though others cannot. The field becomes proof that Ray's act of faith has opened a passage for players cut off from the game, but the farm's lost income makes that faith increasingly costly.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A further message tells Ray to ease someone's pain. He decides it refers to J. D. Salinger, the famous writer who has retreated from public contact, and drives from Iowa to New Hampshire to find him. Ray's approach is intrusive and Salinger is hostile, but Ray persuades him to attend a game at Fenway Park. There Ray sees a message directing him toward Archibald \"Moonlight\" Graham, a little-remembered player whose major-league career lasted one appearance without an at-bat. Salinger perceives the same summons, confirming that the journey is not merely Ray's private obsession. The two set out together to learn why a vanished ballplayer is connected to the field and whose pain their travels may actually be easing.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ray and Salinger travel to Chisholm, Minnesota, and research Archibald Graham. They discover that after his brief baseball career he became a doctor remembered for decades of quiet service, especially to children. Although Graham is dead in Ray's own time, Ray walks through the town at night and enters an earlier period, where he meets the elderly doctor. Graham explains that he once wanted the chance to face a major-league pitcher but does not treat his medical life as a consolation prize; the people he helped mattered more. On the road back to Iowa, Ray and Salinger encounter a young hitchhiker who calls himself Archie Graham and is still pursuing baseball. They take him with them, giving the unrealized player and the accomplished doctor another possible meeting point on Ray's field.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The journey and the field draw further strands of baseball memory toward the farm. Eddie Scissons, the elderly former owner of Ray's land, has built much of his identity around a claimed past with the Chicago Cubs, although the official history cannot support the story as he tells it. His longing belongs beside the other gaps between recorded achievement and the life a person needed baseball to represent. Meanwhile the practical danger sharpens: Annie's brother Mark sees only debt, lost crops, and property that should be sold before the family loses everything. Because he cannot see the players, Ray's defense of the field appears irresponsible. Ray returns with Salinger and young Archie while the unseen games continue and the farm approaches a decision that imagination alone may not postpone.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The field becomes the setting for both a ballgame and a family reckoning. Young Archie Graham receives the chance the historical record denied him and plays among the great dead players. When Karin is suddenly in danger, however, he crosses the boundary of the field to help her and becomes the elderly Doctor Graham; he cannot return to youth, but accepts that choosing medicine over baseball expresses the life he truly made. The crisis allows Mark to see the players at last, and Karin's belief that visitors will pay to experience the field offers a way to preserve the farm. Salinger is invited into the corn and goes with the team. Ray's estranged twin Richard returns, and Ray also recognizes the young catcher who appears as his dead father, John. He introduces his father to Annie and Karin, then asks him to play catch. The closing exchange restores a relationship beyond death and reveals that the field has been easing Ray's pain as surely as anyone else's.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shoeless-joe"
+      }
+    },
     "shogun": {
       "characters": {
         "characters": [

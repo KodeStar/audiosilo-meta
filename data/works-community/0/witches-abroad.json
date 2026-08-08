@@ -5510,6 +5510,173 @@
         "work": "you-only-live-twice"
       }
     },
+    "zadig": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Babylonian known for learning, generosity, and careful observation. He expects reason and good conduct to bring happiness, but his early engagement is broken after an injury and he repeatedly finds that sound evidence can be twisted by prejudice or envy.",
+            "id": "zadig",
+            "name": "Zadig",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The woman Zadig initially intends to marry. When he is wounded while defending her and may lose an eye, her response gives him an abrupt lesson in the limits of professed devotion.",
+            "id": "semira",
+            "name": "Semira",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A woman Zadig marries after his first engagement ends. He believes her affectionate and faithful, then arranges an elaborate test with Cador to learn whether her conduct matches her assurances.",
+            "id": "azora",
+            "name": "Azora",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zadig's trusted friend, discreet enough to assist with a test of Azora and dependable enough to warn and help Zadig when danger later reaches him at court.",
+            "id": "cador",
+            "name": "Cador",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courtier whose resentment is sharpened by Zadig's success and reputation. He looks for a way to turn incomplete evidence against him and make ordinary words appear treasonous.",
+            "id": "arimazes",
+            "name": "Arimazes",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The king of Babylon. He recognizes Zadig's ability and raises him to high office, trusting him to settle disputes fairly, but royal favor remains vulnerable to suspicion.",
+            "id": "moabdar",
+            "name": "Moabdar",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Babylon, admired for judgment as well as beauty. She notices Zadig's integrity as he rises at court, placing both of them within reach of the king's jealousy.",
+            "id": "astarte",
+            "name": "Astarte",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Egyptian merchant who acquires Zadig after a local court condemns the traveler to servitude. Practical and prosperous, he soon sees that his new servant's intelligence is unusually valuable.",
+            "id": "setoc",
+            "name": "Setoc",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arabian brigand chief who receives Zadig with surprising courtesy. He lives by force but speaks frankly, respects courage, and knows what has happened in the disorder surrounding Babylon.",
+            "id": "arbogad",
+            "name": "Arbogad",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boastful Babylonian warrior who enters the public contest arranged to determine Astarte's husband and Babylon's ruler. His confidence rests more securely on display and opportunism than on judgment.",
+            "id": "itobad",
+            "name": "Itobad",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jesrad"
+            ],
+            "description": "A mysterious hermit who asks Zadig to travel with him. His disturbing conduct challenges Zadig's habit of judging an event by its immediate appearance and turns their journey into a lesson about the limits of human understanding.",
+            "id": "the-hermit",
+            "name": "The Hermit",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "zadig"
+      },
+      "recaps": {
+        "ending": "Back in Babylon, Zadig enters the contest intended to select Astarte's husband and the kingdom's ruler. He wins the fighting, but Itobad steals his white armor and presents himself as the champion. The deception does not survive the second part of the contest: Zadig solves the riddles that defeat the other candidates, explains how his victory was stolen, and defeats Itobad again while their equipment makes their identities unmistakable. Recognized as the true victor, Zadig marries Astarte and becomes king. His eventual happiness follows a long sequence in which correct observation was often punished, good intentions produced danger, and events could not be understood from their nearest effects. As ruler he applies the justice and discernment that first advanced him at Moabdar's court, while the hermit's lesson leaves the tale's argument about fate and providence deliberately larger than any single human judgment.",
+        "in_short": "Zadig, a learned young Babylonian, repeatedly discovers that intelligence and virtue do not guarantee happiness. Failed relationships, false accusations, and an enemy's intrigue lead unexpectedly to royal favor, and King Moabdar makes him chief minister. When affection grows between Zadig and Queen Astarte, the jealous king threatens them and Zadig flees. In Egypt he is enslaved after intervening in an assault, but his judgment wins the confidence of the merchant Setoc and helps change destructive customs. Further travels bring him news of Babylon's collapse and Astarte's captivity. He helps restore her freedom, then journeys with a mysterious hermit whose apparently cruel actions expose the limits of judging providence from isolated events. Returning to Babylon, Zadig wins the contest for Astarte and the throne; although Itobad steals the visible proof of his victory, Zadig solves the final riddles, exposes him, marries Astarte, and governs justly.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Zadig begins as a prosperous, educated young man in Babylon who trusts reason, friendship, and virtue. He is wounded while defending his intended bride, Semira, from armed rivals. A doctor predicts that he will lose an eye, and Semira abandons him rather than marry a man she believes disfigured; the eye then heals. Zadig marries Azora, but a test arranged with his friend Cador reveals how quickly her fidelity can give way to self-interest. Retreating from romance, Zadig studies nature. His exact deductions from animal tracks allow him to describe the queen's dog and the king's horse without having seen either animal, but officials mistake his knowledge for proof that he stole them. He escapes punishment only after the missing animals return, and even then his accuracy brings expense rather than honor. The pattern is established: Zadig reads evidence well, while society reads Zadig badly.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zadig's learning and generosity make him respected, but they also attract the envy of Arimazes. A fragment of verse is deliberately made to look like an attack on King Moabdar; the missing half later clears Zadig and exposes the manipulation. His conduct in public contests and disputes brings him to the attention of the king and Queen Astarte. Moabdar appoints him chief minister, and Zadig earns trust by hearing both sides, looking beyond rank, and devising tests that reveal facts without rewarding confident falsehoods. His judgments reduce quarrels that others have prolonged for advantage. The rise appears to vindicate his principles, yet his position depends upon a court where reputation and jealousy can still outweigh proof.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zadig and Astarte become conscious of a mutual attachment, and Moabdar's jealousy turns their danger immediate. Cador helps warn Zadig, who escapes Babylon while Astarte's fate remains uncertain. In Egypt, Zadig sees a man beating a woman and intervenes. The attacker dies in the struggle, and the woman, Missouf, gives an account that does not reward her rescuer. Egyptian law condemns Zadig to be sold as a slave. The merchant Setoc buys him and quickly recognizes his intelligence. Even in servitude, Zadig improves his master's affairs by demonstrating that judgment and useful knowledge matter more than outward status.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Arabia, Zadig uses persuasion and a carefully staged demonstration to challenge the custom requiring widows to die on their husbands' funeral fires. He also helps Setoc in commercial and legal matters. At a supper of religious representatives, he shows that their rival traditions share more than their arguments admit, turning threatened violence into temporary agreement. Later he encounters Arbogad, a powerful robber who offers hospitality and news: Moabdar is dead, Babylon has fallen into disorder, and Astarte has disappeared amid competing claimants. Zadig continues his search. He meets a ruined fisherman driven toward despair by political chaos and private loss, and helps him with money and a practical route back to safety, though Zadig still lacks the certainty he wants about Astarte.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zadig learns that Astarte is alive but held under another's power. Through another apparently impossible assignment involving a basilisk, he reaches her and helps create the conditions for her return to Babylon. The kingdom arranges a contest to choose her husband and its ruler. On his way, Zadig travels with a hermit whose baffling acts include rewarding vice, destroying a generous host's property, and causing a young person to die. The hermit reveals himself as Jesrad and explains that the hidden consequences differ from what Zadig can see, forcing him to confront the limits of immediate judgment. In Babylon, Zadig wins the combat portion of the royal contest, but Itobad steals his white armor and falsely claims the victory. Zadig nevertheless solves the final enigmas, then defeats Itobad in an open rematch and proves the theft. He is recognized as the true champion, marries Astarte, becomes king, and rules with the fairness that repeatedly placed him in danger before it finally brought him authority.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "zadig"
+      }
+    },
     "zealots-eleventh-crusade": {
       "characters": {
         "characters": [
