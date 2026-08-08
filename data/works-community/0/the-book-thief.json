@@ -1803,6 +1803,233 @@
         "work": "the-brothers-karamazov"
       }
     },
+    "the-brothers-karamazov-jimcin-recordings-edition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Alyosha"
+            ],
+            "description": "The youngest acknowledged Karamazov brother, a gentle novice living at the local monastery under Elder Zosima's guidance. He is trusted across the divided family and repeatedly acts as listener, messenger, and peacemaker without sharing his father's cynicism or his brothers' extremes.",
+            "id": "alexei-fyodorovich-karamazov",
+            "name": "Alexei Fyodorovich Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wealthy and disreputable Karamazov patriarch. Vulgar, theatrical, and neglectful of his sons, he has accumulated money while avoiding responsibility. His dispute with Dmitri concerns both an unsettled inheritance and their rivalry for Grushenka's attention.",
+            "id": "fyodor-pavlovich-karamazov",
+            "name": "Fyodor Pavlovich Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mitya"
+            ],
+            "description": "Fyodor's passionate eldest son, a former army officer whose appetites, generosity, jealousy, and rages follow one another rapidly. He believes his father has withheld money due to him and is engaged to Katerina while consumed by desire for Grushenka.",
+            "id": "dmitri-fyodorovich-karamazov",
+            "name": "Dmitri Fyodorovich Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The intellectually formidable middle brother, educated and skeptical, who has returned to the town amid the family dispute. Ivan wrestles with moral responsibility, suffering, and belief while maintaining an outward reserve that makes his intentions difficult for others to read.",
+            "id": "ivan-fyodorovich-karamazov",
+            "name": "Ivan Fyodorovich Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A servant in Fyodor's household, raised there after his mother died giving birth to him and widely suspected of being Fyodor's unacknowledged son. Intelligent, resentful, and prone to epileptic seizures, he cultivates cooking and listens closely to Ivan's philosophical arguments.",
+            "id": "pavel-fyodorovich-smerdyakov",
+            "name": "Pavel Fyodorovich Smerdyakov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A revered monk and Alyosha's spiritual teacher. Elderly and gravely ill, he emphasizes active love, personal responsibility, and honest engagement with the world. Families and townspeople seek his counsel, though his authority also attracts resentment within the monastery.",
+            "id": "elder-zosima",
+            "name": "Elder Zosima",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grushenka"
+            ],
+            "description": "A young woman living under a merchant's protection who has become the focus of both Fyodor's and Dmitri's desire. She is known for wit, pride, and a willingness to play her rivals against one another, while guarding the injuries and hopes beneath that public role.",
+            "id": "agrafena-alexandrovna-svetlova",
+            "name": "Agrafena Alexandrovna Svetlova",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Katya"
+            ],
+            "description": "Dmitri's proud and wealthy fiancée. Their bond began when he gave her money during a family crisis, and she later repaid him and committed herself to him. Her gratitude, wounded pride, and intense sense of duty complicate the brothers' relationships.",
+            "id": "katerina-ivanovna-verkhovtseva",
+            "name": "Katerina Ivanovna Verkhovtseva",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ambitious seminarian associated with the monastery and the Karamazov household. He is clever, worldly, and alert to scandal, often carrying information between people while masking envy and self-interest beneath familiarity.",
+            "id": "mikhail-rakitin",
+            "name": "Mikhail Rakitin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished former army captain whom Dmitri publicly humiliates. Fiercely protective of his family's dignity, he is torn between desperate material need and refusal to accept charity under degrading terms.",
+            "id": "captain-snegiryov",
+            "name": "Captain Snegiryov",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain Snegiryov's school-age son, a proud and sensitive boy who defends his father's honor against classmates. His hostility toward Alyosha grows from having seen Dmitri disgrace the captain in public.",
+            "id": "ilyusha-snegiryov",
+            "name": "Ilyusha Snegiryov",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lise"
+            ],
+            "description": "Madame Khokhlakov's spirited teenage daughter, who uses a wheelchair and shares an affectionate, teasing bond with Alyosha. Her emotional volatility and fascination with suffering contrast with the simple future she sometimes imagines with him.",
+            "id": "lise-khokhlakov",
+            "name": "Lise Khokhlakov",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent, self-possessed schoolboy admired by the younger boys around him. He values independence and modern ideas, but his pride conceals deep concern for his sick friend Ilyusha and anxiety about repairing their quarrel.",
+            "id": "kolya-krasotkin",
+            "name": "Kolya Krasotkin",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fyodor's longtime servant and former soldier, married to Marfa and loyal to the household despite his master's behavior. He helped raise the neglected Karamazov boys and remains a stubborn defender of the house.",
+            "id": "grigory-vasilievich-kutuzov",
+            "name": "Grigory Vasilievich Kutuzov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-brothers-karamazov-jimcin-recordings-edition"
+      },
+      "recaps": {
+        "ending": "At Dmitri's trial, the prosecution builds a persuasive circumstantial case from his threats, his sudden possession of money, Grigory's testimony, and the absence of another accepted suspect. Ivan attempts to accuse Smerdyakov and produce the stolen cash, but his feverish collapse and lack of a living witness make the intervention seem unreliable. Katerina, torn between protecting Dmitri and answering his love for Grushenka, submits Dmitri's earlier letter describing a possible plan to kill his father. The jury convicts him, and he is sentenced to penal servitude in Siberia. Ivan and Katerina arrange a possible escape, while Dmitri considers accepting suffering yet hopes to flee with Grushenka. Ivan remains seriously ill. The novel closes after Ilyusha's funeral. Alyosha gathers the boy's friends by the stone where Ilyusha once wanted to be buried and asks them to preserve their memory of love and fellowship. Their promise does not settle the Karamazov family's future, but it answers the trial's despair with a commitment to mutual responsibility and remembered goodness.",
+        "in_short": "Fyodor Karamazov's three acknowledged sons return to a household divided by money, desire, and belief. Dmitri fights his father over an inheritance and over Grushenka; Ivan challenges religious explanations for innocent suffering; Alyosha follows Elder Zosima's teaching of active love. After Fyodor is murdered, Dmitri is arrested because his threats, desperate search for money, and flight make him appear guilty. The actual killer is the servant Smerdyakov, who says Ivan's ideas and departure gave him moral permission. He returns the stolen money to Ivan and then kills himself. Ivan breaks down before he can make the truth credible. Katerina's damaging letter helps convict Dmitri, who is sentenced to Siberia while friends plan his escape with Grushenka. Alongside the family tragedy, Alyosha befriends the dying schoolboy Ilyusha and his companions. After Ilyusha's funeral, Alyosha urges the boys to remember their shared kindness, ending the novel with fellowship rather than a resolved future for the brothers.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Fyodor Pavlovich Karamazov has spent his life pursuing money and pleasure while neglecting his sons. Dmitri, the eldest, was raised by others and now disputes his father's handling of his maternal inheritance. Ivan, the educated skeptic, and Alyosha, a novice devoted to Elder Zosima, are the sons of Fyodor's second marriage. The family gathers in the monastery in hopes that Zosima can mediate between Fyodor and Dmitri. Their financial conflict is sharpened by rivalry over Grushenka, whom both father and son desire. Fyodor turns the solemn meeting into a performance of insults and self-abasement, revealing how little ordinary negotiation can restrain the family. Alyosha remains between the competing men, committed to his spiritual teacher yet already being drawn into the crisis outside the monastery.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The monastery meeting collapses in scandal, and the Karamazovs return to their separate feuds. Dmitri explains to Alyosha how his engagement to Katerina began with a mixture of generosity, humiliation, and debt, and how he later spent money she entrusted to him. Although bound to Katerina, he is obsessed with Grushenka and fears that she will visit Fyodor for the money he offers her. In Fyodor's house, Ivan observes the conflict while the servant Smerdyakov repeats skeptical ideas and speaks suggestively about moral freedom. Dmitri bursts in searching for Grushenka, assaults his father, and threatens to kill him. The episode leaves witnesses certain of his hatred and gives his future words and movements a dangerous meaning.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alyosha carries messages among Dmitri, Katerina, Grushenka, and the injured pride surrounding them. Katerina asks him to help Captain Snegiryov, whom Dmitri dragged from a tavern and humiliated before his son. The captain initially accepts the possibility of aid, then rejects the offered money because he cannot bear the terms under which his dignity was broken. Alyosha also meets the schoolboy Ilyusha, whose anger comes from witnessing his father's disgrace. In a tavern, Ivan tells Alyosha that no promised harmony can justify the suffering of innocent children. He presents his story of a ruler who confronts the returned Christ and prefers managed obedience to human freedom. Alyosha answers his brother with affection rather than a philosophical solution. Before leaving town, Ivan speaks with Smerdyakov, who hints that an epileptic seizure may soon remove him from duty at Fyodor's house.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elder Zosima dies after giving an account of his youth and teaching that each person shares responsibility for others. When his body begins to decay sooner than his admirers expected, hostile monks and curious townspeople treat the odor as evidence against his holiness. Alyosha suffers a crisis of faith and lets Rakitin take him to Grushenka, expecting temptation. Instead, Grushenka responds compassionately to his grief, and each recognizes the other's capacity to begin again. Alyosha returns to the monastery, dreams of the wedding at Cana, and leaves with renewed love for the world and a determination to live outside the cloister. Meanwhile Dmitri's need to repay Katerina and prevent Grushenka from choosing Fyodor becomes frantic. He races from one unlikely source of money to another as the feared meeting at his father's house approaches.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dmitri fails to obtain the money he believes could restore his honor. Armed and desperate, he goes to Fyodor's house looking for Grushenka, enters the garden, and strikes the servant Grigory while escaping. Learning that Grushenka has gone to meet the Polish officer who once abandoned her, Dmitri suddenly produces cash, buys food and drink, and rushes to Mokroye intending one final celebration. Grushenka discovers that her former lover is not the man she remembered and declares her love for Dmitri. Their reconciliation is interrupted by officials, who announce that Fyodor has been murdered and robbed. Dmitri's earlier threats, his presence at the house, the blood on him, and his apparent possession of the missing money make him the immediate suspect. He admits attacking Grigory but denies killing his father.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the preliminary investigation, Dmitri explains that part of his money came from a sum he had secretly kept after spending the rest of Katerina's funds, but his shame and inconsistent conduct make the account difficult to believe. The evidence is assembled against him: the open route into Fyodor's room, Grigory's recollection, Dmitri's threats, and the missing envelope. He is imprisoned awaiting trial and begins to imagine suffering as a possible moral rebirth, while still loving Grushenka and hoping for freedom. Alyosha meanwhile becomes involved with Ilyusha and the schoolboys. The proud boy is gravely ill, and Kolya Krasotkin overcomes his vanity to visit him and restore their friendship. The boys' efforts cannot reverse the illness, but they create a community around the Snegiryov family that contrasts with the isolation of the Karamazovs.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ivan visits Smerdyakov repeatedly and at last learns the hidden account of Fyodor's death. Smerdyakov says he feigned his seizure, killed Fyodor when the house was vulnerable, and took the money. He insists that Ivan's statements about morality and Ivan's decision to leave amounted to permission. Smerdyakov gives Ivan the stolen cash, then kills himself before he can testify. Burdened by guilt and fever, Ivan hallucinates a mocking visitor who voices his own doubts. At Dmitri's trial, witnesses reconstruct the quarrels, the money, and the night of the murder. The defense emphasizes uncertainty and the danger of turning Dmitri's disordered character into proof. Ivan tries to expose Smerdyakov and presents the money, but his illness and the dead man's absence weaken the confession. Katerina possesses a letter in which Dmitri had described killing his father if he could not repay her.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Katerina submits Dmitri's incriminating letter after his attachment to Grushenka overwhelms her resolve to protect him. The prosecution's coherent story proves stronger than the defense's doubts, and the jury convicts Dmitri of murdering Fyodor. He is sentenced to twenty years in Siberia, though Ivan and Katerina have discussed arranging his escape. Dmitri, transformed but not settled, feels capable of accepting suffering yet also imagines fleeing abroad with Grushenka and eventually returning. Ivan lies seriously ill, and Katerina cares for him. Ilyusha dies, and Alyosha attends the funeral with Kolya and the other boys. At the stone associated with Ilyusha, Alyosha asks them never to forget their friend or the kindness that joined them. The boys affirm their bond and follow him to the funeral meal, closing the story with a shared memory that may guide them beyond the failures of the older generation.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-brothers-karamazov-jimcin-recordings-edition"
+      }
+    },
     "the-brothers-karamazov-naxos-audiobooks-edition": {
       "characters": {
         "characters": [
