@@ -1335,6 +1335,232 @@
         "work": "cinder"
       }
     },
+    "circe": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An immortal daughter of the sun god Helios and the nymph Perse. Her mortal-sounding voice and unremarkable divine powers make her an object of contempt in her father's brilliant court. More attentive to suffering than most of her family, she risks approaching the condemned Titan Prometheus when he is brought before Helios for punishment.",
+            "id": "circe",
+            "name": "Circe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Titan of the Sun"
+            ],
+            "description": "Circe's father, a powerful Titan who drives the sun across the sky. Radiant, wealthy, and accustomed to obedience, he presides over a court in which status and divine power determine worth.",
+            "id": "helios",
+            "name": "Helios",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Circe's mother, a beautiful ocean nymph who sought a match with Helios for the rank it would bring. She shares the divine court's concern with beauty and prestige and offers little comfort to a daughter who reflects poorly on her.",
+            "id": "perse",
+            "name": "Perse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Circe's younger sister, beautiful, cutting, and skilled at exploiting the hierarchy of Helios's household. She treats Circe with contempt and seeks a powerful marriage suited to her ambitions.",
+            "id": "pasiphae",
+            "name": "Pasiphae",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Circe's younger brother, whom she tends closely after his birth. Precocious and self-contained, he learns rapidly and leaves their father's halls to establish power of his own.",
+            "id": "aeetes",
+            "name": "Aeëtes",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Titan who defied Zeus by helping mortals and is brought to Helios's hall to be punished. Though bloodied and restrained, he responds to Circe's secret act of compassion with calm dignity, giving her an early glimpse of courage independent of power.",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mortal fisherman whom Circe meets near the shore. Honest and physically beautiful, he becomes the focus of her first sustained love and of her growing determination to alter the limits placed on mortal life.",
+            "id": "glaucos",
+            "name": "Glaucos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lovely sea nymph desired and flattered by many gods. Glaucos becomes fascinated with her after entering divine society, and Circe sees her as a rival for his affection.",
+            "id": "scylla",
+            "name": "Scylla",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The swift messenger god, clever, irreverent, and drawn to novelty. He visits Circe on Aiaia despite the island's isolation, bringing news of the gods and becoming her intermittent companion and lover.",
+            "id": "hermes",
+            "name": "Hermes",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated mortal craftsman serving King Minos of Crete. Intelligent, observant, and constrained by the king's power, he comes to Aiaia to escort Circe to Pasiphae, whose dangerous labor requires another witch's aid.",
+            "id": "daedalus",
+            "name": "Daedalus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aeëtes' young daughter and a formidable witch in her own right. She reaches Aiaia with Jason while fleeing her homeland, carrying the consequences of the violence she committed to help him obtain the Golden Fleece.",
+            "id": "medea",
+            "name": "Medea",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The resourceful king of Ithaca, stranded on Aiaia with surviving crewmen during his long return from the Trojan War. Wary and persuasive, he meets Circe's power with negotiation rather than force and proves as interested in stories and strategy as she is.",
+            "id": "odysseus",
+            "name": "Odysseus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mortal son born to Circe and Odysseus on Aiaia after Odysseus has resumed his journey home. A demanding infant vulnerable to divine hostility, he becomes the center of Circe's fiercely protective life.",
+            "id": "telegonus",
+            "name": "Telegonus",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess of wisdom and Odysseus's divine patron. She appears to Circe with a demand concerning the newborn Telegonus, making clear that she regards the child as a threat to plans she will not explain.",
+            "id": "athena",
+            "name": "Athena",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Odysseus's widow and the former queen of Ithaca. Intelligent, guarded, and exhausted by the aftermath of her husband's return, she comes to Aiaia with her son after Odysseus's death and seeks refuge from Athena's intentions.",
+            "id": "penelope",
+            "name": "Penelope",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of Odysseus and Penelope, now a young man living in the shadow of his father's reputation. He accompanies his mother to Aiaia although Telegonus's killing of Odysseus might have been expected to make the two families enemies. He is quiet, practical, and unlike the heroic image Circe anticipated.",
+            "id": "telemachus",
+            "name": "Telemachus",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "circe"
+      },
+      "recaps": {
+        "ending": "Circe refuses Athena's offer of lasting glory through Telemachus and chooses a life directed by her own desires. With Telemachus she crosses Scylla's strait and uses the poisoned spear to destroy the monster she created, accepting responsibility for ending its violence. She then compels Helios to secure her release from exile by threatening open conflict before Zeus. Penelope remains on Aiaia to learn witchcraft, while Telegonus leaves under Athena's patronage to build a life connected to the wider world. Circe and Telemachus acknowledge their love. Circe prepares a final potion from the flowers that once transformed Glaucos. She believes it will strip away her divinity rather than reveal hidden godhood, allowing her to become mortal. The novel closes with her envisioning an ordinary shared future with Telemachus—work, children, aging, and death—and drinking the potion in hope of choosing that finite life.",
+        "in_short": "Despised in Helios's court, the nymph Circe discovers witchcraft by transforming the mortal Glaucos into a god and the nymph Scylla into a monster. Exiled to Aiaia, she develops her power through labor and meets figures including Daedalus, Medea, and Odysseus. After sailors assault her, she turns predatory visitors into pigs. Odysseus becomes her lover and leaves her pregnant with Telegonus, whom she protects from Athena. Grown, Telegonus sails to Ithaca and accidentally kills his father. He returns with Penelope and Telemachus; the four gradually discard the heroic stories that shaped them. Telegonus departs, and Penelope chooses witchcraft. Circe and Telemachus fall in love, destroy Scylla, and win Circe's freedom from Helios. Rejecting immortality and Athena's plans, Circe drinks a potion she expects will make her mortal so she can share an ordinary, finite life with Telemachus.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Circe grows up in the dazzling halls of her father Helios, mocked by her divine family for her weak voice and lack of beauty. When the punished Titan Prometheus is brought before Helios, she secretly gives him comfort and learns that defiance can exist without superior strength. Her siblings Pasiphae and Perses are cruel, while the younger Aeëtes briefly becomes her closest companion before leaving to rule his own kingdom. Circe falls in love with a mortal fisherman, Glaucos. Hoping to free him from age and death, she uses the sap of mysterious flowers and transforms him into a sea god. Divinity changes his ambitions, and he turns toward the beautiful nymph Scylla. Jealous and desperate, Circe uses the flowers again, intending to expose Scylla's ugliness, but instead changes her into a ravenous sea monster. Circe confesses both transformations. Helios recognizes in her the forbidden power of witchcraft, and Zeus orders her exiled forever to the remote island of Aiaia.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alone on Aiaia, Circe discovers that witchcraft is not effortless divine command but a craft developed through repeated work with herbs, roots, and spoken intention. She tames a lion, builds an independent household, and becomes more capable than she was in Helios's court. Hermes ignores the isolation of her sentence to visit her, bringing news and becoming her lover without claiming authority over her. Circe learns that her siblings possess related powers and that Aeëtes calls their kind pharmakoi. Her exile is interrupted when Daedalus arrives from Crete to summon her to Pasiphae, who is suffering through a monstrous pregnancy. Bound by Helios's command, Circe travels with him. Daedalus treats her with rare directness and gives her a glimpse of a gifted mortal trapped in King Minos's service. In Crete, Circe helps Pasiphae deliver the Minotaur, a violent creature conceived after Pasiphae's union with a sacred bull. Circe contains the newborn beast long enough for Daedalus to devise a prison.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Crete, Circe recognizes that Pasiphae's cruelty grew within the same brutal divine household that diminished them both, though this understanding does not reconcile the sisters. Circe advises the young Ariadne about the Minotaur and returns to Aiaia with a loom made by Daedalus, later learning of his death and of the loss of his son Icarus. The centuries bring further visitors. Circe's niece Medea arrives with Jason after betraying Aeëtes and killing her own brother to help Jason seize the Golden Fleece. Circe purifies them but sees that Jason fears the young witch whose sacrifices made his success possible; Medea nevertheless refuses Circe's offer of refuge. Later, ordinary sailors accept Circe's hospitality, discover that she lives without male protection, and assault her. Afterward she treats unfamiliar crews as threats, transforming men who abuse her welcome into pigs. Aiaia becomes a place where she controls whether visitors leave, and her power is shaped by fear as well as independence.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A battered crew returning from the Trojan War lands on Aiaia. Circe turns the men into pigs when they behave like earlier intruders, but their captain, Odysseus of Ithaca, approaches her with caution and a protective herb supplied by Hermes. Rather than fight, they negotiate. Circe restores the crew, shelters them through a long stay, and becomes Odysseus's lover. He is intelligent, restless, and skilled at shaping stories; he describes the war, the schemes that won it, and his desire to return to Penelope and Telemachus. Circe sees both his charisma and the hardness created by years of violence. Before he departs, she sends him to seek guidance from the dead and later advises him on the dangers ahead, including passage by Scylla. Odysseus and his men finally sail for Ithaca. Circe is left with an altered understanding of mortals and soon realizes that she is pregnant with his child.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Circe gives birth alone to Telegonus, a difficult infant whose vulnerability awakens a fiercer devotion than she has known. Athena appears and demands the child's death, warning that he threatens something the goddess values. Circe refuses and uses her accumulated knowledge to cast a protective spell around Aiaia, renewing it constantly for years at immense cost. Once the danger recedes, Telegonus grows into an adventurous young man fascinated by the father he has never met. Hermes brings stories of Odysseus's troubled return to Ithaca, feeding the boy's determination to find him. Circe opposes the journey but cannot make her son accept permanent confinement. Telegonus constructs a boat with secret help from Daedalus's designs and receives a defensive spear whose point carries the venomous tail of the sea god Trygon. Circe challenges Trygon expecting combat, but his willingness to yield the weapon without violence unsettles her assumptions about power. Though afraid of prophecy and Athena, she finally permits Telegonus to sail for Ithaca.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Telegonus returns from Ithaca with devastating news. Mistaken for a raider, he fought Odysseus and accidentally killed him with the poisoned spear before either knew the other's identity. He has brought Odysseus's widow Penelope and son Telemachus to Aiaia. Circe initially suspects vengeance, but Penelope seeks protection from Athena, who wants Telemachus to accept a heroic future under her guidance. Telemachus refuses the goddess, having no wish to reproduce his father's life. Life on the island gradually exposes the differences between the Odysseus each person knew: the magnetic veteran who visited Circe, the absent ideal imagined by Telegonus, and the damaged, increasingly violent king experienced by his wife and elder son. Telegonus is drawn to Athena's offer of adventure, while Penelope becomes interested in Circe's herbs and craft. Circe and Telemachus, both wary of grand heroic narratives, begin to understand each other through shared work and candid conversation.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Telegonus accepts Athena's patronage and leaves Aiaia to found a life of his own. Penelope remains and begins learning witchcraft, choosing knowledge and independence after years shaped by Odysseus's absence and return. Circe and Telemachus grow close and become lovers, but Circe refuses Athena's proposal that he be granted lasting fame. Circe determines to correct the enduring harm caused by her oldest act of jealousy. Traveling with Telemachus to Scylla's strait, she uses the venom-tipped spear to kill the monster and end its centuries of slaughter. Circe then confronts Helios and threatens to force a conflict among the gods unless he has Zeus release her from exile. He yields. Free to leave Aiaia, Circe prepares a potion from the transformative flowers she once used on Glaucos. She expects the spell to remove her immortality, allowing her to age and die. After Telemachus affirms that he wants a shared future, she imagines their mortal life together and drinks, choosing uncertainty, ordinary love, and change over eternal divine existence.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "circe"
+      }
+    },
     "circus-of-the-damned": {
       "characters": {
         "characters": [
