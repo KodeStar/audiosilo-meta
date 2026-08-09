@@ -446,6 +446,242 @@
       }
     },
     "voidgod": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Returns to Talon's Keep with Mercy and Asher after Araphel's return. Maulkin arms the Dvergar, proposes a coalition defense at the Shattered Bastion, and searches for a way to stop a foe whose power may permanently destroy Eternals.",
+            "id": "maulkin",
+            "name": "Maulkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Solar Eternal, archer, and trusted companion of Maulkin. After Araphel's return, Mercy accompanies Maulkin and Asher to Talon's Keep and tells Gunnhild that Saren is dead.",
+            "id": "mercy",
+            "name": "Mercy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Eternal mage allied with Maulkin and Mercy. Asher accompanies them to Talon's Keep after Araphel's return, while the Dvergar use the Waystones to evacuate to the Shattered Bastion.",
+            "id": "asher",
+            "name": "Asher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maulkin's former partner, whose reported death predates the opening of this book. Her loss remains central to Maulkin's anger toward Briar and to the personal cost he carries into the war against Araphel.",
+            "id": "saren",
+            "name": "Saren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returned divine enemy whose advance threatens Amaranth and can permanently end Eternals. The Dvergar and their allies abandon Talon's Keep and organize the Shattered Bastion specifically to resist his coming war.",
+            "id": "araphel",
+            "name": "Araphel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The figure associated with a floating Alvaren city above the battlefield near Saren's grave. Maulkin's scouts discover that forces from the city are imprisoning Inyoka and taking them toward flesh forges.",
+            "id": "briar",
+            "name": "Briar",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "The Dvergar's operational leader. Gunnhild confirms that her people have chosen to join the war and oversees their evacuation from Talon's Keep to the Shattered Bastion.",
+            "id": "gunnhild",
+            "name": "Gunnhild",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient Eternal whom Maulkin believes may remember Araphel's earlier return. The ruined hilt of Leofric's sword allows Maulkin to locate him in a distant poisonous mire, prompting a new expedition in search of knowledge.",
+            "id": "leofric",
+            "name": "Leofric",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The deceased owner of Talon's Keep. His surviving research includes inimicus, a powerful anti-magic substance that may offer Maulkin a weapon against dangerous magic.",
+            "id": "talon",
+            "name": "Talon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Dvergar volunteer who joins Maulkin's reconnaissance party as it leaves the Shattered Bastion for the Serpent's Gate. She travels with the mixed group of Dvergar, Shagnar Fawn, and human scouts under Maulkin's command.",
+            "id": "dvergar-woman",
+            "name": "Dvergar woman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fire-using defender who fights beside Maulkin and Asher during the attack on the Bastion. The archer holds off Alvaren attackers while Asher counters Briar's lightning and Maulkin turns the inimicus against the enemy force.",
+            "id": "unnamed-archer",
+            "name": "Unnamed archer",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Shagnar Fawn occupying the Shattered Bastion. She confirms her people's compact with the local humans, defuses their first confrontation with Maulkin, and commits the Fawn to defend the territory until Araphel falls.",
+            "id": "shagnar-fawn-leader",
+            "name": "Shagnar Fawn leader",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two Ambergrit Dvergar twins who volunteer for Maulkin's three-day mission toward the Serpent's Gate. The pair joins a mixed scouting party sent to investigate the forces gathering beyond the Shattered Bastion's wall.",
+            "id": "ambergrit-dvergar-twin",
+            "name": "Ambergrit Dvergar twin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A captive Eternal found alive within an Alvaren flesh forge. The victim has been incorporated into the machinery as its living source of power, revealing that the Alvaren are turning missing Eternals into tools.",
+            "id": "eternal-captive-in-an-alvaren-forge",
+            "name": "Eternal captive in an Alvaren forge",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local farmer who volunteers to represent the humans on Maulkin's three-day reconnaissance mission. He joins the mixed scouting party despite having no evident combat experience.",
+            "id": "human-farmer",
+            "name": "Human farmer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armored assassin formed from a fragment of Araphel and adapted to suppress Maulkin's Artifice. It attacks Maulkin near the waystone with bladed limbs and a power capable of permanent death, but he tears away its tail blades, turns them against its soul, and destroys it.",
+            "id": "void-spawn-assassin",
+            "name": "Void Spawn",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The authority Maulkin encounters after dying with the inimicus bound to his soul. Instead of returning him to his newly made shrine at the Bastion, Death sends him away, leaving the destination of his resurrection uncertain.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A female Eternal involved in Araphel's first defeat. Araphel confirms her part only while dueling Maulkin and refuses to identify her, leaving the person who completed the earlier binding unknown.",
+            "id": "eternal-from-araphels-first-defeat",
+            "name": "Eternal from Araphel's first defeat",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior solar goddess visiting the fortress of the solar war god. After finding that god already slain, she faces Maulkin, Mercy, and the returned Saren as they bring their campaign into the divine realm.",
+            "id": "solar-mother-goddess",
+            "name": "Solar mother goddess",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A solar god whose heavenly fortress Saren reaches after recovering her memories. He is already dead when the visiting solar mother goddess arrives and Saren directs her attention to his body.",
+            "id": "solar-war-god",
+            "name": "Solar war god",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A surviving member of the old pantheon who intervenes during the battle in the divine palace. She traps Maulkin and Mercy in webbing tied to their emotions, attempting to hold them for the other gods.",
+            "id": "lunar-spider-goddess",
+            "name": "Lunar spider goddess",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dragon fighting in defense of the solar leader during the assault on the divine palace. The dragon enters the same final struggle in which Maulkin, Mercy, and Saren confront the remaining old gods.",
+            "id": "dragon-ally-of-the-solar-leader",
+            "name": "Dragon ally of the solar leader",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The last solar authority confronted in the divine palace. He opposes Maulkin, Mercy, and Saren in his own domain while the remaining divine defenders gather around him.",
+            "id": "solar-leader",
+            "name": "Solar leader",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The final old god to enter the struggle in the divine palace. He attacks Maulkin's group and declares an intention to consume all surviving life, making coexistence with the new order impossible.",
+            "id": "wolf-god",
+            "name": "Wolf god",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A winged, tailed, fawn-like visitor summoned through a portal during the siege of the Shattered Bastion. The outsider creates a vast number of duplicates and commits the resulting aerial force to the defense.",
+            "id": "winged-outsider",
+            "name": "Winged outsider",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BRYHGJZL",
+            "type": "community"
+          }
+        ],
+        "work": "voidgod"
+      },
       "recaps": {
         "ending": "Araphel destroys the Shattered Bastion but not its evacuated population. In the last confrontation he permanently kills Asher and nearly does the same to Mercy. Maulkin interrupts Mercy's death, unifies his own soul and powers into a newly created sword, and sends Araphel's soul into the void. The act appears to destroy Maulkin, but Araphel's defeat instead restores him as a Voidgod. Mercy returns with solar divine power, and Saren emerges from an Alvaren afterlife with her memories restored. The three then eliminate the remaining gods. Saren refuses divinity and insists that replacing the old pantheon with another unchecked ruler is not enough. Maulkin, Mercy, and the mortal Saren establish a shared council in the failing divine palace. They choose gradual repair over conquest, beginning with those already suffering across Amaranth. The Alvaren aftermath, the Dvergar stone curse, the displaced Bastion coalition, and the future of the Inyoka and worms remain unsettled. Whether the new partners can make creation kinder will take centuries to determine.",
         "in_short": "Araphel's return forces Maulkin to unite Dvergar, Shagnar Fawn, humans, Inyoka, and eventually Alvaren at the Shattered Bastion. Raids, betrayals, and battles reveal that Araphel is destruction embodied and that Maulkin is becoming the Voidgod capable of opposing him. Briar dies after releasing Araphel, while the coalition's defenses and off-world reinforcements fail to stop the advancing host. The worms finally support Maulkin, but the Bastion must be evacuated and destroyed. Araphel permanently kills Asher and nearly kills Mercy before Maulkin turns his unified soul into a perfect new sword and casts Araphel into the void. Maulkin returns as a god, Mercy gains solar power, and Saren returns from an Alvaren afterlife. Together they destroy the old pantheon. Saren remains mortal, and the three form a council devoted to repairing Amaranth rather than conquering it.",
