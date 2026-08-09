@@ -432,6 +432,231 @@
         "work": "dragonsinger"
       }
     },
+    "dragonslayer": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kaz"
+            ],
+            "description": "A fugitive wizard left nearly blind and badly depleted after sealing a portal. Still pursued by a hostile organization, he remains near the breach with his injured companions to find a dragon that escaped from the Nether.",
+            "id": "kazimir-wolfe",
+            "name": "Kazimir Wolfe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kazimir's talking dog and devoted companion. He guides Kazimir away from the portal site when the wizard can barely see, combining unusual speech and understanding with the instincts, loyalties, and distractions of an ordinary dog.",
+            "id": "duke",
+            "name": "Duke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A jinn from the Nether who serves as Kazimir's reluctant magical adviser. He is initially dormant after giving Kazimir his available power during the portal fight, leaving his intentions and the cost of that aid uncertain.",
+            "id": "azib",
+            "name": "Azib",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An agent allied with Kazimir and the field organizer of the escape from the breach. Injured alongside the rest of the group, he manages concealment, transport, and the practical search for the escaped dragon.",
+            "id": "mike",
+            "name": "Mike",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied field agent wounded in the portal-site fight. She joins the injured party's extraction of Kazimir and Duke, then helps the group evade pursuit and conceal its trail.",
+            "id": "isabel",
+            "name": "Isabel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured ancient knight who drives the fleeing group after the portal fight.",
+            "id": "macarius",
+            "name": "Macarius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A time-displaced warrior injured during the escape from the portal site. Her damaged ankle limits her movement while she adapts to modern concealment, supported by another agent and protected by Macarius as a fellow knight.",
+            "id": "giselle",
+            "name": "Giselle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr. Boots",
+              "Boots"
+            ],
+            "description": "An aged, speaking three-toed feline from the Nether, found injured in a trap. After Kazimir offers rescue instead of death, he makes a binding pledge not to harm Kazimir's household and to protect its members when he can.",
+            "id": "nether-feline",
+            "name": "Nether feline",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The remote leader who receives an agent's reports about the widening crisis. She is briefed about the rescued Nether feline and the two flying creatures still at large, serving as the field team's off-site decision-maker.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armored, sword-bearing man encountered by a sheriff's deputy at the mound. He asks for a wizard, withstands a taser, attacks the deputy, and escapes into the woods.",
+            "id": "armored-knight",
+            "name": "Armored knight",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The smaller of two winged creatures that emerge from the Nether. Still young, it has not yet developed the ability to breathe fire.",
+            "id": "young-dragon",
+            "name": "Young dragon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A winged Nether creature identified by its separate trail near the sealed breach. At roughly ten to twelve feet long, it is larger than the young dragon that escaped alongside it.",
+            "id": "wyvern",
+            "name": "Wyvern",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Special Agent Singer"
+            ],
+            "description": "A federal agent who already knows that magic exists and does not accept that Kazimir committed two earlier killings. Kazimir considers asking her to risk covert access to police evidence that may help locate the escaped creatures.",
+            "id": "michelle-singer",
+            "name": "Michelle Singer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A confused, armed man reported near the breach who identifies himself only as being from a distant region and asks for a wizard. His unfamiliarity with the present suggests another displaced knight, but his identity and purpose remain unconfirmed.",
+            "id": "armed-stranger",
+            "name": "Armed stranger",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A homeowner caught in the path of the armed stranger. The intruder holds him at swordpoint, demands the location of a wizard, and reacts violently to modern technology before fleeing with supplies.",
+            "id": "paul-delage",
+            "name": "Paul Delage",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An overseas reinforcement agent travelling with a partner to assist Mike and Isabel. Concealed shooters ambush the pair at a gas station before they reach the group.",
+            "id": "rosa",
+            "name": "Rosa",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An overseas reinforcement agent travelling with a partner to assist the field operation. He uses a cover identity like the other agents and is shot when hidden attackers intercept the pair at a gas station.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technology-focused civilian investigator drawn to the supposed dinosaur sighting. He arrives with analytical equipment, photographs, and ash-like material recovered from the earlier collision, though none of it yet provides conclusive public proof.",
+            "id": "mario",
+            "name": "Mario",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian conspiracy hunter who joins the growing search with film cameras and motion-sensitive gear. His use of physical negatives makes him a particular concern for a group trying to keep authentic images of the dragon from public view.",
+            "id": "clint",
+            "name": "Clint",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Apep"
+            ],
+            "description": "An elder god of the Nether whose presence lies beyond Kazimir's newly opened portal. Vastly powerful and hostile, he seizes the wizard's will and tries to force the passage to remain open so he can enter this world.",
+            "id": "apophis",
+            "name": "Apophis",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Kazimir's deceased guardian and first teacher in minor magical practices. She raised and trained him before armed attackers killed her, while the truth about her relationship to him and her part in his parents' deaths remained unresolved.",
+            "id": "deceased-guardian",
+            "name": "Deceased guardian",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient wizard spirit sharing Duke's body while remaining distinct from the dog. Drawn to Kazimir to train him, the spirit cannot be separated from Duke, and its earlier relationship with Azib remains unexplained.",
+            "id": "ancient-wizard-spirit",
+            "name": "Ancient wizard spirit",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BVDPGHJS",
+            "type": "community"
+          }
+        ],
+        "work": "dragonslayer"
+      }
+    },
     "dragonsong": {
       "characters": {
         "characters": [
