@@ -531,6 +531,174 @@
       }
     },
     "the-mayor-of-noobtown": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Grebthar the Destroyer"
+            ],
+            "description": "A man who dies on Earth and enters an unfamiliar character-creation process with his memories intact. He rejects the name assigned to his new form and keeps Jim instead. His unique Unbound trait lets him disregard many normal advancement limits, drawing hostile attention from the beings overseeing his arrival.",
+            "id": "jim",
+            "name": "Jim",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Two unseen beings who oversee Jim's character creation. They discuss binding and altering him, and one destroys the statue for a god-tier class before he can select it. When the chamber breaks apart, both are pulled into the void with Jim.",
+            "id": "character-creation-operators",
+            "name": "Character-Creation Operators",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A once-powerful demon bound to Jim through their souls. After Jim defeats him on arrival, he is reduced to rank one and becomes the weaker partner in the bond. Regaining his former strength depends upon Jim granting access to a demon door.",
+            "id": "shart",
+            "name": "Shart",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inactive resident listed by the abandoned settlement's governing interface. Jim finds him in the ruined church as an intact stone figure held by a demonic curse. Releasing him becomes one of Jim's restoration goals, but the curse requires far more mana than the new mayor can supply.",
+            "id": "truman-masterbrook",
+            "name": "Truman Masterbrook",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battered captive held in a goblin camp with her two children. Jim kills several guards and frees the family, leading them away while more goblins pursue the escape.",
+            "id": "avasophia",
+            "name": "AvaSophia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "AvaSophia's son, rescued with his mother and EveSophia from a goblin column. He takes an active part in their flight by helping Jim fight two pursuing guards while the family escapes the camp.",
+            "id": "joeclarance",
+            "name": "JoeClarance",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "AvaSophia's daughter and one of the human prisoners held in a large goblin camp. Jim frees her together with AvaSophia and JoeClarance, then leads the family away from their captors.",
+            "id": "evesophia",
+            "name": "EveSophia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-six elite goblin whose stealth, perception, evasive skill, and paired swords let it bypass Jim's trap field during the captives' escape. It confronts Jim after the other pursuers are stopped.",
+            "id": "shadow-goblin",
+            "name": "Shadow Goblin",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A godling whom Shart says Jim was being prepared to confront. The Dark Overlord possesses a reality-altering attack and represents a threat far beyond the nearby goblin forces. At this point, Shart believes the godling has not yet discovered Jim's location.",
+            "id": "dark-overlord",
+            "name": "Dark Overlord",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ruler whose army forced AvaSophia's family from their home. Her account says his forces are burning villages during a campaign for coastal territory. He remains an offstage source of war and displacement, separate from the supernatural danger posed by the Dark Overlord.",
+            "id": "king-har-charles",
+            "name": "King Har Charles",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-five leader of the pursuing goblin riders and a spellcaster whose magic strikes Noobtown's barrier. The shaman advances toward Jim when the protection fails and Jim attempts to hold the attackers back through a bluff.",
+            "id": "goblin-shaman",
+            "name": "Goblin Shaman",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pair of goblin spellcasters who share a staff and attack Jim with defensive barriers, fire, binding magic, mana drain, and pain. Jim escapes their ambush, and they remain undefeated champions whose survival strengthens the local goblin army.",
+            "id": "weird-sisters",
+            "name": "Weird Sisters",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An intelligent warg formerly used as a goblin mount. Unlike most wargs, he can resist the call that draws them back under goblin control. After Jim communicates with him, Kappa accepts an arrangement to plow AvaSophia's fields and hunt in return for food and shelter.",
+            "id": "kappa",
+            "name": "Kappa",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed commander expected to return to Western Gate Fortress with a mounted goblin force. After Jim frees the captives and defeats the garrison, the survivors prepare the fortress's damaged eastern defenses before the warg master arrives.",
+            "id": "goblin-warg-master",
+            "name": "Goblin Warg Master",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-six warden freed with the prisoners inside Western Gate Fortress. He quickly joins the effort to secure its damaged defenses before a larger mounted force returns. His experience and willingness to support Jim's plan make him a central defender during the approaching counterattack.",
+            "id": "fenris",
+            "name": "Fenris",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-five hunter liberated from Western Gate Fortress. Skilled with bows and spears, she helps assess the mounted goblin force expected to return. Her ranged expertise gives the newly freed prisoners a capable specialist as they hurriedly prepare the fortress for attack.",
+            "id": "solita",
+            "name": "Solita",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist initiate serving as the refugees' healer after the battle at Western Gate Fortress. She treats the gravely injured Jim and directs care for the other survivors. With their original journey no longer viable, she also speaks for the group in seeking a defensible place to settle.",
+            "id": "jarra",
+            "name": "Jarra",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774240122",
+            "type": "community"
+          }
+        ],
+        "work": "the-mayor-of-noobtown"
+      },
       "recaps": {
         "license": "CC-BY-SA-3.0",
         "recaps": [
@@ -3465,161 +3633,6 @@
           }
         ],
         "work": "the-misanthrope"
-      }
-    },
-    "the-miserable-mill": {
-      "characters": {
-        "characters": [
-          {
-            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to concentrate and builds devices from whatever she can find. Having survived Count Olaf three times and lost three guardians, she remains the calm, protective leader her younger siblings depend on.",
-            "id": "violet-baudelaire",
-            "name": "Violet Baudelaire",
-            "reveal": {
-              "chapter": 0
-            },
-            "role": "protagonist"
-          },
-          {
-            "description": "The middle Baudelaire, a twelve-year-old who wears glasses, reads endlessly, and remembers what he learns. His research repeatedly rescues the family, and he stays wary of Count Olaf in any guise.",
-            "id": "klaus-baudelaire",
-            "name": "Klaus Baudelaire",
-            "reveal": {
-              "chapter": 0
-            },
-            "role": "protagonist"
-          },
-          {
-            "description": "The infant Baudelaire, who speaks in short exclamations her siblings interpret and whose four sharp teeth can bite through nearly anything. Tiny but fearless, she plays her own part in the family's escapes from danger.",
-            "id": "sunny-baudelaire",
-            "name": "Sunny Baudelaire",
-            "reveal": {
-              "chapter": 0
-            },
-            "role": "protagonist"
-          },
-          {
-            "description": "The ruthless actor who murders and schemes to steal the Baudelaire fortune, known by his single eyebrow and the eye tattooed on his ankle. A relentless disguiser who has escaped capture again and again, he is certain to reappear in the children's lives under some new false identity.",
-            "id": "count-olaf",
-            "name": "Count Olaf",
-            "reveal": {
-              "chapter": 0
-            },
-            "role": "antagonist"
-          },
-          {
-            "description": "The coughing banker in charge of the Baudelaire fortune, who keeps sending the orphans to new guardians and workplaces. Kindly but oblivious, he never quite believes the children's warnings about the danger they are in.",
-            "id": "mr-poe",
-            "name": "Mr. Poe",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "The owner of the Lucky Smells Lumbermill in the town of Paltryville, where the children are sent to live and work. His face is permanently hidden behind a thick cloud of cigar smoke, so no one ever sees it. Gruff and stingy, he pays his laborers in coupons and chewing gum rather than money and treats the children as workers rather than as guests.",
-            "id": "sir",
-            "name": "Sir",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "Sir's mild, good-natured business partner at the lumbermill, who tries to be kind to the Baudelaire children and keeps a small library at the mill. Gentle and eager to smooth things over, he is too timid to stand up to the domineering Sir on the children's behalf.",
-            "id": "charles",
-            "name": "Charles",
-            "reveal": {
-              "chapter": 2
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A relentlessly optimistic worker at the lumbermill who befriends the children. No matter how grim the conditions, he always manages to find a bright side and a cheerful word, offering the orphans warmth in a bleak place.",
-            "id": "phil",
-            "name": "Phil",
-            "reveal": {
-              "chapter": 2
-            },
-            "role": "minor"
-          },
-          {
-            "description": "An optometrist in Paltryville whose office is a tall building shaped like a giant eye. Coolly professional and vaguely unsettling, she treats Klaus when his glasses are damaged, and the eye-shaped building and her manner give the children an uneasy sense that she is not simply an eye doctor.",
-            "id": "dr-orwell",
-            "name": "Dr. Orwell",
-            "reveal": {
-              "chapter": 5
-            },
-            "role": "antagonist"
-          },
-          {
-            "description": "A heavily made-up receptionist at Dr. Orwell's office who wears high heels and announces that she would like to adopt children. Her shining eyes and single eyebrow lead the Baudelaires to suspect that this so-called receptionist is Count Olaf in yet another disguise, scheming to get near them and their fortune.",
-            "id": "shirley",
-            "name": "Shirley",
-            "reveal": {
-              "chapter": 5
-            },
-            "role": "antagonist"
-          }
-        ],
-        "license": "CC-BY-SA-3.0",
-        "sources": [
-          {
-            "imported_at": "2026-07-25",
-            "ref": "model-knowledge:best-effort",
-            "type": "community"
-          }
-        ],
-        "work": "the-miserable-mill"
-      },
-      "recaps": {
-        "ending": "Violet discovers that Dr. Orwell has been hypnotizing Klaus with trigger words, and she works out how to break the hypnosis and restore her brother to himself. In the climactic struggle at the lumbermill, the villains' plan to use the hypnotized Klaus to cause a deadly accident is thwarted, and Dr. Orwell falls into the mill's enormous circular saw and is killed. The receptionist Shirley is unmasked as Count Olaf, who has been working with Dr. Orwell to seize the fortune, but he and his henchmen slip away before Mr. Poe and the authorities can capture him. Sir and Charles remain at the mill, and the Baudelaires are once again removed to be placed elsewhere. This time Mr. Poe announces that the orphans will be sent to a boarding school, hoping that among many people Count Olaf will not be able to reach them, though the children have learned not to count on being safe anywhere.",
-        "in_short": "Mr. Poe sends the Baudelaires to Paltryville to live and work at the Lucky Smells Lumbermill, run by a smoke-shrouded man called Sir and his kind partner Charles. The children are treated as laborers and paid in coupons and gum. When Klaus's glasses break, he is taken to Dr. Orwell, an optometrist in an eye-shaped building, where they also meet a suspicious receptionist named Shirley, whom the children believe is Count Olaf in disguise. Klaus returns from the office hypnotized, and under Dr. Orwell's control he causes dangerous accidents at the mill. Violet realizes Klaus has been hypnotized and works out how to break the spell. In the final confrontation the children free Klaus and face Dr. Orwell, who is killed when she falls into the mill's great saw. Shirley is exposed as Count Olaf, but he escapes once again. The orphans leave the mill, and Mr. Poe decides to send them next to a boarding school.",
-        "license": "CC-BY-SA-3.0",
-        "recaps": [
-          {
-            "scope": "series",
-            "text": "Orphaned by a fire and left a fortune held in trust, the Baudelaire children, inventor Violet, reader Klaus, and biting baby Sunny, have been passed by the banker Mr. Poe from guardian to guardian, each time pursued by the greedy actor Count Olaf. Olaf first tried to steal the money through a fake marriage, then followed the children in disguise to their kind Uncle Monty, whom he murdered, and next posed as a peg-legged captain who caused the death of fearful Aunt Josephine. Each time the children exposed him, recognizing his single eyebrow and the eye tattooed on his ankle, and each time Olaf escaped before he could be arrested. Having lost three guardians and survived Olaf three times, the orphans are sent by Mr. Poe to a new and grim placement, still hunted by a villain who will stop at nothing to claim their inheritance.",
-            "through": {
-              "chapter": 0
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Mr. Poe brings the Baudelaires to the dismal town of Paltryville, where they are to live at the Lucky Smells Lumbermill and, strangely, to work there like the adult laborers. The mill is owned by a man known only as Sir, whose face is always hidden in a cloud of cigar smoke and who pays his workers in coupons and chewing gum rather than wages. His partner Charles is gentle and kind but too meek to stand up to him. The children are put to grueling, dangerous work in the mill, where an optimistic laborer named Phil befriends them and tries to keep their spirits up. Exhausted and poorly fed, the orphans endure the harsh routine, uneasy in yet another bleak home and half-expecting Count Olaf to appear among the smoke and machinery in some new disguise.",
-            "through": {
-              "chapter": 4
-            }
-          },
-          {
-            "scope": "book",
-            "text": "When Klaus's glasses break, he is sent to Dr. Orwell, an optometrist whose office is a building shaped like a giant eye, and at her office the children meet a suspicious receptionist named Shirley, whom they recognize as Count Olaf in disguise. Klaus returns from the appointment dazed and behaving strangely, obeying commands and speaking in an oddly flat way, and while in this state he causes a serious accident at the mill that injures a fellow worker. Violet and Sunny realize that Klaus has been hypnotized during his visit to Dr. Orwell, and that the optometrist is working together with Olaf. As Klaus is taken back to the eye-shaped office again and again and made to cause more trouble, the sisters understand that the villains intend to use their hypnotized brother as a weapon, and Violet sets out to find a way to free him.",
-            "through": {
-              "chapter": 8
-            }
-          },
-          {
-            "scope": "book",
-            "text": "The hypnotized Klaus is used to cause escalating dangers at the mill, and it becomes clear that Dr. Orwell and Shirley plan to engineer a fatal accident and to seize the Baudelaire fortune. Violet studies the problem of the hypnosis, reasoning that Dr. Orwell must use special trigger words to place Klaus under her control and to command him. Racing against the villains' scheme, and with a helpless Klaus liable to be ordered into deadly acts at any moment, Violet searches for the exact word that will break the spell, while the children are drawn toward a final confrontation at the mill with Dr. Orwell and the disguised Count Olaf.",
-            "through": {
-              "chapter": 11
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Violet succeeds in breaking the hypnosis and wakes Klaus from Dr. Orwell's control just as the villains attempt to carry out their deadly plan. In the ensuing struggle at the mill, Dr. Orwell falls into the great circular saw and is killed. The receptionist Shirley is unmasked as Count Olaf before Mr. Poe, exposing the pair's plot to murder for the fortune, but Olaf and his henchmen escape once more before they can be caught. Sir and Charles are left running the lumbermill, and the orphans are removed from Paltryville. Mr. Poe decides that the children will next be sent to a boarding school, hoping the crowd of people there will keep Count Olaf away, though the Baudelaires know from bitter experience that no place has yet kept them safe from him.",
-            "through": {
-              "chapter": 13
-            }
-          }
-        ],
-        "sources": [
-          {
-            "imported_at": "2026-07-25",
-            "ref": "model-knowledge:best-effort",
-            "type": "community"
-          }
-        ],
-        "work": "the-miserable-mill"
       }
     }
   }
