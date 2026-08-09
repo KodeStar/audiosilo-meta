@@ -2150,6 +2150,242 @@
         "work": "reaper-man"
       }
     },
+    "reaping-fate": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A karma cultivator fleeing Gleam beside Bella. Chance is bound to the sentient Old City, carries Urumi, and is trying to remain beyond the Shikari's reach.",
+            "id": "chance",
+            "name": "Chance",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Chance's travelling partner and a preservation cultivator. Bella can defend and heal, and she is escaping the Shikari alongside him.",
+            "id": "bella",
+            "name": "Bella",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient city-being bound to Chance and concealed within Urumi. It can gather stone into a crude body and fears that Yamish intends to consume its essence.",
+            "id": "the-old-city",
+            "name": "The Old City",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bella's former master and the chief threat pursuing her and Chance from Gleam.",
+            "id": "vex",
+            "name": "Vex",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Chance's master"
+            ],
+            "description": "A powerful mentor who turns Chance and Bella's flight into a four-month trial. He warns them that avoiding capture will include surviving Vex's pursuit.",
+            "id": "yamish",
+            "name": "Yamish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Red Hands bandits mistakenly freed by Chance and Bella. Brent declares that his group owes the pair a debt for their intervention.",
+            "id": "brent",
+            "name": "Brent",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Red Hands member who tells Chance and Bella about recruitment for a sect based in a floating city.",
+            "id": "nate",
+            "name": "Nate",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An apparently friendly and seasoned applicant at the Dancing Cloud trial. James recognizes Chance's fighting style and cautions him about the danger of sect trials.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "James's humanoid combat construct, revealed when he joins her sanctioned challenge against Chance.",
+            "id": "tamara",
+            "name": "Tamara",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hunted young swordsman travelling with his teacher, Rhys. Yeo resists borrowed shortcuts to power and continues his own training while Shikari pursue them.",
+            "id": "yeo",
+            "name": "Yeo",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scarred and unable to see, Rhys teaches Yeo under a contract between them. He is hostile toward their Shikari pursuers and intends to intensify Yeo's training.",
+            "id": "rhys",
+            "name": "Rhys",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A physically formidable cultivator questioned by Shay about Chance and Bella. Lynn withstands the Shikari's pressure and falsely denies knowing the fugitives.",
+            "id": "lynn",
+            "name": "Lynn",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A baron-ranked Shikari investigator seeking Chance and Bella. Shay questions Lynn about the fugitives and treats their alleged killing of a knight-ranked cultivator as grounds for pursuit.",
+            "id": "shay",
+            "name": "Shay",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Shay"
+            ],
+            "description": "The Shikari officer called Shay in the earlier investigation. By this point, Shea has traced Chance to the Dancing Cloud city and joined Jade in confronting the fugitives.",
+            "id": "shea",
+            "name": "Shea",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An independent knight-ranked Shikari who accepts the hunt for Chance's group over her captain's objections. She wields a broadsword and cultivates a purifying form of sun essence.",
+            "id": "jade",
+            "name": "Jade",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An intelligent monster whose cultivation requires it to consume flesh. Unable to find another path, it accepts Chance's offer of an honorable fight.",
+            "id": "crocodilian-monster",
+            "name": "Crocodilian monster",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful condemned cultivator whom Chance knows from an earlier encounter. Lin enters Chance and Bella's room claiming an old debt, then reveals that a higher-ranked Shikari has placed him beyond pardon.",
+            "id": "lin",
+            "name": "Lin",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A crossbow-wielding member of the Singing Fox sect and Nate's sister. Nadia joins her brother and another cultivator in an ambush against Chance and Bella.",
+            "id": "nadia",
+            "name": "Nadia",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A black, long-limbed creature without a face that haunts a ruined floating island and drives Chance and Bella toward its cracked tower.",
+            "id": "faceless-tower-creature",
+            "name": "Faceless tower creature",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An earth cultivator ordered by her own sister to fight Chance while Bella draws power from a crystal. Quinn creates stone weapons and defenses under the other woman's command.",
+            "id": "quinn",
+            "name": "Quinn",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Quinn's sister, a cultivator who commands Quinn during the struggle over a powerful crystal and attacks with a vine weapon.",
+            "id": "quinns-controlling-sister",
+            "name": "Quinn's controlling sister",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A groundskeeper within the Bracken Sect and a friend Quinn trusts to confirm how the sect treats its servants.",
+            "id": "quinns-associate",
+            "name": "Quinn's associate",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chance's former combat teacher and a fellow karma cultivator. Lucy meets Chance and Bella at Fallen, then guides them to the cultivator she serves.",
+            "id": "lucy",
+            "name": "Lucy",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A youthful-looking cultivator able to follow threads of fate. He has observed Chance and Bella and warns that Vex will soon find and kill them unless events change.",
+            "id": "karma-cultivator",
+            "name": "Karma cultivator",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CZ1DGS1T",
+            "type": "community"
+          }
+        ],
+        "work": "reaping-fate"
+      }
+    },
     "rebecca": {
       "characters": {
         "characters": [
