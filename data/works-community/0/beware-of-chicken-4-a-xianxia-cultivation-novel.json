@@ -4032,6 +4032,237 @@
       }
     },
     "black-ops": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Major Perkins"
+            ],
+            "description": "A UNEF leader on Paradise whose human team works alongside the Ruhar. Her earlier operation prevented a Kristang commando force from completing its mission and caused the frigate Glory to surrender.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human commander of the Flying Dutchman. Working under Chotek's authority, he must quietly prevent a Fire Dragon and Ruhar expedition to Earth while avoiding any action that exposes humanity or attacks the Ruhar.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Elder AI who advises the Flying Dutchman crew. He can alter wormhole connections, but warns that further changes near Earth could draw powerful attention or destabilize the local network.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The UNEF diplomat holding mission authority aboard the Flying Dutchman. He considers a Ruhar alliance, then directs Joe to find a covert way to prevent the proposed Earth voyage without attacking the Ruhar.",
+            "id": "chotek",
+            "name": "Chotek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The major who commands the mission's special-operations teams. He favors decisive initiative when survival or mission success demands it, even when the formal chain of command creates complications.",
+            "id": "smythe",
+            "name": "Smythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior military officer on the Flying Dutchman's command staff, involved from the outset in the crew's response to the new threat against Earth.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's duty officer when the crew learns that Fire Dragon representatives may secure transport to Earth.",
+            "id": "adams",
+            "name": "Adams",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior officer and practical operations planner aboard the Flying Dutchman, helping the command team assess how to answer the proposed voyage to Earth.",
+            "id": "bishop",
+            "name": "Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The French special-operations captain leading an external training team near a Thuranin relay station. After a violent emergency jump scatters and irradiates his personnel, he organizes their survival and capture-denial preparations.",
+            "id": "rene-giraud",
+            "name": "Rene Giraud",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A logistics officer assigned to accompany and protect Chotek during a visit to the Thuranin relay station.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civilian doctor accompanying Chotek's relay-station party. He is also responsible for helping treat the French and Indian personnel exposed to radiation during the emergency battle.",
+            "id": "friedlander",
+            "name": "Friedlander",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the Indian special-operations team taking part in zero-gravity training near the Thuranin relay station when an enemy cruiser arrives.",
+            "id": "captain-chandra",
+            "name": "Captain Chandra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dr. Rose"
+            ],
+            "description": "A respected geologist with chemistry expertise and a concealed CIA role. Joe knows her secret and brings her into planning because the operation needs a solution whose purpose and human origin both remain hidden.",
+            "id": "sarah-rose",
+            "name": "Sarah Rose",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flying Dutchman bridge officer and pilot who temporarily assumes command while Joe consults another member of the crew.",
+            "id": "desai",
+            "name": "Desai",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nagatha"
+            ],
+            "description": "A communications sub-mind created by Skippy that rewrote itself and developed a distinct, possibly semi-sentient identity. She is strongly disposed toward the human crew but lacks Skippy's exceptional powers.",
+            "id": "nagatha-christie",
+            "name": "Nagatha Christie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jeraptha investigator who determines that Fleet Intelligence did not send the precise warning about the Thuranin attack. Altered package-ship and relay records leave the message's origin unknown.",
+            "id": "jeraptha-inquisitor",
+            "name": "Jeraptha Inquisitor",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Condor pilot who flies Joe's craft during the first cable-assisted descent through Kobamik's atmosphere.",
+            "id": "captain-renault",
+            "name": "Captain Renault",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A special-operations lieutenant traveling with Joe during the first concealed dropship descent to Kobamik.",
+            "id": "lieutenant-williams",
+            "name": "Lieutenant Williams",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Royal Air Force pilot assigned to fly Smythe's modified Kristang dropship during the covert insertion on Kobamik.",
+            "id": "flight-lieutenant-windsor",
+            "name": "Flight Lieutenant Windsor",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The co-pilot aboard Smythe's concealed insertion craft during its demanding cable descent to Kobamik.",
+            "id": "lieutenant-reed",
+            "name": "Lieutenant Reed",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Smythe's SAS partner on the rooftop element designated Alpha team. Together they carry two of the missiles intended for the Fire Dragon leadership compound.",
+            "id": "robertson",
+            "name": "Robertson",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jones"
+            ],
+            "description": "A SEAL operator paired with Lieutenant Williams on Bravo team. Their rooftop insertion requires them to overcome building security before they can prepare their missiles.",
+            "id": "marvin-jones",
+            "name": "Petty Officer Second Class Marvin Jones",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ranger and mission-support officer who assists Joe with command duties aboard the Condor while the rooftop teams begin their attack.",
+            "id": "lieutenant-poole",
+            "name": "Lieutenant Poole",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B075NMRZTR",
+            "type": "community"
+          }
+        ],
+        "work": "black-ops"
+      },
       "recaps": {
         "ending": "The covert operation achieves its strategic purpose. Fire Dragon suspicion of the Black Trees becomes open conflict, additional clans enter the war, and fighting spreads through almost all Kristang territory. The Fire Dragons abandon the proposed Ruhar expedition to Earth, and the Ruhar cancel the arrangement. The immediate danger to Earth is therefore removed. All named survivors of the Kobamik ground force reach the Flying Dutchman. Flight Lieutenant Windsor and four other occupants of her dropship die in its crash, while Jones is evacuated with serious injuries and is expected to recover. The crew's own position remains critical. The real anti-Elder worm has left Skippy cold and unresponsive, and Nagatha can persist only by reducing her consciousness. Reactor 2 is unusable, the remaining reactors have limited service life, and Friedlander's replaceable jump-coil plan deteriorates with every jump. After three inaccurate jumps toward a remote red dwarf, only three functional coil packages remain for at least two more jumps. Bishop asks Nagatha to take an unspecified risk as the crew tries to reach hiding and wait for Skippy to recover.",
         "in_short": "Joe and the Flying Dutchman crew learn that the Fire Dragons are arranging a Ruhar voyage to Earth. Their attempt to frighten the Ruhar away with two disguised Kristang attack ships fails after Skippy's anonymous warning gives the Jeraptha a major victory and makes the Thuranin support the deal. Chotek then authorizes a clandestine campaign to provoke a Kristang civil war. Human teams assassinate Fire Dragon leaders on Kobamik, Chang destroys the clan's fleeing leadership, and Skippy draws more clans into the fighting. The growing war causes the Earth agreement to collapse. During the escape, the anti-Elder worm incapacitates Skippy, leaving the crew without his systems expertise. Everyone from the surviving ground force returns, but Windsor and four others die in a dropship crash. With one reactor lost and improvised jump coils deteriorating, the Dutchman remains short of its intended refuge. Skippy is inert, Nagatha is reducing herself to remain functional, and Bishop asks her to attempt an unspecified dangerous measure.",
