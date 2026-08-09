@@ -2827,6 +2827,235 @@
         "work": "macbeth-william-shakespeare-2"
       }
     },
+    "machine-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus soldier summoned from the Atlanta chapter house to Hegemony Central at Inspector Xlur's request. McGill enters the meeting without knowing why the senior Galactic official has taken an interest in him.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Turov",
+              "Imperator Turov"
+            ],
+            "description": "McGill's senior contact in the Hegemony command structure. She has Winslade bring McGill to Central when Inspector Xlur demands to see him, placing her between a Galactic official and a legionnaire who does not know why he has been summoned.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus soldier, McGill's close associate, and his regular drinking companion. Carlos recognizes that the official seeking McGill is Inspector Xlur and explains the reach of Xlur's authority on the Galactic frontier.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Legion Varus adjunct who moved into Hegemony service with Turov. He now acts as her agent and carries out the order to collect McGill from the Atlanta chapter house when Inspector Xlur requests a meeting.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Xlur"
+            ],
+            "description": "A senior Magwa official with broad authority over Frontier 921. His demand that James McGill appear at Hegemony Central gives the legionnaire no practical option to refuse, while the purpose of the summons remains unknown.",
+            "id": "inspector-xlur",
+            "name": "Inspector Xlur",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A Legion Varus officer and one of the four humans present for an earlier direct encounter with the cephalopods. Inspector Xlur includes him among the witnesses called to account for that dangerous contact.",
+            "id": "centurion-graves",
+            "name": "Centurion Graves",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Leeson"
+            ],
+            "description": "A Legion Varus platoon commander and one of the human witnesses to the earlier cephalopod contact. He appears beside Turov, Graves, and McGill when Inspector Xlur questions their conduct and authority.",
+            "id": "adjunct-leeson",
+            "name": "Adjunct Leeson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drusus"
+            ],
+            "description": "The commander of Legion Varus. When Equestrian Nagata considers the legion's future, Drusus argues that it should be deployed instead of dissolved and succeeds in keeping the formation active for a new mission.",
+            "id": "tribune-drusus",
+            "name": "Tribune Drusus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nagata"
+            ],
+            "description": "A Hegemony official with power over Legion Varus's immediate future. Nagata questions McGill about Inspector Xlur's death, then assigns the legion a dangerous campaign after Drusus persuades him not to disband it.",
+            "id": "equestrian-nagata",
+            "name": "Equestrian Nagata",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harris"
+            ],
+            "description": "McGill's senior noncommissioned superior and an experienced Legion Varus soldier. Harris believes McGill is not ready to lead and joins other veterans in demanding that he withdraw from advancement consideration.",
+            "id": "veteran-harris",
+            "name": "Veteran Harris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A Legion Varus technical specialist assigned near McGill for the Gamma Pavonis expedition. She and McGill have an intermittent personal history that remains unsettled as the force prepares for a new campaign.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colonist from Dust World with a prior relationship with McGill. She is expected among the auxiliary trainers sent from Zeta Herculis to prepare Legion Varus for the expedition.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sargon"
+            ],
+            "description": "A Legion Varus specialist serving with McGill's troops during their training against the Dust World dragon walkers. Sargon is incapacitated when the supposedly controlled exercise turns into a lethal battle.",
+            "id": "specialist-sargon",
+            "name": "Specialist Sargon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anne",
+              "Grant"
+            ],
+            "description": "A Legion Varus bio specialist treating McGill after his severe fall during the dragon exercise. Anne undertakes extensive work to preserve his damaged original body rather than sending him into the revival queue.",
+            "id": "anne-grant",
+            "name": "Anne Grant",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young daughter of McGill and Della, whose existence Della reveals to McGill during the voyage. Etta lives on Dust World, where Della's family network provides her home and care while both of her parents are away.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus soldier in McGill's reconnaissance squad. During the first encounter with Machine World's small native machines, Kivi supports releasing a captured being instead of treating it as salvage or an enemy.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Belter"
+            ],
+            "description": "The Legion Solstice officer commanding survivors hidden in machine-dug caverns beneath Machine World. Her force has endured catastrophic losses and cannot safely leave while large native machines gather above the refuge.",
+            "id": "centurion-belter",
+            "name": "Centurion Belter",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Claver",
+              "Old Silver"
+            ],
+            "description": "A renegade former Legion Germanica adjunct and captain of an Imperial trade ship who now works with the cephalopods. He proposes that Earth abandon the Empire, align with the cephalopod kingdom, and profit from Machine World's minerals.",
+            "id": "adjunct-claver",
+            "name": "Adjunct Claver",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Gulf"
+            ],
+            "description": "A representative of the cephalopod kingdom who arrives in Gamma Pavonis with two vessels and Claver's trade ship. Gulf challenges the human claim to the system, asks for McGill, and presents Claver's political offer.",
+            "id": "conqueror-gulf",
+            "name": "Conqueror Gulf",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00U2S776K",
+            "type": "community"
+          }
+        ],
+        "work": "machine-world"
+      }
+    },
     "mad-ship": {
       "characters": {
         "characters": [
