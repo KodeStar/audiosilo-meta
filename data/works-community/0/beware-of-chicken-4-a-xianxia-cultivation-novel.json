@@ -4047,6 +4047,9 @@
             "role": "supporting"
           },
           {
+            "aliases": [
+              "Bishop"
+            ],
             "description": "The human commander of the Flying Dutchman. Working under Chotek's authority, he must quietly prevent a Fire Dragon and Ruhar expedition to Earth while avoiding any action that exposes humanity or attacks the Ruhar.",
             "id": "joe",
             "name": "Joe",
@@ -4095,15 +4098,6 @@
             "description": "The Flying Dutchman's duty officer when the crew learns that Fire Dragon representatives may secure transport to Earth.",
             "id": "adams",
             "name": "Adams",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A senior officer and practical operations planner aboard the Flying Dutchman, helping the command team assess how to answer the proposed voyage to Earth.",
-            "id": "bishop",
-            "name": "Bishop",
             "reveal": {
               "chapter": 1
             },
