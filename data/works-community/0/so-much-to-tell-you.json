@@ -2398,6 +2398,302 @@
         "work": "specials"
       }
     },
+    "specops": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Colonel Bishop"
+            ],
+            "description": "A U.S. Army sergeant holding the operational rank of colonel and commanding the stolen Thuranin carrier Flying Dutchman. He leads its multinational military and scientific crew, placing the concealment of Earth's new spacefaring capability above every other mission objective.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An ancient alien artificial intelligence whose abilities are essential to operating the Flying Dutchman. He seeks an Elder communications route to the Collective and wants the human crew to recognize him formally as one of their own.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's executive officer and a veteran of its original human crew. He is Bishop's trusted second-in-command and an experienced leader for ground operations.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The logistics officer of the Flying Dutchman and a member of its original human crew. She manages the supplies and practical needs of the expanded multinational mission.",
+            "id": "major-simms",
+            "name": "Major Simms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's trusted chief pilot and a veteran of the original crew. She leads flight training as the humans work toward navigating and operating captured alien spacecraft without constant assistance.",
+            "id": "captain-desai",
+            "name": "Captain Desai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French paratrooper from the original crew who helps train the newcomers on alien equipment and Kristang powered armor. He begins the mission with an injured arm still being treated by Thuranin medical technology.",
+            "id": "captain-giraud",
+            "name": "Captain Giraud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An original crew member and practical instructor in captured alien equipment. Bishop initially resisted bringing her back into danger, but she returns as one of the principal trainers integrating the new SpecOps contingent.",
+            "id": "sergeant-adams",
+            "name": "Sergeant Adams",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer first selected to command the U.S. Navy SEAL team. Hansen declines the assignment because he is unwilling to serve under Bishop.",
+            "id": "lieutenant-jerome-hansen",
+            "name": "Lieutenant Jerome Hansen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The U.S. Navy SEAL team leader, initially doubtful of Bishop's command and Adams's authority as a trainer. He refused a secret intelligence proposal that could have placed him at the head of an attempt to seize the ship.",
+            "id": "lieutenant-williams",
+            "name": "Lieutenant Williams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the Chinese Night Tiger team. She joins Bishop's first boarding party during the search of an abandoned Kristang station.",
+            "id": "captain-xho",
+            "name": "Captain Xho",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Indian SpecOps team. He accompanies Bishop, Giraud, and Xho in the first party to enter the abandoned Kristang station.",
+            "id": "captain-chander",
+            "name": "Captain Chander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the civilian science contingent who presses for more time and sensor access at the abandoned station. Scientific opportunity must be balanced against Bishop's requirement to avoid detection in hostile territory.",
+            "id": "doctor-venkman",
+            "name": "Doctor Venkman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Williams's four-person Navy SEAL team. Garcia receives recognition for space operations after the crew's first station mission.",
+            "id": "garcia",
+            "name": "Garcia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain Desai's dropship copilot during the mission that leaves a human landing party concealed beneath a Kristang task force. Devereax remains with the stranded craft while the Flying Dutchman prepares a recovery.",
+            "id": "lieutenant-devereax",
+            "name": "Lieutenant Devereax",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the British SAS team. He directs field tests of portable shelters while the crew trains on a hostile planet containing a ruined Elder site.",
+            "id": "captain-smythe",
+            "name": "Captain Smythe",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A biologist and medical doctor in the science contingent. She collects alien microorganisms for study after Skippy judges them harmless to humans.",
+            "id": "doctor-zheng",
+            "name": "Doctor Zheng",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An astrophysicist with geological training. When the damaged Flying Dutchman must be emptied for repairs, Bishop assigns her to evaluate concealed refuge sites on Newark.",
+            "id": "doctor-kassner",
+            "name": "Doctor Kassner",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A doctor in the civilian contingent who agrees to undertake field-mobility training with SpecOps. Bishop wants qualified medical personnel able to accompany any operation away from the Newark settlement.",
+            "id": "doctor-tanaka",
+            "name": "Doctor Tanaka",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scientist investigating Newark's caverns. Graziano uncovers built chambers, bronze tools, tombs, and the remains of the planet's extinct native people.",
+            "id": "doctor-graziano",
+            "name": "Doctor Graziano",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A NASA rocket scientist assigned to UNEF who helps analyze the evidence that Newark's planetary system was violently altered in the distant past.",
+            "id": "doctor-friedlander",
+            "name": "Doctor Friedlander",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A French Alpha-team trooper operating in powered armor during the Newark deception campaign. She inspects the wreck of the Kristang transport and confirms that its cockpit crew died in the engineered crash.",
+            "id": "renee-giraud",
+            "name": "Renee Giraud",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian scientist whose earlier choice of a landing area helps Bishop anticipate where the Kristang will place their recovery craft during the deception operation.",
+            "id": "doctor-mesker",
+            "name": "Doctor Mesker",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the Ranger team contributing personnel to Smythe's multinational Newark raid force.",
+            "id": "captain-gomez",
+            "name": "Captain Gomez",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A SpecOps soldier in the Newark raid force. At its first major river crossing, she identifies a safer exit after the intended route on the far bank proves unstable.",
+            "id": "lieutenant-liu",
+            "name": "Lieutenant Liu",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A SpecOps driver in the Newark raid force who guides the salvaged Kristang vehicle across dangerous muddy slopes after its load is redistributed for stability.",
+            "id": "lieutenant-zhang",
+            "name": "Lieutenant Zhang",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Navy SEAL and driver in the Newark raid force. Taylor is at the controls when unstable ground gives way and the expedition's vehicle rolls down a muddy slope.",
+            "id": "taylor",
+            "name": "Taylor",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A SpecOps driver who takes the Newark raid vehicle through its second and third major river crossings as worsening weather threatens the route.",
+            "id": "lieutenant-patel",
+            "name": "Lieutenant Patel",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An SAS soldier and experienced competitive kayaker. Crispin uses that background to guide the Newark raid vehicle around submerged hazards during a dangerous river crossing.",
+            "id": "lieutenant-crispin",
+            "name": "Lieutenant Crispin",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Ranger in the Newark assault force who helps Bishop reach the riverbank after ice disables the expedition's amphibious vehicle and forces an emergency evacuation.",
+            "id": "samuels",
+            "name": "Samuels",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain Desai's dropship copilot during the covert attempt to obtain rendezvous data from two Thuranin support tankers.",
+            "id": "lieutenant-xi",
+            "name": "Lieutenant Xi",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The UNEF commander who receives Bishop's transmission when the altered Flying Dutchman returns to Earth and reports that the local wormhole has again been shut down.",
+            "id": "general-huang",
+            "name": "General Huang",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B06W5861HP",
+            "type": "community"
+          }
+        ],
+        "work": "specops"
+      }
+    },
     "spirit-bound": {
       "characters": {
         "characters": [
