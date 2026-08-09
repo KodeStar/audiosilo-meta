@@ -3206,6 +3206,215 @@
         ],
         "work": "tears-of-liscor"
       }
+    },
+    "tech-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus weapons specialist who becomes a visible campaigner for keeping the legion independent of Earth's hegemony. He is on shore leave when Natasha Elkin asks where he stands on the approaching vote.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A Legion Varus tech specialist who approaches McGill about the legion's imminent vote. She has two votes as a specialist, challenges his disregard for official messages, and has an ongoing personal relationship with him.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A balding hegemony specialist identified as the officer who led the attempt to arrest McGill before the Legion Varus independence vote.",
+            "id": "turner",
+            "name": "Turner",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Imperator Turov"
+            ],
+            "description": "A former Legion Varus commander who now serves Earth's hegemony as an imperator. She directs the legion's urgent departure and admits that she arranged the attempt to arrest McGill during the independence campaign.",
+            "id": "turov",
+            "name": "Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Legion Varus legionnaire who joins McGill and Natasha during the emergency muster. He is a close associate of McGill and casts his vote for the legion to remain independent.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A Legion Varus centurion who knows McGill is organizing votes against incorporation into hegemony. Although officers are barred from influencing the decision, Graves quietly allows the campaign to continue.",
+            "id": "centurion-graves",
+            "name": "Centurion Graves",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harris"
+            ],
+            "description": "A Legion Varus veteran and McGill's immediate superior. He reacts angrily to the legion's year-long Tau Ceti assignment, while his position on the preceding independence vote remains unclear.",
+            "id": "veteran-harris",
+            "name": "Veteran Harris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drusus"
+            ],
+            "description": "The commanding tribune of Legion Varus during its arrival at Tau Ceti. He formally accepts the new assignment as the legion begins its handover with Legion Germanica.",
+            "id": "tribune-drusus",
+            "name": "Tribune Drusus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Silver"
+            ],
+            "description": "A Legion Germanica adjunct assigned to guide Legion Varus during the Tau Ceti handover. He presents the orbital habitat as largely safe and directs the arriving heavy troops toward private bodyguard work.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus trooper stationed with McGill and Carlos in the newly installed Tau Ceti barracks.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Legion Varus adjunct leading a platoon on Claver's unusually lucrative private escort. Leeson accepts the assignment even though the clients' cargo and the origin of their payment have not been disclosed.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dubois"
+            ],
+            "description": "A Legion Germanica centurion responsible for Claver's unit aboard Minotaur. He initially refuses to surrender Claver to Legion Varus, then changes course when Graves reports an imperial-credit offense.",
+            "id": "centurion-dubois",
+            "name": "Centurion Dubois",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus bio specialist who supervises McGill's difficult revival after a prolonged delay. She is handling casualties during the widening station unrest and agrees to meet McGill after her shift.",
+            "id": "anne-grant",
+            "name": "Anne Grant",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus heavy-weapons specialist who joins the battered defenders during the Tau assault. He uses a belcher to break part of a stairway and helps McGill delay the attackers.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Thompson"
+            ],
+            "description": "A centurion revived when Minotaur has too few officers and a severe revival bottleneck. Thompson becomes the available specialist responsible for organizing further revivals aboard the ship.",
+            "id": "centurion-thompson",
+            "name": "Centurion Thompson",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lisa"
+            ],
+            "description": "The centurion who takes charge of the Legion Germanica survivors recovered with their damaged module. She organizes the badly reduced unit and assigns McGill to help locate Turov.",
+            "id": "centurion-lisa",
+            "name": "Centurion Lisa",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Conqueror Glide"
+            ],
+            "description": "A cephalopod conqueror who contacts Minotaur after the destruction of a cephalopod colony in Zeta Herculis. He says his people occupy several worlds, rejects an ambassadorial role, and forbids the human ship from approaching his vessel.",
+            "id": "glide",
+            "name": "Glide",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The senior officer leading Legion Germanica during the Tau Ceti handover. He formally welcomes Legion Varus while openly disparaging the arriving legion.",
+            "id": "germanica-tribune",
+            "name": "the Germanica tribune",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00NVOJYYU",
+            "type": "community"
+          }
+        ],
+        "work": "tech-world"
+      }
     }
   }
 }
