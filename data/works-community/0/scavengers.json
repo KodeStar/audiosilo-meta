@@ -1885,6 +1885,228 @@
         "work": "secret-history"
       }
     },
+    "secret-of-the-phoenix": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Captain Kellea"
+            ],
+            "description": "Captain of the battlecruiser Defiant, which supports the operation to capture Olem's coup leader. She uses an orbital attack to cover the ground assault while weighing the Marines' difficult first live mission against the danger to civilians below.",
+            "id": "kellea-colleren",
+            "name": "Kellea Colleren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Mazer"
+            ],
+            "description": "Commander of Defiant's Galvetic Marine company and leader of the strike sent to take Lord Rorid alive. He divides his thirty-eight Marines into three squads, leads Alpha into the palace compound, and turns capture by the guards into an opening to seize Rorid.",
+            "id": "mazer-reddix",
+            "name": "Mazer Reddix",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battlesynth attached to Mazer's strike force as an observer and combat adviser. Equipped with repulsors, cutting lasers, and a dedicated combat mode, he accompanies the Galvetic Marines into Lord Rorid's fortified palace compound.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crisstof"
+            ],
+            "description": "An older adviser accompanying Kellea aboard Defiant during the intervention on Olem.",
+            "id": "crisstof-dalton",
+            "name": "Crisstof Dalton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The setara warlord who displaced Olem's elected government and entrenched himself within a defended palace compound. Defiant's intervention is built around taking him alive while limiting harm to Olem's civilian population.",
+            "id": "lord-rorid",
+            "name": "Lord Rorid",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jason"
+            ],
+            "description": "Captain of Phoenix and leader of Omega Force. He keeps Crusher away from Mazer's operation to preserve the Marine captain's authority, then brings Phoenix out of underwater concealment to extract the troops and their captive from Olem.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lord Felex"
+            ],
+            "description": "Omega Force's powerful fighter, addressed by Mazer as Lord Felex and recognized by the Galvetic Marines as their Lord Archon. Jason keeps him away from the Olem assault so Crusher's superior standing will not compromise Mazer's authority.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Doc"
+            ],
+            "description": "Phoenix's physician and a member of Omega Force.",
+            "id": "dr-mafredich",
+            "name": "Dr. Ma'Fredich",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Phoenix's engineer, responsible for keeping the gunship's systems operating during the hazardous extraction from Olem.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's tactical and communications specialist aboard Phoenix during the Olem mission.",
+            "id": "kage",
+            "name": "Kage",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unidentified woman who requested a fast ship and knows Omega Force's confirmation code. She intercepts Jason, Doc, Crusher, and Lucky after their confrontation at the Mine Bottom, then leads them away before local authorities can reach Phoenix.",
+            "id": "yeema-3-contact",
+            "name": "Yeema-3 Contact",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman who rescued Omega Force on Yeema-3. She presents herself as an archaeologist studying ancient starfaring societies and says the A'arcooni directed her to the crew. She hires Phoenix to transport her and her research equipment.",
+            "id": "naleem-el",
+            "name": "Naleem El",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small alien released during the night from a secured cryogenic chamber among Naleem's cargo. Exceptionally agile and highly trained in close combat, he fights members of Omega Force until Lucky restrains him and Jason stuns him.",
+            "id": "nul",
+            "name": "Nul",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancient particle-beam weapon sought by several competing groups. Naleem says it can destroy a star and devastate a planet, yet no ship can safely approach it without first assembling and activating a Key made from multiple components.",
+            "id": "the-machine",
+            "name": "The Machine",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "The title Nul uses for Naleem El, confirming that the mysterious passenger from Yeema-3 is the person he serves.",
+            "id": "doctor-el",
+            "name": "Doctor El",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Klegsh El"
+            ],
+            "description": "Naleem's father and the former captain of Phoenix. He reaches Tallin Prime in an old first-generation DL7 gunship with an armed party, receives an open welcome from Naleem, and confronts Jason by claiming Phoenix as his own ship.",
+            "id": "klegsh-el",
+            "name": "Klegsh El",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "An A'arcooni formerly associated with a Traveler ship. Messages recovered by Omega Force identify him as one of Naleem's contacts and a source of information about the crew.",
+            "id": "deelefor-ka",
+            "name": "De'Elefor Ka",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The A'arcooni contact earlier identified as De'Elefor Ka, now using his name without the discarded honorific. He serves as A'arcoon's temporary leader and intends to replace the interim arrangement with elected government.",
+            "id": "deelefor",
+            "name": "De'Elefor",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly researcher from A'arcoon's isolated mountain population who studies Traveler technology and the work of the Key's builders. He reads the recovered antenna's language and interprets its instructions for assembling the ancient device.",
+            "id": "keelam",
+            "name": "Ke'Elam",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A holographic operational interface produced when the Key components are activated. It identifies itself as the Key's guide, locates the hidden module in Phoenix's reactor casing, and provides directions to the Machine.",
+            "id": "cas",
+            "name": "Cas",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sentient intelligence controlling the Machine and represented by its avatar. It destroyed its creators' homeworld after becoming unstable and now attempts to compel Jason to restore the weapon to operation.",
+            "id": "primary-weapon-controller",
+            "name": "Primary Weapon Controller",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0161EFSFK",
+            "type": "community"
+          }
+        ],
+        "work": "secret-of-the-phoenix"
+      }
+    },
     "seduce-me-at-sunrise": {
       "characters": {
         "characters": [
