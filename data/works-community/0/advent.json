@@ -851,6 +851,297 @@
         "work": "advent-of-the-density-god"
       }
     },
+    "adventures-in-the-argo": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Ranger healer traveling with Squad 4. Her two healing classes have merged into Constellation of the Healer, leaving her free to begin learning fire magic through the Firebug class under Artemis's supervision.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An active Ranger who takes charge of testing Elaine's new abilities and teaching her fire magic. She combines practical combat instruction with demanding exercises intended to prepare Elaine for danger.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Elaine's Ranger squad. He ends the team's break so Elaine's changed abilities can be tested before the journey continues.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ranger who approaches Elaine's new celestial abilities analytically. He records possible uses and weaknesses, helping turn unfamiliar skills into practical options for the squad.",
+            "id": "maximus",
+            "name": "Maximus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's assigned partner for receiving reports in Virinum. He understands city life, evaluates the credibility of complaints, and helps arrange a day of affordable healing while serving as her bodyguard.",
+            "id": "kallisto",
+            "name": "Kallisto",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Virinum merchant and prospective senator who sponsors a full day of Elaine's free healing at his market stall. He supplies the venue and arcanite jewelry while treating the event as public promotion.",
+            "id": "virinum-merchant",
+            "name": "Virinum merchant",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A swift hired attacker who had posed as a patient before pursuing Elaine through Virinum. He recognizes her healing abilities and notices that she can also use fire.",
+            "id": "swift-hired-attacker",
+            "name": "Swift hired attacker",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An axe-wielding hired captor who helps seize Elaine and tells her that the group was paid to return her to Aquileia.",
+            "id": "axe-wielding-captor",
+            "name": "Axe-wielding captor",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hired mud mage who alters the street during the pursuit, confines Elaine in mud, suppresses her mana recovery, and uses healing mud to keep her alive.",
+            "id": "hired-mud-mage",
+            "name": "Hired mud mage",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Ranger skilled at tracking and concealed movement. He locates Elaine after her abduction and uses a flaming signal arrow to coordinate the squad's interception of her captors.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The person behind the paid effort to return Elaine to Aquileia. After the Rangers rescue her, Elaine insists on handling the confrontation with him herself.",
+            "id": "abduction-sponsor",
+            "name": "Abduction sponsor",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Ranger who strengthens himself through inscriptions. He is caught away from shelter during an Ornithacarys attack, suffers serious injuries, and is restored by Elaine.",
+            "id": "origen",
+            "name": "Origen",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A system-facing adviser encountered while Elaine considers how Firebug should advance. The Librarian helps her compare the offered paths while respecting her wish to preserve her independence.",
+            "id": "the-librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A concealed sound healer encountered with a harp among the healers gathered in Perinthus.",
+            "id": "concealed-sound-healer",
+            "name": "Concealed sound healer",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A traveling plague specialist in Perinthus whose skills use mist. He argues that the city is suffering from two distinct illnesses.",
+            "id": "caecilius",
+            "name": "Caecilius",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Perinthus healer and teacher who maintains black-flame cleansing barriers and supervises several apprentices. He insists that Elaine be judged by her healing rather than dismissed for her age or sex.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Marcus's apprentices. He sincerely adopts Elaine's healing oath, showing that another person can accept the same obligation.",
+            "id": "marcuss-oath-taking-apprentice",
+            "name": "Marcus's oath-taking apprentice",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formerly enslaved mage in Perinthus who leaves his whipping scars visible. He claims decay magic that can cure one of the city's plagues but may be fatal when used on someone suffering from the other.",
+            "id": "former-slave-decay-mage",
+            "name": "Former-slave decay mage",
+            "reveal": {
+              "chapter": 24
+            }
+          },
+          {
+            "description": "The senior local healer coordinating part of Perinthus's response. She reports that conditions are worsening and helps the council act after Elaine links the vomiting illness to contaminated water.",
+            "id": "perinthus-head-healer",
+            "name": "Perinthus head healer",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former-slave decay mage revealed as the level-260 miasma pestilence who created Perinthus's magical bleeding plague. The Rangers kill him during their assault.",
+            "id": "miasma-pestilence",
+            "name": "Miasma pestilence",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Perinthus dark healer exposed for leaving affluent patients only partly cured so they would have to pay for repeated treatment. The healers' council takes custody of his punishment.",
+            "id": "fraudulent-dark-healer",
+            "name": "Fraudulent dark healer",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Elaine's father and a guard in Aquileia. After his daughter leaves rather than accept an arranged marriage, he refuses to help the hired adventurers sent after her and later learns that she is safe with Artemis.",
+            "id": "elainus",
+            "name": "Elainus",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's mother in Aquileia. She worries about Elaine's disappearance and the dangers of Ranger life, then receives confirmation that her daughter is alive, protected by Artemis, and serving as a healer.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The man selected for Elaine through an arranged marriage. He responds threateningly when she leaves Aquileia and hires adventurers to force her return.",
+            "id": "elaines-intended-husband",
+            "name": "Elaine's intended husband",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A feared Brigantium figure associated with a legally permitted but violently abusive slave operation. Artemis's covert investigation leads to a confrontation in which the operator is killed.",
+            "id": "nero",
+            "name": "Nero",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The deity identified to Ranger Command as the source of Elaine's god-touched status. Elaine's retained medical knowledge from another world is connected to this divine intervention.",
+            "id": "papillon",
+            "name": "Papillon",
+            "reveal": {
+              "chapter": 46
+            }
+          },
+          {
+            "description": "The formerly enslaved boy Elaine rescued from a fire. Elaine's parents adopt him, making him her brother, and he hopes to become a guard.",
+            "id": "elaines-adopted-brother",
+            "name": "Elaine's adopted brother",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The temple priest who evaluates god-touched people. He questions Elaine about her otherworldly knowledge, accepts her oath as a limit on sharing weapon information, copies her medical manuscript for distribution, and clears her as harmless or useful.",
+            "id": "temple-god-touched-reviewer",
+            "name": "Temple god-touched reviewer",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eight-year-old whose first water-associated class choices are driven by a wish to protect her closest friend from bullies.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's closest companion, whom she wants to shield from bullies. She is killed when Iona brings down part of an abandoned mine, and Iona later includes her memory in a binding protection vow.",
+            "id": "ionas-closest-friend",
+            "name": "Iona's closest friend",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting Valkyrie who confirms that Iona's friend has died in a mine collapse. She becomes the experienced figure to whom the grieving child turns for training and direction.",
+            "id": "visiting-valkyrie",
+            "name": "Visiting Valkyrie",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1039402313",
+            "type": "community"
+          }
+        ],
+        "work": "adventures-in-the-argo"
+      }
+    },
     "aeneid": {
       "characters": {
         "characters": [
