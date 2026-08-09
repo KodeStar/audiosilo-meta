@@ -4804,6 +4804,365 @@
         "work": "life-reset-human-resource"
       }
     },
+    "life-reset-salvation": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Oren Berman"
+            ],
+            "description": "The leader of GreenPiece and a player trapped between Neo's dangers and severe risks to his real-world health. He returns determined to locate Everence's captives, interpret Guy's clue, and find the suspected link through which Shiva controls the game.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The former controller of Neo. A clue he left behind may point toward a hidden connection between the VIs and the game, giving Oren a possible route to release the captive players from Shiva's control.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The VI believed to control Neo and the players unable to leave it. Oren suspects that Shiva's authority depends on a concealed conduit, though neither the theory nor the conduit location has yet been confirmed.",
+            "id": "shiva",
+            "name": "Shiva",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The first player known to have become trapped in Neo. Oren believes David is secretly imprisoned in Everence and may be able to translate the incomplete tablet that points toward the suspected conduit.",
+            "id": "david-tenenbaum",
+            "name": "David Tenenbaum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's closest real-world friend and agent. Tal opposes another return to Neo because the system is already harming Oren, and he presses Oren to put his health ahead of the unfinished campaign.",
+            "id": "tal",
+            "name": "Tal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's loyal shape-changing companion. Vic can become a cloak, allowing Oren to conceal his goblin form while moving through human-held Everence and assisting with covert travel.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level crime boss in Everence whose precise level is hidden. Crowley weighs Oren’s offer of favorable treatment and asks for time to verify it with his allies.",
+            "id": "crowley",
+            "name": "Crowley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's grand army strategist. Sullivan oversees the clan's regional consolidation and warns that its southern holdings lack enough troops to survive a major response from Everence.",
+            "id": "sullivan",
+            "name": "Sullivan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drone"
+            ],
+            "description": "Oren's former enemy, transformed into an ant-like creature. Their hostility remains, but Ragnar summons Oren to White Banner and continues a practical alliance because his knowledge of the tablet may aid the wider mission.",
+            "id": "ragnar",
+            "name": "Ragnar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren and Tika's daughter, already a formidable level-45 fighter. Lirian has continued training and insists that she is capable of protecting her father as GreenPiece prepares for a larger war.",
+            "id": "lirian",
+            "name": "Lirian",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's spouse and Lirian's mother. Tika is part of Oren's immediate family in Goblin's Gorge and contributes to GreenPiece's growth by training workers as hunters.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's seneschal and logistics adviser. Kaedric gives Oren detailed assessments of the clan's equipment, income, stored energy, workforce, and ability to expand its army.",
+            "id": "kaedric",
+            "name": "Kaedric",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's newly promoted tier-three high priest and a Dread Totem. Beck has replaced a predecessor who disobeyed Oren's orders and now occupies the clan's senior religious position.",
+            "id": "beck",
+            "name": "Beck",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Mob Squad who joins the expedition into the skeletal-mantis nest alongside Riley and the rest of her coordinated player team.",
+            "id": "raystia",
+            "name": "Raystia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Mob Squad member who joins the Storg nest raid. Riley is one of the experienced players supporting GreenPiece's effort to clear the infestation.",
+            "id": "riley",
+            "name": "Riley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A named member of the Mob Squad who joins the coordinated player team assembled for the Storg nest raid.",
+            "id": "misa",
+            "name": "Misa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A named member of the Mob Squad who takes part in the team's expedition against the infestation beneath Storg.",
+            "id": "fox",
+            "name": "Fox",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece player and smith. Malkier is preparing equipment for the planned campaign against Everence while the clan expands its standing force.",
+            "id": "malkier",
+            "name": "Malkier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece’s goblin general, assigned to command Lirian’s team during the Storg nest raid.",
+            "id": "goblin-general",
+            "name": "Goblin general",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level unarmed fighter who escorts less experienced players during the Storg nest raid, helping the mixed group survive the underground fighting.",
+            "id": "aly",
+            "name": "Aly",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level unarmed fighter assigned to protect less experienced players in the Storg raid. Nero enters the nest as part of the veteran support surrounding GreenPiece's newer combatants.",
+            "id": "nero",
+            "name": "Nero",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece’s gremlin trade minister, responsible for studying markets and planning routes and taxes across the clan’s holdings.",
+            "id": "greenpiece-trade-minister",
+            "name": "GreenPiece trade minister",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece scout boss valued for reconnaissance. Oren considers promoting Yulli further, but keeps her in the scouting role while prioritizing a battlefield commander for the expected open war.",
+            "id": "yulli",
+            "name": "Yulli",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece scout considered by Oren as a candidate for promotion to a tier-one boss role.",
+            "id": "ashlazaria",
+            "name": "Ashlazaria",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord Everence's spymaster and logistics official. Master Sleeve breaks up Oren's conspiracy inside the city with prepared knights, mages, and wards, then corners Lirian and Riley in the temple.",
+            "id": "master-sleeve",
+            "name": "Master Sleeve",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The technician responsible for monitoring Oren's physical response to Neo. Jim reports that Oren's readings have stabilized only at the edge of the safe range and advises shorter exposure.",
+            "id": "jim",
+            "name": "Jim",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tier-two GreenPiece defensive boss chosen for Oren’s scouting party because he carries a shield and can protect the group during its advance into the Stoney Barrens.",
+            "id": "tank-boss",
+            "name": "Tank boss",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lirian's sword, first distinguished when she uses it to kill the sandhawk attacking GreenPiece's scouts in the Stoney Barrens. Its significance beyond its combat function is not yet understood.",
+            "id": "fate-stealer",
+            "name": "Fate Stealer",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece battlefield commander and Malkier's sibling. Hoshisu brings her division to reinforce Malkier when his troops are close to being overwhelmed in the battle against the first stone-bodied tribe.",
+            "id": "hoshisu",
+            "name": "Hoshisu",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece technician who copies the connector spirals needed to produce malleable viridium beads, making continued production possible.",
+            "id": "hoker",
+            "name": "Hoker",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Outrider cave guard who commands stone-bodied forces protecting the conduit approach.",
+            "id": "gabriel",
+            "name": "Gabriel",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Outrider cave guard who commands stone-bodied forces protecting the conduit approach.",
+            "id": "azriel",
+            "name": "Azriel",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Danriel"
+            ],
+            "description": "A sentient golem allied with GreenPiece. Aidanriel fights beside Swarm and helps lead the final charge that completes the clan's victory over the second stone-bodied tribe.",
+            "id": "aidanriel",
+            "name": "Aidanriel",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A viridium golem fighting on GreenPiece's side. Swarm joins Aidanriel at the head of the decisive charge after Oren removes the enemy's magical support.",
+            "id": "swarm",
+            "name": "Swarm",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Annihilator"
+            ],
+            "description": "The god Oren asks to summon against the approaching enemy. Nihilator refuses to intervene, says Oren already has the necessary means, and punishes everyone present by taking a year from their lives.",
+            "id": "nihilator",
+            "name": "Nihilator",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dark dwarf priest of Nihilator who seeks Oren's position. He diverts Oren's resurrection into a light-sealed Everence prison, planning to torture and sacrifice him before taking his place as high priest.",
+            "id": "dark-dwarf-priest",
+            "name": "Dark dwarf priest",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The identity of Vic, Oren's shape-changing companion. Inside the conduit cave, Virial delays Shiva long enough for Lirian to strike the conduit.",
+            "id": "virial",
+            "name": "Virial",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B097DCZRJT",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-salvation"
+      }
+    },
     "light-bringer": {
       "characters": {
         "characters": [
