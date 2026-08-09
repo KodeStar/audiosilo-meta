@@ -2280,6 +2280,266 @@
         "work": "rogue-protocol"
       }
     },
+    "rogue-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran Legion Varus soldier living in Waycross with his daughter, Etta. When his mother returns from Dust World with a progressive illness, he becomes determined to secure treatment that the family cannot afford.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "James McGill's independent nine-year-old daughter, who lives with him and his parents in Waycross. She has a strong interest in animal bones and alerts her father when officials bring her grandmother home from hospital.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Etta's mother, who is socially detached from McGill's household.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's seriously ill mother. Her time on Dust World left her with a worsening condition, while her reduced medical coverage puts effective treatment beyond the family's means.",
+            "id": "mcgills-mother",
+            "name": "McGill's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's father, who shares the Waycross household and helps support the family during his wife's medical crisis.",
+            "id": "mcgills-father",
+            "name": "McGill's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Winslade"
+            ],
+            "description": "Galina Turov's primus and a longstanding enemy of McGill. He approaches McGill during the family medical crisis with a suspicious offer of financial help.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Turov"
+            ],
+            "description": "A politically connected senior officer whose damaged air car becomes the subject of an investigation. She presses McGill to keep quiet about the crash involving her primus.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior officer above Galina Turov who investigates McGill's fatal air-car crash and orders Winslade revived for questioning.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anne"
+            ],
+            "description": "A former Legion Varus bio specialist and former lover of McGill. She helps identify the likely cause of his mother's illness and explains why simply disabling the disease may not repair the damage.",
+            "id": "anne-grant",
+            "name": "Anne Grant",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus primus who briefs and supervises McGill's experimental reconnaissance mission. He treats the operation as a grave security measure against an approaching Galactic force.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion veteran assigned to guard McGill during a security crisis. He assists Graves while McGill's lost reconnaissance memories leave his loyalty and fate in doubt.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carlos"
+            ],
+            "description": "A Legion Varus bio specialist who summons McGill to Central when the legion begins mustering for a classified operation.",
+            "id": "carlos-ortiz",
+            "name": "Carlos Ortiz",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Toro"
+            ],
+            "description": "One of McGill's adjuncts for the secret operation. Adjunct Toro helps command the unit and objects when Harris receives a sudden promotion within its leadership.",
+            "id": "adjunct-toro",
+            "name": "Adjunct Toro",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adjunct serving in McGill's newly assigned combat unit. He joins Toro in questioning the command arrangement after Harris is elevated.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A new recruit who survives a lethal intake test after McGill intervenes. Once medically stabilized, she is assigned to his unit for the coming operation.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran fighter chosen for McGill's experienced team during a lethal training exercise aboard the transport.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus technical specialist in McGill's unit. She covertly uses miniature drones to scout opposing teams and gives McGill an intelligence advantage during training.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Deitch"
+            ],
+            "description": "The newly appointed commander of Legion Varus. Tribune Deitch takes charge after Drusus is promoted and directs the legion's politically sensitive operation against an illegal research facility.",
+            "id": "tribune-deitch",
+            "name": "Tribune Deitch",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist in McGill's unit and one of his former partners. She studies scarce advanced components during the voyage and quickly recognizes that McGill is withholding information from her.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recurring human operator of stolen teleport technology. He unexpectedly pulls McGill from a failing revival machine while wearing a Hegemony primus uniform, leaving his authority and intentions unclear.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The decision-maker for the research community inside the dome. She opens negotiations with McGill and considers a ceasefire as outside Galactic forces approach.",
+            "id": "lead-researcher",
+            "name": "Lead researcher",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nairbs"
+            ],
+            "description": "Galactic observers and enforcers whose vessel monitors the conflict. Their authority places both Legion Varus and the dome researchers under immediate scrutiny.",
+            "id": "nairb",
+            "name": "Nairb",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A superior Galactic official who commands the Nairbs. The official restores disabled Legion equipment, then imposes a severe order on Legion Varus before the battle fleet arrives.",
+            "id": "galactic-magnate",
+            "name": "Galactic magnate",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Rogue World's independent defensive weapon. It attacks the captured Nairb vessel, then suspends its missile strike after McGill offers help against the approaching Galactic fleet.",
+            "id": "autonomous-defender",
+            "name": "Autonomous defender",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of Battlefleet 921. During the battle at Rogue World, the Grand Admiral accepts McGill's account that the captured Nairb vessel is being operated by loyal human enforcers.",
+            "id": "grand-admiral",
+            "name": "Grand Admiral",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B071WWW2DD",
+            "type": "community"
+          }
+        ],
+        "work": "rogue-world"
+      }
+    },
     "romancing-mister-bridgerton": {
       "characters": {
         "characters": [
