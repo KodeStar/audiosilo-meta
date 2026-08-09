@@ -1020,6 +1020,386 @@
         "work": "return-of-the-runebound-professor-8"
       }
     },
+    "return-to-remus": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful healer returning toward Remus after a long absence. She takes responsibility for a newly hatched white bird whose needs and dangerous fire she does not yet understand.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A highly intelligent white hatchling in Elaine's care. Her unknown diet and tendency to ignite her surroundings make keeping her alive and others safe an immediate challenge.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ranger with expertise in animal companions who helps Elaine care for Auri. He supplies their camp and assists with the hatchling’s feeding and shelter.",
+            "id": "wolfie",
+            "name": "Wolfie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Auri"
+            ],
+            "description": "Auri's full identity after her system awakens. The young phoenix chooses an Inferno path for her first class as Elaine continues bringing her toward Arminium.",
+            "id": "ifa-auri-stenter",
+            "name": "Ifa Auri Stenter",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Sentinel whom Elaine expects to see after reaching home. Elaine looks forward to introducing her to Auri.",
+            "id": "kallisto",
+            "name": "Kallisto",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lightning Reaper"
+            ],
+            "description": "Elaine's friend, now forced to fight as an enslaved gladiator in the Colosseum. Known in the arena as the Lightning Reaper, she wields lightning and earth magic while surviving repeated execution bouts.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senator who owns Artemis's debt and blocks her departure from the Colosseum. Enyo releases Artemis after Elaine commits to paying two thousand rods.",
+            "id": "senator-enyo",
+            "name": "Senator Enyo",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Commander Julius"
+            ],
+            "description": "A Ranger commander and Artemis's partner. His failure to intervene in her case is alarming because he has vanished near Arminium without explanation.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired Ranger who has joined Artemis's school. He is part of the circle waiting for Elaine after her return.",
+            "id": "maximus",
+            "name": "Maximus",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's father and a Praetorian. He welcomes his daughter home after her long absence and receives a hazardous first introduction to Auri's flames.",
+            "id": "linus",
+            "name": "Linus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's mother and a healer. She accepts Auri into the family home, provides a fire-safe perch, and sets firm household limits for the hatchling.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immortal leader among the Sentinels who detects Elaine despite her camouflage gem by noticing environmental signs, including Auri’s heat.",
+            "id": "immortal-sentinel-leader",
+            "name": "The immortal Sentinel leader",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sentinel Maestri"
+            ],
+            "description": "A newly promoted Sentinel whose nullification counters magic. Storm-enhanced speed supports Maestri's role as a specialist against mages.",
+            "id": "maestri",
+            "name": "Maestri",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel specializing in long-range sniping. His title is deliberate misdirection rather than a claim of illusion magic.",
+            "id": "mirage",
+            "name": "Mirage",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile supernatural figure connected to Elaine's rejuvenation power. Elaine's account establishes that using the skill brings a curse from White Dove, making every future use dangerous.",
+            "id": "white-dove",
+            "name": "White Dove",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Autumn's father and partner in their expanded market business. A cautious merchant and friend to Elaine, he recognizes both the value and the danger of selling stored rejuvenation.",
+            "id": "neptune",
+            "name": "Neptune",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's healing apprentice and Neptune's market partner. Her medical studies have advanced her healer class and opened a new class option tied to Elaine's example.",
+            "id": "autumn",
+            "name": "Autumn",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exhausted mother of infant Primus, with another child expected. Elaine restores her energy and arranges recurring help to ease the weight of child care and household work.",
+            "id": "alruna",
+            "name": "Alruna",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Sentinel adviser who urges Elaine to wait at least a year before selecting her third class, emphasizing the permanence of the decision.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire seeking healing knowledge that might reduce vampires' dependence on blood. Elaine directs him toward Artemis's school and her medical writings.",
+            "id": "misha",
+            "name": "Misha",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Ranger Command representative who works with Elaine to prepare an imperial briefing about the Shimagu threat.",
+            "id": "commander-ajax",
+            "name": "Commander Ajax",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hairdresser with a rare fireproofing skill. Even her specialized protection proves unable to withstand Auri's flames.",
+            "id": "marcella",
+            "name": "Marcella",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired, high-level tutor recommended for Auri's unusual needs. He accepts a long teaching commitment in return for Elaine using her rejuvenation skill after two years.",
+            "id": "plato",
+            "name": "Plato",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emperor Augustus"
+            ],
+            "description": "The emperor and a former general. He assesses the Shimagu threat, considers funding healers for Ranger operations, and offers wealth and political advancement for Elaine's rejuvenation power.",
+            "id": "augustus",
+            "name": "Augustus",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel with extensive underworld contacts. Criminals kidnap his children for ransom, prompting a covert effort to find the family and bring them home safely.",
+            "id": "acquisition",
+            "name": "Acquisition",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sentinel who leads the covert operation to locate Acquisition and rescue his children from their kidnappers.",
+            "id": "hunting",
+            "name": "Hunting",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel assigned to the rescue of Acquisition's family. Destruction supplies rooftop overwatch and stone-based combat support during the assault.",
+            "id": "destruction",
+            "name": "Destruction",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel who helps secure the approaches during the operation to recover Acquisition and his kidnapped children.",
+            "id": "ocean",
+            "name": "Ocean",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel who secures part of the perimeter during the rescue of Acquisition's family.",
+            "id": "bulwark",
+            "name": "Bulwark",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young child living in an abusive and impoverished home. With her mother's consent, Elaine takes Claudia and her brother Secundus somewhere safer.",
+            "id": "claudia",
+            "name": "Claudia",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Claudia's young brother. He leaves their violent home under Elaine's protection after their mother agrees to let both children go.",
+            "id": "secundus",
+            "name": "Secundus",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An imperial legal adviser responsible for examining the details of Elaine's proposed reforms, including whether new citizenship rules can apply retroactively.",
+            "id": "augustus-lawyer",
+            "name": "Augustus's lawyer",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "White Dove"
+            ],
+            "description": "The form White Dove assumes before departing from Elaine's first public rejuvenation demonstration. The transformation establishes that Black Crow and White Dove are the same being.",
+            "id": "black-crow",
+            "name": "Black Crow",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The imperial consort and a recipient of Elaine's rejuvenation. Elaine makes her physically about nineteen, after which White Dove imposes a curse tied to bathing in the light of two full moons.",
+            "id": "augustus-wife",
+            "name": "Augustus's wife",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Aquileia guard officer who recognizes Elaine during her undercover investigation. After learning her purpose, he agrees to keep it secret.",
+            "id": "katonis",
+            "name": "Katonis",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Arthur"
+            ],
+            "description": "An independent Sentinel traveling as the bard Arthur. He has separately tracked the false Ranger and remains burdened by the continuing deaths caused by his wartime poisoning campaign.",
+            "id": "toxic",
+            "name": "Toxic",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Criseus"
+            ],
+            "description": "A merchant from the Nostrum Sea and one of the recipients of Elaine's rejuvenation. White Dove curses his touch to transform whatever it contacts into gold.",
+            "id": "lucius-criseus-photios",
+            "name": "Lucius Criseus Photios",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancient vampire progenitor and Sentinel leader seen in a future interlude. He guides humanity from the shadows, prepares others for responsibility, and treats Sentinel Dawn as missing rather than confirmed dead.",
+            "id": "night",
+            "name": "Night",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BYQ5SXPP",
+            "type": "community"
+          }
+        ],
+        "work": "return-to-remus"
+      }
+    },
     "reunion": {
       "characters": {
         "characters": [
