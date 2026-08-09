@@ -1324,6 +1324,340 @@
         "work": "beware-of-pity"
       }
     },
+    "beyond-the-wall": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dawn",
+              "Sentinel Dawn"
+            ],
+            "description": "A nineteen-year-old healer, radiance Ranger Mage, and Sentinel who teaches medicine and serves the public through a marketplace clinic. Her many duties leave her overextended, while the Oath of Elaine to Lyra governs her healing work.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elaine's apprentice and Neptune's daughter, newly developing her abilities as a Light Healer. She learns to assess patients at the marketplace clinic, handling cases within her ability before Elaine provides supervision or stronger treatment.",
+            "id": "autumn",
+            "name": "Autumn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Autumn's father and the person who manages money for Elaine's marketplace clinic in return for a small share. His practical support lets Elaine and Autumn concentrate on diagnosis, treatment, and the clinic's daily flow.",
+            "id": "neptune",
+            "name": "Neptune",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A healer-school teacher and established associate of Elaine from earlier in the series.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established ally of Elaine and a figure in Ranger Command.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sentinel leader who directs the emergency response after the Formorians breach the walls.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Toxic"
+            ],
+            "description": "A poison specialist who arrives exhausted at the besieged Sentinel position. Knight addresses him as Toxic, establishing the identity behind that Sentinel title while the defenders struggle to preserve their limited resources.",
+            "id": "arthur-toxic",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Knight",
+              "Toxic"
+            ],
+            "description": "Arthur is revealed as the Sentinel leader Knight as well as the poison specialist Toxic. After the queens' defeat, he keeps the Sentinels outside the expected political struggle and assigns Elaine to accompany Hunting on a verification mission.",
+            "id": "arthur-knight",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel who participates in the team's review of another member's mission.",
+            "id": "brawling",
+            "name": "Brawling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel builder and inscription defender summoned as reinforcement during the Formorian emergency.",
+            "id": "bulwark",
+            "name": "Bulwark",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bulwark"
+            ],
+            "description": "The Sentinel known as Bulwark is revealed as Tiberius, a former street child whom Priest Deimos sheltered and raised. He accompanies Deimos away from the queen battle as the priest approaches the end of his life.",
+            "id": "tiberius-bulwark",
+            "name": "Tiberius",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel hunter who reaches the isolated defenders with his bonded companion Catastrophe after fighting through the Formorian horde. Despite his own serious injuries, he places her safety first.",
+            "id": "hunting",
+            "name": "Hunting",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hunting's aware bonded companion, gravely injured while the pair fight their way to the surrounded Sentinels. Her protective attachment to Hunting is immediate, and Elaine must spend considerable mana to treat the damage she has suffered.",
+            "id": "catastrophe",
+            "name": "Catastrophe",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Sentinel authority who directs other members of the order during the Formorian campaign.",
+            "id": "night",
+            "name": "Night",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest who joins the Sentinels' emergency deployment after the Formorians breach the walls.",
+            "id": "priest-deimos",
+            "name": "Priest Deimos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battlefield mage assigned to channel the main large-scale attack against the Formorian queens. The defensive group must preserve his mana and keep him protected long enough for that carefully prepared strike to become possible.",
+            "id": "destruction",
+            "name": "Destruction",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A plant-focused Sentinel whose earlier mission involving treants is reviewed by the team.",
+            "id": "nature",
+            "name": "Nature",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel assigned as emergency backup during the dangerous drop into the Formorian horde. He fails to reach the group's rendezvous, leaving the surrounded defenders unable to determine whether he is concealed, separated, or dead.",
+            "id": "magic",
+            "name": "Magic",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sky"
+            ],
+            "description": "A Sentinel who provides rapid aerial transport in a Pegasus flying boat and is sent to retrieve Bulwark after delivering the emergency deployment.",
+            "id": "sentinel-sky",
+            "name": "Sentinel Sky",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A barrier specialist among the Sentinels who contains Royal Guards during the siege. The barriers isolate these exceptionally dangerous Formorians long enough for Hunting, Elaine, and the other defenders to fight them under controlled conditions.",
+            "id": "unnamed-barrier-sentinel",
+            "name": "Unnamed barrier Sentinel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's beautician, a mirror-element classer who is late in pregnancy. She asks whether Elaine can attend the birth, but Elaine's unpredictable Sentinel obligations prevent her from making a firm promise.",
+            "id": "alruna",
+            "name": "Alruna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-256 healer found alone at an overwhelmed frontline triage sector. Severe exhaustion has forced him to stabilize the dying, return lightly wounded soldiers to combat, and leave serious but stable cases waiting for care.",
+            "id": "healer-myron",
+            "name": "Healer Myron",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's counterpart in the class library, who advises her that she may reach another major class threshold and helps her consider healer paths.",
+            "id": "librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sentinel Maestri"
+            ],
+            "description": "A Ranger whom Knight elevates to Sentinel Maestri under emergency authority after the Formorian campaign leaves vacancies. Brawling is assigned to retrieve the newly promoted Sentinel as the surviving team divides its postwar duties.",
+            "id": "ranger-filarious",
+            "name": "Ranger Filarious",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior authority at the dwarf-held border wall who receives Elaine under a custom of hospitality toward healers. He explains that the territory behind her is a dead zone and treats her arrival as a matter of importance.",
+            "id": "dwarf-border-leader",
+            "name": "The dwarf border leader",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior dwarf military authority at the border headquarters. After the formal hospitality ritual, she hears Elaine's account of humans, Remus, and the Formorian War and summons other officials to record the unexpected contact.",
+            "id": "dwarf-post-commander",
+            "name": "The dwarf post commander",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level mage who leads the seven-dwarf escort assigned to take Elaine toward Nolgrad's capital. She is responsible for Elaine's safety and directs the party's travel, formation, and protection as they enter the forest.",
+            "id": "lula",
+            "name": "Lula",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled healer in Lula's escort whose level is near Elaine's. He travels with the party assigned to protect Elaine on the route to the capital.",
+            "id": "ned",
+            "name": "Ned",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scout, warriors, and mages who travel under Lula as part of Elaine's seven-dwarf escort. Their complementary abilities cover reconnaissance, close defense, camp construction, and magical support during the journey toward the capital.",
+            "id": "remaining-nolgrad-escort",
+            "name": "The remaining Nolgrad escort",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Dusk"
+            ],
+            "description": "A powerful Valkyrie assigned to suppress piracy in a sea region the depleted order can no longer adequately protect. Her vow greatly strengthens her physical abilities when she acts in defense of others.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Iona's kitsune former lover, now an initiate at the Abbey of the Guiding Waves. After her father discovered their relationship, Julie chose the Abbey and its peaceful life, leaving Iona with a farewell letter.",
+            "id": "julie-daudrey",
+            "name": "Julie d’Audrey",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The pirate admiral of the Black Shark, confronted by Iona inside the pirate stronghold. His wood-focused power is bound closely to his vessel, supplemented by spatial magic and a shark companion.",
+            "id": "alfie",
+            "name": "Alfie",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A cat beastkin bard and former captive whose modest healing ability helps keep Iona alive after the destruction of the pirate base. He travels with the people escaping the ruined settlement.",
+            "id": "rory",
+            "name": "Rory",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09L5BBJ6X",
+            "type": "community"
+          }
+        ],
+        "work": "beyond-the-wall"
+      }
+    },
     "big-little-lies": {
       "characters": {
         "characters": [
