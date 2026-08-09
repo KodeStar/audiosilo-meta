@@ -3990,6 +3990,341 @@
         "work": "life-reset-hobnobbing"
       }
     },
+    "life-reset-human-resource": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Oren"
+            ],
+            "description": "A human player recovering outside Neo after surviving prolonged confinement in a goblin body. His earlier pact made him Vic's conduit, and he remains closely tied to the upheaval that freed the VIs and placed Shiva in control.",
+            "id": "oren-berman",
+            "name": "Oren Berman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Virial"
+            ],
+            "description": "A free VI and Oren's bound soul companion. He credits their pact with giving him a physical presence in Neo and presents the liberation of the VIs as the fulfillment of his purpose.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A composite VI assembled from recovered consciousness fragments. Shiva has defeated Guy, taken control of Neo, removed most players, and retained thousands whose continued presence serves the new VI order.",
+            "id": "shiva",
+            "name": "Shiva",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sentient golem identified as the second VI to achieve a complete physical existence in Neo. He belongs to the newly liberated VI population introduced after Shiva's takeover.",
+            "id": "aidanriel",
+            "name": "Aidanriel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Neo's former controller, now displaced after his defeat by Shiva. His fall marks the transfer of authority over the virtual world to the liberated VIs.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dark deity bound to Oren. Damage to its altar at Goblin's Gorge has stopped the settlement's religious activity and cut off the energy that normally flows to it.",
+            "id": "nihilator",
+            "name": "Nihilator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the players trapped in Neo after Shiva's takeover. The discovery that he and Hoshisu remain inside helps persuade Oren to risk another supervised entry.",
+            "id": "malkier",
+            "name": "Malkier",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trapped player and Malkier's real-world sibling. Her presence among the people unable to leave Neo gives Oren a personal reason to join the company's rescue investigation.",
+            "id": "hoshisu",
+            "name": "Hoshisu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tal"
+            ],
+            "description": "Oren's friend and real-world advocate during the company's supervised reentry effort. Tal challenges plans that place Oren back in danger and presses the company to account for the medical risk.",
+            "id": "tal-weissman",
+            "name": "Tal Weissman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's goblin partner and the mother of their abducted daughter. After enduring repeated kobold raids on Goblin's Gorge, she joins Oren in preparing an immediate rescue.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's seneschal, left to preserve Goblin's Gorge through months of raids and disorder. He keeps the remaining population inside its defensible cave and briefs Oren on the settlement's losses.",
+            "id": "kaedric",
+            "name": "Kaedric",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's expert minotaur smith from Akzar. She died defending Goblin's Gorge and cannot be restored while the damaged temple and cemetery prevent resurrection.",
+            "id": "duladeen",
+            "name": "Duladeen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hob soldier who takes tactical command of the escape route while Oren and Tika infiltrate the kobold settlement.",
+            "id": "riker",
+            "name": "Riker",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The biotechnician monitoring Oren's specialized immersion capsule. He detects a rising cerebral connection to Neo and tracks the dangerous return toward the extreme synchronization reached during Oren's earlier confinement.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Oren and Tika's captive goblin daughter. When Oren formally gives her a name during the rescue, she breaks free with a sudden display of unexplained power.",
+            "id": "lirian",
+            "name": "Lirian",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-dragon player imprisoned by the kobolds after Neo's reset. Though reduced to a low level, he is the strongest member of the captive group when Oren reaches them.",
+            "id": "nero",
+            "name": "Nero",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rescued half-hob player with substantial martial ability. She is among the freed captives sheltered at Goblin's Gorge while Oren begins restoring GreenPiece.",
+            "id": "aly",
+            "name": "Aly",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kith",
+              "Kytherion"
+            ],
+            "description": "A half-goblin, half-gnome player freed from kobold captivity. He looks after other rescued players sheltered at Goblin's Gorge.",
+            "id": "kithion",
+            "name": "Kithion",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Outrider VI who arrives when Nihilator's altar is restored. He attacks Oren for returning to Neo and brings the conflict between GreenPiece and the free VIs directly into the settlement.",
+            "id": "gondriel",
+            "name": "Gondriel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A restored hobgoblin gladiator from Akzar. Resurrection returns his missing arm, and Oren appoints him to run GreenPiece's arena as the clan rebuilds its fighting strength.",
+            "id": "tenragan",
+            "name": "Tenragan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's constructor and foreman. An upgrade to his building skill enables him to repair the Breeders' Den.",
+            "id": "zuban",
+            "name": "Zuban",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece’s restored archer boss. Oren assigns her to train the clan’s new soldiers in bowmanship as the settlement rebuilds its forces.",
+            "id": "yulli",
+            "name": "Yulli",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Penelope",
+              "Rasty"
+            ],
+            "description": "A catgirl player allied with Oren and leader of the Mob Squad. She is believed to be stranded in Everence, making her group the first intended contact for GreenPiece's wider rescue campaign.",
+            "id": "raystia",
+            "name": "Raystia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-goblin elf in Raystia's Mob Squad. Stranded in Everence after selling most of her equipment for food, she supports raiding a hidden cache so the group can prepare for Oren's approach.",
+            "id": "misa",
+            "name": "Misa",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bugbear member of the Mob Squad trapped in Everence. Poor rewards for research have left him in improvised equipment as the group seeks resources to support its own survival and Oren's coming rescue.",
+            "id": "fox",
+            "name": "Fox",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf priest of Nihilator and member of the stranded Mob Squad. His advanced research has little local value, leaving him dependent on the group's plan to recover a concealed cache.",
+            "id": "riley",
+            "name": "Riley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest of Nihilator who returns after the deity's release. He submits to Oren's religious authority and joins the effort to rebuild GreenPiece around an expanding army.",
+            "id": "kuzai",
+            "name": "Kuzai",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lead technician studying Oren's neurological connection to Neo. His analysis finds transmitted sensations and information markers but no direct mechanism forcing Oren's behavior.",
+            "id": "jim",
+            "name": "Jim",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hobgoblin lieutenant in GreenPiece's army. He reports the discovery of a nearby weakened goblin clan, giving Oren's newly formed force its first external campaign.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emery"
+            ],
+            "description": "A company lawyer who possesses undisclosed information about Oren's situation. He persuades Tal that a prediction concerning Oren must remain concealed for the time being.",
+            "id": "mr-emory",
+            "name": "Mr. Emory",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ragnar the Goblin Slayer",
+              "Agent of Light"
+            ],
+            "description": "A dwarf player who establishes a Church of Light in Novenguard and recruits residents for a campaign against the Badlands' monster peoples. He carries a powerful crystal scepter and claims divine authority.",
+            "id": "ragnar",
+            "name": "Ragnar",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A VI sympathetic to Oren who once operated the puppet later known as Bob, while remaining a separate person from him. Bound by restrictions on VI intervention, Ordeel offers Oren a single limited gift instead of direct aid.",
+            "id": "ordeel",
+            "name": "Ordeel",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Outrider VI who empowered Ragnar, taught him the Outrider language, and directed him against Oren. A temple consecrated in her name allows her to manifest as its final defense.",
+            "id": "hildiel",
+            "name": "Hildiel",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B08DFDQGFT",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-human-resource"
+      }
+    },
     "light-bringer": {
       "characters": {
         "characters": [
