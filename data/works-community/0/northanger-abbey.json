@@ -2637,6 +2637,230 @@
         "work": "o-pioneers"
       }
     },
+    "oathbound-healer": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dead girl whom Papillon finds outside the usual cycle of rebirth. She chooses a new human life while retaining incomplete memories of her former existence, though knowledge judged dangerous for her new world is removed.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The deity of change who encounters Elaine's anomalous soul. Papillon removes knowledge considered unsafe, gives her a choice about retaining partial memories, and arranges for her to be reborn as a human.",
+            "id": "papillon",
+            "name": "Papillon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's mother in Aquileia and a capable healer. She cares for Elaine while the family lives with limited means.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's father, an Aquileian city guard, and a member of the family's modest household.",
+            "id": "marcus-elainus-cato",
+            "name": "Marcus Elainus Cato",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's closest childhood friend and next-door neighbor. Born on the same day as Elaine, she regularly gets into trouble with her.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coppersmith in Aquileia who teaches Elaine the basics of copperwork during her patrol visit, enabling her to unlock Coppersmithing.",
+            "id": "bakus",
+            "name": "Bakus",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older child learning coal work who tells Elaine that Damonus is using windweasels to threaten children, then guides the guards to his location.",
+            "id": "kolius",
+            "name": "Kolius",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The guard partnered with Marcus when Elaine joins a patrol. He initially objects to bringing a child along, then helps during the windweasel emergency and arrests Damonus.",
+            "id": "catonus",
+            "name": "Catonus",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man accused of breeding windweasels and using them to terrorize children. When guards confront him, the creatures attack, leaving Marcus badly wounded before Catonus takes Damonus into custody at the end of the patrol.",
+            "id": "damonus",
+            "name": "Damonus",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Ranger, mage, and childhood friend of Marcus who returns while his injuries are being treated. Her command of earth magic makes an immediate impression on Elaine and offers a glimpse of power beyond town life.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guide Elaine meets within her internal system library while selecting a class. She presents the available class books and explains their implications, while identifying herself as an aspect of Elaine rather than a separate being.",
+            "id": "the-librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recently married woman in Aquileia whom Elaine treats for injuries after she reports that her husband assaulted her.",
+            "id": "assault-survivor",
+            "name": "Assault Survivor",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young enslaved child trapped inside a burning household. Elaine enters the building alone and attempts to rescue him after the guards refuse to go inside.",
+            "id": "rescued-child",
+            "name": "Rescued Child",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Ranger Squad 4. He moves with exceptional speed and fights using blades of light, combining direct combat power with responsibility for the depleted squad Artemis brings to meet Elaine during her recovery.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mountain Man"
+            ],
+            "description": "A Ranger of Squad 4 who specializes in archery, poison, hunting, and outdoor concealment. His fieldcraft allows him to operate with little notice, making him the squad's tracker and hidden ranged fighter.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frontline member of Ranger Squad 4 who is also skilled at moving unnoticed in towns. Kallisto brings both close-combat strength and urban infiltration ability to the depleted team Elaine meets during her recovery.",
+            "id": "kallisto",
+            "name": "Kallisto",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Laconian inscriptionist of Ranger Squad 4. Origen creates and maintains magical enchantments and can break curses, providing the squad with specialized technical support beyond its direct fighters and scouts.",
+            "id": "origen",
+            "name": "Origen",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Warrior in Ranger Squad 4 with particular knowledge of the system. He studies Elaine's restoration abilities and advises her to practice carefully, especially when pain could interfere with treating herself.",
+            "id": "maximus",
+            "name": "Maximus",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of a prominent Aquileian citizen whom Julia and Marcus select as Elaine's future husband. Elaine visits his wealthy estate after learning of the unwanted arrangement.",
+            "id": "elaines-arranged-fiance",
+            "name": "Elaine's Arranged Fiance",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A laborer in Verdant Village, the concealed settlement Elaine reaches after breaking her arm on the road. Iola brings the injured traveler inside, explains that the residents are runaway slaves, and asks what work Elaine can contribute.",
+            "id": "iola",
+            "name": "Iola",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel and high-level warrior encountered by Ranger Squad 4 during its travels. He holds authority beyond that of ordinary rangers and journeys with Katastrofi, the dinosaur who has long served as his bonded partner.",
+            "id": "bluebeard",
+            "name": "Bluebeard",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bluebeard's tame dinosaur companion and long-term bonded partner. Katastrofi shares experience with the Sentinel and permits Elaine to ride while she attempts to use Detailed Restoration on the creature.",
+            "id": "katastrofi",
+            "name": "Katastrofi",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An absent fugitive pursued by Bluebeard. She is identified as a ship thief whose escapes are associated with fires, giving the Sentinel a continuing trail to follow while Ranger Squad 4 resumes its own journey.",
+            "id": "firefoot-felicity",
+            "name": "Firefoot Felicity",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1039402259",
+            "type": "community"
+          }
+        ],
+        "work": "oathbound-healer"
+      }
+    },
     "oathbringer": {
       "characters": {
         "characters": [
