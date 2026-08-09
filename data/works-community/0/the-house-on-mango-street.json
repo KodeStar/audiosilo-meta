@@ -347,6 +347,244 @@
         "work": "the-housemaid"
       }
     },
+    "the-human-factor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The captain of the Phoenix and leader of Omega Force. Near the end of an intensive Galvetic training period, Mazer challenges his tactical habits and directs him to a private intelligence briefing.",
+            "id": "jason",
+            "name": "Jason",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Galvetic training adviser who pushes Jason to adapt instead of treating every exercise as a contest to be won. He is Morakar's brother and directs Jason to a private intelligence briefing when the training period nears its end.",
+            "id": "mazer",
+            "name": "Mazer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Galvetic intelligence and Mazer's older brother. He warns Jason that several independent reports describe inquiries about a human from Earth named Jason, along with enough information to identify his crew and ship.",
+            "id": "morakar",
+            "name": "Morakar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Phoenix's engineer. He is preparing extensive upgrades to the ship, including work that would normally keep it grounded for at least a month, while Jason finishes his Galvetic training and investigates the report that he is being hunted.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavily augmented human who confronts Jason at Omega Force's base. After he defeats her, she identifies herself as someone who left Earth in 1945 and warns that a human kill team considers him a dangerous loose end.",
+            "id": "carolyn-whitney",
+            "name": "Carolyn Whitney",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "battle synth"
+            ],
+            "description": "Jason's sentient combat partner and protector. During the first investigation of the human threat, he discovers suspicious devices planted on Jason's ground vehicle and treats the danger to Jason as a matter of personal responsibility.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of a human special-operations team assigned to hunt Jason. His force also carries out missions for unidentified alien partners, including a covert abduction that could help provoke a much wider interstellar conflict.",
+            "id": "marcus-webb",
+            "name": "Marcus Webb",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former U.S. Army Ranger and Green Beret serving on Marcus Webb's team. He is notably skilled with languages and takes part in the alien-assisted operations conducted alongside the team's continuing pursuit of Jason.",
+            "id": "russ-johnson",
+            "name": "Russ Johnson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Delta Force operator on Marcus Webb's team. Marcus regards him as highly capable but increasingly dangerous, with judgment that makes him a concern even among the people conducting the operation beside him.",
+            "id": "stephen-olber",
+            "name": "Stephen Olber",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An analyst serving with Marcus Webb's team. He reports that a politically explosive murder is being blamed on an empire despite an implausible motive, helping expose the risk that the team's operations are connected to a manufactured interstellar conflict.",
+            "id": "cage",
+            "name": "Cage",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The administrator directing the human operation against Jason from the colony world. She coordinates with unidentified alien partners whose requested missions are separate from her pursuit of Jason, and their strained exchange suggests an unsettled bargain.",
+            "id": "margaret-jansen",
+            "name": "Margaret Jansen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Phoenix's medic and a member of Omega Force. He supports Jason's investigation into humanity's unexplained technological growth and hears Jason's conclusion that an advanced outside species must be assisting the human colony.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed CIA observer stationed at the human colony. He recognizes Jason from an earlier encounter on Earth and warns Margaret Jansen not to underestimate him.",
+            "id": "cia-observer",
+            "name": "CIA observer",
+            "reveal": {
+              "chapter": 13
+            }
+          },
+          {
+            "description": "One of Jason's outside contacts. He asks her to identify the unfamiliar warships connected to the human colony, but she cannot provide a useful answer before the Phoenix follows a related vessel toward its next confrontation.",
+            "id": "kellea",
+            "name": "Kellea",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Avarian princess acquainted with Twingo and one of the contacts Jason consults about the unknown ships supporting the human colony. She is unable to identify the vessels from the information he supplies.",
+            "id": "annada",
+            "name": "Annada",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Marcus Webb's team who enters a restricted section of the Coronado with him. Their investigation finds Carolyn restrained in an alien interrogation area, deepening the team's doubts about the partners controlling their mission.",
+            "id": "abia",
+            "name": "Abia",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted former Omega Force crewmate and Galvetic combat ally. Jason brings him aboard the Coronado with Lucky for a tense meeting after the human team removes its alien overseers and asks to negotiate.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "President Hightower"
+            ],
+            "description": "The President of the United States. She receives a warning that the supposedly civilian human colony is concealing military shipyards, that its reporting cannot be trusted, and that its administrator may pose a direct threat to Earth.",
+            "id": "abigail-hightower",
+            "name": "Abigail Hightower",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA Director who briefs President Hightower on the hidden military buildup at the human colony. He links Jason to Earth's earlier defense and warns that both the secret fleet and Jason's possible return require attention.",
+            "id": "richard-stiles",
+            "name": "Richard Stiles",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A CIA back-channel observer stationed at the human colony on behalf of the U.S. president. Jason's allies free him from detention after the colony facility falls, and he confirms that the invasion fleet has already departed for Earth.",
+            "id": "michael-welford",
+            "name": "Michael Welford",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kellea"
+            ],
+            "description": "The same Kellea whom Jason consulted earlier, now identified by her full name. She commands the Defiant and holds wider military responsibilities within a sovereign cooperative, making her organization Jason's best prospect for protecting Earth.",
+            "id": "kellea-colleren",
+            "name": "Kellea Colleren",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person from Jason's earlier life on Earth. Her parents summon him back to Iowa and tell him that she has died in a car accident, turning his return into a personal loss at the close of the mission.",
+            "id": "terran",
+            "name": "Terran",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A teenager introduced to Jason by Terran's parents after they report her death. They explain that Jacob was named for Jason's father, but the exact nature of his connection to Jason is not established.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed Ool commander who survives the failed, unauthorized invasion of Earth. Mutually exposed with Margaret Jansen by the rogue operation, the commander agrees to regroup with her and consolidate their remaining allies.",
+            "id": "ool-commander",
+            "name": "Ool commander",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B01H2DNDYC",
+            "type": "community"
+          }
+        ],
+        "work": "the-human-factor"
+      }
+    },
     "the-human-stain": {
       "characters": {
         "characters": [
