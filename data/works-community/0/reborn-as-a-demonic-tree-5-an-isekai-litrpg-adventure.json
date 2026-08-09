@@ -984,6 +984,216 @@
         "work": "recitatif"
       }
     },
+    "recon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wizard traveling to France with Mike and Isabel to investigate how an approaching convergence might be prevented. He can sense changes in ambient magic and must decide how much confidence to place in the supernatural account behind his mission.",
+            "id": "kazimir",
+            "name": "Kazimir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A field operative and tactical partner on Kazimir's mission to France. He says an encounter with the archangel Michael led him into the organization, and he helps manage the team's security while supporting its search for a way to prevent convergence.",
+            "id": "mike",
+            "name": "Mike",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the group traveling to France with Kazimir and Mike. Mike says she knows about the encounter that led him into the organization, though her own similar experience has not yet been explained.",
+            "id": "isabel",
+            "name": "Isabel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mike's operational superior, coordinating the European mission from a distance. She has arranged to meet the group in Europe and is preparing to disclose more information to Kazimir.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A time-displaced warrior allied with Kazimir and traveling with his group. She is among the companions present when the low level of magic over the Atlantic threatens Boots.",
+            "id": "gisele",
+            "name": "Gisele",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A time-displaced knight and one of Kazimir's protectors. His outlook is shaped by faith and duty, but his willingness to revise his judgment of Nether beings leads him to urge Kazimir to save Boots during the flight crisis.",
+            "id": "macarius",
+            "name": "Macarius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr. Boots",
+              "Old One"
+            ],
+            "description": "A feline Old One from the Nether whose body depends on surrounding magical energy. When the weak magical field over the Atlantic causes him to come apart, Azib temporarily shelters him inside an amulet.",
+            "id": "boots",
+            "name": "Boots",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kazimir's dog and a loyal member of the traveling group. The others treat him as a warrior, while an ancient magical presence identified as Marduk lies dormant within him. Duke does not understand what he carries.",
+            "id": "duke",
+            "name": "Duke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A jinn bound to an amulet who advises Kazimir about magic and Nether beings. During the low-magic flight, he temporarily shelters the disintegrating Boots inside the amulet.",
+            "id": "azib",
+            "name": "Azib",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient and exceptionally powerful magical being believed to reside within Duke. Azib identifies him as a great wizard, but the group does not yet understand his intentions or condition.",
+            "id": "marduk",
+            "name": "Marduk",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "aliases": [
+              "Sarah",
+              "Aunt Sarah"
+            ],
+            "description": "Kazimir's former guardian, previously known to him as Sarah. A former French intelligence analyst and covert operative, she rescued and raised him while deliberately keeping him beyond the organization's reach.",
+            "id": "camille",
+            "name": "Camille",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anakin"
+            ],
+            "description": "The organization's former wizard, previously discussed as Anakin. After being denied greater authority, he defected to the Order, killed seven people directly, and supplied access and information that caused wider losses.",
+            "id": "theo",
+            "name": "Theo",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Theo"
+            ],
+            "description": "The earlier name of Theo, the organization's former wizard. Annie explains that his uncontrolled magic preceded his betrayal during negotiations with the Order, and that he died in the explosive destruction of the underground headquarters.",
+            "id": "zachary",
+            "name": "Zachary",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A victim of the Order's pursuit of Kazimir. She was killed after Camille rescued him and he did not emerge, making her death one of the human costs attached to the continuing search for the missing young wizard.",
+            "id": "alicia",
+            "name": "Alicia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Susan"
+            ],
+            "description": "A winged tufti, also described as a pixie, who was accidentally pulled from the Nether by a portal Theo opened years earlier. She now serves as the organization's sole cyber specialist under the cover name Susan.",
+            "id": "signy",
+            "name": "Signy",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kazimir"
+            ],
+            "description": "The full name of the wizard leading the European field mission. By this point, he has survived the Vivier trap and joined the organization's move to a protected magical library.",
+            "id": "kazimir-wolfe",
+            "name": "Kazimir Wolfe",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Order field commander assigned to raid a farmhouse believed to contain Annie and Kazimir. The mission calls for Kazimir's capture if practical and otherwise permits the use of conventional force against everyone at the site.",
+            "id": "order-strike-team-leader",
+            "name": "Order strike-team leader",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Kevin"
+            ],
+            "description": "A hungry ogre separated from his clan after a dispute and pursued through the Nether by goblins and other ogres. Kazimir offers him passage through the portal in exchange for protecting the stranded group during its escape.",
+            "id": "kevin",
+            "name": "Kevin Agustovim",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Isabel"
+            ],
+            "description": "The name Macarius uses for Isabel while the injured group is fleeing through the Nether. She remains part of the escaping party as he takes the fatal God Spark from Duke and stays behind against their pursuers.",
+            "id": "zoraida",
+            "name": "Zoraida",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CTWKVSHM",
+            "type": "community"
+          }
+        ],
+        "work": "recon"
+      }
+    },
     "record-of-a-spaceborn-few": {
       "characters": {
         "characters": [
