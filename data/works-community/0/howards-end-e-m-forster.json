@@ -2687,6 +2687,260 @@
         "work": "immensee"
       }
     },
+    "immortal-moments": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dawn",
+              "Sentinel Dawn"
+            ],
+            "description": "A human healer traveling with three immortal elves while she warms and protects an unidentified egg. Elaine is a Dawn Sentinel and Butterfly Mystic, but her third class remains locked. She is also testing the limits of a new relationship while carefully preserving her safety and independence.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An immortal elf mage and Elaine's new romantic partner. He creates a flexible glass harness that lets her carry and continue warming the unidentified egg. He accepts Elaine's request to move slowly in their relationship.",
+            "id": "serondes",
+            "name": "Serondes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immortal elf who serves as the traveling group's defender and practical leader. Awarthril takes Elaine's welfare seriously, privately checks whether Serondes has treated her properly, and makes clear that Elaine can report any misconduct. Her concern combines protection with direct, pragmatic judgment.",
+            "id": "awarthril",
+            "name": "Awarthril",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immortal elf traveling with Elaine, Serondes, and Awarthril. He explains that immortals acquire curses and joins the group's discussion about whether Elaine should seek hers despite its unpredictable severity.",
+            "id": "aegion",
+            "name": "Aegion",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aegion's bonded couatl companion, aerial scout, and partner in long-distance hunting. Cordamo shares his vision with Aegion, giving the ranger a view from above while the group travels.",
+            "id": "cordamo",
+            "name": "Cordamo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a troll settlement and a warrior substantially stronger than Awarthril. After speaking with Awarthril, the chief invites the traveling party to remain for the autumn equinoctial festival.",
+            "id": "troll-chief",
+            "name": "Troll chief",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Awarthril's bonded companion and the focus of her long-term search for restoration or extended life. Awarthril offers to fund Elaine's future advancement if Elaine makes an honest effort to improve The Stars Never Fade and determine whether it can help Kiyaya.",
+            "id": "kiyaya",
+            "name": "Kiyaya",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A low-level barn owl that approaches Elaine after the party escapes the trolls. Elaine feeds the owl, gives her the name Sasha, and heals her. The brief encounter ends when Cordamo kills and eats Sasha, leaving Elaine angry and pursuing him.",
+            "id": "sasha",
+            "name": "Sasha",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly merchant who leads a traveling gnoll caravan and wears armor resembling egg shells. He welcomes Elaine's party under rules of hospitality, grants Elaine trading credit in exchange for medical treatment, and rewards her work among his people with access to the caravan's goods.",
+            "id": "gnoll-caravan-leader",
+            "name": "Gnoll caravan leader",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A guard traveling with the gnoll trade caravan that hosts Elaine's group. When Elaine offers medical care to members of the caravan, he declines treatment for his missing eye because he prefers the way the injury looks.",
+            "id": "one-eyed-caravan-guard",
+            "name": "One-eyed caravan guard",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Creatures that can control unwilling hosts while leaving the captive alive inside the body. Elaine first identifies one controlling a caravan guard, and killing both the creature and its host triggers punishment from her oath.",
+            "id": "shimagu",
+            "name": "Shimagu",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Black Crow"
+            ],
+            "description": "A hostile figure who appears after Elaine's first successful use of The Stars Never Fade. White Dove curses the rejuvenated recipient, accuses Elaine of taking time that belongs to her, and promises another meeting. She then assumes the form of Black Crow before departing.",
+            "id": "white-dove",
+            "name": "White Dove",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-755 predator that ambushes the sleeping party. Its erosion aura destroys equipment and Elaine's last keepsake from her mother while the group struggles to survive. Elaine repeatedly restores her companions during the fight, and the party eventually kills the creature.",
+            "id": "spinosaurus",
+            "name": "Spinosaurus",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ogre guard whose body is controlled by a Shimagu while he remains conscious and largely unable to act. He once believed claims that partnership with the creatures offered advancement, but captivity has left him seeking any route to freedom and quietly hindering his controller.",
+            "id": "yigruk",
+            "name": "Yigruk",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-winged devil seen flying over the contested city as it closes in on Elaine's party.",
+            "id": "red-winged-devil",
+            "name": "Red-winged devil",
+            "reveal": {
+              "chapter": 23
+            }
+          },
+          {
+            "description": "A tiny, intelligent female creature that emerges from Elaine's long-carried egg in a burst of fire. She appears bird-like, though her species is still unknown. Her hazardous arrival turns Elaine's incubation skill into Hatchling Rearing and makes Elaine responsible for feeding, protecting, and raising her.",
+            "id": "elaines-hatchling",
+            "name": "Elaine's hatchling",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the coastal ranger team that receives Elaine after her return to her homeland. He runs a strict morning exercise routine but allows Elaine to participate and accepts practical adjustments from a senior ranger. His team becomes Elaine's immediate point of contact in the city.",
+            "id": "local-ranger-leader",
+            "name": "Local ranger leader",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior member of the coastal ranger team. When a mage falls behind during drills, he convinces the leader to replace punishment with a day spent aiding Elaine.",
+            "id": "senior-ranger",
+            "name": "Senior ranger",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man in a crowd who gropes Elaine. She stops him without lethal force and briefly restrains him before leaving.",
+            "id": "man-in-crowd",
+            "name": "Man in crowd",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local citizen who participates in a corrupt scheme that falsely assigns Elaine's debt and ownership to him for thirty years. Elaine recognizes him as the man who groped her earlier, and he tries to assault her again before she restrains him and summons the rangers.",
+            "id": "local-citizen",
+            "name": "Local citizen",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A divinely blessed Valkyrie who serves two moon goddesses and can understand and speak every language. With her order depleted, she is being prepared for greater responsibility. Her immediate assignment is to find a companion before beginning funded study at the School of Sorcery and Spellcraft.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The grandmaster of the weakened Valkyrie Order and Iona's superior. Sigrun debriefs Iona, directs her to take a break and seek a companion, and arranges her admission to the School of Sorcery and Spellcraft. She also intends to prepare Iona for future officer duties.",
+            "id": "sigrun",
+            "name": "Sigrun",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed immortal whose healing power can grant immortality and has sparked a war. By the time Iona reaches the city, the healer has been tortured and killed. Masked immortal wardens arrive afterward, one carrying the Wound Spear.",
+            "id": "immortal-healer",
+            "name": "Immortal healer",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed rabbit-kin handler at a companion market. The handler explains that companions form through mutual compatibility rather than a simple purchase, considers Iona's temperament and elements, and directs her toward the Modu wilderness to continue her search.",
+            "id": "companion-market-handler",
+            "name": "Companion-market handler",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful frost wyvern that ambushes and maims Iona, takes her back to its nest, and consumes her. Iona kills it from within.",
+            "id": "frost-wyvern",
+            "name": "Frost wyvern",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The sole young frost wyvern that Iona spares after surviving the adult wyvern's attack. Iona feeds the newly hatched creature and begins raising it as a prospective companion while recovering in the nest. Whether a true mutual companion bond will form remains uncertain.",
+            "id": "frost-wyvern-hatchling",
+            "name": "Frost-wyvern hatchling",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09ZBKXSSD",
+            "type": "community"
+          }
+        ],
+        "work": "immortal-moments"
+      }
+    },
     "implode": {
       "characters": {
         "characters": [
