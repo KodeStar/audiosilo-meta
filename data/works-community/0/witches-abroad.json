@@ -6066,6 +6066,191 @@
         "work": "zealots-eleventh-crusade"
       }
     },
+    "zero-hour": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The human commander of the damaged Flying Dutchman. With Skippy impaired and the ship near failure, Joe must direct the search for an active Elder conduit while keeping the stranded crew alive.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI who returns with most of his abilities sealed behind a defensive barrier. An anti-Elder worm is steadily breaking through, and only an active Elder conduit appears capable of giving him the access needed to fight it.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nagatha"
+            ],
+            "description": "Skippy's communications sub-mind. She enters his canister to reach the protected part of his consciousness, enabling his return, but must remain isolated until she can be checked for contamination.",
+            "id": "nagatha-christie",
+            "name": "Nagatha Christie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The civilian mission commander aboard the Flying Dutchman. He holds approval authority over the dangerous conduit operation and weighs the need to save Skippy against the survival of the human crew.",
+            "id": "chotek",
+            "name": "Chotek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A crew specialist who evaluates the Flying Dutchman's failing machinery. His assessment leaves the ship with at most one safe jump before repairs and only a limited remaining reactor life.",
+            "id": "friedlander",
+            "name": "Friedlander",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lieutenant Colonel Chang"
+            ],
+            "description": "A senior officer aboard the Flying Dutchman who supports command during a near reactor emergency while Skippy struggles to control the ship reliably.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dutchman officer involved in keeping the crew and ship functioning during Skippy's impaired recovery.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Smythe"
+            ],
+            "description": "The ground-operations commander who leads the assault on the Wurgalan installation at Barsoom. His team breaches the Elder site, defeats its defenders, and extracts the conduit with its unexpected attached equipment.",
+            "id": "smythe",
+            "name": "Smythe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An assault-team leader who directs a security sweep during the operation to recover the Elder conduit from Barsoom.",
+            "id": "ground-team-commander",
+            "name": "Ground-team commander",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Dutchman officer whose practical analysis explains the trap at Bravo. She recognizes that the Thuranin inferred the crew's next target after Barsoom rather than tracking or predicting the ship's movements.",
+            "id": "adams",
+            "name": "Adams",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's chief pilot, valued for remaining focused while a damaged jump drive and a growing Thuranin pursuit sharply limit the ship's options.",
+            "id": "desai",
+            "name": "Desai",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander previously known as Joe. He is trapped in a wrecked Dragon deep beneath a lake on Gingerbread while Chang, Smythe, Skippy, and the surface teams continue seeking a rescue despite hostile Thuranin fire.",
+            "id": "bishop",
+            "name": "Bishop",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Giraud"
+            ],
+            "description": "A French special-operations captain who returns to duty with his team after recovering from radiation poisoning, adding experienced personnel to the continuing operations on Gingerbread.",
+            "id": "rene-giraud",
+            "name": "Rene Giraud",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger assigned to escort Bishop who volunteers for an unarmored climb because she is the lightest member of the team. Suspended from three grapple lines, she cuts a conduit free from damaged Elder machinery and returns without injury.",
+            "id": "lightest-ranger",
+            "name": "Lightest ranger",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "surviving Maxolhx prisoner"
+            ],
+            "description": "The hostile Maxolhx survivor recovered in hibernation from an escape pod. Held under strict safeguards, he possesses advanced biological implants and remains committed to the covert mission that brought his ship into the Elder system.",
+            "id": "mr-snuggles",
+            "name": "Mr. Snuggles",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Major Perkins"
+            ],
+            "description": "A human major known from earlier events as the leader of a team on Paradise that works with the Ruhar. Her prior involvement in operations connected to the Kristang remains relevant at the start of this mission.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human officer whose team is involved in a top-secret Kristang operation away from Paradise. Their unknown location and status interrupt the Flying Dutchman's return to Earth as the crew considers helping them.",
+            "id": "human-major",
+            "name": "Human major",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B078RV7BWR",
+            "type": "community"
+          }
+        ],
+        "work": "zero-hour"
+      }
+    },
     "zorba-the-greek": {
       "characters": {
         "characters": [
