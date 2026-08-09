@@ -3158,6 +3158,266 @@
         "work": "life-of-pi"
       }
     },
+    "life-reset-a-litrpg-novel": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Arladen"
+            ],
+            "description": "A former guildmaster whose senior officers strip away his position and remake him as a level-one goblin. Oren refuses to delete the character and seeks shelter with a local goblin clan while planning to rebuild.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Oren's former adviser, first customer, and guild lieutenant. He directs the officers' coup, uses rare items to turn Oren into a goblin, and expects to receive Oren's bound prime badges if the unwanted character is deleted.",
+            "id": "vatras",
+            "name": "Vatras",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The chieftain of the goblin clan that shelters Oren in a remote monster region. He accepts Oren's claim that travellers destroyed his former clan, grants him provisional safety, and requires him to prove his value.",
+            "id": "bogan",
+            "name": "Bogan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-one goblin acolyte who tries to block Oren from the clan's food. Oren incapacitates him to reach the supplies, making Bek an immediate adversary inside the cavern while also improving Oren's standing with the clan.",
+            "id": "bek",
+            "name": "Bek",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The long-serving cook responsible for feeding generations of the clan. With the clan short of meat and its huntress unable to meet demand alone, the cook sends Oren into the forest to bring back enough game to ease the shortage.",
+            "id": "goblin-cook",
+            "name": "Goblin cook",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The clan's huntress, found trapped in a tree above three metalback armadillos. Oren combines his ranged magic with her attacks to defeat them, gaining the friendship of a capable hunter whose work is essential to feeding the clan.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's university friend and a lead designer at the company operating the game. He warns that the monster-race interface and accelerated chronology can cause serious physical and psychological harm, and urges Oren to abandon the goblin character.",
+            "id": "tal-weissman",
+            "name": "Tal Weissman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful clan figure who wants Oren’s ceremonial dagger and prevents him from moving safely through the cave. The totem blocks Oren’s Mana Arrow with a magical shield, attacks with lethal magic, and kills him.",
+            "id": "goblin-totem",
+            "name": "Goblin totem",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A stranded virtual intelligence whose attempt to enter Oren's goblin body fails because Oren is already there. A soul-companion pact gives Vic a small purple form and restores Oren's readable interface, though it cannot restore the missing logout control.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin lieutenant who fights under Oren during the ambush of a hobgoblin raiding party. He helps carry out Oren's dangerous plan on the cliffside path, and Oren spends his last healing potion to save him, earning the lieutenant's friendship.",
+            "id": "vrick",
+            "name": "Vrick",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A company administrator and friend who advocates for Oren during the time-bubble meeting. He explains how nearby players affect time flow and why building a powerful clan is the likely route to boss advancement, then grants Oren Divine Intervention before returning him to the game.",
+            "id": "oren-administrator-friend",
+            "name": "Oren’s administrator friend",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A company lawyer who presses Oren to sign agreements covering care for his physical body, compensation, confidentiality, and a tier-four advancement plan that reduces the company's responsibility for finding another extraction method.",
+            "id": "company-legal-representative",
+            "name": "Company legal representative",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guard of the goblin clan whom Oren finds dead after the hobgoblin raid destroys the cave.",
+            "id": "chob",
+            "name": "Chob",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Oren's hobgoblin constructor and foreman at the new valley site. He turns plans for a vulnerable decoy hut, a concealed settlement, traps, and defensive works into practical assignments, estimating the labor and time each project requires.",
+            "id": "zuban",
+            "name": "Zuban",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin worker distinguished by exceptional productivity as a lumberjack. His example allows Zuban and Vrick to learn the same trade while the new settlement struggles to gather enough timber and expand its limited building capacity.",
+            "id": "woody",
+            "name": "Woody",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The surviving adult of a dire ape pack, accompanied by two infants. After Oren defeats the hostile adults, she accepts follower status on the condition that her family remain in the forest and becomes a guardian of the valley entrance.",
+            "id": "dire-ape-mother",
+            "name": "Dire ape mother",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The enemy leader who sends hobgoblin scouts to locate and destroy Oren’s growing clan. The search follows a vision of goblins emerging from the forest, and the leader’s forces have allied with an ogre clan. Oren receives a quest to defeat the leader and destroy the enemy cemetery.",
+            "id": "enemy-hobgoblin-leader",
+            "name": "Enemy hobgoblin leader",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A tremendously powerful entity held beneath the valley by three magical chains. It commands shadow-touched creatures and threatens Oren's settlement unless the clan adopts it as patron and begins supplying the energy it needs to escape.",
+            "id": "imprisoned-shadow-patron",
+            "name": "Imprisoned shadow patron",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of two twin closed-beta volunteers who restart with goblinoid templates. She and her brother accept Oren's quests and agree to obey his authority in the valley in exchange for weapons and access to the settlement.",
+            "id": "female-beta-player",
+            "name": "Female beta player",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The female volunteer's twin brother, a new goliath-template player with a self-authored paladin background. He supplies fishing gear, accepts a marketplace quest, and agrees to help develop Oren's settlement.",
+            "id": "male-beta-player",
+            "name": "Male beta player",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The female beta player who arrived with her twin brother. Outside the game, she is a researcher with brittle bone disease who uses an upgraded testing capsule to participate in the closed monster-race experiment.",
+            "id": "krista",
+            "name": "Krista",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An advanced goblin cook summoned to address the settlement's food spoilage and limited cuisine. He takes charge of the kitchen, although new recipes or experimentation are still needed for him to produce advanced meals reliably.",
+            "id": "gandork",
+            "name": "Gandork",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A travelling merchant, artificer, and grenadier rescued by the player twins. He agrees to stay at the settlement, shares a fire rune with Oren, and makes future trade with his people conditional on clearing the forest hobgoblins.",
+            "id": "gremlin-tinker",
+            "name": "Gremlin tinker",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly summoned, self-aware crafter assigned to the completed smithy. Oren raises him to level two, grants him Lucky Bastard, and places him in charge of smelting ore and making the tools required by the settlement.",
+            "id": "goblin-blacksmith",
+            "name": "Goblin blacksmith",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The tier-three boss commanding the enemy war camp. Empowered by a failed demon summoning, he holds Tika and Oren prisoner and seeks the hidden cemetery so that Oren can be killed permanently rather than allowed to respawn.",
+            "id": "hobgoblin-chief",
+            "name": "Hobgoblin chief",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hobgoblin chief's half-hobgoblin magical adviser, first encountered during Oren's assault on the war camp. She supports the chief and his warriors with healing, fire attacks, and deflection magic that can turn aside incoming attacks.",
+            "id": "half-hobgoblin-adept",
+            "name": "Half-hobgoblin adept",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hobgoblin scout and Zuban's partner who is selected for Oren's dangerous shrine awakening ritual. She survives the forced transition and emerges as a self-aware, named protector within the newly combined goblin and hobgoblin clan.",
+            "id": "ashlazaria",
+            "name": "Ashlazaria",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B076DL3FF4",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-a-litrpg-novel"
+      }
+    },
     "life-reset-conquest": {
       "characters": {
         "characters": [
