@@ -3769,6 +3769,246 @@
         "work": "death-with-interruptions"
       }
     },
+    "death-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Legion Varus legionnaire and squad leader on leave after the Machine World campaign. He is Etta's father and has not yet met her. His service keeps him physically young through revival while his civilian parents continue to age normally.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's former partner and Etta's mother. She has confirmed that McGill is Etta's father and accepts that he and his parents should be allowed to meet their daughter.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The nearly two-year-old daughter of James McGill and Della. She lives on Dust World and has not met her father. Her confirmed paternity gives McGill's parents a granddaughter they are eager to visit, making her the focus of the family's plans.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "McGill's civilian mother and father, who live on their Georgia-sector property. They age normally rather than returning through Legion revival. Learning about Etta gives them a new family connection, and they hope to travel to Dust World to meet her.",
+            "id": "mcgills-parents",
+            "name": "McGill's parents",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Anne"
+            ],
+            "description": "A Legion Varus bio specialist and a recent visitor at McGill's family home. She and McGill have a personal history, but she leaves as he begins arranging contact with Della. Her medical expertise makes her part of the legion's essential revival staff.",
+            "id": "anne-grant",
+            "name": "Anne Grant",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Hegemony official already connected to Legion Varus and its deployments. His interest in McGill places the legionnaire within a larger political contest.",
+            "id": "equestrian-nagata",
+            "name": "Equestrian Nagata",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A Legion Varus technical specialist serving alongside McGill. A separate copy of her is caring for Etta on Dust World.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Turov",
+              "Imperator Turov"
+            ],
+            "description": "The Imperator directing Legion Varus. At the titanium shipment ceremony, she credits Legion Varus and Legion Solstice for the Machine World victory.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus legionnaire training as a bio specialist. He attends the titanium shipment ceremony with McGill and Kivi, with whom he appears to have a close relationship.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus technical specialist who attends the titanium shipment ceremony with McGill and Carlos. She and Carlos appear to have a close relationship.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A Legion Varus field officer who gives McGill privileged information about the pursuit of the freighter's attackers. He recognizes that grief and anger are influencing McGill's judgment.",
+            "id": "centurion-graves",
+            "name": "Centurion Graves",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus officer who tries to control McGill's access to the Imperator through the command hierarchy. He resents McGill's direct connection with her and threatens to make his service difficult.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harris"
+            ],
+            "description": "A veteran noncommissioned officer in Legion Varus. He accepts McGill's challenge to a lethal training match between their squads and chooses the Green Deck mud pit and knives as its terms.",
+            "id": "veteran-harris",
+            "name": "Veteran Harris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Legion Varus platoon commander above McGill's squad. He authorizes McGill's challenge to a lethal knife-fighting exercise against Veteran Harris's squad.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavy-weapons specialist in McGill's unit. He carries a belcher and adjusts the plasma weapon for close fighting aboard Minotaur.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trooper in McGill's heavy unit who becomes sick during the lifter's descent to the hidden world.",
+            "id": "lau",
+            "name": "Lau",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus officer who takes over the advance after McGill's troops secure a route through the damaged Blue Deck. The assignment places Toro within the continuing effort to protect the ship's revival systems from organic boarders.",
+            "id": "adjunct-toro",
+            "name": "Adjunct Toro",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A passenger who died in the freighter crash at Earth. McGill argues that his record may provide intelligence about the attack, and Winslade decides to move him ahead of senior officers in the revival queue.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Claver"
+            ],
+            "description": "An identity previously used by Claver. By this point, he acknowledges that Old Silver and Claver are the same person.",
+            "id": "old-silver",
+            "name": "Old Silver",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drusus"
+            ],
+            "description": "The senior commander of Legion Varus. McGill and Anne restore him through the revival system so he can displace Winslade and reassert the proper command structure. He quickly demands a fuller account of the expedition's losses and Claver's interrogation.",
+            "id": "tribune-drusus",
+            "name": "Tribune Drusus",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Torrent"
+            ],
+            "description": "A cephalopod ship captain in orbit over Death World. He orders Legion Varus to spare the nexus plants and threatens to destroy the human force if it proceeds with its attack. His intervention suggests a connection between the cephalopods and the plant collective that Varus does not yet understand.",
+            "id": "captain-torrent",
+            "name": "Captain Torrent",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sloan"
+            ],
+            "description": "A dismissed Hegemony veteran recruited by Claver to assassinate Winslade for a large payment. Projection equipment gives him Claver's appearance so he can carry a concealed alien weapon into Central. His grievance against Winslade makes him willing to accept the operation.",
+            "id": "jonathan-sloan",
+            "name": "Jonathan Sloan",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00YT8AV8A",
+            "type": "community"
+          }
+        ],
+        "work": "death-world"
+      }
+    },
     "decline-and-fall": {
       "characters": {
         "characters": [
