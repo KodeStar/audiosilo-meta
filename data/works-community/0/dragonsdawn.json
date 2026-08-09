@@ -3347,6 +3347,227 @@
         "work": "dust"
       }
     },
+    "dust-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A repeatedly revived Legion Varus veteran who feels displaced during shore leave. As Earth enters an economic crisis after losing its alien contracts, he leaves civilian life behind and returns to the legion.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A returning member of James McGill's unit and one of the former comrades McGill seeks during shore leave. His connection to the legion makes him part of McGill's route back into military service.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of McGill's Legion Varus cohort. She briefs the troops on a secret mission to expand Earth's territory and insists that the legion answer its damaged reputation through action rather than publicity.",
+            "id": "primus-turov",
+            "name": "Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harris"
+            ],
+            "description": "A stern Legion Varus noncommissioned leader present at the briefing for the legion's secret deployment. He acts as a disciplinarian and displays open hostility toward James McGill and Carlos.",
+            "id": "veteran-harris",
+            "name": "Veteran Harris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Legion Varus soldier and former intimate partner of James McGill. She reunites with him after both pass the hegemony's harsh screening, though their assignments may place them in different specialties.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A returning Legion Varus technical specialist and former intimate partner of James McGill. During the mission briefing, she identifies the historical Hydra Project behind the lost human settlement.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A Legion Varus officer who briefs the troops aboard Corvus. He explains that their destination is a long-isolated human colony in Zeta Herculis and that the mission may require force as well as assistance.",
+            "id": "centurion-graves",
+            "name": "Centurion Graves",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced Legion Varus weapons specialist assigned to train James McGill after his transfer into heavy armor. He coaches McGill in handling the plasma cannon and the demands of his new battlefield role.",
+            "id": "specialist-sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "James McGill's direct Legion Varus officer during the emergency aboard Corvus. He redeploys troops away from a congested bridge approach as the legion organizes its response to the alien boarding.",
+            "id": "adjunct-leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drusus"
+            ],
+            "description": "The overall commander of Legion Varus during the crisis aboard Corvus. His command faces a sabotaged ship on a fatal course toward Zeta Herculis while the fate of the human colony remains unknown.",
+            "id": "tribune-drusus",
+            "name": "Tribune Drusus",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grant"
+            ],
+            "description": "A Legion Varus bio specialist associated with the force's revival capability. James McGill considers whether her expertise could reconstruct members of the dead Skrull crew, though legal and technical barriers make the idea impractical.",
+            "id": "anne-grant",
+            "name": "Anne Grant",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus officer present at the landing briefing after Corvus is abandoned. Toro questions why personnel were left aboard the doomed ship while the legion evacuates to Dust World.",
+            "id": "adjunct-toro",
+            "name": "Adjunct Toro",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The point man in Adjunct Leeson's squad during its first survey of the crater lake. He scouts an unfamiliar environment where the legion must identify water, food, local hazards, and signs of the lost colonists.",
+            "id": "gorman",
+            "name": "Gorman",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A leader among the armed crater colonists who confront James McGill during his attempt at peaceful contact. Believing he is connected to their cephalopod enemies, she kills him after a nanite weapon invades his body.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile crater colonist who argues that James McGill should be killed during first contact. He fires a sophisticated nanite bolt that penetrates McGill's protection and leaves him facing a lethal internal attack.",
+            "id": "stott",
+            "name": "Stott",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus soldier assigned to reconnoiter the shielded enemy ship with James McGill, Carlos, and Kivi. Humanoid trackers capture the entire team, and Hudson is carried away alive when the others die.",
+            "id": "hudson",
+            "name": "Hudson",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Hydra's principal investigator"
+            ],
+            "description": "The scientist who leads the hidden Hydra colony from within its dismantled colony ship. He receives James McGill, studies the legion's revival system, and considers cooperation against the forces abducting his people.",
+            "id": "the-investigator",
+            "name": "the investigator",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus soldier on the small team searching the colonists' tunnels for an approach to the enemy ship. He joins Veteran Harris, Kivi, and James McGill on a mission constrained by a strict time limit.",
+            "id": "perez",
+            "name": "Perez",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Alders"
+            ],
+            "description": "The leader of a Hydra scout team encountered during Legion Varus's assault on the grounded enemy vessel. He agrees to bring six colonist fighters into the operation and guide the legion through the ship.",
+            "id": "scout-alders",
+            "name": "Scout Alders",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Xlur"
+            ],
+            "description": "A Galactic official present when the Nairb hearing initially sentences every legionnaire and colonist to permanent self-execution. Although James McGill recognizes him from earlier encounters, Xlur does not recognize McGill.",
+            "id": "inspector-xlur",
+            "name": "Inspector Xlur",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00JEKVZKQ",
+            "type": "community"
+          }
+        ],
+        "work": "dust-world"
+      }
+    },
     "eagle-strike": {
       "characters": {
         "characters": [
