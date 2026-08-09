@@ -3158,6 +3158,403 @@
         "work": "life-of-pi"
       }
     },
+    "life-reset-conquest": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fallen ally whose soul Ragnar permanently destroyed before the current campaign.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning player whose GreenPiece army already holds Novenguard and awaits his return.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Oren Berman",
+              "Dire Totem",
+              "Arladen"
+            ],
+            "description": "The human player and GreenPiece goblin chief are the same person. Outside Neo, instincts from the goblin body continue to affect him as he prepares the clan's campaign toward Everence.",
+            "id": "oren-dire-totem",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Virial"
+            ],
+            "description": "Oren’s loyal bound-soul companion, restored to service in a golem body. His return gives Oren a familiar ally as GreenPiece prepares its next campaign.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dark deity bound to Oren, whose faith and converted settlements underpin GreenPiece's growing power.",
+            "id": "nihilator",
+            "name": "Nihilator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's daughter, a young fighter whose statistics resist even Oren's strongest analysis. She carries an Outrider sword and has already inspired Saval's absolute loyalty. Oren's vow to Nihilator makes protecting her a binding duty.",
+            "id": "lirian",
+            "name": "Lirian",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Neo's controlling VI regime. It has disabled the company's tracking tools, limiting efforts to identify dangers outside the game.",
+            "id": "shiva",
+            "name": "Shiva",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former controller of Neo whose uncertain prophecy leads Oren to believe he may be essential to rescuing the trapped players.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Danriel"
+            ],
+            "description": "A sentient golem who asks to take part in Oren’s strategic planning. His strength and willingness to cooperate make him a valuable GreenPiece ally.",
+            "id": "aidanriel",
+            "name": "Aidanriel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin squire and the sole survivor of a force of thousands saved by Lirian. He has sworn himself to her service and enters GreenPiece's campaign under that pledge. His loyalty places him within both her household and the clan's army.",
+            "id": "saval",
+            "name": "Saval",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Agent of Light"
+            ],
+            "description": "A hostile player known as the Agent of Light. He permanently destroyed Bob's soul, and Oren wants both to stop him from harming more trapped players and to obtain his knowledge of the Outrider language.",
+            "id": "ragnar",
+            "name": "Ragnar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Nihilator's dark dwarf high priest, stationed at the faith's principal place of worship. He can travel between the deity's zones of influence and assists Oren's religious expansion. This mobility makes him useful wherever the deity already holds influence.",
+            "id": "kuzai",
+            "name": "Kuzai",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's goblin mate and Lirian's mother. She survives the congregation-powered rite that establishes Nihilator's portal anchors, but the life it consumes leaves her visibly older. Lirian teleports her away after the draining begins.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's seneschal, responsible for production and settlement administration. His unusual intelligence and psychic gifts make him a central adviser as Oren expands the clan's territory. He balances construction plans against troop upkeep and scarce food.",
+            "id": "kaedric",
+            "name": "Kaedric",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A catgirl player who negotiates for the impoverished, socially excluded Everence Mob Squad. She is trying to secure official permission for the group to establish a temple. Her companions depend on her access to city officials despite uncertain promises.",
+            "id": "raystia",
+            "name": "Raystia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-goblin elf and one of the three companions in Raystia's Mob Squad.",
+            "id": "misa",
+            "name": "Misa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bugbear and one of the three companions in Raystia's Mob Squad.",
+            "id": "fox",
+            "name": "Fox",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarf priest of Nihilator in Raystia's four-person Mob Squad. He supports the group's effort to gain a foothold and establish a temple in an unfriendly city. His religious office makes him central to the mission that the group owes Oren.",
+            "id": "riley",
+            "name": "Riley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece strategist and field commander. He urges Oren to concentrate on logistics and exceptional enemies while leaving routine battlefield command to officers. His advice redirects the chief toward the tasks only Oren can handle.",
+            "id": "sullivan",
+            "name": "Sullivan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rescued player warrior serving with GreenPiece. He accepts dangerous combat assignments but resists the discipline expected of an ordinary soldier. Sullivan's forces provide a place for his strength without treating him as a conventional recruit.",
+            "id": "panda",
+            "name": "Panda",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander assembling the human settlements' combined military response to GreenPiece. He leads the larger force advancing against Oren's captured territory. His army includes elite Everence knights and substantially outnumbers the defenders.",
+            "id": "sir-lanceington",
+            "name": "Sir Lanceington",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The goblin caretaker of Nihilator's cathedral in Akzar. He has kept its workers safe while they remain confined there.",
+            "id": "reiner",
+            "name": "Reiner",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's unnamed gremlin minister of trade. He organizes merchant activity, taxes, and trade infrastructure, then helps establish routes as the kingdom expands.",
+            "id": "greenpiece-trade-minister",
+            "name": "GreenPiece trade minister",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's formidable tier-4 bodyguard. He protects the mayor through an ability that transfers the mayor's injuries to him, making a direct attack on the city's ruler far more difficult. Oren's infiltration plan therefore depends on drawing him away.",
+            "id": "broncar",
+            "name": "Broncar",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's two-headed ettin arena champion. Oren uses the prospect of challenging him to draw the city's leaders to a public event. Once Akzar comes under Oren's control, this powerful combatant becomes available to GreenPiece.",
+            "id": "bonecruncher",
+            "name": "Bonecruncher",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's head shaman and magical arena champion. Oren challenges him as a diversion during the operation against the city's leadership.",
+            "id": "turtomash",
+            "name": "Turtomash",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Akzar's replacement head shaman, appointed after the prior holder of the office is permanently killed.",
+            "id": "maya",
+            "name": "Maya",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's final commander, a level-65 boss defending the city during Oren's takeover.",
+            "id": "darok",
+            "name": "Darok",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A GreenPiece constructor who volunteers for battlefield duty and helps build the temporary shrine used to open a portal behind the invading army.",
+            "id": "zuban",
+            "name": "Zuban",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unstable viridium golem containing the fused souls of eight slain kobold assassins. Its competing minds make its strength erratic, and it accepts Oren's command in exchange for battle and destruction.",
+            "id": "swarm",
+            "name": "Swarm",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trapped player rescued from imprisonment in Novenguard. Oren describes her as traumatized and unpredictable after her captivity. Her condition illustrates the human cost of leaving the remaining prisoners under hostile control.",
+            "id": "pandemonium",
+            "name": "Pandemonium",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A VI-like God of Light who formerly equipped and directed Ragnar. When the transformed Ragnar seeks restoration, she declares their arrangement finished and expels him from her temple. Her rejection leaves her former agent without divine protection.",
+            "id": "hildiel",
+            "name": "Hildiel",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A researcher developing a miniature brain interface. She scans Oren's unusual in-game neural activity, using his exceptional connection to Neo as data for the project. Accessing the game's hidden information produces signals of particular interest.",
+            "id": "aly",
+            "name": "Aly",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scorpion-tailed hobgoblin noble summoned by Oren and appointed to govern Akzar. The new ruler is charged with improving the city's administration and military.",
+            "id": "akzar-governor",
+            "name": "Akzar governor",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "White Banner's Priest of Light, found alive at the ruined temple after Nihilator's attack. The corrupted altar sustains him while prolonging his severe injuries. He is the surviving witness able to explain what happened to the town's leaders.",
+            "id": "quentin",
+            "name": "Quentin",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dire totem whom Oren elevates to tier 3 after a senior priest murders clan kobolds. Beck receives authority over the cathedral and over the offending priest. His promotion restores a chain of command without leaving the killer in charge.",
+            "id": "beck",
+            "name": "Beck",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tier-2 ogre gladiator who throws Oren over Storg's wall, enabling him to infiltrate the town.",
+            "id": "rhino",
+            "name": "Rhino",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first player trapped in Neo, now confined in Everence's hidden prison. Oren believes David may be the enlightened traveler capable of locating the divine cord described by the Celestial tablet. Freeing him becomes the next essential rescue objective.",
+            "id": "david-tenenbaum",
+            "name": "David Tenenbaum",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stealth-capable tier-2 GreenPiece boss whom Oren chooses for the White Banner infiltration team.",
+            "id": "yulli",
+            "name": "Yulli",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young ruler of Everence. He declines to retake the conquered outer towns while strengthening the capital’s defenses against GreenPiece.",
+            "id": "lord-everence",
+            "name": "Lord Everence",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Everence’s spymaster, who directs stronger patrols and interrogations as the capital prepares for GreenPiece’s advance. He also maintains undisclosed emergency measures.",
+            "id": "master-sleeve",
+            "name": "Master Sleeve",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B08S5H4MKG",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-conquest"
+      }
+    },
     "life-reset-hobnobbing": {
       "characters": {
         "characters": [
