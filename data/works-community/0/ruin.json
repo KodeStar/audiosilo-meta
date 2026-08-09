@@ -3941,6 +3941,201 @@
         "work": "saturday"
       }
     },
+    "savage-dominion": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unathletic gamer whose hiking date turns deadly when a huge wolf attacks. He puts his companion's escape ahead of his own safety, fights through devastating injuries, and reaches a stone circle that the animal refuses to enter.",
+            "id": "human-protagonist",
+            "name": "Human protagonist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dawn King"
+            ],
+            "description": "The Solar Court's spokesman, who explains that chosen dead can become immortal agents on Amaranth. He presents his court as a force for order, then refuses the protagonist the reborn form he selects.",
+            "id": "eos-fel",
+            "name": "Eos Fel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reaper who finds the protagonist conscious after death and determines that his case requires intervention from the gods. Death escorts him from the stone circle to the divine courts.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The former human protagonist after rebirth as a horned Shagnar Fawn and the Lunar Court's first new Eternal in millennia. He accepts a wolf god as patron, gains power near corpses, and is sent to Amaranth through a forced first death.",
+            "id": "malkin",
+            "name": "Malkin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Lunar Court god who offers the protagonist patronage, names him Malkin, and grants him greater attributes when corpses lie within his sphere of influence.",
+            "id": "wolf-god",
+            "name": "Wolf god",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly reborn human Solar Eternal unearthed beside the others. She is more willing than Orphea to cooperate with Malkin and helps persuade Orphea to hear the White Prophet.",
+            "id": "human-solar-eternal",
+            "name": "Human Solar Eternal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly arrived Dvergar Solar Eternal whose repeated deaths have left him mentally impaired.",
+            "id": "dvergar-solar-eternal",
+            "name": "Dvergar Solar Eternal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A blue-scaled Inyoka Solar Eternal unearthed alongside Malkin and the other new Eternals. He cautiously supports pausing the conflict with Malkin long enough to hear the White Prophet.",
+            "id": "asher",
+            "name": "Asher",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Alvarin Solar Eternal ordered by her gods to kill Malkin. She attacks him soon after being unearthed and only pauses when the other new Eternals insist on hearing what the White Prophet has to say.",
+            "id": "orphea",
+            "name": "Orphea",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pale Inyoka seer who claims limited knowledge of the future. He directs five newly arrived Eternals toward a mission to recover six pieces of a god-wounding weapon, then drops them into a concealed dungeon.",
+            "id": "white-prophet",
+            "name": "White Prophet",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human Solar Eternal who escaped the prophet's dungeon alongside Malkin and Asher. A former diving instructor with incomplete memories of her human life, she commits to remaining their companion unless she later chooses otherwise.",
+            "id": "mercy",
+            "name": "Mercy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dvergar matriarch of a caravan attacked by Svart. She leads refugees from fallen Cog Elok, accepts the three Eternals after they defend her people, and permits them to travel with her toward threatened Cogmore.",
+            "id": "gunnhild",
+            "name": "Gunnhild",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cogmore's ambassador and operational adviser. He briefs the visiting Eternals on the Svart occupation and helps shape a counteroffensive designed to recover the spinnerworm farms without wasting the city's limited defenders.",
+            "id": "gorm",
+            "name": "Gorm",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unusually tall and capable Svart who guards the central pyramid of the hidden crystal city. Fighting with far greater precision and independence than the city's dazed inhabitants, the archer ambushes the party near an embedded iron shard.",
+            "id": "svart-archer",
+            "name": "Svart archer",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Svart archer restored to Alvarin form when Malkin removes the pyramid's shard. Briar commands formidable force magic and authority among the returning Alvarin. She says her people's transformation prevented a worse evil and demands the shard back.",
+            "id": "briar",
+            "name": "Briar",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Archmage Talon"
+            ],
+            "description": "An archmage associated with the mirrored magical guide at an abandoned coastal school.",
+            "id": "talon",
+            "name": "Talon",
+            "reveal": {
+              "chapter": 24
+            }
+          },
+          {
+            "description": "An ancient Alvarin captive who lived before her people became Svart. Loyal to Briar, she disputes the party's warnings about the Void God, but her direct knowledge of the earlier war makes her a valuable historian during the voyage toward Talon's Keep.",
+            "id": "saren",
+            "name": "Saren",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "black worm",
+              "Alvar's bane",
+              "twilight betrayer",
+              "bearer of the worm's shard"
+            ],
+            "description": "A shard bearer whom Talon identifies as the black worm. Sanganax imprisoned the archmage in a cycle of resurrection and torture and is now seeking all six pieces of the broken weapon.",
+            "id": "sanganax",
+            "name": "Sanganax",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A featureless presence reached when Malkin uses psychometry on his paired shards. Its identity and purpose remain unknown, but it tells him that it requires his obedience.",
+            "id": "black-figure",
+            "name": "Black figure",
+            "reveal": {
+              "chapter": 35
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1705231985",
+            "type": "community"
+          }
+        ],
+        "work": "savage-dominion"
+      }
+    },
     "savage-homecoming": {
       "characters": {
         "characters": [
