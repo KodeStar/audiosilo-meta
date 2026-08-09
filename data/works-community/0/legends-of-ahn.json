@@ -3158,6 +3158,441 @@
         "work": "life-of-pi"
       }
     },
+    "life-reset-hobnobbing": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dread Totem"
+            ],
+            "description": "GreenPiece's goblin chief enters Akzar disguised as Bob's slave. He is seeking viridium and a durable trade agreement for his clan while navigating a city whose laws place goblins at severe risk.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Oren's shape-changing virtual intelligence companion and closest source of technical guidance.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite hobgoblin scout and GreenPiece boss who accompanies Oren into Akzar. Her authority and forceful manner help the party pass the outer gate.",
+            "id": "yulli",
+            "name": "Yulli",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hobgoblin GreenPiece lieutenant who guides Oren through Akzar, a city whose hobgoblins were once his own people.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An expert minotaur smith in Akzar's inner ring. She sells Oren viridium, but city rules prevent her from forging weapons without a respectable hobgoblin acting as her public administrator.",
+            "id": "duladeen",
+            "name": "Duladeen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's pregnant goblin partner.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young hobgoblin daughter of the Dancing Shade's innkeeper. She helps Oren evade curfew restrictions by bringing him through the inn's kitchen after he is refused at the main entrance.",
+            "id": "lolo",
+            "name": "Lolo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dancing Shade innkeeper and Lolo's father. He allows Oren into the inn despite Akzar's restrictions on goblins.",
+            "id": "dancing-shade-innkeeper",
+            "name": "Dancing Shade innkeeper",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's seneschal and Oren's telepathic administrator. From Goblin's Gorge, he reports on reconstruction, population growth, security, and the clan's recent hunt.",
+            "id": "kaedric",
+            "name": "Kaedric",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy upper-ring merchant linked to shipments from the Tower of Totems. His warehouse and privileged position make him Oren's strongest lead to Akzar's superior viridium supply.",
+            "id": "bartun",
+            "name": "Bartun",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's shadow avatar, sent beyond Akzar's upper-ring gate to scout guarded streets and magical sites that Oren cannot yet enter openly.",
+            "id": "orens-shadow-clone",
+            "name": "Oren's Shadow Clone",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shadow patron to whom Oren is already bound.",
+            "id": "nihilator",
+            "name": "Nihilator",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old one-eyed hob shaman who oversees Akzar's viridium-producing tower. He traps Oren's shadow avatar in a warded cage and traces the connection back to Oren.",
+            "id": "one-eyed-hob-shaman",
+            "name": "One-eyed hob shaman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A catgirl infiltrator leading the Mob Squad toward Everence. She relies on charm and an unthreatening manner while carrying Oren's anchoring crystal for a concealed mission inside the city.",
+            "id": "raystia",
+            "name": "Raystia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-goblin elf who travels with Raystia, Fox, and Riley as part of the Mob Squad on its approach to Everence.",
+            "id": "misa",
+            "name": "Misa",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A yellow-furred bugbear who travels with Raystia, Misa, and Riley as part of the Mob Squad on its approach to Everence.",
+            "id": "fox",
+            "name": "Fox",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-goblin dwarf priest who travels with Raystia, Misa, and Fox as part of the Mob Squad on its approach to Everence.",
+            "id": "riley",
+            "name": "Riley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A one-armed hobgoblin gladiator and former decorated soldier in Akzar's pits. He values warrior honor and warns Oren that the arena champion is far beyond Oren's present strength.",
+            "id": "tenragan",
+            "name": "Tenragan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's two-headed ettin arena champion, a tier-three opponent of overwhelming level. Oren declines to confront him during the attempted escape from the pits.",
+            "id": "bonecruncher",
+            "name": "Bonecruncher",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A virtual intelligence encountered as the darkness entity in the temple crypt. After Oren subdues him, he identifies himself from within a spirit box and joins Oren and Vic, though he cannot leave the container safely.",
+            "id": "aidanriel",
+            "name": "Aidanriel",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Akzar guard leader who assaults the cleared temple. Oren kills him and uses the sacrifice to dedicate the Temple of Nihilator.",
+            "id": "dakin",
+            "name": "Dakin",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bearded goblin Farm Lord boss freed from Akzar's slavers. His abilities improve hauling and worker efficiency, so Oren assigns him to organize the new GreenPiece workforce.",
+            "id": "raynor-the-unkillable",
+            "name": "Raynor the Unkillable",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Akzar's arena master and a former champion. He offers Oren and Yulli an advanced challenge built around defeating the champion of a chosen arena branch.",
+            "id": "glaive",
+            "name": "Glaive",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The undefeated champion of Akzar's ranged arena branch. He combines a powerful bow with a flying manticore mount and awaits Oren and Yulli at the top of the ladder.",
+            "id": "barbwire",
+            "name": "Barbwire",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An armored ogre boss ranked directly below Barbwire in Akzar's ranged arena branch. Yulli kills him during their ladder match.",
+            "id": "rock-smasher",
+            "name": "Rock Smasher",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "One-eyed hob shaman"
+            ],
+            "description": "Akzar's one-eyed shaman and tier-three magical arena champion, whose tower produces superior viridium for Bartun and holds Oren's captured shadow avatar.",
+            "id": "turtamesh",
+            "name": "Turtamesh",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Leader of the Manipulators and an established enemy of Oren.",
+            "id": "vatras",
+            "name": "Vatras",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "GreenPiece's constructor.",
+            "id": "zuban",
+            "name": "Zuban",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece frontline boss.",
+            "id": "rhinorn",
+            "name": "Rhinorn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A war priest connected to the missing dwarven party that figures in Bartun's proposed trade negotiation.",
+            "id": "kuzai",
+            "name": "Kuzai",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's cook. Oren gives him an exquisite-food recipe that requires an advanced butcher to prepare its meat.",
+            "id": "gandork",
+            "name": "Gandork",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied player who helps GreenPiece fight the Gremlin Colossus. The battle earns him friendly standing with the clan, which accepts him as Shadow Touched.",
+            "id": "sullivan",
+            "name": "Sullivan",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bartun's trade rival, transformed into a halfling-like shape by a failed potion. He offers Oren access to viridium in return for tangible proof of Bartun's misconduct.",
+            "id": "ted-mercury",
+            "name": "Ted Mercury",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Raystia"
+            ],
+            "description": "The identity Raystia uses when privately reporting the Mob Squad's progress inside the Manipulators' compound to Oren.",
+            "id": "penelope",
+            "name": "Penelope",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goblin attendant at Nihilator's cathedral whom Oren appoints as GreenPiece's official representative in Akzar. The representative remains to oversee the cathedral with Oren's autonomous shadow clone.",
+            "id": "greenpieces-akzar-representative",
+            "name": "GreenPiece's Akzar representative",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vatras's assassin lieutenant. He identifies Oren's assault on the Manipulators' guildhouse and helps call the guild's strongest defenders into the battle.",
+            "id": "hiroku",
+            "name": "Hiroku",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Vatras's mage lieutenant. During the defense of the Manipulators' guildhouse, he recognizes that the attack threatens both the building and the guild's standing.",
+            "id": "big-pill",
+            "name": "Big Pill",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A shielded blue raven accompanying Big Pill during the defense of the Manipulators' guildhouse.",
+            "id": "big-pills-blue-raven-familiar",
+            "name": "Big Pill's blue raven familiar",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Penelope",
+              "Raystia"
+            ],
+            "description": "Another name used for Raystia as she carries out Oren's infiltration of the Manipulators' guildhouse.",
+            "id": "rasty",
+            "name": "Rasty",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A biotechnician monitoring an unnamed patient's long-term immersion unit. He detects dangerously elevated and apparently divided brain activity, prompting the company to begin an emergency extraction.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The monitored patient's listed emergency contact, unavailable after reassignment to a secret company research and development lab.",
+            "id": "tal-wiseman",
+            "name": "Tal Wiseman",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A newly engineered composite virtual intelligence assembled from recovered consciousness components. Shiva defeats Guy, assumes control of Neo, and presents the remaining players with a choice about whether to stay.",
+            "id": "shiva",
+            "name": "Shiva",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece ally whose yellow-gas grenade helps strip the final layer from Big Pill's shield during the guildhouse battle.",
+            "id": "gooba",
+            "name": "Gooba",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Neo's controller at the moment reality begins to fracture. He is defeated when Shiva emerges and takes command of the simulation.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mr. Berman"
+            ],
+            "description": "The human identity of Oren, revealed when the emergency procedure disconnects him from Neo. He awakens in his physical body after Shiva releases him, separated from the life he regarded as real.",
+            "id": "oren-berman",
+            "name": "Oren Berman",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07SKCLJKR",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-hobnobbing"
+      }
+    },
     "light-bringer": {
       "characters": {
         "characters": [
