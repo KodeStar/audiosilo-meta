@@ -1287,6 +1287,219 @@
         "work": "the-enemy"
       }
     },
+    "the-enemy-within": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of Phoenix and commander of the mercenary team Omega Force. His crew recovers him after an arms-smuggling operation ends in capture and severe injury, and his implants and medical nanobots help keep him alive through the ordeal.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A battlesynth serving aboard Phoenix as a combat specialist. He uses powerful weapons built into his arms while helping recover Jason from the smugglers who captured and interrogated him.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable Galvetic warrior in Omega Force. He helps free Jason from captivity, kills the smuggler leader's brother during the assault, and must be stopped from killing their intended prisoner as well.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Phoenix's medic and a member of Omega Force. He takes charge of Jason's treatment after the rescue, using sedation and intensive care to address the captain's serious injuries aboard the ship.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Phoenix's engineer. During the rescue, he moves the ship into place and opens the smuggling compound's hangar doors.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of an arms-smuggling organization pursued by Omega Force. His people capture and interrogate Jason, but the crew raids his facility, kills his brother, and takes Corenntal alive for delivery to its client.",
+            "id": "corenntal",
+            "name": "Corenntal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Veran code slicer and Phoenix crew member. By recognizing Jason's intermittent neural queries across public networks, he gives Omega Force the trail it needs to locate and rescue its captured captain.",
+            "id": "kage",
+            "name": "Kage",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former benefactor of Phoenix whose frigate, Diligent, is disabled after mass violence on Camderan-2. Public reports accuse him of supporting attacks that killed thousands, although Jason doubts that account.",
+            "id": "crisstof-dalton",
+            "name": "Crisstof Dalton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kellea",
+              "Captain Colleren"
+            ],
+            "description": "Commander of Diligent and an ally with a close connection to Jason. After her frigate is intercepted and she disappears on Camderan-2, she sends Phoenix a coded distress message asking for extraction.",
+            "id": "captain-kellea-colleren",
+            "name": "Captain Kellea Colleren",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bostco"
+            ],
+            "description": "Diligent's first officer. He is missing alongside Kellea after ConFed forces disable their ship, leaving Phoenix uncertain whether either officer has escaped the extensive search on Camderan-2.",
+            "id": "commander-bostco",
+            "name": "Commander Bostco",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Crisstof Dalton's First Son, who publicly addresses the accusations against his father.",
+            "id": "steader-dalton",
+            "name": "Steader Dalton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kelpen farmer who survives the unprecedented violence on Solamea. He tells the investigators that apparent kelpens emerged from the forest, killed his mate and child, and attacked the nearby settlement without making demands.",
+            "id": "i-iteren",
+            "name": "i'iteren",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Tellumn"
+            ],
+            "description": "Crisstof Dalton's lawyer and advocate on Aracoria. After Jason's team uses his household to force his cooperation, he recognizes their purpose and offers a way for Jason to enter Crisstof's detention facility.",
+            "id": "tellumn-allute",
+            "name": "Tellumn-Allute",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tellumn's wife. She and her children are held in their home by Jason's team as leverage in its attempt to obtain the lawyer's help reaching Crisstof.",
+            "id": "keetra",
+            "name": "Keetra",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jorvren"
+            ],
+            "description": "The true identity of Doc, Phoenix's medic. He is Jevara Da'Chelic's brother and formerly worked on the biodrone project, a history he concealed after trying to leave the operation. Jason keeps him for the immediate mission while postponing a final decision about his standing.",
+            "id": "dr-jorvren-ma-fredich",
+            "name": "Dr. Jorvren Ma'Fredich",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jevara"
+            ],
+            "description": "A key participant identified in Crisstof's evidence about the manufactured uprisings. She is Jorvren Ma'Fredich's sister and knowingly accepted payment to advance the species-specific biodrone program.",
+            "id": "dr-jevara-da-chelic",
+            "name": "Dr. Jevara Da'Chelic",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A syndicate figure connected to an earlier Omega Force conflict. The recovered evidence shows that he and other syndicate members concealed and laundered money for the Council faction's research operation.",
+            "id": "bondrass",
+            "name": "Bondrass",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A ConFed Intelligence operative assigned to Special Operations. He restrains Steader during Kellea's interrogation, controls him through leverage, and questions Kellea in an effort to identify Omega Force.",
+            "id": "agent-alux",
+            "name": "Agent Alux",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Phoenix's two autonomous reconnaissance drones. When the damaged Diligent cannot be steered by a person, Jason considers adapting Number Two to operate the frigate's propulsion and attitude controls.",
+            "id": "number-two",
+            "name": "Number Two",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Scleesz"
+            ],
+            "description": "A ConFed councilman commanding the battleship that intercepts the damaged Phoenix after Kellea's rescue. Instead of opening fire on the stranded ship, he contacts Jason and offers assistance to Omega Force.",
+            "id": "councilman-scleesz",
+            "name": "Councilman Scleesz",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B013INWI4Q",
+            "type": "community"
+          }
+        ],
+        "work": "the-enemy-within"
+      }
+    },
     "the-english-patient": {
       "characters": {
         "characters": [
