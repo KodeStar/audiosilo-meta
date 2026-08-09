@@ -944,6 +944,357 @@
       }
     },
     "rangers-dawn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old Ranger entering the Academy after the members of her former team go their separate ways. Her classes are Constellation of the Healer and Pyromancer.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elaine's former Ranger teammate and combat mentor. Newly retired from active service, Artemis is establishing the School of Sorcery and Spellcraft while also taking a part-time teaching position at Ranger Academy.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Toxic"
+            ],
+            "description": "Elaine's former Ranger teammate, newly elevated to the Sentinel title Toxic.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's former team leader, now departing with a new Ranger team as the old group separates.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ranger from Elaine's former team who is preparing to leave with a different assignment. He and Elaine part on good terms as their shared team dissolves, leaving both of them to move into new duties as her Academy training begins.",
+            "id": "kallisto",
+            "name": "Kallisto",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Elaine's former Ranger teammates. He says goodbye to her at the convocation gathering as their old team separates and its members move toward different duties, closing the period in which they served together.",
+            "id": "maximus",
+            "name": "Maximus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Sentinel and Academy instructor who conducts the incoming recruits from Ranger headquarters to the island where they will train. His role places him among the senior figures responsible for their arrival and preparation.",
+            "id": "ocean",
+            "name": "Ocean",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ranger Academy's senior drill instructor. Quintus explains the severe training ahead, makes clear that recruits can quit for comfort and payment, and acknowledges Elaine's existing Ranger rank before the main ordeal begins.",
+            "id": "quintus",
+            "name": "Quintus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foremost Sentinel and the authority on the Academy island. After protecting Elaine from an intruding trainee, Knight works with her to define how her healing oath will apply during dangerous training and urges her to strengthen her combat class.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Academy instructor who distributes Elaine's individualized course schedule after she completes the main attrition phase.",
+            "id": "jason",
+            "name": "Jason",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel responsible for flight instruction at Ranger Academy. He gives Elaine temporary weight reduction for practice and keeps a trainee from falling.",
+            "id": "sentinel-sky",
+            "name": "Sentinel Sky",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The operator who controls the Pegasus during Knight's westward expedition.",
+            "id": "skye",
+            "name": "Skye",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jason"
+            ],
+            "description": "A Sentinel revealed to be the Academy instructor Elaine previously knew as Jason.",
+            "id": "magic",
+            "name": "Magic",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel who teaches Academy recruits how Rangers should respond to dangerous creatures. His framework covers tolerating, driving off, placating, or killing a threat, with escalation to a Sentinel when ordinary measures are insufficient.",
+            "id": "hunting",
+            "name": "Hunting",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Academy trainee with an explosive combat style. Lava saves Elaine from being crushed during a Coliseum exercise, then disputes her authority even as the group continues following her battlefield plan.",
+            "id": "lava",
+            "name": "Lava",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The retiarius behind the adventurers who pursued Elaine, acting on his assertion that she was promised to him. During a Ranger execution in the Coliseum, his public threat frees Elaine to act within her oath, and she kills him with fire.",
+            "id": "elaines-intended-husband",
+            "name": "Elaine's intended husband",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Elaine's internal guide in the soul-library during her class advancement. The Librarian shares her thoughts and helps compare class paths rather than accompanying her in the outside world.",
+            "id": "librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman Kallisto introduces to Elaine during a celebration with old friends. Jacqueline accepts Elaine's invitation to meet the following evening, giving the newly promoted Sentinel a rare personal engagement outside her official duties.",
+            "id": "jacqueline",
+            "name": "Jacqueline",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pretty specialist and beautician who lengthens and styles Elaine's hair while helping her prepare for a date.",
+            "id": "albina",
+            "name": "Albina",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A healer whom Ocean identifies as a possible match for Elaine in the specialized work of confronting plagues. His reputation makes him an important comparison as the Sentinels consider the kinds of large-scale assignments Elaine may undertake.",
+            "id": "caecilius",
+            "name": "Caecilius",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Sentinels, who appears at Elaine's door after Jacqueline's attack. Elaine immediately recognizes that he is also a vampire, placing a powerful authority figure from her own organization inside the threat she has just discovered.",
+            "id": "sentinel-leader",
+            "name": "Sentinel leader",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clinic healer and teacher whose apprentices know Elaine through her medical manuscripts. Marcus welcomes her to treat patients and answer questions, then tells her that Caecilius has gone to Deva to address a coughing illness.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Deva's governor, approached after Elaine determines that the town's illness spreads between people. He agrees to organize the civic side of a town-wide treatment effort while Elaine coordinates the healers.",
+            "id": "governor-gaius",
+            "name": "Governor Gaius",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bare-knuckle adventurer hired to escort Elaine on her return from Deva. She heals his old fractures as part of their arrangement, restoring injuries that had persisted from his fighting career before he joins the three-person group.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A knife fighter considered for Elaine's hired escort. The loss of an arm had reduced her professional standing, but Elaine restores the limb and enables her to work again at her former rank as part of the return journey.",
+            "id": "cassia",
+            "name": "Cassia",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger hired as part of Elaine's three-person escort. He travels with Alpha, a fire-breathing proto-avis companion, and gives the party a ranged specialist while they search for a merchant vessel bound for the capital.",
+            "id": "atticus",
+            "name": "Atticus",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The mist-using captain of the slavers who attacked Elaine's ship. During a negotiated withdrawal, he launches a concealed harpoon strike from behind, turning the parley into another attempt to kill her.",
+            "id": "pirate-captain",
+            "name": "Pirate captain",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Neptune's commercially capable daughter, who recognizes the purpose of Elaine's market stall and asks to study healing. She begins by helping run the stall while Elaine teaches her diagnosis, efficient mana use, and basic healing elements.",
+            "id": "autumn",
+            "name": "Autumn",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fruit merchant working beside Elaine's healing stall and the father of Autumn. His nearby business brings the prospective student into Elaine's orbit and gives him a parental interest in any lasting training arrangement.",
+            "id": "neptune",
+            "name": "Neptune",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hunting's highly intelligent abelisaurus companion and lifelong bonded partner. Their shared bond changes both of them, making Catastrophe more energetic and less governed by instinct while also strengthening Hunting physically.",
+            "id": "catastrophe",
+            "name": "Catastrophe",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The high-level mage who leads the Adventurer's Guild office Elaine approaches. The Guildmaster hears her requested penalties for the escort that failed her and handles her proposed bounty for a rare companion.",
+            "id": "adventurers-guildmaster",
+            "name": "Adventurer's Guildmaster",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A person Elaine lost before this book and the namesake of her healing oath. That continuing obligation shapes when and how Elaine must heal, making Lyra's memory part of every attempt to reconcile Ranger danger with a healer's duties.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fallen Ranger whom Elaine remembers as a personal loss.",
+            "id": "origen",
+            "name": "Origen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sixteen-year-old human serving as a Valkyrie squire. After losing a tournament bout, she receives an enchanted axe and further support from her mentor just as the Valkyrie order prepares to meet a vast goblin force at Wabi Pass.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's Valkyrie mentor, who trains the young squire and equips her before the defense of Wabi Pass. She also directs Iona to advance her classes without waiting for formal permission as the approaching battle leaves no time for ordinary procedure.",
+            "id": "the-perpetual",
+            "name": "the Perpetual",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Valkyrie order and commander of its defense at Wabi Pass. She commits the available Valkyries, squires, and companions to hold the narrow route while the order seeks reinforcements against a much larger goblin horde.",
+            "id": "valkyrie-grand-master",
+            "name": "Valkyrie Grand Master",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two figures who appear to Iona before the battle at Wabi Pass. They tell her that Lux is dead and grant her the ability to perceive system information and to understand and speak every language, transforming what she can know and communicate.",
+            "id": "selene-and-lunaris",
+            "name": "Selene and Lunaris",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09CF14FKD",
+            "type": "community"
+          }
+        ],
+        "work": "rangers-dawn"
+      },
       "recaps": {
         "ending": "Elaine closes the main arc securely established as the Dawn Sentinel. Deva's plague is cured, the immediate pirate threat is broken, and her first solo mission is judged successful despite criticism of her preparation and tactics. Ocean is sent after the surviving pirates, while professional consequences for Brutus, Cassia, and Atticus remain undecided. Elaine now runs a public healing stall, teaches at both Ranger Academy and Artemis's school, and has formally taken Autumn as an apprentice. Caecilius may join future plague responses, Kallisto will organize Elaine's major missions, and her search for a thunderbird has begun. Toxic continues his ant-war poison project without her help. The final handoff moves to Iona at Wabi Pass. Selene and Lunaris grant her system-sight and universal language abilities, and she survives a battle that kills her mentor and most of the Valkyrie force. A caster from the School of Sorcery and Spellcraft saves the few defenders left. Iona becomes the Dusk, but the devastated order expects to lose its holdings and political position.",
         "in_short": "After her old Ranger team separates, Elaine survives Ranger Academy's brutal training, develops her fire class into Ranger Mage, Radiance, and is unexpectedly elevated to the Dawn Sentinel. She refuses to assist Toxic's plan to exterminate the ant-like enemy species, but proves her value as a healer and combatant. Her first independent mission organizes a successful town-wide cure for Deva's contagious plague. On the return voyage, her hired escorts submit to pirate slavers, forcing Elaine to reveal her Sentinel identity, free the captives, survive a harpoon through her torso, and kill the pirate captain. Back home, she opens a market clinic, takes Autumn as an apprentice, joins Artemis as a part-time teacher, gains Kallisto as an organizer, and begins searching for a thunderbird companion. The final chapter follows Iona through the catastrophic defense of Wabi Pass. Her mentor dies and the Valkyrie order is nearly destroyed, but Iona survives, receives powerful blessings, and becomes the Valkyrie called the Dusk.",
