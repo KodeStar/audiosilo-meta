@@ -558,6 +558,217 @@
         "work": "moonraker"
       }
     },
+    "moonveiled-journeys": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human healer stranded underground after the loss of the dwarven expedition's leader. Elaine takes command of the four surviving dwarves, organizes a defensible camp, and commits the group to finding their missing companion once they have recovered.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The dwarven leader whose death immediately precedes the opening of the book. Her absence leaves Elaine and four surviving dwarves isolated in dangerous mine passages and forces the group to establish new leadership and priorities.",
+            "id": "lula",
+            "name": "Lula",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A missing dwarf from the stranded expedition. Elaine's group plans to search for her after recovering from the expedition's losses.",
+            "id": "toke",
+            "name": "Toke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven healer who can purify food and water. Ned initially challenges Elaine's authority, but his magic helps make the group's underground camp viable while they recover from the expedition's losses.",
+            "id": "ned",
+            "name": "Ned",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shield-bearing dwarven fighter who holds the front line for the stranded group during its retreat from a powerful slime.",
+            "id": "drin",
+            "name": "Drin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven spellaxe who uses gravity magic. Fik supports Elaine's decision to withdraw from an overwhelming slime.",
+            "id": "fik",
+            "name": "Fik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarven scout responsible for guiding the survivors through the mines. Glifir creates a mist map that records explored routes and gives the group its best chance of retracing its path or finding a way out.",
+            "id": "glifir",
+            "name": "Glifir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragon whose battle above the mine produces violent tremors and reversals of gravity.",
+            "id": "lun-kat",
+            "name": "Lun'Kat",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The dwarven patrol leader who finds Elaine's group near traps designed to ignore dwarves. Yurok escorts the survivors through layered defenses and into a dwarven city, ending their immediate isolation in the mines.",
+            "id": "yurok",
+            "name": "Yurok",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bronze Commander assigned to Elaine's protection detail inside the dwarven city.",
+            "id": "thorin",
+            "name": "Thorin",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Silver Commander responsible for city security and the deployment of healers. Korun places Elaine under guard, explains the continuing campaign of orc sabotage, and asks her to treat the city's wounded.",
+            "id": "korun",
+            "name": "Korun",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level dwarven war mage who mistakes Elaine's arrival at the military infirmary for an attack. Her defensive response nearly kills Elaine before she recognizes the error.",
+            "id": "dwarven-radiance-mage",
+            "name": "Dwarven Radiance Mage",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's guide within soul-space during her second-class decision. The Librarian explains the available paths and advises Elaine as she weighs the Radiance evolutions open to her.",
+            "id": "librarian",
+            "name": "Librarian",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shapeshifter linked to murders in the dwarven city after copying its victims. Elaine concludes that it may also have killed and replaced Ned, though that connection remains her inference.",
+            "id": "ooze-mirror-changeling",
+            "name": "Ooze-Mirror Changeling",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An immortal elf mage whose repertoire includes lava, sand, sound, and glass magic. Serondes welcomes Elaine at the party's camp, accepts her healing for a broken arm, and gives her a glass rose in payment.",
+            "id": "serondes",
+            "name": "Serondes",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immortal elf ranger affiliated with the Tempest Shard Council. Aegion is an exceptionally long-range fighter whose varied magic includes wind, lightning, and spores, and he shares a close bond with Cordamo.",
+            "id": "aegion",
+            "name": "Aegion",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immortal elf warrior skilled with mirages, ooze, and protective mantles. Awarthril tests whether Elaine can penetrate an illusion, restrains allies during the demonstration, and provides practical defense for the camp.",
+            "id": "awarthril",
+            "name": "Awarthril",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Awarthril's large wolf companion and an active member of the elven party. Kiyaya assists her bonded elf during the camp's display of concealment and restraint, marking the pair as a coordinated team.",
+            "id": "kiyaya",
+            "name": "Kiyaya",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aegion's winged couatl companion at the elven camp.",
+            "id": "cordamo",
+            "name": "Cordamo",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A centaur archer found gravely wounded while predators close in. Elaine restores him, and Tyrus explains that a hydra destroyed his herd, giving the traveling party a new and immediate threat to address.",
+            "id": "tyrus",
+            "name": "Tyrus",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous monster that destroyed Tyrus's herd and has continued hunting people. Elaine's traveling companions divert from their Shimagu assignment to track and eliminate it.",
+            "id": "hydra",
+            "name": "Hydra",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bound servant of the God of Light displayed as a living chandelier in Lun'Kat's lair. Rostellio retains a form of Vision that penetrates the dragon's layered illusions, allowing him to observe the prison around him despite his bindings.",
+            "id": "rostellio",
+            "name": "Rostellio",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09SNZJ74S",
+            "type": "community"
+          }
+        ],
+        "work": "moonveiled-journeys"
+      }
+    },
     "moreta": {
       "characters": {
         "characters": [
