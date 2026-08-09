@@ -14,7 +14,7 @@ body:
     id: record
     attributes:
       label: Record
-      description: The path, slug, or a link to the record you want to correct.
+      description: A link to the record on meta.audiosilo.app (easiest - copy the page URL), or its reference path as below. Note records are stored many to a pack file, so the path is a reference, not a file location.
       placeholder: data/works/ha/harry-potter-and-the-philosophers-stone-j-k-rowling/recordings/stephen-fry.json
     validations:
       required: true
