@@ -1,12 +1,15 @@
-# Pack-file storage spec (draft, 2026-07-30)
+# Pack-file storage spec (2026-07-30)
 
 Design spec for migrating audiosilo-meta's data tree from file-per-entity to
 **range-packed files** - many entities per JSON file, adaptively split by slug
 range. Companion to [SCALE-RESEARCH.md](SCALE-RESEARCH.md) (the measurements and
-the decision rationale, incl. the addendum). Status: **SIGNED OFF by Chris 2026-07-31** - the validation spike ran
-(see "Validation spike results" below + [PACK-SPIKE-RESULTS.md](PACK-SPIKE-RESULTS.md))
-and the open questions are resolved in "Decisions" at the end. Implementation
-may start. Numbers below come from the real tree at 9,517 works.
+the decision rationale, incl. the addendum). Status: **IMPLEMENTED** (`pkg/pack`,
+with `cmd/metamigrate` having performed the one-off conversion) - signed off by
+Chris 2026-07-31 after the validation spike
+(see "Validation spike results" below + [PACK-SPIKE-RESULTS.md](PACK-SPIKE-RESULTS.md));
+the open questions are resolved in "Decisions" at the end. References to the
+"current" per-record files below describe the pre-migration layout this spec
+converted. Numbers below come from the real tree at 9,517 works.
 
 ## Goals
 

@@ -18,8 +18,8 @@ body:
     id: work_ref
     attributes:
       label: The work
-      description: Link to the existing work, or its slug / path in data/works/, so we know what this narrates.
-      placeholder: data/works/ha/harry-potter-and-the-philosophers-stone-j-k-rowling/work.json
+      description: The existing work's slug, or a link to it on meta.audiosilo.app, so we know what this narrates.
+      placeholder: harry-potter-and-the-philosophers-stone-j-k-rowling
     validations:
       required: true
 
