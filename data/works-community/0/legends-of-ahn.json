@@ -3611,6 +3611,359 @@
         "work": "life-reset-conquest"
       }
     },
+    "life-reset-evp-environment-vs-player": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dread Totem"
+            ],
+            "description": "The chief of GreenPiece and ruler of Goblin's Gorge. With the settlement rebuilding after an ogre attack, Oren promotes its resident ogre to serve as his second and prepares the clan to intercept a threatening party of travelers.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Rhinorn"
+            ],
+            "description": "The resident ogre whom Oren promotes into an Ogre Gladiator boss. Rhinorn is a formidable fighter who demands combat, food, and recognition, and Oren must force his submission before naming him second in command.",
+            "id": "rhinorn-bloodore",
+            "name": "Rhinorn Bloodore",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hobgoblin scout and Zuban's partner. She warns Oren that six travelers are nearing Goblin's Gorge, including an especially dangerous armored dwarf, prompting an immediate military response.",
+            "id": "ashlazaria",
+            "name": "Ashlazaria",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of GreenPiece's hobgoblin scouts. At the opening of the book she is away from Goblin's Gorge, escorting the expedition responsible for the clan's coal-mining effort.",
+            "id": "yulli",
+            "name": "Yulli",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An outside technician examining Mr. Berman's condition. Tom detects an unusual correspondence between the client's neural activity and Neo's non-player-character stream, along with cerebral connectivity measured at 99 percent.",
+            "id": "tom-wilkins",
+            "name": "Tom Wilkins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The distant employer of a high-level traveler party searching for Oren. When the dwarf Ragnar escapes GreenPiece's ambush, Vatras receives confirmation that Oren is alive and has been located in the Deadlands.",
+            "id": "vatras",
+            "name": "Vatras",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A goblin healer and acolyte who fights in Oren's ambush against Vatras's search party. Bek is one of only three members of the twenty-three-strong GreenPiece war party to survive the battle.",
+            "id": "bek",
+            "name": "Bek",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A GreenPiece armorer who also serves as a fighter. He joins Oren's ambush against the travelers and is killed while closing with the opposing elven scout.",
+            "id": "vrick",
+            "name": "Vrick",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hobgoblin lieutenant in GreenPiece's fighting force. He takes part in the clan's costly ambush against Vatras's search party and is killed by the dwarf tank Ragnar.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-forty dwarf tank serving in Vatras's search party. He kills Bob, survives Oren's ambush, and escapes by teleport after confirming that GreenPiece's chief is the target Vatras has been seeking.",
+            "id": "ragnar",
+            "name": "Ragnar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Oren's virtual-intelligence companion and trusted adviser. As GreenPiece anticipates a larger attack, Vic supports Bek's proposal to seek Eternal Night, a blessing intended to strengthen shadow-touched defenders and hinder intruders.",
+            "id": "vic",
+            "name": "Vic",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hobgoblin noble whom Oren recruits to improve GreenPiece's administration and production. His strong managerial talents come with a dangerous compulsion: he must consume a living humanoid brain each week to remain rational.",
+            "id": "kaedric",
+            "name": "Kaedric",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin hunter who is emotionally close to Oren. She stays beside him during his crisis over the expected invasion and supports him as he commits GreenPiece to an ambitious defensive plan.",
+            "id": "tika",
+            "name": "Tika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tank fighter among GreenPiece's fallen defenders. Oren restores Kilpi through the settlement cemetery while rebuilding the clan's depleted military strength after the traveler battle.",
+            "id": "kilpi",
+            "name": "Kilpi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous deity-like power imprisoned beneath the valley. Nihilator offers Oren aid through darkness and runes, but demands additional worship sites and binds him with the Rune of Binding in return for its assistance.",
+            "id": "nihilator",
+            "name": "Nihilator",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Superwolf 23"
+            ],
+            "description": "A contact who urgently asks to meet Oren under the handle Superwolf 23. Oren refuses at first, but Vic sends Tal the settlement's coordinates without permission because he believes outside intervention is necessary.",
+            "id": "tal",
+            "name": "Tal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Raygon"
+            ],
+            "description": "The contact previously known as Tal and Superwolf 23 is Oren's university friend and a level-232 Neo administrator. He confines Oren in an administrator-controlled space so he can confront the dangerous changes in Oren's memory and brain activity.",
+            "id": "tal-weissman",
+            "name": "Tal Weissman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human player identity Oren remembers after Tal restores his suppressed understanding of the betrayal that left him trapped in Neo.",
+            "id": "arladen",
+            "name": "Arladen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A goblin worker with potential as a chemist. Rather than assigning her to kitchen work, Oren has her gather quarry material and reserves her abilities for the clan's future chemistry needs.",
+            "id": "guba",
+            "name": "Guba",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's hobgoblin constructor and Ashlazaria's partner. He identifies a critical obstacle to Oren's building plans: the proposed advanced structures require glass, while the research center also needs silver unavailable in the valley.",
+            "id": "zuban",
+            "name": "Zuban",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A player fighter who joins Oren's expedition to an abandoned ogre fort. Oren promises him loot and rewards for helping seize the site and reach an altar connected to Nihilator's quest.",
+            "id": "malkier",
+            "name": "Malkier",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An assassin-style player who agrees to accompany Oren on the ogre-fort expedition. Her cooperation comes with a condition: Oren must face her in a deathmatch after the raid.",
+            "id": "hoshisu",
+            "name": "Hoshisu",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly recruited monster-race player with exceptional scientific problem-solving ability. She selects a catfolk avatar, but the arrival process instead forces her into a goblinoid body tied to Goblin's Gorge.",
+            "id": "raystia",
+            "name": "Raystia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Boulder Belly Clan priest freed from demonic imprisonment at the Ogre Fort. After recovering his holy amulet, he stabilizes the other dwarf captives and temporarily joins Oren's party to seek the source of the corruption.",
+            "id": "dwarf-priest",
+            "name": "Dwarf Priest",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally powerful demon bound to the Ogre Fort shrine and master of its possessed sentinel. She restores the guardian's strength, charms Oren and Malkier, and consumes Bek's soul during the confrontation.",
+            "id": "ogre-fort-demoness",
+            "name": "Ogre Fort Demoness",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dark priest who returns to Goblin's Gorge with Oren after the Ogre Fort expedition. Kuzai leaves a detached shadow behind at the fort to maintain its shrine while he joins GreenPiece in person.",
+            "id": "kuzai",
+            "name": "Kuzai",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oren's demon-wolf companion. Tempest accompanies the return from the Ogre Fort and helps haul the recovered equipment, plow, and ogre totem piece back to Goblin's Gorge.",
+            "id": "tempest",
+            "name": "Tempest",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's advanced goblin cook. He develops a special worm dish that grants resistance to cold and fire, giving Oren a way to support workers and future recruits with useful food effects.",
+            "id": "gandork",
+            "name": "Gandork",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "GreenPiece's advanced goblin export worker. Oren assigns her to operate the dimensional trade orb from the export office and manage the settlement's resource exchanges.",
+            "id": "trillian",
+            "name": "Trillian",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the four-player Mob Squad and a goblin-eared elf. She uses shackles to capture two vegipygmies alive for tasks benefiting GreenPiece and its shrine.",
+            "id": "misa-gavrilu",
+            "name": "Misa Gavrilu",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bugbear fighter in Misa Gavrilu's four-player Mob Squad. He assists the group in capturing live vegipygmies for GreenPiece and is introduced as one of the settlement's prospective player allies.",
+            "id": "fox",
+            "name": "Fox",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Riley"
+            ],
+            "description": "A dwarf-goblin member of the Mob Squad. By sacrificing a captive at Nihilator's shrine, Riley becomes a shadow-touched priest and gains both healing magic and an area-debuff spell.",
+            "id": "riley-stonefist",
+            "name": "Riley Stonefist",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A part-dragon fighter with substantial real-world combat training. Oren hires him to train GreenPiece's soldiers for four hours each day in exchange for magical weapons and later clan rewards.",
+            "id": "nero-santo-drago",
+            "name": "Nero Santo Drago",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin lumberjack whose death exposes deliberate sabotage within GreenPiece. Oren finds that the saw axle involved in Woody's fatal workplace accident had been intentionally weakened.",
+            "id": "woody",
+            "name": "Woody",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Vatras's high-level mage lieutenant in the second assault on GreenPiece. His light aura suppresses Oren's darkness-based defenses and protects the disciplined force advancing through the settlement.",
+            "id": "big-pill",
+            "name": "Big Pill",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Vatras's personal assassin and a high-level dual-sword fighter. He supervises the second-wave recruits and kills two attackers who consider accepting Oren's offer to defect.",
+            "id": "hiroku",
+            "name": "Hiroku",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07HYBGK8D",
+            "type": "community"
+          }
+        ],
+        "work": "life-reset-evp-environment-vs-player"
+      }
+    },
     "life-reset-hobnobbing": {
       "characters": {
         "characters": [
