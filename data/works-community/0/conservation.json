@@ -1609,6 +1609,217 @@
       }
     },
     "convergence": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fugitive wizard with little formal training, Kazimir has spent six years evading law enforcement and armed hunters since Sarah was killed. After surviving an ambush in Indiana, he continues west with limited money, a damaged vehicle, and a conviction that the return of magic could destroy the world he knows.",
+            "id": "kazimir-wolfe",
+            "name": "Kazimir Wolfe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A recently bereaved dog compelled to wait for Kazimir outside a Missouri diner. Duke needs protection after his owner dies, and the unexplained command driving him to find and warn Kazimir suggests that their meeting is not accidental.",
+            "id": "duke",
+            "name": "Duke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman Kazimir knew as his aunt and guardian. Sarah taught him little about magic before she was murdered. Her death marks the beginning of his long life as a wanted fugitive.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient Babylonian wizard spirit who speaks through Duke. Marduk says Kazimir's power drew him across time and space so that he could offer training and guidance. He and Duke are separate presences sharing the dog's body after Marduk entered that host by accident.",
+            "id": "marduk",
+            "name": "Marduk",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Special Agent Singer"
+            ],
+            "description": "An FBI special agent who has encountered Kazimir's case before. Michelle follows forensic evidence from the Indiana ambush and recognizes signs that one armed group tried to seize him while another intervened, giving her reasons to look beyond his fugitive status.",
+            "id": "michelle-singer",
+            "name": "Michelle Singer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Judith Thompson",
+              "Judy"
+            ],
+            "description": "Duke's elderly owner, found dead at her home after Duke seeks out Kazimir. Her will identifies her as Judith Thompson and sets out arrangements for Duke's future care, forcing Kazimir to decide what responsibility he will take for the newly orphaned dog.",
+            "id": "judith-robinson",
+            "name": "Judith Robinson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the two people Judith names in her will to care for Duke after her death. Janice shares that intended responsibility with her husband, Jerry, although Duke has already attached himself to Kazimir before the arrangement can take effect.",
+            "id": "janice-kozlowski",
+            "name": "Janice Kozlowski",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the two people Judith names in her will to assume responsibility for Duke. Jerry and his wife, Janice, are designated to receive money for the dog's care, even as Duke insists that his place is now with Kazimir.",
+            "id": "jerry-kozlowski",
+            "name": "Jerry Kozlowski",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mike"
+            ],
+            "description": "A former New Zealand Army major serving as a Team Draco field operative. Mikeare investigates why another covert team broke surveillance orders and died while protecting Kazimir, a question that may place him among Kazimir's unknown allies rather than his hunters.",
+            "id": "mikeare-henderson",
+            "name": "Mikeare Henderson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Isabel"
+            ],
+            "description": "A former Mexican Federal Police intelligence analyst and Mikeare Henderson's partner in Team Draco. Zoraida helps redirect their covert investigation toward both Kazimir and the hostile organization pursuing him after a friendly team dies in the Indiana ambush.",
+            "id": "zoraida-martinez",
+            "name": "Zoraida Martinez",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The two-person covert unit whose Yukon interrupts the Indiana attempt to capture Kazimir. Both members die in the firefight after disregarding surveillance-only instructions, and their choice to defend him provides the first evidence that an organized faction wants him alive and free.",
+            "id": "team-cobra",
+            "name": "Team Cobra",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Medjay knight sent from Egypt in the year 321 to find and protect a wizard. Armed, disciplined, and wholly unfamiliar with modern life, Macarius accepts Kazimir as the likely subject of his mission even though neither man knows who sent him or why he arrived in this era.",
+            "id": "macarius",
+            "name": "Macarius",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young knight and former wizard's apprentice sent from Gaul in 497. Giselle arrives exhausted but heavily armed, explaining that her mistress dispatched her to help wizards resist the Convergence, a feared collision between Earth and the Nether.",
+            "id": "giselle",
+            "name": "Giselle",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Josh"
+            ],
+            "description": "The sole survivor among three armed men who attack Kazimir and Giselle in a rainy alley. Giselle spares Joshua after killing his companions, but he sees their distinctive RV and records part of its plate, leaving him able to identify the travelers later.",
+            "id": "joshua-ellington-fordham",
+            "name": "Joshua Ellington Fordham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A violent restaurant patron traveling with several armed guards and a blonde companion whom he abuses. Macarius challenges his conduct despite Kazimir's need for secrecy, provoking a threat that places the group in immediate danger.",
+            "id": "slicky-boy",
+            "name": "Slicky Boy",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kazimir's former girlfriend from a Colorado ski resort. She disappears shortly after he flees men he believes are investigators and is later found murdered. Her fate convinces him that the people hunting him will target anyone who becomes close to him.",
+            "id": "alicia-roberts",
+            "name": "Alicia Roberts",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy Asheville artifact broker who operates Foster Art and Antiquities after leaving wealth management. Kazimir suspects Fleming deals in stolen objects and holds the ancient amulet Marduk urgently wants recovered, but the broker's security makes a direct burglary dangerous.",
+            "id": "r-philip-fleming",
+            "name": "R. Philip Fleming",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Azib"
+            ],
+            "description": "A djinn from the Nether released when Kazimir applies magic to Marduk's amulet. Aziberahatahumundi recognizes Marduk's name and reacts with fear before withdrawing into the object, leaving his history, intentions, and connection to the wizard spirit uncertain.",
+            "id": "aziberahatahumundi",
+            "name": "Aziberahatahumundi",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader directing Team Draco as the Order prepares an armed trap at the Ohio mound. Annie authorizes Mikeare and Zoraida to use deadly force and accept the risk of public exposure in order to reach and protect Kazimir.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An armed organization that blocks both approaches to the Ohio mound and deploys a large force to seize Kazimir alive.",
+            "id": "the-order",
+            "name": "The Order",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09ZZ8VMKL",
+            "type": "community"
+          }
+        ],
+        "work": "convergence"
+      },
       "recaps": {
         "ending": "At the Ohio mound, the Order ambushes Kazimir's party and overturns the RV, injuring Giselle and Macarius. Mikeare Henderson and Zoraida Martinez force their way through the attackers and help the group escape, although Mikeare is badly bruised by stopped bullets and Zoraida is shot in the thigh. Kazimir destroys the Order's clay vessel, then learns the portal has opened at a displaced endpoint. He, Duke, and Aziberahatahumundi reach the breach, kill a smaller Nether creature, and collapse the opening as a much larger creature tries to cross. The portal is closed, but it was not the Convergence, and one or more winged creatures appear to have entered Earth first. The Order remains active and is now linked to the deaths of Kazimir's parents, Sarah, and Alicia. The RV and its incriminating contents are destroyed, leaving the surviving party injured, exposed, and reliant on Team Draco's jeep. Michelle Singer remains a covert contact, while Sarah's motives, the true Convergence, and the concealed history between Marduk and Aziberahatahumundi remain unresolved.",
         "in_short": "Fugitive wizard Kazimir Wolfe survives an attempted capture and joins forces with Duke, a talking dog who hosts the ancient spirit Marduk. Time-displaced knights Macarius and Giselle arrive to help prevent the Convergence, while FBI agent Michelle Singer becomes a covert source and Team Draco tracks the organization hunting him. Evidence connects Kazimir's lifelong persecution to stolen magical artifacts and the deaths of his parents, Sarah, and his former girlfriend Alicia. The party recovers Marduk's amulet, releasing the djinn Aziberahatahumundi, whose knowledge leads them to an Ohio mound where the Order is opening a Nether portal. The Order overturns their RV, but Team Draco intervenes. Kazimir reaches the displaced breach, kills one creature, and collapses the portal against a larger one. The breach is not the Convergence, winged creatures may already have escaped, and the surviving group ends the book injured, exposed, and without its RV.",
