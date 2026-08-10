@@ -3885,6 +3885,10 @@
             {
               "asin": "B002V1J9EE",
               "region": "us"
+            },
+            {
+              "asin": "B0BZT3MFR4",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1o6K0qjXcL.jpg",
@@ -3901,6 +3905,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1J9EE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BZT3MFR4",
               "type": "libex-import"
             }
           ],
@@ -8377,6 +8386,112 @@
         }
       ],
       "title": "Scary Noises"
+    },
+    "scary-smart": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "mo-gawdat"
+      ],
+      "genres": [
+        "history",
+        "science",
+        "technology"
+      ],
+      "id": "scary-smart",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mo-gawdat-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1529077648",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61SkVGsS1+L.jpg",
+          "id": "mo-gawdat-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mo-gawdat"
+          ],
+          "publisher": "Bluebird",
+          "release_date": "2021-09-30",
+          "runtime_min": 680,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1529077648",
+              "type": "libex-import"
+            }
+          ],
+          "work": "scary-smart"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1529077648",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Scary Smart"
+    },
+    "scary-stories-audio-collection": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "alvin-schwartz"
+      ],
+      "genres": [
+        "childrens",
+        "education",
+        "fantasy",
+        "paranormal",
+        "short-stories"
+      ],
+      "id": "scary-stories-audio-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "george-irving-2019": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0062965824",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-k3JSF1tL.jpg",
+          "id": "george-irving-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-irving"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2019-09-10",
+          "runtime_min": 199,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0062965824",
+              "type": "libex-import"
+            }
+          ],
+          "work": "scary-stories-audio-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0062965824",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Scary Stories Audio Collection"
     },
     "scary-stories-to-keep-you-up-at-night": {
       "added_at": "2026-08-02",

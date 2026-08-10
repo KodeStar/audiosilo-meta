@@ -1993,6 +1993,10 @@
             {
               "asin": "B0036LNX9A",
               "region": "us"
+            },
+            {
+              "asin": "B0BZFPMV83",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81P5pxCs28L.jpg",
@@ -2009,6 +2013,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0036LNX9A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BZFPMV83",
               "type": "libex-import"
             }
           ],
@@ -4493,6 +4502,60 @@
       ],
       "title": "Booke of the Hidden"
     },
+    "booked": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "kwame-alexander"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships",
+        "poetry",
+        "sports"
+      ],
+      "id": "booked",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kwame-alexander-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01DTX925S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71P0WdQiyyL.jpg",
+          "id": "kwame-alexander-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kwame-alexander"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2016-04-06",
+          "runtime_min": 146,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01DTX925S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "booked"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01DTX925S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Booked"
+    },
     "booked-for-kidnapping": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4832,6 +4895,57 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0CBW5YV1X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Booked for Murder"
+    },
+    "booked-for-murder-jasmine-webb": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jasmine-webb"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery"
+      ],
+      "id": "booked-for-murder-jasmine-webb",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "khristine-hvam-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BRQZKFTZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71eLsqoLGVL.jpg",
+          "id": "khristine-hvam-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "khristine-hvam"
+          ],
+          "publisher": "Blueberry Books Press",
+          "release_date": "2023-01-06",
+          "runtime_min": 400,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BRQZKFTZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "booked-for-murder-jasmine-webb"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BRQZKFTZ",
           "type": "libex-import"
         }
       ],
@@ -5525,6 +5639,109 @@
         }
       ],
       "title": "Bookish Boyfriends"
+    },
+    "booklover": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "j-e-birk"
+      ],
+      "genres": [
+        "lgbtq",
+        "romance"
+      ],
+      "id": "booklover",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cooper-north-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1705299725",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810BA9TAwjS.jpg",
+          "id": "cooper-north-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cooper-north",
+            "tim-paige"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2021-06-01",
+          "runtime_min": 452,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705299725",
+              "type": "libex-import"
+            }
+          ],
+          "work": "booklover"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1705299725",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Booklover"
+    },
+    "bookmarked-for-death": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lorna-barrett"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery"
+      ],
+      "id": "bookmarked-for-death",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-campbell-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003VC711U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91dK259UQFL.jpg",
+          "id": "cassandra-campbell-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-campbell"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2010-08-03",
+          "runtime_min": 504,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003VC711U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bookmarked-for-death"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003VC711U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Bookmarked for Death"
     },
     "bookmarks-are-people-too": {
       "added_at": "2026-08-02",
@@ -6345,6 +6562,57 @@
       ],
       "title": "Books & Bewitchment"
     },
+    "books-can-be-deceiving": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jenn-mckinlay"
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "books-can-be-deceiving",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "allyson-ryan-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B013PWPXJ2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81g8ti-3QhL.jpg",
+          "id": "allyson-ryan-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "allyson-ryan"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2015-09-01",
+          "runtime_min": 443,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B013PWPXJ2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "books-can-be-deceiving"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B013PWPXJ2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Books Can Be Deceiving"
+    },
     "books-for-kids-misty-the-littlest-mermaid": {
       "added_at": "2026-08-01",
       "authors": [
@@ -6413,6 +6681,57 @@
         }
       ],
       "title": "Books for Kids: Misty the Littlest Mermaid"
+    },
+    "books-of-a-feather": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "kate-carlisle"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery"
+      ],
+      "id": "books-of-a-feather",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "susie-berneis-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01H0QBN0W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51RweGm9EdL.jpg",
+          "id": "susie-berneis-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "susie-berneis"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2016-06-21",
+          "runtime_min": 535,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01H0QBN0W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "books-of-a-feather"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01H0QBN0W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Books of a Feather"
     },
     "books-that-have-made-history-books-that-can-change-your-life": {
       "added_at": "2026-07-29",
@@ -6655,6 +6974,295 @@
         }
       ],
       "title": "Books That Have Made History: Books That Can Change Your Life"
+    },
+    "books-that-matter-the-city-of-god": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "the-great-courses",
+        "charles-mathewes"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "books-that-matter-the-city-of-god",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charles-mathewes-2016": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01M3ODH4V",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 84763,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 48199,
+              "start_ms": 84763,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 1818954,
+              "start_ms": 132962,
+              "title": "Lecture 1: Your Passport to The City of God"
+            },
+            {
+              "length_ms": 1968774,
+              "start_ms": 1951916,
+              "title": "Lecture 2: Who Was Augustine of Hippo?"
+            },
+            {
+              "length_ms": 1731048,
+              "start_ms": 3920690,
+              "title": "Lecture 3: The Sack of Rome, 410 A.D."
+            },
+            {
+              "length_ms": 1955724,
+              "start_ms": 5651738,
+              "title": "Lecture 4: Augustine’s Pagan and Christian Audience"
+            },
+            {
+              "length_ms": 1822674,
+              "start_ms": 7607462,
+              "title": "Lecture 5: The Problem of Suffering (Book 1)"
+            },
+            {
+              "length_ms": 1984702,
+              "start_ms": 9430136,
+              "title": "Lecture 6: The Price of Empire (Books 2–3)"
+            },
+            {
+              "length_ms": 1917922,
+              "start_ms": 11414838,
+              "title": "Lecture 7: Augustine’s Political Vision (Book 4)"
+            },
+            {
+              "length_ms": 1816358,
+              "start_ms": 13332760,
+              "title": "Lecture 8: Splendid Vices and Happiness in Hope (Book 5)"
+            },
+            {
+              "length_ms": 1980662,
+              "start_ms": 15149118,
+              "title": "Lecture 9: Public Religion in Imperial Rome (Books 6–7)"
+            },
+            {
+              "length_ms": 1939145,
+              "start_ms": 17129780,
+              "title": "Lecture 10: Who or What Is God? (Books 8–9)"
+            },
+            {
+              "length_ms": 1759004,
+              "start_ms": 19068925,
+              "title": "Lecture 11: Sacrifice and Ritual (Book 10)"
+            },
+            {
+              "length_ms": 1858061,
+              "start_ms": 20827929,
+              "title": "Lecture 12: Augustine’s Critique of Rome (Books 1–10)"
+            },
+            {
+              "length_ms": 1996405,
+              "start_ms": 22685990,
+              "title": "Lecture 13: Metaphysics of Creation and Evil (Book 11)"
+            },
+            {
+              "length_ms": 1844082,
+              "start_ms": 24682395,
+              "title": "Lecture 14: Fall of the Rebel Angels (Book 12)"
+            },
+            {
+              "length_ms": 1912906,
+              "start_ms": 26526477,
+              "title": "Lecture 15: Augustine and Original Sin (Book 13)"
+            },
+            {
+              "length_ms": 1997520,
+              "start_ms": 28439383,
+              "title": "Lecture 16: The Two Cities and the Two Loves (Book 14)"
+            },
+            {
+              "length_ms": 1862473,
+              "start_ms": 30436903,
+              "title": "Lecture 17: Augustine’s Scriptural History (Books 15–17)"
+            },
+            {
+              "length_ms": 1922287,
+              "start_ms": 32299376,
+              "title": "Lecture 18: Translating the Imperium (Book 18)"
+            },
+            {
+              "length_ms": 1884160,
+              "start_ms": 34221663,
+              "title": "Lecture 19: Happiness and Politics (Book 19)"
+            },
+            {
+              "length_ms": 1949826,
+              "start_ms": 36105823,
+              "title": "Lecture 20: Judgments, Last and Otherwise (Book 20)"
+            },
+            {
+              "length_ms": 1992783,
+              "start_ms": 38055649,
+              "title": "Lecture 21: Augustine’s Vision of Hell (Book 21)"
+            },
+            {
+              "length_ms": 1998124,
+              "start_ms": 40048432,
+              "title": "Lecture 22: Heaven: The Self Redeemed (Book 22)"
+            },
+            {
+              "length_ms": 1828757,
+              "start_ms": 42046556,
+              "title": "Lecture 23: The City of God as a Single Book"
+            },
+            {
+              "length_ms": 2012293,
+              "start_ms": 43875313,
+              "title": "Lecture 24: The City of God’s Journey Through History"
+            },
+            {
+              "length_ms": 34360,
+              "start_ms": 45887606,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pcz2VgqDL.jpg",
+          "id": "charles-mathewes-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-mathewes"
+          ],
+          "publisher": "The Great Courses",
+          "release_date": "2016-10-21",
+          "runtime_min": 765,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01M3ODH4V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "books-that-matter-the-city-of-god"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01M3ODH4V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Books That Matter: The City of God"
+    },
+    "books-that-matter-the-federalist-papers": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "the-great-courses",
+        "joseph-hoffmann"
+      ],
+      "genres": [
+        "history"
+      ],
+      "id": "books-that-matter-the-federalist-papers",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "professor-joseph-hoffmann-2020": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1629979198",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HXAVfcn1L.jpg",
+          "id": "professor-joseph-hoffmann-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "professor-joseph-hoffmann"
+          ],
+          "publisher": "The Great Courses",
+          "release_date": "2020-06-19",
+          "runtime_min": 399,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1629979198",
+              "type": "libex-import"
+            }
+          ],
+          "work": "books-that-matter-the-federalist-papers"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1629979198",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Books That Matter: The Federalist Papers"
+    },
+    "books-that-matter-the-prince": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "the-great-courses",
+        "william-landon"
+      ],
+      "genres": [
+        "classics",
+        "philosophy",
+        "politics"
+      ],
+      "id": "books-that-matter-the-prince",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "william-landon-2016": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01K4Z9I1M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UPRDxdFjL.jpg",
+          "id": "william-landon-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-landon"
+          ],
+          "publisher": "The Great Courses",
+          "release_date": "2016-08-19",
+          "runtime_min": 661,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01K4Z9I1M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "books-that-matter-the-prince"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01K4Z9I1M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Books that Matter: The Prince"
     },
     "bookshops-bonedust": {
       "added_at": "2026-08-02",
@@ -9438,6 +10046,58 @@
       ],
       "title": "Boomerangers"
     },
+    "boomsday": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "christopher-buckley"
+      ],
+      "genres": [
+        "comedy-humor",
+        "literary-fiction",
+        "politics"
+      ],
+      "id": "boomsday",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "janeane-garofalo-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5CSOI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JbIU87z0L.jpg",
+          "id": "janeane-garofalo-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "janeane-garofalo"
+          ],
+          "publisher": "Twelve",
+          "release_date": "2007-04-02",
+          "runtime_min": 619,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5CSOI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "boomsday"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V5CSOI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Boomsday"
+    },
     "boomslang": {
       "added_at": "2026-08-02",
       "authors": [
@@ -10090,6 +10750,58 @@
         }
       ],
       "title": "Boone"
+    },
+    "boones-lick": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "larry-mcmurtry"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "westerns"
+      ],
+      "id": "boones-lick",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "will-patton-2000": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UZKJRC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51TvDiULQoL.jpg",
+          "id": "will-patton-2000",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "will-patton"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2000-11-06",
+          "runtime_min": 394,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UZKJRC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "boones-lick"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UZKJRC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Boone's Lick"
     },
     "boot-bots": {
       "added_at": "2026-08-02",
@@ -12801,6 +13513,56 @@
         }
       ],
       "title": "Borderlander"
+    },
+    "borderlands-a-dci-ryan-mystery": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lj-ross"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "borderlands-a-dci-ryan-mystery",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-keeble-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07ZP9Z3QP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qfyGWL49L.jpg",
+          "id": "jonathan-keeble-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-keeble"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-12-09",
+          "runtime_min": 326,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07ZP9Z3QP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "borderlands-a-dci-ryan-mystery"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07ZP9Z3QP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Borderlands: A DCI Ryan Mystery"
     },
     "borderlands-ice-a-piece-of-the-south-russian-edition": {
       "added_at": "2026-08-02",
