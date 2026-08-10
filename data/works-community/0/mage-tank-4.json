@@ -2420,6 +2420,354 @@
       }
     },
     "mandate-of-heaven": {
+      "characters": {
+        "characters": [
+          {
+            "description": "One of the two moon goddesses served by Iona. Together with Lunaris, Selene anchors Iona's faith, priestly duties, and Valkyrie calling before the events of this volume begin.",
+            "id": "selene",
+            "name": "Selene",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two moon goddesses served by Iona. Together with Selene, Lunaris shapes Iona's religious commitments and the divine authority behind her work as a Valkyrie.",
+            "id": "lunaris",
+            "name": "Lunaris",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chimera elvenoid healer whose third class advances into Ancient Loremaster of Legend. Its library, storage, mapping, and movement abilities give her powerful new tools, though mana remains the practical limit on her largest healing efforts.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elaine's partner returns on Fenrir with an unnamed passenger. She is a Valkyrie whose demanding personal vow guides her actions.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's frost-wyvern companion carries her home with an unexpected passenger. His size, flight, and elemental abilities make him both transport and a formidable protector for the household.",
+            "id": "fenrir",
+            "name": "Fenrir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Sixth Legion, she has an upcoming private meeting with Elaine, who is attached to her legion.",
+            "id": "legata-katerina",
+            "name": "Legata Katerina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's ancient mentor is connected to her delayed military pay and remains a trusted adviser on unusual powers. At this point, his deeper identity and history are not yet explained.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage kitsune rescued from years of hunger and street survival in Sanguino. She knows illusion magic, distrusts unexpected kindness, and enters Iona's protection as a prospective squire while Elaine treats her accumulated injuries.",
+            "id": "nina",
+            "name": "Nina",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's phoenix companion uses manifested flame to help free and reassure Nina. Auri is an expressive member of the household whose fire makes her far more than a pet.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of Exterreri's Sentinels communicates through a distinctive thread network. She gives Elaine discreet operational instructions and coordinates with Legata Katerina while pursuing a wider assignment of her own.",
+            "id": "arachne",
+            "name": "Arachne",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of Ranger Team Gale, she takes custody of guards suspected of serving the Three Dragons Triad and immediately opens a corruption investigation, allowing Elaine to return her attention to healing and Nina's training.",
+            "id": "livia",
+            "name": "Livia",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A quartermaster who delivers Elaine's completed enchanted armor. The rune-linked equipment repairs itself and gives Elaine protection despite her lack of an armor skill.",
+            "id": "harper",
+            "name": "Harper",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Knight"
+            ],
+            "description": "Elaine identifies her ancient vampire mentor as Nyx, the vampire progenitor. He encourages Nina to turn away from criminal advancement and pursue the more demanding path of a knight-errant.",
+            "id": "nyx",
+            "name": "Nyx",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guard assigned on a continuing basis to protect Auri. He assists around the bakery and offers practical help when Nina struggles with the burden of carrying supplies after her class reset.",
+            "id": "atlas",
+            "name": "Atlas",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A returning associate of Elaine who arrives at the new villa with Julius.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning associate of Elaine who arrives at the new villa with Artemis.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-origin man sought for recruitment in Nippon-Koku. He refuses the offer and intends to steal a dragon egg, bringing him into conflict with Iona's vow.",
+            "id": "earth-origin-recruitment-target",
+            "name": "Earth-origin recruitment target",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Sixth Legion's second-in-command helps arrange Elaine's battlefield support and plans to assign Nike as her liaison. He is part of the command structure preparing the Legion for an undisclosed deployment.",
+            "id": "leonidas",
+            "name": "Leonidas",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Sixth Legion soldier serving as Primus Pilus. He participates in the Legion's Saturnalia events while its reshuffled formations prepare for a major campaign.",
+            "id": "ren",
+            "name": "Ren",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage who leads the battery line transferred to support Elaine. She explains how her soldiers use arcanite and mana crystals to provide sustained regeneration while retaining efficient combat magic of their own.",
+            "id": "nike",
+            "name": "Nike",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A War Sentinel who advises Elaine to treat morale and battlefield triage as central parts of her coming deployment, helping her frame the healer's place within a full military formation.",
+            "id": "tyrannus",
+            "name": "Tyrannus",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A War Sentinel who equips Elaine with a battlefield card. Its conjured strands can harden while remaining flexible, giving Elaine a large-scale restraint option suited to her preference for preserving life.",
+            "id": "queen",
+            "name": "Queen",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Way faction general whom the Sixth Legion is contracted to support in the Han civil war. The Legion enters the conflict under the deniable Ironside Brigade identity.",
+            "id": "wang-jian",
+            "name": "Wang Jian",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A contender backed by the Way faction in the Han succession struggle. He is identified as the late emperor's oldest son, and the Sixth Legion's initial contract rests on his claim.",
+            "id": "han-long",
+            "name": "Han Long",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A silver-ranked Yan scholar and battlefield observer with Heaven's Eye. He identifies dangerous enemy talents for his command, seeking military merit as a route toward revenge against a powerful court official.",
+            "id": "qiao-zhi",
+            "name": "Qiao Zhi",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young senior surgeon in the Chu camp who taught himself through wartime practice. He notices patients recovering with impossible speed and investigates an intervention whose unseen origin he cannot identify.",
+            "id": "hongjia",
+            "name": "Hongjia",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Elaine's punitive cover identity inside the Ironside Brigade. Presented as a cheerful ranger washout with minor healing and exceptional scouting traits, Bunny lets Elaine enter an ordinary line while concealing both Elaine and Sentinel Dawn.",
+            "id": "legionnaire-bunny",
+            "name": "Legionnaire Bunny",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A raider leader associated with the wolf riders harassing the armies and their supply lines. Her forces use fog and illusion during an ambush on the Sixth Legion's marching column.",
+            "id": "lady-of-death",
+            "name": "Lady of Death",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The opposing mage commander directs a major attack against the Sixth Legion. His ritual sends razor-edged black lotus petals through its formation, exposing the reach of Dawn's battlefield healing.",
+            "id": "opposing-great-general",
+            "name": "Opposing great general",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Elaine's former line who survives one falling rock during the battle but is killed by another dropped from the air. His death exposes the limits of Elaine's healing coverage against sudden trauma.",
+            "id": "specks",
+            "name": "Specks",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Sixth Legion soldier killed in the battle. Elaine records him among the Legion's dead in her Astral Archives before returning to the wounded who still need her care.",
+            "id": "titus",
+            "name": "Titus",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Sixth Legion officer appointed temporary second-in-command after the battle. The appointment fills the immediate command gap while Elaine remains Katerina's designated successor.",
+            "id": "tribune-pierce",
+            "name": "Tribune Pierce",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vast kun peng who arrives above a burning city as a supernatural judge. The Guardian commands storms and intervenes as the Sixth Legion fights to stop an attack aimed at civilians.",
+            "id": "guardian",
+            "name": "Guardian",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior leader of the Valkyrie Order confirms that Nina has shown the courage required for full membership, even though Nina has not yet found an oath that expresses her own convictions.",
+            "id": "orders-grand-master",
+            "name": "Order's Grand Master",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child claimant to Qin's throne seeks refuge in a tabernacle and calls upon the right of sanctuary. Too young to possess a system, he relies on a faithful retainer and those bound to protect him.",
+            "id": "child-qin-ruler",
+            "name": "Child Qin ruler",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guide in Elaine's soul-library who assists her as she begins the level-768 class-selection process.",
+            "id": "librarian",
+            "name": "Librarian",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The title Nina bears after becoming a full Valkyrie and leaving Iona's immediate care. She is safe and training elsewhere, but her departure follows a profound disagreement over sanctuary and the cost of prolonging a war.",
+            "id": "fox-valkyrie",
+            "name": "Fox Valkyrie",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0D48HJ8DC",
+            "type": "community"
+          }
+        ],
+        "work": "mandate-of-heaven"
+      },
       "recaps": {
         "ending": "Elaine returns to Exterreri after the Sixth Legion survives the Han campaign and breaks with the forces behind the burning-city attack. Katerina remains commander, Pierce serves as temporary second, and Elaine remains Katerina's designated successor after Leonidas's death. Iona's defense of sanctuary ends when Nina kills the child Qin ruler to halt the wider bloodshed. Nina becomes the Fox Valkyrie and leaves for further training, while Iona still regards her as a daughter despite their unresolved breach. At home, Elaine declines ascension as an Angel of Mercy, chooses Arbiter of Life and Death to gain stronger preventive defenses, and accepts Iona's marriage proposal. Auri, Fenrir, Artemis, and Julius remain connected to the household. Open threats include the warning of danger beyond the world, enemies specialized against legendary beings, diplomatic consequences from Han, and phoenixes acting on a garbled belief that their missing sister is captive in Exterreri.",
         "in_short": "Elaine joins the Sixth Legion's covert intervention in the Han civil war, but first helps Iona and Nina save captives from explosive collars and then heals both armies at Heping Gu. Embedded under the name Bunny, she eventually resumes open service as Sentinel Dawn. Across three years of campaigning, the Legion loses Leonidas, survives major battles, and breaks with its employers to stop a city-burning atrocity. A Guardian ends the attack and judges members of both armies, forcing the Sixth to withdraw. Elsewhere, Nina becomes a Valkyrie but kills a child ruler who requested sanctuary, believing his death will prevent a longer war, and leaves Iona to train separately. Back in Exterreri, Elaine refuses divine ascension, chooses Arbiter of Life and Death for its protective power, and becomes engaged to Iona. The closing interlude leaves phoenixes mistakenly or incompletely convinced that a missing sister is being held in Exterreri.",
