@@ -33,8 +33,16 @@ permissions:
   contents: read
   pull-requests: write
 
+# A `labeled` event for anything but the opt-in `ai-verify` label is a no-op
+# run (the job-level `if` below skips it), but sharing the real runs' group it
+# still CANCELLED a genuine in-flight verify via cancel-in-progress: the intake
+# bot applies its routing labels (data, bot-intake) right after opening, so the
+# `opened` run died and the PR ended with a skipped verify and no verdict
+# (observed on 26 of 30 open intake PRs, three runs created in the same
+# second). No-op runs therefore get their own `-noop` group; only real runs
+# supersede each other.
 concurrency:
-  group: ai-verify-${{ github.event.pull_request.number || github.event.inputs.pr }}
+  group: ai-verify-${{ github.event.pull_request.number || github.event.inputs.pr }}-${{ (github.event.action == 'labeled' && github.event.label.name != 'ai-verify') && 'noop' || 'run' }}
   cancel-in-progress: true
 
 jobs:
