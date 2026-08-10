@@ -786,6 +786,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jacques-roy-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D1YRF52C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817Dyg1rBpL.jpg",
+          "id": "jacques-roy-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jacques-roy"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2024-11-26",
+          "runtime_min": 1720,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D1YRF52C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-sun"
+        },
         "richard-rhodes-2010": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -4735,6 +4763,34 @@
             }
           ],
           "work": "dark-tide-rising-anne-perry"
+        },
+        "deirdre-whelan-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B075MS9X51",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919scAm392L.jpg",
+          "id": "deirdre-whelan-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "deirdre-whelan"
+          ],
+          "publisher": "Headline",
+          "release_date": "2018-04-19",
+          "runtime_min": 644,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B075MS9X51",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-tide-rising-anne-perry"
         }
       },
       "sources": [
@@ -4819,6 +4875,14 @@
             {
               "asin": "1797111396",
               "region": "us"
+            },
+            {
+              "asin": "1760851914",
+              "region": "us"
+            },
+            {
+              "asin": "1471195651",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/914T1o90NoL.jpg",
@@ -4835,6 +4899,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1797111396",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1760851914",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1471195651",
               "type": "libex-import"
             }
           ],
@@ -8560,6 +8634,58 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B00GC7RB7A",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dark Union"
+    },
+    "dark-union-mark-greaney": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "mark-greaney"
+      ],
+      "genres": [
+        "action-adventure",
+        "espionage",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "dark-union-mark-greaney",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mark-greaney-2027": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0H46GVXVY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71YA3W+ysDL.jpg",
+          "id": "mark-greaney-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-greaney"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2027-02-23",
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0H46GVXVY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-union-mark-greaney"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0H46GVXVY",
           "type": "libex-import"
         }
       ],

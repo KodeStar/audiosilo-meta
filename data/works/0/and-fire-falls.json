@@ -2007,6 +2007,14 @@
             {
               "asin": "B0F9ZW3RYH",
               "region": "us"
+            },
+            {
+              "asin": "B0FND51MBW",
+              "region": "us"
+            },
+            {
+              "asin": "B0FTLHCJJD",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81qcBV7BkZL.jpg",
@@ -2024,6 +2032,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0F9ZW3RYH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FND51MBW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FTLHCJJD",
               "type": "libex-import"
             }
           ],
@@ -7816,6 +7834,10 @@
             {
               "asin": "B00B8WQELS",
               "region": "us"
+            },
+            {
+              "asin": "1460793447",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91O7ZBMz-LL.jpg",
@@ -7832,6 +7854,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00B8WQELS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1460793447",
               "type": "libex-import"
             }
           ],
@@ -8285,6 +8312,57 @@
         }
       ],
       "title": "And Then the End Will Come"
+    },
+    "and-then-the-roof-caved-in": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "david-faber"
+      ],
+      "genres": [
+        "economics",
+        "finance"
+      ],
+      "id": "and-then-the-roof-caved-in",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dennis-holland-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1663704430",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yite9CdjL.jpg",
+          "id": "dennis-holland-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dennis-holland"
+          ],
+          "publisher": "Ascent Audio",
+          "release_date": "2020-07-09",
+          "runtime_min": 397,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1663704430",
+              "type": "libex-import"
+            }
+          ],
+          "work": "and-then-the-roof-caved-in"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1663704430",
+          "type": "libex-import"
+        }
+      ],
+      "title": "And Then the Roof Caved In"
     },
     "and-then-there-was-me": {
       "added_at": "2026-07-29",

@@ -4062,6 +4062,10 @@
             {
               "asin": "B01MZDIB5W",
               "region": "us"
+            },
+            {
+              "asin": "B0F94DSM5X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/817rJPku90L.jpg",
@@ -4078,6 +4082,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01MZDIB5W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0F94DSM5X",
               "type": "libex-import"
             }
           ],
@@ -4140,6 +4149,58 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00I2R6MJQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Twist Me"
+    },
+    "twist-me-anna-zaires": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "anna-zaires"
+      ],
+      "genres": [
+        "romance",
+        "romantic-suspense",
+        "thriller-suspense"
+      ],
+      "id": "twist-me-anna-zaires",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nina-schoene-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00M4KT9Y2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ZVv1mYy+L.jpg",
+          "id": "nina-schoene-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nina-schoene"
+          ],
+          "publisher": "Mozaika Publications",
+          "release_date": "2014-08-08",
+          "runtime_min": 481,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00M4KT9Y2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "twist-me-anna-zaires"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00M4KT9Y2",
           "type": "libex-import"
         }
       ],

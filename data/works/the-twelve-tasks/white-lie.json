@@ -3816,6 +3816,10 @@
             {
               "asin": "B07HNPKPXL",
               "region": "us"
+            },
+            {
+              "asin": "B0C544FD5Y",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/8160pDHDfSL.jpg",
@@ -3832,6 +3836,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07HNPKPXL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C544FD5Y",
               "type": "libex-import"
             }
           ],
@@ -4301,6 +4310,58 @@
         }
       ],
       "title": "White Nights: The Complete Duet"
+    },
+    "white-nights-the-shetland-series-2": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ann-cleeves"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "white-nights-the-shetland-series-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kenny-blyth-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBH828B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817Pfcwyz8L.jpg",
+          "id": "kenny-blyth-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kenny-blyth"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 640,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBH828B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "white-nights-the-shetland-series-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBH828B",
+          "type": "libex-import"
+        }
+      ],
+      "title": "White Nights: The Shetland Series 2"
     },
     "white-ninja": {
       "added_at": "2026-08-02",

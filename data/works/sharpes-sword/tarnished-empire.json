@@ -2486,6 +2486,57 @@
       ],
       "title": "Tarot Says Beware"
     },
+    "tarot-spanish-edition": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "kimberly-moon"
+      ],
+      "genres": [
+        "occult",
+        "religion-spirituality"
+      ],
+      "id": "tarot-spanish-edition",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ernesto-tissot-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B086BN8ZHB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pHmoPp0QL.jpg",
+          "id": "ernesto-tissot-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ernesto-tissot"
+          ],
+          "publisher": "Vicelane LLC",
+          "release_date": "2020-03-25",
+          "runtime_min": 202,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B086BN8ZHB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tarot-spanish-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B086BN8ZHB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tarot (Spanish Edition)"
+    },
     "tarots-ninth-harbinger": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
@@ -4449,6 +4500,64 @@
         {
           "imported_at": "2026-08-07",
           "ref": "B0040U9HZK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tartuffe"
+    },
+    "tartuffe-moliere": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "moliere"
+      ],
+      "genres": [
+        "classics",
+        "drama-plays",
+        "literary-fiction",
+        "poetry"
+      ],
+      "id": "tartuffe-moliere",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-lude-2018": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "2821112297",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HpRe1DnGL.jpg",
+          "id": "christian-lude-2018",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-lude",
+            "fernand-ledoux",
+            "jean-negroni",
+            "pierre-delbon",
+            "renee-faure",
+            "rosy-varte"
+          ],
+          "publisher": "Compagnie du Savoir",
+          "release_date": "2018-11-15",
+          "runtime_min": 47,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "2821112297",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tartuffe-moliere"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "2821112297",
           "type": "libex-import"
         }
       ],

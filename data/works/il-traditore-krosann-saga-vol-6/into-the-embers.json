@@ -406,6 +406,10 @@
             {
               "asin": "B0GSS356N8",
               "region": "us"
+            },
+            {
+              "asin": "B0GX68H23P",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/910nc3f-AlL.jpg",
@@ -427,6 +431,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0GSS356N8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GX68H23P",
               "type": "libex-import"
             }
           ],
@@ -8748,6 +8757,60 @@
         }
       ],
       "title": "Into the Heart of the Feminine"
+    },
+    "into-the-heartless-wood": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "joanna-ruth-meyer"
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "romance",
+        "young-adult"
+      ],
+      "id": "into-the-heartless-wood",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ethan-james-lynch-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "162461776X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1H5XUDPXRL.jpg",
+          "id": "ethan-james-lynch-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ethan-james-lynch",
+            "tara-novie"
+          ],
+          "publisher": "Vibrance Press",
+          "release_date": "2021-01-12",
+          "runtime_min": 656,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "162461776X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "into-the-heartless-wood"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "162461776X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Into the Heartless Wood"
     },
     "into-the-hells": {
       "added_at": "2026-08-01",

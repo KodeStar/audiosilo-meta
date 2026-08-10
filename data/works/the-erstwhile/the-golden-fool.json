@@ -3978,6 +3978,10 @@
             {
               "asin": "B00KTFR158",
               "region": "us"
+            },
+            {
+              "asin": "B0B33PGZWJ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ouCyibeuL.jpg",
@@ -3999,6 +4003,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00KTFR158",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B33PGZWJ",
               "type": "libex-import"
             }
           ],
@@ -7766,6 +7775,59 @@
       ],
       "title": "The Golden Spoon"
     },
+    "the-golden-spruce": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "john-vaillant"
+      ],
+      "genres": [
+        "biography-memoir",
+        "nature",
+        "science",
+        "sports"
+      ],
+      "id": "the-golden-spruce",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "edoardo-ballerini-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1039000487",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9129J34E3yL.jpg",
+          "id": "edoardo-ballerini-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edoardo-ballerini"
+          ],
+          "publisher": "Knopf Canada",
+          "release_date": "2021-02-06",
+          "runtime_min": 513,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1039000487",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-golden-spruce"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1039000487",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Golden Spruce"
+    },
     "the-golden-staff": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9158,6 +9220,57 @@
         }
       ],
       "title": "The Golden Tiger: An Action Adventure Thriller"
+    },
+    "the-golden-toilet": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "steve-brown"
+      ],
+      "genres": [
+        "business",
+        "finance"
+      ],
+      "id": "the-golden-toilet",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-brown-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B087YQ818V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71mpaFG15WL.jpg",
+          "id": "steve-brown-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-brown"
+          ],
+          "publisher": "ROI Publishing",
+          "release_date": "2020-05-06",
+          "runtime_min": 329,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B087YQ818V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-golden-toilet"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B087YQ818V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Golden Toilet"
     },
     "the-golden-tower": {
       "added_at": "2026-08-02",

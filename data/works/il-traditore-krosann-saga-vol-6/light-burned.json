@@ -3505,6 +3505,10 @@
             {
               "asin": "B075DH2CXV",
               "region": "us"
+            },
+            {
+              "asin": "B0BCX73Z4V",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91niwO5PIIL.jpg",
@@ -3521,6 +3525,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B075DH2CXV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BCX73Z4V",
               "type": "libex-import"
             }
           ],
@@ -12693,6 +12702,58 @@
       ],
       "title": "Light Through the Vines"
     },
+    "light-to-life": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "raffael-jovine"
+      ],
+      "genres": [
+        "nature",
+        "science",
+        "sports"
+      ],
+      "id": "light-to-life",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-slater-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1780725078",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91hYRX8qOLL.jpg",
+          "id": "simon-slater-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-slater"
+          ],
+          "publisher": "Short Books",
+          "release_date": "2021-04-22",
+          "runtime_min": 317,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1780725078",
+              "type": "libex-import"
+            }
+          ],
+          "work": "light-to-life"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1780725078",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Light to Life"
+    },
     "light-to-the-hills": {
       "added_at": "2026-07-29",
       "authors": [
@@ -15667,6 +15728,58 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0100LERXO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Lighthouse"
+    },
+    "lighthouse-alan-harris": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "alan-harris"
+      ],
+      "genres": [
+        "arts-entertainment"
+      ],
+      "id": "lighthouse-alan-harris",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "full-cast-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B008OYOXU2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51s9Crql7lL.jpg",
+          "id": "full-cast-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "ifan-huw-dafydd",
+            "paul-rhys"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2012-08-01",
+          "runtime_min": 43,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B008OYOXU2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lighthouse-alan-harris"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B008OYOXU2",
           "type": "libex-import"
         }
       ],

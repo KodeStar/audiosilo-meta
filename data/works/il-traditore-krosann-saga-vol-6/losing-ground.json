@@ -7392,6 +7392,10 @@
             {
               "asin": "B0CXFL9MNG",
               "region": "us"
+            },
+            {
+              "asin": "B0D23QLR2H",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1vuW-bDGOL.jpg",
@@ -7410,6 +7414,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CXFL9MNG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D23QLR2H",
               "type": "libex-import"
             }
           ],
@@ -8376,6 +8385,59 @@
         }
       ],
       "title": "Lost Angels"
+    },
+    "lost-art-the-stories-of-missing-masterpieces": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "the-great-courses",
+        "noah-charney"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "true-crime",
+        "writing-publishing"
+      ],
+      "id": "lost-art-the-stories-of-missing-masterpieces",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "noah-charney-2023": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CDQNQZM4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91e8J3T0A4L.jpg",
+          "id": "noah-charney-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "noah-charney"
+          ],
+          "publisher": "The Great Courses",
+          "release_date": "2023-08-11",
+          "runtime_min": 359,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CDQNQZM4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lost-art-the-stories-of-missing-masterpieces"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CDQNQZM4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Lost Art: The Stories of Missing Masterpieces"
     },
     "lost-at-l3": {
       "added_at": "2026-07-29",

@@ -11385,6 +11385,10 @@
             {
               "asin": "B0BXJTWJ53",
               "region": "us"
+            },
+            {
+              "asin": "B0CFRCR4FP",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81wCWGX0RhL.jpg",
@@ -11401,6 +11405,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0BXJTWJ53",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CFRCR4FP",
               "type": "libex-import"
             }
           ],
@@ -12104,6 +12113,61 @@
         }
       ],
       "title": "The Water Blade"
+    },
+    "the-water-castle": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "megan-frazer-blakemore"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fairy-tales-folklore",
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "the-water-castle",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-henry-coffey-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00I7V0J78",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UW9B--0hL.jpg",
+          "id": "chris-henry-coffey-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-henry-coffey"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2014-02-05",
+          "runtime_min": 501,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00I7V0J78",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-water-castle"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00I7V0J78",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Water Castle"
     },
     "the-water-crystal-deal-with-the-devil": {
       "added_at": "2026-08-02",

@@ -1511,6 +1511,10 @@
             {
               "asin": "1984832484",
               "region": "us"
+            },
+            {
+              "asin": "0008303878",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91SDX+U0JyL.jpg",
@@ -1527,6 +1531,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1984832484",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0008303878",
               "type": "libex-import"
             }
           ],
@@ -6858,6 +6867,59 @@
         }
       ],
       "title": "The Midnight Wombat of Moodong Creek"
+    },
+    "the-midnight-zoo": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "sonya-hartnett"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy",
+        "historical-fiction",
+        "nature"
+      ],
+      "id": "the-midnight-zoo",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "richard-aspel-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0041ES83M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/517YZ-iSyJL.jpg",
+          "id": "richard-aspel-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-aspel"
+          ],
+          "publisher": "Bolinda audio",
+          "release_date": "2010-08-31",
+          "runtime_min": 270,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0041ES83M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-midnight-zoo"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0041ES83M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Midnight Zoo"
     },
     "the-midsummer-captives": {
       "added_at": "2026-08-02",

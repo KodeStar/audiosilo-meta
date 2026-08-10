@@ -492,6 +492,10 @@
             {
               "asin": "B002V0AELW",
               "region": "us"
+            },
+            {
+              "asin": "B0BBXWKBLM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91lKIOmhC8L.jpg",
@@ -508,6 +512,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V0AELW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BBXWKBLM",
               "type": "libex-import"
             }
           ],
@@ -2354,6 +2363,59 @@
       ],
       "title": "The Butterfly Bard"
     },
+    "the-butterfly-club": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jacqueline-wilson"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "the-butterfly-club",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "madeleine-leslay-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00T5495FS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917Fn2B461L.jpg",
+          "id": "madeleine-leslay-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "madeleine-leslay"
+          ],
+          "publisher": "Bolinda audio",
+          "release_date": "2015-02-12",
+          "runtime_min": 394,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00T5495FS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-butterfly-club"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00T5495FS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Butterfly Club"
+    },
     "the-butterfly-clues": {
       "added_at": "2026-07-29",
       "authors": [
@@ -2456,6 +2518,58 @@
         {
           "imported_at": "2026-07-29",
           "ref": "1797115502",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Butterfly Effect"
+    },
+    "the-butterfly-effect-edward-d-melillo": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "edward-d-melillo"
+      ],
+      "genres": [
+        "history",
+        "nature",
+        "science"
+      ],
+      "id": "the-butterfly-effect-edward-d-melillo",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kaleo-griffith-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0593212169",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81axvX2FZ5L.jpg",
+          "id": "kaleo-griffith-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kaleo-griffith"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2020-08-25",
+          "runtime_min": 406,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0593212169",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-butterfly-effect-edward-d-melillo"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0593212169",
           "type": "libex-import"
         }
       ],

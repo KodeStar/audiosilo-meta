@@ -4909,6 +4909,10 @@
             {
               "asin": "B002UZZ3DM",
               "region": "us"
+            },
+            {
+              "asin": "B0FM8NXC3B",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81D8zus80UL.jpg",
@@ -4925,6 +4929,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002UZZ3DM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FM8NXC3B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-taint-in-the-blood-dana-stabenow"
+        },
+        "regina-reagan-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00KWWO2RI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91h7l15SGNL.jpg",
+          "id": "regina-reagan-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "regina-reagan"
+          ],
+          "publisher": "Isis Publishing Ltd",
+          "release_date": "2014-06-12",
+          "runtime_min": 567,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00KWWO2RI",
               "type": "libex-import"
             }
           ],
@@ -8701,6 +8738,56 @@
         }
       ],
       "title": "A Tale of Magic: A Tale of Sorcery"
+    },
+    "a-tale-of-seven-elements": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "eric-scerri"
+      ],
+      "genres": [
+        "science"
+      ],
+      "id": "a-tale-of-seven-elements",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "barry-campbell-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00I5QGTYC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Y7oF28NvL.jpg",
+          "id": "barry-campbell-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barry-campbell"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-03-11",
+          "runtime_min": 457,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00I5QGTYC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-tale-of-seven-elements"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00I5QGTYC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Tale of Seven Elements"
     },
     "a-tale-of-sorcery": {
       "added_at": "2026-08-02",

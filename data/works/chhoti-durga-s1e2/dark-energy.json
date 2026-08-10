@@ -4843,6 +4843,34 @@
           ],
           "work": "dark-fire-c-j-sansom"
         },
+        "anton-lesser-2025": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0FT2T5YCB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MjOdsl7jL.jpg",
+          "id": "anton-lesser-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-lesser"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2025-09-29",
+          "runtime_min": 386,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FT2T5YCB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-fire-c-j-sansom"
+        },
         "steven-crossley-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4853,6 +4881,10 @@
             },
             {
               "asin": "B00OSAR600",
+              "region": "us"
+            },
+            {
+              "asin": "B0DPG1GZPV",
               "region": "us"
             }
           ],
@@ -4875,6 +4907,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00OSAR600",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DPG1GZPV",
               "type": "libex-import"
             }
           ],
@@ -6794,6 +6831,57 @@
         }
       ],
       "title": "Dark Fleet"
+    },
+    "dark-flowers": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "caytlyn-brooke"
+      ],
+      "genres": [
+        "horror",
+        "young-adult"
+      ],
+      "id": "dark-flowers",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "molly-macdonald-foster-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07BRXSDSW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91x1gwz7RaL.jpg",
+          "id": "molly-macdonald-foster-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "molly-macdonald-foster"
+          ],
+          "publisher": "BHC Press",
+          "release_date": "2018-03-29",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07BRXSDSW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-flowers"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07BRXSDSW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dark Flowers"
     },
     "dark-force": {
       "added_at": "2026-08-01",

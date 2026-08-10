@@ -276,6 +276,14 @@
             {
               "asin": "B0C5S2938J",
               "region": "us"
+            },
+            {
+              "asin": "B0C62CSHR6",
+              "region": "us"
+            },
+            {
+              "asin": "B0C9VTWTG8",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71vUhgzwtxL.jpg",
@@ -292,6 +300,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0C5S2938J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C62CSHR6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C9VTWTG8",
               "type": "libex-import"
             }
           ],
@@ -5772,6 +5790,58 @@
         }
       ],
       "title": "The Mystery of Providence"
+    },
+    "the-mystery-of-rennes-le-chateau": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "stewart-ferris"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "politics",
+        "social-sciences"
+      ],
+      "id": "the-mystery-of-rennes-le-chateau",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stewart-ferris-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036NX0F0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61E1pf8nGJL.jpg",
+          "id": "stewart-ferris-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stewart-ferris"
+          ],
+          "publisher": "Summersdale Publishers Ltd",
+          "release_date": "2007-10-23",
+          "runtime_min": 54,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036NX0F0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-mystery-of-rennes-le-chateau"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0036NX0F0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Mystery of Rennes-Le-Chateau"
     },
     "the-mystery-of-sleep": {
       "added_at": "2026-07-29",

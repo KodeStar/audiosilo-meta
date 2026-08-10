@@ -3775,6 +3775,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "adam-sims-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01786RSAI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FUUGhE-xL.jpg",
+          "id": "adam-sims-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adam-sims"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-03-03",
+          "runtime_min": 805,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01786RSAI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-matter-and-the-dinosaurs"
+        },
         "carrington-macduffie-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5978,6 +6006,59 @@
         }
       ],
       "title": "Dark Matter"
+    },
+    "dark-matter-der-zeitenlaufer": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "blake-crouch"
+      ],
+      "genres": [
+        "fantasy",
+        "science-fiction",
+        "time-travel"
+      ],
+      "id": "dark-matter-der-zeitenlaufer",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "florian-lukas-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01N187QYH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41dR8BzcQBL.jpg",
+          "id": "florian-lukas-2017",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "florian-lukas",
+            "karoline-schuch"
+          ],
+          "publisher": "Der Hörverlag",
+          "release_date": "2017-03-24",
+          "runtime_min": 600,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01N187QYH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-matter-der-zeitenlaufer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01N187QYH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dark Matter: Der Zeitenläufer"
     },
     "dark-matter-gambit": {
       "added_at": "2026-08-02",

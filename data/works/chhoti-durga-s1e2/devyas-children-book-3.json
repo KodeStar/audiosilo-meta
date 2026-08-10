@@ -1904,6 +1904,10 @@
             {
               "asin": "B00OYDYGHM",
               "region": "us"
+            },
+            {
+              "asin": "B00U0K5SIY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81uilqoqtFL.jpg",
@@ -1920,6 +1924,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00OYDYGHM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U0K5SIY",
               "type": "libex-import"
             }
           ],
@@ -2822,6 +2831,10 @@
             {
               "asin": "B00YNT3L6E",
               "region": "us"
+            },
+            {
+              "asin": "B00XK782XC",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71qDoEpxV2L.jpg",
@@ -2838,6 +2851,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00YNT3L6E",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00XK782XC",
               "type": "libex-import"
             }
           ],
@@ -2876,6 +2894,10 @@
             {
               "asin": "B0040HTAPA",
               "region": "us"
+            },
+            {
+              "asin": "B00U0K9AV0",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/915Su6vBHML.jpg",
@@ -2892,6 +2914,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0040HTAPA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U0K9AV0",
               "type": "libex-import"
             }
           ],
@@ -2929,6 +2956,10 @@
             {
               "asin": "B00EF8BIOU",
               "region": "us"
+            },
+            {
+              "asin": "B00U29UGY4",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81uH2bXlk5L.jpg",
@@ -2945,6 +2976,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00EF8BIOU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U29UGY4",
               "type": "libex-import"
             }
           ],
@@ -3502,6 +3538,58 @@
       ],
       "title": "DFV Ethereal"
     },
+    "dgse-la-fabrique-des-agents-secrets": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jean-christophe-notin"
+      ],
+      "genres": [
+        "history",
+        "military-history",
+        "politics"
+      ],
+      "id": "dgse-la-fabrique-des-agents-secrets",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandre-donders-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CW69RLFF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ixD+GJNeL.jpg",
+          "id": "alexandre-donders-2024",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandre-donders"
+          ],
+          "publisher": "Lizzie",
+          "release_date": "2024-03-07",
+          "runtime_min": 614,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CW69RLFF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dgse-la-fabrique-des-agents-secrets"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CW69RLFF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DGSE : La fabrique des agents secrets"
+    },
     "dhalgren": {
       "added_at": "2026-07-29",
       "authors": [
@@ -3606,6 +3694,56 @@
         }
       ],
       "title": "Dhammapada"
+    },
+    "dhammapada-el-camino-de-la-verdad": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "buda"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "dhammapada-el-camino-de-la-verdad",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "artur-mas-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B9CJJY5X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ua9B+F2jL.jpg",
+          "id": "artur-mas-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "artur-mas"
+          ],
+          "publisher": "AMA AUDIOLIBROS",
+          "release_date": "2022-08-16",
+          "runtime_min": 158,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B9CJJY5X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dhammapada-el-camino-de-la-verdad"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B9CJJY5X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dhammapada - El Camino de la Verdad"
     },
     "dhampir": {
       "added_at": "2026-08-02",
@@ -4458,6 +4596,157 @@
         }
       ],
       "title": "DI Gwen Danbury: An Odd Body: Series 1-3"
+    },
+    "di-mi-nombre-say-my-name": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "j-kenner"
+      ],
+      "genres": [
+        "romance"
+      ],
+      "id": "di-mi-nombre-say-my-name",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sofia-garcia-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0753Q56F4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71IkdKzfd6L.jpg",
+          "id": "sofia-garcia-2017",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sofia-garcia"
+          ],
+          "publisher": "Audible Studios para Penguin Random House Grupo Editorial",
+          "release_date": "2017-09-26",
+          "runtime_min": 646,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0753Q56F4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "di-mi-nombre-say-my-name"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0753Q56F4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Di mi nombre [Say My Name]"
+    },
+    "di-punto-in-bianco": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "cristina-rava"
+      ],
+      "genres": [
+        "hard-boiled",
+        "mystery"
+      ],
+      "id": "di-punto-in-bianco",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elena-gianni-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8858697901",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cJy630EIL.jpg",
+          "id": "elena-gianni-2019",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elena-gianni"
+          ],
+          "publisher": "Mondadori Libri S.p.A.",
+          "release_date": "2019-07-03",
+          "runtime_min": 444,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8858697901",
+              "type": "libex-import"
+            }
+          ],
+          "work": "di-punto-in-bianco"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8858697901",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Di punto in bianco"
+    },
+    "dia-de-perros": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "alicia-gimenez-bartlett"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "dia-de-perros",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rosa-guillen-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8423356647",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cf3Ui-ogL.jpg",
+          "id": "rosa-guillen-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosa-guillen"
+          ],
+          "publisher": "Planeta Audio",
+          "release_date": "2020-10-30",
+          "runtime_min": 602,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8423356647",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dia-de-perros"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8423356647",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Día de perros"
     },
     "diabetes-for-dummies-3rd-edition": {
       "added_at": "2026-07-29",
@@ -9189,6 +9478,58 @@
       ],
       "title": "Dial A for Aunties"
     },
+    "dial-a-for-aunties-jesse-sutanto": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jesse-sutanto"
+      ],
+      "genres": [
+        "comedy-humor",
+        "romance",
+        "romantic-comedy"
+      ],
+      "id": "dial-a-for-aunties-jesse-sutanto",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "risa-mei-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0008445877",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91r7NTOSdnS.jpg",
+          "id": "risa-mei-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "risa-mei"
+          ],
+          "publisher": "HQ",
+          "release_date": "2021-04-27",
+          "runtime_min": 621,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0008445877",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dial-a-for-aunties-jesse-sutanto"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0008445877",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dial A for Aunties"
+    },
     "dial-a-ghost": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10288,6 +10629,58 @@
       ],
       "title": "Dial W for Witch"
     },
+    "dialectica-eristica": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "arthur-schopenhauer"
+      ],
+      "genres": [
+        "history",
+        "philosophy",
+        "politics"
+      ],
+      "id": "dialectica-eristica",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "artur-mas-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08XJXX5VC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ADkvyacDL.jpg",
+          "id": "artur-mas-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "artur-mas"
+          ],
+          "publisher": "AMA AUDIOLIBROS",
+          "release_date": "2021-03-15",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08XJXX5VC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dialectica-eristica"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08XJXX5VC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dialéctica Erística"
+    },
     "dialectical-behavior-therapy": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10446,6 +10839,60 @@
       ],
       "title": "Dialectical Behavior Therapy: The Ultimate Guide for Using DBT for Borderline Personality Disorder, Difficult Emotions and Mood Swings, Including Techniques such as Mindfulness and Emotion Regulation"
     },
+    "dialogo-entre-un-sacerdote-y-un-moribundo-dialogue-between-a-priest-and-a-dying-man": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "marquis-de-sade"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "philosophy",
+        "politics",
+        "short-stories"
+      ],
+      "id": "dialogo-entre-un-sacerdote-y-un-moribundo-dialogue-between-a-priest-and-a-dying-man",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "victor-prieto-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0047P1BVQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51mnk01rH1L.jpg",
+          "id": "victor-prieto-2009",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "victor-prieto"
+          ],
+          "publisher": "Audiomol",
+          "release_date": "2009-12-27",
+          "runtime_min": 36,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0047P1BVQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dialogo-entre-un-sacerdote-y-un-moribundo-dialogue-between-a-priest-and-a-dying-man"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0047P1BVQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Diálogo entre un sacerdote y un moribundo [Dialogue Between a Priest and a Dying Man]"
+    },
     "dialogue": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10499,6 +10946,74 @@
         }
       ],
       "title": "Dialogue"
+    },
+    "dialogue-concerning-the-two-chief-world-systems": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "galileo-galilei",
+        "albert-einstein",
+        "stillman-drake"
+      ],
+      "credits": [
+        {
+          "person": "albert-einstein",
+          "role": "foreword"
+        },
+        {
+          "person": "stillman-drake",
+          "role": "preface"
+        }
+      ],
+      "genres": [
+        "history",
+        "science"
+      ],
+      "id": "dialogue-concerning-the-two-chief-world-systems",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "brian-keating-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09YKY4KKY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1wsRqZYCIL.jpg",
+          "id": "brian-keating-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brian-keating",
+            "carlo-rovelli",
+            "fabiola-gianotti",
+            "frank-wilczek",
+            "lucio-piccirillo",
+            "s-james-gates"
+          ],
+          "publisher": "Big Bang Productions Inc.",
+          "release_date": "2022-04-22",
+          "runtime_min": 1299,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09YKY4KKY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dialogue-concerning-the-two-chief-world-systems"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09YKY4KKY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dialogue Concerning the Two Chief World Systems"
     },
     "dialogues-of-plato": {
       "added_at": "2026-07-29",

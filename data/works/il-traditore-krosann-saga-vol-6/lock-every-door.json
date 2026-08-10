@@ -3988,6 +3988,10 @@
             {
               "asin": "B0D1HCMB1V",
               "region": "us"
+            },
+            {
+              "asin": "B0D23S8WSB",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81ny6foowML.jpg",
@@ -4004,6 +4008,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0D1HCMB1V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D23S8WSB",
               "type": "libex-import"
             }
           ],
@@ -4577,6 +4586,58 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B005QRBINU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Locked in Time"
+    },
+    "locked-in-time-dean-r-lomax": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dean-r-lomax"
+      ],
+      "genres": [
+        "nature",
+        "science",
+        "sports"
+      ],
+      "id": "locked-in-time-dean-r-lomax",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gareth-richards-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BWGMSJGS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71q38DPdS8L.jpg",
+          "id": "gareth-richards-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-richards"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2023-03-07",
+          "runtime_min": 367,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BWGMSJGS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "locked-in-time-dean-r-lomax"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BWGMSJGS",
           "type": "libex-import"
         }
       ],
@@ -13755,6 +13816,85 @@
         }
       ],
       "title": "Lodoiska"
+    },
+    "lodyssee": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "homere"
+      ],
+      "genres": [
+        "young-adult"
+      ],
+      "id": "lodyssee",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "clotilde-de-bayser-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00YPNG5CK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qJTJU1iJL.jpg",
+          "id": "clotilde-de-bayser-2015",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clotilde-de-bayser",
+            "michel-wuillermoz"
+          ],
+          "publisher": "Gallimard Jeunesse",
+          "release_date": "2015-06-02",
+          "runtime_min": 188,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00YPNG5CK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lodyssee"
+        },
+        "guy-moign-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0793PKB1Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1a+1X2DrXL.jpg",
+          "id": "guy-moign-2018",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "guy-moign"
+          ],
+          "publisher": "Sixtrid",
+          "release_date": "2018-01-25",
+          "runtime_min": 759,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0793PKB1Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lodyssee"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00YPNG5CK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "L'Odyssée"
     },
     "loeil-de-verite": {
       "added_at": "2026-08-02",
