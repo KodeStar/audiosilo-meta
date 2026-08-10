@@ -310,6 +310,14 @@ func TestLineMergeDoesNotConvergeOnAnAddAddPackConflict(t *testing.T) {
 	}
 }
 
+// driverMergedMarker is what .github/workflows/intake.yml greps a rebase's output
+// for. It is the sweep's ONLY signal that a clean rebase merged a pack file after
+// all, and so needs metafmt to re-render and re-place what the driver wrote; if
+// the line stops reaching the rebase output - a reworded echo, a git that stops
+// surfacing a driver's stdout - that step silently disarms and the branch is
+// pushed un-normalized. The driver subtests assert it, so it fails here instead.
+const driverMergedMarker = "merged both sides"
+
 // TestPackMergeDriver runs the script the way the intake sweep runs it: as the
 // merge driver .gitattributes names, so the entry maps are merged before any line
 // merge can duplicate a key.
@@ -322,6 +330,9 @@ func TestPackMergeDriver(t *testing.T) {
 		repo, out, err := rebaseFixture(t, communityPath, base, main, branch, script)
 		if err != nil {
 			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		if !strings.Contains(out, driverMergedMarker) {
+			t.Errorf("the rebase output does not carry %q, which .github/workflows/intake.yml greps for to know it must re-render the merge:\n%s", driverMergedMarker, out)
 		}
 		full := filepath.Join(repo, communityPath)
 		if n := countEntryKeys(t, full, "bbb"); n != 1 {
@@ -343,6 +354,9 @@ func TestPackMergeDriver(t *testing.T) {
 			script)
 		if err != nil {
 			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		if !strings.Contains(out, driverMergedMarker) {
+			t.Errorf("the rebase output does not carry %q, which .github/workflows/intake.yml greps for to know it must re-render the merge:\n%s", driverMergedMarker, out)
 		}
 		merged := readEntries(t, filepath.Join(repo, worksPath))
 		for _, p := range []string{"aaa.recordings.r1", "aaa.recordings.r2", "aaa.recordings.r3"} {
