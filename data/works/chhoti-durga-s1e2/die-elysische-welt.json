@@ -85,6 +85,10 @@
             {
               "asin": "B084WW4JF5",
               "region": "us"
+            },
+            {
+              "asin": "B084WSY9G6",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -998,6 +1002,11 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B084WW4JF5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B084WSY9G6",
               "type": "libex-import"
             }
           ],
@@ -4571,6 +4580,56 @@
         {
           "imported_at": "2026-08-02",
           "ref": "3742415441",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Die Entscheidung"
+    },
+    "die-entscheidung-charlotte-link": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "charlotte-link"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "die-entscheidung-charlotte-link",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "friederike-kempter-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01KXZ6KM8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918t1TLuyiL.jpg",
+          "id": "friederike-kempter-2016",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "friederike-kempter"
+          ],
+          "publisher": "Random House Audio, Deutschland",
+          "release_date": "2016-09-02",
+          "runtime_min": 953,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01KXZ6KM8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-entscheidung-charlotte-link"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01KXZ6KM8",
           "type": "libex-import"
         }
       ],

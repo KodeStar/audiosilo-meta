@@ -10630,6 +10630,10 @@
             {
               "asin": "B0CXYLQNQ4",
               "region": "us"
+            },
+            {
+              "asin": "B0CRJ88P1P",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -10884,6 +10888,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CXYLQNQ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CRJ88P1P",
               "type": "libex-import"
             }
           ],
@@ -12727,6 +12736,62 @@
         }
       ],
       "title": "Wild Men, Wild Alaska"
+    },
+    "wild-mind": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bill-plotkin-phd"
+      ],
+      "genres": [
+        "health-wellness",
+        "nature",
+        "parenting-relationships",
+        "psychology",
+        "science",
+        "self-help",
+        "sports"
+      ],
+      "id": "wild-mind",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-brion-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1705295169",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/515BWz+xKKL.jpg",
+          "id": "paul-brion-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-brion"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2021-02-23",
+          "runtime_min": 569,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705295169",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wild-mind"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1705295169",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wild Mind"
     },
     "wild-minds": {
       "added_at": "2026-07-29",

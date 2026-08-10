@@ -5539,6 +5539,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amy-scanlon-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D85H5H74",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Nh0AFIujL.jpg",
+          "id": "amy-scanlon-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amy-scanlon"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2024-11-19",
+          "runtime_min": 786,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D85H5H74",
+              "type": "libex-import"
+            }
+          ],
+          "work": "treason-at-lisson-grove"
+        },
         "michael-page-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9322,6 +9350,59 @@
         }
       ],
       "title": "Treasure Hunt: Billie B Mystery, Book 6"
+    },
+    "treasure-hunt-michael-j-silverstein": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-j-silverstein",
+        "john-butman"
+      ],
+      "genres": [
+        "business",
+        "economics",
+        "finance"
+      ],
+      "id": "treasure-hunt-michael-j-silverstein",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-h-mayer-2006": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V59XVO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sJEkQ+vOL.jpg",
+          "id": "john-h-mayer-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-h-mayer"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2006-05-09",
+          "runtime_min": 559,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V59XVO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "treasure-hunt-michael-j-silverstein"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V59XVO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Treasure Hunt"
     },
     "treasure-hunt-the-inspector-montalbano-mystery": {
       "added_at": "2026-08-02",

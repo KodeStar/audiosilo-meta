@@ -4968,6 +4968,10 @@
             {
               "asin": "B0CPQW9LPF",
               "region": "us"
+            },
+            {
+              "asin": "B09GS89PKR",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5238,6 +5242,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CPQW9LPF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09GS89PKR",
               "type": "libex-import"
             }
           ],
@@ -7513,6 +7522,58 @@
         }
       ],
       "title": "Carnival at Candlelight"
+    },
+    "carnival-for-the-dead": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "david-hewson"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "carnival-for-the-dead",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "juanita-mcmahon-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B006TFDPXE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/613P8HJ0I6L.jpg",
+          "id": "juanita-mcmahon-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "juanita-mcmahon"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2012-01-04",
+          "runtime_min": 983,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B006TFDPXE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "carnival-for-the-dead"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B006TFDPXE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Carnival for the Dead"
     },
     "carnival-hill": {
       "added_at": "2026-07-29",
