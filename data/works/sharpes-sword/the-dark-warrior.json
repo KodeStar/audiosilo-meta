@@ -1617,6 +1617,10 @@
             {
               "asin": "B0CR6PB673",
               "region": "us"
+            },
+            {
+              "asin": "B0CS4TB7NF",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81QdoapXxJL.jpg",
@@ -1633,6 +1637,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CR6PB673",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CS4TB7NF",
               "type": "libex-import"
             }
           ],
@@ -7505,6 +7514,60 @@
       "xref": {
         "goodreads": "17251422"
       }
+    },
+    "the-darkest-dark": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "chris-hadfield",
+        "kate-fillion",
+        "the-fan-brothers"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "self-help"
+      ],
+      "id": "the-darkest-dark",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-hadfield-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01LR7LYHC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91L9Ju+8RzL.jpg",
+          "id": "chris-hadfield-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-hadfield"
+          ],
+          "publisher": "Little, Brown Books for Young Readers",
+          "release_date": "2016-09-13",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01LR7LYHC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-darkest-dark"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01LR7LYHC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Darkest Dark"
     },
     "the-darkest-dawn": {
       "added_at": "2026-08-02",

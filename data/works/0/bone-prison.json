@@ -5412,6 +5412,10 @@
             {
               "asin": "B00K36LXFC",
               "region": "us"
+            },
+            {
+              "asin": "B00N4YHEMQ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/811voU5-qYL.jpg",
@@ -5428,6 +5432,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00K36LXFC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00N4YHEMQ",
               "type": "libex-import"
             }
           ],
@@ -7395,6 +7404,10 @@
             {
               "asin": "B00CP85QFO",
               "region": "us"
+            },
+            {
+              "asin": "B00E9A0IY0",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/812k+wd4h2L.jpg",
@@ -7411,6 +7424,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00CP85QFO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00E9A0IY0",
               "type": "libex-import"
             }
           ],
@@ -8528,6 +8546,59 @@
         }
       ],
       "title": "Bones on Ice: A Novella"
+    },
+    "bones-roy-a-meals-md": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "roy-a-meals-md"
+      ],
+      "genres": [
+        "medicine",
+        "nature",
+        "science",
+        "sports"
+      ],
+      "id": "bones-roy-a-meals-md",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "l-j-ganser-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1705265502",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815wdu5lM5L.jpg",
+          "id": "l-j-ganser-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "l-j-ganser"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2020-11-03",
+          "runtime_min": 492,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705265502",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bones-roy-a-meals-md"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1705265502",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Bones"
     },
     "bones-the-dark-kingdom-book-5": {
       "added_at": "2026-07-29",

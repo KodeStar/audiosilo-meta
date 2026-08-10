@@ -8058,6 +8058,10 @@
             {
               "asin": "B09PMFS4PS",
               "region": "us"
+            },
+            {
+              "asin": "B0D3FNQMRY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81zmXOsl93L.jpg",
@@ -8074,6 +8078,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B09PMFS4PS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D3FNQMRY",
               "type": "libex-import"
             }
           ],
@@ -10082,6 +10091,58 @@
         }
       ],
       "title": "Murder at the Patel Motel"
+    },
+    "murder-at-the-pencil-factory": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "r-barri-flowers"
+      ],
+      "genres": [
+        "biography-memoir",
+        "history",
+        "true-crime"
+      ],
+      "id": "murder-at-the-pencil-factory",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-eastman-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00DMAKGW2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LSrZnk4SL.jpg",
+          "id": "john-eastman-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-eastman"
+          ],
+          "publisher": "R. Barri Flowers",
+          "release_date": "2013-06-26",
+          "runtime_min": 109,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00DMAKGW2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "murder-at-the-pencil-factory"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00DMAKGW2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Murder at the Pencil Factory"
     },
     "murder-at-the-piccadilly-playhouse": {
       "added_at": "2026-07-29",

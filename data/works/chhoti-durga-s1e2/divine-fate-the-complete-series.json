@@ -3083,6 +3083,10 @@
             {
               "asin": "B002V8KKTK",
               "region": "us"
+            },
+            {
+              "asin": "B077TZ39R5",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81If8HUZciL.jpg",
@@ -3099,6 +3103,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V8KKTK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B077TZ39R5",
               "type": "libex-import"
             }
           ],
@@ -3252,6 +3261,58 @@
         }
       ],
       "title": "Divine Love"
+    },
+    "divine-love-wisdom": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "emanuel-swedenborg"
+      ],
+      "genres": [
+        "philosophy",
+        "politics",
+        "religion-spirituality"
+      ],
+      "id": "divine-love-wisdom",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gordon-meyer-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01HDXVNJI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817meXlKQqL.jpg",
+          "id": "gordon-meyer-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gordon-meyer"
+          ],
+          "publisher": "Swedenborg Foundation, Inc.",
+          "release_date": "2016-06-23",
+          "runtime_min": 669,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01HDXVNJI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "divine-love-wisdom"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01HDXVNJI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Divine Love & Wisdom"
     },
     "divine-madness": {
       "added_at": "2026-08-01",
@@ -4516,6 +4577,59 @@
         }
       ],
       "title": "Divine Mortals"
+    },
+    "divine-providence-portable": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "emanuel-swedenborg"
+      ],
+      "genres": [
+        "history",
+        "philosophy",
+        "politics",
+        "religion-spirituality"
+      ],
+      "id": "divine-providence-portable",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gordon-meyer-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06XHF8YCZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816QuAsBahL.jpg",
+          "id": "gordon-meyer-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gordon-meyer"
+          ],
+          "publisher": "Swedenborg Foundation",
+          "release_date": "2017-03-13",
+          "runtime_min": 1000,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XHF8YCZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "divine-providence-portable"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B06XHF8YCZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Divine Providence: Portable"
     },
     "divine-rebels": {
       "added_at": "2026-07-29",

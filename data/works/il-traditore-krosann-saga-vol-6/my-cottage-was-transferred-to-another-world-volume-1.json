@@ -3908,6 +3908,10 @@
             {
               "asin": "B0CT95CGSW",
               "region": "us"
+            },
+            {
+              "asin": "B0CXB12MWN",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81JdxGK80PL.jpg",
@@ -3925,6 +3929,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CT95CGSW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CXB12MWN",
               "type": "libex-import"
             }
           ],
@@ -4551,6 +4560,10 @@
             {
               "asin": "B0DT1MDS5Y",
               "region": "us"
+            },
+            {
+              "asin": "B0DVLTG4YV",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1a14+7QFUL.jpg",
@@ -4568,6 +4581,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0DT1MDS5Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DVLTG4YV",
               "type": "libex-import"
             }
           ],
@@ -8470,6 +8488,59 @@
       ],
       "title": "My Daughter's Secret"
     },
+    "my-day": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lisa-bullard",
+        "brandon-reibeling"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "health-wellness"
+      ],
+      "id": "my-day",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anonymous-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09XJKD16M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81p33XoloFL.jpg",
+          "id": "anonymous-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anonymous"
+          ],
+          "publisher": "Capstone Publishers, Inc.",
+          "release_date": "2022-04-11",
+          "runtime_min": 3,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09XJKD16M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-day"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09XJKD16M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "My Day"
+    },
     "my-days": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8653,6 +8724,57 @@
         }
       ],
       "title": "My Dead Body"
+    },
+    "my-dead-boyfriend": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "barbara-rose"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "my-dead-boyfriend",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "karen-krause-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00NPB3PX0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71bWuB7la4L.jpg",
+          "id": "karen-krause-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karen-krause"
+          ],
+          "publisher": "Barbara A Mack",
+          "release_date": "2013-12-29",
+          "runtime_min": 243,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00NPB3PX0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-dead-boyfriend"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00NPB3PX0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "My Dead Boyfriend"
     },
     "my-dead-world": {
       "added_at": "2026-08-02",

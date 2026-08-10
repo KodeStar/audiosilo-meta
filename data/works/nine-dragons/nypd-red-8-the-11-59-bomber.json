@@ -6775,6 +6775,10 @@
             {
               "asin": "B002V1BGEA",
               "region": "us"
+            },
+            {
+              "asin": "B007D43IAA",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81uKmgObfDL.jpg",
@@ -6791,6 +6795,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1BGEA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007D43IAA",
               "type": "libex-import"
             }
           ],
@@ -8071,6 +8080,34 @@
           ],
           "work": "o-pioneers"
         },
+        "cindy-hardin-killavey-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036GROR2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+gfx0-LGL.jpg",
+          "id": "cindy-hardin-killavey-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cindy-hardin-killavey"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2010-01-07",
+          "runtime_min": 317,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036GROR2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "o-pioneers"
+        },
         "flo-gibson-2012": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -8179,6 +8216,34 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B077V3PTHJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "o-pioneers"
+        },
+        "stephanie-brush-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0038CPJXK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51vPdmnQ0nL.jpg",
+          "id": "stephanie-brush-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephanie-brush"
+          ],
+          "publisher": "Books in Motion",
+          "release_date": "2010-02-15",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0038CPJXK",
               "type": "libex-import"
             }
           ],
@@ -10586,6 +10651,56 @@
       ],
       "title": "O visconde que me amava"
     },
+    "oahu-travel-and-adventure-guide": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ocean-breeze-adventures"
+      ],
+      "genres": [
+        "travel"
+      ],
+      "id": "oahu-travel-and-adventure-guide",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "robert-dale-brown-jr-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D3FXQ21G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81z8QNR85IL.jpg",
+          "id": "robert-dale-brown-jr-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-dale-brown-jr"
+          ],
+          "publisher": "Freel Publishing LLC",
+          "release_date": "2024-05-06",
+          "runtime_min": 243,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D3FXQ21G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "oahu-travel-and-adventure-guide"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D3FXQ21G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Oahu Travel and Adventure Guide"
+    },
     "oak": {
       "added_at": "2026-08-01",
       "authors": [
@@ -11668,6 +11783,77 @@
         }
       ],
       "title": "Oak Orks of the Antilles"
+    },
+    "oakland-noir": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jerry-thompson",
+        "eddie-muller"
+      ],
+      "credits": [
+        {
+          "person": "eddie-muller",
+          "role": "editor"
+        },
+        {
+          "person": "jerry-thompson",
+          "role": "editor"
+        }
+      ],
+      "genres": [
+        "hard-boiled",
+        "mystery",
+        "short-stories",
+        "travel"
+      ],
+      "id": "oakland-noir",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "adenrele-ojo-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06XZRKVFJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IzAu1hbEL.jpg",
+          "id": "adenrele-ojo-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adenrele-ojo",
+            "carrington-macduffie",
+            "hillary-huber",
+            "keith-szarabajka",
+            "kirby-heyborne",
+            "priya-ayyar",
+            "scott-brick",
+            "traber-burns"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2017-04-04",
+          "runtime_min": 482,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XZRKVFJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "oakland-noir"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B06XZRKVFJ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Oakland Noir"
     },
     "oakleaf-bearers": {
       "added_at": "2026-08-02",
