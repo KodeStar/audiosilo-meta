@@ -4029,6 +4029,214 @@
       }
     },
     "new-horizons": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dawn",
+              "Sentinel Dawn"
+            ],
+            "description": "A powerful healer and Sentinel stranded with her companions after passing through the Fae realm. Elaine can fly, fight with Radiance, and sustain protective healing on people who touch her. She takes charge of medical care while the group shelters from the forest's dangerous creatures.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elaine's young bonded companion, a small fire-user traveling with the stranded group. Auri's flames are valuable outside but dangerous in their sealed shelter, where air is limited. Elaine renews the persistent healing that protects her after the Fae crossing erased earlier castings.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earth-and-lightning combat mage traveling with Elaine. Artemis spends much of her mana rapidly building a stone refuge against the spider-filled forest, then shares responsibility for the group's defense and escape planning.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Julius"
+            ],
+            "description": "An experienced commander and exceptionally fast fighter traveling with Elaine and Artemis. Julius helps organize watches, weighs the group's immediate survival needs, and keeps the stranded party together while they assess the hostile forest.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's apprentice and a noncombatant member of the party. Amber depends on the others for protection when they emerge among high-level predators, but remains part of the group's effort to understand their situation and reach safety.",
+            "id": "amber",
+            "name": "Amber",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A severely injured high-level warrior traveling with a young frost wyvern. Elaine finds her in a Roland tavern, restores her missing limbs, and stabilizes her condition. On waking, Iona becomes the first local person able to address Elaine in English.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's young frost wyvern companion. Iona cares for him during her injured journey out of Modu, and their new Companion Bond gives her shared awareness while riding him. His enhanced bite and growing savagery make the bond both useful and demanding.",
+            "id": "fenrir",
+            "name": "Fenrir",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Black Rose"
+            ],
+            "description": "The arena master overseeing the school's combat-scholarship free-for-all. Mormerilhawn supplies the protective skill and teleportation system that remove defeated applicants, sets limits against grave harm, and adjusts Elaine's defeat threshold after seeing her regeneration.",
+            "id": "mormerilhawn",
+            "name": "Mormerilhawn",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's newly assigned adviser at the School of Sorcery and Spellcraft.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's counterpart within her soul-world library, where possible classes appear as books. Librarian helps her evaluate overlapping abilities, long-term upgrades, and the risks of committing one of her limited class slots too early.",
+            "id": "librarian",
+            "name": "Librarian",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lynette"
+            ],
+            "description": "A mind healer whom Elaine visits after recognizing the effects of grief, anxiety, and overwork. Grandmother Lynette listens as Elaine describes repeated losses and her fear that helping people only brings further death.",
+            "id": "grandmother-lynette",
+            "name": "Grandmother Lynette",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's dormmate, who joins Auri in a prank about extreme aging.",
+            "id": "skye",
+            "name": "Skye",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Skye's unicorn bond-partner and a fellow member of Elaine's unusual dormitory household. The bond between Vruna and the former princess is the reason Skye became immortal.",
+            "id": "vruna",
+            "name": "Vruna",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A goblin archivist who assists Elaine with an old biomancy document. Ratcatcher identifies its language as Alethi and explains that copied signatures and transmission history may establish provenance when contact with the Fae makes ordinary age-testing unreliable.",
+            "id": "ratcatcher",
+            "name": "Ratcatcher",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ogre studying Comparative Monster Anatomy alongside Elaine. He approaches her during the opening of a new term and makes her uneasy, although she cannot yet identify a concrete offense or explain the source of her concern.",
+            "id": "ogre-classmate",
+            "name": "Ogre classmate",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A figure from Elaine's distant past whom she remains determined to find. Elaine tells Marcus that Night is still alive, even though Marcus doubts that any vampire could have survived since creation. Night's location and present circumstances are unknown.",
+            "id": "night",
+            "name": "Night",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person known to Elaine from her earlier life. She asks a vampire translator about Knight, but he does not recognize the name.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Knight"
+            ],
+            "description": "The historical founder of a vampire empire. After researching the empire, Elaine identifies Emperor Knight as the person she knew as Knight and plans to investigate the connection.",
+            "id": "emperor-knight",
+            "name": "Emperor Knight",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A school-connected observer who reviews graduation reports. She notices Elaine of Remus in the records, but her purpose and any action she may take remain unknown.",
+            "id": "white-robed-witch",
+            "name": "White-robed witch",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An official who accepts an old and false report accusing Elaine of impersonating a Sentinel. Acting on that misinformation, the clerk orders a roving Ranger team to capture Elaine alive and return her for a public trial and execution.",
+            "id": "imperial-clerk",
+            "name": "Imperial clerk",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C2RDTH2X",
+            "type": "community"
+          }
+        ],
+        "work": "new-horizons"
+      },
       "recaps": {
         "ending": "Elaine completes her bronze biomancy-track graduation, successfully performs Iona's protective full-body modification, and then makes her own far more extensive redesign permanent. Her new body is dramatically stronger and more resilient, although she must relearn movement and sensory control. She replaces her temporary biomancy class with Bookworm. Elaine and Iona remain together, with Auri and Fenrir still part of their close household. Artemis and Julius are established as married hunters in Lyon, while Amber is a successful gemstone merchant who has also reported an unexplained expanding moon cult. Elaine identifies Emperor Knight as the Knight she once knew and intends to investigate the vampire empire, both as a possible refuge for immortals and as a lead to Knight and Night. The Valkyrie Order remains legal in Roland but loses its territorial income. Meanwhile, Marcus investigates an extraordinary surge in accumulated levels, a white-robed witch notices Elaine's graduation record, and an imperial clerk acts on an old false report. Rangers are ordered to capture Elaine alive for a public trial and execution, leaving her intended destination as the source of the immediate threat.",
         "in_short": "Elaine, Auri, Artemis, Julius, and Amber emerge from the Fae realm thousands of years after the age they knew. Guided by Iona, they contain a voler infestation and reach the School of Sorcery and Spellcraft, where Elaine wins a combat scholarship. Artemis and Julius become hunters, Amber builds a gem-trading career, and Elaine spends several years studying healing, wizardry, and biomancy while beginning a relationship with Iona. She graduates the biomancy track, permanently strengthens Iona, completes an extensive survival-focused redesign of her own body, and chooses Bookworm as her third class. Elaine plans to seek Knight and Night through a vampire empire, but an imperial clerk accepts a false accusation that she is a Sentinel impersonator and dispatches Rangers to seize her for trial and execution.",
