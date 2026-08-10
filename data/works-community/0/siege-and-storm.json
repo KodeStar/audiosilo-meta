@@ -3491,6 +3491,260 @@
         "work": "skulduggery-pleasant"
       }
     },
+    "sky-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion and the narrator. On his family property, he conceals the truth about two old bodies while helping his daughter Etta investigate a separate discovery in the swamp.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's daughter and a former Central computational biologist. Persistent and methodical, she finds human remains on the family land and begins investigating another object buried nearby.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Armelle"
+            ],
+            "description": "A former Germanica commander whom McGill remembers as a possible authority on Unification War history. McGill hopes Armelle may know what kind of installation lies beneath the family land.",
+            "id": "armelle",
+            "name": "Armelle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galina Turov's father and a senior government figure. Etta considers him a possible source of information about the buried structure, though his authority and hostility toward McGill make approaching him hazardous.",
+            "id": "alexander-turov",
+            "name": "Alexander Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "The primus of Legion Varus. He knows that the hidden site on McGill's land reported a breach and orders McGill never to return or try to pass its sealed lower door.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An imperator, McGill's superior officer, and his intermittent long-term partner. She warns that an Internal Security inquiry into his historical searches could end in imprisonment or death.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Praetor Drusus"
+            ],
+            "description": "A praetor who receives McGill after his unexpected release from a storage sentence. He is overseeing the imminent Big Sky test and an urgent diplomatic meeting requested by Rigel.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Rigel's diplomatic mission and the son of its previous leader. He presents himself as the future governor of Earth's region and demands that Earth stop building and testing the Big Sky planetary shield.",
+            "id": "rigelian-delegation-leader",
+            "name": "Rigelian delegation leader",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Galina Turov's younger sister and Alexander Turov's daughter. She initiates a concealed relationship with McGill after the diplomatic banquet despite the likely consequences within her family.",
+            "id": "galina-turovs-sister",
+            "name": "Galina Turov's sister",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adjunct Dixon"
+            ],
+            "description": "An adjunct transferred from Legion Victrix during Earth's emergency mobilization. McGill assigns him to command Third Unit's light troops in place of Barton.",
+            "id": "dixon",
+            "name": "Dixon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of McGill's unit who reports the scale of the Big Sky disaster while Legion Varus mobilizes. She explains that all four stations were lost and that falling debris devastated the eastern Mediterranean.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A longtime associate of McGill and a Legion Varus participant. He joins the small commando team assembled for an immediate teleport strike against a Rigelian shield station.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist in McGill's sixteen-person commando team. She deploys with the group on its urgent mission against a shield installation at Rigel.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A weapons specialist and senior noncommissioned leader in McGill's Rigel strike team. He ranks third in the mission's chain of command as the unit prepares to carry timed atomic bombs through a long-range jump.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Winslade"
+            ],
+            "description": "A tribune of Legion Varus who distrusts the rapid wartime purge. He warns McGill that records concerning the live warhead used in the Big Sky test have disappeared and pursues the possibility of domestic sabotage.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of McGill's heavy-troop officers. He is disturbed by Dixon's lethal discipline and ambition during the legion's voyage to an undisclosed target.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus soldier who shares Harris's concern about Dixon's harsh discipline and efforts to impress Galina Turov during the legion's voyage.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Merton"
+            ],
+            "description": "A transport captain acting under Central's authority. He arrests and questions McGill after an attack aboard ship, and reports that Graves died while resisting a separate arrest.",
+            "id": "merton",
+            "name": "Merton",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Collins"
+            ],
+            "description": "A Legion Varus officer appointed acting primus while Graves is unavailable. He briefs the legion on its surprise assault against Dark World's orbital factory.",
+            "id": "collins",
+            "name": "Collins",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blue-scaled Saurian figure seen in Dixon's concealed communications. Kivi uncovers the connection while Legion Varus fights for Sky World's mining complex.",
+            "id": "blue-scaled-saurian-figure",
+            "name": "Blue-scaled Saurian figure",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name of Galina Turov's sister, with whom McGill previously had a concealed encounter. Galina says Sophia works for their father, Alexander Turov, and may have helped arrange the punishment imposed on McGill and Galina.",
+            "id": "sophia",
+            "name": "Sophia",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A researcher based in cave laboratories on Dust World. McGill tells him about the isolated living brain discovered in the bunker, and he helps arrange her transfer away from Earth.",
+            "id": "the-investigator",
+            "name": "The Investigator",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dust World researcher who works beside her husband. She helps operate the newly installed gateway posts and retrieve the living brain from the hidden chamber on Earth.",
+            "id": "the-investigators-wife",
+            "name": "The Investigator's wife",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The only living occupant among eight brain tanks in the bunker. She has survived in isolation for decades on dwindling support, refuses to identify herself, and asks about modern revival technology.",
+            "id": "living-brain",
+            "name": "Living brain",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BGK5WQFJ",
+            "type": "community"
+          }
+        ],
+        "work": "sky-world"
+      }
+    },
     "skysworn": {
       "characters": {
         "characters": [
