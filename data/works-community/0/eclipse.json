@@ -520,6 +520,294 @@
         "work": "edgar-allan-poe-volume-1-the-pit-and-the-pendulum-the-facts-in-the-case-of-m-valdemar-and-the-cask-o"
       }
     },
+    "edge-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion recalled from family leave for a classified lunar assignment. He is selected to investigate a buried anomaly whose origin and hazards remain unknown.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Galina",
+              "Turov"
+            ],
+            "description": "Tribune of Legion Varus and leader of the secret lunar investigation. She recalls McGill to service and closely controls information about the discovery beneath the moon.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Hegemony soldier with a background in ceramics and materials work, sent on the same unexplained lunar mission as McGill.",
+            "id": "bevan",
+            "name": "Bevan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Central scientific leader who arrives to direct examination of the lunar excavation and oversee its casting work.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill’s daughter and the operator of Central’s compact casting system. She fears the danger posed by his mission.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bio adjunct at the lunar base who restores McGill after his first failed insertion. She takes a personal interest in him as the dangerous exploration continues.",
+            "id": "dawn",
+            "name": "Dawn",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A senior Legion Varus officer who assumes control of the lunar operation during Turov's absence. He orders another attempt to obtain a reliable report from inside the buried construct.",
+            "id": "primus-graves",
+            "name": "Primus Graves",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earth's senior authority at Central. He backs continued investigation of the lunar discovery and has the power to direct Legion Varus in matters affecting the planet's Galactic position.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carlos"
+            ],
+            "description": "A longtime Legion Varus comrade of McGill and the bio specialist chosen for his exploration squad. His familiarity with both field medicine and McGill makes him useful on uncertain missions.",
+            "id": "carlos-ortiz",
+            "name": "Carlos Ortiz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus heavy-trooper leader selected for McGill's follow-up team. He provides experienced combat support for an expedition expected to meet unknown resistance.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus ghost specialist chosen to scout for McGill's exploration team. His stealth training suits missions where the terrain and opposition have not yet been mapped.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A Legion Varus technical specialist selected for McGill’s follow-up exploration team.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill’s friend and a Legion Varus centurion who helps stage an apparent public quarrel as urgent combat training.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Zoo Legion sub-tribune who helps brief Legion Varus on 91 Aquarii and its three rival peoples. His local knowledge becomes important as the emergency deployment approaches the contested world.",
+            "id": "fike",
+            "name": "Fike",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of McGill’s adjuncts, incapacitated during the Green Deck training exercise.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fleet security guard aboard Dominus. He initially suspects McGill in Turov's killing, then verifies the recording that shows an intruder was responsible.",
+            "id": "daniels",
+            "name": "Daniels",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Barton"
+            ],
+            "description": "McGill's adjunct, whose practical reading of 91 Aquarii leads her to question the planned show of force. She expects the local society to resist and urges him to challenge the invasion strategy.",
+            "id": "erin-barton",
+            "name": "Erin Barton",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The assassin who kills and abducts Turov, then becomes a Legion Varus captive. She is the Shadowlander ruler's daughter, trained for covert attacks and fiercely loyal to her people.",
+            "id": "shadowlander-rulers-daughter",
+            "name": "Shadowlander ruler's daughter",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of Dominus, responsible for the transport while Fike directs the Legion Varus operation. He objects when Fike's escalation threatens both the ship and Earth's legal position.",
+            "id": "captain-merton",
+            "name": "Captain Merton",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Blue Deck centurion who examines the aftermath of the attack on Dominus's revival facilities. She confirms that Turov's stored record has been erased, preventing a lawful replacement revival.",
+            "id": "evelyn-thompson",
+            "name": "Evelyn Thompson",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer elevated to interim tribune while Turov is captive. He takes temporary command of Legion Varus during a crisis in which authority, advanced equipment, and Turov's recovery are all contested.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Shadowlanders' ruler and mother of the agent held by Legion Varus. She rejects Earth's claim to protective authority and treats the landing force as would-be conquerors.",
+            "id": "shadowlander-ruler",
+            "name": "Shadowlander ruler",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Legion Varus ghost specialist who scouts the Shadowlander city beside Cooper. Her stealth role places her ahead of McGill's main force when the apparently quiet streets conceal a prepared defense.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Armel"
+            ],
+            "description": "A human enforcer representing Province 926 at the Edgeworld tribunal. He commands a large Saurian mercenary legion and challenges Earth's right to decide the planet's future.",
+            "id": "maurice-armel",
+            "name": "Maurice Armel",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A later Shadowlander leader responsible for the drone and revival-machine manufactory. With vital production equipment under threat, she accepts McGill's proposal for a counterstrike against the enemy camp.",
+            "id": "shadowlander-queen",
+            "name": "Shadowlander queen",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Magwa provincial ruler who oversees the lunar investigation. She sets aside collective punishment for Zlur's death while keeping the murder inquiry alive and retaining McGill as a useful witness.",
+            "id": "magwa-governor",
+            "name": "Magwa governor",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Magwa authority responsible for Province 921, previously encountered as the unnamed provincial governor. After the inspectors are killed, she accepts McGill's political arrangement and contacts the Skae.",
+            "id": "governor-knox",
+            "name": "Governor Knox",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of a Galactic species claiming an interest in Edgeworld. The Skae takes part in the tribunal's decision to hear the planet's Brightsider and Nightsider peoples.",
+            "id": "skae",
+            "name": "Skae",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774247674",
+            "type": "community"
+          }
+        ],
+        "work": "edge-world"
+      }
+    },
     "edgedancer": {
       "characters": {
         "characters": [
