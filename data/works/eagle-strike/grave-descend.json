@@ -11453,6 +11453,10 @@
             {
               "asin": "B0038F0G2G",
               "region": "us"
+            },
+            {
+              "asin": "B004K4YUNU",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/813z7rm8k+L.jpg",
@@ -11474,6 +11478,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0038F0G2G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004K4YUNU",
               "type": "libex-import"
             }
           ],
@@ -13191,6 +13200,60 @@
         }
       ],
       "title": "Grave Talk"
+    },
+    "grave-verse-der-toten": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "douglas-preston",
+        "lincoln-child"
+      ],
+      "genres": [
+        "medicine",
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "grave-verse-der-toten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "detlef-bierstedt-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "3732453324",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/710cWZObdVL.jpg",
+          "id": "detlef-bierstedt-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "detlef-bierstedt"
+          ],
+          "publisher": "Argon Verlag",
+          "release_date": "2019-11-27",
+          "runtime_min": 709,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "3732453324",
+              "type": "libex-import"
+            }
+          ],
+          "work": "grave-verse-der-toten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3732453324",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Grave - Verse der Toten"
     },
     "grave-visions": {
       "added_at": "2026-08-02",

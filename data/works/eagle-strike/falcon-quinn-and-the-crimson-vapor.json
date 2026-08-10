@@ -5024,6 +5024,10 @@
             {
               "asin": "B00KLGGW64",
               "region": "us"
+            },
+            {
+              "asin": "B01CF35NS8",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91RuoFrW3JL.jpg",
@@ -5040,6 +5044,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00KLGGW64",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01CF35NS8",
               "type": "libex-import"
             }
           ],
@@ -9255,6 +9264,59 @@
         }
       ],
       "title": "Fall of Giants"
+    },
+    "fall-of-giants-the-century-trilogy-1": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ken-follett"
+      ],
+      "genres": [
+        "espionage",
+        "historical-fiction",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "fall-of-giants-the-century-trilogy-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-lee-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DJFPJM93",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ewo80QAaL.jpg",
+          "id": "john-lee-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-lee"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-14",
+          "runtime_min": 1841,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DJFPJM93",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fall-of-giants-the-century-trilogy-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DJFPJM93",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fall of Giants: The Century Trilogy 1"
     },
     "fall-of-hope": {
       "added_at": "2026-08-01",

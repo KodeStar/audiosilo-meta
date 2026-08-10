@@ -2139,6 +2139,10 @@
             {
               "asin": "B00RENMELE",
               "region": "us"
+            },
+            {
+              "asin": "B0D9ZCDZL8",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/9176MJPFCqL.jpg",
@@ -2155,6 +2159,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00RENMELE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D9ZCDZL8",
               "type": "libex-import"
             }
           ],
@@ -8134,6 +8143,112 @@
         }
       ],
       "title": "Wistful Ascending"
+    },
+    "wisting-und-der-fensterlose-raum": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jorn-lier-horst"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural"
+      ],
+      "id": "wisting-und-der-fensterlose-raum",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gotz-otto-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "3742411578",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VMR9E7PbL.jpg",
+          "id": "gotz-otto-2020",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gotz-otto"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2020-01-24",
+          "runtime_min": 753,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "3742411578",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wisting-und-der-fensterlose-raum"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3742411578",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wisting und der fensterlose Raum"
+    },
+    "wit-of-cricket-2": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dickie-bird",
+        "barry-johnston",
+        "brian-johnston-and-henry-blofeld"
+      ],
+      "genres": [
+        "comedy-humor",
+        "sports"
+      ],
+      "id": "wit-of-cricket-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dickie-bird-2007": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0032N2PZ0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Q11IpEt6L.jpg",
+          "id": "dickie-bird-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dickie-bird",
+            "henry-blofeld",
+            "richie-benaud"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2007-11-20",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0032N2PZ0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wit-of-cricket-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0032N2PZ0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wit of Cricket 2"
     },
     "witch": {
       "added_at": "2026-08-02",

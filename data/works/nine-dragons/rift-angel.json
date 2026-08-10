@@ -7313,6 +7313,10 @@
             {
               "asin": "B0CKKDQB6D",
               "region": "us"
+            },
+            {
+              "asin": "B0CM3YMK96",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7601,6 +7605,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0CKKDQB6D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CM3YMK96",
               "type": "libex-import"
             }
           ],
@@ -7914,6 +7923,58 @@
         }
       ],
       "title": "Right to Know"
+    },
+    "right-to-left": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "mike-burrows"
+      ],
+      "genres": [
+        "business",
+        "science",
+        "technology"
+      ],
+      "id": "right-to-left",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mike-burrows-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B088P6WH7W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WPV0M3LcL.jpg",
+          "id": "mike-burrows-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mike-burrows"
+          ],
+          "publisher": "Mike Burrows",
+          "release_date": "2020-05-15",
+          "runtime_min": 278,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B088P6WH7W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "right-to-left"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B088P6WH7W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Right to Left"
     },
     "right-to-my-wrong": {
       "added_at": "2026-07-29",
@@ -9796,6 +9857,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B004IAUZI0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rights-of-man"
+        },
+        "david-rintoul-2009": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V59YZO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yH4jpov+L.jpg",
+          "id": "david-rintoul-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-rintoul"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2009-01-26",
+          "runtime_min": 276,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V59YZO",
               "type": "libex-import"
             }
           ],

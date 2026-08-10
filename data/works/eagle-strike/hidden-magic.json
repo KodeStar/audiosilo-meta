@@ -2417,6 +2417,10 @@
             {
               "asin": "1494549077",
               "region": "us"
+            },
+            {
+              "asin": "B086R7QMCY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/811fLa8awuL.jpg",
@@ -2433,6 +2437,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1494549077",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B086R7QMCY",
               "type": "libex-import"
             }
           ],
@@ -8847,6 +8856,10 @@
             {
               "asin": "B006H8NRFY",
               "region": "us"
+            },
+            {
+              "asin": "B007WT8X3S",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91iNQW9EFNL.jpg",
@@ -8863,6 +8876,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B006H8NRFY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007WT8X3S",
               "type": "libex-import"
             }
           ],
@@ -11800,6 +11818,60 @@
         }
       ],
       "title": "Hidden Voices"
+    },
+    "hidden-war-2nd-edition": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "john-nores"
+      ],
+      "genres": [
+        "biography-memoir",
+        "nature",
+        "science",
+        "sports",
+        "true-crime"
+      ],
+      "id": "hidden-war-2nd-edition",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "lt-john-nores-jr-ret-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CT9T6QPQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915GTYoLoRL.jpg",
+          "id": "lt-john-nores-jr-ret-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lt-john-nores-jr-ret"
+          ],
+          "publisher": "Caribou Media Group, LLC",
+          "release_date": "2024-01-26",
+          "runtime_min": 328,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CT9T6QPQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hidden-war-2nd-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CT9T6QPQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hidden War (2nd Edition)"
     },
     "hidden-warrior": {
       "added_at": "2026-08-02",

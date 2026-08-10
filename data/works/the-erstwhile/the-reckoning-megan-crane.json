@@ -4921,6 +4921,10 @@
             {
               "asin": "1797122223",
               "region": "us"
+            },
+            {
+              "asin": "1398510300",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/910JRLnr5ZL.jpg",
@@ -4937,6 +4941,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1797122223",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1398510300",
               "type": "libex-import"
             }
           ],
@@ -7955,6 +7964,57 @@
       ],
       "title": "The Red and the Blue"
     },
+    "the-red-apprentice": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jamie-jackson"
+      ],
+      "genres": [
+        "biography-memoir",
+        "sports"
+      ],
+      "id": "the-red-apprentice",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-harper-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "147119115X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91c7GmoU3dL.jpg",
+          "id": "chris-harper-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-harper"
+          ],
+          "publisher": "Simon & Schuster Audio UK",
+          "release_date": "2020-10-29",
+          "runtime_min": 535,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "147119115X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-red-apprentice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "147119115X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Red Apprentice"
+    },
     "the-red-badge-of-courage": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9068,6 +9128,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "brandon-pollock-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CKZB8R3R",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/717UMft0cZL.jpg",
+          "id": "brandon-pollock-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brandon-pollock"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2023-10-31",
+          "runtime_min": 184,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CKZB8R3R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-red-bandanna"
+        },
         "tom-rinaldi-2016": {
           "abridged": false,
           "added_at": "2026-07-29",

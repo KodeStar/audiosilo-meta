@@ -11103,6 +11103,10 @@
             {
               "asin": "B0784VGG9X",
               "region": "us"
+            },
+            {
+              "asin": "B0DS2KHRKB",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -11372,6 +11376,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0784VGG9X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DS2KHRKB",
+              "type": "libex-import"
             }
           ],
           "work": "all-things-bright-and-beautiful"
@@ -11382,6 +11391,10 @@
           "asin": [
             {
               "asin": "1250796881",
+              "region": "us"
+            },
+            {
+              "asin": "152906032X",
               "region": "us"
             }
           ],
@@ -11399,6 +11412,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1250796881",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "152906032X",
               "type": "libex-import"
             }
           ],
@@ -11623,6 +11641,58 @@
         }
       ],
       "title": "All Things Hidden"
+    },
+    "all-things-must-fight-to-live": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bryan-mealer"
+      ],
+      "genres": [
+        "history",
+        "politics",
+        "travel"
+      ],
+      "id": "all-things-must-fight-to-live",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "karl-miller-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00BJ977ZC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pzIBVsskL.jpg",
+          "id": "karl-miller-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karl-miller"
+          ],
+          "publisher": "Audible Studios for Bloomsbury",
+          "release_date": "2013-02-27",
+          "runtime_min": 646,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00BJ977ZC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "all-things-must-fight-to-live"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00BJ977ZC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "All Things Must Fight to Live"
     }
   }
 }

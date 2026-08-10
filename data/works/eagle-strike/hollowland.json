@@ -5198,6 +5198,10 @@
             {
               "asin": "B0BSY3PTSV",
               "region": "us"
+            },
+            {
+              "asin": "B0BSVD7SX3",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -6382,6 +6386,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0BSY3PTSV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BSVD7SX3",
               "type": "libex-import"
             }
           ],
@@ -7917,6 +7926,69 @@
       ],
       "title": "Hollywood Animal"
     },
+    "hollywood-black": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "donald-bogle",
+        "turner-classic-movies",
+        "john-singleton"
+      ],
+      "credits": [
+        {
+          "person": "john-singleton",
+          "role": "introduction"
+        }
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "history",
+        "politics",
+        "social-sciences",
+        "writing-publishing"
+      ],
+      "id": "hollywood-black",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "donald-bogle-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1549139681",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91sL3mom8SL.jpg",
+          "id": "donald-bogle-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "donald-bogle"
+          ],
+          "publisher": "Running Press Adult",
+          "release_date": "2021-08-10",
+          "runtime_min": 643,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1549139681",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-black"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1549139681",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Black"
+    },
     "hollywood-crows": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8181,6 +8253,59 @@
       ],
       "title": "Hollywood Dirt"
     },
+    "hollywood-eden": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "joel-selvin"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "music",
+        "writing-publishing"
+      ],
+      "id": "hollywood-eden",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-berkrot-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1665019395",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81O9LT0ncCL.jpg",
+          "id": "peter-berkrot-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-berkrot"
+          ],
+          "publisher": "Blackstone Publishing",
+          "release_date": "2021-04-06",
+          "runtime_min": 483,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1665019395",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-eden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1665019395",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Eden"
+    },
     "hollywood-ending": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8283,6 +8408,109 @@
         }
       ],
       "title": "Hollywood Ending"
+    },
+    "hollywood-ending-michael-thomsen": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-thomsen"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir"
+      ],
+      "id": "hollywood-ending-michael-thomsen",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jacob-york-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01LDSTSSW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jnAbCjFDL.jpg",
+          "id": "jacob-york-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jacob-york"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-09-06",
+          "runtime_min": 143,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01LDSTSSW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-ending-michael-thomsen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01LDSTSSW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Ending"
+    },
+    "hollywood-enigma": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "carl-rollyson"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "writing-publishing"
+      ],
+      "id": "hollywood-enigma",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-stamper-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00Q56RP2Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81leetcJcOL.jpg",
+          "id": "john-stamper-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-stamper"
+          ],
+          "publisher": "Carl Rollyson",
+          "release_date": "2014-11-26",
+          "runtime_min": 890,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00Q56RP2Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-enigma"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00Q56RP2Y",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Enigma"
     },
     "hollywood-godfather": {
       "added_at": "2026-07-29",
@@ -8969,6 +9197,60 @@
         }
       ],
       "title": "Hollywood Hex"
+    },
+    "hollywood-high": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bruce-handy"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "history",
+        "politics",
+        "social-sciences",
+        "writing-publishing"
+      ],
+      "id": "hollywood-high",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-mortensen-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0F6VWK8TC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JXuRW8JhL.jpg",
+          "id": "alex-mortensen-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-mortensen"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2025-05-20",
+          "runtime_min": 891,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0F6VWK8TC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-high"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0F6VWK8TC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood High"
     },
     "hollywood-hills": {
       "added_at": "2026-07-29",
@@ -9712,6 +9994,157 @@
       ],
       "title": "Hollywood Scandals"
     },
+    "hollywood-stage-captain-horatio-hornblower": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "hollywood-stage-productions"
+      ],
+      "genres": [
+        "arts-entertainment"
+      ],
+      "id": "hollywood-stage-captain-horatio-hornblower",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gregory-peck-2018": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07LGDMDM9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81exiwSMMKL.jpg",
+          "id": "gregory-peck-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gregory-peck",
+            "virginia-mayo"
+          ],
+          "publisher": "Deadtree Publishing",
+          "release_date": "2018-12-18",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07LGDMDM9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-stage-captain-horatio-hornblower"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07LGDMDM9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Stage - Captain Horatio Hornblower"
+    },
+    "hollywood-stage-key-largo": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "hollywood-stage-productions"
+      ],
+      "genres": [
+        "arts-entertainment"
+      ],
+      "id": "hollywood-stage-key-largo",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claire-trevor-2018": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07M8NV1H2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813os4gF5KL.jpg",
+          "id": "claire-trevor-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claire-trevor",
+            "edward-g-robinson"
+          ],
+          "publisher": "Deadtree Publishing",
+          "release_date": "2018-12-20",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07M8NV1H2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-stage-key-largo"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07M8NV1H2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Stage - Key Largo"
+    },
+    "hollywood-stage-the-african-queen": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "hollywood-stage-productions"
+      ],
+      "genres": [
+        "arts-entertainment"
+      ],
+      "id": "hollywood-stage-the-african-queen",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "greer-garson-2019": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1785439367",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81a7UjSWonL.jpg",
+          "id": "greer-garson-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "greer-garson",
+            "humphrey-bogart"
+          ],
+          "publisher": "Deadtree Publishing",
+          "release_date": "2019-01-09",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1785439367",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-stage-the-african-queen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1785439367",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood Stage - The African Queen"
+    },
     "hollywood-station": {
       "added_at": "2026-07-29",
       "authors": [
@@ -9815,6 +10248,61 @@
         }
       ],
       "title": "Hollywood Stories"
+    },
+    "hollywood-the-oral-history": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "sam-wasson",
+        "jeanine-basinger"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "history",
+        "writing-publishing"
+      ],
+      "id": "hollywood-the-oral-history",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marni-penning-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09TWT74FY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81iWRX4hPZL.jpg",
+          "id": "marni-penning-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marni-penning",
+            "timothy-andres-pabon"
+          ],
+          "publisher": "Harper",
+          "release_date": "2022-11-08",
+          "runtime_min": 1729,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09TWT74FY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollywood-the-oral-history"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09TWT74FY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hollywood: The Oral History"
     },
     "hollywood-tough": {
       "added_at": "2026-07-29",
@@ -15879,6 +16367,161 @@
       ],
       "title": "Holy Orders"
     },
+    "holy-orders-benjamin-black": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "benjamin-black"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "mystery"
+      ],
+      "id": "holy-orders-benjamin-black",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-keating-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00JVS04FI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1V-6bIu7lL.jpg",
+          "id": "john-keating-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-keating"
+          ],
+          "publisher": "Pan Macmillan Publishers Ltd",
+          "release_date": "2014-05-08",
+          "runtime_min": 579,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00JVS04FI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "holy-orders-benjamin-black"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00JVS04FI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Holy Orders"
+    },
+    "holy-orders-john-banville": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "john-banville"
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "holy-orders-john-banville",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stanley-townsend-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0GQZPNCWH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817igXldkrL.jpg",
+          "id": "stanley-townsend-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stanley-townsend"
+          ],
+          "publisher": "Faber & Faber",
+          "release_date": "2026-05-21",
+          "runtime_min": 560,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GQZPNCWH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "holy-orders-john-banville"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GQZPNCWH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Holy Orders"
+    },
+    "holy-orders-quirke-6": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "benjamin-black"
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery"
+      ],
+      "id": "holy-orders-quirke-6",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-keating-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0GNP5Q4QF",
+              "region": "us"
+            }
+          ],
+          "id": "john-keating-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-keating"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2014-05-08",
+          "runtime_min": 579,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GNP5Q4QF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "holy-orders-quirke-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GNP5Q4QF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Holy Orders: Quirke 6"
+    },
     "holy-quran": {
       "added_at": "2026-07-29",
       "authors": [
@@ -16039,6 +16682,59 @@
         }
       ],
       "title": "Holy Roman Empire"
+    },
+    "holy-rover": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lori-erickson"
+      ],
+      "genres": [
+        "biography-memoir",
+        "occult",
+        "religion-spirituality",
+        "travel"
+      ],
+      "id": "holy-rover",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "beth-chaplin-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B074Q2885B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jsNvIRfDL.jpg",
+          "id": "beth-chaplin-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "beth-chaplin"
+          ],
+          "publisher": "Fortress Press",
+          "release_date": "2017-08-14",
+          "runtime_min": 466,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B074Q2885B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "holy-rover"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B074Q2885B",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Holy Rover"
     }
   }
 }

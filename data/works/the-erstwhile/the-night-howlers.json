@@ -9132,6 +9132,10 @@
             {
               "asin": "B00BAZC4T4",
               "region": "us"
+            },
+            {
+              "asin": "B00DD082SG",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71BII2RydGL.jpg",
@@ -9148,6 +9152,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00BAZC4T4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00DD082SG",
               "type": "libex-import"
             }
           ],
@@ -15190,6 +15199,57 @@
         }
       ],
       "title": "The Night Window"
+    },
+    "the-night-wire": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "w-f-arnold"
+      ],
+      "genres": [
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "the-night-wire",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "blair-mellow-2006": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V01BK0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TxbzefxCL.jpg",
+          "id": "blair-mellow-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "blair-mellow"
+          ],
+          "publisher": "PC Treasures, Inc.",
+          "release_date": "2006-12-31",
+          "runtime_min": 14,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V01BK0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-night-wire"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V01BK0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Night Wire"
     },
     "the-night-woods": {
       "added_at": "2026-07-29",

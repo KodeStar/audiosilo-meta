@@ -6942,6 +6942,10 @@
             {
               "asin": "1797122185",
               "region": "us"
+            },
+            {
+              "asin": "1004045824",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Mi28ZcltL.jpg",
@@ -6958,6 +6962,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1797122185",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1004045824",
               "type": "libex-import"
             }
           ],
@@ -7482,6 +7491,10 @@
             {
               "asin": "B002V5H72Q",
               "region": "us"
+            },
+            {
+              "asin": "1705014569",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-kNtSt8qL.jpg",
@@ -7498,6 +7511,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V5H72Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705014569",
               "type": "libex-import"
             }
           ],
@@ -7696,6 +7714,57 @@
         }
       ],
       "title": "Another Name for the Devil"
+    },
+    "another-nice-mess": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "raymond-valinoti"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir"
+      ],
+      "id": "another-nice-mess",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jack-de-golia-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00CLC2A26",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ioRzbyy9L.jpg",
+          "id": "jack-de-golia-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-de-golia"
+          ],
+          "publisher": "BearManor Media",
+          "release_date": "2013-05-01",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00CLC2A26",
+              "type": "libex-import"
+            }
+          ],
+          "work": "another-nice-mess"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00CLC2A26",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Another Nice Mess"
     },
     "another-nightmare-gig-from-hell": {
       "added_at": "2026-07-29",
@@ -8112,6 +8181,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "peter-wickham-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01I1VWZ20",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91c0Lr-4EWL.jpg",
+          "id": "peter-wickham-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-wickham"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2016-07-07",
+          "runtime_min": 697,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01I1VWZ20",
+              "type": "libex-import"
+            }
+          ],
+          "work": "another-one-goes-tonight"
+        },
         "simon-prebble-2016": {
           "abridged": false,
           "added_at": "2026-07-29",

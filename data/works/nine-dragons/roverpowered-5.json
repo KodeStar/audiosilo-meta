@@ -5847,6 +5847,10 @@
             {
               "asin": "B00ND56Q7U",
               "region": "us"
+            },
+            {
+              "asin": "B00SLW21RO",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81L-+bG21qL.jpg",
@@ -5864,6 +5868,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00ND56Q7U",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00SLW21RO",
               "type": "libex-import"
             }
           ],
@@ -6657,6 +6666,57 @@
         }
       ],
       "title": "Rowena Through the Wall"
+    },
+    "rowing-into-the-son": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jordan-hanssen"
+      ],
+      "genres": [
+        "biography-memoir",
+        "sports"
+      ],
+      "id": "rowing-into-the-son",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jordan-hanssen-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BYFZPH4V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iid6aE0fL.jpg",
+          "id": "jordan-hanssen-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jordan-hanssen"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2023-03-16",
+          "runtime_min": 439,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BYFZPH4V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rowing-into-the-son"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BYFZPH4V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Rowing into the Son"
     },
     "rowley-jeffersons-awesome-friendly-adventure": {
       "added_at": "2026-07-30T14:42:56+01:00",

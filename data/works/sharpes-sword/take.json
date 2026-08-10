@@ -567,6 +567,10 @@
             {
               "asin": "0062941267",
               "region": "us"
+            },
+            {
+              "asin": "1405549467",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71x3Jw5M3vL.jpg",
@@ -583,6 +587,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "0062941267",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1405549467",
               "type": "libex-import"
             }
           ],
@@ -6165,6 +6174,57 @@
       ],
       "title": "Take Me I'm Yours"
     },
+    "take-me-j-kenner": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "j-kenner"
+      ],
+      "genres": [
+        "erotica",
+        "romance"
+      ],
+      "id": "take-me-j-kenner",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sofia-willingham-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00J3G4A3U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WvC36C97L.jpg",
+          "id": "sofia-willingham-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sofia-willingham"
+          ],
+          "publisher": "Headline Digital",
+          "release_date": "2014-04-10",
+          "runtime_min": 204,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00J3G4A3U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "take-me-j-kenner"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00J3G4A3U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Take Me"
+    },
     "take-me-manhattan-mafia-book-1": {
       "added_at": "2026-07-29",
       "authors": [
@@ -9593,6 +9653,64 @@
         }
       ],
       "title": "Take What You Can Carry"
+    },
+    "take-you-wherever-you-go": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "kenny-leon",
+        "samuel-l-jackson"
+      ],
+      "credits": [
+        {
+          "person": "samuel-l-jackson",
+          "role": "introduction"
+        }
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir"
+      ],
+      "id": "take-you-wherever-you-go",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "samuel-l-jackson-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07DHT656X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NPzFcFXeL.jpg",
+          "id": "samuel-l-jackson-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "samuel-l-jackson"
+          ],
+          "publisher": "Grand Central Publishing",
+          "release_date": "2018-06-05",
+          "runtime_min": 344,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07DHT656X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "take-you-wherever-you-go"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07DHT656X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Take You Wherever You Go"
     },
     "take-your-breath-away": {
       "added_at": "2026-07-29",

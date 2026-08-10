@@ -626,6 +626,10 @@
             {
               "asin": "B082YGYH3Y",
               "region": "us"
+            },
+            {
+              "asin": "B0BDT587MW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-ftAbRztL.jpg",
@@ -643,6 +647,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B082YGYH3Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BDT587MW",
               "type": "libex-import"
             }
           ],
@@ -707,6 +716,61 @@
         }
       ],
       "title": "Crossing the Waters"
+    },
+    "crossing-the-wire": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "will-hobbs"
+      ],
+      "genres": [
+        "action-adventure",
+        "biography-memoir",
+        "childrens",
+        "coming-of-age",
+        "self-help",
+        "travel"
+      ],
+      "id": "crossing-the-wire",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ramon-de-ocampo-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1J8QI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41DsoMFgptL.jpg",
+          "id": "ramon-de-ocampo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ramon-de-ocampo"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2009-08-21",
+          "runtime_min": 345,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1J8QI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "crossing-the-wire"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1J8QI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Crossing the Wire"
     },
     "crossing-ties": {
       "added_at": "2026-07-29",
@@ -2769,6 +2833,58 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B06XDTZZXW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Crossroads"
+    },
+    "crossroads-geoffrey-giuliano": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "geoffrey-giuliano"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "music"
+      ],
+      "id": "crossroads-geoffrey-giuliano",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "geoffrey-giuliano-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1O51Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81q5pna-v2L.jpg",
+          "id": "geoffrey-giuliano-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geoffrey-giuliano"
+          ],
+          "publisher": "Audio Holdings, LLC",
+          "release_date": "2009-08-07",
+          "runtime_min": 85,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1O51Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "crossroads-geoffrey-giuliano"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1O51Q",
           "type": "libex-import"
         }
       ],

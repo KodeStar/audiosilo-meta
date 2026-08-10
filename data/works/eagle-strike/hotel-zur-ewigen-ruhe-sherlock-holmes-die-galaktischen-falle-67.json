@@ -790,6 +790,37 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ava-erickson-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DYVTCXGN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gVTxmgLNL.jpg",
+          "id": "ava-erickson-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ava-erickson",
+            "lee-samuels",
+            "teddy-hamilton",
+            "victoria-connolly"
+          ],
+          "publisher": "Dreamscape Media",
+          "release_date": "2026-04-21",
+          "runtime_min": 932,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DYVTCXGN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hothouse-flower-calloway-sisters-book-2"
+        },
         "jessica-almasy-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1117,6 +1148,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00E4OGGYM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hotshot"
+        },
+        "amy-mcfadden-2013-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00E69CF18",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91grJ7A9PYL.jpg",
+          "id": "amy-mcfadden-2013-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amy-mcfadden"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2013-08-06",
+          "runtime_min": 327,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00E69CF18",
               "type": "libex-import"
             }
           ],
@@ -6678,6 +6737,58 @@
         }
       ],
       "title": "Hour Game"
+    },
+    "hour-game-king-and-maxwell-book-2": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "david-baldacci"
+      ],
+      "genres": [
+        "espionage",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "hour-game-king-and-maxwell-book-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-brick-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBMM442",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VxrxC43xL.jpg",
+          "id": "scott-brick-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 867,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBMM442",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hour-game-king-and-maxwell-book-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBMM442",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hour Game: King and Maxwell Book 2"
     },
     "hour-of-darkness": {
       "added_at": "2026-08-02",

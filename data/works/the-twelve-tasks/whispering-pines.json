@@ -896,6 +896,14 @@
             {
               "asin": "B002V1M4UK",
               "region": "us"
+            },
+            {
+              "asin": "1867232928",
+              "region": "us"
+            },
+            {
+              "asin": "0263303071",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91V+OiMvTaL.jpg",
@@ -917,6 +925,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1M4UK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1867232928",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0263303071",
               "type": "libex-import"
             }
           ],
@@ -1120,6 +1138,57 @@
         }
       ],
       "title": "Whispering to Witches"
+    },
+    "whispering-wildwood": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "emma-sterner-radley"
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "whispering-wildwood",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hetty-elliott-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08WRLWCJM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51dB7uBWBJL.jpg",
+          "id": "hetty-elliott-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hetty-elliott"
+          ],
+          "publisher": "Heartsome Publishing",
+          "release_date": "2021-02-18",
+          "runtime_min": 869,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08WRLWCJM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "whispering-wildwood"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08WRLWCJM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Whispering Wildwood"
     },
     "whispering-wood": {
       "added_at": "2026-08-02",

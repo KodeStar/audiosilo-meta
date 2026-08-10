@@ -4673,6 +4673,10 @@
             {
               "asin": "B07YZRP6M8",
               "region": "us"
+            },
+            {
+              "asin": "B0BDT4GTVY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Mse0wsqXL.jpg",
@@ -4690,6 +4694,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YZRP6M8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BDT4GTVY",
               "type": "libex-import"
             }
           ],
@@ -6699,6 +6708,56 @@
       ],
       "title": "Tschick"
     },
+    "tsugumi": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "banana-yoshimoto"
+      ],
+      "genres": [
+        "coming-of-age"
+      ],
+      "id": "tsugumi",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marianna-jensen-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "3748000073",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vo7e9OOwL.jpg",
+          "id": "marianna-jensen-2018",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marianna-jensen"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-11-17",
+          "runtime_min": 271,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "3748000073",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tsugumi"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3748000073",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tsugumi"
+    },
     "tsumiko-and-the-enslaved-fox": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7767,6 +7826,121 @@
       ],
       "title": "TTYL #5"
     },
+    "tu-ansiedad-bajo-control": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "tais-perez-dominguez",
+        "sergio-garcia-morilla"
+      ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "self-help"
+      ],
+      "id": "tu-ansiedad-bajo-control",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "lucia-padilla-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0C2VXPLNT",
+              "region": "us"
+            },
+            {
+              "asin": "B0C2VXFZBT",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71dbfC7c4pL.jpg",
+          "id": "lucia-padilla-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucia-padilla",
+            "rafa-ordorika"
+          ],
+          "publisher": "Audible Studios y Planeta Audio",
+          "release_date": "2023-05-12",
+          "runtime_min": 464,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C2VXPLNT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C2VXFZBT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-ansiedad-bajo-control"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C2VXPLNT",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu ansiedad bajo control"
+    },
+    "tu-as-promis-que-tu-vivrais-pour-moi": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "carene-ponte"
+      ],
+      "genres": [
+        "coming-of-age",
+        "parenting-relationships"
+      ],
+      "id": "tu-as-promis-que-tu-vivrais-pour-moi",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "myrtille-bakouche-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B071WWQ2QQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jMISgJVOL.jpg",
+          "id": "myrtille-bakouche-2017",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "myrtille-bakouche"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2017-06-12",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B071WWQ2QQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-as-promis-que-tu-vivrais-pour-moi"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B071WWQ2QQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu as promis que tu vivrais pour moi"
+    },
     "tu-camino-para-sanar": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8046,6 +8220,58 @@
       ],
       "title": "Tu Derecho a Ser Rico"
     },
+    "tu-devrais-peut-etre-en-parler-a-quelquun": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lori-gottlieb"
+      ],
+      "genres": [
+        "business",
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "tu-devrais-peut-etre-en-parler-a-quelquun",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emilie-lucet-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BSVDHJDY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gi3rNuJLL.jpg",
+          "id": "emilie-lucet-2023",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emilie-lucet"
+          ],
+          "publisher": "ABP Éditions",
+          "release_date": "2023-01-24",
+          "runtime_min": 887,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BSVDHJDY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-devrais-peut-etre-en-parler-a-quelquun"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BSVDHJDY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu devrais peut-être en parler à quelqu'un"
+    },
     "tu-eres-tu-lugar-seguro-you-are-your-safe-place": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8198,6 +8424,56 @@
         }
       ],
       "title": "Tu hijo, tu espejo [Your Child, Your Reflection]"
+    },
+    "tu-llevas-su-nombre-you-carry-his-name": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "carmela-diaz"
+      ],
+      "genres": [
+        "historical-fiction"
+      ],
+      "id": "tu-llevas-su-nombre-you-carry-his-name",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "carla-toledano-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08BV26LV6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81emAz0dmBL.jpg",
+          "id": "carla-toledano-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carla-toledano"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-06-30",
+          "runtime_min": 780,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08BV26LV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-llevas-su-nombre-you-carry-his-name"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08BV26LV6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tú llevas su nombre [You Carry His Name]"
     },
     "tu-lo-harias": {
       "added_at": "2026-07-29",
@@ -8866,6 +9142,58 @@
       ],
       "title": "Tu nombre ancestral es abundancia"
     },
+    "tu-peux-toujours-courir-you-can-always-run": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "valerie-chevalier"
+      ],
+      "genres": [
+        "lgbtq",
+        "romance"
+      ],
+      "id": "tu-peux-toujours-courir-you-can-always-run",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "catherine-brunet-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B079T8SSMD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81e0e+QJkcL.jpg",
+          "id": "catherine-brunet-2018",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "catherine-brunet",
+            "marie-josee-tremblay"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-03-06",
+          "runtime_min": 419,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B079T8SSMD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-peux-toujours-courir-you-can-always-run"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B079T8SSMD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu peux toujours courir [You can always run]"
+    },
     "tu-por-pura-casualidad": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9146,6 +9474,58 @@
         }
       ],
       "title": "Tú, por pura casualidad"
+    },
+    "tu-proposito-de-vida-eres-tu-your-life-purpose-is-you": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "manuel-marquez"
+      ],
+      "genres": [
+        "business",
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "tu-proposito-de-vida-eres-tu-your-life-purpose-is-you",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jordi-llovet-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B5MG8323",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81n1guCZJIL.jpg",
+          "id": "jordi-llovet-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jordi-llovet"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2022-07-14",
+          "runtime_min": 422,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B5MG8323",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-proposito-de-vida-eres-tu-your-life-purpose-is-you"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B5MG8323",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu propósito de vida eres tú [Your Life Purpose Is You]"
     },
     "tu-realidad-inmortal-your-immortal-reality": {
       "added_at": "2026-07-29",
@@ -9562,6 +9942,109 @@
       ],
       "title": "Tu rostro mañana"
     },
+    "tu-rostro-manana-1-fiebre-y-lanza-your-face-tomorrow-1-fever-and-spear": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "javier-marias"
+      ],
+      "genres": [
+        "espionage",
+        "thriller-suspense"
+      ],
+      "id": "tu-rostro-manana-1-fiebre-y-lanza-your-face-tomorrow-1-fever-and-spear",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arturo-lopez-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8420454907",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81S6qLViBJS.jpg",
+          "id": "arturo-lopez-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arturo-lopez"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2021-06-17",
+          "runtime_min": 834,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8420454907",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-rostro-manana-1-fiebre-y-lanza-your-face-tomorrow-1-fever-and-spear"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420454907",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu rostro mañana. 1 Fiebre y lanza [Your Face Tomorrow. 1 Fever and Spear]"
+    },
+    "tu-rostro-manana-2-baile-y-sueno-your-face-tomorrow-2-dance-and-dream": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "javier-marias"
+      ],
+      "genres": [
+        "espionage",
+        "literary-fiction",
+        "thriller-suspense"
+      ],
+      "id": "tu-rostro-manana-2-baile-y-sueno-your-face-tomorrow-2-dance-and-dream",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arturo-lopez-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8420454915",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vXFMGtX5S.jpg",
+          "id": "arturo-lopez-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arturo-lopez"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2021-06-17",
+          "runtime_min": 712,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8420454915",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-rostro-manana-2-baile-y-sueno-your-face-tomorrow-2-dance-and-dream"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420454915",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu rostro mañana. 2 Baile y sueño [Your Face Tomorrow: 2 Dance and Dream]"
+    },
     "tu-segunda-vida-empieza-cuando-descubres-que-solo-tienes-una-your-second-life-begins-when-you-discov": {
       "added_at": "2026-07-29",
       "authors": [
@@ -9612,6 +10095,108 @@
         }
       ],
       "title": "Tu segunda vida empieza cuando descubres que solo tienes una [Your Second Life Begins When You Discover That You Only Have One]"
+    },
+    "tu-tambien-puedes-ser-budista": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dzongsar-jamyan-khyentse"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "tu-tambien-puedes-ser-budista",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gus-cantolla-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B094Y83YRZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81H3s2OHAtS.jpg",
+          "id": "gus-cantolla-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gus-cantolla"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-05-14",
+          "runtime_min": 303,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B094Y83YRZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-tambien-puedes-ser-budista"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B094Y83YRZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tú También Puedes Ser Budista"
+    },
+    "tu-tueras-le-pere": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "sandrone-dazieri"
+      ],
+      "genres": [
+        "hard-boiled",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "tu-tueras-le-pere",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mathieu-buscatto-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01LZVG086",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LinR-GFyL.jpg",
+          "id": "mathieu-buscatto-2016",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mathieu-buscatto"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-10-20",
+          "runtime_min": 1112,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01LZVG086",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-tueras-le-pere"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01LZVG086",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tu tueras le père"
     },
     "tu-vida-tu-mejor-negocio-your-life-your-best-business": {
       "added_at": "2026-07-29",
@@ -9715,6 +10300,60 @@
         }
       ],
       "title": "Tú y otros desastres naturales"
+    },
+    "tu-y-yo-invencibles": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "alice-kellen"
+      ],
+      "genres": [
+        "historical-fiction",
+        "historical-romance",
+        "romance"
+      ],
+      "id": "tu-y-yo-invencibles",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "estel-tort-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B97SFX7L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Z3DGiaQzL.jpg",
+          "id": "estel-tort-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "estel-tort",
+            "pep-papell",
+            "sergio-olmo"
+          ],
+          "publisher": "Planeta Audio",
+          "release_date": "2022-08-10",
+          "runtime_min": 813,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B97SFX7L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-y-yo-invencibles"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B97SFX7L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tú y yo, invencibles"
     },
     "tu-yo-y-un-tal-vez": {
       "added_at": "2026-07-29",

@@ -1962,6 +1962,10 @@
             {
               "asin": "B0DRDQDJMT",
               "region": "us"
+            },
+            {
+              "asin": "B0DN6PPHS5",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2251,6 +2255,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0DRDQDJMT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DN6PPHS5",
               "type": "libex-import"
             }
           ],
@@ -11172,6 +11181,60 @@
       ],
       "title": "Wildcat"
     },
+    "wildcat-fireflies": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "amber-kizer"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "wildcat-fireflies",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "khristine-hvam-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B005B1P896",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yRpMxhP5L.jpg",
+          "id": "khristine-hvam-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "khristine-hvam"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2011-07-12",
+          "runtime_min": 824,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005B1P896",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wildcat-fireflies"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B005B1P896",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wildcat Fireflies"
+    },
     "wildcat-foreclosure-of-a-dream": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13284,6 +13347,57 @@
         }
       ],
       "title": "Wilde Love: A Forever Wilde Novel"
+    },
+    "wilde-reise-durch-die-nacht": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "walter-moers"
+      ],
+      "genres": [
+        "comedy-humor",
+        "fantasy"
+      ],
+      "id": "wilde-reise-durch-die-nacht",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dirk-bach-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TKNFEUY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1-S1vy2KNL.jpg",
+          "id": "dirk-bach-2013",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dirk-bach"
+          ],
+          "publisher": "Der Hörverlag",
+          "release_date": "2013-11-11",
+          "runtime_min": 275,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TKNFEUY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wilde-reise-durch-die-nacht"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKNFEUY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Wilde Reise durch die Nacht"
     },
     "wilde-schafsjagd": {
       "added_at": "2026-07-29",

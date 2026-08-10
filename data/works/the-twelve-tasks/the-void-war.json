@@ -6405,12 +6405,44 @@
           ],
           "work": "the-voyage-of-the-beagle"
         },
+        "christopher-romance-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07YL98Y91",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91oPjOq9dVL.jpg",
+          "id": "christopher-romance-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-romance"
+          ],
+          "publisher": "MuseumAudiobooks.com",
+          "release_date": "2019-09-30",
+          "runtime_min": 1124,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YL98Y91",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyage-of-the-beagle"
+        },
         "david-case-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
             {
               "asin": "B002V0QCQS",
+              "region": "us"
+            },
+            {
+              "asin": "B002VA9S7S",
               "region": "us"
             }
           ],
@@ -6428,6 +6460,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V0QCQS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA9S7S",
               "type": "libex-import"
             }
           ],
@@ -9838,6 +9875,57 @@
         }
       ],
       "title": "The Voyage Out"
+    },
+    "the-voyager-program": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "charles-river-editors"
+      ],
+      "genres": [
+        "history",
+        "science"
+      ],
+      "id": "the-voyager-program",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bill-hare-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07WZTR1VB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816eoFByd9L.jpg",
+          "id": "bill-hare-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bill-hare"
+          ],
+          "publisher": "Charles River Editors",
+          "release_date": "2019-08-30",
+          "runtime_min": 84,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07WZTR1VB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyager-program"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07WZTR1VB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Voyager Program"
     },
     "the-voyages-of-doctor-dolittle": {
       "added_at": "2026-08-02",

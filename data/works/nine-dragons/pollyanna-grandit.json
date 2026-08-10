@@ -5381,6 +5381,10 @@
             {
               "asin": "B002V5BTX4",
               "region": "us"
+            },
+            {
+              "asin": "B002V1NI1Y",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71J54yT8AjL.jpg",
@@ -5397,6 +5401,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V5BTX4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1NI1Y",
               "type": "libex-import"
             }
           ],
@@ -5645,6 +5654,56 @@
         }
       ],
       "title": "Pool Boy"
+    },
+    "pool-care-made-easy": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "miles-reise"
+      ],
+      "genres": [
+        "home-garden"
+      ],
+      "id": "pool-care-made-easy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-h-kiser-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01G9BQZ34",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nwRZ+ju6L.jpg",
+          "id": "james-h-kiser-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-h-kiser"
+          ],
+          "publisher": "Jonah Ryan",
+          "release_date": "2016-05-30",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01G9BQZ34",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pool-care-made-easy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01G9BQZ34",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pool Care Made Easy"
     },
     "pool-house": {
       "added_at": "2026-08-02",
@@ -10743,6 +10802,56 @@
         }
       ],
       "title": "Popol Vuh, El Libro Sagrado de los Mayas [Popol Vuh, the Sacred Book of the Mayas]"
+    },
+    "popol-vuh-spanish-edition": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "fray-francisco-ximenez-de-quesada"
+      ],
+      "genres": [
+        "history"
+      ],
+      "id": "popol-vuh-spanish-edition",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ana-ragasol-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09HY4J79J",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71L6bbZ76GL.jpg",
+          "id": "ana-ragasol-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ana-ragasol"
+          ],
+          "publisher": "Xook Audio Editorial",
+          "release_date": "2021-10-12",
+          "runtime_min": 398,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09HY4J79J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "popol-vuh-spanish-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09HY4J79J",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Popol Vuh (Spanish Edition)"
     }
   }
 }

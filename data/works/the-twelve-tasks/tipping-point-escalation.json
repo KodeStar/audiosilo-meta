@@ -2125,6 +2125,14 @@
             {
               "asin": "1488211272",
               "region": "us"
+            },
+            {
+              "asin": "B0BF2C722H",
+              "region": "us"
+            },
+            {
+              "asin": "0263303136",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91pWc2FJrNL.jpg",
@@ -2146,6 +2154,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1488211272",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BF2C722H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0263303136",
               "type": "libex-import"
             }
           ],
@@ -15062,6 +15080,183 @@
       ],
       "title": "Titanic"
     },
+    "titanic-facts": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "barb-asselin"
+      ],
+      "genres": [
+        "history",
+        "science",
+        "technology"
+      ],
+      "id": "titanic-facts",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bryan-patrick-jones-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01430KPZC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12260,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 59072,
+              "start_ms": 12260,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 136348,
+              "start_ms": 71332,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 387123,
+              "start_ms": 207680,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 169413,
+              "start_ms": 594803,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 103329,
+              "start_ms": 764216,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 128267,
+              "start_ms": 867545,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 100496,
+              "start_ms": 995812,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 73468,
+              "start_ms": 1096308,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 68917,
+              "start_ms": 1169776,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 144893,
+              "start_ms": 1238693,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 198438,
+              "start_ms": 1383586,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 45465,
+              "start_ms": 1582024,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 29861,
+              "start_ms": 1627489,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lQ+gamK8L.jpg",
+          "id": "bryan-patrick-jones-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bryan-patrick-jones"
+          ],
+          "publisher": "Asselin Group Online Publisher",
+          "release_date": "2015-08-19",
+          "runtime_min": 27,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01430KPZC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanic-facts"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01430KPZC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic Facts"
+    },
+    "titanic-michael-burgan": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-burgan",
+        "eldon-doty"
+      ],
+      "genres": [
+        "childrens",
+        "science",
+        "technology"
+      ],
+      "id": "titanic-michael-burgan",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anonymous-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09TMDGKVV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ymxvFr1ML.jpg",
+          "id": "anonymous-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anonymous"
+          ],
+          "publisher": "Capstone Publishers, Inc.",
+          "release_date": "2022-03-01",
+          "runtime_min": 22,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09TMDGKVV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanic-michael-burgan"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09TMDGKVV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic"
+    },
     "titanic-museum-mystery": {
       "added_at": "2026-08-01",
       "authors": [
@@ -15180,6 +15375,110 @@
       ],
       "title": "Titanic Museum Mystery"
     },
+    "titanic-poetry-music-stories": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ken-rossignol"
+      ],
+      "genres": [
+        "history",
+        "science",
+        "technology"
+      ],
+      "id": "titanic-poetry-music-stories",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "trevor-palczynski-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00GO7A3UA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81crw4BcHuL.jpg",
+          "id": "trevor-palczynski-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "trevor-palczynski"
+          ],
+          "publisher": "Kenneth C. Rossignol",
+          "release_date": "2013-11-18",
+          "runtime_min": 165,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00GO7A3UA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanic-poetry-music-stories"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00GO7A3UA",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic Poetry, Music & Stories"
+    },
+    "titanic-rupert-matthews": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "rupert-matthews"
+      ],
+      "genres": [
+        "history",
+        "science",
+        "technology"
+      ],
+      "id": "titanic-rupert-matthews",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gabrielle-glaister-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06WLMSM88",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51VVLyaymoL.jpg",
+          "id": "gabrielle-glaister-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gabrielle-glaister"
+          ],
+          "publisher": "Arcturus Digital Limited",
+          "release_date": "2017-02-20",
+          "runtime_min": 446,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06WLMSM88",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanic-rupert-matthews"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B06WLMSM88",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic"
+    },
     "titanic-the-voices-from-the-bbc-archive": {
       "added_at": "2026-07-29",
       "authors": [
@@ -15284,6 +15583,58 @@
         }
       ],
       "title": "Titanic Thompson"
+    },
+    "titanic-tragedy": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "john-maxtone-graham"
+      ],
+      "genres": [
+        "history",
+        "science",
+        "technology"
+      ],
+      "id": "titanic-tragedy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gayle-hendrix-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00X6TQWUE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XjtIb4UEL.jpg",
+          "id": "gayle-hendrix-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gayle-hendrix"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2015-05-06",
+          "runtime_min": 537,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00X6TQWUE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanic-tragedy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00X6TQWUE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic Tragedy"
     },
     "titanic-voices-from-the-disaster": {
       "added_at": "2026-07-29",
@@ -15392,6 +15743,59 @@
         }
       ],
       "title": "Titanic's Last Secrets"
+    },
+    "titanics-tragic-journey": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jomike-tejido",
+        "thomas-kingsley-troupe"
+      ],
+      "genres": [
+        "childrens",
+        "history",
+        "technology"
+      ],
+      "id": "titanics-tragic-journey",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anonymous-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09WX1MSQZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ApMKs2ElL.jpg",
+          "id": "anonymous-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anonymous"
+          ],
+          "publisher": "Capstone Publishers, Inc.",
+          "release_date": "2022-03-30",
+          "runtime_min": 14,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09WX1MSQZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titanics-tragic-journey"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09WX1MSQZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Titanic's Tragic Journey"
     }
   }
 }

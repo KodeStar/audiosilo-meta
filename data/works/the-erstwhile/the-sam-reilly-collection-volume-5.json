@@ -7860,6 +7860,10 @@
             {
               "asin": "B01AHAEMJW",
               "region": "us"
+            },
+            {
+              "asin": "B00SZ1ZONY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91JtxsA3rsL.jpg",
@@ -7876,6 +7880,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01AHAEMJW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00SZ1ZONY",
               "type": "libex-import"
             }
           ],
@@ -9244,6 +9253,57 @@
         }
       ],
       "title": "The Same Place"
+    },
+    "the-same-river-twice": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "pam-mandel"
+      ],
+      "genres": [
+        "biography-memoir",
+        "travel"
+      ],
+      "id": "the-same-river-twice",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "khristine-hvam-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1666120340",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918tyMzRzyS.jpg",
+          "id": "khristine-hvam-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "khristine-hvam"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2021-04-27",
+          "runtime_min": 435,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1666120340",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-same-river-twice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1666120340",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Same River Twice"
     },
     "the-same-sky": {
       "added_at": "2026-07-29",

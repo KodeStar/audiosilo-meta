@@ -2200,6 +2200,10 @@
             {
               "asin": "B004NFV0ZC",
               "region": "us"
+            },
+            {
+              "asin": "B005ZWAD5K",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZoNytwx0L.jpg",
@@ -2216,6 +2220,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B004NFV0ZC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005ZWAD5K",
               "type": "libex-import"
             }
           ],
@@ -6810,6 +6819,68 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-friday-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CHZZR85H",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XZTXYBtTL.jpg",
+          "id": "amanda-friday-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-friday",
+            "anna-grace",
+            "graham-scott",
+            "jeff-moon",
+            "nik-sliwerski",
+            "rob-goll",
+            "sarah-mitchell"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2023-09-14",
+          "runtime_min": 450,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CHZZR85H",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "b-j-harrison-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1950524655",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1E3ZykDZWL.jpg",
+          "id": "b-j-harrison-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2020-10-01",
+          "runtime_min": 402,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1950524655",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
         "david-mccallion-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6833,6 +6904,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00OPBWSWS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "david-rintoul-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0G49ZC9R3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61NeaZ944-L.jpg",
+          "id": "david-rintoul-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-rintoul"
+          ],
+          "publisher": "SNR Audio",
+          "release_date": "2025-12-11",
+          "runtime_min": 404,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0G49ZC9R3",
               "type": "libex-import"
             }
           ],
@@ -6889,6 +6988,118 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V5H3Y8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "gildart-jackson-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BSVNG1RY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TckL5snjL.jpg",
+          "id": "gildart-jackson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gildart-jackson"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2023-02-07",
+          "runtime_min": 490,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BSVNG1RY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "graham-scott-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07T4LVGMS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71PsA74K18L.jpg",
+          "id": "graham-scott-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graham-scott"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2019-06-14",
+          "runtime_min": 442,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07T4LVGMS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "j-david-core-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07TWT9H89",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/716GJPaVLkL.jpg",
+          "id": "j-david-core-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "j-david-core"
+          ],
+          "publisher": "The Gamut",
+          "release_date": "2019-07-08",
+          "runtime_min": 350,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07TWT9H89",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "john-rayburn-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0C1T85WBP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71vMyp7aghL.jpg",
+          "id": "john-rayburn-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-rayburn"
+          ],
+          "publisher": "John D. Rayburn",
+          "release_date": "2023-04-10",
+          "runtime_min": 458,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C1T85WBP",
               "type": "libex-import"
             }
           ],
@@ -6958,6 +7169,62 @@
             }
           ],
           "work": "the-inimitable-jeeves"
+        },
+        "shawna-wolf-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0H4MD1F87",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SJDXtc0wL.jpg",
+          "id": "shawna-wolf-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "shawna-wolf"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2026-06-09",
+          "runtime_min": 384,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0H4MD1F87",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
+        },
+        "stewart-crank-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07T24SV82",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GKg3Ot8EL.jpg",
+          "id": "stewart-crank-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stewart-crank"
+          ],
+          "publisher": "MuseumAudiobooks.com",
+          "release_date": "2019-06-13",
+          "runtime_min": 451,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07T24SV82",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves"
         }
       },
       "sources": [
@@ -7019,6 +7286,57 @@
         }
       ],
       "title": "The Inimitable Jeeves and My Man Jeeves - Unabridged"
+    },
+    "the-inimitable-jeeves-unabridged": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "p-g-wodehouse"
+      ],
+      "genres": [
+        "classics",
+        "comedy-humor"
+      ],
+      "id": "the-inimitable-jeeves-unabridged",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-theis-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B084KWYH53",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qCTlykEML.jpg",
+          "id": "kevin-theis-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-theis"
+          ],
+          "publisher": "Ft. Raphael Publishing Company",
+          "release_date": "2020-02-11",
+          "runtime_min": 416,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B084KWYH53",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-inimitable-jeeves-unabridged"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B084KWYH53",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Inimitable Jeeves - Unabridged"
     },
     "the-initial-fold": {
       "added_at": "2026-08-02",

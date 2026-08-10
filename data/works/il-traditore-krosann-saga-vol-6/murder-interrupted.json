@@ -757,6 +757,10 @@
             {
               "asin": "0063031248",
               "region": "us"
+            },
+            {
+              "asin": "0008380643",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91JdNX4KICL.jpg",
@@ -773,6 +777,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "0063031248",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0008380643",
               "type": "libex-import"
             }
           ],
@@ -4247,6 +4256,59 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0B5HV6616",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Murder Most Royal"
+    },
+    "murder-most-royal-sophia-bennett": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "sophia-bennett"
+      ],
+      "genres": [
+        "comedy-humor",
+        "historical-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "murder-most-royal-sophia-bennett",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "samantha-bond-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BBHFTQVQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PNRGIAv+L.jpg",
+          "id": "samantha-bond-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "samantha-bond"
+          ],
+          "publisher": "Zaffre",
+          "release_date": "2022-11-10",
+          "runtime_min": 567,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BBHFTQVQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "murder-most-royal-sophia-bennett"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BBHFTQVQ",
           "type": "libex-import"
         }
       ],
@@ -11901,6 +11963,59 @@
         }
       ],
       "title": "Murder on K Street"
+    },
+    "murder-on-kaanapali-beach": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "r-barri-flowers"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense",
+        "travel"
+      ],
+      "id": "murder-on-kaanapali-beach",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jane-boyer-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01BMX30HI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Bh9gGEL0L.jpg",
+          "id": "jane-boyer-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jane-boyer"
+          ],
+          "publisher": "R. Barri Flowers",
+          "release_date": "2016-02-11",
+          "runtime_min": 621,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01BMX30HI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "murder-on-kaanapali-beach"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01BMX30HI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Murder on Kaanapali Beach"
     },
     "murder-on-lenox-hill": {
       "added_at": "2026-07-29",
