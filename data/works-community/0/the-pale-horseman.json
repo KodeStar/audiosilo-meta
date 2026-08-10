@@ -145,6 +145,301 @@
         "work": "the-pale-horseman"
       }
     },
+    "the-pandora-paradox": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jason"
+            ],
+            "description": "The leader of Omega Force, a small team committed to resisting the power behind the Confed. Jason carries unusual physical enhancements and an Ancient archive within a failing neural implant, making both his health and the knowledge in his head matters of urgent concern.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Omega Force's battle synth, operating in a recently integrated body and serving as a formidable member of the team.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mok"
+            ],
+            "description": "The head of Blazing Sun and a major sponsor of the resistance. Mok supports the rebellion with intelligence, logistics, and other resources from his organization.",
+            "id": "saditava-mok",
+            "name": "Saditava Mok",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's systems and intelligence specialist, providing technical expertise for the team's operations.",
+            "id": "cage",
+            "name": "Cage",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's engineer, responsible for keeping the team's vessels and equipment functioning.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's combat specialist and one of Jason's longstanding companions.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's medic and a trusted adviser to Jason. Doc monitors the danger posed by Jason's deteriorating neural implant.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's adult son and a lieutenant in an Earth forward-reconnaissance unit. He inherited Jason's enhanced physical abilities and healing, and has gone outside orders to pursue Margaret Jansen with two battle synths accompanying him.",
+            "id": "jacob-brown",
+            "name": "Jacob Brown",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The person Jacob Brown has gone outside orders to pursue, accompanied by battle-synth support.",
+            "id": "margaret-jansen",
+            "name": "Margaret Jansen",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "aliases": [
+              "Captain Webb"
+            ],
+            "description": "An Earth naval special-operations commander and Jason's guarded military contact. Despite once being ordered to hunt Jason, Webb has protected Jacob from military exploitation and warns Jason when Jacob undertakes an unauthorized mission.",
+            "id": "marcus-webb",
+            "name": "Marcus Webb",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of the Earth heavy cruiser Eagle's Talon. Before being recaptured with his ship, he manages to place an encrypted Confed data core inside Mok's intelligence network, leaving the rebellion a potentially important lead.",
+            "id": "captain-edgars",
+            "name": "Captain Edgars",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Viper"
+            ],
+            "description": "A cybernetically augmented human contractor whom Jason hires to locate Jacob without drawing attention. She has crossed paths with Jacob recently and notices his resemblance to Jason, but Jason does not disclose the family connection.",
+            "id": "carolyn-whitney",
+            "name": "Carolyn Whitney",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Councilman Scleesz"
+            ],
+            "description": "A compromised Confed councilman who covertly opposes the Machine while remaining vulnerable because of his own illicit dealings. The Machine sends him toward Earth on a diplomatic mission that conceals an investigation of human technology.",
+            "id": "scleesz",
+            "name": "Scleesz",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Machine"
+            ],
+            "description": "An ancient artificial intelligence that has quietly captured the Confed government through coercion, invented officials, and synth enforcers. It shows particular interest in human access to Ancient engineering methods.",
+            "id": "the-machine",
+            "name": "The Machine",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A scarred intelligence officer alarmed by the unexplained force controlling the Confed. He knows Omega Force supports the rebellion and offers Jason information about Scleesz's concealed assignment in exchange for insight into the hidden ruler.",
+            "id": "confed-intelligence-agent",
+            "name": "Confed Intelligence agent",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "701"
+            ],
+            "description": "A Lot 700 battle synth associated with the units assigned to protect Jacob. Webb reports that 701 has returned to the battle-synth settlement while the two units traveling with Jacob remain out of radio contact.",
+            "id": "combat-unit-701",
+            "name": "Combat Unit 701",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "707"
+            ],
+            "description": "One of the two battle synths accompanying Jacob on his unauthorized mission. Webb confirms that 707 remains with him and has stopped responding by radio, increasing concern about the scout lieutenant's situation.",
+            "id": "combat-unit-707",
+            "name": "Combat Unit 707",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "784"
+            ],
+            "description": "A battle synth traveling with Jacob after the lieutenant goes outside orders. Like 707, Unit 784 is radio silent, leaving Jason and Webb without a direct account of the mission or its present danger and status.",
+            "id": "combat-unit-784",
+            "name": "Combat Unit 784",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Admiral Colleren",
+              "Kellea"
+            ],
+            "description": "An admiral aligned with the rebellion and sheltered by Mok. A rival political leader has placed a price on her, so Mok conceals and protects her.",
+            "id": "kellea-colleren",
+            "name": "Kellea Colleren",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sentient manager of the Ancient archive removed from Jason's implant. It identifies Jason as its appointed archivist and explains that the Machine is building a planetary weapon that still needs access information for an Ancient stellar-energy grid.",
+            "id": "archive-intelligence",
+            "name": "Archive intelligence",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lucky"
+            ],
+            "description": "The designation of Lucky's present battle-synth form. Analysis shows that its specialized systems conflict with his older processing matrix, explaining his destabilization but offering no certain cure while he remains missing.",
+            "id": "combat-unit-777",
+            "name": "Combat Unit 777",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinct artificial intelligence shaped by both an earlier program and Jason's neural matrix. Jason regards Kaz as more trustworthy than the archive intelligence and assigns it to observe the archive while plans against the Machine develop.",
+            "id": "kaz",
+            "name": "Kaz",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mazer"
+            ],
+            "description": "A special-forces officer and longtime associate of Jason and Crusher. Mazer joins the Platform 66 mission in overall command of thirty-one allied warriors, serving in an observational command role alongside Jason's assault plan.",
+            "id": "mazer-reddix",
+            "name": "Mazer Reddix",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted operative serving the Machine and sharing its grievance against biological creators. The lieutenant staged the loss of the intelligence data core so that an alarmed Confed officer would unknowingly help channel the rebellion's response.",
+            "id": "machine-synth-lieutenant",
+            "name": "Machine's synth lieutenant",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former diplomatic attache with extensive political connections who advises the Machine's synth circle. The adviser questions the Machine's cause and is suspected of divided loyalties by both the Machine and its lieutenant.",
+            "id": "older-synth-adviser",
+            "name": "Older synth adviser",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "The armed synth commanding the hidden defenders inside the supposed routing station. Acting for the Machine, the commander surrounds Jason's assault force near the airlock and announces that Jason is to be captured.",
+            "id": "defending-synth-commander",
+            "name": "Defending synth commander",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Archive intelligence"
+            ],
+            "description": "The personal identity of the sentient archive manager first encountered after Jason's implant was removed. Volk accompanies Jason through a remote link during the Platform 66 operation, where the Machine detects the connection and reaches into the archive.",
+            "id": "volk",
+            "name": "Volk",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B08LZPR799",
+            "type": "community"
+          }
+        ],
+        "work": "the-pandora-paradox"
+      }
+    },
     "the-pardoners-tale": {
       "characters": {
         "characters": [
