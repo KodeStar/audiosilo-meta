@@ -493,6 +493,301 @@
       }
     },
     "to-hell-and-back": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The leader of Omega Force, directing the search for a missing battle-synth teammate. Jason is determined to attempt a recovery despite the danger posed to his crew.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Omega Force's missing battle synth, now trapped in a new body dominated by a violent assassin personality. His crew is searching for a way to bring him back.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's combat specialist. He accompanies Jason to collect an engineer and helps investigate the violent attack they discover instead.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An AI designer and ethics consultant known to Omega Force. He is found critically injured after an interrogation-style assault, and his knowledge may be important to Lucky's condition.",
+            "id": "unnamed-prue-engineer",
+            "name": "Unnamed Prue engineer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The engineer's synth aide attempts to defend him during the attack. Despite catastrophic damage, the aide survives long enough to direct Jason upstairs before dying.",
+            "id": "unnamed-synth-aide",
+            "name": "Unnamed synth aide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Omega Force's intelligence and systems specialist. He examines a destroyed synth aide and discovers a concealed encrypted data core that may explain the attack.",
+            "id": "cage",
+            "name": "Cage",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "707",
+              "Tin Man"
+            ],
+            "description": "A Lot 700 battle-synth commander who volunteers to join the search. Having previously protected Jason's son, 707 now supports the attempt to recover the missing synth.",
+            "id": "combat-unit-707",
+            "name": "Combat Unit 707",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "primary weapon controller"
+            ],
+            "description": "A dormant former controller whose return remains a strategic danger. An archive interface has triggered only a temporary maintenance standby, and the Machine's servants may attempt to restore it.",
+            "id": "the-machine",
+            "name": "The Machine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mok"
+            ],
+            "description": "A resistance leader and ally of Omega Force whose home system has suffered a devastating bombardment. He is pursuing those responsible while protecting what remains of his organization.",
+            "id": "saditava-mok",
+            "name": "Saditava Mok",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "701"
+            ],
+            "description": "A Lot 700 battle synth assigned to lead the detail guarding the concealed Devil's Fortune and its sensitive archive.",
+            "id": "combat-unit-701",
+            "name": "Combat Unit 701",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "784"
+            ],
+            "description": "A Lot 700 battle synth assigned to provide technical assistance to the incomplete archive interface aboard the hidden corvette.",
+            "id": "combat-unit-784",
+            "name": "Combat Unit 784",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Omega Force's trusted AI and systems specialist. Kaz departs aboard the Phoenix with Jason and Twingo as the crew begins its search.",
+            "id": "kaz",
+            "name": "Kaz",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's engineer, responsible for maintaining the crew's ships and equipment. He joins Jason aboard the Phoenix for the search.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A highly mobile battle-synth assassin who uses disguise, a plasma carbine, and concealed blades. An internal voice sometimes resists his willingness to harm innocents, but he suppresses it.",
+            "id": "seven",
+            "name": "Seven",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Replics Guild bounty broker identified as a possible route to Seven's contracts and current location.",
+            "id": "jorg",
+            "name": "Jorg",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Senior Council Member Scleesz"
+            ],
+            "description": "A politically exposed Confed council member and opponent of the Machine. He receives intelligence about a synth power grab and the effort to seize the prototype assassin body.",
+            "id": "scleesz",
+            "name": "Scleesz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kellea"
+            ],
+            "description": "A rebel-aligned naval leader under an assassination contract linked to an earlier battle. Saditava Mok is protecting her while Omega Force investigates the threat.",
+            "id": "kellea-colleren",
+            "name": "Kellea Colleren",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Kheprian intelligence operative who has worked inside the Confed capital for centuries. Sympathetic to the rebellion, he warns Scleesz about the synth leader's plans.",
+            "id": "desiree",
+            "name": "Desiree",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "synth leader"
+            ],
+            "description": "The synth leader controlling the Machine's former forces. He seeks the last assassin prototype so he can reproduce its design and provoke a wider war.",
+            "id": "unnamed-synth-conspirator",
+            "name": "Unnamed synth conspirator",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Viper"
+            ],
+            "description": "A cybernetically augmented contract operative assigned to kill Kellea Colleren. Jason plans a tightly limited counter-contract as leverage against her mission and as a possible way to locate Seven.",
+            "id": "carolyn-whitney",
+            "name": "Carolyn Whitney",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "929"
+            ],
+            "description": "A battle synth from the Amita Legion's internal-security force. Acting on 707's request, 929 helps stage the covert extraction of Scleesz from Khepri.",
+            "id": "combat-unit-929",
+            "name": "Combat Unit 929",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fragment of a Noxu AI now housed in a reconnaissance probe. Cas assists Omega Force but feels isolated and resentful after being separated from Jason's mind.",
+            "id": "cas",
+            "name": "Cas",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carolyn Whitney's partner and the father of the young daughter being used to coerce her. He explains the pressure behind Whitney's contract against Kellea.",
+            "id": "abia",
+            "name": "Abia",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled broker at Colton Hub who has an open-ended arrangement with Seven and a longstanding connection to Carolyn Whitney. She accepts Jason's proposed contract despite knowing he was likely to approach her.",
+            "id": "seleste",
+            "name": "Seleste",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Seleste's trusted aide and usual pilot. During the escape from Colton Hub, he remains behind with explosives to delay the pursuing synths and give the others time to flee.",
+            "id": "hjal",
+            "name": "Hjal",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A captive Prue engineer who helped create Seven and is known to Lucky. A synth cult uses him in a staged hostage message intended to draw Omega Force into a trap.",
+            "id": "captive-prue-engineer",
+            "name": "Captive Prue engineer",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's medic. Doc remains aboard the Phoenix with Twingo to provide support and extraction while the ground team enters the mining settlement.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The holder of the still-unresolved contract to kill Kellea Colleren. Seleste warns Jason that the Viper may yet carry it out.",
+            "id": "crisstof-dalton",
+            "name": "Crisstof Dalton",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09L57RX2K",
+            "type": "community"
+          }
+        ],
+        "work": "to-hell-and-back"
+      },
       "recaps": {
         "ending": "Lucky awakens as the sole controller of the converted assassin body. Cas no longer exists independently, having turned its own matrix into the permanent bridge that makes Lucky's recovery possible and removes Seven. Lucky loses several capabilities of the prototype body and still needs physical repairs, but he is mobile, increasingly confident, and back with Omega Force. Combat Unit 707 is also recovering and plans to spend time with Scout Team Obsidian after repairs. Seleste leaves by a prepared escape route while remaining a possible intelligence contact. She warns Jason that the Viper may still execute Crisstof Dalton's contract against Kellea Colleren. Scleesz remains under Kellea's protection and involved with the emerging government, while Saditava Mok continues building an alliance around the former leadership. The Machine is still dormant rather than destroyed. Back at Omega Force's home base, Seven's retained mission files give Jason leads on warlords who terrorize civilians, suggesting a new direction for the team.",
         "in_short": "Omega Force hunts Seven, the assassin personality dominating Lucky's prototype body, while a synth conspiracy tries to obtain the body and its production data. The crew extracts Scleesz, protects Kellea Colleren from an assassination threat, and follows a staged hostage message to a mining planet. Lucky briefly retakes control during the rescue. Omega Force recovers the captive engineer, then finds Lucky and Combat Unit 707 after they suffer severe damage. Desiree subsequently kills the synth conspirator. Cas then gives up its separate existence to bridge Lucky's mind to compatible systems, permanently eliminating Seven. Omega Force returns home with Lucky recovering and Seven's intelligence on predatory warlords. Seleste departs, 707 plans time with Scout Team Obsidian, and the contracts against Kellea remain unresolved. The rebuilding government and the dormant Machine also remain part of the wider conflict.",
