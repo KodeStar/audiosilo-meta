@@ -3324,6 +3324,303 @@
       }
     },
     "dark-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A veteran officer of Legion Varus.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An imperator whose prior relationship with James McGill complicates their professional connection.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Imperial officer and commander of Legion Varus.",
+            "id": "tribune-deitch",
+            "name": "Tribune Deitch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth officer and senior political patron of James McGill.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thompson"
+            ],
+            "description": "A Legion Varus bio specialist and a former lover of James McGill.",
+            "id": "evelyn-thompson",
+            "name": "Evelyn Thompson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior officer of Legion Varus.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Graves"
+            ],
+            "description": "A senior field officer of Legion Varus.",
+            "id": "primus-graves",
+            "name": "Primus Graves",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Veteran Harris"
+            ],
+            "description": "A veteran Legion Varus officer included in the classified briefing for the legion's factory mission.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Varus adjunct trusted with the legion's secret deployment objective. He serves among the experienced officers preparing for the covert seizure of an alien-built industrial station.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Central employee and former lover of McGill who has studied a recovered book believed lost in an earlier bombing. An intruder kills her while McGill is visiting.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed Saurian who enters Florimel's home, kills her, and attacks McGill. McGill kills him during the struggle.",
+            "id": "saurian-intruder",
+            "name": "Saurian intruder",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A concealed operator known to be seeking The Eaters of Lotus.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A new Legion Varus recruit signed by Winslade after previously mocking McGill.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adjunct in Legion Varus detained on suspicion of spying or inciting disloyalty when secret mission information escapes. The arrest prevents her from deploying.",
+            "id": "toro",
+            "name": "Toro",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's underage daughter. Technically capable enough to falsify recruitment identity and age controls, she attempts to enlist in Legion Varus and resists her father's effort to determine her future.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alien heavy infantry assigned to reinforce Legion Varus. They fight in closely bonded littermate groups under Harris, adding foreign troops to the human formation.",
+            "id": "blood-world-heavy-troops",
+            "name": "Blood World heavy troops",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cephalopod non-com assigned to direct two related groups of Blood World heavy troops. The troops respond to the controller's gestures during their integration into Legion Varus.",
+            "id": "cephalopod-heavy-troop-controller",
+            "name": "Cephalopod heavy-troop controller",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist and alien-systems analyst in McGill's factory force. She begins decoding the station's colored signage and traces an anomalous transmission as the depleted unit explores the unfamiliar complex.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bio specialist and medic assigned to McGill's factory force. He gathers biological evidence inside the station and warns that an unexplained transmission may be intended to lure the search party into danger.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified human woman whose remains and tapper are found in a locked factory cell. Her tapper lacks a valid Earth identity, and her recorded distress signal led the search team to the detention area.",
+            "id": "unidentified-human-captive",
+            "name": "Unidentified human captive",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An armored weapons specialist who survives the failed initial drop and joins McGill's immediate command group. His heavy equipment and combat role add needed force to a depleted unit defending the captured factory.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Gold Deck security guard assigned to Galina Turov's private area. He tries to prevent McGill from entering while Turov is absent.",
+            "id": "alders",
+            "name": "Alders",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Etta's mother and McGill's former partner. After learning of their underage daughter's enlistment attempt, she confronts McGill and joins him in trying to delay Etta's entry into legion service.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's sole technical specialist during the renewed station assault. She monitors detection readings that may have been compromised.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable light trooper in McGill's platoon. She has advanced from an earlier recruit status to become a regular, though a past disciplinary incident still bars her from armored or specialist training.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cephalopod sub-veteran who commands the Blood World heavy troops attached to McGill's mixed force during the assault on the hive.",
+            "id": "hive-heavy-troop-commander",
+            "name": "Hive heavy-troop commander",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mahler"
+            ],
+            "description": "A Varus veteran serving in McGill's underground hive force. McGill leaves him in temporary command of the surviving troops while searching the tunnels for scouts who have failed to return.",
+            "id": "veteran-mahler",
+            "name": "Veteran Mahler",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hostile alien official with authority over the defenders that confront the surviving human force after the hive queen's death. The official uses a metallic translation device to address McGill.",
+            "id": "enemy-alien-official",
+            "name": "Enemy alien official",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A revived military-police investigator who arrests McGill while investigating McGill's earlier attack on him.",
+            "id": "veteran-blaine",
+            "name": "Veteran Blaine",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed Blood World officer commanding the troops at the Earth-side gate. The officer becomes stranded with McGill after entering the faulty route and later carries escape instructions back toward the Dark World survivors.",
+            "id": "earth-side-squid-sub-centurion",
+            "name": "Earth-side squid sub-centurion",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07DF79K2D",
+            "type": "community"
+          }
+        ],
+        "work": "dark-world"
+      },
       "recaps": {
         "ending": "The Dark World campaign closes with the orbital factory lost, the surviving ground force given a route home, and the hive queen dead. McGill destroys the enemy-held installation, and his recordings prove that the Iron Eagles were already dead. Drusus clears him. Galina Turov restores McGill to centurion, makes Primus Graves senior primus, and remains in command of Legion Varus. Winslade becomes a primus but transfers to hegemony service. Drusus later demotes Tribune Deitch and assigns her permanently to guard duty on Machine World. The unequal treatment of Blood World troops remains unresolved.\n\nFlorimel verifies that The Eaters of Lotus conceals a formula for spores lethal to Magwa tissue. Claver obtains the physical book, apparently after Etta finds it at McGill's home and trades it to him. McGill kills the visiting Claver body, but the clone network survives, and Etta leaves for Dust World. McGill conceals her apparent role and persuades Galina Turov that he sent her away for protection. Galina Turov withdraws a hidden arrest detail but intends to recover the book and destroy its secrets. Central retains the formula, Claver holds the book, and Etta remains beyond McGill's immediate reach.",
         "in_short": "James McGill joins Legion Varus in a covert attempt to seize an alien-built orbital factory near Dark World. Rivalry between Galina Turov and Tribune Deitch turns the occupation into a two-legion disaster. McGill exposes hidden losses, brings reinforcements, severs the enemy link, and helps make captured troops eligible for revival through bombardment. After Varus kills a hive queen, an enemy fleet takes the factory. McGill secures an escape route, destroys the captured installation, defeats the resulting charge, and regains centurion rank. Florimel then verifies that The Eaters of Lotus contains a spore formula lethal to the Magwa. Claver obtains the book, apparently through Etta, and his clone network survives McGill killing one body. Etta leaves for Dust World. McGill conceals her role from Galina Turov, who wants the book recovered and its secrets destroyed. Drusus demotes Tribune Deitch to permanent guard duty on Machine World.",
