@@ -1894,6 +1894,341 @@
       }
     },
     "clone-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Legion Varus centurion and Etta's father. While away from active service, financial pressure leads him to accept a hazardous experimental assignment at Central.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's daughter, who works at Central as Florimel's assistant. She understands the experimental rift's dangers and is alarmed when her father joins the project.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Central's dangerous experimental rift team, which is testing an unstable method of transmitting matter without fixed gateway posts.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Praetor Drusus"
+            ],
+            "description": "An Earth defense leader directing the clandestine investigation of Rigel. He assigns McGill to gather intelligence through Central's unstable rift.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus commander who supports Drusus's covert mission to Rigel. He briefs McGill on the assignment and the revival conditions that make the one-way insertion survivable.",
+            "id": "primus-graves",
+            "name": "Primus Graves",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A previous rift subject declared permanently lost after Central's link ended without providing evidence of his death.",
+            "id": "ferguson",
+            "name": "Ferguson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Rigel's human representative. He threatens Etta to pressure McGill into ending Earth's operations against Rigel, while a subordinate agent carries out the attack.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Galina",
+              "Turov",
+              "Tribune Turov"
+            ],
+            "description": "A senior Legion Varus officer with a personal history with McGill. After reviving him, she backs another mission to Rigel and treats the enemy's indirect threats as evidence that Earth has gained leverage.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure with authority over the guards at a Rigelian installation. He orders them to keep McGill alive and takes custody of him after the orbital reactor is sabotaged.",
+            "id": "armel",
+            "name": "Armel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Rigelian High Lord who negotiates after the loss of the orbital city. He offers peace only if Earth delivers McGill for permanent death and proves that no revival remains possible.",
+            "id": "squanto",
+            "name": "Squanto",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Earth official who rejects McGill's account of Claver activity at Rigel and presses for his surrender under the proposed peace settlement.",
+            "id": "deitch",
+            "name": "Deitch",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer who unexpectedly assumes command of the near-human legion during the expedition against Claver. His new authority and guarded motives immediately concern McGill's comrades.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus soldier who warns McGill that Winslade's sudden command appointment may conceal another purpose.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus weapons specialist who shares Carlos's concern about Winslade and urges McGill to investigate the officer's motives.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evelyn"
+            ],
+            "description": "A bio specialist aboard Leggett who has prior ties to both McGill and Galina Turov. She secretly creates a physical backup of McGill's body scan and memories when he fears sabotage of his revival record.",
+            "id": "evelyn-thompson",
+            "name": "Evelyn Thompson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cephalopod commander leading the force opposed to McGill's unit in a hard-vacuum training exercise.",
+            "id": "bubbles",
+            "name": "Bubbles",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Barton"
+            ],
+            "description": "McGill's adjunct during the hard-vacuum exercise. She explains the conditions that restrict the weapons and equipment available to his unit.",
+            "id": "erin-barton",
+            "name": "Erin Barton",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stealth-equipped scout in McGill's unit. He is found and killed during the opening cephalopod ambush despite the concealment provided by his equipment.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Merton"
+            ],
+            "description": "Leggett's captain and an officer responsible for the transport's defense as Claver's fighter force closes on the ship.",
+            "id": "merton",
+            "name": "Merton",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cephalopod sub-veteran who takes command of the surviving exercise force after Bubbles is killed and ends the contest under its command-loss rule.",
+            "id": "ripple",
+            "name": "Ripple",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of McGill's unit who fails to answer during the post-battle count after the opening hard-vacuum engagement.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus officer in McGill’s cohort who is unaccounted for after the opening hard-vacuum engagement.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leggett's lieutenant commander and helmsman. She agrees to a date with McGill on the condition that the ship survives the approaching attack.",
+            "id": "janet-easterbrook",
+            "name": "Janet Easterbrook",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer serving Claver on Clone World.",
+            "id": "toro",
+            "name": "Toro",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Legion Varus centurion commanding another unit inside Clone World's defensive dome. McGill reaches him while seeking contact with friendly forces during the advance.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Legion Germanica centurion commanding Claver troops inside the defensive dome. She surrenders after McGill's unit destroys her formation.",
+            "id": "lisa",
+            "name": "Lisa",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's former partner and Etta's mother. Serving as a ghost scout during the fortress approach, she infiltrates an enemy position to destroy a turret blocking the advance.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinct Claver Prime who surrenders after the fortress falls. Unlike the other Clavers, he shows concern for Abigail and offers to guide McGill through the last functioning gateway.",
+            "id": "claver-x",
+            "name": "Claver X",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A female clone created by Claver X. At this point she is absent, and his effort to learn what happened to her shapes his cooperation with McGill.",
+            "id": "abigail",
+            "name": "Abigail",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus technician who analyzes the DNA sample recovered while Claver X searches for Abigail.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth officer who joins Galina Turov in advising withdrawal from Clone World as Skay and Mogwa forces approach.",
+            "id": "fike",
+            "name": "Fike",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The largest of three arriving Skay spheres and the leader of the group. It demands that McGill answer for Earth's destruction of Clone World.",
+            "id": "master",
+            "name": "Master",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Mogwa commander who reports that his fleet has been defeated while McGill remains inside a Skay structure.",
+            "id": "sateekas",
+            "name": "Sateekas",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly appointed Sub-Tribune who replaces Winslade in command of the near-human legion. He previously served with the Iron Eagles and under Armel.",
+            "id": "new-sub-tribune",
+            "name": "New Sub-Tribune",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B081J2J4GT",
+            "type": "community"
+          }
+        ],
+        "work": "clone-world"
+      },
       "recaps": {
         "ending": "Earth returns from the battles with the local Skay destroyed and Rigel driven away, but both victories are costly. Galina Turov resolves the duplicate crisis by killing one James McGill and presenting the survivor as the original. McGill later kills Sateekas to stop the torture of a copied Squanto, and Primus Graves helps conceal the act. The revived Sateekas accepts their false account and loses his fleet command. Drusus retains command, while the captured Rigelian cruiser gives Earth access to armor-piercing weapons. Etta and Florimel begin studying that technology. Drusus also plans to revive a backdated Winslade and monitor him for intelligence, while McGill asks that Lisa's saved scan receive another chance. McGill is demobilized in Georgia. Claver X arrives there with Abigail and warns that disagreement over machine intelligence and imperial succession has widened into civil war. McGill agrees to bring them to Drusus, leaving Earth with new technology and a brief respite but exposed to a larger conflict.",
         "in_short": "Financial need draws James McGill into a lethal rift mission against Rigel, where his sabotage destroys an orbital city and exposes Claver's infiltration of Earth. Legion Varus attacks Clone World, uncovers Winslade's treason, and destroys Claver's fortress, but the victory attracts both the Skay and Mogwa. Earth sides with the Mogwa, and human boarders destroy the final Skay. A delayed revival creates two McGills, so Galina Turov kills one and protects the survivor. Sateekas then forces Earth into battle with Rigel. McGill kills Sateekas during the torture of a copied Squanto, learns the secret of Rigel's armor-piercing rear line, and hides the killing with Primus Graves. McGill's cohort captures one of those cruisers, whose weapons help rout Rigel. Back on Earth, Drusus prepares a covert revival operation, while Claver X and Abigail warn McGill that an imperial civil war over machine intelligence is spreading toward Earth.",
