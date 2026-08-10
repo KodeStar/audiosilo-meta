@@ -3266,6 +3266,67 @@
       ],
       "title": "Drachenbündnis"
     },
+    "drachenelfen": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bernhard-hennen"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "drachenelfen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hans-peter-hallwachs-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TKMJYXS",
+              "region": "us"
+            },
+            {
+              "asin": "B005SFFU0M",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nOQG-i4DL.jpg",
+          "id": "hans-peter-hallwachs-2011",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hans-peter-hallwachs"
+          ],
+          "publisher": "Random House Audio, Deutschland",
+          "release_date": "2011-10-05",
+          "runtime_min": 2230,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TKMJYXS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005SFFU0M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "drachenelfen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKMJYXS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Drachenelfen"
+    },
     "drachenenergie-dragon-energy": {
       "added_at": "2026-08-02",
       "authors": [
@@ -18151,6 +18212,65 @@
         }
       ],
       "title": "Draconic Ascension 2"
+    },
+    "dracul": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dacre-stoker",
+        "j-d-barker"
+      ],
+      "genres": [
+        "fantasy",
+        "gothic",
+        "horror",
+        "occult"
+      ],
+      "id": "dracul",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alana-kerr-collins-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0525640479",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81insugov-L.jpg",
+          "id": "alana-kerr-collins-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alana-kerr-collins",
+            "allan-corduner",
+            "pete-bradbury",
+            "raphael-corkhill",
+            "saskia-maarleveld",
+            "vikas-adam"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2018-10-02",
+          "runtime_min": 985,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0525640479",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dracul"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0525640479",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dracul"
     }
   }
 }
