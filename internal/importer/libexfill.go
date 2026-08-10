@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"net/url"
 	"sort"
@@ -186,7 +187,44 @@ func (c *LibexClient) fetchOne(ctx context.Context, asin string) (map[string]any
 	return nil, lastErr
 }
 
+// fetchChapters returns the chapters payload for one ASIN, in the same
+// mirror-then-live order fetchOne uses.
+//
+// The book record does NOT embed a chapter list - libex serves chapters from
+// their own endpoint - so a fill run that only fetched the record filled almost
+// no chapter gaps at all: measured against the live service, 19 of 13,387
+// chapter-gap recordings. The batch pass that fetched 127k chapter lists used
+// exactly these two paths.
+func (c *LibexClient) fetchChapters(ctx context.Context, asin string) (map[string]any, error) {
+	var lastErr error
+	for _, path := range []string{"/db/book/", "/book/"} {
+		doc, err := c.getDoc(ctx, path+url.PathEscape(asin)+"/chapters")
+		if err == nil {
+			return doc, nil
+		}
+		lastErr = err
+	}
+	return nil, lastErr
+}
+
+// get returns the RECORD at path. A record self-identifies with its ASIN, so a
+// body without one is a miss whatever status it arrived under.
 func (c *LibexClient) get(ctx context.Context, path string) (map[string]any, error) {
+	doc, err := c.getDoc(ctx, path)
+	if err != nil {
+		return nil, err
+	}
+	if s, _ := doc["asin"].(string); s == "" {
+		return nil, errLibexNotFound
+	}
+	return doc, nil
+}
+
+// getDoc is get without the record identity check: the chapters payload is a
+// document ABOUT a book rather than a book, and does not restate its ASIN. The
+// not-found and error-body semantics are the same, because they are properties
+// of the service rather than of the shape it answered with.
+func (c *LibexClient) getDoc(ctx context.Context, path string) (map[string]any, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, strings.TrimRight(c.BaseURL, "/")+path, nil)
 	if err != nil {
 		return nil, err
@@ -216,10 +254,55 @@ func (c *LibexClient) get(ctx context.Context, path string) (map[string]any, err
 	if _, bad := rec["error"]; bad {
 		return nil, errLibexNotFound
 	}
-	if s, _ := rec["asin"].(string); s == "" {
-		return nil, errLibexNotFound
-	}
 	return rec, nil
+}
+
+// chapterListOf returns a document's usable chapter list, or nil. Absent, not an
+// array, and empty are one outcome: there is nothing to attach.
+func chapterListOf(doc map[string]any) []any {
+	arr, _ := doc["chapters"].([]any)
+	if len(arr) == 0 {
+		return nil
+	}
+	return arr
+}
+
+// acceptChapters judges a fetched chapters payload against the record it belongs
+// to, and returns the list to attach or nil. Two guards, both carried over from
+// the batch pass that fetched 127k of these:
+//
+//   - libex states `isAccurate` on the payload. An explicit false is the service
+//     saying the offsets do not describe this production, and nothing else in
+//     the row can repair that.
+//   - the payload's own `runtimeLengthMs` has to agree with the record's stated
+//     runtime, or the chapters describe a different edition.
+//
+// The runtime tolerance is 10% OR 1.5 minutes, whichever is LARGER. The absolute
+// floor is deliberate: the catalogue stores runtime as floored integer minutes,
+// so on a short book the rounding is bigger than 10% of the value - a
+// relative-only guard falsely refused about 1,300 short children's books.
+func acceptChapters(rec, payload map[string]any) ([]any, bool) {
+	list := chapterListOf(payload)
+	if list == nil {
+		return nil, false
+	}
+	if acc, ok := payload["isAccurate"].(bool); ok && !acc {
+		return nil, false
+	}
+	minutes, okMin := coerceInt(rec["lengthMinutes"])
+	ms, okMS := coerceInt(payload["runtimeLengthMs"])
+	if okMin && okMS && minutes > 0 && ms > 0 {
+		stated := float64(minutes)
+		got := float64(ms) / 60000.0
+		tol := 0.10 * stated
+		if tol < 1.5 {
+			tol = 1.5
+		}
+		if math.Abs(got-stated) > tol {
+			return nil, false
+		}
+	}
+	return list, true
 }
 
 // libexFillRow projects a live record down to the export row shape.
@@ -257,6 +340,13 @@ type FillReport struct {
 	Fetched   int
 	NotFound  int
 	Failed    int
+	// ChaptersFetched counts the rows a chapter list was attached to.
+	ChaptersFetched int
+	// ChaptersRejected counts the payloads that arrived and were NOT attached -
+	// the accuracy flag said so, the runtime disagreed, or the payload held no
+	// chapters. A payload libex does not have at all is not counted here: nothing
+	// was judged.
+	ChaptersRejected int
 	// Errors carries one line per failure, for the caller to report. A fill run
 	// never fails as a whole on a per-ASIN error: the service is external and
 	// best-effort, and a partial fill is strictly better than none.
@@ -272,16 +362,31 @@ type FillReport struct {
 func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.Writer) (FillReport, error) {
 	rep := FillReport{Requested: len(targets)}
 	enc := json.NewEncoder(w)
-	for i, t := range targets {
+	// The pause is a property of the SERVICE, not of the target list: it is slept
+	// between requests, so a target that needs a second one for its chapters
+	// paces exactly as the next target would.
+	first := true
+	pace := func() error {
+		if first {
+			first = false
+			return nil
+		}
+		if c.Pause <= 0 {
+			return nil
+		}
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-time.After(c.Pause):
+		}
+		return nil
+	}
+	for _, t := range targets {
 		if err := ctx.Err(); err != nil {
 			return rep, err
 		}
-		if i > 0 && c.Pause > 0 {
-			select {
-			case <-ctx.Done():
-				return rep, ctx.Err()
-			case <-time.After(c.Pause):
-			}
+		if err := pace(); err != nil {
+			return rep, err
 		}
 		rec, err := c.fetchOne(ctx, t.ASIN)
 		switch {
@@ -293,12 +398,46 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 			rep.Errors = append(rep.Errors, fmt.Sprintf("%s: %v", t.ASIN, err))
 			continue
 		}
-		if err := enc.Encode(libexFillRow(rec)); err != nil {
+		row := libexFillRow(rec)
+		if t.NeedChapters && chapterListOf(rec) == nil {
+			if err := pace(); err != nil {
+				return rep, err
+			}
+			c.fillChapters(ctx, t.ASIN, rec, row, &rep)
+		}
+		if err := enc.Encode(row); err != nil {
 			return rep, err
 		}
 		rep.Fetched++
 	}
 	return rep, nil
+}
+
+// fillChapters fetches the chapters payload for one target and attaches it to
+// the row if it passes acceptChapters.
+//
+// Chapters are best-effort WITHIN a row that is otherwise fine: the cover and
+// every other fact still fill, so a payload that did not arrive, that libex does
+// not have, or that the guards refused only means the row goes out without
+// chapters. None of it is a failure for the run.
+func (c *LibexClient) fillChapters(ctx context.Context, asin string, rec, row map[string]any, rep *FillReport) {
+	payload, err := c.fetchChapters(ctx, asin)
+	if err != nil {
+		if !errors.Is(err, errLibexNotFound) {
+			rep.Errors = append(rep.Errors, fmt.Sprintf("%s: chapters: %v", asin, err))
+		}
+		return
+	}
+	list, ok := acceptChapters(rec, payload)
+	if !ok {
+		rep.ChaptersRejected++
+		return
+	}
+	// The payload's entries are exactly the dump row's chapter shape
+	// (title/lengthMs/startOffsetMs/startOffsetSec), so they go through as they
+	// arrived - the parse layer reads the same keys either way.
+	row["chapters"] = list
+	rep.ChaptersFetched++
 }
 
 // LoadCatalogForFill loads the data tree and returns its catalogue.
