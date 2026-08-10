@@ -6781,6 +6781,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-stoltz-2002": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8HJ0I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lidtMXHnL.jpg",
+          "id": "eric-stoltz-2002",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-stoltz"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2002-12-24",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8HJ0I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "utopia-lincoln-child"
+        },
         "scott-brick-2003": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6818,6 +6846,57 @@
         }
       ],
       "title": "Utopia"
+    },
+    "utopia-narracion-en-castellano": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "mario-escobar"
+      ],
+      "genres": [
+        "dystopian",
+        "science-fiction",
+        "thriller-suspense"
+      ],
+      "id": "utopia-narracion-en-castellano",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paula-iwasaki-2020": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08K3KNKMP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81v78tnLBUL.jpg",
+          "id": "paula-iwasaki-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paula-iwasaki"
+          ],
+          "publisher": "Audible Originals",
+          "release_date": "2020-09-28",
+          "runtime_min": 419,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08K3KNKMP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "utopia-narracion-en-castellano"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08K3KNKMP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Utopia (Narración en Castellano)"
     },
     "utopia-undone": {
       "added_at": "2026-08-01",

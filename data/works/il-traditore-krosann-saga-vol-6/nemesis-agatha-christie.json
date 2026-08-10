@@ -4684,6 +4684,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "sean-barrett-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B005D9I44C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MP6O-q8XL.jpg",
+          "id": "sean-barrett-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sean-barrett"
+          ],
+          "publisher": "Vintage Digital",
+          "release_date": "2011-07-19",
+          "runtime_min": 893,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005D9I44C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nemesis-jo-nesbo"
+        },
         "thor-knai-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5862,6 +5890,57 @@
         }
       ],
       "title": "Némesis Massaliote"
+    },
+    "nemesis-max-hastings": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "max-hastings"
+      ],
+      "genres": [
+        "history",
+        "military-history"
+      ],
+      "id": "nemesis-max-hastings",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stewart-cameron-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00KQ2ZVUG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916VmtdiXPL.jpg",
+          "id": "stewart-cameron-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stewart-cameron"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-06-17",
+          "runtime_min": 1757,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00KQ2ZVUG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nemesis-max-hastings"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00KQ2ZVUG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nemesis"
     },
     "nemesis-nemesis-series-book-2": {
       "added_at": "2026-08-02",

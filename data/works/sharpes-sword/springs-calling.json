@@ -790,6 +790,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "johnny-heller-2005": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8MIB8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/512S9FDgokL.jpg",
+          "id": "johnny-heller-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johnny-heller"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2005-08-30",
+          "runtime_min": 377,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8MIB8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "springs-gentle-promise"
+        },
         "marguerite-gavin-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5664,6 +5692,58 @@
         }
       ],
       "title": "Spuken für Profis"
+    },
+    "spun-out": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lorelei-james"
+      ],
+      "genres": [
+        "romance",
+        "westerns",
+        "womens-fiction"
+      ],
+      "id": "spun-out",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scarlet-chase-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1977334563",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qToo1AyfL.jpg",
+          "id": "scarlet-chase-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scarlet-chase"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2019-11-05",
+          "runtime_min": 509,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1977334563",
+              "type": "libex-import"
+            }
+          ],
+          "work": "spun-out"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1977334563",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Spun Out"
     },
     "spur-der-puppen": {
       "added_at": "2026-08-02",

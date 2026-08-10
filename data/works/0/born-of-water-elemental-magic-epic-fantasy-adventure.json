@@ -6948,6 +6948,10 @@
             {
               "asin": "B002V8KTYG",
               "region": "us"
+            },
+            {
+              "asin": "B007RFQG9K",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/718G79qHjjL.jpg",
@@ -6964,6 +6968,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V8KTYG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007RFQG9K",
               "type": "libex-import"
             }
           ],
@@ -11746,6 +11755,60 @@
         }
       ],
       "title": "Borrowed Time: A Time Travel Adventure (The Jason Apsley Series, Book 5)"
+    },
+    "borrowed-time-john-nolte": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "john-nolte"
+      ],
+      "genres": [
+        "action-adventure",
+        "dystopian",
+        "romance",
+        "science-fiction",
+        "thriller-suspense"
+      ],
+      "id": "borrowed-time-john-nolte",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jim-seybert-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CHST9D4G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EMB94qzKL.jpg",
+          "id": "jim-seybert-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-seybert"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2023-09-26",
+          "runtime_min": 803,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CHST9D4G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "borrowed-time-john-nolte"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CHST9D4G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Borrowed Time"
     },
     "borrower-of-the-night": {
       "added_at": "2026-07-29",
