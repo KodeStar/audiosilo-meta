@@ -2232,6 +2232,294 @@
         "work": "glass-houses"
       }
     },
+    "glass-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion living near Waycross while on leave. When Abigail offers coordinates to alien wreckage in return for help reaching Earth's leadership, he accepts the lead and becomes her unofficial intermediary.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A female Claver genetically paired with Claver and connected to a hunted rebel faction. Calling from Green World, she offers McGill valuable wreck coordinates in exchange for an approach to Drusus and possible protection.",
+            "id": "abigail",
+            "name": "Abigail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Florimel's leading research aide on alien wreckage held beneath Central. She is also McGill's daughter, although her work and family connection initially remain in the background as his new mission begins.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Galina",
+              "Turov"
+            ],
+            "description": "The acting tribune commanding Legion Varus. She controls McGill's access to senior command, wants credit for his intelligence, and presses him to identify his source while their prior personal relationship complicates their professional conflict.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A revived Varus officer reduced to centurion, with no memory of the conduct on Clone World that led to his delayed return and demotion. He is determined to learn what his earlier self did and suspects that Central monitors him.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Praetor Drusus"
+            ],
+            "description": "A senior Earth defense leader who hears McGill's report about possible alien technology. He approves a dangerous verification mission and offers conditional protection to the unnamed informant if the intelligence proves useful.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "A senior Legion Varus commander overseeing McGill's experimental long-range jump from Gray Deck. He warns that the prototype has a poor survival record and that a failed return may leave McGill ineligible for revival.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dissident Claver and Abigail's brother. McGill identifies him as part of the same renegade group seeking a new arrangement with Earth, although he does not take a direct role in the initial negotiations.",
+            "id": "claver-x",
+            "name": "Claver X",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former Legion Germanica centurion now assigned as a Hegemony guard. She encounters McGill while guarding Abigail's interrogation and believes he contributed to her removal from interstellar service.",
+            "id": "lisa",
+            "name": "Lisa",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior general-staff officer whose authority exceeds Drusus's in the immediate chain of command. The officer's backing allows Winslade to take control of Abigail's interrogation and signals that Winslade has acquired a powerful patron.",
+            "id": "senior-general-staff-officer",
+            "name": "Senior general-staff officer",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of Central's secret casting project. She seeks a volunteer for a remote-observation mission to a collapsed-matter world, despite the serious risk that a lost connection could prevent the volunteer's legal revival.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus ghost specialist sent through the casting system to reconnoiter the target world. He is missing after the connection fails, leaving Central without the proof of death required to authorize his revival.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha"
+            ],
+            "description": "A highly capable Varus technical specialist. She agrees to help McGill locate Cooper's landing point and remains, in return for his promise to help her gain future access to Central's casting technology.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavy trooper serving under McGill. He helps organize a competitive training exercise during Berlin's voyage, working with McGill to test recruits under the crowded conditions aboard the refitted ship.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Varus weapons specialist who commands one of the armored recruit squads during training aboard Berlin. He recognizes that his side has a terrain advantage and voluntarily takes the more difficult position.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A commander of one recruit squad during Legion Varus training aboard Berlin. He receives first choice of recruits for the exercise.",
+            "id": "mahler",
+            "name": "Mahler",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "McGill's biological specialist in Legion Varus. During Berlin's power emergency, he warns that the troops housed in external modules may be treated as expendable because the ship lacks room to shelter everyone inside.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Varus technical specialist distinct from Natasha. During Berlin's warp emergency she penetrates crew communications, identifies simultaneous generator failures, and remains with trapped troops to monitor the failing systems.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Berlin's captain, who invokes lawful orders granting him full authority over the ship before planetfall. His command limits Galina Turov to the coming ground operation and creates an immediate struggle over control.",
+            "id": "captain-merton",
+            "name": "Captain Merton",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus officer whom McGill directs to seize construction equipment after the force establishes a costly beachhead. His assignment is to turn the exposed landing zone into a defensible position.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Varus centurion who takes McGill's warning about a hidden gateway seriously. He supports the argument that the mine must have rapid transport to Rigel because no ordinary ore freighters are visible.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Sargon's armored weapon specialists. Adaptive smart mines kill him during the unit's advance toward the mine.",
+            "id": "bennington",
+            "name": "Bennington",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Barton"
+            ],
+            "description": "McGill's adjunct and the only one of his adjuncts still alive when his depleted unit discovers the active Rigelian gateway deep inside the mine. She remains with the unit as it faces incoming reinforcements.",
+            "id": "erin-barton",
+            "name": "Erin Barton",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Armel"
+            ],
+            "description": "A former Legion Germanica tribune now leading a renegade human force aligned with Claver. He encounters the mortally wounded McGill after the gateway assault and says his intervention repays a debt connected to Lisa.",
+            "id": "maurice-armel",
+            "name": "Maurice Armel",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The marine captain commanding Berlin's counterattack at Engine Room 3 after an enemy assault module breaches the ship. A heavily armed robot emerges and kills him and his platoon.",
+            "id": "marine-captain-khan",
+            "name": "Marine Captain Khan",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The immense birth mother and ruler of an insect-alien hive. McGill finds her in a lower chamber beneath discarded carapaces, and Natasha's translation system makes direct communication with her possible.",
+            "id": "insect-alien-queen",
+            "name": "Insect-alien queen",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rigel's local ruler over the insect-alien world. Speaking through a drone, he invokes High Lord Squanto's authority and demands McGill's surrender while the human survivors remain trapped in the hive.",
+            "id": "planetary-rigelian-viceroy",
+            "name": "Planetary Rigelian viceroy",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Rigelian leader seeking to have McGill captured alive during the renewed campaign.",
+            "id": "high-lord-squanto",
+            "name": "High Lord Squanto",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B084SV1HFQ",
+            "type": "community"
+          }
+        ],
+        "work": "glass-world"
+      }
+    },
     "gleanings-neal-shusterman": {
       "characters": {
         "characters": [
