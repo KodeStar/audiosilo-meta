@@ -131,7 +131,19 @@ a **works** entry with identical own fields and differing `recordings` maps
 merges those maps (two narrations of one book), and a **works-community** entry,
 which IS a map of members, merges DISJOINT members (a characters PR and a recaps
 PR for the same book) - the same base rules one level deeper, so a member both
-sides wrote is still a refusal. The
+sides wrote is still a refusal. It is also a git MERGE DRIVER, which is how the
+sweep runs it (`.gitattributes` names it for `data/**/*.json`; the driver is
+configured in the sweep and by any contributor who wants it, and where it is not
+configured git falls back to its own merge exactly as before). That is not a
+convenience: git's LINE merge is unsound for a pack file. Two branches adding the
+SAME entry key usually collide and stop, but when a side also changed the
+neighbouring entry the two insertions can be anchored at different lines and git
+applies BOTH, writing the key twice - a file `pkg/pack` refuses and `metafmt`
+cannot re-render, so the sweep left the branch stuck instead of converging (issue
+#1695, twice on 2026-08-09). As a driver the script sees the three versions
+before any line merge happens, so the shape cannot arise; a clean rebase that
+merged this way is re-rendered and re-placed by the `metafmt --write` +
+`metacheck` pass the sweep runs when the driver reports it merged. The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.
@@ -301,8 +313,9 @@ internal/serve      the API server: snapshot loader, JSON handlers, FTS search, 
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments)
 data/               the database, in the PACK-SPEC.md range-packed layout: works/ (composites), works-community/ (the CC BY-SA sidecars), people/, series/
 Dockerfile          image: site build + metaserve, NO baked data (the catalogue is fetched from the newest data release at boot; a UI change never rebuilds the database)
-scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README), and pack-union-merge.sh - the mechanical resolution for a pack-file conflict (a three-way merge of the entries, then metafmt --write), with packmerge_test.go driving it through real rebases including every case it must REFUSE
-.github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows. intake.yml also rebases the bot's own open PRs on every push to main that touches data/ (three-way merge + metafmt + metacheck, per-PR failures contained to a comment); permissions are per-job and the rebase sweep has its own concurrency group; release.yml is a SHALLOW checkout now that added_at lives in the data
+scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README), and pack-union-merge.sh - the mechanical resolution for a pack-file conflict (a three-way merge of the entries, then metafmt --write), usable by hand on a conflicted file AND as the git merge driver .gitattributes routes data/**/*.json to, with packmerge_test.go driving both through real rebases including every case it must REFUSE and the add/add shape git's own line merge duplicates
+.gitattributes      routes data/**/*.json to the packjson merge driver (scripts/pack-union-merge.sh); inert until a checkout configures the driver, which the intake sweep does
+.github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows. intake.yml also rebases the bot's own open PRs on every push to main that touches data/ (the packjson merge driver + metafmt + metacheck, per-PR failures contained to a comment; a rebase the driver resolved is re-rendered and amended before the push); permissions are per-job and the rebase sweep has its own concurrency group; release.yml is a SHALLOW checkout now that added_at lives in the data
 ```
 
 **The API server (`internal/serve`)** opens the SQLite artifact read-only and

@@ -272,6 +272,17 @@ jobs:
           git config user.name "audiosilo-intake-bot"
           git config user.email "intake-bot@users.noreply.github.com"
 
+          # .gitattributes routes data/**/*.json to this driver; a driver only
+          # runs where it is configured, so this line is what turns it on for the
+          # sweep. It matters because git's LINE merge is unsound for a pack file:
+          # two branches adding the SAME entry key can have their insertions
+          # anchored at different lines, and git then writes the key TWICE - a
+          # file pkg/pack refuses and metafmt cannot re-render (issue #1695). The
+          # driver merges the entry maps before any of that can happen, and
+          # refuses exactly what the recipe below refuses.
+          git config merge.packjson.name "three-way merge of pack-file entries"
+          git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
+
           gh pr list --state open --label bot-intake --json number,headRefName \
             --jq '.[] | [.number, .headRefName] | @tsv' > prs.tsv
           if [ ! -s prs.tsv ]; then
@@ -302,26 +313,51 @@ jobs:
               continue
             elif ! git checkout --quiet -B "$branch" "origin/${branch}"; then
               failure="the branch could not be checked out"
-            elif ! git rebase origin/main; then
-              # Three-way merge every conflicted pack file, then let metafmt place
-              # and re-render the result. Anything else - a conflict outside
-              # data/, or one record edited on both sides - is for a person.
-              for f in $(git diff --name-only --diff-filter=U); do
-                case "$f" in
-                  data/*.json) scripts/pack-union-merge.sh "$f" || failure="the pack merge could not resolve ${f}" ;;
-                  *) failure="conflict outside the data tree: ${f}" ;;
-                esac
-                [ -z "$failure" ] || break
-              done
-              if [ -z "$failure" ] && ! go run ./cmd/metafmt --write; then
-                failure="metafmt could not normalize the merged tree"
-              fi
-              if [ -z "$failure" ] && ! go run ./cmd/metacheck; then
-                failure="metacheck rejected the merged tree"
-              fi
-              if [ -z "$failure" ]; then
-                git add data
-                GIT_EDITOR=true git rebase --continue || failure="the rebase could not be continued"
+            else
+              # The rebase output is kept because a CLEAN rebase can still have
+              # merged two branches' entries: the driver resolves a pack conflict
+              # inside the replay, and says so on the line grepped for below.
+              rebaselog="${RUNNER_TEMP:-/tmp}/rebase-${number}.log"
+              if git rebase origin/main > "$rebaselog" 2>&1; then
+                cat "$rebaselog"
+                if grep -q "merged both sides" "$rebaselog"; then
+                  # A driver merge lands as jq's rendering of the entry map, and
+                  # the merged pack may now be due a split, so normalize before
+                  # pushing - the same pass the conflicted path runs below.
+                  if ! go run ./cmd/metafmt --write; then
+                    failure="metafmt could not normalize the merged tree"
+                  elif ! go run ./cmd/metacheck; then
+                    failure="metacheck rejected the merged tree"
+                  else
+                    git add data
+                    if ! git diff --cached --quiet; then
+                      GIT_EDITOR=true git commit --amend --no-edit --quiet \
+                        || failure="the normalized merge could not be committed"
+                    fi
+                  fi
+                fi
+              else
+                cat "$rebaselog"
+                # Three-way merge every conflicted pack file, then let metafmt place
+                # and re-render the result. Anything else - a conflict outside
+                # data/, or one record edited on both sides - is for a person.
+                for f in $(git diff --name-only --diff-filter=U); do
+                  case "$f" in
+                    data/*.json) scripts/pack-union-merge.sh "$f" || failure="the pack merge could not resolve ${f}" ;;
+                    *) failure="conflict outside the data tree: ${f}" ;;
+                  esac
+                  [ -z "$failure" ] || break
+                done
+                if [ -z "$failure" ] && ! go run ./cmd/metafmt --write; then
+                  failure="metafmt could not normalize the merged tree"
+                fi
+                if [ -z "$failure" ] && ! go run ./cmd/metacheck; then
+                  failure="metacheck rejected the merged tree"
+                fi
+                if [ -z "$failure" ]; then
+                  git add data
+                  GIT_EDITOR=true git rebase --continue || failure="the rebase could not be continued"
+                fi
               fi
             fi
 

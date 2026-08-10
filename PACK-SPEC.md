@@ -242,6 +242,13 @@ not its entries' add-dates). Replace it:
   region. Sorted canonical form keeps hunks minimal; the intake bot serializes
   its own PRs and can rebase + re-run metafmt mechanically; human guidance is
   "rebase, run metafmt --write, re-push".
+  Since 2026-08-09 the mechanical step is a git **merge driver**
+  (`.gitattributes` -> `scripts/pack-union-merge.sh`) rather than a pass over the
+  files git already merged: a pack is a map, and git's line merge can anchor two
+  branches' insertions of the SAME entry key at different lines and apply both,
+  leaving the key in the file twice - which no reader accepts and metafmt cannot
+  repair (issue #1695). The driver merges the entry maps before that can happen
+  and refuses exactly what the by-hand recipe refuses.
 - **Web-UI deep links** to a specific entity's file are gone (link to the pack
   + in-page search instead; the site/API remains the browse surface).
 - **History-dependent packing** (see bounds section) - accepted, invariants

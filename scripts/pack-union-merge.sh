@@ -50,40 +50,85 @@
 #   go run ./cmd/metafmt --write && go run ./cmd/metacheck
 #   git add data && git rebase --continue
 #
+# It also runs as a git MERGE DRIVER, which is how the intake sweep uses it:
+#
+#   git config merge.packjson.name "three-way merge of pack-file entries"
+#   git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
+#
+# .gitattributes already maps data/**/*.json to that driver, so configuring it is
+# all it takes (git falls back to its own line merge where it is not configured,
+# which is what every other checkout keeps doing). The driver is not an
+# optimization: git's LINE merge is unsound for a pack file. Two branches that
+# add the SAME entry key in one pack usually collide and stop, but when one side
+# also changed the entry NEXT to it the two insertions can be anchored at
+# different lines, and git then applies both - one file with the key in it TWICE
+# (a works-community entry once with its characters member and once with its
+# recaps member, exactly what should have merged). Nothing downstream can repair
+# that: a duplicate key is not valid pack storage, so pkg/pack refuses the file
+# and metafmt cannot re-render it. As a driver this script sees the same three
+# versions BEFORE any line merge happens and merges the entry maps instead, so
+# the shape cannot arise; when it refuses, git records the conflict as usual.
+#
 # Exit codes: 0 merged, 1 the file cannot be merged this way, 2 usage,
-# 5 a real conflict that needs a person. Requires jq.
+# 5 a real conflict that needs a person (as a merge driver, any non-zero exit
+# tells git the file is conflicted). Requires jq.
 set -euo pipefail
-
-if [ "$#" -ne 1 ]; then
-  echo "usage: $0 <conflicted pack file>" >&2
-  exit 2
-fi
-path="$1"
-
-# The family decides which one-level-deeper exception applies. A path git resolves
-# through the index is repository-root relative, so the first directory under
-# data/ IS the family; anything else names no family and gets no exception.
-family="${path#data/}"
-family="${family%%/*}"
 
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
 
-# Stage 1 is the merge base, 2 the side already committed on the branch being
-# replayed onto (during a rebase: upstream), 3 the side being replayed. A file
-# missing from 2 or 3 was added or deleted whole, which is not a conflict this
-# script is for. A missing BASE (both sides created the file) is fine: with no
-# base there is nothing either side can have deleted.
-if ! git show ":1:$path" > "$tmpdir/base" 2>/dev/null; then
-  echo '{"entries":{}}' > "$tmpdir/base"
-fi
-if ! git show ":2:$path" > "$tmpdir/ours" 2>/dev/null; then
-  echo "$path: no common-side version staged; resolve this one by hand" >&2
-  exit 1
-fi
-if ! git show ":3:$path" > "$tmpdir/theirs" 2>/dev/null; then
-  echo "$path: no incoming version staged; resolve this one by hand" >&2
-  exit 1
+case "$#" in
+  1) mode=stage; path="$1" ;;
+  4) mode=driver; basefile="$1"; oursfile="$2"; theirsfile="$3"; path="$4" ;;
+  *)
+    echo "usage: $0 <conflicted pack file>" >&2
+    echo "       $0 <base> <ours> <theirs> <path>   (git merge driver: %O %A %B %P)" >&2
+    exit 2
+    ;;
+esac
+
+# The family decides which one-level-deeper exception applies. A path git resolves
+# through the index is repository-root relative, and so is the %P a merge driver
+# is handed (the temp files it merges are NOT, which is why the path is a separate
+# argument), so the first directory under data/ IS the family; anything else names
+# no family and gets no exception.
+family="${path#data/}"
+family="${family%%/*}"
+
+if [ "$mode" = stage ]; then
+  # Stage 1 is the merge base, 2 the side already committed on the branch being
+  # replayed onto (during a rebase: upstream), 3 the side being replayed. A file
+  # missing from 2 or 3 was added or deleted whole, which is not a conflict this
+  # script is for. A missing BASE (both sides created the file) is fine: with no
+  # base there is nothing either side can have deleted.
+  if ! git show ":1:$path" > "$tmpdir/base" 2>/dev/null; then
+    echo '{"entries":{}}' > "$tmpdir/base"
+  fi
+  if ! git show ":2:$path" > "$tmpdir/ours" 2>/dev/null; then
+    echo "$path: no common-side version staged; resolve this one by hand" >&2
+    exit 1
+  fi
+  if ! git show ":3:$path" > "$tmpdir/theirs" 2>/dev/null; then
+    echo "$path: no incoming version staged; resolve this one by hand" >&2
+    exit 1
+  fi
+else
+  # As a driver the three versions arrive as files. An EMPTY base is git's way of
+  # saying the file is new on both sides, the same "nothing to have deleted" case
+  # a missing stage 1 is; an empty side is a deletion, which git resolves before
+  # it ever calls a driver, so it is not a shape this can merge.
+  cp "$basefile" "$tmpdir/base"
+  if [ ! -s "$tmpdir/base" ]; then
+    echo '{"entries":{}}' > "$tmpdir/base"
+  fi
+  cp "$oursfile" "$tmpdir/ours"
+  cp "$theirsfile" "$tmpdir/theirs"
+  for side in ours theirs; do
+    if [ ! -s "$tmpdir/$side" ]; then
+      echo "$path: the $side version is empty; resolve this one by hand" >&2
+      exit 1
+    fi
+  done
 fi
 
 if ! jq -n \
@@ -192,6 +237,14 @@ if ! jq -n \
   exit 5
 fi
 
-mv "$tmpdir/merged" "$path"
-git add "$path"
+if [ "$mode" = stage ]; then
+  mv "$tmpdir/merged" "$path"
+  git add "$path"
+else
+  # git takes the driver's result from the file it passed as %A.
+  mv "$tmpdir/merged" "$oursfile"
+fi
+# The intake sweep greps a rebase's output for "merged both sides", because a
+# driver merge is the one way a CLEAN rebase can still need metafmt to re-render
+# and re-place what was merged. Keep this line's wording.
 echo "$path: merged both sides' records"

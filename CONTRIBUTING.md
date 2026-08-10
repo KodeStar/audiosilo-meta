@@ -241,6 +241,24 @@ The intake bot runs exactly this recipe on its own pull requests after every
 merge to main, so a bot PR is normally already rebased for you; when the script
 refuses, the bot leaves the PR alone and comments instead.
 
+**Let git call the script for you.** A pack file is a map, and git's line merge
+can be *worse* than a conflict on one: when two branches add the same entry key
+and their insertions are anchored at different lines, git applies both and leaves
+the key in the file twice - which is not pack storage at all. `.gitattributes`
+already routes `data/**/*.json` to a merge driver; configuring it once in your
+clone makes every merge and rebase of a pack file go through the script above
+instead:
+
+```sh
+git config merge.packjson.name "three-way merge of pack-file entries"
+git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
+```
+
+Then `git rebase origin/main` resolves the mechanical cases on its own and stops
+only on the ones a person has to settle. Run `metafmt --write` and `metacheck`
+afterwards either way - the merged entries still have to be re-rendered and
+re-placed.
+
 ## Importing a library export
 
 **No command line?** The [import page](https://meta.audiosilo.app/import) does the
