@@ -1726,6 +1726,10 @@
             {
               "asin": "B07DLBT56X",
               "region": "us"
+            },
+            {
+              "asin": "B077XGFG3G",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91KEUfXJ0ZL.jpg",
@@ -1742,6 +1746,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07DLBT56X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B077XGFG3G",
               "type": "libex-import"
             }
           ],
@@ -5128,6 +5137,59 @@
         }
       ],
       "title": "The Blackwood"
+    },
+    "the-blackwoods": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "brandy-colbert"
+      ],
+      "genres": [
+        "parenting-relationships",
+        "psychology",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-blackwoods",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alaska-jackson-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BSVRPPV6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GSuZEZgKL.jpg",
+          "id": "alaska-jackson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alaska-jackson"
+          ],
+          "publisher": "Clarion Books",
+          "release_date": "2023-10-03",
+          "runtime_min": 676,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BSVRPPV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-blackwoods"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BSVRPPV6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Blackwoods"
     },
     "the-blade-guardian-a-litrpg-saga": {
       "added_at": "2026-08-01",

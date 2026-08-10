@@ -9038,6 +9038,10 @@
             {
               "asin": "B0036IPOPO",
               "region": "us"
+            },
+            {
+              "asin": "B004GB6TRM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91dy3REyEoL.jpg",
@@ -9054,6 +9058,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0036IPOPO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004GB6TRM",
               "type": "libex-import"
             }
           ],
@@ -9543,6 +9552,57 @@
         }
       ],
       "title": "Three Blind Mice Race for Revenge"
+    },
+    "three-bodies-burning": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "brian-bogdanoff"
+      ],
+      "genres": [
+        "biography-memoir",
+        "true-crime"
+      ],
+      "id": "three-bodies-burning",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "benjamin-mclean-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B088BPBTYS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zgro6BZAL.jpg",
+          "id": "benjamin-mclean-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "benjamin-mclean"
+          ],
+          "publisher": "1161 Press",
+          "release_date": "2020-05-11",
+          "runtime_min": 437,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B088BPBTYS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-bodies-burning"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B088BPBTYS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Three Bodies Burning"
     },
     "three-brides-no-groom": {
       "added_at": "2026-07-29",

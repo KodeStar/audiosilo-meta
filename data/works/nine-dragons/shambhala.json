@@ -6801,6 +6801,10 @@
             {
               "asin": "B00KO7HN7C",
               "region": "us"
+            },
+            {
+              "asin": "B09DLTD2D3",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Y+D9nIe-L.jpg",
@@ -6822,6 +6826,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00KO7HN7C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09DLTD2D3",
               "type": "libex-import"
             }
           ],
@@ -8482,6 +8491,58 @@
         }
       ],
       "title": "Shaping the Future of the Fourth Industrial Revolution"
+    },
+    "shaping-the-game": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-d-watkins"
+      ],
+      "genres": [
+        "business",
+        "health-wellness",
+        "psychology"
+      ],
+      "id": "shaping-the-game",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "grover-gardner-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1NX50",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Tci8YORpL.jpg",
+          "id": "grover-gardner-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "grover-gardner"
+          ],
+          "publisher": "Ascent Audio",
+          "release_date": "2007-05-25",
+          "runtime_min": 280,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1NX50",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shaping-the-game"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1NX50",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Shaping the Game"
     },
     "shara-and-the-haunted-village": {
       "added_at": "2026-08-01",

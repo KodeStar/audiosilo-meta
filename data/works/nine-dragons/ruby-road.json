@@ -786,6 +786,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "barbara-rosenblat-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B005CIGWUM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914QSdF8gpL.jpg",
+          "id": "barbara-rosenblat-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-rosenblat"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2011-07-14",
+          "runtime_min": 992,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005CIGWUM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ruby-v-c-andrews"
+        },
         "carly-robins-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -16345,6 +16373,58 @@
         }
       ],
       "title": "Ruin"
+    },
+    "ruin-falls": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jenny-milchman"
+      ],
+      "genres": [
+        "mystery",
+        "psychological-thriller",
+        "thriller-suspense"
+      ],
+      "id": "ruin-falls",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-campbell-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00JDMOK34",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81co8ICOruL.jpg",
+          "id": "cassandra-campbell-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-campbell"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2014-04-22",
+          "runtime_min": 710,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00JDMOK34",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ruin-falls"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00JDMOK34",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Ruin Falls"
     },
     "ruin-fire-amp-blood-series-book-1": {
       "added_at": "2026-08-02",

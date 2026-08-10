@@ -10213,6 +10213,43 @@
             }
           ],
           "work": "odyssee-homer"
+        },
+        "thomas-holtzmann-2010": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TPK2RYS",
+              "region": "us"
+            },
+            {
+              "asin": "B004FK51IM",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81e3Awhn2IL.jpg",
+          "id": "thomas-holtzmann-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "thomas-holtzmann"
+          ],
+          "publisher": "Der Hörverlag",
+          "release_date": "2010-07-06",
+          "runtime_min": 423,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TPK2RYS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004FK51IM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "odyssee-homer"
         }
       },
       "sources": [
@@ -14830,6 +14867,89 @@
         }
       ],
       "title": "Odysseus"
+    },
+    "odysseus-the-greatest-hero-of-them-all": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "tony-robinson"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "odysseus-the-greatest-hero-of-them-all",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tony-robinson-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B006348PCW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1304126,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1037375,
+              "start_ms": 1304126,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1269806,
+              "start_ms": 2341501,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1056183,
+              "start_ms": 3611307,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1119248,
+              "start_ms": 4667490,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1093985,
+              "start_ms": 5786738,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VOqFu7ipL.jpg",
+          "id": "tony-robinson-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-robinson"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2011-11-04",
+          "runtime_min": 114,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B006348PCW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "odysseus-the-greatest-hero-of-them-all"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B006348PCW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Odysseus: The Greatest Hero of them All"
     },
     "odyssey": {
       "added_at": "2026-07-25T17:12:12+01:00",
