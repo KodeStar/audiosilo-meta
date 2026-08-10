@@ -372,6 +372,57 @@
         "goodreads": "13139"
       }
     },
+    "schopenhauer-collection": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "arthur-schopenhauer"
+      ],
+      "genres": [
+        "philosophy",
+        "politics"
+      ],
+      "id": "schopenhauer-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-waters-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09Q78WYTH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BPS7id8LL.jpg",
+          "id": "jonathan-waters-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-waters"
+          ],
+          "publisher": "Montgomery Providence Publishing",
+          "release_date": "2022-01-12",
+          "runtime_min": 3788,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09Q78WYTH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "schopenhauer-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09Q78WYTH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Schopenhauer Collection"
+    },
     "schopenhauer-in-90-minutes": {
       "added_at": "2026-07-29",
       "authors": [
@@ -6024,6 +6075,65 @@
         }
       ],
       "title": "Schuld und Sühne"
+    },
+    "schulden": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "david-graeber"
+      ],
+      "genres": [
+        "politics"
+      ],
+      "id": "schulden",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "patrick-feiter-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00W9UNE4S",
+              "region": "us"
+            },
+            {
+              "asin": "B00W9V8LNQ",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71z7A0EJl8L.jpg",
+          "id": "patrick-feiter-2015",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-feiter"
+          ],
+          "publisher": "Der Hörverlag",
+          "release_date": "2015-04-20",
+          "runtime_min": 1281,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00W9UNE4S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00W9V8LNQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "schulden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00W9UNE4S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Schulden"
     },
     "schuldig": {
       "added_at": "2026-08-02",

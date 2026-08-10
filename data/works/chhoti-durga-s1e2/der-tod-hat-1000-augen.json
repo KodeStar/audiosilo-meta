@@ -497,6 +497,43 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "gerd-wameling-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TW3441C",
+              "region": "us"
+            },
+            {
+              "asin": "B004UVL78E",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71zq9WZadbL.jpg",
+          "id": "gerd-wameling-2007",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerd-wameling"
+          ],
+          "publisher": "Argon Verlag",
+          "release_date": "2007-03-06",
+          "runtime_min": 214,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TW3441C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004UVL78E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tod-in-venedig"
+        },
         "matthias-brandt-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -543,6 +580,66 @@
         }
       ],
       "title": "Der Tod in Venedig"
+    },
+    "der-tod-ist-ein-bleibender-schaden": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "eoin-colfer"
+      ],
+      "genres": [
+        "comedy-humor",
+        "mystery"
+      ],
+      "id": "der-tod-ist-ein-bleibender-schaden",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-lohmeyer-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TPKEXU4",
+              "region": "us"
+            },
+            {
+              "asin": "B007NG1ZJO",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817NnA97NpL.jpg",
+          "id": "peter-lohmeyer-2012",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-lohmeyer"
+          ],
+          "publisher": "HörbucHHamburg HHV GmbH",
+          "release_date": "2012-03-23",
+          "runtime_min": 373,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TPKEXU4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007NG1ZJO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tod-ist-ein-bleibender-schaden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TPKEXU4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Tod ist ein bleibender Schaden"
     },
     "der-tod-ist-nicht-das-ende": {
       "added_at": "2026-08-02",

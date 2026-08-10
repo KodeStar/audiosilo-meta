@@ -2677,6 +2677,10 @@
             {
               "asin": "B0D1ZYLTC4",
               "region": "us"
+            },
+            {
+              "asin": "B0C5Y7FB8R",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81GwTD9I4IL.jpg",
@@ -2694,6 +2698,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0D1ZYLTC4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C5Y7FB8R",
               "type": "libex-import"
             }
           ],
@@ -10750,6 +10759,56 @@
       ],
       "title": "Keepers of the Garden"
     },
+    "keepers-of-the-gate": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jon-land"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "keepers-of-the-gate",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andy-caploe-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00NT7JLWO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91jKuU4O72L.jpg",
+          "id": "andy-caploe-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-caploe"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-09-23",
+          "runtime_min": 706,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00NT7JLWO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "keepers-of-the-gate"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00NT7JLWO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Keepers of the Gate"
+    },
     "keepers-of-the-kalachakra": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12121,6 +12180,56 @@
         }
       ],
       "title": "Keepers of the Lost Garden"
+    },
+    "keepers-of-the-sacred-hills-the-lakota-people": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-black-elk"
+      ],
+      "genres": [
+        "history"
+      ],
+      "id": "keepers-of-the-sacred-hills-the-lakota-people",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "michelle-peitz-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0GPFKXRGF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915-RpOFz-L.jpg",
+          "id": "michelle-peitz-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michelle-peitz"
+          ],
+          "publisher": "Zentara UK",
+          "release_date": "2026-02-20",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GPFKXRGF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "keepers-of-the-sacred-hills-the-lakota-people"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GPFKXRGF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Keepers of the Sacred Hills: The Lakota People"
     }
   }
 }
