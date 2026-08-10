@@ -2140,6 +2140,10 @@
             {
               "asin": "B007MQGITW",
               "region": "us"
+            },
+            {
+              "asin": "B004V4LLEK",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71ybOGbG1TL.jpg",
@@ -2156,6 +2160,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B007MQGITW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004V4LLEK",
               "type": "libex-import"
             }
           ],
@@ -10339,6 +10348,59 @@
         }
       ],
       "title": "Death in a Half Foreign Country"
+    },
+    "death-in-a-lonely-land": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "peter-hathaway-capstick"
+      ],
+      "genres": [
+        "biography-memoir",
+        "nature",
+        "sports",
+        "travel"
+      ],
+      "id": "death-in-a-lonely-land",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-maitrejean-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DD4CGK93",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91o8dQ6i5YL.jpg",
+          "id": "paul-maitrejean-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-maitrejean"
+          ],
+          "publisher": "Ascend Audio LLC",
+          "release_date": "2024-08-14",
+          "runtime_min": 608,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DD4CGK93",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-in-a-lonely-land"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DD4CGK93",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Death in a Lonely Land"
     },
     "death-in-a-scottish-castle": {
       "added_at": "2026-07-29",

@@ -13671,6 +13671,73 @@
         }
       ],
       "title": "BBC Classics: Adventure Collection"
+    },
+    "bbc-classics-childrens-library": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "oscar-wilde",
+        "kenneth-grahame",
+        "lewis-carroll",
+        "e-nesbit",
+        "rudyard-kipling",
+        "the-brothers-grimm",
+        "hans-christian-andersen",
+        "louisa-may-alcott"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "fairy-tales-folklore"
+      ],
+      "id": "bbc-classics-childrens-library",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "carolyn-pickles-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1529142547",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Pay8Qe8rL.jpg",
+          "id": "carolyn-pickles-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolyn-pickles",
+            "catherine-cusack",
+            "full-cast",
+            "joseph-ayre",
+            "kenny-blyth",
+            "sam-dale",
+            "sarah-ovens",
+            "shaun-mason",
+            "tony-turner"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2021-06-03",
+          "runtime_min": 1316,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1529142547",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bbc-classics-childrens-library"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1529142547",
+          "type": "libex-import"
+        }
+      ],
+      "title": "BBC Classics Children’s Library"
     }
   }
 }

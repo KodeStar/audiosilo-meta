@@ -6554,6 +6554,10 @@
             {
               "asin": "B003NTYKGA",
               "region": "us"
+            },
+            {
+              "asin": "B01I3RHUU4",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51NWZsfggyL.jpg",
@@ -6570,6 +6574,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B003NTYKGA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01I3RHUU4",
               "type": "libex-import"
             }
           ],
@@ -6921,6 +6930,59 @@
         }
       ],
       "title": "The Upside to Being Single"
+    },
+    "the-upstairs-delicatessen": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dwight-garner"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "food-cooking",
+        "home-garden"
+      ],
+      "id": "the-upstairs-delicatessen",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christopher-p-brown-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CKWKNHM2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1bbpxZXptL.jpg",
+          "id": "christopher-p-brown-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-p-brown"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2023-10-24",
+          "runtime_min": 396,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CKWKNHM2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-upstairs-delicatessen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CKWKNHM2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Upstairs Delicatessen"
     },
     "the-upstairs-wife": {
       "added_at": "2026-07-29",

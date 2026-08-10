@@ -9773,6 +9773,10 @@
             {
               "asin": "B07NDKHLSD",
               "region": "us"
+            },
+            {
+              "asin": "1405540095",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/812s0PJQ8NL.jpg",
@@ -9789,6 +9793,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07NDKHLSD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1405540095",
               "type": "libex-import"
             }
           ],
@@ -11580,6 +11589,59 @@
         }
       ],
       "title": "Darkness in Tiber"
+    },
+    "darkness-is-golden": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "audible-sleep",
+        "mary-hoang"
+      ],
+      "genres": [
+        "biography-memoir",
+        "parenting-relationships",
+        "self-help"
+      ],
+      "id": "darkness-is-golden",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mary-hoang-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0992L981X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VF0cBsJgS.jpg",
+          "id": "mary-hoang-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mary-hoang"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-08-03",
+          "runtime_min": 558,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0992L981X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "darkness-is-golden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0992L981X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Darkness Is Golden"
     },
     "darkness-john-saul": {
       "added_at": "2026-07-29",

@@ -260,6 +260,34 @@
             }
           ],
           "work": "der-kleine-prinz-antoine-de-saint-exupery"
+        },
+        "wolfgang-gerber-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00T7VOROS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81iUlp9FV5L.jpg",
+          "id": "wolfgang-gerber-2015",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "wolfgang-gerber"
+          ],
+          "publisher": "BUCHFUNK",
+          "release_date": "2015-02-05",
+          "runtime_min": 124,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00T7VOROS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-kleine-prinz-antoine-de-saint-exupery"
         }
       },
       "sources": [
@@ -335,6 +363,66 @@
         }
       ],
       "title": "Der kleine Prinz. Das Hörspiel zum Buch"
+    },
+    "der-kleine-prinz-originalubersetzung": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "antoine-de-saint-exupery"
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "der-kleine-prinz-originalubersetzung",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anna-maria-muhe-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06XXFMRDF",
+              "region": "us"
+            },
+            {
+              "asin": "B06XXH9GFC",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Ovp8Rm1ZL.jpg",
+          "id": "anna-maria-muhe-2017",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anna-maria-muhe",
+            "ulrich-muhe"
+          ],
+          "publisher": "Karl Rauch Verlag",
+          "release_date": "2017-03-29",
+          "runtime_min": 132,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XXFMRDF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XXH9GFC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-kleine-prinz-originalubersetzung"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B06XXFMRDF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Kleine Prinz: Originalübersetzung"
     },
     "der-kleine-raumfahrer": {
       "added_at": "2026-08-02",
@@ -6924,6 +7012,72 @@
         }
       ],
       "title": "Der kleine Vampir zieht um"
+    },
+    "der-kleine-wassermann": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "otfried-preussler",
+        "jurgen-nola"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "der-kleine-wassermann",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-bergmann-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08VW2D64Z",
+              "region": "us"
+            },
+            {
+              "asin": "B08VWHRCJH",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1xtZhlrf0L.jpg",
+          "id": "christian-bergmann-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-bergmann",
+            "gerhard-garbers",
+            "guido-gallmann",
+            "hans-kemner",
+            "hans-peter-kurr",
+            "markus-stolberg"
+          ],
+          "publisher": "Karussell",
+          "release_date": "2021-02-04",
+          "runtime_min": 126,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08VW2D64Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08VWHRCJH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-kleine-wassermann"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08VW2D64Z",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der kleine Wassermann"
     },
     "der-klotz": {
       "added_at": "2026-08-02",

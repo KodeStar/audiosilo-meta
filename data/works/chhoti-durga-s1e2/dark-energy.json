@@ -3549,6 +3549,58 @@
       ],
       "title": "Dark Fall"
     },
+    "dark-family": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "sara-gran",
+        "megan-abbot"
+      ],
+      "genres": [
+        "politics",
+        "social-sciences"
+      ],
+      "id": "dark-family",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mia-gaskin-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01LYZIB9O",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jIvrz2BCL.jpg",
+          "id": "mia-gaskin-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mia-gaskin"
+          ],
+          "publisher": "The Believer, McSweeney's",
+          "release_date": "2016-09-28",
+          "runtime_min": 40,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01LYZIB9O",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-family"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01LYZIB9O",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dark Family"
+    },
     "dark-fate": {
       "added_at": "2026-08-02",
       "authors": [
@@ -4763,12 +4815,44 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anton-lesser-2007": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036GTJQ6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MjOdsl7jL.jpg",
+          "id": "anton-lesser-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-lesser"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2007-10-04",
+          "runtime_min": 386,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036GTJQ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-fire-c-j-sansom"
+        },
         "steven-crossley-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
             {
               "asin": "B002V57UDC",
+              "region": "us"
+            },
+            {
+              "asin": "B00OSAR600",
               "region": "us"
             }
           ],
@@ -4786,6 +4870,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V57UDC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00OSAR600",
               "type": "libex-import"
             }
           ],
