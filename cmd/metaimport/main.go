@@ -474,8 +474,8 @@ func runLibexFill(args []string) int {
 		fmt.Fprintf(os.Stderr, "metaimport: libex fetch: %v\n", err)
 		return 1
 	}
-	fmt.Printf("libex-fill: looked up %d ASIN(s) = %d fetched + %d not in libex + %d failed\n",
-		rep.Requested, rep.Fetched, rep.NotFound, rep.Failed)
+	fmt.Printf("libex-fill: looked up %d ASIN(s) = %d fetched + %d not in libex + %d failed; chapters: %d attached + %d rejected\n",
+		rep.Requested, rep.Fetched, rep.NotFound, rep.Failed, rep.ChaptersFetched, rep.ChaptersRejected)
 	for _, e := range rep.Errors {
 		fmt.Fprintf(os.Stderr, "  warning: %s\n", e)
 	}
