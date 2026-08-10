@@ -236,6 +236,388 @@
       }
     },
     "city-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "James",
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion who returns to his family property after the Ice World campaign. When his parents plan to develop the land, he tries to keep them from discovering the human remains hidden in an old well.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A returning associate who arrives while James McGill is concealing the old well.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alexander"
+            ],
+            "description": "Earth's senior civilian authority and Galina Turov's father. He directs the strategic briefing after a midzone warship appears over Earth and singles out James McGill.",
+            "id": "alexander-turov",
+            "name": "Alexander Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imperator leading Earth's military response to the unidentified ship.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Galina"
+            ],
+            "description": "An imperator, campaign planner, and intermittent partner of James McGill. Assigned to the Mogwa expedition, she expects him to find a way to remove the alien leaders before their mission endangers Earth.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Winslade"
+            ],
+            "description": "The tribune commanding Legion Varus and serving on the campaign staff as Earth prepares its response to the Mogwa demands.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "A senior Legion Varus officer serving alongside Winslade on the campaign staff.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rejuvenated former commander and past battlefield associate of James McGill. Backed by imperial authority, he compels Earth to prepare a distant military expedition without initially disclosing its purpose.",
+            "id": "mogwa-grand-admiral",
+            "name": "Mogwa grand admiral",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The grand admiral's mate and a provincial authority traveling with their young offspring. She invokes imperial authority in support of commandeering Earth's armed forces.",
+            "id": "mogwa-governess",
+            "name": "Mogwa governess",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adjunct Barton"
+            ],
+            "description": "An adjunct in James McGill's unit who handles readiness checks during Legion Varus's emergency assembly.",
+            "id": "barton",
+            "name": "Barton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "James McGill's heavy-infantry adjunct. He is responsible for recalling personnel as Legion Varus rushes to join the Mogwa expedition.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus technical scout attached to James McGill's unit. She provides reconnaissance and technical support as the expedition assembles aboard its transport.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus officer responsible for logistics and weapons support during the emergency mobilization. He helps James McGill prepare the unit for a long campaign.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Merton"
+            ],
+            "description": "The captain of Dominus, the transport carrying Legion Varus on the Mogwa expedition. He oversees the ship as it provisions for an unusually long deployment.",
+            "id": "merton",
+            "name": "Merton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galina Turov's adjunct and office aide. He has little combat experience and is alarmed by the prospect that his support assignment may take him into the field.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran in James McGill's unit selected for a dangerous detail aboard the Mogwa flagship. He joins a group of enlisted soldiers ordered to pose as senior officers.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit trooper who scouts a second entrance to the Mogwa hunting arena with James McGill.",
+            "id": "washburn",
+            "name": "Washburn",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of James McGill's force who is killed in the first Mogwa arena fight.",
+            "id": "flores",
+            "name": "Flores",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A technically skilled member of James McGill's unit. She explains why navigation in the Mid-Zone is uncertain as the fleet approaches its distant destination.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of Seventh Unit. His troops are overwhelmed by armed land drones, prompting James McGill to send a costly relief force into the fighting.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Legion Varus primus administering the expedition's depleted revival capacity. She enforces the rule that personnel listed as missing cannot be revived without verified deaths.",
+            "id": "collins",
+            "name": "Collins",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stealth specialist in Legion Varus. He secures a line across a flooded obstruction in the tunnel beneath the Mogwa dome, but a triggered grate kills him during the crossing.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Centurion Roth"
+            ],
+            "description": "A sapper centurion leading construction of a broad passage beneath the Mogwa dome. His plan combines rapid tunneling with electromagnetic traps against hostile drones.",
+            "id": "roth",
+            "name": "Roth",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Mogwa Marine commander who negotiates with James McGill inside the dome. The commander accepts the human legions' declared service, orders them admitted, and seeks approval from the local council.",
+            "id": "mogwa-marine-commander",
+            "name": "Mogwa Marine commander",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mills"
+            ],
+            "description": "A centurion and earlier intimate acquaintance of James McGill. She reaches the food-processing factory after her unit is caught in a bear ambush, but dies from a penetrating wound.",
+            "id": "jenny-mills",
+            "name": "Jenny Mills",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Tribune Krause"
+            ],
+            "description": "The commander of Legion Victrix and the highest-ranking human officer still present. He persuades skeptical Mogwa leaders to approve a defense of the city's water-control facility.",
+            "id": "krause",
+            "name": "Krause",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Saurian bio-worker whom James McGill recognizes as someone he knew before. The worker now conceals that earlier identity behind an assumed one.",
+            "id": "blue-scaled-saurian",
+            "name": "Blue-scaled Saurian",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the gremlin technicians serving with Legion Varus. After proving that his people can operate Mogwa power armor, he conditions their military support on James McGill taking them off City World.",
+            "id": "gremlin-leader",
+            "name": "Gremlin leader",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prominent Blood World gremlin who remains hostile toward James McGill because he abandoned her people in the past.",
+            "id": "geetha",
+            "name": "Geetha",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A revered parent figure whom Blood World gremlins regard as their creator. James McGill invokes a promised reunion while bargaining for their military support.",
+            "id": "gremlin-creator",
+            "name": "Gremlin creator",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Collins"
+            ],
+            "description": "The full name of Collins, the Legion Varus officer who led major defensive actions on City World. After revival, she accepts a transfer to Legion Victrix and offers James McGill the position credited with the gremlin armor tactic.",
+            "id": "cherish-collins",
+            "name": "Cherish Collins",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adjunct transferred from Legion Victrix into James McGill's unit under unclear disciplinary circumstances. The transfer is proposed as Barton prepares to leave Legion Varus.",
+            "id": "victrix-adjunct",
+            "name": "Victrix adjunct",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An investigator conducting secret biological research on Dust World with Etta and the gremlins' creator. The investigator is engaged to the creator.",
+            "id": "investigator",
+            "name": "Investigator",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "McGill's daughter"
+            ],
+            "description": "James McGill's revived daughter. She works on Dust World with an investigator and the gremlins' creator, despite the lasting changes to her hybrid body.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galina Turov's revived sister, whose revival-related memory loss includes the loss of memories of her fiance.",
+            "id": "galina-turovs-sister",
+            "name": "Galina Turov's sister",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "minor"
+          },
+          {
+            "description": "James McGill's father. He plans to sell and develop the swamp property and receives James's false explanation about the old well.",
+            "id": "james-mcgills-father",
+            "name": "James McGill's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A shuttle pilot drawn into James McGill's unauthorized trip to the Mogwa flagship. Navy personnel shoot Patel alongside McGill when they return.",
+            "id": "lieutenant-patel",
+            "name": "Lieutenant Patel",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09V1XY6DR",
+            "type": "community"
+          }
+        ],
+        "work": "city-world"
+      },
       "recaps": {
         "ending": "The bear invasion is driven from City World after James McGill brings thousands of Blood World gremlins through a secret gateway and places them in Mogwa power armor. The surviving Mogwa grand admiral and governess remain behind to govern and rearm their devastated colony. Winslade has been executed, Graves survives, Collins is reassigned to command the Death World garrison, Barton is preparing to transfer out of Legion Varus, and Gary wants to return to office duty. James refuses to surrender the gremlins' creator or fulfill the promised armor transfer. When the gremlin leader's armed group threatens his Dust World family, James kills the leader, surrounding followers, and himself with a hidden explosive. Alexander Turov revives James after Galina Turov intervenes, then frees him while continuing to suspect an outside handler. James returns to his family home and resumes his relationship with Galina. The concealed remains on his family's land, surviving gremlins, Geetha, and Alexander's scrutiny remain open concerns.",
         "in_short": "James McGill joins a Mogwa-forced Earth expedition to defend City World. The human legions arrive amid a bear attack, struggle to enter the shielded city, and discover that the invaders are spreading a Mogwa-specific bioweapon. James restores the imprisoned Mogwa grand admiral and recruits Blood World gremlins who can pilot Mogwa armor. Their counteroffensive saves the city, but James has promised them their creator and a thousand armed suits. After the gremlin leader threatens his family on Dust World, James destroys the leader, nearby followers, and himself with a concealed explosive. Alexander Turov revives him at Galina Turov's request and releases him despite suspecting that James serves an unknown handler. James returns home and reconciles with Galina, while City World rearms under the surviving Mogwa leaders and the broader gremlin consequences remain unresolved.",
