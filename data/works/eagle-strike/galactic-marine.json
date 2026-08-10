@@ -4439,6 +4439,10 @@
             {
               "asin": "B01KAIY8I6",
               "region": "us"
+            },
+            {
+              "asin": "B002V5CJ2O",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61rJrj+J3VL.jpg",
@@ -4455,6 +4459,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01KAIY8I6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5CJ2O",
+              "type": "libex-import"
+            }
+          ],
+          "work": "galahad-at-blandings"
+        },
+        "martin-jarvis-2012": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0076OYDNI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71u-Esm7pNL.jpg",
+          "id": "martin-jarvis-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martin-jarvis"
+          ],
+          "publisher": "Canongate Books",
+          "release_date": "2012-02-09",
+          "runtime_min": 264,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0076OYDNI",
               "type": "libex-import"
             }
           ],

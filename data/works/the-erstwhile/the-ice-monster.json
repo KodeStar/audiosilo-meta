@@ -4089,12 +4089,44 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "clare-higgins-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V57OOW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61dpi7E3DgL.jpg",
+          "id": "clare-higgins-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clare-higgins"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2005-01-27",
+          "runtime_min": 291,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V57OOW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ideal-bride"
+        },
         "simon-prebble-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
             {
               "asin": "B009G4ITEK",
+              "region": "us"
+            },
+            {
+              "asin": "0062909789",
               "region": "us"
             }
           ],
@@ -4112,6 +4144,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B009G4ITEK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0062909789",
               "type": "libex-import"
             }
           ],
@@ -4166,6 +4203,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B005ESGYJE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ideal-man"
+        },
+        "christina-traister-2011-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B005ESGWV4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ia-+PfklL.jpg",
+          "id": "christina-traister-2011-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christina-traister"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2011-08-09",
+          "runtime_min": 318,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005ESGWV4",
               "type": "libex-import"
             }
           ],
@@ -4284,6 +4349,111 @@
         }
       ],
       "title": "The Identicals"
+    },
+    "the-identity-trap": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "yascha-mounk"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "history",
+        "politics",
+        "social-sciences"
+      ],
+      "id": "the-identity-trap",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jd-jackson-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BWPHG8P5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71gVODg6yJL.jpg",
+          "id": "jd-jackson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jd-jackson"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2023-09-26",
+          "runtime_min": 661,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BWPHG8P5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-identity-trap"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BWPHG8P5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Identity Trap"
+    },
+    "the-ideological-origins-of-the-american-revolution": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bernard-bailyn"
+      ],
+      "genres": [
+        "history",
+        "military-history",
+        "politics"
+      ],
+      "id": "the-ideological-origins-of-the-american-revolution",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-perkins-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B071DSXHGW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91z8Uvedm6L.jpg",
+          "id": "tom-perkins-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-perkins"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2017-05-16",
+          "runtime_min": 846,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B071DSXHGW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ideological-origins-of-the-american-revolution"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B071DSXHGW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Ideological Origins of the American Revolution"
     },
     "the-ides-of-april": {
       "added_at": "2026-07-29",
@@ -10928,6 +11098,56 @@
         }
       ],
       "title": "The Ignition Theory: Sparks in the Void"
+    },
+    "the-ignored": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bentley-little"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "the-ignored",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-stifel-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07CRQKSBM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8109Ag6UnnL.jpg",
+          "id": "david-stifel-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-stifel"
+          ],
+          "publisher": "Journalstone Publishing",
+          "release_date": "2018-05-02",
+          "runtime_min": 850,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07CRQKSBM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ignored"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07CRQKSBM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Ignored"
     },
     "the-ikessar-falcon": {
       "added_at": "2026-08-02",

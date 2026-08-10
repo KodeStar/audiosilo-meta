@@ -7707,6 +7707,10 @@
             {
               "asin": "B00551W570",
               "region": "us"
+            },
+            {
+              "asin": "B0056ABEIG",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7730,6 +7734,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00551W570",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0056ABEIG",
               "type": "libex-import"
             }
           ],
@@ -8380,6 +8389,58 @@
         }
       ],
       "title": "Goalie"
+    },
+    "goalie-interference": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "avon-gale",
+        "piper-vaughn"
+      ],
+      "genres": [
+        "lgbtq",
+        "romance"
+      ],
+      "id": "goalie-interference",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kirt-graves-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1488206228",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iK1sOD7lL.jpg",
+          "id": "kirt-graves-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kirt-graves"
+          ],
+          "publisher": "Harlequin Audio",
+          "release_date": "2019-09-30",
+          "runtime_min": 452,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1488206228",
+              "type": "libex-import"
+            }
+          ],
+          "work": "goalie-interference"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1488206228",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Goalie Interference"
     },
     "goals": {
       "added_at": "2026-07-29",

@@ -1652,6 +1652,34 @@
             }
           ],
           "work": "meteor"
+        },
+        "anne-moll-2007-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004UWX0A6",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61Pb3rCPS-L.jpg",
+          "id": "anne-moll-2007-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-moll"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2007-03-20",
+          "runtime_min": 433,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004UWX0A6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meteor"
         }
       },
       "sources": [
@@ -2590,6 +2618,66 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00TKMIL8C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meteor-german-edition"
+        },
+        "anne-moll-2007-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TVO27LQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4488069,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 4270196,
+              "start_ms": 4488069,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 4385181,
+              "start_ms": 8758265,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 4363169,
+              "start_ms": 13143446,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 4055412,
+              "start_ms": 17506615,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 4482125,
+              "start_ms": 21562027,
+              "title": "Kapitel 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61Pb3rCPS-L.jpg",
+          "id": "anne-moll-2007-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-moll"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2007-03-20",
+          "runtime_min": 433,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TVO27LQ",
               "type": "libex-import"
             }
           ],
@@ -5788,6 +5876,109 @@
         }
       ],
       "title": "Method"
+    },
+    "method-and-madness": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "norman-g-finkelstein"
+      ],
+      "genres": [
+        "history",
+        "politics"
+      ],
+      "id": "method-and-madness",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gary-dana-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B011482W1Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1gmpv5wu9L.jpg",
+          "id": "gary-dana-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gary-dana"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2015-07-07",
+          "runtime_min": 239,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B011482W1Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "method-and-madness"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B011482W1Q",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Method and Madness"
+    },
+    "methods-of-manipulation": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "jennifer-p-hayes"
+      ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "psychology"
+      ],
+      "id": "methods-of-manipulation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "brooke-pillifant-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0797BDQ8S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LKT66oWLL.jpg",
+          "id": "brooke-pillifant-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brooke-pillifant"
+          ],
+          "publisher": "Jennifer P. Hayes",
+          "release_date": "2018-01-24",
+          "runtime_min": 209,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0797BDQ8S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "methods-of-manipulation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0797BDQ8S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Methods of Manipulation"
     },
     "methods-of-persuasion": {
       "added_at": "2026-07-29",
@@ -12447,6 +12638,56 @@
       ],
       "title": "Mexican Hat"
     },
+    "mexican-history-a-captivating-guide-to-the-history-of-mexico-and-the-mexican-revolution": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "captivating-history"
+      ],
+      "genres": [
+        "history"
+      ],
+      "id": "mexican-history-a-captivating-guide-to-the-history-of-mexico-and-the-mexican-revolution",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jason-zenobia-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08L44SZVP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lOkPePCyL.jpg",
+          "id": "jason-zenobia-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-zenobia"
+          ],
+          "publisher": "Captivating History",
+          "release_date": "2020-10-13",
+          "runtime_min": 418,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08L44SZVP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mexican-history-a-captivating-guide-to-the-history-of-mexico-and-the-mexican-revolution"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08L44SZVP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mexican History: A Captivating Guide to the History of Mexico and the Mexican Revolution"
+    },
     "mexican-radio-and-other-short-stories-vol-i": {
       "added_at": "2026-08-01",
       "authors": [
@@ -13190,6 +13431,171 @@
       ],
       "title": "Mexican WhiteBoy"
     },
+    "mexico": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "james-a-michener"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
+      ],
+      "id": "mexico",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexander-adams-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B011LXY1KO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1Txlvhof3L.jpg",
+          "id": "alexander-adams-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexander-adams"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2015-08-04",
+          "runtime_min": 1403,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B011LXY1KO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mexico"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B011LXY1KO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mexico"
+    },
+    "mexico-a-tres-bandas-mexico-to-three-bands": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "leopoldo-mendivil-lopez",
+        "juan-miguel-zunzunegui",
+        "pedro-j-fernandez"
+      ],
+      "genres": [
+        "history"
+      ],
+      "id": "mexico-a-tres-bandas-mexico-to-three-bands",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jaime-alberto-carrillo-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "6073189761",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91n2iBHTrZL.jpg",
+          "id": "jaime-alberto-carrillo-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jaime-alberto-carrillo",
+            "juan-miguel-zunzunegui",
+            "leopoldo-mendivil-lopez",
+            "noe-velazquez",
+            "pedro-j-fernandez",
+            "ruben-hernandez",
+            "victor-manuel-espinoza"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2020-03-12",
+          "runtime_min": 525,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "6073189761",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mexico-a-tres-bandas-mexico-to-three-bands"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073189761",
+          "type": "libex-import"
+        }
+      ],
+      "title": "México a tres bandas [Mexico to Three Bands]"
+    },
+    "mexico-set": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "len-deighton"
+      ],
+      "genres": [
+        "espionage",
+        "historical-fiction",
+        "mystery",
+        "police-procedural",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
+      "id": "mexico-set",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-lailey-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00OAOK5H0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kHSFnvVXL.jpg",
+          "id": "james-lailey-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-lailey"
+          ],
+          "publisher": "HarperCollins Publishers Limited",
+          "release_date": "2014-10-23",
+          "runtime_min": 805,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00OAOK5H0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mexico-set"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00OAOK5H0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mexico Set"
+    },
     "mezzanotte": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13876,6 +14282,57 @@
         }
       ],
       "title": "Mi nombre es Emilia del Valle [My Name Is Emilia del Valle]"
+    },
+    "mi-pais-inventado-my-invented-country": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "isabel-allende"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir"
+      ],
+      "id": "mi-pais-inventado-my-invented-country",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "javiera-gazitua-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B073K24QZN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pkoSOYnXL.jpg",
+          "id": "javiera-gazitua-2017",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "javiera-gazitua"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2017-07-20",
+          "runtime_min": 371,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B073K24QZN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mi-pais-inventado-my-invented-country"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073K24QZN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mi país inventado [My Invented Country]"
     },
     "mi-recuerdo-es-mas-fuerte-que-tu-olvido": {
       "added_at": "2026-07-29",

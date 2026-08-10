@@ -9459,6 +9459,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "barbara-caruso-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00B7L1EPG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lxwW53SrL.jpg",
+          "id": "barbara-caruso-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-caruso"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2013-01-30",
+          "runtime_min": 472,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00B7L1EPG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rebecca-of-sunnybrook-farm"
+        },
         "lorna-raver-2007": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -9496,6 +9524,52 @@
         }
       ],
       "title": "Rebecca of Sunnybrook Farm"
+    },
+    "rebecca-screen-guild-players": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "screen-guild-players"
+      ],
+      "id": "rebecca-screen-guild-players",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "loretta-young-2006": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1A2TU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41Ku+34LKvL.jpg",
+          "id": "loretta-young-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "loretta-young"
+          ],
+          "publisher": "Radio Spirits, Inc.",
+          "release_date": "2006-12-12",
+          "runtime_min": 29,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1A2TU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rebecca-screen-guild-players"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1A2TU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Rebecca"
     },
     "rebeccas-reward": {
       "added_at": "2026-07-29",

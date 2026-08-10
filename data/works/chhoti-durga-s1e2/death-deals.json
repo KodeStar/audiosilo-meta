@@ -2652,6 +2652,10 @@
             {
               "asin": "B0BT646DY9",
               "region": "us"
+            },
+            {
+              "asin": "B09RQB3X59",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81mEqsagwXL.jpg",
@@ -2668,6 +2672,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0BT646DY9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09RQB3X59",
               "type": "libex-import"
             }
           ],
@@ -9563,6 +9572,57 @@
       ],
       "title": "Death in a Blackout"
     },
+    "death-in-a-darkening-mist": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "iona-whishaw"
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery"
+      ],
+      "id": "death-in-a-darkening-mist",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marilla-wex-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1771513527",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71BH-si635L.jpg",
+          "id": "marilla-wex-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marilla-wex"
+          ],
+          "publisher": "TouchWood Editions",
+          "release_date": "2020-10-15",
+          "runtime_min": 582,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1771513527",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-in-a-darkening-mist"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1771513527",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Death in a Darkening Mist"
+    },
     "death-in-a-half-foreign-country": {
       "added_at": "2026-08-01",
       "authors": [
@@ -9796,6 +9856,57 @@
         }
       ],
       "title": "Death in a Half Foreign Country"
+    },
+    "death-in-a-scottish-castle": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lydia-travers"
+      ],
+      "genres": [
+        "action-adventure",
+        "mystery"
+      ],
+      "id": "death-in-a-scottish-castle",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "helen-mcalpine-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D8BWMM6T",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EYanRg5yL.jpg",
+          "id": "helen-mcalpine-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "helen-mcalpine"
+          ],
+          "publisher": "Hachette UK - Bookouture",
+          "release_date": "2024-07-11",
+          "runtime_min": 610,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D8BWMM6T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-in-a-scottish-castle"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D8BWMM6T",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Death in a Scottish Castle"
     }
   }
 }

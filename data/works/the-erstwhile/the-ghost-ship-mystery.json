@@ -5278,6 +5278,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "george-guidall-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8H9V2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51BFA91pAPL.jpg",
+          "id": "george-guidall-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2008-10-24",
+          "runtime_min": 285,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8H9V2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ghost-writer"
+        },
         "malcolm-hillgartner-2016": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -7206,6 +7234,61 @@
         }
       ],
       "title": "The Ghosts of Christmas Presents"
+    },
+    "the-ghosts-of-eden-park": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "karen-abbott"
+      ],
+      "genres": [
+        "biography-memoir",
+        "history",
+        "law",
+        "politics",
+        "true-crime"
+      ],
+      "id": "the-ghosts-of-eden-park",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-campbell-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0593148010",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ap2moCGPL.jpg",
+          "id": "cassandra-campbell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-campbell",
+            "rob-shapiro"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2019-08-06",
+          "runtime_min": 672,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0593148010",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ghosts-of-eden-park"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0593148010",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Ghosts of Eden Park"
     },
     "the-ghosts-of-ganymede": {
       "added_at": "2026-08-02",
