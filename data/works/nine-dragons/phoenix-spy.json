@@ -4608,6 +4608,10 @@
             {
               "asin": "B01AIJBNYO",
               "region": "us"
+            },
+            {
+              "asin": "B002V0JTMC",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91x6-X2ChCL.jpg",
@@ -4624,6 +4628,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01AIJBNYO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0JTMC",
               "type": "libex-import"
             }
           ],
@@ -4887,6 +4896,56 @@
         }
       ],
       "title": "Photographs & Phantoms"
+    },
+    "photography-portrait-photography": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "james-carren"
+      ],
+      "genres": [
+        "arts-entertainment"
+      ],
+      "id": "photography-portrait-photography",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-edmondson-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B010PM71IQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NJyud5VGL.jpg",
+          "id": "john-edmondson-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-edmondson"
+          ],
+          "publisher": "Sender Publishing",
+          "release_date": "2015-07-01",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B010PM71IQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "photography-portrait-photography"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B010PM71IQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Photography: Portrait Photography"
     },
     "phreaks": {
       "added_at": "2026-07-29",
@@ -8111,6 +8170,59 @@
         }
       ],
       "title": "Physics of the Impossible"
+    },
+    "physics-of-the-soul": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "amit-goswami"
+      ],
+      "genres": [
+        "philosophy",
+        "politics",
+        "religion-spirituality",
+        "science"
+      ],
+      "id": "physics-of-the-soul",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sean-runnette-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1705236162",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WVw8RzGtL.jpg",
+          "id": "sean-runnette-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sean-runnette"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2020-09-29",
+          "runtime_min": 579,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705236162",
+              "type": "libex-import"
+            }
+          ],
+          "work": "physics-of-the-soul"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1705236162",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Physics of the Soul"
     },
     "physik": {
       "added_at": "2026-07-25T19:18:21+01:00",

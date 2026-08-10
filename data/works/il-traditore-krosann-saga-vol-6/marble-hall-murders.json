@@ -5117,6 +5117,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jeff-harding-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5CI8E",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71orF9RPtbL.jpg",
+          "id": "jeff-harding-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeff-harding"
+          ],
+          "publisher": "ISIS Audio Books",
+          "release_date": "2008-04-08",
+          "runtime_min": 551,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5CI8E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "march-violets"
+        },
         "john-lee-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5154,6 +5182,139 @@
         }
       ],
       "title": "March Violets"
+    },
+    "marchen": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "astrid-lindgren"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fairy-tales-folklore",
+        "parenting-relationships",
+        "self-help",
+        "short-stories"
+      ],
+      "id": "marchen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "manfred-steffen-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00U640R5S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1215519,
+              "start_ms": 0,
+              "title": "Rupp Rüpel, das grausigste Gespenst aus Smäland"
+            },
+            {
+              "length_ms": 1068048,
+              "start_ms": 1215519,
+              "title": "Im Land der Dämmerung"
+            },
+            {
+              "length_ms": 841839,
+              "start_ms": 2283567,
+              "title": "Die Prizessin, die nicht spielen wollte"
+            },
+            {
+              "length_ms": 793287,
+              "start_ms": 3125406,
+              "title": "Kuckuck Lustig"
+            },
+            {
+              "length_ms": 747636,
+              "start_ms": 3918693,
+              "title": "Die Elfe mit dem Taschentuch"
+            },
+            {
+              "length_ms": 865988,
+              "start_ms": 4666329,
+              "title": "Die Puppe Mirabell"
+            },
+            {
+              "length_ms": 3281050,
+              "start_ms": 5532317,
+              "title": "Junker Nils von Eka"
+            },
+            {
+              "length_ms": 431659,
+              "start_ms": 8813367,
+              "title": "Der Drache mit den roten Augen"
+            },
+            {
+              "length_ms": 1565350,
+              "start_ms": 9245026,
+              "title": "Die Schafe von Kapela"
+            },
+            {
+              "length_ms": 1439637,
+              "start_ms": 10810376,
+              "title": "Nils Karlsson-Däumling"
+            },
+            {
+              "length_ms": 1517633,
+              "start_ms": 12250013,
+              "title": "Sonnenau"
+            },
+            {
+              "length_ms": 1674530,
+              "start_ms": 13767646,
+              "title": "Klingt meine Linde"
+            },
+            {
+              "length_ms": 689331,
+              "start_ms": 15442176,
+              "title": "Allerliebste Schwester"
+            },
+            {
+              "length_ms": 800136,
+              "start_ms": 16131507,
+              "title": "Peter und Petra"
+            },
+            {
+              "length_ms": 1074736,
+              "start_ms": 16931643,
+              "title": "Im Wald sind keine Räuber"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RzOXpkJTL.jpg",
+          "id": "manfred-steffen-2012",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "manfred-steffen"
+          ],
+          "publisher": "Oetinger Media",
+          "release_date": "2012-01-11",
+          "runtime_min": 299,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U640R5S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "marchen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00U640R5S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Märchen"
     },
     "marchen-almanach-1": {
       "added_at": "2026-08-02",

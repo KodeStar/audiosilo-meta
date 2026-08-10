@@ -1138,6 +1138,10 @@
             {
               "asin": "B086GZ2CMC",
               "region": "us"
+            },
+            {
+              "asin": "B086GX8NVJ",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -2071,6 +2075,11 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B086GZ2CMC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B086GX8NVJ",
               "type": "libex-import"
             }
           ],
@@ -10154,6 +10163,67 @@
         }
       ],
       "title": "Der Mann in Schwarz"
+    },
+    "der-mann-mit-dem-geduckten-gang": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "arthur-conan-doyle"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "der-mann-mit-dem-geduckten-gang",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-rode-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00U311Y1U",
+              "region": "us"
+            },
+            {
+              "asin": "B005J31FDY",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51YKSSMBf3L.jpg",
+          "id": "christian-rode-2011",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-rode",
+            "johannes-berenz",
+            "peter-groeger"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2011-08-26",
+          "runtime_min": 73,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U311Y1U",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B005J31FDY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-mann-mit-dem-geduckten-gang"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00U311Y1U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Mann mit dem geduckten Gang"
     },
     "der-mann-mit-der-dunklen-brille-und-weitere-abenteuer-von-tobby-und-robby": {
       "added_at": "2026-08-02",

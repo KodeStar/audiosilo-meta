@@ -5641,6 +5641,43 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "dietmar-bar-2014": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TXTF6MG",
+              "region": "us"
+            },
+            {
+              "asin": "B00LFJHUKI",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917s1llQDJL.jpg",
+          "id": "dietmar-bar-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dietmar-bar"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2014-07-11",
+          "runtime_min": 615,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TXTF6MG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00LFJHUKI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vergebung"
+        },
         "dietmar-wunder-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6896,6 +6933,73 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FCMKRQS2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Vergeltung"
+    },
+    "vergeltung-karin-smirnoff": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "leena-flegler",
+        "karin-smirnoff"
+      ],
+      "credits": [
+        {
+          "person": "leena-flegler",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "vergeltung-karin-smirnoff",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "julia-nachtmann-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D17QBHTZ",
+              "region": "us"
+            },
+            {
+              "asin": "B0D17R4L9J",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1WMcSvH5SL.jpg",
+          "id": "julia-nachtmann-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julia-nachtmann"
+          ],
+          "publisher": "Random House Audio, Deutschland",
+          "release_date": "2024-11-04",
+          "runtime_min": 693,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D17QBHTZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D17R4L9J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vergeltung-karin-smirnoff"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D17QBHTZ",
           "type": "libex-import"
         }
       ],
@@ -18645,6 +18749,59 @@
         }
       ],
       "title": "Verity. La sombra de un engaño"
+    },
+    "verity-strange": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "alisa-woods"
+      ],
+      "genres": [
+        "paranormal",
+        "romance",
+        "romantic-suspense"
+      ],
+      "id": "verity-strange",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christopher-kipiniak-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07VVM1YZ4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SALc+mvfL.jpg",
+          "id": "christopher-kipiniak-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-kipiniak",
+            "lauren-sweet"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-08-20",
+          "runtime_min": 473,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07VVM1YZ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "verity-strange"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07VVM1YZ4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Verity Strange"
     }
   }
 }

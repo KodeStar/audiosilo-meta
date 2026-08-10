@@ -2873,6 +2873,10 @@
             {
               "asin": "B005JF0EH0",
               "region": "us"
+            },
+            {
+              "asin": "B07BL5QR2M",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91HlSL3ibQL.jpg",
@@ -2889,6 +2893,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B005JF0EH0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07BL5QR2M",
               "type": "libex-import"
             }
           ],
@@ -3530,6 +3539,59 @@
       ],
       "title": "Pirate Queen"
     },
+    "pirate-stew": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "neil-gaiman"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "technology"
+      ],
+      "id": "pirate-stew",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "neil-gaiman-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0063028255",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A19f0wMAg2L.jpg",
+          "id": "neil-gaiman-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "neil-gaiman"
+          ],
+          "publisher": "Quill Tree Books",
+          "release_date": "2020-12-01",
+          "runtime_min": 10,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0063028255",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirate-stew"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0063028255",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirate Stew"
+    },
     "pirate-strike": {
       "added_at": "2026-08-02",
       "authors": [
@@ -3848,6 +3910,59 @@
         }
       ],
       "title": "Pirate Sun"
+    },
+    "pirate-ted-bell": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ted-bell"
+      ],
+      "genres": [
+        "action-adventure",
+        "espionage",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "pirate-ted-bell",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-shea-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8LGRU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gGz6RgauL.jpg",
+          "id": "john-shea-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-shea"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2008-06-27",
+          "runtime_min": 1009,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8LGRU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirate-ted-bell"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8LGRU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirate"
     },
     "pirate-wars-the-complete-series": {
       "added_at": "2026-08-02",
@@ -8715,6 +8830,59 @@
         }
       ],
       "title": "Pirates Don't Wear Pink Sunglasses"
+    },
+    "pirates-gold": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "s-j-sanders"
+      ],
+      "genres": [
+        "paranormal",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "pirates-gold",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christopher-boucher-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1039403395",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KKH49sYPS.jpg",
+          "id": "christopher-boucher-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-boucher",
+            "jessica-threet"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2021-06-29",
+          "runtime_min": 413,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1039403395",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-gold"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1039403395",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirate's Gold"
     },
     "pirates-nebula": {
       "added_at": "2026-08-02",

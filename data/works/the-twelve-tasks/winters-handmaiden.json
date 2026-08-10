@@ -10722,6 +10722,61 @@
       ],
       "title": "Winterurlaubschaos"
     },
+    "winterwood": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "shea-ernshaw"
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "romance",
+        "sword-sorcery",
+        "young-adult"
+      ],
+      "id": "winterwood",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emma-lysy-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07ZRWYV89",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812tIYWLDVL.jpg",
+          "id": "emma-lysy-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-lysy",
+            "mark-turetsky"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-11-05",
+          "runtime_min": 616,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07ZRWYV89",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winterwood"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07ZRWYV89",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Winterwood"
+    },
     "winterzauber-im-hexendorf": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12359,6 +12414,67 @@
         }
       ],
       "title": "Wir gegen den schwarzen Druiden"
+    },
+    "wir-haben-es-nicht-gut-gemacht": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "max-frisch",
+        "ingeborg-bachmann"
+      ],
+      "genres": [
+        "biography-memoir"
+      ],
+      "id": "wir-haben-es-nicht-gut-gemacht",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johanna-wokalek-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BMW2F5LK",
+              "region": "us"
+            },
+            {
+              "asin": "B0BMW45FZQ",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91o7OcHNRKL.jpg",
+          "id": "johanna-wokalek-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johanna-wokalek",
+            "matthias-brandt"
+          ],
+          "publisher": "speak low",
+          "release_date": "2022-11-21",
+          "runtime_min": 966,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BMW2F5LK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BMW45FZQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wir-haben-es-nicht-gut-gemacht"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BMW2F5LK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "»Wir haben es nicht gut gemacht.«"
     }
   }
 }

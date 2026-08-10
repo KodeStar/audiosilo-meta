@@ -646,6 +646,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anthony-donovan-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00G2J6EKI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mnN+ehaDL.jpg",
+          "id": "anthony-donovan-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anthony-donovan"
+          ],
+          "publisher": "Naxos Audiobooks",
+          "release_date": "2013-11-14",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00G2J6EKI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-raven-edgar-allan-poe"
+        },
         "dominic-west-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11614,6 +11642,58 @@
         }
       ],
       "title": "The Reach Between Worlds"
+    },
+    "the-reach-of-shadows": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "tony-j-forder"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "the-reach-of-shadows",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "greg-wagland-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1528882083",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817Qi3yfikL.jpg",
+          "id": "greg-wagland-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "greg-wagland"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2019-10-31",
+          "runtime_min": 768,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1528882083",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reach-of-shadows"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1528882083",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Reach of Shadows"
     },
     "the-reaction": {
       "added_at": "2026-08-02",

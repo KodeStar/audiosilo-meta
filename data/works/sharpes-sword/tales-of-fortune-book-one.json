@@ -3944,6 +3944,34 @@
           ],
           "work": "tales-of-terror"
         },
+        "jack-foreman-1999": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0KATI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815LT8lw7IL.jpg",
+          "id": "jack-foreman-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-foreman"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "1999-12-16",
+          "runtime_min": 290,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0KATI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tales-of-terror"
+        },
         "nelson-olmsted-2008": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -10424,6 +10452,59 @@
         }
       ],
       "title": "Tales of Witches and Wyverns"
+    },
+    "tales-of-wonder": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "huston-smith"
+      ],
+      "genres": [
+        "biography-memoir",
+        "history",
+        "religion-spirituality",
+        "religious-fiction"
+      ],
+      "id": "tales-of-wonder",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "michael-mcconnohie-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA8YNM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/616WsaE2wYL.jpg",
+          "id": "michael-mcconnohie-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-mcconnohie"
+          ],
+          "publisher": "HarperOne",
+          "release_date": "2009-06-30",
+          "runtime_min": 318,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA8YNM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tales-of-wonder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA8YNM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tales of Wonder"
     }
   }
 }
