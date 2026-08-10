@@ -4272,6 +4272,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "campbell-scott-2004": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1OVPQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71P5nem6vcL.jpg",
+          "id": "campbell-scott-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "campbell-scott"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2004-06-29",
+          "runtime_min": 378,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1OVPQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shadow-divers"
+        },
         "michael-prichard-2004": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8203,6 +8231,58 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0DPN77Q97",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Shadow Falls"
+    },
+    "shadow-falls-wendy-dranfield": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "wendy-dranfield"
+      ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
+      "id": "shadow-falls-wendy-dranfield",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gigi-burgdorf-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08SJ8Z55S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qwK7bICGL.jpg",
+          "id": "gigi-burgdorf-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gigi-burgdorf"
+          ],
+          "publisher": "Hachette UK - Bookouture",
+          "release_date": "2021-01-25",
+          "runtime_min": 573,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08SJ8Z55S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shadow-falls-wendy-dranfield"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08SJ8Z55S",
           "type": "libex-import"
         }
       ],
@@ -12198,6 +12278,59 @@
         }
       ],
       "title": "Shadow Grove"
+    },
+    "shadow-guardian": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "stacey-reynolds"
+      ],
+      "genres": [
+        "mystery",
+        "romance",
+        "romantic-suspense",
+        "thriller-suspense"
+      ],
+      "id": "shadow-guardian",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "justine-eyre-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1039401872",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FPkjkTMxL.jpg",
+          "id": "justine-eyre-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "justine-eyre"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2021-08-24",
+          "runtime_min": 996,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1039401872",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shadow-guardian"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1039401872",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Shadow Guardian"
     },
     "shadow-guardian-and-the-big-bad-wolf": {
       "added_at": "2026-08-01",

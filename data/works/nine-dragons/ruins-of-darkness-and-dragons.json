@@ -3225,6 +3225,34 @@
             }
           ],
           "work": "rule-1"
+        },
+        "phil-town-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1M4RI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/515iIzqAPhL.jpg",
+          "id": "phil-town-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "phil-town"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2006-04-12",
+          "runtime_min": 263,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1M4RI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rule-1"
         }
       },
       "sources": [
@@ -5290,6 +5318,59 @@
       ],
       "title": "Rule Breaker"
     },
+    "rule-cassandra-robbins": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "cassandra-robbins"
+      ],
+      "genres": [
+        "romance"
+      ],
+      "id": "rule-cassandra-robbins",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "angelina-rocca-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CBT4CN2L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91oHozeNQoL.jpg",
+          "id": "angelina-rocca-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angelina-rocca",
+            "corvin-king",
+            "lessa-lamb",
+            "troy-duran"
+          ],
+          "publisher": "Cassandra Robbins",
+          "release_date": "2023-07-14",
+          "runtime_min": 514,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CBT4CN2L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rule-cassandra-robbins"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CBT4CN2L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Rule"
+    },
     "rule-cd-reiss": {
       "added_at": "2026-07-29",
       "authors": [
@@ -5341,6 +5422,57 @@
         }
       ],
       "title": "Rule"
+    },
+    "rule-number-five": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "j-wilder"
+      ],
+      "genres": [
+        "romance"
+      ],
+      "id": "rule-number-five",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "edward-black-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CJG1CR4P",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RLcoowjpL.jpg",
+          "id": "edward-black-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edward-black",
+            "nikki-grey"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-10-24",
+          "runtime_min": 532,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CJG1CR4P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rule-number-five"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CJG1CR4P",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Rule Number Five"
     },
     "rule-of-capture": {
       "added_at": "2026-08-02",
@@ -5767,6 +5899,59 @@
         }
       ],
       "title": "Rule of Capture"
+    },
+    "rule-of-cool-a-litrpg-novel": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "matthew-siege"
+      ],
+      "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "fantasy",
+        "urban-fantasy"
+      ],
+      "id": "rule-of-cool-a-litrpg-novel",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "felicia-day-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1039400078",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91M8lNrapBL.jpg",
+          "id": "felicia-day-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felicia-day"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2021-02-16",
+          "runtime_min": 744,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1039400078",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rule-of-cool-a-litrpg-novel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1039400078",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Rule of Cool: A litRPG Novel"
     },
     "rule-of-dominion": {
       "added_at": "2026-08-02",
