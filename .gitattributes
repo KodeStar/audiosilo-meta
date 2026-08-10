@@ -1,0 +1,16 @@
+# Pack files are maps, not text (PACK-SPEC.md). git's line merge can apply two
+# branches' insertions of the SAME entry key at different anchors and leave the
+# key in the file twice, which is not valid pack storage - pkg/pack refuses it and
+# metafmt cannot re-render it. scripts/pack-union-merge.sh merges the entry maps
+# instead, with the same three-way rules a person would apply, so name it here as
+# the merge driver for the data tree.
+#
+# A driver only runs where it is configured, which keeps this additive: the intake
+# sweep (.github/workflows/intake.yml) configures it, a contributor can with
+#
+#   git config merge.packjson.name "three-way merge of pack-file entries"
+#   git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
+#
+# and any checkout that has not falls back to git's own line merge exactly as
+# before.
+/data/**/*.json merge=packjson

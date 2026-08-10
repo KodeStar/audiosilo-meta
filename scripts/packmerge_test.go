@@ -266,9 +266,187 @@ func TestPackUnionMerge(t *testing.T) {
 	}
 }
 
+// The sweep does not run the script by hand: .gitattributes names it as the merge
+// driver for the data tree, so a pack file that two branches both touched never
+// goes through git's LINE merge at all.
+//
+// That is not a convenience. A pack file is a map, and the line merge can leave
+// one entry key in it TWICE - which is not pack storage at all: pkg/pack refuses
+// the file, metafmt cannot re-render it, and the branch is stuck. The fixture
+// below is the shape that did it on 2026-08-09 (issue #1695), reduced from the
+// real rebase: the pack's previous entry gained a recaps member on main (its own
+// intake pull request merged), main also added the entry this branch is adding,
+// with the other member. Each side's insertion is then anchored at a different
+// line, git applies both, and the entry is in the file twice with one member
+// apiece. Without that first ingredient the two insertions collide and git stops,
+// which is why most of the sibling pull requests rebased cleanly.
+func addAddCommunityFixture(t *testing.T) (base, main, branch string) {
+	t.Helper()
+	previous := charsMember("aaa", "Ann")
+	return canonicalPack(t, pack(community("aaa", previous))),
+		canonicalPack(t, pack(
+			community("aaa", previous, recapsMember("aaa", "So far in aaa")),
+			community("bbb", charsMember("bbb", "Bob")))),
+		canonicalPack(t, pack(
+			community("aaa", previous),
+			community("bbb", recapsMember("bbb", "So far in bbb"))))
+}
+
+// TestLineMergeDoesNotConvergeOnAnAddAddPackConflict pins the hazard the merge
+// driver exists for, on the fixture that hit it live.
+func TestLineMergeDoesNotConvergeOnAnAddAddPackConflict(t *testing.T) {
+	requireTools(t, "git")
+	base, main, branch := addAddCommunityFixture(t)
+
+	repo, out, err := rebaseFixture(t, communityPath, base, main, branch, "")
+	if err != nil {
+		// A future git that anchors both insertions at the same line stops here
+		// instead, which the sweep already handles by running the script.
+		t.Logf("git stopped on the conflict rather than duplicating the entry:\n%s", out)
+		return
+	}
+	if n := countEntryKeys(t, filepath.Join(repo, communityPath), "bbb"); n < 2 {
+		t.Fatalf("the line merge produced %d copies of the entry; it converged, so the fixture no longer models issue #1695", n)
+	}
+}
+
+// TestPackMergeDriver runs the script the way the intake sweep runs it: as the
+// merge driver .gitattributes names, so the entry maps are merged before any line
+// merge can duplicate a key.
+func TestPackMergeDriver(t *testing.T) {
+	requireTools(t, "git", "jq")
+	script := abs(t, "pack-union-merge.sh")
+	base, main, branch := addAddCommunityFixture(t)
+
+	t.Run("an entry both sides added keeps both members", func(t *testing.T) {
+		repo, out, err := rebaseFixture(t, communityPath, base, main, branch, script)
+		if err != nil {
+			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		full := filepath.Join(repo, communityPath)
+		if n := countEntryKeys(t, full, "bbb"); n != 1 {
+			t.Fatalf("the entry is in the pack %d times, want 1", n)
+		}
+		merged := readEntries(t, full)
+		for _, p := range []string{"aaa.characters", "aaa.recaps", "bbb.characters", "bbb.recaps"} {
+			if !has(merged, p) {
+				t.Errorf("%s is missing from the merged pack: %v", p, merged)
+			}
+		}
+	})
+
+	t.Run("a works entry merges its recordings", func(t *testing.T) {
+		repo, out, err := rebaseFixture(t, worksPath,
+			canonicalPack(t, pack(workWithRecs("aaa", "A", rec("r1", "")))),
+			canonicalPack(t, pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r2", "")))),
+			canonicalPack(t, pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r3", "")))),
+			script)
+		if err != nil {
+			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		merged := readEntries(t, filepath.Join(repo, worksPath))
+		for _, p := range []string{"aaa.recordings.r1", "aaa.recordings.r2", "aaa.recordings.r3"} {
+			if !has(merged, p) {
+				t.Errorf("%s is missing from the merged pack: %v", p, merged)
+			}
+		}
+	})
+
+	t.Run("a member both sides wrote still stops the rebase", func(t *testing.T) {
+		repo, _, err := rebaseFixture(t, communityPath,
+			canonicalPack(t, pack(community("aaa", charsMember("aaa", "Ann")))),
+			canonicalPack(t, pack(community("aaa", charsMember("aaa", "Ann from main")))),
+			canonicalPack(t, pack(community("aaa", charsMember("aaa", "Ann from the branch")))),
+			script)
+		if err == nil {
+			t.Fatal("the driver merged two accounts of one member; it must leave that to a person")
+		}
+		// The sweep then runs the script over the conflicted file, which refuses
+		// it the same way and reports the pull request.
+		out, err := runIn(repo, script, communityPath)
+		if code := exitCode(err); code != 5 {
+			t.Errorf("exit code = %d, want 5 (a conflict for a person): %s", code, out)
+		}
+	})
+}
+
+// TestPackMergeAttributeCoversEveryFamily: the driver is only reached through
+// .gitattributes, so the pattern has to name all four families' packs.
+func TestPackMergeAttributeCoversEveryFamily(t *testing.T) {
+	requireTools(t, "git")
+	repo, _, _ := rebaseFixture(t, worksPath,
+		canonicalPack(t, pack(work("aaa", "A"))),
+		canonicalPack(t, pack(work("aaa", "A"), work("mmm", "M"))),
+		canonicalPack(t, pack(work("aaa", "A"), work("zzz", "Z"))),
+		"")
+	for _, p := range []string{
+		worksPath,
+		communityPath,
+		"data/people/0.json",
+		"data/series/0.json",
+	} {
+		out, err := runIn(repo, "git", "check-attr", "merge", "--", p)
+		if err != nil {
+			t.Fatalf("git check-attr: %v\n%s", err, out)
+		}
+		if !strings.Contains(out, "merge: packjson") {
+			t.Errorf("%s is not routed to the pack merge driver: %s", p, strings.TrimSpace(out))
+		}
+	}
+}
+
+// canonicalPack re-renders a fixture the way the tree stores a pack: sorted keys,
+// two-space indent, one field per line. The line merge's behaviour is a property
+// of that shape, so a fixture on a single line would not model the tree.
+func canonicalPack(t *testing.T, body string) string {
+	t.Helper()
+	var doc any
+	if err := json.Unmarshal([]byte(body), &doc); err != nil {
+		t.Fatalf("the fixture is not valid JSON: %v\n%s", err, body)
+	}
+	out, err := json.MarshalIndent(doc, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(out) + "\n"
+}
+
+// countEntryKeys reports how many times the pack file names one entry key at the
+// top level. encoding/json keeps the last of a duplicated key without a word, and
+// a duplicated key is the corruption at issue, so this counts the file's lines.
+func countEntryKeys(t *testing.T, path, key string) int {
+	t.Helper()
+	prefix := `    "` + key + `": `
+	n := 0
+	for _, line := range strings.Split(readFile(t, path), "\n") {
+		if strings.HasPrefix(line, prefix) {
+			n++
+		}
+	}
+	return n
+}
+
 // conflictedRebase builds a repository whose branch rebase stops on a conflict in
 // path, and returns the repository directory mid-rebase.
 func conflictedRebase(t *testing.T, path, base, main, branch string) string {
+	t.Helper()
+	repo, _, err := rebaseFixture(t, path, base, main, branch, "")
+	if err == nil {
+		t.Fatalf("the rebase did not conflict, so there is nothing to merge")
+	}
+	return repo
+}
+
+// rebaseFixture builds a repository from the three versions of one pack file and
+// rebases the branch onto main, returning the repository directory, the rebase's
+// output and its error (nil when the rebase completed).
+//
+// The repository always carries the real .gitattributes, which names
+// scripts/pack-union-merge.sh as the merge driver for the data tree. With driver
+// empty that attribute has nothing behind it and git falls back to its own line
+// merge, which is every checkout that has not configured the driver; passing the
+// script configures it, which is what the intake sweep does.
+func rebaseFixture(t *testing.T, path, base, main, branch, driver string) (string, string, error) {
 	t.Helper()
 	repo := t.TempDir()
 	git := func(args ...string) string {
@@ -279,9 +457,9 @@ func conflictedRebase(t *testing.T, path, base, main, branch string) string {
 		}
 		return out
 	}
-	write := func(body string) {
+	write := func(rel, body string) {
 		t.Helper()
-		full := filepath.Join(repo, filepath.FromSlash(path))
+		full := filepath.Join(repo, filepath.FromSlash(rel))
 		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
 			t.Fatal(err)
 		}
@@ -296,22 +474,34 @@ func conflictedRebase(t *testing.T, path, base, main, branch string) string {
 	// An inherited ~/.gitconfig with commit signing would make these prompt.
 	git("config", "commit.gpgsign", "false")
 	git("config", "tag.gpgsign", "false")
+	if driver != "" {
+		git("config", "merge.packjson.name", "three-way merge of pack-file entries")
+		git("config", "merge.packjson.driver", driver+" %O %A %B %P")
+	}
 
-	write(base)
+	write(".gitattributes", readFile(t, abs(t, filepath.Join("..", ".gitattributes"))))
+	write(path, base)
 	git("add", "-A")
 	git("commit", "-qm", "base")
 	git("checkout", "-qb", "branch")
-	write(branch)
+	write(path, branch)
 	git("commit", "-qam", "branch")
 	git("checkout", "-q", "main")
-	write(main)
+	write(path, main)
 	git("commit", "-qam", "main")
 	git("checkout", "-q", "branch")
 
-	if out, err := runIn(repo, "git", "rebase", "main"); err == nil {
-		t.Fatalf("the rebase did not conflict, so there is nothing to merge:\n%s", out)
+	out, err := runIn(repo, "git", "rebase", "main")
+	return repo, out, err
+}
+
+func readFile(t *testing.T, path string) string {
+	t.Helper()
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
 	}
-	return repo
+	return string(raw)
 }
 
 // readEntries returns the merged pack's entries.
