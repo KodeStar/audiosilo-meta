@@ -370,6 +370,130 @@
       ],
       "title": "1984"
     },
+    "1984-george-orwell-3": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "george-orwell",
+        "joe-white",
+        "carmen-beatrice-knothe"
+      ],
+      "genres": [
+        "classics",
+        "dystopian",
+        "science-fiction"
+      ],
+      "id": "1984-george-orwell-3",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "abak-safaei-rad-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DKPF9PRH",
+              "region": "us"
+            },
+            {
+              "asin": "B0DKPDZDVR",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 320179,
+              "start_ms": 0,
+              "title": "Begrüßung"
+            },
+            {
+              "length_ms": 34000,
+              "start_ms": 320179,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 1618000,
+              "start_ms": 354179,
+              "title": "Teil 1"
+            },
+            {
+              "length_ms": 1098056,
+              "start_ms": 1972179,
+              "title": "Teil 2"
+            },
+            {
+              "length_ms": 1532562,
+              "start_ms": 3070235,
+              "title": "Teil 3"
+            },
+            {
+              "length_ms": 2076885,
+              "start_ms": 4602797,
+              "title": "Teil 4"
+            },
+            {
+              "length_ms": 1735064,
+              "start_ms": 6679682,
+              "title": "Teil 5"
+            },
+            {
+              "length_ms": 1558058,
+              "start_ms": 8414746,
+              "title": "Teil 6"
+            },
+            {
+              "length_ms": 2311000,
+              "start_ms": 9972804,
+              "title": "Teil 7"
+            },
+            {
+              "length_ms": 342157,
+              "start_ms": 12283804,
+              "title": "Abspann"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EJkfMSmEL.jpg",
+          "id": "abak-safaei-rad-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "abak-safaei-rad",
+            "alexander-prince-osei",
+            "aline-abboud",
+            "cynthia-micas",
+            "falilou-seck",
+            "janin-stenzel",
+            "jannik-schumann",
+            "mehmet-kurtulus",
+            "ronald-zehrfeld",
+            "sascha-rotermund"
+          ],
+          "publisher": "Audible Originals",
+          "release_date": "2024-11-01",
+          "runtime_min": 210,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DKPF9PRH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DKPDZDVR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "1984-george-orwell-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DKPF9PRH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "1984"
+    },
     "1984-spanish-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -599,6 +723,61 @@
         }
       ],
       "title": "1984 [Spanish Edition]"
+    },
+    "1984-the-new-world-order": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "christopher-turner"
+      ],
+      "genres": [
+        "politics",
+        "social-sciences"
+      ],
+      "id": "1984-the-new-world-order",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-icke-2014": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00R8MD6MW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nXL85oxRL.jpg",
+          "id": "david-icke-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-icke",
+            "greg-nikolettos",
+            "jim-marrs",
+            "michael-tsarion",
+            "peter-taylor",
+            "philip-gardiner"
+          ],
+          "publisher": "Sector 5",
+          "release_date": "2014-12-22",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00R8MD6MW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "1984-the-new-world-order"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00R8MD6MW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "1984: The New World Order"
     }
   }
 }

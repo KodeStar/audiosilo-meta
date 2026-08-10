@@ -2157,6 +2157,43 @@
             }
           ],
           "work": "drachenbanner"
+        },
+        "detlef-bierstedt-2022-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BBN94XJ8",
+              "region": "us"
+            },
+            {
+              "asin": "B0BBN92G91",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91PF3W1LVZL.jpg",
+          "id": "detlef-bierstedt-2022-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "detlef-bierstedt"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2022-09-13",
+          "runtime_min": 926,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BBN94XJ8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BBN92G91",
+              "type": "libex-import"
+            }
+          ],
+          "work": "drachenbanner"
         }
       },
       "sources": [
@@ -16335,6 +16372,58 @@
         }
       ],
       "title": "Draco: Aliens and Stardust"
+    },
+    "draco-autumn-reed": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "autumn-reed",
+        "julia-clarke"
+      ],
+      "genres": [
+        "coming-of-age",
+        "romance"
+      ],
+      "id": "draco-autumn-reed",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emily-lawrence-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B077VTCDLQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZtBIHmExL.jpg",
+          "id": "emily-lawrence-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-lawrence"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2017-12-19",
+          "runtime_min": 483,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B077VTCDLQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "draco-autumn-reed"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B077VTCDLQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Draco"
     },
     "draco-dragon-of-the-stars": {
       "added_at": "2026-08-01",

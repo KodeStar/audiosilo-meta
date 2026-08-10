@@ -758,6 +758,10 @@
             {
               "asin": "B002V1CJM8",
               "region": "us"
+            },
+            {
+              "asin": "B0DPJHWJ72",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81TybQFvGmL.jpg",
@@ -774,6 +778,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1CJM8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DPJHWJ72",
               "type": "libex-import"
             }
           ],
@@ -5688,6 +5697,60 @@
         }
       ],
       "title": "Dark Heart: Dragonlance: Meetings Sextet, Book 3"
+    },
+    "dark-heart-james-phelan": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "james-phelan"
+      ],
+      "genres": [
+        "action-adventure",
+        "espionage",
+        "mystery",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "dark-heart-james-phelan",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "adrian-mulraney-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01N4DBT29",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71e5J89Yr9L.jpg",
+          "id": "adrian-mulraney-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adrian-mulraney"
+          ],
+          "publisher": "Hachette Australia",
+          "release_date": "2016-12-22",
+          "runtime_min": 574,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01N4DBT29",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-heart-james-phelan"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01N4DBT29",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dark Heart"
     },
     "dark-heart-of-magic": {
       "added_at": "2026-08-02",

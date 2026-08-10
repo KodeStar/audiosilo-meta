@@ -13005,6 +13005,60 @@
       ],
       "title": "Agent in Place"
     },
+    "agent-josephine": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "damien-lewis"
+      ],
+      "genres": [
+        "biography-memoir",
+        "espionage",
+        "history",
+        "military-history",
+        "politics"
+      ],
+      "id": "agent-josephine",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "damien-lewis-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09SBQ8693",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XX0xgSNuL.jpg",
+          "id": "damien-lewis-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "damien-lewis"
+          ],
+          "publisher": "PublicAffairs",
+          "release_date": "2022-07-12",
+          "runtime_min": 1000,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09SBQ8693",
+              "type": "libex-import"
+            }
+          ],
+          "work": "agent-josephine"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09SBQ8693",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Agent Josephine"
+    },
     "agent-of-byzantium": {
       "added_at": "2026-07-29",
       "authors": [
@@ -16766,6 +16820,10 @@
             {
               "asin": "0593287657",
               "region": "us"
+            },
+            {
+              "asin": "0241988896",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81+G31OMC9L.jpg",
@@ -16782,6 +16840,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "0593287657",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0241988896",
               "type": "libex-import"
             }
           ],
@@ -17209,6 +17272,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1BQJA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "agent-zigzag"
+        },
+        "john-lee-2007-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8MAL6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+IMGb1wWL.jpg",
+          "id": "john-lee-2007-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-lee"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2007-09-12",
+          "runtime_min": 376,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8MAL6",
               "type": "libex-import"
             }
           ],

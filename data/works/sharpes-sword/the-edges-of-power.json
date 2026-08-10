@@ -1840,6 +1840,51 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-conger-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0QDOY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3212527,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3848150,
+              "start_ms": 3212527,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3363178,
+              "start_ms": 7060677,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51BoxzafU1L.jpg",
+          "id": "eric-conger-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-conger"
+          ],
+          "publisher": "Grand Central Publishing",
+          "release_date": "2005-11-22",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0QDOY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-education-of-a-coach"
+        },
         "tom-stechshulte-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2363,6 +2408,58 @@
         }
       ],
       "title": "The Education of His Royal Highness"
+    },
+    "the-education-of-kevin-powell": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "kevin-powell"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "politics"
+      ],
+      "id": "the-education-of-kevin-powell",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-powell-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01FWNTB2C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LyBwT1jhL.jpg",
+          "id": "kevin-powell-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-powell"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-05-24",
+          "runtime_min": 536,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01FWNTB2C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-education-of-kevin-powell"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01FWNTB2C",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Education of Kevin Powell"
     },
     "the-education-of-little-tree": {
       "added_at": "2026-07-29",

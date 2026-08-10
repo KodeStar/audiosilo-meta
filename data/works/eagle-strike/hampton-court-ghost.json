@@ -1545,6 +1545,10 @@
             {
               "asin": "B015G118DK",
               "region": "us"
+            },
+            {
+              "asin": "B004FJRUNM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91cCCtmgywL.jpg",
@@ -1562,6 +1566,11 @@
               "imported_at": "2026-07-29",
               "ref": "B015G118DK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004FJRUNM",
+              "type": "libex-import"
             }
           ],
           "work": "hand-in-glove"
@@ -1575,6 +1584,59 @@
         }
       ],
       "title": "Hand in Glove"
+    },
+    "hand-in-hand": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "randy-alcorn"
+      ],
+      "genres": [
+        "philosophy",
+        "politics",
+        "religion-spirituality",
+        "religious-fiction"
+      ],
+      "id": "hand-in-hand",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "randy-alcorn-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00PHLVO4I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NeWISMFzL.jpg",
+          "id": "randy-alcorn-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "randy-alcorn"
+          ],
+          "publisher": "Christian Audio",
+          "release_date": "2014-11-11",
+          "runtime_min": 425,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00PHLVO4I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hand-in-hand"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00PHLVO4I",
+          "type": "libex-import"
+        }
+      ],
+      "title": "hand in Hand"
     },
     "hand-jive": {
       "added_at": "2026-08-02",
@@ -1749,6 +1811,139 @@
         }
       ],
       "title": "Hand Jive"
+    },
+    "hand-me-the-reins": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "vanessa-vale"
+      ],
+      "genres": [
+        "romance",
+        "westerns"
+      ],
+      "id": "hand-me-the-reins",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kylie-stewart-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B099NZS3BM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 738928,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 572952,
+              "start_ms": 738928,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 687357,
+              "start_ms": 1311880,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 704911,
+              "start_ms": 1999237,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 270442,
+              "start_ms": 2704148,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 666319,
+              "start_ms": 2974590,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 825933,
+              "start_ms": 3640909,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1226129,
+              "start_ms": 4466842,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 698316,
+              "start_ms": 5692971,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 394530,
+              "start_ms": 6391287,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 573114,
+              "start_ms": 6785817,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 335714,
+              "start_ms": 7358931,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1126098,
+              "start_ms": 7694645,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1159140,
+              "start_ms": 8820743,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 888906,
+              "start_ms": 9979883,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 623408,
+              "start_ms": 10868789,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812JHl7EY5L.jpg",
+          "id": "kylie-stewart-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kylie-stewart"
+          ],
+          "publisher": "Bridger Media",
+          "release_date": "2021-08-31",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B099NZS3BM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hand-me-the-reins"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B099NZS3BM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hand Me the Reins"
     },
     "hand-of-abaddon": {
       "added_at": "2026-08-02",
@@ -2745,6 +2940,59 @@
       ],
       "title": "Hand of Fate"
     },
+    "hand-of-fate-april-henry": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "april-henry",
+        "lis-wiehl"
+      ],
+      "genres": [
+        "mystery",
+        "religious-fiction",
+        "thriller-suspense"
+      ],
+      "id": "hand-of-fate-april-henry",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "pam-turlow-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003BAB0AK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51kUX4hCTaL.jpg",
+          "id": "pam-turlow-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pam-turlow"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2010-04-06",
+          "runtime_min": 480,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003BAB0AK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hand-of-fate-april-henry"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003BAB0AK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hand of Fate"
+    },
     "hand-of-fire": {
       "added_at": "2026-08-02",
       "authors": [
@@ -3500,6 +3748,56 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0G99RST1R",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hand of God"
+    },
+    "hand-of-god-philip-kerr": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "philip-kerr"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "hand-of-god-philip-kerr",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrew-wincott-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00XZKSP86",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wMb-ulxZL.jpg",
+          "id": "andrew-wincott-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-wincott"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2015-06-04",
+          "runtime_min": 687,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00XZKSP86",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hand-of-god-philip-kerr"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00XZKSP86",
           "type": "libex-import"
         }
       ],
@@ -7571,6 +7869,58 @@
       ],
       "title": "Hands of Onyx"
     },
+    "hands-of-time": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "rebecca-struthers"
+      ],
+      "genres": [
+        "history",
+        "home-garden",
+        "technology"
+      ],
+      "id": "hands-of-time",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anna-ploszajski-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BJ15C7K4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91xz2sEwkaL.jpg",
+          "id": "anna-ploszajski-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anna-ploszajski"
+          ],
+          "publisher": "Harper",
+          "release_date": "2023-06-13",
+          "runtime_min": 487,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BJ15C7K4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hands-of-time"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BJ15C7K4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hands of Time"
+    },
     "hands-off": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8519,6 +8869,59 @@
         }
       ],
       "title": "Handyman"
+    },
+    "hang-him-twice": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "william-w-johnstone",
+        "j-a-johnstone"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "westerns"
+      ],
+      "id": "hang-him-twice",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "john-mclain-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1494547376",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eJhDwPvEL.jpg",
+          "id": "john-mclain-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-mclain"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2020-03-31",
+          "runtime_min": 646,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1494547376",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hang-him-twice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1494547376",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hang Him Twice"
     },
     "hang-him-twice-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -9728,6 +10131,59 @@
         }
       ],
       "title": "Hanging Fire"
+    },
+    "hanging-house": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "dean-rasmussen"
+      ],
+      "genres": [
+        "ghost-stories",
+        "horror",
+        "paranormal",
+        "thriller-suspense"
+      ],
+      "id": "hanging-house",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kasi-hollowell-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09W32G2V8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91X9JIlB1LL.jpg",
+          "id": "kasi-hollowell-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kasi-hollowell"
+          ],
+          "publisher": "Dean Rasmussen",
+          "release_date": "2022-03-21",
+          "runtime_min": 459,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09W32G2V8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hanging-house"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09W32G2V8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hanging House"
     },
     "hanging-in-the-balance": {
       "added_at": "2026-08-01",
@@ -11475,6 +11931,60 @@
       ],
       "title": "Hangry"
     },
+    "hani-and-ishus-guide-to-fake-dating": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "adiba-jaigirdar"
+      ],
+      "genres": [
+        "lgbtq",
+        "romance",
+        "romantic-comedy",
+        "young-adult"
+      ],
+      "id": "hani-and-ishus-guide-to-fake-dating",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "reena-dutt-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0593413687",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81R0vIpMDvS.jpg",
+          "id": "reena-dutt-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "reena-dutt",
+            "shubhangi-karmakar"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2021-05-25",
+          "runtime_min": 575,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0593413687",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hani-and-ishus-guide-to-fake-dating"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0593413687",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hani and Ishu's Guide to Fake Dating"
+    },
     "hank": {
       "added_at": "2026-07-29",
       "authors": [
@@ -11686,6 +12196,268 @@
         }
       ],
       "title": "Hank Zipzer #2: I Got a \"D\" in Salami"
+    },
+    "hank-zipzer-3-day-of-the-iguana": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lin-oliver",
+        "henry-winkler"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "nature",
+        "self-help"
+      ],
+      "id": "hank-zipzer-3-day-of-the-iguana",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "henry-winkler-2004": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1A2LI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8103sY5VRWL.jpg",
+          "id": "henry-winkler-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "henry-winkler"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2004-02-10",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1A2LI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hank-zipzer-3-day-of-the-iguana"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1A2LI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hank Zipzer #3: Day of the Iguana"
+    },
+    "hank-zipzer-4-the-zippity-zinger": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lin-oliver",
+        "henry-winkler"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "self-help"
+      ],
+      "id": "hank-zipzer-4-the-zippity-zinger",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "henry-winkler-2004": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0QW7W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tIoRijK7L.jpg",
+          "id": "henry-winkler-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "henry-winkler"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2004-02-10",
+          "runtime_min": 152,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0QW7W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hank-zipzer-4-the-zippity-zinger"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0QW7W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hank Zipzer #4: The Zippity Zinger"
+    },
+    "hanks-and-a-hitman": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "tracey-drew"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery"
+      ],
+      "id": "hanks-and-a-hitman",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sarah-mollo-christensen-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09FQDRB3L",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20131,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1350983,
+              "start_ms": 20131,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1373878,
+              "start_ms": 1371114,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1463484,
+              "start_ms": 2744992,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1477067,
+              "start_ms": 4208476,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1500101,
+              "start_ms": 5685543,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1222484,
+              "start_ms": 7185644,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1180990,
+              "start_ms": 8408128,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1245982,
+              "start_ms": 9589118,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1315828,
+              "start_ms": 10835100,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1428282,
+              "start_ms": 12150928,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1045199,
+              "start_ms": 13579210,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1154008,
+              "start_ms": 14624409,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1112723,
+              "start_ms": 15778417,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1125587,
+              "start_ms": 16891140,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1139565,
+              "start_ms": 18016727,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1081933,
+              "start_ms": 19156292,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1075571,
+              "start_ms": 20238225,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1252159,
+              "start_ms": 21313796,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 70912,
+              "start_ms": 22565955,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81baMdidBwL.jpg",
+          "id": "sarah-mollo-christensen-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sarah-mollo-christensen"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2021-10-05",
+          "runtime_min": 377,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09FQDRB3L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hanks-and-a-hitman"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09FQDRB3L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Hanks and a Hitman"
     },
     "hankypanky": {
       "added_at": "2026-08-02",
