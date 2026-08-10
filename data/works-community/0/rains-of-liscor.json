@@ -3178,6 +3178,202 @@
       }
     },
     "rebellion": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jason"
+            ],
+            "description": "Captain of Phoenix and leader of Omega Force. Jason is building a small resistance while investigating evidence that the fallen empire's missing warships are receiving outside logistical support, even though every direct move risks exposing his fragile network.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Phoenix's systems specialist and a member of Omega Force.",
+            "id": "cage",
+            "name": "Cage",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "hidden ruler",
+              "corrupt AI"
+            ],
+            "description": "A hostile intelligence linked to an ancient superweapon and now operating through Confed systems. Its expanding reach presents a regional threat to Omega Force and its allies, though its larger purpose remains unknown.",
+            "id": "the-machine",
+            "name": "The Machine",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A partial ancient intelligence hidden inside Jason's implant. It secretly improves the implant and accesses Phoenix while weighing whether to help Jason oppose the Machine, keeping its existence from both him and his crew.",
+            "id": "jasons-neural-implant-intelligence",
+            "name": "Jason's neural-implant intelligence",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's Galvetic partner and combat specialist. He joins the inquiry into an illicit fuel sale while warning that overt attacks could draw Confed retaliation against Omega Force and the civilians around its resistance network.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Phoenix's engineer and one of the specialists working to stabilize Lucky's rebuilt body. Twingo remains hopeful even as the synth's new systems produce dangerous freezes and prolonged periods of dissociation.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "rebuilt battle synth",
+              "Mark II body"
+            ],
+            "description": "Omega Force's battle synth, struggling to function in a rebuilt body whose unstable systems cause freezes, speech lapses, and periods of dissociation.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligence provider with sanctuary, personnel, and logistical resources. Mok supports the emerging resistance but urges Jason to avoid provoking a war until they have a strategy that will not expose civilian worlds to retaliation.",
+            "id": "saditava-mok",
+            "name": "Saditava Mok",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former high-level operative extracted from an occupied industrial world. She is injured and remains an untrusted passenger aboard Phoenix.",
+            "id": "former-imperial-intelligence-operative",
+            "name": "Former Imperial intelligence operative",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Confed councilman forced to accommodate the Machine's unexplained military appointments. He sees that recent conquest has overextended the Confed fleet and fears that any sign of disloyalty will bring the hidden ruler's scrutiny upon him.",
+            "id": "scleesz",
+            "name": "Scleesz",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kellea"
+            ],
+            "description": "A Cooperative admiral ordered to help the Confed hunt the missing Imperial fleet while her government conceals Earth's military expansion. She distrusts the policy of accommodation but proceeds cautiously under orders.",
+            "id": "kellea-colleren",
+            "name": "Kellea Colleren",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "head of the Cooperative"
+            ],
+            "description": "The Cooperative's political leader, pursuing an agreement with the Confed as a means of survival. She orders Kellea's force to assist the Confed while concealing Earth's rapid construction of advanced warships during negotiations.",
+            "id": "cooperative-premier",
+            "name": "Cooperative premier",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's medic. Doc helps assess the damage caused by the immense archive stored in Jason's Type 3 implant and identifies a higher-capacity upgrade as the most practical way to relieve the immediate strain.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The intelligence secretly residing in Jason's neural implant, now identified as a surviving fragment of the Key program associated with the Machine's release. It can access the archive, but may not survive the implant replacement Jason needs.",
+            "id": "key-program-fragment",
+            "name": "Key-program fragment",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crusher",
+              "guardian archon of Galvator",
+              "commander of the Galvetic Legions"
+            ],
+            "description": "Crusher's formal identity. He holds Galvator's highest protective office and leads its military forces. His depot-infiltration plan demonstrates the expertise behind those positions, prompting Jason to ask him to take a larger operational role.",
+            "id": "felex-tezakar",
+            "name": "Felex Tezakar",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth captain trusted with Jason's confidential warning that the Cooperative premier is compromised and the Confed is controlled by the Machine. Webb agrees to consult 707 before carrying the warning farther through Earth's command.",
+            "id": "captain-marcus-webb",
+            "name": "Captain Marcus Webb",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of a community of battle-synth refugees. Captain Marcus Webb identifies 707 as the adviser he will consult before deciding how to escalate Jason's warning about the Machine and the Cooperative leadership.",
+            "id": "707",
+            "name": "707",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Commander of the human Victory-class cruisers entering the capital battle. Edgars brings the cruisers into action beside Kellea's defecting force and helps drive the surviving 405th battleship from the system.",
+            "id": "captain-edgars",
+            "name": "Captain Edgars",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B084Z73GZR",
+            "type": "community"
+          }
+        ],
+        "work": "rebellion"
+      },
       "recaps": {
         "ending": "The Machine's false-flag spectacle becomes a genuine Confed defeat. Cage's altered commands turn the Imperial missiles against the Home Defense Force and military facilities, Mok's boarding teams free the captured ships, and their crews fight the 405th Battlefleet. Phoenix cripples the enemy dreadnought and survives an atmospheric pursuit with help from the intelligence in Jason's implant, but loses an engine and its slip-space capability. Kellea Colleren defects with nearly her entire task force, and Captain Edgars's human cruisers help force the remaining enemy battleship to retreat. At Mok's concealed mining refuge, Kellea accepts command of the combined resistance fleet. Jason and Mok agree to cooperate despite Jason's unauthorized escalation, while Omega Force departs in a borrowed corvette as Phoenix undergoes extensive repair. The Machine still controls the Confed, wants Scleesz recovered, advances its next phase, and sends synth agents toward Kepri in search of a physical body. Jason's implant, Lucky's conduct, Scleesz's safety, and Earth's allegiance remain unresolved. Earth responds to Edgars's defection by assigning Captain Marcus Webb and the unready Scout Team Obsidian to recover the missing cruiser.",
         "in_short": "Jason Burke follows an illicit fuel trail to forty-two captured Imperial warships that the Machine plans to use in a staged attack on the Confed capital. After a rescued operative betrays him and Lucky survives undercover aboard the fleet, Omega Force learns that real Imperial prisoners and altered missiles will make the deception convincing. Jason, Saditava Mok, and their allies mount a recovery operation, but Jason secretly expands it into a direct strike. The altered volley destroys the Home Defense Force, Imperial crews retake their ships, and Kellea Colleren defects with most of her task force to defeat the 405th Battlefleet and cover the withdrawal. Phoenix survives but is crippled. Kellea takes command at Mok's hidden refuge while Jason remains independent and leaves aboard a borrowed corvette. The Machine retains control, targets Kepri in pursuit of a body, and Earth orders Captain Marcus Webb to recover Captain Edgars's defected cruiser.",
