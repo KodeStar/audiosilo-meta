@@ -1775,6 +1775,10 @@
             {
               "asin": "B07B6664DG",
               "region": "us"
+            },
+            {
+              "asin": "B078HFJQCL",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91hoUN39KTL.jpg",
@@ -1791,6 +1795,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07B6664DG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B078HFJQCL",
               "type": "libex-import"
             }
           ],
@@ -2947,6 +2956,56 @@
         }
       ],
       "title": "Aurelian"
+    },
+    "aurelio-zen-vendetta": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "michael-dibdin"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "aurelio-zen-vendetta",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "michael-kitchen-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0093PYRGQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Uks-26oTL.jpg",
+          "id": "michael-kitchen-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-kitchen"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2012-09-01",
+          "runtime_min": 589,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0093PYRGQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "aurelio-zen-vendetta"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0093PYRGQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Aurelio Zen: Vendetta"
     },
     "aurelius": {
       "added_at": "2026-08-02",
