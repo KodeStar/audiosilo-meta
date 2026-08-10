@@ -2907,6 +2907,236 @@
       }
     },
     "green-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion sent by Galina Turov to investigate missing resettlement cargo at Central's docks. He enters the inquiry as an unmarked civilian, but ignores orders to go visibly unarmed and carries concealed weapons.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Turov"
+            ],
+            "description": "James McGill's superior in Legion Varus and the officer directing his covert investigation into cargo losses at Central. She requires him to work without Legion markings and sends him to meet a dockside contact.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sea Empress crewman who agrees to show McGill the concealed operation aboard the ship, becoming his source inside the vessel.",
+            "id": "lenny",
+            "name": "Lenny",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Claver"
+            ],
+            "description": "A returning associate of McGill who works at a Green World warehouse filled with stolen equipment. She says she does not lead the operation, rejects his attempt to persuade her to leave it, and shoots him.",
+            "id": "abigail-claver",
+            "name": "Abigail Claver",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former provincial enforcer who revives and detains McGill at a remote base in Rigel territory. He predicts that Earth will defeat a growing anti-Earth alliance and seeks McGill's help securing his own eventual revival on Earth.",
+            "id": "renegade-mercenary-commander",
+            "name": "Renegade mercenary commander",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alien revival specialist serving the renegade commander at a remote base in Rigel territory. He helps hold McGill after reviving him there.",
+            "id": "saurian-revival-specialist",
+            "name": "Saurian revival specialist",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior technical-project director at Central with deep feelings for the dead Saurian specialist. When ordinary revival proves impossible, she joins McGill in seeking an illicit method based on a preserved claw and recorded engrams.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dustworld investigator",
+              "Etta's grandfather"
+            ],
+            "description": "An experimental biologist on Dustworld who grows comatose bodies of several species as an organic alternative to standard revival printing. He has previously regrown McGill and may be able to create a body for Florimel's companion.",
+            "id": "the-investigator",
+            "name": "The Investigator",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "McGill's daughter"
+            ],
+            "description": "McGill's daughter and a worker in Florimel's Central laboratory. She notices that the revived Saurian has no official record and quickly suspects that Florimel and McGill are concealing an irregular revival.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Legion Varus officer who finds McGill alive after he was listed missing in the Harbor District disaster. With the legion mustering during the crisis, Graves orders him to report directly to Galina Turov.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natasha",
+              "Specialist Elkin"
+            ],
+            "description": "A technically skilled Legion Varus specialist whom McGill recruits to analyze records from his earlier time on Green World and help locate the planet.",
+            "id": "natasha-elkin",
+            "name": "Natasha Elkin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earth's imperator and a senior authority briefed on the suspected Green World rebel base. Because the planet lies inside Skae territory, he favors a covert infiltration and sabotage mission over an openly declared attack.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sub-tribune commanding the Green World voyage while Galina Turov and Drusus remain absent. He briefs the officers aboard Dominus and must rely on a hostile prisoner-guide to pass the Skae border defenses.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of McGill's unit who encourages rivalry between Sargon and Carlos during the voyage to Green World.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus trooper in McGill's unit. He voices the rank-and-file fear that the expedition may be a one-way mission, asking McGill directly whether the force has any realistic prospect of returning from Green World.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of McGill's heavy troops. During an unannounced live-fire exercise aboard Dominus, he spots the first unfamiliar combat drone and helps establish that the apparent threat is armed and genuine.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The officer commanding the auxiliary rear element of McGill's unit. He takes part in the unit's response when an unannounced shipboard exercise places the soldiers under fire from experimental combat drones.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of McGill's ghost specialists. Cooper works with Della beneath the exercise lagoon, using stealth equipment and cables to pull armed combat drones into the water where the rest of the unit can destroy them.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ghost specialist in McGill's unit. She works underwater with Cooper during the live-fire exercise, using stealth and a cable to drag combat drones into the lagoon and expose their critical weakness to water.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus veteran participating in the exploration of a rail-lined route beneath Green World's ocean. He reaches a fallen scout without leaving the narrow corridor that protects the unit from lethal external pressure.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captain present with Galina Turov aboard the legion transport as dogmen overrun the trapped island force and alien border ships approach. He cooperates in presenting the transport's bombardment as McGill's unauthorized action.",
+            "id": "captain-merton",
+            "name": "Captain Merton",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A political authority at the center of the escalating border crisis. Drusus convenes a high-level meeting to plan negotiations with her, and McGill supplies possible leverage involving her child and former governor Satikis.",
+            "id": "governor-knox",
+            "name": "Governor Knox",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1039404693",
+            "type": "community"
+          }
+        ],
+        "work": "green-world"
+      },
       "recaps": {
         "ending": "The Green World bombardment is believed to destroy the rebellion's undersea bases and end the gateway assault on Central, but Legion Varus leaves its trapped ground force behind. Abigail Claver dies in a plasma-grenade blast during the raid. The opposing alien power files a formal complaint, and Governor Knox protects her position by accepting Claver as the substitute culprit. McGill is released and is no longer treated as a criminal on Earth, while the wider rebel network and the political case remain unresolved. Etta survives restoration with her memories intact, but her incomplete body record forces the Investigator and Florimel to rebuild her with substitute human DNA, including material from Natasha Elkin. Her changed body bars an easy return to her Central life. After attacking Galina, Etta leaves Earth for Dustworld, where she joins Florimel and the Investigator in continued unregistered work. Galina recovers, holds imperator rank again, and resumes her personal relationship with McGill despite their damaged professional trust. Carlos still intends to leave Legion Varus, leaving a future command vacancy uncertain.",
         "in_short": "James McGill traces stolen migration supplies from Central's docks to Green World, where the Claver network is equipping an anti-Earth rebellion. Legion Varus enters Skae territory, raids the planet, and discovers enemy infrastructure beneath its ocean. Kraken, dogmen, and a solid-water dome trap the ground force until Galina Turov uses McGill as cover for a devastating bombardment and abandons the island troops. The strike appears to halt a simultaneous gateway attack on Central, but Etta is killed and Earth faces a diplomatic crisis. McGill, Florimel, and the Investigator recover Etta's archived mind and rebuild her in a body partly derived from Natasha Elkin. McGill escapes prosecution by directing Governor Knox toward Abigail Claver. In the closing material, Etta admits attacking Galina and chooses exile on Dustworld with Florimel and the Investigator, while McGill and Galina resume their relationship.",
