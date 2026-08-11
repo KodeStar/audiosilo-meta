@@ -2594,6 +2594,365 @@
         "work": "storm-front"
       }
     },
+    "storm-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion, Galina Turov's subordinate and lover, and Etta's father. He is maintaining a false explanation for his daughter's move to Dust World while privately trying to contain the consequences of her dealings with Claver.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Turov",
+              "Tribune Turov"
+            ],
+            "description": "The tribune commanding Legion Varus and McGill's superior officer and lover. At his family home, she supports the public claim that Etta went to Dust World for protection.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's underage daughter, now living on Dust World. Her family has been told that she left for safety, while McGill conceals the real circumstances of her departure and her involvement in a transaction with Claver.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A concealed adversary who appears near McGill's home after Etta's transaction and creates an immediate threat there.",
+            "id": "claver",
+            "name": "Claver",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leading body in a clone network that also uses physically powerful Class Three workers. The workers remain loyal to this primary line and identify McGill by the equipment taken from its Earth body.",
+            "id": "claver-prime",
+            "name": "Claver Prime",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the investigator"
+            ],
+            "description": "The leader of the Dust World colony and operator of its clandestine revival system. He restores McGill with an illegal process that combines stored DNA and tapper memories, then requires him to keep the operation secret.",
+            "id": "ettas-grandfather",
+            "name": "Etta's grandfather",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A near-human Hegemony scientist whose eidetic memory may preserve the text of the destroyed book. She will reconstruct it only if Galina Turov authorizes the revival of her dead friend, whose data she has retained.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deceased enemy agent who was close to Florimel and previously killed both her and McGill. Florimel holds his preserved DNA and memories, and makes his revival the price of reproducing the destroyed book.",
+            "id": "rash",
+            "name": "Rash",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "Legion Varus's senior primus and operational commander beneath Galina Turov. He briefs the legion's officers aboard their new transport as an unusually early deployment begins.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legionnaire in McGill's Third Unit. She joins the unit as Legion Varus prepares for an early deployment with its destination still undisclosed.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus veteran serving in McGill's Third Unit as the legion begins an early deployment whose purpose remains undisclosed.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adjunct in Third Unit who temporarily commands it while McGill is absent. He is part of the established officer group preparing the unit for its new mission.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of McGill's Third Unit who deploys with Legion Varus aboard its new transport.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "McGill's friend and a Legion Varus centurion preparing for the legion's new deployment.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced former centurion transferred from Legion Victrix into McGill's unit after refusing a Hegemony desk post. Visibly uneasy about joining Varus, she does not explain why Victrix removed her from combat duty.",
+            "id": "former-victrix-adjunct",
+            "name": "Former Victrix adjunct",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's former partner, Etta's mother, and a native of Dust World. She confronts him over their daughter's dangerous experience there and fears Etta's continuing determination to enter legion service.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit specialist who openly questions McGill's training plan before a shipboard war game. His willingness to challenge the centurion marks him as an independently minded member of the unit.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior noncommissioned weapons specialist in Third Unit. During the Green Deck exercise, he coordinates the plasma attack on an enemy tower and helps carry an overloaded weapon toward the breach.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Chief Inspector Xlur"
+            ],
+            "description": "A Mogwa chief inspector who expects McGill to deliver the bioterminator text. Galina Turov identifies him as the recipient of McGill's concealed courier mission.",
+            "id": "xlur",
+            "name": "Xlur",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Legion Varus officer now working for the Hegemony. He treats McGill as absent without leave and sends him through a gateway to Storm World.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Blood World sub-centurion who recognizes McGill's standing among his troops and escorts him to the Iron Eagles primus.",
+            "id": "churn",
+            "name": "Churn",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hostile Blood World officer commanding the Iron Eagles position on Storm World. Although McGill recognizes him from an earlier campaign, the primus refuses to help him rejoin Legion Varus.",
+            "id": "iron-eagles-primus",
+            "name": "Iron Eagles primus",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The officer leading Third Unit's vulnerable light platoon. She maintains a professional bearing when McGill returns from a long absence.",
+            "id": "barton",
+            "name": "Barton",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran reassigned by McGill to provide experienced support for Barton's vulnerable light platoon.",
+            "id": "mahler",
+            "name": "Mahler",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit soldier preparing to transfer into bio-specialist work. She declines the opportunity to train as a stealth scout and is willing to leave Legion Varus if the new specialty does not suit her.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Third Unit's leading technical specialist. During the first patrol on Storm World, she identifies the sudden growth of immense vegetation as evidence of Wur activity.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "scupper lieutenant"
+            ],
+            "description": "A blue scupper who formally recognizes McGill as First Man after McGill defeats the natives' previous leader. He becomes McGill's deputy within the newly acquired scupper force.",
+            "id": "second-man",
+            "name": "Second Man",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Armel",
+              "Tribune Armel"
+            ],
+            "description": "The former commander of Legion Germanica, now tribune of Fort Beta's Blood World legion. He is a prior opponent of McGill and an antagonistic but necessary ally as the surviving forces prepare for another Wur assault.",
+            "id": "maurice-armel",
+            "name": "Maurice Armel",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sateekas",
+              "former Grand Admiral Sateekas"
+            ],
+            "description": "The former grand admiral of Battlefleet 921 and newly appointed Mogwa governor of the province. He arrives at Storm World to judge Earth's frontier performance and orders the human force to prove itself in the coming battle.",
+            "id": "governor-sateekas",
+            "name": "Governor Sateekas",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former adversary of McGill and Florimel who now operates Fort Beta's oversized revival machinery. He is capable of processing giant bodies and is currently Florimel's partner.",
+            "id": "saurian-revival-technician",
+            "name": "Saurian revival technician",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the underground scupper city. She is hosting a Rigelian negotiator, has authority over alliance terms, and agrees to arbitrate McGill's challenge under native custom.",
+            "id": "native-queen",
+            "name": "Native queen",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rigelian representative"
+            ],
+            "description": "Rigel's representative in the scupper capital and a fighter McGill encountered during an earlier campaign. He seeks an alliance with the native population and accepts McGill's customary challenge before the queen.",
+            "id": "squanto",
+            "name": "Squanto",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The named female Claver. Female clones are forbidden within the Claver network.",
+            "id": "abigail",
+            "name": "Abigail",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A separate Claver who claims exile from the primary clone line. He says he created the female clone Abigail, is hunted by the other Clavers, and offers McGill a plan to change the battle.",
+            "id": "renegade-claver",
+            "name": "Renegade Claver",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The renegade clone who joins McGill's force and proposes destroying the final Wur nexus to remove the local Wur's command intelligence.",
+            "id": "claver-x",
+            "name": "Claver-X",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07L1694R1",
+            "type": "community"
+          }
+        ],
+        "work": "storm-world"
+      }
+    },
     "stormbreaker": {
       "characters": {
         "characters": [
