@@ -1631,6 +1631,239 @@
         "work": "shanghai-girls"
       }
     },
+    "shards-of-honor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Captain Naismith"
+            ],
+            "description": "The commander of a scientific survey party whose camp has been attacked. After ordering her surviving crew to escape, she remains behind with the badly injured Dubauer. Though Captain Vorkosigan holds her on parole, she continues to protect her ensign and helps her wounded captor seek medical supplies.",
+            "id": "cordelia-naismith",
+            "name": "Cordelia Naismith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Captain Vorkosigan"
+            ],
+            "description": "Captain of the General Vorkraft and a wounded survivor of violence at Cordelia's survey camp. He takes Cordelia prisoner but depends on her aid during the journey to a hidden cache. He suspects that his political officer arranged the attack as part of a coup against him.",
+            "id": "vorkosigan",
+            "name": "Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A botanist and ensign in Cordelia's survey party. A nerve-disruptor wound leaves him unable to speak coherently, prone to seizures, and dependent on Cordelia throughout the dangerous journey toward Vorkosigan's supply cache.",
+            "id": "dubauer",
+            "name": "Dubauer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer in Cordelia's survey party who is killed during the assault on the expedition's camp. Cordelia and Vorkosigan find his body when they return for supplies, and they bury him before beginning their overland journey.",
+            "id": "lieutenant-rosemont",
+            "name": "Lieutenant Rosemont",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Vorkosigan's political officer and the suspected organizer of the attempt on his command. Vorkosigan believes Radnoff and associates used the encounter with Cordelia's survey party to disguise an assassination and seize control.",
+            "id": "lieutenant-radnoff",
+            "name": "Lieutenant Radnoff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An armed associate of Radnoff involved in the mutiny against Vorkosigan. When Vorkosigan begins recovering control at the cache, Darobey remains outside the group he can immediately arrest and escapes with Radnoff.",
+            "id": "darobey",
+            "name": "Darobey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bothari"
+            ],
+            "description": "An exceptional ground-combat soldier identified as the man who shot Dubauer. He has previously struck Vorkosigan and shows hostility toward him, yet Vorkosigan believes Bothari follows a personal code and treats his report of the failed ambush as reliable.",
+            "id": "sergeant-bothari",
+            "name": "Sergeant Bothari",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Vorkosigan's force who remains loyal during the confrontation at the supply cache. Once Vorkosigan reappears, Koudelka helps secure the position and is trusted with arrests and prisoner duties.",
+            "id": "koudelka",
+            "name": "Koudelka",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer directing the armed party at Vorkosigan's supply cache. He joined the coup in hope of gaining command, but hesitates when confronted with evidence that Vorkosigan survived and that the original attack did not unfold as promised.",
+            "id": "cache-mutineer-commander",
+            "name": "Cache mutineer commander",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior officer aboard the General Vorkraft during the renewed mutiny. The officer is present while conspirators seize engineering and Vorkosigan prepares a stunner-only operation to recover the threatened ship.",
+            "id": "vorkosigans-second-officer",
+            "name": "Vorkosigan's second officer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An enemy commander and former associate of Vorkosigan who takes custody of Cordelia after her decoy mission. He imprisons her, threatens sexual violence, and attempts to use the traumatized Bothari as an instrument of coercion.",
+            "id": "invading-admiral",
+            "name": "Invading admiral",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An officer from the Emperor's personal security staff assigned to observe Vorkosigan. Equipped with an eidetic-memory biochip, the lieutenant helps Vorkosigan conceal Cordelia and Bothari after the invading admiral's death.",
+            "id": "emperors-security-lieutenant",
+            "name": "Emperor's security lieutenant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An imperial prince who insists on personally leading the landing on Escobar. Vorkosigan formally opposes the decision before the operation begins, warning the assembled leadership against the course the Prince has chosen.",
+            "id": "the-prince",
+            "name": "The Prince",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Escobaran clinician who pursues the theory that Cordelia endured abuse and enemy conditioning during captivity. Dr. Sprague directs efforts to uncover supposed suppressed memories, while Cordelia withholds politically dangerous information that contradicts that account.",
+            "id": "dr-sprague",
+            "name": "Dr. Sprague",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cordelia's commanding officer after her return from Escobar. The officer makes a future survey assignment dependent on psychiatric clearance and later treats compulsory hospitalization as a security response to Cordelia's resistance.",
+            "id": "beta-colony-commanding-officer",
+            "name": "Beta Colony commanding officer",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The doctor assigned to assess Cordelia for military service. During the evaluation, the doctor secretly administers a drug, interprets Cordelia's distress as proof of hostile conditioning, and concludes that Vorkosigan may be controlling her.",
+            "id": "assigned-military-doctor",
+            "name": "Assigned military doctor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Cordelia's mother, who initially accepts the authorities' claim that her daughter requires psychiatric intervention. She permits officials to rely on next-of-kin consent as they seek to hospitalize Cordelia against her will.",
+            "id": "cordelias-mother",
+            "name": "Cordelia's mother",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Cordelia Naismith"
+            ],
+            "description": "The married name of Cordelia Naismith after she resigns from Beta Colony service, reaches Vorkosigan's family estate, and chooses to remain with him. Their wedding establishes the shared life that had been impossible while war and divided loyalties kept them apart.",
+            "id": "cordelia-vorkosigan",
+            "name": "Cordelia Vorkosigan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A count and retired general at the Vorkosigan family estate. He is concerned about his son's heavy drinking and worsening condition after resignation from military service and the political consequences of Escobar.",
+            "id": "vorkosigans-father",
+            "name": "Vorkosigan's father",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bothari's infant daughter, born from one of the uterine replicators returned after Escobar. Her mother died before the child's release. Bothari acknowledges Elena, takes responsibility for her care, and intends to present her as his legitimate daughter.",
+            "id": "elena-bothari",
+            "name": "Elena Bothari",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The terminally ill ruler who summons Cordelia and Vorkosigan to settle the government of his underage heir. He argues that Vorkosigan's rank, military standing, and lack of personal ambition make him the necessary choice for Regent.",
+            "id": "the-emperor",
+            "name": "The Emperor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran specialist recovering war dead for identification and repatriation. The med-tech handles each body and its personal effects with care, even when the work becomes personal after the crew retrieves her own daughter.",
+            "id": "escobaran-med-tech",
+            "name": "Escobaran med-tech",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A salvage-crew pilot who begins the recovery mission repulsed by handling the dead. After observing the med-tech's disciplined and respectful work, the young officer moves beyond avoidance and starts helping prepare later recoveries.",
+            "id": "young-escobaran-pilot-officer",
+            "name": "Young Escobaran pilot officer",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002V0LTHK",
+            "type": "community"
+          }
+        ],
+        "work": "shards-of-honor"
+      }
+    },
     "sharp-objects": {
       "characters": {
         "characters": [
