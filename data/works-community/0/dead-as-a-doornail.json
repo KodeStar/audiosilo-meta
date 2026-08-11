@@ -987,6 +987,270 @@
       }
     },
     "dead-reckoning": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Omega Force's leader pursues Lucky and Cage through an indirect intelligence operation, working with a battle synth whose methods and judgment do not always match his own. He intends to find the prisoners without warning their captor.",
+            "id": "jason-burke",
+            "name": "Jason Burke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jason Burke"
+            ],
+            "description": "The false identity Jason Burke adopts while entering the financier's mercenary force. He presents David Byrne as a veteran from Nicene III, allowing him to remain near Combat Unit 701 and search for Lucky from inside the operation.",
+            "id": "david-byrne",
+            "name": "David Byrne",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Seven",
+              "Combat Unit 777"
+            ],
+            "description": "An Omega Force battle synth held aboard the shipowner's vessel with Cage. His former mimic hardware is gone, so the captor seeks another use for him. Lucky remains compliant while Cage is medically vulnerable.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's network specialist awakens after prolonged medical treatment to find himself captive with Lucky. His condition gives their captor leverage, limiting Lucky's options for escape while the shipowner decides how to use them.",
+            "id": "cage",
+            "name": "Cage",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battle synth who joins Jason's careful search for Lucky and Cage. He and Jason disagree about tactics, but they share the immediate goal of locating the prisoners without warning their captor or endangering them.",
+            "id": "combat-unit-701",
+            "name": "Combat Unit 701",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Combat Unit 701",
+              "701"
+            ],
+            "description": "The operational designation used for Combat Unit 701 after altered appearance prevents another prototype from recognizing him. The identity lets him remain embedded beside Jason in the hidden mercenary force.",
+            "id": "combat-unit-302",
+            "name": "Combat Unit 302",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Felex",
+              "Guardian Archon"
+            ],
+            "description": "An Omega Force combatant recovering from a rejuvenation procedure that has caused dangerous aggression. He is also Felex, Guardian Archon of Galvatore, making both his treatment and Doc's findings politically lethal secrets.",
+            "id": "crusher",
+            "name": "Crusher",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's medic and researcher. He stabilizes Crusher after a hazardous rejuvenation and discovers that the Galvetic warrior caste has a concealed genetic origin. Either discovery could bring severe consequences if exposed.",
+            "id": "doc",
+            "name": "Doc",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Omega Force's engineer, working with Doc to obtain discreet help for Crusher's dangerous condition and the political risks surrounding it.",
+            "id": "twingo",
+            "name": "Twingo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mazer"
+            ],
+            "description": "A Galvetic associate of Felex who learns that Felex has broken a foundational obligation. He must weigh personal loyalty and the danger surrounding Crusher's condition against his duty to Galvatore, sharing the decision with his brother Morakar.",
+            "id": "mazer-reddix",
+            "name": "Mazer Reddix",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Morakar"
+            ],
+            "description": "Mazer's brother and a Galvetic associate of Felex. After Mazer tells him that Felex has broken a foundational obligation, the brothers defer their decision on whether to protect Felex or uphold their duty to Galvatore.",
+            "id": "morakar-reddix",
+            "name": "Morakar Reddix",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Esquarian intelligence minister known to Omega Force.",
+            "id": "saditava-mok",
+            "name": "Saditava Mok",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Cridal political leader whose reported assassination by Carolyn Whitney intensifies a wider regional crisis and places Jason and an associate at risk from retaliatory strike teams while Omega Force is already dispersed.",
+            "id": "crisstof-dalton",
+            "name": "Crisstof Dalton",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The reported assassin of Crisstof Dalton. The killing heightens regional tensions and leaves Jason and an associate exposed to retaliatory strike teams.",
+            "id": "carolyn-whitney",
+            "name": "Carolyn Whitney",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The shipowner holds Lucky and Cage aboard his vessel. After learning that Lucky no longer carries the battle-synth technology he wanted, he threatens Cage and seeks another use for Lucky.",
+            "id": "shipowner",
+            "name": "Shipowner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Shipowner"
+            ],
+            "description": "The apparent crime-family leader is exposed as an impostor using the identity of someone killed during an earlier Esquarian operation. The discovery casts doubt on his claim that his hidden mission is meant to recover captive relatives.",
+            "id": "crime-family-leader-impostor",
+            "name": "Crime-family leader impostor",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Most Favored Blade"
+            ],
+            "description": "The captor's synth enforcer and Lucky's hostile former prototype commander. He takes custody of Lucky after a scan confirms that the mimic hardware sought by their owner has been removed, leaving the prisoners exposed to a revised plan.",
+            "id": "combat-unit-p-002",
+            "name": "Combat Unit P-002",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A violent prototype controlled by the crime financier. Its increasingly indiscriminate conduct makes it unsuitable for precise work, so Lucky is used to assess the mercenary recruits instead while the prototype remains a threat.",
+            "id": "unstable-prototype-synth",
+            "name": "Unstable prototype synth",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rival syndicate underboss whose information is needed to locate the people sought by the crime-family leader. His daughter has been abducted without injury and is held as leverage against him, making his cooperation central to the operation.",
+            "id": "rival-underboss",
+            "name": "Rival underboss",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman targeted for abduction because of her importance to the crime financier's plan. Lucky is ordered to keep her unharmed and places her in protective transport after tranquilizing her during the raid on her compound.",
+            "id": "rival-underboss-daughter",
+            "name": "Rival underboss's daughter",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unwilling member of the captor's engineering crew who helps fit Lucky with a tamper-proof explosive pack. The worker covertly adds a delay to reduce the device's immediate lethality.",
+            "id": "coerced-engineering-worker",
+            "name": "Coerced engineering worker",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian Prue engineer recruited by Jason to pose as a banking investigator. The engineer uses forged credentials to reach a secure terminal, installs Cage's tracking software, obtains transaction data, and leaves with Jason and 701 without exposure.",
+            "id": "prue-engineer",
+            "name": "Prue engineer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hostile mercenary guildmaster and old adversary of Jason. The guildmaster's detention gives Jason access to a ship and its communications, which Jason searches for the financier's recruitment activity.",
+            "id": "mercenary-guildmaster",
+            "name": "Mercenary guildmaster",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of five founders' descendants held in an ancient fortress. Esquarian intelligence warns that their public return could consolidate the criminal syndicates, and Omega Force is hired to prevent their escape.",
+            "id": "captive-syndicate-founders-descendant",
+            "name": "Captive syndicate founder's descendant",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Viren financial broker believed to handle concealed funding for the shipowner. The broker refuses to betray the client directly but indicates that information about the covert operation can be bought.",
+            "id": "jorvren-mafredich",
+            "name": "Jorvren Ma'Fredich",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CNTZNKPJ",
+            "type": "community"
+          }
+        ],
+        "work": "dead-reckoning"
+      },
       "recaps": {
         "ending": "Omega Force stops the fortress extraction. Two of the five founders' descendants are killed, one is delivered alive to Esquarian intelligence, and the unstable prototype synth is destroyed by Lucky and 701. The impostor escapes, acquires Omega Force's contact details, and threatens retaliation, but Jason and Cage give rival syndicates and mercenary interests evidence that turns them against him. Cage disables the remote system controlling the coerced ship crew's explosive implants, although their safe evacuation is not confirmed. Lucky stays with Omega Force, while 701 plans to return to guard the Archive. Crusher gives up the public identity of Felex through a staged death, and Mazer and Morakar return home to preserve the deception. With Satora still holding its base, accounts, and equipment, Omega Force remains united aboard the Phoenix and heads for Esquarian protection, resupply, and refit.",
         "in_short": "Lucky and Cage are held by a crime financier who wants Lucky for a secret recovery operation. Jason Burke and Combat Unit 701 trace the financier's money and infiltrate his hired force, while the rest of Omega Force loses its Satora base and follows aboard the Phoenix. Lucky secures his friends' release by remaining behind, but the reunited crew discovers that the financier is an impostor seeking five syndicate founders' descendants from an ancient fortress. Omega Force stops their extraction, kills the unstable prototype synth, and sends a surviving founder's descendant to Esquarian intelligence. The impostor escapes but loses remote control over his coerced crew and is exposed to rival syndicates and mercenary guilds. Cage disrupts the crew's explosive controls, though their safe evacuation remains unconfirmed. Crusher's death as Felex is staged so he can live under his chosen identity. The displaced crew stays together and accepts Esquarian support.",
