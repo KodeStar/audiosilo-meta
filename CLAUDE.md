@@ -334,8 +334,9 @@ page, batching EVERY per-hit read (cards, work narrators, person names, series
 name+count) over the ids the page holds - a scoped page is 100% one kind, so a
 per-hit query there would be a whole page of sequential round-trips. The ABS
 facade's work search goes through the same `ftsHits`, so a ranking change lands
-on both surfaces. The series-position boost applies to `works/search` too and
-to that scope ONLY, since the ids it resolves are always works; a literal path
+on both surfaces (the two query-side boosts do NOT: they sit in
+`snapshot.search`). Both apply to `works/search` too and
+to that scope ONLY, since the ids they resolve are always works; a literal path
 segment beats `{id}` in ServeMux's precedence, which is what lets the three sit
 beside their families' detail routes as `works/latest` already does - and is
 exactly why `search` and `latest` are RESERVED slugs (see the data-model
@@ -481,7 +482,32 @@ being left out of the MATCH entirely. Without those two bounds a "the 1"
 keystroke walked a large fraction of the index (measured 110ms-237ms) and
 prepended three arbitrary volumes; with them every such query is byte-identical
 to the plain search page and within noise of its latency. A probe that errors
-degrades to "no boost" and is logged, never a 500. Business
+degrades to "no boost" and is logged, never a 500.
+Its sibling is the **exact-title boost** (`exacttitle.go`, issue #1838): a
+`search?q=` that IS a work's title - compared whole through the same `nameKey`
+normalization, so case, spacing and punctuation are not identity - returns that
+work FIRST, every work sharing the title, in id order. bm25 scores a ROW and a
+work's FTS row carries its authors, narrators and series names beside the title,
+so a short common title on a heavily credited work ("Spare") ranked below "Spare
+Us!", "Spare Parts" and "Spare Room" and never reached the first page; no column
+weighting fixes that, because the length normalization divides by the row's total
+token count. It is query-side for the same reasons as its sibling - a
+relevance score cannot express an equality, and nothing about the artifact
+changes: one FTS query, COLUMN-FILTERED to the title over a PARENTHESIZED phrase
+list (an FTS5 column filter otherwise binds to the first phrase only, which
+matched "spare" in a title and "harry" anywhere), ordered by title LENGTH so the
+exact matches lead the window, then confirmed in Go against `works.title` (the
+indexed column is title + subtitle). Unlike the series probe it is reached by
+EVERY query, so the cost gate is what bounds it: a query made only of articles
+and one-letter tokens is never probed (`worthTitleProbing`, sharing
+`probeStopwords` and the shared `hasIdentifyingToken` rule but deliberately NOT
+the volume words - a work really can be titled "Book"). Measured on the 279k-work
+artifact, "the" cost 426ms against the plain page's 196ms and can boost nothing;
+everything the guard admits costs at or below the page it enriches (worst case
+"book", 21ms against 24ms; "spare" 0.2ms). Both boosts apply to the combined
+`search?q=` and to `works/search` only, an exact title leading a resolved volume
+(an equality before an inference), and `mergeHits` collapses them when they name
+the same work. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
 The importer maps one export entry to a work + recording (+ people + series),

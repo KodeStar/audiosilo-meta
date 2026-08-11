@@ -128,7 +128,7 @@
         "tags": ["Search"],
         "operationId": "search",
         "summary": "Search works, people and series together",
-        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series.\n\nA query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - additionally resolves that volume and returns it FIRST, ahead of the relevance hits. The page stays exactly `limit` long, so the boost costs the last hit rather than widening the response. A query that resolves no such volume returns the plain relevance page.",
+        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series.\n\nTwo boosts run ahead of the relevance hits. A query that IS a work's title - compared whole, ignoring case, spacing and punctuation - returns that work FIRST; several works sharing the title all lead, in id order. A query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - resolves that volume and returns it next. An exact title leads a resolved volume, since the title is an equality and the volume an inference. The page stays exactly `limit` long, so a boost costs the last hit rather than widening the response, and a query that resolves neither returns the plain relevance page.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }
@@ -163,7 +163,7 @@
         "tags": ["Search"],
         "operationId": "searchWorks",
         "summary": "Search works only",
-        "description": "The combined search restricted to works. Results are `WorkResult` objects, identical to the work entries of `/api/v1/search`, and the filter is applied inside the query - so `?limit=20` returns up to 20 works rather than the works among 20 mixed hits.\n\nThe series-position boost applies here too: \"jack reacher 2\" returns volume 2 first, exactly as on the combined search.",
+        "description": "The combined search restricted to works. Results are `WorkResult` objects, identical to the work entries of `/api/v1/search`, and the filter is applied inside the query - so `?limit=20` returns up to 20 works rather than the works among 20 mixed hits.\n\nBoth search boosts apply here too: a query that is a work's title returns that work first, and \"jack reacher 2\" returns volume 2, exactly as on the combined search.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }
@@ -198,7 +198,7 @@
         "tags": ["Search"],
         "operationId": "searchPeople",
         "summary": "Search people only",
-        "description": "The combined search restricted to people (authors and narrators share one record, so a person may be either or both). Results are `PersonResult` objects. The series-position boost does not apply - the volumes it resolves are works.",
+        "description": "The combined search restricted to people (authors and narrators share one record, so a person may be either or both). Results are `PersonResult` objects. Neither search boost applies - what they resolve is always a work.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }
@@ -233,7 +233,7 @@
         "tags": ["Search"],
         "operationId": "searchSeries",
         "summary": "Search series only",
-        "description": "The combined search restricted to series. Results are `SeriesResult` objects, each carrying the series' member count. The series-position boost does not apply - the volumes it resolves are works.",
+        "description": "The combined search restricted to series. Results are `SeriesResult` objects, each carrying the series' member count. Neither search boost applies - what they resolve is always a work.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }

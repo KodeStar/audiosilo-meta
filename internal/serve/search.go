@@ -70,13 +70,15 @@ type searchHit struct {
 	id   string
 }
 
-// mergeHits puts the series-position work ids in front of the FTS hits, drops
-// the duplicate an FTS hit would be, and truncates to the page size. The page
-// stays exactly limit long, so a boost costs the last FTS hit rather than
-// widening the response.
+// mergeHits puts the boosted work ids in front of the FTS hits, drops the
+// duplicate an FTS hit would be, and truncates to the page size. The page stays
+// exactly limit long, so a boost costs the last FTS hit rather than widening the
+// response.
 //
 // It is the ONE place search results are deduped, so no producer needs its own
-// seen set. Prepending is only sound because /search returns a single ranked
+// seen set - which is what lets boostedWorks simply concatenate two probes'
+// answers, the same work resolved twice collapsing to its first, best-reasoned
+// position. Prepending is only sound because /search returns a single ranked
 // page with no offset: there is no later page for a boost to shift a hit onto.
 // If the endpoint ever grows ?offset, the boost has to apply at offset 0 only.
 func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
@@ -147,15 +149,17 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // hits into their per-kind result shapes. The kind travels as DATA, so the four
 // endpoints share one implementation and one page composition.
 //
-// A query that names a series and a number ("jack reacher 2") resolves that
-// volume FIRST, ahead of the FTS hits - see seriespos.go for why that resolution
-// is query-side rather than extra text in the index. The boost is additive: the
-// FTS hits that follow are exactly the ones the query returned before, minus any
-// duplicate of a boosted work, and a query that resolves no series-position hit
-// is byte-for-byte the old behaviour.
+// Two query-side boosts run ahead of the FTS hits, both resolving works the
+// query names outright: a query that IS a work's title returns that work first
+// (exacttitle.go), and a query that names a series and a number ("jack reacher
+// 2") resolves that volume (seriespos.go). See those files for why the
+// resolution is query-side rather than extra text in the index. The boosts are
+// additive: the FTS hits that follow are exactly the ones the query returned
+// before, minus any duplicate of a boosted work, and a query that resolves
+// neither is byte-for-byte the old behaviour.
 //
-// The boost applies to the combined page and to the WORK scope only. The ids it
-// resolves are always works, so prepending them on a people or series page would
+// Both apply to the combined page and to the WORK scope only. The ids they
+// resolve are always works, so prepending them on a people or series page would
 // put a work where the endpoint promises neither.
 func (s *snapshot) search(kind searchKind, q string, limit int) ([]any, error) {
 	hits, err := s.ftsHits(kind, ftsQuery(q), limit)
@@ -191,19 +195,31 @@ func (s *snapshot) ftsHits(kind searchKind, match string, limit int) ([]searchHi
 	})
 }
 
-// boostedWorks resolves a query's series-position work ids.
+// boostedWorks resolves the work ids a query names outright: the works whose
+// TITLE it is (exacttitle.go), then the volume a "<series> <n>" reading resolves
+// (seriespos.go).
+//
+// The exact title leads. It is an EQUALITY on a fact the record states, while
+// the series-position hit is an inference - a parse of the query plus a fuzzy
+// name probe - so when both fire the literal reading of what the user typed
+// comes first. Usually they agree and mergeHits collapses them: a work titled
+// "Halo 2" that is also volume 2 of Halo is one id from both probes.
 //
 // A failed probe degrades to "no boost" instead of failing the request: the
 // boost is an enrichment of a page the FTS query produces on its own, and a 500
-// on a search the user could otherwise have had is the worse outcome. It is
-// logged, so a broken probe is visible rather than silent.
+// on a search the user could otherwise have had is the worse outcome. Each probe
+// is judged on its own, so one broken probe does not cost the other's answer,
+// and both are logged rather than silent.
 func (s *snapshot) boostedWorks(q string) []string {
-	boosted, err := s.seriesPositionHits(q)
+	titles, err := s.exactTitleHits(q)
+	if err != nil {
+		s.logf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
+	}
+	positions, err := s.seriesPositionHits(q)
 	if err != nil {
 		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
-		return nil
 	}
-	return boosted
+	return append(titles, positions...)
 }
 
 // results composes one ranked page of hits into their per-kind result shapes.
