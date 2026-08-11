@@ -1043,6 +1043,258 @@
         "work": "pans-labyrinth-the-labyrinth-of-the-faun"
       }
     },
+    "paradise": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Colonel Bishop"
+            ],
+            "description": "Captain of the Flying Dutchman and Skippy's principal human partner. UNEF holds him responsible for the ship's missions, while the unusual command arrangement depends on his ability to work with an artificial intelligence that Earth cannot control.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The artificial intelligence essential to operating the Flying Dutchman and protecting Earth. He is Joe Bishop's powerful but distrusted ally.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Simms"
+            ],
+            "description": "A senior logistics officer aboard the Flying Dutchman.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Smythe"
+            ],
+            "description": "The Flying Dutchman's special-operations commander.",
+            "id": "smythe",
+            "name": "Smythe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Chang"
+            ],
+            "description": "A senior officer aboard the Flying Dutchman.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Desai"
+            ],
+            "description": "A pilot aboard the Flying Dutchman.",
+            "id": "desai",
+            "name": "Desai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Adams",
+              "Margaret Adams"
+            ],
+            "description": "A Flying Dutchman soldier and assault specialist from the earlier expedition.",
+            "id": "adams",
+            "name": "Adams",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cornpone"
+            ],
+            "description": "A U.S. Army infantry specialist held on Paradise and reassigned to livestock work at Fort Rakowski. He is Dave Czajka's fireteam partner and faces an uncertain future in a settlement with a vulnerable food supply.",
+            "id": "jesse-coulter",
+            "name": "Jesse Coulter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ski"
+            ],
+            "description": "Jesse Coulter's fireteam partner and a fellow captive settler assigned to agricultural work at Fort Rakowski.",
+            "id": "dave-czajka",
+            "name": "Dave Czajka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An IT-support worker at Wright-Patterson who meets Joe during his temporary leave. They begin a relationship while Joe remains constrained by UNEF's cover story.",
+            "id": "rachel",
+            "name": "Rachel",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian official on Paradise who sympathizes with the captive humans. She discovers that her government is considering returning the planet to its former rulers, leaving the human population exposed to retaliation.",
+            "id": "local-deputy-administrator",
+            "name": "Local deputy administrator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A UNEF diplomat assigned to negotiate with Skippy over recovery of the alien troop ship. His effort demonstrates that humanity has little leverage over the artificial intelligence.",
+            "id": "charles-winthrop",
+            "name": "Charles Winthrop",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior UNEF official appointed above Joe for the new expedition. He holds final mission authority, creating a divided structure in which Joe captains the Flying Dutchman while Skippy remains indispensable and difficult to manage.",
+            "id": "unef-mission-commander",
+            "name": "UNEF mission commander",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr. Friedlander"
+            ],
+            "description": "Leader of a seven-person science team selected for broad practical expertise. Friedlander accepts the assignment only after receiving assurance that the Flying Dutchman intends to return to Earth.",
+            "id": "friedlander",
+            "name": "Friedlander",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human intelligence officer detained by the local authorities with Jesse, Dave, and Shauna Jarrett. She concludes that their captors genuinely believe Joe Bishop survived and escaped Paradise.",
+            "id": "major-perkins",
+            "name": "Major Perkins",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shawna"
+            ],
+            "description": "A human detainee who knew Joe at Camp Alpha. She is held with Major Perkins, Jesse Coulter, and Dave Czajka, and grows close to Jesse during their confinement.",
+            "id": "shauna-jarrett",
+            "name": "Shauna Jarrett",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Adams's rearguard during the relay-station assault. Poole helps stop hostile cyborgs from destroying a power junction and is badly injured before Skippy reaches the station core.",
+            "id": "lieutenant-poole",
+            "name": "Lieutenant Poole",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Adams's rearguard during the relay-station assault. After losing an arm in the fight to protect a power junction, Kwan transfers Skippy to Adams so the mission can continue toward the core.",
+            "id": "lieutenant-kwan",
+            "name": "Lieutenant Kwan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The acting UNEF intelligence chief on Paradise. His evasive answer when Major Perkins asks about the planet's proposed transfer confirms that headquarters already knows of the danger.",
+            "id": "general-marcellus",
+            "name": "General Marcellus",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former human military aviator serving with local forces. She agrees to join Major Perkins once a defending aircraft is secured, then takes control of the stolen craft and prepares to support the buried-projector mission.",
+            "id": "local-pilot",
+            "name": "Local pilot",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human aircrew officer allowed aboard a local armed fighter during a routine systems flight. The sudden orbital attack places him and the pilot near the opening of a much larger battle.",
+            "id": "derek-bonsu",
+            "name": "Derek Bonsu",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the local space task force. After the surprise projector strike, he disperses his ships before an enemy frigate arrives and avoids committing his cruiser to an unnecessary final exchange.",
+            "id": "local-commodore",
+            "name": "Local commodore",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enemy commander spared by his location aboard a destroyer when the projector attack eliminates the command ship. From the surviving vessel, he evaluates the four exposed weapons and directs probes for undiscovered defenses.",
+            "id": "hostile-admiral",
+            "name": "Hostile admiral",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B071438NCM",
+            "type": "community"
+          }
+        ],
+        "work": "paradise"
+      }
+    },
     "paradise-lost-book-ix": {
       "characters": {
         "characters": [
