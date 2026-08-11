@@ -141,13 +141,41 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 	}
 }
 
-// NOT guarded here: seriesMatchSQL, the series-position boost's name probe.
-// This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a plan
-// can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX n:M...",
-// which assertNoFullScan deliberately allows, and the bm25 ORDER BY legitimately
-// sorts in a temp b-tree. A case here would pass no matter how expensive the
-// probe became, and a vacuous guard is worse than none: it reads as coverage.
-// What actually bounds the probe's cost is the SIZE of its match set, and that
-// is guarded behaviourally instead - TestSeriesPositionSkipsJunkResiduals pins
-// the residuals that are never probed, and ftsPhrase (no prefix-star) pins the
-// match to whole tokens. Both are measured in the A/B on the real artifact.
+// NOT guarded here: seriesMatchSQL and exactTitleSQL, the two search boosts'
+// probes. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
+// plan can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX
+// n:M...", which assertNoFullScan deliberately allows, and the ORDER BY
+// legitimately sorts in a temp b-tree. A case here would pass no matter how
+// expensive the probe became, and a vacuous guard is worse than none: it reads
+// as coverage. What actually bounds a probe's cost is the SIZE of its match set,
+// and that is guarded behaviourally instead - TestSeriesPositionSkipsJunkResiduals
+// and TestExactTitleSkipsJunkQueries pin the queries that are never probed, and
+// ftsPhrase (no prefix-star) pins the match to whole tokens. Both are measured in
+// the A/B on the real artifact.
+//
+// exactTitleSQL's second half - the works lookup that resolves each candidate's
+// authoritative title - is NOT an FTS probe and so does not share the exemption:
+// it is a join whose index use can regress silently (rewrite the join condition,
+// or move the LIMIT out of the subquery, and it becomes a per-candidate or
+// whole-match-set scan on a keystroke-hot path). It cannot go through
+// assertNoFullScan as written, because the plan's "SCAN f" step is the benign
+// 20-row co-routine the LIMIT bounds - so TestExactTitleWorksJoinIsIndexed pins
+// it POSITIVELY instead: the works half must be a SEARCH through an index.
+
+// TestExactTitleWorksJoinIsIndexed asserts the works half of exactTitleSQL is a
+// primary-key SEARCH, run from the very constant the request path uses. The FTS
+// half reports as the usual VIRTUAL TABLE step and the LIMITed subquery as a
+// co-routine SCAN; the step this pins is the join back to works, which must
+// never read the table without an index.
+func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
+	snap := snapshotFor(t, fixtureCatalog())
+	plan := queryPlan(t, snap, exactTitleSQL, titleMatch("spare"), exactTitleProbeLimit)
+	joined := strings.Join(plan, " | ")
+	for _, step := range plan {
+		if strings.HasPrefix(step, "SEARCH w ") && strings.Contains(step, "USING") && strings.Contains(step, "INDEX") {
+			t.Logf("plan -> %s", joined)
+			return
+		}
+	}
+	t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
+}

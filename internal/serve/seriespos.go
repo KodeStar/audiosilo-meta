@@ -3,7 +3,6 @@ package serve
 import (
 	"sort"
 	"strings"
-	"unicode/utf8"
 )
 
 // Series-position search: reading "jack reacher 2" as "volume 2 of the Jack
@@ -109,16 +108,6 @@ var volumeKeywords = map[string]bool{
 	"band": true, "teil": true, "tome": true,
 }
 
-// probeStopwords are the words that carry no series identity on their own. A
-// residual made only of these (or of one-letter tokens, or of bare volume words)
-// is never probed: matching "the" against 30k series names costs a
-// whole-match-set bm25 sort and returns an arbitrary three of them.
-var probeStopwords = map[string]bool{
-	"the": true, "a": true, "an": true, "of": true, "and": true, "in": true, "to": true,
-	"der": true, "die": true, "das": true, "den": true, "dem": true, "ein": true, "eine": true,
-	"le": true, "la": true, "les": true, "un": true, "une": true, "du": true, "des": true,
-	"el": true, "los": true, "las": true, "il": true, "lo": true, "i": true, "y": true, "e": true,
-}
 
 // seriesPositionQuery is a query read as "<series name> [volume word] <number>".
 // residuals are the series-name candidates to try, most likely first.
@@ -150,12 +139,6 @@ func parseSeriesPositionQuery(q string) (seriesPositionQuery, bool) {
 		out.residuals = append(out.residuals, strings.Join(rest[:len(rest)-1], " "))
 	}
 	return out, true
-}
-
-// keywordKey normalizes a token for the vocabulary tables: lowercased, with a
-// trailing "." dropped ("Vol." -> "vol").
-func keywordKey(tok string) string {
-	return strings.ToLower(strings.TrimSuffix(tok, "."))
 }
 
 // positionToken reports whether tok can be read as a series position, returning
@@ -193,27 +176,7 @@ func positionsEqual(a, b string) bool {
 // volume word, and at least two runes long - so "oz 5" and "it 2" are probed
 // while "the 1", "s 1" and "book 2" are not.
 func worthProbing(residual string) bool {
-	for _, tok := range strings.Fields(residual) {
-		k := keywordKey(tok)
-		if utf8.RuneCountInString(k) < 2 || probeStopwords[k] || volumeKeywords[k] {
-			continue
-		}
-		return true
-	}
-	return false
-}
-
-// nameKey normalizes a series name (or a residual) for whole-name comparison:
-// lowercased, whitespace collapsed, punctuation trimmed off each token.
-func nameKey(s string) string {
-	fields := strings.Fields(strings.ToLower(s))
-	out := make([]string, 0, len(fields))
-	for _, f := range fields {
-		if f = strings.Trim(f, `.,:;!?'"()[]`); f != "" {
-			out = append(out, f)
-		}
-	}
-	return strings.Join(out, " ")
+	return hasIdentifyingToken(residual, probeStopwords, volumeKeywords)
 }
 
 // preferWholeName drops the partial matches when the residual names a series
