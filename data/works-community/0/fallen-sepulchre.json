@@ -558,6 +558,292 @@
       }
     },
     "falling-free": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Leo",
+              "Graf"
+            ],
+            "description": "A veteran GalacTech testing engineer and free-fall construction instructor sent to Rodeo to train the Cay Project workforce. He has extensive experience in safety and quality control, works comfortably without gravity, and once supervised Bruce Van Atta.",
+            "id": "leo-graf",
+            "name": "Leo Graf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A quaddie hydroponics worker and colleague of Claire. Bruce Van Atta gives her conspicuous attention.",
+            "id": "silver",
+            "name": "Silver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "TY776424XG"
+            ],
+            "description": "A four-armed quaddie and second-grade welder assigned to Leo's training. He is Claire's partner and the father of their infant son, Andy.",
+            "id": "tony",
+            "name": "Tony",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quaddie who is Tony's partner and Andy's mother. Formerly assigned to welding and joining, she has been moved into hydroponics and domestic work after being selected for early motherhood.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tony and Claire's infant son, a four-armed quaddie child living with his parents in Cay Habitat.",
+            "id": "andy",
+            "name": "Andy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Van Atta"
+            ],
+            "description": "The Cay Project manager and Leo's new supervisor. Once Leo's engineering subordinate, he now approaches the bioengineering project chiefly in terms of productivity and profit.",
+            "id": "bruce-van-atta",
+            "name": "Bruce Van Atta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yei"
+            ],
+            "description": "Cay Habitat's psychologist and training chief. She directs quaddie socialization, controls which material they may study, and requires visiting instructors to follow her behavioral rules.",
+            "id": "sondra-yei",
+            "name": "Sondra Yei",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quaddie air-systems worker who helps Silver conceal unauthorized entertainment by disabling monitoring equipment.",
+            "id": "siggy",
+            "name": "Siggy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A downsider creche worker who supervises the youngest quaddies and serves as one of their familiar adult caregivers.",
+            "id": "mama-nilla",
+            "name": "Mama Nilla",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technically capable quaddie welding student in Leo's first quality-control class. He quickly demonstrates a strong grasp of inspection methods.",
+            "id": "pramod",
+            "name": "Pramod",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A freight-shuttle co-pilot who secretly supplies Silver with prohibited outside fiction. He is unaware that Tony, Claire, and Andy have hidden aboard his shuttle when it departs Cay Habitat.",
+            "id": "ti-gulik",
+            "name": "Ti Gulik",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of the supply shuttle carrying Tony's concealed family. His unexpected order to descend to Rodeo disrupts their intended route toward Orient.",
+            "id": "durrance",
+            "name": "Durrance",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A quaddie welder assigned to Leo's exterior training crew during a hazardous beam-welding exercise.",
+            "id": "bobbi",
+            "name": "Bobbi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bannerji"
+            ],
+            "description": "The security captain at Shuttleport 3. Van Atta gives him a misleading account of three fugitives and demands a discreet capture, while Bannerji carries an unauthorized pistol as well as standard stunners.",
+            "id": "george-bannerji",
+            "name": "George Bannerji",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Apmad"
+            ],
+            "description": "A GalacTech operations vice president whose unannounced inspection of the Cay Project puts added pressure on Van Atta while the missing quaddie family is being sought.",
+            "id": "vice-president-apmad",
+            "name": "Vice President Apmad",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Minchenko"
+            ],
+            "description": "Cay Habitat's chief medical officer, temporarily on leave downside. Leo calls for him to take charge of Tony's treatment after the shuttleport shooting.",
+            "id": "warren-minchenko",
+            "name": "Warren Minchenko",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chalopin"
+            ],
+            "description": "The administrator responsible for Shuttleport 3. She objects when Van Atta bypasses her authority while directing the response to the escaped quaddies.",
+            "id": "administrator-chalopin",
+            "name": "Administrator Chalopin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Vice President Apmad's chief accountant. His calculations show how a new tax at Orient makes the already costly Cay Project financially untenable for GalacTech.",
+            "id": "gavin",
+            "name": "Gavin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A highly rated teenage quaddie pusher pilot selected for Silver's cargo-jumper mission. Curious and independent, she explores the transfer station during the effort to recruit a jump pilot.",
+            "id": "zara",
+            "name": "Zara",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A particularly strong quaddie pusher-crew member chosen to join Silver, Zara, Siggy, and Ti Gulik on the cargo-jumper capture mission.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Cay doctor assigned to carry out sterilizations after Warren Minchenko withdraws. He confronts Claire in the infirmary when she refuses the procedure.",
+            "id": "curry",
+            "name": "Curry",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A pregnant quaddie who hides with Claire and Patty while medical staff search for expectant mothers to receive abortifacient injections.",
+            "id": "emma",
+            "name": "Emma",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A pregnant quaddie who takes refuge with Claire and Emma as the Cay medical staff attempt to end the current pregnancies.",
+            "id": "patty",
+            "name": "Patty",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An infirmary aide who helps conceal Claire, Emma, and Patty from the staff seeking pregnant quaddies for abortifacient treatment.",
+            "id": "kara",
+            "name": "Kara",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ivy"
+            ],
+            "description": "Warren Minchenko's wife, who remains on Rodeo after he chooses to accompany the quaddies. Her safe retrieval is his condition for joining their flight permanently.",
+            "id": "ivy-minchenko",
+            "name": "Ivy Minchenko",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young air-systems supervisor who chooses to remain with the escaping quaddies because he loves one of them.",
+            "id": "air-systems-supervisor",
+            "name": "Air-systems supervisor",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Fors"
+            ],
+            "description": "A Rodeo security sergeant who leads two guards in an attempt to cut into Silver's freight shuttle at its concealed landing site.",
+            "id": "sergeant-fors",
+            "name": "Sergeant Fors",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002V5IRNY",
+            "type": "community"
+          }
+        ],
+        "work": "falling-free"
+      },
       "recaps": {
         "ending": "Home reaches the Orient side of the wormhole intact, ending Van Atta's immediate pursuit but opening a legal confrontation. The quaddies now govern themselves aboard the captured D-620 and converted Cay Habitat, with an isolated settlement still their goal. Tony is reunited with Claire and Andy. Ti Gulik remains their jump pilot, Warren and Ivy Minchenko are aboard, and Mama Nilla continues caring for the children. Leo and Silver acknowledge that they have become romantic partners. Van Atta, Sondra Yei, George Bannerji, Sergeant Fors, and the security party remain behind after failing to stop the jump. An official police ship approaches Home, and Warren prepares to challenge GalacTech's claims through his connection with the Orient health minister. The quaddies have escaped the planned sterilization, abortion, confinement, and destruction program, but their legal status, political protection, and permanent home remain unsettled.",
         "in_short": "GalacTech engineer Leo Graf arrives at Cay Habitat to train quaddies, bioengineered free-fall workers whom the company treats as property. After Tony, Claire, and their infant Andy try to escape, Tony is shot and the family is separated. Artificial gravity then makes the Cay Project obsolete, and GalacTech prepares to sterilize, confine, or kill its quaddie population. Leo and Silver organize a collective flight. Silver's team captures the D-620 cargo jumper, the quaddies expel most downsider staff, and Cay Habitat is converted for transport. A broken vortex mirror and Van Atta's use of Tony as a hostage nearly stop them, but Ti Gulik and Warren Minchenko recover Tony while Leo fabricates a replacement mirror. The combined ship, named Home, jumps safely to Orient with Tony, Claire, and Andy reunited. Leo and Silver become partners, while the free quaddies face an unresolved legal struggle over their status and future settlement.",
