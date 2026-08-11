@@ -2613,6 +2613,271 @@
         "work": "julius-caesar-william-shakespeare"
       }
     },
+    "jungle-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion on extended leave at his family home. When Graves insists on entering a concealed bunker on the property, McGill must weigh loyalty to his superior against the danger that the bunker secret poses to his family.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's daughter, whose childhood discovery of the concealed bunker connects the family to the secret hidden beneath their land.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "McGill's long-standing superior in Legion Varus and a keeper of the bunker secret. He arrives without warning, directs McGill to uncover the entrance, and insists on inspecting the lower level.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Veteran Sargon"
+            ],
+            "description": "A trusted senior veteran in McGill's unit. McGill recommends him for an open adjunct post, but his promotion requires command approval.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Winslade"
+            ],
+            "description": "The tribune commanding Legion Varus. He assigns the legion to invade 31 Orionis even though the evidence does not yet establish whether Rigel is responsible for the attacks on frontier worlds.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Galina"
+            ],
+            "description": "An imperator involved in the coming operation and a former intimate partner of McGill. Although absent from the first mission briefing, she remains tied to both his personal life and Legion Varus's command structure.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Collins"
+            ],
+            "description": "A Legion Varus primus who briefs the unit on the unexplained impacts. She has a strained personal history with McGill and handles intelligence relevant to the new mission.",
+            "id": "collins",
+            "name": "Collins",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of McGill's adjuncts. He resents the unequal issue of stardust armor but remains responsible for organizing stragglers during the rushed deployment.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adjunct Leeson"
+            ],
+            "description": "One of McGill’s adjuncts. He receives the unit’s only adjunct-sized suit of stardust armor, a scarce issue that provokes resentment among the troops.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An anti-boarding officer transferred from Fleet Marines to become McGill's third adjunct. McGill obtains the transfer by trading away Leeson's armor, giving the newcomer command experience and an uneasy entry into Legion Varus.",
+            "id": "fleet-marine-adjunct",
+            "name": "Fleet Marine adjunct",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist in Legion Varus who assists McGill with reconnaissance by attempting to access the lifter's external cameras during the trip to Scorpio.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist in Legion Varus who works with Kivi to access the lifter's external cameras during the trip to Scorpio.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carlos",
+              "Specialist Ortiz"
+            ],
+            "description": "A specialist in McGill's unit with strong tactical instincts. During Legion Varus's lethal arrival exercise, he briefly evades the prepared ambush and turns on its organizer before being shot.",
+            "id": "carlos-ortiz",
+            "name": "Carlos Ortiz",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Claver representative who demands a covert meeting with McGill and Galina Turov aboard Scorpio. She warns that attacking 31 Orionis could leave Earth exposed to a greater unidentified enemy.",
+            "id": "abigail-claver",
+            "name": "Abigail Claver",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Merton"
+            ],
+            "description": "Scorpio's captain. He has already dealt with Abigail Claver by the time her covert warning reaches McGill and Galina Turov.",
+            "id": "merton",
+            "name": "Merton",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A recruit who fights with determination when two others attack her during Scorpio's individual live-fire exercise. Wounded in the encounter, she defeats both attackers before McGill reaches her.",
+            "id": "tessie",
+            "name": "Tessie",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Consul Drusus"
+            ],
+            "description": "Earth’s consul, whose earlier order led to the destruction of Legion Varus’s former transport.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The centurion leading Legion Varus's biospecialists. She covertly examines a dead Jungle World local, recognizes evidence of an organized culture, and has a complicated prior history with McGill.",
+            "id": "evelyn-thompson",
+            "name": "Evelyn Thompson",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted fellow centurion of McGill. He recognizes McGill's likely responsibility for the shrine incident, accepts payment to remain silent, and reports another patrol's failed attempt to contact local villagers.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruling-council member and Galina Turov's father. He secures unanimous support to offer her the consulship after Drusus is removed, then orders Drusus arrested when he objects to renewed war with Rigel.",
+            "id": "galinas-father",
+            "name": "Galina's father",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Investigator's wife on Dust World. She warns McGill that a self-declared revolutionary has won the settlers' loyalty and gained influence over her husband.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dust World researcher operating an expanded and illegal facility for growing human bodies. Armed settlers guard the operation when McGill arrives seeking his view of Earth's political crisis.",
+            "id": "the-investigator",
+            "name": "The Investigator",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "former bunker brain",
+              "self-styled revolutionary"
+            ],
+            "description": "The sole preserved rebel leader McGill previously removed from the family bunker. Restored to a body on Dust World, she identifies herself as a revolutionary and now commands the settlers' allegiance.",
+            "id": "the-revolutionary",
+            "name": "The revolutionary",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly promoted regular who transfers out of McGill's unit after the Jungle World battle, ending the command restriction on a possible relationship between them.",
+            "id": "newly-promoted-regular",
+            "name": "Newly promoted regular",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BW17MKWL",
+            "type": "community"
+          }
+        ],
+        "work": "jungle-world"
+      }
+    },
     "just-one-damned-thing-after-another": {
       "characters": {
         "characters": [
