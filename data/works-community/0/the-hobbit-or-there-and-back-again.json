@@ -172,6 +172,515 @@
       }
     },
     "the-honor-of-the-queen": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of HMS Fearless and commander of the escort assigned to Admiral Courvosier's mission. She is a decorated officer accompanied by Nimitz, and she must operate in a society whose restrictions on women make her presence a diplomatic problem.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Honor Harrington's bonded treecat and empathic companion, traveling with her aboard Fearless.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor Harrington’s steward and a returning member of her shipboard household, having served with her during her previous command.",
+            "id": "james-macguiness",
+            "name": "James MacGuiness",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fearless’s Marine detachment sergeant major and a possible new sparring partner for Honor.",
+            "id": "iris-babcock",
+            "name": "Iris Babcock",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Admiral of the Green Courvosier"
+            ],
+            "description": "Honor's former Academy mentor and the leader of Manticore's diplomatic mission to Grayson. He seeks an alliance and permission for a forward base as Haven's regional pressure grows.",
+            "id": "raoul-courvosier",
+            "name": "Raoul Courvosier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lieutenant Commander Venizelos"
+            ],
+            "description": "Fearless's executive officer and Honor's second in command. His position requires Honor to entrust him with the ship's routine operation while she directs the wider escort.",
+            "id": "andreas-venizelos",
+            "name": "Andreas Venizelos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Courvosier's economist and civilian deputy. He favors negotiation and commercial engagement with Masada, putting his judgment at odds with Honor's assessment of the military danger.",
+            "id": "reginald-houseman",
+            "name": "Reginald Houseman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Truman"
+            ],
+            "description": "Commanding officer of the light cruiser Apollo, one of the warships assigned to Honor's escort force.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander McKeon"
+            ],
+            "description": "Captain of the destroyer Troubadour and Honor's friend. Once her executive officer, he now serves as one of the subordinate commanders in her escort squadron.",
+            "id": "alistair-mckeon",
+            "name": "Alistair McKeon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Ramirez"
+            ],
+            "description": "Commander of Fearless's Royal Manticoran Marine detachment. A refugee from Trevor's Star, he lost his father during his family's escape from Haven.",
+            "id": "tomas-ramirez",
+            "name": "Tomas Ramirez",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Alvarez"
+            ],
+            "description": "Commanding officer of HMS Madrigal, the destroyer remaining at Grayson with Fearless while the rest of the escort continues toward Casca.",
+            "id": "jason-alvarez",
+            "name": "Jason Alvarez",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lieutenant Commander Brigham"
+            ],
+            "description": "Executive officer of HMS Madrigal, serving under Commander Alvarez in Honor's escort force.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ensign Wolcott",
+              "Carol Wolcott"
+            ],
+            "description": "A newly graduated Fearless ensign making her first cruise.",
+            "id": "carolyn-wolcott",
+            "name": "Carolyn Wolcott",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Masadan officer serving aboard Thunder of God.",
+            "id": "commander-manning",
+            "name": "Commander Manning",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Yu"
+            ],
+            "description": "Havenite captain of Thunder of God, operating under Masadan cover. He assists Masada's Operation Jericho while pursuing Haven's separate objective of preventing a Manticoran foothold in Yeltsin's Star.",
+            "id": "alfredo-yu",
+            "name": "Alfredo Yu",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sword of the Faithful Simonds"
+            ],
+            "description": "A senior Masadan leader and Yu's nominal superior in Operation Jericho, the planned campaign to overthrow Grayson's government.",
+            "id": "matthew-simonds",
+            "name": "Matthew Simonds",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "High Admiral Yanakov"
+            ],
+            "description": "Commander of the Grayson Navy. He receives the arriving Manticoran convoy with a capable but technologically outmatched fleet, then reacts with shock when he discovers that its escort commander is a woman.",
+            "id": "bernard-yanakov",
+            "name": "Bernard Yanakov",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Protector Benjamin"
+            ],
+            "description": "Grayson's Planetary Protector and a determined advocate of alliance with Manticore. He regards Manticoran technology and basing rights as vital safeguards despite strong domestic resistance.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's ambassador to Grayson. He uses a false version of Honor's previous service to deepen local hostility toward her and weaken the case for a Manticoran alliance.",
+            "id": "leonard-masterman",
+            "name": "Leonard Masterman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A conservative figure who opposes Protector Benjamin's drive toward alliance with Manticore.",
+            "id": "jared-mayhew",
+            "name": "Jared Mayhew",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Theisman"
+            ],
+            "description": "Commander of Principality, the concealed destroyer observing Yeltsin for Masada. He identifies the departure of most of Honor's escort and carries that intelligence to Endicott.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Senior Elder Huggins"
+            ],
+            "description": "A Masadan church elder who supports launching Operation Jericho while the Manticoran escort is divided.",
+            "id": "elder-huggins",
+            "name": "Elder Huggins",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lieutenant Tremaine"
+            ],
+            "description": "Troubadour's pilot and a former member of Honor's Basilisk command. He advises Carolyn Wolcott to make a full report after a Grayson officer harasses her.",
+            "id": "scotty-tremaine",
+            "name": "Scotty Tremaine",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fearless's tactical officer, responsible for directing the ship's defenses when unidentified light attack craft open fire on Honor's returning squadron.",
+            "id": "rafael-cardones",
+            "name": "Rafael Cardones",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's ambassador to Grayson. He briefs Honor on the enemy warships in the system and confirms the deaths of Courvosier and Yanakov.",
+            "id": "ambassador-langtry",
+            "name": "Ambassador Langtry",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Manning"
+            ],
+            "description": "Thunder of God's executive officer under Captain Yu.",
+            "id": "george-manning",
+            "name": "George Manning",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thunder of God's chief engineer and the designer of a method for carrying Masadan light attack craft through hyper space.",
+            "id": "commander-valentine",
+            "name": "Commander Valentine",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Commodore Matthews"
+            ],
+            "description": "The Grayson officer who assumes command of the surviving ships after the ambush destroys the combined fleet's senior leadership.",
+            "id": "wesley-matthews",
+            "name": "Wesley Matthews",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Admiral Garret"
+            ],
+            "description": "Grayson's acting senior naval officer after the fleet disaster. Fear and prejudice lead him to resist Honor's attempt to coordinate the surviving defenses.",
+            "id": "leon-garret",
+            "name": "Leon Garret",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reverend Hanks"
+            ],
+            "description": "Head of Grayson's Church of Humanity Unchained. During the Council's crisis debate, he argues that accepting Manticoran help is necessary if Grayson is to avoid conquest or destruction.",
+            "id": "julius-hanks",
+            "name": "Julius Hanks",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An influential figure in Grayson's internal political struggle.",
+            "id": "howard-clinkscales",
+            "name": "Howard Clinkscales",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Steadholder Mayhew"
+            ],
+            "description": "Protector Benjamin's younger brother and heir. A member of the Protector's household, he has a strong interest in naval affairs.",
+            "id": "michael-mayhew",
+            "name": "Michael Mayhew",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Benjamin Mayhew's first wife and a member of the Protector's household. She survives the attack on the family.",
+            "id": "katherine-mayhew",
+            "name": "Katherine Mayhew",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Benjamin Mayhew's pregnant second wife and a member of the Protector's household. She survives the attack on the family.",
+            "id": "elaine-mayhew",
+            "name": "Elaine Mayhew",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Benjamin Mayhew's long-serving personal guard and the head of the Protector's security detachment.",
+            "id": "captain-fox",
+            "name": "Captain Fox",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Admiral Franks"
+            ],
+            "description": "Commander of the Masadan squadron badly damaged by Madrigal's rearguard action.",
+            "id": "ernst-franks",
+            "name": "Ernst Franks",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Captain Hibson"
+            ],
+            "description": "Fearless's designated assault commander, leading the battle-armored Marines sent through Blackbird Base's hangars toward its control center.",
+            "id": "susan-hibson",
+            "name": "Susan Hibson",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Masadan commander of Blackbird Base, responsible for its defense when Manticoran Marines breach the installation.",
+            "id": "captain-of-the-faithful-williams",
+            "name": "Captain of the Faithful Williams",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of Blackbird Base’s ground defenses, who orders the garrison to surrender after its control room falls.",
+            "id": "colonel-harris",
+            "name": "Colonel Harris",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ensign Jackson"
+            ],
+            "description": "An officer from Madrigal found alive among the prisoners rescued from Blackbird Base, suffering grave physical and psychological injuries from her captivity.",
+            "id": "mai-ling-jackson",
+            "name": "Mai-ling Jackson",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Admiral White Haven",
+              "Earl of White Haven"
+            ],
+            "description": "A senior Manticoran admiral who receives Truman's warning about the Yeltsin crisis and takes a battlecruiser force toward Grayson at hazardous speed.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chief Elder Thomas Simonds"
+            ],
+            "description": "Masada’s senior church leader, who approves operations against Grayson’s forces and permits nuclear attacks on secondary cities if required.",
+            "id": "thomas-simonds",
+            "name": "Thomas Simonds",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Grayson Navy officer assigned to liaise with Honor after Admiral Garret refuses to meet her. He agrees with her judgment of the defense crisis.",
+            "id": "commander-brentworth",
+            "name": "Commander Brentworth",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commodore Brentworth"
+            ],
+            "description": "A Grayson commodore who accepts Honor’s authority without reservation during the formation of their joint defense. He is Mark Brentworth’s father.",
+            "id": "walter-brentworth",
+            "name": "Walter Brentworth",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Bryan"
+            ],
+            "description": "Leader of Yu’s loyal Havenite Marines during the fight for Thunder of God. He denies powered armor to the Masadans, organizes the boat-bay stand, and escapes with the surviving Havenite personnel.",
+            "id": "joseph-bryan",
+            "name": "Joseph Bryan",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Grayson officer who chooses to remain aboard Fearless for the final defense against Masada.",
+            "id": "mark-brentworth",
+            "name": "Mark Brentworth",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "isbn:0671578642",
+            "type": "community"
+          }
+        ],
+        "work": "the-honor-of-the-queen"
+      },
       "recaps": {
         "ending": "White Haven's relief force reaches Yeltsin as the crippled Fearless makes a final close-range interception. Its distant missiles force Saladin to turn, allowing Honor's ship to destroy the battlecruiser and Matthew Simonds. Grayson survives and signs its alliance with Manticore. Benjamin Mayhew remains Protector, Wesley Matthews commands Grayson's mobile fleet, and White Haven secures the system. McKeon escapes Troubadour's destruction with nearly one hundred people, while the wider squadron has suffered nine hundred deaths and three hundred wounded. Alice Truman has returned with the relief force after carrying the wounded to Manticore. Alfredo Yu is captured in Endicott, asks the Crown for asylum, and receives passage aboard Fearless. Honor keeps her naval command despite a formal, potentially career-ending reprimand for striking Houseman. Grayson grants her the hereditary Steading of Harrington and its highest award for valor, while Manticore recognizes her as Countess Harrington and invests her as Dame Honor. Haven's broader conflict with Manticore remains unresolved, as do Yu's future and the final dispositions of several captured conspirators.",
         "in_short": "Honor Harrington escorts a Manticoran alliance mission to Grayson, where hostility to women threatens diplomacy just as Masada launches a Haven-backed invasion and coup. An ambush kills Admiral Courvosier and High Admiral Yanakov. Honor survives an assassination attempt, helps expose Jared Mayhew as Masada's agent, and unites the remaining Grayson and Manticoran forces under a common defense. They capture Blackbird Base and rescue nineteen survivors from Madrigal, but Masada seizes the Havenite battlecruiser Saladin for a final attack. Troubadour is destroyed and Fearless is crippled before White Haven's arriving missiles create the opening Honor uses to destroy Saladin and Matthew Simonds. Grayson formally allies with Manticore. Honor receives a reprimand for assaulting Houseman but also becomes Steadholder and Countess Harrington, while the captured Alfredo Yu seeks Manticoran asylum aboard Fearless.",
