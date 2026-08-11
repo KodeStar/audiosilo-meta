@@ -540,6 +540,320 @@
         "work": "throne-of-glass"
       }
     },
+    "throne-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion and Etta's father. He distrusts her new husband's connection to the Hegemony, but stops two guests from attacking the groom and supports Etta through her public wedding.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's daughter, celebrating her public marriage to Derek in Georgia after the couple had already married privately. McGill sets aside his concerns and escorts her at the ceremony.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Etta's husband and a Hegemony security specialist. His affiliation alarms Carlos and Della at the wedding, but McGill prevents either objection from turning into an attack.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guest at Etta's wedding who recognizes Derek as a Hegemony security specialist. He offers to eliminate the perceived threat, then obeys McGill's order to stand down.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit scout who strongly opposes Etta's marriage to a Hegemony member. She brings a blade to the ceremony, but McGill breaks it before she can attack Derek.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Galina"
+            ],
+            "description": "An imperator and McGill's clandestine patron. She asks him to determine whether Drusus can be recovered from official erasure, presenting the inquiry as politically valuable while withholding her full reason.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A purged former Earth leader officially reduced to a non-person. His preserved intellect is believed to be confined in the Vault of the Forgotten, prompting Galina to send McGill on a discreet inquiry.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Winslade"
+            ],
+            "description": "McGill's tribune in Legion Varus. Suspicious that the Turovs use McGill as a private operative, he demands that McGill put the legion ahead of outside patrons and draws him into a sensitive contract meeting.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Consul Wurtenberger"
+            ],
+            "description": "The Earth consul who presides as Legion Varus, Germanica, and a third legion compete for a lucrative but distant alien protection contract.",
+            "id": "wurtenberger",
+            "name": "Wurtenberger",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earth's Galactic representative at the contract meeting. He presents the proposed Mid-Zone assignment to three competing legions and oversees the bidding process.",
+            "id": "seven",
+            "name": "Seven",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Satikis"
+            ],
+            "description": "A Magwa grand admiral seeking human troops for a newly conquered world. He chooses Legion Varus after McGill reacts decisively when two attendants turn the bidding meeting deadly.",
+            "id": "grand-admiral-satikis",
+            "name": "Grand Admiral Satikis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Legion Varus primus responsible for organizing a rapid departure. She is concerned that the legion won its long-distance Magwa contract by accepting a substantial discount.",
+            "id": "cherish-collins",
+            "name": "Cherish Collins",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior intelligence officer whose clearance can open the route to the Vault of the Forgotten. McGill pressures him into accompanying an unauthorized search for Drusus.",
+            "id": "dixon",
+            "name": "Dixon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The officer who took command of Third Unit during McGill's unexplained absence. Winslade restores McGill as centurion and reassigns Lisa as his adjunct, leaving her openly unhappy with the demotion.",
+            "id": "lisa",
+            "name": "Lisa",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit organizer who declined the temporary centurion post while McGill was absent. He remains part of the unit after McGill unexpectedly returns to command.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran member of Third Unit who is still serving when McGill returns after a long absence and reclaims command.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Blue Deck revival specialist whose former lunar base was destroyed. She and McGill renew an earlier intimate relationship during Legion Varus's long voyage.",
+            "id": "dawn",
+            "name": "Dawn",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit soldier who helps McGill mobilize the unit when a shipboard robot exercise appears to threaten nearby troops.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "A Legion Varus primus who halts Third Unit's unauthorized attack during a robot exercise. He holds McGill responsible for ignoring the rules and oversees a proposed rematch.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The director of a redesigned military robot program. McGill previously helped cut his funding, and Cunningham returns with improved machines whose first exercise against Third Unit ends in a dispute.",
+            "id": "director-cunningham",
+            "name": "Director Cunningham",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Third Unit technical specialist who helps map the robot force surrounding McGill's troops and confirms that it is closing in a crescent formation.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Saurian investigator aboard Scorpio who confronts McGill over complaints from the robot program. He claims to be auditing officials on Gold Deck, but does not identify his employer or full purpose.",
+            "id": "the-saurian-operative",
+            "name": "the Saurian operative",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Galina's father and a powerful member of Earth's ruling council. Galina learns that he privately took custody of Drusus and fears that his increasingly direct exercise of power may place her at risk as well.",
+            "id": "alexander-turov",
+            "name": "Alexander Turov",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Third Unit technical specialist who works with Kivi to map the robot formation closing around their unit during a training battle.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit scout who discovers that scattered pickets are falling asleep and reports their condition to McGill.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A recently promoted veteran assigned as the chief non-commissioned officer of McGill's guard detail.",
+            "id": "washburn",
+            "name": "Washburn",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Satikis's consort"
+            ],
+            "description": "Satikis's political partner and the mother of his children. She arrives for the formal city tour already distrustful of McGill because of his involvement in an earlier loss suffered by the coalition.",
+            "id": "satikis-wife",
+            "name": "Satikis's wife",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Satikis's heir, kept on a dangerous public tour so he can observe the exercise of power. His mother objects to the risk, while he shows interest in witnessing violence.",
+            "id": "satikis-son",
+            "name": "Satikis's son",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of resistance to Magwa occupation. He offers McGill a pact in which the local population will stop attacking humans and help Legion Varus leave if the legion destroys the Magwa.",
+            "id": "the-local-king",
+            "name": "the local king",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A returning power on Dust World whose expanding brood of clones has established substantial local influence.",
+            "id": "boudica",
+            "name": "Boudica",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clandestine revival operator on Dust World. He reconnects Drusus's failing life-support tank, agrees to conceal him without asking his identity, and considers growing him a replacement body.",
+            "id": "the-investigator",
+            "name": "the Investigator",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0D3MX7ZMC",
+            "type": "community"
+          }
+        ],
+        "work": "throne-world"
+      }
+    },
     "thud": {
       "characters": {
         "characters": [
