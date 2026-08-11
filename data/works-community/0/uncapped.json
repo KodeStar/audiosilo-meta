@@ -1437,6 +1437,237 @@
       }
     },
     "under-ashen-skies": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful healer travelling south with Iona, Auri, and Fenrir. Elaine hides much of her strength and her biomantically altered chimera elvenoid nature while adjusting to a third class devoted to collecting and studying books.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elaine's partner, a Valkyrie who directs Fenrir in flight and shares responsibility for the travelling party's decisions.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's bonded phoenix companion, travelling with the group on Fenrir. She rides on Fenrir's tail during their journey south.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's bonded frost-wyvern companion and the party's airborne transport. He carries the travellers and their supplies on the journey south and follows Iona's directions.",
+            "id": "fenrir",
+            "name": "Fenrir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A phoenix known to Auri who is present during Auri's rebirth after a fatal lightning strike in the plague city.",
+            "id": "white-dove",
+            "name": "White Dove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A city guard seeking promotion who witnesses a slain phoenix immediately return in another form. Drinking during the planned ambush of the unknown plague healer costs him his post, after which he resolves to hunt the resurrecting creature.",
+            "id": "dormin",
+            "name": "Dormin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ranger Team Gale leader"
+            ],
+            "description": "The Exterreri ranger who leads the team intercepting the airborne travellers. She questions their intention to immigrate, warns Elaine about local use of the Sentinel title, and permits the group to continue toward Sanguino.",
+            "id": "livia",
+            "name": "Livia",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old vampire Elaine hopes to find in Exterreri. Her first inquiry produces no useful lead, leaving his location uncertain.",
+            "id": "night",
+            "name": "Night",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's biomancy mentor. A healer connected to Marcella helps Elaine navigate residence in Exterreri and provides a possible route for researching ancient vampire lineages.",
+            "id": "marcella",
+            "name": "Marcella",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Elaine's former apprentice, now an independent travelling merchant. She unexpectedly reunites with the group near Sanguino after following the guidance of a lucky coin.",
+            "id": "amber",
+            "name": "Amber",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The extremely powerful vampire who controls the fine threads spread through Sanguino's underground routes. She captures Elaine during an unauthorized tunnel search and carries her to a hidden chamber beneath the bay.",
+            "id": "thread-controlling-vampire",
+            "name": "Thread-controlling vampire",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Night",
+              "the puppeteer"
+            ],
+            "description": "The ancient vampire Elaine sought as Night, now confirmed to be the same person as the elusive puppeteer. Her former mentor recognizes her as Sentinel Dawn, welcomes her return, and explains that memory-locking helps him endure his long lifespan.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure whose attempt to claim Elaine's soul has failed before Elaine enters the Sentinel command meeting. No further identity or status is established.",
+            "id": "black-crow",
+            "name": "Black Crow",
+            "reveal": {
+              "chapter": 28
+            }
+          },
+          {
+            "description": "A returning associate from Elaine's past who works for the Hunters Guild and is engaged to Julius. Elaine includes her current circumstances while reporting what became of the group displaced from the Fae realm.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning associate from Elaine's past who works for the Hunters Guild and is engaged to Artemis. His disappearance into the Fae realm and rescue form part of Elaine's report to the assembled Sentinels.",
+            "id": "julius",
+            "name": "Julius",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The vampire Sentinel who controls Sanguino’s underground thread network and is married to Knight. She restrains and interrogates Elaine, then takes her to Knight after evidence supports Elaine’s account.",
+            "id": "sentinel-thread-controller",
+            "name": "Sentinel thread controller",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-620 creature occupying the mountain Eventide Eclipse hopes to claim. It moves through rock, manipulates stone and metal, regenerates, and attacks with Radiance, making it the central obstacle to the group's settlement plan.",
+            "id": "mantle-mountain-radiance-worm",
+            "name": "Mantle Mountain Radiance Worm",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The official who provides Iona with redacted records explaining past Shadow Sentinel interventions. The spymaster also offers Iona optional, paid assessments of people suspected of posing extraordinary dangers.",
+            "id": "sentinel-spymaster",
+            "name": "Sentinel spymaster",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nibble"
+            ],
+            "description": "A Sentinel who refreshes Elaine on modern field procedures. Devour gains power and selected abilities from hunted creatures and can use cloaks made from their skins to assume other forms.",
+            "id": "devour",
+            "name": "Devour",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "War Sentinel Flood"
+            ],
+            "description": "A War Sentinel studying lore-master duties alongside Elaine. She can manage several streams of information at once and joins Elaine for instruction concerning exceptionally dangerous knowledge.",
+            "id": "flood",
+            "name": "Flood",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tiny vampire Sentinel who was formerly a gnome. The Archmage arrives on behalf of Ranger Command with Elaine's accumulated back pay and a sealed letter from Sentinel Tyrannus.",
+            "id": "sentinel-archmage",
+            "name": "Sentinel Archmage",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Valkyrie of the surviving Order who is bonded to a Spinosaurus. During a civil war, they protect villages by attacking raiding parties separated from the main forces.",
+            "id": "order-valkyrie",
+            "name": "Order Valkyrie",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A twelve-year-old, nine-tailed kitsune with illusion abilities who approaches Iona after an attack on a Three Dragons Triad casino. She asks to become Iona's squire and is accepted on the condition that she abandon her Mugger class.",
+            "id": "kitsune-street-child",
+            "name": "Kitsune street child",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CP6T2DQP",
+            "type": "community"
+          }
+        ],
+        "work": "under-ashen-skies"
+      },
       "recaps": {
         "ending": "Eventide Eclipse ends the book established in Sanguino, Exterreri. Elaine and Iona remain together, with Auri and Fenrir beside them, and the group has claimed a mountain after forcing its resident worm to retreat. Their permanent villa, road, water supply, and other construction are still being arranged. Knight is alive, reconciled with Elaine, and using his influence to assist their settlement. Elaine has publicly returned as War Sentinel Dawn, with responsibility for supporting the Sixth Legion during maneuvers, and has taken Ancient Loremaster of Legend as her third class. Her immortality's apple-based weakness remains a closely guarded secret. Iona has not joined Sentinel work or accepted the spymaster's optional assignments. Instead, after attacking a Three Dragons Triad casino, she accepts a young kitsune as a prospective squire on the condition that the child abandon her Mugger class. Artemis and Julius set out for Sanguino after receiving Elaine's letter. Dormin continues pursuing a phoenix, the possible Earth-origin storyteller remains unidentified, the dragon-lair map remains secret, the clinic's gang problem is unsettled, and a letter from Sentinel Tyrannus remains unopened.",
         "in_short": "Elaine, Iona, Auri, and Fenrir travel south, curing a plague and rescuing Pekari captives before settling in Sanguino as Eventide Eclipse. Elaine opens a free clinic and searches for the ancient vampire Night, only to be captured by the vampire who commands Sanguino's thread network. The capture reunites her with Knight, revealing that Knight, Night, and the puppeteer are one person. After modern Sentinel leaders confirm Elaine's past as Sentinel Dawn, she negotiates a return suited to her healing oath. Eventide Eclipse drives a powerful worm from a mountain and claims the site for a home. Elaine becomes War Sentinel Dawn, assigned to support the Sixth Legion, and chooses Ancient Loremaster of Legend. Iona remains independent of the Sentinels and accepts a kitsune child as a conditional squire after opposing the Three Dragons Triad. Artemis and Julius head for Sanguino, while Dormin's phoenix hunt, another possible person from Earth, secret dragon intelligence, and Elaine's unopened letter remain unresolved.",
