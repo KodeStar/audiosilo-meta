@@ -1476,6 +1476,352 @@
       }
     },
     "crystal-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "McGill"
+            ],
+            "description": "A Legion Varus centurion spending an off-contract leave at his family property. When Galina Turov invokes a personal debt and asks him to investigate Drusus, he agrees to hear out a politically dangerous assignment.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Galina"
+            ],
+            "description": "An imperator in hiding who relies on McGill's personal loyalty. She wants him to find Drusus and help arrange a witnessed death followed by a concealed revival, allowing her to escape the political danger surrounding her.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Former consul"
+            ],
+            "description": "A former consul whose public locator and official registry presence have vanished. McGill searches for him after Galina makes his disappearance central to her request.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Praetor Wurtenberger"
+            ],
+            "description": "The senior defense official occupying the position once held by Drusus. He refuses to discuss the missing former consul remotely and instead orders McGill to report to his office.",
+            "id": "wurtenberger",
+            "name": "Wurtenberger",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Blue-scaled Saurian leader"
+            ],
+            "description": "A blue-scaled Saurian known to McGill from earlier conflicts. He leads the violent extraction that removes McGill from police custody and takes control of him.",
+            "id": "saurian-operative",
+            "name": "Saurian operative",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ruling-council member"
+            ],
+            "description": "A member of Earth's ruling council who is pressing Galina toward the consulship. She believes he and the other council members would use her as a disposable political instrument.",
+            "id": "galinas-father",
+            "name": "Galina's father",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The red-haired leader of armed followers in a Dust World cave complex. McGill presents the disguised Galina to her and manufactures an apparent threat that prompts the followers to kill Galina.",
+            "id": "boudica",
+            "name": "Boudica",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "McGill's daughter"
+            ],
+            "description": "McGill's daughter, now living in the Dust World cave community with Florimel and the Investigator. She is present when McGill brings Galina before Boudica.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resident of the hidden Dust World cave complex where McGill takes Galina. She is part of the small group living there with Etta and the Investigator.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A resident of the Dust World cave complex where McGill brings Galina. The Investigator lives there with Etta and Florimel among Boudica's armed followers.",
+            "id": "the-investigator",
+            "name": "The Investigator",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-born Hegemony security specialist stationed on Dust World. Etta tells McGill that they are engaged and that her fiance transferred there to be near her.",
+            "id": "ettas-fiance",
+            "name": "Etta's fiance",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Collins"
+            ],
+            "description": "A Legion Varus primus who supervises McGill after Winslade removes him from Third Unit. She explains why crystal gravity weapons make dense metal armor and equipment especially dangerous.",
+            "id": "primus-collins",
+            "name": "Primus Collins",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tribune Winslade"
+            ],
+            "description": "The Legion Varus tribune overseeing the Crystal World expedition. He punishes McGill for missing muster by stripping him of Third Unit and assigning him to shipboard administrative work.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit adjunct and leader of its heavy troops. He returns to service under McGill when the centurion regains command for the shipboard combat exercise.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit adjunct who remains with the formation when McGill resumes command. He enters the King of the Hill exercise as part of the badly outnumbered defending unit.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit fighter recognized as the formation's best user of primitive thrown weapons. His ability is especially valuable when the shipboard exercise limits the troops to spears and knives.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Primus Graves"
+            ],
+            "description": "The Legion Varus primus who starts and oversees the shipboard King of the Hill contest. He places Third Unit on the central hill while every other unit in its cohort enters with orders to remove it.",
+            "id": "graves",
+            "name": "Graves",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit soldier who helps carry ammunition to the hilltop defenders during the shipboard exercise. He supports the line as the coordinated assault reaches McGill's position.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus technical specialist serving with Third Unit. During the hill defense, she helps move ammunition to the troops holding the summit.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus technical specialist attached to Third Unit. She supports the hilltop defense by carrying ammunition during the attackers' final coordinated charge.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of a rebuilt allied fleet that intercepts Scorpio after detecting a stealthy crystal force. He takes operational control and requires the human transports for the approaching battle.",
+            "id": "allied-fleet-admiral",
+            "name": "Allied fleet admiral",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer attending the coalition command conference on how to overcome Crystal World's surface batteries.",
+            "id": "merton",
+            "name": "Merton",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Cherish",
+              "Primus Collins"
+            ],
+            "description": "The Legion Varus primus whom McGill privately calls Cherish and with whom he once had an informal relationship. Assigned to monitor him, she insists that he use her rank and surname in public and maintain professional boundaries.",
+            "id": "cherish-collins",
+            "name": "Cherish Collins",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Serial-number pilot"
+            ],
+            "description": "An alien assault-capsule pilot identified by a serial number until McGill nicknames him Seven. His superiors expect him to remain aboard an expendable capsule while it delivers the Crystal World beachhead force.",
+            "id": "seven",
+            "name": "Seven",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Third Unit scout sent to examine the first apparently empty settlement on Crystal World. He disappears during the reconnaissance, turning the nearby inhabitants into an immediate concern.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cooper's scouting partner during the first survey of a Crystal World settlement. She reports his disappearance and withdraws under stealth when McGill orders the scouts back.",
+            "id": "della",
+            "name": "Della",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The commander of the Saurian legion deploying through the beachhead. He delays committing troops at first, then reinforces McGill when the rock-bodied inhabitants attack.",
+            "id": "saurian-tribune",
+            "name": "Saurian tribune",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thompson"
+            ],
+            "description": "A senior biological specialist asked to examine a living fragment captured from one of Crystal World's rock-bodied inhabitants. Her expertise is needed to clarify the enemy's unusual physical nature.",
+            "id": "evelyn-thompson",
+            "name": "Evelyn Thompson",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "X"
+            ],
+            "description": "The lone Claver accompanying the deployed ape and dogman contingent. Calling himself X, he claims command of the entire force as it arrives to fortify the Crystal World beachhead.",
+            "id": "claver-x",
+            "name": "Claver X",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus primus serving with the command staff. He is killed with Winslade when a landmine explodes near the gateway posts.",
+            "id": "primus-gilbert",
+            "name": "Primus Gilbert",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Galina's father"
+            ],
+            "description": "Galina Turov's father and the council power broker who sent McGill into the coalition campaign. He acknowledges ordering damage to the alliance, accepts limited responsibility for the operation's excesses, and suspends McGill's pending punishment.",
+            "id": "alexander-turov",
+            "name": "Alexander Turov",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guest staying with McGill's family after McGill returns from the Crystal World campaign. Etta is anxious for McGill to come home while Derek is there.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CJ3X7LFC",
+            "type": "community"
+          }
+        ],
+        "work": "crystal-world"
+      },
       "recaps": {
         "ending": "The launcher explodes before it can fire on Earth, killing McGill's commando team and every coalition combatant nearby. McGill is revived, but Legion Varus is only slowly being restored. Wurtenberger, now consul, demotes Graves, orders his execution, and confines him pending a possible return to service. Winslade is alive after revival, while McGill remains unsure who truly initiated the launcher order. Seven survives through human revival and becomes an official Earth adviser on the divided Galactic powers. Alexander Turov confirms that he wanted the coalition damaged, suspends McGill's punishment, and regrets the loss of technology Earth cannot reproduce. On Dust World, the illicit facility has expanded and successfully revived Galina after Boudica killed her twice. Boudica expels both Galina and McGill, and McGill takes Galina home. She remains an imperator but must repair her political standing, while Drusus remains imprisoned and the silicoid threat is unresolved. Etta and Derek are married, and McGill accepts Derek into the family.",
         "in_short": "Galina Turov asks James McGill to stage her death so she can evade the consulship, but Boudica secretly holds her on Dust World. Alexander Turov then sends McGill and Legion Varus into a coalition campaign while privately ordering him to undermine the alliance. After an allied victory over a crystal fleet, the coalition lands on Crystal World, battles tunneling silicoids, and advances on a vast launcher. When the weapon targets Earth, McGill's commandos sabotage it and die in the explosion, which also destroys the surrounding coalition force and valuable technology. Wurtenberger punishes Graves for ordering the strike, while Alexander Turov later suspends McGill's own penalty. McGill finds Galina revived at an illicit Dust World facility and returns her to Earth, where her imperator position is uncertain. He then learns that Etta and Derek have married and accepts Derek as family.",
