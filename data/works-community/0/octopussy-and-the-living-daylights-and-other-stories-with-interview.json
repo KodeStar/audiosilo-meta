@@ -2005,6 +2005,418 @@
         "work": "omega-rising"
       }
     },
+    "on-basilisk-station": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A decorated Royal Manticoran Navy commander who arrives to take her first cruiser command aboard HMS Fearless. Honor previously commanded HMS Hawkwing and earned recognition for tactical skill, but the hurried transfer and her new ship's unusual refit immediately make her suspicious.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Honor's treecat companion, an empathic and nearly sentient being bonded to her by a lasting mutual attachment. Nimitz accompanies her as she arrives to assume command of Fearless and shares an unusually close awareness of her emotions.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fearless's executive officer and former tactical officer. He wanted the command himself and receives Honor with resentment, creating an immediate division at the top of the ship's company as she formally relieves him of temporary command.",
+            "id": "alistair-mckeon",
+            "name": "Alistair McKeon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's former Academy tactics instructor and mentor. He arranged her rapid transfer to Fearless but did not tell her about the cruiser's unusual refit.",
+            "id": "admiral-courvosier",
+            "name": "Admiral Courvosier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Admiral Hemphill"
+            ],
+            "description": "The technology-minded admiral sponsoring Fearless's experimental armament and using the cruiser as a secret Fleet test ship. Her tactical school favors novel equipment over traditional doctrine, and the coming exercise is intended to demonstrate her approach.",
+            "id": "sonja-hemphill",
+            "name": "Sonja Hemphill",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Hamish Alexander"
+            ],
+            "description": "A senior Royal Manticoran Navy officer associated with traditional tactical doctrine. His views oppose Hemphill's technology-led school and align more closely with Honor's assessment of Fearless's refit.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "First Lord of Admiralty"
+            ],
+            "description": "The First Lord of Admiralty, Hemphill's cousin, and a political opponent of Hamish Alexander's tactical school.",
+            "id": "edward-janacek",
+            "name": "Sir Edward Janacek",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A lieutenant commander serving among Fearless's officers during the Fleet exercises. She is part of the ship's company as Honor attempts to turn the cruiser's experimental close-range weapons into an effective surprise tactic.",
+            "id": "dominica-santos",
+            "name": "Dominica Santos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lieutenant aboard Fearless, introduced among the ship's officers during the Fleet exercises. He serves in the company that must execute Honor's concealed ambush with the cruiser's unfamiliar grav lance and energy-torpedo armament.",
+            "id": "andreas-venizelos",
+            "name": "Andreas Venizelos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Papadapolous"
+            ],
+            "description": "The officer commanding Fearless's Royal Manticoran Marine detachment. He is one of the department heads serving under Honor as the cruiser receives orders for Basilisk Station after a demoralizing series of Fleet exercises.",
+            "id": "nikos-papadapolous",
+            "name": "Nikos Papadapolous",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fearless's surgeon commander and senior doctor. She appears detached from the broader concerns troubling the crew as repeated exercise defeats damage morale and the cruiser receives an unwelcome assignment to Basilisk Station.",
+            "id": "lois-suchon",
+            "name": "Lois Suchon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Fearless's experienced sailing master, serving among the officers responsible for the cruiser's operation as it receives orders for Basilisk Station.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Lord Pavel Young"
+            ],
+            "description": "Captain of HMS Warlock and senior naval officer at Basilisk Station when Fearless arrives. He and Honor were Academy contemporaries, and their immediate hostility signals a serious history that has not yet been explained.",
+            "id": "pavel-young",
+            "name": "Pavel Young",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Warlock's executive officer. He recognizes the serious conflict between Young and Honor when she arrives aboard for her orders at Basilisk Station.",
+            "id": "paul-tankersley",
+            "name": "Paul Tankersley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior Fearless officer assigned to cover tactical duties after Venizelos is detached to Basilisk Control. The appointment gives him responsibility beyond his previous experience while the undermanned cruiser divides its personnel among several missions.",
+            "id": "rafael-cardones",
+            "name": "Rafael Cardones",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain in charge of Basilisk Control. He works constructively with the customs and security detachment Honor sends to the terminus.",
+            "id": "michel-reynaud",
+            "name": "Michel Reynaud",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dame Estelle"
+            ],
+            "description": "Medusa's Resident Commissioner for Planetary Affairs. She administers Manticore's protection of the planet without sovereignty over it and welcomes Honor's promise of naval cooperation after years of inadequate support.",
+            "id": "estelle-matsuko",
+            "name": "Estelle Matsuko",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Isvarian"
+            ],
+            "description": "Matsuko's senior Native Protection Agency field officer and Honor's liaison on Medusa. A former Marine sergeant, he coordinates the agency's work with Fearless as Honor promises stronger naval support for traffic control and customs enforcement.",
+            "id": "barney-isvarian",
+            "name": "Barney Isvarian",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fearless lieutenant appointed to command the Navy's new ground-space control detachment on Medusa. His team will coordinate orbital traffic and support the joint customs system that Honor organizes with the Native Protection Agency.",
+            "id": "max-stromboli",
+            "name": "Max Stromboli",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ensign Tremaine"
+            ],
+            "description": "Stromboli's executive officer and the manager of Medusa inspection flights. He leads teams charged with examining traffic between orbit and the surface as Fearless and the Native Protection Agency build a joint customs system.",
+            "id": "scotty-tremaine",
+            "name": "Scotty Tremaine",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fearless's senior boatswain's mate and senior noncommissioned officer. Honor relies on her to select experienced ratings who can recognize concealed contraband and support the ship's expanding customs inspections around Medusa.",
+            "id": "sally-macbride",
+            "name": "Sally MacBride",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fearless medical officer reassigned from Sick Bay to the customs teams with four attendants. Surgeon Commander Suchon objects to losing him, but Honor concludes the inspection mission requires medical personnel and keeps the assignment in place.",
+            "id": "lieutenant-montoya",
+            "name": "Lieutenant Montoya",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "PO Harkness"
+            ],
+            "description": "A skilled Fearless missile technician whose earlier experience with smuggling helps Tremaine's inspection team recognize an altered customs seal. His knowledge contributes directly to exposing concealed illegal cargo aboard a chartered shuttle.",
+            "id": "horace-harkness",
+            "name": "Horace Harkness",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fleet Admiral Webster"
+            ],
+            "description": "The First Space Lord, a senior naval leader inclined to support Honor's enforcement at Basilisk despite diplomatic protests and political limits on his freedom of action. He discusses the mounting crisis with Hamish Alexander.",
+            "id": "james-bowie-webster",
+            "name": "James Bowie Webster",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Security chief for the concealed mekoha laboratory on Medusa. A former Royal Manticoran Marine expelled after working as a paid duelist and killer, he prepares to evacuate the exposed operation and worries that its records and power relay are vulnerable.",
+            "id": "denver-summervale",
+            "name": "Denver Summervale",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Haven's consul on Medusa and a participant in Operation Odysseus. He manages a concealed operation whose visible drug laboratory, Manticoran personnel, and records are intended to direct suspicion toward domestic criminals rather than Haven.",
+            "id": "wallace-canning",
+            "name": "Wallace Canning",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Colonel Westerfeldt"
+            ],
+            "description": "The Haven field commander responsible for the ground element of Canning's covert operation on Medusa. He oversees preparations connected to the concealed main site while the exposed drug laboratory serves as misleading cover.",
+            "id": "bryan-westerfeldt",
+            "name": "Bryan Westerfeldt",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Captain Coglin"
+            ],
+            "description": "The captain of a ship in Medusa orbit treated as a protected asset of Operation Odysseus. Haven's planners intend to keep him insulated from the surface conspiracy, and his protection depends on maintaining that separation.",
+            "id": "johan-coglin",
+            "name": "Johan Coglin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Fearless sensor technician assigned to Tremaine's pinnace for the search around Medusa.",
+            "id": "hiro-yammata",
+            "name": "Hiro Yammata",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Native Protection Agency perimeter officer assigned to Isvarian's raid on the concealed power site near the Mossyback Range. The force enters an off-limits region after Tremaine detects a shielded user drawing power through a hidden relay.",
+            "id": "matt-howard",
+            "name": "Matt Howard",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Medusan religious figure being held as Haven's prepared local asset for a planned native operation. Canning orders Westerfeldt to retain the Shaman while Haven watches NPA and Fearless deployments and decides when to proceed.",
+            "id": "the-shaman",
+            "name": "The Shaman",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The powerful head of the Hauptman Cartel, traveling secretly toward Medusa after Honor's inspections expose extensive contraband aboard cartel-chartered vessels. His arrival promises a direct confrontation over her enforcement campaign.",
+            "id": "klaus-hauptman",
+            "name": "Klaus Hauptman",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Medusan nomad clan chief whose people owe the Native Protection Agency for an earlier rescue. He honors that obligation by passing Matsuko a warning from relatives near the Mossybacks that the Delta will be unsafe during the coming winter.",
+            "id": "gheerinatu",
+            "name": "Gheerinatu",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An NPA lieutenant and former Marine leading the Sierra-One-One patrol north of Three Forks River. Her skimmer discovers a concealed aircar and underground power source before armed Medusans attack it.",
+            "id": "frances-malcolm",
+            "name": "Frances Malcolm",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Lieutenant Frances Malcolm's Native Protection Agency skimmer crew, killed when armed Medusans ambush the patrol north of Three Forks River.",
+            "id": "sergeant-hayabashi",
+            "name": "Sergeant Hayabashi",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Lieutenant Frances Malcolm's Native Protection Agency skimmer crew, killed when armed Medusans ambush the patrol north of Three Forks River.",
+            "id": "corporal-truman",
+            "name": "Corporal Truman",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sergeant O'Brian"
+            ],
+            "description": "A Royal Manticoran Marine sergeant leading a battle-armored scout squad toward the wreck of the missing NPA patrol. His unit moves ahead of Papadapolous's main force to discover what happened and assess the threat nearby.",
+            "id": "tadeuz-obrian",
+            "name": "Tadeuz O'Brian",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dominica Santos's assistant aboard Fearless. He dies with Santos and the surviving Fusion One crew when they eject the failing reactor to save the ship.",
+            "id": "allen-manning",
+            "name": "Allen Manning",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A technician assigned to Fearless's Fusion One reactor. She dies with Santos and the remaining reactor crew during the emergency ejection that saves the ship.",
+            "id": "angela-earnhardt",
+            "name": "Angela Earnhardt",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A junior engineering officer and the only one of Santos's lieutenants to survive the battle with Sirius. Working with McKeon, Harkness, Montoya, and other survivors, she helps keep the shattered Fearless functioning after its return to Medusa orbit.",
+            "id": "ilona-rierson",
+            "name": "Ilona Rierson",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "isbn:9781417727995",
+            "type": "community"
+          }
+        ],
+        "work": "on-basilisk-station"
+      }
+    },
     "on-chesil-beach": {
       "characters": {
         "characters": [
