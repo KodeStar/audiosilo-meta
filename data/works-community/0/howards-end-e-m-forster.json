@@ -2166,6 +2166,243 @@
       }
     },
     "ice-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Legion Varus centurion drawn into a new crisis when Carlos arrives with unexplained wealth and offers him a chance to make substantial money.",
+            "id": "james-mcgill",
+            "name": "James McGill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "McGill's former Legion Varus associate, now out of the legion and displaying sudden wealth. He asks McGill to join a profitable venture whose source he has not yet explained.",
+            "id": "carlos",
+            "name": "Carlos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McGill's revived daughter, visiting his family after living on Dustworld with her grandfather. Her reconstructed body includes Natasha Elkin's DNA, and changes in her behavior leave the family uncertain how to receive her.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Earth authority whose office opens the illegal-currency inquiry. The investigation names both Carlos and McGill because McGill commanded the unit from which the coins disappeared.",
+            "id": "drusus",
+            "name": "Drusus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An imperator, Legion Varus authority, and McGill's partner. She summons him to her family's estate as her companion for her older sister's wedding and intends to introduce him to her relatives.",
+            "id": "galina-turov",
+            "name": "Galina Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galina's father, whom she introduces to McGill at a ceremony on the Turov family estate.",
+            "id": "alexander-turov",
+            "name": "Alexander Turov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Claver family whom McGill contacts through a forbidden deep-link while searching for a distinct clone. She refuses to discuss the person he seeks and ends the call.",
+            "id": "abigail-claver",
+            "name": "Abigail Claver",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A separate-minded member of the Claver family who created Abigail as an adult clone. He says he broke from the collective and explains why the Tau are seeking a supposed Claver coin cache.",
+            "id": "claver-x",
+            "name": "Claver X",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Galactic authority who dictates the proposed resolution of Earth's coin case. She offers to spare Earth from charges if it destroys the remote colony and surrenders every recovered coin for audit.",
+            "id": "imperial-governess",
+            "name": "Imperial governess",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Legion Varus officer whose old, restricted history prevents his elevation to command. Although experienced and respected, he is passed over when the legion receives a permanent new commander.",
+            "id": "primus-graves",
+            "name": "Primus Graves",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cephalopod officer appointed to command Legion Varus over its senior human officers.",
+            "id": "tribune-foam",
+            "name": "Tribune Foam",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior human officer in Legion Varus who is visibly alarmed when Foam is appointed to command the legion.",
+            "id": "winslade",
+            "name": "Winslade",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer in McGill's unit recalled from the Moon for the hurried Ice World mobilization. The compulsory summons disrupts a relationship that may have been approaching an engagement.",
+            "id": "adjunct-barton",
+            "name": "Adjunct Barton",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran serving in McGill's unit.",
+            "id": "sargon",
+            "name": "Sargon",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A technical scout in McGill's unit and Sargon's intermittent partner. She sends Sargon with the reconnaissance probe McGill requests for his robot exercise.",
+            "id": "kivi",
+            "name": "Kivi",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly promoted Legion Varus bio adjunct who kills McGill by injection after his robot exercise. At first she says only that she acted under orders and withholds who was responsible.",
+            "id": "wendy-stinson",
+            "name": "Wendy Stinson",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of McGill's heavy troops. He stations his platoon near McGill's quarters and is prepared to support him during a tense confrontation with Winslade.",
+            "id": "harris",
+            "name": "Harris",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A weapons officer in McGill's unit. He first enters the current action by reporting that Wendy Stinson has been reassigned to Earth during the military budget cuts.",
+            "id": "leeson",
+            "name": "Leeson",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Dominus during the damaged ship's approach to Ice World. Galina removes him from operational command, but he provides the damage assessment and develops the hazardous invasion plan she approves.",
+            "id": "captain-merton",
+            "name": "Captain Merton",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leading member of the Claver colony who meets McGill during the failed opening assault. He explains that the colony expected invasion, erected its protective field, and hired mercenary reinforcements with stored wealth.",
+            "id": "claver-prime",
+            "name": "Claver Prime",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion Varus primus who attacks Galina with an isotope syringe. McGill interrupts the attempt, captures the officer, and discovers that the weapon matches one issued to him by Foam.",
+            "id": "varus-primus",
+            "name": "Varus primus",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A ghost specialist who retrieves McGill's specialized armor from the failed assault on the Claver wall. His action lets the equipment survive even though McGill does not.",
+            "id": "cooper",
+            "name": "Cooper",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A blue-scaled Saurian whom McGill previously restored through an irregular revival. He appears as prosecutor at a martial court and testifies that the procedure used illegal, incompatible genetics.",
+            "id": "blue-scaled-saurian",
+            "name": "Blue-scaled Saurian",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Etta's associate on Dustworld and a revival specialist. McGill contacts her through the Clavers' deep-link and asks her to carry his revival files to a chosen location on Earth.",
+            "id": "florimel",
+            "name": "Florimel",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The enemy commander leading a major Tau force preparing to attack the southern side of the Ice World stronghold.",
+            "id": "squanto",
+            "name": "Squanto",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09HR6WXD1",
+            "type": "community"
+          }
+        ],
+        "work": "ice-world"
+      },
       "recaps": {
         "ending": "McGill learns that Alexander Turov directed the Tau campaign to reclaim the Turov-marked coin hoard. After arranging an illegal revival, Alexander sends him back to Ice World with gateway posts. McGill tricks the Claver Prime into moving selected Clavers and the crates to the Turov estate, leaving the colony's dome down and the stronghold exposed to bombardment. He then brokers a payment settlement between Alexander and the Prime. At Central, Galactic inspectors discover that every recovered coin is counterfeit, so the imperial currency case ends. Alexander uses his political authority to reinstate McGill as a Legion Varus centurion and block reprisals for the campaign, but threatens McGill's family, friends, and legion to ensure obedience. Galina is demoted to tribune because of the Ice World disaster, resumes command of Varus, and reconciles with McGill. Carlos is killed during the evacuation ruse but is expected to revive. The escaped Clavers' later position, any survivors at the bombarded colony, and Alexander's continuing control over McGill remain unresolved.",
         "in_short": "An inquiry into illegal galactic coins leads James McGill from a Tau attack on Galina Turov's family to a mission against a Claver colony on Ice World. Legion Varus reaches the planet after sabotage cripples Dominus, suffers severe losses attacking the fortified colony, and then joins the Clavers when a Tau-led invasion arrives. McGill survives battles, a command mutiny, and an effort to expel him before discovering that the hoard bears the Turov crest. Alexander Turov admits directing the Tau recovery operation and coerces McGill into moving the crates to his estate through a deceptive gateway evacuation that exposes the colony to bombardment. Galactic inspectors then rule the entire hoard counterfeit, ending the currency case. Alexander restores McGill to Varus while retaining leverage over him. Galina is demoted to tribune but returns as Varus commander and reconciles with McGill. Carlos is expected to revive after being killed during the Claver evacuation.",
