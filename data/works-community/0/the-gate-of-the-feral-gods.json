@@ -2136,6 +2136,204 @@
       }
     },
     "the-gladiator-gauntlet": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Elaine of Earth",
+              "Elaine of Remus",
+              "Dawn Sentinel",
+              "Mother of Phoenixes"
+            ],
+            "description": "A returning healer and student who is partnered with Iona and bonded to Auri. She begins a spatially aligned third class called Bookworm, while privately concealing that earlier biomancy has changed her into a chimera elvenoid.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dusk Valkyrie"
+            ],
+            "description": "Elaine's partner and fellow student, a returning Valkyrie whose faith is devoted to Selene and Lunaris. She assists Elaine with difficult choices and pursues her own martial studies at the school.",
+            "id": "iona",
+            "name": "Iona",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's returning phoenix companion and a student of baking. Their bond passes experience to Elaine and gives Elaine fire immunity, faster thinking, and the ability to extend healing to Auri.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Black Rose"
+            ],
+            "description": "The school's arena master and a faculty member whose safeguards remove students from staged danger. He recognizes that Elaine's public identity as a healer understates her physical combat ability.",
+            "id": "mormerilhawn",
+            "name": "Mormerilhawn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iona's growing frost-wyvern companion, who travels with her and remains closely involved in the pair's plans. Iona intends to commission new armor made with his scales for both of them, while Fenrir can communicate only a limited number of words through their bond.",
+            "id": "fenrir",
+            "name": "Fenrir",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Iona's moon-goddess patrons, with authority to make serious requests of her paladin. She asks Iona to answer a cultivator's deliberate insult, then accepts a plan to pursue formal punishment through the school and local institutions instead of a lethal confrontation.",
+            "id": "selene",
+            "name": "Selene",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two moon goddesses served by Iona and a patron able to give her major assignments. She joins Selene in requiring a response to a cultivator's insult and approves Iona's choice to seek institutional consequences rather than use direct violence.",
+            "id": "lunaris",
+            "name": "Lunaris",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wind elemental represented by a floating black hat who joins Elaine's under-30 Gladiator Gauntlet team. She can carry the entire group rapidly through the air without harming them.",
+            "id": "school-wind-elemental",
+            "name": "School Wind Elemental",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's biomancy mentor and advisor at the school. She helps examine Elaine's extraordinary claim to have created the Medical Manuscripts, initially treating it as implausible while arranging for the signature and other possible evidence to be tested.",
+            "id": "marcella",
+            "name": "Marcella",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A very high-level devil who serves as the school's head administrator. Elaine asks him to assist Marcella and an archivist with the Medical Manuscripts inquiry, and he gains a level immediately after Elaine supplies a fresh signature for comparison.",
+            "id": "myron",
+            "name": "Myron",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A school teammate whose status confirms a vow of silence. He lends the entry fee needed to register Team Iona, leaving Elaine responsible for repayment at 16-percent interest.",
+            "id": "silent-teammate",
+            "name": "Silent Teammate",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Team Shining Shrine's scout and tactical commander in the Gladiator Gauntlet. He studies Iona's defenses, fighting style, and possible weaknesses while preparing his team for its preliminary match against her.",
+            "id": "takatane-sakai",
+            "name": "Takatane Sakai",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The queen's brother and Rolland's champion, identified by Iona as a major opponent in the Gladiator Gauntlet. He carries a rune-metal greatsword that makes him an especially dangerous threat.",
+            "id": "rolland-royal-champion",
+            "name": "Rolland Royal Champion",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Flora of Remus"
+            ],
+            "description": "An ancient director from Remus who can appear through flowers and petals. During Elaine's thesis defense, she supports the credibility of Elaine's claimed identity despite having no direct prior acquaintance with her.",
+            "id": "director-flora",
+            "name": "Director Flora",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An investigator who traces lines of signatures associated with the Medical Manuscripts. The structured similarities he finds, together with levels earned during his inquiry, support Elaine's authorship claim.",
+            "id": "ratcatcher",
+            "name": "Ratcatcher",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure from Elaine's earlier life, connected to Remus and the vampire world, whom she privately believes may have survived into the present. She begins this book without confirmation of either his survival or his whereabouts.",
+            "id": "night",
+            "name": "Night",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest serving with a Ranger team that is tracking the Circus of Smiles near Palma. He shares a dangerous night watch with Livia while their group deliberately camps away from easier lodging and continues an unresolved pursuit through hazardous country.",
+            "id": "priest-deimos",
+            "name": "Priest Deimos",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Ranger serving alongside Deimos. She argues that prolonged peace can leave a society dangerously untested and regards the team's earlier Sentinel-impostor assignment as genuine but far too minor.",
+            "id": "livia",
+            "name": "Livia",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A spider-like intelligence in Sanguino whose threads form a sensory network across the city, allowing movement throughout the network to be detected.",
+            "id": "sanguino-sentinel",
+            "name": "Sanguino's Sentinel",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C673LP5N",
+            "type": "community"
+          }
+        ],
+        "work": "the-gladiator-gauntlet"
+      },
       "recaps": {
         "ending": "Elaine's school wins the Gladiator Gauntlet, and Elaine's separate struggle for recognition ends with the school accepting her as the creator of the Medical Manuscripts and awarding her an unprecedented platinum medical thesis. She has also completed the age-resetting stage of immortality, but apples and several apple products can obstruct her movement, penetrate her defenses, resist her healing, or suppress her healing magic. The exact wider reach of that concealed weakness remains open.\n\nElaine and Iona remain partners. The Valkyries have left their Roland territories and resumed independent travel, so Iona has no home there and the group intends to avoid the realm for one or two centuries. Elaine, Iona, Auri, and Fenrir fly from the school toward Sanguino in Exterrae with Marcella's introduction. Elaine may investigate Knight through vampire turning lines, but agrees to keep the search bounded; Knight's survival and Night's whereabouts are still unconfirmed. The closing interlude introduces further threats: Deimos and Livia are pursuing the Circus of Smiles, an organized construct force is taking villagers, a suspicious rat reaches a grain ship, and a city-spanning Sentinel network monitors Sanguino.",
         "in_short": "During her final period at the School of Sorcery and Spellcraft, Elaine develops a spatial Bookworm class, supports Iona's campaign against Roland, and fights in the Gladiator Gauntlet championship. Iona sweeps Roland's singles roster and Team Iona wins the match 25-0, while Elaine's school later defeats Happensburgs for the title. Elaine also proves that she wrote the Medical Manuscripts and receives a platinum thesis grade. An immortality rite restores her youth but curses her with a dangerous vulnerability to apples. The Valkyries survive by returning to itinerant service, though Roland is no longer a home for Iona. Elaine, Iona, Auri, and Fenrir leave for Sanguino in Exterrae, where they hope to settle and make a limited search for Knight. Elsewhere, Rangers pursue the Circus of Smiles, constructs abduct villagers, and Sanguino's Sentinel watches the city.",
