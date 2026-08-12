@@ -283,6 +283,13 @@ type Summary struct {
 	// something a maintainer can read in a minute and a diff of 40,000 files is
 	// not. Empty when the rule never fired.
 	HonorificMerges []string
+	// CredentialMerges is the same list for the academic-credential fold
+	// (credential.go): every credentialed spelling resolved onto a bare twin
+	// this run ("Philip Zimbardo Ph.D. -> Philip Zimbardo"). Kept separate from
+	// HonorificMerges because they are two different decisions about a name and
+	// a maintainer auditing one is not auditing the other. Empty when the rule
+	// never fired.
+	CredentialMerges []string
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string

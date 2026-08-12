@@ -461,9 +461,18 @@ func isoDatePart(ts string) string {
 // the counts in the comments are distinct books backing that exact spelling).
 // The inclusion bar is 3 books, which is what keeps out the long tail of
 // one-off scraping typos. It is deliberately NOT a guess at what a retailer
-// might emit - widening it risks eating a real name. Ambiguous fragments are
-// excluded on purpose: a bare "with" is a co-author connector as often as a
-// credit role, so it is not here.
+// might emit - widening it risks eating a real name. A spelling BELOW the bar
+// rides along with a family whose dominant form clears it, and only then.
+//
+// A word that is not a role at all can still belong here, with a nil value:
+// listing it is what stops a bogus person record being minted, and the nil is
+// what stops a role being stated. That is why "with" is now here, which this
+// comment used to give as the example of a fragment too ambiguous to list. The
+// ambiguity was always about the ROLE ("with" is a co-author connector, never a
+// credit role), and the measurement settles the strip: all 31 dump names ending
+// in it are real people carrying a dangling connector the source cut a co-credit
+// at ("Jack Canfield - With", "David Feinstein PhD - with"), each of which minted
+// a second identity (jack-canfield-with) for somebody already in the catalogue.
 //
 // Keys are lowercase, single-spaced, NFC-normalized and hyphen-free (pinned by
 // TestRoleQualifiersVocabulary); lookup lowercases with the Unicode-aware
@@ -515,6 +524,35 @@ var roleQualifiers = map[string][]string{
 	"creator":              nil, // ~14 books; under-attested, held for a maintainer call
 	"producer":             nil, // 3 books, all narrator-side
 	"instrumental soloist": nil, // 1 book, narrator-side
+	// The co-author connector, dangling where the source cut a co-credit ("<the
+	// lead author> with <the collaborator>"). 31 books / 31 names, every one of
+	// them author-side and every one a real person - the connector is what makes
+	// the credit unusable, not the name. It states nothing: co-authorship is
+	// already the work's authors list, and "with" names no role in the enum.
+	"with": nil, // 31 books / 31 names
+	// The epilogue family - who wrote or read the epilogue. It states nothing
+	// for the same reason the prologue family below does not: the enum's
+	// foreword, preface and introduction are three DIFFERENT front-matter
+	// elements, and picking one for an epilogue would be an invention. Mostly
+	// narrator-side ("Joe Arden - epilogue"), which is exactly the shape that
+	// mints joe-arden-epilogue beside the narrator's own record.
+	"epilogue": nil, // 16 books / 20 names
+	"epílogo":  nil, // 1 - Spanish, riding along with the family above
+	"epilogo":  nil, // 1 - Italian, which is also the Spanish spelling unaccented
+	// The composer credit on a dramatized or musical production. Both spellings
+	// clear the bar on their own. Like "director" and the cover-art family it
+	// maps to nothing: the credit vocabulary models contributions to the TEXT,
+	// and a score is not one.
+	"music": nil, // 5 books / 5 names
+	"musik": nil, // 6 books / 5 names - the German spelling
+	// The amanuensis convention ("Dr. Helen Schucman - scribe", A Course in
+	// Miracles). One name, four books - the same shape as "instrumental
+	// soloist" above. It maps to nothing: transcribing dictation is not
+	// authorship and has no home in the enum. Note the DASH is load-bearing
+	// here - "Scribe" is a real surname (Augustin Eugène Scribe, and two more in
+	// the dump), which is why it is deliberately absent from the vocabulary the
+	// separator-less rule reads (barerole.go).
+	"scribe": nil, // 4 books / 1 name
 	// A dramatized production's director. 36 books / 12 distinct names pooled
 	// across the author and narrator sides ("Alison Belle Bews - director",
 	// "Sir Peter Hall - director", "Cassandra de Cuir - director"), well clear
@@ -622,10 +660,17 @@ var roleQualifiers = map[string][]string{
 	"editor/introduction":     {model.RoleEditor, model.RoleIntroduction}, // 2
 	"introduction editor":     {model.RoleEditor, model.RoleIntroduction}, // 2
 	"editor and contributor":  {model.RoleContributor, model.RoleEditor},  // 4
+	"preface foreword":        {model.RoleForeword, model.RolePreface},    // 1, riding along with the combined family
 	// "author" is not a credit role - authorship is already the work's authors
-	// list - so these two state exactly one role that credits can carry.
-	"author/editor": {model.RoleEditor}, // 4
-	"editor/author": {model.RoleEditor}, // 4
+	// list - so these three state exactly one role that credits can carry.
+	"author/editor":     {model.RoleEditor},     // 4
+	"editor/author":     {model.RoleEditor},     // 4
+	"author/translator": {model.RoleTranslator}, // 1, the same construction over the table's largest role
+	// A third element the enum has no home for ("annotation") stacked onto a
+	// combined qualifier already listed above. The two roles it DOES state are
+	// stated; the annotation is dropped rather than guessed at, which is the
+	// same subset rule every partly-mappable qualifier gets.
+	"editor translator annotation": {model.RoleEditor, model.RoleTranslator}, // 1, riding along with "editor translator"
 }
 
 // credentialTitles are the academic and generational title fragments the source
@@ -757,10 +802,10 @@ const minDoubledHalfWords = 2
 const maxCleanPasses = 8
 
 // CleanCreditName normalizes one credit name from an external source. It applies
-// five evidence-driven rules, repeatedly until the name stops changing (the dump
+// eight evidence-driven rules, repeatedly until the name stops changing (the dump
 // really does carry doubled qualifiers like "Dan Veksler - Translator -
 // translator"), and then folds the result onto a canonical collective record if
-// that is what it names (rule 6, once, after the loop):
+// that is what it names (rule 9, once, after the loop):
 //
 //  1. A leading credit phrase from prefixCredits is dropped ("Created by Stan
 //     Lee" -> "Stan Lee").
@@ -772,17 +817,27 @@ const maxCleanPasses = 8
 //     form "X (introduction)" (stripParenRoleQualifier). The role itself never
 //     tolerates anything: only a listed qualifier, matched in FULL, ever strips,
 //     so "Frank (Dean) Martin" and a title's "(Unabridged)" are untouched.
-//  3. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
+//  3. The SEPARATOR-LESS spelling of the same qualifier is removed ("Andrew Lang
+//     Editor" -> "Andrew Lang", an editor). Its vocabulary is its own and much
+//     narrower, and it needs the CENSUS, so it never fires here - see
+//     barerole.go.
+//  4. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
-//  4. A leading courtesy title is dropped when the bare name is already a
+//  5. A dangling leading conjunction is dropped when the remainder is already a
+//     credit on this side ("and Melanie Mendez" -> "Melanie Mendez"). Needs the
+//     CENSUS - see conjunction.go.
+//  6. A leading courtesy title is dropped when the bare name is already a
 //     credit somewhere ("Sir Arthur Conan Doyle" -> "Arthur Conan Doyle"). Like
-//     rule 5 it needs the CENSUS, so it never fires here - see honorific.go.
-//  5. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
+//     rules 3, 5, 7 and 8 it needs the CENSUS, so it never fires here - see
+//     honorific.go.
+//  7. A trailing academic credential is dropped on the same evidence ("Philip
+//     Zimbardo Ph.D." -> "Philip Zimbardo") - see credential.go.
+//  8. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
 //     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
-//     five, and one of its three tiers needs a CENSUS of credit names this entry
+//     eight, and one of its three tiers needs a CENSUS of credit names this entry
 //     point has no access to - see studiotail.go and creditWithRoles.
-//  6. A collective or unknown-identity credit is folded onto its canonical
+//  9. A collective or unknown-identity credit is folded onto its canonical
 //     record name ("Narratori Vari" -> "Various", "N.N." -> "Unknown"), so one
 //     statement has one person of record rather than one per language. Whole
 //     names only, so the branded ensembles ("Museum Audiobooks cast") are
@@ -814,30 +869,37 @@ func CreditWithRoles(name string) (cleaned string, roles []string) {
 	return creditWithRoles(name, nil)
 }
 
-// creditCensus is the evidence the two census-consulting cleaning rules read.
-// Its two universes are deliberately different questions, because the two rules
-// need different answers:
+// creditCensus is the evidence the census-consulting cleaning rules read. Its
+// two universes are deliberately different questions, because the rules need
+// different answers:
 //
 //	anySide   "is this string independently a credit SOMEWHERE?" - the
-//	          studio-concatenation rule's tier 3 (studiotail.go). A studio is
-//	          evidenced by having a record at all, on whichever side it was
-//	          credited, so narrowing this would only lose cleanups.
+//	          studio-concatenation rule's tier 3 (studiotail.go) and the
+//	          separator-less role tail (barerole.go). An entity is evidenced by
+//	          having a record at all, on whichever side it was credited, so
+//	          narrowing this would only lose cleanups.
 //	sameSide  "is this string a credit on THIS side - author or narrator?" - the
-//	          honorific rule (honorific.go). "Steve West" the narrator does not
-//	          attest "Dr. Steve West" the author, and treating it as evidence
-//	          merged 7 measured pairs of different humans into one record.
+//	          honorific rule (honorific.go), the credential fold (credential.go)
+//	          and the dangling-conjunction strip (conjunction.go). "Steve West"
+//	          the narrator does not attest "Dr. Steve West" the author, and
+//	          treating it as evidence merged 7 measured pairs of different humans
+//	          into one record.
 //
 // A zero value has seen nothing, so the tiers that carry their own evidence
-// still apply and the two census-consulting rules never fire - which is exactly
+// still apply and the census-consulting rules never fire - which is exactly
 // what a caller with no catalogue in hand (pkg/scan reading tags, a single typed
 // issue-form name) should get, and what CreditWithRoles, the public door,
 // passes.
 type creditCensus struct {
 	anySide  creditSeenFunc
 	sameSide creditSeenFunc
-	// onHonorific, when set, is notified of every honorific merge the cleaning
-	// performs, so a run can report the list it made (Summary.HonorificMerges).
-	onHonorific func(from, to string)
+	// onHonorific and onCredential, when set, are notified of every merge their
+	// rule performs, so a run can report the lists it made
+	// (Summary.HonorificMerges / Summary.CredentialMerges). The two rules are
+	// reported separately because they are separate decisions about a name, and
+	// a maintainer auditing one is not auditing the other.
+	onHonorific  func(from, to string)
+	onCredential func(from, to string)
 }
 
 // creditWithRoles is CreditWithRoles with ONE census supplied, answering both
@@ -861,19 +923,28 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
 		stripped, parenRoles := stripParenRoleQualifier(stripped)
+		stripped, bareRoles := stripBareRoleTail(stripped, c.anySide)
+		stripped = stripLeadingConjunction(collapseDoubledName(stripped), c.sameSide)
 		if bare := stripHonorific(stripped, c.sameSide); bare != stripped {
 			if c.onHonorific != nil {
 				c.onHonorific(stripped, bare)
 			}
 			stripped = bare
 		}
-		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), c.anySide)
+		if bare := stripCredential(stripped, c.sameSide); bare != stripped {
+			if c.onCredential != nil {
+				c.onCredential(stripped, bare)
+			}
+			stripped = bare
+		}
+		next, tailRoles := stripStudioConcat(stripped, c.anySide)
 		if next == cleaned {
 			break
 		}
 		cleaned = next
 		stated = append(stated, passRoles...)
 		stated = append(stated, parenRoles...)
+		stated = append(stated, bareRoles...)
 		stated = append(stated, tailRoles...)
 	}
 	// The collective/placeholder fold is the LAST step, outside the loop and
@@ -1075,17 +1146,45 @@ func leadingRoleQualifier(tail []string) []string {
 // halves ("Full Cast Full Cast" -> "Full Cast"). See minDoubledHalfWords for why
 // a one-word half never collapses.
 func collapseDoubledName(name string) string {
+	half, ok := doubledCreditHalf(name)
+	if !ok || len(strings.Fields(half)) < minDoubledHalfWords {
+		return name
+	}
+	return half
+}
+
+// doubledCreditHalf reports the half of a credit whose words split into two
+// identical halves, at ANY word count. It is the SHAPE test only; what a
+// one-word half means is the caller's question, and the three callers answer it
+// differently:
+//
+//	collapseDoubledName  refuses it. A repeated single word is a legitimate NAME
+//	    ("Duran Duran"), and the caller is deciding what to call a person.
+//	isPlaceholderCreditName / canonicalCreditName  accept it, because they ask a
+//	    different question: the half has to BE a listed placeholder or collective
+//	    before anything happens, and doubling one of those spells no name at all.
+//	    "TBD TBD" (dump ASIN 1488204705) evaded both tables and the collapse
+//	    above - the exact tables want the whole name and the collapse wants two
+//	    words a side - and imported as a person; so did "Anonymous Anonymous" and
+//	    "unknown unknown" (1 book each). Dump-wide, 225 credit names are one word
+//	    doubled and exactly four of them are a listed statement doubled - the
+//	    fourth, "diverse diverse" (3 credits), was already listed by hand in
+//	    collectiveCredits and keeps its line, since its count is its own evidence.
+//
+// Comparison is case-insensitive; callers that key a table off the result pass
+// the folded name in.
+func doubledCreditHalf(name string) (string, bool) {
 	words := strings.Fields(name)
 	half := len(words) / 2
-	if len(words)%2 != 0 || half < minDoubledHalfWords {
-		return name
+	if half == 0 || len(words)%2 != 0 {
+		return "", false
 	}
 	for i := 0; i < half; i++ {
 		if !strings.EqualFold(words[i], words[half+i]) {
-			return name
+			return "", false
 		}
 	}
-	return strings.Join(words[:half], " ")
+	return strings.Join(words[:half], " "), true
 }
 
 // credit is one source credit: the cleaned name, and the roles the trailing

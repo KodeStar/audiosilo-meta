@@ -537,8 +537,11 @@ func TestCleanCreditName(t *testing.T) {
 		// A name whose rune boundaries straddle len("created by ") - slicing it
 		// at that byte offset would hand a half-rune to the comparison.
 		{"multibyte name straddling the prefix length", "Created b文 Someone", "Created b文 Someone"},
-		// Ambiguous connectors are deliberately absent from the role list.
-		{"bare with is not a role", "Someone - with", "Someone - with"},
+		// The dangling co-author connector STRIPS and states nothing (issue
+		// #1800): 31 dump names end in it, every one a real person the source
+		// cut a co-credit at, and each minted a "<name>-with" second identity.
+		// What stays ambiguous is the ROLE, which is why its table entry is nil.
+		{"bare with strips but states no role", "Someone - with", "Someone"},
 		// Empty-after-strip falls back to the unstripped name.
 		{"strip would empty", "- translator", "- translator"},
 		{"strip would empty with leading space", " - translator", " - translator"},

@@ -347,7 +347,7 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("  attested %d works and %d recordings that were previously libex-only; %d rows conflicted with a recorded value and were not applied\n",
 			s.AttestedWorks, s.AttestedRecordings, s.Conflicts)
 	}
-	// The honorific merges are listed in FULL rather than counted. Every line is
+	// The name merges are listed in FULL rather than counted. Every line is
 	// the run deciding that two spellings are one human, which is the least
 	// reversible thing an import does and the one an operator should read before
 	// the wave is committed; there are a handful per wave, never a page.
@@ -355,6 +355,12 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("  resolved %d courtesy-title credit(s) onto a bare twin already credited on the same side:\n", len(s.HonorificMerges))
 		for _, m := range s.HonorificMerges {
 			fmt.Println("    honorific:", m)
+		}
+	}
+	if len(s.CredentialMerges) > 0 {
+		fmt.Printf("  resolved %d credentialed credit(s) onto a bare twin already credited on the same side:\n", len(s.CredentialMerges))
+		for _, m := range s.CredentialMerges {
+			fmt.Println("    credential:", m)
 		}
 	}
 	for _, w := range s.Warnings {

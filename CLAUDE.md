@@ -567,7 +567,7 @@ gaps that identity had, both measured over the full 1.13M-book dump
   a test.
 
 Credit names are cleaned
-by `CleanCreditName` (a bounded fixpoint over four evidence-driven rules:
+by `CleanCreditName` (a bounded fixpoint over eight evidence-driven rules:
 trailing `" - <role>"` qualifiers stripped iteratively against a multilingual
 role list measured from the libex dump, with a separator whose whitespace is
 OPTIONAL ON BOTH SIDES of the dash - "Gigi Rosa-traduttore" welds the role onto
@@ -580,7 +580,16 @@ the narrator field as a sentence - the dump attests neither it nor a German
 `gelesen von ` as a credit prefix, and the required `by ` is what keeps the real
 "Read Shepherd"/"Read Mercer Schuchardt" whole); exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays;
-a concatenated studio credit removed, per the tiers above) - and then, ONCE and
+a concatenated studio credit removed, per the tiers above; and three
+CENSUS-BACKED rules that mint no id of their own - the SEPARATOR-LESS spelling
+of a role qualifier ("Andrew Lang Editor", `barerole.go`, its own narrow
+vocabulary because "Public Play Editora" and "Augustin Eugène Scribe" end in
+role words too), a trailing ACADEMIC CREDENTIAL folded onto the bare twin
+("Philip Zimbardo Ph.D.", `credential.go` - honorific.go's mirror image, same
+same-side census and two-word floor, doctorate spellings only), and a DANGLING
+leading conjunction ("and Melanie Mendez", `conjunction.go`), each of which
+otherwise minted a second identity for somebody already in the catalogue) - and
+then, ONCE and
 after the fixpoint, folded onto a canonical **collective** record if that is
 what the credit names (`collective.go`). A nameless credit is classified by what
 it STATES, language-independently, in four buckets: collective statements
@@ -618,7 +627,12 @@ the raw name and the cleaned one ("To Be Announced - narrator", "TBD - narrator"
 and carries a phrase tier for the placeholders that arrive with an imprint or a
 studio welded on ("To Be Confirmed Audio", "To Be Confirmed Atria", "Holt Author
 To Be Announced" - 10 names / 16 credits / 15 books dump-wide beyond the exact
-list, zero of them real). The three-letter abbreviations stay exact-only on
+list, zero of them real), plus a DOUBLED tier keyed off the same table (a
+placeholder repeated - "TBD TBD" - is not the exact string, contains no phrase
+and survives the doubled-name collapse, which needs two words a side so "Duran
+Duran" stays; `doubledCreditHalf`, shared with `canonicalCreditName`, which
+folds the doubled collectives "Anonymous Anonymous"/"unknown unknown" the same
+way). The three-letter abbreviations stay exact-only on
 purpose: "TBA Studios" is a real production company. Either way
 the person stays in the credit list; a stripped qualifier is no longer
 DISCARDED: `CreditWithRoles` returns the schema roles it stated (the

@@ -1117,17 +1117,22 @@ var placeholderCreditNames = map[string]bool{
 // weaker statement than the phrase it stands for, and a short opaque token could
 // be part of a real name. "TBA Studios" is a real production company, so a
 // bare-token rule would refuse a house the dump simply has not credited yet. The
-// four names that leaves importable are measured and small: "Reader tbd 1" (6
-// credits), "TBD TBD", "Kulturplattformen TBA" and "SW TBC" (1 each). Each is a
-// one-line addition to the table above if a maintainer wants it; none is worth a
-// rule that can fire on a name.
+// three names that leaves importable are measured and small: "Reader tbd 1" (6
+// credits), "Kulturplattformen TBA" and "SW TBC" (1 each). Each is a one-line
+// addition to the table above if a maintainer wants it; none is worth a rule
+// that can fire on a name.
+//
+// The fourth name that used to be on that list - "TBD TBD" (dump ASIN
+// 1488204705) - is now caught, by doubling rather than by widening either
+// table. See doubledCreditHalf.
 var placeholderCreditPhrases = []string{
 	"to be announced",
 	"to be confirmed",
 }
 
 // isPlaceholderCreditName judges ONE credit name: the whole folded name against
-// the table, then the multi-word phrases as word-bounded substrings.
+// the table, then the multi-word phrases as word-bounded substrings, then the
+// same table again against a DOUBLED name's half.
 func isPlaceholderCreditName(name string) bool {
 	canon := foldCredit(name)
 	if canon == "" {
@@ -1140,6 +1145,9 @@ func isPlaceholderCreditName(name string) bool {
 		if containsToken(canon, phrase) {
 			return true
 		}
+	}
+	if half, ok := doubledCreditHalf(canon); ok {
+		return placeholderCreditNames[half]
 	}
 	return false
 }

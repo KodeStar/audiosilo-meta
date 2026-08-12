@@ -543,6 +543,43 @@ func TestPlaceholderCreditRefusesARoleQualifiedForm(t *testing.T) {
 	}
 }
 
+// TestPlaceholderCreditRefusesADoubledForm is the third shape, and the one gap
+// the other two left (issue #1800): "TBD TBD" (dump ASIN 1488204705) is not the
+// whole-name table's exact string, contains no multi-word phrase, and survives
+// the doubled-name collapse, which needs two words a side so that "Duran Duran"
+// stays whole. It is caught by DOUBLING rather than by widening either table:
+// the half still has to be a listed placeholder.
+func TestPlaceholderCreditRefusesADoubledForm(t *testing.T) {
+	for _, name := range []string{"TBD TBD", "TBA TBA", "N/A N/A", "To Be Announced To Be Announced"} {
+		sum, dataDir := runLibex(t, rows(
+			libexRow{asin: "B0PLACEDB1", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 0 || sum.NewPeople != 0 {
+			t.Errorf("credit %q must mint nothing: %+v", name, sum)
+		}
+		if entryExists(t, dataDir, personAddr("tbd-tbd")) {
+			t.Errorf("credit %q became a person of record", name)
+		}
+	}
+}
+
+// TestPlaceholderDoublingLeavesRealNamesAlone is the doubled tier's negative
+// control, and the reason the shape test is not enough on its own: a repeated
+// name is a real band, and a repeated word that is not a listed placeholder
+// states nothing about booking.
+func TestPlaceholderDoublingLeavesRealNamesAlone(t *testing.T) {
+	for _, name := range []string{"Duran Duran", "Mitz Mitz Vah", "Boutros Boutros Ghali", "TBA Studios TBA Studios"} {
+		sum, _ := runLibex(t, rows(
+			libexRow{asin: "B0PLACEDB2", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 1 {
+			t.Errorf("real name %q was refused as a doubled placeholder: %+v", name, sum)
+		}
+	}
+}
+
 // TestPlaceholderRuleLeavesTheAbbreviationsAlone pins the restraint the phrase
 // tier is bounded by. The multi-word phrases generalize because no name contains
 // them; the three-letter abbreviations do not, because a short opaque token can

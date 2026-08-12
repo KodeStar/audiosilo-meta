@@ -132,8 +132,6 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 		"Some Author - Welt der Meditation",
 		// A military-retired suffix.
 		"Some Author - Ret.",
-		// The ambiguous connector the vocabulary has always excluded.
-		"Some Author - with",
 		// A credential with no role in front of it stays whole: trimming it would
 		// leave nothing to match anyway.
 		"Some Author - M.D.",
@@ -188,10 +186,35 @@ func TestParticipleAndNonRoleQualifierSpellings(t *testing.T) {
 		{"french editeur accented", "Murielle Szac - Éditeur", "Murielle Szac", []string{model.RoleEditor}},
 		{"cover artwork", "Isabelle Follath - cover artwork", "Isabelle Follath", nil},
 
+		// Issue #1800's wave-2 additions, each measured over the same dump
+		// (books / distinct names behind the separator). The four families below
+		// state nothing: an epilogue is not one of the enum's three front-matter
+		// elements, a score is not a contribution to the text, transcription is
+		// not authorship, and "with" is a connector rather than a role.
+		{"epilogue", "Joe Arden - epilogue", "Joe Arden", nil},                         // 16 / 20
+		{"spanish epilogo", "Carlos García Gual - epílogo", "Carlos García Gual", nil}, // 1
+		{"italian epilogo", "Cristina Savettieri - epilogo", "Cristina Savettieri", nil},
+		{"english music", "Steve Earle - music", "Steve Earle", nil},                   // 5 / 5
+		{"german musik", "Boris Löbsack - Musik", "Boris Löbsack", nil},                // 6 / 5
+		{"scribe", "Helen Schucman - scribe", "Helen Schucman", nil},                   // 4 / 1
+		{"dangling co-author connector", "Jack Canfield - With", "Jack Canfield", nil}, // 31 / 31
+
+		// The combined qualifiers, riding along with families already listed.
+		{"author/translator", "Lene Kaaberbøl - author/translator", "Lene Kaaberbøl", []string{model.RoleTranslator}},
+		{"preface foreword", "Jeff Cummings - preface foreword", "Jeff Cummings", []string{model.RoleForeword, model.RolePreface}},
+		{"editor translator annotation", "Geshe Thupten Jinpa - editor translator annotation", "Geshe Thupten Jinpa", []string{model.RoleEditor, model.RoleTranslator}},
+
 		// The near neighbours the additions must NOT eat. "Dramatis" is not
 		// "dramatist", and a surname is never a role.
 		{"not dramatist", "Some Author - Dramatis Personae", "Some Author - Dramatis Personae", nil},
 		{"not prologue", "Some Author - Prologue Books", "Some Author - Prologue Books", nil},
+		// The measured neighbours of the #1800 additions: a whole listed role is
+		// the only thing that ever strips, and every one of these is a real dump
+		// name whose tail merely CONTAINS one.
+		{"not epilogue", "Some Author - Epilogue Publishing", "Some Author - Epilogue Publishing", nil},
+		{"not music", "Some Author - Musik und Buchverlag", "Some Author - Musik und Buchverlag", nil},
+		{"not scribe", "Some Author - Scribe Publications", "Some Author - Scribe Publications", nil},
+		{"not with", "Some Author - with Sarah Miller", "Some Author - with Sarah Miller", nil},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
