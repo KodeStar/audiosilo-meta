@@ -72,12 +72,5 @@ func deConjoined(name string) (rest string, stripped bool) {
 // nothing, so the rule never fires for a caller with no catalogue in hand - the
 // bootstrap honesty every census-backed rule here keeps.
 func stripLeadingConjunction(name string, seen creditSeenFunc) string {
-	if seen == nil {
-		return name
-	}
-	rest, stripped := deConjoined(name)
-	if !stripped || !seen(rest) {
-		return name
-	}
-	return rest
+	return stripOntoSeenTwin(name, seen, deConjoined)
 }

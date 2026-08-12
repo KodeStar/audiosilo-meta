@@ -82,10 +82,20 @@ func deHonorified(name string) (bare string, stripped bool) {
 // catalogue in hand - the same bootstrap honesty the studio-tail rule's third
 // tier keeps, and what makes the public CleanCreditName leave a name alone.
 func stripHonorific(name string, seen creditSeenFunc) string {
+	return stripOntoSeenTwin(name, seen, deHonorified)
+}
+
+// stripOntoSeenTwin is the one shell every census-backed fold shares: run the
+// rule's de-X probe and keep the bare spelling only when the census has already
+// seen it as a credit. The nil-census guard lives here and nowhere else, so a
+// new fold family cannot forget the bootstrap honesty - a caller with no
+// catalogue in hand strips nothing. What stays per-rule is the probe itself and
+// its vocabulary, floors and measurements.
+func stripOntoSeenTwin(name string, seen creditSeenFunc, de func(string) (string, bool)) string {
 	if seen == nil {
 		return name
 	}
-	bare, stripped := deHonorified(name)
+	bare, stripped := de(name)
 	if !stripped || !seen(bare) {
 		return name
 	}

@@ -902,6 +902,18 @@ type creditCensus struct {
 	onCredential func(from, to string)
 }
 
+// reportedFold applies one census-backed fold and tells the planner about the
+// merge it made, so a run can report the list. The two report streams stay
+// separate fields on the census (see creditCensus - separate decisions,
+// separately audited); what is shared is only the apply-and-notify shape.
+func reportedFold(name string, seen creditSeenFunc, fold func(string, creditSeenFunc) string, note func(from, to string)) string {
+	bare := fold(name, seen)
+	if bare != name && note != nil {
+		note(name, bare)
+	}
+	return bare
+}
+
 // creditWithRoles is CreditWithRoles with ONE census supplied, answering both
 // census questions from a single universe. It is the shape every caller had
 // before the honorific rule needed a side, and it is still the right shape for
@@ -925,18 +937,8 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stripped, parenRoles := stripParenRoleQualifier(stripped)
 		stripped, bareRoles := stripBareRoleTail(stripped, c.anySide)
 		stripped = stripLeadingConjunction(collapseDoubledName(stripped), c.sameSide)
-		if bare := stripHonorific(stripped, c.sameSide); bare != stripped {
-			if c.onHonorific != nil {
-				c.onHonorific(stripped, bare)
-			}
-			stripped = bare
-		}
-		if bare := stripCredential(stripped, c.sameSide); bare != stripped {
-			if c.onCredential != nil {
-				c.onCredential(stripped, bare)
-			}
-			stripped = bare
-		}
+		stripped = reportedFold(stripped, c.sameSide, stripHonorific, c.onHonorific)
+		stripped = reportedFold(stripped, c.sameSide, stripCredential, c.onCredential)
 		next, tailRoles := stripStudioConcat(stripped, c.anySide)
 		if next == cleaned {
 			break

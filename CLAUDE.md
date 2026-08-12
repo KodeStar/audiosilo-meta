@@ -580,13 +580,16 @@ the narrator field as a sentence - the dump attests neither it nor a German
 `gelesen von ` as a credit prefix, and the required `by ` is what keeps the real
 "Read Shepherd"/"Read Mercer Schuchardt" whole); exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays;
-a concatenated studio credit removed, per the tiers above; and three
-CENSUS-BACKED rules that mint no id of their own - the SEPARATOR-LESS spelling
+a concatenated studio credit removed, per the tiers above; and four
+CENSUS-BACKED rules that mint no id of their own - a courtesy title folded onto
+the bare twin the census already holds ("Dr. Jane Doe", `honorific.go`), the
+SEPARATOR-LESS spelling
 of a role qualifier ("Andrew Lang Editor", `barerole.go`, its own narrow
 vocabulary because "Public Play Editora" and "Augustin Eugène Scribe" end in
 role words too), a trailing ACADEMIC CREDENTIAL folded onto the bare twin
-("Philip Zimbardo Ph.D.", `credential.go` - honorific.go's mirror image, same
-same-side census and two-word floor, doctorate spellings only), and a DANGLING
+("Philip Zimbardo Ph.D.", `credential.go` - the honorific rule's mirror image,
+same same-side census and two-word floor, doctorate spellings only), and a
+DANGLING
 leading conjunction ("and Melanie Mendez", `conjunction.go`), each of which
 otherwise minted a second identity for somebody already in the catalogue) - and
 then, ONCE and

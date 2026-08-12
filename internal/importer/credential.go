@@ -179,12 +179,5 @@ func deCredentialed(name string) (bare string, stripped bool) {
 // studio-tail rule's third tier both keep, and what makes the public
 // CleanCreditName leave a name alone.
 func stripCredential(name string, seen creditSeenFunc) string {
-	if seen == nil {
-		return name
-	}
-	bare, stripped := deCredentialed(name)
-	if !stripped || !seen(bare) {
-		return name
-	}
-	return bare
+	return stripOntoSeenTwin(name, seen, deCredentialed)
 }

@@ -93,7 +93,8 @@ func stripBareRoleTail(name string, seen creditSeenFunc) (string, []string) {
 	if len(tokens) <= minPersonTokens {
 		return name, nil
 	}
-	if !bareRoleTails[foldCredit(tokens[len(tokens)-1])] {
+	tail := foldCredit(tokens[len(tokens)-1])
+	if !bareRoleTails[tail] {
 		return name, nil
 	}
 	head := tokens[:len(tokens)-1]
@@ -102,10 +103,10 @@ func stripBareRoleTail(name string, seen creditSeenFunc) (string, []string) {
 		return name, nil
 	}
 	headText := strings.Join(head, " ")
-	if !seen.seen(headText) {
+	if !seen(headText) {
 		return name, nil
 	}
-	return headText, roleQualifiers[foldCredit(tokens[len(tokens)-1])]
+	return headText, roleQualifiers[tail]
 }
 
 // wordLike reports whether a folded token carries a letter or a digit. A head
@@ -113,10 +114,7 @@ func stripBareRoleTail(name string, seen creditSeenFunc) (string, []string) {
 // census would still recognize it (Slugify drops the punctuation) and the name
 // this rule returned would keep the separator.
 func wordLike(folded string) bool {
-	for _, r := range folded {
-		if unicode.IsLetter(r) || unicode.IsDigit(r) {
-			return true
-		}
-	}
-	return false
+	return strings.ContainsFunc(folded, func(r rune) bool {
+		return unicode.IsLetter(r) || unicode.IsDigit(r)
+	})
 }
