@@ -2650,6 +2650,365 @@
         "work": "maurice"
       }
     },
+    "mavericks": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Flying Dutchman's human commander, directing the crew through a shipwide loss of power and gravity while Skippy determines how the threat spreads.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Elder AI whose technical abilities and knowledge are essential to the Flying Dutchman.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nagatha"
+            ],
+            "description": "The Flying Dutchman's inactive communications submind.",
+            "id": "nagatha-christie",
+            "name": "Nagatha Christie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A UNEF officer on Paradise who leads a small human team working with the Ruhar.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A gunnery sergeant serving aboard the Flying Dutchman.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's returning ground-operations leader, responsible for planning and directing missions that require specialized assault teams.",
+            "id": "major-smythe",
+            "name": "Major Smythe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Giraud"
+            ],
+            "description": "A returning French special-operations officer serving aboard the Flying Dutchman.",
+            "id": "captain-rene-giraud",
+            "name": "Captain Rene Giraud",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The civilian mission commander aboard the Flying Dutchman, representing UNEF authority alongside the ship's military command.",
+            "id": "chotek",
+            "name": "Chotek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior returning officer aboard the Flying Dutchman.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Flying Dutchman officer who supports the ship's operational missions.",
+            "id": "major-desai",
+            "name": "Major Desai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A technical specialist aboard the Flying Dutchman.",
+            "id": "friedlander",
+            "name": "Friedlander",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of the Flying Dutchman's crew.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Ruhar liaison accompanying Perkins's human team in a cadet war game. He follows her toward the fallback position as a larger opposing force closes in.",
+            "id": "nert",
+            "name": "Nert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human team's sniper, skilled with Ruhar combat armor, sensors, and weapons. She remains behind during the war game to cover Perkins and Nert as they withdraw.",
+            "id": "shauna-jarrett",
+            "name": "Shauna Jarrett",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier in Perkins's human team. He stays behind with another teammate to delay the cadets pursuing Perkins and Nert during the war game.",
+            "id": "jesse-coulter",
+            "name": "Jesse Coulter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Perkins's two human pilots and Derek's partner. She helps conceal their damaged fighter underwater, then joins an ambush that removes three opposing aircraft from the exercise.",
+            "id": "irene",
+            "name": "Irene",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Perkins's two human pilots and Irene's partner. He helps execute their submerged-fighter ambush, then begins escape and evasion after their damaged aircraft crashes in enemy territory.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A politically connected cadet who disputes the Mavericks' war-game conduct. His influence makes the team wary that an official victory may still produce administrative trouble.",
+            "id": "senior-ruhar-cadet",
+            "name": "Senior Ruhar cadet",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the Mavericks assigned to share Perkins's cabin aboard the Ruhar training cruiser because every sleeper must have access to an acceleration couch.",
+            "id": "dave",
+            "name": "Dave",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Kristang ally who instructs Ruhar cadets in spaceborne infantry tactics. When armed cadets challenge Perkins's command, he confronts them and backs her as the leader best able to hold the survivors together.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied trainee with the practical knowledge to program the damaged cruiser's return jump. The trainee also identifies an onboard emulator that may let Ruhar controls operate surviving Jeraptha jump equipment.",
+            "id": "kristang-navigation-trainee",
+            "name": "Kristang navigation trainee",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Deal Me In machinist's mate rescued from an escape pod. He assesses the carrier's surviving machinery and confirms that its jump coils and capacitors remain usable, giving Perkins's group a possible route to safety.",
+            "id": "jeraptha-analyst",
+            "name": "Jeraptha analyst",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pilot supporting the assault on the Camp Alpha research base. The pilot attacks an improvised Kristang missile vehicle after it opens fire on Perkins's dropship.",
+            "id": "allied-fighter-pilot",
+            "name": "Allied fighter pilot",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dave"
+            ],
+            "description": "The Mavericks sergeant previously known as Dave. At Camp Alpha, he and Jesse breach the Keeper compound, recognize a former Fort Rakowski acquaintance, and stop loyalists from attacking that prisoner.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Keeper who knew the Mavericks at Fort Rakowski. He rejects the Kristang loyalists at Camp Alpha and asks the Mavericks to rescue him, prompting the loyalists to attack before David Chica and Jesse intervene.",
+            "id": "former-fort-rakowski-keeper",
+            "name": "Former Fort Rakowski Keeper",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of the financially endangered Jeraptha merchant ship Sure Thing. The crew accepts a wager-backed search for Deal Me In and follows evidence of the carrier's surviving section into Kristang-controlled space.",
+            "id": "sure-thing-captain",
+            "name": "Sure Thing captain",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The UNEF liaison general on Paradise who receives news that Perkins survived and that infected Keepers may be approaching. She must represent the human population as Ruhar authorities prepare an emergency quarantine.",
+            "id": "general-lynn",
+            "name": "General Lynn",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ruhar battle-group commander with authority over the developing bioweapon emergency and the power to enforce strict confinement measures on Paradise.",
+            "id": "admiral-tanavan",
+            "name": "Admiral Tanavan",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Joe"
+            ],
+            "description": "Joe Bishop, commander of the Flying Dutchman. He helps restart the first disabled dropship, finds a way to eject the concentrated energy-virus contamination, and turns the restored ship toward the threat facing Paradise.",
+            "id": "bishop",
+            "name": "Bishop",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Fireball"
+            ],
+            "description": "A Condor pilot whose worn refueling equipment destroys one engine and cripples the other inside a gas giant. She keeps the descending craft under enough control to cooperate with an improvised rescue.",
+            "id": "lieutenant-samantha-reed",
+            "name": "Lieutenant Samantha Reed",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The pilot of the Condor sent to rescue Samantha Reed's disabled craft. Porter must hold position in the gas giant while Bishop attempts to connect the two ships.",
+            "id": "captain-porter",
+            "name": "Captain Porter",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jesse Coulter"
+            ],
+            "description": "The nickname Bishop uses for his close friend Jesse Coulter. Records from the Mavericks show that Jesse intends to propose to Shauna Jarrett.",
+            "id": "cornpone",
+            "name": "Cornpone",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Chinese army major remembered from Adams's Kristang captivity. Adams defended her when she was injured, and Zhao was subsequently tortured to death, leaving Adams with enduring survivor guilt.",
+            "id": "major-zhao",
+            "name": "Major Zhao",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Giraud's stealth boarding team and Bishop's unofficial bodyguard. She approaches one of the infected Keeper dropships through a meteor cloud in sealed combat armor.",
+            "id": "ranger-lauren-poole",
+            "name": "Ranger Lauren Poole",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The de facto leader of the captured Keepers and a committed Kristang loyalist. In quarantine, he learns that his team was unknowingly sent to spread a pathogen and that every Keeper carries a delayed kill implant.",
+            "id": "colonel-chisolm",
+            "name": "Colonel Chisolm",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A British Keeper among the captured infiltration force. Less committed than Chisolm, he reacts to evidence that Earth survived and that his family may still be alive.",
+            "id": "lieutenant-nigel-green",
+            "name": "Lieutenant Nigel Green",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:1772306932",
+            "type": "community"
+          }
+        ],
+        "work": "mavericks"
+      }
+    },
     "mcteague": {
       "characters": {
         "characters": [
