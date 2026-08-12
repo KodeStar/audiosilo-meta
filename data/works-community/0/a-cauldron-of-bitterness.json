@@ -2589,6 +2589,316 @@
         "work": "a-christmas-story"
       }
     },
+    "a-civil-campaign": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Imperial Auditor recently returned from a classified inquiry on Komarr. His military career ended after injuries left him with a seizure disorder. He hopes to court the recently widowed Ekaterin, but initially offers her professional work designing a native garden.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ekaterin's late husband and Nikki's father. The public account treats his death during the Komarr inquiry as an accident, while the details remain protected.",
+            "id": "tien-vorsoisson",
+            "name": "Tien Vorsoisson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Miles and Mark's father, and the senior holder of the Vorkosigan title.",
+            "id": "count-vorkosigan",
+            "name": "Count Vorkosigan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Countess Vorkosigan"
+            ],
+            "description": "Miles and Mark's mother and a senior member of the Vorkosigan family.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ekaterin"
+            ],
+            "description": "Tien's widow and Nikki's mother. Living with her great-uncle while resuming her education, she accepts paid work designing Miles's Barrayaran native-plant garden. She values the independence the commission offers and says she does not intend to marry again.",
+            "id": "ekaterin-vorsoisson",
+            "name": "Ekaterin Vorsoisson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ekaterin and Tien's son. He remains in his mother's guardianship, and a retroviral treatment is expected to prevent his inherited dystrophy from developing.",
+            "id": "nikki",
+            "name": "Nikki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Professor Vorthys"
+            ],
+            "description": "Ekaterin's great-uncle and an Imperial Auditor. His household shelters Ekaterin and Nikki while she plans her studies and seeks work.",
+            "id": "lord-auditor-vorthys",
+            "name": "Lord Auditor Vorthys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles's longtime armsman and driver. He also watches over Miles during seizure risks and handles practical household duties.",
+            "id": "pym",
+            "name": "Pym",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ivan"
+            ],
+            "description": "Miles's cousin, a captain temporarily assisting Lady Alice Vorpatril with the Imperial wedding. He promises to give Miles a fair chance to pursue Ekaterin before approaching her himself.",
+            "id": "ivan-vorpatril",
+            "name": "Ivan Vorpatril",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Imperial wedding coordinator who assigns Miles and Ivan duties connected with Gregor and Laisa's ceremonies.",
+            "id": "lady-alice-vorpatril",
+            "name": "Lady Alice Vorpatril",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles's clone brother, recognized by the family as a brother in his own right. He is studying and receiving therapy on Beta Colony while working to establish an identity separate from Miles.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Koudelka daughter newly returned from Beta Colony. She wants further study but cannot readily finance it, and she keeps her intimate relationship with Mark private from her family.",
+            "id": "kareen",
+            "name": "Kareen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ImpSec chief responsible for Komarran affairs and Delia's fiance. He is a senior security contact during the politically sensitive preparations for Gregor's marriage.",
+            "id": "galeni",
+            "name": "Galeni",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gregor"
+            ],
+            "description": "The Emperor of Barrayar and Laisa's fiance. He oversees their politically sensitive wedding preparations and assigns Miles to keep a disputed countship case from disrupting them.",
+            "id": "emperor-gregor",
+            "name": "Emperor Gregor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gregor's Komarran fiancee. Trained in economics, she is helping shape wedding arrangements whose political meaning extends across Barrayar and Komarr.",
+            "id": "laisa",
+            "name": "Laisa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Escobaran biochemist and genetic entomologist who created the butterbugs. He collaborates with Mark and tends the rescued organisms on which their proposed business depends.",
+            "id": "dr-enrique-borgos",
+            "name": "Dr. Enrique Borgos",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Verrattier family member whose formal challenge has delayed Richards's confirmation as count. She has gone to Beta Colony to obtain evidence for her case.",
+            "id": "lady-donna-verrattier",
+            "name": "Lady Donna Verrattier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The prospective successor to the Verrattier countship. His confirmation has been delayed by Lady Donna's legal challenge.",
+            "id": "richards",
+            "name": "Richards",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "aliases": [
+              "Bai"
+            ],
+            "description": "Lady Donna's cousin and supporter. He works on her legal impediment case against Richards while maintaining that he does not seek the countship himself.",
+            "id": "bai-verrattier",
+            "name": "Bai Verrattier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formal suitor for Ekaterin who uses a traditional matchmaker to offer marriage. His plans include sending Nikki to a Vor school.",
+            "id": "rejected-suitor",
+            "name": "The formal suitor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend helping an isolated countess through the Vorbretten inheritance controversy as former acquaintances withdraw from the household.",
+            "id": "martya",
+            "name": "Martya",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A practical supporter of the embattled Vorbretten household while its social circle contracts under the pressure of an inheritance dispute.",
+            "id": "olivia",
+            "name": "Olivia",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Formerly known as Lady Donna Verrattier, Dono returns from Beta Colony medically male and claims the Verrattier countship as Count Pierre's brother. He has the household armsmen's loyalty and seeks a public Council decision against Richards.",
+            "id": "lord-dono-verrattier",
+            "name": "Lord Dono Verrattier",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The incumbent in a disputed countship succession. His claim rests on an earlier confirmation in his family line, while a challenger alleges that confirmation was invalid. Miles pledges him the Vorkosigan district vote as his Council support and social circle weaken.",
+            "id": "young-count-vorbretten",
+            "name": "The young Count Vorbretten",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Byerly"
+            ],
+            "description": "Dono's cousin and political contact. He knew of Dono's plan before the public claim and supports the effort to win the Verrattier countship.",
+            "id": "byerly-verrattier",
+            "name": "Byerly Verrattier",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Illyan"
+            ],
+            "description": "Miles's former ImpSec superior. At Miles's dinner, an indiscreet remark from him unexpectedly exposes the purpose behind Miles's attention to Ekaterin.",
+            "id": "simon-illyan",
+            "name": "Simon Illyan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rene"
+            ],
+            "description": "The incumbent in the Vorbretten succession dispute and Dono's ally in Miles's linked Council strategy. He needs a majority of thirty-one votes to retain his countship.",
+            "id": "rene-vorbretten",
+            "name": "Rene Vorbretten",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tien's cousin, who previously participated in transferring Nikki's guardianship to Ekaterin. Claiming a family duty to protect Nikki, he threatens to challenge her custody because of the allegations surrounding Miles.",
+            "id": "vasily-vorsoisson",
+            "name": "Vasily Vorsoisson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ekaterin's brother. He initially accepts the rejected suitor's accusations as sincere and joins Vasily in pressing Ekaterin to avoid Miles.",
+            "id": "hugo-vorvain",
+            "name": "Hugo Vorvain",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The covert identity Miles invented and later embodied while commanding a mercenary fleet for ImpSec. Miles discloses to Ekaterin that Admiral Naismith was his own operational persona.",
+            "id": "admiral-naismith",
+            "name": "Admiral Naismith",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002VA374S",
+            "type": "community"
+          }
+        ],
+        "work": "a-civil-campaign"
+      }
+    },
     "a-clash-of-kings": {
       "characters": {
         "characters": [
