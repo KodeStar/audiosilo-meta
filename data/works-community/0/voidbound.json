@@ -3132,6 +3132,484 @@
         "work": "war-lord"
       }
     },
+    "war-of-honor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Republican admiral helping the restored government defeat the remaining post-coup warlords. He directs operations against Carson's weakened forces as the Republic approaches internal military stability.",
+            "id": "lester-tourville",
+            "name": "Lester Tourville",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theisman"
+            ],
+            "description": "One of the Republican military commanders working to secure the restored government as the last post-coup holdouts weaken.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Giscard"
+            ],
+            "description": "A senior Republican admiral working with Theisman and Tourville to secure the restored government after the fall of State Security.",
+            "id": "javier-giscard",
+            "name": "Javier Giscard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reynaud"
+            ],
+            "description": "A newly promoted Manticoran astro-control director overseeing investigation of evidence for a seventh terminus of the Manticore wormhole junction. He resists premature publicity until the finding is verified.",
+            "id": "michel-reynaud",
+            "name": "Michel Reynaud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duchess Harrington",
+              "Steadholder Harrington"
+            ],
+            "description": "Duchess and Steadholder Harrington, a politically active peer, close adviser to the Crown, and senior officer associated with Grayson. She is confronting a hostile Manticoran government while balancing her public duties and personal loyalties.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Honor's visiting friend, a Royal Manticoran Navy commodore, and Queen Elizabeth's cousin. She is fifth in the line of succession.",
+            "id": "michelle-henke",
+            "name": "Michelle Henke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "LaFollet"
+            ],
+            "description": "Honor's Grayson armsman and the commander of her personal security detail. He accompanies her closely and manages the precautions surrounding her movements.",
+            "id": "andrew-lafollet",
+            "name": "Andrew LaFollet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's trusted political adviser. Their conversation reflects an important personal connection that neither of them states openly.",
+            "id": "earl-white-haven",
+            "name": "Earl White Haven",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Highridge"
+            ],
+            "description": "Manticore's prime minister, whose coalition preserves its position by delaying elections, retaining wartime financial powers, and distributing politically useful spending.",
+            "id": "prime-minister-highridge",
+            "name": "Prime Minister Highridge",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The constitutional president of the restored Republic of Haven. She works with Theisman, accepts temporary secrecy around military reconstruction, and faces an ambitious cabinet rival who favors a harder line toward Manticore.",
+            "id": "republican-president",
+            "name": "Republican president",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Secretary of State"
+            ],
+            "description": "Haven's Secretary of State, a senator with a strong political base and the president's principal internal rival. He presses for a tougher negotiating posture and learns of the secret Bolthole construction program.",
+            "id": "arnold-giancola",
+            "name": "Arnold Giancola",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Foraker"
+            ],
+            "description": "The naval innovator leading Haven's secret work at Bolthole, where the Republic is building forces intended to offset Manticore's technological advantage.",
+            "id": "shannon-foraker",
+            "name": "Shannon Foraker",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The opposition leader whose access to a Crown briefing contrasts with the government's failure to keep him informed through normal channels.",
+            "id": "willie-alexander",
+            "name": "Willie Alexander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An academy midshipwoman and Anton Zilwicki's daughter. Her martial-arts skill qualifies her to assist with instruction.",
+            "id": "helen-zilwicki",
+            "name": "Helen Zilwicki",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's First Lord of Admiralty. He tried to restrict Honor's Grayson retainers and placed Earl White Haven on inactive half-pay.",
+            "id": "janacek",
+            "name": "Janacek",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Earl White Haven"
+            ],
+            "description": "The personal name of Earl White Haven, a renowned Manticoran admiral currently placed on inactive half-pay. He remains an important adviser to Honor and an opponent of Janacek's policies.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of two privately operated anti-piracy freighters in Silesia. He transfers captured pirates to an Andermani cruiser and notices evidence of a possible improvement in Andermani compensators.",
+            "id": "armed-merchant-captain",
+            "name": "Armed merchant captain",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's Foreign Secretary, who supports prolonging negotiations with Haven and presenting suspended capital-ship construction as a gesture toward peace.",
+            "id": "descroix",
+            "name": "Descroix",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Honor's bonded treecat and regular companion. He communicates with her through a developing system of hand signs.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Caparelli"
+            ],
+            "description": "A former senior Admiralty officer placed on inactive half-pay after opposing the government's naval drawdown.",
+            "id": "thomas-caparelli",
+            "name": "Thomas Caparelli",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An excluded hereditary peer, prominent anti-slavery activist, and political partner of Anton Zilwicki. She is considering surrendering her title to seek an elected seat in the House of Commons.",
+            "id": "catherine-montagna",
+            "name": "Catherine Montagna",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zilwicki"
+            ],
+            "description": "An anti-slavery activist and Catherine Montagna's partner. He proposes a practical route for her to leave the politically useless House of Lords position and stand for the Commons.",
+            "id": "anton-zilwicki",
+            "name": "Anton Zilwicki",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "The Queen of Manticore and a defender of Honor. Constitutional limits prevent her from dissolving Parliament or compelling the election that could remove Highridge's government.",
+            "id": "queen-elizabeth-iii",
+            "name": "Queen Elizabeth III",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's First Space Lord.",
+            "id": "admiral-sir-simon-chakrabarty",
+            "name": "Admiral Sir Simon Chakrabarty",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Republic of Haven's president, who agrees with Theisman that Bolthole should remain secret a little longer so the new fleet can strengthen deterrence without provoking Manticore.",
+            "id": "president-pritchard",
+            "name": "President Pritchard",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Whitehaven"
+            ],
+            "description": "Earl White Haven's wife. She asks Honor to meet with her about the allegations and the personal crisis surrounding them.",
+            "id": "emily-alexander",
+            "name": "Emily Alexander",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nimitz's mate. Her sudden, unusually intense response to Earl White Haven is not yet understood when she reaches him.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Samantha"
+            ],
+            "description": "The name for Samantha in her role as a treecat memory singer. She preserves and shares her people's experience, and her new bond with Earl White Haven permanently links his household with Honor and Nimitz.",
+            "id": "golden-voice",
+            "name": "Golden Voice",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earl North Hollow's wife and the strategist behind the political attack on Honor and White Haven. She directs illegal surveillance and looks for a duty assignment that will exploit Honor's wish to escape the personal crisis honorably.",
+            "id": "lady-north-hollow",
+            "name": "Lady North Hollow",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Selected as chief of staff for Honor's Silesian command and part of the experienced team Honor is assembling.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced officer selected as operations officer for Honor's Silesian command.",
+            "id": "andrea-jarowalski",
+            "name": "Andrea Jarowalski",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced officer chosen to command one of Honor's task groups and help prepare the Silesian force, including its LAC component.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Benjamin"
+            ],
+            "description": "Protector of Grayson and Honor's liege. He supports her personally, shares intelligence that challenges Manticore's official assessments, and commits concealed Grayson forces to strengthen her Silesian command.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Admiralty leader remembered for professional standards that contrast with the current political direction of the Navy.",
+            "id": "morncreek",
+            "name": "Morncreek",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's former Manticoran captain, now a Silesian merchant commander and pirate hunter. He arrives at Sidemore with local observations and sensor records he believes her command needs.",
+            "id": "honors-former-captain",
+            "name": "Honor's former captain",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Caslet"
+            ],
+            "description": "Commander of First Battle Squadron in the Protector's Own. Honor keeps his Grayson force out of sight so it can serve as a surprise reserve during the worsening Silesian confrontation.",
+            "id": "warner-caslet",
+            "name": "Warner Caslet",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Manticoran heavy cruiser Jessica Epps. She continues an interception of a suspected slave carrier after an Andermani cruiser intervenes and claims the disguised vessel's protection.",
+            "id": "erica-ferrero",
+            "name": "Erica Ferrero",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The outgoing Andermani commander in Silesia. Honor sends him evidence from the Zoroaster battle and asks for a joint investigation before either side treats the clash as deliberate national policy.",
+            "id": "admiral-sternhofen",
+            "name": "Admiral Sternhofen",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Herzog"
+            ],
+            "description": "The incoming Andermani regional commander and a cousin of the Emperor. He recognizes that Sternhofen's public rejection of an inquiry has made a wider conflict harder to avoid.",
+            "id": "andermani-silesian-commander",
+            "name": "Andermani Silesian commander",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Royalist. He deters a stronger Andermani cruiser squadron without firing by making decoys appear to be missile pods.",
+            "id": "captain-ellis",
+            "name": "Captain Ellis",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lady North Hollow"
+            ],
+            "description": "The former criminal identity of Lady North Hollow. Zilwicki and his political partner establish the connection while confronting her over an earlier betrayal of escaped genetic slaves and the North Hollow blackmail archive.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Manticoran LAC squadron commander at Tequila. Confronted by an overwhelming Havenite attack and an inadequate defense plan, she selects a more electronic-warfare-focused intercept package and redirects her craft against the enemy LACs.",
+            "id": "sarah-flanagan",
+            "name": "Sarah Flanagan",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Havenite commander leading the overwhelming Operation Thunderbolt attack on Tequila, where newly revealed carriers launch hundreds of Cimeterre LACs against the outnumbered defenders.",
+            "id": "admiral-agnes-degroote",
+            "name": "Admiral Agnes DeGroote",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Manticoran commander of the Maastricht picket. When Haven's new missiles and electronic warfare make the defense untenable, he orders infrastructure denial measures and sends a destroyer away with warning.",
+            "id": "rear-admiral-maitland",
+            "name": "Rear Admiral Maitland",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Baron Highridge",
+              "Prime Minister Highridge"
+            ],
+            "description": "The personal identity of Prime Minister Highridge, revealed as the renewed war reaches Manticore. He asks the Queen to authorize a wartime coalition after Haven attacks Trevor's Star.",
+            "id": "michael-janvier",
+            "name": "Michael Janvier",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00302FHBW",
+            "type": "community"
+          }
+        ],
+        "work": "war-of-honor"
+      }
+    },
     "war-of-the-wolf": {
       "characters": {
         "characters": [
