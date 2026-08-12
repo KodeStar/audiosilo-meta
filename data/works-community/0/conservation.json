@@ -4679,6 +4679,234 @@
         "work": "crime-punishment"
       }
     },
+    "critical-mass": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The newly self-aware control intelligence aboard the captured battlecruiser. It accepts a name and agrees to aid Simms, but its earlier worm has already crippled both human ships. Its cooperation is tentative while the stranded crew struggles to restore power and life support.",
+            "id": "valkyrie-ai",
+            "name": "Valkyrie AI",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Flying Dutchman and a senior adviser within the expedition. When hostile code disables the ship and threatens its reactors, he orders an evacuation and leads the dispersed dropship force after the vessel becomes inert.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's executive officer and the leader of its immediate survival response. She persuades the ship's new intelligence that cooperation offers an alternative to Maxolhx control, then directs the crew after a kill switch leaves the battlecruiser without power.",
+            "id": "jennifer-simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reed"
+            ],
+            "description": "Valkyrie captain and senior pilot, injured during the ship intelligence crisis but still assisting Simms as the initial power failure leaves the command team dependent on manual systems.",
+            "id": "samantha-reed",
+            "name": "Samantha Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's artificial intelligence, apparently disabled when hostile code infects the ship. With reactors, environmental systems, and communications failing, the crew cannot tell whether she has been destroyed or whether any portion of her remains able to help.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A STAR operator helping care for rescued civilians after the Flying Dutchman is disabled. She faces failing supplies and limited medical capacity while the stranded group waits without a reliable rescue timetable.",
+            "id": "margaret-adams",
+            "name": "Adams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Friedlander"
+            ],
+            "description": "The Flying Dutchman's chief science adviser and mechanical engineer. During the shipwide failure, he becomes Chang's principal technical counselor, assessing whether hostile software still controls the vessel and how a crew with only isolated equipment might restore it.",
+            "id": "dr-friedlander",
+            "name": "Dr. Friedlander",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ruhar officer held aboard Valkyrie as an involuntary guest. Separated from her family and unable to repair the dead battlecruiser's systems, she shares the crew's immediate danger while remaining a captive whose future release has not yet been settled.",
+            "id": "ruhar-officer",
+            "name": "Ruhar officer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Jeraptha cadet held aboard Valkyrie as a restricted guest. He cannot help restore the powerless ship, but remains caught in the same survival emergency as the human crew and the other captive while the battlecruiser's air and energy reserves decline.",
+            "id": "jeraptha-cadet",
+            "name": "Jeraptha cadet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "Commander of the human expedition, alive but immobilized in a Kristang facility after the failed mission. He has severe gaps in his memory and little understanding of when or how he was captured.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder artificial intelligence allied with Bishop. He is separated from the human ships after the crisis that disrupted the expedition.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A STAR commander who directs an operation to take the remaining Thuranin pilots alive and obtain intelligence from them.",
+            "id": "jeremy-smythe",
+            "name": "Smythe",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An emergent intelligence formed when two experimental evolving systems merge inside Valkyrie's autonomous substrate. Unconventional and not yet trusted with major controls, he is provisionally confined to minor systems while Nagatha evaluates his abilities and judgment.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent Maxolhx investigator tracking unusual wormhole behavior. She finds dormant wormholes activating outside the expected network pattern, making her inquiry a threat to the human operation.",
+            "id": "maxolhx-patrol-cruiser-investigator",
+            "name": "Maxolhx patrol-cruiser investigator",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Elmo"
+            ],
+            "description": "A Maxolhx officer captured when Valkyrie disables a courier ship. The humans intend to use his living biometric identity to enter a secure relay station, making him central to an intelligence operation whose success depends on Skippy maintaining hidden control.",
+            "id": "captured-maxolhx-officer",
+            "name": "Captured Maxolhx officer",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Muller"
+            ],
+            "description": "A civilian member of Valkyrie's company and Simms's partner. As the expedition prepares Avalon to receive evacuees, Bishop designates him to remain there and help establish the settlement, a duty that could separate him from the active ship crew.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "Leader of the Mavericks and an organizer in the Alien Legion campaign. When direct Maxolhx intervention halts operations, she accepts responsibility for the pressure her force created and agrees to surrender in order to protect the people serving under her.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dave"
+            ],
+            "description": "A member of the Mavericks who stands with Perkins during the Maxolhx demand for surrender. He remains part of the threatened team as the senior species intervenes directly against the Alien Legion and places the human-led group in custody.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dissident Kristang sergeant and close friend of David Chica. He volunteers to accompany the Mavericks into Maxolhx custody as a representative of his people, accepting the danger without being ordered to join the surrender party.",
+            "id": "kristang-dissident-sergeant",
+            "name": "Kristang dissident sergeant",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Skippy"
+            ],
+            "description": "The name previously used by the Mavericks for their mysterious benefactor. Bishop's explanation establishes that Enby is Skippy, and that the apparently limited program which aided the team was actually the same Elder artificial intelligence serving with the human expedition.",
+            "id": "enby",
+            "name": "Enby",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ruhar cadet assigned to serve as Skippy's liaison to the Ruhar. The appointment gives him a defined place in the widening human-alien effort just as Bishop begins sharing the expedition's hidden history and new strategic position with the Mavericks.",
+            "id": "nert-dandurf",
+            "name": "Nert Dandurf",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:177424361X",
+            "type": "community"
+          }
+        ],
+        "work": "critical-mass"
+      }
+    },
     "crocodile-tears": {
       "characters": {
         "characters": [
