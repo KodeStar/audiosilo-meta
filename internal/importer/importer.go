@@ -211,6 +211,10 @@ type planner struct {
 	// the least reversible thing an import does, so the wave's list is reported
 	// (Summary.HonorificMerges) rather than left to be discovered in a diff.
 	honorificMerges map[string]string
+	// credentialMerges is the same record for the credential fold
+	// (credential.go, Summary.CredentialMerges): the same kind of decision -
+	// two spellings are one human - made at the other end of the name.
+	credentialMerges map[string]string
 	// initialsSurvivors is the initials rule's decision for this run
 	// (initials.go): for every person slug whose initials group is written more
 	// than one way across the catalogue and the batch, the record that group
@@ -465,7 +469,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		return p.summary, p.fatal
 	}
 	p.finalizeSeries()
-	p.reportHonorificMerges()
+	p.reportCreditMerges()
 	p.reportUnmappedGenres()
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
@@ -1052,9 +1056,15 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 		return func(name string) bool { return set[Slugify(name)] }
 	}
 	anySide := seenIn(universe)
-	author = creditCensus{anySide: anySide, sameSide: seenIn(authorSide), onHonorific: p.noteHonorific}
-	narrator = creditCensus{anySide: anySide, sameSide: seenIn(narratorSide), onHonorific: p.noteHonorific}
-	return author, narrator
+	notify := func(sameSide creditSeenFunc) creditCensus {
+		return creditCensus{
+			anySide:      anySide,
+			sameSide:     sameSide,
+			onHonorific:  p.noteHonorific,
+			onCredential: p.noteCredential,
+		}
+	}
+	return notify(seenIn(authorSide)), notify(seenIn(narratorSide))
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -1062,24 +1072,45 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 // spelling is cleaned once per row it appears on, and what a maintainer audits
 // is which merges happened, not how often each fired.
 func (p *planner) noteHonorific(from, to string) {
-	if p.honorificMerges == nil {
-		p.honorificMerges = map[string]string{}
-	}
-	p.honorificMerges[from] = to
+	p.honorificMerges = noteMerge(p.honorificMerges, from, to)
 }
 
-// reportHonorificMerges publishes the run's honorific merges, sorted, as
-// "<credited> -> <bare>" lines.
-func (p *planner) reportHonorificMerges() {
-	if len(p.honorificMerges) == 0 {
-		return
+// noteCredential records one academic-credential merge (credential.go), on the
+// same terms and for the same reason - it is the same kind of decision made at
+// the other end of the name.
+func (p *planner) noteCredential(from, to string) {
+	p.credentialMerges = noteMerge(p.credentialMerges, from, to)
+}
+
+// noteMerge adds one (from -> to) pair to a merge set, creating the set on first
+// use.
+func noteMerge(set map[string]string, from, to string) map[string]string {
+	if set == nil {
+		set = map[string]string{}
 	}
-	out := make([]string, 0, len(p.honorificMerges))
-	for from, to := range p.honorificMerges {
+	set[from] = to
+	return set
+}
+
+// reportCreditMerges publishes the run's credit merges, sorted, as
+// "<credited> -> <bare>" lines.
+func (p *planner) reportCreditMerges() {
+	p.summary.HonorificMerges = mergeLines(p.honorificMerges)
+	p.summary.CredentialMerges = mergeLines(p.credentialMerges)
+}
+
+// mergeLines renders one merge set as sorted "<credited> -> <bare>" lines, nil
+// when the rule never fired.
+func mergeLines(set map[string]string) []string {
+	if len(set) == 0 {
+		return nil
+	}
+	out := make([]string, 0, len(set))
+	for from, to := range set {
 		out = append(out, from+" -> "+to)
 	}
 	sort.Strings(out)
-	p.summary.HonorificMerges = out
+	return out
 }
 
 // decideInitialsOf is the initials rule's batch pre-pass (initials.go): which

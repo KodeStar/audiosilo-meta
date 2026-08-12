@@ -233,9 +233,20 @@ var collectiveCredits = map[string]string{
 // folded on the name the cleaning rules produced. The roles that qualifier
 // stated are untouched: what the fold changes is WHO is credited, not what the
 // source said they did.
+//
+// A SINGLE-WORD statement doubled ("Anonymous Anonymous", "unknown unknown") is
+// the one shape the cleaning rules leave standing, because collapsing it would
+// mean collapsing "Duran Duran" too - so it is folded here, where the half has
+// to be a listed statement before anything happens. See doubledCreditHalf.
 func canonicalCreditName(name string) string {
-	if canonical, ok := collectiveCredits[foldCredit(name)]; ok {
+	folded := foldCredit(name)
+	if canonical, ok := collectiveCredits[folded]; ok {
 		return canonical
+	}
+	if half, ok := doubledCreditHalf(folded); ok {
+		if canonical, ok := collectiveCredits[half]; ok {
+			return canonical
+		}
 	}
 	return name
 }

@@ -189,9 +189,10 @@ WHERE b.is_vvab IS NOT TRUE
   -- ONE ASYMMETRY, deliberate: the Go rule additionally judges the CLEANED
   -- credit name (so 'To Be Announced - narrator' is refused once the role
   -- qualifier is stripped), and CleanCreditName's fixpoint has no SQL spelling.
-  -- Re-implementing it here would be a second definition that could disagree
-  -- with the first, so the SQL is the belt and the Go rule is the braces - the
-  -- same split foldCredit's comment records.
+  -- The DOUBLED tier ('TBD TBD', doubledCreditHalf in mapping.go) is Go-only
+  -- for the same reason. Re-implementing either here would be a second
+  -- definition that could disagree with the first, so the SQL is the belt and
+  -- the Go rule is the braces - the same split foldCredit's comment records.
   AND NOT EXISTS (
     SELECT 1 FROM book_narrator bn
     WHERE bn.book_asin = b.asin

@@ -464,6 +464,30 @@ func TestBookingPlaceholdersAreStillRefused(t *testing.T) {
 	}
 }
 
+// TestDoubledCollectiveFoldsOntoItsCanonical is the sibling of the placeholder's
+// doubled tier (issue #1800): a SINGLE-WORD statement doubled is the one shape
+// the cleaning rules leave standing, because collapsing it would collapse "Duran
+// Duran" too. Dump-wide, 225 credit names are one word doubled and exactly four
+// are a listed statement doubled - "diverse diverse" was already listed by hand,
+// and these three are what that hand-listing missed.
+func TestDoubledCollectiveFoldsOntoItsCanonical(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"Anonymous Anonymous", "Anonymous"},
+		{"unknown unknown", "Unknown"},
+		{"diverse diverse", "Various"},
+		// The negative control: the halves have to BE a listed statement.
+		{"Duran Duran", "Duran Duran"},
+		{"Boutros Boutros Ghali", "Boutros Boutros Ghali"},
+	}
+	for _, c := range cases {
+		t.Run(c.in, func(t *testing.T) {
+			if got := CleanCreditName(c.in); got != c.want {
+				t.Errorf("CleanCreditName(%q) = %q, want %q", c.in, got, c.want)
+			}
+		})
+	}
+}
+
 // TestCollectiveFoldIsNotEvidenceOfItsOwnSpelling covers the interaction with
 // the batch pre-passes. Both dotted spellings of the bibliographic N.N. fold
 // inside the shared credit cleaning, so the credit census and the initials
