@@ -29,6 +29,26 @@ import (
 // in the taxonomy - "History" under Fiction is not the History genre - and the
 // localized nodes worth pinning; by_name carries the ~1,200 Audible category
 // strings observed across the marketplaces libex mirrors.
+//
+// A CHILDREN'S category never produces adult ADVICE vocabulary. Audible files a
+// children's book under subject tags that read like adult self-help when you
+// look at the leaf alone - "Social & Life Skills", "Difficult Discussions" and
+// "Family Life" all sit under Children's Audiobooks - and mapping those onto
+// self-help / parenting-relationships / business labelled Anne of Green Gables
+// a self-help book and a parenting guide. So a node whose taxonomy path is
+// rooted at Children's Audiobooks (Kinder-Hörbücher, Audiolibros infantiles,
+// Jeunesse, ...) maps only to what is TRUE of a children's book - childrens,
+// coming-of-age, or the same TOPIC an adult book would get (Math -> science,
+// Government -> politics) - and otherwise maps to nothing at all. Note the
+// mechanism: an override cannot SUPPRESS a claim, it can only redirect it (a
+// node the table does not carry falls through to its name), so suppressing a
+// children's leaf means dropping BOTH its node id and its name, and a name that
+// an adult node legitimately shares ("Careers") is neutralized by pinning each
+// children's node id to childrens instead.
+//
+// TestChildrensClaimsAvoidAdultAdviceGenres pins the rule; the children's node
+// ids it names came from libex's own /categories taxonomy for every marketplace
+// the table covers.
 
 //go:embed audiblegenres.json
 var audibleGenresFS embed.FS

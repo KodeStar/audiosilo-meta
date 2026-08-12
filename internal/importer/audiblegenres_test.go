@@ -143,6 +143,164 @@ func TestAudibleGenreTableAnchors(t *testing.T) {
 	}
 }
 
+// childrensClaims is the children's side of the taxonomy that used to leak adult
+// ADVICE genres: every leaf whose display name reads like an adult self-help,
+// parenting or careers category, with the browse-node ids libex's /categories
+// endpoint gives it in each marketplace the table covers. It is the fixture both
+// children's tests read, so a regenerated table is judged against the same list.
+var childrensClaims = []struct {
+	claim genreClaim
+	where string // the node's taxonomy path, for the failure message
+	// shared marks a display name an ADULT node also carries ("Careers" is also
+	// Business & Careers/Personal Success/Careers), where the name keeps its
+	// adult mapping and only the children's node ids are pinned.
+	shared bool
+}{
+	{genreClaim{node: "18572393011", name: "Social & Life Skills"}, "us Children's Audiobooks/Growing Up & Facts of Life/Social & Life Skills", false},
+	{genreClaim{node: "21073675011", name: "Social & Life Skills"}, "ca Children's Audiobooks/Growing Up & Facts of Life/Social & Life Skills", false},
+	{genreClaim{node: "21882090031", name: "Social & Life Skills"}, "in Children's Audiobooks/Growing Up & Facts of Life/Social & Life Skills", false},
+	{genreClaim{node: "18572324011", name: "Difficult Discussions"}, "us Children's Audiobooks/Growing Up & Facts of Life/Difficult Discussions", false},
+	{genreClaim{node: "21073678011", name: "Difficult Discussions"}, "ca Children's Audiobooks/Growing Up & Facts of Life/Difficult Discussions", false},
+	{genreClaim{node: "18572505011", name: "Family Life"}, "us Children's Audiobooks/Literature & Fiction/Family Life", false},
+	{genreClaim{node: "21073812011", name: "Family Life"}, "ca Children's Audiobooks/Literature & Fiction/Family Life", false},
+	{genreClaim{node: "21882089031", name: "Family Life"}, "in Children's Audiobooks/Growing Up & Facts of Life/Family Life", false},
+	{genreClaim{node: "18572205011", name: "Activities & Hobbies"}, "us Children's Audiobooks/Activities & Hobbies", false},
+	{genreClaim{node: "8169599051", name: "Activities & Hobbies"}, "au Children's Audiobooks/Activities & Hobbies", false},
+	{genreClaim{node: "16214901031", name: "Schwierige Gespräche"}, "de Kinder-Hörbücher/Auf- & Heranwachsen/Schwierige Gespräche", false},
+	{genreClaim{node: "16214969031", name: "Soziale Kompetenz"}, "de Kinder-Hörbücher/Auf- & Heranwachsen/Soziale Kompetenz", false},
+	{genreClaim{node: "16214929031", name: "Familienleben"}, "de Kinder-Hörbücher/Auf- & Heranwachsen/Familienleben", false},
+	{genreClaim{node: "16215081031", name: "Familienleben"}, "de Kinder-Hörbücher/Literatur & Belletristik/Familienleben", false},
+	{genreClaim{node: "19126062031", name: "Habilidades sociales y para la vida"}, "es Audiolibros infantiles/Crecer y cosas de la vida/Habilidades sociales y para la vida", false},
+	{genreClaim{node: "19126117031", name: "Vida en familia"}, "es Audiolibros infantiles/Crecer y cosas de la vida/Vida en familia", false},
+	{genreClaim{node: "18572251011", name: "Careers"}, "us Children's Audiobooks/Education & Learning/Social Studies/Careers", true},
+	{genreClaim{node: "21883278031", name: "Careers"}, "in Children's Audiobooks/Education & Learning/Social Studies/Careers", true},
+}
+
+// TestChildrensClaimsAvoidAdultAdviceGenres is the rule stated in
+// audiblegenres.go: a claim rooted under Children's Audiobooks may never resolve
+// to an adult ADVICE genre. Both halves of a claim are checked, because a leaf
+// with no node override falls through to its display NAME - which is how a
+// children's tag reached self-help in the first place.
+func TestChildrensClaimsAvoidAdultAdviceGenres(t *testing.T) {
+	advice := map[string]bool{
+		"self-help":               true,
+		"parenting-relationships": true,
+		"business":                true,
+		"finance":                 true,
+		"home-garden":             true,
+	}
+	table := audibleGenreTable()
+	for _, c := range childrensClaims {
+		if got, ok := table.lookup(c.claim); ok && advice[got] {
+			t.Errorf("lookup(node %q, name %q) = %q; a children's category (%s) must not map to an adult advice genre",
+				c.claim.node, c.claim.name, got, c.where)
+		}
+		if c.shared {
+			continue // the bare name belongs to the adult node; only the ids are ours
+		}
+		// The name alone, as a row with no browse-node id resolves it.
+		if got, ok := table.lookup(genreClaim{name: c.claim.name}); ok && advice[got] {
+			t.Errorf("lookup(name %q) = %q; a children's category name (%s) must not map to an adult advice genre",
+				c.claim.name, got, c.where)
+		}
+	}
+}
+
+// TestChildrensClaimAnchors pins what each of those claims resolves to now, so
+// the rule above cannot be satisfied by a table that has simply gone empty, and
+// so the two deliberate outcomes stay visible: a leaf nothing true can be said
+// about maps to NOTHING, and a leaf whose name an adult node legitimately shares
+// ("Careers" is also Business & Careers/Personal Success/Careers) is pinned to
+// childrens by node id, since an override can redirect a claim but not suppress
+// one.
+func TestChildrensClaimAnchors(t *testing.T) {
+	want := map[string]string{
+		"18572393011": "", "21073675011": "", "21882090031": "",
+		"18572324011": "", "21073678011": "",
+		"18572505011": "", "21073812011": "", "21882089031": "",
+		"18572205011": "", "8169599051": "",
+		"16214901031": "", "16214969031": "", "16214929031": "", "16215081031": "",
+		"19126062031": "", "19126117031": "",
+		"18572251011": "childrens", "21883278031": "childrens",
+	}
+	table := audibleGenreTable()
+	for _, c := range childrensClaims {
+		got, ok := table.lookup(c.claim)
+		if !ok {
+			got = ""
+		}
+		if got != want[c.claim.node] {
+			t.Errorf("lookup(node %q, name %q) = %q; want %q (%s)", c.claim.node, c.claim.name, got, want[c.claim.node], c.where)
+		}
+	}
+	// The children's leaves that DO say something true still say it: the parent
+	// of the growing-up leaves is a real coming-of-age signal, and the sibling
+	// topic leaves keep the topic an adult book would get.
+	for _, tc := range []struct {
+		claim genreClaim
+		want  string
+	}{
+		{genreClaim{node: "18572323011", name: "Growing Up & Facts of Life"}, "coming-of-age"},
+		{genreClaim{node: "18572091011", name: "Children's Audiobooks"}, "childrens"},
+		{genreClaim{node: "18572252011", name: "Economics"}, "economics"},
+		{genreClaim{node: "18572253011", name: "Government"}, "politics"},
+		{genreClaim{node: "18572206011", name: "Cooking & Food"}, "food-cooking"},
+		// Not a children's node at all: Teen & Young Adult/Health, Lifestyle &
+		// Relationships/Life Skills really is teen advice, so it keeps self-help.
+		{genreClaim{node: "18580810011", name: "Life Skills"}, "self-help"},
+	} {
+		if got, ok := table.lookup(tc.claim); !ok || got != tc.want {
+			t.Errorf("lookup(%+v) = %q,%v; want %q,true", tc.claim, got, ok, tc.want)
+		}
+	}
+}
+
+// TestChildrensBookGenresEndToEnd replays the exact claim ladders libex holds for
+// the two books the defect was found on. Anne of Green Gables was a self-help
+// book and a parenting guide; Pippi was self-help.
+func TestChildrensBookGenresEndToEnd(t *testing.T) {
+	table := audibleGenreTable()
+	cases := []struct {
+		book   string
+		claims []genreClaim
+		want   []string
+	}{
+		{
+			book: "The Anne of Green Gables Collection (B0FMGT6FD6)",
+			claims: []genreClaim{
+				{node: "18572091011", name: "Children's Audiobooks"},
+				{node: "18572224011", name: "Beginner Readers"},
+				{node: "18572323011", name: "Growing Up & Facts of Life"},
+				{node: "18572393011", name: "Social & Life Skills"},
+				{node: "18572491011", name: "Literature & Fiction"},
+				{node: "18572496011", name: "Chapter Books & Readers"},
+				{node: "18572505011", name: "Family Life"},
+			},
+			want: []string{"childrens", "coming-of-age"},
+		},
+		{
+			book: "Pippi Goes on Board (B0DS6G3CY7)",
+			claims: []genreClaim{
+				{node: "18572091011", name: "Children's Audiobooks"},
+				{node: "18572323011", name: "Growing Up & Facts of Life"},
+				{node: "18572393011", name: "Social & Life Skills"},
+				{node: "18572491011", name: "Literature & Fiction"},
+				{node: "18572503011", name: "Classics"},
+				{node: "18572513011", name: "Humorous Fiction"},
+			},
+			want: []string{"childrens", "classics", "comedy-humor", "coming-of-age"},
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.book, func(t *testing.T) {
+			got := table.withRunMemo().mapGenres(tc.claims, map[string]bool{})
+			if !reflect.DeepEqual(got, tc.want) {
+				t.Errorf("mapGenres = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestGenreTableLookupPrecedence(t *testing.T) {
 	table := genreTable{
 		ByASIN: map[string]string{"18574784011": "epic-fantasy"},
