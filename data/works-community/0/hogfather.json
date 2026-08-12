@@ -1985,9 +1985,12 @@
             "role": "supporting"
           },
           {
-            "description": "Wayfarer's senior enlisted leader. She knows which crew members arrived with disciplinary records and intervenes directly when Wanderman is assaulted over his assigned bunk.",
-            "id": "bosun-macbride",
-            "name": "Bosun MacBride",
+            "aliases": [
+              "Bosun MacBride"
+            ],
+            "description": "Wayfarer's senior enlisted leader, responsible for discipline among a crew that includes inexperienced personnel and disruptive transfers. She knows which crew members arrived with disciplinary records and intervenes directly when Wanderman is assaulted over his assigned bunk.",
+            "id": "sally-macbride",
+            "name": "Sally MacBride",
             "reveal": {
               "chapter": 8
             },
@@ -2026,18 +2029,6 @@
             "name": "Robin Rabenstrange",
             "reveal": {
               "chapter": 10
-            },
-            "role": "supporting"
-          },
-          {
-            "aliases": [
-              "Bosun MacBride"
-            ],
-            "description": "Wayfarer's senior enlisted leader, responsible for discipline among a crew that includes inexperienced personnel and disruptive transfers.",
-            "id": "sally-macbride",
-            "name": "Sally MacBride",
-            "reveal": {
-              "chapter": 12
             },
             "role": "supporting"
           },
