@@ -1286,6 +1286,315 @@
       }
     },
     "road-to-mastery": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A biologist nearing completion of his PhD when Earth is integrated into the System. Trapped without weapons in the Forest of the Strong, he relies on field knowledge, observation, and a willingness to adapt while searching for a way out.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The level-9 boss directing the goblin settlement. Hobgoblins defer to this leader, whose visible abilities include fire magic.",
+            "id": "goblin-shaman",
+            "name": "the Goblin Shaman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The level-25 leader of the dungeon's ape group. He guards the group's strength-enhancing resource and agrees to face Jack in a formal boxing contest.",
+            "id": "ape-group-alpha",
+            "name": "the ape-group alpha",
+            "reveal": {
+              "chapter": 21
+            }
+          },
+          {
+            "description": "The level-30 leader of the dungeon's earth bears. Jack shadows this powerful boss and prepares a surprise attack before the Black Wolf can claim it as prey.",
+            "id": "rock-bear",
+            "name": "the rock bear",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the ape-group alpha"
+            ],
+            "description": "The ape-group alpha whom Jack defeated and spared. Jack gives him the name Harambe as their former rivalry becomes an alliance.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harambe's young son, entrusted to Jack so he can leave the forest and find opportunities in the wider world. He is a bro-rilla who resembles the smaller gym monkeys.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's foster mother, a retired cybersecurity professor living in Volville. She is alive after integration but appears to be watched and constrained by the faction controlling the town.",
+            "id": "professor-margaret-rust",
+            "name": "Professor Margaret Rust",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Henry's Fang enforcer ordered to remain with Margaret and restrict her movements. Jack forces him out of her home after discovering the arrangement.",
+            "id": "hugo",
+            "name": "Hugo",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of Henry's Fang, the armed faction ruling Volville through intimidation and unequal control of equipment. He is a swordsman with a history of running protection schemes.",
+            "id": "henry-white",
+            "name": "Henry White",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Tazul"
+            ],
+            "description": "An E-grade djinn merchant affiliated with the Merchant Union. He explains the market for System goods and information, gives Jack access to credit, and applies strict commercial rules to every transaction.",
+            "id": "artazul",
+            "name": "Ar'Tazul",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unaffiliated fire wizard whose parents were killed by Henry's Fang. He is the only Volville resident to volunteer immediately when Jack asks for help against the faction.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Scions and the superior or patron named by Henry White. His connection to Henry's Fang places the conflict in Volville within a larger struggle involving the coming tournament.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of Flame River, one of the few major Earth factions known to have conquered an F-grade dungeon. She is identified as a leading African cultivator before the tournament.",
+            "id": "vivi-aragon",
+            "name": "Vivi Aragon",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Ice Peak, a major faction based in northeastern Europe. He is identified before the tournament as one of Earth's established faction leaders.",
+            "id": "alexander-petrovic",
+            "name": "Alexander Petrovic",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's disguised tournament identity, registered with a flip-flop as his weapon and a fabricated Dao. The persona conceals his real appearance, faction, title, and fighting path from the Scions.",
+            "id": "john-brown",
+            "name": "John Brown",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A C-grade Leonin who represents the Animal Kingdom as Earth's planetary overseer. She opens the integration tournament and announces its rules, rewards, and elimination structure.",
+            "id": "galicia-lonahor",
+            "name": "Galicia Lonahor",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-38 dagger fighter following the Dao of Speed. He wins his opening match before his opponent can draw a weapon, then approaches Jack with an easy familiarity.",
+            "id": "dorman-whistles",
+            "name": "Dorman Whistles",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flame River fire cultivator who yields an early match against an Ice Peak opponent after receiving direction from his faction leader.",
+            "id": "sadaka",
+            "name": "Sadaka",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-49 Leonin Scion, Planetary Frontrunner 1, and the tournament favorite. His first match ends with his opponent dead from a single attack, prompting Jack to demand enforcement of the rules.",
+            "id": "rufus-emberheart",
+            "name": "Rufus Emberheart",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A homeless-looking level-38 man who approaches Jack under the title of Sage after the tournament's opening round. His purpose and capabilities are not yet clear.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older tournament fighter who follows the Dao of Martial Arts. His precise unarmed technique lets him control an armed opponent and stop a sword between three fingers.",
+            "id": "li-shang",
+            "name": "Li Shang",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shen Group competitor at level 27. Her Dao of Beauty influences the soul, but Jack withstands it and wins their tournament match.",
+            "id": "chen-zexi",
+            "name": "Chen Zexi",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An automated sparring machine in Jack's tournament residence. Enchanted through the Dao of Automation, it can train at several power levels and limits its activity to instruction and practice combat.",
+            "id": "training-robot",
+            "name": "the training robot",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-49 elite boss of the Forest of the Strong. This territorial apex predator is far stronger than Jack when he first encounters it.",
+            "id": "black-wolf",
+            "name": "the Black Wolf",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A second, uninjured level-49 Black Wolf that appears after Jack and the primates defeat the wolf they believed was the dungeon boss.",
+            "id": "second-black-wolf",
+            "name": "the second Black Wolf",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ar'Tazul's djinn cousin, a merchant guide hired to lead Jack and Edgar through Integration City.",
+            "id": "artazuls-cousin",
+            "name": "Ar'Tazul's cousin",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed level-45 sharkin Scion who appears beside Gan Salin and watches Vivi Aragon with hostile interest.",
+            "id": "sharkin-scion",
+            "name": "the sharkin Scion",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jack's master"
+            ],
+            "description": "A D-grade projection from Exploding Sun who chooses Jack as a disciple because Jack's Dao is linked to the faction's ancestor.",
+            "id": "exploding-sun-mentor",
+            "name": "Jack's Exploding Sun mentor",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eagle Scion competing in the integration tournament. This fighter is paired with the elephant-like Scion within the broader Scion group.",
+            "id": "eagle-scion",
+            "name": "the eagle Scion",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elephant-like Scion competing in the integration tournament. This fighter is paired with the eagle Scion within the broader Scion group.",
+            "id": "elephant-like-scion",
+            "name": "the elephant-like Scion",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unaffiliated tournament fighter known for music and an affinity with the Dao of Metal. He remains outside both major human alliances alongside Li Shang.",
+            "id": "metal-dao-musician",
+            "name": "the metal-Dao musician",
+            "reveal": {
+              "chapter": 63
+            }
+          },
+          {
+            "aliases": [
+              "the metal-Dao musician"
+            ],
+            "description": "The metal-Dao musician, now identified by name. He and Li Shang remain neutral while Flame River and the Scions gather allies.",
+            "id": "kane-vander-decken",
+            "name": "Kane Vander Decken",
+            "reveal": {
+              "chapter": 72
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C2VW2YNR",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery"
+      },
       "recaps": {
         "ending": "Jack wins the tournament when Rufus misses the final, but Exploding Sun withdraws its promised protection under Animal Kingdom pressure. Galicia separately cancels Jack's promised Animal Kingdom apprenticeship and permits the Scions to attack. Jack assigns his D-grade robot prize to protect the Bare Fist Brotherhood. In the ensuing battle, Sadaka and Li Shang are killed, Edgar defeats Gan Salin and collapses, and Alexander severely wounds Vivi before escaping. Rufus returns after reaching E-grade. Jack develops Iron Fist Style and kills him despite the overseer's attempted intervention. Gan Salin then attacks the exhausted Jack, but Brock and his dog pack drive him away. Brock carries Jack to the teleporter, and they depart for an unknown galactic destination. Margaret, Harambe's primates, the robot, and the surviving allies remain responsible for the Brotherhood on Earth. Gan Salin and the overseer remain hostile. Jack owes the Black Hole Church a favor and intends to become strong enough to return and take Earth from the Animal Kingdom.",
         "in_short": "Earth's integration traps biologist Jack Rust in a dungeon, where he advances through combat, befriends Harambe's primates, kills two Black Wolf bosses, and founds the Bare Fist Brotherhood. After freeing Volville from Henry's Fang, he enters the integration tournament in disguise and builds alliances with Edgar, Vivi Aragon, Dorman Whistles, Li Shang, and the Sage against the Animal Kingdom's Scions. Jack reaches E-grade with a perfect Dao Seed of the Fist and wins when Rufus Emberheart misses the final, but Exploding Sun withdraws its promised protection under Animal Kingdom pressure, and Galicia authorizes an attack. Sadaka and Li Shang die, while Vivi and Edgar are left gravely hurt or unconscious. Rufus returns at E-grade, and Jack kills him after creating Iron Fist Style. Brock saves the exhausted Jack from Gan Salin and takes him through a teleporter to an unknown destination. Jack leaves the Brotherhood defended on Earth and plans to return strong enough to challenge Animal Kingdom rule.",
