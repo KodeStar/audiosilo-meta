@@ -2028,7 +2028,732 @@
         "work": "road-to-mastery-2"
       }
     },
+    "road-to-mastery-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A newly D-grade immortal and leader of the Bare Fist Brotherhood. Wanted by the Animal Kingdom, he travels under concealment with Brock while seeking a powerful faction willing to protect Earth-387.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jack's brorilla spiritual companion and independent cultivation partner. He travels with Jack toward Exploding Sun.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Professor"
+            ],
+            "description": "Jack's mother and the Bare Fist Brotherhood's principal strategist on Earth-387. She organizes resistance and prepares the allied defenders while Jack searches offworld for protection.",
+            "id": "margaret-rust",
+            "name": "Margaret Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi"
+            ],
+            "description": "A Flame River commander and ally of the Bare Fist Brotherhood. She helps prepare Earth-387 for the conflict between the Brotherhood-Flame River alliance and Ice Peak.",
+            "id": "vivi-aragon",
+            "name": "Vivi Aragon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth cultivator and former Brotherhood ally whose Dao is not oriented toward violence.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brock's father and a leader among the brorillas of the Forest of the Strong.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A C-grade treant encountered at Darien's teleportation hub. He recognizes that Jack is an immortal beneath his disguise, then offers directions and company.",
+            "id": "treant",
+            "name": "the treant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A late D-grade centaur who leads the Animal Kingdom prisoner camp on Darien. Jack initially withdraws after judging her and the camp's two other D-grade wardens too dangerous to confront.",
+            "id": "animal-kingdom-centaur-warden",
+            "name": "the Animal Kingdom centaur warden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Animal Kingdom cultivator and ally from Trial Planet. He has formally renounced the kingdom and travels with Nauja toward Exploding Sun, accepting scrutiny along the way.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor of Trial Planet and an archer travelling beside Gan Salin. After Hand of God screening, she travels with him toward Field Nebula.",
+            "id": "nauja",
+            "name": "Nauja",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A C-grade human elder of Exploding Sun and master of Jack's former mentor. She evaluates Jack's exceptional foundation and whether his potential justifies the political cost of contesting Animal Kingdom control of Earth-387.",
+            "id": "master-huali",
+            "name": "Master Huali",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Man Spirit"
+            ],
+            "description": "Jack's former teacher, now physically present as an Exploding Sun deacon. He receives Jack at Field Nebula.",
+            "id": "jacks-former-mentor",
+            "name": "Jack's former mentor",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified sage who interrupts Maximus Lonihor's assault on Jack's group and warns Jack to evade an imminent attack. His purpose is not yet clear.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A late-B-grade Black Hole Church head envoy who stops the hostile fleets approaching Earth. His authority prevents their commanders from interfering directly in Jack's duel.",
+            "id": "heavenly-spoon-sovereign",
+            "name": "Heavenly Spoon Sovereign",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Heavenly Spoon Sovereign"
+            ],
+            "description": "A Black Hole Church head envoy introduced to Jack as the Heavenly Spoon Sovereign. He explains the plan to relocate Earth and uses his power to move the planet and its Moon outside system space.",
+            "id": "jonas-evergreen",
+            "name": "Jonas Evergreen",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cyclops captain of the Trampling Ram and Jack's former commander. After the ship is attacked for helping Jack, Jack asks his former mentor to investigate what happened to Dordok and the crew.",
+            "id": "captain-dordok",
+            "name": "Captain Dordok",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Minotaur who has succeeded Dordok as captain of the Trampling Ram. When Earth is preparing to leave the Solar System, the captain chooses to continue travelling with the ship and its crew.",
+            "id": "trampling-rams-minotaur-captain",
+            "name": "the Trampling Ram's Minotaur captain",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Leonine Animal Kingdom champion who intercepts Jack, Dordok, and their companion during their attempted escape from Hell. His technique, mobility, domain, and summoned warriors let him control the encounter despite fighting three opponents.",
+            "id": "maximus-lonihor",
+            "name": "Maximus Lonihor",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Earth's planetary overseer"
+            ],
+            "description": "The mid-C-grade Leonine assigned by the Animal Kingdom to oversee Earth-387. Her control becomes the central danger awaiting Earth when its protected grace period expires.",
+            "id": "galicia-lonahor",
+            "name": "Galicia Lonahor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The other Exploding Sun elder competing with Master Huali for the coming Grand Elder appointment.",
+            "id": "hualis-rival-elder",
+            "name": "Huali's rival elder",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "description": "The late-C-grade Leonine who oversees the Animal Kingdom prison world Hell. After inner disciples vanish from several hunting zones, he identifies an infiltrator and directs the expanding search.",
+            "id": "hells-warden",
+            "name": "Hell's warden",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Leonine authority within the Animal Kingdom. After the failure on Hell and Jack's escape toward Earth, the ancestor takes personal responsibility for the pursuit.",
+            "id": "animal-kingdom-ancestor",
+            "name": "Animal Kingdom ancestor",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A B-grade Hand of God commander who arrives with the hostile fleet near Earth. She seeks to affect the confrontation over the planet but must contend with a Black Hole Church head envoy.",
+            "id": "eva-solvig",
+            "name": "Eva Solvig",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A D-grade former Exploding Sun affiliate who joins Dordok against Animal Kingdom reinforcements during Earth's war. An Exploding Sun swordsman arrives and confronts the former affiliate separately.",
+            "id": "former-exploding-sun-affiliate",
+            "name": "the former Exploding Sun affiliate",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Ice Peak and a powerful ice cultivator. He is the principal rival to the Brotherhood-Flame River alliance on Earth and advocates restrictions on how the planet's E-grades may use their power.",
+            "id": "alexander-petrovic",
+            "name": "Alexander Petrovic",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A grieving woman who accepts a devil's offer of D-grade power. The bargain costs her soul and requires her to carry out a future killing whose intended victim is not initially disclosed.",
+            "id": "sephira-woman",
+            "name": "the Sephira woman",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A D-grade contract-maker that approaches Edgar after his defeat and offers him a path back to usefulness. It must honor the terms it writes, but gains power over anyone who violates an agreement.",
+            "id": "echidna-devil",
+            "name": "the Echidna devil",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jack's D-grade robot bodyguard, originally awarded after the integration tournament. Jack finds him critically damaged after a prolonged defense of the Forest of the Strong, with only enough energy left to remain inactive for a short time.",
+            "id": "sparman",
+            "name": "Sparman",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior disciple who directs the rival elder's faction. After a subordinate dies in a duel with Jack, he orders an investigation into Jack's ability to defeat a much stronger opponent.",
+            "id": "rival-elders-head-disciple",
+            "name": "Huali's rival elder's head disciple",
+            "reveal": {
+              "chapter": 23
+            }
+          },
+          {
+            "description": "An Earth musician, Dao of Metal user, and former tournament ally of Jack. Jack recognizes him among Animal Kingdom prisoners forced to labor.",
+            "id": "earth-musician",
+            "name": "the Earth musician",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's regular sparring acquaintance at Master Huali's estate. She invites him to visit Stripe City and accompanies him there.",
+            "id": "auburn",
+            "name": "Auburn",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak D-grade canine Animal Kingdom deacon who joins two other deacons in pursuing the injured Jack across Hell.",
+            "id": "canine-deacon",
+            "name": "the canine deacon",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Master Huali's senior disciple and political adviser. The struggle over Exploding Sun's next Grand Elder prevents him from leaving her estate without risking a challenge from the rival faction.",
+            "id": "hualis-head-disciple",
+            "name": "Huali's head disciple",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Animal Kingdom captain and trusted friend of Jack's former mentor. He recognizes the wanted Jack but agrees to hide both visitors in warded crates for passage through Eternal Gate.",
+            "id": "feshker-captain",
+            "name": "the Feshker captain",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-249 Animal Kingdom enforcer who intervenes after Jack defeats a Leonine disciple. When Jack refuses his order, the deacon attacks and pursues him.",
+            "id": "turtler-deacon",
+            "name": "the turtler deacon",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0D3236RBC",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-3"
+      },
+      "recaps": {
+        "ending": "The Alliance defeats Ice Peak, Brock kills Alexander Petrovic, and Jack kills Galicia Lonahor on the Moon after reaching peak D-grade. Jonas Evergreen prevents the hostile fleets from interfering, then moves Earth and the Moon beyond system space. Jack survives, Vivi reveals that she is carrying his child, and Brock, Margaret Rust, Gan Salin, Nauja, Edgar, Dordok, and the recovering Sephira woman remain on the relocated world. Edgar cannot advance because his soul is cracked, but plans a wizard academy while Jack seeks a cure. Sparman remains critically damaged. The Animal Kingdom, Hand of God, former Hell warden, and Animal Kingdom ancestor remain threats. The Black Hole Church's disputed history, Jack's life drop and Dao-tree doorway, Brock's staff, and the approaching conflict involving immortals and old gods remain unresolved.",
+        "in_short": "Jack Rust seeks enough power and political backing to save Earth from the Animal Kingdom. Exploding Sun conditionally supports him, but a political wager and Dordok's imprisonment lead Jack and his former mentor to infiltrate Hell. Jack frees Dordok, joins the Black Hole Church, survives a public duel sequence, and kills Maximus Lonihor before escaping home. On Earth, the Alliance fights Ice Peak while Brock, Gan Salin, Nauja, Edgar, and Vivi win separate battles. Brock reaches D-grade and kills Alexander Petrovic. Jack reaches peak D-grade, defeats Galicia Lonahor on the Moon, and secures Earth's immediate independence. Jonas Evergreen then moves Earth and the Moon outside system space. Jack survives as Earth's defender, learns Vivi is pregnant, and faces continuing threats from the Animal Kingdom, Hand of God, and a wider ancient conflict.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Rust emerged from Trial Planet as a newly D-grade immortal with an exceptional foundation, a powerful fist class, and a concealed life drop inherited during the trial. He leads the Bare Fist Brotherhood and is bound to Brock, his brorilla spiritual companion. Their actions made Jack an enemy of the Animal Kingdom, whose mid-C-grade overseer Galicia Lonahor threatens Earth-387 once its grace period expires. Earth is also divided internally. Margaret Rust directs the Brotherhood, Vivi Aragon and Flame River stand with it, and Alexander Petrovic leads the rival Ice Peak. Jack cannot safely return home without risking early intervention, so he and Brock travel toward Exploding Sun to seek protection strong enough to preserve the entire planet.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack and Brock cross Animal Kingdom territory under concealment while travelling toward Exploding Sun. On Darien, Jack discovers prisoners held by Animal Kingdom wardens and recognizes an Earth ally among them. He abandons his teleporter slot, attacks the camp, and defeats its D-grade leadership as well as a C-grade bounty hunter. Brock frees and organizes the prisoners. Jack releases the anti-kingdom revolutionaries, gives the Earth ally transport and funds, and learns that Earth remains split between the Brotherhood-Flame River alliance and Ice Peak. Returning home as an immortal could end the planet's grace period, so Jack continues seeking outside support. He and Brock finally reach Field Nebula, the Exploding Sun capital.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Field Nebula, Jack reunites with his former mentor, now an Exploding Sun deacon, and meets Master Huali, a C-grade elder. Jack offers full allegiance if the faction will protect all of Earth-387 rather than only his own people. Huali tests the value of his rapid advancement and extraordinary foundation. Jack also reveals privately that he conquered Trial Planet's ninth ring, though he continues hiding the life drop and the tribulation connected to it. Huali accepts him as a personal disciple, admits Brock as an outer disciple, and promises to oversee an attempt to take Earth from Animal Kingdom control when the grace period ends. The commitment depends on Jack remaining alive and valuable and on the faction avoiding unacceptable danger. The Bare Fist Brotherhood consequently becomes subordinate to Exploding Sun. On Earth, Vivi reaches E-grade and seeks limits on the use of E-grade power in the coming factional conflict.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack trains at Huali's estate with a Dao magnet and regular spars, and he selects a spatial Dao vision for later study. He earns respect by drawing against a much more experienced disciple, while Brock moves to the outer planet to train beside Gan Salin and Nauja. Brock's strength increasingly responds to protecting and organizing companions. Huali's contest with a rival elder for the Grand Elder position makes Jack politically visible. A rival disciple provokes Jack into a public exchange of full-force blows, and Jack survives the first strike before killing his opponent with his return attack. The victory helps Huali but increases the risk of escalation. Jack then learns what happened to the Trampling Ram after it aided his escape: most of the crew got away, but Captain Dordok was captured and sent to the Animal Kingdom prison planet Hell. Jack accepts responsibility for the danger they faced and resolves to rescue Dordok and help the missing crew.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack deepens his understanding of space and improves his teleportation, but the succession conflict becomes more dangerous. The rival elder exposes Huali's promise to protect Earth and demands that Jack face a peak D-grade disciple. Jack negotiates a six-month delay and stakes both his place in Exploding Sun and the promised aid for Earth on surviving three strikes. With ordinary cultivation too slow, he proposes infiltrating Hell to fight Animal Kingdom disciples and free Dordok. Huali helps him study a supernova, while the library supplies a cultivation aid, an escape talisman, and a concealed early C-grade attack. Jack's former mentor agrees to accompany him. To shield Exploding Sun from responsibility, both men formally leave the faction before an Animal Kingdom contact smuggles them through the Eternal Gate in warded cargo. They arrive on Hell as unaffiliated infiltrators, with no settled escape route.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack begins hunting Animal Kingdom parties in Hell while his former mentor searches for Dordok. He kills large numbers of inner disciples and advances rapidly, but the prison world's warden recognizes that an infiltrator is operating across several zones. During meditation, Jack discovers that his concealed life drop has become linked to a life Dao root and the growth of his Dao tree. A door-like outline is forming in the tree's bark, and Jack's Dao soul can now act with limited independence. When the soul touches the life drop, uncontrolled life energy forces Jack into his four-armed form. Jack expels the excess power, but the resulting beacon reveals his location. Animal Kingdom cultivators converge, turning his hidden campaign into an immediate pursuit while the nature of the life drop and the door remain unexplained.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack defeats the force drawn by the beacon, including its Leonine leader, but three peak D-grade deacons pursue him. His escape talisman fails to hide him. Captured and tortured, Jack waits until all three are close before using the single early C-grade attack stored for him. The blast kills two deacons, leaves the third's fate uncertain, and nearly kills Jack. His former mentor rescues him, but Jack refuses to leave without Dordok. They find the Cyclops controlled by the warden's mark in a late D-grade hunting zone. Jack and his mentor defeat the controlling group, restore Dordok's awareness, and burn the mark from his soul. The rescue succeeds, but their planned departure is blocked when an unnamed level-249 Leonine Grade Defier arrives to confront the exhausted group.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maximus controls the fight against Jack, Dordok, and Jack's former mentor until a mysterious Sage intervenes and extracts them to an underwater refuge. The Sage identifies himself with the Black Hole Church and reveals that Hand of God has compromised their intended escape. While the group hides from a B-grade search, he presents the Church's disputed account of ancient history. In that version, ancient humanity created sentient steel immortals as protectors, but the immortals turned on their creators, built the System to produce elite fighters, and rewrote the history of the war. The Church worships the imprisoned god of life and blames the god of entropy for manipulating the conflict. Jack sees an ancient vision linking Trial Planet, Brock's staff, and his former spiritual mentor to that lost war. He does not yet accept the Church's invitation, and the account remains a claim rather than established truth.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After three months in hiding, Jack has consolidated his rapidly gained power. When the B-grade searcher leaves Hell, the group resumes targeted raids using the Sage's divination and spatial extraction. Jack, Dordok, and the former Exploding Sun deacon destroy increasingly strong patrols while their recordings turn the Animal Kingdom's failure into a galaxy-wide scandal. The humiliation drives Hell's warden to request seven C-grade enforcers and brings scrutiny upon Galicia Lonahor because Jack came from Earth. The Sage commits the Black Hole Church to helping protect Earth. On that assurance, Jack joins the Church.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack's raids raise him to level 230, but Earth has only two weeks left. A rival Exploding Sun disciple provides Jack's former mentor's lifeblood to the Animal Kingdom, exposing the group's refuge. Hundreds of pursuers converge before the Sage's escape device can recharge. Jack's allies are defeated in separate fights, and Hell's warden stops Jack's final stand. With the group captured and no immediate rescue available, Jack uses the continuing public broadcast to demand a contest for everyone's freedom. The warden accepts under reputational pressure. Jack must first fight the warden's top disciple and then Maximus Lonihor.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack kills the warden's top disciple, then faces Maximus before a galaxy-wide audience. Maximus combines superior technique with a Leonine battle form, but Jack's foundation, titles, Dao roots, regeneration, and spatial skill let him overcome the level gap. Jack kills Maximus, reaches level 233, and publicly reveals his Ninth Ring Conqueror title. The warden honors the release agreement because breaking it on the broadcast would deepen the Animal Kingdom's humiliation. Jack, the Sage, Dordok, and Jack's former mentor escape in the Bromobile. Pursuers follow, but the Black Hole Church opens a costly long-range gate and escorts them through before a B-grade can catch them. The group reaches Earth's Solar System. The Animal Kingdom removes the warden and its ancestor takes charge of hunting Jack. Meanwhile, the Church arranges the secret return of Brock, Gan Salin, and Nauja for the war six days away.",
+            "through": {
+              "chapter": 77
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alexander Petrovic attacks Harambe in an E-grade dungeon, kills three brorillas, and leaves Brock's father gravely injured. Brock returns secretly but delays revenge to preserve the Alliance's plan. At the Grace Concert, the Brotherhood and Flame River launch their attack against Ice Peak before the planetary grace period expires. Margaret Rust coordinates the allied army while Vivi fights Alexander. Edgar and Gan Salin face powerful individual opponents, with Nauja initially held in reserve. A devil-bound Sephira woman isolates Edgar, and Alexander discovers that Vivi is pregnant with Jack's child. He uses her need to protect the baby to defeat her and prepares to kill her publicly. Brock intervenes, saves Vivi, and confronts Alexander on behalf of both Vivi and the injured brorillas. Jack has not yet appeared, and the wider ground battle remains precariously balanced.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack returns publicly and challenges Galicia Lonahor to fight him alone above Earth while the Alliance continues its war below. Gan Salin protects Nauja long enough for her to perfect her advancing arrow and defeat two enemy scions. Edgar abandons the devil's combat alteration, restores his original Dao, and frees the Sephira woman from the darkness controlling her. Their broken contracts destroy the devil, and the Sage revives the mortally wounded Edgar, though neither Edgar nor the woman can advance further. Offworld reinforcements expand the battle until the Bro Army and Dordok's crew arrive. Brock and Alexander both break through to D-grade. Brock's Bro Code lets him draw strength through his bonds, overcome Alexander's true ice, and execute him. Margaret traps the advancing Ice Peak army, and Ice Peak surrenders. The Alliance controls the ground battle, leaving Jack's confrontation with Galicia as the last unresolved major fight.",
+            "through": {
+              "chapter": 91
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack clears a D-grade dungeon and reaches peak D-grade before confronting Galicia. His matured Dao tree opens onto an unknown expanse, but a vast turtle-like being immediately expels him, leaving the doorway unexplained. Jack also finds Sparman critically damaged after defending the Forest of the Strong and leaves the robot to conserve energy. In the broadcast duel, Jack exposes the life drop and declares Earth independent, causing the System to flag him for Hand of God containment. Galicia, revealed as Maximus's mother, repeatedly destroys Jack's body while his regeneration restores it. On the Moon, Jack converts his unfinished supernova insight into a stronger version of his signature fist technique and kills her. Jonas Evergreen prevents the Animal Kingdom and Hand of God fleets from intervening. Afterward, he moves Earth and the Moon outside system space. Brock, Margaret, Vivi, Gan Salin, Nauja, Edgar, Dordok, and the Sephira survivor remain alive. Vivi tells Jack she is carrying his child. Earth is hidden but not unreachable, and the wider conflict remains open.",
+            "through": {
+              "chapter": 97
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0D3236RBC",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-3"
+      }
+    },
     "road-to-mastery-4": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Lionel Horseman"
+            ],
+            "description": "A peak D-grade cultivator, Vivi's partner, and a defender of relocated Earth. His ties to the Black Hole Church offer a path toward greater strength.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vivi Aragon"
+            ],
+            "description": "Jack's partner and an Earth defender who shares responsibility for their relocated world.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Big Bro"
+            ],
+            "description": "Jack's brorilla spiritual companion, closest cultivation ally, and a cultivator in his own right.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Black Hole Church apostle"
+            ],
+            "description": "A diviner and Black Hole Church apostle who serves as Jack's sponsor within the Church.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Professor"
+            ],
+            "description": "Jack's mother and one of Earth's strategic leaders.",
+            "id": "margaret-rust",
+            "name": "Margaret Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth cultivator constructing a magical academy. Ending his former devil bargain has left his own advancement blocked, but he continues building an institution for other practitioners.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A repaired Earth combatant who is expected to teach combat at Edgar's magical academy.",
+            "id": "sparman",
+            "name": "Sparman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Brock's father and an elder figure on Earth. He has recovered from his earlier injuries and has settled into a calmer role around Jack and Vivi's growing family.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former Animal Kingdom cultivator allied with Earth and a travelling companion of Nauja.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An archer allied with Earth and Gan Salin's travelling companion.",
+            "id": "nauja",
+            "name": "Nauja",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The highest-ranked outer disciple at the Cathedral when Jack reaches the Black Hole Church.",
+            "id": "min-ling",
+            "name": "Min Ling",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A low-ranked C-grade disciple displaced by Jack's elevated placement. She challenges his legitimacy and arranges a wagered duel against him.",
+            "id": "c-grade-rank-challenger",
+            "name": "the C-grade rank challenger",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dorman"
+            ],
+            "description": "An Earth cultivator Jack knew previously, now burdened by a treasure-altered body whose great weight impairs his speed-focused cultivation.",
+            "id": "dorman-whistles",
+            "name": "Dorman Whistles",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack and Vivi's infant twin children, cared for by their family on relocated Earth while Jack trains at the Black Hole Church.",
+            "id": "abel-and-eric",
+            "name": "Abel and Eric",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A three-fruit outer disciple who cultivates tyranny and acts as hired muscle against weaker Church members. He uses repeated violence against Dorman to pressure Jack into accepting a lethal, debt-backed duel.",
+            "id": "don-cranxiao",
+            "name": "Don Cranxiao",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Cathedral's third-ranked disciple, Don Cranxiao's cousin, and a powerful cultivator of tyranny from the Iron Fist Empire. His standing enables Cranxiao's earlier bullying, and he attends Cranxiao's confrontation with Jack.",
+            "id": "baron-longform",
+            "name": "Baron Longform",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A six-fruit C-grade swordsman ranked far above Jack and married to Jack's earlier duel opponent. He challenges Jack over that conflict and the claim that he arranged further harassment through Don Cranxiao.",
+            "id": "marcus-william",
+            "name": "Marcus William",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A frog-like Cathedral envoy who lets Brock attempt the Ceaseless Murder Globe before becoming a disciple. The envoy wagers on his success and agrees to register him if he earns a ranking.",
+            "id": "frog-like-cathedral-envoy",
+            "name": "the frog-like Cathedral envoy",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A seven-fruit, claymore-wielding C-grade who accepts a formal duel with Jack after Baron Longform promises payment for seriously injuring or killing him.",
+            "id": "seven-fruit-challenger",
+            "name": "the seven-fruit challenger",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "turtle guardian"
+            ],
+            "description": "A turtle-like guardian dwelling within Jack's life artifact. It confronts him when his production of healing stones consumes too much of the artifact's energy.",
+            "id": "life-drop-guardian",
+            "name": "the life-drop guardian",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silent, severe A-grade elder of the Black Hole Church who provides the starship for the hidden-realm expedition.",
+            "id": "boatman",
+            "name": "Boatman",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Spacewind Sovereign"
+            ],
+            "description": "A sovereign of the Black Hole Church chosen to command the mission into the hidden realm.",
+            "id": "spacewind",
+            "name": "Spacewind",
+            "reveal": {
+              "chapter": 38
+            }
+          },
+          {
+            "description": "This five-fruit prodigy represents the Hand of God in combat and studies directly under its water elder. Her snake-like, venomous style leaves several exhibition opponents severely injured.",
+            "id": "hand-of-god-venom-prodigy",
+            "name": "the Hand of God venom prodigy",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Green Dragon Archon"
+            ],
+            "description": "The deceased creator of the Dragon Life Realm, known through a recorded inheritance message. The Archon's trial links mastery of life and space-time to the chance to refine the realm heart.",
+            "id": "archon-green-dragon",
+            "name": "Archon Green Dragon",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior Cathedral envoy who places Jack at rank 950, displacing another disciple and exposing Jack to challenges from those who resent his elevated position.",
+            "id": "head-envoy",
+            "name": "the Head Envoy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Hand of God C-grade who leads the faction's lower-grade expedition members alongside Min Ling after the hidden realm separates the cultivators by rank.",
+            "id": "hand-of-god-leader",
+            "name": "the Hand of God leader",
+            "reveal": {
+              "chapter": 61
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DFMMTZJJ",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-4"
+      },
       "recaps": {
         "ending": "Jack passes Archon Green Dragon's trial by asserting a personal, fist-centered Dao, then refines and absorbs the realm heart. The inheritance raises him to five fruits, gives him control over the realm's exits, and leaves him with B-grade fighting power. He releases Brock and Min Ling, and the three head first toward Earth before planning further travel. Min Ling accepts that Jack is married and does not pursue her feelings. Jack deliberately leaves Spacewind and the rest of the expedition in Green Cultivator Town until he can safely deal with Spacewind, though he intends eventually to free those who did not attack his group. The Archon's realm can survive for millennia, and Jack is expected to return at A-grade to incorporate it into his inner world. The life-drop guardian remains asleep, Jack still owes the Supreme Blood a lethal repayment debt, and his promises to Dorman Whistles remain outstanding. Elsewhere, the Second Crusade seizes the Black Hole Church Cathedral after its guardian dies covering an evacuation. Boatman, the Sage, and other Church survivors are unaccounted for. A disgraced former Animal Kingdom warden orders a search for Earth, placing Vivi, Abel, Eric, and the relocated world in renewed danger.",
         "in_short": "After securing relocated Earth, Jack Rust leaves Vivi and their newborn twins to train at the Black Hole Church with Brock. He survives a hostile Cathedral culture, reaches C-grade, creates a trade in healing stones, wins a world anchor, and becomes Boatman's disciple. A joint expedition with the Hand of God enters a hidden realm that proves to be an Archon's creation. Baron Longform dies after ambushing Jack and Brock, while Min Ling saves them and joins their party. Trapped in the realm's deepest trial, Jack defines his personal fist-centered Dao, claims the realm heart, becomes the Archon's heir, and emerges with five fruits and B-grade combat power. He, Brock, and Min Ling leave for Earth, but Spacewind and most of the expedition remain confined. Meanwhile, the Second Crusade captures the Church's Cathedral, and a former Animal Kingdom warden begins searching for Earth to strike Jack's family.",
@@ -2112,6 +2837,448 @@
           }
         ],
         "work": "road-to-mastery-4"
+      }
+    },
+    "road-to-mastery-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Lionel Horseman"
+            ],
+            "description": "An Earth cultivator and Black Hole Church disciple who returns from a hidden realm after three years away. Disguised alongside Brock and Min Ling, he is trying to cross hostile territory, find the concealed Earth, and reunite with his family.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Big Bro"
+            ],
+            "description": "Jack's brorilla brother and travelling companion, linked to him by a close spiritual bond. He leaves the hidden realm at Jack's side and helps the group seek a safe route through enemy territory toward Earth.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi Aragon"
+            ],
+            "description": "Jack's partner, who is raising their children, Abel and Eric, on Earth while he remains away.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack and Vivi's young daughter. She trains under Harambe in the Forest of the Strong and approaches his demanding exercise routine with greater enthusiasm than her brother Eric.",
+            "id": "abel-rust",
+            "name": "Abel Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack and Vivi's young son and Abel's brother. He trains under Harambe in the Forest of the Strong, although he is less willing than Abel to follow the trainer's strenuous routine.",
+            "id": "eric-rust",
+            "name": "Eric Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brock's father and the trainer responsible for Abel and Eric during Jack's long absence. He puts both children through physical exercises in the Forest of the Strong.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Animal Kingdom ally of Jack who reunites with him alongside Nauja at Vengalo. He recognizes Jack despite the disguise concealing Jack's wanted identity.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gan Salin's travelling companion and a returning ally of Jack. She recognizes him at Vengalo despite his disguise and rejoins his group.",
+            "id": "nauja",
+            "name": "Nauja",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black Hole Church cultivator and trusted ally travelling with Jack and Brock. Her disguise pills help conceal their wanted identities when they emerge from the hidden realm at Vengalo.",
+            "id": "min-ling",
+            "name": "Min Ling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rufus Emberheart's father, Jack's former enemy, and a commander in the Hand of God. He directs the Milky Way purge of the defeated Black Hole Church and its allies, making Jack's journey toward Earth especially dangerous.",
+            "id": "artis-emberheart",
+            "name": "Artis Emberheart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Black Hole Church apostle"
+            ],
+            "description": "A Black Hole Church diviner and one of Jack's prior sponsors. He is among the very few people who know the teleportation frequency of the mobile, concealed Earth, but Jack does not know where to find him.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's former master in the Exploding Sun and one of the few people who knows how to reach the hidden, mobile Earth. Missing after the faction's defeat, this master becomes Jack's main lead in his search for a route home.",
+            "id": "jacks-former-exploding-sun-master",
+            "name": "Jack's former Exploding Sun master",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A late B-grade Hand of God officer who leads the Milky Way purge. After receiving a report that matches Jack's abilities, she travels with Artis Emberheart to direct the hunt for him.",
+            "id": "the-hand-of-god-commander",
+            "name": "the Hand of God commander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Elder Boatman"
+            ],
+            "description": "A powerful Black Hole Church elder and Jack's master in the Dao of Death. His soul marker remains within Jack's Death Cube, but it has given no contact since the hidden realm, leaving his present condition unknown.",
+            "id": "boatman",
+            "name": "Boatman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak C-grade Leonan who leads the Animal Kingdom elders assembled at the meteor near Hell. He explains that their ambush is meant to hold Jack until stronger forces arrive.",
+            "id": "the-animal-kingdom-grand-elder",
+            "name": "the Animal Kingdom grand elder",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dorman"
+            ],
+            "description": "A middle C-grade defender of Earth and an ally of the Black Hole Church. After Jack removed the dangerous excess power from his body and supplied resources, Dorman returned to guard the planet and confronts Artis when he arrives.",
+            "id": "dorman-whistles",
+            "name": "Dorman Whistles",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An F-grade direct descendant of the people sealed within Black Hole World. She finds Jack after his passage through the abyss, tends him while he is injured and grieving, and becomes his guide to her isolated society.",
+            "id": "mia",
+            "name": "Mia",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The long-dead ancestor credited by his descendants with creating Black Hole World. Their refuge has remained sealed for more than a billion years because they lost the space-time cultivators needed to leave it.",
+            "id": "archon-black-hole",
+            "name": "Archon Black Hole",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's foster mother and one of the loved ones whose continued presence gives him a reason to survive while he is trapped and weakened.",
+            "id": "jacks-mother",
+            "name": "Jack's mother",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Professor"
+            ],
+            "description": "Jack's foster mother and the retired former leader of Earth. Vivi has succeeded her as Earth's leader.",
+            "id": "margaret-rust",
+            "name": "Margaret Rust",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An altered duplicate within Jack's soul world. He lies asleep beside Jack's life artifact after being changed through contact with the life drop, and neither his origin nor his purpose is understood.",
+            "id": "copy-jack",
+            "name": "Copy Jack",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of Black Hole World's Elder Council. She entrusts Jack with her people's hope of escape and takes him to a sealed tablet warning about the Immortal Crusade.",
+            "id": "the-black-hole-world-grand-elder",
+            "name": "the Black Hole World grand elder",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A middle B-grade Animal Kingdom ancestor, the kingdom's strongest active forebear, and guardian of the Animal Abyss. He detects the disruption caused by Jack's return and attacks when Jack emerges carrying the portal artifact.",
+            "id": "muir-emberheart",
+            "name": "Muir Emberheart",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An early C-grade Animal Kingdom enforcer who had attended Jack's earlier grand duel. He becomes a target in the Dark Ram crew's concealed campaign against the kingdom.",
+            "id": "the-blood-baron",
+            "name": "the Blood Baron",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A middle C-grade canine elder of the Animal Kingdom who supervises the major mine at Earthen Gemini. He commands the site's defense when Jack brings his covert campaign to the installation.",
+            "id": "elder-karan",
+            "name": "Elder Karan",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A late B-grade Hand of God envoy and Artis Emberheart's operational superior. On confirming that Jack survived, she recognizes his rapid growth as a direct threat and orders the Animal Kingdom's forces to gather under her protection.",
+            "id": "eva-solvig",
+            "name": "Eva Solvig",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An early B-grade guest elder assigned by Wide Swirls to command the Hand of God's Crown Meteor Outpost. Jack finds that he has imprisoned humans there and subjected them to experiments.",
+            "id": "edelstein-magnifold",
+            "name": "Edelstein Magnifold",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A late B-grade founder of the Animal Kingdom kept in cryogenic reserve. The kingdom awakens him as one of its final ancestral weapons after Jack's campaign and the spreading rebellion exhaust its ordinary responses.",
+            "id": "the-lonahar-supreme-ancestor",
+            "name": "the Lonahar supreme ancestor",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A founder of the Animal Kingdom preserved as a last-resort defender. He is revived alongside the Lonahar supreme ancestor when the kingdom decides that only its reserve forebears may be able to stop Jack.",
+            "id": "the-emberheart-supreme-ancestor",
+            "name": "the Emberheart supreme ancestor",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A late B-grade Black Hole Church head envoy who leads the elite Spoon Squad. After rapidly destroying a fortified Hand of God facility, the squad receives Boatman's order to travel to the Animal Kingdom constellation.",
+            "id": "sovereign-heavenly-spoon",
+            "name": "Sovereign Heavenly Spoon",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's former F-grade disciple, imprisoned by the Animal Kingdom and freed when Jack returns to Animal Planet. His memory of alternate teleporter frequencies gives the group a route to Earth.",
+            "id": "the-returning-monk",
+            "name": "the returning monk",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "talking stone"
+            ],
+            "description": "An anomalous speaking stone discovered among Eva's possessions. It remembers existing as part of an asteroid and being studied by a harsh-voiced woman, but nothing from before that life, leaving the basis of its awareness unexplained.",
+            "id": "the-sentient-stone",
+            "name": "the sentient stone",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Black Hole Church elder sheltering aboard the Death Boat after his own refuge was destroyed during the retreat from system space. He joins Boatman in overseeing Jack and Brock's public B-grade attempts.",
+            "id": "elder-heavenstar",
+            "name": "Elder Heavenstar",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A D-grade assistant serving aboard the Death Boat. She guides Jack and Brock to a secluded asteroid in the Bone Belt where their B-grade breakthroughs can proceed under Church protection.",
+            "id": "leteria",
+            "name": "Leteria",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "number one"
+            ],
+            "description": "A robotic leader marked with the number one who commands the immortals' System forces. With the old gods approaching, the leader orders a strategic withdrawal and accelerated cultivation through released monsters and widespread killing.",
+            "id": "the-heaven-immortal",
+            "name": "the Heaven Immortal",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The unnamed leader of an army opposing the immortals and their System. She rallies formations of C-grade soldiers, B-grade commanders, and A-grade generals for a war presented as a struggle for freedom and justice.",
+            "id": "the-anti-immortal-queen",
+            "name": "the anti-immortal queen",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DHW9WBVJ",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-5"
+      },
+      "recaps": {
+        "ending": "Jack ends the Animal Kingdom war by destroying its elder corps, killing Eva Solvig and the surviving founders, and leaving Artis Emberheart permanently sealed in intergalactic emptiness. Brock, Gan Salin, Nauja, and their companions stop Jack from extending his vengeance to civilians. The surviving Emberheart family abandons its name and becomes Open Chest. Jack returns to Earth, reunites with Vivi and Abel, buries an empty casket for Eric, and says goodbye before departing with Brock and Dorman Whistles. Min Ling, the Sage, and Sovereign Heavenly Spoon carry them toward the Black Hole Church's hidden forces. Brock becomes B-grade with an 8,800-mile inner world. Jack's freedom-based tenth fruit helps him advance to B-grade and expand his inner world to 10,000 miles, after which he survives heavenly tribulation with Brock and Boatman's intervention. Earth remains vulnerable, Black Hole World's people still await rescue, and Copy Jack and the sentient stone remain unexplained. The Heaven Immortal prepares mass slaughter while an anti-immortal queen mobilizes an opposing army and eleven old gods move toward system space.",
+        "in_short": "Jack Rust emerges from a hidden realm and fights through the Hand of God's conquered territory to reach Earth. Artis Emberheart kidnaps and kills Jack's son Eric, cracking Jack's Dao and driving him into the Animal Abyss, which leads to the sealed Black Hole World. Jack repairs himself, promises to free its stranded people, and returns to wage war on the Animal Kingdom. He defeats its ancestors and Eva Solvig, while Brock stops him from killing Emberheart civilians. Artis is sealed and abandoned alive, and the survivors renounce their family name. After mourning Eric with Vivi and Abel, Jack leaves Earth for the Second Crusade. Brock reaches B-grade with an 8,800-mile inner world. Jack discovers freedom as a tenth Dao fruit, forms a 10,000-mile inner world, and survives heavenly tribulation with Brock and Boatman's help. As the Church prepares for war, immortal and anti-immortal armies mobilize and eleven old gods approach system space.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Rust, also known as Lionel Horseman, became an Earth cultivator and a disciple of the Black Hole Church. Brock became his spiritually linked brorilla brother, while Min Ling, Gan Salin, and Nauja were among his trusted allies. Jack's enemies included Artis Emberheart and the wider Emberheart line. Jack left Earth and spent years away in a hidden realm, while his partner Vivi raised their children, Abel and Eric. The route home remained difficult, and the safety of Jack's family continued to guide his choices.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack, Brock, and Min Ling leave the hidden realm in disguise and reach Vengalo, where Gan Salin and Nauja recognize them. The reunited travellers learn that the Hand of God has captured the Black Hole Church Cathedral, scattered the Exploding Sun, and begun a purge directed in the Milky Way by Artis Emberheart. Min Ling departs to check on her people, while Nauja helps the others seize a Falling Star teleporter. Jack and Brock defeat the defenders, and the group escapes into the Milky Way, exposing Jack's return. Earth remains hidden and mobile, and Jack cannot contact it without one of the few people who knows its frequency. The group searches the ruined Exploding Sun headquarters for Jack's missing former master. Brock, Gan Salin, and Nauja destroy the Hand of God outpost occupying the site, but Jack finds only a cryptic clue. Artis and a late B-grade Hand commander arrive too late to catch them, leaving the group without a confirmed route home and under a widening hunt.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The clue sends Jack's group toward a meteor near Hell. On the way, Jack studies the Animal Abyss and learns how to bypass part of its vast formation. The meteor proves to be an Animal Kingdom trap. Jack separates from the Bromobile so Brock, Gan Salin, and Nauja can escape, then flees an early B-grade ancestor and a late B-grade Hand envoy. He enters the Animal Abyss, but Artis appears outside with Eric as a hostage. An earlier attack on Earth had been repelled by Dorman Whistles and a hidden Church elder, so Artis kidnapped Jack's five-year-old son instead. Jack exits the Abyss and submits to restraint in exchange for Eric's life. Artis kills Eric anyway. The failure to protect his child cracks Jack's Fist Dao. Jack burns through his reserves to break the envoy's domain but cannot win. Determined to survive and take revenge, he enters one of the black whirlpools roaming within the Abyss, leaving his enemies unable to follow.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack's connection to Brock and Boatman disappears when he enters the black hole, and both allies and enemies conclude that he died. Brock turns his grief into a campaign against Animal Kingdom slavers. Jack is actually alive inside Black Hole World, an ancient sealed refuge created by Archon Black Hole for his descendants. Mia finds and nurses him, but Eric's death and the crack in his Dao tree have reduced his power and may prevent further advancement. The peaceful inhabitants cannot leave because their space-time experts vanished long ago. Jack explores their layered world and identifies its central vortex as the true core of the Animal Abyss. The core is slowly failing, although collapse may still be far away. Jack may eventually be able to open a passage through it, but he must first repair his Dao. His family and responsibilities give him reasons to survive, while his desire for revenge remains unresolved. Outside, Brock leads the Dark Ram against Animal Kingdom operations and rescues prisoners from a slaving ship.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack studies grief, death, and space-time within Black Hole World. On Earth, Vivi succeeds the Professor as leader and strengthens its defenses while raising Abel. Jack realizes that his Dao failed because it did not account for those depending on his protection. He accepts his mistake, forgives himself, and repairs the cracked tree, although he channels his remaining grief into revenge. Jack learns to detach the artifact linking Black Hole World to the Animal Abyss and promises the stranded descendants that he will return when he can free them safely. Archon Black Hole's record reveals that their refuge was created during the Immortal Crusade. Jack departs with the portal artifact and emerges beside Muir Emberheart, the Animal Kingdom's middle B-grade guardian. Despite remaining C-grade, Jack kills Muir and removes the Abyss from its former location. His soul connection with Brock returns. They reunite after a year apart, and Jack explains Eric's murder, his recovery, and the hidden world. Brock, Gan Salin, Nauja, and the mobile crew commit to supporting his war against the Animal Kingdom, though they worry about the direction of his grief.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack's crew secretly kills Animal Kingdom enforcers, then destroys the Earthen Gemini mine. Eva Solvig confirms that Jack survived and gathers the kingdom's forces under Hand of God protection. Jack forms a Revenge fruit, while Brock warns that collective punishment would turn grief into murder. At Crown Meteor Outpost, Jack discovers human experimentation, kills its early B-grade commander, saves the prisoners, and publicly declares war on both enemy factions. The Animal Kingdom awakens two preserved founders. Meanwhile, Sovereign Heavenly Spoon leads a Black Hole Church strike team, including Min Ling and the Sage, toward the Milky Way on Boatman's orders. Jack forms a Brotherhood fruit after recognizing Brock as the person who keeps him from losing his way. A raid on Hell draws out the revived Lonahar supreme ancestor. The founder traps Jack in a prolonged late B-grade battle with twelve intelligent phantoms, but Jack imprisons the phantoms, forces a direct fight, and kills the ancestor with a final physical strike. Brock retrieves the badly injured Jack, and the Dark Ram escapes moments before Eva can stop them.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With a Church pickup approaching, Jack forms a Time fruit and attacks Animal Planet. Brock channels support from across the galaxy into him while the confrontation is broadcast. Jack kills the Animal Kingdom's entire elder corps, its remaining ancestors and founders, a Hand combatant, and Eva Solvig. Brock captures Artis, permanently seals his body, soul, and Dao, and prevents his suicide. Jack exiles Artis alive into intergalactic emptiness. Jack then tries to destroy the moon holding Emberheart civilians, but Brock blocks the attack. Gan Salin, Nauja, and the other companions join Brock, and Jack accepts that the massacre would serve his grief rather than Eric. He spares the lineage if it abandons its surname, and the survivors become Open Chest. After freeing prisoners, Jack uses an alternate teleporter route to reach Earth. He reunites with Vivi and Abel, visits his retired mother Margaret, and spends an extended month with his family through time manipulation. They bury an empty casket for Eric. When Min Ling, the Sage, Sovereign Heavenly Spoon, and the Church party arrive, Jack leaves Earth with Brock and Dorman Whistles to join the Second Crusade.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the journey to the Black Hole Church's hidden refuge, Jack reshapes Revenge into a fruit of discipline and justice, then forms Protection as his ninth fruit. He and Brock reach peak C-grade and meet Boatman, who accepts Brock as another disciple. Leteria guides both men to a secluded asteroid, where Boatman and Elder Heavenstar oversee their public B-grade breakthroughs. Jack destroys his Dao foundation but realizes the standard nine-fruit structure lacks a final principle. He forces a tenth fruit into existence and identifies it as Freedom. Brock forms an 8,800-mile inner world, marking him as a potential future Archon. Jack's flawless ten-fruit system grows to the universe's 10,000-mile limit, making him B-grade and giving him the Paragon of Cultivation class. A heavenly tribulation immediately attacks him and changes local laws to nullify his techniques. Brock enters the storm to restore him, accepting a matching attack. Boatman intervenes to shield both disciples and weakens the tribulation. Jack destroys its final dragon and the remaining storm with Supernova, surviving the punishment for his unprecedented breakthrough.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack survives the heavenly tribulation as a B-grade cultivator with a 10,000-mile inner world, while Brock stands beside him with an 8,800-mile world and Boatman remains their protector. Their immediate breakthroughs end in victory, but the wider war is only expanding. Eleven returning old gods are travelling toward system space and will arrive in years. The robotic Heaven Immortal orders most forces withdrawn from system galaxies while experience gains are raised and dungeon monsters are released. The purpose is to turn widespread slaughter into a larger army. On the opposing side, an unnamed queen rallies C-grade soldiers, B-grade commanders, and A-grade generals against the immortals and their System. Her forces enter the coming conflict under the cause of freedom and justice. Jack and the weakened Black Hole Church therefore face a struggle that now reaches far beyond the defeated Animal Kingdom and the Hand of God's Milky Way branch.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0DHW9WBVJ",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-5"
       }
     },
     "robert-louis-stevensons-classic-treasure-island": {
