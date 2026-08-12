@@ -3784,6 +3784,242 @@
         "work": "brooklyn-follies"
       }
     },
+    "brothers-in-arms": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Admiral Naismith"
+            ],
+            "description": "A Barrayaran lieutenant lord who secretly commands the Dendarii as Admiral Naismith. After the costly Degula operation, he must conceal his mercenary identity on Earth, secure money for his strained fleet, and accept temporary duty at the Barrayaran Embassy.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Quinn"
+            ],
+            "description": "A trusted Dendarii commander who serves as Miles's bodyguard and liaison while the fleet waits in Earth orbit. She belongs to the small circle that knows Lieutenant Lord Miles Vorkosigan and Admiral Naismith are the same man.",
+            "id": "elli-quinn",
+            "name": "Elli Quinn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commodore Tung"
+            ],
+            "description": "A senior Dendarii officer dealing with the human cost of the Degula operation. He arranges treatment for nine severely wounded personnel and recovery of some frozen dead before beginning leave that is already overdue.",
+            "id": "tung",
+            "name": "Tung",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Komarran captain serving as senior military attaché and acting security chief at the Barrayaran Embassy in London. As Miles's temporary superior, he must manage an officer whose safety and divided duties carry unusual political risks.",
+            "id": "duv-galeni",
+            "name": "Duv Galeni",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ivan"
+            ],
+            "description": "Miles's cousin, a Barrayaran lieutenant and second assistant military attaché in London. Assigned to orient Miles to embassy work, Ivan already knows about the Admiral Naismith identity and understands the family complications surrounding it.",
+            "id": "ivan-vorpatril",
+            "name": "Ivan Vorpatril",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tabor"
+            ],
+            "description": "The Cetagandan Embassy's military attaché in London. He meets Miles during a diplomatic reception and learns that Lord Vorkosigan is on Earth, knowledge that adds to the danger surrounding Miles's concealed mercenary identity.",
+            "id": "ghem-lieutenant-tabor",
+            "name": "ghem-Lieutenant Tabor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Dendarii private and capable veteran of the Degula operation. She is among the intoxicated soldiers barricaded in a London wine shop after the fleet's credit fails, forcing Miles to confront a disciplinary and public-relations crisis.",
+            "id": "xaveria",
+            "name": "Xaveria",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Danio"
+            ],
+            "description": "An intoxicated Dendarii soldier involved in the London wine-shop incident. He carries a personal antique pistol while his group holds the clerk, leaving Admiral Naismith to disarm them and arrange a peaceful surrender.",
+            "id": "private-danio",
+            "name": "Private Danio",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bone"
+            ],
+            "description": "The Dendarii finance officer responsible for the fleet's Earth-side accounts and investments. Bone warns Miles that the available funds are exhausted and that the fleet may enter receivership within days unless new financing arrives.",
+            "id": "lieutenant-bone",
+            "name": "Lieutenant Bone",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Valérie"
+            ],
+            "description": "A Euronews Network journalist who filmed Admiral Naismith during the wine-shop fire. At a diplomatic reception she recognizes Miles despite his Barrayaran uniform, prompting him to offer a confidential explanation for their identical appearance.",
+            "id": "lise-valerie",
+            "name": "Lise Valérie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Elena"
+            ],
+            "description": "A Dendarii captain and one of the few officers trusted with Miles's true identity. Miles sends her to Tau Ceti with a sealed message so she can investigate the missing payment outside an embassy courier channel that may be compromised.",
+            "id": "elena-bothari-jesek",
+            "name": "Elena Bothari-Jesek",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An apparent double who can imitate Miles closely enough to deceive Elli Quinn and Ivan during a controlled kidnapping exchange. While the real Miles is carried into captivity, the impostor gains access to the embassy in his place.",
+            "id": "miles-duplicate",
+            "name": "Miles's duplicate",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The birth name recorded in Duv Galeni's sealed personnel history. The file links the embassy captain to a prominent Komarran resistance family and shows that his admission to Imperial Service required significant political support.",
+            "id": "david-galen",
+            "name": "David Galen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Komarran resistance leader whom Galeni had believed dead. While imprisoned, Galeni learns that his father is alive and commands the radical group holding him and Miles, as well as the operation built around Miles's double.",
+            "id": "galenis-father",
+            "name": "Galeni's father",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Duv Galeni's father and the surviving Komarran resistance leader who commands the conspiracy. He interrogates Miles with fast-penta and directs the double's impersonation while pursuing a plan to destabilize Barrayar.",
+            "id": "ser-galen",
+            "name": "Ser Galen",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lord Mark Pierre Vorkosigan"
+            ],
+            "description": "Miles's exact clone and biological brother, raised for a body-transplant market and later trained by Komarran conspirators to replace him. Miles offers him the separate name and protected future of Lord Mark Pierre Vorkosigan, but Mark has not yet broken from Ser Galen.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Destang"
+            ],
+            "description": "The Sector 2 security chief who arrives from Tau Ceti to direct the London cleanup. He confirms that a blackmailed courier blocked the Dendarii's funds, releases the overdue money, and prepares to pursue Ser Galen and Mark.",
+            "id": "commodore-destang",
+            "name": "Commodore Destang",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An identity used by Ser Galen and uncovered through Elli Quinn's investigation. The trail runs through a suspicious off-world identity and contacts connected with an unregistered old Barrayaran stunner, giving the Dendarii a way to pursue him.",
+            "id": "vanderpool",
+            "name": "Vanderpool",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Dendarii intelligence officer whom Miles trusts with a personal mission. Bel agrees to continue searching for Ser Galen and Mark independently of Barrayaran security after Miles explains that Mark is his surviving clone brother.",
+            "id": "bel-thorne",
+            "name": "Bel Thorne",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duv Galeni's unnamed brother. When Ser Galen orders Mark to kill Miles and Duv Galeni, he intervenes and Ser Galen kills him with a nerve disruptor.",
+            "id": "galenis-brother",
+            "name": "Galeni's brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Imperial Security authority responsible for reviewing the reports and remaining loyalty questions arising from the London operation. Until Illyan reaches a judgment, Galeni is kept on routine embassy duty rather than subjected to an immediate final disposition.",
+            "id": "illyan",
+            "name": "Illyan",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002VACF0U",
+            "type": "community"
+          }
+        ],
+        "work": "brothers-in-arms"
+      }
+    },
     "brothers-karamazov": {
       "characters": {
         "characters": [
