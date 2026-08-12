@@ -3030,6 +3030,302 @@
         "work": "milkweed"
       }
     },
+    "mirror-dance": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A surgically altered duplicate of Admiral Naismith who takes command of the Ariel by deception. He orders an unauthorized expedition to Jackson's Hole to remove clone children from a lethal transplant program.",
+            "id": "naismith-impersonator",
+            "name": "Naismith impersonator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Captain of the Dendarii cruiser Ariel. Bel accepts the apparent Admiral Naismith's urgent plan to raid a Jackson's Hole clone facility and rescue children destined for brain-transplant procedures, despite knowing that Naismith has a clone.",
+            "id": "bel-thorne",
+            "name": "Bel Thorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A towering, genetically engineered Dendarii commando assigned to Green Squad. She is personally close to the officer she believes is Naismith and joins his armed descent on the clone facility, unaware that the mission rests on an impersonation.",
+            "id": "genetically-altered-sergeant",
+            "name": "Genetically altered sergeant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miles Vorkosigan",
+              "Admiral Naismith"
+            ],
+            "description": "The Barrayaran Imperial Security operative behind the Admiral Naismith identity and commander of the Dendarii. Back on Escobar, he discovers that his clone brother stole the Ariel and departed for Jackson's Hole.",
+            "id": "miles-naismith-vorkosigan",
+            "name": "Miles Naismith Vorkosigan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Quinn"
+            ],
+            "description": "A Dendarii captain and Miles's lover. She intends to remain a spacefaring commander rather than enter Barrayaran aristocratic life, and she joins Miles when the stolen Ariel forces an immediate pursuit.",
+            "id": "elli-quinn",
+            "name": "Elli Quinn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elena"
+            ],
+            "description": "Captain of the Peregrine and one of the Dendarii officers trusted with Miles's dual identity. She helps assess the theft of the Ariel and the danger posed by Miles's impersonator, then remains with the fleet as Miles prepares his response.",
+            "id": "elena-bothari-jesek",
+            "name": "Elena Bothari-Jesek",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer responsible for Dendarii fleet engineering, as well as Elena Bothari-Jesek's husband and an insider to Miles's identities. He helps plan the response to the Ariel crisis while other obligations continue.",
+            "id": "baz-jesek",
+            "name": "Baz Jesek",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Komarran conspirator who directed the project that created Miles's clone brother. His group altered the clone's body and used coercion and abuse while training him to replace and assassinate Miles for an old political revenge plot.",
+            "id": "ser-galen",
+            "name": "Ser Galen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Miles's engineered clone brother and the man who impersonated Naismith to launch the clone rescue. Trapped with the raiders and children, Mark becomes the person Miles refuses to surrender to Vasa Luigi.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Jacksonian house leader whose forces have surrounded the stranded Dendarii raiders. A long-term user of clone bodies, he is willing to ransom the soldiers while keeping Mark, whose unusual origin makes him especially valuable.",
+            "id": "vasa-luigi",
+            "name": "Vasa Luigi",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Norwood"
+            ],
+            "description": "A Dendarii medic who becomes separated from the retreat with Miles's cryo-chamber. Norwood is found dead after the withdrawal, while both Miles and the chamber remain missing.",
+            "id": "medic-norwood",
+            "name": "Medic Norwood",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the rescued clone women aboard the Dendarii ships. She has been taught to expect reunion with a maternal figure and does not yet understand that her creators intended to use her body in a fatal transplant.",
+            "id": "marie",
+            "name": "Marie",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Illyan"
+            ],
+            "description": "Chief of Barrayaran Imperial Security. He receives the report that Miles was frozen after a chest wound but lost with his cryo-chamber, then assumes responsibility for both the search and the rescued clones.",
+            "id": "simon-illyan",
+            "name": "Simon Illyan",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Countess Vorkosigan"
+            ],
+            "description": "The genetic mother of Miles and Mark. She welcomes Mark as a separate and equally valid son, insists that his choices need not be limited to replacing his missing brother, and offers him family recognition under the clone law of Beta Colony.",
+            "id": "cordelia-vorkosigan",
+            "name": "Cordelia Vorkosigan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Count Vorkosigan"
+            ],
+            "description": "The genetic father of Miles and Mark. He holds both the Vorkosigan countship and Barrayar's premiership. He accepts Mark's independent responsibility for the clone rescue and explains the succession burden that may follow if Miles cannot return.",
+            "id": "errol-vorkosigan",
+            "name": "Errol Vorkosigan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gregor"
+            ],
+            "description": "The Barrayaran Emperor. In a private audience, he encourages Mark to seek a purpose separate from being Miles's substitute and treats political rank as a responsibility a person can learn to carry. He also gives Mark a direct means of contacting him.",
+            "id": "emperor-gregor",
+            "name": "Emperor Gregor",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ivan"
+            ],
+            "description": "Miles and Mark's cousin and the fallback family heir. Although still resentful over an earlier conflict with Mark, Ivan escorts him through the capital and protects him during his introduction to Barrayaran public life.",
+            "id": "ivan-vorpatril",
+            "name": "Ivan Vorpatril",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A student with strong academic ambitions whom Mark meets at an Imperial celebration. She plans further study on Beta Colony and responds to Mark as an individual rather than treating him as a copy of Miles.",
+            "id": "young-woman-at-imperial-celebration",
+            "name": "Young woman at Imperial celebration",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A physician in a hidden collective of cloned medical siblings. She oversees the difficult revival of an unidentified cryo-patient whose replacement organs are still developing and whose autobiographical memory is absent.",
+            "id": "rowan",
+            "name": "Rowan",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior figure in a concealed clinic staffed by cloned medical siblings. Her collective has revived a badly wounded amnesiac and is waiting to learn whether his identity and recovered memories can protect their interests.",
+            "id": "clone-medical-collective-leader",
+            "name": "Clone medical collective leader",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jacksonian clone-house baron, long-term user of replacement bodies, and past enemy of Admiral Naismith. Naismith's earlier destruction of his genetic holdings and rescue of a captive give Ryoval a strong motive for revenge.",
+            "id": "baron-ryoval",
+            "name": "Baron Ryoval",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Jacksonian baron associated with the hidden clone medical collective. The group's old ties to him make its clinic Mark's strongest lead to the missing cryo-patient, though its present loyalty is uncertain.",
+            "id": "baron-fell",
+            "name": "Baron Fell",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician from the clone medical collective held under guarded hospitality by Vasa Luigi. She recognizes a conditioned servant in the house as her own younger duplicate and rejects an offer to remain there in a privileged medical post.",
+            "id": "collective-leaders-surgeon-sister",
+            "name": "Collective leader's surgeon sister",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young captive clone conditioned to regard the destruction of her own mind as service to her creator. Her resemblance to the collective leader's surgeon sister exposes the transplant plan intended for her body.",
+            "id": "clone-servant",
+            "name": "Clone servant",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gorge",
+              "Grunt",
+              "Howl"
+            ],
+            "description": "Separate protective responses that emerge within Mark under sustained torture. Three call themselves Gorge, Grunt, and Howl, while a fourth remains unnamed. They divide different forms of harm and shield his core identity from direct awareness.",
+            "id": "protective-personae",
+            "name": "Protective personae",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gorge",
+              "Grunt",
+              "Howl",
+              "Killer"
+            ],
+            "description": "Mark's collective name for the four survival personae that protected him during Ryoval's torture. He understands Gorge, Grunt, Howl, and Killer as parts of a single adaptive system rather than identities he intends to erase.",
+            "id": "black-gang",
+            "name": "Black Gang",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The aspiring scholar Mark first met at an Imperial celebration. She finds Mark interesting as an individual, and their developing relationship rests on patient trust while she prepares for offworld study.",
+            "id": "corrine",
+            "name": "Corrine",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002V1A7F4",
+            "type": "community"
+          }
+        ],
+        "work": "mirror-dance"
+      }
+    },
     "miss-lonelyhearts": {
       "characters": {
         "characters": [
