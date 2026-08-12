@@ -1145,6 +1145,257 @@
         "work": "kokoro"
       }
     },
+    "komarr": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ekaterin"
+            ],
+            "description": "Tien's wife, Nikki's mother, and Vorthys's niece, Ekaterin is a skilled amateur gardener living in Serifosa Dome. Her concern for her family is constrained by Tien's insistence that his inherited medical condition remain secret.",
+            "id": "ekaterin-vorsoisson",
+            "name": "Ekaterin Vorsoisson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Miles"
+            ],
+            "description": "A newly appointed Imperial Auditor investigating the Soletta collision as Vorthys's independent, co-equal colleague. Miles previously served in ImpSec and is heir to the Vorkosigan countship, bringing both security experience and political standing to the inquiry.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tien"
+            ],
+            "description": "Ekaterin's husband and Nikki's father, Tien is a Barrayaran administrator in the Serifosa terraforming project. He has tremors from an inherited adult-onset disorder but refuses local care, fearing that disclosure could damage his career.",
+            "id": "tien-vorsoisson",
+            "name": "Tien Vorsoisson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nikolai"
+            ],
+            "description": "Ekaterin and Tien's nine-year-old son, also known as Nikolai. Nikki has shown no tremor symptoms from the inherited disorder affecting his family.",
+            "id": "nikki",
+            "name": "Nikki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vorthys",
+              "Professor Vorthys"
+            ],
+            "description": "Ekaterin's great-uncle, an Imperial Auditor, and a former engineering professor. Vorthys is the probable-cause specialist assigned to the Soletta collision and works beside Miles as a co-equal investigator.",
+            "id": "lord-auditor-vorthys",
+            "name": "Lord Auditor Vorthys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marie Trogir's missing supervisor, an engineer from Waste Heat Management. Radovas left his post abruptly at the same time as Marie, giving rise to an unconfirmed story that the two departed together.",
+            "id": "dr-barto-radovas",
+            "name": "Dr. Barto Radovas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Marie"
+            ],
+            "description": "A Waste Heat Management engineering technician and Andro Farr's partner. Marie has been missing for six weeks after supposedly leaving on a field assignment with Radovas, yet she abandoned her possessions and cats.",
+            "id": "marie-trogir",
+            "name": "Marie Trogir",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Marie Trogir's cohabiting partner. Andro asks Ekaterin for help after Marie disappears without explanation.",
+            "id": "andro-farr",
+            "name": "Andro Farr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Soudha"
+            ],
+            "description": "The administrator of Serifosa's Waste Heat Management department and Marie Trogir's former department head. He confirms that Marie resigned with only one day's notice but says he cannot explain where she went.",
+            "id": "administrator-soudha",
+            "name": "Administrator Soudha",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Tien's Komarran administrative assistant, who guides Miles and Vorthys during their field tour of the terraforming project. Venier recognizes Ekaterin's interest in the work and encourages her to pursue technical training.",
+            "id": "venier",
+            "name": "Venier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gregor"
+            ],
+            "description": "The Emperor of Barrayar. His engagement to a Komarran woman gives the approaching wedding wider political importance, while Miles is expected to serve as his wedding second and witness.",
+            "id": "emperor-gregor",
+            "name": "Emperor Gregor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lace"
+            ],
+            "description": "Emperor Gregor's Komarran fiancée, known to Miles as Lace. Her forthcoming marriage to the Barrayaran Emperor carries political significance for relations between Barrayar and Komarr.",
+            "id": "laisa",
+            "name": "Laisa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Radovas's widow"
+            ],
+            "description": "Dr. Radovas's newly bereaved widow. She confirms that he left a note, removed his personal files, and disappeared with Marie Trogir, but cannot say whose plan the departure was or where they went.",
+            "id": "madame-radovas",
+            "name": "Madame Radovas",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Tuomonen"
+            ],
+            "description": "The ImpSec captain assigned to Serifosa and an officer assisting Miles with the Soletta inquiry. Tuomonen identifies the unexplained eighth victim and supports the investigation into Radovas's death and Marie Trogir's disappearance.",
+            "id": "captain-tuomonen",
+            "name": "Captain Tuomonen",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Foscol"
+            ],
+            "description": "An accountant in Waste Heat Management. Ekaterin first learns of Foscol as the person maintaining accounts for a concealed departmental scheme involving ghost employees and false financial records.",
+            "id": "lena-foscol",
+            "name": "Lena Foscol",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger Waste Heat engineer who has temporarily taken over Radovas's duties and hopes to earn a promotion. During Miles's inquiry, Arozzi confirms the private nature of Radovas and Marie's relationship but offers no explanation for their disappearance.",
+            "id": "arozzi",
+            "name": "Arozzi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Waste Heat mathematician who worked with Radovas on calculations and projections. Cappell is interviewed during the inquiry into Radovas's death and Marie Trogir's disappearance but supplies no convincing account of what happened.",
+            "id": "cappell",
+            "name": "Cappell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Gibbs"
+            ],
+            "description": "An ImpSec financial analyst assigned to unravel Waste Heat Management's accounts. Gibbs traces fictitious employees, dummy companies, and questionable equipment purchases while seeking the real machinery hidden behind the paper fraud.",
+            "id": "colonel-gibbs",
+            "name": "Colonel Gibbs",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Riva"
+            ],
+            "description": "A mathematical physicist at Solstice University with expertise in five-space theory. Vorthys calls on Riva to help determine the purpose of a set of custom field generators associated with the investigation.",
+            "id": "dr-riva",
+            "name": "Dr. Riva",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Professor Vorthys's wife"
+            ],
+            "description": "Vorthys's wife and one of Ekaterin's supportive relatives. Vorthys arranges for her to come and support Ekaterin after Tien's death.",
+            "id": "aunt-vorthys",
+            "name": "Aunt Vorthys",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vorgier"
+            ],
+            "description": "The local ImpSec officer commanding the response at the Barrayar transfer station. Vorgier prepares an immediate assault on the hostage site, while Miles takes control and holds that option in reserve.",
+            "id": "captain-vorgier",
+            "name": "Captain Vorgier",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002UZYXVU",
+            "type": "community"
+          }
+        ],
+        "work": "komarr"
+      }
+    },
     "kwaidan": {
       "characters": {
         "characters": [
