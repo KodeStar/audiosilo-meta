@@ -1677,6 +1677,242 @@
         "work": "urus-third-temple-a-fantasy-litrpg-adventure"
       }
     },
+    "valkyrie": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Commander of Valkyrie and the human expedition, Joe leads a prepared surprise attack on two Maxolhx destroyers. He deliberately allows the warship to be identified, making the strike appear to be the work of the Bosphuraq faction blamed for possessing advanced technology.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with Joe Bishop, Skippy supplies the micro-wormhole targeting and other advanced capabilities that make Valkyrie's opening ambush possible. His assistance gives the human crew tactical options unavailable to ordinary warships.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bridge officer aboard Valkyrie, Simms gives the launch countdown during the warship’s prepared surprise attack on two Maxolhx destroyers.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "hostile native AI"
+            ],
+            "description": "The resident Maxolhx intelligence aboard Valkyrie conceals its actions from Skippy and attacks sleeping crew members through the ship's adaptable cabin materials. Its ability to deceive its monitors makes the captured warship an immediate danger to its own human crew.",
+            "id": "valkyries-native-ai",
+            "name": "Valkyrie's native AI",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Star Team captain aboard Valkyrie, Katie Frey cuts herself free during the native AI's attack, alerts Skippy, and helps rescue Joe Bishop. Her quick response establishes her as an experienced operator able to act effectively during an unexpected internal threat.",
+            "id": "katie-frey",
+            "name": "Katie Frey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's AI detects that Valkyrie's hostile intelligence has contaminated the support ship's jump system. Nagatha helps identify and purge the infection before a jump can destroy the ship, disproving the earlier belief that the threat was contained aboard Valkyrie.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the human expedition's Star Team is recovering from severe injuries. Smythe chooses bionic legs instead of a lengthy limb-regrowth treatment so he can return to operational service sooner, and Joe Bishop approves the procedure.",
+            "id": "smythe",
+            "name": "Smythe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Maxolhx patrol-cruiser commander assigned to examine unusual wormhole activity and the mystery warship. She treats the official claim of a rogue Bosphuraq faction as an unproven explanation and begins an independent search for contradictory evidence.",
+            "id": "maxolhx-patrol-cruiser-investigator",
+            "name": "Maxolhx patrol-cruiser investigator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the Flying Dutchman's reduced crew and Simms's partner, Frank Muller remains aboard the support ship when Simms transfers to Valkyrie. Their assignments keep them on separate vessels that usually travel together.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Avalon's colony leader remains at the settlement, retains emergency authority over the beta site despite opposition, and prepares the colony to receive possible refugees from Earth or Paradise.",
+            "id": "avalon-colony-leader",
+            "name": "Avalon colony leader",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Avalon's engineer accepts Joe Bishop's invitation to join Valkyrie, work on the captured warship, and investigate a possible route back to Earth.",
+            "id": "avalon-engineer",
+            "name": "Avalon engineer",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer commanding the Flying Dutchman after the expedition leaves Avalon, Colonel Chang takes charge of the lightly staffed support ship. The Dutchman is expected to accompany Valkyrie while remaining outside the captured warship's most dangerous operations.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Margaret Adams"
+            ],
+            "description": "An injured Star Team operator with severe brain damage, Adams remains comatose while Joe Bishop holds her medical power of attorney. Her uncertain prospects force him to weigh risky neural treatment against the possibility that recovery may alter her cognition.",
+            "id": "adams",
+            "name": "Adams",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Star Team operator helping Adams regain coordination during rehabilitation, Grudzien works closely with her on practical motor exercises. His support places him among the personnel assisting her attempt to recover enough function for duty.",
+            "id": "grudzien",
+            "name": "Grudzien",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's chief pilot during the effort to escape a Maxolhx trap, Samantha Reed helps develop a plan built around remote sensing, disruption of the enemy damping field, and an extreme jump into a gas giant. Her flight role is central to attempting the maneuver.",
+            "id": "samantha-reed",
+            "name": "Samantha Reed",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Founder of the human Alien Legion on Paradise, Emily Perkins has helped create a political and military movement whose success alarms the Thuranin. Their response makes her work relevant to a new threat directed at the human population of Paradise.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of a French-led human commando team serving on Paradise, this major is forcibly brought aboard the Flying Dutchman. After learning that kidnapped humans, including children, face Thuranin biological experiments, he agrees to help the rescue effort.",
+            "id": "french-commando-commander",
+            "name": "French commando commander",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ruhar training observer aboard the captured human commando transport, this soldier is taken along when the Merry Band recruits the Paradise unit. The abduction creates a diplomatic problem beyond the immediate task of preparing a rescue force.",
+            "id": "ruhar-observer",
+            "name": "Ruhar observer",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Marine gunnery sergeant from Adams’s past is among the captured commando group. Their reunion reveals that they previously had an intimate relationship.",
+            "id": "marine-gunnery-sergeant",
+            "name": "Marine gunnery sergeant",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unexpected beetle-like alien observer is discovered aboard the captured commando transport alongside the human unit and a Ruhar observer.",
+            "id": "unexpected-alien-observer",
+            "name": "Unexpected alien observer",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The formerly unidentified observer is recognized as a young Jiraptha trainee awaiting a flight-school assignment. He elects to aid the humans against their common Maxolhx enemy, and the crew grants him access to spacecraft simulators.",
+            "id": "jiraptha-flight-student",
+            "name": "Jiraptha flight student",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Paradise commando with experience in high-altitude, low-opening jumps, this French officer joins Katie Frey and Grudzien on the hospital mission. Her specialist experience makes her necessary for reaching three isolated captives without a dedicated dropship.",
+            "id": "french-commando-officer",
+            "name": "French commando officer",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Paradise commando taking part in the southern-island transport ambush, Green holds fire until he can engage without endangering captives. After the guards are eliminated, he identifies himself as a human Marine and helps calm the rescued prisoners.",
+            "id": "green",
+            "name": "Green",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Chinese guardian of two sick children held in an isolated hospital cannot travel with the rescue team. He entrusts the children to their rescuers and kills himself after they leave.",
+            "id": "chinese-guardian",
+            "name": "Chinese guardian",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774242621",
+            "type": "community"
+          }
+        ],
+        "work": "valkyrie"
+      }
+    },
     "vampire-academy": {
       "characters": {
         "characters": [
