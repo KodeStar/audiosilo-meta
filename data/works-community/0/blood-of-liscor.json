@@ -2839,6 +2839,269 @@
         "work": "bookshops-bonedust"
       }
     },
+    "borders-of-infinity": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Barrayaran Imperial officer recovering from extensive arm surgery. His Dendarii operational accounts have drawn politically dangerous scrutiny, and pain and immobility sharpen his reaction to Illyan's questions.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of Barrayar's Imperial Security and Miles's long-standing superior. He investigates allegations involving Dendarii spending while trying to keep a political dispute from becoming a court-martial case.",
+            "id": "illyan",
+            "name": "Illyan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bereaved mother from Silvy Vale who appeals directly to Count Vorkosigan after local officials refuse to record her charge that her infant daughter was murdered.",
+            "id": "harra-csurik",
+            "name": "Harra Csurik",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The district ruler who gives a newly commissioned Miles his first field assignment. Miles is to act with the Count's authority while examining an infant's reported killing in Silvy Vale.",
+            "id": "count-vorkosigan",
+            "name": "Count Vorkosigan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical examiner assigned to accompany Miles to Silvy Vale and examine Harra Csurik's exhumed infant, including whether the child's facial condition could explain the death.",
+            "id": "medical-examiner",
+            "name": "Medical examiner",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harra Csurik's husband and the first suspect in their infant daughter's death. Warned before Miles can question him, he disappears from Silvy Vale.",
+            "id": "lem-csurik",
+            "name": "Lem Csurik",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Speaker Karal"
+            ],
+            "description": "Silvy Vale's speaker and a former service member. He is ordered to assist Miles but resists the inquiry and urges Harra to withdraw her accusation.",
+            "id": "karal",
+            "name": "Karal",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harra Csurik's mother. She meets the investigation with hostility and insists that any attempt at justice has come too late.",
+            "id": "mara-mattulich",
+            "name": "Mara Mattulich",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A political opponent who renews scrutiny of discrepancies and cost overruns in Miles's reports, threatening to turn accounting questions into a public prosecution.",
+            "id": "political-critic",
+            "name": "Political critic",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Miles Vorkosigan's command identity within the Dendarii. He takes the fast cruiser Ariel to Fell Station under a weapons-buying cover while pursuing a covert extraction for Barrayar.",
+            "id": "admiral-naismith",
+            "name": "Admiral Naismith",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Ariel's Betan hermaphrodite captain and a former officer in Oser's fleet. Serving under Admiral Naismith, Thorne quietly undertakes to help Nicol escape her restrictive contract.",
+            "id": "bel-thorne",
+            "name": "Bel Thorne",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A freeborn, four-armed quaddie musician employed by Baron Fell. She cannot afford to buy out the five years left on her contract, and Baron Ryoval wants to acquire her.",
+            "id": "nicol",
+            "name": "Nicol",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jackson's Hole baron whose failing health and unusable replacement clone leave him politically exposed. Nicol remains bound by his employment contract.",
+            "id": "baron-fell",
+            "name": "Baron Fell",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of House Ryoval's biologicals trade. He treats people with unusual genetics as commercial property and shows an immediate interest in acquiring Nicol.",
+            "id": "baron-ryoval",
+            "name": "Baron Ryoval",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Vaughn"
+            ],
+            "description": "A senior House Bharaputra geneticist and the Dendarii extraction target. Using the code name Vaughn, he refuses to leave without seven gene complexes hidden inside a living prototype now held by Ryoval.",
+            "id": "bharaputra-geneticist",
+            "name": "Bharaputra geneticist",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nine"
+            ],
+            "description": "The sole survivor of Bharaputra's engineered super-soldier prototypes, previously called Nine. She is an intelligent sixteen-year-old prisoner whose great size, strength, claws, and fangs have led her captors to deny her personhood. Miles gives her the name Taura.",
+            "id": "taura",
+            "name": "Taura",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chief of security at Ryoval Biologicals. Miles drugs and questions him during the infiltration, but Mowglia's alert device summons guards.",
+            "id": "mowglia",
+            "name": "Mowglia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former Marilacan soldier isolated within the Degula prison camp. He gives the injured Miles water, explains how the camp's controls foster violence, and shares a torn page he regards as scripture.",
+            "id": "suegar",
+            "name": "Suegar",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Fallow Core sergeant caring for his unit's dying commander in Degula. He agrees to help Miles recruit prisoners for an organized force.",
+            "id": "oliver",
+            "name": "Oliver",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles's maternal cousin and the original target of the Degula mission. He is found alive but catatonic and neglected after the apparent betrayal of Fallow Core.",
+            "id": "fallow-core-commander",
+            "name": "Fallow Core commander",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of Degula's defended women's enclave. She hears Miles's case for rebuilding prisoner discipline, supplies clothing, and allows recruitment among her people.",
+            "id": "tris",
+            "name": "Tris",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tris's close enforcer and practical supporter of Miles's plan. She helps turn the proposed ration operation into a functioning organization.",
+            "id": "tris-red-haired-lieutenant",
+            "name": "Tris's red-haired lieutenant",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commodore Tung"
+            ],
+            "description": "The Dendarii commander directing the expanded rescue at Degula. He brings fourteen drop shuttles for an extraction that now aims to recover the prison population rather than one captive.",
+            "id": "tung",
+            "name": "Tung",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Quinn"
+            ],
+            "description": "A Dendarii commander working covertly around Degula. With another embedded operative, she discovers the lethal mechanism in the prisoners' skin encodes and provides the intelligence needed to remove it.",
+            "id": "elli-quinn",
+            "name": "Elli Quinn",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A participant coordinating the departure of the final shuttle during the evacuation from Degula.",
+            "id": "mirka",
+            "name": "Mirka",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "At the hospital, Miles's mother dismisses Illyan, insists that Miles rest, and plans a family stay at the Lake retreat that will include Elli Quinn once Miles is discharged.",
+            "id": "miles-mother",
+            "name": "Miles's mother",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B003OYGVAC",
+            "type": "community"
+          }
+        ],
+        "work": "borders-of-infinity"
+      }
+    },
     "boule-de-suif": {
       "characters": {
         "characters": [
