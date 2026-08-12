@@ -4801,6 +4801,489 @@
       }
     },
     "echoes-of-honor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Manticoran and Grayson admiral whom Haven publicly claims to have executed as a civilian criminal. Her family and both nations initially accept the broadcast as confirmation of her death.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Honor's senior household steward and a trusted member of her family circle. He joins her parents and household in mourning after Haven announces her execution.",
+            "id": "james-macguiness",
+            "name": "James MacGuiness",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Whitehaven"
+            ],
+            "description": "A senior Allied fleet commander serving with Grayson. He believes his own decisions placed Honor in the circumstances that led to her reported death and carries a private burden of guilt.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander, Earl White Haven",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's Secretary of War, determined to restore the People's Navy's competence and morale. She protects capable officers from political blame and looks for a counteroffensive while Manticore is stretched.",
+            "id": "esther-mcqueen",
+            "name": "Esther McQueen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ambitious deputy in Haven's public-information apparatus. He knows the supposed recording of Honor's death was manufactured and hopes the successful deception will advance his bid for the vacant ministry.",
+            "id": "leonard-boardman",
+            "name": "Leonard Boardman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A capable People's Navy commander whom McQueen shields from political blame after Cordelia Ransom's death. He remains an important part of Haven's effort to recover its military position.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A capable People’s Navy commander whom McQueen protects from political blame after Cordelia Ransom’s death.",
+            "id": "lester-tourville",
+            "name": "Lester Tourville",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Captain of HMS Minotaur and commander of Project Anzio, Manticore's secret experimental light attack craft carrier program. She must turn an untested ship, technology, and doctrine into a combat-ready force.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A missile-tactics specialist assigned to lead the tactical development of Minotaur's light attack craft wing. Her work is central to proving the carrier's new combat concept.",
+            "id": "barbara-stackwitz",
+            "name": "Barbara Stackwitz",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Benjamin"
+            ],
+            "description": "Grayson's planetary protector. Honor's reported death leaves him responsible for preserving Harrington Steading without forcing an unlawful or politically damaging succession.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's longtime regent in Harrington Steading. He refuses to take her place, regarding her as a daughter, but remains willing to protect the Steading until a lawful heir can succeed.",
+            "id": "howard-clinkscales",
+            "name": "Howard Clinkscales",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor’s Manticoran cousin and legal heir to her Manticoran title. His lack of Grayson citizenship prevents a straightforward succession to Harrington Steading.",
+            "id": "devon-harrington",
+            "name": "Devon Harrington",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Allison"
+            ],
+            "description": "Honor's mother and a geneticist. While grieving, she weighs a request to have another child for the Grayson succession and prepares to seek religious counsel about a sensitive discovery in the Grayson genome.",
+            "id": "allison-shue-harrington",
+            "name": "Allison Shue Harrington",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's father and Allison's husband. He supports consulting a senior churchman about Allison's genetic findings and joins her in considering the difficult request for another child.",
+            "id": "alfred-harrington",
+            "name": "Alfred Harrington",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Grayson senior religious leader who weighs Allison’s genetic findings. He has concerns about rapid social change but accepts the evidence and favors public disclosure.",
+            "id": "reverend-sullivan",
+            "name": "Reverend Sullivan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Benjamin and Catherine Mayhew’s eleven-year-old daughter. The treecat Hipper adopts her during a family gathering at Harrington House.",
+            "id": "rachel-mayhew",
+            "name": "Rachel Mayhew",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A treecat who forms an adoption bond with Rachel Mayhew.",
+            "id": "hipper",
+            "name": "Hipper",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Honor's bonded treecat and a fellow survivor on Hades. He is recovering from grave injuries to a limb and pelvis, and the prison world's equatorial heat makes his condition more dangerous.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticoran captain and Honor's senior operational deputy among the hidden survivors. He helps assess their limited resources and supports her plan to penetrate the prison garrison's communications.",
+            "id": "alistair-mckeon",
+            "name": "Alistair McKeon",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's Grayson armsman. He keeps armed watch over the concealed survivors and remains closely protective while her injuries leave her unusually vulnerable.",
+            "id": "andrew-lafollet",
+            "name": "Andrew LaFollet",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A People's Navy officer who helped Honor's party escape State Security. Honor trusts him, but he remains unarmed because his oath and continuing loyalty to his homeland leave his ultimate allegiance unsettled.",
+            "id": "warner-caslet",
+            "name": "Warner Caslet",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The survivors' surgeon commander. He directs Honor's recovery from starvation and treats Nimitz while the group struggles to preserve health with scant supplies and equipment.",
+            "id": "fritz-montoya",
+            "name": "Fritz Montoya",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Senior Chief Harkness"
+            ],
+            "description": "A senior chief and cyberneticist assigned to assemble the survivors' satellite communications equipment. His technical skill is vital to learning how the prison garrison operates.",
+            "id": "horace-harkness",
+            "name": "Horace Harkness",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shuttle and electronics officer among Honor's survivors. He discovers the hidden Camp Inferno in satellite data and pilots one of the covert shuttles during the move to investigate it.",
+            "id": "scotty-tremaine",
+            "name": "Scotty Tremaine",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer who pilots the second assault shuttle during the concealed relocation to Camp Inferno and contributes to the operational planning around first contact.",
+            "id": "second-shuttle-pilot",
+            "name": "Second Shuttle Pilot",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's Grayson flag lieutenant. Hardship has made him more capable and confident, and he accompanies Honor on the dangerous ground reconnaissance of Camp Inferno.",
+            "id": "carson-clinkscales",
+            "name": "Carson Clinkscales",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Pegasus System Navy captain and long-term prisoner at Camp Inferno. She recognizes Honor and quickly understands that the newcomers need local allies and manpower.",
+            "id": "harriet-benson",
+            "name": "Harriet Benson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Camp Inferno’s senior permanent inmate, a San Martin commodore who formerly led resistance during Trevorstar’s conquest.",
+            "id": "senior-prisoner-commodore",
+            "name": "Senior Prisoner Commodore",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The People's Navy officer assigned to lead Operation Icarus. He works effectively with the people's commissioner attached to his command while preparing the new offensive.",
+            "id": "icarus-fleet-commander",
+            "name": "Icarus Fleet Commander",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The State Security representative attached to the commander of Operation Icarus. The two maintain an effective working relationship despite the commissioner's separate reporting authority.",
+            "id": "icarus-peoples-commissioner",
+            "name": "Icarus People's Commissioner",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A liberated prisoner and organizer whom Honor assigns to help prevent revenge attacks against captured guards. He works with the new command to impose discipline after the base falls.",
+            "id": "jesus-ramirez",
+            "name": "Jesus Ramirez",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's former chief of naval operations, officially believed executed after Third Yeltsin. A decrypted prisoner list reveals that he is alive under a false identity on Hades.",
+            "id": "amos-parnell",
+            "name": "Amos Parnell",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chairman of Haven's ruling Committee. He permits McQueen's offensive plans because the war requires her ability, while accepting surveillance of her and preparing politically dangerous economic reforms.",
+            "id": "rob-pierre",
+            "name": "Rob Pierre",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Haven's State Security chief and Pierre's political watchdog. He regards McQueen's influence with senior naval officers as a growing threat but agrees that the regime still needs her military leadership.",
+            "id": "oscar-saint-just",
+            "name": "Oscar Saint-Just",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior People's Navy commander associated with McQueen's offensive. State Security considers his restored position and resentment of earlier treatment a possible political risk.",
+            "id": "javier-giscard",
+            "name": "Javier Giscard",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Tourville's operations officer and the only other person who knows evidence of Honor's escape was erased. Her recent change in behavior worries him as their force prepares for Operation Icarus.",
+            "id": "shannon-foraker",
+            "name": "Shannon Foraker",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Havenite formation bound for Hancock is under this rear admiral's command.",
+            "id": "kellett",
+            "name": "Kellett",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Giscard's people's commissioner. She and the admiral publicly maintain a hostile official relationship while secretly sustaining a romantic partnership that would endanger them if exposed.",
+            "id": "eloise-pritchard",
+            "name": "Eloise Pritchard",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "At Zanzibar, this Manticoran rear admiral directs a badly outmatched defense and elects to remain.",
+            "id": "tenard",
+            "name": "Tenard",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Basilisk's inner-system picket answers to this Manticoran vice admiral, who advances against superior attackers.",
+            "id": "markham",
+            "name": "Markham",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          },
+          {
+            "description": "This Havenite rear admiral's assault group misses its intended arrival near the Basilisk Terminus, sacrificing surprise.",
+            "id": "darlington",
+            "name": "Darlington",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former supporter of the People's Republic and a prisoner on Hades. As a tribunal member, she insists that capital charges meet the court's full standard of proof, safeguarding the legitimacy of its proceedings.",
+            "id": "sabrina-longmont",
+            "name": "Sabrina Longmont",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A commodore who represents military prisoners on the Hades tribunal. He supports a severe sentence short of death when the court cannot unanimously sustain a murder conviction.",
+            "id": "tribunal-commodore",
+            "name": "Tribunal Commodore",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A State Security lieutenant tried for crimes against prisoners. The tribunal considers charges of rape, kidnapping, murder, and abuse of official authority under Havenite law.",
+            "id": "kenneth-mangrum",
+            "name": "Kenneth Mangrum",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior Allied officer below Honor on Hades. He repeatedly disputes her authority and decisions even as the prisoners prepare to capture an approaching State Security cruiser.",
+            "id": "rear-admiral-stiles",
+            "name": "Rear Admiral Stiles",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harriet Benson's watch executive officer and a former computer specialist. Her skills are dated but useful as the prisoners operate captured systems and prepare their deception for an incoming cruiser.",
+            "id": "susan-phillips",
+            "name": "Susan Phillips",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior Manticoran prisoner aboard the captured heavy cruiser. He brings Honor current news of Haven's offensive and confirms that the Alliance accepted the fabricated report of her death.",
+            "id": "victor-einspen",
+            "name": "Victor Einspen",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Grayson officer who helps secure the captured heavy cruiser.",
+            "id": "solomon-marchant",
+            "name": "Solomon Marchant",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The coordinator who takes charge of prisoner contact and census work. Her accounting establishes the immense number seeking evacuation and the separate group refusing cooperation.",
+            "id": "cynthia-gonsalves",
+            "name": "Cynthia Gonsalves",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A State Security major general who takes personal control of a troop convoy bound for Sebring, overriding the People's Navy commodore assigned to escort it.",
+            "id": "thorngrave",
+            "name": "Thorngrave",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A State Security major general who notices the prison warden has missed an expected personal message. He infers that the prisoners may control Hades and hurriedly assembles a recovery expedition.",
+            "id": "chernock",
+            "name": "Chernock",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00302DO5I",
+            "type": "community"
+          }
+        ],
+        "work": "echoes-of-honor"
+      },
       "recaps": {
         "ending": "Honor's improvised Hades squadron ambushes the State Security recovery expedition at close range. The enemy commanders are killed, its fighting force is effectively destroyed, and Honor stops the attack in time to rescue survivors and capture two troop transports. Those ships provide the remaining capacity needed to evacuate everyone who has chosen to leave. At Trevorstar, Honor personally identifies herself and requests urgent help for overcrowded captured vessels carrying about 106,000 liberated prisoners. A further group of roughly 250,000 is expected within eleven days. The Alliance and White Haven finally learn that Honor survived, ending the false account of her execution. Honor and Nimitz remain permanently injured, and Warner Caslet has committed himself to her force, though his future is unresolved. Amos Parnell still intends to expose the Haven regime's role in the coup. Grayson's succession and genetic-treatment questions remain open, while Haven's long offensive has retaken key systems and left Eighth Fleet unable to regain the initiative.",
         "in_short": "Haven announces Honor Harrington's execution and supports the claim with fabricated footage, leaving Manticore and Grayson to mourn and settle her affairs. In fact, Honor and her injured companions are hiding on Hades. They recruit the resistance prisoners of Camp Inferno, capture the prison base and orbital defenses, impose disciplined trials, and discover Amos Parnell and evidence implicating Haven's rulers in the coup. Meanwhile, Grayson expands its war industry, Allison Harrington uncovers the genetic cause of the planet's skewed birth ratio, and Haven's Operation Icarus devastates several Allied systems. Honor captures incoming ships, builds an improvised fleet, and begins evacuating hundreds of thousands of prisoners. She defeats a State Security recovery force, takes the transports needed for the rest, and reaches Trevorstar alive with about 106,000 liberated inmates while another roughly 250,000 follow. Her return exposes the execution lie, but Haven retains the wider war's momentum.",
