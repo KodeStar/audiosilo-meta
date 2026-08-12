@@ -3307,6 +3307,447 @@
         "work": "five-little-pigs"
       }
     },
+    "flag-in-exile": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Manticoran officer and Grayson steadholder whose partner's murder and a prior duel have left her grieving, professionally sidelined, and under political attack. Grayson's leaders hope her command experience can strengthen their rapidly expanded navy.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Honor's murdered partner. His death has left her in severe distress.",
+            "id": "paul-tankersley",
+            "name": "Paul Tankersley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Protector Benjamin"
+            ],
+            "description": "The Protector of Grayson. He must weigh his realm's urgent need for Honor's naval expertise against her need for time and freedom to decide whether she is ready to return to command.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "High Admiral Matthews"
+            ],
+            "description": "Grayson's High Admiral and commander of its space navy. Facing the likely withdrawal of Manticoran capital ships, he seeks Honor's help in developing an officer corps short on combat experience.",
+            "id": "wesley-matthews",
+            "name": "Wesley Matthews",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's bonded treecat and empathic companion. Their unusually strong connection lets her sense emotions through him, an ability whose practical significance they keep private.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major LaFollet"
+            ],
+            "description": "Honor's chief armsman and head of her permanent security team. He is vigilant about organized hostility toward her while carrying out her insistence that lawful protest remain undisturbed.",
+            "id": "andrew-lafollet",
+            "name": "Andrew LaFollet",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's maid and companion, and Andrew LaFollet's sister. She helps Honor navigate Grayson customs and prepare for the public duties of a steadholder.",
+            "id": "miranda-lafollet",
+            "name": "Miranda LaFollet",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Regent of Harrington Steading, responsible for administering its affairs alongside Honor.",
+            "id": "howard-clinkscales",
+            "name": "Howard Clinkscales",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chief engineer of Grayson Sky Domes Limited. He helped turn Harrington Steading's dome technology into a commercially successful means of expanding safe settlement and agriculture.",
+            "id": "adam-gerrick",
+            "name": "Adam Gerrick",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reverend Hanks"
+            ],
+            "description": "The Church of Humanity Unchained's senior leader. He rejects the religious intolerance directed at Honor and promises church discipline for the cleric who disrupts her public ceremony.",
+            "id": "julius-hanks",
+            "name": "Julius Hanks",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Steadholder Burdette"
+            ],
+            "description": "A reactionary steadholder whose support appears to finance organized religious and political opposition to Honor.",
+            "id": "lord-burdette",
+            "name": "Lord Burdette",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lord Burdette's personal chaplain and a public opponent of Honor's steadholdership. His disruption of a civic celebration turns religious prejudice into an open political confrontation.",
+            "id": "brother-marchant",
+            "name": "Brother Marchant",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Brother Marchant"
+            ],
+            "description": "The cleric formerly serving as Lord Burdette's chaplain. The church removes him from Burdette Cathedral and suspends him from church office for his public hostility toward Honor.",
+            "id": "edmund-augustus-marchant",
+            "name": "Edmund Augustus Marchant",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Earl Whitehaven"
+            ],
+            "description": "A Manticoran task-force commander who discovers that a Havenite force at Nightingale is bait for a second wall of battle. He must force a path to the hyper-limit while accepting severe ship losses.",
+            "id": "hamish-alexander-earl-of-whitehaven",
+            "name": "Hamish Alexander, Earl of Whitehaven",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chairman of Haven's Committee of Public Safety and the leading member of its ruling triumvirate. He believes continued war is essential to the regime's survival and to any chance of repairing Haven's failing economy.",
+            "id": "robert-stanton-pierre",
+            "name": "Robert Stanton Pierre",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A People’s Navy planner who devised the paired operations approved by Haven’s leadership.",
+            "id": "admiral-thurston",
+            "name": "Admiral Thurston",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Haven’s regime propagandist. She redirects public anger toward Manticore and the continuing war.",
+            "id": "cordelia-ransom",
+            "name": "Cordelia Ransom",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The official who controls Haven’s Office of State Security. Pierre relies on his organization to keep Ransom under observation.",
+            "id": "oscar-saint-just",
+            "name": "Oscar Saint-Just",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Citizen Vice Admiral Thurston"
+            ],
+            "description": "The commander of Task Force 14 as Operation Dagger enters the Yeltsin system. A political commissioner oversees his attack on Grayson.",
+            "id": "alexander-thurston",
+            "name": "Alexander Thurston",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Honor’s new flag captain aboard GNS Terrible. He formerly served in the People’s Navy, sought asylum after resisting Masadan demands, became a Grayson officer, and asks Honor to judge his fitness for command.",
+            "id": "former-peoples-navy-flag-captain",
+            "name": "Former People’s Navy flag captain",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor’s flag captain aboard GNS Terrible and a former People’s Republic officer. His concealed coordination and independent maneuver preserve a simulated convoy and demonstrate his tactical ability.",
+            "id": "alfredo-yu",
+            "name": "Alfredo Yu",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's chief of staff in First Battle Squadron.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's flag lieutenant aboard GNS Terrible and a member of the staff supporting First Battle Squadron. He joins the officers responsible for carrying orders and coordinating the admiral's work across her new command.",
+            "id": "jared-sutton",
+            "name": "Jared Sutton",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bold Grayson division commander whose inventive electronic deception succeeds in splitting a simulated defense. His decision to press the advantage too far leaves his ships exposed to a counterattack.",
+            "id": "rear-admiral-yanukov",
+            "name": "Rear Admiral Yanukov",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Grayson division commander whose attempt to reunite his scattered force during an exercise leaves its convoy insufficiently protected. Honor considers him capable but too rigid in his tactical thinking.",
+            "id": "rear-admiral-trailman",
+            "name": "Rear Admiral Trailman",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A conservative steadholder who shares concerns about the Protector's reforms but refuses Lord Burdette's invitation to pursue opposition outside the law.",
+            "id": "john-mackenzie",
+            "name": "John Mackenzie",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A conservative steadholder troubled by reduced local authority under the Protector's reforms. Burdette and Marchant approach him as a possible ally but do not disclose a concrete plan.",
+            "id": "samuel-mueller",
+            "name": "Samuel Mueller",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Brentworth"
+            ],
+            "description": "A dependable Grayson officer serving under Honor in First Battle Squadron. She considers him reliable, although his close attention to immediate details can narrow his view of broader tactical problems.",
+            "id": "walter-brentworth",
+            "name": "Walter Brentworth",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An analyst working with Honor to monitor the political threat against her. Paxton identifies organized financing and restrained public support behind the growing protest network.",
+            "id": "paxton",
+            "name": "Paxton",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Citizen Vice Admiral McQueen"
+            ],
+            "description": "A capable People's Navy flag officer leading Operation Stalking Horse. Her political masters distrust her independence and place her under State Security observation even as she conducts their offensive.",
+            "id": "esther-mcqueen",
+            "name": "Esther McQueen",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Manticoran commander at Minette, facing an invasion force far larger than his own. He chooses a fast delaying engagement and prepares to destroy sensitive sensor installations rather than surrender them.",
+            "id": "admiral-stanton",
+            "name": "Admiral Stanton",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly hired Sky Domes worker operating under a false name. He secretly alters the foundation alignment to make the future structure collapse.",
+            "id": "lawrence-maguire",
+            "name": "Lawrence Maguire",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Royal Manticoran Navy admiral commanding a visiting battle squadron. His stealthed reconnaissance drones defeat Honor's exercise deception, and his command is then assigned to the counteroffensive around the occupied systems.",
+            "id": "admiral-henrys",
+            "name": "Admiral Henrys",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A People's Navy rear admiral assigned to Operation Dagger. He is skeptical of the intelligence supporting the operation.",
+            "id": "rear-admiral-theisman",
+            "name": "Rear Admiral Theisman",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The People's Navy commander of Task Group 14.2 during rehearsals for Operation Dagger. He considers the possibility that Grayson retains unreported defenses and regards Honor Harrington as a capable opponent.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lawrence Maguire"
+            ],
+            "description": "The Sky Domes saboteur identified by fingerprints as the employee hired under the false name Lawrence Maguire. The identification establishes him as Marchant's cousin.",
+            "id": "samuel-marchant-harding",
+            "name": "Samuel Marchant Harding",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A retired Burdette Guard sergeant who enters Harrington Space Facility in a forged Harrington Guard uniform. He and Austin Taylor intend to attack Honor's arriving pinnace and kill a gate guard after their equipment attracts suspicion.",
+            "id": "edward-martin",
+            "name": "Edward Martin",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Burdette follower who took part in the Mueller dome sabotage. Disguised as one of Honor's guards, he prepares a shoulder-fired missile attack on her pinnace.",
+            "id": "austin-taylor",
+            "name": "Austin Taylor",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Honor's security detail who replaces the ill Eddie Howard for her journey to the Keys session.",
+            "id": "arthur-yard",
+            "name": "Arthur Yard",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The master chief piloting Honor's pinnace when a missile closes on it. He attempts to evade the weapon by crash-landing the craft but dies with the other flight-deck crew when the missile strikes.",
+            "id": "gilbert-truebridge",
+            "name": "Gilbert Truebridge",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord Burdette",
+              "Steadholder Burdette"
+            ],
+            "description": "The steadholder accused through a witnessed confession of directing the dome sabotage and the attack on Honor. He admits the crimes, invokes trial by champion, and is killed by Honor in the resulting duel.",
+            "id": "william-allen-hillman-fitzclarence",
+            "name": "William Allen Hillman Fitzclarence",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Citizen Commissioner Lepique"
+            ],
+            "description": "The political commissioner assigned to supervise Theisman during Operation Dagger.",
+            "id": "dennis-lepique",
+            "name": "Dennis Lepique",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior steadholder who publicly adopts a conciliatory position after Honor's victory while privately concealing his part in the plot linked to Burdette and Marchant.",
+            "id": "unnamed-senior-steadholder",
+            "name": "Unnamed senior steadholder",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002VA8MPC",
+            "type": "community"
+          }
+        ],
+        "work": "flag-in-exile"
+      }
+    },
     "flatland-a-romance-of-many-dimensions": {
       "characters": {
         "characters": [
