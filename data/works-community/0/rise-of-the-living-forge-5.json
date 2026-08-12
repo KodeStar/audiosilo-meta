@@ -2028,6 +2028,348 @@
         "work": "road-to-mastery-2"
       }
     },
+    "road-to-mastery-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A newly D-grade immortal and leader of the Bare Fist Brotherhood. Wanted by the Animal Kingdom, he travels under concealment with Brock while seeking a powerful faction willing to protect Earth-387.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jack's brorilla spiritual companion and independent cultivation partner. He travels with Jack toward Exploding Sun.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Professor"
+            ],
+            "description": "Jack's mother and the Bare Fist Brotherhood's principal strategist on Earth-387. She organizes resistance and prepares the allied defenders while Jack searches offworld for protection.",
+            "id": "margaret-rust",
+            "name": "Margaret Rust",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi"
+            ],
+            "description": "A Flame River commander and ally of the Bare Fist Brotherhood. She helps prepare Earth-387 for the conflict between the Brotherhood-Flame River alliance and Ice Peak.",
+            "id": "vivi-aragon",
+            "name": "Vivi Aragon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth cultivator and former Brotherhood ally whose Dao is not oriented toward violence.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brock's father and a leader among the brorillas of the Forest of the Strong.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A C-grade treant encountered at Darien's teleportation hub. He recognizes that Jack is an immortal beneath his disguise, then offers directions and company.",
+            "id": "treant",
+            "name": "the treant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A late D-grade centaur who leads the Animal Kingdom prisoner camp on Darien. Jack initially withdraws after judging her and the camp's two other D-grade wardens too dangerous to confront.",
+            "id": "animal-kingdom-centaur-warden",
+            "name": "the Animal Kingdom centaur warden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Animal Kingdom cultivator and ally from Trial Planet. He has formally renounced the kingdom and travels with Nauja toward Exploding Sun, accepting scrutiny along the way.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor of Trial Planet and an archer travelling beside Gan Salin. After Hand of God screening, she travels with him toward Field Nebula.",
+            "id": "nauja",
+            "name": "Nauja",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A C-grade human elder of Exploding Sun and master of Jack's former mentor. She evaluates Jack's exceptional foundation and whether his potential justifies the political cost of contesting Animal Kingdom control of Earth-387.",
+            "id": "master-huali",
+            "name": "Master Huali",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Man Spirit"
+            ],
+            "description": "Jack's former teacher, now physically present as an Exploding Sun deacon. He receives Jack at Field Nebula.",
+            "id": "jacks-former-mentor",
+            "name": "Jack's former mentor",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified sage who interrupts Maximus Lonihor's assault on Jack's group and warns Jack to evade an imminent attack. His purpose is not yet clear.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A late-B-grade Black Hole Church head envoy who stops the hostile fleets approaching Earth. His authority prevents their commanders from interfering directly in Jack's duel.",
+            "id": "heavenly-spoon-sovereign",
+            "name": "Heavenly Spoon Sovereign",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Heavenly Spoon Sovereign"
+            ],
+            "description": "A Black Hole Church head envoy introduced to Jack as the Heavenly Spoon Sovereign. He explains the plan to relocate Earth and uses his power to move the planet and its Moon outside system space.",
+            "id": "jonas-evergreen",
+            "name": "Jonas Evergreen",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cyclops captain of the Trampling Ram and Jack's former commander. After the ship is attacked for helping Jack, Jack asks his former mentor to investigate what happened to Dordok and the crew.",
+            "id": "captain-dordok",
+            "name": "Captain Dordok",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Minotaur who has succeeded Dordok as captain of the Trampling Ram. When Earth is preparing to leave the Solar System, the captain chooses to continue travelling with the ship and its crew.",
+            "id": "trampling-rams-minotaur-captain",
+            "name": "the Trampling Ram's Minotaur captain",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Leonine Animal Kingdom champion who intercepts Jack, Dordok, and their companion during their attempted escape from Hell. His technique, mobility, domain, and summoned warriors let him control the encounter despite fighting three opponents.",
+            "id": "maximus-lonihor",
+            "name": "Maximus Lonihor",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Earth's planetary overseer"
+            ],
+            "description": "The mid-C-grade Leonine assigned by the Animal Kingdom to oversee Earth-387. Her control becomes the central danger awaiting Earth when its protected grace period expires.",
+            "id": "galicia-lonahor",
+            "name": "Galicia Lonahor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The other Exploding Sun elder competing with Master Huali for the coming Grand Elder appointment.",
+            "id": "hualis-rival-elder",
+            "name": "Huali's rival elder",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "description": "The late-C-grade Leonine who oversees the Animal Kingdom prison world Hell. After inner disciples vanish from several hunting zones, he identifies an infiltrator and directs the expanding search.",
+            "id": "hells-warden",
+            "name": "Hell's warden",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Leonine authority within the Animal Kingdom. After the failure on Hell and Jack's escape toward Earth, the ancestor takes personal responsibility for the pursuit.",
+            "id": "animal-kingdom-ancestor",
+            "name": "Animal Kingdom ancestor",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A B-grade Hand of God commander who arrives with the hostile fleet near Earth. She seeks to affect the confrontation over the planet but must contend with a Black Hole Church head envoy.",
+            "id": "eva-solvig",
+            "name": "Eva Solvig",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A D-grade former Exploding Sun affiliate who joins Dordok against Animal Kingdom reinforcements during Earth's war. An Exploding Sun swordsman arrives and confronts the former affiliate separately.",
+            "id": "former-exploding-sun-affiliate",
+            "name": "the former Exploding Sun affiliate",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Ice Peak and a powerful ice cultivator. He is the principal rival to the Brotherhood-Flame River alliance on Earth and advocates restrictions on how the planet's E-grades may use their power.",
+            "id": "alexander-petrovic",
+            "name": "Alexander Petrovic",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A grieving woman who accepts a devil's offer of D-grade power. The bargain costs her soul and requires her to carry out a future killing whose intended victim is not initially disclosed.",
+            "id": "sephira-woman",
+            "name": "the Sephira woman",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A D-grade contract-maker that approaches Edgar after his defeat and offers him a path back to usefulness. It must honor the terms it writes, but gains power over anyone who violates an agreement.",
+            "id": "echidna-devil",
+            "name": "the Echidna devil",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jack's D-grade robot bodyguard, originally awarded after the integration tournament. Jack finds him critically damaged after a prolonged defense of the Forest of the Strong, with only enough energy left to remain inactive for a short time.",
+            "id": "sparman",
+            "name": "Sparman",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior disciple who directs the rival elder's faction. After a subordinate dies in a duel with Jack, he orders an investigation into Jack's ability to defeat a much stronger opponent.",
+            "id": "rival-elders-head-disciple",
+            "name": "Huali's rival elder's head disciple",
+            "reveal": {
+              "chapter": 23
+            }
+          },
+          {
+            "description": "An Earth musician, Dao of Metal user, and former tournament ally of Jack. Jack recognizes him among Animal Kingdom prisoners forced to labor.",
+            "id": "earth-musician",
+            "name": "the Earth musician",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's regular sparring acquaintance at Master Huali's estate. She invites him to visit Stripe City and accompanies him there.",
+            "id": "auburn",
+            "name": "Auburn",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak D-grade canine Animal Kingdom deacon who joins two other deacons in pursuing the injured Jack across Hell.",
+            "id": "canine-deacon",
+            "name": "the canine deacon",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Master Huali's senior disciple and political adviser. The struggle over Exploding Sun's next Grand Elder prevents him from leaving her estate without risking a challenge from the rival faction.",
+            "id": "hualis-head-disciple",
+            "name": "Huali's head disciple",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Animal Kingdom captain and trusted friend of Jack's former mentor. He recognizes the wanted Jack but agrees to hide both visitors in warded crates for passage through Eternal Gate.",
+            "id": "feshker-captain",
+            "name": "the Feshker captain",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-249 Animal Kingdom enforcer who intervenes after Jack defeats a Leonine disciple. When Jack refuses his order, the deacon attacks and pursues him.",
+            "id": "turtler-deacon",
+            "name": "the turtler deacon",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0D3236RBC",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-3"
+      }
+    },
     "robert-louis-stevensons-classic-treasure-island": {
       "characters": {
         "characters": [
