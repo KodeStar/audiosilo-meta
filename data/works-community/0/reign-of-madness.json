@@ -522,6 +522,239 @@
       }
     },
     "renegades": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Commander of the Flying Dutchman, returning toward Earth while struggling with the possibility that his earlier changes to the wormhole network have drawn a Maxolhx investigation toward humanity.",
+            "id": "bishop",
+            "name": "Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Bishop"
+            ],
+            "description": "The Flying Dutchman's commander, previously identified as Bishop. Kept under armed observation after returning to Earth, he secretly leaves his monitored home as a coordinated attempt to seize the ship begins.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Elder AI aboard the Flying Dutchman. He reports the approaching Maxolhx investigation, decrypts alien communications, and works to keep the unreliable ship systems operational.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civilian diplomat who works with Bishop and supports continued secrecy about Earth, Skippy, and the Flying Dutchman despite the new Maxolhx threat.",
+            "id": "chotek",
+            "name": "Chotek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flying Dutchman logistics officer who manages much of the cover story surrounding the crew's return. She helps contain public attention while Earth authorities scrutinize the mission.",
+            "id": "simms",
+            "name": "Simms",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "The logistics officer previously identified as Simms. Promoted to lieutenant colonel, she prepares the Flying Dutchman's supplies and hydroponics for a long mission but plans to remain on Earth and start a family.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A newly promoted gunnery sergeant and trusted ally of Bishop. She argues that the Maxolhx would have investigated eventually and urges him to concentrate on protecting Earth instead of assigning blame.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "A special-operations leader and the only former team commander prepared to join another Flying Dutchman mission. He rejects proposals to use the ship to seek an accommodation with alien powers.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Poole"
+            ],
+            "description": "A returning pirate assigned to verify supplies during the Flying Dutchman's refit. Armed and armored, she confronts the Delta Force team advancing through the ship during the attempted seizure.",
+            "id": "lauren-poole",
+            "name": "Lauren Poole",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Reed",
+              "Sammy",
+              "Fireball"
+            ],
+            "description": "A returning Flying Dutchman dropship pilot temporarily supervising refit work. She becomes suspicious of a supposed resupply craft shortly before the duty crew detains her.",
+            "id": "samantha-reed",
+            "name": "Samantha Reed",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jones"
+            ],
+            "description": "The on-duty CIC officer coordinating the authorized attempt to seize the Flying Dutchman. Jones admits the assault team and orders an attack on Skippy's apparent escape pod.",
+            "id": "major-jones",
+            "name": "Major Jones",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Leader of the seven-person Delta Force team sent aboard the Flying Dutchman in powered armor. He carries out the seizure operation while privately doubting both its justification and its chance of success.",
+            "id": "rodriguez",
+            "name": "Rodriguez",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Frey"
+            ],
+            "description": "A Canadian Joint Task Force 2 lieutenant training with the SAS. She stops Nunnally from detaining Smythe, hears why the Flying Dutchman is needed, and chooses to join the mission.",
+            "id": "katie-frey",
+            "name": "Katie Frey",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grudzien"
+            ],
+            "description": "A Polish GROM staff sergeant serving with Smythe's training group. After speaking with his wife about the risks, he elects to accompany the volunteers to the Flying Dutchman.",
+            "id": "justin-grudzien",
+            "name": "Justin Grudzien",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nunnally"
+            ],
+            "description": "An SAS operator initially ordered to detain Smythe for the RAF. Once Smythe explains the threat facing Earth, Nunnally abandons that task and joins the prospective mission.",
+            "id": "jason-nunnally",
+            "name": "Jason Nunnally",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Porter"
+            ],
+            "description": "A former pirate and Navy pilot recalled while on a fishing trip. He accepts the invitation immediately and helps bring another volunteer pilot into the small force assembling for the mission.",
+            "id": "jim-porter",
+            "name": "Jim Porter",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Nagatha"
+            ],
+            "description": "A restored AI derived from a Skippy submind. She begins integrating with the Flying Dutchman as its primary control system while the prospective crew decides whether to defy Earthside command.",
+            "id": "nagatha-christie",
+            "name": "Nagatha Christie",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Muller"
+            ],
+            "description": "An American civilian engineer among the Flying Dutchman's new technical personnel. While working around the hydroponics gardens, he and Simms show a mutual personal interest.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer leading a small assault unit inside the Bosphuraq moon base. Her force includes two raiders and a Thuranin Combot and engages the remaining automated defenders.",
+            "id": "ranger-captain",
+            "name": "Ranger captain",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ground-operations leader selected to accompany Bishop, Justin Grudzien, and Samantha Reed on the covert insertion beneath the Maxolhx pixie factory.",
+            "id": "ground-operations-leader",
+            "name": "Ground-operations leader",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1772308633",
+            "type": "community"
+          }
+        ],
+        "work": "renegades"
+      },
       "recaps": {
         "ending": "The Flying Dutchman returns to Earth after destroying both Maxolhx investigation cruisers. The planted report and staged wormhole anomalies support the claim that an unstable wormhole caused the disaster, concealing direct human involvement. Bishop, Skippy, Jennifer Simms, Jeremy Smythe, Lauren Poole, Samantha Reed, Katie Frey, Justin Grudzien, Jason Nunnally, and Nagatha survive. Margaret Adams remains on Earth, while Chotek's situation after his detention is not resolved. Frank Muller and Simms are now partners, and Muller agrees to help Bishop improve his practical understanding of physics. The Dutchman has exhausted important supplies, lost ten jump coils, and needs extensive repairs. Bishop expects scrutiny for taking the ship against orders and does not know whether he still has a military future. Earth has no immediate alien threat, but its secrecy is not permanently assured. Planning for a remote human refuge remains preliminary. Skippy is unsettled by the attacking Elder AI, evidence of ancient genocide, and knowledge hidden from his own conscious mind. Two dormant wormholes might provide a route beyond the galaxy, though activating them would eventually create detectable emissions. On reaching Earth, the crew also discovers that Skippy's public follower movement has become visible and that the President wants immediate contact.",
         "in_short": "When two Maxolhx cruisers prepare to investigate the wormhole near Earth, Joe Bishop and a small crew seize the Flying Dutchman rather than accept UNEF's plan to surrender. Their mission requires a Maxolhx dropship, authentication devices called pixies, relay intelligence, and a convincing explanation for the cruisers' disappearance. Raids on a Bosphuraq base and a pixie factory provide the needed equipment. An Elder wreck supplies technology that lets the crew stage future wormhole disturbances and support a false Maxolhx report. Skippy's micro-wormhole ambush destroys one cruiser and cripples the other, which he then destroys through a precisely tuned maser strike. The badly damaged Dutchman returns to Earth with the immediate investigation threat removed. Bishop still faces consequences for mutiny, while evidence of Elder conflict, a dangerous damaged Elder AI, Skippy's concealed knowledge, a possible off-galaxy refuge, and his growing public following leave larger dangers unresolved.",
