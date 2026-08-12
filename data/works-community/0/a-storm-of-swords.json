@@ -1691,6 +1691,497 @@
         "work": "a-thousand-li-the-first-war"
       }
     },
+    "a-thousand-li-the-second-expedition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Energy Storage cultivator of Verdant Green Waters who studies swordsmanship and herb gathering under Elder Cheng. Debts and obligations have slowed his progress, but he commits himself to finding three rare materials after his master returns gravely poisoned.",
+            "id": "wu-ying",
+            "name": "Wu Ying",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Wu Ying's former-monk friend and a staff fighter of Verdant Green Waters. He helps with sect assignments, supports the planned cure expedition, and continues searching for a safe treatment for his damaged and unusually small dantian.",
+            "id": "tou-he",
+            "name": "Tou He",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's master and an elder of Verdant Green Waters. He returns from a secret mission weakened by Three Seasons poison, a lethal condition whose cure requires a sun lotus, a Chan Chu heart, and a Ben spirit stone.",
+            "id": "elder-cheng",
+            "name": "Elder Cheng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fairy Yang"
+            ],
+            "description": "Elder Cheng's other disciple and Wu Ying's martial sister. She escaped the mission that poisoned their master and organizes the research, route planning, recruitment, and practical preparations for the cure expedition.",
+            "id": "fa-yuan",
+            "name": "Fa Yuan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior apothecarist of Verdant Green Waters and Wu Ying's private teacher. She explains that the required saint-class medicine exceeds what she can reliably produce in the field, and the war prevents her from leaving the sect's medical work.",
+            "id": "liu-tsong",
+            "name": "Liu Tsong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hook-sword fighter and former wandering cultivator who has joined Verdant Green Waters. He spars with Wu Ying after Wu Ying's recent breakthrough and says he sought the sect's protection because the approaching troubles are too large to escape alone.",
+            "id": "former-wandering-cultivator",
+            "name": "Former wandering cultivator",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The expedition's specialist pill maker. He is capable but arrogant, shows contempt toward mortals, and pursues the party's musician too directly until Wu Ying and Tou He confront him about his conduct.",
+            "id": "expedition-apothecary",
+            "name": "Expedition apothecary",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A musician recruited for the cure expedition. Her presence draws unwanted attention from the apothecary.",
+            "id": "expedition-musician",
+            "name": "Expedition musician",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former friend of Wu Ying who advanced to second-stage Energy Storage through military service. He has since been reassigned to the city as a city-guard lieutenant, with time there to continue cultivating.",
+            "id": "city-guard-lieutenant",
+            "name": "City-guard lieutenant",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official hosting the cultivator auction city. He receives Fa Yuan on sect business, handles valuable items submitted for sale, and asks her to advise his water-aspected daughter, whose limited interest in cultivation worries him.",
+            "id": "magistrate",
+            "name": "Magistrate",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young water-aspected cultivator with enough talent to benefit from Fa Yuan's instruction. Her father asks the visiting cultivator to advise her because, despite her aptitude, she shows little desire to make cultivation her path.",
+            "id": "magistrates-daughter",
+            "name": "Magistrate's daughter",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A visiting cultivator who assaults a restaurant hostess during the crowded auction period. Wu Ying turns the confrontation into a formal public challenge to keep the dispute from becoming a broader fight.",
+            "id": "visiting-sect-cultivator",
+            "name": "Visiting sect cultivator",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A trident-wielding direct disciple sent against an already wounded Wu Ying in the public succession challenge. Fresh and well prepared, he presses his attack beyond the point expected in a sparring match.",
+            "id": "opposing-direct-disciple",
+            "name": "Opposing direct disciple",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Grey Heavens Auction House official who conducts the cultivation sale under a strict prohibition on violence. Wu Ying cannot read his aura and estimates that his cultivation is at least high Core Formation.",
+            "id": "auction-hallmaster",
+            "name": "Auction hallmaster",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elder of Heavenly Lake whose party is already hostile toward the Verdant Green Waters delegation. He watches them openly at the auction, competes for valuable cultivation materials, and presents an immediate concern for Fa Yuan's party.",
+            "id": "heavenly-lake-elder",
+            "name": "Heavenly Lake sect elder",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An inner disciple of Heavenly Lake who approaches Fa Yuan after his elder outbids her for a stone needed in Elder Cheng's cure. He invites her to discuss the stone at the sect's residence that night, creating a possible route to the missing material.",
+            "id": "heavenly-lake-disciple",
+            "name": "Heavenly Lake inner disciple",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A city officer handling the aftermath of the Heavenly Lake conflict. He presents a strict public position while privately promising to protect Fa Yuan in custody and keep watch over the detained opposition.",
+            "id": "city-guard-captain",
+            "name": "City guard captain",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The expedition's musician, now identified by name during the final Chan Chu hunt. She uses air-chi guzheng music to interfere with the metal-aspected beast's aura, movements, and meridians while the other fighters seek an opening.",
+            "id": "wang-min",
+            "name": "Wang Min",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A swordsman of concealed cultivation leading armed fighters who hold the expedition apothecary hostage. He demands the cure materials, appears stronger than Wu Ying, and uses the prisoner's injuries and explosive talismans as leverage.",
+            "id": "dark-sect-swordsman-leader",
+            "name": "Dark-sect swordsman leader",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B08Q28RW15",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-second-expedition"
+      },
+      "recaps": {
+        "ending": "Wu Ying survives a sword thrust through his chest because Wang Min and the injured apothecary recover enough cure material to prepare a powerful medicinal bath. The treatment repairs his severe wounds and strengthens his body, though it does not advance his cultivation stage. Fa Yuan rejoins him after the authorities accept enough evidence to release her. Her tracking mark on the stolen Ben spirit stone leads the sect to a merchant connected with its sale, but the wider dark-sect organization remains unexposed. The surviving expedition members are sent toward sect support, and a sun lotus continues growing inside Wu Ying's living world spirit ring. Elder Cheng receives the antidote and rapidly recovers. He assumes responsibility for the expedition's debts and begins training Wu Ying more intensely for the trouble ahead. Tou He remains alive but may have meridian damage, while the apothecary's poisoned and badly damaged hand tendons still require treatment. Fa Yuan briefs the sect's senior leadership, and the broader Shen-Wei destabilization remains open.",
+        "in_short": "Elder Cheng returns to Verdant Green Waters with a lethal poison, prompting Wu Ying, Fa Yuan, Tou He, and a small expedition to seek three rare cure materials. Their journey tests the group against spirit beasts, hostile cultivators, and a conspiracy using corrupted chi and sacrifice-based cultivation. After Fa Yuan kills a Heavenly Lake elder and is detained, Wu Ying leads the remaining party to secure sun lotus and a powerful Chan Chu heart. Enemy cultivators capture and torture the apothecary, steal key materials, and nearly kill Wu Ying. Wang Min and the apothecary save him with a lotus blossom, a Chan Chu heart, and costly medicines, while Fa Yuan's tracking mark provides a lead to the stolen stone. Elder Cheng receives the antidote and recovers. Wu Ying returns to harsher training with a strengthened body and a new sword, while the dark-sect network, Tou He's cultivation damage, and the apothecary's injured hands remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying is a disciple of Verdant Green Waters, trained in swordsmanship and herb gathering under Elder Cheng. His advancement through Energy Storage is constrained by debts and obligations to his family and village. Tou He, his former-monk friend, has joined the inner sect but still seeks a safe answer to his damaged dantian. Elder Cheng returns from a dangerous mission suffering from Three Seasons poison, which will kill him within months. Fa Yuan, Cheng's other disciple, believes the poisoning is connected to a dark sect encouraging conflict between Shen and Wei. The cure requires a sun lotus blossom, a powerful Chan Chu heart, and a Ben spirit stone. Liu Tsong cannot reliably make the saint-class medicine in the field, so Wu Ying and Fa Yuan begin planning an expedition, researching locations, preservation, and recruitment while Cheng's condition worsens.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Wu Ying embraces a demanding routine of cultivation, sword practice, movement training, gathering study, and expedition research. His rejection of the dark sect's cruel path brings an enlightenment and another open meridian, though the beasts required for the cure remain beyond his present strength. The group still lacks a dependable field apothecarist, a route covering all three ingredients, and a storage method that can preserve a fresh Chan Chu heart. Elder Cheng discovers the preparations and initially objects to his disciples risking themselves for him. He ultimately accepts that they must follow their own path, arranges formal sect backing and equipment payment, and acknowledges Tou He's offer to join. War needs prevent the sect from assigning more elders, leaving Fa Yuan to lead an under-resourced expedition whose remaining members must be recruited quickly.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying opens a third meridian and learns an active aura defense and a scent-based method for detecting chi. Fa Yuan recruits a compact party consisting of Wu Ying, Tou He, a former wandering cultivator, an apothecary, and a musician. Their river journey is interrupted by water tigers, but the musician weakens the beasts with chi-infused music while the others defend the vessel. Forced onto an overland route, the group enters a marsh in search of the needed amphibian. Spirit fish wound Tou He and shock the musician before the party reaches a yellow-bile frog. A core-stage snake seizes Fa Yuan during the fight, leaving Wu Ying and the others to finish the frog while she battles the larger threat alone. They kill both creatures and collect valuable materials, but the frog is not the Chan Chu needed for Elder Cheng's antidote. The failed hunt nonetheless proves that the expedition can cooperate under pressure.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After recovering from the marsh, the expedition reaches the auction city. Wu Ying deepens his understanding of cutting and sword intent, while the former wandering cultivator advances and the musician receives an enlightenment. Wu Ying reunites with a former friend serving in the city guard, then challenges a visiting cultivator who assaulted a hostess and defeats him publicly. The resulting spectacle grows into a succession contest between sect and wandering cultivators. Tou He wins six consecutive bouts before his small dantian leaves him depleted. Wu Ying then fights through a series of opponents while injured and exhausted. In his sixth bout, a trident user continues attacking after Wu Ying is effectively beaten. Wu Ying creates a weaponless chi strike shaped by his new insight into sharpness and stops the assault. Fa Yuan prevents the opponent's master from retaliating. The attacker's burnt, rotten-smelling chi matches a wrongness Wu Ying previously sensed around a suspected elder, turning the rumored dark-sect threat into a concrete lead.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the cultivation auction, the hostile Heavenly Lake elder buys a stone needed for Elder Cheng's cure after outbidding Fa Yuan. Wu Ying spends most of his funds on a depleted living world spirit ring, choosing a long-term gathering resource over a better sword. A Heavenly Lake disciple invites Fa Yuan to negotiate for the cure stone. Wu Ying warns the expedition that their opponents' distorted chi may connect them to the attack on Elder Cheng. While Fa Yuan meets the elder, Wu Ying's companions disobey her instruction to remain inside and watch the Heavenly Lake residence with detection talismans. The disciple and several fighters attack them, while Fa Yuan battles the elder separately. She later explains that he demanded her lifeblood for a practice that consumes cultivation potential to create temporary power. She refused and killed him. Although officials find some support for her allegations, she remains detained pending investigation. Fa Yuan gives the recovered cure stone to Wu Ying and orders him to continue. Wu Ying becomes expedition leader and leaves to find the sun lotus and adequate Chan Chu heart without her.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying leads the expedition away from the city while using talismans, waterways, and off-road travel to hide its route. He transplants an immature sun lotus into his living world spirit ring, then guides the group to a secluded valley containing mature plants. A core-stage spirit carp guards the lake. The musician calms it while Wu Ying swims out under concealment, harvests two blossoms into ice-jade boxes, and removes a complete plant for his ring. The carp breaks free of the musical influence and injures him, but Tou He pulls him ashore. With both a sun lotus and the previously recovered spirit stone secured, Wu Ying sends the apothecary toward sect support carrying those ingredients. Wu Ying, Tou He, the musician, and the former wandering cultivator continue to a marsh for the last requirement. Tou He reaches five open meridians during the hard journey. The reduced party kills several dangerous beasts and takes a three-legged frog heart, but it is too small for the intended cure, leaving the central hunt unfinished.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the party prepares to leave the marsh, it finds a Core Formation Chan Chu and risks one final ambush. The metal-aspected beast resists their initial trap and wounds the fighters with explosive spikes of chi. Tou He's fire attacks exploit its elemental weakness, while Wang Min's guzheng music gradually disrupts its aura, muscles, and meridians. Wu Ying and the former wandering cultivator concentrate on an injured leg until Wang Min briefly locks the creature's meridians. They open a fatal wound, although Wu Ying's sword and Wang Min's treasured guzheng are destroyed. The group promptly harvests and preserves the heart. Everyone is injured and depleted, and Tou He fears damage to his meridians, but the expedition now holds a suitable replacement heart. They leave the marsh, avoid a protected flock of Ben, report success to Verdant Green Waters, and head toward a city where they expect rapid passage home.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near the city, Wu Ying's party encounters armed cultivators holding the expedition apothecary captive. His hands have been broken, and the captors demand the materials he had been carrying. Wu Ying surrenders the sun lotus to secure his release, only to discover explosive metal-chi talismans fixed across the prisoner's body. Wang Min estimates that their controller must remain nearby, so she rides away with the apothecary and tries to take him beyond activation range. The enemy leader claims the expedition's accusations lack proof and suggests that Wu Ying and Fa Yuan have been used to draw hidden opponents into the open. Wu Ying recognizes that the cure quest may have served as bait. He displays the remaining Chan Chu heart and begins another exchange, then turns the handover into a signal to attack. Wang Min covertly freezes the fighters' chi with her music, allowing Wu Ying to wound several enemies, but the stronger swordsman drives a blade through Wu Ying's chest. He falls unconscious while Tou He and the former wandering cultivator are also badly injured.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying awakens in a medicinal cauldron after Wang Min and the apothecary use a recovered sun lotus blossom, a Chan Chu heart, and costly herbs to save him. By cultivating with the Yellow Emperor's methods during the treatment, he repairs the damage to his chest and lung and emerges physically stronger, though without advancing his cultivation stage. Fa Yuan rejoins him after the authorities accept enough of her evidence to release her. She has sent the surviving companions and Wu Ying's world spirit ring toward sect aid. A lotus remains alive inside the ring. Fa Yuan also marked the stolen Ben spirit stone before the expedition, allowing the sect to trace it to a merchant and continue the investigation. Back at Verdant Green Waters, Elder Cheng has received the antidote and recovered rapidly. He assumes responsibility for repaying the expedition members and seeks treatment for the apothecary's ruined hand tendons. Fa Yuan reports to the sect's senior leadership, while Elder Cheng gives Wu Ying a harsher training regimen for the coming danger. The expedition succeeds, but the larger dark-sect conspiracy remains unresolved.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B08Q28RW15",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-second-expedition"
+      }
+    },
+    "a-thousand-li-the-second-sect-a-xianxia-cultivation-epic": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Verdant Green Waters disciple, herb gatherer, swordsman, and student of Elder Cheng. An awakened bloodline has made him stronger but altered his meridians and acupoints, leaving ordinary cultivation dangerous while he searches for a method his body can survive.",
+            "id": "wu-ying",
+            "name": "Wu Ying",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Wu Ying's former-monk friend and a fire-staff cultivator. Damage to his lower dantian has resisted treatment, forcing him to consider the risky prospect of opening another dantian and greatly lengthening his path through Energy Storage.",
+            "id": "tou-he",
+            "name": "Tou He",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's master at Verdant Green Waters and his instructor in the jian. He supervises Wu Ying's recovery, forbids unsafe advancement, and helps seek a cultivation method compatible with his student's transformed body.",
+            "id": "elder-cheng",
+            "name": "Elder Cheng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Verdant Green Waters apothecarist who teaches and treats Wu Ying. He identifies the newly active bloodline behind Wu Ying's survival and warns that medicine cannot by itself resolve the resulting damage and cultivation constraints.",
+            "id": "liu-tsong",
+            "name": "Liu Tsong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fa Yuan"
+            ],
+            "description": "Wu Ying's elder martial sister and Elder Cheng's other disciple. She helps fund Wu Ying's care, regards that support as a family duty, and hosts cultural instruction for members of Verdant Green Waters.",
+            "id": "fairy-yang",
+            "name": "Fairy Yang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The library elder of Verdant Green Waters. He assists the search for rare cultivation texts and recognizes that Wu Ying's unusual spirit ring warrants access to costly reference works.",
+            "id": "elder-kuo",
+            "name": "Elder Kuo",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cultivator who remains friendly with Wu Ying after their romantic relationship has ended. She discusses the increase in banditry and possible Dark Sect involvement with him.",
+            "id": "former-partner",
+            "name": "Wu Ying's former partner",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Wu Ying's teacher in gathering and the care of spiritual resources. She identifies his ring as a genuine growing world spirit ring, warns that knowledge of it could provoke violence, and asks him to surrender it without explaining why.",
+            "id": "gathering-teacher",
+            "name": "Wu Ying's gathering teacher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older cultivator at peak Energy Storage who joins Wu Ying's mixed group for the journey to the specialist sect.",
+            "id": "older-escort",
+            "name": "The older escort",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Wu Ying and Tou He's travelling companion on the journey to the specialist sect. An experienced gatherer, he fights with a bow and hooked swords.",
+            "id": "former-wandering-cultivator",
+            "name": "The former wandering cultivator",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spear-wielding noblewoman travelling with Wu Ying's party to the specialist sect. She is reluctant to cooperate with the others but fights beside them when demon beasts attack during the journey.",
+            "id": "hostile-noblewoman",
+            "name": "The noblewoman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The visitors-hall elder at the island sect that specializes in unusual constitutions. He receives the party from Verdant Green Waters and arranges lodging and guidance for its members.",
+            "id": "elder-huang",
+            "name": "Elder Huang",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior cultivator at the host sect with an earlier connection to Tou He's temple. He accepts the group's concern about a possible Dark Sect presence, promises discreet observation, and supplies talismans for communication and emergencies.",
+            "id": "honorary-monk-elder",
+            "name": "The honorary monk elder",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting cultivator seeking treatment for damage caused by products sold as legitimate cultivation elixirs. She explains that the aids concealed their own dependence, accepts that Wu Ying attacked her without malicious intent, and expects later recompense.",
+            "id": "former-aid-user",
+            "name": "The former cultivation-aid user",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two brothers from the host sect who join the crane-hunting expedition. They are water cultivators equipped with spears and talismans, adding defensive strength to the mixed group assembled by Wu Ying's companions.",
+            "id": "host-sect-brothers",
+            "name": "The host-sect brothers",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A visiting cultivator whose group draws suspicion because of its connection to people harmed by corrupt cultivation aids. Wu Ying determines that she does not carry the distinctive taint, making her a possible lead rather than a proven enemy.",
+            "id": "whistling-iron-monkey-cultivator",
+            "name": "The Whistling Iron Monkey cultivator",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poisoned and wounded elder defending the upper library after its formations are breached. Even in that condition, the elder remains the central defender against a hostile Core cultivator attacking the tower.",
+            "id": "library-formation-elder",
+            "name": "The library formation elder",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09416PMN1",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-second-sect-a-xianxia-cultivation-epic"
+      },
+      "recaps": {
+        "ending": "The attack on the host sect fails, but the tower and library suffer extensive damage and many defenders are lost. Wu Ying, Tou He, their former wandering companion, the Whistling Iron Monkey allies, and the library defenders hold long enough for the wounded formation elder to destroy a hostile Core cultivator's core. Two other enemy Core cultivators also die, as does one protector of the host sect. The noblewoman escapes amid fires in the tower, and the Dark Sect's wider network and internal collaborators remain unresolved.\n\nWu Ying spends almost two months healing. Five Winds Body has restored much of his condition and strengthened his bones and joints, but the exact nature of his dragon ancestry, his long-term health, and the soul method suited to him remain unsettled. Elder Huang rewards his warning and service with a personal copy of Seven Winds Body under a binding secrecy oath. Wu Ying leaves the sect with the former wandering cultivator and seeks a middle course between reckless intervention and ignoring harm. Tou He stays behind for a time to refill and stabilize his enlarged cultivation capacity and to assist reconstruction. Wu Ying's next challenge is reconciling Seven Winds with his bloodline while changing his soul cultivation path.",
+        "in_short": "An awakened dragon bloodline has transformed Wu Ying's body but filled it with dangerous, self-renewing chi. He travels with Tou He and a former wandering cultivator to a sect that studies unusual constitutions, where he is told he may have only a year to live. While earning access to cultivation manuals, he uncovers victims of addictive Dark Sect aids and signs of an active conspiracy. Tou He successfully opens a second dantian, but Wu Ying nearly exhausts himself supporting the breakthrough. Wu Ying finally understands that Five Winds Body must balance his altered chi instead of removing it, restoring his strength in time to resist a coordinated assault on the host sect. The defenders repel the attack at severe cost, though the noblewoman and other conspirators escape. After nearly two months of healing, Wu Ying receives Seven Winds Body and leaves with his former wandering companion, while Tou He remains temporarily to recover and help rebuild.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying returned to Verdant Green Waters carrying the consequences of an unplanned medicinal bath. A previously hidden, apparently nonhuman bloodline allowed him to survive, but it altered his body and made further cultivation unsafe. Liu Tsong can treat the damage but cannot identify a compatible long-term method, while Elder Cheng orders Wu Ying to stop opening meridians until the danger is understood. Wu Ying remains committed to cultivation despite the risk.\n\nTou He faces a separate crisis: damage to his lower dantian may require him to open another dantian and rebuild much of his Energy Storage progress. Wu Ying also learns that his world spirit ring is a genuine growing space whose value must remain secret. His gathering teacher warns him about the danger, while Elder Kuo helps him research it. With ordinary wood cultivation worsening Wu Ying's condition and no adequate manual at Verdant Green Waters, both friends need expertise beyond their home sect.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: Ordinary cleansing cannot remove the blockages spreading through Wu Ying's altered body. A test of wood cultivation ends in collapse, and the dark marks associated with his condition continue to grow. During a challenge at the training grounds, however, a wooden practice jian produces an extraordinary response. Wu Ying's chi moves through it with unusual ease, his sword intent breaks through the protective barrier, and the weapon shatters. His body then heals rapidly enough to expel embedded splinters, though the effort drains his dantian.\n\nThe episode shows that Wu Ying's condition is not merely a simple elemental affinity. It offers unusual strength, healing, and a close bond with wooden weapons, but it also triggers destructive reactions he cannot yet control. A suitable body cultivation method is now urgent, and the evidence points toward the awakened bloodline as the source of both the opportunity and the danger.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying leaves Verdant Green Waters with Tou He, a former wandering cultivator, an older escort, and a spear-wielding noblewoman. Demon beasts attack on the road, and Wu Ying's wooden-sword training continues to increase both his combat reach and his physical deterioration. He and Tou He discover that the older escort and the former wandering cultivator had been luring beasts toward the party for profit. The scheme ends, the escort departs, and the others reach the island sect known for diagnosing unusual constitutions.\n\nThe host sect's elemental formation leaves Wu Ying injured but finally clarifies his condition. His primary alignment is wind, arising from strong wood and lesser fire aspects, and he carries faint dragon ancestry that awakened improperly. His body continually generates several harmful forms of chi, so medicine alone cannot save him. The elders offer limited access to possible manuals and invite him to change sects, but he refuses out of loyalty to Elder Cheng and his martial family. Without a workable body and soul cultivation path, his accelerating decline may kill him within a year.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Limited library access gives Wu Ying possible wind-body methods, but useful manuals require contribution points. He earns them by selling herbs, teaching garden care, and restoring the host sect's neglected spiritual plots. Meanwhile, his heightened senses detect the familiar mark of Dark Sect corruption in the city. Tou He contacts an honorary monk elder, who agrees to watch discreetly, but the group lacks proof of an active threat.\n\nWu Ying's pursuit of the taint leads him to attack a visiting cultivator in a bathhouse. She is not an operative but a victim of cultivation aids sold through respectable channels. The products conceal dependence and damage their users' cultivation, and she has come to the host sect for treatment. Wu Ying is held responsible for the intrusion and owes her later recompense. The encounter forces him to distinguish victims from enemies. He obtains exercises that slightly reinforce his wind body and remove a small amount of harmful chi, though their compatibility remains uncertain. Wu Ying, Tou He, and their travelling companion then assemble four more Energy Storage cultivators for an expedition against mutated cranes. The group departs with the tainted visitor under informal observation.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying joins a larger expedition against metal-infused cranes while continuing to compare cultivation methods. The hunt becomes a costly battle when a Core-stage crane enters the fight. Two host-sect brothers save Wu Ying from a fatal fall, and the party kills the flock's strongest members, but several participants return badly injured. Wu Ying secures valuable materials and enough contribution points to acquire Five Winds Body and a compatible soul manual.\n\nFive Winds can contain his mixed chi and reduce his pain, but he cannot yet grasp the insight needed for a cure. Tou He, having opened all eight Energy Storage meridians, attempts to form a second dantian. The breakthrough succeeds only after Wu Ying and their companion pour their own chi into the supporting formation. Tou He reaches peak Energy Storage with a greatly enlarged but depleted capacity. Wu Ying collapses from the effort, losing much of the progress that had been holding his condition in check. A physician again gives him roughly a year to live. Wu Ying accepts treatment that trades some remaining lifespan for several functional months, hides the prognosis from his friends and family, and finds no practical cure in the library. The visitor harmed by the corrupt cultivation aids confirms that her treatment has removed the taint. That night, an unidentified Dark Sect attacker enters Wu Ying's room with poisoned weapons. Wu Ying evades the initial strike and forces the intruder to retreat, but cannot identify or capture the assailant.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A former user of the Dark Sect's aids is successfully treated, but an assassin then attacks Wu Ying in his room with poisoned weapons. Wu Ying and his companions investigate a noblewoman, a library attendant, and visiting cultivators from the Whistling Iron Monkey Sect. In desperation, Wu Ying releases the mixed chi he had kept partitioned inside himself. Five Winds Body reveals its true principle: the different forms of chi must be balanced rather than purged. The method begins repairing and strengthening him.\n\nThe Whistling Iron Monkey cultivators prove willing to oppose the Dark Sect and join a surveillance plan. The noblewoman warns Wu Ying to abandon the inquiry, then hidden fighters ambush Wu Ying, Tou He, and their former wandering companion as a larger force attacks the tower. Disabled defenses and missing reinforcements reveal help from traitors inside the host sect. Wu Ying and Tou He survive the rooftop battle with severe injuries and enter the devastated tower with their allies. In the upper library, Wu Ying distracts a hostile Core cultivator long enough for the poisoned formation elder to destroy the enemy's core, though the same strike shatters Wu Ying's bones and knocks him unconscious.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B09416PMN1",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-second-sect-a-xianxia-cultivation-epic"
+      }
+    },
     "a-thousand-li-the-second-storm": {
       "characters": {
         "characters": [
@@ -1902,6 +2393,880 @@
           }
         ],
         "work": "a-thousand-li-the-second-storm"
+      },
+      "recaps": {
+        "ending": "Fa Yuan, her sister, and many other prisoners escape the compound, though the victory costs numerous rescuers and captives their lives. Tou He completes his Core Formation breakthrough. Yin Xue survives the loss of an eye, while the former wandering cultivator dies after torture by a Dark Sect elder. Elder Cheng saves the fleeing group but suffers a critical poisoning. He gives Wu Ying his sword manual, then enters deep meditation behind a waterfall under the cover of an apparent burial. Only Wu Ying and Fa Yuan know that his death is not certain. Months later, the survivors leave Wei after corruption within its royal family leads to a coup and the end of the war. Fa Yuan returns toward Verdant Green Waters with Wu Ying and Tou He, then withdraws in mourning. Wu Ying refuses a separate hunt for Dark Sect remnants. Verdant Green Waters formally exiles him for disobeying orders and for the rescue's costs. He accepts the judgment, returns his token, and departs to follow the wind and shape an independent Tao. Elder Cheng's survival, Wu Ying's Core Formation path, the lost land, and remaining Dark Sect influence stay unresolved.",
+        "in_short": "While gathering herbs for Verdant Green Waters, Wu Ying learns that Dark Sect forces and internal traitors have devastated his sect and abducted Fa Yuan. He defies orders and leads an expanding rescue force into Wei. The prisoners are freed, but the breakout becomes a costly battle in which the former wandering cultivator is murdered, Yin Xue loses an eye, and many allies die. Tou He reaches Core Formation, while Wu Ying develops a dangerous wind technique rooted in his own understanding of karma. Elder Cheng abandons another mission to save his disciples, is critically poisoned, and enters concealed meditation beneath a waterfall while the world believes him dead. Wei's corrupted royal order falls in a coup and the war ends. Back at Verdant Green Waters, Wu Ying accepts exile for the unauthorized mission, surrenders his sect token, and leaves to pursue his own Tao.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying is a disciple of Verdant Green Waters, an accomplished swordsman, and a travelling gatherer of rare herbs. His master, Elder Cheng, is a demanding sword elder who also teaches Fa Yuan, Wu Ying's senior martial sister. Tou He, a former monk and fire-staff cultivator, is Wu Ying's trusted friend but needs a safe remedy for damaged cultivation. Liu Tsong serves as an apothecarist and medical teacher to the group, while Elder Kuo oversees the sect's cultivation texts. Wu Ying's growing responsibilities bind him to this martial family even as his work repeatedly takes him beyond the sect.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying continues gathering rare herbs for Verdant Green Waters and its allies during the war with Wei. After killing four ambushers, he completes a valuable delivery, tests new swords, and helps expose two compromised disciples at an allied sect. His travels and his affinity for wind have brought him to the edge of Core Formation, but he refuses to advance without understanding the Tao he means to follow. News then reaches him that Dark Sect attackers, aided by insiders, have devastated Verdant Green Waters. He races home to find his parents alive, though his father has lost part of a leg, and discovers that many defenders died and the library burned. His estranged gathering master is dying from wounds and poison. She divides her legacy, leaving the gardens to her senior garden disciple and giving Wu Ying selected maps, manuals, records, and knowledge of a lost land whose entrance opens roughly once a century. Elder Cheng also reveals that Fa Yuan was taken alive. Her captors are using her and other prisoners as bait, and the sect forbids an immediate rescue.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Verdant Green Waters remains damaged and infiltrated. Elder Kuo, who lost an arm in the defense, grants Wu Ying unusual access to advanced manuals and advises him to build a personal martial path from varied methods. Wu Ying chooses to defy the ban on rescuing Fa Yuan. Although the sect officially opposes him, Elder Cheng and other elders quietly provide intelligence, equipment, medicines, armor, formations, and escape tools. Elder Cheng asks Wu Ying to save his senior disciple and lends him her duplicate sect token. Tou He, Yin Xue, and the former wandering cultivator join the mission, while Liu Tsong remains behind after preparing dragon-blood medicine to strengthen Tou He's fire cultivation. More groups seeking abducted loved ones attach themselves to the expedition until it grows to about twenty peak Energy Storage cultivators. Stealth is no longer realistic, and the rescuers train across sect lines for open battle. Their containment formations offer a possible answer to Core Formation enemies, while a wider orthodox offensive is expected to draw some hostile elders away. Trust within the enlarged force remains uncertain.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence of an informer mounts when spirit messages are intercepted and a masked Dark Sect operative breaches the camp, then escapes Wu Ying and Tou He with a shadow spirit and an earth-moving technique. The expedition next suffers a major ambush by a Core Formation demon beast. Coordinated formations kill it, but three rescuers die, four are badly injured, and the reduced party must continue without many of its horses. Near the target, Wu Ying studies Elder Cheng's karma-severing method but rejects its central premise. He concludes that karma is exchanged rather than simply cut away, and his first attempt at a wind-based sword technique tears through the ground while leaving him injured and exhausted. The captives are held within a fortified compound protected by anti-flight measures and several Core Formation cultivators. During reconnaissance, a former military scout disappears, raising the prospect of betrayal. The rescuers attack before the defenders can fully prepare. Their formation specialist opens a hidden passage, and Wu Ying, Yin Xue, and the former wandering cultivator enter. Alarms force an open fight, but Wu Ying reaches the underground prison while Yin Xue holds the entrance.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying frees an imprisoned talisman master, who helps open more cells, then reaches Fa Yuan and her sister and cuts away their chi-draining restraints. The sisters recover only part of their strength. At the entrance, Yin Xue loses an eye while holding off defenders, and the prison break expands into a battle involving wounded captives. Yin Xue escorts the most badly hurt escapees away. A Dark Sect elder then arrives with the corpse of the former wandering cultivator, whom he tortured and killed. Fa Yuan and her sister engage this Core Formation enemy while Wu Ying moves toward the main fighting. At the compound gate, a Fan Clan formation mistress works to turn the defenders' array into an escape route as Tou He and other groups struggle against several Core Formation elders. Wu Ying uses a dangerous wind variation to collapse a meteor-hammer elder's lungs, nearly emptying his own reserves and drawing heaven's disapproval. His allies finish that opponent. The freed talisman master is exposed as a traitor and killed. The formation mistress weaponizes the compound array to destroy another elder, but a final enemy begins transforming into a demon. Fairy Yang disrupts the transformation with her flute as Tou He begins ascending to Core Formation.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fairy Yang kills the transformed enemy after Wu Ying and the sword-group leader create an opening, and Tou He completes his Core Formation ascension. The survivors flee rather than abandon the wounded, but three Core Formation pursuers catch them. Elder Cheng arrives after forsaking his assigned operation and defeats the attackers with help from Fa Yuan and Tou He, though a hidden assassin leaves him critically poisoned. During the escape through the spirit forest, Elder Cheng gives Wu Ying his personal sword manual and instructs him to adapt its principles to his own path. He then enters deep meditation behind a waterfall to fight the poison. The group constructs an apparent tomb so that all but Wu Ying and Fa Yuan believe him dead. Months later, they leave Wei after Dark Sect corruption within the royal family provokes a coup. Negotiations and an elder tournament end the war. The survivors separate, and Wu Ying refuses to join a hunt for remaining Dark Sect members because revenge would turn him from his Tao. He returns toward Verdant Green Waters with Fa Yuan and Tou He. The sect exiles him for the unauthorized rescue and its costs. Wu Ying accepts the judgment, surrenders his token, and departs alone to pursue the wind and his own cultivation path.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B09MR4KNBH",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-second-storm"
+      }
+    },
+    "a-thousand-li-the-third-cut-a-xianxia-cultivation-novel": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Verdant Gatherer"
+            ],
+            "description": "A Core Formation cultivator of Verdant Green Waters who travels as a professional gatherer. He studies wind, fights with a jian, and tends a growing world-spirit ring. His journey south combines an inquiry into corrupted beast cores with the development of his Wandering Dragon sword art.",
+            "id": "wu-ying",
+            "name": "Wu Ying",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Formation Master"
+            ],
+            "description": "A young Core Formation cultivator who leaves her powerful innkeeper parents to gain experience beside Wu Ying. Her wood and spatial techniques make her a capable companion, though she is still learning the caution required in the wilds.",
+            "id": "wood-cultivator",
+            "name": "Wood Cultivator",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Former Monk"
+            ],
+            "description": "Wu Ying's old friend and a Verdant Green Waters elder, now in Core Formation. Fire-dragon blood changed his body, and his unusual cultivation uses two dantians. He fights with a staff and carries a potent flame suited to confronting the corruption spreading through the south.",
+            "id": "tou-he",
+            "name": "Tou He",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Guard Captain"
+            ],
+            "description": "An earth- and metal-aspected Core Formation officer serving the southern city lord. He confirms that increasingly dangerous tainted beasts threaten the region and authorizes Wu Ying's group to hunt them.",
+            "id": "city-guard-captain",
+            "name": "City Guard Captain",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A water-aspected Core Formation cultivator seeking advancement. At a riverside auction, Elder Huang offers Wu Ying a preserved Clear-Mind Immortal Soul Pill in exchange for an untainted fish core, making the strongest bid under the sale's restricted terms.",
+            "id": "elder-huang",
+            "name": "Elder Huang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Fairy Yang"
+            ],
+            "description": "Wu Ying's elder martial sister and a member of his Verdant Green Waters martial family.",
+            "id": "fa-yuan",
+            "name": "Fa Yuan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sundering Blade",
+              "Master Cheng"
+            ],
+            "description": "Wu Ying's demanding sword master at Verdant Green Waters and an important protector from his earlier life. Elder Cheng's instruction remains part of Wu Ying's martial foundation as Wu Ying develops a personal sword path during his travels away from the sect.",
+            "id": "elder-cheng",
+            "name": "Elder Cheng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Special-Unit Commander"
+            ],
+            "description": "The formidable commander of a capital special unit sent to investigate the southern corruption. She initially regards Wu Ying and his allies as possible saboteurs, but admits them after they identify the danger as potentially demonic and offer useful combat, cleansing, and formation skills.",
+            "id": "military-colonel",
+            "name": "Military Colonel",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elderly Swordsmith"
+            ],
+            "description": "An elderly body cultivator, blade practitioner, and master swordsmith at a major southern armory. He tests Wu Ying's sword understanding, recognizes the Heart of the Sword, and presents several saint-level jian whose qualities arise from their making rather than added inscriptions.",
+            "id": "armory-master",
+            "name": "Armory Master",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friendly, bow-armed scout and tracker serving in the capital's special unit.",
+            "id": "unit-scout",
+            "name": "Unit Scout",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guarded, bookish scholar serving in the capital's special unit.",
+            "id": "unit-scholar",
+            "name": "Unit Scholar",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fortune Teller"
+            ],
+            "description": "An abrasive formation specialist and diviner attached to the capital's special unit. He is openly hostile toward Wu Ying's wood-aligned companion as the divided party begins its advance.",
+            "id": "unit-formation-master",
+            "name": "Unit Formation Master",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Guandao Fighter"
+            ],
+            "description": "An aggressive front-line combatant in the capital's special unit who wields a guandao and carries a metal aspect. She joins the expedition's strained introductions with little patience for the outsiders, but supplies direct martial force as the group enters corrupted wilderness.",
+            "id": "metal-aspected-martial-specialist",
+            "name": "Metal-Aspected Martial Specialist",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel's Bonded Raptor"
+            ],
+            "description": "A hereditary military spirit beast bonded to the special-unit colonel. Its command of air and Nascent Soul strength make it the expedition's dominant aerial fighter. Its independence is immediately concerning when it ignores a planned ambush and consumes meat from corrupted beasts.",
+            "id": "nascent-soul-raptor",
+            "name": "Nascent Soul Raptor",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A temple-dwelling beast at Nascent Soul strength, disfigured by an unnatural limb and embedded spikes that carry corruption. It ruins the expedition's unfinished containment array and attacks its members.",
+            "id": "corrupted-nascent-soul-ape",
+            "name": "Corrupted Nascent Soul Ape",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CD87X8F3",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-cut-a-xianxia-cultivation-novel"
+      },
+      "recaps": {
+        "ending": "The ape's body is drained and destroyed, closing the immediate demonic gate, but the survivors find no proof of who created it. The expedition's alliance collapses when members of the special unit ambush Wu Ying, the wood cultivator, and Tou He. Linked escape formations carry the trio away, and Wu Ying kills the pursuing Nascent Soul raptor with his single-use slaughter formation. Tou He loses two fingers protecting him, while the wood cultivator exhausts herself powering their flight. During the following weeks, corrupted-beast activity declines as the source's influence fades. Wu Ying's hand heals into a painful scar, and his contact with heavenly wind leaves him frightened that further cultivation could erode his human identity. He and the wood cultivator affirm their romantic bond. More than a year and a half after Tou He began his mission, the three travel by boat toward Verdant Green Waters. Tou He has advanced another core layer, and Wu Ying chooses to announce his return by approaching the sect through its waterfall. The gate's maker, the surviving conspirators, Wu Ying's reception, and the danger within his Seven Winds path remain unresolved.",
+        "in_short": "Wu Ying travels south with a gifted wood cultivator to trace corrupted beast cores and deepen his wind cultivation. They reunite with Tou He, whose dragon-altered flame can cleanse the taint, and join a mistrustful military expedition. After recovering a heart-like corruption splinter from a demon-held ruin, the party reaches a temple where a mutilated Nascent Soul ape serves as a demonic gate. Wu Ying completes his third Wandering Dragon cut and channels heavenly wind, while Tou He and the formation workers help destroy the gate at great cost. The colonel's faction then betrays the three outsiders. They escape, kill the pursuing raptor, and evade pursuit as the corruption recedes. Wu Ying and the wood cultivator become partners. Scarred and troubled by the loss of self implicit in heavenly wind, Wu Ying returns toward Verdant Green Waters with her and Tou He.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying rose from humble origins into the cultivation world of Verdant Green Waters. He became a skilled gatherer, sword user, and wind cultivator, but his path eventually carried him away from the sect under banishment. His travels gave him a growing world-spirit ring and a reputation as the Verdant Gatherer. His ties to the sect endured through people such as his sword master Elder Cheng, his elder martial sister Fa Yuan, and his friend Tou He. Tou He left monastic life and survived a transformation involving fire-dragon blood, producing an unusual body and cultivation path. Wu Ying now seeks deeper understanding of wind and a stable advance through Core Formation. A report of corrupted beast cores in the south gives that personal journey a wider purpose: he travels to investigate the contamination with a capable but inexperienced wood cultivator whose wood and spatial techniques aid their journey.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying reluctantly accepts a young wood cultivator as his companion on the journey south. He tests her wilderness judgment during a shadow-leopard attack and in the deep wilds, where they gather selectively, trade with spirit creatures, mine valuable ore, and hide from a Nascent Soul tiger. Her combat, merchant, formation, and spatial talents prove substantial, although she still lacks field caution. Wu Ying continues refining his wind body, world-spirit ring, and unfinished third cut of the Wandering Dragon. The pair take a river route around a phoenix's territory and begin finding traces of the corruption they were sent to investigate. At a lakeside city, their trading contacts identify an inland southern city as the likely origin of many tainted cores. Wu Ying offers an untainted Core Formation fish core at auction under carefully chosen terms. Elder Huang wins it with a preserved Clear-Mind Immortal Soul Pill, but a concealed lightning user incapacitates the guards and steals the boxed core before the exchange can be completed.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wu Ying and his companion continue south as merchants rather than pursue the dangerous auction thief. At the suspected city, severe entry restrictions reveal that officials are struggling with unusually strong tainted beasts. The pair negotiate admission by agreeing to hunt one. Wu Ying then reunites with Tou He, now a Core Formation cultivator with two dantians and fire-dragon changes to his body. Together they attack a corrupted elephant herd while sparing the unaffected animals. Wu Ying kills its matriarch with an incomplete version of his third Wandering Dragon cut, destroying a jian in the process. Tou He's tightly controlled flame consumes the corruption in the carcasses. He explains that earlier expeditions vanished while seeking the source and that the taint may come from a demonic breach. The city has stopped searching while it waits for stronger aid. A specialist team from the capital is now expected, so Wu Ying, Tou He, and the wood cultivator decide to seek places on that expedition. She also plans to improve the city's failing core-cleansing formations.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The corruption is present in the city itself, where large and small formations labor to contain it. Wu Ying trades gathering knowledge for a divine wind ivy cutting, research access, and institutional support, while his companion uses a permanent cleansing formation and a carefully arranged dinner to build political backing. The three outsiders persuade the city lord and the hostile commander of a capital special unit that their skills are needed against a possible demonic rupture. Before departure, an elderly armory master recognizes Wu Ying's Heart of the Sword and sells him a saint-level jian aligned with a pure cutting purpose. The expedition begins amid distrust. Its members include a scout, scholar, fortune-telling formation master, guandao fighter, and the commander's overwhelmingly powerful Nascent Soul raptor. As tainted attacks become daily, the scout finds an abandoned settlement occupied by hanging demons. The scholar identifies a corruption splinter there, feeding on tainted matter while saturating the region with demonic energy. The commander diverts the expedition to destroy or recover it before it can support a larger demonic domain.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition enters a ruined city controlled by hanging demons, where the bodies of an earlier party confirm the danger. A Nascent Soul guardian detects the incursion, forcing an open battle. While the main unit holds it, Wu Ying, the wood cultivator, and the scholar reach the central temple. They find a huge heart-like splinter that imposes its rhythm and will on nearby life. The scholar is gravely wounded, but Wu Ying resists the coercion through a new understanding of the wind of hell. The scholar stops the heart with an enchanted knife, and the group secures it in a prepared container. Outside, Tou He's cleansing flame has escaped his control after defeating the guardian. Wu Ying remains behind, enters the fire despite severe burns, and strikes his friend back to awareness. Tou He explains that heavenly influence has bent his flame toward impersonal destruction, conflicting with the mortal middle path he wants. Two demons pursue them, but the commander's raptor intervenes. Back in the unit's shelter, the wood cultivator treats Wu Ying's burned hand while he resumes contemplating the winds and his relationship to heaven.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tests confirm that the captured heart carries a hostile, dominating Tao and that Tou He's flame is the only proven way to break it down. The expedition presses toward the suspected gate despite depleted supplies, stronger corrupted beasts, and the growing failure of Wu Ying's wind senses and cultivation method. The wood cultivator proposes turning the local beasts against one another. The group creates traps, illusions, lures, and an escape formation, then survives a chaotic battle involving corrupted fire ants, a rhinoceros, and aerial predators. Wu Ying escapes the closing formation by briefly turning into wind. During the retreat, he and the wood cultivator acknowledge their mutual attraction. After two more difficult days, the party reaches an abandoned temple complex that appears to be the source. Three Nascent Soul demonic beasts guard it, including one beneath the ground. The guard captain reveals a stored mirror attack, while the wood cultivator prepares a seven-star containment formation and gives protective bracelets to Wu Ying and Tou He. The expedition divides its remaining strength between containing the underground guardian and entering the temple.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The underground guardian awakens before its containment formation is complete, and a mutilated Nascent Soul ape emerges from the temple. Formation spikes and an alien grafted arm bind the ape to the corruption. When it nearly kills the wood cultivator, Wu Ying completes the third Wandering Dragon cut and turns its attack aside. The group breaks the beast's protective rune-work, but the guard captain dies after expending his hidden mirror weapon, and the metal-aspected martial specialist is also killed. The wounded ape continues fighting through poison, flame, and sword strikes. Wu Ying drives his jian into its remaining formation rod and confronts the alien Tao directly. He realizes that his five earthly winds cannot overcome it and becomes a conduit for heavenly wind, risking the dissolution of his body and identity. While the formation workers prepare to close the gate, the others hold the ape. Wu Ying becomes a cyclone of wind and fire around it, allowing repeated heavenly lightning strikes to burn and collapse the creature. The surviving cultivators are left unconscious or badly wounded. The ape is incapacitated, but its demonic-realm-enhanced heart begins recovering, so the gate threat remains alive at the end of the numbered chapters.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0CD87X8F3",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-cut-a-xianxia-cultivation-novel"
+      }
+    },
+    "a-thousand-li-the-third-kingdom": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Verdant Gatherer"
+            ],
+            "description": "A banished member of Verdant Green Waters who continues to work as an herb gatherer and jian practitioner beyond the sect's lands. Wu Ying travels alone, masks the unusual nature of his wind cultivation, and searches for a sound route to Core Formation.",
+            "id": "wu-ying",
+            "name": "Wu Ying",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sentient Nascent Soul spirit beast that rules a forest and appears as an antlered, winged feline creature. It accepts Wu Ying's offerings, subjects him to a dangerous test, confirms his wind dragon bloodline, and points him toward the meeting place of the seven winds for further cultivation.",
+            "id": "forest-spirit-beast",
+            "name": "Forest spirit beast",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young wandering cultivator at peak Energy Storage whose unusual bloodline has not yet been identified. Liu Ping is fiercely loyal to her less advanced brother, Liu Jin, stays with their travelling companions, and defends Zhao despite recognizing its faults.",
+            "id": "liu-ping",
+            "name": "Liu Ping",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liu Ping's older brother, an ambitious wandering cultivator at a relatively low Energy Storage level. Liu Jin travels with his sister and their independent companions while looking for ways to advance beyond his limited present strength.",
+            "id": "liu-jin",
+            "name": "Liu Jin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Flower of the Northwest Hills"
+            ],
+            "description": "A young Laiban spear cultivator of the Zhuang clan. Pan Shui has reached the heart of the spear, displays uncommon skill for her age, and treats Wu Ying as a worthy partner when they test their weapon arts.",
+            "id": "pan-shui",
+            "name": "Pan Shui",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pan Shui's older sister and a spear cultivator from Laiban. Pan Yin is protective of her more promising sibling, while her own progress has stopped because her final meridian remains blocked.",
+            "id": "pan-yin",
+            "name": "Pan Yin",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Seven Pavilions authority, veteran soldier, and metal-aligned Core Formation cultivator. After decisively demonstrating the gap between her power and Wu Ying's, Elder Cao clears him of the first killing and privately asks him to watch for anything suspicious.",
+            "id": "elder-cao",
+            "name": "Elder Cao",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mortal forensic investigator serving Seven Pavilions. Investigator Chu studies the first victim and the physical crime scene with care, using the wounds and other evidence to narrow the killer's build, weapon, and dominant hand while allowing for deliberate deception.",
+            "id": "investigator-chu",
+            "name": "Investigator Chu",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer responsible for security at the Seven Pavilions tournament. Once the first body is discovered, the guard captain controls the scene, enforces the closure of the grounds, and works with Investigator Chu to question suspects and organize the inquiry.",
+            "id": "seven-pavilions-guard-captain",
+            "name": "Seven Pavilions guard captain",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An organizer among Zhao's wandering cultivators who works through the White Flower Merchant Association. He offers Wu Ying's companions a token that links holders to mutual aid, merchants, and channels for cultivation resources.",
+            "id": "white-flower-merchant-association-leader",
+            "name": "White Flower Merchant Association leader",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Mountain Fast elder at Core Formation who quickly recognizes that Wu Ying's wind core is newly formed and delicate. Elder Huang offers a practical exchange in which rare gathered materials could earn Wu Ying access to sect libraries.",
+            "id": "elder-huang",
+            "name": "Elder Huang",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior swordsman of the visiting Crimson Flowers sect. Shi Fei accompanies his sect elder and fellow cultivator Xi Qi at the Seven Pavilions gathering, where the foreign disciples take an early interest in Wu Ying's refined control.",
+            "id": "shi-fei",
+            "name": "Shi Fei",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crimson Flowers cultivator travelling with Shi Fei and their visiting elder. Xi Qi is among the sect juniors present when Wu Ying's aura control attracts attention and tensions rise between the foreign guests and Zhao's local disciples.",
+            "id": "xi-qi",
+            "name": "Xi Qi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sect competitor who fights with axes and accepts the tournament's possibility of lethal injury as part of entering. Her uncompromising view of sanctioned combat places her at odds with cultivators who regard restraint and mercy as duties.",
+            "id": "axe-wielding-sect-entrant",
+            "name": "Axe-wielding sect entrant",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting Core Formation elder whose techniques are aligned with earth. The elder joins Wu Ying's defense after Liu Ping's abduction, adding the strength of an established sect cultivator to the confrontation with Elder Cao.",
+            "id": "earth-aligned-sect-elder",
+            "name": "Earth-aligned sect elder",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting Core Formation elder who specializes in formations. The elder joins the effort to protect Liu Ping and oppose Elder Cao, bringing large-scale formation work to a battle that Wu Ying cannot safely manage alone.",
+            "id": "formation-master-sect-elder",
+            "name": "Formation-master sect elder",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's former-monk friend and a cultivator who fights with a fire-aligned staff. Tou He aided Wu Ying in earlier journeys while seeking to repair damage to his own cultivation and has since advanced to Core Formation.",
+            "id": "tou-he",
+            "name": "Tou He",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Cheng"
+            ],
+            "description": "Wu Ying's demanding sword master at Verdant Green Waters and a determined protector of his disciples. After being poisoned, Elder Cheng was hidden in deep meditation while an apparent burial concealed the uncertainty surrounding his survival.",
+            "id": "elder-cheng",
+            "name": "Elder Cheng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fairy Yang"
+            ],
+            "description": "Wu Ying's elder martial sister and an accomplished member of his Verdant Green Waters martial family. Fa Yuan entered mourning seclusion after the rescue that ended with Elder Cheng's apparent death.",
+            "id": "fa-yuan",
+            "name": "Fa Yuan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0B2X3NMH2",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-kingdom"
+      },
+      "recaps": {
+        "ending": "Elder Cao's scheme ends when Wu Ying and two visiting sect elders wear down her defenses and Liu Ping, overtaken by grief and her unstable bloodline, kills her. Wu Ying identifies Cao as the person behind the murders, the fire, Liu Ping's abduction, and the effort to make independent tournaments and auctions appear unsafe. With the confinement formation destroyed, attendees are free to leave. The White Flower Merchant Association openly recruits for resistance to Zhao, but Liu Ping does not follow its leader. The guard captain dismisses anyone unwilling to face the consequences and remains to file an honest report, although he expects the government to retaliate. Three days later, Liu Ping wakes, still injured and changed by her brother's death. She accepts Pan Yin's offer to travel west with the Pan clan alongside Wu Ying and Pan Shui. Wu Ying departs Zhao as a wounded new Core Formation cultivator. His banishment from Verdant Green Waters, the stability of his wind core, his developing Tao, the secret of his world spirit ring, and the purpose of Zhao's kingdom-wide formations remain unresolved.",
+        "in_short": "Banished from Verdant Green Waters, Wu Ying follows a spirit beast's cryptic guidance, crosses into Zhao, and forms a compressed but fragile wind core. Concealing his strength, he joins Liu Ping and Liu Jin at a Seven Pavilions tournament, where he meets Pan Shui, Pan Yin, and visiting sect cultivators. A sequence of murders traps the contestants inside the grounds. Liu Jin and Investigator Chu are among the dead, while evidence increasingly points to an advanced insider. Wu Ying draws out Elder Cao, who admits that she created the violence for Zhao to discredit independent gatherings. Wu Ying and two elders bring her close to defeat, and Liu Ping kills her in an uncontrolled bloodline state to avenge her brother. The White Flower Merchant Association then recruits openly for resistance, while the guard captain stays to report the truth. Recovering from the battle, Wu Ying leaves Zhao for the west with Liu Ping and the Pan sisters.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying's path through Verdant Green Waters and war left his martial family divided by loss and concealment. His sword master, Elder Cheng, was poisoned and placed in hidden meditation beneath the cover of an apparent burial. Fa Yuan withdrew into mourning, while Tou He survived his damaged cultivation and reached Core Formation. Wu Ying remains affiliated with his sect but is barred from its lands.\n\nTravelling alone, he seeks a way to form his own core without committing to an unstable understanding of his Dao. A powerful forest spirit beast confirms that his awakened bloodline is that of a wind dragon and directs him toward the place where seven winds meet. After further wandering and conflict drive him out of Shen, Wu Ying crosses into Zhao. Insight at the border allows him to compress his wind qi into an unusual Core Formation core, though the result is fragile and must be stabilized. Wandering cultivators led by companions Liu Ping and Liu Jin find him after the breakthrough. Wu Ying hides his true level and joins them on the road to a Seven Pavilions tournament, entering a kingdom where the army tightly regulates cultivators, techniques, and valuable resources.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: At the Seven Pavilions tournament village, Wu Ying registers under the name Expert Long and tries to keep his sect history and new cultivation level quiet. Visiting disciples from Crimson Flowers and Mountain Fast nevertheless notice his precise aura control. A long spear spar with Pan Shui deepens his understanding of weapon mastery, while two sect elders recognize both his identity as the Verdant Gatherer and the weakness of his recently formed wind core. Elder Huang offers future library access in exchange for gathered materials.\n\nThe gathering changes when a Mountain Fast disciple is found murdered. Investigator Chu's physical examination points toward a right-handed jian user, and the closed grounds make Wu Ying vulnerable because he had argued with the victim. Pan Shui believes his direct fighting style does not fit the hidden attack. The wandering cultivators give Wu Ying access to the White Flower Merchant Association's mutual-aid network. Pan Yin, Pan Shui's protective older sister, also joins the group and reveals that her own advancement is blocked. Elder Cao then discloses herself as the hidden Seven Pavilions Core Formation authority. She defeats Wu Ying in a private encounter, clears him of the first murder, and asks him to remain in the tournament while watching for the actual killer.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: The tournament proceeds under mounting strain. Wu Ying chooses restraint even when it costs him a match, while an axe-wielding sect entrant nearly kills Liu Jin in sanctioned combat. Liu Jin survives that injury only to be murdered in his bed. Liu Ping attacks the axe wielder in grief, but Wu Ying stops her, and Elder Cao imposes a renewed lockdown. The White Flower Merchant Association leader privately explains that his network supports a patriotic resistance against Zhao's system of privilege and forced service. Wu Ying refuses to join without understanding the kingdom well enough to judge its struggle.\n\nAt Elder Cao's request, Wu Ying examines Liu Jin's room. A hostile blood painting suggests dark methods, but he warns that it could be staged evidence. Investigator Chu clears the initial suspects and starts reconstructing their movements. The finalists continue competing and attend a Seven Pavilions dinner, where Wu Ying also arranges to acquire a saint-tier jian by helping a metal body cultivator. Before Chu can explain a new discovery that still requires confirmation, she is killed inside the guarded headquarters. Her death proves that the murderer can act within the supposedly protected compound. Despite fear and anger among the confined contestants, the tournament continues into its final rounds.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Wu Ying defeats Shi Fei in a demanding semifinal but withdraws before facing Pan Shui, judging that neither the prize nor a damaging fight is worthwhile. Liu Ping and the axe-wielding entrant fight to a draw that leaves both badly hurt. Liu Ping burns life force to force a bear-like bloodline evolution, making the consequences of her recovery uncertain. With neither finalist able to continue, Pan Shui wins and then keeps the prize by defeating three challengers.\n\nMeanwhile, the guard captain quietly lets Wu Ying inspect Investigator Chu's body and office. The evidence suggests that an advanced cultivator with small hands killed her, and the first victim's missing protective token is found among Chu's materials. Witness statements clear the youngest Pan sister. Wu Ying learns that calamities have struck several recent tournaments and decides to act rather than simply escape Zhao. At the prize ceremony he announces that he has suspicions and needs one final check, intending to provoke the hidden killer into moving.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the conclusion: Elder Cao admits that she arranged murder, arson, abduction, and disorder to discredit independent tournaments and auctions on Zhao's behalf. She calls Liu Ping and Liu Jin traitors and tries to crush Wu Ying beneath a doctrine of compulsory duty. His own developing Tao lets him resist. An earth-aligned elder and a formation specialist join the fight. Their combined attacks injure Cao, but she breaks the formation meant to contain her and incapacitates its maker. Wu Ying uses the storm and an unfinished Wandering Dragon sword attack to wound her further, suffering severe backlash himself. Liu Ping then rises in an uncontrolled bloodline state and kills Cao to avenge Liu Jin.\n\nWu Ying exposes Cao's responsibility to the guard captain and the surviving witnesses. The destroyed confinement formation releases the gathering. The White Flower Merchant Association declares its resistance openly and leaves with new recruits. The guard captain releases guards who do not wish to remain, then stays with several loyal officers to submit a truthful report despite the expected danger from Zhao. Three days later, Liu Ping awakens, grieving but alive. She declines to follow the resistance leader immediately and accepts Pan Yin's invitation to travel west under the Pan clan's protection. Wu Ying, Liu Ping, Pan Shui, and Pan Yin leave Zhao together, while the state's response and the purpose of its vast formations remain unknown.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0B2X3NMH2",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-kingdom"
+      }
+    },
+    "a-thousand-li-the-third-realm": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Expert Long"
+            ],
+            "description": "A wandering herb gatherer and jian practitioner newly advanced to Core Formation. He travels to the Pan clan lands with the Pan sisters and Liu Ping, still learning to control the unsteady flight granted by his wind core.",
+            "id": "wu-ying",
+            "name": "Wu Ying",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Pan sister returning to her clan alongside Wu Ying. She remains attentive to the clan's interests during the journey home.",
+            "id": "pan-yin",
+            "name": "Pan Yin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sixteen-year-old Pan clan spear cultivator whose tournament success is celebrated when she returns home. She treats Wu Ying with the easy familiarity of a younger sister.",
+            "id": "pan-shui",
+            "name": "Pan Shui",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mid-stage Core Formation spear cultivator who receives the returning party. He recognizes Wu Ying as Expert Long, the Verdant Gatherer.",
+            "id": "pan-clan-fourth-uncle",
+            "name": "Pan clan fourth uncle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pan clan chief and father of the Pan sisters. He negotiates an exchange of herbs, instruction, and cultivation resources with Wu Ying while affirming the protections owed to a guest.",
+            "id": "chief-pan",
+            "name": "Chief Pan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pan clan elder who handles the clan's need for spiritual herbs. He helps negotiate its barter and teaching arrangement with Wu Ying.",
+            "id": "elder-mo",
+            "name": "Elder Mo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pan clan child with exceptional sword insight and the Heart of the Sword. The clan asks Wu Ying to teach him the Long family style.",
+            "id": "cheng",
+            "name": "Cheng",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's travelling companion, made stronger and more vigilant by a bear bloodline enhancement. She continues to grieve.",
+            "id": "liu-ping",
+            "name": "Liu Ping",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fierce member of the Pan clan expedition who relishes close combat. She delivers the final blow to the mortally wounded nascent-soul snake and claims its spirit stone.",
+            "id": "red-furred-bloodline-cultivator",
+            "name": "Red-furred bloodline cultivator",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified older woman or spirit who directs Wu Ying to excavate a ruined temple, then vanishes before explaining her identity or purpose. A jade box apparently left as payment awaits him after he honors the dead.",
+            "id": "temple-guide",
+            "name": "Temple guide",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sect specialist who identifies Wu Ying's ancient pill and arranges access to cultivation facilities in exchange for studying it. The agreement draws objections from other sect elders.",
+            "id": "sect-apothecarist",
+            "name": "Sect apothecarist",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage swordsman fleeing an outpost gang after its master allegedly killed his father and took the family sword. He accepts Wu Ying's aid and leaves the outpost with him.",
+            "id": "teenage-swordsman",
+            "name": "Teenage swordsman",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The damaged Core Formation leader of a desert outpost. He seeks the teenage swordsman's Saint Jian and accepts a public three-opponent contest in spring as the means of settling the dispute.",
+            "id": "fist-of-the-north",
+            "name": "Fist of the North",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The thunder-and-lightning cultivator who leads a mobile northern tribe. Far stronger than Wu Ying, she confronts him for taking a thunder thistle without the required offering and takes him to her people to arrange restitution.",
+            "id": "steppe-khan",
+            "name": "Steppe Khan",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's assigned language teacher and intermediary during his constrained service to the northern tribe. He helps Wu Ying teach herb lore while learning the tribe's customs and speech.",
+            "id": "tribal-translator",
+            "name": "Tribal translator",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An upper-rank body cultivator of the northern tribe with a water aspect. She begins a consensual relationship with Wu Ying under customs that differ from those of his homeland.",
+            "id": "water-aspected-tribal-cultivator",
+            "name": "Water-aspected tribal cultivator",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile Core Formation cultivator who uses mist techniques. During a ritualized inter-tribal raid, she separates from the main fighting and advances toward the host camp.",
+            "id": "mist-using-raider",
+            "name": "Mist-using raider",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The nine-year-old ruler of Baixia and its province. After divination foretells the Verdant Gatherer's arrival, she asks Wu Ying to recover seven serpent pearls required as tribute to preserve her household's standing.",
+            "id": "viscount",
+            "name": "Viscount",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A loyal senior officer of the Viscount's household whose core and immortal soul are damaged. He treats Wu Ying's arrival from the wilds as a security concern and escorts him into Baixia.",
+            "id": "baixia-guard-captain",
+            "name": "Baixia guard captain",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Baixia household's exacting diving instructor. Though only a high body-cleansing cultivator, the instructor has the specialized skill to train Wu Ying in breath control, underwater movement, and sea gathering.",
+            "id": "dive-master",
+            "name": "Dive master",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A coastal fisherman who recognizes Wu Ying as a cultivator and reluctantly accepts his unpaid help. He keeps the gatherer manual once used by his late wife but makes no promise to share it.",
+            "id": "elderly-fisherman",
+            "name": "Elderly fisherman",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Nascent Soul cultivator who runs a neutral mountain inn and trading post with his wife and daughters. He helps enforce the sanctuary's rules and can overwhelm Wu Ying through the pressure of a Tao clash.",
+            "id": "innkeeper",
+            "name": "Innkeeper",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The innkeeper's wife and fellow Nascent Soul cultivator. She enforces the inn's strict neutrality, halts violence on its grounds, and offers assistance after Wu Ying is injured by a clash among stronger cultivators.",
+            "id": "proprietress",
+            "name": "Proprietress",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Nascent Soul wanderer whose arrival at the neutral inn leads to a contest of Tao and will with its married proprietors. He is powerful enough to contend with both of them at once.",
+            "id": "beggar-cultivator",
+            "name": "Beggar cultivator",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Cheng"
+            ],
+            "description": "Wu Ying's demanding sword master at Verdant Green Waters and one of his established protectors. His teaching and their martial bond remain important parts of Wu Ying's life beyond the sect.",
+            "id": "elder-cheng",
+            "name": "Elder Cheng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's elder martial sister and a member of his Verdant Green Waters martial family. Her connection to him remains part of the sect ties he carries into his wandering.",
+            "id": "fairy-yang",
+            "name": "Fairy Yang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wu Ying's former-monk friend and an allied fire-staff cultivator. He has been seeking a way to repair his damaged cultivation.",
+            "id": "tou-he",
+            "name": "Tou He",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BTMSD5WT",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-realm"
+      },
+      "recaps": {
+        "ending": "Wu Ying leaves the neutral mountain inn on foot and heads south toward the Dai Kingdom. The innkeeper has warned him that unusually large, corrupted demonic cores are emerging from the region's beast-filled forest, and Wu Ying accepts the task of finding and opposing the cause. He remains free to return to Verdant Green Waters because his banishment has ended, but continues his independent journey by choice.\n\nHis revised cultivation method, Cyclone's Breath, uses a broad external vortex to attune surrounding wind chi and greatly accelerate his cultivation, though its concealment has not yet been tested against real enemies. His compressed wind core, Seven Winds body, Heart of the Sword, and first two Wandering Dragon movements are stronger, while a third sword form remains unfinished. He carries a new saint-level jian, concealment and protective formations, two escape talismans, and a single-use slaughter formation. Buying them costs much of his store of cores and rare plants. Elder Cheng's recovery, Pan Yin's advancement, the future of Wu Ying's winter pupil, and the source of the southern corruption remain unresolved.",
+        "in_short": "Newly advanced to Core Formation, Wu Ying spends years wandering beyond Verdant Green Waters. He helps the Pan clan clear a deadly snake from its mystic realm and gains the Heart of the Sword, trains a persecuted teenage swordsman to win his freedom, and repays an offense against a northern tribe through service and defense. After rejecting a dragon-bloodline path, he reaches Baixia, learns that his banishment has ended, and retrieves seven tribute pearls before helping kill a giant spirit octopus. Further years of coastal work, storms, and seclusion deepen his Seven Winds cultivation and Wandering Dragon style. At a neutral inn, three Nascent Soul cultivators redesign his continuous cultivation technique as Cyclone's Breath. Equipped with a saint-level jian, formations, and escape talismans, he leaves for Dai to investigate increasingly powerful corrupted demonic beasts.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Wu Ying is a wandering cultivator of Verdant Green Waters, trained in the jian by Elder Cheng and skilled at gathering spiritual herbs. His martial family includes Fairy Yang, while Tou He is a former-monk friend seeking to repair damaged cultivation. Wu Ying has been banished from his sect, and Elder Cheng remains concealed in deep meditation after poisoning, with his survival uncertain. Those unresolved bonds follow Wu Ying as he continues travelling rather than returning home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Newly advanced to Core Formation, Wu Ying travels with Pan Yin, Pan Shui, and Liu Ping to the Pan clan's secluded lands. The clan welcomes the sisters home and bargains with Wu Ying for herbs, cultivation resources, and instruction for Cheng, a child prodigy who already possesses the Heart of the Sword. Wu Ying refuses to become Cheng's formal master but studies sword forms with him, discovering that his own practical adaptations have drifted from the Long family style. Cheng's delight in the flexible urumi helps Wu Ying recognize that his own progress is blocked by seeing the sword chiefly as a weapon.\n\nThe clan also grants Wu Ying access to bloodline research and medicinal baths. He studies methods for strengthening beast and immortal ancestry, works on his wind body and world spirit ring, and spends the winter exchanging knowledge with local gatherers. Liu Ping continues to grieve while her bear bloodline reshapes her strength and desires. As spring arrives, reports of unrest spread beyond the valley, and the Pan clan prepares to ask the greater favor that was held back during its initial negotiations.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: The Pan clan asks Wu Ying to enter its concealed mystic realm, located within the remains of an ancient half-immortal snake. He joins clan elders, the Pan sisters, Liu Ping, and Cheng in a hunt for a nascent-soul snake that has made the realm increasingly dangerous. The expedition gathers rare resources and battles snake-men before confronting the beast. Cheng is badly hurt, but Pan Yin protects him while Wu Ying and the Core Formation fighters complete a spear formation. Wu Ying blinds the snake and severs its spine with an incomplete Wandering Dragon strike, allowing a red-furred bloodline cultivator to finish it. Cheng survives and the party returns with valuable remains.\n\nBack at the village, Wu Ying and Pan Yin share one night without making a continuing commitment. Wu Ying then reaches the Heart of the Sword by accepting the blade as a source of craft, beauty, and protection as well as violence. When a government investigator approaches, Chief Pan sends him away so the clan can deny sheltering him. Cheng gives Wu Ying written observations on his killing stroke, and Wu Ying departs alone into the northwest wilderness with sharper sword understanding and a promise to return someday.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Wu Ying follows the western winds through Jin. At a ruined temple, an unknown older presence directs him to excavate and honor the dead, leaving him an ancient pill. A local sect identifies it as a rare core-reinforcing medicine and lets him use its cultivation tower, where he forms another compressed wind-core layer. Its leaders then pressure him for the pill, so he yields it as a gift and leaves without creating a lasting enemy.\n\nNear a desert outpost, Wu Ying rescues a teenage swordsman pursued over his father's Saint Jian. The Fist of the North claims the weapon, and Wu Ying negotiates a public spring contest in which the boy must face three chosen opponents. Through winter, Wu Ying gives the boy rigorous sword, movement, and body-cultivation training while refusing the title of master. The boy wins all three duels despite poisoning and wounds. Under public scrutiny, the outpost leader honors the agreement and clears every debt. Wu Ying supplies the young man with weapons, medicine, and further training resources, then sends him toward a merchant caravan and resumes travelling alone.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: On the northern steppe, Wu Ying takes a thunder thistle without performing the local offering. The steppe Khan places him under constrained service as restitution. He teaches gathering and agriculture, learns the local language through a tribal translator, and begins a consensual relationship with the Khan's water-aspected niece. After adding another compressed layer to his wind core, Wu Ying detects an approaching raid and defends the camp from a mist-using Core Formation attacker. The Khan later emerges from seclusion at Nascent Soul and declares his debt paid. She also claims her niece wants a child, but the niece denies this and explains that she sought companionship rather than a permanent bond. Wu Ying ends the changed relationship and leaves freely.\n\nTravelling farther north, he studies cold winds and gathers hardy plants. He enters an ice palace despite the wind's warnings and encounters the overwhelming presence of the northern Dragon King. A lesser dragon recognizes distant dragon-human ancestry in him and releases him after deciding that he did not come to steal blood. The encounter advances Wu Ying's understanding of heavenly wind, but he rejects direct bloodline cultivation and continues alone on the path of the Seven Winds body.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: After mastering much of the northern wind, Wu Ying turns south and east, eventually reaching the ocean city of Baixia. Its damaged-Core guard captain escorts him to the nine-year-old Viscount. She gives Wu Ying a message from Fairy Yang confirming that Verdant Green Waters has ended his banishment and that his parents still live. Wu Ying nevertheless chooses to continue his journey. He accepts the Viscount's urgent commission to gather seven deep-water serpent pearls needed for tribute.\n\nAfter months of diving and underwater-combat training, Wu Ying joins a five-ship expedition. He retrieves all seven pearls from a deep oyster bed, then escapes a gigantic camouflaged spirit octopus responsible for earlier wrecks. Badly injured, he lures it into the fleet's formation. The guard captain and crews help maim it, while Wu Ying completes the second Wandering Dragon movement and deals critical wounds. The octopus is killed, securing the tribute, and Wu Ying recovers its valuable core. He also removes submerged flags from a suspected lure formation, though no responsible party is identified. Instead of leaving the coast at once, he begins working without pay for an elderly fisherman in hopes of earning access to the late wife's gatherer manual.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Wu Ying spends months helping the elderly fisherman and rebuilding his property, but an extreme typhoon drives Wu Ying to warn and rescue coastal communities. Wind and water dragons find him inside the storm, recognize his distant kinship, injure him, and leave him to fall. He survives and enters years of secluded cultivation. Wu Ying realizes that the Seven Winds must act together, with heavenly and hell winds preserving his humanity as his body becomes more like wind. He rejects deathless immortality as a corruption of the Tao, adds another core layer, and names his evolving sword style the Wandering Dragon.\n\nAt a neutral mountain inn, Wu Ying meets a married pair of Nascent Soul proprietors and a beggar cultivator of equal rank. Their Tao clash injures him, but the three later help redesign his continuous cultivation method. After recovering, he names the resulting wide, concealed wind vortex Cyclone's Breath. The innkeeper warns that increasingly powerful corrupted demonic beasts are appearing around the southern Dai Kingdom. Wu Ying accepts the request to investigate. He buys a saint-level jian, concealment and defensive formations, escape talismans, and a single-use slaughter formation, spending much of his gathered wealth. Though free to return to his sect, he leaves the inn on foot and heads south to find the source of the corruption.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0BTMSD5WT",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-li-the-third-realm"
       }
     },
     "a-thousand-splendid-suns": {
