@@ -518,6 +518,233 @@
         "work": "armada"
       }
     },
+    "armageddon-craig-alanson": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Commander of the Flying Dutchman and leader of its human expedition. His position is under government review after earlier unauthorized decisions nevertheless helped protect Earth from two Maxolhx warships.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An American ambassador-at-large who convenes a multinational review of Joe Bishop's command. He questions whether Bishop remains fit to lead the Flying Dutchman.",
+            "id": "woolsey",
+            "name": "Woolsey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Skippy the Magnificent"
+            ],
+            "description": "An Elder AI allied with Joe Bishop. He demonstrates his reach by covertly entering a secure government meeting through a concealed device, where he argues that Bishop should remain in command.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's ship AI, recovering after severe damage. She directs her restoration with Skippy's advice so it preserves changes she regards as part of her identity.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Steel"
+            ],
+            "description": "An engineer publicly associated with the Dayton crisis. He sends Skippy a celebratory gift as the Flying Dutchman prepares for its new expedition, reflecting his continuing connection to the crew.",
+            "id": "brock-steel",
+            "name": "Brock Steel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian commissioner assigned to oversee the beta-site expedition. He is one of four civilian leaders traveling with the mission and would remain with the scientific party if it finds a suitable refuge.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A full colonel assigned to command security at any beta site the expedition establishes. He will serve under civilian leadership on the ground rather than become the Flying Dutchman's executive officer.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms",
+              "Colonel Tammy",
+              "Colonel Jennifer"
+            ],
+            "description": "A Flying Dutchman officer who declines the executive-officer post for the outbound mission. She is Frank Muller's partner, and the two arrange to join the expedition together rather than be separated.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Muller"
+            ],
+            "description": "Jennifer Simms's partner and a volunteer for the beta-site expedition. He chooses to join the mission so that its departure will not separate him from Simms.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Desai"
+            ],
+            "description": "A returning pilot who wants a normal life after one final trip away from Earth. She declines the chief-pilot position but accepts service as the Flying Dutchman's executive officer for the beta-site mission.",
+            "id": "fal-desai",
+            "name": "Fal Desai",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "Commander of the Special Tactics Assault Regiment. He recruits Adams into STAR Team Alpha after testing her exceptional ability to move, shoot, and fight while using powered armor.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A gunnery sergeant and member of the Merry Band who joins STAR Team Alpha. Her performance against Marine raiders in powered-armor trials earns Smythe's confidence and a place in the unit.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pilot who flies the Panther with Joe Bishop and Wu during the covert operation around the monitored Slingshot system.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "A lieutenant colonel based on Paradise who seeks news after contact with Earth is lost. Her attempt to arrange a reconnection becomes visible through alien communications monitored by the expedition.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Fireball",
+              "chief pilot Reed"
+            ],
+            "description": "The chief pilot who flies the lead Falcon carrying Smythe and Adams during the first battlecruiser boarding operation.",
+            "id": "samantha-reed",
+            "name": "Samantha Reed",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gonzalez"
+            ],
+            "description": "A Navy SEAL petty officer serving as a STAR operator. During the first battlecruiser boarding, he is assigned to cover Adams as she advances toward a critical data connection.",
+            "id": "pete-gonzalez",
+            "name": "Pete Gonzalez",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Frey"
+            ],
+            "description": "A Canadian STAR captain wounded during the first battlecruiser capture. Damage to her calf and shoulder leaves her temporarily unable to participate in the next stage of the operation.",
+            "id": "katie-frey",
+            "name": "Katie Frey",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Giraud"
+            ],
+            "description": "A human expedition operator who remains at the Maxolhx supply station during the evacuation. He helps cover the withdrawal and move power boosters while the rescue effort develops around the damaged ships.",
+            "id": "rene-giraud",
+            "name": "Rene Giraud",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Kapoor"
+            ],
+            "description": "A major who takes command of the surviving STAR personnel after the supply-station losses. Only six members of the depleted force are immediately combat-capable when he assumes responsibility.",
+            "id": "major-kapoor",
+            "name": "Major Kapoor",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774241285",
+            "type": "community"
+          }
+        ],
+        "work": "armageddon-craig-alanson"
+      }
+    },
     "armor-world": {
       "characters": {
         "characters": [
