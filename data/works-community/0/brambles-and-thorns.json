@@ -4466,6 +4466,276 @@
         "work": "brothersong"
       }
     },
+    "brushfire": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "The human commander of Valkyrie and the Merry Band of Pirates. His command of the former Ghost Ship has just become known to a Jeraptha squadron, creating an unexpected opening for contact while ending the practical secrecy surrounding the vessel.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Jeraptha officer commanding an Ethics and Compliance squadron. After learning that humans operate Valkyrie, the captain requests a controlled rendezvous rather than approaching the ship without permission.",
+            "id": "jeraptha-ethics-and-compliance-captain",
+            "name": "Jeraptha Ethics and Compliance captain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Elder AI whose extraordinary abilities remain essential to Bishop and Valkyrie. After abandoning the crew during an earlier crisis, he is trying to regain their confidence through reliable conduct and respect for the boundaries set by people who do not yet trust him.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A developing allied AI aboard Valkyrie. Bilby temporarily handles a routine crew communication when Adams declines direct contact with Skippy, demonstrating a useful intermediary role while continuing to learn how to work with the ship and its human crew.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "Valkyrie's executive officer and a senior counterweight to Bishop's command decisions. She challenges secrecy within the leadership team and tells Skippy that remorse matters only if it leads to changed behavior, while helping prepare the ship for its next operations.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Muller"
+            ],
+            "description": "Jennifer Simms's husband.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A gunnery sergeant and STAR operator aboard Valkyrie. She refuses Skippy's attempts to resume friendly contact after his abandonment of Bishop and the crew, making clear that professional assistance does not amount to restored personal trust.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "The STAR and special-operations commander responsible for planning a dangerous rescue of human prisoners held by the Kristang. He argues that service members must protect fellow citizens without first deciding whether those captives deserve the risk.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserve gunnery sergeant assigned to overwatch during the Keeper rescue. Despite concern for Adams, he follows Smythe's order to protect the whole ground team and stops a Kristang moving toward another target building.",
+            "id": "reserve-gunnery-sergeant",
+            "name": "Reserve gunnery sergeant",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Jeraptha fleet admiral who opens direct talks with Bishop after learning that humans operate Valkyrie. He proposes Jeraptha support for relocating Paradise's human population, including several troop transports and one star carrier.",
+            "id": "admiral-kekrando",
+            "name": "Admiral Kekrando",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Logellia"
+            ],
+            "description": "The Ruhar administrator of Paradise and a trusted contact from Bishop's earlier service there. Bishop approaches her privately with the truth about his survival, human control of Valkyrie, Earth's freedom, and humanity's claimed possession of Elder weapons.",
+            "id": "baturnah-logellia",
+            "name": "Baturnah Logellia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chotek"
+            ],
+            "description": "A human diplomat evacuated aboard Valkyrie with other officials and the remaining Avalon personnel as the ship prepares to return to Earth.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Koch"
+            ],
+            "description": "Bishop's former fireteam leader, now a successful farmer on Lemuria. Their reunion on Paradise brings the consequences of renewed access to Earth into personal focus, and Koch hopes for a place aboard the first transport so he can visit his family.",
+            "id": "greg-koch",
+            "name": "Greg Koch",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Chang"
+            ],
+            "description": "A UNEF leader and former ship commander who remains Bishop's principal institutional contact when Valkyrie returns to Earth. During the ship's absence, he has managed the political consequences of the failed cover story and the public revelation of humanity's alien vessels.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Steel"
+            ],
+            "description": "A wealthy human who attempts to establish influence with Skippy through an apology and carefully chosen gifts. His approach assumes that Skippy might be receptive to a new favored associate, but it immediately tests Skippy's loyalty to Bishop.",
+            "id": "brock-steel",
+            "name": "Brock Steel",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Desai"
+            ],
+            "description": "A deceased pirate pilot who served as Bishop's executive officer on her final mission. During a visit to her family, Bishop describes her as a courageous and highly capable officer, while her mother confirms that Desai freely chose that last service.",
+            "id": "fal-desai",
+            "name": "Fal Desai",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "The leader of the Mavericks and a senior figure in the Alien Legion. She reports their return from Paradise alongside transports carrying thousands of current and former military personnel, forcing Earth's leaders to address their integration and future mission.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied ship AI assigned to the industrial expansion of humanity's remote base. She begins working with Skippy to upgrade fleet-support fabricators, a task intended to turn a limited transfer of aging ships into a force that humans can maintain and rebuild.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reichert"
+            ],
+            "description": "A Maxolhx admiral who advocates containing and pressuring humanity without creating the extinction conditions most likely to trigger the Elder weapons. He treats calibrated coercion as a way to limit human power while avoiding a catastrophic response.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bailey"
+            ],
+            "description": "A senior UNEF representative on Paradise. After the Ruhar authorize only a limited rotation of human personnel, Bailey prepares to leave the planet while recognizing that UNEF may soon need the experience of its long-serving Paradise officers again.",
+            "id": "general-bailey",
+            "name": "General Bailey",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Besenson"
+            ],
+            "description": "A senior UNEF representative stationed on Paradise. Besenson joins General Bailey in confronting evidence that the overdue human survey transport was destroyed by a Maxolhx missile attack, leaving more than three hundred human passengers presumed dead.",
+            "id": "general-besenson",
+            "name": "General Besenson",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Jeraptha officer commanding the transfer force at the original rendezvous. She tries to evacuate her crew when the Maxolhx destroy the force, survives in an isolated escape pod, and hopes Valkyrie will recognize the ambush before entering it.",
+            "id": "jeraptha-transfer-force-commander",
+            "name": "Jeraptha transfer-force commander",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Friedlander"
+            ],
+            "description": "A UNEF analyst recruited to lead the investigation into unexplained Maxolhx activity inside Jupiter. Though not an astrophysicist, his prior off-world experience and record of sound analysis make him the choice to coordinate the specialists studying the devices.",
+            "id": "mark-friedlander",
+            "name": "Mark Friedlander",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774246325",
+            "type": "community"
+          }
+        ],
+        "work": "brushfire"
+      }
+    },
     "bud-not-buddy": {
       "characters": {
         "characters": [
