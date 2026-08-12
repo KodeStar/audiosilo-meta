@@ -1803,6 +1803,456 @@
         "work": "homers-the-iliad-and-the-odyssey-homer"
       }
     },
+    "honor-among-enemies": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful Manticoran shipping magnate who presses the Navy for stronger protection against mounting losses in Silesia. He doubts that the proposed armed merchant deployment is sufficient.",
+            "id": "klaus-hauptman",
+            "name": "Klaus Hauptman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "First Spacelord Caparelli"
+            ],
+            "description": "The Royal Manticoran Navy's First Spacelord. He must answer demands for safer commerce in Silesia without stripping light warships from the war against Haven.",
+            "id": "thomas-caparelli",
+            "name": "Thomas Caparelli",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Whitehaven"
+            ],
+            "description": "Commander of Sixth Fleet and an advocate for capturing the strategically important Trevorstar terminus.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander, Earl of Whitehaven",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The naval innovator behind Project Trojan Horse, which turns large commercial hulls into heavily armed ships able to conceal their true combat strength.",
+            "id": "sonja-hemphill",
+            "name": "Sonja Hemphill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Harrington",
+              "Steadholder Harrington"
+            ],
+            "description": "A Manticoran officer currently off active service who also holds authority as a Grayson steadholder and senior naval officer. Political opponents promote her for a dangerous four-ship Q-ship command in Silesia.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Liberal-connected economist and former diplomat who remains hostile to Honor after an earlier conflict on Grayson. He agrees to support her recall because the weak, hazardous command may ruin or remove her.",
+            "id": "reginald-haussmann",
+            "name": "Reginald Haussmann",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Leader of the Dempsey cartel. She puts employee safety ahead of her political objections while discussing the Navy's proposed response to shipping losses.",
+            "id": "erica-dempsey",
+            "name": "Erica Dempsey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major LaFollet"
+            ],
+            "description": "Honor's chief armsman and security leader on Grayson. He remains responsible for her personal protection as she considers returning to active Manticoran service.",
+            "id": "andrew-lafollet",
+            "name": "Andrew LaFollet",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's bonded treecat. Their private empathic connection lets her perceive the emotions of people around them, a capability she keeps secret.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Protector of Grayson. He secures permanent recognition of Honor’s separate legal identities in Manticore, preserving her authority and LaFollet’s role as her armed protector.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Fifth Space Lord, who oversees personnel for the Royal Manticoran Navy. He warns Honor that the accelerated deployment leaves too little time to provide Task Group 1037 with fully trained crews.",
+            "id": "lucian-cortez",
+            "name": "Lucian Cortez",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior captain who volunteers for the accelerated Silesian assignment. She will command Parnassus and serve as Honor's second-in-command in Task Group 1037.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wayfarer's executive officer, once a junior tactical officer under Honor and now a decorated commander. He is one of the experienced officers anchoring the ship's hurriedly assembled crew.",
+            "id": "rafe-cardones",
+            "name": "Rafe Cardones",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning officer from Honor's earlier commands who takes charge of flight operations aboard Wayfarer as the Q-ship prepares for deployment.",
+            "id": "scotty-tremaine",
+            "name": "Scotty Tremaine",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Senior Chief Harkness"
+            ],
+            "description": "A seasoned senior enlisted crewman who returns to serve with Tremaine. His experience is valuable aboard a ship carrying many untested personnel and disciplinary transfers.",
+            "id": "horace-harkness",
+            "name": "Horace Harkness",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Q-ship Gudrid and third in Task Group 1037's command order.",
+            "id": "alan-mcguire",
+            "name": "Alan McGuire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran of Honor's earlier commands who captains the Q-ship Scheherazade as part of Task Group 1037's covert anti-piracy deployment.",
+            "id": "samuel-houston-webster",
+            "name": "Samuel Houston Webster",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted but inexperienced electronics technician assigned to Wayfarer. Eager to serve under Honor, he refuses to yield his bunk to a lower-rated senior crewman and becomes a target for intimidation.",
+            "id": "aubrey-wanderman",
+            "name": "Aubrey Wanderman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bosun MacBride"
+            ],
+            "description": "Wayfarer's senior enlisted leader, responsible for discipline among a crew that includes inexperienced personnel and disruptive transfers. She knows which crew members arrived with disciplinary records and intervenes directly when Wanderman is assaulted over his assigned bunk.",
+            "id": "sally-macbride",
+            "name": "Sally MacBride",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A power technician and disciplinary transfer who tries to take Wanderman's bunk by force. After MacBride stops him, he continues to threaten the younger technician.",
+            "id": "randy-steilman",
+            "name": "Randy Steilman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wayfarer's chief engineer and Samantha's adopted human. He is responsible for shaping a large, inexperienced engineering department into an effective unit during the rushed deployment.",
+            "id": "tschu",
+            "name": "Tschu",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tschu’s bonded female treecat companion.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Andermani fleet admiral and member of the imperial succession. He reveals that the Empire has identified Task Group 1037 and offers controlled support for its campaign against Silesian raiders.",
+            "id": "robin-rabenstrange",
+            "name": "Robin Rabenstrange",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A People's Navy cruiser captain operating covertly in Silesia. After finding a freighter whose crew was murdered by pirates, he diverts from reconnaissance to pursue the killers and recover evidence about them.",
+            "id": "warner-caslet",
+            "name": "Warner Caslet",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Klaus Hauptman's daughter and the Hauptman cartel's operations director for Manticore B. She insists on accompanying her father when he decides to investigate the cartel's losses in Silesia.",
+            "id": "hauptmans-daughter",
+            "name": "Hauptman's daughter",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the lost Hauptman freighter Bonaventure and a former captain of the family yacht. He remained aboard with his executive officer after most of the crew escaped and is now missing.",
+            "id": "harold-sukowski",
+            "name": "Harold Sukowski",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wayfarer's Marine officer, responsible for leading boarding operations and securing prisoners when Honor's disguised ship captures its first raider.",
+            "id": "susan-hibson",
+            "name": "Susan Hibson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The governor at Walther who accepts Honor's captured pirates. His eagerness to take custody of them and displeasure over the destruction of their ship make his conduct appear suspicious.",
+            "id": "walther-system-governor",
+            "name": "Walther system governor",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The People's Commissioner aboard Caslet's cruiser, Vaubon. He authorizes the captain's plan to lure and capture a pirate vessel linked to atrocities against merchant crews.",
+            "id": "dennis-jourdain",
+            "name": "Dennis Jourdain",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former ruler associated with the Chalice uprising, previously believed executed. A rescued captive identifies him as the living commander of a large privateer network operating from a hidden planetary base.",
+            "id": "andre-warnecke",
+            "name": "Andre Warnecke",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A newly promoted senior chief aboard Wayfarer and a friend of Wanderman. She questions the circumstances of his injuries and presses for action against the intimidation affecting the crew.",
+            "id": "ginger-lewis",
+            "name": "Ginger Lewis",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A suspected member of Randy Steilman’s circle aboard Wayfarer.",
+            "id": "elizabeth-showforth",
+            "name": "Elizabeth Showforth",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A suspected associate of Randy Steilman aboard Wayfarer.",
+            "id": "al-stennis",
+            "name": "Al Stennis",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A People's Navy admiral directing covert commerce warfare in Silesia. Reports of Manticoran Q-ships prompt him to alter the pattern of his raiding force.",
+            "id": "javier-giscard",
+            "name": "Javier Giscard",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Walther's system governor. Honor concludes that he is deliberately delaying the captured pirates' prosecution until Wayfarer departs, and she preserves his promises as evidence for later diplomatic and trade pressure.",
+            "id": "system-governor-hagen",
+            "name": "System Governor Hagen",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wayfarer’s Marine battalion sergeant major. He joins Horace Harkness in training Aubrey Wanderman to defend himself.",
+            "id": "louis-hallowell",
+            "name": "Louis Hallowell",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the passenger liner Artemis. Concerned about worsening conditions in Silesia, Fuchien objects to carrying the Hauptmans there but ultimately accepts the Navy escort assigned to the voyage.",
+            "id": "fuchien",
+            "name": "Fuchien",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Usher"
+            ],
+            "description": "The newly appointed captain of HMS Hawkwing. His destroyer is quietly diverted to accompany Artemis on its Silesian voyage because the Hauptmans are among its passengers.",
+            "id": "gene-usher",
+            "name": "Gene Usher",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An environmental technician in Steilman's five-person conspiracy. He helps change the monitoring system so the group can desert aboard an escape pod without its absence being reported.",
+            "id": "ed-ilyushin",
+            "name": "Ed Ilyushin",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Steilman's covert five-person circle. He helps construct a bomb intended to cripple Wayfarer's engineering systems and cover the group's planned desertion.",
+            "id": "jackson-coulter",
+            "name": "Jackson Coulter",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Wayfarer crew member who finds Aubrey Wanderman injured but is too frightened to identify those responsible.",
+            "id": "yoshiro-tatsumi",
+            "name": "Yoshiro Tatsumi",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer assigned to command six light attack craft and missile pods left behind to protect Sidemore from four missing privateer ships.",
+            "id": "jacqueline-harmon",
+            "name": "Jacqueline Harmon",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Klaus Hauptman's daughter, accompanying him aboard Artemis on the voyage toward Silesia.",
+            "id": "stacey-hauptman",
+            "name": "Stacey Hauptman",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the People's Navy ship Carabin. She follows orders to eliminate witnesses to the raiding force, despite misgivings about the civilian passengers aboard Artemis.",
+            "id": "marie-stellingetti",
+            "name": "Marie Stellingetti",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of PNS Achmed. He correctly identifies the merchantman that destroyed Carabin as a Manticoran Q-ship and pursues it cautiously while searching for Artemis.",
+            "id": "citizen-commodore-juergens",
+            "name": "Citizen Commodore Juergens",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The surviving captain of the disabled PNS Achmed. Brought aboard the equally crippled Wayfarer with his remaining personnel, he cooperates with Honor to preserve life on both sides.",
+            "id": "stephen-holtz",
+            "name": "Stephen Holtz",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002VA390U",
+            "type": "community"
+          }
+        ],
+        "work": "honor-among-enemies"
+      }
+    },
     "hoot": {
       "characters": {
         "characters": [
