@@ -2114,6 +2114,371 @@
         "work": "road-to-mastery-4"
       }
     },
+    "road-to-mastery-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Lionel Horseman"
+            ],
+            "description": "An Earth cultivator and Black Hole Church disciple who returns from a hidden realm after three years away. Disguised alongside Brock and Min Ling, he is trying to cross hostile territory, find the concealed Earth, and reunite with his family.",
+            "id": "jack-rust",
+            "name": "Jack Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Big Bro"
+            ],
+            "description": "Jack's brorilla brother and travelling companion, linked to him by a close spiritual bond. He leaves the hidden realm at Jack's side and helps the group seek a safe route through enemy territory toward Earth.",
+            "id": "brock",
+            "name": "Brock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi Aragon"
+            ],
+            "description": "Jack's partner, who is raising their children, Abel and Eric, on Earth while he remains away.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack and Vivi's young daughter. She trains under Harambe in the Forest of the Strong and approaches his demanding exercise routine with greater enthusiasm than her brother Eric.",
+            "id": "abel-rust",
+            "name": "Abel Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack and Vivi's young son and Abel's brother. He trains under Harambe in the Forest of the Strong, although he is less willing than Abel to follow the trainer's strenuous routine.",
+            "id": "eric-rust",
+            "name": "Eric Rust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brock's father and the trainer responsible for Abel and Eric during Jack's long absence. He puts both children through physical exercises in the Forest of the Strong.",
+            "id": "harambe",
+            "name": "Harambe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Animal Kingdom ally of Jack who reunites with him alongside Nauja at Vengalo. He recognizes Jack despite the disguise concealing Jack's wanted identity.",
+            "id": "gan-salin",
+            "name": "Gan Salin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gan Salin's travelling companion and a returning ally of Jack. She recognizes him at Vengalo despite his disguise and rejoins his group.",
+            "id": "nauja",
+            "name": "Nauja",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black Hole Church cultivator and trusted ally travelling with Jack and Brock. Her disguise pills help conceal their wanted identities when they emerge from the hidden realm at Vengalo.",
+            "id": "min-ling",
+            "name": "Min Ling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rufus Emberheart's father, Jack's former enemy, and a commander in the Hand of God. He directs the Milky Way purge of the defeated Black Hole Church and its allies, making Jack's journey toward Earth especially dangerous.",
+            "id": "artis-emberheart",
+            "name": "Artis Emberheart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Black Hole Church apostle"
+            ],
+            "description": "A Black Hole Church diviner and one of Jack's prior sponsors. He is among the very few people who know the teleportation frequency of the mobile, concealed Earth, but Jack does not know where to find him.",
+            "id": "the-sage",
+            "name": "the Sage",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's former master in the Exploding Sun and one of the few people who knows how to reach the hidden, mobile Earth. Missing after the faction's defeat, this master becomes Jack's main lead in his search for a route home.",
+            "id": "jacks-former-exploding-sun-master",
+            "name": "Jack's former Exploding Sun master",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A late B-grade Hand of God officer who leads the Milky Way purge. After receiving a report that matches Jack's abilities, she travels with Artis Emberheart to direct the hunt for him.",
+            "id": "the-hand-of-god-commander",
+            "name": "the Hand of God commander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Elder Boatman"
+            ],
+            "description": "A powerful Black Hole Church elder and Jack's master in the Dao of Death. His soul marker remains within Jack's Death Cube, but it has given no contact since the hidden realm, leaving his present condition unknown.",
+            "id": "boatman",
+            "name": "Boatman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak C-grade Leonan who leads the Animal Kingdom elders assembled at the meteor near Hell. He explains that their ambush is meant to hold Jack until stronger forces arrive.",
+            "id": "the-animal-kingdom-grand-elder",
+            "name": "the Animal Kingdom grand elder",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dorman"
+            ],
+            "description": "A middle C-grade defender of Earth and an ally of the Black Hole Church. After Jack removed the dangerous excess power from his body and supplied resources, Dorman returned to guard the planet and confronts Artis when he arrives.",
+            "id": "dorman-whistles",
+            "name": "Dorman Whistles",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An F-grade direct descendant of the people sealed within Black Hole World. She finds Jack after his passage through the abyss, tends him while he is injured and grieving, and becomes his guide to her isolated society.",
+            "id": "mia",
+            "name": "Mia",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The long-dead ancestor credited by his descendants with creating Black Hole World. Their refuge has remained sealed for more than a billion years because they lost the space-time cultivators needed to leave it.",
+            "id": "archon-black-hole",
+            "name": "Archon Black Hole",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's mother and one of the loved ones whose continued presence gives him a reason to survive while he is trapped and weakened.",
+            "id": "jacks-mother",
+            "name": "Jack's mother",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Professor"
+            ],
+            "description": "Jack's mother and the retired former leader of Earth. Vivi has succeeded her as Earth's leader.",
+            "id": "margaret-rust",
+            "name": "Margaret Rust",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An altered duplicate within Jack's soul world. He lies asleep beside Jack's life artifact after being changed through contact with the life drop, and neither his origin nor his purpose is understood.",
+            "id": "copy-jack",
+            "name": "Copy Jack",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of Black Hole World's Elder Council. She entrusts Jack with her people's hope of escape and takes him to a sealed tablet warning about the Immortal Crusade.",
+            "id": "the-black-hole-world-grand-elder",
+            "name": "the Black Hole World grand elder",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A middle B-grade Animal Kingdom ancestor, the kingdom's strongest active forebear, and guardian of the Animal Abyss. He detects the disruption caused by Jack's return and attacks when Jack emerges carrying the portal artifact.",
+            "id": "muir-emberheart",
+            "name": "Muir Emberheart",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An early C-grade Animal Kingdom enforcer who had attended Jack's earlier grand duel. He becomes a target in the Dark Ram crew's concealed campaign against the kingdom.",
+            "id": "the-blood-baron",
+            "name": "the Blood Baron",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A middle C-grade canine elder of the Animal Kingdom who supervises the major mine at Earthen Gemini. He commands the site's defense when Jack brings his covert campaign to the installation.",
+            "id": "elder-karan",
+            "name": "Elder Karan",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A late B-grade Hand of God envoy and Artis Emberheart's operational superior. On confirming that Jack survived, she recognizes his rapid growth as a direct threat and orders the Animal Kingdom's forces to gather under her protection.",
+            "id": "eva-solvig",
+            "name": "Eva Solvig",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An early B-grade guest elder assigned by Wide Swirls to command the Hand of God's Crown Meteor Outpost. Jack finds that he has imprisoned humans there and subjected them to experiments.",
+            "id": "edelstein-magnifold",
+            "name": "Edelstein Magnifold",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A late B-grade founder of the Animal Kingdom kept in cryogenic reserve. The kingdom awakens him as one of its final ancestral weapons after Jack's campaign and the spreading rebellion exhaust its ordinary responses.",
+            "id": "the-lonahar-supreme-ancestor",
+            "name": "the Lonahar supreme ancestor",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A founder of the Animal Kingdom preserved as a last-resort defender. He is revived alongside the Lonahar supreme ancestor when the kingdom decides that only its reserve forebears may be able to stop Jack.",
+            "id": "the-emberheart-supreme-ancestor",
+            "name": "the Emberheart supreme ancestor",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A late B-grade Black Hole Church head envoy who leads the elite Spoon Squad. After rapidly destroying a fortified Hand of God facility, the squad receives Boatman's order to travel to the Animal Kingdom constellation.",
+            "id": "sovereign-heavenly-spoon",
+            "name": "Sovereign Heavenly Spoon",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's former F-grade disciple, imprisoned by the Animal Kingdom and freed when Jack returns to Animal Planet. His memory of alternate teleporter frequencies gives the group a route to Earth.",
+            "id": "the-returning-monk",
+            "name": "the returning monk",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "talking stone"
+            ],
+            "description": "An anomalous speaking stone discovered among Eva's possessions. It remembers existing as part of an asteroid and being studied by a harsh-voiced woman, but nothing from before that life, leaving the basis of its awareness unexplained.",
+            "id": "the-sentient-stone",
+            "name": "the sentient stone",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Black Hole Church elder sheltering aboard the Death Boat after his own refuge was destroyed during the retreat from system space. He joins Boatman in overseeing Jack and Brock's public B-grade attempts.",
+            "id": "elder-heavenstar",
+            "name": "Elder Heavenstar",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A D-grade assistant serving aboard the Death Boat. She guides Jack and Brock to a secluded asteroid in the Bone Belt where their B-grade breakthroughs can proceed under Church protection.",
+            "id": "leteria",
+            "name": "Leteria",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "number one"
+            ],
+            "description": "A robotic leader marked with the number one who commands the immortals' System forces. With the old gods approaching, the leader orders a strategic withdrawal and accelerated cultivation through released monsters and widespread killing.",
+            "id": "the-heaven-immortal",
+            "name": "the Heaven Immortal",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The unnamed leader of an army opposing the immortals and their System. She rallies formations of C-grade soldiers, B-grade commanders, and A-grade generals for a war presented as a struggle for freedom and justice.",
+            "id": "the-anti-immortal-queen",
+            "name": "the anti-immortal queen",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DHW9WBVJ",
+            "type": "community"
+          }
+        ],
+        "work": "road-to-mastery-5"
+      }
+    },
     "robert-louis-stevensons-classic-treasure-island": {
       "characters": {
         "characters": [
