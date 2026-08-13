@@ -2077,6 +2077,218 @@
         "work": "gates-of-fire"
       }
     },
+    "gateway": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Commander of Task Force Black. In the aftermath of Operation Olympic, he accepts responsibility for the heavy losses, the dangerous decoy mission, and Skippy's apparent loss while Valkyrie escapes with the Collector.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with Joe and Valkyrie. After saving the ship during its escape, his canister is expelled toward the system's star, leaving the crew without his help or any clear means of recovering him.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Valkyrie and Joe's operational counterpart. She commands a damaged ship carrying the Collector while coordinating repairs, security checks, and the effort to survive without Skippy.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's shipboard AI. Bilby directs damage control and checks the ship for hostile code after the disrupted escape, providing technical support while Skippy is missing.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile intelligence seeking a route into the galaxy. Its malware disrupts Valkyrie's escape, separates Skippy from the ship, and leaves the crew uncertain about what other systems may be compromised.",
+            "id": "outsider",
+            "name": "Outsider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An operator from Star Team Tiger whose uncontrolled fall from suborbit is slowed by a concealed Skippy submind in his damaged suit. An improvised parachute gives him a chance to survive, but his condition on the surface remains uncertain.",
+            "id": "star-team-tiger-technical-sergeant",
+            "name": "Star Team Tiger Technical Sergeant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Air Force fighter pilot stranded on the surface after being shot down. With communications disrupted and enemy forces nearby, she remains separated from other surviving groups.",
+            "id": "downed-air-force-major",
+            "name": "Downed Air Force major",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the decoy-side recovery group during Operation Olympic. He and his companions are stranded on the surface after protecting the real extraction, with enemy forces closing in and communications disrupted.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Flying Dutchman. He survives the ship's destruction in a damaged escape pod with Perkins and other personnel, depending on a maintenance tug to keep the pod clear of debris and prevent a fatal descent.",
+            "id": "derek-bonsu",
+            "name": "Derek Bonsu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior human commander who escapes the destruction of Flying Dutchman with Derek Bonsu and members of her staff. Their damaged pod is rescued by a maintenance tug before it can fall back toward the planet.",
+            "id": "perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A maintenance tug operator and Derek Bonsu's wife. She uses her tug to secure the damaged escape pod carrying Bonsu, Perkins, and other survivors, guiding it clear of wreckage before it can descend fatally.",
+            "id": "maintenance-tug-operator",
+            "name": "Maintenance tug operator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An admiral working through the Ethics and Compliance Office. He runs covert operations and has Kinsta embedded inside the Inquisitors, but an apparent treason inquiry threatens both the agent and the operation.",
+            "id": "scorandum",
+            "name": "Scorandum",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scorandum's covert agent within the Office of Special Inquiries. He warns of evidence supporting a treason case, only to learn that the inquiry may be designed to expose his true allegiance.",
+            "id": "kinsta",
+            "name": "Kinsta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of Star Team Razor. She leads her operators back into a contested evacuation zone to relieve surrounded troops, judging that the team remains capable despite its recent losses.",
+            "id": "frey",
+            "name": "Frey",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman AI preserved as a backup within Skippy before the operation. The surviving copy lacks later memories and cannot yet be restored without a newly grown compatible matrix.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Elder defense construct found near the star identified through the Collector. Valkyrie prepares to approach it while its condition, purpose, and response remain unknown.",
+            "id": "elder-defense-construct",
+            "name": "Elder defense construct",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent Elder defense construct discovered near the Collector's source star. It can generate a subspace-divergence wave, but it is partly degraded, lacks its intended control AI, and is expected to burn out if activated.",
+            "id": "vortex-37",
+            "name": "Vortex 37",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frey's former executive officer and designated successor. After her presumed death inside Vortex 37, he takes command of Star Team Razor and begins preparing its operators for a possible return to the construct.",
+            "id": "major-carell-holmquist",
+            "name": "Major Carell Holmquist",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's wife, living at Jaguar with their children. She describes the colony's environmental damage and growing civilian strain, then helps Joe reconsider whether Skippy's list of lost Elder AIs is truly complete.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander responsible for Jaguar during its environmental and civilian emergency. Joe entrusts him with the secret that Skippy survived and asks him to prevent that information from spreading.",
+            "id": "admiral-chatterjee",
+            "name": "Admiral Chatterjee",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile Elder AI believed lost within a star. Joe's team steals two dormant AIs from a Maxolhx museum and plans to search their memories for clues to where Unit 52 fell.",
+            "id": "unit-52",
+            "name": "Unit 52",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Charlemagne battle group. He brings a supporting force and a star carrier from Jaguar toward Lundervik for Joe's operation to locate and recover Unit 52.",
+            "id": "admiral-samard",
+            "name": "Admiral Samard",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DRPQFHHW",
+            "type": "community"
+          }
+        ],
+        "work": "gateway"
+      }
+    },
     "gathering-blue": {
       "characters": {
         "characters": [
