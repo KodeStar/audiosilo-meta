@@ -3051,6 +3051,209 @@
         "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
       }
     },
+    "gentleman-jole-and-the-red-queen": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Admiral Jole"
+            ],
+            "description": "The admiral commanding Sergyar's military forces and a close working partner of the Vicereine. Once Aral Vorkosigan's secretary, protege, and intimate partner, he must now consider an unexpected chance to become a father through reproductive material preserved after Aral's death.",
+            "id": "oliver-jole",
+            "name": "Oliver Jole",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vicereine Vorkosigan"
+            ],
+            "description": "Aral Vorkosigan's widow and the civil ruler of Sergyar. Returning from Barrayar with reproductive material stored during her marriage, she plans to have daughters and contemplates retiring from public office. She also offers Jole a separate route to children and remains his trusted professional counterpart.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cordelia's late husband, a former military leader who was also Jole's mentor and intimate partner. Though dead before the book begins, he remains central to both survivors' memories. His preserved reproductive material enables Cordelia's plan for more children and underlies her offer to Jole.",
+            "id": "aral-vorkosigan",
+            "name": "Aral Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lieutenant Vorinnis"
+            ],
+            "description": "Jole's newly assigned military aide, serving him as he resumes command duties after the Vicereine's return to Sergyar.",
+            "id": "kaya-vorinnis",
+            "name": "Kaya Vorinnis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician at Kareenburg's reproductive center who supervises Jole's medical evaluation and explains the clinic's screening and uterine-replicator procedures. Dr. Tan becomes the professional contact through whom Jole can preserve material or take practical steps toward parenthood.",
+            "id": "dr-tan",
+            "name": "Dr. Tan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Haines"
+            ],
+            "description": "Jole's ground-force counterpart and the commander of the downside base on Sergyar.",
+            "id": "general-haines",
+            "name": "General Haines",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Haines's teenage daughter, one of six participants in an unauthorized expedition against native radials. After their attempt starts a brush fire and destroys their air car, she uses her father's plasma arc to hold off approaching hexapeds, then surrenders the weapon to Jole and faces discipline from General Haines.",
+            "id": "general-haines-daughter",
+            "name": "General Haines's daughter",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rykov"
+            ],
+            "description": "Cordelia's security aide and armsman, alert to both physical protection and personal discretion. He helps preserve privacy around her meetings with Jole, treating the pair's private life as a security concern that should be handled quietly rather than turned into public attention.",
+            "id": "armsman-rykov",
+            "name": "Armsman Rykov",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cordelia's energetic and comparatively new press officer. His assignment is to limit unnecessary publicity around the viceregal household rather than manufacture interest, especially as repeated trips by Cordelia and Jole begin to generate public speculation and unrelated rumors.",
+            "id": "blaise-gatti",
+            "name": "Blaise Gatti",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cordelia and Aral's developing daughter, six weeks into gestation when her existence is disclosed within the Vorkosigan family circle. She has five genetically related sisters whose embryos remain frozen, and her arrival is closely tied to Cordelia's plan to leave the viceregency.",
+            "id": "aurelia",
+            "name": "Aurelia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cordelia and Aral's son, who arrives unexpectedly on Sergyar with his wife and children after learning that his mother intends to resign and have more daughters. His visit begins before Cordelia and Jole have settled how much of their private situation to disclose.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles's wife and the mother of their six children. She accompanies the family on its unexpected journey to Sergyar after Cordelia announces her intended resignation and new daughters, entering a visit shaped by Miles's concern and by matters Cordelia and Jole have not yet shared.",
+            "id": "ekaterin",
+            "name": "Ekaterin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Haines's child and a local acquaintance whom Jole recruits to guide the older Vorkosigan children during their stay on Sergyar. Freddie gives the visiting family a connection to local life while the adults manage official work and increasingly complicated family discussions.",
+            "id": "freddie-haines",
+            "name": "Freddie Haines",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "ghem Soren"
+            ],
+            "description": "A foreign cultural attache who seeks space at Jole's birthday picnic for a sensory teaching display called the Discernment Garden. With help from Kaya Vorinnis, he obtains provisional permission subject to security review and removal of the installation after the event.",
+            "id": "mikos-ghem-soren",
+            "name": "Mikos ghem Soren",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Barrayaran chief of military operations, approaching retirement and looking toward his succession. He privately identifies Jole as the leading candidate to replace him, presenting the Sergyar commander with a major professional opportunity that conflicts with the family life Jole is considering.",
+            "id": "admiral-des-plaines",
+            "name": "Admiral Des Plaines",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child of Miles and Ekaterin who feels pressured toward the Imperial Service Academy and an inherited public role. During the family visit, Alex responds strongly to Aral's private architectural drawings, suggesting interests beyond the future that Miles has been encouraging.",
+            "id": "alex",
+            "name": "Alex",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child of Miles and Ekaterin who attends Jole's large birthday picnic. When drunken players vandalize the cultural delegation's exhibit and attack its participants, Helen steps in physically to defend the display and one of the people under assault.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Imperial Security minder assigned to Alex and Helen during the birthday picnic. When the children become entangled in an assault on the cultural delegation, Katsaros stops an attacker with a stunner and summons further assistance.",
+            "id": "sergeant-katsaros",
+            "name": "Sergeant Katsaros",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Escobaran construction representative who arrives with a concrete answer to Gridgrad's supply problem. Her company can rapidly erect the prefabricated core of a local plazcrete factory and begin preparations for production, provided Sergyar supplies the necessary local materials.",
+            "id": "kareen-koudelka",
+            "name": "Kareen Koudelka",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B019G0PTD2",
+            "type": "community"
+          }
+        ],
+        "work": "gentleman-jole-and-the-red-queen"
+      }
+    },
     "gentlemen-and-players": {
       "characters": {
         "characters": [
