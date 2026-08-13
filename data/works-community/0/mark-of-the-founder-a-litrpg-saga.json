@@ -1868,6 +1868,316 @@
         "work": "master-harold-and-the-boys"
       }
     },
+    "match-game": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Scorandum"
+            ],
+            "description": "A Jeraptha Ethics and Compliance Office captain whose stealth cruiser clears Build-A-Gung by fabricating the appearance of a Sentinel. His carefully arranged deception spares the approaching Jeraptha fleet from a needless battle.",
+            "id": "captain-scorandum",
+            "name": "Captain Scorandum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kinsta"
+            ],
+            "description": "Scorandum's junior Jeraptha officer aboard the Ethics and Compliance Office stealth cruiser. Kinsta assists during the operation that drives hostile forces away from Build-A-Gung.",
+            "id": "lieutenant-kinsta",
+            "name": "Lieutenant Kinsta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "Valkyrie's commander and leader of the human special mission. Working with Skippy, Bishop coordinates Earth's deterrent display while hostile senior-species fleets watch the planet.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI and Valkyrie's essential technical advantage. He directs a damaged Sentinel during the demonstration at Earth and helps make a limited defense appear overwhelmingly powerful.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "Commander of Star Team Alpha. Smythe leads the covert boarding of Admiral Reichert's flagship while the surrounding fleets are distracted by Earth's Sentinel display.",
+            "id": "colonel-jeremy-smythe",
+            "name": "Colonel Jeremy Smythe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reichert"
+            ],
+            "description": "A Maxolhx admiral aboard the flagship targeted by Star Team Alpha. His command ship becomes the focus of the humans' attempt to redirect the crisis around Earth.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "damaged Sentinel",
+              "Earth's Sentinel guardian"
+            ],
+            "description": "A damaged Elder war machine used in Earth's defensive display. Skippy directs it to move the dangerous cloud away from the planet, making the machine appear to be a powerful guardian.",
+            "id": "damaged-sentinel",
+            "name": "The damaged Sentinel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "A Valkyrie officer and operational planner who works closely with Bishop. She helps shape the political deception intended to keep the Maxolhx and Rindhalu focused away from the hidden Elder threat.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kong"
+            ],
+            "description": "The senior colonel commanding Flying Dutchman. Bishop brings him into the restricted planning and explains that Earth's apparent Sentinel protector has serious limits.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skippy's Earth submind"
+            ],
+            "description": "An Earth-based offshoot of Skippy assigned to converse with the damaged Sentinel. Its companionship is meant to ease the dangerous isolation of the newly aware but unstable machine.",
+            "id": "grumpy",
+            "name": "Grumpy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Valkyrie's ship AI. Bilby independently reviews Skippy's alterations to captured ship systems, providing the crew with another technical judgment about work vital to Earth's security.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chotek"
+            ],
+            "description": "A human diplomatic intermediary involved in talks with the Jeraptha. Bishop gives him the public explanation of Earth's Sentinel defense while withholding its most dangerous operational weaknesses.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nert"
+            ],
+            "description": "A Jeraptha contact released from restricted duty after blame for the Sentinel crisis shifts away from humanity. Promoted and returned to service, he is assigned as liaison to the Mavericks.",
+            "id": "nert-dandurf",
+            "name": "Nert Dandurf",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Urkan"
+            ],
+            "description": "A restored Maxolhx military leader who favors consolidation over an immediate war against the rogue fleet. He treats compromised ship AIs and possible Rindhalu opportunism as greater near-term dangers than delay.",
+            "id": "admiral-urkan",
+            "name": "Admiral Urkan",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Major Frey"
+            ],
+            "description": "A major serving with Star Team Alpha who is worn down by sustained operations. She speaks openly about the toll of her work, prompting Bishop to advise professional support and Skippy to recommend time away from duty.",
+            "id": "katie-frey",
+            "name": "Katie Frey",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A suspected damaged Elder intelligence associated with a secret Rindhalu site. The human team believes it exploited the wormhole network to send the signal that awakened the Sentinels.",
+            "id": "hostile-elder-ai",
+            "name": "The hostile Elder AI",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Iliath"
+            ],
+            "description": "A Maxolhx officer selected by Admiral Urkan for restraint and sound judgment. Her promotion places her in command of the 17th Assault Squadron near the center of Hegemony power.",
+            "id": "commodore-iliath",
+            "name": "Commodore Iliath",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jates"
+            ],
+            "description": "A representative of a reformist Kristang faction serving with the human team. He seeks Alien Legion transport and logistical support for his faction's proposed expansion, but the request is refused.",
+            "id": "sergeant-jates",
+            "name": "Sergeant Jates",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "Leader of the Alien Legion and commander of the Mavericks. Perkins rejects Jates's request for another occupation, arguing that his faction has not yet achieved lasting reform on the world it already controls.",
+            "id": "colonel-emily-perkins",
+            "name": "Colonel Emily Perkins",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chica"
+            ],
+            "description": "A human operator who works closely with Perkins and knows Jates well. Perkins asks him to watch for changes in Jates's conduct without confronting or punishing their alien colleague.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A trusted human special-operations soldier promoted to master sergeant. Bishop selects her for a sensitive mission with the Mavericks but does not yet disclose the operation's full purpose.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe's suit AI"
+            ],
+            "description": "A limited emergency combat assistant secretly installed in Smythe's powered armor by Skippy. It restores damaged suit functions and helps the isolated colonel interpret the battle around him during the Ardu ambush.",
+            "id": "helpy",
+            "name": "Helpy",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer supporting the extraction from Ardu. She recommends tactical nuclear strikes to disrupt the planet's air defenses and receives authorization to employ them while the stranded operators ascend toward Valkyrie.",
+            "id": "colonel-tammy",
+            "name": "Colonel Tammy",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's pilot during the escape from Ardu. Reed regains control of the tumbling ship and guides it back toward orbit using its reshaped shields and boosters.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Czajka"
+            ],
+            "description": "A human destroyer officer supporting the Mavericks' search for another cache of Elder equipment. He questions whether Jates's resentment may be causing him to conceal important information about the target.",
+            "id": "captain-dave-czajka",
+            "name": "Captain Dave Czajka",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A heavy cylinder discovered beneath a cache of counterfeit communications nodes. The Mavericks initially identify it only as a possible Elder AI container whose nature and condition remain uncertain.",
+            "id": "apparent-elder-ai-canister",
+            "name": "The apparent Elder AI canister",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09V1X64YV",
+            "type": "community"
+          }
+        ],
+        "work": "match-game"
+      }
+    },
     "matched": {
       "characters": {
         "characters": [
