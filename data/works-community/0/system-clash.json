@@ -2730,6 +2730,228 @@
         "work": "tartuffe"
       }
     },
+    "task-force-hammer": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "The human commander of Task Force Black. With Valkyrie crippled after a battle against an unknown hostile intelligence, he directs the effort to evade a searching Maxolhx destroyer and keep his damaged force alive.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with Joe Bishop and his force. He works with Bilby and Valkyrie's engineers to restore the disabled jump drive while also improvising a limited form of stealth for the badly damaged ship.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fireball"
+            ],
+            "description": "Valkyrie's captain and Bishop's deputy. She remains in command during the ship's post-battle crisis, directing an evasive decoy operation that keeps the defenseless vessel ahead of a searching Maxolhx destroyer until help arrives.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's controller AI. While Skippy concentrates on the jump drive and improvised concealment, Bilby coordinates the ship's damage-control work, supports the engineering crew, and helps sustain the systems still functioning.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile intelligence from beyond the galactic barrier. After escaping a destroyed Elder ship in an energy state, it remains at large while human command considers how it entered the galaxy and whether it received help from a compromised Elder AI.",
+            "id": "outsider",
+            "name": "Outsider",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An injured Maverick assigned to restricted administrative duty while his leg recovers. Determined to rejoin active service, he trains toward the fitness standard required for a return to duty with his unit.",
+            "id": "jesse-coulter",
+            "name": "Jesse Coulter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "former Admiral Scorandum"
+            ],
+            "description": "A fugitive former Ethics and Compliance Office admiral. Stripped of rank and evading prosecution, he is located on a resort world and confronted by a Court of Special Inquiries party.",
+            "id": "scorandum",
+            "name": "Scorandum",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Inquisitor Kinsta"
+            ],
+            "description": "An Inquisitor who accompanies the Court of Special Inquiries party confronting Scorandum. At this point, he acts as part of the official inquiry into the fugitive former admiral.",
+            "id": "kinsta",
+            "name": "Kinsta",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Navy technical consultant who proposes using Earth's Sentinel to remove Valkyrie's hardened armor after its internal anchors are cut. The approach could reduce a repair bottleneck of more than six weeks to roughly an hour.",
+            "id": "dr-friedlander",
+            "name": "Dr. Friedlander",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A UN special envoy and former member of the Flying Dutchman crew. Because the Maxolhx have charged him as a war criminal, he cannot approach their government directly and instead advises a diplomatic mission to the Rindhalu.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Perkins"
+            ],
+            "description": "A human ground-force commander requested to lead the human element of an allied colony-recovery operation. Her earlier record and her connection to David Chica's security company make her the allies' preferred commander.",
+            "id": "perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a large independent security company connected to the human force proposed for an allied colony-recovery mission. His organization can supply a substantial part of the operation's ground component.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Chang"
+            ],
+            "description": "A former Valkyrie pilot who now leads Special Operations flight training. She joins the archive raid with an experienced specialist crew and pilots the radically lightened, hazardous frigate used for the insertion.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Frey"
+            ],
+            "description": "The commander of the Star Team assigned to the Maxolhx archive operation.",
+            "id": "frey",
+            "name": "Frey",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe Bishop's pregnant wife and the mother of their sons. At Jaguar, she shelters with the children during the warning that follows an attack on the local star and witnesses the sky darken when the Sentinel raises its shield.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's executive officer. During the prolonged nanobot battle, he urges Bishop to leave routine support tasks to the crew and concentrate on finding a way for the ship to survive.",
+            "id": "commander-gasquet",
+            "name": "Commander Gasquet",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a Verdkris platoon attached to David Chica's operation. He agrees that his troops will portray Kristang adversaries in a staged alliance-building action, with additional pay and control over their exposure to real danger.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Jeremy Smythe"
+            ],
+            "description": "The deceased former commander of Star Team Alpha, represented by a pre-recorded avatar mediated by Skippy. The simulation can advise Bishop in Smythe's manner, but its knowledge ends before the mission in which he died.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman's AI. During the assault diversion, she coordinates with Skippy and analyzes the enemy response to holographic decoys, identifying forty-seven concealed ground batteries before the real landing begins.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Derek Bonsu"
+            ],
+            "description": "The captain of the Flying Dutchman, selected for the post by Nagatha. When enemy fire fatally damages the ship, he orders its abandonment and leaves at Nagatha's insistence because her core cannot be evacuated.",
+            "id": "derek-bonsu",
+            "name": "Derek Bonsu",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0D38CR7BR",
+            "type": "community"
+          }
+        ],
+        "work": "task-force-hammer"
+      }
+    },
     "tears-of-liscor": {
       "characters": {
         "characters": [
