@@ -1295,6 +1295,646 @@
         "work": "uncle-vanya"
       }
     },
+    "uncompromising-honor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Honor Alexander-Harrington",
+              "Duchess Harrington",
+              "Steadholder Harrington"
+            ],
+            "description": "Grand Fleet's commander, a Manticoran duchess, and a Grayson steadholder. She directs the Grand Alliance's strategy while Manticore rebuilds from the Yawata Strike.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Earl White Haven",
+              "White Haven"
+            ],
+            "description": "Honor's husband and a senior Manticoran statesman. He helps shape Alliance policy as its members confront the Solarian League and recover from the Yawata Strike.",
+            "id": "hamish-alexander-harrington",
+            "name": "Hamish Alexander-Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor and Hamish's senior wife and a central member of their family.",
+            "id": "emily-alexander-harrington",
+            "name": "Emily Alexander Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "Manticore's sovereign and a determined backer of the Grand Alliance. She oversees reconstruction and the kingdom's response to an expanding war.",
+            "id": "queen-elizabeth-iii",
+            "name": "Queen Elizabeth III",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's bonded tree-cat companion. His mind-speech remains impaired, but his empathic connection with Honor and his use of sign language keep him closely involved in her life and work.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nimitz's mate and a tree-cat memory singer. She can spread learned signs and safety knowledge among other tree cats through memory song.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "President Pritchart",
+              "Pritchart"
+            ],
+            "description": "President of Haven and Manticore's partner in the Grand Alliance. She supports the combined political and military effort against the League.",
+            "id": "eloise-pritchart",
+            "name": "Eloise Pritchart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theisman"
+            ],
+            "description": "A senior Havenite military leader and Alliance representative. He helps reconcile the member navies' different institutions and strategic traditions.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Manticoran intelligence leader pursuing the hidden network behind attacks and political manipulation directed at the Grand Alliance.",
+            "id": "patricia-givens",
+            "name": "Patricia Givens",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zilwicki"
+            ],
+            "description": "An experienced investigator of Mesa and the Alignment. His specialized knowledge helps the Alliance interpret evidence left by a deeply concealed adversary.",
+            "id": "anton-zilwicki",
+            "name": "Anton Zilwicki",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gold Peak"
+            ],
+            "description": "Commander of Tenth Fleet.",
+            "id": "countess-gold-peak",
+            "name": "Countess Gold Peak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticoran admiral commanding Third Fleet at Beowulf. She organizes the system's defense while supporting a common Alliance shipbuilding program.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Beowulfan leader responsible for major defense decisions as the system prepares to separate from the Solarian League.",
+            "id": "gabriel-caddell-markham",
+            "name": "Gabriel Caddell-Markham",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Solarian official who helps direct the League's coercive response to Manticore and to systems considering secession.",
+            "id": "innokentiy-kolokoltsov",
+            "name": "Innokentiy Kolokoltsov",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Solarian propagandist who shapes denials of League abuses and public accusations against Manticore.",
+            "id": "malachai-abruzzi",
+            "name": "Malachai Abruzzi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Head of the Mesan Alignment. As Alliance pressure increases, he accelerates the secret evacuation called Operation Houdini.",
+            "id": "albrecht-detweiler",
+            "name": "Albrecht Detweiler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Albrecht Detweiler's son and the Alignment's naval leader.",
+            "id": "benjamin-detweiler",
+            "name": "Benjamin Detweiler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Manticoran research leader who relocates Weyland's staff to Bolthole as the Alliance expands the base's research work.",
+            "id": "sonja-hemphill",
+            "name": "Sonja Hemphill",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Solarian admiral commanding Task Force 783 for Operation Buccaneer. He distrusts official intelligence and prepares for a capable opponent.",
+            "id": "vincent-caprioti",
+            "name": "Vincent Caprioti",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate of Honor Harrington who attends an informal gathering with her and Grayson officers aboard a Grayson warship.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian captain conducting an off-books investigation into a suspected network inside League institutions. He and his allies conceal their work because ordinary counterintelligence channels may be compromised.",
+            "id": "daud-ibn-mamoun-al-fanudahi",
+            "name": "Daud ibn Mamoun Al-Fanudahi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian lieutenant colonel working with Al-Fanudahi on a concealed inquiry into a suspected hostile network inside League institutions.",
+            "id": "wang-jinghuan",
+            "name": "Wang Jinghuan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The popular Office of Frontier Security governor of Maya. Reports suggest secret contact with Manticore, but their authenticity and the purpose of any contact remain uncertain.",
+            "id": "oroville-borregos",
+            "name": "Oroville Borregos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A midshipman retained beyond his training cruise to assist Bill Knight with forensic analysis of a captured Solarian warship's computer core.",
+            "id": "elijah-demas",
+            "name": "Elijah Demas",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Mayan military leader who helped defend Torch. He has long warned that Solarian authorities underestimated Manticoran and Havenite advances.",
+            "id": "admiral-rozsak",
+            "name": "Admiral Rozsak",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Manticoran commodore commanding the force that holds the Prime Terminus.",
+            "id": "sir-martin-lessom",
+            "name": "Sir Martin Lessom",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of HMS Boomslang and the concealed light attack craft force stationed at the Ajay Terminus.",
+            "id": "aloka-menendez",
+            "name": "Aloka Menendez",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prominent Hypatian senator who opposes secession and seeks a legal injunction against the referendum.",
+            "id": "senator-makiko-allerton",
+            "name": "Senator Makiko Allerton",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hypatia's system president. He insists that every vote be counted and the secession result legally certified before foreign warships enter the system.",
+            "id": "adam-vangelis",
+            "name": "Adam Vangelis",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Katoch"
+            ],
+            "description": "Commander of the small Manticoran force hidden near Hypatia. He launches a surprise defense after the Solarian task force begins preparing its attack on the system.",
+            "id": "rear-admiral-katoch",
+            "name": "Rear Admiral Katoch",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Katoch's operational planning team who directs the Ghost Rider platforms' missile employment during the defense of Hypatia.",
+            "id": "commander-ilkova",
+            "name": "Commander Ilkova",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of HMS Arngrim. Katoch sends her ship away from his expected last stand to observe the battle, aid survivors, and warn approaching reinforcements.",
+            "id": "commander-megan-peterson",
+            "name": "Commander Megan Peterson",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gogunov"
+            ],
+            "description": "The Solarian officer who inherits command of the battered Hypatia task force. He insists on continuing Operation Buccaneer and orders attacks on Manticoran survivors.",
+            "id": "rear-admiral-martin-gogunov",
+            "name": "Rear Admiral Martin Gogunov",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Yountz"
+            ],
+            "description": "A Solarian cruiser commander who becomes the Hypatia force's second-in-command. He receives control of its cruisers and destroyers as the operation approaches a moral and military breaking point.",
+            "id": "rear-admiral-thomas-yountz",
+            "name": "Rear Admiral Thomas Yountz",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Haskell"
+            ],
+            "description": "Gogunov's chief of staff. She recognizes the tactical implications of the Manticoran force's faster-than-light fire control as the battle for Hypatia continues.",
+            "id": "commodore-sandra-haskell",
+            "name": "Commodore Sandra Haskell",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captured Alignment covert operative transported to Manticore under parole. The lethal mechanism he expected after capture has not activated, making him both a rare intelligence opportunity and a serious security concern.",
+            "id": "firebrand",
+            "name": "Firebrand",
+            "reveal": {
+              "chapter": 57
+            }
+          },
+          {
+            "description": "A tree-cat survivor of the Yawata Strike and the destruction of his clan. Chosen to guard the former Alignment operative, he instead forms an adoption bond with him.",
+            "id": "clean-killer",
+            "name": "Clean Killer",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Solarian chief of naval operations. He views Operation Buccaneer as politically damaging and warns that a proposed attack on Beowulf could become a catastrophic defeat.",
+            "id": "winston-kingsford",
+            "name": "Winston Kingsford",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Firebrand"
+            ],
+            "description": "The former Alignment operative previously known as Firebrand. Now cooperating with Manticore and bonded to Firewatch, he combines his inside knowledge with Anton Zilwicki's evidence to help locate the hidden organization.",
+            "id": "damian-harahap",
+            "name": "Damian Harahap",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Clean Killer"
+            ],
+            "description": "The tree cat previously called Clean Killer and now bonded to Damian Harahap. His judgment supports Harahap's loyalty, and his protective training includes safe use of a cat-sized pulser.",
+            "id": "firewatch",
+            "name": "Firewatch",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Beowulf's chief of naval operations. He readies Mycroft and remote-controlled block ships as a large hostile force enters the system and threatens its essential industry.",
+            "id": "corey-mcavoy",
+            "name": "Corey McAvoy",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cachat"
+            ],
+            "description": "A Havenite operative and Anton Zilwicki's investigative partner. Their work on Mesa contributes to the Alliance's understanding of the hidden Alignment.",
+            "id": "victor-cachat",
+            "name": "Victor Cachat",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian lieutenant colonel associated with the covert investigation into a hostile internal network. She is kept outside its core group so that her future usefulness will not be compromised.",
+            "id": "natsuko-okiku",
+            "name": "Natsuko Okiku",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian major working with the off-books investigators. He favors forceful action against the suspected network, while his colleagues insist on identifying the correct target first.",
+            "id": "bryce-tarkovsky",
+            "name": "Bryce Tarkovsky",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Solarian Interior official involved in the League leadership's coercive response to Manticore and political dissent among member systems.",
+            "id": "nathan-mccartney",
+            "name": "Nathan McCartney",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Solarian Treasury official who warns the League's leaders that war, secession, and collapsing protectorate revenues are driving a severe fiscal crisis.",
+            "id": "omosupe-quartermain",
+            "name": "Omosupe Quartermain",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of Seraphim's independence movement. He accompanies Firebrand to Manticore despite knowing the operative helped expose his rebellion to Solarian retaliation, because Firebrand also aided and fought beside the movement.",
+            "id": "indiana-graham",
+            "name": "Indiana Graham",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Grayson naval officer and steadholder's daughter serving aboard HMS Tristram. She distrusts Firebrand, accompanies his transfer to Manticore, and is drawn to Indiana Graham.",
+            "id": "abigail-hearns",
+            "name": "Abigail Hearns",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian ally of the unauthorized internal investigation. She helps assess Maya's false-flag evidence and notices indications that the Navy is planning an operation against Beowulf.",
+            "id": "irene-teague",
+            "name": "Irene Teague",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07HX5YZJL",
+            "type": "community"
+          }
+        ],
+        "work": "uncompromising-honor"
+      },
+      "recaps": {
+        "ending": "Honor compels Ganymede to surrender, then forces Sol to scuttle its warships and evacuate its deep-space facilities. Operation Nemesis destroys the evacuated military and industrial infrastructure without civilian deaths. Her peace terms require the Mandarins' arrest, League withdrawal from nonmember systems, an end to the protectorate system, and constitutional reform. Kingsford accepts, the Gendarmerie arrests the Mandarins, and a Constitutional Convention is seated under Alliance enforcement. Manticore and Haven plan permanent military, economic, and political integration. Beowulf's key production survives, but the system is rebuilding after more than 43 million deaths. Former protectorates face an uneven transition. The Alignment remains the central unresolved danger: Operation Houdini erased much of its trail, and Benjamin Detweiler is still at large. Honor leaves active service for Grayson with Hamish, Nimitz, Samantha, and her family. A preserved zygote means she is carrying Emily's child.",
+        "in_short": "Manticore and its allies rebuild after the Yawata Strike while the Solarian League uses Operation Buccaneer to punish neutral systems. Manticoran defenders save Hypatia, Maya exposes a false-flag campaign, and a captured Alignment operative joins the hunt for the conspiracy. The Alignment evacuates Mesa, frames the Alliance for nuclear devastation there, and covertly assists a Solarian attack on Beowulf. Beowulf defeats the fleet and preserves most of its industry, but hidden bombs destroy three habitats, kill more than 43 million people, and precipitate Emily Alexander Harrington's death. Honor takes Grand Fleet to Sol, forces Ganymede and the Solarian Navy to surrender, and destroys evacuated military-industrial infrastructure. Kingsford enables the Mandarins' arrest and constitutional reconstruction begins. Honor retires to Grayson with Hamish, Nimitz, Samantha, and their family while carrying Emily's child. Benjamin Detweiler and the Alignment remain hidden and free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Honor Harrington commands the Grand Alliance formed by Manticore, Haven, and Grayson. Their former conflicts have yielded to cooperation against the Solarian League and the concealed Mesan Alignment. The Alignment has manipulated governments, intelligence services, and wars while using lethal control technology to silence compromised agents. Its Yawata Strike devastated Manticore's orbital industry and inflicted heavy civilian losses. Manticore has also defeated major Solarian forces, but the League's leadership remains committed to coercion rather than accommodation. Anton Zilwicki and Victor Cachat have helped expose the Alignment, prompting its leaders to accelerate a planned evacuation from Mesa. Beowulf is moving toward secession from the League and already supports the Alliance in practice. Honor shares her family life with Hamish Alexander-Harrington, Emily Alexander Harrington, their children, and her bonded tree cat Nimitz while carrying the strategic burden of the continuing war.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Manticore is salvaging captured Solarian warships while rebuilding the orbital industry destroyed by the Yawata Strike. Honor considers using recovered weapons in remote defenses, and Sonja Hemphill has moved research personnel to the expanding Bolthole base. The Solarian Navy launches Operation Buccaneer, a campaign meant to frighten systems away from trade or political association with Manticore. Admiral Vincent Caprioti is assigned to strike Cashelot, though he distrusts official intelligence and opposes measures likely to kill civilians. Meanwhile, Daud ibn Mamoun Al-Fanudahi and other Solarian investigators quietly map a suspected hostile network inside League institutions. Separate reports cast doubt on Maya governor Oroville Borregos, but the evidence could be a frame-up. Forensic work on captured Eleventh Fleet records produces a major discovery: Massimo Filaretta had apparently decided to surrender before hostile control intervened and his fleet launched. Honor concludes that killer nanotechnology forced the attack that led to the deaths of a quarter-million Solarian spacers.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Operation Buccaneer strikes neutral Cashelot and destroys much of its orbital industry despite the commander's efforts to limit casualties. The Ghost Hunters identify more suspicious links inside the Solarian government but still lack evidence that can survive legal scrutiny. At Hypatia, a leaked discussion of coercion strengthens support for secession. The League also attacks Manticore's position at the Prime-Ajay hyper-bridge with improved missiles and large pod formations. Sir Martin Lessom's cruisers survive the opening salvo, then withdraw through the terminus after drawing the attackers into a microjump. The apparent retreat is a trap. Aloka Menendez's concealed light attack craft destroy the Solarian ships as they emerge into Ajay, while a second hidden force attacks the units left at Prime. Only seven of fifty ships escape that second ambush, and Manticore loses no vessels there. The League takes the terminus briefly, but both halves of its task force are shattered by coordinated concealed defenses.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Alignment learns that Mycroft could let the Grand Alliance defend key systems without tying down major fleets, so it accelerates Operation Houdini and begins seeking a countermeasure. Buccaneer has already devastated Cashelot, and Honor supports using neutral Andermani patrols as a deterrent rather than answering with equivalent destruction. Hypatia's secession referendum passes by a large margin. President Adam Vangelis refuses to admit foreign warships before legal certification, leaving a small Manticoran group hidden in the outer system when Task Force 1030 arrives. After the result becomes official, the Solarian envoy insists that Hypatia renounce or suspend its vote and claims its constitutional right of secession is no longer valid. Vangelis rejects the demand. The envoy then classifies independent Hypatia as a supporter of the Grand Alliance and threatens Operation Buccaneer. The Manticoran defenders are heavily outnumbered and send for help, but reinforcements may arrive too late.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Solarian mission at Hypatia shifts from failed diplomacy to a threat of mass destruction. Its admiral gives the system only thirty-six hours to evacuate orbital infrastructure and will not cancel the attack even if the government reverses course. Senator Makiko Allerton, once a leading opponent of secession, refuses to overturn a lawful vote under threat. Emergency evacuation begins, but nearly twenty million people may remain exposed. Accidents and violence claim lives before the deadline, while workers and rescue personnel stay at their posts to move as many civilians as possible. Officers on both sides recognize that the planned attack would violate the League's own prohibition against planetary mass killing. The hidden Manticoran commander resolves to act despite overwhelming odds. As the Solarian force deploys its missile supply, two unwedged missile colliers abruptly disappear. The cause is not yet clear to the attackers, but their bombardment is about to face organized resistance.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rear Admiral Katoch's concealed force uses stealthy impeller drones to destroy the Solarian missile freighters, then attacks through remote platforms. Task Force 1030 answers with roughly 120,000 missiles. Katoch sends HMS Arngrim away to observe, rescue survivors, and warn reinforcements, while his other four ships fight what their crews expect to be a final action. They cripple the enemy force and kill its commander before being destroyed. Martin Gogunov inherits command and insists on completing Buccaneer, even ordering attacks on life pods. Commander Megan Peterson disobeys Katoch's limits and uses Arngrim's long-range missiles, reconnaissance platforms, and decoys to make one destroyer appear far more dangerous. Her strike cripples Gogunov's flagship. Sandra Haskell transfers effective command to Thomas Yountz, who has independently refused to attack Hypatia's platforms. Peterson offers withdrawal or further attacks, and the surviving Solarian ships leave. Hypatian rescue crews later recover Katoch and Commander Ilkova alive but badly injured.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence from captured Solarian records proves that Operation Buccaneer was authorized by senior League leaders, not invented by isolated commanders. Honor disperses limited defenses toward likely targets while seeking a way to stop further atrocities without launching a general offensive. In Maya, supposed Manticoran representatives are exposed as impostors. Both die before interrogation, and their transport destroys itself with a boarding party aboard, strengthening the case for implanted control mechanisms. Another captured operative, known as Firebrand, survives the kill system he expected and is taken to Manticore. Honor judges that his hatred of the Office of Frontier Security is genuine, and the Alliance tries to recruit him. A tree cat assigned as his guard instead adopts him, materially reducing fears of deliberate betrayal. Elsewhere, Mobius falls to revolt and Solarian officials prepare propaganda rather than admit abuses. Maya's governor publicly reveals the false-flag attempt, declares the Mayan Autonomous Regional Sector independent pending ratification, and warns that an unknown enemy is engineering rebellion and retaliation.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Grand Alliance creates a Joint Chiefs structure while Buccaneer pauses after seven attacks and serious Solarian losses. Beowulf then approves secession by 92 percent and moves allied capital ships inward under the protection of Mycroft. Solarian leaders view Beowulf's Apollo production as a narrow strategic vulnerability and continue studying a new long-range weapon called Asta. Winston Kingsford reforms parts of naval intelligence and development, but some senior functions remain compromised. The Alignment is losing intelligence networks, yet it develops the Silver Bullet platform and plans to smuggle these hidden weapons into Beowulf to locate and destroy Mycroft's control nodes. Honor and Anton Zilwicki use Firebrand's debriefing to examine the Alignment's deeper structure and the possibility that its evacuation was prepared long ago. Manticore also adopts a public policy toward false-flag rebellions: it disavows fraudulent promises of aid, protects those deceived in good faith, and supports mediated settlements. That intervention interrupts a planned uprising on Moroa.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tenth Fleet reaches Mesa in time to save the remaining resistance stronghold, but more than forty nuclear explosions follow the planet's surrender. Millions die, and the timing makes the Grand Alliance appear responsible. Forensic evidence shows the charges were planted before the occupation, yet the public case is weakened by harmless groups calling themselves the Alignment whose members know nothing of the hidden conspiracy. Countess Gold Peak maintains order without immediately recognizing the revolutionary government. Operation Houdini has already removed most of the true Alignment's important personnel. Albrecht Detweiler dies after staying behind to supervise the evacuation, and Benjamin Detweiler succeeds him. The Mandarins exploit Mesa to seek emergency taxation and expanded federal power. Inside Solarian naval analysis, hidden operatives receive instructions meant to encourage escalation. Manticoran leaders fear the atrocity will unite the League and reverse their strategy. Firebrand is now safely identified as Damian Harahap, his tree cat as Firewatch, and Honor proposes sending them with Anton Zilwicki to Mesa to hunt the vanished organization.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Solarian investigators increasingly doubt that Manticore caused the protectorate unrest or Mesa's destruction. Their surveillance identifies likely covert message passing through a financial adviser. When they secretly detain an intelligence colonel tied to her, he admits corrupt work for commercial interests but dies as soon as the adviser is named. Forensics reveal self-replicating nanotechnology keyed to his body, confirming a sophisticated kill mechanism while leaving its origin uncertain. Meanwhile, Solarian leaders activate preparations for Operation Fabius, an attack on Beowulf's missile industry using untested Asta weapons before Mycroft is fully secure. The Alignment covertly disperses autonomous platforms and sensor drones inside Beowulf. At Mesa, Gold Peak accepts Harahap and Firewatch into Zilwicki's investigation after the tree cats attest to Harahap's loyalty. The Alliance still cannot publicly disprove responsibility for the Mesa atrocity. Its leaders gather at Beowulf to reassess strategy, while Honor remains with Grand Fleet and Emily's worsening fatigue remains unexplained.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Task Force 790 approaches Beowulf to carry out Fabius, relying on stealth weapons that have never faced live opposition. Hamish Alexander-Harrington travels to a major Alliance conference at Beowulf Alpha with Samantha and members of Honor's Beowulfan family. More than four hundred hostile warships then enter the system on an apparent course for the Cassandra industrial complex. Alice Truman prepares Third Fleet to intercept, but the attackers will reach Mycroft's coverage before her ships can arrive. Corey McAvoy receives authority to activate the defense, with remote merchant block ships ready to shield critical facilities and habitats. An autonomous Silver Bullet platform inside the system detects the crisis and prepares its own attack. Just before Mycroft fires, concealed Grazer weapons destroy its master control platforms. McAvoy begins rebuilding a direct Apollo targeting solution, but the delay and loss of precision give the Solarian force an opportunity. Beowulf's leaders realize that an unknown third party may be coordinating its intervention with the visible raid.",
+            "through": {
+              "chapter": 97
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vincent Caprioti sees the unexpected destruction of Mycroft and suspects outside assistance. White Haven reaches the same conclusion and warns that the apparent attack on Cassandra may hide a strike on industrial targets that Bolthole cannot replace. Beowulf prepares block ships around its most important facilities but cannot evacuate the crowded habitats in time. Once Apollo's improvised solution is ready, the defenders launch thousands of missiles. Caprioti immediately retreats toward the hyper limit. The visible Cassandra approach is revealed as misdirection: the task force had launched Asta weapons before entering the system and concealed them among noisier reconnaissance traffic. The Alignment's Silver Bullets cleared Mycroft from their path. At least a thousand Astas activate close to Beowulf's orbit and turn toward Ivaldi and other essential manufacturers. McAvoy orders every block ship to raise its wedge. The industrial strike is seconds from impact while Apollo pursues Task Force 790.",
+            "through": {
+              "chapter": 106
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beowulf's block ships form layered impeller-wedge shields around its industry and habitats. Most of the Asta strike is stopped or diverted from civilian targets. One attack destroys an Ivaldi nanofarm and kills five thousand workers, but the missile-production lines survive. Apollo is even more decisive against Task Force 790: only thirty-seven of more than four hundred battlecruisers cross the hyper limit, and few damaged stragglers are expected to escape. The military raid has failed, though its precise target intelligence indicates an internal security breach. Victory is immediately overtaken by a separate attack. A nuclear weapon hidden decades earlier in a cargo container inside Beowulf Gamma receives its activation code. The bomb destroys the entire habitat and kills 9.5 million people, including the planted agent who triggered it. No incoming missiles remain to explain the loss, proving that the system still contains a concealed threat after the Solarian fleet's defeat.",
+            "through": {
+              "chapter": 112
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beowulf's leaders determine that Gamma was destroyed from within and suspect the Alignment. Five minutes later, a second hidden bomb destroys Beta and kills another 11.25 million people. The spacing is a deliberate signal, and evacuation of the remaining habitats is impossible. A third explosion destroys Alpha. The final confirmed toll from the Beowulf Strike exceeds 43 million, including many senior allied officials. Before the full public announcement, Honor returns home to tell Emily what has happened. Emily dies suddenly in Honor's arms after expressing concern for Honor and Hamish. Intelligence confirms that the habitat bombs were internally planted and timed, while the Solarian raid had received Alignment assistance. It remains uncertain how much the Solarian attackers knew, but Honor rejects further strategic restraint. Her grief hardens into a demand for immediate action against the power that launched the raid and sustained the war, even as advisers warn that massive retaliation may be exactly what the Alignment intended to provoke.",
+            "through": {
+              "chapter": 119
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Honor leaves her children with family and returns to HMS Imperator, determined to end the Solarian threat. Less than three days after Emily's death, both she and Nimitz are physically and emotionally depleted, and her staff recognize that grief is affecting her judgment. Beowulf continues searching the wrecked habitats for rare survivors. In Sol, the Mandarins learn that Fabius destroyed only one principal objective while losing almost the entire attacking force, but they conceal the scale of defeat and continue pursuing new military funding. The Gendarmerie brings Kingsford evidence that an outside conspiracy knew Fabius in advance. A suspected infiltrator dies when arrested, confirming the lethal-control pattern, and Kingsford agrees to form a trusted counter-network. Grand Fleet then appears in the Sol System beside a training squadron. Honor launches before accepting communication and nearly destroys the ships after they strike their wedges. Mercedes Brigham breaks through her rage, allowing Honor to abort the salvo and accept their surrender.",
+            "through": {
+              "chapter": 127
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grand Fleet advances on Naval Station Ganymede with roughly six hundred ships. Honor withholds communication until she can stage a demonstration, then launches more than two thousand missiles. Ganymede answers with an enormous Cataphract salvo, but its defenses cannot stop the Alliance attack. Honor deliberately destroys most of the station's reserve superdreadnoughts while sparing its active ships and principal platforms, proving she could have annihilated them at will. Grand Fleet translates away before the return salvo can engage, leaving Ganymede unable to force a battle. At the same time, Kingsford and the Gendarmerie conduct staged arrests among senior officers. Five of twenty-six tested personnel die through the same control mechanism, confirming extensive infiltration and leaving Kingsford with only a small cleared group. Honor returns outside Jupiter's hyper limit and offers Ganymede one final choice: destroy its active warships, surrender the station and its technical records, and permit boarding, or face complete destruction.",
+            "through": {
+              "chapter": 138
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ganymede accepts Honor's terms and yields its warships, platforms, prototypes, and records. Grand Fleet then approaches Old Earth slowly enough for the Solarian Navy to assemble more than two hundred superdreadnoughts, four hundred battlecruisers, and nearly a million missile pods. Kingsford understands that Honor's deliberate approach displays her confidence that this force cannot stop her. She gives Sol ninety-six hours to scuttle every warship, destroy its pods, and evacuate deep-space infrastructure. Kingsford refuses the Mandarins' demand for a futile battle and completes the evacuation and scuttling. Before the final operation, Hamish arrives with news that he, Samantha, Honor's uncle, and their companions survived Beowulf. Reunited with Honor, he explains that Emily was already dying. Honor proceeds with Operation Nemesis: synchronized charges and light attack craft destroy Sol's evacuated military and industrial infrastructure while sparing major habitats and killing no civilians. She then publishes terms requiring the Mandarins' arrest, constitutional reform, League withdrawal from nonmember systems, and dissolution of the protectorate system.",
+            "through": {
+              "chapter": 146
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mandarins resist Honor's demands, but Kingsford and the Gendarmerie act first. Innokentiy Kolokoltsov, Nathan McCartney, Malachai Abruzzi, and their colleague are arrested for conspiracy, treason, and mass murder. Kingsford boards HMS Imperator and accepts the Grand Alliance's terms for the Solarian League. By March 1923 PD, the Assembly has seated a Constitutional Convention under Alliance enforcement. The emerging settlement requires accountable elected government and a protected right of secession. League forces are leaving nonmember systems and the protectorate structure is being dismantled, though transitions are unstable and former Office of Frontier Security figures continue to stir disorder. Manticore and Haven plan lasting integration through reciprocal citizenship, economic ties, a joint research center at Bolthole, common doctrine, and permanent military cooperation. Beowulf survives and retains essential production, but mourns more than 43 million dead. Benjamin Detweiler and the evacuated Alignment remain hidden. Honor declines further high command and retires to Grayson with Hamish, Nimitz, Samantha, and their family. She is carrying a child from Emily's preserved fertilized zygote.",
+            "through": {
+              "chapter": 148
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B07HX5YZJL",
+            "type": "community"
+          }
+        ],
+        "work": "uncompromising-honor"
+      }
+    },
     "uncrowned": {
       "characters": {
         "characters": [

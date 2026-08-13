@@ -881,6 +881,333 @@
         "work": "brave-new-world-dramatized"
       }
     },
+    "breakaway": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "David"
+            ],
+            "description": "A former soldier and recently unemployed security contractor in Milwaukee. As the cloud crisis drives people south, he concentrates on getting his parents safely to family in San Antonio before choosing his own next commitment.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert Jeraptha officer who treats the destruction of ships intended for humanity as a treaty failure requiring a firm response. He presses the Rindhalu for accountability while assessing what the compromised transfer means.",
+            "id": "jeraptha-ethics-and-compliance-office-captain",
+            "name": "Jeraptha Ethics and Compliance Office captain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "Commander of Valkyrie and leader of humanity's special missions. With Earth threatened by a Maxolhx cloud and the promised Jeraptha ships destroyed, he seeks a way to compel the enemy to reverse its attack despite humanity's weak conventional forces.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Elder AI aboard Valkyrie and Bishop's essential partner in planning humanity's response. His extraordinary technical abilities offer options unavailable to the under-equipped fleet, though even he cannot simply erase every operational obstacle.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-based submind operating through a mixed alien processor system. Isolated from Skippy, it monitors communications and security, tries to limit violence, and helps David move his parents past the growing disruption.",
+            "id": "earth-based-skippy-submind",
+            "name": "Earth-based Skippy submind",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "Valkyrie's executive officer and a practical counterweight to Bishop. She helps evaluate the opening strike against the Maxolhx.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Maxolhx military leader behind the pressure on humanity. His objective is to draw the emerging human fleet to Earth, destroy it, and use the resulting loss of hope to force humanity into an unfavorable settlement.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An experienced Air Force dropship pilot given temporary command of Flying Dutchman for a stealth mission near Earth. Although more comfortable flying than delegating, she accepts that her combat experience makes her suited to avoiding an unnecessary engagement.",
+            "id": "major-samantha-reed",
+            "name": "Major Samantha Reed",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's allied ship AI, which guides the vessel out of the Maxolhx shipyard while Skippy concentrates on the precise jump into its maintenance bay.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zhao"
+            ],
+            "description": "Commander of humanity's fleets. After the discovery of a hidden servicing station, he redirects the refit program toward the new facility, balancing the chance for rapid improvement against the danger posed by senior-species forces.",
+            "id": "admiral-zhao",
+            "name": "Admiral Zhao",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flying Dutchman's AI and a fleet-support presence who appears through a new holographic avatar. She assists personnel across ships and bases while the vessel receives an independent human commander for its next assignment.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A special operator and liaison to the Mavericks who helps extract Bishop's family from Earth. She identifies herself to his parents as his girlfriend while emphasizing that their evacuation is necessary to prevent an enemy from using them against his decisions.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "A colonel, Mavericks commander, and planner for the renewed Alien Legion. During the covert Earth extraction, she takes temporary command of Flying Dutchman while its assigned commander leads the insertion flight.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chang"
+            ],
+            "description": "A senior UNEF officer targeted for extraction from Earth with his family so his starship-command experience can be put to use.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A special-operations pilot who flies a Panther during the covert extraction from Earth. Her mission includes recovering Colonel Chang, protecting his family, and moving early-warning equipment off the planet.",
+            "id": "major-frey",
+            "name": "Major Frey",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former alien military leader who continues covert fitness and weapons training after the Ruhar suppress formal training among his people. He accepts David's invitation to join a dangerous, still-undisclosed operation.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marty"
+            ],
+            "description": "The self-selected name of the first Maxolhx relativistic-dart AI secretly captured by Skippy. It reports the condition and membership of its formation after its authorization system is altered without alerting its master system.",
+            "id": "marty-the-bringer-of-doom",
+            "name": "Marty the Bringer of Doom",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "The special-operations commander who develops a defensible list of targets for humanity's captured relativistic darts. He raises the safer alternatives, then supports Bishop's selection of a heavily protected Maxolhx research world.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skippy's Earth submind"
+            ],
+            "description": "The name adopted by Skippy's isolated Earth-based submind. David reports that Grumpy is lonely, and Skippy recognizes that prolonged separation and the failure of Earth's digital infrastructure could make the submind unstable before it can be reabsorbed.",
+            "id": "grumpy",
+            "name": "Grumpy",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Star Team operator assigned to recover Elder wormhole-controller modules during a museum raid. He helps secure the devices while the team works to conceal which artifacts it truly values from local investigators.",
+            "id": "grudzien",
+            "name": "Grudzien",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Valkyrie's new gunnery officer, responsible for developing the ship's orbital-bombardment doctrine.",
+            "id": "colonel-tammy",
+            "name": "Colonel Tammy",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior UNEF representative among the humans on Paradise. Recovering from burns, she resists Ruhar measures to disarm, ground, and confine the human population after the breakaway operations alter relations.",
+            "id": "general-besenson",
+            "name": "General Besenson",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774248050",
+            "type": "community"
+          }
+        ],
+        "work": "breakaway"
+      },
+      "recaps": {
+        "ending": "The Maxolhx and Rindhalu openly combine forces against humanity, destroying four of Zhao's destroyers and damaging his flagship before Bishop uses a captured dart to break their immediate advantage. With the Alien Legion unable to protect its new allies, Bishop and Skippy stage synchronized wormhole diagnostics as a galaxy-spanning shutdown. The deception halts major offensives and gives humanity bargaining power, but only they know the capability is false. The Rindhalu refuse to clear Earth's cloud themselves, though they offer technical assistance and say they will discourage Maxolhx interference. They also warn that a concealed Thuranin force is attacking the separate operation supported by David Chica and Janes. That landing force loses orbital support when its carrier is disabled. The final scene leaves the troops cut off beneath a descending, burning starship. Bishop, Skippy, Simms, Zhao, Perkins, Adams, Smythe, and the fleet survive, but the cloud, the fragile bluff, Paradise's detained humans, the new client alliances, and the stranded ground force all remain open concerns.",
+        "in_short": "With Earth facing a Maxolhx-made cloud that could block sunlight, Joe Bishop and Skippy turn a hidden servicing station into the foundation of a stronger human fleet. They steal relativistic darts and wormhole controllers, strike Maxolhx targets, and support breakaway populations to build a new alliance. The campaign brings limited victories and covert Jeraptha aid, but it also drives the Maxolhx and Rindhalu into coordinated action. After their combined forces damage Admiral Zhao's fleet, Bishop fakes the power to disable distant wormhole networks and wins a temporary strategic pause. The Rindhalu offer technical help against Earth's cloud and warn of an attack elsewhere. The book closes with David Chica, Janes, and their landing force isolated on a hostile world as a burning starship falls toward them, while Earth's crisis and the wider war remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe Bishop commands Valkyrie with the Elder AI Skippy, while Flying Dutchman and a growing collection of alien-built ships serve humanity beyond Earth. Human forces have survived conflicts among the Ruhar, Maxolhx, Rindhalu, Thuranin, Jeraptha, and their client species, but remain far weaker than the senior powers. The Alien Legion and the Mavericks provide a basis for cooperation with alien soldiers outside the established coalitions. Earth, Paradise, and humanity's off-world forces are all vulnerable, and Skippy's rare abilities make both him and Bishop central to UNEF strategy.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maxolhx forces destroy the Jeraptha ships that were meant to strengthen humanity, while a manufactured cloud approaches a position where it can cut sunlight reaching Earth. Civilian disruption spreads, and David Chica turns to an Earth-based Skippy submind for help moving his parents south. Bishop argues that humanity cannot defeat the cloud directly and must compel the Maxolhx to remove it. Admiral Reichert, meanwhile, intends the crisis to lure humanity's new fleet home for destruction. UNEF promotes Bishop and authorizes his special-mission group to strike a remote Maxolhx shipyard. Valkyrie slips through the installation's defenses, launches nuclear weapons from inside a maintenance bay, and escapes after destroying the yard and several major warships. The raid provides a visible act of retaliation, but Earth remains exposed and the human fleet is still under-equipped.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Data taken during the shipyard raid exposes a Maxolhx contingency to evacuate chosen survivors beyond the galaxy, activate Elder weapons, and return after the Sentinels destroy galactic life. The same intelligence leads Valkyrie to a long-isolated servicing station. The crew restores enough of it to establish Ragnar Anchorage, giving humanity fabricators, parts, missiles, and a much faster route to refitting its fleet. Admiral Zhao reorganizes the upgrade program around the station. Flying Dutchman is assigned to reconnaissance near Earth, but sealed orders also begin a covert extraction effort. Samantha Reed leads the insertion while Emily Perkins holds temporary command. Colonel Chang, selected personnel, early-warning equipment, and Bishop's family are removed from Earth. Margaret Adams identifies herself to Bishop's parents as his girlfriend and explains why leaving them available as hostages would endanger his command freedom.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop searches for leverage strong enough to make the Maxolhx reverse the attack on Earth. Skippy detects clusters of relativistic darts, but matching their speed would make an interception impractical. Bishop instead has Valkyrie arrange a chain of micro-wormholes that lets Skippy remain in contact long enough to penetrate a dart's control system. The first captured AI calls itself Marty the Bringer of Doom, and the technique gives humanity control of a larger formation. Valkyrie then uses precisely placed moving wormholes to redirect six darts through the defenses of a Maxolhx research world. Their impacts destroy the main target and damage other underground facilities. Bishop publicly accepts responsibility, demands removal of Earth's cloud, and warns that further protected worlds can be reached. The Maxolhx now know humanity can turn their own strategic weapons against them, but they do not understand how.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The continuing need for Valkyrie to open secure routes threatens to limit fleet operations, so Bishop seeks additional Elder wormhole controllers. A Star Team raid on a museum steals working modules while misleading investigators about which artifacts matter. After testing, the controllers can schedule access to Ragnar and Jaguar without Valkyrie's direct presence. Skippy also begins a long-term search for indirect signs of dormant Elder AIs. With refits ahead of schedule, Zhao divides the Navy into independently operating fleets and launches Operation Payback. At a Thuranin-held system, the human ships destroy the local warships, defenses, and shipyard without Skippy directing the battle. Sixteen humans die and multiple vessels are damaged, but the victory proves the Navy can execute a coordinated combat mission on its own.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zhao completes the retaliatory campaign by defeating another client-state force while limiting attacks on civilian and surface targets. Humanity then shifts from punishment to alliance building. At Casternull, a prepared local movement breaks from Ruhar rule, forms a mutual-defense pact with humanity, and supplies volunteers for a renewed Alien Legion. A second breakaway brings tens of thousands more recruits and badly needed transports, but the Ruhar respond by restricting humans on Paradise. The growing force lacks equipment, so Smythe leads a Star Team onto a poorly maintained Kristang weapons transport carried by a Thuranin ship. When quiet access fails and the carrier prepares to leave, the team fights into the control area and connects Skippy directly. He engineers the transport's release and jumps it away. The team survives, and humanity gains powered armor, weapons, ammunition, and the captured vessel.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The new Legion trains with outdated equipment and inexperienced personnel. Margaret Adams receives Skippy's only Mark VII Delta powered-armor prototype for her work with the Mavericks. Zhao next attacks an occupying fleet over a Ruhar world, wins control of orbit, and sends the Legion into a costly urban campaign. Perkins presents the intervention as liberation rather than conquest, seeking a durable relationship with the local Ruhar. Meanwhile, a Jeraptha covert office steals fifteen obsolete but human-compatible patrol ships and intends to transfer them in exchange for a future favor. It also uses a false human fleet to force an enemy occupation off a Jeraptha world, creating the appearance that humanity will defend Jeraptha interests. On the ground, David helps prevent reprisals against surrendered prisoners. Now engaged to Perkins, he supports Janes's request for a separate allied operation on an isolated world, even as the main Legion prepares to move elsewhere.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop learns that the Jeraptha impersonation may force humanity to defend a relationship it never authorized. Seeking stronger leverage against Admiral Reichert, Valkyrie uses captured darts to trigger a directed solar flare against a Maxolhx terraformed world after warning its residents to shelter. Humanity again demands removal of Earth's cloud and offers a private route to negotiation. The strike instead accelerates cooperation between the senior species. They destroy nearly every remaining dart group, demand that humanity abandon its allies and off-world presence, and require the surrender of Skippy, the ships, and Elder access. Bishop refuses. Simms then proposes replacing an active Maxolhx relay with an abandoned compatible station. The substitution succeeds and reveals combined Maxolhx-Rindhalu forces waiting in stealth at 137 possible Legion targets. The Legion's current operation is already covered by an overwhelming ambush, forcing Bishop to seek an unconventional rescue.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Rindhalu openly join the Maxolhx and attack Zhao's fleet. Four human destroyers are lost and the flagship is disabled. Bishop draws enemy ships close to Valkyrie, then uses a captured dart fragmented into dense projectiles to cripple much of the surrounding senior-species force. The attackers withdraw, but Perkins and Bishop recognize that the Legion cannot safely expand while its allies remain exposed to intervention. Bishop and Skippy answer with a deception. They arrange timed self-diagnostics across several wormhole networks, then present the simultaneous outages as a human ability to disable distant portions of the network. Only they know the shutdown is staged. The resulting fear produces a broad pause in military offensives. A Rindhalu delegation meets aboard Valkyrie and refuses to remove Earth's cloud, but offers expertise to help humanity disperse it and promises to discourage interference. In exchange for intelligence about the Maxolhx evacuation plan, the Rindhalu warn that a hidden Thuranin force threatens the allied operation on a Christang world.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The wormhole-network bluff buys humanity time without solving its underlying problems. The Maxolhx campaign remains active, the Rindhalu offer only limited cooperation on Earth's cloud, and the senior species can still overpower humanity's fleet if they discover the deception. Their warning about the isolated allied operation arrives too late for Valkyrie to reach it quickly. David Chica, Janes, two companies of human troops, and roughly a thousand allied soldiers have already landed on the Christang world. A concealed Thuranin task force attacks their assault carrier and three destroyer escorts, disables the carrier, and cuts communications with the ground force. The soldiers destroy an attacking gunship, but a large burning starship begins falling toward their position. The book ends with David, Janes, and the landing force stranded beneath that descending wreck, with no outcome yet known. Bishop and the main fleet remain active, while Earth's climate emergency, the alliance campaign, and the false network deterrent all remain unresolved.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774248050",
+            "type": "community"
+          }
+        ],
+        "work": "breakaway"
+      }
+    },
     "breakfast-at-tiffanys": {
       "characters": {
         "characters": [
@@ -4464,6 +4791,360 @@
           }
         ],
         "work": "brothersong"
+      }
+    },
+    "brushfire": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "The human commander of Valkyrie and the Merry Band of Pirates. His command of the former Ghost Ship has just become known to a Jeraptha squadron, creating an unexpected opening for contact while ending the practical secrecy surrounding the vessel.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Jeraptha officer commanding an Ethics and Compliance squadron. After learning that humans operate Valkyrie, the captain requests a controlled rendezvous rather than approaching the ship without permission.",
+            "id": "jeraptha-ethics-and-compliance-captain",
+            "name": "Jeraptha Ethics and Compliance captain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Elder AI whose extraordinary abilities remain essential to Bishop and Valkyrie. After abandoning the crew during an earlier crisis, he is trying to regain their confidence through reliable conduct and respect for the boundaries set by people who do not yet trust him.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A developing allied AI aboard Valkyrie. Bilby temporarily handles a routine crew communication when Adams declines direct contact with Skippy, demonstrating a useful intermediary role while continuing to learn how to work with the ship and its human crew.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "Valkyrie's executive officer and a senior counterweight to Bishop's command decisions. She challenges secrecy within the leadership team and tells Skippy that remorse matters only if it leads to changed behavior, while helping prepare the ship for its next operations.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Muller"
+            ],
+            "description": "Jennifer Simms's husband.",
+            "id": "frank-muller",
+            "name": "Frank Muller",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A gunnery sergeant and STAR operator aboard Valkyrie. She refuses Skippy's attempts to resume friendly contact after his abandonment of Bishop and the crew, making clear that professional assistance does not amount to restored personal trust.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "The STAR and special-operations commander responsible for planning a dangerous rescue of human prisoners held by the Kristang. He argues that service members must protect fellow citizens without first deciding whether those captives deserve the risk.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserve gunnery sergeant assigned to overwatch during the Keeper rescue. Despite concern for Adams, he follows Smythe's order to protect the whole ground team and stops a Kristang moving toward another target building.",
+            "id": "reserve-gunnery-sergeant",
+            "name": "Reserve gunnery sergeant",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Jeraptha fleet admiral who opens direct talks with Bishop after learning that humans operate Valkyrie. He proposes Jeraptha support for relocating Paradise's human population, including several troop transports and one star carrier.",
+            "id": "admiral-kekrando",
+            "name": "Admiral Kekrando",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Logellia"
+            ],
+            "description": "The Ruhar administrator of Paradise and a trusted contact from Bishop's earlier service there. Bishop approaches her privately with the truth about his survival, human control of Valkyrie, Earth's freedom, and humanity's claimed possession of Elder weapons.",
+            "id": "baturnah-logellia",
+            "name": "Baturnah Logellia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chotek"
+            ],
+            "description": "A human diplomat evacuated aboard Valkyrie with other officials and the remaining Avalon personnel as the ship prepares to return to Earth.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Koch"
+            ],
+            "description": "Bishop's former fireteam leader, now a successful farmer on Lemuria. Their reunion on Paradise brings the consequences of renewed access to Earth into personal focus, and Koch hopes for a place aboard the first transport so he can visit his family.",
+            "id": "greg-koch",
+            "name": "Greg Koch",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Chang"
+            ],
+            "description": "A UNEF leader and former ship commander who remains Bishop's principal institutional contact when Valkyrie returns to Earth. During the ship's absence, he has managed the political consequences of the failed cover story and the public revelation of humanity's alien vessels.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Steel"
+            ],
+            "description": "A wealthy human who attempts to establish influence with Skippy through an apology and carefully chosen gifts. His approach assumes that Skippy might be receptive to a new favored associate, but it immediately tests Skippy's loyalty to Bishop.",
+            "id": "brock-steel",
+            "name": "Brock Steel",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Desai"
+            ],
+            "description": "A deceased pirate pilot who served as Bishop's executive officer on her final mission. During a visit to her family, Bishop describes her as a courageous and highly capable officer, while her mother confirms that Desai freely chose that last service.",
+            "id": "fal-desai",
+            "name": "Fal Desai",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "The leader of the Mavericks and a senior figure in the Alien Legion. She reports their return from Paradise alongside transports carrying thousands of current and former military personnel, forcing Earth's leaders to address their integration and future mission.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied ship AI assigned to the industrial expansion of humanity's remote base. She begins working with Skippy to upgrade fleet-support fabricators, a task intended to turn a limited transfer of aging ships into a force that humans can maintain and rebuild.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reichert"
+            ],
+            "description": "A Maxolhx admiral who advocates containing and pressuring humanity without creating the extinction conditions most likely to trigger the Elder weapons. He treats calibrated coercion as a way to limit human power while avoiding a catastrophic response.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bailey"
+            ],
+            "description": "A senior UNEF representative on Paradise. After the Ruhar authorize only a limited rotation of human personnel, Bailey prepares to leave the planet while recognizing that UNEF may soon need the experience of its long-serving Paradise officers again.",
+            "id": "general-bailey",
+            "name": "General Bailey",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Besenson"
+            ],
+            "description": "A senior UNEF representative stationed on Paradise. Besenson joins General Bailey in confronting evidence that the overdue human survey transport was destroyed by a Maxolhx missile attack, leaving more than three hundred human passengers presumed dead.",
+            "id": "general-besenson",
+            "name": "General Besenson",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Jeraptha officer commanding the transfer force at the original rendezvous. She tries to evacuate her crew when the Maxolhx destroy the force, survives in an isolated escape pod, and hopes Valkyrie will recognize the ambush before entering it.",
+            "id": "jeraptha-transfer-force-commander",
+            "name": "Jeraptha transfer-force commander",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Friedlander"
+            ],
+            "description": "A UNEF analyst recruited to lead the investigation into unexplained Maxolhx activity inside Jupiter. Though not an astrophysicist, his prior off-world experience and record of sound analysis make him the choice to coordinate the specialists studying the devices.",
+            "id": "mark-friedlander",
+            "name": "Mark Friedlander",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774246325",
+            "type": "community"
+          }
+        ],
+        "work": "brushfire"
+      },
+      "recaps": {
+        "ending": "Valkyrie escapes Admiral Reichert's Snowcone blockade after the Rindhalu arrive to prevent the Maxolhx from taking Skippy. Bishop uses detonations aboard malware-infected ships to provoke a battle between the senior species, then exploits the captured frigate's failed jump to break through the damping fields. Valkyrie survives with structural damage, a serious drive-power fault, and forty percent of its drive coils lost. Skippy remains functional but weakened, and Bilby, Simms, Smythe, Perkins, and Bishop remain active with the surviving force. At the remote base, the crew confirms that the Maxolhx devices in Jupiter will place gas between Earth and the Sun, producing an artificial glaciation that may kill billions over the coming centuries. Bishop will neither activate the civilization-destroying Elder weapons nor launch a predictable strike on the mass drivers. Avalon has 882 settlers and five years of supplies, the forward base can begin rebuilding ships, and humans remain trapped on Paradise. The immediate next move is a secret initiative involving the Ruhar, intended to gain the allies and resources Earth lacks.",
+        "in_short": "After revealing that humans command Valkyrie and possess Elder weapons, Joe Bishop uses that deterrent to pursue allies, rescue captives, strike a Thuranin bioweapons facility, and begin rebuilding humanity's off-world strength. Earth establishes the Avalon refuge and a remote fleet base with covert Jeraptha help, but the Maxolhx answer with diplomatic isolation, deadly attacks on Paradise and Earth, and Admiral Reichert's trap for Valkyrie. Skippy is badly damaged saving the ship, which becomes trapped beneath an ice giant until captured Maxolhx hardware, planted malware, and a Rindhalu intervention create an escape. The crew returns to learn that devices at Jupiter will shade Earth and cause centuries of artificial glaciation. Bishop rejects both the fatal use of the Elder weapons and an obvious attack on Jupiter. With Valkyrie damaged and Earth still vulnerable, he turns toward a surprise operation intended to obtain Ruhar support, while Avalon, Paradise, and the new human fleet remain exposed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe Bishop and the Merry Band of Pirates survived their latest crisis, captured the Maxolhx battlecruiser Valkyrie, and used it to save Emily Perkins and the Mavericks from capture. The operation left the crew with Elder weapons that could unleash galaxy-wide destruction, but their authority over those weapons had not been settled. Skippy, the Elder AI whose capabilities make the pirates' missions possible, abandoned Bishop and the crew during the crisis before returning. His remorse did not restore their trust, particularly with Margaret Adams. Humanity remained divided between Earth and Paradise, where the Alien Legion and other displaced people continued under Ruhar authority. The Flying Dutchman and Valkyrie gave Earth limited reach, but neither solved its strategic vulnerability.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A Jeraptha squadron learns that Bishop commands the human-operated Valkyrie and seeks a controlled rendezvous. Bishop then makes humanity's new position public to Kristang and Thuranin witnesses, declaring possession of Elder weapons while Valkyrie destroys military and clan targets connected to murdered and abused human captives. The Jeraptha respond with a tentative offer of transports and a star carrier, potentially easing the problem of moving people from Paradise. Valkyrie next attempts to rescue 289 Keepers held by the Deathstalker Kristang. Their dormitories are rigged for rapid demolition, so Jeremy Smythe leads a covert ground operation rather than risk an obvious ship attack. Adams penetrates her assigned building and discovers a more complex detonator system than expected. She neutralizes the charges under pressure and kills guards who are about to expose the operation. The mission then shifts into an open assault, with dropships striking the guard force while the teams begin evacuating the prisoners. Skippy supports the operation while trying to prove through his conduct that the crew can rely on him again.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Keeper rescue succeeds without fatalities or serious injuries among the captives. Nine human collaborators are confined aboard Valkyrie, while Bishop welcomes the others home rather than treating every survivor as guilty for remaining under Kristang control. The ship then targets the deeply buried Thuranin bioweapons facility on Slithin. Direct bombardment cannot reach it without exposing valuable capabilities, so Skippy and Valkyrie's ship AI hold an exact position for hours while sending a chain of tiny wormholes through a narrow tunnel. Skippy uses ordinary maintenance systems to create an unauthorized signal that activates the facility's own self-destruct mechanism. Valkyrie adds a conspicuous beam attack to conceal the true method, leaving observers to believe humanity possesses another powerful weapon. The facility is destroyed and the Thuranin receive a warning against biological attacks on Earth. At Paradise, Bishop privately tells Ruhar administrator Baturnah Logellia that the pirates survived, freed Earth, captured Valkyrie, and hold Elder weapons. He also identifies Skippy as the Elder AI the Ruhar had known as Emby.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie's appearance over Paradise proves Bishop's account, but Skippy temporarily seizes Ruhar fleet systems to prevent a panicked attack. Jeraptha transports begin connecting Paradise with Earth, and Bishop reunites with former comrades while confronting the social disruption caused by years of separation. Before returning home, he decides that no single nation should control the Elder weapons. He accepts service with Skippystan while remaining detached from the U.S. Army, creating political distance from national command. Adams and Bishop begin a relationship after she challenges him to provide a durable plan for resolving their chain-of-command problem. Back at Earth, the collapse of the old cover story has made Bishop controversial and brought threats against his family. UNEF learns that the Elder weapons are not a practical shield: they can retaliate against extinction by provoking Sentinel destruction, but cannot stop an initial attack. Earth therefore still needs sensors, conventional ships, technology, and allies. A Jeraptha delegation arrives, and Hans Chotek resumes work with Bishop. Bishop also visits Fal Desai's family and learns that she chose her final pirate mission freely.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop and Adams spend private leave together and establish their relationship on more equal terms. Skippy acknowledges an unspecified personal debt to Adams and begins trying to repay it. Humanity's leaders focus on survival beyond Earth. Avalon, an isolated site outside the galaxy, could preserve a human population and make the Elder-weapons deterrent more credible, although its first survey team lacks adequate supplies and has suffered crop failures. Jennifer Simms and Frank Muller consider roles there, while Colonel Chang becomes UN Secretary for Homeworld Security and Hans Chotek moves toward ambassador-at-large duties. Skippy also makes Bishop the president of Skippystan and uses a digital imitation of him for public business without permission. Jeremy Smythe declines a senior headquarters command so he can remain available for operations. Emily Perkins and the Mavericks return with thousands of personnel from Paradise and propose a longer-term Alien Legion strategy. Skippy warns that broad manipulation of the wormhole network is no longer safe because the network may refuse future access. UNEF adopts a program of alliances, Jeraptha ship acquisition, an Avalon colony, and a remote military base. The first 882 settlers reach Avalon with five years of supplies.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Humanity begins turning its plans into an industrial and military foothold. The Jeraptha agree to transfer obsolete warships, assault transports, carriers, support ships, and an orbital servicing platform. Skippy and Nagatha start expanding the fabricators that will rebuild this force at the remote base. Adams applies to the Alien Legion's star team, removing herself from Bishop's chain of command while continuing their relationship. The Maxolhx, however, conclude that humans are unlikely to trigger the Elder weapons unless Earth faces extinction. Admiral Reichert therefore advances a policy of pressure below that threshold. Rindhalu threats force both the Ruhar and Jeraptha to retreat from open cooperation. A stealth Maxolhx missile strike destroys the Jeraptha carrier and human survey transport bound for Paradise, killing more than three hundred humans. A Bosphorok raid then kills more than six hundred people on Paradise and seriously injures at least 1,100, while another force attacks Earth, destroys human space assets, strikes major command sites, and ruins key industrial plants. Despite publicly freezing further transfers, Jeraptha officers covertly make forty-three ships disappear and send Bishop a concealed route to recover them. Valkyrie leaves Earth behind a holographic decoy to pursue the opportunity.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The supposedly stolen Jeraptha fleet is moved to a revised rendezvous near the Eagle Nebula. At the original location, Maxolhx forces destroy the transfer group, leaving only an isolated Jeraptha survivor in an escape pod. Meanwhile, more than two dozen Maxolhx warships enter the Solar System and place unexplained devices inside Jupiter. UNEF assigns Mark Friedlander to lead the investigation. Bishop approaches the revised meeting cautiously, scanning from long range and concealing Valkyrie's true jump accuracy, but the apparent Jeraptha ships are holograms projected by drones. Admiral Reichert has surrounded the area with stealthed warships and overlapping damping fields designed to prevent escape and secure Skippy. With Valkyrie's engines disrupted and the enemy tightening the trap, Skippy cancels the ship's momentum so the pursuing formation overshoots. The maneuver allows Valkyrie to jump away, likely damaging Skippy and multiple ship systems; their condition remains unresolved.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie remains trapped beneath the ice giant's clouds while Reichert's fleet waits above. Skippy's canister is physically diminished, but signs of hidden medical and engineering intervention suggest he is still functioning. Bishop provokes him back into communication and learns that the escape damaged him severely while leaving some close-range abilities intact. Reichert sends a frigate to verify Skippy's presence and board Valkyrie. Bishop admits the assault party as part of a trap. Once the Maxolhx are aboard, Skippy disables their powered armor and compromises the nearby frigate. Smythe's team captures the boarders, while another human team takes the enemy ship and prevents its destruction. Bishop returns the prisoners in stripped dropships but keeps the frigate, intending to create uncertainty over which vessel might carry Skippy during an escape. The returned prisoners unknowingly spread microscopic malware through quarantine and maintenance systems. Skippy eventually reaches much of the blockade, though periodic purges make that access temporary. On Earth, investigators know that the devices inside Jupiter are expelling selected gases toward the Sun, but their purpose remains unexplained.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Maxolhx adapt mining equipment into a tractor-field system capable of pulling Skippy from beneath the ice. A Rindhalu scout discovers evidence of the ambush and leaves to summon help, but the expected fleet cannot arrive before Reichert completes his recovery system. Smythe proposes sabotaging the tests through the malware already inside the Maxolhx force. Skippy and Bilby falsify the first results, delaying the program once, but a repeat succeeds and leaves Valkyrie only days before capture. Bishop prepares a final escape attempt rather than surrender. Nineteen Rindhalu ships arrive unexpectedly and negotiate over joint custody of Skippy, revealing that their priority is preventing the Maxolhx from possessing him. Bishop detonates three infected Maxolhx ships near the Rindhalu, provoking a battle between the fleets. As Valkyrie climbs, its weapons cue further malware-controlled explosions throughout the blockade. The captured frigate then performs a deliberately failed jump, briefly disrupting the damping fields so Skippy and Bilby can retune Valkyrie's drive and open an unstable escape wormhole. Valkyrie gets away, but its frame is damaged and forty percent of its drive coils are lost.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie survives the Snowcone escape but remains badly impaired, with inaccurate jumps and a drive-power fault. The crew returns through Backstop and confirms the purpose of the Maxolhx devices at Jupiter: mass drivers are producing gas clouds that will settle between Earth and the Sun. Noticeable climate effects are expected within two years and severe conditions within eight. The resulting artificial glaciation could last three to four centuries, destroying farmland and causing famine, migration, war, and billions of deaths. Bishop rejects an immediate strike on the mass drivers because the Maxolhx would anticipate it and could repeat the attack. He also refuses to activate the Elder weapons, which deter extinction only by threatening destruction on a far greater scale. At the remote human fleet base, Bishop, Simms, Smythe, Skippy, Bilby, and Perkins remain active. Avalon has its first settlers, Nagatha can support fleet construction, and the surviving Jeraptha ships provide a foundation for rebuilding, but none offers an immediate defense of Earth. Humans on Paradise also cannot safely be moved into the coming food crisis. Bishop's next move is a secret operation involving the Ruhar, intended to obtain the allies, ships, and resources humanity still lacks.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774246325",
+            "type": "community"
+          }
+        ],
+        "work": "brushfire"
       }
     },
     "bud-not-buddy": {

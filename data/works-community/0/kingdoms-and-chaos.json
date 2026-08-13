@@ -1145,6 +1145,320 @@
         "work": "kokoro"
       }
     },
+    "komarr": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ekaterin"
+            ],
+            "description": "Tien's wife, Nikki's mother, and Vorthys's niece, Ekaterin is a skilled amateur gardener living in Serifosa Dome. Her concern for her family is constrained by Tien's insistence that his inherited medical condition remain secret.",
+            "id": "ekaterin-vorsoisson",
+            "name": "Ekaterin Vorsoisson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Miles"
+            ],
+            "description": "A newly appointed Imperial Auditor investigating the Soletta collision as Vorthys's independent, co-equal colleague. Miles previously served in ImpSec and is heir to the Vorkosigan countship, bringing both security experience and political standing to the inquiry.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tien"
+            ],
+            "description": "Ekaterin's husband and Nikki's father, Tien is a Barrayaran administrator in the Serifosa terraforming project. He has tremors from an inherited adult-onset disorder but refuses local care, fearing that disclosure could damage his career.",
+            "id": "tien-vorsoisson",
+            "name": "Tien Vorsoisson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nikolai"
+            ],
+            "description": "Ekaterin and Tien's nine-year-old son, also known as Nikolai. Nikki has shown no tremor symptoms from the inherited disorder affecting his family.",
+            "id": "nikki",
+            "name": "Nikki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vorthys",
+              "Professor Vorthys"
+            ],
+            "description": "Ekaterin's great-uncle, an Imperial Auditor, and a former engineering professor. Vorthys is the probable-cause specialist assigned to the Soletta collision and works beside Miles as a co-equal investigator.",
+            "id": "lord-auditor-vorthys",
+            "name": "Lord Auditor Vorthys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marie Trogir's missing supervisor, an engineer from Waste Heat Management. Radovas left his post abruptly at the same time as Marie, giving rise to an unconfirmed story that the two departed together.",
+            "id": "dr-barto-radovas",
+            "name": "Dr. Barto Radovas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Marie"
+            ],
+            "description": "A Waste Heat Management engineering technician and Andro Farr's partner. Marie has been missing for six weeks after supposedly leaving on a field assignment with Radovas, yet she abandoned her possessions and cats.",
+            "id": "marie-trogir",
+            "name": "Marie Trogir",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Marie Trogir's cohabiting partner. Andro asks Ekaterin for help after Marie disappears without explanation.",
+            "id": "andro-farr",
+            "name": "Andro Farr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Soudha"
+            ],
+            "description": "The administrator of Serifosa's Waste Heat Management department and Marie Trogir's former department head. He confirms that Marie resigned with only one day's notice but says he cannot explain where she went.",
+            "id": "administrator-soudha",
+            "name": "Administrator Soudha",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Tien's Komarran administrative assistant, who guides Miles and Vorthys during their field tour of the terraforming project. Venier recognizes Ekaterin's interest in the work and encourages her to pursue technical training.",
+            "id": "venier",
+            "name": "Venier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gregor"
+            ],
+            "description": "The Emperor of Barrayar. His engagement to a Komarran woman gives the approaching wedding wider political importance, while Miles is expected to serve as his wedding second and witness.",
+            "id": "emperor-gregor",
+            "name": "Emperor Gregor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lace"
+            ],
+            "description": "Emperor Gregor's Komarran fiancée, known to Miles as Lace. Her forthcoming marriage to the Barrayaran Emperor carries political significance for relations between Barrayar and Komarr.",
+            "id": "laisa",
+            "name": "Laisa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Radovas's widow"
+            ],
+            "description": "Dr. Radovas's newly bereaved widow. She confirms that he left a note, removed his personal files, and disappeared with Marie Trogir, but cannot say whose plan the departure was or where they went.",
+            "id": "madame-radovas",
+            "name": "Madame Radovas",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Tuomonen"
+            ],
+            "description": "The ImpSec captain assigned to Serifosa and an officer assisting Miles with the Soletta inquiry. Tuomonen identifies the unexplained eighth victim and supports the investigation into Radovas's death and Marie Trogir's disappearance.",
+            "id": "captain-tuomonen",
+            "name": "Captain Tuomonen",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Foscol"
+            ],
+            "description": "An accountant in Waste Heat Management. Ekaterin first learns of Foscol as the person maintaining accounts for a concealed departmental scheme involving ghost employees and false financial records.",
+            "id": "lena-foscol",
+            "name": "Lena Foscol",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger Waste Heat engineer who has temporarily taken over Radovas's duties and hopes to earn a promotion. During Miles's inquiry, Arozzi confirms the private nature of Radovas and Marie's relationship but offers no explanation for their disappearance.",
+            "id": "arozzi",
+            "name": "Arozzi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Waste Heat mathematician who worked with Radovas on calculations and projections. Cappell is interviewed during the inquiry into Radovas's death and Marie Trogir's disappearance but supplies no convincing account of what happened.",
+            "id": "cappell",
+            "name": "Cappell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Gibbs"
+            ],
+            "description": "An ImpSec financial analyst assigned to unravel Waste Heat Management's accounts. Gibbs traces fictitious employees, dummy companies, and questionable equipment purchases while seeking the real machinery hidden behind the paper fraud.",
+            "id": "colonel-gibbs",
+            "name": "Colonel Gibbs",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Riva"
+            ],
+            "description": "A mathematical physicist at Solstice University with expertise in five-space theory. Vorthys calls on Riva to help determine the purpose of a set of custom field generators associated with the investigation.",
+            "id": "dr-riva",
+            "name": "Dr. Riva",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Professor Vorthys's wife"
+            ],
+            "description": "Vorthys's wife and one of Ekaterin's supportive relatives. Vorthys arranges for her to come and support Ekaterin after Tien's death.",
+            "id": "aunt-vorthys",
+            "name": "Aunt Vorthys",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vorgier"
+            ],
+            "description": "The local ImpSec officer commanding the response at the Barrayar transfer station. Vorgier prepares an immediate assault on the hostage site, while Miles takes control and holds that option in reserve.",
+            "id": "captain-vorgier",
+            "name": "Captain Vorgier",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002UZYXVU",
+            "type": "community"
+          }
+        ],
+        "work": "komarr"
+      },
+      "recaps": {
+        "ending": "Ekaterin destroys the wormhole device and alerts the station while she and Aunt Vorthys are held captive. Miles rejects an immediate assault, evacuates the station, and negotiates with Soudha. After learning that the apparatus would destroy the station rather than close the wormhole, Madame Radovas casts the deciding vote for surrender. The hostages are freed, and the conspirators are arrested alive. The affair is classified, including Tien's involvement and the truth behind his death. Vorthys will direct a secret scientific commission, while Miles retains control of the prisoners' interrogation and returns to report to Emperor Gregor. He proposes rebuilding and enlarging Soletta as a Barrayaran wedding gift to Komarr. Nikki remains on Komarr for treatment and monitoring. Ekaterin has escaped Tien's debts but has no assets from the marriage. She and Miles acknowledge their mutual romantic interest and arrange to remain in contact, though he leaves for Vorbarr Sultana while she stays with Nikki.",
+        "in_short": "New Imperial Auditor Miles Vorkosigan and engineer Vorthys investigate an ore freighter's collision with Komarr's Soletta mirror. Their inquiry links an extra body, missing Waste Heat employees, and a financial fraud to a secret five-space device. Ekaterin Vorsoisson discovers that her husband Tien concealed both severe debts and his complicity in the fraud. Tien dies of asphyxiation after the conspirators abandon him and Miles in restraints. The fugitives intend to use their device to close Barrayar's wormhole, although scientific analysis shows that it instead produces a devastating gravitational recoil responsible for the Soletta disaster. After being kidnapped with Aunt Vorthys, Ekaterin destroys the apparatus and sends an alarm. Miles negotiates the conspirators' surrender, and ImpSec frees the hostages and makes arrests. The case is classified. Nikki begins treatment for his inherited disorder, Miles returns to Emperor Gregor, and Miles and Ekaterin part with their romantic interest openly acknowledged.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Miles Vorkosigan is the heir to a leading Barrayaran house and a former ImpSec captain whose Imperial service has included dangerous covert operations. Severe injuries and a medically complicated recovery ended his military career, but his record left him experienced in both security work and crisis command. He has also long served Emperor Gregor as a trusted associate.\n\nBarrayar's relationship with Komarr remains politically sensitive. Imperial support for Komarran terraforming is therefore more than a technical matter, and failures affecting the project can deepen existing tensions between the two worlds. Komarran-born officers such as Duv Galeni nevertheless hold responsible posts within the Barrayaran system, including ImpSec work concerned with Komarran affairs. Miles enters this book carrying the authority and obligations of his family, his former service, and his connection to Gregor.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An ore freighter has struck Komarr's Soletta mirror, killing its pilot and six station-keeping crew members and disabling most of the array. The resulting loss of light and heat threatens terraforming work and may worsen political tension over Barrayar's support for the project. Imperial Auditors Vorthys and Miles Vorkosigan arrive in Serifosa to determine whether the collision was accidental or deliberate. Their early evidence includes an unexplained force pattern connecting Soletta with an unused wormhole jump point.\n\nTheir hosts face a private crisis. Tien Vorsoisson conceals an inherited adult-onset disorder because he fears for his career, delaying care for himself and his son Nikki. Miles improperly enters Ekaterin Vorsoisson's private medical records, then admits the intrusion and promises discretion. Ekaterin remains unable to confide in Vorthys.\n\nA second mystery emerges when Andro Farr reports that his partner, Waste Heat technician Marie Trogir, disappeared alongside her supervisor, Radovas. Both left abruptly, while Marie abandoned her possessions and cats. Administrator Soudha provides no useful explanation. The case changes sharply when recovery workers find an unidentified eighth body in the Soletta wreckage, even though every known victim had already been accounted for.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The eighth Soletta victim is identified as Dr. Barto Radovas, tying the disaster directly to Serifosa's Waste Heat Management department. Captain Tuomonen joins Miles's inquiry, while Radovas's widow confirms that her husband vanished with Marie Trogir after removing his personal files. Interviews with Soudha, Arozzi, and Cappell establish the department's insularity but do not explain Radovas's death or Marie's whereabouts.\n\nEkaterin overhears Tien and Soudha discussing ghost employees, false accounts, and a sham experiment station. She uncovers Tien's disastrous trade investment, a large secured loan, and unexplained money that likely bought his silence. When she confronts him, Tien refuses responsibility and threatens her through Nikki and claims of self-harm. Ekaterin declares the marriage over.\n\nTien then brings Miles to the Waste Heat experiment station, claiming that he wants to expose Soudha's fraud. The supposedly empty site is active and being stripped of equipment. Soudha stuns Miles, and the group leaves both men chained outside. A disk alleges that Tien accepted bribes. His poorly charged breath mask runs out, and he dies of asphyxiation while Miles remains restrained beside him. Soudha, Lena Foscol, and Madame Radovas escape with the machinery.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lena Foscol lures Ekaterin to the abandoned experiment station, where she finds Tien dead and Miles injured but alive. ImpSec secures the site and begins pursuing Soudha's group. The fugitives also search Ekaterin's apartment and open Miles's stolen data case, gaining access to his Soletta material. Miles suffers a stress-triggered seizure after returning there, and Ekaterin helps him through it.\n\nColonel Gibbs follows the fraud through fictitious workers, dummy companies, and false purchases. Miles and Vorthys increasingly suspect that the stolen Waste Heat equipment supported a sabotage project rather than simple embezzlement. Meanwhile, Ekaterin confronts the practical aftermath of Tien's death: debts, limited resources, Nikki's pending medical needs, and an uncertain future. She begins planning further education and possible residence with Vorthys and his wife in Vorbarr Sultana.\n\nDuring a fast-penta interview, Ekaterin confirms Tien's deception and denies any role in his death. Her account clears her as a cooperative witness. She and Miles agree to tell Nikki only that Tien died in a breath-mask accident for the present. The investigation then gains its first documented bridge between the fraud and Soletta when Gibbs traces two damaged converters in the wreckage to a Waste Heat purchase.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ekaterin tells Nikki both that Tien was killed and that Nikki inherited the same disorder. A Solstice clinic determines that treatment can begin before symptoms appear, and Miles uses his Auditor's authority to overcome a guardian-permission obstacle. Nikki's immediate outlook is good, although treatment and monitoring remain ahead.\n\nThe technical inquiry uncovers five custom five-space field generators purchased through Waste Heat. A fragment at Soletta matches the fourth generator, while the largest fifth unit remains missing. Records place Soudha, Cappell, and Radovas at the manufacturer, and Vorthys calls in physicist Dr. Riva to determine the apparatus's purpose. Venier, now cleared by ImpSec, offers Ekaterin marriage and a future on Komarr. She declines while she considers an independent life.\n\nAt the Barrayar transfer station, Arozzi kidnaps Ekaterin and Aunt Vorthys and takes them to Soudha and Foscol. The fugitives reveal that their embezzlement funded a device intended to close Barrayar's wormhole permanently. Their planned action was originally tied to Emperor Gregor's wedding, but they are moving sooner. Ekaterin triggers an alarm during an escape attempt, yet Soudha passes the disturbance off as an accident. The two women remain prisoners beside the active operation.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under fast-penta, Dr. Riva explains that the apparatus was designed to collapse a wormhole through five-space resonance. Further analysis shows that the plan is based on a fatal error. Instead of closing the wormhole, the device sends stored energy back into ordinary space as a directed gravitational recoil. That pulse explains the Soletta destruction and may kill everyone at the transfer station. Miles identifies the likely target and launches an emergency response, but his warning cannot reach the captive women.\n\nEkaterin and Aunt Vorthys use a genuine heart condition to stage a medical emergency and escape their locked lavatory. Madame Radovas reveals that the conspirators voted to proceed, using the share she inherited from her husband. Ekaterin disarms her, seizes the device's float-cradle controls, and destroys its horn by dropping the apparatus. She sends station security, Miles, and ImpSec a report identifying both the hostage site and the conspirators before Soudha's group recaptures her.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles offers the conspirators his auditorial word that surrender will preserve their lives, though not their freedom. Madame Radovas uses her inherited voting share to break the deadlock in favor of stopping. Soudha surrenders, and ImpSec and station security arrest the group using stunners. Officers find that Ekaterin had destroyed the device before negotiations began and release her and Aunt Vorthys from a sealed personnel airlock. Miles confirms that activation might have killed about five thousand people aboard the station.\n\nAfter an overnight recovery, Vorthys reunites with his wife. The entire affair is classified, preventing a public trial and concealing both the conspiracy and Tien's involvement. Nikki and Tien's relatives will continue to receive the false account that Tien died in a breath-mask accident. Vorthys will lead a secret scientific commission on the device. Miles retains authority over the prisoners' interrogation and returns to Vorbarr Sultana to report directly to Emperor Gregor. Captain Tuomonen's future remains uncertain.\n\nMiles proposes repairing and enlarging Soletta as a wedding gift from Barrayar to Komarr and Gregor's intended bride. Nikki stays on Komarr to complete treatment. Miles gives Ekaterin a Barrayar pendant and provides ways to contact him. They acknowledge reciprocal romantic interest without making a formal commitment, then part with clear plans to meet again.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B002UZYXVU",
+            "type": "community"
+          }
+        ],
+        "work": "komarr"
+      }
+    },
     "kwaidan": {
       "characters": {
         "characters": [

@@ -1836,6 +1836,430 @@
         "work": "a-reaper-at-the-gates"
       }
     },
+    "a-rising-thunder": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An investigator known for opposing Mesa-linked exploitation. He works jointly with Victor Cachat despite their different national loyalties.",
+            "id": "anton-zilwicki",
+            "name": "Anton Zilwicki",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Benjamin Mayhew"
+            ],
+            "description": "Protector of Grayson and the head of a state closely allied with Manticore. He balances that alliance with the political traditions of his own world.",
+            "id": "benjamin-mayhew-ix",
+            "name": "Benjamin Mayhew IX",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pritchart"
+            ],
+            "description": "President of Haven, the power long at war with Manticore. She leads Haven's civilian government alongside its senior military command.",
+            "id": "eloise-pritchart",
+            "name": "Eloise Pritchart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Earl White Haven",
+              "White Haven"
+            ],
+            "description": "A senior Manticoran political and naval leader whose experience spans both fleet command and the highest levels of government.",
+            "id": "hamish-alexander",
+            "name": "Hamish Alexander",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Honor Alexander Harrington",
+              "Duchess Harrington"
+            ],
+            "description": "A Manticoran admiral and coalition commander whose military and political responsibilities place her at the center of her star nation's defense.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Havenite fleet admiral with senior command experience.",
+            "id": "lester-tourville",
+            "name": "Lester Tourville",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor Harrington's bonded tree-cat and established companion.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "Manticore's sovereign and the head of the government Honor serves. She carries responsibility for the star nation's security and its alliances.",
+            "id": "queen-elizabeth-iii",
+            "name": "Queen Elizabeth III",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theisman"
+            ],
+            "description": "Haven's Secretary of War and a senior naval leader, responsible for connecting the republic's political decisions with the command of its armed forces.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cachat"
+            ],
+            "description": "A Havenite operative and Anton Zilwicki's co-investigator in efforts directed against Mesa-linked exploitation.",
+            "id": "victor-cachat",
+            "name": "Victor Cachat",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian officer who receives direct evidence that Manticoran long-range weapons can defeat League defenses with precision. The demonstration forces a withdrawal and establishes that reports from Spindle cannot be dismissed as propaganda.",
+            "id": "winston-kingsford",
+            "name": "Winston Kingsford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Zilwicki and Cachat's escape party who helps protect their Mesa defector at Parmele Station.",
+            "id": "yana",
+            "name": "Yana",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Beowulf delegate in the Solarian League Assembly and a public constitutional critic of League policy. Her effort to secure an investigation has been suppressed through Assembly procedure.",
+            "id": "felicia-hadley",
+            "name": "Felicia Hadley",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the main Solarian offensive against Manticore. His plan calls for roughly 400 wallers to advance within weeks, based on the belief that recent destruction in the home system has weakened Manticore's defenses.",
+            "id": "solarian-invasion-commander",
+            "name": "Solarian invasion commander",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The military architect of Maya's hidden buildup and the governor's close collaborator in Sepoy. After losses at Congo, he argues that replacement forces and widening League disorder make continued preparation both possible and necessary.",
+            "id": "admiral-rozsak",
+            "name": "Admiral Rozsak",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maya's regional governor and Admiral Rozsak's political partner in the clandestine Sepoy plan. Expecting League authority to weaken, the governor must decide whether the growing crisis provides cover to activate their separatist preparations.",
+            "id": "maya-sector-governor",
+            "name": "Maya sector governor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mesa defector"
+            ],
+            "description": "A Mesa defector brought to Haven by Zilwicki and Cachat as a tightly protected intelligence source. His arrival gives Haven's leadership its first opportunity to hear the evidence carried out of Mesa directly from the witness.",
+            "id": "dr-herlander-simoes",
+            "name": "Dr. Herlander Simoes",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticore Junction Astro Control official who handles Beowulf's unannounced embassy transit.",
+            "id": "stefania-grimm",
+            "name": "Admiral Stefania Grimm",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tree-cat memory singer and the only known survivor of Black Rock Clan. She reports the clan's destruction and offers the cats' ability to recognize the mental condition associated with controlled killers as a warning system for humans.",
+            "id": "sorrow-singer",
+            "name": "Sorrow Singer",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Solarian task force ordered to use the Beowulf Terminus. Faced with Beowulf's refusal, she prepares to demand compliance and considers opening fire if the system continues to resist.",
+            "id": "imogene-tsang",
+            "name": "Fleet Admiral Imogene Tsang",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A representative of Beowulf's government in the terminus confrontation. He rejects the League's claimed authority to compel a peacetime transit and warns that an attempt to coerce civilian controllers will meet resistance.",
+            "id": "gabriel-caddell-markham",
+            "name": "Gabriel Caddell-Markham",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Solarian political official who receives Manticore's warning about the approaching fleet. He continues to support the operation, calculating that its commander can withdraw if the military balance proves unfavorable.",
+            "id": "innokentiy-kolokoltsov",
+            "name": "Innokentiy Kolokoltsov",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Manticoran weapons specialist working on the next generation of missile-defense improvements while current systems are tested against the capabilities expected from the Solarian invasion.",
+            "id": "sonja-hemphill",
+            "name": "Sonja Hemphill",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the Mesan Alignment, now confronting the survival of Zilwicki and the public exposure of several secret programs. He regards Simoes's disclosures as a grave compromise and accelerates Operation Houdini to conceal aligned personnel.",
+            "id": "albrecht-detweiler",
+            "name": "Albrecht Detweiler",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Herzog von Robbenstrange"
+            ],
+            "description": "An Andermani admiral, Emperor Gustav's first cousin, and a trusted intermediary with Honor. He receives Manticore's assessment of Mesa's drive and assassination technologies while considering the empire's position in the widening conflict.",
+            "id": "chien-lu-anderman",
+            "name": "Chien-lu Anderman",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tree-cat assigned to serve as Lester Tourville's guardian.",
+            "id": "lurks-in-branches",
+            "name": "Lurks in Branches",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Royal Manticoran Navy commander leading a force covertly introduced into Beowulf among relief traffic. She reveals her ships when the Solarian task force threatens to seize control of the terminus.",
+            "id": "alice-truman",
+            "name": "Vice Admiral Alice Truman",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian political operator who prepares anonymous media briefings and legislative pressure against Beowulf after the terminus confrontation. His task is to turn the incident into a case for collusion with Manticore.",
+            "id": "malachai-abruzzi",
+            "name": "Malachai Abruzzi",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Solarian commerce official who assesses the economic damage from Manticore's terminus blockade and helps coordinate the government's response.",
+            "id": "omosupe-quartermain",
+            "name": "Omosupe Quartermain",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of Manticore's 31st Cruiser Squadron in Operation Laocoon. After securing other termini, he moves to seize the Solarian-controlled Stein Terminus and close it to most Solarian shipping.",
+            "id": "sean-magellan",
+            "name": "Commodore Sean Magellan",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's heir and Rivka Rosenfeld's fiancé.",
+            "id": "crown-prince-roger-winton",
+            "name": "Crown Prince Roger Winton",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rivka Rosenfeld"
+            ],
+            "description": "Crown Prince Roger's fiancée and the prospective Crown Princess. Honor is to serve as one of her matrons of honor.",
+            "id": "rivka-rebecca-rosenfeld",
+            "name": "Rivka Rebecca Rosenfeld",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior Solarian naval decision-maker with concealed financial and political ties to Mesa. He admits helping to advance aggressive operations against Manticore while dismissing reports that victims can be controlled through nanotechnology.",
+            "id": "solarian-navy-chief",
+            "name": "Solarian Navy chief",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Solarian operational analyst whose warnings were suppressed before the League's military disasters. Suspecting a deliberate pattern, he forms an off-books group to investigate possible outside manipulation of naval policy.",
+            "id": "daud-ibn-mamoun-al-fanudahi",
+            "name": "Daud ibn Mamoun Al-Fanudahi",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Frontier Fleet analyst and trusted colleague of Al-Fanudahi. She joins his clandestine inquiry and accepts that the recurring failures may reflect a coordinated effort rather than simple incompetence.",
+            "id": "irene-teague",
+            "name": "Irene Teague",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B007FUCA0Q",
+            "type": "community"
+          }
+        ],
+        "work": "a-rising-thunder"
+      },
+      "recaps": {
+        "ending": "Manticore and Haven complete their peace and mutual-defense treaty, with Grayson and Beowulf aligned beside them. Honor's combined Grand Fleet has destroyed or disabled most of the Solarian invasion after an externally compelled missile launch prevented the enemy's surrender. Haven and Beowulf begin supplying the industrial capacity Manticore needs to recover from the destruction of its shipbuilding base. The Solarian League remains hostile but recognizes that its wallers cannot meet the alliance in open battle. Its leaders choose disinformation, commerce raids, and pressure on Beowulf instead. Beowulf schedules a plebiscite on leaving the League, while its secret Mycroft defense network remains months from operation and Solarian planners consider a rapid seizure of the system. Simoes's evidence and the controlled death of the Solarian Navy chief make the Mesan threat increasingly credible, but the Alignment's structure is still obscure. Albrecht Detweiler accelerates Operation Houdini, Maya continues Sepoy, and Al-Fanudahi's covert group investigates the Mesa-linked pattern behind the League's disasters.",
+        "in_short": "Manticore recalls its merchant fleet and closes key wormhole termini as the Solarian League prepares a massive attack. Zilwicki and Cachat deliver Dr. Herlander Simoes and his evidence of the Mesan Alignment to Haven, prompting Manticore and Haven to end their war and form an alliance with Grayson and Beowulf. Honor Harrington traps the 427-wall-ship Solarian invasion inside Manticore's hyperlimit and offers surrender, but external control forces a missile launch that turns capitulation into battle. Grand Fleet destroys or cripples most of the invaders. Haven ratifies the alliance and joins Beowulf in rebuilding Manticore. League leaders answer defeat with false propaganda and a commerce-raiding strategy. Beowulf responds to a treason inquiry by scheduling a secession vote, while the League explores seizing the system before its new defenses are ready. The Alignment accelerates Operation Houdini, and an internal Solarian inquiry begins tracing Mesa's role in the crisis.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Manticore and Haven have fought a prolonged war, but both now face dangers larger than their old conflict. A devastating strike has wrecked much of Manticore's home-system industry and killed many of its people. Manticore has also clashed with Solarian forces at New Tuscany and Spindle, exposing a widening confrontation with the Solarian League. Anton Zilwicki and Victor Cachat survived Green Pines while pursuing evidence of hidden Mesa activity, though the wider public believes them dead. Their investigation may connect Mesa to attacks and covert technologies that established intelligence has not recognized. Honor Harrington enters the crisis as Manticore's leading admiral and as a possible bridge to peace with President Pritchart's Haven.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Manticore begins withdrawing its merchant ships from the Solarian League and closes its wormhole termini to most Solarian traffic. At Nolan, its warships protect returning freighters without opening fire. At Zunker, a Manticoran picket demonstrates overwhelming missile range by disabling the impeller wedges of advancing Solarian battlecruisers, then allows them to retreat. The measures impose costs on Manticoran carriers and customers as well as the League, but their larger purpose is to protect shipping and force Solarian leaders to confront the military crisis. Zilwicki, Cachat, Yana, and a Mesa defector remain stranded at Parmele Station with recordings that may overturn accepted beliefs about Mesa. Learning that Honor is negotiating with Pritchart, they decide to carry the witness directly to Haven. Manticore formally presents its recall and terminus closures to the League as a response to earlier attacks. The League's governing officials recognize that Manticoran shipping supports much of their commerce and that the closures could sharply reduce transport, federal revenue, and economic activity. Even so, they remain tied to the planned offensive and begin considering how to blame Manticore if the crisis worsens.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beowulf rejects a Solarian proposal to send a second force through its terminus during the main attack on Manticore, judging the plan tactically unsound and politically dangerous. In Maya, the sector governor and Admiral Rozsak activate Sepoy, expanding a hidden military buildup meant to protect their region when League authority begins to fail. The main Solarian invasion departs with 427 wallers and new long-range missiles, although its commander privately questions both Manticore's supposed weakness and the weapons' Mesa origin. Zilwicki and Cachat reach Haven with Dr. Herlander Simoes. Honor can judge that Simoes believes his account, but cannot establish that every part is true. His specialized knowledge nevertheless makes Mesa's spider-drive and assassination research technically credible. Queen Elizabeth and President Pritchart agree that the Manticore-Haven war must end and begin forming a defensive alliance against the Solarian attack and the Mesan Alignment. Grayson immediately supports the draft. The proposed settlement returns prisoners and captured personnel without reparations, but still requires legislative approval. When the alliance and Mesa allegations become public, Manticoran opinion divides sharply over whether the evidence is genuine.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beowulf sends a surprise embassy to Manticore and offers strategic association with the Star Empire. Honor also rebuilds security around her family after the deadly strike on the home system. The tree-cat clans respond to their own losses by choosing active cooperation with humans. Sorrow Singer, sole known survivor of Black Rock Clan, offers the cats' ability to recognize the mental condition associated with controlled assassins as an early warning. Manticore warns the Solarian leadership that the approaching fleet will be destroyed, while Beowulf openly refuses transit to a separate task force. Grayson joins the gathering allies, and Honor's simulations show that Apollo, decoys, and dispersed defenses should defeat the known Solarian weapons, though she remains cautious about unknown capabilities. Theisman presses for rapid technical cooperation once the alliance is ratified. On Mesa, Albrecht Detweiler learns that Zilwicki survived and that Simoes has exposed the Alignment, its spider drive, and its assassination technology. Concluding that several powers may now unite against Mesa, he accelerates Operation Houdini to hide aligned personnel and considers further false-flag violence as cover.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Honor briefs the Andermani on the credible but incomplete evidence for Mesa's assassination technology, and the empire adopts effective neutrality while preserving the option to act against Mesa later. Manticore, Haven, Grayson, and Beowulf then plan to make the Solarian invasion an undeniable defeat. Operation Cani shows the invader a small, apparently isolated Manticoran force and hides the larger coalition deployment. The Solarian commander advances past the hyperlimit despite recorded warnings and demands Manticore's surrender. Honor then reveals roughly 150 additional allied wallers ahead and about 250 Havenite wallers behind the invading fleet. Faced with overwhelming force, the Solarian commander accepts surrender and orders his ships to disarm. External control instead forces his operations officer to launch more than 51,000 missiles and detonate a bomb on the flagship bridge. Grand Fleet has to fight. Of the invasion's 427 superdreadnoughts, 296 are destroyed, 71 are heavily damaged, and 60 surrender intact. About 1.2 million Solarian personnel die, compared with roughly 2,000 allied losses. At Beowulf, Imogene Tsang's separate task force is also stopped when Alice Truman reveals 60 concealed Manticoran superdreadnoughts behind Beowulf's defense. The alliance wins decisively, but lacks proof that the catastrophic missile launch was manipulated.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Solarian leaders decide to turn the Beowulf confrontation and the destruction of their invasion fleet into propaganda. Malachai Abruzzi advances the knowingly false claim that Honor's surrender offer was a trap and that Manticore altered the battle records. The government prepares to blame Beowulf for collusion while privately recognizing the severe damage that Manticore's terminus closures will inflict on League commerce. Operation Laocoon expands when Sean Magellan seizes the Stein Terminus and excludes most Solarian shipping. Haven's Senate ratifies the treaty with Manticore, clearing the way for combined fleets, shared technology, and industrial integration. Sonja Hemphill's mission and surviving researchers are to move to Bolthole, while Beowulf supplies repair ships, defended station components, financing, and new missile production to help rebuild Manticore. Anti-Manticoran and anti-Beowulf demonstrations spread on Old Terra as the official narrative takes hold. The Solarian Navy chief privately admits that Mesa influenced senior officers and that he cooperated for personal gain. An unknown caller then takes control of his body and forces him to kill himself, providing lethal confirmation of the control technology he had dismissed.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Al-Fanudahi and Irene Teague form a clandestine group to investigate why Solarian intelligence ignored repeated evidence of Manticoran and Havenite advances. Their inquiry links corrupt officers to Mesa and raises the possibility that the League's military disasters and constitutional crisis were deliberately engineered. A Mesa operative inside naval analysis helps conceal the Navy chief's controlled death. Winston Kingsford, now acting chief of naval operations, admits that League wallers cannot fight the alliance and proposes attacks on commerce and infrastructure by lighter forces while new weapons are developed. League leaders approve that strategy. At the Assembly, Felicia Hadley argues that Beowulf lawfully blocked an undeclared war and saved Solarian lives. The treason inquiry passes anyway. Beowulf responds by scheduling a plebiscite on withdrawal from the League. Crown Prince Roger and Rivka Rosenfeld marry before the assembled coalition, publicly displaying its breadth. Manticore is secretly building the Mycroft defense network for Beowulf, but it will not be ready for months. League leaders expect the secession vote to pass and fear other core systems will follow. They postpone a direct ruling on secession, portray Beowulf as a security threat, and seek military options. Al-Fanudahi concludes that planners may try to seize Beowulf and install a compliant government before Manticore can intervene.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B007FUCA0Q",
+            "type": "community"
+          }
+        ],
+        "work": "a-rising-thunder"
+      }
+    },
     "a-river-runs-through-it": {
       "characters": {
         "characters": [

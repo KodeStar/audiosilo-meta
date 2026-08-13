@@ -2077,6 +2077,288 @@
         "work": "gates-of-fire"
       }
     },
+    "gateway": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Commander of Task Force Black. In the aftermath of Operation Olympic, he accepts responsibility for the heavy losses, the dangerous decoy mission, and Skippy's apparent loss while Valkyrie escapes with the Collector.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with Joe and Valkyrie. After saving the ship during its escape, his canister is expelled toward the system's star, leaving the crew without his help or any clear means of recovering him.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Valkyrie and Joe's operational counterpart. She commands a damaged ship carrying the Collector while coordinating repairs, security checks, and the effort to survive without Skippy.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's shipboard AI. Bilby directs damage control and checks the ship for hostile code after the disrupted escape, providing technical support while Skippy is missing.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile intelligence seeking a route into the galaxy. Its malware disrupts Valkyrie's escape, separates Skippy from the ship, and leaves the crew uncertain about what other systems may be compromised.",
+            "id": "outsider",
+            "name": "Outsider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An operator from Star Team Tiger whose uncontrolled fall from suborbit is slowed by a concealed Skippy submind in his damaged suit. An improvised parachute gives him a chance to survive, but his condition on the surface remains uncertain.",
+            "id": "star-team-tiger-technical-sergeant",
+            "name": "Star Team Tiger Technical Sergeant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Air Force fighter pilot stranded on the surface after being shot down. With communications disrupted and enemy forces nearby, she remains separated from other surviving groups.",
+            "id": "downed-air-force-major",
+            "name": "Downed Air Force major",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the decoy-side recovery group during Operation Olympic. He and his companions are stranded on the surface after protecting the real extraction, with enemy forces closing in and communications disrupted.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Flying Dutchman. He survives the ship's destruction in a damaged escape pod with Perkins and other personnel, depending on a maintenance tug to keep the pod clear of debris and prevent a fatal descent.",
+            "id": "derek-bonsu",
+            "name": "Derek Bonsu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior human commander who escapes the destruction of Flying Dutchman with Derek Bonsu and members of her staff. Their damaged pod is rescued by a maintenance tug before it can fall back toward the planet.",
+            "id": "perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A maintenance tug operator and Derek Bonsu's wife. She uses her tug to secure the damaged escape pod carrying Bonsu, Perkins, and other survivors, guiding it clear of wreckage before it can descend fatally.",
+            "id": "maintenance-tug-operator",
+            "name": "Maintenance tug operator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An admiral working through the Ethics and Compliance Office. He runs covert operations and has Kinsta embedded inside the Inquisitors, but an apparent treason inquiry threatens both the agent and the operation.",
+            "id": "scorandum",
+            "name": "Scorandum",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scorandum's covert agent within the Office of Special Inquiries. He warns of evidence supporting a treason case, only to learn that the inquiry may be designed to expose his true allegiance.",
+            "id": "kinsta",
+            "name": "Kinsta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of Star Team Razor. She leads her operators back into a contested evacuation zone to relieve surrounded troops, judging that the team remains capable despite its recent losses.",
+            "id": "frey",
+            "name": "Frey",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flying Dutchman AI preserved as a backup within Skippy before the operation. The surviving copy lacks later memories and cannot yet be restored without a newly grown compatible matrix.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Elder defense construct found near the star identified through the Collector. Valkyrie prepares to approach it while its condition, purpose, and response remain unknown.",
+            "id": "elder-defense-construct",
+            "name": "Elder defense construct",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent Elder defense construct discovered near the Collector's source star. It can generate a subspace-divergence wave, but it is partly degraded, lacks its intended control AI, and is expected to burn out if activated.",
+            "id": "vortex-37",
+            "name": "Vortex 37",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frey's former executive officer and designated successor. After her presumed death inside Vortex 37, he takes command of Star Team Razor and begins preparing its operators for a possible return to the construct.",
+            "id": "major-carell-holmquist",
+            "name": "Major Carell Holmquist",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's wife, living at Jaguar with their children. She describes the colony's environmental damage and growing civilian strain, then helps Joe reconsider whether Skippy's list of lost Elder AIs is truly complete.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander responsible for Jaguar during its environmental and civilian emergency. Joe entrusts him with the secret that Skippy survived and asks him to prevent that information from spreading.",
+            "id": "admiral-chatterjee",
+            "name": "Admiral Chatterjee",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile Elder AI believed lost within a star. Joe's team steals two dormant AIs from a Maxolhx museum and plans to search their memories for clues to where Unit 52 fell.",
+            "id": "unit-52",
+            "name": "Unit 52",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Charlemagne battle group. He brings a supporting force and a star carrier from Jaguar toward Lundervik for Joe's operation to locate and recover Unit 52.",
+            "id": "admiral-samard",
+            "name": "Admiral Samard",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DRPQFHHW",
+            "type": "community"
+          }
+        ],
+        "work": "gateway"
+      },
+      "recaps": {
+        "ending": "Nagatha, operating through Unit 52's matrix, enables Task Force Black to use Vortex 37 against the real Gateway. Reed's Elder-weapon strike destroys the generator containing the Vortex wave, which then annihilates the Gateway, the active Outsider, and a forming construct. Nagatha reshapes the shield to save Valkyrie, but the ship is stranded in disrupted space with a lethal Vortex emergence approaching. Joe devises an assisted jump using an inbound wormhole from Bukhan. The carrier is evacuated and sacrificed, while Valkyrie and its 31-person strike crew escape. Frey has already been recovered alive from Vortex stasis, and Joe, Reed, Skippy, Bilby, and Nagatha all survive. Jaguar remains environmentally damaged, and the Maxolhx coalition is destabilized by its client revolt. The immediate enemy is gone, but relay images prove that two Outsider ships crossed through the Gateway before its destruction. Their locations and intentions are unknown.",
+        "in_short": "After Operation Olympic secures the Collector at enormous cost, Joe Bishop recovers Skippy and follows the device to Vortex 37, an Elder weapon that rejects Skippy and traps Frey. Joe recovers the damaged Unit 52 and transfers Nagatha into its matrix. Nagatha survives, establishes contact with the Vortex, and reveals that Frey has been held alive in stasis. Task Force Black transports the Vortex to the real Gateway after exposing a heavily guarded decoy. Reed destroys the field generator containing its wave, allowing the Vortex to destroy the Gateway and the active Outsider. Nagatha saves Valkyrie from the blast, and Joe sacrifices the evacuated carrier Bukhan to escape the disrupted region. The apparent victory is incomplete: Skippy finds relay images showing that two Outsider ships entered the galaxy before the Gateway was destroyed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe Bishop and the Elder AI Skippy have continued their partnership against threats to humanity. Joe commands Task Force Black from Valkyrie, with Reed as the ship's captain and Bilby as its AI. Their struggle with the Maxolhx has also drawn in Rindhalu forces. The latest operation is meant to secure a device called the Collector while keeping its true importance hidden from the enemy.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Operation Olympic ends with severe losses. Star Force gets the Collector aboard Valkyrie, but Outsider malware disrupts the escape and sends Skippy's canister toward the system's star. Flying Dutchman and all three assault carriers are lost, while scattered survivors remain under threat on the planet. David Chica's group captures a Maxolhx transport and helps recover other personnel. Perkins and Derek Bonsu escape Flying Dutchman's destruction, and Frey's Star Team Razor relieves trapped troops before rescuing the sole survivor of two other Star Teams. Task Force Hammer completes the evacuation, but the Rindhalu force withdraws its support. Joe refuses to abandon the search for Skippy. He and Bilby deduce that Skippy used the momentum exchange that saved Valkyrie to propel himself away from the star. Stealth drones locate him, and Valkyrie recovers his canister. Skippy confirms that he concealed his escape to preserve the Outsider's belief that he was lost. The Collector is now available for study, and a backup of Nagatha also survives inside Skippy, although she has no compatible matrix in which to awaken.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skippy's survival remains secret so the Maxolhx will continue guarding the system where they believe he was lost. Activating the Collector reveals the kind of starlight it was designed to absorb, but also coincides with an ambush by cruisers that can track Valkyrie through repeated jumps. Joe identifies an unexplained drain in Reactor 3, and venting its core removes a coherent-energy spark that had been transmitting the ship's position. Valkyrie escapes but needs extensive repairs. Initial searches find no star matching the Collector's signature. Joe takes the damaged ship through a blockade and heads for a concealed Maxolhx shipyard, while also stealing a star carrier later named Lafayette. He brings the carrier and Skippy to Scorandum, who obtains deniable political support for an operation intended to distract the Maxolhx. Scorandum also forces the Inquisitors to release and publicly clear Kinsta. As the covert provocation begins, Joe realizes that a star's history may have altered its spectrum. A revised search produces twelve possible origins for the Collector, with four leading candidates.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie searches the candidate systems and finds Vortex 37 near an unusual red dwarf. The independent Elder construct is an incomplete anti-Outsider weapon that will burn out after firing and requires an Elder AI in its central interface. Frey carries Skippy into the hub, but the Vortex rejects him as contaminated, seals Frey inside, and ejects his canister at extreme speed. Valkyrie uses precision jumps, shields, and railgun darts to slow and recover Skippy while Frey's oxygen runs down. Skippy cannot persuade the Vortex to release her, and a plan to penetrate its defenses with captured malware fails. Frey is believed to die when her oxygen is exhausted. Major Carell Holmquist takes command of Star Team Razor. Reed keeps the grieving Joe focused on stopping the Outsider and directs Valkyrie to Jaguar for repairs. With Vortex 37 no longer usable through Skippy, Joe and Skippy shift to finding and destroying the array being used to build the Outsider's route into the galaxy.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Jaguar, Margaret Adams prompts Joe to reconsider whether every Elder AI on Skippy's records is truly dead. A memory search through two AIs stolen from a Maxolhx museum identifies Unit 52, a hostile Elder AI that fell into the Lundervik star and escaped both the ancient reset and Skippy's later kill command. A battle group under Admiral Samard supports the operation. Coordinated neutrino scans find Unit 52 above the stellar core. Joe then has Skippy reopen a wormhole endpoint inside the star, extracting the canister while destroying that wormhole route. Unit 52 is alive, but most of its executive functions are irreversibly gone even though nearly all of its matrix remains intact. Joe realizes that Nagatha, a stable submind created by Skippy, might be able to grow into the empty portions of the recovered matrix. Unit 52 has therefore changed from a potential ally into a possible body for Nagatha, though the transfer would be dangerous and its outcome uncertain.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe orders Nagatha's irreversible transfer into Unit 52 because she cannot be awakened elsewhere to give consent. During the isolated experiment, signs of activity lead Skippy to wipe the carrier craft's systems and let it fall toward a star. Joe recognizes Nagatha's Morse-code signal, dives after the craft, and retrieves her canister during a rescue that nearly kills him and the Panther crew. Nagatha awakens as herself inside Unit 52's matrix. She is not a master-control AI like Skippy, but she can gradually use the matrix's Elder functions and volunteers to approach Vortex 37. When Nagatha makes contact, the Vortex opens and Frey speaks from inside. She did not die. A stasis field activated around her, so only minutes passed from her perspective while weeks elapsed outside. Frey installs Nagatha in the interface, and the Vortex accepts her as a counterpart rather than a controller. Frey returns to Valkyrie alive while Nagatha remains inside to establish trust and determine whether Vortex 37 will help oppose the Outsider.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nagatha learns that activating the wider Vortex network would permanently disable wormhole systems across much of the galaxy, making the original defense plan unacceptable. The search for the Outsider's array also appears impossibly broad. Intelligence then leads Valkyrie to a huge ring structure guarded by more than three hundred Maxolhx ships. Joe considers a suicidal attack, but further observation lets Skippy identify the structure as a decoy intended to destroy Valkyrie or waste its time. Valkyrie attacks the perimeter and leaves false jump trails to keep the defenders occupied. Meanwhile, the covert revolt encouraged by Scorandum's operation expands within the Maxolhx coalition. Skippy briefly disables Valkyrie's jump drive when Joe refuses to let him become protector of the rebelling client species. Nagatha identifies his despair over their failure to stop the Outsider and urges Joe to revisit the Vortex. She determines that Vortex 37 can be transported and fired at reduced power, limiting its destructive range to roughly three light-hours while shielding Valkyrie. The plan now depends on locating the real Gateway and bringing the Vortex close enough to destroy it.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe uses the dormant Outsider kernel hidden in Valkyrie's reactor as a beacon. The Outsider destroys the remote drone carrying it, but Skippy obtains the real Gateway's location. Task Force Black departs with Valkyrie, Yellowstone, Bukhan, Lafayette, and Vortex 37. The Gateway's disruption field forces a direct jump into a small inner bubble. Structural damage makes Lafayette take over hauling the Vortex, while Valkyrie reduces its complement to 31 volunteers. The Vortex activates after the final jump, but an Outsider field contains its wave. Reed fires Elder weapons at the active generator, releasing the wave to destroy the Gateway, the active Outsider, and the forming construct beyond it. Nagatha reshapes the shield to save Valkyrie. The burned-out Vortex leaves the ship stranded in distorted space, with a lethal emergence due within days. Joe devises an assisted jump through an inbound wormhole generated by Bukhan. Nagatha pilots the evacuated carrier remotely, and its sacrifice allows Valkyrie to escape. Skippy then finds an Outsider relay feed. Images show that two Outsider ships passed through the Gateway days before its destruction, leaving their whereabouts and purpose unknown.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0DRPQFHHW",
+            "type": "community"
+          }
+        ],
+        "work": "gateway"
+      }
+    },
     "gathering-blue": {
       "characters": {
         "characters": [
@@ -3049,6 +3331,258 @@
           }
         ],
         "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
+      }
+    },
+    "gentleman-jole-and-the-red-queen": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Admiral Jole"
+            ],
+            "description": "The admiral commanding Sergyar's military forces and a close working partner of the Vicereine. Once Aral Vorkosigan's secretary, protege, and intimate partner, he must now consider an unexpected chance to become a father through reproductive material preserved after Aral's death.",
+            "id": "oliver-jole",
+            "name": "Oliver Jole",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vicereine Vorkosigan"
+            ],
+            "description": "Aral Vorkosigan's widow and the civil ruler of Sergyar. Returning from Barrayar with reproductive material stored during her marriage, she plans to have daughters and contemplates retiring from public office. She also offers Jole a separate route to children and remains his trusted professional counterpart.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cordelia's late husband, a former military leader who was also Jole's mentor and intimate partner. Though dead before the book begins, he remains central to both survivors' memories. His preserved reproductive material enables Cordelia's plan for more children and underlies her offer to Jole.",
+            "id": "aral-vorkosigan",
+            "name": "Aral Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lieutenant Vorinnis"
+            ],
+            "description": "Jole's newly assigned military aide, serving him as he resumes command duties after the Vicereine's return to Sergyar.",
+            "id": "kaya-vorinnis",
+            "name": "Kaya Vorinnis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician at Kareenburg's reproductive center who supervises Jole's medical evaluation and explains the clinic's screening and uterine-replicator procedures. Dr. Tan becomes the professional contact through whom Jole can preserve material or take practical steps toward parenthood.",
+            "id": "dr-tan",
+            "name": "Dr. Tan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Haines"
+            ],
+            "description": "Jole's ground-force counterpart and the commander of the downside base on Sergyar.",
+            "id": "general-haines",
+            "name": "General Haines",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Haines's teenage daughter, one of six participants in an unauthorized expedition against native radials. After their attempt starts a brush fire and destroys their air car, she uses her father's plasma arc to hold off approaching hexapeds, then surrenders the weapon to Jole and faces discipline from General Haines.",
+            "id": "general-haines-daughter",
+            "name": "General Haines's daughter",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rykov"
+            ],
+            "description": "Cordelia's security aide and armsman, alert to both physical protection and personal discretion. He helps preserve privacy around her meetings with Jole, treating the pair's private life as a security concern that should be handled quietly rather than turned into public attention.",
+            "id": "armsman-rykov",
+            "name": "Armsman Rykov",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cordelia's energetic and comparatively new press officer. His assignment is to limit unnecessary publicity around the viceregal household rather than manufacture interest, especially as repeated trips by Cordelia and Jole begin to generate public speculation and unrelated rumors.",
+            "id": "blaise-gatti",
+            "name": "Blaise Gatti",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cordelia and Aral's developing daughter, six weeks into gestation when her existence is disclosed within the Vorkosigan family circle. She has five genetically related sisters whose embryos remain frozen, and her arrival is closely tied to Cordelia's plan to leave the viceregency.",
+            "id": "aurelia",
+            "name": "Aurelia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cordelia and Aral's son, who arrives unexpectedly on Sergyar with his wife and children after learning that his mother intends to resign and have more daughters. His visit begins before Cordelia and Jole have settled how much of their private situation to disclose.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles's wife and the mother of their six children. She accompanies the family on its unexpected journey to Sergyar after Cordelia announces her intended resignation and new daughters, entering a visit shaped by Miles's concern and by matters Cordelia and Jole have not yet shared.",
+            "id": "ekaterin",
+            "name": "Ekaterin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Haines's child and a local acquaintance whom Jole recruits to guide the older Vorkosigan children during their stay on Sergyar. Freddie gives the visiting family a connection to local life while the adults manage official work and increasingly complicated family discussions.",
+            "id": "freddie-haines",
+            "name": "Freddie Haines",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "ghem Soren"
+            ],
+            "description": "A foreign cultural attache who seeks space at Jole's birthday picnic for a sensory teaching display called the Discernment Garden. With help from Kaya Vorinnis, he obtains provisional permission subject to security review and removal of the installation after the event.",
+            "id": "mikos-ghem-soren",
+            "name": "Mikos ghem Soren",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Barrayaran chief of military operations, approaching retirement and looking toward his succession. He privately identifies Jole as the leading candidate to replace him, presenting the Sergyar commander with a major professional opportunity that conflicts with the family life Jole is considering.",
+            "id": "admiral-des-plaines",
+            "name": "Admiral Des Plaines",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child of Miles and Ekaterin who feels pressured toward the Imperial Service Academy and an inherited public role. During the family visit, Alex responds strongly to Aral's private architectural drawings, suggesting interests beyond the future that Miles has been encouraging.",
+            "id": "alex",
+            "name": "Alex",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child of Miles and Ekaterin who attends Jole's large birthday picnic. When drunken players vandalize the cultural delegation's exhibit and attack its participants, Helen steps in physically to defend the display and one of the people under assault.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Imperial Security minder assigned to Alex and Helen during the birthday picnic. When the children become entangled in an assault on the cultural delegation, Katsaros stops an attacker with a stunner and summons further assistance.",
+            "id": "sergeant-katsaros",
+            "name": "Sergeant Katsaros",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A construction representative who arrives with a concrete answer to Gridgrad's supply problem. Her company can rapidly erect the prefabricated core of a local plazcrete factory and begin preparations for production, provided Sergyar supplies the necessary local materials.",
+            "id": "kareen-koudelka",
+            "name": "Kareen Koudelka",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B019G0PTD2",
+            "type": "community"
+          }
+        ],
+        "work": "gentleman-jole-and-the-red-queen"
+      },
+      "recaps": {
+        "ending": "The Gridgrad base and nearly completed viceregal palace formally open while the surrounding capital remains under construction. A rapid Escobaran plan for a local plazcrete factory has eased the project's critical supply problem. Cordelia continues her transition away from the viceregency, and Jole begins resigning from military service after refusing the Chief of Operations post on Barrayar. His replacement is expected within several months. Miles and his family leave Sergyar having accepted Cordelia and Jole as partners and Jole's prospective sons as members of Aral's family. Jole orders one of his three stored sons into gestation, while Cordelia's next child is also developing and Aurelia is part of their household. Construction has begun on Cordelia and Jole's shared home at Port Nightingale. Jole plans to enter graduate study in field biology after completing additional academic work, and the couple envision using a research vessel to investigate Sergyar's marine life. That scientific project remains prospective, but their commitment to a shared civilian life on Sergyar is firm.",
+        "in_short": "Years after Aral Vorkosigan's death, Cordelia returns to Sergyar intending to leave the viceregency and raise daughters created from their stored reproductive material. She gives Oliver Jole, Aral's former partner, a related opportunity to have sons. Jole creates three viable embryos, begins a new relationship with Cordelia, and must choose between their emerging family life and promotion to Barrayar's Chief of Operations. Their relationship becomes public during a birthday picnic that ends in violence and a firestorm of native radials. Jole is burned while shielding Miles's children, then tells Miles about his history with Aral and the planned boys. Miles accepts them as family. Jole refuses the promotion, begins resigning his command, and starts one son's gestation. As Gridgrad's base and palace open, Cordelia and Jole build a home at Port Nightingale and plan a civilian future centered on family and marine research.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Cordelia was married to Aral Vorkosigan, a major Barrayaran military figure, and became the mother of Miles Vorkosigan. Cordelia later became Vicereine of Sergyar, where Oliver Jole rose to command the planet's military forces. Aral died before the events of this book. Cordelia and Jole begin the story as long-standing professional partners in Sergyar's civil and military leadership.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cordelia returns to Sergyar carrying reproductive material preserved from her marriage to Aral. She intends to create as many as six daughters, use the surname Naismith to avoid inheritance disputes, and eventually retire as Vicereine. She also offers Jole a path to fatherhood using donated enucleated eggs and Aral's stored material. Jole completes the clinic's evaluation and creates four embryos, but one fails early. He freezes the remaining three while he considers whether he can combine parenthood with military command. Cordelia begins gestation of one of her own embryos and makes reciprocal guardianship plans with Jole. Meanwhile, the selected site for Sergyar's second base is Gridgrad, but deteriorating plazcrete delivered too early threatens its schedule. During a memorial trip, Cordelia and Jole discover teenagers stranded after their attempt to destroy native radials causes a fire. A later private sailing trip ends in shelter from a storm, where Jole and Cordelia acknowledge their attraction and begin an intimate relationship. They agree that it is a new bond between them, not simply a revival of what they once shared with Aral.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cordelia and Jole continue their relationship privately while deciding whether discretion can last. Cordelia confirms that six embryos are viable and plans to leave office within a year. Jole confronts the practical demands of raising children, from housing and support to the limits imposed by his career. Cordelia informs Emperor Gregor and her close Barrayaran family circle about her retirement and daughters. Aurelia is already developing, with five sisters frozen. Miles, Ekaterin, and their children then arrive unexpectedly on Sergyar. Miles knows about the daughters but not Jole's three possible sons, whose origins would require revealing Jole's earlier relationship with Aral. Jole is offered the leading candidacy for Chief of Operations on Barrayar and realizes that accepting would conflict with both fatherhood and a life with Cordelia, who will remain on Sergyar. The Gridgrad project is still troubled by its plazcrete supply. During the visit, Cordelia tells Miles and Ekaterin that she and Jole are dating. Ekaterin is supportive, while Miles raises political and family concerns. He still does not know about the prospective sons, and Jole's career decision remains open.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles learns more difficult truths about Aral and begins to accept that his father's life cannot be reduced to an idealized image. The family tours Aral's mothballed flagship, where military history and the continuing danger of biological warfare reinforce the value of scientific expertise. Cordelia encourages Alex to choose a future other than the military path Miles favors. At the same time, the Gridgrad capital project remains exposed to a supplier's monopoly demands. Jole's relationship with Cordelia becomes known on the base, and his choice between Sergyar and the Chief of Operations post grows urgent. At his birthday picnic, the couple make their partnership publicly visible. Drunken players vandalize Mikos ghem Soren's cultural exhibit and assault members of its delegation before security intervenes. A bottle rocket then ignites a swarm of native radials. Jole shields Alex and Helen from the burning debris and suffers substantial burns. While recovering, he tells Miles that his long relationship with Aral later included Cordelia and explains that three embryos descended from Jole and Aral are stored for him. Miles accepts the prospective boys as half-brothers. Jole refuses the Barrayaran post and decides to support the Sergyar transition before resigning from service.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the picnic disaster, Cordelia manages the public account of the emergency while preserving evidence of Jole's protection of her grandchildren. Mikos ghem Soren faces disgrace and removal by his consulate. After Kaya Vorinnis refuses his proposed marriage, he seeks asylum; Cordelia grants it on the condition that he work as a plumber on Sergyar. The men responsible for the assault face disciplinary consequences. Kareen Koudelka arrives with an Escobaran company able to erect a prefabricated plazcrete factory rapidly, giving the Gridgrad project a workable answer to its supply crisis. Miles departs with his family after affirming that Jole and the planned boys belong within the family. The new Gridgrad base and nearly complete viceregal palace open successfully, though the city remains under construction. Jole begins his resignation process and expects a replacement within two to six months. He directs his physician to begin gestation for one of his sons, while another of Cordelia's children is also in a uterine replicator. Cordelia and Jole are building a shared home at Port Nightingale. Jole turns toward graduate study in field biology, and they plan a future investigating Sergyar's marine biosphere together.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B019G0PTD2",
+            "type": "community"
+          }
+        ],
+        "work": "gentleman-jole-and-the-red-queen"
       }
     },
     "gentlemen-and-players": {
