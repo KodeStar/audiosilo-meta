@@ -1295,6 +1295,506 @@
         "work": "uncle-vanya"
       }
     },
+    "uncompromising-honor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Honor Alexander-Harrington",
+              "Duchess Harrington",
+              "Steadholder Harrington"
+            ],
+            "description": "Grand Fleet's commander, a Manticoran duchess, and a Grayson steadholder. She directs the Grand Alliance's strategy while Manticore rebuilds from the Yawata Strike.",
+            "id": "honor-harrington",
+            "name": "Honor Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Earl White Haven",
+              "White Haven"
+            ],
+            "description": "Honor's husband and a senior Manticoran statesman. He helps shape Alliance policy as its members confront the Solarian League and recover from the Yawata Strike.",
+            "id": "hamish-alexander-harrington",
+            "name": "Hamish Alexander-Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor and Hamish's senior wife and a central member of their family.",
+            "id": "emily-alexander-harrington",
+            "name": "Emily Alexander Harrington",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "Manticore's sovereign and a determined backer of the Grand Alliance. She oversees reconstruction and the kingdom's response to an expanding war.",
+            "id": "queen-elizabeth-iii",
+            "name": "Queen Elizabeth III",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Honor's bonded tree-cat companion. His mind-speech remains impaired, but his empathic connection with Honor and his use of sign language keep him closely involved in her life and work.",
+            "id": "nimitz",
+            "name": "Nimitz",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nimitz's mate and a tree-cat memory singer. She can spread learned signs and safety knowledge among other tree cats through memory song.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "President Pritchart",
+              "Pritchart"
+            ],
+            "description": "President of Haven and Manticore's partner in the Grand Alliance. She supports the combined political and military effort against the League.",
+            "id": "eloise-pritchart",
+            "name": "Eloise Pritchart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theisman"
+            ],
+            "description": "A senior Havenite military leader and Alliance representative. He helps reconcile the member navies' different institutions and strategic traditions.",
+            "id": "thomas-theisman",
+            "name": "Thomas Theisman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Manticoran intelligence leader pursuing the hidden network behind attacks and political manipulation directed at the Grand Alliance.",
+            "id": "patricia-givens",
+            "name": "Patricia Givens",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zilwicki"
+            ],
+            "description": "An experienced investigator of Mesa and the Alignment. His specialized knowledge helps the Alliance interpret evidence left by a deeply concealed adversary.",
+            "id": "anton-zilwicki",
+            "name": "Anton Zilwicki",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Goldpeak"
+            ],
+            "description": "Commander of Tenth Fleet.",
+            "id": "countess-goldpeak",
+            "name": "Countess Goldpeak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticoran admiral commanding Third Fleet at Beowulf. She organizes the system's defense while supporting a common Alliance shipbuilding program.",
+            "id": "alice-truman",
+            "name": "Alice Truman",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Beowulfan leader responsible for major defense decisions as the system prepares to separate from the Solarian League.",
+            "id": "gabriel-cadel-markham",
+            "name": "Gabriel Cadel Markham",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Solarian official who helps direct the League's coercive response to Manticore and to systems considering secession.",
+            "id": "inokenty-kolokolsov",
+            "name": "Inokenty Kolokolsov",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Solarian propagandist who shapes denials of League abuses and public accusations against Manticore.",
+            "id": "malachi-abruzzi",
+            "name": "Malachi Abruzzi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Head of the Mesan Alignment. As Alliance pressure increases, he accelerates the secret evacuation called Operation Houdini.",
+            "id": "albrecht-detweiler",
+            "name": "Albrecht Detweiler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Albrecht Detweiler's son and the Alignment's naval leader.",
+            "id": "benjamin-detweiler",
+            "name": "Benjamin Detweiler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Manticoran research leader who relocates Weyland's staff to Bolthole as the Alliance expands the base's research work.",
+            "id": "sonja-hemphill",
+            "name": "Sonja Hemphill",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Solarian admiral commanding Task Force 783 for Operation Buccaneer. He distrusts official intelligence and prepares for a capable opponent.",
+            "id": "vincent-caprioti",
+            "name": "Vincent Caprioti",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate of Honor Harrington who attends an informal gathering with her and Grayson officers aboard a Grayson warship.",
+            "id": "mercedes-brigham",
+            "name": "Mercedes Brigham",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian captain conducting an off-books investigation into a suspected network inside League institutions. He and his allies conceal their work because ordinary counterintelligence channels may be compromised.",
+            "id": "daud-ibn-mamoun-al-fanudahi",
+            "name": "Daud ibn Mamoun Al-Fanudahi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian lieutenant colonel working with Al-Fanudahi on a concealed inquiry into a suspected hostile network inside League institutions.",
+            "id": "wang-jinghuan",
+            "name": "Wang Jinghuan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The popular Office of Frontier Security governor of Maya. Reports suggest secret contact with Manticore, but their authenticity and the purpose of any contact remain uncertain.",
+            "id": "oroville-borregos",
+            "name": "Oroville Borregos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A midshipman retained beyond his training cruise to assist Bill Knight with forensic analysis of a captured Solarian warship's computer core.",
+            "id": "elijah-demas",
+            "name": "Elijah Demas",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Mayan military leader who helped defend Torch. He has long warned that Solarian authorities underestimated Manticoran and Havenite advances.",
+            "id": "admiral-rozak",
+            "name": "Admiral Rozak",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Manticoran commodore commanding the force that holds the Prime Terminus.",
+            "id": "sir-martin-lessom",
+            "name": "Sir Martin Lessom",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of HMS Boomslang and the concealed light attack craft force stationed at the Ajay Terminus.",
+            "id": "aloka-menendez",
+            "name": "Aloka Menendez",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prominent Hypatian senator who opposes secession and seeks a legal injunction against the referendum.",
+            "id": "senator-makiko-allerton",
+            "name": "Senator Makiko Allerton",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hypatia's system president. He insists that every vote be counted and the secession result legally certified before foreign warships enter the system.",
+            "id": "adam-vangelis",
+            "name": "Adam Vangelis",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Katoch"
+            ],
+            "description": "Commander of the small Manticoran force hidden near Hypatia. He launches a surprise defense after the Solarian task force begins preparing its attack on the system.",
+            "id": "rear-admiral-katoch",
+            "name": "Rear Admiral Katoch",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Katoch's operational planning team who directs the Ghost Rider platforms' missile employment during the defense of Hypatia.",
+            "id": "commander-ilkova",
+            "name": "Commander Ilkova",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of HMS Arngrim. Katoch sends her ship away from his expected last stand to observe the battle, aid survivors, and warn approaching reinforcements.",
+            "id": "commander-megan-peterson",
+            "name": "Commander Megan Peterson",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gogunov"
+            ],
+            "description": "The Solarian officer who inherits command of the battered Hypatia task force. He insists on continuing Operation Buccaneer and orders attacks on Manticoran survivors.",
+            "id": "rear-admiral-martin-gogunov",
+            "name": "Rear Admiral Martin Gogunov",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Yountz"
+            ],
+            "description": "A Solarian cruiser commander who becomes the Hypatia force's second-in-command. He receives control of its cruisers and destroyers as the operation approaches a moral and military breaking point.",
+            "id": "rear-admiral-thomas-yountz",
+            "name": "Rear Admiral Thomas Yountz",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Haskell"
+            ],
+            "description": "Gogunov's chief of staff. She recognizes the tactical implications of the Manticoran force's faster-than-light fire control as the battle for Hypatia continues.",
+            "id": "commodore-sandra-haskell",
+            "name": "Commodore Sandra Haskell",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captured Alignment covert operative transported to Manticore under parole. The lethal mechanism he expected after capture has not activated, making him both a rare intelligence opportunity and a serious security concern.",
+            "id": "firebrand",
+            "name": "Firebrand",
+            "reveal": {
+              "chapter": 57
+            }
+          },
+          {
+            "description": "A tree-cat survivor of the Yawata Strike and the destruction of his clan. Chosen to guard the former Alignment operative, he instead forms an adoption bond with him.",
+            "id": "clean-killer",
+            "name": "Clean Killer",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Solarian chief of naval operations. He views Operation Buccaneer as politically damaging and warns that a proposed attack on Beowulf could become a catastrophic defeat.",
+            "id": "winston-kingsford",
+            "name": "Winston Kingsford",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Firebrand"
+            ],
+            "description": "The former Alignment operative previously known as Firebrand. Now cooperating with Manticore and bonded to Firewatch, he combines his inside knowledge with Anton Zilwicki's evidence to help locate the hidden organization.",
+            "id": "damian-harahap",
+            "name": "Damian Harahap",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Clean Killer"
+            ],
+            "description": "The tree cat previously called Clean Killer and now bonded to Damian Harahap. His judgment supports Harahap's loyalty, and his protective training includes safe use of a cat-sized pulser.",
+            "id": "firewatch",
+            "name": "Firewatch",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Beowulf's chief of naval operations. He readies Mycroft and remote-controlled block ships as a large hostile force enters the system and threatens its essential industry.",
+            "id": "corey-mcavoy",
+            "name": "Corey McAvoy",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cachat"
+            ],
+            "description": "A Havenite operative and Anton Zilwicki's investigative partner. Their work on Mesa contributes to the Alliance's understanding of the hidden Alignment.",
+            "id": "victor-cachat",
+            "name": "Victor Cachat",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian lieutenant colonel associated with the covert investigation into a hostile internal network. She is kept outside its core group so that her future usefulness will not be compromised.",
+            "id": "natsuko-okiku",
+            "name": "Natsuko Okiku",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian major working with the off-books investigators. He favors forceful action against the suspected network, while his colleagues insist on identifying the correct target first.",
+            "id": "bryce-tarkovsky",
+            "name": "Bryce Tarkovsky",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Solarian Interior official involved in the League leadership's coercive response to Manticore and political dissent among member systems.",
+            "id": "nathan-mccartney",
+            "name": "Nathan McCartney",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Solarian Treasury official who warns the League's leaders that war, secession, and collapsing protectorate revenues are driving a severe fiscal crisis.",
+            "id": "omosupe-quartermain",
+            "name": "Omosupe Quartermain",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of Seraphim's independence movement. He accompanies Firebrand to Manticore despite knowing the operative helped expose his rebellion to Solarian retaliation, because Firebrand also aided and fought beside the movement.",
+            "id": "indiana-graham",
+            "name": "Indiana Graham",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Grayson naval officer and steadholder's daughter serving aboard HMS Tristram. She distrusts Firebrand, accompanies his transfer to Manticore, and is drawn to Indiana Graham.",
+            "id": "abigail-hearns",
+            "name": "Abigail Hearns",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Solarian ally of the unauthorized internal investigation. She helps assess Maya's false-flag evidence and notices indications that the Navy is planning an operation against Beowulf.",
+            "id": "irene-teague",
+            "name": "Irene Teague",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07HX5YZJL",
+            "type": "community"
+          }
+        ],
+        "work": "uncompromising-honor"
+      }
+    },
     "uncrowned": {
       "characters": {
         "characters": [
