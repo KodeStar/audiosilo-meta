@@ -1475,6 +1475,277 @@
         "work": "cry-the-beloved-country"
       }
     },
+    "cryoburn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Barrayaran Imperial Auditor attending a cryonics conference on Kibou-daini. After a dangerous reaction to his kidnappers' sedative, he escapes into the cryocombs without Roic, identification, or communications equipment and begins working out whom he can safely contact.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An almost twelve-year-old boy living in a concealed former cryonics facility, where he tends rescued animals on the roof. He gives the exhausted, unidentified Miles water and shelter despite the risk of drawing attention to his hidden community.",
+            "id": "jin-sato",
+            "name": "Jin Sato",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly cryo-revived resident of Jin's hidden community. He helps Jin locate supplies for Miles but advises caution around the unfamiliar stranger.",
+            "id": "yani",
+            "name": "Yani",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Miles's Armsman"
+            ],
+            "description": "Miles's Armsman, serving as bodyguard, assistant, and trained medical support. He awakens chained at an isolated resort after the conference kidnapping, cannot determine whether Miles is among the prisoners, and makes his missing principal's survival his first concern.",
+            "id": "roic",
+            "name": "Roic",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Consul Vorlynkin"
+            ],
+            "description": "The Barrayaran consul in Northbridge, whose staff receives Jin and verifies Miles's blood-authenticated letter. His consulate becomes Miles's secure point of contact while the Auditor remains out of public view and Roic is still missing.",
+            "id": "stefin-vorlynkin",
+            "name": "Stefin Vorlynkin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Johannes"
+            ],
+            "description": "A Barrayaran consular officer in Northbridge. He receives Jin at the consulate, recognizes the importance of Miles's authenticated message, and helps confirm to the consulate and Imperial Security that the missing Auditor is alive.",
+            "id": "lieutenant-trev-johannes",
+            "name": "Lieutenant Trev Johannes",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The maintainer of the abandoned facility sheltering Jin's community. He keeps its utilities and clandestine cryonics equipment operating by salvaging parts from the much larger defunct plant, protecting an unlicensed co-operative and its frozen patrons.",
+            "id": "custodian-tenbury",
+            "name": "Custodian Tenbury",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Escobaran cryo-surgeon from the Durona Medical Group, one of its cloned siblings, and a fellow conference delegate. He meets Roic while both are kidnapped and helps locate the emergency communication link that brings police to the hostages.",
+            "id": "raven-durona",
+            "name": "Raven Durona",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clerk at the Barrayaran consulate in Northbridge. He is among the local staff supporting Miles after the Auditor reaches the consulate and learns that Jin has been detained by the authorities.",
+            "id": "yuuichi-matson",
+            "name": "Yuuichi Matson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jin Sato's mother, held in cryonic suspension after an arrest and protest campaign. Once the conference hostages are safe, Miles begins examining her history as a possible lead and takes responsibility for helping her detained son.",
+            "id": "lisa-sato",
+            "name": "Lisa Sato",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jin's younger sister"
+            ],
+            "description": "Jin's younger sister and Lisa Sato's daughter. She leaves their guardians' home with Jin, joining his attempt to return to Miles and the animals while both children remain separated from their frozen mother.",
+            "id": "mina-sato",
+            "name": "Mina Sato",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A relative who is Jin's legal guardian after youth services returns the boy to his family. Jin and Mina leave Akko's custody together, intending to seek Miles and return to the animals at the hidden facility.",
+            "id": "akko",
+            "name": "Akko",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "White Chrysanthemum's Head of Development and the executive leading its planned Komarr expansion. During a private corporate visit, he offers Miles covert shares in the new venture and says he intends to enter cryostasis at its Komarr facility.",
+            "id": "ron-wing",
+            "name": "Ron Wing",
+            "reveal": {
+              "chapter": 7
+            }
+          },
+          {
+            "description": "White Chrysanthemum's Executive Vice President for Development. He takes part in the company's private tour for Miles's party and escorts Raven through the technical side of an operation that appears legitimate on inspection.",
+            "id": "hideyuki-storrs",
+            "name": "Hideyuki Storrs",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ron Wing's personal assistant during White Chrysanthemum's private visit. She helps host the delegation and cultivates Miles socially while Wing presents the company's Komarr plans and confidential investment offer.",
+            "id": "aida",
+            "name": "Aida",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mark Vorkosigan"
+            ],
+            "description": "Miles's younger clone brother, a shareholder in the Durona Group. Miles invokes him during White Chrysanthemum's overture, presenting Mark as a possible commercial rival in order to conceal their shared interests.",
+            "id": "lord-mark",
+            "name": "Lord Mark",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emperor Gregor"
+            ],
+            "description": "The Emperor of Barrayar. He sent Miles to Kibou-daini after relatives with ties to Komarr received suspicious sales and investment approaches from White Chrysanthemum, giving the Auditor a reason to investigate beyond the conference kidnapping.",
+            "id": "gregor-vorbarra",
+            "name": "Gregor Vorbarra",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Suze"
+            ],
+            "description": "The head of a clandestine cryonics co-operative based in a decommissioned facility. She agrees in principle to provide Miles with a discreet revival site and a substitute frozen body in exchange for Raven's expert help reviving two patrons of her choice.",
+            "id": "susan-suzuki",
+            "name": "Susan Suzuki",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Suzuki's plant medtech and one of the founders of the hidden co-operative. She maintains its remaining medical capability, explains how a protest effort became a refuge for abandoned patrons, and agrees to prepare the revival area for Raven.",
+            "id": "vristi-tanaka",
+            "name": "Vristi Tanaka",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unidentified woman removed from the drawer recorded as Lisa Sato's. Jin and Mina confirm that she is not their mother, while Raven determines that she had suffered irreversible damage during her original cryonic preparation.",
+            "id": "recovered-frozen-woman",
+            "name": "Recovered frozen woman",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The long-frozen woman recovered from the drawer assigned to Lisa Sato. Her identity and old wrapping establish that a physical exchange took place, making the drawer records unreliable and leaving Lisa's actual location unknown.",
+            "id": "alice-chen",
+            "name": "Alice Chen",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A New Egypt cryonics biochemist identified through Mina's partial recollection and the records surrounding the woman substituted for Lisa. His earlier contact with Lisa makes him the investigation's next lead as Miles prepares to question him.",
+            "id": "seiichiro-leiber",
+            "name": "Seiichiro Leiber",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord Mark's partner. She arrives with him to inspect Suzuki's aging facility and joins the discussions over acquiring it for the Durona Group, whose proposed clinic could give the hidden co-operative a more secure future.",
+            "id": "kareen-koudelka",
+            "name": "Kareen Koudelka",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jin's pet"
+            ],
+            "description": "A speaking decorative bioengineered construct originating with New Egypt and supplied by White Chrysanthemum as a promotional gift. Roic accepts it for Jin, giving the boy an unusual new animal companion.",
+            "id": "mini-sphinx",
+            "name": "Mini-sphinx",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed senior New Egypt executive waiting outside during the attempt to recover Seiichiro Leiber. Roic draws the executive from a van by using Leiber as visible bait, then stuns and arrests the official, directly connecting company leadership to the operation.",
+            "id": "new-egypt-finance-chief",
+            "name": "New Egypt finance chief",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Miles's father, whose sudden death from a brain aneurysm makes Miles the new Count Vorkosigan. His widow follows his stated wishes and declines cryopreservation that would leave his mind and memories unrestored. A state funeral and private interment mark his death.",
+            "id": "miles-father",
+            "name": "Miles's father",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0046CL6HY",
+            "type": "community"
+          }
+        ],
+        "work": "cryoburn"
+      }
+    },
     "crystal-world": {
       "characters": {
         "characters": [
