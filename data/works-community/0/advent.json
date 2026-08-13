@@ -2167,6 +2167,270 @@
         "work": "after-the-quake"
       }
     },
+    "aftermath": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A damaged Sentinel near Earth retained from earlier conflicts as a deterrent. Its constraints and reliability are sensitive strategic information as humanity continues to depend on Elder machines for protection.",
+            "id": "damaged-sentinel-deterrent",
+            "name": "Damaged Sentinel deterrent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jeraptha admiral in the Ethics and Compliance Office whose skill at concealment is tested by an inquiry into his connection with Skippy's commercial organization, which is under investigation. He keeps both evidence and an Elder submind out of an investigator's hands.",
+            "id": "scorandum",
+            "name": "Scorandum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior investigator for the Court of Special Inquiries and Scorandum's former aide. Kinsta examines allegations tied to Skippy's organization and encounters practiced obstruction from his old superior.",
+            "id": "kinsta",
+            "name": "Kinsta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A major general commanding the Jaguar garrison, temporarily living with his family on Newark. Joe is restless in an administrative post and remains one of the few people who knows the full consequences of Skippy's bargain with the Elders.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with humanity who returns from a diplomatic tour that ended badly in several territories. His commercial organization has spread across species, and its secretive dealings create trouble for Joe as well as for the Jeraptha.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe and Margaret's seven-year-old twin sons. On Newark with their parents, they regard Skippy as an uncle figure who takes an active interest in their upbringing.",
+            "id": "jeremy-and-renee-bishop",
+            "name": "Jeremy Bishop and Renee Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Margaret"
+            ],
+            "description": "Joe's wife and a soldier who is pregnant with their daughter. She is with Joe and their twin sons during the family's time on Newark.",
+            "id": "margaret-bishop",
+            "name": "Margaret Bishop",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fireball"
+            ],
+            "description": "The colonel commanding Valkyrie. Reed authorizes Joe's limited return to flight duty and captains the ship carrying him and his sons toward the planned Sentinel activation.",
+            "id": "samantha-reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's controller AI. Although residual restrictions remain in his programming, Bilby can pilot the ship and manage its combat systems effectively.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former U.S. Army soldier who owns a mixed-species private security company. His people support Operation Sunset and face the problem of protecting reformist settlements while official forces remain constrained.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reformist local sergeant attached to David Chica's company during Operation Sunset. Janes presses the security team to act as attacks threaten settlements that are trying to withdraw.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Nagatha"
+            ],
+            "description": "The Flying Dutchman's AI. Nagatha supplies the covert technical capability behind an operation designed to force effective protection for endangered settlers during Operation Sunset.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dormant Sentinel selected to protect the Rindhalu homeworld. Skippy gives it a name as the human activation fleet prepares to wake it through a specialized transmitter network.",
+            "id": "dogzilla",
+            "name": "Dogzilla",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified advanced attacker that exploits the activation network and attempts to seize Dogzilla from Skippy. Its nature, location, and method are unknown, but its control of the transmitters demonstrates access to technology on an Elder scale.",
+            "id": "elder-intruder",
+            "name": "Elder intruder",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Chang",
+              "Kong"
+            ],
+            "description": "Earth's senior officer for planetary strategic defenses. Chang joins Joe in assessing the failed activation and the possibility that the same unknown attacker could threaten Earth's Sentinel protection.",
+            "id": "general-chang",
+            "name": "General Chang",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The colonel leading Star Team Razor, Earth's rapid-reaction force for the sector. She joins the reactivated Task Force Black for an investigation whose duration and eventual target are still unknown.",
+            "id": "katie-frey",
+            "name": "Frey",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "A retired military officer serving as governor of Avalon. Although Task Force Black is assembling familiar personnel for a new mission, Simms does not return to Valkyrie's crew.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The general commanding UN ground forces during Operation Sunset. Perkins is managing an unstable withdrawal when Joe requisitions the Flying Dutchman, leaving her with limited orbital and ground strength.",
+            "id": "emily-perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Formerly Valkyrie's executive officer and now the Flying Dutchman's air-group commander. Joe appoints her to lead Valkyrie's air group and prepare its pilots for a possible confrontation with an Elder-level enemy.",
+            "id": "irene-striebich",
+            "name": "Irene Striebich",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earth's active Sentinel defender. It recognizes the six masked ships entering the Earth-Moon system but does not engage them, creating immediate concern that the planet's primary defense has been compromised.",
+            "id": "earth-sentinel",
+            "name": "Earth Sentinel",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Star Team Razor's heavy-weapons leader. Serrano commands the point unit during the team's descent into the isolated lunar vault.",
+            "id": "lieutenant-serrano",
+            "name": "Lieutenant Serrano",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Star Team Razor combat officer who directs plasma fire against the nanogel machines surrounding a Guardian in the lunar vault.",
+            "id": "major-guo",
+            "name": "Major Guo",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Star Team Razor operator who volunteers for a dangerous climb up the lunar vault shaft, using a weakened flight pack and cable in an effort to restore contact with the surface.",
+            "id": "sergeant-wynne",
+            "name": "Sergeant Wynne",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired DEFCOM consultant who identifies a hidden Elder space dock as a possible destination for the intruder's damaged ship, giving Task Force Black its first concrete search area.",
+            "id": "dr-friedlander",
+            "name": "Dr. Friedlander",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired civilian whose decades-old experiment accidentally produced material suitable for Sentinel-activation transmitters. Task Force Black seeks to capture him along with the surviving canister before the Maxolhx can secure either objective.",
+            "id": "retired-bosphorock-researcher",
+            "name": "Retired Bosphorock researcher",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outside entity revealed after the apparent Elder intruder's host ship is destroyed. It escapes by converting itself into exotic energy, and known Elder weapons can neither kill nor contain it.",
+            "id": "external-entity",
+            "name": "External entity",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C6FLJTM8",
+            "type": "community"
+          }
+        ],
+        "work": "aftermath"
+      }
+    },
     "afterward": {
       "characters": {
         "characters": [
