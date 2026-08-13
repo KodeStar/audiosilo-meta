@@ -887,6 +887,285 @@
         "work": "falling-free"
       }
     },
+    "fallout": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A soldier in the Globacus landing force who confronts the danger of a falling starship alongside Janes.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier in the Globacus landing force who faces the danger of falling starship debris alongside David Chica.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert Jeraptha officer whose formal denials conceal his office's role in successful operations against the Bosphorok. He understands that humanity's wormhole warning has unsettled the senior species.",
+            "id": "jeraptha-ethics-and-compliance-office-captain",
+            "name": "Jeraptha Ethics and Compliance Office captain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scarab dropship pilot who diverts her damaged craft to rescue survivors on Globacus. She waits until the final safe moment to depart, then tries to bring the crippled ship down after the impact shockwave disables reliable flight instruments.",
+            "id": "irene-striebich",
+            "name": "Irene Striebich",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commands a group of American Marines who link up with Striebich's survivors on Globacus. He joins David Chica and Janes in recognizing that an apparently open mountain pass is an artillery kill zone.",
+            "id": "staff-sergeant-kolev",
+            "name": "Staff Sergeant Kolev",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "Valkyrie's commander and leader of a human special-mission force. Warned that the route to Globacus may conceal a senior-species ambush, he chooses reconnaissance measures that preserve his effort to rescue the stranded landing force.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Elder AI aboard Valkyrie, whose extraordinary technical abilities make Bishop's missions possible and place the ship at the center of humanity's survival strategy.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "An experienced special-operations commander and operational adviser to Bishop. He recognizes that restricted wormhole access could make the Globacus intelligence an ambush and presses for a cautious approach.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the UN destroyer Boston and Irene Striebich's fiance. With the human squadron outmatched at Globacus, he proposes using stealthy upgraded missiles and precise jumps for attacks that can contest orbital control.",
+            "id": "derek-bonsu",
+            "name": "Derek Bonsu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "A leader associated with the Alien Legion who joins Bishop's special mission group for the effort to reach the forces stranded on Globacus.",
+            "id": "emily-perkins",
+            "name": "Emily Perkins",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Boston's Skippy-upgraded missile AIs. Kevin belongs to a networked group able to coordinate an attack and assign one weapon the exposed controller role.",
+            "id": "kevin",
+            "name": "Kevin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Margaret"
+            ],
+            "description": "A Marine liaison serving with the Mavericks and operating upgraded powered armor. During the attempt to recover Chica, she closes with the improvised armored machine guarding him and destroys it at close range.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of Flying Dutchman during the mission to rescue Chica. He supports the ground operation while refusing to expose Valkyrie before the Globacus system has been cleared of senior-species ships.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flying Dutchman's AI. During Chica's rescue, she is unable to penetrate the independent control system of the armored machine defending his captors.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "A senior Valkyrie officer who manages a limited equipment transfer to the reforming authorities on Globacus. She challenges Bishop's willingness to accept avoidable risk when an orbital railgun plan threatens unintended damage.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's weapons officer. She designs a carefully aimed railgun strike intended to break apart a fallen battleship that blocks the only practical route through a Globacus mountain pass.",
+            "id": "colonel-tammy",
+            "name": "Colonel Tammy",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A UNEF fleet commander with authority over the Ragnar and Fob Jaguar shipyard assets. He permits Bishop to explore a proposed Jeraptha ship transfer while reserving decisions that could consume the wider fleet's limited resources.",
+            "id": "admiral-zhao",
+            "name": "Admiral Zhao",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Maxolhx military leader who accepts responsibility for the failed operation to capture Skippy. Rather than support accommodation with humanity, he urges his government to move toward its most extreme contingency plan.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Earth-based offshoot of Skippy who has developed a distinct and troubled personality. Bishop asks that this identity be preserved during maintenance, leaving Grumpy alive but distressed by continued independent existence.",
+            "id": "grumpy",
+            "name": "Grumpy",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted UNEF adviser and prospective diplomatic intermediary. He argues that Bishop's threats can help negotiators only if humanity can also present a credible plan for removing the cloud threatening Earth.",
+            "id": "chotek",
+            "name": "Chotek",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Rindhalu commander who is wary of impulsive action. Evidence of the hidden Maxolhx ark fleet persuades her that a major strike on Tanagra is necessary to eliminate the Doomsday option.",
+            "id": "admiral-grisalda",
+            "name": "Admiral Grisalda",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Maxolhx officer who survives the destruction at Tanagra. The Rindhalu detain him and select him to carry their warning back to the Maxolhx leadership.",
+            "id": "fleet-captain-naturu",
+            "name": "Fleet Captain Naturu",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An allied contact who relays word that a newly secure group is interested in discussing an arrangement with humanity.",
+            "id": "admiral-kekrando",
+            "name": "Admiral Kekrando",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Valkyrie's ship AI and Skippy's technical partner. He appears through a yacht-club-styled avatar while reporting that Skippy is devoting unusually heavy processing to the expanding Sentinel investigation.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skippy"
+            ],
+            "description": "Skippy's original designation as an Elder primary system monitor. He explains that his present autonomy relies on isolating inaccessible original instructions behind an internal firewall rather than eliminating them.",
+            "id": "seven",
+            "name": "Seven",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "HSM-201 Hornet"
+            ],
+            "description": "An upgraded missile AI selected to carry the experimental energy-virus warhead in Valkyrie's first attempt to kill an active Sentinel.",
+            "id": "thor",
+            "name": "Thor",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sentinel under the control of Bishop and Skippy. Near Earth, Roscoe demonstrates that control by compacting battle debris and sending it toward the Sun.",
+            "id": "roscoe",
+            "name": "Roscoe",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09FR4D8MC",
+            "type": "community"
+          }
+        ],
+        "work": "fallout"
+      }
+    },
     "fangirl": {
       "characters": {
         "characters": [
