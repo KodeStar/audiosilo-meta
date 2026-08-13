@@ -1868,6 +1868,386 @@
         "work": "master-harold-and-the-boys"
       }
     },
+    "match-game": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Scorandum"
+            ],
+            "description": "A Jeraptha Ethics and Compliance Office captain whose stealth cruiser clears Build-A-Gung by fabricating the appearance of a Sentinel. His carefully arranged deception spares the approaching Jeraptha fleet from a needless battle.",
+            "id": "captain-scorandum",
+            "name": "Captain Scorandum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kinsta"
+            ],
+            "description": "Scorandum's junior Jeraptha officer aboard the Ethics and Compliance Office stealth cruiser. Kinsta assists during the operation that drives hostile forces away from Build-A-Gung.",
+            "id": "lieutenant-kinsta",
+            "name": "Lieutenant Kinsta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Joe",
+              "Bishop"
+            ],
+            "description": "Valkyrie's commander and leader of the human special mission. Working with Skippy, Bishop coordinates Earth's deterrent display while hostile senior-species fleets watch the planet.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI and Valkyrie's essential technical advantage. He directs a damaged Sentinel during the demonstration at Earth and helps make a limited defense appear overwhelmingly powerful.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe"
+            ],
+            "description": "Commander of Star Team Alpha. Smythe leads the covert boarding of Admiral Reichert's flagship while the surrounding fleets are distracted by Earth's Sentinel display.",
+            "id": "colonel-jeremy-smythe",
+            "name": "Colonel Jeremy Smythe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reichert"
+            ],
+            "description": "A Maxolhx admiral aboard the flagship targeted by Star Team Alpha. His command ship becomes the focus of the humans' attempt to redirect the crisis around Earth.",
+            "id": "admiral-reichert",
+            "name": "Admiral Reichert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "damaged Sentinel",
+              "Earth's Sentinel guardian"
+            ],
+            "description": "A damaged Elder war machine used in Earth's defensive display. Skippy directs it to move the dangerous cloud away from the planet, making the machine appear to be a powerful guardian.",
+            "id": "damaged-sentinel",
+            "name": "The damaged Sentinel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "A Valkyrie officer and operational planner who works closely with Bishop. She helps shape the political deception intended to keep the Maxolhx and Rindhalu focused away from the hidden Elder threat.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kong"
+            ],
+            "description": "The senior colonel commanding Flying Dutchman. Bishop brings him into the restricted planning and explains that Earth's apparent Sentinel protector has serious limits.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skippy's Earth submind"
+            ],
+            "description": "An Earth-based offshoot of Skippy assigned to converse with the damaged Sentinel. Its companionship is meant to ease the dangerous isolation of the newly aware but unstable machine.",
+            "id": "grumpy",
+            "name": "Grumpy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Valkyrie's ship AI. Bilby independently reviews Skippy's alterations to captured ship systems, providing the crew with another technical judgment about work vital to Earth's security.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chotek"
+            ],
+            "description": "A human diplomatic intermediary involved in talks with the Jeraptha. Bishop gives him the public explanation of Earth's Sentinel defense while withholding its most dangerous operational weaknesses.",
+            "id": "hans-chotek",
+            "name": "Hans Chotek",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nert"
+            ],
+            "description": "A Jeraptha contact released from restricted duty after blame for the Sentinel crisis shifts away from humanity. Promoted and returned to service, he is assigned as liaison to the Mavericks.",
+            "id": "nert-dandurf",
+            "name": "Nert Dandurf",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Urkan"
+            ],
+            "description": "A restored Maxolhx military leader who favors consolidation over an immediate war against the rogue fleet. He treats compromised ship AIs and possible Rindhalu opportunism as greater near-term dangers than delay.",
+            "id": "admiral-urkan",
+            "name": "Admiral Urkan",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Major Frey"
+            ],
+            "description": "A major serving with Star Team Alpha who is worn down by sustained operations. She speaks openly about the toll of her work, prompting Bishop to advise professional support and Skippy to recommend time away from duty.",
+            "id": "katie-frey",
+            "name": "Katie Frey",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A suspected damaged Elder intelligence associated with a secret Rindhalu site. The human team believes it exploited the wormhole network to send the signal that awakened the Sentinels.",
+            "id": "hostile-elder-ai",
+            "name": "The hostile Elder AI",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Iliath"
+            ],
+            "description": "A Maxolhx officer selected by Admiral Urkan for restraint and sound judgment. Her promotion places her in command of the 17th Assault Squadron near the center of Hegemony power.",
+            "id": "commodore-iliath",
+            "name": "Commodore Iliath",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jates"
+            ],
+            "description": "A representative of a reformist Kristang faction serving with the human team. He seeks Alien Legion transport and logistical support for his faction's proposed expansion, but the request is refused.",
+            "id": "sergeant-jates",
+            "name": "Sergeant Jates",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perkins"
+            ],
+            "description": "Leader of the Alien Legion and commander of the Mavericks. Perkins rejects Jates's request for another occupation, arguing that his faction has not yet achieved lasting reform on the world it already controls.",
+            "id": "colonel-emily-perkins",
+            "name": "Colonel Emily Perkins",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chica"
+            ],
+            "description": "A human operator who works closely with Perkins and knows Jates well. Perkins asks him to watch for changes in Jates's conduct without confronting or punishing their alien colleague.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adams"
+            ],
+            "description": "A trusted human special-operations soldier promoted to master sergeant. Bishop selects her for a sensitive mission with the Mavericks but does not yet disclose the operation's full purpose.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Smythe's suit AI"
+            ],
+            "description": "A limited emergency combat assistant secretly installed in Smythe's powered armor by Skippy. It restores damaged suit functions and helps the isolated colonel interpret the battle around him during the Ardu ambush.",
+            "id": "helpy",
+            "name": "Helpy",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer supporting the extraction from Ardu. She recommends tactical nuclear strikes to disrupt the planet's air defenses and receives authorization to employ them while the stranded operators ascend toward Valkyrie.",
+            "id": "colonel-tammy",
+            "name": "Colonel Tammy",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's pilot during the escape from Ardu. Reed regains control of the tumbling ship and guides it back toward orbit using its reshaped shields and boosters.",
+            "id": "reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Czajka"
+            ],
+            "description": "A human destroyer officer supporting the Mavericks' search for another cache of Elder equipment. He questions whether Jates's resentment may be causing him to conceal important information about the target.",
+            "id": "captain-dave-czajka",
+            "name": "Captain Dave Czajka",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A heavy cylinder discovered beneath a cache of counterfeit communications nodes. The Mavericks initially identify it only as a possible Elder AI container whose nature and condition remain uncertain.",
+            "id": "apparent-elder-ai-canister",
+            "name": "The apparent Elder AI canister",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09V1X64YV",
+            "type": "community"
+          }
+        ],
+        "work": "match-game"
+      },
+      "recaps": {
+        "ending": "The apparent Elder AI recovered by the Mavericks was a dead canister made to look active. Jates, Scorandum, Perkins, Simms, Smythe, Adams, and Bishop were cooperating in a compartmented deception that drew Maxolhx attention, triggered civil war, and gave Skippy a path into Flortradex. Bilby opens the covert route for the recovery operation and pilots Valkyrie through the Rindhalu blockade. An Elder wormhole removes the starship fragment holding Skippy and the hostile AI from the station, and Smythe's team brings both canisters aboard. Skippy contains the enemy intelligence and Valkyrie escapes. During the next wormhole transit, the captive AI exploits the energy surge to transmit the call for which it engineered its own capture. The Elders respond and are returning. Earth still relies on the damaged Sentinel bluff, the Maxolhx remain divided, and the hostile AI is physically contained but has already created a greater threat.",
+        "in_short": "Joe Bishop and Skippy preserve Earth by making a damaged, power-limited Sentinel look like an autonomous guardian, while planted evidence drives the Maxolhx toward internal conflict. To stop a hostile Elder AI from waking more Sentinels, Valkyrie raids Ardu for communications nodes and secures enough additional devices to jam the wormhole network. A staged AI discovery, Jates's apparent betrayal, and Scorandum's apparent deal with the Maxolhx then provoke the desired civil war and conceal Skippy's infiltration of the Rindhalu station at Flortradex. Bilby pilots the extraction, and Smythe's team retrieves both Skippy and the hostile AI. The captive has planned for this outcome, however. During a wormhole transit it sends a distress signal, the Elders answer, and Skippy reports that they are returning to the galaxy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe Bishop and the Elder AI Skippy led humanity's special missions aboard Valkyrie, with Flying Dutchman and the Mavericks among their principal partners. Earth remained caught between the Maxolhx and Rindhalu power blocs, while the human team also maintained consequential ties with the Jeraptha. The reactivation of Elder technology left humanity facing dangers that conventional fleets could not reliably oppose. Bishop's command therefore depended on Skippy's exceptional access to ancient systems, careful secrecy, and alliances that UNEF could not fully trust or publicly explain.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A Jeraptha Ethics and Compliance Office operation uses a fabricated Sentinel appearance to clear Build-A-Gung without a fleet battle. At Earth, Bishop and Skippy conduct a larger deterrence. The damaged Sentinel pushes away the dangerous Jupiter cloud while Star Team Alpha boards Admiral Reichert's flagship. Bishop then publicly blames Maxolhx Red Section for waking the Sentinels, although the accusation is a deliberate cover for the suspected involvement of another Elder AI. Reichert receives implanted memories that support the false conspiracy and deepen disorder inside the Maxolhx command structure. Bishop forces the surrounding senior-species fleets to abandon ships and leave the system. When several Maxolhx crews resist, Skippy renders their weapons useless and Bishop demonstrates control without deliberately killing them. Earth gains a respite, but its apparent guardian is depleted, difficult to direct, and dependent on Skippy. UNEF nevertheless authorizes Valkyrie to depart, requiring the team to preserve the fiction that the Sentinel can protect Earth by itself.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The damaged Sentinel develops limited awareness and needs companionship, so Skippy leaves his submind Grumpy with it. A rogue Maxolhx fleet correctly suspects that Earth's defense weakens when Skippy departs and launches a surprise attack. Skippy has secretly remained nearby, however, and directs the Sentinel to reverse the bombardment and disable the attackers. Chang lets the survivors leave under a public claim that the guardian acted autonomously, preserving the deterrent while feeding instability within the Hegemony. Admiral Urkan returns to power but chooses consolidation and negotiation rather than immediate war against the rebels. Skippy then determines that another signal could use damaged wormhole networks to wake the Sentinels again. He proposes using Elder communications nodes to create interference while leaving ordinary wormhole travel intact. UNEF approves a mission under the cover story that Maxolhx Red Section remains responsible. As humanity retreats from formal alliances, Bishop privately asks Chotek to preserve useful relationships and begins searching for enough nodes to secure the network.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skippy traces the original wake-up transmission to a Rindhalu warship and concludes that a hostile Elder AI may be manipulating research from within Rindhalu territory. Simms narrows the likely sites through patterns in staffing, supplies, and military traffic. Meanwhile, Urkan delays action against the Maxolhx rebels and considers provoking Elder-weapon exchanges that he expects humanity to contain. At Jaguar Base, Jates asks the Alien Legion to support expansion by his reformist Kristang faction. Perkins refuses because the faction has not secured lasting reform in its existing occupation, leaving his loyalty in question. Bishop reveals the Elder AI threat to a small planning group and accepts a high-risk attempt to make the enemy expose its location. Adams is promoted and brought into the compartmented mission, while Perkins vouches that Jates will still do his duty. A special-operations team begins covert deployments without informing UNEF Command, whose communications Bishop considers unsafe. At the same time, Ardu emerges as a possible source of the communications nodes needed to block another signal.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie begins the Ardu raid by sending a stealth dropship through the wormhole formed by a departing Maxolhx supply vessel. An unexpected pulse destroys the craft's jump capability and cuts it off from Skippy, but Smythe elects to continue. Star Team Alpha discovers that rogue Maxolhx special forces are already scavenging the neglected base. The team recovers the Elder communications nodes, suffers serious injuries, and divides so the package and wounded can escape. Smythe is isolated during the fighting, where a limited suit AI called Helpy restores crucial armor functions. Valkyrie retrieves the damaged dropship, then enters Ardu's atmosphere for the seven operators left behind. Tactical nuclear strikes disrupt the ground defenses, and Skippy extends a suspensor field to pull the final falling operator aboard. Reed recovers the tumbling ship, while Skippy manipulates the obsolete defense network into destroying hostile platforms, a Maxolhx cruiser, and ultimately itself. Valkyrie escapes with the nodes and erases the evidence that could reveal how Skippy compromised the defenses.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tests prove that communications nodes can create a resonance that scrambles future wake-up signals without closing the wormhole network, but full coverage requires more devices. At Begrum, Valkyrie stops a Thuranin bombardment and coerces the local rulers into surrendering museum artifacts without attacking civilians. Despite damaged and counterfeit items, the usable nodes complete the blocking network. A separate Mavericks expedition follows Jates to a hidden cavern on a Kristang world. The supposed node cache is false, but Nert discovers a heavy cylinder that appears to hold an active Elder AI. Jates then disables the team's powered armor and communications, takes the canister, and uses it to seize control of the dropship. He bargains with Scorandum, whose Ethics and Compliance Office ship departs with him and the artifact. Boston recovers after the apparent AI releases its systems, but Perkins and the ground team remain stranded until the destroyer can return. The human team has completed its defense against another network signal, yet a seemingly independent Elder intelligence is now moving beyond its control.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The completed network interference blocks the hostile Elder AI's next attempt to wake the Sentinels, warning it that someone has intervened. Skippy correlates Rindhalu security and logistics data and identifies Flortradex as a station built around the core of an Elder starship. Scorandum appears to offer the newly recovered canister to Maxolhx rebels, but Commodore Iliath seizes it for the Hegemony. The transfer helps ignite a Maxolhx civil war while Valkyrie enters Rindhalu territory and surveys Flortradex. Skippy compromises a Rindhalu cruiser to obtain station data, then appears to be infected by hostile code and captured after ejecting in a pod. Bishop subsequently reveals the full deception. The cavern canister was dead, Jates's betrayal was staged, and Scorandum, Perkins, Simms, Smythe, Adams, and Bishop were participants. The apparent system failures were planted by Skippy. The operation exploited enemy surveillance to manufacture civil war and let Skippy enter Flortradex under the appearance of capture. Bilby establishes covert contact with him, and Valkyrie receives the signal to begin extraction.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bilby takes Valkyrie through the Rindhalu blockade and disables two heavy cruisers. Acting on Skippy's instructions, he commands an Elder wormhole to open through Flortradex, cutting away the fragment of Elder starship that contains both Skippy and the hostile AI. Skippy suppresses the captive's communications and neutralizes nearby station security, allowing Smythe's team to recover both canisters. Valkyrie escapes with the hostile intelligence contained aboard ship. Skippy reports that it found signs of other Elder master-control AIs, although there is no proof that any are active. The apparent victory is immediately overturned during a later wormhole transit. An energy surge gives the captive enough access to send a signal, and Skippy realizes that it deliberately arranged its own capture so it could make this transmission. The Elders answer the distress call. Skippy confirms that they are returning to the galaxy, leaving Bishop's team with a larger crisis while Earth still depends on the damaged Sentinel's fragile deterrent and the Maxolhx remain divided by the engineered civil war.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B09V1X64YV",
+            "type": "community"
+          }
+        ],
+        "work": "match-game"
+      }
+    },
     "matched": {
       "characters": {
         "characters": [
@@ -4263,6 +4643,278 @@
           }
         ],
         "work": "memoirs-of-a-geisha"
+      }
+    },
+    "memory": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Admiral Naismith"
+            ],
+            "description": "A Barrayaran lord who serves ImpSec while commanding the Dendarii as Admiral Naismith. During a hostage rescue, a concealed seizure locks his combat armor and gravely injures Lieutenant Vorberg, putting both of his military identities at risk.",
+            "id": "miles-vorkosigan",
+            "name": "Miles Vorkosigan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Quinn"
+            ],
+            "description": "A Dendarii captain, Miles's partner, and his second in command. After learning that he hid earlier seizures, she questions whether he can safely continue to command.",
+            "id": "elli-quinn",
+            "name": "Elli Quinn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Illyan"
+            ],
+            "description": "The chief of ImpSec and the official who assigned Miles to recover Lieutenant Vorberg. The service must determine whether the courier was deliberately targeted during the freighter hijacking.",
+            "id": "simon-illyan",
+            "name": "Simon Illyan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Barrayaran ImpSec courier rescued from a hijacked freighter. Miles's seizure traps him in the path of a combat suit's plasma arc, severing his legs below the knees, though prompt treatment is expected to restore his ability to walk.",
+            "id": "lieutenant-vorberg",
+            "name": "Lieutenant Vorberg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dendarii soldier selected to accompany Miles as his bodyguard on the journey to Barrayar. Her assignment places a trusted member of the fleet beside him while he travels under an urgent recall from ImpSec.",
+            "id": "dendarii-sergeant",
+            "name": "Dendarii sergeant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ivan"
+            ],
+            "description": "Miles's cousin, an Imperial Service officer, and a dependable family ally. Their long-standing connection makes Ivan one of the people Miles can rely on within both Barrayaran society and the military establishment.",
+            "id": "ivan-vorpatril",
+            "name": "Ivan Vorpatril",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Galeni"
+            ],
+            "description": "An ImpSec captain formerly assigned to counterintelligence on Komarr and newly transferred to headquarters. He is seriously courting Laisa Toscane, a Komarran trade representative, when Miles encounters him in the capital.",
+            "id": "duv-galeni",
+            "name": "Duv Galeni",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Komarran specialist in business theory who serves as a permanent lobbyist for shipping interests on Barrayar. Duv Galeni is courting her, and her professional work centers on the Komarran shipping concessions.",
+            "id": "laisa-toscane",
+            "name": "Laisa Toscane",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gregor"
+            ],
+            "description": "The Emperor of Barrayar, Miles's sovereign, and a trusted ally from earlier events. Their established relationship joins personal confidence to Miles's obligations as a Vorkosigan and as an operative of the Imperial government.",
+            "id": "emperor-gregor",
+            "name": "Emperor Gregor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The general responsible for ImpSec's Domestic Affairs division. He is one of the senior departmental leaders at headquarters when Miles returns to Barrayar under Illyan's unexplained and urgent summons.",
+            "id": "general-haroche",
+            "name": "General Haroche",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior ImpSec general who directs the service's corresponding security work on Komarr. His departmental authority places him among the principal officers at headquarters during Miles's return to the capital.",
+            "id": "general-allegre",
+            "name": "General Allegre",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Alys"
+            ],
+            "description": "Gregor's social hostess and an influential intermediary at the Imperial residence. She controls access and presentation around the state dinner, and she approves Laisa Toscane as a suitable guest for the occasion.",
+            "id": "alys-vorpatril",
+            "name": "Alys Vorpatril",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The biocybernetic specialist directing the response to Illyan's failing eidetic implant. He determines that the device cannot be repaired while it remains in place and explains the serious uncertainties attached to removing it.",
+            "id": "admiral-avakli",
+            "name": "Admiral Avakli",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr. Hugh Canaba"
+            ],
+            "description": "A molecular biologist living on Barrayar under a new identity after an earlier life as Dr. Hugh Canaba. Miles brings him into the investigation to apply his specialized knowledge to the analysis of Illyan's damaged implant.",
+            "id": "vaughn-weddell",
+            "name": "Vaughn Weddell",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Miles's social circle who accompanies him to Gregor's state dinner. She joins Miles, Duv Galeni, and Laisa Toscane in the party entering the Imperial residence for the formal occasion.",
+            "id": "delia-koudelka",
+            "name": "Delia Koudelka",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cook Miles hires while rebuilding the household at Vorkosigan House after his discharge. Her younger son also joins the staff as Miles's live-in driver and is informed that he must watch for seizures.",
+            "id": "ma-kosti",
+            "name": "Ma Kosti",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ma Kosti's younger son, hired as Miles's live-in driver. He is told about Miles's condition and given responsibility for watching for seizures.",
+            "id": "ma-kostis-younger-son",
+            "name": "Ma Kosti's younger son",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mother of the murdered child memorialized by a school in Sylvie Vale. She teaches there and tells Miles to continue living and acting after he confesses his disgrace.",
+            "id": "murdered-childs-mother",
+            "name": "Murdered child's mother",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dead Komarran conspirator whose former network remains a concern for Barrayaran security.",
+            "id": "ser-galen",
+            "name": "Ser Galen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002V1BM9O",
+            "type": "community"
+          }
+        ],
+        "work": "memory"
+      },
+      "recaps": {
+        "ending": "General Haroche admits that he used stolen Komarran biological agents to damage Illyan's eidetic implant, hoping to clear his own path to the ImpSec chiefship. He also confesses to redirecting the frame-up toward Duv Galeni and trying to buy Miles's silence with restored rank and Dendarii command. Haroche plans to plead guilty, but his sentence is still pending. Galeni is cleared, remains in ImpSec, and becomes engaged to Delia Koudelka. General Allegre serves as acting chief and is Miles's preferred permanent successor.\n\nIllyan survives the implant removal but retains serious short-term-memory limitations. He retires after forty-five years, establishes a home outside ImpSec, and begins a relationship with Alys Vorpatril. Gregor and Laisa Toscane publicly formalize their engagement, with their wedding still ahead. Miles receives a functioning device to manage his seizures, retires from Imperial Service at captain's rank, and accepts appointment as the permanent Eighth Imperial Auditor. Elli Quinn accepts the Dendarii admiralcy under Barrayaran sponsorship. She and Miles end their partnership because neither will abandon the life each has chosen. Miles asks her to alert him when the Dendarii sergeant's terminal decline begins, leaving that personal obligation unresolved. He closes the book committed to life as Miles Vorkosigan rather than Admiral Naismith.",
+        "in_short": "Miles Vorkosigan hides a seizure disorder until an episode injures Lieutenant Vorberg and his falsified report costs him his ImpSec career. While he struggles to find a life beyond Admiral Naismith, Illyan suffers a catastrophic failure of his eidetic implant. Gregor appoints Miles acting Imperial Auditor, and Miles secures Illyan's surgery before discovering that a bioengineered agent caused the damage. Evidence first points toward Miles and then Duv Galeni, but Miles exposes General Haroche as the saboteur. Haroche confesses that ambition for the ImpSec chiefship drove the attack and frame-up. Illyan retires with lasting memory problems and Alys Vorpatril's support, while General Allegre takes charge of ImpSec. Miles accepts a permanent post as Eighth Imperial Auditor and receives a working seizure-control device. Gregor and Laisa Toscane formalize their betrothal, Galeni and Delia Koudelka become engaged, and Elli Quinn accepts command of the Dendarii. Miles and Quinn part because neither can adopt the other's life, and Miles leaves Admiral Naismith behind with confidence in his new future.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Miles Vorkosigan served Barrayar through ImpSec while secretly commanding the Dendarii mercenary fleet as Admiral Naismith. The two identities gave him both an Imperial career and an off-world military role, but each depended on his continued loyalty to Barrayar. Emperor Gregor remained his sovereign and trusted ally, Ivan Vorpatril his cousin and family support, and Elli Quinn his partner within the Dendarii. Miles had survived cryo-revival. His clone brother Mark was living separately and studying on Beta Colony. The dead Komarran conspirator Ser Galen no longer acted directly, though the remnants of his old network still presented a security concern.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During a Dendarii rescue, Miles suffers a seizure inside powered combat armor. The locked weapon severs ImpSec courier Lieutenant Vorberg's legs, though surgery is expected to restore his mobility. Miles admits to Elli Quinn that earlier seizures began after his cryo-revival, but he has hidden them from both ImpSec and much of the fleet. He then alters the mission report to blame an equipment failure and destroys the complete version. Quinn challenges the concealment, even as Miles promotes her to fleet second before returning to Barrayar under Illyan's urgent recall.\n\nIn the capital, Miles waits without knowing why he was summoned. He meets Duv Galeni, who is courting Komarran trade representative Laisa Toscane, and attends Gregor's state dinner. Miles repeats the false account of Vorberg's injury to Gregor. Illyan has already obtained medical evidence and the real combat record, however. He confronts Miles with the seizures, injury, and falsification, then offers resignation as the alternative to court-martial. Miles suffers another seizure in Illyan's office and accepts a quiet medical discharge. His ImpSec career and his authority to command the Dendarii as Admiral Naismith are both effectively over.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles collapses into a dangerous depression after his discharge. Ivan Vorpatril and Duv Galeni intervene, and Ivan moves into Vorkosigan House to keep him supervised. Miles establishes an independent account, hires Ma Kosti as cook, and brings her younger son into the household as driver and seizure watch. Gregor warns Miles not to contact or seize control of the Dendarii, which would now amount to treason, and leaves the fleet's command future to Elli Quinn.\n\nGregor and Laisa Toscane are strongly drawn to each other, despite the political sensitivities of a Barrayaran emperor choosing a Komarran bride and the personal cost to Galeni. Miles encourages Gregor to pursue the relationship. Seeking distance from the capital, Miles travels through the neglected Vorkosigan district and returns to Sylvie Vale, where an old case once shaped his sense of duty. He discovers that the community has built a dam, is constructing a clinic, and honors a murdered child through a school rather than only a grave. After Miles confesses his disgrace to the child's mother, she directs him toward continued life and useful action. He leaves without a settled career, but no longer treats his failure as the end of all purpose.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles finally tells his parents about the discharge and remains hesitant to pursue treatment, uncertain what a cure would mean without lawful Dendarii command. Gregor and Laisa announce their engagement. Duv Galeni reacts with personal anger but chooses loyalty to Gregor and recognizes the political importance of the match.\n\nA new crisis begins when Galeni reports repeated errors and temporal confusion from Simon Illyan. Illyan then orders Miles to repeat a mission completed years before, confirming that the problem is severe. General Haroche reviews the evidence, and Illyan soon becomes incoherent during a briefing and is confined to the ImpSec clinic. Haroche takes control as acting chief, excludes Miles, and blocks ordinary access. Lieutenant Vorberg later reports that Illyan has repeatedly asked for Miles, but those requests have not reached him or Gregor.\n\nMiles appeals directly to Gregor through his standing as Lord Vorkosigan. Gregor appoints him acting Imperial Auditor for the case, giving him independent authority over ImpSec. With Ivan as assistant and witness, Miles forces access to Illyan and finds him cycling rapidly among memories from different periods of his life. Miles orders humane care and familiar attendants while beginning an inquiry that must distinguish natural deterioration from possible sabotage.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Admiral Avakli determines that Illyan's eidetic implant is failing and cannot be repaired in place. Removal will destroy the chip and carries uncertain effects, but Miles obtains Gregor's approval and chooses Illyan's survival over preservation of its stored data. The surgery succeeds. Illyan remains physically stable and retains much of his identity and judgment, yet his short-term memory is seriously impaired. Alys Vorpatril becomes a steady and calming companion during his recovery.\n\nMiles brings molecular biologist Vaughn Weddell, formerly known as Dr. Hugh Canaba, into the chip analysis. He also undergoes evaluation for his own seizures. Doctors identify an unusual epilepsy connected to cryo-revival and propose an implant that could allow controlled episodes, though it would manage rather than cure the condition.\n\nAvakli and Weddell eventually establish that Illyan's chip did not simply decay. A specially engineered prokaryote consumed its organic matrix and then largely destroyed itself. The agent appears to be illicit custom work derived from medical technology, and exposure could have occurred by several routes within a broad recent window. Miles and Haroche open a sabotage investigation, but Illyan's memory gaps prevent him from identifying the attack. The perpetrator, motive, and exact means of delivery remain unknown.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles concludes that Illyan's attacker is probably inside ImpSec. Altered records falsely place Miles in an evidence room before his discharge, so he seals the area and sends Ivan to conduct a complete inventory. Ivan finds a stored sample matching the agent used against Illyan, with two delivery capsules missing. The material came from Ser Galen's former network, and the forged visit appears designed to implicate Miles.\n\nThe internal trail then points toward Duv Galeni's office. General Haroche arrests Galeni for treason during Gregor and Laisa's reception, though Miles distrusts a case built on access records and inferred motive. Vaughn Weddell establishes that the capsules disperse airborne spores. Haroche presses Miles to accept Galeni's prosecution and offers him reinstatement, promotion, and renewed Dendarii command if he will end the audit. Miles recognizes the offer as a bribe and turns his suspicion toward Haroche.\n\nKnowing that spores should remain in ventilation filters, Miles secures Galeni and arranges a concealed test. Galeni's office is clean. A feigned building-wide search prompts Haroche to remove an incriminating filter from his former office, where Miles catches him and confirms the residue. Miles arrests Haroche for treason, clears Galeni, and appoints General Allegre acting chief. The physical case is established, but Haroche's motive and complete account await interrogation.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Haroche confesses that ambition for the ImpSec chiefship led him to steal two biological capsules and expose Illyan twice. He expected to disable rather than kill Illyan, resented Miles as a likely future superior, and redirected the frame-up toward Galeni when the investigation advanced too quickly. He also admits that his offer of restored Dendarii command was meant to secure Miles's cooperation. Haroche plans to plead guilty, while Miles completes an audit accepted by Gregor and the other Imperial Auditors.\n\nIllyan retires after forty-five years with lasting memory limitations. Alys Vorpatril helps him establish an independent home and practical memory aids, and the two begin a relationship. General Allegre takes over ImpSec, while the cleared Galeni remains in service, may lead Komarran Affairs, and becomes engaged to Delia Koudelka. Gregor and Laisa publicly formalize their betrothal.\n\nMiles declines the ImpSec chiefship. He receives a working seizure-control implant, retires from Imperial Service at captain's rank, and accepts appointment as the permanent Eighth Imperial Auditor. Elli Quinn accepts Barrayar's offer to command the Dendarii as Admiral Quinn. Miles asks her to remain on Barrayar, while she asks him to return as Admiral Naismith. Neither can accept the other's life, so they end their relationship with affection. Miles asks to be warned when the Dendarii sergeant's terminal decline begins, then returns home certain that leaving Naismith behind has made him more fully himself and ready for his new work.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B002V1BM9O",
+            "type": "community"
+          }
+        ],
+        "work": "memory"
       }
     }
   }

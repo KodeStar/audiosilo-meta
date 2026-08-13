@@ -2167,6 +2167,340 @@
         "work": "after-the-quake"
       }
     },
+    "aftermath": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A damaged Sentinel near Earth retained from earlier conflicts as a deterrent. Its constraints and reliability are sensitive strategic information as humanity continues to depend on Elder machines for protection.",
+            "id": "damaged-sentinel-deterrent",
+            "name": "Damaged Sentinel deterrent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jeraptha admiral in the Ethics and Compliance Office whose skill at concealment is tested by an inquiry into his connection with Skippy's commercial organization, which is under investigation. He keeps both evidence and an Elder submind out of an investigator's hands.",
+            "id": "scorandum",
+            "name": "Scorandum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior investigator for the Court of Special Inquiries and Scorandum's former aide. Kinsta examines allegations tied to Skippy's organization and encounters practiced obstruction from his old superior.",
+            "id": "kinsta",
+            "name": "Kinsta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A major general commanding the Jaguar garrison, temporarily living with his family on Newark. Joe is restless in an administrative post and remains one of the few people who knows the full consequences of Skippy's bargain with the Elders.",
+            "id": "joe-bishop",
+            "name": "Joe Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Elder AI allied with humanity who returns from a diplomatic tour that ended badly in several territories. His commercial organization has spread across species, and its secretive dealings create trouble for Joe as well as for the Jeraptha.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe and Margaret's seven-year-old twin sons. On Newark with their parents, they regard Skippy as an uncle figure who takes an active interest in their upbringing.",
+            "id": "jeremy-and-renee-bishop",
+            "name": "Jeremy Bishop and Renee Bishop",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Margaret"
+            ],
+            "description": "Joe's wife and a soldier who is pregnant with their daughter. She is with Joe and their twin sons during the family's time on Newark.",
+            "id": "margaret-bishop",
+            "name": "Margaret Bishop",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fireball"
+            ],
+            "description": "The colonel commanding Valkyrie. Reed authorizes Joe's limited return to flight duty and captains the ship carrying him and his sons toward the planned Sentinel activation.",
+            "id": "samantha-reed",
+            "name": "Reed",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's controller AI. Although residual restrictions remain in his programming, Bilby can pilot the ship and manage its combat systems effectively.",
+            "id": "bilby",
+            "name": "Bilby",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former U.S. Army soldier who owns a mixed-species private security company. His people support Operation Sunset and face the problem of protecting reformist settlements while official forces remain constrained.",
+            "id": "david-chica",
+            "name": "David Chica",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reformist local sergeant attached to David Chica's company during Operation Sunset. Janes presses the security team to act as attacks threaten settlements that are trying to withdraw.",
+            "id": "janes",
+            "name": "Janes",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Nagatha"
+            ],
+            "description": "The Flying Dutchman's AI. Nagatha supplies the covert technical capability behind an operation designed to force effective protection for endangered settlers during Operation Sunset.",
+            "id": "nagatha",
+            "name": "Nagatha",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dormant Sentinel selected to protect the Rindhalu homeworld. Skippy gives it a name as the human activation fleet prepares to wake it through a specialized transmitter network.",
+            "id": "dogzilla",
+            "name": "Dogzilla",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified advanced attacker that exploits the activation network and attempts to seize Dogzilla from Skippy. Its nature, location, and method are unknown, but its control of the transmitters demonstrates access to technology on an Elder scale.",
+            "id": "elder-intruder",
+            "name": "Elder intruder",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Chang",
+              "Kong"
+            ],
+            "description": "Earth's senior officer for planetary strategic defenses. Chang joins Joe in assessing the failed activation and the possibility that the same unknown attacker could threaten Earth's Sentinel protection.",
+            "id": "general-chang",
+            "name": "General Chang",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The colonel leading Star Team Razor, Earth's rapid-reaction force for the sector. She joins the reactivated Task Force Black for an investigation whose duration and eventual target are still unknown.",
+            "id": "katie-frey",
+            "name": "Frey",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simms"
+            ],
+            "description": "A retired military officer serving as governor of Avalon. Although Task Force Black is assembling familiar personnel for a new mission, Simms does not return to Valkyrie's crew.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The general commanding UN ground forces during Operation Sunset. Perkins is managing an unstable withdrawal when Joe requisitions the Flying Dutchman, leaving her with limited orbital and ground strength.",
+            "id": "emily-perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Formerly Valkyrie's executive officer and now the Flying Dutchman's air-group commander. Joe appoints her to lead Valkyrie's air group and prepare its pilots for a possible confrontation with an Elder-level enemy.",
+            "id": "irene-striebich",
+            "name": "Irene Striebich",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Earth's active Sentinel defender. It recognizes the six masked ships entering the Earth-Moon system but does not engage them, creating immediate concern that the planet's primary defense has been compromised.",
+            "id": "earth-sentinel",
+            "name": "Earth Sentinel",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Star Team Razor's heavy-weapons leader. Serrano commands the point unit during the team's descent into the isolated lunar vault.",
+            "id": "lieutenant-serrano",
+            "name": "Lieutenant Serrano",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Star Team Razor combat officer who directs plasma fire against the nanogel machines surrounding a Guardian in the lunar vault.",
+            "id": "major-guo",
+            "name": "Major Guo",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Star Team Razor operator who volunteers for a dangerous climb up the lunar vault shaft, using a weakened flight pack and cable in an effort to restore contact with the surface.",
+            "id": "sergeant-wynne",
+            "name": "Sergeant Wynne",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired DEFCOM consultant who identifies a hidden Elder space dock as a possible destination for the intruder's damaged ship, giving Task Force Black its first concrete search area.",
+            "id": "dr-friedlander",
+            "name": "Dr. Friedlander",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired civilian whose decades-old experiment accidentally produced material suitable for Sentinel-activation transmitters. Task Force Black seeks to capture him along with the surviving canister before the Maxolhx can secure either objective.",
+            "id": "retired-bosphorock-researcher",
+            "name": "Retired Bosphorock researcher",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outside entity revealed after the apparent Elder intruder's host ship is destroyed. It escapes by converting itself into exotic energy, and known Elder weapons can neither kill nor contain it.",
+            "id": "external-entity",
+            "name": "External entity",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C6FLJTM8",
+            "type": "community"
+          }
+        ],
+        "work": "aftermath"
+      },
+      "recaps": {
+        "ending": "Scorandum's supposed sale of the radonium-production secret is revealed as a controlled deception arranged with Skippy. Task Force Black uses the recovered exotic material to disable two possible activation sites, forcing the intruder and its Maxolhx partners to concentrate at the last viable location. Valkyrie penetrates their distortion field and destroys the Elder ship along with most of the assembled fleet. The Sentinel activation is stopped, but the victory exposes the larger danger: the adversary is not an Elder AI. It is an external entity capable of converting itself into exotic energy, and it escapes the destruction of its host vessel. Skippy confirms that known Elder weapons can neither destroy nor imprison it. Valkyrie survives with extensive damage and requires shield and jump-drive repairs, though it is expected to regain jump capability. The rare canister is secure, but its accidental manufacturing process cannot be reconstructed, Maxolhx production capacity remains substantial, and the Rindhalu have not yet committed to the fight. Joe concludes that humanity must unite the senior species and their clients against the entity beyond the galactic barrier.",
+        "in_short": "Joe Bishop is pulled from garrison duty when an unknown attacker hijacks humanity's attempt to activate a Sentinel for the Rindhalu. The same adversary raids Earth's lunar vault, steals exotic material, and compromises Sentinel defenses with technology beyond Skippy's understanding. Task Force Black follows the trail through an Elder space-dock wreck, a lunar-vault assault, and a race against the Maxolhx for a rare radonium canister. Skippy restores his impaired abilities, enabling Valkyrie to recover the canister and its surviving researcher. Scorandum's apparent betrayal proves to be a deception that channels the enemy toward one activation site. Valkyrie destroys the hostile Elder ship and much of its Maxolhx support fleet, preventing activation, but an external entity escapes as energy. Known Elder weapons cannot kill or contain it, leaving Joe to seek an alliance across the galaxy while the badly damaged Valkyrie begins repairs.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe Bishop and Skippy became central to humanity's survival in a galaxy dominated by the Maxolhx and Rindhalu coalitions. Joe rose to major general and command of the Jaguar garrison, while Skippy's alliance with humanity gave Earth access to Elder technology, wormhole manipulation, and Sentinel defenses. Their most recent crisis ended with Skippy making a bargain that prevented the Elders from destroying galactic life and permanently separated them from this reality. Only Joe and Skippy retain that full secret. The cost of earlier operations remains visible: Skippy's Matrix suffered severe strain, one Sentinel near Earth is damaged, and Joe has lost members of his former force. Valkyrie and the Flying Dutchman remain humanity's key ships, supported by the AIs Bilby and Nagatha. Joe now has a family with Margaret and their twin sons, while Margaret is expecting a daughter. Humanity's power still depends heavily on Skippy and on Elder machines whose limitations are not widely understood.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: Scorandum is investigated by his former aide Kinsta over his involvement with Skippy's commercial organization, which is under investigation, but the Jeraptha admiral conceals evidence and an Elder submind. Skippy returns from an unsuccessful diplomatic tour to find Joe and his family on Newark. Joe, dissatisfied with administrative command, agrees to take his twin sons aboard Valkyrie to watch Skippy activate a dormant Sentinel for the Rindhalu. Elsewhere, David Chica, Janes, and Nagatha stage an attack that provokes effective protection for reformist settlements during Operation Sunset. At the activation site, an unexplained Maxolhx-like trace appears before Skippy wakes the Sentinel named Dogzilla. An unknown actor then seizes the transmitter network and attempts to take control of the machine. Joe orders Unit Bravo destroyed, stopping the takeover but fatally destabilizing Dogzilla. Valkyrie shields the trapped command ship while Skippy struggles to delay the resulting space-time eruption.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie escapes Dogzilla's eruption through a dangerous sequence of short jumps, but the maneuver disables its jump drive and communications. Joe uses the remaining coil kernels to create a detectable failed wormhole, allowing the Third Fleet to locate and rescue the ship. Evidence shows the attacker knew the activation coordinates before Skippy released them, while Bilby warns Joe that Skippy's damaged Matrix may also be undermining him. Back at Earth, Skippy admits that accumulated damage has made many of his former abilities unreliable and that he fears confronting an unknown peer. Task Force Black is reactivated with Valkyrie, Frey, and Star Team Razor. The investigation traces a masked, battle-damaged Maxolhx heavy cruiser that reached the site through a remote route with performance beyond ordinary Maxolhx capability. Frey argues that a surviving hostile Elder AI best fits the evidence. Joe then requisitions the Flying Dutchman and Nagatha from Perkins, while Irene Striebich joins Valkyrie's senior command group to prepare its air wing for combat.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Task Force Black follows the masked cruiser, six similarly concealed ships enter the Earth-Moon system. Earth's Sentinel fails to stop them. Five ships strike the Moon, destroying Moonbase Zulu and the exotic-material facility, while an Elder starship opens the deep vault and steals all eleven stored canisters with shape-shifting nanotech units. Joe abandons the cruiser watch and returns to Earth. Skippy finds that the Sentinel's permitted defense radius was reduced through a corrupted unit definition, then restores and expands its range. The apparent raider uses a damaged, modified Elder vessel and technology Skippy does not recognize, leading him to accept that a surviving Elder Master Control AI or equivalent may be operating. A more exhaustive inspection exposes a second trap: both Earth-side Sentinels contain layered conditional malware designed around Skippy's predictable maintenance habits. Skippy removes the discovered code, but the intruder's ability to manipulate quantum states exceeds even known Elder technology. Earth is protected again, although Task Force Black still has no reliable way to locate the enemy or determine its objective.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Operation Sunset withdraws under emergency orders, with Perkins and Janes arranging for local defenders to inherit abandoned equipment. On the Moon, Star Team Razor enters the sealed vault after signs that enemy nanomachines are preparing a compact jump device. Frey and her team discover a Guardian wrapped for removal. Their plasma attack causes the machines to merge, so Frey uses a micro-wormhole linked to Valkyrie's mazer cannon to destroy them. Razor survives with serious injuries, and all Guardians remain functional after rescue. Recovered components confirm that the intruder possesses unfamiliar technology. Dr. Friedlander points Task Force Black toward a hidden Elder space dock, but the search finds only its debris. During the investigation, a Maxolhx fleet attacks Earth. The repaired Sentinel captures the incoming weapons and takes control of the fleet, allowing General Chang to offer negotiations. The encounter also reveals that an Elder attack on Sol would trigger the Diaspora Protocol, using Sentinels to eradicate and replace Maxolhx and Rindhalu populations. Analysis of the wrecked dock shows that the intruder removed fabricators and transmitter components, enough to pursue independent radonium production and another Sentinel activation.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe shifts the mission from hunting the intruder to preventing its next Sentinel activation. Four sites will soon become available at once, making complete coverage impossible. The stolen space-dock fabricators prove too worn to produce enough radonium, but other facilities remain vulnerable. Joe considers evacuating Jaguar so its Sentinel can be used elsewhere, then postpones that step when the immediate deadline eases. The Rindhalu secure many of their facilities, while intercepted traffic shows the Maxolhx intend to trade hidden production capacity to the intruder in return for Sentinels. One attempted Maxolhx seizure ends when a client-world research director destroys both the facility and several attacking cruisers. Skippy then identifies a far older accident on a Bosphorock world: a surviving canister contains enough suitable material for activation, and a retired researcher may remember how it was made. Joe sends Star Team Razor to recover both. Meanwhile, Scorandum's bankrupt organization leaves him unable to pay his crew or obligations, and he turns again toward the Court of Special Inquiries as his financial position collapses.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kinsta is disgraced when malware planted during his visit to Scorandum destroys the Court's evidence, but Scorandum offers testimony only through him. On the Bosphorock world, Razor locates the retired researcher but not the canister before a Maxolhx force arrives and blocks extraction. Skippy's difficulty penetrating even this weak network forces him to confront his lost abilities. Joe proposes that the Ascension machinery restricted capabilities Skippy had developed outside Elder authorization, and Skippy begins a deep examination of his Matrix. The Maxolhx find the canister and prepare to remove it while the human teams remain trapped. Skippy returns claiming full recovery. He predicts enemy movements, enables Valkyrie to destroy two battleships, and pulls the canister into the ship's jump inside a space-time bubble. Bilby captures local X-ray satellites and uses them to eliminate the remaining cruiser squadron. Razor is extracted, and the retired researcher comes aboard voluntarily. He confirms that the old experiment was genuine, but its equipment and records are gone, leaving no immediate way to reproduce the process.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorandum escapes Court custody and appears to sell the Maxolhx the production secret. Humanity destroys three Maxolhx fabrication facilities with its remaining relativistic darts, but too many other sites remain for the strikes to end the threat. The apparent betrayal is then revealed as a controlled deception arranged with Skippy. Using most of the recovered exotic material, Skippy sabotages two activation sites and forces the intruder to concentrate at the last viable location with a large Maxolhx fleet. Valkyrie penetrates the formation after Skippy's mines briefly cancel its distortion field. When the intruder disrupts ordinary weapon guidance, Joe uses Elder weapons to destroy its host ship and roughly six hundred tightly packed Maxolhx vessels. The Sentinel activation is prevented, and Valkyrie survives with extensive damage. Sensor review reveals that an energy form escaped. Skippy identifies the adversary not as an Elder AI but as an external entity capable of becoming exotic energy, beyond the reach of known Elder weapons. With Valkyrie beginning repairs and the entity still at large, Joe concludes that survival requires an alliance of humanity, the Rindhalu, the Maxolhx, and their client species.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0C6FLJTM8",
+            "type": "community"
+          }
+        ],
+        "work": "aftermath"
+      }
+    },
     "afterward": {
       "characters": {
         "characters": [
