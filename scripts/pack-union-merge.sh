@@ -69,6 +69,13 @@
 # versions BEFORE any line merge happens and merges the entry maps instead, so
 # the shape cannot arise; when it refuses, git records the conflict as usual.
 #
+# It merges PACK files and nothing else: a version that is not a pack (no
+# top-level "entries" object) is refused rather than treated as an empty one, so
+# the tree's one non-pack file - data/redirects.json, the slug tombstone table -
+# cannot be emptied by a merge that reports success. .gitattributes keeps that file
+# away from the driver as well; this is the backstop for a stale checkout or a hand
+# invocation.
+#
 # Exit codes: 0 merged, 1 the file cannot be merged this way, 2 usage,
 # 5 a real conflict that needs a person (as a merge driver, any non-zero exit
 # tells git the file is conflicted). Requires jq.
@@ -130,6 +137,23 @@ else
     fi
   done
 fi
+
+# Every version has to BE a pack. Nothing downstream checks this, and jq's `//`
+# would read a file with no "entries" as an empty one - so handed a JSON file that
+# is not a pack (data/redirects.json, the slug tombstone table, is the one the tree
+# holds) this would "merge" it into {"entries":{}} and report success, replacing
+# the file's whole contents with an empty pack. .gitattributes keeps that file away
+# from the driver, but a stale checkout's attributes, a hand invocation or a fifth
+# non-pack file must not be able to make a silent deletion out of a merge.
+#
+# The base's stand-in above is already a pack, so this judges what it is handed.
+for side in base ours theirs; do
+  if ! jq -e 'type == "object" and has("entries") and (.entries | type == "object")' \
+      "$tmpdir/$side" > /dev/null 2>&1; then
+    echo "$path: the $side version is not a pack file (no top-level \"entries\" object); this script merges pack entries only" >&2
+    exit 1
+  fi
+done
 
 if ! jq -n \
   --arg family "$family" \

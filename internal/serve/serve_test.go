@@ -104,6 +104,13 @@ func fixtureCatalog() *model.Catalog {
 		Series:     []*model.Series{series},
 		Characters: []*model.Characters{chars},
 		Recaps:     []*model.Recaps{recaps},
+		// One retired slug per namespace, the shape a duplicate merge leaves
+		// behind: the loser's slug still resolves, at the survivor.
+		Redirects: model.Redirects{
+			model.RedirectWorks:  {"project-hail-mary-audiobook": "project-hail-mary"},
+			model.RedirectPeople: {"andy-weir-author": "andy-weir"},
+			model.RedirectSeries: {"stormlight-archive": "the-stormlight-archive"},
+		},
 	}
 }
 
@@ -995,21 +1002,6 @@ func TestTypedSearchLimitClamp(t *testing.T) {
 	}
 	if kinds := searchResultKinds(t, ts.URL, path+"&limit=9999"); kinds["work"] != 3 {
 		t.Errorf("limit=9999 returned %d works, want 3 (clamped, not widened)", kinds["work"])
-	}
-}
-
-func TestFTSQueryBuilder(t *testing.T) {
-	cases := map[string]string{
-		"hail mary": `"hail" "mary"*`,
-		"dragon":    `"dragon"*`,
-		`a"b`:       `"a""b"*`,
-		`"""`:       `""""""""*`, // 3 quotes -> 6 escaped -> wrapped in a pair = 8, then '*'
-		"   ":       `""`,
-	}
-	for in, want := range cases {
-		if got := ftsQuery(in); got != want {
-			t.Errorf("ftsQuery(%q) = %q, want %q", in, got, want)
-		}
 	}
 }
 

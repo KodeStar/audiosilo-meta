@@ -14,3 +14,11 @@
 # and any checkout that has not falls back to git's own line merge exactly as
 # before.
 /data/**/*.json merge=packjson
+
+# data/redirects.json is NOT a pack (it is the slug tombstone table, one small
+# map of retired slug -> live slug), so the pack driver above must not be handed
+# it. The driver refuses any file with no top-level "entries" object, so being
+# handed it would leave the conflict unresolved - where git's own line merge
+# resolves the common case and stops loudly on the rest. Unsetting the attribute
+# restores that default for this one path.
+/data/redirects.json !merge

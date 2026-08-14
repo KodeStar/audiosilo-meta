@@ -106,6 +106,10 @@ func TestExactTitleBoost(t *testing.T) {
 		{"Spare Parts", []string{"work:spare-parts", "work:spare-parts-andy-weir"}},
 		{"The Martian", []string{"work:the-martian"}},
 		{"the martian!", []string{"work:the-martian"}},
+		// nameKey reads the same terms the MATCH is built from, so punctuation
+		// standing in for a space still names the title outright.
+		{"Halo:Combat Evolved", []string{"work:halo-combat-evolved"}},
+		{"halo, combat evolved", []string{"work:halo-combat-evolved"}},
 	}
 	for _, tc := range cases {
 		t.Run(tc.query, func(t *testing.T) {
@@ -247,13 +251,21 @@ func TestExactTitleSkipsJunkQueries(t *testing.T) {
 }
 
 func TestWorthTitleProbing(t *testing.T) {
-	worth := []string{"spare", "it", "us", "1984", "the martian", "halo 2", "book", "part one"}
+	worth := []string{"spare", "it", "us", "1984", "the martian", "halo 2", "book", "part one",
+		// An INITIALISM is many one-rune terms, so the minimum is measured on the
+		// whitespace token: judging terms refused this whole class (51 works and
+		// 21 series in the real tree) even though tokenPhrases makes each one a
+		// single selective phrase, measured at 0.9-2.4ms against the 19.7ms of
+		// "book" that the gate admits.
+		"N.E.R.D.S.", "Q&A", "A.D.", "3 a.m.", "M*A*S*H", "R.U.R.", "Y/N"}
 	for _, q := range worth {
 		if !worthTitleProbing(q) {
 			t.Errorf("worthTitleProbing(%q) = false, want true", q)
 		}
 	}
-	junk := []string{"", "   ", "the", "a", "an", "of", "and", "s", "t", "i", "the a of", "j r"}
+	// "the-a" is the punctuation case: one five-rune whitespace token, but two
+	// stopword terms in the MATCH - so the gate has to judge the terms.
+	junk := []string{"", "   ", "the", "a", "an", "of", "and", "s", "t", "i", "the a of", "j r", "the-a", "!!"}
 	for _, q := range junk {
 		if worthTitleProbing(q) {
 			t.Errorf("worthTitleProbing(%q) = true, want false", q)
@@ -273,8 +285,19 @@ func TestWorthTitleProbing(t *testing.T) {
 func TestTitleMatchFiltersEveryPhrase(t *testing.T) {
 	snap := snapshotFor(t, exactTitleCatalog())
 
-	if got, want := titleMatch("spare harry"), `title : ("spare" "harry")`; got != want {
-		t.Errorf("titleMatch = %q, want %q", got, want)
+	cases := map[string]string{
+		"spare harry": `title : ("spare" "harry")`,
+		// Punctuation is a boundary inside the filter too, so a punctuated title
+		// query is a phrase list rather than one welded adjacency claim.
+		"Halo: Primordium": `title : ("Halo" "Primordium")`,
+		// A query with no term at all still composes a filter FTS5 parses (it
+		// matches nothing); exactTitleHits gates this case out before it is run.
+		"!!": `title : ("")`,
+	}
+	for in, want := range cases {
+		if got := titleMatch(in); got != want {
+			t.Errorf("titleMatch(%q) = %q, want %q", in, got, want)
+		}
 	}
 
 	cands, err := snap.titleCandidates("spare harry")

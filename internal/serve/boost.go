@@ -39,10 +39,24 @@ var probeStopwords = map[string]bool{
 // disqualify a token - the series probe passes the volume words as junkB, the
 // title probe passes nil (a nil map reads as empty) - so the rule itself is
 // written once.
+//
+// The length minimum is measured on the WHITESPACE token, not on its terms. An
+// initialism is many one-rune terms ("N.E.R.D.S.", "Q&A", "A.D.", "3 a.m.") and
+// judging terms refused every one of them - yet tokenPhrases turns such a token
+// into a single highly selective phrase, and those probes measured at 0.9-2.4ms
+// against the 19.7ms of "book", which this gate admits. There is no cost case for
+// refusing them, and refusing them cost both boosts for the whole class.
+//
+// What the term rule buys is kept as a SECOND, cheap refusal: a token whose terms
+// are all junk is junk however long the token is, so "the-a" is refused (both
+// terms are stopwords) and so is a token with no term at all ("!!").
 func hasIdentifyingToken(s string, junkA, junkB map[string]bool) bool {
 	for _, tok := range strings.Fields(s) {
 		k := keywordKey(tok)
 		if utf8.RuneCountInString(k) < 2 || junkA[k] || junkB[k] {
+			continue
+		}
+		if allJunkTerms(tok, junkA, junkB) {
 			continue
 		}
 		return true
@@ -50,17 +64,26 @@ func hasIdentifyingToken(s string, junkA, junkB map[string]bool) bool {
 	return false
 }
 
-// nameKey normalizes a name (a series name, a residual, or - for the
-// exact-title probe - a work title and the query itself) for whole-name
-// comparison: lowercased, whitespace collapsed, punctuation trimmed off each
-// token.
-func nameKey(s string) string {
-	fields := strings.Fields(strings.ToLower(s))
-	out := make([]string, 0, len(fields))
-	for _, f := range fields {
-		if f = strings.Trim(f, `.,:;!?'"()[]`); f != "" {
-			out = append(out, f)
+// allJunkTerms reports whether every word inside tok is junk - which includes a
+// token holding no word at all. It is what keeps a punctuated pile of stopwords
+// ("the-a") out of a probe the token's own length would otherwise admit.
+func allJunkTerms(tok string, junkA, junkB map[string]bool) bool {
+	terms := ftsTerms(tok)
+	for _, term := range terms {
+		k := keywordKey(term)
+		if !junkA[k] && !junkB[k] {
+			return false
 		}
 	}
-	return strings.Join(out, " ")
+	return true
+}
+
+// nameKey normalizes a name (a series name, a residual, or - for the
+// exact-title probe - a work title and the query itself) for whole-name
+// comparison: the lowercased ftsTerms, space-joined. Sharing the retrieval
+// side's rule is what makes the comparison symmetric with it - a query the
+// index matched on its words is compared on the same words, so "Spider-Man" and
+// "Spider Man", or "Halo:Primordium" and "Halo: Primordium", are one name.
+func nameKey(s string) string {
+	return strings.Join(ftsTerms(strings.ToLower(s)), " ")
 }

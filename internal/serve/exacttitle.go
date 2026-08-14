@@ -135,11 +135,12 @@ func (s *snapshot) titleCandidates(q string) ([]titleCandidate, error) {
 // order, or nil when the query names no title. Callers prepend the ids to their
 // ranked results; repeats are left to the caller's merge, which owns dedupe.
 //
-// The comparison is nameKey's - lowercased, whitespace collapsed, punctuation
-// trimmed per token - the same normalization the series probe compares a name
-// with, so "the martian", "The Martian" and "The Martian!" all name one work.
-// The FTS match only narrows the field; equality is decided here, in Go, which
-// is what keeps "Spare" apart from "Spare Parts".
+// The comparison is nameKey's - the lowercased ftsTerms, space-joined - the same
+// normalization the series probe compares a name with, and the same words the
+// FTS match was built from, so "the martian", "The Martian", "The Martian!" and
+// "Halo:Primordium" all name one work. The FTS match only narrows the field;
+// equality is decided here, in Go, which is what keeps "Spare" apart from
+// "Spare Parts".
 //
 // Ordering by id makes the answer independent of the row order the probe
 // happened to return, so two works sharing a title always boost the same way
@@ -149,8 +150,9 @@ func (s *snapshot) exactTitleHits(q string) ([]string, error) {
 		return nil, nil
 	}
 	// The gate runs first: it is what the junk keystrokes hit, and it is cheaper
-	// than the normalization. want can still be empty when every token is
-	// punctuation nameKey trims away but keywordKey does not ("!!").
+	// than the normalization. It now implies a non-empty want (both read the same
+	// terms), so this is a guard keeping the function total rather than a live
+	// path.
 	want := nameKey(q)
 	if want == "" {
 		return nil, nil

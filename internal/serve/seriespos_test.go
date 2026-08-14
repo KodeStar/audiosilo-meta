@@ -363,6 +363,36 @@ func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
 	}
 }
 
+// TestProbeMatchDropsStopwords pins the cheap-term guarantee the file header
+// argues for: "the" is the most expensive term in the index and identifies no
+// series, so it never reaches the MATCH. The teeth are the punctuated residual -
+// "halo:the" is no stopword as a whitespace token, so a filter that judged
+// tokens rather than terms would put "the" straight back in.
+func TestProbeMatchDropsStopwords(t *testing.T) {
+	cases := map[string]string{
+		"jack reacher":   `"jack" "reacher"`,
+		"the expanse":    `"expanse"`,
+		"halo:the fall":  `"halo" "fall"`,
+		"halo: the fall": `"halo" "fall"`,
+		// An INITIALISM is kept whole: its one-rune fragments are not the
+		// articles the vocabulary is about, and filtering them would both break
+		// the adjacent phrase and drop letters from the name ("E" is a stopword,
+		// so N.E.R.D.S. would have probed for N, R, D, S).
+		"N.E.R.D.S.":      `"N E R D S"`,
+		"the N.E.R.D.S.":  `"N E R D S"`,
+		"Q&A":             `"Q A"`,
+		"3 a.m. in Vegas": `"3" "a m" "Vegas"`,
+		// Every term is a stopword: the fallback keeps the residual whole rather
+		// than composing an empty MATCH.
+		"the of": `"the" "of"`,
+	}
+	for residual, want := range cases {
+		if got := probeMatch(residual); got != want {
+			t.Errorf("probeMatch(%q) = %q, want %q", residual, got, want)
+		}
+	}
+}
+
 func TestPreferWholeName(t *testing.T) {
 	cands := []seriesCandidate{
 		{id: "the-hunt-for-jack-reacher", name: "The Hunt for Jack Reacher"},

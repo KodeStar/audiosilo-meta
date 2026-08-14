@@ -59,7 +59,7 @@ func TestEverySchemaCompiles(t *testing.T) {
 		"person.schema.json", "series.schema.json", "characters.schema.json",
 		"recaps.schema.json", "pack-works.schema.json",
 		"pack-works-community.schema.json", "pack-people.schema.json",
-		"pack-series.schema.json",
+		"pack-series.schema.json", redirectsSchema,
 	} {
 		if set[want] == nil {
 			t.Errorf("schema %s did not compile", want)

@@ -51,12 +51,7 @@ func forEachPersonRef(cat *model.Catalog, recs []recordWithPath, idx *pathIndex,
 }
 
 // checkIntegrity verifies every cross-entity reference resolves.
-func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []recordWithPath, idx *pathIndex, add addFunc) {
-	people := map[string]bool{}
-	for _, p := range cat.People {
-		people[p.ID] = true
-	}
-
+func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, people map[string]bool, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	forEachPersonRef(cat, recs, idx, func(r personRef) {
 		if people[r.id] {
 			return

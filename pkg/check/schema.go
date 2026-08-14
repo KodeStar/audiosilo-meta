@@ -41,6 +41,12 @@ var wrapperSchemas = map[pack.Family]string{
 	pack.FamilySeries:         "pack-series.schema.json",
 }
 
+// redirectsSchema is the whole-document schema of the slug tombstone table
+// (data/redirects.json). Unlike everything above it is not reached through a
+// pack wrapper - the file is not a pack and a retired slug is not an entity - so
+// it is compiled as a document of its own and validated once per load.
+const redirectsSchema = "redirects.schema.json"
+
 // The two fragments of a wrapper that describe its entries map. Compiling them
 // individually is what lets an entry (and an entry key) be validated on its
 // own, so a problem is reported against the entry rather than the whole pack -
@@ -57,6 +63,8 @@ type schemaSet struct {
 	entries map[pack.Family]*jsonschema.Schema
 	// keys holds the shape of one pack entry's key, keyed by family.
 	keys map[pack.Family]*jsonschema.Schema
+	// redirects holds the shape of the whole redirects file.
+	redirects *jsonschema.Schema
 }
 
 // compileSchemas compiles the embedded JSON Schema files. It is the single
@@ -70,7 +78,7 @@ func compileSchemas() (schemaSet, error) {
 	// value is a real point in time.
 	c.AssertFormat()
 
-	files := []string{"common.schema.json"}
+	files := []string{"common.schema.json", redirectsSchema}
 	for _, f := range entitySchemas {
 		files = append(files, f)
 	}
@@ -113,6 +121,11 @@ func compileSchemas() (schemaSet, error) {
 		}
 		set.entries[family], set.keys[family] = entry, key
 	}
+	reds, err := compile(redirectsSchema)
+	if err != nil {
+		return schemaSet{}, err
+	}
+	set.redirects = reds
 	return set, nil
 }
 
@@ -160,6 +173,11 @@ func (v violation) rebase(prefix string) (violation, bool) {
 // from the family wrapper schema.
 func (s schemaSet) entryViolations(family pack.Family, inst any) []violation {
 	return validateWith(s.entries[family], fmt.Sprintf("no pack schema for family %q", family), inst)
+}
+
+// redirectViolations checks the whole redirects document against its schema.
+func (s schemaSet) redirectViolations(inst any) []violation {
+	return validateWith(s.redirects, "no schema for "+redirectsSchema, inst)
 }
 
 // keyViolations checks one pack entry's key against its family's key shape.

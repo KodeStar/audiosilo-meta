@@ -20,7 +20,15 @@ type snapshot struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5
+
+	// hasRedirects is whether the artifact's tombstone table holds anything at
+	// all, asked once at load. Until the first duplicate-merge lands it is empty
+	// in every published release, and the redirect probe sits on paths that are
+	// not failures - the chapters route consults it whenever a recording's list
+	// comes back empty - so without this an ordinary 200 would pay a SQL round
+	// trip to learn there is nothing to find.
+	hasRedirects bool
 
 	// log is the Server's injected logger, for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing). It is
@@ -114,6 +122,19 @@ func (s *snapshot) loadStats() error {
 		return err
 	}
 	s.schemaVersion, _ = strconv.Atoi(sv)
+	// Asked here, behind the version gate, so a newer binary serving an older
+	// release never touches the table at all. An artifact that CLAIMS version 5
+	// and has no such table fails the load, exactly as it does for the tables
+	// counted above: the builder writes the version and the table together, so
+	// that combination is a corrupt artifact, not an old one - and the error says
+	// which claim was being enforced, because "no such table: redirects" on its own
+	// reads as a bug in the server rather than as a broken file.
+	if s.schemaVersion >= redirectSchemaVersion {
+		if err := s.db.QueryRow(anyRedirectSQL).Scan(&s.hasRedirects); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the redirects table: %w",
+				s.path, s.schemaVersion, err)
+		}
+	}
 	s.stats = st
 	return nil
 }
