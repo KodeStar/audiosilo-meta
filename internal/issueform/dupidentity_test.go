@@ -333,6 +333,116 @@ func TestAddWorkAcceptsATitleThatIsItsSeriesName(t *testing.T) {
 	}
 }
 
+// F2 on the intake side: a submitted title that STATES a volume nothing places is a
+// book we may not hold. The measured shape is a blank series field - "Hammered, Book
+// 7" cleans to "Hammered", which is a work we have, and the author-blind slug gate
+// would have called it a duplicate. The marker survives and the record is composed.
+func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
+	dir := dupSeedTree(t)
+	res := processAddWork(t, dir, dupWorkBody(
+		"Hammered, Book 7", "Kevin Hearne", "Luke Daniels", "", ""))
+
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !recordExists(t, dir, "works/ha/hammered-book-7/work.json") {
+		t.Fatalf("volume 7 was not composed under its own slug; messages = %v", res.Messages)
+	}
+	if !anyContains(res.Messages, "not a second record of") {
+		t.Errorf("the verdict must say why the marker survived: %v", res.Messages)
+	}
+}
+
+// F3 on the intake side: a COLLECTION is not the volume it collects, at either gate -
+// the boxed set normalizes onto the plain title and claims no position of its own.
+func TestAddWorkAcceptsACollection(t *testing.T) {
+	dir := dupSeedTree(t)
+	res := processAddWork(t, dir, dupWorkBody(
+		"Hammered: The Complete Boxed Set", "Kevin Hearne", "Luke Daniels", "", ""))
+
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !recordExists(t, dir, "works/ha/hammered-the-complete-boxed-set/work.json") {
+		t.Fatalf("the boxed set was not composed; messages = %v", res.Messages)
+	}
+}
+
+// F1 on the intake side: a sequel of a ONE-WORD series states its volume in a title
+// that reduces to the bare number. The key refuses it, so nothing collides - and the
+// STRIP must not turn it into a needs-human either (its residual names no book).
+func TestAddWorkAcceptsASequelOfAOneWordSeries(t *testing.T) {
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	files["works/ca/cars/work.json"] = `{
+  "authors": ["kevin-hearne"],
+  "id": "cars",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "title": "Cars"
+}`
+	files["series/ca/cars.json"] = `{
+  "id": "cars",
+  "license": "CC0-1.0",
+  "name": "Cars",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "works": [{"position": "1", "work": "cars"}]
+}`
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+
+	res := processAddWork(t, dir, dupWorkBody("Cars 2", "Kevin Hearne", "Luke Daniels", "Cars", "2"))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	// Composed as submitted: the one-word series name is not admitted for stripping,
+	// so the title keeps the number that is its whole identity.
+	work := readFile(t, dir, "works/ca/cars-2/work.json")
+	if !strings.Contains(work, `"title": "Cars 2"`) {
+		t.Errorf("the sequel's title was rewritten:\n%s", work)
+	}
+}
+
+// F6: what a submission COMPOSES may not depend on how some UNRELATED series spells
+// its name. Two series whose names fold alike are dropped from the index as
+// ambiguous, so the same name is not used for stripping either - the strip and the
+// identity half apply one admission rule.
+func TestAddWorkTitleIsIndependentOfFoldCollidingSeries(t *testing.T) {
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	files["series/th/the-iron-druid-chronicles-2.json"] = `{
+  "id": "the-iron-druid-chronicles-2",
+  "license": "CC0-1.0",
+  "name": "The Iron-Druid Chronicles",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "works": [{"position": "1", "work": "the-blood-of-elves"}]
+}`
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+
+	res := processAddWork(t, dir, dupWorkBody(
+		"Tricked: The Iron Druid Chronicles, Book 9", "Kevin Hearne", "Luke Daniels", "", ""))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	// The ambiguous name is used for NEITHER half: the series reference survives in the
+	// composed title (only the generic volume marker came off), where an unambiguous
+	// name would have been stripped out of it. That is the consistency F6 asks for -
+	// the drop applies to the strip exactly as it applies to the identity lookup.
+	if !recordExists(t, dir, "works/tr/tricked-the-iron-druid-chronicles/work.json") {
+		t.Fatalf("composed under an unexpected slug; messages = %v", res.Messages)
+	}
+	work := readFile(t, dir, "works/tr/tricked-the-iron-druid-chronicles/work.json")
+	if !strings.Contains(work, "Iron Druid Chronicles") {
+		t.Errorf("the title was cleaned against an ambiguous series name:\n%s", work)
+	}
+}
+
 // Every strip-refusal code the rule package can return must have a decision recorded
 // here - proceed, or a maintainer's - so a code added to internal/titlerule cannot
 // reach this gate and fall through a default branch nobody chose.

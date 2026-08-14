@@ -64,6 +64,106 @@ func TestIdentityTitleKey(t *testing.T) {
 	}
 }
 
+// A residual that names no book is NO IDENTITY, not a shared one. The measured
+// hazard: a one-word series name is stripped out of its own titles, leaving the bare
+// volume number, so "Cars 2" and "Hawk 2" keyed alike - 199 numeric keys over 3,287
+// real works in the tree, plus the packaging residuals.
+func TestIdentityTitleKeyRefusesDegenerateResiduals(t *testing.T) {
+	for _, c := range []struct{ title, series string }{
+		{"Cars 2", "Cars"},
+		{"Hawk 2", "Hawk"},
+		{"Omnibus", ""},
+		{"Book One", ""},
+		{"The Complete Boxed Set", ""},
+		{"- Band 5", ""},
+	} {
+		if got := IdentityTitleKey(c.title, c.series); got != "" {
+			t.Errorf("IdentityTitleKey(%q, %q) = %q, want no identity", c.title, c.series, got)
+		}
+	}
+	// And the titles it must still key, so the guard is not simply off. The numeric
+	// ones are the exception numbersAreIdentity carves: a year or a date range names a
+	// book where a bare volume number does not.
+	for _, c := range []struct{ title, series string }{
+		{"Hammered", "The Iron Druid Chronicles"},
+		{"Cars and Trucks", "Cars"},
+		{"1984", ""},
+		{"Without a Trace: 1881-1968", ""},
+	} {
+		if IdentityTitleKey(c.title, c.series) == "" {
+			t.Errorf("IdentityTitleKey(%q, %q) refused a title that names a book", c.title, c.series)
+		}
+	}
+	// A title whose residual is the SERIES NAME (the clean falls back rather than
+	// emptying) does key - and is kept apart by the stated-volume test instead, which
+	// is the division of labour every caller relies on.
+	a := IdentityTitleKey("Unintended Cultivator: Volume 9", "Unintended Cultivator")
+	b := IdentityTitleKey("Unintended Cultivator: Volume 3", "Unintended Cultivator")
+	if a == "" || a != b {
+		t.Fatalf("keys = %q and %q, want one shared key", a, b)
+	}
+	if SameStatedVolume("Unintended Cultivator: Volume 9", "Unintended Cultivator",
+		"Unintended Cultivator: Volume 3", "Unintended Cultivator") {
+		t.Error("volumes 9 and 3 must state different volumes, which is what keeps them apart")
+	}
+}
+
+// The two volume spellings BareSeq cannot read, both of them residuals the key throws
+// away: a DIVISION-class ordinal (the key drops "Season 2" as packaging) and a ROMAN
+// numeral (the key drops "Volume II" as a marker). Unread, each collapsed a serial
+// onto its first volume.
+func TestStatedVolumeReadsOrdinalsAndRomanNumerals(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		{"The Wandering Inn: Season 2", "The Wandering Inn", 2},
+		{"Pimsleur Spanish: Level 3", "Pimsleur Spanish", 3},
+		{"Die Akademie - Staffel 4", "Die Akademie", 4},
+		{"Faraway Paladin: Volume II", "Faraway Paladin", 2},
+		{"Faraway Paladin: Volume I", "Faraway Paladin", 1},
+		{"Discworld, Book IX", "Discworld", 9},
+	} {
+		got, ok := StatedVolume(c.title, c.series)
+		if !ok || got != c.want {
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+	// The pair that must therefore disagree - the whole point of reading them.
+	if SameStatedVolume("The Inn: Season 1", "The Inn", "The Inn: Season 2", "The Inn") {
+		t.Error("two seasons must state different volumes")
+	}
+	if SameStatedVolume("Paladin: Volume I", "Paladin", "Paladin: Volume II", "Paladin") {
+		t.Error("two roman-numbered volumes must state different volumes")
+	}
+	// And an ordinary title states nothing, so it is not accidentally a volume.
+	if _, ok := StatedVolume("A Season for Ravens", ""); ok {
+		t.Error("an ordinary title must not read as a stated volume")
+	}
+}
+
+// A title can NEST division markers, and then the first number is not the whole
+// statement. The measured population is the Pimsleur courses: 36 units of one course
+// agreed on "Level 1" and differed only in their lessons, so a single-number
+// comparison read them as 36 records of one book.
+func TestSameStatedVolumeComparesNestedDivisions(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		same bool
+	}{
+		{"Pimsleur Albanian: Level 1 Lessons 1-5", "Pimsleur Albanian: Level 1 Lessons 6-10", false},
+		{"Pimsleur Albanian: Level 1 Lessons 1-5", "Pimsleur Albanian: Level 2 Lessons 1-5", false},
+		{"Pimsleur Albanian: Level 1 Lessons 1-5", "Pimsleur Albanian: Level 1 Lessons 1-5", true},
+		// One side stating nothing is never a disagreement - the duplicate the gates
+		// exist for.
+		{"Hammered: The Iron Druid Chronicles, Book 3", "Hammered", true},
+	} {
+		if got := SameStatedVolume(c.a, "", c.b, ""); got != c.same {
+			t.Errorf("SameStatedVolume(%q, %q) = %v, want %v", c.a, c.b, got, c.same)
+		}
+	}
+}
+
 // The stated-volume test is what keeps the serial case above from being read as a
 // duplicate, and it is deliberately silent when only ONE side states a number - that
 // pair ("Hammered" beside "Hammered, Book 3") is the duplicate the gates exist for.

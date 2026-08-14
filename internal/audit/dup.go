@@ -70,17 +70,27 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 	// census and the two writers' duplicate guards key by, so a pair this class
 	// clusters is a pair they would refuse to re-create.
 	addKey := func(fold, cleaned, series, via string) {
-		if fold == "" {
-			return
-		}
 		k := fold
-		// A cleaned title that carries no identity of its own is what is left of
-		// an omnibus or a box set once the series name comes off, and every such
-		// title reduces to the same word. Keying those by the SERIES too is what
-		// keeps two different collections apart while still letting two records of
-		// ONE collection meet.
+		// A cleaned title that carries no identity of its own is what is left of an
+		// omnibus or a box set once the series name comes off, and every such title
+		// reduces to the same word - which is why the identity RULE refuses to key it at
+		// all (a gate keying "Cars 2" and "Hawk 2" alike would refuse an unrelated
+		// sequel). This class wants those groups anyway, because two records of one
+		// omnibus are a real finding, so it keys them by the SERIES as well: that keeps
+		// two different collections apart while letting two records of ONE collection
+		// meet. The addition is W-DUP's, not the rule's - a REPORT can afford a group a
+		// mechanical refusal cannot - and it is applied on CarriesIdentity alone, which
+		// is the grouping this class was calibrated at (4,596 clusters), rather than on
+		// the rule's answer, whose numeric exception is about what a gate may refuse.
 		if !titlerule.CarriesIdentity(cleaned) {
-			k += "|" + d.seriesID
+			raw := titlerule.CompareKey(cleaned)
+			if raw == "" {
+				return
+			}
+			k = raw + "|" + d.seriesID
+		}
+		if k == "" {
+			return
 		}
 		for _, prev := range keys {
 			if prev.key == k {

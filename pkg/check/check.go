@@ -72,12 +72,14 @@ type Result struct {
 	Warnings []Problem
 	Catalog  *model.Catalog
 	// Identity is the NORMALIZED WORK IDENTITY index over Catalog (identity.go),
-	// built by the load because its own duplicate census needs it. It is handed
-	// over so a WRITER validating the tree it is about to write to - the bulk
-	// importer's create guard, the intake bot's duplicate gates - probes the index
-	// this load already built instead of rebuilding it: the build cleans every
-	// catalogued title, which is seconds over 280k works, and both answers would be
-	// identical by construction.
+	// built by the load because its own duplicate census needs it - so it is built
+	// UNCONDITIONALLY, and the ~8% it adds to a load over the 279k-work tree is the
+	// census's price, not a consumer's. It is handed over so a WRITER validating the
+	// tree it is about to write to - the bulk importer's create guard, the intake
+	// bot's duplicate gates - probes the index this load already built instead of
+	// rebuilding it, which would pay the title-clean pass twice for an answer
+	// identical by construction. A consumer that HOLDS it also holds the catalogue
+	// alive; see identity.go's retention note.
 	//
 	// nil when the load failed before a catalogue existed, which every consumer
 	// reads as "no index, no guard" rather than as an empty catalogue.

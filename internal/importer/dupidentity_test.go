@@ -199,6 +199,116 @@ func TestRefusedDuplicateWritesAConflictRow(t *testing.T) {
 	}
 }
 
+// F1: a title whose residual names no book is no identity. "Cars 2" against the
+// series "Cars" reduces to the bare "2", and so does every other sequel of a
+// one-word series - 199 such keys covered 3,287 works in the tree. The guard must
+// never refuse on one.
+func TestCreateAcceptsSequelsOfOneWordSeries(t *testing.T) {
+	dataDir := t.TempDir()
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CARS0002", title: "Cars 2", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, series: `{"name":"Cars","position":"2"}`},
+	))
+	if sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0HAWK0002", title: "Hawk 2", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, series: `{"name":"Hawk","position":"2"}`},
+	))
+	if sum.SkippedDuplicateIdentity != 0 {
+		t.Errorf("SkippedDuplicateIdentity = %d, want 0: two unrelated sequels are two books", sum.SkippedDuplicateIdentity)
+	}
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1; warnings = %v", sum.NewWorks, sum.Warnings)
+	}
+}
+
+// F2: a row whose TITLE states a volume is only a duplicate of a work the catalogue
+// PLACES at that volume. Silence is a veto, in all three ways the catalogue can be
+// silent - each one was a book we do not hold being refused.
+func TestCreateAcceptsAStatedVolumeNothingPlaces(t *testing.T) {
+	// (a) the series is not in the tree at all: the seed row states none, so nothing
+	// records where either book sits.
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CIRCUS01", title: "Circus of the Dead", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`},
+	)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CIRCUS02", title: "Circus of the Dead, Book 2", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Bob Reader"}`},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("no series in the tree: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+
+	// (b) the series exists and the matched work has NO membership in it (its
+	// placement was dropped, or it was never claimed).
+	dataDir = t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CIRCUS11", title: "Circus of the Dead", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`},
+		libexRow{asin: "B0OTHER011", title: "Something Else Entirely", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, series: `{"name":"Circus of the Dead","position":"5"}`},
+	)); sum.NewWorks != 2 {
+		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
+	}
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0CIRCUS12", title: "Circus of the Dead, Book 2", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Bob Reader"}`, series: `{"name":"Circus of the Dead","position":"2"}`},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("unplaced match: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+
+	// (c) the row states no series, so it carries no claim to confirm - only the
+	// marker in its title.
+	dataDir = seedPlainWork(t)
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0HAMMER07", title: "Hammered, Book 7", authors: `{"name":"Kevin Hearne"}`,
+			narrators: `{"name":"Ann Reader"}`},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("claim-less stated volume: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// F3: a COLLECTION is not the volume it collects. Both spellings the audit measured -
+// a "Books 1-3" range and a "Complete Boxed Set" - reduce to the plain title once the
+// packaging comes off.
+func TestCreateAcceptsACollectionBesideItsVolume(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0BRAVE001", title: "Bravelands", authors: `{"name":"Erin Hunter"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 400},
+		libexRow{asin: "B0REDRIS01", title: "Red Rising", authors: `{"name":"Pierce Brown"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 400},
+	)); sum.NewWorks != 2 {
+		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
+	}
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0BRAVEBOX", title: "Bravelands: Books 1-3", authors: `{"name":"Erin Hunter"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 1200},
+		libexRow{asin: "B0REDRIBOX", title: "Red Rising: The Complete Boxed Set", authors: `{"name":"Pierce Brown"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 1200},
+	))
+	if sum.SkippedDuplicateIdentity != 0 {
+		t.Errorf("SkippedDuplicateIdentity = %d, want 0: a boxed set is not the book it collects",
+			sum.SkippedDuplicateIdentity)
+	}
+	if sum.NewWorks != 2 {
+		t.Errorf("NewWorks = %d, want 2; warnings = %v", sum.NewWorks, sum.Warnings)
+	}
+}
+
 // The other two planning modes never build the index and never refuse: enrichment
 // matches by ASIN and creates nothing, and the recordings-only pass resolves a work
 // the catalogue must already hold. A row that the create guard would refuse is, in

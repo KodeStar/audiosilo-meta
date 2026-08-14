@@ -24,6 +24,17 @@ import (
 // "where does this row's work live" but "does the catalogue already hold this
 // book".
 //
+// THE VETOES ARE SHARED WITH THE INTAKE GATE (internal/issueform/dupidentity.go),
+// deliberately: a bulk re-import that contradicted an intake verdict would make the
+// two doors disagree about the same book. Three are the same rule on both sides - the
+// AMBIGUITY veto (a key naming several works supports no verdict), the POSITIVE
+// VOLUME test (a title that states its volume is only a duplicate of a work the
+// catalogue places at that volume) and the COLLECTION veto (inherited from
+// check.WorkIdentity.matches). What differs is only the EVIDENCE each side has: a row
+// carries its own series claim, a submission's series comes from the form or the
+// title, and only the intake side has a title to compose, so only it keeps a marker
+// rather than stripping.
+//
 // IT SKIPS, IT NEVER MERGES. A match here is coarser evidence than the slug chain
 // (that is the whole point), and internal/audit measured five separate vetoes a
 // MERGE has to clear - a position conflict inside a series, disjoint series
@@ -144,15 +155,32 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	if p.slugChainReaches(match.work, workTitle, fullTitle, posSuffix, authors, claim) {
 		return false
 	}
-	// The POSITION veto, the strongest of the five internal/audit measured: the row
-	// claims a place in a series the matched work occupies DIFFERENTLY, so the
-	// catalogue itself says they are different volumes - whatever their titles
-	// reduce to. It is read from the series record (seriesClaim.compatible: where the
-	// work ended up, else what it asked for), never from the titles, because 14% of
-	// the audit's clusters are same-title distinct volumes whose titles state no
-	// number at all.
-	if ws := p.works[match.work]; ws != nil && !claim.compatible(ws) {
+	// The POSITION veto, the strongest of the five internal/audit measured, in its
+	// two halves - and the ORDER matters, because they answer different questions.
+	ws := p.works[match.work]
+	// (1) NEGATIVE: the row claims a place in a series the matched work occupies
+	// DIFFERENTLY, so the catalogue itself says they are different volumes - whatever
+	// their titles reduce to. Read from the series record (seriesClaim.compatible:
+	// where the work ended up, else what it asked for), never from the titles,
+	// because 14% of the audit's clusters are same-title distinct volumes whose
+	// titles state no number at all.
+	if ws != nil && !claim.compatible(ws) {
 		return false
+	}
+	// (2) POSITIVE: when the ROW'S OWN TITLE states which volume it is, the
+	// catalogue must positively place the matched work at THAT volume for the two to
+	// be one book. Silence is a veto here, not agreement, which is the opposite of
+	// what compatible() alone does - it is vacuously true about a work no series
+	// mentions, and SameStatedVolume reads one-sided silence as "no disagreement".
+	// Between them, "Circus of the Dead, Book 2" was refused against the plain
+	// "Circus of the Dead" whenever the series was not in the tree, or the matched
+	// work had no membership, or the row stated no series at all - three ways to
+	// lose a book we do not hold. A title that states a number is making a claim
+	// the catalogue can confirm or cannot; only confirmation counts.
+	if _, stated := titlerule.StatedVolume(workTitle, ident.series); stated {
+		if ws == nil || !claim.places(ws) {
+			return false
+		}
 	}
 
 	p.summary.SkippedDuplicateIdentity++
@@ -201,7 +229,12 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 			continue
 		}
 		was := p.runIdentified[slug]
-		if !titlerule.SameStatedVolume(workTitle, ident.series, was.title, was.series) {
+		// The same two title-side rules check.WorkIdentity.matches applies to the disk
+		// half, spelled here because this half compares against the run's own state
+		// rather than against a catalogued record: no stated-volume disagreement, and
+		// a collection is not the volume it collects.
+		if !titlerule.SameStatedVolume(workTitle, ident.series, was.title, was.series) ||
+			titlerule.IsCollection(workTitle) != titlerule.IsCollection(was.title) {
 			continue
 		}
 		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, series: was.series})

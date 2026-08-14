@@ -64,12 +64,24 @@ import (
 // reached after the identifier gate has returned, so no submission an old gate
 // decided about gets a new verdict.
 //
-// THE AMBIGUITY VETO is applied on both sides of the seam, and that symmetry is
-// deliberate: neither writer refuses a submission whose key names SEVERAL catalogued
-// works, because a key that cannot say which record it duplicates cannot support a
-// verdict naming one of them (the measured shape is a serial published under its bare
-// series name). internal/importer's guard states the same rule for a bulk row; a
-// difference between the two would be an intake verdict a re-import would contradict.
+// THE VETOES ARE SHARED WITH THE BULK GUARD, deliberately: an intake verdict a
+// re-import would contradict is worse than either answer on its own. Three of them
+// are the same rule on both sides of the seam -
+//
+//   - AMBIGUITY: a key naming SEVERAL catalogued works supports no verdict naming one
+//     of them (the bare-series-name serial shape);
+//   - the POSITIVE VOLUME test: a title that STATES which volume it is is only a
+//     duplicate of a work the catalogue places at that volume - silence is a veto, not
+//     agreement (placesMatch here, seriesClaim.places there);
+//   - COLLECTION: a boxed set is not the volume it collects (applied inside
+//     check.WorkIdentity.matches, so both writers and the census inherit it).
+//
+// Two differences are deliberate rather than accidental. The evidence differs at the
+// SOURCE - a bulk row carries its own series claim, while a submission's series is
+// resolved from the form or from the title - and only the intake side has a title to
+// COMPOSE, so it additionally keeps a decoration marker rather than stripping onto a
+// work whose relationship to the submission nothing records. Where the bulk guard
+// would simply decline to refuse, this side declines to REWRITE as well.
 
 // titleContext is everything the three gates derive from the submitted title, and it
 // is derived ONCE per submission.
@@ -91,39 +103,83 @@ type titleContext struct {
 	// seriesRec is the catalogued series record, or nil - the positions half of the
 	// series-volume gate, which only a record we hold can answer.
 	seriesRec *model.Series
-	// newVolume: the title states a volume seriesRec does NOT hold. It is what stops
-	// the strip from collapsing a new volume of a serial published under one title
-	// onto its sibling ("Bravelands, Book 4" cleaned to "Bravelands" lands on the
-	// slug volume 1 occupies), and what makes the identity gate stand down for the
-	// same submission.
-	newVolume bool
+	// statesVolume: the title itself says which volume it is (titlerule.StatedVolume,
+	// against series when one resolved and against nothing when none did). A title
+	// that states a volume is making a claim, and the catalogue can only confirm it
+	// through a series record - so the two gates below treat an UNCONFIRMED claim as a
+	// veto rather than as agreement, and the strip keeps the marker that carries it.
+	statesVolume bool
+	// volume is that number, meaningful only when statesVolume.
+	volume float64
+	// memberAt is the work seriesRec records at that volume, or "" - the whole of
+	// what the catalogue can say to confirm the claim.
+	memberAt string
+}
+
+// placesMatch reports whether the catalogue positively places workID at the volume
+// the title states - the POSITIVE test, the intake mirror of
+// internal/importer's seriesClaim.places.
+//
+// A title stating no volume never needs it (nothing to confirm). A title that DOES
+// state one needs a series record we hold, a position in it, and that position to be
+// occupied by this very work: anything less is silence, and silence about a stated
+// volume is a veto. Without it "Circus of the Dead, Book 2" was a duplicate of the
+// plain "Circus of the Dead" whenever no series resolved - a book we do not hold,
+// refused on the strength of a marker the key had thrown away.
+func (ctx titleContext) placesMatch(workID string) bool {
+	return !ctx.statesVolume || (ctx.memberAt != "" && ctx.memberAt == workID)
+}
+
+// sameBookAs reports whether this submission could be a second record of a
+// catalogued work, on the two TITLE-side rules the context can answer: the positive
+// volume test, and the collection veto (a boxed set is not the volume it collects -
+// titlerule.IsCollection, the same rule check.WorkIdentity.matches applies at the
+// identity gate).
+//
+// It is what the STRIP consults before rewriting a title onto an existing work's
+// slug. Deliberately NOT the author rule: the slug gate that follows has been
+// author-blind since long before this change, and the two would then disagree.
+func (ctx titleContext) sameBookAs(w *model.Work) bool {
+	return ctx.placesMatch(w.ID) && titlerule.IsCollection(ctx.title) == titlerule.IsCollection(w.Title)
 }
 
 // titleContextFor resolves the context: the series the title is about, the record we
 // hold for it, and whether the title states a volume that record has no work at.
 func (c *composer) titleContextFor(title, formSeries string) titleContext {
-	ctx := titleContext{title: title, series: formSeries}
+	ctx := titleContext{title: title}
 	if formSeries != "" {
 		if s := c.series[slugify(formSeries)]; s != nil && strings.EqualFold(s.Name, formSeries) {
 			ctx.seriesRec = s
 		}
+		// A name the INDEX would not read a title against is not read against one
+		// here either (WorkIdentity.Admits): a one-word series name strips its own
+		// titles down to their volume number, and a fold-ambiguous one would make
+		// what this submission COMPOSES depend on how some unrelated series spells
+		// its name. The series RECORD above is still resolved - it is addressed by
+		// slug, which is unambiguous - so the position gate keeps working while the
+		// title is left alone.
+		if c.identityIndex().Admits(formSeries) {
+			ctx.series = formSeries
+		}
 	}
-	if ctx.seriesRec == nil {
+	if ctx.series == "" {
 		// The second door: a series the submitter did not name but the title spells
 		// out. It is what lets the strip see a series reference on a form whose series
-		// fields are empty, which most retailer-decorated titles arrive as.
+		// fields are empty, which most retailer-decorated titles arrive as. Its
+		// candidates are the admitted list, so both doors apply one rule.
 		if name, id, ok := c.identityIndex().SeriesNameIn(title); ok {
-			ctx.seriesRec = c.series[id]
-			if ctx.series == "" {
-				ctx.series = name
+			ctx.series = name
+			if ctx.seriesRec == nil {
+				ctx.seriesRec = c.series[id]
 			}
 		}
 	}
-	if ctx.seriesRec != nil {
-		if vol, stated := titlerule.StatedVolume(title, ctx.seriesRec.Name); stated {
-			_, filled := workAtPosition(ctx.seriesRec, vol)
-			ctx.newVolume = !filled
-		}
+	// The volume the title states - against the series it is read against, which may
+	// be nothing at all: "Hammered, Book 7" states volume 7 whether or not a series
+	// resolved, and that claim is exactly what the gates must not ignore.
+	ctx.volume, ctx.statesVolume = titlerule.StatedVolume(title, ctx.series)
+	if ctx.statesVolume && ctx.seriesRec != nil {
+		ctx.memberAt, _ = workAtPosition(ctx.seriesRec, ctx.volume)
 	}
 	return ctx
 }
@@ -140,20 +196,24 @@ func (c *composer) titleContextFor(title, formSeries string) titleContext {
 // shape as advisory - so the gate requires the number to name a slot the series
 // actually fills, and reports rather than merges.
 func (c *composer) checkSeriesVolume(ctx titleContext) bool {
-	if ctx.seriesRec == nil || ctx.newVolume {
+	if !ctx.statesVolume || ctx.memberAt == "" {
 		return false
 	}
-	vol, stated := titlerule.StatedVolume(ctx.title, ctx.seriesRec.Name)
-	if !stated {
+	member := c.works[ctx.memberAt]
+	if member == nil {
+		return false // a dangling membership; metacheck reports it
+	}
+	// A COLLECTION is not the volume it collects: "Bravelands: Books 1-3" claiming
+	// position 1 is a boxed set beside book one, not a second record of it
+	// (titlerule.IsCollection, the audit's multilingual rule, and the same veto
+	// check.WorkIdentity.matches applies at the identity gate).
+	if titlerule.IsCollection(ctx.title) != titlerule.IsCollection(member.Title) {
 		return false
 	}
-	member, filled := workAtPosition(ctx.seriesRec, vol)
-	if !filled || c.works[member] == nil {
-		return false // no work there, or a dangling membership metacheck reports
-	}
-	c.failDuplicateWork(member, "the title states %q volume %s, and %s is already recorded at that position (%s) - "+
+	c.failDuplicateWork(ctx.memberAt, "the title states %q volume %s, and %s is already recorded at that position (%s) - "+
 		"use the Add a recording form if this is another narration of it, or correct the title if it is a different book",
-		ctx.seriesRec.Name, formatVolume(vol), member, c.entryLocation(pack.FamilyWorks, member, ""))
+		ctx.seriesRec.Name, formatVolume(ctx.volume), ctx.memberAt,
+		c.entryLocation(pack.FamilyWorks, ctx.memberAt, ""))
 	return true
 }
 
@@ -214,14 +274,20 @@ func (c *composer) checkDecoratedTitle(ctx titleContext) (titleContext, bool) {
 		// for the duplicate it might be.
 		return ctx, true
 	}
-	if ctx.newVolume && c.works[slugify(cleaned)] != nil {
-		// The residual names a work we already hold, and the submission is a volume
-		// that series does not have: the collision is with a SIBLING, so the title
-		// keeps the marker that tells them apart. Stripping here would hand the
-		// submitter the slug gate's duplicate verdict for a book we do not hold, which
-		// is the one failure a gate must not have.
-		c.note("Title %q carries retailer decoration (%s), but %q is already a work and this is a "+
-			"volume the series does not hold yet - the title is kept as submitted so the volume stays distinct",
+	if collides := c.works[slugify(cleaned)]; collides != nil && !ctx.sameBookAs(collides) {
+		// The residual names a work we already hold that this submission is NOT a second
+		// record of, so the title keeps the decoration that tells the two apart.
+		// Stripping here would hand the submitter the slug gate's duplicate verdict for a
+		// book we do not hold, which is the one failure a gate must not have - and that
+		// gate is author-blind, so its message would not even be about their book.
+		//
+		// Two shapes reach it, and both were measured as wrong verdicts: a title stating
+		// a volume nothing places ("Hammered, Book 7" on a form whose series fields are
+		// blank cleans to "Hammered", and volume 7 of a serial we hold one volume of is
+		// not that volume) and a COLLECTION ("Hammered: The Complete Boxed Set" cleans to
+		// "Hammered", and a boxed set is not the book it collects).
+		c.note("Title %q carries retailer decoration (%s), but %q is already a work this submission "+
+			"is not a second record of - the title is kept as submitted so the two stay distinct",
 			ctx.title, strings.Join(codes, ", "), cleaned)
 		return ctx, true
 	}
@@ -271,15 +337,6 @@ func (c *composer) checkNormalizedIdentity(ctx titleContext, lang string, author
 	if len(authorSlugs) == 0 {
 		return false
 	}
-	// The POSITION veto, in the intake bot's own terms: the submission states a volume
-	// its series does not hold, so the catalogue itself says this is a book we do not
-	// have - whatever its title reduces to once the marker comes off. It is the same
-	// judgement internal/importer's seriesClaim.compatible makes on the bulk side, and
-	// without it a serial published under one title ("Bravelands, Book 4") would be
-	// refused as a duplicate of its own volume 1.
-	if ctx.newVolume {
-		return false
-	}
 	authors := importer.ToSet(authorSlugs)
 	matches := c.identityIndex().Match(ctx.title, ctx.series, lang, authors, authors)
 	// The AMBIGUITY veto, the same one the bulk guard applies: a key naming several
@@ -291,6 +348,17 @@ func (c *composer) checkNormalizedIdentity(ctx titleContext, lang string, author
 		return false
 	}
 	m := matches[0]
+	// The POSITION veto's POSITIVE half, the intake mirror of
+	// internal/importer's seriesClaim.places: when the submitted title STATES which
+	// volume it is, the catalogue must place the matched work at that very volume.
+	// Gate 1 has already answered the confirmable case - a stated volume the series
+	// really fills is a duplicate verdict naming the member - so what reaches here
+	// stating a volume is a claim nothing confirms: a serial published under one title
+	// ("Bravelands, Book 4"), or a marker on a form that resolved no series at all.
+	// Both are books we may not hold, and silence is not agreement.
+	if !ctx.placesMatch(m.Work.ID) {
+		return false
+	}
 	c.failDuplicateWork(m.Work.ID, "%q normalizes to the same title and authors as the catalogued work %q (%q%s) at %s - "+
 		"use the Add a recording form if this is another narration of it, or a correct-data form if its title needs fixing",
 		ctx.title, m.Work.ID, m.Work.Title, againstSeries(m.Series), c.entryLocation(pack.FamilyWorks, m.Work.ID, ""))

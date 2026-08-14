@@ -25,9 +25,32 @@ import (
 //
 // ONE index per LOAD, not per consumer: the census builds it during the load and
 // Result.Identity hands it to the writers, so the title-clean pass over every
-// catalogued work (a couple of seconds over 280k works) happens once per run
-// however many defences ask. A writer that rebuilt it would pay that pass twice for
-// the same answer.
+// catalogued work happens once per run however many defences ask. A writer that
+// rebuilt it would pay that pass twice for the same answer.
+//
+// THE COST IS THE CENSUS'S, and it is unconditional. Every check.Load pays it
+// because the census is a rule of every load - measured at 20.6s -> 22.3s over the
+// 279k-work tree, about 8% - and no consumer can opt out of that, including a run
+// whose mode never probes the index (enrichment, recordings-only, every non-add-work
+// intake template). Those runs pay nothing EXTRA, which is the honest version of the
+// claim: taking the index costs nothing, having a census costs 1.7s.
+//
+// Building it lazily was considered and does not help: the census needs it in the
+// same load, so the only thing a lazy accessor would defer is work that has already
+// happened. What it WOULD buy is retention, and that is the real trade below.
+//
+// RETENTION. The index holds a pointer to every keyed work, so a consumer that keeps
+// it keeps the CATALOGUE alive - recordings and chapter lists included - for as long
+// as it holds the index. That is new for the bulk importer, which used to let the
+// catalogue go once loadExisting had derived its own maps; it is nothing new for the
+// intake bot, which already holds every work in its dedup map. It is taken only for
+// the mode that probes it (create), so enrichment and recordings-only release the
+// catalogue exactly as before, and the create path needs random access to every key
+// for the whole planning pass - there is no window in which a smaller structure
+// would do. A compact projection was rejected for a concrete reason rather than a
+// vague one: the census reports through pathIndex, which is keyed by the *model.Work
+// pointer, so a value-typed index would need the pointers anyway and the tree would
+// be held by that map instead.
 //
 // WHY pkg/check MAY IMPORT internal/titlerule. It is legal (an internal package is
 // importable by anything under audiosilo-meta/, including from a package a sibling
@@ -52,6 +75,10 @@ type WorkIdentity struct {
 	// narrowed at build time (see newSeriesNameList) and sorted by id, so every
 	// derivation over them is deterministic and no lookup re-applies the filters.
 	seriesNames []seriesNamed
+	// droppedFolds are the folds newSeriesNameList refused for AMBIGUITY - two or
+	// more series spell them - so Admits can tell "the catalogue does not hold this
+	// name" from "it holds it twice", which are opposite answers.
+	droppedFolds map[string]bool
 }
 
 type seriesNamed struct {
@@ -67,8 +94,9 @@ type seriesNamed struct {
 // caller needs a nil check.
 func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 	ix := &WorkIdentity{
-		byKey:    map[string][]*model.Work{},
-		seriesOf: map[string]string{},
+		byKey:        map[string][]*model.Work{},
+		seriesOf:     map[string]string{},
+		droppedFolds: map[string]bool{},
 	}
 	if cat == nil {
 		return ix
@@ -83,7 +111,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 			members[sw.Work] = append(members[sw.Work], s.ID)
 		}
 	}
-	ix.seriesNames = newSeriesNameList(cat.Series)
+	ix.seriesNames, ix.droppedFolds = newSeriesNameList(cat.Series)
 	for _, w := range cat.Works {
 		series := titlerule.SeriesNameFor(w.Title, seriesNamesOf(members[w.ID], byID))
 		ix.seriesOf[w.ID] = series
@@ -109,7 +137,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 //     entirely: the text cannot say which of them it meant, and the safe answer to
 //     an ambiguous identity is no answer (the same posture the importer's guard
 //     takes on an ambiguous key).
-func newSeriesNameList(all []*model.Series) []seriesNamed {
+func newSeriesNameList(all []*model.Series) (admitted []seriesNamed, droppedFolds map[string]bool) {
 	byFold := map[string][]seriesNamed{}
 	for _, s := range all {
 		if titlerule.CountSignificantWords(s.Name) < minSeriesNameWords {
@@ -121,14 +149,17 @@ func newSeriesNameList(all []*model.Series) []seriesNamed {
 		}
 		byFold[fold] = append(byFold[fold], seriesNamed{id: s.ID, name: s.Name})
 	}
-	out := make([]seriesNamed, 0, len(byFold))
-	for _, group := range byFold {
+	droppedFolds = map[string]bool{}
+	admitted = make([]seriesNamed, 0, len(byFold))
+	for fold, group := range byFold {
 		if len(group) == 1 {
-			out = append(out, group[0])
+			admitted = append(admitted, group[0])
+			continue
 		}
+		droppedFolds[fold] = true
 	}
-	sort.Slice(out, func(i, j int) bool { return out[i].id < out[j].id })
-	return out
+	sort.Slice(admitted, func(i, j int) bool { return admitted[i].id < admitted[j].id })
+	return admitted, droppedFolds
 }
 
 // minSeriesNameWords is the significant-word floor for a series name this index
@@ -183,6 +214,41 @@ func (ix *WorkIdentity) Keys() []string {
 	return out
 }
 
+// Admits reports whether a series NAME is one this index will read a title against
+// at all - it passes the two narrowings newSeriesNameList applies.
+//
+// It is the door a caller knocks on when the name did not come from the index: the
+// intake bot's submitter may TYPE a series name, and reading a title against a name
+// the index would refuse to find is the same rule with two answers. Both halves
+// matter there. A one-word name ("Cars") strips its own titles down to their volume
+// number, which is the very hazard IdentityTitleKey refuses to key; a fold-ambiguous
+// name makes what a submission COMPOSES depend on whether some unrelated series
+// happens to spell the name the same way.
+func (ix *WorkIdentity) Admits(name string) bool {
+	if titlerule.CountSignificantWords(name) < minSeriesNameWords {
+		return false
+	}
+	fold := titlerule.FoldKey(name)
+	if fold == "" {
+		return false
+	}
+	for _, s := range ix.seriesNames {
+		if titlerule.FoldKey(s.name) == fold {
+			return true
+		}
+	}
+	// A name the catalogue does not hold at all is admitted on its own merits: the
+	// index cannot say whether it is ambiguous, and refusing every new series' name
+	// would stop the strip working for the books that arrive before their series does.
+	return !ix.holdsFold(fold)
+}
+
+// holdsFold reports whether any series the index DROPPED spells this fold - the
+// ambiguity case, where two or more series share it.
+func (ix *WorkIdentity) holdsFold(fold string) bool {
+	return ix.droppedFolds[fold]
+}
+
 // SeriesNameIn returns the series the free text names - the LONGEST spelling of any
 // catalogued series name occurring in it at word boundaries - and that series' id.
 // The candidates are the narrowed list newSeriesNameList built.
@@ -234,12 +300,10 @@ func (ix *WorkIdentity) Match(title, series, lang string, all, identity map[stri
 // list, and the subset that is not role-credited - see IdentityAuthorsMatch). A
 // caller with no role information passes the same set twice.
 //
-// It deliberately does NOT report a pair whose two titles state DIFFERENT volume
-// numbers: those are siblings of a serial, not two records of one book, and the
-// audit measured that shape at 14% of its clusters. Everything else a merge would
-// need to clear - a collection on one side, an impossible runtime ratio, a position
-// conflict - is left to the caller, because the callers of this are REFUSING a new
-// record (recoverable) rather than merging two existing ones (not).
+// What it applies and what it leaves to the caller is matches' business - see there.
+// The callers of this are REFUSING a new record (recoverable) rather than merging two
+// existing ones (not), which is why the vetoes it cannot express are the caller's to
+// add rather than a reason to widen the key.
 func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity map[string]bool) []IdentityMatch {
 	if key == "" {
 		return nil
@@ -256,19 +320,36 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 }
 
 // matches is THE pairwise predicate: given a candidate work already keyed the same,
-// does the incoming record name the same book? Language compatible, author sets
-// nested, and no disagreement about which volume each side is.
+// does the incoming record name the same book? Four rules, and each of them is a
+// question the KEY cannot answer:
+//
+//   - the languages are compatible (a translation is a different work; an unknown
+//     language never separates);
+//   - the author sets are nested (IdentityAuthorsMatch);
+//   - neither side states a volume the other contradicts (SameStatedVolume);
+//   - exactly one side does not announce itself a COLLECTION (titlerule.IsCollection,
+//     the audit's multilingual rule). A boxed set and the volume it collects
+//     normalize alike once the packaging words come off - "Bravelands: Books 1-3"
+//     against "Bravelands", "Red Rising: The Complete Boxed Set" against "Red
+//     Rising" - and are not two records of one book. This lives in the predicate
+//     rather than in each caller because all three consumers need it and a veto
+//     documented as "the caller's" was implemented by none of them.
 //
 // Every consumer goes through it, in both directions of the seam: MatchKey asks it
 // per candidate for an incoming ROW, and checkNormalizedDuplicateWorks asks it for
 // two CATALOGUED works by reading one side's title, language and author sets off
 // that work (the same adaptation IdentityEqualWorks makes of IdentityAuthorsMatch).
-// A second spelling of these three rules is exactly what would let the census and
-// the writers disagree about what one book is.
+// A second spelling of these rules is exactly what would let the census and the
+// writers disagree about what one book is.
+//
+// What is deliberately NOT here: the two vetoes that need evidence this index does
+// not hold - a runtime ratio (recordings) and a series POSITION conflict (a row's
+// claim, or a membership) - which each writer applies with what it has.
 func (ix *WorkIdentity) matches(w *model.Work, title, series, lang string, all, identity map[string]bool) bool {
 	return languagesCompatible(w.Language, lang) &&
 		IdentityAuthorsMatch(w, all, identity) &&
-		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID])
+		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID]) &&
+		titlerule.IsCollection(title) == titlerule.IsCollection(w.Title)
 }
 
 // IdentityAuthorsMatch reports whether an incoming record's author sets meet a
