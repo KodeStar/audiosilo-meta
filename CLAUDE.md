@@ -695,11 +695,18 @@ family's primary key and are guarded by `TestServeLookupsAreIndexed` like every
 other query constant. A third route table (`sitemapRoutes()`) registered
 unconditionally - a sitemap needs no shell, so an API-only deployment serves one
 too - with gzip, no CORS, `Cache-Control: public, max-age=3600` and an ETag over
-the artifact's identity plus the origin (the dist's identity deliberately not:
-no byte of the shell reaches these documents). The file name is matched
+the artifact's identity plus the origin, both landing on the 304 and the composed
+200 ONLY (a query or render failure in between - a hot swap closing the db
+mid-request - would otherwise ship an error body under an hour of public caching
+and the document's own validator, which a shared cache then 304-renews for the
+life of the release). The dist's identity is deliberately absent from a SHARD (no
+byte of the shell reaches one) and the index's validator carries exactly the one
+bit of it that reaches a document: whether the dist has a static sitemap to list,
+so a UI-only redeploy cannot 304-renew a wrong index. The file name is matched
 STRICTLY (`(works|people|series)-<n>.xml`, no leading zeros, so one shard has one
 URL), and a bad name, an out-of-range shard or an empty family is a 404 that
-costs no query. With no artifact the index degrades to the dist's static file
+costs no query. With no artifact the index degrades to the dist's static file -
+`no-store`, because that stand-in describes the boot window and not the site -
 and the shards answer the API's 503. Rendering is `encoding/xml` and
 deterministic - two renders of one snapshot are byte-identical. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.

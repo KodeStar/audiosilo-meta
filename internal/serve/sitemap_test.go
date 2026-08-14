@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -341,6 +342,65 @@ func TestShardWindowsThePageItPromises(t *testing.T) {
 	}
 }
 
+// withShardCap lowers the protocol cap for one test. The package's tests do not
+// run in parallel, and the original is restored on cleanup.
+func withShardCap(t *testing.T, n int) {
+	t.Helper()
+	old := sitemapShardURLs
+	sitemapShardURLs = n
+	t.Cleanup(func() { sitemapShardURLs = old })
+}
+
+// TestShardRoutePartitionsThroughTheMux drives shard > 0 over HTTP, which 50,000
+// fixture records cannot: with the cap at 2, the two works shards must partition
+// the family exactly as the index promises - the boundary ids in the right files,
+// no id in both, and the shard past the end a 404.
+func TestShardRoutePartitionsThroughTheMux(t *testing.T) {
+	withShardCap(t, 2)
+	ts := sitemapSite(t, fixtureCatalog())
+
+	_, index, _ := getSitemap(t, ts.URL, sitemapIndexPath)
+	for _, want := range []string{"/sitemaps/works-0.xml", "/sitemaps/works-1.xml"} {
+		if !strings.Contains(index, want) {
+			t.Errorf("index does not promise %s:\n%s", want, index)
+		}
+	}
+	if strings.Contains(index, "/sitemaps/works-2.xml") {
+		t.Errorf("index promises a third shard for 4 works:\n%s", index)
+	}
+
+	// The promise is kept: shard 0 is the first two ids in id order, shard 1 the
+	// rest, and nothing appears twice.
+	want := [][]string{
+		{testSiteURL + "/works/edgedancer", testSiteURL + "/works/project-hail-mary"},
+		{testSiteURL + "/works/the-way-of-kings", testSiteURL + "/works/words-of-radiance"},
+	}
+	seen := map[string]int{}
+	for shard, wantLocs := range want {
+		path := "/sitemaps/works-" + strconv.Itoa(shard) + ".xml"
+		code, body, _ := getSitemap(t, ts.URL, path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s = %d, want 200\n%s", path, code, body)
+		}
+		var locs []string
+		for _, u := range parseURLSet(t, body).URLs {
+			locs = append(locs, u.Loc)
+			seen[u.Loc]++
+		}
+		if strings.Join(locs, "\n") != strings.Join(wantLocs, "\n") {
+			t.Errorf("%s holds\n%s\nwant\n%s", path, strings.Join(locs, "\n"), strings.Join(wantLocs, "\n"))
+		}
+	}
+	for loc, n := range seen {
+		if n != 1 {
+			t.Errorf("%s appears in %d shards, want exactly 1", loc, n)
+		}
+	}
+	if code, _, _ := getSitemap(t, ts.URL, "/sitemaps/works-2.xml"); code != http.StatusNotFound {
+		t.Errorf("shard past the end = %d, want 404", code)
+	}
+}
+
 // TestSitemapShard404s is the whole refusal surface of the shard route: an
 // unknown family, a non-canonical number, junk, a traversal attempt, a shard past
 // the family's end and every shard of an empty family.
@@ -449,6 +509,64 @@ func TestSitemapConditionalRequests(t *testing.T) {
 	}
 }
 
+// TestSitemapErrorCarriesNoCacheHeaders is the ordering rule: the validator and
+// the hour of public caching belong to a document that was actually composed. A
+// 500 - here a hot swap closing the db out from under the request - must carry
+// neither, or a shared cache would store the error and then 304-renew it under
+// the document's own ETag for the life of the release.
+func TestSitemapErrorCarriesNoCacheHeaders(t *testing.T) {
+	srv, ts := newPageServerFrom(t, quietConfig(t, fixtureCatalog(), markedShells))
+	// The stats are already loaded, so the shard still EXISTS - the failure lands
+	// where the document is rendered, which is the path under test.
+	srv.current().close()
+
+	code, body, hdr := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
+	if code != http.StatusInternalServerError {
+		t.Fatalf("shard over a closed db = %d, want 500\n%s", code, body)
+	}
+	if etag := hdr.Get("ETag"); etag != "" {
+		t.Errorf("the 500 carries validator %q: a cache could revalidate the error into a 304", etag)
+	}
+	if cc := hdr.Get("Cache-Control"); cc != "" {
+		t.Errorf("the 500 carries Cache-Control %q, want none", cc)
+	}
+}
+
+// TestSitemapIndexETagTracksTheStaticEntry: the index lists the dist's own
+// sitemap when the dist carries one, so that bit is part of the document and
+// must be part of its validator - otherwise a UI-only redeploy under an
+// unchanged data release 304-renews the wrong index forever. The SHARDS have no
+// such dependency and must be unmoved by it.
+func TestSitemapIndexETagTracksTheStaticEntry(t *testing.T) {
+	// One artifact, two dists: same snapshot identity, same origin.
+	bare := quietConfig(t, fixtureCatalog(), markedShells)
+	withStatic := bare
+	withStatic.Site = entitySite(t, markedShells)
+	writeSiteFile(t, withStatic.Site, staticSitemapFile, `<urlset></urlset>`)
+
+	_, without := newPageServerFrom(t, bare)
+	_, with := newPageServerFrom(t, withStatic)
+
+	_, body, hdrWithout := getSitemap(t, without.URL, sitemapIndexPath)
+	if strings.Contains(body, staticSitemapFile) {
+		t.Fatalf("the bare dist's index lists a static sitemap:\n%s", body)
+	}
+	_, body, hdrWith := getSitemap(t, with.URL, sitemapIndexPath)
+	if !strings.Contains(body, staticSitemapFile) {
+		t.Fatalf("the static sitemap did not reach the index:\n%s", body)
+	}
+	if hdrWithout.Get("ETag") == hdrWith.Get("ETag") {
+		t.Errorf("both indexes validate as %q, so the static entry can change unseen", hdrWith.Get("ETag"))
+	}
+
+	_, _, shardWithout := getSitemap(t, without.URL, "/sitemaps/works-0.xml")
+	_, _, shardWith := getSitemap(t, with.URL, "/sitemaps/works-0.xml")
+	if shardWithout.Get("ETag") != shardWith.Get("ETag") {
+		t.Errorf("shard validators differ across dists (%q vs %q): no byte of the dist reaches a shard",
+			shardWithout.Get("ETag"), shardWith.Get("ETag"))
+	}
+}
+
 // TestSitemapGzip: the documents wear the shared gzip middleware, and a 304
 // still announces no encoding (a client applies a 304's content headers to its
 // CACHED copy - see gzipResponseWriter.ensureHeader).
@@ -518,9 +636,15 @@ func TestSitemapsWithoutAnArtifact(t *testing.T) {
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
 
-	code, body, _ := getSitemap(t, ts.URL, sitemapIndexPath)
+	code, body, degraded := getSitemap(t, ts.URL, sitemapIndexPath)
 	if code != http.StatusOK || !strings.Contains(body, "STATIC") {
 		t.Errorf("index while degraded = %d %q, want the dist's static file", code, body)
+	}
+	// The stand-in describes the boot window, not the site. Without this a
+	// crawler that arrived during the window would keep the twelve-URL static
+	// index for a tenth of the file's age - hours after the real one came live.
+	if cc := degraded.Get("Cache-Control"); cc != "no-store" {
+		t.Errorf("degraded index Cache-Control = %q, want no-store", cc)
 	}
 	code, _, hdr := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
 	if code != http.StatusServiceUnavailable {

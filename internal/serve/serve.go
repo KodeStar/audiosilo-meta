@@ -461,6 +461,12 @@ func (s *Server) api(h http.HandlerFunc) http.Handler {
 	return s.public(s.requireSnapshot(h))
 }
 
+// noArtifactMsg is the one wording of the no-artifact 503, shared by the API
+// gate below and the sitemap routes' own copy of it (sitemapUnavailable, which
+// is outside this middleware because those routes are not API). Two spellings of
+// one condition is a difference a client could read as a difference.
+const noArtifactMsg = "no data loaded yet: the server is fetching the latest release"
+
 // requireSnapshot answers 503 while no artifact has loaded, so every data
 // handler can assume s.current() is non-nil. Only a poll-only boot that could
 // not reach GitHub is in that state (see New); it is temporary by construction,
@@ -469,7 +475,7 @@ func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
 			w.Header().Set("Retry-After", s.retryAfter())
-			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
+			writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
 			return
 		}
 		next(w, r)

@@ -26,7 +26,9 @@ import (
 // Everything is rendered from the LIVE snapshot plus the configured origin: no
 // artifact change, no SchemaVersion question, and no shell - so unlike the entity
 // pages these routes are registered whether or not a site directory is
-// configured (an API-only deployment simply has no static entry to list).
+// configured (an API-only deployment simply has no static entry to list). The
+// dist reaches ONE bit of one document, the index's static entry, which is why
+// that bit rides in the index's validator and in no other.
 
 const (
 	// sitemapIndexPath is the document robots.txt points crawlers at.
@@ -43,14 +45,18 @@ const (
 	staticSitemapFile = "sitemap-0.xml"
 	// sitemapNS is the sitemap protocol's namespace, on both document kinds.
 	sitemapNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
-	// sitemapShardURLs is the protocol's per-file URL cap (50,000).
-	sitemapShardURLs = 50000
 	// sitemapMaxAge bounds how long a sitemap may be reused without revalidating.
 	// The content changes exactly when the artifact does, which the ETag captures;
 	// an hour only bounds how long a crawler can miss a data release, and a
 	// revalidation costs a 304 rather than a re-render.
 	sitemapMaxAge = "public, max-age=3600"
 )
+
+// sitemapShardURLs is the protocol's per-file URL cap (50,000). It is a var
+// rather than a const for ONE reason: a test lowers it to drive a multi-shard
+// partition through the mux, which 50,000 fixture records cannot. Nothing in
+// production writes it, and the package's tests do not run in parallel.
+var sitemapShardURLs = 50000
 
 // sitemapFamily is one shardable family, as DATA - the ONE table the index's
 // entries, the shard route's file names and the per-family query are all read
@@ -125,16 +131,38 @@ func (s *Server) handleSitemapIndex(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	if snap == nil {
 		if p := s.staticSitePath(strings.TrimPrefix(sitemapIndexPath, "/")); p != "" {
+			// The dist's file is days or weeks old, and with no Cache-Control
+			// ServeFile leaves a heuristic cache free to keep this static-pages
+			// stand-in for a tenth of that age - hours after the real index came
+			// live. The fallback describes THIS MOMENT, not the site, so it is
+			// never stored.
+			w.Header().Set("Cache-Control", "no-store")
 			http.ServeFile(w, r, p)
 			return
 		}
 		s.sitemapUnavailable(w)
 		return
 	}
-	if s.notModified(w, r, snap, sitemapIndexPath) {
+	// The static entry is settled ONCE per request: it decides both the document's
+	// first entry and the validator that stands for it.
+	static := s.staticSitePath(staticSitemapFile) != ""
+	etag, done := s.sitemapNotModified(w, r, snap, sitemapIndexDocName(static))
+	if done {
 		return
 	}
-	writeSitemap(w, s.sitemapIndex(snap))
+	writeSitemap(w, etag, s.sitemapIndex(snap, static))
+}
+
+// sitemapIndexDocName is the index's identity inside its validator. The static
+// entry's PRESENCE is part of it because it is part of the body: a UI-only
+// redeploy that adds or drops the dist's sitemap under an unchanged data release
+// changes the document, and without this marker it would 304-renew the old one
+// for the life of the release.
+func sitemapIndexDocName(static bool) string {
+	if static {
+		return sitemapIndexPath + "/static"
+	}
+	return sitemapIndexPath
 }
 
 // handleSitemapShard serves one family's shard of entity URLs.
@@ -161,15 +189,19 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	if s.notModified(w, r, snap, sitemapShardPrefix+shardFile(fam, shard)) {
+	etag, done := s.sitemapNotModified(w, r, snap, sitemapShardPrefix+shardFile(fam, shard))
+	if done {
 		return
 	}
 	doc, err := s.sitemapShard(snap, fam, shard)
 	if err != nil {
+		// No validator and no cache policy on this path: a hot swap closing the db
+		// mid-request is a 500 that must never be stored, let alone 304-renewed
+		// under the document's own ETag for the life of the release.
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-	writeSitemap(w, doc)
+	writeSitemap(w, etag, doc)
 }
 
 // sitemapUnavailable is the no-artifact answer, the API routes' own 503 with the
@@ -178,7 +210,7 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 // error shape across the server beats a second one invented for two routes.
 func (s *Server) sitemapUnavailable(w http.ResponseWriter) {
 	w.Header().Set("Retry-After", s.retryAfter())
-	writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
+	writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
 }
 
 // parseShardFile reads a shard file name as (family, shard number). Everything
@@ -190,10 +222,9 @@ func parseShardFile(file string) (sitemapFamily, int, bool) {
 	if m == nil {
 		return sitemapFamily{}, 0, false
 	}
-	n, err := strconv.Atoi(m[2])
-	if err != nil {
-		return sitemapFamily{}, 0, false
-	}
+	// The pattern already bounded the number to at most six digits, so the parse
+	// cannot fail and cannot overflow an int - there is no error case to handle.
+	n, _ := strconv.Atoi(m[2])
 	for _, fam := range sitemapFamilies {
 		if fam.name == m[1] {
 			return fam, n, true
@@ -269,15 +300,17 @@ type urlEntryDoc struct {
 	LastMod string `xml:"lastmod,omitempty"`
 }
 
-// sitemapIndex composes the index document from the live snapshot.
+// sitemapIndex composes the index document from the live snapshot and whether
+// the dist carries its own static sitemap (the caller settles that once, because
+// the validator stands for it too - see sitemapIndexDocName).
 //
 // The static entry carries NO lastmod: that file belongs to the dist, and the
 // artifact's build time is not a fact about it. Every shard entry carries the
 // artifact's built_at, which IS its date - the shard is rendered from that
 // artifact and from nothing else.
-func (s *Server) sitemapIndex(snap *snapshot) *sitemapIndexDoc {
+func (s *Server) sitemapIndex(snap *snapshot, static bool) *sitemapIndexDoc {
 	doc := &sitemapIndexDoc{NS: sitemapNS}
-	if s.staticSitePath(staticSitemapFile) != "" {
+	if static {
 		doc.Sitemaps = append(doc.Sitemaps, sitemapEntryDoc{Loc: s.cfg.SiteURL + "/" + staticSitemapFile})
 	}
 	built := w3cDate(snap.stats.BuiltAt)
@@ -342,33 +375,43 @@ func w3cDate(v string) string {
 
 // ---- transport --------------------------------------------------------------
 
-// notModified answers a conditional request for a sitemap and reports whether it
-// did. It sets the validator and the cache policy either way, so the 200 path
-// carries the headers the 304 path was matched on.
+// sitemapNotModified answers a conditional request for a sitemap, returning the
+// document's validator and whether the request is already finished. It is named
+// for its surface because it hard-codes sitemapMaxAge - openapi.json and the
+// entity pages each spell this in their own terms and with their own max-age.
+//
+// The validator and the cache policy are set on the 304 ONLY; the 200 path sets
+// them itself once the document has been composed (writeSitemap), which is the
+// entity handler's ordering. An error between here and there - a hot swap
+// closing the db mid-request - must not ship an error body under an hour of
+// public caching and this document's own ETag, or a shared cache would
+// 304-renew that error for the life of the release.
 //
 // The validator is the ARTIFACT's identity, the configured origin and the
-// document's own name - which is everything a sitemap is rendered from. The
-// dist's identity deliberately does NOT appear (it does for an entity page - see
-// pageIdentity): not one byte of the built shell reaches these documents, so a
-// UI-only deploy cannot change them.
+// document's own name. For a SHARD that is everything it is rendered from: the
+// dist's identity deliberately does not appear (it does for an entity page - see
+// pageIdentity), because not one byte of the built shell reaches a shard. The
+// INDEX is the exception, and its name carries the difference - it lists the
+// dist's static sitemap when there is one, so the presence bit rides in the
+// document name (sitemapIndexDocName).
 //
 // Unlike the entity pages this honours the "*" wildcard: existence was
 // established before this is called (the shard route checks the family's shard
 // count first; the index always exists once an artifact is loaded), so RFC 9110
 // 13.1.2's condition is already answered.
-func (s *Server) notModified(w http.ResponseWriter, r *http.Request, snap *snapshot, doc string) bool {
+func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap *snapshot, doc string) (string, bool) {
 	etag := sitemapETag(snap, s.cfg.SiteURL, doc)
+	inm := r.Header.Get("If-None-Match")
+	if !matchesETag(inm, etag) && !anyValidator(inm) {
+		return etag, false
+	}
 	h := w.Header()
 	h.Set("ETag", etag)
 	h.Set("Cache-Control", sitemapMaxAge)
-	inm := r.Header.Get("If-None-Match")
-	if !matchesETag(inm, etag) && !anyValidator(inm) {
-		return false
-	}
 	// The gzip middleware passes a bodyless status through uncompressed and
 	// announces no encoding on it - see gzipResponseWriter.ensureHeader.
 	w.WriteHeader(http.StatusNotModified)
-	return true
+	return etag, true
 }
 
 // sitemapETag builds that validator. The release tag is the artifact's identity
@@ -388,17 +431,22 @@ func sitemapETag(snap *snapshot, siteURL, doc string) string {
 	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(version+"/"+siteURL+doc) + `"`
 }
 
-// writeSitemap renders a document and writes it. Rendering happens into a buffer
-// first so a marshal failure is still a 500 rather than a truncated document
-// behind a 200 already on the wire - the reason the JSON handlers marshal before
-// they write.
-func writeSitemap(w http.ResponseWriter, doc any) {
+// writeSitemap renders a document and writes it under the validator the
+// conditional check computed. Rendering happens into a buffer first so a marshal
+// failure is still a 500 rather than a truncated document behind a 200 already
+// on the wire - the reason the JSON handlers marshal before they write - and
+// SUCCESS is what puts the ETag and the cache policy on the response, so no
+// error path can inherit them.
+func writeSitemap(w http.ResponseWriter, etag string, doc any) {
 	body, err := renderSitemap(doc)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-	w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+	h := w.Header()
+	h.Set("ETag", etag)
+	h.Set("Cache-Control", sitemapMaxAge)
+	h.Set("Content-Type", "application/xml; charset=utf-8")
 	_, _ = w.Write(body)
 }
 
