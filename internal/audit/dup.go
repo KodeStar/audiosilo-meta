@@ -647,29 +647,41 @@ func dupViaNote(members []dupMember) string {
 	return "cleaned via " + truncateList(sortedUnique(vias), 8)
 }
 
-// statedVolumes returns the volume numbers the cluster's own TITLES spell out, and
-// whether two of them disagree.
+// statedVolumes returns the volume numbers the cluster's own TITLES spell out, and whether
+// two members CONTRADICT each other about one.
 //
-// TODO(#2224): this is the FIRST of three layers that read a volume number, and today the
-// only one that reads it from the title. `vetoSlugOrdinal` reads it from the SLUG (with its
-// own narrow marker table) and PR #2224 is unifying titlerule's volume-marker vocabulary
-// (season/lesson/level ordinals, all markers rather than only the first). Once that lands,
-// this function and that veto's table should both consume the unified rule, so a number a
-// title states and a number a slug preserves are recognized by one vocabulary. A member stating no number is not a disagreement:
-// "Hammered" beside "Hammered: The Iron Druid Chronicles, Book 3" is the pair the
-// class exists to find.
+// The contradiction is titlerule.SameStatedVolume's, not this package's: that rule reads the
+// primary number a title states (StatedVolume, which knows the division-class ordinals -
+// season, level, lesson, unit, year - and roman numerals that BareSeq does not) AND the whole
+// SEQUENCE of division markers a title nests, which is what separates "Level 1 Lessons 1-5"
+// from "Level 1 Lessons 6-10" - 36 units of one Pimsleur course whose first stated number is
+// identical. Consuming it here is the resolution of the three-layer TODO this function
+// carried: a number a title states, a number a slug preserves (vetoSlugOrdinal) and the
+// division sequence are now read by ONE vocabulary rather than three.
+//
+// A member stating no number is not a disagreement: "Hammered" beside "Hammered: The Iron
+// Druid Chronicles, Book 3" is the pair the class exists to find.
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {
+	for i := range members {
+		a := members[i].work
+		for j := i + 1; j < len(members); j++ {
+			b := members[j].work
+			if !titlerule.SameStatedVolume(a.Title, ix.derived(a).seriesName, b.Title, ix.derived(b).seriesName) {
+				conflict = true
+			}
+		}
+	}
+	if !conflict {
+		return nil, false
+	}
 	byNum := map[string][]string{}
 	for _, m := range members {
 		d := ix.derived(m.work)
-		if !d.hasSeq {
+		if !d.hasStatedSeq {
 			continue
 		}
-		k := formatSeq(d.seq)
+		k := formatSeq(d.statedSeq)
 		byNum[k] = append(byNum[k], m.work.ID)
-	}
-	if len(byNum) < 2 {
-		return nil, false
 	}
 	for k, ids := range byNum {
 		vols = append(vols, k+" ("+truncateList(sortedUnique(ids), 3)+")")

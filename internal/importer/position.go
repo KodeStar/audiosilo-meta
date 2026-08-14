@@ -1,25 +1,28 @@
-package titlerule
+package importer
 
 import (
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// position.go is the SERIES-POSITION primitive every reader of a membership goes
-// through: what numeric span a stored position occupies, and whether two spellings name
-// one slot.
+// position.go is the SERIES-POSITION primitive every reader of a membership goes through:
+// what numeric span a stored position occupies, and whether two spellings name one slot.
 //
-// It is here for the reason the rest of this package is: the two-step below had grown
-// FIVE spellings across internal/audit and internal/repair (a slot key, a span map, a
-// range reader, a merge's slot comparison, a gap census), and a rule with five spellings
-// is a rule that will disagree with itself. A position is a string in the data model, so
-// "02", "2" and "2.0" are three different values that name one slot, and any rule that
-// compares two of them has to say so the same way.
+// It lives HERE, beside NormalizeSequence, because that is the rule of record it composes
+// over and because internal/titlerule - where a "rule primitive" would otherwise belong -
+// is a TRUE LEAF (pkg/model and nothing else) now that this package reads it for the
+// intake duplicate gates. Its consumers, internal/audit and internal/repair, already
+// import this package.
+//
+// The two-step below had grown FIVE spellings across those two packages (a slot key, a
+// span map, a range reader, a merge's slot comparison, a gap census), and a rule with five
+// spellings is a rule that will disagree with itself. A position is a string in the data
+// model, so "02", "2" and "2.0" are three different values that name one slot, and any
+// rule that compares two of them has to say so the same way.
 //
 // THE ORDER IS LOAD-BEARING, and it is stated once, here. Acceptance goes through
-// importer.NormalizeSequence - the rule of record for what a position may be and how it
+// NormalizeSequence - the rule of record for what a position may be and how it
 // is spelled, which also tolerates the 104 real "1 - 3" range spellings the schema
 // pattern rejects - and only then is the span read with model.ParsePositionRange. Doing
 // it the other way round mints slots for values the data model rejects: the span reader
@@ -30,7 +33,7 @@ import (
 // position, [lo, hi] for an omnibus range. ok is false for anything the position grammar
 // rejects.
 func PositionSpan(pos string) (span [2]float64, ok bool) {
-	norm, ok := importer.NormalizeSequence(pos)
+	norm, ok := NormalizeSequence(pos)
 	if !ok {
 		return [2]float64{}, false
 	}
@@ -44,7 +47,7 @@ func PositionSpan(pos string) (span [2]float64, ok bool) {
 // PositionRange is PositionSpan restricted to the RANGE spellings: isRange is false for
 // a plain number, which is not a range rather than a malformed one.
 func PositionRange(pos string) (lo, hi float64, isRange bool) {
-	norm, ok := importer.NormalizeSequence(pos)
+	norm, ok := NormalizeSequence(pos)
 	if !ok || !strings.Contains(norm, "-") {
 		return 0, 0, false
 	}

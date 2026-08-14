@@ -2,8 +2,8 @@ package repair
 
 import (
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -40,7 +40,7 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 		le := loserEntries[i]
 		for _, sw := range le.SeriesWorks() {
 			if have, member := byWork[sw.Work]; member {
-				if titlerule.SameSlot(have, sw.Position) {
+				if importer.SameSlot(have, sw.Position) {
 					continue // the same membership, spelled in two series
 				}
 				return refusef(CatPositionConflict,

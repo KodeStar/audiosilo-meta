@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -276,7 +277,7 @@ func longestRuntime(w *model.Work) int {
 func (ix *index) positionSpans(workID string) map[string][2]float64 {
 	out := map[string][2]float64{}
 	for _, m := range ix.memberships[workID] {
-		if span, ok := titlerule.PositionSpan(m.position); ok {
+		if span, ok := importer.PositionSpan(m.position); ok {
 			out[m.series] = span
 		}
 	}
@@ -301,7 +302,7 @@ func (ix *index) seriesSpan(seriesID string) (lo, hi float64, ok bool) {
 		return 0, 0, false
 	}
 	for _, sw := range s.Works {
-		span, valid := titlerule.PositionSpan(sw.Position)
+		span, valid := importer.PositionSpan(sw.Position)
 		if !valid {
 			continue
 		}
@@ -598,13 +599,13 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 // canonical spelling, so "02", "2" and "2.0" are one slot. A RANGE is not a slot (it
 // spans several) and neither is anything the grammar rejects, both of which return "".
 //
-// The grammar itself is titlerule.PositionSpan, the one two-step every reader of a
+// The grammar itself is importer.PositionSpan, the one two-step every reader of a
 // position goes through; only the "a range is not a slot" narrowing is this function's.
 func positionKey(pos string) string {
-	if _, _, isRange := titlerule.PositionRange(pos); isRange {
+	if _, _, isRange := importer.PositionRange(pos); isRange {
 		return ""
 	}
-	span, ok := titlerule.PositionSpan(pos)
+	span, ok := importer.PositionSpan(pos)
 	if !ok {
 		return ""
 	}

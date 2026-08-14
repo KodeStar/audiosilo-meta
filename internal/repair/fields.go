@@ -4,7 +4,6 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -116,7 +115,7 @@ func (rn *runner) restatePosition(t *txn, fd audit.Finding) error {
 		return refusef(CatStaleValue, "series %s no longer lists %s at position %q", p.Series, p.Target, p.From)
 	}
 	for i, sw := range works {
-		if i != at && titlerule.SameSlot(sw.Position, p.To) {
+		if i != at && importer.SameSlot(sw.Position, p.To) {
 			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 		}
 	}
@@ -153,7 +152,7 @@ func (rn *runner) addSeriesMember(t *txn, fd audit.Finding) error {
 		if sw.Work == p.Target {
 			return refusef(CatStaleValue, "series %s already lists %s at position %q", p.Series, p.Target, sw.Position)
 		}
-		if titlerule.SameSlot(sw.Position, p.To) {
+		if importer.SameSlot(sw.Position, p.To) {
 			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 		}
 	}

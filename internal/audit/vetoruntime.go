@@ -121,10 +121,14 @@ func narratorKey(narrators []string) string {
 //     tail. That is what keeps the importer's bare numeric collision suffix (`x` vs `x-2`,
 //     which says "two different works met on one slug") out of this veto's reach.
 //
-// TODO(#2224): the marker vocabulary below is this veto's own narrow copy. PR #2224 owns
-// internal/titlerule this round and is unifying the volume-marker vocabulary (season /
-// lesson / level ordinals, and all-markers-not-just-the-first); once it merges, this table
-// and `statedVolumes`' own reading of a title's number should both consume that one rule.
+// WHY THE TABLE BELOW IS ITS OWN. The title-side vocabulary is titlerule's
+// (StatedVolume/SameStatedVolume, which statedVolumes now consumes), and this rule reads
+// SLUGS: a slug is `model.Slugify`'s output, so it is lowercase ASCII segments with no
+// punctuation and no roman numerals to speak of, and the words below are the segment forms
+// that survive that fold. Sharing titlerule's regexp vocabulary here would mean matching
+// title syntax against a string that has none. What the two must agree on is the CONCEPT -
+// which words name a division of a product - and any word added there and not here costs a
+// missed veto (a cluster stays mechanical), never a wrong one.
 func vetoSlugOrdinal(members []dupMember) (string, bool) {
 	for i := range members {
 		for j := i + 1; j < len(members); j++ {

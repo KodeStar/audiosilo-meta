@@ -42,9 +42,19 @@ type workDerived struct {
 	wantKey  string
 	plainKey string
 
-	// seq is the volume number the title itself spells out, against seriesName.
+	// seq is the volume number the title itself spells out, against seriesName, through
+	// titlerule.BareSeq. It is the reading W-NOSERIES's position proposals and W-DUP's
+	// series-volume subclass were MEASURED with, so it is left exactly as it was.
 	seq    float64
 	hasSeq bool
+
+	// statedSeq is the same question asked through titlerule.StatedVolume, which reads the
+	// DIVISION-class ordinals (season/level/lesson/unit/year) and ROMAN numerals that
+	// BareSeq does not. Only the volume-CONFLICT rule reads it, because that rule's job is
+	// to withhold a merge and a wider vocabulary can only withhold more - see
+	// statedVolumes.
+	statedSeq    float64
+	hasStatedSeq bool
 
 	// The article-plus-series prefix shape, if the title has it.
 	artArticle string
@@ -82,6 +92,7 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 		d.plainKey = titlerule.IdentityTitleKey(w.Title, "")
 	}
 	d.seq, d.hasSeq = titlerule.BareSeq(w.Title, d.seriesName)
+	d.statedSeq, d.hasStatedSeq = titlerule.StatedVolume(w.Title, d.seriesName)
 	d.artArticle, d.artSeries, d.artRest, d.artOK = titlerule.ArticleSeriesPrefix(w.Title, ix.resolveSeries)
 	d.markers = titlerule.Decorations(titlerule.TitleFacts{
 		Title:   w.Title,

@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -133,7 +132,7 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 				}
 				f.add(fd)
 			}
-			if lo, hi, isRange := titlerule.PositionRange(sw.Position); isRange && lo >= hi {
+			if lo, hi, isRange := importer.PositionRange(sw.Position); isRange && lo >= hi {
 				fd := member(sMalformed)
 				fd.Propose = Proposal{
 					Op: OpRestatePosition, Target: sw.Work, Series: s.ID, Field: "position", From: sw.Position,
@@ -170,7 +169,7 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 
 		// A work announcing itself as an omnibus while sitting on a single slot.
 		if omnibusTitle.MatchString(w.Title) {
-			if _, _, isRange := titlerule.PositionRange(sw.Position); !isRange {
+			if _, _, isRange := importer.PositionRange(sw.Position); !isRange {
 				fd := member(sOmnibusSlot)
 				fd.Propose = Proposal{
 					Op: OpRestatePosition, Target: sw.Work, Series: s.ID, Field: "position", From: sw.Position,

@@ -8,7 +8,6 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -465,7 +464,7 @@ func (t *txn) rewriteMemberships(target string, losers []string) error {
 				changed = changed || sw.Work != target
 				continue
 			}
-			if titlerule.SameSlot(keptPos, sw.Position) {
+			if importer.SameSlot(keptPos, sw.Position) {
 				changed = true // two memberships saying the same thing collapse to one
 				continue
 			}
@@ -503,12 +502,12 @@ func refuseDuplicatePositions(seriesID string, works []model.SeriesWork) error {
 }
 
 // slotKey is a position's SLOT identity as a MAP KEY: the canonical span when the grammar
-// accepts the value, else the raw string. It is titlerule.SameSlot in the shape a lookup
+// accepts the value, else the raw string. It is importer.SameSlot in the shape a lookup
 // needs - the same rule, because a map is how both merge paths ask "is this slot taken",
 // and a raw-string key let "3" and "03" through as two slots. pkg/check compares the
 // strings too, so such a tree stays GREEN with two works at one place in the order.
 func slotKey(pos string) string {
-	span, ok := titlerule.PositionSpan(pos)
+	span, ok := importer.PositionSpan(pos)
 	if !ok {
 		return "raw:" + pos
 	}
