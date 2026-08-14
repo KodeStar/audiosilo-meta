@@ -1,7 +1,7 @@
 # audiosilo-meta
 
-The community audiobook metadata database behind
-[meta.audiosilo.app](https://meta.audiosilo.app).
+The open source community audiobook database behind
+[meta.audiosilo.app](https://meta.audiosilo.app) - audiobook metadata, in the open.
 
 **The GitHub repository is the database.** Metadata lives as plain JSON pack
 files - many records to a file, addressed by slug range
