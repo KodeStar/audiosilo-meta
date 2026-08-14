@@ -22,6 +22,22 @@ import (
 // (and under which family), which layout each family is in, and what each
 // family's pack tree is.
 
+// RedirectsFile is the data-relative path of the one recognized NON-PACK file
+// the data root may hold: the slug tombstone table (model.Redirects, read and
+// written by pkg/redirects). It is named here because this package owns the
+// tree's file accounting - a listing partitions every JSON file into a family's
+// files, this recognized file, or the strays a caller reports as belonging
+// nowhere - and because that accounting is the only thing pkg/pack has to know
+// about it. It is not a family: it holds no entity, so there is nothing to
+// place, bound, split or heal, and no writer here ever touches it.
+const RedirectsFile = "redirects.json"
+
+// IsAuxFile reports whether the data-relative path rel is a recognized non-pack
+// file of the data tree. The match is the EXACT path, so a file of the same name
+// inside a family root is judged as that family's file, exactly as any other name
+// there would be - nothing about this exemption reaches inside a family.
+func IsAuxFile(rel string) bool { return rel == RedirectsFile }
+
 // Listing is one walk of a data tree: every JSON file under it, partitioned by
 // the family root it sits under.
 //
@@ -31,6 +47,7 @@ import (
 type Listing struct {
 	dir   string
 	files map[Family][]string
+	aux   []string
 	stray []string
 
 	// layouts memoizes Layouts. A listing is a snapshot, so the layout it
@@ -85,6 +102,7 @@ func List(dataDir string) (*Listing, error) {
 	for f := range l.files {
 		sort.Strings(l.files[f])
 	}
+	sort.Strings(l.aux)
 	sort.Strings(l.stray)
 	return l, nil
 }
@@ -113,13 +131,23 @@ func emptyListing(dataDir string) *Listing {
 	return &Listing{dir: dataDir, files: map[Family][]string{}}
 }
 
-// add files one walked path under its family, or under no family at all.
+// add files one walked path under its family, as a recognized non-pack file of
+// the tree, or under nothing at all.
+//
+// The three-way split is what keeps the accounting total: a caller that demands
+// every file be accounted for (pkg/check's unrecognized location) reads Stray,
+// so a file the tree legitimately holds outside every family - RedirectsFile -
+// has to be classified here rather than exempted at each such caller.
 func (l *Listing) add(rel string) {
 	if root, _, ok := strings.Cut(rel, "/"); ok {
 		if d, known := Def(Family(root)); known {
 			l.files[d.Family] = append(l.files[d.Family], rel)
 			return
 		}
+	}
+	if IsAuxFile(rel) {
+		l.aux = append(l.aux, rel)
+		return
 	}
 	l.stray = append(l.stray, rel)
 }
@@ -135,7 +163,14 @@ func (l *Listing) Dir() string { return l.dir }
 // read it, do not write to it.
 func (l *Listing) Files(f Family) []string { return l.files[f] }
 
-// Stray returns the JSON files that sit under no family root at all, sorted.
+// Aux returns the recognized non-pack files the walk found, sorted (see
+// IsAuxFile). They are accounted for and belong where they are, so nothing
+// reports them and no writer here rewrites them; they are exposed so the
+// accounting a caller does is over a partition it can see all of.
+func (l *Listing) Aux() []string { return l.aux }
+
+// Stray returns the JSON files that sit under no family root at all and are no
+// recognized file of the tree either, sorted.
 func (l *Listing) Stray() []string { return l.stray }
 
 // Tree returns family f's pack listing, derived from the walk rather than from

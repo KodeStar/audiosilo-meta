@@ -1,8 +1,10 @@
 // Package check loads the data/ tree, validates every record against its JSON
 // Schema, and enforces the cross-record rules (placement, key/id agreement,
 // referential integrity, global uniqueness, chapter ordering, series
-// positions). It returns the discovered problems, any advisory warnings, and,
-// best-effort, the loaded Catalog so metabuild can reuse the same load.
+// positions). It reads the tree's one non-pack file too - the slug tombstone
+// table, see redirects.go - because its rules are about which ids are live. It
+// returns the discovered problems, any advisory warnings, and, best-effort, the
+// loaded Catalog so metabuild can reuse the same load.
 //
 // Load reads ONE storage layout: the range-packed one pkg/pack defines. The
 // file-per-entity tree it replaced is gone (cmd/metamigrate converted it), and a
@@ -302,6 +304,12 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 		}
 	}
 
+	// The tombstone table is read here, after the families: its rules are about
+	// which ids are LIVE, so they need the assembled catalogue. It travels on the
+	// Catalog because its reader is the artifact builder, which consumes the same
+	// load (see cmd/metabuild).
+	cat.Redirects = l.loadRedirects(dir)
+
 	checkIntegrity(cat, workByID, recs, idx, add)
 	checkUniqueness(cat, recs, idx, add)
 	checkRegionalPublishers(recs, add)
@@ -311,6 +319,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCreditPairs(cat, idx, add)
 	checkPersonSlug(cat, idx, add)
 	checkReservedSlug(cat, idx, add)
+	checkRedirects(cat, cat.Redirects, add)
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)

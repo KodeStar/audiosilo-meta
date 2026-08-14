@@ -53,6 +53,19 @@ Four **pack families**. Works and sidecars get a directory level from day one
 (they are the high-count families); people and series start flat and gain a
 directory level only if they ever exceed the per-dir pack cap.
 
+**One non-pack file** sits beside them, at the data root (added 2026-08-14):
+`data/redirects.json`, the slug tombstone table (`{"works": {"<retired>":
+"<live>"}, "people": ..., "series": ...}`) that keeps a slug a merge retired
+resolving. It is deliberately not a family - a retired slug is no entity, so
+there is nothing to place, bound, split or heal - and the accounting is where the
+layout has to know about it: `pack.RedirectsFile`/`Listing.Aux` classify it as
+recognized, so the invariant that every JSON file under the data root is
+accounted for (see below) stays total instead of gaining an exemption at each
+caller. Nothing in `pkg/pack` reads or writes it; `pkg/redirects` owns the file
+and `pkg/check` validates it. The pack merge driver is kept off it by a
+`.gitattributes` line, since a union of pack ENTRIES is not what a conflict there
+needs.
+
 Sidecars move out of `data/works/**` into their own family - named
 **`works-community`** (decided at sign-off: the name telegraphs the CC BY-SA
 community layer) - so the license

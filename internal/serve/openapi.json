@@ -4,7 +4,7 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The read-only JSON API over the AudioSilo community audiobook metadata database.",
-    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 3.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
@@ -306,7 +306,7 @@
         "tags": ["Works"],
         "operationId": "work",
         "summary": "One work in full",
-        "description": "The whole work document: the abstract book, every recording of it (narrators, runtime, publisher, identifiers, chapter count), and the community expressive layer where it exists.\n\n`characters`, `recaps`, `recap_summary` and `genres` depend on the loaded artifact's internal schema version and are omitted - never faked - when the artifact predates them.",
+        "description": "The whole work document: the abstract book, every recording of it (narrators, runtime, publisher, identifiers, chapter count), and the community expressive layer where it exists.\n\n`characters`, `recaps`, `recap_summary` and `genres` depend on the loaded artifact's internal schema version and are omitted - never faked - when the artifact predates them.\n\nA slug a merge has retired answers 301 at the work that replaced it, so a stored id keeps resolving.",
         "parameters": [{ "$ref": "#/components/parameters/WorkID" }],
         "responses": {
           "200": {
@@ -317,6 +317,7 @@
               }
             }
           },
+          "301": { "$ref": "#/components/responses/Retired" },
           "404": { "$ref": "#/components/responses/NotFound" },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -328,7 +329,7 @@
         "tags": ["Works"],
         "operationId": "chapters",
         "summary": "One recording's chapter list",
-        "description": "The chapter marks of a single recording, in playback order, with millisecond offsets. An unknown work or recording is an empty list rather than a 404: absent chapters and an absent recording are the same answer to a client rendering a timeline.",
+        "description": "The chapter marks of a single recording, in playback order, with millisecond offsets. An unknown work or recording is an empty list rather than a 404: absent chapters and an absent recording are the same answer to a client rendering a timeline. The one exception is a work slug a merge has RETIRED, which answers 301 at the same recording under the surviving slug.",
         "parameters": [
           { "$ref": "#/components/parameters/WorkID" },
           { "$ref": "#/components/parameters/RecordingID" }
@@ -351,6 +352,7 @@
               }
             }
           },
+          "301": { "$ref": "#/components/responses/Retired" },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -388,6 +390,7 @@
               }
             }
           },
+          "301": { "$ref": "#/components/responses/Retired" },
           "404": { "$ref": "#/components/responses/NotFound" },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -426,6 +429,7 @@
               }
             }
           },
+          "301": { "$ref": "#/components/responses/Retired" },
           "404": { "$ref": "#/components/responses/NotFound" },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -668,6 +672,10 @@
       "RetryAfter": {
         "description": "Whole seconds to wait before retrying. It reports the wait the server's refresh loop is actually on, which grows as attempts fail.",
         "schema": { "type": "integer", "minimum": 1 }
+      },
+      "Location": {
+        "description": "The same route under the slug that replaced the retired one, carrying the request's own query string unchanged.",
+        "schema": { "type": "string", "examples": ["/api/v1/works/project-hail-mary"] }
       }
     },
     "parameters": {
@@ -731,6 +739,17 @@
           }
         }
       },
+      "Retired": {
+        "description": "The slug was RETIRED - a data-quality repair merged its record into another one - and `Location` names the same route under the slug that replaced it. Following it is an ordinary GET. The body repeats the new slug, so a client that stored the old one can heal it instead of only learning that it is gone. It is answered only for a slug the database no longer holds, and never chains: one redirect always lands on a live record. An artifact older than internal schema version 5 carries no redirect table, so a retired slug is a 404 there.",
+        "headers": {
+          "Location": { "$ref": "#/components/headers/Location" }
+        },
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Redirect" }
+          }
+        }
+      },
       "ServerError": {
         "description": "A query against the loaded artifact failed. Not expected in normal operation - an artifact is checksum-verified before it is served - so read it as a bug or a damaged snapshot rather than a condition to code around. Retrying is safe: the API is read-only.",
         "content": {
@@ -758,6 +777,14 @@
         "required": ["error"],
         "properties": {
           "error": { "type": "string", "examples": ["q is required"] }
+        }
+      },
+      "Redirect": {
+        "type": "object",
+        "description": "The body of a 301: the live slug the retired one now stands for, so a stored id can be rewritten rather than merely reported dead.",
+        "required": ["redirect"],
+        "properties": {
+          "redirect": { "type": "string", "examples": ["project-hail-mary"] }
         }
       },
       "Health": {

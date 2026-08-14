@@ -15,11 +15,14 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Config configures a Server.
@@ -190,6 +193,17 @@ func (s *Server) Run(ctx context.Context) error {
 // current returns the live snapshot, or nil when none has loaded yet (a
 // poll-only boot whose first fetch failed - see New).
 func (s *Server) current() *snapshot { return s.cur.Load() }
+
+// logf writes through the Server's logger. New always installs one; a Server
+// built directly (a test, or any future caller) logs to the standard logger
+// rather than panicking, exactly as snapshot.logf does.
+func (s *Server) logf(format string, args ...any) {
+	if s.log != nil {
+		s.log.Printf(format, args...)
+		return
+	}
+	log.Printf(format, args...)
+}
 
 // defaultBootRetry is the first retry wait for a server with NO artifact. It is
 // much shorter than the steady-state poll interval: a boot that could not reach
@@ -435,26 +449,94 @@ func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	detail, err := snap.workDetail(r.PathValue("id"))
+	id := r.PathValue("id")
+	detail, err := snap.workDetail(id)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if detail == nil {
+		if s.redirected(w, r, snap, model.RedirectWorks, id, func(to string) string { return apiPath("works", to) }) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "work not found")
 		return
 	}
 	writeJSON(w, http.StatusOK, detail)
 }
 
+// handleChapters answers an unknown (work, recording) pair with an empty list
+// rather than a 404 - a recording legitimately has no chapters - so the retired
+// slug is consulted when the list comes back EMPTY. It can only ever hit on a
+// slug the catalogue does not hold: a live work is never a redirect source
+// (pkg/check's checkRedirects), so a real recording with no chapters still gets
+// its empty list.
 func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	chs, err := snap.chapters(r.PathValue("id"), r.PathValue("rid"))
+	id, rid := r.PathValue("id"), r.PathValue("rid")
+	chs, err := snap.chapters(id, rid)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
+	if len(chs) == 0 {
+		if s.redirected(w, r, snap, model.RedirectWorks, id, func(to string) string {
+			return apiPath("works", to, "recordings", rid, "chapters")
+		}) {
+			return
+		}
+	}
 	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
+}
+
+// redirected answers a request for a RETIRED slug with a 301 at the canonical
+// location, and reports whether it did.
+//
+// Every id route calls it where it would otherwise 404, so a slug a merge
+// retired keeps resolving: a meta.audiosilo.app URL, a books.work_id stored in an
+// audiosilo-sidecars install, a contributed sidecar's work reference and
+// audiosilo-server's community-metadata seam all hold slugs, and all of them
+// arrive here as a following GET, for which a 301 is transparent.
+//
+// The BODY carries the new slug too, so a client that does not follow redirects
+// can heal what it stored instead of only learning that the id is gone. The query
+// string travels with the location (a ?limit/?offset window is part of the
+// request, not of the id), and the path is composed from the same kind the
+// lookup used - the namespace IS the route segment - so a redirect can never
+// point into another family's route.
+//
+// It reads the SAME snapshot the handler already answered from rather than
+// loading the pointer again, so a hot-swap mid-request cannot make the 404 and
+// the redirect decision come from two different artifacts.
+//
+// A lookup FAILURE degrades to "no redirect": the caller then answers its own
+// 404, which is what the request looked like anyway, rather than turning a
+// missing record into a 500.
+func (s *Server) redirected(w http.ResponseWriter, r *http.Request, snap *snapshot, kind model.RedirectKind, id string, loc func(to string) string) bool {
+	to, err := snap.redirectTarget(kind, id)
+	if err != nil {
+		s.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
+		return false
+	}
+	if to == "" {
+		return false
+	}
+	u := &url.URL{Path: loc(to), RawQuery: r.URL.RawQuery}
+	w.Header().Set("Location", u.String())
+	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
+	return true
+}
+
+// apiPath joins segments onto the API prefix. It escapes each segment, so a
+// Location is a well-formed URL whatever it is handed - ids in the artifact are
+// plain slugs, but a header composed by string concatenation is exactly the kind
+// of thing that stops being true later.
+func apiPath(segments ...string) string {
+	out := "/api/v1"
+	for _, seg := range segments {
+		out += "/" + url.PathEscape(seg)
+	}
+	return out
 }
 
 // personPageDefault / personPageMax bound one page of a person's credit lists.
@@ -471,12 +553,16 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
-	p, err := snap.person(r.PathValue("id"), limit, clampOffset(q.Get("offset")))
+	id := r.PathValue("id")
+	p, err := snap.person(id, limit, clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if p == nil {
+		if s.redirected(w, r, snap, model.RedirectPeople, id, func(to string) string { return apiPath("people", to) }) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "person not found")
 		return
 	}
@@ -491,12 +577,16 @@ const seriesPageMax = 500
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
-	ser, err := snap.series(r.PathValue("id"), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
+	id := r.PathValue("id")
+	ser, err := snap.series(id, clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if ser == nil {
+		if s.redirected(w, r, snap, model.RedirectSeries, id, func(to string) string { return apiPath("series", to) }) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "series not found")
 		return
 	}

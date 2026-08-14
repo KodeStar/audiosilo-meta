@@ -20,13 +20,14 @@ import (
 // SchemaVersion is written to meta(schema_version). Bumped to 2 when the
 // characters/recaps tables were added; bumped to 3 when the recap_summaries
 // table (per-work in_short / ending) was added; bumped to 4 when work genres
-// arrived in the work_genres table.
+// arrived in the work_genres table; bumped to 5 when the slug redirect
+// (tombstone) table arrived.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 4
+const SchemaVersion = 5
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -169,6 +170,21 @@ CREATE TABLE recap_summaries (
   license  TEXT NOT NULL
 );
 
+-- The slug tombstone table (data/redirects.json): which retired slug now stands
+-- for which live record. kind is the id NAMESPACE, spelled as the family and
+-- route segment it addresses ("works"/"people"/"series", model.RedirectKind) -
+-- deliberately not search_fts's entity kind, because the server builds a
+-- redirect's Location out of this value.
+--
+-- The primary key IS the lookup index: every read is the point query
+-- (kind, old_slug), one per request that missed, so no separate index is needed.
+CREATE TABLE redirects (
+  kind     TEXT NOT NULL,
+  old_slug TEXT NOT NULL,
+  new_slug TEXT NOT NULL,
+  PRIMARY KEY (kind, old_slug)
+);
+
 CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, names);
 `
 
@@ -267,6 +283,9 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	if err = insertRecapSummaries(st, recaps); err != nil {
 		return err
 	}
+	if err = insertRedirects(st, cat.Redirects); err != nil {
+		return err
+	}
 
 	nRec := 0
 	for _, w := range works {
@@ -323,6 +342,8 @@ type stmts struct {
 
 	recap        *sql.Stmt
 	recapSummary *sql.Stmt
+
+	redirect *sql.Stmt
 }
 
 // prepareStmts prepares every insert statement on tx and returns the set plus a
@@ -368,6 +389,8 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 
 		{&s.recap, `INSERT INTO recaps(work_id, through_chapter, scope, text, license) VALUES(?,?,?,?,?)`},
 		{&s.recapSummary, `INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`},
+
+		{&s.redirect, `INSERT INTO redirects(kind, old_slug, new_slug) VALUES(?,?,?)`},
 	} {
 		st, err := tx.Prepare(spec.query)
 		if err != nil {
@@ -574,6 +597,32 @@ func insertRecapSummaries(st *stmts, recaps []*model.Recaps) error {
 		}
 		if _, err := st.recapSummary.Exec(rf.Work, nullStr(rf.InShort), nullStr(rf.Ending), rf.License); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+// insertRedirects writes the slug tombstone table. Rows go in namespace order
+// (model.RedirectKinds is sorted) and, within a namespace, in retired-slug
+// order, so an unchanged table yields byte-identical rows however the map was
+// walked - the same determinism rule every other insert here follows.
+//
+// It writes what the table SAYS and nothing more: that a source is retired, a
+// target is live and no target is itself a source are pkg/check's rules
+// (checkRedirects), and metabuild refuses to build data that failed them, so the
+// artifact can only ever hold a table a single lookup resolves.
+func insertRedirects(st *stmts, reds model.Redirects) error {
+	for _, kind := range model.RedirectKinds() {
+		table := reds[kind]
+		olds := make([]string, 0, len(table))
+		for old := range table {
+			olds = append(olds, old)
+		}
+		sort.Strings(olds)
+		for _, old := range olds {
+			if _, err := st.redirect.Exec(string(kind), old, table[old]); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
