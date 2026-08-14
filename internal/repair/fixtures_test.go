@@ -100,7 +100,7 @@ func mergeFinding(target string, losers ...string) audit.Finding {
 
 // assertRefusal checks that err is a refusal of the given category whose reason names
 // what a human has to know.
-func assertRefusal(t testing.TB, err error, category, mentions string) {
+func assertRefusal(t testing.TB, err error, category Category, mentions string) {
 	t.Helper()
 	var ref *refusal
 	if !errors.As(err, &ref) {

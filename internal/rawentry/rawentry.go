@@ -220,10 +220,17 @@ func AppendUnique(dst, src []string) []string {
 	return Union(slices.Clone(dst), src, func(s string) string { return s })
 }
 
-// UnionASINs unions two identifier lists BY VALUE, so the same ASIN recorded under two
-// regions collapses to the first one seen.
+// UnionASINs unions two identifier lists on the (REGION, ASIN) PAIR - which is exactly
+// the key pkg/check's ASIN uniqueness rule compares, so the union can never mint a
+// duplicate, and the same identifier recorded in two marketplaces keeps BOTH statements.
+//
+// It keyed on the value alone at first, folding `{us, B0X}` and `{uk, B0X}` into one entry
+// and silently dropping a stated region - a fact loss in a pass whose whole promise is
+// that a merge loses nothing. The asymmetry with UnionISBNs below is deliberate and
+// mirrors pkg/check exactly: an ASIN is unique per marketplace, an ISBN is unique
+// outright.
 func UnionASINs(dst, src []model.ASIN) []model.ASIN {
-	return Union(slices.Clone(dst), src, func(a model.ASIN) string { return a.ASIN })
+	return Union(slices.Clone(dst), src, func(a model.ASIN) string { return a.Region + "\x00" + a.ASIN })
 }
 
 // UnionISBNs unions two ISBN lists by value, for the reason UnionASINs does: the

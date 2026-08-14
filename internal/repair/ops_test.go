@@ -251,6 +251,16 @@ func TestMergeSeriesRefusesPositionContradictions(t *testing.T) {
 	})
 }
 
+// Two works at one SLOT spelled two ways ("3" and "03") is two works at one place in the
+// order, and pkg/check - which compares the stored strings - would have accepted it. The
+// slot lookup is what refuses it.
+func TestMergeSeriesRefusesOneSlotSpelledTwoWays(t *testing.T) {
+	data := seedTree(t, seriesPair(t, "hounded@3", "hexed@03"))
+	rn, tx := planFixture(t, data)
+	err := rn.mergeSeries(tx, seriesFinding("iron-druid-chronicles", "iron-druid-chronicles-2"))
+	assertRefusal(t, err, CatPositionConflict, "two works at one position")
+}
+
 // seriesPair is two series spellings over the same two works, for the merge-series
 // refusal cases.
 func seriesPair(t testing.TB, first, second string) map[string]string {

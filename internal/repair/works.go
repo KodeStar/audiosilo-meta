@@ -2,6 +2,7 @@ package repair
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
@@ -375,13 +376,27 @@ func (t *txn) rewriteMemberships(target string, losers []string) error {
 func refuseDuplicatePositions(seriesID string, works []model.SeriesWork) error {
 	seen := make(map[string]string, len(works))
 	for _, sw := range works {
-		if prev, dup := seen[sw.Position]; dup {
+		key := slotKey(sw.Position)
+		if prev, dup := seen[key]; dup {
 			return refusef(CatPositionConflict,
 				"the rewritten series %s would hold two works at position %q (%s and %s)", seriesID, sw.Position, prev, sw.Work)
 		}
-		seen[sw.Position] = sw.Work
+		seen[key] = sw.Work
 	}
 	return nil
+}
+
+// slotKey is a position's SLOT identity as a MAP KEY: the canonical span when the grammar
+// accepts the value, else the raw string. It is titlerule.SameSlot in the shape a lookup
+// needs - the same rule, because a map is how both merge paths ask "is this slot taken",
+// and a raw-string key let "3" and "03" through as two slots. pkg/check compares the
+// strings too, so such a tree stays GREEN with two works at one place in the order.
+func slotKey(pos string) string {
+	span, ok := titlerule.PositionSpan(pos)
+	if !ok {
+		return "raw:" + pos
+	}
+	return strconv.FormatFloat(span[0], 'f', -1, 64) + "-" + strconv.FormatFloat(span[1], 'f', -1, 64)
 }
 
 // freeRecordingKey walks the project's numbered-slug chain for a colliding

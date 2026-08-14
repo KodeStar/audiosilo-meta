@@ -30,6 +30,8 @@ var (
 	withRuntime        = testpack.WithRuntime
 	withoutIdentifiers = testpack.WithoutIdentifiers
 	withoutField       = testpack.WithoutField
+	withField          = testpack.WithField
+	withNarrators      = testpack.WithNarrators
 )
 
 // withAddedAt rewrites a rendered record's added_at, so a fixture can carry the RFC 3339

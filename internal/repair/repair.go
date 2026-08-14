@@ -82,22 +82,53 @@ var appliableOps = map[string]bool{
 // help and the set the planner switches on have one definition.
 func AppliableOps() []string { return rawentry.SortedKeys(appliableOps) }
 
-// The refusal categories. A refusal is a proposal this pass declined to apply, and
-// the category is what a maintainer triages by.
+// Category is why a proposal was declined. It is EXPORTED and TYPED because it is the
+// machine-readable field of a published artifact: REFUSED.ndjson is what a triage script
+// groups by, what a wave's follow-up worklist is filtered on, and what a later prevention
+// layer will name when it says which defect class it closed. A consumer naming a category
+// should name a constant, not a string literal a reword could break.
+type Category string
+
+// The refusal categories, in triage order: the two that are about the WORKLIST, then the
+// ones about the records a proposal names, then the ones about the values it states.
 const (
-	CatStaleProposal      = "stale-proposal"
-	catUnaddressableTitle = "title-carries-no-identity"
-	CatNotProposed        = "not-proposed"
-	CatMalformed          = "malformed-proposal"
-	CatMissing            = "record-missing"
-	CatRetired            = "record-retired"
-	CatSidecarCollision   = "sidecar-member-collision"
-	CatPositionConflict   = "series-position-conflict"
-	CatRecordingKey       = "recording-key-exhausted"
-	CatStaleValue         = "stale-value"
-	CatNoValue            = "no-value-stated"
-	CatRedirect           = "redirect-refused"
+	// CatStaleProposal: the worklist asks for something the fresh audit no longer
+	// proposes, or no longer proposes the same way (including "it is advisory now").
+	CatStaleProposal Category = "stale-proposal"
+	// CatNotProposed: a key named in --only that selected nothing.
+	CatNotProposed Category = "not-proposed"
+	// CatMissing: the record the proposal names is not in the tree.
+	CatMissing Category = "record-missing"
+	// CatRetired: an earlier proposal in this run retired the record.
+	CatRetired Category = "record-retired"
+	// CatSidecarCollision: both halves of a duplicate carry the same works-community
+	// member, so which CC BY-SA entry describes the survivor is a human decision.
+	CatSidecarCollision Category = "sidecar-member-collision"
+	// CatPositionConflict: the change would put one book at two positions in a series,
+	// or two books at one.
+	CatPositionConflict Category = "series-position-conflict"
+	// CatRecordingKey: a colliding recording key had no free numbered variant.
+	CatRecordingKey Category = "recording-key-exhausted"
+	// CatStaleValue: the record no longer states the value the proposal was written
+	// against.
+	CatStaleValue Category = "stale-value"
+	// CatNoValue: the proposal states no value to write.
+	CatNoValue Category = "no-value-stated"
+	// CatMalformed: the proposal is not one this pass can read (no target, a field it
+	// may not write, a position the data model rejects).
+	CatMalformed Category = "malformed-proposal"
+	// CatRedirect: pkg/redirects refused the tombstone a merge would have recorded.
+	CatRedirect Category = "redirect-refused"
 )
+
+// Categories returns every refusal category, in triage order, so a consumer building a
+// triage view over REFUSED.ndjson reads this list rather than writing one of its own.
+func Categories() []Category {
+	return []Category{
+		CatStaleProposal, CatNotProposed, CatMissing, CatRetired, CatSidecarCollision,
+		CatPositionConflict, CatRecordingKey, CatStaleValue, CatNoValue, CatMalformed, CatRedirect,
+	}
+}
 
 // Options configure a run.
 type Options struct {
@@ -148,7 +179,7 @@ type Applied struct {
 
 // Refusal is one proposal this run declined, with the reason a human needs.
 type Refusal struct {
-	Category string   `json:"category"`
+	Category Category `json:"category"`
 	Class    string   `json:"class,omitempty"`
 	Subclass string   `json:"subclass,omitempty"`
 	Key      string   `json:"key"`
@@ -218,13 +249,13 @@ type runner struct {
 // report, while an error is a failure of the RUN and aborts it before anything is
 // written.
 type refusal struct {
-	category string
+	category Category
 	reason   string
 }
 
-func (r *refusal) Error() string { return r.category + ": " + r.reason }
+func (r *refusal) Error() string { return string(r.category) + ": " + r.reason }
 
-func refusef(category, format string, a ...any) error {
+func refusef(category Category, format string, a ...any) error {
 	return &refusal{category: category, reason: fmt.Sprintf(format, a...)}
 }
 
@@ -346,7 +377,7 @@ func (rn *runner) planOne(c candidate) {
 }
 
 // refuse records a declined proposal.
-func (rn *runner) refuse(c candidate, category, reason string) {
+func (rn *runner) refuse(c candidate, category Category, reason string) {
 	rn.rep.Refused = append(rn.rep.Refused, Refusal{
 		Category: category, Class: c.class, Subclass: c.fd.Subclass, Key: c.fd.Key,
 		Op: c.fd.Propose.Op, Target: c.fd.Propose.Target, Others: c.fd.Propose.Others,

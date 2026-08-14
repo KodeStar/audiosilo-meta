@@ -9,6 +9,9 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // worklist_test.go is the central rule's test: a report directory can only NARROW what
@@ -94,6 +97,126 @@ func TestAChangedProposalIsRefusedWithBothDecisionsNamed(t *testing.T) {
 	for _, want := range []string{"the worklist asks for", "now proposes"} {
 		if !strings.Contains(rep.Refused[0].Reason, want) {
 			t.Errorf("reason = %q, want it to mention %q", rep.Refused[0].Reason, want)
+		}
+	}
+}
+
+// THE branch that stops a reviewed merge from being re-applied once a veto starts
+// tripping: the worklist holds a non-advisory proposal, the tree has since grown the
+// evidence that makes the audit withhold it, and the run must refuse rather than apply.
+//
+// This is the staleness case a report directory is FOR, and it is distinct from "the
+// finding is gone": the finding is still there, with the same key, and only its advisory
+// flag has changed.
+func TestAWorklistRecordTheFreshAuditNowMarksAdvisoryIsRefused(t *testing.T) {
+	data := seedTree(t, hammeredCluster(t))
+	report := auditReport(t, data)
+	// Sanity: the reviewed report really asks for the merge.
+	if len(run(t, Options{DataDir: data, ReportDir: report, Ops: []string{audit.OpMergeWorks}}).Applied) != 1 {
+		t.Fatal("the fixture's reviewed report does not ask for a merge")
+	}
+
+	// The tree grows the evidence: the two records now hold DIFFERENT positions in one
+	// series, which is the audit's oldest veto.
+	testpack.Seed(t, data, map[string]string{
+		"series/dr/druid-tales.json": seriesJSON(t, "druid-tales", "The Druid Tales", "hammered@3", "hammered-book-3@4"),
+	})
+
+	rep := run(t, Options{DataDir: data, ReportDir: report, Ops: []string{audit.OpMergeWorks}, Write: true})
+	if len(rep.Applied) != 0 {
+		t.Fatalf("a proposal the fresh audit now withholds was applied: %+v", rep.Applied)
+	}
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatStaleProposal {
+		t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatStaleProposal)
+	}
+	for _, want := range []string{"now marks it advisory", "different positions"} {
+		if !strings.Contains(rep.Refused[0].Reason, want) {
+			t.Errorf("reason = %q, want it to mention %q", rep.Refused[0].Reason, want)
+		}
+	}
+	if entryExists(t, data, pack.FamilyWorks, "hammered-book-3") == false {
+		t.Error("the refused run deleted the record anyway")
+	}
+}
+
+// --limit is ASYMMETRIC about refusals, and deliberately so: a refusal raised while
+// PLANNING has consumed a slot (the run took the proposal on and could not carry it out),
+// while a staleness refusal decided against the worklist has not (it never became a
+// candidate). Pinned because it is otherwise only a property of the order two checks
+// happen in.
+func TestLimitCountsPlanningRefusalsButNotStaleOnes(t *testing.T) {
+	t.Run("a planning refusal consumes the slot", func(t *testing.T) {
+		// Two clusters; the FIRST in report order (by key) carries the sidecar collision.
+		files := twoClusters(t)
+		files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+		files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus-again")
+		data := seedTree(t, files)
+
+		rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Limit: 1})
+		if rep.Considered != 1 || len(rep.Applied) != 0 || len(rep.Refused) != 1 {
+			t.Fatalf("considered=%d applied=%d refused=%d, want the refusal to have used the one slot",
+				rep.Considered, len(rep.Applied), len(rep.Refused))
+		}
+		if rep.BeyondLimit != 1 {
+			t.Errorf("beyond limit = %d, want the second cluster left for the next chunk", rep.BeyondLimit)
+		}
+	})
+
+	t.Run("a staleness refusal does not", func(t *testing.T) {
+		data := seedTree(t, twoClusters(t))
+		report := auditReport(t, data)
+		// The worklist asks for the FIRST cluster with the wrong survivor, so it is stale;
+		// the second is untouched. With --limit 1 the stale record is still reported AND
+		// the one good proposal still gets the slot.
+		rewriteReport(t, report, audit.ClassWorkDup, func(fd *audit.Finding) bool {
+			if fd.Propose.Op != audit.OpMergeWorks || fd.Propose.Target != "hammered" {
+				return false
+			}
+			fd.Propose.Target, fd.Propose.Others = fd.Propose.Others[0], []string{fd.Propose.Target}
+			return true
+		})
+
+		rep := run(t, Options{DataDir: data, ReportDir: report, Ops: []string{audit.OpMergeWorks}, Limit: 1})
+		if len(rep.Applied) != 1 {
+			t.Fatalf("applied %+v, want the slot to have gone to the sound proposal", rep.Applied)
+		}
+		if len(rep.Refused) != 1 || rep.Refused[0].Category != CatStaleProposal {
+			t.Fatalf("refusals = %+v, want the stale record reported anyway", rep.Refused)
+		}
+		if rep.Considered != 1 {
+			t.Errorf("considered = %d, want 1: a staleness refusal is not a candidate", rep.Considered)
+		}
+	})
+}
+
+// CHUNKING: two --limit N --write runs over one tree take DISJOINT sets and together take
+// all of them. That is what makes a wave safe to land in pieces - the second run re-audits
+// the tree the first one left, so it cannot re-take what has already been applied.
+func TestChunkedWritesTakeDisjointSets(t *testing.T) {
+	data := seedTree(t, twoClusters(t))
+
+	first := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Limit: 1, Write: true})
+	if len(first.Applied) != 1 {
+		t.Fatalf("the first chunk applied %+v", first.Applied)
+	}
+	second := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Limit: 1, Write: true})
+	if len(second.Applied) != 1 {
+		t.Fatalf("the second chunk applied %+v (refused %+v)", second.Applied, second.Refused)
+	}
+	if first.Applied[0].Key == second.Applied[0].Key {
+		t.Errorf("both chunks took %s: a chunk must not re-take what the previous one applied", first.Applied[0].Key)
+	}
+	// Together they took everything, and a third chunk has nothing left.
+	third := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Limit: 1, Write: true})
+	if len(third.Applied) != 0 || third.Considered != 0 {
+		t.Errorf("a third chunk found %d proposals, want none left", third.Considered)
+	}
+	for _, slug := range []string{"hammered-book-3", "second-sight-unabridged"} {
+		if entryExists(t, data, pack.FamilyWorks, slug) {
+			t.Errorf("%s survived both chunks", slug)
+		}
+		if loadRedirects(t, data)[model.RedirectWorks][slug] == "" {
+			t.Errorf("%s was retired without a tombstone", slug)
 		}
 	}
 }

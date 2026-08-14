@@ -25,14 +25,15 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 
 	merged := te.Clone()
 	works := merged.SeriesWorks()
-	// byWork and byPosition are the two ways a union can contradict itself: one
-	// work at two positions, and two works at one position. Both are refusals, and
-	// the second is what pkg/check enforces.
+	// byWork and byPosition are the two ways a union can contradict itself: one work at
+	// two positions, and two works at one position. Both are refusals. byPosition is keyed
+	// by SLOT rather than by the stored string, because "3" and "03" are one place in the
+	// order while pkg/check - which compares the strings - would accept the result.
 	byWork := map[string]string{}
 	byPosition := map[string]string{}
 	for _, sw := range works {
 		byWork[sw.Work] = sw.Position
-		byPosition[sw.Position] = sw.Work
+		byPosition[slotKey(sw.Position)] = sw.Work
 	}
 	var moved int
 	for i, slug := range sorted {
@@ -46,14 +47,14 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 					"%s lists %s at position %q while %s lists it at %q: two orderings are not one series",
 					target, sw.Work, have, slug, sw.Position)
 			}
-			if other, taken := byPosition[sw.Position]; taken {
+			if other, taken := byPosition[slotKey(sw.Position)]; taken {
 				return refusef(CatPositionConflict,
 					"position %q of %s is held by %s, and %s puts %s there: the merged series would hold two works at one position",
 					sw.Position, target, other, slug, sw.Work)
 			}
 			works = append(works, sw)
 			byWork[sw.Work] = sw.Position
-			byPosition[sw.Position] = sw.Work
+			byPosition[slotKey(sw.Position)] = sw.Work
 			moved++
 		}
 		mergeSeriesFields(merged, le)

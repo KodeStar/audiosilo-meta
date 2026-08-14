@@ -437,6 +437,12 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoUnaddressableTitle(members); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoUnexplainedRuntimeGap(members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoSlugOrdinal(members); ok {
+		out = append(out, s)
+	}
 	return out
 }
 
@@ -642,7 +648,14 @@ func dupViaNote(members []dupMember) string {
 }
 
 // statedVolumes returns the volume numbers the cluster's own TITLES spell out, and
-// whether two of them disagree. A member stating no number is not a disagreement:
+// whether two of them disagree.
+//
+// TODO(#2224): this is the FIRST of three layers that read a volume number, and today the
+// only one that reads it from the title. `vetoSlugOrdinal` reads it from the SLUG (with its
+// own narrow marker table) and PR #2224 is unifying titlerule's volume-marker vocabulary
+// (season/lesson/level ordinals, all markers rather than only the first). Once that lands,
+// this function and that veto's table should both consume the unified rule, so a number a
+// title states and a number a slug preserves are recognized by one vocabulary. A member stating no number is not a disagreement:
 // "Hammered" beside "Hammered: The Iron Druid Chronicles, Book 3" is the pair the
 // class exists to find.
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {

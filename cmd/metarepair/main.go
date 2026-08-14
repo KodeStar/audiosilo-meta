@@ -34,15 +34,27 @@ import (
 // repeated is a flag that may be given several times, and may also take a
 // comma-separated list, so `--op merge-works --op merge-series` and
 // `--op merge-works,merge-series` mean the same thing.
+//
+// An EMPTY value is an ERROR, not an empty list. Absent, `--op` means "every op this pass
+// can apply" - which is the right default for an interactive run - but that made
+// `--op "$OP"` with an unset variable mean the same thing, so a runbook line meant to
+// select one op would have selected all of them, against a database this tool deletes
+// records from. `--op ”`, `--op ','` and `--op 'merge-works,'` are all refused; the
+// "everything" reading is reachable only by leaving the flag off.
 type repeated []string
 
 func (r *repeated) String() string { return strings.Join(*r, ",") }
 
 func (r *repeated) Set(v string) error {
+	if strings.TrimSpace(v) == "" {
+		return fmt.Errorf("is empty; leave the flag off to mean every value, or name one")
+	}
 	for _, part := range strings.Split(v, ",") {
-		if part = strings.TrimSpace(part); part != "" {
-			*r = append(*r, part)
+		part = strings.TrimSpace(part)
+		if part == "" {
+			return fmt.Errorf("%q holds an empty entry; name one value per entry", v)
 		}
+		*r = append(*r, part)
 	}
 	return nil
 }
@@ -57,8 +69,9 @@ func main() {
 	write := flag.Bool("write", false, "apply the plan (default: report it and write nothing)")
 	verbose := flag.Bool("v", false, "print every applied change record by record")
 	var ops, subclasses repeated
-	flag.Var(&ops, "op", "restrict to this op, repeatable or comma-separated (one of "+strings.Join(repair.AppliableOps(), ", ")+")")
-	flag.Var(&subclasses, "subclass", "restrict to this audit subclass, repeatable or comma-separated")
+	flag.Var(&ops, "op", "restrict to this op, repeatable or comma-separated; LEAVE IT OFF for every op (one of "+
+		strings.Join(repair.AppliableOps(), ", ")+")")
+	flag.Var(&subclasses, "subclass", "restrict to this audit subclass, repeatable or comma-separated; leave it off for every subclass")
 	flag.Parse()
 
 	rep, err := repair.Run(repair.Options{

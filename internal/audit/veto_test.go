@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -438,6 +439,126 @@ func TestWorkDupKeepsAMergeWhenTheNumericTitlesAreIdentical(t *testing.T) {
 	}
 	if got[0].Propose.Advisory {
 		t.Errorf("a real duplicate whose title is a number was withheld: %q", got[0].Propose.Reason)
+	}
+}
+
+// THE BRAVELANDS SHAPE, which is what these two vetoes exist for: six volumes of one
+// series, each titled the bare series name, none of them modeled in a series, none of them
+// a collection, and a runtime spread just inside the 1.5x rung. Every older veto cleared
+// it, and a repair would have retired five public slugs.
+func TestWorkDupVetoesTheBravelandsShape(t *testing.T) {
+	files := fixture(t, map[string]string{})
+	for i, runtime := range []int{300, 320, 350, 380, 410, 441} {
+		id := fmt.Sprintf("bravelands-book-%d", i+1)
+		files["works/br/"+id+"/work.json"] = workJSON(t, id, "Bravelands")
+		files["works/br/"+id+"/recordings/nate-"+id+".json"] = recJSON(t, "nate-"+id, id, withRuntime(runtime))
+	}
+	got := subclassOf(t, runFixture(t, files), ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster over the six volumes, got %d", len(got))
+	}
+	if !got[0].Propose.Advisory {
+		t.Fatalf("six distinct volumes were proposed for merge: %+v", got[0].Propose)
+	}
+	// Both vetoes must name it, because each is the evidence the other is not.
+	for _, want := range []string{"same narrator", "trailing volume ordinal"} {
+		if !strings.Contains(got[0].Propose.Reason, want) {
+			t.Errorf("reason = %q, want it to mention %q", got[0].Propose.Reason, want)
+		}
+	}
+}
+
+// The runtime veto on its own, and the ONE gap it must still let through: an abridgement
+// beside its unabridged twin is one work with two productions (the Mageling shape).
+func TestWorkDupRuntimeGapVetoIsAboutTheEXPLANATION(t *testing.T) {
+	// Slugs that are NOT ordinal siblings, so only the runtime veto can fire.
+	build := func(t testing.TB, abridgedA, abridgedB bool) []Finding {
+		t.Helper()
+		files := fixture(t, map[string]string{
+			"works/mm/mageling/work.json": workJSON(t, "mageling", "Mageling"),
+			// 600 against 500 is a 16.7% gap: inside the older 1.5x runtime rung, so only
+			// the unexplained-gap veto can speak here.
+			"works/mm/mageling/recordings/a.json": withField(t, recJSON(t, "a", "mageling", withRuntime(600)), "abridged", abridgedA),
+			"works/mm/mageling-twin/work.json":    workJSON(t, "mageling-twin", "Mageling."),
+			"works/mm/mageling-twin/recordings/b.json": withField(t,
+				recJSON(t, "b", "mageling-twin", withRuntime(500)), "abridged", abridgedB),
+		})
+		return subclassOf(t, runFixture(t, files), ClassWorkDup, dupTitleAuthor)
+	}
+	t.Run("unexplained gap is advisory", func(t *testing.T) {
+		got := build(t, false, false)
+		if len(got) != 1 {
+			t.Fatalf("want one cluster, got %d", len(got))
+		}
+		if !got[0].Propose.Advisory || !strings.Contains(got[0].Propose.Reason, "same narrator") {
+			t.Errorf("propose = %+v, want the unexplained-gap veto", got[0].Propose)
+		}
+	})
+	t.Run("an abridgement explains it and the merge stands", func(t *testing.T) {
+		got := build(t, false, true)
+		if len(got) != 1 {
+			t.Fatalf("want one cluster, got %d", len(got))
+		}
+		if got[0].Propose.Advisory {
+			t.Errorf("an abridgement beside its unabridged twin was withheld: %q", got[0].Propose.Reason)
+		}
+	})
+	t.Run("a different narrator is a different production, not a contradiction", func(t *testing.T) {
+		files := fixture(t, map[string]string{
+			"works/mm/mageling/work.json":              workJSON(t, "mageling", "Mageling"),
+			"works/mm/mageling/recordings/a.json":      recJSON(t, "a", "mageling", withRuntime(600)),
+			"works/mm/mageling-twin/work.json":         workJSON(t, "mageling-twin", "Mageling."),
+			"works/mm/mageling-twin/recordings/b.json": recJSON(t, "b", "mageling-twin", withRuntime(500), withNarrators("other-narrator")),
+			"people/ot/other-narrator.json":            personJSON(t, "other-narrator", "Other Narrator"),
+		})
+		got := subclassOf(t, runFixture(t, files), ClassWorkDup, dupTitleAuthor)
+		if len(got) != 1 {
+			t.Fatalf("want one cluster, got %d", len(got))
+		}
+		if got[0].Propose.Advisory {
+			t.Errorf("two productions of one book were withheld: %q", got[0].Propose.Reason)
+		}
+	})
+}
+
+// The slug veto over the four other real shapes, and over the two slug pairs it must NOT
+// touch: the calibration pair (no tail on one side) and the importer's bare collision
+// suffix (no marker word).
+func TestWorkDupSlugOrdinalVetoShapes(t *testing.T) {
+	for _, tc := range []struct {
+		a, b string
+		veto bool
+	}{
+		{"bravelands-book-1", "bravelands-book-2", true},
+		{"dane-maddock-origins-omnibus-1", "dane-maddock-origins-omnibus-3", true},
+		{"french-saunders-titting-about-series-4", "french-saunders-titting-about-series-6", true},
+		{"savarkar-vol-1-part-1", "savarkar-vol-1-part-2", true},
+		{"hancocks-half-hour-series-5", "hancocks-half-hour-series-6", true},
+		// The calibration pair: one side has no tail at all.
+		{"hammered", "hammered-book-3", false},
+		// An author suffix is not an ordinal.
+		{"1984", "1984-george-orwell", false},
+		// The importer's numeric collision suffix, with no volume marker in sight.
+		{"the-hobbit", "the-hobbit-2", false},
+		{"the-hobbit-2", "the-hobbit-3", false},
+		// A marker with no number on one side states no volume.
+		{"x-book-one", "x-book-2", false},
+		// ONE volume whose two ids disagree about how to spell "Book 3" - the shape a
+		// repair should fold, and what the first draft of this rule vetoed.
+		{"the-beasts-of-tarzan-tarzan-series-3", "the-beasts-of-tarzan-tarzan-series-book-3", false},
+		{"blue-at-the-mizzen-aubrey-maturin-book-20", "blue-at-the-mizzen-aubrey-maturin-series-book-20", false},
+		{"x-book-3", "x-book-03", false},
+		// ...and the same shape with DIFFERENT numbers is two volumes again.
+		{"the-beasts-of-tarzan-tarzan-series-3", "the-beasts-of-tarzan-tarzan-series-book-4", true},
+		// A range against a range: two different box sets.
+		{"academy-books-1-3", "academy-books-4-6", true},
+	} {
+		if got := ordinalSiblingSlugs(tc.a, tc.b); got != tc.veto {
+			t.Errorf("ordinalSiblingSlugs(%q, %q) = %v, want %v", tc.a, tc.b, got, tc.veto)
+		}
+		if got := ordinalSiblingSlugs(tc.b, tc.a); got != tc.veto {
+			t.Errorf("ordinalSiblingSlugs is not symmetric for (%q, %q)", tc.a, tc.b)
+		}
 	}
 }
 

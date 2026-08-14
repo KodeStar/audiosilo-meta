@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -140,10 +141,18 @@ func TestMergeWorksReKeysADifferentProduction(t *testing.T) {
 	}
 }
 
-// Same narrators but a runtime gap over 10% is the importer's own "different
-// production" bar, so it re-keys too rather than fusing two productions.
+// Same narrators but a runtime gap over 10% is the importer's own "different production"
+// bar, so the colliding key re-keys rather than fusing two productions.
+//
+// The loser STATES an abridgement, which is what gets the cluster past the audit's
+// unexplained-gap veto (an abridgement beside its unabridged twin is one work with two
+// productions). The recording pair is then judged here, and the RUNTIME is what decides it:
+// sameProduction asks the runtime before the abridged flag.
 func TestMergeWorksReKeysOnARuntimeGap(t *testing.T) {
-	data := seedTree(t, hammeredCluster(t, withRuntime(700)))
+	files := hammeredCluster(t, withRuntime(700), withAbridged(true))
+	files["works/ha/hammered/recordings/luke-daniels-2011.json"] = recJSON(t, "luke-daniels-2011", "hammered",
+		withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01"), withAbridged(false))
+	data := seedTree(t, files)
 	rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
 	if len(rep.Applied) != 1 {
 		t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
@@ -154,6 +163,9 @@ func TestMergeWorksReKeysOnARuntimeGap(t *testing.T) {
 	}
 	if len(recs) != 2 {
 		t.Errorf("recordings = %v, want both kept (700 vs 576 is more than 10%%)", rawentry.SortedKeys(recs))
+	}
+	if !noteMentions(rep.Applied[0].Notes, "more than 10%") {
+		t.Errorf("notes do not name the runtime as the reason: %v", rep.Applied[0].Notes)
 	}
 }
 
@@ -436,6 +448,40 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 	// the database, and the mover's provenance survives in sources[].
 	if got := w.Str("added_at"); got != "2026-01-01" {
 		t.Errorf("work added_at = %q, want the survivor's own, untouched", got)
+	}
+}
+
+// One identifier stated in TWO marketplaces is two facts, and a merge keeps both. The
+// union keys on the (region, ASIN) pair - exactly pkg/check's own ASIN uniqueness key - so
+// it can neither mint a duplicate nor drop a stated region, which a by-value fold did.
+func TestMergeWorksKeepsTheSameASINUnderTwoRegions(t *testing.T) {
+	files := hammeredCluster(t, withRuntime(600))
+	files["works/ha/hammered/recordings/luke-daniels-2011.json"] = testpack.WithField(t,
+		recJSON(t, "luke-daniels-2011", "hammered", withNarrators("luke-daniels"), withRuntime(576)),
+		"asin", []map[string]string{{"region": "us", "asin": "B0SHARED01"}})
+	files["works/ha/hammered-book-3/recordings/luke-daniels-2011.json"] = testpack.WithField(t,
+		recJSON(t, "luke-daniels-2011", "hammered-book-3", withNarrators("luke-daniels"), withRuntime(600)),
+		"asin", []map[string]string{{"region": "uk", "asin": "B0SHARED01"}})
+	data := seedTree(t, files)
+
+	rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+	if len(rep.Applied) != 1 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	recs, err := workEntry(t, data, "hammered").Recordings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(recs) != 1 {
+		t.Fatalf("recordings = %v, want the merged production", rawentry.SortedKeys(recs))
+	}
+	var pairs []string
+	for _, a := range recs["luke-daniels-2011"].ASINs() {
+		pairs = append(pairs, a.Region+"/"+a.ASIN)
+	}
+	slices.Sort(pairs)
+	if want := []string{"uk/B0SHARED01", "us/B0SHARED01"}; !reflect.DeepEqual(pairs, want) {
+		t.Errorf("ASIN pairs = %v, want %v: a stated region is a fact a merge may not drop", pairs, want)
 	}
 }
 

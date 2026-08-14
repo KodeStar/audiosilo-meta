@@ -135,14 +135,21 @@ func TestWorkDupNeverClustersDifferentAuthors(t *testing.T) {
 
 // A runtime difference within the veto ratio is a different PRODUCTION, which is
 // two recordings of one work - so the merge proposal stands.
+//
+// The two sides carry DIFFERENT narrators, which is what a second production has (and what
+// a dramatization certainly has). That is load-bearing for what this test is about: the
+// unexplained-same-narrator-gap veto would otherwise speak first, and this fixture exists
+// to pin the RATIO rung's own boundary.
 func TestWorkDupAllowsARuntimeDifferenceWithinTheRatio(t *testing.T) {
 	rep := runFixture(t, map[string]string{
-		"works/fe/fermentation/work.json":                    workJSON(t, "fermentation", "Fermentation"),
-		"works/fe/fermentation/recordings/solo.json":         recJSON(t, "solo", "fermentation", withRuntime(720)),
-		"works/fe/fermentation-dramatized/work.json":         workJSON(t, "fermentation-dramatized", "Fermentation (Dramatized Adaptation)"),
-		"works/fe/fermentation-dramatized/recordings/c.json": recJSON(t, "c", "fermentation-dramatized", withRuntime(503)),
-		"people/ja/jane-doe.json":                            personJSON(t, "jane-doe", "Jane Doe"),
-		"people/na/nate-narrator.json":                       personJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/fe/fermentation/work.json":            workJSON(t, "fermentation", "Fermentation"),
+		"works/fe/fermentation/recordings/solo.json": recJSON(t, "solo", "fermentation", withRuntime(720)),
+		"works/fe/fermentation-dramatized/work.json": workJSON(t, "fermentation-dramatized", "Fermentation (Dramatized Adaptation)"),
+		"works/fe/fermentation-dramatized/recordings/c.json": recJSON(t, "c", "fermentation-dramatized",
+			withRuntime(503), withNarrators("other-narrator")),
+		"people/ja/jane-doe.json":       personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":  personJSON(t, "nate-narrator", "Nate Narrator"),
+		"people/ot/other-narrator.json": personJSON(t, "other-narrator", "Other Narrator"),
 	})
 	got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor)
 	if len(got) != 1 {
