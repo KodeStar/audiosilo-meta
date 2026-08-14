@@ -93,6 +93,13 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"narrated total", narratedTotalSQL, []any{person}},
 		{"authored page", authoredPageSQL, []any{person, 100, 0}},
 		{"narrated page", narratedPageSQL, []any{person, 100, 0}},
+		// The sitemap shards. Each pages a whole family, so an ORDER BY that did
+		// not walk the primary key would sort the entire catalogue in a temp
+		// b-tree once per shard - six times over for works, on a route a crawler
+		// re-fetches on its own schedule.
+		{"works sitemap shard", worksSitemapSQL, []any{sitemapShardURLs, 0}},
+		{"people sitemap shard", peopleSitemapSQL, []any{sitemapShardURLs, 0}},
+		{"series sitemap shard", seriesSitemapSQL, []any{sitemapShardURLs, 0}},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

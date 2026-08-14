@@ -346,12 +346,17 @@ var redirectNamespaces = func() map[string]model.RedirectKind {
 }()
 
 // redirectExemptRoutes are the wildcard routes that deliberately resolve no
-// retired slug. It is EMPTY today: every wildcard the API serves is a record id.
-// It exists so that the guard above can be answered in the only two ways that are
-// honest - name the namespace, or say out loud that this wildcard is not a record
-// - rather than by a route quietly not appearing in either list. A multi-segment
-// wildcard ({rest...}) belongs here: it is a path, not an id.
-var redirectExemptRoutes = map[string]bool{}
+// retired slug. It exists so that the guard above can be answered in the only two
+// ways that are honest - name the namespace, or say out loud that this wildcard is
+// not a record - rather than by a route quietly not appearing in either list. A
+// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
+//
+// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
+// a window over a family, so there is no retired id for it to resolve and an
+// unknown one is the 404 parseShardFile already gives it.
+var redirectExemptRoutes = map[string]bool{
+	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
+}
 
 // redirectCoverageGaps returns the patterns that address a record by a wildcard
 // and neither name a namespace nor say they are exempt. It is the guard's
@@ -422,6 +427,14 @@ func (s *Server) buildMux() http.Handler {
 	for _, r := range s.routes() {
 		mux.Handle(r.pattern, r.handler)
 	}
+	// The sitemaps are registered unconditionally: they are rendered from the
+	// snapshot and the configured origin, with no shell to inject into, so an
+	// API-only deployment serves them too (it simply has no static-pages sitemap
+	// to list). The index pattern SHADOWS the dist's own sitemap-index.xml, which
+	// is the point - see sitemap.go.
+	for _, r := range s.sitemapRoutes() {
+		mux.Handle(r.pattern, r.handler)
+	}
 	// The HTML entity pages sit between the API and the static fallback, and only
 	// when a site directory is configured: with no dist there is no shell to
 	// inject into, and an API-only deployment serves no pages at all.
@@ -448,6 +461,12 @@ func (s *Server) api(h http.HandlerFunc) http.Handler {
 	return s.public(s.requireSnapshot(h))
 }
 
+// noArtifactMsg is the one wording of the no-artifact 503, shared by the API
+// gate below and the sitemap routes' own copy of it (sitemapUnavailable, which
+// is outside this middleware because those routes are not API). Two spellings of
+// one condition is a difference a client could read as a difference.
+const noArtifactMsg = "no data loaded yet: the server is fetching the latest release"
+
 // requireSnapshot answers 503 while no artifact has loaded, so every data
 // handler can assume s.current() is non-nil. Only a poll-only boot that could
 // not reach GitHub is in that state (see New); it is temporary by construction,
@@ -456,7 +475,7 @@ func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
 			w.Header().Set("Retry-After", s.retryAfter())
-			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
+			writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
 			return
 		}
 		next(w, r)
