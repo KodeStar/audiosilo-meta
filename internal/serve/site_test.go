@@ -114,16 +114,8 @@ func TestSiteIndexHTMLRedirect(t *testing.T) {
 	ts := newSiteTestServer(t)
 
 	// First observe the 301 itself.
-	noFollow := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error {
-		return http.ErrUseLastResponse
-	}}
-	resp, err := noFollow.Get(ts.URL + "/index.html")
-	if err != nil {
-		t.Fatal(err)
-	}
-	_ = resp.Body.Close()
-	if resp.StatusCode != http.StatusMovedPermanently {
-		t.Fatalf("GET /index.html status = %d, want 301", resp.StatusCode)
+	if code := getNoFollow(t, ts.URL, "/index.html").StatusCode; code != http.StatusMovedPermanently {
+		t.Fatalf("GET /index.html status = %d, want 301", code)
 	}
 
 	// Then follow it (default client) and require the landing page.

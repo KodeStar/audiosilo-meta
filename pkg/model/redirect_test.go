@@ -2,7 +2,9 @@ package model
 
 import (
 	"encoding/json"
+	"errors"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -49,26 +51,46 @@ func TestRedirectsJSONIsTheFileShape(t *testing.T) {
 	if err := json.Unmarshal([]byte(want), &back); err != nil {
 		t.Fatal(err)
 	}
-	if got := back.Target(RedirectWorks, "old-book"); got != "new-book" {
+	if got := back[RedirectWorks]["old-book"]; got != "new-book" {
 		t.Errorf("round-tripped target = %q", got)
 	}
 }
 
-func TestRedirectsTargetAndLen(t *testing.T) {
+// TestRedirectsLen pins the emptiness test every reader gates on: the OUTER map
+// always holds all three namespaces, so len(r) is 3 for an empty table and only
+// Len() can answer "has anything been retired".
+func TestRedirectsLen(t *testing.T) {
 	var empty Redirects
-	if got := empty.Target(RedirectWorks, "anything"); got != "" {
-		t.Errorf("nil table target = %q, want empty", got)
-	}
 	if got := empty.Len(); got != 0 {
 		t.Errorf("nil table Len = %d", got)
 	}
-	r := NewRedirects()
-	r[RedirectWorks]["a"] = "b"
-	r[RedirectPeople]["c"] = "d"
-	if got := r.Len(); got != 2 {
+	fresh := NewRedirects()
+	if got := fresh.Len(); got != 0 {
+		t.Errorf("empty table Len = %d, want 0 (len(map) would be %d)", got, len(fresh))
+	}
+	fresh[RedirectWorks]["a"] = "b"
+	fresh[RedirectPeople]["c"] = "d"
+	if got := fresh.Len(); got != 2 {
 		t.Errorf("Len = %d, want 2", got)
 	}
-	if got := r.Target(RedirectPeople, "a"); got != "" {
-		t.Errorf("namespaces leaked: people/a = %q", got)
+}
+
+// TestValidRedirectSlug covers the one definition both the writer and the
+// checker ask, including the reserved words no id namespace may hold.
+func TestValidRedirectSlug(t *testing.T) {
+	for _, ok := range []string{"book-one", "a", "0"} {
+		if err := ValidRedirectSlug(ok); err != nil {
+			t.Errorf("ValidRedirectSlug(%q) = %v, want nil", ok, err)
+		}
+	}
+	for _, bad := range []string{"", "Book One", "book--one", "-book", strings.Repeat("a", MaxSlugLen+1)} {
+		if err := ValidRedirectSlug(bad); err == nil {
+			t.Errorf("ValidRedirectSlug(%q) = nil, want an error", bad)
+		}
+	}
+	for _, reserved := range ReservedSlugs() {
+		if err := ValidRedirectSlug(reserved); !errors.Is(err, ErrReservedRedirectSlug) {
+			t.Errorf("ValidRedirectSlug(%q) = %v, want ErrReservedRedirectSlug", reserved, err)
+		}
 	}
 }

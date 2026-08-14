@@ -1,24 +1,18 @@
 package check
 
 // The slug tombstone table (data/redirects.json): how it is read, and the rules
-// that make it a tombstone table rather than a second addressing scheme.
-//
-// A slug is public API - a meta.audiosilo.app URL, a books.work_id in every
-// audiosilo-sidecars install, a contributed sidecar's work reference,
-// audiosilo-server's community-metadata seam - so a repair that merges duplicate
-// records records where the retired id went instead of dropping it. What a
-// consumer needs from that record is narrow and absolute: one lookup resolves,
-// and it resolves to something that is there. Everything below exists to keep
-// those two sentences true.
+// that keep it resolvable. What the table is for and what must hold of it is
+// stated once, on model.Redirects; this file enforces it.
 
 import (
 	"encoding/json"
+	"maps"
 	"os"
-	"path/filepath"
-	"sort"
+	"slices"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // redirectPath renders the Path of a problem about one redirect. It reads like
@@ -27,22 +21,29 @@ func redirectPath(kind model.RedirectKind, from string) string {
 	return pack.RedirectsFile + ": " + string(kind) + " " + from
 }
 
-// loadRedirects reads and schema-validates the tombstone table under dir. It
-// returns nil when there is nothing to check with: no file (a tree that has
-// never retired a slug - which is most fixture trees, and was every tree before
-// the mechanism existed), an unreadable one, or one the schema rejected.
+// loadRedirects reads and schema-validates the tombstone table, which aux names
+// if the tree holds one.
 //
-// A schema-rejected file returns nil DELIBERATELY, so the cross-record rules do
-// not also fire on a document whose shape is already the reported problem: an
-// unknown namespace or a key that is not a slug says nothing about whether its
-// target exists. The load has failed either way.
-func (l *loader) loadRedirects(dir string) model.Redirects {
+// The file is reached through the LISTING rather than by probing the disk, like
+// every other file this package reads: the walk has already classified it
+// (pack.Listing.Aux), and a load that is as-of-open by construction - LoadStore,
+// where a writer validates the tree it is planning against - must not answer from
+// a file that appeared after that walk.
+//
+// It returns nil when there is nothing to check with: no file (a tree that has
+// never retired a slug, which is most fixture trees and was every tree before the
+// mechanism existed), an unreadable one, or one the schema rejected. A
+// schema-rejected file returns nil DELIBERATELY, so the cross-record rules do not
+// also fire on a document whose shape is already the reported problem: an unknown
+// namespace or a key that is not a slug says nothing about whether its target
+// exists. The load has failed either way.
+func (l *loader) loadRedirects(aux []string) model.Redirects {
 	p := pack.RedirectsFile
-	raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(p)))
+	if !slices.Contains(aux, p) {
+		return nil
+	}
+	raw, err := os.ReadFile(redirects.Path(l.dir))
 	if err != nil {
-		if os.IsNotExist(err) {
-			return nil
-		}
 		l.add(p, "read: %v", err)
 		return nil
 	}
@@ -79,40 +80,60 @@ func (l *loader) loadRedirects(dir string) model.Redirects {
 //   - the target MUST be a live id, or the redirect hands a consumer a second
 //     404 - worse than the first, because it looks like an answer;
 //   - no chain: a target may not itself be a source. The writer collapses
-//     chains (pkg/redirects.Add repoints both directions), so a chain here is a
-//     hand edit or a bad merge, and refusing it is what lets every resolver -
-//     this artifact's serve path included - do exactly one lookup;
-//   - neither side may be a reserved route literal (model.ReservedSlugs): a
-//     word no record may be stored under is no target either, and as a source
-//     it names a route rather than a retired record.
+//     chains, so a chain here is a hand edit or a bad merge, and refusing it is
+//     what lets every resolver do exactly one lookup;
+//   - neither side may be what model.ValidRedirectSlug refuses, which for a
+//     schema-clean file means a reserved route literal.
 //
 // The slug PATTERN is the schema's job, exactly as it is for every id in the
-// tree, so it is deliberately not restated here.
-func checkRedirects(cat *model.Catalog, reds model.Redirects, add addFunc) {
-	if len(reds) == 0 {
+// tree, so by the time these rules run it already holds.
+//
+// works and people are the id sets checkIntegrity has already built; series is
+// the one this needs of its own, and it is built HERE, after the early return, so
+// a catalogue with no redirects (every load until the first merge lands) pays
+// nothing at all.
+func checkRedirects(cat *model.Catalog, works map[string]*model.Work, people map[string]bool, add addFunc) {
+	reds := cat.Redirects
+	if reds.Len() == 0 {
 		return
 	}
-	live := liveIDs(cat)
+	series := idSet(cat.Series, func(s *model.Series) string { return s.ID })
+	// "Live" is presence, so the two shapes agree: workByID keeps the FIRST
+	// record of a duplicated id where idSet marks every one, and for "does the
+	// database hold this slug" that is the same answer.
+	live := func(kind model.RedirectKind, id string) bool {
+		switch kind {
+		case model.RedirectWorks:
+			return works[id] != nil
+		case model.RedirectPeople:
+			return people[id]
+		case model.RedirectSeries:
+			return series[id]
+		}
+		return false
+	}
+
 	for _, kind := range model.RedirectKinds() {
 		table := reds[kind]
-		for _, from := range sortedKeys(table) {
+		for _, from := range slices.Sorted(maps.Keys(table)) {
 			to := table[from]
 			at := redirectPath(kind, from)
 
-			for _, s := range []struct{ what, slug string }{{"source", from}, {"target", to}} {
-				if model.IsReservedSlug(s.slug) {
-					add(at, "redirect %s %q is a reserved slug: it names an API route segment, not a record", s.what, s.slug)
-				}
+			if err := model.ValidRedirectSlug(from); err != nil {
+				add(at, "redirect source %q %s", from, err)
+			}
+			if err := model.ValidRedirectSlug(to); err != nil {
+				add(at, "redirect target %q %s", to, err)
 			}
 			if from == to {
 				add(at, "redirect points at itself: a tombstone names the record that REPLACED the retired slug")
 				continue
 			}
-			if live[kind][from] {
+			if live(kind, from) {
 				add(at, "redirect source is a live %s id: a slug the database still holds is addressed by its record, "+
 					"so this tombstone can never be read", kind)
 			}
-			if !live[kind][to] {
+			if !live(kind, to) {
 				add(at, "redirect target %q is no live %s id: a tombstone must name a record that exists, "+
 					"or it answers a lost id with a second dead end", to, kind)
 			}
@@ -124,35 +145,13 @@ func checkRedirects(cat *model.Catalog, reds model.Redirects, add addFunc) {
 	}
 }
 
-// liveIDs collects the ids the catalogue actually holds, per redirect namespace.
-// It is what both the "source is retired" and the "target exists" rules are
-// written against, so the two can never disagree about what "live" means.
-func liveIDs(cat *model.Catalog) map[model.RedirectKind]map[string]bool {
-	out := map[model.RedirectKind]map[string]bool{
-		model.RedirectWorks:  make(map[string]bool, len(cat.Works)),
-		model.RedirectPeople: make(map[string]bool, len(cat.People)),
-		model.RedirectSeries: make(map[string]bool, len(cat.Series)),
+// idSet collects the ids of one entity slice, for the rules that ask "does the
+// catalogue hold this id". One builder, so no rule walks a family the load has
+// already walked for another rule.
+func idSet[T any](xs []T, id func(T) string) map[string]bool {
+	out := make(map[string]bool, len(xs))
+	for _, x := range xs {
+		out[id(x)] = true
 	}
-	for _, w := range cat.Works {
-		out[model.RedirectWorks][w.ID] = true
-	}
-	for _, p := range cat.People {
-		out[model.RedirectPeople][p.ID] = true
-	}
-	for _, s := range cat.Series {
-		out[model.RedirectSeries][s.ID] = true
-	}
-	return out
-}
-
-// sortedKeys returns a table's keys in slug order, so a run's problems come out
-// in the same order every time (the load is deterministic by construction and a
-// map walk is not).
-func sortedKeys(table map[string]string) []string {
-	out := make([]string, 0, len(table))
-	for k := range table {
-		out = append(out, k)
-	}
-	sort.Strings(out)
 	return out
 }

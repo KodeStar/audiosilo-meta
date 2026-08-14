@@ -3,6 +3,9 @@ package check
 import (
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // The rule convention of this repo: every rule ships with a passing fixture and a
@@ -26,7 +29,7 @@ func loadRedirectFixture(t *testing.T, files map[string]string) []Problem {
 	res := Load(dir)
 	var out []Problem
 	for _, p := range res.Problems {
-		if strings.HasPrefix(p.Path, "redirects.json") {
+		if strings.HasPrefix(p.Path, pack.RedirectsFile) {
 			out = append(out, p)
 		}
 	}
@@ -47,10 +50,10 @@ func TestRedirectsValid(t *testing.T) {
 	if !res.OK() {
 		t.Fatalf("valid redirects reported problems: %v", res.Problems)
 	}
-	if got := res.Catalog.Redirects.Target("works", "book-uno"); got != "book-one" {
+	if got := res.Catalog.Redirects[model.RedirectWorks]["book-uno"]; got != "book-one" {
 		t.Errorf("catalog redirect works/book-uno = %q, want book-one", got)
 	}
-	if got := res.Catalog.Redirects.Target("people", "author-uno"); got != "author-one" {
+	if got := res.Catalog.Redirects[model.RedirectPeople]["author-uno"]; got != "author-one" {
 		t.Errorf("catalog redirect people/author-uno = %q, want author-one", got)
 	}
 }
@@ -152,15 +155,9 @@ func TestRedirectRules(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			probs := loadRedirectFixture(t, redirectTree(tc.body))
-			if len(probs) == 0 {
-				t.Fatalf("no problem reported for %s", tc.body)
+			if !hasProblem(probs, tc.want) {
+				t.Errorf("problems %v, none containing %q", probs, tc.want)
 			}
-			for _, p := range probs {
-				if strings.Contains(p.Msg, tc.want) {
-					return
-				}
-			}
-			t.Errorf("problems %v, none containing %q", probs, tc.want)
 		})
 	}
 }
@@ -182,10 +179,8 @@ func TestRedirectProblemNamesTheEntry(t *testing.T) {
 // is reported once, not once per rule that cannot mean anything yet.
 func TestRedirectSchemaFailureSkipsTheRules(t *testing.T) {
 	probs := loadRedirectFixture(t, redirectTree(`{"people":{},"series":{},"works":{"Book Uno":"book-nine"}}`))
-	for _, p := range probs {
-		if strings.Contains(p.Msg, "no live works id") {
-			t.Errorf("a cross-record rule ran on a schema-rejected document: %v", probs)
-		}
+	if hasProblem(probs, "no live works id") {
+		t.Errorf("a cross-record rule ran on a schema-rejected document: %v", probs)
 	}
 }
 
@@ -193,10 +188,7 @@ func TestRedirectSchemaFailureSkipsTheRules(t *testing.T) {
 // than read as "no redirects".
 func TestRedirectsUnreadableIsReported(t *testing.T) {
 	probs := loadRedirectFixture(t, redirectTree(`{"works":`))
-	if len(probs) == 0 {
-		t.Fatal("a truncated redirects file reported nothing")
-	}
-	if !strings.Contains(probs[0].Msg, "invalid JSON") {
-		t.Errorf("problem = %v, want an invalid-JSON report", probs[0])
+	if !hasProblem(probs, "invalid JSON") {
+		t.Errorf("problems %v, want an invalid-JSON report", probs)
 	}
 }

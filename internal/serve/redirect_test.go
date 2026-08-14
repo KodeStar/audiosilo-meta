@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"strings"
 	"testing"
 )
 
 // getNoFollow issues the request WITHOUT following redirects, which is the whole
-// point here: http.DefaultClient would follow the 301 and every assertion would
-// be about the destination instead of the redirect.
+// point wherever a redirect is the thing under test: http.DefaultClient would
+// follow it and every assertion would be about the destination instead. Shared
+// with site_test.go, whose 301 comes from http.FileServer rather than from here.
 func getNoFollow(t *testing.T, base, path string) *http.Response {
 	t.Helper()
 	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
@@ -165,7 +167,9 @@ func TestRedirectLookupIsIndexed(t *testing.T) {
 }
 
 // TestRedirectTargetResolves covers the query layer on its own: a hit, a miss,
-// and the version gate.
+// and that the namespaces do not leak into one another. (The version gate is
+// covered end to end by TestRedirectsTolerateOlderArtifact, and the empty-table
+// short circuit by TestRedirectTargetSkipsAnEmptyTable.)
 func TestRedirectTargetResolves(t *testing.T) {
 	snap := snapshotFor(t, fixtureCatalog())
 	got, err := snap.redirectTarget("works", "project-hail-mary-audiobook")
@@ -179,8 +183,49 @@ func TestRedirectTargetResolves(t *testing.T) {
 	if got, err := snap.redirectTarget("works", "project-hail-mary"); err != nil || got != "" {
 		t.Errorf("a live slug resolved to %q, %v, want no hit", got, err)
 	}
-	snap.schemaVersion = redirectSchemaVersion - 1
+}
+
+// TestRedirectTargetSkipsAnEmptyTable pins the memo: a catalogue that has retired
+// nothing answers without touching the table, which matters because the chapters
+// route consults the redirects on an ordinary 200 (an empty chapter list).
+func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Redirects = nil
+	snap := snapshotFor(t, cat)
+	if snap.hasRedirects {
+		t.Error("hasRedirects is true for a catalogue with no redirects")
+	}
 	if got, err := snap.redirectTarget("works", "project-hail-mary-audiobook"); err != nil || got != "" {
-		t.Errorf("below the version gate: %q, %v, want no hit and no error", got, err)
+		t.Errorf("empty table = %q, %v, want no hit and no error", got, err)
+	}
+	// And with redirects present the memo says so, so the query does run.
+	if full := snapshotFor(t, fixtureCatalog()); !full.hasRedirects {
+		t.Error("hasRedirects is false for a catalogue that holds redirects")
+	}
+}
+
+// TestEveryIDRouteResolvesRetiredSlugs is the drift guard, in the shape of
+// TestOpenAPICoversEveryRoute: it diffs redirectNamespaces against the server's
+// own route table, so a fifth route that addresses a record by slug cannot ship
+// without redirect support (and an entry naming a route that no longer exists
+// cannot linger). The pattern is what redirected() looks the namespace up by, so
+// this is the same key the request path uses.
+func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	registered := map[string]bool{}
+	for _, r := range srv.routes() {
+		registered[r.pattern] = true
+		if !strings.Contains(r.pattern, "{"+idWildcard+"}") {
+			continue
+		}
+		if _, ok := redirectNamespaces[r.pattern]; !ok {
+			t.Errorf("route %s addresses a record by {%s} but names no redirect namespace: "+
+				"a retired slug would 404 there", r.pattern, idWildcard)
+		}
+	}
+	for pattern := range redirectNamespaces {
+		if !registered[pattern] {
+			t.Errorf("redirectNamespaces names %s, which Server.routes does not register", pattern)
+		}
 	}
 }

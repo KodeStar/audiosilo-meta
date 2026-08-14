@@ -54,7 +54,7 @@ func TestWriteThenLoadRoundTrips(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if got := back.Target(model.RedirectWorks, "old-book"); got != "new-book" {
+	if got := back[model.RedirectWorks]["old-book"]; got != "new-book" {
 		t.Errorf("reloaded target = %q", got)
 	}
 }
@@ -84,10 +84,10 @@ func TestAddCollapsesForward(t *testing.T) {
 	if err := Add(r, model.RedirectWorks, "a", "b"); err != nil {
 		t.Fatal(err)
 	}
-	if got := r.Target(model.RedirectWorks, "a"); got != "c" {
+	if got := r[model.RedirectWorks]["a"]; got != "c" {
 		t.Errorf("a -> %q, want c (collapsed through b)", got)
 	}
-	if got := r.Target(model.RedirectWorks, "b"); got != "c" {
+	if got := r[model.RedirectWorks]["b"]; got != "c" {
 		t.Errorf("b -> %q, want c", got)
 	}
 }
@@ -106,7 +106,7 @@ func TestAddRepointsWhatPointedAtTheSource(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, from := range []string{"older", "other", "a"} {
-		if got := r.Target(model.RedirectPeople, from); got != "survivor" {
+		if got := r[model.RedirectPeople][from]; got != "survivor" {
 			t.Errorf("%s -> %q, want survivor", from, got)
 		}
 	}

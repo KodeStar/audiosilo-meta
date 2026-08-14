@@ -1,21 +1,22 @@
 // Package redirects reads, edits and writes the slug tombstone table
-// (data/redirects.json, model.Redirects): which retired slug now stands for
-// which live record.
+// (data/redirects.json) - see model.Redirects for what the table is for and what
+// must hold of it.
 //
-// It exists for the WRITER's side of that table. A data-quality repair that
-// merges two duplicate records retires a slug, and a slug is public API - a
-// meta.audiosilo.app URL, a books.work_id in every audiosilo-sidecars install, a
-// contributed sidecar's work reference, audiosilo-server's community-metadata
-// seam - so the repair has to record where the retired id went. Load, Add, Write
-// is that whole flow, and Add is where the one property a resolver depends on is
-// maintained: no target is itself a source, so resolution is ONE lookup and can
-// never loop. pkg/check refuses a tree where that does not hold, so a hand edit
-// is policed by the same rule this enforces mechanically.
-//
-// Reading it back is pkg/check's job (it validates the file against
+// It is the WRITER's side of that table: Load, Add, Write is the whole flow a
+// repair pass follows, and Add is where the one property every reader depends on
+// is maintained - no target is itself a source, so resolution is one lookup.
+// Reading the table back is pkg/check's job (it validates the file against
 // schema/redirects.schema.json and leaves the table on the Catalog), so nothing
 // here validates against the catalogue: this package knows the file, not the
 // database.
+//
+// NOTHING IN THIS REPOSITORY CALLS Add YET, and that is deliberate rather than an
+// omission. The intended producer is the duplicate-merge repair tooling this
+// mechanism was built ahead of: retiring a slug without a tombstone is what had to
+// be made impossible before any such pass runs. The one repair that has already
+// run, internal/remediate's GraphicAudio fold, predates the mechanism and was not
+// retrofitted - it is a documented one-off that has done its work, so rewriting
+// it would change nothing on disk.
 //
 // This package is PUBLIC API, like the pkg/* packages around it: the repair
 // tooling that consumes it may live in a sibling module.
@@ -41,10 +42,6 @@ func Path(dataDir string) string {
 // the file yet reads as an EMPTY table rather than an error, so a writer's flow
 // is the same whether or not anything has ever been retired; every namespace is
 // present in what comes back, so a caller may index it directly.
-//
-// It refuses a file naming a namespace that is not one of model's three: a
-// writer must never rewrite a file it did not fully understand, and dropping the
-// unknown key silently is exactly that.
 func Load(dataDir string) (model.Redirects, error) {
 	raw, err := os.ReadFile(Path(dataDir))
 	if err != nil {
@@ -57,16 +54,7 @@ func Load(dataDir string) (model.Redirects, error) {
 	if err := json.Unmarshal(raw, &got); err != nil {
 		return nil, fmt.Errorf("%s: %w", pack.RedirectsFile, err)
 	}
-	out := model.NewRedirects()
-	for kind, table := range got {
-		if !model.ValidRedirectKind(kind) {
-			return nil, fmt.Errorf("%s: unknown namespace %q (want one of %v)", pack.RedirectsFile, kind, model.RedirectKinds())
-		}
-		for from, to := range table {
-			out[kind][from] = to
-		}
-	}
-	return out, nil
+	return normalize(got)
 }
 
 // Write renders r canonically to the redirects file under dataDir, creating the
@@ -76,14 +64,9 @@ func Load(dataDir string) (model.Redirects, error) {
 // so the file's shape is the same before and after a namespace gains its first
 // entry and a diff only ever shows the entry.
 func Write(dataDir string, r model.Redirects) error {
-	full := model.NewRedirects()
-	for kind, table := range r {
-		if !model.ValidRedirectKind(kind) {
-			return fmt.Errorf("%s: unknown namespace %q (want one of %v)", pack.RedirectsFile, kind, model.RedirectKinds())
-		}
-		for from, to := range table {
-			full[kind][from] = to
-		}
+	full, err := normalize(r)
+	if err != nil {
+		return err
 	}
 	raw, err := json.Marshal(full)
 	if err != nil {
@@ -103,6 +86,25 @@ func Write(dataDir string, r model.Redirects) error {
 	return os.WriteFile(Path(dataDir), out, 0o644)
 }
 
+// normalize returns r with every namespace present and none that is not one of
+// model's three. Both doors go through it: a table Load hands out must be
+// indexable, a table Write renders must satisfy the schema's required keys, and
+// an unknown namespace must fail rather than be silently dropped - a writer may
+// never rewrite a file it did not fully understand.
+func normalize(r model.Redirects) (model.Redirects, error) {
+	out := model.NewRedirects()
+	for kind, table := range r {
+		if !model.ValidRedirectKind(kind) {
+			return nil, fmt.Errorf("%s: unknown namespace %q (want one of %v)",
+				pack.RedirectsFile, kind, model.RedirectKinds())
+		}
+		for from, to := range table {
+			out[kind][from] = to
+		}
+	}
+	return out, nil
+}
+
 // Add records that the retired slug from now stands for to, in namespace kind.
 // It edits r in place; write it back with Write.
 //
@@ -116,15 +118,14 @@ func Write(dataDir string, r model.Redirects) error {
 //   - something already points at from (older -> from), and those tombstones
 //     have to be repointed at to, or yesterday's redirect becomes a chain today.
 //
-// Either way every entry ends up naming a live record directly, which is what
-// lets a resolver do one lookup and what pkg/check enforces (checkRedirects).
+// Either way every entry ends up naming a live record directly - the property
+// model.Redirects documents and pkg/check enforces.
 //
-// It refuses rather than guesses: an unknown namespace, a slug that is not a
-// slug, a reserved route literal (model.IsReservedSlug - an id no record may
-// carry is no target either), a redirect from a slug that already points
-// somewhere else, and a target that collapses back onto from (which would be a
-// self-redirect, i.e. a cycle). Re-adding a redirect that is already recorded is
-// a no-op, so a repair pass is idempotent.
+// It refuses rather than guesses: an unknown namespace, a slug that may not
+// appear in the table (model.ValidRedirectSlug), a redirect from a slug that
+// already points somewhere else, and a target that collapses back onto from
+// (which would be a self-redirect, i.e. a cycle). Re-adding a redirect that is
+// already recorded is a no-op, so a repair pass is idempotent.
 //
 // Whether from is really retired and to really exists are questions about the
 // CATALOGUE, which this package deliberately does not read; pkg/check answers
@@ -136,13 +137,11 @@ func Add(r model.Redirects, kind model.RedirectKind, from, to string) error {
 	if r == nil {
 		return fmt.Errorf("%s redirect %s: nil table (start from model.NewRedirects or redirects.Load)", kind, from)
 	}
-	for _, s := range []struct{ what, slug string }{{"source", from}, {"target", to}} {
-		if !model.ValidSlug(s.slug) {
-			return fmt.Errorf("%s redirect %s: %s %q is not a valid slug", kind, from, s.what, s.slug)
-		}
-		if model.IsReservedSlug(s.slug) {
-			return fmt.Errorf("%s redirect %s: %s %q is a reserved slug", kind, from, s.what, s.slug)
-		}
+	if err := model.ValidRedirectSlug(from); err != nil {
+		return fmt.Errorf("%s redirect: source %q %w", kind, from, err)
+	}
+	if err := model.ValidRedirectSlug(to); err != nil {
+		return fmt.Errorf("%s redirect %s: target %q %w", kind, from, to, err)
 	}
 	if from == to {
 		return fmt.Errorf("%s redirect %s: redirects to itself", kind, from)
@@ -171,13 +170,12 @@ func Add(r model.Redirects, kind model.RedirectKind, from, to string) error {
 }
 
 // collapse follows to through the tombstones already recorded and returns the
-// live slug at the end of that walk. It refuses a walk that arrives back at
-// from (a cycle: from would redirect to itself) and one longer than the table
-// (only reachable from a table that is already cyclic, i.e. one no writer here
-// produced).
+// live slug at the end of that walk. It refuses a walk that arrives back at from
+// (a cycle: from would redirect to itself), and one longer than the table, which
+// is only reachable from a table that is already cyclic - i.e. one no writer here
+// produced.
 func collapse(table map[string]string, from, to string) (string, error) {
-	seen := 0
-	for {
+	for range len(table) + 1 {
 		next, ok := table[to]
 		if !ok {
 			return to, nil
@@ -186,8 +184,6 @@ func collapse(table map[string]string, from, to string) (string, error) {
 			return "", fmt.Errorf("target %q already redirects back to it, which would be a cycle", to)
 		}
 		to = next
-		if seen++; seen > len(table) {
-			return "", fmt.Errorf("target chain does not end: the table already holds a cycle")
-		}
 	}
+	return "", fmt.Errorf("target chain does not end: the table already holds a cycle")
 }

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://meta.audiosilo.app/schema/redirects.schema.json",
   "title": "slug redirects",
-  "description": "data/redirects.json: the slug tombstone table. Each namespace maps a RETIRED slug (a record the database no longer holds, e.g. the loser of a duplicate merge) to the live slug that replaced it, so a URL, a stored books.work_id or a contributed sidecar reference keeps resolving. Not a pack file and not a family: a retired slug is not an entity. The rules pkg/check enforces are that a source is never a live id, a target always is, and no target is itself a source - so resolution is one lookup and can never loop.",
+  "description": "data/redirects.json: the slug tombstone table. Each namespace maps a RETIRED slug - a record the database no longer holds, e.g. the loser of a duplicate merge - to the live slug that replaced it, so a URL or a stored id keeps resolving. Not a pack file and not a family: a retired slug is not an entity. metacheck additionally requires that a source is never a live id, a target always is, and no target is itself a source.",
   "type": "object",
   "additionalProperties": false,
   "required": ["people", "series", "works"],

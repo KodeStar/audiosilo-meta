@@ -293,25 +293,32 @@ const genresSchemaVersion = 4
 // redirectSchemaVersion is the artifact schema_version that first carried the
 // redirects table (the slug tombstones). A newer binary serving an older release
 // must degrade to "no redirects" - a retired slug simply 404s as it did before
-// the mechanism existed - so the lookup no-ops below this version rather than
-// probing for the table.
+// the mechanism existed - so the gate is applied ONCE at load (see
+// snapshot.loadStats, which only asks the table anything at or above this
+// version) rather than by probing for the table per request.
 const redirectSchemaVersion = 5
 
-// redirectTargetSQL resolves one retired slug in one namespace. It is the
-// artifact's primary key, so the read is a point lookup - which is what lets it
-// sit on the 404 path of every id route without costing anything measurable.
-const redirectTargetSQL = `SELECT new_slug FROM redirects WHERE kind=? AND old_slug=?`
+const (
+	// anyRedirectSQL asks whether the tombstone table holds anything, once per
+	// snapshot (see snapshot.hasRedirects).
+	anyRedirectSQL = `SELECT EXISTS(SELECT 1 FROM redirects)`
+	// redirectTargetSQL resolves one retired slug in one namespace. It reads the
+	// artifact's primary key, so it is a point lookup - which is what lets it sit
+	// on the miss path of every id route without costing anything measurable.
+	redirectTargetSQL = `SELECT new_slug FROM redirects WHERE kind=? AND old_slug=?`
+)
 
 // redirectTarget returns the live slug that the retired slug id now stands for
-// in namespace kind, or "" when nothing does (including on any artifact older
-// than redirectSchemaVersion).
+// in namespace kind, or "" when nothing does - including on any artifact older
+// than redirectSchemaVersion, and without a query at all while the table is
+// empty, which it is in every release until the first duplicate-merge lands.
 //
 // ONE lookup is always enough: pkg/check refuses a table where a target is
-// itself a source, and the writer collapses chains as they are recorded
-// (pkg/redirects.Add), so following the answer further could only ever return
-// the same slug.
+// itself a source, and the writer collapses chains as they are recorded, so
+// following the answer further could only ever return the same slug (see
+// model.Redirects).
 func (s *snapshot) redirectTarget(kind model.RedirectKind, id string) (string, error) {
-	if s.schemaVersion < redirectSchemaVersion {
+	if !s.hasRedirects {
 		return "", nil
 	}
 	var to string

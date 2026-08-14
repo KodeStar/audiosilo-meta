@@ -192,8 +192,8 @@ func TestListingAccountsForTheRedirectsFile(t *testing.T) {
 	if got := l.Tree(FamilyPeople); got.Len() != 2 {
 		t.Errorf("people tree = %v, want both files read as packs", got.Packs())
 	}
-	if !IsAuxFile(RedirectsFile) || IsAuxFile("people/"+RedirectsFile) || IsAuxFile("works/0/0.json") {
-		t.Error("IsAuxFile does not match exactly the redirects file")
+	if !auxFile(RedirectsFile) || auxFile("people/"+RedirectsFile) || auxFile("works/0/0.json") {
+		t.Error("auxFile does not match exactly the redirects file")
 	}
 }
 

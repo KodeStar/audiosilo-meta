@@ -23,20 +23,17 @@ import (
 // family's pack tree is.
 
 // RedirectsFile is the data-relative path of the one recognized NON-PACK file
-// the data root may hold: the slug tombstone table (model.Redirects, read and
-// written by pkg/redirects). It is named here because this package owns the
-// tree's file accounting - a listing partitions every JSON file into a family's
-// files, this recognized file, or the strays a caller reports as belonging
-// nowhere - and because that accounting is the only thing pkg/pack has to know
-// about it. It is not a family: it holds no entity, so there is nothing to
-// place, bound, split or heal, and no writer here ever touches it.
+// the data root may hold: the slug tombstone table (model.Redirects). It is named
+// here because this package owns the tree's file accounting, and that accounting
+// is the only thing pkg/pack has to know about it: it is not a family, it holds
+// no entity, and no reader or writer here ever opens it.
 const RedirectsFile = "redirects.json"
 
-// IsAuxFile reports whether the data-relative path rel is a recognized non-pack
+// auxFile reports whether the data-relative path rel is a recognized non-pack
 // file of the data tree. The match is the EXACT path, so a file of the same name
 // inside a family root is judged as that family's file, exactly as any other name
 // there would be - nothing about this exemption reaches inside a family.
-func IsAuxFile(rel string) bool { return rel == RedirectsFile }
+func auxFile(rel string) bool { return rel == RedirectsFile }
 
 // Listing is one walk of a data tree: every JSON file under it, partitioned by
 // the family root it sits under.
@@ -145,7 +142,7 @@ func (l *Listing) add(rel string) {
 			return
 		}
 	}
-	if IsAuxFile(rel) {
+	if auxFile(rel) {
 		l.aux = append(l.aux, rel)
 		return
 	}
@@ -164,9 +161,10 @@ func (l *Listing) Dir() string { return l.dir }
 func (l *Listing) Files(f Family) []string { return l.files[f] }
 
 // Aux returns the recognized non-pack files the walk found, sorted (see
-// IsAuxFile). They are accounted for and belong where they are, so nothing
-// reports them and no writer here rewrites them; they are exposed so the
-// accounting a caller does is over a partition it can see all of.
+// auxFile). They are accounted for and belong where they are, so nothing here
+// reports or rewrites them; they are exposed because the caller that VALIDATES
+// the tree reads its files through the listing (check.loadRedirects), and because
+// the accounting it does has to be over a partition it can see all of.
 func (l *Listing) Aux() []string { return l.aux }
 
 // Stray returns the JSON files that sit under no family root at all and are no

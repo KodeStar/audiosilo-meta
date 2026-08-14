@@ -7,7 +7,9 @@ package build
 import (
 	"database/sql"
 	"fmt"
+	"maps"
 	"os"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -170,14 +172,12 @@ CREATE TABLE recap_summaries (
   license  TEXT NOT NULL
 );
 
--- The slug tombstone table (data/redirects.json): which retired slug now stands
--- for which live record. kind is the id NAMESPACE, spelled as the family and
--- route segment it addresses ("works"/"people"/"series", model.RedirectKind) -
--- deliberately not search_fts's entity kind, because the server builds a
--- redirect's Location out of this value.
+-- The slug tombstone table (data/redirects.json, see model.Redirects): which
+-- retired slug now stands for which live record. kind is the id NAMESPACE,
+-- spelled as the family and route segment it addresses (model.RedirectKind).
 --
 -- The primary key IS the lookup index: every read is the point query
--- (kind, old_slug), one per request that missed, so no separate index is needed.
+-- (kind, old_slug), so no separate index is needed.
 CREATE TABLE redirects (
   kind     TEXT NOT NULL,
   old_slug TEXT NOT NULL,
@@ -607,19 +607,13 @@ func insertRecapSummaries(st *stmts, recaps []*model.Recaps) error {
 // order, so an unchanged table yields byte-identical rows however the map was
 // walked - the same determinism rule every other insert here follows.
 //
-// It writes what the table SAYS and nothing more: that a source is retired, a
-// target is live and no target is itself a source are pkg/check's rules
-// (checkRedirects), and metabuild refuses to build data that failed them, so the
-// artifact can only ever hold a table a single lookup resolves.
+// It writes what the table SAYS and nothing more: what must HOLD of it is
+// pkg/check's checkRedirects, and metabuild refuses to build data that failed
+// validation, so the artifact can only ever hold a table one lookup resolves.
 func insertRedirects(st *stmts, reds model.Redirects) error {
 	for _, kind := range model.RedirectKinds() {
 		table := reds[kind]
-		olds := make([]string, 0, len(table))
-		for old := range table {
-			olds = append(olds, old)
-		}
-		sort.Strings(olds)
-		for _, old := range olds {
+		for _, old := range slices.Sorted(maps.Keys(table)) {
 			if _, err := st.redirect.Exec(string(kind), old, table[old]); err != nil {
 				return err
 			}

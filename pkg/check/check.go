@@ -303,14 +303,18 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 			workByID[w.ID] = w
 		}
 	}
+	// The person id set, built once here because two rules ask it (integrity's
+	// credit resolution and the redirects' "is this slug live"), and walking a
+	// 123k-record family twice for one question is a walk too many.
+	peopleIDs := idSet(cat.People, func(p *model.Person) string { return p.ID })
 
 	// The tombstone table is read here, after the families: its rules are about
 	// which ids are LIVE, so they need the assembled catalogue. It travels on the
 	// Catalog because its reader is the artifact builder, which consumes the same
 	// load (see cmd/metabuild).
-	cat.Redirects = l.loadRedirects(dir)
+	cat.Redirects = l.loadRedirects(lst.Aux())
 
-	checkIntegrity(cat, workByID, recs, idx, add)
+	checkIntegrity(cat, workByID, peopleIDs, recs, idx, add)
 	checkUniqueness(cat, recs, idx, add)
 	checkRegionalPublishers(recs, add)
 	checkChapters(recs, add)
@@ -319,7 +323,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCreditPairs(cat, idx, add)
 	checkPersonSlug(cat, idx, add)
 	checkReservedSlug(cat, idx, add)
-	checkRedirects(cat, cat.Redirects, add)
+	checkRedirects(cat, workByID, peopleIDs, add)
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)

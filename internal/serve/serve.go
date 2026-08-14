@@ -194,17 +194,6 @@ func (s *Server) Run(ctx context.Context) error {
 // poll-only boot whose first fetch failed - see New).
 func (s *Server) current() *snapshot { return s.cur.Load() }
 
-// logf writes through the Server's logger. New always installs one; a Server
-// built directly (a test, or any future caller) logs to the standard logger
-// rather than panicking, exactly as snapshot.logf does.
-func (s *Server) logf(format string, args ...any) {
-	if s.log != nil {
-		s.log.Printf(format, args...)
-		return
-	}
-	log.Printf(format, args...)
-}
-
 // defaultBootRetry is the first retry wait for a server with NO artifact. It is
 // much shorter than the steady-state poll interval: a boot that could not reach
 // GitHub is an outage to recover from in seconds, not in an hour. Consecutive
@@ -300,6 +289,27 @@ func (s *Server) routes() []route {
 		// configured base URL). Outside /api/v1; the specific pattern wins over "/".
 		route{"GET /abs/search", s.api(s.handleABSSearch)},
 	)
+}
+
+// idWildcard is the wildcard every family's detail route addresses its record
+// by. A route carrying it is a route a retired slug can arrive at.
+const idWildcard = "id"
+
+// redirectNamespaces says which id namespace a route's {id} names. It sits beside
+// routes() because it is the same knowledge: a route that addresses a record by
+// slug can be reached by a slug a merge retired, and the namespace is what
+// resolves it (and, being the route segment too, what rebuilds the Location - see
+// model.RedirectKind).
+//
+// It is keyed by the ServeMux pattern, so it is checkable against the route table
+// rather than believed: TestEveryIDRouteResolvesRetiredSlugs requires every
+// registered pattern containing {id} to appear here, which is how a fifth family
+// route cannot ship without redirect support.
+var redirectNamespaces = map[string]model.RedirectKind{
+	"GET /api/v1/works/{id}":                           model.RedirectWorks,
+	"GET /api/v1/works/{id}/recordings/{rid}/chapters": model.RedirectWorks,
+	"GET /api/v1/people/{id}":                          model.RedirectPeople,
+	"GET /api/v1/series/{id}":                          model.RedirectSeries,
 }
 
 func (s *Server) buildMux() http.Handler {
@@ -449,14 +459,13 @@ func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	id := r.PathValue("id")
-	detail, err := snap.workDetail(id)
+	detail, err := snap.workDetail(r.PathValue(idWildcard))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if detail == nil {
-		if s.redirected(w, r, snap, model.RedirectWorks, id, func(to string) string { return apiPath("works", to) }) {
+		if redirected(w, r, snap) {
 			return
 		}
 		writeErr(w, http.StatusNotFound, "work not found")
@@ -473,70 +482,80 @@ func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 // its empty list.
 func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	id, rid := r.PathValue("id"), r.PathValue("rid")
-	chs, err := snap.chapters(id, rid)
+	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-	if len(chs) == 0 {
-		if s.redirected(w, r, snap, model.RedirectWorks, id, func(to string) string {
-			return apiPath("works", to, "recordings", rid, "chapters")
-		}) {
-			return
-		}
+	if len(chs) == 0 && redirected(w, r, snap) {
+		return
 	}
 	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
 }
 
-// redirected answers a request for a RETIRED slug with a 301 at the canonical
-// location, and reports whether it did.
+// redirected answers a request whose {id} names a RETIRED slug with a 301 at the
+// same route under the slug that replaced it, and reports whether it did.
 //
-// Every id route calls it where it would otherwise 404, so a slug a merge
-// retired keeps resolving: a meta.audiosilo.app URL, a books.work_id stored in an
-// audiosilo-sidecars install, a contributed sidecar's work reference and
-// audiosilo-server's community-metadata seam all hold slugs, and all of them
-// arrive here as a following GET, for which a 301 is transparent.
+// Every id route calls it where it would otherwise 404, so a slug a merge retired
+// keeps resolving (see model.Redirects for why that matters). The BODY carries the
+// new slug too, so a client that does not follow redirects can heal what it stored
+// instead of only learning that the id is gone.
 //
-// The BODY carries the new slug too, so a client that does not follow redirects
-// can heal what it stored instead of only learning that the id is gone. The query
-// string travels with the location (a ?limit/?offset window is part of the
-// request, not of the id), and the path is composed from the same kind the
-// lookup used - the namespace IS the route segment - so a redirect can never
-// point into another family's route.
+// It is composed entirely from ROUTE DATA rather than per-route arguments: the
+// namespace comes from redirectNamespaces keyed by the pattern that matched, and
+// the Location is that same pattern with its wildcards filled in - the new slug for
+// {id}, the request's own values for the rest - so no route can be handed a
+// Location belonging to another one, and a route that gains a wildcard needs no
+// change here. The request's query string travels along, because a ?limit/?offset
+// window describes the request rather than the id.
 //
-// It reads the SAME snapshot the handler already answered from rather than
-// loading the pointer again, so a hot-swap mid-request cannot make the 404 and
-// the redirect decision come from two different artifacts.
-//
-// A lookup FAILURE degrades to "no redirect": the caller then answers its own
-// 404, which is what the request looked like anyway, rather than turning a
-// missing record into a 500.
-func (s *Server) redirected(w http.ResponseWriter, r *http.Request, snap *snapshot, kind model.RedirectKind, id string, loc func(to string) string) bool {
+// It reads the snapshot the handler already answered from rather than loading the
+// pointer again, so a hot-swap mid-request cannot make the 404 and the redirect
+// decision come from two different artifacts. A lookup FAILURE degrades to "no
+// redirect": the caller then answers its own 404, which is what the request looked
+// like anyway, rather than turning a missing record into a 500.
+func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
+	kind, ok := redirectNamespaces[r.Pattern]
+	if !ok {
+		return false // not a route a retired slug can arrive at
+	}
+	id := r.PathValue(idWildcard)
 	to, err := snap.redirectTarget(kind, id)
 	if err != nil {
-		s.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
+		snap.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
 		return false
 	}
 	if to == "" {
 		return false
 	}
-	u := &url.URL{Path: loc(to), RawQuery: r.URL.RawQuery}
+	u := &url.URL{Path: redirectLocation(r, to), RawQuery: r.URL.RawQuery}
 	w.Header().Set("Location", u.String())
 	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
 	return true
 }
 
-// apiPath joins segments onto the API prefix. It escapes each segment, so a
-// Location is a well-formed URL whatever it is handed - ids in the artifact are
-// plain slugs, but a header composed by string concatenation is exactly the kind
-// of thing that stops being true later.
-func apiPath(segments ...string) string {
-	out := "/api/v1"
-	for _, seg := range segments {
-		out += "/" + url.PathEscape(seg)
+// redirectLocation rebuilds the matched route's path with to standing in for the
+// {id} the request arrived with, every other wildcard keeping the value it
+// matched, and every segment escaped - the ids in the artifact are plain slugs,
+// but a header built by string concatenation is exactly the kind of thing that
+// stops being true later.
+func redirectLocation(r *http.Request, to string) string {
+	_, pattern, _ := strings.Cut(r.Pattern, " ")
+	var b strings.Builder
+	for _, seg := range strings.Split(strings.TrimPrefix(pattern, "/"), "/") {
+		b.WriteByte('/')
+		name, wild := strings.CutPrefix(seg, "{")
+		if !wild {
+			b.WriteString(seg)
+			continue
+		}
+		value := to
+		if name = strings.TrimSuffix(name, "}"); name != idWildcard {
+			value = r.PathValue(name)
+		}
+		b.WriteString(url.PathEscape(value))
 	}
-	return out
+	return b.String()
 }
 
 // personPageDefault / personPageMax bound one page of a person's credit lists.
@@ -553,14 +572,13 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
-	id := r.PathValue("id")
-	p, err := snap.person(id, limit, clampOffset(q.Get("offset")))
+	p, err := snap.person(r.PathValue(idWildcard), limit, clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if p == nil {
-		if s.redirected(w, r, snap, model.RedirectPeople, id, func(to string) string { return apiPath("people", to) }) {
+		if redirected(w, r, snap) {
 			return
 		}
 		writeErr(w, http.StatusNotFound, "person not found")
@@ -577,14 +595,13 @@ const seriesPageMax = 500
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
-	id := r.PathValue("id")
-	ser, err := snap.series(id, clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
+	ser, err := snap.series(r.PathValue(idWildcard), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if ser == nil {
-		if s.redirected(w, r, snap, model.RedirectSeries, id, func(to string) string { return apiPath("series", to) }) {
+		if redirected(w, r, snap) {
 			return
 		}
 		writeErr(w, http.StatusNotFound, "series not found")
