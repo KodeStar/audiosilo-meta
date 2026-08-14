@@ -4205,6 +4205,306 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-4-sea-of-sand": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A swordsman traveling toward the Empire with Azrea hidden in his headwrap. Unable to pay for a place in a noble caravan, he seeks work guarding a crossing of the Sea of Sand.",
+            "id": "hadjar",
+            "name": "Hadjar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Hadjar"
+            ],
+            "description": "The identity exposed by an imperial wanted portrait: Hadjar is a general of Lidus who was believed dead. The caravan leaders decline to surrender him for the reward and instead ask for his military judgment.",
+            "id": "general-hadjar-traves",
+            "name": "General Hadjar Traves",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Hadjar",
+              "General Hadjar Traves"
+            ],
+            "description": "Hadjar after a Bedouin tribe accepts him and its shaman grants him the earned name Darkhan. The new name and mark recognize his choice to protect a tribal child even at the cost of victory and freedom.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hadjar's concealed traveling companion, small enough to remain hidden in his headwrap as he searches for passage across the desert.",
+            "id": "azrea",
+            "name": "Azrea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dragon linked to Hadjar's heart who appears as a cultivation teacher in a vision. Before Hadjar's duel with a stronger tribal champion, Traves begins teaching him the Falling Leaf sword stance.",
+            "id": "traves",
+            "name": "Traves",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The caravan's security chief and Shakh's uncle. He recruits guards for the dangerous journey across the Sea of Sand.",
+            "id": "shakar",
+            "name": "Shakar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shakar's seventeen-year-old nephew, a Formation-stage practitioner determined to compete for caravan work rather than remain a well digger.",
+            "id": "shakh",
+            "name": "Shakh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young desert dagger fighter whose red-lightning movement technique carries her into the final guard trial. She is openly hostile toward Shakh.",
+            "id": "ilmena",
+            "name": "Ilmena",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The islander staff fighter from the guard trials. His shadow arts conceal him from both Hadjar and Azrea, and his knowledge of Hadjar's past makes him an unusual prospective companion for the long crossing.",
+            "id": "einen",
+            "name": "Einen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The caravan's vanguard leader and an experienced desert scout. He directs field assignments while the new guards learn the hazards and duties of the crossing.",
+            "id": "kharad",
+            "name": "Kharad",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name Hadjar uses for a Bedouin tribe's Heaven Soldier champion. He fights with paired spinning blades, moves through sand, and represents the tribe in a duel over the caravan's passage.",
+            "id": "coyote",
+            "name": "Coyote",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the oasis"
+            ],
+            "description": "The sentient life of the oasis, encompassing its pond and forest. Ancient restrictions prevent her from striking mortals directly, so she temporarily empowers Hadjar's sword and asks him to defend her people from an approaching army.",
+            "id": "ignis",
+            "name": "Ignis",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sheikh Umar"
+            ],
+            "description": "The oasis ruler, a Spirit Knight and former pupil of the caravan owner. He rewards Hadjar's part in the defense but orders him away for entering the forbidden plateau.",
+            "id": "umar",
+            "name": "Umar",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The caravan's elderly owner, a cultivator at the peak of Heaven Soldier whose power greatly exceeds Hadjar's. He oversees the immense expedition entering the Sea of Sand.",
+            "id": "caravan-owner",
+            "name": "Caravan owner",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dead companion remembered by Hadjar. He carries her bracelet with those of other people he has lost.",
+            "id": "serra-companion",
+            "name": "Serra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A living traveler in the caravan who is closely attached to Hadjar and responds enthusiastically to the new tribal mark on his arm.",
+            "id": "serra-traveler",
+            "name": "Serra",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An appearance-changing Spirit Knight-level illusionist who has taken Ilmena's place. She kills the caravan leader, abducts Serra, and summons a sand dragon to cover the escape.",
+            "id": "ilmena-impostor",
+            "name": "Ilmena impostor",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ilmena impostor"
+            ],
+            "description": "The illusion specialist who replaced Ilmena and seized Serra. She is revealed as the desert king's daughter and presents her captive to him as the key he has been seeking.",
+            "id": "desert-kings-daughter",
+            "name": "Desert king's daughter",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The desert ruler whose Spirit Knight prince, Sankesh, is advancing toward Mage City. The prince's campaign is displacing tribes and fighters into the caravan's path.",
+            "id": "desert-king",
+            "name": "Desert king",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Spirit Knight prince whose advance toward Mage City is destabilizing the desert. The caravan leaders expect any obstacle in his route to face lethal force.",
+            "id": "sankesh",
+            "name": "Sankesh",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former mercenary who tortured Hadjar during his childhood captivity and later became the strongest fighter in a desert bandit camp. Hadjar recognizes him when entering the camp.",
+            "id": "hadjars-former-tormentor",
+            "name": "Hadjar's former tormentor",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The heavily guarded head of a desert tribe encountered near the Dead Mountains. He commands a force that the caravan must negotiate with for passage.",
+            "id": "bedouin-leader",
+            "name": "Bedouin leader",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Spirit Knight leading the large bandit force that besieges the oasis. He arrives mounted on a giant scorpion as his organized army surrounds the settlement.",
+            "id": "oasis-siege-commander",
+            "name": "Oasis siege commander",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wind-using Heaven Soldier who leads mounted attackers against the caravan's western flank. He declares his service under the desert king, exposing royal troops among the supposed bandits.",
+            "id": "desert-kings-officer",
+            "name": "Desert king's officer",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's mother, confirmed when he relives a memory of her caring for him as an infant. In that memory, she tells him how a black tree became a man and was claimed as a black-armored general by the god of war.",
+            "id": "queen-elizabeth",
+            "name": "Queen Elizabeth",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient figure from whom Ignis recognizes Hadjar as descended. The discovery changes her earlier aid into hatred and alarm, but the nature of the lineage remains unclear.",
+            "id": "black-general",
+            "name": "Black General",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-haired disciple of Underworld City's sage who has waited four years for her missing sister. She tries to kill the unconscious Hadjar, but a city official blocks her attack and orders her confined.",
+            "id": "red-haired-sages-disciple",
+            "name": "Red-haired sage's disciple",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A supernaturally fast woman who steals Hadjar’s wallet and draws him toward the oasis lake.",
+            "id": "oasis-thief",
+            "name": "Oasis thief",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fairy secretly watching Hadjar on behalf of a magistrate of the seventh heaven. A powerful local being captures the messenger on the forbidden plateau.",
+            "id": "divine-messenger",
+            "name": "Divine messenger",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An overwhelmingly powerful scarred figure carrying a black sword whom Hadjar encounters in a vision-like realm filled with skulls. He tells Hadjar that he has arrived too early.",
+            "id": "black-sworded-figure",
+            "name": "Black-sworded figure",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1705204740",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-4-sea-of-sand"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
