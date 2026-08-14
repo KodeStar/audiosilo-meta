@@ -64,7 +64,9 @@ accounted for (see below) stays total instead of gaining an exemption at each
 caller. Nothing in `pkg/pack` reads or writes it; `pkg/redirects` owns the file
 and `pkg/check` validates it. The pack merge driver is kept off it by a
 `.gitattributes` line, since a union of pack ENTRIES is not what a conflict there
-needs.
+needs - and the driver itself refuses any file with no top-level `entries` object,
+because reading a missing one as empty turned that file into `{"entries":{}}` and
+reported success.
 
 Sidecars move out of `data/works/**` into their own family - named
 **`works-community`** (decided at sign-off: the name telegraphs the CC BY-SA

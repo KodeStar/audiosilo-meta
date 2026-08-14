@@ -63,6 +63,9 @@ func recapsMember(work, text string) string {
 const (
 	worksPath     = "data/works/0/0.json"
 	communityPath = "data/works-community/0/0.json"
+	// The tree's one NON-pack file, which this script must refuse rather than
+	// merge (see TestPackMergeRefusesANonPackFile).
+	redirectsPath = "data/redirects.json"
 )
 
 func TestPackUnionMerge(t *testing.T) {
@@ -382,6 +385,93 @@ func TestPackMergeDriver(t *testing.T) {
 			t.Errorf("exit code = %d, want 5 (a conflict for a person): %s", code, out)
 		}
 	})
+}
+
+// TestPackMergeRefusesANonPackFile is the guard on what this script may be handed.
+// It merges the ENTRIES map, and jq's `//` reads a file with no "entries" as an
+// empty one, so before the refusal it "merged" the tree's one non-pack file - the
+// slug tombstone table - into {"entries":{}} and exited 0: a clean auto-merge that
+// silently replaced every redirect with nothing.
+//
+// Both doors are checked, because both are reachable: the driver (a stale
+// checkout's .gitattributes, which is exactly the checkout most likely to still
+// route this path to it) and the by-hand invocation.
+func TestPackMergeRefusesANonPackFile(t *testing.T) {
+	requireTools(t, "git", "jq")
+	script := abs(t, "pack-union-merge.sh")
+
+	redirects := func(works string) string {
+		return `{"people":{},"series":{},"works":{` + works + `}}` + "\n"
+	}
+	base := redirects(`"old-one":"live-one"`)
+	main := redirects(`"old-one":"live-one","old-two":"live-two"`)
+	branch := redirects(`"old-one":"live-one","old-three":"live-three"`)
+
+	// The driver is configured for this path deliberately, overriding
+	// .gitattributes' own exclusion: the point is that the script refuses even when
+	// something hands it the file.
+	repo := t.TempDir()
+	git := func(args ...string) string {
+		t.Helper()
+		out, err := runIn(repo, "git", args...)
+		if err != nil {
+			t.Fatalf("git %s: %v\n%s", strings.Join(args, " "), err, out)
+		}
+		return out
+	}
+	write := func(rel, body string) {
+		t.Helper()
+		full := filepath.Join(repo, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(full, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	git("init", "-q", "-b", "main")
+	git("config", "user.name", "Fixture")
+	git("config", "user.email", "fixture@example.com")
+	git("config", "commit.gpgsign", "false")
+	git("config", "tag.gpgsign", "false")
+	git("config", "merge.packjson.name", "three-way merge of pack-file entries")
+	git("config", "merge.packjson.driver", script+" %O %A %B %P")
+
+	write(".gitattributes", "/data/redirects.json merge=packjson\n")
+	write(redirectsPath, base)
+	git("add", "-A")
+	git("commit", "-qm", "base")
+	git("checkout", "-qb", "branch")
+	write(redirectsPath, branch)
+	git("commit", "-qam", "branch")
+	git("checkout", "-q", "main")
+	write(redirectsPath, main)
+	git("commit", "-qam", "main")
+	git("checkout", "-q", "branch")
+
+	out, err := runIn(repo, "git", "rebase", "main")
+	if err == nil {
+		t.Fatalf("the rebase reported success on a non-pack file:\n%s", out)
+	}
+	// Whatever the conflict looks like, the one thing that must never happen is the
+	// file being replaced by an empty pack.
+	got := readFile(t, filepath.Join(repo, redirectsPath))
+	if strings.Contains(got, `"entries"`) {
+		t.Errorf("the driver rewrote the tombstone table as a pack:\n%s", got)
+	}
+	if !strings.Contains(got, "old-one") {
+		t.Errorf("the tombstone table lost its records:\n%s", got)
+	}
+
+	// And by hand, on the conflict the rebase left behind: exit 1 (cannot be
+	// merged this way), naming the reason.
+	out, err = runIn(repo, script, redirectsPath)
+	if code := exitCode(err); code != 1 {
+		t.Errorf("exit code = %d, want 1 (not a pack file): %s", code, out)
+	}
+	if !strings.Contains(out, "not a pack file") {
+		t.Errorf("the refusal does not say why: %s", out)
+	}
 }
 
 // TestPackMergeAttributeCoversEveryFamily: the driver is only reached through

@@ -17,7 +17,8 @@
 
 # data/redirects.json is NOT a pack (it is the slug tombstone table, one small
 # map of retired slug -> live slug), so the pack driver above must not be handed
-# it: the driver refuses a file with no "entries" object, which would leave a
-# conflict unresolved that git's own line merge handles correctly. Unsetting the
-# attribute restores that default for this one path.
+# it. The driver refuses any file with no top-level "entries" object, so being
+# handed it would leave the conflict unresolved - where git's own line merge
+# resolves the common case and stops loudly on the rest. Unsetting the attribute
+# restores that default for this one path.
 /data/redirects.json !merge

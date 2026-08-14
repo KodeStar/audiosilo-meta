@@ -83,14 +83,26 @@ func List(dataDir string) (*Listing, error) {
 		if err != nil {
 			return err
 		}
-		if d.IsDir() || !strings.EqualFold(filepath.Ext(p), jsonExt) {
-			return nil
-		}
 		rel, rerr := filepath.Rel(dataDir, p)
 		if rerr != nil {
 			return rerr
 		}
-		l.add(filepath.ToSlash(rel))
+		rel = filepath.ToSlash(rel)
+		if d.IsDir() {
+			// A DIRECTORY where a recognized file belongs is refused rather than
+			// walked past. The walk otherwise ignores directories, so a
+			// data/redirects.json that is one would read as "the tree holds no
+			// redirects" - the silent answer, where every other wrong shape in
+			// this tree is loud (compare mustBeDir above, its mirror image).
+			if auxFile(rel) {
+				return &fs.PathError{Op: "read", Path: p, Err: errIsDirectory}
+			}
+			return nil
+		}
+		if !strings.EqualFold(filepath.Ext(p), jsonExt) {
+			return nil
+		}
+		l.add(rel)
 		return nil
 	})
 	if err != nil {
@@ -107,6 +119,10 @@ func List(dataDir string) (*Listing, error) {
 // errNotDirectory is what a path that exists but is not a directory fails with,
 // wherever a directory is what has to be there.
 var errNotDirectory = errors.New("not a directory")
+
+// errIsDirectory is its mirror image: a path that has to be a FILE (see
+// RedirectsFile) and is a directory instead.
+var errIsDirectory = errors.New("is a directory, but this path names a file")
 
 // mustBeDir reports whether path is a directory, as an error. A path that is not
 // there fails with an os.IsNotExist error, which a caller that tolerates an

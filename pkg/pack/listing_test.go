@@ -197,6 +197,25 @@ func TestListingAccountsForTheRedirectsFile(t *testing.T) {
 	}
 }
 
+// TestListingRefusesADirectoryWhereTheRedirectsFileBelongs: the walk ignores
+// directories, so a data/redirects.json that IS one would otherwise read as "the
+// tree holds no redirects" - the one silent answer in a tree where every other
+// wrong shape is loud.
+func TestListingRefusesADirectoryWhereTheRedirectsFileBelongs(t *testing.T) {
+	dir := t.TempDir()
+	writeFiles(t, dir, map[string]string{"people/0.json": packOf1("ann-doe")})
+	if err := os.MkdirAll(filepath.Join(dir, RedirectsFile), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	_, err := List(dir)
+	if err == nil {
+		t.Fatal("List accepted a directory named " + RedirectsFile)
+	}
+	if !strings.Contains(err.Error(), RedirectsFile) {
+		t.Errorf("error %q does not name the file", err)
+	}
+}
+
 // A data root that does not exist is an error to List - pkg/check reports it as
 // one - but not to Open, which has to be able to create a tree from nothing.
 func TestListMissingRoot(t *testing.T) {

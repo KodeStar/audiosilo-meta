@@ -2,7 +2,6 @@ package redirects
 
 import (
 	"os"
-	"path/filepath"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -175,7 +174,7 @@ func TestAddRefusals(t *testing.T) {
 // not fully understand, and Write would drop the key it could not name.
 func TestLoadRefusesAnUnknownNamespace(t *testing.T) {
 	dir := t.TempDir()
-	if err := os.WriteFile(filepath.Join(dir, "redirects.json"), []byte(`{"recordings":{"a":"b"}}`), 0o644); err != nil {
+	if err := os.WriteFile(Path(dir), []byte(`{"recordings":{"a":"b"}}`), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Load(dir); err == nil {
@@ -186,11 +185,32 @@ func TestLoadRefusesAnUnknownNamespace(t *testing.T) {
 	}
 }
 
+// TestLoadRefusesADuplicateKey: encoding/json keeps the LAST of a repeated key,
+// so without the scan Load would drop a redirect and Write would then make that
+// loss permanent - the same failure pkg/pack refuses for a pack, through the same
+// scan. Both shapes are checked: a repeated retired slug and a repeated namespace.
+func TestLoadRefusesADuplicateKey(t *testing.T) {
+	for name, body := range map[string]string{
+		"duplicate retired slug": `{"people":{},"series":{},"works":{"a":"b","a":"c"}}`,
+		"duplicate namespace":    `{"people":{},"series":{},"works":{"a":"b"},"works":{}}`,
+	} {
+		t.Run(name, func(t *testing.T) {
+			dir := t.TempDir()
+			if err := os.WriteFile(Path(dir), []byte(body), 0o644); err != nil {
+				t.Fatal(err)
+			}
+			if _, err := Load(dir); err == nil {
+				t.Error("Load accepted a file with a duplicate key")
+			}
+		})
+	}
+}
+
 // TestLoadRefusesBrokenJSON keeps a hand-edited file from being silently
 // replaced by an empty table.
 func TestLoadRefusesBrokenJSON(t *testing.T) {
 	dir := t.TempDir()
-	if err := os.WriteFile(filepath.Join(dir, "redirects.json"), []byte(`{"works":`), 0o644); err != nil {
+	if err := os.WriteFile(Path(dir), []byte(`{"works":`), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Load(dir); err == nil {

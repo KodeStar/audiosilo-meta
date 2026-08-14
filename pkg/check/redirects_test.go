@@ -142,6 +142,19 @@ func TestRedirectRules(t *testing.T) {
 			want: "does not match pattern",
 		},
 		{
+			// A duplicate key is invisible to encoding/json (last wins) and to the
+			// schema validator, so without the scan this dropped a redirect with the
+			// gate green - the failure pkg/pack refuses for a pack, one file over.
+			name: "duplicate retired slug",
+			body: `{"people":{},"series":{},"works":{"book-uno":"book-one","book-uno":"book-one"}}`,
+			want: `duplicate key "book-uno"`,
+		},
+		{
+			name: "duplicate namespace",
+			body: `{"people":{},"series":{},"works":{"book-uno":"book-one"},"works":{}}`,
+			want: `duplicate key "works"`,
+		},
+		{
 			name: "unknown namespace",
 			body: `{"people":{},"recordings":{"a":"b"},"series":{},"works":{}}`,
 			want: "additional properties 'recordings' not allowed",

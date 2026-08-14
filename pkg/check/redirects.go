@@ -47,6 +47,15 @@ func (l *loader) loadRedirects(aux []string) model.Redirects {
 		l.add(p, "read: %v", err)
 		return nil
 	}
+	// A repeated key is checked FIRST, and stops the load of this file: neither
+	// encoding/json nor the schema validator can see the shadowed one, so a
+	// namespace or a retired slug written twice would silently drop redirects with
+	// the gate green - the same failure pack.Parse refuses for a pack, through the
+	// same scan.
+	if err := pack.CheckNoDuplicateKeys(raw); err != nil {
+		l.add(p, "%s", collapse(err.Error()))
+		return nil
+	}
 	inst, ok := l.instance(p, raw)
 	if !ok {
 		return nil

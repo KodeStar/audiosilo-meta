@@ -1,11 +1,14 @@
 package serve
 
 import (
+	"database/sql"
 	"encoding/json"
 	"io"
 	"net/http"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // getNoFollow issues the request WITHOUT following redirects, which is the whole
@@ -33,6 +36,11 @@ func wantRedirect(t *testing.T, resp *http.Response, wantLocation, wantSlug stri
 	}
 	if got := resp.Header.Get("Location"); got != wantLocation {
 		t.Errorf("Location = %q, want %q", got, wantLocation)
+	}
+	// A tombstone has to be revocable: an unbounded 301 lets a client or a CDN
+	// keep serving it after a bad merge is reversed.
+	if got := resp.Header.Get("Cache-Control"); got != redirectMaxAge {
+		t.Errorf("Cache-Control = %q, want %q", got, redirectMaxAge)
 	}
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
@@ -209,23 +217,121 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 // own route table, so a fifth route that addresses a record by slug cannot ship
 // without redirect support (and an entry naming a route that no longer exists
 // cannot linger). The pattern is what redirected() looks the namespace up by, so
-// this is the same key the request path uses.
+// this is the same key the request path uses, and the candidate set is derived
+// from the pattern's SHAPE rather than from the wildcard being spelled {id} - see
+// TestRedirectCoverageIgnoresTheWildcardsName.
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	patterns := make([]string, 0, len(srv.routes()))
 	registered := map[string]bool{}
 	for _, r := range srv.routes() {
+		patterns = append(patterns, r.pattern)
 		registered[r.pattern] = true
-		if !strings.Contains(r.pattern, "{"+idWildcard+"}") {
-			continue
-		}
-		if _, ok := redirectNamespaces[r.pattern]; !ok {
-			t.Errorf("route %s addresses a record by {%s} but names no redirect namespace: "+
-				"a retired slug would 404 there", r.pattern, idWildcard)
-		}
+	}
+	for _, gap := range redirectCoverageGaps(patterns) {
+		t.Errorf("route %s addresses a record by a wildcard but neither names a redirect "+
+			"namespace nor appears in redirectExemptRoutes: a retired slug would 404 there", gap)
 	}
 	for pattern := range redirectNamespaces {
 		if !registered[pattern] {
 			t.Errorf("redirectNamespaces names %s, which Server.routes does not register", pattern)
 		}
+	}
+	for pattern := range redirectExemptRoutes {
+		if !registered[pattern] {
+			t.Errorf("redirectExemptRoutes names %s, which Server.routes does not register", pattern)
+		}
+	}
+}
+
+// TestRedirectLocationEscapesExactlyOnce is the regression test for a double
+// escape. The Location is the WIRE form, so a value that needs escaping must be
+// escaped once: url.URL.String() over an already-escaped Path turned every % into
+// %25 (caf%C3%A9-2021 -> caf%25C3%25A9-2021), which sends a following client to a
+// recording id that does not exist. Latent while every id is an ASCII slug, and
+// wrong by construction either way.
+func TestRedirectLocationEscapesExactlyOnce(t *testing.T) {
+	_, ts := newTestServer(t)
+	resp := getNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook/recordings/caf%C3%A9-2021/chapters")
+	wantRedirect(t, resp,
+		"/api/v1/works/project-hail-mary/recordings/caf%C3%A9-2021/chapters", "project-hail-mary")
+}
+
+// TestSelfRedirectDoesNotLoop covers the resolver's own guarantee against a loop.
+// pkg/check refuses a self-row, so this artifact is hand-built to carry one: the
+// request must fall through to the 404 it was already heading for rather than
+// 301-ing a following client back to the same URL forever.
+func TestSelfRedirectDoesNotLoop(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Redirects = model.Redirects{model.RedirectWorks: {"ghost-work": "ghost-work"}}
+	ts := serverFor(t, cat)
+
+	resp := getNoFollow(t, ts.URL, "/api/v1/works/ghost-work")
+	if resp.StatusCode != http.StatusNotFound {
+		t.Errorf("status = %d, want 404: a self-redirect must not be served", resp.StatusCode)
+	}
+	if loc := resp.Header.Get("Location"); loc != "" {
+		t.Errorf("Location = %q, want none", loc)
+	}
+}
+
+// TestSchemaVersion5RequiresTheRedirectsTable pins the load-time claim, and that
+// the failure SAYS which claim it is: an artifact that reports version 5 without
+// the table is corrupt, and "no such table: redirects" alone reads as a bug in the
+// server rather than as a broken file.
+func TestSchemaVersion5RequiresTheRedirectsTable(t *testing.T) {
+	path := buildFixtureDB(t, fixtureCatalog())
+	db, err := sql.Open("sqlite", path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := db.Exec(`DROP TABLE redirects`); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	_, err = openSnapshot(path, "")
+	if err == nil {
+		t.Fatal("openSnapshot accepted a version 5 artifact with no redirects table")
+	}
+	for _, want := range []string{"schema_version 5", "requires the redirects table", path} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("error %q does not name %q", err, want)
+		}
+	}
+}
+
+// TestRedirectCoverageIgnoresTheWildcardsName is the teeth of the coverage guard.
+// Keying it on the literal "{id}" made it blind to exactly the route it exists to
+// catch: a new family whose wildcard is spelled differently shipped silently.
+func TestRedirectCoverageIgnoresTheWildcardsName(t *testing.T) {
+	cases := []struct {
+		name    string
+		pattern string
+		gap     bool
+	}{
+		{name: "a differently spelled id", pattern: "GET /api/v1/publishers/{pid}", gap: true},
+		{name: "a nested wildcard route", pattern: "GET /api/v1/labels/{slug}/imprints/{iid}", gap: true},
+		{name: "a multi-segment wildcard", pattern: "GET /files/{rest...}", gap: true},
+		{name: "a literal route", pattern: "GET /api/v1/stats", gap: false},
+		{name: "an anchored literal route", pattern: "GET /api/v1/coverage/{$}", gap: false},
+		{name: "a route that names its namespace", pattern: "GET /api/v1/works/{id}", gap: false},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			gaps := redirectCoverageGaps([]string{tc.pattern})
+			if got := len(gaps) == 1; got != tc.gap {
+				t.Errorf("redirectCoverageGaps(%q) = %v, want a gap: %v", tc.pattern, gaps, tc.gap)
+			}
+		})
+	}
+	// And the id wildcard is read by POSITION, whatever it is called.
+	if got := idWildcardOf("GET /api/v1/publishers/{pid}/imprints/{iid}"); got != "pid" {
+		t.Errorf("idWildcardOf = %q, want pid", got)
+	}
+	if got := idWildcardOf("GET /api/v1/stats"); got != "" {
+		t.Errorf("idWildcardOf of a literal route = %q, want empty", got)
 	}
 }

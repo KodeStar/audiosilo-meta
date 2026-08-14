@@ -206,6 +206,17 @@ func (f *File) render() ([]byte, map[string]int, error) {
 	return f.rendered, f.sizes, nil
 }
 
+// CheckNoDuplicateKeys reports a repeated key in any object in raw.
+//
+// It is exported because the rule is not really about packs: encoding/json keeps
+// the LAST of a repeated key without complaint, and JSON Schema cannot see the
+// first one at all, so any file this project decodes and writes back would lose
+// data to a duplicate - silently, and permanently once rewritten. Every reader of
+// a file in the data tree asks it, packs (Parse, DecodeEntry) and the one non-pack
+// file alike (pkg/redirects.Load, pkg/check's loadRedirects), so there is one
+// implementation rather than one per file kind.
+func CheckNoDuplicateKeys(raw []byte) error { return checkNoDuplicateKeys(raw) }
+
 // checkNoDuplicateKeys reports a repeated key in any object in raw.
 // encoding/json keeps the last of a repeated key without complaint, so a pack
 // carrying one would lose an entry the moment the tooling rewrote it -

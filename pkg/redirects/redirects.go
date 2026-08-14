@@ -18,6 +18,23 @@
 // retrofitted - it is a documented one-off that has done its work, so rewriting
 // it would change nothing on disk.
 //
+// TWO GAPS ARE KNOWN AND DELIBERATELY LEFT OPEN, recorded here so neither is
+// rediscovered as a surprise:
+//
+//   - The file has NO merge driver of its own. git's line merge is sound-or-loud
+//     on it (unlike on a pack file, where it can duplicate a key - see
+//     scripts/pack-union-merge.sh, which refuses this file), but it conflicts on a
+//     large share of realistic two-PR append combinations, so the intake rebase
+//     sweep can stall on it once redirects are being added regularly. A union
+//     driver for this shape - a map of maps, no deletions to reason about - is the
+//     fix when that starts happening.
+//   - No minter steps OFF a tombstoned slug the way the work chain steps off a
+//     reserved one (internal/importer's workCandidates). A later import that
+//     re-creates a merged duplicate therefore lands on the retired slug and fails
+//     metacheck's live-source rule: loud and safe, but not resolvable
+//     mechanically. Teaching the importer and the issue forms to read the table is
+//     the fix.
+//
 // This package is PUBLIC API, like the pkg/* packages around it: the repair
 // tooling that consumes it may live in a sibling module.
 package redirects
@@ -49,6 +66,13 @@ func Load(dataDir string) (model.Redirects, error) {
 			return model.NewRedirects(), nil
 		}
 		return nil, err
+	}
+	// A repeated key is checked BEFORE decoding, for the reason pack.Parse checks
+	// it: encoding/json keeps the last one, so a namespace or a retired slug
+	// written twice would drop redirects here and lose them permanently the next
+	// time Write rendered the file.
+	if err := pack.CheckNoDuplicateKeys(raw); err != nil {
+		return nil, fmt.Errorf("%s: %w", pack.RedirectsFile, err)
 	}
 	var got model.Redirects
 	if err := json.Unmarshal(raw, &got); err != nil {
@@ -156,7 +180,8 @@ func Add(r model.Redirects, kind model.RedirectKind, from, to string) error {
 		return fmt.Errorf("%s redirect %s: %w", kind, from, err)
 	}
 	if cur, ok := table[from]; ok && cur != final {
-		return fmt.Errorf("%s redirect %s: already redirects to %q, not %q: retargeting a tombstone is a decision, not a merge", kind, from, cur, final)
+		return fmt.Errorf("%s redirect %s: the table already sends it to %q, and this would send it to %q: "+
+			"retargeting a tombstone is a decision, not a merge", kind, from, cur, final)
 	}
 	// Repoint what already pointed HERE before recording the new hop, so the
 	// table is never momentarily two hops deep.

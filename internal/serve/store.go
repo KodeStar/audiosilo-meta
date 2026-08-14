@@ -126,10 +126,13 @@ func (s *snapshot) loadStats() error {
 	// release never touches the table at all. An artifact that CLAIMS version 5
 	// and has no such table fails the load, exactly as it does for the tables
 	// counted above: the builder writes the version and the table together, so
-	// that combination is a corrupt artifact, not an old one.
+	// that combination is a corrupt artifact, not an old one - and the error says
+	// which claim was being enforced, because "no such table: redirects" on its own
+	// reads as a bug in the server rather than as a broken file.
 	if s.schemaVersion >= redirectSchemaVersion {
 		if err := s.db.QueryRow(anyRedirectSQL).Scan(&s.hasRedirects); err != nil {
-			return err
+			return fmt.Errorf("%s: artifact schema_version %d requires the redirects table: %w",
+				s.path, s.schemaVersion, err)
 		}
 	}
 	s.stats = st
