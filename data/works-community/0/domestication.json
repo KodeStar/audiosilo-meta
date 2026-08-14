@@ -3982,6 +3982,347 @@
         "work": "dracula-with-vampires-dialogues-translated-in-romanian"
       }
     },
+    "dragon-city": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mad General"
+            ],
+            "description": "A wounded warrior with dragon blood who awakens in Abraham Shensie's care after Princess Tened poisons him. A magical wreath prevents him from explaining the delegation's destruction.",
+            "id": "hadjar",
+            "name": "Hadjar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Gevena Usense"
+            ],
+            "description": "The Dragon Emperor's daughter, travelling under the name Gevena Usense. She is Hadjar's assigned charge, yet Abraham Shensie identifies her as the person who stabbed Hadjar with a poisoned dagger.",
+            "id": "princess-tened",
+            "name": "Princess Tened",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Abraham"
+            ],
+            "description": "A former soldier and practical caravan leader whose group shelters the gravely injured Hadjar. He recognizes Tened beneath her travelling identity, identifies the poisoned attack, and keeps Hadjar under guard until his identity is confirmed.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's travelling group who helps guard and shelter Hadjar at the cliffside camp while the wounded stranger's identity and intentions remain uncertain.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's travelling group. He helps shelter Hadjar and is among those who hold the badly wounded stranger at weapon point until he confirms his identity.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's travelling party who helps treat and shelter Hadjar after the delegation's destruction.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The figure associated with the magical wreath that prevents Hadjar from disclosing what happened to the dragon delegation.",
+            "id": "chin-ameh",
+            "name": "Chin'Ameh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tash"
+            ],
+            "description": "Sin'Magan's sister and Tened's travelling companion. Hadjar believes she may have joined the plan behind the attack that left him poisoned.",
+            "id": "tash-magan",
+            "name": "Tash'Magan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tash'Magan's brother and the head of security for the dragon delegation. Hadjar considers whether the guards' injuries and Sin'Magan's fate formed part of the betrayal, but doubts that the security commander willingly joined Tened and Tash'Magan's suspected plot.",
+            "id": "sin-magan",
+            "name": "Sin'Magan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hadjar's absent family and the central reason he cannot abandon his mission. His wife is carrying their child, and he believes failure to fulfill his oath concerning Tened would cost his own life and place both of them in danger.",
+            "id": "hadjars-wife-and-unborn-child",
+            "name": "Hadjar's wife and unborn child",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "black general",
+              "soul fragment"
+            ],
+            "description": "An imprisoned fragment of an ancient warrior residing in Hadjar's soul world. He regards Hadjar's body as a possible future vessel, disputes Hadjar's ideas of honor, and searches for ways to extend his influence beyond his confinement.",
+            "id": "the-first-darkhan",
+            "name": "The First Darkhan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A creature in the soul world surrounding Hadjar that the First Darkhan sends through a widening breach to seek help for him.",
+            "id": "quetzal-bird",
+            "name": "Quetzal bird",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young dwarven warrior who approaches Hadjar after sensing his fighting ability at the Ruby Mountain border. His arrival complicates the travellers' attempt to pass as merchants while the authorities search for rebels and smuggled weapons.",
+            "id": "alba-udun",
+            "name": "Alba Udun",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the last stone trolls and a healer who arrives after Hadjar collapses during his duel with Alba Udun. Guided by a wind from the icy mountains, he removes the poison and repairs Hadjar's bodily wounds, though he says the deeper soul injury must be healed by Hadjar himself.",
+            "id": "daglad",
+            "name": "Daglad",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An influential dwarven elder who meets the travellers inside Ruby Mountain. He has an established friendship with Abraham Shensie, knows the healer Daglad, and was expecting Hadjar, though his interest in the newcomer gives Hadjar reason for caution.",
+            "id": "dabladurt",
+            "name": "Dabladurt",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The current dwarven leader and the target of a conspiracy involving the royal family. His opponents argue that their duty belongs to the stone throne rather than to the official who presently controls the state.",
+            "id": "gadat-glad",
+            "name": "Gadat Glad",
+            "reveal": {
+              "chapter": 19
+            }
+          },
+          {
+            "description": "A dwarven royal who joins the opposition to Gadat Glad. She argues that dwarven loyalty belongs to the stone throne rather than its current officeholder.",
+            "id": "dwarven-princess",
+            "name": "Dwarven princess",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven princess organizing resistance to the ruling regime. She presents Alba Udun with evidence of impoverished workers, punished dissenters, and enslaved children, seeking support for a political overthrow rather than an immediate personal seizure of power.",
+            "id": "princess-edlet",
+            "name": "Princess Edlet",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy miner's son said to have purchased Udun status instead of earning it through the dwarven warrior tradition. He serves the ruling faction and stands as Alba Udun's hostile counterpart.",
+            "id": "dagal-udun",
+            "name": "Dagal Udun",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "ruler of the Dragon Lands"
+            ],
+            "description": "Tened's father and the supreme ruler of the Dragon Lands. His long campaign against an internal conspiracy has included staged operations, young dragon casualties, and the betrayal of dwarf allies, while his succession plans once depended on Tash'Magan becoming the first female Ruby hero.",
+            "id": "dragon-emperor",
+            "name": "Dragon Emperor",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legendary dwarven craftsperson said to have returned from a Fae-linked disappearance with knowledge of true-name forging and the skill to create exceptional artifacts.",
+            "id": "legendary-dwarven-blacksmith",
+            "name": "Legendary dwarven blacksmith",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient dragon connected to Hadjar's past who taught him to read dragon runes. That instruction remains important as Hadjar is compelled to navigate Tened's plans and seek techniques preserved by the Dragon Empire.",
+            "id": "traves",
+            "name": "Traves",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient mage associated with the sealing of the Black General. He appears apart from the Ruby Mountain struggle, discussing signs that war is beginning again with an unidentified, disembodied interlocutor.",
+            "id": "ash",
+            "name": "Ash",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The living power at the center of the dwarven homeland. It communicates with Hadjar during his temple trial and shows him a possible future shaped by oppressive rule.",
+            "id": "mother-mountain",
+            "name": "Mother Mountain",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant of the prince of demons. His master orders him to bring Hadjar to the demon prince within one mortal month, leaving Helmer fearful of the punishment awaiting failure.",
+            "id": "helmer",
+            "name": "Helmer",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A demon ruler who commands Helmer to bring Hadjar to him within one mortal month.",
+            "id": "prince-of-demons",
+            "name": "Prince of demons",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The dragon ruler commanding the eastern front during the ancient war against the Black General. Hadjar enters the army under his authority while undergoing the Path Through the Stars trial.",
+            "id": "first-dragon-emperor",
+            "name": "First Dragon Emperor",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed minotaur warrior who becomes Hadjar's temporary battlefield partner during the ancient-war reconstruction.",
+            "id": "unnamed-minotaur-warrior",
+            "name": "Unnamed minotaur warrior",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-blood dragon commander in the ancient war and a swordsman acknowledged as second only to the first Dragon Emperor. Despite hostility at court, he volunteers to help locate an Ifrit coven before its hidden fire-wall attack destroys the eastern front.",
+            "id": "gevestus",
+            "name": "Gevestus",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guardian who receives Hadjar and Gevestus beyond the seventh heaven. Accompanied by a lion of flame and light, she directs Hadjar toward his own route through the Path Through the Stars.",
+            "id": "keeper",
+            "name": "Keeper",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A village child in Hadjar's Path Through the Stars vision who alerts him to a bandit attack and the danger facing Hadjar's wife.",
+            "id": "zvetik",
+            "name": "Zvetik",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "North Wind"
+            ],
+            "description": "The elemental North Wind encountered during Hadjar's Path Through the Stars meditation. Hadjar must challenge this spirit in the realm of his wind, making survival of the confrontation the condition for his attempted advancement.",
+            "id": "boreas",
+            "name": "Boreas",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human commander leading the Seven Empires army toward Ruby Mountain.",
+            "id": "seven-empires-army-commander",
+            "name": "Seven Empires army commander",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An imperial minister seen in memories surrounding the accusations against Traves and the Dark Storm tribe. The recollection shows him under a powerful mind-altering spell, casting doubt on the evidence produced through his actions.",
+            "id": "minister-ju",
+            "name": "Minister Ju",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BLG6X49D",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-city"
+      }
+    },
     "dragon-haven": {
       "characters": {
         "characters": [
