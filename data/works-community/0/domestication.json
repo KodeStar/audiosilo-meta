@@ -4205,6 +4205,361 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-5-sea-of-sorrow": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sword-wielding traveler who awakens immobilized beneath Underworld City after passing through a spatial rift. He is imprisoned beside Einen, whose loyalty he trusts, while his usual internal computing aid remains unavailable.",
+            "id": "hadjar",
+            "name": "Hadjar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hadjar's trusted companion and fellow prisoner beneath Underworld City. He explains that Hadjar has been unconscious for three weeks and that their tigress companion escaped their captors.",
+            "id": "einen",
+            "name": "Einen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hadjar's tigress companion. She avoids capture when Hadjar and Einen arrive beneath Underworld City, leaving the imprisoned men uncertain of her safety.",
+            "id": "azrea",
+            "name": "Azrea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected figure associated with Underworld City whose death is accepted there as fact. Hadjar calls her his friend and his brother's wife, but his possession of her amulet makes his captors suspicious.",
+            "id": "serra",
+            "name": "Serra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Serra's sister, known in Underworld City for seeking vengeance over Serra's presumed death. Hadjar is warned that she will reject his account of what happened.",
+            "id": "tilis",
+            "name": "Tilis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person Hadjar names as a possible witness to his desire to avenge Serra. At this point, the captors offer no confirmation that Ramukhan would support Hadjar's claim.",
+            "id": "ramukhan",
+            "name": "Ramukhan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Underworld City servant who supervises the release and processing of Hadjar and Einen. He keeps the prisoners under control while also ordering subordinates not to damage them excessively.",
+            "id": "salif",
+            "name": "Salif",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared authority in Underworld City. Servants responsible for handling Hadjar and Einen are careful to avoid conduct that might leave them answerable to her.",
+            "id": "karissa",
+            "name": "Karissa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The capable, outwardly casual leader of the blue-amuletted barracks. He greets Hadjar and Einen with a warning that newcomers singled out by Karissa rarely survive their first week.",
+            "id": "glen",
+            "name": "Glen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The principal researcher who meets Hadjar after his first pit victory. He recognizes the surname Darkhan and takes Hadjar from the arena for a formal measurement of his talent.",
+            "id": "paris",
+            "name": "Paris",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An influential Underworld City appraiser and former devotee of the sword spirit. He identifies Hadjar's damaged energy stone as material used for imperial artifacts and estimates its value in imperial coin.",
+            "id": "arcus",
+            "name": "Arcus",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure from a childhood song taught to Hadjar by his mother. The song associates the General with an attempt to make another being divine, followed by death, return, and widespread destruction.",
+            "id": "black-general",
+            "name": "Black General",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Salif's young companion, brought into Paris's proposed expedition group. He resents Hadjar and Einen and lacks the standing and power of the adult specialists around him.",
+            "id": "servant-boy",
+            "name": "Servant boy",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful rival seeker whose forces are active in the vast region where Mage City may be hidden. Paris treats his people as one of the expedition's principal dangers.",
+            "id": "sankesh",
+            "name": "Sankesh",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Immortal of the House of Golden Heavens who appears after a dragon is killed in the Demon's Heart. He recognizes Hadjar's House of Blade Fury greeting and erases the other travelers' memories of the encounter.",
+            "id": "harlim",
+            "name": "Harlim",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A past ruler of the Pearl of the Sands. Ramukhan identifies Serra as his granddaughter while questioning Hadjar about what Rahaim disclosed.",
+            "id": "rahaim",
+            "name": "Rahaim",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The hardened leader of the surviving caravan remnant. Able to disperse into sand, he abducts Hadjar and accuses him of betraying the caravan's contract.",
+            "id": "shakh",
+            "name": "Shakh",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shakh's uncle and the caravan's former security chief. Mortally wounded and missing an arm, a leg, and an eye, he tells the survivors that Hadjar could not have betrayed their contract.",
+            "id": "shakar",
+            "name": "Shakar",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The former head scout of Rahaim's caravan and one of its few survivors. He remains wary of Hadjar after the caravan's destruction.",
+            "id": "kharad",
+            "name": "Kharad",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan scout among the depleted group of survivors led by Shakh. He is present when Hadjar and Einen are brought into their hidden camp.",
+            "id": "sular",
+            "name": "Sular",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former caravan guard whose body was found by the survivors in a wagon controlled by Sankesh's daughter. Her death is part of the disaster that shattered the caravan.",
+            "id": "ilmena",
+            "name": "Ilmena",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Serra's bodyguard and the keeper responsible for her as Mage City's living key. He publicly posed as her father and was lost after confronting Sankesh.",
+            "id": "zerk",
+            "name": "Zerk",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A warrior and emissary who meets the Underworld City expedition near the suspected Mage City region. She invites Hadjar to enter Sankesh's camp and speak with him alone.",
+            "id": "sankeshs-daughter",
+            "name": "Sankesh's daughter",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A northern heaven soldier ordered by Sankesh to issue a formal duel challenge to Hadjar under the laws of hospitality.",
+            "id": "northern-duelist",
+            "name": "Northern duelist",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hadjar's dragon mentor, encountered within an inner realm while Hadjar lies unconscious. He calls Hadjar his disciple and begins answering questions about cultivation and the powers beyond it.",
+            "id": "traves",
+            "name": "Traves",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A black, birdlike presence bound within Hadjar's soul. It confronts Traves, calls Hadjar one of its blood descendants, and connects its awakened spirit to the family's black sword.",
+            "id": "black-ancestral-entity",
+            "name": "Black ancestral entity",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sankesh"
+            ],
+            "description": "Sankesh as the commander of a brutal northern expedition. More than five hundred followers have been reduced to ten, yet he continues toward Mage City's library with Serra injured and captive.",
+            "id": "northern-konung",
+            "name": "Northern konung",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The surviving memory of an ancient figure who meets Hadjar in an isolated cloud realm. She identifies him as a descendant of her enemy and links his blood and soul-bound sword to the Black General.",
+            "id": "ancient-sorceress",
+            "name": "Ancient sorceress",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A childlike library golem who receives the exhausted expedition inside Mage City's immense library. She identifies herself as Serra's sister and offers to locate suitable knowledge for each visitor.",
+            "id": "library-golem",
+            "name": "Library golem",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Library golem",
+              "Serra's sister"
+            ],
+            "description": "The original name of the childlike golem who catalogs Mage City's library. She creates a helper for each seeker and warns that the northern force will arrive within minutes.",
+            "id": "list",
+            "name": "List",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The northern force's head of security, left behind to prevent Hadjar and Einen from following his leader deeper into the library. His Spirit Knight strength makes him a severe obstacle for both men.",
+            "id": "northern-spirit-knight",
+            "name": "Northern spirit knight",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sankesh"
+            ],
+            "description": "The name imposed on the enslaved teenage Sankesh after he is taken from the Sea of Sand and sold in the North. His memories of captivity begin to explain the purpose he attached to the elixir.",
+            "id": "aril",
+            "name": "Aril",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An enslaved girl sold at a northern auction after her mother is killed. A village chief purchases her with the boy he renames Aril and makes him responsible for her welfare.",
+            "id": "aisha",
+            "name": "Aisha",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Aril",
+              "Sankesh"
+            ],
+            "description": "The name Aril uses after years of solitary survival and a rapid rise through sun cultivation. He returns to the village with overwhelming strength and learns that Aisha died giving birth to their daughter.",
+            "id": "sunshine",
+            "name": "Sunshine",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Rahaim"
+            ],
+            "description": "The ancient lord who reveals that he is the real Rahaim. He explains the failed choices made by the golem he left to manage his family and the Mage City search, then assesses Hadjar's incomplete soul.",
+            "id": "underworld-city-sage",
+            "name": "Underworld City sage",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of the Green Hammer sect patriarch. She observes Hadjar and Einen when they arrive outside Holy Sky School.",
+            "id": "dora-marnil",
+            "name": "Dora Marnil",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:170524906X",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-5-sea-of-sorrow"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
