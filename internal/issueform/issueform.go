@@ -119,6 +119,13 @@ type composer struct {
 	// are one identifier.
 	isbnRec map[string]recRef
 
+	// identity is the normalized-identity index over the catalogue, built lazily by
+	// identityIndex() because only the add-work path asks for it and building it
+	// cleans every catalogued title. It is the same index the bulk importer's create
+	// guard reads, so the two writers cannot disagree about what one book is
+	// (dupidentity.go).
+	identity *check.WorkIdentity
+
 	// submissionASINs is the set of normalized ASINs THIS submission stated in
 	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
 	// marker against it, so a marker can only vouch for a book the submission

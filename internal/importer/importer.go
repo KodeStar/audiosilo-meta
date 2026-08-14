@@ -15,6 +15,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -23,11 +24,6 @@ import (
 var (
 	asinPattern = regexp.MustCompile(`^[A-Z0-9]{10}$`)
 	datePattern = regexp.MustCompile(`^\d{4}(-\d{2}(-\d{2})?)?$`)
-	// editionMarkerRE matches one or more stacked trailing (Unabridged)/(Abridged)
-	// edition markers (parens or brackets), with their surrounding whitespace, so a
-	// work title carries no edition decoration - unabridged-ness lives on the
-	// recording's tri-state abridged flag, not in the work's identity.
-	editionMarkerRE = regexp.MustCompile(`(?i)(?:\s*[([](?:un)?abridged[)\]])+\s*$`)
 	// unabridgedMarkerRE / abridgedMarkerRE detect which edition a title's marker
 	// states. unabridged is checked first because "(Unabridged)" contains the
 	// substring "abridged" but never immediately after a bracket.
@@ -69,30 +65,20 @@ func abridgedFromMarker(title string) *bool {
 //
 // It never returns an empty string: a title that is ONLY a marker (or trims to
 // nothing) is returned unchanged.
+//
+// The edition-marker half is titlerule.StripEditionMarkers: that rule is the ONE
+// definition of what such a marker is, and it moved to internal/titlerule (from
+// here) when pkg/check and this package both became consumers of the normalized
+// title identity built on top of it - see titlerule/edition.go, which records the
+// move and why the rule may not be spelled twice.
 func cleanWorkTitle(title string) string {
 	cleaned := strings.TrimSpace(title)
-	stripped := strings.TrimSpace(editionMarkerRE.ReplaceAllString(cleaned, ""))
+	stripped := titlerule.StripEditionMarkers(cleaned)
 	if stripped == "" {
 		return cleaned
 	}
 	return stripTitleNarratorQualifier(stripped)
 }
-
-// HasEditionMarker reports whether a title carries a trailing
-// (Unabridged)/(Abridged) edition marker, and CleanWorkTitle is cleanWorkTitle -
-// both exposed for in-module reuse, the same move MarkedNameKey made.
-//
-// internal/titlerule's decoration detector reads them so the audit's "this title
-// still carries an edition marker" is the SAME question the importer answers when
-// it strips one for identity. Spelled separately, the two drifted immediately: a
-// hand-written audit-side regexp made the brackets optional (matching a bare
-// trailing "Unabridged") and missed stacked markers, so it disagreed with the rule
-// of record about what the marker even is.
-func HasEditionMarker(title string) bool { return editionMarkerRE.MatchString(title) }
-
-// CleanWorkTitle removes the decorations that are not part of a work's identity.
-// See cleanWorkTitle for the rules; this is the exported door onto it.
-func CleanWorkTitle(title string) string { return cleanWorkTitle(title) }
 
 // recInfo remembers enough about a recording under a work to detect a
 // same-identity re-import (idempotency) versus a genuine slug collision, and to
@@ -300,6 +286,23 @@ type planner struct {
 	sourceType string
 	importDate string
 	curSource  OutSource
+	// identity is the run's NORMALIZED WORK IDENTITY index over the catalogue as
+	// loaded - the create path's duplicate guard (dupidentity.go). nil in every
+	// other mode, which is what makes the guard a create-only rule and costs the
+	// other two passes nothing (building it cleans every catalogued title once).
+	identity *check.WorkIdentity
+	// runIdentity and runIdentified are the same index over the works THIS RUN has
+	// created or merged into: normalized identity key -> work slugs, and slug -> the
+	// title and series name that key was derived from. The disk index cannot hold
+	// them, and a wave arrives in batches, so without these two rows of ONE batch
+	// carrying two spellings of one title would both create.
+	runIdentity   map[string][]string
+	runIdentified map[string]runWorkIdentity
+	// dupIdentityExamples labels a FEW of the rows the duplicate-identity guard
+	// refused, for the run's one aggregated warning (reportDuplicateIdentities);
+	// the COUNT is Summary.SkippedDuplicateIdentity. Capped as it fills, like every
+	// other example list here.
+	dupIdentityExamples []string
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is
 	// selected once, by runBooks' switch.
@@ -454,6 +457,8 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		genres:         audibleGenreTable().withRunMemo(),
 		unmappedGenres: map[string]bool{},
 		runCredits:     map[string]map[model.Credit]bool{},
+		runIdentity:    map[string][]string{},
+		runIdentified:  map[string]runWorkIdentity{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
 		mode:           opts.Mode,
@@ -490,6 +495,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
 	p.reportLostSeriesClaims()
+	p.reportDuplicateIdentities()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -661,7 +667,12 @@ func normalizeEditionMarkers(books []sourceBook) {
 // reads share one walk and one parse of each pack: the packs the planner then
 // composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
-	cat := check.LoadStore(p.store).Catalog
+	res := check.LoadStore(p.store)
+	// The create path's duplicate-identity index, off the load that is already
+	// happening: it is the one index the guard probes per row (dupidentity.go), and
+	// building it anywhere else would mean a second pass over the catalogue.
+	p.identity = newWorkIdentityIndex(res, p.mode)
+	cat := res.Catalog
 	if cat == nil {
 		return
 	}
@@ -870,16 +881,15 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
-	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go). Resolving them here
-	// is what creates their person records, exactly as creditSlugs did.
-	authors := p.rowWorkAuthors(authorCredits, warn)
-	narratorSlugs := p.creditSlugs(narratorNames, warn)
-
 	// The book's series claims (one for OpenAudible, possibly several for
 	// Libation). The first that resolves to an already-known series (on disk or
 	// created earlier this run) is used to refuse merging into a same-titled work
 	// that sits in that series at a different position.
+	//
+	// Resolved BEFORE the row's people are, which it can be because findSeries only
+	// reads: the duplicate-identity guard below needs the claim (it walks the same
+	// slug candidates getOrCreateWork will), and the guard has to run before
+	// anything is created or a refused row would leave orphan person records behind.
 	var claim *seriesClaim
 	for _, r := range b.series {
 		if !r.seqOK {
@@ -890,6 +900,21 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			break
 		}
 	}
+
+	// The duplicate-identity guard: a row naming a book the catalogue already holds
+	// under a differently-spelled title is dropped and reported rather than minting a
+	// second work (dupidentity.go). It skips rather than merging, on purpose - a
+	// refused row is re-importable, a wrong merge is not.
+	if p.refuseDuplicateIdentity(b, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
+		p.noteLostSeriesClaims(b)
+		return
+	}
+
+	// The row's author slugs, split into the list the record stores and the
+	// subset work identity is matched on (workidentity.go). Resolving them here
+	// is what creates their person records, exactly as creditSlugs did.
+	authors := p.rowWorkAuthors(authorCredits, warn)
+	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
 	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)
@@ -903,6 +928,14 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// that merges.
 	facts := workFacts{genres: b.genres, credits: authorCredits}
 	ws := p.getOrCreateWork(workTitle, b.str("title"), authors, lang, claim, facts, posSuffix, warn)
+	// The row's normalized identity now names a work this run knows about, so a LATER
+	// row of the same run carrying another spelling of this title meets it (see
+	// dupidentity.go's identityMatch). Registered whether the work was created or
+	// merged into: either way this row and that work are one book.
+	if ws != nil && p.identity != nil {
+		series := rowSeriesName(b)
+		p.rememberIdentity(p.identity.Key(workTitle, series), ws.slug, workTitle, series)
+	}
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a

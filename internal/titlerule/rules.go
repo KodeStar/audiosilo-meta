@@ -9,19 +9,22 @@
 // each have needed a copy. That is precisely the two-definitions failure CLAUDE.md
 // forbids, and the reason a rule lives at the leaf both its callers can reach
 // (model.Slugify and model.PersonSlug are here for the same reason). This package
-// depends on pkg/model and, for the two rules that already have a HOME OF RECORD,
-// on internal/importer - never on pkg/check, pkg/pack or internal/audit.
+// depends on pkg/model and on NOTHING ELSE in the module - not pkg/check, not
+// pkg/pack, not internal/importer, not internal/audit.
 //
-// The one consequence of reaching internal/importer: pkg/check and
-// internal/importer cannot import this package (the importer imports check, so
-// either direction would be a cycle). That is the deliberate trade. The
-// alternative was re-spelling the importer's edition-marker rule here, and a
-// SECOND definition of "what an edition marker is" is worse than a narrower
-// consumer set - the audit's hand-written version had already drifted from the
-// rule of record on bracket optionality and stacked markers. Neither blocked
-// package is a plausible consumer: the importer has its own narrower identity
-// cleaning that must NOT widen (it would change work identity for every import),
-// and pkg/check's rules compare slugs, not cleaned titles.
+// It reached internal/importer until the intake-time duplicate prevention landed,
+// for the two rules that had their home of record there (the edition marker and
+// the initials name key), and the documented consequence was that internal/importer
+// and pkg/check could not import this package at all. Both are now consumers - the
+// normalized-title identity key below is asked by the intake gate
+// (internal/issueform), by the bulk importer's create guard and by pkg/check's tree
+// census - so the edition-marker rule MOVED down here (see edition.go, which
+// records the move) and the initials re-export went away: internal/audit, the only
+// caller, asks internal/importer for it directly, which it already imports.
+//
+// The invariant that made the old arrangement worth documenting is unchanged and is
+// why the rule moved rather than being copied: there is ONE definition of what an
+// edition marker is, and a hand-written twin had already drifted from it.
 //
 // What is NOT here: anything that reads a catalogue. A rule takes strings and
 // returns strings or booleans, so it can be tested without a tree and called from
@@ -34,7 +37,6 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -812,7 +814,7 @@ func dropDecorativeGroups(s string, forms []string) string {
 		}
 		for _, loc := range parenGroup.FindAllStringIndex(t, -1) {
 			inner := t[loc[0]+1 : loc[1]-1]
-			decorative := importer.HasEditionMarker(t[loc[0]:loc[1]]) ||
+			decorative := HasEditionMarker(t[loc[0]:loc[1]]) ||
 				segmentIsSeriesOnly(inner, forms) ||
 				namesNoBook(inner) ||
 				// "(Mundodisco 9)" - a name followed by a bare number is a series
@@ -900,25 +902,54 @@ func SameModuloArticles(a, b string) bool {
 	return CompareKey(a) != "" && CompareKey(a) == CompareKey(b)
 }
 
+// The strip REFUSALS. StripDecoration returns one of these instead of a title
+// when it will not propose one, so a consumer branches on the reason rather than
+// on prose - the intake gate treats two of them as "a human must title this book"
+// and the rest as "leave the title as submitted" (see internal/issueform).
+const (
+	// RefuseNothingToStrip: the rules removed nothing (or removed everything, or
+	// somehow grew the title). There is no cleaner title to write.
+	RefuseNothingToStrip = "nothing-to-strip"
+	// RefuseNoIdentity: what is left names no book - "Book One", "- Band 5",
+	// "Las", "2" (CarriesIdentity, multilingual). Judged on the RESIDUAL ALONE: a
+	// guard that also required the ORIGINAL to carry identity let every all-fluff
+	// title through, which is precisely where the degenerate proposals came from.
+	RefuseNoIdentity = "residual-names-no-book"
+	// RefuseFragment: what is left reads as a fragment - it begins or ends with a
+	// joining word, or doubles a function word (hasDanglingConnective).
+	RefuseFragment = "residual-is-a-fragment"
+	// RefuseIsSeriesName: the title IS the series name modulo articles, so the
+	// whole title would go. Nothing is wrong with such a title - a one-book series
+	// really is named after its book - there is simply nothing to propose.
+	RefuseIsSeriesName = "title-is-the-series-name"
+	// RefuseResultIsSeriesName: the STRIP turns the title into the series name
+	// ("Scarlet and Ivy: Audio Collection Books 1-3" reduces to "Scarlet and
+	// Ivy"), which would make a collection indistinguishable from its series.
+	RefuseResultIsSeriesName = "result-is-the-series-name"
+)
+
 // ProposeTitle is the title a retitle would WRITE, and whether proposing one is
-// safe at all. series may be "".
-//
-// It refuses rather than guessing, in five cases, each measured:
-//
-//   - nothing changed, or the change empties the title;
-//   - the residual names no book (CarriesIdentity, multilingual) - "Book One",
-//     "- Band 5", "Las", "2". Judged on the RESIDUAL ALONE: a guard that also
-//     required the ORIGINAL to carry identity let every all-fluff title through,
-//     which is precisely where the degenerate proposals came from;
-//   - the residual reads as a fragment (hasDanglingConnective);
-//   - the title IS the series name modulo articles, so the whole title would go;
-//   - the residual is longer than what it came from, which cannot be a cleanup.
+// safe at all. series may be "". It is StripDecoration without the refusal code,
+// for the callers that only need to know whether there is a title to write.
 func ProposeTitle(title, series string) (string, bool) {
+	proposed, _, ok := StripDecoration(title, series)
+	return proposed, ok
+}
+
+// StripDecoration is ProposeTitle plus the REASON it refused, which is what a
+// consumer that has to answer a contributor needs: "the title you submitted is
+// decoration and I cannot mechanically derive the book's name from it" is a
+// different message from "there was nothing to clean".
+//
+// refusal is one of the RefuseX codes above when ok is false, and "" when ok is
+// true. It refuses rather than guessing in five cases, each measured - see the
+// codes for what each one is and why.
+func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	orig := strings.TrimSpace(title)
 	s := dropWideGenreSubtitle(orig)
 	if series != "" {
 		if SameModuloArticles(orig, series) {
-			return "", false
+			return "", RefuseIsSeriesName, false
 		}
 		s = stripSeriesAtBoundary(s, SeriesForms(series))
 	}
@@ -934,18 +965,20 @@ func ProposeTitle(title, series string) (string, bool) {
 
 	switch {
 	case s == "" || s == orig || len(s) > len(orig):
-		return "", false
-	case !CarriesIdentity(s), hasDanglingConnective(s):
-		return "", false
+		return "", RefuseNothingToStrip, false
+	case !CarriesIdentity(s):
+		return "", RefuseNoIdentity, false
+	case hasDanglingConnective(s):
+		return "", RefuseFragment, false
 	case series != "" && SameModuloArticles(s, series):
 		// The RESULT is the series' name. "Scarlet and Ivy: Audio Collection Books
 		// 1-3" reduces to "Scarlet and Ivy", which is what the series is called, so
 		// the collection would become indistinguishable from the series itself. The
 		// same test on the original catches only the titles that were already the
 		// series name; this one catches the ones the strip turns into it.
-		return "", false
+		return "", RefuseResultIsSeriesName, false
 	}
-	return s, true
+	return s, "", true
 }
 
 // ---- decoration detectors ----------------------------------------------------
@@ -998,7 +1031,7 @@ var decorations = []struct {
 	// mutually exclusive here rather than by ordering, so a title carrying a
 	// bracketed edition marker AND a volume marker still files under the volume.
 	{DecBracketSuffix, func(f TitleFacts) bool {
-		return bracketSuffixRE.MatchString(f.Title) && !importer.HasEditionMarker(f.Title)
+		return bracketSuffixRE.MatchString(f.Title) && !HasEditionMarker(f.Title)
 	}},
 	{DecSeriesName, func(f TitleFacts) bool {
 		if f.Series == "" {
@@ -1012,7 +1045,7 @@ var decorations = []struct {
 	// exact shape before work identity, so "does this title still carry one" must
 	// be the same question. A hand-written version here had already drifted (it
 	// made the brackets optional and missed stacked markers).
-	{DecEdition, func(f TitleFacts) bool { return importer.HasEditionMarker(f.Title) }},
+	{DecEdition, func(f TitleFacts) bool { return HasEditionMarker(f.Title) }},
 	{DecGenreSubtitle, func(f TitleFacts) bool { return dropWideGenreSubtitle(f.Title) != f.Title }},
 	{DecTrailingPunct, func(f TitleFacts) bool { return trailingSeparatorRE.MatchString(f.Title) }},
 }
@@ -1263,11 +1296,6 @@ func hasLetter(s string) bool {
 }
 
 // ---- person name identity ----------------------------------------------------
-
-// MarkedNameKey is the importer's initials identity for a name, re-exported so a
-// consumer grouping possible duplicate people reads the rule the importer MERGES
-// spellings on rather than a second copy of it.
-func MarkedNameKey(name string) string { return importer.MarkedNameKey(name) }
 
 // OneEditApart reports whether a and b are exactly one Damerau-Levenshtein edit
 // apart - one insertion, deletion, substitution, or transposition of adjacent

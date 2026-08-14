@@ -4,6 +4,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -40,7 +41,7 @@ func personKeyIndex(all []*model.Person) []personKeys {
 	for _, p := range all {
 		out = append(out, personKeys{
 			person: p,
-			marked: titlerule.MarkedNameKey(p.Name),
+			marked: importer.MarkedNameKey(p.Name),
 			folded: titlerule.FoldKey(p.Name),
 			first:  firstNameToken(p.Name),
 		})
@@ -55,7 +56,7 @@ func detectPersonDup(ix *index) *findings {
 
 	// The importer's own initials identity, through the one definition of it, so
 	// the audit and the importer can never disagree about which two spellings are
-	// one person (titlerule.MarkedNameKey -> importer.markedKey).
+	// one person (importer.MarkedNameKey -> importer.markedKey).
 	byMarked, markedOrder := groupBy(keys, func(k personKeys) string { return k.marked })
 	for _, key := range markedOrder {
 		if group := byMarked[key]; len(group) >= 2 {

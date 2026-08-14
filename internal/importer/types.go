@@ -263,6 +263,18 @@ type Summary struct {
 	// title-matching or work-identity defect surfaces. Reported as its own
 	// aggregate warning with examples. Always 0 outside ModeRecordingsOnly.
 	SkippedTitleNoMatch int
+	// SkippedDuplicateIdentity counts CREATE-path rows the duplicate-identity
+	// guard refused: the row names a book the catalogue (or an earlier row of the
+	// same run) already holds under a differently-spelled title, so no work was
+	// created for it (dupidentity.go). Always 0 outside ModeCreate.
+	//
+	// It is disjoint from Skipped, which counts the ASIN dedup - that row is a
+	// re-import of a record we hold and there is nothing to do; this row is a
+	// DIFFERENT edition or listing of a book we hold under another title, and the
+	// pair needs a human. Both are reported, and this one additionally names a few
+	// examples and writes a conflict-worklist row per refusal, because it is a
+	// review queue rather than a no-op.
+	SkippedDuplicateIdentity int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the
@@ -305,7 +317,9 @@ type Summary struct {
 // (internal/issueform's import composer, which branches its duplicate verdict on
 // it) so that adding a counter here is visibly a decision about this verdict too.
 //
-// Deliberately excluded: Skipped, which is the opposite of a change, and the
+// Deliberately excluded: Skipped and SkippedDuplicateIdentity, which are both the
+// opposite of a change (the second is a REFUSAL that its caller reports on its own
+// terms - see internal/issueform's import composer), and the
 // Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
 func (s Summary) Produced() int {
 	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +

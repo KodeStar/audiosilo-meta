@@ -333,6 +333,12 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCrossLanguageRecordings(cat, idx, warn)
 	checkHonorificPersonPairs(cat, idx, warn)
 	checkIdentityEqualWorks(cat, idx, warn)
+	// The normalized-identity index is built here rather than inside the rule
+	// because it is the SHARED one: internal/importer's create guard and
+	// internal/issueform's intake gate ask the same index of the catalogue they
+	// loaded, so the tree's census and the two writers' refusals can never disagree
+	// about what one book is (identity.go).
+	checkNormalizedDuplicateWorks(NewWorkIdentity(cat), idx, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
 

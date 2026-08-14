@@ -83,6 +83,18 @@ func (c *composer) importLibrary(s sections) {
 			c.noteImportWarnings(sum)
 			return
 		}
+		// A run whose books were refused by the DUPLICATE-IDENTITY guard is not a
+		// duplicate either, for the same reason a conflict is not: the export named
+		// books the catalogue holds under differently-spelled titles, which is a pair
+		// only a maintainer can resolve (internal/importer/dupidentity.go skips rather
+		// than merging, on purpose). Checked before the Skipped branch because it is
+		// the actionable half of a run that did both.
+		if sum.SkippedDuplicateIdentity > 0 {
+			c.fail(StatusNeedsHuman, "nothing new to import: %d book(s) of the export are already in the catalog under "+
+				"differently-spelled titles, which a maintainer resolves rather than the bot", sum.SkippedDuplicateIdentity)
+			c.noteImportWarnings(sum)
+			return
+		}
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
@@ -108,6 +120,13 @@ func (c *composer) importLibrary(s sections) {
 		sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.NewSeries, sum.Skipped)
 	if sum.MergedASINs > 0 {
 		c.note("merged %d re-release ASIN(s) into existing recordings", sum.MergedASINs)
+	}
+	if sum.SkippedDuplicateIdentity > 0 {
+		// Reported on the ok path too: the run landed records AND declined some, and
+		// the declined ones are a review queue a maintainer should see in the pull
+		// request rather than only in the run's warnings.
+		c.note("%d book(s) were not imported because the catalog already holds them under differently-spelled titles - "+
+			"see the warnings below; a maintainer resolves those pairs", sum.SkippedDuplicateIdentity)
 	}
 	if sum.AttestedWorks+sum.AttestedRecordings > 0 {
 		c.note("attested %d work(s) and %d recording(s) that were previously seeded from the libex mirror - your library's values replaced the mirror's",
