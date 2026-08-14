@@ -4205,6 +4205,314 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-14-dwarf-city": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human-dragon swordsman assigned to guard the Dragon Emperor's daughter on a journey to the Ruby Mountains. He begins knowing that the Emperor has discovered his identity and that his expected route into the imperial treasury is no longer available.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An imperial princess departing with a delegation under Hadjar's protection. Her safety is his immediate duty during the journey.",
+            "id": "tened",
+            "name": "Tened",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging dragon, a powerful figure in the Magic Dawn Pavilion, and Hadjar's ally. He confirms that the Emperor knows who Hadjar is, warns that greater powers may be treating him as expendable, and urges him to find an unforeseen solution while protecting Tened.",
+            "id": "chin-ameh",
+            "name": "Chin'Ameh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sin"
+            ],
+            "description": "Tened's chief guard, Tash'Magan's older brother, and the officer commanding Hadjar during the journey. He formally makes Hadjar responsible for the princess's protection under his authority.",
+            "id": "sin-magan",
+            "name": "Sin'Magan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tash"
+            ],
+            "description": "A dragon swordswoman whom Hadjar previously defeated through a trick during the delegation selection.",
+            "id": "tash-magan",
+            "name": "Tash'Magan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mage leading the Magic Dawn Pavilion contingent. He watches Hadjar with evident hostility.",
+            "id": "shi-ak-min",
+            "name": "Shi'ak Min",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man who left with Chin'Ameh's daughter before she was killed by the Dragon Emperor's men.",
+            "id": "traves",
+            "name": "Traves",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "Tened's second personal guard, initially concealed among her maids. She attacks Hadjar when he insists that the princess's attendants accelerate their departure preparations.",
+            "id": "tash-magans-sister",
+            "name": "Tash'Magan's sister",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruler of the Winter Court who controls the Red Mist and confronts Hadjar in the spirit world. She makes his passage with Tened depend on a trial against Dogar's shadow.",
+            "id": "ruler-of-the-red-mist",
+            "name": "Ruler of the Red Mist",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's dead former commander, whose shadow is used as his opponent in the Red Mist ruler's trial.",
+            "id": "dogar",
+            "name": "Dogar",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former sister of the Red Mist who now serves higher powers associated with the Seventh Heaven. She appears after Hadjar's trial and punishes the Red Mist for violating the honored rest of Dogar's echo.",
+            "id": "freya",
+            "name": "Freya",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A higher power who protects Dogar because the fallen commander lived and died with honor.",
+            "id": "durger",
+            "name": "Durger",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "village flower seller",
+              "ancient wizard"
+            ],
+            "description": "An ancient sage and master of nearly every true word, revealed behind the disguise of a village flower seller. His private meeting with Helmer exposes a long relationship divided between friendship and opposition.",
+            "id": "ash",
+            "name": "Ash",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Helmer"
+            ],
+            "description": "The Lord of Nightmares and Ash's ancient adversary and confidant. He meets Ash in secret after the delegation completes the Red Mist crossing.",
+            "id": "lord-of-nightmares",
+            "name": "Lord of Nightmares",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hadjar's captive family, whose danger makes any long delay in the journey unacceptable to him. Their unresolved imprisonment remains his overriding personal reason for seeking a path beyond the Dragonlands.",
+            "id": "hadjars-wife-and-unborn-child",
+            "name": "Hadjar's wife and unborn child",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hadjar's inner teacher"
+            ],
+            "description": "An ancient rebel whose soul fragment and inheritance reside within Hadjar. He says his descendants are opening a passage to the North Wind Country and continues to address Hadjar as his disciple despite Hadjar's refusal.",
+            "id": "first-darkhan",
+            "name": "The First Darkhan",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Raven Sect force conducting the altar ritual. The leader stabs Hadjar as he tries to disrupt the ceremony and is drawn through the resulting gate.",
+            "id": "raven-sect-leader",
+            "name": "Raven Sect leader",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient Fae who tends Hadjar after his battle in the North Wind Country. She appears in the likeness of his dead mother before revealing that she is his distant maternal ancestor.",
+            "id": "hadjars-ancient-fae-ancestor",
+            "name": "Hadjar's ancient Fae ancestor",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former delegation accountant exposed as an armed conspirator during the coup. He reveals Heaven Emperor-level power and shoots Shi'ak Min at the waterfall escape route.",
+            "id": "former-delegation-accountant",
+            "name": "Former delegation accountant",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The false identity Tened adopts after the delegation is shattered. Disguised as a human cartographer with hidden horns and altered dragon features, she enters a trading town beside Hadjar to find an inconspicuous caravan route.",
+            "id": "gevena-usense",
+            "name": "Gevena Usense",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Abraham"
+            ],
+            "description": "A weapons dealer and caravan leader bound for the Ruby Mountains. His thrown-dagger test shows that he is more dangerous than an ordinary merchant, but he offers Hadjar and his disguised companion passage with his group.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A whip-wielding member of Abraham Shensie's coordinated traveling group. She reveals herself after remaining concealed from Hadjar and carries an imperial-level weapon.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The archer in Abraham Shensie's traveling group. He introduces himself by covering Hadjar with a rune-marked bow while the group establishes the balance of force within its caravan.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An absent former-soldier co-operator in Abraham Shensie's group. His knowledge supplies the fourth part of the group's planned route through the maze.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful demon represented by the Lord of Nightmares, who approaches Hadjar with an offer of compensation for completing a task in the underground maze.",
+            "id": "demon-prince",
+            "name": "Demon prince",
+            "reveal": {
+              "chapter": 54
+            }
+          },
+          {
+            "description": "The god of light whose temple gives the party refuge from the undead roaming the Port of the Dead.",
+            "id": "aksor",
+            "name": "Aksor",
+            "reveal": {
+              "chapter": 62
+            }
+          },
+          {
+            "aliases": [
+              "skeletal rider"
+            ],
+            "description": "An armored skeletal rider commanding the immense undead host surrounding Aksor's temple. The First Darkhan's fragment recognizes him as the First Warrior when he blocks the party's route toward the underground passage.",
+            "id": "first-warrior",
+            "name": "The First Warrior",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The renowned thief who fathered Abraham Shensie and obtained a fragmentary route map for the tomb of a dead god. His find directs Abraham's expedition into the tomb maze.",
+            "id": "joppa-shensie",
+            "name": "Joppa Shensie",
+            "reveal": {
+              "chapter": 73
+            }
+          },
+          {
+            "aliases": [
+              "Hadjar's tiger companion"
+            ],
+            "description": "Hadjar's absent supernatural companion, seen in a maze vision that accuses him of abandonment. The vision predicts a future conflict involving Hadjar's daughter and the tiger companion, but does not establish whether the warning is trustworthy.",
+            "id": "hadjars-white-tigress",
+            "name": "Hadjar's white tigress",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "spirit of the North Wind"
+            ],
+            "description": "An ancient wind spirit who reaches Hadjar during his clash of divine laws. Boreas tells him to reject the voice urging him to abandon his human life and warns that Hadjar is not yet ready to perceive his own law.",
+            "id": "boreas",
+            "name": "Boreas",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0B3NGZV82",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-14-dwarf-city"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
