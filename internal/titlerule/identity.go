@@ -63,9 +63,27 @@ import (
 // not. So a collision here is a duplicate CANDIDATE, and every caller pairs it with
 // the author-set, language, stated-volume and collection rules before it acts.
 // A residual that IS ITS NUMBERS is the one exception - see numericIdentity.
+//
+// It returns NO IDENTITY for a residual that WELDS two function words together
+// (hasWeldedFunctionWords, the interior arm of the retitle proposal's own
+// RefuseFragment test): two joining words abutting, or one doubled, is the scar of a
+// cleaning that cut words out of the MIDDLE of a title, and a key with that scar in it
+// no longer describes one book. The measured pair is the two travel guides in Clean's
+// header, whose excised residuals both read "The Best of for Short Stay Travel".
+// Anchoring the strip is what stops that residual being produced at all; this is the
+// second layer, judging what is left however it got there - and a title with no key is
+// refused by no gate and merged by no wave, the same posture the CarriesIdentity
+// refusal above has always had.
+//
+// It reads the WELD arm only, not the proposal's edge arms, and it is measured: see
+// hasWeldedFunctionWords for why a joining word at an edge disqualifies a title and
+// not a key.
 func IdentityTitleKey(title, series string) string {
 	cleaned := Clean(title, series)
 	if !CarriesIdentity(cleaned) && !numericIdentity(cleaned) {
+		return ""
+	}
+	if hasWeldedFunctionWords(identityWords(cleaned)) {
 		return ""
 	}
 	return CompareKey(cleaned)

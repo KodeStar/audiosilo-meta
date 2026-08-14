@@ -156,15 +156,38 @@ func dropWideGenreSubtitle(s string) string {
 	return peel(s, func(t string) string { return dropFluffSubtitle(t, wideGenreFluff) })
 }
 
-// Clean is the cleaned title: the wide genre-subtitle drop, then the server's
-// CleanTitle against series (which strips the series name, volume markers, edition
-// markers and the narrow fluff, and falls back rather than emptying the title),
-// then the stray-bracket and dangling-segment sweeps.
+// Clean is the cleaned title: the wide genre-subtitle drop, the series name removed
+// AT A TITLE BOUNDARY, then the server's CleanTitle against NO series (volume
+// markers, edition markers, bracketed groups and the narrow fluff, falling back
+// rather than emptying the title), then the stray-bracket and dangling-segment
+// sweeps.
 //
 // series may be "" - a work with no membership and no series name embedded in its
 // title still gets its markers and fluff removed.
+//
+// THE SERIES REMOVAL IS BOUNDARY-ANCHORED, through the very rule the retitle
+// proposal uses (stripSeriesAtBoundary): a whole leading segment, a whole trailing
+// segment or a whole bracketed group, never an excision from the middle. It used to
+// excise EVERY occurrence anywhere (the copied stripSeries, reached through
+// CleanTitle), and the proposal side was anchored on its own - which left the
+// comparison KEY carrying the defect the proposal had been fixed for:
+//
+//	"New Orleans: The Best of New Orleans for Short Stay Travel"  -> "The Best of for Short Stay Travel"
+//	"New York: The Best of New York for Short Stay Travel"        -> "The Best of for Short Stay Travel"
+//
+// Two different travel guides, two different narrators, one key - and a live repair
+// wave proposed the merge non-advisory. The mechanism is the one measured at a 55%
+// wrong rate on the proposal side ("More Than Words" -> "Words"), so the key inherits
+// the same anchoring rather than a second spelling of it. What the anchoring costs is
+// a MISSED duplicate: a title spelling its series mid-sentence ("Two Tales of the
+// Iron Druid Chronicles") no longer meets the plain twin it decorates. That is the
+// right way round - a refused cluster is re-findable, a wrong merge deletes a record.
 func Clean(title, series string) string {
-	s := CleanTitle(dropWideGenreSubtitle(title), series)
+	s := dropWideGenreSubtitle(title)
+	if series != "" {
+		s = stripSeriesAtBoundary(s, SeriesForms(series))
+	}
+	s = CleanTitle(s, "")
 	s = dropStrayBrackets(s)
 	s = collapseSeparatorRuns(s)
 	s = peel(s, dropDanglingHeadOnce)
@@ -865,11 +888,16 @@ var danglingLead = map[string]bool{
 }
 
 // hasDanglingConnective reports whether a residual reads as a fragment: it begins
-// with a joining word, ends with any stopword or joining word, or holds a doubled
-// function word ("The the Wandering Trader", the shape a stripped series name leaves
-// when the title spelled its article too).
+// with a joining word, ends with any stopword or joining word, or WELDS two function
+// words together (hasWeldedFunctionWords).
+//
+// The words are the ASCII-FOLDED ones (identityWords), not a raw ASCII split. notAlnum
+// is ASCII-only, so splitting the raw text cut every accented word in half and left the
+// half as a token: "Breve historia de la astronomía" ended in "a", read as a stranded
+// article, and the whole Spanish catalogue therefore looked like fragments. Folding is
+// what every other vocabulary test in this file already does.
 func hasDanglingConnective(s string) bool {
-	ws := strings.FieldsFunc(strings.ToLower(s), notAlnum)
+	ws := identityWords(s)
 	if len(ws) == 0 {
 		return true
 	}
@@ -880,8 +908,34 @@ func hasDanglingConnective(s string) bool {
 	if titleStopwords[last] || danglingLead[last] {
 		return true
 	}
+	return hasWeldedFunctionWords(ws)
+}
+
+// hasWeldedFunctionWords reports whether a residual ABUTS two function words - the scar
+// a removal from the MIDDLE of a title leaves, as opposed to one at either end.
+//
+// Two shapes, one rule: the SAME function word twice ("The the Wandering Trader", what a
+// stripped series name leaves when the title spelled its article too) and two DIFFERENT
+// joining words ("The Best of for Short Stay Travel", the two travel guides in Clean's
+// header once their city was excised - the shape the doubled-word test could not see).
+// Both words must be joining words in the second case, so an ordinary "of the"/"in a" is
+// untouched; a title that genuinely abuts two of them ("In and Out") is judged a fragment,
+// which costs a missed duplicate and never a wrong merge.
+//
+// It is the arm IdentityTitleKey reads on its own, and the reason it is a function of its
+// own: a residual with a joining word at an EDGE makes a poor TITLE (the proposal's
+// concern) but a perfectly discriminating KEY - "At the Mountains of Madness" collides
+// with nothing - while a weld means words were cut out of the middle, which is exactly
+// what makes one key describe two books. Applying the edge arms to the key was measured
+// against the tree and cost 8 correct merge proposals ("At the Mountains of Madness
+// [Blackstone Edition]", "By Royal Command", "E-Day [Dramatized Adaptation]", "All In,
+// Book 3") for no false one.
+func hasWeldedFunctionWords(ws []string) bool {
 	for i := 1; i < len(ws); i++ {
 		if ws[i] == ws[i-1] && (titleStopwords[ws[i]] || danglingLead[ws[i]]) {
+			return true
+		}
+		if danglingLead[ws[i]] && danglingLead[ws[i-1]] {
 			return true
 		}
 	}

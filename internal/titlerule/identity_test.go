@@ -65,13 +65,16 @@ func TestIdentityTitleKey(t *testing.T) {
 }
 
 // A residual that names no book is NO IDENTITY, not a shared one. The measured
-// hazard: a one-word series name is stripped out of its own titles, leaving the bare
+// hazard: a one-word series name was stripped out of its own titles, leaving the bare
 // volume number, so "Cars 2" and "Hawk 2" keyed alike - 199 numeric keys over 3,287
 // real works in the tree, plus the packaging residuals.
+//
+// The bare-number half of that hazard cannot arise any more: the series strip is
+// boundary-anchored, so a one-word name in front of a number is not excised at all and
+// the two sequels below keep their own keys (asserted in the test that follows). The
+// packaging residuals still need the guard.
 func TestIdentityTitleKeyRefusesDegenerateResiduals(t *testing.T) {
 	for _, c := range []struct{ title, series string }{
-		{"Cars 2", "Cars"},
-		{"Hawk 2", "Hawk"},
 		{"Omnibus", ""},
 		{"Book One", ""},
 		{"The Complete Boxed Set", ""},
@@ -105,6 +108,94 @@ func TestIdentityTitleKeyRefusesDegenerateResiduals(t *testing.T) {
 	if SameStatedVolume("Unintended Cultivator: Volume 9", "Unintended Cultivator",
 		"Unintended Cultivator: Volume 3", "Unintended Cultivator") {
 		t.Error("volumes 9 and 3 must state different volumes, which is what keeps them apart")
+	}
+}
+
+// THE SERIES STRIP IS BOUNDARY-ANCHORED, and this is the live failure that made it so:
+// a repair wave merged two different travel guides, non-advisory. Both titles named a
+// catalogued series ("New Orleans", "New York") and the mid-title excision cut EVERY
+// occurrence out, so both reduced to "The Best of for Short Stay Travel" - one key, two
+// books, two narrators, two runtimes.
+func TestIdentityTitleKeyStripsASeriesNameAtBoundariesOnly(t *testing.T) {
+	orleans := IdentityTitleKey("New Orleans: The Best of New Orleans for Short Stay Travel", "New Orleans")
+	york := IdentityTitleKey("New York: The Best of New York for Short Stay Travel", "New York")
+	if orleans == "" || york == "" {
+		t.Fatalf("keys = %q and %q, want both books keyed", orleans, york)
+	}
+	if orleans == york {
+		t.Errorf("two different travel guides share the key %q", orleans)
+	}
+	// The LEADING series segment still comes off both, which is what makes each of them
+	// meet its own undecorated twin - the anchoring removes the excision, not the strip.
+	if want := IdentityTitleKey("The Best of New Orleans for Short Stay Travel", ""); orleans != want {
+		t.Errorf("key = %q, want the leading series segment stripped (%q)", orleans, want)
+	}
+	// And the shapes that MUST still meet, each an anchored boundary: a trailing
+	// "<Series>, Book N" segment, a leading "<Series>: " segment, and a bracketed group.
+	for _, c := range []struct{ decorated, plain, series string }{
+		{"Hammered: The Iron Druid Chronicles, Book 3", "Hammered", "The Iron Druid Chronicles"},
+		{"The Iron Druid Chronicles: Hammered", "Hammered", "The Iron Druid Chronicles"},
+		{"Hammered (The Iron Druid Chronicles, Book 3)", "Hammered", "The Iron Druid Chronicles"},
+	} {
+		a, b := IdentityTitleKey(c.decorated, c.series), IdentityTitleKey(c.plain, c.series)
+		if a == "" || a != b {
+			t.Errorf("IdentityTitleKey(%q) = %q, want the key of %q (%q)", c.decorated, a, c.plain, b)
+		}
+	}
+	// A one-word series name in front of a number is no longer excised, so the sequels
+	// that used to collide on the bare "2" now key by what they say.
+	cars, hawk := IdentityTitleKey("Cars 2", "Cars"), IdentityTitleKey("Hawk 2", "Hawk")
+	if cars == "" || hawk == "" || cars == hawk {
+		t.Errorf("keys = %q and %q, want two distinct keys", cars, hawk)
+	}
+	if IdentityTitleKey("Cars 3", "Cars") == cars {
+		t.Error("two volumes of one one-word series must not share a key")
+	}
+}
+
+// A residual that WELDS two function words together is no identity either - the second
+// layer under the anchoring, judging what is left however it got there.
+func TestIdentityTitleKeyRefusesWeldedResiduals(t *testing.T) {
+	for _, c := range []struct{ title, series string }{
+		// An INTERIOR removal - a bracketed volume group - welding two joining words
+		// together, which is the shape the excised travel guides had ("of for").
+		{"The Best of (Volume 2) for Short Stay Travel", ""},
+		// The excised residual itself, whatever produced it.
+		{"The Best of for Short Stay Travel", ""},
+		{"The the Wandering Trader", ""},
+	} {
+		if got := IdentityTitleKey(c.title, c.series); got != "" {
+			t.Errorf("IdentityTitleKey(%q, %q) = %q, want no identity", c.title, c.series, got)
+		}
+	}
+	// A joining word at an EDGE is a poor title and a perfectly good key, so these keep
+	// theirs - the edge arms of the proposal's fragment test are deliberately NOT read
+	// here, and each of these was a correct merge proposal the wave would have lost.
+	for _, c := range []struct{ title, series string }{
+		{"Of Mice and Men", ""},
+		{"To Kill a Mockingbird", ""},
+		{"At the Mountains of Madness [Blackstone Edition]", ""},
+		{"By Royal Command", "Young Bond"},
+		{"All In, Book 3", ""},
+		// And the diacritic case: the raw ASCII split cut "astronomía" in half and read
+		// the "a" as a stranded article, which refused the whole Spanish catalogue.
+		{"Breve historia de la astronomía [Brief History of Astronomy]", ""},
+	} {
+		if IdentityTitleKey(c.title, c.series) == "" {
+			t.Errorf("IdentityTitleKey(%q, %q) refused a title that names a book", c.title, c.series)
+		}
+	}
+	// The pairs those two lines exist for: the decorated spelling still meets its twin.
+	for _, c := range []struct{ a, sa, b, sb string }{
+		{"At the Mountains of Madness [Blackstone Edition]", "", "At the Mountains of Madness", ""},
+		{"Young Bond: By Royal Command", "Young Bond", "By Royal Command", "Young Bond"},
+		{"All In, Book 3", "", "All In", ""},
+		{"Breve historia de la astronomía [Brief History of Astronomy]", "", "Breve historia de la astronomía", ""},
+	} {
+		x, y := IdentityTitleKey(c.a, c.sa), IdentityTitleKey(c.b, c.sb)
+		if x == "" || x != y {
+			t.Errorf("IdentityTitleKey(%q) = %q, want the key of %q (%q)", c.a, x, c.b, y)
+		}
 	}
 }
 

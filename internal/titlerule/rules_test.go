@@ -34,8 +34,13 @@ func lower(s string) string {
 func TestCleanRemovesRetailerDecoration(t *testing.T) {
 	cases := []struct{ title, series, want string }{
 		{"Hammered: The Iron Druid Chronicles, Book 3", "Iron Druid Chronicles", "Hammered"},
-		{"Two Tales of the Iron Druid Chronicles", "Iron Druid Chronicles", "Two Tales"},
-		{"Seeds of Chaos Omnibus: A GameLit Dark Adventure Series", "Seeds of Chaos", "Omnibus"},
+		// The series name comes off at a title BOUNDARY only, exactly as the retitle
+		// proposal removes it. The three cases below are what that costs and what it
+		// buys: a name spelled mid-sentence stays (a missed duplicate), a name in front
+		// of the book's own packaging word stays, and a whole trailing "<Series>, Book
+		// N" segment goes in ONE piece rather than leaving its volume marker stranded.
+		{"Two Tales of the Iron Druid Chronicles", "Iron Druid Chronicles", "Two Tales of the Iron Druid Chronicles"},
+		{"Seeds of Chaos Omnibus: A GameLit Dark Adventure Series", "Seeds of Chaos", "Seeds of Chaos Omnibus"},
 		{"Mageling (Unabridged)", "", "Mageling"},
 		{"Eric (Mundodisco 9) [Eric (Discworld)]", "", "Eric"},
 		// Never over-cleans: a real subtitle, a stopword-only title, a leading number.
@@ -45,9 +50,11 @@ func TestCleanRemovesRetailerDecoration(t *testing.T) {
 		{"The Book Thief", "", "The Book Thief"},
 		// A leading article is part of a title and must survive a clean.
 		{"A Deadly Cliché:", "", "A Deadly Cliché"},
-		// Removing a series name from BETWEEN two separators leaves an empty
-		// segment, which neither dangling-segment peel can see.
-		{"A Murder of Crows: Shadows and Ash, Book Two", "Shadows and Ash", "A Murder of Crows, Book Two"},
+		// A trailing "<Series>, Book N" is ONE segment and comes off whole.
+		{"A Murder of Crows: Shadows and Ash, Book Two", "Shadows and Ash", "A Murder of Crows"},
+		// An empty segment left by removing a volume MARKER from between two
+		// separators is still collapsed, which neither dangling-segment peel can see.
+		{"A Murder of Crows: Book 2, Shadows", "", "A Murder of Crows, Shadows"},
 	}
 	for _, c := range cases {
 		if got := Clean(c.title, c.series); got != c.want {
