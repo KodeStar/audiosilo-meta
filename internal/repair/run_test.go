@@ -3,6 +3,7 @@ package repair
 import (
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
@@ -196,6 +197,12 @@ func equalTrees(a, b map[string]string) bool {
 // built for, and what it proves is that the plan composes over 280k works rather than
 // refusing everything - the failure a fixture cannot show.
 //
+// IT MUST NOT DEPEND ON HOW FAR THE WAVE HAS GOT, which is what it read as a failure
+// once two chunks had landed. Two properties keep it independent: it plans the WHOLE
+// class rather than the first --limit proposals of it, and it holds the deliberate
+// human-queue refusals out of the ratio instead of counting them as composition
+// failures. Both are stated at the assertions.
+//
 // It does not run under -race, for pkg/check's reason (TestRealDataTree): the fixtures
 // cover every code path, the real tree adds DATA coverage, and the load costs minutes
 // under the detector.
@@ -218,20 +225,49 @@ func TestRealTreeDryRunComposesAPlan(t *testing.T) {
 	}
 	before := treeStat(t, dataDir)
 
-	rep, err := Run(Options{DataDir: dataDir, Ops: []string{audit.OpMergeWorks}, Limit: 50})
+	// The WHOLE class, not a --limit window. The limit made this test read the
+	// alphabetical FRONT of whatever the tree still holds, which a repair wave moves:
+	// sidecar-member-collision is refused by every run and therefore never leaves the
+	// list, so after two applied chunks the first 50 were 28 of them - expected campaign
+	// state failing a composition assertion. The whole class is wave-independent, and it
+	// costs 12 seconds over the load this test already pays for (36s -> 48s over 280k
+	// works, 1,385 proposals planned).
+	rep, err := Run(Options{DataDir: dataDir, Ops: []string{audit.OpMergeWorks}})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if rep.Considered != 50 {
-		t.Errorf("considered = %d, want the limit's 50 (is the tree short of duplicates?)", rep.Considered)
+	if rep.Considered == 0 {
+		t.Fatal("no non-advisory merge proposal at all: is the tree short of duplicates?")
+	}
+	if rep.BeyondLimit != 0 {
+		t.Errorf("%d proposals beyond a limit this run sets none of", rep.BeyondLimit)
+	}
+	// The HUMAN QUEUE is separated from the ratio rather than counted in it: both halves
+	// of a duplicate carrying the same works-community member is a real shape on this
+	// tree and a deliberate refusal (which CC BY-SA entry describes the survivor is a
+	// human decision), so those proposals accumulate at the front of the class as the
+	// mechanical ones are applied away.
+	humanQueue := map[Category]bool{CatSidecarCollision: true}
+	var mechanicalRefusals []Refusal
+	for _, r := range rep.Refused {
+		if !slices.Contains(Categories(), r.Category) {
+			t.Errorf("refusal %s carries the unknown category %q, which no triage view can read", r.Key, r.Category)
+		}
+		if !humanQueue[r.Category] {
+			mechanicalRefusals = append(mechanicalRefusals, r)
+		}
+	}
+	actionable := rep.Considered - (len(rep.Refused) - len(mechanicalRefusals))
+	if actionable == 0 {
+		t.Skip("every remaining proposal in the class is a human-queue refusal: the mechanical wave is finished")
 	}
 	if len(rep.Applied) == 0 {
-		t.Fatalf("the plan refused all %d proposals: %+v", len(rep.Refused), rep.Refused[:min(3, len(rep.Refused))])
+		t.Fatalf("the plan refused all %d actionable proposals: %+v", actionable,
+			rep.Refused[:min(3, len(rep.Refused))])
 	}
-	// A refusal is expected on the real tree (both halves of a duplicate carrying a
-	// characters sidecar is a real shape there), but not a majority of the wave.
-	if len(rep.Refused) > len(rep.Applied) {
-		t.Errorf("refused %d of %d considered, which is more than half: %+v", len(rep.Refused), rep.Considered, rep.Refused)
+	if len(mechanicalRefusals) > len(rep.Applied) {
+		t.Errorf("refused %d of %d actionable proposals mechanically, which is more than half: %+v",
+			len(mechanicalRefusals), actionable, mechanicalRefusals)
 	}
 	for _, a := range rep.Applied {
 		if len(a.Notes) == 0 {

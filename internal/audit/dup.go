@@ -443,6 +443,12 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoSlugOrdinal(members); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoStrippedSeriesDiffers(members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoStatedVolumeElsewhere(ix, members); ok {
+		out = append(out, s)
+	}
 	return out
 }
 

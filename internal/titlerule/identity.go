@@ -118,6 +118,84 @@ func numericIdentity(cleaned string) bool {
 	return numbersAreIdentity(cleaned)
 }
 
+// SameTitleUnderCommonSeries reports whether two titles still reduce to ONE
+// comparison key when the SAME series name is removed from both - the soundness
+// condition on a key equality that was reached by removing a DIFFERENT name from
+// each side.
+//
+// IdentityTitleKey is a one-sided function: it cleans one title against one series
+// name. Two records meeting on its output is evidence they are one book only when
+// the decoration each of them shed was the same decoration. When it was not, the
+// key equality says nothing at all - what the two sides have in common is the part
+// neither of them shed, and the parts that told them apart were each removed as
+// somebody else's series name:
+//
+//	"Cold War: A History from Beginning to End"                against "Cold War"
+//	"The Hundred Years War: A History from Beginning to End"   against "The Hundred Years War"
+//	    both -> "A History from Beginning to End"
+//
+//	"Ladybird Audio Adventures: Outer Space"                   against "Outer Space"
+//	"Ladybird Audio Adventures: The Frozen World"              against "The Frozen World"
+//	    both -> "Ladybird Audio Adventures"
+//
+// Those are four different books and two proposed merges, and the shape reaches both
+// title boundaries: the first pair sheds its LEADING segment (the subject of an
+// Hourly History template) and the second its TRAILING one (the volume of a
+// children's series). The boundary anchoring in Clean is what makes the strip a whole
+// segment; it cannot say whether the segment should have come off at all, because the
+// name being removed was resolved from the title itself (SeriesNameIn) or from a
+// membership that only one side holds.
+//
+// The rule is therefore pairwise, and it is the WEAKEST test that separates them:
+// read both titles against ONE name - either side's - and require the keys to still
+// agree. A decorated title and its plain twin agree under the decorated side's name
+// ("Hammered: The Iron Druid Chronicles, Book 3" and "Hammered" both reduce to
+// "Hammered" against that series), which is the whole calibration this class was
+// built on, while the pairs above agree under neither.
+//
+// It compares CompareKey(Clean(...)) rather than IdentityTitleKey, so a residual that
+// carries no identity of its own is compared as the string it is: internal/audit keys
+// those groups by their series as well ("La Guerra de los Cielos: Volumen 2" twice,
+// where the residual is "Volumen 2"), and a rule reading IdentityTitleKey would see
+// two empty keys and call a correct cluster a disagreement.
+//
+// Equal names are the short circuit and the reason this is not simply a second key:
+// when both sides were read against the same name, one strip was applied to both and
+// the caller's own key equality has already said everything this could.
+//
+// MEASURED over the 279k-work tree, against the 1,393 non-advisory merge-works
+// proposals the audit made: 8 clusters fail it. Five are wrong merges - the two pairs
+// above, "NPR American Chronicles: The Civil War" against "World War II", "Sherlock
+// Holmes: Gods of War" against "The Devil's Dust", and "Edgar Allan Poe -
+// Kurzbiografie kompakt" against "George Washington -" the same. Three are correct
+// merges it withholds, all of them a series with TWO names: D.M. Cornish's trilogy is
+// "Monster Blood Tattoo" in one market and "The Foundling's Tale" in another
+// (Lamplighter and Factotum, one narrator, runtimes 963/964 and 1029/1029), and M.D.
+// Massey's "THEM: Incursion" is also sold as "Incursion: Vampire Apocalypse (THEM
+// Post-Apocalyptic Series, Book 2)". Those three stay in the report as advisory
+// clusters for a human to merge by hand, which is the direction this project takes
+// every time: a withheld merge is re-findable, a wrong one deletes a record.
+//
+// ITS ONE CALLER IS THE MERGE PATH, deliberately. The rule lives here, at the leaf
+// beside the key it qualifies, so any consumer that needs it reads one sentence rather
+// than a second spelling - but pkg/check's pairwise predicate does not ask it, because
+// the same measurement in the census direction cost 58 groups to gain 3 and about half
+// of what it removed was a real duplicate whose PREVENTION the two writer gates rest
+// on (see the note on check.matches). A refusal is recoverable, a deletion is not, and
+// this rule is priced for the side that deletes.
+func SameTitleUnderCommonSeries(titleA, seriesA, titleB, seriesB string) bool {
+	if seriesA == seriesB {
+		return true
+	}
+	for _, s := range [2]string{seriesA, seriesB} {
+		a, b := CompareKey(Clean(titleA, s)), CompareKey(Clean(titleB, s))
+		if a != "" && a == b {
+			return true
+		}
+	}
+	return false
+}
+
 // SeriesNameFor picks the series name a work's title is read against, out of the
 // names of the series it belongs to: the one the title actually SPELLS OUT if there
 // is one, else the first of the list.

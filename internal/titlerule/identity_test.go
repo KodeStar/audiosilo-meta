@@ -287,28 +287,28 @@ func TestStripDecorationRefusals(t *testing.T) {
 		refusal       string
 	}{
 		{
-			name: "an edition marker strips safely",
+			name:  "an edition marker strips safely",
 			title: "Two Ravens (Unabridged)", want: "Two Ravens",
 		},
 		{
-			name: "a series-and-volume tail strips safely",
+			name:  "a series-and-volume tail strips safely",
 			title: "Hammered: The Iron Druid Chronicles, Book 3", series: "The Iron Druid Chronicles",
 			want: "Hammered",
 		},
 		{
-			name: "an undecorated title has nothing to strip",
+			name:  "an undecorated title has nothing to strip",
 			title: "Hounded", refusal: RefuseNothingToStrip,
 		},
 		{
-			name: "a residual that names no book is refused",
+			name:  "a residual that names no book is refused",
 			title: "Omnibus: A LitRPG Adventure", refusal: RefuseNoIdentity,
 		},
 		{
-			name: "a residual that reads as a fragment is refused",
+			name:  "a residual that reads as a fragment is refused",
 			title: "and the Great Escape: A Dark Fantasy Adventure", refusal: RefuseFragment,
 		},
 		{
-			name: "a title that IS its series' name is left alone",
+			name:  "a title that IS its series' name is left alone",
 			title: "The Iron Druid Chronicles", series: "The Iron Druid Chronicles",
 			refusal: RefuseIsSeriesName,
 		},
@@ -344,6 +344,95 @@ func TestProposeTitleAgreesWithStripDecoration(t *testing.T) {
 		if got != want || ok != wantOK {
 			t.Errorf("ProposeTitle(%q) = (%q, %v), StripDecoration says (%q, %v)", title, got, ok, want, wantOK)
 		}
+	}
+}
+
+// SameTitleUnderCommonSeries is the soundness condition on a key equality reached by
+// shedding a DIFFERENT series name on each side. Every FALSE case here is a merge a
+// live wave proposed non-advisory; every TRUE case is a merge that must keep working,
+// which is what makes the rule the weakest one that separates them.
+func TestSameTitleUnderCommonSeries(t *testing.T) {
+	cases := []struct {
+		name         string
+		titleA, serA string
+		titleB, serB string
+		same         bool
+	}{
+		{
+			// The two wrong merges that made this rule. Both shed their LEADING segment -
+			// the subject the title is about - and meet on the publisher's template.
+			name:   "a template residual left by two different subjects",
+			titleA: "Cold War: A History from Beginning to End", serA: "Cold War",
+			titleB: "The Hundred Years War: A History from Beginning to End", serB: "The Hundred Years War",
+		},
+		{
+			name:   "the same template in German",
+			titleA: "Edgar Allan Poe - Kurzbiografie kompakt", serA: "Edgar Allan Poe",
+			titleB: "George Washington - Kurzbiografie kompakt", serB: "George Washington",
+		},
+		{
+			// And the TRAILING half of the shape: the volume is what was shed, so what is
+			// left is the imprint two different books share.
+			name:   "a shared imprint left by two different volumes",
+			titleA: "Ladybird Audio Adventures: Outer Space", serA: "Outer Space",
+			titleB: "Ladybird Audio Adventures: The Frozen World", serB: "The Frozen World",
+		},
+		{
+			name:   "two different novels under one detective's name",
+			titleA: "Sherlock Holmes: Gods of War", serA: "Gods of War",
+			titleB: "Sherlock Holmes: The Devil's Dust", serB: "Devil's Dust",
+		},
+		{
+			// THE CALIBRATION PAIR. One side sheds a series-and-volume tail and the other
+			// sheds nothing, and they agree under the decorated side's own name - which is
+			// the whole duplicate class this key exists to find.
+			name:   "a decorated title and its plain twin",
+			titleA: "Hammered: The Iron Druid Chronicles, Book 3", serA: "The Iron Druid Chronicles",
+			titleB: "Hammered", serB: "",
+			same: true,
+		},
+		{
+			// The LEADING strip working correctly: the residual is the book's own title.
+			name:   "a leading series segment over a title that carries identity",
+			titleA: "The Last Apprentice: Curse of the Bane", serA: "The Last Apprentice",
+			titleB: "Curse of the Bane", serB: "The Last Apprentice",
+			same: true,
+		},
+		{
+			// Equal names are the short circuit: one strip applied to both, so the
+			// caller's own key equality has already said everything this could - including
+			// for a residual that carries no identity of its own, which internal/audit
+			// keys by its series as well.
+			name:   "one series name, an identity-less residual",
+			titleA: "La Guerra de los Cielos: Volumen 2 [The War of the Skies]", serA: "La Guerra de los Cielos",
+			titleB: "La Guerra de los Cielos: Volumen 2 [War in the Heavens, Vol. 2]", serB: "La Guerra de los Cielos",
+			same: true,
+		},
+		{
+			// Neither side was read against a name at all, which is the same short
+			// circuit: there was no strip to disagree about.
+			name:   "no series name on either side",
+			titleA: "Inferno", serA: "", titleB: "Inferno (Unabridged)", serB: "",
+			same: true,
+		},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			if got := SameTitleUnderCommonSeries(c.titleA, c.serA, c.titleB, c.serB); got != c.same {
+				t.Errorf("SameTitleUnderCommonSeries(%q/%q, %q/%q) = %v, want %v",
+					c.titleA, c.serA, c.titleB, c.serB, got, c.same)
+			}
+			// Symmetric: which side a caller passes first is not evidence.
+			if got := SameTitleUnderCommonSeries(c.titleB, c.serB, c.titleA, c.serA); got != c.same {
+				t.Errorf("reversed = %v, want %v", got, c.same)
+			}
+			// And the pair really does meet on the key, or the rule would be judging a
+			// comparison nobody makes.
+			ka, kb := CompareKey(Clean(c.titleA, c.serA)), CompareKey(Clean(c.titleB, c.serB))
+			if ka == "" || ka != kb {
+				t.Fatalf("keys %q and %q do not meet: this case tests nothing", ka, kb)
+			}
+		})
 	}
 }
 
