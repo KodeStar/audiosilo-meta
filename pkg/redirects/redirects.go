@@ -10,13 +10,14 @@
 // here validates against the catalogue: this package knows the file, not the
 // database.
 //
-// NOTHING IN THIS REPOSITORY CALLS Add YET, and that is deliberate rather than an
-// omission. The intended producer is the duplicate-merge repair tooling this
-// mechanism was built ahead of: retiring a slug without a tombstone is what had to
-// be made impossible before any such pass runs. The one repair that has already
-// run, internal/remediate's GraphicAudio fold, predates the mechanism and was not
-// retrofitted - it is a documented one-off that has done its work, so rewriting
-// it would change nothing on disk.
+// ITS ONE CALLER is internal/repair, the duplicate-merge pass this mechanism was
+// built ahead of: retiring a slug without a tombstone is what had to be made
+// impossible before any such pass ran, and every slug a merge retires is recorded
+// here in the same change. The chain collapse is what that caller actually needs -
+// waves land over each other, so today's target is tomorrow's source. The one
+// repair that predates the mechanism, internal/remediate's GraphicAudio fold, was
+// not retrofitted - it is a documented one-off that has done its work, so
+// rewriting it would change nothing on disk.
 //
 // TWO GAPS ARE KNOWN AND DELIBERATELY LEFT OPEN, recorded here so neither is
 // rediscovered as a surprise:

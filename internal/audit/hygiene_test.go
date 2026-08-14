@@ -156,7 +156,7 @@ func TestRefSidecarFlagsASidecarOnADuplicateWork(t *testing.T) {
 	rep := runFixture(t, fixture(t, map[string]string{
 		"works/ha/hammered/work.json":                    workJSON(t, "hammered", "Hammered"),
 		"works/ha/hammered/recordings/luke.json":         recJSON(t, "luke", "hammered"),
-		"works/ha/hammered/characters.json":              charactersJSON(t, "hammered"),
+		"works/ha/hammered/characters.json":              charactersJSON(t, "hammered", "someone"),
 		"works/ha/hammered-book-3/work.json":             workJSON(t, "hammered-book-3", "Hammered: The Druid Tales, Book 3"),
 		"works/ha/hammered-book-3/recordings/chris.json": recJSON(t, "chris", "hammered-book-3"),
 		"series/dr/druid-tales.json":                     seriesJSON(t, "druid-tales", "The Druid Tales", "hammered@3"),
@@ -184,7 +184,7 @@ func TestRefSidecarIsSilentWhenTheWorkIsUnambiguous(t *testing.T) {
 	rep := runFixture(t, fixture(t, map[string]string{
 		"works/ha/hammered/work.json":            workJSON(t, "hammered", "Hammered"),
 		"works/ha/hammered/recordings/luke.json": recJSON(t, "luke", "hammered"),
-		"works/ha/hammered/characters.json":      charactersJSON(t, "hammered"),
+		"works/ha/hammered/characters.json":      charactersJSON(t, "hammered", "someone"),
 	}))
 	if got := classOf(t, rep, ClassRefSidecar); len(got) != 0 {
 		t.Errorf("an unambiguous sidecar was flagged: %+v", got)
@@ -195,7 +195,7 @@ func TestRefSidecarReportsAnOrphanSidecar(t *testing.T) {
 	rep, res := runFixtureAllowingProblems(t, fixture(t, map[string]string{
 		"works/ha/hammered/work.json":            workJSON(t, "hammered", "Hammered"),
 		"works/ha/hammered/recordings/luke.json": recJSON(t, "luke", "hammered"),
-		"works/gh/ghost-work/characters.json":    charactersJSON(t, "ghost-work"),
+		"works/gh/ghost-work/characters.json":    charactersJSON(t, "ghost-work", "someone"),
 	}))
 	if len(res.Problems) == 0 {
 		t.Fatal("an orphan sidecar was supposed to fail validation")

@@ -191,7 +191,7 @@ func TestRefusedDuplicateWritesAConflictRow(t *testing.T) {
 	want := Conflict{
 		Run: "create", ASIN: "B0DECOR002", Work: "hammered", Recording: "",
 		Field: "work_identity", Recorded: "Hammered",
-		Stated: "Hammered: The Iron Druid Chronicles, Book 3",
+		Stated:     "Hammered: The Iron Druid Chronicles, Book 3",
 		SourceType: "libex-import", DetectedAt: testImportDate,
 	}
 	if got != want {

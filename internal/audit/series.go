@@ -132,7 +132,7 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 				}
 				f.add(fd)
 			}
-			if lo, hi, isRange := rangeBounds(sw.Position); isRange && lo >= hi {
+			if lo, hi, isRange := importer.PositionRange(sw.Position); isRange && lo >= hi {
 				fd := member(sMalformed)
 				fd.Propose = Proposal{
 					Op: OpRestatePosition, Target: sw.Work, Series: s.ID, Field: "position", From: sw.Position,
@@ -169,7 +169,7 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 
 		// A work announcing itself as an omnibus while sitting on a single slot.
 		if omnibusTitle.MatchString(w.Title) {
-			if _, _, isRange := rangeBounds(sw.Position); !isRange {
+			if _, _, isRange := importer.PositionRange(sw.Position); !isRange {
 				fd := member(sOmnibusSlot)
 				fd.Propose = Proposal{
 					Op: OpRestatePosition, Target: sw.Work, Series: s.ID, Field: "position", From: sw.Position,
@@ -220,23 +220,6 @@ func sortedMembers(ws []model.SeriesWork) []model.SeriesWork {
 		return out[i].Position < out[j].Position
 	})
 	return out
-}
-
-// rangeBounds parses an omnibus range position. isRange is false for a plain
-// number, which is not a range rather than a malformed one.
-//
-// Acceptance goes through the rule of record FIRST (importer.NormalizeSequence),
-// which is what makes "1 - 3" a range here: reading the raw string for a hyphen
-// found none at a canonical offset, so 104 real whitespace-spelled ranges were
-// judged as single slots - and an omnibus on a "single slot" is a finding this very
-// function feeds.
-func rangeBounds(pos string) (lo, hi float64, isRange bool) {
-	norm, ok := importer.NormalizeSequence(pos)
-	if !ok || !strings.Contains(norm, "-") {
-		return 0, 0, false
-	}
-	lo, hi, ok = model.ParsePositionRange(norm)
-	return lo, hi, ok
 }
 
 // integerGaps returns the missing integer positions of a series, and the highest

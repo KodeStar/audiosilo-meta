@@ -2,8 +2,9 @@ package audit
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/internal/reportdir"
 )
 
 // opPhrase is what each op DOES, in words, as a sentence opener. The prose a report
@@ -104,12 +105,6 @@ var classDoc = map[string]string{
 // on purpose: the NDJSON file is the data, the summary is the orientation.
 const sampleCount = 3
 
-// row is one line of a summary table: a label and a count.
-type row struct {
-	label string
-	n     int
-}
-
 // summary renders SUMMARY.md. It carries NO timestamp and no absolute path, so
 // two runs over one tree produce identical bytes.
 func summary(rep *Report) string {
@@ -122,23 +117,23 @@ func summary(rep *Report) string {
 	b.WriteString("same proposal rendered in words - neither is a change that was made.\n\n")
 
 	b.WriteString("## Catalogue\n\n")
-	writeTable(&b, "entity", []row{
-		{"works", rep.Totals.Works},
-		{"recordings", rep.Totals.Recordings},
-		{"people", rep.Totals.People},
-		{"series", rep.Totals.Series},
-		{"characters sidecars", rep.Totals.Characters},
-		{"recaps sidecars", rep.Totals.Recaps},
+	reportdir.Table(&b, "entity", []reportdir.Row{
+		{Label: "works", N: rep.Totals.Works},
+		{Label: "recordings", N: rep.Totals.Recordings},
+		{Label: "people", N: rep.Totals.People},
+		{Label: "series", N: rep.Totals.Series},
+		{Label: "characters sidecars", N: rep.Totals.Characters},
+		{Label: "recaps sidecars", N: rep.Totals.Recaps},
 	})
 	fmt.Fprintf(&b, "\nLoader (`pkg/check`): %s, %s.\n\n",
 		joinCount(rep.LoaderProblems, "problem"), joinCount(rep.LoaderWarnings, "warning"))
 
 	b.WriteString("## Findings per class\n\n")
-	classRows := make([]row, 0, len(classOrder))
+	classRows := make([]reportdir.Row, 0, len(classOrder))
 	for _, class := range classOrder {
-		classRows = append(classRows, row{class, rep.class(class).total()})
+		classRows = append(classRows, reportdir.Row{Label: class, N: rep.class(class).total()})
 	}
-	writeTable(&b, "class", classRows)
+	reportdir.Table(&b, "class", classRows)
 	b.WriteString("\n")
 
 	for _, class := range classOrder {
@@ -148,29 +143,21 @@ func summary(rep *Report) string {
 			b.WriteString("No findings.\n\n")
 			continue
 		}
-		subRows := make([]row, 0, 8)
+		subRows := make([]reportdir.Row, 0, 8)
 		for _, sc := range c.counts() {
 			name := sc.Subclass
 			if name == "" {
 				name = "(none)"
 			}
-			subRows = append(subRows, row{name, sc.Count})
+			subRows = append(subRows, reportdir.Row{Label: name, N: sc.Count})
 		}
-		writeTable(&b, "subclass", subRows)
+		reportdir.Table(&b, "subclass", subRows)
 		b.WriteString("\n")
 		writeSamples(&b, c)
 	}
 
 	writeCountOnly(&b, rep)
 	return b.String()
-}
-
-// writeTable renders a two-column markdown table with a right-aligned count.
-func writeTable(b *strings.Builder, head string, rows []row) {
-	fmt.Fprintf(b, "| %s | count |\n|---|---:|\n", head)
-	for _, r := range rows {
-		fmt.Fprintf(b, "| %s | %s |\n", r.label, comma(r.n))
-	}
 }
 
 // writeSamples prints the first records of each subclass, in the file's own
@@ -283,29 +270,15 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	b.WriteString("the whole finding. The `added_at` split is documented and expected: a plain `YYYY-MM-DD`\n")
 	b.WriteString("date is what the importer and the intake bot stamp at creation, and a full RFC 3339\n")
 	b.WriteString("timestamp is what the storage migration's one-time git-history backfill wrote.\n\n")
-	writeTable(b, "measure", []row{
-		{"works with `added_at` as a date", st.Works.Date},
-		{"works with `added_at` as an RFC 3339 timestamp", st.Works.Stamp},
-		{"works with no `added_at`", st.Works.None},
-		{"recordings with `added_at` as a date", st.Recordings.Date},
-		{"recordings with `added_at` as an RFC 3339 timestamp", st.Recordings.Stamp},
-		{"recordings with no `added_at`", st.Recordings.None},
-		{"recordings with no runtime", st.RecordingsNoRun},
-		{"chapters across all recordings", st.Chapters},
+	reportdir.Table(b, "measure", []reportdir.Row{
+		{Label: "works with `added_at` as a date", N: st.Works.Date},
+		{Label: "works with `added_at` as an RFC 3339 timestamp", N: st.Works.Stamp},
+		{Label: "works with no `added_at`", N: st.Works.None},
+		{Label: "recordings with `added_at` as a date", N: st.Recordings.Date},
+		{Label: "recordings with `added_at` as an RFC 3339 timestamp", N: st.Recordings.Stamp},
+		{Label: "recordings with no `added_at`", N: st.Recordings.None},
+		{Label: "recordings with no runtime", N: st.RecordingsNoRun},
+		{Label: "chapters across all recordings", N: st.Chapters},
 	})
 	b.WriteString("\n")
-}
-
-// comma renders a non-negative integer with thousands separators, so a six-figure
-// count is readable in a table. Every count it is given is a length or a tally.
-func comma(n int) string {
-	s := strconv.Itoa(n)
-	var out []byte
-	for i := 0; i < len(s); i++ {
-		if i > 0 && (len(s)-i)%3 == 0 {
-			out = append(out, ',')
-		}
-		out = append(out, s[i])
-	}
-	return string(out)
 }

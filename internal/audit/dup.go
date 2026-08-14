@@ -434,7 +434,51 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoDecoratedTarget(ix, members, canon); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoUnaddressableTitle(members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoUnexplainedRuntimeGap(members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoSlugOrdinal(members); ok {
+		out = append(out, s)
+	}
 	return out
+}
+
+// vetoUnaddressableTitle: the cluster meets only on a comparison key that has no
+// identity in it, and the members' cleaned titles are not even the same string.
+//
+// It was found by RUNNING the repair pass over the real tree, which is the only place it
+// shows. The cluster key is titlerule.CompareKey, which folds away everything that is not
+// ASCII alphanumeric, so two different Russian novels by one pair of authors - "Грани
+// безумия. Том 1" and "Клинком и сердцем, Том 1" - both reduce to the key "1" and were
+// proposed for merge with every other veto clear. The same fold is what makes an
+// unaddressable name a refusal in the importer (getOrCreateSeries) and in the libex credit
+// gate: a string this project's identity rules keep nothing of cannot be evidence that two
+// records are one book.
+//
+// It is narrow, and measured over the 279k-work tree: it fires only when NO member's
+// cleaned title CarriesIdentity and the cleaned titles differ as strings, which is 2 of
+// the 1,846 non-advisory merge-works proposals - both of them the shape above. The
+// legitimate members of the same regime ("1984" against "1984", "22/11/63" against
+// "22/11/63", "1177 B.C" against "1177 B.C") state IDENTICAL cleaned titles and keep
+// their merge.
+func vetoUnaddressableTitle(members []dupMember) (string, bool) {
+	for _, m := range members {
+		if titlerule.CarriesIdentity(m.wk.cleaned) {
+			return "", false
+		}
+	}
+	first := members[0]
+	for _, m := range members[1:] {
+		if m.wk.cleaned != first.wk.cleaned {
+			return fmt.Sprintf("%s cleans to %q and %s to %q, and neither names a book a rule can identify: they meet on a "+
+				"comparison key that folds away everything non-ASCII, which is two different books meeting on a number",
+				first.work.ID, first.wk.cleaned, m.work.ID, m.wk.cleaned), true
+		}
+	}
+	return "", false
 }
 
 // vetoPositionConflict: two members hold DIFFERENT positions in one series, so the
@@ -603,22 +647,41 @@ func dupViaNote(members []dupMember) string {
 	return "cleaned via " + truncateList(sortedUnique(vias), 8)
 }
 
-// statedVolumes returns the volume numbers the cluster's own TITLES spell out, and
-// whether two of them disagree. A member stating no number is not a disagreement:
-// "Hammered" beside "Hammered: The Iron Druid Chronicles, Book 3" is the pair the
-// class exists to find.
+// statedVolumes returns the volume numbers the cluster's own TITLES spell out, and whether
+// two members CONTRADICT each other about one.
+//
+// The contradiction is titlerule.SameStatedVolume's, not this package's: that rule reads the
+// primary number a title states (StatedVolume, which knows the division-class ordinals -
+// season, level, lesson, unit, year - and roman numerals that BareSeq does not) AND the whole
+// SEQUENCE of division markers a title nests, which is what separates "Level 1 Lessons 1-5"
+// from "Level 1 Lessons 6-10" - 36 units of one Pimsleur course whose first stated number is
+// identical. Consuming it here is the resolution of the three-layer TODO this function
+// carried: a number a title states, a number a slug preserves (vetoSlugOrdinal) and the
+// division sequence are now read by ONE vocabulary rather than three.
+//
+// A member stating no number is not a disagreement: "Hammered" beside "Hammered: The Iron
+// Druid Chronicles, Book 3" is the pair the class exists to find.
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {
+	for i := range members {
+		a := members[i].work
+		for j := i + 1; j < len(members); j++ {
+			b := members[j].work
+			if !titlerule.SameStatedVolume(a.Title, ix.derived(a).seriesName, b.Title, ix.derived(b).seriesName) {
+				conflict = true
+			}
+		}
+	}
+	if !conflict {
+		return nil, false
+	}
 	byNum := map[string][]string{}
 	for _, m := range members {
 		d := ix.derived(m.work)
-		if !d.hasSeq {
+		if !d.hasStatedSeq {
 			continue
 		}
-		k := formatSeq(d.seq)
+		k := formatSeq(d.statedSeq)
 		byNum[k] = append(byNum[k], m.work.ID)
-	}
-	if len(byNum) < 2 {
-		return nil, false
 	}
 	for k, ids := range byNum {
 		vols = append(vols, k+" ("+truncateList(sortedUnique(ids), 3)+")")
