@@ -63,6 +63,29 @@ import (
 // not. So a collision here is a duplicate CANDIDATE, and every caller pairs it with
 // the author-set, language, stated-volume and collection rules before it acts.
 // A residual that IS ITS NUMBERS is the one exception - see numericIdentity.
+//
+// IT DELIBERATELY DOES NOT READ THE PROPOSAL'S FRAGMENT TEST
+// (hasDanglingConnective), and both arms of that decision are measured over the
+// 279k-work tree. A residual that reads as a fragment makes a poor TITLE to WRITE and
+// a perfectly discriminating KEY:
+//
+//   - its EDGE arms (a leading joining word, a trailing stopword) cost 8 correct merge
+//     proposals for no false one - "At the Mountains of Madness [Blackstone Edition]",
+//     "By Royal Command", "E-Day [Dramatized Adaptation]", "All In, Book 3", each of
+//     which collides with nothing but its own undecorated twin;
+//   - its INTERIOR arm (two function words abutting - the scar a removal from the
+//     MIDDLE of a title leaves, "The Best of for Short Stay Travel") was tried here and
+//     withdrawn. It prevented ZERO wrong merges: the boundary anchoring in Clean is
+//     what stops that residual being produced at all, and nothing else on the tree
+//     produced one. What it cost was measurable in three places - one correct cluster
+//     (the "(Dramatised)" twin of "The Spy Who Came in from the Cold"), three correct
+//     retitles and one census group - and, worse, it silently emptied the key of ~198
+//     works whose titles simply ABUT two function words: "To Have and to Hold", "In
+//     Sickness and in Health", "For Better or for Worse", "Snowed in with the Tycoon",
+//     "Murder in E Minor", eleven volumes of "Girls from da Hood". An empty key is read
+//     by the intake gate and the importer's create guard as "no identity to collide
+//     with", so those works lost their duplicate PREVENTION - the very defect class
+//     this key exists to close, in the one direction a repair wave cannot undo.
 func IdentityTitleKey(title, series string) string {
 	cleaned := Clean(title, series)
 	if !CarriesIdentity(cleaned) && !numericIdentity(cleaned) {

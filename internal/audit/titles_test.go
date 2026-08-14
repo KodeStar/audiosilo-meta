@@ -313,7 +313,10 @@ func TestSeriesNameIndexDropsAnAmbiguousSpelling(t *testing.T) {
 func TestAuditCleanTitleDropsADanglingTail(t *testing.T) {
 	cases := []struct{ title, series, want string }{
 		{"Hammered: The Iron Druid Chronicles, Book 3", "Iron Druid Chronicles", "Hammered"},
-		{"Two Tales of the Iron Druid Chronicles", "Iron Druid Chronicles", "Two Tales"},
+		// The series name is removed at a BOUNDARY only, so one spelled mid-sentence
+		// stays: the excision that produced "Two Tales" here is the mechanism that
+		// merged two different travel guides - see titlerule.Clean.
+		{"Two Tales of the Iron Druid Chronicles", "Iron Druid Chronicles", "Two Tales of the Iron Druid Chronicles"},
 		{"Star Wars: A New Hope", "", "Star Wars: A New Hope"},
 		{"The One and Only", "", "The One and Only"},
 	}

@@ -156,15 +156,38 @@ func dropWideGenreSubtitle(s string) string {
 	return peel(s, func(t string) string { return dropFluffSubtitle(t, wideGenreFluff) })
 }
 
-// Clean is the cleaned title: the wide genre-subtitle drop, then the server's
-// CleanTitle against series (which strips the series name, volume markers, edition
-// markers and the narrow fluff, and falls back rather than emptying the title),
-// then the stray-bracket and dangling-segment sweeps.
+// Clean is the cleaned title: the wide genre-subtitle drop, the series name removed
+// AT A TITLE BOUNDARY, then the server's CleanTitle against NO series (volume
+// markers, edition markers, bracketed groups and the narrow fluff, falling back
+// rather than emptying the title), then the stray-bracket and dangling-segment
+// sweeps.
 //
 // series may be "" - a work with no membership and no series name embedded in its
 // title still gets its markers and fluff removed.
+//
+// THE SERIES REMOVAL IS BOUNDARY-ANCHORED, through the very rule the retitle
+// proposal uses (stripSeriesAtBoundary): a whole leading segment, a whole trailing
+// segment or a whole bracketed group, never an excision from the middle. It used to
+// excise EVERY occurrence anywhere (the copied stripSeries, reached through
+// CleanTitle), and the proposal side was anchored on its own - which left the
+// comparison KEY carrying the defect the proposal had been fixed for:
+//
+//	"New Orleans: The Best of New Orleans for Short Stay Travel"  -> "The Best of for Short Stay Travel"
+//	"New York: The Best of New York for Short Stay Travel"        -> "The Best of for Short Stay Travel"
+//
+// Two different travel guides, two different narrators, one key - and a live repair
+// wave proposed the merge non-advisory. The mechanism is the one measured at a 55%
+// wrong rate on the proposal side ("More Than Words" -> "Words"), so the key inherits
+// the same anchoring rather than a second spelling of it. What the anchoring costs is
+// a MISSED duplicate: a title spelling its series mid-sentence ("Two Tales of the
+// Iron Druid Chronicles") no longer meets the plain twin it decorates. That is the
+// right way round - a refused cluster is re-findable, a wrong merge deletes a record.
 func Clean(title, series string) string {
-	s := CleanTitle(dropWideGenreSubtitle(title), series)
+	s := dropWideGenreSubtitle(title)
+	if series != "" {
+		s = stripSeriesAtBoundary(s, SeriesForms(series))
+	}
+	s = CleanTitle(s, "")
 	s = dropStrayBrackets(s)
 	s = collapseSeparatorRuns(s)
 	s = peel(s, dropDanglingHeadOnce)
@@ -173,9 +196,11 @@ func Clean(title, series string) string {
 }
 
 // separatorRun matches two subtitle separators with nothing but whitespace between
-// them - an EMPTY segment, which is what removing a series name from between two of
-// them leaves ("A Murder of Crows: Shadows and Ash, Book Two" against that series
-// reduces to "A Murder of Crows: , Book Two").
+// them - an EMPTY segment, which is what removing a VOLUME MARKER from between two of
+// them leaves ("A Murder of Crows: Book 2, Shadows" reduces to "A Murder of Crows: ,
+// Shadows"). It used to be the series strip that produced this shape as well; that
+// strip is boundary-anchored now, so a series name between two separators is removed
+// with its whole segment (see Clean).
 //
 // The dangling-segment peels cannot fix it: the segment they would judge is the one
 // AFTER the run, which here holds a real word.
@@ -868,8 +893,17 @@ var danglingLead = map[string]bool{
 // with a joining word, ends with any stopword or joining word, or holds a doubled
 // function word ("The the Wandering Trader", the shape a stripped series name leaves
 // when the title spelled its article too).
+//
+// The words are the ASCII-FOLDED ones (identityWords), not a raw ASCII split. notAlnum
+// is ASCII-only, so splitting the raw text cut every accented word in half and left the
+// half as a token: "Breve historia de la astronomía" ended in "a", read as a stranded
+// article, and the whole Spanish catalogue therefore looked like fragments. Folding is
+// what every other vocabulary test in this file already does.
+//
+// It is a PROPOSAL-side test only, and deliberately not read by the comparison key -
+// see IdentityTitleKey, which measures what applying any arm of it would cost.
 func hasDanglingConnective(s string) bool {
-	ws := strings.FieldsFunc(strings.ToLower(s), notAlnum)
+	ws := identityWords(s)
 	if len(ws) == 0 {
 		return true
 	}

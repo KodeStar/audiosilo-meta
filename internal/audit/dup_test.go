@@ -56,10 +56,50 @@ func TestWorkDupFindsAGenreSubtitleVariant(t *testing.T) {
 	if want := []string{"seeds-omnibus", "seeds-omnibus-gamelit"}; !reflect.DeepEqual(workIDs(got[0]), want) {
 		t.Errorf("cluster = %v, want %v", workIDs(got[0]), want)
 	}
-	// A residual of "Omnibus" alone names no book, so the key carries the series -
-	// which is what keeps two DIFFERENT omnibuses by one author apart.
-	if !strings.Contains(got[0].Key, "seeds-of-chaos") {
-		t.Errorf("key = %q, want the series folded into it", got[0].Key)
+	// The key is the cleaned title's own. The series name is NOT excised from the
+	// middle of a title any more (titlerule.Clean is boundary-anchored), so the
+	// residual is "Seeds of Chaos Omnibus" rather than the bare "Omnibus" that named
+	// no book and had to be keyed by its series to stay apart from other omnibuses -
+	// see TestWorkDupKeepsTwoOmnibusesOfDifferentSeriesApart, which now holds on the
+	// titles alone.
+	if !strings.Contains(got[0].Key, "seedsofchaosomnibus") {
+		t.Errorf("key = %q, want the cleaned title's own key", got[0].Key)
+	}
+}
+
+// THE FALSE MERGE THIS CLASS MADE, pinned as a fixture: two travel guides to two
+// different cities, by one author, each naming a catalogued series in its own title.
+// The clustering key excised EVERY occurrence of the matched series name, so both
+// reduced to "The Best of for Short Stay Travel" - one key, and a repair wave proposed
+// the merge NON-ADVISORY. The strip is anchored to a title boundary now
+// (titlerule.Clean), so the leading "New Orleans: " segment comes off and the city the
+// book is about stays in the key.
+func TestWorkDupDoesNotClusterTwoCitiesOfOneGuideSeries(t *testing.T) {
+	rep := runFixture(t, map[string]string{
+		"works/ne/new-orleans-guide/work.json": workJSON(t, "new-orleans-guide",
+			"New Orleans: The Best of New Orleans for Short Stay Travel"),
+		"works/ne/new-orleans-guide/recordings/sangita-2018.json": recJSON(t, "sangita-2018", "new-orleans-guide",
+			withNarrators("sangita-chauhan"), withRuntime(95)),
+		"works/ne/new-york-guide/work.json": workJSON(t, "new-york-guide",
+			"New York: The Best of New York for Short Stay Travel"),
+		"works/ne/new-york-guide/recordings/gina-2018.json": recJSON(t, "gina-2018", "new-york-guide",
+			withNarrators("gina-stack"), withRuntime(67)),
+		// The two series whose names the titles spell out. Neither guide is a member -
+		// the derivation reads the name off the TITLE, which is the weaker claim and
+		// the one the excision was applied to.
+		"works/qu/quarter-to-midnight/work.json":         workJSON(t, "quarter-to-midnight", "Quarter to Midnight"),
+		"works/qu/quarter-to-midnight/recordings/a.json": recJSON(t, "a", "quarter-to-midnight"),
+		"works/at/a-table-for-three/work.json":           workJSON(t, "a-table-for-three", "A Table for Three"),
+		"works/at/a-table-for-three/recordings/b.json":   recJSON(t, "b", "a-table-for-three"),
+		"series/ne/new-orleans.json":                     seriesJSON(t, "new-orleans", "New Orleans", "quarter-to-midnight@1"),
+		"series/ne/new-york.json":                        seriesJSON(t, "new-york", "New York", "a-table-for-three@1"),
+		"people/ja/jane-doe.json":                        personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":                   personJSON(t, "nate-narrator", "Nate Narrator"),
+		"people/sa/sangita-chauhan.json":                 personJSON(t, "sangita-chauhan", "Sangita Chauhan"),
+		"people/gi/gina-stack.json":                      personJSON(t, "gina-stack", "Gina Stack"),
+	})
+	for _, f := range classOf(t, rep, ClassWorkDup) {
+		t.Errorf("two different cities' guides were clustered: %v (key %q, %s)", workIDs(f), f.Key, f.Action)
 	}
 }
 
