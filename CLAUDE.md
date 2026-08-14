@@ -933,7 +933,9 @@ note rather than a closed duplicate.
   envelope changes; see workspace CROSS-REPO.md §17). The "before any ABS facade"
   ordering is now satisfied: the **Audiobookshelf metadata-provider facade**
   (`GET /abs/search`, `internal/serve/abs.go`) has since shipped on top of it.
-- **Libex integration (in progress)**: libex (libex.lostcartographer.xyz, a
+- **Libex integration (in progress)**: libex (libexdb.com - the domain moved
+  off libex.lostcartographer.xyz in 2026-08 and the old host goes dark around
+  2026-11, so every reference here uses the new one; a
   public Audible-metadata mirror, ~1.1M books; scrape/export permitted by its
   developer) becomes a BOUNDED source per LICENSING.md's import posture - never
   a mirror. Landed: the normalized **genres** vocabulary end-to-end (schema

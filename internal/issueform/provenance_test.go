@@ -81,9 +81,9 @@ func TestSplitLibexMarker(t *testing.T) {
 	}{
 		{
 			name:     "site shape",
-			in:       "libex: B015RQON6I\nLibex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-30)",
+			in:       "libex: B015RQON6I\nLibex (libexdb.com) lookup for B015RQON6I (retrieved 2026-07-30)",
 			wantASIN: "B015RQON6I",
-			wantRest: "Libex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-30)",
+			wantRest: "Libex (libexdb.com) lookup for B015RQON6I (retrieved 2026-07-30)",
 		},
 		{
 			name:     "lower-case asin is normalized",
@@ -176,7 +176,7 @@ func composedRecords(t *testing.T, dir string) []string {
 // human-authored remainder still riding as the user entry.
 func TestAddWorkLibexMarkerTypedSource(t *testing.T) {
 	dir := seedTree(t)
-	human := "Libex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-30)"
+	human := "Libex (libexdb.com) lookup for B015RQON6I (retrieved 2026-07-30)"
 	body := addWorkBody("Marked Book", "Mona Author", "en", "Milo Voice", "us: B015RQON6I", "libex: b015rqon6i\n"+human, true)
 	body = strings.Replace(body, field(fWorkSeriesName, ""), field(fWorkSeriesName, "Marked Saga"), 1)
 	body = strings.Replace(body, field(fWorkSeriesPosition, ""), field(fWorkSeriesPosition, "1"), 1)

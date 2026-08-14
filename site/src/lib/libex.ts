@@ -1,4 +1,4 @@
-// Typed client for libex (libex.lostcartographer.xyz) - a public, no-auth
+// Typed client for libex (libexdb.com) - a public, no-auth
 // mirror of Audible's catalogue metadata. It is the lookup assist behind the
 // /add page: when meta.audiosilo.app has no match, the reader searches libex,
 // picks the right edition, and lands on a PREFILLED add-work issue.
@@ -23,15 +23,15 @@
 //     reader's browser. Nothing in this module is called speculatively - a fetch
 //     happens only after the reader types a search or picks a result.
 //
-// The endpoints are documented at https://libex.lostcartographer.xyz/docs.
+// The endpoints are documented at https://libexdb.com/docs.
 
 import { isObject } from './import-parse'
 
 /** The libex origin. Exported so the UI can name and link its source. */
-export const LIBEX_BASE = 'https://libex.lostcartographer.xyz'
+export const LIBEX_BASE = 'https://libexdb.com'
 
 /** The libex host, for the human-readable provenance line and UI copy. */
-export const LIBEX_HOST = 'libex.lostcartographer.xyz'
+export const LIBEX_HOST = 'libexdb.com'
 
 /** How long a libex call may run before it is abandoned. Third-party and
     occasionally cold, so this is generous compared with our own API. */

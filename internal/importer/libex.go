@@ -19,7 +19,7 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// libex.go maps a libex (libex.lostcartographer.xyz) Audible-metadata export
+// libex.go maps a libex (libexdb.com) Audible-metadata export
 // into the same internal sourceBook the OpenAudible and Libation paths produce,
 // so every mapping, dedup, person, and series rule is shared (see
 // openaudible.go / mapping.go / importer.go).

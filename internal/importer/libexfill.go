@@ -40,7 +40,7 @@ import (
 // demand.
 
 // LibexBase is the public libex service the fill pass reads.
-const LibexBase = "https://libex.lostcartographer.xyz"
+const LibexBase = "https://libexdb.com"
 
 // libexFillRowKeys are the fields scripts/libex-export-rows.sql emits, and
 // therefore the shape internal/importer/libex.go parses. A live record is a
