@@ -34,14 +34,18 @@ var probeStopwords = map[string]bool{
 }
 
 // hasIdentifyingToken is the shared cost gate behind worthProbing and
-// worthTitleProbing: s must hold one token that is at least two runes long and
+// worthTitleProbing: s must hold one term that is at least two runes long and
 // in neither junk vocabulary. The two probes differ only in WHICH vocabularies
-// disqualify a token - the series probe passes the volume words as junkB, the
+// disqualify a term - the series probe passes the volume words as junkB, the
 // title probe passes nil (a nil map reads as empty) - so the rule itself is
 // written once.
+//
+// It judges ftsTerms, not whitespace tokens, because those terms are what the
+// MATCH will actually walk: "the-a" is one five-rune whitespace token but two
+// stopword phrases, exactly the probe this gate exists to refuse.
 func hasIdentifyingToken(s string, junkA, junkB map[string]bool) bool {
-	for _, tok := range strings.Fields(s) {
-		k := keywordKey(tok)
+	for _, term := range ftsTerms(s) {
+		k := keywordKey(term)
 		if utf8.RuneCountInString(k) < 2 || junkA[k] || junkB[k] {
 			continue
 		}
@@ -52,15 +56,10 @@ func hasIdentifyingToken(s string, junkA, junkB map[string]bool) bool {
 
 // nameKey normalizes a name (a series name, a residual, or - for the
 // exact-title probe - a work title and the query itself) for whole-name
-// comparison: lowercased, whitespace collapsed, punctuation trimmed off each
-// token.
+// comparison: the lowercased ftsTerms, space-joined. Sharing the retrieval
+// side's rule is what makes the comparison symmetric with it - a query the
+// index matched on its words is compared on the same words, so "Spider-Man" and
+// "Spider Man", or "Halo:Primordium" and "Halo: Primordium", are one name.
 func nameKey(s string) string {
-	fields := strings.Fields(strings.ToLower(s))
-	out := make([]string, 0, len(fields))
-	for _, f := range fields {
-		if f = strings.Trim(f, `.,:;!?'"()[]`); f != "" {
-			out = append(out, f)
-		}
-	}
-	return strings.Join(out, " ")
+	return strings.Join(ftsTerms(strings.ToLower(s)), " ")
 }

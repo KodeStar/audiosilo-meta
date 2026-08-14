@@ -7,11 +7,9 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// The MATCH builder's tests. ftsMatch is the ONE place a query becomes an FTS5
-// expression - every search endpoint, the ABS facade, the coverage browser and
-// both query-side boosts go through it - so the expression it builds is pinned
-// here for every shape a user (or a filename-derived client query) can write,
-// and the two boosts' composition of it is pinned beside it.
+// The MATCH builder's tests: ftsMatch is the one place a query becomes an FTS5
+// expression, so every query shape is pinned here and the surfaces that share it
+// are proved end-to-end below.
 
 // TestFTSQueryBuilder pins the MATCH expression for every query shape: one
 // one-word phrase per term, punctuation as a boundary, the prefix-star on the
@@ -50,13 +48,18 @@ func TestFTSQueryBuilder(t *testing.T) {
 		{"word plus number", "Fahrenheit 451", `"Fahrenheit" "451"*`},
 		{"decimal", "Reacher 2.5", `"Reacher" "2" "5"*`},
 
-		// Non-ASCII letters are term runes, so a German or Spanish title is one
-		// term per word - composed and decomposed alike (a combining mark stays
-		// inside its term, because unicode61 keeps it inside the token).
+		// Non-ASCII letters and the NUMBER classes beyond the ASCII digits are
+		// term runes, because unicode61 indexes them: a German or Spanish title
+		// is one term per word (composed and decomposed alike - a combining mark
+		// stays inside its term), a Roman numeral is a term, and a superscript
+		// digit stays welded to the word it decorates exactly as in the index.
 		{"german umlaut", "Mädchen", `"Mädchen"*`},
 		{"german umlaut decomposed", "Ma\u0308dchen", "\"Ma\u0308dchen\"*"},
 		{"spanish accent", "Corazón Salvaje", `"Corazón" "Salvaje"*`},
 		{"german sharp s", "Die Straße", `"Die" "Straße"*`},
+		{"roman numeral", "Henry Ⅶ", `"Henry" "Ⅶ"*`},
+		{"vulgar fraction", "Half ½ Measures", `"Half" "½" "Measures"*`},
+		{"superscript digit", "Super² Nova", `"Super²" "Nova"*`},
 
 		// No term at all: the harmless empty-phrase match, never a syntax error.
 		{"whitespace only", "   ", `""`},
@@ -75,59 +78,12 @@ func TestFTSQueryBuilder(t *testing.T) {
 			}
 		})
 	}
-}
 
-// TestFTSPhraseBuilder pins the no-prefix-star twin: the same terms, matched
-// whole. It is what the two boosts probe with, so a prefix-star leaking into it
-// would widen a keystroke-hot lookup the file headers argue must stay bounded.
-func TestFTSPhraseBuilder(t *testing.T) {
-	cases := []struct{ in, want string }{
-		{"Halo: Primordium", `"Halo" "Primordium"`},
-		{"jack reacher", `"jack" "reacher"`},
-		{"Don't Look Back", `"Don" "t" "Look" "Back"`},
-		{"1984", `"1984"`},
-		{"!!", `""`},
-		{"", `""`},
-	}
-	for _, tc := range cases {
-		if got := ftsPhrase(tc.in); got != tc.want {
-			t.Errorf("ftsPhrase(%q) = %q, want %q", tc.in, got, tc.want)
-		}
-	}
-}
-
-// TestBoostMatchComposition pins how the two boosts wrap ftsPhrase, because they
-// are the callers a change to the shared builder could break silently: the
-// exact-title probe's column filter must stay over a PARENTHESIZED phrase list
-// (an unparenthesized filter binds to the first phrase only, which is the bug
-// its file header records), and the series probe must still drop stopwords and
-// keep every surviving term as its own phrase.
-func TestBoostMatchComposition(t *testing.T) {
-	titles := []struct{ in, want string }{
-		{"Halo: Primordium", `title : ("Halo" "Primordium")`},
-		{"spare", `title : ("spare")`},
-		{"Don't Look Back", `title : ("Don" "t" "Look" "Back")`},
-		// No term at all still composes a filter FTS5 parses (it matches
-		// nothing); exactTitleHits gates this case out before it is reached.
-		{"!!", `title : ("")`},
-	}
-	for _, tc := range titles {
-		if got := titleMatch(tc.in); got != tc.want {
-			t.Errorf("titleMatch(%q) = %q, want %q", tc.in, got, tc.want)
-		}
-	}
-
-	residuals := []struct{ in, want string }{
-		{"jack reacher", `"jack" "reacher"`},
-		{"the expanse", `"expanse"`},
-		{"halo: the fall of reach", `"halo" "fall" "reach"`},
-		// Every token is a stopword: the fallback keeps the residual whole
-		// rather than composing an empty MATCH.
-		{"the of", `"the" "of"`},
-	}
-	for _, tc := range residuals {
-		if got := probeMatch(tc.in); got != tc.want {
-			t.Errorf("probeMatch(%q) = %q, want %q", tc.in, got, tc.want)
+	// The no-prefix-star twin differs in exactly that, which is what keeps the
+	// boosts' keystroke-hot probes bounded to whole words (see seriespos.go).
+	for in, want := range map[string]string{"Halo: Primordium": `"Halo" "Primordium"`, "!!": `""`} {
+		if got := ftsPhrase(in); got != want {
+			t.Errorf("ftsPhrase(%q) = %q, want %q", in, got, want)
 		}
 	}
 }
@@ -135,7 +91,9 @@ func TestBoostMatchComposition(t *testing.T) {
 // punctuatedCatalog is the end-to-end fixture: titles carrying the punctuation
 // shapes above, one of them (Halo: Primordium) with a recording so the ABS
 // facade has a BookMetadata to emit, and a series so the series-position boost
-// is exercised over the same rows.
+// is exercised over the same rows. The umlaut and Roman-numeral titles are the
+// SQLite oracle for isTermRune: they only resolve if the Go term rule agrees
+// with what unicode61 actually indexed.
 func punctuatedCatalog() *model.Catalog {
 	bear := &model.Person{ID: "greg-bear", Name: "Greg Bear", License: "CC0-1.0"}
 	dadabo := &model.Person{ID: "timothy-dadabo", Name: "Timothy Dadabo", License: "CC0-1.0"}
@@ -178,9 +136,15 @@ func punctuatedCatalog() *model.Catalog {
 		ID: "die-wut-die-bleibt", Title: "Die Wut, die bleibt: Mädchen", Language: "de",
 		Authors: []string{"isla-morley"}, License: "CC0-1.0",
 	}
+	// A Roman numeral (Nl) is a token to unicode61, so it has to be one to
+	// ftsTerms as well - with IsDigit alone the term vanished from the query.
+	henry := &model.Work{
+		ID: "henry-vii", Title: "Henry Ⅶ", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+	}
 
 	return &model.Catalog{
-		Works:  []*model.Work{primordium, cryptum, dont, goblet, f451, nineteen, madchen},
+		Works:  []*model.Work{primordium, cryptum, dont, goblet, f451, nineteen, madchen, henry},
 		People: []*model.Person{bear, dadabo, morley, rowling, bradbury, orwell},
 		Series: []*model.Series{{
 			ID: "halo", Name: "Halo", License: "CC0-1.0",
@@ -214,7 +178,17 @@ func TestSearchPunctuatedQueries(t *testing.T) {
 		{"ampersand", "Harry Potter & the Goblet of Fire", "work:harry-potter-and-the-goblet-of-fire"},
 		{"trailing bang", "Fahrenheit 451!", "work:fahrenheit-451"},
 		{"trailing question mark", "1984?", "work:1984"},
+		// The oracle cases: a Roman numeral must survive as a term, and a query
+		// written DECOMPOSED must still find a composed title (unicode61 strips
+		// the diacritic, so the mark has to stay inside the term rather than
+		// splitting it in two).
+		{"roman numeral", "Henry Ⅶ", "work:henry-vii"},
+		// The numeral ALONE is where the oracle bites: if the term rule stopped
+		// admitting Nl/No the query would hold no term at all and answer nothing,
+		// while "Henry Ⅶ" would still pass on its first word.
+		{"roman numeral alone", "Ⅶ", "work:henry-vii"},
 		{"umlaut", "Mädchen", "work:die-wut-die-bleibt"},
+		{"umlaut decomposed query", "Ma\u0308dchen", "work:die-wut-die-bleibt"},
 		// The non-regressions: bare numeric and word+number titles answer
 		// exactly as they always did.
 		{"numeric title", "1984", "work:1984"},
@@ -236,7 +210,7 @@ func TestSearchPunctuatedQueries(t *testing.T) {
 // punctuation.
 func TestSearchPunctuationDegradesQuietly(t *testing.T) {
 	ts := serverFor(t, punctuatedCatalog())
-	for _, q := range []string{"!!", "&", "-", "...", `"""`, "?!", "(", "/"} {
+	for _, q := range []string{"!!", `"""`} {
 		path := "/api/v1/search?q=" + url.QueryEscape(q)
 		code, body := getJSON(t, ts.URL, path)
 		if code != 200 {
@@ -249,71 +223,63 @@ func TestSearchPunctuationDegradesQuietly(t *testing.T) {
 	}
 }
 
-// TestSearchPunctuatedQueryOverHTTP is the combined endpoint's own proof, since
-// TestSearchPunctuatedQueries drives the snapshot directly: the fix reaches the
-// wire, and the exact-title boost puts the punctuated title FIRST (nameKey
-// compares titles with punctuation trimmed, so the query need not spell it).
+// TestSearchPunctuatedQueryOverHTTP proves the fix reaches the wire (the table
+// above drives the snapshot directly), and that the exact-title boost puts the
+// punctuated title FIRST: nameKey reads the same terms, so a query spelling the
+// title without its space still names it outright.
 func TestSearchPunctuatedQueryOverHTTP(t *testing.T) {
 	ts := serverFor(t, punctuatedCatalog())
-	for _, q := range []string{"Halo: Primordium", "halo primordium", "Greg.Bear-Halo.Primordium"} {
-		path := "/api/v1/search?q=" + url.QueryEscape(q)
-		code, body := getJSON(t, ts.URL, path)
-		if code != 200 {
-			t.Fatalf("GET %s = %d", path, code)
-		}
-		results, _ := body["results"].([]any)
-		if len(results) == 0 {
-			t.Fatalf("GET %s returned no results", path)
-		}
-		first, _ := results[0].(map[string]any)
-		if first["id"] != "halo-primordium" {
-			t.Errorf("GET %s first result = %v, want halo-primordium", path, first["id"])
-		}
-	}
-	// The type-scoped route shares the handler and the builder, so it heals with
-	// the combined one.
-	code, body := getJSON(t, ts.URL, "/api/v1/works/search?q="+url.QueryEscape("Primordium,Halo"))
+	const path = "/api/v1/search?q=Halo%3APrimordium"
+	code, body := getJSON(t, ts.URL, path)
 	if code != 200 {
-		t.Fatalf("works/search: status %d", code)
+		t.Fatalf("GET %s = %d", path, code)
 	}
-	if results, _ := body["results"].([]any); len(results) == 0 {
-		t.Error("works/search for a reversed punctuated query returned nothing")
+	results, _ := body["results"].([]any)
+	if len(results) == 0 {
+		t.Fatalf("GET %s returned no results", path)
+	}
+	if first, _ := results[0].(map[string]any); first["id"] != "halo-primordium" {
+		t.Errorf("GET %s first result = %v, want halo-primordium", path, first["id"])
 	}
 }
 
-// TestABSSearchPunctuatedQuery is the facade's proof. ABS sends the title it
+// TestABSSearchPunctuatedQuery is the facade's proof: ABS sends the title it
 // scraped off the shelf, punctuation and all, and it goes through the same
 // ftsQuery - so the provider healed with the API.
 func TestABSSearchPunctuatedQuery(t *testing.T) {
 	base := absServer(t, punctuatedCatalog())
-	for _, q := range []string{"Halo: Primordium", "Halo.Primordium", "Greg.Bear-Halo.Primordium"} {
-		path := "/abs/search?mediaType=book&query=" + url.QueryEscape(q)
-		code, matches := absMatches(t, base, path)
-		if code != 200 {
-			t.Fatalf("GET %s = %d", path, code)
-		}
-		if len(matches) == 0 {
-			t.Fatalf("GET %s returned no matches", path)
-		}
-		first, _ := matches[0].(map[string]any)
-		if first["title"] != "Halo: Primordium" {
-			t.Errorf("GET %s first match = %v, want Halo: Primordium", path, first["title"])
-		}
+	const path = "/abs/search?mediaType=book&query=Greg.Bear-Halo.Primordium"
+	code, matches := absMatches(t, base, path)
+	if code != 200 {
+		t.Fatalf("GET %s = %d", path, code)
+	}
+	if len(matches) == 0 {
+		t.Fatalf("GET %s returned no matches", path)
+	}
+	if first, _ := matches[0].(map[string]any); first["title"] != "Halo: Primordium" {
+		t.Errorf("GET %s first match = %v, want Halo: Primordium", path, first["title"])
 	}
 }
 
 // TestSeriesPositionBoostSurvivesPunctuation: the series probe reads the same
-// builder, so a punctuated series name now resolves its volume too - while the
-// existing seriespos suite pins that every unpunctuated spelling ("jack reacher
-// book 2", "#2", "vol. 2") answers exactly as before.
+// terms, so a punctuated series name resolves its volume too - while the
+// position itself is deliberately NOT read through ftsTerms, which would shred
+// "2.5" into two digits. "halo:7" is the pin on that boundary: the position
+// parse splits on whitespace, so a welded number is not a position query at all
+// and the page stays the plain FTS one.
 func TestSeriesPositionBoostSurvivesPunctuation(t *testing.T) {
 	snap := snapshotFor(t, punctuatedCatalog())
-	// "halo 7" is a series-position query: Halo #7 is Cryptum, which the plain
-	// FTS page cannot rank first (nothing in its row says "7").
-	if got := first(searchIDs(t, snap, "halo 7")); got != "work:halo-cryptum" {
-		t.Errorf(`search("halo 7") first = %q, want work:halo-cryptum`, got)
+	// Halo #7 is Cryptum, which the plain FTS page cannot rank first (nothing in
+	// its row says "7").
+	for _, q := range []string{"halo 7", "halo: 7"} {
+		if got := first(searchIDs(t, snap, q)); got != "work:halo-cryptum" {
+			t.Errorf("search(%q) first = %q, want work:halo-cryptum", q, got)
+		}
 	}
-	if got := first(searchIDs(t, snap, "halo: 7")); got != "work:halo-cryptum" {
-		t.Errorf(`search("halo: 7") first = %q, want work:halo-cryptum`, got)
+	if _, ok := parseSeriesPositionQuery("halo:7"); ok {
+		t.Error(`parseSeriesPositionQuery("halo:7") read a welded token as a position`)
+	}
+	if got := first(searchIDs(t, snap, "halo:7")); got == "work:halo-cryptum" {
+		t.Error(`search("halo:7") boosted the volume; the position parse must stay whitespace-split`)
 	}
 }

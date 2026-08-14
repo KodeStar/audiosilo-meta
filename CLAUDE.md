@@ -451,21 +451,20 @@ fallback for missed notifications. The workflow reads
 `METASERVE_WEBHOOK_URL` and `METASERVE_WEBHOOK_SECRET` from Actions secrets; if
 either is absent or delivery fails, the data release still succeeds and polling
 catches it later.
-FTS queries are built defensively (`ftsQuery`, over the one `ftsMatch`/`ftsTerms`
-pair every search surface reaches: the query is cut into TERMS - a term is a
-maximal run of letters, digits and combining marks, every other rune is a
-boundary, matching what unicode61 did to the row on the way in - and each term
-becomes its OWN quoted one-word phrase, the last one prefix-starred; a query
-holding no term at all yields the harmless empty-phrase match, never a syntax
-error) so no user input can break the MATCH. Splitting at punctuation is not
-cosmetic: several words inside ONE phrase are an FTS5 ADJACENCY constraint, so
-splitting on whitespace only made punctuation a user writes INSTEAD of a space
-("Greg.Bear-Halo.Primordium", "Primordium,Halo", a filename-derived query)
-demand that those words sit consecutively and in that order inside one column -
-unsatisfiable across the `title`/`names` columns - and the query returned ZERO
-rows for a work the catalogue holds. It costs nothing to walk: a phrase of n
-words and n one-word phrases read the same n posting lists, and the probes' cost
-gates (`worthProbing`/`worthTitleProbing`) are untouched.
+FTS queries are built defensively through one pair, `ftsMatch`/`ftsTerms`, that
+every search surface and both boosts reach: **punctuation is a word boundary**
+(a term is a maximal run of letters, numbers and combining marks - unicode61's
+own class) and each term becomes its OWN quoted one-word phrase, the last one
+prefix-starred by `ftsQuery`; no term at all yields the harmless empty-phrase
+match, never a syntax error, and no user input can break the MATCH. Splitting is
+load-bearing, not cosmetic: several words inside ONE phrase are an FTS5
+ADJACENCY constraint, so the whitespace-only predecessor made punctuation
+written INSTEAD of a space ("Greg.Bear-Halo.Primordium", a filename-derived
+query) demand those words sit consecutively in one column - unsatisfiable across
+`title`/`names` - and return ZERO rows for a work the catalogue holds. It costs
+nothing to walk (n one-word phrases read the same n posting lists a phrase of n
+words does), and the same terms feed `nameKey` and the cost gates, so retrieval
+and equality judge one vocabulary.
 A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
 02", "jack reacher book 2"/"band 2") additionally resolves that volume and
 returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is

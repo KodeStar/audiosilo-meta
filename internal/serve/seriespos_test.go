@@ -363,6 +363,28 @@ func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
 	}
 }
 
+// TestProbeMatchDropsStopwords pins the cheap-term guarantee the file header
+// argues for: "the" is the most expensive term in the index and identifies no
+// series, so it never reaches the MATCH. The teeth are the punctuated residual -
+// "halo:the" is no stopword as a whitespace token, so a filter that judged
+// tokens rather than terms would put "the" straight back in.
+func TestProbeMatchDropsStopwords(t *testing.T) {
+	cases := map[string]string{
+		"jack reacher":   `"jack" "reacher"`,
+		"the expanse":    `"expanse"`,
+		"halo:the fall":  `"halo" "fall"`,
+		"halo: the fall": `"halo" "fall"`,
+		// Every term is a stopword: the fallback keeps the residual whole rather
+		// than composing an empty MATCH.
+		"the of": `"the" "of"`,
+	}
+	for residual, want := range cases {
+		if got := probeMatch(residual); got != want {
+			t.Errorf("probeMatch(%q) = %q, want %q", residual, got, want)
+		}
+	}
+}
+
 func TestPreferWholeName(t *testing.T) {
 	cands := []seriesCandidate{
 		{id: "the-hunt-for-jack-reacher", name: "The Hunt for Jack Reacher"},

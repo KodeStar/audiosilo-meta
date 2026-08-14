@@ -108,7 +108,6 @@ var volumeKeywords = map[string]bool{
 	"band": true, "teil": true, "tome": true,
 }
 
-
 // seriesPositionQuery is a query read as "<series name> [volume word] <number>".
 // residuals are the series-name candidates to try, most likely first.
 type seriesPositionQuery struct {
@@ -123,6 +122,11 @@ type seriesCandidate struct{ id, name string }
 // false unless the query has at least two tokens AND the last one is
 // position-shaped, so a bare number ("1984") and an ordinary title query are
 // never treated as a position lookup.
+//
+// It splits on WHITESPACE, deliberately NOT through ftsTerms: a position is
+// punctuation-BEARING ("2.5", "1-3.5", "#2"), so the term rule would shred it
+// into digits and turn the novella into volume 2. Only the residual, which is a
+// name, goes through ftsTerms (probeMatch).
 func parseSeriesPositionQuery(q string) (seriesPositionQuery, bool) {
 	tokens := strings.Fields(q)
 	if len(tokens) < 2 {
@@ -276,15 +280,21 @@ func (s *snapshot) worksAtPosition(seriesIDs []string, pos string) ([]string, er
 // residual's cost with it, 1.1x without). Dropping them only widens the match -
 // "The Expanse" still matches "expanse" - and the widening is absorbed by
 // preferWholeName, which compares against the residual as the user wrote it.
-// worthProbing has already established that at least one token survives; the
+// worthProbing has already established that at least one term survives; the
 // fallback keeps the function total rather than relying on that.
+//
+// It filters ftsTerms rather than whitespace tokens, because those are the words
+// that reach the MATCH: a token like "halo:the" is no stopword, and letting it
+// through would put "the" back into the expression this function exists to keep
+// it out of. Rejoining with spaces is exact - a term holds no boundary rune, so
+// ftsPhrase cuts the join back into the same terms.
 func probeMatch(residual string) string {
 	kept := make([]string, 0, 4)
-	for _, tok := range strings.Fields(residual) {
-		if probeStopwords[keywordKey(tok)] {
+	for _, term := range ftsTerms(residual) {
+		if probeStopwords[keywordKey(term)] {
 			continue
 		}
-		kept = append(kept, tok)
+		kept = append(kept, term)
 	}
 	if len(kept) == 0 {
 		return ftsPhrase(residual)

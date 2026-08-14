@@ -998,10 +998,6 @@ func TestTypedSearchLimitClamp(t *testing.T) {
 	}
 }
 
-// The MATCH builder's own tests live beside the code they pin, in
-// search_test.go: TestFTSQueryBuilder (the expression for every query shape) and
-// its end-to-end siblings.
-
 func TestPositionStart(t *testing.T) {
 	cases := map[string]float64{
 		"1": 1, "2.5": 2.5, "1-3.5": 1, "10": 10, "": 1e18, "abc": 1e18,

@@ -47,14 +47,10 @@ func ftsPhrase(q string) string { return ftsMatch(q, false) }
 
 // ftsMatch is the single escaping implementation behind both: it is the one
 // place a term becomes an FTS5 phrase, so no caller can ever build a MATCH
-// expression a quote or an operator could break.
-//
-// Each term is its OWN one-word phrase, which is the whole point of ftsTerms:
-// several words inside one phrase are an ADJACENCY constraint, and that is what
-// made punctuated queries return nothing (see ftsTerms). The quote doubling is
-// FTS5's own escaping and is now a backstop rather than a live path - a term
-// holds only term runes, so it cannot contain a quote - kept so that widening
-// ftsTerms' rune rule can never turn into a syntax error.
+// expression a quote or an operator could break. Each term is its OWN one-word
+// phrase, and ftsTerms records why that matters. The quote doubling cannot fire
+// today (a term holds only term runes) and is kept so that widening isTermRune
+// can never become a syntax error.
 func ftsMatch(q string, prefixLast bool) string {
 	terms := ftsTerms(q)
 	if len(terms) == 0 {
@@ -71,73 +67,33 @@ func ftsMatch(q string, prefixLast bool) string {
 	return strings.Join(parts, " ")
 }
 
-// ftsTerms cuts a raw query into the words the FTS5 tokenizer would keep: a term
-// is a maximal run of letters, digits and combining marks, and every other rune
-// is a boundary. It is the fix for punctuated queries.
+// ftsTerms cuts a raw query into the words FTS5 indexed, and is the one place
+// that rule is spelled - the boosts' stopword filter and cost gate read it too.
 //
-// THE BUG. The predecessor split on WHITESPACE only (strings.Fields), so a token
-// carrying interior punctuation became ONE quoted phrase. FTS5 tokenizes a
-// quoted string with the same unicode61 tokenizer that indexed the row, so the
-// punctuation itself was never the problem - what survived it was: the words
-// stayed a MULTI-TERM PHRASE, which FTS5 matches only where those words appear
-// consecutively, in that order, inside ONE column. Punctuation a user (or a
-// filename) writes INSTEAD of a space is not an adjacency claim, so the
-// constraint could not be met and the query returned zero rows for a work the
-// catalogue holds:
+// WHY IT EXISTS. The predecessor split on WHITESPACE only, so a token carrying
+// interior punctuation became ONE quoted phrase - and several words inside one
+// phrase are an FTS5 ADJACENCY constraint: they must appear consecutively, in
+// that order, in one column. Punctuation written INSTEAD of a space is not an
+// adjacency claim, so `Greg.Bear-Halo.Primordium` asked for four words in a row
+// spanning the `title` and `names` columns and returned ZERO rows for a work the
+// catalogue holds; as four one-word phrases it returns Halo: Primordium. It
+// costs nothing to walk - a phrase of n words and n one-word phrases read the
+// same n posting lists, the phrase merely adding a position check.
 //
-//	q=Greg.Bear-Halo.Primordium  ->  "Greg.Bear-Halo.Primordium"*  ->  0 hits
-//	                                 (author is in `names`, title in `title`;
-//	                                  words in two columns are never adjacent)
-//	q=Primordium,Halo            ->  "Primordium,Halo"*            ->  0 hits
-//	                                 (the row has them the other way round)
-//
-// Cutting the same queries into one phrase per word returns Halo: Primordium,
-// which is what every client had to strip punctuation by hand to get.
-//
-// The rule also drops a punctuation-only token ("&", "-", ":") instead of
-// emitting the empty phrase FTS5 would only tolerate by ignoring it, and it puts
-// ftsQuery's prefix-star on the last real word rather than on the last fragment
-// of a welded phrase.
-//
-// IT COSTS NOTHING EXTRA. A phrase of n words and n one-word phrases read the
-// same n posting lists; the phrase only adds a position check on top. So this
-// widens what MATCHES (adjacency is no longer required) without widening what
-// the index WALKS, and the probes' cost gates (worthProbing,
-// worthTitleProbing - both reading whitespace tokens, deliberately untouched)
-// still bound which queries reach an FTS probe at all.
-//
-// The runs are returned as SUBSTRINGS of q, never rewritten, so each one
-// tokenizes to exactly what FTS5 would have made of it in place. Combining
-// marks count as term runes for that reason: a decomposed "Ma<combining
-// diaeresis>dchen" is one token to unicode61 (which strips the diacritic), and
-// splitting on the mark would have asked for two.
+// The runs are SUBSTRINGS of q, never rewritten, so each tokenizes to exactly
+// what FTS5 would have made of it in place; isTermRune is the boundary rule.
 func ftsTerms(q string) []string {
-	var terms []string
-	start := -1
-	for i, r := range q {
-		if isTermRune(r) {
-			if start < 0 {
-				start = i
-			}
-			continue
-		}
-		if start >= 0 {
-			terms = append(terms, q[start:i])
-			start = -1
-		}
-	}
-	if start >= 0 {
-		terms = append(terms, q[start:])
-	}
-	return terms
+	return strings.FieldsFunc(q, func(r rune) bool { return !isTermRune(r) })
 }
 
-// isTermRune reports whether r belongs inside a term: a letter, a digit or a
-// combining mark. It is this package's approximation of unicode61's
-// alphanumeric class - everything else is a token boundary there too - and the
-// one place the boundary rule is spelled.
+// isTermRune reports whether r belongs inside a term. It mirrors unicode61's
+// alphanumeric class (letters, numbers - including the Nl/No characters FTS5
+// really does index, "Henry VII" in Roman numerals and "Half 1/2 Measures" as a
+// vulgar fraction), plus combining marks: a decomposed "Ma<diaeresis>dchen" is
+// ONE token there (the diacritic is stripped), so splitting on the mark would
+// ask for two words the row does not have.
 func isTermRune(r rune) bool {
-	return unicode.IsLetter(r) || unicode.IsDigit(r) || unicode.IsMark(r)
+	return unicode.IsLetter(r) || unicode.IsNumber(r) || unicode.IsMark(r)
 }
 
 // searchHit is one row of the FTS result, kept in rank order while the work
