@@ -345,6 +345,20 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // What is deliberately NOT here: the two vetoes that need evidence this index does
 // not hold - a runtime ratio (recordings) and a series POSITION conflict (a row's
 // claim, or a membership) - which each writer applies with what it has.
+//
+// NOR IS titlerule.SameTitleUnderCommonSeries, and that omission is measured rather
+// than an oversight. It is the soundness condition on a key reached by shedding a
+// DIFFERENT series name on each side, and it belongs to the MERGE caller
+// (internal/audit's vetoStrippedSeriesDiffers), which deletes records. Applying it
+// here as well cost 58 census groups to gain 3, and about half of what it removed was
+// a real duplicate under a series with TWO names - the John Sinclair episodes filed as
+// both "Classics" and "Tonstudio Braun Klassiker", "Bitte nicht öffnen" beside "Bitte
+// nicht öffnen - Hörspiele", "Emergence: Dave Hooper, Book 1" beside "Emergence: Dave
+// vs. the Monsters". Those groups are what the two writer gates REFUSE a second record
+// on, and a lost refusal is a duplicate minted silently, in the one direction a repair
+// wave cannot undo - the same trade that withdrew the welded-function-words layer from
+// the key itself (see titlerule.IdentityTitleKey). A wrong refusal here is recoverable
+// and is reported to a human either way, which is the posture stated above.
 func (ix *WorkIdentity) matches(w *model.Work, title, series, lang string, all, identity map[string]bool) bool {
 	return languagesCompatible(w.Language, lang) &&
 		IdentityAuthorsMatch(w, all, identity) &&
