@@ -2814,6 +2814,1478 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 18413,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 213367,
+              "start_ms": 18413,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 48271,
+              "start_ms": 231780,
+              "title": "1. Just Enough Microservices"
+            },
+            {
+              "length_ms": 147200,
+              "start_ms": 280051,
+              "title": "What Are Microservices?"
+            },
+            {
+              "length_ms": 83900,
+              "start_ms": 427251,
+              "title": "Independent Deployability"
+            },
+            {
+              "length_ms": 324300,
+              "start_ms": 511151,
+              "title": "Modeled Around a Business Domain"
+            },
+            {
+              "length_ms": 104300,
+              "start_ms": 835451,
+              "title": "Own Their Own Data"
+            },
+            {
+              "length_ms": 73000,
+              "start_ms": 939751,
+              "title": "What Advantages Can Microservices Bring?"
+            },
+            {
+              "length_ms": 185700,
+              "start_ms": 1012751,
+              "title": "What Problems Do They Create?"
+            },
+            {
+              "length_ms": 30000,
+              "start_ms": 1198451,
+              "title": "User Interfaces"
+            },
+            {
+              "length_ms": 106100,
+              "start_ms": 1228451,
+              "title": "Technology"
+            },
+            {
+              "length_ms": 132850,
+              "start_ms": 1334551,
+              "title": "Size"
+            },
+            {
+              "length_ms": 121550,
+              "start_ms": 1467401,
+              "title": "And Ownership"
+            },
+            {
+              "length_ms": 33790,
+              "start_ms": 1588951,
+              "title": "The Monolith"
+            },
+            {
+              "length_ms": 47310,
+              "start_ms": 1622741,
+              "title": "The Single Process Monolith"
+            },
+            {
+              "length_ms": 86700,
+              "start_ms": 1670051,
+              "title": "And the Modular Monolith"
+            },
+            {
+              "length_ms": 63520,
+              "start_ms": 1756751,
+              "title": "The Distributed Monolith"
+            },
+            {
+              "length_ms": 39380,
+              "start_ms": 1820271,
+              "title": "Third-Party Black-Box Systems"
+            },
+            {
+              "length_ms": 57600,
+              "start_ms": 1859651,
+              "title": "Challenges of Monoliths"
+            },
+            {
+              "length_ms": 83400,
+              "start_ms": 1917251,
+              "title": "Advantages of Monoliths"
+            },
+            {
+              "length_ms": 196300,
+              "start_ms": 2000651,
+              "title": "On Coupling and Cohesion"
+            },
+            {
+              "length_ms": 46200,
+              "start_ms": 2196951,
+              "title": "Cohesion"
+            },
+            {
+              "length_ms": 132300,
+              "start_ms": 2243151,
+              "title": "Coupling"
+            },
+            {
+              "length_ms": 214880,
+              "start_ms": 2375451,
+              "title": "Implementation Coupling"
+            },
+            {
+              "length_ms": 84890,
+              "start_ms": 2590331,
+              "title": "Temporal Coupling"
+            },
+            {
+              "length_ms": 158290,
+              "start_ms": 2675221,
+              "title": "Deployment Coupling"
+            },
+            {
+              "length_ms": 206380,
+              "start_ms": 2833511,
+              "title": "Domain Coupling"
+            },
+            {
+              "length_ms": 53600,
+              "start_ms": 3039891,
+              "title": "Just Enough Domain-Driven Design"
+            },
+            {
+              "length_ms": 135190,
+              "start_ms": 3093491,
+              "title": "Aggregate"
+            },
+            {
+              "length_ms": 74190,
+              "start_ms": 3228681,
+              "title": "Bounded Context"
+            },
+            {
+              "length_ms": 69490,
+              "start_ms": 3302871,
+              "title": "Mapping Aggregates and Bounded Contexts to Microservices"
+            },
+            {
+              "length_ms": 17500,
+              "start_ms": 3372361,
+              "title": "Further Reading"
+            },
+            {
+              "length_ms": 49315,
+              "start_ms": 3389861,
+              "title": "Summary"
+            },
+            {
+              "length_ms": 29310,
+              "start_ms": 3439176,
+              "title": "2. Planning a Migration"
+            },
+            {
+              "length_ms": 235483,
+              "start_ms": 3468486,
+              "title": "Understanding the Goal"
+            },
+            {
+              "length_ms": 58000,
+              "start_ms": 3703969,
+              "title": "Three Key Questions"
+            },
+            {
+              "length_ms": 24000,
+              "start_ms": 3761969,
+              "title": "Why Might You Choose Microservices?"
+            },
+            {
+              "length_ms": 110500,
+              "start_ms": 3785969,
+              "title": "Improve Team Autonomy"
+            },
+            {
+              "length_ms": 57800,
+              "start_ms": 3896469,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 18700,
+              "start_ms": 3954269,
+              "title": "Reduce Time to Market"
+            },
+            {
+              "length_ms": 94400,
+              "start_ms": 3972969,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 35300,
+              "start_ms": 4067369,
+              "title": "Scale Cost-Effectively for Load"
+            },
+            {
+              "length_ms": 87100,
+              "start_ms": 4102669,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 155500,
+              "start_ms": 4189769,
+              "title": "Improve Robustness"
+            },
+            {
+              "length_ms": 68900,
+              "start_ms": 4345269,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 89500,
+              "start_ms": 4414169,
+              "title": "Scale the Number of Developers"
+            },
+            {
+              "length_ms": 36300,
+              "start_ms": 4503669,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 54700,
+              "start_ms": 4539969,
+              "title": "Embrace New Technology"
+            },
+            {
+              "length_ms": 210000,
+              "start_ms": 4594669,
+              "title": "How Else Could You Do This?"
+            },
+            {
+              "length_ms": 17400,
+              "start_ms": 4804669,
+              "title": "When Might Microservices Be a Bad Idea?"
+            },
+            {
+              "length_ms": 140920,
+              "start_ms": 4822069,
+              "title": "Unclear Domain"
+            },
+            {
+              "length_ms": 143310,
+              "start_ms": 4962989,
+              "title": "Startups"
+            },
+            {
+              "length_ms": 92770,
+              "start_ms": 5106299,
+              "title": "Customer-Installed and Managed Software"
+            },
+            {
+              "length_ms": 30730,
+              "start_ms": 5199069,
+              "title": "Not Having a Good Reason!"
+            },
+            {
+              "length_ms": 162970,
+              "start_ms": 5229799,
+              "title": "Trade-Offs"
+            },
+            {
+              "length_ms": 53700,
+              "start_ms": 5392769,
+              "title": "Taking People on the Journey"
+            },
+            {
+              "length_ms": 81200,
+              "start_ms": 5446469,
+              "title": "Changing Organizations"
+            },
+            {
+              "length_ms": 58100,
+              "start_ms": 5527669,
+              "title": "Establishing a Sense of Urgency"
+            },
+            {
+              "length_ms": 131890,
+              "start_ms": 5585769,
+              "title": "Creating the Guiding Coalition"
+            },
+            {
+              "length_ms": 57790,
+              "start_ms": 5717659,
+              "title": "Developing a Vision and Strategy"
+            },
+            {
+              "length_ms": 141590,
+              "start_ms": 5775449,
+              "title": "Communicating the Change Vision"
+            },
+            {
+              "length_ms": 120890,
+              "start_ms": 5917039,
+              "title": "Empowering Employees for Broad-Based Action"
+            },
+            {
+              "length_ms": 59690,
+              "start_ms": 6037929,
+              "title": "Generating Short-Term Wins"
+            },
+            {
+              "length_ms": 51600,
+              "start_ms": 6097619,
+              "title": "Consolidating Gains and Producing More Change"
+            },
+            {
+              "length_ms": 58690,
+              "start_ms": 6149219,
+              "title": "Anchoring New Approaches in the Culture"
+            },
+            {
+              "length_ms": 135190,
+              "start_ms": 6207909,
+              "title": "Importance of Incremental Migration"
+            },
+            {
+              "length_ms": 51500,
+              "start_ms": 6343099,
+              "title": "It’s Production That Counts"
+            },
+            {
+              "length_ms": 27900,
+              "start_ms": 6394599,
+              "title": "Cost of Change"
+            },
+            {
+              "length_ms": 192480,
+              "start_ms": 6422499,
+              "title": "Reversible and Irreversible Decisions"
+            },
+            {
+              "length_ms": 68790,
+              "start_ms": 6614979,
+              "title": "Easier Places to Experiment"
+            },
+            {
+              "length_ms": 30110,
+              "start_ms": 6683769,
+              "title": "So Where Do We Start?"
+            },
+            {
+              "length_ms": 93680,
+              "start_ms": 6713879,
+              "title": "Domain-Driven Design"
+            },
+            {
+              "length_ms": 65500,
+              "start_ms": 6807559,
+              "title": "How Far Do You Have to Go?"
+            },
+            {
+              "length_ms": 74990,
+              "start_ms": 6873059,
+              "title": "Event Storming"
+            },
+            {
+              "length_ms": 154210,
+              "start_ms": 6948049,
+              "title": "Using a Domain Model for Prioritization"
+            },
+            {
+              "length_ms": 93770,
+              "start_ms": 7102259,
+              "title": "A Combined Model"
+            },
+            {
+              "length_ms": 35300,
+              "start_ms": 7196029,
+              "title": "Reorganizing Teams"
+            },
+            {
+              "length_ms": 143590,
+              "start_ms": 7231329,
+              "title": "Shifting Structures"
+            },
+            {
+              "length_ms": 237980,
+              "start_ms": 7374919,
+              "title": "It’s Not One Size Fits All"
+            },
+            {
+              "length_ms": 213680,
+              "start_ms": 7612899,
+              "title": "Making a Change"
+            },
+            {
+              "length_ms": 229480,
+              "start_ms": 7826579,
+              "title": "Changing Skills"
+            },
+            {
+              "length_ms": 64590,
+              "start_ms": 8056059,
+              "title": "How Will You Know if the Transition Is Working?"
+            },
+            {
+              "length_ms": 66800,
+              "start_ms": 8120649,
+              "title": "Having Regular Checkpoints"
+            },
+            {
+              "length_ms": 72590,
+              "start_ms": 8187449,
+              "title": "Quantitative Measures"
+            },
+            {
+              "length_ms": 43800,
+              "start_ms": 8260039,
+              "title": "Qualitative Measures"
+            },
+            {
+              "length_ms": 97990,
+              "start_ms": 8303839,
+              "title": "Avoiding the Sunk Cost Fallacy"
+            },
+            {
+              "length_ms": 53400,
+              "start_ms": 8401829,
+              "title": "Being Open to New Approaches"
+            },
+            {
+              "length_ms": 106361,
+              "start_ms": 8455229,
+              "title": "Summary"
+            },
+            {
+              "length_ms": 69405,
+              "start_ms": 8561590,
+              "title": "3. Splitting the Monolith"
+            },
+            {
+              "length_ms": 120895,
+              "start_ms": 8630995,
+              "title": "To Change the Monolith, or Not?"
+            },
+            {
+              "length_ms": 49913,
+              "start_ms": 8751890,
+              "title": "Cut, Copy, or Reimplement?"
+            },
+            {
+              "length_ms": 79680,
+              "start_ms": 8801803,
+              "title": "Refactoring the Monolith"
+            },
+            {
+              "length_ms": 59300,
+              "start_ms": 8881483,
+              "title": "A Modular Monolith?"
+            },
+            {
+              "length_ms": 65600,
+              "start_ms": 8940783,
+              "title": "Incremental Rewrites"
+            },
+            {
+              "length_ms": 45400,
+              "start_ms": 9006383,
+              "title": "Migration Patterns"
+            },
+            {
+              "length_ms": 77000,
+              "start_ms": 9051783,
+              "title": "Pattern: Strangler Fig Application"
+            },
+            {
+              "length_ms": 165600,
+              "start_ms": 9128783,
+              "title": "How It Works"
+            },
+            {
+              "length_ms": 167900,
+              "start_ms": 9294383,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 37600,
+              "start_ms": 9462283,
+              "title": "Example: HTTP Reverse Proxy"
+            },
+            {
+              "length_ms": 73300,
+              "start_ms": 9499883,
+              "title": "Step 1: Insert Proxy"
+            },
+            {
+              "length_ms": 47500,
+              "start_ms": 9573183,
+              "title": "Step 2: Migrate Functionality"
+            },
+            {
+              "length_ms": 41300,
+              "start_ms": 9620683,
+              "title": "Step 3: Redirect Calls"
+            },
+            {
+              "length_ms": 12900,
+              "start_ms": 9661983,
+              "title": "Data?"
+            },
+            {
+              "length_ms": 111000,
+              "start_ms": 9674883,
+              "title": "Proxy Options"
+            },
+            {
+              "length_ms": 79600,
+              "start_ms": 9785883,
+              "title": "Incremental Rollout"
+            },
+            {
+              "length_ms": 129900,
+              "start_ms": 9865483,
+              "title": "Changing Protocols"
+            },
+            {
+              "length_ms": 100600,
+              "start_ms": 9995383,
+              "title": "And Service Meshes"
+            },
+            {
+              "length_ms": 97100,
+              "start_ms": 10095983,
+              "title": "Example: FTP"
+            },
+            {
+              "length_ms": 20220,
+              "start_ms": 10193083,
+              "title": "Example: Message Interception"
+            },
+            {
+              "length_ms": 80380,
+              "start_ms": 10213303,
+              "title": "Content-Based Routing"
+            },
+            {
+              "length_ms": 124300,
+              "start_ms": 10293683,
+              "title": "Selective Consumption"
+            },
+            {
+              "length_ms": 31800,
+              "start_ms": 10417983,
+              "title": "Other Protocols"
+            },
+            {
+              "length_ms": 39000,
+              "start_ms": 10449783,
+              "title": "Other Examples of the Strangler Fig Pattern"
+            },
+            {
+              "length_ms": 128500,
+              "start_ms": 10488783,
+              "title": "Changing Behavior While Migrating Functionality"
+            },
+            {
+              "length_ms": 68100,
+              "start_ms": 10617283,
+              "title": "Pattern: UI Composition"
+            },
+            {
+              "length_ms": 96890,
+              "start_ms": 10685383,
+              "title": "Example: Page Composition"
+            },
+            {
+              "length_ms": 196980,
+              "start_ms": 10782273,
+              "title": "Example: Widget Composition"
+            },
+            {
+              "length_ms": 127590,
+              "start_ms": 10979253,
+              "title": "And Mobile Applications"
+            },
+            {
+              "length_ms": 133590,
+              "start_ms": 11106843,
+              "title": "Example: Micro Frontends"
+            },
+            {
+              "length_ms": 39700,
+              "start_ms": 11240433,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 130790,
+              "start_ms": 11280133,
+              "title": "Pattern: Branch by Abstraction"
+            },
+            {
+              "length_ms": 38690,
+              "start_ms": 11410923,
+              "title": "How It Works"
+            },
+            {
+              "length_ms": 38500,
+              "start_ms": 11449613,
+              "title": "Step 1: Create Abstraction"
+            },
+            {
+              "length_ms": 36000,
+              "start_ms": 11488113,
+              "title": "Step 2: Use Abstraction"
+            },
+            {
+              "length_ms": 98390,
+              "start_ms": 11524113,
+              "title": "Step 3: Create New Implementation"
+            },
+            {
+              "length_ms": 69090,
+              "start_ms": 11622503,
+              "title": "Step 4: Switch Implementation"
+            },
+            {
+              "length_ms": 59000,
+              "start_ms": 11691593,
+              "title": "Step 5: Clean Up"
+            },
+            {
+              "length_ms": 80690,
+              "start_ms": 11750593,
+              "title": "As a Fallback Mechanism"
+            },
+            {
+              "length_ms": 42600,
+              "start_ms": 11831283,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 100490,
+              "start_ms": 11873883,
+              "title": "Pattern: Parallel Run"
+            },
+            {
+              "length_ms": 132790,
+              "start_ms": 11974373,
+              "title": "Example: Comparing Credit Derivative Pricing"
+            },
+            {
+              "length_ms": 101790,
+              "start_ms": 12107163,
+              "title": "Example: Homegate Listings"
+            },
+            {
+              "length_ms": 36200,
+              "start_ms": 12208953,
+              "title": "Verification Techniques"
+            },
+            {
+              "length_ms": 113120,
+              "start_ms": 12245153,
+              "title": "Using Spies"
+            },
+            {
+              "length_ms": 35370,
+              "start_ms": 12358273,
+              "title": "GitHub Scientist"
+            },
+            {
+              "length_ms": 74990,
+              "start_ms": 12393643,
+              "title": "Dark Launching and Canary Releasing"
+            },
+            {
+              "length_ms": 29300,
+              "start_ms": 12468633,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 49690,
+              "start_ms": 12497933,
+              "title": "Pattern: Decorating Collaborator"
+            },
+            {
+              "length_ms": 96790,
+              "start_ms": 12547623,
+              "title": "Example: Loyalty Program"
+            },
+            {
+              "length_ms": 31900,
+              "start_ms": 12644413,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 19700,
+              "start_ms": 12676313,
+              "title": "Pattern: Change Data Capture"
+            },
+            {
+              "length_ms": 60200,
+              "start_ms": 12696013,
+              "title": "Example: Issuing Loyalty Cards"
+            },
+            {
+              "length_ms": 11990,
+              "start_ms": 12756213,
+              "title": "Implementing Change Data Capture"
+            },
+            {
+              "length_ms": 79800,
+              "start_ms": 12768203,
+              "title": "Database Triggers"
+            },
+            {
+              "length_ms": 89290,
+              "start_ms": 12848003,
+              "title": "Transaction Log Pollers"
+            },
+            {
+              "length_ms": 45200,
+              "start_ms": 12937293,
+              "title": "Batch Delta Copier"
+            },
+            {
+              "length_ms": 44290,
+              "start_ms": 12982493,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 37898,
+              "start_ms": 13026783,
+              "title": "Summary"
+            },
+            {
+              "length_ms": 64854,
+              "start_ms": 13064681,
+              "title": "4. Decomposing the Database"
+            },
+            {
+              "length_ms": 120093,
+              "start_ms": 13129535,
+              "title": "Pattern: The Shared Database"
+            },
+            {
+              "length_ms": 18047,
+              "start_ms": 13249628,
+              "title": "Coping Patterns"
+            },
+            {
+              "length_ms": 50900,
+              "start_ms": 13267675,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 152800,
+              "start_ms": 13318575,
+              "title": "But It Can’t Be Done!"
+            },
+            {
+              "length_ms": 25200,
+              "start_ms": 13471375,
+              "title": "Pattern: Database View"
+            },
+            {
+              "length_ms": 160000,
+              "start_ms": 13496575,
+              "title": "The Database as a Public Contract"
+            },
+            {
+              "length_ms": 115400,
+              "start_ms": 13656575,
+              "title": "Views to Present"
+            },
+            {
+              "length_ms": 37100,
+              "start_ms": 13771975,
+              "title": "Limitations"
+            },
+            {
+              "length_ms": 21500,
+              "start_ms": 13809075,
+              "title": "Ownership"
+            },
+            {
+              "length_ms": 31500,
+              "start_ms": 13830575,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 235600,
+              "start_ms": 13862075,
+              "title": "Pattern: Database Wrapping Service"
+            },
+            {
+              "length_ms": 96500,
+              "start_ms": 14097675,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 163800,
+              "start_ms": 14194175,
+              "title": "Pattern: Database-as-a-Service Interface"
+            },
+            {
+              "length_ms": 71700,
+              "start_ms": 14357975,
+              "title": "Implementing a Mapping Engine"
+            },
+            {
+              "length_ms": 52600,
+              "start_ms": 14429675,
+              "title": "Compared to Views"
+            },
+            {
+              "length_ms": 42200,
+              "start_ms": 14482275,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 50200,
+              "start_ms": 14524475,
+              "title": "Transferring Ownership"
+            },
+            {
+              "length_ms": 79900,
+              "start_ms": 14574675,
+              "title": "Pattern: Aggregate Exposing Monolith"
+            },
+            {
+              "length_ms": 41600,
+              "start_ms": 14654575,
+              "title": "As a Pathway to More Services"
+            },
+            {
+              "length_ms": 46100,
+              "start_ms": 14696175,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 78100,
+              "start_ms": 14742275,
+              "title": "Pattern: Change Data Ownership"
+            },
+            {
+              "length_ms": 23900,
+              "start_ms": 14820375,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 142200,
+              "start_ms": 14844275,
+              "title": "Data Synchronization"
+            },
+            {
+              "length_ms": 98200,
+              "start_ms": 14986475,
+              "title": "Pattern: Synchronize Data in Application"
+            },
+            {
+              "length_ms": 51000,
+              "start_ms": 15084675,
+              "title": "Step 1: Bulk Synchronize Data"
+            },
+            {
+              "length_ms": 37400,
+              "start_ms": 15135675,
+              "title": "Step 2: Synchronize on Write, Read from Old Schema"
+            },
+            {
+              "length_ms": 30600,
+              "start_ms": 15173075,
+              "title": "Step 3: Synchronize on Write, Read from New Schema"
+            },
+            {
+              "length_ms": 57590,
+              "start_ms": 15203675,
+              "title": "Where to Use this Pattern"
+            },
+            {
+              "length_ms": 49900,
+              "start_ms": 15261265,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 186080,
+              "start_ms": 15311165,
+              "title": "Pattern: Tracer Write"
+            },
+            {
+              "length_ms": 166090,
+              "start_ms": 15497245,
+              "title": "Data Synchronization"
+            },
+            {
+              "length_ms": 89290,
+              "start_ms": 15663335,
+              "title": "Example: Orders at Square"
+            },
+            {
+              "length_ms": 64900,
+              "start_ms": 15752625,
+              "title": "Creating the New Service"
+            },
+            {
+              "length_ms": 142780,
+              "start_ms": 15817525,
+              "title": "Synchronizing the Data"
+            },
+            {
+              "length_ms": 114790,
+              "start_ms": 15960305,
+              "title": "Migrating Consumers"
+            },
+            {
+              "length_ms": 45200,
+              "start_ms": 16075095,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 29200,
+              "start_ms": 16120295,
+              "title": "Splitting Apart the Database"
+            },
+            {
+              "length_ms": 115390,
+              "start_ms": 16149495,
+              "title": "Physical Versus Logical Database Separation"
+            },
+            {
+              "length_ms": 54990,
+              "start_ms": 16264885,
+              "title": "Splitting the Database First, or the Code?"
+            },
+            {
+              "length_ms": 171190,
+              "start_ms": 16319875,
+              "title": "Split the Database First"
+            },
+            {
+              "length_ms": 107689,
+              "start_ms": 16491065,
+              "title": "Pattern: Repository per Bounded Context"
+            },
+            {
+              "length_ms": 21202,
+              "start_ms": 16598754,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 96789,
+              "start_ms": 16619956,
+              "title": "Pattern: Database per Bounded Context"
+            },
+            {
+              "length_ms": 62800,
+              "start_ms": 16716745,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 79389,
+              "start_ms": 16779545,
+              "title": "Split the Code First"
+            },
+            {
+              "length_ms": 90492,
+              "start_ms": 16858934,
+              "title": "Pattern: Monolith as Data Access Layer"
+            },
+            {
+              "length_ms": 40901,
+              "start_ms": 16949426,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 72687,
+              "start_ms": 16990327,
+              "title": "Pattern: Multischema Storage"
+            },
+            {
+              "length_ms": 32500,
+              "start_ms": 17063014,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 29600,
+              "start_ms": 17095514,
+              "title": "Split Database and Code Together"
+            },
+            {
+              "length_ms": 47492,
+              "start_ms": 17125114,
+              "title": "So, Which Should I Split First?"
+            },
+            {
+              "length_ms": 46598,
+              "start_ms": 17172606,
+              "title": "Schema Separation Examples"
+            },
+            {
+              "length_ms": 143191,
+              "start_ms": 17219204,
+              "title": "Pattern: Split Table"
+            },
+            {
+              "length_ms": 26291,
+              "start_ms": 17362395,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 144582,
+              "start_ms": 17388686,
+              "title": "Pattern: Move Foreign-Key Relationship to Code"
+            },
+            {
+              "length_ms": 139072,
+              "start_ms": 17533268,
+              "title": "Moving the Join"
+            },
+            {
+              "length_ms": 24298,
+              "start_ms": 17672340,
+              "title": "Data Consistency"
+            },
+            {
+              "length_ms": 76301,
+              "start_ms": 17696638,
+              "title": "Check Before Deletion"
+            },
+            {
+              "length_ms": 81000,
+              "start_ms": 17772939,
+              "title": "Handle Deletion Gracefully"
+            },
+            {
+              "length_ms": 50799,
+              "start_ms": 17853939,
+              "title": "Don’t Allow Deletion"
+            },
+            {
+              "length_ms": 62900,
+              "start_ms": 17904738,
+              "title": "So How Should We Handle Deletion?"
+            },
+            {
+              "length_ms": 59000,
+              "start_ms": 17967638,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 45000,
+              "start_ms": 18026638,
+              "title": "Example: Shared Static Data"
+            },
+            {
+              "length_ms": 143401,
+              "start_ms": 18071638,
+              "title": "Pattern: Duplicate Static Reference Data"
+            },
+            {
+              "length_ms": 35699,
+              "start_ms": 18215039,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 69602,
+              "start_ms": 18250738,
+              "title": "Pattern: Dedicated Reference Data Schema"
+            },
+            {
+              "length_ms": 23599,
+              "start_ms": 18320340,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 197799,
+              "start_ms": 18343939,
+              "title": "Pattern: Static Reference Data Library"
+            },
+            {
+              "length_ms": 15799,
+              "start_ms": 18541738,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 209701,
+              "start_ms": 18557537,
+              "title": "Pattern: Static Reference Data Service"
+            },
+            {
+              "length_ms": 39801,
+              "start_ms": 18767238,
+              "title": "Where to Use It"
+            },
+            {
+              "length_ms": 70699,
+              "start_ms": 18807039,
+              "title": "What Would I Do?"
+            },
+            {
+              "length_ms": 54500,
+              "start_ms": 18877738,
+              "title": "Transactions"
+            },
+            {
+              "length_ms": 121150,
+              "start_ms": 18932238,
+              "title": "ACID Transactions"
+            },
+            {
+              "length_ms": 127272,
+              "start_ms": 19053388,
+              "title": "Still ACID, but Lacking Atomicity?"
+            },
+            {
+              "length_ms": 244478,
+              "start_ms": 19180660,
+              "title": "Two-Phase Commits"
+            },
+            {
+              "length_ms": 75702,
+              "start_ms": 19425138,
+              "title": "Distributed Transactions—Just Say No"
+            },
+            {
+              "length_ms": 189599,
+              "start_ms": 19500840,
+              "title": "Sagas"
+            },
+            {
+              "length_ms": 51110,
+              "start_ms": 19690439,
+              "title": "Saga Failure Modes"
+            },
+            {
+              "length_ms": 169970,
+              "start_ms": 19741549,
+              "title": "Saga Rollbacks"
+            },
+            {
+              "length_ms": 55391,
+              "start_ms": 19911519,
+              "title": "Reordering Steps to Reduce Rollbacks"
+            },
+            {
+              "length_ms": 37299,
+              "start_ms": 19966910,
+              "title": "Mixing Fail-Backward and Fail-Forward Situations"
+            },
+            {
+              "length_ms": 32801,
+              "start_ms": 20004209,
+              "title": "Implementing Sagas"
+            },
+            {
+              "length_ms": 291269,
+              "start_ms": 20037010,
+              "title": "Orchestrated Sagas"
+            },
+            {
+              "length_ms": 212279,
+              "start_ms": 20328279,
+              "title": "Choreographed Sagas"
+            },
+            {
+              "length_ms": 45702,
+              "start_ms": 20540558,
+              "title": "Mixing Styles"
+            },
+            {
+              "length_ms": 59500,
+              "start_ms": 20586260,
+              "title": "Should I Use Choreography or Orchestration?"
+            },
+            {
+              "length_ms": 84189,
+              "start_ms": 20645760,
+              "title": "Sagas Versus Distributed Transactions"
+            },
+            {
+              "length_ms": 47356,
+              "start_ms": 20729949,
+              "title": "Summary"
+            },
+            {
+              "length_ms": 2930,
+              "start_ms": 20777305,
+              "title": "5. Growing Pains"
+            },
+            {
+              "length_ms": 226040,
+              "start_ms": 20780235,
+              "title": "More Services, More Pain"
+            },
+            {
+              "length_ms": 82299,
+              "start_ms": 21006275,
+              "title": "Ownership at Scale"
+            },
+            {
+              "length_ms": 76500,
+              "start_ms": 21088574,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 43401,
+              "start_ms": 21165074,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 40800,
+              "start_ms": 21208475,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 65200,
+              "start_ms": 21249275,
+              "title": "Breaking Changes"
+            },
+            {
+              "length_ms": 53201,
+              "start_ms": 21314475,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 35500,
+              "start_ms": 21367676,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 40299,
+              "start_ms": 21403176,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 120000,
+              "start_ms": 21443475,
+              "title": "Eliminate Accidental Breaking Changes"
+            },
+            {
+              "length_ms": 29000,
+              "start_ms": 21563475,
+              "title": "Think Twice Before Making a Breaking Change"
+            },
+            {
+              "length_ms": 193701,
+              "start_ms": 21592475,
+              "title": "Give Consumers Time to Migrate"
+            },
+            {
+              "length_ms": 38799,
+              "start_ms": 21786176,
+              "title": "Reporting"
+            },
+            {
+              "length_ms": 48000,
+              "start_ms": 21824975,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 103701,
+              "start_ms": 21872975,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 67799,
+              "start_ms": 21976676,
+              "title": "Monitoring and Troubleshooting"
+            },
+            {
+              "length_ms": 32300,
+              "start_ms": 22044475,
+              "title": "When Might these Problems Occur?"
+            },
+            {
+              "length_ms": 15799,
+              "start_ms": 22076775,
+              "title": "How Can these Problems Occur?"
+            },
+            {
+              "length_ms": 14102,
+              "start_ms": 22092574,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 89199,
+              "start_ms": 22106676,
+              "title": "Log Aggregation"
+            },
+            {
+              "length_ms": 127801,
+              "start_ms": 22195875,
+              "title": "Tracing"
+            },
+            {
+              "length_ms": 108299,
+              "start_ms": 22323676,
+              "title": "Test in Production"
+            },
+            {
+              "length_ms": 89701,
+              "start_ms": 22431975,
+              "title": "Toward Observability"
+            },
+            {
+              "length_ms": 34299,
+              "start_ms": 22521676,
+              "title": "Local Developer Experience"
+            },
+            {
+              "length_ms": 22400,
+              "start_ms": 22555975,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 43900,
+              "start_ms": 22578375,
+              "title": "When Might This Occur?"
+            },
+            {
+              "length_ms": 88600,
+              "start_ms": 22622275,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 46500,
+              "start_ms": 22710875,
+              "title": "Running Too Many Things"
+            },
+            {
+              "length_ms": 34801,
+              "start_ms": 22757375,
+              "title": "How Might this Problem Show Itself?"
+            },
+            {
+              "length_ms": 18000,
+              "start_ms": 22792176,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 168219,
+              "start_ms": 22810176,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 85660,
+              "start_ms": 22978395,
+              "title": "End-to-End Testing"
+            },
+            {
+              "length_ms": 33801,
+              "start_ms": 23064055,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 22900,
+              "start_ms": 23097856,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 12199,
+              "start_ms": 23120756,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 31301,
+              "start_ms": 23132955,
+              "title": "Limit Scope of Functional Automated Tests"
+            },
+            {
+              "length_ms": 69988,
+              "start_ms": 23164256,
+              "title": "Use Consumer-Driven Contracts"
+            },
+            {
+              "length_ms": 118490,
+              "start_ms": 23234244,
+              "title": "Use Automated Release Remediation and Progressive Delivery"
+            },
+            {
+              "length_ms": 39702,
+              "start_ms": 23352734,
+              "title": "Continually Refine Your Quality Feedback Cycles"
+            },
+            {
+              "length_ms": 69388,
+              "start_ms": 23392436,
+              "title": "Global Versus Local Optimization"
+            },
+            {
+              "length_ms": 54401,
+              "start_ms": 23461824,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 62890,
+              "start_ms": 23516225,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 161991,
+              "start_ms": 23579115,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 26798,
+              "start_ms": 23741106,
+              "title": "Robustness and Resiliency"
+            },
+            {
+              "length_ms": 20991,
+              "start_ms": 23767904,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 27599,
+              "start_ms": 23788895,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 97047,
+              "start_ms": 23816494,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 53645,
+              "start_ms": 23913541,
+              "title": "Orphaned Services"
+            },
+            {
+              "length_ms": 50689,
+              "start_ms": 23967186,
+              "title": "How Can this Problem Show Itself?"
+            },
+            {
+              "length_ms": 19000,
+              "start_ms": 24017875,
+              "title": "When Might this Problem Occur?"
+            },
+            {
+              "length_ms": 144789,
+              "start_ms": 24036875,
+              "title": "Potential Solutions"
+            },
+            {
+              "length_ms": 43734,
+              "start_ms": 24181664,
+              "title": "Summary"
+            },
+            {
+              "length_ms": 65131,
+              "start_ms": 24225398,
+              "title": "6. Closing Words"
+            },
+            {
+              "length_ms": 31462,
+              "start_ms": 24290529,
+              "title": "About the Author"
+            },
+            {
+              "length_ms": 33668,
+              "start_ms": 24321991,
+              "title": "End Credits"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/51u8AQ1GcwL.jpg",
           "id": "mitchell-dorian-2021",
           "language": "en",
@@ -3073,6 +4545,88 @@
             {
               "asin": "1696601630",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17106,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 26919,
+              "start_ms": 17106,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 2667020,
+              "start_ms": 44025,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 3989164,
+              "start_ms": 2711045,
+              "title": "Chapter 1: Monopolies Are Why People Keep Contracting Deep Vein Thrombosis on Long-Haul Flights"
+            },
+            {
+              "length_ms": 3908963,
+              "start_ms": 6700209,
+              "title": "Chapter 2: Monopolies Are Why a Farmer’s Daughter Is Crying Behind the Desk of a Best Western"
+            },
+            {
+              "length_ms": 4023135,
+              "start_ms": 10609172,
+              "title": "Chapter 3: Monopolies Are Why Hundreds of Journalists Became Filmmakers, Then Back to Writers, Then Unemployed"
+            },
+            {
+              "length_ms": 3464812,
+              "start_ms": 14632307,
+              "title": "Chapter 4: Monopolies Are Why Students Sit in Starbucks Parking Lots at Night to Do Their Homework"
+            },
+            {
+              "length_ms": 4093051,
+              "start_ms": 18097119,
+              "title": "Chapter 5: Monopolies Are Why Teamsters Stormed a Podium to Tell One Another About Their Dead Friends and Relatives"
+            },
+            {
+              "length_ms": 3707458,
+              "start_ms": 22190170,
+              "title": "Chapter 6: Monopolies Among Banks Are Why There Are Monopolies Among Every Other Economic Sector"
+            },
+            {
+              "length_ms": 3972075,
+              "start_ms": 25897628,
+              "title": "Chapter 7: Monopolies Are Why America Can’t Build or Run a Single Weapons System Without Assistance from China"
+            },
+            {
+              "length_ms": 4077376,
+              "start_ms": 29869703,
+              "title": "Chapter 8: Monopolies Are Why a Small Business Owner and His Girlfriend Had to Get Permission from Amazon to Live Together"
+            },
+            {
+              "length_ms": 3747630,
+              "start_ms": 33947079,
+              "title": "Chapter 9: Monopolies Are Why Hospitals Can Give Patients Prosthetic Limbs and Artificial Hearts but Not Salt and Water in a Bag"
+            },
+            {
+              "length_ms": 3869116,
+              "start_ms": 37694709,
+              "title": "Chapter 10: Monopolies Are Why a Woman Found Her Own Home Listed for Rent on Zillow"
+            },
+            {
+              "length_ms": 3706949,
+              "start_ms": 41563825,
+              "title": "Chapter 11: Monopolies Are Why a Family Has Seen Only the Top of Their Loved One’s Head for the Past Two Years"
+            },
+            {
+              "length_ms": 2659190,
+              "start_ms": 45270774,
+              "title": "Chapter 12: Monopolies Are Why I Traveled to Chicago and Tel Aviv to Learn How to Stop Them"
+            },
+            {
+              "length_ms": 23851,
+              "start_ms": 47929964,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81QeRT5K2uL.jpg",
