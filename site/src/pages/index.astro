@@ -6,9 +6,92 @@ import StatsBand from '../components/home/StatsBand.tsx'
 import LatestAdditions from '../components/home/LatestAdditions.tsx'
 import Waveform from '../components/Waveform.astro'
 import ValueCards from '../components/home/ValueCards.astro'
+
+// Structured data, HOMEPAGE ONLY. One @graph so the three nodes can reference
+// each other by @id rather than repeating themselves, built as a typed object
+// and serialised with JSON.stringify - a hand-written JSON literal in the
+// template can drift into something no parser accepts, and this cannot.
+//
+// Every claim here is one the site already makes in prose: the licence is the
+// FACTUAL CORE's (CC0-1.0), deliberately not mentioning the CC BY-SA community
+// layer, which this node does not describe. The download points at the releases
+// PAGE because each artifact URL is per-release and would go stale.
+const SITE = 'https://meta.audiosilo.app'
+const REPO = 'https://github.com/kodestar/audiosilo-meta'
+
+interface JsonLdGraph {
+  '@context': string
+  '@graph': Record<string, unknown>[]
+}
+
+const structuredData: JsonLdGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Dataset',
+      '@id': `${SITE}/#dataset`,
+      name: 'AudioSilo Meta',
+      description:
+        'An open source, community-maintained audiobook database: works, recordings, narrators, series and chapters. Free to use and dedicated to the public domain.',
+      url: `${SITE}/`,
+      isAccessibleForFree: true,
+      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      creator: { '@id': `${SITE}/#organization` },
+      keywords: [
+        'audiobooks',
+        'audiobook metadata',
+        'narrators',
+        'audiobook series',
+        'chapters',
+        'open data',
+        'public domain',
+      ],
+      sameAs: REPO,
+      distribution: {
+        '@type': 'DataDownload',
+        name: 'AudioSilo Meta SQLite releases',
+        description:
+          'The whole database compiled to a single SQLite file, published gzip-compressed with a checksum on every release.',
+        encodingFormat: 'application/x-sqlite3',
+        contentUrl: `${REPO}/releases`,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      name: 'AudioSilo Meta',
+      url: `${SITE}/`,
+      description:
+        'Search the open source audiobook database: works, recordings, narrators, series and chapters.',
+      publisher: { '@id': `${SITE}/#organization` },
+      about: { '@id': `${SITE}/#dataset` },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${SITE}/?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#organization`,
+      name: 'AudioSilo',
+      url: 'https://audiosilo.app',
+      logo: `${SITE}/android-chrome-512x512.png`,
+      sameAs: ['https://github.com/kodestar', REPO],
+    },
+  ],
+}
 ---
 
 <Base hasHero>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+  />
   <Hero />
 
   <!-- Stats band -->
