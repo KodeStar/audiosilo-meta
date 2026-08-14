@@ -90,6 +90,26 @@ func (c *composer) addWork(s sections) {
 		return
 	}
 
+	// The two title-side gates, before the slug is derived from the title
+	// (dupidentity.go). Order is most-specific-first:
+	//
+	//  1. a title stating a KNOWN series and a volume number the catalogue already
+	//     fills names that member, and saying so is more use to a submitter than any
+	//     later gate's message;
+	//  2. otherwise the decoration is stripped, which is what lets the existing
+	//     work-SLUG gate below see the collision at all - a decorated title slugs to
+	//     an address no work occupies, which is exactly how a second record of a
+	//     catalogued book used to get composed.
+	ctx := c.titleContextFor(title, s.get(fWorkSeriesName))
+	if c.checkSeriesVolume(ctx) {
+		return
+	}
+	ctx, titleOK := c.checkDecoratedTitle(ctx)
+	if !titleOK {
+		return
+	}
+	title = ctx.title
+
 	workSlug := slugify(title)
 	if workSlug == "" {
 		c.fail(StatusInvalid, "Title %q produced an empty slug", title)
@@ -116,6 +136,16 @@ func (c *composer) addWork(s sections) {
 	authorSlugs := c.slugsFor(authorNames, sourceRef)
 	narratorSlugs := c.slugsFor(narratorNames, sourceRef)
 	if c.failed() {
+		return
+	}
+
+	// The identity gate needs the author SLUGS (the identity the catalogue records
+	// people by), so it sits just after they are resolved - and before the work
+	// record is queued. The person records it may have created are harmless: a
+	// person the submission names is real whether or not this work is composed, and
+	// the terminal verdict means nothing is written at all (Process discards a failed
+	// submission's queued entries).
+	if c.checkNormalizedIdentity(ctx, lang, authorSlugs) {
 		return
 	}
 

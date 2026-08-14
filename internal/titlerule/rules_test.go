@@ -4,7 +4,6 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -126,9 +125,10 @@ func TestDecorationsAreSilentOnACleanTitle(t *testing.T) {
 	}
 }
 
-// The edition-marker code must be the IMPORTER's rule, not a local re-spelling: a
-// hand-written version drifted on bracket optionality and stacked markers.
-func TestEditionMarkerIsTheImportersRule(t *testing.T) {
+// The edition-marker rule (edition.go) and the decoration code that reads it. The
+// cases pin what a hand-written second version got wrong: bracket optionality and
+// stacked markers.
+func TestEditionMarkerRule(t *testing.T) {
 	cases := []struct {
 		title string
 		want  bool
@@ -142,8 +142,11 @@ func TestEditionMarkerIsTheImportersRule(t *testing.T) {
 	for _, c := range cases {
 		got := len(Decorations(TitleFacts{Title: c.title})) > 0 &&
 			PrimaryDecoration(Decorations(TitleFacts{Title: c.title})) == DecEdition
-		if importer.HasEditionMarker(c.title) != c.want {
-			t.Errorf("importer.HasEditionMarker(%q) = %v, want %v", c.title, !c.want, c.want)
+		if HasEditionMarker(c.title) != c.want {
+			t.Errorf("HasEditionMarker(%q) = %v, want %v", c.title, !c.want, c.want)
+		}
+		if stripped := StripEditionMarkers(c.title); c.want == (stripped == c.title) {
+			t.Errorf("StripEditionMarkers(%q) = %q: a marker must be removed and nothing else touched", c.title, stripped)
 		}
 		if c.want && !got {
 			t.Errorf("%q: the decoration table did not file it under %s", c.title, DecEdition)
@@ -296,27 +299,6 @@ func TestOneEditApartIsExactlyOneEdit(t *testing.T) {
 	for _, c := range cases {
 		if got := OneEditApart(c.a, c.b); got != c.want {
 			t.Errorf("OneEditApart(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
-		}
-	}
-}
-
-// The audit and the importer must never disagree about which two spellings are one
-// person, which is why the key is the importer's own.
-func TestMarkedNameKeyIsTheImportersRule(t *testing.T) {
-	for _, c := range []struct {
-		a, b string
-		same bool
-	}{
-		{"C. J. Critt", "CJ Critt", true},
-		{"J.D. Franx", "JD Franx", true},
-		{"E. M. Brown", "Em Brown", false},
-		{"Mr. James", "M. R. James", false},
-	} {
-		if got := MarkedNameKey(c.a) == MarkedNameKey(c.b); got != c.same {
-			t.Errorf("MarkedNameKey(%q) == MarkedNameKey(%q) is %v, want %v", c.a, c.b, got, c.same)
-		}
-		if MarkedNameKey(c.a) != importer.MarkedNameKey(c.a) {
-			t.Errorf("MarkedNameKey(%q) is not the importer's answer", c.a)
 		}
 	}
 }

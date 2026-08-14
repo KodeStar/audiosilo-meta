@@ -34,6 +34,13 @@ type workDerived struct {
 	// plain is the title cleaned against NO series, which a series-less work
 	// contributes as its second cluster key.
 	plain string
+	// wantKey and plainKey are those two titles' NORMALIZED IDENTITY keys, through
+	// titlerule.IdentityTitleKey - the one rule pkg/check's census and both writers'
+	// duplicate guards key by. This package calibrated that rule and must not spell
+	// it a second time; W-DUP's own addition to it (keying an identity-less residual
+	// by its series as well) is layered on the key rather than replacing it.
+	wantKey  string
+	plainKey string
 
 	// seq is the volume number the title itself spells out, against seriesName.
 	seq    float64
@@ -67,10 +74,12 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 	}
 
 	d.want = titlerule.Clean(w.Title, d.seriesName)
+	d.wantKey = titlerule.IdentityTitleKey(w.Title, d.seriesName)
 	if d.seriesName == "" {
-		d.plain = d.want
+		d.plain, d.plainKey = d.want, d.wantKey
 	} else {
 		d.plain = titlerule.Clean(w.Title, "")
+		d.plainKey = titlerule.IdentityTitleKey(w.Title, "")
 	}
 	d.seq, d.hasSeq = titlerule.BareSeq(w.Title, d.seriesName)
 	d.artArticle, d.artSeries, d.artRest, d.artOK = titlerule.ArticleSeriesPrefix(w.Title, ix.resolveSeries)

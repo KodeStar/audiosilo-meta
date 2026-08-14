@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -116,5 +117,26 @@ func TestPersonDupIsSilentOnUnrelatedPeople(t *testing.T) {
 	rep := runFixture(t, peopleFixture(t, "Jane Doe", "Bram Stoker", "Luke Daniels"))
 	if got := classOf(t, rep, ClassPersonDup); len(got) != 0 {
 		t.Errorf("unrelated people were grouped: %+v", got)
+	}
+}
+
+// The audit and the importer must never disagree about which two spellings are one
+// person, which is why the key the P-DUP index builds on is the importer's own
+// (importer.MarkedNameKey -> markedKey, the rule the importer MERGES spellings on).
+// This test lived in internal/titlerule while that package re-exported the key; it
+// moved here with the re-export's removal, to the consumer that actually asks.
+func TestMarkedNameKeyIsTheImportersRule(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		same bool
+	}{
+		{"C. J. Critt", "CJ Critt", true},
+		{"J.D. Franx", "JD Franx", true},
+		{"E. M. Brown", "Em Brown", false},
+		{"Mr. James", "M. R. James", false},
+	} {
+		if got := importer.MarkedNameKey(c.a) == importer.MarkedNameKey(c.b); got != c.same {
+			t.Errorf("MarkedNameKey(%q) == MarkedNameKey(%q) is %v, want %v", c.a, c.b, got, c.same)
+		}
 	}
 }

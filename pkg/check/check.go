@@ -71,6 +71,19 @@ type Result struct {
 	// exactly as it did before this field existed.
 	Warnings []Problem
 	Catalog  *model.Catalog
+	// Identity is the NORMALIZED WORK IDENTITY index over Catalog (identity.go),
+	// built by the load because its own duplicate census needs it - so it is built
+	// UNCONDITIONALLY, and the ~8% it adds to a load over the 279k-work tree is the
+	// census's price, not a consumer's. It is handed over so a WRITER validating the
+	// tree it is about to write to - the bulk importer's create guard, the intake
+	// bot's duplicate gates - probes the index this load already built instead of
+	// rebuilding it, which would pay the title-clean pass twice for an answer
+	// identical by construction. A consumer that HOLDS it also holds the catalogue
+	// alive; see identity.go's retention note.
+	//
+	// nil when the load failed before a catalogue existed, which every consumer
+	// reads as "no index, no guard" rather than as an empty catalogue.
+	Identity *WorkIdentity
 }
 
 // OK reports whether the load found no problems. Warnings are advisory and do
@@ -333,13 +346,21 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCrossLanguageRecordings(cat, idx, warn)
 	checkHonorificPersonPairs(cat, idx, warn)
 	checkIdentityEqualWorks(cat, idx, warn)
+	// The normalized-identity index is built here rather than inside the rule
+	// because it is the SHARED one: it travels out on Result.Identity, so
+	// internal/importer's create guard and internal/issueform's intake gate probe
+	// the very index this census counted rather than rebuilding it, and the tree's
+	// census and the two writers' refusals can never disagree about what one book
+	// is (identity.go).
+	identity := NewWorkIdentity(cat)
+	checkNormalizedDuplicateWorks(identity, idx, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
 
 	sortProblems(l.probs)
 	sortProblems(l.warns)
 
-	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat}
+	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}
 }
 
 func sortProblems(ps []Problem) {

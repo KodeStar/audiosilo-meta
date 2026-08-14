@@ -296,11 +296,12 @@ func languagesCompatible(a, b string) bool { return a == "" || b == "" || a == b
 // one contains the other - with the containing set itself credited by the other
 // side. The nesting is what keeps a mutual-translation pair (each one's author
 // credited as the other's translator) apart: their identities are disjoint.
+// It is IdentityAuthorsMatch (identity.go) with one side's sets read off a work,
+// so the nesting rule has one implementation whether the caller holds two
+// catalogued works or a work and an incoming row.
 func IdentityEqualWorks(a, b *model.Work) bool {
 	aAll, aID := identitySets(a)
-	bAll, bID := identitySets(b)
-	return (subset(aID, bID) && subset(bID, aAll)) ||
-		(subset(bID, aID) && subset(aID, bAll))
+	return IdentityAuthorsMatch(b, aAll, aID)
 }
 
 // identitySets returns a work's whole author set and its identity subset (the
@@ -339,6 +340,115 @@ func subset(a, b map[string]bool) bool {
 		}
 	}
 	return true
+}
+
+// checkNormalizedDuplicateWorks reports a group of works whose titles NORMALIZE to
+// one identity - the same book recorded twice under two retailer spellings of its
+// title.
+//
+// It is the tree-side census of the class the intake gate and the importer's create
+// guard now refuse: a bulk import cannot see through a retailer's decoration, so
+// "Hammered" and "Hammered: The Iron Druid Chronicles, Book 3" were minted as two
+// works, and a full audit of the tree found 4,596 such clusters. The prevention
+// stops the class GROWING; this counts what is already there, in every metacheck
+// run, so a repair wave's progress is a number and a regrowth is visible the wave
+// after it happens.
+//
+// ADVISORY, and it must stay advisory: the fix is a MERGE, which moves recordings,
+// series memberships and sidecars onto a survivor and retires a public slug. No rule
+// may demand one on its own reading - internal/audit measured five separate vetoes
+// a merge has to clear, every one of them a question a title cannot answer - and
+// failing the check on a class the repair waves are still draining would block every
+// unrelated contribution until they finish.
+//
+// It is deliberately DISJOINT from checkIdentityEqualWorks, its neighbour above: a
+// group is reported only when two of its members' RAW title slugs differ. A pair
+// that spells its title identically is that rule's finding ("one book under two
+// ids"), and reporting the same pair twice would make the census line count one
+// defect as two. So this class is exactly "titles that differ and mean the same
+// book", which is the decoration-minted population. What each pair must clear
+// otherwise is normalizedDuplicateGroup's business, and it is the index's own
+// predicate - the same rules the two writers refuse a new record on.
+func checkNormalizedDuplicateWorks(ix *WorkIdentity, idx *pathIndex, warn addFunc) {
+	for _, key := range ix.Keys() {
+		works := ix.Works(key)
+		if len(works) < 2 {
+			continue
+		}
+		group := normalizedDuplicateGroup(ix, works)
+		if len(group) < 2 {
+			continue
+		}
+		lead := group[0]
+		others := make([]string, 0, len(group)-1)
+		for _, w := range group[1:] {
+			others = append(others, w.ID)
+		}
+		// The wording deliberately does NOT carry checkIdentityEqualWorks' marker
+		// ("one book under two ids"): an advisory is classified by the marker its
+		// message ends in, the classifier takes the FIRST marker that matches, and a
+		// message carrying both would be counted as its neighbour's class - which is
+		// exactly what the first draft of this rule did, reporting 0 of its own
+		// findings while its lines were in the log.
+		warn(idx.work[lead], "work %q normalizes to the same title and authors as %s "+
+			"(%q): the same book under two spellings of its title",
+			lead.ID, quotedList(others), lead.Title)
+	}
+}
+
+// dupCandidate is one key-group member with everything the pair loop asks of it
+// computed ONCE: a group of n members is n*(n-1)/2 pairs, and slugifying a title or
+// reducing an author list per pair is that many times more work than per member.
+type dupCandidate struct {
+	work *model.Work
+	// slug is the RAW title's slug, the disjointness test against
+	// checkIdentityEqualWorks.
+	slug string
+	// all and identity are the work's author sets, as the nesting rule reads them.
+	all      map[string]bool
+	identity map[string]bool
+}
+
+// normalizedDuplicateGroup returns the members of one key group that really are a
+// finding, in id order, or fewer than two of them.
+//
+// A member is kept when it pairs with at least one other member under the index's
+// own pairwise predicate (WorkIdentity.matches - languages, author nesting, no
+// stated-volume disagreement, the SAME rules the intake gate and the bulk guard
+// refuse a new record on), plus the two vetoes that belong to this class alone: RAW
+// titles that differ (a same-title pair is checkIdentityEqualWorks' finding) and no
+// serial position suffix telling the two apart.
+//
+// Pairwise rather than group-wide because the identity rule matches NESTED author
+// sets, so a key group can hold two unrelated books by different authors.
+func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Work {
+	cands := make([]dupCandidate, 0, len(works))
+	for _, w := range works {
+		all, identity := identitySets(w)
+		cands = append(cands, dupCandidate{work: w, slug: model.Slugify(w.Title), all: all, identity: identity})
+	}
+	keep := map[string]*model.Work{}
+	for i := 0; i < len(cands); i++ {
+		for j := i + 1; j < len(cands); j++ {
+			a, b := cands[i], cands[j]
+			if a.slug == b.slug {
+				continue // checkIdentityEqualWorks' finding, not this one
+			}
+			if differentVolumes(a.work, b.work) {
+				continue
+			}
+			if !ix.matches(b.work, a.work.Title, ix.SeriesNameOf(a.work.ID), a.work.Language, a.all, a.identity) {
+				continue
+			}
+			keep[a.work.ID], keep[b.work.ID] = a.work, b.work
+		}
+	}
+	out := make([]*model.Work, 0, len(keep))
+	for _, w := range keep {
+		out = append(out, w)
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
+	return out
 }
 
 // checkOrphanPeople reports a person record that nothing in the tree credits.
@@ -381,6 +491,7 @@ const (
 	AdvisoryCrossLanguage   = "cross-language-recording"
 	AdvisoryHonorificPerson = "honorific-person-pair"
 	AdvisoryIdentityEqual   = "identity-equal-works"
+	AdvisoryNormalizedDup   = "normalized-duplicate-works"
 	AdvisoryOrphanPerson    = "orphan-person"
 	AdvisorySidecarScale    = "mis-scaled-sidecar"
 	AdvisoryOversizedEntry  = "oversized-entry"
@@ -403,6 +514,12 @@ var advisoryMarkers = []struct {
 	{AdvisoryHonorificPerson, "only by a courtesy title", "honorific person pairs"},
 	{AdvisoryIdentityEqual, "one book under two ids", "identity-equal work pairs"},
 	{AdvisoryOrphanPerson, "an orphan record", "orphan people"},
+	// The normalized-identity collisions (checkNormalizedDuplicateWorks). APPENDED
+	// rather than filed next to its identity-equal sibling on purpose: the census
+	// line's order is this table's, and a wave is compared against the last one by
+	// reading that line, so a new class goes at the END where it cannot shift the
+	// columns a maintainer reads by position.
+	{AdvisoryNormalizedDup, "under two spellings of its title", "normalized-identity duplicate work groups"},
 	{AdvisorySidecarScale, "scaled to something other than the work's chapters", "mis-scaled sidecars"},
 	// The pack-storage advisory (packcheck.go's single-entry-over-target warning).
 	// It was MISSING from the census, which therefore reported fewer advisories

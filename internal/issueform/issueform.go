@@ -119,6 +119,12 @@ type composer struct {
 	// are one identifier.
 	isbnRec map[string]recRef
 
+	// identity is the normalized-identity index over the catalogue, taken from the
+	// load that seeded the dedup maps rather than built here (check.Result.Identity).
+	// It is the same index the bulk importer's create guard reads, so the two writers
+	// cannot disagree about what one book is (dupidentity.go).
+	identity *check.WorkIdentity
+
 	// submissionASINs is the set of normalized ASINs THIS submission stated in
 	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
 	// marker against it, so a marker can only vouch for a book the submission
@@ -251,7 +257,13 @@ func process(opts Options) Result {
 // It loads THROUGH the store, so the catalogue read and the submission's own
 // entry reads share one walk and one parse of each pack.
 func (c *composer) loadExisting() {
-	cat := check.LoadStore(c.store).Catalog
+	res := check.LoadStore(c.store)
+	// The normalized-identity index comes OFF the load (its own duplicate census
+	// builds it), so the add-work gates probe the index this load already has instead
+	// of cleaning every catalogued title a second time - see identityIndex, which
+	// substitutes an empty index when a load produced none.
+	c.identity = res.Identity
+	cat := res.Catalog
 	if cat == nil {
 		return
 	}
