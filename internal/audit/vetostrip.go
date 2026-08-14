@@ -6,16 +6,20 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
 
-// vetostrip.go holds the veto found by REVIEWING a live wave's merges rather than by
-// reading the proposals or by running the repair: two of wave 1 chunk 2's pairs were
-// different books that had met on a key only because each side shed a DIFFERENT series
-// name, and a full re-measurement over the tree found three more of the same shape.
+// vetostrip.go holds the two vetoes found by REVIEWING a live wave's own merges, rather
+// than by reading the proposals (which is how the first five were found) or by running
+// the repair (the three in vetoruntime.go).
 //
-// The rule itself is titlerule.SameTitleUnderCommonSeries - the soundness condition on
-// a one-sided key, stated once at the leaf so pkg/check's pairwise predicate (the
-// census, the intake gate, the importer's create guard) and this class read the same
-// sentence. See there for the mechanism, the four titles it was measured on and the
-// three correct merges it costs.
+// Two of wave 1 chunk 2's pairs were different books that had met on a key only because
+// each side shed a DIFFERENT series name; a full re-measurement found three more of that
+// shape, and the exhaustive review of every remaining non-advisory proposal that followed
+// found the second veto's shape - a title stating a volume the catalogue contradicts.
+//
+// The first rule is titlerule.SameTitleUnderCommonSeries - the soundness condition on a
+// one-sided key, stated once at the leaf so any consumer reads the same sentence rather
+// than a second spelling. See there for the mechanism, the titles it was measured on,
+// the three correct merges it costs and why pkg/check's pairwise predicate deliberately
+// does not ask it.
 
 // vetoStrippedSeriesDiffers: two members meet on a key that each of them reached by
 // shedding a different series name, so the key equality is about the template they
