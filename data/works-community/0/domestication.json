@@ -4205,6 +4205,380 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-10-land-of-war": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Elaine's absent brother, known as the Mad General, is the figure she associates with the imperial intervention that removes an abusive governor and turns her realm into a protected barony as war approaches.",
+            "id": "mad-general",
+            "name": "Mad General",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Queen Elaine"
+            ],
+            "description": "The ruler of a northern realm and the Mad General's sister. She resists an imperial governor's demands for greater ore deliveries until an officer kills him and presents a decree annexing her homeland as a protected barony.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elaine's one-eyed, battle-scarred military commander. He remains beside his queen on the anniversary of the Moon Army's seizure of their palace and serves as a loyal veteran during the realm's forced political transition.",
+            "id": "general-lian",
+            "name": "General Lian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hadjar's legendary teacher, already known from earlier events. News at the frontier says O'Run accepted execution for crimes attributed to his disciple, making his death a public act of sacrifice before the new war unfolds.",
+            "id": "o-run",
+            "name": "O'Run",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired senior Laskan combatant who leads aerial riders at the opening of the war. The hero destroys an imperial border ship and tries to stop its warning birds, though one messenger escapes.",
+            "id": "red-haired-laskan-great-hero",
+            "name": "Red-haired Laskan great hero",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar wakes after a costly victory to find that war with Laskan has begun. He has reached a barony-level sword kingdom, but his new power remains difficult to control when he is summoned before the imperial council.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Derek of the Steppe"
+            ],
+            "description": "Hadjar's former foe, now a Laskan great hero and the chosen warrior of the God of War. He claims responsibility for destroying Fort Daragon and openly vows to destroy both Hadjar and the empire.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Emperor Morgan"
+            ],
+            "description": "The emperor directing the response to Laskan's invasion. His Guard Corps summons Hadjar to the imperial council after the fall of Fort Daragon, placing Hadjar's emerging sword kingdom within the empire's war planning.",
+            "id": "morgan",
+            "name": "Morgan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hammer-wielding great hero who commands the imperial Guard Corps. He is the emperor's brother-in-law and an outcast from the Eternal Mountain Clan, and he summons Hadjar to the imperial council after the fall of Fort Daragon.",
+            "id": "guard-corps-leader",
+            "name": "Guard Corps leader",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The concealed senior heir of a major merchant house, assigned to Hadjar's forward expedition because of extensive study of the suspected dragon tomb and the dangerous region surrounding it.",
+            "id": "merchant-house-senior-heir",
+            "name": "Merchant-house senior heir",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The identity used by the merchant-house senior heir during Hadjar's mission. Karine offers cooperation limited to the expedition, defining the partnership in terms of shared survival and mutual advantage rather than lasting allegiance.",
+            "id": "karine",
+            "name": "Karine",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tiny fae of overwhelming power who knows Hadjar's history. She appears when he seeks an explanation for Derek's transformation and takes responsibility for answering him under an older obligation.",
+            "id": "freya",
+            "name": "Freya",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning creditor who expects to benefit from his agreement with Hadjar. Hadjar seeks him while trying to understand the source of Derek's new power, but Helmer's own interest remains tied to the debt between them.",
+            "id": "helmer",
+            "name": "Helmer",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient and dangerous presence tied to Hadjar's soul. Freya confirms that Hadjar's connection to the First Darkhan runs through both spirit and blood, deepening the mystery of the being carried within him.",
+            "id": "first-darkhan",
+            "name": "First Darkhan",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's sworn brother and one of the trusted fighters joining the secret Karnak expedition. Einen is Dora's partner and enters the mission as Hadjar's closest dependable ally in a party shaped by conditional loyalties.",
+            "id": "einen",
+            "name": "Einen",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted member of Hadjar's Karnak expedition and Einen's partner. Dora joins the briefing for the secret mission alongside the core group expected to cross one of the empire's most lethal regions.",
+            "id": "dora-marnil",
+            "name": "Dora Marnil",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A swordsman selected for Hadjar's secret expedition into Karnak. Tom travels with Einen, Dora, Galkad, and the rest of the mission party, and no longer openly challenges Einen and Dora's relationship.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physically formidable member of Hadjar's secret Karnak party. Galkad joins the mission as one of the trusted companions expected to survive the jungle crossing before the expedition can even reach its objective.",
+            "id": "galkad",
+            "name": "Galkad",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Hadjar's secret expedition into Karnak. Annis joins the mission briefing with the companions preparing to cross the dangerous jungle on foot.",
+            "id": "annis",
+            "name": "Annis",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hidden alchemist with a duchy-level magic kingdom who has harvested ninety-nine soul-names for the Hundred Voices Pill. Hadjar is selected as the final subject because of his unusual inner power.",
+            "id": "renegade-alchemist",
+            "name": "Renegade alchemist",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Laskan great hero whose cloud kingdom creates the storm that intercepts Hadjar's expedition. The hero advances with Derek and forces Hadjar to leave the airship to protect his companions.",
+            "id": "cloud-wielding-laskan-great-hero",
+            "name": "Cloud-wielding Laskan great hero",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's bonded spirit, which calls him brother and merges with him in flight. Their partnership lets Hadjar carry explosives through the manufactured storm toward the Laskan vanguard.",
+            "id": "quetzal",
+            "name": "Quetzal",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful mage who leads the Magic Dawn Pavilion and discusses the promise of imperial youths with a Dragonlands official. He has already found the young dragon being sought, but deliberately conceals that knowledge.",
+            "id": "magic-dawn-pavilion-head",
+            "name": "Magic Dawn Pavilion head",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An official enforcing the authority of the Dragonlands ruling palace. The minister searches the human empire for a young dragon who left home and interfered in a vassal territory.",
+            "id": "dragonlands-minister",
+            "name": "Dragonlands minister",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pathfinder's daughter in an isolated jungle tribe. Annette finds Hadjar gravely injured after his fall into a lake, brings him to her people, and admits that she contacted a lake spirit during the darkness overhead.",
+            "id": "annette",
+            "name": "Annette",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The healer of Annette's isolated tribe and an authority equal to its Pathfinder. He treats Hadjar after the injured outsider is brought to the settlement.",
+            "id": "nature-speaker",
+            "name": "Nature Speaker",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder of Annette's tribe whose authority extends over both the Pathfinder and the Nature Speaker. The Keeper overrules objections to Hadjar's outsider status and approves Annette as his guide through initiation.",
+            "id": "keeper-of-the-past",
+            "name": "Keeper of the Past",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A musician from Hadjar's former life who becomes his creative partner and close companion. During his initiation vision, their bond is tested by compromising images and evidence that she was blackmailed.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A black-cloaked figure encountered during Hadjar's initiation, bearing half of Hadjar's own face. It is connected to his buried memories and confronts him as a separated part of himself.",
+            "id": "hadjars-other-soul-half",
+            "name": "Hadjar's other soul half",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior imperial heir who secretly joins the Karnak party in pursuit of knowledge from the ancient tomb. On reuniting with Hadjar's group, she asks to be treated as an ordinary companion rather than by her title.",
+            "id": "imperial-princess",
+            "name": "Imperial princess",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imperial princess's wary Guard Corps protector. She distrusts the expedition's circumstances, takes the possible survival of Derek seriously, and places the princess's safety above cooperation with the wider party.",
+            "id": "princesss-guard-corps-protector",
+            "name": "Princess's Guard Corps protector",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A turquoise-clad figure encountered in a hidden section of the ancient tomb. It recognizes Hadjar as the last member of the Dark Storm tribe after he and three companions pass through a narrow crevice.",
+            "id": "turquoise-clad-tomb-figure",
+            "name": "Turquoise-clad tomb figure",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The true identity of the turquoise-clad figure in the ancient tomb. This remnant claims Hadjar as its final heir and recognizes the being bound to him as a longtime foe.",
+            "id": "dragon-emperors-shadow",
+            "name": "Dragon emperor's shadow",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion devoted to the captured Galkad. As Hadjar's party approaches the Free Baronies, the others fear that grief over his captivity may drive her to act recklessly.",
+            "id": "galkads-lover",
+            "name": "Galkad's lover",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient living presence beneath Hadjar's homeland. It recognizes the fragment of an old enemy within Hadjar's soul and begins a difficult conversation when he comes seeking help against Derek.",
+            "id": "tree-of-life",
+            "name": "Tree of Life",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit-world guide whom Hadjar asks for a route to the aid he needs. The flower spirit points him toward a dangerous old woman and warns that requesting a third favor will carry a price.",
+            "id": "flower-spirit",
+            "name": "Flower spirit",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful spirit-world host who offers Hadjar conditional hospitality. Her strange household obeys binding customs, and the healing she provides places him under obligations whose full terms he does not yet know.",
+            "id": "old-woman",
+            "name": "Old woman",
+            "reveal": {
+              "chapter": 91
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The true identity of Hadjar's spirit-world host. The Winter Court queen sends him north with clothing intended to heal his wounded soul, while the promised future story and an older court debt remain binding concerns.",
+            "id": "winter-court-queen",
+            "name": "Winter Court queen",
+            "reveal": {
+              "chapter": 94
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fifth Legion battalion commander holding the defensive line against Derek's undead army. Officer Rakish uses the collective Queen's Hand shield technique and makes severe decisions to prevent fallen soldiers from rising.",
+            "id": "officer-rakish",
+            "name": "Officer Rakish",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09DZ2V12S",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-10-land-of-war"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
