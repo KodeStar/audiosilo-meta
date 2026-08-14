@@ -5133,6 +5133,366 @@
         "work": "watership-down"
       }
     },
+    "way-to-the-north": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mad General"
+            ],
+            "description": "A former general and accomplished swordsman detained with his companions by the Twilight Secret Sect. Publicly recognized as the Mad General, he may also be the sect's best chance of dealing with the approaching Raven Sect.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A trusted warrior companion held with Hadjar's party when the Twilight Secret Sect intervenes. Hadjar relies on her in battle.",
+            "id": "lathea",
+            "name": "Lathea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Abraham"
+            ],
+            "description": "A composed former associate of the Twilight Secret Sect's head and a strategic ally to Hadjar. While the party is detained, he argues that Hadjar offers a better prospect for negotiating with the force approaching the sect.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The peak Heaven Emperor who leads the Twilight Secret Sect. She detains Hadjar's party after ending an immediate confrontation, but grants Abraham one day to prove that Hadjar may help with the Raven Sect crisis.",
+            "id": "twilight-secret-sect-head",
+            "name": "Twilight Secret Sect Head",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sect Duelist"
+            ],
+            "description": "The Twilight Secret Sect's best one-on-one fighter, chosen to join the delegation sent to meet the Raven Sect.",
+            "id": "twilight-secret-sect-duelist",
+            "name": "Twilight Secret Sect Duelist",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Twilight Secret Sect Duelist",
+              "Sect Duelist"
+            ],
+            "description": "The former sect duelist, now head of the Twilight Secret Sect and leader of its surviving disciples. Bereaved and inexperienced in large-scale war, she must prepare the frightened survivors for the campaign against the Raven Sect.",
+            "id": "new-twilight-secret-sect-head",
+            "name": "New Twilight Secret Sect Head",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sect Fighter"
+            ],
+            "description": "A Twilight Secret Sect fighter selected to join the delegation sent to meet the Raven Sect.",
+            "id": "patrol-captain",
+            "name": "Patrol Captain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shock"
+            ],
+            "description": "The patrol captain is revealed to be Desert Mirage, the same person also called Shock. His attachment to the Twilight Secret Sect remains central after earlier losses.",
+            "id": "desert-mirage",
+            "name": "Desert Mirage",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An expelled former member of the Twilight Secret Sect who can suppress Hadjar's awareness of the imprisoned Black General by touching him.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imprisoned source of the soul fragment carried by Hadjar, as identified through Twilight Secret Sect records. His connection to Hadjar increases the political danger surrounding the Raven Sect negotiations.",
+            "id": "black-general",
+            "name": "Black General",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "aliases": [
+              "Alchemist-Emissary"
+            ],
+            "description": "A self-modified warrior alchemist who speaks for the Raven Sect before its assembled army. He studies Hadjar's unusually altered blood and offers answers about Hadjar's origins in exchange for allegiance.",
+            "id": "raven-sect-commander",
+            "name": "Raven Sect Commander",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Alba"
+            ],
+            "description": "One of the few people in Hadjar's company whom Abraham considers to have meaningful experience of war. He remains with the group as the Twilight Secret Sect prepares for a siege and Hadjar is pressed to assume command.",
+            "id": "alba-udun",
+            "name": "Alba Udun",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Young Wizard",
+              "Lesket Mage"
+            ],
+            "description": "Hadjar's young mage companion, able to unravel a major Therna construction with a few words and little power. His unusual command of magic makes him valuable as the sect improvises its defenses.",
+            "id": "lesket-mage",
+            "name": "The Lesket Mage",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced archer whom Hadjar trusts to command the Twilight Secret Sect's archers and artillery. He accepts the battlefield assignment and restrains an impulsive opening attack as the Raven Sect deploys its siege engines.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Great Spirit"
+            ],
+            "description": "The ancient guardian of the Twilight Mountains and a former soldier of the Black General. It freezes the battlefield and places a Therna mark on Hadjar.",
+            "id": "twilight-mountains-guardian-spirit",
+            "name": "Twilight Mountains' Guardian Spirit",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Twilight Secret Sect's chief smith, who accepts responsibility for a disciple's secret weapons dealings and explains how an anti-spirit golem could threaten the guardian.",
+            "id": "chief-blacksmith",
+            "name": "Chief Blacksmith",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ancient Wizard"
+            ],
+            "description": "A youthful but immensely powerful wizard serving as an adviser to the human army in the distant past.",
+            "id": "potter",
+            "name": "The Potter",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Black General"
+            ],
+            "description": "The historical name by which the Black General is known in the Potter's era. The Potter recognizes the connection after hearing Hadjar's full name and warns him that the name carries a dangerous association in this time.",
+            "id": "black-god",
+            "name": "Black God",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Winter Court aristocrat who rules the Rainbow Elves in the era of the Potter's siege. A curse makes her resemble each observer's beloved, and she asks Hadjar to save her daughter if her people cannot be spared.",
+            "id": "fae-queen",
+            "name": "Fae Queen",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hadjar Darkhan"
+            ],
+            "description": "The title used for Hadjar by the human king during the Potter's historical campaign. The king notices his swordsmanship and recognizes him as the northerner summoned into the army's decisive siege.",
+            "id": "wind-of-the-northern-valleys",
+            "name": "Wind of the Northern Valleys",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The child Hadjar promised the Fae Queen he would protect. He finds her during the fall of the fae castle and rescues her from the human king, after which the guardian spirit identifies her as a future warrior queen.",
+            "id": "fae-queens-daughter",
+            "name": "Fae Queen's Daughter",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Twilight Secret Sect defender fighting in the outer battle after the Raven cannon breaches the castle. She stands among Hadjar's allies as the sect struggles to keep the invaders from its hidden artifact.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Demon Companion"
+            ],
+            "description": "A dangerous demon whom Hadjar summons because his knowledge may reveal the Raven Sect's hiding place. He returns mutilated from the Summer Queen's realm, restores his body with darkness, and offers cooperation on his own terms.",
+            "id": "lord-of-nightmares",
+            "name": "Lord of Nightmares",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hidden-School Master"
+            ],
+            "description": "The terminally ill elder who leads the concealed mountain community controlling the Therna accumulators Hadjar needs. Though he appears mortal and has no detectable energy, his presence immediately puts Hadjar on guard.",
+            "id": "hidden-mountain-community-leader",
+            "name": "Hidden-Mountain Community Leader",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit who appears within Hadjar's recovered childhood memory during the ice-lake trial. He offers to help Hadjar rediscover the true name of the North.",
+            "id": "ice-wolf-chief",
+            "name": "Ice-Wolf Chief",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Raven master's disciple who leads a delegation from the island castle. He recognizes Hadjar as another bearer of a Black General soul fragment and refuses the invading army's demand for surrender.",
+            "id": "raven-masters-leading-disciple",
+            "name": "Raven Master's Leading Disciple",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hidden leader of the Raven Sect and creator of the soul golems used to hunt Black General fragments. He confronts an immobilized Hadjar during the anomaly's collapse and prepares to use Hadjar in a ritual to restore the Black General.",
+            "id": "raven-master",
+            "name": "Raven Master",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Raven Master's Soul Golem"
+            ],
+            "description": "The man who raised or trained Hadjar, now revealed as a soul golem engineered and controlled by the Raven master. The memories returned by his death retain an attachment to Hadjar that interferes with the master's ritual.",
+            "id": "hadjars-former-master",
+            "name": "Hadjar's Former Master",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The principal magic specialist on the Twilight Secret Sect council, recognizable by his tattoos and staff.",
+            "id": "chief-mage",
+            "name": "Chief Mage",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler in the sect chronicle of the Potter-era siege. He commands the human attackers, kills the fae king, and is later imprisoned with his servant.",
+            "id": "human-king",
+            "name": "Human King",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient ruler whose voice and identity emerge through Abraham Shensie. He addresses Hadjar as an old acquaintance before the surviving Raven cannon strikes the sect's defenses.",
+            "id": "ancient-king",
+            "name": "Ancient King",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient king's servant, connected to Abraham Shensie's companion through a distant spiritual or family bond associated with their earlier anomaly expedition.",
+            "id": "ancient-kings-servant",
+            "name": "Ancient King's Servant",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer in the invading force who works with Alba Udun to coordinate artillery and field fortifications outside the Raven Sect castle.",
+            "id": "unnamed-officer",
+            "name": "Unnamed Officer",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CP6FY6M1",
+            "type": "community"
+          }
+        ],
+        "work": "way-to-the-north"
+      }
+    },
     "waybound": {
       "characters": {
         "characters": [
