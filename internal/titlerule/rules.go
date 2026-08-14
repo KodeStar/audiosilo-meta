@@ -196,9 +196,11 @@ func Clean(title, series string) string {
 }
 
 // separatorRun matches two subtitle separators with nothing but whitespace between
-// them - an EMPTY segment, which is what removing a series name from between two of
-// them leaves ("A Murder of Crows: Shadows and Ash, Book Two" against that series
-// reduces to "A Murder of Crows: , Book Two").
+// them - an EMPTY segment, which is what removing a VOLUME MARKER from between two of
+// them leaves ("A Murder of Crows: Book 2, Shadows" reduces to "A Murder of Crows: ,
+// Shadows"). It used to be the series strip that produced this shape as well; that
+// strip is boundary-anchored now, so a series name between two separators is removed
+// with its whole segment (see Clean).
 //
 // The dangling-segment peels cannot fix it: the segment they would judge is the one
 // AFTER the run, which here holds a real word.
