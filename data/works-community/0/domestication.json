@@ -4205,6 +4205,350 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-8-land-of-the-enemy": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Hadjar"
+            ],
+            "description": "A Holy Sky School disciple and swordsman who returns after six weeks away. Though still an advanced Heaven Soldier, his body rivals that of a mid-stage Spirit Knight. His neural network now operates through his own mind, while a dangerous presence remains hidden within him.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A school mentor pursuing the Hundred Voices pill and revenge against the Emperor. He confines a summoned glyph in an alchemical cauldron and secretly arranges for a returned subject to be delivered for name extraction after reaching Spirit Knight.",
+            "id": "holy-sky-school-alchemist",
+            "name": "Holy Sky School alchemist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's prospective master at the Holy Sky School. An unusually powerful swordsman, he warns Hadjar to trust no one, accepts a letter from him, grants him 80,000 glory points, and sends him to the seventh training arena.",
+            "id": "hadjars-supervising-swordsman",
+            "name": "Hadjar's supervising swordsman",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Hadjar's trusted friend and fellow Holy Sky disciple. Recently promoted to the inner circle, he helped Dora and the Dinos siblings repel attackers at the school gates.",
+            "id": "einen",
+            "name": "Einen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Holy Sky disciple allied with Hadjar and Einen. She fought beside Einen and the Dinos siblings during the attack at the school gates.",
+            "id": "dora",
+            "name": "Dora",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dora"
+            ],
+            "description": "The Holy Sky ally previously introduced as Dora is a mid-stage Spirit Knight and an heir of House Marnil. She joins Hadjar and Einen for the Wastelands expedition.",
+            "id": "dora-marnil",
+            "name": "Dora Marnil",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Annis"
+            ],
+            "description": "An advanced Spirit Knight and skilled swordswoman who accompanies Tom. She meets Hadjar again upon his return.",
+            "id": "annis-dinos",
+            "name": "Annis Dinos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak Spirit Knight commanding the pirates who ambush Hadjar's group. She seeks revenge because Hadjar killed her daughters and refuses to identify the employer who hired her crew to seize him.",
+            "id": "pirate-captain",
+            "name": "Pirate captain",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Tom"
+            ],
+            "description": "An arrogant Spirit Knight swordsman whose awakened spirit is associated with thunderbolts. He has an unsettled rivalry with Einen, ending their first observed bout without a victory after Einen parries him.",
+            "id": "tom-dinos",
+            "name": "Tom Dinos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "ancient tigress",
+              "white tigress",
+              "tiger cub"
+            ],
+            "description": "Hadjar's ancient-beast companion, discovered alive after the earlier shipwreck. She survived by concealing herself in a small form.",
+            "id": "ancient-tigress",
+            "name": "Hadjar's ancient tigress companion",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile raven-like presence chained within a sarcophagus in Hadjar's soul-world. It calls Hadjar its descendant and addresses him directly, but its intentions are unclear.",
+            "id": "hostile-soul-fragment",
+            "name": "Hostile soul-fragment",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient figure whom the hostile soul-fragment identifies as its disciple. He appears in the fragment's unverified account of the distant past.",
+            "id": "erhard",
+            "name": "Erhard",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Erhard's uncle and the ruler of one of the Hundred Kingdoms. He leads a major army during the ancient war shown in the hostile fragment's account.",
+            "id": "king-eranos",
+            "name": "King Eranos",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Erhard"
+            ],
+            "description": "Erhard is identified in the hostile fragment's account as the Last King. The fragment claims that his enemies sealed him alive and that the supposed tomb of Emperor Decatur was built around his prison.",
+            "id": "last-king",
+            "name": "Last King",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord of Nightmares"
+            ],
+            "description": "A powerful manipulator with an existing claim on Hadjar. He appears without warning, admits involvement in an earlier affair, and urges Hadjar to survive the danger ahead while withholding his reasons.",
+            "id": "helmer",
+            "name": "Helmer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful court figure who learns that the Path Through the Clouds technique still exists. He kills the servant who delivered the evidence and postpones informing the Dragon Emperor while he searches for the practitioner so he can seize the technique first.",
+            "id": "dragon-official",
+            "name": "Dragon official",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A lord-comparable spirit golem clad in ice armor. It attacks Hadjar's party inside Grevendor and withstands his Black Wind technique.",
+            "id": "ice-armored-spirit-golem",
+            "name": "Ice-armored spirit golem",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The apparent ruler of a hidden hall built entirely of ice. She compels Hadjar to answer questions about the Last King's inheritance while he is injured and under her control.",
+            "id": "ice-woman",
+            "name": "Ice woman",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "ice woman"
+            ],
+            "description": "The former ice woman names her allegiance to the Winter Court. She dominates Hadjar's speech and movement with ease, then holds him within frozen bars that hinder his escape.",
+            "id": "winter-court-fae",
+            "name": "Winter Court fae",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "contracted assassin leader"
+            ],
+            "description": "A peak Spirit Knight commanding six Dead Moon assassins under contracts against Hadjar and Einen. He offers to spare them only if they surrender their cultivation and Hadjar's ancient-beast core.",
+            "id": "dead-moon-clan-leader",
+            "name": "Dead Moon Clan leader",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "expedition leader"
+            ],
+            "description": "The mid-stage Spirit Knight leading the Eternal Mountain Clan expedition that holds the tomb key. He has unusually deep energy reserves and initially orders the captured Hadjar and Einen killed before hearing their offer of a copied map.",
+            "id": "eternal-mountain-clan-junior-heir",
+            "name": "Eternal Mountain Clan junior heir",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hostile noble spearman traveling with the Eternal Mountain Clan expedition. He tries to attack Hadjar before Thea and her house's warriors stop him, and he resents both Hadjar and Thea.",
+            "id": "eternal-mountain-clan-spearman",
+            "name": "Eternal Mountain Clan spearman",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A mid-stage Spirit Knight who fights with a heavy sword and belongs to an impoverished great house. She stops a hostile spearman from attacking Hadjar and identifies herself as the sister of one of Hadjar's deceased former allies.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "temple servant"
+            ],
+            "description": "A nameless immortal encountered in an abandoned temple of the god of war. Although he calls himself a novice, his power lies beyond Hadjar's perception, and he already knows Hadjar's identity and history.",
+            "id": "immortal-servant-of-the-god-of-war",
+            "name": "Immortal servant of the god of war",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A maimed Red Mule School disciple and baron's son who once helped Hadjar. After the deaths of two expedition companions, he has sworn to kill Hadjar. A mysterious yellow light approaches him with an offer of power.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bull-headed, golem-like keeper of the Last King's repository. It administers the third trial, requiring Hadjar to make it draw its sword within three attacks.",
+            "id": "third-trial-guardian",
+            "name": "Third-trial guardian",
+            "reveal": {
+              "chapter": 87
+            }
+          },
+          {
+            "aliases": [
+              "undead trial administrator"
+            ],
+            "description": "The undead administrator of the repository's final trial and bearer of the divine artifact Wailing of Cities. Bound by the repository's rules, he immobilizes Hadjar and refuses to return him to the endangered Einen.",
+            "id": "emperor-decatur",
+            "name": "Emperor Decatur",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immensely powerful shadow that owns the graveyard of swords and offers Hadjar its personal inheritance. It identifies itself as Hadjar's ancestor and calls him uniquely worthy of the offer.",
+            "id": "black-general",
+            "name": "Black General",
+            "reveal": {
+              "chapter": 97
+            }
+          },
+          {
+            "aliases": [
+              "Black General",
+              "the Nameless"
+            ],
+            "description": "The Black General reveals that he is the First Darkhan and Hadjar's ancestor. A surviving fraction of a greater imprisoned being, he needs Hadjar alive because their fragments are attached and uses Dora's life to force acceptance of his inheritance.",
+            "id": "first-darkhan",
+            "name": "First Darkhan",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A giant cultivator who emerges alive from the repository disaster alongside Annis, the Dinos siblings, two archers, and the surviving tigress.",
+            "id": "giant-cultivator",
+            "name": "Giant cultivator",
+            "reveal": {
+              "chapter": 99
+            }
+          },
+          {
+            "description": "The snake-bodied leader of the demons that rebel against their governing laws. Helmer destroys her and presents her powerful core to Hadjar.",
+            "id": "rebel-demon-commander",
+            "name": "Rebel demon commander",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "famed swordsman",
+              "Hadjar's master"
+            ],
+            "description": "A famed swordsman who arrives as three clan leaders press their claim against Hadjar. He declares Hadjar his disciple, deters the leaders, and takes him to Storm Mountain for two years of severe training.",
+            "id": "new-swordsman-master",
+            "name": "New swordsman master",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1705279686",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-8-land-of-the-enemy"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
