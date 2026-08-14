@@ -227,7 +227,7 @@ describe('addWorkIssueUrlFromLibex', () => {
     expect(p.get('rec_asins')).toBe('US: B015RQON6I')
     expect(p.get('rec_cover_url')).toBe('https://m.media-amazon.com/images/I/71WZxAS.jpg')
     expect(p.get('sources')).toBe(
-      'libex: B015RQON6I\nLibex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-29)'
+      'libex: B015RQON6I\nLibex (libexdb.com) lookup for B015RQON6I (retrieved 2026-07-29)'
     )
   })
 

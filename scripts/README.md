@@ -7,7 +7,7 @@ recorded so they are reproducible and reviewable.
 ## libex-export-rows.sql - dump to importable rows
 
 `libex-export-rows.sql` is the validated query that turns a libex
-(libex.lostcartographer.xyz) database dump into the NDJSON row shape
+(libexdb.com) database dump into the NDJSON row shape
 `metaimport libex` parses. It emits one JSON object per line with only the
 factual columns the importer reads; the dump's description, summary, rating and
 copyright columns are never selected. It excludes AI-narrated rows (see below)

@@ -273,7 +273,7 @@ describe('libexToPrefill', () => {
     const lines = p.sources.split('\n')
     expect(lines[0]).toBe('libex: B015RQON6I')
     expect(lines[1]).toBe(
-      'Libex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-29)'
+      'Libex (libexdb.com) lookup for B015RQON6I (retrieved 2026-07-29)'
     )
   })
 
