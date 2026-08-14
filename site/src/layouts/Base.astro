@@ -38,9 +38,6 @@ const ogImage = new URL('/android-chrome-512x512.png', Astro.site).href
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -48,6 +45,27 @@ const ogImage = new URL('/android-chrome-512x512.png', Astro.site).href
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#db2777" />
     <meta name="theme-color" content="#0b111b" />
+
+    <!--
+      Everything between the ssr:head markers is REPLACED WHOLESALE by metaserve
+      on an entity route (/works/{slug}, /people/{slug}, /series/{slug}), which
+      composes a per-entity title, description, canonical, og/twitter set and
+      JSON-LD from the record it is serving - see internal/serve. On every other
+      page, and whenever the server has nothing to inject, the markers are inert
+      comments and this block is served exactly as built.
+
+      So: only per-page, entity-swappable metadata belongs INSIDE the markers.
+      charset, viewport, favicons, theme-color and the generator tag are
+      document-wide and stay OUTSIDE, above - a marker block the server replaces
+      must not be able to take them with it. Keep both markers, in order, exactly
+      once per document; the dist guard test (src/lib/dist-markers.test.ts) fails
+      the build if a refactor drops one, which would silently turn the entity
+      pages back into empty client-only shells for crawlers.
+    -->
+    <!--ssr:head-->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -62,6 +80,7 @@ const ogImage = new URL('/android-chrome-512x512.png', Astro.site).href
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <!--/ssr:head-->
   </head>
   <body class="bg-deep text-body min-h-screen flex flex-col">
     <a
