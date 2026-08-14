@@ -63,16 +63,19 @@ func handleOpenAPI(w http.ResponseWriter, r *http.Request) {
 }
 
 // matchesETag reports whether an If-None-Match header names etag. It handles the
-// comma-separated list and the "*" wildcard RFC 9110 allows, and compares
-// weakly (a "W/" prefix is ignored), which is what a cache revalidating a body
-// this handler never varies needs.
+// comma-separated list and the "*" wildcard RFC 9110 allows, and compares with
+// the WEAK comparison function the spec mandates for If-None-Match: a "W/"
+// prefix is ignored on BOTH sides, so a weak validator (the entity pages issue
+// one - see entityETag) matches the header it was itself sent in, and a strong
+// one (the spec route's content hash) still matches a weakened echo of it.
 func matchesETag(header, etag string) bool {
 	if header == "" {
 		return false
 	}
+	want := strings.TrimPrefix(etag, "W/")
 	for candidate := range strings.SplitSeq(header, ",") {
 		candidate = strings.TrimSpace(candidate)
-		if candidate == "*" || strings.TrimPrefix(candidate, "W/") == etag {
+		if candidate == "*" || strings.TrimPrefix(candidate, "W/") == want {
 			return true
 		}
 	}

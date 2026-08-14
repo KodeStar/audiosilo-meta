@@ -12,6 +12,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"html"
+	"io"
 	"log"
 	"math"
 	"net/http"
@@ -27,9 +29,14 @@ import (
 
 // Config configures a Server.
 type Config struct {
-	Addr          string        // listen address, e.g. ":8080"
-	DBPath        string        // local artifact to serve (dev); empty => must poll
-	Site          string        // optional static site directory served at "/"
+	Addr   string // listen address, e.g. ":8080"
+	DBPath string // local artifact to serve (dev); empty => must poll
+	Site   string // optional static site directory served at "/"
+	// SiteURL is the server's PUBLIC origin, without a trailing slash. metaserve
+	// cannot discover it (it sits behind a proxy and answers whatever Host it is
+	// given), and the entity pages have to emit absolute canonical, og: and
+	// JSON-LD URLs, so it is configuration. New defaults it to defaultSiteURL.
+	SiteURL       string
 	Poll          bool          // fetch/refresh the artifact from GitHub Releases
 	Repo          string        // owner/name, e.g. "KodeStar/audiosilo-meta"
 	Interval      time.Duration // fallback poll interval
@@ -66,8 +73,14 @@ type Server struct {
 
 	cur atomic.Pointer[snapshot]
 
-	site http.Handler
+	site *siteHandler
 	mux  http.Handler
+
+	// shells is the marker split of the built entity shells, done once at
+	// construction (see loadShells). Empty when no site directory is configured,
+	// or when the dist carries no injectable shells - the pages then degrade to
+	// the untouched static file.
+	shells shells
 
 	gh *ghClient
 
@@ -120,6 +133,12 @@ func New(cfg Config) (*Server, error) {
 	if cfg.maxPatchBase <= 0 {
 		cfg.maxPatchBase = defaultMaxPatchBase
 	}
+	if cfg.SiteURL == "" {
+		cfg.SiteURL = defaultSiteURL
+	}
+	// Stripped once, here, so every canonical/og/JSON-LD URL is one join away
+	// from being right rather than each having to defend against a "//".
+	cfg.SiteURL = strings.TrimRight(cfg.SiteURL, "/")
 	if cfg.WebhookSecret != "" {
 		if !cfg.Poll {
 			return nil, errors.New("serve: METASERVE_WEBHOOK_SECRET requires --poll")
@@ -158,6 +177,7 @@ func New(cfg Config) (*Server, error) {
 
 	if cfg.Site != "" {
 		s.site = newSiteHandler(cfg.Site)
+		s.shells = loadShells(cfg.Site, s.log)
 	}
 	s.mux = s.buildMux()
 	return s, nil
@@ -308,12 +328,23 @@ const idWildcard = "id"
 // registered pattern that HAS a wildcard to appear here or in
 // redirectExemptRoutes, which is how a fifth family route cannot ship without
 // redirect support.
-var redirectNamespaces = map[string]model.RedirectKind{
-	"GET /api/v1/works/{id}":                           model.RedirectWorks,
-	"GET /api/v1/works/{id}/recordings/{rid}/chapters": model.RedirectWorks,
-	"GET /api/v1/people/{id}":                          model.RedirectPeople,
-	"GET /api/v1/series/{id}":                          model.RedirectSeries,
-}
+// The HTML entity pages address the same records by the same slugs, so their
+// patterns are folded in from the ONE table that defines them (htmlEntityRoutes)
+// rather than restated here - a page family cannot be added without its
+// redirect, and the two tables cannot disagree about which namespace a family
+// resolves in.
+var redirectNamespaces = func() map[string]model.RedirectKind {
+	m := map[string]model.RedirectKind{
+		"GET /api/v1/works/{id}":                           model.RedirectWorks,
+		"GET /api/v1/works/{id}/recordings/{rid}/chapters": model.RedirectWorks,
+		"GET /api/v1/people/{id}":                          model.RedirectPeople,
+		"GET /api/v1/series/{id}":                          model.RedirectSeries,
+	}
+	for _, e := range htmlEntityRoutes {
+		m[e.pattern] = e.namespace
+	}
+	return m
+}()
 
 // redirectExemptRoutes are the wildcard routes that deliberately resolve no
 // retired slug. It is EMPTY today: every wildcard the API serves is a record id.
@@ -392,8 +423,14 @@ func (s *Server) buildMux() http.Handler {
 	for _, r := range s.routes() {
 		mux.Handle(r.pattern, r.handler)
 	}
-	// The static site catches everything the API surface did not claim.
+	// The HTML entity pages sit between the API and the static fallback, and only
+	// when a site directory is configured: with no dist there is no shell to
+	// inject into, and an API-only deployment serves no pages at all.
 	if s.site != nil {
+		for _, r := range s.htmlRoutes() {
+			mux.Handle(r.pattern, r.handler)
+		}
+		// The static site catches everything the API and the pages did not claim.
 		mux.Handle("/", s.site)
 	}
 	return mux
@@ -589,20 +626,48 @@ func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 // decision come from two different artifacts. A lookup FAILURE degrades to "no
 // redirect": the caller then answers its own 404, which is what the request looked
 // like anyway, rather than turning a missing record into a 500.
+//
+// WHICH BODY it writes is decided by the route table the pattern came from, not
+// by the caller: an API route gets the JSON body, an entity PAGE gets a minimal
+// HTML page linking the new URL (a browser that ignores the Location would
+// otherwise be shown a JSON document). The headers are identical either way, so
+// the two writers cannot drift on the part that matters.
 func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
-	kind, ok := redirectNamespaces[r.Pattern]
+	location, to, ok := resolveRedirect(r, snap)
 	if !ok {
-		return false // not a route a retired slug can arrive at
+		return false
+	}
+	w.Header().Set("Location", location)
+	// A tombstone is not permanent the way 301 invites a client to assume: a bad
+	// merge can be reversed, and the redirect then has to stop being served. An
+	// hour is long enough to spare the origin a stale client's repeated misses and
+	// short enough that reversing one is not a support problem.
+	w.Header().Set("Cache-Control", redirectMaxAge)
+	if htmlRedirectPatterns[r.Pattern] {
+		writeRedirectPage(w, location)
+		return true
+	}
+	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
+	return true
+}
+
+// resolveRedirect is the decision half of redirected: it reports the Location to
+// send and the slug that replaced the requested one, or ok=false when this
+// request is not a retired slug at a redirecting route.
+func resolveRedirect(r *http.Request, snap *snapshot) (location, to string, ok bool) {
+	kind, named := redirectNamespaces[r.Pattern]
+	if !named {
+		return "", "", false // not a route a retired slug can arrive at
 	}
 	idName := idWildcardOf(r.Pattern)
 	id := r.PathValue(idName)
 	to, err := snap.redirectTarget(kind, id)
 	if err != nil {
 		snap.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
-		return false
+		return "", "", false
 	}
 	if to == "" {
-		return false
+		return "", "", false
 	}
 	// A row pointing a slug at ITSELF would send a following client back here
 	// forever. pkg/check refuses one, so no sanctioned artifact carries it, but
@@ -611,16 +676,21 @@ func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
 	// 404 the request was already heading for.
 	if to == id {
 		snap.logf("serve: ignoring self-redirect for %s %q (the artifact's redirect table is corrupt)", kind, id)
-		return false
+		return "", "", false
 	}
-	w.Header().Set("Location", redirectLocation(r, idName, to))
-	// A tombstone is not permanent the way 301 invites a client to assume: a bad
-	// merge can be reversed, and the redirect then has to stop being served. An
-	// hour is long enough to spare the origin a stale client's repeated misses and
-	// short enough that reversing one is not a support problem.
-	w.Header().Set("Cache-Control", redirectMaxAge)
-	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
-	return true
+	return redirectLocation(r, idName, to), to, true
+}
+
+// writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
+// document that says where the record went and links there. A page's client is a
+// browser or a crawler, and both are better served by a followable link than by
+// the API's {"redirect": ...} envelope if they ignore the Location header.
+func writeRedirectPage(w http.ResponseWriter, location string) {
+	escaped := html.EscapeString(location)
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusMovedPermanently)
+	_, _ = io.WriteString(w, `<!doctype html><meta charset="utf-8"><title>Moved permanently</title>`+
+		`<p>This record has moved to <a href="`+escaped+`">`+escaped+"</a>.</p>\n")
 }
 
 // redirectMaxAge bounds how long a 301 may be cached. See redirected.
