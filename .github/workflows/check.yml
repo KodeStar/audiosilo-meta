@@ -16,6 +16,18 @@ on:
 permissions:
   contents: read
 
+# One live validation per pull request. The intake sweep force-pushes every open
+# bot-intake pull request on each data merge to main, and without a group each
+# force-push stacked a fresh full run behind the last - one merge queued a run
+# per open intake PR, and a string of merges multiplied that by the number of
+# merges. A superseded head's run validates a tree that can no longer be merged,
+# so it is cancelled. Pushes to main are never grouped or cancelled (the sha
+# group is unique per push): every commit that lands on main gets its own
+# complete validation.
+concurrency:
+  group: check-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   check:
     runs-on: ubuntu-latest
