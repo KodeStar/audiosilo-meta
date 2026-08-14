@@ -128,7 +128,7 @@
         "tags": ["Search"],
         "operationId": "search",
         "summary": "Search works, people and series together",
-        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series.\n\nTwo boosts run ahead of the relevance hits. A query that IS a work's title - compared whole, ignoring case, spacing and punctuation - returns that work FIRST; several works sharing the title all lead, in id order. A query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - resolves that volume and returns it next. An exact title leads a resolved volume, since the title is an equality and the volume an inference. The page stays exactly `limit` long, so a boost costs the last hit rather than widening the response, and a query that resolves neither returns the plain relevance page.",
+        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last word of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series. Punctuation is a word boundary on both sides, so \"Halo: Primordium\", \"Halo.Primordium\" and \"Halo Primordium\" are the same query - except that a run of single-letter fragments (an initialism) stays one adjacent phrase, so \"Q&A\" and \"M*A*S*H\" keep their selectivity rather than matching every row holding those letters apart.\n\nTwo boosts run ahead of the relevance hits. A query that IS a work's title - compared whole, ignoring case, spacing and punctuation - returns that work FIRST; several works sharing the title all lead, in id order. A query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - resolves that volume and returns it next. An exact title leads a resolved volume, since the title is an equality and the volume an inference. The page stays exactly `limit` long, so a boost costs the last hit rather than widening the response, and a query that resolves neither returns the plain relevance page.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }
@@ -675,7 +675,7 @@
         "name": "q",
         "in": "query",
         "required": true,
-        "description": "The search query. Matching is by whole word or word prefix; an empty or whitespace-only value is a 400.",
+        "description": "The search query. Matching is by whole word or word prefix, with punctuation as a word boundary - though an initialism (a run of single-letter fragments, as in \"Q&A\") is matched as one adjacent phrase; an empty or whitespace-only value is a 400, while a value holding no word at all (only punctuation) is an ordinary empty result page.",
         "schema": { "type": "string", "minLength": 1 }
       },
       "SearchLimit": {
