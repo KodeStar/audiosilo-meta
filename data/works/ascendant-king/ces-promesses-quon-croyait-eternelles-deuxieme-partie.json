@@ -1331,54 +1331,7 @@
             {
               "asin": "B07YRPFYYL",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81MhN-oNgQL.jpg",
-          "id": "carlos-torres-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-torres"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-06-12",
-          "runtime_min": 990,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRPFYYL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cesares"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRPFYYL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Césares"
-    },
-    "cesares-the-cesars": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-manuel-roldan"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history"
-      ],
-      "id": "cesares-the-cesars",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-torres-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B072K5HRYY",
               "region": "us"
@@ -1397,21 +1350,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRPFYYL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B072K5HRYY",
               "type": "libex-import"
             }
           ],
-          "work": "cesares-the-cesars"
+          "work": "cesares"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRPFYYL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B072K5HRYY",
           "type": "libex-import"
         }
       ],
-      "title": "Césares [The Cesars]"
+      "title": "Césares"
     },
     "cesars-way": {
       "added_at": "2026-07-29",

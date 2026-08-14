@@ -1608,6 +1608,7 @@
       "genres": [
         "action-adventure",
         "hard-science-fiction",
+        "military-science-fiction",
         "science-fiction",
         "space-opera"
       ],
@@ -2109,32 +2110,7 @@
             }
           ],
           "work": "cold-welcome"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B06Y2H1WCT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cold Welcome"
-    },
-    "cold-welcome-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "elizabeth-moon"
-      ],
-      "genres": [
-        "action-adventure",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "cold-welcome-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "christopher-scheeren-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2244,17 +2220,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "cold-welcome-dramatized-adaptation"
+          "work": "cold-welcome"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06Y2H1WCT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GHZGJ9QZ",
           "type": "libex-import"
         }
       ],
-      "title": "Cold Welcome [Dramatized Adaptation]"
+      "title": "Cold Welcome"
     },
     "cold-wicked-lies-fbi-romantic-suspense": {
       "added_at": "2026-07-29",

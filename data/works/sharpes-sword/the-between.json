@@ -4900,6 +4900,7 @@
       ],
       "genres": [
         "childrens",
+        "classics",
         "religion-spirituality"
       ],
       "id": "the-bible-comes-alive-series-dramatized",
@@ -4912,6 +4913,10 @@
           "asin": [
             {
               "asin": "B002V5GLP0",
+              "region": "us"
+            },
+            {
+              "asin": "B002V8N1CI",
               "region": "us"
             }
           ],
@@ -5052,6 +5057,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V5GLP0",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8N1CI",
+              "type": "libex-import"
             }
           ],
           "work": "the-bible-comes-alive-series-dramatized"
@@ -5062,182 +5072,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5GLP0",
           "type": "libex-import"
-        }
-      ],
-      "title": "The \"Bible Comes Alive\" Series (Dramatized)"
-    },
-    "the-bible-comes-alive-series-volume-4": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "your-story-hour"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "the-bible-comes-alive-series-volume-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "your-story-hour-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8N1CI",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1678014,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1602038,
-              "start_ms": 1678014,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1576356,
-              "start_ms": 3280052,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1554901,
-              "start_ms": 4856408,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1681310,
-              "start_ms": 6411309,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1595304,
-              "start_ms": 8092619,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1665010,
-              "start_ms": 9687923,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1501634,
-              "start_ms": 11352933,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1678431,
-              "start_ms": 12854567,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1669886,
-              "start_ms": 14532998,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1574127,
-              "start_ms": 16202884,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1471031,
-              "start_ms": 17777011,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1550675,
-              "start_ms": 19248042,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1542548,
-              "start_ms": 20798717,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1576449,
-              "start_ms": 22341265,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1566743,
-              "start_ms": 23917714,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1262608,
-              "start_ms": 25484457,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1434250,
-              "start_ms": 26747065,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1559777,
-              "start_ms": 28181315,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1583787,
-              "start_ms": 29741092,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1607378,
-              "start_ms": 31324879,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1479065,
-              "start_ms": 32932257,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1538276,
-              "start_ms": 34411322,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1441355,
-              "start_ms": 35949598,
-              "title": "Chapter 24"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61ls9AvU6xL.jpg",
-          "id": "your-story-hour-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "your-story-hour"
-          ],
-          "publisher": "Your Story Hour",
-          "release_date": "2008-12-30",
-          "runtime_min": 622,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8N1CI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-bible-comes-alive-series-volume-4"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8N1CI",
           "type": "libex-import"
         }
       ],
-      "title": "The Bible Comes Alive Series, Volume 4"
+      "title": "The \"Bible Comes Alive\" Series (Dramatized)"
     },
     "the-bible-cure-for-anxiety": {
       "added_at": "2026-07-29",

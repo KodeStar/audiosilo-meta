@@ -3657,6 +3657,7 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "the-black-echo",
@@ -3776,36 +3777,7 @@
             }
           ],
           "work": "the-black-echo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002VACGL8",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002VACGL8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Black Echo"
-    },
-    "the-black-echo-special-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "michael-connelly"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "the-black-echo-special-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "titus-welliver-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3919,17 +3891,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-black-echo-special-edition"
+          "work": "the-black-echo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002VACGL8",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002VACGL8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1713502674",
           "type": "libex-import"
         }
       ],
-      "title": "The Black Echo: Special Edition"
+      "title": "The Black Echo"
     },
     "the-black-egg": {
       "added_at": "2026-08-02",

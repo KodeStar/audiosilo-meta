@@ -6382,56 +6382,7 @@
             {
               "asin": "8439732848",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QGP2s57jL.jpg",
-          "id": "jose-posada-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-posada"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-03-02",
-          "runtime_min": 844,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8439732848",
-              "type": "libex-import"
-            }
-          ],
-          "work": "anatomia-de-un-instante"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8439732848",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Anatomía de un instante"
-    },
-    "anatomia-de-un-instante-the-anatomy-of-a-moment": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-cercas"
-      ],
-      "genres": [
-        "history",
-        "literary-fiction",
-        "mystery",
-        "politics"
-      ],
-      "id": "anatomia-de-un-instante-the-anatomy-of-a-moment",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jose-posada-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01MYCGGFW",
               "region": "us"
@@ -6742,21 +6693,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8439732848",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MYCGGFW",
               "type": "libex-import"
             }
           ],
-          "work": "anatomia-de-un-instante-the-anatomy-of-a-moment"
+          "work": "anatomia-de-un-instante"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8439732848",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MYCGGFW",
           "type": "libex-import"
         }
       ],
-      "title": "Anatomía de un instante [The Anatomy of a Moment]"
+      "title": "Anatomía de un instante"
     },
     "anatomie-dun-scandale": {
       "added_at": "2026-07-29",

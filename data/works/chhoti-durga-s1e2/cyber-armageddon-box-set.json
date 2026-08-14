@@ -9595,54 +9595,7 @@
             {
               "asin": "B0D5D1WVBH",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91S0qcrduLL.jpg",
-          "id": "simon-elias-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-elias"
-          ],
-          "publisher": "Sprichwort Audioverlag",
-          "release_date": "2024-06-28",
-          "runtime_min": 906,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D5D1WVBH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cyberpunk-2077-no-coincidence"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D5D1WVBH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cyberpunk 2077: No Coincidence"
-    },
-    "cyberpunk-2077-no-coincidence-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "rafal-kosik"
-      ],
-      "genres": [
-        "cyberpunk",
-        "science-fiction"
-      ],
-      "id": "cyberpunk-2077-no-coincidence-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-elias-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0D5D22JWY",
               "region": "us"
@@ -9661,21 +9614,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0D5D1WVBH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0D5D22JWY",
               "type": "libex-import"
             }
           ],
-          "work": "cyberpunk-2077-no-coincidence-german-edition"
+          "work": "cyberpunk-2077-no-coincidence"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D5D1WVBH",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D5D22JWY",
           "type": "libex-import"
         }
       ],
-      "title": "Cyberpunk 2077: No Coincidence (German edition)"
+      "title": "Cyberpunk 2077: No Coincidence"
     },
     "cyberpunk-2077-no-coincidence-rafal-kosik": {
       "added_at": "2026-07-29",

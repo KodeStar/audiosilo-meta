@@ -8695,7 +8695,8 @@
       ],
       "genres": [
         "classics",
-        "comedy-humor"
+        "comedy-humor",
+        "drama-plays"
       ],
       "id": "babbitt",
       "language": "en",
@@ -8924,6 +8925,40 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B004LYOQU6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "babbitt"
+        },
+        "ed-asner-2008": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8MKBG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91urd0pApHL.jpg",
+          "id": "ed-asner-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ed-asner",
+            "ed-begley-jr",
+            "hector-elizondo",
+            "helen-hunt",
+            "richard-dreyfus",
+            "stacy-keach",
+            "ted-danson"
+          ],
+          "publisher": "L.A. Theatre Works",
+          "release_date": "2008-12-15",
+          "runtime_min": 749,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8MKBG",
               "type": "libex-import"
             }
           ],
@@ -9163,66 +9198,14 @@
           "imported_at": "2026-08-07",
           "ref": "B0F34FDFX2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Babbitt"
-    },
-    "babbitt-dramatized": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sinclair-lewis"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "babbitt-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ed-asner-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8MKBG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91urd0pApHL.jpg",
-          "id": "ed-asner-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ed-asner",
-            "ed-begley-jr",
-            "hector-elizondo",
-            "helen-hunt",
-            "richard-dreyfus",
-            "stacy-keach",
-            "ted-danson"
-          ],
-          "publisher": "L.A. Theatre Works",
-          "release_date": "2008-12-15",
-          "runtime_min": 749,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8MKBG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "babbitt-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8MKBG",
           "type": "libex-import"
         }
       ],
-      "title": "Babbitt (Dramatized)"
+      "title": "Babbitt"
     },
     "babble": {
       "added_at": "2026-08-01",
@@ -10499,70 +10482,6 @@
       ],
       "title": "Babel"
     },
-    "babel-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "heide-franck",
-        "alexandra-jordan",
-        "rebecca-f-kuang"
-      ],
-      "credits": [
-        {
-          "person": "alexandra-jordan",
-          "role": "translator"
-        },
-        {
-          "person": "heide-franck",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "babel-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "moritz-pliquet-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0C3M5SLHR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wEs4gNGML.jpg",
-          "id": "moritz-pliquet-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "moritz-pliquet"
-          ],
-          "publisher": "Lübbe Audio",
-          "release_date": "2023-04-28",
-          "runtime_min": 1376,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0C3M5SLHR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "babel-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C3M5SLHR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Babel (German edition)"
-    },
     "babel-no-more": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10649,6 +10568,10 @@
             {
               "asin": "B0C3M3KFFM",
               "region": "de"
+            },
+            {
+              "asin": "B0C3M5SLHR",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91wEs4gNGML.jpg",
@@ -10666,6 +10589,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0C3M3KFFM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C3M5SLHR",
+              "type": "libex-import"
             }
           ],
           "work": "babel-rebecca-f-kuang"
@@ -10675,6 +10603,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0C3M3KFFM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C3M5SLHR",
           "type": "libex-import"
         }
       ],

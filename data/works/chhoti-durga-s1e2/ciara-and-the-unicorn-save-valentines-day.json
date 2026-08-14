@@ -6813,7 +6813,9 @@
         "gabriel-garcia-marquez"
       ],
       "genres": [
+        "classics",
         "literary-fiction",
+        "magical-realism",
         "parenting-relationships"
       ],
       "id": "cien-anos-de-soledad",
@@ -6981,56 +6983,7 @@
             {
               "asin": "B08KFM36QZ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hA98V9frL.jpg",
-          "id": "juan-pablo-raba-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-pablo-raba"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2020-10-01",
-          "runtime_min": 797,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08KFM36QZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cien-anos-de-soledad"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00RDN6DO4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cien años de soledad"
-    },
-    "cien-anos-de-soledad-one-hundred-years-of-solitude": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "magical-realism",
-        "parenting-relationships"
-      ],
-      "id": "cien-anos-de-soledad-one-hundred-years-of-solitude",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-pablo-raba-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "8439735995",
               "region": "us"
@@ -7148,7 +7101,7 @@
               "title": "Capítulo 22"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/817M+AWainL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81hA98V9frL.jpg",
           "id": "juan-pablo-raba-2020",
           "language": "es",
           "license": "CC0-1.0",
@@ -7161,21 +7114,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08KFM36QZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8439735995",
               "type": "libex-import"
             }
           ],
-          "work": "cien-anos-de-soledad-one-hundred-years-of-solitude"
+          "work": "cien-anos-de-soledad"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00RDN6DO4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8439735995",
           "type": "libex-import"
         }
       ],
-      "title": "Cien años de soledad [One Hundred Years of Solitude]"
+      "title": "Cien años de soledad"
     },
     "cien-cuyes-one-hundred-guinea-pigs": {
       "added_at": "2026-07-29",

@@ -17082,7 +17082,9 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "dystopian",
+        "literary-fiction",
         "romance",
         "science-fiction",
         "young-adult"
@@ -17097,6 +17099,10 @@
           "asin": [
             {
               "asin": "B00CDWRXJE",
+              "region": "us"
+            },
+            {
+              "asin": "B00CP8QPNG",
               "region": "us"
             }
           ],
@@ -17658,6 +17664,11 @@
               "imported_at": "2026-07-30",
               "ref": "B00CDWRXJE",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00CP8QPNG",
+              "type": "libex-import"
             }
           ],
           "work": "the-5th-wave"
@@ -17673,64 +17684,14 @@
           "imported_at": "2026-07-30",
           "ref": "B00CDWRXJE",
           "type": "libex-import"
-        }
-      ],
-      "title": "The 5th Wave"
-    },
-    "the-5th-wave-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rick-yancey"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "literary-fiction",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "the-5th-wave-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brandon-espinoza-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00CP8QPNG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9124ApvpquL.jpg",
-          "id": "brandon-espinoza-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brandon-espinoza",
-            "phoebe-strole"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2013-05-09",
-          "runtime_min": 761,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00CP8QPNG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-5th-wave-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00CP8QPNG",
           "type": "libex-import"
         }
       ],
-      "title": "The 5th Wave (Book 1)"
+      "title": "The 5th Wave"
     },
     "the-5th-wave-the-infinite-sea-book-2": {
       "added_at": "2026-08-02",

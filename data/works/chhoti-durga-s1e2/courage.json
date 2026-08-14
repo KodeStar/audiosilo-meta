@@ -4620,6 +4620,97 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christian-rummel-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1J6UG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2964074,
+              "start_ms": 0,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 3093827,
+              "start_ms": 2964074,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 3280376,
+              "start_ms": 6057901,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 2951628,
+              "start_ms": 9338277,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 3656725,
+              "start_ms": 12289905,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 2689289,
+              "start_ms": 15946630,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 3206583,
+              "start_ms": 18635919,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 2968207,
+              "start_ms": 21842502,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 3188286,
+              "start_ms": 24810709,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 2826751,
+              "start_ms": 27998995,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 2197722,
+              "start_ms": 30825746,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1968448,
+              "start_ms": 33023468,
+              "title": "Chapter Twelve"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816tOxUSPRL.jpg",
+          "id": "christian-rummel-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-rummel",
+            "jack-campbell"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2008-03-20",
+          "runtime_min": 583,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1J6UG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "courageous-jack-campbell"
+        },
         "christian-rummel-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4730,6 +4821,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0B4PTG7H3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1J6UG",
           "type": "libex-import"
         }
       ],
@@ -5798,12 +5894,71 @@
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "romance",
         "young-adult"
       ],
       "id": "court",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DJN1VMNV",
+              "region": "us"
+            },
+            {
+              "asin": "B0DT1MXKM1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AonwXddkL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "crystal-lee",
+            "melody-muze",
+            "jon-vertullo",
+            "kit-swann",
+            "karen-novack",
+            "wyn-delano",
+            "sara-matsui-colby",
+            "andrew-james-spooner",
+            "yenni-ann",
+            "peter-holdway",
+            "stewart-crank"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 1146,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DJN1VMNV",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DJN1VMNV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DT1MXKM1",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DT1MXKM1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "court"
+        },
         "heather-costa-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6766,108 +6921,29 @@
           "imported_at": "2026-08-02",
           "ref": "B09R55THKK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0DJN1VMNV",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0DJN1VMNV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0DT1MXKM1",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0DT1MXKM1",
+          "type": "libex-import"
         }
       ],
       "title": "Court"
-    },
-    "court-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "tracy-wolff"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "court-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DJN1VMNV",
-              "region": "us"
-            },
-            {
-              "asin": "B0DT1MXKM1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81AonwXddkL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast",
-            "crystal-lee",
-            "melody-muze",
-            "jon-vertullo",
-            "kit-swann",
-            "karen-novack",
-            "wyn-delano",
-            "sara-matsui-colby",
-            "andrew-james-spooner",
-            "yenni-ann",
-            "peter-holdway",
-            "stewart-crank"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 1146,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DJN1VMNV",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DJN1VMNV",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DT1MXKM1",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DT1MXKM1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "court-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0DJN1VMNV",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0DJN1VMNV",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0DT1MXKM1",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0DT1MXKM1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Court [Dramatized Adaptation]"
     },
     "court-german-edition": {
       "added_at": "2026-08-02",

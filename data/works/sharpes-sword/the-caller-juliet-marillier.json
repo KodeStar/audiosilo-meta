@@ -5152,6 +5152,7 @@
       "genres": [
         "espionage",
         "mystery",
+        "politics",
         "thriller-suspense"
       ],
       "id": "the-camel-club",
@@ -5181,6 +5182,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0036GMN0A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-camel-club"
+        },
+        "alex-jennings-2024": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DPGC21FX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71a--GXKivL.jpg",
+          "id": "alex-jennings-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-jennings"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-12-02",
+          "runtime_min": 338,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DPGC21FX",
               "type": "libex-import"
             }
           ],
@@ -5627,12 +5656,45 @@
             }
           ],
           "work": "the-camel-club"
+        },
+        "jonathan-davis-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBTJ6Y1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jdjESTSoL.jpg",
+          "id": "jonathan-davis-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-davis"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 969,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBTJ6Y1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-camel-club"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0KCDW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBTJ6Y1",
           "type": "libex-import"
         }
       ],
@@ -5754,86 +5816,6 @@
         }
       ],
       "title": "The Camel Club Audio Box Set"
-    },
-    "the-camel-club-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "the-camel-club-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-jennings-2024": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DPGC21FX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71a--GXKivL.jpg",
-          "id": "alex-jennings-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-jennings"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-12-02",
-          "runtime_min": 338,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DPGC21FX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-camel-club-book-1"
-        },
-        "jonathan-davis-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBTJ6Y1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81jdjESTSoL.jpg",
-          "id": "jonathan-davis-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jonathan-davis"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 969,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBTJ6Y1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-camel-club-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBTJ6Y1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Camel Club: Book 1"
     },
     "the-camelot-betrayal": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -13633,208 +13615,6 @@
           ],
           "work": "the-canterbury-tales"
         },
-        "uncredited-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1BWX0",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3588898,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4476760,
-              "start_ms": 3588898,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4497798,
-              "start_ms": 8065658,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4615198,
-              "start_ms": 12563456,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4531931,
-              "start_ms": 17178654,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4444624,
-              "start_ms": 21710585,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4551203,
-              "start_ms": 26155209,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4112439,
-              "start_ms": 30706412,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4512519,
-              "start_ms": 34818851,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4365119,
-              "start_ms": 39331370,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4747691,
-              "start_ms": 43696489,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 4641483,
-              "start_ms": 48444180,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 4474949,
-              "start_ms": 53085663,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 4562070,
-              "start_ms": 57560612,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 4434964,
-              "start_ms": 62122682,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 4670972,
-              "start_ms": 66557646,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 4632241,
-              "start_ms": 71228618,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 4628688,
-              "start_ms": 75860859,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81XtMmVQ+CL.jpg",
-          "id": "uncredited-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "uncredited"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2008-11-11",
-          "runtime_min": 1341,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1BWX0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-canterbury-tales"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "1603691618",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Canterbury Tales"
-    },
-    "the-canterbury-tales-a-retelling": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "peter-ackroyd"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "poetry",
-        "short-stories"
-      ],
-      "id": "the-canterbury-tales-a-retelling",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "colin-mcphillamy-2011": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B005ZUHJN6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81qldQ686ZL.jpg",
-          "id": "colin-mcphillamy-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "colin-mcphillamy",
-            "davina-porter",
-            "graeme-malcolm",
-            "john-curless",
-            "john-keating",
-            "keith-moore",
-            "steven-crossley",
-            "toby-leonard-moore"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2011-10-27",
-          "runtime_min": 1015,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B005ZUHJN6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-canterbury-tales-a-retelling"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B005ZUHJN6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Canterbury Tales: A Retelling"
-    },
-    "the-canterbury-tales-blackstone": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "geoffrey-chaucer"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-canterbury-tales-blackstone",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jay-carnes-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14139,17 +13919,202 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-canterbury-tales-blackstone"
+          "work": "the-canterbury-tales"
+        },
+        "uncredited-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1BWX0",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3588898,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4476760,
+              "start_ms": 3588898,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4497798,
+              "start_ms": 8065658,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4615198,
+              "start_ms": 12563456,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4531931,
+              "start_ms": 17178654,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4444624,
+              "start_ms": 21710585,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4551203,
+              "start_ms": 26155209,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4112439,
+              "start_ms": 30706412,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4512519,
+              "start_ms": 34818851,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4365119,
+              "start_ms": 39331370,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4747691,
+              "start_ms": 43696489,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4641483,
+              "start_ms": 48444180,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4474949,
+              "start_ms": 53085663,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4562070,
+              "start_ms": 57560612,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 4434964,
+              "start_ms": 62122682,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4670972,
+              "start_ms": 66557646,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 4632241,
+              "start_ms": 71228618,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 4628688,
+              "start_ms": 75860859,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XtMmVQ+CL.jpg",
+          "id": "uncredited-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uncredited"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2008-11-11",
+          "runtime_min": 1341,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1BWX0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-canterbury-tales"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1603691618",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5IZHW",
           "type": "libex-import"
         }
       ],
-      "title": "The Canterbury Tales [Blackstone]"
+      "title": "The Canterbury Tales"
+    },
+    "the-canterbury-tales-a-retelling": {
+      "added_at": "2026-08-08",
+      "authors": [
+        "peter-ackroyd"
+      ],
+      "genres": [
+        "classics",
+        "literary-fiction",
+        "poetry",
+        "short-stories"
+      ],
+      "id": "the-canterbury-tales-a-retelling",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "colin-mcphillamy-2011": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B005ZUHJN6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qldQ686ZL.jpg",
+          "id": "colin-mcphillamy-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-mcphillamy",
+            "davina-porter",
+            "graeme-malcolm",
+            "john-curless",
+            "john-keating",
+            "keith-moore",
+            "steven-crossley",
+            "toby-leonard-moore"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2011-10-27",
+          "runtime_min": 1015,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B005ZUHJN6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-canterbury-tales-a-retelling"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B005ZUHJN6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Canterbury Tales: A Retelling"
     }
   }
 }

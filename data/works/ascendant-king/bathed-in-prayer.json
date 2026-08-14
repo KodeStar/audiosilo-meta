@@ -2038,6 +2038,9 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "parenting-relationships",
         "self-help",
@@ -2054,6 +2057,10 @@
           "asin": [
             {
               "asin": "B0743M9258",
+              "region": "us"
+            },
+            {
+              "asin": "B0787NLWBK",
               "region": "us"
             }
           ],
@@ -2219,6 +2226,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0743M9258",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0787NLWBK",
+              "type": "libex-import"
             }
           ],
           "work": "batman-nightwalker"
@@ -2229,206 +2241,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0743M9258",
           "type": "libex-import"
-        }
-      ],
-      "title": "Batman: Nightwalker"
-    },
-    "batman-nightwalker-dc-icons-series": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marie-lu"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fairy-tales-folklore",
-        "fantasy",
-        "superhero",
-        "young-adult"
-      ],
-      "id": "batman-nightwalker-dc-icons-series",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "will-damron-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0787NLWBK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 439088,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1694499,
-              "start_ms": 439088,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 981600,
-              "start_ms": 2133587,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 998620,
-              "start_ms": 3115187,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1454915,
-              "start_ms": 4113807,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 757272,
-              "start_ms": 5568722,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 745685,
-              "start_ms": 6325994,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 819826,
-              "start_ms": 7071679,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 801390,
-              "start_ms": 7891505,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1144836,
-              "start_ms": 8692895,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1290193,
-              "start_ms": 9837731,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1350263,
-              "start_ms": 11127924,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 614028,
-              "start_ms": 12478187,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1280812,
-              "start_ms": 13092215,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1523089,
-              "start_ms": 14373027,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 581636,
-              "start_ms": 15896116,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 883124,
-              "start_ms": 16477752,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1298622,
-              "start_ms": 17360876,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1012204,
-              "start_ms": 18659498,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1581580,
-              "start_ms": 19671702,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 721095,
-              "start_ms": 21253282,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 895175,
-              "start_ms": 21974377,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1199008,
-              "start_ms": 22869552,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1396540,
-              "start_ms": 24068560,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 2134680,
-              "start_ms": 25465100,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1669375,
-              "start_ms": 27599780,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1436130,
-              "start_ms": 29269155,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 463168,
-              "start_ms": 30705285,
-              "title": "Chapter 28"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91p60b8-LtL.jpg",
-          "id": "will-damron-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "will-damron"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2018-01-04",
-          "runtime_min": 519,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0787NLWBK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "batman-nightwalker-dc-icons-series"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0787NLWBK",
           "type": "libex-import"
         }
       ],
-      "title": "Batman: Nightwalker (DC Icons series)"
+      "title": "Batman: Nightwalker"
     },
     "batman-resurrection": {
       "added_at": "2026-08-02",
@@ -7853,152 +7673,6 @@
         }
       ],
       "title": "Battle Bond: An Urban Fantasy Dragon Series"
-    },
-    "battle-born-elementals-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "amie-kaufman"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "battle-born-elementals-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "johnathan-mcclain-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1460785819",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17992,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1741778,
-              "start_ms": 17992,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 1522415,
-              "start_ms": 1759770,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1366541,
-              "start_ms": 3282185,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1691225,
-              "start_ms": 4648726,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1116925,
-              "start_ms": 6339951,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1250487,
-              "start_ms": 7456876,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1189930,
-              "start_ms": 8707363,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1094007,
-              "start_ms": 9897293,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 864572,
-              "start_ms": 10991300,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1448251,
-              "start_ms": 11855872,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1397841,
-              "start_ms": 13304123,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1351866,
-              "start_ms": 14701964,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 554050,
-              "start_ms": 16053830,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1244381,
-              "start_ms": 16607880,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1163110,
-              "start_ms": 17852261,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 409343,
-              "start_ms": 19015371,
-              "title": "Epilogue: Five Months Later"
-            },
-            {
-              "length_ms": 39240,
-              "start_ms": 19424714,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IUe-aSItL.jpg",
-          "id": "johnathan-mcclain-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "johnathan-mcclain"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2020-06-01",
-          "runtime_min": 324,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1460785819",
-              "type": "libex-import"
-            }
-          ],
-          "work": "battle-born-elementals-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1460785819",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Battle Born (Elementals, #3)"
     },
     "battle-born-omnibus": {
       "added_at": "2026-08-02",

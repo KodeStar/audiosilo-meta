@@ -6180,6 +6180,7 @@
         "military-science-fiction",
         "paranormal",
         "science-fiction",
+        "space-opera",
         "thriller-suspense"
       ],
       "id": "choice-of-the-cat",
@@ -6286,35 +6287,7 @@
             }
           ],
           "work": "choice-of-the-cat"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002VA9DVY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Choice of the Cat"
-    },
-    "choice-of-the-cat-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "e-e-knight"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "military-science-fiction",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "thriller-suspense"
-      ],
-      "id": "choice-of-the-cat-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "christopher-graybill-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6467,10 +6440,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "choice-of-the-cat-dramatized-adaptation"
+          "work": "choice-of-the-cat"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002VA9DVY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H99VQ58",
@@ -6502,7 +6480,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Choice of the Cat [Dramatized Adaptation]"
+      "title": "Choice of the Cat"
     },
     "choice-of-the-traveler": {
       "added_at": "2026-08-01",

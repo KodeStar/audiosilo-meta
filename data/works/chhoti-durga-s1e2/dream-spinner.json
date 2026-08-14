@@ -1444,6 +1444,7 @@
       ],
       "genres": [
         "action-adventure",
+        "hard-boiled",
         "historical-fiction",
         "mystery",
         "thriller-suspense"
@@ -1480,12 +1481,46 @@
             }
           ],
           "work": "dream-town"
+        },
+        "brittany-pressley-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBL6TV8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FMVZaVa6L.jpg",
+          "id": "brittany-pressley-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brittany-pressley",
+            "edoardo-ballerini"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 659,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBL6TV8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dream-town"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B09Q7XKH7R",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBL6TV8",
           "type": "libex-import"
         }
       ],
@@ -1544,60 +1579,6 @@
         }
       ],
       "title": "Dream Town: A Gripping Thriller in the Bestselling Aloysius Archer Series From David Baldacci"
-    },
-    "dream-town-aloysius-archer-book-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "hard-boiled",
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "dream-town-aloysius-archer-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brittany-pressley-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBL6TV8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FMVZaVa6L.jpg",
-          "id": "brittany-pressley-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brittany-pressley",
-            "edoardo-ballerini"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 659,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBL6TV8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dream-town-aloysius-archer-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBL6TV8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dream Town: Aloysius Archer Book 3"
     },
     "dream-town-eve-ronin-book-5": {
       "added_at": "2026-07-29",

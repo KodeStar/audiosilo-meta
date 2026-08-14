@@ -3832,7 +3832,9 @@
       "genres": [
         "classics",
         "fantasy",
+        "history",
         "paranormal",
+        "romance",
         "urban-fantasy"
       ],
       "id": "bonds",
@@ -4003,33 +4005,7 @@
             }
           ],
           "work": "bonds"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B083NFW2KG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bonds"
-    },
-    "bonds-a-royal-states-novel": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "susan-copperfield"
-      ],
-      "genres": [
-        "fantasy",
-        "history",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "bonds-a-royal-states-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "cameron-hill-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -4193,17 +4169,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "bonds-a-royal-states-novel"
+          "work": "bonds"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B083NFW2KG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CBSYQXWY",
           "type": "libex-import"
         }
       ],
-      "title": "Bonds: A Royal States Novel"
+      "title": "Bonds"
     },
     "bonds-broken-dreams": {
       "added_at": "2026-08-01",
@@ -14171,19 +14152,20 @@
       ],
       "title": "Bone Crier's Moon"
     },
-    "bone-crossed": {
-      "added_at": "2026-08-02",
+    "bone-crossed-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "patricia-briggs"
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "fantasy",
         "paranormal",
         "romance",
         "urban-fantasy"
       ],
-      "id": "bone-crossed",
+      "id": "bone-crossed-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -14299,33 +14281,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "bone-crossed"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V9Z4SQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bone Crossed"
-    },
-    "bone-crossed-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "patricia-briggs"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "bone-crossed-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "bone-crossed-dramatized-adaptation"
+        },
         "sheree-wichard-2025": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -14427,6 +14384,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DQF74PW4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V9Z4SQ",
           "type": "libex-import"
         }
       ],

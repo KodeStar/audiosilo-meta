@@ -1581,6 +1581,7 @@
       ],
       "genres": [
         "fantasy",
+        "gothic",
         "horror"
       ],
       "id": "alchemised-senlinyu-2",
@@ -1598,72 +1599,7 @@
             {
               "asin": "B0FSSSTZQH",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1n8r55RfOL.jpg",
-          "id": "marta-moreno-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marta-moreno"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2025-09-30",
-          "runtime_min": 2438,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FSSWSN5Q",
-              "type": "libex-import"
             },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FSSSTZQH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alchemised-senlinyu-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0FSSWSN5Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alchemised"
-    },
-    "alchemised-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "senlinyu",
-        "ankara-cabeza-lazaro",
-        "patricia-isabel-mora-perez"
-      ],
-      "credits": [
-        {
-          "person": "ankara-cabeza-lazaro",
-          "role": "translator"
-        },
-        {
-          "person": "patricia-isabel-mora-perez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "fantasy",
-        "gothic",
-        "horror"
-      ],
-      "id": "alchemised-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marta-moreno-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B0FSSZ55R7",
               "region": "us"
@@ -2129,21 +2065,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0FSSWSN5Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FSSSTZQH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0FSSZ55R7",
               "type": "libex-import"
             }
           ],
-          "work": "alchemised-spanish-edition"
+          "work": "alchemised-senlinyu-2"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0FSSWSN5Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FSSZ55R7",
           "type": "libex-import"
         }
       ],
-      "title": "Alchemised (Spanish Edition)"
+      "title": "Alchemised"
     },
     "alchemist": {
       "added_at": "2026-07-29",

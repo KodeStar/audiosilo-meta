@@ -867,6 +867,10 @@
             {
               "asin": "B0D67DX8W4",
               "region": "es"
+            },
+            {
+              "asin": "B0D67DC4JR",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81nqVsbalwL.jpg",
@@ -884,6 +888,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0D67DX8W4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D67DC4JR",
+              "type": "libex-import"
             }
           ],
           "work": "deja-de-pensar-demasiado"
@@ -893,6 +902,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0D67DX8W4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D67DC4JR",
           "type": "libex-import"
         }
       ],
@@ -1003,57 +1017,6 @@
         }
       ],
       "title": "!Deja de pensar demasiado! [Stop Overthinking!]"
-    },
-    "deja-de-pensar-demasiado-stop-thinking-too-much": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "chase-hill"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "deja-de-pensar-demasiado-stop-thinking-too-much",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "maxi-tissot-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D67DC4JR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nqVsbalwL.jpg",
-          "id": "maxi-tissot-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "maxi-tissot"
-          ],
-          "publisher": "Chase Hill",
-          "release_date": "2024-06-05",
-          "runtime_min": 461,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D67DC4JR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "deja-de-pensar-demasiado-stop-thinking-too-much"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D67DC4JR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Deja de Pensar Demasiado [Stop Thinking Too Much]"
     },
     "deja-de-procastinar-hoy-stop-procrastinating-today": {
       "added_at": "2026-07-29",
@@ -4148,6 +4111,7 @@
       ],
       "genres": [
         "literary-fiction",
+        "magical-realism",
         "short-stories"
       ],
       "id": "del-amor-y-otros-demonios",
@@ -4161,55 +4125,7 @@
             {
               "asin": "843973252X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71A4WAY-SnL.jpg",
-          "id": "carlos-manuel-vesga-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-manuel-vesga"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-12-15",
-          "runtime_min": 250,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "843973252X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "del-amor-y-otros-demonios"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "843973252X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Del amor y otros demonios"
-    },
-    "del-amor-y-otros-demonios-love-and-other-demons": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism",
-        "short-stories"
-      ],
-      "id": "del-amor-y-otros-demonios-love-and-other-demons",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-manuel-vesga-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01NAEEHLM",
               "region": "us"
@@ -4275,21 +4191,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "843973252X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01NAEEHLM",
               "type": "libex-import"
             }
           ],
-          "work": "del-amor-y-otros-demonios-love-and-other-demons"
+          "work": "del-amor-y-otros-demonios"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "843973252X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01NAEEHLM",
           "type": "libex-import"
         }
       ],
-      "title": "Del amor y otros demonios [Love and Other Demons]"
+      "title": "Del amor y otros demonios"
     },
     "del-archivo-magico": {
       "added_at": "2026-07-29",

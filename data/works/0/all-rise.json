@@ -5659,6 +5659,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CHG25ZT7",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 32924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3421601,
+              "start_ms": 32924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3682243,
+              "start_ms": 3454525,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 1733000,
+              "start_ms": 7136768,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 97000,
+              "start_ms": 8869768,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 242055,
+              "start_ms": 8966768,
+              "title": "Free Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TUHzEf5nL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CHG25ZT7",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CHG25ZT7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "all-systems-red"
+        },
         "kevin-r-free-2017": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -5755,91 +5820,7 @@
           "imported_at": "2026-07-30",
           "ref": "B076XSGP65",
           "type": "libex-import"
-        }
-      ],
-      "title": "All Systems Red"
-    },
-    "all-systems-red-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "martha-wells"
-      ],
-      "genres": [
-        "action-adventure",
-        "hard-science-fiction",
-        "science-fiction"
-      ],
-      "id": "all-systems-red-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CHG25ZT7",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3421601,
-              "start_ms": 32924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3682243,
-              "start_ms": 3454525,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 1733000,
-              "start_ms": 7136768,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 97000,
-              "start_ms": 8869768,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 242055,
-              "start_ms": 8966768,
-              "title": "Free Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81TUHzEf5nL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 153,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CHG25ZT7",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CHG25ZT7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "all-systems-red-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CHG25ZT7",
@@ -5851,7 +5832,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "All Systems Red (Dramatized Adaptation)"
+      "title": "All Systems Red"
     },
     "all-that-charm": {
       "added_at": "2026-07-29",
@@ -9856,6 +9837,7 @@
         "ian-sales"
       ],
       "genres": [
+        "alternate-history",
         "hard-science-fiction",
         "science-fiction"
       ],
@@ -9952,31 +9934,7 @@
             }
           ],
           "work": "all-that-outer-space-allows"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B06XGK79DT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "All That Outer Space Allows"
-    },
-    "all-that-outer-space-allows-booktrack-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ian-sales"
-      ],
-      "genres": [
-        "alternate-history",
-        "hard-science-fiction",
-        "science-fiction"
-      ],
-      "id": "all-that-outer-space-allows-booktrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kathryn-merry-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10055,17 +10013,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "all-that-outer-space-allows-booktrack-edition"
+          "work": "all-that-outer-space-allows"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B06XGK79DT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07DFQK9XK",
           "type": "libex-import"
         }
       ],
-      "title": "All That Outer Space Allows (Booktrack Edition)"
+      "title": "All That Outer Space Allows"
     },
     "all-that-really-matters": {
       "added_at": "2026-07-29",

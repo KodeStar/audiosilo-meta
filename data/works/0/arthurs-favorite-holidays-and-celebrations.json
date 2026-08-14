@@ -4439,6 +4439,56 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CK9HTFG5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3352752,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2897920,
+              "start_ms": 3352752,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3672211,
+              "start_ms": 6250672,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BQzbfKqQL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2023",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CK9HTFG5",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CK9HTFG5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "artificial-condition"
+        },
         "kevin-r-free-2018": {
           "abridged": false,
           "asin": [
@@ -4539,76 +4589,7 @@
           "imported_at": "2026-07-30",
           "ref": "B07BFDDWXN",
           "type": "libex-import"
-        }
-      ],
-      "title": "Artificial Condition"
-    },
-    "artificial-condition-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "martha-wells"
-      ],
-      "genres": [
-        "action-adventure",
-        "hard-science-fiction",
-        "science-fiction"
-      ],
-      "id": "artificial-condition-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CK9HTFG5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3352752,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2897920,
-              "start_ms": 3352752,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3672211,
-              "start_ms": 6250672,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81BQzbfKqQL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2023",
-          "runtime_min": 161,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CK9HTFG5",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CK9HTFG5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "artificial-condition-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CK9HTFG5",
@@ -4620,7 +4601,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Artificial Condition (Dramatized Adaptation)"
+      "title": "Artificial Condition"
     },
     "artificial-evolution": {
       "added_at": "2026-08-02",

@@ -1572,6 +1572,7 @@
         "juan-luis-montero-fenollos"
       ],
       "genres": [
+        "action-adventure",
         "history",
         "politics"
       ],
@@ -1579,6 +1580,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "jorge-rugerio-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08K3SDLC7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-zqny1r7L.jpg",
+          "id": "jorge-rugerio-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jorge-rugerio"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-10-07",
+          "runtime_min": 346,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08K3SDLC7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breve-historia-de-babilonia"
+        },
         "jose-carlos-dominguez-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1613,60 +1642,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MNKVEJQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de Babilonia"
-    },
-    "breve-historia-de-babilonia-brief-history-of-babylon": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-luis-montero-fenollos"
-      ],
-      "genres": [
-        "action-adventure",
-        "history"
-      ],
-      "id": "breve-historia-de-babilonia-brief-history-of-babylon",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jorge-rugerio-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08K3SDLC7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91-zqny1r7L.jpg",
-          "id": "jorge-rugerio-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jorge-rugerio"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-10-07",
-          "runtime_min": 346,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08K3SDLC7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-babilonia-brief-history-of-babylon"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08K3SDLC7",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de Babilonia [Brief History of Babylon]"
+      "title": "Breve historia de Babilonia"
     },
     "breve-historia-de-carlomagno-y-el-sacro-imperio-romano-germanico": {
       "added_at": "2026-07-29",
@@ -1746,6 +1729,10 @@
             {
               "asin": "B07YX5BHS7",
               "region": "es"
+            },
+            {
+              "asin": "B07RV6D4H1",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/910fw1ueb-L.jpg",
@@ -1762,6 +1749,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YX5BHS7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07RV6D4H1",
               "type": "libex-import"
             }
           ],
@@ -1810,59 +1802,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MJ8LFS2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de España I"
-    },
-    "breve-historia-de-espana-i-brief-history-of-spain-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "luis-enrique-inigo-fernandez"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-espana-i-brief-history-of-spain-book-1",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alan-prieto-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07RV6D4H1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910fw1ueb-L.jpg",
-          "id": "alan-prieto-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alan-prieto"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-05-15",
-          "runtime_min": 361,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07RV6D4H1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-espana-i-brief-history-of-spain-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07RV6D4H1",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de España I [Brief History of Spain, Book 1]"
+      "title": "Breve historia de España I"
     },
     "breve-historia-de-espana-ii": {
       "added_at": "2026-07-29",
@@ -1883,53 +1830,7 @@
             {
               "asin": "B07YRR1X8S",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lDbr5xi2L.jpg",
-          "id": "benjamin-figueres-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "benjamin-figueres"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2014-08-11",
-          "runtime_min": 316,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRR1X8S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-espana-ii"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRR1X8S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de España II"
-    },
-    "breve-historia-de-espana-ii-brief-history-of-spain-ii-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "luis-enrique-inigo-fernandez"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-espana-ii-brief-history-of-spain-ii-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "benjamin-figueres-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00MJ8L280",
               "region": "us"
@@ -1948,21 +1849,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRR1X8S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00MJ8L280",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-espana-ii-brief-history-of-spain-ii-narracion-en-castellano"
+          "work": "breve-historia-de-espana-ii"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRR1X8S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00MJ8L280",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de España II [Brief History of Spain II] (Narración en Castellano)"
+      "title": "Breve historia de España II"
     },
     "breve-historia-de-hitler": {
       "added_at": "2026-07-29",
@@ -1985,6 +1896,10 @@
             {
               "asin": "B08JD6KB7N",
               "region": "es"
+            },
+            {
+              "asin": "B08JF6SGL4",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91mjrdZKb8L.jpg",
@@ -2001,6 +1916,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08JD6KB7N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08JF6SGL4",
               "type": "libex-import"
             }
           ],
@@ -2049,60 +1969,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MMJ6UYW",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de Hitler"
-    },
-    "breve-historia-de-hitler-brief-history-of-hitler": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jesus-hernandez"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-hitler-brief-history-of-hitler",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "felipe-gonzalez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08JF6SGL4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mjrdZKb8L.jpg",
-          "id": "felipe-gonzalez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "felipe-gonzalez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-28",
-          "runtime_min": 526,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08JF6SGL4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-hitler-brief-history-of-hitler"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08JF6SGL4",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de Hitler [Brief History of Hitler]"
+      "title": "Breve historia de Hitler"
     },
     "breve-historia-de-jesus-de-nazaret": {
       "added_at": "2026-07-29",
@@ -2261,6 +2135,8 @@
       ],
       "genres": [
         "history",
+        "occult",
+        "religion-spirituality",
         "science"
       ],
       "id": "breve-historia-de-la-alquimia",
@@ -2274,6 +2150,10 @@
             {
               "asin": "B08HGZ8XJ8",
               "region": "es"
+            },
+            {
+              "asin": "B08HG6S7L6",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81k4PveGxpL.jpg",
@@ -2290,6 +2170,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08HGZ8XJ8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08HG6S7L6",
               "type": "libex-import"
             }
           ],
@@ -2338,62 +2223,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MMM6O7C",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la alquimia"
-    },
-    "breve-historia-de-la-alquimia-brief-history-of-alchemy": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "luis-enrique-inigo-fernandez"
-      ],
-      "genres": [
-        "history",
-        "occult",
-        "religion-spirituality",
-        "science"
-      ],
-      "id": "breve-historia-de-la-alquimia-brief-history-of-alchemy",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "felipe-gonzalez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08HG6S7L6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81k4PveGxpL.jpg",
-          "id": "felipe-gonzalez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "felipe-gonzalez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-08",
-          "runtime_min": 418,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HG6S7L6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-alquimia-brief-history-of-alchemy"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08HG6S7L6",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la alquimia [Brief History of Alchemy]"
+      "title": "Breve historia de la alquimia"
     },
     "breve-historia-de-la-antigua-grecia": {
       "added_at": "2026-07-29",
@@ -2474,54 +2311,7 @@
             {
               "asin": "B07YRS5XDQ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZzlULtybL.jpg",
-          "id": "cristina-serra-moles-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cristina-serra-moles"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2014-08-12",
-          "runtime_min": 409,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRS5XDQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-astronomia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRS5XDQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la astronomía"
-    },
-    "breve-historia-de-la-astronomia-brief-history-of-astronomy": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "angel-rodriguez-cardona"
-      ],
-      "genres": [
-        "history",
-        "science"
-      ],
-      "id": "breve-historia-de-la-astronomia-brief-history-of-astronomy",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cristina-serra-moles-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00MMQ9TFW",
               "region": "us"
@@ -2540,21 +2330,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRS5XDQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00MMQ9TFW",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-astronomia-brief-history-of-astronomy"
+          "work": "breve-historia-de-la-astronomia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRS5XDQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00MMQ9TFW",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la astronomía [Brief History of Astronomy]"
+      "title": "Breve historia de la astronomía"
     },
     "breve-historia-de-la-brujeria": {
       "added_at": "2026-07-29",
@@ -2671,53 +2471,7 @@
             {
               "asin": "B07YX16R4L",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81iQZ9bFtVL.jpg",
-          "id": "pili-paneque-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pili-paneque"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-04-08",
-          "runtime_min": 498,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX16R4L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-corona-de-castilla"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX16R4L",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Corona de Castilla"
-    },
-    "breve-historia-de-la-corona-de-castilla-narracion-en-castellano-brief-history-of-the-crown-of-castil": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-ignacio-ortega-cervigon"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-la-corona-de-castilla-narracion-en-castellano-brief-history-of-the-crown-of-castil",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pili-paneque-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07QFBZ494",
               "region": "us"
@@ -2736,21 +2490,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX16R4L",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07QFBZ494",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-corona-de-castilla-narracion-en-castellano-brief-history-of-the-crown-of-castil"
+          "work": "breve-historia-de-la-corona-de-castilla"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX16R4L",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07QFBZ494",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Corona de Castilla (Narración en Castellano) [Brief History of the Crown of Castile]"
+      "title": "Breve historia de la Corona de Castilla"
     },
     "breve-historia-de-la-filosofia": {
       "added_at": "2026-07-29",
@@ -2758,6 +2522,7 @@
         "humberto-giannini"
       ],
       "genres": [
+        "philosophy",
         "politics"
       ],
       "id": "breve-historia-de-la-filosofia",
@@ -2771,54 +2536,7 @@
             {
               "asin": "B09J1PR4T1",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mT7TQg2AL.jpg",
-          "id": "miguel-angel-alvarez-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "miguel-angel-alvarez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-10-11",
-          "runtime_min": 1587,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09J1PR4T1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-filosofia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09J1PR4T1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la filosofía"
-    },
-    "breve-historia-de-la-filosofia-brief-history-of-philosophy": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "humberto-giannini"
-      ],
-      "genres": [
-        "philosophy",
-        "politics"
-      ],
-      "id": "breve-historia-de-la-filosofia-brief-history-of-philosophy",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "miguel-angel-alvarez-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09J1QVXH2",
               "region": "us"
@@ -2837,21 +2555,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09J1PR4T1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09J1QVXH2",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-filosofia-brief-history-of-philosophy"
+          "work": "breve-historia-de-la-filosofia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09J1PR4T1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09J1QVXH2",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la filosofía [Brief History of Philosophy]"
+      "title": "Breve historia de la filosofía"
     },
     "breve-historia-de-la-guerra-antigua-y-medieval": {
       "added_at": "2026-07-29",
@@ -2918,6 +2646,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "german-torre-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07V1JJ2V8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lNJhjKrHL.jpg",
+          "id": "german-torre-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "german-torre"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-07-09",
+          "runtime_min": 478,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07V1JJ2V8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breve-historia-de-la-guerra-civil-espanola"
+        },
         "vicente-quintana-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2952,60 +2708,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MJ8KX2Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Guerra Civil Española"
-    },
-    "breve-historia-de-la-guerra-civil-espanola-brief-history-of-the-spanish-civil-war": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "inigo-bolinaga"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-la-guerra-civil-espanola-brief-history-of-the-spanish-civil-war",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "german-torre-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07V1JJ2V8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lNJhjKrHL.jpg",
-          "id": "german-torre-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "german-torre"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-07-09",
-          "runtime_min": 478,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07V1JJ2V8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-guerra-civil-espanola-brief-history-of-the-spanish-civil-war"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07V1JJ2V8",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Guerra Civil Española [Brief History of the Spanish Civil War]"
+      "title": "Breve historia de la Guerra Civil Española"
     },
     "breve-historia-de-la-guerra-del-98": {
       "added_at": "2026-07-29",
@@ -3021,6 +2731,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "felipe-gonzalez-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08LZSJFBT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wW09iuqLL.jpg",
+          "id": "felipe-gonzalez-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felipe-gonzalez"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-10-29",
+          "runtime_min": 410,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08LZSJFBT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breve-historia-de-la-guerra-del-98"
+        },
         "juan-magraner-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3055,61 +2793,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MJ8KHVI",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Guerra del 98"
-    },
-    "breve-historia-de-la-guerra-del-98-a-brief-history-of-the-war-of-98": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carlos-canales",
-        "miguel-del-rey"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-la-guerra-del-98-a-brief-history-of-the-war-of-98",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "felipe-gonzalez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08LZSJFBT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wW09iuqLL.jpg",
-          "id": "felipe-gonzalez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "felipe-gonzalez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-10-29",
-          "runtime_min": 410,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08LZSJFBT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-guerra-del-98-a-brief-history-of-the-war-of-98"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08LZSJFBT",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Guerra del 98 [A Brief History of the War of 98]"
+      "title": "Breve historia de la Guerra del 98"
     },
     "breve-historia-de-la-guerra-moderna": {
       "added_at": "2026-07-29",
@@ -3171,7 +2862,8 @@
       "genres": [
         "health-wellness",
         "history",
-        "medicine"
+        "medicine",
+        "politics"
       ],
       "id": "breve-historia-de-la-medicina",
       "language": "es",
@@ -3184,6 +2876,10 @@
             {
               "asin": "B07YRRRL5H",
               "region": "es"
+            },
+            {
+              "asin": "B07JW7L4RK",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81GsUQCGo+L.jpg",
@@ -3200,6 +2896,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YRRRL5H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07JW7L4RK",
               "type": "libex-import"
             }
           ],
@@ -3248,62 +2949,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MMM6HG0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la medicina"
-    },
-    "breve-historia-de-la-medicina-narracion-en-castellano-brief-history-of-medicine": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "pedro-gargantilla"
-      ],
-      "genres": [
-        "health-wellness",
-        "history",
-        "medicine",
-        "politics"
-      ],
-      "id": "breve-historia-de-la-medicina-narracion-en-castellano-brief-history-of-medicine",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eduardo-diez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07JW7L4RK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GsUQCGo+L.jpg",
-          "id": "eduardo-diez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eduardo-diez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-10-17",
-          "runtime_min": 526,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07JW7L4RK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-medicina-narracion-en-castellano-brief-history-of-medicine"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07JW7L4RK",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la medicina (Narración en Castellano) [Brief History of Medicine]"
+      "title": "Breve historia de la medicina"
     },
     "breve-historia-de-la-mitologia-griega": {
       "added_at": "2026-07-29",
@@ -3363,55 +3016,7 @@
             {
               "asin": "B07YRLM38D",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91OcG7KF5UL.jpg",
-          "id": "marta-martin-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marta-martin"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-09-14",
-          "runtime_min": 440,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRLM38D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-mitologia-griega"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRLM38D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la mitología griega"
-    },
-    "breve-historia-de-la-mitologia-griega-narracion-en-castellano-brief-history-of-greek-mythology-casti": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-lopez-trujillo"
-      ],
-      "genres": [
-        "history",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "breve-historia-de-la-mitologia-griega-narracion-en-castellano-brief-history-of-greek-mythology-casti",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marta-martin-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07HB6YH4G",
               "region": "us"
@@ -3430,21 +3035,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRLM38D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07HB6YH4G",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-mitologia-griega-narracion-en-castellano-brief-history-of-greek-mythology-casti"
+          "work": "breve-historia-de-la-mitologia-griega"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRLM38D",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HB6YH4G",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la mitología griega (Narración en Castellano) [Brief History of Greek Mythology - Castilian Narration]"
+      "title": "Breve historia de la mitología griega"
     },
     "breve-historia-de-la-musica": {
       "added_at": "2026-07-29",
@@ -3547,30 +3162,7 @@
             }
           ],
           "work": "breve-historia-de-la-primera-guerra-mundial"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00MJAEXFM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Primera Guerra Mundial"
-    },
-    "breve-historia-de-la-primera-guerra-mundial-brief-history-of-the-first-world-war": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alvaro-lozano"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-la-primera-guerra-mundial-brief-history-of-the-first-world-war",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jaime-collepardo-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3597,17 +3189,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-primera-guerra-mundial-brief-history-of-the-first-world-war"
+          "work": "breve-historia-de-la-primera-guerra-mundial"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00MJAEXFM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07RQVXK9G",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Primera Guerra Mundial [Brief History of the First World War]"
+      "title": "Breve historia de la Primera Guerra Mundial"
     },
     "breve-historia-de-la-revolucion-francesa": {
       "added_at": "2026-07-29",
@@ -3628,53 +3225,7 @@
             {
               "asin": "B07YX3FTKB",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ngIbhLFoL.jpg",
-          "id": "enric-puig-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "enric-puig"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-03-08",
-          "runtime_min": 403,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX3FTKB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-revolucion-francesa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX3FTKB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Revolución francesa"
-    },
-    "breve-historia-de-la-revolucion-francesa-narracion-en-castellano-brief-history-of-the-french-revolut": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "inigo-bolinaga"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-la-revolucion-francesa-narracion-en-castellano-brief-history-of-the-french-revolut",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "enric-puig-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07PCV25S6",
               "region": "us"
@@ -3693,21 +3244,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX3FTKB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07PCV25S6",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-revolucion-francesa-narracion-en-castellano-brief-history-of-the-french-revolut"
+          "work": "breve-historia-de-la-revolucion-francesa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX3FTKB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07PCV25S6",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Revolución francesa (Narración en Castellano) [Brief History of the French Revolution (Castilian Narration)]"
+      "title": "Breve historia de la Revolución francesa"
     },
     "breve-historia-de-la-revolucion-rusa": {
       "added_at": "2026-07-29",
@@ -3715,6 +3276,7 @@
         "inigo-bolinaga"
       ],
       "genres": [
+        "action-adventure",
         "history",
         "military-history"
       ],
@@ -3766,55 +3328,7 @@
             {
               "asin": "B08JD7F1JB",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-cqN7alzL.jpg",
-          "id": "roberto-rivas-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roberto-rivas"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-21",
-          "runtime_min": 466,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08JD7F1JB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-revolucion-rusa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00K538M16",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve Historia de la Revolución Rusa"
-    },
-    "breve-historia-de-la-revolucion-rusa-brief-history-of-the-russian-revolution": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "inigo-bolinaga"
-      ],
-      "genres": [
-        "action-adventure",
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-la-revolucion-rusa-brief-history-of-the-russian-revolution",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roberto-rivas-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08JD55XKZ",
               "region": "us"
@@ -3833,21 +3347,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08JD7F1JB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08JD55XKZ",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-revolucion-rusa-brief-history-of-the-russian-revolution"
+          "work": "breve-historia-de-la-revolucion-rusa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00K538M16",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08JD55XKZ",
           "type": "libex-import"
         }
       ],
-      "title": "Breve Historia de la Revolución Rusa [Brief History of the Russian Revolution]"
+      "title": "Breve Historia de la Revolución Rusa"
     },
     "breve-historia-de-la-segunda-guerra-mundial": {
       "added_at": "2026-07-29",
@@ -3889,30 +3413,7 @@
             }
           ],
           "work": "breve-historia-de-la-segunda-guerra-mundial"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00MMM66UC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Segunda Guerra Mundial"
-    },
-    "breve-historia-de-la-segunda-guerra-mundial-narracion-en-castellano-brief-history-of-the-second-worl": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jesus-hernandez"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "breve-historia-de-la-segunda-guerra-mundial-narracion-en-castellano-brief-history-of-the-second-worl",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "roger-vidal-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3939,17 +3440,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-segunda-guerra-mundial-narracion-en-castellano-brief-history-of-the-second-worl"
+          "work": "breve-historia-de-la-segunda-guerra-mundial"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00MMM66UC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HB6WWH2",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Segunda Guerra Mundial (Narración en Castellano) [Brief History of the Second World War]"
+      "title": "Breve historia de la Segunda Guerra Mundial"
     },
     "breve-historia-de-la-segunda-republica-espanola": {
       "added_at": "2026-07-29",
@@ -3970,53 +3476,7 @@
             {
               "asin": "B07YR9FXLW",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91a5YehYG5L.jpg",
-          "id": "jordi-varela-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-varela"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-23",
-          "runtime_min": 466,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YR9FXLW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-la-segunda-republica-espanola"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YR9FXLW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de la Segunda República Española"
-    },
-    "breve-historia-de-la-segunda-republica-espanola-brief-history-of-the-second-spanish-republic": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "luis-e-inigo-fernandez"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-la-segunda-republica-espanola-brief-history-of-the-second-spanish-republic",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-varela-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B077SN4376",
               "region": "us"
@@ -4035,21 +3495,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YR9FXLW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B077SN4376",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-la-segunda-republica-espanola-brief-history-of-the-second-spanish-republic"
+          "work": "breve-historia-de-la-segunda-republica-espanola"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YR9FXLW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B077SN4376",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de la Segunda República Española [Brief history of the Second Spanish Republic]"
+      "title": "Breve historia de la Segunda República Española"
     },
     "breve-historia-de-las-ciudades-del-mundo-antiguo": {
       "added_at": "2026-07-29",
@@ -4071,6 +3541,10 @@
             {
               "asin": "B08JFG143Y",
               "region": "es"
+            },
+            {
+              "asin": "B08JD8QM5B",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91BH7LJKJNL.jpg",
@@ -4087,6 +3561,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08JFG143Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08JD8QM5B",
               "type": "libex-import"
             }
           ],
@@ -4135,59 +3614,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MMOWKE6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de las ciudades del mundo antiguo"
-    },
-    "breve-historia-de-las-ciudades-del-mundo-antiguo-brief-history-of-the-cities-of-the-ancient-world": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "angel-luis-vera-aranda"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-las-ciudades-del-mundo-antiguo-brief-history-of-the-cities-of-the-ancient-world",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-luyando-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08JD8QM5B",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BH7LJKJNL.jpg",
-          "id": "carlos-luyando-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-luyando"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-28",
-          "runtime_min": 320,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08JD8QM5B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-las-ciudades-del-mundo-antiguo-brief-history-of-the-cities-of-the-ancient-world"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08JD8QM5B",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de las ciudades del mundo antiguo [Brief History of the Cities of the Ancient World]"
+      "title": "Breve historia de las ciudades del mundo antiguo"
     },
     "breve-historia-de-las-cruzadas": {
       "added_at": "2026-07-29",
@@ -4269,54 +3703,7 @@
             {
               "asin": "B081FV24Z5",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nO3lEdEtL.jpg",
-          "id": "angel-del-rio-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "angel-del-rio"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-11-14",
-          "runtime_min": 523,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B081FV24Z5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-las-guerras-punicas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B081FV24Z5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de las Guerras púnicas"
-    },
-    "breve-historia-de-las-guerras-punicas-narracion-en-castellano-a-brief-history-of-the-punic-wars": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-martinez-pinna",
-        "diego-pena-dominguez"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-las-guerras-punicas-narracion-en-castellano-a-brief-history-of-the-punic-wars",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "angel-del-rio-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07RX8TMX3",
               "region": "us"
@@ -4335,21 +3722,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B081FV24Z5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07RX8TMX3",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-las-guerras-punicas-narracion-en-castellano-a-brief-history-of-the-punic-wars"
+          "work": "breve-historia-de-las-guerras-punicas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B081FV24Z5",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07RX8TMX3",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de las Guerras púnicas (Narración en Castellano) [A Brief History of the Punic Wars]"
+      "title": "Breve historia de las Guerras púnicas"
     },
     "breve-historia-de-las-leyendas-medievales": {
       "added_at": "2026-07-29",
@@ -4527,53 +3924,7 @@
             {
               "asin": "B07YRF5R8M",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rCB5uKpXL.jpg",
-          "id": "ignacio-latorre-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ignacio-latorre"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-23",
-          "runtime_min": 442,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRF5R8M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-los-borbones-espanoles"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRF5R8M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de los Borbones españoles"
-    },
-    "breve-historia-de-los-borbones-espanoles-brief-history-of-the-spanish-bourbons": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-granados"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-los-borbones-espanoles-brief-history-of-the-spanish-bourbons",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ignacio-latorre-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B077VYPRXF",
               "region": "us"
@@ -4592,21 +3943,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRF5R8M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B077VYPRXF",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-los-borbones-espanoles-brief-history-of-the-spanish-bourbons"
+          "work": "breve-historia-de-los-borbones-espanoles"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRF5R8M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B077VYPRXF",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de los Borbones españoles [Brief history of the Spanish Bourbons]"
+      "title": "Breve historia de los Borbones españoles"
     },
     "breve-historia-de-los-celtas": {
       "added_at": "2026-07-29",
@@ -4782,53 +4143,7 @@
             {
               "asin": "B07YX65SYB",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Xc5LvdP3L.jpg",
-          "id": "jonas-merino-cuenca-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jonas-merino-cuenca"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-07-10",
-          "runtime_min": 316,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX65SYB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-los-godos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX65SYB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de los godos"
-    },
-    "breve-historia-de-los-godos-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fermin-miranda-garcia"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-los-godos-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jonas-merino-cuenca-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07V59S3XK",
               "region": "us"
@@ -4847,21 +4162,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX65SYB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07V59S3XK",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-los-godos-narracion-en-castellano"
+          "work": "breve-historia-de-los-godos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX65SYB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07V59S3XK",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de los godos (Narración en Castellano)"
+      "title": "Breve historia de los godos"
     },
     "breve-historia-de-los-incas": {
       "added_at": "2026-07-29",
@@ -4882,6 +4207,10 @@
             {
               "asin": "B07YRS5719",
               "region": "es"
+            },
+            {
+              "asin": "B07JGZX7FP",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91lh3V63WkL.jpg",
@@ -4898,6 +4227,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YRS5719",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07JGZX7FP",
               "type": "libex-import"
             }
           ],
@@ -4946,59 +4280,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MJ8M7PM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de los incas"
-    },
-    "breve-historia-de-los-incas-narracion-en-castellano-brief-history-of-the-incas": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "patricia-temoche"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-los-incas-narracion-en-castellano-brief-history-of-the-incas",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carles-sianes-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07JGZX7FP",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lh3V63WkL.jpg",
-          "id": "carles-sianes-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carles-sianes"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-10-17",
-          "runtime_min": 258,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07JGZX7FP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-los-incas-narracion-en-castellano-brief-history-of-the-incas"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07JGZX7FP",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de los incas (Narración en Castellano) [Brief History of the Incas]"
+      "title": "Breve historia de los incas"
     },
     "breve-historia-de-los-judios": {
       "added_at": "2026-07-29",
@@ -5058,55 +4347,7 @@
             {
               "asin": "B07YX4H6VZ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hMU6QZYJL.jpg",
-          "id": "vicente-moros-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "vicente-moros"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-05-07",
-          "runtime_min": 492,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX4H6VZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-los-judios"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00MJ8N0GC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de los judíos"
-    },
-    "breve-historia-de-los-judios-brief-history-of-the-jews": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-pedro-cavero-coll"
-      ],
-      "genres": [
-        "history",
-        "military-history",
-        "religion-spirituality"
-      ],
-      "id": "breve-historia-de-los-judios-brief-history-of-the-jews",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "vicente-moros-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07RJTN9PT",
               "region": "us"
@@ -5125,21 +4366,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX4H6VZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07RJTN9PT",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-los-judios-brief-history-of-the-jews"
+          "work": "breve-historia-de-los-judios"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00MJ8N0GC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07RJTN9PT",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de los judíos [Brief History of the Jews]"
+      "title": "Breve historia de los judíos"
     },
     "breve-historia-de-los-mayas": {
       "added_at": "2026-07-29",
@@ -5531,29 +4782,7 @@
             }
           ],
           "work": "breve-historia-de-los-vikingos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00MJ8ICMO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de los vikingos"
-    },
-    "breve-historia-de-los-vikingos-brief-history-of-the-vikings": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "manuel-velasco"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-de-los-vikingos-brief-history-of-the-vikings",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "felipe-gonzalez-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5580,17 +4809,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-los-vikingos-brief-history-of-the-vikings"
+          "work": "breve-historia-de-los-vikingos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00MJ8ICMO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08J8FCTLY",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de los vikingos [Brief History of the Vikings]"
+      "title": "Breve historia de los vikingos"
     },
     "breve-historia-de-napoleon": {
       "added_at": "2026-07-29",
@@ -5614,93 +4848,7 @@
             {
               "asin": "B07YRL8HPJ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81qJo9UAjUL.jpg",
-          "id": "eduardo-diez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eduardo-diez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-08-30",
-          "runtime_min": 508,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRL8HPJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-napoleon"
-        },
-        "javier-gomez-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00MMJ9OI6",
-              "region": "us"
             },
-            {
-              "asin": "B07YRR7QDG",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Wt0u9cdBL.jpg",
-          "id": "javier-gomez-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "javier-gomez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2014-08-12",
-          "runtime_min": 461,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00MMJ9OI6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRR7QDG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-napoleon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRL8HPJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de Napoleón"
-    },
-    "breve-historia-de-napoleon-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-granados"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "breve-historia-de-napoleon-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eduardo-diez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B07GY1F1B3",
               "region": "us"
@@ -5771,21 +4919,68 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRL8HPJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07GY1F1B3",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-napoleon-narracion-en-castellano"
+          "work": "breve-historia-de-napoleon"
+        },
+        "javier-gomez-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00MMJ9OI6",
+              "region": "us"
+            },
+            {
+              "asin": "B07YRR7QDG",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Wt0u9cdBL.jpg",
+          "id": "javier-gomez-2014",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "javier-gomez"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-08-12",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00MMJ9OI6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YRR7QDG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breve-historia-de-napoleon"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRL8HPJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07GY1F1B3",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de Napoleón (Narración en Castellano)"
+      "title": "Breve historia de Napoleón"
     },
     "breve-historia-de-roma": {
       "added_at": "2026-07-29",
@@ -5891,7 +5086,9 @@
       "genres": [
         "biography-memoir",
         "historical-fiction",
-        "history"
+        "history",
+        "military-history",
+        "politics"
       ],
       "id": "breve-historia-de-winston-churchill",
       "language": "es",
@@ -5904,82 +5101,7 @@
             {
               "asin": "B07YRF3TL6",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mG9gmUbWL.jpg",
-          "id": "juan-miguel-diez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-miguel-diez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-23",
-          "runtime_min": 546,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRF3TL6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-winston-churchill"
-        },
-        "manuel-barron-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07Z5H7KG2",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71OOKb7VusL.jpg",
-          "id": "manuel-barron-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "manuel-barron"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-10-01",
-          "runtime_min": 480,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07Z5H7KG2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-de-winston-churchill"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRF3TL6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de Winston Churchill"
-    },
-    "breve-historia-de-winston-churchill-a-brief-history-of-winston-churchill": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-vidal-pelaz-lopez"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history"
-      ],
-      "id": "breve-historia-de-winston-churchill-a-brief-history-of-winston-churchill",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-miguel-diez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B077Y3QX7S",
               "region": "us"
@@ -5998,41 +5120,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRF3TL6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B077Y3QX7S",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-winston-churchill-a-brief-history-of-winston-churchill"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B077Y3QX7S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia de Winston Churchill [A Brief History of Winston Churchill]"
-    },
-    "breve-historia-de-winston-churchill-brief-history-of-winston-churchill": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-vidal-pelaz-lopez"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "breve-historia-de-winston-churchill-brief-history-of-winston-churchill",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "breve-historia-de-winston-churchill"
+        },
         "manuel-barron-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07Z5H7KG2",
+              "region": "es"
+            },
             {
               "asin": "B07YGVFT29",
               "region": "us"
@@ -6051,21 +5157,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07Z5H7KG2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07YGVFT29",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-de-winston-churchill-brief-history-of-winston-churchill"
+          "work": "breve-historia-de-winston-churchill"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRF3TL6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B077Y3QX7S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07YGVFT29",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia de Winston Churchill [Brief History of Winston Churchill]"
+      "title": "Breve historia de Winston Churchill"
     },
     "breve-historia-del-africa-subsahariana": {
       "added_at": "2026-07-29",
@@ -6086,53 +5207,7 @@
             {
               "asin": "B07YRFGW8W",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1KxAMxZkDL.jpg",
-          "id": "hermogenes-alonso-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hermogenes-alonso"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-23",
-          "runtime_min": 528,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRFGW8W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-del-africa-subsahariana"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRFGW8W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia del África subsahariana"
-    },
-    "breve-historia-del-africa-subsahariana-brief-history-of-sub-saharan-africa": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "eric-garcia-moral"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-del-africa-subsahariana-brief-history-of-sub-saharan-africa",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hermogenes-alonso-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0784SLJGB",
               "region": "us"
@@ -6151,21 +5226,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRFGW8W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0784SLJGB",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-del-africa-subsahariana-brief-history-of-sub-saharan-africa"
+          "work": "breve-historia-del-africa-subsahariana"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRFGW8W",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0784SLJGB",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia del África subsahariana [Brief history of sub-Saharan Africa]"
+      "title": "Breve historia del África subsahariana"
     },
     "breve-historia-del-arte": {
       "added_at": "2026-07-29",
@@ -6174,7 +5259,8 @@
       ],
       "genres": [
         "arts-entertainment",
-        "history"
+        "history",
+        "writing-publishing"
       ],
       "id": "breve-historia-del-arte",
       "language": "es",
@@ -6187,55 +5273,7 @@
             {
               "asin": "B07YRFJQ51",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915tary2lrL.jpg",
-          "id": "eduardo-diez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eduardo-diez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-23",
-          "runtime_min": 762,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRFJQ51",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-del-arte"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRFJQ51",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia del arte"
-    },
-    "breve-historia-del-arte-brief-history-of-art": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carlos-javier-taranilla-de-la-varga"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "history",
-        "writing-publishing"
-      ],
-      "id": "breve-historia-del-arte-brief-history-of-art",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eduardo-diez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B077V3L638",
               "region": "us"
@@ -6254,21 +5292,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRFJQ51",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B077V3L638",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-del-arte-brief-history-of-art"
+          "work": "breve-historia-del-arte"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRFJQ51",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B077V3L638",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia del arte [Brief history of art]"
+      "title": "Breve historia del arte"
     },
     "breve-historia-del-condon-y-de-los-metodos-anticonceptivos": {
       "added_at": "2026-07-29",
@@ -6433,6 +5481,7 @@
         "fernando-diez-martin"
       ],
       "genres": [
+        "action-adventure",
         "politics",
         "social-sciences"
       ],
@@ -6484,55 +5533,7 @@
             {
               "asin": "B08J8D7P6V",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91N3wbvGxLL.jpg",
-          "id": "felipe-gonzalez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "felipe-gonzalez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-18",
-          "runtime_min": 390,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08J8D7P6V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-del-homo-sapiens"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00MNKTS76",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia del Homo Sapiens"
-    },
-    "breve-historia-del-homo-sapiens-brief-history-of-homo-sapiens": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-diez-martin"
-      ],
-      "genres": [
-        "action-adventure",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "breve-historia-del-homo-sapiens-brief-history-of-homo-sapiens",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "felipe-gonzalez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08J8BK5ZJ",
               "region": "us"
@@ -6551,21 +5552,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08J8D7P6V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08J8BK5ZJ",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-del-homo-sapiens-brief-history-of-homo-sapiens"
+          "work": "breve-historia-del-homo-sapiens"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00MNKTS76",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08J8BK5ZJ",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia del Homo Sapiens [Brief History of Homo Sapiens]"
+      "title": "Breve historia del Homo Sapiens"
     },
     "breve-historia-del-imperio-bizantino": {
       "added_at": "2026-07-29",
@@ -6822,6 +5833,10 @@
             {
               "asin": "B07YRMJXDH",
               "region": "es"
+            },
+            {
+              "asin": "B07HB7JCQD",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/912gZLBc9YL.jpg",
@@ -6838,6 +5853,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YRMJXDH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07HB7JCQD",
               "type": "libex-import"
             }
           ],
@@ -6886,59 +5906,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00MJAIB9Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia del mundo"
-    },
-    "breve-historia-del-mundo-narracion-en-castellano-brief-history-of-the-world-castilian-narration": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "luis-inigo-fernandez"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "breve-historia-del-mundo-narracion-en-castellano-brief-history-of-the-world-castilian-narration",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-aznarez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07HB7JCQD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912gZLBc9YL.jpg",
-          "id": "ana-aznarez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-aznarez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-09-14",
-          "runtime_min": 506,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07HB7JCQD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-del-mundo-narracion-en-castellano-brief-history-of-the-world-castilian-narration"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HB7JCQD",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia del mundo (Narración en Castellano) [Brief History of the World - Castilian Narration]"
+      "title": "Breve historia del mundo"
     },
     "breve-historia-del-romanico": {
       "added_at": "2026-07-29",
@@ -6948,7 +5923,8 @@
       "genres": [
         "arts-entertainment",
         "history",
-        "politics"
+        "politics",
+        "writing-publishing"
       ],
       "id": "breve-historia-del-romanico",
       "language": "es",
@@ -6961,56 +5937,7 @@
             {
               "asin": "B07YX4Z3X6",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91385zQJ0EL.jpg",
-          "id": "david-morales-martin-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-morales-martin"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-04-18",
-          "runtime_min": 448,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX4Z3X6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-del-romanico"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX4Z3X6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia del Románico"
-    },
-    "breve-historia-del-romanico-brief-history-of-the-romanesque-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carlos-javier-taranilla-de-la-varga"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "history",
-        "politics",
-        "writing-publishing"
-      ],
-      "id": "breve-historia-del-romanico-brief-history-of-the-romanesque-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-morales-martin-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07QSTLH5M",
               "region": "us"
@@ -7029,21 +5956,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX4Z3X6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07QSTLH5M",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-del-romanico-brief-history-of-the-romanesque-narracion-en-castellano"
+          "work": "breve-historia-del-romanico"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX4Z3X6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07QSTLH5M",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia del Románico [Brief History of the Romanesque] (Narración en Castellano)"
+      "title": "Breve historia del Románico"
     },
     "breve-historia-del-siglo-de-oro": {
       "added_at": "2026-07-29",
@@ -7186,55 +6123,7 @@
             {
               "asin": "B07YRKB1KR",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oif7XWPNL.jpg",
-          "id": "eduardo-diez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eduardo-diez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-09-18",
-          "runtime_min": 485,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRKB1KR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breve-historia-socialismo-y-del-comunismo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRKB1KR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breve historia Socialismo y del Comunismo"
-    },
-    "breve-historia-socialismo-y-del-comunismo-narracion-en-castellano-brief-history-socialism-and-commun": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-paniagua"
-      ],
-      "genres": [
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "breve-historia-socialismo-y-del-comunismo-narracion-en-castellano-brief-history-socialism-and-commun",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eduardo-diez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07HCMHF7T",
               "region": "us"
@@ -7253,21 +6142,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRKB1KR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07HCMHF7T",
               "type": "libex-import"
             }
           ],
-          "work": "breve-historia-socialismo-y-del-comunismo-narracion-en-castellano-brief-history-socialism-and-commun"
+          "work": "breve-historia-socialismo-y-del-comunismo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRKB1KR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HCMHF7T",
           "type": "libex-import"
         }
       ],
-      "title": "Breve historia Socialismo y del Comunismo (Narración en Castellano) [Brief History Socialism and Communism]"
+      "title": "Breve historia Socialismo y del Comunismo"
     },
     "breve-storia-degli-indiani-damerica-a-brief-history-of-the-native-americans": {
       "added_at": "2026-07-29",

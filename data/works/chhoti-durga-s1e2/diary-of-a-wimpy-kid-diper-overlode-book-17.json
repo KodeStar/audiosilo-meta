@@ -16,6 +16,7 @@
       "license": "CC0-1.0",
       "recordings": {
         "dan-russell-2022": {
+          "abridged": false,
           "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
             {
@@ -24,6 +25,10 @@
             },
             {
               "asin": "B09VY3JYRZ",
+              "region": "us"
+            },
+            {
+              "asin": "B09WRVGGZY",
               "region": "us"
             }
           ],
@@ -78,6 +83,86 @@
               "imported_at": "2026-07-30",
               "ref": "B09VY3JYRZ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09WRVGGZY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "diary-of-a-wimpy-kid-diper-overlode-book-17"
+        },
+        "ramon-de-ocampo-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09XN6X1WN",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3570,
+              "start_ms": 18924,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 2603450,
+              "start_ms": 22494,
+              "title": "December"
+            },
+            {
+              "length_ms": 1668005,
+              "start_ms": 2625944,
+              "title": "January"
+            },
+            {
+              "length_ms": 251170,
+              "start_ms": 4293949,
+              "title": "February"
+            },
+            {
+              "length_ms": 1557524,
+              "start_ms": 4545119,
+              "title": "March"
+            },
+            {
+              "length_ms": 830996,
+              "start_ms": 6102643,
+              "title": "April"
+            },
+            {
+              "length_ms": 29301,
+              "start_ms": 6933639,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ClDuO3JLL.jpg",
+          "id": "ramon-de-ocampo-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ramon-de-ocampo"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2022",
+          "runtime_min": 116,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09XN6X1WN",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09XN6X1WN",
+              "type": "libex-import"
             }
           ],
           "work": "diary-of-a-wimpy-kid-diper-overlode-book-17"
@@ -91,6 +176,21 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09VY3JYRZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B09XN6X1WN",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09XN6X1WN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09WRVGGZY",
           "type": "libex-import"
         }
       ],
@@ -1880,19 +1980,89 @@
       ],
       "title": "Diary of a Wimpy Kid: Rodrick Rules: Enhanced Edition"
     },
-    "diary-of-a-wimpy-kid-the-deep-end": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "diary-of-a-wimpy-kid-the-deep-end-book-15": {
+      "added_at": "2026-07-12T19:06:31+01:00",
       "authors": [
         "jeff-kinney"
       ],
+      "first_published": "2020",
       "genres": [
         "childrens",
-        "comedy-humor"
+        "comedy-humor",
+        "coming-of-age"
       ],
-      "id": "diary-of-a-wimpy-kid-the-deep-end",
+      "id": "diary-of-a-wimpy-kid-the-deep-end-book-15",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dan-russell-2020": {
+          "abridged": false,
+          "added_at": "2026-07-12T19:06:31+01:00",
+          "asin": [
+            {
+              "asin": "0241472067",
+              "region": "uk"
+            },
+            {
+              "asin": "1760899054",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1959183,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1300851,
+              "start_ms": 1959183,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1538020,
+              "start_ms": 3260034,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 754625,
+              "start_ms": 4798054,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1853300,
+              "start_ms": 5552679,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Yya6lpXLL._SL500_.jpg",
+          "id": "dan-russell-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2020-02-21",
+          "runtime_min": 126,
+          "sources": [
+            {
+              "ref": "0241472067",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "0241472067",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1760899054",
+              "type": "libex-import"
+            }
+          ],
+          "work": "diary-of-a-wimpy-kid-the-deep-end-book-15"
+        },
         "ramon-de-ocampo-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1996,10 +2166,14 @@
               "type": "libex-import"
             }
           ],
-          "work": "diary-of-a-wimpy-kid-the-deep-end"
+          "work": "diary-of-a-wimpy-kid-the-deep-end-book-15"
         }
       },
       "sources": [
+        {
+          "ref": "0241472067",
+          "type": "audible-lookup"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1980018065",
@@ -2009,83 +2183,11 @@
           "imported_at": "2026-07-30",
           "ref": "1980018065",
           "type": "libex-import"
-        }
-      ],
-      "title": "Diary of a Wimpy Kid: The Deep End"
-    },
-    "diary-of-a-wimpy-kid-the-deep-end-book-15": {
-      "added_at": "2026-07-12T19:06:31+01:00",
-      "authors": [
-        "jeff-kinney"
-      ],
-      "first_published": "2020",
-      "id": "diary-of-a-wimpy-kid-the-deep-end-book-15",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dan-russell-2020": {
-          "added_at": "2026-07-12T19:06:31+01:00",
-          "asin": [
-            {
-              "asin": "0241472067",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1959183,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1300851,
-              "start_ms": 1959183,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1538020,
-              "start_ms": 3260034,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 754625,
-              "start_ms": 4798054,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1853300,
-              "start_ms": 5552679,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Yya6lpXLL._SL500_.jpg",
-          "id": "dan-russell-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2020-02-21",
-          "runtime_min": 126,
-          "sources": [
-            {
-              "ref": "0241472067",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "0241472067",
-              "type": "libex-import"
-            }
-          ],
-          "work": "diary-of-a-wimpy-kid-the-deep-end-book-15"
-        }
-      },
-      "sources": [
+        },
         {
-          "ref": "0241472067",
-          "type": "audible-lookup"
+          "imported_at": "2026-07-29",
+          "ref": "1760899054",
+          "type": "libex-import"
         }
       ],
       "title": "Diary of a Wimpy Kid: The Deep End (Book 15)"
@@ -9012,7 +9114,9 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "nature"
+        "comedy-humor",
+        "nature",
+        "sports"
       ],
       "id": "diary-of-nate-the-minecraft-ninja",
       "language": "en",
@@ -9111,12 +9215,107 @@
             }
           ],
           "work": "diary-of-nate-the-minecraft-ninja"
+        },
+        "dave-droxler-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G5QLPTDR",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 23428,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 487572,
+              "start_ms": 23428,
+              "title": "Chapter 1: Summer Vacation"
+            },
+            {
+              "length_ms": 266147,
+              "start_ms": 511000,
+              "title": "Chapter 2: Back to School"
+            },
+            {
+              "length_ms": 487572,
+              "start_ms": 777147,
+              "title": "Chapter 3: About the Chicken"
+            },
+            {
+              "length_ms": 328562,
+              "start_ms": 1264719,
+              "title": "Chapter 4: Lunch Break"
+            },
+            {
+              "length_ms": 419213,
+              "start_ms": 1593281,
+              "title": "Chapter 5: The Mission"
+            },
+            {
+              "length_ms": 487572,
+              "start_ms": 2012494,
+              "title": "Chapter 6: Afterschool Activity"
+            },
+            {
+              "length_ms": 529182,
+              "start_ms": 2500066,
+              "title": "Chapter 7: Negotiation"
+            },
+            {
+              "length_ms": 578223,
+              "start_ms": 3029248,
+              "title": "Chapter 8: Beat Down"
+            },
+            {
+              "length_ms": 304808,
+              "start_ms": 3607471,
+              "title": "Chapter 9: Cookies"
+            },
+            {
+              "length_ms": 29860,
+              "start_ms": 3912279,
+              "title": "Diary of Nate the Minecraft Ninja 2"
+            },
+            {
+              "length_ms": 28884,
+              "start_ms": 3942139,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ok17fZRqL.jpg",
+          "id": "dave-droxler-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dave-droxler"
+          ],
+          "publisher": "Write Blocked Publishing",
+          "release_date": "2025-12-08",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G5QLPTDR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "diary-of-nate-the-minecraft-ninja"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B0BXZ37JZP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G5QLPTDR",
           "type": "libex-import"
         }
       ],
@@ -10065,121 +10264,6 @@
         }
       ],
       "title": "Diary of Nate the Minecraft Ninja 9: Showdown"
-    },
-    "diary-of-nate-the-minecraft-ninja-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "write-blocked"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "nature",
-        "sports"
-      ],
-      "id": "diary-of-nate-the-minecraft-ninja-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dave-droxler-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G5QLPTDR",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 23428,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 487572,
-              "start_ms": 23428,
-              "title": "Chapter 1: Summer Vacation"
-            },
-            {
-              "length_ms": 266147,
-              "start_ms": 511000,
-              "title": "Chapter 2: Back to School"
-            },
-            {
-              "length_ms": 487572,
-              "start_ms": 777147,
-              "title": "Chapter 3: About the Chicken"
-            },
-            {
-              "length_ms": 328562,
-              "start_ms": 1264719,
-              "title": "Chapter 4: Lunch Break"
-            },
-            {
-              "length_ms": 419213,
-              "start_ms": 1593281,
-              "title": "Chapter 5: The Mission"
-            },
-            {
-              "length_ms": 487572,
-              "start_ms": 2012494,
-              "title": "Chapter 6: Afterschool Activity"
-            },
-            {
-              "length_ms": 529182,
-              "start_ms": 2500066,
-              "title": "Chapter 7: Negotiation"
-            },
-            {
-              "length_ms": 578223,
-              "start_ms": 3029248,
-              "title": "Chapter 8: Beat Down"
-            },
-            {
-              "length_ms": 304808,
-              "start_ms": 3607471,
-              "title": "Chapter 9: Cookies"
-            },
-            {
-              "length_ms": 29860,
-              "start_ms": 3912279,
-              "title": "Diary of Nate the Minecraft Ninja 2"
-            },
-            {
-              "length_ms": 28884,
-              "start_ms": 3942139,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Ok17fZRqL.jpg",
-          "id": "dave-droxler-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dave-droxler"
-          ],
-          "publisher": "Write Blocked Publishing",
-          "release_date": "2025-12-08",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G5QLPTDR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "diary-of-nate-the-minecraft-ninja-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G5QLPTDR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Diary of Nate the Minecraft Ninja, Book 1"
     },
     "diary-of-nate-the-minecraft-ninja-book-6-eggs-and-explosions": {
       "added_at": "2026-08-02",

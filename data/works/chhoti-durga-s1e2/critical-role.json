@@ -2929,6 +2929,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "brian-troxell-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0076CLT7I",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 268770,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5724252,
+              "start_ms": 268770,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2054664,
+              "start_ms": 5993022,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 5144636,
+              "start_ms": 8047686,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 440412,
+              "start_ms": 13192322,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 5099496,
+              "start_ms": 13632734,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1518167,
+              "start_ms": 18732230,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 336224,
+              "start_ms": 20250397,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71tJkuhhWiL.jpg",
+          "id": "brian-troxell-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brian-troxell"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2012-02-07",
+          "runtime_min": 342,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0076CLT7I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "critique-of-practical-reason"
+        },
         "michael-lunts-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2963,6 +3033,11 @@
           "imported_at": "2026-07-29",
           "ref": "B07CMCT4HF",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0076CLT7I",
+          "type": "libex-import"
         }
       ],
       "title": "Critique of Practical Reason"
@@ -2974,6 +3049,7 @@
       ],
       "genres": [
         "action-adventure",
+        "history",
         "philosophy",
         "politics"
       ],
@@ -2981,6 +3057,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "martin-wilson-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B073XTSBHX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91komsj8JEL.jpg",
+          "id": "martin-wilson-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martin-wilson"
+          ],
+          "publisher": "A.R.N. Publications",
+          "release_date": "2017-07-18",
+          "runtime_min": 1359,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B073XTSBHX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "critique-of-pure-reason"
+        },
         "michael-lunts-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3015,6 +3119,11 @@
           "imported_at": "2026-07-29",
           "ref": "B08X1B151N",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073XTSBHX",
+          "type": "libex-import"
         }
       ],
       "title": "Critique of Pure Reason"
@@ -3025,13 +3134,45 @@
         "platone"
       ],
       "genres": [
+        "classics",
+        "mythology",
         "philosophy",
-        "politics"
+        "politics",
+        "short-stories"
       ],
       "id": "critone",
       "language": "it",
       "license": "CC0-1.0",
       "recordings": {
+        "gabriele-marchesini-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00BU6J6C6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1b0y8cWjVL.jpg",
+          "id": "gabriele-marchesini-2013",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gabriele-marchesini",
+            "renzo-morselli"
+          ],
+          "publisher": "Quondam",
+          "release_date": "2013-03-15",
+          "runtime_min": 38,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00BU6J6C6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "critone"
+        },
         "giancarlo-de-angeli-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3068,64 +3209,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00XUMA3QQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Critone"
-    },
-    "critone-crito": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "platone"
-      ],
-      "genres": [
-        "classics",
-        "mythology",
-        "philosophy",
-        "politics",
-        "short-stories"
-      ],
-      "id": "critone-crito",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gabriele-marchesini-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00BU6J6C6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1b0y8cWjVL.jpg",
-          "id": "gabriele-marchesini-2013",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gabriele-marchesini",
-            "renzo-morselli"
-          ],
-          "publisher": "Quondam",
-          "release_date": "2013-03-15",
-          "runtime_min": 38,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00BU6J6C6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "critone-crito"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00BU6J6C6",
           "type": "libex-import"
         }
       ],
-      "title": "Critone [Crito]"
+      "title": "Critone"
     },
     "critter-calamity": {
       "added_at": "2026-08-01",
@@ -5341,6 +5432,45 @@
           ],
           "work": "crocodile-on-the-sandbank"
         },
+        "christopher-davenport-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0F642MD5B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nL72PoEoL.jpg",
+          "id": "christopher-davenport-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-davenport",
+            "colleen-delany",
+            "elias-khalil",
+            "full-cast",
+            "jenna-sharpe",
+            "keval-shah",
+            "michael-glenn",
+            "nanette-savard",
+            "nathaniel-priestley",
+            "niusha-nawab",
+            "peter-holdway",
+            "stewart-crank"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-06-11",
+          "runtime_min": 574,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0F642MD5B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "crocodile-on-the-sandbank"
+        },
         "susan-omalley-2002": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5472,71 +5602,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V0QUX8",
           "type": "libex-import"
-        }
-      ],
-      "title": "Crocodile on the Sandbank"
-    },
-    "crocodile-on-the-sandbank-dramatized-adaptation": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "elizabeth-peters"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "crocodile-on-the-sandbank-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-davenport-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0F642MD5B",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nL72PoEoL.jpg",
-          "id": "christopher-davenport-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-davenport",
-            "colleen-delany",
-            "elias-khalil",
-            "full-cast",
-            "jenna-sharpe",
-            "keval-shah",
-            "michael-glenn",
-            "nanette-savard",
-            "nathaniel-priestley",
-            "niusha-nawab",
-            "peter-holdway",
-            "stewart-crank"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-06-11",
-          "runtime_min": 574,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0F642MD5B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "crocodile-on-the-sandbank-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0F642MD5B",
           "type": "libex-import"
         }
       ],
-      "title": "Crocodile on the Sandbank (Dramatized Adaptation)"
+      "title": "Crocodile on the Sandbank"
     },
     "crocodile-tears": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -9882,7 +9955,8 @@
         "gabriel-garcia-marquez"
       ],
       "genres": [
-        "literary-fiction"
+        "literary-fiction",
+        "magical-realism"
       ],
       "id": "cronica-de-una-muerte-anunciada",
       "language": "es",
@@ -9895,82 +9969,7 @@
             {
               "asin": "8439732481",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818suhFKcBL.jpg",
-          "id": "diego-trujillo-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "diego-trujillo"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-10-19",
-          "runtime_min": 176,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8439732481",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cronica-de-una-muerte-anunciada"
-        },
-        "hernan-jaimes-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08S5WBT3X",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81iNhG7mN1S.jpg",
-          "id": "hernan-jaimes-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hernan-jaimes"
-          ],
-          "publisher": "Blackstone Publishing",
-          "release_date": "2021-03-23",
-          "runtime_min": 186,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08S5WBT3X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cronica-de-una-muerte-anunciada"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8439732481",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Crónica de una muerte anunciada"
-    },
-    "cronica-de-una-muerte-anunciada-chronicle-of-a-death-foretold": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism"
-      ],
-      "id": "cronica-de-una-muerte-anunciada-chronicle-of-a-death-foretold",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "diego-trujillo-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01M8G9PCN",
               "region": "us"
@@ -10031,16 +10030,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8439732481",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01M8G9PCN",
               "type": "libex-import"
             }
           ],
-          "work": "cronica-de-una-muerte-anunciada-chronicle-of-a-death-foretold"
+          "work": "cronica-de-una-muerte-anunciada"
         },
         "hernan-jaimes-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B08S5WBT3X",
+              "region": "es"
+            },
             {
               "asin": "1665038616",
               "region": "us"
@@ -10086,21 +10094,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08S5WBT3X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "1665038616",
               "type": "libex-import"
             }
           ],
-          "work": "cronica-de-una-muerte-anunciada-chronicle-of-a-death-foretold"
+          "work": "cronica-de-una-muerte-anunciada"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8439732481",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01M8G9PCN",
           "type": "libex-import"
         }
       ],
-      "title": "Crónica de una muerte anunciada [Chronicle of a Death Foretold]"
+      "title": "Crónica de una muerte anunciada"
     },
     "cronicas-da-evolucao-cosmica-1a-edicao-a-busca-pela-unidade-chronicles-of-cosmic-evolution-1st-editi": {
       "added_at": "2026-08-02",
@@ -10518,53 +10536,7 @@
             {
               "asin": "B08J85387Z",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ygFwQ8jrL.jpg",
-          "id": "jordi-varela-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-varela"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-10-07",
-          "runtime_min": 1101,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08J85387Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cronicas-matematicas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08J85387Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Crónicas matemáticas"
-    },
-    "cronicas-matematicas-narracion-en-castellano-mathematical-chronicles": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antonio-j-duran"
-      ],
-      "genres": [
-        "science"
-      ],
-      "id": "cronicas-matematicas-narracion-en-castellano-mathematical-chronicles",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-varela-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08J8B5MDV",
               "region": "us"
@@ -10583,21 +10555,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08J85387Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08J8B5MDV",
               "type": "libex-import"
             }
           ],
-          "work": "cronicas-matematicas-narracion-en-castellano-mathematical-chronicles"
+          "work": "cronicas-matematicas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08J85387Z",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08J8B5MDV",
           "type": "libex-import"
         }
       ],
-      "title": "Crónicas matemáticas (Narración en Castellano) [Mathematical Chronicles]"
+      "title": "Crónicas matemáticas"
     },
     "cronins-key": {
       "added_at": "2026-08-02",

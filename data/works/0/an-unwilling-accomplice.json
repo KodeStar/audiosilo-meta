@@ -2821,7 +2821,8 @@
       "genres": [
         "childrens",
         "classics",
-        "coming-of-age"
+        "coming-of-age",
+        "short-stories"
       ],
       "id": "ana-la-de-la-isla-anne-of-the-island",
       "language": "es",
@@ -3076,31 +3077,7 @@
             }
           ],
           "work": "ana-la-de-la-isla-anne-of-the-island"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08F63QVH5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ana, la de la Isla [Anne, of the Island]"
-    },
-    "ana-la-de-la-isla-iii-narracion-en-castellano-anne-of-the-island-iii": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lucy-maud-montgomery"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "short-stories"
-      ],
-      "id": "ana-la-de-la-isla-iii-narracion-en-castellano-anne-of-the-island-iii",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "maria-jose-chabrera-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3344,17 +3321,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "ana-la-de-la-isla-iii-narracion-en-castellano-anne-of-the-island-iii"
+          "work": "ana-la-de-la-isla-anne-of-the-island"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08F63QVH5",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B08GYLGG2S",
           "type": "libex-import"
         }
       ],
-      "title": "Ana, La De La Isla (III) (Narración en Castellano) [Anne of the Island (III)]"
+      "title": "Ana, la de la Isla [Anne, of the Island]"
     },
     "ana-la-de-tejas-verdes-anne-of-green-gables": {
       "added_at": "2026-08-02",
@@ -3604,31 +3586,7 @@
             }
           ],
           "work": "ana-la-de-tejas-verdes-anne-of-green-gables"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08D6XWZQT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ana, la de Tejas Verdes [Anne of Green Gables]"
-    },
-    "ana-la-de-tejas-verdes-narracion-en-castellano": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lucy-maud-montgomery"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age"
-      ],
-      "id": "ana-la-de-tejas-verdes-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "maria-jose-chabrera-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3857,17 +3815,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "ana-la-de-tejas-verdes-narracion-en-castellano"
+          "work": "ana-la-de-tejas-verdes-anne-of-green-gables"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08D6XWZQT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B08FRQ2SPD",
           "type": "libex-import"
         }
       ],
-      "title": "Ana, La De Tejas Verdes (Narración en Castellano)"
+      "title": "Ana, la de Tejas Verdes [Anne of Green Gables]"
     },
     "ana-on-the-edge": {
       "added_at": "2026-07-29",

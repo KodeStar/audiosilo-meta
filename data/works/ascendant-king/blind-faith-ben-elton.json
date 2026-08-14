@@ -3124,7 +3124,8 @@
       ],
       "genres": [
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "blind-justice",
       "language": "en",
@@ -3157,31 +3158,7 @@
             }
           ],
           "work": "blind-justice"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00EPKU0E2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blind Justice"
-    },
-    "blind-justice-william-monk-mystery-book-19": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "anne-perry"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "blind-justice-william-monk-mystery-book-19",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "deirdra-whelan-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3208,17 +3185,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "blind-justice-william-monk-mystery-book-19"
+          "work": "blind-justice"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00EPKU0E2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00CI7OQ8A",
           "type": "libex-import"
         }
       ],
-      "title": "Blind Justice (William Monk Mystery, Book 19)"
+      "title": "Blind Justice"
     },
     "blind-love": {
       "added_at": "2026-07-29",
@@ -5283,8 +5265,8 @@
       ],
       "title": "Blind Run"
     },
-    "blind-salvage": {
-      "added_at": "2026-08-02",
+    "blind-salvage-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "shannon-mayer"
       ],
@@ -5295,7 +5277,7 @@
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "blind-salvage",
+      "id": "blind-salvage-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5423,7 +5405,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "blind-salvage"
+          "work": "blind-salvage-dramatized-adaptation"
         },
         "emma-galvin-2016": {
           "abridged": false,
@@ -5548,32 +5530,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "blind-salvage"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DQDWN82N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blind Salvage"
-    },
-    "blind-salvage-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "shannon-mayer"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "blind-salvage-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "blind-salvage-dramatized-adaptation"
+        },
         "full-cast-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5644,6 +5602,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648816452",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DQDWN82N",
           "type": "libex-import"
         }
       ],

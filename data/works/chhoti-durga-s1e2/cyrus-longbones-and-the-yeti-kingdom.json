@@ -3065,7 +3065,8 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "sword-sorcery"
       ],
       "id": "czerwone-morze-red-sea",
       "language": "pl",
@@ -3280,38 +3281,7 @@
             }
           ],
           "work": "czerwone-morze-red-sea"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C24R7BJ3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Czerwone Morze [Red Sea]"
-    },
-    "czerwone-morze-the-red-sea": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edward-w-robertson",
-        "michal-cierniak"
-      ],
-      "credits": [
-        {
-          "person": "michal-cierniak",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "sword-sorcery"
-      ],
-      "id": "czerwone-morze-the-red-sea",
-      "language": "pl",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "maciej-wieckowski-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3525,17 +3495,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "czerwone-morze-the-red-sea"
+          "work": "czerwone-morze-red-sea"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C24R7BJ3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D3JP7NBR",
           "type": "libex-import"
         }
       ],
-      "title": "Czerwone Morze [The Red Sea]"
+      "title": "Czerwone Morze [Red Sea]"
     },
     "czy-jest-tu-ktos": {
       "added_at": "2026-08-02",

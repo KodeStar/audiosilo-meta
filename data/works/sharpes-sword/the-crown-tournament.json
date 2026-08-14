@@ -613,7 +613,7 @@
       ],
       "title": "The Crown Tournament, Book 2"
     },
-    "the-crown-tower": {
+    "the-crown-tower-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-j-sullivan"
@@ -624,10 +624,85 @@
         "fantasy",
         "historical-fiction"
       ],
-      "id": "the-crown-tower",
+      "id": "the-crown-tower-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0B4F65T86",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3915162,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4463525,
+              "start_ms": 3915162,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4301844,
+              "start_ms": 8378687,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 5001694,
+              "start_ms": 12680531,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4004931,
+              "start_ms": 17682225,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 5260759,
+              "start_ms": 21687156,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5124643,
+              "start_ms": 26947915,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4646683,
+              "start_ms": 32072558,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9112dt5uUVL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 612,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0B4F65T86",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0B4F65T86",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-crown-tower-dramatized-adaptation"
+        },
         "tim-gerard-reynolds-2013": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -785,111 +860,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-crown-tower"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B00DZ0G088",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B00DZ0G088",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Crown Tower"
-    },
-    "the-crown-tower-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "the-crown-tower-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0B4F65T86",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3915162,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4463525,
-              "start_ms": 3915162,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4301844,
-              "start_ms": 8378687,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 5001694,
-              "start_ms": 12680531,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4004931,
-              "start_ms": 17682225,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 5260759,
-              "start_ms": 21687156,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 5124643,
-              "start_ms": 26947915,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4646683,
-              "start_ms": 32072558,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9112dt5uUVL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 612,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0B4F65T86",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0B4F65T86",
-              "type": "libex-import"
-            }
-          ],
           "work": "the-crown-tower-dramatized-adaptation"
         }
       },
@@ -902,6 +872,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0B4F65T86",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00DZ0G088",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00DZ0G088",
           "type": "libex-import"
         }
       ],

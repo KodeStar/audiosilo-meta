@@ -8025,6 +8025,8 @@
       "genres": [
         "arts-entertainment",
         "fantasy",
+        "paranormal",
+        "romance",
         "science-fiction",
         "young-adult"
       ],
@@ -8059,12 +8061,192 @@
             }
           ],
           "work": "craved"
+        },
+        "emily-gittelman-2021": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B08V5M42XS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14210,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 693208,
+              "start_ms": 14210,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 728177,
+              "start_ms": 707418,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 598889,
+              "start_ms": 1435595,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 686381,
+              "start_ms": 2034484,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1235348,
+              "start_ms": 2720865,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1333289,
+              "start_ms": 3956213,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 738905,
+              "start_ms": 5289502,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1930646,
+              "start_ms": 6028407,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 838193,
+              "start_ms": 7959053,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 970594,
+              "start_ms": 8797246,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 180233,
+              "start_ms": 9767840,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 495699,
+              "start_ms": 9948073,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 609988,
+              "start_ms": 10443772,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 683131,
+              "start_ms": 11053760,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 636040,
+              "start_ms": 11736891,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1073969,
+              "start_ms": 12372931,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 653734,
+              "start_ms": 13446900,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 536938,
+              "start_ms": 14100634,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 854865,
+              "start_ms": 14637572,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 466813,
+              "start_ms": 15492437,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 693672,
+              "start_ms": 15959250,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1234697,
+              "start_ms": 16652922,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 371658,
+              "start_ms": 17887619,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 336224,
+              "start_ms": 18259277,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 348810,
+              "start_ms": 18595501,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 249614,
+              "start_ms": 18944311,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 769648,
+              "start_ms": 19193925,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 17136,
+              "start_ms": 19963573,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RQtqS70HL.jpg",
+          "id": "emily-gittelman-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-gittelman"
+          ],
+          "publisher": "Morgan Rice",
+          "release_date": "2021-01-27",
+          "runtime_min": 332,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B08V5M42XS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "craved"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B00E9IMQ42",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08V5M42XS",
           "type": "libex-import"
         }
       ],
@@ -8287,206 +8469,6 @@
         }
       ],
       "title": "Craved: A Sci-Fi Alien Warrior Romance (Tribute Brides of the Drexian Warriors, Book 8)"
-    },
-    "craved-book-10-in-the-vampire-journals": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "morgan-rice"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "craved-book-10-in-the-vampire-journals",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emily-gittelman-2021": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B08V5M42XS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14210,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 693208,
-              "start_ms": 14210,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 728177,
-              "start_ms": 707418,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 598889,
-              "start_ms": 1435595,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 686381,
-              "start_ms": 2034484,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1235348,
-              "start_ms": 2720865,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1333289,
-              "start_ms": 3956213,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 738905,
-              "start_ms": 5289502,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1930646,
-              "start_ms": 6028407,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 838193,
-              "start_ms": 7959053,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 970594,
-              "start_ms": 8797246,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 180233,
-              "start_ms": 9767840,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 495699,
-              "start_ms": 9948073,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 609988,
-              "start_ms": 10443772,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 683131,
-              "start_ms": 11053760,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 636040,
-              "start_ms": 11736891,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1073969,
-              "start_ms": 12372931,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 653734,
-              "start_ms": 13446900,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 536938,
-              "start_ms": 14100634,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 854865,
-              "start_ms": 14637572,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 466813,
-              "start_ms": 15492437,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 693672,
-              "start_ms": 15959250,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1234697,
-              "start_ms": 16652922,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 371658,
-              "start_ms": 17887619,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 336224,
-              "start_ms": 18259277,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 348810,
-              "start_ms": 18595501,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 249614,
-              "start_ms": 18944311,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 769648,
-              "start_ms": 19193925,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 17136,
-              "start_ms": 19963573,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81RQtqS70HL.jpg",
-          "id": "emily-gittelman-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emily-gittelman"
-          ],
-          "publisher": "Morgan Rice",
-          "release_date": "2021-01-27",
-          "runtime_min": 332,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B08V5M42XS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "craved-book-10-in-the-vampire-journals"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08V5M42XS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Craved: Book 10 in the Vampire Journals"
     },
     "craved-by-a-wolf": {
       "added_at": "2026-08-01",

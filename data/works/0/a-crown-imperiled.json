@@ -2521,6 +2521,7 @@
         "childrens",
         "fantasy",
         "mystery",
+        "paranormal",
         "science-fiction"
       ],
       "id": "a-crown-of-dragons",
@@ -2746,32 +2747,7 @@
             }
           ],
           "work": "a-crown-of-dragons"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01NCQP0FA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Crown of Dragons"
-    },
-    "a-crown-of-dragons-ufiles-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chris-dlacey"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "paranormal"
-      ],
-      "id": "a-crown-of-dragons-ufiles-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "raphael-corkhill-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2990,17 +2966,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-crown-of-dragons-ufiles-book-3"
+          "work": "a-crown-of-dragons"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01NCQP0FA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01DJIHZBG",
           "type": "libex-import"
         }
       ],
-      "title": "A Crown of Dragons (UFiles, Book 3)"
+      "title": "A Crown of Dragons"
     },
     "a-crown-of-fates": {
       "added_at": "2026-08-02",

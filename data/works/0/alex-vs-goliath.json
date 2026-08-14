@@ -5625,9 +5625,11 @@
         "chris-dlacey"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy",
         "mystery",
+        "paranormal",
         "science-fiction"
       ],
       "id": "alexanders-army",
@@ -5863,32 +5865,7 @@
             }
           ],
           "work": "alexanders-army"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0157DJBOU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alexander's Army"
-    },
-    "alexanders-army-ufiles-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chris-dlacey"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "paranormal"
-      ],
-      "id": "alexanders-army-ufiles-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "raphael-corkhill-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5915,17 +5892,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "alexanders-army-ufiles-book-2"
+          "work": "alexanders-army"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0157DJBOU",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00WH8Y3YC",
           "type": "libex-import"
         }
       ],
-      "title": "Alexander's Army (UFiles, Book 2)"
+      "title": "Alexander's Army"
     },
     "alexanders-bridge": {
       "added_at": "2026-07-29",
@@ -16106,6 +16088,7 @@
         "miguel-sierralta"
       ],
       "genres": [
+        "arts-entertainment",
         "biography-memoir",
         "parenting-relationships",
         "self-help"
@@ -16121,56 +16104,7 @@
             {
               "asin": "B07Z5GYPRR",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81HrtA-S-EL.jpg",
-          "id": "juan-guzman-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-guzman"
-          ],
-          "publisher": "FonoLibro Inc.",
-          "release_date": "2019-09-27",
-          "runtime_min": 257,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07Z5GYPRR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "algunos-le-llaman-magia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07Z5GYPRR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Algunos le llaman magia"
-    },
-    "algunos-le-llaman-magia-some-call-it-magic": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "miguel-sierralta"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "algunos-le-llaman-magia-some-call-it-magic",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-guzman-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "1611541956",
               "region": "us"
@@ -16189,21 +16123,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07Z5GYPRR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "1611541956",
               "type": "libex-import"
             }
           ],
-          "work": "algunos-le-llaman-magia-some-call-it-magic"
+          "work": "algunos-le-llaman-magia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07Z5GYPRR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1611541956",
           "type": "libex-import"
         }
       ],
-      "title": "Algunos le llaman magia [Some Call It Magic]"
+      "title": "Algunos le llaman magia"
     },
     "ali": {
       "added_at": "2026-07-29",

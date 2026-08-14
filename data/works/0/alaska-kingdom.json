@@ -8604,7 +8604,7 @@
       ],
       "title": "Alcatraz Versus The Dark Talent [Dramatized Adaptation]"
     },
-    "alcatraz-versus-the-evil-librarians": {
+    "alcatraz-versus-the-evil-librarians-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "brandon-sanderson"
@@ -8616,10 +8616,70 @@
         "education",
         "fantasy"
       ],
-      "id": "alcatraz-versus-the-evil-librarians",
+      "id": "alcatraz-versus-the-evil-librarians-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648812023",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3767576,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4215722,
+              "start_ms": 3767576,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4365119,
+              "start_ms": 7983298,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3358557,
+              "start_ms": 12348417,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4356318,
+              "start_ms": 15706974,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915rGAFUoRL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648812023",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648812023",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alcatraz-versus-the-evil-librarians-dramatized-adaptation"
+        },
         "ramon-de-ocampo-2011": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -8799,95 +8859,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "alcatraz-versus-the-evil-librarians"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B005GGGC3M",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B005GGGC3M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alcatraz versus the Evil Librarians"
-    },
-    "alcatraz-versus-the-evil-librarians-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "alcatraz-versus-the-evil-librarians-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648812023",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3767576,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4215722,
-              "start_ms": 3767576,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4365119,
-              "start_ms": 7983298,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3358557,
-              "start_ms": 12348417,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4356318,
-              "start_ms": 15706974,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915rGAFUoRL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 334,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648812023",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648812023",
-              "type": "libex-import"
-            }
-          ],
           "work": "alcatraz-versus-the-evil-librarians-dramatized-adaptation"
         }
       },
@@ -8900,6 +8871,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648812023",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B005GGGC3M",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B005GGGC3M",
           "type": "libex-import"
         }
       ],

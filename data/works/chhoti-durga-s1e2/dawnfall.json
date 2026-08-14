@@ -1744,7 +1744,8 @@
       ],
       "genres": [
         "historical-fiction",
-        "parenting-relationships"
+        "parenting-relationships",
+        "womens-fiction"
       ],
       "id": "dawnlands",
       "language": "en",
@@ -1760,6 +1761,10 @@
             },
             {
               "asin": "B0B59Z6QXS",
+              "region": "us"
+            },
+            {
+              "asin": "B09VNKNPQK",
               "region": "us"
             }
           ],
@@ -2520,6 +2525,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0B59Z6QXS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09VNKNPQK",
+              "type": "libex-import"
             }
           ],
           "work": "dawnlands"
@@ -2530,61 +2540,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0BB3JG1N4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dawnlands"
-    },
-    "dawnlands-volume-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "philippa-gregory"
-      ],
-      "genres": [
-        "historical-fiction",
-        "parenting-relationships",
-        "womens-fiction"
-      ],
-      "id": "dawnlands-volume-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "louise-brealey-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09VNKNPQK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81P+ySF7bIL.jpg",
-          "id": "louise-brealey-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "louise-brealey"
-          ],
-          "publisher": "Simon & Schuster Australia",
-          "release_date": "2022-11-15",
-          "runtime_min": 1183,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09VNKNPQK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dawnlands-volume-3"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09VNKNPQK",
           "type": "libex-import"
         }
       ],
-      "title": "Dawnlands Volume 3"
+      "title": "Dawnlands"
     },
     "dawnlight": {
       "added_at": "2026-07-29",
@@ -2931,31 +2894,7 @@
             }
           ],
           "work": "dawnrise"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1004000995",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dawnrise"
-    },
-    "dawnrise-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "christopher-husberg"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "dawnrise-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "colleen-delany-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3103,10 +3042,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "dawnrise-dramatized-adaptation"
+          "work": "dawnrise"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1004000995",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09HR9NFR2",
@@ -3138,7 +3082,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Dawnrise [Dramatized Adaptation]"
+      "title": "Dawnrise"
     },
     "dawns-awakening": {
       "added_at": "2026-08-02",
@@ -8951,12 +8895,158 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "classics"
+        "classics",
+        "young-adult"
       ],
       "id": "day-boy-and-the-night-girl",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-koehn-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07YCW5VW6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 61416,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 378136,
+              "start_ms": 61416,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 51107,
+              "start_ms": 439552,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 111850,
+              "start_ms": 490659,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 112547,
+              "start_ms": 602509,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 117237,
+              "start_ms": 715056,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 113940,
+              "start_ms": 832293,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 254258,
+              "start_ms": 946233,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 154644,
+              "start_ms": 1200491,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 281797,
+              "start_ms": 1355135,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 508842,
+              "start_ms": 1636932,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 487247,
+              "start_ms": 2145774,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 376929,
+              "start_ms": 2633021,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 258948,
+              "start_ms": 3009950,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 573114,
+              "start_ms": 3268898,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 416682,
+              "start_ms": 3842012,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 282145,
+              "start_ms": 4258694,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 206657,
+              "start_ms": 4540839,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 392394,
+              "start_ms": 4747496,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 634554,
+              "start_ms": 5139890,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 188638,
+              "start_ms": 5774444,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 192446,
+              "start_ms": 5963082,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 78273,
+              "start_ms": 6155528,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kp15NPUOL.jpg",
+          "id": "daniel-koehn-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-koehn"
+          ],
+          "publisher": "Wise Path Books",
+          "release_date": "2019-09-26",
+          "runtime_min": 103,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YCW5VW6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "day-boy-and-the-night-girl"
+        },
         "paul-eggington-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9002,6 +9092,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZLJGW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YCW5VW6",
           "type": "libex-import"
         }
       ],

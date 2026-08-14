@@ -7391,7 +7391,9 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "nature"
       ],
       "id": "elementals-battle-born",
       "language": "en",
@@ -7403,6 +7405,10 @@
           "asin": [
             {
               "asin": "0063008556",
+              "region": "us"
+            },
+            {
+              "asin": "1460785819",
               "region": "us"
             }
           ],
@@ -7513,6 +7519,11 @@
               "imported_at": "2026-08-02",
               "ref": "0063008556",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1460785819",
+              "type": "libex-import"
             }
           ],
           "work": "elementals-battle-born"
@@ -7522,6 +7533,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0063008556",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1460785819",
           "type": "libex-import"
         }
       ],

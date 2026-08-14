@@ -3604,8 +3604,12 @@
         }
       ],
       "genres": [
+        "classics",
+        "fantasy",
         "horror",
-        "literary-fiction"
+        "literary-fiction",
+        "paranormal",
+        "urban-fantasy"
       ],
       "id": "the-call-of-cthulhu",
       "language": "en",
@@ -3990,6 +3994,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B08QZZPRTM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-call-of-cthulhu"
+        },
+        "jonathan-keeble-2022": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B0B6GFW9FS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A124dir8toL.jpg",
+          "id": "jonathan-keeble-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-keeble"
+          ],
+          "publisher": "SNR Audio",
+          "release_date": "2022-07-13",
+          "runtime_min": 82,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B0B6GFW9FS",
               "type": "libex-import"
             }
           ],
@@ -4579,6 +4611,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0DBRJK13Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0B6GFW9FS",
           "type": "libex-import"
         }
       ],

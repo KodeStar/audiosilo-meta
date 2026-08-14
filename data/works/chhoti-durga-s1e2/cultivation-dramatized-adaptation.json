@@ -8325,6 +8325,34 @@
       "language": "it",
       "license": "CC0-1.0",
       "recordings": {
+        "claudio-carini-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00ZPXHBFE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813wKONYvsL.jpg",
+          "id": "claudio-carini-2015",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claudio-carini"
+          ],
+          "publisher": "Recitar Leggendo Audiolibri",
+          "release_date": "2015-06-16",
+          "runtime_min": 585,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00ZPXHBFE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cuore"
+        },
         "eleonora-calamita-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8358,6 +8386,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00TL7MQY6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00ZPXHBFE",
           "type": "libex-import"
         }
       ],
@@ -8464,57 +8497,6 @@
         }
       ],
       "title": "Cuore di tenebra"
-    },
-    "cuore-heart": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edmondo-de-amicis"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "cuore-heart",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
-        "claudio-carini-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00ZPXHBFE",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/813wKONYvsL.jpg",
-          "id": "claudio-carini-2015",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "claudio-carini"
-          ],
-          "publisher": "Recitar Leggendo Audiolibri",
-          "release_date": "2015-06-16",
-          "runtime_min": 585,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00ZPXHBFE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuore-heart"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00ZPXHBFE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuore [Heart]"
     },
     "cuore-nero": {
       "added_at": "2026-07-29",

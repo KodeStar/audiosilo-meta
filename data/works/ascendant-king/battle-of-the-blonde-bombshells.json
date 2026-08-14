@@ -6947,6 +6947,8 @@
         "k-f-breene"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
         "fantasy",
         "paranormal",
         "romance",
@@ -6956,6 +6958,87 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alyssa-keegan-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D4WLF4LP",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 42924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4023656,
+              "start_ms": 42924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3588992,
+              "start_ms": 4066580,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3633435,
+              "start_ms": 7655572,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3801385,
+              "start_ms": 11289007,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4176967,
+              "start_ms": 15090392,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4355000,
+              "start_ms": 19267359,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 365406,
+              "start_ms": 23622359,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NB3g09HXL.jpg",
+          "id": "alyssa-keegan-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alyssa-keegan",
+            "full-cast",
+            "gabriel-michael",
+            "ian-putnam",
+            "jeri-marshall",
+            "michael-john-casey",
+            "nanette-savard",
+            "rayner-gabriel",
+            "renee-dorian",
+            "richard-rohan",
+            "robb-moreira",
+            "terence-aselford"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024-05-22",
+          "runtime_min": 399,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D4WLF4LP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "battle-with-fire"
+        },
         "nicole-poole-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7127,117 +7210,14 @@
           "imported_at": "2026-08-01",
           "ref": "B09BNWCKHM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Battle with Fire"
-    },
-    "battle-with-fire-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "battle-with-fire-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alyssa-keegan-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D4WLF4LP",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 42924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4023656,
-              "start_ms": 42924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3588992,
-              "start_ms": 4066580,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3633435,
-              "start_ms": 7655572,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3801385,
-              "start_ms": 11289007,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4176967,
-              "start_ms": 15090392,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4355000,
-              "start_ms": 19267359,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 365406,
-              "start_ms": 23622359,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91NB3g09HXL.jpg",
-          "id": "alyssa-keegan-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alyssa-keegan",
-            "full-cast",
-            "gabriel-michael",
-            "ian-putnam",
-            "jeri-marshall",
-            "michael-john-casey",
-            "nanette-savard",
-            "rayner-gabriel",
-            "renee-dorian",
-            "richard-rohan",
-            "robb-moreira",
-            "terence-aselford"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024-05-22",
-          "runtime_min": 399,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0D4WLF4LP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "battle-with-fire-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D4WLF4LP",
           "type": "libex-import"
         }
       ],
-      "title": "Battle with Fire (Dramatized Adaptation)"
+      "title": "Battle with Fire"
     },
     "battle-world-1": {
       "added_at": "2026-08-02",

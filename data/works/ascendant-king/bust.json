@@ -8710,13 +8710,71 @@
       ],
       "genres": [
         "action-adventure",
+        "cozy-mystery",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "mystery"
       ],
       "id": "butter-cookies-and-demon-claws",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bradley-foster-smith-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FZDPGLNW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 11378729,
+              "start_ms": 36970,
+              "title": "Butter Cookies and Demon Claws"
+            },
+            {
+              "length_ms": 75134,
+              "start_ms": 11415699,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lStJ0KQxL.jpg",
+          "id": "bradley-foster-smith-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bradley-foster-smith",
+            "danny-gavigan",
+            "dawn-ursula",
+            "full-cast",
+            "mort-shelby",
+            "oliver-jackson",
+            "peter-v-brett",
+            "ren-kasey",
+            "rob-mcfadyen",
+            "ryan-dalusung",
+            "todd-scofield",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-12-04",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FZDPGLNW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "butter-cookies-and-demon-claws"
+        },
         "colin-mace-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8836,90 +8894,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FMYS1F23",
           "type": "libex-import"
-        }
-      ],
-      "title": "Butter Cookies and Demon Claws"
-    },
-    "butter-cookies-and-demon-claws-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "peter-v-brett"
-      ],
-      "genres": [
-        "action-adventure",
-        "cozy-mystery",
-        "fantasy",
-        "mystery"
-      ],
-      "id": "butter-cookies-and-demon-claws-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradley-foster-smith-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FZDPGLNW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11378729,
-              "start_ms": 36970,
-              "title": "Butter Cookies and Demon Claws"
-            },
-            {
-              "length_ms": 75134,
-              "start_ms": 11415699,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lStJ0KQxL.jpg",
-          "id": "bradley-foster-smith-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradley-foster-smith",
-            "danny-gavigan",
-            "dawn-ursula",
-            "full-cast",
-            "mort-shelby",
-            "oliver-jackson",
-            "peter-v-brett",
-            "ren-kasey",
-            "rob-mcfadyen",
-            "ryan-dalusung",
-            "todd-scofield",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-12-04",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FZDPGLNW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "butter-cookies-and-demon-claws-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FZDPGLNW",
           "type": "libex-import"
         }
       ],
-      "title": "Butter Cookies and Demon Claws (Dramatized Adaptation)"
+      "title": "Butter Cookies and Demon Claws"
     },
     "butter-off-dead": {
       "added_at": "2026-07-29",

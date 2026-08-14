@@ -3849,12 +3849,50 @@
         "arthur-conan-doyle"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "hard-boiled",
+        "mystery"
       ],
       "id": "the-adventure-of-the-blue-carbuncle",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "a-cromwell-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B077V2J9DV",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3079523,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51nMeNroJRL.jpg",
+          "id": "a-cromwell-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "a-cromwell",
+            "james-allen"
+          ],
+          "publisher": "One Media iP LTD",
+          "release_date": "2017-12-12",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077V2J9DV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventure-of-the-blue-carbuncle"
+        },
         "carol-phillips-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4112,6 +4150,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00SXI8PU8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B077V2J9DV",
           "type": "libex-import"
         }
       ],

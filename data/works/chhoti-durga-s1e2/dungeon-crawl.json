@@ -1834,22 +1834,334 @@
       "added_at": "2026-08-02",
       "authors": [
         "matt-dinniman",
-        "anna-roig"
+        "anna-roig",
+        "juan-trejo",
+        "ana-esther-rodriguez-liebana"
       ],
       "credits": [
         {
+          "person": "ana-esther-rodriguez-liebana",
+          "role": "translator"
+        },
+        {
           "person": "anna-roig",
+          "role": "translator"
+        },
+        {
+          "person": "juan-trejo",
           "role": "translator"
         }
       ],
       "genres": [
         "action-adventure",
-        "fantasy"
+        "fantasy",
+        "post-apocalyptic",
+        "science-fiction"
       ],
       "id": "dungeon-crawler-carl-narracion-en-espanol-neutro",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "ana-fernandez-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FG36THCG",
+              "region": "us"
+            },
+            {
+              "asin": "B0FG37CRSF",
+              "region": "es"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17252,
+              "start_ms": 0,
+              "title": "Créditos de apertura"
+            },
+            {
+              "length_ms": 1460860,
+              "start_ms": 17252,
+              "title": "1"
+            },
+            {
+              "length_ms": 1120,
+              "start_ms": 1478112,
+              "title": "Primera parte"
+            },
+            {
+              "length_ms": 1695794,
+              "start_ms": 1479232,
+              "title": "2"
+            },
+            {
+              "length_ms": 1340371,
+              "start_ms": 3175026,
+              "title": "3"
+            },
+            {
+              "length_ms": 2369085,
+              "start_ms": 4515397,
+              "title": "4"
+            },
+            {
+              "length_ms": 1121779,
+              "start_ms": 6884482,
+              "title": "5"
+            },
+            {
+              "length_ms": 621528,
+              "start_ms": 8006261,
+              "title": "6"
+            },
+            {
+              "length_ms": 743526,
+              "start_ms": 8627789,
+              "title": "7"
+            },
+            {
+              "length_ms": 1733857,
+              "start_ms": 9371315,
+              "title": "8"
+            },
+            {
+              "length_ms": 1076291,
+              "start_ms": 11105172,
+              "title": "9"
+            },
+            {
+              "length_ms": 943333,
+              "start_ms": 12181463,
+              "title": "10"
+            },
+            {
+              "length_ms": 1176996,
+              "start_ms": 13124796,
+              "title": "11"
+            },
+            {
+              "length_ms": 853565,
+              "start_ms": 14301792,
+              "title": "12"
+            },
+            {
+              "length_ms": 557093,
+              "start_ms": 15155357,
+              "title": "13"
+            },
+            {
+              "length_ms": 1082305,
+              "start_ms": 15712450,
+              "title": "14"
+            },
+            {
+              "length_ms": 1453360,
+              "start_ms": 16794755,
+              "title": "15"
+            },
+            {
+              "length_ms": 581149,
+              "start_ms": 18248115,
+              "title": "16"
+            },
+            {
+              "length_ms": 501040,
+              "start_ms": 18829264,
+              "title": "17"
+            },
+            {
+              "length_ms": 348972,
+              "start_ms": 19330304,
+              "title": "18"
+            },
+            {
+              "length_ms": 1093265,
+              "start_ms": 19679276,
+              "title": "19"
+            },
+            {
+              "length_ms": 2108070,
+              "start_ms": 20772541,
+              "title": "20"
+            },
+            {
+              "length_ms": 753951,
+              "start_ms": 22880611,
+              "title": "21"
+            },
+            {
+              "length_ms": 1626836,
+              "start_ms": 23634562,
+              "title": "22"
+            },
+            {
+              "length_ms": 705793,
+              "start_ms": 25261398,
+              "title": "23"
+            },
+            {
+              "length_ms": 1369721,
+              "start_ms": 25967191,
+              "title": "24"
+            },
+            {
+              "length_ms": 1344342,
+              "start_ms": 27336912,
+              "title": "25"
+            },
+            {
+              "length_ms": 2147869,
+              "start_ms": 28681254,
+              "title": "26"
+            },
+            {
+              "length_ms": 1155633,
+              "start_ms": 30829123,
+              "title": "27"
+            },
+            {
+              "length_ms": 1120,
+              "start_ms": 31984756,
+              "title": "Segunda parte"
+            },
+            {
+              "length_ms": 1672713,
+              "start_ms": 31985876,
+              "title": "28"
+            },
+            {
+              "length_ms": 944076,
+              "start_ms": 33658589,
+              "title": "29"
+            },
+            {
+              "length_ms": 1846613,
+              "start_ms": 34602665,
+              "title": "30"
+            },
+            {
+              "length_ms": 876576,
+              "start_ms": 36449278,
+              "title": "31"
+            },
+            {
+              "length_ms": 1811853,
+              "start_ms": 37325854,
+              "title": "32"
+            },
+            {
+              "length_ms": 1395147,
+              "start_ms": 39137707,
+              "title": "33"
+            },
+            {
+              "length_ms": 957219,
+              "start_ms": 40532854,
+              "title": "34"
+            },
+            {
+              "length_ms": 1689391,
+              "start_ms": 41490073,
+              "title": "35"
+            },
+            {
+              "length_ms": 1334752,
+              "start_ms": 43179464,
+              "title": "36"
+            },
+            {
+              "length_ms": 1233606,
+              "start_ms": 44514216,
+              "title": "37"
+            },
+            {
+              "length_ms": 1019472,
+              "start_ms": 45747822,
+              "title": "38"
+            },
+            {
+              "length_ms": 1126864,
+              "start_ms": 46767294,
+              "title": "39"
+            },
+            {
+              "length_ms": 1955677,
+              "start_ms": 47894158,
+              "title": "40"
+            },
+            {
+              "length_ms": 1276958,
+              "start_ms": 49849835,
+              "title": "41"
+            },
+            {
+              "length_ms": 1940932,
+              "start_ms": 51126793,
+              "title": "42"
+            },
+            {
+              "length_ms": 1749344,
+              "start_ms": 53067725,
+              "title": "43"
+            },
+            {
+              "length_ms": 1737525,
+              "start_ms": 54817069,
+              "title": "44"
+            },
+            {
+              "length_ms": 1223436,
+              "start_ms": 56554594,
+              "title": "45"
+            },
+            {
+              "length_ms": 736374,
+              "start_ms": 57778030,
+              "title": "46"
+            },
+            {
+              "length_ms": 2054640,
+              "start_ms": 58514404,
+              "title": "47"
+            },
+            {
+              "length_ms": 790987,
+              "start_ms": 60569044,
+              "title": "Epílogo"
+            },
+            {
+              "length_ms": 21570,
+              "start_ms": 61360031,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81MjT-09dtL.jpg",
+          "id": "ana-fernandez-2025",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ana-fernandez",
+            "inigo-alvarez-de-lara"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2025-07-10",
+          "runtime_min": 1058,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FG36THCG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FG37CRSF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dungeon-crawler-carl-narracion-en-espanol-neutro"
+        },
         "cristina-tenorio-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2171,346 +2483,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FLFWHRBJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dungeon Crawler Carl (Narración en Español Neutro)"
-    },
-    "dungeon-crawler-carl-spanish-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "matt-dinniman",
-        "juan-trejo",
-        "ana-esther-rodriguez-liebana"
-      ],
-      "credits": [
-        {
-          "person": "ana-esther-rodriguez-liebana",
-          "role": "translator"
         },
-        {
-          "person": "juan-trejo",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "dungeon-crawler-carl-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-fernandez-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FG36THCG",
-              "region": "us"
-            },
-            {
-              "asin": "B0FG37CRSF",
-              "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17252,
-              "start_ms": 0,
-              "title": "Créditos de apertura"
-            },
-            {
-              "length_ms": 1460860,
-              "start_ms": 17252,
-              "title": "1"
-            },
-            {
-              "length_ms": 1120,
-              "start_ms": 1478112,
-              "title": "Primera parte"
-            },
-            {
-              "length_ms": 1695794,
-              "start_ms": 1479232,
-              "title": "2"
-            },
-            {
-              "length_ms": 1340371,
-              "start_ms": 3175026,
-              "title": "3"
-            },
-            {
-              "length_ms": 2369085,
-              "start_ms": 4515397,
-              "title": "4"
-            },
-            {
-              "length_ms": 1121779,
-              "start_ms": 6884482,
-              "title": "5"
-            },
-            {
-              "length_ms": 621528,
-              "start_ms": 8006261,
-              "title": "6"
-            },
-            {
-              "length_ms": 743526,
-              "start_ms": 8627789,
-              "title": "7"
-            },
-            {
-              "length_ms": 1733857,
-              "start_ms": 9371315,
-              "title": "8"
-            },
-            {
-              "length_ms": 1076291,
-              "start_ms": 11105172,
-              "title": "9"
-            },
-            {
-              "length_ms": 943333,
-              "start_ms": 12181463,
-              "title": "10"
-            },
-            {
-              "length_ms": 1176996,
-              "start_ms": 13124796,
-              "title": "11"
-            },
-            {
-              "length_ms": 853565,
-              "start_ms": 14301792,
-              "title": "12"
-            },
-            {
-              "length_ms": 557093,
-              "start_ms": 15155357,
-              "title": "13"
-            },
-            {
-              "length_ms": 1082305,
-              "start_ms": 15712450,
-              "title": "14"
-            },
-            {
-              "length_ms": 1453360,
-              "start_ms": 16794755,
-              "title": "15"
-            },
-            {
-              "length_ms": 581149,
-              "start_ms": 18248115,
-              "title": "16"
-            },
-            {
-              "length_ms": 501040,
-              "start_ms": 18829264,
-              "title": "17"
-            },
-            {
-              "length_ms": 348972,
-              "start_ms": 19330304,
-              "title": "18"
-            },
-            {
-              "length_ms": 1093265,
-              "start_ms": 19679276,
-              "title": "19"
-            },
-            {
-              "length_ms": 2108070,
-              "start_ms": 20772541,
-              "title": "20"
-            },
-            {
-              "length_ms": 753951,
-              "start_ms": 22880611,
-              "title": "21"
-            },
-            {
-              "length_ms": 1626836,
-              "start_ms": 23634562,
-              "title": "22"
-            },
-            {
-              "length_ms": 705793,
-              "start_ms": 25261398,
-              "title": "23"
-            },
-            {
-              "length_ms": 1369721,
-              "start_ms": 25967191,
-              "title": "24"
-            },
-            {
-              "length_ms": 1344342,
-              "start_ms": 27336912,
-              "title": "25"
-            },
-            {
-              "length_ms": 2147869,
-              "start_ms": 28681254,
-              "title": "26"
-            },
-            {
-              "length_ms": 1155633,
-              "start_ms": 30829123,
-              "title": "27"
-            },
-            {
-              "length_ms": 1120,
-              "start_ms": 31984756,
-              "title": "Segunda parte"
-            },
-            {
-              "length_ms": 1672713,
-              "start_ms": 31985876,
-              "title": "28"
-            },
-            {
-              "length_ms": 944076,
-              "start_ms": 33658589,
-              "title": "29"
-            },
-            {
-              "length_ms": 1846613,
-              "start_ms": 34602665,
-              "title": "30"
-            },
-            {
-              "length_ms": 876576,
-              "start_ms": 36449278,
-              "title": "31"
-            },
-            {
-              "length_ms": 1811853,
-              "start_ms": 37325854,
-              "title": "32"
-            },
-            {
-              "length_ms": 1395147,
-              "start_ms": 39137707,
-              "title": "33"
-            },
-            {
-              "length_ms": 957219,
-              "start_ms": 40532854,
-              "title": "34"
-            },
-            {
-              "length_ms": 1689391,
-              "start_ms": 41490073,
-              "title": "35"
-            },
-            {
-              "length_ms": 1334752,
-              "start_ms": 43179464,
-              "title": "36"
-            },
-            {
-              "length_ms": 1233606,
-              "start_ms": 44514216,
-              "title": "37"
-            },
-            {
-              "length_ms": 1019472,
-              "start_ms": 45747822,
-              "title": "38"
-            },
-            {
-              "length_ms": 1126864,
-              "start_ms": 46767294,
-              "title": "39"
-            },
-            {
-              "length_ms": 1955677,
-              "start_ms": 47894158,
-              "title": "40"
-            },
-            {
-              "length_ms": 1276958,
-              "start_ms": 49849835,
-              "title": "41"
-            },
-            {
-              "length_ms": 1940932,
-              "start_ms": 51126793,
-              "title": "42"
-            },
-            {
-              "length_ms": 1749344,
-              "start_ms": 53067725,
-              "title": "43"
-            },
-            {
-              "length_ms": 1737525,
-              "start_ms": 54817069,
-              "title": "44"
-            },
-            {
-              "length_ms": 1223436,
-              "start_ms": 56554594,
-              "title": "45"
-            },
-            {
-              "length_ms": 736374,
-              "start_ms": 57778030,
-              "title": "46"
-            },
-            {
-              "length_ms": 2054640,
-              "start_ms": 58514404,
-              "title": "47"
-            },
-            {
-              "length_ms": 790987,
-              "start_ms": 60569044,
-              "title": "Epílogo"
-            },
-            {
-              "length_ms": 21570,
-              "start_ms": 61360031,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81MjT-09dtL.jpg",
-          "id": "ana-fernandez-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-fernandez",
-            "inigo-alvarez-de-lara"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2025-07-10",
-          "runtime_min": 1058,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FG36THCG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FG37CRSF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dungeon-crawler-carl-spanish-edition"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0FG36THCG",
           "type": "libex-import"
         }
       ],
-      "title": "Dungeon Crawler Carl [Spanish Edition]"
+      "title": "Dungeon Crawler Carl (Narración en Español Neutro)"
     },
     "dungeon-crisis-a-litrpg-dungeon-core-adventure": {
       "added_at": "2026-08-01",
@@ -5561,6 +5541,135 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-forstrom-2024": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CZ7J861Q",
+              "region": "ca"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91j3xVbT8uL.jpg",
+          "id": "amanda-forstrom-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-forstrom",
+            "bradley-smith",
+            "danny-gavigan",
+            "full-cast",
+            "katie-boothe",
+            "michael-john-casey",
+            "mike-carnes",
+            "patrick-boylan",
+            "rayner-gabriel",
+            "robb-moreira",
+            "ryan-haugen",
+            "tia-shearer"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024-03-29",
+          "runtime_min": 486,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CZ7J861Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dungeon-desolation"
+        },
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CZ7MWSFK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 51675,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 287835,
+              "start_ms": 51675,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4053171,
+              "start_ms": 339510,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4229584,
+              "start_ms": 4392681,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4331194,
+              "start_ms": 8622265,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4395630,
+              "start_ms": 12953459,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3946579,
+              "start_ms": 17349089,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4182749,
+              "start_ms": 21295668,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2958820,
+              "start_ms": 25478417,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 323274,
+              "start_ms": 28437237,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 422718,
+              "start_ms": 28760511,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91j3xVbT8uL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 486,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CZ7MWSFK",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CZ7MWSFK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dungeon-desolation"
+        },
         "vikas-adam-2019": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -5931,154 +6040,7 @@
           "imported_at": "2026-07-30",
           "ref": "1977385885",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dungeon Desolation"
-    },
-    "dungeon-desolation-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "dakota-krout"
-      ],
-      "genres": [
-        "cyberpunk",
-        "science-fiction"
-      ],
-      "id": "dungeon-desolation-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-forstrom-2024": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CZ7J861Q",
-              "region": "ca"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91j3xVbT8uL.jpg",
-          "id": "amanda-forstrom-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-forstrom",
-            "bradley-smith",
-            "danny-gavigan",
-            "full-cast",
-            "katie-boothe",
-            "michael-john-casey",
-            "mike-carnes",
-            "patrick-boylan",
-            "rayner-gabriel",
-            "robb-moreira",
-            "ryan-haugen",
-            "tia-shearer"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024-03-29",
-          "runtime_min": 486,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CZ7J861Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dungeon-desolation-dramatized-adaptation"
         },
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CZ7MWSFK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 51675,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 287835,
-              "start_ms": 51675,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 4053171,
-              "start_ms": 339510,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4229584,
-              "start_ms": 4392681,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4331194,
-              "start_ms": 8622265,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4395630,
-              "start_ms": 12953459,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3946579,
-              "start_ms": 17349089,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4182749,
-              "start_ms": 21295668,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2958820,
-              "start_ms": 25478417,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 323274,
-              "start_ms": 28437237,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 422718,
-              "start_ms": 28760511,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91j3xVbT8uL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 486,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CZ7MWSFK",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CZ7MWSFK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dungeon-desolation-dramatized-adaptation"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "B0CZ7MWSFK",
@@ -6090,7 +6052,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Dungeon Desolation (Dramatized Adaptation)"
+      "title": "Dungeon Desolation"
     },
     "dungeon-diving-101": {
       "added_at": "2026-08-01",

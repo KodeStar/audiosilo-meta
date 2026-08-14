@@ -2046,6 +2046,7 @@
       "genres": [
         "historical-fiction",
         "literary-fiction",
+        "magical-realism",
         "womens-fiction"
       ],
       "id": "de-amor-y-de-sombra",
@@ -2059,56 +2060,7 @@
             {
               "asin": "8401019850",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91SfH3EvbVL.jpg",
-          "id": "maria-ignacia-hojas-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "maria-ignacia-hojas"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-05-18",
-          "runtime_min": 623,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019850",
-              "type": "libex-import"
-            }
-          ],
-          "work": "de-amor-y-de-sombra"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019850",
-          "type": "libex-import"
-        }
-      ],
-      "title": "De amor y de sombra"
-    },
-    "de-amor-y-de-sombra-of-love-and-shadows": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "magical-realism",
-        "womens-fiction"
-      ],
-      "id": "de-amor-y-de-sombra-of-love-and-shadows",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "maria-ignacia-hojas-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0719DK1DL",
               "region": "us"
@@ -2127,21 +2079,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401019850",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0719DK1DL",
               "type": "libex-import"
             }
           ],
-          "work": "de-amor-y-de-sombra-of-love-and-shadows"
+          "work": "de-amor-y-de-sombra"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019850",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0719DK1DL",
           "type": "libex-import"
         }
       ],
-      "title": "De amor y de sombra [Of Love and Shadows]"
+      "title": "De amor y de sombra"
     },
     "de-arendelle-cup-dutch-edition": {
       "added_at": "2026-08-02",
@@ -6039,6 +6001,33 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "aura-medina-de-wit-2024": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CWQJC2LQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zkRHvZzhL.jpg",
+          "id": "aura-medina-de-wit-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aura-medina-de-wit"
+          ],
+          "publisher": "Audible Originals",
+          "release_date": "2024-04-30",
+          "runtime_min": 401,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CWQJC2LQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "de-la-codependencia-a-la-conciencia"
+        },
         "carme-calvell-2025": {
           "added_at": "2026-07-29",
           "asin": [
@@ -6081,60 +6070,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0FM891523",
           "type": "libex-import"
-        }
-      ],
-      "title": "De la codependencia a la conciencia"
-    },
-    "de-la-codependencia-a-la-conciencia-from-codependency-to-becoming-conscious": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "aura-medina-de-wit"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "de-la-codependencia-a-la-conciencia-from-codependency-to-becoming-conscious",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aura-medina-de-wit-2024": {
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CWQJC2LQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zkRHvZzhL.jpg",
-          "id": "aura-medina-de-wit-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aura-medina-de-wit"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2024-04-30",
-          "runtime_min": 401,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CWQJC2LQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "de-la-codependencia-a-la-conciencia-from-codependency-to-becoming-conscious"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CWQJC2LQ",
           "type": "libex-import"
         }
       ],
-      "title": "De La Codependencia A La Conciencia [From Codependency to Becoming Conscious]"
+      "title": "De la codependencia a la conciencia"
     },
     "de-la-estupidez-a-la-locura-from-stupidity-to-madness": {
       "added_at": "2026-07-29",
@@ -6628,7 +6571,9 @@
         "jules-verne"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "science",
+        "science-fiction"
       ],
       "id": "de-la-tierra-a-la-luna",
       "language": "es",
@@ -6669,6 +6614,152 @@
             {
               "asin": "B07YX56W5B",
               "region": "es"
+            },
+            {
+              "asin": "B002V0QF06",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1229496,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 1029340,
+              "start_ms": 1229496,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 555467,
+              "start_ms": 2258836,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 657844,
+              "start_ms": 2814303,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 905926,
+              "start_ms": 3472147,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 750886,
+              "start_ms": 4378073,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 1212755,
+              "start_ms": 5128959,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 754021,
+              "start_ms": 6341714,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 887884,
+              "start_ms": 7095735,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 807381,
+              "start_ms": 7983619,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 855817,
+              "start_ms": 8791000,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 710530,
+              "start_ms": 9646817,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 874951,
+              "start_ms": 10357347,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 898844,
+              "start_ms": 11232298,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 676629,
+              "start_ms": 12131142,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 972080,
+              "start_ms": 12807771,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 137462,
+              "start_ms": 13779851,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 1374180,
+              "start_ms": 13917313,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 1245727,
+              "start_ms": 15291493,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 1148366,
+              "start_ms": 16537220,
+              "title": "Capítulo 20"
+            },
+            {
+              "length_ms": 1100370,
+              "start_ms": 17685586,
+              "title": "Capítulo 21"
+            },
+            {
+              "length_ms": 853472,
+              "start_ms": 18785956,
+              "title": "Capítulo 22"
+            },
+            {
+              "length_ms": 1014386,
+              "start_ms": 19639428,
+              "title": "Capítulo 23"
+            },
+            {
+              "length_ms": 790384,
+              "start_ms": 20653814,
+              "title": "Capítulo 24"
+            },
+            {
+              "length_ms": 870492,
+              "start_ms": 21444198,
+              "title": "Capítulo 25"
+            },
+            {
+              "length_ms": 842559,
+              "start_ms": 22314690,
+              "title": "Capítulo 26"
+            },
+            {
+              "length_ms": 662511,
+              "start_ms": 23157249,
+              "title": "Capítulo 27"
+            },
+            {
+              "length_ms": 378902,
+              "start_ms": 23819760,
+              "title": "Capítulo 28"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51c1MyGNGAL.jpg",
@@ -6686,6 +6777,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07YX56W5B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0QF06",
+              "type": "libex-import"
             }
           ],
           "work": "de-la-tierra-a-la-luna"
@@ -6695,6 +6791,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B089QHWHDC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0QF06",
           "type": "libex-import"
         }
       ],
@@ -6878,200 +6979,6 @@
         }
       ],
       "title": "De la Tierra a la Luna [From the Earth to the Moon]"
-    },
-    "de-la-tierra-a-la-luna-texto-completo-from-the-earth-to-the-moon": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jules-verne"
-      ],
-      "genres": [
-        "classics",
-        "science",
-        "science-fiction"
-      ],
-      "id": "de-la-tierra-a-la-luna-texto-completo-from-the-earth-to-the-moon",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marta-aparicio-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0QF06",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1229496,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 1029340,
-              "start_ms": 1229496,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 555467,
-              "start_ms": 2258836,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 657844,
-              "start_ms": 2814303,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 905926,
-              "start_ms": 3472147,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 750886,
-              "start_ms": 4378073,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1212755,
-              "start_ms": 5128959,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 754021,
-              "start_ms": 6341714,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 887884,
-              "start_ms": 7095735,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 807381,
-              "start_ms": 7983619,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 855817,
-              "start_ms": 8791000,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 710530,
-              "start_ms": 9646817,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 874951,
-              "start_ms": 10357347,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 898844,
-              "start_ms": 11232298,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 676629,
-              "start_ms": 12131142,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 972080,
-              "start_ms": 12807771,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 137462,
-              "start_ms": 13779851,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 1374180,
-              "start_ms": 13917313,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 1245727,
-              "start_ms": 15291493,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 1148366,
-              "start_ms": 16537220,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 1100370,
-              "start_ms": 17685586,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 853472,
-              "start_ms": 18785956,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 1014386,
-              "start_ms": 19639428,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 790384,
-              "start_ms": 20653814,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 870492,
-              "start_ms": 21444198,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 842559,
-              "start_ms": 22314690,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 662511,
-              "start_ms": 23157249,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 378902,
-              "start_ms": 23819760,
-              "title": "Capítulo 28"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51c1MyGNGAL.jpg",
-          "id": "marta-aparicio-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marta-aparicio"
-          ],
-          "publisher": "Audio Libro CD",
-          "release_date": "2008-05-22",
-          "runtime_min": 403,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0QF06",
-              "type": "libex-import"
-            }
-          ],
-          "work": "de-la-tierra-a-la-luna-texto-completo-from-the-earth-to-the-moon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0QF06",
-          "type": "libex-import"
-        }
-      ],
-      "title": "De la Tierra a la Luna (Texto Completo) [From the Earth to the Moon ]"
     },
     "de-lamour-de-soi-a-lestime-de-soi": {
       "added_at": "2026-08-02",

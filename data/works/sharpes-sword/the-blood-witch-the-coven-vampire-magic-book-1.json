@@ -3677,14 +3677,45 @@
         "agatha-christie"
       ],
       "genres": [
+        "classics",
         "cozy-mystery",
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "short-stories",
+        "thriller-suspense"
       ],
       "id": "the-bloodstained-pavement",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "joan-hickson-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0008485313",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71JX4O5+WEL.jpg",
+          "id": "joan-hickson-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joan-hickson"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2021-04-15",
+          "runtime_min": 22,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0008485313",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-bloodstained-pavement"
+        },
         "katy-lawrence-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3718,6 +3749,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0G8T6NJFZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0008485313",
           "type": "libex-import"
         }
       ],
@@ -8027,6 +8063,7 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
         "science-fiction"
@@ -8159,30 +8196,7 @@
             }
           ],
           "work": "the-bloody-sun"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07665JHV1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bloody Sun"
-    },
-    "the-bloody-sun-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "the-bloody-sun-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jonathan-davis-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8316,17 +8330,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-bloody-sun-international-edition"
+          "work": "the-bloody-sun"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07665JHV1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYJJJHS",
           "type": "libex-import"
         }
       ],
-      "title": "The Bloody Sun [International Edition]"
+      "title": "The Bloody Sun"
     },
     "the-bloody-tower": {
       "added_at": "2026-07-29",

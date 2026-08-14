@@ -3185,7 +3185,8 @@
       "genres": [
         "hard-boiled",
         "legal-thriller",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "causa-justa",
       "language": "es",
@@ -3198,55 +3199,7 @@
             {
               "asin": "B09T7CWMPY",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81RUjNWFE0L.jpg",
-          "id": "carlos-canales-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-canales"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-02-24",
-          "runtime_min": 751,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09T7CWMPY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "causa-justa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09T7CWMPY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Causa justa"
-    },
-    "causa-justa-the-street-lawyer": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-grisham",
-        "maria-antonia-menini-pages"
-      ],
-      "genres": [
-        "legal-thriller",
-        "thriller-suspense"
-      ],
-      "id": "causa-justa-the-street-lawyer",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-canales-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09T7YBZ2C",
               "region": "us"
@@ -3265,21 +3218,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09T7CWMPY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09T7YBZ2C",
               "type": "libex-import"
             }
           ],
-          "work": "causa-justa-the-street-lawyer"
+          "work": "causa-justa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09T7CWMPY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09T7YBZ2C",
           "type": "libex-import"
         }
       ],
-      "title": "Causa justa [The Street Lawyer]"
+      "title": "Causa justa"
     },
     "causa-para-matar": {
       "added_at": "2026-07-29",
@@ -9644,160 +9607,6 @@
         }
       ],
       "title": "Cave and Cosmos"
-    },
-    "cave-beneath-the-sea": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edward-willett"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "cave-beneath-the-sea",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "elizabeth-klett-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G8N6GLZ7",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17994,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1306981,
-              "start_ms": 17994,
-              "title": "Chapter 1. Snow Day"
-            },
-            {
-              "length_ms": 1187561,
-              "start_ms": 1324975,
-              "title": "Chapter 2. A Face in the Crowd"
-            },
-            {
-              "length_ms": 1645435,
-              "start_ms": 2512536,
-              "title": "Chapter 3. The Battle at the YMCA"
-            },
-            {
-              "length_ms": 1485984,
-              "start_ms": 4157971,
-              "title": "Chapter 4. A Kiss on the Cheek"
-            },
-            {
-              "length_ms": 1112282,
-              "start_ms": 5643955,
-              "title": "Chapter 5. Wally Phones Home"
-            },
-            {
-              "length_ms": 948813,
-              "start_ms": 6756237,
-              "title": "Chapter 6. Horseshoe Bay"
-            },
-            {
-              "length_ms": 1184751,
-              "start_ms": 7705050,
-              "title": "Chapter 7. An Old Bridge and an Old Man"
-            },
-            {
-              "length_ms": 2072566,
-              "start_ms": 8889801,
-              "title": "Chapter 8. Tea at the Empress"
-            },
-            {
-              "length_ms": 1325232,
-              "start_ms": 10962367,
-              "title": "Chapter 9. Sweet and Salt"
-            },
-            {
-              "length_ms": 997180,
-              "start_ms": 12287599,
-              "title": "Chapter 10. Caribbean Night"
-            },
-            {
-              "length_ms": 1713214,
-              "start_ms": 13284779,
-              "title": "Chapter 11. The Cave and the Cataract"
-            },
-            {
-              "length_ms": 1384884,
-              "start_ms": 14997993,
-              "title": "Chapter 12. Castaways"
-            },
-            {
-              "length_ms": 1305495,
-              "start_ms": 16382877,
-              "title": "Chapter 13. The Sorcerer in the Submarine"
-            },
-            {
-              "length_ms": 1147274,
-              "start_ms": 17688372,
-              "title": "Chapter 14. Lightning and Ice"
-            },
-            {
-              "length_ms": 1449784,
-              "start_ms": 18835646,
-              "title": "Chapter 15. Gunfire and Thunder"
-            },
-            {
-              "length_ms": 802690,
-              "start_ms": 20285430,
-              "title": "Chapter 16. The Water-woman and Merlin’s Rage"
-            },
-            {
-              "length_ms": 1324350,
-              "start_ms": 21088120,
-              "title": "Chapter 17. Vows of Vengeance"
-            },
-            {
-              "length_ms": 1321912,
-              "start_ms": 22412470,
-              "title": "Chapter 18. “God Bless Us, Every One!”"
-            },
-            {
-              "length_ms": 30626,
-              "start_ms": 23734382,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81wW-vyMpxL.jpg",
-          "id": "elizabeth-klett-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "elizabeth-klett"
-          ],
-          "publisher": "Shadowpaw Press",
-          "release_date": "2025-12-18",
-          "runtime_min": 395,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G8N6GLZ7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cave-beneath-the-sea"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G8N6GLZ7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cave Beneath the Sea"
     },
     "cave-canem": {
       "added_at": "2026-07-29",

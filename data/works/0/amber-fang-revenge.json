@@ -5390,8 +5390,8 @@
       ],
       "title": "Ambrosia"
     },
-    "ambrosia-c-n-crawford": {
-      "added_at": "2026-07-29",
+    "ambrosia-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "c-n-crawford"
       ],
@@ -5399,10 +5399,48 @@
         "fantasy",
         "romance"
       ],
-      "id": "ambrosia-c-n-crawford",
+      "id": "ambrosia-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-hill-knight-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CJYM65TY",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91J5A443RGL.jpg",
+          "id": "alex-hill-knight-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-hill-knight",
+            "colleen-delany",
+            "jenna-sharpe",
+            "john-kielty",
+            "michael-john-casey",
+            "nazia-chaudhry",
+            "scott-mccormick",
+            "stephanie-nemeth-parker",
+            "taylor-coan",
+            "torian-brackett",
+            "zeke-alton"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-09-28",
+          "runtime_min": 417,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CJYM65TY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ambrosia-dramatized-adaptation"
+        },
         "amanda-dolan-2023": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5675,67 +5713,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "ambrosia-c-n-crawford"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BZ927GZN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ambrosia"
-    },
-    "ambrosia-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "c-n-crawford"
-      ],
-      "genres": [
-        "fantasy",
-        "romance"
-      ],
-      "id": "ambrosia-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-hill-knight-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CJYM65TY",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91J5A443RGL.jpg",
-          "id": "alex-hill-knight-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-hill-knight",
-            "colleen-delany",
-            "jenna-sharpe",
-            "john-kielty",
-            "michael-john-casey",
-            "nazia-chaudhry",
-            "scott-mccormick",
-            "stephanie-nemeth-parker",
-            "taylor-coan",
-            "torian-brackett",
-            "zeke-alton"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-09-28",
-          "runtime_min": 417,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CJYM65TY",
-              "type": "libex-import"
-            }
-          ],
           "work": "ambrosia-dramatized-adaptation"
         },
         "full-cast-2023": {
@@ -5813,6 +5790,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CJYM76CZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BZ927GZN",
           "type": "libex-import"
         }
       ],

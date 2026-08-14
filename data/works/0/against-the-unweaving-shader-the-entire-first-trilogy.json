@@ -12191,6 +12191,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09S7HHR81",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4326481,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5017205,
+              "start_ms": 4326481,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4950238,
+              "start_ms": 9343686,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4907305,
+              "start_ms": 14293924,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4809409,
+              "start_ms": 19201229,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4544609,
+              "start_ms": 24010638,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5174590,
+              "start_ms": 28555247,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 5443151,
+              "start_ms": 33729837,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-oCtyJHDL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 652,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09S7HHR81",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09S7HHR81",
+              "type": "libex-import"
+            }
+          ],
+          "work": "age-of-death"
+        },
         "tim-gerard-reynolds-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12379,101 +12454,7 @@
           "imported_at": "2026-07-30",
           "ref": "B07TZKT8WS",
           "type": "libex-import"
-        }
-      ],
-      "title": "Age of Death"
-    },
-    "age-of-death-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "age-of-death-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09S7HHR81",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4326481,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 5017205,
-              "start_ms": 4326481,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4950238,
-              "start_ms": 9343686,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4907305,
-              "start_ms": 14293924,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4809409,
-              "start_ms": 19201229,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4544609,
-              "start_ms": 24010638,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 5174590,
-              "start_ms": 28555247,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 5443151,
-              "start_ms": 33729837,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-oCtyJHDL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 652,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09S7HHR81",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09S7HHR81",
-              "type": "libex-import"
-            }
-          ],
-          "work": "age-of-death-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09S7HHR81",
@@ -12485,7 +12466,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Age of Death (Dramatized Adaptation)"
+      "title": "Age of Death"
     },
     "age-of-deception": {
       "added_at": "2026-08-02",
@@ -13319,7 +13300,7 @@
       ],
       "title": "Age of Dragons: Legends Online, Book 9"
     },
-    "age-of-empyre": {
+    "age-of-empyre-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-j-sullivan"
@@ -13328,10 +13309,105 @@
         "epic-fantasy",
         "fantasy"
       ],
-      "id": "age-of-empyre",
+      "id": "age-of-empyre-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09SRGLSP2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3841625,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4054459,
+              "start_ms": 3841625,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3721601,
+              "start_ms": 7896084,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4303656,
+              "start_ms": 11617685,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4740400,
+              "start_ms": 15921341,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3492583,
+              "start_ms": 20661741,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4323880,
+              "start_ms": 24154324,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3827229,
+              "start_ms": 28478204,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4152308,
+              "start_ms": 32305433,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3569487,
+              "start_ms": 36457741,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3893127,
+              "start_ms": 40027228,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4007206,
+              "start_ms": 43920355,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XAvUBYYZL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 798,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09SRGLSP2",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09SRGLSP2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "age-of-empyre-dramatized-adaptation"
+        },
         "tim-gerard-reynolds-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -13555,129 +13631,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "age-of-empyre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B07V1JPZV5",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B07V1JPZV5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Age of Empyre"
-    },
-    "age-of-empyre-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "age-of-empyre-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09SRGLSP2",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3841625,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4054459,
-              "start_ms": 3841625,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3721601,
-              "start_ms": 7896084,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4303656,
-              "start_ms": 11617685,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4740400,
-              "start_ms": 15921341,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3492583,
-              "start_ms": 20661741,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4323880,
-              "start_ms": 24154324,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3827229,
-              "start_ms": 28478204,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4152308,
-              "start_ms": 32305433,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3569487,
-              "start_ms": 36457741,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3893127,
-              "start_ms": 40027228,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 4007206,
-              "start_ms": 43920355,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81XAvUBYYZL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 798,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09SRGLSP2",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09SRGLSP2",
-              "type": "libex-import"
-            }
-          ],
           "work": "age-of-empyre-dramatized-adaptation"
         }
       },
@@ -13690,6 +13643,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09SRGLSP2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B07V1JPZV5",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B07V1JPZV5",
           "type": "libex-import"
         }
       ],
@@ -14628,56 +14591,6 @@
         }
       ],
       "title": "Age of Expansion: A Kurtherian Gambit Series"
-    },
-    "age-of-fable-part-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-bulfinch"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "age-of-fable-part-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2011": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0054KRPEU",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lAuF7VXbL.jpg",
-          "id": "george-guidall-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2011-06-07",
-          "runtime_min": 539,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0054KRPEU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "age-of-fable-part-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0054KRPEU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Age of Fable, Part 1"
     },
     "age-of-forged-steel": {
       "added_at": "2026-08-02",

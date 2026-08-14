@@ -7,6 +7,8 @@
       ],
       "genres": [
         "classics",
+        "historical-fiction",
+        "historical-romance",
         "romance"
       ],
       "id": "the-blue-castle",
@@ -3252,36 +3254,7 @@
             }
           ],
           "work": "the-blue-castle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B071HG7Y1R",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G5SSKP8S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Blue Castle"
-    },
-    "the-blue-castle-unabridged": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "l-m-montgomery"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "the-blue-castle-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "sara-nichols-2025": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -3308,17 +3281,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-blue-castle-unabridged"
+          "work": "the-blue-castle"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B071HG7Y1R",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G5SSKP8S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0G99DQ47V",
           "type": "libex-import"
         }
       ],
-      "title": "The Blue Castle - Unabridged"
+      "title": "The Blue Castle"
     },
     "the-blue-cotton-gown": {
       "added_at": "2026-07-29",
@@ -5340,7 +5323,10 @@
       ],
       "genres": [
         "childrens",
-        "fairy-tales-folklore"
+        "classics",
+        "fairy-tales-folklore",
+        "literary-fiction",
+        "short-stories"
       ],
       "id": "the-blue-fairy-book",
       "language": "en",
@@ -6096,6 +6082,240 @@
           ],
           "work": "the-blue-fairy-book"
         },
+        "joel-froomkin-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1799758486",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43978,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1512060,
+              "start_ms": 43978,
+              "title": "The Bronze Ring"
+            },
+            {
+              "length_ms": 988101,
+              "start_ms": 1556038,
+              "title": "Prince Hyacinth and the Dear Little Princess"
+            },
+            {
+              "length_ms": 1280116,
+              "start_ms": 2544139,
+              "title": "East of The Sun and West of the Moon"
+            },
+            {
+              "length_ms": 2795125,
+              "start_ms": 3824255,
+              "title": "The Yellow Dwarf"
+            },
+            {
+              "length_ms": 254119,
+              "start_ms": 6619380,
+              "title": "Little Red Riding Hood"
+            },
+            {
+              "length_ms": 1282113,
+              "start_ms": 6873499,
+              "title": "The Sleeping Beauty in the Wood"
+            },
+            {
+              "length_ms": 881104,
+              "start_ms": 8155612,
+              "title": "Cinderella, or the Little Glass Slipper"
+            },
+            {
+              "length_ms": 1930112,
+              "start_ms": 9036716,
+              "title": "Aladdin and the Wonderful Lamp"
+            },
+            {
+              "length_ms": 1358111,
+              "start_ms": 10966828,
+              "title": "The Tale of a Youth Who Set Out to Learn What Fear Was"
+            },
+            {
+              "length_ms": 388121,
+              "start_ms": 12324939,
+              "title": "Rumpelstiltzkin"
+            },
+            {
+              "length_ms": 2505131,
+              "start_ms": 12713060,
+              "title": "Beauty and the Beast"
+            },
+            {
+              "length_ms": 1820119,
+              "start_ms": 15218191,
+              "title": "The Master-Maid"
+            },
+            {
+              "length_ms": 551102,
+              "start_ms": 17038310,
+              "title": "Why the Sea Is Salt"
+            },
+            {
+              "length_ms": 659121,
+              "start_ms": 17589412,
+              "title": "The Master Cat; Or, Puss in Boots"
+            },
+            {
+              "length_ms": 1074131,
+              "start_ms": 18248533,
+              "title": "Felicia and the Pot of Pinks"
+            },
+            {
+              "length_ms": 2189107,
+              "start_ms": 19322664,
+              "title": "The White Cat"
+            },
+            {
+              "length_ms": 1061128,
+              "start_ms": 21511771,
+              "title": "The Water-Lily. the Gold-Spinners"
+            },
+            {
+              "length_ms": 1418112,
+              "start_ms": 22572899,
+              "title": "The Terrible Head"
+            },
+            {
+              "length_ms": 1598113,
+              "start_ms": 23991011,
+              "title": "The Story of Pretty Goldilocks"
+            },
+            {
+              "length_ms": 976120,
+              "start_ms": 25589124,
+              "title": "The History of Whittington"
+            },
+            {
+              "length_ms": 2104099,
+              "start_ms": 26565244,
+              "title": "The Wonderful Sheep"
+            },
+            {
+              "length_ms": 1243126,
+              "start_ms": 28669343,
+              "title": "Little Thumb"
+            },
+            {
+              "length_ms": 1292120,
+              "start_ms": 29912469,
+              "title": "The Forty Thieves"
+            },
+            {
+              "length_ms": 1018125,
+              "start_ms": 31204589,
+              "title": "Hansel and Grettel"
+            },
+            {
+              "length_ms": 848132,
+              "start_ms": 32222714,
+              "title": "Snow-White and Rose-Red"
+            },
+            {
+              "length_ms": 772133,
+              "start_ms": 33070846,
+              "title": "The Goose-Girl"
+            },
+            {
+              "length_ms": 322130,
+              "start_ms": 33842979,
+              "title": "Toads and Diamonds"
+            },
+            {
+              "length_ms": 1596116,
+              "start_ms": 34165109,
+              "title": "Prince Darling"
+            },
+            {
+              "length_ms": 731126,
+              "start_ms": 35761225,
+              "title": "Blue Beard"
+            },
+            {
+              "length_ms": 1178134,
+              "start_ms": 36492351,
+              "title": "Trusty John"
+            },
+            {
+              "length_ms": 1168126,
+              "start_ms": 37670485,
+              "title": "The Brave Little Tailor"
+            },
+            {
+              "length_ms": 2464101,
+              "start_ms": 38838611,
+              "title": "A Voyage to Lilliput"
+            },
+            {
+              "length_ms": 1140122,
+              "start_ms": 41302712,
+              "title": "The Princess on the Glass Hill"
+            },
+            {
+              "length_ms": 4218136,
+              "start_ms": 42442834,
+              "title": "The Story of Prince Ahmed and the Fairy Paribanou"
+            },
+            {
+              "length_ms": 685127,
+              "start_ms": 46660970,
+              "title": "The History of Jack the Giant-Killer"
+            },
+            {
+              "length_ms": 692117,
+              "start_ms": 47346097,
+              "title": "The Black Bull of Norroway"
+            },
+            {
+              "length_ms": 834130,
+              "start_ms": 48038214,
+              "title": "The Red Etin"
+            },
+            {
+              "length_ms": 259286,
+              "start_ms": 48872344,
+              "title": "Preview"
+            },
+            {
+              "length_ms": 69786,
+              "start_ms": 49131630,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81F90mozAXL.jpg",
+          "id": "joel-froomkin-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joel-froomkin",
+            "matthew-lloyd-davies",
+            "neil-shah",
+            "pearl-hewitt",
+            "ulf-bjorklund"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2020-02-25",
+          "runtime_min": 819,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1799758486",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-blue-fairy-book"
+        },
         "jurgen-fritsche-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6815,267 +7035,14 @@
           "imported_at": "2026-08-01",
           "ref": "B019CY3AAQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Blue Fairy Book"
-    },
-    "the-blue-fairy-book-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrew-lang"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "short-stories"
-      ],
-      "id": "the-blue-fairy-book-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joel-froomkin-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1799758486",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43978,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1512060,
-              "start_ms": 43978,
-              "title": "The Bronze Ring"
-            },
-            {
-              "length_ms": 988101,
-              "start_ms": 1556038,
-              "title": "Prince Hyacinth and the Dear Little Princess"
-            },
-            {
-              "length_ms": 1280116,
-              "start_ms": 2544139,
-              "title": "East of The Sun and West of the Moon"
-            },
-            {
-              "length_ms": 2795125,
-              "start_ms": 3824255,
-              "title": "The Yellow Dwarf"
-            },
-            {
-              "length_ms": 254119,
-              "start_ms": 6619380,
-              "title": "Little Red Riding Hood"
-            },
-            {
-              "length_ms": 1282113,
-              "start_ms": 6873499,
-              "title": "The Sleeping Beauty in the Wood"
-            },
-            {
-              "length_ms": 881104,
-              "start_ms": 8155612,
-              "title": "Cinderella, or the Little Glass Slipper"
-            },
-            {
-              "length_ms": 1930112,
-              "start_ms": 9036716,
-              "title": "Aladdin and the Wonderful Lamp"
-            },
-            {
-              "length_ms": 1358111,
-              "start_ms": 10966828,
-              "title": "The Tale of a Youth Who Set Out to Learn What Fear Was"
-            },
-            {
-              "length_ms": 388121,
-              "start_ms": 12324939,
-              "title": "Rumpelstiltzkin"
-            },
-            {
-              "length_ms": 2505131,
-              "start_ms": 12713060,
-              "title": "Beauty and the Beast"
-            },
-            {
-              "length_ms": 1820119,
-              "start_ms": 15218191,
-              "title": "The Master-Maid"
-            },
-            {
-              "length_ms": 551102,
-              "start_ms": 17038310,
-              "title": "Why the Sea Is Salt"
-            },
-            {
-              "length_ms": 659121,
-              "start_ms": 17589412,
-              "title": "The Master Cat; Or, Puss in Boots"
-            },
-            {
-              "length_ms": 1074131,
-              "start_ms": 18248533,
-              "title": "Felicia and the Pot of Pinks"
-            },
-            {
-              "length_ms": 2189107,
-              "start_ms": 19322664,
-              "title": "The White Cat"
-            },
-            {
-              "length_ms": 1061128,
-              "start_ms": 21511771,
-              "title": "The Water-Lily. the Gold-Spinners"
-            },
-            {
-              "length_ms": 1418112,
-              "start_ms": 22572899,
-              "title": "The Terrible Head"
-            },
-            {
-              "length_ms": 1598113,
-              "start_ms": 23991011,
-              "title": "The Story of Pretty Goldilocks"
-            },
-            {
-              "length_ms": 976120,
-              "start_ms": 25589124,
-              "title": "The History of Whittington"
-            },
-            {
-              "length_ms": 2104099,
-              "start_ms": 26565244,
-              "title": "The Wonderful Sheep"
-            },
-            {
-              "length_ms": 1243126,
-              "start_ms": 28669343,
-              "title": "Little Thumb"
-            },
-            {
-              "length_ms": 1292120,
-              "start_ms": 29912469,
-              "title": "The Forty Thieves"
-            },
-            {
-              "length_ms": 1018125,
-              "start_ms": 31204589,
-              "title": "Hansel and Grettel"
-            },
-            {
-              "length_ms": 848132,
-              "start_ms": 32222714,
-              "title": "Snow-White and Rose-Red"
-            },
-            {
-              "length_ms": 772133,
-              "start_ms": 33070846,
-              "title": "The Goose-Girl"
-            },
-            {
-              "length_ms": 322130,
-              "start_ms": 33842979,
-              "title": "Toads and Diamonds"
-            },
-            {
-              "length_ms": 1596116,
-              "start_ms": 34165109,
-              "title": "Prince Darling"
-            },
-            {
-              "length_ms": 731126,
-              "start_ms": 35761225,
-              "title": "Blue Beard"
-            },
-            {
-              "length_ms": 1178134,
-              "start_ms": 36492351,
-              "title": "Trusty John"
-            },
-            {
-              "length_ms": 1168126,
-              "start_ms": 37670485,
-              "title": "The Brave Little Tailor"
-            },
-            {
-              "length_ms": 2464101,
-              "start_ms": 38838611,
-              "title": "A Voyage to Lilliput"
-            },
-            {
-              "length_ms": 1140122,
-              "start_ms": 41302712,
-              "title": "The Princess on the Glass Hill"
-            },
-            {
-              "length_ms": 4218136,
-              "start_ms": 42442834,
-              "title": "The Story of Prince Ahmed and the Fairy Paribanou"
-            },
-            {
-              "length_ms": 685127,
-              "start_ms": 46660970,
-              "title": "The History of Jack the Giant-Killer"
-            },
-            {
-              "length_ms": 692117,
-              "start_ms": 47346097,
-              "title": "The Black Bull of Norroway"
-            },
-            {
-              "length_ms": 834130,
-              "start_ms": 48038214,
-              "title": "The Red Etin"
-            },
-            {
-              "length_ms": 259286,
-              "start_ms": 48872344,
-              "title": "Preview"
-            },
-            {
-              "length_ms": 69786,
-              "start_ms": 49131630,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81F90mozAXL.jpg",
-          "id": "joel-froomkin-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joel-froomkin",
-            "matthew-lloyd-davies",
-            "neil-shah",
-            "pearl-hewitt",
-            "ulf-bjorklund"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2020-02-25",
-          "runtime_min": 819,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1799758486",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-blue-fairy-book-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1799758486",
           "type": "libex-import"
         }
       ],
-      "title": "The Blue Fairy Book (AmazonClassics Edition)"
+      "title": "The Blue Fairy Book"
     },
     "the-blue-fairy-book-illustrated": {
       "added_at": "2026-08-01",

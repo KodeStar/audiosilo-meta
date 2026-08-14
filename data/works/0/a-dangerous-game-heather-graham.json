@@ -6882,8 +6882,11 @@
         "chris-dlacey"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy",
+        "mystery",
+        "paranormal",
         "science-fiction"
       ],
       "id": "a-dark-inheritance",
@@ -6917,33 +6920,7 @@
             }
           ],
           "work": "a-dark-inheritance"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00Q3J6I8K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Dark Inheritance"
-    },
-    "a-dark-inheritance-ufiles-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chris-dlacey"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "mystery",
-        "paranormal"
-      ],
-      "id": "a-dark-inheritance-ufiles-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "raphael-corkhill-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6970,17 +6947,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-dark-inheritance-ufiles-book-1"
+          "work": "a-dark-inheritance"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00Q3J6I8K",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00KFQSAE2",
           "type": "libex-import"
         }
       ],
-      "title": "A Dark Inheritance (UFiles, Book 1)"
+      "title": "A Dark Inheritance"
     },
     "a-dark-lords-kingdom-book-1": {
       "added_at": "2026-08-02",

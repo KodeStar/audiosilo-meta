@@ -4098,17 +4098,23 @@
       ],
       "title": "The Arabian Nights"
     },
-    "the-arabian-nights-amazonclassics-edition": {
+    "the-arabian-nights-andrew-lang": {
       "added_at": "2026-07-29",
       "authors": [
         "andrew-lang"
+      ],
+      "credits": [
+        {
+          "person": "andrew-lang",
+          "role": "translator"
+        }
       ],
       "genres": [
         "classics",
         "fairy-tales-folklore",
         "fantasy"
       ],
-      "id": "the-arabian-nights-amazonclassics-edition",
+      "id": "the-arabian-nights-andrew-lang",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -4290,36 +4296,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-arabian-nights-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07CRPMLC8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Arabian Nights (AmazonClassics Edition)"
-    },
-    "the-arabian-nights-andrew-lang": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "andrew-lang"
-      ],
-      "credits": [
-        {
-          "person": "andrew-lang",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-arabian-nights-andrew-lang",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "the-arabian-nights-andrew-lang"
+        },
         "suehyla-el-attar-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4535,6 +4513,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B007H9COF6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07CRPMLC8",
           "type": "libex-import"
         }
       ],

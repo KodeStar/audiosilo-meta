@@ -3765,12 +3765,45 @@
             }
           ],
           "work": "bodyguard-jennifer-ashley"
+        },
+        "cris-dukehart-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B089CX8ZLW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XnkL1Bx2L.jpg",
+          "id": "cris-dukehart-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cris-dukehart"
+          ],
+          "publisher": "Jennifer Ashley",
+          "release_date": "2020-06-01",
+          "runtime_min": 277,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B089CX8ZLW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bodyguard-jennifer-ashley"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B00DJ6JSAK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B089CX8ZLW",
           "type": "libex-import"
         }
       ],
@@ -3878,58 +3911,6 @@
         }
       ],
       "title": "Bodyguard of Lies"
-    },
-    "bodyguard-shifters-unbound": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jennifer-ashley"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "bodyguard-shifters-unbound",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cris-dukehart-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B089CX8ZLW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91XnkL1Bx2L.jpg",
-          "id": "cris-dukehart-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cris-dukehart"
-          ],
-          "publisher": "Jennifer Ashley",
-          "release_date": "2020-06-01",
-          "runtime_min": 277,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B089CX8ZLW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bodyguard-shifters-unbound"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B089CX8ZLW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bodyguard (Shifters Unbound)"
     },
     "bodyguard-shirlee-mccoy": {
       "added_at": "2026-07-29",
@@ -9833,6 +9814,7 @@
       "genres": [
         "military-history",
         "short-stories",
+        "war-military-fiction",
         "womens-fiction"
       ],
       "id": "bola-de-sebo",
@@ -9846,55 +9828,7 @@
             {
               "asin": "B07YXN472H",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VbpJnqA5L.jpg",
-          "id": "victor-prieto-2009",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-prieto"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2009-12-27",
-          "runtime_min": 106,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXN472H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bola-de-sebo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXN472H",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bola de Sebo"
-    },
-    "bola-de-sebo-dumpling": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guy-de-maupassant"
-      ],
-      "genres": [
-        "short-stories",
-        "war-military-fiction",
-        "womens-fiction"
-      ],
-      "id": "bola-de-sebo-dumpling",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "victor-prieto-2009": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B004DJ7OIU",
               "region": "us"
@@ -9913,21 +9847,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXN472H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B004DJ7OIU",
               "type": "libex-import"
             }
           ],
-          "work": "bola-de-sebo-dumpling"
+          "work": "bola-de-sebo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXN472H",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B004DJ7OIU",
           "type": "libex-import"
         }
       ],
-      "title": "Bola de Sebo [Dumpling]"
+      "title": "Bola de Sebo"
     },
     "bold": {
       "added_at": "2026-07-25T17:12:12+01:00",

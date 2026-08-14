@@ -5589,6 +5589,7 @@
         "olga-demidova"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fantasy",
@@ -5609,6 +5610,17 @@
             {
               "asin": "B09GHY9LNF",
               "region": "us"
+            },
+            {
+              "asin": "B09NWGLM34",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2318441,
+              "start_ms": 0,
+              "title": "The Fabled Stables: Belly of the Beast"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71in5gQKOEL.jpg",
@@ -5636,6 +5648,11 @@
               "imported_at": "2026-08-02",
               "ref": "B09GHY9LNF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09NWGLM34",
+              "type": "libex-import"
             }
           ],
           "work": "belly-of-the-beast"
@@ -5650,6 +5667,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09GHY9LNF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09NWGLM34",
           "type": "libex-import"
         }
       ],

@@ -8043,10 +8043,20 @@
     "die-unendliche-geschichte": {
       "added_at": "2026-07-29",
       "authors": [
-        "michael-ende"
+        "michael-ende",
+        "max-meinzold"
+      ],
+      "credits": [
+        {
+          "person": "max-meinzold",
+          "role": "illustrator"
+        }
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "classics",
+        "fantasy",
         "young-adult"
       ],
       "id": "die-unendliche-geschichte",
@@ -8272,40 +8282,7 @@
             }
           ],
           "work": "die-unendliche-geschichte"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TVNYUT4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die unendliche Geschichte"
-    },
-    "die-unendliche-geschichte-michael-ende": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "michael-ende",
-        "max-meinzold"
-      ],
-      "credits": [
-        {
-          "person": "max-meinzold",
-          "role": "illustrator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "die-unendliche-geschichte-michael-ende",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stefan-kaminski-2026": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8341,10 +8318,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "die-unendliche-geschichte-michael-ende"
+          "work": "die-unendliche-geschichte"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TVNYUT4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0G1YM8GPL",
