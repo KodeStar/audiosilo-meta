@@ -66,11 +66,8 @@ func abridgedFromMarker(title string) *bool {
 // It never returns an empty string: a title that is ONLY a marker (or trims to
 // nothing) is returned unchanged.
 //
-// The edition-marker half is titlerule.StripEditionMarkers: that rule is the ONE
-// definition of what such a marker is, and it moved to internal/titlerule (from
-// here) when pkg/check and this package both became consumers of the normalized
-// title identity built on top of it - see titlerule/edition.go, which records the
-// move and why the rule may not be spelled twice.
+// The edition-marker half is titlerule.StripEditionMarkers, the ONE definition of
+// what such a marker is (see titlerule/edition.go for why it lives there).
 func cleanWorkTitle(title string) string {
 	cleaned := strings.TrimSpace(title)
 	stripped := titlerule.StripEditionMarkers(cleaned)
@@ -671,7 +668,7 @@ func (p *planner) loadExisting() {
 	// The create path's duplicate-identity index, off the load that is already
 	// happening: it is the one index the guard probes per row (dupidentity.go), and
 	// building it anywhere else would mean a second pass over the catalogue.
-	p.identity = newWorkIdentityIndex(res, p.mode)
+	p.identity = runWorkIdentityIndex(res, p.mode)
 	cat := res.Catalog
 	if cat == nil {
 		return
@@ -905,7 +902,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// under a differently-spelled title is dropped and reported rather than minting a
 	// second work (dupidentity.go). It skips rather than merging, on purpose - a
 	// refused row is re-importable, a wrong merge is not.
-	if p.refuseDuplicateIdentity(b, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
+	ident := p.rowIdentityOf(b, workTitle)
+	if p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.noteLostSeriesClaims(b)
 		return
 	}
@@ -932,9 +930,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// row of the same run carrying another spelling of this title meets it (see
 	// dupidentity.go's identityMatch). Registered whether the work was created or
 	// merged into: either way this row and that work are one book.
-	if ws != nil && p.identity != nil {
-		series := rowSeriesName(b)
-		p.rememberIdentity(p.identity.Key(workTitle, series), ws.slug, workTitle, series)
+	if ws != nil {
+		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
@@ -1542,23 +1539,10 @@ type workFacts struct {
 // precondition - a full title that differs - can never hold. It is skipped
 // explicitly so that reading the code says so.
 func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, lang string, claim *seriesClaim, facts workFacts, posSuffix string, warn func(string, ...any)) *workState {
-	base := Slugify(title)
-	if base == "" {
-		base = "untitled"
+	base, cands, primary := workChain(title, posSuffix, authors, claim)
+	if fellBack := Slugify(title) == ""; fellBack {
 		warn("title %q produced an empty slug; using %q", title, base)
 	}
-	// A row that states a series position may LOOK at the suffixed slugs the
-	// serial pre-pass mints for that position, so a lone volume finds the work an
-	// earlier batch created there. Not when this row is itself suffixed: its base
-	// already carries the tail, and probing a second one would address
-	// "<title>-book-1-book-1".
-	probe := positionClaim{}
-	if posSuffix != "" {
-		base = BoundedSlugTail(base, "-"+posSuffix)
-	} else {
-		probe = claim.position()
-	}
-	cands, primary := workCandidates(base, authors, probe)
 
 	// The walk grades every candidate rather than taking the first that answers:
 	// two candidates can both reduce to the row's identity set (the-iliad and
@@ -2465,6 +2449,39 @@ type workCandidate struct {
 	slug        string
 	probeOnly   bool
 	posSuffixed bool
+}
+
+// workChain composes the slug candidates a row's work is looked up and created on:
+// the base slug (the title, with the serial position tail appended when the row
+// carries one), and workCandidates over it with the position probe a claim-bearing
+// row is allowed.
+//
+// It is ONE function because TWO callers walk that chain - getOrCreateWork, which
+// resolves or mints the work, and the duplicate-identity guard's reachability test,
+// which asks whether the create path would find a work it already matched
+// (dupidentity.go). "The same chain in the same order" is that guard's whole
+// soundness argument, so it is structural here rather than a comment at two sites.
+//
+// A row that states a series position may LOOK at the suffixed slugs the serial
+// pre-pass mints for that position, so a lone volume finds the work an earlier batch
+// created there - but not when this row is itself suffixed: its base already carries
+// the tail, and probing a second one would address "<title>-book-1-book-1".
+//
+// An unslugifiable title falls back to "untitled" (the caller warns about it; only
+// the creating one has a warning sink).
+func workChain(title, posSuffix string, authors workAuthors, claim *seriesClaim) (base string, cands []workCandidate, primary int) {
+	base = Slugify(title)
+	if base == "" {
+		base = "untitled"
+	}
+	probe := positionClaim{}
+	if posSuffix != "" {
+		base = BoundedSlugTail(base, "-"+posSuffix)
+	} else {
+		probe = claim.position()
+	}
+	cands, primary = workCandidates(base, authors, probe)
+	return base, cands, primary
 }
 
 // workCandidates yields the ordered slug candidates for a work, and how many of

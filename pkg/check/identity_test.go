@@ -94,8 +94,11 @@ func TestWorkIdentityDerivations(t *testing.T) {
 	if got := ix.SeriesNameOf("the-blood-of-elves"); got != "" {
 		t.Errorf("SeriesNameOf on a series-less work = %q, want empty", got)
 	}
-	if got := ix.KeyOf("hammered"); got == "" || got != ix.Key("Hammered", "The Iron Druid Chronicles") {
-		t.Errorf("KeyOf(hammered) = %q, which is not the key rule's answer", got)
+	// A work is indexed under the key the KEY RULE gives its title and derived series,
+	// which is what makes an incoming record's key comparable with a catalogued one's.
+	key := ix.Key("Hammered", "The Iron Druid Chronicles")
+	if works := ix.Works(key); len(works) != 1 || works[0].ID != "hammered" {
+		t.Errorf("Works(%q) = %v, want the hammered record", key, works)
 	}
 	name, id, ok := ix.SeriesNameIn("Hammered: The Iron Druid Chronicles, Book 3")
 	if !ok || name != "The Iron Druid Chronicles" || id != "the-iron-druid-chronicles" {

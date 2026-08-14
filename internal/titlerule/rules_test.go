@@ -125,9 +125,9 @@ func TestDecorationsAreSilentOnACleanTitle(t *testing.T) {
 	}
 }
 
-// The edition-marker rule (edition.go, the one definition - internal/importer strips
-// through it) and the decoration code that reads it. A hand-written second version
-// drifted on bracket optionality and stacked markers, which is what the cases pin.
+// The edition-marker rule (edition.go) and the decoration code that reads it. The
+// cases pin what a hand-written second version got wrong: bracket optionality and
+// stacked markers.
 func TestEditionMarkerRule(t *testing.T) {
 	cases := []struct {
 		title string

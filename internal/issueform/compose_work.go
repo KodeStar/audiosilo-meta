@@ -100,15 +100,15 @@ func (c *composer) addWork(s sections) {
 	//     work-SLUG gate below see the collision at all - a decorated title slugs to
 	//     an address no work occupies, which is exactly how a second record of a
 	//     catalogued book used to get composed.
-	seriesName := s.get(fWorkSeriesName)
-	duplicate, newVolume := c.checkSeriesVolume(title, seriesName)
-	if duplicate {
+	ctx := c.titleContextFor(title, s.get(fWorkSeriesName))
+	if c.checkSeriesVolume(ctx) {
 		return
 	}
-	title, titleOK := c.checkDecoratedTitle(title, seriesName, newVolume)
+	ctx, titleOK := c.checkDecoratedTitle(ctx)
 	if !titleOK {
 		return
 	}
+	title = ctx.title
 
 	workSlug := slugify(title)
 	if workSlug == "" {
@@ -145,7 +145,7 @@ func (c *composer) addWork(s sections) {
 	// person the submission names is real whether or not this work is composed, and
 	// the terminal verdict means nothing is written at all (Process discards a failed
 	// submission's queued entries).
-	if c.checkNormalizedIdentity(title, seriesName, lang, authorSlugs, newVolume) {
+	if c.checkNormalizedIdentity(ctx, lang, authorSlugs) {
 		return
 	}
 

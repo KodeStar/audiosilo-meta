@@ -46,16 +46,46 @@ import (
 // rows are a measurable population to decide about, not a guess. Recorded as a
 // follow-up in CLAUDE.md.
 //
-// COST. The probe is a map lookup per row against ONE index built per run
-// (check.NewWorkIdentity, built in loadExisting only for a create run), which is
-// the derivedCache lesson from the audit: the key costs a title clean, so cleaning
-// 280k titles once is affordable and cleaning them per row is not.
+// COST. The probe is a map lookup per row against ONE index, and the run does not
+// even build it: it comes out of the catalogue load the planner already performs
+// (check.Result.Identity, kept only for a create run). The key costs a title clean,
+// so cleaning 280k titles once per run is affordable, cleaning them twice is waste,
+// and cleaning them per row is not affordable at all - the derivedCache lesson from
+// the audit. A row whose key nothing holds is rejected by two map lookups before any
+// of its credits are resolved, which is what keeps a million-row wave's cost in the
+// rows that actually collide.
 
 // duplicateIdentityMatch is the catalogued work a row was refused in favour of.
 type duplicateIdentityMatch struct {
 	work  string // the catalogued work's slug
 	title string // its title, so the warning shows both spellings
-	key   string // the normalized identity both titles reduced to
+	// series is the series name that work's title was READ AGAINST, or "" - the
+	// warning quotes it, because a key derived against a membership is a stronger
+	// claim than one derived against nothing and a triager reading the worklist
+	// wants to know which it was.
+	series string
+}
+
+// rowIdentity is a row's normalized identity, derived ONCE per row in addBook: the
+// series name its title is read against and the key that title and series produce.
+//
+// It is a value rather than three re-derivations because every step of the guard
+// needs the same two strings - the probe, the reachability test's neighbours and the
+// remembering that lets a LATER row of the run meet this one - and deriving the key
+// three times per row was three title cleans per row.
+type rowIdentity struct {
+	series string
+	key    string
+}
+
+// rowIdentityOf derives a row's identity. The zero value (an empty key) is "no index
+// or nothing to key", which every consumer reads as "no guard".
+func (p *planner) rowIdentityOf(b sourceBook, workTitle string) rowIdentity {
+	if p.identity == nil || workTitle == "" {
+		return rowIdentity{}
+	}
+	series := rowSeriesName(b)
+	return rowIdentity{series: series, key: p.identity.Key(workTitle, series)}
 }
 
 // refuseDuplicateIdentity reports whether this row must be dropped because the
@@ -74,8 +104,8 @@ type duplicateIdentityMatch struct {
 // not a property of who is importing. The submitter is not left in the dark - the
 // intake bot reports the refusals and routes the submission to a maintainer rather
 // than closing it as a duplicate (internal/issueform's import composer).
-func (p *planner) refuseDuplicateIdentity(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) bool {
-	if p.identity == nil || workTitle == "" {
+func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) bool {
+	if ident.key == "" {
 		return false
 	}
 	// A row the SERIAL PRE-PASS suffixed is a distinct volume the batch has already
@@ -87,15 +117,22 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, workTitle, fullTitle, po
 	if posSuffix != "" {
 		return false
 	}
+	// The KEY is probed before anything is resolved. On an unfiltered dump the
+	// overwhelming majority of rows name a book nothing in the tree keys, and
+	// resolving their credits first (rowWorkAuthorsRO runs the whole cleaning
+	// fixpoint over every name) would spend a million rows' worth of work to learn
+	// that. Same gate as recordings.go's lazy author resolution, same reason.
+	if len(p.identity.Works(ident.key)) == 0 && len(p.runIdentity[ident.key]) == 0 {
+		return false
+	}
 	// The READ-ONLY author resolution: the same identity rules getOrCreateWork will
 	// apply (personSlug plus the initials merge) with nothing created.
 	authors := p.rowWorkAuthorsRO(credits)
 	if len(authors.identity) == 0 {
 		return false
 	}
-	series := rowSeriesName(b)
 
-	match, found := p.identityMatch(workTitle, series, lang, authors)
+	match, found := p.identityMatch(ident, workTitle, lang, authors)
 	if !found {
 		return false
 	}
@@ -121,7 +158,7 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, workTitle, fullTitle, po
 	p.summary.SkippedDuplicateIdentity++
 	if len(p.dupIdentityExamples) < maxWarnExamples {
 		p.dupIdentityExamples = append(p.dupIdentityExamples,
-			fmt.Sprintf("%q -> %q (%q)", workTitle, match.work, match.title))
+			fmt.Sprintf("%q -> %q (%q%s)", workTitle, match.work, match.title, againstSeries(match.series)))
 	}
 	// The durable, machine-readable twin of the warning, in the same worklist the
 	// contradiction guards write to: run, ASIN, the work whose identity was already
@@ -156,33 +193,44 @@ const conflictFieldWorkIdentity = "work_identity"
 // hold; attributing it to one of them would file a recording under the wrong
 // volume. So the row proceeds on the long-standing behaviour (it mints its own
 // work) and the resulting cluster is what metacheck's census reports.
-func (p *planner) identityMatch(workTitle, series, lang string, authors workAuthors) (duplicateIdentityMatch, bool) {
-	key := p.identity.Key(workTitle, series)
-	if key == "" {
-		return duplicateIdentityMatch{}, false
-	}
+func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, authors workAuthors) (duplicateIdentityMatch, bool) {
 	var found []duplicateIdentityMatch
-	for _, slug := range p.runIdentity[key] {
+	for _, slug := range p.runIdentity[ident.key] {
 		ws, ok := p.works[slug]
 		if !ok || !langCompatible(ws.lang, lang) || matchWork(ws, authors) == matchNone {
 			continue
 		}
 		was := p.runIdentified[slug]
-		if !titlerule.SameStatedVolume(workTitle, series, was.title, was.series) {
+		if !titlerule.SameStatedVolume(workTitle, ident.series, was.title, was.series) {
 			continue
 		}
-		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, key: key})
+		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, series: was.series})
 	}
-	for _, m := range p.identity.Match(workTitle, series, lang, authors.allSet(), authors.set()) {
+	for _, m := range p.identity.MatchKey(ident.key, workTitle, ident.series, lang, authors.allSet(), authors.set()) {
 		// A work this run created is in p.works with the run's own state; the disk
 		// index cannot hold it, so a hit here is always a catalogued record - and
 		// cannot be a repeat of one the run half already named.
-		found = append(found, duplicateIdentityMatch{work: m.Work.ID, title: m.Work.Title, key: key})
+		found = append(found, duplicateIdentityMatch{work: m.Work.ID, title: m.Work.Title, series: m.Series})
 	}
 	if len(found) != 1 {
 		return duplicateIdentityMatch{}, false
 	}
 	return found[0], true
+}
+
+// againstSeries renders the series a matched work's title was read against, for the
+// examples - or nothing at all, when it was read against nothing. A key derived
+// against a MEMBERSHIP is a stronger claim than one derived against nothing, and a
+// triager reading the worklist wants to know which it was.
+//
+// Message prose, in this run report's voice - internal/issueform's gate renders the
+// same clause for a contributor. What both read is the one derivation
+// (check.WorkIdentity.SeriesNameOf); only the sentence is local.
+func againstSeries(series string) string {
+	if series == "" {
+		return ""
+	}
+	return fmt.Sprintf(", cleaned against the series %q", series)
 }
 
 // runWorkIdentity is what the run remembers about a work it has written to, for the
@@ -202,43 +250,37 @@ type runWorkIdentity struct {
 // row and the work are one book, so the key it was judged by names that work as
 // truly as the work's own does. The FIRST row to reach a work wins the remembered
 // title, so what a later row is compared against does not drift row by row.
-func (p *planner) rememberIdentity(key, slug, title, series string) {
-	if key == "" || slug == "" {
+func (p *planner) rememberIdentity(ident rowIdentity, slug, title string) {
+	if ident.key == "" || slug == "" {
 		return
 	}
 	if _, seen := p.runIdentified[slug]; !seen {
-		p.runIdentified[slug] = runWorkIdentity{title: title, series: series}
+		p.runIdentified[slug] = runWorkIdentity{title: title, series: ident.series}
 	}
-	for _, have := range p.runIdentity[key] {
+	for _, have := range p.runIdentity[ident.key] {
 		if have == slug {
 			return
 		}
 	}
-	p.runIdentity[key] = append(p.runIdentity[key], slug)
+	p.runIdentity[ident.key] = append(p.runIdentity[ident.key], slug)
 }
 
 // slugChainReaches reports whether the row's own work-slug candidates include the
 // matched work - in which case getOrCreateWork will merge into it and no duplicate
 // can be minted.
 //
-// It walks the same chains getOrCreateWork walks and in the same order
-// (workCandidates over the resolved title, plus the FULL-title retry it falls back
-// to), because "would the create path find this work" has exactly one answer and it
-// is that function's. A probe-only candidate counts: the row can merge into it, it
-// simply may not create there.
+// It walks the chain through workChain, the one composer getOrCreateWork walks too,
+// and over the same two titles in the same order (the resolved title, then the
+// FULL-title retry the create path falls back to): "would the create path find this
+// work" has exactly one answer, and the guard's whole soundness rests on asking it
+// the same way. A probe-only candidate counts - the row can merge into it, it simply
+// may not create there.
 func (p *planner) slugChainReaches(want, workTitle, fullTitle, posSuffix string, authors workAuthors, claim *seriesClaim) bool {
 	for _, title := range []string{workTitle, fullTitle} {
-		base := Slugify(title)
-		if base == "" {
+		if Slugify(title) == "" {
 			continue
 		}
-		probe := positionClaim{}
-		if posSuffix != "" {
-			base = BoundedSlugTail(base, "-"+posSuffix)
-		} else {
-			probe = claim.position()
-		}
-		cands, _ := workCandidates(base, authors, probe)
+		_, cands, _ := workChain(title, posSuffix, authors, claim)
 		for _, c := range cands {
 			if c.slug == want {
 				return true
@@ -280,12 +322,16 @@ func (p *planner) reportDuplicateIdentities() {
 		p.dupIdentityExamples))
 }
 
-// newWorkIdentityIndex builds the run's normalized-identity index, for the CREATE
-// mode only. cat may be nil (a best-effort load found nothing), in which case there
-// is nothing to guard against.
-func newWorkIdentityIndex(res check.Result, mode Mode) *check.WorkIdentity {
-	if mode != ModeCreate || res.Catalog == nil {
+// runWorkIdentityIndex is the run's normalized-identity index: the one the catalogue
+// LOAD already built (check.Result.Identity, which its own duplicate census needs),
+// kept for the CREATE mode alone.
+//
+// Taken rather than rebuilt: building it cleans every catalogued title, and the two
+// indexes would be identical by construction. nil for the other two modes and for a
+// load that produced no catalogue, which the guard reads as "no guard".
+func runWorkIdentityIndex(res check.Result, mode Mode) *check.WorkIdentity {
+	if mode != ModeCreate {
 		return nil
 	}
-	return check.NewWorkIdentity(res.Catalog)
+	return res.Identity
 }

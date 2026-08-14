@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
@@ -160,7 +161,7 @@ func TestAddWorkRefusesADecoratedSeriesVolume(t *testing.T) {
 	if res.Status != StatusDuplicate {
 		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
 	}
-	if !messagesMention(res.Messages, "hammered") || !messagesMention(res.Messages, "volume 3") {
+	if !anyContains(res.Messages, "hammered") || !anyContains(res.Messages, "volume 3") {
 		t.Errorf("the verdict must name the member and the position: %v", res.Messages)
 	}
 	if recordExists(t, dir, "works/ha/hammered-the-iron-druid-chronicles-book-3/work.json") {
@@ -213,7 +214,7 @@ func TestAddWorkKeepsTheMarkerOfANewVolume(t *testing.T) {
 	if !recordExists(t, dir, "works/ha/hammered-book-4/work.json") {
 		t.Fatalf("volume 4 was not composed under its own slug; messages = %v", res.Messages)
 	}
-	if !messagesMention(res.Messages, "kept as submitted") {
+	if !anyContains(res.Messages, "kept as submitted") {
 		t.Errorf("the verdict must say why the marker survived: %v", res.Messages)
 	}
 }
@@ -230,7 +231,7 @@ func TestAddWorkRefusesANormalizedIdentityDuplicate(t *testing.T) {
 	if res.Status != StatusDuplicate {
 		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
 	}
-	if !messagesMention(res.Messages, "the-blood-of-elves") {
+	if !anyContains(res.Messages, "the-blood-of-elves") {
 		t.Errorf("the verdict must name the catalogued work: %v", res.Messages)
 	}
 	if recordExists(t, dir, "works/bl/blood-of-elves/work.json") {
@@ -272,7 +273,7 @@ func TestAddWorkStripsSafeDecoration(t *testing.T) {
 	if !strings.Contains(work, `"title": "Two Ravens"`) {
 		t.Errorf("the edition marker was not stripped from the title:\n%s", work)
 	}
-	if !messagesMention(res.Messages, "edition-marker") {
+	if !anyContains(res.Messages, "edition-marker") {
 		t.Errorf("the verdict must say what was cleaned: %v", res.Messages)
 	}
 }
@@ -303,11 +304,47 @@ func TestAddWorkRefusesADecorationOnlyTitle(t *testing.T) {
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusNeedsHuman, res.Messages)
 	}
-	if !messagesMention(res.Messages, "nothing that names a book") {
+	if !anyContains(res.Messages, "nothing that names a book") {
 		t.Errorf("the verdict must name the reason: %v", res.Messages)
 	}
 	if recordExists(t, dir, "works/om/omnibus/work.json") {
 		t.Error("a work was composed from a title that names no book")
+	}
+}
+
+// A work whose title IS its series' name is ordinary - a one-book series is named
+// after its book, and the series here is a catalogued one the title spells out whole.
+// The strip has nothing safe to propose (the whole title would go), so the submission
+// is composed exactly as it was written and says nothing about decoration.
+func TestAddWorkAcceptsATitleThatIsItsSeriesName(t *testing.T) {
+	dir := dupSeedTree(t)
+	res := processAddWork(t, dir, dupWorkBody(
+		"The Iron Druid Chronicles", "Kevin Hearne", "Luke Daniels", "", ""))
+
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	work := readFile(t, dir, "works/th/the-iron-druid-chronicles/work.json")
+	if !strings.Contains(work, `"title": "The Iron Druid Chronicles"`) {
+		t.Errorf("the title was not composed as submitted:\n%s", work)
+	}
+	if anyContains(res.Messages, "retailer decoration") {
+		t.Errorf("a title that is its series' name was reported as decorated: %v", res.Messages)
+	}
+}
+
+// Every strip-refusal code the rule package can return must have a decision recorded
+// here - proceed, or a maintainer's - so a code added to internal/titlerule cannot
+// reach this gate and fall through a default branch nobody chose.
+func TestEveryStripRefusalIsClassified(t *testing.T) {
+	for _, code := range titlerule.RefusalCodes() {
+		if _, listed := decorationRefusals[code]; !listed {
+			t.Errorf("strip refusal %q has no intake decision in decorationRefusals", code)
+		}
+	}
+	if len(decorationRefusals) != len(titlerule.RefusalCodes()) {
+		t.Errorf("decorationRefusals holds %d codes, the rule package defines %d",
+			len(decorationRefusals), len(titlerule.RefusalCodes()))
 	}
 }
 
@@ -331,7 +368,7 @@ func TestNormalizedIdentityDuplicateOfAMirrorSeedNeedsAHuman(t *testing.T) {
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusNeedsHuman, res.Messages)
 	}
-	if !messagesMention(res.Messages, "seeded from the libex mirror") {
+	if !anyContains(res.Messages, "seeded from the libex mirror") {
 		t.Errorf("the mirror-seed verdict must explain itself: %v", res.Messages)
 	}
 }
@@ -354,13 +391,4 @@ func TestAddWorkUntouchedByTheNewGates(t *testing.T) {
 			t.Errorf("an undecorated title was reported as decorated: %q", m)
 		}
 	}
-}
-
-func messagesMention(msgs []string, want string) bool {
-	for _, m := range msgs {
-		if strings.Contains(m, want) {
-			return true
-		}
-	}
-	return false
 }

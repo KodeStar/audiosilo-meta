@@ -6,7 +6,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -367,13 +366,9 @@ func subset(a, b map[string]bool) bool {
 // that spells its title identically is that rule's finding ("one book under two
 // ids"), and reporting the same pair twice would make the census line count one
 // defect as two. So this class is exactly "titles that differ and mean the same
-// book", which is the decoration-minted population.
-//
-// The pair test is the same one every other duplicate reader applies - languages
-// compatible, author sets nested (IdentityEqualWorks), the pre-pass's serial suffix
-// and a stated volume disagreement both excluded - so a serial's volumes, a
-// translation and its original, and two different books by different authors are
-// none of them findings here.
+// book", which is the decoration-minted population. What each pair must clear
+// otherwise is normalizedDuplicateGroup's business, and it is the index's own
+// predicate - the same rules the two writers refuse a new record on.
 func checkNormalizedDuplicateWorks(ix *WorkIdentity, idx *pathIndex, warn addFunc) {
 	for _, key := range ix.Keys() {
 		works := ix.Works(key)
@@ -401,30 +396,51 @@ func checkNormalizedDuplicateWorks(ix *WorkIdentity, idx *pathIndex, warn addFun
 	}
 }
 
+// dupCandidate is one key-group member with everything the pair loop asks of it
+// computed ONCE: a group of n members is n*(n-1)/2 pairs, and slugifying a title or
+// reducing an author list per pair is that many times more work than per member.
+type dupCandidate struct {
+	work *model.Work
+	// slug is the RAW title's slug, the disjointness test against
+	// checkIdentityEqualWorks.
+	slug string
+	// all and identity are the work's author sets, as the nesting rule reads them.
+	all      map[string]bool
+	identity map[string]bool
+}
+
 // normalizedDuplicateGroup returns the members of one key group that really are a
 // finding, in id order, or fewer than two of them.
 //
-// A member is kept when it pairs with at least one other member: same identity
-// authors, compatible languages, RAW titles that differ (see the caller), no serial
-// position suffix telling them apart, and no disagreement about which volume each
-// one is. Pairwise rather than group-wide because the identity rule matches NESTED
-// author sets, so a key group can hold two unrelated books by different authors.
+// A member is kept when it pairs with at least one other member under the index's
+// own pairwise predicate (WorkIdentity.matches - languages, author nesting, no
+// stated-volume disagreement, the SAME rules the intake gate and the bulk guard
+// refuse a new record on), plus the two vetoes that belong to this class alone: RAW
+// titles that differ (a same-title pair is checkIdentityEqualWorks' finding) and no
+// serial position suffix telling the two apart.
+//
+// Pairwise rather than group-wide because the identity rule matches NESTED author
+// sets, so a key group can hold two unrelated books by different authors.
 func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Work {
+	cands := make([]dupCandidate, 0, len(works))
+	for _, w := range works {
+		all, identity := identitySets(w)
+		cands = append(cands, dupCandidate{work: w, slug: model.Slugify(w.Title), all: all, identity: identity})
+	}
 	keep := map[string]*model.Work{}
-	for i := 0; i < len(works); i++ {
-		for j := i + 1; j < len(works); j++ {
-			a, b := works[i], works[j]
-			if model.Slugify(a.Title) == model.Slugify(b.Title) {
+	for i := 0; i < len(cands); i++ {
+		for j := i + 1; j < len(cands); j++ {
+			a, b := cands[i], cands[j]
+			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
-			if !languagesCompatible(a.Language, b.Language) || !IdentityEqualWorks(a, b) {
+			if differentVolumes(a.work, b.work) {
 				continue
 			}
-			if differentVolumes(a, b) ||
-				!titlerule.SameStatedVolume(a.Title, ix.SeriesNameOf(a.ID), b.Title, ix.SeriesNameOf(b.ID)) {
+			if !ix.matches(b.work, a.work.Title, ix.SeriesNameOf(a.work.ID), a.work.Language, a.all, a.identity) {
 				continue
 			}
-			keep[a.ID], keep[b.ID] = a, b
+			keep[a.work.ID], keep[b.work.ID] = a.work, b.work
 		}
 	}
 	out := make([]*model.Work, 0, len(keep))

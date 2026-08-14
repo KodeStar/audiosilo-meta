@@ -65,8 +65,11 @@ const (
 func (ix *index) workKeys(w *model.Work) []workKey {
 	d := ix.derived(w)
 	keys := make([]workKey, 0, 2)
-	addKey := func(cleaned, series, via string) {
-		fold := titlerule.CompareKey(cleaned)
+	// fold is the work's NORMALIZED IDENTITY key for this derivation
+	// (titlerule.IdentityTitleKey, memoized in workDerived): the same rule pkg/check's
+	// census and the two writers' duplicate guards key by, so a pair this class
+	// clusters is a pair they would refuse to re-create.
+	addKey := func(fold, cleaned, series, via string) {
 		if fold == "" {
 			return
 		}
@@ -91,14 +94,14 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 		if d.seriesName != "" {
 			via = viaOwnSeries
 		}
-		addKey(d.want, d.seriesName, via)
+		addKey(d.wantKey, d.want, d.seriesName, via)
 		return keys
 	}
 	// A series name the TITLE spells out is weaker evidence than a membership, so
 	// the work contributes both keys: its title cleaned against nothing, and its
 	// title cleaned against the name it embeds.
-	addKey(d.plain, "", viaPlain)
-	addKey(d.want, d.seriesName, viaEmbeddedSeries)
+	addKey(d.plainKey, d.plain, "", viaPlain)
+	addKey(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
 	return keys
 }
 

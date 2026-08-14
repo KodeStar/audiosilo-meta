@@ -12,19 +12,12 @@
 // depends on pkg/model and on NOTHING ELSE in the module - not pkg/check, not
 // pkg/pack, not internal/importer, not internal/audit.
 //
-// It reached internal/importer until the intake-time duplicate prevention landed,
-// for the two rules that had their home of record there (the edition marker and
-// the initials name key), and the documented consequence was that internal/importer
-// and pkg/check could not import this package at all. Both are now consumers - the
-// normalized-title identity key below is asked by the intake gate
-// (internal/issueform), by the bulk importer's create guard and by pkg/check's tree
-// census - so the edition-marker rule MOVED down here (see edition.go, which
-// records the move) and the initials re-export went away: internal/audit, the only
-// caller, asks internal/importer for it directly, which it already imports.
-//
-// The invariant that made the old arrangement worth documenting is unchanged and is
-// why the rule moved rather than being copied: there is ONE definition of what an
-// edition marker is, and a hand-written twin had already drifted from it.
+// It reached internal/importer until the intake-time duplicate prevention landed, and
+// the documented consequence was that internal/importer and pkg/check could not
+// import this package at all. Both are now consumers of IdentityTitleKey, so the
+// edition-marker rule moved down here and the initials re-export went away
+// (internal/audit asks the importer for it directly). edition.go carries that move's
+// full rationale; nothing else restates it.
 //
 // What is NOT here: anything that reads a catalogue. A rule takes strings and
 // returns strings or booleans, so it can be tested without a tree and called from
@@ -927,6 +920,19 @@ const (
 	// Ivy"), which would make a collection indistinguishable from its series.
 	RefuseResultIsSeriesName = "result-is-the-series-name"
 )
+
+// RefusalCodes lists every code StripDecoration can refuse with.
+//
+// It exists so a consumer that BRANCHES on the reason can be checked for
+// exhaustiveness against this package rather than against a hand-copied list:
+// internal/issueform maps each code onto "proceed" or "a maintainer must title this
+// book", and a code added here without a decision recorded there fails its test.
+func RefusalCodes() []string {
+	return []string{
+		RefuseNothingToStrip, RefuseNoIdentity, RefuseFragment,
+		RefuseIsSeriesName, RefuseResultIsSeriesName,
+	}
+}
 
 // ProposeTitle is the title a retitle would WRITE, and whether proposing one is
 // safe at all. series may be "". It is StripDecoration without the refusal code,

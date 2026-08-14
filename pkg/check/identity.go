@@ -19,13 +19,15 @@ import (
 //     the catalogue under a decorated title;
 //   - internal/importer's create guard - would this row mint a second record of a
 //     book we hold;
-//   - checkNormalizedDuplicateWorks below - how many such collisions does the tree
-//     hold today, counted in every metacheck run so a repair wave's progress is a
-//     number rather than a study.
+//   - checkNormalizedDuplicateWorks (advisories.go) - how many such collisions does
+//     the tree hold today, counted in every metacheck run so a repair wave's
+//     progress is a number rather than a study.
 //
-// Sharing the index is not only a no-duplicate-rules matter, it is what makes the
-// two writers affordable: the key costs a title clean per work, so a run builds it
-// ONCE (the audit's derivedCache lesson) instead of cleaning 280k titles per row.
+// ONE index per LOAD, not per consumer: the census builds it during the load and
+// Result.Identity hands it to the writers, so the title-clean pass over every
+// catalogued work (a couple of seconds over 280k works) happens once per run
+// however many defences ask. A writer that rebuilt it would pay that pass twice for
+// the same answer.
 //
 // WHY pkg/check MAY IMPORT internal/titlerule. It is legal (an internal package is
 // importable by anything under audiosilo-meta/, including from a package a sibling
@@ -43,12 +45,12 @@ import (
 // so it must not outlive the load that produced it.
 type WorkIdentity struct {
 	byKey map[string][]*model.Work
-	// keyOf and seriesOf are per work id, so a caller that has a work in hand pays
-	// nothing to ask what it was keyed by.
-	keyOf    map[string]string
+	// seriesOf is the series name each work's title was read against, by work id,
+	// so a caller that has a work in hand pays nothing to ask.
 	seriesOf map[string]string
-	// seriesNames are the catalogue's series, id and name, sorted by id so every
-	// derivation over them is deterministic.
+	// seriesNames are the catalogue's series that SeriesNameIn may match, already
+	// narrowed at build time (see newSeriesNameList) and sorted by id, so every
+	// derivation over them is deterministic and no lookup re-applies the filters.
 	seriesNames []seriesNamed
 }
 
@@ -59,14 +61,13 @@ type seriesNamed struct {
 
 // NewWorkIdentity builds the index over a loaded catalogue. It cleans every work
 // title once, which is the whole cost (measured at a couple of seconds over a
-// 280k-work tree), so a caller builds one per run and asks it per row.
+// 280k-work tree); the load builds one and passes it on Result.Identity.
 //
 // A catalogue with no works yields a usable empty index rather than nil, so no
 // caller needs a nil check.
 func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 	ix := &WorkIdentity{
 		byKey:    map[string][]*model.Work{},
-		keyOf:    map[string]string{},
 		seriesOf: map[string]string{},
 	}
 	if cat == nil {
@@ -74,30 +75,66 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 	}
 	// Each work's series memberships, by series id, so SeriesNameFor is handed a
 	// deterministic list whatever order the series family was walked in.
-	names := map[string][]string{}
+	members := map[string][]string{}
+	byID := make(map[string]string, len(cat.Series))
 	for _, s := range cat.Series {
-		ix.seriesNames = append(ix.seriesNames, seriesNamed{id: s.ID, name: s.Name})
+		byID[s.ID] = s.Name
 		for _, sw := range s.Works {
-			names[sw.Work] = append(names[sw.Work], s.ID)
+			members[sw.Work] = append(members[sw.Work], s.ID)
 		}
 	}
-	sort.Slice(ix.seriesNames, func(i, j int) bool { return ix.seriesNames[i].id < ix.seriesNames[j].id })
-	byID := make(map[string]string, len(ix.seriesNames))
-	for _, s := range ix.seriesNames {
-		byID[s.id] = s.name
-	}
+	ix.seriesNames = newSeriesNameList(cat.Series)
 	for _, w := range cat.Works {
-		series := titlerule.SeriesNameFor(w.Title, seriesNamesOf(names[w.ID], byID))
-		key := titlerule.IdentityTitleKey(w.Title, series)
+		series := titlerule.SeriesNameFor(w.Title, seriesNamesOf(members[w.ID], byID))
 		ix.seriesOf[w.ID] = series
-		if key == "" {
-			continue // a title that normalizes to nothing is no identity
+		if key := titlerule.IdentityTitleKey(w.Title, series); key != "" {
+			// A title that normalizes to nothing is no identity: it is keyed by
+			// nobody and collides with nobody.
+			ix.byKey[key] = append(ix.byKey[key], w)
 		}
-		ix.keyOf[w.ID] = key
-		ix.byKey[key] = append(ix.byKey[key], w)
 	}
 	return ix
 }
+
+// newSeriesNameList is the series SeriesNameIn is allowed to find inside free text,
+// with both narrowings applied ONCE here rather than per lookup.
+//
+// Both are internal/audit's, and both hold down the false-positive rate of a rule
+// whose job is to notice a series name inside a title:
+//
+//   - a name must carry at least minSeriesNameWords significant words. A one-word
+//     series name ("Hexed", "Ascend") is embedded in unrelated titles constantly,
+//     and reading a title against it deletes the title's own words.
+//   - a name whose FOLD another series also spells is ambiguous and is dropped
+//     entirely: the text cannot say which of them it meant, and the safe answer to
+//     an ambiguous identity is no answer (the same posture the importer's guard
+//     takes on an ambiguous key).
+func newSeriesNameList(all []*model.Series) []seriesNamed {
+	byFold := map[string][]seriesNamed{}
+	for _, s := range all {
+		if titlerule.CountSignificantWords(s.Name) < minSeriesNameWords {
+			continue
+		}
+		fold := titlerule.FoldKey(s.Name)
+		if fold == "" {
+			continue
+		}
+		byFold[fold] = append(byFold[fold], seriesNamed{id: s.ID, name: s.Name})
+	}
+	out := make([]seriesNamed, 0, len(byFold))
+	for _, group := range byFold {
+		if len(group) == 1 {
+			out = append(out, group[0])
+		}
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].id < out[j].id })
+	return out
+}
+
+// minSeriesNameWords is the significant-word floor for a series name this index
+// will look for inside free text. It mirrors internal/audit's minSeriesFormWords
+// and exists for the same measured reason.
+const minSeriesNameWords = 2
 
 // seriesNamesOf resolves a work's membership series ids to names, in id order,
 // dropping the ids the catalogue does not hold (a dangling membership is
@@ -124,20 +161,19 @@ func (ix *WorkIdentity) Key(title, series string) string {
 	return titlerule.IdentityTitleKey(title, series)
 }
 
-// KeyOf is the key a catalogued work was indexed under, or "".
-func (ix *WorkIdentity) KeyOf(workID string) string { return ix.keyOf[workID] }
-
 // SeriesNameOf is the series name a catalogued work's title was read against, or
 // "" - the derivation, so a caller reporting a collision can say what it cleaned
 // against.
 func (ix *WorkIdentity) SeriesNameOf(workID string) string { return ix.seriesOf[workID] }
 
 // Works are the catalogued works under one key, in id order. The returned slice
-// must not be modified.
+// must not be modified. It is also the cheapest possible "is this key worth
+// resolving at all" test, which is how the bulk guard avoids paying for a row whose
+// identity nothing holds.
 func (ix *WorkIdentity) Works(key string) []*model.Work { return ix.byKey[key] }
 
 // Keys are every key the index holds, sorted, so a consumer walking the whole index
-// (the census below) is deterministic.
+// (the census) is deterministic.
 func (ix *WorkIdentity) Keys() []string {
 	out := make([]string, 0, len(ix.byKey))
 	for k := range ix.byKey {
@@ -149,26 +185,17 @@ func (ix *WorkIdentity) Keys() []string {
 
 // SeriesNameIn returns the series the free text names - the LONGEST spelling of any
 // catalogued series name occurring in it at word boundaries - and that series' id.
+// The candidates are the narrowed list newSeriesNameList built.
 //
-// It is a LINEAR scan of the catalogue's series names, which is right for its
-// callers and wrong for a tree-wide pass: the intake bot asks it once per
-// submission, where a scan of 45k names costs a fraction of the load it already
-// paid for, while internal/audit asks it per work over 280k works and therefore
-// builds a two-word-bucketed prefix index instead (audit's seriesNameIndex). Do not
-// call it in a loop over the catalogue.
-//
-// Two narrowings, both the audit's, both there to hold down false positives on a
-// rule whose job is to notice a series name inside a title: a name must carry at
-// least two significant words (a one-word series name is embedded in unrelated
-// titles constantly), and a name whose fold collides with another series' name is
-// ambiguous and matches nothing.
+// It is a LINEAR scan of those names, which is right for its callers and wrong for
+// a tree-wide pass: the intake bot asks it once per submission, where a scan of 45k
+// names costs a fraction of the load it already paid for, while internal/audit asks
+// it per work over 280k works and therefore builds a two-word-bucketed prefix index
+// instead (audit's seriesNameIndex). Do not call it in a loop over the catalogue.
 func (ix *WorkIdentity) SeriesNameIn(text string) (name, seriesID string, ok bool) {
 	lower := strings.ToLower(text)
 	var best, bestID string
 	for _, s := range ix.seriesNames {
-		if titlerule.CountSignificantWords(s.name) < minSeriesNameWords {
-			continue
-		}
 		form, hit := titlerule.SeriesRefIn(lower, s.name)
 		if !hit || len(form) <= len(best) {
 			continue
@@ -181,27 +208,27 @@ func (ix *WorkIdentity) SeriesNameIn(text string) (name, seriesID string, ok boo
 	return best, bestID, true
 }
 
-// minSeriesNameWords is the significant-word floor for a series name this index
-// will look for inside free text. It mirrors internal/audit's minSeriesFormWords
-// and exists for the same measured reason.
-const minSeriesNameWords = 2
-
 // IdentityMatch is one catalogued work an incoming record collides with, and what
 // the collision rests on.
 type IdentityMatch struct {
 	Work *model.Work
-	// Key is the normalized identity both sides reduced to.
-	Key string
 	// Series is the series name the CATALOGUED work's title was read against, or
-	// "" - the evidence a report needs, since a key derived against a membership is
-	// a stronger claim than one derived against nothing.
+	// "" - the evidence a verdict quotes, since a key derived against a membership
+	// is a stronger claim than one derived against nothing.
 	Series string
 }
 
-// Match returns the catalogued works an incoming record would duplicate: same
-// normalized title identity, compatible language, and author sets that meet under
-// the importer's own nesting rule. Results are in work-id order, so a caller's
-// verdict never depends on catalogue order.
+// Match returns the catalogued works an incoming record would duplicate. It is
+// MatchKey over the key the record's own title and series produce; a caller that
+// already has the key (the bulk guard derives it once per row) calls MatchKey.
+func (ix *WorkIdentity) Match(title, series, lang string, all, identity map[string]bool) []IdentityMatch {
+	return ix.MatchKey(ix.Key(title, series), title, series, lang, all, identity)
+}
+
+// MatchKey is Match against an already-derived key: same normalized title identity,
+// compatible language, and author sets that meet under the importer's own nesting
+// rule. Results are in work-id order, so a caller's verdict never depends on
+// catalogue order.
 //
 // all and identity are the incoming record's author slug sets (the whole credit
 // list, and the subset that is not role-credited - see IdentityAuthorsMatch). A
@@ -213,26 +240,35 @@ type IdentityMatch struct {
 // need to clear - a collection on one side, an impossible runtime ratio, a position
 // conflict - is left to the caller, because the callers of this are REFUSING a new
 // record (recoverable) rather than merging two existing ones (not).
-func (ix *WorkIdentity) Match(title, series, lang string, all, identity map[string]bool) []IdentityMatch {
-	key := ix.Key(title, series)
+func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity map[string]bool) []IdentityMatch {
 	if key == "" {
 		return nil
 	}
 	var out []IdentityMatch
 	for _, w := range ix.byKey[key] {
-		if !languagesCompatible(w.Language, lang) {
+		if !ix.matches(w, title, series, lang, all, identity) {
 			continue
 		}
-		if !IdentityAuthorsMatch(w, all, identity) {
-			continue
-		}
-		if !titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID]) {
-			continue
-		}
-		out = append(out, IdentityMatch{Work: w, Key: key, Series: ix.seriesOf[w.ID]})
+		out = append(out, IdentityMatch{Work: w, Series: ix.seriesOf[w.ID]})
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].Work.ID < out[j].Work.ID })
 	return out
+}
+
+// matches is THE pairwise predicate: given a candidate work already keyed the same,
+// does the incoming record name the same book? Language compatible, author sets
+// nested, and no disagreement about which volume each side is.
+//
+// Every consumer goes through it, in both directions of the seam: MatchKey asks it
+// per candidate for an incoming ROW, and checkNormalizedDuplicateWorks asks it for
+// two CATALOGUED works by reading one side's title, language and author sets off
+// that work (the same adaptation IdentityEqualWorks makes of IdentityAuthorsMatch).
+// A second spelling of these three rules is exactly what would let the census and
+// the writers disagree about what one book is.
+func (ix *WorkIdentity) matches(w *model.Work, title, series, lang string, all, identity map[string]bool) bool {
+	return languagesCompatible(w.Language, lang) &&
+		IdentityAuthorsMatch(w, all, identity) &&
+		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID])
 }
 
 // IdentityAuthorsMatch reports whether an incoming record's author sets meet a

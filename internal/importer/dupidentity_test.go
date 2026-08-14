@@ -65,10 +65,10 @@ func TestCreateRefusesADecoratedDuplicateWork(t *testing.T) {
 	if entryExists(t, dataDir, workAddr("hammered-the-iron-druid-chronicles-book-3")) {
 		t.Error("the decorated row minted a second work")
 	}
-	if !warningsMention(sum.Warnings, "differently-spelled title") {
+	if !hasWarning(sum.Warnings, "differently-spelled title") {
 		t.Errorf("the run must report the refusals in one aggregated warning: %v", sum.Warnings)
 	}
-	if !warningsMention(sum.Warnings, "hammered") {
+	if !hasWarning(sum.Warnings, "hammered") {
 		t.Errorf("the warning must name an example: %v", sum.Warnings)
 	}
 }
@@ -219,13 +219,4 @@ func TestOtherModesAreUntouchedByTheGuard(t *testing.T) {
 	if sum.NewRecordings != 1 {
 		t.Errorf("NewRecordings = %d, want 1: the alternate narration must land", sum.NewRecordings)
 	}
-}
-
-func warningsMention(warnings []string, want string) bool {
-	for _, w := range warnings {
-		if strings.Contains(w, want) {
-			return true
-		}
-	}
-	return false
 }
