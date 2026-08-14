@@ -47,8 +47,11 @@ them with `yarn test` (one-shot) or `yarn test:watch` (watch mode).
 
 Current coverage: `src/lib/import-parse.ts` (export detection + the OpenAudible/
 Libation/Audiobookshelf/folder-scan field mappings + the existing-work matching/
-routing) and `src/lib/github-prefill.ts` (the prefilled issue-form URLs + the
-factual-subset privacy contract).
+routing), `src/lib/github-prefill.ts` (the prefilled issue-form URLs + the
+factual-subset privacy contract) and `src/lib/entity-url.ts` (the path-route /
+legacy `?id=` slug rule). `src/lib/dist-markers.test.ts` is the one test that
+reads build OUTPUT rather than a module - the metaserve injection guard below -
+so it needs `yarn build` to have run and skips cleanly when it has not.
 
 ## The API base (`PUBLIC_API_BASE`)
 
@@ -96,9 +99,9 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 | Route | File | What it is |
 |---|---|---|
 | `/` | `src/pages/index.astro` | Landing page - photographic search hero, stats band (characters/recaps lead the catalogue totals), latest additions, what-it-is cards, contribute band |
-| `/work?id=<id>` | `src/pages/work.astro` | A work: cover, authors, series, and each recording (narrators, runtime, publisher, ASIN/ISBN chips, expandable chapters) |
-| `/person?id=<id>` | `src/pages/person.astro` | A person: works they wrote and audiobooks they narrated |
-| `/series?id=<id>` | `src/pages/series.astro` | A series: authors and works in reading order |
+| `/works/<id>` | `src/pages/work.astro` | A work: cover, authors, series, and each recording (narrators, runtime, publisher, ASIN/ISBN chips, expandable chapters) |
+| `/people/<id>` | `src/pages/person.astro` | A person: works they wrote and audiobooks they narrated |
+| `/series/<id>` | `src/pages/series.astro` | A series: authors and works in reading order |
 | `/import` | `src/pages/import.astro` | In-browser library diff (OpenAudible, Libation, an Audiobookshelf export, or a metascan folder scan): which of your books are catalogued and which are new, with prefilled contribution issues |
 | `/audiobookshelf` | `src/pages/audiobookshelf.astro` | Audiobookshelf integration: add the database as an ABS custom metadata provider, and export an ABS library into `/import` |
 | `/contribute` | `src/pages/contribute.astro` | Contribution coverage: clickable stats band, a filterable/searchable/paginated coverage browser (needs-work vs has-characters/story-so-far/recap-summary, linking into `/build`), and a searchable/paginated list of series with missing volumes |
@@ -106,9 +109,49 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 | `/privacy` | `src/pages/privacy.astro` | Privacy policy for the site, the API and the data: no accounts/cookies/analytics, what the server logs, what stays in the browser (`/import`), and the third parties a page can reach (`/add`'s libex lookup, cover-image hosts) |
 | `/404` | `src/pages/404.astro` | On-brand not-found page, with add-it CTAs |
 
-The three detail pages are static shells that hydrate a `client:only` React
-island reading the `?id=` query parameter, so they load instantly and fetch on
-the client. They handle their own loading, not-found (404), and error states.
+The three detail pages are the three routes metaserve renders server-side (see
+below). Their built files stay at `dist/work|person|series/index.html`, which is
+also where the **legacy** query-parameter URLs land: `/work?id=<id>`,
+`/person?id=<id>` and `/series?id=<id>` 301 to the path routes and are kept
+alive forever, because every link ever shared, every stored `books.work_id` and
+every prefilled issue holds one. The shells are static, hydrate a `client:only`
+React island, and handle their own loading, not-found (404) and error states.
+
+### The metaserve injection contract
+
+On an entity route metaserve serves the BUILT shell with two regions replaced,
+so the site keeps one design truth (Astro) and the server owns no parallel page:
+
+| Marker (in the built HTML) | Where it comes from | What the server puts there |
+|---|---|---|
+| `<!--ssr:head-->` ... `<!--/ssr:head-->` | `src/layouts/Base.astro` | the entity's title, description, canonical, og/twitter set |
+| `<!--ssr:entity-->` | the three page shells, via `ENTITY_MARKER` (`src/lib/ssr-markers.ts`) | `<div id="ssr-entity">` (a crawler-first fact sheet) + `<script type="application/json" id="entity-data">` (the entity JSON, byte-for-byte what the matching API route returns) |
+
+Rules that make it safe:
+
+- **The markers are inert comments.** Every page carries the head pair; only the
+  three detail shells carry the body marker. With nothing injected - any other
+  page, an older metaserve, `yarn preview` - the shell is served exactly as
+  built and the island behaves as it always did.
+- **Only entity-swappable metadata goes between the head markers.** charset,
+  viewport, favicons, theme-color and the generator tag stay outside, above.
+- **The island prefers the embedded payload.** `useEmbeddedEntity`
+  (`src/components/detail/detail-common.tsx`) parses `#entity-data` and uses it
+  only when its `id` matches the slug in the URL; it then skips the initial
+  fetch, removes the `#ssr-entity` fact sheet, and leaves `document.title`
+  alone (the server's composed title is the richer one). Secondary reads -
+  chapters on expand, the work page's series rail - are unchanged.
+- **Slugs come from the path first** (`entitySlugFromLocation`,
+  `src/lib/entity-url.ts`), `?id=` second.
+- **`yarn dev` and `yarn preview` have no Go server**, so there are no path
+  routes and no injection there: develop a detail page through the legacy
+  `/work?id=<id>` form, which is exactly the fallback the code keeps working.
+- `src/lib/dist-markers.test.ts` reads `dist/` after a build and fails if a
+  marker is missing, duplicated, out of order, or no longer wrapping the head
+  metadata - the guard that a `Base.astro` refactor cannot silently turn the
+  server-rendered pages back into empty shells. It skips (with a message) when
+  `dist/` has not been built, so run the gate in order:
+  `yarn build && yarn run check && yarn test`.
 
 ## Structure
 

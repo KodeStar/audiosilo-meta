@@ -7,7 +7,8 @@ import {
 } from '../../lib/person-credits'
 import WorkCard from '../cards/WorkCard'
 import {
-  useQueryParam,
+  useEntitySlug,
+  useEmbeddedEntity,
   usePageTitle,
   useEntity,
   DetailSpinner,
@@ -54,8 +55,8 @@ function Section({
   )
 }
 
-function Loaded({ person }: { person: Person }) {
-  usePageTitle(person.name)
+function Loaded({ person, hydrated }: { person: Person; hydrated: boolean }) {
+  usePageTitle(person.name, hydrated)
 
   const narrated: WorkCardData[] = narratedWorks(person.narrated)
 
@@ -127,9 +128,10 @@ function Loaded({ person }: { person: Person }) {
 }
 
 export default function PersonDetail() {
-  const id = useQueryParam('id')
-  const state = useEntity<Person>(id, getPerson)
+  const id = useEntitySlug('person')
+  const embedded = useEmbeddedEntity<Person>(id)
+  const state = useEntity<Person>(id, getPerson, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="person" />
-  return <Loaded person={state.data} />
+  return <Loaded person={state.data} hydrated={embedded !== null} />
 }

@@ -53,7 +53,27 @@ var (
 	wikidataRE  = regexp.MustCompile(`^Q\d+$`)
 	olWorkRE    = regexp.MustCompile(`^OL\d+W$`)
 	worksPathRE = regexp.MustCompile(`works/[^/]+/([^/]+)`)
+	// entityPageRE matches the entity PAGE paths metaserve serves the three
+	// families at - /works/{slug}, /people/{slug}, /series/{slug} - the URL a
+	// submitter copies out of their address bar, which the correct-data form
+	// advertises as the easiest way to name a record. It is deliberately STRICT
+	// where worksPathRE is loose: the whole path, and exactly ONE segment after
+	// the family. That is what keeps it disjoint from the retired data-tree path
+	// (works/<shard>/<slug>/work.json, which has more) and off /api/v1/works/{id},
+	// which is an API endpoint rather than a page and resolves exactly as it did
+	// before.
+	entityPageRE = regexp.MustCompile(`^/?(works|people|series)/([^/]+)/?$`)
 )
+
+// pageKinds maps a page path's family segment onto the record kind it names. A
+// RECORDING is deliberately absent: it is addressed inside its work and has no
+// page of its own, so a recording still needs one of the reference forms that
+// can name it (the data-tree path, or the recording forms' own fields).
+var pageKinds = map[string]model.Kind{
+	"works":  model.KindWork,
+	"people": model.KindPerson,
+	"series": model.KindSeries,
+}
 
 // normalizeLanguage lowercases a BCP-47 tag (the schema restricts the region
 // subtag to lowercase) and reports whether it matches the schema pattern.
@@ -312,9 +332,19 @@ func splitLines(block string) []string {
 	return out
 }
 
-// resolveWorkRef resolves a "work" reference (a slug, a data-tree path, or a
-// meta.audiosilo.app / GitHub URL) to a work slug. ok is false when nothing
-// slug-shaped can be extracted.
+// resolveWorkRef resolves a "work" reference to a work slug. The shapes it
+// accepts, in the order it tries them:
+//
+//   - a meta.audiosilo.app / GitHub URL carrying ?id=<slug> (the legacy page URL,
+//     which the site still composes);
+//   - the entity PAGE path /works/<slug>, absolute or bare, with or without a
+//     query string or fragment - what metaserve serves a work at now, and what a
+//     submitter copies out of the address bar;
+//   - the retired data-tree path works/<shard>/<slug>/work.json, which older
+//     issues, docs and GitHub blob links still say;
+//   - a bare slug.
+//
+// ok is false when nothing slug-shaped can be extracted.
 func resolveWorkRef(ref string) (slug string, ok bool) {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
@@ -325,16 +355,68 @@ func resolveWorkRef(ref string) (slug string, ok bool) {
 			if id := u.Query().Get("id"); id != "" {
 				return sanitizeSlug(id)
 			}
+			// The ESCAPED path, so a %2F inside a segment cannot read as a
+			// separator; workPageSlug does the one decode.
+			if slug, ok := workPageSlug(u.EscapedPath()); ok {
+				return slug, true
+			}
 			if m := worksPathRE.FindStringSubmatch(u.Path); m != nil {
 				return sanitizeSlug(m[1])
 			}
 		}
 		return "", false
 	}
+	// Only the PAGE reading is given the stripped form: the shapes below either
+	// cannot carry a suffix or are the best-effort slugify, and narrowing the
+	// strip to the one rule that needs it leaves them byte-identical.
+	if slug, ok := workPageSlug(trimURLSuffix(ref)); ok {
+		return slug, true
+	}
 	if m := worksPathRE.FindStringSubmatch(ref); m != nil {
 		return sanitizeSlug(m[1])
 	}
 	return sanitizeSlug(ref)
+}
+
+// entityPageRef reads a path as one of the entity PAGE URLs. It is strict on
+// purpose: exactly one segment after a known family, and that segment must
+// already BE a slug once decoded. Anything else declines, so the caller falls
+// through to the shapes it understood before - a loose reading here would claim
+// /api/v1/works/{id} and the data-tree path, both of which mean something else.
+func entityPageRef(p string) (recordRef, bool) {
+	m := entityPageRE.FindStringSubmatch(p)
+	if m == nil {
+		return recordRef{}, false
+	}
+	seg, err := url.PathUnescape(m[2])
+	if err != nil || !model.ValidSlug(seg) {
+		return recordRef{}, false
+	}
+	return recordRef{kind: pageKinds[m[1]], slug: seg}, true
+}
+
+// workPageSlug reads a path as the WORK page URL /works/<slug> - the one family
+// resolveWorkRef may return. It is the same rule as entityPageRef, asked of one
+// family, rather than a second reading of the same URLs.
+func workPageSlug(path string) (string, bool) {
+	rr, ok := entityPageRef(path)
+	if !ok || rr.kind != model.KindWork {
+		return "", false
+	}
+	return rr.slug, true
+}
+
+// trimURLSuffix cuts a query string or fragment off a BARE (scheme-less)
+// reference. url.Parse already does this for an absolute URL, and a submitter
+// who pastes the path alone - "/works/the-thing?tab=chapters" - has to get the
+// same reading: no path form below carries a "?" or a "#", and an unstripped one
+// fails the strict page match and is then slugified into garbage
+// (works-the-thing-tab-chapters) rather than declining.
+func trimURLSuffix(ref string) string {
+	if i := strings.IndexAny(ref, "?#"); i >= 0 {
+		return ref[:i]
+	}
+	return ref
 }
 
 // sanitizeSlug accepts an already-valid slug verbatim, otherwise slugifies the
@@ -361,8 +443,10 @@ type recordRef struct {
 }
 
 // resolveRecordRef resolves a "record" reference to the entity it names. It
-// accepts a meta.audiosilo.app work?id=/series?id=/person?id= URL, a GitHub blob
-// URL, or a data-tree path (with or without a leading data/).
+// accepts a meta.audiosilo.app work?id=/series?id=/person?id= URL, an entity
+// PAGE URL (/works/<slug>, /people/<slug>, /series/<slug> - absolute or bare,
+// which is what the correct-data form calls the easiest reference), a GitHub
+// blob URL, or a data-tree path (with or without a leading data/).
 //
 // The path forms it understands are the per-entity ones a submitter has always
 // typed ("works/th/the-thing/work.json"). They are a REFERENCE SYNTAX, not a
@@ -370,6 +454,9 @@ type recordRef struct {
 // and refPath below is this package's own parsing of it, kept because it is what
 // people write and what older issues, docs and links still say. compose_correct
 // maps the result onto the pack entry the record actually lives in.
+//
+// A RECORDING has no page URL to copy - it is addressed inside its work - so it
+// still needs one of the older forms, unchanged.
 //
 // ok is false when nothing recognizable can be extracted.
 func resolveRecordRef(ref string) (rr recordRef, ok bool) {
@@ -396,6 +483,11 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 				return recordRef{kind: model.KindWork, slug: slug}, true
 			}
 		}
+		// The ESCAPED path, so a %2F inside a segment cannot read as a separator;
+		// entityPageRef does the one decode.
+		if rr, ok := entityPageRef(u.EscapedPath()); ok {
+			return rr, true
+		}
 		ref = u.Path // fall through to path handling for blob URLs
 	}
 	// Trim a leading data/ (and any repo/blob/main prefix) to land on the
@@ -403,6 +495,13 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 	ref = strings.TrimPrefix(path.Clean(ref), "/")
 	if i := strings.Index(ref, "data/"); i >= 0 {
 		ref = ref[i+len("data/"):]
+	}
+	// The bare page path, e.g. "people/andy-weir" - the same rule the URL branch
+	// asked, for a submitter who pasted the path alone. It is tried before
+	// refPath because refPath's shapes all carry more segments, so the two cannot
+	// both match.
+	if rr, ok := entityPageRef(trimURLSuffix(ref)); ok {
+		return rr, true
 	}
 	return refPath(ref)
 }

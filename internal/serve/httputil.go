@@ -95,12 +95,17 @@ func gzipMW(next http.Handler) http.Handler {
 // siteHandler serves a static site directory. Astro emits real .html pages, so
 // there is no SPA fallback; an extension-less path is resolved to its
 // index.html, and a genuine miss returns the site's 404.html when present.
+//
+// It is returned as its CONCRETE type rather than as an http.Handler because the
+// entity pages need two things from it beyond ServeHTTP: the untouched shell
+// (their degrade path) and notFound, so an unknown slug renders the site's own
+// 404 page with a 404 status rather than net/http's plain text.
 type siteHandler struct {
 	dir string
 	fs  http.Handler
 }
 
-func newSiteHandler(dir string) http.Handler {
+func newSiteHandler(dir string) *siteHandler {
 	return &siteHandler{dir: dir, fs: http.FileServer(http.Dir(dir))}
 }
 

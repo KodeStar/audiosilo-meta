@@ -20,6 +20,8 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address")
 	db := flag.String("db", "", "path to a local meta.sqlite artifact (dev)")
 	site := flag.String("site", "", "optional static site directory served at /")
+	siteURL := flag.String("site-url", "https://meta.audiosilo.app",
+		"public origin of this deployment, used for canonical, og: and JSON-LD URLs on the entity pages")
 	poll := flag.Bool("poll", false, "fetch and refresh the artifact from GitHub Releases")
 	repo := flag.String("repo", "KodeStar/audiosilo-meta", "GitHub owner/name to poll")
 	interval := flag.Duration("interval", time.Hour, "poll interval")
@@ -30,6 +32,7 @@ func main() {
 		Addr:          *addr,
 		DBPath:        *db,
 		Site:          *site,
+		SiteURL:       *siteURL,
 		Poll:          *poll,
 		Repo:          *repo,
 		Interval:      *interval,
