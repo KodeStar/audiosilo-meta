@@ -4205,6 +4205,412 @@
         "work": "dragon-haven"
       }
     },
+    "dragon-heart-book-12-path-to-the-glory": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "North Wind"
+            ],
+            "description": "A swordsman and commander of the Moonstream Army whose course remains bound to Emperor Morgan's strategy.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mother of the child emperor"
+            ],
+            "description": "The mother ruling Laskan on behalf of her three-year-old son. She authorizes a covert military escalation, plans to dispose of former orc auxiliaries, and seeks leverage over Morgan while concealing her hand in the operation.",
+            "id": "laskan-regent",
+            "name": "Laskan regent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ageless-seeming wizard with mismatched eyes who uses true-word magic to protect a frightened child from nightmares. After restoring the child's calm, he leaves to confront the source of the threat.",
+            "id": "ageless-wizard",
+            "name": "Ageless wizard",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "An ancient demon serving as an emissary of the Prince of Demons and a longstanding adversary of the ageless wizard. After confronting the wizard over a disrupted nightmare, he is confined for one night in a star-filled prison.",
+            "id": "lord-of-nightmares",
+            "name": "Lord of Nightmares",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An independent warrior recently released from a bargain with the Lord of Nightmares. Despite her earlier conflict with Hadjar, she tries to reach him after the white-haired swordsman's attack and is stopped by an overwhelmingly powerful fire barrier.",
+            "id": "desert-sabers-woman",
+            "name": "Desert sabers woman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified swordswoman whose white flame and sword power overwhelm the desert sabers woman. She blocks the attempted rescue and encloses Hadjar with his attacker behind a barrier of fire.",
+            "id": "white-haired-swordswoman",
+            "name": "White-haired swordswoman",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "An ancient white-haired swordsman who identifies himself as the first disciple in the Darkhan lineage and Hadjar's senior disciple. After driving a blade through Hadjar's heart, he claims that he recovered his mind and now owes Hadjar compensation.",
+            "id": "erhard-darkhan",
+            "name": "Erhard Darkhan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hadjar's close field companion and a senior Moonstream officer. During the crisis around the white-fire barrier, he reasons that its maker may be protecting Hadjar and persuades another warrior to stop a futile assault on it.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hadjar's sworn brother and the head of the eighth family. When an imperial rescue order sends Hadjar toward Laskan, Einen is one of the trusted allies Hadjar plans to contact for help before entering hostile territory.",
+            "id": "einen",
+            "name": "Einen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emperor"
+            ],
+            "description": "The opposing emperor whose schemes concern Laskan's regent as she prepares a covert military escalation and seeks leverage against him.",
+            "id": "morgan",
+            "name": "Morgan",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Crown prince"
+            ],
+            "description": "Morgan's imperial heir, trapped after entering a battle-golem factory in Delphi Valley. Recovering him before the new moon is the stated purpose of the sealed mission that draws Hadjar and his companions into Laskan.",
+            "id": "morgans-son",
+            "name": "Morgan's son",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Necromancer"
+            ],
+            "description": "A necromancer joining Hadjar's infiltration party at the border. She delivers a spatial ring filled with valuable restorative medicines from an imperial double agent, bringing resources needed for the dangerous mission ahead.",
+            "id": "annette",
+            "name": "Annette",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Young emperor"
+            ],
+            "description": "Laskan's three-year-old ruler, for whom his mother serves as regent after the death of the previous emperor.",
+            "id": "laskan-child-emperor",
+            "name": "Laskan child emperor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A free adept hired by the imperial families and reputed to be an exceptional tracker.",
+            "id": "masked-tracker",
+            "name": "Masked tracker",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Guard Corps double agent"
+            ],
+            "description": "A gray-haired imperial operative who supplies the rescue party with costly restorative medicines through Annette, then arrives unexpectedly at their border tavern.",
+            "id": "secret-office-agent",
+            "name": "Secret Office agent",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Black General"
+            ],
+            "description": "An ancient power whose soul fragment is chained inside Hadjar. He offers guidance on the wind's name while plainly stating that he and Hadjar will eventually fight for control of Hadjar's body, making his instruction both valuable and dangerous.",
+            "id": "first-darkhan",
+            "name": "The First Darkhan",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Head of a dragon magic pavilion"
+            ],
+            "description": "A senior dragon mage who arrives with another official and immobilizes Hadjar's entire party. His intentions and his relationship to the ruling power are not yet clear.",
+            "id": "dragon-wizard",
+            "name": "Dragon wizard",
+            "reveal": {
+              "chapter": 27
+            }
+          },
+          {
+            "description": "A powerful dragon official responsible for internal and external affairs. After examining Hadjar's blood, he recognizes an unusually strong dragon heritage and a transplanted dragon heart, then orders Hadjar to accompany him.",
+            "id": "dragon-minister",
+            "name": "Dragon minister",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A consciousness-fragment within Hadjar that awakens when the dragon minister insults Hadjar's lineage. It identifies Hadjar as a descendant and begins granting him the White Dragon inheritance.",
+            "id": "first-dragon-emperor-fragment",
+            "name": "First dragon emperor fragment",
+            "reveal": {
+              "chapter": 29
+            }
+          },
+          {
+            "description": "An ally connected to Einen whom Hadjar plans to contact for help before beginning the rescue mission in Laskan.",
+            "id": "dora",
+            "name": "Dora",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Messenger of the Seventh Heaven"
+            ],
+            "description": "A powerful Fae messenger who meets Hadjar in an unnatural swamp. She asks him to stop a blood sacrifice on sacred ground, warning that its completion could bring a dark god's shadow into the mortal world.",
+            "id": "freya",
+            "name": "Freya",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The horned witch oversees captives being killed to empower a seal, with living trees and serpents forming parts of the rite.",
+            "id": "horned-ritualist",
+            "name": "Horned ritualist",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The blood rite releases this incomplete manifestation. On encountering Hadjar, it perceives a direct tie between him and a foe from its past, not just ancestry.",
+            "id": "dark-gods-shadow",
+            "name": "Dark god's shadow",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A possibly legendary Laskan swordsman identified as one of the major dangers Hadjar may face while operating inside the empire.",
+            "id": "scarlet-swordsman-rumored",
+            "name": "Scarlet Swordsman",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A red-haired Laskan great hero who intervenes when the regent is about to attack an exhausted Hadjar outside the capital.",
+            "id": "red-haired-laskan-great-hero",
+            "name": "Red-haired Laskan great hero",
+            "reveal": {
+              "chapter": 52
+            }
+          },
+          {
+            "aliases": [
+              "Perpetual warrior"
+            ],
+            "description": "An ancient-seeming Fae warrior who verifies that Hadjar truly knows the wind's name. The knight treats him as a possible future brother in an endless martial cycle and demands a blood oath protecting that knowledge.",
+            "id": "winter-court-knight",
+            "name": "Winter Court knight",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Masked tracker"
+            ],
+            "description": "The masked tracker in his later-revealed position as leader of the Raven sect. Critically wounded during the abduction, he is carried with Hadjar's party toward Delphi Valley.",
+            "id": "raven-sect-leader",
+            "name": "Raven sect leader",
+            "reveal": {
+              "chapter": 59
+            }
+          },
+          {
+            "aliases": [
+              "Morgan's daughter"
+            ],
+            "description": "Morgan's daughter, whose disappearance before her brother entered Laskan forms part of the imperial rescue assignment given to Hadjar.",
+            "id": "imperial-princess",
+            "name": "Imperial princess",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imperial empress, whose attempt to use the imperial princess and the Secret Office agent's oath is anticipated by Morgan. Morgan murders her and orders the Secret Office to blame Laskan as a pretext for wider war.",
+            "id": "imperial-empress",
+            "name": "Imperial empress",
+            "reveal": {
+              "chapter": 70
+            }
+          },
+          {
+            "aliases": [
+              "Summer Court courtier"
+            ],
+            "description": "Lita's mother and a Fae courtier of the Summer Court. She lives at Little Stream Village with Erhard and Lita, and Hadjar presses her to acknowledge her true nature.",
+            "id": "aria",
+            "name": "Aria",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Aria's daughter"
+            ],
+            "description": "Aria's daughter, living with her mother and Erhard at Little Stream Village.",
+            "id": "lita",
+            "name": "Lita",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The officer who leads scouting work for the Moonstream Army and prepares ambushes during its western-front campaign.",
+            "id": "gurum",
+            "name": "Gurum",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hadjar's master"
+            ],
+            "description": "Hadjar's deceased master and a great swordsman once associated with Morgan and the gathered imperial heroes. The war council honors his memory and accepts Hadjar as his disciple, establishing Hadjar's place among them.",
+            "id": "o-run",
+            "name": "O'Run",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the imperial Secret Office and one of the powerful figures seated on Morgan's final war council. At this point he appears to be an imperial official participating in the plan to end the war against Laskan.",
+            "id": "secret-office-chief",
+            "name": "Secret Office chief",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Red-haired Laskan great hero"
+            ],
+            "description": "Laskan's champion in the strongest-warrior duel. Hadjar discovers that he is the earlier red-haired opponent, using a Gemini technique to maintain identities with distinct bodies, auras, and powers.",
+            "id": "scarlet-swordsman",
+            "name": "Scarlet Swordsman",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Secret Office chief"
+            ],
+            "description": "The dragon assigned to monitor Morgan, previously concealed as the Secret Office chief. He admits the hidden arrangement controlling the human empires and confronts Morgan after the emperor turns the surviving armies against the Dragonlands.",
+            "id": "dragonlands-monitor",
+            "name": "Dragonlands monitor",
+            "reveal": {
+              "chapter": 91
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dragonlands monitor",
+              "Secret Office chief"
+            ],
+            "description": "The Dragonlands monitor reveals the five-headed true form hidden behind the Secret Office chief. He abandons the pretense of human autonomy and declares that direct control and tribute will replace the concealed arrangement.",
+            "id": "five-headed-dragon",
+            "name": "Five-headed dragon",
+            "reveal": {
+              "chapter": 92
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar's grown tiger companion, who reunites with him after his public death and leaves beside him to seek a path to the Seventh Heaven.",
+            "id": "hadjars-tiger-companion",
+            "name": "Hadjar's tiger companion",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09NF7HPG7",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-heart-book-12-path-to-the-glory"
+      }
+    },
     "dragon-keeper": {
       "characters": {
         "characters": [
