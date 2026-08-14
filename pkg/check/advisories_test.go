@@ -230,14 +230,53 @@ func TestAdvisoryCensusCountsEachClass(t *testing.T) {
 		{Path: "b", Msg: "person y differs only by a courtesy title: ..."},
 		{Path: "c", Msg: "work z: one book under two ids"},
 		{Path: "d", Msg: "recording w: a translation is a different work"},
-		{Path: "e", Msg: "entry is 300000 bytes, over the pack target"},
+		{Path: "e", Msg: "entry is 300000 bytes, over the 262144-byte pack target: an oversized entry cannot be split and keeps its pack over target"},
 		{Path: "f", Msg: `person "q" is credited by no work, recording or series: an orphan record`},
+		{Path: "g", Msg: "characters are " + scaleMarker},
 	}
 	got := AdvisoryCensus(warns)
 	for _, want := range []string{"2 cross-language recordings", "1 honorific person pairs",
-		"1 identity-equal work pairs", "1 orphan people"} {
+		"1 identity-equal work pairs", "1 orphan people", "1 oversized entries",
+		"1 mis-scaled sidecars"} {
 		if !strings.Contains(got, want) {
 			t.Errorf("census %q is missing %q", got, want)
+		}
+	}
+	// Every warning above belongs to a class: the census's counts must SUM to the
+	// input, or it is under-reporting what the load produced. It was - the
+	// pack-storage advisory had no class, so 12 of the real tree's 991 warnings
+	// were counted by nothing.
+	classified := 0
+	for _, w := range warns {
+		if AdvisoryClass(w) != AdvisoryUnclassified {
+			classified++
+		}
+	}
+	if classified != len(warns) {
+		t.Errorf("%d of %d warnings are unclassified; every advisory rule needs a class in advisoryMarkers",
+			len(warns)-classified, len(warns))
+	}
+}
+
+// Every advisory a real load can emit must have a class, so the census and any
+// consumer grouping by class account for all of them. The guard is over a FIXTURE
+// tree's own warnings, read as Problems rather than as rendered strings.
+func TestEveryAdvisoryHasAClass(t *testing.T) {
+	files := baseValid()
+	files["people/or/orphan-person.json"] = `{"id":"orphan-person","license":"CC0-1.0",` +
+		`"name":"Orphan Person","sources":[{"type":"user"}]}`
+	dir := t.TempDir()
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("an advisory fixture must still validate: %v", res.Problems)
+	}
+	if len(res.Warnings) == 0 {
+		t.Fatal("the fixture produced no advisories")
+	}
+	for _, w := range res.Warnings {
+		if AdvisoryClass(w) == AdvisoryUnclassified {
+			t.Errorf("no advisory class claims %q", w)
 		}
 	}
 }

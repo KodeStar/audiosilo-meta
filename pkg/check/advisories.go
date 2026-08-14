@@ -371,31 +371,80 @@ func checkOrphanPeople(cat *model.Catalog, recs []recordWithPath, idx *pathIndex
 	}
 }
 
+// The advisory CLASS names. An advisory is classified by the marker its message
+// ends in - the wording each rule was deliberately given - and these are the
+// names of those classes, so a consumer can group advisories by class rather than
+// re-spelling the markers. AdvisoryUnclassified is the answer for a message no
+// class claims, which is what a NEW advisory rule looks like until it is added
+// here.
+const (
+	AdvisoryCrossLanguage   = "cross-language-recording"
+	AdvisoryHonorificPerson = "honorific-person-pair"
+	AdvisoryIdentityEqual   = "identity-equal-works"
+	AdvisoryOrphanPerson    = "orphan-person"
+	AdvisorySidecarScale    = "mis-scaled-sidecar"
+	AdvisoryOversizedEntry  = "oversized-entry"
+	AdvisoryUnclassified    = "unclassified"
+)
+
+// advisoryMarkers maps each class to the marker its rule's message carries. It is
+// the ONE place those substrings are written: AdvisoryCensus counts through it and
+// AdvisoryClass names through it, so the census line and an outside consumer's
+// grouping can never disagree about what a class is.
+//
+// Order is the census line's order, which is also the order AdvisoryClasses
+// returns - a rendered census and a grouped report list the classes the same way.
+var advisoryMarkers = []struct {
+	class  string
+	marker string
+	label  string
+}{
+	{AdvisoryCrossLanguage, "a translation is a different work", "cross-language recordings"},
+	{AdvisoryHonorificPerson, "only by a courtesy title", "honorific person pairs"},
+	{AdvisoryIdentityEqual, "one book under two ids", "identity-equal work pairs"},
+	{AdvisoryOrphanPerson, "an orphan record", "orphan people"},
+	{AdvisorySidecarScale, "scaled to something other than the work's chapters", "mis-scaled sidecars"},
+	// The pack-storage advisory (packcheck.go's single-entry-over-target warning).
+	// It was MISSING from the census, which therefore reported fewer advisories
+	// than the load produced - 979 of 991 on the seeded tree. It surfaced when
+	// internal/audit started filing advisories under these class names and 12 of
+	// them came back unclassified.
+	{AdvisoryOversizedEntry, "an oversized entry cannot be split", "oversized entries"},
+}
+
+// AdvisoryClass names the advisory class a warning belongs to, or
+// AdvisoryUnclassified. Exported so a consumer grouping advisories by class -
+// internal/audit files them as its LOADER subclasses - reads the same
+// classification the census line counts, rather than a second copy of the
+// markers.
+func AdvisoryClass(w Problem) string {
+	for _, m := range advisoryMarkers {
+		if strings.Contains(w.Msg, m.marker) {
+			return m.class
+		}
+	}
+	return AdvisoryUnclassified
+}
+
 // AdvisoryCensus renders the one-line count metacheck prints under the
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.
 func AdvisoryCensus(warns []Problem) string {
-	var lang, honor, ident, orphan, scale int
+	counts, total := map[string]int{}, 0
 	for _, w := range warns {
-		switch {
-		case strings.Contains(w.Msg, "a translation is a different work"):
-			lang++
-		case strings.Contains(w.Msg, "only by a courtesy title"):
-			honor++
-		case strings.Contains(w.Msg, "one book under two ids"):
-			ident++
-		case strings.Contains(w.Msg, "an orphan record"):
-			orphan++
-		case strings.Contains(w.Msg, "scaled to something other than the work's chapters"):
-			scale++
+		if c := AdvisoryClass(w); c != AdvisoryUnclassified {
+			counts[c]++
+			total++
 		}
 	}
-	if lang+honor+ident+orphan+scale == 0 {
+	if total == 0 {
 		return ""
 	}
-	return fmt.Sprintf("advisory classes: %d cross-language recordings, %d honorific person pairs, "+
-		"%d identity-equal work pairs, %d orphan people, %d mis-scaled sidecars",
-		lang, honor, ident, orphan, scale)
+	parts := make([]string, 0, len(advisoryMarkers))
+	for _, m := range advisoryMarkers {
+		parts = append(parts, fmt.Sprintf("%d %s", counts[m.class], m.label))
+	}
+	return "advisory classes: " + strings.Join(parts, ", ")
 }
 
 // sidecarScaleFloor is the fraction of a work's chapter count that its sidecar

@@ -78,6 +78,22 @@ func cleanWorkTitle(title string) string {
 	return stripTitleNarratorQualifier(stripped)
 }
 
+// HasEditionMarker reports whether a title carries a trailing
+// (Unabridged)/(Abridged) edition marker, and CleanWorkTitle is cleanWorkTitle -
+// both exposed for in-module reuse, the same move MarkedNameKey made.
+//
+// internal/titlerule's decoration detector reads them so the audit's "this title
+// still carries an edition marker" is the SAME question the importer answers when
+// it strips one for identity. Spelled separately, the two drifted immediately: a
+// hand-written audit-side regexp made the brackets optional (matching a bare
+// trailing "Unabridged") and missed stacked markers, so it disagreed with the rule
+// of record about what the marker even is.
+func HasEditionMarker(title string) bool { return editionMarkerRE.MatchString(title) }
+
+// CleanWorkTitle removes the decorations that are not part of a work's identity.
+// See cleanWorkTitle for the rules; this is the exported door onto it.
+func CleanWorkTitle(title string) string { return cleanWorkTitle(title) }
+
 // recInfo remembers enough about a recording under a work to detect a
 // same-identity re-import (idempotency) versus a genuine slug collision, and to
 // merge a re-release ASIN into an existing recording rather than minting a
