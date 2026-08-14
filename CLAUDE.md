@@ -451,20 +451,28 @@ fallback for missed notifications. The workflow reads
 `METASERVE_WEBHOOK_URL` and `METASERVE_WEBHOOK_SECRET` from Actions secrets; if
 either is absent or delivery fails, the data release still succeeds and polling
 catches it later.
-FTS queries are built defensively through one pair, `ftsMatch`/`ftsTerms`, that
-every search surface and both boosts reach: **punctuation is a word boundary**
-(a term is a maximal run of letters, numbers and combining marks - unicode61's
-own class) and each term becomes its OWN quoted one-word phrase, the last one
-prefix-starred by `ftsQuery`; no term at all yields the harmless empty-phrase
-match, never a syntax error, and no user input can break the MATCH. Splitting is
-load-bearing, not cosmetic: several words inside ONE phrase are an FTS5
-ADJACENCY constraint, so the whitespace-only predecessor made punctuation
-written INSTEAD of a space ("Greg.Bear-Halo.Primordium", a filename-derived
-query) demand those words sit consecutively in one column - unsatisfiable across
-`title`/`names` - and return ZERO rows for a work the catalogue holds. It costs
-nothing to walk (n one-word phrases read the same n posting lists a phrase of n
-words does), and the same terms feed `nameKey` and the cost gates, so retrieval
-and equality judge one vocabulary.
+FTS queries are built defensively through one pair, `ftsMatch`/`tokenPhrases`
+(over the shared `ftsTerms` rule), that every search surface and both boosts
+reach: **punctuation is a word boundary** - a term is a maximal run of letters,
+numbers and combining marks, approximating unicode61's own class - and each term
+becomes its OWN quoted one-word phrase, the last one prefix-starred by
+`ftsQuery`; no term at all yields the harmless empty-phrase match, never a syntax
+error, and no user input can break the MATCH. Splitting is load-bearing: several
+words inside ONE phrase are an FTS5 ADJACENCY constraint, so the whitespace-only
+predecessor made punctuation written INSTEAD of a space
+("Greg.Bear-Halo.Primordium", a filename-derived query) demand those words sit
+consecutively in one column - unsatisfiable across `title`/`names` - and return
+ZERO rows for a work the catalogue holds. **The one exception is an initialism**:
+a token whose terms are ALL single runes stays ONE adjacent phrase, so `Q&A` and
+`M*A*S*H` keep their selectivity instead of becoming a conjunction of the
+commonest tokens in the index (measured on the 279k artifact: splitting emptied
+the page for 12 of the 21 all-initials series, lost the right book off
+`/abs/search`'s ten matches, and ran 30-45% slower for the class). Neither form
+widens the walk - n one-word phrases read the same n posting lists a phrase of n
+words does - and the same terms feed `nameKey`, so retrieval and equality judge
+one vocabulary. The cost gates (`worthProbing`/`worthTitleProbing`) measure their
+two-rune minimum on the WHITESPACE token for the same reason, refusing a token
+whose terms are all stopwords ("the-a") rather than every initialism.
 A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
 02", "jack reacher book 2"/"band 2") additionally resolves that volume and
 returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is

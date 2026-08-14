@@ -283,18 +283,31 @@ func (s *snapshot) worksAtPosition(seriesIDs []string, pos string) ([]string, er
 // worthProbing has already established that at least one term survives; the
 // fallback keeps the function total rather than relying on that.
 //
-// It filters ftsTerms rather than whitespace tokens, because those are the words
-// that reach the MATCH: a token like "halo:the" is no stopword, and letting it
-// through would put "the" back into the expression this function exists to keep
-// it out of. Rejoining with spaces is exact - a term holds no boundary rune, so
-// ftsPhrase cuts the join back into the same terms.
+// It filters the TERMS of a token that tokenPhrases will split anyway, not the
+// whitespace token: "halo:the" is no stopword as a token, and letting it through
+// would put "the" back into the expression this function exists to keep it out
+// of. An INITIALISM token is kept whole instead - tokenPhrases renders it as one
+// adjacent phrase, its one-rune fragments are not the English articles the
+// vocabulary is about, and filtering them would both destroy the phrase and drop
+// letters from the name ("N.E.R.D.S." would probe for N, R, D, S).
+//
+// Rejoining with spaces is exact: a kept term holds no boundary rune and a kept
+// token holds no whitespace, so ftsPhrase cuts the join back into the same
+// pieces.
 func probeMatch(residual string) string {
 	kept := make([]string, 0, 4)
-	for _, term := range ftsTerms(residual) {
-		if probeStopwords[keywordKey(term)] {
+	for _, tok := range strings.Fields(residual) {
+		terms := ftsTerms(tok)
+		if isInitialism(terms) {
+			kept = append(kept, tok)
 			continue
 		}
-		kept = append(kept, term)
+		for _, term := range terms {
+			if probeStopwords[keywordKey(term)] {
+				continue
+			}
+			kept = append(kept, term)
+		}
 	}
 	if len(kept) == 0 {
 		return ftsPhrase(residual)

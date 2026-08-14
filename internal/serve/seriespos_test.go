@@ -374,6 +374,14 @@ func TestProbeMatchDropsStopwords(t *testing.T) {
 		"the expanse":    `"expanse"`,
 		"halo:the fall":  `"halo" "fall"`,
 		"halo: the fall": `"halo" "fall"`,
+		// An INITIALISM is kept whole: its one-rune fragments are not the
+		// articles the vocabulary is about, and filtering them would both break
+		// the adjacent phrase and drop letters from the name ("E" is a stopword,
+		// so N.E.R.D.S. would have probed for N, R, D, S).
+		"N.E.R.D.S.":      `"N E R D S"`,
+		"the N.E.R.D.S.":  `"N E R D S"`,
+		"Q&A":             `"Q A"`,
+		"3 a.m. in Vegas": `"3" "a m" "Vegas"`,
 		// Every term is a stopword: the fallback keeps the residual whole rather
 		// than composing an empty MATCH.
 		"the of": `"the" "of"`,

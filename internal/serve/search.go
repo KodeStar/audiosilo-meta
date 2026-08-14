@@ -3,6 +3,7 @@ package serve
 import (
 	"strings"
 	"unicode"
+	"unicode/utf8"
 )
 
 // workResult is a search hit that is a work: the card fields inline, plus the
@@ -31,15 +32,16 @@ type seriesResult struct {
 	Works int        `json:"works"`
 }
 
-// ftsQuery turns a raw user query into a safe FTS5 MATCH expression: the query
-// is cut into terms (see ftsTerms), each term is wrapped in double quotes so it
-// can never be read as an operator, and the final term gets a trailing '*' for
-// prefix matching. A query holding no term at all - empty, whitespace, or pure
-// punctuation - yields a harmless empty-phrase match rather than a syntax error.
+// ftsQuery turns a raw user query into a safe FTS5 MATCH expression: every
+// whitespace token becomes one or more quoted phrases (see tokenPhrases) so no
+// input can ever be read as an operator, and the final phrase gets a trailing
+// '*' for prefix matching. A query holding no term at all - empty, whitespace,
+// or pure punctuation - yields a harmless empty-phrase match rather than a
+// syntax error.
 func ftsQuery(q string) string { return ftsMatch(q, true) }
 
-// ftsPhrase is ftsQuery without the trailing prefix-star: the same terms,
-// matching only whole ones. It is what a NAME lookup wants (see seriespos.go);
+// ftsPhrase is ftsQuery without the trailing prefix-star: the same phrases,
+// matching only whole words. It is what a NAME lookup wants (see seriespos.go);
 // a prefix-star over a short query walks a large fraction of the index, which is
 // affordable for the one hit the user is typing towards and not for a lookup the
 // server issues on their behalf.
@@ -47,51 +49,108 @@ func ftsPhrase(q string) string { return ftsMatch(q, false) }
 
 // ftsMatch is the single escaping implementation behind both: it is the one
 // place a term becomes an FTS5 phrase, so no caller can ever build a MATCH
-// expression a quote or an operator could break. Each term is its OWN one-word
-// phrase, and ftsTerms records why that matters. The quote doubling cannot fire
-// today (a term holds only term runes) and is kept so that widening isTermRune
-// can never become a syntax error.
+// expression a quote or an operator could break. tokenPhrases decides how each
+// whitespace token is rendered; the star goes on the LAST phrase, which for an
+// initialism is a multi-term phrase (a phrase-final star is legal FTS5 and is
+// what the whitespace-only predecessor emitted for such a token anyway).
 func ftsMatch(q string, prefixLast bool) string {
-	terms := ftsTerms(q)
-	if len(terms) == 0 {
+	var parts []string
+	for _, tok := range strings.Fields(q) {
+		parts = append(parts, tokenPhrases(tok)...)
+	}
+	if len(parts) == 0 {
 		return `""`
 	}
-	parts := make([]string, len(terms))
-	for i, term := range terms {
-		escaped := strings.ReplaceAll(term, `"`, `""`)
-		parts[i] = `"` + escaped + `"`
-		if prefixLast && i == len(terms)-1 {
-			parts[i] += "*"
-		}
+	if prefixLast {
+		parts[len(parts)-1] += "*"
 	}
 	return strings.Join(parts, " ")
 }
 
-// ftsTerms cuts a raw query into the words FTS5 indexed, and is the one place
-// that rule is spelled - the boosts' stopword filter and cost gate read it too.
+// tokenPhrases renders ONE whitespace token as FTS5 phrases, and is where the
+// punctuation rule lives.
 //
-// WHY IT EXISTS. The predecessor split on WHITESPACE only, so a token carrying
-// interior punctuation became ONE quoted phrase - and several words inside one
-// phrase are an FTS5 ADJACENCY constraint: they must appear consecutively, in
-// that order, in one column. Punctuation written INSTEAD of a space is not an
-// adjacency claim, so `Greg.Bear-Halo.Primordium` asked for four words in a row
-// spanning the `title` and `names` columns and returned ZERO rows for a work the
-// catalogue holds; as four one-word phrases it returns Halo: Primordium. It
-// costs nothing to walk - a phrase of n words and n one-word phrases read the
-// same n posting lists, the phrase merely adding a position check.
+// WHY PUNCTUATION SPLITS. FTS5 tokenizes a quoted string with the same
+// unicode61 tokenizer that indexed the row, so several words inside one phrase
+// are an ADJACENCY constraint: they must appear consecutively, in that order, in
+// one column. Punctuation written INSTEAD of a space is not an adjacency claim,
+// so the whitespace-only predecessor made `Greg.Bear-Halo.Primordium` demand
+// four words in a row spanning the `title` and `names` columns, and it returned
+// ZERO rows for a work the catalogue holds. As four one-word phrases it returns
+// Halo: Primordium, and it costs nothing extra to walk - n one-word phrases read
+// the same n posting lists a phrase of n words does.
 //
-// The runs are SUBSTRINGS of q, never rewritten, so each tokenizes to exactly
-// what FTS5 would have made of it in place; isTermRune is the boundary rule.
+// WHY AN INITIALISM DOES NOT. A token whose terms are ALL single runes is not
+// punctuation between words, it is punctuation INSIDE one word: "Q&A", "M*A*S*H",
+// "N.E.R.D.S.", "3 a.m.", "1-3.5". Splitting those trades a highly selective
+// phrase for a conjunction of the commonest tokens in the index - "Q" AND
+// anything starting with "A" - which measured on the 279k-work artifact as an
+// EMPTY result page for 12 of the 21 all-initials series, the right book falling
+// off /abs/search's ten matches entirely, and 30-45% slower for the class (51
+// works and 21 series in the real tree). So the token stays ONE adjacent phrase,
+// exactly as before this rule existed, and only mixed tokens split - "Don't" ->
+// "Don" "t" is mixed and measured harmless.
+func tokenPhrases(tok string) []string {
+	terms := ftsTerms(tok)
+	if len(terms) == 0 {
+		return nil
+	}
+	if isInitialism(terms) {
+		return []string{quotePhrase(terms...)}
+	}
+	out := make([]string, len(terms))
+	for i, term := range terms {
+		out[i] = quotePhrase(term)
+	}
+	return out
+}
+
+// isInitialism reports whether a token's terms are the fragments of one word
+// rather than several words: more than one, every one a single rune.
+func isInitialism(terms []string) bool {
+	if len(terms) < 2 {
+		return false
+	}
+	for _, term := range terms {
+		if utf8.RuneCountInString(term) != 1 {
+			return false
+		}
+	}
+	return true
+}
+
+// quotePhrase renders terms as one quoted FTS5 phrase. The quote doubling is
+// FTS5's own escaping; it cannot fire today (a term holds only term runes) and is
+// kept so that widening isTermRune can never become a syntax error.
+func quotePhrase(terms ...string) string {
+	escaped := make([]string, len(terms))
+	for i, term := range terms {
+		escaped[i] = strings.ReplaceAll(term, `"`, `""`)
+	}
+	return `"` + strings.Join(escaped, " ") + `"`
+}
+
+// ftsTerms cuts a string into the words FTS5 indexed, and is the one place that
+// rule is spelled - tokenPhrases, the boosts' stopword filter and nameKey all
+// read it. The runs are SUBSTRINGS of the input, never rewritten, so each
+// tokenizes to exactly what FTS5 would have made of it in place.
 func ftsTerms(q string) []string {
 	return strings.FieldsFunc(q, func(r rune) bool { return !isTermRune(r) })
 }
 
-// isTermRune reports whether r belongs inside a term. It mirrors unicode61's
-// alphanumeric class (letters, numbers - including the Nl/No characters FTS5
-// really does index, "Henry VII" in Roman numerals and "Half 1/2 Measures" as a
-// vulgar fraction), plus combining marks: a decomposed "Ma<diaeresis>dchen" is
-// ONE token there (the diacritic is stripped), so splitting on the mark would
-// ask for two words the row does not have.
+// isTermRune reports whether r belongs inside a term: letters, numbers -
+// including the Nl/No characters FTS5 really does index, a Roman numeral or a
+// vulgar fraction - and combining marks, because a decomposed "Ma<diaeresis>dchen"
+// is ONE token to unicode61 (the diacritic is stripped) and splitting on the mark
+// would ask for two words the row does not have.
+//
+// It is an APPROXIMATION of unicode61's alphanumeric-plus-diacritics behaviour,
+// not a copy of it: the real rule is a separator TABLE, which welds some Co/So/Po
+// characters and treats ~1,350 marks as separators. Oracle-tested against the
+// tokenizer over every title, name and series name in the real tree with zero
+// divergence; the welding-versus-splitting differences that remain are exotic
+// classes with no real-data footprint, so exact parity is deliberately not
+// chased.
 func isTermRune(r rune) bool {
 	return unicode.IsLetter(r) || unicode.IsNumber(r) || unicode.IsMark(r)
 }

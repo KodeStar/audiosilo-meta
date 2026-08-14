@@ -34,24 +34,48 @@ var probeStopwords = map[string]bool{
 }
 
 // hasIdentifyingToken is the shared cost gate behind worthProbing and
-// worthTitleProbing: s must hold one term that is at least two runes long and
+// worthTitleProbing: s must hold one token that is at least two runes long and
 // in neither junk vocabulary. The two probes differ only in WHICH vocabularies
-// disqualify a term - the series probe passes the volume words as junkB, the
+// disqualify a token - the series probe passes the volume words as junkB, the
 // title probe passes nil (a nil map reads as empty) - so the rule itself is
 // written once.
 //
-// It judges ftsTerms, not whitespace tokens, because those terms are what the
-// MATCH will actually walk: "the-a" is one five-rune whitespace token but two
-// stopword phrases, exactly the probe this gate exists to refuse.
+// The length minimum is measured on the WHITESPACE token, not on its terms. An
+// initialism is many one-rune terms ("N.E.R.D.S.", "Q&A", "A.D.", "3 a.m.") and
+// judging terms refused every one of them - yet tokenPhrases turns such a token
+// into a single highly selective phrase, and those probes measured at 0.9-2.4ms
+// against the 19.7ms of "book", which this gate admits. There is no cost case for
+// refusing them, and refusing them cost both boosts for the whole class.
+//
+// What the term rule buys is kept as a SECOND, cheap refusal: a token whose terms
+// are all junk is junk however long the token is, so "the-a" is refused (both
+// terms are stopwords) and so is a token with no term at all ("!!").
 func hasIdentifyingToken(s string, junkA, junkB map[string]bool) bool {
-	for _, term := range ftsTerms(s) {
-		k := keywordKey(term)
+	for _, tok := range strings.Fields(s) {
+		k := keywordKey(tok)
 		if utf8.RuneCountInString(k) < 2 || junkA[k] || junkB[k] {
+			continue
+		}
+		if allJunkTerms(tok, junkA, junkB) {
 			continue
 		}
 		return true
 	}
 	return false
+}
+
+// allJunkTerms reports whether every word inside tok is junk - which includes a
+// token holding no word at all. It is what keeps a punctuated pile of stopwords
+// ("the-a") out of a probe the token's own length would otherwise admit.
+func allJunkTerms(tok string, junkA, junkB map[string]bool) bool {
+	terms := ftsTerms(tok)
+	for _, term := range terms {
+		k := keywordKey(term)
+		if !junkA[k] && !junkB[k] {
+			return false
+		}
+	}
+	return true
 }
 
 // nameKey normalizes a name (a series name, a residual, or - for the

@@ -11,9 +11,10 @@ import (
 // expression, so every query shape is pinned here and the surfaces that share it
 // are proved end-to-end below.
 
-// TestFTSQueryBuilder pins the MATCH expression for every query shape: one
-// one-word phrase per term, punctuation as a boundary, the prefix-star on the
-// last term, and the empty-phrase sentinel for a query holding no term at all.
+// TestFTSQueryBuilder pins the MATCH expression for every query shape:
+// punctuation as a word boundary, an initialism kept as ONE adjacent phrase, the
+// prefix-star on the last phrase, and the empty-phrase sentinel for a query
+// holding no term at all.
 func TestFTSQueryBuilder(t *testing.T) {
 	cases := []struct {
 		name, in, want string
@@ -46,7 +47,26 @@ func TestFTSQueryBuilder(t *testing.T) {
 		// Numeric titles are one term and keep exactly the expression they had.
 		{"numeric title", "1984", `"1984"*`},
 		{"word plus number", "Fahrenheit 451", `"Fahrenheit" "451"*`},
-		{"decimal", "Reacher 2.5", `"Reacher" "2" "5"*`},
+
+		// An INITIALISM - every term one rune - is punctuation inside ONE word,
+		// so it stays one adjacent phrase and keeps the selectivity a
+		// conjunction of the commonest tokens would throw away ("Q" AND anything
+		// starting with "A" matches "Alpha Q" too). This is byte-for-byte what
+		// the whitespace-only predecessor emitted for these tokens.
+		{"ampersand initialism", "Q&A", `"Q A"*`},
+		{"starred initialism", "M*A*S*H", `"M A S H"*`},
+		{"dotted initialism", "N.E.R.D.S.", `"N E R D S"*`},
+		{"dotted initialism plus volume", "N.E.R.D.S. 1", `"N E R D S" "1"*`},
+		{"two-letter abbreviation", "A.D.", `"A D"*`},
+		{"slashed initialism", "Y/N", `"Y N"*`},
+		{"lowercase abbreviation", "3 a.m.", `"3" "a m"*`},
+		// A decimal and an omnibus range are the same shape, which is what keeps
+		// "2.5" a distinct volume rather than the tokens 2 and 5 anywhere.
+		{"decimal", "Reacher 2.5", `"Reacher" "2 5"*`},
+		{"omnibus range", "Reacher 1-3.5", `"Reacher" "1 3 5"*`},
+		// Mixed tokens split: one term is longer than a rune, so the token is
+		// punctuation BETWEEN words.
+		{"mixed initialism and word", "M*A*S*H Reunion", `"M A S H" "Reunion"*`},
 
 		// Non-ASCII letters and the NUMBER classes beyond the ASCII digits are
 		// term runes, because unicode61 indexes them: a German or Spanish title
@@ -68,8 +88,9 @@ func TestFTSQueryBuilder(t *testing.T) {
 		{"empty", "", `""`},
 
 		// A quote is a boundary like any other punctuation, so it can never
-		// reach the inside of a phrase.
-		{"embedded quote", `a"b`, `"a" "b"*`},
+		// reach the inside of a phrase (here two one-rune terms, so the
+		// initialism rule keeps them adjacent - as the predecessor did).
+		{"embedded quote", `a"b`, `"a b"*`},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -143,16 +164,65 @@ func punctuatedCatalog() *model.Catalog {
 		Authors: []string{"isla-morley"}, License: "CC0-1.0",
 	}
 
+	// The initialism cohort. "Q&A" is the selectivity case and "Alpha Q" is its
+	// adversary: it holds a "q" token and a token STARTING with "a", so it
+	// matches the conjunction a split would build and not the adjacent phrase.
+	// Both carry a recording, so /abs/search sees the same distinction.
+	rec := func(id, work string) []*model.Recording {
+		return []*model.Recording{{
+			ID: id, Work: work, Language: "en", License: "CC0-1.0",
+			Narrators: []string{"timothy-dadabo"}, RuntimeMin: 300,
+		}}
+	}
+	qanda := &model.Work{
+		ID: "q-and-a", Title: "Q&A", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+		Recordings: rec("qanda-2019", "q-and-a"),
+	}
+	alphaQ := &model.Work{
+		ID: "alpha-q", Title: "Alpha Q", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+		Recordings: rec("alpha-q-2019", "alpha-q"),
+	}
+	mash := &model.Work{
+		ID: "mash", Title: "M*A*S*H", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+	}
+	// An all-initials SERIES: its volumes' FTS rows say nothing about a position,
+	// so "N.E.R.D.S. 2" has an EMPTY plain FTS page and the boost is the only
+	// thing that can answer it - which is exactly what the reworked cost gate
+	// took away for this whole class.
+	nerds := &model.Work{
+		ID: "nerds", Title: "N.E.R.D.S.", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+	}
+	mamasBoy := &model.Work{
+		ID: "m-is-for-mamas-boy", Title: "M Is for Mama's Boy", Language: "en",
+		Authors: []string{"isla-morley"}, License: "CC0-1.0",
+	}
+
 	return &model.Catalog{
-		Works:  []*model.Work{primordium, cryptum, dont, goblet, f451, nineteen, madchen, henry},
+		Works: []*model.Work{
+			primordium, cryptum, dont, goblet, f451, nineteen, madchen, henry,
+			qanda, alphaQ, mash, nerds, mamasBoy,
+		},
 		People: []*model.Person{bear, dadabo, morley, rowling, bradbury, orwell},
-		Series: []*model.Series{{
-			ID: "halo", Name: "Halo", License: "CC0-1.0",
-			Works: []model.SeriesWork{
-				{Work: "halo-cryptum", Position: "7"},
-				{Work: "halo-primordium", Position: "8"},
+		Series: []*model.Series{
+			{
+				ID: "halo", Name: "Halo", License: "CC0-1.0",
+				Works: []model.SeriesWork{
+					{Work: "halo-cryptum", Position: "7"},
+					{Work: "halo-primordium", Position: "8"},
+				},
 			},
-		}},
+			{
+				ID: "nerds", Name: "N.E.R.D.S.", License: "CC0-1.0",
+				Works: []model.SeriesWork{
+					{Work: "nerds", Position: "1"},
+					{Work: "m-is-for-mamas-boy", Position: "2"},
+				},
+			},
+		},
 	}
 }
 
@@ -201,6 +271,70 @@ func TestSearchPunctuatedQueries(t *testing.T) {
 				t.Errorf("search(%q) = %v, want it to hold %q", tc.query, ids, tc.want)
 			}
 		})
+	}
+}
+
+// TestSearchInitialisms is the other half of the punctuation rule: a title whose
+// every fragment is one letter must NOT be split, because the conjunction that
+// would replace its phrase is made of the commonest tokens in the index. On the
+// 279k-work artifact splitting cost 12 of the 21 all-initials series an EMPTY
+// result page, dropped the right book off /abs/search's ten matches, and ran
+// 30-45% slower for the class; here the adversary is "Alpha Q", which matches
+// the conjunction and not the phrase.
+func TestSearchInitialisms(t *testing.T) {
+	snap := snapshotFor(t, punctuatedCatalog())
+
+	// Selectivity: the phrase resolves the initialism and nothing else.
+	ids := searchIDs(t, snap, "Q&A")
+	if first(ids) != "work:q-and-a" {
+		t.Errorf(`search("Q&A") first = %q, want work:q-and-a (page: %v)`, first(ids), ids)
+	}
+	if contains(ids, "work:alpha-q") {
+		t.Errorf(`search("Q&A") returned work:alpha-q: %v - the initialism was split into a conjunction`, ids)
+	}
+
+	// The exact-title boost still reaches an initialism title (the cost gate has
+	// to admit it, and nameKey has to fold it).
+	if got := first(searchIDs(t, snap, "M*A*S*H")); got != "work:mash" {
+		t.Errorf(`search("M*A*S*H") first = %q, want work:mash`, got)
+	}
+
+	// The series-position boost too - and here the plain FTS page is empty, so
+	// the boost is the ONLY source of the answer.
+	hits, err := snap.ftsHits(kindAny, ftsQuery("N.E.R.D.S. 2"), 20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(hits) != 0 {
+		t.Fatalf("the fixture no longer has an empty FTS page for 'N.E.R.D.S. 2': %v", hits)
+	}
+	// (An undotted "nerds 2" resolves nothing, before this change and after: the
+	// row's tokens are n/e/r/d/s, so "nerds" is a different word to unicode61.)
+	for query, want := range map[string]string{
+		"N.E.R.D.S. 1": "work:nerds",
+		"N.E.R.D.S. 2": "work:m-is-for-mamas-boy",
+	} {
+		if got := first(searchIDs(t, snap, query)); got != want {
+			t.Errorf("search(%q) first = %q, want %q", query, got, want)
+		}
+	}
+}
+
+// TestABSSearchInitialism: the facade has no boost to fall back on, so the
+// builder's selectivity is all it has. ABS caps at ten matches, and on the real
+// artifact a split initialism pushed the right book off that list entirely.
+func TestABSSearchInitialism(t *testing.T) {
+	base := absServer(t, punctuatedCatalog())
+	const path = "/abs/search?mediaType=book&query=Q%26A"
+	code, matches := absMatches(t, base, path)
+	if code != 200 {
+		t.Fatalf("GET %s = %d", path, code)
+	}
+	if len(matches) != 1 {
+		t.Fatalf("GET %s returned %d matches, want 1 (the conjunction also matches Alpha Q)", path, len(matches))
+	}
+	if first, _ := matches[0].(map[string]any); first["title"] != "Q&A" {
+		t.Errorf("GET %s match = %v, want Q&A", path, first["title"])
 	}
 }
 

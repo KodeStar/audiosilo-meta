@@ -251,7 +251,13 @@ func TestExactTitleSkipsJunkQueries(t *testing.T) {
 }
 
 func TestWorthTitleProbing(t *testing.T) {
-	worth := []string{"spare", "it", "us", "1984", "the martian", "halo 2", "book", "part one"}
+	worth := []string{"spare", "it", "us", "1984", "the martian", "halo 2", "book", "part one",
+		// An INITIALISM is many one-rune terms, so the minimum is measured on the
+		// whitespace token: judging terms refused this whole class (51 works and
+		// 21 series in the real tree) even though tokenPhrases makes each one a
+		// single selective phrase, measured at 0.9-2.4ms against the 19.7ms of
+		// "book" that the gate admits.
+		"N.E.R.D.S.", "Q&A", "A.D.", "3 a.m.", "M*A*S*H", "R.U.R.", "Y/N"}
 	for _, q := range worth {
 		if !worthTitleProbing(q) {
 			t.Errorf("worthTitleProbing(%q) = false, want true", q)
