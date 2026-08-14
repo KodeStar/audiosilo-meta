@@ -5133,6 +5133,372 @@
         "work": "watership-down"
       }
     },
+    "way-to-the-east": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A swordsman known as the Mad General and the Wind of the Northern Valleys. He holds off the head of the Underground Whisper Clan while his allies work to open the city gates, relying on newly enlarged reserves that still cannot overcome her superior control.",
+            "id": "hadjar",
+            "name": "Hadjar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hadjar's strategist and covert ally. He directs the operation to open the city gates during the fight with the Underground Whisper Clan and can conceal himself from powerful opponents.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archer fighting with Abraham Shensie's party. His specialized volleys can disrupt and briefly blind an opponent powerful enough to overwhelm Hadjar.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's party who helps the allied force open the city gates while Hadjar occupies the Underground Whisper Clan's leader.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The female leader of the Underground Whisper Clan and Hadjar’s principal opponent during the assault on her city. Her command of power is precise enough to overwhelm him despite his enlarged reserves.",
+            "id": "underground-whisper-clan-head",
+            "name": "The Underground Whisper Clan head",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The deceased Underground Whisper Clan head's son. He takes Lathea hostage after his clan's defeat, then releases her when Hadjar guarantees that the surviving clan members may depart safely.",
+            "id": "underground-whisper-heir",
+            "name": "The Underground Whisper heir",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Galanon's daughter and heir to the Star Rain Clan. She is taken hostage by the defeated clan leader's son, whose release of her depends on Hadjar's promise that the surviving clan members may leave safely.",
+            "id": "lathea",
+            "name": "Lathea",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lathea’s father, Galanon, leads the Star Rain Clan despite being injured. His warriors bring him to safety after they enter the captured city, but his demand for vengeance conflicts with Hadjar’s pledge to let the defeated survivors depart.",
+            "id": "galanon",
+            "name": "Galanon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galanon's mother and the senior authority of the Star Rain Clan. After the clan returns victorious, she honors her bargain with Hadjar by granting him one visit to a hidden training site whose secret he must keep.",
+            "id": "star-rain-chief",
+            "name": "The Star Rain chief",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Abraham Shensie's covert enforcer. He joins Abraham in confronting the Star Rain chief outside Hadjar's hidden training site and addresses Abraham as his king, indicating a deeper hierarchy between them.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The identity Hadjar inhabits during an apparent inner experience set in a modern city. The nature of the overlap is uncertain, and neither identity yet understands why Hadjar can move through Boris's remembered life.",
+            "id": "boris",
+            "name": "Boris",
+            "reveal": {
+              "chapter": 8
+            }
+          },
+          {
+            "description": "Galanon's wife and a leader of a political faction within Star Rain. During the clan council, she presses for Hadjar's group to be bound by an oath of loyalty after their access to the clan's secret training ground becomes known.",
+            "id": "ternus",
+            "name": "Ternus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled forger in Hadjar's wider party. Abraham Shensie assigns her to create a convincing duplicate of the key that Hadjar and Lathea are to recover for the Star Rain Clan's larger plan.",
+            "id": "alba-udun",
+            "name": "Alba Udun",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drunken cultivator who publicly insults Hadjar and Lathea in the City of Blue Roofs after Lathea pays an elderly vendor generously for a crafted flower.",
+            "id": "drunken-cultivator",
+            "name": "The drunken cultivator",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The valley-family elder’s son, a young cultivator whose father ends his confrontation with Hadjar and requires him to apologize.",
+            "id": "young-valley-family-man",
+            "name": "The young valley-family man",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A maimed Heaven Emperor-level warrior and the father of a cultivator who challenges Hadjar in the City of Blue Roofs. He ends the confrontation, offers restitution, and presents his valley family as a possible partner in the search for the key and steel.",
+            "id": "valley-family-elder",
+            "name": "The valley-family elder",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mercenary cover identity Lathea uses while negotiating with the valley family. A Star Rain artifact supports the disguise as she and Hadjar consider joining the family's search for the key and steel.",
+            "id": "azalea",
+            "name": "Azalea",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The staff-wielding head of the valley-family expedition. He allows unprepared members to withdraw without penalty after Hadjar demonstrates the danger and the difference in their strength.",
+            "id": "valley-family-expedition-head",
+            "name": "The valley-family expedition head",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The valley-family expedition head’s daughter, a young staff fighter and cousin of the family’s young broadsword wielder.",
+            "id": "valley-family-heads-daughter",
+            "name": "The valley-family head’s daughter",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly weakened wild god that threatens the valley-family expedition. Hadjar identifies it as Ancient Zaver while remaining behind to fight it as the others evacuate.",
+            "id": "ancient-zaver",
+            "name": "Ancient Zaver",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sentient but soulless golem who guards the Lightbringer knowledge in a repeating steel trial. It tells Hadjar that the fragment he carries exempts him from the worthiness test being imposed on the other entrants.",
+            "id": "maze-guardian",
+            "name": "The maze guardian",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demonic lord summoned during a wind memory of the ritual performed by Hadjar's family. Known as the demon prince's left hand, he is approached as a power capable of changing the future of the royal household.",
+            "id": "lord-of-nightmares",
+            "name": "The Lord of Nightmares",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hadjar’s father, seen in a memory carried by the wind. He and Hadjar’s uncle prepare a ritual around Hadjar’s sleeping mother after a prophecy threatens Lydas.",
+            "id": "king-haver",
+            "name": "King Haver",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hadjar’s mother, seen asleep at the center of a ritual prepared by his father and uncle after a prophecy threatens Lydas.",
+            "id": "elizabeth",
+            "name": "Elizabeth",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former friend of Hadjar from the Sea of Sand who now serves the Twilight Secret Sect. He appears masked as the warrior chosen to answer Hadjar's proposed duel over control of the key site.",
+            "id": "desert-mirage",
+            "name": "Desert Mirage",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hidden traveler exposed at the survivors' council as an immortal monkey associated with the Shadows of Bright Luminaries Pavilion.",
+            "id": "immortal-monkey-sage",
+            "name": "The immortal monkey sage",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient white dragon encountered by Hadjar in a spirit-world reflection linked to the anomaly. The dragon recognizes him from an earlier meeting and directs him toward an inscribed stone that may provide a way out.",
+            "id": "ancient-white-dragon",
+            "name": "The ancient white dragon",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nameless"
+            ],
+            "description": "A chained, white-haired ancient shown in a temple reflection and identified there as both Nameless and the Black General. He kills the unseen speaker with a black blade while declaring that he will not be alone again.",
+            "id": "black-general",
+            "name": "The Black General",
+            "reveal": {
+              "chapter": 61
+            }
+          },
+          {
+            "description": "A Lesket cultivator whose closely attached protector is killed by the immortal. Grieving the loss, she attacks the immortal as the anomaly continues to collapse.",
+            "id": "lesket-female-survivor",
+            "name": "The Lesket female survivor",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lesket clan head’s younger son, a peak Nameless mage with the light of Therna. He welcomes Hadjar and Lathea to the clan capital, is Lathea’s friend, and composes verses performed by musicians.",
+            "id": "lesket-youngest-son",
+            "name": "The Lesket youngest son",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The patriarch of the Lesket clan. He receives Hadjar and Lathea after the loss of a clan expedition and asks for an account of his daughter's death, while treating his pacifist younger son with open contempt.",
+            "id": "lesket-clan-head",
+            "name": "The Lesket clan head",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lesket clan head’s eldest son, chosen as Hadjar’s opponent when the clan head makes a style duel a condition of their proposed expedition agreement.",
+            "id": "lesket-eldest-son",
+            "name": "The Lesket eldest son",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eternal queen who visits her imprisoned brother beneath Mount Baldendur. She tells him that the magic binding him is weakening and summons him to take part in a coming war.",
+            "id": "queen-of-cold-and-darkness",
+            "name": "The queen of cold and darkness",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The queen of cold and darkness's imprisoned eternal brother. His bonds beneath Mount Baldendur are weakening, and she calls the wolf back to war with orders to kill the reborn vessel of Myristal.",
+            "id": "wolf-of-darkness",
+            "name": "The wolf of darkness",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A white-turbaned Lesket warrior entrusted with coordinating the northern expedition. He uses a scorpion-sting saber style, deals candidly with Hadjar, and requests a friendly duel at some later time.",
+            "id": "white-turbaned-wanderer",
+            "name": "The white-turbaned wanderer",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly northern healer and local spiritual authority. She grants Hadjar's expedition one night of shelter under her village's hospitality laws, refuses payment, and makes clear that the armed visitors must leave at dawn.",
+            "id": "village-chief",
+            "name": "The village chief",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dead ally who appears to Hadjar in a vision and says he has come to repay an old debt. Speaking from the threshold of the ancestors' realm, he warns that Lathea needs help and gives Hadjar a cryptic means of reaching back.",
+            "id": "deceased-friend",
+            "name": "The deceased friend",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An early Heaven Emperor who tortures the captured Lesket mage and confronts Hadjar in a canyon. He identifies himself as the Raven Sect master's seventh disciple and attacks through a sword-based spirit incarnation.",
+            "id": "seventh-raven-sect-disciple",
+            "name": "The seventh Raven Sect disciple",
+            "reveal": {
+              "chapter": 84
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A healer and philosopher in the north who finds Hadjar and the injured Lesket mage, shelters them, and treats Hadjar for seven nights. The host explains the mage's perilous soul condition and reports that Lathea is alive and being used as bait farther north.",
+            "id": "northern-host",
+            "name": "The northern host",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C3WNFKL9",
+            "type": "community"
+          }
+        ],
+        "work": "way-to-the-east"
+      }
+    },
     "waybound": {
       "characters": {
         "characters": [
