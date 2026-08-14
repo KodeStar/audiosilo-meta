@@ -10719,8 +10719,11 @@
       ],
       "genres": [
         "fantasy",
+        "hard-boiled",
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "paranormal",
+        "thriller-suspense"
       ],
       "id": "shadows-of-pnath",
       "language": "en",
@@ -10965,33 +10968,7 @@
             }
           ],
           "work": "shadows-of-pnath"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BXBJVBS7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shadows of Pnath"
-    },
-    "shadows-of-pnath-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "josh-reynolds"
-      ],
-      "genres": [
-        "fantasy",
-        "hard-boiled",
-        "mystery",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "shadows-of-pnath-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -11060,10 +11037,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "shadows-of-pnath-dramatized-adaptation"
+          "work": "shadows-of-pnath"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BXBJVBS7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D1ZK4Y4M",
@@ -11075,7 +11057,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Shadows of Pnath (Dramatized Adaptation)"
+      "title": "Shadows of Pnath"
     },
     "shadows-of-prejudice": {
       "added_at": "2026-08-02",

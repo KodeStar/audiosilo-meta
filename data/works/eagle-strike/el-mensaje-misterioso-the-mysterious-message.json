@@ -1354,6 +1354,7 @@
         "william-shakespeare"
       ],
       "genres": [
+        "classics",
         "drama-plays"
       ],
       "id": "el-mercader-de-venecia",
@@ -1367,54 +1368,7 @@
             {
               "asin": "B085CJP7HB",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91crZwX3fZL.jpg",
-          "id": "marcos-chacon-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcos-chacon"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-04",
-          "runtime_min": 38,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJP7HB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-mercader-de-venecia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJP7HB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El mercader de Venecia"
-    },
-    "el-mercader-de-venecia-the-merchant-of-venice": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "el-mercader-de-venecia-the-merchant-of-venice",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcos-chacon-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B085CJK16V",
               "region": "us"
@@ -1455,21 +1409,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B085CJP7HB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B085CJK16V",
               "type": "libex-import"
             }
           ],
-          "work": "el-mercader-de-venecia-the-merchant-of-venice"
+          "work": "el-mercader-de-venecia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJP7HB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJK16V",
           "type": "libex-import"
         }
       ],
-      "title": "El mercader de Venecia [The Merchant of Venice]"
+      "title": "El mercader de Venecia"
     },
     "el-mercado-de-valores-avanzado-y-la-guia-de-negociacion-diaria": {
       "added_at": "2026-07-29",
@@ -2722,7 +2686,7 @@
       ],
       "title": "El Método Porte [The Porte Method]"
     },
-    "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-method-to-eliminate-your-bad-habits": {
+    "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-way-to-eliminate-your-bad-habits": {
       "added_at": "2026-07-29",
       "authors": [
         "david-valois"
@@ -2730,9 +2694,10 @@
       "genres": [
         "health-wellness",
         "parenting-relationships",
+        "psychology",
         "self-help"
       ],
-      "id": "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-method-to-eliminate-your-bad-habits",
+      "id": "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-way-to-eliminate-your-bad-habits",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -2762,33 +2727,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-method-to-eliminate-your-bad-habits"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07P8VV125",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Método Rápido Para Eliminar Tus Malos Hábitos [The Quick Method to Eliminate Your Bad Habits]"
-    },
-    "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-way-to-eliminate-your-bad-habits": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-valois"
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-way-to-eliminate-your-bad-habits",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-metodo-rapido-para-eliminar-tus-malos-habitos-the-quick-way-to-eliminate-your-bad-habits"
+        },
         "gerardo-prat-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2822,6 +2762,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07QFSLC1L",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07P8VV125",
           "type": "libex-import"
         }
       ],
@@ -3006,54 +2951,7 @@
             {
               "asin": "B0844LF17G",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81neqhU1AvL.jpg",
-          "id": "jose-duarte-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-duarte"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2008-02-06",
-          "runtime_min": 163,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844LF17G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-millonario-automatico"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0844LF17G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Millonario Automatico"
-    },
-    "el-millonario-automatico-the-automatic-millionaire": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-bach"
-      ],
-      "genres": [
-        "business",
-        "finance"
-      ],
-      "id": "el-millonario-automatico-the-automatic-millionaire",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jose-duarte-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V1K146",
               "region": "us"
@@ -3089,21 +2987,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0844LF17G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V1K146",
               "type": "libex-import"
             }
           ],
-          "work": "el-millonario-automatico-the-automatic-millionaire"
+          "work": "el-millonario-automatico"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0844LF17G",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1K146",
           "type": "libex-import"
         }
       ],
-      "title": "El Millonario Automatico [The Automatic Millionaire]"
+      "title": "El Millonario Automatico"
     },
     "el-millonario-metodo": {
       "added_at": "2026-07-29",
@@ -3928,54 +3836,7 @@
             {
               "asin": "8401019044",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81u6RA7gC3L.jpg",
-          "id": "xavi-fernandez-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-11-16",
-          "runtime_min": 1016,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019044",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-misterio-de-salems-lot"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019044",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El misterio de Salem's Lot"
-    },
-    "el-misterio-de-salems-lot-salems-lot": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-king",
-        "marta-isabel-gustavino-castro"
-      ],
-      "genres": [
-        "horror"
-      ],
-      "id": "el-misterio-de-salems-lot-salems-lot",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "xavi-fernandez-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01N8RXNTM",
               "region": "us"
@@ -4116,26 +3977,36 @@
             "xavi-fernandez"
           ],
           "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-01-12",
+          "release_date": "2016-11-16",
           "runtime_min": 1016,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8401019044",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-29",
               "ref": "B01N8RXNTM",
               "type": "libex-import"
             }
           ],
-          "work": "el-misterio-de-salems-lot-salems-lot"
+          "work": "el-misterio-de-salems-lot"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019044",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01N8RXNTM",
           "type": "libex-import"
         }
       ],
-      "title": "El misterio de Salem's Lot [Salem's Lot]"
+      "title": "El misterio de Salem's Lot"
     },
     "el-misterio-del-aguila": {
       "added_at": "2026-07-29",
@@ -4814,7 +4685,8 @@
       ],
       "genres": [
         "military-history",
-        "politics"
+        "politics",
+        "war-military-fiction"
       ],
       "id": "el-monarca-de-las-sombras",
       "language": "es",
@@ -4827,55 +4699,7 @@
             {
               "asin": "8439732856",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ctY7W-kJL.jpg",
-          "id": "javier-cercas-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "javier-cercas",
-            "raul-llorens"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-02-16",
-          "runtime_min": 466,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8439732856",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-monarca-de-las-sombras"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8439732856",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El monarca de las sombras"
-    },
-    "el-monarca-de-las-sombras-the-monarch-of-the-shadows": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-cercas"
-      ],
-      "genres": [
-        "politics",
-        "war-military-fiction"
-      ],
-      "id": "el-monarca-de-las-sombras-the-monarch-of-the-shadows",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "javier-cercas-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01MTDAM9A",
               "region": "us"
@@ -4997,21 +4821,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8439732856",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MTDAM9A",
               "type": "libex-import"
             }
           ],
-          "work": "el-monarca-de-las-sombras-the-monarch-of-the-shadows"
+          "work": "el-monarca-de-las-sombras"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8439732856",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MTDAM9A",
           "type": "libex-import"
         }
       ],
-      "title": "El monarca de las sombras [The Monarch of the Shadows]"
+      "title": "El monarca de las sombras"
     },
     "el-monasterio-de-piedra": {
       "added_at": "2026-08-02",
@@ -5523,54 +5357,7 @@
             {
               "asin": "B0DW4HNG4R",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lv0j7lEOL.jpg",
-          "id": "mariana-de-iraola-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mariana-de-iraola"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2025-02-13",
-          "runtime_min": 355,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DW4HNG4R",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-monte-de-las-furias"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DW4HNG4R",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El monte de las furias"
-    },
-    "el-monte-de-las-furias-mount-of-furies": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernanda-trias"
-      ],
-      "genres": [
-        "literary-fiction",
-        "womens-fiction"
-      ],
-      "id": "el-monte-de-las-furias-mount-of-furies",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mariana-de-iraola-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0DW4KZZ5R",
               "region": "us"
@@ -5589,21 +5376,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0DW4HNG4R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0DW4KZZ5R",
               "type": "libex-import"
             }
           ],
-          "work": "el-monte-de-las-furias-mount-of-furies"
+          "work": "el-monte-de-las-furias"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DW4HNG4R",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DW4KZZ5R",
           "type": "libex-import"
         }
       ],
-      "title": "El monte de las furias [Mount of Furies]"
+      "title": "El monte de las furias"
     },
     "el-morador-de-las-tinieblas-the-haunter-of-the-dark": {
       "added_at": "2026-07-29",
@@ -6884,7 +6681,8 @@
         "helen-keller"
       ],
       "genres": [
-        "biography-memoir"
+        "biography-memoir",
+        "social-sciences"
       ],
       "id": "el-mundo-donde-vivo",
       "language": "es",
@@ -6897,54 +6695,7 @@
             {
               "asin": "9569755032",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-IEC+O7qL.jpg",
-          "id": "tammy-garea-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tammy-garea"
-          ],
-          "publisher": "Audiolibros Muerdago",
-          "release_date": "2015-12-27",
-          "runtime_min": 195,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "9569755032",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-mundo-donde-vivo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "9569755032",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El mundo donde vivo"
-    },
-    "el-mundo-donde-vivo-the-world-i-live-in": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "helen-keller"
-      ],
-      "genres": [
-        "biography-memoir",
-        "social-sciences"
-      ],
-      "id": "el-mundo-donde-vivo-the-world-i-live-in",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tammy-garea-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01D3NTBJG",
               "region": "us"
@@ -6963,21 +6714,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "9569755032",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01D3NTBJG",
               "type": "libex-import"
             }
           ],
-          "work": "el-mundo-donde-vivo-the-world-i-live-in"
+          "work": "el-mundo-donde-vivo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "9569755032",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01D3NTBJG",
           "type": "libex-import"
         }
       ],
-      "title": "El mundo donde vivo [The World I Live In]"
+      "title": "El mundo donde vivo"
     },
     "el-mundo-perdido-the-lost-world": {
       "added_at": "2026-08-02",
@@ -8330,55 +8091,7 @@
             {
               "asin": "6073158939",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-7C1bYeYL.jpg",
-          "id": "jesus-flores-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jesus-flores"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-10-04",
-          "runtime_min": 298,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "6073158939",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-negocio-del-siglo-21"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "6073158939",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El negocio del siglo 21"
-    },
-    "el-negocio-del-siglo-21-the-business-of-the-21st-century": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-t-kiyosaki",
-        "kim-kiyosaki",
-        "john-fleming"
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "el-negocio-del-siglo-21-the-business-of-the-21st-century",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jesus-flores-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0764L5T1Q",
               "region": "us"
@@ -8534,21 +8247,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "6073158939",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0764L5T1Q",
               "type": "libex-import"
             }
           ],
-          "work": "el-negocio-del-siglo-21-the-business-of-the-21st-century"
+          "work": "el-negocio-del-siglo-21"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073158939",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0764L5T1Q",
           "type": "libex-import"
         }
       ],
-      "title": "El negocio del siglo 21 [The Business of the 21st Century]"
+      "title": "El negocio del siglo 21"
     },
     "el-neruda-esencial": {
       "added_at": "2026-07-29",
@@ -8563,7 +8286,9 @@
         }
       ],
       "genres": [
-        "poetry"
+        "literary-fiction",
+        "poetry",
+        "romance"
       ],
       "id": "el-neruda-esencial",
       "language": "es",
@@ -8576,6 +8301,10 @@
             {
               "asin": "1504798732",
               "region": "es"
+            },
+            {
+              "asin": "B073ZVJGF5",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81VQ5MO6cLL.jpg",
@@ -8593,6 +8322,11 @@
               "imported_at": "2026-07-29",
               "ref": "1504798732",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B073ZVJGF5",
+              "type": "libex-import"
             }
           ],
           "work": "el-neruda-esencial"
@@ -8603,68 +8337,14 @@
           "imported_at": "2026-07-29",
           "ref": "1504798732",
           "type": "libex-import"
-        }
-      ],
-      "title": "El Neruda Esencial"
-    },
-    "el-neruda-esencial-the-essential-neruda": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "pablo-neruda",
-        "mark-eisner"
-      ],
-      "credits": [
-        {
-          "person": "mark-eisner",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "literary-fiction",
-        "poetry",
-        "romance"
-      ],
-      "id": "el-neruda-esencial-the-essential-neruda",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerardo-prat-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B073ZVJGF5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VQ5MO6cLL.jpg",
-          "id": "gerardo-prat-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerardo-prat"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2017-07-18",
-          "runtime_min": 129,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B073ZVJGF5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-neruda-esencial-the-essential-neruda"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B073ZVJGF5",
           "type": "libex-import"
         }
       ],
-      "title": "El Neruda Esencial [The Essential Neruda]"
+      "title": "El Neruda Esencial"
     },
     "el-nervio-optico": {
       "added_at": "2026-07-29",
@@ -10211,6 +9891,7 @@
       ],
       "genres": [
         "hard-boiled",
+        "historical-fiction",
         "mystery",
         "thriller-suspense"
       ],
@@ -10225,57 +9906,7 @@
             {
               "asin": "8490628947",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91M7OHqBZoL.jpg",
-          "id": "juan-carlos-gustems-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-carlos-gustems"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2015-07-28",
-          "runtime_min": 1349,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8490628947",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-nombre-de-la-rosa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8490628947",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El nombre de la rosa"
-    },
-    "el-nombre-de-la-rosa-the-name-of-the-rose": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "umberto-eco",
-        "ricardo-pochtar",
-        "tomas-de-la-ascension-recio"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "el-nombre-de-la-rosa-the-name-of-the-rose",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-carlos-gustems-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B012OVQZNS",
               "region": "us"
@@ -10596,21 +10227,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8490628947",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B012OVQZNS",
               "type": "libex-import"
             }
           ],
-          "work": "el-nombre-de-la-rosa-the-name-of-the-rose"
+          "work": "el-nombre-de-la-rosa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8490628947",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B012OVQZNS",
           "type": "libex-import"
         }
       ],
-      "title": "El nombre de la rosa [The Name of the Rose]"
+      "title": "El nombre de la rosa"
     },
     "el-nombre-del-viento-the-name-of-the-wind": {
       "added_at": "2026-08-02",

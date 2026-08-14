@@ -1940,13 +1940,303 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "dystopian",
         "fantasy",
+        "mystery",
+        "paranormal",
+        "science-fiction",
         "young-adult"
       ],
       "id": "the-keeper-david-baldacci",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "fiona-hardingham-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01184OK84",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 713224,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1053396,
+              "start_ms": 713224,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 614493,
+              "start_ms": 1766620,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 898426,
+              "start_ms": 2381113,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1178552,
+              "start_ms": 3279539,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1017406,
+              "start_ms": 4458091,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 700221,
+              "start_ms": 5475497,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 766491,
+              "start_ms": 6175718,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 743039,
+              "start_ms": 6942209,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 964046,
+              "start_ms": 7685248,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1486170,
+              "start_ms": 8649294,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1092638,
+              "start_ms": 10135464,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 893179,
+              "start_ms": 11228102,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 622620,
+              "start_ms": 12121281,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 821801,
+              "start_ms": 12743901,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 824633,
+              "start_ms": 13565702,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 530158,
+              "start_ms": 14390335,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 417495,
+              "start_ms": 14920493,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 654617,
+              "start_ms": 15337988,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 562202,
+              "start_ms": 15992605,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 831925,
+              "start_ms": 16554807,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 939015,
+              "start_ms": 17386732,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1003520,
+              "start_ms": 18325747,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 853566,
+              "start_ms": 19329267,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 544090,
+              "start_ms": 20182833,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 754323,
+              "start_ms": 20726923,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 727342,
+              "start_ms": 21481246,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1022746,
+              "start_ms": 22208588,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 716196,
+              "start_ms": 23231334,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 537821,
+              "start_ms": 23947530,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 608177,
+              "start_ms": 24485351,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1021492,
+              "start_ms": 25093528,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1095285,
+              "start_ms": 26115020,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 692976,
+              "start_ms": 27210305,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 628889,
+              "start_ms": 27903281,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 1166663,
+              "start_ms": 28532170,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 467511,
+              "start_ms": 29698833,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 799695,
+              "start_ms": 30166344,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 642032,
+              "start_ms": 30966039,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 827420,
+              "start_ms": 31608071,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 977328,
+              "start_ms": 32435491,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 892204,
+              "start_ms": 33412819,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 1265534,
+              "start_ms": 34305023,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 762358,
+              "start_ms": 35570557,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 423532,
+              "start_ms": 36332915,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 1272036,
+              "start_ms": 36756447,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 1004635,
+              "start_ms": 38028483,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 1068350,
+              "start_ms": 39033118,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 748844,
+              "start_ms": 40101468,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 1260751,
+              "start_ms": 40850312,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 889231,
+              "start_ms": 42111063,
+              "title": "Chapter 51"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Vowqz2UGL.jpg",
+          "id": "fiona-hardingham-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fiona-hardingham"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2015-09-08",
+          "runtime_min": 716,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01184OK84",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-keeper-david-baldacci"
+        },
         "fiona-hardingham-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2237,6 +2527,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B06WWPLBMH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01184OK84",
           "type": "libex-import"
         }
       ],
@@ -9078,318 +9373,6 @@
         }
       ],
       "title": "The Keeper"
-    },
-    "the-keeper-vega-jane-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "childrens",
-        "dystopian",
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "science-fiction"
-      ],
-      "id": "the-keeper-vega-jane-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fiona-hardingham-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01184OK84",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 713224,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1053396,
-              "start_ms": 713224,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 614493,
-              "start_ms": 1766620,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 898426,
-              "start_ms": 2381113,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1178552,
-              "start_ms": 3279539,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1017406,
-              "start_ms": 4458091,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 700221,
-              "start_ms": 5475497,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 766491,
-              "start_ms": 6175718,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 743039,
-              "start_ms": 6942209,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 964046,
-              "start_ms": 7685248,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1486170,
-              "start_ms": 8649294,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1092638,
-              "start_ms": 10135464,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 893179,
-              "start_ms": 11228102,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 622620,
-              "start_ms": 12121281,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 821801,
-              "start_ms": 12743901,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 824633,
-              "start_ms": 13565702,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 530158,
-              "start_ms": 14390335,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 417495,
-              "start_ms": 14920493,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 654617,
-              "start_ms": 15337988,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 562202,
-              "start_ms": 15992605,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 831925,
-              "start_ms": 16554807,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 939015,
-              "start_ms": 17386732,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1003520,
-              "start_ms": 18325747,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 853566,
-              "start_ms": 19329267,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 544090,
-              "start_ms": 20182833,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 754323,
-              "start_ms": 20726923,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 727342,
-              "start_ms": 21481246,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1022746,
-              "start_ms": 22208588,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 716196,
-              "start_ms": 23231334,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 537821,
-              "start_ms": 23947530,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 608177,
-              "start_ms": 24485351,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 1021492,
-              "start_ms": 25093528,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1095285,
-              "start_ms": 26115020,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 692976,
-              "start_ms": 27210305,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 628889,
-              "start_ms": 27903281,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 1166663,
-              "start_ms": 28532170,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 467511,
-              "start_ms": 29698833,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 799695,
-              "start_ms": 30166344,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 642032,
-              "start_ms": 30966039,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 827420,
-              "start_ms": 31608071,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 977328,
-              "start_ms": 32435491,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 892204,
-              "start_ms": 33412819,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 1265534,
-              "start_ms": 34305023,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 762358,
-              "start_ms": 35570557,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 423532,
-              "start_ms": 36332915,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 1272036,
-              "start_ms": 36756447,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 1004635,
-              "start_ms": 38028483,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 1068350,
-              "start_ms": 39033118,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 748844,
-              "start_ms": 40101468,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 1260751,
-              "start_ms": 40850312,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 889231,
-              "start_ms": 42111063,
-              "title": "Chapter 51"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Vowqz2UGL.jpg",
-          "id": "fiona-hardingham-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fiona-hardingham"
-          ],
-          "publisher": "Scholastic Audio Books",
-          "release_date": "2015-09-08",
-          "runtime_min": 716,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01184OK84",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-keeper-vega-jane-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01184OK84",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Keeper (Vega Jane, Book 2)"
     },
     "the-keepers": {
       "added_at": "2026-08-02",

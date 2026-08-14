@@ -15780,6 +15780,8 @@
         "laura-thalassa"
       ],
       "genres": [
+        "arts-entertainment",
+        "fantasy",
         "paranormal",
         "post-apocalyptic",
         "romance",
@@ -15790,6 +15792,87 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-quilpa-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FNNH3QKF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3566000,
+              "start_ms": 36970,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 3949830,
+              "start_ms": 3602970,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 4465452,
+              "start_ms": 7552800,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 3551004,
+              "start_ms": 12018252,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 4036812,
+              "start_ms": 15569256,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 27477791,
+              "start_ms": 19606068,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 92463,
+              "start_ms": 47083859,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LmPo-LoKL.jpg",
+          "id": "andrew-quilpa-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-quilpa",
+            "brandon-marlowe",
+            "christopher-williams",
+            "damon-alums",
+            "daniel-llaca",
+            "eric-messner",
+            "felicity-cross",
+            "full-cast",
+            "holly-adams",
+            "julian-dailey",
+            "robb-moreira",
+            "wyn-delano"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-10-30",
+          "runtime_min": 786,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FNNH3QKF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "famine"
+        },
         "jay-ben-markson-2020": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -16122,115 +16205,14 @@
           "imported_at": "2026-08-01",
           "ref": "B08R98Z88G",
           "type": "libex-import"
-        }
-      ],
-      "title": "Famine"
-    },
-    "famine-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "laura-thalassa"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "famine-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-quilpa-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FNNH3QKF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3566000,
-              "start_ms": 36970,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 3949830,
-              "start_ms": 3602970,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 4465452,
-              "start_ms": 7552800,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 3551004,
-              "start_ms": 12018252,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 4036812,
-              "start_ms": 15569256,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 27477791,
-              "start_ms": 19606068,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 92463,
-              "start_ms": 47083859,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81LmPo-LoKL.jpg",
-          "id": "andrew-quilpa-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-quilpa",
-            "brandon-marlowe",
-            "christopher-williams",
-            "damon-alums",
-            "daniel-llaca",
-            "eric-messner",
-            "felicity-cross",
-            "full-cast",
-            "holly-adams",
-            "julian-dailey",
-            "robb-moreira",
-            "wyn-delano"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-10-30",
-          "runtime_min": 786,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FNNH3QKF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "famine-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FNNH3QKF",
           "type": "libex-import"
         }
       ],
-      "title": "Famine (Dramatized Adaptation)"
+      "title": "Famine"
     },
     "famine-graham-masterton": {
       "added_at": "2026-07-29",

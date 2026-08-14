@@ -8840,6 +8840,86 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "b-j-harrison-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B014F6Z5VS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1813896,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2633700,
+              "start_ms": 1813896,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2818856,
+              "start_ms": 4447596,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1994826,
+              "start_ms": 7266452,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2199719,
+              "start_ms": 9261278,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4338602,
+              "start_ms": 11460997,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1434157,
+              "start_ms": 15799599,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1873990,
+              "start_ms": 17233756,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3165019,
+              "start_ms": 19107746,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 75372,
+              "start_ms": 22272765,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61gz0-dtYQL.jpg",
+          "id": "b-j-harrison-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2015-08-25",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B014F6Z5VS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar"
+        },
         "brady-smith-2026": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -9096,113 +9176,14 @@
           "imported_at": "2026-07-30",
           "ref": "1662069502",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar"
-    },
-    "the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar-classic-tales-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maurice-leblanc"
-      ],
-      "genres": [
-        "classics",
-        "mystery",
-        "short-stories"
-      ],
-      "id": "the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B014F6Z5VS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1813896,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2633700,
-              "start_ms": 1813896,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2818856,
-              "start_ms": 4447596,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1994826,
-              "start_ms": 7266452,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2199719,
-              "start_ms": 9261278,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4338602,
-              "start_ms": 11460997,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1434157,
-              "start_ms": 15799599,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1873990,
-              "start_ms": 17233756,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3165019,
-              "start_ms": 19107746,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 75372,
-              "start_ms": 22272765,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61gz0-dtYQL.jpg",
-          "id": "b-j-harrison-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B.J. Harrison",
-          "release_date": "2015-08-25",
-          "runtime_min": 372,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B014F6Z5VS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar-classic-tales-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B014F6Z5VS",
           "type": "libex-import"
         }
       ],
-      "title": "The Extraordinary Adventures of Arsene Lupin, Gentleman Burglar [Classic Tales Edition]"
+      "title": "The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar"
     },
     "the-extraordinary-deaths-of-mrs-kip": {
       "added_at": "2026-07-29",
@@ -16125,13 +16106,170 @@
         "james-dashner"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "the-eye-of-minds",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "erik-davies-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00EZ5NMWE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1210456,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2095926,
+              "start_ms": 1210456,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1132994,
+              "start_ms": 3306382,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 621041,
+              "start_ms": 4439376,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 825794,
+              "start_ms": 5060417,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1264559,
+              "start_ms": 5886211,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2048511,
+              "start_ms": 7150770,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1244264,
+              "start_ms": 9199281,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1793463,
+              "start_ms": 10443545,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1439684,
+              "start_ms": 12237008,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1149620,
+              "start_ms": 13676692,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 774107,
+              "start_ms": 14826312,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2002628,
+              "start_ms": 15600419,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1829314,
+              "start_ms": 17603047,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1095239,
+              "start_ms": 19432361,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1725661,
+              "start_ms": 20527600,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1264419,
+              "start_ms": 22253261,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 898334,
+              "start_ms": 23517680,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1341603,
+              "start_ms": 24416014,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 880036,
+              "start_ms": 25757617,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 452928,
+              "start_ms": 26637653,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 749494,
+              "start_ms": 27090581,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 945470,
+              "start_ms": 27840075,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1279002,
+              "start_ms": 28785545,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 961492,
+              "start_ms": 30064547,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918PdhyK8UL.jpg",
+          "id": "erik-davies-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erik-davies"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-10-08",
+          "runtime_min": 516,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00EZ5NMWE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-eye-of-minds"
+        },
         "erik-davies-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -16293,188 +16431,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00UIE8HY4",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Eye of Minds"
-    },
-    "the-eye-of-minds-the-mortality-doctrine-book-one": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-dashner"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "the-eye-of-minds-the-mortality-doctrine-book-one",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "erik-davies-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00EZ5NMWE",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1210456,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2095926,
-              "start_ms": 1210456,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1132994,
-              "start_ms": 3306382,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 621041,
-              "start_ms": 4439376,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 825794,
-              "start_ms": 5060417,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1264559,
-              "start_ms": 5886211,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2048511,
-              "start_ms": 7150770,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1244264,
-              "start_ms": 9199281,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1793463,
-              "start_ms": 10443545,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1439684,
-              "start_ms": 12237008,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1149620,
-              "start_ms": 13676692,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 774107,
-              "start_ms": 14826312,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2002628,
-              "start_ms": 15600419,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1829314,
-              "start_ms": 17603047,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1095239,
-              "start_ms": 19432361,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1725661,
-              "start_ms": 20527600,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1264419,
-              "start_ms": 22253261,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 898334,
-              "start_ms": 23517680,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1341603,
-              "start_ms": 24416014,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 880036,
-              "start_ms": 25757617,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 452928,
-              "start_ms": 26637653,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 749494,
-              "start_ms": 27090581,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 945470,
-              "start_ms": 27840075,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1279002,
-              "start_ms": 28785545,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 961492,
-              "start_ms": 30064547,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/918PdhyK8UL.jpg",
-          "id": "erik-davies-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "erik-davies"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2013-10-08",
-          "runtime_min": 516,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00EZ5NMWE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-eye-of-minds-the-mortality-doctrine-book-one"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00EZ5NMWE",
           "type": "libex-import"
         }
       ],
-      "title": "The Eye of Minds (The Mortality Doctrine, Book One)"
+      "title": "The Eye of Minds"
     },
     "the-eye-of-moloch": {
       "added_at": "2026-07-29",

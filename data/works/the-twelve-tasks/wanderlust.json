@@ -5578,72 +5578,6 @@
       ],
       "title": "Want"
     },
-    "want-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gillian-anderson",
-        "kim-kostlin"
-      ],
-      "credits": [
-        {
-          "person": "kim-kostlin",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "erotica",
-        "health-wellness",
-        "parenting-relationships",
-        "politics",
-        "psychology",
-        "social-sciences"
-      ],
-      "id": "want-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chantal-busse-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D9HSLBNW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61Ajsh-8hPL.jpg",
-          "id": "chantal-busse-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chantal-busse",
-            "elisabeth-gunther",
-            "gillian-anderson",
-            "maria-hartmann",
-            "verena-wolfien"
-          ],
-          "publisher": "Hörbuch Hamburg",
-          "release_date": "2024-09-05",
-          "runtime_min": 684,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D9HSLBNW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "want-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D9HSLBNW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "WANT (German Edition)"
-    },
     "want-gillian-anderson": {
       "added_at": "2026-07-29",
       "authors": [
@@ -5675,6 +5609,10 @@
             {
               "asin": "B0D9HPJ1LM",
               "region": "de"
+            },
+            {
+              "asin": "B0D9HSLBNW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61Ajsh-8hPL.jpg",
@@ -5696,6 +5634,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0D9HPJ1LM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D9HSLBNW",
+              "type": "libex-import"
             }
           ],
           "work": "want-gillian-anderson"
@@ -5705,6 +5648,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0D9HPJ1LM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D9HSLBNW",
           "type": "libex-import"
         }
       ],
@@ -7215,14 +7163,243 @@
       "authors": [
         "sara-shepard"
       ],
+      "genres": [
+        "coming-of-age",
+        "parenting-relationships",
+        "romance",
+        "self-help",
+        "young-adult"
+      ],
       "id": "wanted",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-morris-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003WZAFNM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 868473,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 860578,
+              "start_ms": 868473,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 610360,
+              "start_ms": 1729051,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 702032,
+              "start_ms": 2339411,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 737791,
+              "start_ms": 3041443,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 788782,
+              "start_ms": 3779234,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 648905,
+              "start_ms": 4568016,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 665437,
+              "start_ms": 5216921,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 969247,
+              "start_ms": 5882358,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1059201,
+              "start_ms": 6851605,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 680159,
+              "start_ms": 7910806,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 690190,
+              "start_ms": 8590965,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1099047,
+              "start_ms": 9281155,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1169403,
+              "start_ms": 10380202,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 831042,
+              "start_ms": 11549605,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 651784,
+              "start_ms": 12380647,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 617976,
+              "start_ms": 13032431,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 497511,
+              "start_ms": 13650407,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 613843,
+              "start_ms": 14147918,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 582124,
+              "start_ms": 14761761,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 567078,
+              "start_ms": 15343885,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 765469,
+              "start_ms": 15910963,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 654153,
+              "start_ms": 16676432,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 425947,
+              "start_ms": 17330585,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 274135,
+              "start_ms": 17756532,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 451535,
+              "start_ms": 18030667,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 392464,
+              "start_ms": 18482202,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 453997,
+              "start_ms": 18874666,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 859974,
+              "start_ms": 19328663,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 573254,
+              "start_ms": 20188637,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 689726,
+              "start_ms": 20761891,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 692837,
+              "start_ms": 21451617,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 655035,
+              "start_ms": 22144454,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 469182,
+              "start_ms": 22799489,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 731521,
+              "start_ms": 23268671,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 457433,
+              "start_ms": 24000192,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 40635,
+              "start_ms": 24457625,
+              "title": "Chapter 37"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Fm0mAF+rL.jpg",
+          "id": "cassandra-morris-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-morris"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2010-08-03",
+          "runtime_min": 408,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003WZAFNM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wanted"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/3047851-wanted",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003WZAFNM",
+          "type": "libex-import"
         }
       ],
       "title": "Wanted",

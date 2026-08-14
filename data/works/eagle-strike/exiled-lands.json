@@ -14183,6 +14183,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CMYY5PWM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 32066,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3187868,
+              "start_ms": 32066,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3351452,
+              "start_ms": 3219934,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3570857,
+              "start_ms": 6571386,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 355543,
+              "start_ms": 10142243,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91f0V5U9CDL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 170,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CMYY5PWM",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CMYY5PWM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "exit-strategy"
+        },
         "kevin-r-free-2018": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -14284,6 +14344,16 @@
           "imported_at": "2026-07-30",
           "ref": "B07FF9TJ2K",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0CMYY5PWM",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0CMYY5PWM",
+          "type": "libex-import"
         }
       ],
       "title": "Exit Strategy"
@@ -14339,94 +14409,6 @@
         }
       ],
       "title": "Exit Strategy"
-    },
-    "exit-strategy-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "martha-wells"
-      ],
-      "genres": [
-        "hard-science-fiction",
-        "science-fiction"
-      ],
-      "id": "exit-strategy-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CMYY5PWM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32066,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3187868,
-              "start_ms": 32066,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3351452,
-              "start_ms": 3219934,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3570857,
-              "start_ms": 6571386,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 355543,
-              "start_ms": 10142243,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91f0V5U9CDL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 170,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CMYY5PWM",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CMYY5PWM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "exit-strategy-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0CMYY5PWM",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0CMYY5PWM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Exit Strategy (Dramatized Adaptation)"
     },
     "exit-strategy-kelley-armstrong": {
       "added_at": "2026-07-29",

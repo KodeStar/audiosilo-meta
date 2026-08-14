@@ -4549,7 +4549,7 @@
       ],
       "title": "Errant Spark"
     },
-    "errar-es-azrin-narracion-en-castellano-to-err-is-azrin": {
+    "errar-es-azrin-to-err-is-azrin": {
       "added_at": "2026-08-02",
       "authors": [
         "j-s-morin"
@@ -4558,73 +4558,6 @@
         "fantasy",
         "science-fiction",
         "space-opera"
-      ],
-      "id": "errar-es-azrin-narracion-en-castellano-to-err-is-azrin",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roger-vidal-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0881X6YZY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16960,
-              "start_ms": 0,
-              "title": "Créditos de Apertura"
-            },
-            {
-              "length_ms": 18062030,
-              "start_ms": 16960,
-              "title": "Errar Es Azrín"
-            },
-            {
-              "length_ms": 47618,
-              "start_ms": 18078990,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HIjswAqNL.jpg",
-          "id": "roger-vidal-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roger-vidal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-05-05",
-          "runtime_min": 301,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0881X6YZY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "errar-es-azrin-narracion-en-castellano-to-err-is-azrin"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0881X6YZY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Errar Es Azrín (Narración en Castellano) [To Err Is Azrin]"
-    },
-    "errar-es-azrin-to-err-is-azrin": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction"
       ],
       "id": "errar-es-azrin-to-err-is-azrin",
       "language": "es",
@@ -4924,12 +4857,62 @@
             }
           ],
           "work": "errar-es-azrin-to-err-is-azrin"
+        },
+        "roger-vidal-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0881X6YZY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16960,
+              "start_ms": 0,
+              "title": "Créditos de Apertura"
+            },
+            {
+              "length_ms": 18062030,
+              "start_ms": 16960,
+              "title": "Errar Es Azrín"
+            },
+            {
+              "length_ms": 47618,
+              "start_ms": 18078990,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HIjswAqNL.jpg",
+          "id": "roger-vidal-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roger-vidal"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-05-05",
+          "runtime_min": 301,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0881X6YZY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "errar-es-azrin-to-err-is-azrin"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B08YKGG9GJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0881X6YZY",
           "type": "libex-import"
         }
       ],

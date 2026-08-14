@@ -7,6 +7,8 @@
       ],
       "genres": [
         "classics",
+        "literary-fiction",
+        "magical-realism",
         "short-stories"
       ],
       "id": "the-magic-shop",
@@ -259,6 +261,34 @@
           ],
           "work": "the-magic-shop"
         },
+        "luis-angel-echeverria-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07YVM4GTX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91PYvpOsU8L.jpg",
+          "id": "luis-angel-echeverria-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luis-angel-echeverria"
+          ],
+          "publisher": "Aery Media",
+          "release_date": "2019-10-10",
+          "runtime_min": 25,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YVM4GTX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-magic-shop"
+        },
         "paul-spera-2019": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -441,60 +471,14 @@
           "imported_at": "2026-07-30",
           "ref": "B005BTYYNO",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Magic Shop"
-    },
-    "the-magic-shop-annotated": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-g-wells"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism"
-      ],
-      "id": "the-magic-shop-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-angel-echeverria-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YVM4GTX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PYvpOsU8L.jpg",
-          "id": "luis-angel-echeverria-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-angel-echeverria"
-          ],
-          "publisher": "Aery Media",
-          "release_date": "2019-10-10",
-          "runtime_min": 25,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YVM4GTX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magic-shop-annotated"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07YVM4GTX",
           "type": "libex-import"
         }
       ],
-      "title": "The Magic Shop (Annotated)"
+      "title": "The Magic Shop"
     },
     "the-magic-shop-justin-swapp": {
       "added_at": "2026-08-01",
@@ -9328,6 +9312,8 @@
       ],
       "genres": [
         "childrens",
+        "coming-of-age",
+        "fantasy",
         "mystery"
       ],
       "id": "the-magicians-map",
@@ -9518,33 +9504,7 @@
             }
           ],
           "work": "the-magicians-map"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "100403699X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Magician's Map"
-    },
-    "the-magicians-map-the-house-on-hoarder-hill-book-two": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mikki-lish",
-        "kelly-ngai"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "mystery"
-      ],
-      "id": "the-magicians-map-the-house-on-hoarder-hill-book-two",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "fiona-hardingham-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9733,17 +9693,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-magicians-map-the-house-on-hoarder-hill-book-two"
+          "work": "the-magicians-map"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "100403699X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1338779249",
           "type": "libex-import"
         }
       ],
-      "title": "The Magician's Map (The House on Hoarder Hill, Book Two)"
+      "title": "The Magician's Map"
     },
     "the-magicians-nephew": {
       "added_at": "2026-08-02",

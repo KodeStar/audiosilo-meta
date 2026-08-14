@@ -10372,15 +10372,22 @@
       "added_at": "2026-07-29",
       "authors": [
         "aristotle",
-        "w-d-ross"
+        "w-d-ross",
+        "david-ross"
       ],
       "credits": [
+        {
+          "person": "david-ross",
+          "role": "translator"
+        },
         {
           "person": "w-d-ross",
           "role": "translator"
         }
       ],
       "genres": [
+        "classics",
+        "mythology",
         "parenting-relationships",
         "philosophy",
         "politics",
@@ -10540,12 +10547,45 @@
             }
           ],
           "work": "nicomachean-ethics"
+        },
+        "nadia-may-2004": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8MLTC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PHBtllKbL.jpg",
+          "id": "nadia-may-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nadia-may"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2004-05-13",
+          "runtime_min": 525,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8MLTC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicomachean-ethics"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B004TC0TSS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8MLTC",
           "type": "libex-import"
         }
       ],
@@ -10959,65 +10999,7 @@
             {
               "asin": "B0D4NBFQTM",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IeLMOx9vL.jpg",
-          "id": "aleix-pena-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aleix-pena",
-            "isa-puchol",
-            "lluis-roda",
-            "roger-serradell",
-            "ruben-felis"
-          ],
-          "publisher": "Podium Audio",
-          "release_date": "2024-06-04",
-          "runtime_min": 1499,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D4NBFQTM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nido-de-viboras"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D4NBFQTM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nido de víboras"
-    },
-    "nido-de-viboras-den-of-vipers": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "k-a-knight",
-        "manuel-de-los-reyes-garcia-campos"
-      ],
-      "credits": [
-        {
-          "person": "manuel-de-los-reyes-garcia-campos",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "erotica",
-        "romance"
-      ],
-      "id": "nido-de-viboras-den-of-vipers",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aleix-pena-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0D4N3YNZ7",
               "region": "us"
@@ -11040,21 +11022,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0D4NBFQTM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0D4N3YNZ7",
               "type": "libex-import"
             }
           ],
-          "work": "nido-de-viboras-den-of-vipers"
+          "work": "nido-de-viboras"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D4NBFQTM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D4N3YNZ7",
           "type": "libex-import"
         }
       ],
-      "title": "Nido de víboras [Den of Vipers]"
+      "title": "Nido de víboras"
     },
     "nidra-yoga-for-beginners": {
       "added_at": "2026-07-29",

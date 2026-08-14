@@ -5349,32 +5349,12 @@
       "authors": [
         "rachel-hawkins"
       ],
-      "id": "hex-hall",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/5287473-hex-hall",
-          "type": "community"
-        }
-      ],
-      "title": "Hex Hall",
-      "xref": {
-        "goodreads": "5287473"
-      }
-    },
-    "hex-hall-hex-hall-series-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rachel-hawkins"
-      ],
       "genres": [
         "fantasy",
         "self-help",
         "young-adult"
       ],
-      "id": "hex-hall-hex-hall-series-book-1",
+      "id": "hex-hall",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5566,17 +5546,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "hex-hall-hex-hall-series-book-1"
+          "work": "hex-hall"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/5287473-hex-hall",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B008BTK5W0",
           "type": "libex-import"
         }
       ],
-      "title": "Hex Hall: Hex Hall Series, Book 1"
+      "title": "Hex Hall",
+      "xref": {
+        "goodreads": "5287473"
+      }
     },
     "hex-kittens-1": {
       "added_at": "2026-08-02",
@@ -11400,14 +11388,191 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
         "fantasy",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "hexed",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-ragland-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00CXS0G9C",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13408,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1191197,
+              "start_ms": 13408,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1088366,
+              "start_ms": 1204605,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 841027,
+              "start_ms": 2292971,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 907482,
+              "start_ms": 3133998,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2452770,
+              "start_ms": 4041480,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 233546,
+              "start_ms": 6494250,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1302593,
+              "start_ms": 6727796,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 572418,
+              "start_ms": 8030389,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1728261,
+              "start_ms": 8602807,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1730630,
+              "start_ms": 10331068,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1474421,
+              "start_ms": 12061698,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2225540,
+              "start_ms": 13536119,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1539390,
+              "start_ms": 15761659,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2026173,
+              "start_ms": 17301049,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2252614,
+              "start_ms": 19327222,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1437455,
+              "start_ms": 21579836,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1104666,
+              "start_ms": 23017291,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1368677,
+              "start_ms": 24121957,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 690143,
+              "start_ms": 25490634,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 989402,
+              "start_ms": 26180777,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1706945,
+              "start_ms": 27170179,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 146146,
+              "start_ms": 28877124,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 372541,
+              "start_ms": 29023270,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 3245500,
+              "start_ms": 29395811,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 854494,
+              "start_ms": 32641311,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 262618,
+              "start_ms": 33495805,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 171503,
+              "start_ms": 33758423,
+              "title": "Acknowledgments"
+            },
+            {
+              "length_ms": 1137127,
+              "start_ms": 33929926,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bs3meLNiL.jpg",
+          "id": "christopher-ragland-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-ragland"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2013-05-29",
+          "runtime_min": 584,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00CXS0G9C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hexed"
+        },
         "luke-daniels-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11583,6 +11748,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0052FRKMO",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00CXS0G9C",
           "type": "libex-import"
         }
       ],
@@ -14063,205 +14233,6 @@
         }
       ],
       "title": "Hexed (Spanish Edition)"
-    },
-    "hexed-the-iron-druid-chronicles-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kevin-hearne"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "hexed-the-iron-druid-chronicles-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-ragland-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00CXS0G9C",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13408,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1191197,
-              "start_ms": 13408,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1088366,
-              "start_ms": 1204605,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 841027,
-              "start_ms": 2292971,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 907482,
-              "start_ms": 3133998,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2452770,
-              "start_ms": 4041480,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 233546,
-              "start_ms": 6494250,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1302593,
-              "start_ms": 6727796,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 572418,
-              "start_ms": 8030389,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1728261,
-              "start_ms": 8602807,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1730630,
-              "start_ms": 10331068,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1474421,
-              "start_ms": 12061698,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2225540,
-              "start_ms": 13536119,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1539390,
-              "start_ms": 15761659,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2026173,
-              "start_ms": 17301049,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2252614,
-              "start_ms": 19327222,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1437455,
-              "start_ms": 21579836,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1104666,
-              "start_ms": 23017291,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1368677,
-              "start_ms": 24121957,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 690143,
-              "start_ms": 25490634,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 989402,
-              "start_ms": 26180777,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1706945,
-              "start_ms": 27170179,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 146146,
-              "start_ms": 28877124,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 372541,
-              "start_ms": 29023270,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 3245500,
-              "start_ms": 29395811,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 854494,
-              "start_ms": 32641311,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 262618,
-              "start_ms": 33495805,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 171503,
-              "start_ms": 33758423,
-              "title": "Acknowledgments"
-            },
-            {
-              "length_ms": 1137127,
-              "start_ms": 33929926,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91bs3meLNiL.jpg",
-          "id": "christopher-ragland-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-ragland"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2013-05-29",
-          "runtime_min": 584,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00CXS0G9C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hexed-the-iron-druid-chronicles-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00CXS0G9C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hexed: The Iron Druid Chronicles, Book 2"
     },
     "hexen-bond-dark-paranormal-fantasy-romance": {
       "added_at": "2026-08-01",

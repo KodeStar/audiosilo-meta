@@ -71,53 +71,7 @@
             {
               "asin": "B0833CCW3S",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WYyaYt2-L.jpg",
-          "id": "isabel-vara-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isabel-vara"
-          ],
-          "publisher": "FonoLibro Inc.",
-          "release_date": "2020-01-07",
-          "runtime_min": 78,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0833CCW3S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "quien-es-y-quien-fue-el-conde-de-saint-germain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0833CCW3S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Quien es y Quien fue el Conde de Saint Germain"
-    },
-    "quien-es-y-quien-fue-el-conde-de-saint-germain-who-is-and-who-was-the-count-of-saint-germain": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "conny-mendez"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "quien-es-y-quien-fue-el-conde-de-saint-germain-who-is-and-who-was-the-count-of-saint-germain",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isabel-vara-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "1611541719",
               "region": "us"
@@ -136,21 +90,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0833CCW3S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "1611541719",
               "type": "libex-import"
             }
           ],
-          "work": "quien-es-y-quien-fue-el-conde-de-saint-germain-who-is-and-who-was-the-count-of-saint-germain"
+          "work": "quien-es-y-quien-fue-el-conde-de-saint-germain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0833CCW3S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1611541719",
           "type": "libex-import"
         }
       ],
-      "title": "Quien es y Quien fue el Conde de Saint Germain [Who Is and Who Was the Count of Saint Germain]"
+      "title": "Quien es y Quien fue el Conde de Saint Germain"
     },
     "quien-mato-a-palomino-molero-who-killed-palomino-molero": {
       "added_at": "2026-07-29",
@@ -10235,6 +10199,7 @@
         "action-adventure",
         "childrens",
         "comedy-humor",
+        "fantasy",
         "horror"
       ],
       "id": "quint-and-dirks-hero-quest",
@@ -10247,6 +10212,10 @@
           "asin": [
             {
               "asin": "B0BF2H42Q9",
+              "region": "us"
+            },
+            {
+              "asin": "B09G3HQK4L",
               "region": "us"
             }
           ],
@@ -10402,6 +10371,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BF2H42Q9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09G3HQK4L",
+              "type": "libex-import"
             }
           ],
           "work": "quint-and-dirks-hero-quest"
@@ -10411,6 +10385,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0BF2H42Q9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09G3HQK4L",
           "type": "libex-import"
         }
       ],

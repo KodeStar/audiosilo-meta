@@ -2112,12 +2112,46 @@
             }
           ],
           "work": "redemption-david-baldacci"
+        },
+        "kyf-brewer-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBKRQMQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Rd0AHdFDL.jpg",
+          "id": "kyf-brewer-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kyf-brewer",
+            "orlagh-cassidy"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 739,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBKRQMQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "redemption-david-baldacci"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "147899925X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBKRQMQ",
           "type": "libex-import"
         }
       ],
@@ -13691,7 +13725,9 @@
       "genres": [
         "espionage",
         "hard-boiled",
-        "mystery"
+        "mystery",
+        "politics",
+        "thriller-suspense"
       ],
       "id": "redencion",
       "language": "es",
@@ -13704,84 +13740,7 @@
             {
               "asin": "B07YX36G98",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71YEBGVWNoL.jpg",
-          "id": "aida-baida-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aida-baida"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-07-06",
-          "runtime_min": 1405,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX36G98",
-              "type": "libex-import"
-            }
-          ],
-          "work": "redencion"
-        },
-        "lourdes-arruti-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YX21F25",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71YEBGVWNoL.jpg",
-          "id": "lourdes-arruti-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lourdes-arruti"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-07-12",
-          "runtime_min": 1466,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX21F25",
-              "type": "libex-import"
-            }
-          ],
-          "work": "redencion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX36G98",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Redención"
-    },
-    "redencion-narracion-en-castellano-redemption": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-gamboa"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "redencion-narracion-en-castellano-redemption",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aida-baida-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07TYNC7LS",
               "region": "us"
@@ -13800,41 +13759,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX36G98",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07TYNC7LS",
               "type": "libex-import"
             }
           ],
-          "work": "redencion-narracion-en-castellano-redemption"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07TYNC7LS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Redención (Narración en Castellano) [Redemption]"
-    },
-    "redencion-redemption": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-gamboa"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "redencion-redemption",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "redencion"
+        },
         "lourdes-arruti-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07YX21F25",
+              "region": "es"
+            },
             {
               "asin": "B07V2K395V",
               "region": "us"
@@ -13853,21 +13796,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX21F25",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07V2K395V",
               "type": "libex-import"
             }
           ],
-          "work": "redencion-redemption"
+          "work": "redencion"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX36G98",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07TYNC7LS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07V2K395V",
           "type": "libex-import"
         }
       ],
-      "title": "Redención [Redemption]"
+      "title": "Redención"
     },
     "redeployment": {
       "added_at": "2026-07-29",

@@ -7666,6 +7666,7 @@
         "fantasy",
         "paranormal",
         "romance",
+        "urban-fantasy",
         "young-adult"
       ],
       "id": "shadow-kiss",
@@ -7865,40 +7866,7 @@
             }
           ],
           "work": "shadow-kiss"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/2802316-shadow-kiss",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07LH7MLGS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shadow Kiss",
-      "xref": {
-        "goodreads": "2802316"
-      }
-    },
-    "shadow-kiss-a-vampire-academy-novel-volume-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "richelle-mead"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy",
-        "young-adult"
-      ],
-      "id": "shadow-kiss-a-vampire-academy-novel-volume-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "khristine-hvam-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8087,17 +8055,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "shadow-kiss-a-vampire-academy-novel-volume-3"
+          "work": "shadow-kiss"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/2802316-shadow-kiss",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07LH7MLGS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BWFJX96Q",
           "type": "libex-import"
         }
       ],
-      "title": "Shadow Kiss: A Vampire Academy Novel Volume 3"
+      "title": "Shadow Kiss",
+      "xref": {
+        "goodreads": "2802316"
+      }
     },
     "shadow-kissed": {
       "added_at": "2026-08-02",
@@ -12399,18 +12380,226 @@
         "donna-grant"
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "fantasy",
         "gothic",
         "historical-fiction",
         "historical-romance",
+        "history",
         "horror",
+        "paranormal",
         "romance"
       ],
       "id": "shadow-magic-donna-grant",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kim-bretton-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQ9L6LKF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 840353,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1071182,
+              "start_ms": 840353,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 899355,
+              "start_ms": 1911535,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 600398,
+              "start_ms": 2810890,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 684965,
+              "start_ms": 3411288,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 771947,
+              "start_ms": 4096253,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1063102,
+              "start_ms": 4868200,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 740600,
+              "start_ms": 5931302,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 936042,
+              "start_ms": 6671902,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 750074,
+              "start_ms": 7607944,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1010114,
+              "start_ms": 8358018,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1018171,
+              "start_ms": 9368132,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 937900,
+              "start_ms": 10386303,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 844207,
+              "start_ms": 11324203,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 883124,
+              "start_ms": 12168410,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1014270,
+              "start_ms": 13051534,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 958078,
+              "start_ms": 14065804,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 769927,
+              "start_ms": 15023882,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 779261,
+              "start_ms": 15793809,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 770670,
+              "start_ms": 16573070,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 926360,
+              "start_ms": 17343740,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 647256,
+              "start_ms": 18270100,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 787342,
+              "start_ms": 18917356,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 730569,
+              "start_ms": 19704698,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 816320,
+              "start_ms": 20435267,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 729454,
+              "start_ms": 21251587,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 759478,
+              "start_ms": 21981041,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 813278,
+              "start_ms": 22740519,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 793611,
+              "start_ms": 23553797,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 860136,
+              "start_ms": 24347408,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 733982,
+              "start_ms": 25207544,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 800507,
+              "start_ms": 25941526,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1341741,
+              "start_ms": 26742033,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 560901,
+              "start_ms": 28083774,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 466743,
+              "start_ms": 28644675,
+              "title": "Chapter 35"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91sNNy+rZgL.jpg",
+          "id": "kim-bretton-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kim-bretton"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2024-01-02",
+          "runtime_min": 485,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ9L6LKF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shadow-magic-donna-grant"
+        },
         "m-capehart-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12444,6 +12633,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00HDLPOR8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQ9L6LKF",
           "type": "libex-import"
         }
       ],
@@ -13437,238 +13631,6 @@
         }
       ],
       "title": "Shadow Magic"
-    },
-    "shadow-magic-sisters-of-magic-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "donna-grant"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "paranormal",
-        "romance"
-      ],
-      "id": "shadow-magic-sisters-of-magic-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kim-bretton-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CQ9L6LKF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 840353,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1071182,
-              "start_ms": 840353,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 899355,
-              "start_ms": 1911535,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 600398,
-              "start_ms": 2810890,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 684965,
-              "start_ms": 3411288,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 771947,
-              "start_ms": 4096253,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1063102,
-              "start_ms": 4868200,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 740600,
-              "start_ms": 5931302,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 936042,
-              "start_ms": 6671902,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 750074,
-              "start_ms": 7607944,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1010114,
-              "start_ms": 8358018,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1018171,
-              "start_ms": 9368132,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 937900,
-              "start_ms": 10386303,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 844207,
-              "start_ms": 11324203,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 883124,
-              "start_ms": 12168410,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1014270,
-              "start_ms": 13051534,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 958078,
-              "start_ms": 14065804,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 769927,
-              "start_ms": 15023882,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 779261,
-              "start_ms": 15793809,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 770670,
-              "start_ms": 16573070,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 926360,
-              "start_ms": 17343740,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 647256,
-              "start_ms": 18270100,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 787342,
-              "start_ms": 18917356,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 730569,
-              "start_ms": 19704698,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 816320,
-              "start_ms": 20435267,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 729454,
-              "start_ms": 21251587,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 759478,
-              "start_ms": 21981041,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 813278,
-              "start_ms": 22740519,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 793611,
-              "start_ms": 23553797,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 860136,
-              "start_ms": 24347408,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 733982,
-              "start_ms": 25207544,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 800507,
-              "start_ms": 25941526,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1341741,
-              "start_ms": 26742033,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 560901,
-              "start_ms": 28083774,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 466743,
-              "start_ms": 28644675,
-              "title": "Chapter 35"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91sNNy+rZgL.jpg",
-          "id": "kim-bretton-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kim-bretton"
-          ],
-          "publisher": "Tantor Media",
-          "release_date": "2024-01-02",
-          "runtime_min": 485,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CQ9L6LKF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shadow-magic-sisters-of-magic-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CQ9L6LKF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shadow Magic: Sisters of Magic, Book 1"
     },
     "shadow-man": {
       "added_at": "2026-07-29",

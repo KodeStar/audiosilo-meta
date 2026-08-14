@@ -8848,7 +8848,7 @@
       ],
       "title": "King of Battle and Blood"
     },
-    "king-of-battle-and-blood-german-edition": {
+    "king-of-battle-and-blood-scarlett-st-clair": {
       "added_at": "2026-07-29",
       "authors": [
         "scarlett-st-clair",
@@ -8863,9 +8863,10 @@
       "genres": [
         "fantasy",
         "paranormal",
+        "paranormal-romance",
         "romance"
       ],
-      "id": "king-of-battle-and-blood-german-edition",
+      "id": "king-of-battle-and-blood-scarlett-st-clair",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -8873,6 +8874,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0C2CMYGP1",
+              "region": "de"
+            },
             {
               "asin": "B0C2CQS23W",
               "region": "us"
@@ -8892,67 +8897,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B0C2CQS23W",
+              "ref": "B0C2CMYGP1",
               "type": "libex-import"
-            }
-          ],
-          "work": "king-of-battle-and-blood-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C2CQS23W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "King of Battle and Blood (German edition)"
-    },
-    "king-of-battle-and-blood-scarlett-st-clair": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "scarlett-st-clair",
-        "silvia-gleissner"
-      ],
-      "credits": [
-        {
-          "person": "silvia-gleissner",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "paranormal",
-        "paranormal-romance",
-        "romance"
-      ],
-      "id": "king-of-battle-and-blood-scarlett-st-clair",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bastian-korff-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0C2CMYGP1",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81TfFK65BTL.jpg",
-          "id": "bastian-korff-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bastian-korff",
-            "franziska-grun"
-          ],
-          "publisher": "LYX.audio",
-          "release_date": "2023-05-23",
-          "runtime_min": 796,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B0C2CMYGP1",
+              "ref": "B0C2CQS23W",
               "type": "libex-import"
             }
           ],
@@ -8963,6 +8913,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0C2CMYGP1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C2CQS23W",
           "type": "libex-import"
         }
       ],

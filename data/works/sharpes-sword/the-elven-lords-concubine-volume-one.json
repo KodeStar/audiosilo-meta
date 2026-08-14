@@ -1960,7 +1960,9 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "science-fiction"
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "the-elvenbane",
       "language": "en",
@@ -2270,12 +2272,182 @@
             }
           ],
           "work": "the-elvenbane"
+        },
+        "moniqua-plante-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GV52RX6N",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2984967,
+              "start_ms": 21970,
+              "title": "1"
+            },
+            {
+              "length_ms": 5145680,
+              "start_ms": 3006937,
+              "title": "2"
+            },
+            {
+              "length_ms": 3009747,
+              "start_ms": 8152617,
+              "title": "3"
+            },
+            {
+              "length_ms": 2023177,
+              "start_ms": 11162364,
+              "title": "4"
+            },
+            {
+              "length_ms": 3000227,
+              "start_ms": 13185541,
+              "title": "5"
+            },
+            {
+              "length_ms": 2498908,
+              "start_ms": 16185768,
+              "title": "6"
+            },
+            {
+              "length_ms": 2412460,
+              "start_ms": 18684676,
+              "title": "7"
+            },
+            {
+              "length_ms": 2418218,
+              "start_ms": 21097136,
+              "title": "8"
+            },
+            {
+              "length_ms": 2639551,
+              "start_ms": 23515354,
+              "title": "9"
+            },
+            {
+              "length_ms": 2638297,
+              "start_ms": 26154905,
+              "title": "10"
+            },
+            {
+              "length_ms": 2257211,
+              "start_ms": 28793202,
+              "title": "11"
+            },
+            {
+              "length_ms": 2920652,
+              "start_ms": 31050413,
+              "title": "12"
+            },
+            {
+              "length_ms": 2310292,
+              "start_ms": 33971065,
+              "title": "13"
+            },
+            {
+              "length_ms": 2566060,
+              "start_ms": 36281357,
+              "title": "14"
+            },
+            {
+              "length_ms": 2736123,
+              "start_ms": 38847417,
+              "title": "15"
+            },
+            {
+              "length_ms": 2700364,
+              "start_ms": 41583540,
+              "title": "16"
+            },
+            {
+              "length_ms": 3403789,
+              "start_ms": 44283904,
+              "title": "17"
+            },
+            {
+              "length_ms": 2257351,
+              "start_ms": 47687693,
+              "title": "18"
+            },
+            {
+              "length_ms": 2050809,
+              "start_ms": 49945044,
+              "title": "19"
+            },
+            {
+              "length_ms": 2623436,
+              "start_ms": 51995853,
+              "title": "20"
+            },
+            {
+              "length_ms": 2167466,
+              "start_ms": 54619289,
+              "title": "21"
+            },
+            {
+              "length_ms": 2367785,
+              "start_ms": 56786755,
+              "title": "22"
+            },
+            {
+              "length_ms": 2476965,
+              "start_ms": 59154540,
+              "title": "23"
+            },
+            {
+              "length_ms": 2428946,
+              "start_ms": 61631505,
+              "title": "24"
+            },
+            {
+              "length_ms": 2545000,
+              "start_ms": 64060451,
+              "title": "25"
+            },
+            {
+              "length_ms": 53428,
+              "start_ms": 66605451,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XGcrCUGJL.jpg",
+          "id": "moniqua-plante-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "moniqua-plante"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-07-28",
+          "runtime_min": 1110,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GV52RX6N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-elvenbane"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B004KTE4NQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV52RX6N",
           "type": "libex-import"
         }
       ],

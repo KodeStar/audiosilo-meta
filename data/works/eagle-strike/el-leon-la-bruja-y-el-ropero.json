@@ -235,53 +235,7 @@
             {
               "asin": "B0844PBXGP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Q2Hc-810L.jpg",
-          "id": "isabel-vara-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isabel-vara"
-          ],
-          "publisher": "FonoLibro Inc.",
-          "release_date": "2019-05-07",
-          "runtime_min": 68,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844PBXGP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-librito-azul"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0844PBXGP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Librito Azul"
-    },
-    "el-librito-azul-the-blue-booklet": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "conny-mendez"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "el-librito-azul-the-blue-booklet",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isabel-vara-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "1611541611",
               "region": "us"
@@ -342,21 +296,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0844PBXGP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "1611541611",
               "type": "libex-import"
             }
           ],
-          "work": "el-librito-azul-the-blue-booklet"
+          "work": "el-librito-azul"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0844PBXGP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1611541611",
           "type": "libex-import"
         }
       ],
-      "title": "El Librito Azul [The Blue Booklet]"
+      "title": "El Librito Azul"
     },
     "el-libro-de-datos-curiosos-de-la-segunda-guerra-mundial-historias-interesantes-y-hechos-historicos-d": {
       "added_at": "2026-07-29",
@@ -449,29 +413,7 @@
             }
           ],
           "work": "el-libro-de-enoc"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B096RX6B5Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Libro de Enoc"
-    },
-    "el-libro-de-enoc-the-book-of-enoch": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "enoc"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "el-libro-de-enoc-the-book-of-enoch",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "dangello-medina-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -498,17 +440,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-libro-de-enoc-the-book-of-enoch"
+          "work": "el-libro-de-enoc"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B096RX6B5Z",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B099VMWVFR",
           "type": "libex-import"
         }
       ],
-      "title": "El Libro De Enoc [The Book of Enoch]"
+      "title": "El Libro de Enoc"
     },
     "el-libro-de-la-alegria-the-book-of-joy": {
       "added_at": "2026-07-29",
@@ -1456,53 +1403,7 @@
             {
               "asin": "B08LQLSXMP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71IJYrJNr9L.jpg",
-          "id": "ivan-villanueva-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ivan-villanueva"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-10-29",
-          "runtime_min": 244,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08LQLSXMP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-libro-de-los-abrazos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08LQLSXMP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Libro de los Abrazos"
-    },
-    "el-libro-de-los-abrazos-narracion-en-castellano-the-book-of-embraces": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "eduardo-galeano"
-      ],
-      "genres": [
-        "short-stories"
-      ],
-      "id": "el-libro-de-los-abrazos-narracion-en-castellano-the-book-of-embraces",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ivan-villanueva-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08LQPXKX3",
               "region": "us"
@@ -1521,21 +1422,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08LQLSXMP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08LQPXKX3",
               "type": "libex-import"
             }
           ],
-          "work": "el-libro-de-los-abrazos-narracion-en-castellano-the-book-of-embraces"
+          "work": "el-libro-de-los-abrazos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08LQLSXMP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08LQPXKX3",
           "type": "libex-import"
         }
       ],
-      "title": "El Libro de los Abrazos (Narración en Castellano) [The Book of Embraces]"
+      "title": "El Libro de los Abrazos"
     },
     "el-libro-de-los-baltimore-the-baltimore-boys": {
       "added_at": "2026-07-29",
@@ -2135,53 +2046,7 @@
             {
               "asin": "B0BWGKZ4SN",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71L6vlefElL.jpg",
-          "id": "geraldo-medina-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2023-02-22",
-          "runtime_min": 1065,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BWGKZ4SN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-libro-de-los-espiritus"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BWGKZ4SN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El libro de los espíritus"
-    },
-    "el-libro-de-los-espiritus-the-spirits-book": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "allan-kardec"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "el-libro-de-los-espiritus-the-spirits-book",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BWGJ8HJN",
               "region": "us"
@@ -2200,21 +2065,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BWGKZ4SN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BWGJ8HJN",
               "type": "libex-import"
             }
           ],
-          "work": "el-libro-de-los-espiritus-the-spirits-book"
+          "work": "el-libro-de-los-espiritus"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BWGKZ4SN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BWGJ8HJN",
           "type": "libex-import"
         }
       ],
-      "title": "El libro de los espíritus [The Spirits Book]"
+      "title": "El libro de los espíritus"
     },
     "el-libro-de-los-jubileos-the-book-of-jubilees": {
       "added_at": "2026-07-29",
@@ -2286,54 +2161,7 @@
             {
               "asin": "B0D7NW9BDV",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61GilYJ696L.jpg",
-          "id": "geraldo-medina-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2024-06-20",
-          "runtime_min": 169,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D7NW9BDV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-libro-de-los-mediums"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D7NW9BDV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El libro de los médiums"
-    },
-    "el-libro-de-los-mediums-the-book-of-mediums": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "allan-kardec"
-      ],
-      "genres": [
-        "occult",
-        "religion-spirituality"
-      ],
-      "id": "el-libro-de-los-mediums-the-book-of-mediums",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0D7NXTQH5",
               "region": "us"
@@ -2352,21 +2180,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0D7NW9BDV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0D7NXTQH5",
               "type": "libex-import"
             }
           ],
-          "work": "el-libro-de-los-mediums-the-book-of-mediums"
+          "work": "el-libro-de-los-mediums"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D7NW9BDV",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D7NXTQH5",
           "type": "libex-import"
         }
       ],
-      "title": "El libro de los médiums [The Book of Mediums]"
+      "title": "El libro de los médiums"
     },
     "el-libro-de-los-misterios-the-book-of-mysteries": {
       "added_at": "2026-07-29",
@@ -4111,54 +3949,7 @@
             {
               "asin": "B0BRT9RHQJ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91d1WQXLcuL.jpg",
-          "id": "vicente-castellano-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "vicente-castellano"
-          ],
-          "publisher": "Fifth Estate",
-          "release_date": "2023-01-06",
-          "runtime_min": 1650,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BRT9RHQJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-libros-de-enoc-jubileos-y-jaser"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BRT9RHQJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El libros de Enoc, Jubileos, y Jaser"
-    },
-    "el-libros-de-enoc-jubileos-y-jaser-the-books-of-enoch-jubilees-and-jasher": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joseph-lumpkin",
-        "michelle-flores"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "el-libros-de-enoc-jubileos-y-jaser-the-books-of-enoch-jubilees-and-jasher",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "vicente-castellano-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BRTB2ZF3",
               "region": "us"
@@ -4177,21 +3968,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BRT9RHQJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BRTB2ZF3",
               "type": "libex-import"
             }
           ],
-          "work": "el-libros-de-enoc-jubileos-y-jaser-the-books-of-enoch-jubilees-and-jasher"
+          "work": "el-libros-de-enoc-jubileos-y-jaser"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BRT9RHQJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BRTB2ZF3",
           "type": "libex-import"
         }
       ],
-      "title": "El libros de Enoc, Jubileos, y Jaser [The Books of Enoch, Jubilees, and Jasher]"
+      "title": "El libros de Enoc, Jubileos, y Jaser"
     },
     "el-licenciado-vidriera-the-lawyer-of-glass": {
       "added_at": "2026-07-29",
@@ -4560,54 +4361,7 @@
             {
               "asin": "B07YXTTRXL",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oIdjymJBL.jpg",
-          "id": "carlos-j-vega-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-j-vega"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-03-29",
-          "runtime_min": 168,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXTTRXL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-llamado-de-la-selva"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXTTRXL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Llamado de la Selva"
-    },
-    "el-llamado-de-la-selva-the-call-of-the-wild": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jack-london"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "el-llamado-de-la-selva-the-call-of-the-wild",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-j-vega-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002VAGMHC",
               "region": "us"
@@ -4643,21 +4397,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXTTRXL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002VAGMHC",
               "type": "libex-import"
             }
           ],
-          "work": "el-llamado-de-la-selva-the-call-of-the-wild"
+          "work": "el-llamado-de-la-selva"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXTTRXL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002VAGMHC",
           "type": "libex-import"
         }
       ],
-      "title": "El Llamado de la Selva [The Call of the Wild]"
+      "title": "El Llamado de la Selva"
     },
     "el-llano-en-llamas": {
       "added_at": "2026-07-29",
@@ -6400,6 +6164,7 @@
       "genres": [
         "hard-boiled",
         "mystery",
+        "psychological-thriller",
         "thriller-suspense"
       ],
       "id": "el-mal-camino",
@@ -6413,54 +6178,7 @@
             {
               "asin": "B07YX1Z72M",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91JKPNnKnZL.jpg",
-          "id": "enric-puig-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "enric-puig"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-07-19",
-          "runtime_min": 795,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX1Z72M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-mal-camino"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX1Z72M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El mal camino"
-    },
-    "el-mal-camino-the-bad-road": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mikel-santiago"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "el-mal-camino-the-bad-road",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "enric-puig-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0741KPS2N",
               "region": "us"
@@ -6479,21 +6197,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX1Z72M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0741KPS2N",
               "type": "libex-import"
             }
           ],
-          "work": "el-mal-camino-the-bad-road"
+          "work": "el-mal-camino"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX1Z72M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0741KPS2N",
           "type": "libex-import"
         }
       ],
-      "title": "El mal camino [The Bad Road]"
+      "title": "El mal camino"
     },
     "el-mal-de-corcira": {
       "added_at": "2026-07-29",
@@ -9765,7 +9493,9 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "paranormal",
+        "urban-fantasy"
       ],
       "id": "el-mar-rojo-red-sea",
       "language": "es",
@@ -9980,39 +9710,7 @@
             }
           ],
           "work": "el-mar-rojo-red-sea"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C24XRWR1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El mar rojo [Red Sea]"
-    },
-    "el-mar-rojo-the-red-sea": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rodolfo-martinez-fernandez",
-        "edward-w-robertson"
-      ],
-      "credits": [
-        {
-          "person": "rodolfo-martinez-fernandez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "el-mar-rojo-the-red-sea",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jorge-gonzalez-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10221,17 +9919,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-mar-rojo-the-red-sea"
+          "work": "el-mar-rojo-red-sea"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C24XRWR1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D4NJK226",
           "type": "libex-import"
         }
       ],
-      "title": "El mar rojo [The Red Sea]"
+      "title": "El mar rojo [Red Sea]"
     },
     "el-maravilloso-mago-de-oz-the-wonderful-wizard-of-oz": {
       "added_at": "2026-08-02",
@@ -10430,6 +10133,7 @@
       ],
       "genres": [
         "business",
+        "occult",
         "parenting-relationships",
         "religion-spirituality",
         "self-help"
@@ -10445,57 +10149,7 @@
             {
               "asin": "B0844L1679",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81j-lcgXvtL.jpg",
-          "id": "isabel-varas-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isabel-varas"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2006-10-23",
-          "runtime_min": 107,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844L1679",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-maravilloso-numero-7"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0844L1679",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Maravilloso Numero 7"
-    },
-    "el-maravilloso-numero-7-the-mystical-number-7": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "conny-mendez"
-      ],
-      "genres": [
-        "business",
-        "occult",
-        "parenting-relationships",
-        "religion-spirituality",
-        "self-help"
-      ],
-      "id": "el-maravilloso-numero-7-the-mystical-number-7",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isabel-varas-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V8HI7C",
               "region": "us"
@@ -10514,21 +10168,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0844L1679",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V8HI7C",
               "type": "libex-import"
             }
           ],
-          "work": "el-maravilloso-numero-7-the-mystical-number-7"
+          "work": "el-maravilloso-numero-7"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0844L1679",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8HI7C",
           "type": "libex-import"
         }
       ],
-      "title": "El Maravilloso Numero 7 [The Mystical Number 7]"
+      "title": "El Maravilloso Numero 7"
     },
     "el-marciano": {
       "added_at": "2026-07-29",
@@ -10538,6 +10202,7 @@
       ],
       "genres": [
         "action-adventure",
+        "science",
         "science-fiction"
       ],
       "id": "el-marciano",
@@ -10551,57 +10216,7 @@
             {
               "asin": "8466662987",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81K89r+q9lL.jpg",
-          "id": "jose-posada-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-posada",
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-02-22",
-          "runtime_min": 755,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8466662987",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-marciano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8466662987",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El marciano"
-    },
-    "el-marciano-the-martian": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "andy-weir",
-        "javier-guerrero-gimeno"
-      ],
-      "genres": [
-        "action-adventure",
-        "science",
-        "science-fiction"
-      ],
-      "id": "el-marciano-the-martian",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jose-posada-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B079YDJ18Z",
               "region": "us"
@@ -10621,21 +10236,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8466662987",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B079YDJ18Z",
               "type": "libex-import"
             }
           ],
-          "work": "el-marciano-the-martian"
+          "work": "el-marciano"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8466662987",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B079YDJ18Z",
           "type": "libex-import"
         }
       ],
-      "title": "El marciano [The Martian]"
+      "title": "El marciano"
     },
     "el-matrimonio-de-los-peces-rojos": {
       "added_at": "2026-07-29",

@@ -2033,6 +2033,7 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "fantasy",
         "science-fiction"
@@ -2191,30 +2192,7 @@
             }
           ],
           "work": "sharras-exile"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07FB5ZM25",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sharra's Exile"
-    },
-    "sharras-exile-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "sharras-exile-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-bellmore-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2364,17 +2342,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "sharras-exile-international-edition"
+          "work": "sharras-exile"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07FB5ZM25",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYC7BW3",
           "type": "libex-import"
         }
       ],
-      "title": "Sharra's Exile [International Edition]"
+      "title": "Sharra's Exile"
     },
     "shatter": {
       "added_at": "2026-08-01",

@@ -7,6 +7,7 @@
       ],
       "genres": [
         "health-wellness",
+        "history",
         "philosophy",
         "politics",
         "psychology"
@@ -15,6 +16,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "derek-le-page-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01N4MCLGZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81MSyx28yeL.jpg",
+          "id": "derek-le-page-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "derek-le-page"
+          ],
+          "publisher": "Ukemi Audiobooks from W. F. Howes Ltd",
+          "release_date": "2017-01-16",
+          "runtime_min": 486,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01N4MCLGZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "psychopathology-of-everyday-life"
+        },
         "mary-schneider-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -423,6 +452,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0721QLLJF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01N4MCLGZ",
           "type": "libex-import"
         }
       ],

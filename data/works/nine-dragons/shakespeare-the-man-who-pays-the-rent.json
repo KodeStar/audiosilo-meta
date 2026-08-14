@@ -6151,7 +6151,10 @@
         "gonzalo-hernandez-guarch"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "history",
+        "literary-fiction",
+        "religion-spirituality"
       ],
       "id": "shalom-sefarad",
       "language": "es",
@@ -6164,84 +6167,7 @@
             {
               "asin": "B07YX5DN3V",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kJsC6zsfL.jpg",
-          "id": "angel-del-rio-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "angel-del-rio"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-11-07",
-          "runtime_min": 1102,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX5DN3V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shalom-sefarad"
-        },
-        "juan-sebastian-aragon-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YX2YJJ8",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kJsC6zsfL.jpg",
-          "id": "juan-sebastian-aragon-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-sebastian-aragon"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-02-20",
-          "runtime_min": 1092,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX2YJJ8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shalom-sefarad"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX2YJJ8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shalom Sefarad"
-    },
-    "shalom-sefarad-shalom-sephardic-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gonzalo-hernandez-guarch"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction",
-        "religion-spirituality"
-      ],
-      "id": "shalom-sefarad-shalom-sephardic-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "angel-del-rio-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07K7PJV1B",
               "region": "us"
@@ -6260,40 +6186,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX5DN3V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07K7PJV1B",
               "type": "libex-import"
             }
           ],
-          "work": "shalom-sefarad-shalom-sephardic-narracion-en-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07K7PJV1B",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shalom Sefarad [Shalom Sephardic] (Narración en Castellano)"
-    },
-    "shalom-sefarad-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gonzalo-hernandez-guarch"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "religion-spirituality"
-      ],
-      "id": "shalom-sefarad-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "shalom-sefarad"
+        },
         "juan-sebastian-aragon-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07YX2YJJ8",
+              "region": "es"
+            },
             {
               "asin": "B079P3ZCVG",
               "region": "us"
@@ -6312,21 +6223,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX2YJJ8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B079P3ZCVG",
               "type": "libex-import"
             }
           ],
-          "work": "shalom-sefarad-spanish-edition"
+          "work": "shalom-sefarad"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX2YJJ8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07K7PJV1B",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B079P3ZCVG",
           "type": "libex-import"
         }
       ],
-      "title": "Shalom Sefarad [Spanish Edition]"
+      "title": "Shalom Sefarad"
     },
     "shaman": {
       "added_at": "2026-07-29",

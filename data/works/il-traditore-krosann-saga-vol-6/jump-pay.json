@@ -3555,13 +3555,196 @@
         }
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "comedy-humor",
+        "fantasy",
         "horror"
       ],
       "id": "junes-wild-flight",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "montse-hernandez-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0593208528",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18111,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 15789,
+              "start_ms": 18111,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 453114,
+              "start_ms": 33900,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 186711,
+              "start_ms": 487014,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 399708,
+              "start_ms": 673725,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 373423,
+              "start_ms": 1073433,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 367896,
+              "start_ms": 1446856,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 315071,
+              "start_ms": 1814752,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 290667,
+              "start_ms": 2129823,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 577712,
+              "start_ms": 2420490,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 550011,
+              "start_ms": 2998202,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 268979,
+              "start_ms": 3548213,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 337176,
+              "start_ms": 3817192,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 729872,
+              "start_ms": 4154368,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 198135,
+              "start_ms": 4884240,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 344212,
+              "start_ms": 5082375,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 787736,
+              "start_ms": 5426587,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 321782,
+              "start_ms": 6214323,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 452556,
+              "start_ms": 6536105,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 280984,
+              "start_ms": 6988661,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 351550,
+              "start_ms": 7269645,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 334042,
+              "start_ms": 7621195,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 185388,
+              "start_ms": 7955237,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 550661,
+              "start_ms": 8140625,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 543788,
+              "start_ms": 8691286,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 599121,
+              "start_ms": 9235074,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 677976,
+              "start_ms": 9834195,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 802063,
+              "start_ms": 10512171,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 481721,
+              "start_ms": 11314234,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 34364,
+              "start_ms": 11795955,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gVAANOyQL.jpg",
+          "id": "montse-hernandez-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "montse-hernandez"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2020-04-07",
+          "runtime_min": 196,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593208528",
+              "type": "libex-import"
+            }
+          ],
+          "work": "junes-wild-flight"
+        },
         "montse-hernandez-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3747,6 +3930,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0BF14LMKL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593208528",
           "type": "libex-import"
         }
       ],

@@ -9802,6 +9802,7 @@
         "david-baldacci"
       ],
       "genres": [
+        "espionage",
         "mystery",
         "politics",
         "thriller-suspense"
@@ -9810,6 +9811,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-jennings-2024": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBQR346",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81T5mxt9rbL.jpg",
+          "id": "alex-jennings-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-jennings"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 337,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBQR346",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-whole-truth"
+        },
         "ron-mclarty-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10408,59 +10437,6 @@
             }
           ],
           "work": "the-whole-truth"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA9OFO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Whole Truth"
-    },
-    "the-whole-truth-shaw-and-katie-james-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "the-whole-truth-shaw-and-katie-james-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-jennings-2024": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBQR346",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81T5mxt9rbL.jpg",
-          "id": "alex-jennings-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-jennings"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 337,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBQR346",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-whole-truth-shaw-and-katie-james-1"
         },
         "ron-mclarty-2024": {
           "abridged": false,
@@ -10488,17 +10464,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-whole-truth-shaw-and-katie-james-1"
+          "work": "the-whole-truth"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA9OFO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DLBQR346",
           "type": "libex-import"
         }
       ],
-      "title": "The Whole Truth: Shaw and Katie James 1"
+      "title": "The Whole Truth"
     },
     "the-whole-truths-you-should-know-before-you-travel-to-the-philippines-second-edition": {
       "added_at": "2026-07-29",

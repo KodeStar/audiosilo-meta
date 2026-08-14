@@ -3425,6 +3425,46 @@
           ],
           "work": "the-man-who-would-be-king"
         },
+        "b-j-harrison-2016": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B01JSE4KRW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 5533269,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8104wBXg66L.jpg",
+          "id": "b-j-harrison-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B. J. Harrison",
+          "release_date": "2016",
+          "runtime_min": 92,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B01JSE4KRW",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B01JSE4KRW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-man-who-would-be-king"
+        },
         "blake-ritson-2018": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3970,6 +4010,16 @@
           "imported_at": "2026-07-30",
           "ref": "178753331X",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B01JSE4KRW",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B01JSE4KRW",
+          "type": "libex-import"
         }
       ],
       "title": "The Man Who Would Be King"
@@ -4288,75 +4338,6 @@
         }
       ],
       "title": "The Man Who Would Be King and Other Stories"
-    },
-    "the-man-who-would-be-king-classic-tales-edition": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "rudyard-kipling"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "the-man-who-would-be-king-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2016": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B01JSE4KRW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 5533269,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8104wBXg66L.jpg",
-          "id": "b-j-harrison-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B. J. Harrison",
-          "release_date": "2016",
-          "runtime_min": 92,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B01JSE4KRW",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B01JSE4KRW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-man-who-would-be-king-classic-tales-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B01JSE4KRW",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B01JSE4KRW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Man Who Would Be King [Classic Tales Edition]"
     },
     "the-man-who-would-not-be-washington": {
       "added_at": "2026-07-29",

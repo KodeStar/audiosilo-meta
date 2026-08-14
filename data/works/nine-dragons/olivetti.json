@@ -4644,54 +4644,7 @@
             {
               "asin": "B07Z8L1CSM",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9168ev6DfsL.jpg",
-          "id": "nicolas-villanueva-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicolas-villanueva"
-          ],
-          "publisher": "Captivating History",
-          "release_date": "2019-02-18",
-          "runtime_min": 131,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07Z8L1CSM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "olmecas-una-guia-fascinante-de-la-civilizacion-antigua-mas-importante-conocida-en-mexico"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07Z8L1CSM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Olmecas: Una Guía Fascinante de la Civilización Antigua Más Importante Conocida En México"
-    },
-    "olmecas-una-guia-fascinante-de-la-civilizacion-antigua-mas-importante-conocida-en-mexico-olmec-a-fas": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "captivating-history"
-      ],
-      "genres": [
-        "education",
-        "history"
-      ],
-      "id": "olmecas-una-guia-fascinante-de-la-civilizacion-antigua-mas-importante-conocida-en-mexico-olmec-a-fas",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicolas-villanueva-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07NPRTW8W",
               "region": "us"
@@ -4710,21 +4663,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07Z8L1CSM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07NPRTW8W",
               "type": "libex-import"
             }
           ],
-          "work": "olmecas-una-guia-fascinante-de-la-civilizacion-antigua-mas-importante-conocida-en-mexico-olmec-a-fas"
+          "work": "olmecas-una-guia-fascinante-de-la-civilizacion-antigua-mas-importante-conocida-en-mexico"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07Z8L1CSM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07NPRTW8W",
           "type": "libex-import"
         }
       ],
-      "title": "Olmecas: Una Guía Fascinante de la Civilización Antigua Más Importante Conocida En México [Olmec: A Fascinating Guide to the Most Important Ancient Civilization Known in Mexico]"
+      "title": "Olmecas: Una Guía Fascinante de la Civilización Antigua Más Importante Conocida En México"
     },
     "olmecs": {
       "added_at": "2026-07-29",
@@ -11288,32 +11251,7 @@
             }
           ],
           "work": "ombra-di-morte-legami-di-sangue-volume-8-amy-blankenship-legami-di-sangue"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07STGCWCB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ombra di Morte: Legami di Sangue - Volume 8 (Amy Blankenship - Legami di Sangue)"
-    },
-    "ombra-di-morte-shadow-of-death": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "amy-blankenship",
-        "rk-melton"
-      ],
-      "genres": [
-        "horror",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "ombra-di-morte-shadow-of-death",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "patrizia-barrera-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11427,17 +11365,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "ombra-di-morte-shadow-of-death"
+          "work": "ombra-di-morte-legami-di-sangue-volume-8-amy-blankenship-legami-di-sangue"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07STGCWCB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "8893985128",
           "type": "libex-import"
         }
       ],
-      "title": "Ombra Di Morte [Shadow of Death]"
+      "title": "Ombra di Morte: Legami di Sangue - Volume 8 (Amy Blankenship - Legami di Sangue)"
     }
   }
 }

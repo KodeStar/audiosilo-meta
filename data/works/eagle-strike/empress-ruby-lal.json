@@ -7088,6 +7088,10 @@
       "authors": [
         "gabriel-garcia-marquez"
       ],
+      "genres": [
+        "literary-fiction",
+        "magical-realism"
+      ],
       "id": "en-agosto-nos-vemos",
       "language": "es",
       "license": "CC0-1.0",
@@ -7099,56 +7103,7 @@
             {
               "asin": "B0CX2LJTNC",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zSR1eJVKL.jpg",
-          "id": "catalina-sandino-moreno-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "catalina-sandino-moreno",
-            "cristobal-pera",
-            "rodrigo-garcia-barcha"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-03-06",
-          "runtime_min": 125,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CX2LJTNC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "en-agosto-nos-vemos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CX2LJTNC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "En agosto nos vemos"
-    },
-    "en-agosto-nos-vemos-see-you-in-august": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism"
-      ],
-      "id": "en-agosto-nos-vemos-see-you-in-august",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "catalina-sandino-moreno-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CX2C94HM",
               "region": "us"
@@ -7221,21 +7176,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CX2LJTNC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CX2C94HM",
               "type": "libex-import"
             }
           ],
-          "work": "en-agosto-nos-vemos-see-you-in-august"
+          "work": "en-agosto-nos-vemos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CX2LJTNC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CX2C94HM",
           "type": "libex-import"
         }
       ],
-      "title": "En agosto nos vemos [See You in August]"
+      "title": "En agosto nos vemos"
     },
     "en-algun-lugar-del-mar-mas-azul": {
       "added_at": "2026-07-29",
@@ -7756,116 +7721,6 @@
       ],
       "title": "En busca de Klingsor [In Search of Klingsor]"
     },
-    "en-busca-de-la-entrada-secreta": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rosario-ana"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "en-busca-de-la-entrada-secreta",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marta-moreno-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FFTPFKLV",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17229,
-              "start_ms": 0,
-              "title": "Créditos iniciales"
-            },
-            {
-              "length_ms": 6000,
-              "start_ms": 17229,
-              "title": "Dedicatoria"
-            },
-            {
-              "length_ms": 26000,
-              "start_ms": 23229,
-              "title": "Agradecimientos"
-            },
-            {
-              "length_ms": 689374,
-              "start_ms": 49229,
-              "title": "El abuelo ha desaparecido"
-            },
-            {
-              "length_ms": 1124426,
-              "start_ms": 738603,
-              "title": "El primer código"
-            },
-            {
-              "length_ms": 1131833,
-              "start_ms": 1863029,
-              "title": "El segundo código"
-            },
-            {
-              "length_ms": 431333,
-              "start_ms": 2994862,
-              "title": "El tercer código"
-            },
-            {
-              "length_ms": 492263,
-              "start_ms": 3426195,
-              "title": "El mapa a la entrada secreta"
-            },
-            {
-              "length_ms": 975052,
-              "start_ms": 3918458,
-              "title": "El secreto del abuelo"
-            },
-            {
-              "length_ms": 499112,
-              "start_ms": 4893510,
-              "title": "El profesor Friedman"
-            },
-            {
-              "length_ms": 24356,
-              "start_ms": 5392622,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71dhdOhs58L.jpg",
-          "id": "marta-moreno-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marta-moreno"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2025-07-08",
-          "runtime_min": 90,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FFTPFKLV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "en-busca-de-la-entrada-secreta"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FFTPFKLV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "En Busca de la Entrada Secreta"
-    },
     "en-busca-de-la-entrada-secreta-in-search-of-the-secret-entrance": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7955,12 +7810,102 @@
             }
           ],
           "work": "en-busca-de-la-entrada-secreta-in-search-of-the-secret-entrance"
+        },
+        "marta-moreno-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFTPFKLV",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17229,
+              "start_ms": 0,
+              "title": "Créditos iniciales"
+            },
+            {
+              "length_ms": 6000,
+              "start_ms": 17229,
+              "title": "Dedicatoria"
+            },
+            {
+              "length_ms": 26000,
+              "start_ms": 23229,
+              "title": "Agradecimientos"
+            },
+            {
+              "length_ms": 689374,
+              "start_ms": 49229,
+              "title": "El abuelo ha desaparecido"
+            },
+            {
+              "length_ms": 1124426,
+              "start_ms": 738603,
+              "title": "El primer código"
+            },
+            {
+              "length_ms": 1131833,
+              "start_ms": 1863029,
+              "title": "El segundo código"
+            },
+            {
+              "length_ms": 431333,
+              "start_ms": 2994862,
+              "title": "El tercer código"
+            },
+            {
+              "length_ms": 492263,
+              "start_ms": 3426195,
+              "title": "El mapa a la entrada secreta"
+            },
+            {
+              "length_ms": 975052,
+              "start_ms": 3918458,
+              "title": "El secreto del abuelo"
+            },
+            {
+              "length_ms": 499112,
+              "start_ms": 4893510,
+              "title": "El profesor Friedman"
+            },
+            {
+              "length_ms": 24356,
+              "start_ms": 5392622,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71dhdOhs58L.jpg",
+          "id": "marta-moreno-2025",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marta-moreno"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2025-07-08",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFTPFKLV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "en-busca-de-la-entrada-secreta-in-search-of-the-secret-entrance"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DR3B13JY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FFTPFKLV",
           "type": "libex-import"
         }
       ],

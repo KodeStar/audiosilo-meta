@@ -5477,7 +5477,12 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "parenting-relationships"
+        "historical-fiction",
+        "paranormal",
+        "parenting-relationships",
+        "science-fiction",
+        "space-opera",
+        "urban-fantasy"
       ],
       "id": "sunbringer-a-novel",
       "language": "en",
@@ -5489,6 +5494,10 @@
           "asin": [
             {
               "asin": "B0C8342SCJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0CN79LMCY",
               "region": "us"
             }
           ],
@@ -5839,6 +5848,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0C8342SCJ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CN79LMCY",
+              "type": "libex-import"
             }
           ],
           "work": "sunbringer-a-novel"
@@ -5849,397 +5863,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0C8342SCJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sunbringer: A Novel"
-    },
-    "sunbringer-fallen-gods-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hannah-kaner"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "urban-fantasy"
-      ],
-      "id": "sunbringer-fallen-gods-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kit-griffiths-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CN79LMCY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12584,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1232886,
-              "start_ms": 12584,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1066329,
-              "start_ms": 1245470,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1280766,
-              "start_ms": 2311799,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1082282,
-              "start_ms": 3592565,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1898533,
-              "start_ms": 4674847,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2018417,
-              "start_ms": 6573380,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1647223,
-              "start_ms": 8591797,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1406270,
-              "start_ms": 10239020,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 999828,
-              "start_ms": 11645290,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1675877,
-              "start_ms": 12645118,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1940305,
-              "start_ms": 14320995,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1467454,
-              "start_ms": 16261300,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1970700,
-              "start_ms": 17728754,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 868681,
-              "start_ms": 19699454,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 625986,
-              "start_ms": 20568135,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1947387,
-              "start_ms": 21194121,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1729584,
-              "start_ms": 23141508,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1795831,
-              "start_ms": 24871092,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2236894,
-              "start_ms": 26666923,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 322385,
-              "start_ms": 28903817,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1089039,
-              "start_ms": 29226202,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 657078,
-              "start_ms": 30315241,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1017057,
-              "start_ms": 30972319,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1125262,
-              "start_ms": 31989376,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1589057,
-              "start_ms": 33114638,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 819385,
-              "start_ms": 34703695,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1025718,
-              "start_ms": 35523080,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 173290,
-              "start_ms": 36548798,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 544066,
-              "start_ms": 36722088,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 519128,
-              "start_ms": 37266154,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 624523,
-              "start_ms": 37785282,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 933627,
-              "start_ms": 38409805,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 251054,
-              "start_ms": 39343432,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 592828,
-              "start_ms": 39594486,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 458454,
-              "start_ms": 40187314,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 1007211,
-              "start_ms": 40645768,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 545715,
-              "start_ms": 41652979,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 1235951,
-              "start_ms": 42198694,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 410621,
-              "start_ms": 43434645,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 521264,
-              "start_ms": 43845266,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 958728,
-              "start_ms": 44366530,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 1018496,
-              "start_ms": 45325258,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 1282763,
-              "start_ms": 46343754,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 1388948,
-              "start_ms": 47626517,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 746776,
-              "start_ms": 49015465,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 669199,
-              "start_ms": 49762241,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 838077,
-              "start_ms": 50431440,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 672473,
-              "start_ms": 51269517,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 496256,
-              "start_ms": 51941990,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 718007,
-              "start_ms": 52438246,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 287114,
-              "start_ms": 53156253,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 552542,
-              "start_ms": 53443367,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 572905,
-              "start_ms": 53995909,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 325288,
-              "start_ms": 54568814,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 209606,
-              "start_ms": 54894102,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 299467,
-              "start_ms": 55103708,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 425227,
-              "start_ms": 55403175,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 335737,
-              "start_ms": 55828402,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 476659,
-              "start_ms": 56164139,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 390489,
-              "start_ms": 56640798,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 489685,
-              "start_ms": 57031287,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 959494,
-              "start_ms": 57520972,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 1957836,
-              "start_ms": 58480466,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 143383,
-              "start_ms": 60438302,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 42283,
-              "start_ms": 60581685,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91c-QYtBhkL.jpg",
-          "id": "kit-griffiths-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kit-griffiths"
-          ],
-          "publisher": "HarperVoyager",
-          "release_date": "2024-02-15",
-          "runtime_min": 1010,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CN79LMCY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sunbringer-fallen-gods-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CN79LMCY",
           "type": "libex-import"
         }
       ],
-      "title": "Sunbringer: Fallen Gods, Book 2"
+      "title": "Sunbringer: A Novel"
     },
     "sunbringer-godkiller-2": {
       "added_at": "2026-08-02",

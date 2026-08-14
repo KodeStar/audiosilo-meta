@@ -458,6 +458,7 @@
         "barry-j-hutchison"
       ],
       "genres": [
+        "action-adventure",
         "comedy-humor",
         "science-fiction",
         "space-opera"
@@ -466,6 +467,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alysia-beltran-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B1W15CSQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4258562,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4238129,
+              "start_ms": 4258562,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4172532,
+              "start_ms": 8496691,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4386202,
+              "start_ms": 12669223,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4279507,
+              "start_ms": 17055425,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4037276,
+              "start_ms": 21334932,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4780778,
+              "start_ms": 25372208,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919sA5t2biL.jpg",
+          "id": "alysia-beltran-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alysia-beltran",
+            "carolyn-kashner",
+            "chris-davenport",
+            "christopher-walker",
+            "danny-gavigan",
+            "darius-johnson",
+            "mort-shelby",
+            "phil-thron",
+            "rose-elizabeth-supan",
+            "stewart-crank",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022-07-01",
+          "runtime_min": 502,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B1W15CSQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "space-team-the-king-of-space-must-die"
+        },
         "phil-thron-2018": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -666,109 +742,14 @@
           "imported_at": "2026-07-30",
           "ref": "B07FW8TJKV",
           "type": "libex-import"
-        }
-      ],
-      "title": "Space Team: The King of Space Must Die"
-    },
-    "space-team-the-king-of-space-must-die-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "barry-j-hutchison"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "space-team-the-king-of-space-must-die-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alysia-beltran-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B1W15CSQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4258562,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4238129,
-              "start_ms": 4258562,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4172532,
-              "start_ms": 8496691,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4386202,
-              "start_ms": 12669223,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4279507,
-              "start_ms": 17055425,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4037276,
-              "start_ms": 21334932,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4780778,
-              "start_ms": 25372208,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/919sA5t2biL.jpg",
-          "id": "alysia-beltran-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alysia-beltran",
-            "carolyn-kashner",
-            "chris-davenport",
-            "christopher-walker",
-            "danny-gavigan",
-            "darius-johnson",
-            "mort-shelby",
-            "phil-thron",
-            "rose-elizabeth-supan",
-            "stewart-crank",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-07-01",
-          "runtime_min": 502,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B1W15CSQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "space-team-the-king-of-space-must-die-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B1W15CSQ",
           "type": "libex-import"
         }
       ],
-      "title": "Space Team: The King of Space Must Die (Dramatized Adaptation)"
+      "title": "Space Team: The King of Space Must Die"
     },
     "space-team-the-search-for-splurt": {
       "added_at": "2026-08-01",

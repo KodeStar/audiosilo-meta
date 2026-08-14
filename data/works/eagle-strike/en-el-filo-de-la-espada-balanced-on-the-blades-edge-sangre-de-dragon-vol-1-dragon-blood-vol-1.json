@@ -3274,53 +3274,7 @@
             {
               "asin": "B08HR42L8Z",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81JXU3-QDaL.jpg",
-          "id": "juan-manuel-martinez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-manuel-martinez"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2020-09-15",
-          "runtime_min": 47,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HR42L8Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "en-la-oscuridad-y-otros-relatos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HR42L8Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "En la oscuridad y otros relatos"
-    },
-    "en-la-oscuridad-y-otros-relatos-in-the-dark-and-other-stories": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "anton-chejov"
-      ],
-      "genres": [
-        "short-stories"
-      ],
-      "id": "en-la-oscuridad-y-otros-relatos-in-the-dark-and-other-stories",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-manuel-martinez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08HR315LW",
               "region": "us"
@@ -3339,21 +3293,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08HR42L8Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08HR315LW",
               "type": "libex-import"
             }
           ],
-          "work": "en-la-oscuridad-y-otros-relatos-in-the-dark-and-other-stories"
+          "work": "en-la-oscuridad-y-otros-relatos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HR42L8Z",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08HR315LW",
           "type": "libex-import"
         }
       ],
-      "title": "En la oscuridad y otros relatos [In the Dark and Other Stories]"
+      "title": "En la oscuridad y otros relatos"
     },
     "en-la-sombra-spare": {
       "added_at": "2026-07-29",
@@ -4712,8 +4676,11 @@
         "h-p-lovecraft"
       ],
       "genres": [
+        "fantasy",
+        "horror",
         "paranormal",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "en-las-montanas-de-la-locura",
       "language": "es",
@@ -4746,32 +4713,7 @@
             }
           ],
           "work": "en-las-montanas-de-la-locura"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09KGV4Z6S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "En las montañas de la locura"
-    },
-    "en-las-montanas-de-la-locura-in-the-mountains-of-madness": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "en-las-montanas-de-la-locura-in-the-mountains-of-madness",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "yair-martinez-quezada-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4798,17 +4740,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "en-las-montanas-de-la-locura-in-the-mountains-of-madness"
+          "work": "en-las-montanas-de-la-locura"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09KGV4Z6S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B094L78T72",
           "type": "libex-import"
         }
       ],
-      "title": "En las montanas de la locura [In the Mountains of Madness]"
+      "title": "En las montañas de la locura"
     },
     "en-las-nubes-maple-hills-3-daydream": {
       "added_at": "2026-07-29",

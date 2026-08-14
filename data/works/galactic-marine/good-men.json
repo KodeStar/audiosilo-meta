@@ -7580,6 +7580,10 @@
         "b-k-borison"
       ],
       "genres": [
+        "ghost-stories",
+        "horror",
+        "magical-realism",
+        "paranormal",
         "romance",
         "romantic-comedy",
         "womens-fiction"
@@ -7594,6 +7598,10 @@
           "asin": [
             {
               "asin": "B0DSQ8JMJR",
+              "region": "us"
+            },
+            {
+              "asin": "B0DNFZ5BRD",
               "region": "us"
             }
           ],
@@ -7613,6 +7621,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0DSQ8JMJR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DNFZ5BRD",
+              "type": "libex-import"
             }
           ],
           "work": "good-spirits"
@@ -7623,65 +7636,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0DSQ8JMJR",
           "type": "libex-import"
-        }
-      ],
-      "title": "Good Spirits"
-    },
-    "good-spirits-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "b-k-borison"
-      ],
-      "genres": [
-        "ghost-stories",
-        "horror",
-        "magical-realism",
-        "paranormal",
-        "romance",
-        "romantic-comedy"
-      ],
-      "id": "good-spirits-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "karissa-vacker-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DNFZ5BRD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81aCNl4xwQL.jpg",
-          "id": "karissa-vacker-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "karissa-vacker",
-            "will-watt"
-          ],
-          "publisher": "HQ",
-          "release_date": "2025-10-21",
-          "runtime_min": 726,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DNFZ5BRD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "good-spirits-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DNFZ5BRD",
           "type": "libex-import"
         }
       ],
-      "title": "Good Spirits Book 1"
+      "title": "Good Spirits"
     },
     "good-strategy-bad-strategy": {
       "added_at": "2026-07-29",
@@ -8485,57 +8447,6 @@
         }
       ],
       "title": "Good Therapy"
-    },
-    "good-thiefs-guide-to-paris-the": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "chris-ewan"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "good-thiefs-guide-to-paris-the",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-vance-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B007EJ1J2S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815xMMbiNEL.jpg",
-          "id": "simon-vance-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-vance"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2012-03-01",
-          "runtime_min": 494,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B007EJ1J2S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "good-thiefs-guide-to-paris-the"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B007EJ1J2S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Good Thief's Guide to Paris, The"
     },
     "good-thinking": {
       "added_at": "2026-07-29",

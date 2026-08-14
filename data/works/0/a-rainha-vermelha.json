@@ -1404,6 +1404,7 @@
         "burton-g-malkiel"
       ],
       "genres": [
+        "business",
         "finance"
       ],
       "id": "a-random-walk-down-wall-street",
@@ -2519,12 +2520,45 @@
             }
           ],
           "work": "a-random-walk-down-wall-street"
+        },
+        "george-guidall-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D6SYR46M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vfYXHfToL.jpg",
+          "id": "george-guidall-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2024-09-03",
+          "runtime_min": 794,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D6SYR46M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-random-walk-down-wall-street"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B011457W4G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D6SYR46M",
           "type": "libex-import"
         }
       ],
@@ -3681,57 +3715,6 @@
         }
       ],
       "title": "A Random Walk Down Wall Street, 12th Edition"
-    },
-    "a-random-walk-down-wall-street-completely-revised-and-updated": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "burton-g-malkiel"
-      ],
-      "genres": [
-        "business",
-        "finance"
-      ],
-      "id": "a-random-walk-down-wall-street-completely-revised-and-updated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D6SYR46M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vfYXHfToL.jpg",
-          "id": "george-guidall-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2024-09-03",
-          "runtime_min": 794,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D6SYR46M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-random-walk-down-wall-street-completely-revised-and-updated"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D6SYR46M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Random Walk Down Wall Street (Completely Revised and Updated)"
     },
     "a-rangers-guide-to-glipwood-forest": {
       "added_at": "2026-07-29",

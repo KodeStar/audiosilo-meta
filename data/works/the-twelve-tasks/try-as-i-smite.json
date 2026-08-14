@@ -12020,84 +12020,6 @@
       ],
       "title": "Tu Realidad Inmortal [Your Immortal Reality]"
     },
-    "tu-robot-narracion-en-castellano-you-robot": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "tu-robot-narracion-en-castellano-you-robot",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pau-ferrer-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09MZKVXFD",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18877,
-              "start_ms": 0,
-              "title": "Créditos iniciales"
-            },
-            {
-              "length_ms": 5749376,
-              "start_ms": 18877,
-              "title": "Parte 1"
-            },
-            {
-              "length_ms": 5095363,
-              "start_ms": 5768253,
-              "title": "Parte 2"
-            },
-            {
-              "length_ms": 5986917,
-              "start_ms": 10863616,
-              "title": "Parte 3"
-            },
-            {
-              "length_ms": 25285,
-              "start_ms": 16850533,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mEDaTk4dL.jpg",
-          "id": "pau-ferrer-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pau-ferrer"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-12-06",
-          "runtime_min": 281,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09MZKVXFD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tu-robot-narracion-en-castellano-you-robot"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09MZKVXFD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tú, Robot (Narración en Castellano) [You, Robot]"
-    },
     "tu-robot-you-robot": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12320,12 +12242,72 @@
             }
           ],
           "work": "tu-robot-you-robot"
+        },
+        "pau-ferrer-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09MZKVXFD",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18877,
+              "start_ms": 0,
+              "title": "Créditos iniciales"
+            },
+            {
+              "length_ms": 5749376,
+              "start_ms": 18877,
+              "title": "Parte 1"
+            },
+            {
+              "length_ms": 5095363,
+              "start_ms": 5768253,
+              "title": "Parte 2"
+            },
+            {
+              "length_ms": 5986917,
+              "start_ms": 10863616,
+              "title": "Parte 3"
+            },
+            {
+              "length_ms": 25285,
+              "start_ms": 16850533,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mEDaTk4dL.jpg",
+          "id": "pau-ferrer-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pau-ferrer"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-12-06",
+          "runtime_min": 281,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MZKVXFD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tu-robot-you-robot"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B094768SCL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09MZKVXFD",
           "type": "libex-import"
         }
       ],

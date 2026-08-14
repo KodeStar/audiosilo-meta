@@ -702,7 +702,8 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "lgbtq"
       ],
       "id": "the-thousand-eyes",
       "language": "en",
@@ -951,32 +952,7 @@
             }
           ],
           "work": "the-thousand-eyes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1250807883",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Thousand Eyes"
-    },
-    "the-thousand-eyes-the-serpent-gates-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "a-k-larkwood"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "lgbtq"
-      ],
-      "id": "the-thousand-eyes-the-serpent-gates-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "aysha-kala-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1180,17 +1156,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-thousand-eyes-the-serpent-gates-book-2"
+          "work": "the-thousand-eyes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1250807883",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNFZHS2C",
           "type": "libex-import"
         }
       ],
-      "title": "The Thousand Eyes: The Serpent Gates Book 2"
+      "title": "The Thousand Eyes"
     },
     "the-thousand-li-path": {
       "added_at": "2026-08-02",

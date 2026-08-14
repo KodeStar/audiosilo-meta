@@ -5,14 +5,215 @@
       "authors": [
         "sara-shepard"
       ],
+      "genres": [
+        "coming-of-age",
+        "young-adult"
+      ],
       "id": "heartless",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-morris-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003X3C50O",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1508786,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 508006,
+              "start_ms": 1508786,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1436665,
+              "start_ms": 2016792,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1039139,
+              "start_ms": 3453457,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1192066,
+              "start_ms": 4492596,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 682574,
+              "start_ms": 5684662,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 663301,
+              "start_ms": 6367236,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 987545,
+              "start_ms": 7030537,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 707605,
+              "start_ms": 8018082,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1171865,
+              "start_ms": 8725687,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 830299,
+              "start_ms": 9897552,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 875624,
+              "start_ms": 10727851,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 908736,
+              "start_ms": 11603475,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1191834,
+              "start_ms": 12512211,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 913566,
+              "start_ms": 13704045,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 609570,
+              "start_ms": 14617611,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1076059,
+              "start_ms": 15227181,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 652574,
+              "start_ms": 16303240,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 632140,
+              "start_ms": 16955814,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 446938,
+              "start_ms": 17587954,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 997576,
+              "start_ms": 18034892,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 453857,
+              "start_ms": 19032468,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 846832,
+              "start_ms": 19486325,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 793054,
+              "start_ms": 20333157,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 702914,
+              "start_ms": 21126211,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 717125,
+              "start_ms": 21829125,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 273113,
+              "start_ms": 22546250,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 974959,
+              "start_ms": 22819363,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 555654,
+              "start_ms": 23794322,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 466210,
+              "start_ms": 24349976,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 489616,
+              "start_ms": 24816186,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 744943,
+              "start_ms": 25305802,
+              "title": "Chapter 32"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/516lAe3RGvL.jpg",
+          "id": "cassandra-morris-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-morris"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2010-08-03",
+          "runtime_min": 434,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003X3C50O",
+              "type": "libex-import"
+            }
+          ],
+          "work": "heartless"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/3047848-heartless",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003X3C50O",
+          "type": "libex-import"
         }
       ],
       "title": "Heartless",

@@ -193,12 +193,42 @@
       "genres": [
         "childrens",
         "classics",
-        "coming-of-age"
+        "coming-of-age",
+        "politics",
+        "social-sciences"
       ],
       "id": "rose-in-bloom",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "barbara-caruso-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B7L0ZF6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81j0pDmgW4L.jpg",
+          "id": "barbara-caruso-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-caruso"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2013-01-31",
+          "runtime_min": 599,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B7L0ZF6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rose-in-bloom"
+        },
         "c-m-hebert-2006": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -808,6 +838,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1OK7K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B7L0ZF6",
           "type": "libex-import"
         }
       ],

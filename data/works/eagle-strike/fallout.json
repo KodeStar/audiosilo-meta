@@ -6170,6 +6170,9 @@
       "authors": [
         "fernanda-melchor"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "falsa-liebre",
       "language": "es",
       "license": "CC0-1.0",
@@ -6181,53 +6184,7 @@
             {
               "asin": "B0B7CG52X3",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81TYLltTXoL.jpg",
-          "id": "oscar-castillo-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oscar-castillo"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-07-28",
-          "runtime_min": 479,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B7CG52X3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "falsa-liebre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0B7CG52X3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Falsa liebre"
-    },
-    "falsa-liebre-false-hare": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernanda-melchor"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "falsa-liebre-false-hare",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oscar-castillo-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0B7CLSTC6",
               "region": "us"
@@ -6246,21 +6203,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0B7CG52X3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0B7CLSTC6",
               "type": "libex-import"
             }
           ],
-          "work": "falsa-liebre-false-hare"
+          "work": "falsa-liebre"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B7CG52X3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0B7CLSTC6",
           "type": "libex-import"
         }
       ],
-      "title": "Falsa liebre [False Hare]"
+      "title": "Falsa liebre"
     },
     "falsche-adresse-kurzroman-niveau-leicht-bis-mittelschwer": {
       "added_at": "2026-07-29",

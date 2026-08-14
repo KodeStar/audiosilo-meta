@@ -3830,6 +3830,34 @@
       "language": "it",
       "license": "CC0-1.0",
       "recordings": {
+        "claudio-carini-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00GM3JR6M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UEQ029dZL.jpg",
+          "id": "claudio-carini-2013",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claudio-carini"
+          ],
+          "publisher": "Recitar Leggendo Audiolibri",
+          "release_date": "2013-11-13",
+          "runtime_min": 1531,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00GM3JR6M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "i-promessi-sposi"
+        },
         "moro-silo-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3885,62 +3913,6 @@
             }
           ],
           "work": "i-promessi-sposi"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00UC692P6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "I Promessi Sposi"
-    },
-    "i-promessi-sposi-the-betrothed": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alessandro-manzoni"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "politics",
-        "psychological-thriller",
-        "romance"
-      ],
-      "id": "i-promessi-sposi-the-betrothed",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
-        "claudio-carini-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00GM3JR6M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91UEQ029dZL.jpg",
-          "id": "claudio-carini-2013",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "claudio-carini"
-          ],
-          "publisher": "Recitar Leggendo Audiolibri",
-          "release_date": "2013-11-13",
-          "runtime_min": 1531,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00GM3JR6M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "i-promessi-sposi-the-betrothed"
         },
         "silvia-cecchini-2010": {
           "abridged": false,
@@ -3968,17 +3940,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "i-promessi-sposi-the-betrothed"
+          "work": "i-promessi-sposi"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00UC692P6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B003TYDM1S",
           "type": "libex-import"
         }
       ],
-      "title": "I Promessi Sposi [The Betrothed]"
+      "title": "I Promessi Sposi"
     },
     "i-promise-you": {
       "added_at": "2026-08-02",

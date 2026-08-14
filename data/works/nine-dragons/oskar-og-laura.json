@@ -8777,58 +8777,6 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
-        "various-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8726285134",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1F-UKThucL.jpg",
-          "id": "various-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "various"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-08-17",
-          "runtime_min": 158,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8726285134",
-              "type": "libex-import"
-            }
-          ],
-          "work": "otelo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8726285134",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Otelo"
-    },
-    "otelo-othello": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "otelo-othello",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
         "staff-audiolibros-coleccion-2018": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -8957,17 +8905,50 @@
               "type": "libex-import"
             }
           ],
-          "work": "otelo-othello"
+          "work": "otelo"
+        },
+        "various-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8726285134",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1F-UKThucL.jpg",
+          "id": "various-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "various"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-08-17",
+          "runtime_min": 158,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8726285134",
+              "type": "libex-import"
+            }
+          ],
+          "work": "otelo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8726285134",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07DX4VW11",
           "type": "libex-import"
         }
       ],
-      "title": "Otelo [Othello]"
+      "title": "Otelo"
     },
     "othello": {
       "added_at": "2026-08-07",
@@ -9072,270 +9053,6 @@
         }
       ],
       "title": "Othello"
-    },
-    "othello-dramatised": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "classics"
-      ],
-      "id": "othello-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "celia-johnson-2010": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B004HGCY9S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Qkx9rF8SL.jpg",
-          "id": "celia-johnson-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "celia-johnson",
-            "cyril-cussack",
-            "frank-silvera"
-          ],
-          "publisher": "Saland Publishing",
-          "release_date": "2010-12-29",
-          "runtime_min": 173,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B004HGCY9S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "othello-dramatised"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B004HGCY9S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Othello (Dramatised)"
-    },
-    "othello-dramatized": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "othello-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chiwetel-ejiofor-2009": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA8N8S",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 202896,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 143871,
-              "start_ms": 202896,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 238237,
-              "start_ms": 346767,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 241023,
-              "start_ms": 585004,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 404027,
-              "start_ms": 826027,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 243345,
-              "start_ms": 1230054,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 470297,
-              "start_ms": 1473399,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 204475,
-              "start_ms": 1943696,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 65202,
-              "start_ms": 2148171,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 380761,
-              "start_ms": 2213373,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 281147,
-              "start_ms": 2594134,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 306828,
-              "start_ms": 2875281,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 75140,
-              "start_ms": 3182109,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 14814,
-              "start_ms": 3257249,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 712388,
-              "start_ms": 3272063,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 134211,
-              "start_ms": 3984451,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 94459,
-              "start_ms": 4118662,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 560715,
-              "start_ms": 4213121,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 395064,
-              "start_ms": 4773836,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 99149,
-              "start_ms": 5168900,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 258206,
-              "start_ms": 5268049,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 303903,
-              "start_ms": 5526255,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 224676,
-              "start_ms": 5830158,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 402727,
-              "start_ms": 6054834,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 172292,
-              "start_ms": 6457561,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 198159,
-              "start_ms": 6629853,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 111456,
-              "start_ms": 6828012,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 469182,
-              "start_ms": 6939468,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 321968,
-              "start_ms": 7408650,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 757435,
-              "start_ms": 7730618,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 890671,
-              "start_ms": 8488053,
-              "title": "Chapter 31"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ffFHrUyeL.jpg",
-          "id": "chiwetel-ejiofor-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chiwetel-ejiofor",
-            "ewan-mcgregor",
-            "kelly-reilly"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2009-11-13",
-          "runtime_min": 156,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA8N8S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "othello-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA8N8S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Othello (Dramatized)"
     },
     "othello-william-shakespeare": {
       "added_at": "2026-08-07",
@@ -9566,6 +9283,7 @@
         "william-shakespeare"
       ],
       "genres": [
+        "arts-entertainment",
         "classics",
         "drama-plays",
         "literary-fiction"
@@ -9924,6 +9642,223 @@
           ],
           "work": "othello-william-shakespeare-2"
         },
+        "celia-johnson-2010": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B004HGCY9S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Qkx9rF8SL.jpg",
+          "id": "celia-johnson-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "celia-johnson",
+            "cyril-cussack",
+            "frank-silvera"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2010-12-29",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B004HGCY9S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "othello-william-shakespeare-2"
+        },
+        "chiwetel-ejiofor-2009": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA8N8S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 202896,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 143871,
+              "start_ms": 202896,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 238237,
+              "start_ms": 346767,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 241023,
+              "start_ms": 585004,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 404027,
+              "start_ms": 826027,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 243345,
+              "start_ms": 1230054,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 470297,
+              "start_ms": 1473399,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 204475,
+              "start_ms": 1943696,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 65202,
+              "start_ms": 2148171,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 380761,
+              "start_ms": 2213373,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 281147,
+              "start_ms": 2594134,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 306828,
+              "start_ms": 2875281,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 75140,
+              "start_ms": 3182109,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 14814,
+              "start_ms": 3257249,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 712388,
+              "start_ms": 3272063,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 134211,
+              "start_ms": 3984451,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 94459,
+              "start_ms": 4118662,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 560715,
+              "start_ms": 4213121,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 395064,
+              "start_ms": 4773836,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 99149,
+              "start_ms": 5168900,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 258206,
+              "start_ms": 5268049,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 303903,
+              "start_ms": 5526255,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 224676,
+              "start_ms": 5830158,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 402727,
+              "start_ms": 6054834,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 172292,
+              "start_ms": 6457561,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 198159,
+              "start_ms": 6629853,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 111456,
+              "start_ms": 6828012,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 469182,
+              "start_ms": 6939468,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 321968,
+              "start_ms": 7408650,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 757435,
+              "start_ms": 7730618,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 890671,
+              "start_ms": 8488053,
+              "title": "Chapter 31"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ffFHrUyeL.jpg",
+          "id": "chiwetel-ejiofor-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chiwetel-ejiofor",
+            "ewan-mcgregor",
+            "kelly-reilly"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2009-11-13",
+          "runtime_min": 156,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA8N8S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "othello-william-shakespeare-2"
+        },
         "full-cast-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10034,6 +9969,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00L4BJEV0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B004HGCY9S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA8N8S",
           "type": "libex-import"
         }
       ],

@@ -1948,34 +1948,7 @@
             }
           ],
           "work": "spell-disaster"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B06WVW7FXM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Spell Disaster"
-    },
-    "spell-disaster-booktrack-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "leighann-dobbs",
-        "traci-douglass"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery",
-        "paranormal",
-        "romance",
-        "thriller-suspense"
-      ],
-      "id": "spell-disaster-booktrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "amy-rubinate-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2139,17 +2112,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "spell-disaster-booktrack-edition"
+          "work": "spell-disaster"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B06WVW7FXM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07DFT2SXD",
           "type": "libex-import"
         }
       ],
-      "title": "Spell Disaster (Booktrack Edition)"
+      "title": "Spell Disaster"
     },
     "spell-dont-tell": {
       "added_at": "2026-08-02",

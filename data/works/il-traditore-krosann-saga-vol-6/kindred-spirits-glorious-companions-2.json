@@ -6528,12 +6528,43 @@
         "andrew-lang"
       ],
       "genres": [
-        "classics"
+        "childrens",
+        "classics",
+        "fairy-tales-folklore",
+        "mythology"
       ],
       "id": "king-arthur",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "adriel-brandt-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08297XCDV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913oDhjBZrL.jpg",
+          "id": "adriel-brandt-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adriel-brandt"
+          ],
+          "publisher": "MuseumAudiobooks.com",
+          "release_date": "2019-12-03",
+          "runtime_min": 252,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08297XCDV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "king-arthur"
+        },
         "jack-chekijian-2016": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -6567,6 +6598,11 @@
         {
           "imported_at": "2026-08-08",
           "ref": "B01IE03AN6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08297XCDV",
           "type": "libex-import"
         }
       ],
@@ -7989,59 +8025,6 @@
         }
       ],
       "title": "King Arthur: History and Legend"
-    },
-    "king-arthur-tales-from-the-round-table": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "andrew-lang"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fairy-tales-folklore",
-        "mythology"
-      ],
-      "id": "king-arthur-tales-from-the-round-table",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adriel-brandt-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08297XCDV",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913oDhjBZrL.jpg",
-          "id": "adriel-brandt-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adriel-brandt"
-          ],
-          "publisher": "MuseumAudiobooks.com",
-          "release_date": "2019-12-03",
-          "runtime_min": 252,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08297XCDV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "king-arthur-tales-from-the-round-table"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08297XCDV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "King Arthur: Tales from the Round Table"
     },
     "king-ben-kane": {
       "added_at": "2026-07-29",

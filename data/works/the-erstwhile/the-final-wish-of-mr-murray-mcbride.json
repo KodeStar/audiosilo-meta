@@ -5601,7 +5601,9 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "dystopian",
         "fantasy",
+        "science-fiction",
         "young-adult"
       ],
       "id": "the-finisher",
@@ -5614,6 +5616,10 @@
           "asin": [
             {
               "asin": "B00IZOPS8W",
+              "region": "us"
+            },
+            {
+              "asin": "B00IJFAS6O",
               "region": "us"
             }
           ],
@@ -5904,6 +5910,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00IZOPS8W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IJFAS6O",
+              "type": "libex-import"
             }
           ],
           "work": "the-finisher"
@@ -5913,6 +5924,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00IZOPS8W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00IJFAS6O",
           "type": "libex-import"
         }
       ],
@@ -6402,332 +6418,6 @@
         }
       ],
       "title": "The Finisher"
-    },
-    "the-finisher-vega-jane-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "dystopian",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "the-finisher-vega-jane-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicola-barber-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00IJFAS6O",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 66889,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1014000,
-              "start_ms": 66889,
-              "title": "UNUS"
-            },
-            {
-              "length_ms": 1166199,
-              "start_ms": 1080889,
-              "title": "DUO"
-            },
-            {
-              "length_ms": 1355442,
-              "start_ms": 2247088,
-              "title": "TRES"
-            },
-            {
-              "length_ms": 842838,
-              "start_ms": 3602530,
-              "title": "QUATTUOR"
-            },
-            {
-              "length_ms": 1347082,
-              "start_ms": 4445368,
-              "title": "QUINQUE"
-            },
-            {
-              "length_ms": 944448,
-              "start_ms": 5792450,
-              "title": "SEX"
-            },
-            {
-              "length_ms": 647001,
-              "start_ms": 6736898,
-              "title": "SEPTEM"
-            },
-            {
-              "length_ms": 593641,
-              "start_ms": 7383899,
-              "title": "OCTO"
-            },
-            {
-              "length_ms": 871677,
-              "start_ms": 7977540,
-              "title": "NOVEM"
-            },
-            {
-              "length_ms": 1229636,
-              "start_ms": 8849217,
-              "title": "DECEM"
-            },
-            {
-              "length_ms": 1247933,
-              "start_ms": 10078853,
-              "title": "UNDECIM"
-            },
-            {
-              "length_ms": 1133552,
-              "start_ms": 11326786,
-              "title": "DUODECIM"
-            },
-            {
-              "length_ms": 945981,
-              "start_ms": 12460338,
-              "title": "TREDECIM"
-            },
-            {
-              "length_ms": 1129790,
-              "start_ms": 13406319,
-              "title": "QUATTUORDECIM"
-            },
-            {
-              "length_ms": 900052,
-              "start_ms": 14536109,
-              "title": "QUINDECIM"
-            },
-            {
-              "length_ms": 698178,
-              "start_ms": 15436161,
-              "title": "SEDECIM"
-            },
-            {
-              "length_ms": 1434250,
-              "start_ms": 16134339,
-              "title": "SEPTENDECIM"
-            },
-            {
-              "length_ms": 1034774,
-              "start_ms": 17568589,
-              "title": "DUODEVIGINTI"
-            },
-            {
-              "length_ms": 889231,
-              "start_ms": 18603363,
-              "title": "UNDEVIGINTI"
-            },
-            {
-              "length_ms": 573254,
-              "start_ms": 19492594,
-              "title": "VIGINTI"
-            },
-            {
-              "length_ms": 1556341,
-              "start_ms": 20065848,
-              "title": "VIGINTI UNUS"
-            },
-            {
-              "length_ms": 837730,
-              "start_ms": 21622189,
-              "title": "VIGINTI DUO"
-            },
-            {
-              "length_ms": 1186122,
-              "start_ms": 22459919,
-              "title": "VIGINTI TRES"
-            },
-            {
-              "length_ms": 521938,
-              "start_ms": 23646041,
-              "title": "VIGINTI QUATTUOR"
-            },
-            {
-              "length_ms": 1432764,
-              "start_ms": 24167979,
-              "title": "VIGINTI QUINQUE"
-            },
-            {
-              "length_ms": 794865,
-              "start_ms": 25600743,
-              "title": "VIGINTI SEX"
-            },
-            {
-              "length_ms": 1362408,
-              "start_ms": 26395608,
-              "title": "VIGINTI SEPTEM"
-            },
-            {
-              "length_ms": 1035424,
-              "start_ms": 27758016,
-              "title": "VIGINTI OCTO"
-            },
-            {
-              "length_ms": 1229729,
-              "start_ms": 28793440,
-              "title": "VIGINTI NOVEM"
-            },
-            {
-              "length_ms": 650762,
-              "start_ms": 30023169,
-              "title": "TRIGINTA"
-            },
-            {
-              "length_ms": 789386,
-              "start_ms": 30673931,
-              "title": "TRIGINTA UNUS"
-            },
-            {
-              "length_ms": 982901,
-              "start_ms": 31463317,
-              "title": "TRIGINTA DUO"
-            },
-            {
-              "length_ms": 675236,
-              "start_ms": 32446218,
-              "title": "TRIGINTA TRES"
-            },
-            {
-              "length_ms": 787296,
-              "start_ms": 33121454,
-              "title": "TRIGINTA QUATTUOR"
-            },
-            {
-              "length_ms": 1549421,
-              "start_ms": 33908750,
-              "title": "TRIGINTA QUINQUE"
-            },
-            {
-              "length_ms": 1025300,
-              "start_ms": 35458171,
-              "title": "TRIGINTA SEX"
-            },
-            {
-              "length_ms": 688657,
-              "start_ms": 36483471,
-              "title": "TRIGINTA SEPTEM"
-            },
-            {
-              "length_ms": 1312949,
-              "start_ms": 37172128,
-              "title": "TRIGINTA OCTO"
-            },
-            {
-              "length_ms": 1032824,
-              "start_ms": 38485077,
-              "title": "TRIGINTA NOVEM"
-            },
-            {
-              "length_ms": 1111446,
-              "start_ms": 39517901,
-              "title": "QUADRAGINTA"
-            },
-            {
-              "length_ms": 701893,
-              "start_ms": 40629347,
-              "title": "QUADRAGINTA UNUS"
-            },
-            {
-              "length_ms": 988891,
-              "start_ms": 41331240,
-              "title": "QUADRAGINTA DUO"
-            },
-            {
-              "length_ms": 1043180,
-              "start_ms": 42320131,
-              "title": "QUADRAGINTA TRES"
-            },
-            {
-              "length_ms": 681738,
-              "start_ms": 43363311,
-              "title": "QUADRAGINTA QUATTUOR"
-            },
-            {
-              "length_ms": 935950,
-              "start_ms": 44045049,
-              "title": "QUADRAGINTA QUINQUE"
-            },
-            {
-              "length_ms": 1134945,
-              "start_ms": 44980999,
-              "title": "QUADRAGINTA SEX"
-            },
-            {
-              "length_ms": 1240967,
-              "start_ms": 46115944,
-              "title": "QUADRAGINTA SEPTEM"
-            },
-            {
-              "length_ms": 1179713,
-              "start_ms": 47356911,
-              "title": "QUADRAGINTA OCTO"
-            },
-            {
-              "length_ms": 1816126,
-              "start_ms": 48536624,
-              "title": "QUADRAGINTA NOVEM"
-            },
-            {
-              "length_ms": 826909,
-              "start_ms": 50352750,
-              "title": "QUINQUAGINTA"
-            },
-            {
-              "length_ms": 926198,
-              "start_ms": 51179659,
-              "title": "QUINQUAGINTA UNUS"
-            },
-            {
-              "length_ms": 1659716,
-              "start_ms": 52105857,
-              "title": "QUINQUAGINTA DUO"
-            },
-            {
-              "length_ms": 63344,
-              "start_ms": 53765573,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91q5epS+JaL.jpg",
-          "id": "nicola-barber-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicola-barber"
-          ],
-          "publisher": "Scholastic Audio Books",
-          "release_date": "2014-03-04",
-          "runtime_min": 897,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00IJFAS6O",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-finisher-vega-jane-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00IJFAS6O",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Finisher (Vega Jane, Book 1)"
     },
     "the-finishing-school": {
       "added_at": "2026-07-29",

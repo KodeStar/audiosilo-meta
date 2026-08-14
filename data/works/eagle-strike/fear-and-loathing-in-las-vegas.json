@@ -4545,6 +4545,7 @@
       ],
       "genres": [
         "childrens",
+        "fantasy",
         "religious-fiction"
       ],
       "id": "fear-no-evil-allen-brokken",
@@ -4725,12 +4726,192 @@
             }
           ],
           "work": "fear-no-evil-allen-brokken"
+        },
+        "stacey-bradshaw-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D9MHQRGH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19760,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 586141,
+              "start_ms": 19760,
+              "title": "Chapter 1: Prologue"
+            },
+            {
+              "length_ms": 1062220,
+              "start_ms": 605901,
+              "title": "Chapter 2: Quinn's Ferry"
+            },
+            {
+              "length_ms": 1053489,
+              "start_ms": 1668121,
+              "title": "Chapter 3: On the River"
+            },
+            {
+              "length_ms": 544507,
+              "start_ms": 2721610,
+              "title": "Chapter 4: Rude Awakening"
+            },
+            {
+              "length_ms": 570003,
+              "start_ms": 3266117,
+              "title": "Chapter 5: The Giantess"
+            },
+            {
+              "length_ms": 399197,
+              "start_ms": 3836120,
+              "title": "Chapter 6: Little Men"
+            },
+            {
+              "length_ms": 632302,
+              "start_ms": 4235317,
+              "title": "Chapter 7: Waterlogged"
+            },
+            {
+              "length_ms": 1021213,
+              "start_ms": 4867619,
+              "title": "Chapter 8: Big help"
+            },
+            {
+              "length_ms": 1165595,
+              "start_ms": 5888832,
+              "title": "Chapter 9: The Bully"
+            },
+            {
+              "length_ms": 662767,
+              "start_ms": 7054427,
+              "title": "Chapter 10: Exposure"
+            },
+            {
+              "length_ms": 330373,
+              "start_ms": 7717194,
+              "title": "Chapter 11: Road to Redemption"
+            },
+            {
+              "length_ms": 1252786,
+              "start_ms": 8047567,
+              "title": "Chapter 12: The Rise of Refi'Cul"
+            },
+            {
+              "length_ms": 536589,
+              "start_ms": 9300353,
+              "title": "Chapter 13: Unbearale Darkness"
+            },
+            {
+              "length_ms": 1099371,
+              "start_ms": 9836942,
+              "title": "Chapter 14: Captures"
+            },
+            {
+              "length_ms": 1107824,
+              "start_ms": 10936313,
+              "title": "Chapter 15: A Quest Begins"
+            },
+            {
+              "length_ms": 1309187,
+              "start_ms": 12044137,
+              "title": "Chapter 16: Jail Break"
+            },
+            {
+              "length_ms": 913356,
+              "start_ms": 13353324,
+              "title": "Chapter 17: Ba'bee Food"
+            },
+            {
+              "length_ms": 290017,
+              "start_ms": 14266680,
+              "title": "Chapter 18: Ambush"
+            },
+            {
+              "length_ms": 626544,
+              "start_ms": 14556697,
+              "title": "Chapter 19: The Light"
+            },
+            {
+              "length_ms": 800484,
+              "start_ms": 15183241,
+              "title": "Chapter 20: Bait"
+            },
+            {
+              "length_ms": 278407,
+              "start_ms": 15983725,
+              "title": "Chapter 21: Rescue"
+            },
+            {
+              "length_ms": 527162,
+              "start_ms": 16262132,
+              "title": "Chapter 22: Flight"
+            },
+            {
+              "length_ms": 1207716,
+              "start_ms": 16789294,
+              "title": "Chapter 23: Unexpected Reunion"
+            },
+            {
+              "length_ms": 1061012,
+              "start_ms": 17997010,
+              "title": "Chapter 24: The Blind Ones"
+            },
+            {
+              "length_ms": 1306540,
+              "start_ms": 19058022,
+              "title": "Chapter 25: Baby Sitting"
+            },
+            {
+              "length_ms": 947884,
+              "start_ms": 20364562,
+              "title": "Chapter 26: Confrontation"
+            },
+            {
+              "length_ms": 189451,
+              "start_ms": 21312446,
+              "title": "Chapter 27: Epilogue"
+            },
+            {
+              "length_ms": 23544,
+              "start_ms": 21501897,
+              "title": "Closing Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VByj6WMkL.jpg",
+          "id": "stacey-bradshaw-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stacey-bradshaw"
+          ],
+          "publisher": "Towers of Light",
+          "release_date": "2024-07-17",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D9MHQRGH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fear-no-evil-allen-brokken"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B0BQ9HMG16",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D9MHQRGH",
           "type": "libex-import"
         }
       ],
@@ -5436,205 +5617,6 @@
         }
       ],
       "title": "Fear No Evil"
-    },
-    "fear-no-evil-towers-of-light-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "allen-brokken"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "religious-fiction"
-      ],
-      "id": "fear-no-evil-towers-of-light-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stacey-bradshaw-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D9MHQRGH",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19760,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 586141,
-              "start_ms": 19760,
-              "title": "Chapter 1: Prologue"
-            },
-            {
-              "length_ms": 1062220,
-              "start_ms": 605901,
-              "title": "Chapter 2: Quinn's Ferry"
-            },
-            {
-              "length_ms": 1053489,
-              "start_ms": 1668121,
-              "title": "Chapter 3: On the River"
-            },
-            {
-              "length_ms": 544507,
-              "start_ms": 2721610,
-              "title": "Chapter 4: Rude Awakening"
-            },
-            {
-              "length_ms": 570003,
-              "start_ms": 3266117,
-              "title": "Chapter 5: The Giantess"
-            },
-            {
-              "length_ms": 399197,
-              "start_ms": 3836120,
-              "title": "Chapter 6: Little Men"
-            },
-            {
-              "length_ms": 632302,
-              "start_ms": 4235317,
-              "title": "Chapter 7: Waterlogged"
-            },
-            {
-              "length_ms": 1021213,
-              "start_ms": 4867619,
-              "title": "Chapter 8: Big help"
-            },
-            {
-              "length_ms": 1165595,
-              "start_ms": 5888832,
-              "title": "Chapter 9: The Bully"
-            },
-            {
-              "length_ms": 662767,
-              "start_ms": 7054427,
-              "title": "Chapter 10: Exposure"
-            },
-            {
-              "length_ms": 330373,
-              "start_ms": 7717194,
-              "title": "Chapter 11: Road to Redemption"
-            },
-            {
-              "length_ms": 1252786,
-              "start_ms": 8047567,
-              "title": "Chapter 12: The Rise of Refi'Cul"
-            },
-            {
-              "length_ms": 536589,
-              "start_ms": 9300353,
-              "title": "Chapter 13: Unbearale Darkness"
-            },
-            {
-              "length_ms": 1099371,
-              "start_ms": 9836942,
-              "title": "Chapter 14: Captures"
-            },
-            {
-              "length_ms": 1107824,
-              "start_ms": 10936313,
-              "title": "Chapter 15: A Quest Begins"
-            },
-            {
-              "length_ms": 1309187,
-              "start_ms": 12044137,
-              "title": "Chapter 16: Jail Break"
-            },
-            {
-              "length_ms": 913356,
-              "start_ms": 13353324,
-              "title": "Chapter 17: Ba'bee Food"
-            },
-            {
-              "length_ms": 290017,
-              "start_ms": 14266680,
-              "title": "Chapter 18: Ambush"
-            },
-            {
-              "length_ms": 626544,
-              "start_ms": 14556697,
-              "title": "Chapter 19: The Light"
-            },
-            {
-              "length_ms": 800484,
-              "start_ms": 15183241,
-              "title": "Chapter 20: Bait"
-            },
-            {
-              "length_ms": 278407,
-              "start_ms": 15983725,
-              "title": "Chapter 21: Rescue"
-            },
-            {
-              "length_ms": 527162,
-              "start_ms": 16262132,
-              "title": "Chapter 22: Flight"
-            },
-            {
-              "length_ms": 1207716,
-              "start_ms": 16789294,
-              "title": "Chapter 23: Unexpected Reunion"
-            },
-            {
-              "length_ms": 1061012,
-              "start_ms": 17997010,
-              "title": "Chapter 24: The Blind Ones"
-            },
-            {
-              "length_ms": 1306540,
-              "start_ms": 19058022,
-              "title": "Chapter 25: Baby Sitting"
-            },
-            {
-              "length_ms": 947884,
-              "start_ms": 20364562,
-              "title": "Chapter 26: Confrontation"
-            },
-            {
-              "length_ms": 189451,
-              "start_ms": 21312446,
-              "title": "Chapter 27: Epilogue"
-            },
-            {
-              "length_ms": 23544,
-              "start_ms": 21501897,
-              "title": "Closing Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VByj6WMkL.jpg",
-          "id": "stacey-bradshaw-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stacey-bradshaw"
-          ],
-          "publisher": "Towers of Light",
-          "release_date": "2024-07-17",
-          "runtime_min": 358,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0D9MHQRGH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fear-no-evil-towers-of-light-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D9MHQRGH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fear No Evil: Towers of Light, Book 3"
     },
     "fear-no-truth": {
       "added_at": "2026-07-29",

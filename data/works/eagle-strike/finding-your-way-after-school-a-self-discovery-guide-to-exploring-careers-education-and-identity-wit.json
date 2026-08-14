@@ -4532,6 +4532,7 @@
         "pj-fiala"
       ],
       "genres": [
+        "action-adventure",
         "romance",
         "romantic-suspense"
       ],
@@ -4698,31 +4699,7 @@
             }
           ],
           "work": "finish-line"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BWGJRT9J",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Finish Line"
-    },
-    "finish-line-bluegrass-security-book-two": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "pj-fiala"
-      ],
-      "genres": [
-        "action-adventure",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "finish-line-bluegrass-security-book-two",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rose-dioro-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4872,17 +4849,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "finish-line-bluegrass-security-book-two"
+          "work": "finish-line"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BWGJRT9J",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJFKJ31B",
           "type": "libex-import"
         }
       ],
-      "title": "Finish Line, Bluegrass Security, Book Two"
+      "title": "Finish Line"
     },
     "finish-strong": {
       "added_at": "2026-07-29",

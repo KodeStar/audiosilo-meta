@@ -4196,7 +4196,8 @@
         "f-scott-fitzgerald"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "this-side-of-paradise",
       "language": "en",
@@ -4315,6 +4316,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B003XKFBBM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "this-side-of-paradise"
+        },
+        "dick-hill-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B076T8QBWP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81M9YmHtv1L.jpg",
+          "id": "dick-hill-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dick-hill"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-10-31",
+          "runtime_min": 553,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B076T8QBWP",
               "type": "libex-import"
             }
           ],
@@ -4492,60 +4521,14 @@
           "imported_at": "2026-08-08",
           "ref": "B007Z1S63K",
           "type": "libex-import"
-        }
-      ],
-      "title": "This Side of Paradise"
-    },
-    "this-side-of-paradise-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "f-scott-fitzgerald"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "this-side-of-paradise-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dick-hill-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B076T8QBWP",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81M9YmHtv1L.jpg",
-          "id": "dick-hill-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dick-hill"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2017-10-31",
-          "runtime_min": 553,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B076T8QBWP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "this-side-of-paradise-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B076T8QBWP",
           "type": "libex-import"
         }
       ],
-      "title": "This Side of Paradise (AmazonClassics Edition)"
+      "title": "This Side of Paradise"
     },
     "this-side-of-the-grave": {
       "added_at": "2026-07-25T19:18:21+01:00",

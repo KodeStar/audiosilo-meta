@@ -7648,13 +7648,112 @@
         "k-f-breene"
       ],
       "genres": [
+        "arts-entertainment",
+        "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "urban-fantasy"
       ],
       "id": "magical-midlife-alliance",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "danny-gavigan-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F9BWHPYV",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3360971,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3699588,
+              "start_ms": 3360971,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3737112,
+              "start_ms": 7060559,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3793699,
+              "start_ms": 10797671,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3482157,
+              "start_ms": 14591370,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3520702,
+              "start_ms": 18073527,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4550437,
+              "start_ms": 21594229,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3534913,
+              "start_ms": 26144666,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3857995,
+              "start_ms": 29679579,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3463233,
+              "start_ms": 33537574,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3055838,
+              "start_ms": 37000807,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81720Z5bGTL.jpg",
+          "id": "danny-gavigan-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "danny-gavigan",
+            "dawn-ursula",
+            "dejeanette-horne",
+            "full-cast",
+            "holly-adams",
+            "john-kielty",
+            "karen-novack",
+            "kay-eluvian",
+            "lily-beacon",
+            "rayner-gabriel",
+            "rj-bayley",
+            "ryan-dalusung"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-07-09",
+          "runtime_min": 667,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F9BWHPYV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magical-midlife-alliance"
+        },
         "nicole-poole-2023": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -7866,130 +7965,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0BXFDFQ5W",
           "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Alliance"
-    },
-    "magical-midlife-alliance-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magical-midlife-alliance-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "danny-gavigan-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F9BWHPYV",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3360971,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3699588,
-              "start_ms": 3360971,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3737112,
-              "start_ms": 7060559,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3793699,
-              "start_ms": 10797671,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3482157,
-              "start_ms": 14591370,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3520702,
-              "start_ms": 18073527,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4550437,
-              "start_ms": 21594229,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3534913,
-              "start_ms": 26144666,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3857995,
-              "start_ms": 29679579,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3463233,
-              "start_ms": 33537574,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3055838,
-              "start_ms": 37000807,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81720Z5bGTL.jpg",
-          "id": "danny-gavigan-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "danny-gavigan",
-            "dawn-ursula",
-            "dejeanette-horne",
-            "full-cast",
-            "holly-adams",
-            "john-kielty",
-            "karen-novack",
-            "kay-eluvian",
-            "lily-beacon",
-            "rayner-gabriel",
-            "rj-bayley",
-            "ryan-dalusung"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-07-09",
-          "runtime_min": 667,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F9BWHPYV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magical-midlife-alliance-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F9BWHPYV",
           "type": "libex-import"
         }
       ],
-      "title": "Magical Midlife Alliance (Dramatized Adaptation)"
+      "title": "Magical Midlife Alliance"
     },
     "magical-midlife-awakening": {
       "added_at": "2026-07-30T14:42:56+01:00",
@@ -7999,12 +7982,109 @@
       "genres": [
         "comedy-humor",
         "fantasy",
+        "paranormal",
         "romance"
       ],
       "id": "magical-midlife-awakening",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "crystal-lee-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GHZPQ31B",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3676159,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3778234,
+              "start_ms": 3676159,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3395941,
+              "start_ms": 7454393,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3501267,
+              "start_ms": 10850334,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3080312,
+              "start_ms": 14351601,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3159655,
+              "start_ms": 17431913,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2537964,
+              "start_ms": 20591568,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3661879,
+              "start_ms": 23129532,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3445678,
+              "start_ms": 26791411,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3109314,
+              "start_ms": 30237089,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3752274,
+              "start_ms": 33346403,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HBoILBEbL.jpg",
+          "id": "crystal-lee-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "crystal-lee",
+            "danny-gavigan",
+            "dawn-ursula",
+            "dejeanette-horne",
+            "dominique-salvacion",
+            "full-cast",
+            "henry-w-kramer",
+            "john-kielty",
+            "karen-novack",
+            "kay-eluvian",
+            "rayner-gabriel",
+            "rj-bayley"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-03-24",
+          "runtime_min": 618,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GHZPQ31B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magical-midlife-awakening"
+        },
         "nicole-poole-2024": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -8201,12 +8281,17 @@
           "imported_at": "2026-07-30",
           "ref": "B0CVNHBLS7",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GHZPQ31B",
+          "type": "libex-import"
         }
       ],
       "title": "Magical Midlife Awakening"
     },
-    "magical-midlife-awakening-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+    "magical-midlife-battle": {
+      "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
         "k-f-breene"
       ],
@@ -8215,129 +8300,121 @@
         "paranormal",
         "romance"
       ],
-      "id": "magical-midlife-awakening-dramatized-adaptation",
+      "id": "magical-midlife-battle",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "crystal-lee-2026": {
+        "bradley-foster-smith-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
             {
-              "asin": "B0GHZPQ31B",
+              "asin": "B0FSB22MT5",
               "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 3676159,
+              "length_ms": 37970,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
             },
             {
-              "length_ms": 3778234,
-              "start_ms": 3676159,
-              "title": "Chapter 2"
+              "length_ms": 3642903,
+              "start_ms": 37970,
+              "title": "Track 1"
             },
             {
-              "length_ms": 3395941,
-              "start_ms": 7454393,
-              "title": "Chapter 3"
+              "length_ms": 4036696,
+              "start_ms": 3680873,
+              "title": "Track 2"
             },
             {
-              "length_ms": 3501267,
-              "start_ms": 10850334,
-              "title": "Chapter 4"
+              "length_ms": 3631647,
+              "start_ms": 7717569,
+              "title": "Track 3"
             },
             {
-              "length_ms": 3080312,
-              "start_ms": 14351601,
-              "title": "Chapter 5"
+              "length_ms": 3358557,
+              "start_ms": 11349216,
+              "title": "Track 4"
             },
             {
-              "length_ms": 3159655,
-              "start_ms": 17431913,
-              "title": "Chapter 6"
+              "length_ms": 3699542,
+              "start_ms": 14707773,
+              "title": "Track 5"
             },
             {
-              "length_ms": 2537964,
-              "start_ms": 20591568,
-              "title": "Chapter 7"
+              "length_ms": 3417164,
+              "start_ms": 18407315,
+              "title": "Track 6"
             },
             {
-              "length_ms": 3661879,
-              "start_ms": 23129532,
-              "title": "Chapter 8"
+              "length_ms": 3728497,
+              "start_ms": 21824479,
+              "title": "Track 7"
             },
             {
-              "length_ms": 3445678,
-              "start_ms": 26791411,
-              "title": "Chapter 9"
+              "length_ms": 3908336,
+              "start_ms": 25552976,
+              "title": "Track 8"
             },
             {
-              "length_ms": 3109314,
-              "start_ms": 30237089,
-              "title": "Chapter 10"
+              "length_ms": 4015101,
+              "start_ms": 29461312,
+              "title": "Track 9"
             },
             {
-              "length_ms": 3752274,
-              "start_ms": 33346403,
-              "title": "Chapter 11"
+              "length_ms": 3270646,
+              "start_ms": 33476413,
+              "title": "Track 10"
+            },
+            {
+              "length_ms": 3900023,
+              "start_ms": 36747059,
+              "title": "Track 11"
+            },
+            {
+              "length_ms": 3169000,
+              "start_ms": 40647082,
+              "title": "Track 12"
+            },
+            {
+              "length_ms": 118712,
+              "start_ms": 43816082,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HBoILBEbL.jpg",
-          "id": "crystal-lee-2026",
+          "cover_url": "https://m.media-amazon.com/images/I/91LmIX-XOSL.jpg",
+          "id": "bradley-foster-smith-2025",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "crystal-lee",
+            "bradley-foster-smith",
+            "brian-kim-mccormick",
             "danny-gavigan",
             "dawn-ursula",
             "dejeanette-horne",
-            "dominique-salvacion",
             "full-cast",
-            "henry-w-kramer",
-            "john-kielty",
             "karen-novack",
             "kay-eluvian",
             "rayner-gabriel",
-            "rj-bayley"
+            "ryan-dalusung",
+            "wayne-legette",
+            "yenni-ann"
           ],
           "publisher": "GraphicAudio",
-          "release_date": "2026-03-24",
-          "runtime_min": 618,
+          "release_date": "2025-12-17",
+          "runtime_min": 732,
           "sources": [
             {
               "imported_at": "2026-08-02",
-              "ref": "B0GHZPQ31B",
+              "ref": "B0FSB22MT5",
               "type": "libex-import"
             }
           ],
-          "work": "magical-midlife-awakening-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GHZPQ31B",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Awakening [Dramatized Adaptation]"
-    },
-    "magical-midlife-battle": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "magical-midlife-battle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "magical-midlife-battle"
+        },
         "nicole-poole-2023": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -8569,155 +8646,27 @@
           "imported_at": "2026-07-30",
           "ref": "B0CGVRD167",
           "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Battle"
-    },
-    "magical-midlife-battle-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "magical-midlife-battle-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradley-foster-smith-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FSB22MT5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3642903,
-              "start_ms": 37970,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 4036696,
-              "start_ms": 3680873,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 3631647,
-              "start_ms": 7717569,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 3358557,
-              "start_ms": 11349216,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 3699542,
-              "start_ms": 14707773,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3417164,
-              "start_ms": 18407315,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 3728497,
-              "start_ms": 21824479,
-              "title": "Track 7"
-            },
-            {
-              "length_ms": 3908336,
-              "start_ms": 25552976,
-              "title": "Track 8"
-            },
-            {
-              "length_ms": 4015101,
-              "start_ms": 29461312,
-              "title": "Track 9"
-            },
-            {
-              "length_ms": 3270646,
-              "start_ms": 33476413,
-              "title": "Track 10"
-            },
-            {
-              "length_ms": 3900023,
-              "start_ms": 36747059,
-              "title": "Track 11"
-            },
-            {
-              "length_ms": 3169000,
-              "start_ms": 40647082,
-              "title": "Track 12"
-            },
-            {
-              "length_ms": 118712,
-              "start_ms": 43816082,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91LmIX-XOSL.jpg",
-          "id": "bradley-foster-smith-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradley-foster-smith",
-            "brian-kim-mccormick",
-            "danny-gavigan",
-            "dawn-ursula",
-            "dejeanette-horne",
-            "full-cast",
-            "karen-novack",
-            "kay-eluvian",
-            "rayner-gabriel",
-            "ryan-dalusung",
-            "wayne-legette",
-            "yenni-ann"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025-12-17",
-          "runtime_min": 732,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FSB22MT5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magical-midlife-battle-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FSB22MT5",
           "type": "libex-import"
         }
       ],
-      "title": "Magical Midlife Battle [Dramatized Adaptation]"
+      "title": "Magical Midlife Battle"
     },
-    "magical-midlife-challenge": {
-      "added_at": "2026-08-01",
+    "magical-midlife-challenge-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "k-f-breene"
       ],
       "genres": [
+        "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "urban-fantasy"
       ],
-      "id": "magical-midlife-challenge",
+      "id": "magical-midlife-challenge-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8909,32 +8858,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "magical-midlife-challenge"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BPTJS6XB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Challenge"
-    },
-    "magical-midlife-challenge-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magical-midlife-challenge-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "magical-midlife-challenge-dramatized-adaptation"
+        },
         "rj-bayley-2025": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9046,6 +8971,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DWV29QPV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BPTJS6XB",
           "type": "libex-import"
         }
       ],
@@ -9617,19 +9547,102 @@
       ],
       "title": "Magical Midlife Flowers (Dramatized Adaptation)"
     },
-    "magical-midlife-invasion": {
-      "added_at": "2026-08-01",
+    "magical-midlife-invasion-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "k-f-breene"
       ],
       "genres": [
+        "arts-entertainment",
+        "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "urban-fantasy"
       ],
-      "id": "magical-midlife-invasion",
+      "id": "magical-midlife-invasion-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D9PGVXV9",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 34924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3542016,
+              "start_ms": 34924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3860805,
+              "start_ms": 3576940,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3233912,
+              "start_ms": 7437745,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3201497,
+              "start_ms": 10671657,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3657723,
+              "start_ms": 13873154,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3640000,
+              "start_ms": 17530877,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 95000,
+              "start_ms": 21170877,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 237979,
+              "start_ms": 21265877,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912cUD1-wdL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2024",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D9PGVXV9",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D9PGVXV9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magical-midlife-invasion-dramatized-adaptation"
+        },
         "nicole-poole-2020": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -9793,111 +9806,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magical-midlife-invasion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08MKNSV2L",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Invasion"
-    },
-    "magical-midlife-invasion-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magical-midlife-invasion-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D9PGVXV9",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 34924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3542016,
-              "start_ms": 34924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3860805,
-              "start_ms": 3576940,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3233912,
-              "start_ms": 7437745,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3201497,
-              "start_ms": 10671657,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3657723,
-              "start_ms": 13873154,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3640000,
-              "start_ms": 17530877,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 95000,
-              "start_ms": 21170877,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 237979,
-              "start_ms": 21265877,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912cUD1-wdL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024",
-          "runtime_min": 358,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D9PGVXV9",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D9PGVXV9",
-              "type": "libex-import"
-            }
-          ],
           "work": "magical-midlife-invasion-dramatized-adaptation"
         }
       },
@@ -9911,23 +9819,116 @@
           "imported_at": "2026-07-30",
           "ref": "B0D9PGVXV9",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08MKNSV2L",
+          "type": "libex-import"
         }
       ],
       "title": "Magical Midlife Invasion (Dramatized Adaptation)"
     },
-    "magical-midlife-love": {
-      "added_at": "2026-08-01",
+    "magical-midlife-love-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "k-f-breene"
       ],
       "genres": [
+        "arts-entertainment",
+        "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "urban-fantasy"
       ],
-      "id": "magical-midlife-love",
+      "id": "magical-midlife-love-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DJMYV4BJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 38924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3856316,
+              "start_ms": 38924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4062400,
+              "start_ms": 3895240,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4231604,
+              "start_ms": 7957640,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3658164,
+              "start_ms": 12189244,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3254810,
+              "start_ms": 15847408,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3684449,
+              "start_ms": 19102218,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 3899512,
+              "start_ms": 22786667,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 4130000,
+              "start_ms": 26686179,
+              "title": "Part 8"
+            },
+            {
+              "length_ms": 68909,
+              "start_ms": 30816179,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GOvBANYbL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 515,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DJMYV4BJ",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DJMYV4BJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magical-midlife-love-dramatized-adaptation"
+        },
         "nicole-poole-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10141,117 +10142,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magical-midlife-love"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08TN3FKB5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Love"
-    },
-    "magical-midlife-love-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magical-midlife-love-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DJMYV4BJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3856316,
-              "start_ms": 38924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4062400,
-              "start_ms": 3895240,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4231604,
-              "start_ms": 7957640,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3658164,
-              "start_ms": 12189244,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3254810,
-              "start_ms": 15847408,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3684449,
-              "start_ms": 19102218,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3899512,
-              "start_ms": 22786667,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 4130000,
-              "start_ms": 26686179,
-              "title": "Part 8"
-            },
-            {
-              "length_ms": 68909,
-              "start_ms": 30816179,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GOvBANYbL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 515,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DJMYV4BJ",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DJMYV4BJ",
-              "type": "libex-import"
-            }
-          ],
           "work": "magical-midlife-love-dramatized-adaptation"
         }
       },
@@ -10265,233 +10155,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0DJMYV4BJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Magical Midlife Love (Dramatized Adaptation)"
-    },
-    "magical-midlife-madness": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "paranormal",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "magical-midlife-madness",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicole-poole-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B084CW8X1V",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14535,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 748727,
-              "start_ms": 14535,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 866011,
-              "start_ms": 763262,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 597658,
-              "start_ms": 1629273,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 921646,
-              "start_ms": 2226931,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 394135,
-              "start_ms": 3148577,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2340780,
-              "start_ms": 3542712,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 506566,
-              "start_ms": 5883492,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 568958,
-              "start_ms": 6390058,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1299853,
-              "start_ms": 6959016,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1018496,
-              "start_ms": 8258869,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 708347,
-              "start_ms": 9277365,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 518246,
-              "start_ms": 9985712,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 593339,
-              "start_ms": 10503958,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1127491,
-              "start_ms": 11097297,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 396364,
-              "start_ms": 12224788,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 709323,
-              "start_ms": 12621152,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1001058,
-              "start_ms": 13330475,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1033914,
-              "start_ms": 14331533,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1117622,
-              "start_ms": 15365447,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 685778,
-              "start_ms": 16483069,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1270154,
-              "start_ms": 17168847,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1819724,
-              "start_ms": 18439001,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 773201,
-              "start_ms": 20258725,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 625150,
-              "start_ms": 21031926,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 648811,
-              "start_ms": 21657076,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 816715,
-              "start_ms": 22305887,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 234405,
-              "start_ms": 23122602,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 669291,
-              "start_ms": 23357007,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 228321,
-              "start_ms": 24026298,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 240535,
-              "start_ms": 24254619,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 536659,
-              "start_ms": 24495154,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 732798,
-              "start_ms": 25031813,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 24147,
-              "start_ms": 25764611,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916TzPy+UpL.jpg",
-          "id": "nicole-poole-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicole-poole"
-          ],
-          "publisher": "Hazy Dawn Press, Inc.",
-          "release_date": "2020-02-18",
-          "runtime_min": 429,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B084CW8X1V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magical-midlife-madness"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
-          "ref": "B084CW8X1V",
+          "ref": "B08TN3FKB5",
           "type": "libex-import"
         }
       ],
-      "title": "Magical Midlife Madness"
+      "title": "Magical Midlife Love (Dramatized Adaptation)"
     }
   }
 }

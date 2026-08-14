@@ -5739,8 +5739,10 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "dystopian",
         "fantasy",
         "romance",
+        "science-fiction",
         "young-adult"
       ],
       "id": "the-midnight-star",
@@ -5837,34 +5839,7 @@
             }
           ],
           "work": "the-midnight-star"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01JKCJBQ2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Midnight Star"
-    },
-    "the-midnight-star-the-young-elites-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marie-lu"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "dystopian",
-        "fantasy",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "the-midnight-star-the-young-elites-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "carla-corvo-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6064,17 +6039,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-midnight-star-the-young-elites-book-3"
+          "work": "the-midnight-star"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01JKCJBQ2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07CT6NM21",
           "type": "libex-import"
         }
       ],
-      "title": "The Midnight Star (The Young Elites book 3)"
+      "title": "The Midnight Star"
     },
     "the-midnight-sun": {
       "added_at": "2026-08-02",

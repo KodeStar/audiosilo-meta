@@ -15948,121 +15948,7 @@
             {
               "asin": "B0844MCB84",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FpRRGjz2L.jpg",
-          "id": "jose-duarte-2010",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-duarte"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2010-02-27",
-          "runtime_min": 296,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844MCB84",
-              "type": "libex-import"
-            }
-          ],
-          "work": "piense-y-hagase-rico"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0844MCB84",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-29",
-          "ref": "6073185812",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Piense y hagase rico"
-    },
-    "piense-y-hagase-rico-napoleon-hill": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "napoleon-hill",
-        "carlos-galan",
-        "alfonso-barguno-viana"
-      ],
-      "credits": [
-        {
-          "person": "alfonso-barguno-viana",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "finance",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "piense-y-hagase-rico-napoleon-hill",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-galan-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09WZGR3GT",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71+LmCarIjL.jpg",
-          "id": "carlos-galan-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-galan",
-            "german-josep"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-04-28",
-          "runtime_min": 841,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09WZGR3GT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "piense-y-hagase-rico-napoleon-hill"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09WZGR3GT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Piense y hágase rico"
-    },
-    "piense-y-hagase-rico-think-and-grow-rich": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "napoleon-hill"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "piense-y-hagase-rico-think-and-grow-rich",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jose-duarte-2010": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B003AC53IO",
               "region": "us"
@@ -16158,11 +16044,16 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0844MCB84",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B003AC53IO",
               "type": "libex-import"
             }
           ],
-          "work": "piense-y-hagase-rico-think-and-grow-rich"
+          "work": "piense-y-hagase-rico"
         },
         "marcelo-russo-2020": {
           "abridged": false,
@@ -16190,24 +16081,34 @@
               "type": "libex-import"
             }
           ],
-          "work": "piense-y-hagase-rico-think-and-grow-rich"
+          "work": "piense-y-hagase-rico"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0844MCB84",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073185812",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B003AC53IO",
           "type": "libex-import"
         }
       ],
-      "title": "Piense y hagase rico [Think and Grow Rich]"
+      "title": "Piense y hagase rico"
     },
-    "piense-y-hagase-rico-think-and-grow-rich-napoleon-hill": {
+    "piense-y-hagase-rico-napoleon-hill": {
       "added_at": "2026-07-29",
       "authors": [
         "napoleon-hill",
-        "alfonso-barguno-viana",
-        "carlos-galan"
+        "carlos-galan",
+        "alfonso-barguno-viana"
       ],
       "credits": [
         {
@@ -16220,7 +16121,7 @@
         "parenting-relationships",
         "self-help"
       ],
-      "id": "piense-y-hagase-rico-think-and-grow-rich-napoleon-hill",
+      "id": "piense-y-hagase-rico-napoleon-hill",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -16228,6 +16129,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B09WZGR3GT",
+              "region": "es"
+            },
             {
               "asin": "B09WZD6N5Z",
               "region": "us"
@@ -16434,21 +16339,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09WZGR3GT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09WZD6N5Z",
               "type": "libex-import"
             }
           ],
-          "work": "piense-y-hagase-rico-think-and-grow-rich-napoleon-hill"
+          "work": "piense-y-hagase-rico-napoleon-hill"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09WZGR3GT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09WZD6N5Z",
           "type": "libex-import"
         }
       ],
-      "title": "Piense y hágase rico [Think and Grow Rich]"
+      "title": "Piense y hágase rico"
     },
     "pierce": {
       "added_at": "2026-07-29",

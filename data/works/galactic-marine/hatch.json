@@ -3884,19 +3884,101 @@
       ],
       "title": "Hate List"
     },
-    "hate-machine": {
-      "added_at": "2026-08-02",
+    "hate-machine-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "stephen-blackmoore"
       ],
       "genres": [
+        "arts-entertainment",
         "fantasy",
+        "mystery",
         "urban-fantasy"
       ],
-      "id": "hate-machine",
+      "id": "hate-machine-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D6SPZSVY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3837495,
+              "start_ms": 31924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3582583,
+              "start_ms": 3869419,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3865658,
+              "start_ms": 7452002,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3465067,
+              "start_ms": 11317660,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4119614,
+              "start_ms": 14782727,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3515000,
+              "start_ms": 18902341,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 122000,
+              "start_ms": 22417341,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 254501,
+              "start_ms": 22539341,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cXApuRcSL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2024",
+          "runtime_min": 380,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D6SPZSVY",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D6SPZSVY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hate-machine-dramatized-adaptation"
+        },
         "rudy-sanda-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4069,111 +4151,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "hate-machine"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CXRLH7HN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hate Machine"
-    },
-    "hate-machine-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "stephen-blackmoore"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "mystery",
-        "urban-fantasy"
-      ],
-      "id": "hate-machine-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D6SPZSVY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 31924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3837495,
-              "start_ms": 31924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3582583,
-              "start_ms": 3869419,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3865658,
-              "start_ms": 7452002,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3465067,
-              "start_ms": 11317660,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4119614,
-              "start_ms": 14782727,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3515000,
-              "start_ms": 18902341,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 122000,
-              "start_ms": 22417341,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 254501,
-              "start_ms": 22539341,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81cXApuRcSL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024",
-          "runtime_min": 380,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D6SPZSVY",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D6SPZSVY",
-              "type": "libex-import"
-            }
-          ],
           "work": "hate-machine-dramatized-adaptation"
         }
       },
@@ -4186,6 +4163,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0D6SPZSVY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CXRLH7HN",
           "type": "libex-import"
         }
       ],

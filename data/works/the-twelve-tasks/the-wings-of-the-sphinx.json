@@ -13,6 +13,7 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "the-wings-of-the-sphinx",
@@ -258,36 +259,7 @@
             }
           ],
           "work": "the-wings-of-the-sphinx"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00305R2V2",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07218553P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wings of the Sphinx"
-    },
-    "the-wings-of-the-sphinx-an-inspector-montalbano-novel-11": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrea-camilleri"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "the-wings-of-the-sphinx-an-inspector-montalbano-novel-11",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "mark-meadows-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -416,17 +388,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-wings-of-the-sphinx-an-inspector-montalbano-novel-11"
+          "work": "the-wings-of-the-sphinx"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00305R2V2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07218553P",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DSLQNNWN",
           "type": "libex-import"
         }
       ],
-      "title": "The Wings of the Sphinx: An Inspector Montalbano Novel 11"
+      "title": "The Wings of the Sphinx"
     },
     "the-wings-that-bind": {
       "added_at": "2026-08-02",

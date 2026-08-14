@@ -5587,6 +5587,7 @@
       "genres": [
         "action-adventure",
         "horror",
+        "post-apocalyptic",
         "science-fiction"
       ],
       "id": "storm-survival-in-the-land-of-the-dead",
@@ -5787,31 +5788,7 @@
             }
           ],
           "work": "storm-survival-in-the-land-of-the-dead"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01GVZ08EK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Storm: Survival in the Land of the Dead"
-    },
-    "storm-survival-in-the-land-of-the-dead-undead-rain-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "shaun-harbinger"
-      ],
-      "genres": [
-        "action-adventure",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "storm-survival-in-the-land-of-the-dead-undead-rain-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "john-keating-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6005,17 +5982,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "storm-survival-in-the-land-of-the-dead-undead-rain-book-2"
+          "work": "storm-survival-in-the-land-of-the-dead"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01GVZ08EK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CZQ2CT8S",
           "type": "libex-import"
         }
       ],
-      "title": "Storm: Survival in the Land of the Dead (Undead Rain, Book 2)"
+      "title": "Storm: Survival in the Land of the Dead"
     },
     "storm-tempest-book-2": {
       "added_at": "2026-08-02",

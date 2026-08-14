@@ -1123,6 +1123,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy",
         "nature"
       ],
@@ -1289,12 +1290,187 @@
             }
           ],
           "work": "warriors-the-new-prophecy-1-midnight"
+        },
+        "macleod-andrews-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1P9G95M",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16671,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 585653,
+              "start_ms": 16671,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1750250,
+              "start_ms": 602324,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1355325,
+              "start_ms": 2352574,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1805188,
+              "start_ms": 3707899,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1131369,
+              "start_ms": 5513087,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1171632,
+              "start_ms": 6644456,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1493461,
+              "start_ms": 7816088,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1249117,
+              "start_ms": 9309549,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 704493,
+              "start_ms": 10558666,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1011043,
+              "start_ms": 11263159,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1070486,
+              "start_ms": 12274202,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 796606,
+              "start_ms": 13344688,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 651691,
+              "start_ms": 14141294,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 937807,
+              "start_ms": 14792985,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1079240,
+              "start_ms": 15730792,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1403088,
+              "start_ms": 16810032,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 559368,
+              "start_ms": 18213120,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1222530,
+              "start_ms": 18772488,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1198103,
+              "start_ms": 19995018,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1587896,
+              "start_ms": 21193121,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1523275,
+              "start_ms": 22781017,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1347639,
+              "start_ms": 24304292,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1520280,
+              "start_ms": 25651931,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 654129,
+              "start_ms": 27172211,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1259427,
+              "start_ms": 27826340,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 220636,
+              "start_ms": 29085767,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 39728,
+              "start_ms": 29306403,
+              "title": "Chapter 28"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81oC7FHSNAL.jpg",
+          "id": "macleod-andrews-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2023-04-17",
+          "runtime_min": 488,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1P9G95M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "warriors-the-new-prophecy-1-midnight"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "0062913093",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C1P9G95M",
           "type": "libex-import"
         }
       ],
@@ -1846,181 +2022,6 @@
       ],
       "title": "Warriors: The New Prophecy #3: Dawn"
     },
-    "warriors-the-new-prophecy-4-starlight": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "erin-hunter"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "warriors-the-new-prophecy-4-starlight",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "macleod-andrews-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0062957481",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 605297,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2605255,
-              "start_ms": 605297,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1253622,
-              "start_ms": 3210552,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2457739,
-              "start_ms": 4464174,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2871008,
-              "start_ms": 6921913,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 880361,
-              "start_ms": 9792921,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1084093,
-              "start_ms": 10673282,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1132297,
-              "start_ms": 11757375,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 819246,
-              "start_ms": 12889672,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2082899,
-              "start_ms": 13708918,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1033613,
-              "start_ms": 15791817,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 691908,
-              "start_ms": 16825430,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 741506,
-              "start_ms": 17517338,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1087901,
-              "start_ms": 18258844,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1549072,
-              "start_ms": 19346745,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1316107,
-              "start_ms": 20895817,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1573616,
-              "start_ms": 22211924,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1530195,
-              "start_ms": 23785540,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 859463,
-              "start_ms": 25315735,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1112607,
-              "start_ms": 26175198,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 947049,
-              "start_ms": 27287805,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 715871,
-              "start_ms": 28234854,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 453671,
-              "start_ms": 28950725,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 963627,
-              "start_ms": 29404396,
-              "title": "Chapter 24"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oumkWKvBL.jpg",
-          "id": "macleod-andrews-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "macleod-andrews"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2019-06-04",
-          "runtime_min": 505,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0062957481",
-              "type": "libex-import"
-            }
-          ],
-          "work": "warriors-the-new-prophecy-4-starlight"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0062957481",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Warriors: The New Prophecy #4: Starlight"
-    },
     "warriors-the-new-prophecy-5-twilight": {
       "added_at": "2026-08-02",
       "authors": [
@@ -2029,6 +2030,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy",
         "nature"
       ],
@@ -2190,6 +2192,171 @@
             }
           ],
           "work": "warriors-the-new-prophecy-5-twilight"
+        },
+        "macleod-andrews-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1PDZMJ2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15951,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 351642,
+              "start_ms": 15951,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1538113,
+              "start_ms": 367593,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1775908,
+              "start_ms": 1905706,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1256222,
+              "start_ms": 3681614,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1503468,
+              "start_ms": 4937836,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1919175,
+              "start_ms": 6441304,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1593121,
+              "start_ms": 8360479,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 999526,
+              "start_ms": 9953600,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1311370,
+              "start_ms": 10953126,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1367539,
+              "start_ms": 12264496,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2692330,
+              "start_ms": 13632035,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 847226,
+              "start_ms": 16324365,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1134921,
+              "start_ms": 17171591,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 859533,
+              "start_ms": 18306512,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 977885,
+              "start_ms": 19166045,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1070045,
+              "start_ms": 20143930,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1448716,
+              "start_ms": 21213975,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1327949,
+              "start_ms": 22662691,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 735375,
+              "start_ms": 23990640,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 861878,
+              "start_ms": 24726015,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1047405,
+              "start_ms": 25587893,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1436641,
+              "start_ms": 26635298,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 642612,
+              "start_ms": 28071939,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 917884,
+              "start_ms": 28714551,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 831018,
+              "start_ms": 29632435,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 41006,
+              "start_ms": 30463453,
+              "title": "Chapter 27"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ZCuoXCKjL.jpg",
+          "id": "macleod-andrews-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2023-04-17",
+          "runtime_min": 508,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1PDZMJ2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "warriors-the-new-prophecy-5-twilight"
         }
       },
       "sources": [
@@ -2197,184 +2364,14 @@
           "imported_at": "2026-08-02",
           "ref": "0062957503",
           "type": "libex-import"
-        }
-      ],
-      "title": "Warriors: The New Prophecy #5: Twilight"
-    },
-    "warriors-the-new-prophecy-6-sunset": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "erin-hunter"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "warriors-the-new-prophecy-6-sunset",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "macleod-andrews-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0062957554",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 588997,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1404157,
-              "start_ms": 588997,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2541818,
-              "start_ms": 1993154,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1560148,
-              "start_ms": 4534972,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1101972,
-              "start_ms": 6095120,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1222739,
-              "start_ms": 7197092,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1363568,
-              "start_ms": 8419831,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 900446,
-              "start_ms": 9783399,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1526735,
-              "start_ms": 10683845,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1065331,
-              "start_ms": 12210580,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1034472,
-              "start_ms": 13275911,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1400627,
-              "start_ms": 14310383,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1641697,
-              "start_ms": 15711010,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1890336,
-              "start_ms": 17352707,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1257105,
-              "start_ms": 19243043,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1992457,
-              "start_ms": 20500148,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1523925,
-              "start_ms": 22492605,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1459467,
-              "start_ms": 24016530,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 985454,
-              "start_ms": 25475997,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1430697,
-              "start_ms": 26461451,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 667364,
-              "start_ms": 27892148,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 230852,
-              "start_ms": 28559512,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 599771,
-              "start_ms": 28790364,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 342005,
-              "start_ms": 29390135,
-              "title": "Chapter 24"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81W6KkEIv-L.jpg",
-          "id": "macleod-andrews-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "macleod-andrews"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2019-06-04",
-          "runtime_min": 495,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0062957554",
-              "type": "libex-import"
-            }
-          ],
-          "work": "warriors-the-new-prophecy-6-sunset"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
-          "ref": "0062957554",
+          "ref": "B0C1PDZMJ2",
           "type": "libex-import"
         }
       ],
-      "title": "Warriors: The New Prophecy #6: Sunset"
+      "title": "Warriors: The New Prophecy #5: Twilight"
     },
     "warriors-william-b-mccloskey-jr": {
       "added_at": "2026-07-29",
@@ -4325,234 +4322,6 @@
         }
       ],
       "title": "Wars of the Roses: Margaret of Anjou"
-    },
-    "wars-of-the-roses-stormbird": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "conn-iggulden"
-      ],
-      "genres": [
-        "historical-fiction",
-        "war-military-fiction"
-      ],
-      "id": "wars-of-the-roses-stormbird",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-curless-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00L4EXHXS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1131741,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1573105,
-              "start_ms": 1131741,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1557316,
-              "start_ms": 2704846,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1656930,
-              "start_ms": 4262162,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1530938,
-              "start_ms": 5919092,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1649128,
-              "start_ms": 7450030,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2186623,
-              "start_ms": 9099158,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1473120,
-              "start_ms": 11285781,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1622100,
-              "start_ms": 12758901,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1987071,
-              "start_ms": 14381001,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1558616,
-              "start_ms": 16368072,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1631434,
-              "start_ms": 17926688,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1872364,
-              "start_ms": 19558122,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2091468,
-              "start_ms": 21430486,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1782317,
-              "start_ms": 23521954,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1986142,
-              "start_ms": 25304271,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1403739,
-              "start_ms": 27290413,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1990461,
-              "start_ms": 28694152,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1681310,
-              "start_ms": 30684613,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1725150,
-              "start_ms": 32365923,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 2242490,
-              "start_ms": 34091073,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1754453,
-              "start_ms": 36333563,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 2124487,
-              "start_ms": 38088016,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1878959,
-              "start_ms": 40212503,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1852116,
-              "start_ms": 42091462,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1762766,
-              "start_ms": 43943578,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1817844,
-              "start_ms": 45706344,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1998495,
-              "start_ms": 47524188,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1369884,
-              "start_ms": 49522683,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1430117,
-              "start_ms": 50892567,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1485891,
-              "start_ms": 52322684,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 822869,
-              "start_ms": 53808575,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1884253,
-              "start_ms": 54631444,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 721630,
-              "start_ms": 56515697,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 1410380,
-              "start_ms": 57237327,
-              "title": "Chapter 35"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+VSW+qSqL.jpg",
-          "id": "john-curless-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-curless"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2014-07-08",
-          "runtime_min": 977,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00L4EXHXS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wars-of-the-roses-stormbird"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00L4EXHXS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wars of the Roses: Stormbird"
     },
     "wars-passion": {
       "added_at": "2026-08-01",

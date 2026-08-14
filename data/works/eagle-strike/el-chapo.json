@@ -1232,6 +1232,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "noe-velazquez-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "6073177054",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910n3zq6wxL.jpg",
+          "id": "noe-velazquez-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "noe-velazquez"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2019-05-16",
+          "runtime_min": 568,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "6073177054",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-cielo-llora-por-mi"
+        },
         "walter-krochmal-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1266,60 +1294,14 @@
           "imported_at": "2026-07-29",
           "ref": "B004U7ECF8",
           "type": "libex-import"
-        }
-      ],
-      "title": "El cielo llora por mi"
-    },
-    "el-cielo-llora-por-mi-the-sky-cries-for-me": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sergio-ramirez"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "el-cielo-llora-por-mi-the-sky-cries-for-me",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "noe-velazquez-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "6073177054",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910n3zq6wxL.jpg",
-          "id": "noe-velazquez-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "noe-velazquez"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2019-05-16",
-          "runtime_min": 568,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "6073177054",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-cielo-llora-por-mi-the-sky-cries-for-me"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "6073177054",
           "type": "libex-import"
         }
       ],
-      "title": "El cielo llora por mí [The Sky Cries for Me]"
+      "title": "El cielo llora por mi"
     },
     "el-circulo-de-mujeres-de-la-doctora-tan-lady-tans-circle-of-women": {
       "added_at": "2026-07-29",
@@ -3947,53 +3929,7 @@
             {
               "asin": "8439732228",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-a5-wPuqL.jpg",
-          "id": "alberto-mieza-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alberto-mieza"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-06-30",
-          "runtime_min": 399,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8439732228",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-club-de-la-lucha"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8439732228",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El club de la lucha"
-    },
-    "el-club-de-la-lucha-fight-club": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "chuck-palahniuk"
-      ],
-      "genres": [
-        "psychological-thriller"
-      ],
-      "id": "el-club-de-la-lucha-fight-club",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alberto-mieza-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01H43VVKI",
               "region": "us"
@@ -4012,21 +3948,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8439732228",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01H43VVKI",
               "type": "libex-import"
             }
           ],
-          "work": "el-club-de-la-lucha-fight-club"
+          "work": "el-club-de-la-lucha"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8439732228",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01H43VVKI",
           "type": "libex-import"
         }
       ],
-      "title": "El club de la lucha [Fight Club]"
+      "title": "El club de la lucha"
     },
     "el-club-de-las-5-de-la-manana": {
       "added_at": "2026-07-29",
@@ -4053,59 +3999,7 @@
             {
               "asin": "B084TBVMVN",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81sFDiOvypL.jpg",
-          "id": "horacio-mancilla-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "horacio-mancilla"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2020-02-27",
-          "runtime_min": 713,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B084TBVMVN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-club-de-las-5-de-la-manana"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B084TBVMVN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Club de las 5 de la mañana"
-    },
-    "el-club-de-las-5-de-la-manana-the-5-am-club": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robin-sharma",
-        "rosa-perez-perez",
-        "rita-zaragoza-jove",
-        "maria-del-carmen-escudero",
-        "itziar-hernandez-rodilla"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "el-club-de-las-5-de-la-manana-the-5-am-club",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "horacio-mancilla-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "8425359392",
               "region": "us"
@@ -4236,21 +4130,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B084TBVMVN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8425359392",
               "type": "libex-import"
             }
           ],
-          "work": "el-club-de-las-5-de-la-manana-the-5-am-club"
+          "work": "el-club-de-las-5-de-la-manana"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B084TBVMVN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8425359392",
           "type": "libex-import"
         }
       ],
-      "title": "El Club de las 5 de la mañana [The 5 AM Club]"
+      "title": "El Club de las 5 de la mañana"
     },
     "el-club-de-los-muertos-the-club-of-the-dead": {
       "added_at": "2026-08-02",
@@ -5090,6 +4994,7 @@
       ],
       "genres": [
         "hard-boiled",
+        "historical-fiction",
         "mystery",
         "thriller-suspense"
       ],
@@ -5104,55 +5009,7 @@
             {
               "asin": "8420429767",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91u44nm+muL.jpg",
-          "id": "juan-carlos-gustems-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-carlos-gustems"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-01-12",
-          "runtime_min": 772,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8420429767",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-club-dumas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8420429767",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El club Dumas"
-    },
-    "el-club-dumas-the-dumas-club": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "el-club-dumas-the-dumas-club",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-carlos-gustems-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01N1WX458",
               "region": "us"
@@ -5273,21 +5130,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8420429767",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01N1WX458",
               "type": "libex-import"
             }
           ],
-          "work": "el-club-dumas-the-dumas-club"
+          "work": "el-club-dumas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420429767",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01N1WX458",
           "type": "libex-import"
         }
       ],
-      "title": "El club Dumas [The Dumas Club]"
+      "title": "El club Dumas"
     },
     "el-coach-iluminado-manual-de-iluminacion-low-cost-consciencia-no-4-the-illuminated-coach-manual-of-l": {
       "added_at": "2026-07-29",
@@ -5347,6 +5214,7 @@
         "allan-percy"
       ],
       "genres": [
+        "business",
         "education",
         "parenting-relationships",
         "self-help"
@@ -5362,138 +5230,7 @@
             {
               "asin": "B07YWY355X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/719+azJTRPL.jpg",
-          "id": "adriana-sananes-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adriana-sananes",
-            "walter-krochmal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2015-04-22",
-          "runtime_min": 178,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YWY355X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-coaching-de-oscar-wilde"
-        },
-        "pablo-ibanez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YX4F9N3",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/719+azJTRPL.jpg",
-          "id": "pablo-ibanez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pablo-ibanez",
-            "pilar-corral"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-09-20",
-          "runtime_min": 162,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX4F9N3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-coaching-de-oscar-wilde"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX4F9N3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El coaching de Oscar Wilde"
-    },
-    "el-coaching-de-oscar-wilde-narracion-en-castellano-oscar-wildes-coaching": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "allan-percy"
-      ],
-      "genres": [
-        "education",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "el-coaching-de-oscar-wilde-narracion-en-castellano-oscar-wildes-coaching",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pablo-ibanez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07HHCH6XH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/719+azJTRPL.jpg",
-          "id": "pablo-ibanez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pablo-ibanez",
-            "pilar-corral"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-09-20",
-          "runtime_min": 162,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07HHCH6XH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-coaching-de-oscar-wilde-narracion-en-castellano-oscar-wildes-coaching"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07HHCH6XH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El coaching de Oscar Wilde (Narración en Castellano) [Oscar Wilde's Coaching]"
-    },
-    "el-coaching-de-oscar-wilde-the-coaching-of-oscar-wilde": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "allan-percy"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "el-coaching-de-oscar-wilde-the-coaching-of-oscar-wilde",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adriana-sananes-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00WGSGTJU",
               "region": "us"
@@ -5513,21 +5250,74 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YWY355X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00WGSGTJU",
               "type": "libex-import"
             }
           ],
-          "work": "el-coaching-de-oscar-wilde-the-coaching-of-oscar-wilde"
+          "work": "el-coaching-de-oscar-wilde"
+        },
+        "pablo-ibanez-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07YX4F9N3",
+              "region": "es"
+            },
+            {
+              "asin": "B07HHCH6XH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/719+azJTRPL.jpg",
+          "id": "pablo-ibanez-2018",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pablo-ibanez",
+            "pilar-corral"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-09-20",
+          "runtime_min": 162,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YX4F9N3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07HHCH6XH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-coaching-de-oscar-wilde"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX4F9N3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07HHCH6XH",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00WGSGTJU",
           "type": "libex-import"
         }
       ],
-      "title": "El coaching de Oscar Wilde [The Coaching of Oscar Wilde]"
+      "title": "El coaching de Oscar Wilde"
     },
     "el-cociente-agallas": {
       "added_at": "2026-07-29",
@@ -6152,7 +5942,7 @@
       ],
       "title": "El código del héroe"
     },
-    "el-cofre-de-anubis-narracion-en-castellano-the-anubis-chest": {
+    "el-cofre-de-anubis-the-anubis-chest": {
       "added_at": "2026-07-29",
       "authors": [
         "maria-maneru"
@@ -6160,9 +5950,10 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "historical-fiction"
+        "historical-fiction",
+        "mystery"
       ],
-      "id": "el-cofre-de-anubis-narracion-en-castellano-the-anubis-chest",
+      "id": "el-cofre-de-anubis-the-anubis-chest",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -6192,32 +5983,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-cofre-de-anubis-narracion-en-castellano-the-anubis-chest"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08F6GX3ZK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El cofre de Anubis (Narración en Castellano) [The Anubis Chest]"
-    },
-    "el-cofre-de-anubis-the-anubis-chest": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maria-maneru"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery"
-      ],
-      "id": "el-cofre-de-anubis-the-anubis-chest",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-cofre-de-anubis-the-anubis-chest"
+        },
         "arturo-mercado-jr-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6251,6 +6018,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08FVNRTKH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08F6GX3ZK",
           "type": "libex-import"
         }
       ],
@@ -8503,7 +8275,8 @@
         "jofre-homedes-beutnagel"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "el-conde-de-montecristo-alexandre-dumas",
       "language": "es",
@@ -8516,56 +8289,7 @@
             {
               "asin": "B09N9XMG3X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hyJMxYyzL.jpg",
-          "id": "pablo-ibanez-duran-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pablo-ibanez-duran"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-12-09",
-          "runtime_min": 3011,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09N9XMG3X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-conde-de-montecristo-alexandre-dumas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09N9XMG3X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El conde de Montecristo"
-    },
-    "el-conde-de-montecristo-the-count-of-monte-cristo": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alexandre-dumas",
-        "jofre-homedes-beutnagel",
-        "e-v"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "el-conde-de-montecristo-the-count-of-monte-cristo",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pablo-ibanez-duran-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09N9Y67LP",
               "region": "us"
@@ -9021,21 +8745,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09N9XMG3X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09N9Y67LP",
               "type": "libex-import"
             }
           ],
-          "work": "el-conde-de-montecristo-the-count-of-monte-cristo"
+          "work": "el-conde-de-montecristo-alexandre-dumas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09N9XMG3X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09N9Y67LP",
           "type": "libex-import"
         }
       ],
-      "title": "El conde de Montecristo [The Count of Monte-Cristo]"
+      "title": "El conde de Montecristo"
     },
     "el-conde-de-montecristo-the-count-of-monte-cristo-alejandro-dumas": {
       "added_at": "2026-07-29",
@@ -9960,7 +9694,9 @@
         "joseph-conrad"
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "classics",
+        "young-adult"
       ],
       "id": "el-corazon-de-las-tinieblas",
       "language": "es",
@@ -9993,31 +9729,7 @@
             }
           ],
           "work": "el-corazon-de-las-tinieblas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "2291064525",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Corazón de las Tinieblas"
-    },
-    "el-corazon-de-las-tinieblas-heart-of-darkness": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joseph-conrad"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "young-adult"
-      ],
-      "id": "el-corazon-de-las-tinieblas-heart-of-darkness",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pablo-lopez-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10044,17 +9756,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-corazon-de-las-tinieblas-heart-of-darkness"
+          "work": "el-corazon-de-las-tinieblas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "2291064525",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJHL1V",
           "type": "libex-import"
         }
       ],
-      "title": "El Corazón de las Tinieblas [Heart of Darkness]"
+      "title": "El Corazón de las Tinieblas"
     },
     "el-corazon-del-inspector-obrian": {
       "added_at": "2026-07-29",
@@ -10504,6 +10221,8 @@
         "edgar-allan-poe"
       ],
       "genres": [
+        "classics",
+        "gothic",
         "horror"
       ],
       "id": "el-corazon-delator",
@@ -10537,31 +10256,7 @@
             }
           ],
           "work": "el-corazon-delator"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09P5127GM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Corazón Delator"
-    },
-    "el-corazon-delator-the-tell-tale-heart": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edgar-allan-poe"
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "horror"
-      ],
-      "id": "el-corazon-delator-the-tell-tale-heart",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jose-pecina-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10614,17 +10309,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-corazon-delator-the-tell-tale-heart"
+          "work": "el-corazon-delator"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09P5127GM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09WBTR549",
           "type": "libex-import"
         }
       ],
-      "title": "El Corazón Delator [The Tell-Tale Heart]"
+      "title": "El Corazón Delator"
     },
     "el-corazon-es-un-cazador-solitario": {
       "added_at": "2026-07-29",
@@ -10759,60 +10459,10 @@
         "gabriel-garcia-marquez"
       ],
       "genres": [
-        "literary-fiction"
-      ],
-      "id": "el-coronel-no-tiene-quien-le-escriba",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "diego-trujillo-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "843973249X",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816W6rFFtlL.jpg",
-          "id": "diego-trujillo-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "diego-trujillo"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-10-19",
-          "runtime_min": 125,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "843973249X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-coronel-no-tiene-quien-le-escriba"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "843973249X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El coronel no tiene quien le escriba"
-    },
-    "el-coronel-no-tiene-quien-le-escriba-no-one-writes-to-the-colonel": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
         "literary-fiction",
         "magical-realism"
       ],
-      "id": "el-coronel-no-tiene-quien-le-escriba-no-one-writes-to-the-colonel",
+      "id": "el-coronel-no-tiene-quien-le-escriba",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -10851,12 +10501,16 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-coronel-no-tiene-quien-le-escriba-no-one-writes-to-the-colonel"
+          "work": "el-coronel-no-tiene-quien-le-escriba"
         },
         "diego-trujillo-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "843973249X",
+              "region": "es"
+            },
             {
               "asin": "B01MECXGMF",
               "region": "us"
@@ -10922,21 +10576,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "843973249X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MECXGMF",
               "type": "libex-import"
             }
           ],
-          "work": "el-coronel-no-tiene-quien-le-escriba-no-one-writes-to-the-colonel"
+          "work": "el-coronel-no-tiene-quien-le-escriba"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "843973249X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MECXGMF",
           "type": "libex-import"
         }
       ],
-      "title": "El coronel no tiene quien le escriba [No One Writes to the Colonel]"
+      "title": "El coronel no tiene quien le escriba"
     },
     "el-correo-del-crepusculo": {
       "added_at": "2026-08-02",
@@ -11070,56 +10734,7 @@
             {
               "asin": "B085CJZ93M",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hjxisZ9LL.jpg",
-          "id": "carlos-farinos-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-farinos",
-            "emilio-villa",
-            "niloofer-khan"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-04",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJZ93M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-corsario-negro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJZ93M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Corsario Negro"
-    },
-    "el-corsario-negro-the-black-corsair": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "emilio-salgari"
-      ],
-      "genres": [
-        "action-adventure",
-        "romance"
-      ],
-      "id": "el-corsario-negro-the-black-corsair",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-farinos-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B085CJJKNG",
               "region": "us"
@@ -11140,21 +10755,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B085CJZ93M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B085CJJKNG",
               "type": "libex-import"
             }
           ],
-          "work": "el-corsario-negro-the-black-corsair"
+          "work": "el-corsario-negro"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJZ93M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJJKNG",
           "type": "libex-import"
         }
       ],
-      "title": "El Corsario Negro [The Black Corsair]"
+      "title": "El Corsario Negro"
     },
     "el-crash-tercera-fase-the-crash-third-phase": {
       "added_at": "2026-07-29",
@@ -12260,6 +11885,8 @@
       ],
       "genres": [
         "coming-of-age",
+        "literary-fiction",
+        "parenting-relationships",
         "womens-fiction"
       ],
       "id": "el-cuaderno-de-maya",
@@ -12273,56 +11900,7 @@
             {
               "asin": "8401019028",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81U9PbbLI8L.jpg",
-          "id": "catalina-munoz-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "catalina-munoz"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-10-19",
-          "runtime_min": 818,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019028",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-cuaderno-de-maya"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019028",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El cuaderno de Maya"
-    },
-    "el-cuaderno-de-maya-mayas-notebook": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "coming-of-age",
-        "literary-fiction",
-        "parenting-relationships",
-        "womens-fiction"
-      ],
-      "id": "el-cuaderno-de-maya-mayas-notebook",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "catalina-munoz-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01LZMJBLJ",
               "region": "us"
@@ -12433,21 +12011,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401019028",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01LZMJBLJ",
               "type": "libex-import"
             }
           ],
-          "work": "el-cuaderno-de-maya-mayas-notebook"
+          "work": "el-cuaderno-de-maya"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019028",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01LZMJBLJ",
           "type": "libex-import"
         }
       ],
-      "title": "El cuaderno de Maya [Maya's Notebook]"
+      "title": "El cuaderno de Maya"
     },
     "el-cuaderno-dorado-the-golden-notebook": {
       "added_at": "2026-07-29",

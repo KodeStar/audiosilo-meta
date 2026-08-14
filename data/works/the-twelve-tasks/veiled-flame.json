@@ -3341,17 +3341,19 @@
       ],
       "title": "Veiled Spirits"
     },
-    "veiled-threat": {
-      "added_at": "2026-08-02",
+    "veiled-threat-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "shannon-mayer"
       ],
       "genres": [
+        "epic-fantasy",
         "fantasy",
         "paranormal",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
-      "id": "veiled-threat",
+      "id": "veiled-threat-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -3498,7 +3500,77 @@
               "type": "libex-import"
             }
           ],
-          "work": "veiled-threat"
+          "work": "veiled-threat-dramatized-adaptation"
+        },
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "164881798X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4178709,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4023971,
+              "start_ms": 4178709,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 3861571,
+              "start_ms": 8202680,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 4443231,
+              "start_ms": 12064251,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 4215000,
+              "start_ms": 16507482,
+              "title": "Part IV"
+            },
+            {
+              "length_ms": 105000,
+              "start_ms": 20722482,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 282960,
+              "start_ms": 20827482,
+              "title": "Trailer"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SLJD6-zBS.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2021",
+          "runtime_min": 352,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164881798X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164881798X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "veiled-threat-dramatized-adaptation"
         },
         "lauren-fortgang-2025": {
           "abridged": false,
@@ -3718,100 +3790,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "veiled-threat"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FPXPVPCN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Veiled Threat"
-    },
-    "veiled-threat-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "shannon-mayer"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "veiled-threat-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "164881798X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4178709,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4023971,
-              "start_ms": 4178709,
-              "title": "Part I"
-            },
-            {
-              "length_ms": 3861571,
-              "start_ms": 8202680,
-              "title": "Part II"
-            },
-            {
-              "length_ms": 4443231,
-              "start_ms": 12064251,
-              "title": "Part III"
-            },
-            {
-              "length_ms": 4215000,
-              "start_ms": 16507482,
-              "title": "Part IV"
-            },
-            {
-              "length_ms": 105000,
-              "start_ms": 20722482,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 282960,
-              "start_ms": 20827482,
-              "title": "Trailer"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91SLJD6-zBS.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164881798X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164881798X",
-              "type": "libex-import"
-            }
-          ],
           "work": "veiled-threat-dramatized-adaptation"
         }
       },
@@ -3824,6 +3802,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "164881798X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FPXPVPCN",
           "type": "libex-import"
         }
       ],
@@ -7895,7 +7878,9 @@
         "pablo-neruda"
       ],
       "genres": [
-        "poetry"
+        "literary-fiction",
+        "poetry",
+        "romance"
       ],
       "id": "veinte-poemas-de-amor-y-una-cancion-desesperada",
       "language": "es",
@@ -7908,55 +7893,7 @@
             {
               "asin": "8426404154",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61jqV5myaZL.jpg",
-          "id": "julio-cesar-luna-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julio-cesar-luna"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-10-19",
-          "runtime_min": 37,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8426404154",
-              "type": "libex-import"
-            }
-          ],
-          "work": "veinte-poemas-de-amor-y-una-cancion-desesperada"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8426404154",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Veinte poemas de amor y una canción desesperada"
-    },
-    "veinte-poemas-de-amor-y-una-cancion-desesperada-twenty-love-poems-and-a-song-of-despair": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "pablo-neruda"
-      ],
-      "genres": [
-        "literary-fiction",
-        "poetry",
-        "romance"
-      ],
-      "id": "veinte-poemas-de-amor-y-una-cancion-desesperada-twenty-love-poems-and-a-song-of-despair",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julio-cesar-luna-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01MA1S5SJ",
               "region": "us"
@@ -8092,21 +8029,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8426404154",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MA1S5SJ",
               "type": "libex-import"
             }
           ],
-          "work": "veinte-poemas-de-amor-y-una-cancion-desesperada-twenty-love-poems-and-a-song-of-despair"
+          "work": "veinte-poemas-de-amor-y-una-cancion-desesperada"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8426404154",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MA1S5SJ",
           "type": "libex-import"
         }
       ],
-      "title": "Veinte poemas de amor y una canción desesperada [Twenty Love Poems and a Song of Despair]"
+      "title": "Veinte poemas de amor y una canción desesperada"
     },
     "veklocks": {
       "added_at": "2026-08-02",

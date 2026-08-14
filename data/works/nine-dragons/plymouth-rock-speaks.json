@@ -1608,53 +1608,7 @@
             {
               "asin": "B00HEKZJ1E",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41gWlwR6bFL.jpg",
-          "id": "ulrich-matthes-2014",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ulrich-matthes"
-          ],
-          "publisher": "Der Audio Verlag",
-          "release_date": "2014-01-16",
-          "runtime_min": 423,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00HEKZJ1E",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pnin"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00HEKZJ1E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pnin"
-    },
-    "pnin-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "vladimir-nabokov"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "pnin-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ulrich-matthes-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00TYLM1J4",
               "region": "us"
@@ -1673,21 +1627,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B00HEKZJ1E",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00TYLM1J4",
               "type": "libex-import"
             }
           ],
-          "work": "pnin-german-edition"
+          "work": "pnin"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00HEKZJ1E",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00TYLM1J4",
           "type": "libex-import"
         }
       ],
-      "title": "Pnin (German edition)"
+      "title": "Pnin"
     },
     "pnin-vladimir-nabokov": {
       "added_at": "2026-07-29",
@@ -11067,74 +11031,6 @@
       ],
       "title": "Poeta en Nueva York"
     },
-    "poetas-y-piratas-narracion-en-castellano-poets-and-pirates-narration-in-castilian": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "poetas-y-piratas-narracion-en-castellano-poets-and-pirates-narration-in-castilian",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roger-vidal-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B08BDDR8T5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18662,
-              "start_ms": 0,
-              "title": "Créditos de Apertura"
-            },
-            {
-              "length_ms": 21315137,
-              "start_ms": 18662,
-              "title": "Poetas y Piratas"
-            },
-            {
-              "length_ms": 44183,
-              "start_ms": 21333799,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91TwvMvY4iL.jpg",
-          "id": "roger-vidal-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roger-vidal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-06-18",
-          "runtime_min": 356,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B08BDDR8T5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "poetas-y-piratas-narracion-en-castellano-poets-and-pirates-narration-in-castilian"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08BDDR8T5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Poetas y Piratas (Narración en Castellano) [Poets and Pirates (Narration in Castilian)]"
-    },
     "poetas-y-piratas-poets-and-piracy": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11417,12 +11313,62 @@
             }
           ],
           "work": "poetas-y-piratas-poets-and-piracy"
+        },
+        "roger-vidal-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08BDDR8T5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18662,
+              "start_ms": 0,
+              "title": "Créditos de Apertura"
+            },
+            {
+              "length_ms": 21315137,
+              "start_ms": 18662,
+              "title": "Poetas y Piratas"
+            },
+            {
+              "length_ms": 44183,
+              "start_ms": 21333799,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TwvMvY4iL.jpg",
+          "id": "roger-vidal-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roger-vidal"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-06-18",
+          "runtime_min": 356,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08BDDR8T5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "poetas-y-piratas-poets-and-piracy"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B08NK7924B",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08BDDR8T5",
           "type": "libex-import"
         }
       ],

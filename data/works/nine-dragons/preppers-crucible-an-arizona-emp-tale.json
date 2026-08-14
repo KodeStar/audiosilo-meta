@@ -5471,6 +5471,111 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-hill-knight-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GVHPR164",
+              "region": "us"
+            },
+            {
+              "asin": "B0GVHQ82RR",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3993436,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3771454,
+              "start_ms": 3993436,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3540276,
+              "start_ms": 7764890,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3688466,
+              "start_ms": 11305166,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3465972,
+              "start_ms": 14993632,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3878638,
+              "start_ms": 18459604,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4060891,
+              "start_ms": 22338242,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3497598,
+              "start_ms": 26399133,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3209090,
+              "start_ms": 29896731,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3690486,
+              "start_ms": 33105821,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2695278,
+              "start_ms": 36796307,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814OXB64VuL.jpg",
+          "id": "alex-hill-knight-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-hill-knight",
+            "david-cui-cui",
+            "dawn-ursula",
+            "eric-messner",
+            "full-cast",
+            "jenna-sharpe",
+            "matthew-bassett",
+            "michael-john-casey",
+            "nanette-savard",
+            "nora-achrati",
+            "peter-holdway",
+            "wyn-delano"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-06-05",
+          "runtime_min": 658,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GVHPR164",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GVHQ82RR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "preservation"
+        },
         "michael-kramer-2024": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -5770,6 +5875,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0C9SNYNLT",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GVHPR164",
+          "type": "libex-import"
         }
       ],
       "title": "Preservation"
@@ -5988,134 +6098,6 @@
         }
       ],
       "title": "Preservation: Age of Expansion"
-    },
-    "preservation-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "seth-ring"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "preservation-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-hill-knight-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GVHPR164",
-              "region": "us"
-            },
-            {
-              "asin": "B0GVHQ82RR",
-              "region": "ca"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3993436,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3771454,
-              "start_ms": 3993436,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3540276,
-              "start_ms": 7764890,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3688466,
-              "start_ms": 11305166,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3465972,
-              "start_ms": 14993632,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3878638,
-              "start_ms": 18459604,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4060891,
-              "start_ms": 22338242,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3497598,
-              "start_ms": 26399133,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3209090,
-              "start_ms": 29896731,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3690486,
-              "start_ms": 33105821,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2695278,
-              "start_ms": 36796307,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814OXB64VuL.jpg",
-          "id": "alex-hill-knight-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-hill-knight",
-            "david-cui-cui",
-            "dawn-ursula",
-            "eric-messner",
-            "full-cast",
-            "jenna-sharpe",
-            "matthew-bassett",
-            "michael-john-casey",
-            "nanette-savard",
-            "nora-achrati",
-            "peter-holdway",
-            "wyn-delano"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-06-05",
-          "runtime_min": 658,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GVHPR164",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GVHQ82RR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "preservation-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GVHPR164",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Preservation [Dramatized Adaptation]"
     },
     "preservation-kate-canterbary": {
       "added_at": "2026-07-29",

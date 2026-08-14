@@ -5159,13 +5159,738 @@
         "l-frank-baum"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "classics"
+        "classics",
+        "fairy-tales-folklore",
+        "fantasy",
+        "nature"
       ],
       "id": "wizard-of-oz",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "adams-morgan-2003": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B002VA8Q3U",
+              "region": "us"
+            },
+            {
+              "asin": "1467610623",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4099669,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4212657,
+              "start_ms": 4099669,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3823769,
+              "start_ms": 8312326,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3715750,
+              "start_ms": 12136095,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41K+cjTyOZL.jpg",
+          "id": "adams-morgan-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adams-morgan"
+          ],
+          "publisher": "Findaway World",
+          "release_date": "2003-05-30",
+          "runtime_min": 264,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002VA8Q3U",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1467610623",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "b-j-harrison-2014": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B00IGHGNVY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 451210,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 727992,
+              "start_ms": 451210,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 730407,
+              "start_ms": 1179202,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 540189,
+              "start_ms": 1909609,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 743642,
+              "start_ms": 2449798,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 563827,
+              "start_ms": 3193440,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 633255,
+              "start_ms": 3757267,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 661769,
+              "start_ms": 4390522,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 502666,
+              "start_ms": 5052291,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 720469,
+              "start_ms": 5554957,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1414513,
+              "start_ms": 6275426,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1407640,
+              "start_ms": 7689939,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 423021,
+              "start_ms": 9097579,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 723209,
+              "start_ms": 9520600,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1074666,
+              "start_ms": 10243809,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 370637,
+              "start_ms": 11318475,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 422185,
+              "start_ms": 11689112,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 458873,
+              "start_ms": 12111297,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 364042,
+              "start_ms": 12570170,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 553517,
+              "start_ms": 12934212,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 338686,
+              "start_ms": 13487729,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 345374,
+              "start_ms": 13826415,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 470529,
+              "start_ms": 14171789,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 99985,
+              "start_ms": 14642318,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ss+6b-NnL.jpg",
+          "id": "b-j-harrison-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2014-02-24",
+          "runtime_min": 245,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00IGHGNVY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "bob-hartman-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BZWG81F8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16671,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 12654,
+              "start_ms": 16671,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 547967,
+              "start_ms": 29325,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 300628,
+              "start_ms": 577292,
+              "title": "The Cyclone"
+            },
+            {
+              "length_ms": 336759,
+              "start_ms": 877920,
+              "title": "The Council with the Munchkins"
+            },
+            {
+              "length_ms": 557859,
+              "start_ms": 1214679,
+              "title": "How Dorothy Saved the Scarecrow"
+            },
+            {
+              "length_ms": 371101,
+              "start_ms": 1772538,
+              "title": "The Rescue of the Tin Woodman"
+            },
+            {
+              "length_ms": 241208,
+              "start_ms": 2143639,
+              "title": "The Cowardly Lion"
+            },
+            {
+              "length_ms": 364715,
+              "start_ms": 2384847,
+              "title": "The Deadly Poppy Field"
+            },
+            {
+              "length_ms": 475567,
+              "start_ms": 2749562,
+              "title": "The Wonderful Emerald City of Oz"
+            },
+            {
+              "length_ms": 762961,
+              "start_ms": 3225129,
+              "title": "The Search for the Wicked Witch"
+            },
+            {
+              "length_ms": 486016,
+              "start_ms": 3988090,
+              "title": "The Rescue"
+            },
+            {
+              "length_ms": 643703,
+              "start_ms": 4474106,
+              "title": "The Discovery of Oz, the Terrible"
+            },
+            {
+              "length_ms": 459337,
+              "start_ms": 5117809,
+              "title": "How the Balloon Was Launched"
+            },
+            {
+              "length_ms": 471504,
+              "start_ms": 5577146,
+              "title": "Away to the South"
+            },
+            {
+              "length_ms": 447123,
+              "start_ms": 6048650,
+              "title": "Glinda the Good Witch Grants Dorothy's Wish"
+            },
+            {
+              "length_ms": 41980,
+              "start_ms": 6495773,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914s0dlS-6L.jpg",
+          "id": "bob-hartman-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bob-hartman"
+          ],
+          "publisher": "Applesauce Press",
+          "release_date": "2023-05-23",
+          "runtime_min": 108,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BZWG81F8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "cathi-colas-2025": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0F6G5PKCD",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16184,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 421233,
+              "start_ms": 16184,
+              "title": "1 . The Cyclone"
+            },
+            {
+              "length_ms": 766653,
+              "start_ms": 437417,
+              "title": "2 . The Council with the Munchkins"
+            },
+            {
+              "length_ms": 726622,
+              "start_ms": 1204070,
+              "title": "3 . How Dorothy Saved the Scarecrow"
+            },
+            {
+              "length_ms": 522890,
+              "start_ms": 1930692,
+              "title": "4 . The Road Through the Forest"
+            },
+            {
+              "length_ms": 763727,
+              "start_ms": 2453582,
+              "title": "5 . The Rescue of the Tin Woodman"
+            },
+            {
+              "length_ms": 564709,
+              "start_ms": 3217309,
+              "title": "6 . The Cowardly Lion"
+            },
+            {
+              "length_ms": 662790,
+              "start_ms": 3782018,
+              "title": "7 . The Journey to the Great Oz"
+            },
+            {
+              "length_ms": 707651,
+              "start_ms": 4444808,
+              "title": "8 . The Deadly Poppy Field"
+            },
+            {
+              "length_ms": 508749,
+              "start_ms": 5152459,
+              "title": "9 . The Queen of the Field Mice"
+            },
+            {
+              "length_ms": 710623,
+              "start_ms": 5661208,
+              "title": "10 . The Guardian at the Gate"
+            },
+            {
+              "length_ms": 1378220,
+              "start_ms": 6371831,
+              "title": "11 . The Wonderful City of Oz"
+            },
+            {
+              "length_ms": 1350820,
+              "start_ms": 7750051,
+              "title": "12 . The Search for the Wicked Witch"
+            },
+            {
+              "length_ms": 460567,
+              "start_ms": 9100871,
+              "title": "13 . The Rescue"
+            },
+            {
+              "length_ms": 720584,
+              "start_ms": 9561438,
+              "title": "14 . The Winged Monkeys"
+            },
+            {
+              "length_ms": 1092359,
+              "start_ms": 10282022,
+              "title": "15 . The Discovery of Oz , the Terrible"
+            },
+            {
+              "length_ms": 374305,
+              "start_ms": 11374381,
+              "title": "16 . The Magic Art of the Great Humbug"
+            },
+            {
+              "length_ms": 450513,
+              "start_ms": 11748686,
+              "title": "17 . How the Balloon Was Launched"
+            },
+            {
+              "length_ms": 453741,
+              "start_ms": 12199199,
+              "title": "18 . Away to the South"
+            },
+            {
+              "length_ms": 384197,
+              "start_ms": 12652940,
+              "title": "19 . Attacked by the Fighting Trees"
+            },
+            {
+              "length_ms": 595522,
+              "start_ms": 13037137,
+              "title": "20 . The Dainty China Country"
+            },
+            {
+              "length_ms": 354382,
+              "start_ms": 13632659,
+              "title": "21 . The Lion Becomes the King of Beasts"
+            },
+            {
+              "length_ms": 345443,
+              "start_ms": 13987041,
+              "title": "22 . The Country of the Quadlings"
+            },
+            {
+              "length_ms": 472526,
+              "start_ms": 14332484,
+              "title": "23 . Glinda The Good Witch Grants Dorothy's Wish"
+            },
+            {
+              "length_ms": 36710,
+              "start_ms": 14805010,
+              "title": "24 . Home Again"
+            },
+            {
+              "length_ms": 18064,
+              "start_ms": 14841720,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NweuKWfRL.jpg",
+          "id": "cathi-colas-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathi-colas"
+          ],
+          "publisher": "LFB",
+          "release_date": "2025-05-02",
+          "runtime_min": 247,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0F6G5PKCD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "curtis-sisco-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005GQTNKQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 401659,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 761522,
+              "start_ms": 401659,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 686521,
+              "start_ms": 1163181,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 555468,
+              "start_ms": 1849702,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 802946,
+              "start_ms": 2405170,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 589694,
+              "start_ms": 3208116,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 654338,
+              "start_ms": 3797810,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 715035,
+              "start_ms": 4452148,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 475545,
+              "start_ms": 5167183,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 707698,
+              "start_ms": 5642728,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1387346,
+              "start_ms": 6350426,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1364451,
+              "start_ms": 7737772,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 422278,
+              "start_ms": 9102223,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 821708,
+              "start_ms": 9524501,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1168382,
+              "start_ms": 10346209,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 384848,
+              "start_ms": 11514591,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 441040,
+              "start_ms": 11899439,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 494167,
+              "start_ms": 12340479,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 380482,
+              "start_ms": 12834646,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 587186,
+              "start_ms": 13215128,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 379646,
+              "start_ms": 13802314,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 373005,
+              "start_ms": 14181960,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 499229,
+              "start_ms": 14554965,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 44954,
+              "start_ms": 15054194,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1Ss-q3J1dL.jpg",
+          "id": "curtis-sisco-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "curtis-sisco"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2011-08-11",
+          "runtime_min": 251,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005GQTNKQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "full-cast-2006": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B002V8HNDG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3537096,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3859041,
+              "start_ms": 3537096,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/516W51jGJjL.jpg",
+          "id": "full-cast-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "maureen-lipman",
+            "patrick-barlow"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2006-08-16",
+          "runtime_min": 123,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V8HNDG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "full-cast-2019": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1094093734",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2096947,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3218215,
+              "start_ms": 2096947,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FVof4ro0L.jpg",
+          "id": "full-cast-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Random House Group Limited",
+          "release_date": "2019",
+          "runtime_min": 88,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1094093734",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1094093734",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
         "jasjeet-grover-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5322,12 +6047,437 @@
             }
           ],
           "work": "wizard-of-oz"
+        },
+        "john-mcdonough-1999": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B002V0LTFC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4360336,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4426420,
+              "start_ms": 4360336,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3986077,
+              "start_ms": 8786756,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3771849,
+              "start_ms": 12772833,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918lW7R578L.jpg",
+          "id": "john-mcdonough-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-mcdonough"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "1999-12-16",
+          "runtime_min": 275,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V0LTFC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "kerry-shale-2008": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0036IN8XO",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4688434,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4604981,
+              "start_ms": 4688434,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4077656,
+              "start_ms": 9293415,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81snVRhsM-L.jpg",
+          "id": "kerry-shale-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kerry-shale"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2008-03-06",
+          "runtime_min": 222,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0036IN8XO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "ron-knowles-2009": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B002VA9LHU",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2094393,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 692187,
+              "start_ms": 2094393,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 697574,
+              "start_ms": 2786580,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 469647,
+              "start_ms": 3484154,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 725531,
+              "start_ms": 3953801,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 578456,
+              "start_ms": 4679332,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 645236,
+              "start_ms": 5257788,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 660979,
+              "start_ms": 5903024,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 486179,
+              "start_ms": 6564003,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 687264,
+              "start_ms": 7050182,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1370210,
+              "start_ms": 7737446,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1364126,
+              "start_ms": 9107656,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 422046,
+              "start_ms": 10471782,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 678719,
+              "start_ms": 10893828,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1126446,
+              "start_ms": 11572547,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 374073,
+              "start_ms": 12698993,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 438207,
+              "start_ms": 13073066,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 444244,
+              "start_ms": 13511273,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 370358,
+              "start_ms": 13955517,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 566660,
+              "start_ms": 14325875,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 336132,
+              "start_ms": 14892535,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 343284,
+              "start_ms": 15228667,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 454693,
+              "start_ms": 15571951,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 36920,
+              "start_ms": 16026644,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 38731,
+              "start_ms": 16063564,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51BsBleYJUL.jpg",
+          "id": "ron-knowles-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ron-knowles"
+          ],
+          "publisher": "RP Audio",
+          "release_date": "2009-03-19",
+          "runtime_min": 268,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002VA9LHU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
+        },
+        "ruby-dewes-2020": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "1662127154",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 32391,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 528300,
+              "start_ms": 32391,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 803317,
+              "start_ms": 560691,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 773387,
+              "start_ms": 1364008,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 584748,
+              "start_ms": 2137395,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 798743,
+              "start_ms": 2722143,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 593502,
+              "start_ms": 3520886,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 762914,
+              "start_ms": 4114388,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 742968,
+              "start_ms": 4877302,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 575738,
+              "start_ms": 5620270,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 821939,
+              "start_ms": 6196008,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1484405,
+              "start_ms": 7017947,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1618291,
+              "start_ms": 8502352,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 483578,
+              "start_ms": 10120643,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 780678,
+              "start_ms": 10604221,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1089457,
+              "start_ms": 11384899,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 406279,
+              "start_ms": 12474356,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 454669,
+              "start_ms": 12880635,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 451395,
+              "start_ms": 13335304,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 399545,
+              "start_ms": 13786699,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 610824,
+              "start_ms": 14186244,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 431867,
+              "start_ms": 14797068,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 364251,
+              "start_ms": 15228935,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 502897,
+              "start_ms": 15593186,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 45395,
+              "start_ms": 16096083,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 28281,
+              "start_ms": 16141478,
+              "title": "Chapter 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ooXruVf6L.jpg",
+          "id": "ruby-dewes-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ruby-dewes"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2020-07-21",
+          "runtime_min": 269,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1662127154",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wizard-of-oz"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B00OQQTSOI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1094093734",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BZWG81F8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005GQTNKQ",
           "type": "libex-import"
         }
       ],

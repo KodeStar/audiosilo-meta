@@ -13590,6 +13590,7 @@
       ],
       "genres": [
         "action-adventure",
+        "dystopian",
         "epic-fantasy",
         "fantasy",
         "science-fiction"
@@ -13598,6 +13599,95 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BVGTFDWN",
+              "region": "us"
+            },
+            {
+              "asin": "B0C4LSXHPG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4381237,
+              "start_ms": 16924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4597063,
+              "start_ms": 4398161,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4484818,
+              "start_ms": 8995224,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4528587,
+              "start_ms": 13480042,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4623928,
+              "start_ms": 18008629,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4114000,
+              "start_ms": 22632557,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 366753,
+              "start_ms": 26746557,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815MEwh6QDL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 952,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BVGTFDWN",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BVGTFDWN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C4LSXHPG",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C4LSXHPG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "red-rising"
+        },
         "marco-sven-reinbold-2016": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -13948,6 +14038,26 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00LNGCZ8K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BVGTFDWN",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0BVGTFDWN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0C4LSXHPG",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0C4LSXHPG",
           "type": "libex-import"
         }
       ],
@@ -14310,134 +14420,6 @@
         }
       ],
       "title": "Red Rising 1"
-    },
-    "red-rising-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "pierce-brown"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "science-fiction"
-      ],
-      "id": "red-rising-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BVGTFDWN",
-              "region": "us"
-            },
-            {
-              "asin": "B0C4LSXHPG",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4381237,
-              "start_ms": 16924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4597063,
-              "start_ms": 4398161,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4484818,
-              "start_ms": 8995224,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4528587,
-              "start_ms": 13480042,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4623928,
-              "start_ms": 18008629,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4114000,
-              "start_ms": 22632557,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 366753,
-              "start_ms": 26746557,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815MEwh6QDL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 952,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BVGTFDWN",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BVGTFDWN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C4LSXHPG",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C4LSXHPG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "red-rising-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BVGTFDWN",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0BVGTFDWN",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0C4LSXHPG",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0C4LSXHPG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Rising [Dramatized Adaptation]"
     },
     "red-rising-sons-of-ares-volume-1-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -15180,6 +15162,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "historical-fiction",
         "westerns"
       ],
@@ -15187,6 +15170,44 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-stinson-2024": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D6SSZQPW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MBaQRyEKL.jpg",
+          "id": "chris-stinson-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-stinson",
+            "danny-gavigan",
+            "elizabeth-jernigan",
+            "full-cast",
+            "jacob-yeh",
+            "jonathan-sleep",
+            "ken-jackson",
+            "nick-depinto",
+            "nora-achrati",
+            "peter-stanley",
+            "rayner-gabriel",
+            "terence-aselford"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2024-08-19",
+          "runtime_min": 397,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D6SSZQPW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "red-river-vengeance"
+        },
         "danny-campbell-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -15348,73 +15369,14 @@
           "imported_at": "2026-07-29",
           "ref": "1705286429",
           "type": "libex-import"
-        }
-      ],
-      "title": "Red River Vengeance"
-    },
-    "red-river-vengeance-dramatized-adaptation": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "red-river-vengeance-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-stinson-2024": {
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D6SSZQPW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MBaQRyEKL.jpg",
-          "id": "chris-stinson-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-stinson",
-            "danny-gavigan",
-            "elizabeth-jernigan",
-            "full-cast",
-            "jacob-yeh",
-            "jonathan-sleep",
-            "ken-jackson",
-            "nick-depinto",
-            "nora-achrati",
-            "peter-stanley",
-            "rayner-gabriel",
-            "terence-aselford"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024-08-19",
-          "runtime_min": 397,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D6SSZQPW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "red-river-vengeance-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D6SSZQPW",
           "type": "libex-import"
         }
       ],
-      "title": "Red River Vengeance (Dramatized Adaptation)"
+      "title": "Red River Vengeance"
     },
     "red-road-from-stalingrad": {
       "added_at": "2026-07-29",

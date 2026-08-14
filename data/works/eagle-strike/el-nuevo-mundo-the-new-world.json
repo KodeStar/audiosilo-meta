@@ -3183,53 +3183,7 @@
             {
               "asin": "B07YX449R2",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916bd5--L1L.jpg",
-          "id": "silvia-gomez-lasil-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "silvia-gomez-lasil"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-08-31",
-          "runtime_min": 620,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX449R2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-paciente-impaciente-y-otras-anecdotas-de-la-boticaria-garcia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX449R2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El paciente impaciente y otras anécdotas de la Boticaria García"
-    },
-    "el-paciente-impaciente-y-otras-anecdotas-de-la-boticaria-garcia-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marian-garcia"
-      ],
-      "genres": [
-        "comedy-humor"
-      ],
-      "id": "el-paciente-impaciente-y-otras-anecdotas-de-la-boticaria-garcia-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "silvia-gomez-lasil-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07X3NHNQJ",
               "region": "us"
@@ -3248,23 +3202,33 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX449R2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07X3NHNQJ",
               "type": "libex-import"
             }
           ],
-          "work": "el-paciente-impaciente-y-otras-anecdotas-de-la-boticaria-garcia-narracion-en-castellano"
+          "work": "el-paciente-impaciente-y-otras-anecdotas-de-la-boticaria-garcia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX449R2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07X3NHNQJ",
           "type": "libex-import"
         }
       ],
-      "title": "El paciente impaciente y otras anécdotas de la Boticaria García (Narración en Castellano)"
+      "title": "El paciente impaciente y otras anécdotas de la Boticaria García"
     },
-    "el-paciente-the-patient": {
+    "el-paciente-the-patient-narracion-en-castellano": {
       "added_at": "2026-07-29",
       "authors": [
         "juan-gomez-jurado"
@@ -3272,13 +3236,99 @@
       "genres": [
         "espionage",
         "literary-fiction",
+        "medicine",
         "politics",
         "thriller-suspense"
       ],
-      "id": "el-paciente-the-patient",
+      "id": "el-paciente-the-patient-narracion-en-castellano",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "juan-magraner-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07MDH6C8L",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 97454,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 7194842,
+              "start_ms": 97454,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 5854656,
+              "start_ms": 7292296,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 6649753,
+              "start_ms": 13146952,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 5738811,
+              "start_ms": 19796705,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 3941610,
+              "start_ms": 25535516,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 3384958,
+              "start_ms": 29477126,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 4511288,
+              "start_ms": 32862084,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 2665256,
+              "start_ms": 37373372,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 4262881,
+              "start_ms": 40038628,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 995484,
+              "start_ms": 44301509,
+              "title": "Capítulo 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rtV2i5NkL.jpg",
+          "id": "juan-magraner-2018",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "juan-magraner"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-12-28",
+          "runtime_min": 754,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07MDH6C8L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-paciente-the-patient-narracion-en-castellano"
+        },
         "pau-ferrer-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3587,116 +3637,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-paciente-the-patient"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01HHA2ZP8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Paciente [The Patient]"
-    },
-    "el-paciente-the-patient-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-gomez-jurado"
-      ],
-      "genres": [
-        "espionage",
-        "medicine",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "el-paciente-the-patient-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-magraner-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07MDH6C8L",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 97454,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 7194842,
-              "start_ms": 97454,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 5854656,
-              "start_ms": 7292296,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 6649753,
-              "start_ms": 13146952,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 5738811,
-              "start_ms": 19796705,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 3941610,
-              "start_ms": 25535516,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 3384958,
-              "start_ms": 29477126,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 4511288,
-              "start_ms": 32862084,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 2665256,
-              "start_ms": 37373372,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 4262881,
-              "start_ms": 40038628,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 995484,
-              "start_ms": 44301509,
-              "title": "Capítulo 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rtV2i5NkL.jpg",
-          "id": "juan-magraner-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-magraner"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-12-28",
-          "runtime_min": 754,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07MDH6C8L",
-              "type": "libex-import"
-            }
-          ],
           "work": "el-paciente-the-patient-narracion-en-castellano"
         }
       },
@@ -3704,6 +3644,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07MDH6C8L",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01HHA2ZP8",
           "type": "libex-import"
         }
       ],
@@ -3786,53 +3731,7 @@
             {
               "asin": "B07YX2T85N",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BHi-5GP5L.jpg",
-          "id": "juan-magraner-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-magraner"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-05-29",
-          "runtime_min": 2441,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX2T85N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-padre-brown"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX2T85N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El padre Brown"
-    },
-    "el-padre-brown-father-brown": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "g-k-chesterton"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "el-padre-brown-father-brown",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-magraner-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07D7FF33G",
               "region": "us"
@@ -3851,21 +3750,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX2T85N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07D7FF33G",
               "type": "libex-import"
             }
           ],
-          "work": "el-padre-brown-father-brown"
+          "work": "el-padre-brown"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX2T85N",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07D7FF33G",
           "type": "libex-import"
         }
       ],
-      "title": "El padre Brown [Father Brown]"
+      "title": "El padre Brown"
     },
     "el-padrino-edicion-50o-aniversario": {
       "added_at": "2026-07-29",

@@ -9314,7 +9314,9 @@
         "max-brallier"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "comedy-humor",
         "horror",
         "science-fiction"
       ],
@@ -9322,6 +9324,181 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robbie-daymond-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0593106520",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 473434,
+              "start_ms": 17970,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 403422,
+              "start_ms": 491404,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 442572,
+              "start_ms": 894826,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 397015,
+              "start_ms": 1337398,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 479023,
+              "start_ms": 1734413,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 436074,
+              "start_ms": 2213436,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 542278,
+              "start_ms": 2649510,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1358877,
+              "start_ms": 3191788,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 515144,
+              "start_ms": 4550665,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 231633,
+              "start_ms": 5065809,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 273414,
+              "start_ms": 5297442,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 674679,
+              "start_ms": 5570856,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 643425,
+              "start_ms": 6245535,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 803734,
+              "start_ms": 6888960,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 810887,
+              "start_ms": 7692694,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 549941,
+              "start_ms": 8503581,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 430475,
+              "start_ms": 9053522,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 1159371,
+              "start_ms": 9483997,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 303671,
+              "start_ms": 10643368,
+              "title": "Chapter Nineteen"
+            },
+            {
+              "length_ms": 768603,
+              "start_ms": 10947039,
+              "title": "Chapter Twenty"
+            },
+            {
+              "length_ms": 144915,
+              "start_ms": 11715642,
+              "title": "Chapter Twenty-One"
+            },
+            {
+              "length_ms": 212694,
+              "start_ms": 11860557,
+              "title": "Chapter Twenty-Two"
+            },
+            {
+              "length_ms": 763262,
+              "start_ms": 12073251,
+              "title": "Chapter Twenty-Three"
+            },
+            {
+              "length_ms": 471319,
+              "start_ms": 12836513,
+              "title": "Chapter Twenty-Four"
+            },
+            {
+              "length_ms": 1007768,
+              "start_ms": 13307832,
+              "title": "Chapter Twenty-Five"
+            },
+            {
+              "length_ms": 453300,
+              "start_ms": 14315600,
+              "title": "Chapter Twenty-Six"
+            },
+            {
+              "length_ms": 420375,
+              "start_ms": 14768900,
+              "title": "Chapter Twenty-Seven"
+            },
+            {
+              "length_ms": 47180,
+              "start_ms": 15189275,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81m-NtTTajL.jpg",
+          "id": "robbie-daymond-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robbie-daymond"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2019-09-17",
+          "runtime_min": 253,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593106520",
+              "type": "libex-import"
+            }
+          ],
+          "work": "last-kids-on-earth-and-the-midnight-blade"
+        },
         "robbie-daymond-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9502,6 +9679,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09GYQYN1T",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593106520",
           "type": "libex-import"
         }
       ],

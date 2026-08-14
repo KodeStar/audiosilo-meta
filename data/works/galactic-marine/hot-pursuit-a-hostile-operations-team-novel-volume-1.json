@@ -7380,57 +7380,6 @@
       ],
       "title": "Hotel California"
     },
-    "hotel-cartagena": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "simone-buchholz"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "hotel-cartagena",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-selle-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BRKXJFCD",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rbdyGt1sL.jpg",
-          "id": "rebecca-selle-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-selle"
-          ],
-          "publisher": "Suhrkamp Verlag AG",
-          "release_date": "2023-01-03",
-          "runtime_min": 317,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BRKXJFCD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hotel-cartagena"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BRKXJFCD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hotel Cartagena"
-    },
     "hotel-cartagena-german-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -7451,6 +7400,10 @@
             {
               "asin": "B0BRKYTGSC",
               "region": "us"
+            },
+            {
+              "asin": "B0BRKXJFCD",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81rbdyGt1sL.jpg",
@@ -7468,6 +7421,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0BRKYTGSC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BRKXJFCD",
+              "type": "libex-import"
             }
           ],
           "work": "hotel-cartagena-german-edition"
@@ -7477,6 +7435,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BRKYTGSC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BRKXJFCD",
           "type": "libex-import"
         }
       ],

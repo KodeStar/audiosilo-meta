@@ -4458,30 +4458,7 @@
             }
           ],
           "work": "harbour-street"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B016LGZ7AO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Harbour Street"
-    },
-    "harbour-street-a-vera-stanhope-novel-6": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "harbour-street-a-vera-stanhope-novel-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "janine-birkett-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4508,17 +4485,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "harbour-street-a-vera-stanhope-novel-6"
+          "work": "harbour-street"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B016LGZ7AO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DLBHLXLN",
           "type": "libex-import"
         }
       ],
-      "title": "Harbour Street: A Vera Stanhope Novel 6"
+      "title": "Harbour Street"
     },
     "hard": {
       "added_at": "2026-07-29",
@@ -6372,33 +6354,13 @@
       "authors": [
         "chloe-neill"
       ],
-      "id": "hard-bitten",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/9581001-hard-bitten",
-          "type": "community"
-        }
-      ],
-      "title": "Hard Bitten",
-      "xref": {
-        "goodreads": "9581001"
-      }
-    },
-    "hard-bitten-chicagoland-vampires-book-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chloe-neill"
-      ],
       "genres": [
         "fantasy",
         "paranormal",
         "romance",
         "urban-fantasy"
       ],
-      "id": "hard-bitten-chicagoland-vampires-book-4",
+      "id": "hard-bitten",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6565,17 +6527,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "hard-bitten-chicagoland-vampires-book-4"
+          "work": "hard-bitten"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/9581001-hard-bitten",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0050JS2JW",
           "type": "libex-import"
         }
       ],
-      "title": "Hard Bitten: Chicagoland Vampires, Book 4"
+      "title": "Hard Bitten",
+      "xref": {
+        "goodreads": "9581001"
+      }
     },
     "hard-boiled-immortal": {
       "added_at": "2026-08-01",

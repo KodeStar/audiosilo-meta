@@ -1483,65 +1483,6 @@
       ],
       "title": "Thirteen Doorways, Wolves Behind Them All"
     },
-    "thirteen-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "steve-cavanagh",
-        "jorn-ingwersen"
-      ],
-      "credits": [
-        {
-          "person": "jorn-ingwersen",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "legal-thriller",
-        "thriller-suspense"
-      ],
-      "id": "thirteen-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gotz-otto-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09J19XVLQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71wpWD6hk0L.jpg",
-          "id": "gotz-otto-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gotz-otto",
-            "thomas-m-meinhardt"
-          ],
-          "publisher": "Der Hörverlag",
-          "release_date": "2021-12-24",
-          "runtime_min": 815,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09J19XVLQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "thirteen-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09J19XVLQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Thirteen (German edition)"
-    },
     "thirteen-guests": {
       "added_at": "2026-07-29",
       "authors": [
@@ -3066,6 +3007,7 @@
       ],
       "genres": [
         "law",
+        "legal-thriller",
         "thriller-suspense"
       ],
       "id": "thirteen-steve-cavanagh-2",
@@ -3079,6 +3021,10 @@
             {
               "asin": "B09J1CB1QB",
               "region": "de"
+            },
+            {
+              "asin": "B09J19XVLQ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71wpWD6hk0L.jpg",
@@ -3097,6 +3043,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09J1CB1QB",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09J19XVLQ",
+              "type": "libex-import"
             }
           ],
           "work": "thirteen-steve-cavanagh-2"
@@ -3106,6 +3057,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09J1CB1QB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09J19XVLQ",
           "type": "libex-import"
         }
       ],

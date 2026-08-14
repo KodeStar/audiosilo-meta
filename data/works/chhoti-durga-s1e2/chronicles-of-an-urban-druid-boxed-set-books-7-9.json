@@ -677,10 +677,13 @@
         "michelle-paver"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy",
         "historical-fiction",
-        "nature"
+        "history",
+        "nature",
+        "young-adult"
       ],
       "id": "chronicles-of-ancient-darkness-4-outcast",
       "language": "en",
@@ -692,6 +695,10 @@
           "asin": [
             {
               "asin": "B002V1LI9I",
+              "region": "us"
+            },
+            {
+              "asin": "B0032N8EQ4",
               "region": "us"
             }
           ],
@@ -902,6 +909,11 @@
               "imported_at": "2026-08-02",
               "ref": "B002V1LI9I",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0032N8EQ4",
+              "type": "libex-import"
             }
           ],
           "work": "chronicles-of-ancient-darkness-4-outcast"
@@ -911,6 +923,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1LI9I",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0032N8EQ4",
           "type": "libex-import"
         }
       ],
@@ -9005,30 +9022,7 @@
             }
           ],
           "work": "chronicles-of-whetherwhy-2-the-season-of-flames"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F2GFVD3N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Chronicles of Whetherwhy (2): The Season of Flames"
-    },
-    "chronicles-of-whetherwhy-the-season-of-flames": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anna-james"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy"
-      ],
-      "id": "chronicles-of-whetherwhy-the-season-of-flames",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "mike-grady-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9347,17 +9341,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "chronicles-of-whetherwhy-the-season-of-flames"
+          "work": "chronicles-of-whetherwhy-2-the-season-of-flames"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F2GFVD3N",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FMLH59F2",
           "type": "libex-import"
         }
       ],
-      "title": "Chronicles of Whetherwhy: The Season of Flames"
+      "title": "Chronicles of Whetherwhy (2): The Season of Flames"
     },
     "chronicles-of-zarechensk-i-russian-edition": {
       "added_at": "2026-08-02",
@@ -10596,12 +10595,293 @@
       ],
       "genres": [
         "fantasy",
+        "magical-realism",
         "urban-fantasy"
       ],
       "id": "chroniken-der-gefallenen-schattenspiele",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "felix-borrmann-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BN32MLCT",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16648,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 4133,
+              "start_ms": 16648,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 1030826,
+              "start_ms": 20781,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 706745,
+              "start_ms": 1051607,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 436256,
+              "start_ms": 1758352,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 368965,
+              "start_ms": 2194608,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 598563,
+              "start_ms": 2563573,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 915330,
+              "start_ms": 3162136,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 732728,
+              "start_ms": 4077466,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 527278,
+              "start_ms": 4810194,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 1030292,
+              "start_ms": 5337472,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 468834,
+              "start_ms": 6367764,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 591574,
+              "start_ms": 6836598,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 1414559,
+              "start_ms": 7428172,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 1107127,
+              "start_ms": 8842731,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 614400,
+              "start_ms": 9949858,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 409553,
+              "start_ms": 10564258,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 762821,
+              "start_ms": 10973811,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 700476,
+              "start_ms": 11736632,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 544206,
+              "start_ms": 12437108,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 624338,
+              "start_ms": 12981314,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 320922,
+              "start_ms": 13605652,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 3808,
+              "start_ms": 13926574,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 672240,
+              "start_ms": 13930382,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 470296,
+              "start_ms": 14602622,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 868333,
+              "start_ms": 15072918,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 651621,
+              "start_ms": 15941251,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 814021,
+              "start_ms": 16592872,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 749168,
+              "start_ms": 17406893,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 591342,
+              "start_ms": 18156061,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 185480,
+              "start_ms": 18747403,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 546806,
+              "start_ms": 18932883,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 323848,
+              "start_ms": 19479689,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 571907,
+              "start_ms": 19803537,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 3970,
+              "start_ms": 20375444,
+              "title": "Kapitel 35"
+            },
+            {
+              "length_ms": 514275,
+              "start_ms": 20379414,
+              "title": "Kapitel 36"
+            },
+            {
+              "length_ms": 823751,
+              "start_ms": 20893689,
+              "title": "Kapitel 37"
+            },
+            {
+              "length_ms": 858325,
+              "start_ms": 21717440,
+              "title": "Kapitel 38"
+            },
+            {
+              "length_ms": 785322,
+              "start_ms": 22575765,
+              "title": "Kapitel 39"
+            },
+            {
+              "length_ms": 735910,
+              "start_ms": 23361087,
+              "title": "Kapitel 40"
+            },
+            {
+              "length_ms": 258693,
+              "start_ms": 24096997,
+              "title": "Kapitel 41"
+            },
+            {
+              "length_ms": 785089,
+              "start_ms": 24355690,
+              "title": "Kapitel 42"
+            },
+            {
+              "length_ms": 1016407,
+              "start_ms": 25140779,
+              "title": "Kapitel 43"
+            },
+            {
+              "length_ms": 284514,
+              "start_ms": 26157186,
+              "title": "Kapitel 44"
+            },
+            {
+              "length_ms": 256464,
+              "start_ms": 26441700,
+              "title": "Kapitel 45"
+            },
+            {
+              "length_ms": 477495,
+              "start_ms": 26698164,
+              "title": "Kapitel 46"
+            },
+            {
+              "length_ms": 901282,
+              "start_ms": 27175659,
+              "title": "Kapitel 47"
+            },
+            {
+              "length_ms": 364831,
+              "start_ms": 28076941,
+              "title": "Kapitel 48"
+            },
+            {
+              "length_ms": 459012,
+              "start_ms": 28441772,
+              "title": "Kapitel 49"
+            },
+            {
+              "length_ms": 15208,
+              "start_ms": 28900784,
+              "title": "Kapitel 50"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8109SQEowXL.jpg",
+          "id": "felix-borrmann-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felix-borrmann"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2022-11-21",
+          "runtime_min": 481,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BN32MLCT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "chroniken-der-gefallenen-schattenspiele"
+        },
         "felix-borrmann-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10887,6 +11167,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0C23WGDKV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BN32MLCT",
           "type": "libex-import"
         }
       ],

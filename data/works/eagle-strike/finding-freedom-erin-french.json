@@ -1340,6 +1340,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "brad-channer-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B072JBQSRF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81I89cGheSL.jpg",
+          "id": "brad-channer-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brad-channer"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2017-06-01",
+          "runtime_min": 422,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B072JBQSRF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "finding-gobi"
+        },
         "simon-bubb-2017": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1501,62 +1529,14 @@
           "imported_at": "2026-07-29",
           "ref": "B072L6875B",
           "type": "libex-import"
-        }
-      ],
-      "title": "Finding Gobi"
-    },
-    "finding-gobi-main-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dion-leonard"
-      ],
-      "genres": [
-        "biography-memoir",
-        "home-garden",
-        "nature",
-        "sports"
-      ],
-      "id": "finding-gobi-main-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brad-channer-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B072JBQSRF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81I89cGheSL.jpg",
-          "id": "brad-channer-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brad-channer"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2017-06-01",
-          "runtime_min": 422,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B072JBQSRF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "finding-gobi-main-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B072JBQSRF",
           "type": "libex-import"
         }
       ],
-      "title": "Finding Gobi (Main edition)"
+      "title": "Finding Gobi"
     },
     "finding-gobi-young-readers-edition": {
       "added_at": "2026-07-29",

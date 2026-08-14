@@ -7170,55 +7170,7 @@
             {
               "asin": "B09WG5HT7F",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71nvwT51xuL.jpg",
-          "id": "inigo-alvarez-de-lara-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "inigo-alvarez-de-lara"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-04-21",
-          "runtime_min": 2015,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09WG5HT7F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jonathan-strange-y-el-senor-norrell"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09WG5HT7F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Jonathan Strange y el señor Norrell"
-    },
-    "jonathan-strange-y-el-senor-norrell-jonathan-strange-and-mr-norrell": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "susanna-clarke",
-        "ana-maria-de-la-fuente-suarez"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "jonathan-strange-y-el-senor-norrell-jonathan-strange-and-mr-norrell",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "inigo-alvarez-de-lara-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09WG34MGR",
               "region": "us"
@@ -7237,21 +7189,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09WG5HT7F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09WG34MGR",
               "type": "libex-import"
             }
           ],
-          "work": "jonathan-strange-y-el-senor-norrell-jonathan-strange-and-mr-norrell"
+          "work": "jonathan-strange-y-el-senor-norrell"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09WG5HT7F",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09WG34MGR",
           "type": "libex-import"
         }
       ],
-      "title": "Jonathan Strange y el señor Norrell [Jonathan Strange and Mr Norrell]"
+      "title": "Jonathan Strange y el señor Norrell"
     },
     "jonathan-stroud": {
       "added_at": "2026-07-29",

@@ -7,6 +7,7 @@
       ],
       "genres": [
         "mystery",
+        "psychological-thriller",
         "thriller-suspense"
       ],
       "id": "heartbreak-hotel",
@@ -19,6 +20,10 @@
           "asin": [
             {
               "asin": "B01NGULVN1",
+              "region": "us"
+            },
+            {
+              "asin": "B01N34YDUG",
               "region": "us"
             }
           ],
@@ -299,6 +304,11 @@
               "imported_at": "2026-07-29",
               "ref": "B01NGULVN1",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01N34YDUG",
+              "type": "libex-import"
             }
           ],
           "work": "heartbreak-hotel"
@@ -337,61 +347,14 @@
           "imported_at": "2026-07-29",
           "ref": "B01NGULVN1",
           "type": "libex-import"
-        }
-      ],
-      "title": "Heartbreak Hotel"
-    },
-    "heartbreak-hotel-alex-delaware-series-book-32": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jonathan-kellerman"
-      ],
-      "genres": [
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "heartbreak-hotel-alex-delaware-series-book-32",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-rubinstein-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01N34YDUG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915JP5v3FOL.jpg",
-          "id": "john-rubinstein-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-rubinstein"
-          ],
-          "publisher": "Headline",
-          "release_date": "2017-02-14",
-          "runtime_min": 711,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01N34YDUG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "heartbreak-hotel-alex-delaware-series-book-32"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01N34YDUG",
           "type": "libex-import"
         }
       ],
-      "title": "Heartbreak Hotel (Alex Delaware series, Book 32)"
+      "title": "Heartbreak Hotel"
     },
     "heartbreak-is-the-national-anthem": {
       "added_at": "2026-07-29",

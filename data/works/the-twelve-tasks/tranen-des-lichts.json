@@ -12796,6 +12796,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy"
       ],
@@ -12803,6 +12804,121 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-james-spooner-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FNP14T9P",
+              "region": "us"
+            },
+            {
+              "asin": "B0FNNMHZD4",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3996381,
+              "start_ms": 36970,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 3684286,
+              "start_ms": 4033351,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 3803846,
+              "start_ms": 7717637,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 3708040,
+              "start_ms": 11521483,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 3890526,
+              "start_ms": 15229523,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 3960999,
+              "start_ms": 19120049,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 3873204,
+              "start_ms": 23081048,
+              "title": "Track 7"
+            },
+            {
+              "length_ms": 3977415,
+              "start_ms": 26954252,
+              "title": "Track 8"
+            },
+            {
+              "length_ms": 3985983,
+              "start_ms": 30931667,
+              "title": "Track 9"
+            },
+            {
+              "length_ms": 4567620,
+              "start_ms": 34917650,
+              "title": "Track 10"
+            },
+            {
+              "length_ms": 3957000,
+              "start_ms": 39485270,
+              "title": "Track 11"
+            },
+            {
+              "length_ms": 136537,
+              "start_ms": 43442270,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KM6as8W0L.jpg",
+          "id": "andrew-james-spooner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-james-spooner",
+            "bradley-foster-smith",
+            "charlie-albers",
+            "christopher-walker",
+            "christopher-williams",
+            "colleen-delany",
+            "dawn-ursula",
+            "full-cast",
+            "james-konicek",
+            "jenna-sharpe",
+            "peter-holdway",
+            "wyn-delano"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-10-28",
+          "runtime_min": 726,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FNP14T9P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FNNMHZD4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "transformation"
+        },
         "bjorn-boresch-2024": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -13396,6 +13512,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0CSVHBZDZ",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FNP14T9P",
+          "type": "libex-import"
         }
       ],
       "title": "Transformation"
@@ -13844,145 +13965,6 @@
         }
       ],
       "title": "Transformation"
-    },
-    "transformation-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "seth-ring"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy"
-      ],
-      "id": "transformation-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-james-spooner-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FNP14T9P",
-              "region": "us"
-            },
-            {
-              "asin": "B0FNNMHZD4",
-              "region": "ca"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3996381,
-              "start_ms": 36970,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 3684286,
-              "start_ms": 4033351,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 3803846,
-              "start_ms": 7717637,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 3708040,
-              "start_ms": 11521483,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 3890526,
-              "start_ms": 15229523,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3960999,
-              "start_ms": 19120049,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 3873204,
-              "start_ms": 23081048,
-              "title": "Track 7"
-            },
-            {
-              "length_ms": 3977415,
-              "start_ms": 26954252,
-              "title": "Track 8"
-            },
-            {
-              "length_ms": 3985983,
-              "start_ms": 30931667,
-              "title": "Track 9"
-            },
-            {
-              "length_ms": 4567620,
-              "start_ms": 34917650,
-              "title": "Track 10"
-            },
-            {
-              "length_ms": 3957000,
-              "start_ms": 39485270,
-              "title": "Track 11"
-            },
-            {
-              "length_ms": 136537,
-              "start_ms": 43442270,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81KM6as8W0L.jpg",
-          "id": "andrew-james-spooner-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-james-spooner",
-            "bradley-foster-smith",
-            "charlie-albers",
-            "christopher-walker",
-            "christopher-williams",
-            "colleen-delany",
-            "dawn-ursula",
-            "full-cast",
-            "james-konicek",
-            "jenna-sharpe",
-            "peter-holdway",
-            "wyn-delano"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-10-28",
-          "runtime_min": 726,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FNP14T9P",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FNNMHZD4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "transformation-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FNP14T9P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Transformation (Dramatized Adaptation)"
     },
     "transformation-i-russian-edition": {
       "added_at": "2026-08-02",

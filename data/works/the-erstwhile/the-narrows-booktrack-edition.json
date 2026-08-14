@@ -10130,7 +10130,10 @@
         "jennifer-lynn-barnes"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "coming-of-age",
+        "mystery",
         "thriller-suspense",
         "young-adult"
       ],
@@ -10367,33 +10370,7 @@
             }
           ],
           "work": "the-naturals"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BXMVJ7MH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Naturals"
-    },
-    "the-naturals-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jennifer-lynn-barnes"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "the-naturals-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "amber-faith-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10647,17 +10624,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-naturals-book-1"
+          "work": "the-naturals"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BXMVJ7MH",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNKDWCB2",
           "type": "libex-import"
         }
       ],
-      "title": "The Naturals, Book 1"
+      "title": "The Naturals"
     },
     "the-naturals-jennifer-lynn-barnes": {
       "added_at": "2026-08-02",

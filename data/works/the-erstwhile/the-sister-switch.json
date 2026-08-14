@@ -1206,14 +1206,99 @@
       "authors": [
         "ann-brashares"
       ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships",
+        "romance",
+        "self-help",
+        "young-adult"
+      ],
       "id": "the-sisterhood-of-the-traveling-pants",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "angela-goethals-2003": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZL6RY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2985622,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2789599,
+              "start_ms": 2985622,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3223766,
+              "start_ms": 5775221,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3082820,
+              "start_ms": 8998987,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3057325,
+              "start_ms": 12081807,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2600960,
+              "start_ms": 15139132,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3092666,
+              "start_ms": 17740092,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2899429,
+              "start_ms": 20832758,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/714Vy3CWAtL.jpg",
+          "id": "angela-goethals-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angela-goethals"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2003-11-14",
+          "runtime_min": 395,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZL6RY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sisterhood-of-the-traveling-pants"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/452306.The_Sisterhood_of_the_Traveling_Pants",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZL6RY",
+          "type": "libex-import"
         }
       ],
       "title": "The Sisterhood of the Traveling Pants",
@@ -3429,7 +3514,10 @@
       ],
       "genres": [
         "action-adventure",
+        "epic-fantasy",
         "fantasy",
+        "romance",
+        "westerns",
         "young-adult"
       ],
       "id": "the-sisters-of-reckoning",
@@ -3442,6 +3530,10 @@
           "asin": [
             {
               "asin": "1665064579",
+              "region": "us"
+            },
+            {
+              "asin": "1471410072",
               "region": "us"
             }
           ],
@@ -3617,6 +3709,11 @@
               "imported_at": "2026-08-02",
               "ref": "1665064579",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1471410072",
+              "type": "libex-import"
             }
           ],
           "work": "the-sisters-of-reckoning"
@@ -3627,219 +3724,14 @@
           "imported_at": "2026-08-02",
           "ref": "1665064579",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Sisters of Reckoning"
-    },
-    "the-sisters-of-reckoning-sequel-to-the-good-luck-girls": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charlotte-nicole-davis"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "romance",
-        "westerns"
-      ],
-      "id": "the-sisters-of-reckoning-sequel-to-the-good-luck-girls",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeanette-illidge-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1471410072",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1253807,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1144186,
-              "start_ms": 1253807,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2086312,
-              "start_ms": 2397993,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1525388,
-              "start_ms": 4484305,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1266485,
-              "start_ms": 6009693,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 814927,
-              "start_ms": 7276178,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1170099,
-              "start_ms": 8091105,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2246855,
-              "start_ms": 9261204,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3282744,
-              "start_ms": 11508059,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 971917,
-              "start_ms": 14790803,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1251184,
-              "start_ms": 15762720,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1392802,
-              "start_ms": 17013904,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1315758,
-              "start_ms": 18406706,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1241687,
-              "start_ms": 19722464,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1551023,
-              "start_ms": 20964151,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 845995,
-              "start_ms": 22515174,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2016722,
-              "start_ms": 23361169,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 2246693,
-              "start_ms": 25377891,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1645435,
-              "start_ms": 27624584,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1215216,
-              "start_ms": 29270019,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1692154,
-              "start_ms": 30485235,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1204488,
-              "start_ms": 32177389,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1593678,
-              "start_ms": 33381877,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 2336275,
-              "start_ms": 34975555,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1955166,
-              "start_ms": 37311830,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1717069,
-              "start_ms": 39266996,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1096794,
-              "start_ms": 40984065,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1646271,
-              "start_ms": 42080859,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 2538730,
-              "start_ms": 43727130,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 2197675,
-              "start_ms": 46265860,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 304018,
-              "start_ms": 48463535,
-              "title": "Chapter 31"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DONQW7jES.jpg",
-          "id": "jeanette-illidge-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeanette-illidge"
-          ],
-          "publisher": "Hot Key Books",
-          "release_date": "2021-08-25",
-          "runtime_min": 812,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1471410072",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sisters-of-reckoning-sequel-to-the-good-luck-girls"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1471410072",
           "type": "libex-import"
         }
       ],
-      "title": "The Sisters of Reckoning (sequel to The Good Luck Girls)"
+      "title": "The Sisters of Reckoning"
     },
     "the-sisters-of-salem": {
       "added_at": "2026-08-01",

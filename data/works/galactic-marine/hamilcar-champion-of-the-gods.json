@@ -6968,12 +6968,41 @@
         "action-adventure",
         "fantasy",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "hammered-kevin-hearne",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-ragland-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00CXS22US",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cDDONkRZL.jpg",
+          "id": "christopher-ragland-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-ragland"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2013-05-29",
+          "runtime_min": 626,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00CXS22US",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hammered-kevin-hearne"
+        },
         "luke-daniels-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7154,6 +7183,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0057HS0NK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00CXS22US",
           "type": "libex-import"
         }
       ],
@@ -7563,57 +7597,6 @@
         }
       ],
       "title": "Hammered"
-    },
-    "hammered-the-iron-druid-chronicles-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kevin-hearne"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "hammered-the-iron-druid-chronicles-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-ragland-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00CXS22US",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cDDONkRZL.jpg",
-          "id": "christopher-ragland-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-ragland"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2013-05-29",
-          "runtime_min": 626,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00CXS22US",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hammered-the-iron-druid-chronicles-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00CXS22US",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hammered: The Iron Druid Chronicles, Book 3"
     },
     "hammerfall": {
       "added_at": "2026-08-02",
@@ -10694,63 +10677,6 @@
       ],
       "title": "Hamnet"
     },
-    "hamnet-french-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maggie-ofarrell",
-        "sarah-tardy"
-      ],
-      "credits": [
-        {
-          "person": "sarah-tardy",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "hamnet-french-edition",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sarah-biasini-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09DT9D37T",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916EKEB6DzL.jpg",
-          "id": "sarah-biasini-2021",
-          "language": "fr",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sarah-biasini"
-          ],
-          "publisher": "Lizzie",
-          "release_date": "2021-09-09",
-          "runtime_min": 719,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09DT9D37T",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hamnet-french-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09DT9D37T",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hamnet [French Edition]"
-    },
     "hamnet-maggie-ofarrell": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10843,6 +10769,10 @@
             {
               "asin": "B09DTC4NJP",
               "region": "es"
+            },
+            {
+              "asin": "B09DT9D37T",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/916EKEB6DzL.jpg",
@@ -10860,6 +10790,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09DTC4NJP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09DT9D37T",
+              "type": "libex-import"
             }
           ],
           "work": "hamnet-version-francaise"
@@ -10869,6 +10804,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09DTC4NJP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09DT9D37T",
           "type": "libex-import"
         }
       ],

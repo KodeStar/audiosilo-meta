@@ -1043,36 +1043,7 @@
             }
           ],
           "work": "false-flag-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0DDCW8Q58",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0DDCW8Q58",
-          "type": "libex-import"
-        }
-      ],
-      "title": "False Flag (Dramatized Adaptation)"
-    },
-    "false-flag-jack-slater": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jack-slater"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "false-flag-jack-slater",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "mark-garkusha-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1401,17 +1372,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "false-flag-jack-slater"
+          "work": "false-flag-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0DDCW8Q58",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0DDCW8Q58",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BN7H29FR",
           "type": "libex-import"
         }
       ],
-      "title": "False Flag"
+      "title": "False Flag (Dramatized Adaptation)"
     },
     "false-flag-mark-goodwin": {
       "added_at": "2026-08-01",
@@ -10363,53 +10344,7 @@
             {
               "asin": "B0CGFD38XP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-wxxR+LpL.jpg",
-          "id": "juan-miguel-zunzunegui-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-miguel-zunzunegui"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-08-24",
-          "runtime_min": 481,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CGFD38XP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "falsificar-la-historia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CGFD38XP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Falsificar la historia"
-    },
-    "falsificar-la-historia-falsifying-history": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-miguel-zunzunegui"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "falsificar-la-historia-falsifying-history",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-miguel-zunzunegui-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CGFD4KB3",
               "region": "us"
@@ -10520,21 +10455,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CGFD38XP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CGFD4KB3",
               "type": "libex-import"
             }
           ],
-          "work": "falsificar-la-historia-falsifying-history"
+          "work": "falsificar-la-historia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CGFD38XP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CGFD4KB3",
           "type": "libex-import"
         }
       ],
-      "title": "Falsificar la historia [Falsifying History]"
+      "title": "Falsificar la historia"
     },
     "falso-dinero-falso-mestros-falsos-activos-falsos-fake-fake-money-fake-teachers-fake-assets": {
       "added_at": "2026-07-29",

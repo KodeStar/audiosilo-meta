@@ -6,9 +6,11 @@
         "sarah-j-maas"
       ],
       "genres": [
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "romance",
         "urban-fantasy"
       ],
       "id": "house-of-flame-and-shadow",
@@ -617,39 +619,7 @@
             }
           ],
           "work": "house-of-flame-and-shadow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B0CGSXFQYY",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0CGSXFQYY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "House of Flame and Shadow"
-    },
-    "house-of-flame-and-shadow-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "sarah-j-maas"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "house-of-flame-and-shadow-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -695,10 +665,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "house-of-flame-and-shadow-dramatized-adaptation"
+          "work": "house-of-flame-and-shadow"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0CGSXFQYY",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0CGSXFQYY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0DJN2L3DC",
@@ -720,7 +700,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "House of Flame and Shadow [Dramatized Adaptation]"
+      "title": "House of Flame and Shadow"
     },
     "house-of-frank": {
       "added_at": "2026-07-29",

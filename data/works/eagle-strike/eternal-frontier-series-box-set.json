@@ -3414,7 +3414,9 @@
         "jeaniene-frost"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
+        "nature",
         "paranormal",
         "romance",
         "urban-fantasy"
@@ -3423,6 +3425,97 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-hill-knight-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FK7PKJWP",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 38924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3711144,
+              "start_ms": 38924,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 3533217,
+              "start_ms": 3750068,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 3628094,
+              "start_ms": 7283285,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 4030566,
+              "start_ms": 10911379,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 3580075,
+              "start_ms": 14941945,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 3910936,
+              "start_ms": 18522020,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 3939195,
+              "start_ms": 22432956,
+              "title": "Track 7"
+            },
+            {
+              "length_ms": 4174000,
+              "start_ms": 26372151,
+              "title": "Track 8"
+            },
+            {
+              "length_ms": 148300,
+              "start_ms": 30546151,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HqBD28RbL.jpg",
+          "id": "alex-hill-knight-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-hill-knight",
+            "amanda-forstrom",
+            "andrew-mimms",
+            "danny-gavigan",
+            "darcey-lee",
+            "delton-engle-sorrell",
+            "full-cast",
+            "gregory-linington",
+            "james-konicek",
+            "laura-c-harris",
+            "niusha-nawab",
+            "yasmin-tuazon"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2025-09-16",
+          "runtime_min": 511,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FK7PKJWP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eternal-kiss-of-darkness"
+        },
         "tavia-gilbert-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3649,126 +3742,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00408SVY0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Eternal Kiss of Darkness"
-    },
-    "eternal-kiss-of-darkness-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jeaniene-frost"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "nature",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "eternal-kiss-of-darkness-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-hill-knight-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FK7PKJWP",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3711144,
-              "start_ms": 38924,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 3533217,
-              "start_ms": 3750068,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 3628094,
-              "start_ms": 7283285,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 4030566,
-              "start_ms": 10911379,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 3580075,
-              "start_ms": 14941945,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3910936,
-              "start_ms": 18522020,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 3939195,
-              "start_ms": 22432956,
-              "title": "Track 7"
-            },
-            {
-              "length_ms": 4174000,
-              "start_ms": 26372151,
-              "title": "Track 8"
-            },
-            {
-              "length_ms": 148300,
-              "start_ms": 30546151,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81HqBD28RbL.jpg",
-          "id": "alex-hill-knight-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-hill-knight",
-            "amanda-forstrom",
-            "andrew-mimms",
-            "danny-gavigan",
-            "darcey-lee",
-            "delton-engle-sorrell",
-            "full-cast",
-            "gregory-linington",
-            "james-konicek",
-            "laura-c-harris",
-            "niusha-nawab",
-            "yasmin-tuazon"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025-09-16",
-          "runtime_min": 511,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FK7PKJWP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eternal-kiss-of-darkness-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FK7PKJWP",
           "type": "libex-import"
         }
       ],
-      "title": "Eternal Kiss of Darkness (Dramatized Adaptation)"
+      "title": "Eternal Kiss of Darkness"
     },
     "eternal-knight": {
       "added_at": "2026-08-02",

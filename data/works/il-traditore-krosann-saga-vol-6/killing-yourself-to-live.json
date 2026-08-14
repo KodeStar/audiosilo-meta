@@ -319,12 +319,155 @@
         "ann-cleeves"
       ],
       "genres": [
-        "mystery"
+        "cozy-mystery",
+        "mystery",
+        "police-procedural",
+        "science-fiction"
       ],
       "id": "killjoy",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "simon-mattacks-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DLB9PTBX",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14226,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1259272,
+              "start_ms": 14226,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1189209,
+              "start_ms": 1273498,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1272081,
+              "start_ms": 2462707,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1152429,
+              "start_ms": 3734788,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1164271,
+              "start_ms": 4887217,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1294675,
+              "start_ms": 6051488,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1291749,
+              "start_ms": 7346163,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1403994,
+              "start_ms": 8637912,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1154101,
+              "start_ms": 10041906,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1282716,
+              "start_ms": 11196007,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1232468,
+              "start_ms": 12478723,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1136245,
+              "start_ms": 13711191,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1206717,
+              "start_ms": 14847436,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 1279582,
+              "start_ms": 16054153,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 1163366,
+              "start_ms": 17333735,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 840167,
+              "start_ms": 18497101,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 964255,
+              "start_ms": 19337268,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 651180,
+              "start_ms": 20301523,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 893573,
+              "start_ms": 20952703,
+              "title": "Chapter Nineteen"
+            },
+            {
+              "length_ms": 913000,
+              "start_ms": 21846276,
+              "title": "Chapter Twenty"
+            },
+            {
+              "length_ms": 14126,
+              "start_ms": 22759276,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vb0V-LRrL.jpg",
+          "id": "simon-mattacks-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-mattacks"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 379,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DLB9PTBX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "killjoy"
+        },
         "simon-mattacks-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -489,174 +632,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DPGNBJGG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Killjoy"
-    },
-    "killjoy-an-inspector-ramsay-novel-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery",
-        "police-procedural",
-        "science-fiction"
-      ],
-      "id": "killjoy-an-inspector-ramsay-novel-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-mattacks-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DLB9PTBX",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14226,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1259272,
-              "start_ms": 14226,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 1189209,
-              "start_ms": 1273498,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1272081,
-              "start_ms": 2462707,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1152429,
-              "start_ms": 3734788,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1164271,
-              "start_ms": 4887217,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1294675,
-              "start_ms": 6051488,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1291749,
-              "start_ms": 7346163,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1403994,
-              "start_ms": 8637912,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1154101,
-              "start_ms": 10041906,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1282716,
-              "start_ms": 11196007,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1232468,
-              "start_ms": 12478723,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1136245,
-              "start_ms": 13711191,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1206717,
-              "start_ms": 14847436,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1279582,
-              "start_ms": 16054153,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1163366,
-              "start_ms": 17333735,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 840167,
-              "start_ms": 18497101,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 964255,
-              "start_ms": 19337268,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 651180,
-              "start_ms": 20301523,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 893573,
-              "start_ms": 20952703,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 913000,
-              "start_ms": 21846276,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 14126,
-              "start_ms": 22759276,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vb0V-LRrL.jpg",
-          "id": "simon-mattacks-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-mattacks"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 379,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DLB9PTBX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "killjoy-an-inspector-ramsay-novel-4"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DLB9PTBX",
           "type": "libex-import"
         }
       ],
-      "title": "Killjoy: An Inspector Ramsay Novel 4"
+      "title": "Killjoy"
     },
     "killjoy-julie-garwood": {
       "added_at": "2026-07-29",

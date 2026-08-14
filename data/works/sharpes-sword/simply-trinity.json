@@ -8652,8 +8652,8 @@
       ],
       "title": "Sin blanca en París y Londres [Down and Out in Paris and London]"
     },
-    "sin-chocolate": {
-      "added_at": "2026-08-01",
+    "sin-chocolate-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "k-f-breene"
       ],
@@ -8663,10 +8663,90 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "sin-chocolate",
+      "id": "sin-chocolate-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CZ7KXKKV",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 42097,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3872090,
+              "start_ms": 42097,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3745982,
+              "start_ms": 3914187,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3604921,
+              "start_ms": 7660169,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3795603,
+              "start_ms": 11265090,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4082207,
+              "start_ms": 15060693,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3557923,
+              "start_ms": 19142900,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4061216,
+              "start_ms": 22700823,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 74558,
+              "start_ms": 26762039,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BG1v8WjKL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 447,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CZ7KXKKV",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CZ7KXKKV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sin-chocolate-dramatized-adaptation"
+        },
         "khristine-hvam-2018": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8910,109 +8990,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "sin-chocolate"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07KWHTYTQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sin & Chocolate"
-    },
-    "sin-chocolate-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "sin-chocolate-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CZ7KXKKV",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 42097,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3872090,
-              "start_ms": 42097,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3745982,
-              "start_ms": 3914187,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3604921,
-              "start_ms": 7660169,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3795603,
-              "start_ms": 11265090,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4082207,
-              "start_ms": 15060693,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3557923,
-              "start_ms": 19142900,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4061216,
-              "start_ms": 22700823,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 74558,
-              "start_ms": 26762039,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BG1v8WjKL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 447,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CZ7KXKKV",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CZ7KXKKV",
-              "type": "libex-import"
-            }
-          ],
           "work": "sin-chocolate-dramatized-adaptation"
         }
       },
@@ -9025,6 +9002,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CZ7KXKKV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07KWHTYTQ",
           "type": "libex-import"
         }
       ],

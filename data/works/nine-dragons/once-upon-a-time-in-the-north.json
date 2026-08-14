@@ -6,7 +6,10 @@
         "philip-pullman"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "fantasy",
+        "sword-sorcery",
         "young-adult"
       ],
       "id": "once-upon-a-time-in-the-north",
@@ -69,6 +72,65 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B079DG25F7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "once-upon-a-time-in-the-north"
+        },
+        "david-harewood-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CT47Z86N",
+              "region": "us"
+            },
+            {
+              "asin": "B0CT494F9J",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19202,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4345498,
+              "start_ms": 19202,
+              "title": "The battered cargo balloon came in out of a rainstorm over the White Sea..."
+            },
+            {
+              "length_ms": 4212424,
+              "start_ms": 4364700,
+              "title": "The bear reached down past the edge of the stone wharf..."
+            },
+            {
+              "length_ms": 36547,
+              "start_ms": 8577124,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91P1giKFXYL.jpg",
+          "id": "david-harewood-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-harewood"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2024-02-13",
+          "runtime_min": 143,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CT47Z86N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CT494F9J",
               "type": "libex-import"
             }
           ],
@@ -159,6 +221,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0032NA9NK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CT47Z86N",
           "type": "libex-import"
         }
       ],

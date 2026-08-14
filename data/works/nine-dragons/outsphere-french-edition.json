@@ -6409,59 +6409,6 @@
       ],
       "title": "Over the Edge"
     },
-    "over-the-edge-cd-reiss": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "cd-reiss"
-      ],
-      "genres": [
-        "erotica",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "over-the-edge-cd-reiss",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joe-arden-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DH5BVRLH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812wqRQ5WYL.jpg",
-          "id": "joe-arden-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joe-arden",
-            "maxine-mitchell"
-          ],
-          "publisher": "Flip City Media",
-          "release_date": "2024-09-30",
-          "runtime_min": 293,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DH5BVRLH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "over-the-edge-cd-reiss"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DH5BVRLH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Over the Edge"
-    },
     "over-the-edge-greg-child": {
       "added_at": "2026-07-29",
       "authors": [
@@ -7574,6 +7521,7 @@
         "cd-reiss"
       ],
       "genres": [
+        "erotica",
         "psychological-thriller",
         "romance",
         "romantic-suspense",
@@ -7743,12 +7691,46 @@
             }
           ],
           "work": "over-the-edge-the-edge-book-4"
+        },
+        "joe-arden-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DH5BVRLH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812wqRQ5WYL.jpg",
+          "id": "joe-arden-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joe-arden",
+            "maxine-mitchell"
+          ],
+          "publisher": "Flip City Media",
+          "release_date": "2024-09-30",
+          "runtime_min": 293,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DH5BVRLH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "over-the-edge-the-edge-book-4"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B07HGJB4Z1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DH5BVRLH",
           "type": "libex-import"
         }
       ],

@@ -13241,7 +13241,11 @@
         "lilith-saintcrow"
       ],
       "genres": [
-        "fantasy"
+        "classics",
+        "fantasy",
+        "horror",
+        "paranormal",
+        "urban-fantasy"
       ],
       "id": "night-shift-dramatized-adaptation",
       "language": "en",
@@ -13311,147 +13315,7 @@
             }
           ],
           "work": "night-shift-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648794262",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648794262",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Night Shift [Dramatized Adaptation]"
-    },
-    "night-shift-dramatized-adaptation-charlaine-harris": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "romance",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "night-shift-dramatized-adaptation-charlaine-harris",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BVGTHHB4",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 27747,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4343409,
-              "start_ms": 27747,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4638975,
-              "start_ms": 4371156,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4557775,
-              "start_ms": 9010131,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4491644,
-              "start_ms": 13567906,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4569547,
-              "start_ms": 18059550,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4540058,
-              "start_ms": 22629097,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 147399,
-              "start_ms": 27169155,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZIyX3uQxL.jpg",
-          "id": "alejandro-ruiz-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "bianca-bryan",
-            "bradley-foster-smith",
-            "colleen-delany",
-            "danny-gavigan",
-            "drew-kopas",
-            "earl-fisher",
-            "elias-khalil",
-            "eli-vanzandt",
-            "elizabeth-jernigan",
-            "full-cast",
-            "ken-jackson"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-04-17",
-          "runtime_min": 455,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BVGTHHB4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "night-shift-dramatized-adaptation-charlaine-harris"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BVGTHHB4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Night Shift (Dramatized Adaptation)"
-    },
-    "night-shift-lilith-saintcrow": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lilith-saintcrow"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "horror",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "night-shift-lilith-saintcrow",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "joyce-bean-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13635,17 +13499,136 @@
               "type": "libex-import"
             }
           ],
-          "work": "night-shift-lilith-saintcrow"
+          "work": "night-shift-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648794262",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648794262",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B009RPXE2A",
           "type": "libex-import"
         }
       ],
-      "title": "Night Shift"
+      "title": "Night Shift [Dramatized Adaptation]"
+    },
+    "night-shift-dramatized-adaptation-charlaine-harris": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "charlaine-harris"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "fantasy",
+        "mystery",
+        "paranormal",
+        "romance",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "night-shift-dramatized-adaptation-charlaine-harris",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alejandro-ruiz-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BVGTHHB4",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27747,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4343409,
+              "start_ms": 27747,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4638975,
+              "start_ms": 4371156,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4557775,
+              "start_ms": 9010131,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4491644,
+              "start_ms": 13567906,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4569547,
+              "start_ms": 18059550,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4540058,
+              "start_ms": 22629097,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 147399,
+              "start_ms": 27169155,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ZIyX3uQxL.jpg",
+          "id": "alejandro-ruiz-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "bianca-bryan",
+            "bradley-foster-smith",
+            "colleen-delany",
+            "danny-gavigan",
+            "drew-kopas",
+            "earl-fisher",
+            "elias-khalil",
+            "eli-vanzandt",
+            "elizabeth-jernigan",
+            "full-cast",
+            "ken-jackson"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-04-17",
+          "runtime_min": 455,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BVGTHHB4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-shift-dramatized-adaptation-charlaine-harris"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BVGTHHB4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Shift (Dramatized Adaptation)"
     },
     "night-shift-nalini-singh": {
       "added_at": "2026-08-02",

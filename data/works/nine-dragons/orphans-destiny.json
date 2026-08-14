@@ -4643,6 +4643,8 @@
         "g-k-chesterton"
       ],
       "genres": [
+        "philosophy",
+        "politics",
         "religion-spirituality"
       ],
       "id": "orthodoxy",
@@ -4752,6 +4754,34 @@
           ],
           "work": "orthodoxy"
         },
+        "rory-barnett-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1978679394",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kF+Fk5+kL.jpg",
+          "id": "rory-barnett-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rory-barnett"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-05-07",
+          "runtime_min": 448,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1978679394",
+              "type": "libex-import"
+            }
+          ],
+          "work": "orthodoxy"
+        },
         "simon-vance-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4818,61 +4848,14 @@
           "imported_at": "2026-07-29",
           "ref": "B004SH4TSK",
           "type": "libex-import"
-        }
-      ],
-      "title": "Orthodoxy"
-    },
-    "orthodoxy-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "g-k-chesterton"
-      ],
-      "genres": [
-        "philosophy",
-        "politics",
-        "religion-spirituality"
-      ],
-      "id": "orthodoxy-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rory-barnett-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1978679394",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kF+Fk5+kL.jpg",
-          "id": "rory-barnett-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rory-barnett"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-05-07",
-          "runtime_min": 448,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1978679394",
-              "type": "libex-import"
-            }
-          ],
-          "work": "orthodoxy-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1978679394",
           "type": "libex-import"
         }
       ],
-      "title": "Orthodoxy (AmazonClassics Edition)"
+      "title": "Orthodoxy"
     },
     "orthodoxy-and-heterodoxy-finding-the-way-to-christ-in-a-complicated-religious-landscape": {
       "added_at": "2026-07-29",

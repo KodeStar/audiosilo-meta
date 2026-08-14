@@ -2919,12 +2919,44 @@
       ],
       "genres": [
         "mystery",
+        "psychological-thriller",
         "thriller-suspense"
       ],
       "id": "triple-cross",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "inger-tudor-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09XVJ972Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nbeYE142L.jpg",
+          "id": "inger-tudor-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "inger-tudor",
+            "kiff-vandenheuvel",
+            "mela-lee",
+            "wayne-carr"
+          ],
+          "publisher": "Little, Brown & Company",
+          "release_date": "2022-10-31",
+          "runtime_min": 553,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09XVJ972Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "triple-cross"
+        },
         "wayne-carr-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3544,63 +3576,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0B5FBT1V6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Triple Cross"
-    },
-    "triple-cross-alex-cross-28": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "triple-cross-alex-cross-28",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "inger-tudor-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09XVJ972Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nbeYE142L.jpg",
-          "id": "inger-tudor-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "inger-tudor",
-            "kiff-vandenheuvel",
-            "mela-lee",
-            "wayne-carr"
-          ],
-          "publisher": "Little, Brown & Company",
-          "release_date": "2022-10-31",
-          "runtime_min": 553,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09XVJ972Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "triple-cross-alex-cross-28"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09XVJ972Q",
           "type": "libex-import"
         }
       ],
-      "title": "Triple Cross (Alex Cross #28)"
+      "title": "Triple Cross"
     },
     "triple-cross-how-bin-ladens-master-spy-penetrated-the-cia-the-green-berets-and-the-fbi": {
       "added_at": "2026-07-29",

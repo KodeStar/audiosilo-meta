@@ -1107,12 +1107,45 @@
             }
           ],
           "work": "lead-kylie-scott"
+        },
+        "andi-arndt-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DSQPTH8K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RfbRH8xFL.jpg",
+          "id": "andi-arndt-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andi-arndt"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2025-01-10",
+          "runtime_min": 565,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DSQPTH8K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lead-kylie-scott"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00LSYZGLU",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DSQPTH8K",
           "type": "libex-import"
         }
       ],
@@ -3428,56 +3461,6 @@
         }
       ],
       "title": "Lead"
-    },
-    "lead-stage-dive-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kylie-scott"
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "lead-stage-dive-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andi-arndt-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DSQPTH8K",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91RfbRH8xFL.jpg",
-          "id": "andi-arndt-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andi-arndt"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2025-01-10",
-          "runtime_min": 565,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DSQPTH8K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lead-stage-dive-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DSQPTH8K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lead: Stage Dive 3"
     },
     "lead-the-field": {
       "added_at": "2026-07-29",
@@ -10769,31 +10752,7 @@
             }
           ],
           "work": "leadership-strategy-and-tactics"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1250259932",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Leadership Strategy and Tactics"
-    },
-    "leadership-strategy-and-tactics-field-manual-expanded-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jocko-willink"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "leadership-strategy-and-tactics-field-manual-expanded-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jocko-willink-2023": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11312,17 +11271,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "leadership-strategy-and-tactics-field-manual-expanded-edition"
+          "work": "leadership-strategy-and-tactics"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1250259932",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0C74XX6CW",
           "type": "libex-import"
         }
       ],
-      "title": "Leadership Strategy and Tactics (Field Manual Expanded Edition)"
+      "title": "Leadership Strategy and Tactics"
     },
     "leadership-success": {
       "added_at": "2026-07-29",

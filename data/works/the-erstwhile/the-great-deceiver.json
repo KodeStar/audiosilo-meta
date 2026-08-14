@@ -9158,6 +9158,7 @@
         "lavie-tidhar"
       ],
       "genres": [
+        "action-adventure",
         "alternate-history",
         "fantasy",
         "historical-fiction",
@@ -9238,87 +9239,7 @@
             }
           ],
           "work": "the-great-game-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0B4F9BMKY",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0B4F9BMKY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Great Game (Dramatized Adaptation)"
-    },
-    "the-great-game-in-cuba": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joan-mellen"
-      ],
-      "genres": [
-        "espionage",
-        "history",
-        "politics"
-      ],
-      "id": "the-great-game-in-cuba",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "katina-kalin-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01EKJZFCO",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NWaBjQ76L.jpg",
-          "id": "katina-kalin-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "katina-kalin"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2016-04-21",
-          "runtime_min": 724,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01EKJZFCO",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-great-game-in-cuba"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01EKJZFCO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Great Game in Cuba"
-    },
-    "the-great-game-lavie-tidhar": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lavie-tidhar"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "the-great-game-lavie-tidhar",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jonathan-keeble-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9612,17 +9533,79 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-great-game-lavie-tidhar"
+          "work": "the-great-game-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0B4F9BMKY",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0B4F9BMKY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0085LQCYE",
           "type": "libex-import"
         }
       ],
-      "title": "The Great Game"
+      "title": "The Great Game (Dramatized Adaptation)"
+    },
+    "the-great-game-in-cuba": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "joan-mellen"
+      ],
+      "genres": [
+        "espionage",
+        "history",
+        "politics"
+      ],
+      "id": "the-great-game-in-cuba",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "katina-kalin-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01EKJZFCO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NWaBjQ76L.jpg",
+          "id": "katina-kalin-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katina-kalin"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-04-21",
+          "runtime_min": 724,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01EKJZFCO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-great-game-in-cuba"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01EKJZFCO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Great Game in Cuba"
     },
     "the-great-game-of-business-expanded-and-updated": {
       "added_at": "2026-07-29",

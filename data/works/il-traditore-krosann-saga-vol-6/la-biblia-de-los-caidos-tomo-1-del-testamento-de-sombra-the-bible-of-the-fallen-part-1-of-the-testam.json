@@ -2720,6 +2720,10 @@
             {
               "asin": "B07YXQW114",
               "region": "es"
+            },
+            {
+              "asin": "841780532X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Trnkz7GSL.jpg",
@@ -2737,6 +2741,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07YXQW114",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "841780532X",
+              "type": "libex-import"
             }
           ],
           "work": "la-boda"
@@ -2746,6 +2755,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07YXQW114",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "841780532X",
           "type": "libex-import"
         }
       ],
@@ -2866,63 +2880,6 @@
         }
       ],
       "title": "La boda de la empleada"
-    },
-    "la-boda-the-wedding": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "nicholas-sparks",
-        "miguel-martinez-lage"
-      ],
-      "credits": [
-        {
-          "person": "miguel-martinez-lage",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "la-boda-the-wedding",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "leonardo-garcia-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "841780532X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Trnkz7GSL.jpg",
-          "id": "leonardo-garcia-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "leonardo-garcia"
-          ],
-          "publisher": "Roca Editorial",
-          "release_date": "2019-09-13",
-          "runtime_min": 521,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "841780532X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-boda-the-wedding"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "841780532X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La boda [The Wedding]"
     },
     "la-boite-de-pandore": {
       "added_at": "2026-08-02",
@@ -11849,6 +11806,7 @@
         "j-s-morin"
       ],
       "genres": [
+        "fantasy",
         "science-fiction"
       ],
       "id": "la-capital-de-la-aventura-adventure-capital",
@@ -12134,30 +12092,7 @@
             }
           ],
           "work": "la-capital-de-la-aventura-adventure-capital"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08QZXXN7N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Capital de la Aventura [Adventure Capital]"
-    },
-    "la-capital-de-la-aventura-narracion-en-castellano-adventure-capital-narration-in-spanish": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "la-capital-de-la-aventura-narracion-en-castellano-adventure-capital-narration-in-spanish",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pau-ferrer-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12436,17 +12371,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-capital-de-la-aventura-narracion-en-castellano-adventure-capital-narration-in-spanish"
+          "work": "la-capital-de-la-aventura-adventure-capital"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08QZXXN7N",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09GPWD46W",
           "type": "libex-import"
         }
       ],
-      "title": "La Capital de la Aventura (Narración en Castellano) [Adventure Capital (Narration in Spanish)]"
+      "title": "La Capital de la Aventura [Adventure Capital]"
     },
     "la-capitana": {
       "added_at": "2026-07-29",
@@ -15794,53 +15734,7 @@
             {
               "asin": "B0DKKQ9RJ9",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Z+RGxZb9L.jpg",
-          "id": "alma-delia-murillo-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alma-delia-murillo"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2024-12-16",
-          "runtime_min": 132,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DKKQ9RJ9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-casa-blanca"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DKKQ9RJ9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La casa blanca"
-    },
-    "la-casa-blanca-the-white-house": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriela-wiener"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history"
-      ],
-      "id": "la-casa-blanca-the-white-house",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alma-delia-murillo-2024": {
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0DKK69WGR",
               "region": "us"
@@ -15859,21 +15753,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0DKKQ9RJ9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0DKK69WGR",
               "type": "libex-import"
             }
           ],
-          "work": "la-casa-blanca-the-white-house"
+          "work": "la-casa-blanca"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DKKQ9RJ9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DKK69WGR",
           "type": "libex-import"
         }
       ],
-      "title": "La casa blanca [The White House]"
+      "title": "La casa blanca"
     },
     "la-casa-de-bernarda-alba": {
       "added_at": "2026-07-29",

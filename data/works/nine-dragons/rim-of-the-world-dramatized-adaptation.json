@@ -1490,7 +1490,11 @@
         "miguel-de-cervantes"
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "classics",
+        "parenting-relationships",
+        "self-help",
+        "young-adult"
       ],
       "id": "rinconete-y-cortadillo",
       "language": "es",
@@ -1519,6 +1523,43 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B09V1HCB67",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rinconete-y-cortadillo"
+        },
+        "santiago-munevar-2005": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UZL12O",
+              "region": "us"
+            },
+            {
+              "asin": "B07YXY5HHY",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ily9KEdQL.jpg",
+          "id": "santiago-munevar-2005",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "santiago-munevar"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2005-09-12",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UZL12O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YXY5HHY",
               "type": "libex-import"
             }
           ],
@@ -1567,72 +1608,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09V1HCB67",
           "type": "libex-import"
-        }
-      ],
-      "title": "Rinconete y Cortadillo"
-    },
-    "rinconete-y-cortadillo-texto-completo": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "miguel-de-cervantes"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "parenting-relationships",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "rinconete-y-cortadillo-texto-completo",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "santiago-munevar-2005": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UZL12O",
-              "region": "us"
-            },
-            {
-              "asin": "B07YXY5HHY",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Ily9KEdQL.jpg",
-          "id": "santiago-munevar-2005",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "santiago-munevar"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2005-09-12",
-          "runtime_min": 78,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UZL12O",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXY5HHY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rinconete-y-cortadillo-texto-completo"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZL12O",
           "type": "libex-import"
         }
       ],
-      "title": "Rinconete y Cortadillo (Texto Completo)"
+      "title": "Rinconete y Cortadillo"
     },
     "ring": {
       "added_at": "2026-08-02",

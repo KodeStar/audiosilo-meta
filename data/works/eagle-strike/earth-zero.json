@@ -2733,6 +2733,7 @@
         "scott-sigler"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
         "horror",
         "science-fiction",
@@ -2742,6 +2743,161 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-forstrom-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09MX7KB93",
+              "region": "us"
+            },
+            {
+              "asin": "1648800912",
+              "region": "us"
+            },
+            {
+              "asin": "1648800939",
+              "region": "us"
+            },
+            {
+              "asin": "1648800955",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4497774,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4041433,
+              "start_ms": 4497774,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3815967,
+              "start_ms": 8539207,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4064397,
+              "start_ms": 12355174,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3649828,
+              "start_ms": 16419571,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3952686,
+              "start_ms": 20069399,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3689929,
+              "start_ms": 24022085,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3847058,
+              "start_ms": 27712014,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3695432,
+              "start_ms": 31559072,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3979319,
+              "start_ms": 35254504,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3634689,
+              "start_ms": 39233823,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3818800,
+              "start_ms": 42868512,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3407621,
+              "start_ms": 46687312,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3708296,
+              "start_ms": 50094933,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3312488,
+              "start_ms": 53803229,
+              "title": "Chapter 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jcaPqI06L.jpg",
+          "id": "amanda-forstrom-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-forstrom",
+            "brad-smith",
+            "caroline-wolfson",
+            "chris-stinson",
+            "colleen-delany",
+            "danny-gavigan",
+            "elizabeth-jernigan",
+            "full-cast",
+            "jacob-yeh",
+            "jonathan-feuer",
+            "ken-jackson",
+            "matthew-schleigh",
+            "michael-john-casey",
+            "nanette-savard",
+            "nick-depinto",
+            "richard-rohan",
+            "terence-aselford",
+            "nora-achrati",
+            "bradley-smith"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020-10-30",
+          "runtime_min": 951,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MX7KB93",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800912",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800939",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800955",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09MX7KB93",
+              "type": "libex-import"
+            }
+          ],
+          "work": "earthcore"
+        },
         "ray-porter-2017": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -2998,182 +3154,7 @@
           "imported_at": "2026-07-30",
           "ref": "B072LVMNZ3",
           "type": "libex-import"
-        }
-      ],
-      "title": "Earthcore"
-    },
-    "earthcore-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "scott-sigler"
-      ],
-      "genres": [
-        "action-adventure",
-        "horror",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "earthcore-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-forstrom-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09MX7KB93",
-              "region": "us"
-            },
-            {
-              "asin": "1648800912",
-              "region": "us"
-            },
-            {
-              "asin": "1648800939",
-              "region": "us"
-            },
-            {
-              "asin": "1648800955",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4497774,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4041433,
-              "start_ms": 4497774,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3815967,
-              "start_ms": 8539207,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4064397,
-              "start_ms": 12355174,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3649828,
-              "start_ms": 16419571,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3952686,
-              "start_ms": 20069399,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3689929,
-              "start_ms": 24022085,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3847058,
-              "start_ms": 27712014,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3695432,
-              "start_ms": 31559072,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3979319,
-              "start_ms": 35254504,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3634689,
-              "start_ms": 39233823,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3818800,
-              "start_ms": 42868512,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 3407621,
-              "start_ms": 46687312,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 3708296,
-              "start_ms": 50094933,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 3312488,
-              "start_ms": 53803229,
-              "title": "Chapter 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81jcaPqI06L.jpg",
-          "id": "amanda-forstrom-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-forstrom",
-            "brad-smith",
-            "caroline-wolfson",
-            "chris-stinson",
-            "colleen-delany",
-            "danny-gavigan",
-            "elizabeth-jernigan",
-            "full-cast",
-            "jacob-yeh",
-            "jonathan-feuer",
-            "ken-jackson",
-            "matthew-schleigh",
-            "michael-john-casey",
-            "nanette-savard",
-            "nick-depinto",
-            "richard-rohan",
-            "terence-aselford",
-            "nora-achrati",
-            "bradley-smith"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020-10-30",
-          "runtime_min": 951,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09MX7KB93",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648800912",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648800939",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648800955",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09MX7KB93",
-              "type": "libex-import"
-            }
-          ],
-          "work": "earthcore-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09MX7KB93",
@@ -3200,7 +3181,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Earthcore (Dramatized Adaptation)"
+      "title": "Earthcore"
     },
     "earthdom": {
       "added_at": "2026-08-01",

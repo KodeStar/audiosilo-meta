@@ -7140,7 +7140,7 @@
       ],
       "title": "Knight of Shadows"
     },
-    "knight-of-shadows-chronicles-of-amber": {
+    "knight-of-shadows-roger-zelazny": {
       "added_at": "2026-08-02",
       "authors": [
         "roger-zelazny"
@@ -7148,9 +7148,11 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "science-fiction",
+        "sword-sorcery"
       ],
-      "id": "knight-of-shadows-chronicles-of-amber",
+      "id": "knight-of-shadows-roger-zelazny",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7180,33 +7182,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "knight-of-shadows-chronicles-of-amber"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GQDNQZHZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Knight of Shadows: Chronicles of Amber"
-    },
-    "knight-of-shadows-roger-zelazny": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roger-zelazny"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "sword-sorcery"
-      ],
-      "id": "knight-of-shadows-roger-zelazny",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "knight-of-shadows-roger-zelazny"
+        },
         "wil-wheaton-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7312,6 +7289,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B008OJHMI2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GQDNQZHZ",
           "type": "libex-import"
         }
       ],

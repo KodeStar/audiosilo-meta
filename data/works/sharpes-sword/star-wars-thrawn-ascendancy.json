@@ -5897,6 +5897,7 @@
       ],
       "genres": [
         "action-adventure",
+        "military-science-fiction",
         "science-fiction",
         "space-opera"
       ],
@@ -5910,6 +5911,10 @@
           "asin": [
             {
               "asin": "B0DJ1NP34L",
+              "region": "us"
+            },
+            {
+              "asin": "B0DJHDGC6V",
               "region": "us"
             }
           ],
@@ -6210,6 +6215,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DJ1NP34L",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJHDGC6V",
+              "type": "libex-import"
             }
           ],
           "work": "star-wars-trials-of-the-jedi-high-republic"
@@ -6220,344 +6230,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DJ1NP34L",
           "type": "libex-import"
-        }
-      ],
-      "title": "Star Wars: Trials of the Jedi (High Republic)"
-    },
-    "star-wars-trials-of-the-jedi-the-high-republic": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charles-soule"
-      ],
-      "genres": [
-        "action-adventure",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "star-wars-trials-of-the-jedi-the-high-republic",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marc-thompson-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DJHDGC6V",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 47531,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 84729,
-              "start_ms": 47531,
-              "title": "The final confrontation between the Jedi and the Nihil looms."
-            },
-            {
-              "length_ms": 302114,
-              "start_ms": 132260,
-              "title": "Hello, searcher."
-            },
-            {
-              "length_ms": 15275,
-              "start_ms": 434374,
-              "title": "Part One: The Air Stills. The Vortex Looms. The People Look Up in Terror."
-            },
-            {
-              "length_ms": 1145304,
-              "start_ms": 449649,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 3425152,
-              "start_ms": 1594953,
-              "title": "Chapter One: The Jedi Temple"
-            },
-            {
-              "length_ms": 3088857,
-              "start_ms": 5020105,
-              "title": "Chapter Two: The Galactic Senate"
-            },
-            {
-              "length_ms": 2737400,
-              "start_ms": 8108962,
-              "title": "Chapter Three: The Nihil Occlusion Zone"
-            },
-            {
-              "length_ms": 1699793,
-              "start_ms": 10846362,
-              "title": "Chapter Four: The Jedi Temple"
-            },
-            {
-              "length_ms": 2350370,
-              "start_ms": 12546155,
-              "title": "Chapter Five: Eriadu City"
-            },
-            {
-              "length_ms": 1779600,
-              "start_ms": 14896525,
-              "title": "Chapter Six: The Jedi Temple"
-            },
-            {
-              "length_ms": 1886365,
-              "start_ms": 16676125,
-              "title": "Chapter Seven: The Gaze Electric"
-            },
-            {
-              "length_ms": 3408364,
-              "start_ms": 18562490,
-              "title": "Chapter Eight: The Ataraxia"
-            },
-            {
-              "length_ms": 1904570,
-              "start_ms": 21970854,
-              "title": "Chapter Nine: The Battle of Eriadu"
-            },
-            {
-              "length_ms": 1998936,
-              "start_ms": 23875424,
-              "title": "Chapter Ten: The Ataraxia"
-            },
-            {
-              "length_ms": 1417903,
-              "start_ms": 25874360,
-              "title": "Chapter Eleven: The Battle of Eriadu"
-            },
-            {
-              "length_ms": 1170842,
-              "start_ms": 27292263,
-              "title": "Chapter Twelve: The Auberge"
-            },
-            {
-              "length_ms": 2013750,
-              "start_ms": 28463105,
-              "title": "Chapter Thirteen: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 15634,
-              "start_ms": 30476855,
-              "title": "Part Two: The Skies Open. The Bright Day Becomes the Thunder Night. The Deluge."
-            },
-            {
-              "length_ms": 949340,
-              "start_ms": 30492489,
-              "title": "Interlude: Estarvera"
-            },
-            {
-              "length_ms": 864084,
-              "start_ms": 31441829,
-              "title": "Chapter Fourteen: The Republic, Just Outside the Stormwall"
-            },
-            {
-              "length_ms": 1347105,
-              "start_ms": 32305913,
-              "title": "Chapter Fifteen: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1401115,
-              "start_ms": 33653018,
-              "title": "Chapter Sixteen: The Battle of Eriadu"
-            },
-            {
-              "length_ms": 851777,
-              "start_ms": 35054133,
-              "title": "Chapter Seventeen: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 687333,
-              "start_ms": 35905910,
-              "title": "Chapter Eighteen: Everywhere"
-            },
-            {
-              "length_ms": 1365611,
-              "start_ms": 36593243,
-              "title": "Chapter Nineteen: The Battle of Eriadu"
-            },
-            {
-              "length_ms": 1107498,
-              "start_ms": 37958854,
-              "title": "Chapter Twenty: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1410960,
-              "start_ms": 39066352,
-              "title": "Chapter Twenty-one: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1233792,
-              "start_ms": 40477312,
-              "title": "Chapter Twenty-two: The Auberge"
-            },
-            {
-              "length_ms": 1395078,
-              "start_ms": 41711104,
-              "title": "Chapter Twenty-three: The Third Horizon"
-            },
-            {
-              "length_ms": 1299992,
-              "start_ms": 43106182,
-              "title": "Chapter Twenty-four: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1042808,
-              "start_ms": 44406174,
-              "title": "Chapter Twenty-five: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 10254,
-              "start_ms": 45448982,
-              "title": "Part Three: The Razor Winds Near. Nothing Can Hold."
-            },
-            {
-              "length_ms": 1086145,
-              "start_ms": 45459236,
-              "title": "Interlude: Estarvera"
-            },
-            {
-              "length_ms": 742109,
-              "start_ms": 46545381,
-              "title": "Chapter Twenty-six: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1434110,
-              "start_ms": 47287490,
-              "title": "Chapter Twenty-seven: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 678719,
-              "start_ms": 48721600,
-              "title": "Chapter Twenty-eight: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1055695,
-              "start_ms": 49400319,
-              "title": "Chapter Twenty-nine: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 552913,
-              "start_ms": 50456014,
-              "title": "Chapter Thirty: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 2304371,
-              "start_ms": 51008927,
-              "title": "Chapter Thirty-one: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 997088,
-              "start_ms": 53313298,
-              "title": "Chapter Thirty-two: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 6209,
-              "start_ms": 54310386,
-              "title": "Part Four: The Torment of Loss."
-            },
-            {
-              "length_ms": 709662,
-              "start_ms": 54316595,
-              "title": "Interlude: Estarvera"
-            },
-            {
-              "length_ms": 1159511,
-              "start_ms": 55026257,
-              "title": "Chapter Thirty-three: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1454126,
-              "start_ms": 56185768,
-              "title": "Chapter Thirty-four: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 496907,
-              "start_ms": 57639894,
-              "title": "Chapter Thirty-five: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 1694151,
-              "start_ms": 58136801,
-              "title": "Chapter Thirty-six: The Nameless Homeworld"
-            },
-            {
-              "length_ms": 5603,
-              "start_ms": 59830952,
-              "title": "Part Five: The Quiet Dawn."
-            },
-            {
-              "length_ms": 285552,
-              "start_ms": 59836555,
-              "title": "Interlude: Estarvera"
-            },
-            {
-              "length_ms": 156711,
-              "start_ms": 60122107,
-              "title": "Chapter Thirty-seven: The Jedi Temple"
-            },
-            {
-              "length_ms": 1306308,
-              "start_ms": 60278818,
-              "title": "Chapter Thirty-eight: Coruscant: Weeks Later"
-            },
-            {
-              "length_ms": 1079495,
-              "start_ms": 61585126,
-              "title": "Chapter Thirty-nine: Monument Plaza"
-            },
-            {
-              "length_ms": 1368444,
-              "start_ms": 62664621,
-              "title": "Chapter Forty: Everywhere"
-            },
-            {
-              "length_ms": 222354,
-              "start_ms": 64033065,
-              "title": "Chapter Forty-one: Within the Veil"
-            },
-            {
-              "length_ms": 299607,
-              "start_ms": 64255419,
-              "title": "Epilogue: Nowhere"
-            },
-            {
-              "length_ms": 99334,
-              "start_ms": 64555026,
-              "title": "Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tVVaib7RL.jpg",
-          "id": "marc-thompson-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marc-thompson"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2025-06-17",
-          "runtime_min": 1077,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DJHDGC6V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "star-wars-trials-of-the-jedi-the-high-republic"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DJHDGC6V",
           "type": "libex-import"
         }
       ],
-      "title": "Star Wars: Trials of the Jedi (The High Republic)"
+      "title": "Star Wars: Trials of the Jedi (High Republic)"
     },
     "star-wars-trilogia-di-darth-bane-la-dinastia-del-male": {
       "added_at": "2026-08-02",

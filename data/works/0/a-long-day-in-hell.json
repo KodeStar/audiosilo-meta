@@ -6234,6 +6234,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "stephen-dexter-2019": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "1978676425",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RxhE51cSL.jpg",
+          "id": "stephen-dexter-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephen-dexter"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-05-14",
+          "runtime_min": 241,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "1978676425",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-lost-lady"
+        },
         "will-damron-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6360,60 +6388,14 @@
           "imported_at": "2026-07-29",
           "ref": "1982673303",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Lost Lady"
-    },
-    "a-lost-lady-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "willa-cather"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "a-lost-lady-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stephen-dexter-2019": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "1978676425",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81RxhE51cSL.jpg",
-          "id": "stephen-dexter-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stephen-dexter"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-05-14",
-          "runtime_min": 241,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "1978676425",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-lost-lady-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "1978676425",
           "type": "libex-import"
         }
       ],
-      "title": "A Lost Lady (AmazonClassics Edition)"
+      "title": "A Lost Lady"
     },
     "a-lost-paige": {
       "added_at": "2026-08-02",

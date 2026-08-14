@@ -1308,20 +1308,81 @@
       ],
       "title": "Titan's Bane"
     },
-    "titans-bloodshed": {
-      "added_at": "2026-08-02",
+    "titans-bloodshed-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-anderle",
         "david-beers"
       ],
       "genres": [
+        "military-science-fiction",
         "science-fiction",
         "space-opera"
       ],
-      "id": "titans-bloodshed",
+      "id": "titans-bloodshed-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BNJXDSPR",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4348958,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4259677,
+              "start_ms": 4348958,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4261233,
+              "start_ms": 8608635,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4034861,
+              "start_ms": 12869868,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4602426,
+              "start_ms": 16904729,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818lw9AzycL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BNJXDSPR",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BNJXDSPR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titans-bloodshed-dramatized-adaptation"
+        },
         "john-skelley-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1475,90 +1536,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "titans-bloodshed"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09KP212RJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Titan’s Bloodshed"
-    },
-    "titans-bloodshed-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "david-beers"
-      ],
-      "genres": [
-        "military-science-fiction",
-        "science-fiction"
-      ],
-      "id": "titans-bloodshed-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BNJXDSPR",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4348958,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4259677,
-              "start_ms": 4348958,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4261233,
-              "start_ms": 8608635,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4034861,
-              "start_ms": 12869868,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4602426,
-              "start_ms": 16904729,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818lw9AzycL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 358,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BNJXDSPR",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BNJXDSPR",
-              "type": "libex-import"
-            }
-          ],
           "work": "titans-bloodshed-dramatized-adaptation"
         }
       },
@@ -1571,6 +1548,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BNJXDSPR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09KP212RJ",
           "type": "libex-import"
         }
       ],
@@ -2182,20 +2164,91 @@
       ],
       "title": "Titan's Fury"
     },
-    "titans-judgement": {
-      "added_at": "2026-08-02",
+    "titans-judgement-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-anderle",
         "david-beers"
       ],
       "genres": [
         "military-science-fiction",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
-      "id": "titans-judgement",
+      "id": "titans-judgement-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BTDW373P",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3843436,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4196635,
+              "start_ms": 3843436,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4451729,
+              "start_ms": 8040071,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4288818,
+              "start_ms": 12491800,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4261697,
+              "start_ms": 16780618,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4222177,
+              "start_ms": 21042315,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3712916,
+              "start_ms": 25264492,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+f4HLAHrL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 483,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BTDW373P",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BTDW373P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titans-judgement-dramatized-adaptation"
+        },
         "john-skelley-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2399,101 +2452,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "titans-judgement"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09K4RX1YR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Titan’s Judgement"
-    },
-    "titans-judgement-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "david-beers"
-      ],
-      "genres": [
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "titans-judgement-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BTDW373P",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3843436,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4196635,
-              "start_ms": 3843436,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4451729,
-              "start_ms": 8040071,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4288818,
-              "start_ms": 12491800,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4261697,
-              "start_ms": 16780618,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4222177,
-              "start_ms": 21042315,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3712916,
-              "start_ms": 25264492,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+f4HLAHrL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 483,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BTDW373P",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BTDW373P",
-              "type": "libex-import"
-            }
-          ],
           "work": "titans-judgement-dramatized-adaptation"
         }
       },
@@ -2506,6 +2464,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BTDW373P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09K4RX1YR",
           "type": "libex-import"
         }
       ],
@@ -4909,8 +4872,8 @@
       ],
       "title": "Titans of War"
     },
-    "titans-return": {
-      "added_at": "2026-08-02",
+    "titans-return-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-anderle",
         "david-beers"
@@ -4923,10 +4886,75 @@
         "science-fiction",
         "space-opera"
       ],
-      "id": "titans-return",
+      "id": "titans-return-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BFT4T6FY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3130769,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2492615,
+              "start_ms": 3130769,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2314356,
+              "start_ms": 5623384,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3768134,
+              "start_ms": 7937740,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4525336,
+              "start_ms": 11705874,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4559051,
+              "start_ms": 16231210,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vK5nFiEpL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 346,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BFT4T6FY",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BFT4T6FY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "titans-return-dramatized-adaptation"
+        },
         "john-skelley-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5085,97 +5113,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "titans-return"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09CBJ7XQZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Titan's Return"
-    },
-    "titans-return-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "david-beers"
-      ],
-      "genres": [
-        "action-adventure",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "titans-return-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BFT4T6FY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3130769,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2492615,
-              "start_ms": 3130769,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2314356,
-              "start_ms": 5623384,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3768134,
-              "start_ms": 7937740,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4525336,
-              "start_ms": 11705874,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4559051,
-              "start_ms": 16231210,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vK5nFiEpL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 346,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BFT4T6FY",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BFT4T6FY",
-              "type": "libex-import"
-            }
-          ],
           "work": "titans-return-dramatized-adaptation"
         }
       },
@@ -5188,6 +5125,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BFT4T6FY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09CBJ7XQZ",
           "type": "libex-import"
         }
       ],
@@ -7195,6 +7137,56 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "164880909X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4012361,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3504169,
+              "start_ms": 4012361,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3931834,
+              "start_ms": 7516530,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916GRZJp2AL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164880909X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164880909X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "title-fight"
+        },
         "scott-sigler-2015": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -7291,77 +7283,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00ZQ6IE2O",
           "type": "libex-import"
-        }
-      ],
-      "title": "Title Fight"
-    },
-    "title-fight-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "scott-sigler",
-        "matt-wallace"
-      ],
-      "genres": [
-        "science-fiction",
-        "space-opera",
-        "sports"
-      ],
-      "id": "title-fight-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "164880909X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4012361,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3504169,
-              "start_ms": 4012361,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3931834,
-              "start_ms": 7516530,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916GRZJp2AL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164880909X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164880909X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "title-fight-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164880909X",
@@ -7373,7 +7295,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Title Fight [Dramatized Adaptation]"
+      "title": "Title Fight"
     },
     "title-wave": {
       "added_at": "2026-07-29",

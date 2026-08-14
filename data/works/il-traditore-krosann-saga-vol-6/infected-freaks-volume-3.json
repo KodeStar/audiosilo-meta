@@ -7087,20 +7087,82 @@
       ],
       "title": "Infernal Games"
     },
-    "infernal-games-a-templar-chronicles-urban-fantasy-thriller": {
-      "added_at": "2026-08-01",
+    "infernal-games-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "joseph-nassise"
       ],
       "genres": [
         "fantasy",
+        "paranormal",
+        "thriller-suspense",
         "urban-fantasy",
         "war-military-fiction"
       ],
-      "id": "infernal-games-a-templar-chronicles-urban-fantasy-thriller",
+      "id": "infernal-games-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648805337",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3370562,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2719219,
+              "start_ms": 3370562,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2483188,
+              "start_ms": 6089781,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2979654,
+              "start_ms": 8572969,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2788529,
+              "start_ms": 11552623,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915cdUS+GhL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 239,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648805337",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648805337",
+              "type": "libex-import"
+            }
+          ],
+          "work": "infernal-games-dramatized-adaptation"
+        },
         "jarret-lemaster-2020": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7309,89 +7371,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "infernal-games-a-templar-chronicles-urban-fantasy-thriller"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B086P6H5D4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Infernal Games: A Templar Chronicles Urban Fantasy Thriller"
-    },
-    "infernal-games-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "joseph-nassise"
-      ],
-      "genres": [
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "infernal-games-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648805337",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3370562,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2719219,
-              "start_ms": 3370562,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2483188,
-              "start_ms": 6089781,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2979654,
-              "start_ms": 8572969,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2788529,
-              "start_ms": 11552623,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915cdUS+GhL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 239,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648805337",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648805337",
-              "type": "libex-import"
-            }
-          ],
           "work": "infernal-games-dramatized-adaptation"
         }
       },
@@ -7404,6 +7383,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648805337",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B086P6H5D4",
           "type": "libex-import"
         }
       ],

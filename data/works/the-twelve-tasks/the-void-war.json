@@ -6746,6 +6746,7 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
         "fantasy"
       ],
       "id": "the-voyage-of-the-basilisk",
@@ -6912,12 +6913,142 @@
             }
           ],
           "work": "the-voyage-of-the-basilisk"
+        },
+        "kate-reading-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01E4422RG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2421563,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1473213,
+              "start_ms": 2421563,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1503724,
+              "start_ms": 3894776,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1452826,
+              "start_ms": 5398500,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2303187,
+              "start_ms": 6851326,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1544684,
+              "start_ms": 9154513,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1786683,
+              "start_ms": 10699197,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2553220,
+              "start_ms": 12485880,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1820630,
+              "start_ms": 15039100,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2206732,
+              "start_ms": 16859730,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3169106,
+              "start_ms": 19066462,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2585310,
+              "start_ms": 22235568,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2030074,
+              "start_ms": 24820878,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2321485,
+              "start_ms": 26850952,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3296491,
+              "start_ms": 29172437,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2209193,
+              "start_ms": 32468928,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2622369,
+              "start_ms": 34678121,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2397321,
+              "start_ms": 37300490,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1961064,
+              "start_ms": 39697811,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51jbf2hYR6L.jpg",
+          "id": "kate-reading-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-reading"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2016-05-05",
+          "runtime_min": 694,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01E4422RG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyage-of-the-basilisk"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B00VQPT1NA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01E4422RG",
           "type": "libex-import"
         }
       ],
@@ -8004,6 +8135,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy"
       ],
@@ -8011,6 +8143,53 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D1ZTKK6W",
+              "region": "us"
+            },
+            {
+              "asin": "B0D6SN5QHF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81H5KDZFpAL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 830,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D1ZTKK6W",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D1ZTKK6W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D6SN5QHF",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D6SN5QHF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyage-of-the-forgotten"
+        },
         "joe-jameson-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8932,96 +9111,29 @@
           "imported_at": "2026-08-02",
           "ref": "B0B4TCKGV5",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D1ZTKK6W",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D1ZTKK6W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D6SN5QHF",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D6SN5QHF",
+          "type": "libex-import"
         }
       ],
       "title": "The Voyage of the Forgotten"
-    },
-    "the-voyage-of-the-forgotten-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "nick-martell"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-voyage-of-the-forgotten-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D1ZTKK6W",
-              "region": "us"
-            },
-            {
-              "asin": "B0D6SN5QHF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81H5KDZFpAL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 830,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D1ZTKK6W",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D1ZTKK6W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D6SN5QHF",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D6SN5QHF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-voyage-of-the-forgotten-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D1ZTKK6W",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D1ZTKK6W",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D6SN5QHF",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D6SN5QHF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Voyage of the Forgotten [Dramatized Adaptation]"
     },
     "the-voyage-of-the-frog": {
       "added_at": "2026-07-29",

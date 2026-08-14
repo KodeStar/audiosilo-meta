@@ -1958,7 +1958,8 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "historical-fiction"
       ],
       "id": "the-memory-of-souls",
       "language": "en",
@@ -2608,32 +2609,7 @@
             }
           ],
           "work": "the-memory-of-souls"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1250755115",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Memory of Souls"
-    },
-    "the-memory-of-souls-a-chorus-of-dragons-novel-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jenn-lyons"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "the-memory-of-souls-a-chorus-of-dragons-novel-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "feodor-chin-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3268,17 +3244,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-memory-of-souls-a-chorus-of-dragons-novel-3"
+          "work": "the-memory-of-souls"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1250755115",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMVZWWGT",
           "type": "libex-import"
         }
       ],
-      "title": "The Memory of Souls: A Chorus of Dragons Novel 3"
+      "title": "The Memory of Souls"
     },
     "the-memory-of-things": {
       "added_at": "2026-07-29",
@@ -6404,6 +6385,10 @@
             {
               "asin": "B0BVKYF49X",
               "region": "us"
+            },
+            {
+              "asin": "B0CC37YLS3",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -6698,6 +6683,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0BVKYF49X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CC37YLS3",
+              "type": "libex-import"
             }
           ],
           "work": "the-memory-thieves"
@@ -6983,253 +6973,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0BVKYF49X",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Memory Thieves"
-    },
-    "the-memory-thieves-the-conjureverse-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dhonielle-clayton"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "the-memory-thieves-the-conjureverse-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joniece-abbott-pratt-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CC37YLS3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15417,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 259970,
-              "start_ms": 15417,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1733392,
-              "start_ms": 275387,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 964951,
-              "start_ms": 2008779,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1772077,
-              "start_ms": 2973730,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1658554,
-              "start_ms": 4745807,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1080679,
-              "start_ms": 6404361,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1432183,
-              "start_ms": 7485040,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 861947,
-              "start_ms": 8917223,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 939386,
-              "start_ms": 9779170,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2073727,
-              "start_ms": 10718556,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1304613,
-              "start_ms": 12792283,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1224620,
-              "start_ms": 14096896,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2108836,
-              "start_ms": 15321516,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 577410,
-              "start_ms": 17430352,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1035006,
-              "start_ms": 18007762,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1616921,
-              "start_ms": 19042768,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 862365,
-              "start_ms": 20659689,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 903511,
-              "start_ms": 21522054,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1170239,
-              "start_ms": 22425565,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 945237,
-              "start_ms": 23595804,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1994106,
-              "start_ms": 24541041,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1056438,
-              "start_ms": 26535147,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1635729,
-              "start_ms": 27591585,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1240108,
-              "start_ms": 29227314,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 833340,
-              "start_ms": 30467422,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1534862,
-              "start_ms": 31300762,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 391952,
-              "start_ms": 32835624,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 821382,
-              "start_ms": 33227576,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1298297,
-              "start_ms": 34048958,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 477100,
-              "start_ms": 35347255,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 860624,
-              "start_ms": 35824355,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 577805,
-              "start_ms": 36684979,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 820709,
-              "start_ms": 37262784,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 386658,
-              "start_ms": 38083493,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 1291006,
-              "start_ms": 38470151,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 474406,
-              "start_ms": 39761157,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 78970,
-              "start_ms": 40235563,
-              "title": "Chapter 38"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81aKIzjB-HL.jpg",
-          "id": "joniece-abbott-pratt-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joniece-abbott-pratt"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2023-10-04",
-          "runtime_min": 671,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CC37YLS3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-memory-thieves-the-conjureverse-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CC37YLS3",
           "type": "libex-import"
         }
       ],
-      "title": "The Memory Thieves (The Conjureverse, #2)"
+      "title": "The Memory Thieves"
     },
     "the-memory-tree": {
       "added_at": "2026-08-01",

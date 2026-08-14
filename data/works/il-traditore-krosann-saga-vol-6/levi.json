@@ -766,59 +766,6 @@
       ],
       "title": "Leviathan: A Matthew Corbett Novel, Book 10"
     },
-    "leviathan-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-hobbes"
-      ],
-      "genres": [
-        "history",
-        "philosophy",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "leviathan-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-mattacks-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1978676409",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81w16N8XYZL.jpg",
-          "id": "simon-mattacks-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-mattacks"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-06-25",
-          "runtime_min": 1272,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1978676409",
-              "type": "libex-import"
-            }
-          ],
-          "work": "leviathan-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1978676409",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Leviathan (AmazonClassics Edition)"
-    },
     "leviathan-an-asher-avandriell-novella-the-echoes-saga-book-10": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9063,7 +9010,8 @@
       "genres": [
         "history",
         "philosophy",
-        "politics"
+        "politics",
+        "social-sciences"
       ],
       "id": "leviathan-thomas-hobbes",
       "language": "en",
@@ -9152,12 +9100,45 @@
             }
           ],
           "work": "leviathan-thomas-hobbes"
+        },
+        "simon-mattacks-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1978676409",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81w16N8XYZL.jpg",
+          "id": "simon-mattacks-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-mattacks"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-06-25",
+          "runtime_min": 1272,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1978676409",
+              "type": "libex-import"
+            }
+          ],
+          "work": "leviathan-thomas-hobbes"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B005JEDI2Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1978676409",
           "type": "libex-import"
         }
       ],

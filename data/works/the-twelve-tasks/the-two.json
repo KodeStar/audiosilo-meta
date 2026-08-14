@@ -873,13 +873,62 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "military-science-fiction"
       ],
       "id": "the-two-faced-queen",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D1GVLSPD",
+              "region": "us"
+            },
+            {
+              "asin": "B0D4W8B3NG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eYuQn5MBL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 954,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D1GVLSPD",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D1GVLSPD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D4W8B3NG",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D4W8B3NG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-two-faced-queen"
+        },
         "joe-jameson-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1691,97 +1740,29 @@
           "imported_at": "2026-08-02",
           "ref": "1409184277",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D1GVLSPD",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D1GVLSPD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D4W8B3NG",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D4W8B3NG",
+          "type": "libex-import"
         }
       ],
       "title": "The Two-Faced Queen"
-    },
-    "the-two-faced-queen-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "nick-martell"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy",
-        "military-science-fiction"
-      ],
-      "id": "the-two-faced-queen-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D1GVLSPD",
-              "region": "us"
-            },
-            {
-              "asin": "B0D4W8B3NG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91eYuQn5MBL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 954,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D1GVLSPD",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D1GVLSPD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D4W8B3NG",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D4W8B3NG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-two-faced-queen-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D1GVLSPD",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D1GVLSPD",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D4W8B3NG",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D4W8B3NG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Two-Faced Queen [Dramatized Adaptation]"
     },
     "the-two-family-house": {
       "added_at": "2026-07-29",
@@ -7215,488 +7196,11 @@
       ],
       "genres": [
         "classics",
+        "epic-fantasy",
         "fantasy",
         "sword-sorcery"
       ],
       "id": "the-two-week-curse",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "todd-menesses-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07M7Q1XD8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12167,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 672310,
-              "start_ms": 12167,
-              "title": "Chapter 1: A Really Shitty Day"
-            },
-            {
-              "length_ms": 672960,
-              "start_ms": 684477,
-              "title": "Chapter 2: The Road Back"
-            },
-            {
-              "length_ms": 768394,
-              "start_ms": 1357437,
-              "title": "Chapter 3: Where the Devil Roams"
-            },
-            {
-              "length_ms": 581984,
-              "start_ms": 2125831,
-              "title": "Chapter 4: Two-Week Curse"
-            },
-            {
-              "length_ms": 797791,
-              "start_ms": 2707815,
-              "title": "Chapter 5: Wolf or Sheep"
-            },
-            {
-              "length_ms": 818874,
-              "start_ms": 3505606,
-              "title": "Chapter 6: Gun Nut"
-            },
-            {
-              "length_ms": 755159,
-              "start_ms": 4324480,
-              "title": "Chapter 7: Returning Home"
-            },
-            {
-              "length_ms": 476241,
-              "start_ms": 5079639,
-              "title": "Chapter 8: Division of Tasks"
-            },
-            {
-              "length_ms": 321735,
-              "start_ms": 5555880,
-              "title": "Chapter 9: The Last Day"
-            },
-            {
-              "length_ms": 551566,
-              "start_ms": 5877615,
-              "title": "Chapter 10: Ten Realms?"
-            },
-            {
-              "length_ms": 682109,
-              "start_ms": 6429181,
-              "title": "Chapter 11: Reaching Level One"
-            },
-            {
-              "length_ms": 750329,
-              "start_ms": 7111290,
-              "title": "Chapter 12: Experience"
-            },
-            {
-              "length_ms": 1231214,
-              "start_ms": 7861619,
-              "title": "Chapter 13: Helping from Afar"
-            },
-            {
-              "length_ms": 949463,
-              "start_ms": 9092833,
-              "title": "Chapter 14: Chonglu City"
-            },
-            {
-              "length_ms": 697620,
-              "start_ms": 10042296,
-              "title": "Chapter 15: Welcome to The Ten Realms"
-            },
-            {
-              "length_ms": 713920,
-              "start_ms": 10739916,
-              "title": "Chapter 16: Testing Information"
-            },
-            {
-              "length_ms": 1075919,
-              "start_ms": 11453836,
-              "title": "Chapter 17: Jobs?"
-            },
-            {
-              "length_ms": 681923,
-              "start_ms": 12529755,
-              "title": "Chapter 18: Healing Stall of the Chonglu Market"
-            },
-            {
-              "length_ms": 637898,
-              "start_ms": 13211678,
-              "title": "Chapter 19: Focused Heal"
-            },
-            {
-              "length_ms": 919928,
-              "start_ms": 13849576,
-              "title": "Chapter 20: Healing Harvest"
-            },
-            {
-              "length_ms": 1053860,
-              "start_ms": 14769504,
-              "title": "Chapter 21: Silver and Experience Gain"
-            },
-            {
-              "length_ms": 586164,
-              "start_ms": 15823364,
-              "title": "Chapter 22: Shifting Powers"
-            },
-            {
-              "length_ms": 760360,
-              "start_ms": 16409528,
-              "title": "Chapter 23: Black Blood Poison"
-            },
-            {
-              "length_ms": 802063,
-              "start_ms": 17169888,
-              "title": "Chapter 24: City Lord and His Worries"
-            },
-            {
-              "length_ms": 484786,
-              "start_ms": 17971951,
-              "title": "Chapter 25: A New Direction"
-            },
-            {
-              "length_ms": 705190,
-              "start_ms": 18456737,
-              "title": "Chapter 26: Path to Beast Mountains"
-            },
-            {
-              "length_ms": 1488724,
-              "start_ms": 19161927,
-              "title": "Chapter 27: Alchemist Tommins"
-            },
-            {
-              "length_ms": 696877,
-              "start_ms": 20650651,
-              "title": "Chapter 28: Midday Moss"
-            },
-            {
-              "length_ms": 774989,
-              "start_ms": 21347528,
-              "title": "Chapter 29: Snatching Yellow Creeper"
-            },
-            {
-              "length_ms": 659353,
-              "start_ms": 22122517,
-              "title": "Chapter 30: Harvesting Rewards"
-            },
-            {
-              "length_ms": 746660,
-              "start_ms": 22781870,
-              "title": "Chapter 31: Complications in Opening a Mana Gate"
-            },
-            {
-              "length_ms": 637294,
-              "start_ms": 23528530,
-              "title": "Chapter 32: Defined Roles"
-            },
-            {
-              "length_ms": 648440,
-              "start_ms": 24165824,
-              "title": "Chapter 33: Three-Headed Snake"
-            },
-            {
-              "length_ms": 672449,
-              "start_ms": 24814264,
-              "title": "Chapter 34: Cleaning Up Behind"
-            },
-            {
-              "length_ms": 688657,
-              "start_ms": 25486713,
-              "title": "Chapter 35: Give a Redneck Napalm"
-            },
-            {
-              "length_ms": 826444,
-              "start_ms": 26175370,
-              "title": "Chapter 36: Raining Experience and Treasures"
-            },
-            {
-              "length_ms": 722140,
-              "start_ms": 27001814,
-              "title": "Chapter 37: Using Mana to Punch?"
-            },
-            {
-              "length_ms": 860020,
-              "start_ms": 27723954,
-              "title": "Chapter 38: Run"
-            },
-            {
-              "length_ms": 910547,
-              "start_ms": 28583974,
-              "title": "Chapter 39: Entering the Beast Mountains Trial"
-            },
-            {
-              "length_ms": 965439,
-              "start_ms": 29494521,
-              "title": "Chapter 40: Man in Machine"
-            },
-            {
-              "length_ms": 791893,
-              "start_ms": 30459960,
-              "title": "Chapter 41: New Quest"
-            },
-            {
-              "length_ms": 653966,
-              "start_ms": 31251853,
-              "title": "Chapter 42: Prepare for War"
-            },
-            {
-              "length_ms": 588347,
-              "start_ms": 31905819,
-              "title": "Chapter 43: The Horde"
-            },
-            {
-              "length_ms": 1145208,
-              "start_ms": 32494166,
-              "title": "Chapter 44: Division of Tasks"
-            },
-            {
-              "length_ms": 1475395,
-              "start_ms": 33639374,
-              "title": "Chapter 45: Harvest"
-            },
-            {
-              "length_ms": 1101833,
-              "start_ms": 35114769,
-              "title": "Chapter 46: Phase One Complete"
-            },
-            {
-              "length_ms": 1745536,
-              "start_ms": 36216602,
-              "title": "Chapter 47: Path of the Smith"
-            },
-            {
-              "length_ms": 821800,
-              "start_ms": 37962138,
-              "title": "Chapter 48: Organizing Alva Village"
-            },
-            {
-              "length_ms": 952343,
-              "start_ms": 38783938,
-              "title": "Chapter 49: Imprinting"
-            },
-            {
-              "length_ms": 1393011,
-              "start_ms": 39736281,
-              "title": "Chapter 50: Village Meeting"
-            },
-            {
-              "length_ms": 610220,
-              "start_ms": 41129292,
-              "title": "Chapter 51: Breaking the Ninth, Challenging the Tenth"
-            },
-            {
-              "length_ms": 1443723,
-              "start_ms": 41739512,
-              "title": "Chapter 52: Mana Lord"
-            },
-            {
-              "length_ms": 709230,
-              "start_ms": 43183235,
-              "title": "Chapter 53: Build"
-            },
-            {
-              "length_ms": 965439,
-              "start_ms": 43892465,
-              "title": "Chapter 54: Blade Section"
-            },
-            {
-              "length_ms": 2193635,
-              "start_ms": 44857904,
-              "title": "Chapter 55: Rapid Growth"
-            },
-            {
-              "length_ms": 582681,
-              "start_ms": 47051539,
-              "title": "Chapter 56: Nothing to Do but Work"
-            },
-            {
-              "length_ms": 817156,
-              "start_ms": 47634220,
-              "title": "Chapter 57: Heavy Infantry Armor"
-            },
-            {
-              "length_ms": 607294,
-              "start_ms": 48451376,
-              "title": "Chapter 58: Oathbreaker"
-            },
-            {
-              "length_ms": 723115,
-              "start_ms": 49058670,
-              "title": "Chapter 59: Who Are You?"
-            },
-            {
-              "length_ms": 611334,
-              "start_ms": 49781785,
-              "title": "Chapter 60: First Wave"
-            },
-            {
-              "length_ms": 760360,
-              "start_ms": 50393119,
-              "title": "Chapter 61: Welcoming the Horde"
-            },
-            {
-              "length_ms": 1033055,
-              "start_ms": 51153479,
-              "title": "Chapter 62: Continuous Wave"
-            },
-            {
-              "length_ms": 845717,
-              "start_ms": 52186534,
-              "title": "Chapter 63: Swords and Shields"
-            },
-            {
-              "length_ms": 849850,
-              "start_ms": 53032251,
-              "title": "Chapter 64: Falling Back?"
-            },
-            {
-              "length_ms": 880593,
-              "start_ms": 53882101,
-              "title": "Chapter 65: Aftermath"
-            },
-            {
-              "length_ms": 741831,
-              "start_ms": 54762694,
-              "title": "Chapter 66: Gains"
-            },
-            {
-              "length_ms": 965764,
-              "start_ms": 55504525,
-              "title": "Chapter 67: Teleport Scroll"
-            },
-            {
-              "length_ms": 1118876,
-              "start_ms": 56470289,
-              "title": "Chapter 68: Egbert"
-            },
-            {
-              "length_ms": 872280,
-              "start_ms": 57589165,
-              "title": "Chapter 69: A New Place, a New Problem"
-            },
-            {
-              "length_ms": 814184,
-              "start_ms": 58461445,
-              "title": "Chapter 70: Returning to the Beast Mountains"
-            },
-            {
-              "length_ms": 954247,
-              "start_ms": 59275629,
-              "title": "Chapter 71: Rapid Expansion"
-            },
-            {
-              "length_ms": 1042158,
-              "start_ms": 60229876,
-              "title": "Chapter 72: Parties"
-            },
-            {
-              "length_ms": 999201,
-              "start_ms": 61272034,
-              "title": "Chapter 73: Return to the Beast Mountains"
-            },
-            {
-              "length_ms": 1036910,
-              "start_ms": 62271235,
-              "title": "Chapter 74: Academy Staff"
-            },
-            {
-              "length_ms": 1030083,
-              "start_ms": 63308145,
-              "title": "Chapter 75: Scouts and Second Phase"
-            },
-            {
-              "length_ms": 764493,
-              "start_ms": 64338228,
-              "title": "Chapter 76: Healing Moon House’s Domination"
-            },
-            {
-              "length_ms": 774664,
-              "start_ms": 65102721,
-              "title": "Chapter 77: Fall of the Healing Moon House"
-            },
-            {
-              "length_ms": 610870,
-              "start_ms": 65877385,
-              "title": "Chapter 78: Disturbing the Peace"
-            },
-            {
-              "length_ms": 452789,
-              "start_ms": 66488255,
-              "title": "Chapter 79: Invited"
-            },
-            {
-              "length_ms": 902466,
-              "start_ms": 66941044,
-              "title": "Chapter 80: Poison in the Marrow"
-            },
-            {
-              "length_ms": 839726,
-              "start_ms": 67843510,
-              "title": "Chapter 81: Two Different Sides"
-            },
-            {
-              "length_ms": 862946,
-              "start_ms": 68683236,
-              "title": "Chapter 82: Four Coppers"
-            },
-            {
-              "length_ms": 1694267,
-              "start_ms": 69546182,
-              "title": "Chapter 83: Change of Fate"
-            },
-            {
-              "length_ms": 28839,
-              "start_ms": 71240449,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NdWJi-GbL.jpg",
-          "id": "todd-menesses-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "todd-menesses"
-          ],
-          "publisher": "Michael Chatfield Publications Inc.",
-          "release_date": "2019-01-11",
-          "runtime_min": 1187,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07M7Q1XD8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-two-week-curse"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07M7Q1XD8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Two Week Curse"
-    },
-    "the-two-week-curse-a-litrpg-fantasy-series": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "michael-chatfield"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-two-week-curse-a-litrpg-fantasy-series",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8162,17 +7666,477 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-two-week-curse-a-litrpg-fantasy-series"
+          "work": "the-two-week-curse"
+        },
+        "todd-menesses-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07M7Q1XD8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12167,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 672310,
+              "start_ms": 12167,
+              "title": "Chapter 1: A Really Shitty Day"
+            },
+            {
+              "length_ms": 672960,
+              "start_ms": 684477,
+              "title": "Chapter 2: The Road Back"
+            },
+            {
+              "length_ms": 768394,
+              "start_ms": 1357437,
+              "title": "Chapter 3: Where the Devil Roams"
+            },
+            {
+              "length_ms": 581984,
+              "start_ms": 2125831,
+              "title": "Chapter 4: Two-Week Curse"
+            },
+            {
+              "length_ms": 797791,
+              "start_ms": 2707815,
+              "title": "Chapter 5: Wolf or Sheep"
+            },
+            {
+              "length_ms": 818874,
+              "start_ms": 3505606,
+              "title": "Chapter 6: Gun Nut"
+            },
+            {
+              "length_ms": 755159,
+              "start_ms": 4324480,
+              "title": "Chapter 7: Returning Home"
+            },
+            {
+              "length_ms": 476241,
+              "start_ms": 5079639,
+              "title": "Chapter 8: Division of Tasks"
+            },
+            {
+              "length_ms": 321735,
+              "start_ms": 5555880,
+              "title": "Chapter 9: The Last Day"
+            },
+            {
+              "length_ms": 551566,
+              "start_ms": 5877615,
+              "title": "Chapter 10: Ten Realms?"
+            },
+            {
+              "length_ms": 682109,
+              "start_ms": 6429181,
+              "title": "Chapter 11: Reaching Level One"
+            },
+            {
+              "length_ms": 750329,
+              "start_ms": 7111290,
+              "title": "Chapter 12: Experience"
+            },
+            {
+              "length_ms": 1231214,
+              "start_ms": 7861619,
+              "title": "Chapter 13: Helping from Afar"
+            },
+            {
+              "length_ms": 949463,
+              "start_ms": 9092833,
+              "title": "Chapter 14: Chonglu City"
+            },
+            {
+              "length_ms": 697620,
+              "start_ms": 10042296,
+              "title": "Chapter 15: Welcome to The Ten Realms"
+            },
+            {
+              "length_ms": 713920,
+              "start_ms": 10739916,
+              "title": "Chapter 16: Testing Information"
+            },
+            {
+              "length_ms": 1075919,
+              "start_ms": 11453836,
+              "title": "Chapter 17: Jobs?"
+            },
+            {
+              "length_ms": 681923,
+              "start_ms": 12529755,
+              "title": "Chapter 18: Healing Stall of the Chonglu Market"
+            },
+            {
+              "length_ms": 637898,
+              "start_ms": 13211678,
+              "title": "Chapter 19: Focused Heal"
+            },
+            {
+              "length_ms": 919928,
+              "start_ms": 13849576,
+              "title": "Chapter 20: Healing Harvest"
+            },
+            {
+              "length_ms": 1053860,
+              "start_ms": 14769504,
+              "title": "Chapter 21: Silver and Experience Gain"
+            },
+            {
+              "length_ms": 586164,
+              "start_ms": 15823364,
+              "title": "Chapter 22: Shifting Powers"
+            },
+            {
+              "length_ms": 760360,
+              "start_ms": 16409528,
+              "title": "Chapter 23: Black Blood Poison"
+            },
+            {
+              "length_ms": 802063,
+              "start_ms": 17169888,
+              "title": "Chapter 24: City Lord and His Worries"
+            },
+            {
+              "length_ms": 484786,
+              "start_ms": 17971951,
+              "title": "Chapter 25: A New Direction"
+            },
+            {
+              "length_ms": 705190,
+              "start_ms": 18456737,
+              "title": "Chapter 26: Path to Beast Mountains"
+            },
+            {
+              "length_ms": 1488724,
+              "start_ms": 19161927,
+              "title": "Chapter 27: Alchemist Tommins"
+            },
+            {
+              "length_ms": 696877,
+              "start_ms": 20650651,
+              "title": "Chapter 28: Midday Moss"
+            },
+            {
+              "length_ms": 774989,
+              "start_ms": 21347528,
+              "title": "Chapter 29: Snatching Yellow Creeper"
+            },
+            {
+              "length_ms": 659353,
+              "start_ms": 22122517,
+              "title": "Chapter 30: Harvesting Rewards"
+            },
+            {
+              "length_ms": 746660,
+              "start_ms": 22781870,
+              "title": "Chapter 31: Complications in Opening a Mana Gate"
+            },
+            {
+              "length_ms": 637294,
+              "start_ms": 23528530,
+              "title": "Chapter 32: Defined Roles"
+            },
+            {
+              "length_ms": 648440,
+              "start_ms": 24165824,
+              "title": "Chapter 33: Three-Headed Snake"
+            },
+            {
+              "length_ms": 672449,
+              "start_ms": 24814264,
+              "title": "Chapter 34: Cleaning Up Behind"
+            },
+            {
+              "length_ms": 688657,
+              "start_ms": 25486713,
+              "title": "Chapter 35: Give a Redneck Napalm"
+            },
+            {
+              "length_ms": 826444,
+              "start_ms": 26175370,
+              "title": "Chapter 36: Raining Experience and Treasures"
+            },
+            {
+              "length_ms": 722140,
+              "start_ms": 27001814,
+              "title": "Chapter 37: Using Mana to Punch?"
+            },
+            {
+              "length_ms": 860020,
+              "start_ms": 27723954,
+              "title": "Chapter 38: Run"
+            },
+            {
+              "length_ms": 910547,
+              "start_ms": 28583974,
+              "title": "Chapter 39: Entering the Beast Mountains Trial"
+            },
+            {
+              "length_ms": 965439,
+              "start_ms": 29494521,
+              "title": "Chapter 40: Man in Machine"
+            },
+            {
+              "length_ms": 791893,
+              "start_ms": 30459960,
+              "title": "Chapter 41: New Quest"
+            },
+            {
+              "length_ms": 653966,
+              "start_ms": 31251853,
+              "title": "Chapter 42: Prepare for War"
+            },
+            {
+              "length_ms": 588347,
+              "start_ms": 31905819,
+              "title": "Chapter 43: The Horde"
+            },
+            {
+              "length_ms": 1145208,
+              "start_ms": 32494166,
+              "title": "Chapter 44: Division of Tasks"
+            },
+            {
+              "length_ms": 1475395,
+              "start_ms": 33639374,
+              "title": "Chapter 45: Harvest"
+            },
+            {
+              "length_ms": 1101833,
+              "start_ms": 35114769,
+              "title": "Chapter 46: Phase One Complete"
+            },
+            {
+              "length_ms": 1745536,
+              "start_ms": 36216602,
+              "title": "Chapter 47: Path of the Smith"
+            },
+            {
+              "length_ms": 821800,
+              "start_ms": 37962138,
+              "title": "Chapter 48: Organizing Alva Village"
+            },
+            {
+              "length_ms": 952343,
+              "start_ms": 38783938,
+              "title": "Chapter 49: Imprinting"
+            },
+            {
+              "length_ms": 1393011,
+              "start_ms": 39736281,
+              "title": "Chapter 50: Village Meeting"
+            },
+            {
+              "length_ms": 610220,
+              "start_ms": 41129292,
+              "title": "Chapter 51: Breaking the Ninth, Challenging the Tenth"
+            },
+            {
+              "length_ms": 1443723,
+              "start_ms": 41739512,
+              "title": "Chapter 52: Mana Lord"
+            },
+            {
+              "length_ms": 709230,
+              "start_ms": 43183235,
+              "title": "Chapter 53: Build"
+            },
+            {
+              "length_ms": 965439,
+              "start_ms": 43892465,
+              "title": "Chapter 54: Blade Section"
+            },
+            {
+              "length_ms": 2193635,
+              "start_ms": 44857904,
+              "title": "Chapter 55: Rapid Growth"
+            },
+            {
+              "length_ms": 582681,
+              "start_ms": 47051539,
+              "title": "Chapter 56: Nothing to Do but Work"
+            },
+            {
+              "length_ms": 817156,
+              "start_ms": 47634220,
+              "title": "Chapter 57: Heavy Infantry Armor"
+            },
+            {
+              "length_ms": 607294,
+              "start_ms": 48451376,
+              "title": "Chapter 58: Oathbreaker"
+            },
+            {
+              "length_ms": 723115,
+              "start_ms": 49058670,
+              "title": "Chapter 59: Who Are You?"
+            },
+            {
+              "length_ms": 611334,
+              "start_ms": 49781785,
+              "title": "Chapter 60: First Wave"
+            },
+            {
+              "length_ms": 760360,
+              "start_ms": 50393119,
+              "title": "Chapter 61: Welcoming the Horde"
+            },
+            {
+              "length_ms": 1033055,
+              "start_ms": 51153479,
+              "title": "Chapter 62: Continuous Wave"
+            },
+            {
+              "length_ms": 845717,
+              "start_ms": 52186534,
+              "title": "Chapter 63: Swords and Shields"
+            },
+            {
+              "length_ms": 849850,
+              "start_ms": 53032251,
+              "title": "Chapter 64: Falling Back?"
+            },
+            {
+              "length_ms": 880593,
+              "start_ms": 53882101,
+              "title": "Chapter 65: Aftermath"
+            },
+            {
+              "length_ms": 741831,
+              "start_ms": 54762694,
+              "title": "Chapter 66: Gains"
+            },
+            {
+              "length_ms": 965764,
+              "start_ms": 55504525,
+              "title": "Chapter 67: Teleport Scroll"
+            },
+            {
+              "length_ms": 1118876,
+              "start_ms": 56470289,
+              "title": "Chapter 68: Egbert"
+            },
+            {
+              "length_ms": 872280,
+              "start_ms": 57589165,
+              "title": "Chapter 69: A New Place, a New Problem"
+            },
+            {
+              "length_ms": 814184,
+              "start_ms": 58461445,
+              "title": "Chapter 70: Returning to the Beast Mountains"
+            },
+            {
+              "length_ms": 954247,
+              "start_ms": 59275629,
+              "title": "Chapter 71: Rapid Expansion"
+            },
+            {
+              "length_ms": 1042158,
+              "start_ms": 60229876,
+              "title": "Chapter 72: Parties"
+            },
+            {
+              "length_ms": 999201,
+              "start_ms": 61272034,
+              "title": "Chapter 73: Return to the Beast Mountains"
+            },
+            {
+              "length_ms": 1036910,
+              "start_ms": 62271235,
+              "title": "Chapter 74: Academy Staff"
+            },
+            {
+              "length_ms": 1030083,
+              "start_ms": 63308145,
+              "title": "Chapter 75: Scouts and Second Phase"
+            },
+            {
+              "length_ms": 764493,
+              "start_ms": 64338228,
+              "title": "Chapter 76: Healing Moon House’s Domination"
+            },
+            {
+              "length_ms": 774664,
+              "start_ms": 65102721,
+              "title": "Chapter 77: Fall of the Healing Moon House"
+            },
+            {
+              "length_ms": 610870,
+              "start_ms": 65877385,
+              "title": "Chapter 78: Disturbing the Peace"
+            },
+            {
+              "length_ms": 452789,
+              "start_ms": 66488255,
+              "title": "Chapter 79: Invited"
+            },
+            {
+              "length_ms": 902466,
+              "start_ms": 66941044,
+              "title": "Chapter 80: Poison in the Marrow"
+            },
+            {
+              "length_ms": 839726,
+              "start_ms": 67843510,
+              "title": "Chapter 81: Two Different Sides"
+            },
+            {
+              "length_ms": 862946,
+              "start_ms": 68683236,
+              "title": "Chapter 82: Four Coppers"
+            },
+            {
+              "length_ms": 1694267,
+              "start_ms": 69546182,
+              "title": "Chapter 83: Change of Fate"
+            },
+            {
+              "length_ms": 28839,
+              "start_ms": 71240449,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NdWJi-GbL.jpg",
+          "id": "todd-menesses-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "todd-menesses"
+          ],
+          "publisher": "Michael Chatfield Publications Inc.",
+          "release_date": "2019-01-11",
+          "runtime_min": 1187,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07M7Q1XD8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-two-week-curse"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07M7Q1XD8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09QH5X4LR",
           "type": "libex-import"
         }
       ],
-      "title": "The Two Week Curse: A LitRPG Fantasy Series"
+      "title": "The Two Week Curse"
     },
     "the-two-will-carver": {
       "added_at": "2026-07-29",
@@ -15218,6 +15182,10 @@
             {
               "asin": "B07LGFWKZ7",
               "region": "us"
+            },
+            {
+              "asin": "0241382246",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -15477,6 +15445,11 @@
               "imported_at": "2026-07-30",
               "ref": "B07LGFWKZ7",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241382246",
+              "type": "libex-import"
             }
           ],
           "work": "the-tyrants-tomb"
@@ -15491,6 +15464,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B07LGFWKZ7",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241382246",
           "type": "libex-import"
         }
       ],

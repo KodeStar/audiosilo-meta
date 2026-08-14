@@ -3559,12 +3559,43 @@
         "ngaio-marsh"
       ],
       "genres": [
-        "mystery"
+        "mystery",
+        "police-procedural",
+        "thriller-suspense",
+        "westerns"
       ],
       "id": "a-wreath-for-rivera",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "james-saxon-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004HWGGOG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/5155Iw3fdvL.jpg",
+          "id": "james-saxon-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-saxon"
+          ],
+          "publisher": "AudioGO Ltd.",
+          "release_date": "2011-01-04",
+          "runtime_min": 589,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004HWGGOG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-wreath-for-rivera"
+        },
         "nadia-may-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3599,62 +3630,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V0KAMU",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Wreath for Rivera"
-    },
-    "a-wreath-for-rivera-aka-swing-brother-swing": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ngaio-marsh"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "a-wreath-for-rivera-aka-swing-brother-swing",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "james-saxon-2011": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B004HWGGOG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/5155Iw3fdvL.jpg",
-          "id": "james-saxon-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "james-saxon"
-          ],
-          "publisher": "AudioGO Ltd.",
-          "release_date": "2011-01-04",
-          "runtime_min": 589,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004HWGGOG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-wreath-for-rivera-aka-swing-brother-swing"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B004HWGGOG",
           "type": "libex-import"
         }
       ],
-      "title": "A Wreath for Rivera (aka Swing, Brother, Swing)"
+      "title": "A Wreath for Rivera"
     },
     "a-wreath-of-red-roses": {
       "added_at": "2026-07-29",

@@ -4632,6 +4632,7 @@
       ],
       "genres": [
         "mystery",
+        "psychological-thriller",
         "romance",
         "romantic-suspense",
         "thriller-suspense"
@@ -4834,32 +4835,7 @@
             }
           ],
           "work": "every-dark-corner"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01N7WAWI3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Every Dark Corner"
-    },
-    "every-dark-corner-the-cincinnati-series-book-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "karen-rose"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "romance",
-        "romantic-suspense",
-        "thriller-suspense"
-      ],
-      "id": "every-dark-corner-the-cincinnati-series-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "susie-james-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4886,17 +4862,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "every-dark-corner-the-cincinnati-series-book-3"
+          "work": "every-dark-corner"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01N7WAWI3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01M1F1TM0",
           "type": "libex-import"
         }
       ],
-      "title": "Every Dark Corner (The Cincinnati Series Book 3)"
+      "title": "Every Dark Corner"
     },
     "every-dark-shadow": {
       "added_at": "2026-08-02",
@@ -14200,341 +14181,6 @@
           ],
           "work": "every-living-thing"
         },
-        "nicholas-ralph-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CJCPJWJ7",
-              "region": "us"
-            },
-            {
-              "asin": "B0CHZ64Q3L",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 29465,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 591481,
-              "start_ms": 29465,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 867892,
-              "start_ms": 620946,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1450341,
-              "start_ms": 1488838,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1346385,
-              "start_ms": 2939179,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 778379,
-              "start_ms": 4285564,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 600003,
-              "start_ms": 5063943,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 858766,
-              "start_ms": 5663946,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1603477,
-              "start_ms": 6522712,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1319659,
-              "start_ms": 8126189,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1189790,
-              "start_ms": 9445848,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 549314,
-              "start_ms": 10635638,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 852381,
-              "start_ms": 11184952,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 737465,
-              "start_ms": 12037333,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 867242,
-              "start_ms": 12774798,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 988984,
-              "start_ms": 13642040,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 341008,
-              "start_ms": 14631024,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 769578,
-              "start_ms": 14972032,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 380853,
-              "start_ms": 15741610,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1313227,
-              "start_ms": 16122463,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 790871,
-              "start_ms": 17435690,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1055509,
-              "start_ms": 18226561,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 784997,
-              "start_ms": 19282070,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 448377,
-              "start_ms": 20067067,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 319460,
-              "start_ms": 20515444,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 591249,
-              "start_ms": 20834904,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1485798,
-              "start_ms": 21426153,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1362175,
-              "start_ms": 22911951,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 323407,
-              "start_ms": 24274126,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1067421,
-              "start_ms": 24597533,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 806336,
-              "start_ms": 25664954,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 418911,
-              "start_ms": 26471290,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 460892,
-              "start_ms": 26890201,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 518942,
-              "start_ms": 27351093,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 1262399,
-              "start_ms": 27870035,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 752326,
-              "start_ms": 29132434,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 745244,
-              "start_ms": 29884760,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 887977,
-              "start_ms": 30630004,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 678649,
-              "start_ms": 31517981,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 373051,
-              "start_ms": 32196630,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 1942349,
-              "start_ms": 32569681,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 573231,
-              "start_ms": 34512030,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 368291,
-              "start_ms": 35085261,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 413524,
-              "start_ms": 35453552,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 1458863,
-              "start_ms": 35867076,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 697341,
-              "start_ms": 37325939,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 593850,
-              "start_ms": 38023280,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 1292956,
-              "start_ms": 38617130,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 1544939,
-              "start_ms": 39910086,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 1105107,
-              "start_ms": 41455025,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 1216493,
-              "start_ms": 42560132,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 587418,
-              "start_ms": 43776625,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 1032243,
-              "start_ms": 44364043,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 49086,
-              "start_ms": 45396286,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71CKwyxTAcL.jpg",
-          "id": "nicholas-ralph-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicholas-ralph"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2023-11-07",
-          "runtime_min": 757,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CJCPJWJ7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CHZ64Q3L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "every-living-thing"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V089GE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Every Living Thing"
-    },
-    "every-living-thing-all-creatures-great-and-small-book-5": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-herriot"
-      ],
-      "genres": [
-        "biography-memoir",
-        "home-garden",
-        "nature",
-        "science",
-        "sports"
-      ],
-      "id": "every-living-thing-all-creatures-great-and-small-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "christopher-timothy-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -15694,17 +15340,331 @@
               "type": "libex-import"
             }
           ],
-          "work": "every-living-thing-all-creatures-great-and-small-book-5"
+          "work": "every-living-thing"
+        },
+        "nicholas-ralph-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CJCPJWJ7",
+              "region": "us"
+            },
+            {
+              "asin": "B0CHZ64Q3L",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 29465,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 591481,
+              "start_ms": 29465,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 867892,
+              "start_ms": 620946,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1450341,
+              "start_ms": 1488838,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1346385,
+              "start_ms": 2939179,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 778379,
+              "start_ms": 4285564,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 600003,
+              "start_ms": 5063943,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 858766,
+              "start_ms": 5663946,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1603477,
+              "start_ms": 6522712,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1319659,
+              "start_ms": 8126189,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1189790,
+              "start_ms": 9445848,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 549314,
+              "start_ms": 10635638,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 852381,
+              "start_ms": 11184952,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 737465,
+              "start_ms": 12037333,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 867242,
+              "start_ms": 12774798,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 988984,
+              "start_ms": 13642040,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 341008,
+              "start_ms": 14631024,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 769578,
+              "start_ms": 14972032,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 380853,
+              "start_ms": 15741610,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1313227,
+              "start_ms": 16122463,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 790871,
+              "start_ms": 17435690,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1055509,
+              "start_ms": 18226561,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 784997,
+              "start_ms": 19282070,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 448377,
+              "start_ms": 20067067,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 319460,
+              "start_ms": 20515444,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 591249,
+              "start_ms": 20834904,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1485798,
+              "start_ms": 21426153,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1362175,
+              "start_ms": 22911951,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 323407,
+              "start_ms": 24274126,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1067421,
+              "start_ms": 24597533,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 806336,
+              "start_ms": 25664954,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 418911,
+              "start_ms": 26471290,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 460892,
+              "start_ms": 26890201,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 518942,
+              "start_ms": 27351093,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1262399,
+              "start_ms": 27870035,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 752326,
+              "start_ms": 29132434,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 745244,
+              "start_ms": 29884760,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 887977,
+              "start_ms": 30630004,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 678649,
+              "start_ms": 31517981,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 373051,
+              "start_ms": 32196630,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 1942349,
+              "start_ms": 32569681,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 573231,
+              "start_ms": 34512030,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 368291,
+              "start_ms": 35085261,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 413524,
+              "start_ms": 35453552,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 1458863,
+              "start_ms": 35867076,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 697341,
+              "start_ms": 37325939,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 593850,
+              "start_ms": 38023280,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 1292956,
+              "start_ms": 38617130,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 1544939,
+              "start_ms": 39910086,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 1105107,
+              "start_ms": 41455025,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 1216493,
+              "start_ms": 42560132,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 587418,
+              "start_ms": 43776625,
+              "title": "Chapter 51"
+            },
+            {
+              "length_ms": 1032243,
+              "start_ms": 44364043,
+              "title": "Chapter 52"
+            },
+            {
+              "length_ms": 49086,
+              "start_ms": 45396286,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71CKwyxTAcL.jpg",
+          "id": "nicholas-ralph-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nicholas-ralph"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2023-11-07",
+          "runtime_min": 757,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CJCPJWJ7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CHZ64Q3L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "every-living-thing"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V089GE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DS2K8MD9",
           "type": "libex-import"
         }
       ],
-      "title": "Every Living Thing: All Creatures Great and Small Book 5"
+      "title": "Every Living Thing"
     }
   }
 }

@@ -1256,58 +1256,6 @@
       ],
       "title": "Post Mortem"
     },
-    "post-mortem-patricia-cornwell-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "patricia-cornwell"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "post-mortem-patricia-cornwell-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lorelei-king-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B007Y5SEPM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/518dlQOpkZL.jpg",
-          "id": "lorelei-king-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lorelei-king"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd.",
-          "release_date": "2012-05-01",
-          "runtime_min": 582,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B007Y5SEPM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "post-mortem-patricia-cornwell-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B007Y5SEPM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Post-Mortem"
-    },
     "post-office": {
       "added_at": "2026-07-29",
       "authors": [
@@ -4631,6 +4579,7 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "postmortem",
@@ -4762,6 +4711,34 @@
           ],
           "work": "postmortem"
         },
+        "lorelei-king-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B007Y5SEPM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/518dlQOpkZL.jpg",
+          "id": "lorelei-king-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lorelei-king"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd.",
+          "release_date": "2012-05-01",
+          "runtime_min": 582,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007Y5SEPM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "postmortem"
+        },
         "lorelei-king-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4795,6 +4772,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B004QYDP7Q",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B007Y5SEPM",
           "type": "libex-import"
         }
       ],

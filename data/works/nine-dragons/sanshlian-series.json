@@ -7941,7 +7941,9 @@
         "joandomenec-ros-i-aragones"
       ],
       "genres": [
+        "history",
         "politics",
+        "science",
         "social-sciences"
       ],
       "id": "sapiens-de-animales-a-dioses",
@@ -7955,109 +7957,7 @@
             {
               "asin": "8499928269",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81yD8trm6qL.jpg",
-          "id": "carlos-manuel-vesga-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-manuel-vesga"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-08-03",
-          "runtime_min": 1046,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8499928269",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sapiens-de-animales-a-dioses"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8499928269",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sapiens. De animales a dioses"
-    },
-    "sapiens-de-animales-a-dioses-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "history",
-        "politics",
-        "science",
-        "social-sciences"
-      ],
-      "id": "sapiens-de-animales-a-dioses-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-david-garcia-marquez-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8418619058",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PLy2hZHaL.jpg",
-          "id": "luis-david-garcia-marquez-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-david-garcia-marquez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-09-02",
-          "runtime_min": 960,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8418619058",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sapiens-de-animales-a-dioses-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8418619058",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sapiens. De animales a dioses (Castellano)"
-    },
-    "sapiens-de-animales-a-dioses-sapiens-from-animals-to-gods": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "politics",
-        "social-sciences"
-      ],
-      "id": "sapiens-de-animales-a-dioses-sapiens-from-animals-to-gods",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-manuel-vesga-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0741D5K17",
               "region": "us"
@@ -8218,21 +8118,64 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8499928269",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0741D5K17",
               "type": "libex-import"
             }
           ],
-          "work": "sapiens-de-animales-a-dioses-sapiens-from-animals-to-gods"
+          "work": "sapiens-de-animales-a-dioses"
+        },
+        "luis-david-garcia-marquez-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8418619058",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PLy2hZHaL.jpg",
+          "id": "luis-david-garcia-marquez-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luis-david-garcia-marquez"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2021-09-02",
+          "runtime_min": 960,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8418619058",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sapiens-de-animales-a-dioses"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8499928269",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8418619058",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0741D5K17",
           "type": "libex-import"
         }
       ],
-      "title": "Sapiens. De animales a dioses [Sapiens: From Animals to Gods]"
+      "title": "Sapiens. De animales a dioses"
     },
     "sapiens-run-trilogy-boxed-set-a-dystopian-cyber-thriller-series": {
       "added_at": "2026-08-01",

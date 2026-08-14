@@ -229,7 +229,8 @@
       ],
       "genres": [
         "historical-fiction",
-        "literary-fiction"
+        "literary-fiction",
+        "parenting-relationships"
       ],
       "id": "el-plan-infinito",
       "language": "es",
@@ -242,55 +243,7 @@
             {
               "asin": "8401019079",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91y3QZ+JzQL.jpg",
-          "id": "alberto-santillan-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alberto-santillan"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-12-15",
-          "runtime_min": 883,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019079",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-plan-infinito"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019079",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El plan infinito"
-    },
-    "el-plan-infinito-the-infinite-plan": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "parenting-relationships"
-      ],
-      "id": "el-plan-infinito-the-infinite-plan",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alberto-santillan-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01N7DRIZ7",
               "region": "us"
@@ -406,21 +359,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401019079",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01N7DRIZ7",
               "type": "libex-import"
             }
           ],
-          "work": "el-plan-infinito-the-infinite-plan"
+          "work": "el-plan-infinito"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019079",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01N7DRIZ7",
           "type": "libex-import"
         }
       ],
-      "title": "El plan infinito [The Infinite Plan]"
+      "title": "El plan infinito"
     },
     "el-plan-maestro": {
       "added_at": "2026-07-29",
@@ -959,61 +922,10 @@
       ],
       "genres": [
         "parenting-relationships",
-        "self-help"
-      ],
-      "id": "el-poder-de-la-disciplina",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alfonso-sales-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "109423513X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81C5MolMHUL.jpg",
-          "id": "alfonso-sales-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alfonso-sales"
-          ],
-          "publisher": "Ediciones Instituto Expertos",
-          "release_date": "2020-04-27",
-          "runtime_min": 128,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "109423513X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-poder-de-la-disciplina"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "109423513X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Poder de la Disciplina"
-    },
-    "el-poder-de-la-disciplina-the-power-of-discipline": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "raimon-samso"
-      ],
-      "genres": [
-        "parenting-relationships",
         "religion-spirituality",
         "self-help"
       ],
-      "id": "el-poder-de-la-disciplina-the-power-of-discipline",
+      "id": "el-poder-de-la-disciplina",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -1120,17 +1032,50 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-poder-de-la-disciplina-the-power-of-discipline"
+          "work": "el-poder-de-la-disciplina"
+        },
+        "alfonso-sales-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "109423513X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81C5MolMHUL.jpg",
+          "id": "alfonso-sales-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alfonso-sales"
+          ],
+          "publisher": "Ediciones Instituto Expertos",
+          "release_date": "2020-04-27",
+          "runtime_min": 128,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "109423513X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-poder-de-la-disciplina"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "109423513X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B081NNK5DY",
           "type": "libex-import"
         }
       ],
-      "title": "El Poder de la Disciplina [The Power of Discipline]"
+      "title": "El Poder de la Disciplina"
     },
     "el-poder-de-la-disciplina-the-power-of-discipline-daniel-j-martin": {
       "added_at": "2026-07-29",
@@ -1380,7 +1325,10 @@
         "joseph-murphy"
       ],
       "genres": [
+        "health-wellness",
+        "occult",
         "parenting-relationships",
+        "psychology",
         "religion-spirituality",
         "self-help"
       ],
@@ -1532,33 +1480,7 @@
             }
           ],
           "work": "el-poder-de-la-mente-subconsciente-the-power-of-the-subconscious-mind"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CT96M5JL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Poder De La Mente Subconsciente [The Power of the Subconscious Mind]"
-    },
-    "el-poder-de-la-mente-subconsciente-the-power-of-your-subconscious-mind": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joseph-murphy"
-      ],
-      "genres": [
-        "health-wellness",
-        "occult",
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "el-poder-de-la-mente-subconsciente-the-power-of-your-subconscious-mind",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rafael-rijo-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1585,17 +1507,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-poder-de-la-mente-subconsciente-the-power-of-your-subconscious-mind"
+          "work": "el-poder-de-la-mente-subconsciente-the-power-of-the-subconscious-mind"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CT96M5JL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0G86Z6BH5",
           "type": "libex-import"
         }
       ],
-      "title": "El Poder De La Mente Subconsciente [The Power of Your Subconscious Mind]"
+      "title": "El Poder De La Mente Subconsciente [The Power of the Subconscious Mind]"
     },
     "el-poder-de-la-mercadotecnia-audaz-the-power-of-audacious-market-research": {
       "added_at": "2026-07-29",
@@ -7926,289 +7853,7 @@
             {
               "asin": "B07YX4ZWJK",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QVSbRTq5L.jpg",
-          "id": "joaquin-madrigal-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-madrigal"
-          ],
-          "publisher": "Alberich Ediciones Mexico",
-          "release_date": "2014-04-30",
-          "runtime_min": 79,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX4ZWJK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito"
-        },
-        "marcel-navarro-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0G1N1RN4Z",
-              "region": "us"
             },
-            {
-              "asin": "B0G1NCCB4J",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71QXviQ76pL.jpg",
-          "id": "marcel-navarro-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcel-navarro"
-          ],
-          "publisher": "Planeta Audio",
-          "release_date": "2025-11-10",
-          "runtime_min": 109,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0G1N1RN4Z",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0G1NCCB4J",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito"
-        },
-        "victor-prieto-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08HRVRJ63",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81JEXVggD+L.jpg",
-          "id": "victor-prieto-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-prieto"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2020-09-11",
-          "runtime_min": 114,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HRVRJ63",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HRVRJ63",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B0F8VRVD82",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B0G1N1RN4Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Principito"
-    },
-    "el-principito-antoine-de-saint-exupery": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antoine-de-saint-exupery",
-        "bonifacio-del-carril"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fairy-tales-folklore"
-      ],
-      "id": "el-principito-antoine-de-saint-exupery",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "irene-montala-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8418174021",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CIhq+qBrL.jpg",
-          "id": "irene-montala-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "irene-montala",
-            "ivan-priego-posada",
-            "jose-posada",
-            "manu-guix"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-05-26",
-          "runtime_min": 101,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8418174021",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito-antoine-de-saint-exupery"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8418174021",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Principito"
-    },
-    "el-principito-audiolibro-oficial-en-latino-le-petit-prince": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antoine-de-saint-exupery"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "el-principito-audiolibro-oficial-en-latino-le-petit-prince",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mario-ivan-martinez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "6073191154",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71iHm8ZrY9L.jpg",
-          "id": "mario-ivan-martinez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mario-ivan-martinez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2020-02-28",
-          "runtime_min": 127,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "6073191154",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito-audiolibro-oficial-en-latino-le-petit-prince"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "6073191154",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Principito (Audiolibro oficial. En latino) [Le Petit Prince]"
-    },
-    "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "liz-doolittle"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "claudia-r-barrett-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B016AWZL96",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kBU8YNhSL.jpg",
-          "id": "claudia-r-barrett-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "claudia-r-barrett"
-          ],
-          "publisher": "UNITEXTO LLC",
-          "release_date": "2015-10-08",
-          "runtime_min": 12,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B016AWZL96",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B016AWZL96",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Principito: Libro con Rimas para Niños [The Little Prince: Book with Nursery Rhymes]"
-    },
-    "el-principito-the-little-prince": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antoine-de-saint-exupery"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics"
-      ],
-      "id": "el-principito-the-little-prince",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joaquin-madrigal-2014": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B00K0PP596",
               "region": "us"
@@ -8364,11 +8009,16 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX4ZWJK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00K0PP596",
               "type": "libex-import"
             }
           ],
-          "work": "el-principito-the-little-prince"
+          "work": "el-principito"
         },
         "jorge-lemus-2020": {
           "abridged": false,
@@ -8396,7 +8046,72 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-principito-the-little-prince"
+          "work": "el-principito"
+        },
+        "marcel-navarro-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0G1N1RN4Z",
+              "region": "us"
+            },
+            {
+              "asin": "B0G1NCCB4J",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71QXviQ76pL.jpg",
+          "id": "marcel-navarro-2025",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marcel-navarro"
+          ],
+          "publisher": "Planeta Audio",
+          "release_date": "2025-11-10",
+          "runtime_min": 109,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0G1N1RN4Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0G1NCCB4J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-principito"
+        },
+        "mario-ivan-martinez-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "6073191154",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71iHm8ZrY9L.jpg",
+          "id": "mario-ivan-martinez-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mario-ivan-martinez"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2020-02-28",
+          "runtime_min": 127,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "6073191154",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-principito"
         },
         "staff-audiolibros-coleccion-2017": {
           "abridged": true,
@@ -8424,12 +8139,16 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-principito-the-little-prince"
+          "work": "el-principito"
         },
         "victor-prieto-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B08HRVRJ63",
+              "region": "es"
+            },
             {
               "asin": "B08HRBLHH5",
               "region": "us"
@@ -8448,21 +8167,154 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08HRVRJ63",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08HRBLHH5",
               "type": "libex-import"
             }
           ],
-          "work": "el-principito-the-little-prince"
+          "work": "el-principito"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HRVRJ63",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B0F8VRVD82",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B0G1N1RN4Z",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073191154",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08HRBLHH5",
           "type": "libex-import"
         }
       ],
-      "title": "El Principito [The Little Prince]"
+      "title": "El Principito"
+    },
+    "el-principito-antoine-de-saint-exupery": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "antoine-de-saint-exupery",
+        "bonifacio-del-carril"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fairy-tales-folklore"
+      ],
+      "id": "el-principito-antoine-de-saint-exupery",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "irene-montala-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8418174021",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CIhq+qBrL.jpg",
+          "id": "irene-montala-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "irene-montala",
+            "ivan-priego-posada",
+            "jose-posada",
+            "manu-guix"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2021-05-26",
+          "runtime_min": 101,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8418174021",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-principito-antoine-de-saint-exupery"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8418174021",
+          "type": "libex-import"
+        }
+      ],
+      "title": "El Principito"
+    },
+    "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "liz-doolittle"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claudia-r-barrett-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B016AWZL96",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kBU8YNhSL.jpg",
+          "id": "claudia-r-barrett-2015",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claudia-r-barrett"
+          ],
+          "publisher": "UNITEXTO LLC",
+          "release_date": "2015-10-08",
+          "runtime_min": 12,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B016AWZL96",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-principito-libro-con-rimas-para-ninos-the-little-prince-book-with-nursery-rhymes"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B016AWZL96",
+          "type": "libex-import"
+        }
+      ],
+      "title": "El Principito: Libro con Rimas para Niños [The Little Prince: Book with Nursery Rhymes]"
     },
     "el-prisionero-del-cielo": {
       "added_at": "2026-07-29",
@@ -9743,6 +9595,10 @@
             {
               "asin": "B085CJHJX4",
               "region": "es"
+            },
+            {
+              "asin": "B085CJDJ13",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81lq4JsVwGL.jpg",
@@ -9760,6 +9616,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B085CJHJX4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B085CJDJ13",
               "type": "libex-import"
             }
           ],
@@ -9799,60 +9660,14 @@
           "imported_at": "2026-07-29",
           "ref": "B085CJHJX4",
           "type": "libex-import"
-        }
-      ],
-      "title": "El problema final"
-    },
-    "el-problema-final-the-final-problem": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "el-problema-final-the-final-problem",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "niloofer-khan-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B085CJDJ13",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lq4JsVwGL.jpg",
-          "id": "niloofer-khan-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "niloofer-khan",
-            "pablo-lopez"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-04",
-          "runtime_min": 41,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJDJ13",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-problema-final-the-final-problem"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJDJ13",
           "type": "libex-import"
         }
       ],
-      "title": "El problema final [The Final Problem]"
+      "title": "El problema final"
     },
     "el-problema-final-the-ultimate-problem": {
       "added_at": "2026-07-29",

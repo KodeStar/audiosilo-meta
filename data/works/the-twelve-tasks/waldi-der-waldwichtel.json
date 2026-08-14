@@ -6513,29 +6513,7 @@
             }
           ],
           "work": "walk-the-wire"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1478999268",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Walk the Wire"
-    },
-    "walk-the-wire-an-amos-decker-novel-6": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "walk-the-wire-an-amos-decker-novel-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kyf-brewer-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6563,17 +6541,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "walk-the-wire-an-amos-decker-novel-6"
+          "work": "walk-the-wire"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1478999268",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DLBPTTYZ",
           "type": "libex-import"
         }
       ],
-      "title": "Walk the Wire: An Amos Decker Novel 6"
+      "title": "Walk the Wire"
     },
     "walk-this-way": {
       "added_at": "2026-07-29",
@@ -8415,12 +8398,63 @@
         "chaz-douglas"
       ],
       "genres": [
-        "religion-spirituality"
+        "religion-spirituality",
+        "young-adult"
       ],
       "id": "walking-daily-with-the-lord",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "larry-nobles-2021": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B095L1DJTT",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15882,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 98800,
+              "start_ms": 15882,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 2572445,
+              "start_ms": 114682,
+              "title": "Walking Daily with the Lord"
+            },
+            {
+              "length_ms": 19341,
+              "start_ms": 2687127,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ltwnuVEoS.jpg",
+          "id": "larry-nobles-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "larry-nobles"
+          ],
+          "publisher": "Chazell Douglas",
+          "release_date": "2021-05-24",
+          "runtime_min": 44,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B095L1DJTT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "walking-daily-with-the-lord"
+        },
         "steve-krumlauf-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8626,6 +8660,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B07PWYLKHX",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B095L1DJTT",
           "type": "libex-import"
         }
       ],
@@ -8857,79 +8896,6 @@
         }
       ],
       "title": "Walking Daily with the Lord: Learning to be God's Friend"
-    },
-    "walking-daily-with-the-lord-volume-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "chaz-douglas"
-      ],
-      "genres": [
-        "religion-spirituality",
-        "young-adult"
-      ],
-      "id": "walking-daily-with-the-lord-volume-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "larry-nobles-2021": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B095L1DJTT",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15882,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 98800,
-              "start_ms": 15882,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 2572445,
-              "start_ms": 114682,
-              "title": "Walking Daily with the Lord"
-            },
-            {
-              "length_ms": 19341,
-              "start_ms": 2687127,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ltwnuVEoS.jpg",
-          "id": "larry-nobles-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "larry-nobles"
-          ],
-          "publisher": "Chazell Douglas",
-          "release_date": "2021-05-24",
-          "runtime_min": 44,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B095L1DJTT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "walking-daily-with-the-lord-volume-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B095L1DJTT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Walking Daily with the Lord - Volume 1"
     },
     "walking-dead": {
       "added_at": "2026-08-02",

@@ -6339,19 +6339,96 @@
       ],
       "title": "Grave"
     },
-    "grave-misconduct": {
-      "added_at": "2026-08-01",
+    "grave-misconduct-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "eva-chase"
       ],
       "genres": [
+        "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "urban-fantasy"
       ],
-      "id": "grave-misconduct",
+      "id": "grave-misconduct-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D346XDL8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 39924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3774626,
+              "start_ms": 39924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4154212,
+              "start_ms": 3814550,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4326690,
+              "start_ms": 7968762,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4034977,
+              "start_ms": 12295452,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3659000,
+              "start_ms": 16330429,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 114000,
+              "start_ms": 19989429,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 256148,
+              "start_ms": 20103429,
+              "title": "Listening Preview: Crescent City by Sarah J. Maas"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916WyZ+J7XL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D346XDL8",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D346XDL8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "grave-misconduct-dramatized-adaptation"
+        },
         "hollie-jackson-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6516,105 +6593,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "grave-misconduct"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09V3KVGQ6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Grave Misconduct"
-    },
-    "grave-misconduct-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "eva-chase"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "grave-misconduct-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D346XDL8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 39924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3774626,
-              "start_ms": 39924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4154212,
-              "start_ms": 3814550,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4326690,
-              "start_ms": 7968762,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4034977,
-              "start_ms": 12295452,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3659000,
-              "start_ms": 16330429,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 114000,
-              "start_ms": 19989429,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 256148,
-              "start_ms": 20103429,
-              "title": "Listening Preview: Crescent City by Sarah J. Maas"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916WyZ+J7XL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 339,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D346XDL8",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D346XDL8",
-              "type": "libex-import"
-            }
-          ],
           "work": "grave-misconduct-dramatized-adaptation"
         }
       },
@@ -6627,6 +6605,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0D346XDL8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09V3KVGQ6",
           "type": "libex-import"
         }
       ],
@@ -9224,7 +9207,9 @@
         "jim-butcher"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
+        "mystery",
         "paranormal",
         "thriller-suspense",
         "urban-fantasy"
@@ -9233,6 +9218,112 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-walker-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GHZV8TGT",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36470,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3546275,
+              "start_ms": 36470,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 3827345,
+              "start_ms": 3582745,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 3834752,
+              "start_ms": 7410090,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 3747189,
+              "start_ms": 11244842,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 3770549,
+              "start_ms": 14992031,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 3910820,
+              "start_ms": 18762580,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 4006858,
+              "start_ms": 22673400,
+              "title": "Track 7"
+            },
+            {
+              "length_ms": 4003120,
+              "start_ms": 26680258,
+              "title": "Track 8"
+            },
+            {
+              "length_ms": 3811323,
+              "start_ms": 30683378,
+              "title": "Track 9"
+            },
+            {
+              "length_ms": 4148662,
+              "start_ms": 34494701,
+              "title": "Track 10"
+            },
+            {
+              "length_ms": 3079000,
+              "start_ms": 38643363,
+              "title": "Track 11"
+            },
+            {
+              "length_ms": 116970,
+              "start_ms": 41722363,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FVR-AEFKL.jpg",
+          "id": "christopher-walker-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-walker",
+            "erin-lin",
+            "full-cast",
+            "gabriel-michael",
+            "jessica-threet",
+            "julienne-irons",
+            "laura-c-harris",
+            "marlon-dance-hooi",
+            "matthew-bassett",
+            "nicole-perez",
+            "nora-achrati",
+            "wyn-delano"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-04-30",
+          "runtime_min": 697,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GHZV8TGT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "grave-peril"
+        },
         "james-marsters-2008": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -9483,142 +9574,14 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8MMPU",
           "type": "libex-import"
-        }
-      ],
-      "title": "Grave Peril"
-    },
-    "grave-peril-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jim-butcher"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "grave-peril-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-walker-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GHZV8TGT",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36470,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3546275,
-              "start_ms": 36470,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 3827345,
-              "start_ms": 3582745,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 3834752,
-              "start_ms": 7410090,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 3747189,
-              "start_ms": 11244842,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 3770549,
-              "start_ms": 14992031,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3910820,
-              "start_ms": 18762580,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 4006858,
-              "start_ms": 22673400,
-              "title": "Track 7"
-            },
-            {
-              "length_ms": 4003120,
-              "start_ms": 26680258,
-              "title": "Track 8"
-            },
-            {
-              "length_ms": 3811323,
-              "start_ms": 30683378,
-              "title": "Track 9"
-            },
-            {
-              "length_ms": 4148662,
-              "start_ms": 34494701,
-              "title": "Track 10"
-            },
-            {
-              "length_ms": 3079000,
-              "start_ms": 38643363,
-              "title": "Track 11"
-            },
-            {
-              "length_ms": 116970,
-              "start_ms": 41722363,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FVR-AEFKL.jpg",
-          "id": "christopher-walker-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-walker",
-            "erin-lin",
-            "full-cast",
-            "gabriel-michael",
-            "jessica-threet",
-            "julienne-irons",
-            "laura-c-harris",
-            "marlon-dance-hooi",
-            "matthew-bassett",
-            "nicole-perez",
-            "nora-achrati",
-            "wyn-delano"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-04-30",
-          "runtime_min": 697,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GHZV8TGT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "grave-peril-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GHZV8TGT",
           "type": "libex-import"
         }
       ],
-      "title": "Grave Peril [Dramatized Adaptation]"
+      "title": "Grave Peril"
     },
     "grave-promise": {
       "added_at": "2026-08-01",

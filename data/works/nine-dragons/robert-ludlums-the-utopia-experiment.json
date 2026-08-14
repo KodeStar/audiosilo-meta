@@ -14124,6 +14124,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "arturo-mercado-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08BW43DPK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916DeSFyInL.jpg",
+          "id": "arturo-mercado-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arturo-mercado"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-07-21",
+          "runtime_min": 21,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08BW43DPK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "robinson-crusoe-daniel-defoe-4"
+        },
         "francisco-lesmes-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14156,6 +14184,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B089QJ66D9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "robinson-crusoe-daniel-defoe-4"
+        },
+        "sebastian-cabello-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0H341RVCQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NnNtSmJxL.jpg",
+          "id": "sebastian-cabello-2026",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sebastian-cabello"
+          ],
+          "publisher": "Library of Alexandria",
+          "release_date": "2026-05-28",
+          "runtime_min": 669,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0H341RVCQ",
               "type": "libex-import"
             }
           ],
@@ -14208,6 +14264,11 @@
         {
           "imported_at": "2026-08-12",
           "ref": "B0F66Y7WWY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08BW43DPK",
           "type": "libex-import"
         }
       ],
@@ -14491,84 +14552,6 @@
         }
       ],
       "title": "Robinson Crusoe: Retold for Younger Listeners"
-    },
-    "robinson-crusoe-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "daniel-defoe"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "robinson-crusoe-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "arturo-mercado-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08BW43DPK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916DeSFyInL.jpg",
-          "id": "arturo-mercado-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "arturo-mercado"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-07-21",
-          "runtime_min": 21,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08BW43DPK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "robinson-crusoe-spanish-edition"
-        },
-        "sebastian-cabello-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0H341RVCQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NnNtSmJxL.jpg",
-          "id": "sebastian-cabello-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sebastian-cabello"
-          ],
-          "publisher": "Library of Alexandria",
-          "release_date": "2026-05-28",
-          "runtime_min": 669,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0H341RVCQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "robinson-crusoe-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08BW43DPK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Robinson Crusoe (Spanish Edition)"
     },
     "robinson-crusoe-the-ultimate-castaway-adventure": {
       "added_at": "2026-08-07",

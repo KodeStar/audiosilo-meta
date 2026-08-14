@@ -7005,59 +7005,6 @@
       ],
       "title": "Zero Day"
     },
-    "zero-day-a-john-puller-novel-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "action-adventure",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "zero-day-a-john-puller-novel-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "orlagh-cassidy-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBLKQ66",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916rp3cOgEL.jpg",
-          "id": "orlagh-cassidy-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "orlagh-cassidy",
-            "ron-mclarty"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 787,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBLKQ66",
-              "type": "libex-import"
-            }
-          ],
-          "work": "zero-day-a-john-puller-novel-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBLKQ66",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Zero Day: A John Puller Novel 1"
-    },
     "zero-day-code": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7326,6 +7273,7 @@
         "david-baldacci"
       ],
       "genres": [
+        "action-adventure",
         "mystery",
         "thriller-suspense",
         "war-military-fiction"
@@ -8334,12 +8282,46 @@
             }
           ],
           "work": "zero-day-david-baldacci"
+        },
+        "orlagh-cassidy-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBLKQ66",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916rp3cOgEL.jpg",
+          "id": "orlagh-cassidy-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "orlagh-cassidy",
+            "ron-mclarty"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 787,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBLKQ66",
+              "type": "libex-import"
+            }
+          ],
+          "work": "zero-day-david-baldacci"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B005Y2AHHU",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBLKQ66",
           "type": "libex-import"
         }
       ],

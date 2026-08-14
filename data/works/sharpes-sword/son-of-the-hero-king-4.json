@@ -10218,54 +10218,7 @@
             {
               "asin": "B08HR82KRD",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814QFiwLgnL.jpg",
-          "id": "victor-prieto-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-prieto"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2020-09-11",
-          "runtime_min": 148,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HR82KRD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sonata-de-primavera"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HR82KRD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sonata de Primavera"
-    },
-    "sonata-de-primavera-spring-sonata": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ramon-maria-del-valle-inclan"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction"
-      ],
-      "id": "sonata-de-primavera-spring-sonata",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "victor-prieto-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08HR7NQSN",
               "region": "us"
@@ -10284,21 +10237,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08HR82KRD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08HR7NQSN",
               "type": "libex-import"
             }
           ],
-          "work": "sonata-de-primavera-spring-sonata"
+          "work": "sonata-de-primavera"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HR82KRD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08HR7NQSN",
           "type": "libex-import"
         }
       ],
-      "title": "Sonata de Primavera [Spring Sonata]"
+      "title": "Sonata de Primavera"
     },
     "sonata-for-a-scoundrel": {
       "added_at": "2026-07-29",

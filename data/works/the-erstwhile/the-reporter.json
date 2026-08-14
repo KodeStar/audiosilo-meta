@@ -7,13 +7,75 @@
         "mur-lafferty"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction",
+        "space-opera",
         "sports"
       ],
       "id": "the-reporter",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648809111",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3895797,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2926526,
+              "start_ms": 3895797,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3535029,
+              "start_ms": 6822323,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3245963,
+              "start_ms": 10357352,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3534958,
+              "start_ms": 13603315,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81K+AGeiGCL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 286,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809111",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809111",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reporter"
+        },
         "scott-sigler-2015": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -85,87 +147,7 @@
           "imported_at": "2026-07-30",
           "ref": "B01478RBA2",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Reporter"
-    },
-    "the-reporter-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "scott-sigler",
-        "mur-lafferty"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "the-reporter-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648809111",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3895797,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2926526,
-              "start_ms": 3895797,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3535029,
-              "start_ms": 6822323,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3245963,
-              "start_ms": 10357352,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3534958,
-              "start_ms": 13603315,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81K+AGeiGCL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 286,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648809111",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648809111",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-reporter-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648809111",
@@ -177,7 +159,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Reporter [Dramatized Adaptation]"
+      "title": "The Reporter"
     },
     "the-reporter-who-knew-too-much": {
       "added_at": "2026-07-29",

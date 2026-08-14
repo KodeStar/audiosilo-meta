@@ -14709,7 +14709,8 @@
       "genres": [
         "business",
         "economics",
-        "finance"
+        "finance",
+        "politics"
       ],
       "id": "travels-of-a-t-shirt-in-the-global-economy",
       "language": "en",
@@ -14784,12 +14785,45 @@
             }
           ],
           "work": "travels-of-a-t-shirt-in-the-global-economy"
+        },
+        "rosemary-benson-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1469075113",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TBTC4z2GL.jpg",
+          "id": "rosemary-benson-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosemary-benson"
+          ],
+          "publisher": "Gildan Media, LLC",
+          "release_date": "2019-07-16",
+          "runtime_min": 843,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1469075113",
+              "type": "libex-import"
+            }
+          ],
+          "work": "travels-of-a-t-shirt-in-the-global-economy"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8OEZ6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1469075113",
           "type": "libex-import"
         }
       ],

@@ -655,60 +655,6 @@
       ],
       "title": "Shine!"
     },
-    "shine-jodi-picoult": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jodi-picoult"
-      ],
-      "genres": [
-        "coming-of-age",
-        "literary-fiction",
-        "parenting-relationships",
-        "psychological-thriller",
-        "romance"
-      ],
-      "id": "shine-jodi-picoult",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rachel-handshaw-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0F8R54J98",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/7121QUC5wfL.jpg",
-          "id": "rachel-handshaw-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rachel-handshaw"
-          ],
-          "publisher": "Bolinda audio",
-          "release_date": "2025-07-01",
-          "runtime_min": 74,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0F8R54J98",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shine-jodi-picoult"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0F8R54J98",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shine"
-    },
     "shine-mageri-book-5": {
       "added_at": "2026-08-02",
       "authors": [
@@ -1684,7 +1630,11 @@
         "jodi-picoult"
       ],
       "genres": [
+        "coming-of-age",
         "literary-fiction",
+        "parenting-relationships",
+        "psychological-thriller",
+        "romance",
         "short-stories",
         "womens-fiction"
       ],
@@ -1786,12 +1736,45 @@
             }
           ],
           "work": "shine-short-story"
+        },
+        "rachel-handshaw-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0F8R54J98",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7121QUC5wfL.jpg",
+          "id": "rachel-handshaw-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rachel-handshaw"
+          ],
+          "publisher": "Bolinda audio",
+          "release_date": "2025-07-01",
+          "runtime_min": 74,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0F8R54J98",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shine-short-story"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01LQR8156",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0F8R54J98",
           "type": "libex-import"
         }
       ],

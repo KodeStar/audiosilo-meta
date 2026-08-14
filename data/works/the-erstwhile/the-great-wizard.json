@@ -10495,58 +10495,6 @@
       ],
       "title": "The Greatest Summer in Baseball History"
     },
-    "the-greatest-thing-in-the-world": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "henry-drummond"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "religion-spirituality",
-        "self-help"
-      ],
-      "id": "the-greatest-thing-in-the-world",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kevin-t-norris-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B003KIB24C",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81SxjwpStRL.jpg",
-          "id": "kevin-t-norris-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kevin-t-norris"
-          ],
-          "publisher": "Gildan Media, LLC",
-          "release_date": "2010-05-03",
-          "runtime_min": 45,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B003KIB24C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-greatest-thing-in-the-world"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003KIB24C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Greatest Thing in the World"
-    },
     "the-greatest-trade-ever": {
       "added_at": "2026-07-29",
       "authors": [
@@ -15602,9 +15550,17 @@
     "the-green-fairy-book": {
       "added_at": "2026-08-02",
       "authors": [
-        "andrew-lang"
+        "andrew-lang",
+        "durwell-benson"
+      ],
+      "credits": [
+        {
+          "person": "durwell-benson",
+          "role": "preface"
+        }
       ],
       "genres": [
+        "childrens",
         "classics",
         "fairy-tales-folklore",
         "fantasy",
@@ -15868,38 +15824,7 @@
             }
           ],
           "work": "the-green-fairy-book"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B084BVYYF6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Green Fairy Book"
-    },
-    "the-green-fairy-book-annotated": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrew-lang",
-        "durwell-benson"
-      ],
-      "credits": [
-        {
-          "person": "durwell-benson",
-          "role": "preface"
-        }
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "short-stories"
-      ],
-      "id": "the-green-fairy-book-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-hester-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -16138,17 +16063,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-green-fairy-book-annotated"
+          "work": "the-green-fairy-book"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B084BVYYF6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FVBK2HRZ",
           "type": "libex-import"
         }
       ],
-      "title": "The Green Fairy Book (Annotated)"
+      "title": "The Green Fairy Book"
     },
     "the-green-glass-sea": {
       "added_at": "2026-08-02",

@@ -8763,7 +8763,8 @@
         "robert-galbraith"
       ],
       "genres": [
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "the-hallmarked-man-a-cormoran-strike-novel",
       "language": "en",
@@ -8780,58 +8781,7 @@
             {
               "asin": "B0DM3JGX4Z",
               "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BubuAtYRL.jpg",
-          "id": "robert-glenister-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-glenister"
-          ],
-          "publisher": "Mulholland Books",
-          "release_date": "2025-09-02",
-          "runtime_min": 1868,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DM3CXZXQ",
-              "type": "libex-import"
             },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DM3JGX4Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hallmarked-man-a-cormoran-strike-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DM3CXZXQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Hallmarked Man: A Cormoran Strike Novel"
-    },
-    "the-hallmarked-man-cormoran-strike-book-8": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-galbraith"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "the-hallmarked-man-cormoran-strike-book-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-glenister-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B0DSJM6YM7",
               "region": "us"
@@ -9558,17 +9508,27 @@
               "title": "Raising Readers Letter"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91jfoEt9SEL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91BubuAtYRL.jpg",
           "id": "robert-glenister-2025",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "robert-glenister"
           ],
-          "publisher": "Little, Brown Book Group",
+          "publisher": "Mulholland Books",
           "release_date": "2025-09-02",
-          "runtime_min": 1867,
+          "runtime_min": 1868,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DM3CXZXQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DM3JGX4Z",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-29",
               "ref": "B0DSJM6YM7",
@@ -9580,17 +9540,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-hallmarked-man-cormoran-strike-book-8"
+          "work": "the-hallmarked-man-a-cormoran-strike-novel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DM3CXZXQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DSJM6YM7",
           "type": "libex-import"
         }
       ],
-      "title": "The Hallmarked Man: Cormoran Strike, Book 8"
+      "title": "The Hallmarked Man: A Cormoran Strike Novel"
     },
     "the-hallow-hunt": {
       "added_at": "2026-08-02",

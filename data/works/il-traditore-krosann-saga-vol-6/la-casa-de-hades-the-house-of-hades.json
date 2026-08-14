@@ -528,6 +528,9 @@
       "authors": [
         "isabel-allende"
       ],
+      "genres": [
+        "parenting-relationships"
+      ],
       "id": "la-casa-de-los-espiritus",
       "language": "es",
       "license": "CC0-1.0",
@@ -539,54 +542,7 @@
             {
               "asin": "8401343437",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+wZ4zO9jL.jpg",
-          "id": "javiera-gazitua-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "javiera-gazitua",
-            "senen-arancibia"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2014-10-30",
-          "runtime_min": 1026,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401343437",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-casa-de-los-espiritus"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401343437",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La casa de los espíritus"
-    },
-    "la-casa-de-los-espiritus-the-house-of-the-spirits": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "parenting-relationships"
-      ],
-      "id": "la-casa-de-los-espiritus-the-house-of-the-spirits",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "javiera-gazitua-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00P025V8E",
               "region": "us"
@@ -713,21 +669,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401343437",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00P025V8E",
               "type": "libex-import"
             }
           ],
-          "work": "la-casa-de-los-espiritus-the-house-of-the-spirits"
+          "work": "la-casa-de-los-espiritus"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401343437",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00P025V8E",
           "type": "libex-import"
         }
       ],
-      "title": "La casa de los espíritus [The House of the Spirits]"
+      "title": "La casa de los espíritus"
     },
     "la-casa-de-los-secretos": {
       "added_at": "2026-07-29",
@@ -5499,8 +5465,10 @@
       ],
       "genres": [
         "classics",
+        "drama-plays",
         "historical-fiction",
         "historical-romance",
+        "literary-fiction",
         "romance"
       ],
       "id": "la-celestina",
@@ -5514,6 +5482,10 @@
             {
               "asin": "B07YXFZJWG",
               "region": "es"
+            },
+            {
+              "asin": "B072KPKJN5",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91kBjJ-1BWL.jpg",
@@ -5530,6 +5502,40 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YXFZJWG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B072KPKJN5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-celestina"
+        },
+        "lidia-ariza-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B071Y5LHKS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FgZxkJxNL.jpg",
+          "id": "lidia-ariza-2017",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lidia-ariza",
+            "luis-del-valle"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2017-04-21",
+          "runtime_min": 478,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B071Y5LHKS",
               "type": "libex-import"
             }
           ],
@@ -5579,114 +5585,19 @@
           "imported_at": "2026-07-29",
           "ref": "B0FP2R5WB6",
           "type": "libex-import"
-        }
-      ],
-      "title": "La Celestina"
-    },
-    "la-celestina-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-de-rojas"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "la-celestina-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lidia-ariza-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B071Y5LHKS",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FgZxkJxNL.jpg",
-          "id": "lidia-ariza-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lidia-ariza",
-            "luis-del-valle"
-          ],
-          "publisher": "Author's Republic",
-          "release_date": "2017-04-21",
-          "runtime_min": 478,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B071Y5LHKS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-celestina-spanish-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B071Y5LHKS",
           "type": "libex-import"
-        }
-      ],
-      "title": "La Celestina (Spanish Edition)"
-    },
-    "la-celestina-the-tragicomedy-of-calisto-and-melibea": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-de-rojas"
-      ],
-      "genres": [
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "la-celestina-the-tragicomedy-of-calisto-and-melibea",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eladio-ramos-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B072KPKJN5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kBjJ-1BWL.jpg",
-          "id": "eladio-ramos-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eladio-ramos"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2017-06-16",
-          "runtime_min": 385,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B072KPKJN5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-celestina-the-tragicomedy-of-calisto-and-melibea"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B072KPKJN5",
           "type": "libex-import"
         }
       ],
-      "title": "La Celestina [The Tragicomedy of Calisto and Melibea]"
+      "title": "La Celestina"
     },
     "la-cena-secreta": {
       "added_at": "2026-07-29",

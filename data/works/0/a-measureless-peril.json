@@ -266,6 +266,7 @@
         "s-m-stirling"
       ],
       "genres": [
+        "alternate-history",
         "classics",
         "epic-fantasy",
         "fantasy",
@@ -276,6 +277,67 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648815529",
+              "region": "us"
+            },
+            {
+              "asin": "1648815545",
+              "region": "us"
+            },
+            {
+              "asin": "1648816150",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9176Q9GlJiL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 1101,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648815529",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648815529",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648815545",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648815545",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816150",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816150",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-meeting-at-corvallis"
+        },
         "todd-mclaren-2008": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -437,121 +499,39 @@
           "imported_at": "2026-08-02",
           "ref": "B002V8L89G",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648815529",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648815529",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648815545",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648815545",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648816150",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648816150",
+          "type": "libex-import"
         }
       ],
       "title": "A Meeting at Corvallis"
-    },
-    "a-meeting-at-corvallis-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "s-m-stirling"
-      ],
-      "genres": [
-        "alternate-history",
-        "epic-fantasy",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "a-meeting-at-corvallis-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648815529",
-              "region": "us"
-            },
-            {
-              "asin": "1648815545",
-              "region": "us"
-            },
-            {
-              "asin": "1648816150",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9176Q9GlJiL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 1101,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648815529",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648815529",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648815545",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648815545",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648816150",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648816150",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-meeting-at-corvallis-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648815529",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648815529",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648815545",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648815545",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648816150",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648816150",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Meeting At Corvallis [Dramatized Adaptation]"
     },
     "a-meeting-in-corvallis-dramatized-adaptation": {
       "added_at": "2026-08-02",

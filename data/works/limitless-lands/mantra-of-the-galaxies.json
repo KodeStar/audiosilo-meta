@@ -7217,6 +7217,7 @@
       "genres": [
         "action-adventure",
         "espionage",
+        "mystery",
         "thriller-suspense",
         "war-military-fiction"
       ],
@@ -7438,33 +7439,7 @@
             }
           ],
           "work": "map-of-bones"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036KS9PO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Map of Bones"
-    },
-    "map-of-bones-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-rollins"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "mystery",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "map-of-bones-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "l-j-ganser-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7608,17 +7583,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "map-of-bones-international-edition"
+          "work": "map-of-bones"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036KS9PO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BV43Z39D",
           "type": "libex-import"
         }
       ],
-      "title": "Map of Bones (International Edition)"
+      "title": "Map of Bones"
     },
     "map-of-fates": {
       "added_at": "2026-08-02",
@@ -10922,53 +10902,7 @@
             {
               "asin": "B081ZC7J5Z",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71T1XRhStsL.jpg",
-          "id": "ana-jara-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-jara"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-11-27",
-          "runtime_min": 450,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B081ZC7J5Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mapocho"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B081ZC7J5Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Mapocho"
-    },
-    "mapocho-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "nona-fernandez"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "mapocho-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-jara-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B081ZD2175",
               "region": "us"
@@ -10987,21 +10921,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B081ZC7J5Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B081ZD2175",
               "type": "libex-import"
             }
           ],
-          "work": "mapocho-narracion-en-castellano"
+          "work": "mapocho"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B081ZC7J5Z",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B081ZD2175",
           "type": "libex-import"
         }
       ],
-      "title": "Mapocho (Narración en Castellano)"
+      "title": "Mapocho"
     },
     "mappa-mundi": {
       "added_at": "2026-08-02",

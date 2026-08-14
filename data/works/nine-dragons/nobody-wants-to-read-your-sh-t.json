@@ -5475,6 +5475,7 @@
         "william-shakespeare"
       ],
       "genres": [
+        "classics",
         "drama-plays"
       ],
       "id": "noche-de-reyes",
@@ -5528,54 +5529,7 @@
             {
               "asin": "B085CJGHSV",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mDBlwIOuL.jpg",
-          "id": "jose-diaz-meco-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-diaz-meco"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-03",
-          "runtime_min": 32,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJGHSV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "noche-de-reyes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJGHSV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Noche de reyes"
-    },
-    "noche-de-reyes-twelfth-night": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "noche-de-reyes-twelfth-night",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jose-diaz-meco-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B085CJTQ1B",
               "region": "us"
@@ -5594,21 +5548,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B085CJGHSV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B085CJTQ1B",
               "type": "libex-import"
             }
           ],
-          "work": "noche-de-reyes-twelfth-night"
+          "work": "noche-de-reyes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJGHSV",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJTQ1B",
           "type": "libex-import"
         }
       ],
-      "title": "Noche de reyes [Twelfth Night]"
+      "title": "Noche de reyes"
     },
     "noche-sobre-las-aguas-night-over-water": {
       "added_at": "2026-07-29",
@@ -5669,7 +5633,8 @@
         "fiodor-dostoievski"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "noches-blancas",
       "language": "es",
@@ -5749,12 +5714,45 @@
             }
           ],
           "work": "noches-blancas"
+        },
+        "geraldo-medina-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CSQKFLHB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71k8s+dvOiL.jpg",
+          "id": "geraldo-medina-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geraldo-medina"
+          ],
+          "publisher": "Aubiblio Studios LLC",
+          "release_date": "2024-01-18",
+          "runtime_min": 146,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CSQKFLHB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "noches-blancas"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0FHW9KHSQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CSQKFLHB",
           "type": "libex-import"
         }
       ],
@@ -5813,57 +5811,6 @@
         }
       ],
       "title": "Noches blancas"
-    },
-    "noches-blancas-white-nights": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fiodor-dostoievski"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "noches-blancas-white-nights",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CSQKFLHB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71k8s+dvOiL.jpg",
-          "id": "geraldo-medina-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2024-01-18",
-          "runtime_min": 146,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CSQKFLHB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "noches-blancas-white-nights"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CSQKFLHB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Noches blancas [White Nights]"
     },
     "noches-blancas-white-nights-feodor-dostoievski": {
       "added_at": "2026-07-29",
@@ -11624,6 +11571,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "gerardo-prat-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B072NYB5FC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818HHXcsT+L.jpg",
+          "id": "gerardo-prat-2017",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerardo-prat"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2017-04-27",
+          "runtime_min": 284,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B072NYB5FC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nocturno-de-chile"
+        },
         "walter-krochmal-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11658,59 +11633,14 @@
           "imported_at": "2026-07-29",
           "ref": "B004H2661E",
           "type": "libex-import"
-        }
-      ],
-      "title": "Nocturno de Chile"
-    },
-    "nocturno-de-chile-by-night-in-chile": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "roberto-bolano"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "nocturno-de-chile-by-night-in-chile",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerardo-prat-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B072NYB5FC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818HHXcsT+L.jpg",
-          "id": "gerardo-prat-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerardo-prat"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-04-27",
-          "runtime_min": 284,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B072NYB5FC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nocturno-de-chile-by-night-in-chile"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B072NYB5FC",
           "type": "libex-import"
         }
       ],
-      "title": "Nocturno de Chile [By Night in Chile]"
+      "title": "Nocturno de Chile"
     },
     "nocturno-nightwork": {
       "added_at": "2026-07-29",

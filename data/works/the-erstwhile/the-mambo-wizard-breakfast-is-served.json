@@ -11394,6 +11394,7 @@
         "agatha-christie"
       ],
       "genres": [
+        "classics",
         "mystery"
       ],
       "id": "the-man-in-the-brown-suit",
@@ -11860,30 +11861,7 @@
             }
           ],
           "work": "the-man-in-the-brown-suit"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08KQ5F9SQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Man in the Brown Suit"
-    },
-    "the-man-in-the-brown-suit-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "classics",
-        "mystery"
-      ],
-      "id": "the-man-in-the-brown-suit-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "zehra-jane-naqvi-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -12097,17 +12075,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-man-in-the-brown-suit-amazonclassics-edition"
+          "work": "the-man-in-the-brown-suit"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08KQ5F9SQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1799744728",
           "type": "libex-import"
         }
       ],
-      "title": "The Man in the Brown Suit (AmazonClassics Edition)"
+      "title": "The Man in the Brown Suit"
     },
     "the-man-in-the-brown-suit-an-anne-beddingfeld-story": {
       "added_at": "2026-07-29",

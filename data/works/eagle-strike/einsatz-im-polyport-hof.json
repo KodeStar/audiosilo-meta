@@ -1225,6 +1225,10 @@
             {
               "asin": "B07YWWTBW7",
               "region": "es"
+            },
+            {
+              "asin": "B00WGSFZSQ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/710Y7zJS4vL.jpg",
@@ -1242,6 +1246,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07YWWTBW7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00WGSFZSQ",
               "type": "libex-import"
             }
           ],
@@ -1291,62 +1300,14 @@
           "imported_at": "2026-07-29",
           "ref": "B07YWWTBW7",
           "type": "libex-import"
-        }
-      ],
-      "title": "Einstein para despistados"
-    },
-    "einstein-para-despistados-einstein-clueless": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "allan-percy"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "einstein-para-despistados-einstein-clueless",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adriana-sananes-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00WGSFZSQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/710Y7zJS4vL.jpg",
-          "id": "adriana-sananes-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adriana-sananes",
-            "walter-krochmal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2015-04-22",
-          "runtime_min": 227,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00WGSFZSQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "einstein-para-despistados-einstein-clueless"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00WGSFZSQ",
           "type": "libex-import"
         }
       ],
-      "title": "Einstein para despistados [Einstein Clueless]"
+      "title": "Einstein para despistados"
     },
     "einstein-spanish-edition": {
       "added_at": "2026-07-29",

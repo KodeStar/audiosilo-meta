@@ -7988,6 +7988,7 @@
         "diana-gabaldon"
       ],
       "genres": [
+        "fantasy",
         "historical-fiction",
         "historical-romance",
         "romance"
@@ -8810,31 +8811,7 @@
             }
           ],
           "work": "escrito-con-la-sangre-de-mi-corazon-narracion-en-castellano-written-in-my-own-hearts-blood"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CKFMHDZV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Escrito con la sangre de mi corazón (Narración en Castellano) [Written in My Own Heart’s Blood]"
-    },
-    "escrito-con-la-sangre-de-mi-corazon-written-in-my-own-hearts-blood": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "escrito-con-la-sangre-de-mi-corazon-written-in-my-own-hearts-blood",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "yopa-ponce-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9653,17 +9630,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "escrito-con-la-sangre-de-mi-corazon-written-in-my-own-hearts-blood"
+          "work": "escrito-con-la-sangre-de-mi-corazon-narracion-en-castellano-written-in-my-own-hearts-blood"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CKFMHDZV",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KT28414",
           "type": "libex-import"
         }
       ],
-      "title": "Escrito con la sangre de mi corazón [Written in My Own Heart’s Blood]"
+      "title": "Escrito con la sangre de mi corazón (Narración en Castellano) [Written in My Own Heart’s Blood]"
     },
     "escrito-en-sangre": {
       "added_at": "2026-07-29",
@@ -9687,6 +9669,10 @@
             {
               "asin": "B07Z427XDD",
               "region": "es"
+            },
+            {
+              "asin": "B07PJ113TM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81EmARni1kL.jpg",
@@ -9704,6 +9690,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07Z427XDD",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07PJ113TM",
+              "type": "libex-import"
             }
           ],
           "work": "escrito-en-sangre"
@@ -9715,55 +9706,7 @@
             {
               "asin": "B07YXXF26N",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81EmARni1kL.jpg",
-          "id": "miguel-angel-alvarez-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "miguel-angel-alvarez"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2019-04-05",
-          "runtime_min": 811,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXXF26N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "escrito-en-sangre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXXF26N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Escrito en sangre"
-    },
-    "escrito-en-sangre-written-in-blood": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "federico-axat"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "escrito-en-sangre-written-in-blood",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "miguel-angel-alvarez-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07P91W487",
               "region": "us"
@@ -10184,73 +10127,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXXF26N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07P91W487",
               "type": "libex-import"
             }
           ],
-          "work": "escrito-en-sangre-written-in-blood"
+          "work": "escrito-en-sangre"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
+          "ref": "B07YXXF26N",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
           "ref": "B07P91W487",
           "type": "libex-import"
-        }
-      ],
-      "title": "Escrito en sangre [Written in Blood]"
-    },
-    "escrito-en-sangre-written-in-blood-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "federico-axat"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "escrito-en-sangre-written-in-blood-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-filba-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07PJ113TM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81EmARni1kL.jpg",
-          "id": "jordi-filba-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-filba"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2020-10-01",
-          "runtime_min": 852,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07PJ113TM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "escrito-en-sangre-written-in-blood-narracion-en-castellano"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07PJ113TM",
           "type": "libex-import"
         }
       ],
-      "title": "Escrito en sangre [Written in Blood] (Narración en Castellano)"
+      "title": "Escrito en sangre"
     },
     "escuadron-cielo-la-coleccion-escuadron-skyward-flight-the-collection": {
       "added_at": "2026-08-02",
@@ -11190,6 +11096,7 @@
       ],
       "genres": [
         "action-adventure",
+        "epic-fantasy",
         "fantasy",
         "romance"
       ],
@@ -11204,64 +11111,7 @@
             {
               "asin": "B0GQDRRN34",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91G03PbvQuL.jpg",
-          "id": "belen-heredia-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "belen-heredia",
-            "ezequiel-alvarez"
-          ],
-          "publisher": "BookaVivo",
-          "release_date": "2026-03-03",
-          "runtime_min": 1506,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GQDRRN34",
-              "type": "libex-import"
-            }
-          ],
-          "work": "escudo-de-gorriones"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0GQDRRN34",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Escudo de gorriones"
-    },
-    "escudo-de-gorriones-shield-of-sparrows": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "devney-perry",
-        "julian-alejo-sosa"
-      ],
-      "credits": [
-        {
-          "person": "julian-alejo-sosa",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "escudo-de-gorriones-shield-of-sparrows",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "belen-heredia-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0GQCX17HJ",
               "region": "us"
@@ -11281,21 +11131,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0GQDRRN34",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0GQCX17HJ",
               "type": "libex-import"
             }
           ],
-          "work": "escudo-de-gorriones-shield-of-sparrows"
+          "work": "escudo-de-gorriones"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GQDRRN34",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0GQCX17HJ",
           "type": "libex-import"
         }
       ],
-      "title": "Escudo de gorriones [Shield of Sparrows]"
+      "title": "Escudo de gorriones"
     },
     "escuela-de-bolsa": {
       "added_at": "2026-07-29",
@@ -11303,7 +11163,9 @@
         "francisca-serrano"
       ],
       "genres": [
-        "finance"
+        "finance",
+        "parenting-relationships",
+        "self-help"
       ],
       "id": "escuela-de-bolsa",
       "language": "es",
@@ -11336,31 +11198,7 @@
             }
           ],
           "work": "escuela-de-bolsa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0789TG9P1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Escuela de Bolsa"
-    },
-    "escuela-de-bolsa-narracion-en-castellano-school-of-stock-exchange": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "francisca-serrano"
-      ],
-      "genres": [
-        "finance",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "escuela-de-bolsa-narracion-en-castellano-school-of-stock-exchange",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "marta-perez-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11387,17 +11225,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "escuela-de-bolsa-narracion-en-castellano-school-of-stock-exchange"
+          "work": "escuela-de-bolsa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0789TG9P1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HWVYXLY",
           "type": "libex-import"
         }
       ],
-      "title": "Escuela de Bolsa (Narración en Castellano) [School of Stock Exchange]"
+      "title": "Escuela de Bolsa"
     },
     "escuela-de-magia-schooled-in-magic": {
       "added_at": "2026-08-02",

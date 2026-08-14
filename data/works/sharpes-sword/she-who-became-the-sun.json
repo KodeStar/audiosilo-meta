@@ -10056,6 +10056,7 @@
         "harlan-coben"
       ],
       "genres": [
+        "mystery",
         "thriller-suspense",
         "young-adult"
       ],
@@ -10063,6 +10064,185 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-meyers-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005MQT4K4",
+              "region": "us"
+            },
+            {
+              "asin": "1407490826",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1158583,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 983922,
+              "start_ms": 1158583,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2076561,
+              "start_ms": 2142505,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1563260,
+              "start_ms": 4219066,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 844370,
+              "start_ms": 5782326,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 814742,
+              "start_ms": 6626696,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 608316,
+              "start_ms": 7441438,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1130765,
+              "start_ms": 8049754,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1375550,
+              "start_ms": 9180519,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1073319,
+              "start_ms": 10556069,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1275611,
+              "start_ms": 11629388,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 634926,
+              "start_ms": 12904999,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 867358,
+              "start_ms": 13539925,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1224992,
+              "start_ms": 14407283,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2265757,
+              "start_ms": 15632275,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1018984,
+              "start_ms": 17898032,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 725345,
+              "start_ms": 18917016,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 681134,
+              "start_ms": 19642361,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1110146,
+              "start_ms": 20323495,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 725577,
+              "start_ms": 21433641,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 428826,
+              "start_ms": 22159218,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 770949,
+              "start_ms": 22588044,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 716336,
+              "start_ms": 23358993,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1161323,
+              "start_ms": 24075329,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1282438,
+              "start_ms": 25236652,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 340822,
+              "start_ms": 26519090,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1194063,
+              "start_ms": 26859912,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 12817,
+              "start_ms": 28053975,
+              "title": "Chapter 28"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51QbG6lvJ-L.jpg",
+          "id": "eric-meyers-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-meyers"
+          ],
+          "publisher": "Whole Story Audiobooks",
+          "release_date": "2011-09-14",
+          "runtime_min": 467,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005MQT4K4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1407490826",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shelter-harlan-coben"
+        },
         "nick-podehl-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10413,6 +10593,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09BJYVQ2S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005MQT4K4",
           "type": "libex-import"
         }
       ],
@@ -12199,208 +12384,6 @@
         }
       ],
       "title": "Shelter the Sea"
-    },
-    "shelter-young-adult-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "harlan-coben"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "shelter-young-adult-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eric-meyers-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005MQT4K4",
-              "region": "us"
-            },
-            {
-              "asin": "1407490826",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1158583,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 983922,
-              "start_ms": 1158583,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2076561,
-              "start_ms": 2142505,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1563260,
-              "start_ms": 4219066,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 844370,
-              "start_ms": 5782326,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 814742,
-              "start_ms": 6626696,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 608316,
-              "start_ms": 7441438,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1130765,
-              "start_ms": 8049754,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1375550,
-              "start_ms": 9180519,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1073319,
-              "start_ms": 10556069,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1275611,
-              "start_ms": 11629388,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 634926,
-              "start_ms": 12904999,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 867358,
-              "start_ms": 13539925,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1224992,
-              "start_ms": 14407283,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2265757,
-              "start_ms": 15632275,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1018984,
-              "start_ms": 17898032,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 725345,
-              "start_ms": 18917016,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 681134,
-              "start_ms": 19642361,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1110146,
-              "start_ms": 20323495,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 725577,
-              "start_ms": 21433641,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 428826,
-              "start_ms": 22159218,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 770949,
-              "start_ms": 22588044,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 716336,
-              "start_ms": 23358993,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1161323,
-              "start_ms": 24075329,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1282438,
-              "start_ms": 25236652,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 340822,
-              "start_ms": 26519090,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1194063,
-              "start_ms": 26859912,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 12817,
-              "start_ms": 28053975,
-              "title": "Chapter 28"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51QbG6lvJ-L.jpg",
-          "id": "eric-meyers-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eric-meyers"
-          ],
-          "publisher": "Whole Story Audiobooks",
-          "release_date": "2011-09-14",
-          "runtime_min": 467,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005MQT4K4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1407490826",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shelter-young-adult-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B005MQT4K4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shelter (Young Adult Edition)"
     },
     "sheltered": {
       "added_at": "2026-08-01",

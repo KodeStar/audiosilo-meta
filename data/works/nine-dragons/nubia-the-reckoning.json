@@ -8697,7 +8697,11 @@
         "economics",
         "finance",
         "health-wellness",
-        "psychology"
+        "parenting-relationships",
+        "politics",
+        "psychology",
+        "self-help",
+        "social-sciences"
       ],
       "id": "nudge-cass-r-sunstein",
       "language": "en",
@@ -8777,35 +8781,7 @@
             }
           ],
           "work": "nudge-cass-r-sunstein"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V8L28I",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nudge"
-    },
-    "nudge-revised-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "cass-r-sunstein",
-        "richard-h-thaler"
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "politics",
-        "psychology",
-        "self-help",
-        "social-sciences"
-      ],
-      "id": "nudge-revised-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sean-pratt-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9399,17 +9375,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "nudge-revised-edition"
+          "work": "nudge-cass-r-sunstein"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8L28I",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002VAEKLW",
           "type": "libex-import"
         }
       ],
-      "title": "Nudge (Revised Edition)"
+      "title": "Nudge"
     },
     "nudge-the-final-edition": {
       "added_at": "2026-07-29",

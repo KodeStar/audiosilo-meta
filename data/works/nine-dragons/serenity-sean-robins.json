@@ -9942,12 +9942,73 @@
             }
           ],
           "work": "serpent-on-the-crown"
+        },
+        "barbara-rosenblat-2015": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UZLBGK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lFrttmn8L.jpg",
+          "id": "barbara-rosenblat-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-rosenblat"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2015-08-17",
+          "runtime_min": 383,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UZLBGK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "serpent-on-the-crown"
+        },
+        "barbara-rosenblat-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D239BDG3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jexUgqpZL.jpg",
+          "id": "barbara-rosenblat-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-rosenblat"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2024-04-30",
+          "runtime_min": 728,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D239BDG3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "serpent-on-the-crown"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZJSZG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UZLBGK",
           "type": "libex-import"
         }
       ],
@@ -10862,6 +10923,9 @@
         "philip-pullman"
       ],
       "genres": [
+        "childrens",
+        "classics",
+        "coming-of-age",
         "fantasy",
         "literary-fiction",
         "mystery",
@@ -10878,18 +10942,32 @@
             {
               "asin": "0241481015",
               "region": "us"
+            },
+            {
+              "asin": "0593398424",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 1412840,
+              "length_ms": 18970,
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
-              "length_ms": 162446,
-              "start_ms": 1412840,
+              "length_ms": 1384884,
+              "start_ms": 18970,
               "title": "Chapter 2"
+            },
+            {
+              "length_ms": 119861,
+              "start_ms": 1403854,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 37243,
+              "start_ms": 1523715,
+              "title": "Chapter 4"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51i4ydefqxL._SL500_.jpg",
@@ -10917,6 +10995,11 @@
               "imported_at": "2026-07-30",
               "ref": "0241481015",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593398424",
+              "type": "libex-import"
             }
           ],
           "work": "serpentine"
@@ -10931,6 +11014,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "0241481015",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593398424",
           "type": "libex-import"
         }
       ],

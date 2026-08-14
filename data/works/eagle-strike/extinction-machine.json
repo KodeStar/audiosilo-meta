@@ -10038,53 +10038,7 @@
             {
               "asin": "B0BYK8FSSW",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91v3NyfX4VL.jpg",
-          "id": "javier-poza-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "javier-poza"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-03-16",
-          "runtime_min": 1155,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BYK8FSSW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "extranas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BYK8FSSW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Extrañas"
-    },
-    "extranas-strangers": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guillermo-arriaga"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "extranas-strangers",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "javier-poza-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BYKFNWFL",
               "region": "us"
@@ -10535,21 +10489,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BYK8FSSW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BYKFNWFL",
               "type": "libex-import"
             }
           ],
-          "work": "extranas-strangers"
+          "work": "extranas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BYK8FSSW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BYKFNWFL",
           "type": "libex-import"
         }
       ],
-      "title": "Extrañas [Strangers]"
+      "title": "Extrañas"
     },
     "extraordinarily-badass-agile-coaching": {
       "added_at": "2026-07-29",

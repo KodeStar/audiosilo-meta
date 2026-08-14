@@ -4376,7 +4376,7 @@
       ],
       "title": "No Place for Truth"
     },
-    "no-place-for-us": {
+    "no-place-for-us-german-edition": {
       "added_at": "2026-07-29",
       "authors": [
         "alicia-zett"
@@ -4386,7 +4386,7 @@
         "lgbtq",
         "romance"
       ],
-      "id": "no-place-for-us",
+      "id": "no-place-for-us-german-edition",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -4394,6 +4394,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B09DL36B8K",
+              "region": "us"
+            },
             {
               "asin": "B09DL4MPTL",
               "region": "de"
@@ -4413,59 +4417,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B09DL4MPTL",
+              "ref": "B09DL36B8K",
               "type": "libex-import"
-            }
-          ],
-          "work": "no-place-for-us"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09DL4MPTL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "No Place For Us"
-    },
-    "no-place-for-us-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alicia-zett"
-      ],
-      "genres": [
-        "lgbtq",
-        "romance"
-      ],
-      "id": "no-place-for-us-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dagmar-bittner-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09DL36B8K",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81N5Zp-H2rL.jpg",
-          "id": "dagmar-bittner-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dagmar-bittner",
-            "jana-kozewa"
-          ],
-          "publisher": "Argon Verlag",
-          "release_date": "2022-01-28",
-          "runtime_min": 707,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B09DL36B8K",
+              "ref": "B09DL4MPTL",
               "type": "libex-import"
             }
           ],
@@ -4476,6 +4433,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09DL36B8K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09DL4MPTL",
           "type": "libex-import"
         }
       ],

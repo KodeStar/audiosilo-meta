@@ -2985,32 +2985,7 @@
             }
           ],
           "work": "the-sea-watch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529050375",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Sea Watch"
-    },
-    "the-sea-watch-shadows-of-the-apt-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "the-sea-watch-shadows-of-the-apt-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3299,17 +3274,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sea-watch-shadows-of-the-apt-6"
+          "work": "the-sea-watch"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529050375",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMP36T3N",
           "type": "libex-import"
         }
       ],
-      "title": "The Sea Watch: Shadows of the Apt 6"
+      "title": "The Sea Watch"
     },
     "the-sea-witch": {
       "added_at": "2026-08-02",
@@ -6642,57 +6622,6 @@
       ],
       "title": "The Seagull"
     },
-    "the-seagull-a-vera-stanhope-novel-8": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-seagull-a-vera-stanhope-novel-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "janine-birkett-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DLBH1838",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91WG3kr8VLL.jpg",
-          "id": "janine-birkett-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "janine-birkett"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-10-29",
-          "runtime_min": 678,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DLBH1838",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-seagull-a-vera-stanhope-novel-8"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DLBH1838",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Seagull: A Vera Stanhope Novel 8"
-    },
     "the-seagull-ann-cleeves": {
       "added_at": "2026-07-29",
       "authors": [
@@ -7013,12 +6942,45 @@
             }
           ],
           "work": "the-seagull-ann-cleeves"
+        },
+        "janine-birkett-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBH1838",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WG3kr8VLL.jpg",
+          "id": "janine-birkett-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "janine-birkett"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 678,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBH1838",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-seagull-ann-cleeves"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0756N2ZC1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBH1838",
           "type": "libex-import"
         }
       ],

@@ -574,6 +574,7 @@
         "ralph-edenhofer"
       ],
       "genres": [
+        "hard-science-fiction",
         "science",
         "science-fiction",
         "short-stories"
@@ -589,6 +590,10 @@
             {
               "asin": "B08PDM4YXM",
               "region": "de"
+            },
+            {
+              "asin": "B08PDMJ7Y9",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81nROEpKT7L.jpg",
@@ -606,6 +611,11 @@
               "imported_at": "2026-07-29",
               "ref": "B08PDM4YXM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08PDMJ7Y9",
+              "type": "libex-import"
             }
           ],
           "work": "motherlode"
@@ -615,6 +625,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08PDM4YXM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08PDMJ7Y9",
           "type": "libex-import"
         }
       ],
@@ -709,58 +724,6 @@
         }
       ],
       "title": "Motherlode [Dramatized Adaptation]"
-    },
-    "motherlode-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ralph-edenhofer"
-      ],
-      "genres": [
-        "hard-science-fiction",
-        "science-fiction",
-        "short-stories"
-      ],
-      "id": "motherlode-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "florian-clyde-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08PDMJ7Y9",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nROEpKT7L.jpg",
-          "id": "florian-clyde-2020",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "florian-clyde"
-          ],
-          "publisher": "Hörbuchmanufaktur Berlin",
-          "release_date": "2020-12-31",
-          "runtime_min": 231,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08PDMJ7Y9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "motherlode-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08PDMJ7Y9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Motherlode (German edition)"
     },
     "mothers-and-murderers": {
       "added_at": "2026-07-29",

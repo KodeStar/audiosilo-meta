@@ -3049,6 +3049,7 @@
       "genres": [
         "action-adventure",
         "classics",
+        "literary-fiction",
         "mystery"
       ],
       "id": "whose-body",
@@ -3267,6 +3268,106 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B07VPWXDR9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "whose-body"
+        },
+        "guy-mott-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1978676646",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1588035,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1946110,
+              "start_ms": 1588035,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1533120,
+              "start_ms": 3534145,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2554102,
+              "start_ms": 5067265,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2796100,
+              "start_ms": 7621367,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3225112,
+              "start_ms": 10417467,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1873084,
+              "start_ms": 13642579,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 979092,
+              "start_ms": 15515663,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1536092,
+              "start_ms": 16494755,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2108116,
+              "start_ms": 18030847,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1209109,
+              "start_ms": 20138963,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 917095,
+              "start_ms": 21348072,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2423095,
+              "start_ms": 22265167,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 220611,
+              "start_ms": 24688262,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sjKaVxJyL.jpg",
+          "id": "guy-mott-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "guy-mott"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-05-07",
+          "runtime_min": 414,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1978676646",
               "type": "libex-import"
             }
           ],
@@ -3645,133 +3746,14 @@
           "imported_at": "2026-08-08",
           "ref": "B07VPWXDR9",
           "type": "libex-import"
-        }
-      ],
-      "title": "Whose Body?"
-    },
-    "whose-body-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dorothy-l-sayers"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "whose-body-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "guy-mott-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1978676646",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1588035,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1946110,
-              "start_ms": 1588035,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1533120,
-              "start_ms": 3534145,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2554102,
-              "start_ms": 5067265,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2796100,
-              "start_ms": 7621367,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3225112,
-              "start_ms": 10417467,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1873084,
-              "start_ms": 13642579,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 979092,
-              "start_ms": 15515663,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1536092,
-              "start_ms": 16494755,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2108116,
-              "start_ms": 18030847,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1209109,
-              "start_ms": 20138963,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 917095,
-              "start_ms": 21348072,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2423095,
-              "start_ms": 22265167,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 220611,
-              "start_ms": 24688262,
-              "title": "Chapter 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81sjKaVxJyL.jpg",
-          "id": "guy-mott-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "guy-mott"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-05-07",
-          "runtime_min": 414,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1978676646",
-              "type": "libex-import"
-            }
-          ],
-          "work": "whose-body-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1978676646",
           "type": "libex-import"
         }
       ],
-      "title": "Whose Body? (AmazonClassics Edition)"
+      "title": "Whose Body?"
     },
     "whose-body-dorothy-sayers": {
       "added_at": "2026-07-29",
@@ -9898,6 +9880,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jim-seybert-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1666106240",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71DQXZfcHJS.jpg",
+          "id": "jim-seybert-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-seybert"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2021-07-13",
+          "runtime_min": 552,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1666106240",
+              "type": "libex-import"
+            }
+          ],
+          "work": "why-dont-students-like-school"
+        },
         "paul-costanzo-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9932,61 +9942,14 @@
           "imported_at": "2026-07-29",
           "ref": "B005KT3Y22",
           "type": "libex-import"
-        }
-      ],
-      "title": "Why Don't Students Like School?"
-    },
-    "why-dont-students-like-school-2nd-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "daniel-t-willingham"
-      ],
-      "genres": [
-        "education",
-        "health-wellness",
-        "psychology"
-      ],
-      "id": "why-dont-students-like-school-2nd-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jim-seybert-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1666106240",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71DQXZfcHJS.jpg",
-          "id": "jim-seybert-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jim-seybert"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2021-07-13",
-          "runtime_min": 552,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1666106240",
-              "type": "libex-import"
-            }
-          ],
-          "work": "why-dont-students-like-school-2nd-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1666106240",
           "type": "libex-import"
         }
       ],
-      "title": "Why Don't Students Like School? (2nd Edition)"
+      "title": "Why Don't Students Like School?"
     },
     "why-dont-we-get-drunk": {
       "added_at": "2026-08-01",

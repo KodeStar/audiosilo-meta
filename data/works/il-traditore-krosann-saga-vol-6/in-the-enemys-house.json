@@ -5892,7 +5892,9 @@
         "stephen-r-lawhead"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "epic-fantasy",
         "fantasy",
         "young-adult"
       ],
@@ -5900,6 +5902,158 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-clemence-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H98KR6B",
+              "region": "us"
+            },
+            {
+              "asin": "1648794149",
+              "region": "us"
+            },
+            {
+              "asin": "1648794165",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 26924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 100739,
+              "start_ms": 26924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4124398,
+              "start_ms": 127663,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3779929,
+              "start_ms": 4252061,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3828227,
+              "start_ms": 8031990,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3332992,
+              "start_ms": 11860217,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4000055,
+              "start_ms": 15193209,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 127680,
+              "start_ms": 19193264,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3358935,
+              "start_ms": 19320944,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3864915,
+              "start_ms": 22679879,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3401909,
+              "start_ms": 26544794,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3319153,
+              "start_ms": 29946703,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3728200,
+              "start_ms": 33265856,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 82800,
+              "start_ms": 36994056,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 452577,
+              "start_ms": 37076856,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FgyIAEgML.jpg",
+          "id": "andy-clemence-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-clemence",
+            "christopher-graybill",
+            "christopher-sheeren",
+            "david-coyne",
+            "drew-kopas",
+            "dylan-lynch",
+            "elizabeth-jernigan",
+            "eric-messner",
+            "full-cast",
+            "james-konicek",
+            "joe-brack",
+            "johann-dettweiler",
+            "karen-novak",
+            "ken-jackson",
+            "michael-glenn"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 625,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H98KR6B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794149",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794149",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794165",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794165",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H98KR6B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "in-the-hall-of-the-dragon-king"
+        },
         "tim-gregory-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6216,179 +6370,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0052O76DI",
           "type": "libex-import"
-        }
-      ],
-      "title": "In the Hall of the Dragon King"
-    },
-    "in-the-hall-of-the-dragon-king-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "stephen-r-lawhead"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "in-the-hall-of-the-dragon-king-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-clemence-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H98KR6B",
-              "region": "us"
-            },
-            {
-              "asin": "1648794149",
-              "region": "us"
-            },
-            {
-              "asin": "1648794165",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 26924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 100739,
-              "start_ms": 26924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4124398,
-              "start_ms": 127663,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3779929,
-              "start_ms": 4252061,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3828227,
-              "start_ms": 8031990,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3332992,
-              "start_ms": 11860217,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4000055,
-              "start_ms": 15193209,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 127680,
-              "start_ms": 19193264,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3358935,
-              "start_ms": 19320944,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3864915,
-              "start_ms": 22679879,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3401909,
-              "start_ms": 26544794,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3319153,
-              "start_ms": 29946703,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3728200,
-              "start_ms": 33265856,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 82800,
-              "start_ms": 36994056,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 452577,
-              "start_ms": 37076856,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FgyIAEgML.jpg",
-          "id": "andy-clemence-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-clemence",
-            "christopher-graybill",
-            "christopher-sheeren",
-            "david-coyne",
-            "drew-kopas",
-            "dylan-lynch",
-            "elizabeth-jernigan",
-            "eric-messner",
-            "full-cast",
-            "james-konicek",
-            "joe-brack",
-            "johann-dettweiler",
-            "karen-novak",
-            "ken-jackson",
-            "michael-glenn"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 625,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H98KR6B",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794149",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794149",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794165",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794165",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H98KR6B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "in-the-hall-of-the-dragon-king-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H98KR6B",
@@ -6420,7 +6402,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "In the Hall of the Dragon King [Dramatized Adaptation]"
+      "title": "In the Hall of the Dragon King"
     },
     "in-the-hall-of-the-dragon-king-stephen-lawhead": {
       "added_at": "2026-08-02",

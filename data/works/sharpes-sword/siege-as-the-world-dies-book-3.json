@@ -8653,54 +8653,7 @@
             {
               "asin": "B084YQMNWJ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FRNGBWGKL.jpg",
-          "id": "andres-r-penalosa-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andres-r-penalosa",
-            "hotghost-productions"
-          ],
-          "publisher": "Kazravan Publishing",
-          "release_date": "2020-02-21",
-          "runtime_min": 88,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B084YQMNWJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "siempre-se-cierra"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B084YQMNWJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Siempre Se Cierra"
-    },
-    "siempre-se-cierra-always-be-closing": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "omid-kazravan"
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "siempre-se-cierra-always-be-closing",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andres-r-penalosa-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B084Z65N7K",
               "region": "us"
@@ -8802,21 +8755,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B084YQMNWJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B084Z65N7K",
               "type": "libex-import"
             }
           ],
-          "work": "siempre-se-cierra-always-be-closing"
+          "work": "siempre-se-cierra"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B084YQMNWJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B084Z65N7K",
           "type": "libex-import"
         }
       ],
-      "title": "Siempre Se Cierra [Always Be Closing]"
+      "title": "Siempre Se Cierra"
     },
     "siempre-tu-2": {
       "added_at": "2026-08-02",
@@ -9702,7 +9665,7 @@
       ],
       "title": "Siete esqueletos decapitados 1"
     },
-    "siete-piedras-para-resistir-o-caer-narracion-en-castellano-seven-stones-to-stand-or-fall": {
+    "siete-piedras-para-resistir-o-caer-seven-stones-to-stand-or-fall": {
       "added_at": "2026-08-02",
       "authors": [
         "diana-gabaldon"
@@ -9712,7 +9675,7 @@
         "historical-romance",
         "romance"
       ],
-      "id": "siete-piedras-para-resistir-o-caer-narracion-en-castellano-seven-stones-to-stand-or-fall",
+      "id": "siete-piedras-para-resistir-o-caer-seven-stones-to-stand-or-fall",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -9884,32 +9847,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "siete-piedras-para-resistir-o-caer-narracion-en-castellano-seven-stones-to-stand-or-fall"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09X62M79J",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Siete Piedras para Resistir o Caer (Narración en Castellano) [Seven Stones to Stand or Fall]"
-    },
-    "siete-piedras-para-resistir-o-caer-seven-stones-to-stand-or-fall": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "siete-piedras-para-resistir-o-caer-seven-stones-to-stand-or-fall",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "siete-piedras-para-resistir-o-caer-seven-stones-to-stand-or-fall"
+        },
         "yopa-ponce-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10175,6 +10114,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09P8X57LQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09X62M79J",
           "type": "libex-import"
         }
       ],

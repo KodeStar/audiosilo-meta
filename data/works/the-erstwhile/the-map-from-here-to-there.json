@@ -10582,37 +10582,7 @@
             }
           ],
           "work": "the-mark-of-athena"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B009H8JG88",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B009H8JG88",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Mark of Athena"
-    },
-    "the-mark-of-athena-heroes-of-olympus-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rick-riordan"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "mythology"
-      ],
-      "id": "the-mark-of-athena-heroes-of-olympus-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "joshua-swanson-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10920,17 +10890,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-mark-of-athena-heroes-of-olympus-book-3"
+          "work": "the-mark-of-athena"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B009H8JG88",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B009H8JG88",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00IEAOMT8",
           "type": "libex-import"
         }
       ],
-      "title": "The Mark of Athena (Heroes of Olympus Book 3)"
+      "title": "The Mark of Athena"
     },
     "the-mark-of-chaos-and-creation": {
       "added_at": "2026-08-01",

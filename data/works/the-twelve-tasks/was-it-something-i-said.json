@@ -4049,7 +4049,13 @@
         "henry-james"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "historical-fiction",
+        "historical-romance",
+        "history",
+        "literary-fiction",
+        "military-history",
+        "romance"
       ],
       "id": "washington-square",
       "language": "en",
@@ -4571,142 +4577,34 @@
           ],
           "work": "washington-square"
         },
-        "lorna-raver-2008": {
+        "john-mcdonough-2010": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-29",
           "asin": [
             {
-              "asin": "B002V5J4WM",
+              "asin": "B00389G9Z0",
               "region": "us"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fMvPIv7RL.jpg",
-          "id": "lorna-raver-2008",
+          "cover_url": "https://m.media-amazon.com/images/I/A1bQi0DzfJL.jpg",
+          "id": "john-mcdonough-2010",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "lorna-raver"
+            "john-mcdonough"
           ],
-          "publisher": "Tantor Audio",
-          "release_date": "2008-11-24",
-          "runtime_min": 471,
+          "publisher": "Recorded Books",
+          "release_date": "2010-02-12",
+          "runtime_min": 483,
           "sources": [
             {
-              "imported_at": "2026-08-02",
-              "ref": "B002V5J4WM",
+              "imported_at": "2026-07-29",
+              "ref": "B00389G9Z0",
               "type": "libex-import"
             }
           ],
           "work": "washington-square"
         },
-        "magda-allani-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1908671181",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81AqP2JRdtL.jpg",
-          "id": "magda-allani-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "magda-allani"
-          ],
-          "publisher": "Slow Burn Publications",
-          "release_date": "2020-04-16",
-          "runtime_min": 456,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1908671181",
-              "type": "libex-import"
-            }
-          ],
-          "work": "washington-square"
-        },
-        "peter-joyce-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B006U0XE5C",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61dXPTkxb-L.jpg",
-          "id": "peter-joyce-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-joyce"
-          ],
-          "publisher": "Assembled Stories",
-          "release_date": "2012-01-05",
-          "runtime_min": 480,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B006U0XE5C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "washington-square"
-        },
-        "william-hope-2012": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00A7FQE0S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61i5OcJR5wL.jpg",
-          "id": "william-hope-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "william-hope"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2012-11-29",
-          "runtime_min": 182,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00A7FQE0S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "washington-square"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B079Q5JV8N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Washington Square"
-    },
-    "washington-square-blackstone-audio-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "henry-james"
-      ],
-      "genres": [
-        "classics",
-        "history",
-        "military-history"
-      ],
-      "id": "washington-square-blackstone-audio-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "lloyd-james-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4825,71 +4723,139 @@
               "type": "libex-import"
             }
           ],
-          "work": "washington-square-blackstone-audio-edition"
+          "work": "washington-square"
+        },
+        "lorna-raver-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5J4WM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fMvPIv7RL.jpg",
+          "id": "lorna-raver-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lorna-raver"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2008-11-24",
+          "runtime_min": 471,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5J4WM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "washington-square"
+        },
+        "magda-allani-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1908671181",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AqP2JRdtL.jpg",
+          "id": "magda-allani-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "magda-allani"
+          ],
+          "publisher": "Slow Burn Publications",
+          "release_date": "2020-04-16",
+          "runtime_min": 456,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1908671181",
+              "type": "libex-import"
+            }
+          ],
+          "work": "washington-square"
+        },
+        "peter-joyce-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006U0XE5C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61dXPTkxb-L.jpg",
+          "id": "peter-joyce-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-joyce"
+          ],
+          "publisher": "Assembled Stories",
+          "release_date": "2012-01-05",
+          "runtime_min": 480,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006U0XE5C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "washington-square"
+        },
+        "william-hope-2012": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00A7FQE0S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61i5OcJR5wL.jpg",
+          "id": "william-hope-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-hope"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2012-11-29",
+          "runtime_min": 182,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00A7FQE0S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "washington-square"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-08-02",
+          "ref": "B079Q5JV8N",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-07-29",
           "ref": "B002V1NFB2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Washington Square (Blackstone Audio Edition)"
-    },
-    "washington-square-recorded-books-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "henry-james"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "historical-romance",
-        "literary-fiction",
-        "romance"
-      ],
-      "id": "washington-square-recorded-books-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-mcdonough-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00389G9Z0",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1bQi0DzfJL.jpg",
-          "id": "john-mcdonough-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-mcdonough"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2010-02-12",
-          "runtime_min": 483,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00389G9Z0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "washington-square-recorded-books-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00389G9Z0",
           "type": "libex-import"
         }
       ],
-      "title": "Washington Square (Recorded Books Edition)"
+      "title": "Washington Square"
     },
     "washingtons-circle": {
       "added_at": "2026-07-29",

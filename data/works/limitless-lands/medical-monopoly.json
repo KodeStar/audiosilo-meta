@@ -5726,6 +5726,7 @@
         "marco-aurelio"
       ],
       "genres": [
+        "mythology",
         "philosophy",
         "politics"
       ],
@@ -5733,6 +5734,43 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "dario-matamoros-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BG9972F8",
+              "region": "us"
+            },
+            {
+              "asin": "B0BG97S35Y",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91v+fE4+0bL.jpg",
+          "id": "dario-matamoros-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dario-matamoros"
+          ],
+          "publisher": "Alojamente clsico",
+          "release_date": "2022-09-24",
+          "runtime_min": 266,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BG9972F8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BG97S35Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditaciones"
+        },
         "mario-gas-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5775,6 +5813,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BGYJ1FPV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BG9972F8",
           "type": "libex-import"
         }
       ],
@@ -5892,127 +5935,7 @@
       ],
       "title": "Meditaciones Guiadas Para Sueño Profundo, Insomnio y Relajación [Guided Meditations for Deep Sleep, Insomnia and Relaxation]"
     },
-    "meditaciones-meditations": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marco-aurelio"
-      ],
-      "genres": [
-        "mythology",
-        "philosophy",
-        "politics"
-      ],
-      "id": "meditaciones-meditations",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dario-matamoros-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BG9972F8",
-              "region": "us"
-            },
-            {
-              "asin": "B0BG97S35Y",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91v+fE4+0bL.jpg",
-          "id": "dario-matamoros-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dario-matamoros"
-          ],
-          "publisher": "Alojamente clsico",
-          "release_date": "2022-09-24",
-          "runtime_min": 266,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BG9972F8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BG97S35Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "meditaciones-meditations"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BG9972F8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Meditaciones [Meditations]"
-    },
     "meditaciones-para-mujeres-que-aman-demasiado": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robin-norwood",
-        "lidia-lavedan"
-      ],
-      "credits": [
-        {
-          "person": "lidia-lavedan",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "meditaciones-para-mujeres-que-aman-demasiado",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isabel-camara-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0F6VX13JQ",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71hzJKQA0WL.jpg",
-          "id": "isabel-camara-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isabel-camara"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2025-04-30",
-          "runtime_min": 180,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0F6VX13JQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "meditaciones-para-mujeres-que-aman-demasiado"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0F6VX13JQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Meditaciones para mujeres que aman demasiado"
-    },
-    "meditaciones-para-mujeres-que-aman-demasiado-daily-meditations-for-women-who-love-too-much": {
       "added_at": "2026-07-29",
       "authors": [
         "robin-norwood",
@@ -6030,7 +5953,7 @@
         "religion-spirituality",
         "self-help"
       ],
-      "id": "meditaciones-para-mujeres-que-aman-demasiado-daily-meditations-for-women-who-love-too-much",
+      "id": "meditaciones-para-mujeres-que-aman-demasiado",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -6038,6 +5961,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0F6VX13JQ",
+              "region": "es"
+            },
             {
               "asin": "B0F6VRTQ4K",
               "region": "us"
@@ -6056,21 +5983,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0F6VX13JQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0F6VRTQ4K",
               "type": "libex-import"
             }
           ],
-          "work": "meditaciones-para-mujeres-que-aman-demasiado-daily-meditations-for-women-who-love-too-much"
+          "work": "meditaciones-para-mujeres-que-aman-demasiado"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0F6VX13JQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0F6VRTQ4K",
           "type": "libex-import"
         }
       ],
-      "title": "Meditaciones para mujeres que aman demasiado [Daily Meditations for Women Who Love Too Much]"
+      "title": "Meditaciones para mujeres que aman demasiado"
     },
     "meditaciones-serie-great-ideas": {
       "added_at": "2026-07-29",
@@ -10003,6 +9940,7 @@
       "genres": [
         "biography-memoir",
         "classics",
+        "mythology",
         "philosophy",
         "politics",
         "short-stories"
@@ -10105,12 +10043,163 @@
             }
           ],
           "work": "meditations-of-marcus-aurelius"
+        },
+        "jonathan-waters-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07C4KKMT9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61bK+9iHafL.jpg",
+          "id": "jonathan-waters-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-waters"
+          ],
+          "publisher": "Combray Media",
+          "release_date": "2018-04-13",
+          "runtime_min": 396,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07C4KKMT9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations-of-marcus-aurelius"
+        },
+        "robin-homer-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07SC59FXQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ACgAqVr0L.jpg",
+          "id": "robin-homer-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-homer"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2019-05-30",
+          "runtime_min": 327,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07SC59FXQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations-of-marcus-aurelius"
+        },
+        "walter-covell-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V018V2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1205626,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 945888,
+              "start_ms": 1205626,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1087576,
+              "start_ms": 2151514,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1749484,
+              "start_ms": 3239090,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1732534,
+              "start_ms": 4988574,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1738153,
+              "start_ms": 6721108,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1670026,
+              "start_ms": 8459261,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1734995,
+              "start_ms": 10129287,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1646899,
+              "start_ms": 11864282,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1710846,
+              "start_ms": 13511181,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1533074,
+              "start_ms": 15222027,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1253924,
+              "start_ms": 16755101,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815dyfHDyAL.jpg",
+          "id": "walter-covell-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "walter-covell"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2007-11-14",
+          "runtime_min": 300,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V018V2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations-of-marcus-aurelius"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B008GWRVEW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V018V2",
           "type": "libex-import"
         }
       ],
@@ -13575,6 +13664,10 @@
         "paul-kemprecos"
       ],
       "genres": [
+        "action-adventure",
+        "alternate-history",
+        "espionage",
+        "science-fiction",
         "thriller-suspense"
       ],
       "id": "medusa-clive-cussler",
@@ -13884,12 +13977,632 @@
             }
           ],
           "work": "medusa-clive-cussler"
+        },
+        "scott-brick-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D7WCLQSG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13420,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 39427,
+              "start_ms": 13420,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 538610,
+              "start_ms": 52847,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 524167,
+              "start_ms": 591457,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 540467,
+              "start_ms": 1115624,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 490126,
+              "start_ms": 1656091,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 506938,
+              "start_ms": 2146217,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 509260,
+              "start_ms": 2653155,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 386983,
+              "start_ms": 3162415,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 524469,
+              "start_ms": 3549398,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 441457,
+              "start_ms": 4073867,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 498044,
+              "start_ms": 4515324,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 531969,
+              "start_ms": 5013368,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 510235,
+              "start_ms": 5545337,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 571118,
+              "start_ms": 6055572,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 655220,
+              "start_ms": 6626690,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 512975,
+              "start_ms": 7281910,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 395342,
+              "start_ms": 7794885,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 373980,
+              "start_ms": 8190227,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 358562,
+              "start_ms": 8564207,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 347416,
+              "start_ms": 8922769,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 546411,
+              "start_ms": 9270185,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 434491,
+              "start_ms": 9816596,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 451628,
+              "start_ms": 10251087,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 550196,
+              "start_ms": 10702715,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 509074,
+              "start_ms": 11252911,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 371240,
+              "start_ms": 11761985,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 360698,
+              "start_ms": 12133225,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 322803,
+              "start_ms": 12493923,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 345884,
+              "start_ms": 12816726,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 225047,
+              "start_ms": 13162610,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 336875,
+              "start_ms": 13387657,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 422835,
+              "start_ms": 13724532,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 523935,
+              "start_ms": 14147367,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 659168,
+              "start_ms": 14671302,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 538517,
+              "start_ms": 15330470,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 492588,
+              "start_ms": 15868987,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 549662,
+              "start_ms": 16361575,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 372633,
+              "start_ms": 16911237,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 408299,
+              "start_ms": 17283870,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 620669,
+              "start_ms": 17692169,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 527418,
+              "start_ms": 18312838,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 584910,
+              "start_ms": 18840256,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 455064,
+              "start_ms": 19425166,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 380017,
+              "start_ms": 19880230,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 484089,
+              "start_ms": 20260247,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 382525,
+              "start_ms": 20744336,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 397943,
+              "start_ms": 21126861,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 570607,
+              "start_ms": 21524804,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 336224,
+              "start_ms": 22095411,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 378438,
+              "start_ms": 22431635,
+              "title": "Chapter 51"
+            },
+            {
+              "length_ms": 519151,
+              "start_ms": 22810073,
+              "title": "Chapter 52"
+            },
+            {
+              "length_ms": 557464,
+              "start_ms": 23329224,
+              "title": "Chapter 53"
+            },
+            {
+              "length_ms": 541628,
+              "start_ms": 23886688,
+              "title": "Chapter 54"
+            },
+            {
+              "length_ms": 382525,
+              "start_ms": 24428316,
+              "title": "Chapter 55"
+            },
+            {
+              "length_ms": 317927,
+              "start_ms": 24810841,
+              "title": "Chapter 56"
+            },
+            {
+              "length_ms": 356426,
+              "start_ms": 25128768,
+              "title": "Chapter 57"
+            },
+            {
+              "length_ms": 414058,
+              "start_ms": 25485194,
+              "title": "Chapter 58"
+            },
+            {
+              "length_ms": 195651,
+              "start_ms": 25899252,
+              "title": "Chapter 59"
+            },
+            {
+              "length_ms": 507820,
+              "start_ms": 26094903,
+              "title": "Chapter 60"
+            },
+            {
+              "length_ms": 485900,
+              "start_ms": 26602723,
+              "title": "Chapter 61"
+            },
+            {
+              "length_ms": 486318,
+              "start_ms": 27088623,
+              "title": "Chapter 62"
+            },
+            {
+              "length_ms": 320806,
+              "start_ms": 27574941,
+              "title": "Chapter 63"
+            },
+            {
+              "length_ms": 321085,
+              "start_ms": 27895747,
+              "title": "Chapter 64"
+            },
+            {
+              "length_ms": 363020,
+              "start_ms": 28216832,
+              "title": "Chapter 65"
+            },
+            {
+              "length_ms": 365203,
+              "start_ms": 28579852,
+              "title": "Chapter 66"
+            },
+            {
+              "length_ms": 357401,
+              "start_ms": 28945055,
+              "title": "Chapter 67"
+            },
+            {
+              "length_ms": 302834,
+              "start_ms": 29302456,
+              "title": "Chapter 68"
+            },
+            {
+              "length_ms": 292896,
+              "start_ms": 29605290,
+              "title": "Chapter 69"
+            },
+            {
+              "length_ms": 367316,
+              "start_ms": 29898186,
+              "title": "Chapter 70"
+            },
+            {
+              "length_ms": 392649,
+              "start_ms": 30265502,
+              "title": "Chapter 71"
+            },
+            {
+              "length_ms": 375048,
+              "start_ms": 30658151,
+              "title": "Chapter 72"
+            },
+            {
+              "length_ms": 406720,
+              "start_ms": 31033199,
+              "title": "Chapter 73"
+            },
+            {
+              "length_ms": 419491,
+              "start_ms": 31439919,
+              "title": "Chapter 74"
+            },
+            {
+              "length_ms": 306456,
+              "start_ms": 31859410,
+              "title": "Chapter 75"
+            },
+            {
+              "length_ms": 321503,
+              "start_ms": 32165866,
+              "title": "Chapter 76"
+            },
+            {
+              "length_ms": 407417,
+              "start_ms": 32487369,
+              "title": "Chapter 77"
+            },
+            {
+              "length_ms": 453810,
+              "start_ms": 32894786,
+              "title": "Chapter 78"
+            },
+            {
+              "length_ms": 395017,
+              "start_ms": 33348596,
+              "title": "Chapter 79"
+            },
+            {
+              "length_ms": 374862,
+              "start_ms": 33743613,
+              "title": "Chapter 80"
+            },
+            {
+              "length_ms": 372169,
+              "start_ms": 34118475,
+              "title": "Chapter 81"
+            },
+            {
+              "length_ms": 365900,
+              "start_ms": 34490644,
+              "title": "Chapter 82"
+            },
+            {
+              "length_ms": 548130,
+              "start_ms": 34856544,
+              "title": "Chapter 83"
+            },
+            {
+              "length_ms": 395110,
+              "start_ms": 35404674,
+              "title": "Chapter 84"
+            },
+            {
+              "length_ms": 440111,
+              "start_ms": 35799784,
+              "title": "Chapter 85"
+            },
+            {
+              "length_ms": 386983,
+              "start_ms": 36239895,
+              "title": "Chapter 86"
+            },
+            {
+              "length_ms": 354800,
+              "start_ms": 36626878,
+              "title": "Chapter 87"
+            },
+            {
+              "length_ms": 369383,
+              "start_ms": 36981678,
+              "title": "Chapter 88"
+            },
+            {
+              "length_ms": 359491,
+              "start_ms": 37351061,
+              "title": "Chapter 89"
+            },
+            {
+              "length_ms": 362742,
+              "start_ms": 37710552,
+              "title": "Chapter 90"
+            },
+            {
+              "length_ms": 388191,
+              "start_ms": 38073294,
+              "title": "Chapter 91"
+            },
+            {
+              "length_ms": 370892,
+              "start_ms": 38461485,
+              "title": "Chapter 92"
+            },
+            {
+              "length_ms": 515250,
+              "start_ms": 38832377,
+              "title": "Chapter 93"
+            },
+            {
+              "length_ms": 504708,
+              "start_ms": 39347627,
+              "title": "Chapter 94"
+            },
+            {
+              "length_ms": 442804,
+              "start_ms": 39852335,
+              "title": "Chapter 95"
+            },
+            {
+              "length_ms": 437835,
+              "start_ms": 40295139,
+              "title": "Chapter 96"
+            },
+            {
+              "length_ms": 479863,
+              "start_ms": 40732974,
+              "title": "Chapter 97"
+            },
+            {
+              "length_ms": 419631,
+              "start_ms": 41212837,
+              "title": "Chapter 98"
+            },
+            {
+              "length_ms": 440436,
+              "start_ms": 41632468,
+              "title": "Chapter 99"
+            },
+            {
+              "length_ms": 481721,
+              "start_ms": 42072904,
+              "title": "Chapter 100"
+            },
+            {
+              "length_ms": 423740,
+              "start_ms": 42554625,
+              "title": "Chapter 101"
+            },
+            {
+              "length_ms": 383779,
+              "start_ms": 42978365,
+              "title": "Chapter 102"
+            },
+            {
+              "length_ms": 392185,
+              "start_ms": 43362144,
+              "title": "Chapter 103"
+            },
+            {
+              "length_ms": 423206,
+              "start_ms": 43754329,
+              "title": "Chapter 104"
+            },
+            {
+              "length_ms": 315326,
+              "start_ms": 44177535,
+              "title": "Chapter 105"
+            },
+            {
+              "length_ms": 324893,
+              "start_ms": 44492861,
+              "title": "Chapter 106"
+            },
+            {
+              "length_ms": 354754,
+              "start_ms": 44817754,
+              "title": "Chapter 107"
+            },
+            {
+              "length_ms": 352571,
+              "start_ms": 45172508,
+              "title": "Chapter 108"
+            },
+            {
+              "length_ms": 373237,
+              "start_ms": 45525079,
+              "title": "Chapter 109"
+            },
+            {
+              "length_ms": 379832,
+              "start_ms": 45898316,
+              "title": "Chapter 110"
+            },
+            {
+              "length_ms": 371612,
+              "start_ms": 46278148,
+              "title": "Chapter 111"
+            },
+            {
+              "length_ms": 372122,
+              "start_ms": 46649760,
+              "title": "Chapter 112"
+            },
+            {
+              "length_ms": 388191,
+              "start_ms": 47021882,
+              "title": "Chapter 113"
+            },
+            {
+              "length_ms": 391024,
+              "start_ms": 47410073,
+              "title": "Chapter 114"
+            },
+            {
+              "length_ms": 396085,
+              "start_ms": 47801097,
+              "title": "Chapter 115"
+            },
+            {
+              "length_ms": 378299,
+              "start_ms": 48197182,
+              "title": "Chapter 116"
+            },
+            {
+              "length_ms": 37058,
+              "start_ms": 48575481,
+              "title": "Chapter 117"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81W-xlqokUL.jpg",
+          "id": "scott-brick-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2024-06-28",
+          "runtime_min": 810,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D7WCLQSG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "medusa-clive-cussler"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B005LRVJIE",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D7WCLQSG",
           "type": "libex-import"
         }
       ],
@@ -14630,648 +15343,6 @@
         }
       ],
       "title": "Medusa"
-    },
-    "medusa-numa-files-book-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "clive-cussler",
-        "paul-kemprecos"
-      ],
-      "genres": [
-        "action-adventure",
-        "alternate-history",
-        "espionage",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "medusa-numa-files-book-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D7WCLQSG",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13420,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 39427,
-              "start_ms": 13420,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 538610,
-              "start_ms": 52847,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 524167,
-              "start_ms": 591457,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 540467,
-              "start_ms": 1115624,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 490126,
-              "start_ms": 1656091,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 506938,
-              "start_ms": 2146217,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 509260,
-              "start_ms": 2653155,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 386983,
-              "start_ms": 3162415,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 524469,
-              "start_ms": 3549398,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 441457,
-              "start_ms": 4073867,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 498044,
-              "start_ms": 4515324,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 531969,
-              "start_ms": 5013368,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 510235,
-              "start_ms": 5545337,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 571118,
-              "start_ms": 6055572,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 655220,
-              "start_ms": 6626690,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 512975,
-              "start_ms": 7281910,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 395342,
-              "start_ms": 7794885,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 373980,
-              "start_ms": 8190227,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 358562,
-              "start_ms": 8564207,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 347416,
-              "start_ms": 8922769,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 546411,
-              "start_ms": 9270185,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 434491,
-              "start_ms": 9816596,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 451628,
-              "start_ms": 10251087,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 550196,
-              "start_ms": 10702715,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 509074,
-              "start_ms": 11252911,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 371240,
-              "start_ms": 11761985,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 360698,
-              "start_ms": 12133225,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 322803,
-              "start_ms": 12493923,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 345884,
-              "start_ms": 12816726,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 225047,
-              "start_ms": 13162610,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 336875,
-              "start_ms": 13387657,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 422835,
-              "start_ms": 13724532,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 523935,
-              "start_ms": 14147367,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 659168,
-              "start_ms": 14671302,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 538517,
-              "start_ms": 15330470,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 492588,
-              "start_ms": 15868987,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 549662,
-              "start_ms": 16361575,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 372633,
-              "start_ms": 16911237,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 408299,
-              "start_ms": 17283870,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 620669,
-              "start_ms": 17692169,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 527418,
-              "start_ms": 18312838,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 584910,
-              "start_ms": 18840256,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 455064,
-              "start_ms": 19425166,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 380017,
-              "start_ms": 19880230,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 484089,
-              "start_ms": 20260247,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 382525,
-              "start_ms": 20744336,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 397943,
-              "start_ms": 21126861,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 570607,
-              "start_ms": 21524804,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 336224,
-              "start_ms": 22095411,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 378438,
-              "start_ms": 22431635,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 519151,
-              "start_ms": 22810073,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 557464,
-              "start_ms": 23329224,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 541628,
-              "start_ms": 23886688,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 382525,
-              "start_ms": 24428316,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 317927,
-              "start_ms": 24810841,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 356426,
-              "start_ms": 25128768,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 414058,
-              "start_ms": 25485194,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 195651,
-              "start_ms": 25899252,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 507820,
-              "start_ms": 26094903,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 485900,
-              "start_ms": 26602723,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 486318,
-              "start_ms": 27088623,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 320806,
-              "start_ms": 27574941,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 321085,
-              "start_ms": 27895747,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 363020,
-              "start_ms": 28216832,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 365203,
-              "start_ms": 28579852,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 357401,
-              "start_ms": 28945055,
-              "title": "Chapter 67"
-            },
-            {
-              "length_ms": 302834,
-              "start_ms": 29302456,
-              "title": "Chapter 68"
-            },
-            {
-              "length_ms": 292896,
-              "start_ms": 29605290,
-              "title": "Chapter 69"
-            },
-            {
-              "length_ms": 367316,
-              "start_ms": 29898186,
-              "title": "Chapter 70"
-            },
-            {
-              "length_ms": 392649,
-              "start_ms": 30265502,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 375048,
-              "start_ms": 30658151,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 406720,
-              "start_ms": 31033199,
-              "title": "Chapter 73"
-            },
-            {
-              "length_ms": 419491,
-              "start_ms": 31439919,
-              "title": "Chapter 74"
-            },
-            {
-              "length_ms": 306456,
-              "start_ms": 31859410,
-              "title": "Chapter 75"
-            },
-            {
-              "length_ms": 321503,
-              "start_ms": 32165866,
-              "title": "Chapter 76"
-            },
-            {
-              "length_ms": 407417,
-              "start_ms": 32487369,
-              "title": "Chapter 77"
-            },
-            {
-              "length_ms": 453810,
-              "start_ms": 32894786,
-              "title": "Chapter 78"
-            },
-            {
-              "length_ms": 395017,
-              "start_ms": 33348596,
-              "title": "Chapter 79"
-            },
-            {
-              "length_ms": 374862,
-              "start_ms": 33743613,
-              "title": "Chapter 80"
-            },
-            {
-              "length_ms": 372169,
-              "start_ms": 34118475,
-              "title": "Chapter 81"
-            },
-            {
-              "length_ms": 365900,
-              "start_ms": 34490644,
-              "title": "Chapter 82"
-            },
-            {
-              "length_ms": 548130,
-              "start_ms": 34856544,
-              "title": "Chapter 83"
-            },
-            {
-              "length_ms": 395110,
-              "start_ms": 35404674,
-              "title": "Chapter 84"
-            },
-            {
-              "length_ms": 440111,
-              "start_ms": 35799784,
-              "title": "Chapter 85"
-            },
-            {
-              "length_ms": 386983,
-              "start_ms": 36239895,
-              "title": "Chapter 86"
-            },
-            {
-              "length_ms": 354800,
-              "start_ms": 36626878,
-              "title": "Chapter 87"
-            },
-            {
-              "length_ms": 369383,
-              "start_ms": 36981678,
-              "title": "Chapter 88"
-            },
-            {
-              "length_ms": 359491,
-              "start_ms": 37351061,
-              "title": "Chapter 89"
-            },
-            {
-              "length_ms": 362742,
-              "start_ms": 37710552,
-              "title": "Chapter 90"
-            },
-            {
-              "length_ms": 388191,
-              "start_ms": 38073294,
-              "title": "Chapter 91"
-            },
-            {
-              "length_ms": 370892,
-              "start_ms": 38461485,
-              "title": "Chapter 92"
-            },
-            {
-              "length_ms": 515250,
-              "start_ms": 38832377,
-              "title": "Chapter 93"
-            },
-            {
-              "length_ms": 504708,
-              "start_ms": 39347627,
-              "title": "Chapter 94"
-            },
-            {
-              "length_ms": 442804,
-              "start_ms": 39852335,
-              "title": "Chapter 95"
-            },
-            {
-              "length_ms": 437835,
-              "start_ms": 40295139,
-              "title": "Chapter 96"
-            },
-            {
-              "length_ms": 479863,
-              "start_ms": 40732974,
-              "title": "Chapter 97"
-            },
-            {
-              "length_ms": 419631,
-              "start_ms": 41212837,
-              "title": "Chapter 98"
-            },
-            {
-              "length_ms": 440436,
-              "start_ms": 41632468,
-              "title": "Chapter 99"
-            },
-            {
-              "length_ms": 481721,
-              "start_ms": 42072904,
-              "title": "Chapter 100"
-            },
-            {
-              "length_ms": 423740,
-              "start_ms": 42554625,
-              "title": "Chapter 101"
-            },
-            {
-              "length_ms": 383779,
-              "start_ms": 42978365,
-              "title": "Chapter 102"
-            },
-            {
-              "length_ms": 392185,
-              "start_ms": 43362144,
-              "title": "Chapter 103"
-            },
-            {
-              "length_ms": 423206,
-              "start_ms": 43754329,
-              "title": "Chapter 104"
-            },
-            {
-              "length_ms": 315326,
-              "start_ms": 44177535,
-              "title": "Chapter 105"
-            },
-            {
-              "length_ms": 324893,
-              "start_ms": 44492861,
-              "title": "Chapter 106"
-            },
-            {
-              "length_ms": 354754,
-              "start_ms": 44817754,
-              "title": "Chapter 107"
-            },
-            {
-              "length_ms": 352571,
-              "start_ms": 45172508,
-              "title": "Chapter 108"
-            },
-            {
-              "length_ms": 373237,
-              "start_ms": 45525079,
-              "title": "Chapter 109"
-            },
-            {
-              "length_ms": 379832,
-              "start_ms": 45898316,
-              "title": "Chapter 110"
-            },
-            {
-              "length_ms": 371612,
-              "start_ms": 46278148,
-              "title": "Chapter 111"
-            },
-            {
-              "length_ms": 372122,
-              "start_ms": 46649760,
-              "title": "Chapter 112"
-            },
-            {
-              "length_ms": 388191,
-              "start_ms": 47021882,
-              "title": "Chapter 113"
-            },
-            {
-              "length_ms": 391024,
-              "start_ms": 47410073,
-              "title": "Chapter 114"
-            },
-            {
-              "length_ms": 396085,
-              "start_ms": 47801097,
-              "title": "Chapter 115"
-            },
-            {
-              "length_ms": 378299,
-              "start_ms": 48197182,
-              "title": "Chapter 116"
-            },
-            {
-              "length_ms": 37058,
-              "start_ms": 48575481,
-              "title": "Chapter 117"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81W-xlqokUL.jpg",
-          "id": "scott-brick-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2024-06-28",
-          "runtime_min": 810,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0D7WCLQSG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "medusa-numa-files-book-8"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D7WCLQSG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Medusa: NUMA Files, Book 8"
     },
     "medusa-the-court-of-the-underworld-the-gods-universe-book-2": {
       "added_at": "2026-08-02",

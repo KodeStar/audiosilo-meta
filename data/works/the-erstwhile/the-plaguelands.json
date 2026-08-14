@@ -11400,6 +11400,7 @@
         "k-bromberg"
       ],
       "genres": [
+        "erotica",
         "romance",
         "sports"
       ],
@@ -11677,12 +11678,46 @@
             }
           ],
           "work": "the-player-k-bromberg"
+        },
+        "andi-arndt-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D8M8CRK2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Tt8XXGdWL.jpg",
+          "id": "andi-arndt-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andi-arndt",
+            "joe-arden"
+          ],
+          "publisher": "JKB Publishing, LLC",
+          "release_date": "2024-07-22",
+          "runtime_min": 494,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D8M8CRK2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-player-k-bromberg"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B071R343P2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D8M8CRK2",
           "type": "libex-import"
         }
       ],
@@ -13056,57 +13091,6 @@
         }
       ],
       "title": "The Player + the Pact = I Do"
-    },
-    "the-player-the-player-duet-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "k-bromberg"
-      ],
-      "genres": [
-        "erotica"
-      ],
-      "id": "the-player-the-player-duet-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andi-arndt-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D8M8CRK2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Tt8XXGdWL.jpg",
-          "id": "andi-arndt-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andi-arndt",
-            "joe-arden"
-          ],
-          "publisher": "JKB Publishing, LLC",
-          "release_date": "2024-07-22",
-          "runtime_min": 494,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D8M8CRK2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-player-the-player-duet-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D8M8CRK2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Player: The Player Duet, Book 1"
     },
     "the-player-wedding-pact-series-2": {
       "added_at": "2026-07-29",

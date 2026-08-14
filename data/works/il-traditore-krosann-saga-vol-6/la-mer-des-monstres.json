@@ -1228,7 +1228,10 @@
         "franz-kafka"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "literary-fiction",
+        "psychological-thriller",
+        "short-stories"
       ],
       "id": "la-metamorfosis",
       "language": "es",
@@ -1289,12 +1292,78 @@
             }
           ],
           "work": "la-metamorfosis"
+        },
+        "geraldo-medina-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CRWSRXWD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/716j4NepzDL.jpg",
+          "id": "geraldo-medina-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geraldo-medina"
+          ],
+          "publisher": "Aubiblio Studios LLC",
+          "release_date": "2024-01-11",
+          "runtime_min": 143,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CRWSRXWD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-metamorfosis"
+        },
+        "macu-gomez-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004FKE9Y4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71PEr97X48L.jpg",
+          "id": "macu-gomez-2010",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macu-gomez"
+          ],
+          "publisher": "Audiomol",
+          "release_date": "2010-12-08",
+          "runtime_min": 113,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004FKE9Y4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-metamorfosis"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0G1725DNT",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CRWSRXWD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B004FKE9Y4",
           "type": "libex-import"
         }
       ],
@@ -1350,109 +1419,6 @@
         }
       ],
       "title": "La metamorfosis de una madre [The Metamorphosis of a Mother]"
-    },
-    "la-metamorfosis-metamorphosis": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "franz-kafka"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "short-stories"
-      ],
-      "id": "la-metamorfosis-metamorphosis",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CRWSRXWD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/716j4NepzDL.jpg",
-          "id": "geraldo-medina-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2024-01-11",
-          "runtime_min": 143,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CRWSRXWD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-metamorfosis-metamorphosis"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CRWSRXWD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Metamorfosis [Metamorphosis]"
-    },
-    "la-metamorfosis-the-metamorphosis": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "franz-kafka"
-      ],
-      "genres": [
-        "literary-fiction",
-        "psychological-thriller"
-      ],
-      "id": "la-metamorfosis-the-metamorphosis",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "macu-gomez-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B004FKE9Y4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71PEr97X48L.jpg",
-          "id": "macu-gomez-2010",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "macu-gomez"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2010-12-08",
-          "runtime_min": 113,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004FKE9Y4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-metamorfosis-the-metamorphosis"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B004FKE9Y4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La metamorfosis [The Metamorphosis]"
     },
     "la-metamorfosis-the-metamorphosis-franz-fafka": {
       "added_at": "2026-07-29",
@@ -6021,94 +5987,7 @@
             {
               "asin": "B07YXSTT52",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71-jAKifg6L.jpg",
-          "id": "daniel-quintero-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-quintero"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-03-24",
-          "runtime_min": 162,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXSTT52",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-montana-magica"
-        },
-        "jose-angel-fuentes-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BWSF6345",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xL1i7nLML.jpg",
-          "id": "jose-angel-fuentes-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jose-angel-fuentes"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-02-24",
-          "runtime_min": 2261,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BWSF6345",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-montana-magica"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXSTT52",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B0BWSF6345",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Montana Magica"
-    },
-    "la-montana-magica-the-magic-mountain": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-mann"
-      ],
-      "credits": [
-        {
-          "person": "isabel-garcia-adanez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor",
-        "historical-fiction"
-      ],
-      "id": "la-montana-magica-the-magic-mountain",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-quintero-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V1CITW",
               "region": "us"
@@ -6127,16 +6006,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXSTT52",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V1CITW",
               "type": "libex-import"
             }
           ],
-          "work": "la-montana-magica-the-magic-mountain"
+          "work": "la-montana-magica"
         },
         "jose-angel-fuentes-2023": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0BWSF6345",
+              "region": "es"
+            },
             {
               "asin": "B0BWSJP7PS",
               "region": "us"
@@ -6155,14 +6043,29 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BWSF6345",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BWSJP7PS",
               "type": "libex-import"
             }
           ],
-          "work": "la-montana-magica-the-magic-mountain"
+          "work": "la-montana-magica"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXSTT52",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B0BWSF6345",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1CITW",
@@ -6174,7 +6077,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "La Montana Magica [The Magic Mountain]"
+      "title": "La Montana Magica"
     },
     "la-morsa-del-gelo": {
       "added_at": "2026-07-29",
@@ -7918,12 +7821,42 @@
         "leon-tolstoi"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "literary-fiction",
+        "writing-publishing"
       ],
       "id": "la-muerte-de-ivan-ilich",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "geraldo-medina-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CR6NVXX4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815WytXkm8L.jpg",
+          "id": "geraldo-medina-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geraldo-medina"
+          ],
+          "publisher": "Aubiblio Studios LLC",
+          "release_date": "2023-12-29",
+          "runtime_min": 151,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CR6NVXX4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-muerte-de-ivan-ilich"
+        },
         "juan-manuel-martinez-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7931,6 +7864,10 @@
             {
               "asin": "B08HR7B851",
               "region": "es"
+            },
+            {
+              "asin": "B08HR87VF7",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81kR54-CmfL.jpg",
@@ -7948,6 +7885,11 @@
               "imported_at": "2026-07-29",
               "ref": "B08HR7B851",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08HR87VF7",
+              "type": "libex-import"
             }
           ],
           "work": "la-muerte-de-ivan-ilich"
@@ -7959,6 +7901,10 @@
             {
               "asin": "B08G8WNV84",
               "region": "es"
+            },
+            {
+              "asin": "987369353X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81IOPt9nMlL.jpg",
@@ -7976,6 +7922,11 @@
               "imported_at": "2026-07-29",
               "ref": "B08G8WNV84",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "987369353X",
+              "type": "libex-import"
             }
           ],
           "work": "la-muerte-de-ivan-ilich"
@@ -7985,6 +7936,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08HR7B851",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HR87VF7",
           "type": "libex-import"
         }
       ],
@@ -8039,114 +7995,6 @@
         }
       ],
       "title": "La Muerte de Ivan Ilich"
-    },
-    "la-muerte-de-ivan-ilich-the-death-of-ivan-ilyich": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "leon-tolstoi"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "writing-publishing"
-      ],
-      "id": "la-muerte-de-ivan-ilich-the-death-of-ivan-ilyich",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CR6NVXX4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815WytXkm8L.jpg",
-          "id": "geraldo-medina-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2023-12-29",
-          "runtime_min": 151,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CR6NVXX4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-muerte-de-ivan-ilich-the-death-of-ivan-ilyich"
-        },
-        "juan-manuel-martinez-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08HR87VF7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kR54-CmfL.jpg",
-          "id": "juan-manuel-martinez-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-manuel-martinez"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2020-09-11",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HR87VF7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-muerte-de-ivan-ilich-the-death-of-ivan-ilyich"
-        },
-        "miguel-de-ugarte-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "987369353X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IOPt9nMlL.jpg",
-          "id": "miguel-de-ugarte-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "miguel-de-ugarte"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2020-08-19",
-          "runtime_min": 164,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "987369353X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-muerte-de-ivan-ilich-the-death-of-ivan-ilyich"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HR87VF7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La muerte de Iván Ilich [The Death of Ivan Ilyich]"
     },
     "la-muerte-del-amor": {
       "added_at": "2026-07-29",
@@ -8506,54 +8354,7 @@
             {
               "asin": "B0844G7NXS",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81XzbnQC3JL.jpg",
-          "id": "juan-guzman-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-guzman"
-          ],
-          "publisher": "FonoLibro Inc.",
-          "release_date": "2018-09-18",
-          "runtime_min": 174,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844G7NXS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-muerte-no-es-el-final"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0844G7NXS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Muerte no es el Final"
-    },
-    "la-muerte-no-es-el-final-death-is-not-the-end": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "vladimir-burdman-schwarz"
-      ],
-      "genres": [
-        "occult",
-        "religion-spirituality"
-      ],
-      "id": "la-muerte-no-es-el-final-death-is-not-the-end",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-guzman-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "1611541743",
               "region": "us"
@@ -8649,21 +8450,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0844G7NXS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "1611541743",
               "type": "libex-import"
             }
           ],
-          "work": "la-muerte-no-es-el-final-death-is-not-the-end"
+          "work": "la-muerte-no-es-el-final"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0844G7NXS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1611541743",
           "type": "libex-import"
         }
       ],
-      "title": "La Muerte no es el Final [Death Is Not the End]"
+      "title": "La Muerte no es el Final"
     },
     "la-muerte-no-existe": {
       "added_at": "2026-07-29",
@@ -10334,6 +10145,8 @@
       ],
       "genres": [
         "historical-fiction",
+        "literary-fiction",
+        "magical-realism",
         "politics",
         "womens-fiction"
       ],
@@ -10348,57 +10161,7 @@
             {
               "asin": "B07YX41C5N",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911VJVQaPoL.jpg",
-          "id": "geralldy-najera-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geralldy-najera"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-09-20",
-          "runtime_min": 826,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX41C5N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-mujer-habitada"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX41C5N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La mujer habitada"
-    },
-    "la-mujer-habitada-the-inhabited-woman": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gioconda-belli"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "magical-realism",
-        "politics",
-        "womens-fiction"
-      ],
-      "id": "la-mujer-habitada-the-inhabited-woman",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geralldy-najera-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07Y424WWX",
               "region": "us"
@@ -10417,21 +10180,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX41C5N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07Y424WWX",
               "type": "libex-import"
             }
           ],
-          "work": "la-mujer-habitada-the-inhabited-woman"
+          "work": "la-mujer-habitada"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX41C5N",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07Y424WWX",
           "type": "libex-import"
         }
       ],
-      "title": "La mujer habitada [The Inhabited Woman]"
+      "title": "La mujer habitada"
     },
     "la-mujer-que-nacio-tres-veces": {
       "added_at": "2026-07-29",
@@ -13009,55 +12782,7 @@
             {
               "asin": "B07YX4RSQ4",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GMFRDSoKL.jpg",
-          "id": "pablo-ibanez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pablo-ibanez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-08-16",
-          "runtime_min": 447,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX4RSQ4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-nariz-de-charles-darwin-y-otras-historias-de-la-neurociencia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX4RSQ4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La nariz de Charles Darwin: y otras historias de la Neurociencia"
-    },
-    "la-nariz-de-charles-darwin-y-otras-historias-de-la-neurociencia-the-nose-of-charles-darwin-and-other": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-ramon-alonso"
-      ],
-      "genres": [
-        "health-wellness",
-        "psychology",
-        "science"
-      ],
-      "id": "la-nariz-de-charles-darwin-y-otras-historias-de-la-neurociencia-the-nose-of-charles-darwin-and-other",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pablo-ibanez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07GH6HY4B",
               "region": "us"
@@ -13076,21 +12801,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX4RSQ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07GH6HY4B",
               "type": "libex-import"
             }
           ],
-          "work": "la-nariz-de-charles-darwin-y-otras-historias-de-la-neurociencia-the-nose-of-charles-darwin-and-other"
+          "work": "la-nariz-de-charles-darwin-y-otras-historias-de-la-neurociencia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX4RSQ4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07GH6HY4B",
           "type": "libex-import"
         }
       ],
-      "title": "La nariz de Charles Darwin: y otras historias de la Neurociencia [The Nose of Charles Darwin and Other Stories of Neuroscience]"
+      "title": "La nariz de Charles Darwin: y otras historias de la Neurociencia"
     },
     "la-nariz-the-nose": {
       "added_at": "2026-07-29",

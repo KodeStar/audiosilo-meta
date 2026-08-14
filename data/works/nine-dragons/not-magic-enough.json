@@ -4936,22 +4936,83 @@
       ],
       "title": "Not of My Flesh"
     },
-    "not-of-this-world": {
-      "added_at": "2026-08-02",
+    "not-of-this-world-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "simon-r-green"
       ],
       "genres": [
         "action-adventure",
         "fantasy",
+        "mystery",
         "paranormal",
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "not-of-this-world",
+      "id": "not-of-this-world-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CYHNYWS3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4183097,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4255056,
+              "start_ms": 4183097,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4295412,
+              "start_ms": 8438153,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4177896,
+              "start_ms": 12733565,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4557101,
+              "start_ms": 16911461,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71-U-utw-6L.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CYHNYWS3",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CYHNYWS3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "not-of-this-world-dramatized-adaptation"
+        },
         "gideon-emery-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5035,90 +5096,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "not-of-this-world"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BZ8ZXTCS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Not of This World"
-    },
-    "not-of-this-world-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "simon-r-green"
-      ],
-      "genres": [
-        "mystery",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "not-of-this-world-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CYHNYWS3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4183097,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4255056,
-              "start_ms": 4183097,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4295412,
-              "start_ms": 8438153,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4177896,
-              "start_ms": 12733565,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4557101,
-              "start_ms": 16911461,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71-U-utw-6L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 358,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CYHNYWS3",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CYHNYWS3",
-              "type": "libex-import"
-            }
-          ],
           "work": "not-of-this-world-dramatized-adaptation"
         }
       },
@@ -5131,6 +5108,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CYHNYWS3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BZ8ZXTCS",
           "type": "libex-import"
         }
       ],

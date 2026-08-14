@@ -8744,7 +8744,8 @@
       ],
       "genres": [
         "classics",
-        "historical-fiction"
+        "historical-fiction",
+        "literary-fiction"
       ],
       "id": "fortunata-y-jacinta",
       "language": "es",
@@ -8786,30 +8787,7 @@
             }
           ],
           "work": "fortunata-y-jacinta"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09GVN8Y6K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fortunata y Jacinta"
-    },
-    "fortunata-y-jacinta-fortunata-and-jacinta": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benito-perez-galdos"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "fortunata-y-jacinta-fortunata-and-jacinta",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "paula-iwasaki-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8836,17 +8814,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "fortunata-y-jacinta-fortunata-and-jacinta"
+          "work": "fortunata-y-jacinta"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09GVN8Y6K",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09V3D7V4K",
           "type": "libex-import"
         }
       ],
-      "title": "Fortunata y Jacinta [Fortunata and Jacinta]"
+      "title": "Fortunata y Jacinta"
     },
     "fortunata-y-jacinta-parte-segunda-fortunata-and-jacinta-part-two": {
       "added_at": "2026-07-29",

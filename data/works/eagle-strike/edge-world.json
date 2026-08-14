@@ -8473,26 +8473,7 @@
             }
           ],
           "work": "educar-en-el-asombro-educate-in-amazement"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B073KSX357",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Educar en el asombro [Educate in Amazement]"
-    },
-    "educar-en-el-asombro-narracion-en-castellano-educate-in-amazement": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "catherine-lecuyer"
-      ],
-      "id": "educar-en-el-asombro-narracion-en-castellano-educate-in-amazement",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rosa-campillo-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8519,17 +8500,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "educar-en-el-asombro-narracion-en-castellano-educate-in-amazement"
+          "work": "educar-en-el-asombro-educate-in-amazement"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073KSX357",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07JJN9R36",
           "type": "libex-import"
         }
       ],
-      "title": "Educar en el asombro (Narración en Castellano) [Educate in Amazement]"
+      "title": "Educar en el asombro [Educate in Amazement]"
     },
     "educar-en-el-feminismo-educate-in-feminism": {
       "added_at": "2026-07-29",
@@ -8583,15 +8569,18 @@
       ],
       "title": "Educar en el feminismo [Educate in Feminism]"
     },
-    "educar-sin-gritar-educate-without-shouting": {
+    "educar-sin-gritar-educate-without-shouting-narracion-en-castellano": {
       "added_at": "2026-07-29",
       "authors": [
         "guillermo-ballenato"
       ],
       "genres": [
-        "education"
+        "education",
+        "health-wellness",
+        "parenting-relationships",
+        "psychology"
       ],
-      "id": "educar-sin-gritar-educate-without-shouting",
+      "id": "educar-sin-gritar-educate-without-shouting-narracion-en-castellano",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -8621,33 +8610,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "educar-sin-gritar-educate-without-shouting"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B071GMB3J9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Educar sin gritar [Educate Without Shouting]"
-    },
-    "educar-sin-gritar-educate-without-shouting-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guillermo-ballenato"
-      ],
-      "genres": [
-        "education",
-        "health-wellness",
-        "parenting-relationships",
-        "psychology"
-      ],
-      "id": "educar-sin-gritar-educate-without-shouting-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "educar-sin-gritar-educate-without-shouting-narracion-en-castellano"
+        },
         "victoria-ramos-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8763,6 +8727,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07KB3FJ3R",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B071GMB3J9",
           "type": "libex-import"
         }
       ],

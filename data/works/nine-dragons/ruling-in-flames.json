@@ -1642,6 +1642,7 @@
         "j-s-morin"
       ],
       "genres": [
+        "fantasy",
         "science-fiction"
       ],
       "id": "rumbo-de-colusion-collusion-course",
@@ -1897,30 +1898,7 @@
             }
           ],
           "work": "rumbo-de-colusion-collusion-course"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08YKGB6XN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rumbo de Colusión [Collusion Course]"
-    },
-    "rumbo-de-colusion-narracion-en-castellano-course-of-collusion-narration-in-castilian": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "rumbo-de-colusion-narracion-en-castellano-course-of-collusion-narration-in-castilian",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pau-ferrer-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1974,17 +1952,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "rumbo-de-colusion-narracion-en-castellano-course-of-collusion-narration-in-castilian"
+          "work": "rumbo-de-colusion-collusion-course"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08YKGB6XN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09M8ZWC2G",
           "type": "libex-import"
         }
       ],
-      "title": "Rumbo de Colusión (Narración en Castellano) [Course of Collusion (Narration in Castilian)]"
+      "title": "Rumbo de Colusión [Collusion Course]"
     },
     "rumi": {
       "added_at": "2026-07-29",
@@ -8546,7 +8529,7 @@
       ],
       "title": "Rumpole for the Defense"
     },
-    "rumpole-of-the-bailey": {
+    "rumpole-of-the-bailey-recorded-books": {
       "added_at": "2026-07-29",
       "authors": [
         "john-mortimer"
@@ -8554,9 +8537,10 @@
       "genres": [
         "legal-thriller",
         "mystery",
+        "short-stories",
         "thriller-suspense"
       ],
-      "id": "rumpole-of-the-bailey",
+      "id": "rumpole-of-the-bailey-recorded-books",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8586,134 +8570,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "rumpole-of-the-bailey"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B005400696",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rumpole of the Bailey"
-    },
-    "rumpole-of-the-bailey-audiogo": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-mortimer"
-      ],
-      "genres": [
-        "legal-thriller",
-        "thriller-suspense"
-      ],
-      "id": "rumpole-of-the-bailey-audiogo",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-hardy-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B003BWBO7C",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3579171,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1894655,
-              "start_ms": 3579171,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3497250,
-              "start_ms": 5473826,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1829640,
-              "start_ms": 8971076,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2247924,
-              "start_ms": 10800716,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3145747,
-              "start_ms": 13048640,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1943185,
-              "start_ms": 16194387,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3455129,
-              "start_ms": 18137572,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1820955,
-              "start_ms": 21592701,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2372522,
-              "start_ms": 23413656,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/817nQX3oH-L.jpg",
-          "id": "robert-hardy-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-hardy"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2010-03-10",
-          "runtime_min": 429,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B003BWBO7C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rumpole-of-the-bailey-audiogo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003BWBO7C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rumpole of the Bailey [AudioGo]"
-    },
-    "rumpole-of-the-bailey-recorded-books": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-mortimer"
-      ],
-      "genres": [
-        "mystery",
-        "short-stories"
-      ],
-      "id": "rumpole-of-the-bailey-recorded-books",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "rumpole-of-the-bailey-recorded-books"
+        },
         "patrick-tull-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8858,12 +8716,102 @@
             }
           ],
           "work": "rumpole-of-the-bailey-recorded-books"
+        },
+        "robert-hardy-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003BWBO7C",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3579171,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1894655,
+              "start_ms": 3579171,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3497250,
+              "start_ms": 5473826,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1829640,
+              "start_ms": 8971076,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2247924,
+              "start_ms": 10800716,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3145747,
+              "start_ms": 13048640,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1943185,
+              "start_ms": 16194387,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3455129,
+              "start_ms": 18137572,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1820955,
+              "start_ms": 21592701,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2372522,
+              "start_ms": 23413656,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817nQX3oH-L.jpg",
+          "id": "robert-hardy-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-hardy"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2010-03-10",
+          "runtime_min": 429,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003BWBO7C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rumpole-of-the-bailey-recorded-books"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B005KBQWJM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B005400696",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003BWBO7C",
           "type": "libex-import"
         }
       ],

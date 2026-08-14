@@ -1600,6 +1600,7 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction"
       ],
       "id": "the-winds-of-darkover",
@@ -1710,30 +1711,7 @@
             }
           ],
           "work": "the-winds-of-darkover"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B078Z13V7H",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Winds of Darkover"
-    },
-    "the-winds-of-darkover-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "the-winds-of-darkover-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pete-bradbury-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1847,17 +1825,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-winds-of-darkover-international-edition"
+          "work": "the-winds-of-darkover"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078Z13V7H",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYHGK8M",
           "type": "libex-import"
         }
       ],
-      "title": "The Winds of Darkover [International Edition]"
+      "title": "The Winds of Darkover"
     },
     "the-winds-of-dune": {
       "added_at": "2026-07-25T17:12:12+01:00",

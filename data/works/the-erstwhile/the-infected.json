@@ -14169,6 +14169,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "romance",
         "science-fiction",
         "young-adult"
@@ -14177,6 +14178,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ben-yannette-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00V5H794M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71LLFd1fFIL.jpg",
+          "id": "ben-yannette-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ben-yannette",
+            "phoebe-strole"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2015-04-02",
+          "runtime_min": 492,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00V5H794M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-infinite-sea"
+        },
         "phoebe-strole-2014": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -14718,6 +14748,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00M7G9MGI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00V5H794M",
           "type": "libex-import"
         }
       ],

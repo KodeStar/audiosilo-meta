@@ -4898,12 +4898,41 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "una-sombra-en-la-oscuridad-narracion-en-castellano-the-night-stalker",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "aldo-escalante-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B084HK1NL7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919iEM2kRKL.jpg",
+          "id": "aldo-escalante-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aldo-escalante"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-02-06",
+          "runtime_min": 661,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B084HK1NL7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "una-sombra-en-la-oscuridad-narracion-en-castellano-the-night-stalker"
+        },
         "juan-echenique-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4938,68 +4967,14 @@
           "imported_at": "2026-07-29",
           "ref": "8417305327",
           "type": "libex-import"
-        }
-      ],
-      "title": "Una sombra en la oscuridad (Narración en Castellano) [The Night Stalker]"
-    },
-    "una-sombra-en-la-oscuridad-the-night-stalker": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-bryndza",
-        "santiago-del-rey"
-      ],
-      "credits": [
-        {
-          "person": "santiago-del-rey",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "una-sombra-en-la-oscuridad-the-night-stalker",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aldo-escalante-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B084HK1NL7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/919iEM2kRKL.jpg",
-          "id": "aldo-escalante-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldo-escalante"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-02-06",
-          "runtime_min": 661,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B084HK1NL7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "una-sombra-en-la-oscuridad-the-night-stalker"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B084HK1NL7",
           "type": "libex-import"
         }
       ],
-      "title": "Una sombra en la oscuridad [The Night Stalker]"
+      "title": "Una sombra en la oscuridad (Narración en Castellano) [The Night Stalker]"
     },
     "una-sorpresa-para-lord-jack": {
       "added_at": "2026-07-29",

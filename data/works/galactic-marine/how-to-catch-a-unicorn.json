@@ -1556,7 +1556,10 @@
       ],
       "first_published": "2006",
       "genres": [
+        "action-adventure",
         "childrens",
+        "comedy-humor",
+        "coming-of-age",
         "fairy-tales-folklore",
         "fantasy"
       ],
@@ -1710,13 +1713,141 @@
           "work": "how-to-cheat-a-dragons-curse"
         },
         "david-tennant-2013": {
+          "abridged": false,
           "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
             {
               "asin": "B00GU01B4I",
               "region": "uk"
+            },
+            {
+              "asin": "B00GU0LX3W",
+              "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 63904,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 93000,
+              "start_ms": 63904,
+              "title": "About The Author"
+            },
+            {
+              "length_ms": 591940,
+              "start_ms": 156904,
+              "title": "1. The Hunting-With-Bows-And-Arrows-On-Skis Expedition"
+            },
+            {
+              "length_ms": 863643,
+              "start_ms": 748844,
+              "title": "2. Sabre-Tooth Driver Dragons"
+            },
+            {
+              "length_ms": 853055,
+              "start_ms": 1612487,
+              "title": "3. The Hunters Become the Hunted"
+            },
+            {
+              "length_ms": 621923,
+              "start_ms": 2465542,
+              "title": "4. Is There Something Wrong with Fishlegs?"
+            },
+            {
+              "length_ms": 536985,
+              "start_ms": 3087465,
+              "title": "5. Smashsticks-On-Ice"
+            },
+            {
+              "length_ms": 808426,
+              "start_ms": 3624450,
+              "title": "6. What Old Wrinkly Said"
+            },
+            {
+              "length_ms": 571350,
+              "start_ms": 4432876,
+              "title": "7. The Quest for the Frozen Potato"
+            },
+            {
+              "length_ms": 488966,
+              "start_ms": 5004226,
+              "title": "8. The Wrath of Thor"
+            },
+            {
+              "length_ms": 78437,
+              "start_ms": 5493192,
+              "title": "9. Back on Berk"
+            },
+            {
+              "length_ms": 436396,
+              "start_ms": 5571629,
+              "title": "10. Freya'sday Eve on Hysteria"
+            },
+            {
+              "length_ms": 1061849,
+              "start_ms": 6008025,
+              "title": "11. In the Soup"
+            },
+            {
+              "length_ms": 434492,
+              "start_ms": 7069874,
+              "title": "12. Will Toothless Save the Day?"
+            },
+            {
+              "length_ms": 886817,
+              "start_ms": 7504366,
+              "title": "13. The Great Potato Burglary"
+            },
+            {
+              "length_ms": 326055,
+              "start_ms": 8391183,
+              "title": "14. The Potato-Burglars Run"
+            },
+            {
+              "length_ms": 249150,
+              "start_ms": 8717238,
+              "title": "15. They Might Just Make it, Now"
+            },
+            {
+              "length_ms": 437232,
+              "start_ms": 8966388,
+              "title": "16. The Doomfang"
+            },
+            {
+              "length_ms": 708905,
+              "start_ms": 9403620,
+              "title": "17. The Quest is Over"
+            },
+            {
+              "length_ms": 438625,
+              "start_ms": 10112525,
+              "title": "18. Fishlegs"
+            },
+            {
+              "length_ms": 797977,
+              "start_ms": 10551150,
+              "title": "19. The Final Chapter"
+            },
+            {
+              "length_ms": 397015,
+              "start_ms": 11349127,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 228001,
+              "start_ms": 11746142,
+              "title": "What Happened Next"
+            },
+            {
+              "length_ms": 23471,
+              "start_ms": 11974143,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91I1t1VFb8L.jpg",
           "id": "david-tennant-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -1730,6 +1861,11 @@
             {
               "ref": "B00GU01B4I",
               "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00GU0LX3W",
+              "type": "libex-import"
             }
           ],
           "work": "how-to-cheat-a-dragons-curse"
@@ -1743,6 +1879,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B003ILR47K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00GU0LX3W",
           "type": "libex-import"
         }
       ],
@@ -13908,13 +14049,43 @@
         "arts-entertainment",
         "biography-memoir",
         "business",
+        "health-wellness",
         "music",
+        "parenting-relationships",
         "self-help"
       ],
       "id": "how-to-fail-at-almost-everything-and-still-win-big",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-baldwin-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DYBW92YF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zKojlJiPL.jpg",
+          "id": "andrew-baldwin-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-baldwin"
+          ],
+          "publisher": "Scott Adams, Inc.",
+          "release_date": "2025-02-25",
+          "runtime_min": 515,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DYBW92YF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "how-to-fail-at-almost-everything-and-still-win-big"
+        },
         "patrick-lawlor-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14390,61 +14561,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00FTUQFO6",
           "type": "libex-import"
-        }
-      ],
-      "title": "How to Fail at Almost Everything and Still Win Big"
-    },
-    "how-to-fail-at-almost-everything-and-still-win-big-second-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "scott-adams"
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "how-to-fail-at-almost-everything-and-still-win-big-second-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-baldwin-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DYBW92YF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zKojlJiPL.jpg",
-          "id": "andrew-baldwin-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-baldwin"
-          ],
-          "publisher": "Scott Adams, Inc.",
-          "release_date": "2025-02-25",
-          "runtime_min": 515,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DYBW92YF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "how-to-fail-at-almost-everything-and-still-win-big-second-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DYBW92YF",
           "type": "libex-import"
         }
       ],
-      "title": "How to Fail at Almost Everything and Still Win Big (Second Edition)"
+      "title": "How to Fail at Almost Everything and Still Win Big"
     },
     "how-to-fail-at-flirting": {
       "added_at": "2026-07-17T09:08:56+00:00",
@@ -16385,7 +16509,10 @@
       ],
       "genres": [
         "action-adventure",
-        "childrens"
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy"
       ],
       "id": "how-to-fight-a-dragons-fury",
       "language": "en",
@@ -16402,158 +16529,172 @@
             {
               "asin": "B01HBR1SW8",
               "region": "us"
+            },
+            {
+              "asin": "B01A61GJUM",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 326054,
+              "length_ms": 112109,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
             },
             {
-              "length_ms": 424925,
-              "start_ms": 326054,
-              "title": "Chapter 2"
+              "length_ms": 216313,
+              "start_ms": 112109,
+              "title": "The Story So Far"
             },
             {
-              "length_ms": 715918,
-              "start_ms": 750979,
-              "title": "Chapter 3"
+              "length_ms": 424948,
+              "start_ms": 328422,
+              "title": "The World Needs a Hero"
             },
             {
-              "length_ms": 864758,
-              "start_ms": 1466897,
-              "title": "Chapter 4"
+              "length_ms": 715940,
+              "start_ms": 753370,
+              "title": "However Bad Things Seem to Be, They Can Always Get Worse"
             },
             {
-              "length_ms": 1226803,
-              "start_ms": 2331655,
-              "title": "Chapter 5"
+              "length_ms": 864780,
+              "start_ms": 1469310,
+              "title": "You See, it Just Got Worse Again Less Than Five Minutes into the Story"
             },
             {
-              "length_ms": 1199636,
-              "start_ms": 3558458,
-              "title": "Chapter 6"
+              "length_ms": 1226849,
+              "start_ms": 2334090,
+              "title": "The Minor Problem"
+            },
+            {
+              "length_ms": 1199682,
+              "start_ms": 3560939,
+              "title": "The Larger Problem"
             },
             {
               "length_ms": 676583,
-              "start_ms": 4758094,
-              "title": "Chapter 7"
+              "start_ms": 4760621,
+              "title": "Getting to Tomorrow"
             },
             {
-              "length_ms": 1044016,
-              "start_ms": 5434677,
-              "title": "Chapter 8"
+              "length_ms": 1044015,
+              "start_ms": 5437204,
+              "title": "It’s Difficult to Rescue Somebody Who Doesn’t Want to Be Rescued"
             },
             {
-              "length_ms": 664509,
-              "start_ms": 6478693,
-              "title": "Chapter 9"
+              "length_ms": 664508,
+              "start_ms": 6481219,
+              "title": "Only the One with the King’s Lost Things Can Land on Tomorrow and Live"
             },
             {
-              "length_ms": 804897,
-              "start_ms": 7143202,
-              "title": "Chapter 10"
+              "length_ms": 804896,
+              "start_ms": 7145727,
+              "title": "I Bet You Thought That This Was Never Going to Happen"
             },
             {
-              "length_ms": 911012,
-              "start_ms": 7948099,
-              "title": "Chapter 11"
+              "length_ms": 911058,
+              "start_ms": 7950623,
+              "title": "The Prophecy of Grimbeard the Ghastly"
             },
             {
-              "length_ms": 1293073,
-              "start_ms": 8859111,
-              "title": "Chapter 12"
+              "length_ms": 1293096,
+              "start_ms": 8861681,
+              "title": "Who is the King?"
             },
             {
-              "length_ms": 1224249,
-              "start_ms": 10152184,
-              "title": "Chapter 13"
+              "length_ms": 1224248,
+              "start_ms": 10154777,
+              "title": "Grimbeard’s Letter"
             },
             {
-              "length_ms": 935021,
-              "start_ms": 11376433,
-              "title": "Chapter 14"
+              "length_ms": 935044,
+              "start_ms": 11379025,
+              "title": "The Crowning of the King of the Wilderwest"
             },
             {
-              "length_ms": 448656,
-              "start_ms": 12311454,
-              "title": "Chapter 15"
+              "length_ms": 448679,
+              "start_ms": 12314069,
+              "title": "A Very Short Chapter That Begins Well and Ends Badly"
             },
             {
-              "length_ms": 649369,
-              "start_ms": 12760110,
-              "title": "Chapter 16"
+              "length_ms": 649415,
+              "start_ms": 12762748,
+              "title": "That Grimbeard the Ghastly Really Was a Very Tricky Man"
             },
             {
-              "length_ms": 731754,
-              "start_ms": 13409479,
-              "title": "Chapter 17"
+              "length_ms": 731776,
+              "start_ms": 13412163,
+              "title": "Preparing for the Funeral – Sorry, Single Combat"
             },
             {
-              "length_ms": 1375829,
-              "start_ms": 14141233,
-              "title": "Chapter 18"
+              "length_ms": 1375851,
+              "start_ms": 14143939,
+              "title": "Single Combat"
             },
             {
-              "length_ms": 463099,
-              "start_ms": 15517062,
-              "title": "Chapter 19"
+              "length_ms": 463098,
+              "start_ms": 15519790,
+              "title": "Sometimes What You Are Looking For is Right Here at Home"
             },
             {
-              "length_ms": 618115,
-              "start_ms": 15980161,
-              "title": "Chapter 20"
+              "length_ms": 618138,
+              "start_ms": 15982888,
+              "title": "The Past Never Leaves Us"
             },
             {
-              "length_ms": 698828,
-              "start_ms": 16598276,
-              "title": "Chapter 21"
+              "length_ms": 698804,
+              "start_ms": 16601026,
+              "title": "And it Haunts the Present in More Ways Than We Think"
             },
             {
               "length_ms": 318113,
-              "start_ms": 17297104,
-              "title": "Chapter 22"
+              "start_ms": 17299830,
+              "title": "It Certainly Scares the Living Daylights Out of Me"
             },
             {
-              "length_ms": 362603,
-              "start_ms": 17615217,
-              "title": "Chapter 23"
+              "length_ms": 362579,
+              "start_ms": 17617943,
+              "title": "The Witch Intervenes with Fate"
             },
             {
-              "length_ms": 418424,
-              "start_ms": 17977820,
-              "title": "Chapter 24"
+              "length_ms": 418446,
+              "start_ms": 17980522,
+              "title": "That’s Why They Call Him Alvin the Treacherous (the Clue is in the Name Really)"
             },
             {
-              "length_ms": 573301,
-              "start_ms": 18396244,
-              "title": "Chapter 25"
+              "length_ms": 573300,
+              "start_ms": 18398968,
+              "title": "Total War"
             },
             {
               "length_ms": 892900,
-              "start_ms": 18969545,
-              "title": "Chapter 26"
+              "start_ms": 18972268,
+              "title": "Did I Mention That the Past Has a Way of Catching Up With Us Eventually"
             },
             {
-              "length_ms": 1004124,
-              "start_ms": 19862445,
-              "title": "Chapter 27"
+              "length_ms": 1004123,
+              "start_ms": 19865168,
+              "title": "How Can I Trust You?"
             },
             {
-              "length_ms": 1778416,
-              "start_ms": 20866569,
-              "title": "Chapter 28"
+              "length_ms": 1778439,
+              "start_ms": 20869291,
+              "title": "The Pledge"
             },
             {
-              "length_ms": 1972442,
-              "start_ms": 22644985,
-              "title": "Chapter 29"
+              "length_ms": 1972488,
+              "start_ms": 22647730,
+              "title": "The Ghosts Have Been Set Free"
             },
             {
-              "length_ms": 867962,
-              "start_ms": 24617427,
-              "title": "Chapter 30"
+              "length_ms": 814015,
+              "start_ms": 24620218,
+              "title": "Epilogue By Hiccup Horrendous Haddock the Third"
+            },
+            {
+              "length_ms": 96461,
+              "start_ms": 25434233,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61k0ud8HlCL._SL500_.jpg",
@@ -16576,6 +16717,11 @@
               "imported_at": "2026-07-25",
               "ref": "B01HBR1SW8",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01A61GJUM",
+              "type": "libex-import"
             }
           ],
           "work": "how-to-fight-a-dragons-fury"
@@ -16590,6 +16736,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B01HBR1SW8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01A61GJUM",
           "type": "libex-import"
         }
       ],

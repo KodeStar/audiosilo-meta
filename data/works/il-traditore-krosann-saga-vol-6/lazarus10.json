@@ -894,6 +894,8 @@
         "dm-gilmore"
       ],
       "genres": [
+        "action-adventure",
+        "fantasy",
         "young-adult"
       ],
       "id": "lazy-scales",
@@ -1074,31 +1076,7 @@
             }
           ],
           "work": "lazy-scales"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0937JMCT9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lazy Scales"
-    },
-    "lazy-scales-second-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dm-gilmore"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "lazy-scales-second-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "james-scott-spaid-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1287,17 +1265,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "lazy-scales-second-edition"
+          "work": "lazy-scales"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0937JMCT9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GVVN96NP",
           "type": "libex-import"
         }
       ],
-      "title": "Lazy Scales (Second Edition)"
+      "title": "Lazy Scales"
     },
     "lazy-son": {
       "added_at": "2026-08-02",

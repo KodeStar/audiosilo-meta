@@ -506,6 +506,10 @@
             {
               "asin": "1250263417",
               "region": "us"
+            },
+            {
+              "asin": "0571359337",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -560,6 +564,11 @@
               "imported_at": "2026-07-29",
               "ref": "1250263417",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0571359337",
+              "type": "libex-import"
             }
           ],
           "work": "find-me-a-novel"
@@ -569,6 +578,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "1250263417",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0571359337",
           "type": "libex-import"
         }
       ],
@@ -848,56 +862,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "0062985019",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Find Me"
-    },
-    "find-me-andre-aciman": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "andre-aciman"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "find-me-andre-aciman",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-stuhlbarg-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "0571359337",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Ce2SNIfRL.jpg",
-          "id": "michael-stuhlbarg-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-stuhlbarg"
-          ],
-          "publisher": "Faber & Faber",
-          "release_date": "2019-10-29",
-          "runtime_min": 501,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "0571359337",
-              "type": "libex-import"
-            }
-          ],
-          "work": "find-me-andre-aciman"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "0571359337",
           "type": "libex-import"
         }
       ],
@@ -6954,8 +6918,11 @@
         "suzanne-palmer"
       ],
       "genres": [
+        "action-adventure",
+        "comedy-humor",
         "military-science-fiction",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "finder-dramatized-adaptation",
       "language": "en",
@@ -7050,37 +7017,7 @@
             }
           ],
           "work": "finder-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BQ4YR5PR",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0BQ4YR5PR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Finder (Dramatized Adaptation)"
-    },
-    "finder-suzanne-palmer": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "suzanne-palmer"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "finder-suzanne-palmer",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "joe-hempel-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7259,17 +7196,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "finder-suzanne-palmer"
+          "work": "finder-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BQ4YR5PR",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0BQ4YR5PR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1538503638",
           "type": "libex-import"
         }
       ],
-      "title": "Finder"
+      "title": "Finder (Dramatized Adaptation)"
     },
     "finder-the-true-story-of-a-private-investigator": {
       "added_at": "2026-07-29",
