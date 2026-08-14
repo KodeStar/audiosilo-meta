@@ -16,15 +16,10 @@ import ValueCards from '../components/home/ValueCards.astro'
 // FACTUAL CORE's (CC0-1.0), deliberately not mentioning the CC BY-SA community
 // layer, which this node does not describe. The download points at the releases
 // PAGE because each artifact URL is per-release and would go stale.
-const SITE = 'https://meta.audiosilo.app'
+const SITE = Astro.site!.origin
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
-interface JsonLdGraph {
-  '@context': string
-  '@graph': Record<string, unknown>[]
-}
-
-const structuredData: JsonLdGraph = {
+const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {

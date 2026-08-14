@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import { LIBEX_BASE } from '../lib/libex'
 
 const link = 'text-pink-500 underline underline-offset-2 transition-colors hover:text-pink-400'
 const code =
@@ -88,7 +89,7 @@ const code =
       </h2>
       <p class="mb-4 leading-relaxed">
         On the add-a-book page, searching for a title queries
-        <a class={link} href="https://libex.lostcartographer.xyz" target="_blank" rel="noopener"
+        <a class={link} href={LIBEX_BASE} target="_blank" rel="noopener"
           >libex</a
         >, a third-party Audible-metadata mirror,
         <strong class="text-hi">directly from your browser</strong>. That service therefore sees the
