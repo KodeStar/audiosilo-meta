@@ -148,6 +148,53 @@ func TestWorkNoSeriesRefusesAContestedSlot(t *testing.T) {
 	}
 }
 
+// A pair can conflict in MORE THAN ONE series, and which one the veto names must not
+// depend on map iteration order - it did, and the real-tree report differed between
+// runs over an unchanged tree.
+func TestPositionConflictVetoNamesASeriesDeterministically(t *testing.T) {
+	files := fixture(t, map[string]string{
+		"works/ho/hotdog-collected/work.json":          workJSON(t, "hotdog-collected", "The Great Adventures of Hotdog Man"),
+		"works/ho/hotdog-collected/recordings/a.json":  recJSON(t, "a", "hotdog-collected", withRuntime(486)),
+		"works/ho/hotdog-volume-one/work.json":         workJSON(t, "hotdog-volume-one", "The Great Adventures of Hotdog Man."),
+		"works/ho/hotdog-volume-one/recordings/b.json": recJSON(t, "b", "hotdog-volume-one", withRuntime(480)),
+		// BOTH works sit in both series, at conflicting positions in each.
+		"series/th/the-collected-adventures.json": seriesJSON(t, "the-collected-adventures", "The Collected Adventures of Hotdog Man",
+			"hotdog-collected@1-6", "hotdog-volume-one@1"),
+		"series/th/the-great-adventures.json": seriesJSON(t, "the-great-adventures", "The Great Adventures of Hotdog Man Series",
+			"hotdog-collected@1-6", "hotdog-volume-one@1"),
+	})
+	data := filepath.Join(t.TempDir(), "data")
+	testpack.Seed(t, data, files)
+
+	var reasons []string
+	for i := 0; i < 5; i++ {
+		out := filepath.Join(t.TempDir(), "out")
+		rep, err := Run(Options{DataDir: data, OutDir: out})
+		if err != nil {
+			t.Fatalf("run %d: %v", i, err)
+		}
+		var got string
+		for _, r := range rep.class(ClassWorkDup).rows {
+			if strings.Contains(r.Propose.Reason, "different positions") {
+				got = r.Propose.Reason
+			}
+		}
+		if got == "" {
+			t.Fatalf("run %d: the position-conflict veto did not fire", i)
+		}
+		reasons = append(reasons, got)
+	}
+	for i := 1; i < len(reasons); i++ {
+		if reasons[i] != reasons[0] {
+			t.Fatalf("the veto named a different series between runs:\n  %s\n  %s", reasons[0], reasons[i])
+		}
+	}
+	// Sorted order means the alphabetically first series id is the one named.
+	if !strings.Contains(reasons[0], "the-collected-adventures") {
+		t.Errorf("reason = %q, want the alphabetically first series id", reasons[0])
+	}
+}
+
 // A symlink outside the tree pointing into it defeats a lexical containment test.
 func TestOutDirGuardResolvesSymlinks(t *testing.T) {
 	root := t.TempDir()

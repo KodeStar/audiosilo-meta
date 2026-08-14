@@ -428,14 +428,24 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 // catalogue itself already says they are different volumes. Read from series_works
 // rather than from the titles: 520 clusters (14%) are same-title distinct volumes
 // whose titles state no number at all.
+// The series ids are walked in SORTED order, not in map order. A pair can conflict
+// in more than one series (a work in both "X" and "The Collected X"), and naming
+// whichever one the map yielded first made the report differ between runs over an
+// unchanged tree - the one property this package claims by construction.
 func vetoPositionConflict(ix *index, members []dupMember) (string, bool) {
 	spans := make([]map[string][2]float64, len(members))
 	for i, m := range members {
 		spans[i] = ix.positionSpans(m.work.ID)
 	}
 	for i := range members {
+		ids := make([]string, 0, len(spans[i]))
+		for sid := range spans[i] {
+			ids = append(ids, sid)
+		}
+		sort.Strings(ids)
 		for j := i + 1; j < len(members); j++ {
-			for sid, a := range spans[i] {
+			for _, sid := range ids {
+				a := spans[i][sid]
 				b, both := spans[j][sid]
 				if both && a != b {
 					return fmt.Sprintf("%s and %s hold different positions in series %s (%s vs %s)",
