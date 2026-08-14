@@ -890,14 +890,18 @@ var danglingLead = map[string]bool{
 }
 
 // hasDanglingConnective reports whether a residual reads as a fragment: it begins
-// with a joining word, ends with any stopword or joining word, or WELDS two function
-// words together (hasWeldedFunctionWords).
+// with a joining word, ends with any stopword or joining word, or holds a doubled
+// function word ("The the Wandering Trader", the shape a stripped series name leaves
+// when the title spelled its article too).
 //
 // The words are the ASCII-FOLDED ones (identityWords), not a raw ASCII split. notAlnum
 // is ASCII-only, so splitting the raw text cut every accented word in half and left the
 // half as a token: "Breve historia de la astronomía" ended in "a", read as a stranded
 // article, and the whole Spanish catalogue therefore looked like fragments. Folding is
 // what every other vocabulary test in this file already does.
+//
+// It is a PROPOSAL-side test only, and deliberately not read by the comparison key -
+// see IdentityTitleKey, which measures what applying any arm of it would cost.
 func hasDanglingConnective(s string) bool {
 	ws := identityWords(s)
 	if len(ws) == 0 {
@@ -910,34 +914,8 @@ func hasDanglingConnective(s string) bool {
 	if titleStopwords[last] || danglingLead[last] {
 		return true
 	}
-	return hasWeldedFunctionWords(ws)
-}
-
-// hasWeldedFunctionWords reports whether a residual ABUTS two function words - the scar
-// a removal from the MIDDLE of a title leaves, as opposed to one at either end.
-//
-// Two shapes, one rule: the SAME function word twice ("The the Wandering Trader", what a
-// stripped series name leaves when the title spelled its article too) and two DIFFERENT
-// joining words ("The Best of for Short Stay Travel", the two travel guides in Clean's
-// header once their city was excised - the shape the doubled-word test could not see).
-// Both words must be joining words in the second case, so an ordinary "of the"/"in a" is
-// untouched; a title that genuinely abuts two of them ("In and Out") is judged a fragment,
-// which costs a missed duplicate and never a wrong merge.
-//
-// It is the arm IdentityTitleKey reads on its own, and the reason it is a function of its
-// own: a residual with a joining word at an EDGE makes a poor TITLE (the proposal's
-// concern) but a perfectly discriminating KEY - "At the Mountains of Madness" collides
-// with nothing - while a weld means words were cut out of the middle, which is exactly
-// what makes one key describe two books. Applying the edge arms to the key was measured
-// against the tree and cost 8 correct merge proposals ("At the Mountains of Madness
-// [Blackstone Edition]", "By Royal Command", "E-Day [Dramatized Adaptation]", "All In,
-// Book 3") for no false one.
-func hasWeldedFunctionWords(ws []string) bool {
 	for i := 1; i < len(ws); i++ {
 		if ws[i] == ws[i-1] && (titleStopwords[ws[i]] || danglingLead[ws[i]]) {
-			return true
-		}
-		if danglingLead[ws[i]] && danglingLead[ws[i-1]] {
 			return true
 		}
 	}

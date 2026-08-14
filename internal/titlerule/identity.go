@@ -64,26 +64,31 @@ import (
 // the author-set, language, stated-volume and collection rules before it acts.
 // A residual that IS ITS NUMBERS is the one exception - see numericIdentity.
 //
-// It returns NO IDENTITY for a residual that WELDS two function words together
-// (hasWeldedFunctionWords, the interior arm of the retitle proposal's own
-// RefuseFragment test): two joining words abutting, or one doubled, is the scar of a
-// cleaning that cut words out of the MIDDLE of a title, and a key with that scar in it
-// no longer describes one book. The measured pair is the two travel guides in Clean's
-// header, whose excised residuals both read "The Best of for Short Stay Travel".
-// Anchoring the strip is what stops that residual being produced at all; this is the
-// second layer, judging what is left however it got there - and a title with no key is
-// refused by no gate and merged by no wave, the same posture the CarriesIdentity
-// refusal above has always had.
+// IT DELIBERATELY DOES NOT READ THE PROPOSAL'S FRAGMENT TEST
+// (hasDanglingConnective), and both arms of that decision are measured over the
+// 279k-work tree. A residual that reads as a fragment makes a poor TITLE to WRITE and
+// a perfectly discriminating KEY:
 //
-// It reads the WELD arm only, not the proposal's edge arms, and it is measured: see
-// hasWeldedFunctionWords for why a joining word at an edge disqualifies a title and
-// not a key.
+//   - its EDGE arms (a leading joining word, a trailing stopword) cost 8 correct merge
+//     proposals for no false one - "At the Mountains of Madness [Blackstone Edition]",
+//     "By Royal Command", "E-Day [Dramatized Adaptation]", "All In, Book 3", each of
+//     which collides with nothing but its own undecorated twin;
+//   - its INTERIOR arm (two function words abutting - the scar a removal from the
+//     MIDDLE of a title leaves, "The Best of for Short Stay Travel") was tried here and
+//     withdrawn. It prevented ZERO wrong merges: the boundary anchoring in Clean is
+//     what stops that residual being produced at all, and nothing else on the tree
+//     produced one. What it cost was measurable in three places - one correct cluster
+//     (the "(Dramatised)" twin of "The Spy Who Came in from the Cold"), three correct
+//     retitles and one census group - and, worse, it silently emptied the key of ~198
+//     works whose titles simply ABUT two function words: "To Have and to Hold", "In
+//     Sickness and in Health", "For Better or for Worse", "Snowed in with the Tycoon",
+//     "Murder in E Minor", eleven volumes of "Girls from da Hood". An empty key is read
+//     by the intake gate and the importer's create guard as "no identity to collide
+//     with", so those works lost their duplicate PREVENTION - the very defect class
+//     this key exists to close, in the one direction a repair wave cannot undo.
 func IdentityTitleKey(title, series string) string {
 	cleaned := Clean(title, series)
 	if !CarriesIdentity(cleaned) && !numericIdentity(cleaned) {
-		return ""
-	}
-	if hasWeldedFunctionWords(identityWords(cleaned)) {
 		return ""
 	}
 	return CompareKey(cleaned)

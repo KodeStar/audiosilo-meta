@@ -153,30 +153,29 @@ func TestIdentityTitleKeyStripsASeriesNameAtBoundariesOnly(t *testing.T) {
 	}
 }
 
-// A residual that WELDS two function words together is no identity either - the second
-// layer under the anchoring, judging what is left however it got there.
-func TestIdentityTitleKeyRefusesWeldedResiduals(t *testing.T) {
+// THE KEY DOES NOT INHERIT THE PROPOSAL'S FRAGMENT TEST, in either of its arms - a
+// residual that reads as a fragment is a poor title to WRITE and a perfectly
+// discriminating key. Every title here would lose its key to one arm or the other, and
+// each of them names a book; the measurement behind both refusals is on
+// IdentityTitleKey.
+func TestIdentityTitleKeyDoesNotInheritTheFragmentTest(t *testing.T) {
 	for _, c := range []struct{ title, series string }{
-		// An INTERIOR removal - a bracketed volume group - welding two joining words
-		// together, which is the shape the excised travel guides had ("of for").
-		{"The Best of (Volume 2) for Short Stay Travel", ""},
-		// The excised residual itself, whatever produced it.
-		{"The Best of for Short Stay Travel", ""},
-		{"The the Wandering Trader", ""},
-	} {
-		if got := IdentityTitleKey(c.title, c.series); got != "" {
-			t.Errorf("IdentityTitleKey(%q, %q) = %q, want no identity", c.title, c.series, got)
-		}
-	}
-	// A joining word at an EDGE is a poor title and a perfectly good key, so these keep
-	// theirs - the edge arms of the proposal's fragment test are deliberately NOT read
-	// here, and each of these was a correct merge proposal the wave would have lost.
-	for _, c := range []struct{ title, series string }{
+		// The EDGE arms: a leading joining word, a trailing stopword. Each of these was
+		// a correct merge proposal that applying them cost.
 		{"Of Mice and Men", ""},
 		{"To Kill a Mockingbird", ""},
 		{"At the Mountains of Madness [Blackstone Edition]", ""},
 		{"By Royal Command", "Young Bond"},
 		{"All In, Book 3", ""},
+		// The INTERIOR arm: real titles that simply ABUT two function words. Nothing was
+		// cut out of the middle of any of them, and there are ~198 more in the tree.
+		{"To Have and to Hold", ""},
+		{"In Sickness and in Health", ""},
+		{"For Better or for Worse", ""},
+		{"Snowed in with the Tycoon", ""},
+		{"Murder in E Minor", ""},
+		{"Girls from da Hood 10", ""},
+		{"The Spy Who Came in from the Cold (Dramatised)", ""},
 		// And the diacritic case: the raw ASCII split cut "astronomía" in half and read
 		// the "a" as a stranded article, which refused the whole Spanish catalogue.
 		{"Breve historia de la astronomía [Brief History of Astronomy]", ""},
@@ -185,11 +184,13 @@ func TestIdentityTitleKeyRefusesWeldedResiduals(t *testing.T) {
 			t.Errorf("IdentityTitleKey(%q, %q) refused a title that names a book", c.title, c.series)
 		}
 	}
-	// The pairs those two lines exist for: the decorated spelling still meets its twin.
+	// The pairs those lines exist for: the decorated spelling still meets its twin, which
+	// is the merge each refusal would have withheld.
 	for _, c := range []struct{ a, sa, b, sb string }{
 		{"At the Mountains of Madness [Blackstone Edition]", "", "At the Mountains of Madness", ""},
 		{"Young Bond: By Royal Command", "Young Bond", "By Royal Command", "Young Bond"},
 		{"All In, Book 3", "", "All In", ""},
+		{"The Spy Who Came in from the Cold (Dramatised)", "", "The Spy Who Came in from the Cold", ""},
 		{"Breve historia de la astronomía [Brief History of Astronomy]", "", "Breve historia de la astronomía", ""},
 	} {
 		x, y := IdentityTitleKey(c.a, c.sa), IdentityTitleKey(c.b, c.sb)
