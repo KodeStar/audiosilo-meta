@@ -7848,133 +7848,6 @@
       ],
       "title": "Blackout"
     },
-    "blackout-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dhonielle-clayton",
-        "tiffany-d-jackson",
-        "nic-stone",
-        "angie-thomas",
-        "ashley-woodfolk",
-        "nicola-yoon"
-      ],
-      "genres": [
-        "lgbtq",
-        "psychology",
-        "romance",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "blackout-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "a-j-beckles-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0063088126",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 42144,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1337562,
-              "start_ms": 42144,
-              "title": "The Long Walk, Act 1"
-            },
-            {
-              "length_ms": 3506979,
-              "start_ms": 1379706,
-              "title": "Mask Off"
-            },
-            {
-              "length_ms": 654291,
-              "start_ms": 4886685,
-              "title": "The Long Walk, Act 2"
-            },
-            {
-              "length_ms": 5222725,
-              "start_ms": 5540976,
-              "title": "Made to Fit"
-            },
-            {
-              "length_ms": 1775583,
-              "start_ms": 10763701,
-              "title": "The Long Walk, Act 3"
-            },
-            {
-              "length_ms": 3706647,
-              "start_ms": 12539284,
-              "title": "All the Great Love Stories...and Dust"
-            },
-            {
-              "length_ms": 806080,
-              "start_ms": 16245931,
-              "title": "The Long Walk, Act 4"
-            },
-            {
-              "length_ms": 3425639,
-              "start_ms": 17052011,
-              "title": "No Sleep ’til Brooklyn"
-            },
-            {
-              "length_ms": 893945,
-              "start_ms": 20477650,
-              "title": "The Long Walk, Act 5"
-            },
-            {
-              "length_ms": 3489541,
-              "start_ms": 21371595,
-              "title": "Seymour and Grace"
-            },
-            {
-              "length_ms": 69775,
-              "start_ms": 24861136,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oBOxguEvL.jpg",
-          "id": "a-j-beckles-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "a-j-beckles",
-            "bahni-turpin",
-            "dion-graham",
-            "imani-parks",
-            "joniece-abbott-pratt",
-            "jordan-cobb",
-            "shayna-small"
-          ],
-          "publisher": "Quill Tree Books",
-          "release_date": "2021-06-22",
-          "runtime_min": 415,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0063088126",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blackout-a-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0063088126",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blackout: A Novel"
-    },
     "blackout-a-tale-of-survival-in-a-powerless-world-book-1": {
       "added_at": "2026-08-01",
       "authors": [
@@ -10060,8 +9933,10 @@
       ],
       "genres": [
         "lgbtq",
+        "psychology",
         "romance",
         "romantic-comedy",
+        "self-help",
         "young-adult"
       ],
       "id": "blackout-dhonielle-clayton",
@@ -10074,6 +9949,10 @@
           "asin": [
             {
               "asin": "0755503287",
+              "region": "us"
+            },
+            {
+              "asin": "0063088126",
               "region": "us"
             }
           ],
@@ -10160,6 +10039,11 @@
               "imported_at": "2026-08-02",
               "ref": "0755503287",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0063088126",
+              "type": "libex-import"
             }
           ],
           "work": "blackout-dhonielle-clayton"
@@ -10169,6 +10053,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0755503287",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0063088126",
           "type": "libex-import"
         }
       ],

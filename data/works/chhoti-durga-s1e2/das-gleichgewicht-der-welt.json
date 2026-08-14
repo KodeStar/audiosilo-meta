@@ -6926,6 +6926,7 @@
         "oliver-muller"
       ],
       "genres": [
+        "comedy-humor",
         "gothic",
         "horror"
       ],
@@ -7205,32 +7206,8 @@
             }
           ],
           "work": "das-grauen-auf-schloss-moosdran"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G148GM9G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Das Grauen auf Schloss Moosdran"
-    },
-    "das-grauen-auf-schloss-moosdran-live-horspiel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "thomas-birker",
-        "marlene-klein",
-        "oliver-muller"
-      ],
-      "genres": [
-        "comedy-humor"
-      ],
-      "id": "das-grauen-auf-schloss-moosdran-live-horspiel",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alexandra-lange-2025": {
+        },
+        "alexandra-lange-2025-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -7432,7 +7409,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/917H0Fo2sOL.jpg",
-          "id": "alexandra-lange-2025",
+          "id": "alexandra-lange-2025-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -7462,17 +7439,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "das-grauen-auf-schloss-moosdran-live-horspiel"
+          "work": "das-grauen-auf-schloss-moosdran"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G148GM9G",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G1ZBH5Z4",
           "type": "libex-import"
         }
       ],
-      "title": "Das Grauen auf Schloss Moosdran (Live-Hörspiel)"
+      "title": "Das Grauen auf Schloss Moosdran"
     },
     "das-grauen-aus-dem-bild": {
       "added_at": "2026-08-02",

@@ -1595,12 +1595,238 @@
         "comedy-humor",
         "cyberpunk",
         "post-apocalyptic",
-        "science-fiction"
+        "science-fiction",
+        "space-opera",
+        "young-adult"
       ],
       "id": "dev1at3",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "erin-spencer-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008301409",
+              "region": "us"
+            },
+            {
+              "asin": "1524780936",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27515,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 565568,
+              "start_ms": 27515,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 88189,
+              "start_ms": 593083,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 129892,
+              "start_ms": 681272,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1633338,
+              "start_ms": 811164,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1323908,
+              "start_ms": 2444502,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1557640,
+              "start_ms": 3768410,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 773526,
+              "start_ms": 5326050,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 745685,
+              "start_ms": 6099576,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1597857,
+              "start_ms": 6845261,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1127560,
+              "start_ms": 8443118,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1227430,
+              "start_ms": 9570678,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1016430,
+              "start_ms": 10798108,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1056252,
+              "start_ms": 11814538,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 882218,
+              "start_ms": 12870790,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1333405,
+              "start_ms": 13753008,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1424915,
+              "start_ms": 15086413,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1499730,
+              "start_ms": 16511328,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1773238,
+              "start_ms": 18011058,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1997752,
+              "start_ms": 19784296,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1035284,
+              "start_ms": 21782048,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1224504,
+              "start_ms": 22817332,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1656836,
+              "start_ms": 24041836,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1348498,
+              "start_ms": 25698672,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1314017,
+              "start_ms": 27047170,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 483578,
+              "start_ms": 28361187,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1436920,
+              "start_ms": 28844765,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1988255,
+              "start_ms": 30281685,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 2066436,
+              "start_ms": 32269940,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 487897,
+              "start_ms": 34336376,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1883695,
+              "start_ms": 34824273,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 600235,
+              "start_ms": 36707968,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1035470,
+              "start_ms": 37308203,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1045524,
+              "start_ms": 38343673,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 1228823,
+              "start_ms": 39389197,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 2155043,
+              "start_ms": 40618020,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 298701,
+              "start_ms": 42773063,
+              "title": "Chapter 37"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71vyDt06-uL.jpg",
+          "id": "erin-spencer-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erin-spencer"
+          ],
+          "publisher": "HarperCollins Publishers Limited",
+          "release_date": "2019-10-03",
+          "runtime_min": 717,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008301409",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1524780936",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dev1at3"
+        },
         "erin-spencer-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1847,260 +2073,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0B39Q2QMH",
           "type": "libex-import"
-        }
-      ],
-      "title": "DEV1AT3"
-    },
-    "dev1at3-deviate": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jay-kristoff"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "cyberpunk",
-        "science-fiction",
-        "space-opera",
-        "young-adult"
-      ],
-      "id": "dev1at3-deviate",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "erin-spencer-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0008301409",
-              "region": "us"
-            },
-            {
-              "asin": "1524780936",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 27515,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 565568,
-              "start_ms": 27515,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 88189,
-              "start_ms": 593083,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 129892,
-              "start_ms": 681272,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1633338,
-              "start_ms": 811164,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1323908,
-              "start_ms": 2444502,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1557640,
-              "start_ms": 3768410,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 773526,
-              "start_ms": 5326050,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 745685,
-              "start_ms": 6099576,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1597857,
-              "start_ms": 6845261,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1127560,
-              "start_ms": 8443118,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1227430,
-              "start_ms": 9570678,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1016430,
-              "start_ms": 10798108,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1056252,
-              "start_ms": 11814538,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 882218,
-              "start_ms": 12870790,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1333405,
-              "start_ms": 13753008,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1424915,
-              "start_ms": 15086413,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1499730,
-              "start_ms": 16511328,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1773238,
-              "start_ms": 18011058,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1997752,
-              "start_ms": 19784296,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1035284,
-              "start_ms": 21782048,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1224504,
-              "start_ms": 22817332,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1656836,
-              "start_ms": 24041836,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1348498,
-              "start_ms": 25698672,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1314017,
-              "start_ms": 27047170,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 483578,
-              "start_ms": 28361187,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1436920,
-              "start_ms": 28844765,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1988255,
-              "start_ms": 30281685,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 2066436,
-              "start_ms": 32269940,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 487897,
-              "start_ms": 34336376,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1883695,
-              "start_ms": 34824273,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 600235,
-              "start_ms": 36707968,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1035470,
-              "start_ms": 37308203,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 1045524,
-              "start_ms": 38343673,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 1228823,
-              "start_ms": 39389197,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 2155043,
-              "start_ms": 40618020,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 298701,
-              "start_ms": 42773063,
-              "title": "Chapter 37"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71vyDt06-uL.jpg",
-          "id": "erin-spencer-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "erin-spencer"
-          ],
-          "publisher": "HarperCollins Publishers Limited",
-          "release_date": "2019-10-03",
-          "runtime_min": 717,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0008301409",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1524780936",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dev1at3-deviate"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0008301409",
           "type": "libex-import"
         }
       ],
-      "title": "DEV1AT3 (DEVIATE)"
+      "title": "DEV1AT3"
     },
     "devastate": {
       "added_at": "2026-08-02",

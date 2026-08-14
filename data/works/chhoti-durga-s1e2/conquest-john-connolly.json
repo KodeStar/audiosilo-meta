@@ -7,6 +7,8 @@
         "jennifer-ridyard"
       ],
       "genres": [
+        "action-adventure",
+        "dystopian",
         "science-fiction",
         "young-adult"
       ],
@@ -20,6 +22,10 @@
           "asin": [
             {
               "asin": "B00IIWDNZ6",
+              "region": "us"
+            },
+            {
+              "asin": "B00IDC596C",
               "region": "us"
             }
           ],
@@ -38,6 +44,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00IIWDNZ6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IDC596C",
+              "type": "libex-import"
             }
           ],
           "work": "conquest-john-connolly"
@@ -47,6 +58,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00IIWDNZ6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00IDC596C",
           "type": "libex-import"
         }
       ],
@@ -3097,59 +3113,6 @@
         }
       ],
       "title": "Conquest: The Alfurian Chronicles, Book 3"
-    },
-    "conquest-the-chronicles-of-the-invaders-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-connolly",
-        "jennifer-ridyard"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "science-fiction"
-      ],
-      "id": "conquest-the-chronicles-of-the-invaders-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicola-barber-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00IDC596C",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PGpqyERXL.jpg",
-          "id": "nicola-barber-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicola-barber"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2014-02-11",
-          "runtime_min": 868,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00IDC596C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "conquest-the-chronicles-of-the-invaders-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00IDC596C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Conquest: The Chronicles of the Invaders: Book 1"
     },
     "conquests": {
       "added_at": "2026-07-29",

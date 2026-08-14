@@ -1029,7 +1029,9 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "nature"
+        "mystery",
+        "nature",
+        "police-procedural"
       ],
       "id": "the-bear-and-the-serpent",
       "language": "en",
@@ -1289,33 +1291,7 @@
             }
           ],
           "work": "the-bear-and-the-serpent"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B072MP1MK1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bear and the Serpent"
-    },
-    "the-bear-and-the-serpent-echoes-of-the-fall-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-bear-and-the-serpent-echoes-of-the-fall-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kyla-garcia-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1574,17 +1550,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-bear-and-the-serpent-echoes-of-the-fall-2"
+          "work": "the-bear-and-the-serpent"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B072MP1MK1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNFYQ1PM",
           "type": "libex-import"
         }
       ],
-      "title": "The Bear and the Serpent: Echoes of the Fall 2"
+      "title": "The Bear and the Serpent"
     },
     "the-bear-and-the-swastika": {
       "added_at": "2026-08-02",

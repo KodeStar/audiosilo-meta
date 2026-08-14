@@ -2841,59 +2841,6 @@
       ],
       "title": "Ben-Hur"
     },
-    "ben-hur-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lewis-wallace"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "history",
-        "war-military-fiction"
-      ],
-      "id": "ben-hur-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oliver-rohrbeck-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00TKNDE24",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vDY0c+SFL.jpg",
-          "id": "oliver-rohrbeck-2014",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oliver-rohrbeck"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2014-07-10",
-          "runtime_min": 709,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00TKNDE24",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ben-hur-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TKNDE24",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ben Hur [German Edition]"
-    },
     "ben-hur-lew-wallace": {
       "added_at": "2026-08-08",
       "authors": [
@@ -3927,8 +3874,10 @@
       "genres": [
         "classics",
         "historical-fiction",
+        "history",
         "literary-fiction",
-        "military-history"
+        "military-history",
+        "war-military-fiction"
       ],
       "id": "ben-hur-lewis-wallace",
       "language": "de",
@@ -3941,6 +3890,10 @@
             {
               "asin": "B00L40TKP6",
               "region": "de"
+            },
+            {
+              "asin": "B00TKNDE24",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91vDY0c+SFL.jpg",
@@ -3958,6 +3911,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00L40TKP6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TKNDE24",
+              "type": "libex-import"
             }
           ],
           "work": "ben-hur-lewis-wallace"
@@ -3967,6 +3925,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00L40TKP6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKNDE24",
           "type": "libex-import"
         }
       ],
@@ -9921,8 +9884,10 @@
       ],
       "genres": [
         "dystopian",
+        "fantasy",
         "romance",
         "science-fiction",
+        "thriller-suspense",
         "womens-fiction"
       ],
       "id": "beneath-ariel-sullivan",
@@ -9935,6 +9900,10 @@
           "asin": [
             {
               "asin": "B0FKVGH11B",
+              "region": "us"
+            },
+            {
+              "asin": "B0G88JKS4X",
               "region": "us"
             }
           ],
@@ -10170,6 +10139,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FKVGH11B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G88JKS4X",
+              "type": "libex-import"
             }
           ],
           "work": "beneath-ariel-sullivan"
@@ -10179,6 +10153,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FKVGH11B",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G88JKS4X",
           "type": "libex-import"
         }
       ],
@@ -10844,277 +10823,6 @@
         }
       ],
       "title": "Beneath Blood and Bone"
-    },
-    "beneath-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ariel-sullivan"
-      ],
-      "genres": [
-        "dystopian",
-        "fantasy",
-        "romance",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "beneath-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brittany-pressley-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G88JKS4X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13931,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11122,
-              "start_ms": 13931,
-              "title": "Dedictaion"
-            },
-            {
-              "length_ms": 12887,
-              "start_ms": 25053,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 129311,
-              "start_ms": 37940,
-              "title": "Day 100"
-            },
-            {
-              "length_ms": 1374783,
-              "start_ms": 167251,
-              "title": "1"
-            },
-            {
-              "length_ms": 1720180,
-              "start_ms": 1542034,
-              "title": "2"
-            },
-            {
-              "length_ms": 847667,
-              "start_ms": 3262214,
-              "title": "3"
-            },
-            {
-              "length_ms": 1156214,
-              "start_ms": 4109881,
-              "title": "4"
-            },
-            {
-              "length_ms": 1576240,
-              "start_ms": 5266095,
-              "title": "5"
-            },
-            {
-              "length_ms": 908294,
-              "start_ms": 6842335,
-              "title": "6"
-            },
-            {
-              "length_ms": 2172598,
-              "start_ms": 7750629,
-              "title": "7"
-            },
-            {
-              "length_ms": 1192367,
-              "start_ms": 9923227,
-              "title": "8"
-            },
-            {
-              "length_ms": 1552323,
-              "start_ms": 11115594,
-              "title": "9"
-            },
-            {
-              "length_ms": 1810715,
-              "start_ms": 12667917,
-              "title": "10"
-            },
-            {
-              "length_ms": 1792789,
-              "start_ms": 14478632,
-              "title": "11"
-            },
-            {
-              "length_ms": 954804,
-              "start_ms": 16271421,
-              "title": "12"
-            },
-            {
-              "length_ms": 1431115,
-              "start_ms": 17226225,
-              "title": "13"
-            },
-            {
-              "length_ms": 855794,
-              "start_ms": 18657340,
-              "title": "14"
-            },
-            {
-              "length_ms": 593362,
-              "start_ms": 19513134,
-              "title": "15"
-            },
-            {
-              "length_ms": 1788795,
-              "start_ms": 20106496,
-              "title": "16"
-            },
-            {
-              "length_ms": 3308100,
-              "start_ms": 21895291,
-              "title": "17"
-            },
-            {
-              "length_ms": 756343,
-              "start_ms": 25203391,
-              "title": "18"
-            },
-            {
-              "length_ms": 846901,
-              "start_ms": 25959734,
-              "title": "19"
-            },
-            {
-              "length_ms": 1613438,
-              "start_ms": 26806635,
-              "title": "20"
-            },
-            {
-              "length_ms": 2155299,
-              "start_ms": 28420073,
-              "title": "21"
-            },
-            {
-              "length_ms": 1759143,
-              "start_ms": 30575372,
-              "title": "22"
-            },
-            {
-              "length_ms": 1103783,
-              "start_ms": 32334515,
-              "title": "23"
-            },
-            {
-              "length_ms": 2204665,
-              "start_ms": 33438298,
-              "title": "24"
-            },
-            {
-              "length_ms": 1089131,
-              "start_ms": 35642963,
-              "title": "25"
-            },
-            {
-              "length_ms": 1247283,
-              "start_ms": 36732094,
-              "title": "26"
-            },
-            {
-              "length_ms": 1254922,
-              "start_ms": 37979377,
-              "title": "27"
-            },
-            {
-              "length_ms": 1561472,
-              "start_ms": 39234299,
-              "title": "28"
-            },
-            {
-              "length_ms": 1204163,
-              "start_ms": 40795771,
-              "title": "29"
-            },
-            {
-              "length_ms": 1532609,
-              "start_ms": 41999934,
-              "title": "30"
-            },
-            {
-              "length_ms": 1651263,
-              "start_ms": 43532543,
-              "title": "31"
-            },
-            {
-              "length_ms": 1672695,
-              "start_ms": 45183806,
-              "title": "32"
-            },
-            {
-              "length_ms": 2339689,
-              "start_ms": 46856501,
-              "title": "33"
-            },
-            {
-              "length_ms": 1285688,
-              "start_ms": 49196190,
-              "title": "34"
-            },
-            {
-              "length_ms": 2039246,
-              "start_ms": 50481878,
-              "title": "35"
-            },
-            {
-              "length_ms": 1586573,
-              "start_ms": 52521124,
-              "title": "36"
-            },
-            {
-              "length_ms": 1119735,
-              "start_ms": 54107697,
-              "title": "37"
-            },
-            {
-              "length_ms": 305876,
-              "start_ms": 55227432,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 42260,
-              "start_ms": 55533308,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816BmDlKYCL.jpg",
-          "id": "brittany-pressley-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brittany-pressley"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2026-03-31",
-          "runtime_min": 926,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G88JKS4X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "beneath-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G88JKS4X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Beneath: Book 1"
     },
     "beneath-cold-earth": {
       "added_at": "2026-07-29",

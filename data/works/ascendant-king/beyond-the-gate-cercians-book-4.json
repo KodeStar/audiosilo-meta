@@ -11782,12 +11782,170 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "urban-fantasy"
       ],
       "id": "beyond-the-shadows-brent-weeks",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "casie-platt-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09FTP3YG4",
+              "region": "us"
+            },
+            {
+              "asin": "1648809553",
+              "region": "us"
+            },
+            {
+              "asin": "164880957X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 93398,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4150420,
+              "start_ms": 93398,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4322069,
+              "start_ms": 4243818,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3872066,
+              "start_ms": 8565887,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4467914,
+              "start_ms": 12437953,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3937477,
+              "start_ms": 16905867,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4385877,
+              "start_ms": 20843344,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3010908,
+              "start_ms": 25229221,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4633170,
+              "start_ms": 28240129,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3732050,
+              "start_ms": 32873299,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4501327,
+              "start_ms": 36605349,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4373640,
+              "start_ms": 41106676,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4310831,
+              "start_ms": 45480316,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4241798,
+              "start_ms": 49791147,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4462348,
+              "start_ms": 54032945,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 163994,
+              "start_ms": 58495293,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jiRcWnbpL.jpg",
+          "id": "casie-platt-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "casie-platt",
+            "christopher-graybill",
+            "colleen-delany",
+            "dylan-lynch",
+            "elizabeth-jernigan",
+            "eric-messner",
+            "full-cast",
+            "james-lewis",
+            "joe-brack",
+            "johann-dettweiler",
+            "ken-jackson",
+            "laura-quinn",
+            "lily-beacon",
+            "michael-glenn",
+            "mort-shelby"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 977,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09FTP3YG4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809553",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809553",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164880957X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164880957X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09FTP3YG4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "beyond-the-shadows-brent-weeks"
+        },
         "paul-boehmer-2009": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12892,185 +13050,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BLY76VZS",
           "type": "libex-import"
-        }
-      ],
-      "title": "Beyond the Shadows"
-    },
-    "beyond-the-shadows-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brent-weeks"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "urban-fantasy"
-      ],
-      "id": "beyond-the-shadows-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "casie-platt-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09FTP3YG4",
-              "region": "us"
-            },
-            {
-              "asin": "1648809553",
-              "region": "us"
-            },
-            {
-              "asin": "164880957X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 93398,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4150420,
-              "start_ms": 93398,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4322069,
-              "start_ms": 4243818,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3872066,
-              "start_ms": 8565887,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4467914,
-              "start_ms": 12437953,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3937477,
-              "start_ms": 16905867,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4385877,
-              "start_ms": 20843344,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3010908,
-              "start_ms": 25229221,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4633170,
-              "start_ms": 28240129,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3732050,
-              "start_ms": 32873299,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4501327,
-              "start_ms": 36605349,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4373640,
-              "start_ms": 41106676,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 4310831,
-              "start_ms": 45480316,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 4241798,
-              "start_ms": 49791147,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 4462348,
-              "start_ms": 54032945,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 163994,
-              "start_ms": 58495293,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81jiRcWnbpL.jpg",
-          "id": "casie-platt-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "casie-platt",
-            "christopher-graybill",
-            "colleen-delany",
-            "dylan-lynch",
-            "elizabeth-jernigan",
-            "eric-messner",
-            "full-cast",
-            "james-lewis",
-            "joe-brack",
-            "johann-dettweiler",
-            "ken-jackson",
-            "laura-quinn",
-            "lily-beacon",
-            "michael-glenn",
-            "mort-shelby"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 977,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09FTP3YG4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648809553",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648809553",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164880957X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164880957X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09FTP3YG4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "beyond-the-shadows-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09FTP3YG4",
@@ -13102,7 +13082,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Beyond the Shadows (Dramatized Adaptation)"
+      "title": "Beyond the Shadows"
     },
     "beyond-the-shoreline": {
       "added_at": "2026-08-02",

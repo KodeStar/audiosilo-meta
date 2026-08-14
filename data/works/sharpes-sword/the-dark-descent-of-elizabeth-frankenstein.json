@@ -1959,6 +1959,10 @@
             {
               "asin": "B0BL4VQK78",
               "region": "de"
+            },
+            {
+              "asin": "B0BL3Z5K15",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81UoW-89elL.jpg",
@@ -1976,6 +1980,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0BL4VQK78",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BL3Z5K15",
+              "type": "libex-import"
             }
           ],
           "work": "the-dark-emma-haughton"
@@ -1985,6 +1994,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BL4VQK78",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BL3Z5K15",
           "type": "libex-import"
         }
       ],
@@ -4536,59 +4550,6 @@
         }
       ],
       "title": "The Dark Garden"
-    },
-    "the-dark-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "emma-haughton",
-        "cornelia-roser"
-      ],
-      "genres": [
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "the-dark-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tanja-geke-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BL3Z5K15",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81UoW-89elL.jpg",
-          "id": "tanja-geke-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tanja-geke"
-          ],
-          "publisher": "AUDIOBUCH",
-          "release_date": "2022-11-04",
-          "runtime_min": 790,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BL3Z5K15",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-dark-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BL3Z5K15",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Dark (German Edition)"
     },
     "the-dark-glamour": {
       "added_at": "2026-08-02",

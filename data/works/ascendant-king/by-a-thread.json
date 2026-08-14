@@ -8918,7 +8918,8 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "mystery"
+        "mystery",
+        "young-adult"
       ],
       "id": "by-royal-command",
       "language": "en",
@@ -9118,6 +9119,196 @@
             }
           ],
           "work": "by-royal-command"
+        },
+        "nathaniel-parker-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007GCXB9M",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1040858,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 551335,
+              "start_ms": 1040858,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1254388,
+              "start_ms": 1592193,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1036539,
+              "start_ms": 2846581,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1036399,
+              "start_ms": 3883120,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 963164,
+              "start_ms": 4919519,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1201818,
+              "start_ms": 5882683,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1287129,
+              "start_ms": 7084501,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1207484,
+              "start_ms": 8371630,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 900098,
+              "start_ms": 9579114,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1006771,
+              "start_ms": 10479212,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 912962,
+              "start_ms": 11485983,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 987777,
+              "start_ms": 12398945,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 745593,
+              "start_ms": 13386722,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1119248,
+              "start_ms": 14132315,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1044712,
+              "start_ms": 15251563,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 917745,
+              "start_ms": 16296275,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1085904,
+              "start_ms": 17214020,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 916677,
+              "start_ms": 18299924,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 969805,
+              "start_ms": 19216601,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1216679,
+              "start_ms": 20186406,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 814695,
+              "start_ms": 21403085,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 962978,
+              "start_ms": 22217780,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 724695,
+              "start_ms": 23180758,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 918906,
+              "start_ms": 23905453,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1086415,
+              "start_ms": 24824359,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1387996,
+              "start_ms": 25910774,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 951647,
+              "start_ms": 27298770,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 848318,
+              "start_ms": 28250417,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1022839,
+              "start_ms": 29098735,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1076059,
+              "start_ms": 30121574,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1145765,
+              "start_ms": 31197633,
+              "title": "Chapter 32"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51IFFYDUUSL.jpg",
+          "id": "nathaniel-parker-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nathaniel-parker"
+          ],
+          "publisher": "Ian Fleming Publications Ltd",
+          "release_date": "2012-03-05",
+          "runtime_min": 537,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007GCXB9M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "by-royal-command"
         }
       },
       "sources": [
@@ -9129,6 +9320,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B003NYSKB6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B007GCXB9M",
           "type": "libex-import"
         }
       ],

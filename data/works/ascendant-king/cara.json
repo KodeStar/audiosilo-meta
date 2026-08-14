@@ -8050,8 +8050,10 @@
         "robert-galbraith"
       ],
       "genres": [
+        "hard-boiled",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "career-of-evil",
       "language": "en",
@@ -8068,60 +8070,7 @@
             {
               "asin": "B079CF3Z3Z",
               "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wjWzbgc8L.jpg",
-          "id": "robert-glenister-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-glenister"
-          ],
-          "publisher": "Mulholland Books",
-          "release_date": "2015-10-20",
-          "runtime_min": 1077,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B014JYRSPW",
-              "type": "libex-import"
             },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B079CF3Z3Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "career-of-evil"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B014JYRSPW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Career of Evil"
-    },
-    "career-of-evil-cormoran-strike-book-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-galbraith"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "career-of-evil-cormoran-strike-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-glenister-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B01588BMQY",
               "region": "us"
@@ -8463,17 +8412,27 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91w9lABKz0L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91wjWzbgc8L.jpg",
           "id": "robert-glenister-2015",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "robert-glenister"
           ],
-          "publisher": "Little, Brown Book Group",
+          "publisher": "Mulholland Books",
           "release_date": "2015-10-20",
-          "runtime_min": 1074,
+          "runtime_min": 1077,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B014JYRSPW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B079CF3Z3Z",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-29",
               "ref": "B01588BMQY",
@@ -8485,17 +8444,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "career-of-evil-cormoran-strike-book-3"
+          "work": "career-of-evil"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B014JYRSPW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01588BMQY",
           "type": "libex-import"
         }
       ],
-      "title": "Career of Evil: Cormoran Strike, Book 3"
+      "title": "Career of Evil"
     },
     "career-planning-box-set": {
       "added_at": "2026-07-29",

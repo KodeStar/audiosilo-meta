@@ -6892,57 +6892,6 @@
       ],
       "title": "Cuentos de Edgar Allan Poe [Tales of Edgar Allan Poe]"
     },
-    "cuentos-de-edgar-allan-poe-volumen-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edgar-allan-poe"
-      ],
-      "genres": [
-        "classics",
-        "short-stories"
-      ],
-      "id": "cuentos-de-edgar-allan-poe-volumen-1",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joaquin-rodrigo-madrigal-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YX645V1",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71asNPhz3HL.jpg",
-          "id": "joaquin-rodrigo-madrigal-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-rodrigo-madrigal"
-          ],
-          "publisher": "Alberich Ediciones Mexico",
-          "release_date": "2019-07-25",
-          "runtime_min": 147,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX645V1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-edgar-allan-poe-volumen-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX645V1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de edgar allan poe volumen 1"
-    },
     "cuentos-de-edgar-allan-poe-volumen-1-tales-of-edgar-allan-poe-volume-1": {
       "added_at": "2026-07-29",
       "authors": [
@@ -6963,6 +6912,10 @@
             {
               "asin": "B07VP9B6H9",
               "region": "us"
+            },
+            {
+              "asin": "B07YX645V1",
+              "region": "es"
             }
           ],
           "chapters": [
@@ -7022,6 +6975,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07VP9B6H9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YX645V1",
+              "type": "libex-import"
             }
           ],
           "work": "cuentos-de-edgar-allan-poe-volumen-1-tales-of-edgar-allan-poe-volume-1"
@@ -7031,6 +6989,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07VP9B6H9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX645V1",
           "type": "libex-import"
         }
       ],
@@ -7043,6 +7006,7 @@
       ],
       "genres": [
         "literary-fiction",
+        "parenting-relationships",
         "short-stories",
         "womens-fiction"
       ],
@@ -7057,56 +7021,7 @@
             {
               "asin": "840101865X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iVI5yQVsL.jpg",
-          "id": "juanita-devis-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juanita-devis"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-03-30",
-          "runtime_min": 608,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "840101865X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-eva-luna"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "840101865X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de Eva Luna"
-    },
-    "cuentos-de-eva-luna-the-stories-of-eva-luna": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "literary-fiction",
-        "parenting-relationships",
-        "short-stories",
-        "womens-fiction"
-      ],
-      "id": "cuentos-de-eva-luna-the-stories-of-eva-luna",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juanita-devis-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B06XDRWGK1",
               "region": "us"
@@ -7125,21 +7040,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "840101865X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B06XDRWGK1",
               "type": "libex-import"
             }
           ],
-          "work": "cuentos-de-eva-luna-the-stories-of-eva-luna"
+          "work": "cuentos-de-eva-luna"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "840101865X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B06XDRWGK1",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos de Eva Luna [The Stories of Eva Luna]"
+      "title": "Cuentos de Eva Luna"
     },
     "cuentos-de-halloween-de-los-bebes-llorones": {
       "added_at": "2026-08-02",
@@ -7334,60 +7259,7 @@
             {
               "asin": "9872925321",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91P8sa9aCzL.jpg",
-          "id": "aldo-lumbia-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldo-lumbia",
-            "enrique-caceres",
-            "jorge-mansilla",
-            "leonel-arias",
-            "maria-fernanda-rojas",
-            "myriam-lopez-sanz",
-            "omar-aranda-lamadrid"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2017-07-31",
-          "runtime_min": 208,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "9872925321",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-la-selva"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "9872925321",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de la Selva"
-    },
-    "cuentos-de-la-selva-tales-from-the-jungle": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "horacio-quiroga"
-      ],
-      "genres": [
-        "childrens",
-        "short-stories"
-      ],
-      "id": "cuentos-de-la-selva-tales-from-the-jungle",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aldo-lumbia-2017": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0747V5WS2",
               "region": "us"
@@ -7412,21 +7284,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "9872925321",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0747V5WS2",
               "type": "libex-import"
             }
           ],
-          "work": "cuentos-de-la-selva-tales-from-the-jungle"
+          "work": "cuentos-de-la-selva"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "9872925321",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0747V5WS2",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos de la Selva [Tales from the Jungle]"
+      "title": "Cuentos de la Selva"
     },
     "cuentos-de-las-1001-noches-tales-of-1001-nights": {
       "added_at": "2026-07-29",
@@ -7549,6 +7431,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "staff-audiolibros-coleccion-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "9873693432",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81o3vRnOvrL.jpg",
+          "id": "staff-audiolibros-coleccion-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "staff-audiolibros-coleccion"
+          ],
+          "publisher": "Audiolibros Colección",
+          "release_date": "2019-04-23",
+          "runtime_min": 186,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "9873693432",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cuentos-de-lovecraft"
+        },
         "various-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7583,60 +7493,14 @@
           "imported_at": "2026-07-29",
           "ref": "8726285274",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de Lovecraft"
-    },
-    "cuentos-de-lovecraft-tales-of-lovecraft": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "horror",
-        "short-stories"
-      ],
-      "id": "cuentos-de-lovecraft-tales-of-lovecraft",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "staff-audiolibros-coleccion-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "9873693432",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81o3vRnOvrL.jpg",
-          "id": "staff-audiolibros-coleccion-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "staff-audiolibros-coleccion"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2019-04-23",
-          "runtime_min": 186,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "9873693432",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-lovecraft-tales-of-lovecraft"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "9873693432",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos de Lovecraft [Tales of Lovecraft]"
+      "title": "Cuentos de Lovecraft"
     },
     "cuentos-de-maldad-y-uno-que-otro-maldito-tales-of-evil-and-one-that-another-cursed": {
       "added_at": "2026-07-29",

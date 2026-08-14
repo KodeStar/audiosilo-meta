@@ -4824,7 +4824,9 @@
         "saara-el-arifi"
       ],
       "genres": [
+        "action-adventure",
         "dark-fantasy",
+        "epic-fantasy",
         "fairy-tales-folklore",
         "fantasy",
         "horror",
@@ -4842,6 +4844,10 @@
           "asin": [
             {
               "asin": "B0D5YW559R",
+              "region": "us"
+            },
+            {
+              "asin": "B0D5Z22KNY",
               "region": "us"
             }
           ],
@@ -5077,6 +5083,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0D5YW559R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D5Z22KNY",
+              "type": "libex-import"
             }
           ],
           "work": "cursebound"
@@ -5087,278 +5098,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0D5YW559R",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cursebound"
-    },
-    "cursebound-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "saara-el-arifi"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "cursebound-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicole-lewis-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D5Z22KNY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16346,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4969,
-              "start_ms": 16346,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 545181,
-              "start_ms": 21315,
-              "title": "Lettle's Journal: Notes Chronicling Recent Events"
-            },
-            {
-              "length_ms": 105674,
-              "start_ms": 566496,
-              "title": "Part One: Afa's Grimoire"
-            },
-            {
-              "length_ms": 1917828,
-              "start_ms": 672170,
-              "title": "Chapter One: Yeeran"
-            },
-            {
-              "length_ms": 1640489,
-              "start_ms": 2589998,
-              "title": "Chapter Two: Lettle"
-            },
-            {
-              "length_ms": 793704,
-              "start_ms": 4230487,
-              "title": "Chapter Three: Alder"
-            },
-            {
-              "length_ms": 835128,
-              "start_ms": 5024191,
-              "title": "Chapter Four: Lettle"
-            },
-            {
-              "length_ms": 764238,
-              "start_ms": 5859319,
-              "title": "Chapter Five: Yeeran"
-            },
-            {
-              "length_ms": 1431069,
-              "start_ms": 6623557,
-              "title": "Chapter Six: Lettle"
-            },
-            {
-              "length_ms": 1441982,
-              "start_ms": 8054626,
-              "title": "Chapter Seven: Yeeran"
-            },
-            {
-              "length_ms": 1742286,
-              "start_ms": 9496608,
-              "title": "Chapter Eight: Lettle"
-            },
-            {
-              "length_ms": 1464505,
-              "start_ms": 11238894,
-              "title": "Chapter Nine: Furi"
-            },
-            {
-              "length_ms": 1184217,
-              "start_ms": 12703399,
-              "title": "Chapter Ten: Yeeran"
-            },
-            {
-              "length_ms": 739509,
-              "start_ms": 13887616,
-              "title": "Chapter Eleven: Alder"
-            },
-            {
-              "length_ms": 1543291,
-              "start_ms": 14627125,
-              "title": "Chapter Twelve: Yeeran"
-            },
-            {
-              "length_ms": 835337,
-              "start_ms": 16170416,
-              "title": "Chapter Thirteen: Lettle"
-            },
-            {
-              "length_ms": 73537,
-              "start_ms": 17005753,
-              "title": "Part Two: Afa's Grimoire"
-            },
-            {
-              "length_ms": 622016,
-              "start_ms": 17079290,
-              "title": "Chapter Fourteen: Furi"
-            },
-            {
-              "length_ms": 972265,
-              "start_ms": 17701306,
-              "title": "Chapter Fifteen: Yeeran"
-            },
-            {
-              "length_ms": 567751,
-              "start_ms": 18673571,
-              "title": "Chapter Sixteen: Alder"
-            },
-            {
-              "length_ms": 788480,
-              "start_ms": 19241322,
-              "title": "Chapter Seventeen: Lettle"
-            },
-            {
-              "length_ms": 1769198,
-              "start_ms": 20029802,
-              "title": "Chapter Eighteen: Alder"
-            },
-            {
-              "length_ms": 1460488,
-              "start_ms": 21799000,
-              "title": "Chapter Nineteen: Yeeran"
-            },
-            {
-              "length_ms": 1588453,
-              "start_ms": 23259488,
-              "title": "Chapter Twenty: Lettle"
-            },
-            {
-              "length_ms": 1231865,
-              "start_ms": 24847941,
-              "title": "Chapter Twenty-one: Furi"
-            },
-            {
-              "length_ms": 896917,
-              "start_ms": 26079806,
-              "title": "Chapter Twenty-two: Lettle"
-            },
-            {
-              "length_ms": 121463,
-              "start_ms": 26976723,
-              "title": "Part Three: Afa's Grimoire"
-            },
-            {
-              "length_ms": 1360224,
-              "start_ms": 27098186,
-              "title": "Chapter Twenty-three: Alder"
-            },
-            {
-              "length_ms": 1698400,
-              "start_ms": 28458410,
-              "title": "Chapter Twenty-four: Lettle"
-            },
-            {
-              "length_ms": 530134,
-              "start_ms": 30156810,
-              "title": "Chapter Twenty-five: Yeeran"
-            },
-            {
-              "length_ms": 996345,
-              "start_ms": 30686944,
-              "title": "Chapter Twenty-six: Lettle"
-            },
-            {
-              "length_ms": 1109240,
-              "start_ms": 31683289,
-              "title": "Chapter Twenty-seven: Furi"
-            },
-            {
-              "length_ms": 1049959,
-              "start_ms": 32792529,
-              "title": "Chapter Twenty-eight: Alder"
-            },
-            {
-              "length_ms": 736560,
-              "start_ms": 33842488,
-              "title": "Chapter Twenty-nine: Lettle"
-            },
-            {
-              "length_ms": 916747,
-              "start_ms": 34579048,
-              "title": "Chapter Thirty: Yeeran"
-            },
-            {
-              "length_ms": 995276,
-              "start_ms": 35495795,
-              "title": "Chapter Thirty-one: Alder"
-            },
-            {
-              "length_ms": 1963734,
-              "start_ms": 36491071,
-              "title": "Chapter Thirty-two: Lettle"
-            },
-            {
-              "length_ms": 1090641,
-              "start_ms": 38454805,
-              "title": "Chapter Thirty-three: Alder"
-            },
-            {
-              "length_ms": 539631,
-              "start_ms": 39545446,
-              "title": "Chapter Thirty-four: Yeeran"
-            },
-            {
-              "length_ms": 987126,
-              "start_ms": 40085077,
-              "title": "Chapter Thirty-five: Lettle"
-            },
-            {
-              "length_ms": 432610,
-              "start_ms": 41072203,
-              "title": "Epilogue: Furi"
-            },
-            {
-              "length_ms": 35386,
-              "start_ms": 41504813,
-              "title": "Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cfuFM5mYL.jpg",
-          "id": "nicole-lewis-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicole-lewis"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2025-02-18",
-          "runtime_min": 692,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0D5Z22KNY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cursebound-a-novel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D5Z22KNY",
           "type": "libex-import"
         }
       ],
-      "title": "Cursebound: A Novel"
+      "title": "Cursebound"
     },
     "cursebound-battle-of-the-drumfire-band-2": {
       "added_at": "2026-08-02",
@@ -7353,130 +7100,6 @@
       ],
       "title": "Cursed Academy: Year One and a Half"
     },
-    "cursed-alex-verus-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "benedict-jacka"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "cursed-alex-verus-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gildart-jackson-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00HM7ZYDC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13282,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2952835,
-              "start_ms": 13282,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3580053,
-              "start_ms": 2966117,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3006055,
-              "start_ms": 6546170,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3649480,
-              "start_ms": 9552225,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2424906,
-              "start_ms": 13201705,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3180530,
-              "start_ms": 15626611,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3481043,
-              "start_ms": 18807141,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3314695,
-              "start_ms": 22288184,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3158518,
-              "start_ms": 25602879,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3725549,
-              "start_ms": 28761397,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1893169,
-              "start_ms": 32486946,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1778397,
-              "start_ms": 34380115,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 59555,
-              "start_ms": 36158512,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lZNobUGCL.jpg",
-          "id": "gildart-jackson-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gildart-jackson"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2014-01-06",
-          "runtime_min": 603,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00HM7ZYDC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cursed-alex-verus-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00HM7ZYDC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cursed: Alex Verus, Book 2"
-    },
     "cursed-alpha": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7671,6 +7294,7 @@
       ],
       "genres": [
         "fantasy",
+        "paranormal",
         "science-fiction",
         "urban-fantasy"
       ],
@@ -7678,6 +7302,106 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gildart-jackson-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00HM7ZYDC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13282,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2952835,
+              "start_ms": 13282,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3580053,
+              "start_ms": 2966117,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3006055,
+              "start_ms": 6546170,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3649480,
+              "start_ms": 9552225,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2424906,
+              "start_ms": 13201705,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3180530,
+              "start_ms": 15626611,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3481043,
+              "start_ms": 18807141,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3314695,
+              "start_ms": 22288184,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3158518,
+              "start_ms": 25602879,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3725549,
+              "start_ms": 28761397,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1893169,
+              "start_ms": 32486946,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1778397,
+              "start_ms": 34380115,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 59555,
+              "start_ms": 36158512,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lZNobUGCL.jpg",
+          "id": "gildart-jackson-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gildart-jackson"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2014-01-06",
+          "runtime_min": 603,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HM7ZYDC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cursed-an-alex-verus-novel"
+        },
         "gildart-jackson-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7711,6 +7435,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00X7Z70QW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00HM7ZYDC",
           "type": "libex-import"
         }
       ],

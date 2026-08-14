@@ -10911,6 +10911,7 @@
       ],
       "genres": [
         "classics",
+        "drama-plays",
         "historical-fiction",
         "literary-fiction"
       ],
@@ -10969,6 +10970,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1780002912",
+              "type": "libex-import"
+            }
+          ],
+          "work": "barchester-towers"
+        },
+        "david-shaw-parker-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00HDFD4D0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yZf5ZefWL.jpg",
+          "id": "david-shaw-parker-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-shaw-parker"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2014-01-07",
+          "runtime_min": 1303,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HDFD4D0",
               "type": "libex-import"
             }
           ],
@@ -11818,61 +11847,14 @@
           "imported_at": "2026-08-02",
           "ref": "B002V9Z0T4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Barchester Towers"
-    },
-    "barchester-towers-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anthony-trollope"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "barchester-towers-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-shaw-parker-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00HDFD4D0",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91yZf5ZefWL.jpg",
-          "id": "david-shaw-parker-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-shaw-parker"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2014-01-07",
-          "runtime_min": 1303,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00HDFD4D0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "barchester-towers-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00HDFD4D0",
           "type": "libex-import"
         }
       ],
-      "title": "Barchester Towers, Book 2"
+      "title": "Barchester Towers"
     },
     "barchettas-lightning-brigade": {
       "added_at": "2026-08-01",

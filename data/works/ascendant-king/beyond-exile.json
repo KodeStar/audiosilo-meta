@@ -478,7 +478,14 @@
     "beyond-good-and-evil": {
       "added_at": "2026-07-29",
       "authors": [
-        "friedrich-nietzsche"
+        "friedrich-nietzsche",
+        "helen-zimmern"
+      ],
+      "credits": [
+        {
+          "person": "helen-zimmern",
+          "role": "translator"
+        }
       ],
       "genres": [
         "philosophy",
@@ -569,6 +576,101 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V8HIZE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "beyond-good-and-evil"
+        },
+        "christine-williams-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B079J6341Z",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 65924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 302088,
+              "start_ms": 65924,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 3214082,
+              "start_ms": 368012,
+              "title": "Chapter 1 Prejudices of Philosophers"
+            },
+            {
+              "length_ms": 2854452,
+              "start_ms": 3582094,
+              "title": "Chapter 2 The Free Spirit"
+            },
+            {
+              "length_ms": 2360099,
+              "start_ms": 6436546,
+              "title": "Chapter 3 The Religious Mood"
+            },
+            {
+              "length_ms": 1547099,
+              "start_ms": 8796645,
+              "title": "Chapter 4 Apophthegms and Interludes"
+            },
+            {
+              "length_ms": 3107085,
+              "start_ms": 10343744,
+              "title": "Chapter 5 The Natural History of Morals"
+            },
+            {
+              "length_ms": 2724095,
+              "start_ms": 13450829,
+              "title": "Chapter 6 We Scholars"
+            },
+            {
+              "length_ms": 3456081,
+              "start_ms": 16174924,
+              "title": "Chapter 7 Our Virtues"
+            },
+            {
+              "length_ms": 3261103,
+              "start_ms": 19631005,
+              "title": "Chapter 8 Peoples and Countries"
+            },
+            {
+              "length_ms": 4460000,
+              "start_ms": 22892108,
+              "title": "Chapter 9 What Is Noble?"
+            },
+            {
+              "length_ms": 68750,
+              "start_ms": 27352108,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 285024,
+              "start_ms": 27420858,
+              "title": "Preview: Shakespeare's Sonnets"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71cPZGH4SrL.jpg",
+          "id": "christine-williams-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christine-williams"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2018-02-20",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B079J6341Z",
               "type": "libex-import"
             }
           ],
@@ -754,134 +856,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8HIZE",
           "type": "libex-import"
-        }
-      ],
-      "title": "Beyond Good and Evil"
-    },
-    "beyond-good-and-evil-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "friedrich-nietzsche",
-        "helen-zimmern"
-      ],
-      "credits": [
-        {
-          "person": "helen-zimmern",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "philosophy",
-        "politics"
-      ],
-      "id": "beyond-good-and-evil-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christine-williams-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B079J6341Z",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 65924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 302088,
-              "start_ms": 65924,
-              "title": "Preface"
-            },
-            {
-              "length_ms": 3214082,
-              "start_ms": 368012,
-              "title": "Chapter 1 Prejudices of Philosophers"
-            },
-            {
-              "length_ms": 2854452,
-              "start_ms": 3582094,
-              "title": "Chapter 2 The Free Spirit"
-            },
-            {
-              "length_ms": 2360099,
-              "start_ms": 6436546,
-              "title": "Chapter 3 The Religious Mood"
-            },
-            {
-              "length_ms": 1547099,
-              "start_ms": 8796645,
-              "title": "Chapter 4 Apophthegms and Interludes"
-            },
-            {
-              "length_ms": 3107085,
-              "start_ms": 10343744,
-              "title": "Chapter 5 The Natural History of Morals"
-            },
-            {
-              "length_ms": 2724095,
-              "start_ms": 13450829,
-              "title": "Chapter 6 We Scholars"
-            },
-            {
-              "length_ms": 3456081,
-              "start_ms": 16174924,
-              "title": "Chapter 7 Our Virtues"
-            },
-            {
-              "length_ms": 3261103,
-              "start_ms": 19631005,
-              "title": "Chapter 8 Peoples and Countries"
-            },
-            {
-              "length_ms": 4460000,
-              "start_ms": 22892108,
-              "title": "Chapter 9 What Is Noble?"
-            },
-            {
-              "length_ms": 68750,
-              "start_ms": 27352108,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 285024,
-              "start_ms": 27420858,
-              "title": "Preview: Shakespeare's Sonnets"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71cPZGH4SrL.jpg",
-          "id": "christine-williams-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christine-williams"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2018-02-20",
-          "runtime_min": 461,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B079J6341Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "beyond-good-and-evil-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B079J6341Z",
           "type": "libex-import"
         }
       ],
-      "title": "Beyond Good and Evil (AmazonClassics Edition)"
+      "title": "Beyond Good and Evil"
     },
     "beyond-great": {
       "added_at": "2026-07-29",

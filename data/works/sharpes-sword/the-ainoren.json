@@ -1155,6 +1155,7 @@
         "epic-fantasy",
         "fantasy",
         "nature",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "the-air-war",
@@ -1425,33 +1426,7 @@
             }
           ],
           "work": "the-air-war"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529050413",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Air War"
-    },
-    "the-air-war-shadows-of-the-apt-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "the-air-war-shadows-of-the-apt-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1695,17 +1670,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-air-war-shadows-of-the-apt-8"
+          "work": "the-air-war"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529050413",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMP53XPS",
           "type": "libex-import"
         }
       ],
-      "title": "The Air War: Shadows of the Apt 8"
+      "title": "The Air War"
     },
     "the-air-war-through-german-eyes": {
       "added_at": "2026-07-29",

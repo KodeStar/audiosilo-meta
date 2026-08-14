@@ -330,55 +330,7 @@
             {
               "asin": "B07YXFL89C",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VKnt9ttOL.jpg",
-          "id": "macu-gomez-2010",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "macu-gomez"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2010-10-15",
-          "runtime_min": 132,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXFL89C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-populares-espanoles"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXFL89C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos populares españoles"
-    },
-    "cuentos-populares-espanoles-spanish-folk-tales": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "audiomol-com"
-      ],
-      "genres": [
-        "classics",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "cuentos-populares-espanoles-spanish-folk-tales",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "macu-gomez-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00478NMC4",
               "region": "us"
@@ -397,21 +349,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXFL89C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00478NMC4",
               "type": "libex-import"
             }
           ],
-          "work": "cuentos-populares-espanoles-spanish-folk-tales"
+          "work": "cuentos-populares-espanoles"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXFL89C",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00478NMC4",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos populares españoles [Spanish Folk Tales]"
+      "title": "Cuentos populares españoles"
     },
     "cuentos-sufis": {
       "added_at": "2026-07-29",
@@ -3529,7 +3491,7 @@
       ],
       "title": "Cujo"
     },
-    "cujo-german-edition": {
+    "cujo-stephen-king": {
       "added_at": "2026-07-29",
       "authors": [
         "stephen-king",
@@ -3544,7 +3506,7 @@
       "genres": [
         "horror"
       ],
-      "id": "cujo-german-edition",
+      "id": "cujo-stephen-king",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -3552,6 +3514,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B09GYPGR23",
+              "region": "de"
+            },
             {
               "asin": "B09GYRP9DQ",
               "region": "us"
@@ -4602,64 +4568,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B09GYRP9DQ",
+              "ref": "B09GYPGR23",
               "type": "libex-import"
-            }
-          ],
-          "work": "cujo-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09GYRP9DQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cujo (German edition)"
-    },
-    "cujo-stephen-king": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-king",
-        "harro-christensen"
-      ],
-      "credits": [
-        {
-          "person": "harro-christensen",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "horror"
-      ],
-      "id": "cujo-stephen-king",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-nathan-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09GYPGR23",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Yw-63l78L.jpg",
-          "id": "david-nathan-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-nathan"
-          ],
-          "publisher": "Random House Audio, Deutschland",
-          "release_date": "2021-10-11",
-          "runtime_min": 748,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B09GYPGR23",
+              "ref": "B09GYRP9DQ",
               "type": "libex-import"
             }
           ],
@@ -4670,6 +4584,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09GYPGR23",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09GYRP9DQ",
           "type": "libex-import"
         }
       ],
@@ -8294,357 +8213,6 @@
       ],
       "title": "Culpa nuestra [Our Fault]"
     },
-    "culpa-tuya-latino-culpables-2-your-fault": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mercedes-ron"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "romance",
-        "young-adult"
-      ],
-      "id": "culpa-tuya-latino-culpables-2-your-fault",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "coqueta-iturbide-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GPZ5B5HF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22035,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 20178,
-              "start_ms": 22035,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 11818,
-              "start_ms": 42213,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 78762,
-              "start_ms": 54031,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1600992,
-              "start_ms": 132793,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 758201,
-              "start_ms": 1733785,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1239156,
-              "start_ms": 2491986,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 994301,
-              "start_ms": 3731142,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1247979,
-              "start_ms": 4725443,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 438648,
-              "start_ms": 5973422,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 1302244,
-              "start_ms": 6412070,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 576737,
-              "start_ms": 7714314,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 634717,
-              "start_ms": 8291051,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 635321,
-              "start_ms": 8925768,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 672473,
-              "start_ms": 9561089,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 1559545,
-              "start_ms": 10233562,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 1196547,
-              "start_ms": 11793107,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 1176856,
-              "start_ms": 12989654,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 1257267,
-              "start_ms": 14166510,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 693394,
-              "start_ms": 15423777,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 781003,
-              "start_ms": 16117171,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 773828,
-              "start_ms": 16898174,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 715847,
-              "start_ms": 17672002,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 675979,
-              "start_ms": 18387849,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 1077800,
-              "start_ms": 19063828,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 1059224,
-              "start_ms": 20141628,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 1334543,
-              "start_ms": 21200852,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 608432,
-              "start_ms": 22535395,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 1050749,
-              "start_ms": 23143827,
-              "title": "Capítulo 29"
-            },
-            {
-              "length_ms": 1152452,
-              "start_ms": 24194576,
-              "title": "Capítulo 30"
-            },
-            {
-              "length_ms": 1033845,
-              "start_ms": 25347028,
-              "title": "Capítulo 31"
-            },
-            {
-              "length_ms": 857861,
-              "start_ms": 26380873,
-              "title": "Capítulo 32"
-            },
-            {
-              "length_ms": 1252879,
-              "start_ms": 27238734,
-              "title": "Capítulo 33"
-            },
-            {
-              "length_ms": 1286594,
-              "start_ms": 28491613,
-              "title": "Capítulo 34"
-            },
-            {
-              "length_ms": 1432787,
-              "start_ms": 29778207,
-              "title": "Capítulo 35"
-            },
-            {
-              "length_ms": 568145,
-              "start_ms": 31210994,
-              "title": "Capítulo 36"
-            },
-            {
-              "length_ms": 630514,
-              "start_ms": 31779139,
-              "title": "Capítulo 37"
-            },
-            {
-              "length_ms": 562874,
-              "start_ms": 32409653,
-              "title": "Capítulo 38"
-            },
-            {
-              "length_ms": 1390039,
-              "start_ms": 32972527,
-              "title": "Capítulo 39"
-            },
-            {
-              "length_ms": 677976,
-              "start_ms": 34362566,
-              "title": "Capítulo 40"
-            },
-            {
-              "length_ms": 1011809,
-              "start_ms": 35040542,
-              "title": "Capítulo 41"
-            },
-            {
-              "length_ms": 749795,
-              "start_ms": 36052351,
-              "title": "Capítulo 42"
-            },
-            {
-              "length_ms": 948674,
-              "start_ms": 36802146,
-              "title": "Capítulo 43"
-            },
-            {
-              "length_ms": 807938,
-              "start_ms": 37750820,
-              "title": "Capítulo 44"
-            },
-            {
-              "length_ms": 1389273,
-              "start_ms": 38558758,
-              "title": "Capítulo 45"
-            },
-            {
-              "length_ms": 220218,
-              "start_ms": 39948031,
-              "title": "Capítulo 46"
-            },
-            {
-              "length_ms": 1070625,
-              "start_ms": 40168249,
-              "title": "Capítulo 47"
-            },
-            {
-              "length_ms": 925106,
-              "start_ms": 41238874,
-              "title": "Capítulo 48"
-            },
-            {
-              "length_ms": 848759,
-              "start_ms": 42163980,
-              "title": "Capítulo 49"
-            },
-            {
-              "length_ms": 520777,
-              "start_ms": 43012739,
-              "title": "Capítulo 50"
-            },
-            {
-              "length_ms": 1078845,
-              "start_ms": 43533516,
-              "title": "Capítulo 51"
-            },
-            {
-              "length_ms": 1547424,
-              "start_ms": 44612361,
-              "title": "Capítulo 52"
-            },
-            {
-              "length_ms": 1445860,
-              "start_ms": 46159785,
-              "title": "Capítulo 53"
-            },
-            {
-              "length_ms": 926847,
-              "start_ms": 47605645,
-              "title": "Capítulo 54"
-            },
-            {
-              "length_ms": 1412841,
-              "start_ms": 48532492,
-              "title": "Capítulo 55"
-            },
-            {
-              "length_ms": 710646,
-              "start_ms": 49945333,
-              "title": "Capítulo 56"
-            },
-            {
-              "length_ms": 1756868,
-              "start_ms": 50655979,
-              "title": "Capítulo 57"
-            },
-            {
-              "length_ms": 565823,
-              "start_ms": 52412847,
-              "title": "Capítulo 58"
-            },
-            {
-              "length_ms": 132190,
-              "start_ms": 52978670,
-              "title": "Capítulo 59"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91jZ5Qj80XL.jpg",
-          "id": "coqueta-iturbide-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "coqueta-iturbide",
-            "humberto-amor",
-            "mercedes-ron"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2026-02-26",
-          "runtime_min": 884,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GPZ5B5HF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "culpa-tuya-latino-culpables-2-your-fault"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GPZ5B5HF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Culpa tuya (latino) (Culpables 2) [Your Fault]"
-    },
     "culpa-tuya-your-fault": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8986,12 +8554,344 @@
             }
           ],
           "work": "culpa-tuya-your-fault"
+        },
+        "coqueta-iturbide-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GPZ5B5HF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22035,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 20178,
+              "start_ms": 22035,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 11818,
+              "start_ms": 42213,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 78762,
+              "start_ms": 54031,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 1600992,
+              "start_ms": 132793,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 758201,
+              "start_ms": 1733785,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 1239156,
+              "start_ms": 2491986,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 994301,
+              "start_ms": 3731142,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 1247979,
+              "start_ms": 4725443,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 438648,
+              "start_ms": 5973422,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 1302244,
+              "start_ms": 6412070,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 576737,
+              "start_ms": 7714314,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 634717,
+              "start_ms": 8291051,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 635321,
+              "start_ms": 8925768,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 672473,
+              "start_ms": 9561089,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 1559545,
+              "start_ms": 10233562,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 1196547,
+              "start_ms": 11793107,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 1176856,
+              "start_ms": 12989654,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 1257267,
+              "start_ms": 14166510,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 693394,
+              "start_ms": 15423777,
+              "title": "Capítulo 20"
+            },
+            {
+              "length_ms": 781003,
+              "start_ms": 16117171,
+              "title": "Capítulo 21"
+            },
+            {
+              "length_ms": 773828,
+              "start_ms": 16898174,
+              "title": "Capítulo 22"
+            },
+            {
+              "length_ms": 715847,
+              "start_ms": 17672002,
+              "title": "Capítulo 23"
+            },
+            {
+              "length_ms": 675979,
+              "start_ms": 18387849,
+              "title": "Capítulo 24"
+            },
+            {
+              "length_ms": 1077800,
+              "start_ms": 19063828,
+              "title": "Capítulo 25"
+            },
+            {
+              "length_ms": 1059224,
+              "start_ms": 20141628,
+              "title": "Capítulo 26"
+            },
+            {
+              "length_ms": 1334543,
+              "start_ms": 21200852,
+              "title": "Capítulo 27"
+            },
+            {
+              "length_ms": 608432,
+              "start_ms": 22535395,
+              "title": "Capítulo 28"
+            },
+            {
+              "length_ms": 1050749,
+              "start_ms": 23143827,
+              "title": "Capítulo 29"
+            },
+            {
+              "length_ms": 1152452,
+              "start_ms": 24194576,
+              "title": "Capítulo 30"
+            },
+            {
+              "length_ms": 1033845,
+              "start_ms": 25347028,
+              "title": "Capítulo 31"
+            },
+            {
+              "length_ms": 857861,
+              "start_ms": 26380873,
+              "title": "Capítulo 32"
+            },
+            {
+              "length_ms": 1252879,
+              "start_ms": 27238734,
+              "title": "Capítulo 33"
+            },
+            {
+              "length_ms": 1286594,
+              "start_ms": 28491613,
+              "title": "Capítulo 34"
+            },
+            {
+              "length_ms": 1432787,
+              "start_ms": 29778207,
+              "title": "Capítulo 35"
+            },
+            {
+              "length_ms": 568145,
+              "start_ms": 31210994,
+              "title": "Capítulo 36"
+            },
+            {
+              "length_ms": 630514,
+              "start_ms": 31779139,
+              "title": "Capítulo 37"
+            },
+            {
+              "length_ms": 562874,
+              "start_ms": 32409653,
+              "title": "Capítulo 38"
+            },
+            {
+              "length_ms": 1390039,
+              "start_ms": 32972527,
+              "title": "Capítulo 39"
+            },
+            {
+              "length_ms": 677976,
+              "start_ms": 34362566,
+              "title": "Capítulo 40"
+            },
+            {
+              "length_ms": 1011809,
+              "start_ms": 35040542,
+              "title": "Capítulo 41"
+            },
+            {
+              "length_ms": 749795,
+              "start_ms": 36052351,
+              "title": "Capítulo 42"
+            },
+            {
+              "length_ms": 948674,
+              "start_ms": 36802146,
+              "title": "Capítulo 43"
+            },
+            {
+              "length_ms": 807938,
+              "start_ms": 37750820,
+              "title": "Capítulo 44"
+            },
+            {
+              "length_ms": 1389273,
+              "start_ms": 38558758,
+              "title": "Capítulo 45"
+            },
+            {
+              "length_ms": 220218,
+              "start_ms": 39948031,
+              "title": "Capítulo 46"
+            },
+            {
+              "length_ms": 1070625,
+              "start_ms": 40168249,
+              "title": "Capítulo 47"
+            },
+            {
+              "length_ms": 925106,
+              "start_ms": 41238874,
+              "title": "Capítulo 48"
+            },
+            {
+              "length_ms": 848759,
+              "start_ms": 42163980,
+              "title": "Capítulo 49"
+            },
+            {
+              "length_ms": 520777,
+              "start_ms": 43012739,
+              "title": "Capítulo 50"
+            },
+            {
+              "length_ms": 1078845,
+              "start_ms": 43533516,
+              "title": "Capítulo 51"
+            },
+            {
+              "length_ms": 1547424,
+              "start_ms": 44612361,
+              "title": "Capítulo 52"
+            },
+            {
+              "length_ms": 1445860,
+              "start_ms": 46159785,
+              "title": "Capítulo 53"
+            },
+            {
+              "length_ms": 926847,
+              "start_ms": 47605645,
+              "title": "Capítulo 54"
+            },
+            {
+              "length_ms": 1412841,
+              "start_ms": 48532492,
+              "title": "Capítulo 55"
+            },
+            {
+              "length_ms": 710646,
+              "start_ms": 49945333,
+              "title": "Capítulo 56"
+            },
+            {
+              "length_ms": 1756868,
+              "start_ms": 50655979,
+              "title": "Capítulo 57"
+            },
+            {
+              "length_ms": 565823,
+              "start_ms": 52412847,
+              "title": "Capítulo 58"
+            },
+            {
+              "length_ms": 132190,
+              "start_ms": 52978670,
+              "title": "Capítulo 59"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91jZ5Qj80XL.jpg",
+          "id": "coqueta-iturbide-2026",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "coqueta-iturbide",
+            "humberto-amor",
+            "mercedes-ron"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2026-02-26",
+          "runtime_min": 884,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GPZ5B5HF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "culpa-tuya-your-fault"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "8417922466",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GPZ5B5HF",
           "type": "libex-import"
         }
       ],
@@ -9543,20 +9443,102 @@
       ],
       "title": "Cult"
     },
-    "cult-classic": {
-      "added_at": "2026-08-02",
+    "cult-classic-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "stephen-blackmoore"
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "fantasy",
+        "paranormal",
         "urban-fantasy"
       ],
-      "id": "cult-classic",
+      "id": "cult-classic-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCW5FHH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3731129,
+              "start_ms": 43924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3245801,
+              "start_ms": 3775053,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2934584,
+              "start_ms": 7020854,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3753807,
+              "start_ms": 9955438,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3476120,
+              "start_ms": 13709245,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3620060,
+              "start_ms": 17185365,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4128000,
+              "start_ms": 20805425,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 45391,
+              "start_ms": 24933425,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819t4+rT0uL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 416,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DDCW5FHH",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCW5FHH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cult-classic-dramatized-adaptation"
+        },
         "rudy-sanda-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9764,111 +9746,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "cult-classic"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D1HW6B9F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cult Classic"
-    },
-    "cult-classic-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "stephen-blackmoore"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "cult-classic-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCW5FHH",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3731129,
-              "start_ms": 43924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3245801,
-              "start_ms": 3775053,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2934584,
-              "start_ms": 7020854,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3753807,
-              "start_ms": 9955438,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3476120,
-              "start_ms": 13709245,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3620060,
-              "start_ms": 17185365,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4128000,
-              "start_ms": 20805425,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 45391,
-              "start_ms": 24933425,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819t4+rT0uL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 416,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DDCW5FHH",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCW5FHH",
-              "type": "libex-import"
-            }
-          ],
           "work": "cult-classic-dramatized-adaptation"
         }
       },
@@ -9881,6 +9758,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DDCW5FHH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D1HW6B9F",
           "type": "libex-import"
         }
       ],

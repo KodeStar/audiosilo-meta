@@ -10213,12 +10213,107 @@
       ],
       "genres": [
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "historical-fiction"
       ],
       "id": "the-disappearance-of-winters-daughter",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bradley-foster-smith-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BTDWFBQB",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36339,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4478873,
+              "start_ms": 36339,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 3905503,
+              "start_ms": 4515212,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 4253663,
+              "start_ms": 8420715,
+              "title": "Part Three"
+            },
+            {
+              "length_ms": 3751973,
+              "start_ms": 12674378,
+              "title": "Part Four"
+            },
+            {
+              "length_ms": 4361009,
+              "start_ms": 16426351,
+              "title": "Part Five"
+            },
+            {
+              "length_ms": 4107656,
+              "start_ms": 20787360,
+              "title": "Part Six"
+            },
+            {
+              "length_ms": 4217161,
+              "start_ms": 24895016,
+              "title": "Part Seven"
+            },
+            {
+              "length_ms": 4351187,
+              "start_ms": 29112177,
+              "title": "Part Eight"
+            },
+            {
+              "length_ms": 4166310,
+              "start_ms": 33463364,
+              "title": "Part Nine"
+            },
+            {
+              "length_ms": 85332,
+              "start_ms": 37629674,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KuAMdrIjL.jpg",
+          "id": "bradley-foster-smith-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bradley-foster-smith",
+            "chris-genebach",
+            "danny-gavigan",
+            "holly-adams",
+            "jenna-sharpe",
+            "jon-vertullo",
+            "marni-penning",
+            "neha-gargava",
+            "nick-depinto",
+            "wyn-delano"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-02-01",
+          "runtime_min": 628,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTDWFBQB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-disappearance-of-winters-daughter"
+        },
         "michael-j-sullivan-2017": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10426,127 +10521,14 @@
           "imported_at": "2026-07-30",
           "ref": "B071D42T27",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Disappearance of Winter's Daughter"
-    },
-    "the-disappearance-of-winters-daughter-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "the-disappearance-of-winters-daughter-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradley-foster-smith-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BTDWFBQB",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36339,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4478873,
-              "start_ms": 36339,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 3905503,
-              "start_ms": 4515212,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 4253663,
-              "start_ms": 8420715,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 3751973,
-              "start_ms": 12674378,
-              "title": "Part Four"
-            },
-            {
-              "length_ms": 4361009,
-              "start_ms": 16426351,
-              "title": "Part Five"
-            },
-            {
-              "length_ms": 4107656,
-              "start_ms": 20787360,
-              "title": "Part Six"
-            },
-            {
-              "length_ms": 4217161,
-              "start_ms": 24895016,
-              "title": "Part Seven"
-            },
-            {
-              "length_ms": 4351187,
-              "start_ms": 29112177,
-              "title": "Part Eight"
-            },
-            {
-              "length_ms": 4166310,
-              "start_ms": 33463364,
-              "title": "Part Nine"
-            },
-            {
-              "length_ms": 85332,
-              "start_ms": 37629674,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91KuAMdrIjL.jpg",
-          "id": "bradley-foster-smith-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradley-foster-smith",
-            "chris-genebach",
-            "danny-gavigan",
-            "holly-adams",
-            "jenna-sharpe",
-            "jon-vertullo",
-            "marni-penning",
-            "neha-gargava",
-            "nick-depinto",
-            "wyn-delano"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-02-01",
-          "runtime_min": 628,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BTDWFBQB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-disappearance-of-winters-daughter-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BTDWFBQB",
           "type": "libex-import"
         }
       ],
-      "title": "The Disappearance of Winter's Daughter (Dramatized Adaptation)"
+      "title": "The Disappearance of Winter's Daughter"
     },
     "the-disappearances": {
       "added_at": "2026-07-29",
@@ -14575,31 +14557,7 @@
             }
           ],
           "work": "the-discord-of-gods"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1250841216",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Discord of Gods"
-    },
-    "the-discord-of-gods-a-chorus-of-dragons-novel-5": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jenn-lyons"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-discord-of-gods-a-chorus-of-dragons-novel-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "feodor-chin-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14627,17 +14585,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-discord-of-gods-a-chorus-of-dragons-novel-5"
+          "work": "the-discord-of-gods"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1250841216",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DM97WXB2",
           "type": "libex-import"
         }
       ],
-      "title": "The Discord of Gods: A Chorus of Dragons Novel 5"
+      "title": "The Discord of Gods"
     },
     "the-discovered": {
       "added_at": "2026-08-02",

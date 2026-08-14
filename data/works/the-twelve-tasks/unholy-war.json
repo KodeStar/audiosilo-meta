@@ -2185,6 +2185,7 @@
         "julie-sykes"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fantasy"
@@ -2199,6 +2200,10 @@
           "asin": [
             {
               "asin": "0593339304",
+              "region": "us"
+            },
+            {
+              "asin": "183994143X",
               "region": "us"
             }
           ],
@@ -2284,6 +2289,11 @@
               "imported_at": "2026-08-02",
               "ref": "0593339304",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "183994143X",
+              "type": "libex-import"
             }
           ],
           "work": "unicorn-academy-3-ava-and-star"
@@ -2293,6 +2303,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0593339304",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "183994143X",
           "type": "libex-import"
         }
       ],
@@ -2750,6 +2765,7 @@
         "julie-sykes"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fantasy"
@@ -2764,6 +2780,10 @@
           "asin": [
             {
               "asin": "0593341341",
+              "region": "us"
+            },
+            {
+              "asin": "1839942495",
               "region": "us"
             }
           ],
@@ -2839,6 +2859,11 @@
               "imported_at": "2026-08-02",
               "ref": "0593341341",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1839942495",
+              "type": "libex-import"
             }
           ],
           "work": "unicorn-academy-8-ariana-and-whisper"
@@ -2848,6 +2873,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0593341341",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1839942495",
           "type": "libex-import"
         }
       ],
@@ -3066,209 +3096,6 @@
         }
       ],
       "title": "Unicorn Academy: Aisha and Silver"
-    },
-    "unicorn-academy-ariana-and-whisper": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-sykes"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "unicorn-academy-ariana-and-whisper",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kristin-atherton-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1839942495",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 501968,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 555653,
-              "start_ms": 501968,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 763541,
-              "start_ms": 1057621,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 556257,
-              "start_ms": 1821162,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 482673,
-              "start_ms": 2377419,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 999967,
-              "start_ms": 2860092,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 564012,
-              "start_ms": 3860059,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 688239,
-              "start_ms": 4424071,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 701683,
-              "start_ms": 5112310,
-              "title": "Chapter 9"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zwQ+8MjfL.jpg",
-          "id": "kristin-atherton-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kristin-atherton"
-          ],
-          "publisher": "Nosy Crow",
-          "release_date": "2020-10-08",
-          "runtime_min": 96,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1839942495",
-              "type": "libex-import"
-            }
-          ],
-          "work": "unicorn-academy-ariana-and-whisper"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1839942495",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Unicorn Academy: Ariana and Whisper"
-    },
-    "unicorn-academy-ava-and-star": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-sykes"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "unicorn-academy-ava-and-star",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kristin-atherton-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "183994143X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 713873,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 615909,
-              "start_ms": 713873,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 521125,
-              "start_ms": 1329782,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 509352,
-              "start_ms": 1850907,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 533014,
-              "start_ms": 2360259,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 451047,
-              "start_ms": 2893273,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 670011,
-              "start_ms": 3344320,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 395668,
-              "start_ms": 4014331,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 449886,
-              "start_ms": 4409999,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 547502,
-              "start_ms": 4859885,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Tepzk-kML.jpg",
-          "id": "kristin-atherton-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kristin-atherton"
-          ],
-          "publisher": "Nosy Crow",
-          "release_date": "2020-04-16",
-          "runtime_min": 90,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "183994143X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "unicorn-academy-ava-and-star"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "183994143X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Unicorn Academy: Ava and Star"
     },
     "unicorn-academy-evie-and-sunshine": {
       "added_at": "2026-08-02",

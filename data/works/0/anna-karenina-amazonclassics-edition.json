@@ -58,7 +58,7 @@
       ],
       "title": "Anna Karenina (AmazonClassics Edition)"
     },
-    "anna-karenina-italian-edition": {
+    "anna-karenina-lev-tolstoj": {
       "added_at": "2026-07-29",
       "authors": [
         "lev-tolstoj"
@@ -69,56 +69,6 @@
         "history",
         "parenting-relationships",
         "romance"
-      ],
-      "id": "anna-karenina-italian-edition",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
-        "silvia-cecchini-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B015ENGKWE",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91yl74yI2ML.jpg",
-          "id": "silvia-cecchini-2015",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "silvia-cecchini"
-          ],
-          "publisher": "Collina d'oro",
-          "release_date": "2015-09-17",
-          "runtime_min": 2247,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B015ENGKWE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "anna-karenina-italian-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B015ENGKWE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Anna Karenina [Italian Edition]"
-    },
-    "anna-karenina-lev-tolstoj": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lev-tolstoj"
-      ],
-      "genres": [
-        "classics"
       ],
       "id": "anna-karenina-lev-tolstoj",
       "language": "it",
@@ -151,12 +101,45 @@
             }
           ],
           "work": "anna-karenina-lev-tolstoj"
+        },
+        "silvia-cecchini-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B015ENGKWE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yl74yI2ML.jpg",
+          "id": "silvia-cecchini-2015",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "silvia-cecchini"
+          ],
+          "publisher": "Collina d'oro",
+          "release_date": "2015-09-17",
+          "runtime_min": 2247,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B015ENGKWE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "anna-karenina-lev-tolstoj"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0777NP4T1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B015ENGKWE",
           "type": "libex-import"
         }
       ],

@@ -1760,7 +1760,8 @@
       ],
       "genres": [
         "mystery",
-        "police-procedural"
+        "police-procedural",
+        "thriller-suspense"
       ],
       "id": "the-dark-wives",
       "language": "en",
@@ -1776,6 +1777,10 @@
             },
             {
               "asin": "B0CS4TB7NF",
+              "region": "us"
+            },
+            {
+              "asin": "B0D5MPRC6S",
               "region": "us"
             }
           ],
@@ -2066,6 +2071,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0CS4TB7NF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D5MPRC6S",
+              "type": "libex-import"
             }
           ],
           "work": "the-dark-wives"
@@ -2076,61 +2086,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0CR6PB673",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Dark Wives"
-    },
-    "the-dark-wives-a-vera-stanhope-novel-11": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ann-cleeves"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "the-dark-wives-a-vera-stanhope-novel-11",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "janine-birkett-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D5MPRC6S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81j+Zg6EP6L.jpg",
-          "id": "janine-birkett-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "janine-birkett"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-08-27",
-          "runtime_min": 710,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D5MPRC6S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-dark-wives-a-vera-stanhope-novel-11"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D5MPRC6S",
           "type": "libex-import"
         }
       ],
-      "title": "The Dark Wives: A Vera Stanhope Novel 11"
+      "title": "The Dark Wives"
     },
     "the-dark-wolf": {
       "added_at": "2026-08-01",
@@ -6464,6 +6427,7 @@
         "bryan-prosek"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction",
         "space-opera",
         "young-adult"
@@ -6472,6 +6436,196 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "joel-simler-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BBSFDYPZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15023,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 698409,
+              "start_ms": 15023,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2152513,
+              "start_ms": 713432,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1120362,
+              "start_ms": 2865945,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1854833,
+              "start_ms": 3986307,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1210618,
+              "start_ms": 5841140,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2083735,
+              "start_ms": 7051758,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 959262,
+              "start_ms": 9135493,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 561435,
+              "start_ms": 10094755,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 901839,
+              "start_ms": 10656190,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 618324,
+              "start_ms": 11558029,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1422291,
+              "start_ms": 12176353,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 587395,
+              "start_ms": 13598644,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1065610,
+              "start_ms": 14186039,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 479608,
+              "start_ms": 15251649,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1137475,
+              "start_ms": 15731257,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 552727,
+              "start_ms": 16868732,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 442224,
+              "start_ms": 17421459,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 526744,
+              "start_ms": 17863683,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1004727,
+              "start_ms": 18390427,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 742899,
+              "start_ms": 19395154,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1094217,
+              "start_ms": 20138053,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 772017,
+              "start_ms": 21232270,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 918488,
+              "start_ms": 22004287,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1019982,
+              "start_ms": 22922775,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 867311,
+              "start_ms": 23942757,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 887280,
+              "start_ms": 24810068,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1032475,
+              "start_ms": 25697348,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1456169,
+              "start_ms": 26729823,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 749865,
+              "start_ms": 28185992,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 368756,
+              "start_ms": 28935857,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 39147,
+              "start_ms": 29304613,
+              "title": "Chapter 32"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WWjHINNuL.jpg",
+          "id": "joel-simler-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joel-simler"
+          ],
+          "publisher": "CamCat Books",
+          "release_date": "2022-10-18",
+          "runtime_min": 488,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BBSFDYPZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-darker-the-skies"
+        },
         "joel-simler-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6697,6 +6851,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FC32BNBM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BBSFDYPZ",
           "type": "libex-import"
         }
       ],

@@ -12125,66 +12125,6 @@
       ],
       "title": "Bunny Call: An AFK Book"
     },
-    "bunny-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mona-awad",
-        "elena-helfrecht"
-      ],
-      "credits": [
-        {
-          "person": "elena-helfrecht",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "literary-fiction",
-        "parenting-relationships",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "bunny-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "henriette-fridoline-schmidt-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DBZLLNKK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mO48saO9L.jpg",
-          "id": "henriette-fridoline-schmidt-2025",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "henriette-fridoline-schmidt"
-          ],
-          "publisher": "der Hörverlag",
-          "release_date": "2025-01-13",
-          "runtime_min": 765,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DBZLLNKK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bunny-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DBZLLNKK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bunny (German Edition)"
-    },
     "bunny-girl-evolution-1": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13625,6 +13565,9 @@
         }
       ],
       "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "self-help",
         "young-adult"
       ],
       "id": "bunny-mona-awad",
@@ -13638,6 +13581,10 @@
             {
               "asin": "B0DBZPNKHN",
               "region": "de"
+            },
+            {
+              "asin": "B0DBZLLNKK",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81mO48saO9L.jpg",
@@ -13655,6 +13602,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0DBZPNKHN",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DBZLLNKK",
+              "type": "libex-import"
             }
           ],
           "work": "bunny-mona-awad"
@@ -13664,6 +13616,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0DBZPNKHN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DBZLLNKK",
           "type": "libex-import"
         }
       ],

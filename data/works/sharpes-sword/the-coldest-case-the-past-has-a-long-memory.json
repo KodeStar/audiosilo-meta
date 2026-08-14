@@ -13008,6 +13008,12 @@
       "authors": [
         "philip-pullman"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "fantasy"
+      ],
       "id": "the-collectors",
       "language": "en",
       "license": "CC0-1.0",
@@ -13030,6 +13036,14 @@
             },
             {
               "asin": "B0B3Y4BDLY",
+              "region": "uk"
+            },
+            {
+              "asin": "B0B52B5RZ7",
+              "region": "us"
+            },
+            {
+              "asin": "B0B52B9Q6Q",
               "region": "uk"
             }
           ],
@@ -13090,6 +13104,16 @@
               "imported_at": "2026-07-30",
               "ref": "B0B3Y4BDLY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B52B5RZ7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B52B9Q6Q",
+              "type": "libex-import"
             }
           ],
           "work": "the-collectors"
@@ -13100,6 +13124,11 @@
           "imported_at": "2026-07-17",
           "ref": "B0B3Y7CVXT",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B52B5RZ7",
+          "type": "libex-import"
         }
       ],
       "title": "The Collectors"

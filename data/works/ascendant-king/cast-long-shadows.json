@@ -5611,53 +5611,7 @@
             {
               "asin": "B0BKLX9RB7",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81AU-fF52iL.jpg",
-          "id": "oscar-castillo-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oscar-castillo"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-11-03",
-          "runtime_min": 1194,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BKLX9RB7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "castigo-divino"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BKLX9RB7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Castigo divino"
-    },
-    "castigo-divino-divine-punishment": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sergio-ramirez"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "castigo-divino-divine-punishment",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oscar-castillo-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BKLWD9JR",
               "region": "us"
@@ -5676,21 +5630,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BKLX9RB7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BKLWD9JR",
               "type": "libex-import"
             }
           ],
-          "work": "castigo-divino-divine-punishment"
+          "work": "castigo-divino"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BKLX9RB7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BKLWD9JR",
           "type": "libex-import"
         }
       ],
-      "title": "Castigo divino [Divine Punishment]"
+      "title": "Castigo divino"
     },
     "casting-butterflies": {
       "added_at": "2026-08-02",

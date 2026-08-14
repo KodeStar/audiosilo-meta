@@ -1034,8 +1034,10 @@
         "simon-sien-kang"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fairy-tales-folklore"
+        "fairy-tales-folklore",
+        "nature"
       ],
       "id": "the-adventures-of-young-prince-dredge",
       "language": "en",
@@ -1120,32 +1122,8 @@
             }
           ],
           "work": "the-adventures-of-young-prince-dredge"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CXGNXNP6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Young Prince Dredge"
-    },
-    "the-adventures-of-young-prince-dredge-part-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "simon-sien-kang"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "nature"
-      ],
-      "id": "the-adventures-of-young-prince-dredge-part-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "finn-david-2024": {
+        },
+        "finn-david-2024-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -1217,7 +1195,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZAL1L2KOL.jpg",
-          "id": "finn-david-2024",
+          "id": "finn-david-2024-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1234,17 +1212,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-adventures-of-young-prince-dredge-part-2"
+          "work": "the-adventures-of-young-prince-dredge"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CXGNXNP6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DFF24VJY",
           "type": "libex-import"
         }
       ],
-      "title": "The Adventures of Young Prince Dredge Part 2"
+      "title": "The Adventures of Young Prince Dredge"
     },
     "the-adventuress": {
       "added_at": "2026-07-29",

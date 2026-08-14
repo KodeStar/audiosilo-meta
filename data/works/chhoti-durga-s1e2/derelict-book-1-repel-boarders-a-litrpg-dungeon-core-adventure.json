@@ -8796,6 +8796,10 @@
             {
               "asin": "B08C1JW2X9",
               "region": "es"
+            },
+            {
+              "asin": "B08BZWYQ2H",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/818wp03Q9bL.jpg",
@@ -8812,6 +8816,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08C1JW2X9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08BZWYQ2H",
               "type": "libex-import"
             }
           ],
@@ -8851,60 +8860,14 @@
           "imported_at": "2026-07-29",
           "ref": "B08CMS3P9Z",
           "type": "libex-import"
-        }
-      ],
-      "title": "Desayuno con Particulas"
-    },
-    "desayuno-con-particulas-breakfast-with-particles": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "francesc-miralles",
-        "sonia-fernandez-vidal"
-      ],
-      "genres": [
-        "science"
-      ],
-      "id": "desayuno-con-particulas-breakfast-with-particles",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chloe-malaise-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08BZWYQ2H",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818wp03Q9bL.jpg",
-          "id": "chloe-malaise-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chloe-malaise"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-07-01",
-          "runtime_min": 467,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08BZWYQ2H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "desayuno-con-particulas-breakfast-with-particles"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08BZWYQ2H",
           "type": "libex-import"
         }
       ],
-      "title": "Desayuno con Partículas [Breakfast with Particles]"
+      "title": "Desayuno con Particulas"
     },
     "descant": {
       "added_at": "2026-08-02",

@@ -62,6 +62,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "b-j-harrison-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01JSD4OLK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 604880,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 458083,
+              "start_ms": 604880,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 887188,
+              "start_ms": 1062963,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 627357,
+              "start_ms": 1950151,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 655035,
+              "start_ms": 2577508,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 525468,
+              "start_ms": 3232543,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 585793,
+              "start_ms": 3758011,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915ms4zZ8vL.jpg",
+          "id": "b-j-harrison-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B. J. Harrison",
+          "release_date": "2016-08-09",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01JSD4OLK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-canterville-ghost"
+        },
         "mackenzie-menter-2021": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -153,6 +218,11 @@
           "imported_at": "2026-08-07",
           "ref": "1645553868",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01JSD4OLK",
+          "type": "libex-import"
         }
       ],
       "title": "The Canterville Ghost"
@@ -208,93 +278,6 @@
         }
       ],
       "title": "The Canterville Ghost and Other Stories"
-    },
-    "the-canterville-ghost-classic-tales-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "oscar-wilde"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-canterville-ghost-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01JSD4OLK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 604880,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 458083,
-              "start_ms": 604880,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 887188,
-              "start_ms": 1062963,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 627357,
-              "start_ms": 1950151,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 655035,
-              "start_ms": 2577508,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 525468,
-              "start_ms": 3232543,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 585793,
-              "start_ms": 3758011,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915ms4zZ8vL.jpg",
-          "id": "b-j-harrison-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B. J. Harrison",
-          "release_date": "2016-08-09",
-          "runtime_min": 72,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01JSD4OLK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-canterville-ghost-classic-tales-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01JSD4OLK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Canterville Ghost [Classic Tales Edition]"
     },
     "the-canticle-prelude": {
       "added_at": "2026-08-01",

@@ -4887,7 +4887,9 @@
       ],
       "genres": [
         "mystery",
-        "thriller-suspense"
+        "police-procedural",
+        "thriller-suspense",
+        "westerns"
       ],
       "id": "breaking-point-a-joe-pickett-novel-book-13",
       "language": "en",
@@ -5147,12 +5149,45 @@
             }
           ],
           "work": "breaking-point-a-joe-pickett-novel-book-13"
+        },
+        "jeff-harding-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00C7S8P4Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71pnLfZtH+L.jpg",
+          "id": "jeff-harding-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeff-harding"
+          ],
+          "publisher": "Head of Zeus",
+          "release_date": "2013-04-08",
+          "runtime_min": 623,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00C7S8P4Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breaking-point-a-joe-pickett-novel-book-13"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00BSAJIJK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00C7S8P4Q",
           "type": "libex-import"
         }
       ],
@@ -5474,59 +5509,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00FKCO8OM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Breaking Point"
-    },
-    "breaking-point-c-j-box": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "c-j-box"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "breaking-point-c-j-box",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeff-harding-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00C7S8P4Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71pnLfZtH+L.jpg",
-          "id": "jeff-harding-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeff-harding"
-          ],
-          "publisher": "Head of Zeus",
-          "release_date": "2013-04-08",
-          "runtime_min": 623,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00C7S8P4Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "breaking-point-c-j-box"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00C7S8P4Q",
           "type": "libex-import"
         }
       ],

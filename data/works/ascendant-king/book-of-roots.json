@@ -11659,6 +11659,8 @@
       "genres": [
         "action-adventure",
         "fantasy",
+        "lgbtq",
+        "romance",
         "steampunk"
       ],
       "id": "bookshops-bonedust",
@@ -11933,32 +11935,7 @@
             }
           ],
           "work": "bookshops-bonedust"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BVKTF9XG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bookshops & Bonedust"
-    },
-    "bookshops-bonedust-legends-lattes-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "travis-baldree"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "lgbtq",
-        "romance"
-      ],
-      "id": "bookshops-bonedust-legends-lattes-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "travis-baldree-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12212,17 +12189,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "bookshops-bonedust-legends-lattes-book-2"
+          "work": "bookshops-bonedust"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BVKTF9XG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DLBR4PZ8",
           "type": "libex-import"
         }
       ],
-      "title": "Bookshops & Bonedust: Legends & Lattes Book 2"
+      "title": "Bookshops & Bonedust"
     },
     "bookworm": {
       "added_at": "2026-08-02",

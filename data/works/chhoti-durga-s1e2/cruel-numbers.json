@@ -11584,93 +11584,6 @@
       ],
       "title": "Crush"
     },
-    "crush-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "tracy-wolff"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "crush-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D1LSHF62",
-              "region": "us"
-            },
-            {
-              "asin": "B0D4X5NYTQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71f+0LcyneL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 978,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D1LSHF62",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D1LSHF62",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D4X5NYTQ",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D4X5NYTQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "crush-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D1LSHF62",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D1LSHF62",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D4X5NYTQ",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D4X5NYTQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Crush [Dramatized Adaptation]"
-    },
     "crush-gary-paulsen": {
       "added_at": "2026-07-29",
       "authors": [
@@ -15235,12 +15148,60 @@
         "paranormal",
         "romance",
         "self-help",
+        "urban-fantasy",
         "young-adult"
       ],
       "id": "crush-tracy-wolff",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D1LSHF62",
+              "region": "us"
+            },
+            {
+              "asin": "B0D4X5NYTQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71f+0LcyneL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 978,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D1LSHF62",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D1LSHF62",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D4X5NYTQ",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D4X5NYTQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "crush-tracy-wolff"
+        },
         "heather-costa-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15917,6 +15878,26 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1705219624",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D1LSHF62",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D1LSHF62",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D4X5NYTQ",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D4X5NYTQ",
           "type": "libex-import"
         }
       ],

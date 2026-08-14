@@ -6166,7 +6166,7 @@
       ],
       "title": "Crimen y Castigo [Crime and Punishment]"
     },
-    "crimen-y-castigo-crime-and-punishment-fyodor-dostoevsky": {
+    "crimen-y-castigo-fyodor-dostoevsky": {
       "added_at": "2026-07-29",
       "authors": [
         "fyodor-dostoevsky"
@@ -6174,7 +6174,7 @@
       "genres": [
         "classics"
       ],
-      "id": "crimen-y-castigo-crime-and-punishment-fyodor-dostoevsky",
+      "id": "crimen-y-castigo-fyodor-dostoevsky",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -6182,6 +6182,10 @@
           "abridged": true,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07YXTQS8S",
+              "region": "es"
+            },
             {
               "asin": "B002V0PYDU",
               "region": "us"
@@ -6217,57 +6221,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B002V0PYDU",
+              "ref": "B07YXTQS8S",
               "type": "libex-import"
-            }
-          ],
-          "work": "crimen-y-castigo-crime-and-punishment-fyodor-dostoevsky"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0PYDU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Crimen y Castigo [Crime and Punishment]"
-    },
-    "crimen-y-castigo-fyodor-dostoevsky": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fyodor-dostoevsky"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "crimen-y-castigo-fyodor-dostoevsky",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fabio-camero-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YXTQS8S",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ItTnwLklL.jpg",
-          "id": "fabio-camero-2005",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fabio-camero"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2005-09-16",
-          "runtime_min": 168,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B07YXTQS8S",
+              "ref": "B002V0PYDU",
               "type": "libex-import"
             }
           ],
@@ -6278,6 +6237,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07YXTQS8S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0PYDU",
           "type": "libex-import"
         }
       ],
@@ -6353,6 +6317,10 @@
             {
               "asin": "B08PDHSVGZ",
               "region": "es"
+            },
+            {
+              "asin": "B08PDD3PY9",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81PWkG2cESL.jpg",
@@ -6369,6 +6337,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08PDHSVGZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08PDD3PY9",
               "type": "libex-import"
             }
           ],
@@ -6417,60 +6390,14 @@
           "imported_at": "2026-07-29",
           "ref": "B07F3BHZC2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Crímenes duplicados"
-    },
-    "crimenes-duplicados-the-disciples": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hans-rosenfeldt",
-        "michael-hjorth"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "crimenes-duplicados-the-disciples",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fabio-arciniegas-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08PDD3PY9",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PWkG2cESL.jpg",
-          "id": "fabio-arciniegas-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fabio-arciniegas"
-          ],
-          "publisher": "Audible Studios y Planeta Audio",
-          "release_date": "2020-12-07",
-          "runtime_min": 1254,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08PDD3PY9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "crimenes-duplicados-the-disciples"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08PDD3PY9",
           "type": "libex-import"
         }
       ],
-      "title": "Crímenes duplicados [The Disciples]"
+      "title": "Crímenes duplicados"
     },
     "crimes-against-a-book-club": {
       "added_at": "2026-07-29",
@@ -12667,8 +12594,8 @@
       ],
       "title": "Criminal Procedure AudioLearn - A Course Outline"
     },
-    "criminal-spirits": {
-      "added_at": "2026-08-01",
+    "criminal-spirits-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "eva-chase"
       ],
@@ -12678,10 +12605,90 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "criminal-spirits",
+      "id": "criminal-spirits-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D34RJBV2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 35924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3709477,
+              "start_ms": 35924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3675858,
+              "start_ms": 3745401,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3698497,
+              "start_ms": 7421259,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3727754,
+              "start_ms": 11119756,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3675904,
+              "start_ms": 14847510,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3375000,
+              "start_ms": 18523414,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 104000,
+              "start_ms": 21898414,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 245201,
+              "start_ms": 22002414,
+              "title": "Listening Preview: Frost and Nectar by C.N. Crawford"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91T-Z66hvFL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 371,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D34RJBV2",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D34RJBV2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "criminal-spirits-dramatized-adaptation"
+        },
         "hollie-jackson-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -12856,111 +12863,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "criminal-spirits"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09RTNM625",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Criminal Spirits"
-    },
-    "criminal-spirits-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "eva-chase"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "criminal-spirits-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D34RJBV2",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 35924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3709477,
-              "start_ms": 35924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3675858,
-              "start_ms": 3745401,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3698497,
-              "start_ms": 7421259,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3727754,
-              "start_ms": 11119756,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3675904,
-              "start_ms": 14847510,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3375000,
-              "start_ms": 18523414,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 104000,
-              "start_ms": 21898414,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 245201,
-              "start_ms": 22002414,
-              "title": "Listening Preview: Frost and Nectar by C.N. Crawford"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91T-Z66hvFL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 371,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D34RJBV2",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D34RJBV2",
-              "type": "libex-import"
-            }
-          ],
           "work": "criminal-spirits-dramatized-adaptation"
         }
       },
@@ -12973,6 +12875,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0D34RJBV2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09RTNM625",
           "type": "libex-import"
         }
       ],

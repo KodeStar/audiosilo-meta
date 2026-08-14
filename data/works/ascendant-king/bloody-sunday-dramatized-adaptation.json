@@ -14698,7 +14698,8 @@
       ],
       "genres": [
         "action-adventure",
-        "historical-fiction"
+        "historical-fiction",
+        "war-military-fiction"
       ],
       "id": "blue-at-the-mizzen-aubrey-maturin-book-20",
       "language": "en",
@@ -14783,12 +14784,117 @@
             }
           ],
           "work": "blue-at-the-mizzen-aubrey-maturin-book-20"
+        },
+        "patrick-tull-2003": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5BB0K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 24904,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 42000,
+              "start_ms": 24904,
+              "title": "Author's Note"
+            },
+            {
+              "length_ms": 3714799,
+              "start_ms": 66904,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 3660823,
+              "start_ms": 3781703,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 4013606,
+              "start_ms": 7442526,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 2790597,
+              "start_ms": 11456132,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 3473879,
+              "start_ms": 14246729,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 3496900,
+              "start_ms": 17720608,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1998018,
+              "start_ms": 21217508,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 2687761,
+              "start_ms": 23215526,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 3913551,
+              "start_ms": 25903287,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 859300,
+              "start_ms": 29816838,
+              "title": "Interchapter"
+            },
+            {
+              "length_ms": 1487700,
+              "start_ms": 30676138,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 2453076,
+              "start_ms": 32163838,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ZQQvRfw-L.jpg",
+          "id": "patrick-tull-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-tull"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2003-12-25",
+          "runtime_min": 576,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5BB0K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blue-at-the-mizzen-aubrey-maturin-book-20"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1JCTQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5BB0K",
           "type": "libex-import"
         }
       ],

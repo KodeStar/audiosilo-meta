@@ -7849,56 +7849,7 @@
             {
               "asin": "B0CXZ91T16",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/715fVIMu1mL.jpg",
-          "id": "alfredo-toranzo-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alfredo-toranzo"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2024-03-13",
-          "runtime_min": 546,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CXZ91T16",
-              "type": "libex-import"
-            }
-          ],
-          "work": "autobiografia-de-un-hombre-feliz"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CXZ91T16",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Autobiografía de un hombre feliz"
-    },
-    "autobiografia-de-un-hombre-feliz-autobiography-of-a-happy-man": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-franklin"
-      ],
-      "genres": [
-        "biography-memoir",
-        "parenting-relationships",
-        "politics",
-        "self-help"
-      ],
-      "id": "autobiografia-de-un-hombre-feliz-autobiography-of-a-happy-man",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alfredo-toranzo-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CXZ2YF97",
               "region": "us"
@@ -7917,21 +7868,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CXZ91T16",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CXZ2YF97",
               "type": "libex-import"
             }
           ],
-          "work": "autobiografia-de-un-hombre-feliz-autobiography-of-a-happy-man"
+          "work": "autobiografia-de-un-hombre-feliz"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CXZ91T16",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CXZ2YF97",
           "type": "libex-import"
         }
       ],
-      "title": "Autobiografía de un hombre feliz [Autobiography of a Happy Man]"
+      "title": "Autobiografía de un hombre feliz"
     },
     "autobiografia-de-un-mistico-espiritualmente-incorrecto-autobiography-of-a-spiritually-incorrect-myst": {
       "added_at": "2026-07-29",
@@ -9140,7 +9101,7 @@
       ],
       "title": "Autobiography of a Yogi"
     },
-    "autobiography-of-a-yogi-original-edition": {
+    "autobiography-of-a-yogi-paramahansa-yogananda": {
       "added_at": "2026-07-29",
       "authors": [
         "paramahansa-yogananda"
@@ -9148,59 +9109,9 @@
       "genres": [
         "biography-memoir",
         "history",
-        "religious-fiction"
-      ],
-      "id": "autobiography-of-a-yogi-original-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "clay-lomakayu-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1982791659",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81qZVPGKOXL.jpg",
-          "id": "clay-lomakayu-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "clay-lomakayu"
-          ],
-          "publisher": "Author's Republic",
-          "release_date": "2019-12-04",
-          "runtime_min": 1040,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1982791659",
-              "type": "libex-import"
-            }
-          ],
-          "work": "autobiography-of-a-yogi-original-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1982791659",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Autobiography of a Yogi - Original Edition"
-    },
-    "autobiography-of-a-yogi-paramahansa-yogananda": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "paramahansa-yogananda"
-      ],
-      "genres": [
-        "history",
         "occult",
-        "religion-spirituality"
+        "religion-spirituality",
+        "religious-fiction"
       ],
       "id": "autobiography-of-a-yogi-paramahansa-yogananda",
       "language": "en",
@@ -9500,12 +9411,45 @@
             }
           ],
           "work": "autobiography-of-a-yogi-paramahansa-yogananda"
+        },
+        "clay-lomakayu-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1982791659",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qZVPGKOXL.jpg",
+          "id": "clay-lomakayu-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clay-lomakayu"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2019-12-04",
+          "runtime_min": 1040,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1982791659",
+              "type": "libex-import"
+            }
+          ],
+          "work": "autobiography-of-a-yogi-paramahansa-yogananda"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8KMO8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1982791659",
           "type": "libex-import"
         }
       ],

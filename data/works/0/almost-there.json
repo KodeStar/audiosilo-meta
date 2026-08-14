@@ -1603,6 +1603,7 @@
         "action-adventure",
         "dystopian",
         "fantasy",
+        "science",
         "science-fiction",
         "young-adult"
       ],
@@ -1989,12 +1990,191 @@
             }
           ],
           "work": "alone"
+        },
+        "alejandro-ruiz-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09H8MFZP4",
+              "region": "us"
+            },
+            {
+              "asin": "1648792103",
+              "region": "us"
+            },
+            {
+              "asin": "164879212X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 26924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 77000,
+              "start_ms": 26924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3968019,
+              "start_ms": 103924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3934690,
+              "start_ms": 4071943,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3624704,
+              "start_ms": 8006633,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3672305,
+              "start_ms": 11631337,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3758544,
+              "start_ms": 15303642,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4322835,
+              "start_ms": 19062186,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 84000,
+              "start_ms": 23385021,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3463358,
+              "start_ms": 23469021,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3507327,
+              "start_ms": 26932379,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3315763,
+              "start_ms": 30439706,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3313557,
+              "start_ms": 33755469,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3992462,
+              "start_ms": 37069026,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3375000,
+              "start_ms": 41061488,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 421345,
+              "start_ms": 44436488,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rS+kCVIXL.jpg",
+          "id": "alejandro-ruiz-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "cameron-mcnary",
+            "danny-gavigan",
+            "dawn-ursula",
+            "eric-messner",
+            "evan-casey",
+            "full-cast",
+            "jacob-yeh",
+            "james-j-johnson",
+            "james-konicek",
+            "jeff-allin",
+            "jessica-lauren-ball",
+            "jillian-levine-sisson",
+            "jonathon-church",
+            "kenyatta-rogers",
+            "bradley-smith",
+            "chris-stinson",
+            "colleen-delany",
+            "dani-stoller",
+            "elizabeth-jernigan",
+            "jonathan-feuer",
+            "michael-glenn",
+            "nora-achrati",
+            "terence-aselford",
+            "todd-scofield",
+            "yasmin-tuazon",
+            "zeke-alton"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020-10-28",
+          "runtime_min": 747,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H8MFZP4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648792103",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "164879212X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H8MFZP4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alone"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-30",
           "ref": "B06WWHTHP3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09H8MFZP4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1648792103",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "164879212X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B09H8MFZP4",
           "type": "libex-import"
         }
       ],
@@ -3404,206 +3584,6 @@
       ],
       "title": "Alone but Not Lonely"
     },
-    "alone-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "scott-sigler"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "science",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "alone-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09H8MFZP4",
-              "region": "us"
-            },
-            {
-              "asin": "1648792103",
-              "region": "us"
-            },
-            {
-              "asin": "164879212X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 26924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 77000,
-              "start_ms": 26924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3968019,
-              "start_ms": 103924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3934690,
-              "start_ms": 4071943,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3624704,
-              "start_ms": 8006633,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3672305,
-              "start_ms": 11631337,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3758544,
-              "start_ms": 15303642,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4322835,
-              "start_ms": 19062186,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 84000,
-              "start_ms": 23385021,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3463358,
-              "start_ms": 23469021,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3507327,
-              "start_ms": 26932379,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3315763,
-              "start_ms": 30439706,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3313557,
-              "start_ms": 33755469,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3992462,
-              "start_ms": 37069026,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3375000,
-              "start_ms": 41061488,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 421345,
-              "start_ms": 44436488,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91rS+kCVIXL.jpg",
-          "id": "alejandro-ruiz-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "cameron-mcnary",
-            "danny-gavigan",
-            "dawn-ursula",
-            "eric-messner",
-            "evan-casey",
-            "full-cast",
-            "jacob-yeh",
-            "james-j-johnson",
-            "james-konicek",
-            "jeff-allin",
-            "jessica-lauren-ball",
-            "jillian-levine-sisson",
-            "jonathon-church",
-            "kenyatta-rogers",
-            "bradley-smith",
-            "chris-stinson",
-            "colleen-delany",
-            "dani-stoller",
-            "elizabeth-jernigan",
-            "jonathan-feuer",
-            "michael-glenn",
-            "nora-achrati",
-            "terence-aselford",
-            "todd-scofield",
-            "yasmin-tuazon",
-            "zeke-alton"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020-10-28",
-          "runtime_min": 747,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H8MFZP4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648792103",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "164879212X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H8MFZP4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alone-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09H8MFZP4",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1648792103",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "164879212X",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-06",
-          "ref": "B09H8MFZP4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alone [Dramatized Adaptation]"
-    },
     "alone-e-j-noyes": {
       "added_at": "2026-07-29",
       "authors": [
@@ -4609,6 +4589,7 @@
       ],
       "genres": [
         "mystery",
+        "psychological-thriller",
         "romance",
         "romantic-suspense",
         "thriller-suspense"
@@ -4845,32 +4826,7 @@
             }
           ],
           "work": "alone-in-the-dark"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B019G0PECI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alone in the Dark"
-    },
-    "alone-in-the-dark-the-cincinnati-series-book-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "karen-rose"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "romance",
-        "romantic-suspense",
-        "thriller-suspense"
-      ],
-      "id": "alone-in-the-dark-the-cincinnati-series-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "susie-james-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4897,17 +4853,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "alone-in-the-dark-the-cincinnati-series-book-2"
+          "work": "alone-in-the-dark"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B019G0PECI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B014U2AN9Q",
           "type": "libex-import"
         }
       ],
-      "title": "Alone in the Dark (The Cincinnati Series Book 2)"
+      "title": "Alone in the Dark"
     },
     "alone-in-the-darkness": {
       "added_at": "2026-08-01",

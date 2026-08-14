@@ -6006,6 +6006,41 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "author-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA3GG2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4046495,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rBvbLPj0L.jpg",
+          "id": "author-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "author"
+          ],
+          "publisher": "Gildan Media, LLC",
+          "release_date": "2008-09-17",
+          "runtime_min": 67,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA3GG2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "21-success-secrets-of-self-made-millionaires"
+        },
         "brian-tracy-2008": {
           "added_at": "2026-07-29",
           "asin": [
@@ -6045,6 +6080,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5GMC2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA3GG2",
           "type": "libex-import"
         }
       ],
@@ -8751,17 +8791,18 @@
       ],
       "title": "22/11/63"
     },
-    "22-11-63-french-version": {
+    "22-11-63-stephen-king": {
       "added_at": "2026-07-29",
       "authors": [
         "stephen-king"
       ],
       "genres": [
+        "hard-boiled",
         "literary-fiction",
         "mystery",
         "thriller-suspense"
       ],
-      "id": "22-11-63-french-version",
+      "id": "22-11-63-stephen-king",
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
@@ -8769,6 +8810,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0882KZ4LF",
+              "region": "es"
+            },
             {
               "asin": "B00TKGLBR6",
               "region": "us"
@@ -8787,59 +8832,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B00TKGLBR6",
+              "ref": "B0882KZ4LF",
               "type": "libex-import"
-            }
-          ],
-          "work": "22-11-63-french-version"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TKGLBR6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "22/11/63 [French Version]"
-    },
-    "22-11-63-stephen-king": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-king"
-      ],
-      "genres": [
-        "hard-boiled",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "22-11-63-stephen-king",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
-        "francois-montagut-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0882KZ4LF",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zGUpCakCL.jpg",
-          "id": "francois-montagut-2013",
-          "language": "fr",
-          "license": "CC0-1.0",
-          "narrators": [
-            "francois-montagut"
-          ],
-          "publisher": "Audiolib",
-          "release_date": "2013-06-04",
-          "runtime_min": 2165,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B0882KZ4LF",
+              "ref": "B00TKGLBR6",
               "type": "libex-import"
             }
           ],
@@ -8850,6 +8848,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0882KZ4LF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKGLBR6",
           "type": "libex-import"
         }
       ],

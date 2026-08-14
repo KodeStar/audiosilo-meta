@@ -1898,119 +1898,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "john-keating-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00JZRB71K",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 5695948,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2475015,
-              "start_ms": 5695948,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 5165325,
-              "start_ms": 8170963,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 6311927,
-              "start_ms": 13336288,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 9240938,
-              "start_ms": 19648215,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 14132547,
-              "start_ms": 28889153,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 5679694,
-              "start_ms": 43021700,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 6187050,
-              "start_ms": 48701394,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 6849190,
-              "start_ms": 54888444,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 3626121,
-              "start_ms": 61737634,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 3732422,
-              "start_ms": 65363755,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 55124,
-              "start_ms": 69096177,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uNL2jooeL.jpg",
-          "id": "john-keating-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-keating"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2014-04-29",
-          "runtime_min": 1152,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00JZRB71K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "beyond-the-blue-moon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00JZRB71K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Beyond the Blue Moon"
-    },
-    "beyond-the-blue-moon-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "simon-r-green"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "beyond-the-blue-moon-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "andy-clemence-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -2205,10 +2092,105 @@
               "type": "libex-import"
             }
           ],
-          "work": "beyond-the-blue-moon-dramatized-adaptation"
+          "work": "beyond-the-blue-moon"
+        },
+        "john-keating-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00JZRB71K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 5695948,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2475015,
+              "start_ms": 5695948,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 5165325,
+              "start_ms": 8170963,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 6311927,
+              "start_ms": 13336288,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 9240938,
+              "start_ms": 19648215,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 14132547,
+              "start_ms": 28889153,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 5679694,
+              "start_ms": 43021700,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 6187050,
+              "start_ms": 48701394,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 6849190,
+              "start_ms": 54888444,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 3626121,
+              "start_ms": 61737634,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 3732422,
+              "start_ms": 65363755,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 55124,
+              "start_ms": 69096177,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uNL2jooeL.jpg",
+          "id": "john-keating-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-keating"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2014-04-29",
+          "runtime_min": 1152,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00JZRB71K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "beyond-the-blue-moon"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00JZRB71K",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B09L32JTS6",
@@ -2250,7 +2232,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Beyond the Blue Moon [Dramatized Adaptation]"
+      "title": "Beyond the Blue Moon"
     },
     "beyond-the-blue-tj-oshea": {
       "added_at": "2026-07-29",

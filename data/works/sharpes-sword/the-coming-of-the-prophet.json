@@ -2039,12 +2039,12 @@
       ],
       "title": "The Coming Wave"
     },
-    "the-coming-wave-german-edition": {
+    "the-coming-wave-mustafa-suleyman": {
       "added_at": "2026-07-29",
       "authors": [
-        "andreas-wirthensohn",
         "mustafa-suleyman",
-        "michael-bhaskar"
+        "michael-bhaskar",
+        "andreas-wirthensohn"
       ],
       "credits": [
         {
@@ -2060,7 +2060,7 @@
         "social-sciences",
         "technology"
       ],
-      "id": "the-coming-wave-german-edition",
+      "id": "the-coming-wave-mustafa-suleyman",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -2068,6 +2068,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0CWPW4NZ6",
+              "region": "de"
+            },
             {
               "asin": "B0CWPTFYC3",
               "region": "us"
@@ -2086,69 +2090,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B0CWPTFYC3",
+              "ref": "B0CWPW4NZ6",
               "type": "libex-import"
-            }
-          ],
-          "work": "the-coming-wave-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CWPTFYC3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Coming Wave (German edition)"
-    },
-    "the-coming-wave-mustafa-suleyman": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mustafa-suleyman",
-        "michael-bhaskar",
-        "andreas-wirthensohn"
-      ],
-      "credits": [
-        {
-          "person": "andreas-wirthensohn",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "history",
-        "politics",
-        "science",
-        "social-sciences",
-        "technology"
-      ],
-      "id": "the-coming-wave-mustafa-suleyman",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "florens-schmidt-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CWPW4NZ6",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812TKruoAgL.jpg",
-          "id": "florens-schmidt-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "florens-schmidt"
-          ],
-          "publisher": "Der Hörverlag",
-          "release_date": "2024-03-01",
-          "runtime_min": 746,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B0CWPW4NZ6",
+              "ref": "B0CWPTFYC3",
               "type": "libex-import"
             }
           ],
@@ -2159,6 +2106,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0CWPW4NZ6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CWPTFYC3",
           "type": "libex-import"
         }
       ],

@@ -3548,12 +3548,110 @@
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "romance",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "blood-beyond-darkness",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "danny-montooth-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GS4ZR3VF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3810765,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3787453,
+              "start_ms": 3810765,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3697824,
+              "start_ms": 7598218,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3973514,
+              "start_ms": 11296042,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3723830,
+              "start_ms": 15269556,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3870696,
+              "start_ms": 18993386,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3623218,
+              "start_ms": 22864082,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3415028,
+              "start_ms": 26487300,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3662576,
+              "start_ms": 29902328,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3409641,
+              "start_ms": 33564904,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4044729,
+              "start_ms": 36974545,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91dVb5oSH2L.jpg",
+          "id": "danny-montooth-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "danny-montooth",
+            "elena-anderson",
+            "full-cast",
+            "gabriel-michael",
+            "jessica-threet",
+            "jonathon-church",
+            "karen-novack",
+            "kay-eluvian",
+            "michael-glenn",
+            "michael-john-casey",
+            "nicole-shara",
+            "niusha-nawab"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-05-04",
+          "runtime_min": 683,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GS4ZR3VF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-beyond-darkness"
+        },
         "michelle-sparks-2016": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -3774,129 +3872,14 @@
           "imported_at": "2026-08-01",
           "ref": "B01LZHN29V",
           "type": "libex-import"
-        }
-      ],
-      "title": "Blood Beyond Darkness"
-    },
-    "blood-beyond-darkness-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "stacey-marie-brown"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "science-fiction"
-      ],
-      "id": "blood-beyond-darkness-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "danny-montooth-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GS4ZR3VF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3810765,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3787453,
-              "start_ms": 3810765,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3697824,
-              "start_ms": 7598218,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3973514,
-              "start_ms": 11296042,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3723830,
-              "start_ms": 15269556,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3870696,
-              "start_ms": 18993386,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3623218,
-              "start_ms": 22864082,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3415028,
-              "start_ms": 26487300,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3662576,
-              "start_ms": 29902328,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3409641,
-              "start_ms": 33564904,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4044729,
-              "start_ms": 36974545,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91dVb5oSH2L.jpg",
-          "id": "danny-montooth-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "danny-montooth",
-            "elena-anderson",
-            "full-cast",
-            "gabriel-michael",
-            "jessica-threet",
-            "jonathon-church",
-            "karen-novack",
-            "kay-eluvian",
-            "michael-glenn",
-            "michael-john-casey",
-            "nicole-shara",
-            "niusha-nawab"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-05-04",
-          "runtime_min": 683,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GS4ZR3VF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-beyond-darkness-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GS4ZR3VF",
           "type": "libex-import"
         }
       ],
-      "title": "Blood Beyond Darkness [Dramatized Adaptation]"
+      "title": "Blood Beyond Darkness"
     },
     "blood-binds": {
       "added_at": "2026-08-02",
@@ -4435,230 +4418,6 @@
         }
       ],
       "title": "'Blood, Blood Everywhere'"
-    },
-    "blood-bond": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "heather-hildenbrand"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "young-adult"
-      ],
-      "id": "blood-bond",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kelly-pruner-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CMJPJLBJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15673,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1462462,
-              "start_ms": 15673,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 1030455,
-              "start_ms": 1478135,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1220185,
-              "start_ms": 2508590,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 4001843,
-              "start_ms": 3728775,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 2144780,
-              "start_ms": 7730618,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1566673,
-              "start_ms": 9875398,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 2187760,
-              "start_ms": 11442071,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 3377992,
-              "start_ms": 13629831,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1952728,
-              "start_ms": 17007823,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 2487693,
-              "start_ms": 18960551,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1716372,
-              "start_ms": 21448244,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 2548343,
-              "start_ms": 23164616,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1303777,
-              "start_ms": 25712959,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 739810,
-              "start_ms": 27016736,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1745351,
-              "start_ms": 27756546,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 2994097,
-              "start_ms": 29501897,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 1163969,
-              "start_ms": 32495994,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 2587562,
-              "start_ms": 33659963,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1877402,
-              "start_ms": 36247525,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 1546472,
-              "start_ms": 38124927,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 389630,
-              "start_ms": 39671399,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 1732022,
-              "start_ms": 40061029,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 755646,
-              "start_ms": 41793051,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 2467514,
-              "start_ms": 42548697,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 1763532,
-              "start_ms": 45016211,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 607341,
-              "start_ms": 46779743,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 1983657,
-              "start_ms": 47387084,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 689191,
-              "start_ms": 49370741,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 686451,
-              "start_ms": 50059932,
-              "title": "Chapter Twenty-Nine"
-            },
-            {
-              "length_ms": 942335,
-              "start_ms": 50746383,
-              "title": "Chapter Thirty"
-            },
-            {
-              "length_ms": 1123451,
-              "start_ms": 51688718,
-              "title": "Chapter Thirty-One"
-            },
-            {
-              "length_ms": 1112793,
-              "start_ms": 52812169,
-              "title": "Chapter Thirty-Two"
-            },
-            {
-              "length_ms": 26980,
-              "start_ms": 53924962,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91f+sALmbRL.jpg",
-          "id": "kelly-pruner-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kelly-pruner"
-          ],
-          "publisher": "Heather Hildenbrand",
-          "release_date": "2023-11-03",
-          "runtime_min": 899,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CMJPJLBJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-bond"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CMJPJLBJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood Bond"
     },
     "blood-bond-1": {
       "added_at": "2026-08-02",
@@ -7410,6 +7169,8 @@
         "heather-hildenbrand"
       ],
       "genres": [
+        "fantasy",
+        "paranormal",
         "young-adult"
       ],
       "id": "blood-bond-dirty-blood-series-book-3",
@@ -7615,12 +7376,217 @@
             }
           ],
           "work": "blood-bond-dirty-blood-series-book-3"
+        },
+        "kelly-pruner-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CMJPJLBJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15673,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1462462,
+              "start_ms": 15673,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1030455,
+              "start_ms": 1478135,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1220185,
+              "start_ms": 2508590,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 4001843,
+              "start_ms": 3728775,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 2144780,
+              "start_ms": 7730618,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1566673,
+              "start_ms": 9875398,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 2187760,
+              "start_ms": 11442071,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 3377992,
+              "start_ms": 13629831,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1952728,
+              "start_ms": 17007823,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 2487693,
+              "start_ms": 18960551,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1716372,
+              "start_ms": 21448244,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 2548343,
+              "start_ms": 23164616,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1303777,
+              "start_ms": 25712959,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 739810,
+              "start_ms": 27016736,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 1745351,
+              "start_ms": 27756546,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 2994097,
+              "start_ms": 29501897,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 1163969,
+              "start_ms": 32495994,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 2587562,
+              "start_ms": 33659963,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 1877402,
+              "start_ms": 36247525,
+              "title": "Chapter Nineteen"
+            },
+            {
+              "length_ms": 1546472,
+              "start_ms": 38124927,
+              "title": "Chapter Twenty"
+            },
+            {
+              "length_ms": 389630,
+              "start_ms": 39671399,
+              "title": "Chapter Twenty-One"
+            },
+            {
+              "length_ms": 1732022,
+              "start_ms": 40061029,
+              "title": "Chapter Twenty-Two"
+            },
+            {
+              "length_ms": 755646,
+              "start_ms": 41793051,
+              "title": "Chapter Twenty-Three"
+            },
+            {
+              "length_ms": 2467514,
+              "start_ms": 42548697,
+              "title": "Chapter Twenty-Four"
+            },
+            {
+              "length_ms": 1763532,
+              "start_ms": 45016211,
+              "title": "Chapter Twenty-Five"
+            },
+            {
+              "length_ms": 607341,
+              "start_ms": 46779743,
+              "title": "Chapter Twenty-Six"
+            },
+            {
+              "length_ms": 1983657,
+              "start_ms": 47387084,
+              "title": "Chapter Twenty-Seven"
+            },
+            {
+              "length_ms": 689191,
+              "start_ms": 49370741,
+              "title": "Chapter Twenty-Eight"
+            },
+            {
+              "length_ms": 686451,
+              "start_ms": 50059932,
+              "title": "Chapter Twenty-Nine"
+            },
+            {
+              "length_ms": 942335,
+              "start_ms": 50746383,
+              "title": "Chapter Thirty"
+            },
+            {
+              "length_ms": 1123451,
+              "start_ms": 51688718,
+              "title": "Chapter Thirty-One"
+            },
+            {
+              "length_ms": 1112793,
+              "start_ms": 52812169,
+              "title": "Chapter Thirty-Two"
+            },
+            {
+              "length_ms": 26980,
+              "start_ms": 53924962,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91f+sALmbRL.jpg",
+          "id": "kelly-pruner-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kelly-pruner"
+          ],
+          "publisher": "Heather Hildenbrand",
+          "release_date": "2023-11-03",
+          "runtime_min": 899,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CMJPJLBJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-bond-dirty-blood-series-book-3"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B01MFBV7IG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CMJPJLBJ",
           "type": "libex-import"
         }
       ],
@@ -11777,376 +11743,6 @@
       ],
       "title": "Blood Bound: A Lowrance Vampires Novel"
     },
-    "blood-bound-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ellis-hunter"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "blood-bound-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nina-yndis-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FD4Z9DXN",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 55889,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 20990,
-              "start_ms": 55889,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 1199682,
-              "start_ms": 76879,
-              "title": "Chapter 1: Astrid"
-            },
-            {
-              "length_ms": 1279140,
-              "start_ms": 1276561,
-              "title": "Chapter 2: Skylar"
-            },
-            {
-              "length_ms": 1368119,
-              "start_ms": 2555701,
-              "title": "Chapter 3: Astrid"
-            },
-            {
-              "length_ms": 877505,
-              "start_ms": 3923820,
-              "title": "Chapter 4: Skylar"
-            },
-            {
-              "length_ms": 1519629,
-              "start_ms": 4801325,
-              "title": "Chapter 5: Astrid"
-            },
-            {
-              "length_ms": 556744,
-              "start_ms": 6320954,
-              "title": "Chapter 6: Skylar"
-            },
-            {
-              "length_ms": 2092025,
-              "start_ms": 6877698,
-              "title": "Chapter 7: Astrid"
-            },
-            {
-              "length_ms": 874881,
-              "start_ms": 8969723,
-              "title": "Chapter 8: Skylar"
-            },
-            {
-              "length_ms": 1839275,
-              "start_ms": 9844604,
-              "title": "Chapter 9: Astrid"
-            },
-            {
-              "length_ms": 1196384,
-              "start_ms": 11683879,
-              "title": "Chapter 10: Skylar"
-            },
-            {
-              "length_ms": 1202375,
-              "start_ms": 12880263,
-              "title": "Chapter 11: Astrid"
-            },
-            {
-              "length_ms": 1453035,
-              "start_ms": 14082638,
-              "title": "Chapter 12: Skylar"
-            },
-            {
-              "length_ms": 1516773,
-              "start_ms": 15535673,
-              "title": "Chapter 13: Astrid"
-            },
-            {
-              "length_ms": 1711542,
-              "start_ms": 17052446,
-              "title": "Chapter 14: Skylar"
-            },
-            {
-              "length_ms": 1199867,
-              "start_ms": 18763988,
-              "title": "Chapter 15: Astrid"
-            },
-            {
-              "length_ms": 1483639,
-              "start_ms": 19963855,
-              "title": "Chapter 16: Skylar"
-            },
-            {
-              "length_ms": 2124091,
-              "start_ms": 21447494,
-              "title": "Chapter 17: Astrid"
-            },
-            {
-              "length_ms": 1044572,
-              "start_ms": 23571585,
-              "title": "Chapter 18: Skylar"
-            },
-            {
-              "length_ms": 1399536,
-              "start_ms": 24616157,
-              "title": "Chapter 19: Astrid"
-            },
-            {
-              "length_ms": 1952937,
-              "start_ms": 26015693,
-              "title": "Chapter 20: Skylar"
-            },
-            {
-              "length_ms": 1676527,
-              "start_ms": 27968630,
-              "title": "Chapter 21: Astrid"
-            },
-            {
-              "length_ms": 1091546,
-              "start_ms": 29645157,
-              "title": "Chapter 22: Skylar"
-            },
-            {
-              "length_ms": 841769,
-              "start_ms": 30736703,
-              "title": "Chapter 23: Astrid"
-            },
-            {
-              "length_ms": 1304845,
-              "start_ms": 31578472,
-              "title": "Chapter 24: Skylar"
-            },
-            {
-              "length_ms": 1031941,
-              "start_ms": 32883317,
-              "title": "Chapter 25: Astrid"
-            },
-            {
-              "length_ms": 670383,
-              "start_ms": 33915258,
-              "title": "Chapter 26: Skylar"
-            },
-            {
-              "length_ms": 1258382,
-              "start_ms": 34585641,
-              "title": "Chapter 27: Astrid"
-            },
-            {
-              "length_ms": 1563631,
-              "start_ms": 35844023,
-              "title": "Chapter 28: Skylar"
-            },
-            {
-              "length_ms": 773828,
-              "start_ms": 37407654,
-              "title": "Chapter 29: Astrid"
-            },
-            {
-              "length_ms": 730174,
-              "start_ms": 38181482,
-              "title": "Chapter 30: Skylar"
-            },
-            {
-              "length_ms": 561551,
-              "start_ms": 38911656,
-              "title": "Chapter 31: Astrid"
-            },
-            {
-              "length_ms": 1754290,
-              "start_ms": 39473207,
-              "title": "Chapter 32: Skylar"
-            },
-            {
-              "length_ms": 1851326,
-              "start_ms": 41227497,
-              "title": "Chapter 33: Astrid"
-            },
-            {
-              "length_ms": 1141376,
-              "start_ms": 43078823,
-              "title": "Chapter 34: Skylar"
-            },
-            {
-              "length_ms": 2155833,
-              "start_ms": 44220199,
-              "title": "Chapter 35: Astrid"
-            },
-            {
-              "length_ms": 1413491,
-              "start_ms": 46376032,
-              "title": "Chapter 36: Skylar"
-            },
-            {
-              "length_ms": 699454,
-              "start_ms": 47789523,
-              "title": "Chapter 37: Skylar"
-            },
-            {
-              "length_ms": 1173025,
-              "start_ms": 48488977,
-              "title": "Chapter 38: Astrid"
-            },
-            {
-              "length_ms": 927428,
-              "start_ms": 49662002,
-              "title": "Chapter 39: Skylar"
-            },
-            {
-              "length_ms": 1265162,
-              "start_ms": 50589430,
-              "title": "Chapter 40: Astrid"
-            },
-            {
-              "length_ms": 897915,
-              "start_ms": 51854592,
-              "title": "Chapter 41: Skylar"
-            },
-            {
-              "length_ms": 1423452,
-              "start_ms": 52752507,
-              "title": "Chapter 42: Astrid"
-            },
-            {
-              "length_ms": 968202,
-              "start_ms": 54175959,
-              "title": "Chapter 43: Skylar"
-            },
-            {
-              "length_ms": 2020809,
-              "start_ms": 55144161,
-              "title": "Chapter 44: Astrid"
-            },
-            {
-              "length_ms": 953829,
-              "start_ms": 57164970,
-              "title": "Chapter 45: Skylar"
-            },
-            {
-              "length_ms": 1439799,
-              "start_ms": 58118799,
-              "title": "Chapter 46: Astrid"
-            },
-            {
-              "length_ms": 1879028,
-              "start_ms": 59558598,
-              "title": "Chapter 47: Skylar"
-            },
-            {
-              "length_ms": 2746549,
-              "start_ms": 61437626,
-              "title": "Chapter 48: Astrid"
-            },
-            {
-              "length_ms": 892157,
-              "start_ms": 64184175,
-              "title": "Chapter 49: Skylar"
-            },
-            {
-              "length_ms": 888604,
-              "start_ms": 65076332,
-              "title": "Chapter 50: Astrid"
-            },
-            {
-              "length_ms": 405350,
-              "start_ms": 65964936,
-              "title": "Chapter 51: Skylar"
-            },
-            {
-              "length_ms": 569074,
-              "start_ms": 66370286,
-              "title": "Chapter 52: Astrid"
-            },
-            {
-              "length_ms": 541512,
-              "start_ms": 66939360,
-              "title": "Chapter 53: Skylar"
-            },
-            {
-              "length_ms": 2278295,
-              "start_ms": 67480872,
-              "title": "Chapter 54: Astrid"
-            },
-            {
-              "length_ms": 840399,
-              "start_ms": 69759167,
-              "title": "Chapter 55: Skylar"
-            },
-            {
-              "length_ms": 758526,
-              "start_ms": 70599566,
-              "title": "Chapter 56: Astrid"
-            },
-            {
-              "length_ms": 631118,
-              "start_ms": 71358092,
-              "title": "Chapter 57: Skylar"
-            },
-            {
-              "length_ms": 391000,
-              "start_ms": 71989210,
-              "title": "Chapter 58: Astrid"
-            },
-            {
-              "length_ms": 868078,
-              "start_ms": 72380210,
-              "title": "Chapter 59: Skylar"
-            },
-            {
-              "length_ms": 698781,
-              "start_ms": 73248288,
-              "title": "Chapter 60: Astrid"
-            },
-            {
-              "length_ms": 62460,
-              "start_ms": 73947069,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ag6Zjjw+L.jpg",
-          "id": "nina-yndis-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nina-yndis",
-            "victoria-nassif"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2026-04-28",
-          "runtime_min": 1233,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FD4Z9DXN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-bound-a-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FD4Z9DXN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood Bound: A Novel"
-    },
     "blood-bound-beshadowed-a-supernatural-urban-fantasy-book-2": {
       "added_at": "2026-08-01",
       "authors": [
@@ -12666,6 +12262,149 @@
             }
           ],
           "work": "blood-bound-dramatized-adaptation"
+        },
+        "lorelei-king-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1AG7S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21292,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2443969,
+              "start_ms": 21292,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2487646,
+              "start_ms": 2465261,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2810148,
+              "start_ms": 4952907,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2533831,
+              "start_ms": 7763055,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2376190,
+              "start_ms": 10296886,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2409859,
+              "start_ms": 12673076,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2865992,
+              "start_ms": 15082935,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2104215,
+              "start_ms": 17948927,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2402963,
+              "start_ms": 20053142,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2475920,
+              "start_ms": 22456105,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2463776,
+              "start_ms": 24932025,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2452189,
+              "start_ms": 27395801,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1848052,
+              "start_ms": 29847990,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2439813,
+              "start_ms": 31696042,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1962457,
+              "start_ms": 34135855,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 60649,
+              "start_ms": 36098312,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WOBVwzSaL.jpg",
+          "id": "lorelei-king-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lorelei-king"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-10-01",
+          "runtime_min": 602,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1AG7S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-bound-dramatized-adaptation"
+        },
+        "lorelei-king-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00XK5RYEC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vQRIGfLkL.jpg",
+          "id": "lorelei-king-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lorelei-king"
+          ],
+          "publisher": "Little, Brown Audio",
+          "release_date": "2015-06-25",
+          "runtime_min": 602,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00XK5RYEC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-bound-dramatized-adaptation"
         }
       },
       "sources": [
@@ -12677,6 +12416,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DDCX144H",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00XK5RYEC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1AG7S",
           "type": "libex-import"
         }
       ],
@@ -12702,6 +12451,10 @@
           "asin": [
             {
               "asin": "B0FS21J6GL",
+              "region": "us"
+            },
+            {
+              "asin": "B0FD4Z9DXN",
               "region": "us"
             }
           ],
@@ -13043,6 +12796,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FS21J6GL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FD4Z9DXN",
+              "type": "libex-import"
             }
           ],
           "work": "blood-bound-ellis-hunter"
@@ -13053,196 +12811,10 @@
           "imported_at": "2026-08-02",
           "ref": "B0FS21J6GL",
           "type": "libex-import"
-        }
-      ],
-      "title": "Blood Bound"
-    },
-    "blood-bound-mercy-thompson-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patricia-briggs"
-      ],
-      "genres": [
-        "fantasy"
-      ],
-      "id": "blood-bound-mercy-thompson-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lorelei-king-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00XK5RYEC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vQRIGfLkL.jpg",
-          "id": "lorelei-king-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lorelei-king"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2015-06-25",
-          "runtime_min": 602,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00XK5RYEC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-bound-mercy-thompson-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
-          "ref": "B00XK5RYEC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood Bound: Mercy Thompson Book 2"
-    },
-    "blood-bound-patricia-briggs": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patricia-briggs"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "blood-bound-patricia-briggs",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lorelei-king-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V1AG7S",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 21292,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2443969,
-              "start_ms": 21292,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2487646,
-              "start_ms": 2465261,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2810148,
-              "start_ms": 4952907,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2533831,
-              "start_ms": 7763055,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2376190,
-              "start_ms": 10296886,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2409859,
-              "start_ms": 12673076,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2865992,
-              "start_ms": 15082935,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2104215,
-              "start_ms": 17948927,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2402963,
-              "start_ms": 20053142,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2475920,
-              "start_ms": 22456105,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2463776,
-              "start_ms": 24932025,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2452189,
-              "start_ms": 27395801,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1848052,
-              "start_ms": 29847990,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2439813,
-              "start_ms": 31696042,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1962457,
-              "start_ms": 34135855,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 60649,
-              "start_ms": 36098312,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WOBVwzSaL.jpg",
-          "id": "lorelei-king-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lorelei-king"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2009-10-01",
-          "runtime_min": 602,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V1AG7S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-bound-patricia-briggs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1AG7S",
+          "ref": "B0FD4Z9DXN",
           "type": "libex-import"
         }
       ],

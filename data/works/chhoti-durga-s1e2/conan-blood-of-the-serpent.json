@@ -7372,88 +7372,6 @@
       ],
       "title": "Conciencia [Awareness]"
     },
-    "conciencia-de-contrabandista-narracion-en-castellano-smugglers-awareness": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "conciencia-de-contrabandista-narracion-en-castellano-smugglers-awareness",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roger-vidal-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0851MS5K7",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22727,
-              "start_ms": 0,
-              "title": "Créditos de Apertura"
-            },
-            {
-              "length_ms": 5454001,
-              "start_ms": 22727,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 4531652,
-              "start_ms": 5476728,
-              "title": "Capítulo 1 (continuación)"
-            },
-            {
-              "length_ms": 4830191,
-              "start_ms": 10008380,
-              "title": "Capítulo 1 (continuación 2)"
-            },
-            {
-              "length_ms": 6260833,
-              "start_ms": 14838571,
-              "title": "Capítulo 1 (continuación 3)"
-            },
-            {
-              "length_ms": 58267,
-              "start_ms": 21099404,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ttsz+Pm6L.jpg",
-          "id": "roger-vidal-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roger-vidal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-02-21",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0851MS5K7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "conciencia-de-contrabandista-narracion-en-castellano-smugglers-awareness"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0851MS5K7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Conciencia De Contrabandista (Narración en Castellano) [Smuggler's Awareness]"
-    },
     "conciencia-de-contrabandista-smugglers-conscience": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7765,12 +7683,77 @@
             }
           ],
           "work": "conciencia-de-contrabandista-smugglers-conscience"
+        },
+        "roger-vidal-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0851MS5K7",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22727,
+              "start_ms": 0,
+              "title": "Créditos de Apertura"
+            },
+            {
+              "length_ms": 5454001,
+              "start_ms": 22727,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 4531652,
+              "start_ms": 5476728,
+              "title": "Capítulo 1 (continuación)"
+            },
+            {
+              "length_ms": 4830191,
+              "start_ms": 10008380,
+              "title": "Capítulo 1 (continuación 2)"
+            },
+            {
+              "length_ms": 6260833,
+              "start_ms": 14838571,
+              "title": "Capítulo 1 (continuación 3)"
+            },
+            {
+              "length_ms": 58267,
+              "start_ms": 21099404,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ttsz+Pm6L.jpg",
+          "id": "roger-vidal-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roger-vidal"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-02-21",
+          "runtime_min": 352,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0851MS5K7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "conciencia-de-contrabandista-smugglers-conscience"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B085VMFWYB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0851MS5K7",
           "type": "libex-import"
         }
       ],

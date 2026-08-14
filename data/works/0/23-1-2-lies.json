@@ -3631,81 +3631,7 @@
             {
               "asin": "B07YXWQJFM",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CtVNyzoQL.jpg",
-          "id": "laura-garcia-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-garcia"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-07-17",
-          "runtime_min": 153,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXWQJFM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "24-horas-en-la-vida-de-una-mujer"
-        },
-        "nuria-marin-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08HSNRSVT",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81gi4kPYTmL.jpg",
-          "id": "nuria-marin-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nuria-marin"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2020-09-15",
-          "runtime_min": 175,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08HSNRSVT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "24-horas-en-la-vida-de-una-mujer"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HSNRSVT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "24 horas en la vida de una mujer"
-    },
-    "24-horas-en-la-vida-de-una-mujer-24-hours-in-the-life-of-a-woman": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stefan-zweig"
-      ],
-      "genres": [
-        "short-stories"
-      ],
-      "id": "24-horas-en-la-vida-de-una-mujer-24-hours-in-the-life-of-a-woman",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-garcia-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V8MEDA",
               "region": "us"
@@ -3724,16 +3650,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXWQJFM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V8MEDA",
               "type": "libex-import"
             }
           ],
-          "work": "24-horas-en-la-vida-de-una-mujer-24-hours-in-the-life-of-a-woman"
+          "work": "24-horas-en-la-vida-de-una-mujer"
         },
         "nuria-marin-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B08HSNRSVT",
+              "region": "es"
+            },
             {
               "asin": "B08HSN4XW4",
               "region": "us"
@@ -3752,21 +3687,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08HSNRSVT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08HSN4XW4",
               "type": "libex-import"
             }
           ],
-          "work": "24-horas-en-la-vida-de-una-mujer-24-hours-in-the-life-of-a-woman"
+          "work": "24-horas-en-la-vida-de-una-mujer"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HSNRSVT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08HSN4XW4",
           "type": "libex-import"
         }
       ],
-      "title": "24 horas en la vida de una mujer [24 Hours in the Life of a Woman]"
+      "title": "24 horas en la vida de una mujer"
     },
     "24-hour-warlock": {
       "added_at": "2026-08-02",

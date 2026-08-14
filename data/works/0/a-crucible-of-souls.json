@@ -3585,6 +3585,7 @@
         "soman-chainani"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fairy-tales-folklore",
@@ -3601,6 +3602,10 @@
           "asin": [
             {
               "asin": "0008292221",
+              "region": "us"
+            },
+            {
+              "asin": "0062855549",
               "region": "us"
             }
           ],
@@ -3771,6 +3776,11 @@
               "imported_at": "2026-07-30",
               "ref": "0008292221",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0062855549",
+              "type": "libex-import"
             }
           ],
           "work": "a-crystal-of-time"
@@ -3785,6 +3795,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "0008292221",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0062855549",
           "type": "libex-import"
         }
       ],
@@ -10023,6 +10038,10 @@
             {
               "asin": "B0FP4GQRLF",
               "region": "us"
+            },
+            {
+              "asin": "B0H3KDTTF7",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -10282,6 +10301,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FP4GQRLF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H3KDTTF7",
+              "type": "libex-import"
             }
           ],
           "work": "a-curse-of-beasts-and-magic"
@@ -10292,298 +10316,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0G1N3672Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Curse of Beasts and Magic"
-    },
-    "a-curse-of-beasts-and-magic-beautiful-and-beastly-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jeaniene-frost"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "a-curse-of-beasts-and-magic-beautiful-and-beastly-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tavia-gilbert-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H3KDTTF7",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13862,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 10263,
-              "start_ms": 13862,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 10193,
-              "start_ms": 24125,
-              "title": "Author's Note"
-            },
-            {
-              "length_ms": 1022885,
-              "start_ms": 34318,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 913821,
-              "start_ms": 1057203,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1260495,
-              "start_ms": 1971024,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 634578,
-              "start_ms": 3231519,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 739276,
-              "start_ms": 3866097,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 628262,
-              "start_ms": 4605373,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 588509,
-              "start_ms": 5233635,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 743247,
-              "start_ms": 5822144,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1520349,
-              "start_ms": 6565391,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 974007,
-              "start_ms": 8085740,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1002475,
-              "start_ms": 9059747,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 908782,
-              "start_ms": 10062222,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1368932,
-              "start_ms": 10971004,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 669384,
-              "start_ms": 12339936,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 591528,
-              "start_ms": 13009320,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 1260959,
-              "start_ms": 13600848,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 1311393,
-              "start_ms": 14861807,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 849873,
-              "start_ms": 16173200,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1494575,
-              "start_ms": 17023073,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 686753,
-              "start_ms": 18517648,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 941244,
-              "start_ms": 19204401,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 646466,
-              "start_ms": 20145645,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 1041368,
-              "start_ms": 20792111,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 558811,
-              "start_ms": 21833479,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 1169496,
-              "start_ms": 22392290,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 786901,
-              "start_ms": 23561786,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 626474,
-              "start_ms": 24348687,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 1084511,
-              "start_ms": 24975161,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 1159743,
-              "start_ms": 26059672,
-              "title": "Chapter Twenty-Nine"
-            },
-            {
-              "length_ms": 1081469,
-              "start_ms": 27219415,
-              "title": "Chapter Thirty"
-            },
-            {
-              "length_ms": 1134619,
-              "start_ms": 28300884,
-              "title": "Chapter Thirty-One"
-            },
-            {
-              "length_ms": 408044,
-              "start_ms": 29435503,
-              "title": "Chapter Thirty-Two"
-            },
-            {
-              "length_ms": 926383,
-              "start_ms": 29843547,
-              "title": "Chapter Thirty-Three"
-            },
-            {
-              "length_ms": 1159302,
-              "start_ms": 30769930,
-              "title": "Chapter Thirty-Four"
-            },
-            {
-              "length_ms": 618486,
-              "start_ms": 31929232,
-              "title": "Chapter Thirty-Five"
-            },
-            {
-              "length_ms": 987428,
-              "start_ms": 32547718,
-              "title": "Chapter Thirty-Six"
-            },
-            {
-              "length_ms": 954270,
-              "start_ms": 33535146,
-              "title": "Chapter Thirty-Seven"
-            },
-            {
-              "length_ms": 1268993,
-              "start_ms": 34489416,
-              "title": "Chapter Thirty-Eight"
-            },
-            {
-              "length_ms": 915446,
-              "start_ms": 35758409,
-              "title": "Chapter Thirty-Nine"
-            },
-            {
-              "length_ms": 991236,
-              "start_ms": 36673855,
-              "title": "Chapter Forty"
-            },
-            {
-              "length_ms": 841096,
-              "start_ms": 37665091,
-              "title": "Chapter Forty-One"
-            },
-            {
-              "length_ms": 1219372,
-              "start_ms": 38506187,
-              "title": "Chapter Forty-Two"
-            },
-            {
-              "length_ms": 1500125,
-              "start_ms": 39725559,
-              "title": "Chapter Forty-Three"
-            },
-            {
-              "length_ms": 77020,
-              "start_ms": 41225684,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Nnk5UAQ5L.jpg",
-          "id": "tavia-gilbert-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tavia-gilbert"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2026-09-15",
-          "runtime_min": 688,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H3KDTTF7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-curse-of-beasts-and-magic-beautiful-and-beastly-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H3KDTTF7",
           "type": "libex-import"
         }
       ],
-      "title": "A Curse of Beasts and Magic: Beautiful and Beastly Book 1"
+      "title": "A Curse of Beasts and Magic"
     },
     "a-curse-of-blood": {
       "added_at": "2026-08-02",

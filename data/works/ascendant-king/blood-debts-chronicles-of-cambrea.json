@@ -9408,6 +9408,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "mystery",
         "thriller-suspense",
         "young-adult"
@@ -9600,6 +9601,186 @@
             }
           ],
           "work": "blood-fever"
+        },
+        "nathaniel-parker-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007GE1SF4",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2267058,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 708627,
+              "start_ms": 2267058,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 975145,
+              "start_ms": 2975685,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 883566,
+              "start_ms": 3950830,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1223645,
+              "start_ms": 4834396,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 893968,
+              "start_ms": 6058041,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1277841,
+              "start_ms": 6952009,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1132669,
+              "start_ms": 8229850,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 576459,
+              "start_ms": 9362519,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1005842,
+              "start_ms": 9938978,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1322655,
+              "start_ms": 10944820,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1352980,
+              "start_ms": 12267475,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1164156,
+              "start_ms": 13620455,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1092870,
+              "start_ms": 14784611,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1225038,
+              "start_ms": 15877481,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1114047,
+              "start_ms": 17102519,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1307423,
+              "start_ms": 18216566,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 730732,
+              "start_ms": 19523989,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 879015,
+              "start_ms": 20254721,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 950486,
+              "start_ms": 21133736,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 962281,
+              "start_ms": 22084222,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 857884,
+              "start_ms": 23046503,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1054418,
+              "start_ms": 23904387,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 979882,
+              "start_ms": 24958805,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1120363,
+              "start_ms": 25938687,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 983969,
+              "start_ms": 27059050,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1047266,
+              "start_ms": 28043019,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 539771,
+              "start_ms": 29090285,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 765933,
+              "start_ms": 29630056,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 926290,
+              "start_ms": 30395989,
+              "title": "Chapter 30"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Or5jLx7wL.jpg",
+          "id": "nathaniel-parker-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nathaniel-parker"
+          ],
+          "publisher": "Ian Fleming Publications Ltd",
+          "release_date": "2012-03-05",
+          "runtime_min": 520,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007GE1SF4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-fever"
         }
       },
       "sources": [
@@ -9611,6 +9792,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002VA9MUQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B007GE1SF4",
           "type": "libex-import"
         }
       ],

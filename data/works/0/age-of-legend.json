@@ -15,6 +15,116 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09P4B3C5Z",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 29924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 12000,
+              "start_ms": 29924,
+              "title": "Book 4: Age of Legend"
+            },
+            {
+              "length_ms": 72000,
+              "start_ms": 41924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4173059,
+              "start_ms": 113924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3398193,
+              "start_ms": 4286983,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3978646,
+              "start_ms": 7685176,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4312874,
+              "start_ms": 11663822,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4401995,
+              "start_ms": 15976696,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 58000,
+              "start_ms": 20378691,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3850890,
+              "start_ms": 20436691,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4074985,
+              "start_ms": 24287581,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3675951,
+              "start_ms": 28362566,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 5413500,
+              "start_ms": 32038517,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2404000,
+              "start_ms": 37452017,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 462270,
+              "start_ms": 39856017,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91PkseOb1XL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 671,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09P4B3C5Z",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09P4B3C5Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "age-of-legend"
+        },
         "tim-gerard-reynolds-2019": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -255,136 +365,7 @@
           "imported_at": "2026-07-30",
           "ref": "1490656243",
           "type": "libex-import"
-        }
-      ],
-      "title": "Age of Legend"
-    },
-    "age-of-legend-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "age-of-legend-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09P4B3C5Z",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 29924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 12000,
-              "start_ms": 29924,
-              "title": "Book 4: Age of Legend"
-            },
-            {
-              "length_ms": 72000,
-              "start_ms": 41924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4173059,
-              "start_ms": 113924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3398193,
-              "start_ms": 4286983,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3978646,
-              "start_ms": 7685176,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4312874,
-              "start_ms": 11663822,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4401995,
-              "start_ms": 15976696,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 58000,
-              "start_ms": 20378691,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3850890,
-              "start_ms": 20436691,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4074985,
-              "start_ms": 24287581,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3675951,
-              "start_ms": 28362566,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 5413500,
-              "start_ms": 32038517,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2404000,
-              "start_ms": 37452017,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 462270,
-              "start_ms": 39856017,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PkseOb1XL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 671,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09P4B3C5Z",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09P4B3C5Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "age-of-legend-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09P4B3C5Z",
@@ -396,7 +377,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Age of Legend [Dramatized Adaptation]"
+      "title": "Age of Legend"
     },
     "age-of-magic": {
       "added_at": "2026-08-01",
@@ -973,6 +954,111 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09P4915DW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 46924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 72000,
+              "start_ms": 46924,
+              "title": "Book 1: The Age of Myth"
+            },
+            {
+              "length_ms": 3200089,
+              "start_ms": 118924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4594927,
+              "start_ms": 3319013,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3722507,
+              "start_ms": 7913940,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2849831,
+              "start_ms": 11636447,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4393354,
+              "start_ms": 14486278,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3811091,
+              "start_ms": 18879632,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3696268,
+              "start_ms": 22690723,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3269717,
+              "start_ms": 26386991,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3770665,
+              "start_ms": 29656708,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3908870,
+              "start_ms": 33427373,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3720000,
+              "start_ms": 37336243,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 147096,
+              "start_ms": 41056243,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+XJ6yo+tL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 686,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09P4915DW",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09P4915DW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "age-of-myth"
+        },
         "tim-gerard-reynolds-2016": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1173,132 +1259,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0161R0XBQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Age of Myth"
-    },
-    "age-of-myth-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "age-of-myth-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09P4915DW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 46924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 72000,
-              "start_ms": 46924,
-              "title": "Book 1: The Age of Myth"
-            },
-            {
-              "length_ms": 3200089,
-              "start_ms": 118924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4594927,
-              "start_ms": 3319013,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3722507,
-              "start_ms": 7913940,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2849831,
-              "start_ms": 11636447,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4393354,
-              "start_ms": 14486278,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3811091,
-              "start_ms": 18879632,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3696268,
-              "start_ms": 22690723,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3269717,
-              "start_ms": 26386991,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3770665,
-              "start_ms": 29656708,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3908870,
-              "start_ms": 33427373,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3720000,
-              "start_ms": 37336243,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 147096,
-              "start_ms": 41056243,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+XJ6yo+tL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 686,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09P4915DW",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09P4915DW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "age-of-myth-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09P4915DW",
@@ -1310,7 +1271,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Age of Myth [Dramatized Adaptation]"
+      "title": "Age of Myth"
     },
     "age-of-night-books-one-to-three": {
       "added_at": "2026-08-01",
@@ -3561,6 +3522,136 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09P4DN9XN",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 48524,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 66200,
+              "start_ms": 48524,
+              "title": "Book 2: Age of Swords"
+            },
+            {
+              "length_ms": 13866,
+              "start_ms": 114724,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 2941203,
+              "start_ms": 128590,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3667104,
+              "start_ms": 3069793,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3783412,
+              "start_ms": 6736897,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3374439,
+              "start_ms": 10520309,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3231126,
+              "start_ms": 13894748,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3095452,
+              "start_ms": 17125874,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3145073,
+              "start_ms": 20221326,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3248053,
+              "start_ms": 23366399,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3948335,
+              "start_ms": 26614452,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3810147,
+              "start_ms": 30562787,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3627281,
+              "start_ms": 34372934,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3806331,
+              "start_ms": 38000215,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3827484,
+              "start_ms": 41806546,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4364800,
+              "start_ms": 45634030,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 140900,
+              "start_ms": 49998830,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 422641,
+              "start_ms": 50139730,
+              "title": "Bonus Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GXCr8qRAL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 842,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09P4DN9XN",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09P4DN9XN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "age-of-swords"
+        },
         "tim-gerard-reynolds-2017": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3786,157 +3877,7 @@
           "imported_at": "2026-07-30",
           "ref": "B06X16L1XR",
           "type": "libex-import"
-        }
-      ],
-      "title": "Age of Swords"
-    },
-    "age-of-swords-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "age-of-swords-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09P4DN9XN",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 48524,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 66200,
-              "start_ms": 48524,
-              "title": "Book 2: Age of Swords"
-            },
-            {
-              "length_ms": 13866,
-              "start_ms": 114724,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 2941203,
-              "start_ms": 128590,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3667104,
-              "start_ms": 3069793,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3783412,
-              "start_ms": 6736897,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3374439,
-              "start_ms": 10520309,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3231126,
-              "start_ms": 13894748,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3095452,
-              "start_ms": 17125874,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3145073,
-              "start_ms": 20221326,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3248053,
-              "start_ms": 23366399,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3948335,
-              "start_ms": 26614452,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3810147,
-              "start_ms": 30562787,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3627281,
-              "start_ms": 34372934,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3806331,
-              "start_ms": 38000215,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 3827484,
-              "start_ms": 41806546,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 4364800,
-              "start_ms": 45634030,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 140900,
-              "start_ms": 49998830,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 422641,
-              "start_ms": 50139730,
-              "title": "Bonus Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GXCr8qRAL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 842,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09P4DN9XN",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09P4DN9XN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "age-of-swords-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09P4DN9XN",
@@ -3948,7 +3889,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Age of Swords [Dramatized Adaptation]"
+      "title": "Age of Swords"
     },
     "age-of-the-ashers": {
       "added_at": "2026-08-01",

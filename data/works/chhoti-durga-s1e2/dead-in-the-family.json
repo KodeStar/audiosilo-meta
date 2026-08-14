@@ -8424,14 +8424,76 @@
         "betsy-byars"
       ],
       "genres": [
+        "arts-entertainment",
         "childrens",
         "coming-of-age",
-        "mystery"
+        "mystery",
+        "young-adult"
       ],
       "id": "dead-letter-betsy-byars",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lauren-davis-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V57OYC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1609654,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1483523,
+              "start_ms": 1609654,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1277933,
+              "start_ms": 3093177,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1388693,
+              "start_ms": 4371110,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1502935,
+              "start_ms": 5759803,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2519597,
+              "start_ms": 7262738,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81b65pEqnTL.jpg",
+          "id": "lauren-davis-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lauren-davis"
+          ],
+          "publisher": "Penguin Group USA and Audible",
+          "release_date": "2009-03-30",
+          "runtime_min": 162,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V57OYC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dead-letter-betsy-byars"
+        },
         "lauren-davis-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8612,6 +8674,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0525629734",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V57OYC",
           "type": "libex-import"
         }
       ],

@@ -749,8 +749,11 @@
         }
       ],
       "genres": [
+        "action-adventure",
+        "classics",
         "horror",
-        "literary-fiction"
+        "literary-fiction",
+        "science-fiction"
       ],
       "id": "at-the-mountains-of-madness",
       "language": "en",
@@ -807,6 +810,106 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CRZG471R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "at-the-mountains-of-madness"
+        },
+        "edward-herrmann-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00D2D1RAE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14952,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1459074,
+              "start_ms": 14952,
+              "title": "I"
+            },
+            {
+              "length_ms": 2512120,
+              "start_ms": 1474026,
+              "title": "II"
+            },
+            {
+              "length_ms": 1587037,
+              "start_ms": 3986146,
+              "title": "III"
+            },
+            {
+              "length_ms": 1327717,
+              "start_ms": 5573183,
+              "title": "IV"
+            },
+            {
+              "length_ms": 1880073,
+              "start_ms": 6900900,
+              "title": "V"
+            },
+            {
+              "length_ms": 1064820,
+              "start_ms": 8780973,
+              "title": "VI"
+            },
+            {
+              "length_ms": 1414002,
+              "start_ms": 9845793,
+              "title": "VII"
+            },
+            {
+              "length_ms": 1172561,
+              "start_ms": 11259795,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 1459142,
+              "start_ms": 12432356,
+              "title": "IX"
+            },
+            {
+              "length_ms": 1066909,
+              "start_ms": 13891498,
+              "title": "X"
+            },
+            {
+              "length_ms": 1419203,
+              "start_ms": 14958407,
+              "title": "XI"
+            },
+            {
+              "length_ms": 872787,
+              "start_ms": 16377610,
+              "title": "XII"
+            },
+            {
+              "length_ms": 63602,
+              "start_ms": 17250397,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91T6wNASdxL.jpg",
+          "id": "edward-herrmann-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edward-herrmann"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2013-06-01",
+          "runtime_min": 288,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00D2D1RAE",
               "type": "libex-import"
             }
           ],
@@ -2312,134 +2415,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DBRK2DHZ",
           "type": "libex-import"
-        }
-      ],
-      "title": "At the Mountains of Madness"
-    },
-    "at-the-mountains-of-madness-blackstone-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "horror",
-        "science-fiction"
-      ],
-      "id": "at-the-mountains-of-madness-blackstone-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "edward-herrmann-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00D2D1RAE",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14952,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1459074,
-              "start_ms": 14952,
-              "title": "I"
-            },
-            {
-              "length_ms": 2512120,
-              "start_ms": 1474026,
-              "title": "II"
-            },
-            {
-              "length_ms": 1587037,
-              "start_ms": 3986146,
-              "title": "III"
-            },
-            {
-              "length_ms": 1327717,
-              "start_ms": 5573183,
-              "title": "IV"
-            },
-            {
-              "length_ms": 1880073,
-              "start_ms": 6900900,
-              "title": "V"
-            },
-            {
-              "length_ms": 1064820,
-              "start_ms": 8780973,
-              "title": "VI"
-            },
-            {
-              "length_ms": 1414002,
-              "start_ms": 9845793,
-              "title": "VII"
-            },
-            {
-              "length_ms": 1172561,
-              "start_ms": 11259795,
-              "title": "VIII"
-            },
-            {
-              "length_ms": 1459142,
-              "start_ms": 12432356,
-              "title": "IX"
-            },
-            {
-              "length_ms": 1066909,
-              "start_ms": 13891498,
-              "title": "X"
-            },
-            {
-              "length_ms": 1419203,
-              "start_ms": 14958407,
-              "title": "XI"
-            },
-            {
-              "length_ms": 872787,
-              "start_ms": 16377610,
-              "title": "XII"
-            },
-            {
-              "length_ms": 63602,
-              "start_ms": 17250397,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91T6wNASdxL.jpg",
-          "id": "edward-herrmann-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "edward-herrmann"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2013-06-01",
-          "runtime_min": 288,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00D2D1RAE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "at-the-mountains-of-madness-blackstone-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00D2D1RAE",
           "type": "libex-import"
         }
       ],
-      "title": "At the Mountains of Madness [Blackstone Edition]"
+      "title": "At the Mountains of Madness"
     },
     "at-the-mountains-of-madness-dramatized": {
       "added_at": "2026-07-29",

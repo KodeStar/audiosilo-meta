@@ -1660,6 +1660,7 @@
       ],
       "genres": [
         "parenting-relationships",
+        "psychology",
         "self-help"
       ],
       "id": "calma-emocional",
@@ -1673,55 +1674,7 @@
             {
               "asin": "B07Z5GHZZ4",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/713jS+XkiqL.jpg",
-          "id": "gustavo-dardes-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gustavo-dardes"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial Audio",
-          "release_date": "2019-09-25",
-          "runtime_min": 400,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07Z5GHZZ4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "calma-emocional"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07Z5GHZZ4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Calma emocional"
-    },
-    "calma-emocional-emotional-calm": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "bernardo-stamateas"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "calma-emocional-emotional-calm",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gustavo-dardes-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "950151174X",
               "region": "us"
@@ -1740,21 +1693,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07Z5GHZZ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "950151174X",
               "type": "libex-import"
             }
           ],
-          "work": "calma-emocional-emotional-calm"
+          "work": "calma-emocional"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07Z5GHZZ4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "950151174X",
           "type": "libex-import"
         }
       ],
-      "title": "Calma emocional [Emotional Calm]"
+      "title": "Calma emocional"
     },
     "calma-tu-inflamacion": {
       "added_at": "2026-07-29",
@@ -6110,8 +6073,8 @@
       ],
       "title": "Camera Girl"
     },
-    "camera-obscura": {
-      "added_at": "2026-08-02",
+    "camera-obscura-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "lavie-tidhar"
       ],
@@ -6120,12 +6083,88 @@
         "fantasy",
         "historical-fiction",
         "science-fiction",
+        "steampunk",
         "urban-fantasy"
       ],
-      "id": "camera-obscura",
+      "id": "camera-obscura-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09X6NL5M5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 28537,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4917452,
+              "start_ms": 28537,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4406079,
+              "start_ms": 4945989,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4960130,
+              "start_ms": 9352068,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4366605,
+              "start_ms": 14312198,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 5112407,
+              "start_ms": 18678803,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 5099798,
+              "start_ms": 23791210,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 85472,
+              "start_ms": 28891008,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PIM15XwWL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 483,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09X6NL5M5",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09X6NL5M5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "camera-obscura-dramatized-adaptation"
+        },
         "karen-cass-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6529,107 +6568,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "camera-obscura"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0085LQ0VO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Camera Obscura"
-    },
-    "camera-obscura-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "lavie-tidhar"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "camera-obscura-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09X6NL5M5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 28537,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4917452,
-              "start_ms": 28537,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 4406079,
-              "start_ms": 4945989,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4960130,
-              "start_ms": 9352068,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4366605,
-              "start_ms": 14312198,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 5112407,
-              "start_ms": 18678803,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 5099798,
-              "start_ms": 23791210,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 85472,
-              "start_ms": 28891008,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PIM15XwWL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 483,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09X6NL5M5",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09X6NL5M5",
-              "type": "libex-import"
-            }
-          ],
           "work": "camera-obscura-dramatized-adaptation"
         }
       },
@@ -6642,6 +6580,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09X6NL5M5",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0085LQ0VO",
           "type": "libex-import"
         }
       ],

@@ -11931,61 +11931,7 @@
             {
               "asin": "B08KTRHYPX",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lIqa3IemL.jpg",
-          "id": "adam-numm-2020",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adam-numm",
-            "alice-bauer",
-            "karen-schulz-vobach",
-            "maja-maneiro",
-            "oliver-siebeck",
-            "till-hagen"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2020-10-08",
-          "runtime_min": 280,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08KTRHYPX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "assassins-creed-gold-anthony-del-col"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08KTRHYPX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Assassin's Creed: Gold"
-    },
-    "assassins-creed-gold-german-version": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "anthony-del-col"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "assassins-creed-gold-german-version",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adam-numm-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08KTPYJZ9",
               "region": "us"
@@ -12009,21 +11955,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08KTRHYPX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08KTPYJZ9",
               "type": "libex-import"
             }
           ],
-          "work": "assassins-creed-gold-german-version"
+          "work": "assassins-creed-gold-anthony-del-col"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08KTRHYPX",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08KTPYJZ9",
           "type": "libex-import"
         }
       ],
-      "title": "Assassin's Creed: Gold [German Version]"
+      "title": "Assassin's Creed: Gold"
     },
     "assassins-creed-heresy": {
       "added_at": "2026-08-02",

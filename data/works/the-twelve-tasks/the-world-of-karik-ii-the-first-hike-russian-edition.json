@@ -2623,6 +2623,7 @@
       ],
       "genres": [
         "history",
+        "horror",
         "occult",
         "politics",
         "religion-spirituality",
@@ -2638,6 +2639,10 @@
           "asin": [
             {
               "asin": "B07DP864GK",
+              "region": "us"
+            },
+            {
+              "asin": "B07FSNYNFW",
               "region": "us"
             }
           ],
@@ -2888,6 +2893,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07DP864GK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07FSNYNFW",
+              "type": "libex-import"
             }
           ],
           "work": "the-world-of-lore-dreadful-places"
@@ -2897,6 +2907,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07DP864GK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07FSNYNFW",
           "type": "libex-import"
         }
       ],
@@ -3274,60 +3289,6 @@
         }
       ],
       "title": "The World of Lore, Volume 2: Wicked Mortals"
-    },
-    "the-world-of-lore-volume-3-dreadful-places": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "aaron-mahnke"
-      ],
-      "genres": [
-        "history",
-        "horror",
-        "occult",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "the-world-of-lore-volume-3-dreadful-places",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aaron-mahnke-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07FSNYNFW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9177tNMv-YL.jpg",
-          "id": "aaron-mahnke-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aaron-mahnke"
-          ],
-          "publisher": "Wildfire",
-          "release_date": "2018-10-09",
-          "runtime_min": 602,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07FSNYNFW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-world-of-lore-volume-3-dreadful-places"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07FSNYNFW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The World of Lore, Volume 3: Dreadful Places"
     },
     "the-world-of-lore-wicked-mortals": {
       "added_at": "2026-07-29",

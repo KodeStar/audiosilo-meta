@@ -2042,8 +2042,8 @@
       ],
       "title": "Darkness Raging"
     },
-    "darkness-reigns": {
-      "added_at": "2026-08-01",
+    "darkness-reigns-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "joseph-nassise"
       ],
@@ -2053,10 +2053,70 @@
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "darkness-reigns",
+      "id": "darkness-reigns-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648818390",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3122294,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4231395,
+              "start_ms": 3122294,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3456452,
+              "start_ms": 7353689,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3404858,
+              "start_ms": 10810141,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3533565,
+              "start_ms": 14214999,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xYDcQM-FS.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2021",
+          "runtime_min": 296,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648818390",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648818390",
+              "type": "libex-import"
+            }
+          ],
+          "work": "darkness-reigns-dramatized-adaptation"
+        },
         "jarret-lemaster-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2245,91 +2305,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "darkness-reigns"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08Z4GW95Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Darkness Reigns"
-    },
-    "darkness-reigns-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "joseph-nassise"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "darkness-reigns-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648818390",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3122294,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4231395,
-              "start_ms": 3122294,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3456452,
-              "start_ms": 7353689,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3404858,
-              "start_ms": 10810141,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3533565,
-              "start_ms": 14214999,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xYDcQM-FS.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
-          "runtime_min": 296,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648818390",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648818390",
-              "type": "libex-import"
-            }
-          ],
           "work": "darkness-reigns-dramatized-adaptation"
         }
       },
@@ -2342,6 +2317,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648818390",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08Z4GW95Q",
           "type": "libex-import"
         }
       ],
@@ -13424,30 +13404,7 @@
             }
           ],
           "work": "darkover-landfall"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B078WXN1S7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Darkover Landfall"
-    },
-    "darkover-landfall-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "darkover-landfall-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-bellmore-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13566,17 +13523,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "darkover-landfall-international-edition"
+          "work": "darkover-landfall"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078WXN1S7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYHBTYL",
           "type": "libex-import"
         }
       ],
-      "title": "Darkover Landfall [International Edition]"
+      "title": "Darkover Landfall"
     },
     "darkrise": {
       "added_at": "2026-08-01",

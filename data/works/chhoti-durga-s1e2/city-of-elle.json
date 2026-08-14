@@ -1242,30 +1242,7 @@
             }
           ],
           "work": "city-of-fallen-souls"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1705246206",
-          "type": "libex-import"
-        }
-      ],
-      "title": "City of Fallen Souls"
-    },
-    "city-of-fallen-souls-2nd-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jez-cajiao"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "city-of-fallen-souls-2nd-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "wayne-mitchell-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1548,17 +1525,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "city-of-fallen-souls-2nd-edition"
+          "work": "city-of-fallen-souls"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705246206",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BWKC76XN",
           "type": "libex-import"
         }
       ],
-      "title": "City of Fallen Souls (2nd Edition)"
+      "title": "City of Fallen Souls"
     },
     "city-of-fire": {
       "added_at": "2026-08-02",
@@ -4431,6 +4413,9 @@
         "saint-augustine"
       ],
       "genres": [
+        "essays",
+        "history",
+        "mythology",
         "philosophy",
         "politics",
         "religion-spirituality"
@@ -4439,6 +4424,304 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bernard-mayes-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8H6SS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3621871,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3440686,
+              "start_ms": 3621871,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3543922,
+              "start_ms": 7062557,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3204818,
+              "start_ms": 10606479,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3431073,
+              "start_ms": 13811297,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3509556,
+              "start_ms": 17242370,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3393921,
+              "start_ms": 20751926,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3217867,
+              "start_ms": 24145847,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4224638,
+              "start_ms": 27363714,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3807468,
+              "start_ms": 31588352,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2497584,
+              "start_ms": 35395820,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2203713,
+              "start_ms": 37893404,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3547637,
+              "start_ms": 40097117,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3637173,
+              "start_ms": 43644754,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3628721,
+              "start_ms": 47281927,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3875363,
+              "start_ms": 50910648,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2677492,
+              "start_ms": 54786011,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1986513,
+              "start_ms": 57463503,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 4248415,
+              "start_ms": 59450016,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 4284360,
+              "start_ms": 63698431,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 3425593,
+              "start_ms": 67982791,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 3479278,
+              "start_ms": 71408384,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 3036101,
+              "start_ms": 74887662,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 3371398,
+              "start_ms": 77923763,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 2547182,
+              "start_ms": 81295161,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 2861720,
+              "start_ms": 83842343,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 3757638,
+              "start_ms": 86704063,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 3653938,
+              "start_ms": 90461701,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 4693124,
+              "start_ms": 94115639,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 4190830,
+              "start_ms": 98808763,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 2829165,
+              "start_ms": 102999593,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 3076783,
+              "start_ms": 105828758,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 3879218,
+              "start_ms": 108905541,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 3727824,
+              "start_ms": 112784759,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 4129250,
+              "start_ms": 116512583,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 3848614,
+              "start_ms": 120641833,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 3756895,
+              "start_ms": 124490447,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 4437937,
+              "start_ms": 128247342,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 4383091,
+              "start_ms": 132685279,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 3873088,
+              "start_ms": 137068370,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 3577777,
+              "start_ms": 140941458,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 3579030,
+              "start_ms": 144519235,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 3029135,
+              "start_ms": 148098265,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 4527426,
+              "start_ms": 151127400,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 4529516,
+              "start_ms": 155654826,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 4282038,
+              "start_ms": 160184342,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 3535423,
+              "start_ms": 164466380,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 3699379,
+              "start_ms": 168001803,
+              "title": "Chapter 48"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZNstoHyaL.jpg",
+          "id": "bernard-mayes-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bernard-mayes"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2008-06-20",
+          "runtime_min": 2861,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8H6SS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "city-of-god-saint-augustine"
+        },
+        "david-mccallion-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07BBRQLDV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ef6nTPLBL.jpg",
+          "id": "david-mccallion-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-mccallion"
+          ],
+          "publisher": "A.R.N. Publications",
+          "release_date": "2018-03-15",
+          "runtime_min": 2792,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07BBRQLDV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "city-of-god-saint-augustine"
+        },
         "mark-meadows-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4472,6 +4755,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "1781983232",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8H6SS",
           "type": "libex-import"
         }
       ],
@@ -10140,6 +10428,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eloise-oxer-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00MAP4I9M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910RF62Y0nL.jpg",
+          "id": "eloise-oxer-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eloise-oxer",
+            "grant-cartwright"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2014-08-04",
+          "runtime_min": 1059,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00MAP4I9M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "city-of-lost-souls"
+        },
         "molly-c-quinn-2024": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10339,67 +10656,17 @@
           "imported_at": "2026-08-02",
           "ref": "B0BVDL5MM3",
           "type": "libex-import"
-        }
-      ],
-      "title": "City of Lost Souls",
-      "xref": {
-        "goodreads": "8755776"
-      }
-    },
-    "city-of-lost-souls-mortal-instruments-book-5": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cassandra-clare"
-      ],
-      "genres": [
-        "dark-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "city-of-lost-souls-mortal-instruments-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eloise-oxer-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00MAP4I9M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910RF62Y0nL.jpg",
-          "id": "eloise-oxer-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eloise-oxer",
-            "grant-cartwright"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2014-08-04",
-          "runtime_min": 1059,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00MAP4I9M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "city-of-lost-souls-mortal-instruments-book-5"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00MAP4I9M",
           "type": "libex-import"
         }
       ],
-      "title": "City of Lost Souls: Mortal Instruments, Book 5"
+      "title": "City of Lost Souls",
+      "xref": {
+        "goodreads": "8755776"
+      }
     },
     "city-of-lust": {
       "added_at": "2026-08-01",

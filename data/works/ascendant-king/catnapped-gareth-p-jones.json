@@ -7722,6 +7722,9 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "parenting-relationships",
         "self-help",
@@ -7738,6 +7741,10 @@
           "asin": [
             {
               "asin": "B07BB2NZ9W",
+              "region": "us"
+            },
+            {
+              "asin": "B07FXSBL9Q",
               "region": "us"
             }
           ],
@@ -7948,6 +7955,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07BB2NZ9W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07FXSBL9Q",
+              "type": "libex-import"
             }
           ],
           "work": "catwoman-soulstealer"
@@ -7958,255 +7970,14 @@
           "imported_at": "2026-08-02",
           "ref": "B07BB2NZ9W",
           "type": "libex-import"
-        }
-      ],
-      "title": "Catwoman: Soulstealer"
-    },
-    "catwoman-soulstealer-dc-icons-series": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sarah-j-maas"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fairy-tales-folklore",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "catwoman-soulstealer-dc-icons-series",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julia-whelan-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07FXSBL9Q",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2517647,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1405457,
-              "start_ms": 2517647,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 608131,
-              "start_ms": 3923104,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 893736,
-              "start_ms": 4531235,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 575530,
-              "start_ms": 5424971,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1059155,
-              "start_ms": 6000501,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 928938,
-              "start_ms": 7059656,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2023526,
-              "start_ms": 7988594,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1937287,
-              "start_ms": 10012120,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 443222,
-              "start_ms": 11949407,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1434389,
-              "start_ms": 12392629,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 660422,
-              "start_ms": 13827018,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1115765,
-              "start_ms": 14487440,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 872188,
-              "start_ms": 15603205,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1099883,
-              "start_ms": 16475393,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 688890,
-              "start_ms": 17575276,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1038768,
-              "start_ms": 18264166,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 814835,
-              "start_ms": 19302934,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1216029,
-              "start_ms": 20117769,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 799788,
-              "start_ms": 21333798,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 690654,
-              "start_ms": 22133586,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1057297,
-              "start_ms": 22824240,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1667471,
-              "start_ms": 23881537,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1344807,
-              "start_ms": 25549008,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1458445,
-              "start_ms": 26893815,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 631861,
-              "start_ms": 28352260,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 460591,
-              "start_ms": 28984121,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 256488,
-              "start_ms": 29444712,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 548734,
-              "start_ms": 29701200,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 151348,
-              "start_ms": 30249934,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 404956,
-              "start_ms": 30401282,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 663301,
-              "start_ms": 30806238,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1252345,
-              "start_ms": 31469539,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 732636,
-              "start_ms": 32721884,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 622202,
-              "start_ms": 33454520,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 707048,
-              "start_ms": 34076722,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 690887,
-              "start_ms": 34783770,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 541210,
-              "start_ms": 35474657,
-              "title": "Chapter 38"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1y10cX11jL.jpg",
-          "id": "julia-whelan-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julia-whelan"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2018-08-09",
-          "runtime_min": 600,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07FXSBL9Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "catwoman-soulstealer-dc-icons-series"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07FXSBL9Q",
           "type": "libex-import"
         }
       ],
-      "title": "Catwoman: Soulstealer (DC Icons series)"
+      "title": "Catwoman: Soulstealer"
     },
     "caucasia": {
       "added_at": "2026-07-29",

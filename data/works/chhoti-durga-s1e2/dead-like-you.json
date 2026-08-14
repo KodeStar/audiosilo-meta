@@ -4935,12 +4935,140 @@
       "genres": [
         "fantasy",
         "paranormal",
+        "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "dead-man-rising",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-thickpenny-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H8MMR3J",
+              "region": "us"
+            },
+            {
+              "asin": "1648793401",
+              "region": "us"
+            },
+            {
+              "asin": "1648793428",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4185187,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4083763,
+              "start_ms": 4185187,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3822120,
+              "start_ms": 8268950,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3730889,
+              "start_ms": 12091070,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3997895,
+              "start_ms": 15821959,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3615254,
+              "start_ms": 19819854,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4006092,
+              "start_ms": 23435108,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4542473,
+              "start_ms": 27441200,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4214886,
+              "start_ms": 31983673,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4604701,
+              "start_ms": 36198559,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KBPzkenzL.jpg",
+          "id": "amanda-thickpenny-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-thickpenny",
+            "christopher-graybill",
+            "christopher-scheeren",
+            "colleen-delany",
+            "james-keegan",
+            "kimberly-gilbert",
+            "mb-van-dorn",
+            "mort-shelby",
+            "nathaniel-perry",
+            "richard-rohan",
+            "terence-aselford",
+            "thomas-keegan",
+            "tim-getman",
+            "yasmin-tuazon",
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 679,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H8MMR3J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648793401",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648793401",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648793428",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648793428",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H8MMR3J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dead-man-rising"
+        },
         "tanya-eby-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5172,154 +5300,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00797NM0M",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dead Man Rising"
-    },
-    "dead-man-rising-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "lilith-saintcrow"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "dead-man-rising-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-thickpenny-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H8MMR3J",
-              "region": "us"
-            },
-            {
-              "asin": "1648793401",
-              "region": "us"
-            },
-            {
-              "asin": "1648793428",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4185187,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4083763,
-              "start_ms": 4185187,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3822120,
-              "start_ms": 8268950,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3730889,
-              "start_ms": 12091070,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3997895,
-              "start_ms": 15821959,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3615254,
-              "start_ms": 19819854,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4006092,
-              "start_ms": 23435108,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4542473,
-              "start_ms": 27441200,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4214886,
-              "start_ms": 31983673,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4604701,
-              "start_ms": 36198559,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81KBPzkenzL.jpg",
-          "id": "amanda-thickpenny-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-thickpenny",
-            "christopher-graybill",
-            "christopher-scheeren",
-            "colleen-delany",
-            "james-keegan",
-            "kimberly-gilbert",
-            "mb-van-dorn",
-            "mort-shelby",
-            "nathaniel-perry",
-            "richard-rohan",
-            "terence-aselford",
-            "thomas-keegan",
-            "tim-getman",
-            "yasmin-tuazon",
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 679,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H8MMR3J",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648793401",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648793401",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648793428",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648793428",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H8MMR3J",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dead-man-rising-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H8MMR3J",
@@ -5351,7 +5332,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Dead Man Rising [Dramatized Adaptation]"
+      "title": "Dead Man Rising"
     },
     "dead-man-running": {
       "added_at": "2026-07-29",
@@ -5965,30 +5946,7 @@
             }
           ],
           "work": "dead-man-talking-a-cozy-paranormal-mystery"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B077PJSBGS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dead Man Talking: A Cozy Paranormal Mystery"
-    },
-    "dead-man-talking-jana-deleon": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jana-deleon"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery"
-      ],
-      "id": "dead-man-talking-jana-deleon",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "b-j-harrison-2023": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6117,17 +6075,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "dead-man-talking-jana-deleon"
+          "work": "dead-man-talking-a-cozy-paranormal-mystery"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B077PJSBGS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BX4LK57F",
           "type": "libex-import"
         }
       ],
-      "title": "Dead Man Talking"
+      "title": "Dead Man Talking: A Cozy Paranormal Mystery"
     },
     "dead-man-walking": {
       "added_at": "2026-08-02",

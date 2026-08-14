@@ -8993,6 +8993,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-john-fetherolf-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00DGDA96S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pFUGYVQZL.jpg",
+          "id": "christopher-john-fetherolf-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-john-fetherolf"
+          ],
+          "publisher": "Cherry Hill Publishing, LLC",
+          "release_date": "2013-06-18",
+          "runtime_min": 501,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00DGDA96S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "chaos-a-new-world"
+        },
         "mark-gagliardi-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9077,31 +9105,7 @@
             }
           ],
           "work": "chaos-a-new-world"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00O5HWE2G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Chaos: A New World"
-    },
-    "chaos-a-new-world-book-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "john-obrien"
-      ],
-      "genres": [
-        "horror",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "chaos-a-new-world-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "mark-gagliardi-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -9180,17 +9184,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "chaos-a-new-world-book-1"
+          "work": "chaos-a-new-world"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00O5HWE2G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00DGDA96S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0BSMTT2GX",
           "type": "libex-import"
         }
       ],
-      "title": "Chaos: A New World, Book 1"
+      "title": "Chaos: A New World"
     },
     "chaos-after-the-emp-book-4-5-6": {
       "added_at": "2026-08-02",
@@ -11329,8 +11343,8 @@
       ],
       "title": "Chaos and Destiny"
     },
-    "chaos-and-gunfire": {
-      "added_at": "2026-08-02",
+    "chaos-and-gunfire-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-anderle",
         "martha-carr"
@@ -11340,7 +11354,7 @@
         "paranormal",
         "urban-fantasy"
       ],
-      "id": "chaos-and-gunfire",
+      "id": "chaos-and-gunfire-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -11517,32 +11531,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "chaos-and-gunfire"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BLPCBHD8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Chaos and Gunfire"
-    },
-    "chaos-and-gunfire-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "martha-carr"
-      ],
-      "genres": [
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "chaos-and-gunfire-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "chaos-and-gunfire-dramatized-adaptation"
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -11623,6 +11613,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CD892B4H",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BLPCBHD8",
           "type": "libex-import"
         }
       ],
