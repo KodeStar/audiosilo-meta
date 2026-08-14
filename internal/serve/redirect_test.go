@@ -221,12 +221,14 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 // from the pattern's SHAPE rather than from the wildcard being spelled {id} - see
 // TestRedirectCoverageIgnoresTheWildcardsName.
 //
-// It covers the UNION of both tables: an entity PAGE addresses a record by the
-// same slug an API route does, so a retired slug has to keep resolving there too
-// (in HTML - see redirected).
+// It covers the UNION of all three tables: an entity PAGE addresses a record by
+// the same slug an API route does, so a retired slug has to keep resolving there
+// too (in HTML - see redirected), and the sitemap table has to answer the guard
+// as well - which it does by naming its file wildcard exempt.
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
 	all := append(srv.routes(), srv.htmlRoutes()...)
+	all = append(all, srv.sitemapRoutes()...)
 	patterns := make([]string, 0, len(all))
 	registered := map[string]bool{}
 	for _, r := range all {

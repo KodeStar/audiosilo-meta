@@ -346,12 +346,17 @@ var redirectNamespaces = func() map[string]model.RedirectKind {
 }()
 
 // redirectExemptRoutes are the wildcard routes that deliberately resolve no
-// retired slug. It is EMPTY today: every wildcard the API serves is a record id.
-// It exists so that the guard above can be answered in the only two ways that are
-// honest - name the namespace, or say out loud that this wildcard is not a record
-// - rather than by a route quietly not appearing in either list. A multi-segment
-// wildcard ({rest...}) belongs here: it is a path, not an id.
-var redirectExemptRoutes = map[string]bool{}
+// retired slug. It exists so that the guard above can be answered in the only two
+// ways that are honest - name the namespace, or say out loud that this wildcard is
+// not a record - rather than by a route quietly not appearing in either list. A
+// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
+//
+// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
+// a window over a family, so there is no retired id for it to resolve and an
+// unknown one is the 404 parseShardFile already gives it.
+var redirectExemptRoutes = map[string]bool{
+	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
+}
 
 // redirectCoverageGaps returns the patterns that address a record by a wildcard
 // and neither name a namespace nor say they are exempt. It is the guard's
@@ -420,6 +425,14 @@ func wildcardName(seg string) (string, bool) {
 func (s *Server) buildMux() http.Handler {
 	mux := http.NewServeMux()
 	for _, r := range s.routes() {
+		mux.Handle(r.pattern, r.handler)
+	}
+	// The sitemaps are registered unconditionally: they are rendered from the
+	// snapshot and the configured origin, with no shell to inject into, so an
+	// API-only deployment serves them too (it simply has no static-pages sitemap
+	// to list). The index pattern SHADOWS the dist's own sitemap-index.xml, which
+	// is the point - see sitemap.go.
+	for _, r := range s.sitemapRoutes() {
 		mux.Handle(r.pattern, r.handler)
 	}
 	// The HTML entity pages sit between the API and the static fallback, and only
