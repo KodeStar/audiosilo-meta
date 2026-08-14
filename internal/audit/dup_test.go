@@ -133,9 +133,9 @@ func TestWorkDupNeverClustersDifferentAuthors(t *testing.T) {
 	}
 }
 
-// A >10% runtime gap is a different PRODUCTION, which is two recordings of one
-// work - so the merge proposal stands and the gap is stated.
-func TestWorkDupStatesARuntimeGapWithoutWithholdingTheProposal(t *testing.T) {
+// A runtime difference within the veto ratio is a different PRODUCTION, which is
+// two recordings of one work - so the merge proposal stands.
+func TestWorkDupAllowsARuntimeDifferenceWithinTheRatio(t *testing.T) {
 	rep := runFixture(t, map[string]string{
 		"works/fe/fermentation/work.json":                    workJSON(t, "fermentation", "Fermentation"),
 		"works/fe/fermentation/recordings/solo.json":         recJSON(t, "solo", "fermentation", withRuntime(720)),
@@ -148,11 +148,32 @@ func TestWorkDupStatesARuntimeGapWithoutWithholdingTheProposal(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one cluster, got %d", len(got))
 	}
-	if got[0].Propose.Target == "" {
-		t.Error("a runtime gap must not withhold the merge proposal")
+	if got[0].Propose.Advisory || got[0].Propose.Op != OpMergeWorks {
+		t.Errorf("a 1.4x runtime difference must not veto the merge: %+v", got[0].Propose)
 	}
-	if !strings.Contains(strings.Join(got[0].Notes, " "), "runtime gap") {
-		t.Errorf("the runtime gap is not stated: %v", got[0].Notes)
+}
+
+// Beyond the ratio it is not two productions of one book - it is a collection beside
+// a volume, or two different books - so the merge is withheld and the reason names
+// the numbers.
+func TestWorkDupVetoesAnImpossibleRuntimeRatio(t *testing.T) {
+	rep := runFixture(t, map[string]string{
+		"works/co/complete/work.json":             workJSON(t, "complete", "Wandering Inn"),
+		"works/co/complete/recordings/long.json":  recJSON(t, "long", "complete", withRuntime(3843)),
+		"works/co/volume-one/work.json":           workJSON(t, "volume-one", "Wandering Inn."),
+		"works/co/volume-one/recordings/one.json": recJSON(t, "one", "volume-one", withRuntime(409)),
+		"people/ja/jane-doe.json":                 personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":            personJSON(t, "nate-narrator", "Nate Narrator"),
+	})
+	got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster, got %d: %+v", len(got), classOf(t, rep, ClassWorkDup))
+	}
+	if !got[0].Propose.Advisory {
+		t.Error("a 9x runtime ratio must withhold the merge")
+	}
+	if !strings.Contains(got[0].Propose.Reason, "runtimes differ") {
+		t.Errorf("reason = %q, want the runtimes named", got[0].Propose.Reason)
 	}
 }
 

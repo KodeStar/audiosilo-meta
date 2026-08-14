@@ -113,6 +113,13 @@ var wideGenreFluff = func() map[string]bool {
 		"contemporary", "romantic", "steamy", "spicy", "sweet", "clean",
 		"gritty", "grimdark", "military", "post", "apocalyptic", "dystopian",
 		"medieval", "western", "gothic", "psychological", "cosmic",
+		// The blurb adjectives. They matter because a residual made only of these
+		// is a DESCRIPTION of the book, not its name: "Fluff 3: A Wholesome LitRPG"
+		// reduced to "A Wholesome LitRPG", keeping the blurb and dropping the title.
+		// CarriesIdentity is what refuses that, and it can only refuse what the
+		// vocabulary knows.
+		"wholesome", "slowburn", "hilarious", "thrilling", "gripping",
+		"heartwarming", "unputdownable", "addictive", "steamy", "wholesale",
 		// Genre nouns and their abbreviations.
 		"scifi", "sci", "fi", "science", "fiction", "nonfiction", "space",
 		"opera", "cyberpunk", "steampunk", "horror", "suspense", "crime",
@@ -244,11 +251,28 @@ func dropDanglingHeadOnce(s string) string {
 // ("Star Wars: A New Hope" -> "new", "hope") is never touched.
 func dropDanglingTailOnce(s string) string {
 	sep := lastSepIn(s)
-	if sep <= 0 || hasSignificantToken(s[sep:]) {
+	if sep <= 0 || hasSignificantToken(s[sep:]) || numbersAreIdentity(s[sep:]) {
 		return s
 	}
 	return tidyTitle(s[:sep])
 }
+
+// numbersAreIdentity reports whether a segment's NUMBERS are part of what the title
+// says rather than a volume marker: two or more numbers (a date range, "1881-1968") or
+// a single number of four digits or more (a year, "1984").
+//
+// tokenize discards numbers as insignificant, which is right for ": 2" and wrong for
+// ": 1881-1968" - two genuinely different books, "Without a Trace: 1881-1968" and
+// "Without a Trace: 1970-2016", were reduced to one title and proposed for merge.
+func numbersAreIdentity(seg string) bool {
+	nums := digitRuns.FindAllString(seg, -1)
+	if len(nums) >= 2 {
+		return true
+	}
+	return len(nums) == 1 && len(nums[0]) >= 4
+}
+
+var digitRuns = regexp.MustCompile(`\d+`)
 
 // stopwordsOnly reports whether a segment's every word is a title stopword. An
 // empty or punctuation-only segment counts, since it holds nothing either.
@@ -288,13 +312,17 @@ func hasSignificantToken(s string) bool {
 //
 // It never empties the title: a title genuinely made of nothing but stopwords ("The
 // One and Only") keeps its words.
+// It also never reduces a title to ONE word. "All In: The Blackstone Affair Part 2"
+// stripped to "All In", whose trailing "In" is a stopword - and trimming it left
+// "All". A single trailing function word on a two-word title is part of the phrase;
+// a stranded preposition shows up with something in front of it to strand from.
 func trimStopwordTail(s string) string {
 	words := strings.Fields(s)
 	hi := len(words)
-	for hi > 0 && titleStopwords[strings.ToLower(strings.Trim(words[hi-1], ".,:;-"))] {
+	for hi > 1 && titleStopwords[strings.ToLower(strings.Trim(words[hi-1], ".,:;-"))] {
 		hi--
 	}
-	if hi == 0 || hi == len(words) {
+	if hi < 2 || hi == len(words) {
 		return s
 	}
 	return tidyTitle(strings.Join(words[:hi], " "))
@@ -309,13 +337,184 @@ func trimStopwordTail(s string) string {
 // value a repair pass would write back.
 func CompareKey(cleaned string) string { return FoldKey(dropLeadingArticle(cleaned)) }
 
-// CarriesIdentity reports whether a cleaned title holds at least one word that is
-// not packaging vocabulary. A title that does not ("Omnibus", "Box Set", "Complete
-// Collection" - all that is left once the series name comes off) names no book of
-// its own, so a duplicate detector must not group two of them on the title alone.
+// packagingWord is the vocabulary of words that describe a book's PACKAGING rather
+// than name it, in every language the catalogue holds. It is wideGenreFluff plus two
+// groups that must NOT be in that list:
+//
+//   - "book"/"books" and the spelled-out numbers. wideGenreFluff drives the
+//     genre-subtitle drop, where "book" is a real title word ("The Book Thief"), but
+//     a RESIDUAL of "Book One" or "Blue Core, Book Three" minus its series name
+//     names no book at all - and those were being proposed as titles.
+//   - the multilingual packaging nouns. The English-only test let three different
+//     Tao Wong series' omnibuses merge and proposed "- Band 5" as a German title.
+//
+// It is read by CarriesIdentity (does this residual name a book) and by
+// IsCollection (is this title a collection). Both are refusal tests, so a word
+// wrongly present costs a missed finding, never a wrong one - which is why the list
+// can afford to be generous. Words that are ordinary title nouns in English are
+// still kept out ("roman" is the Roman Empire as often as it is a novel).
+var packagingWord = func() map[string]bool {
+	m := make(map[string]bool, len(wideGenreFluff)+128)
+	for w := range wideGenreFluff {
+		m[w] = true
+	}
+	for _, w := range []string{
+		// "book" alone. The spelled-out NUMBERS are deliberately absent: a bare
+		// "Two" or "Three" is an ordinary title word ("Two Tales", "Three Men in a
+		// Boat"), so a residual of "Book One" is reduced by stripping the word
+		// volume MARKER as a phrase (see stripVolumePhrases) rather than by
+		// declaring every number word packaging.
+		"book", "books",
+		// German.
+		"band", "baende", "bande", "buch", "buecher", "bucher", "sammlung",
+		"sammelband", "gesamtausgabe", "teil", "folge", "staffel", "hoerspiel",
+		"hoerbuch", "ungekuerzt", "gekuerzt", "reihe", "gesamt", "ausgabe",
+		// "Jahr N" numbers a volume in German serial fiction ("Die Akademie der
+		// Goetter - Jahr 10"), and a residual of it names no book.
+		"jahr", "jahre",
+		// Spanish / Portuguese.
+		"libro", "libros", "tomo", "tomos", "volumen", "volumenes", "coleccion",
+		"completa", "completo", "edicion", "livro", "livros", "colecao", "serie",
+		"novela", "parte", "partes", "episodio", "temporada",
+		// French.
+		"tome", "tomes", "livre", "livres", "recueil", "integrale", "coffret",
+		"episode", "partie", "saison",
+		// Italian.
+		"libri", "raccolta", "volumi", "romanzo", "cofanetto",
+		// Dutch / Nordic.
+		"boek", "boeken", "deel", "delen", "verzameling", "bok", "boecker",
+		"bocker", "bind", "samling",
+	} {
+		m[w] = true
+	}
+	return m
+}()
+
+// stripVolumePhrases removes volume markers - in digits or in words - as PHRASES,
+// so "Book One" goes together. Reducing it word by word would need every number
+// word in the packaging vocabulary, and a bare "Two" or "Three" is an ordinary
+// title word ("Two Tales", "Three Men in a Boat").
+func stripVolumePhrases(s string) string {
+	s = matchNoise.ReplaceAllString(s, " ")
+	return wordVolumeMarker.ReplaceAllString(s, " ")
+}
+
+// apostropheSplit turns the apostrophe glyphs into word boundaries. It runs BEFORE
+// model.Slugify, which strips them and so WELDS the words either side: "L'integrale"
+// became the single token "lintegrale", which no vocabulary holds, and a French
+// omnibus therefore read as a book title.
+var apostropheSplit = strings.NewReplacer(
+	"'", " ", "’", " ", "‘", " ", "´", " ", "`", " ", "ʼ", " ", "ʻ", " ",
+)
+
+// identityWords splits a text into the ASCII-folded words the vocabulary tests read.
+//
+// FOLDING FIRST is what makes it work on the whole catalogue: notAlnum is ASCII-only,
+// so splitting the raw text fragments every accented word ("integrale" arrived as
+// "int" + "grale" and matched nothing). model.Slugify is the project's own folding,
+// and the apostrophe pre-split above repairs the one thing it does that a word test
+// must not inherit.
+func identityWords(s string) []string {
+	folded := model.Slugify(apostropheSplit.Replace(s))
+	return strings.FieldsFunc(folded, func(r rune) bool { return r == '-' })
+}
+
+// numberWord are the spelled-out numbers. They are NOT packaging on their own - "Two
+// Tales" and "Three Men in a Boat" are titles - so they only count as packaging
+// alongside a packaging word, which is what "Episodes One and Two" is and "Two Tales"
+// is not. See CarriesIdentity.
+var numberWord = map[string]bool{
+	"one": true, "two": true, "three": true, "four": true, "five": true,
+	"six": true, "seven": true, "eight": true, "nine": true, "ten": true,
+	"eleven": true, "twelve": true, "first": true, "second": true, "third": true,
+	"fourth": true, "fifth": true, "sixth": true, "seventh": true, "eighth": true,
+	"ninth": true, "tenth": true,
+}
+
+// structuralWord names a DIVISION of a product - a book, an episode, a volume, a
+// collection - as opposed to describing its genre. Only these pair with a number
+// word, because "Episodes One and Two" enumerates parts while "Two Tales" is a title
+// whose second word happens to be a genre noun.
+var structuralWord = func() map[string]bool {
+	m := map[string]bool{}
+	for w := range collectionWord {
+		m[w] = true
+	}
+	for _, w := range []string{
+		"book", "books", "episode", "episodes", "volume", "volumes", "part",
+		"parts", "band", "baende", "bande", "buch", "teil", "tome", "tomes",
+		"libro", "libri", "livre", "livres", "deel", "delen", "bind", "season",
+		"staffel", "folge", "temporada", "saison", "jahr", "jahre", "level",
+		"levels", "lesson", "lessons", "unit", "units",
+	} {
+		m[w] = true
+	}
+	return m
+}()
+
+// CarriesIdentity reports whether a cleaned title names a book of its own, or only
+// describes its packaging ("Omnibus", "Box Set", "Book One", "- Band 5",
+// "L'integrale", "Episodes One and Two" - all of them what is left once a series name
+// comes off).
+//
+// A word is discounted when it is packaging vocabulary, or when it is a spelled-out
+// NUMBER standing beside a STRUCTURAL word. That pairing is why the sets are separate:
+// a number word alone is ordinary title material, and discounting every one of them
+// turned "Two Tales" into a title that names nothing.
 func CarriesIdentity(cleaned string) bool {
-	for _, w := range strings.FieldsFunc(strings.ToLower(cleaned), notAlnum) {
-		if len(w) >= 2 && !titleStopwords[w] && !isAllDigits(w) && !wideGenreFluff[w] {
+	words := identityWords(stripVolumePhrases(cleaned))
+	structural := false
+	for _, w := range words {
+		if significantToken(w) && structuralWord[w] {
+			structural = true
+			break
+		}
+	}
+	for _, w := range words {
+		if !significantToken(w) || packagingWord[w] {
+			continue
+		}
+		if structural && numberWord[w] {
+			continue
+		}
+		return true
+	}
+	return false
+}
+
+// collectionWord is the subset of packagingWord that says "this is several books in
+// one product" rather than merely "this is a book". A title carrying one on ONE side
+// of a duplicate cluster is a companion collection beside a single volume, not a
+// second record of it.
+var collectionWord = func() map[string]bool {
+	m := map[string]bool{}
+	for _, w := range []string{
+		"omnibus", "boxset", "boxed", "collection", "collections", "collected",
+		"gesammelte", "compendium",
+		"anthology", "compilation", "bundle", "complete", "trilogy", "duology",
+		"quartet", "quintet", "sammlung", "sammelband", "gesamtausgabe",
+		"coleccion", "colecao", "raccolta", "recueil", "integrale", "coffret",
+		"cofanetto", "verzameling", "samling", "volumes", "volumen", "volumenes",
+		"tomos", "libros", "livres", "buecher", "bucher", "boeken", "baende",
+		"bande", "bocker", "boecker", "gesamt",
+	} {
+		m[w] = true
+	}
+	return m
+}()
+
+// boxSetPhrase catches the collection shapes that are two words rather than one, so
+// "Box Set" and "Complete Series" count however they are spaced.
+var boxSetPhrase = regexp.MustCompile(`(?i)\b(box\s*set|boxed\s*set|complete\s+(?:series|collection|trilogy|saga)|books?\s+\d+\s*-\s*\d+)\b`)
+
+// IsCollection reports whether a title announces itself as several books in one
+// product, in any of the languages the catalogue holds.
+func IsCollection(title string) bool {
+	if boxSetPhrase.MatchString(title) {
+		return true
+	}
+	for _, w := range strings.FieldsFunc(strings.ToLower(model.Slugify(title)), notAlnum) {
+		if collectionWord[w] {
 			return true
 		}
 	}
@@ -432,6 +631,321 @@ func seriesKey(name string, suffixes []string) string {
 	t = strings.TrimSpace(dropLeadingArticle(t))
 	t = peel(t, func(s string) string { return dropOneSuffix(s, suffixes) })
 	return FoldKey(t)
+}
+
+// ---- the retitle proposal ----------------------------------------------------
+//
+// Clean above is a COMPARISON key: it may be lossy, because two titles that reduce
+// to the same lossy string are still worth looking at. A PROPOSAL may not be lossy
+// at all - it is a value a repair pass would write into the record - so it is a
+// different function with different mechanics and a set of refusals.
+//
+// The mechanics that differ: a series name is removed only at a TITLE BOUNDARY (a
+// whole leading segment, a whole trailing segment, or a whole bracketed group),
+// never excised from the middle. Mid-title excision is what turned "More Than Words"
+// into "Words", "The Screwtape Letters" into "The Letters" and "Do You Take This
+// Man" into "Do You Take" - a measured 55% wrong rate, all of it this one mechanism.
+
+// sepOffsets lists the offsets of every subtitle separator in s, ascending.
+func sepOffsets(s string) []int {
+	var out []int
+	for i := 0; i < len(s); i++ {
+		for _, alt := range subtitleSeps {
+			if strings.HasPrefix(s[i:], alt) {
+				out = append(out, i)
+				break
+			}
+		}
+	}
+	return out
+}
+
+// segmentIsSeriesOnly reports whether a title segment is made of NOTHING but a
+// spelling of the series name, packaging vocabulary, volume markers and stopwords -
+// and that at least one spelling actually occurred in it. That is what makes a
+// segment safe to drop whole: everything it says, the series already says.
+func segmentIsSeriesOnly(seg string, forms []string) bool {
+	hit := false
+	s := seg
+	for _, f := range forms {
+		before := s
+		s = removeFoldBounded(s, f)
+		if s != before {
+			hit = true
+		}
+	}
+	if !hit {
+		return false
+	}
+	for _, w := range identityWords(stripVolumePhrases(s)) {
+		if significantToken(w) && !packagingWord[w] {
+			return false
+		}
+	}
+	return true
+}
+
+// dropTrailingSeriesSegment drops the earliest trailing segment that is series-only -
+// the "<title>: <Series>, Book N" shape.
+//
+// THE SEPARATOR DECIDES how much evidence is needed, and it is the whole difference
+// between a catalogue tail and a title. A colon or a dash introduces a SUBTITLE, and
+// a subtitle that is only the series name is decoration - "Hammered: The Iron Druid
+// Chronicles, Book 3". A COMMA can be an apposition inside the sentence the title is:
+// "Look Out, Secret Seven" is Enid Blyton's actual title and "Lights Out, Full
+// Throttle" is a real one, and both were being stripped to their first half. After a
+// comma the segment must also state a volume or call itself a collection.
+func dropTrailingSeriesSegment(t string, forms []string) string {
+	for _, off := range sepOffsets(t) {
+		if off <= 0 {
+			continue
+		}
+		head, tail := tidyTitle(t[:off]), t[off:]
+		if head == "" || !segmentIsSeriesOnly(tail, forms) {
+			continue
+		}
+		if strings.HasPrefix(tail, ", ") && !hasVolumeMarker(tail) && !hasCollectionWord(tail) {
+			continue
+		}
+		return head
+	}
+	return t
+}
+
+// hasCollectionWord reports whether a text calls itself a collection or an omnibus.
+//
+// It reads collectionWord, NOT the whole packaging vocabulary. The wider list holds
+// generic words that a real title uses ("full" is in it for "A Full Cast
+// Dramatization"), and "Lights Out, Full Throttle" - a genuine title whose trailing
+// segment happens to name a series - was stripped to "Lights Out" because "full"
+// counted as packaging. Announcing a collection is a much narrower claim.
+func hasCollectionWord(s string) bool {
+	if boxSetPhrase.MatchString(s) {
+		return true
+	}
+	for _, w := range identityWords(s) {
+		if collectionWord[w] {
+			return true
+		}
+	}
+	return false
+}
+
+// dropLeadingSeriesSegment drops the SHORTEST leading segment that is series-only -
+// the "<Series>: <title>" shape. Shortest on purpose: a longer head is a superset
+// and dropping it would risk eating the book's own words.
+//
+// It refuses entirely when a LATER segment states a volume, because then the tail is
+// the catalogue's series reference and the head is the book's own title - the
+// opposite assignment. "Fate of the Fallen: The Song of the Tears, Book 1" was
+// reduced to "The Song of the Tears", keeping the series and throwing the book away,
+// and "The Faraway Paladin: Volume Three Secundus" to "Volume Three Secundus". A
+// volume marker is what says which side of the separator the catalogue is on.
+func dropLeadingSeriesSegment(t string, forms []string) string {
+	offs := sepOffsets(t)
+	for _, off := range offs {
+		if off <= 0 || !segmentIsSeriesOnly(t[:off], forms) {
+			continue
+		}
+		rest := tidyTitle(t[off:])
+		// A BARE volume marker (one outside any bracketed group) is what says the
+		// tail is the catalogue's series reference. A marker inside brackets is just
+		// a volume: "The Last Apprentice: Curse of the Bane (Book 2)" is the leading
+		// shape working correctly.
+		if rest == "" || hasBareVolumeMarker(rest) {
+			continue
+		}
+		return rest
+	}
+	return t
+}
+
+// dropSeriesBracketGroup drops a bracketed group whose contents are series-only.
+// A bracketed group IS a boundary, so this needs no separator.
+func dropSeriesBracketGroup(t string, forms []string) string {
+	for _, loc := range parenGroup.FindAllStringIndex(t, -1) {
+		inner := t[loc[0]+1 : loc[1]-1]
+		if !segmentIsSeriesOnly(inner, forms) {
+			continue
+		}
+		if out := tidyTitle(t[:loc[0]] + " " + t[loc[1]:]); out != "" {
+			return out
+		}
+	}
+	return t
+}
+
+// stripSeriesAtBoundary removes the series name only where it forms a whole segment
+// or a whole bracketed group.
+func stripSeriesAtBoundary(title string, forms []string) string {
+	return peel(title, func(t string) string {
+		if next := dropSeriesBracketGroup(t, forms); next != t {
+			return next
+		}
+		if next := dropTrailingSeriesSegment(t, forms); next != t {
+			return next
+		}
+		return dropLeadingSeriesSegment(t, forms)
+	})
+}
+
+// dropDecorativeGroups removes only the bracketed groups that are DECORATION: an
+// edition marker, a group made of nothing but packaging vocabulary and numbers, or
+// one that is series-only. Every other group stays.
+//
+// The comparison key (Clean) removes every bracketed group, through the copied
+// matchNoise, and for a key that is right - two titles that differ only inside
+// brackets are worth comparing. For a PROPOSAL it is wrong: "Calming Nature Sounds
+// (without music) for Deep Sleep" says something inside those brackets, and a
+// retitle that drops it changes what the record claims.
+func dropDecorativeGroups(s string, forms []string) string {
+	return peel(s, func(t string) string {
+		// The trailing SQUARE-bracket group first, and through its OWN span: it is
+		// decoration whatever it holds (it restates the title in another language),
+		// and parenGroup's character class stops at the first closer, so removing it
+		// through that span leaves an orphan bracket behind and then dropStrayBrackets
+		// strips a legitimate "(IV)" out of the title as collateral.
+		if loc := bracketSuffixRE.FindStringIndex(t); loc != nil {
+			if out := tidyTitle(t[:loc[0]]); out != "" {
+				return out
+			}
+		}
+		for _, loc := range parenGroup.FindAllStringIndex(t, -1) {
+			inner := t[loc[0]+1 : loc[1]-1]
+			decorative := importer.HasEditionMarker(t[loc[0]:loc[1]]) ||
+				segmentIsSeriesOnly(inner, forms) ||
+				namesNoBook(inner) ||
+				// "(Mundodisco 9)" - a name followed by a bare number is a series
+				// and its volume, whether or not the catalogue holds that series.
+				endsInBareNumber(inner)
+			if !decorative {
+				continue
+			}
+			if out := tidyTitle(t[:loc[0]] + " " + t[loc[1]:]); out != "" {
+				return out
+			}
+		}
+		return t
+	})
+}
+
+// namesNoBook reports whether a text, once its volume markers are removed, holds
+// nothing but packaging vocabulary - "(Book 2)", "(Unabridged Edition)", "(Books
+// 1-3)", "(Complete Collection)". A group that reduces to nothing at all counts: it
+// was only a volume marker.
+//
+// It requires the text to have held SOME alphanumeric content, so an empty group is
+// not "decorative" by vacuity.
+func namesNoBook(s string) bool {
+	if !hasAlnum(s) {
+		return false
+	}
+	for _, w := range identityWords(stripVolumePhrases(s)) {
+		if significantToken(w) && !packagingWord[w] {
+			return false
+		}
+	}
+	return true
+}
+
+func hasAlnum(s string) bool {
+	for _, r := range s {
+		if isAlnumRune(r) {
+			return true
+		}
+	}
+	return false
+}
+
+// danglingLead are the words a residual must not BEGIN with: conjunctions and
+// prepositions, which only ever join something to something else, so one at the
+// front means the thing before it was cut away ("und die grosse Liebe"). Articles
+// are deliberately absent - "The Jungle" is a title.
+var danglingLead = map[string]bool{
+	"and": true, "or": true, "nor": true, "of": true, "in": true, "on": true,
+	"for": true, "with": true, "to": true, "at": true, "by": true, "from": true,
+	"und": true, "oder": true, "mit": true, "von": true, "y": true, "et": true,
+	"e": true, "och": true, "con": true, "avec": true, "van": true, "di": true,
+	"da": true, "des": true, "du": true,
+}
+
+// hasDanglingConnective reports whether a residual reads as a fragment: it begins
+// with a joining word, ends with any stopword or joining word, or holds a doubled
+// function word ("The the Wandering Trader", the shape a stripped series name leaves
+// when the title spelled its article too).
+func hasDanglingConnective(s string) bool {
+	ws := strings.FieldsFunc(strings.ToLower(s), notAlnum)
+	if len(ws) == 0 {
+		return true
+	}
+	if danglingLead[ws[0]] {
+		return true
+	}
+	last := ws[len(ws)-1]
+	if titleStopwords[last] || danglingLead[last] {
+		return true
+	}
+	for i := 1; i < len(ws); i++ {
+		if ws[i] == ws[i-1] && (titleStopwords[ws[i]] || danglingLead[ws[i]]) {
+			return true
+		}
+	}
+	return false
+}
+
+// SameModuloArticles reports whether two texts are the same name once articles and
+// punctuation are set aside. A work whose title IS its series' name has nothing to
+// propose: the "decoration" is the whole title.
+func SameModuloArticles(a, b string) bool {
+	return CompareKey(a) != "" && CompareKey(a) == CompareKey(b)
+}
+
+// ProposeTitle is the title a retitle would WRITE, and whether proposing one is
+// safe at all. series may be "".
+//
+// It refuses rather than guessing, in five cases, each measured:
+//
+//   - nothing changed, or the change empties the title;
+//   - the residual names no book (CarriesIdentity, multilingual) - "Book One",
+//     "- Band 5", "Las", "2". Judged on the RESIDUAL ALONE: a guard that also
+//     required the ORIGINAL to carry identity let every all-fluff title through,
+//     which is precisely where the degenerate proposals came from;
+//   - the residual reads as a fragment (hasDanglingConnective);
+//   - the title IS the series name modulo articles, so the whole title would go;
+//   - the residual is longer than what it came from, which cannot be a cleanup.
+func ProposeTitle(title, series string) (string, bool) {
+	orig := strings.TrimSpace(title)
+	s := dropWideGenreSubtitle(orig)
+	if series != "" {
+		if SameModuloArticles(orig, series) {
+			return "", false
+		}
+		s = stripSeriesAtBoundary(s, SeriesForms(series))
+	}
+	s = dropDecorativeGroups(s, SeriesForms(series))
+	s = tidyTitle(markerSeq.ReplaceAllString(s, " "))
+	s = tidyTitle(wordVolumeMarker.ReplaceAllString(s, " "))
+	s = tidyTitle(fluffWords.ReplaceAllString(s, " "))
+	s = dropStrayBrackets(s)
+	s = collapseSeparatorRuns(s)
+	s = peel(s, dropDanglingHeadOnce)
+	s = peel(s, dropDanglingTailOnce)
+	s = trimStopwordTail(s)
+
+	switch {
+	case s == "" || s == orig || len(s) > len(orig):
+		return "", false
+	case !CarriesIdentity(s), hasDanglingConnective(s):
+		return "", false
+	case series != "" && SameModuloArticles(s, series):
+		// The RESULT is the series' name. "Scarlet and Ivy: Audio Collection Books
+		// 1-3" reduces to "Scarlet and Ivy", which is what the series is called, so
+		// the collection would become indistinguishable from the series itself. The
+		// same test on the original catches only the titles that were already the
+		// series name; this one catches the ones the strip turns into it.
+		return "", false
+	}
+	return s, true
 }
 
 // ---- decoration detectors ----------------------------------------------------
@@ -610,7 +1124,77 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 	if FoldKey(name) == FoldKey(m[1]+" "+head) {
 		return "", "", "", false
 	}
+	// A REST that carries a volume marker is the series reference, which makes the
+	// HEAD the book's own title - the opposite assignment. "A Grim Awakening: The
+	// Forest of Hollow, Book 1" would otherwise be proposed as "The Forest of
+	// Hollow", dropping the book's title and keeping the series. Which of the two
+	// segments is the series is then genuinely ambiguous, so the rule declines.
+	if hasVolumeMarker(tail) {
+		return "", "", "", false
+	}
 	return m[1], head, tail, true
+}
+
+// wordVolumeMarker matches a volume marker spelled with a word rather than a digit
+// ("Book Two", "Part One"), which markerSeq cannot see because it requires \d.
+var wordVolumeMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?)\s+` +
+	`(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|i{1,3}|iv|v|vi{1,3}|ix|x)\b`)
+
+// hasVolumeMarker reports whether a text states a volume, in digits or in words.
+func hasVolumeMarker(s string) bool {
+	return markerSeq.MatchString(s) || wordVolumeMarker.MatchString(s)
+}
+
+// hasBareVolumeMarker reports a volume marker OUTSIDE any bracketed group. The
+// distinction decides which side of a separator the catalogue is on: a bare ", Book
+// 1" marks the tail as the series reference, while a bracketed "(Book 2)" is only a
+// volume on a title that is otherwise the book's own.
+func hasBareVolumeMarker(s string) bool {
+	return hasVolumeMarker(parenGroup.ReplaceAllString(s, " "))
+}
+
+// HasVolumeMarker is hasVolumeMarker's exported door, for a caller judging whether a
+// title states its own position.
+func HasVolumeMarker(s string) bool { return hasVolumeMarker(s) }
+
+// endsInBareNumber reports whether a text's last significant token is a plain
+// number - the "(Mundodisco 9)", "(Discworld 9)" shape, where a bracketed group
+// states a series and its volume with no keyword between them.
+func endsInBareNumber(s string) bool {
+	ws := identityWords(s)
+	for i := len(ws) - 1; i >= 0; i-- {
+		if len(ws[i]) == 0 {
+			continue
+		}
+		return isAllDigits(ws[i]) && i > 0
+	}
+	return false
+}
+
+// StatesSeriesAndVolume reports whether a title states the series reference in the
+// explicit boundary shape "<...>: <Series>, Book N" - a whole trailing segment made
+// of the series name and a volume marker, and nothing else.
+//
+// That shape is CORROBORATION. A series name is often two ordinary words, and a
+// title merely containing them is a coincidence as often as a fact; a title that
+// hangs the name and its number off a separator is stating a membership. It is the
+// same segment test the boundary strip uses, with the volume marker required rather
+// than merely tolerated.
+func StatesSeriesAndVolume(title, series string) bool {
+	if series == "" {
+		return false
+	}
+	forms := SeriesForms(series)
+	for _, off := range sepOffsets(title) {
+		if off <= 0 {
+			continue
+		}
+		tail := title[off:]
+		if hasVolumeMarker(tail) && segmentIsSeriesOnly(tail, forms) && tidyTitle(title[:off]) != "" {
+			return true
+		}
+	}
+	return false
 }
 
 // ---- slug shape predicates ---------------------------------------------------
@@ -753,18 +1337,34 @@ func oneInsertion(short, long string) bool {
 // It lives here, in values rather than in catalogue lookups, so the reporting pass
 // and the repair pass that acts on its report rank identically. A ladder spelled
 // twice is a repair that keeps the record the report did not name.
+//
+// THE ORDER IS THE ARGUMENT. What survives a merge should be the most canonical
+// RECORD, because everything else MOVES onto it - recordings, sidecars and series
+// memberships are all re-pointed by the repair. So the rungs that describe the
+// record itself come first (is it modeled, is its title clean) and the rungs that
+// describe what hangs off it come last.
+//
+// The first draft had HasSidecar second, above Recordings, and it picked "The Secret
+// Garden (Dramatized)" - one recording, one sidecar - over the clean "The Secret
+// Garden" with forty-one. A sidecar is a REASON TO BE CAREFUL (REF-SIDECAR reports
+// exactly that) and not a reason to survive.
 type WorkRank struct {
-	// InSeries: the work already has a series membership - it is the modeled one.
+	// InSeries: the work already has a series membership - it is the modeled one,
+	// and its memberships are the ones that would not have to move.
 	InSeries bool
-	// HasSidecar: a spoiler-gated works-community entry is keyed by this slug, and
-	// re-pointing one is the expensive, human-judgement move.
-	HasSidecar bool
-	// Recordings is how many recordings hang off the work.
-	Recordings int
 	// Decorations is how many retailer decorations its title carries (fewer wins).
+	// Above Recordings on purpose: the survivor's title is what every consumer
+	// sees, and a clean title cannot be recovered by moving anything.
 	Decorations int
-	// TitleLen is its title's length in bytes (shorter wins).
+	// TitleLen is its title's length in bytes (shorter wins) - the tiebreak between
+	// two equally undecorated titles.
 	TitleLen int
+	// Recordings is how many recordings hang off the work. They move with the
+	// merge, so this only breaks a tie between equally canonical records.
+	Recordings int
+	// HasSidecar: a works-community entry is keyed by this slug. It moves too, so
+	// it ranks last but one.
+	HasSidecar bool
 	// ID breaks every remaining tie, so the choice never depends on input order.
 	ID string
 }
@@ -775,14 +1375,14 @@ func (r WorkRank) Better(o WorkRank) bool {
 	switch {
 	case r.InSeries != o.InSeries:
 		return r.InSeries
-	case r.HasSidecar != o.HasSidecar:
-		return r.HasSidecar
-	case r.Recordings != o.Recordings:
-		return r.Recordings > o.Recordings
 	case r.Decorations != o.Decorations:
 		return r.Decorations < o.Decorations
 	case r.TitleLen != o.TitleLen:
 		return r.TitleLen < o.TitleLen
+	case r.Recordings != o.Recordings:
+		return r.Recordings > o.Recordings
+	case r.HasSidecar != o.HasSidecar:
+		return r.HasSidecar
 	default:
 		return r.ID < o.ID
 	}

@@ -108,12 +108,27 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 			// Grammatical but not the canonical spelling: a position is a STRING,
 			// so two spellings of one number are two different positions to every
 			// rule that compares them.
+			//
+			// On a RANGE the canonical spelling is not safe to propose. The
+			// normalization trims fractional zeros, which is right for a scalar
+			// ("0.50" is 0.5) and DESTRUCTIVE across a range: "2.1-2.10" becomes
+			// "2.1-2.1", collapsing a ten-episode span to one slot. Such a position
+			// is the known season/episode modeling ambiguity - S-INTEGRITY already
+			// reports it as malformed-position below - so here it is a review with
+			// no rewrite attached.
 			if norm != sw.Position {
 				fd := member(sNonCanonical)
 				fd.Propose = Proposal{
 					Op: OpRestatePosition, Target: sw.Work, Series: s.ID, Field: "position",
 					From: sw.Position, To: norm,
 					Reason: "a position is a string, so a non-canonical spelling is a different position to every rule that compares them",
+				}
+				if strings.Contains(norm, "-") {
+					fd.Propose.Op = OpReview
+					fd.Propose.To = ""
+					fd.Propose.Advisory = true
+					fd.Propose.Reason = "a RANGE cannot be recanonicalized mechanically: trimming fractional zeros would turn " +
+						`"2.1-2.10" into "2.1-2.1" and collapse the span. Decide what the two bounds mean first`
 				}
 				f.add(fd)
 			}

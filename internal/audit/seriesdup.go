@@ -90,17 +90,82 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 		}
 	}
 	fd.Propose = Proposal{
-		Op:       OpMergeSeries,
-		Target:   best.ID,
-		Others:   others,
-		Advisory: sub == serDupSaga,
-		Reason:   reason,
+		Op:     OpMergeSeries,
+		Target: best.ID,
+		Others: others,
+		Reason: reason,
 	}
+	vetoes := seriesMergeVetoes(ix, group)
 	if sub == serDupSaga {
+		vetoes = append([]string{reason}, vetoes...)
+	}
+	if len(vetoes) > 0 {
 		fd.Propose.Op = OpReview
+		fd.Propose.Advisory = true
+		fd.Propose.Reason = "do not fold on this evidence: " + truncateList(vetoes, 4)
 	}
 	fd.Notes = []string{"spellings: " + truncateList(sortedUnique(names), 8)}
 	return fd
+}
+
+// seriesMergeVetoes lists the reasons two same-looking series must not be folded
+// mechanically. Each one was a wrong proposal.
+func seriesMergeVetoes(ix *index, group []seriesKeys) []string {
+	var out []string
+
+	// LANGUAGE, the same rule W-DUP has and for the same reason: a French and a
+	// Polish series are not the English one spelled differently. Each series'
+	// language is the majority language of its member works, and an unknown one
+	// never separates anything.
+	var langs []string
+	var owners []string
+	for _, k := range group {
+		if l := ix.seriesLanguage(k.series); l != "" {
+			langs = append(langs, l)
+			owners = append(owners, k.series.ID+" ("+l+")")
+		}
+	}
+	if len(sortedUnique(langs)) > 1 {
+		out = append(out, "the members' works are in different languages ("+truncateList(sortedUnique(owners), 4)+
+			"): a translation is a different series")
+	}
+
+	// COLLECTION vs BOOK SERIES: "Pack Collection" beside "The Pack" is a series of
+	// collections and a series of books, and folding them would put an omnibus in a
+	// volume's slot.
+	var coll, plain []string
+	for _, k := range group {
+		if titlerule.IsCollection(k.series.Name) {
+			coll = append(coll, k.series.ID)
+		} else {
+			plain = append(plain, k.series.ID)
+		}
+	}
+	if len(coll) > 0 && len(plain) > 0 {
+		out = append(out, truncateList(coll, 3)+" name a collection and "+truncateList(plain, 3)+
+			" do not: a series of collections is not the same series as the books it collects")
+	}
+
+	// PARENTHETICAL decoration is SER-PAREN's whole subject: a parenthetical is
+	// often a deliberate alternative ordering ("Ascend Online [chronological]" beside
+	// "[publication order]") or an author disambiguator that five different
+	// "Atlantis" series depend on. Two decorated members are two orderings, and a
+	// fold that ERASES a decoration erases the thing telling them apart.
+	var decorated []string
+	for _, k := range group {
+		if k.paren {
+			decorated = append(decorated, k.series.ID)
+		}
+	}
+	switch {
+	case len(decorated) >= 2:
+		out = append(out, truncateList(decorated, 4)+" are all parenthetical-decorated: that decoration is what tells them "+
+			"apart (an alternative ordering, or an author disambiguator) - see SER-PAREN")
+	case len(decorated) == 1:
+		out = append(out, decorated[0]+" is parenthetical-decorated and the others are not: folding it would erase the "+
+			"decoration that distinguishes it - see SER-PAREN")
+	}
+	return out
 }
 
 // detectSeriesParen reports series names carrying a parenthetical decoration. It

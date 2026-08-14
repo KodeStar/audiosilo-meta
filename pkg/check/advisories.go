@@ -426,16 +426,6 @@ func AdvisoryClass(w Problem) string {
 	return AdvisoryUnclassified
 }
 
-// AdvisoryClasses lists the classes in census order, for a consumer that wants a
-// stable ordering without hard-coding the names.
-func AdvisoryClasses() []string {
-	out := make([]string, 0, len(advisoryMarkers))
-	for _, m := range advisoryMarkers {
-		out = append(out, m.class)
-	}
-	return out
-}
-
 // AdvisoryCensus renders the one-line count metacheck prints under the
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.

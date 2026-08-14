@@ -7,7 +7,6 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -46,6 +45,12 @@ type index struct {
 	// positionKey so "02" and "2" are one slot and a range is not a slot at
 	// all. It answers the "the title says volume N" lookup.
 	positions map[string]map[string]string
+
+	// seriesByAuthor maps a person id to the series holding a work they authored,
+	// sorted and deduplicated. It is what lets a series name found inside a title
+	// be checked against the book's own authorship rather than taken on the words
+	// alone - a series name is often two ordinary words.
+	seriesByAuthor map[string][]string
 
 	// derivedCache memoizes the per-work title derivation. Four detectors ask for
 	// it and the answer costs a series-name lookup, a clean and a volume probe, so
@@ -122,6 +127,31 @@ func newIndex(cat *model.Catalog) *index {
 	}
 	for _, r := range cat.Recaps {
 		ix.sidecars[r.Work] = append(ix.sidecars[r.Work], "recaps")
+	}
+	// Which series each author has works in, from the memberships just built.
+	byAuthor := map[string]map[string]bool{}
+	for _, s := range cat.Series {
+		for _, sw := range s.Works {
+			w := ix.workByID[sw.Work]
+			if w == nil {
+				continue
+			}
+			for _, a := range w.Authors {
+				if byAuthor[a] == nil {
+					byAuthor[a] = map[string]bool{}
+				}
+				byAuthor[a][s.ID] = true
+			}
+		}
+	}
+	ix.seriesByAuthor = make(map[string][]string, len(byAuthor))
+	for a, set := range byAuthor {
+		ids := make([]string, 0, len(set))
+		for sid := range set {
+			ids = append(ids, sid)
+		}
+		sort.Strings(ids)
+		ix.seriesByAuthor[a] = ids
 	}
 	ix.seriesNameIdx = newSeriesNameIndex(cat.Series)
 	return ix
@@ -202,7 +232,7 @@ func (ix *index) workBrief(w *model.Work) WorkRef {
 func (ix *index) workRef(w *model.Work, cleaned string) WorkRef {
 	ref := ix.workBrief(w)
 	ref.Cleaned = cleaned
-	var nars, asins []string
+	var nars, asins, pubs, dates []string
 	var runtimes []int
 	for _, r := range w.Recordings {
 		nars = append(nars, r.Narrators...)
@@ -212,11 +242,102 @@ func (ix *index) workRef(w *model.Work, cleaned string) WorkRef {
 		if r.RuntimeMin > 0 {
 			runtimes = append(runtimes, r.RuntimeMin)
 		}
+		pubs = append(pubs, r.Publisher)
+		for _, p := range r.Publishers {
+			pubs = append(pubs, p.Publisher)
+		}
+		dates = append(dates, r.ReleaseDate)
 	}
 	ref.Narrators = sortedUnique(nars)
 	ref.ASINs = sortedUnique(asins)
 	ref.RuntimeMin = sortedInts(runtimes)
+	ref.Publishers = sortedUnique(pubs)
+	ref.ReleaseDates = sortedUnique(dates)
 	return ref
+}
+
+// longestRuntime is a work's longest recording runtime, or 0 when none states one.
+// The LONGEST rather than an average: a work holding an abridgement beside the full
+// text would otherwise look shorter than it is, and the runtime veto asks "could
+// this be the same book at all".
+func longestRuntime(w *model.Work) int {
+	most := 0
+	for _, r := range w.Recordings {
+		if r.RuntimeMin > most {
+			most = r.RuntimeMin
+		}
+	}
+	return most
+}
+
+// positionSpans returns a work's series memberships as spans, keyed by series id: the
+// numeric range each membership occupies, so a single position and an omnibus range
+// are comparable. A membership whose position does not parse is skipped - it is
+// S-INTEGRITY's finding, not evidence here.
+func (ix *index) positionSpans(workID string) map[string][2]float64 {
+	out := map[string][2]float64{}
+	for _, m := range ix.memberships[workID] {
+		norm, ok := importer.NormalizeSequence(m.position)
+		if !ok {
+			continue
+		}
+		lo, hi, ok := model.ParsePositionRange(norm)
+		if !ok {
+			continue
+		}
+		out[m.series] = [2]float64{lo, hi}
+	}
+	return out
+}
+
+// seriesIDs is the set of series a work belongs to.
+func (ix *index) seriesIDs(workID string) map[string]bool {
+	out := make(map[string]bool, len(ix.memberships[workID]))
+	for _, m := range ix.memberships[workID] {
+		out[m.series] = true
+	}
+	return out
+}
+
+// seriesSpan is the lowest and highest numeric position a series holds, and whether
+// it holds any. It is what makes a position derived from a TITLE checkable: a series
+// running 1..12 cannot have a volume 2140.
+func (ix *index) seriesSpan(seriesID string) (lo, hi float64, ok bool) {
+	s := ix.seriesByID[seriesID]
+	if s == nil {
+		return 0, 0, false
+	}
+	for _, sw := range s.Works {
+		norm, valid := importer.NormalizeSequence(sw.Position)
+		if !valid {
+			continue
+		}
+		a, b, valid := model.ParsePositionRange(norm)
+		if !valid {
+			continue
+		}
+		if !ok || a < lo {
+			lo = a
+		}
+		if !ok || b > hi {
+			hi = b
+		}
+		ok = true
+	}
+	return lo, hi, ok
+}
+
+// authorSeriesIDs is every series that holds a work by any of these authors - the
+// evidence that a series name found in a title is this book's series and not a
+// coincidence of words.
+func (ix *index) authorSeriesIDs(authors []string) map[string]bool {
+	out := map[string]bool{}
+	for _, a := range authors {
+		for _, sid := range ix.seriesByAuthor[a] {
+			out[sid] = true
+		}
+	}
+	return out
 }
 
 // worksBrief cites a list of work ids, silently skipping the ones the catalogue
@@ -287,48 +408,6 @@ func strictMajority(counts map[string]int) string {
 		return ""
 	}
 	return best
-}
-
-// sameIdentity reports whether two works are ONE work under the project's identity
-// rule, through pkg/check's exported restatement of it
-// (IdentityEqualWorks -> the importer's matchWork, drift-guarded on the importer
-// side).
-//
-// It replaces an exact author-SET equality, which structurally missed the shape the
-// identity rule exists for: a work forks in two when one edition lists a
-// contributor in its author column and another lists them as a role credit, so
-// "le-sang-des-elfes" and "le-sang-des-elfes-andrzej-sapkowski" are one book whose
-// author lists are NOT equal. There were ~381 such pairs in the seeded tree, and an
-// audit whose duplicate rule disagreed with the importer's own identity rule about
-// what one work is would be reporting against a definition nothing else uses.
-func sameIdentity(a, b *model.Work) bool { return check.IdentityEqualWorks(a, b) }
-
-// identityKey groups works that COULD be identity-equal cheaply, so the pairwise
-// rule above is only asked inside a group. It is the author set with every
-// role-credited contributor removed - the reduced set the identity rule compares -
-// so a work and its fork land together, and it is deliberately not a substitute for
-// the pairwise test (nested sets can differ and still match).
-func identityKey(w *model.Work) string {
-	if len(w.Credits) == 0 {
-		return strings.Join(sortedUnique(w.Authors), "+")
-	}
-	credited := make(map[string]bool, len(w.Credits))
-	for _, c := range w.Credits {
-		credited[c.Person] = true
-	}
-	kept := make([]string, 0, len(w.Authors))
-	for _, a := range w.Authors {
-		if !credited[a] {
-			kept = append(kept, a)
-		}
-	}
-	if len(kept) == 0 {
-		// Every author is role-credited: the identity rule falls back to the whole
-		// list, and so must the key, or the work would group with every other
-		// authorless one.
-		return strings.Join(sortedUnique(w.Authors), "+")
-	}
-	return strings.Join(sortedUnique(kept), "+")
 }
 
 // languagesCompatible mirrors pkg/check's rule of the same name (and the

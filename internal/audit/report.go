@@ -220,8 +220,14 @@ func sampleLine(r Finding) string {
 	if p.Op != OpNone && p.Op != OpReview {
 		parts = append(parts, "`"+p.Op+"`")
 	}
-	if p.Target != "" && p.Op == OpMergeWorks || p.Op == OpMergeSeries {
+	// Parenthesized: && binds tighter than ||, so the unparenthesized form read as
+	// "(Target != "" && Op == merge-works) || Op == merge-series" and would have
+	// rendered "keep ``" for a series merge with no target.
+	if p.Target != "" && (p.Op == OpMergeWorks || p.Op == OpMergeSeries) {
 		parts = append(parts, "keep `"+p.Target+"`")
+	}
+	if p.Advisory {
+		parts = append(parts, "ADVISORY")
 	}
 	return strings.Join(parts, " - ")
 }

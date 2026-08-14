@@ -323,21 +323,27 @@ func TestMarkedNameKeyIsTheImportersRule(t *testing.T) {
 
 func TestWorkRankLadder(t *testing.T) {
 	base := WorkRank{ID: "b"}
-	// Each rung beats everything below it.
-	if !(WorkRank{InSeries: true, ID: "z"}).Better(WorkRank{HasSidecar: true, Recordings: 9, ID: "a"}) {
-		t.Error("a series membership must outrank a sidecar and recordings")
+	// Each rung beats everything below it. The order is the argument: what survives
+	// a merge should be the most canonical RECORD, because everything else moves
+	// onto it.
+	if !(WorkRank{InSeries: true, Decorations: 9, ID: "z"}).Better(WorkRank{Recordings: 99, HasSidecar: true, ID: "a"}) {
+		t.Error("a series membership must outrank everything below it")
 	}
-	if !(WorkRank{HasSidecar: true, ID: "z"}).Better(WorkRank{Recordings: 9, ID: "a"}) {
-		t.Error("a sidecar must outrank recordings")
+	if !(WorkRank{Decorations: 0, ID: "z"}).Better(WorkRank{Decorations: 1, Recordings: 99, ID: "a"}) {
+		t.Error("fewer decorations must outrank more recordings: a clean title cannot be recovered by moving anything")
 	}
-	if !(WorkRank{Recordings: 2, ID: "z"}).Better(WorkRank{Recordings: 1, Decorations: 0, ID: "a"}) {
-		t.Error("more recordings must win")
+	if !(WorkRank{TitleLen: 3, ID: "z"}).Better(WorkRank{TitleLen: 9, Recordings: 99, ID: "a"}) {
+		t.Error("a shorter title must outrank more recordings")
 	}
-	if !(WorkRank{Decorations: 0, ID: "z"}).Better(WorkRank{Decorations: 1, ID: "a"}) {
-		t.Error("fewer decorations must win")
+	if !(WorkRank{Recordings: 2, ID: "z"}).Better(WorkRank{Recordings: 1, HasSidecar: true, ID: "a"}) {
+		t.Error("more recordings must outrank a sidecar")
 	}
-	if !(WorkRank{TitleLen: 3, ID: "z"}).Better(WorkRank{TitleLen: 9, ID: "a"}) {
-		t.Error("a shorter title must win")
+	// The regression this order exists for: one recording plus a sidecar must NOT
+	// beat forty-one recordings with the same clean title.
+	dramatized := WorkRank{Decorations: 0, TitleLen: len("The Secret Garden (Dramatized)"), Recordings: 1, HasSidecar: true, ID: "a"}
+	clean := WorkRank{Decorations: 0, TitleLen: len("The Secret Garden"), Recordings: 41, ID: "z"}
+	if !clean.Better(dramatized) || dramatized.Better(clean) {
+		t.Error("a sidecar on a decorated one-recording record must not win the merge target")
 	}
 	// The id is the last resort, so the answer never depends on input order.
 	if !(WorkRank{ID: "a"}).Better(base) || (base).Better(WorkRank{ID: "a"}) {

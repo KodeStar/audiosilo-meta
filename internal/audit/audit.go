@@ -116,11 +116,11 @@ func checkOutDir(opts Options) error {
 	if opts.OutDir == "" {
 		return fmt.Errorf("audit: no output directory")
 	}
-	data, err := filepath.Abs(opts.DataDir)
+	data, err := resolvePath(opts.DataDir)
 	if err != nil {
 		return fmt.Errorf("audit: resolve %s: %w", opts.DataDir, err)
 	}
-	out, err := filepath.Abs(opts.OutDir)
+	out, err := resolvePath(opts.OutDir)
 	if err != nil {
 		return fmt.Errorf("audit: resolve %s: %w", opts.OutDir, err)
 	}
@@ -133,6 +133,38 @@ func checkOutDir(opts Options) error {
 			"so point -o somewhere else", opts.OutDir, opts.DataDir)
 	}
 	return nil
+}
+
+// resolvePath is the absolute, SYMLINK-RESOLVED form of a path, which is what the
+// containment test has to compare: a link outside the tree pointing into it defeats
+// a lexical comparison entirely, and pointing -o at such a link would put the report
+// in data/ with the guard none the wiser.
+//
+// A path that does not exist yet is resolved as far as it exists - the report
+// directory is normally created BY the run, so "not there yet" must not be an error.
+func resolvePath(p string) (string, error) {
+	abs, err := filepath.Abs(p)
+	if err != nil {
+		return "", err
+	}
+	// Walk up to the first existing ancestor, resolve THAT, then re-append.
+	rest := ""
+	cur := abs
+	for {
+		resolved, err := filepath.EvalSymlinks(cur)
+		if err == nil {
+			return filepath.Join(resolved, rest), nil
+		}
+		if !os.IsNotExist(err) {
+			return "", err
+		}
+		parent := filepath.Dir(cur)
+		if parent == cur {
+			return abs, nil // nothing on the path exists; the lexical form is all there is
+		}
+		rest = filepath.Join(filepath.Base(cur), rest)
+		cur = parent
+	}
 }
 
 // analyze is Run without the I/O, which is what the tests drive.

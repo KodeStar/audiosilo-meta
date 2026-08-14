@@ -66,6 +66,11 @@ func recJSON(t testing.TB, id, work string, opts ...recOpt) string {
 		"added_at":  "2026-01-01",
 		"asin":      []map[string]string{{"region": "us", "asin": fixtureASIN(id)}},
 		"sources":   []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
+		// Publisher and release date are on every fixture recording because they
+		// are the evidence the duplicate classes cite: a reviewer separates a
+		// dramatized part-product from the plain edition by them.
+		"publisher":    "Fixture Audio",
+		"release_date": "2020-01-01",
 	}
 	for _, o := range opts {
 		o(m)
@@ -148,6 +153,31 @@ func withAddedAt(t testing.TB, record, value string) string {
 		t.Fatalf("withAddedAt: %v", err)
 	}
 	m["added_at"] = value
+	return mustJSON(t, m)
+}
+
+// withoutField deletes a field from a rendered record, for the fixtures that must
+// be SCHEMA-INVALID: the audit explicitly supports being pointed at a tree that does
+// not validate, and some rules can only be exercised there.
+func withoutField(t testing.TB, record, field string) string {
+	t.Helper()
+	var m map[string]any
+	if err := json.Unmarshal([]byte(record), &m); err != nil {
+		t.Fatalf("withoutField: %v", err)
+	}
+	delete(m, field)
+	return mustJSON(t, m)
+}
+
+// withCredits adds a role credit to a rendered work, which is what makes two works'
+// raw author lists differ while the identity rule still reduces them to one set.
+func withCredits(t testing.TB, record, person, role string) string {
+	t.Helper()
+	var m map[string]any
+	if err := json.Unmarshal([]byte(record), &m); err != nil {
+		t.Fatalf("withCredits: %v", err)
+	}
+	m["credits"] = []map[string]string{{"person": person, "role": role}}
 	return mustJSON(t, m)
 }
 

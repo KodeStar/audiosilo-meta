@@ -99,6 +99,12 @@ type WorkRef struct {
 	Narrators  []string `json:"narrators,omitempty"`
 	RuntimeMin []int    `json:"runtime_min,omitempty"`
 	ASINs      []string `json:"asins,omitempty"`
+	// Publishers and ReleaseDates are the recording-level provenance that
+	// separates the cases a title cannot: a dramatized part-product from the plain
+	// edition, a companion collection from the volume it collects. The repair pass
+	// needs them as evidence, and a reviewer needs them to judge a cluster at all.
+	Publishers   []string `json:"publishers,omitempty"`
+	ReleaseDates []string `json:"release_dates,omitempty"`
 	// Sidecar reports that the works-community family holds an entry for this
 	// work slug - which is what makes a duplicate cluster a spoiler hazard.
 	Sidecar bool `json:"sidecar,omitempty"`
