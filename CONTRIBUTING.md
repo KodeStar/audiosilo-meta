@@ -61,6 +61,7 @@ data/
   works-community/<dir>/<bound>.json  each entry = that work's characters + recaps
   people/<bound>.json                 each entry = a person
   series/<bound>.json                 each entry = a series
+  redirects.json                      retired slug -> live slug (not a pack)
 ```
 
 A pack is one JSON object, `{"entries": {"<slug>": {...}, ...}}`, holding a
@@ -85,6 +86,14 @@ a `"recordings"` map keyed by recording slug, so one book is one entry.
 - Works and recordings also carry an optional `added_at` - the date the record
   entered the database. The importer and the intake bot stamp it; leave it out
   of a hand-written record and it will simply be absent.
+- One file in `data/` is **not** a pack: `data/redirects.json`, the slug
+  *tombstone* table (`{"works": {"<retired-slug>": "<live-slug>"}, "people":
+  ..., "series": ...}`). When a repair merges two records for one book, the
+  retired slug is recorded there and the API answers it with a `301` at the
+  surviving record, so a URL or a stored id keeps working. You will not normally
+  touch it by hand: `metacheck` requires every source to be a slug the database
+  no longer holds, every target to be one it does, and no target to be a
+  redirect itself.
 
 **You never have to work out which pack a record goes in.** Add your entry to
 roughly the right file - or the wrong one - and run `go run ./cmd/metafmt
