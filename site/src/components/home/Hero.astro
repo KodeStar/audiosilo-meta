@@ -52,7 +52,7 @@ const examples = ['Project Hail Mary', 'Stephen Fry', 'The Stormlight Archive']
            search watches this element and reveals itself once it scrolls out of
            reach, so exactly one search field is ever within reach. -->
       <div class="mt-9 w-full" data-hero-search>
-        <SearchBox client:load examples={examples} />
+        <SearchBox client:load examples={examples} seedFromQuery />
       </div>
     </div>
   </div>
