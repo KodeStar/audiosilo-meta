@@ -5133,6 +5133,417 @@
         "work": "watership-down"
       }
     },
+    "way-to-the-west": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Hadjar's absent wife. Her life and that of their unborn child are threatened, making their safety his central obligation.",
+            "id": "hadjars-wife",
+            "name": "Hadjar's wife",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hadjar"
+            ],
+            "description": "A newly nameless cultivator carrying a fragment of the Black General. Summoned into the Demon Lands against his will, he faces a dangerous audience while the threatened lives of his wife and unborn child remain his central concern.",
+            "id": "hadjar-darkhan",
+            "name": "Hadjar Darkhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "one-eyed demon",
+              "nightmare-creature emissary"
+            ],
+            "description": "A one-eyed demon who brings Hadjar to an involuntary audience with the ruler of the Demon Lands. He fears his master and warns that a recent bargain has left Hadjar vulnerable.",
+            "id": "demon-princes-emissary",
+            "name": "The demon prince's emissary",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "personification of the Demon Lands"
+            ],
+            "description": "The overwhelming ruler and living personification of the Demon Lands. He receives Hadjar as a protected guest, though the audience remains dangerous.",
+            "id": "demon-prince",
+            "name": "The demon prince",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Abraham"
+            ],
+            "description": "A member of the party assembled in the Strange Lands to assist Hadjar's campaign against the Raven Sect.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Abraham's travelling companions, assembled with the party that will assist Hadjar against the Raven Sect.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham's party who joins the campaign against the Raven Sect.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham's travelling party who joins Hadjar's campaign against the Raven Sect.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alba"
+            ],
+            "description": "A dwarf warrior brought to the Strange Lands to assist Hadjar's party against the Raven Sect.",
+            "id": "alba-udun",
+            "name": "Alba Udun",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "ancient warrior fragment"
+            ],
+            "description": "An ancient warrior condemned by the Seventh Heaven after sealing the Verge and teaching cultivation to mortals. A fragment of his soul is imprisoned within Hadjar.",
+            "id": "black-general",
+            "name": "The Black General",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "sectarian",
+              "Black General fragment host"
+            ],
+            "description": "A powerful Raven Sect agent who holds another fragment of the Black General and commands hired mercenaries. He captures Guy at a prepared meeting site and proves experienced enough to place Hadjar's entire rescue attempt at risk.",
+            "id": "raven-sect-swordsman",
+            "name": "The Raven Sect swordsman",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ruler of the Winter Court. After the demon prince's emissary announces an approaching parade, she prepares her court for war and orders a message sent to a maker.",
+            "id": "winter-court-ruler",
+            "name": "The Winter Court ruler",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior power of the Seventh Heaven and an old adversary of the mortal wizard who visits him. The warning that a mysterious parade will begin convinces him that another war is approaching.",
+            "id": "god-of-war",
+            "name": "The god of war",
+            "reveal": {
+              "chapter": 14
+            }
+          },
+          {
+            "description": "An extraordinarily powerful mortal who once helped bind the Black General and remains hostile to the Seventh Heaven. He enters its domain to warn the god of war that a final general is already moving through the mortal lands.",
+            "id": "ancient-wizard",
+            "name": "The ancient wizard",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legendary figure in Abraham's uncertain account of the ruined marsh. The story attributes soul-splitting work, a death-bound army, and a devastating ancient campaign to him, as well as a bargain with the demon prince's emissary.",
+            "id": "potter",
+            "name": "The Potter",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient being bound to armor and awaiting a duel in the marsh. It faces Hadjar alone and displays sword mastery beyond his current understanding.",
+            "id": "ancient-armored-warrior",
+            "name": "The ancient armored warrior",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A supernatural messenger who appears after the marsh duel as Hadjar collapses from blood loss and exhaustion.",
+            "id": "fairy-messenger",
+            "name": "The fairy messenger",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An emperor who protects the fairy messenger's people from time in return for her service. He commands her to kill Hadjar when they meet on a future battlefield.",
+            "id": "fairy-messengers-emperor",
+            "name": "The fairy messenger's emperor",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Raven Sect operative who promises a healing potion and ritual to a desperate Star Rain delegation. He leads the critically injured heir and her guardian toward a concealed dark-priest temple while relying on mercenary protection.",
+            "id": "raven-sect-ritual-agent",
+            "name": "The Raven Sect ritual agent",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Star Rain heir"
+            ],
+            "description": "A sick young heir brought by the Star Rain delegation for a promised cure.",
+            "id": "star-rain-princess",
+            "name": "The Star Rain princess",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Star Rain commander who leads the effort to save the clan head's daughter and pays a Raven Sect agent for the proposed treatment.",
+            "id": "star-rain-commander",
+            "name": "The Star Rain commander",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unseen protector who calls Hadjar his disciple. He intervenes when the dark-priest sanctuary creature traps Hadjar in an ancient vision, confronting a threat that Hadjar cannot handle alone.",
+            "id": "hadjars-master",
+            "name": "Hadjar's master",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A divine authority who receives Hadjar after the sanctuary crisis. She gives him a blue ribbon meant to identify a matching light and distinguishes it from the corrupted token once supplied by Chin'Ameh.",
+            "id": "goddess-of-fate",
+            "name": "The goddess of fate",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the princess's father"
+            ],
+            "description": "The Star Rain princess's father and head of her clan. His reported illness and withdrawal after her disappearance have allowed his second wife and another daughter to assume control of the family manor.",
+            "id": "star-rain-clan-head",
+            "name": "The Star Rain clan head",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Star Rain clan head's second wife. She and the second princess govern the family manor during his reported illness, placing their faction in conflict with the returning heir.",
+            "id": "star-rain-clan-heads-second-wife",
+            "name": "The Star Rain clan head's second wife",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Heaven Emperor of Star Rain who recognizes the returning princess and refuses the second wife's command to kill her because his oath still binds him.",
+            "id": "star-rain-sixth-warrior",
+            "name": "The Star Rain sixth warrior",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the princess's grandmother"
+            ],
+            "description": "The Star Rain princess's grandmother and a senior clan authority. Her arrival checks the faction opposing the returning heir and restores the princess's standing within the manor.",
+            "id": "star-rain-clan-chief",
+            "name": "The Star Rain clan chief",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the enemy clan holding the Star Rain clan head after a dispute linked to tournament wagers. The captive gives her leverage over the Star Rain forces gathered outside her city.",
+            "id": "underground-whisper-clan-head",
+            "name": "The Underground Whisper Clan head",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified bard with two differently colored eyes who recognizes Hadjar's flying jade as connected to a fallen star and sings about the Mad General.",
+            "id": "two-colored-eyed-bard",
+            "name": "The two-colored-eyed bard",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The mortally frost-wounded leader of a devastated boar den. He challenges Hadjar to a duel and offers directions to the liquid-ice waterfall in return.",
+            "id": "boar-leader",
+            "name": "The boar leader",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A white-haired scout who appears with a companion and warns Hadjar's party away from a dangerous liquid-ice waterfall.",
+            "id": "white-haired-village-scout",
+            "name": "The white-haired village scout",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veiled figure who urges the ancient wizard to reclaim his throne and prepare for an approaching catastrophe. When the wizard refuses, the master removes him in fog.",
+            "id": "veiled-master",
+            "name": "The veiled master",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The white-haired leader of a stockaded settlement who confidently welcomes Hadjar's party as peaceful visitors.",
+            "id": "white-haired-village-chief",
+            "name": "The white-haired village chief",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "last ice wolf of the Nameless world"
+            ],
+            "description": "A Celestial-stage being revealed as the last ice wolf of the Nameless world. Hadjar is brought alone to its presence beside the liquid-ice waterfall.",
+            "id": "ice-wolf-shaman",
+            "name": "The ice-wolf shaman",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruler of the Seventh Heaven who appears in a memory of the Black General after the War of Heaven and Earth. He calls the general the realm's savior.",
+            "id": "jasper-emperor",
+            "name": "The Jasper Emperor",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mortal village healer who rescues the wounded, amnesiac former general and gives him the name Nameless. Her innate magic is connected to plants and wind.",
+            "id": "mortal-healer",
+            "name": "The mortal healer",
+            "reveal": {
+              "chapter": 65
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A divine visitor who offers to return Nameless to his former existence. Direct contact with him in mortal form would kill him.",
+            "id": "goddess-of-love",
+            "name": "The goddess of love",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "northern wind"
+            ],
+            "description": "An ancient power of the northern wind approached by the mortal Black General during a crisis. Boreas offers aid only in exchange for the general's unique instrument and warns that helping him may draw the god of war closer.",
+            "id": "boreas",
+            "name": "Boreas",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Star Rain fighter who reaches Hadjar's group inside enemy territory and reports that he survived the failed rescue attempt.",
+            "id": "young-star-rain-warrior",
+            "name": "The young Star Rain warrior",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A repeatedly reborn deity who retains his memories. The Jasper Emperor asks him to locate a mortal carrying a major fragment of the Black General, but he refuses to assist despite his far-reaching perception.",
+            "id": "sun-god",
+            "name": "The sun god",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BTFVRS53",
+            "type": "community"
+          }
+        ],
+        "work": "way-to-the-west"
+      }
+    },
     "waybound": {
       "characters": {
         "characters": [
