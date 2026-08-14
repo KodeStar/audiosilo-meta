@@ -289,6 +289,23 @@ describe('addCharactersIssueUrl / addRecapsIssueUrl', () => {
     expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
   })
 
+  // Every work link a HUMAN follows is now the path route (/works/{slug}), but
+  // work_ref is PARSED: internal/issueform's resolveWorkRef reads `?id=` and the
+  // data-tree path shape and would resolve /works/{slug} to nothing, refusing the
+  // submission. It stays on the legacy spelling, which metaserve 301s, until that
+  // parser learns the path route.
+  it('keep work_ref on the query form the intake bot can resolve', () => {
+    for (const url of [
+      addCharactersIssueUrl('a-deadly-education'),
+      addRecapsIssueUrl('a-deadly-education'),
+      addRecordingIssueUrlForWork('a-deadly-education'),
+    ]) {
+      const ref = params(url).get('work_ref') ?? ''
+      expect(ref).toContain('/work?id=')
+      expect(ref).not.toContain('/works/')
+    }
+  })
+
   it('target the github issues host', () => {
     const u = new URL(addRecapsIssueUrl('w'))
     expect(u.host).toBe('github.com')

@@ -461,10 +461,23 @@ export function personNames(people: { name: string }[]): string {
   return people.map((p) => p.name).join(', ')
 }
 
+// The detail pages live at PATH routes, which metaserve renders server-side (a
+// real crawlable page, with the island hydrating over it). The query-parameter
+// URLs these replaced - /work?id=x - 301 onto them and stay live forever, so
+// every link ever shared keeps working; the built shells stay in dist as the
+// fallback those redirects and `yarn dev` land on.
 export const href = {
-  work: (id: string) => `/work?id=${encodeURIComponent(id)}`,
-  person: (id: string) => `/person?id=${encodeURIComponent(id)}`,
-  series: (id: string) => `/series?id=${encodeURIComponent(id)}`,
+  work: (id: string) => `/works/${encodeURIComponent(id)}`,
+  person: (id: string) => `/people/${encodeURIComponent(id)}`,
+  series: (id: string) => `/series/${encodeURIComponent(id)}`,
+  /** The legacy query-parameter work URL, for the ONE reference that is read by
+      a machine rather than followed by a human: `work_ref` on the
+      add-recording/characters/recaps issue forms. The intake bot resolves it
+      with internal/issueform's resolveWorkRef, which reads `?id=` and the
+      data-tree path shape but NOT `/works/{slug}` - a path-route work_ref
+      resolves to nothing and the submission is refused. Fold this back into
+      href.work in the same change that teaches resolveWorkRef the path route. */
+  workRefLegacy: (id: string) => `/work?id=${encodeURIComponent(id)}`,
   /** The guided sidecar builder, primed for one work and one dimension. */
   build: (id: string, kind: 'characters' | 'recaps') =>
     `/build?work=${encodeURIComponent(id)}&kind=${kind}`,

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import SeriesDetail from '../components/detail/SeriesDetail.tsx'
+import { ENTITY_MARKER } from '../lib/ssr-markers'
 ---
 
 <Base
@@ -8,5 +9,14 @@ import SeriesDetail from '../components/detail/SeriesDetail.tsx'
   description="An audiobook series in the AudioSilo Meta database: its authors and its works in reading order."
   hasHero
 >
-  <SeriesDetail client:only="react" />
+  {/* metaserve replaces this marker on /series/{slug} with the server-rendered
+      fact sheet (#ssr-entity) and the entity payload (#entity-data) the island
+      hydrates from; served untouched everywhere else. See internal/serve and
+      the contract note in Base.astro.
+
+      It is written through set:html because a bare `<!--ssr:entity-->` here
+      would not survive the build: Astro's compiler strips HTML comments out of
+      SLOT content (the head markers, which sit in Base.astro's own template,
+      are kept). set:html injects the raw string verbatim. */}
+  <Fragment set:html={ENTITY_MARKER} /><SeriesDetail client:only="react" />
 </Base>

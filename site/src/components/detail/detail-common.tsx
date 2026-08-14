@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ApiError } from '../../lib/api'
+import { entitySlugFromLocation, type EntityKind } from '../../lib/entity-url'
 import { correctDataIssueUrl, issueChooserUrl, type RecordKind } from '../../lib/github-prefill'
 
 /** Read a query-string parameter on the client (detail pages are static shells
@@ -17,12 +18,68 @@ export function useQueryParam(name: string): string | null {
   return value
 }
 
-/** Set document.title while a detail view is mounted, restoring nothing (each
-    navigation is a full page load in this static site). */
-export function usePageTitle(title: string | null) {
+/** Read the entity slug for a detail island: the path route first, the legacy
+    `?id=` second (see lib/entity-url). Same null/'' contract as useQueryParam -
+    null until the location has been read, '' when the URL names no entity. */
+export function useEntitySlug(kind: EntityKind): string | null {
+  const [value, setValue] = useState<string | null>(null)
   useEffect(() => {
-    if (title) document.title = `${title} - AudioSilo Meta`
-  }, [title])
+    const { pathname, search } = window.location
+    setValue(entitySlugFromLocation(pathname, search, kind) ?? '')
+  }, [kind])
+  return value
+}
+
+/** The two ids metaserve injects in place of the `<!--ssr:entity-->` marker: the
+    server-rendered fact sheet, and the JSON payload it rendered that sheet from
+    (byte-for-byte what the matching API route returns). Both are absent under
+    `yarn dev`, on the legacy shells and against an older metaserve, which is the
+    ordinary path - the island then fetches exactly as it always did. */
+const ssrNodeId = 'ssr-entity'
+const payloadNodeId = 'entity-data'
+
+/** The embedded payload, parsed, but ONLY when it is about the entity this
+    island is showing: a page served for one slug must never hydrate another's
+    facts, so an id mismatch (or malformed JSON, or no payload at all) yields
+    null and the island falls back to fetching. */
+function readEmbeddedEntity<T extends { id: string }>(id: string): T | null {
+  const node = document.getElementById(payloadNodeId)
+  if (!node?.textContent) return null
+  try {
+    const parsed = JSON.parse(node.textContent) as T
+    return parsed && parsed.id === id ? parsed : null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Hydrate from the server-rendered payload when there is one.
+ *
+ * Returns the entity the server already resolved (so useEntity can skip its
+ * fetch) and, having taken over, removes the fact sheet the server rendered for
+ * crawlers and no-JS readers - the island is about to render the same entity
+ * properly, and leaving both would duplicate the page.
+ */
+export function useEmbeddedEntity<T extends { id: string }>(id: string | null): T | null {
+  const data = useMemo(() => (id ? readEmbeddedEntity<T>(id) : null), [id])
+  useEffect(() => {
+    if (data) document.getElementById(ssrNodeId)?.remove()
+  }, [data])
+  return data
+}
+
+/** Set document.title while a detail view is mounted, restoring nothing (each
+    navigation is a full page load in this static site).
+
+    `skip` is passed by a detail view hydrating from the embedded payload: the
+    title metaserve composed is richer than this one (it names the authors, and
+    is what a crawler and a shared link already show), so the island must not
+    overwrite it with the plain `<name> - AudioSilo Meta` form. */
+export function usePageTitle(title: string | null, skip = false) {
+  useEffect(() => {
+    if (title && !skip) document.title = `${title} - AudioSilo Meta`
+  }, [title, skip])
 }
 
 export type LoadState<T> =
@@ -30,15 +87,22 @@ export type LoadState<T> =
   | { status: 'error'; notFound: boolean }
   | { status: 'ready'; data: T }
 
-/** Generic loader for a detail entity keyed by an id from the query string. */
+/** Generic loader for a detail entity keyed by an id read off the URL.
+    `initialData`, when given, is the entity metaserve already embedded in the
+    page (see useEmbeddedEntity) - it is rendered as-is and NO request is made. */
 export function useEntity<T>(
   id: string | null,
-  fetcher: (id: string, signal: AbortSignal) => Promise<T>
+  fetcher: (id: string, signal: AbortSignal) => Promise<T>,
+  initialData?: T | null
 ): LoadState<T> {
   const [state, setState] = useState<LoadState<T>>({ status: 'loading' })
   useEffect(() => {
     if (id === null) {
-      // Query string not read yet.
+      // Location not read yet.
+      return
+    }
+    if (initialData) {
+      setState({ status: 'ready', data: initialData })
       return
     }
     if (id === '') {
@@ -55,7 +119,7 @@ export function useEntity<T>(
         setState({ status: 'error', notFound })
       })
     return () => ctrl.abort()
-  }, [id, fetcher])
+  }, [id, fetcher, initialData])
   return state
 }
 

@@ -2,7 +2,8 @@ import { getSeries, href, personNames, type Series } from '../../lib/api'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import {
-  useQueryParam,
+  useEntitySlug,
+  useEmbeddedEntity,
   usePageTitle,
   useEntity,
   DetailSpinner,
@@ -11,8 +12,8 @@ import {
   ImproveRecord,
 } from './detail-common'
 
-function Loaded({ series }: { series: Series }) {
-  usePageTitle(series.name)
+function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
+  usePageTitle(series.name, hydrated)
 
   return (
     <div className="container py-10">
@@ -86,9 +87,10 @@ function Loaded({ series }: { series: Series }) {
 }
 
 export default function SeriesDetail() {
-  const id = useQueryParam('id')
-  const state = useEntity<Series>(id, getSeries)
+  const id = useEntitySlug('series')
+  const embedded = useEmbeddedEntity<Series>(id)
+  const state = useEntity<Series>(id, getSeries, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="series" />
-  return <Loaded series={state.data} />
+  return <Loaded series={state.data} hydrated={embedded !== null} />
 }

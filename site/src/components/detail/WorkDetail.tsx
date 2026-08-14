@@ -28,7 +28,8 @@ import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import { PILL_LINK } from '../ui'
 import {
-  useQueryParam,
+  useEntitySlug,
+  useEmbeddedEntity,
   usePageTitle,
   useEntity,
   DetailSpinner,
@@ -676,8 +677,8 @@ function TabButton({
   )
 }
 
-function Loaded({ work }: { work: Work }) {
-  usePageTitle(work.title)
+function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
+  usePageTitle(work.title, hydrated)
   const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
 
   const characters = work.characters ?? []
@@ -847,9 +848,10 @@ function Loaded({ work }: { work: Work }) {
 }
 
 export default function WorkDetail() {
-  const id = useQueryParam('id')
-  const state = useEntity<Work>(id, getWork)
+  const id = useEntitySlug('work')
+  const embedded = useEmbeddedEntity<Work>(id)
+  const state = useEntity<Work>(id, getWork, embedded)
   if (state.status === 'loading') return <DetailSpinner />
   if (state.status === 'error') return <DetailError notFound={state.notFound} kind="work" />
-  return <Loaded work={state.data} />
+  return <Loaded work={state.data} hydrated={embedded !== null} />
 }
