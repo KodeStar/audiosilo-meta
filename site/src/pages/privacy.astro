@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro'
+import { LIBEX_BASE } from '../lib/libex'
+
+const link = 'text-pink-500 underline underline-offset-2 transition-colors hover:text-pink-400'
+const code =
+  'rounded border border-edge bg-raised px-1.5 py-0.5 font-mono text-sm text-pink-300'
+---
+
+<Base
+  title="Privacy Policy - AudioSilo Meta"
+  description="How meta.audiosilo.app handles data: no accounts, no cookies, no analytics or tracking - what the server logs, what stays in your browser, and which third parties a page can reach."
+>
+  <div class="container py-14 sm:py-16">
+    <div class="reveal mx-auto max-w-3xl text-body">
+      <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
+      <p class="mb-8 text-dim">Last updated: 14 August 2026</p>
+
+      <p class="mb-6 text-lg leading-relaxed">
+        AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
+        database</strong>: this website, a read-only API, and the whole catalogue published as
+        downloadable SQLite releases. There are
+        <strong class="text-hi">no user accounts</strong> and nothing to sign in to. We set
+        <strong class="text-hi">no cookies</strong> and run
+        <strong class="text-hi">no analytics, advertising, or tracking scripts</strong> of any
+        kind.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Who we are</h2>
+      <p class="mb-4 leading-relaxed">
+        AudioSilo Meta ("the database") is published by <strong class="text-hi">KodeStar</strong>.
+        Questions about this policy can be sent to
+        <a class={link} href="mailto:kode@audiosilo.app">kode@audiosilo.app</a>.
+      </p>
+
+      <div class="my-8 rounded-xl border border-edge bg-surface p-6">
+        <p class="mb-2 font-semibold text-hi">The short version</p>
+        <ul class="list-disc space-y-1 pl-5">
+          <li>No accounts, no sign-in, <strong class="text-hi">no cookies</strong>.</li>
+          <li>
+            <strong class="text-hi">No</strong> analytics, advertising, or tracking scripts - we do
+            not profile visitors.
+          </li>
+          <li>
+            The web server keeps ordinary technical logs, used only to run the service and deal with
+            abuse.
+          </li>
+          <li>
+            Your library export never leaves your device: <span class={code}>/import</span> parses
+            it entirely in the browser.
+          </li>
+          <li>
+            The database holds bibliographic facts about published books and the people credited on
+            them - public information about public creative work.
+          </li>
+        </ul>
+      </div>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Server logs</h2>
+      <p class="mb-4 leading-relaxed">
+        Like any web server, ours keeps ordinary technical logs of the requests it answers: the
+        requested URL, a timestamp, the IP address the request came from, and the browser's user
+        agent. These are used <strong class="text-hi">only</strong> to operate the service and to
+        deal with abuse such as scraping floods or attacks. They are not used to profile anyone and
+        they are not shared.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Search</h2>
+      <p class="mb-4 leading-relaxed">
+        Search queries go to this site's own API, on the same origin as the page you are reading.
+        They are handled like any other request - the ordinary logs described above, nothing more.
+        There is no search history, because there is nobody to attach one to.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">
+        Importing your library (<span class={code}>/import</span>)
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The import page compares a library export against the database and shows you which of your
+        books are catalogued and which are new. The export file is parsed
+        <strong class="text-hi">entirely in your browser</strong>. The file itself never leaves your
+        device, and nothing about your library is uploaded to us. Matching is done by asking the
+        public API about identifiers and, for books it cannot match that way, author names - the
+        same requests the search box makes.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">
+        The lookup assist (<span class={code}>/add</span>)
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        On the add-a-book page, searching for a title queries
+        <a class={link} href={LIBEX_BASE} target="_blank" rel="noopener"
+          >libex</a
+        >, a third-party Audible-metadata mirror,
+        <strong class="text-hi">directly from your browser</strong>. That service therefore sees the
+        text you searched for and your IP address, under its own terms. This happens on
+        <span class={code}>/add</span> and nowhere else on the site.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Cover images</h2>
+      <p class="mb-4 leading-relaxed">
+        The database stores cover art as <strong class="text-hi">URLs</strong>, not as files -
+        typically pointing at retailer content delivery networks. When a page shows covers, your
+        browser fetches those images from the hosts that serve them, and those hosts see your IP
+        address as they would for any image on the web.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contributing</h2>
+      <p class="mb-4 leading-relaxed">
+        Contributions are made on <strong class="text-hi">GitHub</strong>, through issues and pull
+        requests, under
+        <a class={link} href="https://github.com/site/privacy" target="_blank" rel="noopener"
+          >GitHub's own terms and privacy policy</a
+        >. Contributions are public and permanently recorded in the repository's history, and the
+        data itself is published under open licences (CC0-1.0 for the factual core, CC BY-SA 3.0 for
+        the community layer). A contributor's GitHub username is therefore part of the public record
+        and cannot meaningfully be withdrawn later.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">People in the database</h2>
+      <p class="mb-4 leading-relaxed">
+        The database contains bibliographic facts about published authors, narrators and other
+        credited contributors: their names, the works they are credited on, and public identifiers.
+        This is public information about public creative work - the same material a library
+        catalogue or a bookshop listing carries - not private personal data. If you are credited in
+        the database and something is wrong, or you have a concern about a record, please
+        <a class={link} href="https://github.com/kodestar/audiosilo-meta/issues" target="_blank" rel="noopener"
+          >open an issue</a
+        >
+        or email <a class={link} href="mailto:kode@audiosilo.app">kode@audiosilo.app</a>.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">External links</h2>
+      <p class="mb-4 leading-relaxed">
+        Pages here link out to GitHub, Discord, audiosilo.app and other sites. Once you follow such
+        a link you are on a service governed by its own privacy policy, not this one.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Changes to this policy</h2>
+      <p class="mb-4 leading-relaxed">
+        We may update this policy as the service evolves. Changes will be reflected by the "Last
+        updated" date above and published at the same URL.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Contact</h2>
+      <p class="mb-4 leading-relaxed">
+        Questions about this privacy policy can be sent to
+        <a class={link} href="mailto:kode@audiosilo.app">kode@audiosilo.app</a>.
+      </p>
+    </div>
+  </div>
+</Base>

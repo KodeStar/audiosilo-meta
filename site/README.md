@@ -103,6 +103,7 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 | `/audiobookshelf` | `src/pages/audiobookshelf.astro` | Audiobookshelf integration: add the database as an ABS custom metadata provider, and export an ABS library into `/import` |
 | `/contribute` | `src/pages/contribute.astro` | Contribution coverage: clickable stats band, a filterable/searchable/paginated coverage browser (needs-work vs has-characters/story-so-far/recap-summary, linking into `/build`), and a searchable/paginated list of series with missing volumes |
 | `/build?work=<id>&kind=characters\|recaps` | `src/pages/build.astro` | Guided characters/recaps builder - edit the expressive layer, download the sidecar JSON, and open a prefilled contribution issue |
+| `/privacy` | `src/pages/privacy.astro` | Privacy policy for the site, the API and the data: no accounts/cookies/analytics, what the server logs, what stays in the browser (`/import`), and the third parties a page can reach (`/add`'s libex lookup, cover-image hosts) |
 | `/404` | `src/pages/404.astro` | On-brand not-found page, with add-it CTAs |
 
 The three detail pages are static shells that hydrate a `client:only` React

@@ -20,6 +20,12 @@ interface Props {
   /** Header dressing: a shorter field and a shorter placeholder. The behaviour,
       the tabs and the results are identical - only the chrome shrinks. */
   compact?: boolean
+  /** Seed the box from `?q=` in the address bar on mount. The homepage sets
+      this because the site's SearchAction (the JSON-LD sitelinks search box)
+      names `/?q={search_term_string}`, so that URL has to actually run the
+      search. Exactly ONE box on a page may claim it: the header keeps its copy
+      off, so a seeded query never opens two panels at once. */
+  seedFromQuery?: boolean
 }
 
 type Kind = 'work' | 'person' | 'series'
@@ -130,7 +136,12 @@ function resultsToGroups(results: SearchResult[], pinned: LookupResponse | null)
   return out
 }
 
-export default function SearchBox({ examples = [], autoFocus = false, compact = false }: Props) {
+export default function SearchBox({
+  examples = [],
+  autoFocus = false,
+  compact = false,
+  seedFromQuery = false,
+}: Props) {
   const [query, setQuery] = useState('')
   const [groups, setGroups] = useState<Grouped>(EMPTY)
   const [tab, setTab] = useState<Tab>('all')
@@ -204,6 +215,19 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
       clearTimeout(timer)
     }
   }, [trimmed, hasQuery])
+
+  // Seed from `?q=` once, after hydration - the island is prerendered, so there
+  // is no `window` to read at build time. Setting the query is the whole of it:
+  // the debounced effect above is keyed on it, so an arriving query goes down
+  // exactly the path typing does (debounce, exact ASIN/ISBN lookup, panel).
+  // Nothing is pushed back to history - the URL already says what it says.
+  useEffect(() => {
+    if (!seedFromQuery) return
+    const seeded = new URLSearchParams(window.location.search).get('q')?.trim()
+    if (!seeded) return
+    setQuery(seeded)
+    setOpen(true)
+  }, [seedFromQuery])
 
   // Close on outside click.
   useEffect(() => {
