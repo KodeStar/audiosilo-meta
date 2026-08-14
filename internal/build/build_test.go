@@ -96,6 +96,16 @@ func fixtureCatalog() *model.Catalog {
 		Series:     []*model.Series{series},
 		Characters: []*model.Characters{chars},
 		Recaps:     []*model.Recaps{recaps},
+		// Two retired work slugs (so the within-namespace order is observable)
+		// plus one per other namespace.
+		Redirects: model.Redirects{
+			model.RedirectWorks: {
+				"the-way-of-kings-audiobook": "the-way-of-kings",
+				"project-hail-mary-2":        "project-hail-mary",
+			},
+			model.RedirectPeople: {"andy-weir-author": "andy-weir"},
+			model.RedirectSeries: {"stormlight-archive": "the-stormlight-archive"},
+		},
 	}
 }
 
@@ -116,7 +126,7 @@ func buildFixture(t *testing.T) *sql.DB {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":   "4",
+		"schema_version":   "5",
 		"built_at":         "2026-07-11T00:00:00Z",
 		"count_works":      "2",
 		"count_recordings": "2",
@@ -548,7 +558,7 @@ func TestBuildNarratorOrder(t *testing.T) {
 // TestBuildIgnoresWorkCredits pins the artifact's side of the additive
 // contributor-credits change: the builder reads a catalog carrying credits
 // without error, and writes NOTHING for them - no table, and no schema_version
-// bump (TestBuildMeta pins the version at 4). Surfacing credits in the artifact
+// bump (TestBuildMeta pins the version). Surfacing credits in the artifact
 // and the API is a later, separate change; until then a consumer sees exactly
 // what it saw before, which is what makes the schema addition safe to ship
 // ahead of its readers.
@@ -571,5 +581,67 @@ func TestBuildIgnoresWorkCredits(t *testing.T) {
 	}
 	if n != 0 {
 		t.Errorf("the builder created %d credit table(s); the artifact is unchanged this round", n)
+	}
+}
+
+// TestBuildRedirects pins the slug tombstone table's row shape and its ORDER:
+// namespace order first (model.RedirectKinds is sorted), then retired slug, so an
+// unchanged table produces byte-identical rows however the map was walked. That
+// determinism is what makes the binary delta between two releases small.
+func TestBuildRedirects(t *testing.T) {
+	db := buildFixture(t)
+	rows, err := db.Query(`SELECT kind, old_slug, new_slug FROM redirects`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var got [][3]string
+	for rows.Next() {
+		var r [3]string
+		if err := rows.Scan(&r[0], &r[1], &r[2]); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, r)
+	}
+	if err := rows.Err(); err != nil {
+		t.Fatal(err)
+	}
+	want := [][3]string{
+		{"people", "andy-weir-author", "andy-weir"},
+		{"series", "stormlight-archive", "the-stormlight-archive"},
+		{"works", "project-hail-mary-2", "project-hail-mary"},
+		{"works", "the-way-of-kings-audiobook", "the-way-of-kings"},
+	}
+	if len(got) != len(want) {
+		t.Fatalf("redirects = %v, want %v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("redirects[%d] = %v, want %v", i, got[i], want[i])
+		}
+	}
+}
+
+// TestBuildWithoutRedirects covers the tree that has retired nothing (and every
+// tree that predates the mechanism): the table exists and is empty, so a reader
+// gated on schema_version 5 finds "no redirects" rather than a missing table.
+func TestBuildWithoutRedirects(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Redirects = nil
+	out := filepath.Join(t.TempDir(), "meta.sqlite")
+	if err := Build(cat, out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
+		t.Fatal(err)
+	}
+	db, err := sql.Open("sqlite", out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = db.Close() }()
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM redirects`).Scan(&n); err != nil {
+		t.Fatalf("redirects table missing from a build with no redirects: %v", err)
+	}
+	if n != 0 {
+		t.Errorf("redirect rows = %d, want 0", n)
 	}
 }

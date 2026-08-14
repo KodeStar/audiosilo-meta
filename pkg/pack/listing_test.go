@@ -158,6 +158,64 @@ func TestListingStray(t *testing.T) {
 	}
 }
 
+// TestListingAccountsForTheRedirectsFile pins the tree's one recognized non-pack
+// file. It sits under no family root, so without this the accounting would report
+// the slug tombstone table as a file belonging nowhere - on every metacheck run,
+// forever - and metafmt would offer to salvage it.
+func TestListingAccountsForTheRedirectsFile(t *testing.T) {
+	dir := t.TempDir()
+	writeFiles(t, dir, map[string]string{
+		RedirectsFile:   `{"people":{},"series":{},"works":{}}`,
+		"people/0.json": packOf1("ann-doe"),
+		// The exemption is the EXACT path: the same name inside a family root is
+		// that family's problem, not this one.
+		"people/" + RedirectsFile: `{"people":{}}`,
+	})
+	l, err := List(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := l.Aux(); !reflect.DeepEqual(got, []string{RedirectsFile}) {
+		t.Errorf("aux = %v, want [%s]", got, RedirectsFile)
+	}
+	if got := l.Stray(); len(got) != 0 {
+		t.Errorf("stray = %v, want none", got)
+	}
+	want := []string{"people/0.json", "people/" + RedirectsFile}
+	if got := l.Files(FamilyPeople); !reflect.DeepEqual(got, want) {
+		t.Errorf("people files = %v, want %v", got, want)
+	}
+	// The in-family copy is judged as that family's file, exactly as any other
+	// name would be ("redirects" is a valid bound, so it reads as a pack there and
+	// the reader reports it as one that holds no entries). Nothing about the data
+	// root's exemption reaches inside a family.
+	if got := l.Tree(FamilyPeople); got.Len() != 2 {
+		t.Errorf("people tree = %v, want both files read as packs", got.Packs())
+	}
+	if !auxFile(RedirectsFile) || auxFile("people/"+RedirectsFile) || auxFile("works/0/0.json") {
+		t.Error("auxFile does not match exactly the redirects file")
+	}
+}
+
+// TestListingRefusesADirectoryWhereTheRedirectsFileBelongs: the walk ignores
+// directories, so a data/redirects.json that IS one would otherwise read as "the
+// tree holds no redirects" - the one silent answer in a tree where every other
+// wrong shape is loud.
+func TestListingRefusesADirectoryWhereTheRedirectsFileBelongs(t *testing.T) {
+	dir := t.TempDir()
+	writeFiles(t, dir, map[string]string{"people/0.json": packOf1("ann-doe")})
+	if err := os.MkdirAll(filepath.Join(dir, RedirectsFile), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	_, err := List(dir)
+	if err == nil {
+		t.Fatal("List accepted a directory named " + RedirectsFile)
+	}
+	if !strings.Contains(err.Error(), RedirectsFile) {
+		t.Errorf("error %q does not name the file", err)
+	}
+}
+
 // A data root that does not exist is an error to List - pkg/check reports it as
 // one - but not to Open, which has to be able to create a tree from nothing.
 func TestListMissingRoot(t *testing.T) {

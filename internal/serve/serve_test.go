@@ -104,6 +104,13 @@ func fixtureCatalog() *model.Catalog {
 		Series:     []*model.Series{series},
 		Characters: []*model.Characters{chars},
 		Recaps:     []*model.Recaps{recaps},
+		// One retired slug per namespace, the shape a duplicate merge leaves
+		// behind: the loser's slug still resolves, at the survivor.
+		Redirects: model.Redirects{
+			model.RedirectWorks:  {"project-hail-mary-audiobook": "project-hail-mary"},
+			model.RedirectPeople: {"andy-weir-author": "andy-weir"},
+			model.RedirectSeries: {"stormlight-archive": "the-stormlight-archive"},
+		},
 	}
 }
 

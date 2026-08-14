@@ -348,4 +348,8 @@ type Catalog struct {
 	Series     []*Series
 	Characters []*Characters
 	Recaps     []*Recaps
+	// Redirects is the slug tombstone table (data/redirects.json): which
+	// retired slug now stands for which record above. It is nil for a tree
+	// that carries no table, which reads as "no redirects" everywhere.
+	Redirects Redirects
 }

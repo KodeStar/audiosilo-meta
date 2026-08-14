@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/redirects.schema.json",
+  "title": "slug redirects",
+  "description": "data/redirects.json: the slug tombstone table. Each namespace maps a RETIRED slug - a record the database no longer holds, e.g. the loser of a duplicate merge - to the live slug that replaced it, so a URL or a stored id keeps resolving. Not a pack file and not a family: a retired slug is not an entity. metacheck additionally requires that a source is never a live id, a target always is, and no target is itself a source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["people", "series", "works"],
+  "properties": {
+    "people": {
+      "description": "Retired person slugs, keyed by the retired slug. The target addresses /api/v1/people/{id}.",
+      "$ref": "#/$defs/table"
+    },
+    "series": {
+      "description": "Retired series slugs, keyed by the retired slug. The target addresses /api/v1/series/{id}.",
+      "$ref": "#/$defs/table"
+    },
+    "works": {
+      "description": "Retired work slugs, keyed by the retired slug. The target addresses /api/v1/works/{id}, and a recording travels with its work.",
+      "$ref": "#/$defs/table"
+    }
+  },
+  "$defs": {
+    "table": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/slug"
+      },
+      "additionalProperties": {
+        "$ref": "common.schema.json#/$defs/slug"
+      }
+    }
+  }
+}

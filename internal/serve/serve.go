@@ -15,11 +15,14 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Config configures a Server.
@@ -288,6 +291,102 @@ func (s *Server) routes() []route {
 	)
 }
 
+// idWildcard is what the four current detail routes spell their record wildcard.
+// Their handlers read it directly; the redirect machinery does NOT - it derives
+// the name from the pattern (see idWildcardOf), so nothing depends on the
+// spelling being this one.
+const idWildcard = "id"
+
+// redirectNamespaces says which id namespace a route's record wildcard names. It
+// sits beside routes() because it is the same knowledge: a route that addresses a
+// record by slug can be reached by a slug a merge retired, and the namespace is
+// what resolves it (and, being the route segment too, what rebuilds the Location -
+// see model.RedirectKind).
+//
+// It is keyed by the ServeMux pattern, so it is checkable against the route table
+// rather than believed: TestEveryIDRouteResolvesRetiredSlugs requires every
+// registered pattern that HAS a wildcard to appear here or in
+// redirectExemptRoutes, which is how a fifth family route cannot ship without
+// redirect support.
+var redirectNamespaces = map[string]model.RedirectKind{
+	"GET /api/v1/works/{id}":                           model.RedirectWorks,
+	"GET /api/v1/works/{id}/recordings/{rid}/chapters": model.RedirectWorks,
+	"GET /api/v1/people/{id}":                          model.RedirectPeople,
+	"GET /api/v1/series/{id}":                          model.RedirectSeries,
+}
+
+// redirectExemptRoutes are the wildcard routes that deliberately resolve no
+// retired slug. It is EMPTY today: every wildcard the API serves is a record id.
+// It exists so that the guard above can be answered in the only two ways that are
+// honest - name the namespace, or say out loud that this wildcard is not a record
+// - rather than by a route quietly not appearing in either list. A multi-segment
+// wildcard ({rest...}) belongs here: it is a path, not an id.
+var redirectExemptRoutes = map[string]bool{}
+
+// redirectCoverageGaps returns the patterns that address a record by a wildcard
+// and neither name a namespace nor say they are exempt. It is the guard's
+// derivation, exported to the test rather than written there, so what the test
+// checks is what the request path reads: the SHAPE of the pattern decides, not the
+// wildcard's name, so "GET /api/v1/publishers/{pid}" is as much a gap as a
+// {id} route would be.
+func redirectCoverageGaps(patterns []string) []string {
+	var gaps []string
+	for _, pattern := range patterns {
+		if idWildcardOf(pattern) == "" && !hasAnyWildcard(pattern) {
+			continue // a fully literal route addresses no record
+		}
+		if _, named := redirectNamespaces[pattern]; named || redirectExemptRoutes[pattern] {
+			continue
+		}
+		gaps = append(gaps, pattern)
+	}
+	return gaps
+}
+
+// hasAnyWildcard reports whether a pattern carries a wildcard of ANY form,
+// including the two idWildcardOf declines to read as a record id. A route with one
+// of those still has to be decided about, out loud, rather than skipped for having
+// no {name} segment.
+func hasAnyWildcard(pattern string) bool {
+	_, path, _ := strings.Cut(pattern, " ")
+	for _, seg := range strings.Split(path, "/") {
+		if strings.HasPrefix(seg, "{") && strings.HasSuffix(seg, "}") && seg != "{$}" {
+			return true
+		}
+	}
+	return false
+}
+
+// idWildcardOf returns the name of the wildcard a pattern addresses its record
+// by: the FIRST single-segment wildcard in the path. It is derived rather than
+// assumed so a route spelling it {work} or {pid} still redirects, and so the
+// coverage guard does not rest on a naming convention nothing enforces.
+//
+// "" means the pattern has no such wildcard. ServeMux's two other forms are
+// deliberately not it: {$} is an anchor rather than a value, and {rest...} spans
+// segments, so neither can name one record.
+func idWildcardOf(pattern string) string {
+	_, path, _ := strings.Cut(pattern, " ")
+	for _, seg := range strings.Split(path, "/") {
+		if name, ok := wildcardName(seg); ok {
+			return name
+		}
+	}
+	return ""
+}
+
+// wildcardName reads one pattern segment as a single-segment wildcard.
+func wildcardName(seg string) (string, bool) {
+	if !strings.HasPrefix(seg, "{") || !strings.HasSuffix(seg, "}") {
+		return "", false
+	}
+	name := seg[1 : len(seg)-1]
+	if name == "$" || strings.HasSuffix(name, "...") {
+		return "", false
+	}
+	return name, true
+}
+
 func (s *Server) buildMux() http.Handler {
 	mux := http.NewServeMux()
 	for _, r := range s.routes() {
@@ -435,26 +534,129 @@ func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	detail, err := snap.workDetail(r.PathValue("id"))
+	detail, err := snap.workDetail(r.PathValue(idWildcard))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if detail == nil {
+		if redirected(w, r, snap) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "work not found")
 		return
 	}
 	writeJSON(w, http.StatusOK, detail)
 }
 
+// handleChapters answers an unknown (work, recording) pair with an empty list
+// rather than a 404 - a recording legitimately has no chapters - so the retired
+// slug is consulted when the list comes back EMPTY. It can only ever hit on a
+// slug the catalogue does not hold: a live work is never a redirect source
+// (pkg/check's checkRedirects), so a real recording with no chapters still gets
+// its empty list.
 func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	chs, err := snap.chapters(r.PathValue("id"), r.PathValue("rid"))
+	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
+	if len(chs) == 0 && redirected(w, r, snap) {
+		return
+	}
 	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
+}
+
+// redirected answers a request whose {id} names a RETIRED slug with a 301 at the
+// same route under the slug that replaced it, and reports whether it did.
+//
+// Every id route calls it where it would otherwise 404, so a slug a merge retired
+// keeps resolving (see model.Redirects for why that matters). The BODY carries the
+// new slug too, so a client that does not follow redirects can heal what it stored
+// instead of only learning that the id is gone.
+//
+// It is composed entirely from ROUTE DATA rather than per-route arguments: the
+// namespace comes from redirectNamespaces keyed by the pattern that matched, and
+// the Location is that same pattern with its wildcards filled in - the new slug for
+// {id}, the request's own values for the rest - so no route can be handed a
+// Location belonging to another one, and a route that gains a wildcard needs no
+// change here. The request's query string travels along, because a ?limit/?offset
+// window describes the request rather than the id.
+//
+// It reads the snapshot the handler already answered from rather than loading the
+// pointer again, so a hot-swap mid-request cannot make the 404 and the redirect
+// decision come from two different artifacts. A lookup FAILURE degrades to "no
+// redirect": the caller then answers its own 404, which is what the request looked
+// like anyway, rather than turning a missing record into a 500.
+func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
+	kind, ok := redirectNamespaces[r.Pattern]
+	if !ok {
+		return false // not a route a retired slug can arrive at
+	}
+	idName := idWildcardOf(r.Pattern)
+	id := r.PathValue(idName)
+	to, err := snap.redirectTarget(kind, id)
+	if err != nil {
+		snap.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
+		return false
+	}
+	if to == "" {
+		return false
+	}
+	// A row pointing a slug at ITSELF would send a following client back here
+	// forever. pkg/check refuses one, so no sanctioned artifact carries it, but
+	// "cannot loop" should be true of the resolver rather than only of the data it
+	// is usually given - a hand-built or corrupted artifact must degrade to the
+	// 404 the request was already heading for.
+	if to == id {
+		snap.logf("serve: ignoring self-redirect for %s %q (the artifact's redirect table is corrupt)", kind, id)
+		return false
+	}
+	w.Header().Set("Location", redirectLocation(r, idName, to))
+	// A tombstone is not permanent the way 301 invites a client to assume: a bad
+	// merge can be reversed, and the redirect then has to stop being served. An
+	// hour is long enough to spare the origin a stale client's repeated misses and
+	// short enough that reversing one is not a support problem.
+	w.Header().Set("Cache-Control", redirectMaxAge)
+	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
+	return true
+}
+
+// redirectMaxAge bounds how long a 301 may be cached. See redirected.
+const redirectMaxAge = "public, max-age=3600"
+
+// redirectLocation rebuilds the matched route's path with to standing in for the
+// record wildcard idName, every other wildcard keeping the value it matched, and
+// the request's own query string appended.
+//
+// It returns the WIRE form and is used as the header value directly, escaping each
+// segment exactly once. Handing it to url.URL would escape it a second time (Path
+// is the decoded form, so a % becomes %25), and setting Path alone would not
+// escape at all - url.URL leaves a "/" inside a path segment untouched. The ids in
+// the artifact are plain slugs today, so either mistake is latent rather than
+// visible, which is precisely why it is written down here.
+func redirectLocation(r *http.Request, idName, to string) string {
+	_, pattern, _ := strings.Cut(r.Pattern, " ")
+	var b strings.Builder
+	for _, seg := range strings.Split(strings.TrimPrefix(pattern, "/"), "/") {
+		b.WriteByte('/')
+		name, wild := wildcardName(seg)
+		if !wild {
+			b.WriteString(seg)
+			continue
+		}
+		value := to
+		if name != idName {
+			value = r.PathValue(name)
+		}
+		b.WriteString(url.PathEscape(value))
+	}
+	if r.URL.RawQuery != "" {
+		b.WriteByte('?')
+		b.WriteString(r.URL.RawQuery)
+	}
+	return b.String()
 }
 
 // personPageDefault / personPageMax bound one page of a person's credit lists.
@@ -471,12 +673,15 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
-	p, err := snap.person(r.PathValue("id"), limit, clampOffset(q.Get("offset")))
+	p, err := snap.person(r.PathValue(idWildcard), limit, clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if p == nil {
+		if redirected(w, r, snap) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "person not found")
 		return
 	}
@@ -491,12 +696,15 @@ const seriesPageMax = 500
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
-	ser, err := snap.series(r.PathValue("id"), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
+	ser, err := snap.series(r.PathValue(idWildcard), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 	if ser == nil {
+		if redirected(w, r, snap) {
+			return
+		}
 		writeErr(w, http.StatusNotFound, "series not found")
 		return
 	}
