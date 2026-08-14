@@ -53,6 +53,14 @@ var (
 	wikidataRE  = regexp.MustCompile(`^Q\d+$`)
 	olWorkRE    = regexp.MustCompile(`^OL\d+W$`)
 	worksPathRE = regexp.MustCompile(`works/[^/]+/([^/]+)`)
+	// workPageRE matches the entity PAGE path metaserve serves a work at,
+	// /works/{slug} - the URL a submitter now copies out of their address bar.
+	// It is deliberately STRICT where worksPathRE is loose: the whole path, and
+	// exactly ONE segment after works/. That is what keeps it disjoint from the
+	// retired data-tree path (works/<shard>/<slug>/work.json, which has more) and
+	// off /api/v1/works/{id}, which is an API endpoint rather than a page and
+	// resolves exactly as it did before.
+	workPageRE = regexp.MustCompile(`^/?works/([^/]+)/?$`)
 )
 
 // normalizeLanguage lowercases a BCP-47 tag (the schema restricts the region
@@ -312,9 +320,19 @@ func splitLines(block string) []string {
 	return out
 }
 
-// resolveWorkRef resolves a "work" reference (a slug, a data-tree path, or a
-// meta.audiosilo.app / GitHub URL) to a work slug. ok is false when nothing
-// slug-shaped can be extracted.
+// resolveWorkRef resolves a "work" reference to a work slug. The shapes it
+// accepts, in the order it tries them:
+//
+//   - a meta.audiosilo.app / GitHub URL carrying ?id=<slug> (the legacy page URL,
+//     which the site still composes);
+//   - the entity PAGE path /works/<slug>, absolute or bare, with or without a
+//     query string or fragment - what metaserve serves a work at now, and what a
+//     submitter copies out of the address bar;
+//   - the retired data-tree path works/<shard>/<slug>/work.json, which older
+//     issues, docs and GitHub blob links still say;
+//   - a bare slug.
+//
+// ok is false when nothing slug-shaped can be extracted.
 func resolveWorkRef(ref string) (slug string, ok bool) {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
@@ -325,16 +343,41 @@ func resolveWorkRef(ref string) (slug string, ok bool) {
 			if id := u.Query().Get("id"); id != "" {
 				return sanitizeSlug(id)
 			}
+			// The ESCAPED path, so a %2F inside a segment cannot read as a
+			// separator; workPageSlug does the one decode.
+			if slug, ok := workPageSlug(u.EscapedPath()); ok {
+				return slug, true
+			}
 			if m := worksPathRE.FindStringSubmatch(u.Path); m != nil {
 				return sanitizeSlug(m[1])
 			}
 		}
 		return "", false
 	}
+	if slug, ok := workPageSlug(ref); ok {
+		return slug, true
+	}
 	if m := worksPathRE.FindStringSubmatch(ref); m != nil {
 		return sanitizeSlug(m[1])
 	}
 	return sanitizeSlug(ref)
+}
+
+// workPageSlug reads a path as the work PAGE URL /works/<slug>. It is strict on
+// purpose: exactly one segment, and that segment must already BE a slug once
+// decoded. Anything else declines, so the caller falls through to the shapes it
+// understood before - a loose reading here would claim /api/v1/works/{id} and
+// the data-tree path, both of which mean something else.
+func workPageSlug(path string) (string, bool) {
+	m := workPageRE.FindStringSubmatch(path)
+	if m == nil {
+		return "", false
+	}
+	seg, err := url.PathUnescape(m[1])
+	if err != nil || !model.ValidSlug(seg) {
+		return "", false
+	}
+	return seg, true
 }
 
 // sanitizeSlug accepts an already-valid slug verbatim, otherwise slugifies the
