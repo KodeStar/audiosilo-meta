@@ -1700,7 +1700,9 @@
         "coming-of-age",
         "gothic",
         "horror",
-        "literary-fiction"
+        "literary-fiction",
+        "romance",
+        "romantic-comedy"
       ],
       "id": "northanger-abbey",
       "language": "en",
@@ -2169,6 +2171,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07DTQWKBM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "northanger-abbey"
+        },
+        "henrietta-meire-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07CJXB8S9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yswLXhWsL.jpg",
+          "id": "henrietta-meire-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "henrietta-meire"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2018-04-23",
+          "runtime_min": 424,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07CJXB8S9",
               "type": "libex-import"
             }
           ],
@@ -2693,62 +2723,14 @@
           "imported_at": "2026-08-07",
           "ref": "B072JZ18JB",
           "type": "libex-import"
-        }
-      ],
-      "title": "Northanger Abbey"
-    },
-    "northanger-abbey-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jane-austen"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "romance",
-        "romantic-comedy"
-      ],
-      "id": "northanger-abbey-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "henrietta-meire-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07CJXB8S9",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81yswLXhWsL.jpg",
-          "id": "henrietta-meire-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "henrietta-meire"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2018-04-23",
-          "runtime_min": 424,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07CJXB8S9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "northanger-abbey-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07CJXB8S9",
           "type": "libex-import"
         }
       ],
-      "title": "Northanger Abbey (AmazonClassics Edition)"
+      "title": "Northanger Abbey"
     },
     "northanger-abbey-and-the-history-of-england-annotated": {
       "added_at": "2026-08-08",

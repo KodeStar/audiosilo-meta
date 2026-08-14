@@ -10439,6 +10439,7 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction",
         "space-opera"
       ],
@@ -10540,30 +10541,7 @@
             }
           ],
           "work": "star-of-danger"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B075MR2JY2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Star of Danger"
-    },
-    "star-of-danger-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "star-of-danger-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jonathan-davis-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10667,17 +10645,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "star-of-danger-international-edition"
+          "work": "star-of-danger"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B075MR2JY2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYDZ7WS",
           "type": "libex-import"
         }
       ],
-      "title": "Star of Danger [International Edition]"
+      "title": "Star of Danger"
     },
     "star-of-his-heart": {
       "added_at": "2026-07-29",

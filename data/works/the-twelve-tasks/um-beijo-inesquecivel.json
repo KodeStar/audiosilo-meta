@@ -8044,54 +8044,7 @@
             {
               "asin": "B09MSRQ97M",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FpqPnpx+L.jpg",
-          "id": "guillermo-romero-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "guillermo-romero"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-12-09",
-          "runtime_min": 1062,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09MSRQ97M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "un-caballero-en-moscu"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09MSRQ97M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Un caballero en Moscú"
-    },
-    "un-caballero-en-moscu-a-gentleman-in-moscow": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "amor-towles",
-        "gemma-rovira-ortega"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "un-caballero-en-moscu-a-gentleman-in-moscow",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "guillermo-romero-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09MSRZHCG",
               "region": "us"
@@ -8367,21 +8320,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09MSRQ97M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09MSRZHCG",
               "type": "libex-import"
             }
           ],
-          "work": "un-caballero-en-moscu-a-gentleman-in-moscow"
+          "work": "un-caballero-en-moscu"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09MSRQ97M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09MSRZHCG",
           "type": "libex-import"
         }
       ],
-      "title": "Un caballero en Moscú [A Gentleman in Moscow]"
+      "title": "Un caballero en Moscú"
     },
     "un-cadaver-en-la-biblioteca": {
       "added_at": "2026-07-29",
@@ -8760,29 +8723,7 @@
             }
           ],
           "work": "un-capricho-del-destino-a-quirk-of-fate"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01A7M9MAE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Un Capricho del Destino [A Quirk of Fate]"
-    },
-    "un-capricho-del-destino-narracion-en-castellano-a-whim-of-destiny-castilian-narration": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kristel-ralston"
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "un-capricho-del-destino-narracion-en-castellano-a-whim-of-destiny-castilian-narration",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "eva-suarez-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8809,17 +8750,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "un-capricho-del-destino-narracion-en-castellano-a-whim-of-destiny-castilian-narration"
+          "work": "un-capricho-del-destino-a-quirk-of-fate"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01A7M9MAE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07NDK2K6G",
           "type": "libex-import"
         }
       ],
-      "title": "Un Capricho del Destino (Narración en Castellano) [A Whim of Destiny (Castilian Narration)]"
+      "title": "Un Capricho del Destino [A Quirk of Fate]"
     },
     "un-casse-en-enfer": {
       "added_at": "2026-08-02",

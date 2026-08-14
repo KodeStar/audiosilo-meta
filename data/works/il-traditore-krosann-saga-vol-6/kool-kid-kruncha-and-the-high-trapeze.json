@@ -7228,6 +7228,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "fantasy",
         "music",
         "travel"
       ],
@@ -7241,6 +7242,10 @@
           "asin": [
             {
               "asin": "B0GS627QLX",
+              "region": "us"
+            },
+            {
+              "asin": "B0GJC22JFW",
               "region": "us"
             }
           ],
@@ -7276,6 +7281,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0GS627QLX",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GJC22JFW",
+              "type": "libex-import"
             }
           ],
           "work": "kpop-demon-hunters-for-the-fans"
@@ -7285,6 +7295,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0GS627QLX",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GJC22JFW",
           "type": "libex-import"
         }
       ],
@@ -7360,218 +7375,6 @@
         }
       ],
       "title": "KPop Demon Hunters – Für die Fans! - Offizielles Storybook zum oscarprämierten Netflix-Hit"
-    },
-    "kpop-demon-hunters-la-novela-oficial-castellano": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "laura-feijoo-sanchez",
-        "netflix",
-        "javier-perez-alarcon"
-      ],
-      "credits": [
-        {
-          "person": "javier-perez-alarcon",
-          "role": "translator"
-        },
-        {
-          "person": "laura-feijoo-sanchez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "music"
-      ],
-      "id": "kpop-demon-hunters-la-novela-oficial-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "neri-hualde-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GWN19DF3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15626,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 177934,
-              "start_ms": 15626,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 643773,
-              "start_ms": 193560,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 328957,
-              "start_ms": 837333,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 722396,
-              "start_ms": 1166290,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 362695,
-              "start_ms": 1888686,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 235427,
-              "start_ms": 2251381,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 766072,
-              "start_ms": 2486808,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 383431,
-              "start_ms": 3252880,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 418330,
-              "start_ms": 3636311,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 431635,
-              "start_ms": 4054641,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 675956,
-              "start_ms": 4486276,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 441829,
-              "start_ms": 5162232,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 420675,
-              "start_ms": 5604061,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 534267,
-              "start_ms": 6024736,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 386124,
-              "start_ms": 6559003,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 329862,
-              "start_ms": 6945127,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 421349,
-              "start_ms": 7274989,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 286348,
-              "start_ms": 7696338,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 175519,
-              "start_ms": 7982686,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 223793,
-              "start_ms": 8158205,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 358423,
-              "start_ms": 8381998,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 629214,
-              "start_ms": 8740421,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 240303,
-              "start_ms": 9369635,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 333345,
-              "start_ms": 9609938,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 195953,
-              "start_ms": 9943283,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 461821,
-              "start_ms": 10139236,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 166510,
-              "start_ms": 10601057,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 127035,
-              "start_ms": 10767567,
-              "title": "Capítulo 29"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91JKscdKViL.jpg",
-          "id": "neri-hualde-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "neri-hualde"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2026-04-09",
-          "runtime_min": 181,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GWN19DF3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "kpop-demon-hunters-la-novela-oficial-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GWN19DF3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "KPop Demon Hunters - La novela oficial (castellano)"
     },
     "kpop-demon-hunters-la-novela-oficial-latino": {
       "added_at": "2026-08-02",
@@ -7774,12 +7577,192 @@
             }
           ],
           "work": "kpop-demon-hunters-la-novela-oficial-latino"
+        },
+        "neri-hualde-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GWN19DF3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15626,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 177934,
+              "start_ms": 15626,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 643773,
+              "start_ms": 193560,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 328957,
+              "start_ms": 837333,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 722396,
+              "start_ms": 1166290,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 362695,
+              "start_ms": 1888686,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 235427,
+              "start_ms": 2251381,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 766072,
+              "start_ms": 2486808,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 383431,
+              "start_ms": 3252880,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 418330,
+              "start_ms": 3636311,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 431635,
+              "start_ms": 4054641,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 675956,
+              "start_ms": 4486276,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 441829,
+              "start_ms": 5162232,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 420675,
+              "start_ms": 5604061,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 534267,
+              "start_ms": 6024736,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 386124,
+              "start_ms": 6559003,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 329862,
+              "start_ms": 6945127,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 421349,
+              "start_ms": 7274989,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 286348,
+              "start_ms": 7696338,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 175519,
+              "start_ms": 7982686,
+              "title": "Capítulo 20"
+            },
+            {
+              "length_ms": 223793,
+              "start_ms": 8158205,
+              "title": "Capítulo 21"
+            },
+            {
+              "length_ms": 358423,
+              "start_ms": 8381998,
+              "title": "Capítulo 22"
+            },
+            {
+              "length_ms": 629214,
+              "start_ms": 8740421,
+              "title": "Capítulo 23"
+            },
+            {
+              "length_ms": 240303,
+              "start_ms": 9369635,
+              "title": "Capítulo 24"
+            },
+            {
+              "length_ms": 333345,
+              "start_ms": 9609938,
+              "title": "Capítulo 25"
+            },
+            {
+              "length_ms": 195953,
+              "start_ms": 9943283,
+              "title": "Capítulo 26"
+            },
+            {
+              "length_ms": 461821,
+              "start_ms": 10139236,
+              "title": "Capítulo 27"
+            },
+            {
+              "length_ms": 166510,
+              "start_ms": 10601057,
+              "title": "Capítulo 28"
+            },
+            {
+              "length_ms": 127035,
+              "start_ms": 10767567,
+              "title": "Capítulo 29"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JKscdKViL.jpg",
+          "id": "neri-hualde-2026",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "neri-hualde"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2026-04-09",
+          "runtime_min": 181,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GWN19DF3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kpop-demon-hunters-la-novela-oficial-latino"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0GWNB33G5",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GWN19DF3",
           "type": "libex-import"
         }
       ],

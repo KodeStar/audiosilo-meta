@@ -10158,6 +10158,7 @@
       ],
       "genres": [
         "fantasy",
+        "paranormal",
         "romance",
         "urban-fantasy"
       ],
@@ -10165,6 +10166,112 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-james-spooner-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FZDSPD3J",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3914419,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3505771,
+              "start_ms": 3914419,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4154119,
+              "start_ms": 7420190,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3390856,
+              "start_ms": 11574309,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3616554,
+              "start_ms": 14965165,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3887879,
+              "start_ms": 18581719,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3119368,
+              "start_ms": 22469598,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4429252,
+              "start_ms": 25588966,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3231451,
+              "start_ms": 30018218,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3800433,
+              "start_ms": 33249669,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3898305,
+              "start_ms": 37050102,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2959592,
+              "start_ms": 40948407,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4051649,
+              "start_ms": 43907999,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yhsT83tsL.jpg",
+          "id": "andrew-james-spooner-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-james-spooner",
+            "anthony-palmini",
+            "danny-gavigan",
+            "full-cast",
+            "henry-kramer",
+            "jonathan-lee-taylor",
+            "kimberly-gilbert",
+            "matt-bassett",
+            "rayner-gabriel",
+            "sandi-stock",
+            "stephanie-nemeth-parker",
+            "thea-wolfe"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2026-01-30",
+          "runtime_min": 799,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FZDSPD3J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "house-of-beating-wings"
+        },
         "olivia-king-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10615,6 +10722,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0BTG9HH35",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FZDSPD3J",
           "type": "libex-import"
         }
       ],

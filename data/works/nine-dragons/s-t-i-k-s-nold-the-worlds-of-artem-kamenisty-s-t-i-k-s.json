@@ -10236,64 +10236,13 @@
       ],
       "title": "Sabotaged World"
     },
-    "sabotaje-serie-falco": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte"
-      ],
-      "genres": [
-        "hard-boiled",
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "sabotaje-serie-falco",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raul-llorens-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8420437581",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+ylxJukXL.jpg",
-          "id": "raul-llorens-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raul-llorens"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-10-11",
-          "runtime_min": 640,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8420437581",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sabotaje-serie-falco"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8420437581",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sabotaje (Serie Falcó)"
-    },
     "sabotaje-serie-falco-sabotage": {
       "added_at": "2026-07-29",
       "authors": [
         "arturo-perez-reverte"
       ],
       "genres": [
+        "hard-boiled",
         "historical-fiction",
         "mystery",
         "thriller-suspense"
@@ -10309,6 +10258,10 @@
             {
               "asin": "B07HWWTZ9Y",
               "region": "us"
+            },
+            {
+              "asin": "8420437581",
+              "region": "es"
             }
           ],
           "chapters": [
@@ -10433,6 +10386,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07HWWTZ9Y",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8420437581",
+              "type": "libex-import"
             }
           ],
           "work": "sabotaje-serie-falco-sabotage"
@@ -10442,6 +10400,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07HWWTZ9Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420437581",
           "type": "libex-import"
         }
       ],

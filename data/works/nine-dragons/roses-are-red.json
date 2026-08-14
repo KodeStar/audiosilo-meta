@@ -1534,14 +1534,54 @@
       "authors": [
         "dot-hutchison"
       ],
+      "genres": [
+        "psychological-thriller",
+        "thriller-suspense"
+      ],
       "id": "roses-of-may",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "siiri-scott-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0727KSSHT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51UQgkFsp7L.jpg",
+          "id": "siiri-scott-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "siiri-scott",
+            "will-damron"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-05-23",
+          "runtime_min": 610,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0727KSSHT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "roses-of-may"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/30109999-roses-of-may",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0727KSSHT",
+          "type": "libex-import"
         }
       ],
       "title": "Roses of May",

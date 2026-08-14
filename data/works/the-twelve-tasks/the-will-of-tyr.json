@@ -300,7 +300,10 @@
         "ada-palmer"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
         "dystopian",
+        "literary-fiction",
         "politics",
         "post-apocalyptic",
         "science-fiction"
@@ -309,6 +312,53 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D3R27W1J",
+              "region": "us"
+            },
+            {
+              "asin": "B0D9PFW2G5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81k-rbjWbxL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 941,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D3R27W1J",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D3R27W1J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D9PFW2G5",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D9PFW2G5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-will-to-battle"
+        },
         "t-ryder-smith-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -455,98 +505,29 @@
           "imported_at": "2026-08-02",
           "ref": "B077XNFNWL",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D3R27W1J",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D3R27W1J",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D9PFW2G5",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D9PFW2G5",
+          "type": "libex-import"
         }
       ],
       "title": "The Will to Battle"
-    },
-    "the-will-to-battle-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ada-palmer"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "dystopian",
-        "literary-fiction",
-        "politics",
-        "science-fiction"
-      ],
-      "id": "the-will-to-battle-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D3R27W1J",
-              "region": "us"
-            },
-            {
-              "asin": "B0D9PFW2G5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81k-rbjWbxL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 941,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D3R27W1J",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D3R27W1J",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D9PFW2G5",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D9PFW2G5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-will-to-battle-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D3R27W1J",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D3R27W1J",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D9PFW2G5",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D9PFW2G5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Will to Battle [Dramatized Adaptation]"
     },
     "the-will-to-change": {
       "added_at": "2026-07-29",

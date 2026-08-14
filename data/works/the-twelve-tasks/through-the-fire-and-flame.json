@@ -2540,8 +2540,10 @@
         "lewis-carroll"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "classics"
+        "classics",
+        "fairy-tales-folklore"
       ],
       "id": "through-the-looking-glass",
       "language": "en",
@@ -3784,6 +3786,96 @@
           ],
           "work": "through-the-looking-glass"
         },
+        "michael-page-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1799719006",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1269504,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 986105,
+              "start_ms": 1269504,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1078102,
+              "start_ms": 2255609,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1108102,
+              "start_ms": 3333711,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1174093,
+              "start_ms": 4441813,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1218095,
+              "start_ms": 5615906,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1008094,
+              "start_ms": 6834001,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1595094,
+              "start_ms": 7842095,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1525086,
+              "start_ms": 9437189,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 28096,
+              "start_ms": 10962275,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 11099,
+              "start_ms": 10990371,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 656055,
+              "start_ms": 11001470,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BMNmzDoHL.jpg",
+          "id": "michael-page-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-09-17",
+          "runtime_min": 194,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1799719006",
+              "type": "libex-import"
+            }
+          ],
+          "work": "through-the-looking-glass"
+        },
         "miriam-margolyes-2013": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -4134,6 +4226,115 @@
           ],
           "work": "through-the-looking-glass"
         },
+        "simon-hester-2020": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B08BF72NJF",
+              "region": "us"
+            },
+            {
+              "asin": "B08BLPVY8N",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13003,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 101982,
+              "start_ms": 13003,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1171214,
+              "start_ms": 114985,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1029665,
+              "start_ms": 1286199,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1059340,
+              "start_ms": 2315864,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1107080,
+              "start_ms": 3375204,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1138799,
+              "start_ms": 4482284,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1162112,
+              "start_ms": 5621083,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 963860,
+              "start_ms": 6783195,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1550164,
+              "start_ms": 7747055,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1504002,
+              "start_ms": 9297219,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 257695,
+              "start_ms": 10801221,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 63947,
+              "start_ms": 11058916,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 25123,
+              "start_ms": 11122863,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71uqopiK7ML.jpg",
+          "id": "simon-hester-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-hester"
+          ],
+          "publisher": "Lewis Carroll",
+          "release_date": "2020-06-20",
+          "runtime_min": 185,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B08BF72NJF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B08BLPVY8N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "through-the-looking-glass"
+        },
         "susan-edni-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -4425,122 +4626,19 @@
           "imported_at": "2026-07-30",
           "ref": "B00Q6WMETG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Through the Looking-Glass"
-    },
-    "through-the-looking-glass-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "through-the-looking-glass-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-page-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1799719006",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1269504,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 986105,
-              "start_ms": 1269504,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1078102,
-              "start_ms": 2255609,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1108102,
-              "start_ms": 3333711,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1174093,
-              "start_ms": 4441813,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1218095,
-              "start_ms": 5615906,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1008094,
-              "start_ms": 6834001,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1595094,
-              "start_ms": 7842095,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1525086,
-              "start_ms": 9437189,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 28096,
-              "start_ms": 10962275,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 11099,
-              "start_ms": 10990371,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 656055,
-              "start_ms": 11001470,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81BMNmzDoHL.jpg",
-          "id": "michael-page-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-page"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-09-17",
-          "runtime_min": 194,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1799719006",
-              "type": "libex-import"
-            }
-          ],
-          "work": "through-the-looking-glass-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1799719006",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08BF72NJF",
+          "type": "libex-import"
         }
       ],
-      "title": "Through the Looking-Glass (AmazonClassics Edition)"
+      "title": "Through the Looking-Glass"
     },
     "through-the-looking-glass-and-phantasmagoria-a-poem-by-lewis-carroll-annotated": {
       "added_at": "2026-08-01",
@@ -5533,140 +5631,6 @@
         }
       ],
       "title": "Through the Looking Glass and What Alice Found There"
-    },
-    "through-the-looking-glass-annotated": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fairy-tales-folklore"
-      ],
-      "id": "through-the-looking-glass-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-hester-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B08BF72NJF",
-              "region": "us"
-            },
-            {
-              "asin": "B08BLPVY8N",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13003,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 101982,
-              "start_ms": 13003,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1171214,
-              "start_ms": 114985,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1029665,
-              "start_ms": 1286199,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1059340,
-              "start_ms": 2315864,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1107080,
-              "start_ms": 3375204,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1138799,
-              "start_ms": 4482284,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1162112,
-              "start_ms": 5621083,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 963860,
-              "start_ms": 6783195,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1550164,
-              "start_ms": 7747055,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1504002,
-              "start_ms": 9297219,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 257695,
-              "start_ms": 10801221,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 63947,
-              "start_ms": 11058916,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 25123,
-              "start_ms": 11122863,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71uqopiK7ML.jpg",
-          "id": "simon-hester-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-hester"
-          ],
-          "publisher": "Lewis Carroll",
-          "release_date": "2020-06-20",
-          "runtime_min": 185,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B08BF72NJF",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B08BLPVY8N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "through-the-looking-glass-annotated"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08BF72NJF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Through the Looking Glass (Annotated)"
     },
     "through-the-looking-glass-with-ebook": {
       "added_at": "2026-08-02",

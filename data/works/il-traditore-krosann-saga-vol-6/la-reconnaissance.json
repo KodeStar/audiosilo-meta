@@ -3256,53 +3256,7 @@
             {
               "asin": "8420429716",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PcgKaJ7ZL.jpg",
-          "id": "rogelio-ramos-gomez-rejon-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rogelio-ramos-gomez-rejon"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-01-12",
-          "runtime_min": 1061,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8420429716",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-reina-del-sur"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8420429716",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La reina del sur"
-    },
-    "la-reina-del-sur-the-queen-of-the-south": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "la-reina-del-sur-the-queen-of-the-south",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rogelio-ramos-gomez-rejon-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01MU570D6",
               "region": "us"
@@ -3438,21 +3392,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8420429716",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MU570D6",
               "type": "libex-import"
             }
           ],
-          "work": "la-reina-del-sur-the-queen-of-the-south"
+          "work": "la-reina-del-sur"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420429716",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MU570D6",
           "type": "libex-import"
         }
       ],
-      "title": "La reina del sur [The Queen of the South]"
+      "title": "La reina del sur"
     },
     "la-reina-descalza-the-barefoot-queen": {
       "added_at": "2026-07-29",
@@ -6367,6 +6331,7 @@
         "simon-rousseau"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "mystery",
         "thriller-suspense"
@@ -6557,29 +6522,7 @@
             }
           ],
           "work": "la-reine-des-neiges"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "2897365862",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La reine des neiges"
-    },
-    "la-reine-des-neiges-adapte-aux-adultes-snow-queen-adaptation-for-adults": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "simon-rousseau"
-      ],
-      "genres": [
-        "fantasy"
-      ],
-      "id": "la-reine-des-neiges-adapte-aux-adultes-snow-queen-adaptation-for-adults",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "catherine-de-seve-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6754,17 +6697,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-reine-des-neiges-adapte-aux-adultes-snow-queen-adaptation-for-adults"
+          "work": "la-reine-des-neiges"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "2897365862",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B08JM6FJJP",
           "type": "libex-import"
         }
       ],
-      "title": "La reine des neiges (adapté aux adultes) [Snow Queen (adaptation for adults)]"
+      "title": "La reine des neiges"
     },
     "la-reine-des-neiges-marlene-jobert": {
       "added_at": "2026-08-02",
@@ -13924,7 +13872,8 @@
       ],
       "genres": [
         "business",
-        "finance"
+        "finance",
+        "technology"
       ],
       "id": "la-revolucion-blockchain",
       "language": "es",
@@ -13957,32 +13906,7 @@
             }
           ],
           "work": "la-revolucion-blockchain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07CBDNPKC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La revolución blockchain"
-    },
-    "la-revolucion-blockchain-the-blockchain-revolution": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "don-tapscott",
-        "alex-tapscott"
-      ],
-      "genres": [
-        "business",
-        "finance",
-        "technology"
-      ],
-      "id": "la-revolucion-blockchain-the-blockchain-revolution",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "carlos-torres-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14009,17 +13933,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-revolucion-blockchain-the-blockchain-revolution"
+          "work": "la-revolucion-blockchain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07CBDNPKC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07RVNJSZT",
           "type": "libex-import"
         }
       ],
-      "title": "La revolución blockchain [The Blockchain Revolution]"
+      "title": "La revolución blockchain"
     },
     "la-revolucion-de-la-glucosa": {
       "added_at": "2026-07-29",
@@ -14471,15 +14400,16 @@
       ],
       "title": "La Revolución mexicana [The Mexican Revolution]"
     },
-    "la-revolucion-rusa-contada-para-escepticos-narracion-en-castellano-the-russian-revolution-told-for-s": {
+    "la-revolucion-rusa-contada-para-escepticos-the-russian-revolution-for-skeptics": {
       "added_at": "2026-07-29",
       "authors": [
         "juan-eslava-galan"
       ],
       "genres": [
-        "history"
+        "history",
+        "military-history"
       ],
-      "id": "la-revolucion-rusa-contada-para-escepticos-narracion-en-castellano-the-russian-revolution-told-for-s",
+      "id": "la-revolucion-rusa-contada-para-escepticos-the-russian-revolution-for-skeptics",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -14509,31 +14439,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-revolucion-rusa-contada-para-escepticos-narracion-en-castellano-the-russian-revolution-told-for-s"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07MWHBXRW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Revolución rusa contada para escépticos (Narración en Castellano) [The Russian Revolution Told for Skeptics (Castilian Narration)]"
-    },
-    "la-revolucion-rusa-contada-para-escepticos-the-russian-revolution-for-skeptics": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-eslava-galan"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "la-revolucion-rusa-contada-para-escepticos-the-russian-revolution-for-skeptics",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "la-revolucion-rusa-contada-para-escepticos-the-russian-revolution-for-skeptics"
+        },
         "jorge-tejedor-2017": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14567,6 +14474,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B074JF372K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07MWHBXRW",
           "type": "libex-import"
         }
       ],

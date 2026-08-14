@@ -17283,83 +17283,7 @@
             {
               "asin": "B015GCX9DQ",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11559,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
-            {
-              "length_ms": 10597453,
-              "start_ms": 11559,
-              "title": "The Hedge Knight"
-            },
-            {
-              "length_ms": 12551408,
-              "start_ms": 10609012,
-              "title": "The Sworn Sword"
-            },
-            {
-              "length_ms": 12785280,
-              "start_ms": 23160420,
-              "title": "The Mystery Knight"
-            },
-            {
-              "length_ms": 29673,
-              "start_ms": 35945700,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/5193lQsbG+L.jpg",
-          "id": "harry-lloyd-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "harry-lloyd"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2015-10-06",
-          "runtime_min": 599,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B015GCX9DQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-knight-of-the-seven-kingdoms"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B015GCX9DQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Knight of the Seven Kingdoms"
-    },
-    "a-knight-of-the-seven-kingdoms-hbo-tie-in-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "george-r-r-martin"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "short-stories"
-      ],
-      "id": "a-knight-of-the-seven-kingdoms-hbo-tie-in-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "harry-lloyd-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
             {
               "asin": "B011PVYB2A",
               "region": "us"
@@ -17397,34 +17321,44 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/A10fj7ckp5L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/5193lQsbG+L.jpg",
           "id": "harry-lloyd-2015",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "harry-lloyd"
           ],
-          "publisher": "Random House Audio",
+          "publisher": "HarperCollins",
           "release_date": "2015-10-06",
-          "runtime_min": 600,
+          "runtime_min": 599,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B015GCX9DQ",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B011PVYB2A",
               "type": "libex-import"
             }
           ],
-          "work": "a-knight-of-the-seven-kingdoms-hbo-tie-in-edition"
+          "work": "a-knight-of-the-seven-kingdoms"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B015GCX9DQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B011PVYB2A",
           "type": "libex-import"
         }
       ],
-      "title": "A Knight of the Seven Kingdoms (HBO Tie-In Edition)"
+      "title": "A Knight of the Seven Kingdoms"
     },
     "a-knight-of-the-word": {
       "added_at": "2026-08-02",

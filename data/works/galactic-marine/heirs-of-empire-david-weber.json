@@ -985,6 +985,7 @@
         "epic-fantasy",
         "fantasy",
         "nature",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "heirs-of-the-blade",
@@ -1285,33 +1286,7 @@
             }
           ],
           "work": "heirs-of-the-blade"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529050391",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Heirs of the Blade"
-    },
-    "heirs-of-the-blade-shadows-of-the-apt-7": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "heirs-of-the-blade-shadows-of-the-apt-7",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1610,17 +1585,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "heirs-of-the-blade-shadows-of-the-apt-7"
+          "work": "heirs-of-the-blade"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529050391",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMP1V6CS",
           "type": "libex-import"
         }
       ],
-      "title": "Heirs of the Blade: Shadows of the Apt 7"
+      "title": "Heirs of the Blade"
     },
     "heirs-of-the-body": {
       "added_at": "2026-07-29",

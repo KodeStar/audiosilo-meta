@@ -6592,7 +6592,8 @@
         "action-adventure",
         "childrens",
         "mystery",
-        "thriller-suspense"
+        "thriller-suspense",
+        "young-adult"
       ],
       "id": "silverfin",
       "language": "en",
@@ -6722,6 +6723,181 @@
             }
           ],
           "work": "silverfin"
+        },
+        "nathaniel-parker-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007GE23FS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1118088,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 993628,
+              "start_ms": 1118088,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 963860,
+              "start_ms": 2111716,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 706676,
+              "start_ms": 3075576,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1009000,
+              "start_ms": 3782252,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1147019,
+              "start_ms": 4791252,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1168846,
+              "start_ms": 5938271,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1046105,
+              "start_ms": 7107117,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 804061,
+              "start_ms": 8153222,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1189140,
+              "start_ms": 8957283,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1236416,
+              "start_ms": 10146423,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 707791,
+              "start_ms": 11382839,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1060084,
+              "start_ms": 12090630,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1440520,
+              "start_ms": 13150714,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1435318,
+              "start_ms": 14591234,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 756042,
+              "start_ms": 16026552,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 956430,
+              "start_ms": 16782594,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 611614,
+              "start_ms": 17739024,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1202283,
+              "start_ms": 18350638,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1232794,
+              "start_ms": 19552921,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1277376,
+              "start_ms": 20785715,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1003102,
+              "start_ms": 22063091,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 893272,
+              "start_ms": 23066193,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 869262,
+              "start_ms": 23959465,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1154543,
+              "start_ms": 24828727,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1069372,
+              "start_ms": 25983270,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 958102,
+              "start_ms": 27052642,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1210781,
+              "start_ms": 28010744,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1323862,
+              "start_ms": 29221525,
+              "title": "Chapter 29"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61f3X5AUr9L.jpg",
+          "id": "nathaniel-parker-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nathaniel-parker"
+          ],
+          "publisher": "Ian Fleming Publications Ltd",
+          "release_date": "2012-03-05",
+          "runtime_min": 508,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007GE23FS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "silverfin"
         }
       },
       "sources": [
@@ -6733,6 +6909,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V8HGTC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B007GE23FS",
           "type": "libex-import"
         }
       ],

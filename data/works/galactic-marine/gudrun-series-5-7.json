@@ -6225,54 +6225,7 @@
             {
               "asin": "6073158920",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81HX5blKxjL.jpg",
-          "id": "carlos-torres-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-torres"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-11-16",
-          "runtime_min": 799,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "6073158920",
-              "type": "libex-import"
-            }
-          ],
-          "work": "guia-para-invertir"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "6073158920",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guía para invertir"
-    },
-    "guia-para-invertir-investment-guide": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-t-kiyosaki"
-      ],
-      "genres": [
-        "business",
-        "finance"
-      ],
-      "id": "guia-para-invertir-investment-guide",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-torres-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0778RVSL2",
               "region": "us"
@@ -6553,21 +6506,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "6073158920",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0778RVSL2",
               "type": "libex-import"
             }
           ],
-          "work": "guia-para-invertir-investment-guide"
+          "work": "guia-para-invertir"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073158920",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0778RVSL2",
           "type": "libex-import"
         }
       ],
-      "title": "Guía para invertir [Investment Guide]"
+      "title": "Guía para invertir"
     },
     "guia-para-la-fotografia-digital-guide-to-digital-photography": {
       "added_at": "2026-07-29",
@@ -6675,6 +6638,7 @@
         "fernando-alberca-de-castro"
       ],
       "genres": [
+        "action-adventure",
         "education",
         "parenting-relationships",
         "young-adult"
@@ -6710,31 +6674,7 @@
             }
           ],
           "work": "guia-para-ser-buenos-padres-de-hijos-adolescentes-a-guide-to-being-good-fathers-of-teenage-children"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08D6Y7BG4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guía para ser buenos padres de hijos adolescentes [A Guide to Being Good Fathers of Teenage Children]"
-    },
-    "guia-para-ser-buenos-padres-de-hijos-adolescentes-narracion-en-castellano-guide-to-be-good-parents-o": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernando-alberca-de-castro"
-      ],
-      "genres": [
-        "action-adventure",
-        "parenting-relationships",
-        "young-adult"
-      ],
-      "id": "guia-para-ser-buenos-padres-de-hijos-adolescentes-narracion-en-castellano-guide-to-be-good-parents-o",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tony-corvillo-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6761,17 +6701,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "guia-para-ser-buenos-padres-de-hijos-adolescentes-narracion-en-castellano-guide-to-be-good-parents-o"
+          "work": "guia-para-ser-buenos-padres-de-hijos-adolescentes-a-guide-to-being-good-fathers-of-teenage-children"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08D6Y7BG4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08CMJ9C3G",
           "type": "libex-import"
         }
       ],
-      "title": "Guía para ser buenos padres de hijos adolescentes (Narración en Castellano) [Guide to Be Good Parents of Teenage Children]"
+      "title": "Guía para ser buenos padres de hijos adolescentes [A Guide to Being Good Fathers of Teenage Children]"
     },
     "guia-para-un-embarazo-consciente-guide-to-a-conscious-pregnancy": {
       "added_at": "2026-07-29",
@@ -7686,7 +7631,7 @@
       ],
       "title": "Guías Espirituales [Spirit Guides]"
     },
-    "guias-hbr-centrate-en-el-trabajo-importante-hbr-guidelines-focus-on-the-important-work": {
+    "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano": {
       "added_at": "2026-07-29",
       "authors": [
         "harvard-business-review",
@@ -7701,10 +7646,47 @@
       "genres": [
         "business"
       ],
-      "id": "guias-hbr-centrate-en-el-trabajo-importante-hbr-guidelines-focus-on-the-important-work",
+      "id": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "julio-jordan-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09KP1LQR5",
+              "region": "es"
+            },
+            {
+              "asin": "B09KP2516Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71oY8O6v2AL.jpg",
+          "id": "julio-jordan-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julio-jordan"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-11-08",
+          "runtime_min": 250,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09KP1LQR5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09KP2516Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano"
+        },
         "sebastian-rosas-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7933,63 +7915,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "guias-hbr-centrate-en-el-trabajo-importante-hbr-guidelines-focus-on-the-important-work"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09DHZCTMP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guías HBR: Céntrate en el Trabajo Importante [HBR Guidelines: Focus on the Important Work]"
-    },
-    "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "harvard-business-review",
-        "nuria-molines-galarza"
-      ],
-      "credits": [
-        {
-          "person": "nuria-molines-galarza",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julio-jordan-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09KP1LQR5",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71oY8O6v2AL.jpg",
-          "id": "julio-jordan-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julio-jordan"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-11-08",
-          "runtime_min": 250,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09KP1LQR5",
-              "type": "libex-import"
-            }
-          ],
           "work": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano"
         }
       },
@@ -7998,66 +7923,19 @@
           "imported_at": "2026-07-29",
           "ref": "B09KP1LQR5",
           "type": "libex-import"
-        }
-      ],
-      "title": "Guías HBR: Céntrate en el Trabajo Importante (Narración en Castellano)"
-    },
-    "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano-hbr-guides-focus-on-the-importan": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "harvard-business-review",
-        "nuria-molines-galarza"
-      ],
-      "credits": [
+        },
         {
-          "person": "nuria-molines-galarza",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano-hbr-guides-focus-on-the-importan",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julio-jordan-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09KP2516Z",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71oY8O6v2AL.jpg",
-          "id": "julio-jordan-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julio-jordan"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-11-08",
-          "runtime_min": 250,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09KP2516Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "guias-hbr-centrate-en-el-trabajo-importante-narracion-en-castellano-hbr-guides-focus-on-the-importan"
-        }
-      },
-      "sources": [
+          "imported_at": "2026-07-29",
+          "ref": "B09DHZCTMP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09KP2516Z",
           "type": "libex-import"
         }
       ],
-      "title": "Guías HBR: Céntrate en el Trabajo Importante (Narración en Castellano) [HBR Guides: Focus on the Important Work]"
+      "title": "Guías HBR: Céntrate en el Trabajo Importante (Narración en Castellano)"
     },
     "guias-hbr-como-superar-el-burnout-narracion-en-castellano": {
       "added_at": "2026-07-29",
@@ -8085,60 +7963,7 @@
             {
               "asin": "B09KNZQ4X3",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71mUJFsGSBL.jpg",
-          "id": "diego-pizarro-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "diego-pizarro"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-11-05",
-          "runtime_min": 371,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09KNZQ4X3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "guias-hbr-como-superar-el-burnout-narracion-en-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09KNZQ4X3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guías HBR: Cómo superar el Burnout (Narración en Castellano)"
-    },
-    "guias-hbr-como-superar-el-burnout-narracion-en-castellano-hbr-guides-how-to-overcome-burnout": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "harvard-business-review",
-        "irene-munoz-serrulla"
-      ],
-      "credits": [
-        {
-          "person": "irene-munoz-serrulla",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "guias-hbr-como-superar-el-burnout-narracion-en-castellano-hbr-guides-how-to-overcome-burnout",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "diego-pizarro-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09KNZ2ZRJ",
               "region": "us"
@@ -8324,21 +8149,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09KNZQ4X3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09KNZ2ZRJ",
               "type": "libex-import"
             }
           ],
-          "work": "guias-hbr-como-superar-el-burnout-narracion-en-castellano-hbr-guides-how-to-overcome-burnout"
+          "work": "guias-hbr-como-superar-el-burnout-narracion-en-castellano"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09KNZQ4X3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09KNZ2ZRJ",
           "type": "libex-import"
         }
       ],
-      "title": "Guías HBR: Cómo superar el Burnout (Narración en Castellano) [HBR Guides: How to Overcome Burnout]"
+      "title": "Guías HBR: Cómo superar el Burnout (Narración en Castellano)"
     },
     "guias-hbr-gestion-de-proyectos-hbr-guides-project-management": {
       "added_at": "2026-07-29",
@@ -8828,62 +8663,7 @@
             {
               "asin": "B09LJ39H27",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/717f58Y-biL.jpg",
-          "id": "arturo-lopez-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "arturo-lopez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-11-12",
-          "runtime_min": 283,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09LJ39H27",
-              "type": "libex-import"
-            }
-          ],
-          "work": "guias-hbr-mejora-tu-productividad"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09LJ39H27",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guías HBR: Mejora tu Productividad"
-    },
-    "guias-hbr-mejora-tu-productividad-hbr-guides-improve-your-productivity": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "harvard-business-review",
-        "begona-merino-gomez"
-      ],
-      "credits": [
-        {
-          "person": "begona-merino-gomez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "guias-hbr-mejora-tu-productividad-hbr-guides-improve-your-productivity",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "arturo-lopez-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09LJ2JGVS",
               "region": "us"
@@ -9119,21 +8899,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09LJ39H27",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09LJ2JGVS",
               "type": "libex-import"
             }
           ],
-          "work": "guias-hbr-mejora-tu-productividad-hbr-guides-improve-your-productivity"
+          "work": "guias-hbr-mejora-tu-productividad"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09LJ39H27",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09LJ2JGVS",
           "type": "libex-import"
         }
       ],
-      "title": "Guías HBR: Mejora tu Productividad [HBR Guides: Improve Your Productivity]"
+      "title": "Guías HBR: Mejora tu Productividad"
     },
     "guida-alla-caccia-delle-belle-donne": {
       "added_at": "2026-08-02",

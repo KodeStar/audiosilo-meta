@@ -5762,12 +5762,41 @@
       ],
       "genres": [
         "comedy-humor",
+        "literary-fiction",
         "parenting-relationships"
       ],
       "id": "the-revolving-door-of-life",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-rintoul-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0157GK0DI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MLeykMkNL.jpg",
+          "id": "david-rintoul-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-rintoul"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2015-09-11",
+          "runtime_min": 525,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0157GK0DI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-revolving-door-of-life"
+        },
         "robert-ian-mackenzie-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6159,59 +6188,14 @@
           "imported_at": "2026-07-29",
           "ref": "B01AOFR0BM",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Revolving Door of Life"
-    },
-    "the-revolving-door-of-life-44-scotland-street-book-10": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alexander-mccall-smith"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "the-revolving-door-of-life-44-scotland-street-book-10",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-rintoul-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0157GK0DI",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MLeykMkNL.jpg",
-          "id": "david-rintoul-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-rintoul"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2015-09-11",
-          "runtime_min": 525,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0157GK0DI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-revolving-door-of-life-44-scotland-street-book-10"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0157GK0DI",
           "type": "libex-import"
         }
       ],
-      "title": "The Revolving Door of Life: 44 Scotland Street, Book 10"
+      "title": "The Revolving Door of Life"
     },
     "the-reweaving": {
       "added_at": "2026-08-01",

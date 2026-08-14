@@ -8214,7 +8214,8 @@
       ],
       "genres": [
         "action-adventure",
-        "childrens"
+        "childrens",
+        "coming-of-age"
       ],
       "id": "field-trip-of-horror",
       "language": "en",
@@ -8317,12 +8318,112 @@
             }
           ],
           "work": "field-trip-of-horror"
+        },
+        "dave-droxler-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GF385F6N",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 23381,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 927451,
+              "start_ms": 23381,
+              "title": "Chapter 1: Field Trip"
+            },
+            {
+              "length_ms": 300326,
+              "start_ms": 950832,
+              "title": "Chapter 2: Snow Spook Mountain"
+            },
+            {
+              "length_ms": 542557,
+              "start_ms": 1251158,
+              "title": "Chapter 3: Lessons"
+            },
+            {
+              "length_ms": 281007,
+              "start_ms": 1793715,
+              "title": "Chapter 4: Cold of the Night"
+            },
+            {
+              "length_ms": 364228,
+              "start_ms": 2074722,
+              "title": "Chapter 5: Going Astray"
+            },
+            {
+              "length_ms": 371681,
+              "start_ms": 2438950,
+              "title": "Chapter 6: The Professor"
+            },
+            {
+              "length_ms": 579709,
+              "start_ms": 2810631,
+              "title": "Chapter 7: Pied Piper"
+            },
+            {
+              "length_ms": 490567,
+              "start_ms": 3390340,
+              "title": "Chapter 8: I Told You So"
+            },
+            {
+              "length_ms": 346395,
+              "start_ms": 3880907,
+              "title": "Chapter 9: Slushy"
+            },
+            {
+              "length_ms": 313701,
+              "start_ms": 4227302,
+              "title": "Chapter 10: Priorities"
+            },
+            {
+              "length_ms": 56610,
+              "start_ms": 4541003,
+              "title": "Diary of Nate the Minecraft Ninja 4"
+            },
+            {
+              "length_ms": 30277,
+              "start_ms": 4597613,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HxPNNsTZL.jpg",
+          "id": "dave-droxler-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dave-droxler"
+          ],
+          "publisher": "Write Blocked Publishing",
+          "release_date": "2026-01-05",
+          "runtime_min": 76,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GF385F6N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "field-trip-of-horror"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B0C3FPRD4Q",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GF385F6N",
           "type": "libex-import"
         }
       ],

@@ -2517,8 +2517,10 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
         "mystery",
         "police-procedural",
+        "politics",
         "thriller-suspense"
       ],
       "id": "nash-falls",
@@ -2535,6 +2537,10 @@
             },
             {
               "asin": "B0F6NYKSKX",
+              "region": "us"
+            },
+            {
+              "asin": "B0FK9ZFV1K",
               "region": "us"
             }
           ],
@@ -2562,6 +2568,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0F6NYKSKX",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FK9ZFV1K",
+              "type": "libex-import"
             }
           ],
           "work": "nash-falls"
@@ -2572,66 +2583,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0DZG5359Y",
           "type": "libex-import"
-        }
-      ],
-      "title": "Nash Falls"
-    },
-    "nash-falls-walter-nash-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "nash-falls-walter-nash-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christine-lakin-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0FK9ZFV1K",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81MufMYLt-L.jpg",
-          "id": "christine-lakin-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christine-lakin",
-            "larry-herron",
-            "macleod-andrews",
-            "shiromi-arserio",
-            "will-collyer"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2025-10-28",
-          "runtime_min": 774,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FK9ZFV1K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nash-falls-walter-nash-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FK9ZFV1K",
           "type": "libex-import"
         }
       ],
-      "title": "Nash Falls: Walter Nash Book 1"
+      "title": "Nash Falls"
     },
     "nashville-boxed-set-series-part-one-two-three-and-four": {
       "added_at": "2026-07-29",

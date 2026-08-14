@@ -7859,12 +7859,45 @@
             }
           ],
           "work": "hollow"
+        },
+        "full-cast-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H1XMVWCB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Kj1eVj+RL.jpg",
+          "id": "full-cast-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-09-21",
+          "runtime_min": 900,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H1XMVWCB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hollow"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0G15PS1TF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H1XMVWCB",
           "type": "libex-import"
         }
       ],
@@ -9603,58 +9636,6 @@
         }
       ],
       "title": "Hollow Dolls"
-    },
-    "hollow-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "susanne-valenti",
-        "caroline-peckham"
-      ],
-      "genres": [
-        "fantasy",
-        "romance"
-      ],
-      "id": "hollow-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H1XMVWCB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Kj1eVj+RL.jpg",
-          "id": "full-cast-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-09-21",
-          "runtime_min": 900,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H1XMVWCB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hollow-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H1XMVWCB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hollow [Dramatized Adaptation]"
     },
     "hollow-earth": {
       "added_at": "2026-07-29",

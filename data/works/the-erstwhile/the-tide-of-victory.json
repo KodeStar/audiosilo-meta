@@ -5292,6 +5292,7 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
+        "mystery",
         "nature"
       ],
       "id": "the-tiger-and-the-wolf",
@@ -5572,32 +5573,7 @@
             }
           ],
           "work": "the-tiger-and-the-wolf"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B071JW2X84",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Tiger and the Wolf"
-    },
-    "the-tiger-and-the-wolf-echoes-of-the-fall-1-the": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "mystery"
-      ],
-      "id": "the-tiger-and-the-wolf-echoes-of-the-fall-1-the",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kyla-garcia-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5876,17 +5852,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-tiger-and-the-wolf-echoes-of-the-fall-1-the"
+          "work": "the-tiger-and-the-wolf"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B071JW2X84",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNG12T3J",
           "type": "libex-import"
         }
       ],
-      "title": "The Tiger and the Wolf: Echoes of the Fall 1, The"
+      "title": "The Tiger and the Wolf"
     },
     "the-tiger-at-midnight": {
       "added_at": "2026-08-02",
@@ -6890,7 +6871,13 @@
         "philip-pullman"
       ],
       "genres": [
-        "thriller-suspense"
+        "arts-entertainment",
+        "childrens",
+        "historical-fiction",
+        "mystery",
+        "parenting-relationships",
+        "thriller-suspense",
+        "young-adult"
       ],
       "id": "the-tiger-in-the-well",
       "language": "en",
@@ -6903,167 +6890,186 @@
             {
               "asin": "B09GGCXP3B",
               "region": "us"
+            },
+            {
+              "asin": "B0BDHYF937",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 20386,
+              "length_ms": 19852,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 69079,
-              "start_ms": 20386,
-              "title": "Historical Note"
+              "length_ms": 68452,
+              "start_ms": 19852,
+              "title": "Certain Items of Historical Interest: 1881"
             },
             {
-              "length_ms": 1724244,
-              "start_ms": 89465,
-              "title": "Book  1 : Chapter One : The Process Server"
+              "length_ms": 3727,
+              "start_ms": 88304,
+              "title": "Book One"
             },
             {
-              "length_ms": 1652819,
-              "start_ms": 1813709,
-              "title": "Chapter Two : The Journalist"
+              "length_ms": 1721538,
+              "start_ms": 92031,
+              "title": "Chapter One: The Process-Server"
             },
             {
-              "length_ms": 1498128,
-              "start_ms": 3466528,
-              "title": "Chapter Three : The Marriage Register"
+              "length_ms": 1652796,
+              "start_ms": 1813569,
+              "title": "Chapter Two: The Journalist"
             },
             {
-              "length_ms": 1442934,
-              "start_ms": 4964656,
-              "title": "Chapter Four : The Tax Collectors"
+              "length_ms": 1498476,
+              "start_ms": 3466365,
+              "title": "Chapter Three: The Marriage Register"
             },
             {
-              "length_ms": 1807510,
-              "start_ms": 6407590,
-              "title": "Chapter Five : Target Practise"
+              "length_ms": 1442771,
+              "start_ms": 4964841,
+              "title": "Chapter Four: The Tax-Collectors"
             },
             {
-              "length_ms": 2180980,
-              "start_ms": 8215100,
-              "title": "Chapter Six : Middle Temple Lane"
+              "length_ms": 1807580,
+              "start_ms": 6407612,
+              "title": "Chapter Five: Target Practice"
             },
             {
-              "length_ms": 1466084,
-              "start_ms": 10396080,
-              "title": "Chapter Seven : The House by the Canal"
+              "length_ms": 2181050,
+              "start_ms": 8215192,
+              "title": "Chapter Six: Middle Temple Lane"
             },
             {
-              "length_ms": 1153892,
-              "start_ms": 11862164,
-              "title": "Chapter Eight : The Knife-Man"
+              "length_ms": 1466038,
+              "start_ms": 10396242,
+              "title": "Chapter Seven: The House by the Canal"
             },
             {
-              "length_ms": 996554,
-              "start_ms": 13016056,
-              "title": "Chapter Nine : The Eminent QC"
+              "length_ms": 1154171,
+              "start_ms": 11862280,
+              "title": "Chapter Eight: The Knife-Man"
             },
             {
-              "length_ms": 713340,
-              "start_ms": 14012610,
-              "title": "Chapter Ten : Custody"
+              "length_ms": 996623,
+              "start_ms": 13016451,
+              "title": "Chapter Nine: The Eminent QC"
             },
             {
-              "length_ms": 784253,
-              "start_ms": 14725950,
-              "title": "Book 2 : Chapter Eleven : Villiers Street"
+              "length_ms": 713456,
+              "start_ms": 14013074,
+              "title": "Chapter Ten: Custody"
             },
             {
-              "length_ms": 1878540,
-              "start_ms": 15510203,
-              "title": "Chapter Twelve : The Bank Manager"
+              "length_ms": 3672,
+              "start_ms": 14726530,
+              "title": "Book Two"
             },
             {
-              "length_ms": 2161754,
-              "start_ms": 17388743,
-              "title": "Chapter Thirteen : The Tea-Shop"
+              "length_ms": 780442,
+              "start_ms": 14730202,
+              "title": "Chapter Eleven: Villiers Street"
             },
             {
-              "length_ms": 1139612,
-              "start_ms": 19550497,
-              "title": "Chapter Fourteen : The Graveyard"
+              "length_ms": 1878610,
+              "start_ms": 15510644,
+              "title": "Chapter Twelve: The Bank Manager"
             },
             {
-              "length_ms": 1443538,
-              "start_ms": 20690109,
-              "title": "Chapter Fifteen : The Mission"
+              "length_ms": 2161824,
+              "start_ms": 17389254,
+              "title": "Chapter Thirteen: The Tea-Shop"
             },
             {
-              "length_ms": 1640629,
-              "start_ms": 22133647,
-              "title": "Chapter Sixteen : Playing with Bricks"
+              "length_ms": 1139983,
+              "start_ms": 19551078,
+              "title": "Chapter Fourteen: The Graveyard"
             },
             {
-              "length_ms": 1514196,
-              "start_ms": 23774276,
-              "title": "Chapter Seventeen : Just a Man Working"
+              "length_ms": 1443654,
+              "start_ms": 20691061,
+              "title": "Chapter Fifteen: The Mission"
             },
             {
-              "length_ms": 2333024,
-              "start_ms": 25288472,
-              "title": "Chapter Eighteen : The Order of Sanctissima Sophia"
+              "length_ms": 1640838,
+              "start_ms": 22134715,
+              "title": "Chapter Sixteen: Playing with Bricks"
             },
             {
-              "length_ms": 1779623,
-              "start_ms": 27621496,
-              "title": "Chapter Nineteen : Rebecca's Story"
+              "length_ms": 1514428,
+              "start_ms": 23775553,
+              "title": "Chapter Seventeen: Just a Man Working"
             },
             {
-              "length_ms": 1488561,
-              "start_ms": 29401119,
-              "title": "Chapter Twenty : Henna"
+              "length_ms": 2333466,
+              "start_ms": 25289981,
+              "title": "Chapter Eighteen: The Order of Sanctissima Sophia"
             },
             {
-              "length_ms": 2036622,
-              "start_ms": 30889680,
-              "title": "Book Three : Chapter Twenty One : The Valet"
+              "length_ms": 1779972,
+              "start_ms": 27623447,
+              "title": "Chapter Nineteen: Rebecca's Story"
             },
             {
-              "length_ms": 1523577,
-              "start_ms": 32926302,
-              "title": "Chapter Twenty Two : The Cellar"
+              "length_ms": 1488608,
+              "start_ms": 29403419,
+              "title": "Chapter Twenty: Henna"
             },
             {
-              "length_ms": 1712703,
-              "start_ms": 34449879,
-              "title": "Chapter Twenty Three : No Juwes"
+              "length_ms": 3250,
+              "start_ms": 30892027,
+              "title": "Book Three"
             },
             {
-              "length_ms": 2055291,
-              "start_ms": 36162582,
-              "title": "Chapter Twenty Four : The Entry in the Ledger"
+              "length_ms": 2033511,
+              "start_ms": 30895277,
+              "title": "Chapter Twenty-one: The Valet"
             },
             {
-              "length_ms": 2170044,
-              "start_ms": 38217873,
-              "title": "Chapter Twenty Five : The Battle of Telegraph Road"
+              "length_ms": 1523879,
+              "start_ms": 32928788,
+              "title": "Chapter Twenty-two: The Cellar"
             },
             {
-              "length_ms": 2127714,
-              "start_ms": 40387917,
-              "title": "Chapter Twenty Six : Blackbourne Water"
+              "length_ms": 1713377,
+              "start_ms": 34452667,
+              "title": "Chapter Twenty-three: No Juwes"
             },
             {
-              "length_ms": 2352181,
-              "start_ms": 42515631,
-              "title": "Chapter Twenty Seven : The Tiger in the Well"
+              "length_ms": 2055709,
+              "start_ms": 36166044,
+              "title": "Chapter Twenty-four: The Entry in the Ledger"
             },
             {
-              "length_ms": 2041475,
-              "start_ms": 44867812,
-              "title": "Chapter Twenty Eight : Indian Ink"
+              "length_ms": 2170415,
+              "start_ms": 38221753,
+              "title": "Chapter Twenty-five: The Battle of Telegraph Road"
             },
             {
-              "length_ms": 1749344,
-              "start_ms": 46909287,
-              "title": "Chapter Twenty Nine : Rabbits"
+              "length_ms": 2128364,
+              "start_ms": 40392168,
+              "title": "Chapter Twenty-six: Blackbourne Water"
             },
             {
-              "length_ms": 41006,
-              "start_ms": 48658631,
+              "length_ms": 2352018,
+              "start_ms": 42520532,
+              "title": "Chapter Twenty-seven: The Tiger in the Well"
+            },
+            {
+              "length_ms": 2041521,
+              "start_ms": 44872550,
+              "title": "Chapter Twenty-eight: Indian Ink"
+            },
+            {
+              "length_ms": 1748276,
+              "start_ms": 46914071,
+              "title": "Chapter Twenty-nine: Rabbits"
+            },
+            {
+              "length_ms": 36686,
+              "start_ms": 48662347,
               "title": "End Credits"
             }
           ],
@@ -7081,6 +7087,121 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09GGCXP3B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDHYF937",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-tiger-in-the-well"
+        },
+        "anton-lesser-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VACERE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3120205,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3041257,
+              "start_ms": 3120205,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2938996,
+              "start_ms": 6161462,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2867525,
+              "start_ms": 9100458,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2977681,
+              "start_ms": 11967983,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2871937,
+              "start_ms": 14945664,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2864832,
+              "start_ms": 17817601,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2807989,
+              "start_ms": 20682433,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2930869,
+              "start_ms": 23490422,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2889723,
+              "start_ms": 26421291,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2898686,
+              "start_ms": 29311014,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2886705,
+              "start_ms": 32209700,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3058811,
+              "start_ms": 35096405,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3013718,
+              "start_ms": 38155216,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3122155,
+              "start_ms": 41168934,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2983996,
+              "start_ms": 44291089,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zG9c0zd8L.jpg",
+          "id": "anton-lesser-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-lesser"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2005-02-22",
+          "runtime_min": 787,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VACERE",
               "type": "libex-import"
             }
           ],
@@ -7267,351 +7388,14 @@
           "imported_at": "2026-08-02",
           "ref": "B002VA9QYI",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Tiger in the Well"
-    },
-    "the-tiger-in-the-well-a-sally-lockhart-mystery": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "philip-pullman"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "historical-fiction",
-        "mystery",
-        "parenting-relationships",
-        "young-adult"
-      ],
-      "id": "the-tiger-in-the-well-a-sally-lockhart-mystery",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adjoa-andoh-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BDHYF937",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19852,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 68452,
-              "start_ms": 19852,
-              "title": "Certain Items of Historical Interest: 1881"
-            },
-            {
-              "length_ms": 3727,
-              "start_ms": 88304,
-              "title": "Book One"
-            },
-            {
-              "length_ms": 1721538,
-              "start_ms": 92031,
-              "title": "Chapter One: The Process-Server"
-            },
-            {
-              "length_ms": 1652796,
-              "start_ms": 1813569,
-              "title": "Chapter Two: The Journalist"
-            },
-            {
-              "length_ms": 1498476,
-              "start_ms": 3466365,
-              "title": "Chapter Three: The Marriage Register"
-            },
-            {
-              "length_ms": 1442771,
-              "start_ms": 4964841,
-              "title": "Chapter Four: The Tax-Collectors"
-            },
-            {
-              "length_ms": 1807580,
-              "start_ms": 6407612,
-              "title": "Chapter Five: Target Practice"
-            },
-            {
-              "length_ms": 2181050,
-              "start_ms": 8215192,
-              "title": "Chapter Six: Middle Temple Lane"
-            },
-            {
-              "length_ms": 1466038,
-              "start_ms": 10396242,
-              "title": "Chapter Seven: The House by the Canal"
-            },
-            {
-              "length_ms": 1154171,
-              "start_ms": 11862280,
-              "title": "Chapter Eight: The Knife-Man"
-            },
-            {
-              "length_ms": 996623,
-              "start_ms": 13016451,
-              "title": "Chapter Nine: The Eminent QC"
-            },
-            {
-              "length_ms": 713456,
-              "start_ms": 14013074,
-              "title": "Chapter Ten: Custody"
-            },
-            {
-              "length_ms": 3672,
-              "start_ms": 14726530,
-              "title": "Book Two"
-            },
-            {
-              "length_ms": 780442,
-              "start_ms": 14730202,
-              "title": "Chapter Eleven: Villiers Street"
-            },
-            {
-              "length_ms": 1878610,
-              "start_ms": 15510644,
-              "title": "Chapter Twelve: The Bank Manager"
-            },
-            {
-              "length_ms": 2161824,
-              "start_ms": 17389254,
-              "title": "Chapter Thirteen: The Tea-Shop"
-            },
-            {
-              "length_ms": 1139983,
-              "start_ms": 19551078,
-              "title": "Chapter Fourteen: The Graveyard"
-            },
-            {
-              "length_ms": 1443654,
-              "start_ms": 20691061,
-              "title": "Chapter Fifteen: The Mission"
-            },
-            {
-              "length_ms": 1640838,
-              "start_ms": 22134715,
-              "title": "Chapter Sixteen: Playing with Bricks"
-            },
-            {
-              "length_ms": 1514428,
-              "start_ms": 23775553,
-              "title": "Chapter Seventeen: Just a Man Working"
-            },
-            {
-              "length_ms": 2333466,
-              "start_ms": 25289981,
-              "title": "Chapter Eighteen: The Order of Sanctissima Sophia"
-            },
-            {
-              "length_ms": 1779972,
-              "start_ms": 27623447,
-              "title": "Chapter Nineteen: Rebecca's Story"
-            },
-            {
-              "length_ms": 1488608,
-              "start_ms": 29403419,
-              "title": "Chapter Twenty: Henna"
-            },
-            {
-              "length_ms": 3250,
-              "start_ms": 30892027,
-              "title": "Book Three"
-            },
-            {
-              "length_ms": 2033511,
-              "start_ms": 30895277,
-              "title": "Chapter Twenty-one: The Valet"
-            },
-            {
-              "length_ms": 1523879,
-              "start_ms": 32928788,
-              "title": "Chapter Twenty-two: The Cellar"
-            },
-            {
-              "length_ms": 1713377,
-              "start_ms": 34452667,
-              "title": "Chapter Twenty-three: No Juwes"
-            },
-            {
-              "length_ms": 2055709,
-              "start_ms": 36166044,
-              "title": "Chapter Twenty-four: The Entry in the Ledger"
-            },
-            {
-              "length_ms": 2170415,
-              "start_ms": 38221753,
-              "title": "Chapter Twenty-five: The Battle of Telegraph Road"
-            },
-            {
-              "length_ms": 2128364,
-              "start_ms": 40392168,
-              "title": "Chapter Twenty-six: Blackbourne Water"
-            },
-            {
-              "length_ms": 2352018,
-              "start_ms": 42520532,
-              "title": "Chapter Twenty-seven: The Tiger in the Well"
-            },
-            {
-              "length_ms": 2041521,
-              "start_ms": 44872550,
-              "title": "Chapter Twenty-eight: Indian Ink"
-            },
-            {
-              "length_ms": 1748276,
-              "start_ms": 46914071,
-              "title": "Chapter Twenty-nine: Rabbits"
-            },
-            {
-              "length_ms": 36686,
-              "start_ms": 48662347,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hxSAVBDQL.jpg",
-          "id": "adjoa-andoh-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adjoa-andoh"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2022-09-20",
-          "runtime_min": 811,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BDHYF937",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-tiger-in-the-well-a-sally-lockhart-mystery"
         },
-        "anton-lesser-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002VACERE",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3120205,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3041257,
-              "start_ms": 3120205,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2938996,
-              "start_ms": 6161462,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2867525,
-              "start_ms": 9100458,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2977681,
-              "start_ms": 11967983,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2871937,
-              "start_ms": 14945664,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2864832,
-              "start_ms": 17817601,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2807989,
-              "start_ms": 20682433,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2930869,
-              "start_ms": 23490422,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2889723,
-              "start_ms": 26421291,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2898686,
-              "start_ms": 29311014,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2886705,
-              "start_ms": 32209700,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 3058811,
-              "start_ms": 35096405,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 3013718,
-              "start_ms": 38155216,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 3122155,
-              "start_ms": 41168934,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2983996,
-              "start_ms": 44291089,
-              "title": "Chapter 16"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zG9c0zd8L.jpg",
-          "id": "anton-lesser-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anton-lesser"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2005-02-22",
-          "runtime_min": 787,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002VACERE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-tiger-in-the-well-a-sally-lockhart-mystery"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002VACERE",
           "type": "libex-import"
         }
       ],
-      "title": "The Tiger in the Well: A Sally Lockhart Mystery"
+      "title": "The Tiger in the Well"
     },
     "the-tiger-in-winter-dramatized-adaptation": {
       "added_at": "2026-07-30T14:42:56+01:00",

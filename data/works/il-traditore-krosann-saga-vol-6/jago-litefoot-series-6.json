@@ -8915,10 +8915,12 @@
         "steve-higgs"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "occult",
         "paranormal",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "jailhouse-golem",
       "language": "en",
@@ -9093,33 +9095,7 @@
             }
           ],
           "work": "jailhouse-golem"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09RBC9PNK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Jailhouse Golem"
-    },
-    "jailhouse-golem-a-novella": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "steve-higgs"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "occult",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "jailhouse-golem-a-novella",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "charles-robert-fox-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9288,17 +9264,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "jailhouse-golem-a-novella"
+          "work": "jailhouse-golem"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09RBC9PNK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GT6MM1PH",
           "type": "libex-import"
         }
       ],
-      "title": "Jailhouse Golem: A Novella"
+      "title": "Jailhouse Golem"
     },
     "jailhouse-strong": {
       "added_at": "2026-07-29",

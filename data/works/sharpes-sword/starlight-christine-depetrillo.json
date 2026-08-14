@@ -344,6 +344,156 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "macleod-andrews-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0062957481",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 605297,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2605255,
+              "start_ms": 605297,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1253622,
+              "start_ms": 3210552,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2457739,
+              "start_ms": 4464174,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2871008,
+              "start_ms": 6921913,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 880361,
+              "start_ms": 9792921,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1084093,
+              "start_ms": 10673282,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1132297,
+              "start_ms": 11757375,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 819246,
+              "start_ms": 12889672,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2082899,
+              "start_ms": 13708918,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1033613,
+              "start_ms": 15791817,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 691908,
+              "start_ms": 16825430,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 741506,
+              "start_ms": 17517338,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1087901,
+              "start_ms": 18258844,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1549072,
+              "start_ms": 19346745,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1316107,
+              "start_ms": 20895817,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1573616,
+              "start_ms": 22211924,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1530195,
+              "start_ms": 23785540,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 859463,
+              "start_ms": 25315735,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1112607,
+              "start_ms": 26175198,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 947049,
+              "start_ms": 27287805,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 715871,
+              "start_ms": 28234854,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 453671,
+              "start_ms": 28950725,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 963627,
+              "start_ms": 29404396,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81oumkWKvBL.jpg",
+          "id": "macleod-andrews-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2019-06-04",
+          "runtime_min": 505,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0062957481",
+              "type": "libex-import"
+            }
+          ],
+          "work": "starlight-erin-hunter"
+        },
         "macleod-andrews-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -574,6 +724,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5A15G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0062957481",
           "type": "libex-import"
         }
       ],

@@ -12137,69 +12137,6 @@
       ],
       "title": "Macbeth"
     },
-    "macbeth-dramatizado": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "macbeth-dramatizado",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emilio-villa-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8726162229",
-              "region": "us"
-            },
-            {
-              "asin": "B083WFRZHR",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91M7yo4EHcL.jpg",
-          "id": "emilio-villa-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emilio-villa",
-            "jose-diaz",
-            "marcos-chacon",
-            "niloofer-khan"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-01-15",
-          "runtime_min": 37,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8726162229",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B083WFRZHR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "macbeth-dramatizado"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8726162229",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Macbeth [Dramatizado]"
-    },
     "macbeth-fully-dramatized-audio-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -12743,79 +12680,6 @@
         }
       ],
       "title": "Macbeth"
-    },
-    "macbeth-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "macbeth-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcos-chacon-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B085CJSRDG",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 509004,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 775407,
-              "start_ms": 509004,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 563571,
-              "start_ms": 1284411,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 535335,
-              "start_ms": 1847982,
-              "title": "Capítulo 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71C8MT1fLdL.jpg",
-          "id": "marcos-chacon-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcos-chacon"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-03",
-          "runtime_min": 39,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJSRDG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "macbeth-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJSRDG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Macbeth [Spanish Edition]"
     },
     "macbeth-the-arkangel-shakespeare": {
       "added_at": "2026-07-29",
@@ -13597,12 +13461,53 @@
         "william-shakespeare"
       ],
       "genres": [
+        "classics",
         "drama-plays"
       ],
       "id": "macbeth-william-shakespeare-3",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "emilio-villa-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8726162229",
+              "region": "us"
+            },
+            {
+              "asin": "B083WFRZHR",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91M7yo4EHcL.jpg",
+          "id": "emilio-villa-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emilio-villa",
+            "jose-diaz",
+            "marcos-chacon",
+            "niloofer-khan"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-01-15",
+          "runtime_min": 37,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8726162229",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B083WFRZHR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "macbeth-william-shakespeare-3"
+        },
         "marcos-chacon-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -13610,6 +13515,32 @@
             {
               "asin": "B085CJL89R",
               "region": "es"
+            },
+            {
+              "asin": "B085CJSRDG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 509004,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 775407,
+              "start_ms": 509004,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 563571,
+              "start_ms": 1284411,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 535335,
+              "start_ms": 1847982,
+              "title": "Capítulo 4"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71C8MT1fLdL.jpg",
@@ -13627,6 +13558,11 @@
               "imported_at": "2026-07-29",
               "ref": "B085CJL89R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B085CJSRDG",
+              "type": "libex-import"
             }
           ],
           "work": "macbeth-william-shakespeare-3"
@@ -13636,6 +13572,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJL89R",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8726162229",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJSRDG",
           "type": "libex-import"
         }
       ],

@@ -414,70 +414,6 @@
       ],
       "title": "Flashback"
     },
-    "flashback-david-baldacci": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci",
-        "jens-plassmann",
-        "norbert-jakober"
-      ],
-      "credits": [
-        {
-          "person": "jens-plassmann",
-          "role": "translator"
-        },
-        {
-          "person": "norbert-jakober",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "flashback-david-baldacci",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dietmar-wunder-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0C4B2L44J",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zx1pHCwaL.jpg",
-          "id": "dietmar-wunder-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dietmar-wunder"
-          ],
-          "publisher": "Random House Audio, Deutschland",
-          "release_date": "2023-05-09",
-          "runtime_min": 779,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0C4B2L44J",
-              "type": "libex-import"
-            }
-          ],
-          "work": "flashback-david-baldacci"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C4B2L44J",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Flashback"
-    },
     "flashback-dawn": {
       "added_at": "2026-08-01",
       "authors": [
@@ -1121,6 +1057,10 @@
             {
               "asin": "B0C4B8C77C",
               "region": "us"
+            },
+            {
+              "asin": "B0C4B2L44J",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91zx1pHCwaL.jpg",
@@ -1138,6 +1078,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0C4B8C77C",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C4B2L44J",
+              "type": "libex-import"
             }
           ],
           "work": "flashback-german-edition"
@@ -1147,6 +1092,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0C4B8C77C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C4B2L44J",
           "type": "libex-import"
         }
       ],
@@ -6810,21 +6760,53 @@
       ],
       "title": "Flashman and the Mountain of Light"
     },
-    "flashman-and-the-red-skins": {
+    "flashman-and-the-redskins": {
       "added_at": "2026-08-02",
       "authors": [
         "george-macdonald-fraser"
       ],
       "genres": [
+        "action-adventure",
         "comedy-humor",
+        "epic-fantasy",
+        "fantasy",
         "historical-fiction",
         "literary-fiction",
+        "thriller-suspense",
         "westerns"
       ],
-      "id": "flashman-and-the-red-skins",
+      "id": "flashman-and-the-redskins",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "colin-mace-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00VUS2310",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91xYYhdQ4tL.jpg",
+          "id": "colin-mace-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-mace"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2015-04-23",
+          "runtime_min": 911,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00VUS2310",
+              "type": "libex-import"
+            }
+          ],
+          "work": "flashman-and-the-redskins"
+        },
         "david-case-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7008,61 +6990,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "flashman-and-the-red-skins"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00A28TJOI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Flashman and the Red Skins"
-    },
-    "flashman-and-the-redskins": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "george-macdonald-fraser"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense"
-      ],
-      "id": "flashman-and-the-redskins",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "colin-mace-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00VUS2310",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91xYYhdQ4tL.jpg",
-          "id": "colin-mace-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "colin-mace"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2015-04-23",
-          "runtime_min": 911,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00VUS2310",
-              "type": "libex-import"
-            }
-          ],
           "work": "flashman-and-the-redskins"
         }
       },
@@ -7070,6 +6997,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00VUS2310",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00A28TJOI",
           "type": "libex-import"
         }
       ],

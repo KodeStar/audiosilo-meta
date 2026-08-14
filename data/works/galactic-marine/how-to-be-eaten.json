@@ -8335,7 +8335,10 @@
       ],
       "first_published": "2013",
       "genres": [
+        "action-adventure",
         "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
         "fantasy"
       ],
       "id": "how-to-betray-a-dragons-hero",
@@ -8343,6 +8346,7 @@
       "license": "CC0-1.0",
       "recordings": {
         "david-tennant-2015": {
+          "abridged": false,
           "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
             {
@@ -8352,6 +8356,147 @@
             {
               "asin": "B00WNGTFYG",
               "region": "us"
+            },
+            {
+              "asin": "B00U1RGITE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 83904,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 772262,
+              "start_ms": 83904,
+              "title": "The Cust Island of Tomorrow"
+            },
+            {
+              "length_ms": 886399,
+              "start_ms": 856166,
+              "title": "1"
+            },
+            {
+              "length_ms": 1014387,
+              "start_ms": 1742565,
+              "title": "2"
+            },
+            {
+              "length_ms": 555561,
+              "start_ms": 2756952,
+              "title": "3"
+            },
+            {
+              "length_ms": 372448,
+              "start_ms": 3312513,
+              "title": "4"
+            },
+            {
+              "length_ms": 809726,
+              "start_ms": 3684961,
+              "title": "5"
+            },
+            {
+              "length_ms": 1327856,
+              "start_ms": 4494687,
+              "title": "6"
+            },
+            {
+              "length_ms": 759757,
+              "start_ms": 5822543,
+              "title": "7"
+            },
+            {
+              "length_ms": 662094,
+              "start_ms": 6582300,
+              "title": "8"
+            },
+            {
+              "length_ms": 672821,
+              "start_ms": 7244394,
+              "title": "9"
+            },
+            {
+              "length_ms": 1112282,
+              "start_ms": 7917215,
+              "title": "10"
+            },
+            {
+              "length_ms": 1322980,
+              "start_ms": 9029497,
+              "title": "11"
+            },
+            {
+              "length_ms": 292293,
+              "start_ms": 10352477,
+              "title": "12"
+            },
+            {
+              "length_ms": 708998,
+              "start_ms": 10644770,
+              "title": "13"
+            },
+            {
+              "length_ms": 309011,
+              "start_ms": 11353768,
+              "title": "14"
+            },
+            {
+              "length_ms": 1209899,
+              "start_ms": 11662779,
+              "title": "15"
+            },
+            {
+              "length_ms": 402495,
+              "start_ms": 12872678,
+              "title": "16"
+            },
+            {
+              "length_ms": 1191602,
+              "start_ms": 13275173,
+              "title": "17"
+            },
+            {
+              "length_ms": 214738,
+              "start_ms": 14466775,
+              "title": "18"
+            },
+            {
+              "length_ms": 565545,
+              "start_ms": 14681513,
+              "title": "19"
+            },
+            {
+              "length_ms": 1012715,
+              "start_ms": 15247058,
+              "title": "20"
+            },
+            {
+              "length_ms": 2201484,
+              "start_ms": 16259773,
+              "title": "21"
+            },
+            {
+              "length_ms": 255698,
+              "start_ms": 18461257,
+              "title": "22"
+            },
+            {
+              "length_ms": 95852,
+              "start_ms": 18716955,
+              "title": "23"
+            },
+            {
+              "length_ms": 569932,
+              "start_ms": 18812807,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 101868,
+              "start_ms": 19382739,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1pRwMktxxL.jpg",
@@ -8373,6 +8518,11 @@
               "imported_at": "2026-07-25",
               "ref": "B00WNGTFYG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U1RGITE",
+              "type": "libex-import"
             }
           ],
           "work": "how-to-betray-a-dragons-hero"
@@ -8386,6 +8536,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00WNGTFYG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00U1RGITE",
           "type": "libex-import"
         }
       ],
@@ -9554,6 +9709,12 @@
         "cressida-cowell"
       ],
       "first_published": "2009",
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fantasy"
+      ],
       "id": "how-to-break-a-dragons-heart",
       "language": "en",
       "license": "CC0-1.0",
@@ -9742,12 +9903,187 @@
             }
           ],
           "work": "how-to-break-a-dragons-heart"
+        },
+        "david-tennant-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00GU0LV6Q",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 195326,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 180373,
+              "start_ms": 195326,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 135047,
+              "start_ms": 375699,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 597124,
+              "start_ms": 510746,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 702218,
+              "start_ms": 1107870,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 539492,
+              "start_ms": 1810088,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 561598,
+              "start_ms": 2349580,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 667388,
+              "start_ms": 2911178,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 160682,
+              "start_ms": 3578566,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 653781,
+              "start_ms": 3739248,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 658471,
+              "start_ms": 4393029,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 539400,
+              "start_ms": 5051500,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1123149,
+              "start_ms": 5590900,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 555514,
+              "start_ms": 6714049,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 754741,
+              "start_ms": 7269563,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 833736,
+              "start_ms": 8024304,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2014238,
+              "start_ms": 8858040,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 902467,
+              "start_ms": 10872278,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 935857,
+              "start_ms": 11774745,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 761615,
+              "start_ms": 12710602,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 338640,
+              "start_ms": 13472217,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 739370,
+              "start_ms": 13810857,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 384662,
+              "start_ms": 14550227,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 232803,
+              "start_ms": 14934889,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 210651,
+              "start_ms": 15167692,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 816599,
+              "start_ms": 15378343,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 231039,
+              "start_ms": 16194942,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 307200,
+              "start_ms": 16425981,
+              "title": "Chapter 28"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91imImDlnHL.jpg",
+          "id": "david-tennant-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-tennant"
+          ],
+          "publisher": "Little, Brown Young Readers",
+          "release_date": "2013-12-10",
+          "runtime_min": 278,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00GU0LV6Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "how-to-break-a-dragons-heart"
         }
       },
       "sources": [
         {
           "ref": "B006O345PI",
           "type": "audible-lookup"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00GU0LV6Q",
+          "type": "libex-import"
         }
       ],
       "title": "How to Break a Dragon's Heart"

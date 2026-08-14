@@ -1,6 +1,6 @@
 {
   "entries": {
-    "el-tesoro-del-nilo-narracion-en-castellano-the-treasure-of-the-nile": {
+    "el-tesoro-del-nilo-the-treasure-of-the-nile": {
       "added_at": "2026-07-29",
       "authors": [
         "maria-maneru"
@@ -10,7 +10,7 @@
         "childrens",
         "mystery"
       ],
-      "id": "el-tesoro-del-nilo-narracion-en-castellano-the-treasure-of-the-nile",
+      "id": "el-tesoro-del-nilo-the-treasure-of-the-nile",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -40,32 +40,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-tesoro-del-nilo-narracion-en-castellano-the-treasure-of-the-nile"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08FMZNJ6D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El tesoro del Nilo (Narración en Castellano) [The Treasure of the Nile]"
-    },
-    "el-tesoro-del-nilo-the-treasure-of-the-nile": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maria-maneru"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery"
-      ],
-      "id": "el-tesoro-del-nilo-the-treasure-of-the-nile",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-tesoro-del-nilo-the-treasure-of-the-nile"
+        },
         "carlos-zertuche-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -99,6 +75,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08FVVV85S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08FMZNJ6D",
           "type": "libex-import"
         }
       ],
@@ -5194,70 +5175,6 @@
       ],
       "title": "El último riesgo [The Last Risk]"
     },
-    "el-ultimo-secreto": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dan-brown",
-        "claudia-conde-fisas",
-        "aleix-montoto-llagostera"
-      ],
-      "credits": [
-        {
-          "person": "aleix-montoto-llagostera",
-          "role": "translator"
-        },
-        {
-          "person": "claudia-conde-fisas",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "el-ultimo-secreto",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "german-gijon-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0FSSKZ548",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819aZxTYVhL.jpg",
-          "id": "german-gijon-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "german-gijon"
-          ],
-          "publisher": "Planeta Audio",
-          "release_date": "2025-09-26",
-          "runtime_min": 1380,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FSSKZ548",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ultimo-secreto"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0FSSKZ548",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El último secreto"
-    },
     "el-ultimo-secreto-del-exito-y-la-abundancia-the-ultimate-secret-of-success-and-abundance": {
       "added_at": "2026-07-29",
       "authors": [
@@ -5312,7 +5229,19 @@
     "el-ultimo-secreto-espanol-neutro": {
       "added_at": "2026-07-29",
       "authors": [
-        "dan-brown"
+        "dan-brown",
+        "claudia-conde-fisas",
+        "aleix-montoto-llagostera"
+      ],
+      "credits": [
+        {
+          "person": "aleix-montoto-llagostera",
+          "role": "translator"
+        },
+        {
+          "person": "claudia-conde-fisas",
+          "role": "translator"
+        }
       ],
       "genres": [
         "action-adventure",
@@ -5324,12 +5253,44 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "german-gijon-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0FSSKZ548",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819aZxTYVhL.jpg",
+          "id": "german-gijon-2025",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "german-gijon"
+          ],
+          "publisher": "Planeta Audio",
+          "release_date": "2025-09-26",
+          "runtime_min": 1380,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FSSKZ548",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-ultimo-secreto-espanol-neutro"
+        },
         "victor-manuel-espinoza-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
             {
               "asin": "B0FS7BJ16S",
+              "region": "us"
+            },
+            {
+              "asin": "B0FQ6PK4PN",
               "region": "us"
             }
           ],
@@ -6080,6 +6041,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0FS7BJ16S",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FQ6PK4PN",
+              "type": "libex-import"
             }
           ],
           "work": "el-ultimo-secreto-espanol-neutro"
@@ -6090,792 +6056,19 @@
           "imported_at": "2026-07-29",
           "ref": "B0FS7BJ16S",
           "type": "libex-import"
-        }
-      ],
-      "title": "El último secreto (Español neutro)"
-    },
-    "el-ultimo-secreto-the-secret-of-secrets": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dan-brown"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "el-ultimo-secreto-the-secret-of-secrets",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "victor-manuel-espinoza-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0FQ6PK4PN",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15185,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 11540,
-              "start_ms": 15185,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 11865,
-              "start_ms": 26725,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 22291,
-              "start_ms": 38590,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 552216,
-              "start_ms": 60881,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1176508,
-              "start_ms": 613097,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 463957,
-              "start_ms": 1789605,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 651319,
-              "start_ms": 2253562,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1055486,
-              "start_ms": 2904881,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 639732,
-              "start_ms": 3960367,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 163840,
-              "start_ms": 4600099,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 550266,
-              "start_ms": 4763939,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 971755,
-              "start_ms": 5314205,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 273089,
-              "start_ms": 6285960,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 527812,
-              "start_ms": 6559049,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 345745,
-              "start_ms": 7086861,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 821847,
-              "start_ms": 7432606,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 417216,
-              "start_ms": 8254453,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 426271,
-              "start_ms": 8671669,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 603300,
-              "start_ms": 9097940,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 574206,
-              "start_ms": 9701240,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 335319,
-              "start_ms": 10275446,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 311843,
-              "start_ms": 10610765,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 369777,
-              "start_ms": 10922608,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 369313,
-              "start_ms": 11292385,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 951066,
-              "start_ms": 11661698,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 448888,
-              "start_ms": 12612764,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 604531,
-              "start_ms": 13061652,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 1340116,
-              "start_ms": 13666183,
-              "title": "Capítulo 29"
-            },
-            {
-              "length_ms": 442154,
-              "start_ms": 15006299,
-              "title": "Capítulo 30"
-            },
-            {
-              "length_ms": 274181,
-              "start_ms": 15448453,
-              "title": "Capítulo 31"
-            },
-            {
-              "length_ms": 502549,
-              "start_ms": 15722634,
-              "title": "Capítulo 32"
-            },
-            {
-              "length_ms": 463214,
-              "start_ms": 16225183,
-              "title": "Capítulo 33"
-            },
-            {
-              "length_ms": 402866,
-              "start_ms": 16688397,
-              "title": "Capítulo 34"
-            },
-            {
-              "length_ms": 1069952,
-              "start_ms": 17091263,
-              "title": "Capítulo 35"
-            },
-            {
-              "length_ms": 460544,
-              "start_ms": 18161215,
-              "title": "Capítulo 36"
-            },
-            {
-              "length_ms": 911313,
-              "start_ms": 18621759,
-              "title": "Capítulo 37"
-            },
-            {
-              "length_ms": 462936,
-              "start_ms": 19533072,
-              "title": "Capítulo 38"
-            },
-            {
-              "length_ms": 686381,
-              "start_ms": 19996008,
-              "title": "Capítulo 39"
-            },
-            {
-              "length_ms": 610591,
-              "start_ms": 20682389,
-              "title": "Capítulo 40"
-            },
-            {
-              "length_ms": 665205,
-              "start_ms": 21292980,
-              "title": "Capítulo 41"
-            },
-            {
-              "length_ms": 292385,
-              "start_ms": 21958185,
-              "title": "Capítulo 42"
-            },
-            {
-              "length_ms": 298469,
-              "start_ms": 22250570,
-              "title": "Capítulo 43"
-            },
-            {
-              "length_ms": 871026,
-              "start_ms": 22549039,
-              "title": "Capítulo 44"
-            },
-            {
-              "length_ms": 769578,
-              "start_ms": 23420065,
-              "title": "Capítulo 45"
-            },
-            {
-              "length_ms": 422556,
-              "start_ms": 24189643,
-              "title": "Capítulo 46"
-            },
-            {
-              "length_ms": 801041,
-              "start_ms": 24612199,
-              "title": "Capítulo 47"
-            },
-            {
-              "length_ms": 305295,
-              "start_ms": 25413240,
-              "title": "Capítulo 48"
-            },
-            {
-              "length_ms": 755670,
-              "start_ms": 25718535,
-              "title": "Capítulo 49"
-            },
-            {
-              "length_ms": 345187,
-              "start_ms": 26474205,
-              "title": "Capítulo 50"
-            },
-            {
-              "length_ms": 325752,
-              "start_ms": 26819392,
-              "title": "Capítulo 51"
-            },
-            {
-              "length_ms": 1007955,
-              "start_ms": 27145144,
-              "title": "Capítulo 52"
-            },
-            {
-              "length_ms": 254072,
-              "start_ms": 28153099,
-              "title": "Capítulo 53"
-            },
-            {
-              "length_ms": 643703,
-              "start_ms": 28407171,
-              "title": "Capítulo 54"
-            },
-            {
-              "length_ms": 609756,
-              "start_ms": 29050874,
-              "title": "Capítulo 55"
-            },
-            {
-              "length_ms": 361882,
-              "start_ms": 29660630,
-              "title": "Capítulo 56"
-            },
-            {
-              "length_ms": 220357,
-              "start_ms": 30022512,
-              "title": "Capítulo 57"
-            },
-            {
-              "length_ms": 618161,
-              "start_ms": 30242869,
-              "title": "Capítulo 58"
-            },
-            {
-              "length_ms": 150070,
-              "start_ms": 30861030,
-              "title": "Capítulo 59"
-            },
-            {
-              "length_ms": 957776,
-              "start_ms": 31011100,
-              "title": "Capítulo 60"
-            },
-            {
-              "length_ms": 982505,
-              "start_ms": 31968876,
-              "title": "Capítulo 61"
-            },
-            {
-              "length_ms": 210372,
-              "start_ms": 32951381,
-              "title": "Capítulo 62"
-            },
-            {
-              "length_ms": 403795,
-              "start_ms": 33161753,
-              "title": "Capítulo 63"
-            },
-            {
-              "length_ms": 458385,
-              "start_ms": 33565548,
-              "title": "Capítulo 64"
-            },
-            {
-              "length_ms": 415753,
-              "start_ms": 34023933,
-              "title": "Capítulo 65"
-            },
-            {
-              "length_ms": 681714,
-              "start_ms": 34439686,
-              "title": "Capítulo 66"
-            },
-            {
-              "length_ms": 876692,
-              "start_ms": 35121400,
-              "title": "Capítulo 67"
-            },
-            {
-              "length_ms": 361302,
-              "start_ms": 35998092,
-              "title": "Capítulo 68"
-            },
-            {
-              "length_ms": 549871,
-              "start_ms": 36359394,
-              "title": "Capítulo 69"
-            },
-            {
-              "length_ms": 474522,
-              "start_ms": 36909265,
-              "title": "Capítulo 70"
-            },
-            {
-              "length_ms": 489151,
-              "start_ms": 37383787,
-              "title": "Capítulo 71"
-            },
-            {
-              "length_ms": 696064,
-              "start_ms": 37872938,
-              "title": "Capítulo 72"
-            },
-            {
-              "length_ms": 754602,
-              "start_ms": 38569002,
-              "title": "Capítulo 73"
-            },
-            {
-              "length_ms": 503315,
-              "start_ms": 39323604,
-              "title": "Capítulo 74"
-            },
-            {
-              "length_ms": 710739,
-              "start_ms": 39826919,
-              "title": "Capítulo 75"
-            },
-            {
-              "length_ms": 236495,
-              "start_ms": 40537658,
-              "title": "Capítulo 76"
-            },
-            {
-              "length_ms": 834548,
-              "start_ms": 40774153,
-              "title": "Capítulo 77"
-            },
-            {
-              "length_ms": 787365,
-              "start_ms": 41608701,
-              "title": "Capítulo 78"
-            },
-            {
-              "length_ms": 837149,
-              "start_ms": 42396066,
-              "title": "Capítulo 79"
-            },
-            {
-              "length_ms": 613912,
-              "start_ms": 43233215,
-              "title": "Capítulo 80"
-            },
-            {
-              "length_ms": 894177,
-              "start_ms": 43847127,
-              "title": "Capítulo 81"
-            },
-            {
-              "length_ms": 373864,
-              "start_ms": 44741304,
-              "title": "Capítulo 82"
-            },
-            {
-              "length_ms": 676188,
-              "start_ms": 45115168,
-              "title": "Capítulo 83"
-            },
-            {
-              "length_ms": 500761,
-              "start_ms": 45791356,
-              "title": "Capítulo 84"
-            },
-            {
-              "length_ms": 683990,
-              "start_ms": 46292117,
-              "title": "Capítulo 85"
-            },
-            {
-              "length_ms": 939618,
-              "start_ms": 46976107,
-              "title": "Capítulo 86"
-            },
-            {
-              "length_ms": 906321,
-              "start_ms": 47915725,
-              "title": "Capítulo 87"
-            },
-            {
-              "length_ms": 403655,
-              "start_ms": 48822046,
-              "title": "Capítulo 88"
-            },
-            {
-              "length_ms": 546992,
-              "start_ms": 49225701,
-              "title": "Capítulo 89"
-            },
-            {
-              "length_ms": 825678,
-              "start_ms": 49772693,
-              "title": "Capítulo 90"
-            },
-            {
-              "length_ms": 480281,
-              "start_ms": 50598371,
-              "title": "Capítulo 91"
-            },
-            {
-              "length_ms": 1020586,
-              "start_ms": 51078652,
-              "title": "Capítulo 92"
-            },
-            {
-              "length_ms": 162632,
-              "start_ms": 52099238,
-              "title": "Capítulo 93"
-            },
-            {
-              "length_ms": 272950,
-              "start_ms": 52261870,
-              "title": "Capítulo 94"
-            },
-            {
-              "length_ms": 228762,
-              "start_ms": 52534820,
-              "title": "Capítulo 95"
-            },
-            {
-              "length_ms": 963233,
-              "start_ms": 52763582,
-              "title": "Capítulo 96"
-            },
-            {
-              "length_ms": 309104,
-              "start_ms": 53726815,
-              "title": "Capítulo 97"
-            },
-            {
-              "length_ms": 244041,
-              "start_ms": 54035919,
-              "title": "Capítulo 98"
-            },
-            {
-              "length_ms": 730755,
-              "start_ms": 54279960,
-              "title": "Capítulo 99"
-            },
-            {
-              "length_ms": 731451,
-              "start_ms": 55010715,
-              "title": "Capítulo 100"
-            },
-            {
-              "length_ms": 950206,
-              "start_ms": 55742166,
-              "title": "Capítulo 101"
-            },
-            {
-              "length_ms": 409901,
-              "start_ms": 56692372,
-              "title": "Capítulo 102"
-            },
-            {
-              "length_ms": 979951,
-              "start_ms": 57102273,
-              "title": "Capítulo 103"
-            },
-            {
-              "length_ms": 264452,
-              "start_ms": 58082224,
-              "title": "Capítulo 104"
-            },
-            {
-              "length_ms": 615909,
-              "start_ms": 58346676,
-              "title": "Capítulo 105"
-            },
-            {
-              "length_ms": 372378,
-              "start_ms": 58962585,
-              "title": "Capítulo 106"
-            },
-            {
-              "length_ms": 984897,
-              "start_ms": 59334963,
-              "title": "Capítulo 107"
-            },
-            {
-              "length_ms": 590181,
-              "start_ms": 60319860,
-              "title": "Capítulo 108"
-            },
-            {
-              "length_ms": 730383,
-              "start_ms": 60910041,
-              "title": "Capítulo 109"
-            },
-            {
-              "length_ms": 678022,
-              "start_ms": 61640424,
-              "title": "Capítulo 110"
-            },
-            {
-              "length_ms": 1178993,
-              "start_ms": 62318446,
-              "title": "Capítulo 111"
-            },
-            {
-              "length_ms": 920067,
-              "start_ms": 63497439,
-              "title": "Capítulo 112"
-            },
-            {
-              "length_ms": 508168,
-              "start_ms": 64417506,
-              "title": "Capítulo 113"
-            },
-            {
-              "length_ms": 550336,
-              "start_ms": 64925674,
-              "title": "Capítulo 114"
-            },
-            {
-              "length_ms": 515552,
-              "start_ms": 65476010,
-              "title": "Capítulo 115"
-            },
-            {
-              "length_ms": 727666,
-              "start_ms": 65991562,
-              "title": "Capítulo 116"
-            },
-            {
-              "length_ms": 1077057,
-              "start_ms": 66719228,
-              "title": "Capítulo 117"
-            },
-            {
-              "length_ms": 560669,
-              "start_ms": 67796285,
-              "title": "Capítulo 118"
-            },
-            {
-              "length_ms": 588579,
-              "start_ms": 68356954,
-              "title": "Capítulo 119"
-            },
-            {
-              "length_ms": 664717,
-              "start_ms": 68945533,
-              "title": "Capítulo 120"
-            },
-            {
-              "length_ms": 647372,
-              "start_ms": 69610250,
-              "title": "Capítulo 121"
-            },
-            {
-              "length_ms": 657194,
-              "start_ms": 70257622,
-              "title": "Capítulo 122"
-            },
-            {
-              "length_ms": 386565,
-              "start_ms": 70914816,
-              "title": "Capítulo 123"
-            },
-            {
-              "length_ms": 630375,
-              "start_ms": 71301381,
-              "title": "Capítulo 124"
-            },
-            {
-              "length_ms": 706118,
-              "start_ms": 71931756,
-              "title": "Capítulo 125"
-            },
-            {
-              "length_ms": 170318,
-              "start_ms": 72637874,
-              "title": "Capítulo 126"
-            },
-            {
-              "length_ms": 723440,
-              "start_ms": 72808192,
-              "title": "Capítulo 127"
-            },
-            {
-              "length_ms": 1058086,
-              "start_ms": 73531632,
-              "title": "Capítulo 128"
-            },
-            {
-              "length_ms": 488524,
-              "start_ms": 74589718,
-              "title": "Capítulo 129"
-            },
-            {
-              "length_ms": 870167,
-              "start_ms": 75078242,
-              "title": "Capítulo 130"
-            },
-            {
-              "length_ms": 173453,
-              "start_ms": 75948409,
-              "title": "Capítulo 131"
-            },
-            {
-              "length_ms": 672055,
-              "start_ms": 76121862,
-              "title": "Capítulo 132"
-            },
-            {
-              "length_ms": 402750,
-              "start_ms": 76793917,
-              "title": "Capítulo 133"
-            },
-            {
-              "length_ms": 456527,
-              "start_ms": 77196667,
-              "title": "Capítulo 134"
-            },
-            {
-              "length_ms": 137485,
-              "start_ms": 77653194,
-              "title": "Capítulo 135"
-            },
-            {
-              "length_ms": 382688,
-              "start_ms": 77790679,
-              "title": "Capítulo 136"
-            },
-            {
-              "length_ms": 587418,
-              "start_ms": 78173367,
-              "title": "Capítulo 137"
-            },
-            {
-              "length_ms": 995369,
-              "start_ms": 78760785,
-              "title": "Capítulo 138"
-            },
-            {
-              "length_ms": 484321,
-              "start_ms": 79756154,
-              "title": "Capítulo 139"
-            },
-            {
-              "length_ms": 648138,
-              "start_ms": 80240475,
-              "title": "Capítulo 140"
-            },
-            {
-              "length_ms": 771529,
-              "start_ms": 80888613,
-              "title": "Capítulo 141"
-            },
-            {
-              "length_ms": 640081,
-              "start_ms": 81660142,
-              "title": "Capítulo 142"
-            },
-            {
-              "length_ms": 276851,
-              "start_ms": 82300223,
-              "title": "Capítulo 143"
-            },
-            {
-              "length_ms": 842559,
-              "start_ms": 82577074,
-              "title": "Capítulo 144"
-            },
-            {
-              "length_ms": 515738,
-              "start_ms": 83419633,
-              "title": "Capítulo 145"
-            },
-            {
-              "length_ms": 85773,
-              "start_ms": 83935371,
-              "title": "Capítulo 146"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hKwc07UvL.jpg",
-          "id": "victor-manuel-espinoza-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-manuel-espinoza"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2025-09-09",
-          "runtime_min": 1400,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FQ6PK4PN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ultimo-secreto-the-secret-of-secrets"
-        }
-      },
-      "sources": [
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0FSSKZ548",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FQ6PK4PN",
           "type": "libex-import"
         }
       ],
-      "title": "El último secreto [The Secret of Secrets]"
+      "title": "El último secreto (Español neutro)"
     },
     "el-ultimo-sueno-the-last-dream": {
       "added_at": "2026-07-29",
@@ -10051,6 +9244,9 @@
       "authors": [
         "isabel-allende"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "el-viento-conoce-mi-nombre",
       "language": "es",
       "license": "CC0-1.0",
@@ -10062,67 +9258,7 @@
             {
               "asin": "B0C5RX5SGH",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FpKwoYT9L.jpg",
-          "id": "ana-ruth-cierra-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-ruth-cierra",
-            "cynthia-de-pando",
-            "evelyn-figueroa",
-            "full-cast",
-            "jane-santos",
-            "javier-lacroix",
-            "juan-carlos-gustems",
-            "luis-david-garcia-marquez",
-            "maria-fernanda-flamenco",
-            "mario-chevez",
-            "mario-cordova",
-            "noe-velasquez",
-            "olga-hnidey",
-            "sara-gomez-alonso",
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-06-06",
-          "runtime_min": 513,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0C5RX5SGH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-viento-conoce-mi-nombre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C5RX5SGH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El viento conoce mi nombre"
-    },
-    "el-viento-conoce-mi-nombre-the-wind-knows-my-name": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "el-viento-conoce-mi-nombre-the-wind-knows-my-name",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-ruth-cierra-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0C5RY5TKG",
               "region": "us"
@@ -10267,21 +9403,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0C5RX5SGH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0C5RY5TKG",
               "type": "libex-import"
             }
           ],
-          "work": "el-viento-conoce-mi-nombre-the-wind-knows-my-name"
+          "work": "el-viento-conoce-mi-nombre"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C5RX5SGH",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0C5RY5TKG",
           "type": "libex-import"
         }
       ],
-      "title": "El viento conoce mi nombre [The Wind Knows My Name]"
+      "title": "El viento conoce mi nombre"
     },
     "el-viento-en-los-sauces-the-wind-in-the-willows": {
       "added_at": "2026-07-29",

@@ -5492,16 +5492,150 @@
     "swanns-way": {
       "added_at": "2026-08-08",
       "authors": [
-        "marcel-proust"
+        "marcel-proust",
+        "scott-moncrieff",
+        "charles-kenneth-scott-moncrieff"
+      ],
+      "credits": [
+        {
+          "person": "charles-kenneth-scott-moncrieff",
+          "role": "translator"
+        },
+        {
+          "person": "scott-moncrieff",
+          "role": "translator"
+        }
       ],
       "genres": [
+        "classics",
         "historical-fiction",
+        "history",
         "literary-fiction"
       ],
       "id": "swanns-way",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "john-rowe-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V9ZH3S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3647413,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3717166,
+              "start_ms": 3647413,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3732166,
+              "start_ms": 7364579,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3680734,
+              "start_ms": 11096745,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3721229,
+              "start_ms": 14777479,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3729867,
+              "start_ms": 18498708,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3648922,
+              "start_ms": 22228575,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3746121,
+              "start_ms": 25877497,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3727267,
+              "start_ms": 29623618,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3794024,
+              "start_ms": 33350885,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4291744,
+              "start_ms": 37144909,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4243005,
+              "start_ms": 41436653,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4276349,
+              "start_ms": 45679658,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4266620,
+              "start_ms": 49956007,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 4127021,
+              "start_ms": 54222627,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4118593,
+              "start_ms": 58349648,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 4214584,
+              "start_ms": 62468241,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 4420173,
+              "start_ms": 66682825,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UHh-oG2gL.jpg",
+          "id": "john-rowe-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-rowe"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2009-02-12",
+          "runtime_min": 1184,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V9ZH3S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "swanns-way"
+        },
         "neville-jason-2012": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -6216,38 +6350,7 @@
             }
           ],
           "work": "swanns-way"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0076Q1KVY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Swann's Way"
-    },
-    "swanns-way-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marcel-proust",
-        "charles-kenneth-scott-moncrieff"
-      ],
-      "credits": [
-        {
-          "person": "charles-kenneth-scott-moncrieff",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "swanns-way-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tim-bruce-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6274,17 +6377,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "swanns-way-amazonclassics-edition"
+          "work": "swanns-way"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0076Q1KVY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V9ZH3S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07BSHHFLC",
           "type": "libex-import"
         }
       ],
-      "title": "Swann's Way (AmazonClassics Edition)"
+      "title": "Swann's Way"
     },
     "swans-klons": {
       "added_at": "2026-07-29",
@@ -7661,6 +7774,7 @@
         "f-x-holden"
       ],
       "genres": [
+        "action-adventure",
         "espionage",
         "politics",
         "thriller-suspense",
@@ -7676,6 +7790,10 @@
           "asin": [
             {
               "asin": "B0CYQP1DNR",
+              "region": "us"
+            },
+            {
+              "asin": "B0D68CH9RX",
               "region": "us"
             }
           ],
@@ -7811,6 +7929,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CYQP1DNR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D68CH9RX",
+              "type": "libex-import"
             }
           ],
           "work": "swarm-f-x-holden"
@@ -7820,6 +7943,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYQP1DNR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D68CH9RX",
           "type": "libex-import"
         }
       ],
@@ -8930,156 +9058,6 @@
         }
       ],
       "title": "Swarm"
-    },
-    "swarm-the-aggressor-series-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "f-x-holden"
-      ],
-      "genres": [
-        "action-adventure",
-        "politics",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "swarm-the-aggressor-series-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gary-bennett-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D68CH9RX",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18165,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2806380,
-              "start_ms": 18165,
-              "title": "1. The battle of 1135 Wilson Boulevard"
-            },
-            {
-              "length_ms": 1645621,
-              "start_ms": 2824545,
-              "title": "2. The battle of the Eastern Pacific"
-            },
-            {
-              "length_ms": 2470649,
-              "start_ms": 4470166,
-              "title": "3. The battle of the Killer Bees"
-            },
-            {
-              "length_ms": 2742786,
-              "start_ms": 6940815,
-              "title": "4. The battle of Tiangong Space Station"
-            },
-            {
-              "length_ms": 1742425,
-              "start_ms": 9683601,
-              "title": "5. The battle of the Eastern Pacific"
-            },
-            {
-              "length_ms": 2108047,
-              "start_ms": 11426026,
-              "title": "6. The battle of AC-130X ‘Outlaw’"
-            },
-            {
-              "length_ms": 2727949,
-              "start_ms": 13534073,
-              "title": "7. The battle of the Eastern Pacific"
-            },
-            {
-              "length_ms": 2477081,
-              "start_ms": 16262022,
-              "title": "8. The battle of the Killer Bees"
-            },
-            {
-              "length_ms": 1810993,
-              "start_ms": 18739103,
-              "title": "9. The battle of 1135 Wilson Boulevard"
-            },
-            {
-              "length_ms": 2324921,
-              "start_ms": 20550096,
-              "title": "10. The battle of Tiangong"
-            },
-            {
-              "length_ms": 4777900,
-              "start_ms": 22875017,
-              "title": "11. The battle of AC-130X ‘Outlaw’"
-            },
-            {
-              "length_ms": 3544874,
-              "start_ms": 27652917,
-              "title": "12. The battle of the Killer Bees"
-            },
-            {
-              "length_ms": 3251327,
-              "start_ms": 31197791,
-              "title": "13. The battle of the Eastern Pacific"
-            },
-            {
-              "length_ms": 1436827,
-              "start_ms": 34449118,
-              "title": "14. The battle of 1135 Wilson Boulevard"
-            },
-            {
-              "length_ms": 3408108,
-              "start_ms": 35885945,
-              "title": "15. The battle of Tiangong"
-            },
-            {
-              "length_ms": 4147641,
-              "start_ms": 39294053,
-              "title": "16. The battle of the Eastern Pacific"
-            },
-            {
-              "length_ms": 3294974,
-              "start_ms": 43441694,
-              "title": "17. Epilogue"
-            },
-            {
-              "length_ms": 41221,
-              "start_ms": 46736668,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zj4FhHw0L.jpg",
-          "id": "gary-bennett-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gary-bennett"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2024-06-25",
-          "runtime_min": 779,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0D68CH9RX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "swarm-the-aggressor-series-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D68CH9RX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Swarm: The Aggressor Series, Book 3"
     },
     "swarm-valethehowl": {
       "added_at": "2026-08-02",
@@ -13196,8 +13174,8 @@
       ],
       "title": "Sweeney Todd - Der teuflische Barbier aus der Fleet Street - Teil 2 von 2"
     },
-    "sweep-in-peace": {
-      "added_at": "2026-08-01",
+    "sweep-in-peace-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -13206,10 +13184,80 @@
         "paranormal",
         "urban-fantasy"
       ],
-      "id": "sweep-in-peace",
+      "id": "sweep-in-peace-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09X69PSRF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2021807,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2745457,
+              "start_ms": 2021807,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4394980,
+              "start_ms": 4767264,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3997988,
+              "start_ms": 9162244,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4445320,
+              "start_ms": 13160232,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4282572,
+              "start_ms": 17605552,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4409375,
+              "start_ms": 21888124,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tIZ1cBinL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022",
+          "runtime_min": 438,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09X69PSRF",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09X69PSRF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sweep-in-peace-dramatized-adaptation"
+        },
         "renee-raudman-2015": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -13338,100 +13386,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "sweep-in-peace"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0195N57TG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sweep in Peace"
-    },
-    "sweep-in-peace-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "sweep-in-peace-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09X69PSRF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2021807,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2745457,
-              "start_ms": 2021807,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4394980,
-              "start_ms": 4767264,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3997988,
-              "start_ms": 9162244,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4445320,
-              "start_ms": 13160232,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4282572,
-              "start_ms": 17605552,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4409375,
-              "start_ms": 21888124,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tIZ1cBinL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 438,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09X69PSRF",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09X69PSRF",
-              "type": "libex-import"
-            }
-          ],
           "work": "sweep-in-peace-dramatized-adaptation"
         }
       },
@@ -13444,6 +13398,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09X69PSRF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0195N57TG",
           "type": "libex-import"
         }
       ],
@@ -13668,8 +13627,8 @@
       ],
       "title": "Sweep of Stars"
     },
-    "sweep-of-the-blade": {
-      "added_at": "2026-08-01",
+    "sweep-of-the-blade-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -13679,10 +13638,90 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "sweep-of-the-blade",
+      "id": "sweep-of-the-blade-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0B7CFKLHS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 38970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4429384,
+              "start_ms": 38970,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4219251,
+              "start_ms": 4468354,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3836191,
+              "start_ms": 8687605,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4245606,
+              "start_ms": 12523796,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3441429,
+              "start_ms": 16769402,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3941540,
+              "start_ms": 20210831,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 3825000,
+              "start_ms": 24152371,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 339823,
+              "start_ms": 27977371,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811KvfzUrcL.jpg",
+          "id": "full-cast-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2022",
+          "runtime_min": 472,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0B7CFKLHS",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0B7CFKLHS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sweep-of-the-blade-dramatized-adaptation"
+        },
         "natalie-naudus-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -13816,111 +13855,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "sweep-of-the-blade"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07XZKR6T1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sweep of the Blade"
-    },
-    "sweep-of-the-blade-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "sweep-of-the-blade-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0B7CFKLHS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4429384,
-              "start_ms": 38970,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4219251,
-              "start_ms": 4468354,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3836191,
-              "start_ms": 8687605,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4245606,
-              "start_ms": 12523796,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3441429,
-              "start_ms": 16769402,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3941540,
-              "start_ms": 20210831,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3825000,
-              "start_ms": 24152371,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 339823,
-              "start_ms": 27977371,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/811KvfzUrcL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2022",
-          "runtime_min": 472,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0B7CFKLHS",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0B7CFKLHS",
-              "type": "libex-import"
-            }
-          ],
           "work": "sweep-of-the-blade-dramatized-adaptation"
         }
       },
@@ -13934,12 +13868,17 @@
           "imported_at": "2026-07-30",
           "ref": "B0B7CFKLHS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07XZKR6T1",
+          "type": "libex-import"
         }
       ],
       "title": "Sweep of the Blade (Dramatized Adaptation)"
     },
-    "sweep-of-the-heart": {
-      "added_at": "2026-08-02",
+    "sweep-of-the-heart-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -13949,10 +13888,95 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "sweep-of-the-heart",
+      "id": "sweep-of-the-heart-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CTD4K1LH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4176015,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4195033,
+              "start_ms": 4176015,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4520878,
+              "start_ms": 8371048,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4259236,
+              "start_ms": 12891926,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4095396,
+              "start_ms": 17151162,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3812739,
+              "start_ms": 21246558,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3087301,
+              "start_ms": 25059297,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3810232,
+              "start_ms": 28146598,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4400831,
+              "start_ms": 31956830,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3752413,
+              "start_ms": 36357661,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mJbOa93CL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 668,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CTD4K1LH",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CTD4K1LH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sweep-of-the-heart-dramatized-adaptation"
+        },
         "nora-sofyan-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14161,115 +14185,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "sweep-of-the-heart"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BQGVNYC9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sweep of the Heart"
-    },
-    "sweep-of-the-heart-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "sweep-of-the-heart-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CTD4K1LH",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4176015,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4195033,
-              "start_ms": 4176015,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4520878,
-              "start_ms": 8371048,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4259236,
-              "start_ms": 12891926,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4095396,
-              "start_ms": 17151162,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3812739,
-              "start_ms": 21246558,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3087301,
-              "start_ms": 25059297,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3810232,
-              "start_ms": 28146598,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4400831,
-              "start_ms": 31956830,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3752413,
-              "start_ms": 36357661,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mJbOa93CL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 668,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CTD4K1LH",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CTD4K1LH",
-              "type": "libex-import"
-            }
-          ],
           "work": "sweep-of-the-heart-dramatized-adaptation"
         }
       },
@@ -14282,6 +14197,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CTD4K1LH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BQGVNYC9",
           "type": "libex-import"
         }
       ],

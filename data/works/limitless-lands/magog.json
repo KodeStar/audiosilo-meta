@@ -6185,7 +6185,8 @@
       "genres": [
         "childrens",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "urban-fantasy"
       ],
       "id": "magus",
       "language": "en",
@@ -6370,30 +6371,7 @@
             }
           ],
           "work": "magus"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00M35Z406",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magus"
-    },
-    "magus-advent-mage-cycle-book-2": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "honor-raconteur"
-      ],
-      "genres": [
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "magus-advent-mage-cycle-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "mark-mcclain-wilson-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6572,17 +6550,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "magus-advent-mage-cycle-book-2"
+          "work": "magus"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00M35Z406",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CKZK17LV",
           "type": "libex-import"
         }
       ],
-      "title": "Magus: Advent Mage Cycle, Book 2"
+      "title": "Magus"
     },
     "magus-ein-litrpg-roman-magus-a-litrpg-novel": {
       "added_at": "2026-08-01",

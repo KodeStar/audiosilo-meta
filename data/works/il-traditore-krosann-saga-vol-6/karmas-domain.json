@@ -9727,12 +9727,41 @@
         "historical-fiction",
         "historical-romance",
         "history",
-        "romance"
+        "romance",
+        "womens-fiction"
       ],
       "id": "katharine-parr-the-sixth-wife",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "beth-eyre-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1472227859",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91szsHTqcQS.jpg",
+          "id": "beth-eyre-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "beth-eyre"
+          ],
+          "publisher": "Review",
+          "release_date": "2021-05-13",
+          "runtime_min": 1157,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1472227859",
+              "type": "libex-import"
+            }
+          ],
+          "work": "katharine-parr-the-sixth-wife"
+        },
         "rosalyn-landor-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9958,6 +9987,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "1980085668",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1472227859",
           "type": "libex-import"
         }
       ],
@@ -10905,12 +10939,44 @@
         "alison-weir"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "historical-romance",
+        "history",
+        "romance",
+        "womens-fiction"
       ],
       "id": "katherine-of-aragon-the-true-queen",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "maggie-mash-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01B21TVCI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912EYqvMViL.jpg",
+          "id": "maggie-mash-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "maggie-mash"
+          ],
+          "publisher": "Review",
+          "release_date": "2016-05-05",
+          "runtime_min": 1663,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01B21TVCI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "katherine-of-aragon-the-true-queen"
+        },
         "rosalyn-landor-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11146,6 +11212,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B01G7BGN7Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01B21TVCI",
           "type": "libex-import"
         }
       ],

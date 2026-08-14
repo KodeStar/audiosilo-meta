@@ -377,8 +377,8 @@
       ],
       "title": "Tammy Wynette"
     },
-    "tamora-carter-goblin-queen": {
-      "added_at": "2026-08-02",
+    "tamora-carter-goblin-queen-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "jim-c-hines"
       ],
@@ -387,10 +387,70 @@
         "fantasy",
         "urban-fantasy"
       ],
-      "id": "tamora-carter-goblin-queen",
+      "id": "tamora-carter-goblin-queen-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648816274",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3590013,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3584952,
+              "start_ms": 3590013,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3992183,
+              "start_ms": 7174965,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3861919,
+              "start_ms": 11167148,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4643177,
+              "start_ms": 15029067,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81O5aEXXzKL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 328,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816274",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816274",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tamora-carter-goblin-queen-dramatized-adaptation"
+        },
         "jaine-ye-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -524,90 +584,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "tamora-carter-goblin-queen"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1705017673",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tamora Carter: Goblin Queen"
-    },
-    "tamora-carter-goblin-queen-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "jim-c-hines"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "tamora-carter-goblin-queen-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648816274",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3590013,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3584952,
-              "start_ms": 3590013,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3992183,
-              "start_ms": 7174965,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3861919,
-              "start_ms": 11167148,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4643177,
-              "start_ms": 15029067,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81O5aEXXzKL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 328,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648816274",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648816274",
-              "type": "libex-import"
-            }
-          ],
           "work": "tamora-carter-goblin-queen-dramatized-adaptation"
         }
       },
@@ -620,6 +596,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648816274",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705017673",
           "type": "libex-import"
         }
       ],
@@ -1416,7 +1397,8 @@
       ],
       "genres": [
         "lgbtq",
-        "literary-fiction"
+        "literary-fiction",
+        "parenting-relationships"
       ],
       "id": "tan-poca-vida",
       "language": "es",
@@ -1429,63 +1411,7 @@
             {
               "asin": "B0CPTHB1GR",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913D8tSZJ0L.jpg",
-          "id": "victor-velasco-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-velasco",
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-01-04",
-          "runtime_min": 1779,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CPTHB1GR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tan-poca-vida"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CPTHB1GR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tan poca vida"
-    },
-    "tan-poca-vida-a-little-life": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hanya-yanagihara",
-        "aurora-echevarria-perez"
-      ],
-      "credits": [
-        {
-          "person": "aurora-echevarria-perez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "lgbtq",
-        "literary-fiction",
-        "parenting-relationships"
-      ],
-      "id": "tan-poca-vida-a-little-life",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "victor-velasco-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CPTR1997",
               "region": "us"
@@ -1687,21 +1613,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CPTHB1GR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CPTR1997",
               "type": "libex-import"
             }
           ],
-          "work": "tan-poca-vida-a-little-life"
+          "work": "tan-poca-vida"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CPTHB1GR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CPTR1997",
           "type": "libex-import"
         }
       ],
-      "title": "Tan poca vida [A Little Life]"
+      "title": "Tan poca vida"
     },
     "tanaka-rain": {
       "added_at": "2026-07-29",
@@ -4106,201 +4042,6 @@
         }
       ],
       "title": "Tangle"
-    },
-    "tangle-box": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-brooks"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "tangle-box",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeremy-arthur-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0593504011",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15533,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 72446,
-              "start_ms": 15533,
-              "title": "Boxed In"
-            },
-            {
-              "length_ms": 14767,
-              "start_ms": 87979,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 68592,
-              "start_ms": 102746,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 2266917,
-              "start_ms": 171338,
-              "title": "Skat Mandu"
-            },
-            {
-              "length_ms": 1919639,
-              "start_ms": 2438255,
-              "title": "Child"
-            },
-            {
-              "length_ms": 1811481,
-              "start_ms": 4357894,
-              "title": "Gorse"
-            },
-            {
-              "length_ms": 1571132,
-              "start_ms": 6169375,
-              "title": "Roots"
-            },
-            {
-              "length_ms": 1854647,
-              "start_ms": 7740507,
-              "title": "Ensorcelled"
-            },
-            {
-              "length_ms": 1695984,
-              "start_ms": 9595154,
-              "title": "Labyrinth"
-            },
-            {
-              "length_ms": 1743563,
-              "start_ms": 11291138,
-              "title": "Vision"
-            },
-            {
-              "length_ms": 2227746,
-              "start_ms": 13034701,
-              "title": "Mind’s Eye Crystals"
-            },
-            {
-              "length_ms": 2338666,
-              "start_ms": 15262447,
-              "title": "Greenwich"
-            },
-            {
-              "length_ms": 1517331,
-              "start_ms": 17601113,
-              "title": "Haze"
-            },
-            {
-              "length_ms": 1775513,
-              "start_ms": 19118444,
-              "title": "River Gypsies"
-            },
-            {
-              "length_ms": 1611558,
-              "start_ms": 20893957,
-              "title": "Costs You Nothing"
-            },
-            {
-              "length_ms": 1595883,
-              "start_ms": 22505515,
-              "title": "Gristlies"
-            },
-            {
-              "length_ms": 1767038,
-              "start_ms": 24101398,
-              "title": "Handful of Dust"
-            },
-            {
-              "length_ms": 1767967,
-              "start_ms": 25868436,
-              "title": "Dream Dance"
-            },
-            {
-              "length_ms": 1660505,
-              "start_ms": 27636403,
-              "title": "Wakening"
-            },
-            {
-              "length_ms": 1543848,
-              "start_ms": 29296908,
-              "title": "Stash"
-            },
-            {
-              "length_ms": 1434877,
-              "start_ms": 30840756,
-              "title": "Gnome Time"
-            },
-            {
-              "length_ms": 1612858,
-              "start_ms": 32275633,
-              "title": "Biggar’s Last Stand"
-            },
-            {
-              "length_ms": 1532864,
-              "start_ms": 33888491,
-              "title": "Dead Reckoning"
-            },
-            {
-              "length_ms": 1395194,
-              "start_ms": 35421355,
-              "title": "Redemption"
-            },
-            {
-              "length_ms": 1121175,
-              "start_ms": 36816549,
-              "title": "Green Eyes"
-            },
-            {
-              "length_ms": 550428,
-              "start_ms": 37937724,
-              "title": "Bestseller"
-            },
-            {
-              "length_ms": 37615,
-              "start_ms": 38488152,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910MkR0YgdL.jpg",
-          "id": "jeremy-arthur-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeremy-arthur"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2022-03-29",
-          "runtime_min": 641,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0593504011",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tangle-box"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0593504011",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tangle Box"
     },
     "tangle-of-need": {
       "added_at": "2026-08-02",

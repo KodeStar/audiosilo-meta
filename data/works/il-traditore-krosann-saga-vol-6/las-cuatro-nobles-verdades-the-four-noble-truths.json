@@ -463,31 +463,7 @@
             }
           ],
           "work": "las-doncellas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B093QM512F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Las Doncellas"
-    },
-    "las-doncellas-the-maidens": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alex-michaelides",
-        "laura-martin-de-dios",
-        "laura-manero-jimenez"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "las-doncellas-the-maidens",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "javier-portugues-portu-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -997,17 +973,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "las-doncellas-the-maidens"
+          "work": "las-doncellas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B093QM512F",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "842046077X",
           "type": "libex-import"
         }
       ],
-      "title": "Las Doncellas [The Maidens]"
+      "title": "Las Doncellas"
     },
     "las-dos-caras-del-servicio-the-two-sides-of-service": {
       "added_at": "2026-07-29",
@@ -1437,54 +1418,7 @@
             {
               "asin": "6073170467",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Ym+8c21hL.jpg",
-          "id": "humberto-solorzano-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "humberto-solorzano"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-06-14",
-          "runtime_min": 92,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "6073170467",
-              "type": "libex-import"
-            }
-          ],
-          "work": "las-elegidas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "6073170467",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Las elegidas"
-    },
-    "las-elegidas-the-chosen-ones": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jorge-volpi"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "las-elegidas-the-chosen-ones",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "humberto-solorzano-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07DLD6J5Y",
               "region": "us"
@@ -1503,21 +1437,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "6073170467",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07DLD6J5Y",
               "type": "libex-import"
             }
           ],
-          "work": "las-elegidas-the-chosen-ones"
+          "work": "las-elegidas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "6073170467",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07DLD6J5Y",
           "type": "libex-import"
         }
       ],
-      "title": "Las elegidas [The Chosen Ones]"
+      "title": "Las elegidas"
     },
     "las-ensenanzas-de-eckhart-tolle-el-poder-del-ahora-guia-practica-para-el-dia-a-dia-the-teachings-of": {
       "added_at": "2026-07-29",
@@ -10570,7 +10514,8 @@
       ],
       "genres": [
         "historical-fiction",
-        "military-history"
+        "military-history",
+        "war-military-fiction"
       ],
       "id": "las-mujeres-de-la-guerra",
       "language": "es",
@@ -10583,61 +10528,7 @@
             {
               "asin": "B0CZZ97BTF",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71F3nlW5veL.jpg",
-          "id": "ana-osorio-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-osorio"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-04-11",
-          "runtime_min": 1063,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CZZ97BTF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "las-mujeres-de-la-guerra"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CZZ97BTF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Las mujeres de la guerra"
-    },
-    "las-mujeres-de-la-guerra-the-women": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kristin-hannah",
-        "noemi-jimenez-furquet"
-      ],
-      "credits": [
-        {
-          "person": "noemi-jimenez-furquet",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "historical-fiction",
-        "war-military-fiction"
-      ],
-      "id": "las-mujeres-de-la-guerra-the-women",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-osorio-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CZYQNZTR",
               "region": "us"
@@ -10656,21 +10547,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CZZ97BTF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CZYQNZTR",
               "type": "libex-import"
             }
           ],
-          "work": "las-mujeres-de-la-guerra-the-women"
+          "work": "las-mujeres-de-la-guerra"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CZZ97BTF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CZYQNZTR",
           "type": "libex-import"
         }
       ],
-      "title": "Las mujeres de la guerra [The Women]"
+      "title": "Las mujeres de la guerra"
     },
     "las-mujeres-que-aman-demasiado": {
       "added_at": "2026-07-29",
@@ -10694,56 +10595,7 @@
             {
               "asin": "B084GSHKRC",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71JKfjDizoL.jpg",
-          "id": "isabel-camara-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isabel-camara"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2019-06-13",
-          "runtime_min": 677,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B084GSHKRC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "las-mujeres-que-aman-demasiado"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B084GSHKRC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Las mujeres que aman demasiado"
-    },
-    "las-mujeres-que-aman-demasiado-mujeres-que-aman-demasiado": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robin-norwood"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "politics",
-        "self-help",
-        "social-sciences"
-      ],
-      "id": "las-mujeres-que-aman-demasiado-mujeres-que-aman-demasiado",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isabel-camara-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "8417664475",
               "region": "us"
@@ -10762,21 +10614,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B084GSHKRC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8417664475",
               "type": "libex-import"
             }
           ],
-          "work": "las-mujeres-que-aman-demasiado-mujeres-que-aman-demasiado"
+          "work": "las-mujeres-que-aman-demasiado"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B084GSHKRC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8417664475",
           "type": "libex-import"
         }
       ],
-      "title": "Las mujeres que aman demasiado (Mujeres que aman demasiado)"
+      "title": "Las mujeres que aman demasiado"
     },
     "las-ninas-sin-nombre-the-girls-with-no-names": {
       "added_at": "2026-07-29",

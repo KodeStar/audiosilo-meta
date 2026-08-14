@@ -3279,8 +3279,10 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "science-fiction"
       ],
       "id": "stormqueen",
       "language": "en",
@@ -3465,30 +3467,7 @@
             }
           ],
           "work": "stormqueen"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07F2JPGLB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Stormqueen!"
-    },
-    "stormqueen-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "stormqueen-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alyssa-bresnahan-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3677,17 +3656,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "stormqueen-international-edition"
+          "work": "stormqueen"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07F2JPGLB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYCVTWN",
           "type": "libex-import"
         }
       ],
-      "title": "Stormqueen! [International Edition]"
+      "title": "Stormqueen!"
     },
     "stormrider": {
       "added_at": "2026-08-02",

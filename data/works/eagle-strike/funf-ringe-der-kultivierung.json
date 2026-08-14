@@ -3610,173 +3610,6 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
-        "julia-ernst-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H33LRSDJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 699198,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 757760,
-              "start_ms": 699198,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 907273,
-              "start_ms": 1456958,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 579221,
-              "start_ms": 2364231,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 830693,
-              "start_ms": 2943452,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 1126307,
-              "start_ms": 3774145,
-              "title": "Kapitel 6"
-            },
-            {
-              "length_ms": 964138,
-              "start_ms": 4900452,
-              "title": "Kapitel 7"
-            },
-            {
-              "length_ms": 397780,
-              "start_ms": 5864590,
-              "title": "Kapitel 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81uDqsuySxL.jpg",
-          "id": "julia-ernst-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julia-ernst"
-          ],
-          "publisher": "Rosenrot Verlag",
-          "release_date": "2026-05-29",
-          "runtime_min": 104,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H33LRSDJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "funkenflug"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H33LRSDJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Funkenflug"
-    },
-    "funkenflug-alendia-11": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "manuel-schmitt"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "funkenflug-alendia-11",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "manuel-schmitt-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0842S5HK1",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1220277,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 603788,
-              "start_ms": 1220277,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 609732,
-              "start_ms": 1824065,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 642356,
-              "start_ms": 2433797,
-              "title": "Kapitel 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GOXtcwrNL.jpg",
-          "id": "manuel-schmitt-2020",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "manuel-schmitt"
-          ],
-          "publisher": "www.alendia.com",
-          "release_date": "2020-01-21",
-          "runtime_min": 51,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0842S5HK1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "funkenflug-alendia-11"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0842S5HK1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Funkenflug: Alendia 11"
-    },
-    "funkenflug-franklin-academy-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "miriam-baldauf"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "funkenflug-franklin-academy-3",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
         "julia-ernst-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3855,17 +3688,165 @@
               "type": "libex-import"
             }
           ],
-          "work": "funkenflug-franklin-academy-3"
+          "work": "funkenflug"
+        },
+        "julia-ernst-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H33LRSDJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 699198,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 757760,
+              "start_ms": 699198,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 907273,
+              "start_ms": 1456958,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 579221,
+              "start_ms": 2364231,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 830693,
+              "start_ms": 2943452,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 1126307,
+              "start_ms": 3774145,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 964138,
+              "start_ms": 4900452,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 397780,
+              "start_ms": 5864590,
+              "title": "Kapitel 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uDqsuySxL.jpg",
+          "id": "julia-ernst-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julia-ernst"
+          ],
+          "publisher": "Rosenrot Verlag",
+          "release_date": "2026-05-29",
+          "runtime_min": 104,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H33LRSDJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "funkenflug"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H33LRSDJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CH86TDS6",
           "type": "libex-import"
         }
       ],
-      "title": "Funkenflug: Franklin Academy 3"
+      "title": "Funkenflug"
+    },
+    "funkenflug-alendia-11": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "manuel-schmitt"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "funkenflug-alendia-11",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "manuel-schmitt-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0842S5HK1",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1220277,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 603788,
+              "start_ms": 1220277,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 609732,
+              "start_ms": 1824065,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 642356,
+              "start_ms": 2433797,
+              "title": "Kapitel 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GOXtcwrNL.jpg",
+          "id": "manuel-schmitt-2020",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "manuel-schmitt"
+          ],
+          "publisher": "www.alendia.com",
+          "release_date": "2020-01-21",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0842S5HK1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "funkenflug-alendia-11"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0842S5HK1",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Funkenflug: Alendia 11"
     },
     "funkenmord": {
       "added_at": "2026-07-29",

@@ -11328,76 +11328,6 @@
       ],
       "title": "Factfulness"
     },
-    "factfulness-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hans-rosling",
-        "anna-rosling-ronnlund",
-        "ola-rosling",
-        "hans-peter-remmler",
-        "hans-freundl",
-        "albrecht-schreiber"
-      ],
-      "credits": [
-        {
-          "person": "albrecht-schreiber",
-          "role": "translator"
-        },
-        {
-          "person": "hans-freundl",
-          "role": "translator"
-        },
-        {
-          "person": "hans-peter-remmler",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "politics",
-        "social-sciences"
-      ],
-      "id": "factfulness-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "uve-teschner-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CFBFSQ4C",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71bzzwVcguL.jpg",
-          "id": "uve-teschner-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "uve-teschner"
-          ],
-          "publisher": "Hörbuch Hamburg",
-          "release_date": "2023-08-10",
-          "runtime_min": 493,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CFBFSQ4C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "factfulness-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CFBFSQ4C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Factfulness (German edition)"
-    },
     "factfulness-hans-rosling": {
       "added_at": "2026-07-29",
       "authors": [
@@ -11437,6 +11367,10 @@
             {
               "asin": "B0CFBFSJTQ",
               "region": "de"
+            },
+            {
+              "asin": "B0CFBFSQ4C",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71bzzwVcguL.jpg",
@@ -11454,6 +11388,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0CFBFSJTQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CFBFSQ4C",
+              "type": "libex-import"
             }
           ],
           "work": "factfulness-hans-rosling"
@@ -11463,6 +11402,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0CFBFSJTQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CFBFSQ4C",
           "type": "libex-import"
         }
       ],

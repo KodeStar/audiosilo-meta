@@ -347,6 +347,7 @@
       ],
       "genres": [
         "action-adventure",
+        "mystery",
         "thriller-suspense",
         "war-military-fiction"
       ],
@@ -1079,12 +1080,46 @@
             }
           ],
           "work": "the-forgotten-david-baldacci"
+        },
+        "orlagh-cassidy-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DLBMDX5S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mmmPa2j3L.jpg",
+          "id": "orlagh-cassidy-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "orlagh-cassidy",
+            "ron-mclarty"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 750,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DLBMDX5S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-forgotten-david-baldacci"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B009SDRTNG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DLBMDX5S",
           "type": "libex-import"
         }
       ],
@@ -3940,30 +3975,7 @@
             }
           ],
           "work": "the-forgotten-faithful"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1705246184",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Forgotten Faithful"
-    },
-    "the-forgotten-faithful-2nd-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jez-cajiao"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "the-forgotten-faithful-2nd-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "wayne-mitchell-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4191,17 +4203,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-forgotten-faithful-2nd-edition"
+          "work": "the-forgotten-faithful"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705246184",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BKN6618L",
           "type": "libex-import"
         }
       ],
-      "title": "The Forgotten Faithful (2nd Edition)"
+      "title": "The Forgotten Faithful"
     },
     "the-forgotten-faye-kellerman": {
       "added_at": "2026-07-29",

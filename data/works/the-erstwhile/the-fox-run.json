@@ -6784,120 +6784,13 @@
       ],
       "title": "The Fractured Void"
     },
-    "the-fractured-void-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "tim-pratt"
-      ],
-      "genres": [
-        "military-science-fiction",
-        "science-fiction"
-      ],
-      "id": "the-fractured-void-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BS256YY8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4310394,
-              "start_ms": 30924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4125210,
-              "start_ms": 4341318,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4139026,
-              "start_ms": 8466528,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4124467,
-              "start_ms": 12605554,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4109908,
-              "start_ms": 16730021,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4271775,
-              "start_ms": 20839929,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4181000,
-              "start_ms": 25111704,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 87569,
-              "start_ms": 29292704,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xwNwLmKmL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 490,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BS256YY8",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BS256YY8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fractured-void-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BS256YY8",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0BS256YY8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Fractured Void (Dramatized Adaptation)"
-    },
     "the-fractured-void-tim-pratt": {
       "added_at": "2026-08-02",
       "authors": [
         "tim-pratt"
       ],
       "genres": [
+        "military-science-fiction",
         "science",
         "science-fiction",
         "space-opera"
@@ -7090,12 +6983,102 @@
             }
           ],
           "work": "the-fractured-void-tim-pratt"
+        },
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BS256YY8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4310394,
+              "start_ms": 30924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4125210,
+              "start_ms": 4341318,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4139026,
+              "start_ms": 8466528,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4124467,
+              "start_ms": 12605554,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4109908,
+              "start_ms": 16730021,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4271775,
+              "start_ms": 20839929,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4181000,
+              "start_ms": 25111704,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 87569,
+              "start_ms": 29292704,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xwNwLmKmL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 490,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BS256YY8",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BS256YY8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fractured-void-tim-pratt"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B09NCVJN6C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BS256YY8",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0BS256YY8",
           "type": "libex-import"
         }
       ],

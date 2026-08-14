@@ -7592,22 +7592,113 @@
       ],
       "title": "Magic Betrayed"
     },
-    "magic-binds": {
-      "added_at": "2026-08-02",
+    "magic-binds-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "fantasy",
         "paranormal",
         "romance",
         "urban-fantasy"
       ],
-      "id": "magic-binds",
+      "id": "magic-binds-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2025": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DT1NDWZZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4012993,
+              "start_ms": 30924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3882655,
+              "start_ms": 4043917,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3961579,
+              "start_ms": 7926572,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3851052,
+              "start_ms": 11888151,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4135218,
+              "start_ms": 15739203,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3982036,
+              "start_ms": 19874421,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4143206,
+              "start_ms": 23856457,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3872206,
+              "start_ms": 27999663,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4314000,
+              "start_ms": 31871869,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 69647,
+              "start_ms": 36185869,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vupVLgCML.jpg",
+          "id": "full-cast-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2025",
+          "runtime_min": 604,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DT1NDWZZ",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DT1NDWZZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-binds-dramatized-adaptation"
+        },
         "renee-raudman-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7721,121 +7812,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-binds"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01LZ1PUB6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magic Binds"
-    },
-    "magic-binds-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magic-binds-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2025": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DT1NDWZZ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4012993,
-              "start_ms": 30924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3882655,
-              "start_ms": 4043917,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3961579,
-              "start_ms": 7926572,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3851052,
-              "start_ms": 11888151,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4135218,
-              "start_ms": 15739203,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3982036,
-              "start_ms": 19874421,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4143206,
-              "start_ms": 23856457,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3872206,
-              "start_ms": 27999663,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4314000,
-              "start_ms": 31871869,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 69647,
-              "start_ms": 36185869,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vupVLgCML.jpg",
-          "id": "full-cast-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025",
-          "runtime_min": 604,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DT1NDWZZ",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DT1NDWZZ",
-              "type": "libex-import"
-            }
-          ],
           "work": "magic-binds-dramatized-adaptation"
         }
       },
@@ -7848,6 +7824,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0DT1NDWZZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01LZ1PUB6",
           "type": "libex-import"
         }
       ],
@@ -8035,8 +8016,8 @@
       ],
       "title": "Magic Bite"
     },
-    "magic-bites": {
-      "added_at": "2026-08-01",
+    "magic-bites-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -8045,12 +8026,98 @@
         "fantasy",
         "paranormal",
         "romance",
+        "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "magic-bites",
+      "id": "magic-bites-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BVGRM7D5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 35410,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4470979,
+              "start_ms": 35410,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4446598,
+              "start_ms": 4506389,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4486304,
+              "start_ms": 8952987,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3496460,
+              "start_ms": 13439291,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3936664,
+              "start_ms": 16935751,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3538256,
+              "start_ms": 20872415,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4716274,
+              "start_ms": 24410671,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 4532813,
+              "start_ms": 29126945,
+              "title": "Part 8"
+            },
+            {
+              "length_ms": 84334,
+              "start_ms": 33659758,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BM1k0hxzL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 562,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BVGRM7D5",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BVGRM7D5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-bites-dramatized-adaptation"
+        },
         "renee-raudman-2016": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8153,118 +8220,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-bites"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01MT3M108",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magic Bites"
-    },
-    "magic-bites-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "magic-bites-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BVGRM7D5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 35410,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4470979,
-              "start_ms": 35410,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4446598,
-              "start_ms": 4506389,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4486304,
-              "start_ms": 8952987,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3496460,
-              "start_ms": 13439291,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3936664,
-              "start_ms": 16935751,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3538256,
-              "start_ms": 20872415,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4716274,
-              "start_ms": 24410671,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 4532813,
-              "start_ms": 29126945,
-              "title": "Part 8"
-            },
-            {
-              "length_ms": 84334,
-              "start_ms": 33659758,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81BM1k0hxzL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 562,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BVGRM7D5",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BVGRM7D5",
-              "type": "libex-import"
-            }
-          ],
           "work": "magic-bites-dramatized-adaptation"
         }
       },
@@ -8277,6 +8232,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BVGRM7D5",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01MT3M108",
           "type": "libex-import"
         }
       ],
@@ -9312,8 +9272,8 @@
       ],
       "title": "Magic Blaze (German edition)"
     },
-    "magic-bleeds": {
-      "added_at": "2026-08-01",
+    "magic-bleeds-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -9321,12 +9281,98 @@
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "romance",
         "urban-fantasy"
       ],
-      "id": "magic-bleeds",
+      "id": "magic-bleeds-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CP4MGVGR",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4262904,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4200396,
+              "start_ms": 4262904,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3976486,
+              "start_ms": 8463300,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4049188,
+              "start_ms": 12439786,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4306233,
+              "start_ms": 16488974,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4349886,
+              "start_ms": 20795207,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4191317,
+              "start_ms": 25145093,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4152192,
+              "start_ms": 29336410,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4390893,
+              "start_ms": 33488602,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4333887,
+              "start_ms": 37879495,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81E4a4k1sEL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 703,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CP4MGVGR",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CP4MGVGR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-bleeds-dramatized-adaptation"
+        },
         "renee-raudman-2017": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -9519,116 +9565,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-bleeds"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B071HMMWNF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magic Bleeds"
-    },
-    "magic-bleeds-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magic-bleeds-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CP4MGVGR",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4262904,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4200396,
-              "start_ms": 4262904,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3976486,
-              "start_ms": 8463300,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4049188,
-              "start_ms": 12439786,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4306233,
-              "start_ms": 16488974,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4349886,
-              "start_ms": 20795207,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4191317,
-              "start_ms": 25145093,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4152192,
-              "start_ms": 29336410,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4390893,
-              "start_ms": 33488602,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4333887,
-              "start_ms": 37879495,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81E4a4k1sEL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 703,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CP4MGVGR",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CP4MGVGR",
-              "type": "libex-import"
-            }
-          ],
           "work": "magic-bleeds-dramatized-adaptation"
         }
       },
@@ -9641,6 +9577,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CP4MGVGR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B071HMMWNF",
           "type": "libex-import"
         }
       ],
@@ -9981,21 +9922,118 @@
       ],
       "title": "Magic Bound"
     },
-    "magic-breaks": {
-      "added_at": "2026-08-02",
+    "magic-breaks-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
       "genres": [
+        "arts-entertainment",
         "fantasy",
         "literary-fiction",
         "paranormal",
+        "romance",
         "urban-fantasy"
       ],
-      "id": "magic-breaks",
+      "id": "magic-breaks-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCSGFJT",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 39924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4152670,
+              "start_ms": 39924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4150752,
+              "start_ms": 4192594,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3754875,
+              "start_ms": 8343346,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3877221,
+              "start_ms": 12098221,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4390243,
+              "start_ms": 15975442,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4269197,
+              "start_ms": 20365685,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4069389,
+              "start_ms": 24634882,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 4288841,
+              "start_ms": 28704271,
+              "title": "Part 8"
+            },
+            {
+              "length_ms": 4178477,
+              "start_ms": 32993112,
+              "title": "Part 9"
+            },
+            {
+              "length_ms": 4515000,
+              "start_ms": 37171589,
+              "title": "Part 10"
+            },
+            {
+              "length_ms": 214857,
+              "start_ms": 41686589,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EZgBpJT9L.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 698,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DDCSGFJT",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCSGFJT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-breaks-dramatized-adaptation"
+        },
         "renee-raudman-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10138,128 +10176,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-breaks"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00M38FWLY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magic Breaks"
-    },
-    "magic-breaks-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "literary-fiction",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magic-breaks-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCSGFJT",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 39924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4152670,
-              "start_ms": 39924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4150752,
-              "start_ms": 4192594,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3754875,
-              "start_ms": 8343346,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3877221,
-              "start_ms": 12098221,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4390243,
-              "start_ms": 15975442,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4269197,
-              "start_ms": 20365685,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4069389,
-              "start_ms": 24634882,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 4288841,
-              "start_ms": 28704271,
-              "title": "Part 8"
-            },
-            {
-              "length_ms": 4178477,
-              "start_ms": 32993112,
-              "title": "Part 9"
-            },
-            {
-              "length_ms": 4515000,
-              "start_ms": 37171589,
-              "title": "Part 10"
-            },
-            {
-              "length_ms": 214857,
-              "start_ms": 41686589,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91EZgBpJT9L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 698,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DDCSGFJT",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCSGFJT",
-              "type": "libex-import"
-            }
-          ],
           "work": "magic-breaks-dramatized-adaptation"
         }
       },
@@ -10273,12 +10189,17 @@
           "imported_at": "2026-07-30",
           "ref": "B0DDCSGFJT",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00M38FWLY",
+          "type": "libex-import"
         }
       ],
       "title": "Magic Breaks (Dramatized Adaptation)"
     },
-    "magic-burns": {
-      "added_at": "2026-08-01",
+    "magic-burns-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "ilona-andrews"
       ],
@@ -10289,10 +10210,90 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "magic-burns",
+      "id": "magic-burns-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0C795Y4HY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 28924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4324492,
+              "start_ms": 28924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4379074,
+              "start_ms": 4353416,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4130783,
+              "start_ms": 8732490,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4436172,
+              "start_ms": 12863273,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3943862,
+              "start_ms": 17299445,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3606941,
+              "start_ms": 21243307,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4428000,
+              "start_ms": 24850248,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 209767,
+              "start_ms": 29278248,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mDCRKV58L.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 491,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C795Y4HY",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C795Y4HY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-burns-dramatized-adaptation"
+        },
         "renee-raudman-2017": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10470,111 +10471,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-burns"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01N37ALBZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magic Burns"
-    },
-    "magic-burns-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magic-burns-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0C795Y4HY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 28924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4324492,
-              "start_ms": 28924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4379074,
-              "start_ms": 4353416,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4130783,
-              "start_ms": 8732490,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4436172,
-              "start_ms": 12863273,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3943862,
-              "start_ms": 17299445,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3606941,
-              "start_ms": 21243307,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4428000,
-              "start_ms": 24850248,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 209767,
-              "start_ms": 29278248,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mDCRKV58L.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 491,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C795Y4HY",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C795Y4HY",
-              "type": "libex-import"
-            }
-          ],
           "work": "magic-burns-dramatized-adaptation"
         }
       },
@@ -10587,6 +10483,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0C795Y4HY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01N37ALBZ",
           "type": "libex-import"
         }
       ],

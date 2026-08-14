@@ -3197,6 +3197,36 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dan-john-miller-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BRBV1F96",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CBUeBncHL.jpg",
+          "id": "dan-john-miller-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-john-miller",
+            "jason-culp",
+            "john-curless"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2023-09-26",
+          "runtime_min": 625,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BRBV1F96",
+              "type": "libex-import"
+            }
+          ],
+          "work": "to-the-far-blue-mountains"
+        },
         "john-curless-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3413,63 +3443,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8HIYK",
           "type": "libex-import"
-        }
-      ],
-      "title": "To the Far Blue Mountains"
-    },
-    "to-the-far-blue-mountains-louis-lamours-lost-treasures": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "louis-lamour"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "to-the-far-blue-mountains-louis-lamours-lost-treasures",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dan-john-miller-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BRBV1F96",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CBUeBncHL.jpg",
-          "id": "dan-john-miller-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-john-miller",
-            "jason-culp",
-            "john-curless"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2023-09-26",
-          "runtime_min": 625,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BRBV1F96",
-              "type": "libex-import"
-            }
-          ],
-          "work": "to-the-far-blue-mountains-louis-lamours-lost-treasures"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BRBV1F96",
           "type": "libex-import"
         }
       ],
-      "title": "To the Far Blue Mountains (Louis L'Amour's Lost Treasures)"
+      "title": "To the Far Blue Mountains"
     },
     "to-the-farthest-shores": {
       "added_at": "2026-07-29",

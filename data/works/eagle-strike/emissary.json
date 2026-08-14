@@ -4604,6 +4604,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "historical-romance",
         "romance"
       ],
       "id": "emma-jane-austen",
@@ -4617,6 +4618,10 @@
             {
               "asin": "B08K3S3SHP",
               "region": "es"
+            },
+            {
+              "asin": "B08K3RL7MN",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZtfSFL6NL.jpg",
@@ -4634,6 +4639,11 @@
               "imported_at": "2026-07-29",
               "ref": "B08K3S3SHP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08K3RL7MN",
+              "type": "libex-import"
             }
           ],
           "work": "emma-jane-austen"
@@ -4643,6 +4653,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08K3S3SHP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08K3RL7MN",
           "type": "libex-import"
         }
       ],
@@ -5491,58 +5506,6 @@
         }
       ],
       "title": "Emma (Seasons Edition -- Spring)"
-    },
-    "emma-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jane-austen"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "emma-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "maribel-verdu-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08K3RL7MN",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ZtfSFL6NL.jpg",
-          "id": "maribel-verdu-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "maribel-verdu"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-28",
-          "runtime_min": 983,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08K3RL7MN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "emma-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08K3RL7MN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Emma (Spanish Edition)"
     },
     "emma-spanish-edition-jane-austen": {
       "added_at": "2026-07-29",

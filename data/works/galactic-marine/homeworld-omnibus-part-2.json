@@ -3820,55 +3820,7 @@
             {
               "asin": "849992607X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71BGtbN5HeL.jpg",
-          "id": "carlos-manuel-vesga-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-manuel-vesga"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-11-23",
-          "runtime_min": 1020,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "849992607X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "homo-deus-breve-historia-del-manana"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "849992607X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Homo Deus: Breve historia del mañana"
-    },
-    "homo-deus-breve-historia-del-manana-homo-deus-a-brief-history-of-tomorrow": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "history",
-        "science"
-      ],
-      "id": "homo-deus-breve-historia-del-manana-homo-deus-a-brief-history-of-tomorrow",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-manuel-vesga-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0777VCBWH",
               "region": "us"
@@ -3887,21 +3839,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "849992607X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0777VCBWH",
               "type": "libex-import"
             }
           ],
-          "work": "homo-deus-breve-historia-del-manana-homo-deus-a-brief-history-of-tomorrow"
+          "work": "homo-deus-breve-historia-del-manana"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "849992607X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0777VCBWH",
           "type": "libex-import"
         }
       ],
-      "title": "Homo Deus: Breve historia del mañana [Homo Deus: A Brief History of Tomorrow]"
+      "title": "Homo Deus: Breve historia del mañana"
     },
     "homo-deus-eine-geschichte-von-morgen": {
       "added_at": "2026-07-29",
@@ -4001,60 +3963,6 @@
       ],
       "title": "Homo Deus: Eine Geschichte von Morgen"
     },
-    "homo-deus-homo-deus-a-brief-history-of-tomorrow": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "history",
-        "politics",
-        "science",
-        "social-sciences"
-      ],
-      "id": "homo-deus-homo-deus-a-brief-history-of-tomorrow",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-david-garcia-marquez-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09SNXBK3D",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71SoOabWaUL.jpg",
-          "id": "luis-david-garcia-marquez-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-david-garcia-marquez"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2022-02-24",
-          "runtime_min": 1026,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09SNXBK3D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "homo-deus-homo-deus-a-brief-history-of-tomorrow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09SNXBK3D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Homo Deus [Homo Deus. A Brief History of Tomorrow]"
-    },
     "homo-deus-yuval-noah-harari": {
       "added_at": "2026-07-29",
       "authors": [
@@ -4078,6 +3986,10 @@
             {
               "asin": "B09SPCSB1B",
               "region": "es"
+            },
+            {
+              "asin": "B09SNXBK3D",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71SoOabWaUL.jpg",
@@ -4095,6 +4007,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09SPCSB1B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09SNXBK3D",
+              "type": "libex-import"
             }
           ],
           "work": "homo-deus-yuval-noah-harari"
@@ -4104,6 +4021,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09SPCSB1B",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09SNXBK3D",
           "type": "libex-import"
         }
       ],

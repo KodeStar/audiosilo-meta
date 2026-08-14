@@ -4083,6 +4083,229 @@
         ],
         "work": "fracture"
       }
+    },
+    "frankenstein": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An English explorer writing to his sister from a voyage toward the North Pole. Ambitious and lonely, he hopes to make a great discovery but longs for a friend who can understand him. After his crew finds an exhausted traveler on the ice, Walton records the stranger's history.",
+            "id": "robert-walton",
+            "name": "Robert Walton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Frankenstein"
+            ],
+            "description": "A Genevan scientist rescued from the Arctic ice while pursuing an unknown figure. Gravely ill and disturbed by Walton's hunger for glory, he offers the explorer the account of his own ruin as a warning about ambition pursued without restraint.",
+            "id": "victor-frankenstein",
+            "name": "Victor Frankenstein",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Victor's father, a respected Genevan devoted to his family. He provides Victor with a secure childhood and later tries to comfort and protect him through a succession of family crises.",
+            "id": "alphonse-frankenstein",
+            "name": "Alphonse Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's mother, the daughter of Alphonse's impoverished friend Beaufort. Compassionate and attentive to those in distress, she builds a close household around Victor, his brothers, Elizabeth, and their companions.",
+            "id": "caroline-beaufort-frankenstein",
+            "name": "Caroline Beaufort Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "Victor's beloved childhood companion, raised in the Frankenstein household and regarded as part of the family. Gentle, perceptive, and loyal, she values affection and domestic happiness more than the intellectual ambitions that increasingly occupy Victor.",
+            "id": "elizabeth-lavenza",
+            "name": "Elizabeth Lavenza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's youngest brother, a lively child cherished by the Frankenstein family. His place in Victor's early account establishes the innocent domestic world Victor leaves behind when he goes to university.",
+            "id": "william-frankenstein",
+            "name": "William Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman taken into the Frankenstein household after hardship in her own family. She is especially close to Elizabeth and is treated as a trusted companion rather than simply a servant.",
+            "id": "justine-moritz",
+            "name": "Justine Moritz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's closest friend from childhood, warmhearted, imaginative, and interested in languages and human culture. His humane curiosity contrasts with Victor's secretive fascination with natural philosophy, and he later joins Victor at Ingolstadt.",
+            "id": "henry-clerval",
+            "name": "Henry Clerval",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professor at Ingolstadt who dismisses Victor's early reading in obsolete natural philosophy. His harsh manner embarrasses Victor, though his criticism helps redirect the young student's education toward contemporary science.",
+            "id": "m-krempe",
+            "name": "M. Krempe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A chemistry professor at Ingolstadt whose courtesy and enthusiasm impress Victor. He respects earlier thinkers while explaining how modern experiment has expanded human knowledge, encouraging Victor's scientific ambitions.",
+            "id": "m-waldman",
+            "name": "M. Waldman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the creature",
+              "the monster"
+            ],
+            "description": "The enormous living being Victor secretly constructs from dead matter. Victor selected features he imagined would be beautiful, but when the being opens its eyes the result horrifies him, and he abandons it without attempting to understand or care for it.",
+            "id": "victors-creature",
+            "name": "Victor's Creature",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "An elderly blind man living in poverty with his adult children in a rural cottage. The creature observes his gentleness and hopes that, because De Lacey cannot see his appearance, the old man may listen without immediate prejudice.",
+            "id": "de-lacey",
+            "name": "De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "De Lacey's son, living in exile with his father and sister. The creature secretly watches Felix labor for the family's survival and learns from the tenderness and sorrow within the cottage household.",
+            "id": "felix-de-lacey",
+            "name": "Felix De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Felix's sister and De Lacey's daughter, a compassionate young woman sharing the family's exile and poverty. Her everyday speech and conduct are among the creature's first sustained lessons in human language and feeling.",
+            "id": "agatha-de-lacey",
+            "name": "Agatha De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman from Turkey who arrives at the De Laceys' cottage to reunite with Felix. As Felix teaches her French, the hidden creature follows the lessons and learns language, history, and the customs of human society alongside her.",
+            "id": "safie",
+            "name": "Safie",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "frankenstein"
+      },
+      "recaps": {
+        "ending": "After the creature kills Henry Clerval, Victor is imprisoned but eventually cleared and returned to his family. He marries Elizabeth while expecting the creature to attack him, only to discover that the threat concerned Elizabeth: she is murdered on their wedding night. Alphonse dies soon afterward, and Victor devotes himself to revenge, pursuing his creation north until Walton's expedition rescues him from the ice. Walton turns the ship south when his endangered crew insists on returning home. Victor dies aboard the vessel before he can continue the chase. The creature then appears beside his body, mourning the man he hated and acknowledging that vengeance has brought only misery. He tells Walton that he will travel farther north, destroy himself on a funeral fire, and leave no remains from which another being like him could be made. He departs alone across the ice and disappears into the darkness.",
+        "in_short": "Arctic explorer Robert Walton rescues Victor Frankenstein, who recounts how his pursuit of scientific glory led him to animate a being assembled from human remains. Horrified, Victor abandoned his creation. Rejected wherever he went, the creature secretly educated himself by observing the De Lacey family, then demanded that Victor make him a female companion. Victor agreed but destroyed the second being before completing it. In retaliation, the creature killed Victor's friend Henry and his bride Elizabeth, adding to deaths that began with Victor's young brother William and the wrongful execution of Justine. Victor chased the creature into the Arctic, where Walton found him. Victor dies aboard Walton's ship after the crew decides to turn home. The creature comes to mourn over his creator, admits that revenge has made him wretched rather than satisfied, and leaves across the ice intending to burn himself to death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In letters to his sister Margaret, Robert Walton describes his expedition toward the North Pole and his hope of achieving fame through discovery. Although confident in his purpose, he regrets having no close intellectual companion. Deep in the Arctic, his crew sees a gigantic figure traveling over the ice by dogsled. The next day they rescue another sled traveler, an emaciated European who is pursuing the first. The stranger, Victor Frankenstein, slowly recovers aboard the ship. He recognizes in Walton the same dangerous hunger for knowledge and distinction that once drove him. After learning the aim of the voyage, Victor agrees to tell Walton the history of his own ambition and the disaster it caused.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor describes a loving childhood in Geneva with his parents, his adopted companion Elizabeth Lavenza, his brothers, and his friend Henry Clerval. Fascinated first by old theories of nature, he goes to the University of Ingolstadt and redirects his studies toward modern chemistry and anatomy. He becomes obsessed with the boundary between life and death and discovers a method for animating lifeless matter. Working in isolation, he builds a humanlike body on a gigantic scale. When the being comes alive, Victor is appalled by its appearance and flees. Henry arrives at Ingolstadt and finds Victor collapsing into a long illness. While Henry nurses him, Victor avoids the room and instruments connected with his experiment and tries to return to ordinary life, without knowing where the abandoned being has gone.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A letter from home reports that Victor's young brother William has been murdered. On reaching Geneva, Victor sees the being he created near the place of the killing and becomes convinced it is responsible, but he cannot reveal his secret without expecting disbelief. Justine Moritz, a trusted member of the household, is charged after a miniature belonging to William is found in her clothing. Elizabeth testifies to Justine's character, yet the circumstantial evidence and a confession extracted under religious pressure lead to conviction. Justine is executed despite privately telling Victor and Elizabeth that she is innocent. Victor is crushed by guilt because his silence and his act of creation have helped destroy two innocent people. He seeks relief in the Alpine landscape, but his grief and isolation deepen.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor travels into the mountains above the valley of Chamonix, hoping the immense landscape will quiet his anguish. On a glacier he encounters the creature, who approaches with extraordinary speed and speaks fluently. Victor denounces him as William's murderer and threatens violence. The creature answers that he was once capable of affection but has been made hostile by misery and universal rejection. He argues that Victor, as his maker, owes him a hearing before passing judgment. If Victor listens and grants justice, the creature says he may leave humanity in peace; refusal will prolong their conflict. Victor reluctantly follows him to a shelter and agrees to hear how the abandoned being survived and learned to understand the human world.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The creature tells Victor that he awoke confused by light, cold, hunger, and sound, then fled from every human who saw him. He found a hiding place beside a cottage occupied by the blind De Lacey, his son Felix, and his daughter Agatha. By secretly watching them, performing small tasks for them, and following Felix's lessons to the newly arrived Safie, he learned speech, reading, history, and social distinctions. Books gave him ideals of virtue and companionship, while Victor's abandoned journal showed him the disgust with which his maker had regarded him. He came to love the family and hoped they would accept his goodwill. Approaching De Lacey alone, he initially received a patient hearing, but Felix returned, saw him, and drove him away. The rejection destroys his last confident hope that kindness will overcome fear of his appearance.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the De Laceys abandon their cottage, the creature burns it and turns his anger toward humanity and Victor. He later saves a girl from drowning but is shot by her companion. Near Geneva he kills William after learning the child is a Frankenstein and plants William's miniature on the sleeping Justine. He now demands that Victor create a female being like him, promising that the pair will withdraw permanently from human society. Victor reluctantly agrees and travels through Britain with Henry before isolating himself on a remote island to work. Fearing that a second creature might reject the agreement, reproduce, or become still more destructive, Victor tears the unfinished body apart while the first creature watches. The creature vows to be present on Victor's wedding night. Victor disposes of the remains at sea and is blown ashore, where he is arrested after a man has been found murdered.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The murder victim is Henry Clerval, strangled by the creature. Victor falls ill in prison but is eventually cleared and brought home by his father. He marries Elizabeth while expecting the creature's promised attack to fall on him. Instead, the creature murders Elizabeth on their wedding night. Alphonse soon dies from grief, leaving Victor with no close family. He tells a magistrate his story, then swears revenge and pursues the creature across Europe and into the Arctic, guided by taunting signs and messages. Walton's crew rescues Victor, but the explorer must abandon his own northward quest when the sailors demand a safe return. Victor dies aboard the ship. The creature appears beside his body and tells Walton that every murder increased his misery. Declaring that his revenge is finished, he leaves across the ice intending to burn himself and vanish without a trace.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "frankenstein"
+      }
     }
   }
 }

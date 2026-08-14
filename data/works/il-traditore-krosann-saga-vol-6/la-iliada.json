@@ -1982,6 +1982,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "historical-romance",
         "literary-fiction",
         "romance",
         "womens-fiction"
@@ -1997,57 +1998,7 @@
             {
               "asin": "8401019060",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kvmAzrvLL.jpg",
-          "id": "jane-santos-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jane-santos"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-12-15",
-          "runtime_min": 1020,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019060",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-isla-bajo-el-mar"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019060",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La isla bajo el mar"
-    },
-    "la-isla-bajo-el-mar-the-island-beneath-the-sea": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "literary-fiction",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "la-isla-bajo-el-mar-the-island-beneath-the-sea",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jane-santos-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01MYXLEW8",
               "region": "us"
@@ -2453,21 +2404,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401019060",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MYXLEW8",
               "type": "libex-import"
             }
           ],
-          "work": "la-isla-bajo-el-mar-the-island-beneath-the-sea"
+          "work": "la-isla-bajo-el-mar"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019060",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MYXLEW8",
           "type": "libex-import"
         }
       ],
-      "title": "La isla bajo el mar [The Island Beneath the Sea]"
+      "title": "La isla bajo el mar"
     },
     "la-isla-de-alice": {
       "added_at": "2026-07-29",
@@ -2685,8 +2646,11 @@
       "genres": [
         "espionage",
         "hard-boiled",
+        "historical-fiction",
         "military-history",
-        "mystery"
+        "mystery",
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "la-isla-de-las-tormentas",
       "language": "es",
@@ -2699,59 +2663,7 @@
             {
               "asin": "846634697X",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910qOFIo0uL.jpg",
-          "id": "xavi-fernandez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-06-18",
-          "runtime_min": 744,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "846634697X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-isla-de-las-tormentas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "846634697X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La isla de las tormentas"
-    },
-    "la-isla-de-las-tormentas-eye-of-the-needle": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ken-follett",
-        "mirta-arlt",
-        "ignacio-gomez-calvo"
-      ],
-      "genres": [
-        "espionage",
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "la-isla-de-las-tormentas-eye-of-the-needle",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "xavi-fernandez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07DQXDT8H",
               "region": "us"
@@ -2770,21 +2682,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "846634697X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07DQXDT8H",
               "type": "libex-import"
             }
           ],
-          "work": "la-isla-de-las-tormentas-eye-of-the-needle"
+          "work": "la-isla-de-las-tormentas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "846634697X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07DQXDT8H",
           "type": "libex-import"
         }
       ],
-      "title": "La isla de las tormentas [Eye of the Needle]"
+      "title": "La isla de las tormentas"
     },
     "la-isla-de-las-ultimas-voces-the-island-of-the-last-voices": {
       "added_at": "2026-07-29",
@@ -4712,6 +4634,7 @@
       "genres": [
         "hard-boiled",
         "literary-fiction",
+        "magical-realism",
         "mystery",
         "thriller-suspense"
       ],
@@ -4726,56 +4649,7 @@
             {
               "asin": "8426401589",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rpsmtIYDL.jpg",
-          "id": "merce-montala-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "merce-montala"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2014-06-20",
-          "runtime_min": 847,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8426401589",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-ladrona-de-libros"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8426401589",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La ladrona de libros"
-    },
-    "la-ladrona-de-libros-the-book-thief": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "markus-zusak",
-        "laura-martin-de-dios"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism",
-        "thriller-suspense"
-      ],
-      "id": "la-ladrona-de-libros-the-book-thief",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "merce-montala-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00L3W8ZYC",
               "region": "us"
@@ -5306,21 +5180,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8426401589",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00L3W8ZYC",
               "type": "libex-import"
             }
           ],
-          "work": "la-ladrona-de-libros-the-book-thief"
+          "work": "la-ladrona-de-libros"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8426401589",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00L3W8ZYC",
           "type": "libex-import"
         }
       ],
-      "title": "La ladrona de libros [The Book Thief]"
+      "title": "La ladrona de libros"
     },
     "la-lama-sottile": {
       "added_at": "2026-08-02",

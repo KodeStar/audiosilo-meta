@@ -5505,7 +5505,8 @@
         "fernanda-solorzano"
       ],
       "genres": [
-        "arts-entertainment"
+        "arts-entertainment",
+        "writing-publishing"
       ],
       "id": "misterios-de-la-sala-oscura",
       "language": "es",
@@ -5518,55 +5519,7 @@
             {
               "asin": "B081P1X2RP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71XcUoMIadL.jpg",
-          "id": "ana-laura-santana-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-laura-santana",
-            "fernanda-solorzano"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2019-11-19",
-          "runtime_min": 947,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B081P1X2RP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "misterios-de-la-sala-oscura"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B081P1X2RP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Misterios de la sala oscura"
-    },
-    "misterios-de-la-sala-oscura-mysteries-of-the-dark-room": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "fernanda-solorzano"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "writing-publishing"
-      ],
-      "id": "misterios-de-la-sala-oscura-mysteries-of-the-dark-room",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-laura-santana-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "6073179499",
               "region": "us"
@@ -5586,21 +5539,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B081P1X2RP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "6073179499",
               "type": "libex-import"
             }
           ],
-          "work": "misterios-de-la-sala-oscura-mysteries-of-the-dark-room"
+          "work": "misterios-de-la-sala-oscura"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B081P1X2RP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "6073179499",
           "type": "libex-import"
         }
       ],
-      "title": "Misterios de la sala oscura [Mysteries of the Dark Room]"
+      "title": "Misterios de la sala oscura"
     },
     "misterioso": {
       "added_at": "2026-07-29",

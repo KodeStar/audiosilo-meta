@@ -1592,29 +1592,7 @@
             }
           ],
           "work": "mision-desaconsejable-mission-inadvisable"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B094771RV3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Misión Desaconsejable [Mission Inadvisable]"
-    },
-    "mision-desaconsejable-narracion-en-castellano-mission-inadvisable": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "mision-desaconsejable-narracion-en-castellano-mission-inadvisable",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pau-ferrer-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1668,17 +1646,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "mision-desaconsejable-narracion-en-castellano-mission-inadvisable"
+          "work": "mision-desaconsejable-mission-inadvisable"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B094771RV3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09QVS1TQB",
           "type": "libex-import"
         }
       ],
-      "title": "Misión Desaconsejable (Narración en Castellano) [Mission Inadvisable]"
+      "title": "Misión Desaconsejable [Mission Inadvisable]"
     },
     "mision-en-el-este-mission-in-the-east": {
       "added_at": "2026-08-01",

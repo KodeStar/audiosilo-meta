@@ -2877,12 +2877,109 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "comedy-humor",
+        "coming-of-age",
         "fantasy"
       ],
       "id": "starchaser",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "nicola-barber-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01KWB2PMC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2112273,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3274664,
+              "start_ms": 2112273,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2910761,
+              "start_ms": 5386937,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2508637,
+              "start_ms": 8297698,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2360680,
+              "start_ms": 10806335,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1949780,
+              "start_ms": 13167015,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2793221,
+              "start_ms": 15116795,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2552848,
+              "start_ms": 17910016,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3847686,
+              "start_ms": 20462864,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3174632,
+              "start_ms": 24310550,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4230165,
+              "start_ms": 27485182,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1841667,
+              "start_ms": 31715347,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 416194,
+              "start_ms": 33557014,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A19sYm9KKEL.jpg",
+          "id": "nicola-barber-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nicola-barber"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2016-10-11",
+          "runtime_min": 566,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01KWB2PMC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "starchaser"
+        },
         "nicola-barber-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2993,6 +3090,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FPDC649X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01KWB2PMC",
           "type": "libex-import"
         }
       ],

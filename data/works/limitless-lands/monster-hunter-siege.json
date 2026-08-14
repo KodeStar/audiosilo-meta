@@ -2302,6 +2302,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy",
         "religion-spirituality"
       ],
@@ -2315,6 +2316,10 @@
           "asin": [
             {
               "asin": "1529371376",
+              "region": "us"
+            },
+            {
+              "asin": "0593401565",
               "region": "us"
             }
           ],
@@ -2650,6 +2655,11 @@
               "imported_at": "2026-08-02",
               "ref": "1529371376",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593401565",
+              "type": "libex-import"
             }
           ],
           "work": "monster-in-the-hollows"
@@ -2659,6 +2669,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1529371376",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593401565",
           "type": "libex-import"
         }
       ],
@@ -11766,6 +11781,7 @@
         "matt-herrmann"
       ],
       "genres": [
+        "epic-fantasy",
         "fantasy"
       ],
       "id": "monster-tamer-academy",
@@ -11778,6 +11794,10 @@
           "asin": [
             {
               "asin": "B0F3V49C4W",
+              "region": "us"
+            },
+            {
+              "asin": "B0F3ZDBP3L",
               "region": "us"
             }
           ],
@@ -12144,6 +12164,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0F3V49C4W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F3ZDBP3L",
+              "type": "libex-import"
             }
           ],
           "work": "monster-tamer-academy"
@@ -12153,6 +12178,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0F3V49C4W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F3ZDBP3L",
           "type": "libex-import"
         }
       ],

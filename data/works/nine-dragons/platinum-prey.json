@@ -8761,6 +8761,8 @@
         "kylie-scott"
       ],
       "genres": [
+        "arts-entertainment",
+        "biography-memoir",
         "erotica",
         "literary-fiction",
         "romance",
@@ -8948,12 +8950,45 @@
             }
           ],
           "work": "play-kylie-scott"
+        },
+        "andi-arndt-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DPB4YWZT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91g2sWWvd5L.jpg",
+          "id": "andi-arndt-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andi-arndt"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2025-11-06",
+          "runtime_min": 510,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DPB4YWZT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "play-kylie-scott"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00JMJZ74Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DPB4YWZT",
           "type": "libex-import"
         }
       ],
@@ -11296,59 +11331,6 @@
         }
       ],
       "title": "Play Poker Like The Pros"
-    },
-    "play-stage-dive-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kylie-scott"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "erotica",
-        "romance"
-      ],
-      "id": "play-stage-dive-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andi-arndt-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DPB4YWZT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91g2sWWvd5L.jpg",
-          "id": "andi-arndt-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andi-arndt"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2025-11-06",
-          "runtime_min": 510,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DPB4YWZT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "play-stage-dive-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DPB4YWZT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Play: Stage Dive 2"
     },
     "play-stuart-brown": {
       "added_at": "2026-07-29",

@@ -6,8 +6,12 @@
         "simon-r-green"
       ],
       "genres": [
+        "action-adventure",
+        "fantasy",
         "paranormal",
-        "thriller-suspense"
+        "sword-sorcery",
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "what-song-the-sirens-sang-dramatized-adaptation",
       "language": "en",
@@ -62,6 +66,96 @@
             }
           ],
           "work": "what-song-the-sirens-sang-dramatized-adaptation"
+        },
+        "gideon-emery-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B75R6GR5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17385,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 136958,
+              "start_ms": 17385,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 2964282,
+              "start_ms": 154343,
+              "title": "Chapter One: Seller Beware"
+            },
+            {
+              "length_ms": 1958765,
+              "start_ms": 3118625,
+              "title": "Chapter Two: Would You Like to Buy a Rock?"
+            },
+            {
+              "length_ms": 3197062,
+              "start_ms": 5077390,
+              "title": "Chapter Three: One Man’s Rage"
+            },
+            {
+              "length_ms": 2589024,
+              "start_ms": 8274452,
+              "title": "Chapter Four: Answers and Questions"
+            },
+            {
+              "length_ms": 2946379,
+              "start_ms": 10863476,
+              "title": "Chapter Five: Not Fighting, Only Playing"
+            },
+            {
+              "length_ms": 2904189,
+              "start_ms": 13809855,
+              "title": "Chapter Six: From the Afterlife to the Undercity"
+            },
+            {
+              "length_ms": 4952559,
+              "start_ms": 16714044,
+              "title": "Chapter Seven: Time See What’s Become of Me"
+            },
+            {
+              "length_ms": 1355744,
+              "start_ms": 21666603,
+              "title": "Chapter Eight: Time For One Last Song"
+            },
+            {
+              "length_ms": 497719,
+              "start_ms": 23022347,
+              "title": "Chapter Nine: The Song Is Over"
+            },
+            {
+              "length_ms": 29023,
+              "start_ms": 23520066,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Oywh1FdOL.jpg",
+          "id": "gideon-emery-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gideon-emery"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2022-10-04",
+          "runtime_min": 392,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B75R6GR5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "what-song-the-sirens-sang-dramatized-adaptation"
         }
       },
       "sources": [
@@ -73,6 +167,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CWLTV91S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B75R6GR5",
           "type": "libex-import"
         }
       ],

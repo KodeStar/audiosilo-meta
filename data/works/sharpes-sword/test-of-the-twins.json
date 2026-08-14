@@ -12769,6 +12769,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "historical-fiction",
         "westerns"
       ],
@@ -12776,6 +12777,45 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-stinson-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D9PGNVGH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71RL-K9UnHL.jpg",
+          "id": "chris-stinson-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-stinson",
+            "dylan-lynch",
+            "full-cast",
+            "james-j-johnson",
+            "jonathan-david-bullock",
+            "jw-rone",
+            "ken-jackson",
+            "matthew-pauli",
+            "matthew-schleigh",
+            "michael-glenn",
+            "stephon-walker",
+            "terence-aselford"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2024-09-27",
+          "runtime_min": 412,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D9PGNVGH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "texarkana"
+        },
         "danny-campbell-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -12927,74 +12967,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09PWM5Q6F",
           "type": "libex-import"
-        }
-      ],
-      "title": "Texarkana"
-    },
-    "texarkana-dramatized-adaptation": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "texarkana-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-stinson-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D9PGNVGH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71RL-K9UnHL.jpg",
-          "id": "chris-stinson-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-stinson",
-            "dylan-lynch",
-            "full-cast",
-            "james-j-johnson",
-            "jonathan-david-bullock",
-            "jw-rone",
-            "ken-jackson",
-            "matthew-pauli",
-            "matthew-schleigh",
-            "michael-glenn",
-            "stephon-walker",
-            "terence-aselford"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024-09-27",
-          "runtime_min": 412,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D9PGNVGH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "texarkana-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D9PGNVGH",
           "type": "libex-import"
         }
       ],
-      "title": "Texarkana (Dramatized Adaptation)"
+      "title": "Texarkana"
     },
     "texas": {
       "added_at": "2026-07-29",

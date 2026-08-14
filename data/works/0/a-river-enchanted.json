@@ -539,8 +539,12 @@
         "elizabeth-peters"
       ],
       "genres": [
+        "cozy-mystery",
         "historical-fiction",
+        "historical-romance",
+        "history",
         "mystery",
+        "romance",
         "thriller-suspense"
       ],
       "id": "a-river-in-the-sky",
@@ -637,6 +641,34 @@
           ],
           "work": "a-river-in-the-sky"
         },
+        "barbara-rosenblat-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0G8LHLH5P",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nV4-xJdtL.jpg",
+          "id": "barbara-rosenblat-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-rosenblat"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-01-06",
+          "runtime_min": 664,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0G8LHLH5P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-river-in-the-sky"
+        },
         "karen-cass-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -671,65 +703,14 @@
           "imported_at": "2026-07-29",
           "ref": "B003DO2URQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "A River in the Sky"
-    },
-    "a-river-in-the-sky-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "elizabeth-peters"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "mystery",
-        "romance",
-        "thriller-suspense"
-      ],
-      "id": "a-river-in-the-sky-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "barbara-rosenblat-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0G8LHLH5P",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nV4-xJdtL.jpg",
-          "id": "barbara-rosenblat-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "barbara-rosenblat"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2026-01-06",
-          "runtime_min": 664,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0G8LHLH5P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-river-in-the-sky-international-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0G8LHLH5P",
           "type": "libex-import"
         }
       ],
-      "title": "A River in the Sky (International Edition)"
+      "title": "A River in the Sky"
     },
     "a-river-never-sleeps": {
       "added_at": "2026-07-29",
@@ -10452,57 +10433,6 @@
         }
       ],
       "title": "A Rose Grows in Weeds"
-    },
-    "a-rose-in-bloom": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "louisa-may-alcott"
-      ],
-      "genres": [
-        "politics",
-        "social-sciences"
-      ],
-      "id": "a-rose-in-bloom",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "barbara-caruso-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00B7L0ZF6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81j0pDmgW4L.jpg",
-          "id": "barbara-caruso-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "barbara-caruso"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2013-01-31",
-          "runtime_min": 599,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00B7L0ZF6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-rose-in-bloom"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00B7L0ZF6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Rose in Bloom"
     },
     "a-rose-in-the-highlands": {
       "added_at": "2026-07-29",

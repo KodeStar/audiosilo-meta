@@ -2690,14 +2690,97 @@
         "linda-buckley-archer"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy",
+        "historical-fiction",
+        "history",
         "science-fiction"
       ],
       "id": "time-quake",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gerard-doyle-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1CCFW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4601592,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4373339,
+              "start_ms": 4601592,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4434965,
+              "start_ms": 8974931,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4490368,
+              "start_ms": 13409896,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4288679,
+              "start_ms": 17900264,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4589842,
+              "start_ms": 22188943,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4620539,
+              "start_ms": 26778785,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4264809,
+              "start_ms": 31399324,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4489625,
+              "start_ms": 35664133,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4173137,
+              "start_ms": 40153758,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/615WmDRVRFL.jpg",
+          "id": "gerard-doyle-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerard-doyle"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2009-10-06",
+          "runtime_min": 738,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1CCFW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "time-quake"
+        },
         "gerard-doyle-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2783,6 +2866,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B003BX7TC0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1CCFW",
           "type": "libex-import"
         }
       ],

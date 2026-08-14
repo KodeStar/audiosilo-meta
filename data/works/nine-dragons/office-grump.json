@@ -3904,54 +3904,7 @@
             {
               "asin": "B07YZB972D",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81c119BEeUL.jpg",
-          "id": "herbert-schafer-2019",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "herbert-schafer"
-          ],
-          "publisher": "Audio Media Verlag",
-          "release_date": "2019-12-01",
-          "runtime_min": 563,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YZB972D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "offline"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YZB972D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Offline"
-    },
-    "offline-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arno-strobel"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "offline-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "herbert-schafer-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07YZ97TYH",
               "region": "us"
@@ -3970,21 +3923,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YZB972D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07YZ97TYH",
               "type": "libex-import"
             }
           ],
-          "work": "offline-german-edition"
+          "work": "offline"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YZB972D",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07YZ97TYH",
           "type": "libex-import"
         }
       ],
-      "title": "Offline (German edition)"
+      "title": "Offline"
     },
     "offline-god": {
       "added_at": "2026-08-02",

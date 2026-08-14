@@ -7324,7 +7324,8 @@
       ],
       "genres": [
         "classics",
-        "comedy-humor"
+        "comedy-humor",
+        "short-stories"
       ],
       "id": "my-man-jeeves",
       "language": "en",
@@ -7825,6 +7826,34 @@
           ],
           "work": "my-man-jeeves"
         },
+        "kevin-theis-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07HRY5JGK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51TiqVBq92L.jpg",
+          "id": "kevin-theis-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-theis"
+          ],
+          "publisher": "Fort Raphael Publishing Company",
+          "release_date": "2018-10-01",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07HRY5JGK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-man-jeeves"
+        },
         "martin-jarvis-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7974,6 +8003,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V1OKE8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07HRY5JGK",
+          "type": "libex-import"
         }
       ],
       "title": "My Man Jeeves"
@@ -8018,30 +8052,7 @@
             }
           ],
           "work": "my-man-jeeves-and-right-ho-jeeves"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07ZK7QF64",
-          "type": "libex-import"
-        }
-      ],
-      "title": "My Man Jeeves and Right Ho, Jeeves"
-    },
-    "my-man-jeeves-and-right-ho-jeeves-unabridged": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "p-g-wodehouse"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor"
-      ],
-      "id": "my-man-jeeves-and-right-ho-jeeves-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kevin-theis-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8068,17 +8079,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "my-man-jeeves-and-right-ho-jeeves-unabridged"
+          "work": "my-man-jeeves-and-right-ho-jeeves"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07ZK7QF64",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07HS192W5",
           "type": "libex-import"
         }
       ],
-      "title": "My Man Jeeves and Right Ho, Jeeves - Unabridged"
+      "title": "My Man Jeeves and Right Ho, Jeeves"
     },
     "my-man-jeeves-right-ho-jeeves-love-among-chickens-indiscretions-of-archie-annotated": {
       "added_at": "2026-07-29",
@@ -8130,58 +8146,6 @@
         }
       ],
       "title": "My Man Jeeves, Right Ho, Jeeves, Love Among Chickens, Indiscretions of Archie (Annotated)"
-    },
-    "my-man-jeeves-unabridged": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "p-g-wodehouse"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor",
-        "short-stories"
-      ],
-      "id": "my-man-jeeves-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kevin-theis-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07HRY5JGK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51TiqVBq92L.jpg",
-          "id": "kevin-theis-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kevin-theis"
-          ],
-          "publisher": "Fort Raphael Publishing Company",
-          "release_date": "2018-10-01",
-          "runtime_min": 314,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07HRY5JGK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "my-man-jeeves-unabridged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07HRY5JGK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "My Man Jeeves - Unabridged"
     },
     "my-man-my-family": {
       "added_at": "2026-07-29",

@@ -20,54 +20,7 @@
             {
               "asin": "B07YXFM5PN",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81L7Dp5M0VL.jpg",
-          "id": "nuria-marin-2012",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nuria-marin"
-          ],
-          "publisher": "Audiomol",
-          "release_date": "2012-03-07",
-          "runtime_min": 333,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXFM5PN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-huesped"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXFM5PN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El huésped"
-    },
-    "el-huesped-the-host": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guadalupe-nettel"
-      ],
-      "genres": [
-        "literary-fiction",
-        "psychological-thriller"
-      ],
-      "id": "el-huesped-the-host",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nuria-marin-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B007HOBKDS",
               "region": "us"
@@ -86,21 +39,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXFM5PN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B007HOBKDS",
               "type": "libex-import"
             }
           ],
-          "work": "el-huesped-the-host"
+          "work": "el-huesped"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXFM5PN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B007HOBKDS",
           "type": "libex-import"
         }
       ],
-      "title": "El huésped [The Host]"
+      "title": "El huésped"
     },
     "el-huevo-izquierdo-del-talento": {
       "added_at": "2026-07-29",
@@ -154,18 +117,19 @@
       ],
       "title": "El huevo izquierdo del talento"
     },
-    "el-ickabog-narracion-en-castellano-the-ickabog": {
+    "el-ickabog-spanish-edition": {
       "added_at": "2026-07-29",
       "authors": [
         "j-k-rowling"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fairy-tales-folklore",
         "fantasy",
         "horror"
       ],
-      "id": "el-ickabog-narracion-en-castellano-the-ickabog",
+      "id": "el-ickabog-spanish-edition",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -195,33 +159,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-ickabog-narracion-en-castellano-the-ickabog"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08MWNXV6Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Ickabog (Narración en Castellano) [The Ickabog]"
-    },
-    "el-ickabog-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "j-k-rowling"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "el-ickabog-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-ickabog-spanish-edition"
+        },
         "yalitza-aparicio-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -255,6 +194,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B08K3Q73N9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08MWNXV6Z",
           "type": "libex-import"
         }
       ],
@@ -1597,6 +1541,7 @@
       ],
       "genres": [
         "biography-memoir",
+        "business",
         "true-crime"
       ],
       "id": "el-imperio-del-dolor",
@@ -1610,55 +1555,7 @@
             {
               "asin": "B09L2DKGDM",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81P4Y3AduVL.jpg",
-          "id": "jordi-salas-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-salas"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-11-04",
-          "runtime_min": 1307,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09L2DKGDM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-imperio-del-dolor"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09L2DKGDM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El imperio del dolor"
-    },
-    "el-imperio-del-dolor-empire-of-pain": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "patrick-radden-keefe"
-      ],
-      "genres": [
-        "biography-memoir",
-        "business",
-        "true-crime"
-      ],
-      "id": "el-imperio-del-dolor-empire-of-pain",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-salas-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09L1Q22N1",
               "region": "us"
@@ -1677,21 +1574,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09L2DKGDM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09L1Q22N1",
               "type": "libex-import"
             }
           ],
-          "work": "el-imperio-del-dolor-empire-of-pain"
+          "work": "el-imperio-del-dolor"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09L2DKGDM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09L1Q22N1",
           "type": "libex-import"
         }
       ],
-      "title": "El imperio del dolor [Empire of Pain]"
+      "title": "El imperio del dolor"
     },
     "el-imperio-del-vampiro": {
       "added_at": "2026-08-02",
@@ -3941,7 +3848,8 @@
       ],
       "genres": [
         "action-adventure",
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "el-ingenioso-hidalgo-don-quijote-de-la-mancha",
       "language": "es",
@@ -3954,120 +3862,7 @@
             {
               "asin": "B07YXTT4QT",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81t1cPBi6SL.jpg",
-          "id": "various-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "various"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-07-10",
-          "runtime_min": 957,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YXTT4QT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YXTT4QT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Ingenioso Hidalgo Don Quijote de la Mancha"
-    },
-    "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "miguel-de-cervantes"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "antonio-martinez-asensio-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CKY5XJZX",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71EJjd9GjuL.jpg",
-          "id": "antonio-martinez-asensio-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "antonio-martinez-asensio",
-            "ariana-martinez",
-            "arturo-lopez",
-            "asier-sola",
-            "charo-soria",
-            "diego-rousselon",
-            "elsa-veiga",
-            "fernando-soto",
-            "full-cast",
-            "ignacio-rengel",
-            "inigo-montero",
-            "javier-portugues",
-            "juan-ochoa",
-            "paula-iwasaki",
-            "pepe-ocio"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-10-19",
-          "runtime_min": 1109,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CKY5XJZX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CKY5XJZX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El ingenioso Hidalgo Don Quijote de la Mancha"
-    },
-    "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-don-quijote-of-la-mancha": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "miguel-de-cervantes-saavedra"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-don-quijote-of-la-mancha",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "various-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V1A4BQ",
               "region": "us"
@@ -4158,23 +3953,33 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YXTT4QT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V1A4BQ",
               "type": "libex-import"
             }
           ],
-          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-don-quijote-of-la-mancha"
+          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YXTT4QT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1A4BQ",
           "type": "libex-import"
         }
       ],
-      "title": "El Ingenioso Hidalgo Don Quijote de la Mancha [The Ingenious Don Quijote of la Mancha]"
+      "title": "El Ingenioso Hidalgo Don Quijote de la Mancha"
     },
-    "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-gentleman-don-quixote-of-la-mancha": {
+    "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes": {
       "added_at": "2026-07-29",
       "authors": [
         "miguel-de-cervantes"
@@ -4184,11 +3989,53 @@
         "classics",
         "literary-fiction"
       ],
-      "id": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-gentleman-don-quixote-of-la-mancha",
+      "id": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
         "antonio-martinez-asensio-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CKY5XJZX",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71EJjd9GjuL.jpg",
+          "id": "antonio-martinez-asensio-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "antonio-martinez-asensio",
+            "ariana-martinez",
+            "arturo-lopez",
+            "asier-sola",
+            "charo-soria",
+            "diego-rousselon",
+            "elsa-veiga",
+            "fernando-soto",
+            "full-cast",
+            "ignacio-rengel",
+            "inigo-montero",
+            "javier-portugues",
+            "juan-ochoa",
+            "paula-iwasaki",
+            "pepe-ocio"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2023-10-19",
+          "runtime_min": 1109,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CKY5XJZX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes"
+        },
+        "antonio-martinez-asensio-2023-2": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
@@ -4198,7 +4045,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71EJjd9GjuL.jpg",
-          "id": "antonio-martinez-asensio-2023",
+          "id": "antonio-martinez-asensio-2023-2",
           "language": "es",
           "license": "CC0-1.0",
           "narrators": [
@@ -4228,17 +4075,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-the-ingenious-gentleman-don-quixote-of-la-mancha"
+          "work": "el-ingenioso-hidalgo-don-quijote-de-la-mancha-miguel-de-cervantes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CKY5XJZX",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CKY78GLX",
           "type": "libex-import"
         }
       ],
-      "title": "El ingenioso Hidalgo Don Quijote de la Mancha [The Ingenious Gentleman Don Quixote of La Mancha]"
+      "title": "El ingenioso Hidalgo Don Quijote de la Mancha"
     },
     "el-inocente": {
       "added_at": "2026-07-29",
@@ -6337,7 +6189,8 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
-        "military-history"
+        "military-history",
+        "war-military-fiction"
       ],
       "id": "el-italiano",
       "language": "es",
@@ -6350,56 +6203,7 @@
             {
               "asin": "B09G4K8RYG",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WzgDVbJrL.jpg",
-          "id": "victor-clavijo-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "victor-clavijo"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-09-21",
-          "runtime_min": 611,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09G4K8RYG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-italiano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09G4K8RYG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El italiano"
-    },
-    "el-italiano-the-italian": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "military-history",
-        "war-military-fiction"
-      ],
-      "id": "el-italiano-the-italian",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "victor-clavijo-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09G4FC7XZ",
               "region": "us"
@@ -6418,21 +6222,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09G4K8RYG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09G4FC7XZ",
               "type": "libex-import"
             }
           ],
-          "work": "el-italiano-the-italian"
+          "work": "el-italiano"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09G4K8RYG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09G4FC7XZ",
           "type": "libex-import"
         }
       ],
-      "title": "El italiano [The Italian]"
+      "title": "El italiano"
     },
     "el-jarama-the-jarama": {
       "added_at": "2026-07-29",
@@ -7436,56 +7250,7 @@
             {
               "asin": "8491291253",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uQ-efkDIL.jpg",
-          "id": "cristina-mauri-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cristina-mauri"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-03-16",
-          "runtime_min": 1290,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8491291253",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-jardin-olvidado"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8491291253",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El jardín olvidado"
-    },
-    "el-jardin-olvidado-the-forgotten-garden": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kate-morton",
-        "carlos-schroeder"
-      ],
-      "genres": [
-        "historical-fiction",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "el-jardin-olvidado-the-forgotten-garden",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cristina-mauri-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B06XDDBSL6",
               "region": "us"
@@ -7766,21 +7531,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8491291253",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B06XDDBSL6",
               "type": "libex-import"
             }
           ],
-          "work": "el-jardin-olvidado-the-forgotten-garden"
+          "work": "el-jardin-olvidado"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8491291253",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B06XDDBSL6",
           "type": "libex-import"
         }
       ],
-      "title": "El jardín olvidado [The Forgotten Garden]"
+      "title": "El jardín olvidado"
     },
     "el-jardin-secreto": {
       "added_at": "2026-07-29",
@@ -7949,6 +7724,10 @@
             {
               "asin": "B09GW9DH92",
               "region": "es"
+            },
+            {
+              "asin": "B09GWBBQZH",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81hPWmtuKtL.jpg",
@@ -7966,6 +7745,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09GW9DH92",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09GWBBQZH",
+              "type": "libex-import"
             }
           ],
           "work": "el-jilguero"
@@ -7975,6 +7759,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09GW9DH92",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09GWBBQZH",
           "type": "libex-import"
         }
       ],
@@ -8408,64 +8197,6 @@
         }
       ],
       "title": "El jilguero dorado"
-    },
-    "el-jilguero-the-goldfinch": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "donna-tartt",
-        "aurora-echevarria-perez"
-      ],
-      "credits": [
-        {
-          "person": "aurora-echevarria-perez",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "coming-of-age",
-        "psychological-thriller"
-      ],
-      "id": "el-jilguero-the-goldfinch",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "diego-rousselon-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09GWBBQZH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hPWmtuKtL.jpg",
-          "id": "diego-rousselon-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "diego-rousselon"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-11-18",
-          "runtime_min": 2069,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09GWBBQZH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-jilguero-the-goldfinch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09GWBBQZH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Jilguero [The Goldfinch]"
     },
     "el-jinete-de-bronce-the-bronze-horseman": {
       "added_at": "2026-07-29",
@@ -9136,56 +8867,7 @@
             {
               "asin": "B0868VYT1V",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZsvBdyAPL.jpg",
-          "id": "silvia-sierra-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "silvia-sierra"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2008-04-14",
-          "runtime_min": 181,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0868VYT1V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-juego-de-la-vida-para-mujeres"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0868VYT1V",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Juego de la Vida para Mujeres"
-    },
-    "el-juego-de-la-vida-para-mujeres-the-game-of-life-for-women": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "florence-scovel-shinn"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "politics",
-        "self-help",
-        "social-sciences"
-      ],
-      "id": "el-juego-de-la-vida-para-mujeres-the-game-of-life-for-women",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "silvia-sierra-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B002V1BQ5E",
               "region": "us"
@@ -9204,21 +8886,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0868VYT1V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B002V1BQ5E",
               "type": "libex-import"
             }
           ],
-          "work": "el-juego-de-la-vida-para-mujeres-the-game-of-life-for-women"
+          "work": "el-juego-de-la-vida-para-mujeres"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0868VYT1V",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1BQ5E",
           "type": "libex-import"
         }
       ],
-      "title": "El Juego de la Vida para Mujeres [The Game of Life for Women]"
+      "title": "El Juego de la Vida para Mujeres"
     },
     "el-juego-de-la-vida-y-como-jugarlo": {
       "added_at": "2026-07-29",
@@ -9226,6 +8918,7 @@
         "florence-scovel-shinn"
       ],
       "genres": [
+        "business",
         "education",
         "parenting-relationships",
         "self-help"
@@ -9241,6 +8934,10 @@
             {
               "asin": "B0B2YLLSMP",
               "region": "es"
+            },
+            {
+              "asin": "B0B2X9K7ZJ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71scP9UsqTL.jpg",
@@ -9257,6 +8954,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0B2YLLSMP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B2X9K7ZJ",
               "type": "libex-import"
             }
           ],
@@ -9305,60 +9007,14 @@
           "imported_at": "2026-07-29",
           "ref": "8416793212",
           "type": "libex-import"
-        }
-      ],
-      "title": "El juego de la vida y cómo jugarlo"
-    },
-    "el-juego-de-la-vida-y-como-jugarlo-the-game-of-life-and-how-to-play-it": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "florence-scovel-shinn"
-      ],
-      "genres": [
-        "business",
-        "self-help"
-      ],
-      "id": "el-juego-de-la-vida-y-como-jugarlo-the-game-of-life-and-how-to-play-it",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0B2X9K7ZJ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71scP9UsqTL.jpg",
-          "id": "geraldo-medina-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2022-06-01",
-          "runtime_min": 174,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B2X9K7ZJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-juego-de-la-vida-y-como-jugarlo-the-game-of-life-and-how-to-play-it"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0B2X9K7ZJ",
           "type": "libex-import"
         }
       ],
-      "title": "El juego de la vida y cómo jugarlo [The Game of Life and How to Play It]"
+      "title": "El juego de la vida y cómo jugarlo"
     },
     "el-juego-de-los-vor-the-vor-game": {
       "added_at": "2026-08-02",
@@ -9542,55 +9198,7 @@
             {
               "asin": "8401019575",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71sRIpxfqSL.jpg",
-          "id": "catalina-munoz-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "catalina-munoz"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-02-23",
-          "runtime_min": 915,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8401019575",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-juego-de-ripper"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8401019575",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El juego de Ripper"
-    },
-    "el-juego-de-ripper-ripper": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "el-juego-de-ripper-ripper",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "catalina-munoz-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01N5YHN1X",
               "region": "us"
@@ -9696,21 +9304,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8401019575",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01N5YHN1X",
               "type": "libex-import"
             }
           ],
-          "work": "el-juego-de-ripper-ripper"
+          "work": "el-juego-de-ripper"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8401019575",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01N5YHN1X",
           "type": "libex-import"
         }
       ],
-      "title": "El juego de Ripper [Ripper]"
+      "title": "El juego de Ripper"
     },
     "el-juego-del-aacute-ngel": {
       "added_at": "2026-07-29",
@@ -11549,6 +11167,8 @@
       ],
       "genres": [
         "occult",
+        "philosophy",
+        "politics",
         "religion-spirituality"
       ],
       "id": "el-kybalion",
@@ -11582,82 +11202,7 @@
             }
           ],
           "work": "el-kybalion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08HJLX95B",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Kybalión"
-    },
-    "el-kybalion-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "tres-iniciados"
-      ],
-      "genres": [
-        "occult",
-        "philosophy",
-        "religion-spirituality"
-      ],
-      "id": "el-kybalion-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hector-ortega-cano-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D9ZMHS5N",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1MyYFK4VwL.jpg",
-          "id": "hector-ortega-cano-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hector-ortega-cano"
-          ],
-          "publisher": "Hector Ortega Cano",
-          "release_date": "2024-07-23",
-          "runtime_min": 267,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D9ZMHS5N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-kybalion-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D9ZMHS5N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Kybalion (Spanish Edition)"
-    },
-    "el-kybalion-the-kybalion": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hermes-trismegisto"
-      ],
-      "genres": [
-        "philosophy",
-        "politics"
-      ],
-      "id": "el-kybalion-the-kybalion",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "geraldo-medina-de-aubiblio-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11776,7 +11321,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-kybalion-the-kybalion"
+          "work": "el-kybalion"
         },
         "joaquin-madrigal-2014": {
           "abridged": true,
@@ -11881,17 +11426,74 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-kybalion-the-kybalion"
+          "work": "el-kybalion"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08HJLX95B",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09QNS424C",
           "type": "libex-import"
         }
       ],
-      "title": "El Kybalión [The Kybalion]"
+      "title": "El Kybalión"
+    },
+    "el-kybalion-spanish-edition": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "tres-iniciados"
+      ],
+      "genres": [
+        "occult",
+        "philosophy",
+        "religion-spirituality"
+      ],
+      "id": "el-kybalion-spanish-edition",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hector-ortega-cano-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D9ZMHS5N",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1MyYFK4VwL.jpg",
+          "id": "hector-ortega-cano-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hector-ortega-cano"
+          ],
+          "publisher": "Hector Ortega Cano",
+          "release_date": "2024-07-23",
+          "runtime_min": 267,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D9ZMHS5N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-kybalion-spanish-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D9ZMHS5N",
+          "type": "libex-import"
+        }
+      ],
+      "title": "El Kybalion (Spanish Edition)"
     },
     "el-laberinto-de-los-espiritus": {
       "added_at": "2026-07-29",
@@ -12822,6 +12424,8 @@
         "cornelia-funke"
       ],
       "genres": [
+        "dark-fantasy",
+        "fantasy",
         "young-adult"
       ],
       "id": "el-laberinto-del-fauno",
@@ -12835,57 +12439,7 @@
             {
               "asin": "B084G9GKYQ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hylXD6MpL.jpg",
-          "id": "kerygma-flores-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kerygma-flores",
-            "luis-avila"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2020-02-12",
-          "runtime_min": 438,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B084G9GKYQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-laberinto-del-fauno"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B084G9GKYQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El laberinto del fauno"
-    },
-    "el-laberinto-del-fauno-the-pans-labyrinth": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guillermo-del-toro",
-        "cornelia-funke"
-      ],
-      "genres": [
-        "dark-fantasy",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "el-laberinto-del-fauno-the-pans-labyrinth",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kerygma-flores-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "6073186932",
               "region": "us"
@@ -13182,21 +12736,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B084G9GKYQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "6073186932",
               "type": "libex-import"
             }
           ],
-          "work": "el-laberinto-del-fauno-the-pans-labyrinth"
+          "work": "el-laberinto-del-fauno"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B084G9GKYQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "6073186932",
           "type": "libex-import"
         }
       ],
-      "title": "El laberinto del fauno [The Pan's Labyrinth]"
+      "title": "El laberinto del fauno"
     },
     "el-lado-b-de-las-emociones-the-other-side-of-emotions": {
       "added_at": "2026-07-29",

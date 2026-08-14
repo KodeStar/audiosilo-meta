@@ -8936,59 +8936,6 @@
       ],
       "title": "Fearless"
     },
-    "fearless-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jack-campbell"
-      ],
-      "genres": [
-        "military-science-fiction",
-        "science",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "fearless-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GHZJSSPB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81f3PKL624L.jpg",
-          "id": "full-cast-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-08-31",
-          "runtime_min": 540,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GHZJSSPB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fearless-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GHZJSSPB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fearless [Dramatized Adaptation]"
-    },
     "fearless-duke": {
       "added_at": "2026-07-29",
       "authors": [
@@ -10597,6 +10544,8 @@
       "genres": [
         "action-adventure",
         "hard-science-fiction",
+        "military-science-fiction",
+        "science",
         "science-fiction",
         "space-opera",
         "thriller-suspense",
@@ -10606,6 +10555,92 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christian-rummel-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1BI7K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 215818,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2934665,
+              "start_ms": 215818,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3426429,
+              "start_ms": 3150483,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3942748,
+              "start_ms": 6576912,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3060065,
+              "start_ms": 10519660,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3635037,
+              "start_ms": 13579725,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3127728,
+              "start_ms": 17214762,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2535665,
+              "start_ms": 20342490,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3332389,
+              "start_ms": 22878155,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2421005,
+              "start_ms": 26210544,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 6832239,
+              "start_ms": 28631549,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pdoxVspPL.jpg",
+          "id": "christian-rummel-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-rummel",
+            "jack-campbell"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2008-03-20",
+          "runtime_min": 590,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1BI7K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fearless-jack-campbell"
+        },
         "christian-rummel-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10706,12 +10741,50 @@
             }
           ],
           "work": "fearless-jack-campbell"
+        },
+        "full-cast-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GHZJSSPB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81f3PKL624L.jpg",
+          "id": "full-cast-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-08-31",
+          "runtime_min": 540,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GHZJSSPB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fearless-jack-campbell"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0B4QWTK1R",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GHZJSSPB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1BI7K",
           "type": "libex-import"
         }
       ],

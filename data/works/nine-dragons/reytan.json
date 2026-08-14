@@ -1886,12 +1886,218 @@
         "fantasy",
         "paranormal",
         "romance",
+        "romantic-suspense",
         "urban-fantasy"
       ],
       "id": "rhapsodic",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chelsea-stephens-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B8PBP7KW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15557,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 6385,
+              "start_ms": 15557,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 323129,
+              "start_ms": 21942,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 878596,
+              "start_ms": 345071,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1139681,
+              "start_ms": 1223667,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1415349,
+              "start_ms": 2363348,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1038675,
+              "start_ms": 3778697,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1277724,
+              "start_ms": 4817372,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1279930,
+              "start_ms": 6095096,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1648222,
+              "start_ms": 7375026,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2001235,
+              "start_ms": 9023248,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2096994,
+              "start_ms": 11024483,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1205765,
+              "start_ms": 13121477,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1984400,
+              "start_ms": 14327242,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1890197,
+              "start_ms": 16311642,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1514939,
+              "start_ms": 18201839,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1352771,
+              "start_ms": 19716778,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1546797,
+              "start_ms": 21069549,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1288452,
+              "start_ms": 22616346,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2270331,
+              "start_ms": 23904798,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2710233,
+              "start_ms": 26175129,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1091314,
+              "start_ms": 28885362,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1114302,
+              "start_ms": 29976676,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1190045,
+              "start_ms": 31090978,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 982738,
+              "start_ms": 32281023,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1690621,
+              "start_ms": 33263761,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1777998,
+              "start_ms": 34954382,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1066353,
+              "start_ms": 36732380,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1348452,
+              "start_ms": 37798733,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 530552,
+              "start_ms": 39147185,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 561969,
+              "start_ms": 39677737,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 856003,
+              "start_ms": 40239706,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 754207,
+              "start_ms": 41095709,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 96304,
+              "start_ms": 41849916,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 46799,
+              "start_ms": 41946220,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vJz9zCREL.jpg",
+          "id": "chelsea-stephens-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chelsea-stephens"
+          ],
+          "publisher": "Blackstone Publishing",
+          "release_date": "2023-01-31",
+          "runtime_min": 699,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B8PBP7KW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rhapsodic"
+        },
         "susannah-jones-2017": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2092,6 +2298,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B06XCNSTFJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B8PBP7KW",
           "type": "libex-import"
         }
       ],
@@ -2304,235 +2515,6 @@
         }
       ],
       "title": "Rhapsodic: Bargainer, Band 1"
-    },
-    "rhapsodic-the-bargainer-series-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "laura-thalassa"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "rhapsodic-the-bargainer-series-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chelsea-stephens-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B8PBP7KW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15557,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 6385,
-              "start_ms": 15557,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 323129,
-              "start_ms": 21942,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 878596,
-              "start_ms": 345071,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1139681,
-              "start_ms": 1223667,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1415349,
-              "start_ms": 2363348,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1038675,
-              "start_ms": 3778697,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1277724,
-              "start_ms": 4817372,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1279930,
-              "start_ms": 6095096,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1648222,
-              "start_ms": 7375026,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2001235,
-              "start_ms": 9023248,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2096994,
-              "start_ms": 11024483,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1205765,
-              "start_ms": 13121477,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1984400,
-              "start_ms": 14327242,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1890197,
-              "start_ms": 16311642,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1514939,
-              "start_ms": 18201839,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1352771,
-              "start_ms": 19716778,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1546797,
-              "start_ms": 21069549,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1288452,
-              "start_ms": 22616346,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2270331,
-              "start_ms": 23904798,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 2710233,
-              "start_ms": 26175129,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1091314,
-              "start_ms": 28885362,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1114302,
-              "start_ms": 29976676,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1190045,
-              "start_ms": 31090978,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 982738,
-              "start_ms": 32281023,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1690621,
-              "start_ms": 33263761,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1777998,
-              "start_ms": 34954382,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1066353,
-              "start_ms": 36732380,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1348452,
-              "start_ms": 37798733,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 530552,
-              "start_ms": 39147185,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 561969,
-              "start_ms": 39677737,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 856003,
-              "start_ms": 40239706,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 754207,
-              "start_ms": 41095709,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 96304,
-              "start_ms": 41849916,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 46799,
-              "start_ms": 41946220,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vJz9zCREL.jpg",
-          "id": "chelsea-stephens-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chelsea-stephens"
-          ],
-          "publisher": "Blackstone Publishing",
-          "release_date": "2023-01-31",
-          "runtime_min": 699,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B8PBP7KW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rhapsodic-the-bargainer-series-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B8PBP7KW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rhapsodic: The Bargainer Series, Book 1"
     },
     "rhapsody": {
       "added_at": "2026-08-02",

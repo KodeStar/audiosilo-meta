@@ -1395,6 +1395,7 @@
         "namina-forna"
       ],
       "genres": [
+        "dark-fantasy",
         "epic-fantasy",
         "fantasy",
         "young-adult"
@@ -1409,6 +1410,10 @@
           "asin": [
             {
               "asin": "B0B3GNZJ4V",
+              "region": "us"
+            },
+            {
+              "asin": "0593505891",
               "region": "us"
             }
           ],
@@ -1634,6 +1639,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0B3GNZJ4V",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593505891",
+              "type": "libex-import"
             }
           ],
           "work": "the-merciless-ones"
@@ -1643,6 +1653,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0B3GNZJ4V",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593505891",
           "type": "libex-import"
         }
       ],

@@ -6,6 +6,8 @@
         "sarah-j-maas"
       ],
       "genres": [
+        "epic-fantasy",
+        "fantasy",
         "romance",
         "young-adult"
       ],
@@ -697,36 +699,7 @@
             }
           ],
           "work": "throne-of-glass"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-11",
-          "ref": "B00FOR6VLG",
-          "type": "openaudible-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B00FOR6VLG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Throne of Glass"
-    },
-    "throne-of-glass-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sarah-j-maas"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "throne-of-glass-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2027": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -771,17 +744,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "throne-of-glass-dramatized-adaptation"
+          "work": "throne-of-glass"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B00FOR6VLG",
+          "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00FOR6VLG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DQXGKBPW",
           "type": "libex-import"
         }
       ],
-      "title": "Throne of Glass [Dramatized Adaptation]"
+      "title": "Throne of Glass"
     },
     "throne-of-ice-and-blood": {
       "added_at": "2026-08-02",

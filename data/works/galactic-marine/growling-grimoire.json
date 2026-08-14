@@ -10600,6 +10600,7 @@
         "immanuel-kant"
       ],
       "genres": [
+        "history",
         "philosophy",
         "politics"
       ],
@@ -10614,55 +10615,7 @@
             {
               "asin": "B089T89CB5",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71a84H4mplL.jpg",
-          "id": "patrick-beck-2020",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-beck"
-          ],
-          "publisher": "Edition Axia",
-          "release_date": "2020-06-15",
-          "runtime_min": 285,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B089T89CB5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "grundlegung-zur-metaphysik-der-sitten"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B089T89CB5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Grundlegung zur Metaphysik der Sitten"
-    },
-    "grundlegung-zur-metaphysik-der-sitten-grounding-for-the-metaphysics-of-morals": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "immanuel-kant"
-      ],
-      "genres": [
-        "history",
-        "philosophy",
-        "politics"
-      ],
-      "id": "grundlegung-zur-metaphysik-der-sitten-grounding-for-the-metaphysics-of-morals",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-beck-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B089T89N6X",
               "region": "us"
@@ -10681,21 +10634,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B089T89CB5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B089T89N6X",
               "type": "libex-import"
             }
           ],
-          "work": "grundlegung-zur-metaphysik-der-sitten-grounding-for-the-metaphysics-of-morals"
+          "work": "grundlegung-zur-metaphysik-der-sitten"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B089T89CB5",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B089T89N6X",
           "type": "libex-import"
         }
       ],
-      "title": "Grundlegung zur Metaphysik der Sitten [Grounding for the Metaphysics of Morals]"
+      "title": "Grundlegung zur Metaphysik der Sitten"
     },
     "grundtatsachen-der-deutschen-geschichte": {
       "added_at": "2026-07-29",

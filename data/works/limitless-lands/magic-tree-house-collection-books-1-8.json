@@ -3668,6 +3668,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "fantasy",
         "paranormal",
         "romance",
@@ -3677,6 +3678,106 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emlyn-mcfarland-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F1DPF149",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4338815,
+              "start_ms": 30924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3825789,
+              "start_ms": 4369739,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4042640,
+              "start_ms": 8195528,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4055690,
+              "start_ms": 12238168,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3939404,
+              "start_ms": 16293858,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4007299,
+              "start_ms": 20233262,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 4014196,
+              "start_ms": 24240561,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 4176015,
+              "start_ms": 28254757,
+              "title": "Part 8"
+            },
+            {
+              "length_ms": 3509928,
+              "start_ms": 32430772,
+              "title": "Part 9"
+            },
+            {
+              "length_ms": 3411000,
+              "start_ms": 35940700,
+              "title": "Part 10"
+            },
+            {
+              "length_ms": 77658,
+              "start_ms": 39351700,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91H21ns2jyL.jpg",
+          "id": "emlyn-mcfarland-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emlyn-mcfarland",
+            "full-cast",
+            "john-kielty",
+            "kelly-baskin",
+            "mecca-rogers",
+            "michael-glenn",
+            "michael-john-casey",
+            "nora-sofyan",
+            "richard-rohan",
+            "robb-moreira",
+            "stephanie-nemeth-parker"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-05-20",
+          "runtime_min": 656,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F1DPF149",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magic-triumphs"
+        },
         "renee-raudman-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3813,139 +3914,17 @@
           "imported_at": "2026-08-02",
           "ref": "1480540420",
           "type": "libex-import"
-        }
-      ],
-      "title": "Magic Triumphs",
-      "xref": {
-        "goodreads": "17333180"
-      }
-    },
-    "magic-triumphs-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ilona-andrews"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "magic-triumphs-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emlyn-mcfarland-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F1DPF149",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4338815,
-              "start_ms": 30924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3825789,
-              "start_ms": 4369739,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4042640,
-              "start_ms": 8195528,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4055690,
-              "start_ms": 12238168,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3939404,
-              "start_ms": 16293858,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4007299,
-              "start_ms": 20233262,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 4014196,
-              "start_ms": 24240561,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 4176015,
-              "start_ms": 28254757,
-              "title": "Part 8"
-            },
-            {
-              "length_ms": 3509928,
-              "start_ms": 32430772,
-              "title": "Part 9"
-            },
-            {
-              "length_ms": 3411000,
-              "start_ms": 35940700,
-              "title": "Part 10"
-            },
-            {
-              "length_ms": 77658,
-              "start_ms": 39351700,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91H21ns2jyL.jpg",
-          "id": "emlyn-mcfarland-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emlyn-mcfarland",
-            "full-cast",
-            "john-kielty",
-            "kelly-baskin",
-            "mecca-rogers",
-            "michael-glenn",
-            "michael-john-casey",
-            "nora-sofyan",
-            "richard-rohan",
-            "robb-moreira",
-            "stephanie-nemeth-parker"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-05-20",
-          "runtime_min": 656,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F1DPF149",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magic-triumphs-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F1DPF149",
           "type": "libex-import"
         }
       ],
-      "title": "Magic Triumphs (Dramatized Adaptation)"
+      "title": "Magic Triumphs",
+      "xref": {
+        "goodreads": "17333180"
+      }
     },
     "magic-unbound": {
       "added_at": "2026-08-01",

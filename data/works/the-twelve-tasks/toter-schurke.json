@@ -4220,6 +4220,10 @@
             {
               "asin": "B0189CT9WA",
               "region": "de"
+            },
+            {
+              "asin": "B0189COQGO",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91t1rW-rv1L.jpg",
@@ -4237,6 +4241,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0189CT9WA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0189COQGO",
+              "type": "libex-import"
             }
           ],
           "work": "touch-claire-north-2"
@@ -4246,6 +4255,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0189CT9WA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0189COQGO",
           "type": "libex-import"
         }
       ],
@@ -4576,56 +4590,6 @@
         }
       ],
       "title": "Touch: Dein Leben gehört mir"
-    },
-    "touch-french-version": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "claire-north"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "touch-french-version",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicolas-planchais-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0189COQGO",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91t1rW-rv1L.jpg",
-          "id": "nicolas-planchais-2015",
-          "language": "fr",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicolas-planchais"
-          ],
-          "publisher": "Hardigan",
-          "release_date": "2015-11-27",
-          "runtime_min": 815,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0189COQGO",
-              "type": "libex-import"
-            }
-          ],
-          "work": "touch-french-version"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0189COQGO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Touch [French Version]"
     },
     "touch-geaux": {
       "added_at": "2026-07-29",

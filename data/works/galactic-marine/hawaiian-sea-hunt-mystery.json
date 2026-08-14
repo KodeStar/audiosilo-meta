@@ -6498,7 +6498,9 @@
       ],
       "genres": [
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "hawkmistress",
       "language": "en",
@@ -6628,31 +6630,7 @@
             }
           ],
           "work": "hawkmistress"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "150197095X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hawkmistress!"
-    },
-    "hawkmistress-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "hawkmistress-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alyssa-bresnahan-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6801,17 +6779,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "hawkmistress-international-edition"
+          "work": "hawkmistress"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "150197095X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYCBYC1",
           "type": "libex-import"
         }
       ],
-      "title": "Hawkmistress! [International Edition]"
+      "title": "Hawkmistress!"
     },
     "hawks-call": {
       "added_at": "2026-07-29",
@@ -8366,7 +8349,8 @@
       ],
       "genres": [
         "arts-entertainment",
-        "comedy-humor"
+        "comedy-humor",
+        "poetry"
       ],
       "id": "hay-fever",
       "language": "en",
@@ -8405,30 +8389,7 @@
             }
           ],
           "work": "hay-fever"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002VA9Y04",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hay Fever"
-    },
-    "hay-fever-classic-radio-theatre": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "noel-coward"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "poetry"
-      ],
-      "id": "hay-fever-classic-radio-theatre",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8457,17 +8418,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "hay-fever-classic-radio-theatre"
+          "work": "hay-fever"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002VA9Y04",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0056BL79G",
           "type": "libex-import"
         }
       ],
-      "title": "Hay Fever (Classic Radio Theatre)"
+      "title": "Hay Fever"
     },
     "hay-momentos-que-deberian-ser-eternos": {
       "added_at": "2026-07-29",
@@ -11275,6 +11241,7 @@
         "christy-barritt"
       ],
       "genres": [
+        "cozy-mystery",
         "mystery",
         "religious-fiction",
         "thriller-suspense"
@@ -11497,12 +11464,45 @@
             }
           ],
           "work": "hazardous-duty-christy-barritt"
+        },
+        "reba-buhr-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B08FL4M27M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91B0ftOg8HL.jpg",
+          "id": "reba-buhr-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "reba-buhr"
+          ],
+          "publisher": "Christy Barritt",
+          "release_date": "2020-08-11",
+          "runtime_min": 399,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08FL4M27M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hazardous-duty-christy-barritt"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00C5M7XKG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08FL4M27M",
           "type": "libex-import"
         }
       ],
@@ -11559,59 +11559,6 @@
         }
       ],
       "title": "Hazardous Duty"
-    },
-    "hazardous-duty-squeaky-clean-mysteries-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "christy-barritt"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery",
-        "religious-fiction",
-        "thriller-suspense"
-      ],
-      "id": "hazardous-duty-squeaky-clean-mysteries-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "reba-buhr-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08FL4M27M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91B0ftOg8HL.jpg",
-          "id": "reba-buhr-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "reba-buhr"
-          ],
-          "publisher": "Christy Barritt",
-          "release_date": "2020-08-11",
-          "runtime_min": 399,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08FL4M27M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hazardous-duty-squeaky-clean-mysteries-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08FL4M27M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hazardous Duty: Squeaky Clean Mysteries, Book 1"
     },
     "hazards-in-hampshire": {
       "added_at": "2026-07-29",

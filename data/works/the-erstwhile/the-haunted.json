@@ -9706,6 +9706,7 @@
         }
       ],
       "genres": [
+        "arts-entertainment",
         "horror",
         "literary-fiction"
       ],
@@ -9736,6 +9737,70 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09PL4NMK3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-haunter-of-the-dark"
+        },
+        "h-p-lovecraft-historical-society-2018": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B07CBTQS3X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 162075,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 947839,
+              "start_ms": 162075,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1056833,
+              "start_ms": 1109914,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 597124,
+              "start_ms": 2166747,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1200657,
+              "start_ms": 2763871,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 551056,
+              "start_ms": 3964528,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 87353,
+              "start_ms": 4515584,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pOqOC-W2L.jpg",
+          "id": "h-p-lovecraft-historical-society-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "h-p-lovecraft-historical-society"
+          ],
+          "publisher": "H.P. Lovecraft Historical Society",
+          "release_date": "2018-04-23",
+          "runtime_min": 76,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B07CBTQS3X",
               "type": "libex-import"
             }
           ],
@@ -9909,96 +9974,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DBS8GDJN",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Haunter of the Dark"
-    },
-    "the-haunter-of-the-dark-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "horror"
-      ],
-      "id": "the-haunter-of-the-dark-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "h-p-lovecraft-historical-society-2018": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B07CBTQS3X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 162075,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 947839,
-              "start_ms": 162075,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1056833,
-              "start_ms": 1109914,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 597124,
-              "start_ms": 2166747,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1200657,
-              "start_ms": 2763871,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 551056,
-              "start_ms": 3964528,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 87353,
-              "start_ms": 4515584,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91pOqOC-W2L.jpg",
-          "id": "h-p-lovecraft-historical-society-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "h-p-lovecraft-historical-society"
-          ],
-          "publisher": "H.P. Lovecraft Historical Society",
-          "release_date": "2018-04-23",
-          "runtime_min": 76,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B07CBTQS3X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-haunter-of-the-dark-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B07CBTQS3X",
           "type": "libex-import"
         }
       ],
-      "title": "The Haunter of the Dark (Dramatized)"
+      "title": "The Haunter of the Dark"
     },
     "the-haunting": {
       "added_at": "2026-08-01",

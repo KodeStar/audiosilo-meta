@@ -233,6 +233,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "monte-reid-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B078YYHWC8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51aVpK3A9gL.jpg",
+          "id": "monte-reid-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "monte-reid"
+          ],
+          "publisher": "Ehrlin Publishing AB",
+          "release_date": "2018-01-12",
+          "runtime_min": 36,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B078YYHWC8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-tractor-who-wants-to-fall-asleep-uk-english"
+        },
         "rachel-bavidge-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -295,59 +323,14 @@
           "imported_at": "2026-07-29",
           "ref": "B078YXPHQ7",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Tractor Who Wants to Fall Asleep [UK English]"
-    },
-    "the-tractor-who-wants-to-fall-asleep-us-english": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carl-johan-forssen-ehrlin"
-      ],
-      "genres": [
-        "childrens"
-      ],
-      "id": "the-tractor-who-wants-to-fall-asleep-us-english",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "monte-reid-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B078YYHWC8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51aVpK3A9gL.jpg",
-          "id": "monte-reid-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "monte-reid"
-          ],
-          "publisher": "Ehrlin Publishing AB",
-          "release_date": "2018-01-12",
-          "runtime_min": 36,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B078YYHWC8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-tractor-who-wants-to-fall-asleep-us-english"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B078YYHWC8",
           "type": "libex-import"
         }
       ],
-      "title": "The Tractor Who Wants to Fall Asleep [US English]"
+      "title": "The Tractor Who Wants to Fall Asleep [UK English]"
     },
     "the-trad-wife": {
       "added_at": "2026-07-29",
@@ -1509,34 +1492,7 @@
             }
           ],
           "work": "the-traders-war"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07DY5R1GM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Traders' War"
-    },
-    "the-traders-war-the-merchant-princes-books-3-and-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charles-stross"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "the-traders-war-the-merchant-princes-books-3-and-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kate-reading-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1563,17 +1519,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-traders-war-the-merchant-princes-books-3-and-4"
+          "work": "the-traders-war"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07DY5R1GM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DPGBNLPT",
           "type": "libex-import"
         }
       ],
-      "title": "The Traders' War: The Merchant Princes Books 3 and 4"
+      "title": "The Traders' War"
     },
     "the-trading-game": {
       "added_at": "2026-07-29",
@@ -11140,6 +11101,10 @@
             {
               "asin": "B0BTDH2T17",
               "region": "uk"
+            },
+            {
+              "asin": "B0BTDHP7NJ",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -11419,6 +11384,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BTDH2T17",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTDHP7NJ",
+              "type": "libex-import"
             }
           ],
           "work": "the-traitor-anthony-ryan"
@@ -11428,6 +11398,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0BLXV99TP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BTDHP7NJ",
           "type": "libex-import"
         }
       ],
@@ -11989,309 +11964,6 @@
         }
       ],
       "title": "The Traitor Beside Her"
-    },
-    "the-traitor-book-three-of-the-covenant-of-steel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anthony-ryan"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-traitor-book-three-of-the-covenant-of-steel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "steven-brand-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BTDHP7NJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 26702,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 9000,
-              "start_ms": 26702,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 948451,
-              "start_ms": 35702,
-              "title": "What Has Gone Before"
-            },
-            {
-              "length_ms": 50000,
-              "start_ms": 984153,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 1837248,
-              "start_ms": 1034153,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 2051157,
-              "start_ms": 2871401,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1923889,
-              "start_ms": 4922558,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1754314,
-              "start_ms": 6846447,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1876520,
-              "start_ms": 8600761,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 2025871,
-              "start_ms": 10477281,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1856551,
-              "start_ms": 12503152,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1690482,
-              "start_ms": 14359703,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1194318,
-              "start_ms": 16050185,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1642788,
-              "start_ms": 17244503,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1549049,
-              "start_ms": 18887291,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1121848,
-              "start_ms": 20436340,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1936033,
-              "start_ms": 21558188,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1537184,
-              "start_ms": 23494221,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1007792,
-              "start_ms": 25031405,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 62000,
-              "start_ms": 26039197,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 1761695,
-              "start_ms": 26101197,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 1738176,
-              "start_ms": 27862892,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 1230216,
-              "start_ms": 29601068,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1497663,
-              "start_ms": 30831284,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 1873478,
-              "start_ms": 32328947,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 1671836,
-              "start_ms": 34202425,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 1705853,
-              "start_ms": 35874261,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 1432067,
-              "start_ms": 37580114,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 1613113,
-              "start_ms": 39012181,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 1284527,
-              "start_ms": 40625294,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 1799871,
-              "start_ms": 41909821,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 1844430,
-              "start_ms": 43709692,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 1396146,
-              "start_ms": 45554122,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 1343436,
-              "start_ms": 46950268,
-              "title": "Chapter Twenty-Nine"
-            },
-            {
-              "length_ms": 1764600,
-              "start_ms": 48293704,
-              "title": "Chapter Thirty"
-            },
-            {
-              "length_ms": 62000,
-              "start_ms": 50058304,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 1315430,
-              "start_ms": 50120304,
-              "title": "Chapter Thirty-One"
-            },
-            {
-              "length_ms": 1626534,
-              "start_ms": 51435734,
-              "title": "Chapter Thirty-Two"
-            },
-            {
-              "length_ms": 1292701,
-              "start_ms": 53062268,
-              "title": "Chapter Thirty-Three"
-            },
-            {
-              "length_ms": 1661945,
-              "start_ms": 54354969,
-              "title": "Chapter Thirty-Four"
-            },
-            {
-              "length_ms": 1555226,
-              "start_ms": 56016914,
-              "title": "Chapter Thirty-Five"
-            },
-            {
-              "length_ms": 1766968,
-              "start_ms": 57572140,
-              "title": "Chapter Thirty-Six"
-            },
-            {
-              "length_ms": 1263165,
-              "start_ms": 59339108,
-              "title": "Chapter Thirty-Seven"
-            },
-            {
-              "length_ms": 1218327,
-              "start_ms": 60602273,
-              "title": "Chapter Thirty-Eight"
-            },
-            {
-              "length_ms": 1193668,
-              "start_ms": 61820600,
-              "title": "Chapter Thirty-Nine"
-            },
-            {
-              "length_ms": 2020623,
-              "start_ms": 63014268,
-              "title": "Chapter Forty"
-            },
-            {
-              "length_ms": 1172561,
-              "start_ms": 65034891,
-              "title": "Chapter Forty-One"
-            },
-            {
-              "length_ms": 1046128,
-              "start_ms": 66207452,
-              "title": "Chapter Forty-Two"
-            },
-            {
-              "length_ms": 1969864,
-              "start_ms": 67253580,
-              "title": "Chapter Forty-Three"
-            },
-            {
-              "length_ms": 109830,
-              "start_ms": 69223444,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81uTmJj9McL.jpg",
-          "id": "steven-brand-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "steven-brand"
-          ],
-          "publisher": "Little, Brown Book Group",
-          "release_date": "2023-07-11",
-          "runtime_min": 1155,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BTDHP7NJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-traitor-book-three-of-the-covenant-of-steel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BTDHP7NJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Traitor: Book Three of the Covenant of Steel"
     },
     "the-traitor-fires-edge-book-6": {
       "added_at": "2026-08-02",

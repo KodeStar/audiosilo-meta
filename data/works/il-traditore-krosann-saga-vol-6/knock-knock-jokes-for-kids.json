@@ -317,6 +317,8 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "comedy-humor",
+        "coming-of-age",
         "fantasy",
         "horror"
       ],
@@ -330,6 +332,10 @@
           "asin": [
             {
               "asin": "1444941917",
+              "region": "us"
+            },
+            {
+              "asin": "1478999489",
               "region": "us"
             }
           ],
@@ -505,6 +511,11 @@
               "imported_at": "2026-07-30",
               "ref": "1444941917",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1478999489",
+              "type": "libex-import"
             }
           ],
           "work": "knock-three-times"
@@ -519,6 +530,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1444941917",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1478999489",
           "type": "libex-import"
         }
       ],

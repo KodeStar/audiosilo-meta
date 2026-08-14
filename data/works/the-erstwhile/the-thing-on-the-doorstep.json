@@ -6,6 +6,7 @@
         "h-p-lovecraft"
       ],
       "genres": [
+        "arts-entertainment",
         "horror"
       ],
       "id": "the-thing-on-the-doorstep",
@@ -35,6 +36,70 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07D9P2HQ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-thing-on-the-doorstep"
+        },
+        "h-p-lovecraft-historical-society-2018": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B07BZZWS2N",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 212370,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 573301,
+              "start_ms": 212370,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 840191,
+              "start_ms": 785671,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1348569,
+              "start_ms": 1625862,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 776429,
+              "start_ms": 2974431,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 548223,
+              "start_ms": 3750860,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 88561,
+              "start_ms": 4299083,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1fqM1ZMw-L.jpg",
+          "id": "h-p-lovecraft-historical-society-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "h-p-lovecraft-historical-society"
+          ],
+          "publisher": "H.P. Lovecraft Historical Society",
+          "release_date": "2018-04-23",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B07BZZWS2N",
               "type": "libex-import"
             }
           ],
@@ -332,96 +397,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DXKXY2ZH",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Thing on the Doorstep"
-    },
-    "the-thing-on-the-doorstep-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "horror"
-      ],
-      "id": "the-thing-on-the-doorstep-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "h-p-lovecraft-historical-society-2018": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B07BZZWS2N",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 212370,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 573301,
-              "start_ms": 212370,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 840191,
-              "start_ms": 785671,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1348569,
-              "start_ms": 1625862,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 776429,
-              "start_ms": 2974431,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 548223,
-              "start_ms": 3750860,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 88561,
-              "start_ms": 4299083,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1fqM1ZMw-L.jpg",
-          "id": "h-p-lovecraft-historical-society-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "h-p-lovecraft-historical-society"
-          ],
-          "publisher": "H.P. Lovecraft Historical Society",
-          "release_date": "2018-04-23",
-          "runtime_min": 72,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B07BZZWS2N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-thing-on-the-doorstep-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B07BZZWS2N",
           "type": "libex-import"
         }
       ],
-      "title": "The Thing on the Doorstep (Dramatized)"
+      "title": "The Thing on the Doorstep"
     },
     "the-thing-under-the-rock": {
       "added_at": "2026-08-02",
@@ -3246,54 +3229,7 @@
             {
               "asin": "B0B914X62R",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/711uEApRhxL.jpg",
-          "id": "denis-ruhle-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "denis-ruhle",
-            "inka-lioba-bretschneider"
-          ],
-          "publisher": "Zeilenfluss",
-          "release_date": "2022-08-10",
-          "runtime_min": 541,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B914X62R",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-things-i-never-said"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0B914X62R",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Things I Never Said"
-    },
-    "the-things-i-never-said-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "j-moldenhauer"
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "the-things-i-never-said-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "denis-ruhle-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0B9136SXG",
               "region": "us"
@@ -3313,21 +3249,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0B914X62R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0B9136SXG",
               "type": "libex-import"
             }
           ],
-          "work": "the-things-i-never-said-german-edition"
+          "work": "the-things-i-never-said"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B914X62R",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0B9136SXG",
           "type": "libex-import"
         }
       ],
-      "title": "The Things I Never Said (German Edition)"
+      "title": "The Things I Never Said"
     },
     "the-things-i-should-have-told-you": {
       "added_at": "2026-07-29",

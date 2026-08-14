@@ -6736,6 +6736,7 @@
       ],
       "genres": [
         "health-wellness",
+        "occult",
         "philosophy",
         "politics",
         "religion-spirituality"
@@ -6744,6 +6745,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "artur-mas-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07W1YKLZH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81s9kEUIUaL.jpg",
+          "id": "artur-mas-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "artur-mas"
+          ],
+          "publisher": "AMA AUDIOLIBROS",
+          "release_date": "2019-08-19",
+          "runtime_min": 79,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07W1YKLZH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tao-te-king-lao-tse"
+        },
         "joaquin-rodrigo-madrigal-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6778,62 +6807,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00NWXFLVU",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tao Te King"
-    },
-    "tao-te-king-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "laotse"
-      ],
-      "genres": [
-        "occult",
-        "philosophy",
-        "politics",
-        "religion-spirituality"
-      ],
-      "id": "tao-te-king-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "artur-mas-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07W1YKLZH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81s9kEUIUaL.jpg",
-          "id": "artur-mas-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "artur-mas"
-          ],
-          "publisher": "AMA AUDIOLIBROS",
-          "release_date": "2019-08-19",
-          "runtime_min": 79,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07W1YKLZH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tao-te-king-spanish-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07W1YKLZH",
           "type": "libex-import"
         }
       ],
-      "title": "Tao Te King (Spanish Edition)"
+      "title": "Tao Te King"
     },
     "taoism": {
       "added_at": "2026-07-29",

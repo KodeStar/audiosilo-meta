@@ -321,6 +321,7 @@
       ],
       "genres": [
         "health-wellness",
+        "occult",
         "religion-spirituality"
       ],
       "id": "higher-mind",
@@ -334,56 +335,7 @@
             {
               "asin": "B0BHZPCNY8",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MeG6n8mjL.jpg",
-          "id": "andreas-schwarz-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-schwarz",
-            "herbert-schafer"
-          ],
-          "publisher": "Argon Verlag",
-          "release_date": "2022-11-02",
-          "runtime_min": 452,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BHZPCNY8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "higher-mind"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BHZPCNY8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Higher Mind"
-    },
-    "higher-mind-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "andreas-schwarz"
-      ],
-      "genres": [
-        "health-wellness",
-        "occult",
-        "religion-spirituality"
-      ],
-      "id": "higher-mind-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-schwarz-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BHZGQKN8",
               "region": "us"
@@ -403,21 +355,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BHZPCNY8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BHZGQKN8",
               "type": "libex-import"
             }
           ],
-          "work": "higher-mind-german-edition"
+          "work": "higher-mind"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BHZPCNY8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BHZGQKN8",
           "type": "libex-import"
         }
       ],
-      "title": "Higher Mind (German edition)"
+      "title": "Higher Mind"
     },
     "higher-purpose": {
       "added_at": "2026-07-29",

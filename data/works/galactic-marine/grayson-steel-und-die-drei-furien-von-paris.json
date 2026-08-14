@@ -8934,52 +8934,7 @@
             {
               "asin": "B08KFLBL4W",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Hh65GAwAL.jpg",
-          "id": "eduardo-wasveiler-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eduardo-wasveiler"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2020-10-01",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08KFLBL4W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "great-courses-sin-calculadora-ningun-problema"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08KFLBL4W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Great Courses: ¿Sin calculadora? Ningún problema"
-    },
-    "great-courses-sin-calculadora-ningun-problema-great-courses-no-calculator-no-problem": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-benjamin"
-      ],
-      "genres": [
-        "science"
-      ],
-      "id": "great-courses-sin-calculadora-ningun-problema-great-courses-no-calculator-no-problem",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eduardo-wasveiler-2020": {
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08KFKJ2SW",
               "region": "us"
@@ -8998,21 +8953,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08KFLBL4W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08KFKJ2SW",
               "type": "libex-import"
             }
           ],
-          "work": "great-courses-sin-calculadora-ningun-problema-great-courses-no-calculator-no-problem"
+          "work": "great-courses-sin-calculadora-ningun-problema"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08KFLBL4W",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08KFKJ2SW",
           "type": "libex-import"
         }
       ],
-      "title": "Great Courses: ¿Sin calculadora? Ningún problema [Great Courses: No Calculator? No Problem]"
+      "title": "Great Courses: ¿Sin calculadora? Ningún problema"
     },
     "great-demo": {
       "added_at": "2026-07-29",

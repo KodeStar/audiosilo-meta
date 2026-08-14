@@ -1380,7 +1380,8 @@
       ],
       "genres": [
         "literary-fiction",
-        "military-history"
+        "military-history",
+        "war-military-fiction"
       ],
       "id": "la-ciudad-y-los-perros",
       "language": "es",
@@ -1393,56 +1394,7 @@
             {
               "asin": "B081B6Z2V6",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lk7dONaFL.jpg",
-          "id": "oscar-mesa-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oscar-mesa",
-            "raul-alfonso-saco",
-            "sebastian-alvizuri"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial Audio",
-          "release_date": "2019-11-14",
-          "runtime_min": 822,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B081B6Z2V6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-ciudad-y-los-perros"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B081B6Z2V6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La ciudad y los perros"
-    },
-    "la-ciudad-y-los-perros-the-city-and-the-dogs": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mario-vargas-llosa"
-      ],
-      "genres": [
-        "literary-fiction",
-        "war-military-fiction"
-      ],
-      "id": "la-ciudad-y-los-perros-the-city-and-the-dogs",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oscar-mesa-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "8420436887",
               "region": "us"
@@ -1565,21 +1517,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B081B6Z2V6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8420436887",
               "type": "libex-import"
             }
           ],
-          "work": "la-ciudad-y-los-perros-the-city-and-the-dogs"
+          "work": "la-ciudad-y-los-perros"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B081B6Z2V6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8420436887",
           "type": "libex-import"
         }
       ],
-      "title": "La ciudad y los perros [The City and the Dogs]"
+      "title": "La ciudad y los perros"
     },
     "la-ciudad-y-sus-muros-inciertos": {
       "added_at": "2026-07-29",
@@ -1796,8 +1758,10 @@
         "jorge-v-garcia-damiano"
       ],
       "genres": [
+        "historical-fiction",
         "military-history",
-        "mystery"
+        "mystery",
+        "war-military-fiction"
       ],
       "id": "la-clave-esta-en-rebeca",
       "language": "es",
@@ -1810,56 +1774,7 @@
             {
               "asin": "8466346910",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816LKu+JSCL.jpg",
-          "id": "pere-molina-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pere-molina"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-05-24",
-          "runtime_min": 731,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8466346910",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-clave-esta-en-rebeca"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8466346910",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La clave está en Rebeca"
-    },
-    "la-clave-esta-en-rebeca-the-key-to-rebecca": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ken-follett",
-        "jorge-v-garcia-damiano"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "war-military-fiction"
-      ],
-      "id": "la-clave-esta-en-rebeca-the-key-to-rebecca",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pere-molina-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07D3FLDGQ",
               "region": "us"
@@ -2055,21 +1970,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8466346910",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07D3FLDGQ",
               "type": "libex-import"
             }
           ],
-          "work": "la-clave-esta-en-rebeca-the-key-to-rebecca"
+          "work": "la-clave-esta-en-rebeca"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8466346910",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07D3FLDGQ",
           "type": "libex-import"
         }
       ],
-      "title": "La clave está en Rebeca [The Key to Rebecca]"
+      "title": "La clave está en Rebeca"
     },
     "la-clave-secreta-del-universo-la-clave-secreta-del-universo-1-georges-secret-key-to-the-universe": {
       "added_at": "2026-07-29",
@@ -5931,29 +5856,7 @@
             }
           ],
           "work": "la-columna-de-hierro-iron-column"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B083G7BNM2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La columna de hierro [Iron Column]"
-    },
-    "la-columna-de-hierro-narracion-en-castellano-the-iron-column": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "taylor-caldwell"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "la-columna-de-hierro-narracion-en-castellano-the-iron-column",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "carles-sianes-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5980,17 +5883,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-columna-de-hierro-narracion-en-castellano-the-iron-column"
+          "work": "la-columna-de-hierro-iron-column"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B083G7BNM2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B081DBNRRM",
           "type": "libex-import"
         }
       ],
-      "title": "La columna de hierro (Narración en Castellano) [The Iron Column]"
+      "title": "La columna de hierro [Iron Column]"
     },
     "la-compagnia-dellanello": {
       "added_at": "2026-08-02",
@@ -6751,7 +6659,8 @@
       "genres": [
         "hard-boiled",
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "la-condesa-maldita",
       "language": "es",
@@ -6764,55 +6673,7 @@
             {
               "asin": "B0CW2BNZK9",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81UdDWPwsXL.jpg",
-          "id": "beatriz-melgares-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "beatriz-melgares",
-            "reyes-monforte"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-02-22",
-          "runtime_min": 1725,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CW2BNZK9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-condesa-maldita"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CW2BNZK9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La condesa maldita"
-    },
-    "la-condesa-maldita-the-cursed-countess": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "reyes-monforte"
-      ],
-      "genres": [
-        "historical-fiction",
-        "thriller-suspense"
-      ],
-      "id": "la-condesa-maldita-the-cursed-countess",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "beatriz-melgares-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CW2QFT39",
               "region": "us"
@@ -6832,21 +6693,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CW2BNZK9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CW2QFT39",
               "type": "libex-import"
             }
           ],
-          "work": "la-condesa-maldita-the-cursed-countess"
+          "work": "la-condesa-maldita"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CW2BNZK9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CW2QFT39",
           "type": "libex-import"
         }
       ],
-      "title": "La condesa maldita [The Cursed Countess]"
+      "title": "La condesa maldita"
     },
     "la-condesa-mister-2": {
       "added_at": "2026-07-29",
@@ -9630,62 +9501,7 @@
             {
               "asin": "B0BXFDHGYH",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91TznGwqcGL.jpg",
-          "id": "angel-moron-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "angel-moron"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-05-04",
-          "runtime_min": 340,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BXFDHGYH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-conquista-de-la-felicidad"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BXFDHGYH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La conquista de la felicidad"
-    },
-    "la-conquista-de-la-felicidad-the-conquest-of-happiness": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "bertrand-russell",
-        "juan-manuel-ibeas-delgado"
-      ],
-      "credits": [
-        {
-          "person": "juan-manuel-ibeas-delgado",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "la-conquista-de-la-felicidad-the-conquest-of-happiness",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "angel-moron-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BXFD37Y7",
               "region": "us"
@@ -9704,21 +9520,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BXFDHGYH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BXFD37Y7",
               "type": "libex-import"
             }
           ],
-          "work": "la-conquista-de-la-felicidad-the-conquest-of-happiness"
+          "work": "la-conquista-de-la-felicidad"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BXFDHGYH",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BXFD37Y7",
           "type": "libex-import"
         }
       ],
-      "title": "La conquista de la felicidad [The Conquest of Happiness]"
+      "title": "La conquista de la felicidad"
     },
     "la-conquista-de-laura": {
       "added_at": "2026-07-29",
@@ -9940,53 +9766,7 @@
             {
               "asin": "B07YRP2XLR",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91xy8UW1maL.jpg",
-          "id": "alejandro-moreno-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-moreno"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-06-14",
-          "runtime_min": 649,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YRP2XLR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-conquista-romana-de-hispania"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YRP2XLR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La conquista romana de Hispania"
-    },
-    "la-conquista-romana-de-hispania-the-roman-conquest-of-hispania": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-negrete"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "la-conquista-romana-de-hispania-the-roman-conquest-of-hispania",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-moreno-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07DQRM3MP",
               "region": "us"
@@ -10005,21 +9785,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YRP2XLR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07DQRM3MP",
               "type": "libex-import"
             }
           ],
-          "work": "la-conquista-romana-de-hispania-the-roman-conquest-of-hispania"
+          "work": "la-conquista-romana-de-hispania"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YRP2XLR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07DQRM3MP",
           "type": "libex-import"
         }
       ],
-      "title": "La conquista romana de Hispania [The Roman Conquest of Hispania]"
+      "title": "La conquista romana de Hispania"
     },
     "la-consequence-de-manger-des-donuts-avec-un-garcon-qui-joue-de-la-guitare-what-comes-of-eating-dough": {
       "added_at": "2026-08-01",
@@ -12754,7 +12544,9 @@
         "italo-svevo"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "historical-fiction",
+        "psychological-thriller"
       ],
       "id": "la-coscienza-di-zeno",
       "language": "it",
@@ -12815,31 +12607,7 @@
             }
           ],
           "work": "la-coscienza-di-zeno"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "3748007604",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La coscienza di Zeno"
-    },
-    "la-coscienza-di-zeno-zenos-conscience": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "italo-svevo"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "psychological-thriller"
-      ],
-      "id": "la-coscienza-di-zeno-zenos-conscience",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "silvia-cecchini-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -12866,17 +12634,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-coscienza-di-zeno-zenos-conscience"
+          "work": "la-coscienza-di-zeno"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3748007604",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B003K0INH4",
           "type": "libex-import"
         }
       ],
-      "title": "La coscienza di Zeno [Zeno's Conscience]"
+      "title": "La coscienza di Zeno"
     },
     "la-costa-mas-lejana": {
       "added_at": "2026-08-02",

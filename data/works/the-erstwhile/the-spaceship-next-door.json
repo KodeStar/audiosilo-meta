@@ -13522,8 +13522,11 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
-        "science-fiction"
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "the-spell-sword",
       "language": "en",
@@ -13618,33 +13621,7 @@
             }
           ],
           "work": "the-spell-sword"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B078MK8W74",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Spell Sword"
-    },
-    "the-spell-sword-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "the-spell-sword-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-bellmore-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13743,17 +13720,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-spell-sword-international-edition"
+          "work": "the-spell-sword"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078MK8W74",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYJ9D74",
           "type": "libex-import"
         }
       ],
-      "title": "The Spell Sword [International Edition]"
+      "title": "The Spell Sword"
     },
     "the-spell-to-remember": {
       "added_at": "2026-08-02",

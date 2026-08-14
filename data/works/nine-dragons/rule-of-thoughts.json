@@ -6,13 +6,163 @@
         "james-dashner"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "psychology",
+        "self-help",
+        "young-adult"
       ],
       "id": "rule-of-thoughts",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "erik-davies-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00K38PG58",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1433507,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 835686,
+              "start_ms": 1433507,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 823844,
+              "start_ms": 2269193,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1398399,
+              "start_ms": 3093037,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2349999,
+              "start_ms": 4491436,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1736853,
+              "start_ms": 6841435,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1748602,
+              "start_ms": 8578288,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1141493,
+              "start_ms": 10326890,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1960739,
+              "start_ms": 11468383,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1424033,
+              "start_ms": 13429122,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1425566,
+              "start_ms": 14853155,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2790435,
+              "start_ms": 16278721,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2046096,
+              "start_ms": 19069156,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1674623,
+              "start_ms": 21115252,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2082969,
+              "start_ms": 22789875,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1336587,
+              "start_ms": 24872844,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2184487,
+              "start_ms": 26209431,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2662307,
+              "start_ms": 28393918,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1082607,
+              "start_ms": 31056225,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2771023,
+              "start_ms": 32138832,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 380204,
+              "start_ms": 34909855,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1094960,
+              "start_ms": 35290059,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 290156,
+              "start_ms": 36385019,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-rkHTeB6L.jpg",
+          "id": "erik-davies-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erik-davies"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2014-08-26",
+          "runtime_min": 611,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00K38PG58",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rule-of-thoughts"
+        },
         "erik-davies-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -46,6 +196,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00UIE5X00",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00K38PG58",
           "type": "libex-import"
         }
       ],

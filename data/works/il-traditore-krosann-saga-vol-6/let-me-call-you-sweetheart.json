@@ -5816,32 +5816,7 @@
             }
           ],
           "work": "let-sleeping-dragons-lie"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07HMDDT87",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Let Sleeping Dragons Lie"
-    },
-    "let-sleeping-dragons-lie-have-sword-will-travel-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "garth-nix",
-        "sean-williams"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "let-sleeping-dragons-lie-have-sword-will-travel-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "oliver-j-hembrough-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6005,17 +5980,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "let-sleeping-dragons-lie-have-sword-will-travel-2"
+          "work": "let-sleeping-dragons-lie"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HMDDT87",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1848128274",
           "type": "libex-import"
         }
       ],
-      "title": "Let Sleeping Dragons Lie: Have Sword, Will Travel 2"
+      "title": "Let Sleeping Dragons Lie"
     },
     "let-sleeping-dukes-lie": {
       "added_at": "2026-07-29",
@@ -7795,12 +7775,42 @@
       "genres": [
         "mystery",
         "police-procedural",
-        "thriller-suspense"
+        "psychological-thriller",
+        "thriller-suspense",
+        "womens-fiction"
       ],
       "id": "let-the-dead-speak",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "caroline-lennon-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06X9DCN7D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51CJeaKWtLL.jpg",
+          "id": "caroline-lennon-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "caroline-lennon"
+          ],
+          "publisher": "Hemlock Press",
+          "release_date": "2017-03-09",
+          "runtime_min": 829,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06X9DCN7D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "let-the-dead-speak"
+        },
         "sarah-coomes-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8037,62 +8047,14 @@
           "imported_at": "2026-07-29",
           "ref": "B07G4H54DF",
           "type": "libex-import"
-        }
-      ],
-      "title": "Let the Dead Speak"
-    },
-    "let-the-dead-speak-a-maeve-kerrigan-crime-thriller": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jane-casey"
-      ],
-      "genres": [
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense",
-        "womens-fiction"
-      ],
-      "id": "let-the-dead-speak-a-maeve-kerrigan-crime-thriller",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "caroline-lennon-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B06X9DCN7D",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51CJeaKWtLL.jpg",
-          "id": "caroline-lennon-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "caroline-lennon"
-          ],
-          "publisher": "Hemlock Press",
-          "release_date": "2017-03-09",
-          "runtime_min": 829,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B06X9DCN7D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "let-the-dead-speak-a-maeve-kerrigan-crime-thriller"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B06X9DCN7D",
           "type": "libex-import"
         }
       ],
-      "title": "Let the Dead Speak: A Maeve Kerrigan crime thriller"
+      "title": "Let the Dead Speak"
     },
     "let-the-devil-sleep": {
       "added_at": "2026-07-29",

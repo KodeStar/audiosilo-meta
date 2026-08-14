@@ -11037,6 +11037,7 @@
         "neal-asher"
       ],
       "genres": [
+        "action-adventure",
         "military-science-fiction",
         "science-fiction",
         "space-opera"
@@ -11212,31 +11213,7 @@
             }
           ],
           "work": "polity-agent"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00JG71I4U",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Polity Agent"
-    },
-    "polity-agent-an-agent-cormac-novel-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "neal-asher"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "polity-agent-an-agent-cormac-novel-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ric-jerrom-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11375,17 +11352,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "polity-agent-an-agent-cormac-novel-4"
+          "work": "polity-agent"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00JG71I4U",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNK2PGMN",
           "type": "libex-import"
         }
       ],
-      "title": "Polity Agent: An Agent Cormac Novel 4"
+      "title": "Polity Agent"
     },
     "polizeieinsatz": {
       "added_at": "2026-08-02",
@@ -11515,95 +11497,13 @@
       ],
       "title": "Polizeieinsatz"
     },
-    "polizon-al-cielo-narracion-en-castellano-stowaway-to-heaven-narration-in-spanish": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "polizon-al-cielo-narracion-en-castellano-stowaway-to-heaven-narration-in-spanish",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pau-ferrer-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09M94BH8R",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19040,
-              "start_ms": 0,
-              "title": "Créditos iniciales"
-            },
-            {
-              "length_ms": 6237251,
-              "start_ms": 19040,
-              "title": "Parte 1"
-            },
-            {
-              "length_ms": 6340951,
-              "start_ms": 6256291,
-              "title": "Parte 2"
-            },
-            {
-              "length_ms": 6081538,
-              "start_ms": 12597242,
-              "title": "Parte 3"
-            },
-            {
-              "length_ms": 6461788,
-              "start_ms": 18678780,
-              "title": "Parte 4"
-            },
-            {
-              "length_ms": 25866,
-              "start_ms": 25140568,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91AeOcaPkeL.jpg",
-          "id": "pau-ferrer-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pau-ferrer"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-11-30",
-          "runtime_min": 419,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09M94BH8R",
-              "type": "libex-import"
-            }
-          ],
-          "work": "polizon-al-cielo-narracion-en-castellano-stowaway-to-heaven-narration-in-spanish"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09M94BH8R",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Polizón al cielo (Narración en Castellano) [Stowaway to Heaven (Narration in Spanish)]"
-    },
     "polizon-al-cielo-stowaway-to-heaven": {
       "added_at": "2026-08-02",
       "authors": [
         "j-s-morin"
       ],
       "genres": [
+        "fantasy",
         "science-fiction",
         "space-opera"
       ],
@@ -12000,12 +11900,77 @@
             }
           ],
           "work": "polizon-al-cielo-stowaway-to-heaven"
+        },
+        "pau-ferrer-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09M94BH8R",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19040,
+              "start_ms": 0,
+              "title": "Créditos iniciales"
+            },
+            {
+              "length_ms": 6237251,
+              "start_ms": 19040,
+              "title": "Parte 1"
+            },
+            {
+              "length_ms": 6340951,
+              "start_ms": 6256291,
+              "title": "Parte 2"
+            },
+            {
+              "length_ms": 6081538,
+              "start_ms": 12597242,
+              "title": "Parte 3"
+            },
+            {
+              "length_ms": 6461788,
+              "start_ms": 18678780,
+              "title": "Parte 4"
+            },
+            {
+              "length_ms": 25866,
+              "start_ms": 25140568,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91AeOcaPkeL.jpg",
+          "id": "pau-ferrer-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pau-ferrer"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-11-30",
+          "runtime_min": 419,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09M94BH8R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "polizon-al-cielo-stowaway-to-heaven"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B09477PR4T",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09M94BH8R",
           "type": "libex-import"
         }
       ],

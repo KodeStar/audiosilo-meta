@@ -177,13 +177,172 @@
         "stephen-r-lawhead"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "the-warlords-of-nin",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-clemence-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H8C9PLW",
+              "region": "us"
+            },
+            {
+              "asin": "1648794181",
+              "region": "us"
+            },
+            {
+              "asin": "1648794203",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 26924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 100000,
+              "start_ms": 26924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3139798,
+              "start_ms": 126924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3728567,
+              "start_ms": 3266722,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3739434,
+              "start_ms": 6995289,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3121319,
+              "start_ms": 10734723,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3679317,
+              "start_ms": 13856042,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 98000,
+              "start_ms": 17535359,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3686504,
+              "start_ms": 17633359,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3514665,
+              "start_ms": 21319863,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3382427,
+              "start_ms": 24834528,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3375066,
+              "start_ms": 28216955,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3092433,
+              "start_ms": 31592021,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2617420,
+              "start_ms": 34684454,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 116580,
+              "start_ms": 37301874,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 334516,
+              "start_ms": 37418454,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+Bsxpe++L.jpg",
+          "id": "andy-clemence-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-clemence",
+            "christopher-graybill",
+            "christopher-sheeren",
+            "david-coyne",
+            "dylan-lynch",
+            "elizabeth-jernigan",
+            "eric-messner",
+            "full-cast",
+            "james-konicek",
+            "joe-brack",
+            "johann-dettweiler",
+            "karen-novak",
+            "ken-jackson",
+            "lily-beacon",
+            "michael-glenn"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 629,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H8C9PLW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794181",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794181",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794203",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794203",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H8C9PLW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warlords-of-nin"
+        },
         "tim-gregory-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -520,183 +679,7 @@
           "imported_at": "2026-08-02",
           "ref": "B005IHAT4W",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Warlords of Nin"
-    },
-    "the-warlords-of-nin-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "stephen-r-lawhead"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "the-warlords-of-nin-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-clemence-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H8C9PLW",
-              "region": "us"
-            },
-            {
-              "asin": "1648794181",
-              "region": "us"
-            },
-            {
-              "asin": "1648794203",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 26924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 100000,
-              "start_ms": 26924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3139798,
-              "start_ms": 126924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3728567,
-              "start_ms": 3266722,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3739434,
-              "start_ms": 6995289,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3121319,
-              "start_ms": 10734723,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3679317,
-              "start_ms": 13856042,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 98000,
-              "start_ms": 17535359,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3686504,
-              "start_ms": 17633359,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3514665,
-              "start_ms": 21319863,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3382427,
-              "start_ms": 24834528,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3375066,
-              "start_ms": 28216955,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3092433,
-              "start_ms": 31592021,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2617420,
-              "start_ms": 34684454,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 116580,
-              "start_ms": 37301874,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 334516,
-              "start_ms": 37418454,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+Bsxpe++L.jpg",
-          "id": "andy-clemence-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-clemence",
-            "christopher-graybill",
-            "christopher-sheeren",
-            "david-coyne",
-            "dylan-lynch",
-            "elizabeth-jernigan",
-            "eric-messner",
-            "full-cast",
-            "james-konicek",
-            "joe-brack",
-            "johann-dettweiler",
-            "karen-novak",
-            "ken-jackson",
-            "lily-beacon",
-            "michael-glenn"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 629,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H8C9PLW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794181",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794181",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794203",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794203",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H8C9PLW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-warlords-of-nin-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H8C9PLW",
@@ -728,7 +711,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Warlords of Nin [Dramatized Adaptation]"
+      "title": "The Warlords of Nin"
     },
     "the-warlords-of-nin-stephen-lawhead": {
       "added_at": "2026-08-02",

@@ -7083,13 +7083,141 @@
         "scott-sigler"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
+        "comedy-humor",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "sports"
       ],
       "id": "the-gangster",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BZJSW1MJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0B7CLVR9H",
+              "region": "us"
+            },
+            {
+              "asin": "B0BKPCN15S",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 5205054,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5014581,
+              "start_ms": 5205054,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4475042,
+              "start_ms": 10219635,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4029056,
+              "start_ms": 14694677,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4675477,
+              "start_ms": 18723733,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3965782,
+              "start_ms": 23399210,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4504880,
+              "start_ms": 27364992,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4620840,
+              "start_ms": 31869872,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4185698,
+              "start_ms": 36490712,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4270730,
+              "start_ms": 40676410,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4098135,
+              "start_ms": 44947140,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819e2YNwhUL.jpg",
+          "id": "alejandro-ruiz-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "dawn-ursula",
+            "eric-messner",
+            "james-konicek",
+            "kimberly-gilbert",
+            "matthew-bassett",
+            "matthew-schleigh",
+            "michael-john-casey",
+            "nick-depinto",
+            "rob-mcfadyen",
+            "terence-aselford",
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022-08-01",
+          "runtime_min": 817,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BZJSW1MJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B7CLVR9H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BKPCN15S",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BKPCN15S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B0BZJSW1MJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-gangster"
+        },
         "scott-sigler-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7446,6 +7574,31 @@
           "imported_at": "2026-08-01",
           "ref": "B08W5BWV3R",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BZJSW1MJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B7CLVR9H",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BKPCN15S",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0BKPCN15S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B0BZJSW1MJ",
+          "type": "libex-import"
         }
       ],
       "title": "The Gangster"
@@ -7785,177 +7938,6 @@
         }
       ],
       "title": "The Gangster"
-    },
-    "the-gangster-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "scott-sigler"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "comedy-humor",
-        "science-fiction",
-        "space-opera",
-        "sports"
-      ],
-      "id": "the-gangster-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BZJSW1MJ",
-              "region": "us"
-            },
-            {
-              "asin": "B0B7CLVR9H",
-              "region": "us"
-            },
-            {
-              "asin": "B0BKPCN15S",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 5205054,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 5014581,
-              "start_ms": 5205054,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4475042,
-              "start_ms": 10219635,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4029056,
-              "start_ms": 14694677,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4675477,
-              "start_ms": 18723733,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3965782,
-              "start_ms": 23399210,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4504880,
-              "start_ms": 27364992,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4620840,
-              "start_ms": 31869872,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4185698,
-              "start_ms": 36490712,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4270730,
-              "start_ms": 40676410,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4098135,
-              "start_ms": 44947140,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819e2YNwhUL.jpg",
-          "id": "alejandro-ruiz-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "dawn-ursula",
-            "eric-messner",
-            "james-konicek",
-            "kimberly-gilbert",
-            "matthew-bassett",
-            "matthew-schleigh",
-            "michael-john-casey",
-            "nick-depinto",
-            "rob-mcfadyen",
-            "terence-aselford",
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-08-01",
-          "runtime_min": 817,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BZJSW1MJ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B7CLVR9H",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BKPCN15S",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BKPCN15S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B0BZJSW1MJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gangster-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BZJSW1MJ",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B7CLVR9H",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BKPCN15S",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0BKPCN15S",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-06",
-          "ref": "B0BZJSW1MJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gangster (Dramatized Adaptation)"
     },
     "the-gangster-magic-steam-book-2": {
       "added_at": "2026-08-01",

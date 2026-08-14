@@ -7040,13 +7040,166 @@
         "stephen-r-lawhead"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "the-sword-and-the-flame",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-clemence-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H91BJC1",
+              "region": "us"
+            },
+            {
+              "asin": "164879422X",
+              "region": "us"
+            },
+            {
+              "asin": "1648794246",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 103000,
+              "start_ms": 27924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3408632,
+              "start_ms": 130924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3006542,
+              "start_ms": 3539556,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3809837,
+              "start_ms": 6546098,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3584603,
+              "start_ms": 10355935,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3948181,
+              "start_ms": 13940538,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 106000,
+              "start_ms": 17888719,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3091294,
+              "start_ms": 17994719,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3304571,
+              "start_ms": 21086013,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2900102,
+              "start_ms": 24390584,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3033454,
+              "start_ms": 27290686,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2603700,
+              "start_ms": 30324140,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 120300,
+              "start_ms": 32927840,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 258254,
+              "start_ms": 33048140,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911uzCvADLL.jpg",
+          "id": "andy-clemence-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-clemence",
+            "christopher-graybill",
+            "christopher-scheeren",
+            "david-coyne",
+            "dylan-lynch",
+            "elizabeth-jernigan",
+            "eric-messner",
+            "full-cast",
+            "james-konicek",
+            "james-lewis",
+            "joe-brack",
+            "johann-dettweiler",
+            "karen-novak",
+            "ken-jackson"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 554,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H91BJC1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164879422X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164879422X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794246",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794246",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H91BJC1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sword-and-the-flame"
+        },
         "tim-gregory-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7368,177 +7521,7 @@
           "imported_at": "2026-08-02",
           "ref": "B005EHN99S",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Sword and the Flame"
-    },
-    "the-sword-and-the-flame-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "stephen-r-lawhead"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "the-sword-and-the-flame-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-clemence-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H91BJC1",
-              "region": "us"
-            },
-            {
-              "asin": "164879422X",
-              "region": "us"
-            },
-            {
-              "asin": "1648794246",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 27924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 103000,
-              "start_ms": 27924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3408632,
-              "start_ms": 130924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3006542,
-              "start_ms": 3539556,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3809837,
-              "start_ms": 6546098,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3584603,
-              "start_ms": 10355935,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3948181,
-              "start_ms": 13940538,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 106000,
-              "start_ms": 17888719,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3091294,
-              "start_ms": 17994719,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3304571,
-              "start_ms": 21086013,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2900102,
-              "start_ms": 24390584,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3033454,
-              "start_ms": 27290686,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2603700,
-              "start_ms": 30324140,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 120300,
-              "start_ms": 32927840,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 258254,
-              "start_ms": 33048140,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911uzCvADLL.jpg",
-          "id": "andy-clemence-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-clemence",
-            "christopher-graybill",
-            "christopher-scheeren",
-            "david-coyne",
-            "dylan-lynch",
-            "elizabeth-jernigan",
-            "eric-messner",
-            "full-cast",
-            "james-konicek",
-            "james-lewis",
-            "joe-brack",
-            "johann-dettweiler",
-            "karen-novak",
-            "ken-jackson"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 554,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H91BJC1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164879422X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164879422X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794246",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794246",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H91BJC1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sword-and-the-flame-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H91BJC1",
@@ -7570,7 +7553,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Sword and the Flame [Dramatized Adaptation]"
+      "title": "The Sword and the Flame"
     },
     "the-sword-and-the-flame-stephen-lawhead": {
       "added_at": "2026-08-02",

@@ -5360,9 +5360,11 @@
       ],
       "genres": [
         "action-adventure",
+        "cyberpunk",
         "hard-science-fiction",
         "military-science-fiction",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "the-line-of-polity",
       "language": "en",
@@ -5657,33 +5659,7 @@
             }
           ],
           "work": "the-line-of-polity"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00LPMIT32",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Line of Polity"
-    },
-    "the-line-of-polity-an-agent-cormac-novel-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "neal-asher"
-      ],
-      "genres": [
-        "action-adventure",
-        "cyberpunk",
-        "hard-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "the-line-of-polity-an-agent-cormac-novel-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ric-jerrom-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5822,17 +5798,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-line-of-polity-an-agent-cormac-novel-2"
+          "work": "the-line-of-polity"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00LPMIT32",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNK2QCKY",
           "type": "libex-import"
         }
       ],
-      "title": "The Line of Polity: An Agent Cormac Novel 2"
+      "title": "The Line of Polity"
     },
     "the-line-tender": {
       "added_at": "2026-07-29",

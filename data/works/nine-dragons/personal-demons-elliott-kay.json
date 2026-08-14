@@ -2697,7 +2697,10 @@
         "ulysses-s-grant"
       ],
       "genres": [
-        "biography-memoir"
+        "biography-memoir",
+        "history",
+        "military-history",
+        "politics"
       ],
       "id": "personal-memoirs-of-ulysses-s-grant",
       "language": "en",
@@ -2726,6 +2729,34 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01HDWWB3G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "personal-memoirs-of-ulysses-s-grant"
+        },
+        "mark-bramhall-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "171354377X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71qMEpDGNPL.jpg",
+          "id": "mark-bramhall-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-bramhall"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2020-09-29",
+          "runtime_min": 1788,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "171354377X",
               "type": "libex-import"
             }
           ],
@@ -2765,62 +2796,14 @@
           "imported_at": "2026-07-29",
           "ref": "B01HDWWB3G",
           "type": "libex-import"
-        }
-      ],
-      "title": "Personal Memoirs of Ulysses S. Grant"
-    },
-    "personal-memoirs-of-ulysses-s-grant-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ulysses-s-grant"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "personal-memoirs-of-ulysses-s-grant-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mark-bramhall-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "171354377X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71qMEpDGNPL.jpg",
-          "id": "mark-bramhall-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mark-bramhall"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2020-09-29",
-          "runtime_min": 1788,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "171354377X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "personal-memoirs-of-ulysses-s-grant-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "171354377X",
           "type": "libex-import"
         }
       ],
-      "title": "Personal Memoirs of Ulysses S. Grant (AmazonClassics Edition)"
+      "title": "Personal Memoirs of Ulysses S. Grant"
     },
     "personal-money-management-how-to-save-money-how-to-stop-spending-money-impulsively-pay-off-debt": {
       "added_at": "2026-07-29",

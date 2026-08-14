@@ -1391,6 +1391,7 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "the-safety-net",
@@ -1646,35 +1647,7 @@
             }
           ],
           "work": "the-safety-net"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1094088684",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529035597",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Safety Net"
-    },
-    "the-safety-net-an-inspector-montalbano-novel-25": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrea-camilleri"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-safety-net-an-inspector-montalbano-novel-25",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "mark-meadows-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1803,17 +1776,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-safety-net-an-inspector-montalbano-novel-25"
+          "work": "the-safety-net"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1094088684",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529035597",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMW2L7GY",
           "type": "libex-import"
         }
       ],
-      "title": "The Safety Net: An Inspector Montalbano Novel 25"
+      "title": "The Safety Net"
     },
     "the-safety-net-david-eagleman": {
       "added_at": "2026-07-29",
@@ -10344,12 +10327,307 @@
             }
           ],
           "work": "the-saints-of-salvation"
+        },
+        "john-lee-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DMW1LJRK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14585,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1234555,
+              "start_ms": 14585,
+              "title": "Juloss Falling"
+            },
+            {
+              "length_ms": 2812006,
+              "start_ms": 1249140,
+              "title": "\"London: December 8, 2206\""
+            },
+            {
+              "length_ms": 1594653,
+              "start_ms": 4061146,
+              "title": "\"Delta Pavonis: December 9, 2206\""
+            },
+            {
+              "length_ms": 2532623,
+              "start_ms": 5655799,
+              "title": "Interstellar Space: Year 2 AA (After Arrival)"
+            },
+            {
+              "length_ms": 578501,
+              "start_ms": 8188422,
+              "title": "\"London: December 10, 2206\""
+            },
+            {
+              "length_ms": 666389,
+              "start_ms": 8766923,
+              "title": "\"Puppis Star System: December 10, 2206\""
+            },
+            {
+              "length_ms": 482928,
+              "start_ms": 9433312,
+              "title": "\"London: December 10, 2206\""
+            },
+            {
+              "length_ms": 1104224,
+              "start_ms": 9916240,
+              "title": "\"London: December 11, 2206\""
+            },
+            {
+              "length_ms": 750422,
+              "start_ms": 11020464,
+              "title": "Interstellar Space: Year 5 AA"
+            },
+            {
+              "length_ms": 2038688,
+              "start_ms": 11770886,
+              "title": "\"London: December 11, 2206\""
+            },
+            {
+              "length_ms": 445823,
+              "start_ms": 13809574,
+              "title": "\"Gox-Nikolaj Quint: Salvation of Life December 11, 2206\""
+            },
+            {
+              "length_ms": 1881768,
+              "start_ms": 14255397,
+              "title": "Finalstrike Mission: Flight Year 7"
+            },
+            {
+              "length_ms": 685569,
+              "start_ms": 16137165,
+              "title": "\"Kruse Station: S-Day, December 11, 2206\""
+            },
+            {
+              "length_ms": 1076987,
+              "start_ms": 16822734,
+              "title": "\"Knockdown Mission: S-Day, December 11, 2206\""
+            },
+            {
+              "length_ms": 1322678,
+              "start_ms": 17899721,
+              "title": "\"The Avenging Heretic: S-Day, December 11, 2206\""
+            },
+            {
+              "length_ms": 549755,
+              "start_ms": 19222399,
+              "title": "\"Nashua Habitat, Delta Pavonis: S-Day, December 11, 2206\""
+            },
+            {
+              "length_ms": 730058,
+              "start_ms": 19772154,
+              "title": "Finalstrike Mission: Flight Year 9"
+            },
+            {
+              "length_ms": 2029400,
+              "start_ms": 20502212,
+              "title": "The Avenging Heretic: Week Four"
+            },
+            {
+              "length_ms": 720584,
+              "start_ms": 22531612,
+              "title": "Finalstrike Mission: Flight Year 15"
+            },
+            {
+              "length_ms": 758433,
+              "start_ms": 23252196,
+              "title": "\"London: February 12, 2231\""
+            },
+            {
+              "length_ms": 1222298,
+              "start_ms": 24010629,
+              "title": "Finalstrike Mission: Flight Year 15"
+            },
+            {
+              "length_ms": 1958394,
+              "start_ms": 25232927,
+              "title": "\"London: February 12, 2231\""
+            },
+            {
+              "length_ms": 1153822,
+              "start_ms": 27191321,
+              "title": "The Avenging Heretic: Year Two"
+            },
+            {
+              "length_ms": 3900510,
+              "start_ms": 28345143,
+              "title": "Neutron Star: Morgan’s Arrival"
+            },
+            {
+              "length_ms": 3213432,
+              "start_ms": 32245653,
+              "title": "The Avenging Heretic: Year Four"
+            },
+            {
+              "length_ms": 389723,
+              "start_ms": 35459085,
+              "title": "Gox-Quint: Salvation of Life Gateway Arrival"
+            },
+            {
+              "length_ms": 2738189,
+              "start_ms": 35848808,
+              "title": "\"Morgan: Finalstrike Mission, Year Twelve\""
+            },
+            {
+              "length_ms": 1603918,
+              "start_ms": 38586997,
+              "title": "Saints: Olyix Enclave"
+            },
+            {
+              "length_ms": 1985329,
+              "start_ms": 40190915,
+              "title": "Morgan: Olyix Sensor Station"
+            },
+            {
+              "length_ms": 659493,
+              "start_ms": 42176244,
+              "title": "Saints: Olyix Enclave"
+            },
+            {
+              "length_ms": 373400,
+              "start_ms": 42835737,
+              "title": "Gox-Quint: Salvation of Life"
+            },
+            {
+              "length_ms": 795329,
+              "start_ms": 43209137,
+              "title": "Morgan: Olyix Sensor Station"
+            },
+            {
+              "length_ms": 813023,
+              "start_ms": 44004466,
+              "title": "Saints: Olyix Enclave"
+            },
+            {
+              "length_ms": 7511283,
+              "start_ms": 44817489,
+              "title": "Finalstrike"
+            },
+            {
+              "length_ms": 762984,
+              "start_ms": 52328772,
+              "title": "Saints: Salvation of Life"
+            },
+            {
+              "length_ms": 995462,
+              "start_ms": 53091756,
+              "title": "Gox-Quint: Salvation of Life"
+            },
+            {
+              "length_ms": 1124913,
+              "start_ms": 54087218,
+              "title": "Saints: Salvation of Life"
+            },
+            {
+              "length_ms": 522495,
+              "start_ms": 55212131,
+              "title": "Morgan"
+            },
+            {
+              "length_ms": 532921,
+              "start_ms": 55734626,
+              "title": "Gox-Quint: Salvation of Life"
+            },
+            {
+              "length_ms": 648974,
+              "start_ms": 56267547,
+              "title": "Saints: Salvation of Life"
+            },
+            {
+              "length_ms": 637016,
+              "start_ms": 56916521,
+              "title": "Dellian’s Squad: Enclave"
+            },
+            {
+              "length_ms": 776730,
+              "start_ms": 57553537,
+              "title": "Saints: Salvation of Life"
+            },
+            {
+              "length_ms": 431124,
+              "start_ms": 58330267,
+              "title": "Yirella: Morgan"
+            },
+            {
+              "length_ms": 395575,
+              "start_ms": 58761391,
+              "title": "Saints: Morgan"
+            },
+            {
+              "length_ms": 929634,
+              "start_ms": 59156966,
+              "title": "Yirella: Morgan"
+            },
+            {
+              "length_ms": 547828,
+              "start_ms": 60086600,
+              "title": "Return: Flight Morgan"
+            },
+            {
+              "length_ms": 303717,
+              "start_ms": 60634428,
+              "title": "London: Far Future"
+            },
+            {
+              "length_ms": 620204,
+              "start_ms": 60938145,
+              "title": "New York: Far Future"
+            },
+            {
+              "length_ms": 976050,
+              "start_ms": 61558349,
+              "title": "Yirella2: London"
+            },
+            {
+              "length_ms": 300731,
+              "start_ms": 62534399,
+              "title": "Yirella1: Deep Space"
+            },
+            {
+              "length_ms": 33009,
+              "start_ms": 62835130,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iWzSfgREL.jpg",
+          "id": "john-lee-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-lee"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-11-14",
+          "runtime_min": 1047,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DMW1LJRK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-saints-of-salvation"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "1529029074",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DMW1LJRK",
           "type": "libex-import"
         }
       ],

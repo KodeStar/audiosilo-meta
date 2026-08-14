@@ -7040,8 +7040,11 @@
         "jim-butcher"
       ],
       "genres": [
+        "arts-entertainment",
         "fantasy",
+        "mystery",
         "paranormal",
+        "police-procedural",
         "thriller-suspense",
         "urban-fantasy"
       ],
@@ -7049,6 +7052,87 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "brian-kim-mccormick-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FBTNG9B7",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3715076,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3513597,
+              "start_ms": 3715076,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3551166,
+              "start_ms": 7228673,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3608961,
+              "start_ms": 10779839,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3563125,
+              "start_ms": 14388800,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3443356,
+              "start_ms": 17951925,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3582583,
+              "start_ms": 21395281,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4061587,
+              "start_ms": 24977864,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LnSpHppiL.jpg",
+          "id": "brian-kim-mccormick-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brian-kim-mccormick",
+            "christopher-mclinden",
+            "christopher-walker",
+            "drew-kopas",
+            "emlyn-mcfarland",
+            "full-cast",
+            "gregory-linington",
+            "john-kielty",
+            "matthew-bassett",
+            "nicole-perez",
+            "nora-sofyan",
+            "stephanie-nemeth-parker"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-08-27",
+          "runtime_min": 483,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FBTNG9B7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "storm-front"
+        },
         "james-marsters-2008": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -7238,6 +7322,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V8KYMI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FBTNG9B7",
           "type": "libex-import"
         }
       ],
@@ -7511,113 +7600,6 @@
         }
       ],
       "title": "Storm Front"
-    },
-    "storm-front-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jim-butcher"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "mystery",
-        "police-procedural",
-        "urban-fantasy"
-      ],
-      "id": "storm-front-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brian-kim-mccormick-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FBTNG9B7",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3715076,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3513597,
-              "start_ms": 3715076,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3551166,
-              "start_ms": 7228673,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3608961,
-              "start_ms": 10779839,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3563125,
-              "start_ms": 14388800,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3443356,
-              "start_ms": 17951925,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3582583,
-              "start_ms": 21395281,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4061587,
-              "start_ms": 24977864,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91LnSpHppiL.jpg",
-          "id": "brian-kim-mccormick-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brian-kim-mccormick",
-            "christopher-mclinden",
-            "christopher-walker",
-            "drew-kopas",
-            "emlyn-mcfarland",
-            "full-cast",
-            "gregory-linington",
-            "john-kielty",
-            "matthew-bassett",
-            "nicole-perez",
-            "nora-sofyan",
-            "stephanie-nemeth-parker"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-08-27",
-          "runtime_min": 483,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FBTNG9B7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "storm-front-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FBTNG9B7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Storm Front (Dramatized Adaptation)"
     },
     "storm-front-john-sandford": {
       "added_at": "2026-07-29",

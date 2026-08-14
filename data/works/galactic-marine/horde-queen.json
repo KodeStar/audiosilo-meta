@@ -4556,31 +4556,7 @@
             }
           ],
           "work": "horizon-storms"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V8MXRW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Horizon Storms"
-    },
-    "horizon-storms-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kevin-j-anderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "horizon-storms-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5229,17 +5205,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "horizon-storms-international-edition"
+          "work": "horizon-storms"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8MXRW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1705026389",
           "type": "libex-import"
         }
       ],
-      "title": "Horizon Storms (International Edition)"
+      "title": "Horizon Storms"
     },
     "horizon-the-frozen-planet-trilogy-book-1": {
       "added_at": "2026-08-02",
@@ -16157,56 +16138,6 @@
         }
       ],
       "title": "Horror and Mystery Anthology"
-    },
-    "horror-at-red-hook-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "horror"
-      ],
-      "id": "horror-at-red-hook-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "h-p-lovecraft-historical-society-2018": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B07BZYGYJG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1UeweS-0bL.jpg",
-          "id": "h-p-lovecraft-historical-society-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "h-p-lovecraft-historical-society"
-          ],
-          "publisher": "H.P. Lovecraft Historical Society",
-          "release_date": "2018-04-23",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B07BZYGYJG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "horror-at-red-hook-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B07BZYGYJG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Horror at Red Hook (Dramatized)"
     },
     "horror-date": {
       "added_at": "2026-07-29",

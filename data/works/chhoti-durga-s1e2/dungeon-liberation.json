@@ -3529,21 +3529,150 @@
       ],
       "title": "Dungeon Lord: Otherworldly Powers"
     },
-    "dungeon-madness": {
-      "added_at": "2026-08-02",
+    "dungeon-madness-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "dakota-krout"
       ],
       "genres": [
+        "cyberpunk",
         "epic-fantasy",
         "fantasy",
         "science",
         "science-fiction"
       ],
-      "id": "dungeon-madness",
+      "id": "dungeon-madness-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-forstrom-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CJYJY98S",
+              "region": "ca"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91znScgYExL.jpg",
+          "id": "amanda-forstrom-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-forstrom",
+            "danny-gavigan",
+            "katie-boothe",
+            "matthew-pauli",
+            "michael-john-casey",
+            "nora-achrati",
+            "patrick-boylan",
+            "robb-moreira",
+            "ryan-carlo-dalusung",
+            "ryan-haugen",
+            "tia-shearer"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-09-28",
+          "runtime_min": 501,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CJYJY98S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dungeon-madness-dramatized-adaptation"
+        },
+        "full-cast-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CJYM1C95",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 52924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4028911,
+              "start_ms": 52924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3987284,
+              "start_ms": 4081835,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3538070,
+              "start_ms": 8069119,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4439724,
+              "start_ms": 11607189,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3841648,
+              "start_ms": 16046913,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3883607,
+              "start_ms": 19888561,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3649503,
+              "start_ms": 23772168,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2269000,
+              "start_ms": 27421671,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 181000,
+              "start_ms": 29690671,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 241470,
+              "start_ms": 29871671,
+              "title": "Bonus Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91znScgYExL.jpg",
+          "id": "full-cast-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023",
+          "runtime_min": 502,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CJYM1C95",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CJYM1C95",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dungeon-madness-dramatized-adaptation"
+        },
         "vikas-adam-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3741,159 +3870,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "dungeon-madness"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0764H7Y83",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dungeon Madness"
-    },
-    "dungeon-madness-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "dakota-krout"
-      ],
-      "genres": [
-        "cyberpunk",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "dungeon-madness-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-forstrom-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CJYJY98S",
-              "region": "ca"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91znScgYExL.jpg",
-          "id": "amanda-forstrom-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-forstrom",
-            "danny-gavigan",
-            "katie-boothe",
-            "matthew-pauli",
-            "michael-john-casey",
-            "nora-achrati",
-            "patrick-boylan",
-            "robb-moreira",
-            "ryan-carlo-dalusung",
-            "ryan-haugen",
-            "tia-shearer"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-09-28",
-          "runtime_min": 501,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CJYJY98S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dungeon-madness-dramatized-adaptation"
-        },
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CJYM1C95",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 52924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4028911,
-              "start_ms": 52924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3987284,
-              "start_ms": 4081835,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3538070,
-              "start_ms": 8069119,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4439724,
-              "start_ms": 11607189,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3841648,
-              "start_ms": 16046913,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3883607,
-              "start_ms": 19888561,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3649503,
-              "start_ms": 23772168,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2269000,
-              "start_ms": 27421671,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 181000,
-              "start_ms": 29690671,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 241470,
-              "start_ms": 29871671,
-              "title": "Bonus Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91znScgYExL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 502,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CJYM1C95",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CJYM1C95",
-              "type": "libex-import"
-            }
-          ],
           "work": "dungeon-madness-dramatized-adaptation"
         }
       },
@@ -3906,6 +3882,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CJYM1C95",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0764H7Y83",
           "type": "libex-import"
         }
       ],

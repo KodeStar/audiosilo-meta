@@ -2263,12 +2263,44 @@
         "cheryl-strayed"
       ],
       "genres": [
-        "parenting-relationships"
+        "biography-memoir",
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "self-help"
       ],
       "id": "tiny-beautiful-things",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cheryl-strayed-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B008HS21U4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rGnoYJRxL.jpg",
+          "id": "cheryl-strayed-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cheryl-strayed"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2012-07-10",
+          "runtime_min": 641,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B008HS21U4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tiny-beautiful-things"
+        },
         "cheryl-strayed-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2304,63 +2336,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00CLB1K2S",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tiny Beautiful Things"
-    },
-    "tiny-beautiful-things-10th-anniversary-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "cheryl-strayed"
-      ],
-      "genres": [
-        "biography-memoir",
-        "health-wellness",
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "tiny-beautiful-things-10th-anniversary-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cheryl-strayed-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B008HS21U4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rGnoYJRxL.jpg",
-          "id": "cheryl-strayed-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cheryl-strayed"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2012-07-10",
-          "runtime_min": 641,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B008HS21U4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tiny-beautiful-things-10th-anniversary-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B008HS21U4",
           "type": "libex-import"
         }
       ],
-      "title": "Tiny Beautiful Things (10th Anniversary Edition)"
+      "title": "Tiny Beautiful Things"
     },
     "tiny-blunders-big-disasters": {
       "added_at": "2026-07-29",

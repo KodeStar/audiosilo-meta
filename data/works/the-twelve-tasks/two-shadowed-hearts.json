@@ -4933,6 +4933,7 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction"
       ],
       "id": "two-to-conquer",
@@ -5073,30 +5074,7 @@
             }
           ],
           "work": "two-to-conquer"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B079MF1K6W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Two to Conquer"
-    },
-    "two-to-conquer-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "two-to-conquer-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-bellmore-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5255,17 +5233,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "two-to-conquer-international-edition"
+          "work": "two-to-conquer"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B079MF1K6W",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYFHLDX",
           "type": "libex-import"
         }
       ],
-      "title": "Two to Conquer [International Edition]"
+      "title": "Two to Conquer"
     },
     "two-to-love": {
       "added_at": "2026-07-29",

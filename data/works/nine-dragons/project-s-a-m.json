@@ -10018,21 +10018,97 @@
       ],
       "title": "Prometheus"
     },
-    "prometheus-unites": {
-      "added_at": "2026-08-02",
+    "prometheus-unites-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-anderle",
         "david-beers"
       ],
       "genres": [
         "military-science-fiction",
+        "science",
         "science-fiction",
         "space-opera"
       ],
-      "id": "prometheus-unites",
+      "id": "prometheus-unites-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09M7DKCMF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4238483,
+              "start_ms": 14924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4565600,
+              "start_ms": 4253407,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3920550,
+              "start_ms": 8819007,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3555555,
+              "start_ms": 12739557,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3521000,
+              "start_ms": 16295112,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 125420,
+              "start_ms": 19816112,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 245847,
+              "start_ms": 19941532,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91jTin2KwfL.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2021",
+          "runtime_min": 336,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09M7DKCMF",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09M7DKCMF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "prometheus-unites-dramatized-adaptation"
+        },
         "john-skelley-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10171,106 +10247,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "prometheus-unites"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1705019897",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Prometheus Unites"
-    },
-    "prometheus-unites-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "david-beers"
-      ],
-      "genres": [
-        "science",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "prometheus-unites-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09M7DKCMF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4238483,
-              "start_ms": 14924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4565600,
-              "start_ms": 4253407,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3920550,
-              "start_ms": 8819007,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3555555,
-              "start_ms": 12739557,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3521000,
-              "start_ms": 16295112,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 125420,
-              "start_ms": 19816112,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 245847,
-              "start_ms": 19941532,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91jTin2KwfL.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
-          "runtime_min": 336,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09M7DKCMF",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09M7DKCMF",
-              "type": "libex-import"
-            }
-          ],
           "work": "prometheus-unites-dramatized-adaptation"
         }
       },
@@ -10283,6 +10259,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09M7DKCMF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705019897",
           "type": "libex-import"
         }
       ],

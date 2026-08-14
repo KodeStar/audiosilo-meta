@@ -1,20 +1,92 @@
 {
   "entries": {
-    "fall-of-night-a-templar-chronicles-novel": {
-      "added_at": "2026-08-01",
+    "fall-of-night-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "joseph-nassise"
       ],
       "genres": [
+        "epic-fantasy",
         "fantasy",
         "paranormal",
+        "thriller-suspense",
         "urban-fantasy",
         "war-military-fiction"
       ],
-      "id": "fall-of-night-a-templar-chronicles-novel",
+      "id": "fall-of-night-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648817742",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3712641,
+              "start_ms": 31924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3667731,
+              "start_ms": 3744565,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3488751,
+              "start_ms": 7412296,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3637104,
+              "start_ms": 10901047,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3223000,
+              "start_ms": 14538151,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 198157,
+              "start_ms": 17761151,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mJR9oQE0L.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2021",
+          "runtime_min": 299,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648817742",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648817742",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fall-of-night-dramatized-adaptation"
+        },
         "jarret-lemaster-2020": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -238,102 +310,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "fall-of-night-a-templar-chronicles-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08CDZR6Z5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fall of Night: A Templar Chronicles Novel"
-    },
-    "fall-of-night-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "joseph-nassise"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "fall-of-night-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648817742",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 31924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3712641,
-              "start_ms": 31924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3667731,
-              "start_ms": 3744565,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3488751,
-              "start_ms": 7412296,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3637104,
-              "start_ms": 10901047,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3223000,
-              "start_ms": 14538151,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 198157,
-              "start_ms": 17761151,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mJR9oQE0L.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021",
-          "runtime_min": 299,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648817742",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648817742",
-              "type": "libex-import"
-            }
-          ],
           "work": "fall-of-night-dramatized-adaptation"
         }
       },
@@ -346,6 +322,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648817742",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08CDZR6Z5",
           "type": "libex-import"
         }
       ],

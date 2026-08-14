@@ -4046,54 +4046,7 @@
             {
               "asin": "B08634YDCJ",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-fwECwzdL.jpg",
-          "id": "enrico-mario-santi-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "enrico-mario-santi"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-07-11",
-          "runtime_min": 1562,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08634YDCJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-habana-para-un-infante-difunto"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08634YDCJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Habana Para Un Infante Difunto"
-    },
-    "la-habana-para-un-infante-difunto-havana-for-a-dead-prince": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "guillermo-cabrera-infante"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir"
-      ],
-      "id": "la-habana-para-un-infante-difunto-havana-for-a-dead-prince",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "enrico-mario-santi-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B073HKXP4J",
               "region": "us"
@@ -4112,21 +4065,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08634YDCJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B073HKXP4J",
               "type": "libex-import"
             }
           ],
-          "work": "la-habana-para-un-infante-difunto-havana-for-a-dead-prince"
+          "work": "la-habana-para-un-infante-difunto"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08634YDCJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B073HKXP4J",
           "type": "libex-import"
         }
       ],
-      "title": "La Habana Para Un Infante Difunto [Havana for a Dead Prince]"
+      "title": "La Habana Para Un Infante Difunto"
     },
     "la-habitacion-de-las-mariposas-the-butterfly-room": {
       "added_at": "2026-07-29",
@@ -7372,6 +7335,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "juan-magraner-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01FYE862U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qvlW1bDKL.jpg",
+          "id": "juan-magraner-2016",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "juan-magraner"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-05-23",
+          "runtime_min": 925,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01FYE862U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-hermandad-narracion-en-castellano-the-brotherhood"
+        },
         "pep-papell-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7406,59 +7397,14 @@
           "imported_at": "2026-07-29",
           "ref": "B07H7SYM1N",
           "type": "libex-import"
-        }
-      ],
-      "title": "La Hermandad (Narración en Castellano) [The Brotherhood]"
-    },
-    "la-hermandad-the-brotherhood": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marcos-chicot"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "la-hermandad-the-brotherhood",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-magraner-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01FYE862U",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qvlW1bDKL.jpg",
-          "id": "juan-magraner-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-magraner"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2016-05-23",
-          "runtime_min": 925,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01FYE862U",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-hermandad-the-brotherhood"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01FYE862U",
           "type": "libex-import"
         }
       ],
-      "title": "La Hermandad [The Brotherhood]"
+      "title": "La Hermandad (Narración en Castellano) [The Brotherhood]"
     },
     "la-hija-de-los-huesos": {
       "added_at": "2026-07-29",
@@ -8018,6 +7964,10 @@
             {
               "asin": "B09LJ32LW6",
               "region": "es"
+            },
+            {
+              "asin": "B09LJN6HBF",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/817DhUNKCqL.jpg",
@@ -8034,6 +7984,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B09LJ32LW6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09LJN6HBF",
               "type": "libex-import"
             }
           ],
@@ -8073,61 +8028,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09FXVHYCT",
           "type": "libex-import"
-        }
-      ],
-      "title": "La hija pródiga"
-    },
-    "la-hija-prodiga-the-prodigal-daughter": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jeffrey-archer"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "la-hija-prodiga-the-prodigal-daughter",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-cubillo-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09LJN6HBF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/817DhUNKCqL.jpg",
-          "id": "daniel-cubillo-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-cubillo"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-11-11",
-          "runtime_min": 1146,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09LJN6HBF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-hija-prodiga-the-prodigal-daughter"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09LJN6HBF",
           "type": "libex-import"
         }
       ],
-      "title": "La hija pródiga [The Prodigal Daughter]"
+      "title": "La hija pródiga"
     },
     "la-hija-unica": {
       "added_at": "2026-07-29",
@@ -8813,53 +8721,7 @@
             {
               "asin": "B08XB15XRY",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91dUiv1YZuL.jpg",
-          "id": "luis-trumper-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-trumper"
-          ],
-          "publisher": "Captivating History",
-          "release_date": "2021-02-24",
-          "runtime_min": 203,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08XB15XRY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-historia-de-mexico"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08XB15XRY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La historia de México"
-    },
-    "la-historia-de-mexico-the-history-of-mexico": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "captivating-history"
-      ],
-      "genres": [
-        "history"
-      ],
-      "id": "la-historia-de-mexico-the-history-of-mexico",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-trumper-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08XB4Q882",
               "region": "us"
@@ -8878,21 +8740,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08XB15XRY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08XB4Q882",
               "type": "libex-import"
             }
           ],
-          "work": "la-historia-de-mexico-the-history-of-mexico"
+          "work": "la-historia-de-mexico"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08XB15XRY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08XB4Q882",
           "type": "libex-import"
         }
       ],
-      "title": "La historia de México [The History of Mexico]"
+      "title": "La historia de México"
     },
     "la-historia-de-mi-vida-story-lake-1": {
       "added_at": "2026-07-29",

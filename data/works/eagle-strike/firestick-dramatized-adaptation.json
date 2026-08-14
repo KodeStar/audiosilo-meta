@@ -1927,7 +1927,14 @@
         "shannon-mayer"
       ],
       "genres": [
-        "fantasy"
+        "action-adventure",
+        "classics",
+        "epic-fantasy",
+        "fantasy",
+        "paranormal",
+        "romance",
+        "sword-sorcery",
+        "urban-fantasy"
       ],
       "id": "firestorm-dramatized",
       "language": "en",
@@ -1992,6 +1999,176 @@
             }
           ],
           "work": "firestorm-dramatized"
+        },
+        "lauren-fortgang-2017": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B071GPHNWK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17647,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1308212,
+              "start_ms": 17647,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1025115,
+              "start_ms": 1325859,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1237949,
+              "start_ms": 2350974,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1478740,
+              "start_ms": 3588923,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1074945,
+              "start_ms": 5067663,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1054883,
+              "start_ms": 6142608,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1012808,
+              "start_ms": 7197491,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1121802,
+              "start_ms": 8210299,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 862621,
+              "start_ms": 9332101,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1429560,
+              "start_ms": 10194722,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1142840,
+              "start_ms": 11624282,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1426495,
+              "start_ms": 12767122,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1174930,
+              "start_ms": 14193617,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 893643,
+              "start_ms": 15368547,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 830346,
+              "start_ms": 16262190,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 954433,
+              "start_ms": 17092536,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1473538,
+              "start_ms": 18046969,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1124821,
+              "start_ms": 19520507,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 803364,
+              "start_ms": 20645328,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1028040,
+              "start_ms": 21448692,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1059805,
+              "start_ms": 22476732,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 973984,
+              "start_ms": 23536537,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 627217,
+              "start_ms": 24510521,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 782884,
+              "start_ms": 25137738,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1270271,
+              "start_ms": 25920622,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 576319,
+              "start_ms": 27190893,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 37477,
+              "start_ms": 27767212,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rtZg7wfsL.jpg",
+          "id": "lauren-fortgang-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lauren-fortgang"
+          ],
+          "publisher": "Hijinks Ink Pubishing",
+          "release_date": "2017-06-16",
+          "runtime_min": 463,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B071GPHNWK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "firestorm-dramatized"
         }
       },
       "sources": [
@@ -2003,6 +2180,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648818757",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B071GPHNWK",
           "type": "libex-import"
         }
       ],
@@ -4076,205 +4258,6 @@
         }
       ],
       "title": "Firestorm: The Awakened World, Book 3"
-    },
-    "firestorm-the-elemental-series-book-3": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "shannon-mayer"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "sword-sorcery",
-        "urban-fantasy"
-      ],
-      "id": "firestorm-the-elemental-series-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lauren-fortgang-2017": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B071GPHNWK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17647,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1308212,
-              "start_ms": 17647,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1025115,
-              "start_ms": 1325859,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1237949,
-              "start_ms": 2350974,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1478740,
-              "start_ms": 3588923,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1074945,
-              "start_ms": 5067663,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1054883,
-              "start_ms": 6142608,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1012808,
-              "start_ms": 7197491,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1121802,
-              "start_ms": 8210299,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 862621,
-              "start_ms": 9332101,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1429560,
-              "start_ms": 10194722,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1142840,
-              "start_ms": 11624282,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1426495,
-              "start_ms": 12767122,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1174930,
-              "start_ms": 14193617,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 893643,
-              "start_ms": 15368547,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 830346,
-              "start_ms": 16262190,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 954433,
-              "start_ms": 17092536,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1473538,
-              "start_ms": 18046969,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1124821,
-              "start_ms": 19520507,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 803364,
-              "start_ms": 20645328,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1028040,
-              "start_ms": 21448692,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1059805,
-              "start_ms": 22476732,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 973984,
-              "start_ms": 23536537,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 627217,
-              "start_ms": 24510521,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 782884,
-              "start_ms": 25137738,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1270271,
-              "start_ms": 25920622,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 576319,
-              "start_ms": 27190893,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 37477,
-              "start_ms": 27767212,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91rtZg7wfsL.jpg",
-          "id": "lauren-fortgang-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lauren-fortgang"
-          ],
-          "publisher": "Hijinks Ink Pubishing",
-          "release_date": "2017-06-16",
-          "runtime_min": 463,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B071GPHNWK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "firestorm-the-elemental-series-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B071GPHNWK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Firestorm: The Elemental Series, Book 3"
     },
     "firestorm-the-identity-series-book-2": {
       "added_at": "2026-08-01",

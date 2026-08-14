@@ -2523,57 +2523,6 @@
       ],
       "title": "Leather & Lark"
     },
-    "leather-lark-brynne-weaver": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "brynne-weaver"
-      ],
-      "genres": [
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "leather-lark-brynne-weaver",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "helena-ovalle-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0GXYQL5HC",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/910opwySf6L.jpg",
-          "id": "helena-ovalle-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "helena-ovalle"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2026-05-18",
-          "runtime_min": 741,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GXYQL5HC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "leather-lark-brynne-weaver"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0GXYQL5HC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Leather & Lark"
-    },
     "leather-lark-spanish-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -2594,6 +2543,10 @@
             {
               "asin": "B0GXYQN256",
               "region": "us"
+            },
+            {
+              "asin": "B0GXYQL5HC",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/910opwySf6L.jpg",
@@ -2611,6 +2564,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0GXYQN256",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GXYQL5HC",
+              "type": "libex-import"
             }
           ],
           "work": "leather-lark-spanish-edition"
@@ -2620,6 +2578,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0GXYQN256",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0GXYQL5HC",
           "type": "libex-import"
         }
       ],
@@ -14765,61 +14728,7 @@
             {
               "asin": "B0BVWKV4WP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bDVjHIBkL.jpg",
-          "id": "susana-ballesteros-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "susana-ballesteros"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-02-16",
-          "runtime_min": 847,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BVWKV4WP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lecciones-de-quimica"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BVWKV4WP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lecciones de química"
-    },
-    "lecciones-de-quimica-chemistry-lessons": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "bonnie-garmus",
-        "victoria-alonso-blanco"
-      ],
-      "credits": [
-        {
-          "person": "victoria-alonso-blanco",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "comedy-humor",
-        "womens-fiction"
-      ],
-      "id": "lecciones-de-quimica-chemistry-lessons",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "susana-ballesteros-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BVWK69CN",
               "region": "us"
@@ -15085,21 +14994,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BVWKV4WP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BVWK69CN",
               "type": "libex-import"
             }
           ],
-          "work": "lecciones-de-quimica-chemistry-lessons"
+          "work": "lecciones-de-quimica"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BVWKV4WP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BVWK69CN",
           "type": "libex-import"
         }
       ],
-      "title": "Lecciones de química [Chemistry Lessons]"
+      "title": "Lecciones de química"
     },
     "lecciones-sobre-la-vida-del-monje-que-vendio-su-ferrari-who-will-cry-when-you-die": {
       "added_at": "2026-07-29",

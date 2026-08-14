@@ -6604,8 +6604,10 @@
       ],
       "genres": [
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
-        "science-fiction"
+        "science-fiction",
+        "sword-sorcery"
       ],
       "id": "setting-boundaries",
       "language": "en",
@@ -6638,32 +6640,7 @@
             }
           ],
           "work": "setting-boundaries"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00L5M0ERG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Setting Boundaries"
-    },
-    "setting-boundaries-a-novella": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "valerie-douglas"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "sword-sorcery"
-      ],
-      "id": "setting-boundaries-a-novella",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "zak-price-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6727,17 +6704,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "setting-boundaries-a-novella"
+          "work": "setting-boundaries"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00L5M0ERG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07P8BFMVZ",
           "type": "libex-import"
         }
       ],
-      "title": "Setting Boundaries: A Novella"
+      "title": "Setting Boundaries"
     },
     "setting-boundaries-to-find-peace-with-narcissists-codependents": {
       "added_at": "2026-07-29",

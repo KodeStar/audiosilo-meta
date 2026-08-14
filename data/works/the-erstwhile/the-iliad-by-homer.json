@@ -6664,7 +6664,14 @@
     "the-imitation-of-christ": {
       "added_at": "2026-07-29",
       "authors": [
-        "thomas-a-kempis"
+        "thomas-a-kempis",
+        "dr-bill-creasy"
+      ],
+      "credits": [
+        {
+          "person": "dr-bill-creasy",
+          "role": "translator"
+        }
       ],
       "genres": [
         "religion-spirituality"
@@ -6700,36 +6707,7 @@
             }
           ],
           "work": "the-imitation-of-christ"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01M1LB5LE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Imitation of Christ"
-    },
-    "the-imitation-of-christ-logos-educational-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dr-bill-creasy",
-        "thomas-a-kempis"
-      ],
-      "credits": [
-        {
-          "person": "dr-bill-creasy",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "the-imitation-of-christ-logos-educational-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "don-ranson-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7328,30 +7306,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-imitation-of-christ-logos-educational-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003U868LE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Imitation of Christ (Logos Educational Edition)"
-    },
-    "the-imitation-of-christ-tantor-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-a-kempis"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "the-imitation-of-christ-tantor-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "the-imitation-of-christ"
+        },
         "sean-runnette-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7378,17 +7334,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-imitation-of-christ-tantor-edition"
+          "work": "the-imitation-of-christ"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01M1LB5LE",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003U868LE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B004TTRF2O",
           "type": "libex-import"
         }
       ],
-      "title": "The Imitation of Christ (Tantor Edition)"
+      "title": "The Imitation of Christ"
     },
     "the-immaculate-void": {
       "added_at": "2026-07-29",

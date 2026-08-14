@@ -779,6 +779,9 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
         "science-fiction"
       ],
       "id": "the-shattered-chain",
@@ -899,32 +902,7 @@
             }
           ],
           "work": "the-shattered-chain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B078RQL95S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Shattered Chain"
-    },
-    "the-shattered-chain-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "the-shattered-chain-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alyssa-bresnahan-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1063,17 +1041,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-shattered-chain-international-edition"
+          "work": "the-shattered-chain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078RQL95S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYJ63ZR",
           "type": "libex-import"
         }
       ],
-      "title": "The Shattered Chain [International Edition]"
+      "title": "The Shattered Chain"
     },
     "the-shattered-city": {
       "added_at": "2026-08-02",

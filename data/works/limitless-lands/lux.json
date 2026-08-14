@@ -12496,6 +12496,82 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bradley-foster-smith-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FY7NS8HQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 37970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3666424,
+              "start_ms": 37970,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 3411638,
+              "start_ms": 3704394,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 3476932,
+              "start_ms": 7116032,
+              "title": "Part Three"
+            },
+            {
+              "length_ms": 3732491,
+              "start_ms": 10592964,
+              "title": "Part Four"
+            },
+            {
+              "length_ms": 4095000,
+              "start_ms": 14325455,
+              "title": "Part Five"
+            },
+            {
+              "length_ms": 72516,
+              "start_ms": 18420455,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91AYCq05PxL.jpg",
+          "id": "bradley-foster-smith-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bradley-foster-smith",
+            "chris-davenport",
+            "full-cast",
+            "jonathan-lee-taylor",
+            "keith-richards",
+            "megan-poppy",
+            "nanette-savard",
+            "nora-achrati",
+            "peter-stanley",
+            "ryan-dalusung",
+            "ryan-haugen",
+            "tracy-lynn-olivera"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-12-22",
+          "runtime_min": 308,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FY7NS8HQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lynchpin"
+        },
         "jake-bordeaux-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12642,109 +12718,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0GRWP3T2V",
           "type": "libex-import"
-        }
-      ],
-      "title": "Lynchpin"
-    },
-    "lynchpin-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "shannon-mayer"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "lynchpin-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradley-foster-smith-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FY7NS8HQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3666424,
-              "start_ms": 37970,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 3411638,
-              "start_ms": 3704394,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 3476932,
-              "start_ms": 7116032,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 3732491,
-              "start_ms": 10592964,
-              "title": "Part Four"
-            },
-            {
-              "length_ms": 4095000,
-              "start_ms": 14325455,
-              "title": "Part Five"
-            },
-            {
-              "length_ms": 72516,
-              "start_ms": 18420455,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91AYCq05PxL.jpg",
-          "id": "bradley-foster-smith-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradley-foster-smith",
-            "chris-davenport",
-            "full-cast",
-            "jonathan-lee-taylor",
-            "keith-richards",
-            "megan-poppy",
-            "nanette-savard",
-            "nora-achrati",
-            "peter-stanley",
-            "ryan-dalusung",
-            "ryan-haugen",
-            "tracy-lynn-olivera"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-12-22",
-          "runtime_min": 308,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FY7NS8HQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lynchpin-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FY7NS8HQ",
           "type": "libex-import"
         }
       ],
-      "title": "Lynchpin (Dramatized Adaptation)"
+      "title": "Lynchpin"
     },
     "lyndon": {
       "added_at": "2026-07-29",
@@ -15767,6 +15748,8 @@
         "philip-pullman"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "fantasy",
         "paranormal",
         "urban-fantasy"
@@ -15913,27 +15896,40 @@
             {
               "asin": "B0CHMV1QQR",
               "region": "uk"
+            },
+            {
+              "asin": "B0CNL3Z7X4",
+              "region": "us"
+            },
+            {
+              "asin": "B0CNL4CYFG",
+              "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 22778,
+              "length_ms": 18645,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 192400,
-              "start_ms": 22778,
-              "title": "Introduction"
+              "length_ms": 52268,
+              "start_ms": 18645,
+              "title": "Epigraph"
             },
             {
-              "length_ms": 2614265,
-              "start_ms": 215178,
+              "length_ms": 142361,
+              "start_ms": 70913,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 2614288,
+              "start_ms": 213274,
               "title": "Lyra and the Birds"
             },
             {
-              "length_ms": 42376,
-              "start_ms": 2829443,
+              "length_ms": 35548,
+              "start_ms": 2827562,
               "title": "End Credits"
             }
           ],
@@ -15956,6 +15952,16 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0CHMV1QQR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CNL3Z7X4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CNL4CYFG",
               "type": "libex-import"
             }
           ],
@@ -16091,6 +16097,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00C27U2NY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CNL3Z7X4",
           "type": "libex-import"
         }
       ],

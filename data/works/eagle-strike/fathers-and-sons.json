@@ -9023,60 +9023,11 @@
         "johann-wolfgang-von-goethe"
       ],
       "genres": [
-        "classics"
-      ],
-      "id": "fausto",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "various-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8726161494",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cRWIFvS3L.jpg",
-          "id": "various-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "various"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-27",
-          "runtime_min": 98,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8726161494",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fausto"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8726161494",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fausto"
-    },
-    "fausto-faust": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "johann-wolfgang-von-goethe"
-      ],
-      "genres": [
+        "classics",
         "drama-plays",
         "literary-fiction"
       ],
-      "id": "fausto-faust",
+      "id": "fausto",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -9112,17 +9063,50 @@
               "type": "libex-import"
             }
           ],
-          "work": "fausto-faust"
+          "work": "fausto"
+        },
+        "various-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8726161494",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cRWIFvS3L.jpg",
+          "id": "various-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "various"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-03-27",
+          "runtime_min": 98,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8726161494",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fausto"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8726161494",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00BYHNR1W",
           "type": "libex-import"
         }
       ],
-      "title": "Fausto [Faust]"
+      "title": "Fausto"
     },
     "fauthenwelt": {
       "added_at": "2026-08-02",

@@ -4371,12 +4371,42 @@
         "henry-drummond"
       ],
       "genres": [
-        "religion-spirituality"
+        "parenting-relationships",
+        "religion-spirituality",
+        "self-help"
       ],
       "id": "greatest-thing-in-the-world",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kevin-t-norris-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003KIB24C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SxjwpStRL.jpg",
+          "id": "kevin-t-norris-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-norris"
+          ],
+          "publisher": "Gildan Media, LLC",
+          "release_date": "2010-05-03",
+          "runtime_min": 45,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003KIB24C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "greatest-thing-in-the-world"
+        },
         "paul-eggington-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4417,6 +4447,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZMS6M",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003KIB24C",
           "type": "libex-import"
         }
       ],

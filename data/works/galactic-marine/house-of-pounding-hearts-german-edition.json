@@ -11021,8 +11021,11 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
       ],
       "id": "house-of-sky-and-breath",
       "language": "en",
@@ -11506,39 +11509,7 @@
             }
           ],
           "work": "house-of-sky-and-breath"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B09MZPZ1WG",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09MZPZ1WG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "House of Sky and Breath"
-    },
-    "house-of-sky-and-breath-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "sarah-j-maas"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "house-of-sky-and-breath-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -11651,10 +11622,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "house-of-sky-and-breath-dramatized-adaptation"
+          "work": "house-of-sky-and-breath"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B09MZPZ1WG",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09MZPZ1WG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D3R2WQQ1",
@@ -11676,7 +11657,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "House of Sky and Breath [Dramatized Adaptation]"
+      "title": "House of Sky and Breath"
     }
   }
 }

@@ -10467,75 +10467,15 @@
         }
       ],
       "genres": [
+        "business",
+        "health-wellness",
         "occult",
         "parenting-relationships",
+        "psychology",
         "religion-spirituality",
         "self-help"
       ],
       "id": "habitos-atomicos",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "francesc-gongora-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CP688T9F",
-              "region": "us"
-            },
-            {
-              "asin": "B0CP67YZXT",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81A1f3Z89oL.jpg",
-          "id": "francesc-gongora-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "francesc-gongora"
-          ],
-          "publisher": "Planeta Audio",
-          "release_date": "2023-11-30",
-          "runtime_min": 498,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CP688T9F",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CP67YZXT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "habitos-atomicos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CP688T9F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hábitos atómicos"
-    },
-    "habitos-atomicos-espanol-neutro": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-clear"
-      ],
-      "genres": [
-        "business",
-        "health-wellness",
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "habitos-atomicos-espanol-neutro",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -10697,17 +10637,59 @@
               "type": "libex-import"
             }
           ],
-          "work": "habitos-atomicos-espanol-neutro"
+          "work": "habitos-atomicos"
+        },
+        "francesc-gongora-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CP688T9F",
+              "region": "us"
+            },
+            {
+              "asin": "B0CP67YZXT",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81A1f3Z89oL.jpg",
+          "id": "francesc-gongora-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "francesc-gongora"
+          ],
+          "publisher": "Planeta Audio",
+          "release_date": "2023-11-30",
+          "runtime_min": 498,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CP688T9F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CP67YZXT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "habitos-atomicos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CP688T9F",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "6077477206",
           "type": "libex-import"
         }
       ],
-      "title": "Hábitos atómicos (Español neutro)"
+      "title": "Hábitos atómicos"
     },
     "habitos-de-alto-impacto-high-impact-habits": {
       "added_at": "2026-07-29",

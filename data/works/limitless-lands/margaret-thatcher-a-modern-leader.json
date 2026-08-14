@@ -3166,6 +3166,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "elsa-veiga-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09M7MJT9M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71xJB3BToFL.jpg",
+          "id": "elsa-veiga-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elsa-veiga"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2021-11-19",
+          "runtime_min": 324,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09M7MJT9M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "marianela"
+        },
         "esperanza-de-la-encarnacion-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3193,57 +3221,6 @@
             }
           ],
           "work": "marianela"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1518926118",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Marianela"
-    },
-    "marianela-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benito-perez-galdos"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "marianela-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "elsa-veiga-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09M7MJT9M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71xJB3BToFL.jpg",
-          "id": "elsa-veiga-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "elsa-veiga"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-11-19",
-          "runtime_min": 324,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09M7MJT9M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "marianela-spanish-edition"
         },
         "gabriela-ramirez-2020": {
           "abridged": false,
@@ -3323,17 +3300,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "marianela-spanish-edition"
+          "work": "marianela"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1518926118",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08CS48KHV",
           "type": "libex-import"
         }
       ],
-      "title": "Marianela (Spanish Edition)"
+      "title": "Marianela"
     },
     "marianne-williamson": {
       "added_at": "2026-07-29",

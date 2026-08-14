@@ -4324,6 +4324,7 @@
       ],
       "genres": [
         "classics",
+        "literary-fiction",
         "mystery"
       ],
       "id": "the-sign-of-four",
@@ -5425,41 +5426,7 @@
             }
           ],
           "work": "the-sign-of-four"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B092W8L4BM",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0030E89BA",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0241434238",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Sign of Four"
-    },
-    "the-sign-of-four-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "the-sign-of-four-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "simon-vance-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5553,17 +5520,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-four-amazonclassics-edition"
+          "work": "the-sign-of-four"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B092W8L4BM",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0030E89BA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241434238",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1799718964",
           "type": "libex-import"
         }
       ],
-      "title": "The Sign of Four (AmazonClassics Edition)"
+      "title": "The Sign of Four"
     },
     "the-sign-of-four-spirits": {
       "added_at": "2026-07-29",
@@ -6611,8 +6593,8 @@
       ],
       "title": "The Sign of the Devil"
     },
-    "the-sign-of-the-four": {
-      "added_at": "2026-08-02",
+    "the-sign-of-the-four-soundcraft-audiobooks": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "arthur-conan-doyle"
       ],
@@ -6622,7 +6604,7 @@
         "mystery",
         "thriller-suspense"
       ],
-      "id": "the-sign-of-the-four",
+      "id": "the-sign-of-the-four-soundcraft-audiobooks",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6733,15 +6715,96 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "ben-werling-2023": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
+            {
+              "asin": "B0C87ZS8BK",
+              "region": "us"
+            },
             {
               "asin": "B0C88GNGL3",
               "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16927,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 999224,
+              "start_ms": 16927,
+              "title": "Chapter I - The Science of Deduction"
+            },
+            {
+              "length_ms": 673425,
+              "start_ms": 1016151,
+              "title": "Chapter II - The Statement of the Case"
+            },
+            {
+              "length_ms": 600003,
+              "start_ms": 1689576,
+              "title": "Chapter III - In Quest of a Solution"
+            },
+            {
+              "length_ms": 1331943,
+              "start_ms": 2289579,
+              "title": "Chapter IV - The Story of the Bald-Headed Man"
+            },
+            {
+              "length_ms": 891878,
+              "start_ms": 3621522,
+              "title": "Chapter V - The Tragedy of Pondicherry Lodge"
+            },
+            {
+              "length_ms": 1057250,
+              "start_ms": 4513400,
+              "title": "Chapter VI - Sherlock Holmes Gives a Demonstration"
+            },
+            {
+              "length_ms": 1380495,
+              "start_ms": 5570650,
+              "title": "Chapter VII - The Episode of the Barrel"
+            },
+            {
+              "length_ms": 1145927,
+              "start_ms": 6951145,
+              "title": "Chapter VIII - The Baker Street Irregulars"
+            },
+            {
+              "length_ms": 1143443,
+              "start_ms": 8097072,
+              "title": "Chapter IX - A Break in the Chain"
+            },
+            {
+              "length_ms": 1069069,
+              "start_ms": 9240515,
+              "title": "Chapter X - The End of the Islander"
+            },
+            {
+              "length_ms": 661606,
+              "start_ms": 10309584,
+              "title": "Chapter XI - The Great Agra Treasure"
+            },
+            {
+              "length_ms": 3014832,
+              "start_ms": 10971190,
+              "title": "Chapter XII - The Strange Story of Jonathan Small"
+            },
+            {
+              "length_ms": 179118,
+              "start_ms": 13986022,
+              "title": "BIOGRAPHY OF SIR ARTHUR CONAN DOYLE"
+            },
+            {
+              "length_ms": 29627,
+              "start_ms": 14165140,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71cs63Id8CL.jpg",
@@ -6754,16 +6817,26 @@
             "sara-nichols"
           ],
           "publisher": "SoundCraft Audiobooks",
-          "release_date": "2023-06-16",
-          "runtime_min": 236,
+          "release_date": "2023-01-01",
+          "runtime_min": 237,
           "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C87ZS8BK",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C87ZS8BK",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B0C88GNGL3",
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "carl-mason-2025": {
           "abridged": false,
@@ -6791,7 +6864,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "cate-barratt-2019": {
           "abridged": false,
@@ -6891,7 +6964,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "david-ian-davies-2012": {
           "abridged": false,
@@ -6919,7 +6992,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "david-mccran-2024": {
           "abridged": false,
@@ -6947,7 +7020,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "marnye-young-2020": {
           "abridged": false,
@@ -6975,7 +7048,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "matthew-lloyd-davies-2024": {
           "abridged": false,
@@ -7084,7 +7157,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "mehmet-mahmut-2026": {
           "abridged": false,
@@ -7184,7 +7257,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "michael-ward-2026": {
           "abridged": false,
@@ -7212,7 +7285,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "peter-coates-2024": {
           "abridged": false,
@@ -7240,7 +7313,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "peter-silverleaf-2022": {
           "abridged": false,
@@ -7268,7 +7341,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "richard-stibbard-2026": {
           "abridged": false,
@@ -7368,7 +7441,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "stephen-scalon-2019": {
           "abridged": false,
@@ -7396,7 +7469,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         },
         "walter-covell-2006": {
           "abridged": false,
@@ -7424,10 +7497,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sign-of-the-four"
+          "work": "the-sign-of-the-four-soundcraft-audiobooks"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0C87ZS8BK",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H46JG4TF",
@@ -7437,137 +7515,6 @@
           "imported_at": "2026-08-02",
           "ref": "B0DDV1RX8B",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Sign of the Four"
-    },
-    "the-sign-of-the-four-soundcraft-audiobooks": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "id": "the-sign-of-the-four-soundcraft-audiobooks",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-werling-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0C87ZS8BK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16927,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 999224,
-              "start_ms": 16927,
-              "title": "Chapter I - The Science of Deduction"
-            },
-            {
-              "length_ms": 673425,
-              "start_ms": 1016151,
-              "title": "Chapter II - The Statement of the Case"
-            },
-            {
-              "length_ms": 600003,
-              "start_ms": 1689576,
-              "title": "Chapter III - In Quest of a Solution"
-            },
-            {
-              "length_ms": 1331943,
-              "start_ms": 2289579,
-              "title": "Chapter IV - The Story of the Bald-Headed Man"
-            },
-            {
-              "length_ms": 891878,
-              "start_ms": 3621522,
-              "title": "Chapter V - The Tragedy of Pondicherry Lodge"
-            },
-            {
-              "length_ms": 1057250,
-              "start_ms": 4513400,
-              "title": "Chapter VI - Sherlock Holmes Gives a Demonstration"
-            },
-            {
-              "length_ms": 1380495,
-              "start_ms": 5570650,
-              "title": "Chapter VII - The Episode of the Barrel"
-            },
-            {
-              "length_ms": 1145927,
-              "start_ms": 6951145,
-              "title": "Chapter VIII - The Baker Street Irregulars"
-            },
-            {
-              "length_ms": 1143443,
-              "start_ms": 8097072,
-              "title": "Chapter IX - A Break in the Chain"
-            },
-            {
-              "length_ms": 1069069,
-              "start_ms": 9240515,
-              "title": "Chapter X - The End of the Islander"
-            },
-            {
-              "length_ms": 661606,
-              "start_ms": 10309584,
-              "title": "Chapter XI - The Great Agra Treasure"
-            },
-            {
-              "length_ms": 3014832,
-              "start_ms": 10971190,
-              "title": "Chapter XII - The Strange Story of Jonathan Small"
-            },
-            {
-              "length_ms": 179118,
-              "start_ms": 13986022,
-              "title": "BIOGRAPHY OF SIR ARTHUR CONAN DOYLE"
-            },
-            {
-              "length_ms": 29627,
-              "start_ms": 14165140,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71cs63Id8CL.jpg",
-          "id": "ben-werling-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-werling",
-            "kevin-theis",
-            "sara-nichols"
-          ],
-          "publisher": "SoundCraft Audiobooks",
-          "release_date": "2023-01-01",
-          "runtime_min": 237,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C87ZS8BK",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C87ZS8BK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sign-of-the-four-soundcraft-audiobooks"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0C87ZS8BK",
-          "type": "audiosilo-books-import"
         }
       ],
       "title": "The Sign of the Four (SoundCraft Audiobooks)"

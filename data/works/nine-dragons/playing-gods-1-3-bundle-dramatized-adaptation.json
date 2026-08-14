@@ -12326,57 +12326,6 @@
       ],
       "title": "PlayKiller (Russian Edition)"
     },
-    "playlist": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sebastian-fitzek"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "playlist",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-jager-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0992NMFNR",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PafI6easS.jpg",
-          "id": "simon-jager-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-jager"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-10-27",
-          "runtime_min": 537,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0992NMFNR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "playlist"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0992NMFNR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Playlist"
-    },
     "playlist-german-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -12397,6 +12346,10 @@
             {
               "asin": "B0992LWSMP",
               "region": "us"
+            },
+            {
+              "asin": "B0992NMFNR",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91PafI6easS.jpg",
@@ -12414,6 +12367,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0992LWSMP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0992NMFNR",
+              "type": "libex-import"
             }
           ],
           "work": "playlist-german-edition"
@@ -12423,6 +12381,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0992LWSMP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0992NMFNR",
           "type": "libex-import"
         }
       ],

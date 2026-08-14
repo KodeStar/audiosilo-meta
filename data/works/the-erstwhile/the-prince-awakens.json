@@ -2126,7 +2126,8 @@
     "the-prince-niccolo-machiavelli": {
       "added_at": "2026-07-29",
       "authors": [
-        "niccolo-machiavelli"
+        "niccolo-machiavelli",
+        "william-kenaz-marriott"
       ],
       "credits": [
         {
@@ -2136,12 +2137,17 @@
         {
           "person": "tim-parks",
           "role": "translator"
+        },
+        {
+          "person": "william-kenaz-marriott",
+          "role": "translator"
         }
       ],
       "genres": [
         "classics",
         "history",
         "literary-fiction",
+        "philosophy",
         "politics"
       ],
       "id": "the-prince-niccolo-machiavelli",
@@ -2921,6 +2927,34 @@
             }
           ],
           "work": "the-prince-niccolo-machiavelli"
+        },
+        "will-damron-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B078K1GXN8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OOlZ20sTL.jpg",
+          "id": "will-damron-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "will-damron"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-12-22",
+          "runtime_min": 199,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B078K1GXN8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-prince-niccolo-machiavelli"
         }
       },
       "sources": [
@@ -2937,6 +2971,11 @@
         {
           "imported_at": "2026-08-12",
           "ref": "0241439787",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B078K1GXN8",
           "type": "libex-import"
         }
       ],

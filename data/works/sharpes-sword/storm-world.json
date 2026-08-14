@@ -770,12 +770,218 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
-        "history"
+        "history",
+        "war-military-fiction"
       ],
       "id": "stormbird",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "john-curless-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00L4EXHXS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1131741,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1573105,
+              "start_ms": 1131741,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1557316,
+              "start_ms": 2704846,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1656930,
+              "start_ms": 4262162,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1530938,
+              "start_ms": 5919092,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1649128,
+              "start_ms": 7450030,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2186623,
+              "start_ms": 9099158,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1473120,
+              "start_ms": 11285781,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1622100,
+              "start_ms": 12758901,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1987071,
+              "start_ms": 14381001,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1558616,
+              "start_ms": 16368072,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1631434,
+              "start_ms": 17926688,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1872364,
+              "start_ms": 19558122,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2091468,
+              "start_ms": 21430486,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1782317,
+              "start_ms": 23521954,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1986142,
+              "start_ms": 25304271,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1403739,
+              "start_ms": 27290413,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1990461,
+              "start_ms": 28694152,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1681310,
+              "start_ms": 30684613,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1725150,
+              "start_ms": 32365923,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2242490,
+              "start_ms": 34091073,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1754453,
+              "start_ms": 36333563,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2124487,
+              "start_ms": 38088016,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1878959,
+              "start_ms": 40212503,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1852116,
+              "start_ms": 42091462,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1762766,
+              "start_ms": 43943578,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1817844,
+              "start_ms": 45706344,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1998495,
+              "start_ms": 47524188,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1369884,
+              "start_ms": 49522683,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1430117,
+              "start_ms": 50892567,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1485891,
+              "start_ms": 52322684,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 822869,
+              "start_ms": 53808575,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1884253,
+              "start_ms": 54631444,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 721630,
+              "start_ms": 56515697,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 1410380,
+              "start_ms": 57237327,
+              "title": "Chapter 35"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+VSW+qSqL.jpg",
+          "id": "john-curless-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-curless"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2014-07-08",
+          "runtime_min": 977,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00L4EXHXS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stormbird"
+        },
         "roy-mcmillan-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -809,6 +1015,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00FQMJL20",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00L4EXHXS",
           "type": "libex-import"
         }
       ],
@@ -3111,203 +3322,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0BWSCHL62",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Stormborn"
-    },
-    "stormborn-richelle-mead": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "richelle-mead"
-      ],
-      "genres": [
-        "action-adventure",
-        "erotica",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "thriller-suspense"
-      ],
-      "id": "stormborn-richelle-mead",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jennifer-van-dyck-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09J99H61X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1464273,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1532191,
-              "start_ms": 1464273,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1110981,
-              "start_ms": 2996464,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1324257,
-              "start_ms": 4107445,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1508298,
-              "start_ms": 5431702,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1079309,
-              "start_ms": 6940000,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1449923,
-              "start_ms": 8019309,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1586294,
-              "start_ms": 9469232,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1463159,
-              "start_ms": 11055526,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1425774,
-              "start_ms": 12518685,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 932583,
-              "start_ms": 13944459,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1463576,
-              "start_ms": 14877042,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1302755,
-              "start_ms": 16340618,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1735691,
-              "start_ms": 17643373,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1109008,
-              "start_ms": 19379064,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1737572,
-              "start_ms": 20488072,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1806140,
-              "start_ms": 22225644,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1871806,
-              "start_ms": 24031784,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1506626,
-              "start_ms": 25903590,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1256013,
-              "start_ms": 27410216,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1742309,
-              "start_ms": 28666229,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1371927,
-              "start_ms": 30408538,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1431231,
-              "start_ms": 31780465,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 2004787,
-              "start_ms": 33211696,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1797224,
-              "start_ms": 35216483,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1204326,
-              "start_ms": 37013707,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1431672,
-              "start_ms": 38218033,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1600132,
-              "start_ms": 39649705,
-              "title": "Chapter 28"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81r971Uvo9L.jpg",
-          "id": "jennifer-van-dyck-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jennifer-van-dyck"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2021-10-26",
-          "runtime_min": 687,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09J99H61X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "stormborn-richelle-mead"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09J99H61X",
           "type": "libex-import"
         }
       ],

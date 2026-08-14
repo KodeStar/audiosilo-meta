@@ -809,8 +809,10 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
         "mystery",
         "police-procedural",
+        "politics",
         "thriller-suspense"
       ],
       "id": "hope-rises",
@@ -827,6 +829,10 @@
             },
             {
               "asin": "B0FPG1D2KD",
+              "region": "us"
+            },
+            {
+              "asin": "B0G8BQBLB1",
               "region": "us"
             }
           ],
@@ -855,6 +861,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0FPG1D2KD",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0G8BQBLB1",
+              "type": "libex-import"
             }
           ],
           "work": "hope-rises"
@@ -865,67 +876,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0FML7GYVY",
           "type": "libex-import"
-        }
-      ],
-      "title": "Hope Rises"
-    },
-    "hope-rises-walter-nash-book-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "hope-rises-walter-nash-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christine-lakin-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0G8BQBLB1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Mu8YVmfTL.jpg",
-          "id": "christine-lakin-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christine-lakin",
-            "larry-herron",
-            "macleod-andrews",
-            "shiromi-arserio",
-            "tim-lounibos",
-            "will-collyer"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2026-03-31",
-          "runtime_min": 748,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0G8BQBLB1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hope-rises-walter-nash-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0G8BQBLB1",
           "type": "libex-import"
         }
       ],
-      "title": "Hope Rises: Walter Nash Book 2"
+      "title": "Hope Rises"
     },
     "hope-springs": {
       "added_at": "2026-07-29",
@@ -3566,195 +3524,13 @@
         "dean-f-wilson"
       ],
       "genres": [
+        "action-adventure",
+        "dystopian",
         "military-science-fiction",
         "science-fiction",
         "steampunk"
       ],
       "id": "hopebreaker",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "t-anthony-quinn-2015": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0186I4M92",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16115,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 210280,
-              "start_ms": 16115,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1108010,
-              "start_ms": 226395,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 636598,
-              "start_ms": 1334405,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 903767,
-              "start_ms": 1971003,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 710763,
-              "start_ms": 2874770,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 827373,
-              "start_ms": 3585533,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 897683,
-              "start_ms": 4412906,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 977142,
-              "start_ms": 5310589,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1087716,
-              "start_ms": 6287731,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1034728,
-              "start_ms": 7375447,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 853983,
-              "start_ms": 8410175,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 549477,
-              "start_ms": 9264158,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 496861,
-              "start_ms": 9813635,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1353770,
-              "start_ms": 10310496,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 738023,
-              "start_ms": 11664266,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 814184,
-              "start_ms": 12402289,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 744292,
-              "start_ms": 13216473,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1012483,
-              "start_ms": 13960765,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 911569,
-              "start_ms": 14973248,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1027297,
-              "start_ms": 15884817,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1012344,
-              "start_ms": 16912114,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 850500,
-              "start_ms": 17924458,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1289265,
-              "start_ms": 18774958,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 286952,
-              "start_ms": 20064223,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 29304,
-              "start_ms": 20351175,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91UrOdkcrdL.jpg",
-          "id": "t-anthony-quinn-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "t-anthony-quinn"
-          ],
-          "publisher": "Dioscuri Press",
-          "release_date": "2015-11-20",
-          "runtime_min": 339,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0186I4M92",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hopebreaker"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0186I4M92",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hopebreaker"
-    },
-    "hopebreaker-a-sci-fi-dystopian-adventure": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "dean-f-wilson"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "science-fiction"
-      ],
-      "id": "hopebreaker-a-sci-fi-dystopian-adventure",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -3966,17 +3742,182 @@
               "type": "libex-import"
             }
           ],
-          "work": "hopebreaker-a-sci-fi-dystopian-adventure"
+          "work": "hopebreaker"
+        },
+        "t-anthony-quinn-2015": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0186I4M92",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16115,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 210280,
+              "start_ms": 16115,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1108010,
+              "start_ms": 226395,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 636598,
+              "start_ms": 1334405,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 903767,
+              "start_ms": 1971003,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 710763,
+              "start_ms": 2874770,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 827373,
+              "start_ms": 3585533,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 897683,
+              "start_ms": 4412906,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 977142,
+              "start_ms": 5310589,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1087716,
+              "start_ms": 6287731,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1034728,
+              "start_ms": 7375447,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 853983,
+              "start_ms": 8410175,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 549477,
+              "start_ms": 9264158,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 496861,
+              "start_ms": 9813635,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1353770,
+              "start_ms": 10310496,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 738023,
+              "start_ms": 11664266,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 814184,
+              "start_ms": 12402289,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 744292,
+              "start_ms": 13216473,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1012483,
+              "start_ms": 13960765,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 911569,
+              "start_ms": 14973248,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1027297,
+              "start_ms": 15884817,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1012344,
+              "start_ms": 16912114,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 850500,
+              "start_ms": 17924458,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1289265,
+              "start_ms": 18774958,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 286952,
+              "start_ms": 20064223,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 29304,
+              "start_ms": 20351175,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UrOdkcrdL.jpg",
+          "id": "t-anthony-quinn-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "t-anthony-quinn"
+          ],
+          "publisher": "Dioscuri Press",
+          "release_date": "2015-11-20",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0186I4M92",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hopebreaker"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0186I4M92",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B087XZ54YQ",
           "type": "libex-import"
         }
       ],
-      "title": "Hopebreaker (A Sci-Fi Dystopian Adventure)"
+      "title": "Hopebreaker"
     },
     "hopeful": {
       "added_at": "2026-07-29",

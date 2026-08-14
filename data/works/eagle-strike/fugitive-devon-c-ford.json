@@ -1553,6 +1553,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CS436Y1W",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 11140948,
+              "start_ms": 36924,
+              "title": "Fugitive Telemetry"
+            },
+            {
+              "length_ms": 97000,
+              "start_ms": 11177872,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 206325,
+              "start_ms": 11274872,
+              "title": "Preview: Red Rising, Saga One"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pdj8miF-L.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CS436Y1W",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CS436Y1W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fugitive-telemetry"
+        },
         "kevin-r-free-2021": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -1654,81 +1709,7 @@
           "imported_at": "2026-07-30",
           "ref": "1980080631",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fugitive Telemetry"
-    },
-    "fugitive-telemetry-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "martha-wells"
-      ],
-      "genres": [
-        "action-adventure",
-        "hard-science-fiction",
-        "science-fiction"
-      ],
-      "id": "fugitive-telemetry-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CS436Y1W",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11140948,
-              "start_ms": 36924,
-              "title": "Fugitive Telemetry"
-            },
-            {
-              "length_ms": 97000,
-              "start_ms": 11177872,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 206325,
-              "start_ms": 11274872,
-              "title": "Preview: Red Rising, Saga One"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81pdj8miF-L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CS436Y1W",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CS436Y1W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fugitive-telemetry-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CS436Y1W",
@@ -1740,7 +1721,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Fugitive Telemetry (Dramatized Adaptation)"
+      "title": "Fugitive Telemetry"
     },
     "fugitives": {
       "added_at": "2026-08-01",

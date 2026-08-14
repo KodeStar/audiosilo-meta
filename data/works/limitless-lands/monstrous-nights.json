@@ -17569,22 +17569,108 @@
       ],
       "title": "Moon Burned"
     },
-    "moon-called": {
-      "added_at": "2026-08-02",
+    "moon-called-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "patricia-briggs"
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "fantasy",
         "paranormal",
         "romance",
         "urban-fantasy"
       ],
-      "id": "moon-called",
+      "id": "moon-called-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D63FS1XD",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 33924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3324772,
+              "start_ms": 33924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3245499,
+              "start_ms": 3358696,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3671144,
+              "start_ms": 6604195,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3546848,
+              "start_ms": 10275339,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3452273,
+              "start_ms": 13822187,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3405926,
+              "start_ms": 17274460,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 3187000,
+              "start_ms": 20680386,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 126000,
+              "start_ms": 23867386,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 233916,
+              "start_ms": 23993386,
+              "title": "Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bMuCPvlqL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 404,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D63FS1XD",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D63FS1XD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moon-called-dramatized-adaptation"
+        },
         "lorelei-king-2009": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -17712,116 +17798,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "moon-called"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V5GNJ4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Moon Called"
-    },
-    "moon-called-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "patricia-briggs"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "moon-called-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D63FS1XD",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 33924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3324772,
-              "start_ms": 33924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3245499,
-              "start_ms": 3358696,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3671144,
-              "start_ms": 6604195,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3546848,
-              "start_ms": 10275339,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3452273,
-              "start_ms": 13822187,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3405926,
-              "start_ms": 17274460,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3187000,
-              "start_ms": 20680386,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 126000,
-              "start_ms": 23867386,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 233916,
-              "start_ms": 23993386,
-              "title": "Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91bMuCPvlqL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 404,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D63FS1XD",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D63FS1XD",
-              "type": "libex-import"
-            }
-          ],
           "work": "moon-called-dramatized-adaptation"
         }
       },
@@ -17834,6 +17810,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0D63FS1XD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5GNJ4",
           "type": "libex-import"
         }
       ],

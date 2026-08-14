@@ -9051,56 +9051,7 @@
             {
               "asin": "8439734700",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81snRWr2cVL.jpg",
-          "id": "carlos-manuel-vesga-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-manuel-vesga"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-06-28",
-          "runtime_min": 617,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8439734700",
-              "type": "libex-import"
-            }
-          ],
-          "work": "noticia-de-un-secuestro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8439734700",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Noticia de un secuestro"
-    },
-    "noticia-de-un-secuestro-news-of-a-kidnapping": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gabriel-garcia-marquez"
-      ],
-      "genres": [
-        "biography-memoir",
-        "politics",
-        "social-sciences",
-        "true-crime"
-      ],
-      "id": "noticia-de-un-secuestro-news-of-a-kidnapping",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-manuel-vesga-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07DNG6J8B",
               "region": "us"
@@ -9191,21 +9142,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8439734700",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07DNG6J8B",
               "type": "libex-import"
             }
           ],
-          "work": "noticia-de-un-secuestro-news-of-a-kidnapping"
+          "work": "noticia-de-un-secuestro"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8439734700",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07DNG6J8B",
           "type": "libex-import"
         }
       ],
-      "title": "Noticia de un secuestro [News of a Kidnapping]"
+      "title": "Noticia de un secuestro"
     },
     "noticias-frescas": {
       "added_at": "2026-08-02",

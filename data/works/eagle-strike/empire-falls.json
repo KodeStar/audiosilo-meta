@@ -263,6 +263,8 @@
         "action-adventure",
         "alternate-history",
         "espionage",
+        "fantasy",
+        "religious-fiction",
         "science-fiction",
         "thriller-suspense",
         "time-travel"
@@ -409,33 +411,7 @@
             }
           ],
           "work": "empire-games"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01NCWQP6F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Empire Games"
-    },
-    "empire-games-empire-games-book-one": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charles-stross"
-      ],
-      "genres": [
-        "action-adventure",
-        "alternate-history",
-        "fantasy",
-        "religious-fiction",
-        "science-fiction"
-      ],
-      "id": "empire-games-empire-games-book-one",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kate-reading-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -579,17 +555,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "empire-games-empire-games-book-one"
+          "work": "empire-games"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01NCWQP6F",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNFRZWQC",
           "type": "libex-import"
         }
       ],
-      "title": "Empire Games: Empire Games Book One"
+      "title": "Empire Games"
     },
     "empire-german-edition": {
       "added_at": "2026-08-01",
@@ -1621,6 +1602,7 @@
         "epic-fantasy",
         "fantasy",
         "nature",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "empire-in-black-and-gold",
@@ -1866,33 +1848,7 @@
             }
           ],
           "work": "empire-in-black-and-gold"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529050278",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Empire in Black and Gold"
-    },
-    "empire-in-black-and-gold-shadows-of-the-apt-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "adrian-tchaikovsky"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "empire-in-black-and-gold-shadows-of-the-apt-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ben-allen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2131,17 +2087,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "empire-in-black-and-gold-shadows-of-the-apt-1"
+          "work": "empire-in-black-and-gold"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529050278",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMW1DLSB",
           "type": "libex-import"
         }
       ],
-      "title": "Empire in Black and Gold: Shadows of the Apt 1"
+      "title": "Empire in Black and Gold"
     },
     "empire-in-crisis": {
       "added_at": "2026-07-29",
@@ -2697,6 +2658,9 @@
       "genres": [
         "action-adventure",
         "espionage",
+        "military-science-fiction",
+        "science",
+        "science-fiction",
         "thriller-suspense",
         "war-military-fiction"
       ],
@@ -3028,12 +2992,357 @@
             }
           ],
           "work": "empire-jeremy-robinson"
+        },
+        "jeffrey-kafer-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CYHTLNL8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18111,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1893355,
+              "start_ms": 18111,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 283164,
+              "start_ms": 1911466,
+              "title": "Shell Game"
+            },
+            {
+              "length_ms": 852315,
+              "start_ms": 2194630,
+              "title": "1"
+            },
+            {
+              "length_ms": 996205,
+              "start_ms": 3046945,
+              "title": "2"
+            },
+            {
+              "length_ms": 741552,
+              "start_ms": 4043150,
+              "title": "3"
+            },
+            {
+              "length_ms": 273716,
+              "start_ms": 4784702,
+              "title": "4"
+            },
+            {
+              "length_ms": 570491,
+              "start_ms": 5058418,
+              "title": "5"
+            },
+            {
+              "length_ms": 958635,
+              "start_ms": 5628909,
+              "title": "6"
+            },
+            {
+              "length_ms": 618440,
+              "start_ms": 6587544,
+              "title": "7"
+            },
+            {
+              "length_ms": 1061709,
+              "start_ms": 7205984,
+              "title": "8"
+            },
+            {
+              "length_ms": 527092,
+              "start_ms": 8267693,
+              "title": "9"
+            },
+            {
+              "length_ms": 630607,
+              "start_ms": 8794785,
+              "title": "10"
+            },
+            {
+              "length_ms": 665414,
+              "start_ms": 9425392,
+              "title": "11"
+            },
+            {
+              "length_ms": 2000,
+              "start_ms": 10090806,
+              "title": "Blood Ties"
+            },
+            {
+              "length_ms": 743894,
+              "start_ms": 10092806,
+              "title": "12"
+            },
+            {
+              "length_ms": 663997,
+              "start_ms": 10836700,
+              "title": "13"
+            },
+            {
+              "length_ms": 662302,
+              "start_ms": 11500697,
+              "title": "14"
+            },
+            {
+              "length_ms": 1122429,
+              "start_ms": 12162999,
+              "title": "15"
+            },
+            {
+              "length_ms": 694578,
+              "start_ms": 13285428,
+              "title": "16"
+            },
+            {
+              "length_ms": 807915,
+              "start_ms": 13980006,
+              "title": "17"
+            },
+            {
+              "length_ms": 822961,
+              "start_ms": 14787921,
+              "title": "18"
+            },
+            {
+              "length_ms": 468787,
+              "start_ms": 15610882,
+              "title": "19"
+            },
+            {
+              "length_ms": 575181,
+              "start_ms": 16079669,
+              "title": "20"
+            },
+            {
+              "length_ms": 603695,
+              "start_ms": 16654850,
+              "title": "21"
+            },
+            {
+              "length_ms": 338964,
+              "start_ms": 17258545,
+              "title": "22"
+            },
+            {
+              "length_ms": 788317,
+              "start_ms": 17597509,
+              "title": "23"
+            },
+            {
+              "length_ms": 574856,
+              "start_ms": 18385826,
+              "title": "24"
+            },
+            {
+              "length_ms": 364042,
+              "start_ms": 18960682,
+              "title": "25"
+            },
+            {
+              "length_ms": 347533,
+              "start_ms": 19324724,
+              "title": "26"
+            },
+            {
+              "length_ms": 549453,
+              "start_ms": 19672257,
+              "title": "27"
+            },
+            {
+              "length_ms": 1100881,
+              "start_ms": 20221710,
+              "title": "28"
+            },
+            {
+              "length_ms": 446542,
+              "start_ms": 21322591,
+              "title": "29"
+            },
+            {
+              "length_ms": 710902,
+              "start_ms": 21769133,
+              "title": "30"
+            },
+            {
+              "length_ms": 733471,
+              "start_ms": 22480035,
+              "title": "31"
+            },
+            {
+              "length_ms": 309034,
+              "start_ms": 23213506,
+              "title": "32"
+            },
+            {
+              "length_ms": 893109,
+              "start_ms": 23522540,
+              "title": "33"
+            },
+            {
+              "length_ms": 705979,
+              "start_ms": 24415649,
+              "title": "34"
+            },
+            {
+              "length_ms": 679787,
+              "start_ms": 25121628,
+              "title": "35"
+            },
+            {
+              "length_ms": 343771,
+              "start_ms": 25801415,
+              "title": "36"
+            },
+            {
+              "length_ms": 2000,
+              "start_ms": 26145186,
+              "title": "Firebird"
+            },
+            {
+              "length_ms": 1041992,
+              "start_ms": 26147186,
+              "title": "37"
+            },
+            {
+              "length_ms": 1266602,
+              "start_ms": 27189178,
+              "title": "38"
+            },
+            {
+              "length_ms": 658610,
+              "start_ms": 28455780,
+              "title": "39"
+            },
+            {
+              "length_ms": 602534,
+              "start_ms": 29114390,
+              "title": "40"
+            },
+            {
+              "length_ms": 694532,
+              "start_ms": 29716924,
+              "title": "41"
+            },
+            {
+              "length_ms": 328771,
+              "start_ms": 30411456,
+              "title": "42"
+            },
+            {
+              "length_ms": 699245,
+              "start_ms": 30740227,
+              "title": "43"
+            },
+            {
+              "length_ms": 244622,
+              "start_ms": 31439472,
+              "title": "44"
+            },
+            {
+              "length_ms": 396109,
+              "start_ms": 31684094,
+              "title": "45"
+            },
+            {
+              "length_ms": 346720,
+              "start_ms": 32080203,
+              "title": "46"
+            },
+            {
+              "length_ms": 398663,
+              "start_ms": 32426923,
+              "title": "47"
+            },
+            {
+              "length_ms": 357030,
+              "start_ms": 32825586,
+              "title": "48"
+            },
+            {
+              "length_ms": 548780,
+              "start_ms": 33182616,
+              "title": "49"
+            },
+            {
+              "length_ms": 321782,
+              "start_ms": 33731396,
+              "title": "50"
+            },
+            {
+              "length_ms": 386078,
+              "start_ms": 34053178,
+              "title": "51"
+            },
+            {
+              "length_ms": 266843,
+              "start_ms": 34439256,
+              "title": "52"
+            },
+            {
+              "length_ms": 228832,
+              "start_ms": 34706099,
+              "title": "53"
+            },
+            {
+              "length_ms": 1106779,
+              "start_ms": 34934931,
+              "title": "54"
+            },
+            {
+              "length_ms": 338036,
+              "start_ms": 36041710,
+              "title": "55"
+            },
+            {
+              "length_ms": 498277,
+              "start_ms": 36379746,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 61044,
+              "start_ms": 36878023,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RigVQAroL.jpg",
+          "id": "jeffrey-kafer-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeffrey-kafer"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 615,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYHTLNL8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "empire-jeremy-robinson"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B01LOVJNI8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CYHTLNL8",
           "type": "libex-import"
         }
       ],
@@ -3047,8 +3356,11 @@
       ],
       "genres": [
         "action-adventure",
+        "dystopian",
+        "literary-fiction",
         "romance",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "empire-john-connolly",
       "language": "en",
@@ -3081,12 +3393,45 @@
             }
           ],
           "work": "empire-john-connolly"
+        },
+        "nicola-barber-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00T6ODP1C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91A0b4g9ESL.jpg",
+          "id": "nicola-barber-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nicola-barber"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2015-02-24",
+          "runtime_min": 866,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00T6ODP1C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "empire-john-connolly"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B00R73EEHI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00T6ODP1C",
           "type": "libex-import"
         }
       ],

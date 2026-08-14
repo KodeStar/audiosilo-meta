@@ -9398,6 +9398,10 @@
             {
               "asin": "150199879X",
               "region": "us"
+            },
+            {
+              "asin": "1705014593",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -9507,6 +9511,11 @@
               "imported_at": "2026-07-29",
               "ref": "150199879X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1705014593",
+              "type": "libex-import"
             }
           ],
           "work": "next-to-last-stand"
@@ -9517,61 +9526,14 @@
           "imported_at": "2026-07-29",
           "ref": "150199879X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Next to Last Stand"
-    },
-    "next-to-last-stand-quot-international-edition-quot": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "westerns"
-      ],
-      "id": "next-to-last-stand-quot-international-edition-quot",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1705014593",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VQfCpTNTL.jpg",
-          "id": "george-guidall-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2020-10-29",
-          "runtime_min": 476,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1705014593",
-              "type": "libex-import"
-            }
-          ],
-          "work": "next-to-last-stand-quot-international-edition-quot"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1705014593",
           "type": "libex-import"
         }
       ],
-      "title": "Next to Last Stand (&quot;International Edition&quot;)"
+      "title": "Next to Last Stand"
     },
     "next-to-never": {
       "added_at": "2026-07-29",
@@ -11903,58 +11865,6 @@
       ],
       "title": "Nexus"
     },
-    "nexus-castellano-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "history",
-        "technology"
-      ],
-      "id": "nexus-castellano-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-david-garcia-marquez-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DCL9QFJZ",
-              "region": "ca"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71U4+YRuYuL.jpg",
-          "id": "luis-david-garcia-marquez-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-david-garcia-marquez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-09-10",
-          "runtime_min": 1070,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DCL9QFJZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nexus-castellano-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DCL9QFJZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nexus (castellano) [Nexus: A Brief History of Information Networks from the Stone Age to AI]"
-    },
     "nexus-dei": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13995,170 +13905,6 @@
         }
       ],
       "title": "Nexus"
-    },
-    "nexus-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yuval-noah-harari",
-        "joandomenec-ros-i-aragones"
-      ],
-      "genres": [
-        "history",
-        "technology"
-      ],
-      "id": "nexus-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-david-garcia-marquez-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DCLQVXXJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 21199,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 11679,
-              "start_ms": 21199,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3300623,
-              "start_ms": 32878,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 6803,
-              "start_ms": 3333501,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 2260462,
-              "start_ms": 3340304,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 3159144,
-              "start_ms": 5600766,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 4499493,
-              "start_ms": 8759910,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 4164963,
-              "start_ms": 13259403,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 3088416,
-              "start_ms": 17424366,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 3540462,
-              "start_ms": 20512782,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 3590269,
-              "start_ms": 24053244,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 4281179,
-              "start_ms": 27643513,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 7291,
-              "start_ms": 31924692,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 5756273,
-              "start_ms": 31931983,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 4053553,
-              "start_ms": 37688256,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 7104725,
-              "start_ms": 41741809,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 7267,
-              "start_ms": 48846534,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 6641208,
-              "start_ms": 48853801,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 1827108,
-              "start_ms": 55495009,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 5377044,
-              "start_ms": 57322117,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 1475024,
-              "start_ms": 62699161,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 61439,
-              "start_ms": 64174185,
-              "title": "Capítulo 22"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71U4+YRuYuL.jpg",
-          "id": "luis-david-garcia-marquez-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-david-garcia-marquez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-09-10",
-          "runtime_min": 1070,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DCLQVXXJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nexus-nexus-a-brief-history-of-information-networks-from-the-stone-age-to-ai"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DCLQVXXJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nexus [Nexus: A Brief History of Information Networks from the Stone Age to AI]"
     },
     "nexus-of-chaos": {
       "added_at": "2026-07-30T14:42:56+01:00",

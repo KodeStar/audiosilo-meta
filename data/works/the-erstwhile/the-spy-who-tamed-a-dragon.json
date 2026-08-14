@@ -7090,7 +7090,8 @@
         "action-adventure",
         "childrens",
         "fantasy",
-        "music"
+        "music",
+        "superhero"
       ],
       "id": "the-stage-of-shadows",
       "language": "en",
@@ -7102,6 +7103,10 @@
           "asin": [
             {
               "asin": "B0G21WVK71",
+              "region": "us"
+            },
+            {
+              "asin": "B0H24Z41FK",
               "region": "us"
             }
           ],
@@ -7232,6 +7237,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G21WVK71",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H24Z41FK",
+              "type": "libex-import"
             }
           ],
           "work": "the-stage-of-shadows"
@@ -7241,6 +7251,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0G21WVK71",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H24Z41FK",
           "type": "libex-import"
         }
       ],
@@ -10662,8 +10677,8 @@
       ],
       "title": "The Stalking"
     },
-    "the-stalking-dead": {
-      "added_at": "2026-08-01",
+    "the-stalking-dead-dramatized-adaptation": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "eva-chase"
       ],
@@ -10673,10 +10688,75 @@
         "romance",
         "urban-fantasy"
       ],
-      "id": "the-stalking-dead",
+      "id": "the-stalking-dead-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CWLT3WBR",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3326281,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3591918,
+              "start_ms": 3326281,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4034304,
+              "start_ms": 6918199,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3606314,
+              "start_ms": 10952503,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3470059,
+              "start_ms": 14558817,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4094373,
+              "start_ms": 18028876,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91xvunxE8mL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 369,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CWLT3WBR",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CWLT3WBR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-stalking-dead-dramatized-adaptation"
+        },
         "hollie-jackson-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10851,94 +10931,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-stalking-dead"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09QXX9NLH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Stalking Dead"
-    },
-    "the-stalking-dead-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "eva-chase"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "the-stalking-dead-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CWLT3WBR",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3326281,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3591918,
-              "start_ms": 3326281,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4034304,
-              "start_ms": 6918199,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3606314,
-              "start_ms": 10952503,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3470059,
-              "start_ms": 14558817,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4094373,
-              "start_ms": 18028876,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91xvunxE8mL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 369,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CWLT3WBR",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CWLT3WBR",
-              "type": "libex-import"
-            }
-          ],
           "work": "the-stalking-dead-dramatized-adaptation"
         }
       },
@@ -10951,6 +10943,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0CWLT3WBR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09QXX9NLH",
           "type": "libex-import"
         }
       ],

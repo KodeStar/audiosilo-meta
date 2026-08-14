@@ -6747,6 +6747,10 @@
             {
               "asin": "B08KBPD55C",
               "region": "es"
+            },
+            {
+              "asin": "B08KC2PZ1Q",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/715tLCwwcvL.jpg",
@@ -6763,6 +6767,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B08KBPD55C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08KC2PZ1Q",
               "type": "libex-import"
             }
           ],
@@ -6811,60 +6820,14 @@
           "imported_at": "2026-07-29",
           "ref": "B08KBPD55C",
           "type": "libex-import"
-        }
-      ],
-      "title": "Por qué dormimos"
-    },
-    "por-que-dormimos-why-we-sleep": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "matthew-walker"
-      ],
-      "genres": [
-        "health-wellness",
-        "medicine"
-      ],
-      "id": "por-que-dormimos-why-we-sleep",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerardo-quiroz-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08KC2PZ1Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/715tLCwwcvL.jpg",
-          "id": "gerardo-quiroz-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerardo-quiroz"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-09-29",
-          "runtime_min": 807,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08KC2PZ1Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "por-que-dormimos-why-we-sleep"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08KC2PZ1Q",
           "type": "libex-import"
         }
       ],
-      "title": "Por qué dormimos [Why We Sleep]"
+      "title": "Por qué dormimos"
     },
     "por-que-ese-idiota-es-rico-y-yo-no": {
       "added_at": "2026-07-29",

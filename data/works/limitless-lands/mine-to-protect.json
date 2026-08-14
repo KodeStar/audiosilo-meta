@@ -5517,6 +5517,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "classics",
         "fantasy"
       ],
@@ -5530,6 +5531,10 @@
           "asin": [
             {
               "asin": "B073VV4R2J",
+              "region": "us"
+            },
+            {
+              "asin": "B073V7Q9J4",
               "region": "us"
             }
           ],
@@ -5675,6 +5680,11 @@
               "imported_at": "2026-08-02",
               "ref": "B073VV4R2J",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B073V7Q9J4",
+              "type": "libex-import"
             }
           ],
           "work": "minecraft-the-island"
@@ -5684,6 +5694,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B073VV4R2J",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B073V7Q9J4",
           "type": "libex-import"
         }
       ],
@@ -5882,185 +5897,6 @@
         }
       ],
       "title": "Minecraft: The Island (Narrated by Jack Black)"
-    },
-    "minecraft-the-island-narrated-by-samira-wiley": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "max-brooks"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "minecraft-the-island-narrated-by-samira-wiley",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "samira-wiley-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B073V7Q9J4",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 65759,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1434622,
-              "start_ms": 65759,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 773875,
-              "start_ms": 1500381,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1603431,
-              "start_ms": 2274256,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 803132,
-              "start_ms": 3877687,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1024929,
-              "start_ms": 4680819,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1140193,
-              "start_ms": 5705748,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 894572,
-              "start_ms": 6845941,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1239435,
-              "start_ms": 7740513,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1184589,
-              "start_ms": 8979948,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 995904,
-              "start_ms": 10164537,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 895222,
-              "start_ms": 11160441,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1284807,
-              "start_ms": 12055663,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1384467,
-              "start_ms": 13340470,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 857559,
-              "start_ms": 14724937,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 927498,
-              "start_ms": 15582496,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1171215,
-              "start_ms": 16509994,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 858395,
-              "start_ms": 17681209,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1448832,
-              "start_ms": 18539604,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1052375,
-              "start_ms": 19988436,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 823055,
-              "start_ms": 21040811,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 898334,
-              "start_ms": 21863866,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 704540,
-              "start_ms": 22762200,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 263918,
-              "start_ms": 23466740,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 218453,
-              "start_ms": 23730658,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91P3SIrqn1L.jpg",
-          "id": "samira-wiley-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "samira-wiley"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2017-07-18",
-          "runtime_min": 398,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B073V7Q9J4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "minecraft-the-island-narrated-by-samira-wiley"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B073V7Q9J4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Minecraft: The Island (Narrated by Samira Wiley)"
     },
     "minecraft-the-lost-journals": {
       "added_at": "2026-08-02",

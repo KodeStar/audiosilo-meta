@@ -10228,6 +10228,7 @@
         "john-obrien"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "post-apocalyptic",
         "science-fiction"
@@ -10236,6 +10237,114 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-john-fetherolf-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00H206ACS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fhco6TDTL.jpg",
+          "id": "christopher-john-fetherolf-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-john-fetherolf"
+          ],
+          "publisher": "Cherry Hill Publishing, LLC",
+          "release_date": "2013-12-03",
+          "runtime_min": 502,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00H206ACS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "return"
+        },
+        "mark-gagliardi-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00PHNMIUU",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 597960,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4965866,
+              "start_ms": 597960,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4215211,
+              "start_ms": 5563826,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1888340,
+              "start_ms": 9779037,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 6815057,
+              "start_ms": 11667377,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 5600467,
+              "start_ms": 18482434,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4014962,
+              "start_ms": 24082901,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4645152,
+              "start_ms": 28097863,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 485065,
+              "start_ms": 32743015,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 77787,
+              "start_ms": 33228080,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-lM4vTULL.jpg",
+          "id": "mark-gagliardi-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-gagliardi"
+          ],
+          "publisher": "Cherry Hill Publishing, LLC",
+          "release_date": "2014-11-11",
+          "runtime_min": 554,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00PHNMIUU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "return"
+        },
         "mark-gagliardi-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10326,6 +10435,16 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0BSLXYXXV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00H206ACS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00PHNMIUU",
           "type": "libex-import"
         }
       ],

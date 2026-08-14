@@ -5187,7 +5187,9 @@
         }
       ],
       "genres": [
+        "hard-boiled",
         "horror",
+        "mystery",
         "psychological-thriller",
         "thriller-suspense"
       ],
@@ -5202,6 +5204,10 @@
             {
               "asin": "B0CJ5S5B6J",
               "region": "us"
+            },
+            {
+              "asin": "B0CJ5R4Z1N",
+              "region": "es"
             }
           ],
           "chapters": [
@@ -5462,6 +5468,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0CJ5S5B6J",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CJ5R4Z1N",
+              "type": "libex-import"
             }
           ],
           "work": "holly-spanish-edition"
@@ -5471,6 +5482,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0CJ5S5B6J",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CJ5R4Z1N",
           "type": "libex-import"
         }
       ],
@@ -6700,67 +6716,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BSY3PTSV",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Holly"
-    },
-    "holly-stephen-king-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-king",
-        "carlos-milla-soler"
-      ],
-      "credits": [
-        {
-          "person": "carlos-milla-soler",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "hard-boiled",
-        "horror",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "holly-stephen-king-2",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jane-santos-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CJ5R4Z1N",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Fj7pLPErL.jpg",
-          "id": "jane-santos-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jane-santos",
-            "ricardo-tejedo"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-09-21",
-          "runtime_min": 1105,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CJ5R4Z1N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "holly-stephen-king-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CJ5R4Z1N",
           "type": "libex-import"
         }
       ],

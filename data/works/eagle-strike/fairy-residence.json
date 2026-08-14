@@ -922,7 +922,58 @@
       ],
       "title": "Fairy Tale as Myth/Myth as Fairy Tale"
     },
-    "fairy-tale-german-edition": {
+    "fairy-tale-interrupted": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "rosemarie-terenzio"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir"
+      ],
+      "id": "fairy-tale-interrupted",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rosemarie-terenzio-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B007015S72",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91R75G4iJML.jpg",
+          "id": "rosemarie-terenzio-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosemarie-terenzio"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2012-01-24",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007015S72",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairy-tale-interrupted"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B007015S72",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairy Tale Interrupted"
+    },
+    "fairy-tale-stephen-king": {
       "added_at": "2026-07-29",
       "authors": [
         "stephen-king"
@@ -930,7 +981,7 @@
       "genres": [
         "horror"
       ],
-      "id": "fairy-tale-german-edition",
+      "id": "fairy-tale-stephen-king",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -938,6 +989,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0BCWZ8Y3R",
+              "region": "de"
+            },
             {
               "asin": "B0BCX1R92T",
               "region": "us"
@@ -2803,108 +2858,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B0BCX1R92T",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fairy-tale-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BCX1R92T",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fairy Tale (German Edition)"
-    },
-    "fairy-tale-interrupted": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "rosemarie-terenzio"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir"
-      ],
-      "id": "fairy-tale-interrupted",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rosemarie-terenzio-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B007015S72",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91R75G4iJML.jpg",
-          "id": "rosemarie-terenzio-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rosemarie-terenzio"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2012-01-24",
-          "runtime_min": 339,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B007015S72",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fairy-tale-interrupted"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B007015S72",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fairy Tale Interrupted"
-    },
-    "fairy-tale-stephen-king": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-king"
-      ],
-      "genres": [
-        "horror"
-      ],
-      "id": "fairy-tale-stephen-king",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-nathan-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BCWZ8Y3R",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BDGTSCLQL.jpg",
-          "id": "david-nathan-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-nathan"
-          ],
-          "publisher": "Random House Audio, Deutschland",
-          "release_date": "2022-09-12",
-          "runtime_min": 1607,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
               "ref": "B0BCWZ8Y3R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BCX1R92T",
               "type": "libex-import"
             }
           ],
@@ -2915,6 +2874,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BCWZ8Y3R",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BCX1R92T",
           "type": "libex-import"
         }
       ],

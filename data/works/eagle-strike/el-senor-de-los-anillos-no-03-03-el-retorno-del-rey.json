@@ -4444,6 +4444,9 @@
         "laini-taylor"
       ],
       "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
         "romance",
         "young-adult"
       ],
@@ -4458,57 +4461,7 @@
             {
               "asin": "B07Z5GTJZP",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/817ABguIH4L.jpg",
-          "id": "gwendolyne-flores-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gwendolyne-flores"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2019-09-16",
-          "runtime_min": 1188,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07Z5GTJZP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-sonador-desconocido"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07Z5GTJZP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El soñador desconocido"
-    },
-    "el-sonador-desconocido-strange-the-dreamer": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "laini-taylor"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "el-sonador-desconocido-strange-the-dreamer",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gwendolyne-flores-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "6073184999",
               "region": "us"
@@ -4527,21 +4480,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07Z5GTJZP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "6073184999",
               "type": "libex-import"
             }
           ],
-          "work": "el-sonador-desconocido-strange-the-dreamer"
+          "work": "el-sonador-desconocido"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07Z5GTJZP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "6073184999",
           "type": "libex-import"
         }
       ],
-      "title": "El soñador desconocido [Strange the Dreamer]"
+      "title": "El soñador desconocido"
     },
     "el-sue-ntilde-o-de-su-hija": {
       "added_at": "2026-07-29",
@@ -4601,6 +4564,8 @@
       ],
       "genres": [
         "historical-fiction",
+        "historical-romance",
+        "literary-fiction",
         "romance",
         "womens-fiction"
       ],
@@ -4615,84 +4580,7 @@
             {
               "asin": "B07YX2F7LG",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iqOo0P+QL.jpg",
-          "id": "laura-carrero-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-carrero"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-11-16",
-          "runtime_min": 1745,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX2F7LG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-sueno-de-las-antillas"
-        },
-        "maria-del-carmen-siccardi-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YWYWNNT",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iqOo0P+QL.jpg",
-          "id": "maria-del-carmen-siccardi-2015",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "maria-del-carmen-siccardi"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2015-10-09",
-          "runtime_min": 1767,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YWYWNNT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-sueno-de-las-antillas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX2F7LG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El sueño de las Antillas"
-    },
-    "el-sueno-de-las-antillas-narracion-en-castellano-the-dream-of-the-antilles": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carmen-santos"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "el-sueno-de-las-antillas-narracion-en-castellano-the-dream-of-the-antilles",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-carrero-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B07KKLJ916",
               "region": "us"
@@ -5218,39 +5106,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX2F7LG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B07KKLJ916",
               "type": "libex-import"
             }
           ],
-          "work": "el-sueno-de-las-antillas-narracion-en-castellano-the-dream-of-the-antilles"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07KKLJ916",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El sueño de las Antillas (Narración en Castellano) [The Dream of the Antilles]"
-    },
-    "el-sueno-de-las-antillas-the-dream-of-the-antilles": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carmen-santos"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "el-sueno-de-las-antillas-the-dream-of-the-antilles",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-sueno-de-las-antillas"
+        },
         "maria-del-carmen-siccardi-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07YWYWNNT",
+              "region": "es"
+            },
             {
               "asin": "B016AWF3R6",
               "region": "us"
@@ -5806,21 +5680,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YWYWNNT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B016AWF3R6",
               "type": "libex-import"
             }
           ],
-          "work": "el-sueno-de-las-antillas-the-dream-of-the-antilles"
+          "work": "el-sueno-de-las-antillas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX2F7LG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07KKLJ916",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B016AWF3R6",
           "type": "libex-import"
         }
       ],
-      "title": "El sueño de las Antillas [The Dream of the Antilles]"
+      "title": "El sueño de las Antillas"
     },
     "el-sueno-de-los-heroes-dream-of-heroes": {
       "added_at": "2026-07-29",
@@ -5967,6 +5856,7 @@
         "william-shakespeare"
       ],
       "genres": [
+        "classics",
         "drama-plays"
       ],
       "id": "el-sueno-de-una-noche-de-verano",
@@ -5980,54 +5870,7 @@
             {
               "asin": "B085CJPQXG",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91n7MJNwtxL.jpg",
-          "id": "marcos-chacon-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcos-chacon"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-03",
-          "runtime_min": 37,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJPQXG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-sueno-de-una-noche-de-verano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJPQXG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El sueño de una noche de verano"
-    },
-    "el-sueno-de-una-noche-de-verano-a-midsummer-nights-dream": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "el-sueno-de-una-noche-de-verano-a-midsummer-nights-dream",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcos-chacon-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B085CJQQ7T",
               "region": "us"
@@ -6046,21 +5889,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B085CJPQXG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B085CJQQ7T",
               "type": "libex-import"
             }
           ],
-          "work": "el-sueno-de-una-noche-de-verano-a-midsummer-nights-dream"
+          "work": "el-sueno-de-una-noche-de-verano"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJPQXG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CJQQ7T",
           "type": "libex-import"
         }
       ],
-      "title": "El sueño de una noche de verano [A Midsummer Night's Dream]"
+      "title": "El sueño de una noche de verano"
     },
     "el-sueno-de-valentine-1": {
       "added_at": "2026-08-02",
@@ -7080,256 +6933,14 @@
         "gemma-herrero-virto"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "occult",
         "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "el-susurro-de-los-condenados-narracion-en-castellano-the-whisper-of-the-damned-narration-in-castilia",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-romero-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B088FZP4Z8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 21631,
-              "start_ms": 0,
-              "title": "Créditos Iniciales"
-            },
-            {
-              "length_ms": 152024,
-              "start_ms": 21631,
-              "title": "Nota de la Autora"
-            },
-            {
-              "length_ms": 9867,
-              "start_ms": 173655,
-              "title": "Al y Eli. Newark, (New Jersey). 9 Octubre de 1989"
-            },
-            {
-              "length_ms": 991384,
-              "start_ms": 183522,
-              "title": "Capítulo Uno"
-            },
-            {
-              "length_ms": 744013,
-              "start_ms": 1174906,
-              "title": "Capítulo Dos"
-            },
-            {
-              "length_ms": 1187631,
-              "start_ms": 1918919,
-              "title": "Capítulo Tres"
-            },
-            {
-              "length_ms": 743642,
-              "start_ms": 3106550,
-              "title": "Capítulo Cuatro"
-            },
-            {
-              "length_ms": 775732,
-              "start_ms": 3850192,
-              "title": "Capítulo Cinco"
-            },
-            {
-              "length_ms": 11545,
-              "start_ms": 4625924,
-              "title": "Al y Eli. Prisión de Sing Sing, Ossining (Nueva York). Octubre de 1989"
-            },
-            {
-              "length_ms": 2122159,
-              "start_ms": 4637469,
-              "title": "Capítulo Uno"
-            },
-            {
-              "length_ms": 1278722,
-              "start_ms": 6759628,
-              "title": "Capítulo Dos"
-            },
-            {
-              "length_ms": 1598113,
-              "start_ms": 8038350,
-              "title": "Capítulo Tres"
-            },
-            {
-              "length_ms": 363578,
-              "start_ms": 9636463,
-              "title": "Capítulo Cuatro"
-            },
-            {
-              "length_ms": 1126283,
-              "start_ms": 10000041,
-              "title": "Capítulo Cinco"
-            },
-            {
-              "length_ms": 2289417,
-              "start_ms": 11126324,
-              "title": "Capítulo Seis"
-            },
-            {
-              "length_ms": 403098,
-              "start_ms": 13415741,
-              "title": "Capítulo Siete"
-            },
-            {
-              "length_ms": 8576,
-              "start_ms": 13818839,
-              "title": "Al. Prisión de Sing Sing, Ossining (Nueva York). Octubre de 1989"
-            },
-            {
-              "length_ms": 1241888,
-              "start_ms": 13827415,
-              "title": "Capítulo Uno"
-            },
-            {
-              "length_ms": 1007606,
-              "start_ms": 15069303,
-              "title": "Capítulo Dos"
-            },
-            {
-              "length_ms": 1593422,
-              "start_ms": 16076909,
-              "title": "Capítulo Tres"
-            },
-            {
-              "length_ms": 1870228,
-              "start_ms": 17670331,
-              "title": "Capítulo Cuatro"
-            },
-            {
-              "length_ms": 1361571,
-              "start_ms": 19540559,
-              "title": "Capítulo Cinco"
-            },
-            {
-              "length_ms": 1323676,
-              "start_ms": 20902130,
-              "title": "Capítulo Seis"
-            },
-            {
-              "length_ms": 6700,
-              "start_ms": 22225806,
-              "title": "Eli. Swanton (Vermont). Octubre de 1989"
-            },
-            {
-              "length_ms": 1274693,
-              "start_ms": 22232506,
-              "title": "Capítulo Uno"
-            },
-            {
-              "length_ms": 711668,
-              "start_ms": 23507199,
-              "title": "Capítulo Dos"
-            },
-            {
-              "length_ms": 1288730,
-              "start_ms": 24218867,
-              "title": "Capítulo Tres"
-            },
-            {
-              "length_ms": 1166825,
-              "start_ms": 25507597,
-              "title": "Capítulo Cuatro"
-            },
-            {
-              "length_ms": 1452454,
-              "start_ms": 26674422,
-              "title": "Capítulo Cinco"
-            },
-            {
-              "length_ms": 1453824,
-              "start_ms": 28126876,
-              "title": "Capítulo Seis"
-            },
-            {
-              "length_ms": 650321,
-              "start_ms": 29580700,
-              "title": "Capítulo Siete"
-            },
-            {
-              "length_ms": 1143513,
-              "start_ms": 30231021,
-              "title": "Capítulo Ocho"
-            },
-            {
-              "length_ms": 858720,
-              "start_ms": 31374534,
-              "title": "Capítulo Nueve"
-            },
-            {
-              "length_ms": 8258,
-              "start_ms": 32233254,
-              "title": "Al y Eli. Swanton (Vermont). Noviembre de 1989"
-            },
-            {
-              "length_ms": 979309,
-              "start_ms": 32241512,
-              "title": "Capítulo Uno"
-            },
-            {
-              "length_ms": 990029,
-              "start_ms": 33220821,
-              "title": "Capítulo Dos"
-            },
-            {
-              "length_ms": 2237846,
-              "start_ms": 34210850,
-              "title": "Capítulo Tres"
-            },
-            {
-              "length_ms": 65642,
-              "start_ms": 36448696,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lQxaP0DJL.jpg",
-          "id": "laura-romero-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-romero"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-06-01",
-          "runtime_min": 608,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B088FZP4Z8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-susurro-de-los-condenados-narracion-en-castellano-the-whisper-of-the-damned-narration-in-castilia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B088FZP4Z8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Susurro De Los Condenados (Narración en Castellano) [The Whisper of the Damned (Narration in Castilian)]"
-    },
-    "el-susurro-de-los-condenados-the-whisper-of-the-damned": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "gemma-herrero-virto"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
+        "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "el-susurro-de-los-condenados-the-whisper-of-the-damned",
+      "id": "el-susurro-de-los-condenados-narracion-en-castellano-the-whisper-of-the-damned-narration-in-castilia",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -7556,17 +7167,242 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-susurro-de-los-condenados-the-whisper-of-the-damned"
+          "work": "el-susurro-de-los-condenados-narracion-en-castellano-the-whisper-of-the-damned-narration-in-castilia"
+        },
+        "laura-romero-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B088FZP4Z8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21631,
+              "start_ms": 0,
+              "title": "Créditos Iniciales"
+            },
+            {
+              "length_ms": 152024,
+              "start_ms": 21631,
+              "title": "Nota de la Autora"
+            },
+            {
+              "length_ms": 9867,
+              "start_ms": 173655,
+              "title": "Al y Eli. Newark, (New Jersey). 9 Octubre de 1989"
+            },
+            {
+              "length_ms": 991384,
+              "start_ms": 183522,
+              "title": "Capítulo Uno"
+            },
+            {
+              "length_ms": 744013,
+              "start_ms": 1174906,
+              "title": "Capítulo Dos"
+            },
+            {
+              "length_ms": 1187631,
+              "start_ms": 1918919,
+              "title": "Capítulo Tres"
+            },
+            {
+              "length_ms": 743642,
+              "start_ms": 3106550,
+              "title": "Capítulo Cuatro"
+            },
+            {
+              "length_ms": 775732,
+              "start_ms": 3850192,
+              "title": "Capítulo Cinco"
+            },
+            {
+              "length_ms": 11545,
+              "start_ms": 4625924,
+              "title": "Al y Eli. Prisión de Sing Sing, Ossining (Nueva York). Octubre de 1989"
+            },
+            {
+              "length_ms": 2122159,
+              "start_ms": 4637469,
+              "title": "Capítulo Uno"
+            },
+            {
+              "length_ms": 1278722,
+              "start_ms": 6759628,
+              "title": "Capítulo Dos"
+            },
+            {
+              "length_ms": 1598113,
+              "start_ms": 8038350,
+              "title": "Capítulo Tres"
+            },
+            {
+              "length_ms": 363578,
+              "start_ms": 9636463,
+              "title": "Capítulo Cuatro"
+            },
+            {
+              "length_ms": 1126283,
+              "start_ms": 10000041,
+              "title": "Capítulo Cinco"
+            },
+            {
+              "length_ms": 2289417,
+              "start_ms": 11126324,
+              "title": "Capítulo Seis"
+            },
+            {
+              "length_ms": 403098,
+              "start_ms": 13415741,
+              "title": "Capítulo Siete"
+            },
+            {
+              "length_ms": 8576,
+              "start_ms": 13818839,
+              "title": "Al. Prisión de Sing Sing, Ossining (Nueva York). Octubre de 1989"
+            },
+            {
+              "length_ms": 1241888,
+              "start_ms": 13827415,
+              "title": "Capítulo Uno"
+            },
+            {
+              "length_ms": 1007606,
+              "start_ms": 15069303,
+              "title": "Capítulo Dos"
+            },
+            {
+              "length_ms": 1593422,
+              "start_ms": 16076909,
+              "title": "Capítulo Tres"
+            },
+            {
+              "length_ms": 1870228,
+              "start_ms": 17670331,
+              "title": "Capítulo Cuatro"
+            },
+            {
+              "length_ms": 1361571,
+              "start_ms": 19540559,
+              "title": "Capítulo Cinco"
+            },
+            {
+              "length_ms": 1323676,
+              "start_ms": 20902130,
+              "title": "Capítulo Seis"
+            },
+            {
+              "length_ms": 6700,
+              "start_ms": 22225806,
+              "title": "Eli. Swanton (Vermont). Octubre de 1989"
+            },
+            {
+              "length_ms": 1274693,
+              "start_ms": 22232506,
+              "title": "Capítulo Uno"
+            },
+            {
+              "length_ms": 711668,
+              "start_ms": 23507199,
+              "title": "Capítulo Dos"
+            },
+            {
+              "length_ms": 1288730,
+              "start_ms": 24218867,
+              "title": "Capítulo Tres"
+            },
+            {
+              "length_ms": 1166825,
+              "start_ms": 25507597,
+              "title": "Capítulo Cuatro"
+            },
+            {
+              "length_ms": 1452454,
+              "start_ms": 26674422,
+              "title": "Capítulo Cinco"
+            },
+            {
+              "length_ms": 1453824,
+              "start_ms": 28126876,
+              "title": "Capítulo Seis"
+            },
+            {
+              "length_ms": 650321,
+              "start_ms": 29580700,
+              "title": "Capítulo Siete"
+            },
+            {
+              "length_ms": 1143513,
+              "start_ms": 30231021,
+              "title": "Capítulo Ocho"
+            },
+            {
+              "length_ms": 858720,
+              "start_ms": 31374534,
+              "title": "Capítulo Nueve"
+            },
+            {
+              "length_ms": 8258,
+              "start_ms": 32233254,
+              "title": "Al y Eli. Swanton (Vermont). Noviembre de 1989"
+            },
+            {
+              "length_ms": 979309,
+              "start_ms": 32241512,
+              "title": "Capítulo Uno"
+            },
+            {
+              "length_ms": 990029,
+              "start_ms": 33220821,
+              "title": "Capítulo Dos"
+            },
+            {
+              "length_ms": 2237846,
+              "start_ms": 34210850,
+              "title": "Capítulo Tres"
+            },
+            {
+              "length_ms": 65642,
+              "start_ms": 36448696,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lQxaP0DJL.jpg",
+          "id": "laura-romero-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laura-romero"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-06-01",
+          "runtime_min": 608,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B088FZP4Z8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-susurro-de-los-condenados-narracion-en-castellano-the-whisper-of-the-damned-narration-in-castilia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B088FZP4Z8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0848KD6J9",
           "type": "libex-import"
         }
       ],
-      "title": "El Susurro De Los Condenados [The Whisper of the Damned]"
+      "title": "El Susurro De Los Condenados (Narración en Castellano) [The Whisper of the Damned (Narration in Castilian)]"
     },
     "el-susurro-del-angel-the-whisper-of-the-angel": {
       "added_at": "2026-07-29",
@@ -8035,59 +7871,6 @@
       ],
       "title": "El talento oscuro [The Dark Talent]"
     },
-    "el-talmud-de-viena-the-talmud-of-vienna": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "gonzalo-hernandez-guarch"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "military-history",
-        "religion-spirituality"
-      ],
-      "id": "el-talmud-de-viena-the-talmud-of-vienna",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raul-gutierrez-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B078SYZLH3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/810McuTDaWL.jpg",
-          "id": "raul-gutierrez-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raul-gutierrez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2018-01-30",
-          "runtime_min": 1959,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B078SYZLH3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-talmud-de-viena-the-talmud-of-vienna"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B078SYZLH3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El talmud de Viena [The Talmud of Vienna]"
-    },
     "el-talmud-de-viena-the-talmud-of-vienna-narracion-en-castellano": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8130,12 +7913,45 @@
             }
           ],
           "work": "el-talmud-de-viena-the-talmud-of-vienna-narracion-en-castellano"
+        },
+        "raul-gutierrez-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B078SYZLH3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810McuTDaWL.jpg",
+          "id": "raul-gutierrez-2018",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "raul-gutierrez"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-01-30",
+          "runtime_min": 1959,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B078SYZLH3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-talmud-de-viena-the-talmud-of-vienna-narracion-en-castellano"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B07P14Q8MH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B078SYZLH3",
           "type": "libex-import"
         }
       ],

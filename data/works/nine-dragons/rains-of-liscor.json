@@ -1972,6 +1972,7 @@
         "l-p-sicard"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "mystery",
         "thriller-suspense"
@@ -2048,29 +2049,7 @@
             }
           ],
           "work": "raiponce"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "2897365846",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Raiponce"
-    },
-    "raiponce-adapte-aux-adultes-rapunzel-adaptation-for-adults": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-p-sicard"
-      ],
-      "genres": [
-        "fantasy"
-      ],
-      "id": "raiponce-adapte-aux-adultes-rapunzel-adaptation-for-adults",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "catherine-de-seve-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2141,17 +2120,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "raiponce-adapte-aux-adultes-rapunzel-adaptation-for-adults"
+          "work": "raiponce"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "2897365846",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B08JMDB2MK",
           "type": "libex-import"
         }
       ],
-      "title": "Raiponce (adapté aux adultes) [Rapunzel (adaptation for adults)]"
+      "title": "Raiponce"
     },
     "raiponce-marlene-jobert": {
       "added_at": "2026-08-02",

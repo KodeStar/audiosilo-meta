@@ -4297,13 +4297,43 @@
         "karin-slaughter"
       ],
       "genres": [
+        "medicine",
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "fractured-karin-slaughter",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kathleen-early-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07DVPHRQN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JQKLshyiL.jpg",
+          "id": "kathleen-early-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kathleen-early"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2018-08-28",
+          "runtime_min": 812,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07DVPHRQN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fractured-karin-slaughter"
+        },
         "phil-gigante-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4477,6 +4507,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002VA92QU",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07DVPHRQN",
           "type": "libex-import"
         }
       ],

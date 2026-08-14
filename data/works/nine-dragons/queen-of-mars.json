@@ -1181,7 +1181,7 @@
       ],
       "title": "Queen of Myth and Monsters"
     },
-    "queen-of-myth-and-monsters-german-edition": {
+    "queen-of-myth-and-monsters-scarlett-st-clair": {
       "added_at": "2026-07-29",
       "authors": [
         "scarlett-st-clair",
@@ -1189,9 +1189,10 @@
       ],
       "genres": [
         "fantasy",
+        "paranormal-romance",
         "romance"
       ],
-      "id": "queen-of-myth-and-monsters-german-edition",
+      "id": "queen-of-myth-and-monsters-scarlett-st-clair",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -1199,6 +1200,10 @@
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B0CNWBHDRX",
+              "region": "de"
+            },
             {
               "asin": "B0CNWBRMMH",
               "region": "us"
@@ -1218,60 +1223,12 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
-              "ref": "B0CNWBRMMH",
+              "ref": "B0CNWBHDRX",
               "type": "libex-import"
-            }
-          ],
-          "work": "queen-of-myth-and-monsters-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CNWBRMMH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Queen of Myth and Monsters (German edition)"
-    },
-    "queen-of-myth-and-monsters-scarlett-st-clair": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "scarlett-st-clair",
-        "silvia-gleissner"
-      ],
-      "genres": [
-        "paranormal-romance",
-        "romance"
-      ],
-      "id": "queen-of-myth-and-monsters-scarlett-st-clair",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bastian-korff-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CNWBHDRX",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8110DtNAndL.jpg",
-          "id": "bastian-korff-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bastian-korff",
-            "franziska-grun"
-          ],
-          "publisher": "LYX.audio",
-          "release_date": "2023-11-23",
-          "runtime_min": 736,
-          "sources": [
+            },
             {
               "imported_at": "2026-07-29",
-              "ref": "B0CNWBHDRX",
+              "ref": "B0CNWBRMMH",
               "type": "libex-import"
             }
           ],
@@ -1282,6 +1239,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0CNWBHDRX",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CNWBRMMH",
           "type": "libex-import"
         }
       ],

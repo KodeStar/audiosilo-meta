@@ -3123,6 +3123,10 @@
             {
               "asin": "B0D8JBNXWH",
               "region": "de"
+            },
+            {
+              "asin": "B0D8J9VML4",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71BfW+Mw-UL.jpg",
@@ -3140,6 +3144,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0D8JBNXWH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D8J9VML4",
+              "type": "libex-import"
             }
           ],
           "work": "eve-amor-towles"
@@ -3149,6 +3158,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0D8JBNXWH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D8J9VML4",
           "type": "libex-import"
         }
       ],
@@ -3837,63 +3851,6 @@
         }
       ],
       "title": "Eve"
-    },
-    "eve-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "amor-towles",
-        "susanne-hobel"
-      ],
-      "credits": [
-        {
-          "person": "susanne-hobel",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "eve-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hans-jurgen-stockerl-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D8J9VML4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71BfW+Mw-UL.jpg",
-          "id": "hans-jurgen-stockerl-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hans-jurgen-stockerl"
-          ],
-          "publisher": "Hörbuch Hamburg",
-          "release_date": "2024-07-22",
-          "runtime_min": 473,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D8J9VML4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eve-german-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D8J9VML4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Eve (German edition)"
     },
     "eve-in-exile-and-the-restoration-of-femininity": {
       "added_at": "2026-07-29",

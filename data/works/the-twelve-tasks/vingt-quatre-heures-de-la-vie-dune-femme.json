@@ -7068,7 +7068,9 @@
       "genres": [
         "fantasy",
         "paranormal",
-        "urban-fantasy"
+        "romance",
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "violet",
       "language": "en",
@@ -7203,12 +7205,147 @@
             }
           ],
           "work": "violet"
+        },
+        "michele-carpenter-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CNSGXSRB",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15139,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1092452,
+              "start_ms": 15139,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 490684,
+              "start_ms": 1107591,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1360015,
+              "start_ms": 1598275,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1124449,
+              "start_ms": 2958290,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1443166,
+              "start_ms": 4082739,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 927985,
+              "start_ms": 5525905,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1194062,
+              "start_ms": 6453890,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1299365,
+              "start_ms": 7647952,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1661968,
+              "start_ms": 8947317,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1179991,
+              "start_ms": 10609285,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1069766,
+              "start_ms": 11789276,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1283227,
+              "start_ms": 12859042,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 579709,
+              "start_ms": 14142269,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1175185,
+              "start_ms": 14721978,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1203420,
+              "start_ms": 15897163,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1265092,
+              "start_ms": 17100583,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 945980,
+              "start_ms": 18365675,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1272476,
+              "start_ms": 19311655,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 24147,
+              "start_ms": 20584131,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nWYl81yEL.jpg",
+          "id": "michele-carpenter-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michele-carpenter"
+          ],
+          "publisher": "Cheree Alsop",
+          "release_date": "2023-11-21",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CNSGXSRB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "violet"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B00MWB1E3C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CNSGXSRB",
           "type": "libex-import"
         }
       ],
@@ -8856,161 +8993,6 @@
       ],
       "title": "Violet: Spell Library, Book 1"
     },
-    "violet-the-silver-series-book-4": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "cheree-alsop"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "violet-the-silver-series-book-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michele-carpenter-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CNSGXSRB",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15139,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1092452,
-              "start_ms": 15139,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 490684,
-              "start_ms": 1107591,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1360015,
-              "start_ms": 1598275,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1124449,
-              "start_ms": 2958290,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1443166,
-              "start_ms": 4082739,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 927985,
-              "start_ms": 5525905,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1194062,
-              "start_ms": 6453890,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1299365,
-              "start_ms": 7647952,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1661968,
-              "start_ms": 8947317,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1179991,
-              "start_ms": 10609285,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1069766,
-              "start_ms": 11789276,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1283227,
-              "start_ms": 12859042,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 579709,
-              "start_ms": 14142269,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1175185,
-              "start_ms": 14721978,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1203420,
-              "start_ms": 15897163,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1265092,
-              "start_ms": 17100583,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 945980,
-              "start_ms": 18365675,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1272476,
-              "start_ms": 19311655,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 24147,
-              "start_ms": 20584131,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nWYl81yEL.jpg",
-          "id": "michele-carpenter-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michele-carpenter"
-          ],
-          "publisher": "Cheree Alsop",
-          "release_date": "2023-11-21",
-          "runtime_min": 343,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CNSGXSRB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "violet-the-silver-series-book-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CNSGXSRB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Violet: The Silver Series, Book 4"
-    },
     "violet-the-velvet-vulture": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9424,6 +9406,207 @@
             {
               "asin": "B09QH8PFZG",
               "region": "es"
+            },
+            {
+              "asin": "B09QH7YLXC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16207,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 10681,
+              "start_ms": 16207,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 19458,
+              "start_ms": 26888,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 63088,
+              "start_ms": 46346,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 10379,
+              "start_ms": 109434,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 1567184,
+              "start_ms": 119813,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 1688740,
+              "start_ms": 1686997,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 1277260,
+              "start_ms": 3375737,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 1511851,
+              "start_ms": 4652997,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 2178635,
+              "start_ms": 6164848,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 2374124,
+              "start_ms": 8343483,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 10448,
+              "start_ms": 10717607,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 1120386,
+              "start_ms": 10728055,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 1132251,
+              "start_ms": 11848441,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 2055848,
+              "start_ms": 12980692,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 1119410,
+              "start_ms": 15036540,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 1019170,
+              "start_ms": 16155950,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 2167327,
+              "start_ms": 17175120,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 1125192,
+              "start_ms": 19342447,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 10843,
+              "start_ms": 20467639,
+              "title": "Capítulo 20"
+            },
+            {
+              "length_ms": 2050229,
+              "start_ms": 20478482,
+              "title": "Capítulo 21"
+            },
+            {
+              "length_ms": 1333289,
+              "start_ms": 22528711,
+              "title": "Capítulo 22"
+            },
+            {
+              "length_ms": 1212406,
+              "start_ms": 23862000,
+              "title": "Capítulo 23"
+            },
+            {
+              "length_ms": 2095438,
+              "start_ms": 25074406,
+              "title": "Capítulo 24"
+            },
+            {
+              "length_ms": 1208436,
+              "start_ms": 27169844,
+              "title": "Capítulo 25"
+            },
+            {
+              "length_ms": 1518120,
+              "start_ms": 28378280,
+              "title": "Capítulo 26"
+            },
+            {
+              "length_ms": 1498383,
+              "start_ms": 29896400,
+              "title": "Capítulo 27"
+            },
+            {
+              "length_ms": 10216,
+              "start_ms": 31394783,
+              "title": "Capítulo 28"
+            },
+            {
+              "length_ms": 1189767,
+              "start_ms": 31404999,
+              "title": "Capítulo 29"
+            },
+            {
+              "length_ms": 985222,
+              "start_ms": 32594766,
+              "title": "Capítulo 30"
+            },
+            {
+              "length_ms": 1151500,
+              "start_ms": 33579988,
+              "title": "Capítulo 31"
+            },
+            {
+              "length_ms": 1389017,
+              "start_ms": 34731488,
+              "title": "Capítulo 32"
+            },
+            {
+              "length_ms": 1060548,
+              "start_ms": 36120505,
+              "title": "Capítulo 33"
+            },
+            {
+              "length_ms": 971964,
+              "start_ms": 37181053,
+              "title": "Capítulo 34"
+            },
+            {
+              "length_ms": 1619731,
+              "start_ms": 38153017,
+              "title": "Capítulo 35"
+            },
+            {
+              "length_ms": 764191,
+              "start_ms": 39772748,
+              "title": "Capítulo 36"
+            },
+            {
+              "length_ms": 474267,
+              "start_ms": 40536939,
+              "title": "Capítulo 37"
+            },
+            {
+              "length_ms": 109017,
+              "start_ms": 41011206,
+              "title": "Capítulo 38"
+            },
+            {
+              "length_ms": 41400,
+              "start_ms": 41120223,
+              "title": "Capítulo 39"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Lyp0aREIL.jpg",
@@ -9441,6 +9624,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09QH8PFZG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09QH7YLXC",
+              "type": "libex-import"
             }
           ],
           "work": "violeta"
@@ -9450,6 +9638,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B09QH8PFZG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09QH7YLXC",
           "type": "libex-import"
         }
       ],
@@ -9769,254 +9962,6 @@
         }
       ],
       "title": "Violeta"
-    },
-    "violeta-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "historical-fiction",
-        "womens-fiction"
-      ],
-      "id": "violeta-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "javiera-gazitua-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09QH7YLXC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16207,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 10681,
-              "start_ms": 16207,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 19458,
-              "start_ms": 26888,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 63088,
-              "start_ms": 46346,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 10379,
-              "start_ms": 109434,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1567184,
-              "start_ms": 119813,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1688740,
-              "start_ms": 1686997,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 1277260,
-              "start_ms": 3375737,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1511851,
-              "start_ms": 4652997,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 2178635,
-              "start_ms": 6164848,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 2374124,
-              "start_ms": 8343483,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 10448,
-              "start_ms": 10717607,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 1120386,
-              "start_ms": 10728055,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 1132251,
-              "start_ms": 11848441,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 2055848,
-              "start_ms": 12980692,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 1119410,
-              "start_ms": 15036540,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 1019170,
-              "start_ms": 16155950,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 2167327,
-              "start_ms": 17175120,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 1125192,
-              "start_ms": 19342447,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 10843,
-              "start_ms": 20467639,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 2050229,
-              "start_ms": 20478482,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 1333289,
-              "start_ms": 22528711,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 1212406,
-              "start_ms": 23862000,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 2095438,
-              "start_ms": 25074406,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 1208436,
-              "start_ms": 27169844,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 1518120,
-              "start_ms": 28378280,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 1498383,
-              "start_ms": 29896400,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 10216,
-              "start_ms": 31394783,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 1189767,
-              "start_ms": 31404999,
-              "title": "Capítulo 29"
-            },
-            {
-              "length_ms": 985222,
-              "start_ms": 32594766,
-              "title": "Capítulo 30"
-            },
-            {
-              "length_ms": 1151500,
-              "start_ms": 33579988,
-              "title": "Capítulo 31"
-            },
-            {
-              "length_ms": 1389017,
-              "start_ms": 34731488,
-              "title": "Capítulo 32"
-            },
-            {
-              "length_ms": 1060548,
-              "start_ms": 36120505,
-              "title": "Capítulo 33"
-            },
-            {
-              "length_ms": 971964,
-              "start_ms": 37181053,
-              "title": "Capítulo 34"
-            },
-            {
-              "length_ms": 1619731,
-              "start_ms": 38153017,
-              "title": "Capítulo 35"
-            },
-            {
-              "length_ms": 764191,
-              "start_ms": 39772748,
-              "title": "Capítulo 36"
-            },
-            {
-              "length_ms": 474267,
-              "start_ms": 40536939,
-              "title": "Capítulo 37"
-            },
-            {
-              "length_ms": 109017,
-              "start_ms": 41011206,
-              "title": "Capítulo 38"
-            },
-            {
-              "length_ms": 41400,
-              "start_ms": 41120223,
-              "title": "Capítulo 39"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Lyp0aREIL.jpg",
-          "id": "javiera-gazitua-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "javiera-gazitua"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2022-01-25",
-          "runtime_min": 685,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09QH7YLXC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "violeta-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09QH7YLXC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Violeta (Spanish Edition)"
     }
   }
 }

@@ -54,6 +54,51 @@
             }
           ],
           "work": "tracking-magic-dramatized-adaptation"
+        },
+        "lauren-fortgang-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1774249650",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20944,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3807004,
+              "start_ms": 20944,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 42747,
+              "start_ms": 3827948,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qCSCp9eYL.jpg",
+          "id": "lauren-fortgang-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lauren-fortgang"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2021-01-19",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1774249650",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tracking-magic-dramatized-adaptation"
         }
       },
       "sources": [
@@ -65,6 +110,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09NQQHC2Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1774249650",
           "type": "libex-import"
         }
       ],

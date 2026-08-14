@@ -15369,7 +15369,9 @@
         "marion-zimmer-bradley"
       ],
       "genres": [
-        "science-fiction"
+        "fantasy",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "the-forbidden-tower",
       "language": "en",
@@ -15524,30 +15526,7 @@
             }
           ],
           "work": "the-forbidden-tower"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B078Z1CZCF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Forbidden Tower"
-    },
-    "the-forbidden-tower-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "fantasy",
-        "urban-fantasy"
-      ],
-      "id": "the-forbidden-tower-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-bellmore-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15706,17 +15685,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-forbidden-tower-international-edition"
+          "work": "the-forbidden-tower"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078Z1CZCF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KYFJ4Y8",
           "type": "libex-import"
         }
       ],
-      "title": "The Forbidden Tower [International Edition]"
+      "title": "The Forbidden Tower"
     }
   }
 }

@@ -10536,7 +10536,8 @@
       "genres": [
         "literary-fiction",
         "parenting-relationships",
-        "romance"
+        "romance",
+        "romantic-suspense"
       ],
       "id": "an-optimists-guide-to-heartbreak",
       "language": "de",
@@ -10549,62 +10550,7 @@
             {
               "asin": "B0D5R1TP5P",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FFw1gBwtL.jpg",
-          "id": "paula-hans-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paula-hans"
-          ],
-          "publisher": "Harper Audio",
-          "release_date": "2024-06-25",
-          "runtime_min": 633,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D5R1TP5P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "an-optimists-guide-to-heartbreak"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D5R1TP5P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "An Optimist's Guide to Heartbreak"
-    },
-    "an-optimists-guide-to-heartbreak-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jennifer-hartmann",
-        "ulrike-gerstner"
-      ],
-      "credits": [
-        {
-          "person": "ulrike-gerstner",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "parenting-relationships",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "an-optimists-guide-to-heartbreak-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paula-hans-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0D5R2WB67",
               "region": "us"
@@ -10623,21 +10569,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0D5R1TP5P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0D5R2WB67",
               "type": "libex-import"
             }
           ],
-          "work": "an-optimists-guide-to-heartbreak-german-edition"
+          "work": "an-optimists-guide-to-heartbreak"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D5R1TP5P",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D5R2WB67",
           "type": "libex-import"
         }
       ],
-      "title": "An Optimist's Guide to Heartbreak (German edition)"
+      "title": "An Optimist's Guide to Heartbreak"
     },
     "an-oracle-walks-into-a-bar": {
       "added_at": "2026-08-01",

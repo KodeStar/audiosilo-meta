@@ -7647,12 +7647,136 @@
         "epic-fantasy",
         "fantasy",
         "horror",
+        "post-apocalyptic",
         "science-fiction"
       ],
       "id": "the-warded-man",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09G89LHDL",
+              "region": "us"
+            },
+            {
+              "asin": "1645417832",
+              "region": "us"
+            },
+            {
+              "asin": "1645417859",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4394329,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4456234,
+              "start_ms": 4394329,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4200048,
+              "start_ms": 8850563,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4252920,
+              "start_ms": 13050611,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4450313,
+              "start_ms": 17303531,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4071433,
+              "start_ms": 21753844,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3377156,
+              "start_ms": 25825277,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3894009,
+              "start_ms": 29202433,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3504564,
+              "start_ms": 33096442,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3272806,
+              "start_ms": 36601006,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3195762,
+              "start_ms": 39873812,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3398332,
+              "start_ms": 43069574,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81abntrsp+L.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 774,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09G89LHDL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417832",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417832",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417859",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417859",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09G89LHDL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warded-man"
+        },
         "pete-bradbury-2009": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7869,151 +7993,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0036NEBJO",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Warded Man"
-    },
-    "the-warded-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "peter-v-brett"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "the-warded-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09G89LHDL",
-              "region": "us"
-            },
-            {
-              "asin": "1645417832",
-              "region": "us"
-            },
-            {
-              "asin": "1645417859",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4394329,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4456234,
-              "start_ms": 4394329,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4200048,
-              "start_ms": 8850563,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4252920,
-              "start_ms": 13050611,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4450313,
-              "start_ms": 17303531,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4071433,
-              "start_ms": 21753844,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3377156,
-              "start_ms": 25825277,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3894009,
-              "start_ms": 29202433,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3504564,
-              "start_ms": 33096442,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3272806,
-              "start_ms": 36601006,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3195762,
-              "start_ms": 39873812,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3398332,
-              "start_ms": 43069574,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81abntrsp+L.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 774,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09G89LHDL",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645417832",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645417832",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645417859",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645417859",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09G89LHDL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-warded-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09G89LHDL",
@@ -8045,7 +8025,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Warded Man [Dramatized Adaptation]"
+      "title": "The Warded Man"
     },
     "the-warden": {
       "added_at": "2026-08-02",
@@ -8060,6 +8040,141 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-shaw-parker-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00BXMIWSQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 930516,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1648477,
+              "start_ms": 930516,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1566604,
+              "start_ms": 2578993,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1173722,
+              "start_ms": 4145597,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1638121,
+              "start_ms": 5319319,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1554112,
+              "start_ms": 6957440,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 701428,
+              "start_ms": 8511552,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1525597,
+              "start_ms": 9212980,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1355117,
+              "start_ms": 10738577,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1128304,
+              "start_ms": 12093694,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1688648,
+              "start_ms": 13221998,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1115022,
+              "start_ms": 14910646,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 981229,
+              "start_ms": 16025668,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1450365,
+              "start_ms": 17006897,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1892473,
+              "start_ms": 18457262,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1741311,
+              "start_ms": 20349735,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 869959,
+              "start_ms": 22091046,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 740531,
+              "start_ms": 22961005,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1337655,
+              "start_ms": 23701536,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1580257,
+              "start_ms": 25039191,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 656382,
+              "start_ms": 26619448,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Htm-2Nn5L.jpg",
+          "id": "david-shaw-parker-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-shaw-parker"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2013-03-21",
+          "runtime_min": 454,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00BXMIWSQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warden"
+        },
         "edward-fox-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8765,6 +8880,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1606465597",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00BXMIWSQ",
           "type": "libex-import"
         }
       ],
@@ -9813,163 +9933,6 @@
         }
       ],
       "title": "The Warden Awakens"
-    },
-    "the-warden-chronicles-of-barsetshire-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anthony-trollope"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-warden-chronicles-of-barsetshire-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-shaw-parker-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00BXMIWSQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 930516,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1648477,
-              "start_ms": 930516,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1566604,
-              "start_ms": 2578993,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1173722,
-              "start_ms": 4145597,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1638121,
-              "start_ms": 5319319,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1554112,
-              "start_ms": 6957440,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 701428,
-              "start_ms": 8511552,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1525597,
-              "start_ms": 9212980,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1355117,
-              "start_ms": 10738577,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1128304,
-              "start_ms": 12093694,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1688648,
-              "start_ms": 13221998,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1115022,
-              "start_ms": 14910646,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 981229,
-              "start_ms": 16025668,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1450365,
-              "start_ms": 17006897,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1892473,
-              "start_ms": 18457262,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1741311,
-              "start_ms": 20349735,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 869959,
-              "start_ms": 22091046,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 740531,
-              "start_ms": 22961005,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1337655,
-              "start_ms": 23701536,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1580257,
-              "start_ms": 25039191,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 656382,
-              "start_ms": 26619448,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Htm-2Nn5L.jpg",
-          "id": "david-shaw-parker-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-shaw-parker"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2013-03-21",
-          "runtime_min": 454,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00BXMIWSQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-warden-chronicles-of-barsetshire-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00BXMIWSQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Warden - Chronicles of Barsetshire, Book 1"
     },
     "the-warden-global-omnibus-year-one": {
       "added_at": "2026-08-01",

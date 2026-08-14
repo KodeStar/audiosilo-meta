@@ -6,9 +6,11 @@
         "antoine-de-saint-exupery"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "classics",
-        "coming-of-age"
+        "coming-of-age",
+        "fantasy"
       ],
       "id": "il-piccolo-principe",
       "language": "it",
@@ -270,6 +272,34 @@
           ],
           "work": "il-piccolo-principe"
         },
+        "emanuele-marchesini-2015": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B018YKVBXM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Hh1wJxbUL.jpg",
+          "id": "emanuele-marchesini-2015",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emanuele-marchesini"
+          ],
+          "publisher": "Quondam",
+          "release_date": "2015-12-07",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B018YKVBXM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "il-piccolo-principe"
+        },
         "lorenzo-loreti-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -358,6 +388,34 @@
           ],
           "work": "il-piccolo-principe"
         },
+        "silvia-cecchini-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00P2YG7PQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51bx+ymPafL.jpg",
+          "id": "silvia-cecchini-2014",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "silvia-cecchini"
+          ],
+          "publisher": "Collina d'oro",
+          "release_date": "2014-11-03",
+          "runtime_min": 101,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00P2YG7PQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "il-piccolo-principe"
+        },
         "valentina-veratrini-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -420,91 +478,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DTKB6522",
           "type": "libex-import"
-        }
-      ],
-      "title": "Il piccolo principe"
-    },
-    "il-piccolo-principe-the-little-prince": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antoine-de-saint-exupery"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "il-piccolo-principe-the-little-prince",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emanuele-marchesini-2015": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B018YKVBXM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Hh1wJxbUL.jpg",
-          "id": "emanuele-marchesini-2015",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emanuele-marchesini"
-          ],
-          "publisher": "Quondam",
-          "release_date": "2015-12-07",
-          "runtime_min": 99,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B018YKVBXM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "il-piccolo-principe-the-little-prince"
         },
-        "silvia-cecchini-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00P2YG7PQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51bx+ymPafL.jpg",
-          "id": "silvia-cecchini-2014",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "silvia-cecchini"
-          ],
-          "publisher": "Collina d'oro",
-          "release_date": "2014-11-03",
-          "runtime_min": 101,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00P2YG7PQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "il-piccolo-principe-the-little-prince"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00P2YG7PQ",
           "type": "libex-import"
         }
       ],
-      "title": "Il Piccolo Principe [The Little Prince]"
+      "title": "Il piccolo principe"
     },
     "il-pifferaio-di-hamelin": {
       "added_at": "2026-08-02",

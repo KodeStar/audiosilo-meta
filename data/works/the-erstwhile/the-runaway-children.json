@@ -11542,6 +11542,7 @@
       ],
       "genres": [
         "cozy-mystery",
+        "hard-boiled",
         "mystery",
         "thriller-suspense"
       ],
@@ -11559,6 +11560,14 @@
             },
             {
               "asin": "B0C5YNPTPC",
+              "region": "uk"
+            },
+            {
+              "asin": "B0C3MD5JT9",
+              "region": "us"
+            },
+            {
+              "asin": "B0C3M97JZW",
               "region": "uk"
             }
           ],
@@ -11582,58 +11591,7 @@
               "imported_at": "2026-07-29",
               "ref": "B0C5YNPTPC",
               "type": "libex-import"
-            }
-          ],
-          "work": "the-running-grave-a-cormoran-strike-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C5YLDVBD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Running Grave: A Cormoran Strike Novel"
-    },
-    "the-running-grave-cormoran-strike-book-7": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-galbraith"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "the-running-grave-cormoran-strike-book-7",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-glenister-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0C3MD5JT9",
-              "region": "us"
             },
-            {
-              "asin": "B0C3M97JZW",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91sW1leSdWL.jpg",
-          "id": "robert-glenister-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-glenister"
-          ],
-          "publisher": "Little, Brown Book Group",
-          "release_date": "2023-09-26",
-          "runtime_min": 2053,
-          "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0C3MD5JT9",
@@ -11645,17 +11603,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-running-grave-cormoran-strike-book-7"
+          "work": "the-running-grave-a-cormoran-strike-novel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C5YLDVBD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0C3MD5JT9",
           "type": "libex-import"
         }
       ],
-      "title": "The Running Grave: Cormoran Strike, Book 7"
+      "title": "The Running Grave: A Cormoran Strike Novel"
     },
     "the-running-ground": {
       "added_at": "2026-07-29",

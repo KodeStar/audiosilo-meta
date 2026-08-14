@@ -1220,7 +1220,7 @@
         "work": "a-pocket-full-of-rye"
       }
     },
-    "a-portrait-of-the-artist-as-a-young-man-amazonclassics-edition": {
+    "a-portrait-of-the-artist-as-a-young-man": {
       "characters": {
         "characters": [
           {
@@ -1364,7 +1364,7 @@
             "type": "community"
           }
         ],
-        "work": "a-portrait-of-the-artist-as-a-young-man-amazonclassics-edition"
+        "work": "a-portrait-of-the-artist-as-a-young-man"
       },
       "recaps": {
         "ending": "At the university, Stephen separates himself from the institutions competing for his obedience. He refuses Davin's nationalism, rejects pressure to practice a faith he no longer accepts, and tells Cranly that he will risk isolation rather than surrender intellectual freedom. His thoughts about Emma and his arguments about art become part of the same effort to discover a voice of his own. The narrative shifts into Stephen's diary as he prepares to leave Ireland. His family is strained and his mother hopes he will learn what a life away from belief may mean, but he commits himself to exile, artistic work, and direct experience. The book closes before that future is realized: Stephen is poised to depart, invoking the mythic craftsman associated with his name and intending to transform the inherited materials of Irish life into art.",
@@ -1414,7 +1414,7 @@
             "type": "community"
           }
         ],
-        "work": "a-portrait-of-the-artist-as-a-young-man-amazonclassics-edition"
+        "work": "a-portrait-of-the-artist-as-a-young-man"
       }
     },
     "a-princess-of-mars": {
@@ -3491,217 +3491,6 @@
           }
         ],
         "work": "a-second-chance"
-      }
-    },
-    "a-sentimental-education": {
-      "characters": {
-        "characters": [
-          {
-            "description": "A young provincial of comfortable family background who travels between Nogent and Paris with ambitions that are strong in imagination but weak in execution. On a riverboat he sees Madame Arnoux and immediately makes his idealized love for her the center of his emotional life.",
-            "id": "frederic-moreau",
-            "name": "Frédéric Moreau",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "protagonist"
-          },
-          {
-            "aliases": [
-              "Marie Arnoux"
-            ],
-            "description": "The wife of Jacques Arnoux and mother of his children. Frédéric first sees her aboard a boat to Montereau and is captivated by her quiet dignity, turning a married woman he barely knows into the ideal around which he builds his hopes.",
-            "id": "madame-arnoux",
-            "name": "Madame Arnoux",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "Madame Arnoux's sociable, energetic husband, an art dealer and publisher whose shifting business schemes bring artists, writers, and speculators together. Frédéric cultivates his acquaintance chiefly to gain entry to the Arnoux home.",
-            "id": "jacques-arnoux",
-            "name": "Jacques Arnoux",
-            "reveal": {
-              "chapter": 1
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "Frédéric's closest friend from Nogent, intellectually forceful, politically restless, and impatient with Frédéric's indecision. He hopes that their friendship and Frédéric's prospects will help both men build influential careers in Paris.",
-            "id": "charles-deslauriers",
-            "name": "Charles Deslauriers",
-            "reveal": {
-              "chapter": 2
-            },
-            "role": "supporting"
-          },
-          {
-            "aliases": [
-              "The Maréchale"
-            ],
-            "description": "A fashionable courtesan in Arnoux's circle, lively and skilled at navigating the appetites of wealthy men. She offers Frédéric a worldly contrast to the distant, reverent love he directs toward Madame Arnoux.",
-            "id": "rosanette-bron",
-            "name": "Rosanette Bron",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A wealthy Parisian financier and public figure whose social position attracts Frédéric. He represents the respectable world of money, politics, and influence that the young man imagines entering.",
-            "id": "monsieur-dambreuse",
-            "name": "Monsieur Dambreuse",
-            "reveal": {
-              "chapter": 3
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "Monsieur Dambreuse's polished and socially adept wife. She receives Frédéric within an elite household where personal alliances and public ambition are closely connected.",
-            "id": "madame-dambreuse",
-            "name": "Madame Dambreuse",
-            "reveal": {
-              "chapter": 3
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "The daughter of Monsieur Roque, a neighbor of the Moreau family near Nogent. She grows from an impulsive girl into a young woman whose open attachment to Frédéric presents him with a possible provincial future.",
-            "id": "louise-roque",
-            "name": "Louise Roque",
-            "reveal": {
-              "chapter": 6
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "An honest, warmhearted shop assistant who becomes part of Frédéric's Paris circle. His instinctive generosity and loyalty distinguish him among companions often governed by vanity, calculation, or ideology.",
-            "id": "dussardier",
-            "name": "Dussardier",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A severe republican and socialist in Deslauriers's circle. Poor, disciplined, and doctrinaire, he judges society and his companions by rigid political principles.",
-            "id": "senecal",
-            "name": "Sénécal",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A journalist and man about town connected with Arnoux's artistic circle. He moves easily among newspapers, theaters, political talk, and fashionable entertainments, making himself useful without becoming dependable.",
-            "id": "hussonnet",
-            "name": "Hussonnet",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "minor"
-          },
-          {
-            "description": "A young law student of aristocratic family, vain about his rank and anxious in company. He belongs to Frédéric's social circle and becomes one of his rivals for attention and status.",
-            "id": "marquis-de-cisy",
-            "name": "Marquis de Cisy",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "minor"
-          },
-          {
-            "description": "One of Frédéric's fellow students, cautious and adaptable in both society and politics. His steady pursuit of advancement contrasts with Frédéric's fluctuating ambitions.",
-            "id": "martinon",
-            "name": "Martinon",
-            "reveal": {
-              "chapter": 4
-            },
-            "role": "minor"
-          },
-          {
-            "description": "Frédéric's widowed mother in Nogent, concerned with protecting the family's finances and securing her son's future. She encourages respectable ambition and a prudent marriage, while Frédéric repeatedly allows desire and fantasy to redirect him.",
-            "id": "madame-moreau",
-            "name": "Madame Moreau",
-            "reveal": {
-              "chapter": 2
-            },
-            "role": "supporting"
-          }
-        ],
-        "license": "CC-BY-SA-3.0",
-        "sources": [
-          {
-            "imported_at": "2026-08-07",
-            "ref": "model-knowledge:best-effort",
-            "type": "community"
-          }
-        ],
-        "work": "a-sentimental-education"
-      },
-      "recaps": {
-        "ending": "Frédéric's overlapping relationships and ambitions collapse without giving him a settled life. Rosanette's child by him dies, and their bond ends. He becomes Madame Dambreuse's lover and considers marriage after her husband's death, but breaks with her when she vindictively buys the Arnoux household effects at auction. The Arnoux family leaves France under financial pressure. Years later, an older Madame Arnoux visits Frédéric. They acknowledge that they loved one another, but the life they imagined is no longer possible; she leaves him a lock of her white hair and they part permanently. Frédéric and Deslauriers also fail in the grand careers they once projected. When the two friends meet again, they compare their disappointments and recall an adolescent visit to a brothel from which they fled in embarrassment. They decide that this absurd, unfulfilled adventure was perhaps their happiest experience, a final judgment on lives spent anticipating fulfillment more often than attaining it.",
-        "in_short": "Frédéric Moreau sees the married Madame Arnoux on a boat in 1840 and turns his love for her into the organizing fantasy of his life. In Paris he drifts among Arnoux's unstable businesses, the wealthy Dambreuses, a circle of students and political talkers, and his ambitious friend Deslauriers. An inheritance gives him freedom, but not purpose. He alternately pursues Madame Arnoux, the courtesan Rosanette, Madame Dambreuse, and the provincial Louise Roque, committing fully to none. The Revolution of 1848 exposes the same mixture of idealism, vanity, appetite, and opportunism in public life. Frédéric has a child with Rosanette, but the child dies; he later abandons Madame Dambreuse after she humiliates Madame Arnoux. The Arnoux family disappears abroad. Years later Madame Arnoux visits Frédéric, and they quietly admit their lasting love before separating forever. Frédéric and Deslauriers end by remembering a foolish youthful misadventure as the best moment of their disappointed lives.",
-        "license": "CC-BY-SA-3.0",
-        "recaps": [
-          {
-            "scope": "book",
-            "text": "In September 1840, eighteen-year-old Frédéric Moreau travels by steamboat from Paris toward his family home at Nogent. Aboard he meets the expansive art dealer Jacques Arnoux and sees Arnoux's wife, Marie. He is immediately overwhelmed by her beauty and manner, though she is married and scarcely aware of him. Back in Nogent, Frédéric reunites with Charles Deslauriers, his intense childhood friend. Both imagine distinguished futures: Frédéric expects to study law and enter society, while Deslauriers plans a career shaped by intellect and political ambition. In Paris, however, Frédéric's first efforts are hesitant. He seeks out Arnoux's art journal and shop chiefly in hope of seeing Madame Arnoux again, and he tries to approach the influential financier Dambreuse. His ambitions in love, society, and work remain largely imagined, while his money begins to run short.",
-            "through": {
-              "chapter": 3
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Frédéric becomes acquainted with the varied circle around Arnoux and the Latin Quarter: the journalist Hussonnet, the earnest Dussardier, the doctrinaire Sénécal, the aristocratic Cisy, and the adaptable Martinon. Deslauriers joins him in Paris and urges discipline, but Frédéric continues to organize his life around glimpses of Madame Arnoux. Arnoux's unstable business ventures and taste for pleasure contrast with his wife's domestic reserve. Frédéric also meets Rosanette, a courtesan known as the Maréchale, whose lively world is less remote than Madame Arnoux's. Financial disappointment sends Frédéric back toward Nogent, where Louise Roque is attached to him and his mother favors a prudent future. The death of an uncle unexpectedly leaves him a fortune. With independent means, Frédéric returns to Paris believing that wealth will at last allow him to realize his social and romantic hopes.",
-            "through": {
-              "chapter": 6
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Now wealthy, Frédéric enters Parisian society more easily but remains divided among incompatible desires. He improves his position with the Dambreuses, spends time in Arnoux's circle, and continues his reverent pursuit of Madame Arnoux. He is jealous of Arnoux's infidelities while still depending on the husband for access to her. Rosanette offers a more openly sensual attraction, and Frédéric's friends pursue their own interests around the same salons and entertainments. He spends money freely, delays serious work, and repeatedly mistakes proximity for progress. Madame Arnoux recognizes his devotion but is restrained by marriage, religion, and concern for her children. Louise continues to represent the possibility of marriage and a settled life in the provinces, yet Frédéric avoids a clear choice. Friendships also strain as Deslauriers resents the opportunities Frédéric wastes and occasionally acts against him.",
-            "through": {
-              "chapter": 9
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Frédéric's attachments become more entangled. His pursuit of Madame Arnoux advances toward mutual acknowledgment, but circumstances and her scruples repeatedly interrupt them. Arnoux's finances worsen as his ventures change and debts accumulate. Frédéric moves between the Arnoux household, Rosanette's fashionable entertainments, the Dambreuses' wealthy society, and visits to Nogent, promising more than he carries through. Around him, political discontent grows: his acquaintances argue over republicanism, socialism, property, and personal advancement, often mixing principle with rivalry. Frédéric arranges a private meeting with Madame Arnoux and expects a decisive fulfillment of their love. She does not arrive because a crisis involving her child keeps her away. Unaware of the reason, he reads the absence as rejection and turns toward Rosanette just as Paris approaches the upheaval of February 1848.",
-            "through": {
-              "chapter": 12
-            }
-          },
-          {
-            "scope": "book",
-            "text": "The February Revolution topples the July Monarchy and fills Paris with crowds, barricades, speeches, and improvised political authority. Frédéric observes the upheaval while his acquaintances rapidly adopt or revise public positions. Dussardier participates with sincere republican feeling; Sénécal seeks ideological power; others treat the new order as an opportunity. Frédéric briefly imagines a political role but remains more absorbed in private life. He leaves unsettled Paris with Rosanette for Fontainebleau, where their intimacy develops away from the fighting. The June Days then expose the violent divisions within the republic, and repression replaces the first mood of fraternity. The revolution does not clarify Frédéric's purpose. He returns to the same network of lovers, friends, money, and frustrated expectations, while the people around him reveal how readily political language can serve resentment or ambition.",
-            "through": {
-              "chapter": 15
-            }
-          },
-          {
-            "scope": "book",
-            "text": "Frédéric continues his relationship with Rosanette, who bears his child. For a time the baby gives him an unfamiliar sense of tenderness and responsibility, but the child becomes ill and dies, and grief contributes to the breakdown of the couple's bond. Frédéric also becomes the lover of Madame Dambreuse. After her husband dies, she expects Frédéric to marry her, offering wealth and position, but their alliance is driven as much by vanity and calculation as affection. Arnoux's debts finally overwhelm his household, placing Madame Arnoux at risk of public humiliation and forcing the family to dispose of its possessions. Frédéric tries to help but acts too late and too indirectly. Madame Dambreuse buys objects from the Arnoux home at auction and treats the purchase as a triumph over her rival. Disgusted by the deliberate cruelty, Frédéric ends their relationship and gives up the marriage that might have secured his fortune.",
-            "through": {
-              "chapter": 18
-            }
-          },
-          {
-            "scope": "book",
-            "text": "The Arnoux family leaves France after its financial ruin, taking Madame Arnoux beyond Frédéric's reach. The political generation also reaches a bleak conclusion: during the coup d'état of 1851, the generous Dussardier is killed in the street by Sénécal, whose rigid revolutionary posture has been converted into service to authoritarian force. Louise Roque, whom Frédéric once imagined marrying, chooses another path, while his other projects disperse. Many years pass. Madame Arnoux unexpectedly visits Frédéric, now with white hair. They speak openly about their love and the life that never occurred, but do not try to revive it; she leaves him a lock of hair and departs forever. Frédéric and Deslauriers, neither having achieved the brilliant future of their youth, later review their failures together. They recall an adolescent visit to a brothel when panic made them flee before anything happened and conclude that this comic anticipation may have been the best experience of their lives. Their verdict closes a story in which imagined possibilities repeatedly mattered more than completed acts.",
-            "through": {
-              "chapter": 21
-            }
-          }
-        ],
-        "sources": [
-          {
-            "imported_at": "2026-08-07",
-            "ref": "model-knowledge:best-effort",
-            "type": "community"
-          }
-        ],
-        "work": "a-sentimental-education"
       }
     },
     "a-separate-peace": {

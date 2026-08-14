@@ -7688,210 +7688,6 @@
       ],
       "title": "Space Taxi"
     },
-    "space-team": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "barry-j-hutchison"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "space-team",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "phil-thron-2016": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B01MZ28L8S",
-              "region": "us"
-            },
-            {
-              "asin": "B0FC72W2JH",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13885,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 831042,
-              "start_ms": 13885,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 977746,
-              "start_ms": 844927,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1136152,
-              "start_ms": 1822673,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2039548,
-              "start_ms": 2958825,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 251844,
-              "start_ms": 4998373,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1740057,
-              "start_ms": 5250217,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1228568,
-              "start_ms": 6990274,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 503037,
-              "start_ms": 8218842,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1471356,
-              "start_ms": 8721879,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 896522,
-              "start_ms": 10193235,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 658379,
-              "start_ms": 11089757,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 903860,
-              "start_ms": 11748136,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 775175,
-              "start_ms": 12651996,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1136477,
-              "start_ms": 13427171,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1396541,
-              "start_ms": 14563648,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 660143,
-              "start_ms": 15960189,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1332315,
-              "start_ms": 16620332,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1001570,
-              "start_ms": 17952647,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1300271,
-              "start_ms": 18954217,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1169728,
-              "start_ms": 20254488,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 722326,
-              "start_ms": 21424216,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1294652,
-              "start_ms": 22146542,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1884299,
-              "start_ms": 23441194,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 874185,
-              "start_ms": 25325493,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1099883,
-              "start_ms": 26199678,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1019031,
-              "start_ms": 27299561,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 25913,
-              "start_ms": 28318592,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Te0+MOsDL.jpg",
-          "id": "phil-thron-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "phil-thron"
-          ],
-          "publisher": "Zertex Books",
-          "release_date": "2016-12-23",
-          "runtime_min": 472,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B01MZ28L8S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FC72W2JH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "space-team"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01MZ28L8S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Space Team"
-    },
     "space-team-3-the-search-for-splurt-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
@@ -8519,6 +8315,9 @@
         "barry-j-hutchison"
       ],
       "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "fantasy",
         "science-fiction",
         "space-opera"
       ],
@@ -8590,6 +8389,185 @@
             }
           ],
           "work": "space-team-dramatized"
+        },
+        "phil-thron-2016": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B01MZ28L8S",
+              "region": "us"
+            },
+            {
+              "asin": "B0FC72W2JH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13885,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 831042,
+              "start_ms": 13885,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 977746,
+              "start_ms": 844927,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1136152,
+              "start_ms": 1822673,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2039548,
+              "start_ms": 2958825,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 251844,
+              "start_ms": 4998373,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1740057,
+              "start_ms": 5250217,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1228568,
+              "start_ms": 6990274,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 503037,
+              "start_ms": 8218842,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1471356,
+              "start_ms": 8721879,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 896522,
+              "start_ms": 10193235,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 658379,
+              "start_ms": 11089757,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 903860,
+              "start_ms": 11748136,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 775175,
+              "start_ms": 12651996,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1136477,
+              "start_ms": 13427171,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1396541,
+              "start_ms": 14563648,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 660143,
+              "start_ms": 15960189,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1332315,
+              "start_ms": 16620332,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1001570,
+              "start_ms": 17952647,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1300271,
+              "start_ms": 18954217,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1169728,
+              "start_ms": 20254488,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 722326,
+              "start_ms": 21424216,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1294652,
+              "start_ms": 22146542,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1884299,
+              "start_ms": 23441194,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 874185,
+              "start_ms": 25325493,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1099883,
+              "start_ms": 26199678,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1019031,
+              "start_ms": 27299561,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 25913,
+              "start_ms": 28318592,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Te0+MOsDL.jpg",
+          "id": "phil-thron-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "phil-thron"
+          ],
+          "publisher": "Zertex Books",
+          "release_date": "2016-12-23",
+          "runtime_min": 472,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B01MZ28L8S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FC72W2JH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "space-team-dramatized"
         }
       },
       "sources": [
@@ -8601,6 +8579,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1648818838",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01MZ28L8S",
           "type": "libex-import"
         }
       ],
@@ -8981,6 +8964,7 @@
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "science-fiction",
         "space-opera"
       ],
@@ -8988,6 +8972,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "carolyn-kashner-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BBJLD1DQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4241844,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4485445,
+              "start_ms": 4241844,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4286357,
+              "start_ms": 8727289,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4308300,
+              "start_ms": 13013646,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4076820,
+              "start_ms": 17321946,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4709331,
+              "start_ms": 21398766,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91r1M7wQAWL.jpg",
+          "id": "carolyn-kashner-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolyn-kashner",
+            "christopher-walker",
+            "danny-gavigan",
+            "darius-johnson",
+            "ian-putnam",
+            "laura-c-harris",
+            "marni-penning",
+            "nanette-savard",
+            "phil-thron",
+            "stephanie-nemeth-parker",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022-09-01",
+          "runtime_min": 434,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BBJLD1DQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "space-team-sentienced-to-death"
+        },
         "phil-thron-2019": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -9184,104 +9238,14 @@
           "imported_at": "2026-07-30",
           "ref": "B07SD25NWP",
           "type": "libex-import"
-        }
-      ],
-      "title": "Space Team: Sentienced to Death"
-    },
-    "space-team-sentienced-to-death-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "barry-j-hutchison"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "space-team-sentienced-to-death-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carolyn-kashner-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BBJLD1DQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4241844,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4485445,
-              "start_ms": 4241844,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4286357,
-              "start_ms": 8727289,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4308300,
-              "start_ms": 13013646,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4076820,
-              "start_ms": 17321946,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4709331,
-              "start_ms": 21398766,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91r1M7wQAWL.jpg",
-          "id": "carolyn-kashner-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carolyn-kashner",
-            "christopher-walker",
-            "danny-gavigan",
-            "darius-johnson",
-            "ian-putnam",
-            "laura-c-harris",
-            "marni-penning",
-            "nanette-savard",
-            "phil-thron",
-            "stephanie-nemeth-parker",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-09-01",
-          "runtime_min": 434,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BBJLD1DQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "space-team-sentienced-to-death-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BBJLD1DQ",
           "type": "libex-import"
         }
       ],
-      "title": "Space Team: Sentienced to Death (Dramatized Adaptation)"
+      "title": "Space Team: Sentienced to Death"
     },
     "space-team-song-of-the-space-siren": {
       "added_at": "2026-08-01",

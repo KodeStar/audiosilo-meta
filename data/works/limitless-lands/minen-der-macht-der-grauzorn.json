@@ -4627,56 +4627,7 @@
             {
               "asin": "B09JZLRB1K",
               "region": "us"
-            }
-          ],
-          "id": "edwina-wren-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "edwina-wren"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2022-03-02",
-          "runtime_min": 305,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09JZLRB1K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ming-and-flo-fight-for-the-future"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09JZLRB1K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ming and Flo Fight for the Future"
-    },
-    "ming-and-flo-fight-for-the-future-the-girls-who-changed-the-world-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jackie-french"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "historical-fiction",
-        "history",
-        "travel"
-      ],
-      "id": "ming-and-flo-fight-for-the-future-the-girls-who-changed-the-world-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "edwina-wren-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
+            },
             {
               "asin": "B09JZTHW3T",
               "region": "us"
@@ -4833,25 +4784,35 @@
           ],
           "publisher": "HarperAudio",
           "release_date": "2022-03-02",
-          "runtime_min": 295,
+          "runtime_min": 305,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09JZLRB1K",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B09JZTHW3T",
               "type": "libex-import"
             }
           ],
-          "work": "ming-and-flo-fight-for-the-future-the-girls-who-changed-the-world-1"
+          "work": "ming-and-flo-fight-for-the-future"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09JZLRB1K",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09JZTHW3T",
           "type": "libex-import"
         }
       ],
-      "title": "Ming and Flo Fight for the Future (The Girls Who Changed the World, #1)"
+      "title": "Ming and Flo Fight for the Future"
     },
     "ming-and-hilde-lead-a-revolution-the-girls-who-changed-the-world-3": {
       "added_at": "2026-08-02",

@@ -11660,7 +11660,9 @@
       ],
       "genres": [
         "action-adventure",
-        "childrens"
+        "childrens",
+        "coming-of-age",
+        "fantasy"
       ],
       "id": "the-forever-court",
       "language": "en",
@@ -11672,6 +11674,10 @@
           "asin": [
             {
               "asin": "B073DL38GP",
+              "region": "us"
+            },
+            {
+              "asin": "B0744VTZFN",
               "region": "us"
             }
           ],
@@ -11887,6 +11893,11 @@
               "imported_at": "2026-08-02",
               "ref": "B073DL38GP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0744VTZFN",
+              "type": "libex-import"
             }
           ],
           "work": "the-forever-court"
@@ -11897,259 +11908,14 @@
           "imported_at": "2026-08-02",
           "ref": "B073DL38GP",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Forever Court"
-    },
-    "the-forever-court-knights-of-the-borrowed-dark-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dave-rudden"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "the-forever-court-knights-of-the-borrowed-dark-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dave-rudden-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0744VTZFN",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1109960,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 602976,
-              "start_ms": 1109960,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 814417,
-              "start_ms": 1712936,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 483765,
-              "start_ms": 2527353,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 540839,
-              "start_ms": 3011118,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 681970,
-              "start_ms": 3551957,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 981879,
-              "start_ms": 4233927,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1100347,
-              "start_ms": 5215806,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 822311,
-              "start_ms": 6316153,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1149945,
-              "start_ms": 7138464,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 966275,
-              "start_ms": 8288409,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1039650,
-              "start_ms": 9254684,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1430860,
-              "start_ms": 10294334,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 805361,
-              "start_ms": 11725194,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 965857,
-              "start_ms": 12530555,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 591180,
-              "start_ms": 13496412,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 883844,
-              "start_ms": 14087592,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1489607,
-              "start_ms": 14971436,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 961817,
-              "start_ms": 16461043,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1172004,
-              "start_ms": 17422860,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1406618,
-              "start_ms": 18594864,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1303708,
-              "start_ms": 20001482,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 809215,
-              "start_ms": 21305190,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 799092,
-              "start_ms": 22114405,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 845764,
-              "start_ms": 22913497,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 549059,
-              "start_ms": 23759261,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 941198,
-              "start_ms": 24308320,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 927405,
-              "start_ms": 25249518,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 673007,
-              "start_ms": 26176923,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 888813,
-              "start_ms": 26849930,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 874092,
-              "start_ms": 27738743,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 533548,
-              "start_ms": 28612835,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1185797,
-              "start_ms": 29146383,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 719261,
-              "start_ms": 30332180,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 998783,
-              "start_ms": 31051441,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 216364,
-              "start_ms": 32050224,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 748658,
-              "start_ms": 32266588,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 787389,
-              "start_ms": 33015246,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 163840,
-              "start_ms": 33802635,
-              "title": "Chapter 39"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91xpudOJe1L.jpg",
-          "id": "dave-rudden-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dave-rudden"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2017-08-08",
-          "runtime_min": 565,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0744VTZFN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-forever-court-knights-of-the-borrowed-dark-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0744VTZFN",
           "type": "libex-import"
         }
       ],
-      "title": "The Forever Court (Knights of the Borrowed Dark, Book 2)"
+      "title": "The Forever Court"
     },
     "the-forever-factor": {
       "added_at": "2026-07-29",
