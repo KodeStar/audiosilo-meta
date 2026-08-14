@@ -287,6 +287,41 @@ func TestRedirectChainsCollapseWhenACanonicalIsLaterMerged(t *testing.T) {
 	}
 }
 
+// A txn that is DISCARDED leaves the plan exactly as it found it - including the
+// derived series index, which is what the proposal after it reads to find out who is in
+// which series. An index updated as the plan was composed would survive a refusal and
+// hide a membership from the next proposal.
+func TestADiscardedTxnLeavesThePlanUntouched(t *testing.T) {
+	data := seedTree(t, hammeredCluster(t))
+	rn, tx := planFixture(t, data)
+	before := rn.plan.seriesNaming("hammered")
+
+	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+		t.Fatal(err)
+	}
+	// The txn is dropped, as a refusal drops it.
+	if got := rn.plan.seriesNaming("hammered"); !reflect.DeepEqual(got, before) {
+		t.Errorf("series index = %v after a discarded txn, want %v", got, before)
+	}
+	if _, ok := rn.plan.retiredBy(pack.FamilyWorks, "hammered-book-3"); ok {
+		t.Error("a discarded txn retired a record")
+	}
+	if rn.plan.redirects.Len() != 0 {
+		t.Error("a discarded txn recorded a tombstone")
+	}
+	e, ok, err := rn.plan.works.get("hammered")
+	if err != nil || !ok {
+		t.Fatalf("the work vanished from the plan: %v", err)
+	}
+	recs, err := e.recordings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(recs) != 1 {
+		t.Errorf("the plan holds %d recordings for the target, want the one it started with", len(recs))
+	}
+}
+
 // The unaddressable-title veto: two different books whose cleaned titles reduce to the
 // same comparison key only because the key folds away everything non-ASCII.
 func TestMergeWorksRefusesTitlesThatCarryNoIdentity(t *testing.T) {

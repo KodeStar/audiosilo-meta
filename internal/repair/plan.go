@@ -200,6 +200,9 @@ type txn struct {
 	tombs     []tomb
 	retires   []string
 	notes     []string
+	// reindex holds the membership lists this proposal wrote, so the plan's
+	// series index is updated at commit rather than as the plan is composed.
+	reindex map[string][]model.SeriesWork
 }
 
 func (p *plan) begin() *txn {
@@ -208,6 +211,7 @@ func (p *plan) begin() *txn {
 		works:     newStage(p.works),
 		community: newStage(p.community),
 		series:    newStage(p.series),
+		reindex:   map[string][]model.SeriesWork{},
 	}
 }
 
@@ -256,6 +260,9 @@ func (t *txn) commit(key string) error {
 	t.works.commit()
 	t.community.commit()
 	t.series.commit()
+	for _, slug := range sortedKeys(t.reindex) {
+		t.p.noteSeriesMembers(slug, t.reindex[slug])
+	}
 	for _, slug := range t.retires {
 		t.p.retired[slug] = key
 	}
@@ -304,12 +311,17 @@ func (s *stage) commit() {
 	}
 }
 
-// setSeries stages a series entry's membership list and re-indexes it, so the next
-// proposal in the same run sees the memberships this one wrote.
+// setSeries stages a series entry's membership list, and stages the RE-INDEX with it
+// so the next proposal in the run sees the memberships this one wrote.
+//
+// The index update waits for commit like everything else: a txn that stages a series
+// rewrite and then refuses (a recording key it cannot free, an entry that will not
+// render) must leave the plan's idea of who is in which series exactly as it found it,
+// or the proposal after it would read a membership that was never written.
 func (t *txn) setSeries(slug string, e entry, works []model.SeriesWork) {
 	e.set("works", works)
 	t.series.set(slug, e)
-	t.p.noteSeriesMembers(slug, works)
+	t.reindex[slug] = works
 }
 
 // cloneRedirects deep-copies a tombstone table. maps.Clone alone is not enough -
