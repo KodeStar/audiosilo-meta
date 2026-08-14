@@ -70,6 +70,14 @@ type nameToken struct {
 // an initials group from meeting a same-spelled short word.
 func markedKey(name string) string { return markedKeyOf(parseNameTokens(name)) }
 
+// MarkedNameKey exposes markedKey for in-module reuse: internal/audit groups
+// near-duplicate people by the same initials identity the importer MERGES
+// spellings on, so the audit reporting "these two records are one person" and the
+// importer acting on it read the one rule rather than two copies of it. The key's
+// exact bytes are an implementation detail and mean nothing outside a comparison
+// between two of them.
+func MarkedNameKey(name string) string { return markedKey(name) }
+
 // markedKeyOf is markedKey over an already-parsed name, for a caller that needs
 // the tokens for something else too and should not parse twice.
 func markedKeyOf(tokens []nameToken) string {
