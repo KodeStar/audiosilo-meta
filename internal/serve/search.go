@@ -2,6 +2,7 @@ package serve
 
 import (
 	"strings"
+	"unicode"
 )
 
 // workResult is a search hit that is a work: the card fields inline, plus the
@@ -30,37 +31,113 @@ type seriesResult struct {
 	Works int        `json:"works"`
 }
 
-// ftsQuery turns a raw user query into a safe FTS5 MATCH expression: every token
-// is wrapped in double quotes (with embedded quotes doubled per FTS5 escaping)
-// so no token is ever interpreted as an operator, and the final token gets a
-// trailing '*' for prefix matching. An all-punctuation query yields a harmless
-// empty-phrase match rather than a syntax error.
+// ftsQuery turns a raw user query into a safe FTS5 MATCH expression: the query
+// is cut into terms (see ftsTerms), each term is wrapped in double quotes so it
+// can never be read as an operator, and the final term gets a trailing '*' for
+// prefix matching. A query holding no term at all - empty, whitespace, or pure
+// punctuation - yields a harmless empty-phrase match rather than a syntax error.
 func ftsQuery(q string) string { return ftsMatch(q, true) }
 
-// ftsPhrase is ftsQuery without the trailing prefix-star: the same escaping,
-// matching only whole tokens. It is what a NAME lookup wants (see seriespos.go);
+// ftsPhrase is ftsQuery without the trailing prefix-star: the same terms,
+// matching only whole ones. It is what a NAME lookup wants (see seriespos.go);
 // a prefix-star over a short query walks a large fraction of the index, which is
 // affordable for the one hit the user is typing towards and not for a lookup the
 // server issues on their behalf.
 func ftsPhrase(q string) string { return ftsMatch(q, false) }
 
 // ftsMatch is the single escaping implementation behind both: it is the one
-// place a token becomes an FTS5 phrase, so no caller can ever build a MATCH
+// place a term becomes an FTS5 phrase, so no caller can ever build a MATCH
 // expression a quote or an operator could break.
+//
+// Each term is its OWN one-word phrase, which is the whole point of ftsTerms:
+// several words inside one phrase are an ADJACENCY constraint, and that is what
+// made punctuated queries return nothing (see ftsTerms). The quote doubling is
+// FTS5's own escaping and is now a backstop rather than a live path - a term
+// holds only term runes, so it cannot contain a quote - kept so that widening
+// ftsTerms' rune rule can never turn into a syntax error.
 func ftsMatch(q string, prefixLast bool) string {
-	tokens := strings.Fields(q)
-	if len(tokens) == 0 {
+	terms := ftsTerms(q)
+	if len(terms) == 0 {
 		return `""`
 	}
-	parts := make([]string, len(tokens))
-	for i, tok := range tokens {
-		escaped := strings.ReplaceAll(tok, `"`, `""`)
+	parts := make([]string, len(terms))
+	for i, term := range terms {
+		escaped := strings.ReplaceAll(term, `"`, `""`)
 		parts[i] = `"` + escaped + `"`
-		if prefixLast && i == len(tokens)-1 {
+		if prefixLast && i == len(terms)-1 {
 			parts[i] += "*"
 		}
 	}
 	return strings.Join(parts, " ")
+}
+
+// ftsTerms cuts a raw query into the words the FTS5 tokenizer would keep: a term
+// is a maximal run of letters, digits and combining marks, and every other rune
+// is a boundary. It is the fix for punctuated queries.
+//
+// THE BUG. The predecessor split on WHITESPACE only (strings.Fields), so a token
+// carrying interior punctuation became ONE quoted phrase. FTS5 tokenizes a
+// quoted string with the same unicode61 tokenizer that indexed the row, so the
+// punctuation itself was never the problem - what survived it was: the words
+// stayed a MULTI-TERM PHRASE, which FTS5 matches only where those words appear
+// consecutively, in that order, inside ONE column. Punctuation a user (or a
+// filename) writes INSTEAD of a space is not an adjacency claim, so the
+// constraint could not be met and the query returned zero rows for a work the
+// catalogue holds:
+//
+//	q=Greg.Bear-Halo.Primordium  ->  "Greg.Bear-Halo.Primordium"*  ->  0 hits
+//	                                 (author is in `names`, title in `title`;
+//	                                  words in two columns are never adjacent)
+//	q=Primordium,Halo            ->  "Primordium,Halo"*            ->  0 hits
+//	                                 (the row has them the other way round)
+//
+// Cutting the same queries into one phrase per word returns Halo: Primordium,
+// which is what every client had to strip punctuation by hand to get.
+//
+// The rule also drops a punctuation-only token ("&", "-", ":") instead of
+// emitting the empty phrase FTS5 would only tolerate by ignoring it, and it puts
+// ftsQuery's prefix-star on the last real word rather than on the last fragment
+// of a welded phrase.
+//
+// IT COSTS NOTHING EXTRA. A phrase of n words and n one-word phrases read the
+// same n posting lists; the phrase only adds a position check on top. So this
+// widens what MATCHES (adjacency is no longer required) without widening what
+// the index WALKS, and the probes' cost gates (worthProbing,
+// worthTitleProbing - both reading whitespace tokens, deliberately untouched)
+// still bound which queries reach an FTS probe at all.
+//
+// The runs are returned as SUBSTRINGS of q, never rewritten, so each one
+// tokenizes to exactly what FTS5 would have made of it in place. Combining
+// marks count as term runes for that reason: a decomposed "Ma<combining
+// diaeresis>dchen" is one token to unicode61 (which strips the diacritic), and
+// splitting on the mark would have asked for two.
+func ftsTerms(q string) []string {
+	var terms []string
+	start := -1
+	for i, r := range q {
+		if isTermRune(r) {
+			if start < 0 {
+				start = i
+			}
+			continue
+		}
+		if start >= 0 {
+			terms = append(terms, q[start:i])
+			start = -1
+		}
+	}
+	if start >= 0 {
+		terms = append(terms, q[start:])
+	}
+	return terms
+}
+
+// isTermRune reports whether r belongs inside a term: a letter, a digit or a
+// combining mark. It is this package's approximation of unicode61's
+// alphanumeric class - everything else is a token boundary there too - and the
+// one place the boundary rule is spelled.
+func isTermRune(r rune) bool {
+	return unicode.IsLetter(r) || unicode.IsDigit(r) || unicode.IsMark(r)
 }
 
 // searchHit is one row of the FTS result, kept in rank order while the work

@@ -998,20 +998,9 @@ func TestTypedSearchLimitClamp(t *testing.T) {
 	}
 }
 
-func TestFTSQueryBuilder(t *testing.T) {
-	cases := map[string]string{
-		"hail mary": `"hail" "mary"*`,
-		"dragon":    `"dragon"*`,
-		`a"b`:       `"a""b"*`,
-		`"""`:       `""""""""*`, // 3 quotes -> 6 escaped -> wrapped in a pair = 8, then '*'
-		"   ":       `""`,
-	}
-	for in, want := range cases {
-		if got := ftsQuery(in); got != want {
-			t.Errorf("ftsQuery(%q) = %q, want %q", in, got, want)
-		}
-	}
-}
+// The MATCH builder's own tests live beside the code they pin, in
+// search_test.go: TestFTSQueryBuilder (the expression for every query shape) and
+// its end-to-end siblings.
 
 func TestPositionStart(t *testing.T) {
 	cases := map[string]float64{
