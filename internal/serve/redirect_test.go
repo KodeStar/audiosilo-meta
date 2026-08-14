@@ -214,17 +214,22 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 
 // TestEveryIDRouteResolvesRetiredSlugs is the drift guard, in the shape of
 // TestOpenAPICoversEveryRoute: it diffs redirectNamespaces against the server's
-// own route table, so a fifth route that addresses a record by slug cannot ship
+// own route tables, so a fifth route that addresses a record by slug cannot ship
 // without redirect support (and an entry naming a route that no longer exists
 // cannot linger). The pattern is what redirected() looks the namespace up by, so
 // this is the same key the request path uses, and the candidate set is derived
 // from the pattern's SHAPE rather than from the wildcard being spelled {id} - see
 // TestRedirectCoverageIgnoresTheWildcardsName.
+//
+// It covers the UNION of both tables: an entity PAGE addresses a record by the
+// same slug an API route does, so a retired slug has to keep resolving there too
+// (in HTML - see redirected).
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
-	patterns := make([]string, 0, len(srv.routes()))
+	all := append(srv.routes(), srv.htmlRoutes()...)
+	patterns := make([]string, 0, len(all))
 	registered := map[string]bool{}
-	for _, r := range srv.routes() {
+	for _, r := range all {
 		patterns = append(patterns, r.pattern)
 		registered[r.pattern] = true
 	}
@@ -318,6 +323,12 @@ func TestRedirectCoverageIgnoresTheWildcardsName(t *testing.T) {
 		{name: "a literal route", pattern: "GET /api/v1/stats", gap: false},
 		{name: "an anchored literal route", pattern: "GET /api/v1/coverage/{$}", gap: false},
 		{name: "a route that names its namespace", pattern: "GET /api/v1/works/{id}", gap: false},
+		// A PAGE route is judged by the same rule: a fourth family's page that
+		// addresses a record and names no namespace is a gap, and the three that
+		// exist are covered because htmlEntityRoutes folds them into the map.
+		{name: "an unregistered page route", pattern: "GET /publishers/{id}", gap: true},
+		{name: "a registered page route", pattern: "GET /works/{id}", gap: false},
+		{name: "a legacy query-param page route", pattern: "GET /work", gap: false},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
