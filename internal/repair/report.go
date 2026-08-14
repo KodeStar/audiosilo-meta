@@ -72,16 +72,18 @@ func (r *Report) counts() []reportdir.Row {
 	return rows
 }
 
-// group is one bucket of a grouped list: a name, its count, and the records in it, in
-// the report's own order.
+// group is one bucket of a grouped list: its name, how many records it holds, and where
+// they start - a RANGE rather than a copy, since the slice it indexes is already in the
+// report's own order.
 type group struct {
 	name  string
 	n     int
-	first int // index of the bucket's first record, for a grouped walk
+	first int
 }
 
-// appliedByOp and refusalGroups are the two groupings both formats print. They are
-// derived here so a category can never be counted one way and listed another.
+// appliedByOp is the applied records bucketed by op, for the summary's headline table. It
+// is derived from the records rather than from a list of ops, so the count can never
+// disagree with the records that follow it.
 func (r *Report) appliedByOp() []reportdir.Row {
 	byOp := map[string]int{}
 	for _, a := range r.Applied {
@@ -94,9 +96,10 @@ func (r *Report) appliedByOp() []reportdir.Row {
 	return rows
 }
 
-// refusalGroups buckets the refusals by category. Refused is already sorted by
-// (category, key, reason), so a bucket is a contiguous run and the walk needs no second
-// pass over the slice.
+// refusalGroups buckets the refusals by category, and is read by BOTH output formats - the
+// markdown summary and the terminal lines differ only in how they render a line, so a
+// category can never be counted one way and listed another. Refused is already sorted by
+// (category, key, reason), so a bucket is a contiguous run and no second pass is needed.
 func (r *Report) refusalGroups() []group {
 	var out []group
 	for i, ref := range r.Refused {
