@@ -40,6 +40,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -104,6 +105,37 @@ func Run(opts Options) (*Report, error) {
 	}
 	return rep, nil
 }
+
+// Analyze runs every detector over an ALREADY-LOADED tree and returns the report
+// without writing anything anywhere.
+//
+// It is the repair pass's door in (internal/repair), and the reason it exists is
+// the repair pass's central rule: an NDJSON worklist is a FILTER, the live tree is
+// the truth. metarepair re-runs the detectors in process, over the very tree it is
+// about to modify, and applies only what the fresh run still proposes - so a
+// proposal the tree has outgrown is refused rather than applied. Reaching that
+// through Run would mean writing a second report directory as a side effect of a
+// repair.
+//
+// The caller supplies the load (check.Load, or check.LoadStore when it also holds
+// the writer's store), which is what lets one walk of the tree serve both the
+// validation and the audit.
+func Analyze(res check.Result) *Report { return analyze(res) }
+
+// Classes returns every detector class, in report order - the order SUMMARY.md
+// lists them in and the order a consumer must read a report directory in for its
+// own output to be deterministic.
+func Classes() []string { return slices.Clone(classOrder) }
+
+// ClassFile is the NDJSON file name a class is written to in a report directory.
+// A consumer READING a report (the repair pass's worklist) composes the same name
+// through this call, so the two halves of the file contract have one definition.
+func ClassFile(class string) string { return classFile(class) }
+
+// Findings returns one class's records, in the report's own order (the order
+// finalize sorted them into, which is the order the NDJSON file carries). A class
+// this run did not produce yields nothing.
+func (rep *Report) Findings(class string) []Finding { return rep.class(class).rows }
 
 // checkOutDir refuses a report directory inside the data root.
 //
