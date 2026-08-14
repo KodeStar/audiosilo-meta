@@ -153,6 +153,11 @@ func (o Obj) Sources() []model.Source { return DecodeOr[[]model.Source](o["sourc
 // Credits decodes the role-qualified contributor list.
 func (o Obj) Credits() []model.Credit { return DecodeOr[[]model.Credit](o["credits"]) }
 
+// Chapters decodes a recording's chapter list. It is read to COUNT the entries (a longer
+// timeline is more evidence about one production); the member itself is moved as bytes,
+// because a chapter's millisecond offsets must survive exactly as they were written.
+func (o Obj) Chapters() []model.Chapter { return DecodeOr[[]model.Chapter](o["chapters"]) }
+
 // SeriesWorks decodes a series entry's membership list. model.SeriesWork carries exactly
 // the two properties the schema allows (additionalProperties: false), so decoding and
 // re-encoding it loses nothing - unlike a work or a recording, where the raw members are

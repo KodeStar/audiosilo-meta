@@ -1,6 +1,7 @@
 package repair
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 
@@ -15,12 +16,21 @@ import (
 // works.go applies W-DUP's merge-works proposal: the cluster's losers fold onto the
 // canonical work and their slugs are tombstoned.
 //
-// UNION-PRESERVING is the rule the whole file is written to. A merge may not lose a
-// fact: every recording, every identifier, every provenance entry, every genre,
-// every credit and every works-community sidecar member on either side is present
-// afterwards. Where two records state the SAME field differently the canonical one
-// wins and the loser fills only what the canonical does not state - so a merge adds
-// information and never overwrites it.
+// WHAT A MERGE PRESERVES, stated exactly, because the first version of this comment
+// claimed more than the code does. A merge loses no RECORD and no SET-VALUED fact: every
+// recording, every identifier, every provenance entry, every genre, every credit and every
+// works-community sidecar member on either side is present afterwards, and each is unioned
+// on the very key pkg/check enforces uniqueness with.
+//
+// A POSITIONAL fact - one where the two records state the same field differently and only
+// one value can survive - is CHOSEN, and every choice is reported. The canonical record's
+// own scalars win (it is the record a human reviewed as the survivor) and the loser fills
+// only what the canonical does not state; a chapter LIST is chosen by length rather than by
+// which side happened to be the keeper, because a longer list is strictly more evidence
+// about the same production. Every value dropped that way is named in the applied record's
+// notes, which is the audit trail for a pass that deletes records: a measured 386-merge wave
+// discarded 48 cover URLs, 39 publishers, 39 release dates, 21 runtimes and 40 chapter lists
+// with no note at all, 4 of those lists richer than the one kept.
 //
 // THREE THINGS REFUSE THE WHOLE CLUSTER, and each is checked here independently of
 // the audit's own veto (the audit reads the tree at load; this reads the plan, which
@@ -104,8 +114,30 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 			return err
 		}
 	}
-	mergeWorkFields(merged, lw)
+	for _, f := range mergeWorkFields(merged, lw) {
+		t.note("  %s: kept %s, dropped %s from %s", f.field, quoteFact(f.kept), quoteFact(f.dropped), loser)
+	}
 	return nil
+}
+
+// factValue renders a raw member for a note: the VALUE of a JSON string, the bytes of
+// anything else. Without it a dropped QID reads as `"\"Q222\""` - the note is for a human.
+func factValue(raw json.RawMessage) string {
+	var s string
+	if err := json.Unmarshal(raw, &s); err == nil {
+		return s
+	}
+	return string(raw)
+}
+
+// quoteFact renders a value for a note, shortened so one dropped description cannot make a
+// record unreadable. A value that is already a count ("42 chapters") is left alone.
+func quoteFact(v string) string {
+	const max = 80
+	if len(v) > max {
+		return fmt.Sprintf("%q... (%d bytes)", v[:max], len(v))
+	}
+	return fmt.Sprintf("%q", v)
 }
 
 // moveRecording places one of a loser's recordings under the merged work: merged
@@ -123,8 +155,12 @@ func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, re
 	}
 	why, same := sameProduction(sibling, moved)
 	if same {
-		recs[key] = mergeRecordings(sibling, moved)
+		merged, lost := mergeRecordings(sibling, moved)
+		recs[key] = merged
 		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, why)
+		for _, f := range lost {
+			t.note("  %s: kept %s, dropped %s from %s/%s", f.field, quoteFact(f.kept), quoteFact(f.dropped), loser, key)
+		}
 		return nil
 	}
 	newKey, ok := freeRecordingKey(recs, key)
@@ -180,30 +216,96 @@ func runtimeEvidence(ra, rb int) string {
 	}
 }
 
-// mergeRecordings folds mover into keep: identifiers and provenance unioned, every
-// field the keeper does not state filled from the mover, and nothing the keeper
-// states touched.
+// mergedFacts are the values a recording merge could not keep both of, for the note the
+// applied record carries. Kept is what the surviving recording states, Dropped what the
+// mover stated and the merge let go.
+type mergedFacts struct {
+	field   string
+	kept    string
+	dropped string
+}
+
+// mergeRecordings folds mover into keep: identifiers and provenance unioned, every field the
+// keeper does not state filled from the mover, and every value that could not survive
+// REPORTED rather than silently discarded.
 //
-// added_at is deliberately NOT among the filled fields, on either record kind. It
-// records when THIS record entered the database; the mover's own date belongs to a
-// record that no longer exists, and the provenance that dates it survives in the
-// unioned sources[], which is what metabuild falls back to when added_at is absent.
-func mergeRecordings(keep, mover entry) entry {
+// The chapter list is the one field chosen by CONTENT rather than by side: both recordings
+// describe the same production (the same-production evidence is what got them here), so the
+// LONGER list is strictly more of the same truth - a keeper with 3 chapters and a mover with
+// 42 used to keep the 3. Measured over a 386-merge wave, 4 of 40 dropped lists were richer
+// than the one kept, and a full wave discarded about 7,198 chapter entries.
+//
+// added_at is deliberately not filled, on either record kind. It records when THIS record
+// entered the database; the mover's own date belongs to a record that no longer exists, and
+// the provenance that dates it survives in the unioned sources[], which is what metabuild
+// falls back to when added_at is absent.
+func mergeRecordings(keep, mover entry) (entry, []mergedFacts) {
 	out := keep.Clone()
 	rawentry.SetListOrDrop(out, "asin", rawentry.UnionASINs(out.ASINs(), mover.ASINs()))
 	rawentry.SetListOrDrop(out, "isbn", rawentry.UnionISBNs(out.ISBNs(), mover.ISBNs()))
 	out.Set("sources", rawentry.UnionSources(out.Sources(), mover.Sources()))
 	rawentry.SetListOrDrop(out, "narrators", rawentry.AppendUnique(out.Strs("narrators"), mover.Strs("narrators")))
+
+	var lost []mergedFacts
 	for _, field := range []string{"release_date", "publisher", "cover_url", "language"} {
-		rawentry.FillAbsentString(out, mover, field)
+		if rawentry.FillAbsentString(out, mover, field) {
+			continue // the keeper stated nothing, so nothing was chosen away
+		}
+		if v := mover.Str(field); v != "" && v != out.Str(field) {
+			lost = append(lost, mergedFacts{field: field, kept: out.Str(field), dropped: v})
+		}
 	}
-	// The tri-state and byte-exact members: an absent abridged is "unknown" and a
-	// false one is a statement, and a chapter list is a timeline whose numbers must
-	// survive exactly as they were written.
-	for _, field := range []string{"abridged", "runtime_min", "chapters", "publishers"} {
-		rawentry.FillAbsentRaw(out, mover, field)
+	// The tri-state and byte-exact members: an absent abridged is "unknown" and a false one
+	// is a statement, and a chapter list is a timeline whose numbers must survive exactly as
+	// they were written, so it is moved as BYTES either way.
+	for _, field := range []string{"abridged", "runtime_min", "publishers"} {
+		if rawentry.FillAbsentRaw(out, mover, field) {
+			continue
+		}
+		if mover.Has(field) && !sameRawMember(out, mover, field) {
+			lost = append(lost, mergedFacts{field: field, kept: factValue(out[field]), dropped: factValue(mover[field])})
+		}
 	}
-	return out
+	if f, ok := chooseChapters(out, mover); ok {
+		lost = append(lost, f)
+	}
+	return out, lost
+}
+
+// chooseChapters keeps the longer of the two chapter lists and reports the choice. A list
+// only the mover carries is simply taken (no choice was made); equal lengths keep the
+// keeper's, which is arbitrary between two equally rich timelines and is still reported when
+// the bytes differ.
+func chooseChapters(out, mover entry) (mergedFacts, bool) {
+	if !mover.Has("chapters") {
+		return mergedFacts{}, false
+	}
+	if !out.Has("chapters") {
+		out.SetRaw("chapters", mover["chapters"])
+		return mergedFacts{}, false
+	}
+	kept, moved := len(out.Chapters()), len(mover.Chapters())
+	f := mergedFacts{
+		field:   "chapters",
+		kept:    fmt.Sprintf("%d chapters", kept),
+		dropped: fmt.Sprintf("%d chapters", moved),
+	}
+	if moved > kept {
+		out.SetRaw("chapters", mover["chapters"])
+		f.kept, f.dropped = f.dropped, f.kept
+		return f, true
+	}
+	if sameRawMember(out, mover, "chapters") {
+		return mergedFacts{}, false // the same timeline written twice
+	}
+	return f, true
+}
+
+// sameRawMember reports whether two entries carry byte-identical values for a member. Both
+// sides came off disk through the same canonical renderer, so a byte comparison is a value
+// comparison for anything this function is asked about.
+func sameRawMember(a, b entry, field string) bool {
+	return string(a[field]) == string(b[field])
 }
 
 // mergeWorkFields folds a loser's work-level facts into the merged work.
@@ -214,36 +316,43 @@ func mergeRecordings(keep, mover entry) entry {
 // beside "The Last Kids on Earth: June's Wild Flight" - and dropping them would lose
 // a credit the catalogue holds. The target's own order leads, since it is a billing
 // order.
-func mergeWorkFields(merged, lw entry) {
+func mergeWorkFields(merged, lw entry) []mergedFacts {
 	rawentry.SetListOrDrop(merged, "authors", rawentry.AppendUnique(merged.Strs("authors"), lw.Strs("authors")))
 	rawentry.SetListOrDrop(merged, "genres", rawentry.UnionGenres(merged.Strs("genres"), lw.Strs("genres")))
 	rawentry.SetListOrDrop(merged, "credits", rawentry.UnionCredits(merged.Credits(), lw.Credits()))
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), lw.Sources()))
+	var lost []mergedFacts
 	for _, field := range []string{"subtitle", "language", "first_published", "description"} {
-		rawentry.FillAbsentString(merged, lw, field)
+		if rawentry.FillAbsentString(merged, lw, field) {
+			continue
+		}
+		if v := lw.Str(field); v != "" && v != merged.Str(field) {
+			lost = append(lost, mergedFacts{field: field, kept: merged.Str(field), dropped: v})
+		}
 	}
-	fillXref(merged, lw)
+	return append(lost, fillXref(merged, lw)...)
 }
 
 // fillXref fills the merged work's cross-references from a loser's, member by member
 // and only where the merged work states nothing, with the print-ISBN list unioned. A
 // recorded value is never replaced: two records of one book that disagree about a
 // QID are a fact somebody has to look at, not one to overwrite.
-func fillXref(merged, lw entry) {
+func fillXref(merged, lw entry) []mergedFacts {
 	src, ok := lw["xref"]
 	if !ok {
-		return
+		return nil
 	}
 	from, err := rawentry.Decode(src)
 	if err != nil {
-		return
+		return nil
 	}
 	into := entry{}
 	if cur, ok := merged["xref"]; ok {
 		if into, err = rawentry.Decode(cur); err != nil {
-			return
+			return nil
 		}
 	}
+	var lost []mergedFacts
 	for _, k := range rawentry.SortedKeys(from) {
 		if k == "isbn" {
 			rawentry.SetListOrDrop(into, "isbn", rawentry.AppendUnique(into.Strs("isbn"), from.Strs("isbn")))
@@ -251,13 +360,20 @@ func fillXref(merged, lw entry) {
 		}
 		if !into.Has(k) {
 			into.SetRaw(k, from[k])
+			continue
+		}
+		// Two records disagreeing about a QID is a fact somebody has to look at, and the
+		// surviving one is the reviewed record's - but the other must not vanish unrecorded.
+		if !sameRawMember(into, from, k) {
+			lost = append(lost, mergedFacts{field: "xref." + k, kept: factValue(into[k]), dropped: factValue(from[k])})
 		}
 	}
 	if len(into) == 0 {
 		merged.Drop("xref")
-		return
+		return lost
 	}
 	merged.SetRaw("xref", into.MustRaw())
+	return lost
 }
 
 // mergeSidecars moves the cluster's works-community entries onto the target,

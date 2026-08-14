@@ -1,6 +1,7 @@
 package repair
 
 import (
+	"fmt"
 	"reflect"
 	"slices"
 	"strings"
@@ -483,6 +484,111 @@ func TestMergeWorksKeepsTheSameASINUnderTwoRegions(t *testing.T) {
 	if want := []string{"uk/B0SHARED01", "us/B0SHARED01"}; !reflect.DeepEqual(pairs, want) {
 		t.Errorf("ASIN pairs = %v, want %v: a stated region is a fact a merge may not drop", pairs, want)
 	}
+}
+
+// A chapter list is chosen by CONTENT, not by which side happened to be the keeper: both
+// recordings describe the same production, so the longer timeline is strictly more of the
+// same truth. Measured over a real wave, 4 of 40 dropped lists were richer than the kept one.
+func TestMergeRecordingsKeepsTheRicherChapterList(t *testing.T) {
+	for _, tc := range []struct {
+		name         string
+		keeper, mvr  int
+		wantChapters int
+	}{
+		{name: "the mover is richer", keeper: 3, mvr: 42, wantChapters: 42},
+		{name: "the keeper is richer", keeper: 42, mvr: 3, wantChapters: 42},
+		{name: "only the mover has any", keeper: 0, mvr: 7, wantChapters: 7},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t, withRuntime(600))
+			keeper := recJSON(t, "luke-daniels-2011", "hammered",
+				withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01"))
+			if tc.keeper > 0 {
+				keeper = testpack.WithField(t, keeper, "chapters", chapterList(tc.keeper))
+			}
+			files["works/ha/hammered/recordings/luke-daniels-2011.json"] = keeper
+			files["works/ha/hammered-book-3/recordings/luke-daniels-2011.json"] = testpack.WithField(t,
+				recJSON(t, "luke-daniels-2011", "hammered-book-3",
+					withNarrators("luke-daniels"), withRuntime(600), withASIN("B0LOSER001")),
+				"chapters", chapterList(tc.mvr))
+			data := seedTree(t, files)
+
+			rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+			if len(rep.Applied) != 1 {
+				t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+			}
+			recs, err := workEntry(t, data, "hammered").Recordings()
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := len(recs["luke-daniels-2011"].Chapters()); got != tc.wantChapters {
+				t.Errorf("kept %d chapters, want %d (the richer list)", got, tc.wantChapters)
+			}
+			// A choice between two lists is reported; taking a list nobody else had is not a
+			// choice and needs no note.
+			noted := noteMentions(rep.Applied[0].Notes, "chapters: kept")
+			if want := tc.keeper > 0; noted != want {
+				t.Errorf("chapters note = %v, want %v: %v", noted, want, rep.Applied[0].Notes)
+			}
+		})
+	}
+}
+
+// EVERY value a merge could not keep both of is named in the applied record, because that
+// record is the audit trail for a pass that deletes records. A wave that silently dropped 48
+// cover URLs, 39 publishers and 39 release dates is what this pins.
+func TestMergeNotesEveryFactItChoseAway(t *testing.T) {
+	files := hammeredCluster(t, withRuntime(600))
+	files["works/ha/hammered/recordings/luke-daniels-2011.json"] = testpack.WithField(t,
+		recJSON(t, "luke-daniels-2011", "hammered", withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01")),
+		"cover_url", "https://example.com/keeper.jpg")
+	// The mover states a different publisher, release date and cover, and a different QID.
+	mover := recJSON(t, "luke-daniels-2011", "hammered-book-3",
+		withNarrators("luke-daniels"), withRuntime(600), withASIN("B0LOSER001"))
+	mover = testpack.WithField(t, mover, "publisher", "Other Audio")
+	mover = testpack.WithField(t, mover, "release_date", "2011-06-01")
+	mover = testpack.WithField(t, mover, "cover_url", "https://example.com/other.jpg")
+	files["works/ha/hammered-book-3/recordings/luke-daniels-2011.json"] = mover
+	files["works/ha/hammered/work.json"] = testpack.WithField(t,
+		workJSON(t, "hammered", "Hammered"), "xref", map[string]any{"wikidata": "Q111"})
+	files["works/ha/hammered-book-3/work.json"] = testpack.WithField(t,
+		workJSON(t, "hammered-book-3", "Hammered: The Druid Tales, Book 3"), "xref", map[string]any{"wikidata": "Q222"})
+	data := seedTree(t, files)
+
+	rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+	if len(rep.Applied) != 1 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	notes := strings.Join(rep.Applied[0].Notes, "\n")
+	for _, want := range []string{
+		`publisher: kept "Fixture Audio", dropped "Other Audio"`,
+		`release_date: kept "2020-01-01", dropped "2011-06-01"`,
+		`cover_url: kept "https://example.com/keeper.jpg", dropped "https://example.com/other.jpg"`,
+		`xref.wikidata: kept "Q111", dropped "Q222"`,
+	} {
+		if !strings.Contains(notes, want) {
+			t.Errorf("notes do not report %q:\n%s", want, notes)
+		}
+	}
+	// The surviving record still states the reviewed record's own values.
+	recs, err := workEntry(t, data, "hammered").Recordings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := recs["luke-daniels-2011"].Str("publisher"); got != "Fixture Audio" {
+		t.Errorf("publisher = %q, want the keeper's", got)
+	}
+}
+
+// chapterList renders n chapters, monotonic from zero as pkg/check requires.
+func chapterList(n int) []map[string]any {
+	out := make([]map[string]any, 0, n)
+	for i := range n {
+		out = append(out, map[string]any{
+			"title": fmt.Sprintf("Chapter %d", i+1), "start_ms": i * 600000, "length_ms": 600000,
+		})
+	}
+	return out
 }
 
 func noteMentions(notes []string, want string) bool {
