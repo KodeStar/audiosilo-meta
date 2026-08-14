@@ -5133,6 +5133,341 @@
         "work": "watership-down"
       }
     },
+    "way-to-the-south": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wounded Thernian swordsman who awakens with his cultivation foundation damaged. He needs urgent help for the dying Lesket mage while Lathea remains captive in the winter queen's wolves' caves.",
+            "id": "hadjar",
+            "name": "Hadjar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hadjar's star-eyed warrior companion, alive but imprisoned by the winter queen's wolves. Exposure threatens her while Hadjar seeks urgent help for another companion.",
+            "id": "lathea",
+            "name": "Lathea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "young wizard"
+            ],
+            "description": "A gravely wounded mage whose magic has kept Hadjar alive. His consciousness is trapped in ancestral memories, and the northerner predicts that he will die before dawn without further help.",
+            "id": "the-lesket-mage",
+            "name": "The Lesket mage",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A northern Heaven Emperor temporarily sheltering Hadjar and the wounded Lesket mage. He offers limited protection and makes clear that his help cannot continue indefinitely.",
+            "id": "the-northerner",
+            "name": "The northerner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hadjar's demon companion",
+              "emissary of the demon prince"
+            ],
+            "description": "A diminished demon companion who recognizes the Lesket mage's wound and joins Hadjar on the journey to obtain help.",
+            "id": "lord-of-nightmares",
+            "name": "The Lord of Nightmares",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure from Hadjar's past who appears at the center of the Spike and Thorn Forest's soul trial.",
+            "id": "ina",
+            "name": "Ina",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "queen of summer"
+            ],
+            "description": "The sovereign of the Summer Court. Her palace is the destination of Hadjar's urgent journey into the spirit world to obtain a cure for the dying Lesket mage.",
+            "id": "summer-queen",
+            "name": "The Summer Queen",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A supernatural ruler whose wolves are holding Lathea in their caves.",
+            "id": "winter-queen",
+            "name": "The Winter Queen",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A powerful being confined within Hadjar's soul. He calls Hadjar his disciple and offers strength for the flower village's ceremonial duel in return for an unspecified future favor.",
+            "id": "black-general",
+            "name": "The Black General",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A truth-seeking spirit who identifies Hadjar's parentage and directs him toward the ancestral rock, where a white dragon waits.",
+            "id": "angler-of-truth",
+            "name": "The Angler of Truth",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white dragon waiting at the ancestral rock, the destination disclosed by Hadjar's encounter with an Angler of Truth.",
+            "id": "white-dragon",
+            "name": "The white dragon",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A god seen in the white dragon’s memories. The white dragon identifies him as his master during an age when gods lived among mortals.",
+            "id": "god-of-wisdom",
+            "name": "The god of wisdom",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "primeval god"
+            ],
+            "description": "A primeval god whose presence poisons the flower spirits' meadow. It is far beyond Hadjar's ability to defeat directly and depends on mortal belief for strength, so he approaches it through conversation.",
+            "id": "beast-of-swamps-and-bogs",
+            "name": "The beast of swamps and bogs",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful flower spirit who bears the King's Sword and challenges Hadjar to the village's ceremonial sword dance.",
+            "id": "flower-warrior",
+            "name": "The flower warrior",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A red-armored, dragon-associated Fae warrior who guards the Spirit Bowls and refuses Hadjar easy passage toward the ancestral rock.",
+            "id": "spirit-bowls-guardian",
+            "name": "The Spirit Bowls guardian",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful wolf-spirit figure pursuing Lathea. He finds Hadjar through the trail she left and insists that they speak.",
+            "id": "questioning-wolfman",
+            "name": "The questioning wolfman",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient supernatural ruler who receives the Summer Queen's alliance proposal for a coming war, refuses to join her, and expels her from his palace.",
+            "id": "king-of-the-immortals",
+            "name": "The King of the Immortals",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "pack leader"
+            ],
+            "description": "The leader of the wolves hunting Lathea. He surrounds the northerner's protected hut and demands that she be surrendered.",
+            "id": "wolf-alpha",
+            "name": "The wolf alpha",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the mage's father"
+            ],
+            "description": "The Lesket patriarch and organizer of the operation involving a northern native. Hadjar identifies him as the authority behind the plan.",
+            "id": "lesket-clan-head",
+            "name": "The Lesket clan head",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "dual-blade duelist"
+            ],
+            "description": "The Lesket patriarch's elder son. He appears with more than twelve hundred Lesket warriors during a confrontation in which Hadjar concludes that both sons have been manipulated for inheritance politics and their father's approval.",
+            "id": "lesket-elder-son",
+            "name": "The Lesket elder son",
+            "reveal": {
+              "chapter": 60
+            }
+          },
+          {
+            "aliases": [
+              "former elder son"
+            ],
+            "description": "The Lesket patriarch's elder son after he succeeds his father. He controls the clan force and agrees to send its warriors to the Twilight Secret Sect negotiations.",
+            "id": "new-lesket-clan-head",
+            "name": "The new Lesket clan head",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wounded but respected wanderer traveling with the large Lesket contingent and helping coordinate the force gathered at the foot of the mountains.",
+            "id": "white-turbaned-wanderer",
+            "name": "The white-turbaned wanderer",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Abraham"
+            ],
+            "description": "Leader of the mixed squad allied with Hadjar. He reunites with Hadjar at the border city's tavern, accepts the Lesket mage's presence, and delays discussion of the group's operation until they can speak privately.",
+            "id": "abraham-shensie",
+            "name": "Abraham Shensie",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Abraham Shensie's formidable enforcer. At the border-city tavern, he ends a cultivator's attempt to escalate a gambling dispute with effortless force.",
+            "id": "guy",
+            "name": "Guy",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's mixed squad who reunites with Hadjar at the border-city tavern.",
+            "id": "gustaf",
+            "name": "Gustaf",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Abraham Shensie's mixed squad who reunites with Hadjar at the border-city tavern.",
+            "id": "itia",
+            "name": "Itia",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alba"
+            ],
+            "description": "An absent companion whom Lathea expects would miss her.",
+            "id": "alba-udun",
+            "name": "Alba Udun",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Twilight Secret Sect disciple"
+            ],
+            "description": "A Twilight Secret Sect disciple and Hadjar's former acquaintance from the Sea of Sand. He accepts a public duel with Hadjar before the festival crowd.",
+            "id": "desert-mirage",
+            "name": "Desert Mirage",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed Twilight Secret Sect master who treats Desert Mirage and then takes his place in the public duel with Hadjar.",
+            "id": "twilight-sect-duel-master",
+            "name": "The Twilight Sect duel master",
+            "reveal": {
+              "chapter": 79
+            }
+          },
+          {
+            "aliases": [
+              "Twilight Secret Sect master"
+            ],
+            "description": "A senior Twilight Secret Sect combatant who identifies herself after an apparent summons interrupts her attack. She conveys the sect protector's invitation for Hadjar and his companions to enter as guests.",
+            "id": "sea-whisper",
+            "name": "The Sea Whisper",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient consciousness within Twilight Ridge that watches Hadjar’s party and overcomes his wind route toward the sect.",
+            "id": "twilight-ridge-mountain-spirit",
+            "name": "The Twilight Ridge mountain spirit",
+            "reveal": {
+              "chapter": 81
+            }
+          },
+          {
+            "description": "The red-bearded head of the Twilight Secret Sect, presiding over a council of five chiefs when Abraham Shensie asks the sect to lead a campaign against the Raven Sect.",
+            "id": "twilight-secret-sect-head",
+            "name": "The Twilight Secret Sect head",
+            "reveal": {
+              "chapter": 84
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C95H895N",
+            "type": "community"
+          }
+        ],
+        "work": "way-to-the-south"
+      }
+    },
     "waybound": {
       "characters": {
         "characters": [
