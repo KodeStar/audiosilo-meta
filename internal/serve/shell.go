@@ -1,13 +1,18 @@
 package serve
 
 import (
+	"encoding/binary"
 	"fmt"
+	"hash/fnv"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime/debug"
+	"strconv"
 	"strings"
+	"sync"
 )
 
 // The three markers the BUILT Astro shell carries, and the whole contract
@@ -47,6 +52,10 @@ type shell struct {
 	head   string // everything up to and including headOpenMarker
 	mid    string // headCloseMarker up to (not including) bodyMarker
 	tail   string // everything after bodyMarker
+	// identity is the non-data half of this page's ETag, mixed at load - see
+	// pageIdentity. Empty on a shell that carries no markers, which issues no
+	// validator at all (serveRaw).
+	identity string
 }
 
 // render assembles the page: the shell's own head, the composed head block, the
@@ -118,9 +127,11 @@ func (s shells) get(name string) *shell {
 	return s[name]
 }
 
-// loadShells splits every entity shell under dir. It never fails: the whole
-// point of the marker contract is that its absence degrades to the static page.
-func loadShells(dir string, logger *log.Logger) shells {
+// loadShells splits every entity shell under dir and stamps each with its page
+// identity (siteURL is the configured public origin - see pageIdentity). It
+// never fails: the whole point of the marker contract is that its absence
+// degrades to the static page.
+func loadShells(dir, siteURL string, logger *log.Logger) shells {
 	out := shells{}
 	for _, e := range htmlEntityRoutes {
 		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(e.shell)))
@@ -134,7 +145,59 @@ func loadShells(dir string, logger *log.Logger) shells {
 			out[e.shell] = &shell{raw: string(raw)}
 			continue
 		}
+		sh.identity = pageIdentity(string(raw), siteURL, buildRevision())
 		out[e.shell] = sh
 	}
 	return out
 }
+
+// pageIdentity is the non-data half of an entity page's ETag: everything that
+// changes the bytes we render while the ARTIFACT stays the same. The validator
+// has to cover it, because a client whose 304 is renewed against an unchanged
+// artifact stays on the page it cached - and a UI-only deploy (a new dist, the
+// same data release) leaves that page asking for hashed assets the server no
+// longer has, forever.
+//
+// Three components, mixed into one short hash at load because none of them
+// changes for the life of the process:
+//
+//   - the built shell's own bytes: the dist's identity, and the only component a
+//     UI-only deploy moves;
+//   - the configured site URL: every canonical link, og:url and JSON-LD url is
+//     built from it, so one artifact renders two different pages at two origins;
+//   - the binary's VCS revision: the COMPOSER's own code, which a fact-sheet or
+//     JSON-LD change moves without touching either of the above.
+//
+// fnv-64a is enough: this is a cache key, not a signature - a client that
+// fabricates a validator is only ever handed a 304 for a page it invented (see
+// entityHandler), so nothing here has to resist collisions chosen by an
+// attacker. Components are length-prefixed so no two of them can be run together
+// into the same digest input.
+func pageIdentity(shellHTML, siteURL, revision string) string {
+	h := fnv.New64a()
+	for _, part := range []string{shellHTML, siteURL, revision} {
+		var n [8]byte
+		binary.LittleEndian.PutUint64(n[:], uint64(len(part)))
+		_, _ = h.Write(n[:])
+		_, _ = io.WriteString(h, part)
+	}
+	return strconv.FormatUint(h.Sum64(), 16)
+}
+
+// buildRevision is the commit this binary was built from, or "" when the
+// toolchain stamped none - a `go run`, a test binary, a -buildvcs=false build.
+// Empty is honest rather than an error: the validator then rests on the two
+// components that are always there, and an unstamped binary is not what a
+// crawler's cached copy faces (the released image is built from a checkout).
+var buildRevision = sync.OnceValue(func() string {
+	info, ok := debug.ReadBuildInfo()
+	if !ok {
+		return ""
+	}
+	for _, s := range info.Settings {
+		if s.Key == "vcs.revision" {
+			return s.Value
+		}
+	}
+	return ""
+})

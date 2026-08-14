@@ -19,14 +19,25 @@ export function useQueryParam(name: string): string | null {
 }
 
 /** Read the entity slug for a detail island: the path route first, the legacy
-    `?id=` second (see lib/entity-url). Same null/'' contract as useQueryParam -
-    null until the location has been read, '' when the URL names no entity. */
-export function useEntitySlug(kind: EntityKind): string | null {
-  const [value, setValue] = useState<string | null>(null)
-  useEffect(() => {
+    `?id=` second (see lib/entity-url). '' when the URL names no entity, which
+    useEntity maps to its not-found state.
+
+    Read in a lazy initializer, on the FIRST render, rather than in an effect.
+    The three detail islands are `client:only` (see work/person/series.astro), so
+    window exists before the first render - WorkDetail already reads
+    window.location.hash the same way - and reading it in an effect cost a whole
+    committed render in which the island showed its spinner UNDERNEATH the
+    server-rendered fact sheet, which useEmbeddedEntity only removes once it has
+    a slug to match the payload against.
+
+    There is no null-before-read value to distinguish here for the same reason:
+    the location has always been read. useQueryParam above keeps the null,
+    because its caller (BuildTool) does distinguish them. */
+export function useEntitySlug(kind: EntityKind): string {
+  const [value] = useState(() => {
     const { pathname, search } = window.location
-    setValue(entitySlugFromLocation(pathname, search, kind) ?? '')
-  }, [kind])
+    return entitySlugFromLocation(pathname, search, kind) ?? ''
+  })
   return value
 }
 

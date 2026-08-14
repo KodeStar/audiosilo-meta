@@ -55,27 +55,48 @@ func handleOpenAPI(w http.ResponseWriter, r *http.Request) {
 	h.Set("Content-Type", "application/json; charset=utf-8")
 	h.Set("ETag", etag)
 	h.Set("Cache-Control", specMaxAge)
-	if matchesETag(r.Header.Get("If-None-Match"), etag) {
+	// The wildcard is answered here rather than deferred the way the entity pages
+	// defer it: this representation is embedded in the binary, so "a current
+	// representation exists" is true by construction and costs nothing to know.
+	inm := r.Header.Get("If-None-Match")
+	if matchesETag(inm, etag) || anyValidator(inm) {
 		w.WriteHeader(http.StatusNotModified)
 		return
 	}
 	_, _ = w.Write(openAPISpec)
 }
 
-// matchesETag reports whether an If-None-Match header names etag. It handles the
-// comma-separated list and the "*" wildcard RFC 9110 allows, and compares with
-// the WEAK comparison function the spec mandates for If-None-Match: a "W/"
-// prefix is ignored on BOTH sides, so a weak validator (the entity pages issue
-// one - see entityETag) matches the header it was itself sent in, and a strong
-// one (the spec route's content hash) still matches a weakened echo of it.
+// matchesETag reports whether an If-None-Match header NAMES etag. It handles the
+// comma-separated list, and compares with the WEAK comparison function the spec
+// mandates for If-None-Match: a "W/" prefix is ignored on BOTH sides, so a weak
+// validator (the entity pages issue one - see entityETag) matches the header it
+// was itself sent in, and a strong one (the spec route's content hash) still
+// matches a weakened echo of it.
+//
+// The "*" wildcard is deliberately NOT a match here. Per RFC 9110 13.1.2 it
+// matches only when a current representation EXISTS, which is a question about
+// the resource and not about the header - so the callers answer it themselves
+// (see anyValidator) and this function stays a comparison.
 func matchesETag(header, etag string) bool {
 	if header == "" {
 		return false
 	}
 	want := strings.TrimPrefix(etag, "W/")
 	for candidate := range strings.SplitSeq(header, ",") {
-		candidate = strings.TrimSpace(candidate)
-		if candidate == "*" || strings.TrimPrefix(candidate, "W/") == want {
+		if strings.TrimPrefix(strings.TrimSpace(candidate), "W/") == want {
+			return true
+		}
+	}
+	return false
+}
+
+// anyValidator reports whether an If-None-Match header carries the "*" wildcard.
+// It says only that the client asked "304 if this resource has any current
+// representation" - whether it HAS one is the caller's to establish, which is
+// what keeps an unknown or retired id off a 304 it would otherwise get for free.
+func anyValidator(header string) bool {
+	for candidate := range strings.SplitSeq(header, ",") {
+		if strings.TrimSpace(candidate) == "*" {
 			return true
 		}
 	}

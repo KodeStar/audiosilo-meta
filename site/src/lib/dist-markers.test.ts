@@ -72,6 +72,17 @@ describe('the built detail shells carry the injection markers', () => {
       expect(headBlock).not.toContain('rel="icon"')
       expect(headBlock).not.toContain('name="viewport"')
 
+      // The build's OWN injections - the bundled stylesheet and the island's
+      // module scripts - stay outside it too. Astro emits them after the marked
+      // block today, but nothing in Astro promises where in <head> it puts them:
+      // if one ever landed inside, metaserve would replace it with the composed
+      // metadata and serve every entity page unstyled (or unhydrated), and every
+      // assertion above would still pass.
+      expect(html).toContain('rel="stylesheet"')
+      expect(headBlock).not.toContain('rel="stylesheet"')
+      expect(html).toContain('<script type="module"')
+      expect(headBlock).not.toContain('<script')
+
       // The body marker sits in the body, after the head block it follows.
       expect(html.indexOf(ENTITY)).toBeGreaterThan(html.indexOf('</head>'))
     })

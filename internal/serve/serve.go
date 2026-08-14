@@ -175,7 +175,7 @@ func New(cfg Config) (*Server, error) {
 
 	if cfg.Site != "" {
 		s.site = newSiteHandler(cfg.Site)
-		s.shells = loadShells(cfg.Site, s.log)
+		s.shells = loadShells(cfg.Site, cfg.SiteURL, s.log)
 	}
 	s.mux = s.buildMux()
 	return s, nil

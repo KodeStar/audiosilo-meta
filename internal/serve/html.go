@@ -161,11 +161,11 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 		}
 		id := r.PathValue(idWildcard)
 
-		// The validator depends on the snapshot's identity and the id only, so it
-		// is computed BEFORE the page and a match costs ZERO snapshot queries -
-		// which is the request shape a crawler's traffic settles into once a page
-		// is indexed, against a compose that is a 6+4N-query cascade plus two JSON
-		// marshals and a template execute.
+		// The validator depends on the snapshot's identity, the page's identity and
+		// the id only, so it is computed BEFORE the page and a match costs ZERO
+		// snapshot queries - which is the request shape a crawler's traffic settles
+		// into once a page is indexed, against a compose that is a 6+4N-query
+		// cascade plus two JSON marshals and a template execute.
 		//
 		// The match needs no existence check to be honest. The ETag embeds the
 		// snapshot's release tag (or its build timestamp) and a snapshot is
@@ -178,8 +178,17 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 		// A FABRICATED match gets a bodyless 304 for a page we never served, which
 		// deceives only its fabricator; the alternative spends the whole compose on
 		// every honest revalidation, which is the traffic this route exists for.
-		etag := entityETag(snap, id)
-		if matchesETag(r.Header.Get("If-None-Match"), etag) {
+		//
+		// "*" is the one validator that cannot take this path. It names no
+		// representation, so it carries no proof of anything, and RFC 9110 13.1.2
+		// makes it match only when a current representation EXISTS - which here is
+		// exactly the question the compose answers. So a wildcard skips the fast
+		// path, runs the whole cascade, and is answered 304 only where a page was
+		// composed; an unknown slug still 404s and a retired one still 301s.
+		inm := r.Header.Get("If-None-Match")
+		etag := entityETag(snap, sh, id)
+		wildcard := anyValidator(inm)
+		if !wildcard && matchesETag(inm, etag) {
 			h := w.Header()
 			h.Set("ETag", etag)
 			h.Set("Cache-Control", entityMaxAge)
@@ -204,9 +213,17 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 		}
 
 		h := w.Header()
-		h.Set("Content-Type", "text/html; charset=utf-8")
 		h.Set("ETag", etag)
 		h.Set("Cache-Control", entityMaxAge)
+		if wildcard {
+			// The representation exists, which is all "*" asked. The composed page
+			// is dropped rather than written - the cost of composing it is what the
+			// wildcard buys by naming nothing - and the response carries exactly the
+			// headers the fast path's 304 carries.
+			w.WriteHeader(http.StatusNotModified)
+			return
+		}
+		h.Set("Content-Type", "text/html; charset=utf-8")
 		_, _ = io.WriteString(w, sh.render(page.renderHead(), page.renderBody()))
 	}
 }
@@ -238,19 +255,25 @@ func (s *Server) legacyHandler(e htmlEntityRoute) http.HandlerFunc {
 	}
 }
 
-// entityETag is the page's validator: the artifact's identity plus the slug.
-// The release tag is the identity when the server is polling; a local --db
-// artifact has no tag, so the build timestamp stands in. Weak, because the
-// comparison is about "is this the same content", not about byte equality of two
-// transfer encodings. A quote in either half would end the tag early, so both
-// are stripped of them - every id in the artifact is a slug, which makes that
+// entityETag is the page's validator, in three parts: the artifact's identity,
+// the PAGE's identity, and the slug. The release tag is the artifact's identity
+// when the server is polling; a local --db artifact has no tag, so the build
+// timestamp stands in. The page's identity is the shell, the origin and the
+// composer (see pageIdentity) - the body is shell plus composed markup, so a
+// validator over the data alone would keep a client on a page whose dist has
+// been replaced under it.
+//
+// Weak, because the comparison is about "is this the same content", not about
+// byte equality of two transfer encodings. A quote in any part would end the tag
+// early, so all of them are stripped of them - every id in the artifact is a
+// slug and the other two parts are a tag and a hex digest, which makes that
 // unreachable rather than merely unlikely.
-func entityETag(snap *snapshot, id string) string {
+func entityETag(snap *snapshot, sh *shell, id string) string {
 	version := snap.tag
 	if version == "" {
 		version = snap.stats.BuiltAt
 	}
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(version+"/"+id) + `"`
+	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(version+"/"+sh.identity+"/"+id) + `"`
 }
 
 // ---- page composition -------------------------------------------------------
@@ -436,10 +459,14 @@ func firstCover(d *workDetail) string {
 // ---- person -----------------------------------------------------------------
 
 func composePersonPage(siteURL string, snap *snapshot, id string) (*entityPage, error) {
-	// The SAME call the JSON route makes, with the same default window: one page
-	// of each credit list (see personPageDefault - a corporate credit narrates
-	// thousands of works).
-	d, err := snap.person(id, personPageDefault, 0)
+	// The MAXIMUM window, not the JSON route's default. The embedded payload
+	// replaces the fetch the island would otherwise make, and the site asks for
+	// personPageMax outright (site/src/lib/api.ts PERSON_PAGE_MAX), so composing a
+	// smaller page would hand the island fewer credits than it asked for - and
+	// there is no pagination UI on the page to reach the rest with. The window
+	// still bounds a corporate credit that narrates thousands of works, and
+	// windowCaption says so on the fact sheet.
+	d, err := snap.person(id, personPageMax, 0)
 	if err != nil || d == nil {
 		return nil, err
 	}

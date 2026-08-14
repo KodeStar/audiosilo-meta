@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -80,13 +81,23 @@ func quietConfig(t *testing.T, cat *model.Catalog, shells map[string]string) Con
 
 func newPageServer(t *testing.T, cat *model.Catalog, shells map[string]string) *httptest.Server {
 	t.Helper()
-	srv, err := New(quietConfig(t, cat, shells))
+	_, ts := newPageServerFrom(t, quietConfig(t, cat, shells))
+	return ts
+}
+
+// newPageServerFrom is newPageServer with the config supplied and the *Server
+// handed back: a test that has to derive what the server itself computed (an
+// ETag over its own snapshot and shell) needs both, and a test about the DIST
+// needs to construct two servers over one config.
+func newPageServerFrom(t *testing.T, cfg Config) (*Server, *httptest.Server) {
+	t.Helper()
+	srv, err := New(cfg)
 	if err != nil {
 		t.Fatal(err)
 	}
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
-	return ts
+	return srv, ts
 }
 
 // getPage fetches an HTML page and returns its status and body.
@@ -232,11 +243,16 @@ func between(t *testing.T, s, open, close string) string {
 // TestEntityPayloadIsTheAPIResponse is the hydration contract: the embedded
 // payload is byte-for-byte what the corresponding API route returns for the same
 // id, so the island can use it as initial data and skip the fetch entirely.
+//
+// The API URL each case names is the fetch the island would have MADE, not the
+// route's bare default: the person page asks for the maximum window (see
+// site/src/lib/api.ts PERSON_PAGE_MAX and composePersonPage), so a payload
+// composed at the default would be a smaller page than the fetch it replaces.
 func TestEntityPayloadIsTheAPIResponse(t *testing.T) {
 	ts := newPageServer(t, fixtureCatalog(), markedShells)
 	cases := []struct{ page, api string }{
 		{"/works/project-hail-mary", "/api/v1/works/project-hail-mary"},
-		{"/people/brandon-sanderson", "/api/v1/people/brandon-sanderson"},
+		{"/people/brandon-sanderson", "/api/v1/people/brandon-sanderson?limit=" + strconv.Itoa(personPageMax)},
 		{"/series/the-stormlight-archive", "/api/v1/series/the-stormlight-archive"},
 	}
 	for _, tc := range cases {
@@ -257,6 +273,29 @@ func TestEntityPayloadIsTheAPIResponse(t *testing.T) {
 				t.Error("payload carries no id for the island to match the slug against")
 			}
 		})
+	}
+}
+
+// TestPersonPageComposesTheMaximumWindow pins the window the person page is
+// composed at. The fixture catalogue is far too small to show the defect - it
+// would take a person with more than personPageDefault credits - so the constant
+// is asserted instead, through the payload the page actually embeds.
+//
+// The window matters because the payload REPLACES a fetch: the site asks for
+// PERSON_PAGE_MAX (site/src/lib/api.ts), and a page composed at the default
+// would silently drop credits 101-500 on a hydrated page that has no pagination
+// UI to reach them with.
+func TestPersonPageComposesTheMaximumWindow(t *testing.T) {
+	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	_, page := getPage(t, ts.URL, "/people/brandon-sanderson")
+	var doc struct {
+		Limit int `json:"limit"`
+	}
+	if err := json.Unmarshal([]byte(entityPayload(t, page)), &doc); err != nil {
+		t.Fatalf("payload does not parse: %v", err)
+	}
+	if doc.Limit != personPageMax {
+		t.Errorf("person page composed at limit %d, want personPageMax (%d)", doc.Limit, personPageMax)
 	}
 }
 
@@ -313,7 +352,7 @@ func TestEntityPageWithoutASnapshot(t *testing.T) {
 		retired: map[string]int{},
 	}
 	srv.site = newSiteHandler(srv.cfg.Site)
-	srv.shells = loadShells(srv.cfg.Site, srv.log)
+	srv.shells = loadShells(srv.cfg.Site, srv.cfg.SiteURL, srv.log)
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
@@ -530,18 +569,55 @@ func TestEntityPageNotFound(t *testing.T) {
 
 // ---- caching ----------------------------------------------------------------
 
-// TestEntityPageRevalidates pins the crawl-budget win: the page carries an ETag
-// tied to the artifact and the slug, and a conditional request is answered with
-// a bodyless 304.
+// conditionalGet issues a GET carrying an If-None-Match header, following no
+// redirects. The caller closes the body.
+func conditionalGet(t *testing.T, url, inm string) *http.Response {
+	t.Helper()
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("If-None-Match", inm)
+	req.Header.Set("Accept-Encoding", "gzip")
+	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error {
+		return http.ErrUseLastResponse
+	}}
+	resp, err := client.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = resp.Body.Close() })
+	return resp
+}
+
+// wantBodyless fails when a response carries any body, which is what a 304 must
+// not.
+func wantBodyless(t *testing.T, resp *http.Response) {
+	t.Helper()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(body) != 0 {
+		t.Errorf("%d carried a %d-byte body", resp.StatusCode, len(body))
+	}
+}
+
+// TestEntityPageRevalidates pins the crawl-budget win: the page carries the ETag
+// entityETag composes for it, and a conditional request is answered with a
+// bodyless 304. The expected value is DERIVED from the helper rather than
+// spelled out - the shape has three parts now (see entityETag) and a test that
+// re-spells it would be a second definition of the validator.
 func TestEntityPageRevalidates(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	srv, ts := newPageServerFrom(t, quietConfig(t, fixtureCatalog(), markedShells))
 	resp := getNoFollow(t, ts.URL, "/works/project-hail-mary")
 	if resp.StatusCode != http.StatusOK {
 		t.Fatalf("status = %d", resp.StatusCode)
 	}
 	etag := resp.Header.Get("ETag")
-	if etag == "" {
-		t.Fatal("page carries no ETag")
+	want := entityETag(srv.current(), srv.shells.get("work/index.html"), "project-hail-mary")
+	if etag != want {
+		t.Errorf("ETag = %q, want %q", etag, want)
 	}
 	if cc := resp.Header.Get("Cache-Control"); cc != entityMaxAge {
 		t.Errorf("Cache-Control = %q, want %q", cc, entityMaxAge)
@@ -550,35 +626,86 @@ func TestEntityPageRevalidates(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	req, err := http.NewRequest(http.MethodGet, ts.URL+"/works/project-hail-mary", nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	req.Header.Set("If-None-Match", etag)
-	req.Header.Set("Accept-Encoding", "gzip")
-	second, err := http.DefaultClient.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = second.Body.Close() }()
+	second := conditionalGet(t, ts.URL+"/works/project-hail-mary", etag)
 	if second.StatusCode != http.StatusNotModified {
 		t.Fatalf("conditional GET = %d, want 304", second.StatusCode)
 	}
 	if enc := second.Header.Get("Content-Encoding"); enc != "" {
 		t.Errorf("304 Content-Encoding = %q, want none", enc)
 	}
-	body, err := io.ReadAll(second.Body)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(body) != 0 {
-		t.Errorf("304 carried a %d-byte body", len(body))
-	}
+	wantBodyless(t, second)
 
 	// Two different records never share a validator.
 	other := getNoFollow(t, ts.URL, "/works/the-way-of-kings")
 	if got := other.Header.Get("ETag"); got == etag {
 		t.Errorf("two works share the ETag %q", got)
+	}
+}
+
+// TestEntityETagCoversTheDist is the reason the validator is not the artifact's
+// identity alone: the body is the built shell plus the composed markup, so a
+// UI-only deploy - a new dist against the SAME data release - has to invalidate
+// it. Without that, a 304 would renew a client's copy of the old page forever,
+// and that page asks for hashed assets the new dist no longer carries.
+//
+// One config, so both servers read one artifact; the dist changes between them,
+// as a deploy changes it.
+func TestEntityETagCoversTheDist(t *testing.T) {
+	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	_, first := newPageServerFrom(t, cfg)
+	before := getNoFollow(t, first.URL, "/works/project-hail-mary").Header.Get("ETag")
+
+	shellPath := filepath.Join(cfg.Site, "work", "index.html")
+	raw, err := os.ReadFile(shellPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// A new asset hash is what a UI deploy really changes; any byte outside the
+	// markers proves the same point.
+	if err := os.WriteFile(shellPath, append(raw, []byte("<!--rebuilt-->")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	_, second := newPageServerFrom(t, cfg)
+	after := getNoFollow(t, second.URL, "/works/project-hail-mary").Header.Get("ETag")
+
+	if before == "" || after == "" {
+		t.Fatalf("missing ETag: %q, %q", before, after)
+	}
+	if before == after {
+		t.Errorf("a rebuilt dist reissued the validator %q", after)
+	}
+}
+
+// TestPageIdentityCoversEveryComponent pins the three inputs one page's identity
+// is mixed from, each for a different way the rendered bytes can change while
+// the artifact does not: the dist, the origin every canonical URL is built from,
+// and the composer's own code.
+func TestPageIdentityCoversEveryComponent(t *testing.T) {
+	const (
+		shellHTML = "<html>SHELL</html>"
+		siteURL   = "https://meta.test"
+		revision  = "abc123"
+	)
+	base := pageIdentity(shellHTML, siteURL, revision)
+	if again := pageIdentity(shellHTML, siteURL, revision); again != base {
+		t.Errorf("pageIdentity is not deterministic: %q then %q", base, again)
+	}
+	cases := map[string]string{
+		"a rebuilt dist":       pageIdentity(shellHTML+" ", siteURL, revision),
+		"a different origin":   pageIdentity(shellHTML, siteURL+"/staging", revision),
+		"a different revision": pageIdentity(shellHTML, siteURL, revision+"0"),
+		// Length-prefixed components: without that, moving a boundary would leave
+		// the digest input identical.
+		"a moved boundary": pageIdentity(shellHTML+siteURL, "", revision),
+	}
+	for name, got := range cases {
+		if got == base {
+			t.Errorf("%s left the page identity at %q", name, got)
+		}
+	}
+	// An unstamped binary (go run, a test binary) is honest, not an error.
+	if pageIdentity(shellHTML, siteURL, "") == "" {
+		t.Error("an empty revision produced an empty identity")
 	}
 }
 
@@ -615,25 +742,55 @@ func TestEntityPageRevalidatesWithoutComposing(t *testing.T) {
 		t.Fatalf("unconditional GET of an unknown slug = %d, want 404", code)
 	}
 
-	req, err := http.NewRequest(http.MethodGet, ts.URL+"/works/no-such-work", nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	req.Header.Set("If-None-Match", fabricated)
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = resp.Body.Close() }()
+	resp := conditionalGet(t, ts.URL+"/works/no-such-work", fabricated)
 	if resp.StatusCode != http.StatusNotModified {
 		t.Fatalf("conditional GET of an unknown slug = %d, want 304 (the page must not be composed)", resp.StatusCode)
 	}
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		t.Fatal(err)
+	wantBodyless(t, resp)
+}
+
+// TestWildcardValidatorNeedsARepresentation is the ONE conditional request that
+// does not take the fast path above. "*" names no validator, so it carries no
+// proof that anything resolved, and RFC 9110 13.1.2 makes it match only where a
+// current representation EXISTS - so the handler runs its whole cascade and the
+// wildcard changes only what a SUCCESSFUL compose is written as. An unknown slug
+// keeps its 404 and a retired one keeps its 301; treating "*" as an
+// unconditional match had them answering 304 for records the server does not
+// serve, which is how a crawler loses a page and a browser loses a redirect.
+func TestWildcardValidatorNeedsARepresentation(t *testing.T) {
+	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	cases := []struct {
+		name, path string
+		want       int
+	}{
+		{"a live slug", "/works/project-hail-mary", http.StatusNotModified},
+		{"an unknown slug", "/works/no-such-work", http.StatusNotFound},
+		{"a retired slug", "/works/project-hail-mary-audiobook", http.StatusMovedPermanently},
+		// The wildcard is matched out of the list form too.
+		{"in a list", "/works/no-such-work", http.StatusNotFound},
 	}
-	if len(body) != 0 {
-		t.Errorf("304 carried a %d-byte body", len(body))
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			header := "*"
+			if tc.name == "in a list" {
+				header = `W/"nonsense", *`
+			}
+			resp := conditionalGet(t, ts.URL+tc.path, header)
+			if resp.StatusCode != tc.want {
+				t.Fatalf("GET %s with If-None-Match: %s = %d, want %d", tc.path, header, resp.StatusCode, tc.want)
+			}
+			switch tc.want {
+			case http.StatusNotModified:
+				wantBodyless(t, resp)
+				if got := resp.Header.Get("ETag"); got == "" {
+					t.Error("304 carries no ETag for the client to keep")
+				}
+			case http.StatusMovedPermanently:
+				if got := resp.Header.Get("Location"); got != "/works/project-hail-mary" {
+					t.Errorf("Location = %q", got)
+				}
+			}
+		})
 	}
 }
 
