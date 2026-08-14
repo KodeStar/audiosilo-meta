@@ -434,7 +434,45 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoDecoratedTarget(ix, members, canon); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoUnaddressableTitle(members); ok {
+		out = append(out, s)
+	}
 	return out
+}
+
+// vetoUnaddressableTitle: the cluster meets only on a comparison key that has no
+// identity in it, and the members' cleaned titles are not even the same string.
+//
+// It was found by RUNNING the repair pass over the real tree, which is the only place it
+// shows. The cluster key is titlerule.CompareKey, which folds away everything that is not
+// ASCII alphanumeric, so two different Russian novels by one pair of authors - "Грани
+// безумия. Том 1" and "Клинком и сердцем, Том 1" - both reduce to the key "1" and were
+// proposed for merge with every other veto clear. The same fold is what makes an
+// unaddressable name a refusal in the importer (getOrCreateSeries) and in the libex credit
+// gate: a string this project's identity rules keep nothing of cannot be evidence that two
+// records are one book.
+//
+// It is narrow, and measured over the 279k-work tree: it fires only when NO member's
+// cleaned title CarriesIdentity and the cleaned titles differ as strings, which is 2 of
+// the 1,846 non-advisory merge-works proposals - both of them the shape above. The
+// legitimate members of the same regime ("1984" against "1984", "22/11/63" against
+// "22/11/63", "1177 B.C" against "1177 B.C") state IDENTICAL cleaned titles and keep
+// their merge.
+func vetoUnaddressableTitle(members []dupMember) (string, bool) {
+	for _, m := range members {
+		if titlerule.CarriesIdentity(m.wk.cleaned) {
+			return "", false
+		}
+	}
+	first := members[0]
+	for _, m := range members[1:] {
+		if m.wk.cleaned != first.wk.cleaned {
+			return fmt.Sprintf("%s cleans to %q and %s to %q, and neither names a book a rule can identify: they meet on a "+
+				"comparison key that folds away everything non-ASCII, which is two different books meeting on a number",
+				first.work.ID, first.wk.cleaned, m.work.ID, m.wk.cleaned), true
+		}
+	}
+	return "", false
 }
 
 // vetoPositionConflict: two members hold DIFFERENT positions in one series, so the

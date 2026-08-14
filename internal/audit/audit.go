@@ -34,15 +34,13 @@
 package audit
 
 import (
-	"bufio"
-	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
 	"slices"
-	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/reportdir"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
@@ -97,7 +95,7 @@ func Run(opts Options) (*Report, error) {
 	}
 	res := check.Load(opts.DataDir)
 	if res.Catalog == nil {
-		return nil, fmt.Errorf("audit: %s could not be loaded: %s", opts.DataDir, firstProblem(res))
+		return nil, fmt.Errorf("audit: %s could not be loaded: %s", opts.DataDir, reportdir.FirstProblem(res))
 	}
 	rep := analyze(res)
 	if err := write(rep, opts.OutDir); err != nil {
@@ -139,64 +137,21 @@ func (rep *Report) Findings(class string) []Finding { return rep.class(class).ro
 
 // checkOutDir refuses a report directory inside the data root.
 //
-// The audit's headline property is that it never writes to data/, and "the logic
-// has no write path" is only half of that: pointing -o at data/ would have the
-// report itself land in the tree, where metafmt and metacheck would then judge
-// files that are not records. Enforcing it here rather than trusting the operator
-// is what makes the claim hold for any caller.
+// The audit's headline property is that it never writes to data/, and "the logic has no
+// write path" is only half of that: pointing -o at data/ would have the report itself
+// land in the tree, where metafmt and metacheck would then judge files that are not
+// records. The guard itself is internal/reportdir's, shared with the repair pass that
+// writes its own report beside the same tree - including the symlink resolution the
+// comparison needs.
 func checkOutDir(opts Options) error {
 	if opts.OutDir == "" {
 		return fmt.Errorf("audit: no output directory")
 	}
-	data, err := resolvePath(opts.DataDir)
-	if err != nil {
-		return fmt.Errorf("audit: resolve %s: %w", opts.DataDir, err)
-	}
-	out, err := resolvePath(opts.OutDir)
-	if err != nil {
-		return fmt.Errorf("audit: resolve %s: %w", opts.OutDir, err)
-	}
-	rel, err := filepath.Rel(data, out)
-	if err != nil {
-		return nil // on different volumes, so certainly not inside
-	}
-	if rel == "." || !strings.HasPrefix(rel, "..") {
-		return fmt.Errorf("audit: the report directory %s is inside the data root %s: the audit never writes to the data tree, "+
-			"so point -o somewhere else", opts.OutDir, opts.DataDir)
+	if err := reportdir.RefuseInsideData(opts.DataDir, opts.OutDir,
+		"the audit never writes to the data tree, so point -o somewhere else"); err != nil {
+		return fmt.Errorf("audit: %w", err)
 	}
 	return nil
-}
-
-// resolvePath is the absolute, SYMLINK-RESOLVED form of a path, which is what the
-// containment test has to compare: a link outside the tree pointing into it defeats
-// a lexical comparison entirely, and pointing -o at such a link would put the report
-// in data/ with the guard none the wiser.
-//
-// A path that does not exist yet is resolved as far as it exists - the report
-// directory is normally created BY the run, so "not there yet" must not be an error.
-func resolvePath(p string) (string, error) {
-	abs, err := filepath.Abs(p)
-	if err != nil {
-		return "", err
-	}
-	// Walk up to the first existing ancestor, resolve THAT, then re-append.
-	rest := ""
-	cur := abs
-	for {
-		resolved, err := filepath.EvalSymlinks(cur)
-		if err == nil {
-			return filepath.Join(resolved, rest), nil
-		}
-		if !os.IsNotExist(err) {
-			return "", err
-		}
-		parent := filepath.Dir(cur)
-		if parent == cur {
-			return abs, nil // nothing on the path exists; the lexical form is all there is
-		}
-		rest = filepath.Join(filepath.Base(cur), rest)
-		cur = parent
-	}
 }
 
 // analyze is Run without the I/O, which is what the tests drive.
@@ -269,13 +224,6 @@ func loaderFindings(res check.Result) *findings {
 	return f
 }
 
-func firstProblem(res check.Result) string {
-	if len(res.Problems) == 0 {
-		return "no catalog returned and no problem reported"
-	}
-	return res.Problems[0].String()
-}
-
 // classFile is a class's NDJSON file name.
 func classFile(class string) string { return class + ".ndjson" }
 
@@ -294,30 +242,10 @@ func write(rep *Report, dir string) error {
 	return os.WriteFile(filepath.Join(dir, "SUMMARY.md"), []byte(summary(rep)), 0o644)
 }
 
-// writeNDJSON writes one record per line, compactly, with no HTML escaping (a
-// title carrying "&" or "<" must read as itself in the report). The writer is
-// buffered: a class file is tens of thousands of lines, and an unbuffered encoder
-// makes a syscall per record.
+// writeNDJSON writes one class's records, one per line, through the shared writer.
 func writeNDJSON(path string, rows []Finding) error {
-	fh, err := os.Create(path)
-	if err != nil {
-		return fmt.Errorf("audit: create %s: %w", path, err)
-	}
-	buf := bufio.NewWriter(fh)
-	enc := json.NewEncoder(buf)
-	enc.SetEscapeHTML(false)
-	for _, r := range rows {
-		if err := enc.Encode(r); err != nil {
-			_ = fh.Close()
-			return fmt.Errorf("audit: write %s: %w", path, err)
-		}
-	}
-	if err := buf.Flush(); err != nil {
-		_ = fh.Close()
-		return fmt.Errorf("audit: write %s: %w", path, err)
-	}
-	if err := fh.Close(); err != nil {
-		return fmt.Errorf("audit: close %s: %w", path, err)
+	if err := reportdir.WriteNDJSON(path, len(rows), func(i int) any { return rows[i] }); err != nil {
+		return fmt.Errorf("audit: %w", err)
 	}
 	return nil
 }

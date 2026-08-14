@@ -21,6 +21,12 @@ import (
 // thing this project does not do. A merge edits the members it decides about
 // and carries every other byte through untouched.
 //
+// ITS SUCCESSOR IS internal/rawentry, which is this file promoted to a leaf for the
+// duplicate-merge repair (internal/repair) that needed the same tool. This package was
+// deliberately NOT rewritten onto it: it is a documented one-off that has already run, so
+// a rewrite would change nothing on disk while touching the code that produced 159 live
+// records. A third consumer extends the leaf rather than forking this file again.
+//
 // THE TRADE, stated explicitly: pkg/pack owns the composite shape and offers
 // DecodeEntry/SetRecording, and every other writer in the module uses them.
 // This package does not, because they hand back and take `map[string]any`: a

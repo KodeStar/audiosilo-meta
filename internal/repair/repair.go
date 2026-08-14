@@ -56,6 +56,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/format"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
@@ -79,23 +80,23 @@ var appliableOps = map[string]bool{
 
 // AppliableOps returns the ops --op accepts, sorted. The CLI prints it, so the flag's
 // help and the set the planner switches on have one definition.
-func AppliableOps() []string { return sortedKeys(appliableOps) }
+func AppliableOps() []string { return rawentry.SortedKeys(appliableOps) }
 
 // The refusal categories. A refusal is a proposal this pass declined to apply, and
 // the category is what a maintainer triages by.
 const (
-	catStaleProposal      = "stale-proposal"
+	CatStaleProposal      = "stale-proposal"
 	catUnaddressableTitle = "title-carries-no-identity"
-	catNotProposed        = "not-proposed"
-	catMalformed          = "malformed-proposal"
-	catMissing            = "record-missing"
-	catRetired            = "record-retired"
-	catSidecarCollision   = "sidecar-member-collision"
-	catPositionConflict   = "series-position-conflict"
-	catRecordingKey       = "recording-key-exhausted"
-	catStaleValue         = "stale-value"
-	catNoValue            = "no-value-stated"
-	catRedirect           = "redirect-refused"
+	CatNotProposed        = "not-proposed"
+	CatMalformed          = "malformed-proposal"
+	CatMissing            = "record-missing"
+	CatRetired            = "record-retired"
+	CatSidecarCollision   = "sidecar-member-collision"
+	CatPositionConflict   = "series-position-conflict"
+	CatRecordingKey       = "recording-key-exhausted"
+	CatStaleValue         = "stale-value"
+	CatNoValue            = "no-value-stated"
+	CatRedirect           = "redirect-refused"
 )
 
 // Options configure a run.
@@ -283,7 +284,7 @@ func Run(opts Options) (*Report, error) {
 		return rep, rn.fatal
 	}
 	sortRefusals(rep.Refused)
-	rep.Redirects = countTombs(rep.Applied)
+	rep.Redirects = rn.plan.tombs
 
 	if opts.Write {
 		if err := rn.apply(store); err != nil {
@@ -318,13 +319,13 @@ func (rn *runner) planOne(c candidate) {
 		// Unreachable: selectProposals only yields appliableOps. Loud rather than
 		// silent, because a new op added to that map and not to this switch would
 		// otherwise be a proposal counted as applied and never carried out.
-		err = refusef(catMalformed, "op %q has no planner", p.Op)
+		err = refusef(CatMalformed, "op %q has no planner", p.Op)
 	}
 	if err == nil {
 		if cerr := t.commit(c.key()); cerr != nil {
 			// The only thing commit judges is the tombstone table, and it judges it
 			// over a copy - so a refusal here has changed nothing.
-			err = refusef(catRedirect, "%v", cerr)
+			err = refusef(CatRedirect, "%v", cerr)
 		}
 	}
 	if err != nil {
@@ -372,7 +373,7 @@ func (rn *runner) apply(store *pack.Store) error {
 	// The tombstones go in AFTER the packs: a table naming a slug that was never
 	// retired is a problem pkg/check reports, and this order means a failed flush
 	// cannot leave one behind.
-	if rn.plan.redirectsChanged {
+	if rn.plan.tombs > 0 {
 		if err := redirects.Write(rn.opts.DataDir, rn.plan.redirects); err != nil {
 			return err
 		}
@@ -506,19 +507,6 @@ func sortRefusals(rs []Refusal) {
 		}
 		return rs[i].Reason < rs[j].Reason
 	})
-}
-
-// countTombs counts the redirects the applied proposals recorded: one per retired
-// slug, which is one per loser of a merge.
-func countTombs(applied []Applied) int {
-	n := 0
-	for _, a := range applied {
-		switch a.Op {
-		case audit.OpMergeWorks, audit.OpMergeSeries:
-			n += len(a.Others)
-		}
-	}
-	return n
 }
 
 // joinList renders a string list for a note or a message.

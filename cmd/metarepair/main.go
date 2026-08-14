@@ -52,7 +52,8 @@ func main() {
 	report := flag.String("report", "", "metaaudit report directory to use as the worklist (optional: without it, whatever the fresh audit proposes)")
 	out := flag.String("o", "", "directory to write the apply-report into (optional)")
 	only := flag.String("only", "", "file of explicit keys to act on, one per line (a finding key, or a work/series slug it names)")
-	limit := flag.Int("limit", 0, "consider at most N matching proposals, in report order (0 = no cap)")
+	limit := flag.Int("limit", 0, "consider at most N matching proposals, in report order; a refusal raised while planning "+
+		"counts against it, and chunking a wave also bounds the packs a run holds resident (0 = no cap)")
 	write := flag.Bool("write", false, "apply the plan (default: report it and write nothing)")
 	verbose := flag.Bool("v", false, "print every applied change record by record")
 	var ops, subclasses repeated

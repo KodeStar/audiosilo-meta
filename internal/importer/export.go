@@ -31,6 +31,28 @@ func ISODatePart(ts string) string { return isoDatePart(ts) }
 // one byte-form a given set of credits ever has on disk.
 func SortCredits(credits []model.Credit) { sortCredits(credits) }
 
+// RuntimesCompatible reports whether two recording runtimes (whole minutes; 0 or
+// negative = unknown) are close enough to be the same production: an unknown on
+// either side is compatible, and two known runtimes must be within 10 percent of
+// the LARGER.
+//
+// It is the ASIN-merge guard's own rule, exported for internal/repair, which asks
+// the same question of two recordings that collide on one key while merging
+// duplicate works. The boundary matters: within-10%-of-the-larger is not the same
+// predicate as "the larger is at most 1.1x the smaller", and a repair spelling it
+// the second way would fuse productions this rule keeps apart.
+func RuntimesCompatible(a, b int) bool { return runtimesCompatible(a, b) }
+
+// AbridgedConflict reports whether two recording abridged tri-states are
+// incompatible enough to block a merge. An ABSENT flag reads as "unabridged" (the
+// audiobook default, and what an unmarked title implies), so a recording KNOWN to
+// be abridged never merges into one that is unabridged or unstated.
+//
+// Exported for internal/repair, and the absent-means-unabridged half is exactly
+// what a second spelling gets wrong: a rule that only refused when BOTH sides
+// state the flag would fold an abridgement into an unstated recording.
+func AbridgedConflict(a, b *bool) bool { return abridgedConflict(a, b) }
+
 // Chapters maps a source's chapters array onto the recording chapter shape,
 // applying the same structural rules every import does: titles trimmed (an
 // empty one numbered), offsets read under either spelling a source documents

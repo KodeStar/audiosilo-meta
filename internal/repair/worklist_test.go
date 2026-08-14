@@ -61,8 +61,8 @@ func TestAWorklistRecordTheFreshAuditNoLongerMakesIsRefused(t *testing.T) {
 	if len(second.Applied) != 0 {
 		t.Fatalf("a stale worklist record was applied: %+v", second.Applied)
 	}
-	if len(second.Refused) != 1 || second.Refused[0].Category != catStaleProposal {
-		t.Fatalf("refusals = %+v, want one %s", second.Refused, catStaleProposal)
+	if len(second.Refused) != 1 || second.Refused[0].Category != CatStaleProposal {
+		t.Fatalf("refusals = %+v, want one %s", second.Refused, CatStaleProposal)
 	}
 	if !strings.Contains(second.Refused[0].Reason, "does not report this finding at all") {
 		t.Errorf("reason = %q, want it to say the fresh audit no longer reports it", second.Refused[0].Reason)
@@ -88,8 +88,8 @@ func TestAChangedProposalIsRefusedWithBothDecisionsNamed(t *testing.T) {
 	if len(rep.Applied) != 0 {
 		t.Fatalf("a changed proposal was applied: %+v", rep.Applied)
 	}
-	if len(rep.Refused) != 1 || rep.Refused[0].Category != catStaleProposal {
-		t.Fatalf("refusals = %+v, want one %s", rep.Refused, catStaleProposal)
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatStaleProposal {
+		t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatStaleProposal)
 	}
 	for _, want := range []string{"the worklist asks for", "now proposes"} {
 		if !strings.Contains(rep.Refused[0].Reason, want) {
@@ -112,7 +112,7 @@ func TestOnlySelectsByKeyAndReportsAKeyThatMatchesNothing(t *testing.T) {
 	if len(rep.Applied) != 1 || rep.Applied[0].Target != "hammered" {
 		t.Fatalf("applied %+v, want only the named cluster", rep.Applied)
 	}
-	if len(rep.Refused) != 1 || rep.Refused[0].Category != catNotProposed || rep.Refused[0].Key != "no-such-work" {
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatNotProposed || rep.Refused[0].Key != "no-such-work" {
 		t.Fatalf("refusals = %+v, want the unmatched key named", rep.Refused)
 	}
 }

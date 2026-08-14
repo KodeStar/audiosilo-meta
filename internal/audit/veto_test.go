@@ -401,6 +401,46 @@ func TestSeriesDupVetoesParentheticalMembers(t *testing.T) {
 	}
 }
 
+// The unaddressable-title veto: two different books whose cleaned titles reduce to one
+// comparison key only because the key folds away everything non-ASCII. Found by running
+// the repair pass over the real tree, where it proposed merging two Russian novels.
+func TestWorkDupVetoesTitlesThatCarryNoIdentity(t *testing.T) {
+	rep := runFixture(t, fixture(t, map[string]string{
+		"works/ed/edge-of-insanity/work.json":         workJSON(t, "edge-of-insanity", "Грани безумия. Том 1", withLanguage("ru")),
+		"works/ed/edge-of-insanity/recordings/a.json": recJSON(t, "a", "edge-of-insanity"),
+		"works/bl/blade-and-heart/work.json":          workJSON(t, "blade-and-heart", "Клинком и сердцем, Том 1", withLanguage("ru")),
+		"works/bl/blade-and-heart/recordings/b.json":  recJSON(t, "b", "blade-and-heart"),
+	}))
+	got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster (the key folds both titles to the same thing), got %d", len(got))
+	}
+	if !got[0].Propose.Advisory {
+		t.Error("two books meeting on a number must withhold the merge")
+	}
+	if !strings.Contains(got[0].Propose.Reason, "meet on a") && !strings.Contains(got[0].Propose.Reason, "meeting on a number") {
+		t.Errorf("reason = %q, want it to name the unaddressable titles", got[0].Propose.Reason)
+	}
+}
+
+// ...and the same regime with IDENTICAL cleaned titles is a real duplicate ("1984"
+// against "1984"), so the merge stands.
+func TestWorkDupKeepsAMergeWhenTheNumericTitlesAreIdentical(t *testing.T) {
+	rep := runFixture(t, fixture(t, map[string]string{
+		"works/ni/nineteen-a/work.json":         workJSON(t, "nineteen-a", "1984"),
+		"works/ni/nineteen-a/recordings/a.json": recJSON(t, "a", "nineteen-a", withRuntime(650)),
+		"works/ni/nineteen-b/work.json":         workJSON(t, "nineteen-b", "1984 (Unabridged)"),
+		"works/ni/nineteen-b/recordings/b.json": recJSON(t, "b", "nineteen-b", withRuntime(645)),
+	}))
+	got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster, got %d", len(got))
+	}
+	if got[0].Propose.Advisory {
+		t.Errorf("a real duplicate whose title is a number was withheld: %q", got[0].Propose.Reason)
+	}
+}
+
 // A range's canonical spelling is not safe to write: trimming fractional zeros
 // collapses "2.1-2.10" to "2.1-2.1".
 func TestSeriesIntegrityNeverRewritesARangeSpelling(t *testing.T) {

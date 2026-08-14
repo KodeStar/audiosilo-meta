@@ -26,7 +26,7 @@ func TestRetitleWorkChangesTheTitleAndNotTheSlug(t *testing.T) {
 	if len(rep.Applied) != 1 {
 		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
 	}
-	if got := workEntry(t, data, "the-hobbit-unabridged").str("title"); got != "The Hobbit" {
+	if got := workEntry(t, data, "the-hobbit-unabridged").Str("title"); got != "The Hobbit" {
 		t.Errorf("title = %q, want the edition marker removed", got)
 	}
 	if !entryExists(t, data, pack.FamilyWorks, "the-hobbit-unabridged") {
@@ -48,7 +48,7 @@ func TestRetitleRefusesAChangedTitle(t *testing.T) {
 			From: "Hammered (Unabridged)", To: "Hammered",
 		},
 	})
-	assertRefusal(t, err, catStaleValue, "now states the title")
+	assertRefusal(t, err, CatStaleValue, "now states the title")
 }
 
 // add-series-member: the title names a series and a volume, the catalogue models
@@ -69,7 +69,7 @@ func TestAddSeriesMemberModelsTheMembership(t *testing.T) {
 		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
 	}
 	want := []model.SeriesWork{{Work: "hounded", Position: "1"}, {Work: "hexed-druid-tales-book-2", Position: "2"}}
-	if got := readEntry(t, data, pack.FamilySeries, "druid-tales").seriesWorks(); !reflect.DeepEqual(got, want) {
+	if got := readEntry(t, data, pack.FamilySeries, "druid-tales").SeriesWorks(); !reflect.DeepEqual(got, want) {
 		t.Errorf("memberships = %+v, want %+v (appended, in the order the importer would)", got, want)
 	}
 }
@@ -85,27 +85,27 @@ func TestAddSeriesMemberRefusals(t *testing.T) {
 	}
 	t.Run("position taken", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "3")), catPositionConflict, "is held by hammered")
+		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "3")), CatPositionConflict, "is held by hammered")
 	})
 	t.Run("position taken under another spelling", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "03")), catPositionConflict, "is held by hammered")
+		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "03")), CatPositionConflict, "is held by hammered")
 	})
 	t.Run("already a member", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("hammered", "9")), catStaleValue, "already lists")
+		assertRefusal(t, rn.addSeriesMember(tx, base("hammered", "9")), CatStaleValue, "already lists")
 	})
 	t.Run("not a position", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "the third")), catMalformed, "not a position")
+		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "the third")), CatMalformed, "not a position")
 	})
 	t.Run("no position stated", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "")), catNoValue, "no position")
+		assertRefusal(t, rn.addSeriesMember(tx, base("hammered-book-3", "")), CatNoValue, "no position")
 	})
 	t.Run("no such work", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.addSeriesMember(tx, base("no-such-work", "9")), catMissing, "no work")
+		assertRefusal(t, rn.addSeriesMember(tx, base("no-such-work", "9")), CatMissing, "no work")
 	})
 }
 
@@ -125,7 +125,7 @@ func TestRestatePositionRewritesTheSpelling(t *testing.T) {
 		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
 	}
 	want := []model.SeriesWork{{Work: "hounded", Position: "2.5"}}
-	if got := readEntry(t, data, pack.FamilySeries, "druid-tales").seriesWorks(); !reflect.DeepEqual(got, want) {
+	if got := readEntry(t, data, pack.FamilySeries, "druid-tales").SeriesWorks(); !reflect.DeepEqual(got, want) {
 		t.Errorf("memberships = %+v, want %+v", got, want)
 	}
 }
@@ -139,21 +139,21 @@ func TestRestatePositionRefusals(t *testing.T) {
 	}
 	t.Run("membership gone", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.restatePosition(tx, base("7", "8")), catStaleValue, "no longer lists")
+		assertRefusal(t, rn.restatePosition(tx, base("7", "8")), CatStaleValue, "no longer lists")
 	})
 	t.Run("no value", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.restatePosition(tx, base("3", "")), catNoValue, "no replacement position")
+		assertRefusal(t, rn.restatePosition(tx, base("3", "")), CatNoValue, "no replacement position")
 	})
 	t.Run("non-canonical target spelling", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
-		assertRefusal(t, rn.restatePosition(tx, base("3", "2.50")), catMalformed, "canonical spelling")
+		assertRefusal(t, rn.restatePosition(tx, base("3", "2.50")), CatMalformed, "canonical spelling")
 	})
 	t.Run("no series named", func(t *testing.T) {
 		rn, tx := planFixture(t, data)
 		fd := base("3", "4")
 		fd.Propose.Series = ""
-		assertRefusal(t, rn.restatePosition(tx, fd), catMalformed, "no work or no series")
+		assertRefusal(t, rn.restatePosition(tx, fd), CatMalformed, "no work or no series")
 	})
 }
 
@@ -177,8 +177,8 @@ func TestFillFieldRefusesAProposalWithNoValue(t *testing.T) {
 	if len(rep.Applied) != 0 {
 		t.Fatalf("a fill-field with no value was applied: %+v", rep.Applied)
 	}
-	if len(rep.Refused) == 0 || rep.Refused[0].Category != catNoValue {
-		t.Fatalf("refusals = %+v, want a %s", rep.Refused, catNoValue)
+	if len(rep.Refused) == 0 || rep.Refused[0].Category != CatNoValue {
+		t.Fatalf("refusals = %+v, want a %s", rep.Refused, CatNoValue)
 	}
 }
 
@@ -199,27 +199,17 @@ func TestFillFieldWritesAStatedValueAndRefusesOtherFields(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if got := e.str("first_published"); got != "2011" {
+	if got := e.Str("first_published"); got != "2011" {
 		t.Errorf("first_published = %q, want it filled", got)
 	}
-	assertRefusal(t, rn.fillField(tx, fd("license", "CC0-1.0")), catMalformed, "not one of the work scalars")
-	assertRefusal(t, rn.fillField(tx, fd("language", "de")), catStaleValue, "already states")
+	assertRefusal(t, rn.fillField(tx, fd("license", "CC0-1.0")), CatMalformed, "not one of the work scalars")
+	assertRefusal(t, rn.fillField(tx, fd("language", "de")), CatStaleValue, "already states")
 }
 
 // merge-series: two spellings of one series fold into one, the memberships union, and
 // the retired spelling keeps resolving.
 func TestMergeSeriesUnionsTheMembershipsAndTombstonesTheSlug(t *testing.T) {
-	files := map[string]string{
-		"works/ho/hounded/work.json":                         workJSON(t, "hounded", "Hounded"),
-		"works/ho/hounded/recordings/luke-daniels-2011.json": recJSON(t, "luke-daniels-2011", "hounded", withNarrators("luke-daniels")),
-		"works/ha/hexed/work.json":                           workJSON(t, "hexed", "Hexed"),
-		"works/ha/hexed/recordings/luke-daniels-2012.json":   recJSON(t, "luke-daniels-2012", "hexed", withNarrators("luke-daniels")),
-		"people/ja/jane-doe.json":                            personJSON(t, "jane-doe", "Jane Doe"),
-		"people/lu/luke-daniels.json":                        personJSON(t, "luke-daniels", "Luke Daniels"),
-		"series/ir/iron-druid-chronicles.json":               seriesJSON(t, "iron-druid-chronicles", "The Iron Druid Chronicles", "hounded@1"),
-		"series/ir/iron-druid-chronicles-2.json":             seriesJSON(t, "iron-druid-chronicles-2", "Iron Druid Chronicles", "hexed@2"),
-	}
-	data := seedTree(t, files)
+	data := seedTree(t, seriesPair(t, "hounded@1", "hexed@2"))
 
 	rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeSeries}, Write: true})
 	if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
@@ -227,7 +217,7 @@ func TestMergeSeriesUnionsTheMembershipsAndTombstonesTheSlug(t *testing.T) {
 	}
 	target := rep.Applied[0].Target
 	loser := rep.Applied[0].Others[0]
-	got := readEntry(t, data, pack.FamilySeries, target).seriesWorks()
+	got := readEntry(t, data, pack.FamilySeries, target).SeriesWorks()
 	if len(got) != 2 {
 		t.Errorf("memberships = %+v, want both series' works", got)
 	}
@@ -239,7 +229,7 @@ func TestMergeSeriesUnionsTheMembershipsAndTombstonesTheSlug(t *testing.T) {
 	}
 	// A merge-series rewrites nothing outside the series family: a work does not
 	// reference its series.
-	if w := workEntry(t, data, "hexed"); w.has("series") {
+	if w := workEntry(t, data, "hexed"); w.Has("series") {
 		t.Error("a work gained a series member; works do not reference series")
 	}
 }
@@ -251,13 +241,13 @@ func TestMergeSeriesRefusesPositionContradictions(t *testing.T) {
 		data := seedTree(t, seriesPair(t, "hounded@1", "hounded@2"))
 		rn, tx := planFixture(t, data)
 		err := rn.mergeSeries(tx, seriesFinding("iron-druid-chronicles", "iron-druid-chronicles-2"))
-		assertRefusal(t, err, catPositionConflict, "two orderings are not one series")
+		assertRefusal(t, err, CatPositionConflict, "two orderings are not one series")
 	})
 	t.Run("two works at one position", func(t *testing.T) {
 		data := seedTree(t, seriesPair(t, "hounded@1", "hexed@1"))
 		rn, tx := planFixture(t, data)
 		err := rn.mergeSeries(tx, seriesFinding("iron-druid-chronicles", "iron-druid-chronicles-2"))
-		assertRefusal(t, err, catPositionConflict, "two works at one position")
+		assertRefusal(t, err, CatPositionConflict, "two works at one position")
 	})
 }
 

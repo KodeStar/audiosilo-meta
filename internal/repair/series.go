@@ -1,9 +1,9 @@
 package repair
 
 import (
-	"sort"
-
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -17,27 +17,14 @@ import (
 // two membership lists - which is also why it is a much smaller change than
 // merge-works, with one refusal instead of three.
 func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
-	target, losers := fd.Propose.Target, fd.Propose.Others
-	if target == "" || len(losers) == 0 {
-		return refusef(catMalformed, "the proposal names no target or no other members")
-	}
-	for _, slug := range append([]string{target}, losers...) {
-		if by, ok := t.p.retiredBy(pack.FamilySeries, slug); ok {
-			return refusef(catRetired, "series %q was retired by an earlier proposal in this run (%s)", slug, by)
-		}
-	}
-	te, ok, err := t.series.get(target)
+	target := fd.Propose.Target
+	te, sorted, loserEntries, err := t.loadCluster(pack.FamilySeries, "series", fd.Propose)
 	if err != nil {
 		return err
 	}
-	if !ok {
-		return refusef(catMissing, "the target series %q is not in the tree", target)
-	}
-	sorted := append([]string{}, losers...)
-	sort.Strings(sorted)
 
-	merged := te.clone()
-	works := merged.seriesWorks()
+	merged := te.Clone()
+	works := merged.SeriesWorks()
 	// byWork and byPosition are the two ways a union can contradict itself: one
 	// work at two positions, and two works at one position. Both are refusals, and
 	// the second is what pkg/check enforces.
@@ -48,28 +35,19 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 		byPosition[sw.Position] = sw.Work
 	}
 	var moved int
-	for _, slug := range sorted {
-		if slug == target {
-			return refusef(catMalformed, "the proposal names %q as both the target and a loser", slug)
-		}
-		le, ok, err := t.series.get(slug)
-		if err != nil {
-			return err
-		}
-		if !ok {
-			return refusef(catMissing, "the series %q the proposal folds onto %q is not in the tree", slug, target)
-		}
-		for _, sw := range le.seriesWorks() {
+	for i, slug := range sorted {
+		le := loserEntries[i]
+		for _, sw := range le.SeriesWorks() {
 			if have, member := byWork[sw.Work]; member {
-				if samePosition(have, sw.Position) {
+				if titlerule.SameSlot(have, sw.Position) {
 					continue // the same membership, spelled in two series
 				}
-				return refusef(catPositionConflict,
+				return refusef(CatPositionConflict,
 					"%s lists %s at position %q while %s lists it at %q: two orderings are not one series",
 					target, sw.Work, have, slug, sw.Position)
 			}
 			if other, taken := byPosition[sw.Position]; taken {
-				return refusef(catPositionConflict,
+				return refusef(CatPositionConflict,
 					"position %q of %s is held by %s, and %s puts %s there: the merged series would hold two works at one position",
 					sw.Position, target, other, slug, sw.Work)
 			}
@@ -97,7 +75,7 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 // name is the target's - the ladder chose it - and everything else follows
 // merge-works' rule: union the lists, fill only what the target does not state.
 func mergeSeriesFields(merged, loser entry) {
-	setListOrDrop(merged, "authors", appendUnique(merged.strs("authors"), loser.strs("authors")))
-	merged.set("sources", unionSources(merged.sources(), loser.sources()))
+	rawentry.SetListOrDrop(merged, "authors", rawentry.AppendUnique(merged.Strs("authors"), loser.Strs("authors")))
+	merged.Set("sources", rawentry.UnionSources(merged.Sources(), loser.Sources()))
 	fillXref(merged, loser)
 }

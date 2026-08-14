@@ -7,10 +7,10 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
-	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 )
 
 // worklist.go decides WHICH of the fresh audit's proposals a run takes on.
@@ -102,11 +102,11 @@ func loadFilter(opts Options) (*filter, error) {
 		f.only = keys
 	}
 	if opts.ReportDir != "" {
-		wl, n, err := readWorklist(opts.ReportDir)
+		wl, err := readWorklist(opts.ReportDir)
 		if err != nil {
 			return nil, err
 		}
-		f.worklist, f.records = wl, n
+		f.worklist, f.records = wl, len(wl)
 	}
 	return f, nil
 }
@@ -143,9 +143,9 @@ func readKeys(path string) (map[string]bool, error) {
 // the writer of a report share one definition of the directory's shape. A class file
 // that is absent is skipped (an older report may predate a class); a directory
 // holding none of them is not a report directory at all.
-func readWorklist(dir string) (map[string]audit.Proposal, int, error) {
+func readWorklist(dir string) (map[string]audit.Proposal, error) {
 	out := map[string]audit.Proposal{}
-	found := 0
+	isReport := false
 	for _, class := range audit.Classes() {
 		path := filepath.Join(dir, audit.ClassFile(class))
 		fh, err := os.Open(path)
@@ -153,9 +153,9 @@ func readWorklist(dir string) (map[string]audit.Proposal, int, error) {
 			if os.IsNotExist(err) {
 				continue
 			}
-			return nil, 0, fmt.Errorf("repair: read report %s: %w", path, err)
+			return nil, fmt.Errorf("repair: read report %s: %w", path, err)
 		}
-		found++
+		isReport = true
 		err = scanNDJSON(fh, path, func(fd audit.Finding) {
 			if !appliableOps[fd.Propose.Op] || fd.Propose.Advisory {
 				return
@@ -164,14 +164,14 @@ func readWorklist(dir string) (map[string]audit.Proposal, int, error) {
 		})
 		_ = fh.Close()
 		if err != nil {
-			return nil, 0, err
+			return nil, err
 		}
 	}
-	if found == 0 {
-		return nil, 0, fmt.Errorf("repair: %s holds none of the audit's class files (%s and friends): "+
+	if !isReport {
+		return nil, fmt.Errorf("repair: %s holds none of the audit's class files (%s and friends): "+
 			"point -report at a metaaudit output directory", dir, audit.ClassFile(audit.Classes()[0]))
 	}
-	return out, len(out), nil
+	return out, nil
 }
 
 // scanNDJSON reads one record per line. The buffer is raised because a W-DUP record
@@ -238,7 +238,7 @@ func (rn *runner) selectProposals(fresh *audit.Report) []candidate {
 				}
 				handled[id] = true
 				if !sameProposal(want, p) {
-					rn.refuse(c, catStaleProposal, fmt.Sprintf(
+					rn.refuse(c, CatStaleProposal, fmt.Sprintf(
 						"the worklist asks for %s and the fresh audit over this tree now proposes %s: the tree has moved, so the "+
 							"reviewed decision no longer describes it - re-run metaaudit and review the new record",
 						renderProposal(want), renderProposal(p)))
@@ -266,13 +266,19 @@ func (rn *runner) refuseStaleWorklist(fresh *audit.Report, handled map[string]bo
 	if rn.filter.worklist == nil {
 		return
 	}
-	byID := map[string]candidate{}
+	// Indexed by the WORKLIST's ids, not by every finding the fresh run made: this sweep
+	// only ever asks about a record the file holds, and a report of 280k findings would
+	// otherwise be copied into a map to answer a few hundred questions.
+	byID := make(map[string]candidate, len(rn.filter.worklist))
 	for _, class := range audit.Classes() {
 		for _, fd := range fresh.Findings(class) {
-			byID[findingID(class, fd)] = candidate{class: class, fd: fd}
+			id := findingID(class, fd)
+			if _, wanted := rn.filter.worklist[id]; wanted {
+				byID[id] = candidate{class: class, fd: fd}
+			}
 		}
 	}
-	for _, id := range sortedKeys(rn.filter.worklist) {
+	for _, id := range rawentry.SortedKeys(rn.filter.worklist) {
 		if handled[id] {
 			continue
 		}
@@ -284,7 +290,7 @@ func (rn *runner) refuseStaleWorklist(fresh *audit.Report, handled map[string]bo
 			if !rn.filter.selects(c.fd) {
 				continue
 			}
-			rn.refuse(c, catStaleProposal,
+			rn.refuse(c, CatStaleProposal,
 				"the worklist asks for "+renderProposal(want)+" and the fresh audit over this tree does not report this finding "+
 					"at all: it has already been repaired, or the records it named have changed")
 			continue
@@ -293,7 +299,7 @@ func (rn *runner) refuseStaleWorklist(fresh *audit.Report, handled map[string]bo
 			continue
 		}
 		if c.fd.Propose.Advisory {
-			rn.refuse(c, catStaleProposal,
+			rn.refuse(c, CatStaleProposal,
 				"the worklist asks for "+renderProposal(want)+" and the fresh audit now marks it advisory: "+c.fd.Propose.Reason)
 		}
 	}
@@ -307,12 +313,12 @@ func (rn *runner) refuseUnmatchedKeys() {
 	if f.only == nil {
 		return
 	}
-	for _, key := range sortedKeys(f.only) {
+	for _, key := range rawentry.SortedKeys(f.only) {
 		if f.matched[key] {
 			continue
 		}
 		rn.rep.Refused = append(rn.rep.Refused, Refusal{
-			Category: catNotProposed, Key: key,
+			Category: CatNotProposed, Key: key,
 			Reason: "named in --only, but the fresh audit proposes nothing non-advisory and in scope for it",
 		})
 	}
@@ -380,11 +386,4 @@ func renderProposal(p audit.Proposal) string {
 		b.WriteString(" (advisory)")
 	}
 	return b.String()
-}
-
-// sortStrings is sort.Strings with a clone, for the lists a report renders.
-func sortStrings(ss []string) []string {
-	out := slices.Clone(ss)
-	sort.Strings(out)
-	return out
 }

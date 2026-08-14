@@ -3,6 +3,8 @@ package repair
 import (
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -40,21 +42,21 @@ var workScalarFields = map[string]bool{
 func (rn *runner) retitleWork(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Field != "title" {
-		return refusef(catMalformed, "retitle-work names field %q; this pass rewrites titles only", p.Field)
+		return refusef(CatMalformed, "retitle-work names field %q; this pass rewrites titles only", p.Field)
 	}
 	if p.To == "" {
-		return refusef(catNoValue, "the proposal states no replacement title")
+		return refusef(CatNoValue, "the proposal states no replacement title")
 	}
 	e, err := rn.liveWork(t, p.Target)
 	if err != nil {
 		return err
 	}
-	if got := e.str("title"); got != p.From {
-		return refusef(catStaleValue, "work %q now states the title %q, not the %q the proposal was written against", p.Target, got, p.From)
+	if got := e.Str("title"); got != p.From {
+		return refusef(CatStaleValue, "work %q now states the title %q, not the %q the proposal was written against", p.Target, got, p.From)
 	}
-	next := e.clone()
-	next.set("title", p.To)
-	t.works.set(p.Target, next)
+	next := e.Clone()
+	next.Set("title", p.To)
+	t.works.put(p.Target, next)
 	t.note("retitled %s: %q -> %q", p.Target, p.From, p.To)
 	return nil
 }
@@ -64,24 +66,24 @@ func (rn *runner) retitleWork(t *txn, fd audit.Finding) error {
 func (rn *runner) fillField(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.To == "" {
-		return refusef(catNoValue,
+		return refusef(CatNoValue,
 			"the proposal reports %q missing on %s but states no value to fill it with: the fact has to come from a source, "+
 				"which is the correct-data issue form's job, not a mechanical pass's", p.Field, p.Target)
 	}
 	if !workScalarFields[p.Field] {
-		return refusef(catMalformed, "fill-field %q is not one of the work scalars this pass may write (%s)",
-			p.Field, joinList(sortedKeys(workScalarFields)))
+		return refusef(CatMalformed, "fill-field %q is not one of the work scalars this pass may write (%s)",
+			p.Field, joinList(rawentry.SortedKeys(workScalarFields)))
 	}
 	e, err := rn.liveWork(t, p.Target)
 	if err != nil {
 		return err
 	}
-	if got := e.str(p.Field); got != "" {
-		return refusef(catStaleValue, "work %q already states %s = %q", p.Target, p.Field, got)
+	if got := e.Str(p.Field); got != "" {
+		return refusef(CatStaleValue, "work %q already states %s = %q", p.Target, p.Field, got)
 	}
-	next := e.clone()
-	next.set(p.Field, p.To)
-	t.works.set(p.Target, next)
+	next := e.Clone()
+	next.Set(p.Field, p.To)
+	t.works.put(p.Target, next)
 	t.note("stated %s = %q on %s", p.Field, p.To, p.Target)
 	return nil
 }
@@ -91,10 +93,10 @@ func (rn *runner) fillField(t *txn, fd audit.Finding) error {
 func (rn *runner) restatePosition(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Target == "" || p.Series == "" {
-		return refusef(catMalformed, "restate-position names no work or no series, so there is no one membership to rewrite")
+		return refusef(CatMalformed, "restate-position names no work or no series, so there is no one membership to rewrite")
 	}
 	if p.To == "" {
-		return refusef(catNoValue, "the proposal states no replacement position")
+		return refusef(CatNoValue, "the proposal states no replacement position")
 	}
 	if err := validPosition(p.To); err != nil {
 		return err
@@ -111,16 +113,16 @@ func (rn *runner) restatePosition(t *txn, fd audit.Finding) error {
 		}
 	}
 	if at < 0 {
-		return refusef(catStaleValue, "series %s no longer lists %s at position %q", p.Series, p.Target, p.From)
+		return refusef(CatStaleValue, "series %s no longer lists %s at position %q", p.Series, p.Target, p.From)
 	}
 	for i, sw := range works {
-		if i != at && samePosition(sw.Position, p.To) {
-			return refusef(catPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
+		if i != at && titlerule.SameSlot(sw.Position, p.To) {
+			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 		}
 	}
 	next := append([]model.SeriesWork(nil), works...)
 	next[at].Position = p.To
-	t.setSeries(p.Series, se.clone(), next)
+	t.setSeries(p.Series, se.Clone(), next)
 	t.note("restated %s in series %s: position %q -> %q", p.Target, p.Series, p.From, p.To)
 	return nil
 }
@@ -132,10 +134,10 @@ func (rn *runner) restatePosition(t *txn, fd audit.Finding) error {
 func (rn *runner) addSeriesMember(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Target == "" || p.Series == "" {
-		return refusef(catMalformed, "add-series-member names no work or no series")
+		return refusef(CatMalformed, "add-series-member names no work or no series")
 	}
 	if p.To == "" {
-		return refusef(catNoValue, "the proposal states no position to add the work at")
+		return refusef(CatNoValue, "the proposal states no position to add the work at")
 	}
 	if err := validPosition(p.To); err != nil {
 		return err
@@ -149,14 +151,14 @@ func (rn *runner) addSeriesMember(t *txn, fd audit.Finding) error {
 	}
 	for _, sw := range works {
 		if sw.Work == p.Target {
-			return refusef(catStaleValue, "series %s already lists %s at position %q", p.Series, p.Target, sw.Position)
+			return refusef(CatStaleValue, "series %s already lists %s at position %q", p.Series, p.Target, sw.Position)
 		}
-		if samePosition(sw.Position, p.To) {
-			return refusef(catPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
+		if titlerule.SameSlot(sw.Position, p.To) {
+			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 		}
 	}
 	next := append(append([]model.SeriesWork(nil), works...), model.SeriesWork{Work: p.Target, Position: p.To})
-	t.setSeries(p.Series, se.clone(), next)
+	t.setSeries(p.Series, se.Clone(), next)
 	t.note("added %s to series %s at position %q", p.Target, p.Series, p.To)
 	return nil
 }
@@ -165,14 +167,14 @@ func (rn *runner) addSeriesMember(t *txn, fd audit.Finding) error {
 // retired or one the tree does not carry.
 func (rn *runner) liveWork(t *txn, slug string) (entry, error) {
 	if by, ok := t.p.retiredBy(pack.FamilyWorks, slug); ok {
-		return nil, refusef(catRetired, "work %q was retired by an earlier proposal in this run (%s)", slug, by)
+		return nil, refusef(CatRetired, "work %q was retired by an earlier proposal in this run (%s)", slug, by)
 	}
 	e, ok, err := t.works.get(slug)
 	if err != nil {
 		return nil, err
 	}
 	if !ok {
-		return nil, refusef(catMissing, "no work %q in the tree (a recording-scoped proposal names the recording, not its work)", slug)
+		return nil, refusef(CatMissing, "no work %q in the tree (a recording-scoped proposal names the recording, not its work)", slug)
 	}
 	return e, nil
 }
@@ -180,16 +182,16 @@ func (rn *runner) liveWork(t *txn, slug string) (entry, error) {
 // liveSeries reads a series and its membership list.
 func (rn *runner) liveSeries(t *txn, slug string) (entry, []model.SeriesWork, error) {
 	if by, ok := t.p.retiredBy(pack.FamilySeries, slug); ok {
-		return nil, nil, refusef(catRetired, "series %q was retired by an earlier proposal in this run (%s)", slug, by)
+		return nil, nil, refusef(CatRetired, "series %q was retired by an earlier proposal in this run (%s)", slug, by)
 	}
 	e, ok, err := t.series.get(slug)
 	if err != nil {
 		return nil, nil, err
 	}
 	if !ok {
-		return nil, nil, refusef(catMissing, "no series %q in the tree", slug)
+		return nil, nil, refusef(CatMissing, "no series %q in the tree", slug)
 	}
-	return e, e.seriesWorks(), nil
+	return e, e.SeriesWorks(), nil
 }
 
 // validPosition refuses a position this pass may not write: one the grammar rejects,
@@ -199,10 +201,10 @@ func (rn *runner) liveSeries(t *txn, slug string) (entry, []model.SeriesWork, er
 func validPosition(pos string) error {
 	norm, ok := importer.NormalizeSequence(pos)
 	if !ok {
-		return refusef(catMalformed, "%q is not a position the data model accepts", pos)
+		return refusef(CatMalformed, "%q is not a position the data model accepts", pos)
 	}
 	if norm != pos {
-		return refusef(catMalformed, "%q is not the canonical spelling of that position (%q is)", pos, norm)
+		return refusef(CatMalformed, "%q is not the canonical spelling of that position (%q is)", pos, norm)
 	}
 	return nil
 }

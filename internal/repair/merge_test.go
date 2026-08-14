@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -16,7 +17,7 @@ import (
 func TestMergeWorksKeepsEverythingAndTombstonesTheSlug(t *testing.T) {
 	files := hammeredCluster(t)
 	files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
-	files["works/ha/hammered-book-3/recaps.json"] = recapsJSON(t, "hammered-book-3")
+	files["works/ha/hammered-book-3/recaps.json"] = recapsJSON(t, "hammered-book-3", 3)
 	data := seedTree(t, files)
 	before := takeCensus(t, data)
 
@@ -42,51 +43,51 @@ func TestMergeWorksKeepsEverythingAndTombstonesTheSlug(t *testing.T) {
 	}
 
 	// The surviving work holds the merged recording with both ASINs.
-	recs, err := workEntry(t, data, "hammered").recordings()
+	recs, err := workEntry(t, data, "hammered").Recordings()
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(recs) != 1 {
-		t.Fatalf("recordings = %v, want the one merged production", sortedKeys(recs))
+		t.Fatalf("recordings = %v, want the one merged production", rawentry.SortedKeys(recs))
 	}
 	rec := recs["luke-daniels-2011"]
 	var asins []string
-	for _, a := range rec.asins() {
+	for _, a := range rec.ASINs() {
 		asins = append(asins, a.ASIN)
 	}
 	slices.Sort(asins)
 	if want := []string{"B0KEEPER01", "B0LOSER001"}; !reflect.DeepEqual(asins, want) {
 		t.Errorf("merged ASINs = %v, want %v", asins, want)
 	}
-	if got := rec.str("work"); got != "hammered" {
+	if got := rec.Str("work"); got != "hammered" {
 		t.Errorf("merged recording work backref = %q, want %q", got, "hammered")
 	}
 	// The keeper's own facts win; the loser only fills gaps.
-	if n, _ := rec.intAt("runtime_min"); n != 576 {
+	if n, _ := rec.IntAt("runtime_min"); n != 576 {
 		t.Errorf("runtime_min = %d, want the keeper's 576", n)
 	}
-	if len(rec.sources()) != 2 {
-		t.Errorf("sources = %v, want both records' provenance", rec.sources())
+	if len(rec.Sources()) != 2 {
+		t.Errorf("sources = %v, want both records' provenance", rec.Sources())
 	}
 
 	// The work's own fields: genres unioned and sorted, the loser's subtitle filling
 	// a gap, the title left alone.
 	w := workEntry(t, data, "hammered")
-	if want := []string{"action-adventure", "fantasy"}; !reflect.DeepEqual(w.strs("genres"), want) {
-		t.Errorf("genres = %v, want %v", w.strs("genres"), want)
+	if want := []string{"action-adventure", "fantasy"}; !reflect.DeepEqual(w.Strs("genres"), want) {
+		t.Errorf("genres = %v, want %v", w.Strs("genres"), want)
 	}
-	if got := w.str("subtitle"); got != "An Iron Druid Adventure" {
+	if got := w.Str("subtitle"); got != "An Iron Druid Adventure" {
 		t.Errorf("subtitle = %q, want the loser's to have filled the gap", got)
 	}
-	if got := w.str("title"); got != "Hammered" {
+	if got := w.Str("title"); got != "Hammered" {
 		t.Errorf("title = %q, want the canonical record's own", got)
 	}
 
 	// Both sidecar members now hang off the surviving work, and the loser's entry is
 	// gone.
 	side := readEntry(t, data, pack.FamilyWorksCommunity, "hammered")
-	if !side.has("characters") || !side.has("recaps") {
-		t.Errorf("works-community entry members = %v, want both", sortedKeys(side))
+	if !side.Has("characters") || !side.Has("recaps") {
+		t.Errorf("works-community entry members = %v, want both", rawentry.SortedKeys(side))
 	}
 	if entryExists(t, data, pack.FamilyWorksCommunity, "hammered-book-3") {
 		t.Error("the loser's works-community entry is still there")
@@ -119,19 +120,19 @@ func TestMergeWorksReKeysADifferentProduction(t *testing.T) {
 	if after.recordings != before.recordings {
 		t.Errorf("recordings = %d, want all %d kept", after.recordings, before.recordings)
 	}
-	recs, err := workEntry(t, data, "hammered").recordings()
+	recs, err := workEntry(t, data, "hammered").Recordings()
 	if err != nil {
 		t.Fatal(err)
 	}
 	want := []string{"luke-daniels-2011", "luke-daniels-2011-2"}
-	if !reflect.DeepEqual(sortedKeys(recs), want) {
-		t.Fatalf("recordings = %v, want %v", sortedKeys(recs), want)
+	if !reflect.DeepEqual(rawentry.SortedKeys(recs), want) {
+		t.Fatalf("recordings = %v, want %v", rawentry.SortedKeys(recs), want)
 	}
 	moved := recs["luke-daniels-2011-2"]
-	if got := moved.str("id"); got != "luke-daniels-2011-2" {
+	if got := moved.Str("id"); got != "luke-daniels-2011-2" {
 		t.Errorf("re-keyed recording id = %q, want it to match its map key", got)
 	}
-	if got := moved.strs("narrators"); !reflect.DeepEqual(got, []string{"other-narrator"}) {
+	if got := moved.Strs("narrators"); !reflect.DeepEqual(got, []string{"other-narrator"}) {
 		t.Errorf("re-keyed recording narrators = %v, want the mover's own", got)
 	}
 	if !noteMentions(rep.Applied[0].Notes, "re-keyed") {
@@ -147,33 +148,81 @@ func TestMergeWorksReKeysOnARuntimeGap(t *testing.T) {
 	if len(rep.Applied) != 1 {
 		t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
 	}
-	recs, err := workEntry(t, data, "hammered").recordings()
+	recs, err := workEntry(t, data, "hammered").Recordings()
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(recs) != 2 {
-		t.Errorf("recordings = %v, want both kept (700 vs 576 is more than 10%%)", sortedKeys(recs))
+		t.Errorf("recordings = %v, want both kept (700 vs 576 is more than 10%%)", rawentry.SortedKeys(recs))
 	}
 }
 
-// A known-abridged recording never fuses with an unabridged one, even at the same
-// runtime and with the same narrator.
-func TestMergeWorksReKeysOnAnAbridgedContradiction(t *testing.T) {
-	files := hammeredCluster(t, withRuntime(576), withAbridged(true))
-	files["works/ha/hammered/recordings/luke-daniels-2011.json"] = recJSON(t, "luke-daniels-2011", "hammered",
-		withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01"), withAbridged(false))
-	data := seedTree(t, files)
+// The BOUNDARY of the runtime rule, which is the importer's own and not a restatement
+// of it: within 10 percent OF THE LARGER merges, a hair past it does not. The first
+// draft spelled the same rule as "the larger is at most 1.1x the smaller", which admits
+// pairs this one refuses - so the boundary is pinned rather than left to the prose.
+func TestSameProductionUsesTheImportersRuntimeBoundary(t *testing.T) {
+	rec := func(runtime int, opts ...recOpt) entry {
+		t.Helper()
+		e, err := rawentry.Decode([]byte(recJSON(t, "luke-daniels-2011", "hammered",
+			append([]recOpt{withNarrators("luke-daniels"), withRuntime(runtime)}, opts...)...)))
+		if err != nil {
+			t.Fatal(err)
+		}
+		return e
+	}
+	for _, tc := range []struct {
+		name  string
+		a, b  int
+		merge bool
+	}{
+		{"exactly 10% of the larger", 1000, 900, true},
+		{"a minute past it", 1000, 899, false},
+		// The discriminating pair: within 10% of the LARGER (95 <= 100) but more than
+		// 1.1x the SMALLER (995.5 < 1000), which the first draft's spelling re-keyed.
+		{"inside the importer's window, outside the first draft's", 1000, 905, true},
+		{"one runtime unstated", 0, 900, true},
+		{"neither stated", 0, 0, true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			why, same := sameProduction(rec(tc.a), rec(tc.b))
+			if same != tc.merge {
+				t.Errorf("sameProduction(%d, %d) = %v (%s), want %v", tc.a, tc.b, same, why, tc.merge)
+			}
+		})
+	}
+}
 
-	rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
-	if len(rep.Applied) != 1 {
-		t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
-	}
-	recs, err := workEntry(t, data, "hammered").recordings()
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(recs) != 2 {
-		t.Errorf("recordings = %v, want both kept: one states abridged and the other does not", sortedKeys(recs))
+// A known-abridged recording never fuses with one that is unabridged OR UNSTATED: the
+// importer reads an absent flag as unabridged, and a rule that needed both sides to
+// state it would fold an abridgement into an unstated recording.
+func TestMergeWorksReKeysOnAnAbridgedContradiction(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		keeps []recOpt
+	}{
+		{"keeper states unabridged", []recOpt{withAbridged(false)}},
+		{"keeper states nothing", nil},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t, withRuntime(576), withAbridged(true))
+			files["works/ha/hammered/recordings/luke-daniels-2011.json"] = recJSON(t, "luke-daniels-2011", "hammered",
+				append([]recOpt{withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01")}, tc.keeps...)...)
+			data := seedTree(t, files)
+
+			rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+			if len(rep.Applied) != 1 {
+				t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
+			}
+			recs, err := workEntry(t, data, "hammered").Recordings()
+			if err != nil {
+				t.Fatal(err)
+			}
+			if len(recs) != 2 {
+				t.Errorf("recordings = %v, want both kept: an abridgement never folds into a recording that is not one",
+					rawentry.SortedKeys(recs))
+			}
+		})
 	}
 }
 
@@ -190,8 +239,8 @@ func TestMergeWorksRefusesASidecarMemberCollision(t *testing.T) {
 	if len(rep.Applied) != 0 {
 		t.Fatalf("a cluster with two characters sidecars was merged: %+v", rep.Applied)
 	}
-	if len(rep.Refused) != 1 || rep.Refused[0].Category != catSidecarCollision {
-		t.Fatalf("refusals = %+v, want one %s", rep.Refused, catSidecarCollision)
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatSidecarCollision {
+		t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatSidecarCollision)
 	}
 	if !entryExists(t, data, pack.FamilyWorks, "hammered-book-3") {
 		t.Error("the refused cluster's loser was deleted anyway")
@@ -218,7 +267,7 @@ func TestMergeWorksRefusesAPositionConflict(t *testing.T) {
 	// check is real rather than unreachable.
 	rn, tx := planFixture(t, data)
 	err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
-	assertRefusal(t, err, catPositionConflict, "different volumes")
+	assertRefusal(t, err, CatPositionConflict, "different volumes")
 }
 
 // Two memberships that say the same thing collapse into one when the loser is
@@ -241,7 +290,7 @@ func TestMergeWorksDedupesIdenticalMemberships(t *testing.T) {
 		t.Fatalf("series missing from the plan: %v", err)
 	}
 	want := []model.SeriesWork{{Work: "hammered", Position: "3"}}
-	if got := e.seriesWorks(); !reflect.DeepEqual(got, want) {
+	if got := e.SeriesWorks(); !reflect.DeepEqual(got, want) {
 		t.Errorf("memberships = %+v, want %+v", got, want)
 	}
 }
@@ -259,7 +308,7 @@ func TestASecondProposalNamingARetiredWorkIsRefused(t *testing.T) {
 	}
 	next := rn.plan.begin()
 	err := rn.mergeWorks(next, mergeFinding("hammered-book-3", "hammered"))
-	assertRefusal(t, err, catRetired, "retired by an earlier proposal")
+	assertRefusal(t, err, CatRetired, "retired by an earlier proposal")
 }
 
 // The tombstone table is a one-hop map, so a canonical work that is itself later
@@ -313,7 +362,7 @@ func TestADiscardedTxnLeavesThePlanUntouched(t *testing.T) {
 	if err != nil || !ok {
 		t.Fatalf("the work vanished from the plan: %v", err)
 	}
-	recs, err := e.recordings()
+	recs, err := e.Recordings()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -322,33 +371,8 @@ func TestADiscardedTxnLeavesThePlanUntouched(t *testing.T) {
 	}
 }
 
-// The unaddressable-title veto: two different books whose cleaned titles reduce to the
-// same comparison key only because the key folds away everything non-ASCII.
-func TestMergeWorksRefusesTitlesThatCarryNoIdentity(t *testing.T) {
-	data := seedTree(t, hammeredCluster(t))
-	rn, tx := planFixture(t, data)
-	fd := mergeFinding("hammered", "hammered-book-3")
-	fd.Works[0].Cleaned = "Грани безумия. Том 1"
-	fd.Works[1].Cleaned = "Том 1"
-	err := rn.mergeWorks(tx, fd)
-	assertRefusal(t, err, catUnaddressableTitle, "meeting on a number")
-}
-
-// ...and the same regime with IDENTICAL cleaned titles is a real duplicate ("1984"
-// against "1984"), so it is not refused.
-func TestMergeWorksAllowsIdenticalTitlesThatCarryNoIdentity(t *testing.T) {
-	data := seedTree(t, hammeredCluster(t))
-	rn, tx := planFixture(t, data)
-	fd := mergeFinding("hammered", "hammered-book-3")
-	fd.Works[0].Cleaned = "1984"
-	fd.Works[1].Cleaned = "1984"
-	if err := rn.mergeWorks(tx, fd); err != nil {
-		t.Fatalf("a real duplicate whose title is a number was refused: %v", err)
-	}
-}
-
-// The union properties, field by field: two records that each state a different fact
-// end up stating both, and a fact only the loser states fills the gap.
+// The union properties, field by field: two records that each state a different fact end
+// up stating both, and a fact only the loser states fills the gap.
 func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 	files := hammeredCluster(t, withISBN("9780000000012"))
 	files["works/ha/hammered/work.json"] = workJSON(t, "hammered", "Hammered",
@@ -357,8 +381,8 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 		withNarrators("luke-daniels"), withRuntime(576), withASIN("B0KEEPER01"),
 		withISBN("9780000000011"), withoutPublisher())
 	files["works/ha/hammered-book-3/work.json"] = workJSON(t, "hammered-book-3", "Hammered: The Druid Tales, Book 3",
-		withGenres("action-adventure"), withCredits("john-smith", "contributor", "luke-daniels", "translator"), withWorkXref("9780000000002"),
-		withAuthors("jane-doe", "john-smith"))
+		withGenres("action-adventure"), withCredits("john-smith", "contributor", "luke-daniels", "translator"),
+		withWorkXref("9780000000002"), withAuthors("jane-doe", "john-smith"))
 	files["people/jo/john-smith.json"] = personJSON(t, "john-smith", "John Smith")
 	data := seedTree(t, files)
 
@@ -370,8 +394,8 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 
 	// authors: the identity rule matches NESTED author sets, so a loser may credit
 	// somebody the target does not - and that credit has to survive.
-	if want := []string{"jane-doe", "john-smith"}; !reflect.DeepEqual(w.strs("authors"), want) {
-		t.Errorf("authors = %v, want %v (the target's order first)", w.strs("authors"), want)
+	if want := []string{"jane-doe", "john-smith"}; !reflect.DeepEqual(w.Strs("authors"), want) {
+		t.Errorf("authors = %v, want %v (the target's order first)", w.Strs("authors"), want)
 	}
 	// credits: unioned on (person, role) and in the importer's canonical order.
 	wantCredits := []model.Credit{
@@ -379,25 +403,25 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 		{Person: "john-smith", Role: "contributor"},
 		{Person: "luke-daniels", Role: "translator"},
 	}
-	if got := w.credits(); !reflect.DeepEqual(got, wantCredits) {
+	if got := w.Credits(); !reflect.DeepEqual(got, wantCredits) {
 		t.Errorf("credits = %+v, want %+v", got, wantCredits)
 	}
 	// xref: the print-ISBN list unions, member by member.
-	xref, err := decodeEntry(w["xref"])
+	xref, err := rawentry.Decode(w["xref"])
 	if err != nil {
 		t.Fatal(err)
 	}
-	if want := []string{"9780000000001", "9780000000002"}; !reflect.DeepEqual(xref.strs("isbn"), want) {
-		t.Errorf("xref.isbn = %v, want %v", xref.strs("isbn"), want)
+	if want := []string{"9780000000001", "9780000000002"}; !reflect.DeepEqual(xref.Strs("isbn"), want) {
+		t.Errorf("xref.isbn = %v, want %v", xref.Strs("isbn"), want)
 	}
 
-	recs, err := w.recordings()
+	recs, err := w.Recordings()
 	if err != nil {
 		t.Fatal(err)
 	}
 	rec := recs["luke-daniels-2011"]
 	var isbns []string
-	for _, r := range rec.isbns() {
+	for _, r := range rec.ISBNs() {
 		isbns = append(isbns, r.ISBN)
 	}
 	slices.Sort(isbns)
@@ -405,12 +429,12 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 		t.Errorf("recording ISBNs = %v, want %v", isbns, want)
 	}
 	// A field only the mover states fills the keeper's gap.
-	if got := rec.str("publisher"); got != "Fixture Audio" {
+	if got := rec.Str("publisher"); got != "Fixture Audio" {
 		t.Errorf("publisher = %q, want the mover's to have filled the gap", got)
 	}
-	// added_at is never touched, on either record kind: it says when THIS record
-	// entered the database, and the mover's provenance survives in sources[].
-	if got := w.str("added_at"); got != "2026-01-01" {
+	// added_at is never touched, on either record kind: it says when THIS record entered
+	// the database, and the mover's provenance survives in sources[].
+	if got := w.Str("added_at"); got != "2026-01-01" {
 		t.Errorf("work added_at = %q, want the survivor's own, untouched", got)
 	}
 }

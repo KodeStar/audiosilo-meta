@@ -5,7 +5,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -277,15 +276,9 @@ func longestRuntime(w *model.Work) int {
 func (ix *index) positionSpans(workID string) map[string][2]float64 {
 	out := map[string][2]float64{}
 	for _, m := range ix.memberships[workID] {
-		norm, ok := importer.NormalizeSequence(m.position)
-		if !ok {
-			continue
+		if span, ok := titlerule.PositionSpan(m.position); ok {
+			out[m.series] = span
 		}
-		lo, hi, ok := model.ParsePositionRange(norm)
-		if !ok {
-			continue
-		}
-		out[m.series] = [2]float64{lo, hi}
 	}
 	return out
 }
@@ -308,19 +301,15 @@ func (ix *index) seriesSpan(seriesID string) (lo, hi float64, ok bool) {
 		return 0, 0, false
 	}
 	for _, sw := range s.Works {
-		norm, valid := importer.NormalizeSequence(sw.Position)
+		span, valid := titlerule.PositionSpan(sw.Position)
 		if !valid {
 			continue
 		}
-		a, b, valid := model.ParsePositionRange(norm)
-		if !valid {
-			continue
+		if !ok || span[0] < lo {
+			lo = span[0]
 		}
-		if !ok || a < lo {
-			lo = a
-		}
-		if !ok || b > hi {
-			hi = b
+		if !ok || span[1] > hi {
+			hi = span[1]
 		}
 		ok = true
 	}
@@ -605,26 +594,21 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 
 // ---- position slots ----------------------------------------------------------
 
-// positionKey is a position's SLOT identity: the number a single position names,
-// in one canonical spelling, so "02", "2" and "2.0" are one slot. A RANGE is not a
-// slot (it spans several) and neither is anything the grammar rejects, both of
-// which return "".
+// positionKey is a position's SLOT identity: the number a single position names, in one
+// canonical spelling, so "02", "2" and "2.0" are one slot. A RANGE is not a slot (it
+// spans several) and neither is anything the grammar rejects, both of which return "".
 //
-// Acceptance goes through importer.NormalizeSequence - the rule of record for what
-// a position may be and how it is spelled - BEFORE the span is read. That order is
-// load-bearing: model.ParsePositionRange is a span reader over ParseFloat, which
-// admits "1e2", "+2" and "Inf", so reading the span first would mint slots for
-// values the data model rejects and then report those same values as malformed.
+// The grammar itself is titlerule.PositionSpan, the one two-step every reader of a
+// position goes through; only the "a range is not a slot" narrowing is this function's.
 func positionKey(pos string) string {
-	norm, ok := importer.NormalizeSequence(pos)
-	if !ok || strings.Contains(norm, "-") {
+	if _, _, isRange := titlerule.PositionRange(pos); isRange {
 		return ""
 	}
-	lo, _, ok := model.ParsePositionRange(norm)
+	span, ok := titlerule.PositionSpan(pos)
 	if !ok {
 		return ""
 	}
-	return formatSeq(lo)
+	return formatSeq(span[0])
 }
 
 // formatSeq renders a volume number in positionKey's canonical spelling, so a

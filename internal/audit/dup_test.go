@@ -286,7 +286,7 @@ func TestCanonicalMemberPrefersTheModeledRecord(t *testing.T) {
 		// Neither is in a series; the one carrying a sidecar wins, then recordings.
 		"works/pl/plain/work.json":                    workJSON(t, "plain", "Plain Story"),
 		"works/pl/plain/recordings/a.json":            recJSON(t, "a", "plain"),
-		"works/pl/plain/characters.json":              charactersJSON(t, "plain"),
+		"works/pl/plain/characters.json":              charactersJSON(t, "plain", "someone"),
 		"works/pl/plain-unabridged/work.json":         workJSON(t, "plain-unabridged", "Plain Story (Unabridged)"),
 		"works/pl/plain-unabridged/recordings/b.json": recJSON(t, "b", "plain-unabridged"),
 		"works/pl/plain-unabridged/recordings/c.json": recJSON(t, "c", "plain-unabridged"),

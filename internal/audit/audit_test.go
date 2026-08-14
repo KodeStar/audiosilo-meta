@@ -1,193 +1,50 @@
 package audit
 
 import (
-	"encoding/json"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/reportdir"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
-// The fixture builders. Every detector test seeds a small, SCHEMA-VALID tree with
-// them, so a fixture can never pass by being malformed in a way pkg/check would
-// have refused - which is the repo's rule for a rule's fixtures.
+// The fixture builders live in internal/testpack, beside the Seed that writes them: the
+// suite that PROPOSES a repair and the suite that APPLIES it (internal/repair) have to
+// seed the same records, and while each had its own copy they had already drifted on two
+// details that matter (which separator a "<work>@<position>" member is cut at, and
+// whether a recording's globally-unique ASIN is derived from its id alone or from its
+// work too). What is local here is only the vocabulary - short names for this suite's
+// prose - and the three REWRITERS below, which edit an already-rendered record.
+var (
+	workJSON           = testpack.WorkJSON
+	recJSON            = testpack.RecJSON
+	personJSON         = testpack.PersonJSON
+	seriesJSON         = testpack.SeriesJSON
+	charactersJSON     = testpack.CharactersJSON
+	withLanguage       = testpack.WithLanguage
+	withAuthors        = testpack.WithAuthors
+	withRuntime        = testpack.WithRuntime
+	withoutIdentifiers = testpack.WithoutIdentifiers
+	withoutField       = testpack.WithoutField
+)
 
-type workOpt func(map[string]any)
-
-func withLanguage(l string) workOpt {
-	return func(m map[string]any) { m["language"] = l }
-}
-
-func withAuthors(ids ...string) workOpt {
-	return func(m map[string]any) { m["authors"] = ids }
-}
-
-// workJSON renders a minimal valid work.
-func workJSON(t testing.TB, id, title string, opts ...workOpt) string {
-	t.Helper()
-	m := map[string]any{
-		"id":       id,
-		"title":    title,
-		"authors":  []string{"jane-doe"},
-		"language": "en",
-		"license":  "CC0-1.0",
-		"added_at": "2026-01-01",
-		"sources":  []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-	}
-	for _, o := range opts {
-		o(m)
-	}
-	return mustJSON(t, m)
-}
-
-type recOpt func(map[string]any)
-
-func withRuntime(min int) recOpt {
-	return func(m map[string]any) { m["runtime_min"] = min }
-}
-
-func withoutIdentifiers() recOpt {
-	return func(m map[string]any) { delete(m, "asin") }
-}
-
-// recJSON renders a minimal valid recording of work.
-func recJSON(t testing.TB, id, work string, opts ...recOpt) string {
-	t.Helper()
-	m := map[string]any{
-		"id":        id,
-		"work":      work,
-		"narrators": []string{"nate-narrator"},
-		"language":  "en",
-		"license":   "CC0-1.0",
-		"added_at":  "2026-01-01",
-		"asin":      []map[string]string{{"region": "us", "asin": fixtureASIN(id)}},
-		"sources":   []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-		// Publisher and release date are on every fixture recording because they
-		// are the evidence the duplicate classes cite: a reviewer separates a
-		// dramatized part-product from the plain edition by them.
-		"publisher":    "Fixture Audio",
-		"release_date": "2020-01-01",
-	}
-	for _, o := range opts {
-		o(m)
-	}
-	return mustJSON(t, m)
-}
-
-// fixtureASIN derives a unique, schema-valid ASIN from a recording id. It has to
-// be a FUNCTION of the whole id: pkg/check enforces global ASIN uniqueness, so a
-// fixture whose two recordings shared one would be refused before any detector
-// ran.
-func fixtureASIN(id string) string {
-	var h uint64 = 14695981039346656037
-	for i := 0; i < len(id); i++ {
-		h = (h ^ uint64(id[i])) * 1099511628211
-	}
-	const alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	out := []byte("B000000000")
-	for i := 1; i < len(out); i++ {
-		out[i] = alphabet[h%uint64(len(alphabet))]
-		h /= uint64(len(alphabet))
-	}
-	return string(out)
-}
-
-// personJSON renders a minimal valid person. The id must be model.PersonSlug(name)
-// or pkg/check refuses it, which is exactly the constraint that makes P-DUP's
-// coarser keys the interesting ones.
-func personJSON(t testing.TB, id, name string) string {
-	t.Helper()
-	return mustJSON(t, map[string]any{
-		"id":      id,
-		"name":    name,
-		"license": "CC0-1.0",
-		"sources": []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-	})
-}
-
-// seriesJSON renders a series over "<work>@<position>" pairs.
-func seriesJSON(t testing.TB, id, name string, members ...string) string {
-	t.Helper()
-	works := make([]map[string]string, 0, len(members))
-	for _, m := range members {
-		work, pos, ok := strings.Cut(m, "@")
-		if !ok {
-			t.Fatalf("seriesJSON: %q is not <work>@<position>", m)
-		}
-		works = append(works, map[string]string{"work": work, "position": pos})
-	}
-	return mustJSON(t, map[string]any{
-		"id":      id,
-		"name":    name,
-		"works":   works,
-		"license": "CC0-1.0",
-		"sources": []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-	})
-}
-
-// charactersJSON renders a minimal valid characters sidecar for a work.
-func charactersJSON(t testing.TB, work string) string {
-	t.Helper()
-	return mustJSON(t, map[string]any{
-		"work": work,
-		"characters": []map[string]any{{
-			"id": "someone", "name": "Someone", "reveal": map[string]int{"chapter": 1},
-			"description": "A character, described in the community's own words.",
-		}},
-		"license": "CC-BY-SA-3.0",
-		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
-	})
-}
-
-// withAddedAt rewrites a rendered record's added_at, so a fixture can carry the
-// RFC 3339 spelling the storage migration's backfill wrote alongside the plain
-// date everything stamped since carries.
+// withAddedAt rewrites a rendered record's added_at, so a fixture can carry the RFC 3339
+// spelling the storage migration's backfill wrote alongside the plain date everything
+// stamped since carries.
 func withAddedAt(t testing.TB, record, value string) string {
 	t.Helper()
-	var m map[string]any
-	if err := json.Unmarshal([]byte(record), &m); err != nil {
-		t.Fatalf("withAddedAt: %v", err)
-	}
-	m["added_at"] = value
-	return mustJSON(t, m)
+	return testpack.WithField(t, record, "added_at", value)
 }
 
-// withoutField deletes a field from a rendered record, for the fixtures that must
-// be SCHEMA-INVALID: the audit explicitly supports being pointed at a tree that does
-// not validate, and some rules can only be exercised there.
-func withoutField(t testing.TB, record, field string) string {
-	t.Helper()
-	var m map[string]any
-	if err := json.Unmarshal([]byte(record), &m); err != nil {
-		t.Fatalf("withoutField: %v", err)
-	}
-	delete(m, field)
-	return mustJSON(t, m)
-}
-
-// withCredits adds a role credit to a rendered work, which is what makes two works'
-// raw author lists differ while the identity rule still reduces them to one set.
+// withCredits adds a role credit to a rendered work, which is what makes two works' raw
+// author lists differ while the identity rule still reduces them to one set.
 func withCredits(t testing.TB, record, person, role string) string {
 	t.Helper()
-	var m map[string]any
-	if err := json.Unmarshal([]byte(record), &m); err != nil {
-		t.Fatalf("withCredits: %v", err)
-	}
-	m["credits"] = []map[string]string{{"person": person, "role": role}}
-	return mustJSON(t, m)
-}
-
-func mustJSON(t testing.TB, v any) string {
-	t.Helper()
-	b, err := json.Marshal(v)
-	if err != nil {
-		t.Fatalf("fixture marshal: %v", err)
-	}
-	return string(b)
+	return testpack.WithField(t, record, "credits", []map[string]string{{"person": person, "role": role}})
 }
 
 // runFixture seeds a tree, loads it and runs every detector. The load must be
@@ -456,7 +313,7 @@ func TestSummaryCountsMatchTheRecordCounts(t *testing.T) {
 	md := summary(rep)
 	for _, class := range classOrder {
 		c := rep.class(class)
-		if !strings.Contains(md, "| "+class+" | "+comma(c.total())+" |") {
+		if !strings.Contains(md, "| "+class+" | "+reportdir.Comma(c.total())+" |") {
 			t.Errorf("SUMMARY.md is missing the count row for %s (%d)", class, c.total())
 		}
 	}

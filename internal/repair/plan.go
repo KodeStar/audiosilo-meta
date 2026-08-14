@@ -3,8 +3,11 @@ package repair
 import (
 	"fmt"
 	"maps"
+	"slices"
 	"sort"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
@@ -30,10 +33,12 @@ type plan struct {
 	community *view
 	series    *view
 
-	// redirects is the tombstone table as the run will write it.
+	// redirects is the tombstone table as the run will write it, and tombs counts what
+	// this run added to it - accumulated where the writes happen, so the report never
+	// re-derives it by enumerating which ops retire a slug (a third such enumeration,
+	// beside AppliableOps and planOne's switch, would be a third thing to keep in step).
 	redirects model.Redirects
-	// redirectsChanged reports whether anything was added to it.
-	redirectsChanged bool
+	tombs     int
 
 	// retired names every record an earlier proposal deleted - keyed by FAMILY and
 	// slug, since the three id namespaces are independent - mapped to the proposal
@@ -142,7 +147,7 @@ func (v *view) get(slug string) (entry, bool, error) {
 	if !ok {
 		return nil, false, nil
 	}
-	e, err := decodeEntry(raw)
+	e, err := rawentry.Decode(raw)
 	if err != nil {
 		return nil, false, fmt.Errorf("parse %s entry %q: %w", v.family.Root(), slug, err)
 	}
@@ -165,8 +170,8 @@ func (v *view) del(slug string) {
 // queue puts the view's writes and deletes on the store, in slug order. Nothing
 // reaches disk until the store is flushed.
 func (v *view) queue() error {
-	for _, slug := range sortedKeys(v.dirty) {
-		raw, err := v.held[slug].raw()
+	for _, slug := range rawentry.SortedKeys(v.dirty) {
+		raw, err := v.held[slug].Raw()
 		if err != nil {
 			return fmt.Errorf("render %s entry %q: %w", v.family.Root(), slug, err)
 		}
@@ -174,12 +179,77 @@ func (v *view) queue() error {
 			return err
 		}
 	}
-	for _, slug := range sortedKeys(v.gone) {
+	for _, slug := range rawentry.SortedKeys(v.gone) {
 		if err := v.store.Delete(v.family, slug); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// loadCluster is the preamble BOTH merge ops share: read the proposal's target and its
+// losers out of one family, in slug order, refusing what a merge may not act on before it
+// composes anything.
+//
+// It is one function rather than two near-identical openings because the five refusals
+// below are the same five judgements about the same shape - a target and the records
+// folding onto it - and two spellings of them would eventually disagree about which is
+// checked first, which is what a REFUSED.ndjson consumer reads. noun ("work", "series") is
+// the only thing that differs, and it appears only in the messages.
+func (t *txn) loadCluster(f pack.Family, noun string, p audit.Proposal) (target entry, losers []string, entries []entry, err error) {
+	if p.Target == "" || len(p.Others) == 0 {
+		return nil, nil, nil, refusef(CatMalformed, "the proposal names no target or no other members")
+	}
+	st := t.stageFor(f)
+	for _, slug := range cluster(p.Target, p.Others) {
+		if by, ok := t.p.retiredBy(f, slug); ok {
+			return nil, nil, nil, refusef(CatRetired, "%s %q was retired by an earlier proposal in this run (%s)", noun, slug, by)
+		}
+	}
+	target, ok, rerr := st.get(p.Target)
+	if rerr != nil {
+		return nil, nil, nil, rerr
+	}
+	if !ok {
+		return nil, nil, nil, refusef(CatMissing, "the target %s %q is not in the tree", noun, p.Target)
+	}
+	losers = slices.Sorted(slices.Values(p.Others))
+	entries = make([]entry, 0, len(losers))
+	for _, slug := range losers {
+		if slug == p.Target {
+			return nil, nil, nil, refusef(CatMalformed, "the proposal names %q as both the target and a loser", slug)
+		}
+		e, ok, rerr := st.get(slug)
+		if rerr != nil {
+			return nil, nil, nil, rerr
+		}
+		if !ok {
+			return nil, nil, nil, refusef(CatMissing, "the %s %q the proposal folds onto %q is not in the tree",
+				noun, slug, p.Target)
+		}
+		entries = append(entries, e)
+	}
+	return target, losers, entries, nil
+}
+
+// stageFor is the txn's stage for a family. The three are separate fields (each view is
+// typed by its family), and this is the one place that mapping is spelled.
+func (t *txn) stageFor(f pack.Family) *stage {
+	switch f {
+	case pack.FamilyWorks:
+		return t.works
+	case pack.FamilyWorksCommunity:
+		return t.community
+	case pack.FamilySeries:
+		return t.series
+	}
+	panic("repair: no stage for family " + f.Root())
+}
+
+// cluster is a proposal's whole membership: its target first, then the others. Four sites
+// spelled the same append.
+func cluster(target string, others []string) []string {
+	return append([]string{target}, others...)
 }
 
 // tomb is a redirect a txn intends to record.
@@ -247,20 +317,23 @@ func (t *txn) redirect(kind model.RedirectKind, from, to string) {
 // FIRST, over a copy, so a table redirects.Add refuses cannot leave the entries
 // committed beside a tombstone that was never recorded.
 func (t *txn) commit(key string) error {
-	table := cloneRedirects(t.p.redirects)
-	for _, tb := range t.tombs {
-		if err := redirects.Add(table, tb.kind, tb.from, tb.to); err != nil {
-			return err
-		}
-	}
-	t.p.redirects = table
+	// The copy is what makes a refused tombstone free of consequence, so it is taken
+	// only when there IS one: a wave of 20k retitles against a table of 50k entries
+	// would otherwise copy the whole table 20k times over for nothing.
 	if len(t.tombs) > 0 {
-		t.p.redirectsChanged = true
+		table := cloneRedirects(t.p.redirects)
+		for _, tb := range t.tombs {
+			if err := redirects.Add(table, tb.kind, tb.from, tb.to); err != nil {
+				return err
+			}
+		}
+		t.p.redirects = table
+		t.p.tombs += len(t.tombs)
 	}
 	t.works.commit()
 	t.community.commit()
 	t.series.commit()
-	for _, slug := range sortedKeys(t.reindex) {
+	for _, slug := range rawentry.SortedKeys(t.reindex) {
 		t.p.noteSeriesMembers(slug, t.reindex[slug])
 	}
 	for _, slug := range t.retires {
@@ -271,42 +344,42 @@ func (t *txn) commit(key string) error {
 
 // stage is one family's staged writes inside a txn.
 type stage struct {
-	v   *view
-	put map[string]entry
-	del map[string]bool
+	v    *view
+	puts map[string]entry
+	dels map[string]bool
 }
 
 func newStage(v *view) *stage {
-	return &stage{v: v, put: map[string]entry{}, del: map[string]bool{}}
+	return &stage{v: v, puts: map[string]entry{}, dels: map[string]bool{}}
 }
 
 // get reads the staged entry, else the plan's. As with view.get the entry belongs
 // to the plan; clone it before editing.
 func (s *stage) get(slug string) (entry, bool, error) {
-	if s.del[slug] {
+	if s.dels[slug] {
 		return nil, false, nil
 	}
-	if e, ok := s.put[slug]; ok {
+	if e, ok := s.puts[slug]; ok {
 		return e, true, nil
 	}
 	return s.v.get(slug)
 }
 
-func (s *stage) set(slug string, e entry) {
-	s.put[slug] = e
-	delete(s.del, slug)
+func (s *stage) put(slug string, e entry) {
+	s.puts[slug] = e
+	delete(s.dels, slug)
 }
 
 func (s *stage) remove(slug string) {
-	delete(s.put, slug)
-	s.del[slug] = true
+	delete(s.puts, slug)
+	s.dels[slug] = true
 }
 
 func (s *stage) commit() {
-	for _, slug := range sortedKeys(s.put) {
-		s.v.put(slug, s.put[slug])
+	for _, slug := range rawentry.SortedKeys(s.puts) {
+		s.v.put(slug, s.puts[slug])
 	}
-	for _, slug := range sortedKeys(s.del) {
+	for _, slug := range rawentry.SortedKeys(s.dels) {
 		s.v.del(slug)
 	}
 }
@@ -319,8 +392,8 @@ func (s *stage) commit() {
 // render) must leave the plan's idea of who is in which series exactly as it found it,
 // or the proposal after it would read a membership that was never written.
 func (t *txn) setSeries(slug string, e entry, works []model.SeriesWork) {
-	e.set("works", works)
-	t.series.set(slug, e)
+	e.Set("works", works)
+	t.series.put(slug, e)
 	t.reindex[slug] = works
 }
 

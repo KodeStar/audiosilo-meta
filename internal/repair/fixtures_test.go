@@ -1,7 +1,6 @@
 package repair
 
 import (
-	"encoding/json"
 	"errors"
 	"os"
 	"os/exec"
@@ -10,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -17,207 +17,42 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
-// The fixture builders. Every test seeds a small, SCHEMA-VALID tree with them - the
-// repo's rule for a rule's fixtures - because this pass refuses to write into a tree
-// that does not validate, so a malformed fixture would test the refusal rather than
-// the repair.
-//
-// They are internal/audit's builders, deliberately: a fixture here has to produce a
-// non-advisory proposal from the REAL detectors, so it has to look like the data those
-// were calibrated against.
+// The fixture builders live in internal/testpack, beside the Seed that writes them and
+// shared with internal/audit's detector suite: this pass applies what those detectors
+// propose, so a fixture that differed between the two suites would be drift neither could
+// catch (and did: a "<work>@<position>" splitter that cut at the wrong separator, and an
+// ASIN derivation that handed two recordings of one slug the same globally-unique id).
+// What is local here is the vocabulary alone.
+type (
+	workOpt = testpack.WorkOpt
+	recOpt  = testpack.RecOpt
+)
 
-type workOpt func(map[string]any)
+var (
+	workJSON         = testpack.WorkJSON
+	recJSON          = testpack.RecJSON
+	personJSON       = testpack.PersonJSON
+	seriesJSON       = testpack.SeriesJSON
+	charactersJSON   = testpack.CharactersJSON
+	recapsJSON       = testpack.RecapsJSON
+	withAuthors      = testpack.WithAuthors
+	withGenres       = testpack.WithGenres
+	withCredits      = testpack.WithCredits
+	withSubtitle     = testpack.WithSubtitle
+	withWorkXref     = testpack.WithWorkXref
+	withRuntime      = testpack.WithRuntime
+	withNarrators    = testpack.WithNarrators
+	withASIN         = testpack.WithASIN
+	withISBN         = testpack.WithISBN
+	withAbridged     = testpack.WithAbridged
+	withoutPublisher = testpack.WithoutPublisher
+)
 
-func withAuthors(ids ...string) workOpt {
-	return func(m map[string]any) { m["authors"] = ids }
-}
-
-func withGenres(gs ...string) workOpt {
-	return func(m map[string]any) { m["genres"] = gs }
-}
-
-// withCredits sets the work's role-qualified credits, as alternating person and role
-// arguments. A credit is load-bearing for the IDENTITY rule as well as for the union:
-// check.IdentityEqualWorks discounts a role-credited person from a work's identity set,
-// which is what lets two records whose author lists differ by a contributor meet.
-func withCredits(pairs ...string) workOpt {
-	return func(m map[string]any) {
-		credits := make([]map[string]string, 0, len(pairs)/2)
-		for i := 0; i+1 < len(pairs); i += 2 {
-			credits = append(credits, map[string]string{"person": pairs[i], "role": pairs[i+1]})
-		}
-		m["credits"] = credits
-	}
-}
-
-func withSubtitle(s string) workOpt {
-	return func(m map[string]any) { m["subtitle"] = s }
-}
-
+// withoutLanguage removes the work language, which is the only way to seed the tree
+// F-HYGIENE reports a missing one on - and is deliberately schema-INVALID, so a fixture
+// using it is a dry run (a --write refuses a tree that does not validate).
 func withoutLanguage() workOpt {
 	return func(m map[string]any) { delete(m, "language") }
-}
-
-func withWorkXref(isbns ...string) workOpt {
-	return func(m map[string]any) { m["xref"] = map[string]any{"isbn": isbns} }
-}
-
-func workJSON(t testing.TB, id, title string, opts ...workOpt) string {
-	t.Helper()
-	m := map[string]any{
-		"id":       id,
-		"title":    title,
-		"authors":  []string{"jane-doe"},
-		"language": "en",
-		"license":  "CC0-1.0",
-		"added_at": "2026-01-01",
-		"sources":  []map[string]string{{"type": "libex-import", "ref": id, "imported_at": "2026-01-01"}},
-	}
-	for _, o := range opts {
-		o(m)
-	}
-	return mustJSON(t, m)
-}
-
-type recOpt func(map[string]any)
-
-func withRuntime(min int) recOpt {
-	return func(m map[string]any) { m["runtime_min"] = min }
-}
-
-func withNarrators(ids ...string) recOpt {
-	return func(m map[string]any) { m["narrators"] = ids }
-}
-
-func withASIN(asin string) recOpt {
-	return func(m map[string]any) { m["asin"] = []map[string]string{{"region": "us", "asin": asin}} }
-}
-
-func withISBN(isbn string) recOpt {
-	return func(m map[string]any) { m["isbn"] = []string{isbn} }
-}
-
-func withAbridged(v bool) recOpt {
-	return func(m map[string]any) { m["abridged"] = v }
-}
-
-func withoutPublisher() recOpt {
-	return func(m map[string]any) { delete(m, "publisher") }
-}
-
-func recJSON(t testing.TB, id, work string, opts ...recOpt) string {
-	t.Helper()
-	m := map[string]any{
-		"id":        id,
-		"work":      work,
-		"narrators": []string{"nate-narrator"},
-		"language":  "en",
-		"license":   "CC0-1.0",
-		"added_at":  "2026-01-01",
-		"asin":      []map[string]string{{"region": "us", "asin": fixtureASIN(work + "/" + id)}},
-		// The ref names the record it came from, so two recordings of one production
-		// carry DIFFERENT provenance - which is what makes a source union observable.
-		"sources":      []map[string]string{{"type": "libex-import", "ref": work + "/" + id, "imported_at": "2026-01-01"}},
-		"publisher":    "Fixture Audio",
-		"release_date": "2020-01-01",
-	}
-	for _, o := range opts {
-		o(m)
-	}
-	return mustJSON(t, m)
-}
-
-// fixtureASIN derives a unique, schema-valid ASIN from a string. pkg/check enforces
-// global ASIN uniqueness, so two fixture recordings sharing one would be refused
-// before any detector ran.
-func fixtureASIN(seed string) string {
-	var h uint64 = 14695981039346656037
-	for i := 0; i < len(seed); i++ {
-		h = (h ^ uint64(seed[i])) * 1099511628211
-	}
-	const alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	out := []byte("B000000000")
-	for i := 1; i < len(out); i++ {
-		out[i] = alphabet[h%uint64(len(alphabet))]
-		h /= uint64(len(alphabet))
-	}
-	return string(out)
-}
-
-func personJSON(t testing.TB, id, name string) string {
-	t.Helper()
-	return mustJSON(t, map[string]any{
-		"id":      id,
-		"name":    name,
-		"license": "CC0-1.0",
-		"sources": []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-	})
-}
-
-// seriesJSON renders a series over "<work>@<position>" pairs.
-func seriesJSON(t testing.TB, id, name string, members ...string) string {
-	t.Helper()
-	works := make([]map[string]string, 0, len(members))
-	for _, m := range members {
-		work, pos := cut(t, m)
-		works = append(works, map[string]string{"work": work, "position": pos})
-	}
-	return mustJSON(t, map[string]any{
-		"id":      id,
-		"name":    name,
-		"works":   works,
-		"license": "CC0-1.0",
-		"sources": []map[string]string{{"type": "libex-import", "imported_at": "2026-01-01"}},
-	})
-}
-
-func cut(t testing.TB, member string) (work, pos string) {
-	t.Helper()
-	for i := len(member) - 1; i >= 0; i-- {
-		if member[i] == '@' {
-			return member[:i], member[i+1:]
-		}
-	}
-	t.Fatalf("seriesJSON: %q is not <work>@<position>", member)
-	return "", ""
-}
-
-// charactersJSON and recapsJSON render the two works-community members. They are the
-// most expensive data in the repository, which is why so much of this package is about
-// not losing them.
-func charactersJSON(t testing.TB, work, charID string) string {
-	t.Helper()
-	return mustJSON(t, map[string]any{
-		"work": work,
-		"characters": []map[string]any{{
-			"id": charID, "name": "Someone", "reveal": map[string]int{"chapter": 1},
-			"description": "A character, described in the community's own words.",
-		}},
-		"license": "CC-BY-SA-3.0",
-		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
-	})
-}
-
-func recapsJSON(t testing.TB, work string) string {
-	t.Helper()
-	return mustJSON(t, map[string]any{
-		"work": work,
-		"recaps": []map[string]any{{
-			"through": map[string]int{"chapter": 3},
-			"text":    "The story so far, in the community's own words.",
-		}},
-		"license": "CC-BY-SA-3.0",
-		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
-	})
-}
-
-func mustJSON(t testing.TB, v any) string {
-	t.Helper()
-	b, err := json.Marshal(v)
-	if err != nil {
-		t.Fatalf("fixture marshal: %v", err)
-	}
-	return string(b)
 }
 
 // hammeredCluster is the calibration pair, reduced to a fixture: one work modeled as
@@ -358,7 +193,7 @@ func readEntry(t testing.TB, data string, f pack.Family, slug string) entry {
 	if !ok {
 		t.Fatalf("no %s entry %q", f.Root(), slug)
 	}
-	e, err := decodeEntry(raw)
+	e, err := rawentry.Decode(raw)
 	if err != nil {
 		t.Fatal(err)
 	}
