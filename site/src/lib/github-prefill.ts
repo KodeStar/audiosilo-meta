@@ -15,7 +15,12 @@ import type { LibexPrefill } from './libex-map'
 // builds its add-work URL from the same base instead of duplicating the literal.
 export const ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
 // Canonical site origin, for linking an existing work in an add-recording issue.
-// Mirrors `site` in astro.config.mjs; the work path itself reuses workRef below.
+// Mirrors `site` in astro.config.mjs; the path itself is href.work, so the ONE
+// reference read by a machine rather than followed by a human - `work_ref` on
+// the add-recording/characters/recaps forms - is the same URL every human link
+// uses. The intake bot resolves it with internal/issueform's resolveWorkRef,
+// which reads the /works/{slug} page path (and still the retired `?id=`
+// spelling, so submissions composed by an older site keep parsing).
 const META_SITE = 'https://meta.audiosilo.app'
 // The GitHub new-issue chooser (the template picker) - the "add it" hand-off for
 // the not-found empty states, where no specific template/prefill applies yet.
@@ -161,19 +166,9 @@ export function addRecordingIssueUrl(book: ParsedBook, work: WorkMatch): string 
   const p = new URLSearchParams()
   p.set('template', 'add-recording.yml')
   p.set('title', `[recording] ${book.title}`)
-  p.set('work_ref', workRef(work.id))
+  p.set('work_ref', META_SITE + href.work(work.id))
   applyRecordingParams(p, book, exportSources(book))
   return `${ISSUE_BASE}?${p.toString()}`
-}
-
-// The absolute work URL used as work_ref (the server has no id-only reverse
-// route, so the human-readable work page is the stable reference a maintainer
-// follows). Deliberately href.workRefLegacy, not href.work: this value is PARSED
-// by the intake bot, whose resolveWorkRef reads `?id=` and not the path route -
-// see the note on href.workRefLegacy. metaserve 301s it, so a maintainer
-// following the link still lands on the rendered work page.
-function workRef(workId: string): string {
-  return META_SITE + href.workRefLegacy(workId)
 }
 
 /**
@@ -185,7 +180,7 @@ function workRef(workId: string): string {
 export function addCharactersIssueUrl(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-characters.yml')
-  p.set('work_ref', workRef(workId))
+  p.set('work_ref', META_SITE + href.work(workId))
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
@@ -197,7 +192,7 @@ export function addCharactersIssueUrl(workId: string): string {
 export function addRecapsIssueUrl(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-recaps.yml')
-  p.set('work_ref', workRef(workId))
+  p.set('work_ref', META_SITE + href.work(workId))
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
@@ -218,7 +213,7 @@ export const addWorkIssueFormUrl = `${ISSUE_BASE}?template=add-work.yml`
 export function addRecordingIssueUrlForWork(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-recording.yml')
-  p.set('work_ref', workRef(workId))
+  p.set('work_ref', META_SITE + href.work(workId))
   return `${ISSUE_BASE}?${p.toString()}`
 }
 

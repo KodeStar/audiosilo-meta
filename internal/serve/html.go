@@ -83,18 +83,32 @@ var htmlEntityRoutes = []htmlEntityRoute{
 	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: seriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
 }
 
-// htmlRedirectPatterns is the set of patterns whose retired-slug 301 is written
-// as a PAGE rather than as the API's JSON body. It is derived from the table
-// above, so the writer is chosen by which route table the pattern came from
-// rather than by a flag a handler passes in - a handler cannot pick the wrong
-// one, and a new page route gets the page writer for free.
-var htmlRedirectPatterns = func() map[string]bool {
-	out := make(map[string]bool, len(htmlEntityRoutes))
+// htmlEntityRouteByPattern is the table above indexed by ServeMux pattern - the
+// ONE derivation every pattern-keyed consumer reads. Membership answers "is this
+// a page route", which is what decides that a retired slug's 301 carries the
+// page body rather than the API's JSON envelope; the row answers which namespace
+// that slug resolves in (redirectNamespaces folds it in). Both questions are the
+// same knowledge, so they are one index built by one iteration, and a new page
+// route is a row that answers both.
+var htmlEntityRouteByPattern = func() map[string]htmlEntityRoute {
+	out := make(map[string]htmlEntityRoute, len(htmlEntityRoutes))
 	for _, e := range htmlEntityRoutes {
-		out[e.pattern] = true
+		out[e.pattern] = e
 	}
 	return out
 }()
+
+// writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
+// document that says where the record went and links there. A page's client is a
+// browser or a crawler, and both are better served by a followable link than by
+// the API's {"redirect": ...} envelope if they ignore the Location header.
+func writeRedirectPage(w http.ResponseWriter, location string) {
+	escaped := html.EscapeString(location)
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusMovedPermanently)
+	_, _ = io.WriteString(w, `<!doctype html><meta charset="utf-8"><title>Moved permanently</title>`+
+		`<p>This record has moved to <a href="`+escaped+`">`+escaped+"</a>.</p>\n")
+}
 
 // htmlRoutes is the PAGE surface, in registration order: the three entity pages
 // plus the three legacy query-param routes they replaced. It is deliberately a
@@ -146,6 +160,35 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 			return
 		}
 		id := r.PathValue(idWildcard)
+
+		// The validator depends on the snapshot's identity and the id only, so it
+		// is computed BEFORE the page and a match costs ZERO snapshot queries -
+		// which is the request shape a crawler's traffic settles into once a page
+		// is indexed, against a compose that is a 6+4N-query cascade plus two JSON
+		// marshals and a template execute.
+		//
+		// The match needs no existence check to be honest. The ETag embeds the
+		// snapshot's release tag (or its build timestamp) and a snapshot is
+		// immutable, so the only client that can hold a matching validator is one
+		// we served a 200 from THIS snapshot - which is proof the id resolved under
+		// it. That is also why the 301 below needs no exemption from this ordering:
+		// a retired slug never 200s under the current snapshot, so no honest
+		// matching validator for one can exist and every honest request for a
+		// retired slug reaches the redirect.
+		// A FABRICATED match gets a bodyless 304 for a page we never served, which
+		// deceives only its fabricator; the alternative spends the whole compose on
+		// every honest revalidation, which is the traffic this route exists for.
+		etag := entityETag(snap, id)
+		if matchesETag(r.Header.Get("If-None-Match"), etag) {
+			h := w.Header()
+			h.Set("ETag", etag)
+			h.Set("Cache-Control", entityMaxAge)
+			// The gzip middleware passes a bodyless status through uncompressed and
+			// announces no encoding on it - see gzipResponseWriter.ensureHeader.
+			w.WriteHeader(http.StatusNotModified)
+			return
+		}
+
 		page, err := e.compose(s.cfg.SiteURL, snap, id)
 		if err != nil {
 			snap.logf("serve: rendering %s%s failed, serving the shell untouched: %v", e.prefix, id, err)
@@ -160,17 +203,10 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 			return
 		}
 
-		etag := entityETag(snap, id)
 		h := w.Header()
 		h.Set("Content-Type", "text/html; charset=utf-8")
 		h.Set("ETag", etag)
 		h.Set("Cache-Control", entityMaxAge)
-		if matchesETag(r.Header.Get("If-None-Match"), etag) {
-			// The gzip middleware passes a bodyless status through uncompressed and
-			// announces no encoding on it - see gzipResponseWriter.ensureHeader.
-			w.WriteHeader(http.StatusNotModified)
-			return
-		}
 		_, _ = io.WriteString(w, sh.render(page.renderHead(), page.renderBody()))
 	}
 }
@@ -295,29 +331,35 @@ func composeWorkPage(siteURL string, snap *snapshot, id string) (*entityPage, er
 		return nil, err
 	}
 	canonical := siteURL + workPath + d.ID
-	sheet, err := renderTemplate("work", newWorkView(d))
+	// The view carries the cover the og image wants and the author names both the
+	// title and the description read, so each is derived once for the page.
+	view := newWorkView(d)
+	authors := joinNames(personNames(d.Authors))
+	sheet, err := renderTemplate("work", view)
 	if err != nil {
 		return nil, err
 	}
 	return &entityPage{
-		title:       workTitle(d),
-		description: workDescription(d),
+		title:       workTitle(d, authors),
+		description: workDescription(d, authors),
 		canonical:   canonical,
 		ogType:      "book",
-		image:       ogImage(siteURL, firstCover(d)),
+		image:       ogImage(siteURL, view.CoverURL),
 		jsonLD:      workJSONLD(d, siteURL, canonical),
 		factSheet:   sheet,
 		payload:     payload,
 	}, nil
 }
 
-// workTitle is "<Title> by <Authors> (audiobook) - AudioSilo Meta". The author
-// clause is dropped rather than left empty when the work credits nobody.
-func workTitle(d *workDetail) string {
+// workTitle is "<Title> by <Authors> (audiobook) - AudioSilo Meta". authors is
+// the work's already-joined credit line (composeWorkPage derives it once for the
+// two places that read it); the clause is dropped rather than left empty when
+// the work credits nobody.
+func workTitle(d *workDetail, authors string) string {
 	var b strings.Builder
 	b.WriteString(d.Title)
-	if names := personNames(d.Authors); len(names) > 0 {
-		b.WriteString(" by " + joinNames(names))
+	if authors != "" {
+		b.WriteString(" by " + authors)
 	}
 	b.WriteString(" (audiobook) - " + siteName)
 	return b.String()
@@ -327,10 +369,10 @@ func workTitle(d *workDetail) string {
 // in a FIXED order, so one snapshot always produces one description: authors,
 // narrators (deduped across recordings, in credit order), the series and
 // position, how many recordings there are, and a runtime.
-func workDescription(d *workDetail) string {
+func workDescription(d *workDetail, authors string) string {
 	parts := []string{d.Title}
-	if names := personNames(d.Authors); len(names) > 0 {
-		parts = append(parts, "by "+joinNames(names))
+	if authors != "" {
+		parts = append(parts, "by "+authors)
 	}
 	if names := personNames(dedupeNarrators(d)); len(names) > 0 {
 		parts = append(parts, "narrated by "+joinNames(names))
@@ -518,18 +560,6 @@ func formatRuntime(min int) string {
 	}
 }
 
-// releaseYear is the year of an ISO release date, or "" when there is not one.
-func releaseYear(date string) string {
-	if len(date) < 4 {
-		return ""
-	}
-	year := date[:4]
-	if _, err := strconv.Atoi(year); err != nil {
-		return ""
-	}
-	return year
-}
-
 // truncateDescription cuts a composed description to descriptionMax at a WORD
 // boundary and leaves no dangling separator behind, so a truncated description
 // still reads as a phrase rather than as a fragment ending in a comma. The cut
@@ -703,7 +733,11 @@ func newWorkView(d *workDetail) workView {
 		rv := recordingView{
 			ID: rec.ID, Narrators: rec.Narrators, Runtime: formatRuntime(rec.RuntimeMin),
 			Abridged: rec.Abridged, Publisher: rec.Publisher,
-			ReleaseYear: releaseYear(rec.ReleaseDate), Chapters: rec.ChapterCount,
+			// publishedYear (abs.go) is the package's one date-to-year rule, so the
+			// fact sheet and the ABS facade cannot read one date two ways: a value
+			// it does not recognize as a year renders as stated rather than being
+			// silently truncated to four characters.
+			ReleaseYear: publishedYear(rec.ReleaseDate), Chapters: rec.ChapterCount,
 		}
 		for _, a := range rec.ASIN {
 			rv.Codes = append(rv.Codes, codeView{Label: "ASIN (" + a.Region + ")", Value: a.ASIN})

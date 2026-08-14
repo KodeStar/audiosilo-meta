@@ -582,6 +582,61 @@ func TestEntityPageRevalidates(t *testing.T) {
 	}
 }
 
+// TestEntityPageRevalidatesWithoutComposing pins that the 304 is answered before
+// the page is composed - the property the whole revalidation win rests on, since
+// composing is a query cascade per request and revalidation is what a crawler
+// mostly sends once a page is indexed.
+//
+// It is proved from the outside: an UNKNOWN slug carrying a matching validator
+// is answered 304 rather than 404, which is only possible if the handler asked
+// the snapshot nothing. That shape is the accepted cost of the ordering - an
+// honest client can only hold a matching validator for a page we served a 200
+// from this same snapshot, so a fabricated one buys its fabricator a bodyless
+// 304 for a page that was never served and tells it nothing it did not invent.
+func TestEntityPageRevalidatesWithoutComposing(t *testing.T) {
+	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	live := getNoFollow(t, ts.URL, "/works/project-hail-mary")
+	if _, err := io.Copy(io.Discard, live.Body); err != nil {
+		t.Fatal(err)
+	}
+	etag := live.Header.Get("ETag")
+	if etag == "" {
+		t.Fatal("page carries no ETag")
+	}
+	// The same snapshot's validator for a slug the catalogue does not hold.
+	fabricated := strings.Replace(etag, "project-hail-mary", "no-such-work", 1)
+	if fabricated == etag {
+		t.Fatalf("the ETag %q does not carry the slug, so the case cannot be built", etag)
+	}
+
+	// Without the conditional header the same URL is a 404, so the 304 below is
+	// the ordering and not a record we accidentally hold.
+	if code, _ := getPage(t, ts.URL, "/works/no-such-work"); code != http.StatusNotFound {
+		t.Fatalf("unconditional GET of an unknown slug = %d, want 404", code)
+	}
+
+	req, err := http.NewRequest(http.MethodGet, ts.URL+"/works/no-such-work", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("If-None-Match", fabricated)
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+	if resp.StatusCode != http.StatusNotModified {
+		t.Fatalf("conditional GET of an unknown slug = %d, want 304 (the page must not be composed)", resp.StatusCode)
+	}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(body) != 0 {
+		t.Errorf("304 carried a %d-byte body", len(body))
+	}
+}
+
 // ---- unit-level helpers -----------------------------------------------------
 
 func TestSplitShell(t *testing.T) {
@@ -662,16 +717,6 @@ func TestTruncateDescription(t *testing.T) {
 	}
 	if !strings.HasSuffix(long, "wordy") {
 		t.Errorf("truncation did not land on a word boundary: %q", long)
-	}
-}
-
-// TestReleaseYear covers the one derived date field on the fact sheet.
-func TestReleaseYear(t *testing.T) {
-	cases := map[string]string{"2021-05-04": "2021", "2021": "2021", "": "", "n/a": "", "20": ""}
-	for in, want := range cases {
-		if got := releaseYear(in); got != want {
-			t.Errorf("releaseYear(%q) = %q, want %q", in, got, want)
-		}
 	}
 }
 

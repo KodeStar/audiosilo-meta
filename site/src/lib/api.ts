@@ -470,14 +470,6 @@ export const href = {
   work: (id: string) => `/works/${encodeURIComponent(id)}`,
   person: (id: string) => `/people/${encodeURIComponent(id)}`,
   series: (id: string) => `/series/${encodeURIComponent(id)}`,
-  /** The legacy query-parameter work URL, for the ONE reference that is read by
-      a machine rather than followed by a human: `work_ref` on the
-      add-recording/characters/recaps issue forms. The intake bot resolves it
-      with internal/issueform's resolveWorkRef, which reads `?id=` and the
-      data-tree path shape but NOT `/works/{slug}` - a path-route work_ref
-      resolves to nothing and the submission is refused. Fold this back into
-      href.work in the same change that teaches resolveWorkRef the path route. */
-  workRefLegacy: (id: string) => `/work?id=${encodeURIComponent(id)}`,
   /** The guided sidecar builder, primed for one work and one dimension. */
   build: (id: string, kind: 'characters' | 'recaps') =>
     `/build?work=${encodeURIComponent(id)}&kind=${kind}`,

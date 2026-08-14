@@ -386,6 +386,9 @@ func TestAuthorMatches(t *testing.T) {
 	}
 }
 
+// TestPublishedYear covers the package's ONE date-to-year rule: the ABS facade's
+// publishedYear field and the work page's fact-sheet release line both read it,
+// so a date the rule does not recognize renders the same way on both surfaces.
 func TestPublishedYear(t *testing.T) {
 	cases := []struct{ in, want string }{
 		{"2021", "2021"},             // bare year stays unchanged
@@ -393,6 +396,7 @@ func TestPublishedYear(t *testing.T) {
 		{"1999-12", "1999"},          // YYYY-MM also truncates
 		{"", ""},                     // empty passes through
 		{"abcd", "abcd"},             // non-numeric passes through untouched
+		{"n/a", "n/a"},               // a stated non-date is shown as stated
 		{"202", "202"},               // too short to be a year, unchanged
 		{"20211", "20211"},           // 5 digits (not a "-" at index 4), unchanged
 		{"2021x05", "2021x05"},       // 5th char not "-", unchanged

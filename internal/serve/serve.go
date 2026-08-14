@@ -12,8 +12,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"html"
-	"io"
 	"log"
 	"math"
 	"net/http"
@@ -329,10 +327,11 @@ const idWildcard = "id"
 // redirectExemptRoutes, which is how a fifth family route cannot ship without
 // redirect support.
 // The HTML entity pages address the same records by the same slugs, so their
-// patterns are folded in from the ONE table that defines them (htmlEntityRoutes)
-// rather than restated here - a page family cannot be added without its
-// redirect, and the two tables cannot disagree about which namespace a family
-// resolves in.
+// patterns are folded in from the ONE pattern-keyed index of the table that
+// defines them (htmlEntityRouteByPattern, which the page-body decision in
+// redirected reads too) rather than restated here - a page family cannot be
+// added without its redirect, and the two tables cannot disagree about which
+// namespace a family resolves in.
 var redirectNamespaces = func() map[string]model.RedirectKind {
 	m := map[string]model.RedirectKind{
 		"GET /api/v1/works/{id}":                           model.RedirectWorks,
@@ -340,8 +339,8 @@ var redirectNamespaces = func() map[string]model.RedirectKind {
 		"GET /api/v1/people/{id}":                          model.RedirectPeople,
 		"GET /api/v1/series/{id}":                          model.RedirectSeries,
 	}
-	for _, e := range htmlEntityRoutes {
-		m[e.pattern] = e.namespace
+	for pattern, e := range htmlEntityRouteByPattern {
+		m[pattern] = e.namespace
 	}
 	return m
 }()
@@ -643,7 +642,7 @@ func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
 	// hour is long enough to spare the origin a stale client's repeated misses and
 	// short enough that reversing one is not a support problem.
 	w.Header().Set("Cache-Control", redirectMaxAge)
-	if htmlRedirectPatterns[r.Pattern] {
+	if _, page := htmlEntityRouteByPattern[r.Pattern]; page {
 		writeRedirectPage(w, location)
 		return true
 	}
@@ -679,18 +678,6 @@ func resolveRedirect(r *http.Request, snap *snapshot) (location, to string, ok b
 		return "", "", false
 	}
 	return redirectLocation(r, idName, to), to, true
-}
-
-// writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
-// document that says where the record went and links there. A page's client is a
-// browser or a crawler, and both are better served by a followable link than by
-// the API's {"redirect": ...} envelope if they ignore the Location header.
-func writeRedirectPage(w http.ResponseWriter, location string) {
-	escaped := html.EscapeString(location)
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.WriteHeader(http.StatusMovedPermanently)
-	_, _ = io.WriteString(w, `<!doctype html><meta charset="utf-8"><title>Moved permanently</title>`+
-		`<p>This record has moved to <a href="`+escaped+`">`+escaped+"</a>.</p>\n")
 }
 
 // redirectMaxAge bounds how long a 301 may be cached. See redirected.

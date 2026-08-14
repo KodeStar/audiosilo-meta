@@ -155,7 +155,7 @@ describe('addRecordingIssueUrl', () => {
   it('sets work_ref to the absolute existing-work URL with the id encoded', () => {
     const encoded: WorkMatch = { id: 'a b/c', title: 'Odd Id' }
     const p = params(addRecordingIssueUrl(parsedBook(), encoded))
-    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/works/a%20b%2Fc')
   })
 
   it('titles the issue with the recording prefix and carries recording fields', () => {
@@ -277,32 +277,31 @@ describe('addCharactersIssueUrl / addRecapsIssueUrl', () => {
   it('use the sidecar templates and carry the absolute work_ref', () => {
     const chars = params(addCharactersIssueUrl('a-deadly-education'))
     expect(chars.get('template')).toBe('add-characters.yml')
-    expect(chars.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+    expect(chars.get('work_ref')).toBe('https://meta.audiosilo.app/works/a-deadly-education')
 
     const recaps = params(addRecapsIssueUrl('a-deadly-education'))
     expect(recaps.get('template')).toBe('add-recaps.yml')
-    expect(recaps.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+    expect(recaps.get('work_ref')).toBe('https://meta.audiosilo.app/works/a-deadly-education')
   })
 
   it('encode an awkward work id in work_ref', () => {
     const p = params(addCharactersIssueUrl('a b/c'))
-    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/works/a%20b%2Fc')
   })
 
-  // Every work link a HUMAN follows is now the path route (/works/{slug}), but
-  // work_ref is PARSED: internal/issueform's resolveWorkRef reads `?id=` and the
-  // data-tree path shape and would resolve /works/{slug} to nothing, refusing the
-  // submission. It stays on the legacy spelling, which metaserve 301s, until that
-  // parser learns the path route.
-  it('keep work_ref on the query form the intake bot can resolve', () => {
+  // work_ref is PARSED rather than followed: internal/issueform's resolveWorkRef
+  // is what reads it, and it now accepts the /works/{slug} page path (refs.go's
+  // workPageRE), so the reference a submitter sees is the same URL every human
+  // link uses. It still accepts the retired `?id=` spelling too, so an issue
+  // composed by an older deploy of this site keeps parsing.
+  it('carry work_ref as the page path resolveWorkRef reads', () => {
     for (const url of [
       addCharactersIssueUrl('a-deadly-education'),
       addRecapsIssueUrl('a-deadly-education'),
       addRecordingIssueUrlForWork('a-deadly-education'),
     ]) {
       const ref = params(url).get('work_ref') ?? ''
-      expect(ref).toContain('/work?id=')
-      expect(ref).not.toContain('/works/')
+      expect(ref).toBe('https://meta.audiosilo.app/works/a-deadly-education')
     }
   })
 
@@ -320,13 +319,13 @@ describe('addRecordingIssueUrlForWork', () => {
     expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
     const p = u.searchParams
     expect(p.get('template')).toBe('add-recording.yml')
-    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/works/a-deadly-education')
     expect([...p.keys()].sort()).toEqual(['template', 'work_ref'])
   })
 
   it('encodes an awkward work id in work_ref', () => {
     const p = params(addRecordingIssueUrlForWork('a b/c'))
-    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/works/a%20b%2Fc')
   })
 })
 
