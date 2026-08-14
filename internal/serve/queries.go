@@ -5,6 +5,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // scalarInt runs a query expected to return a single integer (COUNT, etc.).
@@ -800,27 +802,17 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	return &d, nil
 }
 
-// parsePositionRange parses a series position string into its numeric span:
-// "2" -> (2, 2), "2.5" -> (2.5, 2.5), "1-3.5" -> (1, 3.5). ok is false when
-// either bound fails to parse. Callers apply their own policy to the span (sort
-// key, integer coverage, equality); this is the single copy of the position
-// grammar in this package, and every consumer of it is in this package -
-// positionStart's sort key, the coverage browser's gap set, and
-// seriespos.go's positionsEqual, which reads a user's stated position through
-// exactly the grammar the series listing is ordered by rather than spelling
-// number-shapes a second time. A possible future home is pkg/model, next to the
-// schema's position rules, if a consumer OUTSIDE this package ever appears.
-func parsePositionRange(pos string) (lo, hi float64, ok bool) {
-	pos = strings.TrimSpace(pos)
-	if i := strings.IndexByte(pos, '-'); i > 0 {
-		var err1, err2 error
-		lo, err1 = strconv.ParseFloat(strings.TrimSpace(pos[:i]), 64)
-		hi, err2 = strconv.ParseFloat(strings.TrimSpace(pos[i+1:]), 64)
-		return lo, hi, err1 == nil && err2 == nil
-	}
-	f, err := strconv.ParseFloat(pos, 64)
-	return f, f, err == nil
-}
+// parsePositionRange reads a series position's numeric span. It is
+// model.ParsePositionRange, aliased here under the name this package's callers
+// (positionStart's sort key, the coverage browser's gap set, seriespos.go's
+// positionsEqual) already read.
+//
+// The implementation MOVED to pkg/model, beside the schema's position rules, when
+// the consumer this comment used to anticipate turned up: internal/audit judges
+// range bounds and slot identity with the same grammar, and pkg/model is the leaf
+// both packages can reach. The alias stays so there is one call shape in here and
+// still exactly one definition anywhere.
+var parsePositionRange = model.ParsePositionRange
 
 // positionStart returns the numeric start of a series position string: "2.5"
 // -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last. A

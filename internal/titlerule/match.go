@@ -15,14 +15,48 @@
 //
 // What was taken: the title/series NORMALIZATION half of the package. The
 // scoring half (Book, Query, Best, tokenScore, titleCovers, personMatch and the
-// score ladder) answers "are these two records the same book", which the audit
-// does not ask - it groups by an exact key instead - and is deliberately left
-// out rather than copied unused. Names and comments are otherwise verbatim so a
-// diff against the source stays readable.
+// score ladder) answers "are these two records the same book", which this package
+// does not ask - its callers group by an exact key instead - and is deliberately
+// left out rather than copied unused.
 //
-// Deliberately UNCHANGED here: every audit-side widening of the vocabulary lives
-// in title.go, so this file can be re-diffed against the server's copy.
-package audit
+// THE DELTAS. This is not a byte-identical copy, and pretending otherwise would
+// make the next re-diff untrustworthy. Every difference from the source is listed
+// here, and there are no others:
+//
+//  1. removeFold/removeFoldWith collapsed into removeFoldBounded. Only the
+//     BOUNDED form is reachable from what was taken (stripSeries), so the
+//     unbounded entry point and the `bounded bool` parameter threaded through it
+//     are gone; the body is otherwise the source's, including its rune-offset
+//     mapping and the `prev` carry.
+//  2. dropGenreSubtitle split into itself plus dropFluffSubtitle(s, fluff), which
+//     takes the vocabulary as a parameter. The logic is unchanged and
+//     dropGenreSubtitle still passes genreFluff; the seam exists so the wider
+//     vocabulary in rules.go reuses the tail-splitting rather than re-spelling
+//     where a subtitle starts.
+//  3. Normalize and NormalizeSeries not taken at all - see the note at the tail
+//     of this file for why.
+//  4. SeqFromTitle, firstNumber, titleTokens, tokenScore, titleCovers and the
+//     Book/Query/Best scoring surface not taken (nothing here calls them).
+//  5. dropSeriesSuffix's body parameterized as dropOneSuffix(s, suffixes), the
+//     same seam as (2) and for the same reason: rules.go's wider
+//     catalogue-decoration peel (seriesKey) is that rule under a longer list, not
+//     a second rule. dropSeriesSuffix still passes the source's single " series".
+//  6. tokenize replaced by its own predicate, significantToken, plus the two
+//     questions the retained callers actually ask (CountSignificantWords,
+//     hasSignificantToken in rules.go). The token RULE is byte-for-byte the
+//     source's; only the map it built - which nothing retained needs, since the
+//     scoring half that consumed it was not taken - is gone.
+//  7. seriesRefIn moved to rules.go as the exported SeriesRefIn, unchanged except
+//     that it reads the MEMOIZED SeriesForms. Its callers ask tens of millions of
+//     times over a full tree for tens of thousands of distinct names, and
+//     seriesForms allocates.
+//  8. Comment prose trimmed where it referred to the scoring half that was not
+//     taken, and em dashes converted to hyphens (a workspace-wide rule). No
+//     comment that describes retained BEHAVIOUR was changed.
+//
+// Deliberately UNCHANGED otherwise: every widening of the vocabulary lives in
+// rules.go, so this file stays diffable against the server's copy.
+package titlerule
 
 import (
 	"regexp"
@@ -105,18 +139,8 @@ func seriesForms(series string) []string {
 	return out
 }
 
-// seriesRefIn reports which spelling of series occurs in lowerTitle (an
-// already-lowercased title). Containment is the whole safeguard when a series-LESS
-// query is judged under a candidate's series: only a query title that spells the
-// series out is linked to it.
-func seriesRefIn(lowerTitle, series string) (string, bool) {
-	for _, form := range seriesForms(series) {
-		if containsPhraseLower(lowerTitle, form) {
-			return form, true
-		}
-	}
-	return "", false
-}
+// seriesRefIn's job is done by rules.go's exported SeriesRefIn, which is the same
+// loop over the MEMOIZED forms - see delta (8).
 
 // parenGroup matches a parenthetical/bracketed decoration on a series name:
 // "Vorkosigan Saga (chronological)" is the catalog's ordering note, not part of
@@ -144,11 +168,22 @@ func dropLeadingArticle(s string) string {
 
 // dropSeriesSuffix removes a trailing " Series", never emptying the string, so a
 // series genuinely named "Series" survives.
-func dropSeriesSuffix(s string) string {
-	const suf = " series"
+func dropSeriesSuffix(s string) string { return dropOneSuffix(s, seriesSuffixOnly) }
+
+// seriesSuffixOnly is dropSeriesSuffix's vocabulary: the source's single suffix.
+var seriesSuffixOnly = []string{" series"}
+
+// dropOneSuffix removes the FIRST matching trailing suffix from s, never emptying
+// the string. It is dropSeriesSuffix's body with the vocabulary as a parameter -
+// the same seam dropFluffSubtitle has - so the wider catalogue-decoration list in
+// seriesdup.go peels through this rule rather than spelling a second one. The
+// suffixes are compared case-insensitively and are expected lowercase.
+func dropOneSuffix(s string, suffixes []string) string {
 	t := strings.TrimSpace(s)
-	if len(t) > len(suf) && strings.EqualFold(t[len(t)-len(suf):], suf) {
-		return strings.TrimSpace(t[:len(t)-len(suf)])
+	for _, suf := range suffixes {
+		if len(t) > len(suf) && strings.EqualFold(t[len(t)-len(suf):], suf) {
+			return strings.TrimSpace(t[:len(t)-len(suf)])
+		}
 	}
 	return t
 }
@@ -346,18 +381,30 @@ var titleStopwords = map[string]bool{
 	"or": true, "nor": true, "from": true,
 }
 
-// tokenize splits a cleaned title into its significant lowercase word tokens.
-// Stopwords, single characters, and pure numbers are dropped so the distinctive
-// book words drive the match.
-func tokenize(s string) map[string]struct{} {
-	out := map[string]struct{}{}
+// significantToken reports whether w is a token tokenize would keep: not a
+// stopword, not a single character, not a pure number - so the distinctive book
+// words drive the comparison.
+//
+// The source spelled this inline inside tokenize, which built a SET. Nothing taken
+// here needs the set (the scoring half that did was not copied); the three retained
+// callers ask "how many" and "is there one", so the predicate is the shared piece
+// and the set is not built at all. See CountSignificantWords and
+// hasSignificantToken - delta (7) in the header.
+func significantToken(w string) bool {
+	return len(w) >= 2 && !titleStopwords[w] && !isAllDigits(w)
+}
+
+// CountSignificantWords counts the tokens of s that carry meaning. It is the floor
+// test a caller applies before treating a series name as distinctive enough to
+// search titles for.
+func CountSignificantWords(s string) int {
+	n := 0
 	for _, w := range strings.FieldsFunc(strings.ToLower(s), notAlnum) {
-		if len(w) < 2 || titleStopwords[w] || isAllDigits(w) {
-			continue
+		if significantToken(w) {
+			n++
 		}
-		out[w] = struct{}{}
 	}
-	return out
+	return n
 }
 
 func notAlnum(r rune) bool {

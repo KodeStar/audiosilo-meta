@@ -110,8 +110,8 @@ func TestSeriesIntegrityFlagsAnOmnibusOnASingleSlot(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one omnibus-in-a-slot record, got %d: %+v", len(got), classOf(t, rep, ClassSeriesInteg))
 	}
-	if got[0].Have != "2" {
-		t.Errorf("have = %q, want the occupied position", got[0].Have)
+	if got[0].Propose.From != "2" {
+		t.Errorf("have = %q, want the occupied position", got[0].Propose.From)
 	}
 }
 
@@ -126,8 +126,8 @@ func TestSeriesIntegrityFlagsAMinorityLanguageMember(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one minority-language record, got %d", len(got))
 	}
-	if got[0].Want != "en" || got[0].Have != "de" {
-		t.Errorf("record = have %q want %q, expected de -> en", got[0].Have, got[0].Want)
+	if got[0].Propose.To != "en" || got[0].Propose.From != "de" {
+		t.Errorf("record = have %q want %q, expected de -> en", got[0].Propose.From, got[0].Propose.To)
 	}
 	if want := []string{"drei"}; !reflect.DeepEqual(workIDs(got[0]), want) {
 		t.Errorf("works = %v, want %v", workIDs(got[0]), want)
@@ -173,8 +173,8 @@ func TestSeriesIntegrityReportsADanglingMember(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one dangling-work record, got %d", len(got))
 	}
-	if got[0].Have != "nobody" {
-		t.Errorf("have = %q, want the missing work id", got[0].Have)
+	if got[0].Propose.From != "nobody" {
+		t.Errorf("have = %q, want the missing work id", got[0].Propose.From)
 	}
 }
 
@@ -199,7 +199,7 @@ func TestSeriesDupGroupsOneNameSpelledTwoWays(t *testing.T) {
 			if len(got[0].Series) != 2 {
 				t.Errorf("cluster cites %d series, want 2", len(got[0].Series))
 			}
-			if got[0].Canonical == "" {
+			if got[0].Propose.Target == "" {
 				t.Error("no canonical series proposed")
 			}
 		})
@@ -263,8 +263,8 @@ func TestSeriesParenReportsADecoratedNameWithNoSibling(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one decorated-only record, got %d", len(got))
 	}
-	if got[0].Want != "365 Days" {
-		t.Errorf("want = %q, expected the undecorated name", got[0].Want)
+	if got[0].Propose.To != "365 Days" {
+		t.Errorf("want = %q, expected the undecorated name", got[0].Propose.To)
 	}
 }
 
@@ -285,7 +285,9 @@ func TestSeriesIntegrityReportsAnEmptySeries(t *testing.T) {
 	ix := newIndex(&model.Catalog{Series: []*model.Series{{
 		ID: "empty", Name: "Empty Chronicles", License: "CC0-1.0",
 	}}})
-	got := detectSeriesIntegrity(ix).sorted()
+	f := detectSeriesIntegrity(ix)
+	f.finalize()
+	got := f.rows
 	if len(got) != 1 || got[0].Subclass != sEmpty {
 		t.Fatalf("want one empty-series record, got %+v", got)
 	}

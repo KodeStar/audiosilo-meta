@@ -4,6 +4,8 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
 
 // baseline is the minimum a fixture needs so pkg/check finds every credit it
@@ -47,13 +49,13 @@ func TestWorkTitleDetectsEachDecoration(t *testing.T) {
 		subclass string
 		want     string
 	}{
-		{"trailing bracketed edition marker", "mageling", "Mageling (Unabridged)", decEdition, "Mageling"},
-		{"bare edition marker", "amelia", "Amelia Unabridged", decEdition, "Amelia"},
-		{"embedded volume marker", "pomme-vol-1", "10 Trésors de Pomme d'Api - Vol. 1", decVolume, "10 Trésors de Pomme d'Api"},
-		{"comma volume marker", "wimpy-book-5", "Diary of a Wimpy Kid, Book 5", decVolume, "Diary of a Wimpy Kid"},
-		{"bracketed translation suffix", "eric-mundodisco", "Eric (Mundodisco 9) [Eric (Discworld)]", decBracketSuffix, "Eric"},
-		{"genre subtitle", "chaos-omnibus", "Chaos Omnibus: A GameLit Dark Adventure Series", decGenreSubtitle, "Chaos Omnibus"},
-		{"trailing separator", "superfoods", "30 Proven Natural Superfoods -", decTrailingPunct, "30 Proven Natural Superfoods"},
+		{"trailing bracketed edition marker", "mageling", "Mageling (Unabridged)", titlerule.DecEdition, "Mageling"},
+		{"stacked edition markers", "stacked-ed", "Stacked (Unabridged)(Abridged)", titlerule.DecEdition, "Stacked"},
+		{"embedded volume marker", "pomme-vol-1", "10 Trésors de Pomme d'Api - Vol. 1", titlerule.DecVolume, "10 Trésors de Pomme d'Api"},
+		{"comma volume marker", "wimpy-book-5", "Diary of a Wimpy Kid, Book 5", titlerule.DecVolume, "Diary of a Wimpy Kid"},
+		{"bracketed translation suffix", "eric-mundodisco", "Eric (Mundodisco 9) [Eric (Discworld)]", titlerule.DecBracketSuffix, "Eric"},
+		{"genre subtitle", "chaos-omnibus", "Chaos Omnibus: A GameLit Dark Adventure Series", titlerule.DecGenreSubtitle, "Chaos Omnibus"},
+		{"trailing separator", "superfoods", "30 Proven Natural Superfoods -", titlerule.DecTrailingPunct, "30 Proven Natural Superfoods"},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
@@ -62,16 +64,36 @@ func TestWorkTitleDetectsEachDecoration(t *testing.T) {
 			if len(got) != 1 {
 				t.Fatalf("want one %s record, got %d (all: %+v)", c.subclass, len(got), classOf(t, rep, ClassWorkTitle))
 			}
-			if got[0].Want != c.want {
-				t.Errorf("proposed title = %q, want %q", got[0].Want, c.want)
+			if got[0].Propose.To != c.want {
+				t.Errorf("proposed title = %q, want %q", got[0].Propose.To, c.want)
 			}
-			if got[0].Have != c.title {
-				t.Errorf("have = %q, want the recorded title %q", got[0].Have, c.title)
+			if got[0].Propose.From != c.title {
+				t.Errorf("have = %q, want the recorded title %q", got[0].Propose.From, c.title)
 			}
-			if got[0].Field != "title" {
-				t.Errorf("field = %q, want title", got[0].Field)
+			if got[0].Propose.Field != "title" {
+				t.Errorf("field = %q, want title", got[0].Propose.Field)
 			}
 		})
+	}
+}
+
+// series-name is the class HEADLINE - 35k of the 47k records - and had no fixture
+// of its own: a work whose title spells out the series it is a member of.
+func TestWorkTitleDetectsAnEmbeddedSeriesName(t *testing.T) {
+	rep := runFixture(t, fixture(t, map[string]string{
+		"works/ha/hammered/work.json":            workJSON(t, "hammered", "Hammered: The Druid Tales"),
+		"works/ha/hammered/recordings/luke.json": recJSON(t, "luke", "hammered"),
+		"series/dr/druid-tales.json":             seriesJSON(t, "druid-tales", "The Druid Tales", "hammered@3"),
+	}))
+	got := subclassOf(t, rep, ClassWorkTitle, titlerule.DecSeriesName)
+	if len(got) != 1 {
+		t.Fatalf("want one series-name record, got %d (all: %+v)", len(got), classOf(t, rep, ClassWorkTitle))
+	}
+	if got[0].Propose.To != "Hammered" {
+		t.Errorf("proposed title = %q, want the series decoration removed", got[0].Propose.To)
+	}
+	if got[0].Propose.Op != OpRetitle || got[0].Propose.Advisory {
+		t.Errorf("propose = %+v, want a plain retitle", got[0].Propose)
 	}
 }
 
@@ -85,15 +107,15 @@ func TestWorkTitleDetectsAnArticleSeriesPrefix(t *testing.T) {
 		"works/ho/how-to-be-a-hero/recordings/b.json":    recJSON(t, "b", "how-to-be-a-hero"),
 		"series/ho/httyd.json":                           seriesJSON(t, "httyd", "How to Train Your Dragon", "how-to-be-a-hero@1"),
 	}))
-	got := subclassOf(t, rep, ClassWorkTitle, decArticleSeries)
+	got := subclassOf(t, rep, ClassWorkTitle, titlerule.DecArticleSeries)
 	if len(got) != 1 {
 		t.Fatalf("want one article-series-prefix record, got %d", len(got))
 	}
 	if got[0].Key != "a-httyd-heros-guide" {
 		t.Errorf("key = %q", got[0].Key)
 	}
-	if got[0].Want != "A Hero's Guide to Deadly Dragons" {
-		t.Errorf("proposed title = %q", got[0].Want)
+	if got[0].Propose.To != "A Hero's Guide to Deadly Dragons" {
+		t.Errorf("proposed title = %q", got[0].Propose.To)
 	}
 	// The same record is a slug candidate too, in F-HYGIENE, where no rename is
 	// proposed - only flagged.
@@ -104,14 +126,33 @@ func TestWorkTitleDetectsAnArticleSeriesPrefix(t *testing.T) {
 
 // A leading article that is part of the title must survive the proposal: the
 // tail-only stopword trim exists for exactly this.
+// A proposal that reduces a title to packaging names no book, so the record is
+// withheld rather than proposing nonsense - while the same residual is still the
+// right W-DUP key.
+func TestWorkTitleWithholdsAPackagingOnlyProposal(t *testing.T) {
+	rep := runFixture(t, fixture(t, map[string]string{
+		"works/da/dave-16-20/work.json":         workJSON(t, "dave-16-20", "The Legend of Dave the Villager, Books 16-20"),
+		"works/da/dave-16-20/recordings/a.json": recJSON(t, "a", "dave-16-20"),
+		"works/da/dave-one/work.json":           workJSON(t, "dave-one", "Dave the Digger"),
+		"works/da/dave-one/recordings/b.json":   recJSON(t, "b", "dave-one"),
+		"series/le/dave.json":                   seriesJSON(t, "dave", "Legend of Dave the Villager", "dave-one@1"),
+	}))
+	for _, f := range classOf(t, rep, ClassWorkTitle) {
+		if f.Key != "dave-16-20" {
+			continue
+		}
+		t.Errorf("proposed a packaging-only retitle: %q -> %q", f.Propose.From, f.Propose.To)
+	}
+}
+
 func TestWorkTitleKeepsALeadingArticleInItsProposal(t *testing.T) {
 	rep := runFixture(t, oneWork(t, "a-deadly-cliche", "A Deadly Cliché:"))
-	got := subclassOf(t, rep, ClassWorkTitle, decTrailingPunct)
+	got := subclassOf(t, rep, ClassWorkTitle, titlerule.DecTrailingPunct)
 	if len(got) != 1 {
 		t.Fatalf("want one record, got %d", len(got))
 	}
-	if got[0].Want != "A Deadly Cliché" {
-		t.Errorf("proposed title = %q, want the article kept", got[0].Want)
+	if got[0].Propose.To != "A Deadly Cliché" {
+		t.Errorf("proposed title = %q, want the article kept", got[0].Propose.To)
 	}
 }
 
@@ -137,20 +178,21 @@ func TestWorkTitleListsEveryMarkerItFound(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one record, got %d", len(got))
 	}
-	if want := []string{decEdition, decVolume}; !reflect.DeepEqual(got[0].Markers, want) {
+	// Priority order, not alphabetical: the table's order IS the ordering.
+	if want := []string{titlerule.DecVolume, titlerule.DecEdition}; !reflect.DeepEqual(got[0].Markers, want) {
 		t.Errorf("markers = %v, want %v", got[0].Markers, want)
 	}
-	// The subclass is the most specific of them, by markerPriority.
-	if got[0].Subclass != decVolume {
-		t.Errorf("subclass = %q, want %q", got[0].Subclass, decVolume)
+	if got[0].Subclass != titlerule.DecVolume {
+		t.Errorf("subclass = %q, want %q", got[0].Subclass, titlerule.DecVolume)
 	}
 }
 
 func TestWorkTitleNeverProposesASlug(t *testing.T) {
 	rep := runFixture(t, oneWork(t, "mageling", "Mageling (Unabridged)"))
 	for _, f := range classOf(t, rep, ClassWorkTitle) {
-		if f.Field != "title" {
-			t.Errorf("W-TITLE proposed a change to %q; the class is title-only", f.Field)
+		if f.Propose.Op != OpRetitle || f.Propose.Field != "title" {
+			t.Errorf("W-TITLE proposed op %q on field %q; the class is title-only",
+				f.Propose.Op, f.Propose.Field)
 		}
 	}
 }
@@ -167,8 +209,8 @@ func TestWorkNoSeriesInfersSeriesAndPosition(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one series-and-position record, got %d: %+v", len(got), classOf(t, rep, ClassWorkNoSeries))
 	}
-	if got[0].Key != "chaos-seeds-book-3" || got[0].Want != "3" {
-		t.Errorf("record = key %q want %q, expected chaos-seeds-book-3 / 3", got[0].Key, got[0].Want)
+	if got[0].Key != "chaos-seeds-book-3" || got[0].Propose.To != "3" {
+		t.Errorf("record = key %q want %q, expected chaos-seeds-book-3 / 3", got[0].Key, got[0].Propose.To)
 	}
 	if len(got[0].Series) != 1 || got[0].Series[0].ID != "chaos-seeds" {
 		t.Errorf("the inferred series is not cited: %+v", got[0].Series)
@@ -187,8 +229,13 @@ func TestWorkNoSeriesNotesAnOccupiedPosition(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one record, got %d", len(got))
 	}
-	if !strings.Contains(strings.Join(got[0].Notes, " "), "already held by founding") {
-		t.Errorf("the occupied position is not named: %v", got[0].Notes)
+	// An occupied slot downgrades the proposal to an advisory review and names the
+	// holder in its reason - typed, so a repair pass cannot apply it by accident.
+	if got[0].Propose.Op != OpReview || !got[0].Propose.Advisory {
+		t.Errorf("propose = %+v, want an advisory review", got[0].Propose)
+	}
+	if !strings.Contains(got[0].Propose.Reason, "already held by founding") {
+		t.Errorf("the occupied position is not named: %q", got[0].Propose.Reason)
 	}
 }
 
@@ -211,8 +258,8 @@ func TestWorkNoSeriesReportsAPositionWithNoSeries(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one position-only record, got %d: %+v", len(got), classOf(t, rep, ClassWorkNoSeries))
 	}
-	if got[0].Want != "4" {
-		t.Errorf("want = %q, expected 4", got[0].Want)
+	if got[0].Propose.To != "4" {
+		t.Errorf("want = %q, expected 4", got[0].Propose.To)
 	}
 }
 
@@ -271,21 +318,21 @@ func TestAuditCleanTitleDropsADanglingTail(t *testing.T) {
 		{"The One and Only", "", "The One and Only"},
 	}
 	for _, c := range cases {
-		if got := auditCleanTitle(c.title, c.series); got != c.want {
-			t.Errorf("auditCleanTitle(%q, %q) = %q, want %q", c.title, c.series, got, c.want)
+		if got := titlerule.Clean(c.title, c.series); got != c.want {
+			t.Errorf("titlerule.Clean(%q, %q) = %q, want %q", c.title, c.series, got, c.want)
 		}
 	}
 }
 
 func TestTitleCarriesIdentity(t *testing.T) {
 	for _, s := range []string{"Hammered", "Two Tales", "Level Nine Wizard"} {
-		if !titleCarriesIdentity(s) {
-			t.Errorf("titleCarriesIdentity(%q) = false, want true", s)
+		if !titlerule.CarriesIdentity(s) {
+			t.Errorf("titlerule.CarriesIdentity(%q) = false, want true", s)
 		}
 	}
 	for _, s := range []string{"Omnibus", "Box Set", "The Complete Collection", "Level 2 Lessons 21-25"} {
-		if titleCarriesIdentity(s) {
-			t.Errorf("titleCarriesIdentity(%q) = true, want false", s)
+		if titlerule.CarriesIdentity(s) {
+			t.Errorf("titlerule.CarriesIdentity(%q) = true, want false", s)
 		}
 	}
 }

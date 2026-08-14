@@ -36,9 +36,10 @@ func TestHygieneReportsTheSchemaUnreachableFieldGaps(t *testing.T) {
 	}
 	ix := newIndex(&model.Catalog{Works: []*model.Work{work}})
 	f, _ := detectHygiene(ix)
+	f.finalize()
 
 	byClass := map[string]int{}
-	for _, r := range f.sorted() {
+	for _, r := range f.rows {
 		byClass[r.Subclass]++
 	}
 	for _, want := range []string{hygWorkNoLanguage, hygWorkNoAuthors, hygRecNoNarrators, hygRecNoIdentifier} {
@@ -81,8 +82,8 @@ func TestHygieneReportsADoubledSlugToken(t *testing.T) {
 		t.Errorf("the repeated run is not named: %v", got[0].Notes)
 	}
 	// A slug rule never proposes the rename: a slug is identity.
-	if got[0].Want != "" {
-		t.Errorf("want = %q; a doubled-token slug rule proposes no rename", got[0].Want)
+	if got[0].Propose.To != "" {
+		t.Errorf("want = %q; a doubled-token slug rule proposes no rename", got[0].Propose.To)
 	}
 }
 
@@ -117,8 +118,8 @@ func TestHygieneReportsADanglingLeadingArticle(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one record, got %d: %+v", len(got), classOf(t, rep, ClassHygiene))
 	}
-	if got[0].Want != "mageling" {
-		t.Errorf("want = %q, expected the slug without the article", got[0].Want)
+	if got[0].Propose.To != "mageling" {
+		t.Errorf("want = %q, expected the slug without the article", got[0].Propose.To)
 	}
 }
 
@@ -130,17 +131,17 @@ func TestHygieneCountsTheAddedAtSplitWithoutListingIt(t *testing.T) {
 		"works/xx/stamped/recordings/b.json": withAddedAt(t, recJSON(t, "b", "stamped"), "2026-01-01T10:00:00+00:00"),
 	})
 	rep := runFixture(t, files)
-	if rep.Stats.WorkAddedDate != 1 || rep.Stats.WorkAddedStamp != 1 {
+	if rep.Stats.Works.Date != 1 || rep.Stats.Works.Stamp != 1 {
 		t.Errorf("work added_at split = %d date / %d stamp, want 1 / 1",
-			rep.Stats.WorkAddedDate, rep.Stats.WorkAddedStamp)
+			rep.Stats.Works.Date, rep.Stats.Works.Stamp)
 	}
-	if rep.Stats.RecAddedDate != 1 || rep.Stats.RecAddedStamp != 1 {
+	if rep.Stats.Recordings.Date != 1 || rep.Stats.Recordings.Stamp != 1 {
 		t.Errorf("recording added_at split = %d date / %d stamp, want 1 / 1",
-			rep.Stats.RecAddedDate, rep.Stats.RecAddedStamp)
+			rep.Stats.Recordings.Date, rep.Stats.Recordings.Stamp)
 	}
 	// It is a count-only advisory: no NDJSON record names an added_at.
 	for _, f := range classOf(t, rep, ClassHygiene) {
-		if strings.Contains(f.Field, "added_at") {
+		if strings.Contains(f.Propose.Field, "added_at") {
 			t.Errorf("added_at produced a per-record finding: %+v", f)
 		}
 	}
@@ -203,23 +204,17 @@ func TestRefSidecarReportsAnOrphanSidecar(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one orphan-work record, got %d: %+v", len(got), classOf(t, rep, ClassRefSidecar))
 	}
-	if got[0].Have != "ghost-work" {
-		t.Errorf("have = %q, want the missing work slug", got[0].Have)
+	if got[0].Propose.From != "ghost-work" {
+		t.Errorf("have = %q, want the missing work slug", got[0].Propose.From)
 	}
 }
 
-func TestAddedAtShapeReadsTheTwoAcceptedSpellings(t *testing.T) {
-	cases := []struct {
-		in   string
-		want int
-	}{
-		{"", addedNone},
-		{"2026-08-14", addedDate},
-		{"2026-08-14T10:11:12+01:00", addedStamp},
+func TestAddedAtCountsReadTheTwoAcceptedSpellings(t *testing.T) {
+	var c addedAtCounts
+	for _, v := range []string{"", "2026-08-14", "2026-08-14T10:11:12+01:00"} {
+		c.observe(v)
 	}
-	for _, c := range cases {
-		if got := addedAtShape(c.in); got != c.want {
-			t.Errorf("addedAtShape(%q) = %d, want %d", c.in, got, c.want)
-		}
+	if c.None != 1 || c.Date != 1 || c.Stamp != 1 {
+		t.Errorf("addedAtCounts = %+v, want one of each", c)
 	}
 }

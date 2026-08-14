@@ -28,8 +28,8 @@ func TestWorkDupFindsADecoratedTitleAgainstItsModeledVolume(t *testing.T) {
 	}
 	// The modeled member is the canonical one: it is the record that already has a
 	// series membership and the cleaner title.
-	if got[0].Canonical != "hammered" {
-		t.Errorf("canonical = %q, want %q", got[0].Canonical, "hammered")
+	if got[0].Propose.Target != "hammered" {
+		t.Errorf("canonical = %q, want %q", got[0].Propose.Target, "hammered")
 	}
 	if !strings.Contains(strings.Join(got[0].Notes, " "), "embedded-series") {
 		t.Errorf("the cluster does not say it rests on a series name embedded in a title: %v", got[0].Notes)
@@ -148,7 +148,7 @@ func TestWorkDupStatesARuntimeGapWithoutWithholdingTheProposal(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one cluster, got %d", len(got))
 	}
-	if got[0].Canonical == "" {
+	if got[0].Propose.Target == "" {
 		t.Error("a runtime gap must not withhold the merge proposal")
 	}
 	if !strings.Contains(strings.Join(got[0].Notes, " "), "runtime gap") {
@@ -196,8 +196,8 @@ func TestWorkDupWithholdsAMergeWhenTheTitlesStateDifferentVolumes(t *testing.T) 
 	if len(got) != 1 {
 		t.Fatalf("want one volume-conflict record, got %d", len(got))
 	}
-	if got[0].Canonical != "" {
-		t.Errorf("a volume conflict must name no canonical member, got %q", got[0].Canonical)
+	if got[0].Propose.Target != "" {
+		t.Errorf("a volume conflict must name no canonical member, got %q", got[0].Propose.Target)
 	}
 	if !strings.Contains(strings.Join(got[0].Notes, " "), "volume numbers stated") {
 		t.Errorf("the conflicting volume numbers are not stated: %v", got[0].Notes)
@@ -224,8 +224,8 @@ func TestWorkDupFindsASeriesVolumeCollision(t *testing.T) {
 	if want := []string{"chaos-seeds-book-1", "founding"}; !reflect.DeepEqual(workIDs(got[0]), want) {
 		t.Errorf("pair = %v, want %v", workIDs(got[0]), want)
 	}
-	if got[0].Canonical != "founding" {
-		t.Errorf("canonical = %q, want the modeled member", got[0].Canonical)
+	if got[0].Propose.Target != "founding" {
+		t.Errorf("canonical = %q, want the modeled member", got[0].Propose.Target)
 	}
 }
 
@@ -278,29 +278,7 @@ func TestCanonicalMemberPrefersTheModeledRecord(t *testing.T) {
 	}
 	// The sidecar outranks the extra recording: a spoiler layer is the expensive
 	// thing to re-point.
-	if got[0].Canonical != "plain" {
-		t.Errorf("canonical = %q, want the record carrying the sidecar", got[0].Canonical)
-	}
-}
-
-func TestOneEditApartIsExactlyOneEdit(t *testing.T) {
-	cases := []struct {
-		a, b string
-		want bool
-	}{
-		{"rachelrenerussell", "rachelreneerussell", true}, // one insertion
-		{"rachelreneerussell", "rachelrenerussell", true}, // ...and its mirror
-		{"aattanasio", "aaattanasio", true},               // one insertion
-		{"agHoward", "arHoward", true},                    // one substitution
-		{"abcdefgh", "abcdfegh", true},                    // one transposition
-		{"abcdefgh", "abcdefgh", false},                   // zero edits is not one
-		{"abcdefgh", "abcdefij", false},                   // two substitutions
-		{"abcdefgh", "abcdefghij", false},                 // two insertions
-		{"", "a", true},                                   // degenerate but consistent
-	}
-	for _, c := range cases {
-		if got := oneEditApart(c.a, c.b); got != c.want {
-			t.Errorf("oneEditApart(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
-		}
+	if got[0].Propose.Target != "plain" {
+		t.Errorf("canonical = %q, want the record carrying the sidecar", got[0].Propose.Target)
 	}
 }

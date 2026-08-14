@@ -1,6 +1,8 @@
 package audit
 
 import (
+	"cmp"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -27,6 +29,58 @@ var classOrder = []string{
 	ClassWorkDup, ClassWorkTitle, ClassWorkNoSeries, ClassSeriesInteg,
 	ClassSeriesDup, ClassSeriesParen, ClassPersonDup, ClassRefSidecar,
 	ClassHygiene, ClassLoader,
+}
+
+// The proposal OPS: what a repair pass would DO about a finding. They are the
+// machine-readable half of a record, and the prose in a report is rendered from
+// them (report.go's renderAction) rather than written beside them - so a detector
+// states an intent once and cannot describe one thing while proposing another.
+//
+// OpReview is the honest answer wherever a mechanical rule may not decide, and it
+// always travels with Advisory set and a Note saying what a human must judge.
+const (
+	OpMergeWorks      = "merge-works"       // fold the cluster onto Target
+	OpMergeSeries     = "merge-series"      // fold the members onto Target, then delete the empty spelling
+	OpRetitle         = "retitle-work"      // set Field on Target from From to To
+	OpAddSeriesMember = "add-series-member" // add Target to Series at To
+	OpRestatePosition = "restate-position"  // rewrite a membership's position
+	OpDropMembership  = "drop-membership"   // remove a membership (or restore what it names)
+	OpFillField       = "fill-field"        // state a fact the record is missing
+	OpRenameCandidate = "rename-candidate"  // a slug a rename pass should consider; never applied on this evidence alone
+	OpRepointSidecar  = "repoint-sidecar"   // move a works-community entry onto the right work
+	OpReview          = "review"            // no mechanical action: a human decides
+	OpNone            = ""                  // a pass-through record (LOADER)
+)
+
+// Proposal is the typed repair a finding proposes.
+//
+// TYPED, not prose, because two consumers read it: a human skimming SUMMARY.md and
+// the repair pass that will act on the report. A repair pass parsing English out of
+// an Action string would be re-deriving what the detector already knew, and the two
+// would drift the first time a message was reworded. The prose is DERIVED (see
+// report.go), so there is one statement of intent.
+type Proposal struct {
+	// Op is what to do; see the Op* constants. Empty for a pass-through record.
+	Op string `json:"op,omitempty"`
+	// Target is the id the op acts ON: the cluster member to keep, the work to
+	// retitle, the series to fold onto, the membership's work.
+	Target string `json:"target,omitempty"`
+	// Others are the ids the op acts on BESIDE the target (a cluster's losers).
+	Others []string `json:"others,omitempty"`
+	// Series names the series a membership op concerns.
+	Series string `json:"series,omitempty"`
+	// Field/From/To describe a single-field change. To is empty when the detector
+	// deliberately proposes no replacement value.
+	Field string `json:"field,omitempty"`
+	From  string `json:"from,omitempty"`
+	To    string `json:"to,omitempty"`
+	// Advisory marks a proposal a mechanical pass must NOT apply. It is set for
+	// every OpReview, and for the classes that are advisory throughout.
+	Advisory bool `json:"advisory,omitempty"`
+	// Reason states, in one clause, WHY - the thing a human needs in order to
+	// decide, or the risk an applier must respect. It is rendered into the action
+	// prose after the op's own sentence.
+	Reason string `json:"reason,omitempty"`
 }
 
 // WorkRef is a work as an audit record cites it. Recordings is always written
@@ -87,47 +141,36 @@ type Finding struct {
 	Class    string `json:"class"`
 	Subclass string `json:"subclass,omitempty"`
 	Key      string `json:"key"`
-	// Canonical is the member of a cluster the audit proposes keeping.
-	Canonical string      `json:"canonical,omitempty"`
-	Works     []WorkRef   `json:"works,omitempty"`
-	People    []PersonRef `json:"people,omitempty"`
-	Series    []SeriesRef `json:"series,omitempty"`
+	// Propose is the typed repair. Action below is rendered from it.
+	Propose Proposal `json:"propose"`
+	// Action is the proposal in words, filled in by the report writer from
+	// Propose. A detector never sets it.
+	Action string `json:"action,omitempty"`
+
+	Works  []WorkRef   `json:"works,omitempty"`
+	People []PersonRef `json:"people,omitempty"`
+	Series []SeriesRef `json:"series,omitempty"`
 	// Recording is the recording id a recording-scoped finding is about.
 	Recording string `json:"recording,omitempty"`
-	// Markers lists every decoration a title carries, sorted, when a finding
-	// reports more than the one its subclass names.
+	// Markers lists every decoration a title carries, in priority order, when a
+	// finding reports more than the one its subclass names.
 	Markers []string `json:"markers,omitempty"`
-	// Field/Have/Want describe a single-field proposal ("title" / the recorded
-	// value / the proposed one).
-	Field string `json:"field,omitempty"`
-	Have  string `json:"have,omitempty"`
-	Want  string `json:"want,omitempty"`
-	// Action is the proposed repair, in words. The audit never applies it.
-	Action string `json:"action,omitempty"`
 	// Notes carry the evidence that is not a field: a runtime gap, a language
-	// split, why a proposal was withheld.
+	// split, which spellings a cluster holds.
 	Notes []string `json:"notes,omitempty"`
 }
 
 // findingLess orders two findings of one class deterministically. Every
 // tiebreaker is data, never insertion order.
-func findingLess(a, b Finding) bool {
-	if a.Subclass != b.Subclass {
-		return a.Subclass < b.Subclass
-	}
-	if a.Key != b.Key {
-		return a.Key < b.Key
-	}
-	if a.Recording != b.Recording {
-		return a.Recording < b.Recording
-	}
-	if a.Field != b.Field {
-		return a.Field < b.Field
-	}
-	if a.Have != b.Have {
-		return a.Have < b.Have
-	}
-	return a.Want < b.Want
+func findingLess(a, b Finding) int {
+	return cmp.Or(
+		cmp.Compare(a.Subclass, b.Subclass),
+		cmp.Compare(a.Key, b.Key),
+		cmp.Compare(a.Recording, b.Recording),
+		cmp.Compare(a.Propose.Field, b.Propose.Field),
+		cmp.Compare(a.Propose.From, b.Propose.From),
+		cmp.Compare(a.Propose.To, b.Propose.To),
+	)
 }
 
 // findings accumulates one class's records.
@@ -141,13 +184,19 @@ func (f *findings) add(fd Finding) {
 	f.rows = append(f.rows, fd)
 }
 
-// sorted returns the class's records in report order.
-func (f *findings) sorted() []Finding {
-	out := make([]Finding, len(f.rows))
-	copy(out, f.rows)
-	sort.SliceStable(out, func(i, j int) bool { return findingLess(out[i], out[j]) })
-	return out
+// finalize sorts the class's rows IN PLACE and renders each row's action prose
+// from its proposal. It runs once, at the end of analyze - the report writer and
+// the summary then read the same already-ordered slice instead of each taking a
+// sorted copy.
+func (f *findings) finalize() {
+	slices.SortStableFunc(f.rows, findingLess)
+	for i := range f.rows {
+		f.rows[i].Action = renderAction(f.rows[i].Propose)
+	}
 }
+
+// total is the number of records in a class.
+func (f *findings) total() int { return len(f.rows) }
 
 // counts returns the per-subclass record counts, subclasses sorted.
 func (f *findings) counts() []subclassCount {
@@ -168,15 +217,69 @@ type subclassCount struct {
 	Count    int
 }
 
+// groupBy buckets items by a key and returns the buckets plus their keys SORTED.
+//
+// Sorted keys are the whole point: every detector that groups then iterates has to
+// iterate in key order or the report depends on map iteration, and five detectors
+// had each spelled the same accumulate-and-sort by hand. An empty key is skipped -
+// every caller's key function returns "" for "this record cannot be grouped".
+func groupBy[T any](items []T, key func(T) string) (map[string][]T, []string) {
+	by := map[string][]T{}
+	for _, it := range items {
+		if k := key(it); k != "" {
+			by[k] = append(by[k], it)
+		}
+	}
+	keys := make([]string, 0, len(by))
+	for k := range by {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return by, keys
+}
+
+// allShareKey reports whether every member of a group has the same key - the test
+// a looser grouping applies before reporting a cluster the tighter one already did.
+func allShareKey[T any](group []T, key func(T) string) bool {
+	if len(group) < 2 {
+		return true
+	}
+	first := key(group[0])
+	for _, it := range group[1:] {
+		if key(it) != first {
+			return false
+		}
+	}
+	return true
+}
+
 // sortedUnique returns ss sorted with duplicates and empty strings removed. Every
 // list an audit record carries goes through it, which is most of what makes the
 // output deterministic.
+//
+// Small slices - which is nearly all of them, a work's authors or a cluster's ids -
+// skip the map entirely: sorting and compacting in place is cheaper than allocating
+// a set, and this is called several times per record over hundreds of thousands of
+// records.
 func sortedUnique(ss []string) []string {
 	if len(ss) == 0 {
 		return nil
 	}
-	seen := make(map[string]struct{}, len(ss))
 	out := make([]string, 0, len(ss))
+	if len(ss) <= smallSliceMax {
+		for _, s := range ss {
+			if s != "" {
+				out = append(out, s)
+			}
+		}
+		sort.Strings(out)
+		out = slices.Compact(out)
+		if len(out) == 0 {
+			return nil
+		}
+		return out
+	}
+	seen := make(map[string]struct{}, len(ss))
 	for _, s := range ss {
 		if s == "" {
 			continue
@@ -188,8 +291,16 @@ func sortedUnique(ss []string) []string {
 		out = append(out, s)
 	}
 	sort.Strings(out)
+	if len(out) == 0 {
+		return nil
+	}
 	return out
 }
+
+// smallSliceMax is the length below which sortedUnique dedupes by sorting rather
+// than by hashing. A work's authors, a cluster's members and a recording's ASINs
+// are all far under it.
+const smallSliceMax = 16
 
 // sortedInts returns ns sorted ascending, duplicates kept (two recordings of the
 // same runtime is evidence, not noise).
@@ -197,8 +308,7 @@ func sortedInts(ns []int) []int {
 	if len(ns) == 0 {
 		return nil
 	}
-	out := make([]int, len(ns))
-	copy(out, ns)
+	out := slices.Clone(ns)
 	sort.Ints(out)
 	return out
 }

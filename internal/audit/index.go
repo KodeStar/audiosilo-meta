@@ -5,6 +5,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -24,9 +27,11 @@ type index struct {
 
 	// memberships maps a work id to its series memberships, sorted by series id.
 	memberships map[string][]membership
-	// sidecarWorks is the set of work slugs the works-community family holds an
-	// entry for (either member).
-	sidecarWorks map[string]bool
+	// sidecars maps a work slug to the works-community members its entry holds
+	// ("characters", "recaps"), built in this one pass. Before it existed, naming a
+	// sidecar's members walked both catalogue slices per sidecar - the run's one
+	// genuine quadratic.
+	sidecars map[string][]string
 
 	// authorOf / narratorOf / creditedOn count a person's appearances, which is
 	// what tells a P-DUP triage pass which spelling to keep.
@@ -37,17 +42,16 @@ type index struct {
 	// seriesNameIdx resolves a series name embedded in free text.
 	seriesNameIdx *seriesNameIndex
 
-	// derivedCache memoizes the per-work title derivation (which series name the
-	// title is cleaned against, the decorations it carries, the cleaned title).
-	// Four detectors ask for it and the answer costs a series-name lookup, so
-	// deriving it once per work rather than once per question is most of the
-	// difference between a two-minute run and a five-minute one.
-	derivedCache map[string]*workDerived
-
 	// positions maps a series id to its slot -> work id map, keyed by
 	// positionKey so "02" and "2" are one slot and a range is not a slot at
 	// all. It answers the "the title says volume N" lookup.
 	positions map[string]map[string]string
+
+	// derivedCache memoizes the per-work title derivation. Four detectors ask for
+	// it and the answer costs a series-name lookup, a clean and a volume probe, so
+	// deriving it once per work rather than once per question is most of the
+	// difference between a two-minute run and a half-minute one.
+	derivedCache map[string]*workDerived
 }
 
 // membership is one work's place in one series.
@@ -63,7 +67,7 @@ func newIndex(cat *model.Catalog) *index {
 		personByID:   make(map[string]*model.Person, len(cat.People)),
 		seriesByID:   make(map[string]*model.Series, len(cat.Series)),
 		memberships:  map[string][]membership{},
-		sidecarWorks: map[string]bool{},
+		sidecars:     map[string][]string{},
 		authorOf:     map[string]int{},
 		narratorOf:   map[string]int{},
 		creditedOn:   map[string]int{},
@@ -71,9 +75,7 @@ func newIndex(cat *model.Catalog) *index {
 		derivedCache: make(map[string]*workDerived, len(cat.Works)),
 	}
 	for _, w := range cat.Works {
-		if _, dup := ix.workByID[w.ID]; !dup {
-			ix.workByID[w.ID] = w
-		}
+		ix.workByID[w.ID] = w
 		for _, a := range w.Authors {
 			ix.authorOf[a]++
 		}
@@ -87,14 +89,10 @@ func newIndex(cat *model.Catalog) *index {
 		}
 	}
 	for _, p := range cat.People {
-		if _, dup := ix.personByID[p.ID]; !dup {
-			ix.personByID[p.ID] = p
-		}
+		ix.personByID[p.ID] = p
 	}
 	for _, s := range cat.Series {
-		if _, dup := ix.seriesByID[s.ID]; !dup {
-			ix.seriesByID[s.ID] = s
-		}
+		ix.seriesByID[s.ID] = s
 		pos := make(map[string]string, len(s.Works))
 		for _, sw := range s.Works {
 			ix.memberships[sw.Work] = append(ix.memberships[sw.Work], membership{series: s.ID, position: sw.Position})
@@ -118,14 +116,29 @@ func newIndex(cat *model.Catalog) *index {
 			return ms[i].position < ms[j].position
 		})
 	}
+	// The sidecar members, in the order the report names them.
 	for _, c := range cat.Characters {
-		ix.sidecarWorks[c.Work] = true
+		ix.sidecars[c.Work] = append(ix.sidecars[c.Work], "characters")
 	}
 	for _, r := range cat.Recaps {
-		ix.sidecarWorks[r.Work] = true
+		ix.sidecars[r.Work] = append(ix.sidecars[r.Work], "recaps")
 	}
 	ix.seriesNameIdx = newSeriesNameIndex(cat.Series)
 	return ix
+}
+
+// hasSidecar reports whether the works-community family holds an entry for a work.
+func (ix *index) hasSidecar(workID string) bool { return len(ix.sidecars[workID]) > 0 }
+
+// sidecarWorkIDs is every work slug the works-community family keys an entry by,
+// sorted - the set the sidecar detector walks.
+func (ix *index) sidecarWorkIDs() []string {
+	out := make([]string, 0, len(ix.sidecars))
+	for id := range ix.sidecars {
+		out = append(out, id)
+	}
+	sort.Strings(out)
+	return out
 }
 
 // seriesNameOf returns a work's series NAME for title cleaning: the membership
@@ -144,7 +157,7 @@ func (ix *index) seriesNameOf(w *model.Work) (id, name string) {
 		if s == nil {
 			continue
 		}
-		if _, ok := seriesRefIn(lower, s.Name); ok {
+		if _, ok := titlerule.SeriesRefIn(lower, s.Name); ok {
 			return s.ID, s.Name
 		}
 	}
@@ -167,20 +180,28 @@ func (ix *index) membershipStrings(workID string) []string {
 	return out
 }
 
-// workRef builds the full evidence citation for a work.
-func (ix *index) workRef(w *model.Work, cleaned string) WorkRef {
-	ref := WorkRef{
+// workBrief cites a work without the recording-level evidence, for the classes
+// that name a work rather than compare two.
+func (ix *index) workBrief(w *model.Work) WorkRef {
+	return WorkRef{
 		ID:          w.ID,
 		Title:       w.Title,
 		Subtitle:    w.Subtitle,
-		Cleaned:     cleaned,
 		Authors:     sortedUnique(w.Authors),
 		Language:    w.Language,
 		Series:      ix.membershipStrings(w.ID),
 		Recordings:  len(w.Recordings),
-		Sidecar:     ix.sidecarWorks[w.ID],
+		Sidecar:     ix.hasSidecar(w.ID),
 		SourceTypes: sourceTypes(w.Sources),
 	}
+}
+
+// workRef is workBrief PLUS the recording-level evidence a duplicate cluster is
+// judged on. Composing rather than restating it is what keeps the two citations
+// from drifting: a field added to a brief reaches the full ref for free.
+func (ix *index) workRef(w *model.Work, cleaned string) WorkRef {
+	ref := ix.workBrief(w)
+	ref.Cleaned = cleaned
 	var nars, asins []string
 	var runtimes []int
 	for _, r := range w.Recordings {
@@ -198,20 +219,16 @@ func (ix *index) workRef(w *model.Work, cleaned string) WorkRef {
 	return ref
 }
 
-// workBrief is workRef without the recording-level evidence, for the classes that
-// cite a work rather than compare two.
-func (ix *index) workBrief(w *model.Work) WorkRef {
-	return WorkRef{
-		ID:          w.ID,
-		Title:       w.Title,
-		Subtitle:    w.Subtitle,
-		Authors:     sortedUnique(w.Authors),
-		Language:    w.Language,
-		Series:      ix.membershipStrings(w.ID),
-		Recordings:  len(w.Recordings),
-		Sidecar:     ix.sidecarWorks[w.ID],
-		SourceTypes: sourceTypes(w.Sources),
+// worksBrief cites a list of work ids, silently skipping the ones the catalogue
+// does not hold (a dangling reference is its own finding).
+func (ix *index) worksBrief(ids []string) []WorkRef {
+	var out []WorkRef
+	for _, id := range sortedUnique(ids) {
+		if w := ix.workByID[id]; w != nil {
+			out = append(out, ix.workBrief(w))
+		}
 	}
+	return out
 }
 
 func (ix *index) personRef(p *model.Person) PersonRef {
@@ -272,11 +289,56 @@ func strictMajority(counts map[string]int) string {
 	return best
 }
 
-// authorKey is a work's author set as a comparison key: the ids sorted and
-// joined, so "same authors" is an exact set equality and never an ordering.
-func authorKey(authors []string) string {
-	return strings.Join(sortedUnique(authors), "+")
+// sameIdentity reports whether two works are ONE work under the project's identity
+// rule, through pkg/check's exported restatement of it
+// (IdentityEqualWorks -> the importer's matchWork, drift-guarded on the importer
+// side).
+//
+// It replaces an exact author-SET equality, which structurally missed the shape the
+// identity rule exists for: a work forks in two when one edition lists a
+// contributor in its author column and another lists them as a role credit, so
+// "le-sang-des-elfes" and "le-sang-des-elfes-andrzej-sapkowski" are one book whose
+// author lists are NOT equal. There were ~381 such pairs in the seeded tree, and an
+// audit whose duplicate rule disagreed with the importer's own identity rule about
+// what one work is would be reporting against a definition nothing else uses.
+func sameIdentity(a, b *model.Work) bool { return check.IdentityEqualWorks(a, b) }
+
+// identityKey groups works that COULD be identity-equal cheaply, so the pairwise
+// rule above is only asked inside a group. It is the author set with every
+// role-credited contributor removed - the reduced set the identity rule compares -
+// so a work and its fork land together, and it is deliberately not a substitute for
+// the pairwise test (nested sets can differ and still match).
+func identityKey(w *model.Work) string {
+	if len(w.Credits) == 0 {
+		return strings.Join(sortedUnique(w.Authors), "+")
+	}
+	credited := make(map[string]bool, len(w.Credits))
+	for _, c := range w.Credits {
+		credited[c.Person] = true
+	}
+	kept := make([]string, 0, len(w.Authors))
+	for _, a := range w.Authors {
+		if !credited[a] {
+			kept = append(kept, a)
+		}
+	}
+	if len(kept) == 0 {
+		// Every author is role-credited: the identity rule falls back to the whole
+		// list, and so must the key, or the work would group with every other
+		// authorless one.
+		return strings.Join(sortedUnique(w.Authors), "+")
+	}
+	return strings.Join(sortedUnique(kept), "+")
 }
+
+// languagesCompatible mirrors pkg/check's rule of the same name (and the
+// importer's langCompatible behind it): an UNKNOWN language on either side never
+// separates two works.
+//
+// The audit read this wrong at first, bucketing language=="" as a cluster of its
+// own - so a work missing its language could never meet the twin it duplicates,
+// which is exactly the record most likely to have one.
+func languagesCompatible(a, b string) bool { return a == "" || b == "" || a == b }
 
 func sourceTypes(ss []model.Source) []string {
 	if len(ss) == 0 {
@@ -292,12 +354,12 @@ func sourceTypes(ss []model.Source) []string {
 // seriesNameIndex resolves "does this text name a series we hold" without
 // comparing every text against all 45k series names.
 //
-// It indexes every SPELLING of every series name (seriesForms - the same list
-// stripSeries removes, so a form that links is a form that strips) by the form's
-// first TWO words, and a lookup probes only the buckets the text's own adjacent
-// word pairs name, comparing each candidate as a PREFIX at that pair's offset
-// rather than scanning the whole text for it. That turns a 280k x 45k product
-// into a handful of failed byte compares per title.
+// It indexes every SPELLING of every series name (titlerule.SeriesForms - the same
+// list stripSeries removes, so a form that links is a form that strips) by the
+// form's first TWO words, and a lookup probes only the buckets the text's own
+// adjacent word pairs name, comparing each candidate as a PREFIX at that pair's
+// offset rather than scanning the whole text for it. That turns a 280k x 45k
+// product into a handful of failed byte compares per title.
 //
 // The two-word key is what makes it affordable rather than merely bounded: keyed
 // by the first word alone, a common one ("the", "dragon") collects hundreds of
@@ -331,25 +393,27 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 	// Fold every form first, so an ambiguous key (two different series spelling a
 	// form the same way) can be dropped before the index is built.
 	type entry struct {
-		forms []seriesForm
+		form  seriesForm
 		owned map[string]struct{} // the series ids spelling this form
 	}
 	byKey := map[string]*entry{}
 	for _, s := range all {
-		for _, form := range seriesForms(s.Name) {
-			if len(tokenize(form)) < minSeriesFormWords {
+		for _, form := range titlerule.SeriesForms(s.Name) {
+			if titlerule.CountSignificantWords(form) < minSeriesFormWords {
 				continue
 			}
-			key := foldKey(form)
+			key := titlerule.FoldKey(form)
 			if key == "" {
 				continue
 			}
 			e := byKey[key]
 			if e == nil {
-				e = &entry{owned: map[string]struct{}{}}
+				e = &entry{
+					form:  seriesForm{form: form, lower: strings.ToLower(form), series: s.ID},
+					owned: map[string]struct{}{},
+				}
 				byKey[key] = e
 			}
-			e.forms = append(e.forms, seriesForm{form: form, lower: strings.ToLower(form), series: s.ID})
 			e.owned[s.ID] = struct{}{}
 		}
 	}
@@ -364,12 +428,9 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 		if len(e.owned) != 1 {
 			continue // ambiguous: two series spell this form identically
 		}
-		f := e.forms[0]
-		p := firstPair(f.lower)
-		if p == "" {
-			continue
+		if p := firstPair(e.form.lower); p != "" {
+			idx.byPair[p] = append(idx.byPair[p], e.form)
 		}
-		idx.byPair[p] = append(idx.byPair[p], f)
 	}
 	// Longest form first inside a bucket, so a lookup returns the most specific
 	// spelling it can match; slug order breaks a length tie.
@@ -397,14 +458,14 @@ type wordAt struct {
 	word string
 }
 
-// lowerWords splits an already-lowered string into its alphanumeric words with
-// offsets. It is notAlnum's splitter written to keep the offsets, which
-// strings.FieldsFunc discards.
+// lowerWords splits an already-lowered string into its alphanumeric ASCII words
+// with offsets, the same partition titlerule's tokenizer makes but keeping the
+// offsets strings.FieldsFunc discards.
 func lowerWords(lower string) []wordAt {
 	var out []wordAt
 	start := -1
 	for i := 0; i < len(lower); i++ {
-		if !notAlnum(rune(lower[i])) {
+		if isLowerAlnum(lower[i]) {
 			if start < 0 {
 				start = i
 			}
@@ -419,6 +480,10 @@ func lowerWords(lower string) []wordAt {
 		out = append(out, wordAt{off: start, word: lower[start:]})
 	}
 	return out
+}
+
+func isLowerAlnum(c byte) bool {
+	return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')
 }
 
 // firstPair is the bucket key of an already-lowered form: its first two
@@ -447,7 +512,7 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 			}
 			// A word start is a left boundary by construction, so only the right
 			// edge needs the boundary test.
-			if strings.HasPrefix(lower[off:], f.lower) && boundedAt(lower, off, off+len(f.lower)) {
+			if strings.HasPrefix(lower[off:], f.lower) && titlerule.BoundedAt(lower, off, off+len(f.lower)) {
 				best = f
 				break
 			}
@@ -459,17 +524,30 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 	return best.form, best.series, true
 }
 
-// positionKey normalizes a numeric position for comparison, so "02", "2" and
-// "2.0" are one slot and "2.5" and "1-3" stay their own. It returns "" for
-// anything that is not a plain number (a range is not a slot).
+// ---- position slots ----------------------------------------------------------
+
+// positionKey is a position's SLOT identity: the number a single position names,
+// in one canonical spelling, so "02", "2" and "2.0" are one slot. A RANGE is not a
+// slot (it spans several) and neither is anything the grammar rejects, both of
+// which return "".
+//
+// Acceptance goes through importer.NormalizeSequence - the rule of record for what
+// a position may be and how it is spelled - BEFORE the span is read. That order is
+// load-bearing: model.ParsePositionRange is a span reader over ParseFloat, which
+// admits "1e2", "+2" and "Inf", so reading the span first would mint slots for
+// values the data model rejects and then report those same values as malformed.
 func positionKey(pos string) string {
-	f, err := strconv.ParseFloat(strings.TrimSpace(pos), 64)
-	if err != nil {
+	norm, ok := importer.NormalizeSequence(pos)
+	if !ok || strings.Contains(norm, "-") {
 		return ""
 	}
-	return strconv.FormatFloat(f, 'f', -1, 64)
+	lo, _, ok := model.ParsePositionRange(norm)
+	if !ok {
+		return ""
+	}
+	return formatSeq(lo)
 }
 
-// seqKey renders a float volume number in the same normal form as positionKey, so
-// a number derived from a title can be looked up against a series' positions.
-func seqKey(seq float64) string { return strconv.FormatFloat(seq, 'f', -1, 64) }
+// formatSeq renders a volume number in positionKey's canonical spelling, so a
+// number derived from a title can be looked up against a series' slots.
+func formatSeq(seq float64) string { return strconv.FormatFloat(seq, 'f', -1, 64) }

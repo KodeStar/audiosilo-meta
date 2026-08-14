@@ -186,16 +186,10 @@ func runFixtureAllowingProblems(t testing.TB, files map[string]string) (*Report,
 	return analyze(res), res
 }
 
-// classOf returns one class's records from a report.
+// classOf returns one class's records from a report, in report order.
 func classOf(t testing.TB, rep *Report, class string) []Finding {
 	t.Helper()
-	for _, c := range rep.Classes {
-		if c.class == class {
-			return c.sorted()
-		}
-	}
-	t.Fatalf("no class %q in the report", class)
-	return nil
+	return rep.class(class).rows
 }
 
 // subclassOf returns the records of one class filed under one subclass.
@@ -346,6 +340,34 @@ func treeSnapshot(t testing.TB, root string) string {
 	return b.String()
 }
 
+// The read-only claim is not only "the logic has no write path": pointing -o at the
+// data root would land the report IN the tree, where metafmt and metacheck would
+// then judge files that are not records.
+func TestRunRefusesAnOutputDirectoryInsideTheDataRoot(t *testing.T) {
+	data := filepath.Join(t.TempDir(), "data")
+	testpack.Seed(t, data, map[string]string{
+		"works/pl/plain/work.json": workJSON(t, "plain", "Plain"),
+		"people/ja/jane-doe.json":  personJSON(t, "jane-doe", "Jane Doe"),
+	})
+	for _, out := range []string{data, filepath.Join(data, "report"), filepath.Join(data, "works", "r")} {
+		if _, err := Run(Options{DataDir: data, OutDir: out}); err == nil {
+			t.Errorf("-o %s was accepted; it is inside the data root", out)
+		} else if !strings.Contains(err.Error(), "inside the data root") {
+			t.Errorf("-o %s failed with the wrong error: %v", out, err)
+		}
+	}
+	// A sibling directory is fine.
+	if _, err := Run(Options{DataDir: data, OutDir: filepath.Join(t.TempDir(), "out")}); err != nil {
+		t.Errorf("a sibling output directory was refused: %v", err)
+	}
+	// And nothing was written into the tree by the refused runs.
+	for _, name := range []string{"report", "SUMMARY.md", classFile(ClassWorkDup)} {
+		if _, err := os.Stat(filepath.Join(data, name)); !os.IsNotExist(err) {
+			t.Errorf("a refused run created data/%s (stat err = %v)", name, err)
+		}
+	}
+}
+
 func TestRunRequiresAnOutputDirectory(t *testing.T) {
 	data := filepath.Join(t.TempDir(), "data")
 	testpack.Seed(t, data, map[string]string{
@@ -372,9 +394,16 @@ func TestLoaderAdvisoriesAreCarriedThrough(t *testing.T) {
 		"people/na/nate-narrator.json":        personJSON(t, "nate-narrator", "Nate Narrator"),
 		"people/or/orphan-person.json":        personJSON(t, "orphan-person", "Orphan Person"),
 	})
-	got := subclassOf(t, rep, ClassLoader, "warning")
+	// The subclass is the LOADER's own advisory class name, not one "warning"
+	// bucket: pkg/check already distinguishes five classes and flattening them
+	// would make this class's counts useless for triage.
+	got := subclassOf(t, rep, ClassLoader, check.AdvisoryOrphanPerson)
 	if len(got) == 0 {
-		t.Fatal("pkg/check's advisory was not carried into the report")
+		t.Fatalf("pkg/check's orphan-person advisory was not carried into the report: %+v",
+			classOf(t, rep, ClassLoader))
+	}
+	if !got[0].Propose.Advisory {
+		t.Error("a carried-through advisory must be marked advisory")
 	}
 	if rep.LoaderWarnings != len(got) {
 		t.Errorf("LoaderWarnings = %d, records = %d", rep.LoaderWarnings, len(got))
@@ -395,9 +424,10 @@ func TestSummaryCountsMatchTheRecordCounts(t *testing.T) {
 		"series/dr/druid-tales.json":                     seriesJSON(t, "druid-tales", "The Druid Tales", "hammered@3"),
 	})
 	md := summary(rep)
-	for _, c := range rep.Classes {
-		if !strings.Contains(md, "| "+c.class+" | "+comma(c.total())+" |") {
-			t.Errorf("SUMMARY.md is missing the count row for %s (%d)", c.class, c.total())
+	for _, class := range classOrder {
+		c := rep.class(class)
+		if !strings.Contains(md, "| "+class+" | "+comma(c.total())+" |") {
+			t.Errorf("SUMMARY.md is missing the count row for %s (%d)", class, c.total())
 		}
 	}
 	if !strings.Contains(md, "| works | 2 |") {
@@ -405,20 +435,28 @@ func TestSummaryCountsMatchTheRecordCounts(t *testing.T) {
 	}
 }
 
-func TestCountLinesCoversEveryClass(t *testing.T) {
+func TestReportWriteCoversEveryClass(t *testing.T) {
 	rep := runFixture(t, map[string]string{
 		"works/pl/plain/work.json":            workJSON(t, "plain", "Plain"),
 		"works/pl/plain/recordings/only.json": recJSON(t, "only", "plain"),
 		"people/ja/jane-doe.json":             personJSON(t, "jane-doe", "Jane Doe"),
 		"people/na/nate-narrator.json":        personJSON(t, "nate-narrator", "Nate Narrator"),
 	})
-	lines := rep.CountLines()
-	if len(lines) != len(classOrder) {
-		t.Fatalf("CountLines returned %d lines for %d classes", len(lines), len(classOrder))
+	var b strings.Builder
+	if err := rep.Write(&b); err != nil {
+		t.Fatal(err)
+	}
+	lines := strings.Split(strings.TrimSuffix(b.String(), "\n"), "\n")
+	// One header line plus one per class.
+	if len(lines) != len(classOrder)+1 {
+		t.Fatalf("Write produced %d lines for %d classes", len(lines), len(classOrder))
+	}
+	if !strings.Contains(lines[0], "audited 1 works") {
+		t.Errorf("header = %q", lines[0])
 	}
 	for i, class := range classOrder {
-		if !strings.Contains(lines[i], class) {
-			t.Errorf("line %d = %q, want it to name %s", i, lines[i], class)
+		if !strings.Contains(lines[i+1], class) {
+			t.Errorf("line %d = %q, want it to name %s", i+1, lines[i+1], class)
 		}
 	}
 }

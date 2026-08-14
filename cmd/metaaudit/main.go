@@ -34,10 +34,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Printf("audited %d works / %d recordings / %d people / %d series\n",
-		rep.Totals.Works, rep.Totals.Recordings, rep.Totals.People, rep.Totals.Series)
-	for _, line := range rep.CountLines() {
-		fmt.Println(line)
+	if err := rep.Write(os.Stdout); err != nil {
+		fmt.Fprintln(os.Stderr, "metaaudit:", err)
+		os.Exit(1)
 	}
 	fmt.Printf("report written to %s\n", *out)
 	if rep.LoaderProblems > 0 {

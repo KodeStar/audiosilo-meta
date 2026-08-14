@@ -1,13 +1,13 @@
 package audit
 
 import (
-	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// SER-DUP subclasses.
+// SER-DUP / SER-PAREN subclasses.
 const (
 	serDupName   = "normalized-name" // the names differ only by case, diacritics, articles or a decoration suffix
 	serDupSaga   = "suffix-saga"     // ...and the only difference is a trailing " Saga"
@@ -15,138 +15,90 @@ const (
 	serParenPair = "decorated-pair"  // ...with one, which may well be a deliberate second ordering
 )
 
-// seriesDecorSuffixes are the trailing words a retailer's catalogue appends to a
-// series name that the name itself does not carry: Audible lists "Dragon Heart
-// Series" and "Richard Sharpe Novels" where the series is called "Dragon Heart"
-// and "Richard Sharpe".
-//
-// " Saga" is deliberately NOT here. It is part of the real name far more often
-// than it is decoration ("Vorkosigan Saga", "The Saga of Seven Suns"), so it gets
-// its own looser key and its own subclass, which proposes nothing.
-var seriesDecorSuffixes = []string{
-	" series", " novels", " novel", " books", " book", " trilogy",
-	" audiobooks", " audiobook", " collection", " box set", " boxed set",
+// seriesKeys is one series' two comparison keys plus whether its name carries a
+// parenthetical. Both detectors read it, and it is computed ONCE per series: the
+// keys fold through model.Slugify (NFD normalization plus a builder) and were being
+// computed four times over 45k series across two detectors and their tie-breaks.
+type seriesKeys struct {
+	series *model.Series
+	tight  string
+	saga   string
+	paren  bool
 }
 
-// sagaSuffix is the one suffix held back from seriesDecorSuffixes.
-const sagaSuffix = " saga"
-
-// seriesKey is a series name's comparison identity: parentheticals removed, a
-// leading article dropped, a trailing catalogue decoration dropped, then folded
-// through the project's own slug rules with the hyphens removed - so case,
-// diacritics, punctuation and spacing are not identity.
-func seriesKey(name string) string { return seriesKeyWith(name, false) }
-
-// seriesSagaKey is seriesKey with a trailing " Saga" dropped too.
-func seriesSagaKey(name string) string { return seriesKeyWith(name, true) }
-
-func seriesKeyWith(name string, dropSaga bool) string {
-	t := strings.ToLower(strings.TrimSpace(stripParenGroups(name)))
-	t = strings.TrimSpace(dropLeadingArticle(t))
-	// Peel repeatedly: "The Dragon Heart Series Collection" carries two.
-	for i := 0; i < 3; i++ {
-		trimmed := t
-		for _, suf := range seriesDecorSuffixes {
-			if len(trimmed) > len(suf) && strings.HasSuffix(trimmed, suf) {
-				trimmed = strings.TrimSpace(strings.TrimSuffix(trimmed, suf))
-				break
-			}
-		}
-		if dropSaga && len(trimmed) > len(sagaSuffix) && strings.HasSuffix(trimmed, sagaSuffix) {
-			trimmed = strings.TrimSpace(strings.TrimSuffix(trimmed, sagaSuffix))
-		}
-		if trimmed == t {
-			break
-		}
-		t = trimmed
+// seriesKeyIndex is every series' keys, in catalogue order.
+func seriesKeyIndex(all []*model.Series) []seriesKeys {
+	out := make([]seriesKeys, 0, len(all))
+	for _, s := range all {
+		out = append(out, seriesKeys{
+			series: s,
+			tight:  titlerule.SeriesKey(s.Name),
+			saga:   titlerule.SeriesSagaKey(s.Name),
+			paren:  strings.ContainsAny(s.Name, "(["),
+		})
 	}
-	return foldKey(t)
+	return out
 }
 
 // detectSeriesDup groups series whose names are the same name spelled two ways.
-func detectSeriesDup(ix *index) *findings {
+func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
 	f := &findings{class: ClassSeriesDup}
 
-	byKey, keyOrder := groupSeries(ix.cat.Series, seriesKey)
-	tight := map[string]bool{}
-	for _, key := range keyOrder {
-		group := byKey[key]
-		if len(group) < 2 {
-			continue
+	byTight, tightOrder := groupBy(keys, func(k seriesKeys) string { return k.tight })
+	for _, key := range tightOrder {
+		if group := byTight[key]; len(group) >= 2 {
+			f.add(seriesDupFinding(ix, serDupName, key, group,
+				"fold the members onto the canonical name, then delete the empty spelling"))
 		}
-		tight[key] = true
-		f.add(seriesDupFinding(ix, serDupName, key, group,
-			"review as one series: fold the members onto the canonical name, then delete the empty one"))
 	}
 
 	// The saga key is strictly looser, so it only ever adds groups the tight key
 	// did not already report - and it proposes nothing, because a trailing "Saga"
 	// is usually part of the name.
-	bySaga, sagaOrder := groupSeries(ix.cat.Series, seriesSagaKey)
+	bySaga, sagaOrder := groupBy(keys, func(k seriesKeys) string { return k.saga })
 	for _, key := range sagaOrder {
 		group := bySaga[key]
-		if len(group) < 2 {
+		if len(group) < 2 || allShareKey(group, func(k seriesKeys) string { return k.tight }) {
 			continue
 		}
-		if allShareTightKey(group) {
-			continue // already reported under serDupName
-		}
 		f.add(seriesDupFinding(ix, serDupSaga, key, group,
-			`review by hand: the names differ only by a trailing "Saga", which is part of a real series name at least as often as it is catalogue decoration - no merge is proposed`))
+			`the names differ only by a trailing "Saga", which is part of a real series name at least as often as it is `+
+				"catalogue decoration - no merge is proposed"))
 	}
 	return f
 }
 
-// allShareTightKey reports whether every member of a saga-key group already meets
-// under the tight key too.
-func allShareTightKey(group []*model.Series) bool {
-	first := seriesKey(group[0].Name)
-	for _, s := range group[1:] {
-		if seriesKey(s.Name) != first {
-			return false
+func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason string) Finding {
+	fd := Finding{Subclass: sub, Key: key}
+	var names, ids []string
+	best, bestRank := group[0].series, titlerule.SeriesRank{}
+	for i, k := range group {
+		fd.Series = append(fd.Series, ix.seriesRef(k.series))
+		names = append(names, k.series.Name)
+		ids = append(ids, k.series.ID)
+		// Through titlerule's ladder, so the report and a repair pass agree on
+		// which spelling survives.
+		r := titlerule.SeriesRank{Works: len(k.series.Works), ID: k.series.ID}
+		if i == 0 || r.Better(bestRank) {
+			best, bestRank = k.series, r
 		}
 	}
-	return true
-}
-
-func groupSeries(all []*model.Series, key func(string) string) (map[string][]*model.Series, []string) {
-	by := map[string][]*model.Series{}
-	var order []string
-	for _, s := range all {
-		k := key(s.Name)
-		if k == "" {
-			continue
-		}
-		if _, seen := by[k]; !seen {
-			order = append(order, k)
-		}
-		by[k] = append(by[k], s)
-	}
-	sort.Strings(order)
-	for k := range by {
-		g := by[k]
-		sort.Slice(g, func(i, j int) bool { return g[i].ID < g[j].ID })
-		by[k] = g
-	}
-	return by, order
-}
-
-func seriesDupFinding(ix *index, sub, key string, group []*model.Series, action string) Finding {
-	fd := Finding{Subclass: sub, Key: key, Action: action}
-	var names []string
-	for _, s := range group {
-		fd.Series = append(fd.Series, ix.seriesRef(s))
-		names = append(names, s.Name)
-	}
-	// The canonical proposal is the series holding the most works, then the
-	// lowest id: a fold moves the fewest memberships that way.
-	best := group[0]
-	for _, s := range group[1:] {
-		if len(s.Works) > len(best.Works) || (len(s.Works) == len(best.Works) && s.ID < best.ID) {
-			best = s
+	others := make([]string, 0, len(ids))
+	for _, id := range sortedUnique(ids) {
+		if id != best.ID {
+			others = append(others, id)
 		}
 	}
-	fd.Canonical = best.ID
+	fd.Propose = Proposal{
+		Op:       OpMergeSeries,
+		Target:   best.ID,
+		Others:   others,
+		Advisory: sub == serDupSaga,
+		Reason:   reason,
+	}
+	if sub == serDupSaga {
+		fd.Propose.Op = OpReview
+	}
 	fd.Notes = []string{"spellings: " + truncateList(sortedUnique(names), 8)}
 	return fd
 }
@@ -155,33 +107,41 @@ func seriesDupFinding(ix *index, sub, key string, group []*model.Series, action 
 // proposes nothing: "Vorkosigan Saga (chronological)" beside "Vorkosigan Saga" is
 // very likely a DELIBERATE second ordering of one series, which the data model has
 // no other way to express, so the only honest output is "a human should look".
-func detectSeriesParen(ix *index) *findings {
+//
+// It reads the SAME key index detectSeriesDup does, and in ONE pass: the plain
+// siblings are collected as the loop goes rather than in a first loop of their own,
+// which is what a decorated name later in catalogue order needs anyway - so the
+// sibling lookup is completed after the walk, not during it.
+func detectSeriesParen(ix *index, keys []seriesKeys) *findings {
 	f := &findings{class: ClassSeriesParen}
-	// The undecorated keys, so a decorated name can say whether a plain sibling
-	// exists.
 	plain := map[string][]string{}
-	for _, s := range ix.cat.Series {
-		if strings.ContainsAny(s.Name, "([") {
+	var decorated []seriesKeys
+	for _, k := range keys {
+		if k.paren {
+			decorated = append(decorated, k)
 			continue
 		}
-		k := seriesKey(s.Name)
-		plain[k] = append(plain[k], s.ID)
+		plain[k.tight] = append(plain[k.tight], k.series.ID)
 	}
-	for _, s := range ix.cat.Series {
-		if !strings.ContainsAny(s.Name, "([") {
-			continue
-		}
-		siblings := sortedUnique(plain[seriesKey(s.Name)])
+	for _, k := range decorated {
+		s := k.series
+		siblings := sortedUnique(plain[k.tight])
 		fd := Finding{
 			Key:    s.ID,
 			Series: []SeriesRef{ix.seriesRef(s)},
-			Field:  "name",
-			Have:   s.Name,
-			Want:   tidyTitle(stripParenGroups(s.Name)),
+		}
+		fd.Propose = Proposal{
+			Op:       OpReview,
+			Target:   s.ID,
+			Field:    "name",
+			From:     s.Name,
+			To:       titlerule.TidyTitle(titlerule.StripParenGroups(s.Name)),
+			Advisory: true,
 		}
 		if len(siblings) > 0 {
 			fd.Subclass = serParenPair
-			fd.Action = "review by hand: the parenthetical may be a deliberate alternative ordering of the sibling series - never merged automatically"
+			fd.Propose.Others = siblings
+			fd.Propose.Reason = "the parenthetical may be a deliberate alternative ordering of the sibling series - never merged automatically"
 			fd.Notes = []string{"undecorated sibling: " + truncateList(siblings, 8)}
 			for _, id := range siblings {
 				if sib := ix.seriesByID[id]; sib != nil {
@@ -190,7 +150,7 @@ func detectSeriesParen(ix *index) *findings {
 			}
 		} else {
 			fd.Subclass = serParenSolo
-			fd.Action = "review by hand: the parenthetical is decoration with nothing to fold onto, so the name itself may want cleaning"
+			fd.Propose.Reason = "the parenthetical is decoration with nothing to fold onto, so the name itself may want cleaning"
 		}
 		f.add(fd)
 	}

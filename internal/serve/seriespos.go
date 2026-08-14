@@ -108,7 +108,6 @@ var volumeKeywords = map[string]bool{
 	"band": true, "teil": true, "tome": true,
 }
 
-
 // seriesPositionQuery is a query read as "<series name> [volume word] <number>".
 // residuals are the series-name candidates to try, most likely first.
 type seriesPositionQuery struct {

@@ -4,7 +4,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -42,11 +41,12 @@ func TestPersonDupGroupsInitialsSpellings(t *testing.T) {
 			t.Errorf("%s: author_of = %d, want 1 - triage needs the counts", p.ID, p.AuthorOf)
 		}
 	}
-	if got[0].Action == "" || !strings.Contains(got[0].Action, "advisory") {
-		t.Errorf("the class must be advisory: action = %q", got[0].Action)
+	// Typed, not prose: the class is advisory and proposes no mechanical action.
+	if !got[0].Propose.Advisory || got[0].Propose.Op != OpReview {
+		t.Errorf("P-DUP must be advisory review, got op %q advisory %v", got[0].Propose.Op, got[0].Propose.Advisory)
 	}
-	if got[0].Canonical != "" {
-		t.Errorf("P-DUP must propose no canonical member, got %q", got[0].Canonical)
+	if got[0].Propose.Target != "" {
+		t.Errorf("P-DUP must propose no canonical member, got %q", got[0].Propose.Target)
 	}
 }
 
@@ -87,11 +87,11 @@ func TestPersonDupGroupsNamesOneEditApart(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one edit-distance-1 record, got %d: %+v", len(got), classOf(t, rep, ClassPersonDup))
 	}
-	if got[0].Canonical != "" {
-		t.Errorf("an advisory record must propose nothing, got canonical %q", got[0].Canonical)
+	if got[0].Propose.Target != "" {
+		t.Errorf("an advisory record must propose nothing, got canonical %q", got[0].Propose.Target)
 	}
-	if !strings.Contains(got[0].Action, "false-positive") {
-		t.Errorf("action = %q, want it to state the false-positive risk", got[0].Action)
+	if !got[0].Propose.Advisory || !strings.Contains(got[0].Propose.Reason, "false-positive") {
+		t.Errorf("propose = %+v, want an advisory stating the false-positive risk", got[0].Propose)
 	}
 }
 
@@ -116,42 +116,5 @@ func TestPersonDupIsSilentOnUnrelatedPeople(t *testing.T) {
 	rep := runFixture(t, peopleFixture(t, "Jane Doe", "Bram Stoker", "Luke Daniels"))
 	if got := classOf(t, rep, ClassPersonDup); len(got) != 0 {
 		t.Errorf("unrelated people were grouped: %+v", got)
-	}
-}
-
-// The audit must read the importer's rule, not a second copy of it.
-func TestPersonDupReadsTheImportersOwnInitialsKey(t *testing.T) {
-	for _, c := range []struct {
-		a, b string
-		same bool
-	}{
-		{"C. J. Critt", "CJ Critt", true},
-		{"J.D. Franx", "JD Franx", true},
-		{"E. M. Brown", "Em Brown", false},
-		{"Mr. James", "M. R. James", false},
-	} {
-		got := importer.MarkedNameKey(c.a) == importer.MarkedNameKey(c.b)
-		if got != c.same {
-			t.Errorf("MarkedNameKey(%q) == MarkedNameKey(%q) is %v, want %v", c.a, c.b, got, c.same)
-		}
-	}
-}
-
-func TestFoldKeyIsCoarserThanASlug(t *testing.T) {
-	// A person's id IS model.PersonSlug(name) (pkg/check enforces it), so grouping
-	// by the slug would find nothing. foldKey drops the hyphens, which is what
-	// makes the initials spellings meet.
-	a, _ := model.PersonSlug("A.B. Kovacs")
-	b, _ := model.PersonSlug("AB Kovacs")
-	if a == b {
-		t.Fatalf("the two spellings were supposed to slug differently, both = %q", a)
-	}
-	if foldKey("A.B. Kovacs") != foldKey("AB Kovacs") {
-		t.Errorf("foldKey did not fold the two spellings together: %q vs %q",
-			foldKey("A.B. Kovacs"), foldKey("AB Kovacs"))
-	}
-	// And it folds diacritics, through the project's own Slugify.
-	if foldKey("Café Society") != foldKey("Cafe Society") {
-		t.Error("foldKey did not fold a diacritic")
 	}
 }
