@@ -5278,24 +5278,6 @@
         }
       ]
     },
-    "nova": {
-      "id": "nova",
-      "license": "CC0-1.0",
-      "name": "Nova",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08F5JVP9R",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "novan-witch"
-        }
-      ]
-    },
     "nova-nocte": {
       "id": "nova-nocte",
       "license": "CC0-1.0",
@@ -5357,6 +5339,11 @@
           "imported_at": "2026-08-01",
           "ref": "B08MQRLN3G",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08F5JVP9R",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -5375,6 +5362,10 @@
         {
           "position": "5",
           "work": "red-nova"
+        },
+        {
+          "position": "1",
+          "work": "novan-witch"
         }
       ]
     },
