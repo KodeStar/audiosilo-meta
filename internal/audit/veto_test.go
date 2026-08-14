@@ -357,7 +357,7 @@ func TestSeriesDupVetoesADifferentLanguage(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want one cluster, got %d", len(got))
 	}
-	if !got[0].Propose.Advisory || !strings.Contains(got[0].Propose.Reason, "different languages") {
+	if !got[0].Propose.Advisory || !strings.Contains(got[0].Propose.Reason, "a translation is a different series") {
 		t.Errorf("propose = %+v, want a language veto", got[0].Propose)
 	}
 }

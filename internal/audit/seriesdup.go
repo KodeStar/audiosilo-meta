@@ -95,7 +95,7 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 		Others: others,
 		Reason: reason,
 	}
-	vetoes := seriesMergeVetoes(ix, group)
+	vetoes := seriesMergeVetoes(ix, group, best.ID)
 	if sub == serDupSaga {
 		vetoes = append([]string{reason}, vetoes...)
 	}
@@ -110,24 +110,38 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 
 // seriesMergeVetoes lists the reasons two same-looking series must not be folded
 // mechanically. Each one was a wrong proposal.
-func seriesMergeVetoes(ix *index, group []seriesKeys) []string {
+//
+// The three NAME-level rules are here; the four MEMBER-level ones (author agreement,
+// member collection evidence, ordering agreement and the language rule on the merits) are
+// in vetoseries.go, which records the exhaustive review of all 694 non-advisory proposals
+// that found them. target is the spelling the proposal would keep, which the directional
+// rules need: folding a loser INTO it is what makes a claim.
+func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 	var out []string
+	sides := seriesSides(ix, group)
 
 	// LANGUAGE, the same rule W-DUP has and for the same reason: a French and a
-	// Polish series are not the English one spelled differently. Each series'
-	// language is the majority language of its member works, and an unknown one
-	// never separates anything.
-	var langs []string
-	var owners []string
-	for _, k := range group {
-		if l := ix.seriesLanguage(k.series); l != "" {
-			langs = append(langs, l)
-			owners = append(owners, k.series.ID+" ("+l+")")
-		}
+	// Polish series are not the English one spelled differently. Asked of the MEMBERS'
+	// stated languages rather than of the sides' majority ones - see
+	// vetoSeriesLanguagesDisagree for what a majority could not see.
+	if reason, vetoed := vetoSeriesLanguagesDisagree(sides); vetoed {
+		out = append(out, reason)
 	}
-	if len(sortedUnique(langs)) > 1 {
-		out = append(out, "the members' works are in different languages ("+truncateList(sortedUnique(owners), 4)+
-			"): a translation is a different series")
+
+	// AUTHOR AGREEMENT: the dominant veto of the class, and the one it shipped without.
+	if reason, vetoed := vetoSeriesAuthorsDisjoint(ix, sides, target); vetoed {
+		out = append(out, reason)
+	}
+
+	// ORDERING AGREEMENT: a fold either retires a spelling whose memberships the
+	// survivor already holds, or adds ones it has room for. Everything else needs a human.
+	if reason, vetoed := vetoSeriesOrderingDisagrees(sides, target); vetoed {
+		out = append(out, reason)
+	}
+
+	// COLLECTION EVIDENCE off the MEMBERS, which the name-level rule below cannot see.
+	if reason, vetoed := vetoSeriesCollectionMembers(sides, target); vetoed {
+		out = append(out, reason)
 	}
 
 	// COLLECTION vs BOOK SERIES: "Pack Collection" beside "The Pack" is a series of
