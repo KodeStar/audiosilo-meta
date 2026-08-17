@@ -169,3 +169,26 @@ func TestRecordingRejectsAnEmptyISBNEntry(t *testing.T) {
 		t.Fatalf("a null isbn entry decoded silently: %+v", rec.ISBN)
 	}
 }
+
+// TestValidISBN13 pins the one Bookland-checksum rule pkg/extract's metadata
+// normalization and internal/serve's purchase-link gate both judge by.
+func TestValidISBN13(t *testing.T) {
+	valid := []string{"9781478975311", "9781705219904", "9791234567896"}
+	for _, s := range valid {
+		if !ValidISBN13(s) {
+			t.Errorf("ValidISBN13(%q) = false, want true", s)
+		}
+	}
+	invalid := []string{
+		"9781478975310", // one digit off: checksum fails
+		"123456789X",    // ISBN-10 shape
+		"9771478975311", // 13 digits outside Bookland
+		"978147897531a", // non-digit
+		"",
+	}
+	for _, s := range invalid {
+		if ValidISBN13(s) {
+			t.Errorf("ValidISBN13(%q) = true, want false", s)
+		}
+	}
+}

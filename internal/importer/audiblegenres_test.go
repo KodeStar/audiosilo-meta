@@ -1,41 +1,12 @@
 package importer
 
 import (
-	"encoding/json"
 	"reflect"
 	"strings"
 	"testing"
 
-	meta "github.com/kodestar/audiosilo-meta"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
-
-// schemaDefEnum reads a controlled vocabulary straight out of the embedded
-// schema's $defs, so a drift guard compares its table against the CONTRACT
-// rather than a copy of it.
-func schemaDefEnum(t *testing.T, def string) map[string]bool {
-	t.Helper()
-	raw, err := meta.SchemaFS.ReadFile("schema/common.schema.json")
-	if err != nil {
-		t.Fatal(err)
-	}
-	var doc struct {
-		Defs map[string]struct {
-			Enum []string `json:"enum"`
-		} `json:"$defs"`
-	}
-	if err := json.Unmarshal(raw, &doc); err != nil {
-		t.Fatal(err)
-	}
-	enum := doc.Defs[def].Enum
-	if len(enum) == 0 {
-		t.Fatalf("schema $defs/%s enum is empty; the drift guard would pass vacuously", def)
-	}
-	set := make(map[string]bool, len(enum))
-	for _, v := range enum {
-		set[v] = true
-	}
-	return set
-}
 
 // TestAudibleGenreTable is the drift guard between the embedded mapping table and
 // the schema's genre enum: the table parses, and every value it can produce is a
@@ -57,7 +28,7 @@ func TestAudibleGenreTable(t *testing.T) {
 		t.Errorf("by_asin has %d entries, want at least 2000", len(table.ByASIN))
 	}
 
-	enum := schemaDefEnum(t, "genre")
+	enum := testpack.SchemaDefEnum(t, "genre")
 	for key, value := range table.ByName {
 		if !enum[value] {
 			t.Errorf("by_name[%q] = %q is not in the schema genre enum", key, value)

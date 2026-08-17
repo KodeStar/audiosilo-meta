@@ -134,6 +134,10 @@ Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`,
 `coverage/works`, `coverage/series-gaps`, plus `/healthz`.
 
+Work-detail recordings also carry `purchase_links` - non-affiliate Audible and
+Libro.fm URLs derived at response time from recording ASINs and 13-digit
+recording ISBNs, with availability deliberately `unknown` (see the API docs).
+
 `people/{id}` and `series/{id}` take an optional `?limit=&offset=` window and
 report the unpaged totals (`authored_total`/`narrated_total`, `works_total`).
 They differ in default: a person's credit lists are paged (100 per page, 500

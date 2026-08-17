@@ -2,6 +2,8 @@ package extract
 
 import (
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Metadata is what an epub's OPF says about the book itself, as opposed to how it
@@ -216,30 +218,10 @@ func isbnFrom(value, scheme string) (string, bool) {
 		}
 		return r
 	}, strings.TrimSpace(v))
-	if validISBN13(digits) || validISBN10(digits) {
+	if model.ValidISBN13(digits) || validISBN10(digits) {
 		return digits, true
 	}
 	return "", false
-}
-
-// validISBN13 checks the mod-10 weighted checksum of a 13-digit ISBN.
-func validISBN13(s string) bool {
-	if len(s) != 13 || (!strings.HasPrefix(s, "978") && !strings.HasPrefix(s, "979")) {
-		return false
-	}
-	sum := 0
-	for i := 0; i < 13; i++ {
-		c := s[i]
-		if c < '0' || c > '9' {
-			return false
-		}
-		d := int(c - '0')
-		if i%2 == 1 {
-			d *= 3
-		}
-		sum += d
-	}
-	return sum%10 == 0
 }
 
 // validISBN10 checks the mod-11 checksum of a 10-character ISBN, whose final
