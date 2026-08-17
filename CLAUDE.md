@@ -279,6 +279,12 @@ it, `pkg/check` and every writer now refuse it loudly.
   NOTE the WORK's print ISBNs (`xref.isbn`) are deliberately untouched: they stay
   a flat string list (`$defs/isbn_list`); the recording's `isbn[]` is defined
   inline in `recording.schema.json`, beside its `asin[]` neighbour.
+  Retailer availability is deliberately NOT a catalogue field. Work-detail API
+  responses derive `purchase_links[]` from the durable identifiers already in
+  the artifact: a region-scoped ASIN becomes an Audible marketplace URL and a
+  13-digit recording ISBN becomes a speculative Libro.fm URL. Each link says
+  availability is `unknown`; work-level print ISBNs are never used. This keeps
+  volatile observations and identifier-duplicating URL data out of Git.
 - **person** - an entry in the people family, shared by author and narrator roles
   (a person can be both). Optional `kind` (`person`/`group`/`publisher`) marks
   the records that are not an individual - a full cast, a corporate credit of

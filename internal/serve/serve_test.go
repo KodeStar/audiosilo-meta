@@ -160,7 +160,12 @@ func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest
 
 func newTestServer(t *testing.T) (*Server, *httptest.Server) {
 	t.Helper()
-	dbPath := buildFixtureDB(t, fixtureCatalog())
+	return newTestServerForCatalog(t, fixtureCatalog())
+}
+
+func newTestServerForCatalog(t *testing.T, catalog *model.Catalog) (*Server, *httptest.Server) {
+	t.Helper()
+	dbPath := buildFixtureDB(t, catalog)
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -395,6 +400,45 @@ func TestWorkDetail(t *testing.T) {
 	asin := r["asin"].([]any)
 	if len(asin) != 1 || asin[0].(map[string]any)["asin"] != "B08G9PRS1K" {
 		t.Errorf("asin = %v", asin)
+	}
+}
+
+func TestWorkDetailDerivesPurchaseLinksFromIdentifiers(t *testing.T) {
+	catalog := &model.Catalog{
+		People: []*model.Person{
+			{ID: "madeline-miller", Name: "Madeline Miller", License: "CC0-1.0"},
+			{ID: "perdita-weeks", Name: "Perdita Weeks", License: "CC0-1.0"},
+		},
+		Works: []*model.Work{{
+			ID: "circe", Title: "Circe", Authors: []string{"madeline-miller"}, Language: "en", License: "CC0-1.0",
+			Recordings: []*model.Recording{{
+				ID: "perdita-weeks-2018", Work: "circe", Narrators: []string{"perdita-weeks"}, Language: "en", License: "CC0-1.0",
+				ASIN: []model.ASIN{{Region: "us", ASIN: "B0794BXZBF"}}, ISBN: []model.ISBNRef{{ISBN: "9781478975311"}},
+			}},
+		}},
+	}
+	_, ts := newTestServerForCatalog(t, catalog)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/works/circe")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	// Field-level truth is pinned by TestDerivedPurchaseLinks; here only what
+	// the handler level adds: the links reach the wire, in order, and the
+	// unscoped ISBN link omits region on the wire.
+	links := body["recordings"].([]any)[0].(map[string]any)["purchase_links"].([]any)
+	if len(links) != 2 {
+		t.Fatalf("purchase_links = %v", links)
+	}
+	if url := links[0].(map[string]any)["url"]; url != "https://www.audible.com/pd/B0794BXZBF" {
+		t.Errorf("Audible purchase link url = %v", url)
+	}
+	libro := links[1].(map[string]any)
+	if libro["url"] != "https://libro.fm/audiobooks/9781478975311" {
+		t.Errorf("Libro.fm purchase link url = %v", libro["url"])
+	}
+	if _, has := libro["region"]; has {
+		t.Errorf("unscoped ISBN link should omit region: %v", libro)
 	}
 }
 

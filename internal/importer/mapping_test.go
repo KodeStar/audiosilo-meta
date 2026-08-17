@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	meta "github.com/kodestar/audiosilo-meta"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -106,7 +107,7 @@ func schemaDefPattern(t *testing.T, def string) string {
 // refuses (the row's ASIN is dropped with a warning), and a table entry with no
 // enum value would write a region the very next metacheck rejects.
 func TestMarketplacesMatchTheSchemaRegionEnum(t *testing.T) {
-	want := schemaDefEnum(t, "region")
+	want := testpack.SchemaDefEnum(t, "region")
 	if !reflect.DeepEqual(marketplaces, want) {
 		t.Errorf("marketplaces = %v, schema $defs/region = %v", marketplaces, want)
 	}

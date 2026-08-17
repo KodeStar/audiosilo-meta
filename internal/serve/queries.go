@@ -111,16 +111,17 @@ type workXref struct {
 }
 
 type recordingDetail struct {
-	ID           string      `json:"id"`
-	Narrators    []personRef `json:"narrators"`
-	Abridged     bool        `json:"abridged,omitempty"`
-	RuntimeMin   int         `json:"runtime_min,omitempty"`
-	ReleaseDate  string      `json:"release_date,omitempty"`
-	Publisher    string      `json:"publisher,omitempty"`
-	ASIN         []asinRef   `json:"asin"`
-	ISBN         []string    `json:"isbn"`
-	CoverURL     string      `json:"cover_url,omitempty"`
-	ChapterCount int         `json:"chapter_count"`
+	ID            string         `json:"id"`
+	Narrators     []personRef    `json:"narrators"`
+	Abridged      bool           `json:"abridged,omitempty"`
+	RuntimeMin    int            `json:"runtime_min,omitempty"`
+	ReleaseDate   string         `json:"release_date,omitempty"`
+	Publisher     string         `json:"publisher,omitempty"`
+	ASIN          []asinRef      `json:"asin"`
+	ISBN          []string       `json:"isbn"`
+	PurchaseLinks []purchaseLink `json:"purchase_links,omitempty"`
+	CoverURL      string         `json:"cover_url,omitempty"`
+	ChapterCount  int            `json:"chapter_count"`
 }
 
 type asinRef struct {
@@ -471,11 +472,15 @@ func (s *snapshot) workISBNs(workID string) ([]string, error) {
 	return scanIDs(rows)
 }
 
-// recordingsBase fetches a work's recordings with their narrators, ASINs, and
-// ISBNs, but WITHOUT the per-recording chapter count. recordingsOf adds the
-// count on top; the ABS path (workForABS) reuses this directly, since it never
-// reads the count - a hot public endpoint should not run a COUNT(*) per
-// recording it discards.
+// recordingsBase fetches a work's recordings with their narrators, ASINs,
+// ISBNs and derived purchase links, but WITHOUT the per-recording chapter
+// count. recordingsOf adds the count on top; the ABS path (workForABS) reuses
+// this directly, since it never reads the count - a hot public endpoint should
+// not run a COUNT(*) per recording it discards. The purchase links stay here
+// even though ABS discards those too: they are pure in-memory derivation,
+// nanoseconds beside this function's per-recording queries, and deriving at
+// construction means no future recordingDetail surface can silently omit them
+// (omitempty would hide the gap).
 func (s *snapshot) recordingsBase(workID string) ([]recordingDetail, error) {
 	rows, err := s.db.Query(
 		`SELECT id, abridged, runtime_min, release_date, publisher, cover_url FROM recordings WHERE work_id=? ORDER BY id`, workID)
@@ -513,6 +518,7 @@ func (s *snapshot) recordingsBase(workID string) ([]recordingDetail, error) {
 		if recs[i].ISBN, err = s.recordingISBNs(workID, rid); err != nil {
 			return nil, err
 		}
+		recs[i].PurchaseLinks = derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN)
 	}
 	return recs, nil
 }

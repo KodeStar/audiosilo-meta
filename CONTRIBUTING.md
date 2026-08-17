@@ -30,6 +30,9 @@ Four kinds of thing live in `data/`:
   as `{"region": ..., "publisher": ...}` pairs, with the top-level `publisher`
   staying the publisher of record (so it is never repeated in the list, and a
   record with `publishers[]` must have a `publisher`).
+  Retailer URLs are not authored data: the API derives speculative,
+  non-affiliate Audible and Libro.fm links from recording ASINs and 13-digit
+  recording ISBNs. Current availability is volatile and is not stored in Git.
 - **Person** - a human, shared across roles. The same `people/` entity is
   referenced by a work as an **author** and by a recording as a **narrator**. A
   person can be both. An optional `kind` (`person` / `group` / `publisher`)

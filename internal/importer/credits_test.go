@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -463,7 +464,7 @@ func mustCleanName(t *testing.T, in string) string {
 // value schema/common.schema.json's credit_role enum allows, or the seed would
 // write records that fail metacheck.
 func TestRoleQualifiersMapIntoSchemaEnum(t *testing.T) {
-	allowed := schemaDefEnum(t, "credit_role")
+	allowed := testpack.SchemaDefEnum(t, "credit_role")
 	for qualifier, roles := range roleQualifiers {
 		for _, role := range roles {
 			if !allowed[role] {

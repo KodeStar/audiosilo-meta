@@ -958,6 +958,19 @@
           "asin": { "type": "string", "examples": ["B08G9PRS1K"] }
         }
       },
+      "PurchaseLink": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "A non-affiliate retailer URL derived from a recording identifier. It is a convenient route to check the retailer, not a claim that the product is currently listed, licensed for the visitor, or in stock.",
+        "required": ["retailer", "id", "url", "availability"],
+        "properties": {
+          "retailer": { "type": "string", "enum": ["audible", "libro-fm"] },
+          "id": { "type": "string", "description": "The source identifier: an ASIN for Audible or a 13-digit recording ISBN for Libro.fm." },
+          "region": { "type": "string", "description": "Audible marketplace region. Omitted for an unscoped recording ISBN." },
+          "url": { "type": "string", "format": "uri", "description": "Derived non-affiliate URL containing no tracking parameters." },
+          "availability": { "type": "string", "enum": ["unknown"], "description": "The catalogue does not persist volatile retailer availability." }
+        }
+      },
       "WorkXref": {
         "type": "object",
         "description": "Cross-references to other databases, and the PRINT ISBNs of the abstract work (a recording's own ISBNs live on the recording). Every field is omitted when unknown; the object itself is omitted when all of them are.",
@@ -994,6 +1007,11 @@
             "type": "array",
             "description": "The recording's own ISBNs, bare. Never null; empty when none. A stated marketplace is deliberately not carried here - this answers \"which recording\", not \"which marketplace\".",
             "items": { "type": "string" }
+          },
+          "purchase_links": {
+            "type": "array",
+            "description": "Derived at response time from this recording's ASINs and 13-digit ISBNs. Omitted when there are no usable identifiers; availability is deliberately not asserted.",
+            "items": { "$ref": "#/components/schemas/PurchaseLink" }
           },
           "cover_url": { "type": "string", "description": "Remote cover URL. Omitted when none." },
           "chapter_count": {
