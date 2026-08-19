@@ -22,6 +22,20 @@ type snapshot struct {
 	stats         Stats  // precomputed once, at load
 	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5
 
+	// The GUIDE PAGE counts, settled at load (see loadStats). They are what the
+	// two guide sitemap families are sharded and windowed by, and they are
+	// deliberately NOT on Stats: they count PAGES (works carrying a sidecar)
+	// rather than catalogue records, and /api/v1/stats is a published payload this
+	// change does not move. Zero on an artifact older than the sidecar tables,
+	// which is honest - such a release advertises no guide shards and every guide
+	// shard URL 404s before a query runs.
+	//
+	// The recap count is taken from recapSitemapSQL, the same derivation the
+	// family's shard query comes from, so the count and the listing can never be
+	// computed against different tables.
+	recapWorks     int
+	characterWorks int
+
 	// hasRedirects is whether the artifact's tombstone table holds anything at
 	// all, asked once at load. Until the first duplicate-merge lands it is empty
 	// in every published release, and the redirect probe sits on paths that are
@@ -122,6 +136,28 @@ func (s *snapshot) loadStats() error {
 		return err
 	}
 	s.schemaVersion, _ = strconv.Atoi(sv)
+	// The guide families' page counts, behind the same version gate as the tables
+	// they read: below sidecarSchemaVersion there are no sidecars to count, the
+	// counts stay zero, and the sitemap advertises no guide shards at all rather
+	// than promising URLs the artifact cannot support. As with the redirects
+	// below, a version CLAIM without the table is a corrupt artifact rather than
+	// an old one, so the failure names the claim being enforced.
+	if s.schemaVersion >= sidecarSchemaVersion {
+		recapCountSQL, _ := recapSitemapSQL(s.schemaVersion)
+		counts := []struct {
+			dst   *int
+			query string
+		}{
+			{&s.recapWorks, recapCountSQL},
+			{&s.characterWorks, characterWorksCountSQL},
+		}
+		for _, c := range counts {
+			if err := q(c.dst, c.query); err != nil {
+				return fmt.Errorf("%s: artifact schema_version %d requires the sidecar tables: %w",
+					s.path, s.schemaVersion, err)
+			}
+		}
+	}
 	// Asked here, behind the version gate, so a newer binary serving an older
 	// release never touches the table at all. An artifact that CLAIMS version 5
 	// and has no such table fails the load, exactly as it does for the tables

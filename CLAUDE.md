@@ -684,21 +684,67 @@ public origin is `--site-url` (default `https://meta.audiosilo.app`), because a
 canonical link cannot be relative and the server cannot discover its own origin.
 The new URL shape is a contributor-facing one too: `internal/issueform`'s
 `resolveWorkRef` accepts `/works/{slug}` (strictly one segment, slug-shaped)
-beside the legacy `?id=` URL, the data-tree path and a bare slug.
+beside the legacy `?id=` URL, the data-tree path and a bare slug - and the two
+guide-page spellings below.
+**Two COMMUNITY GUIDE PAGES hang off the work page** (`guides.go` - the SEO
+campaign's Phase F, targeting "<title> recap" / "<title> characters" queries the
+sidecar layer could never rank for while it rode only in the island's
+client-side accordions): `GET /works/{id}/recap` and `GET /works/{id}/characters`,
+two more rows in `htmlEntityRoutes` with an EMPTY legacy route (they replaced no
+`?id=` URL, and `htmlRoutes` skips registering an empty legacy), so shell
+injection, the ETag, the retired-slug 301 and both coverage guards all apply
+unchanged. The trailing literals FOLLOW the wildcard, so the reserved-slug set
+does not grow. A page EXISTS iff the work does and carries the member
+(`hasRecapGuide` counts a whole-book summary; `hasCharacterGuide`); everything
+else takes the compose-nil path, so a stale URL 404s rather than indexing an
+empty page. The BODY costs no new SQL - both compose over `snapshot.workDetail`
+and embed its marshal as the payload, so the island
+(`site/.../work-guide.tsx`, hydrating the same panels the work page renders)
+needs no second fetch - and the one query they add is the PRESENCE PROBE that
+runs FIRST (`hasRecapPage`/`hasCharacterPage`, one indexed `EXISTS` point query
+per page, version-gated exactly as the sitemap families are and pinned
+positively by `TestGuidePresenceProbesAreIndexed`): almost every work carries no
+sidecar, so almost every request to these routes is a 404 that would otherwise
+have paid workDetail's 6+4N-query cascade to learn there was nothing to render.
+`hasRecapGuide`/`hasCharacterGuide` are still asked of the composed document, so
+the probe stays an optimization of the definition the links and the sitemap are
+built from rather than a second copy of it. The spoiler posture is
+structural: titles/H1s lead with the query phrase, meta descriptions and JSON-LD
+(`Article` with `about` = the work's Book node, `license` CC BY-SA) are composed
+from FACTS only, and every recap/description body sits inside a closed
+`<details>` under `<div data-nosnippet>` - indexable, never quoted into a
+snippet, never shown unopened, functional with no JS. The pages carry the CC
+BY-SA notice (`rel="license"`) and the `/build` contribute deep link; the work
+fact sheet links them from a "Guides" section (the one place the work page says
+"recap"/"characters" - the guide pages own the TEXT, so crawl weight is never
+split), and `pageIdentity` mixes in the shell's NAME so a work and its guides
+can never share a validator.
 **Those pages are DISCOVERABLE through the SITEMAPS** (`sitemap.go`, Phase B):
 `GET /sitemap-index.xml` - which shadows the Astro build's static file of that
 name, the one robots.txt already points at - plus `GET /sitemaps/{file}` for the
 entity shards. The index lists `/sitemap-0.xml` (the dist's own static-pages
-sitemap, only when the dist carries it), then series, people and works shards in
-that order: the crawl-budget decision, few high-value files first. A shard is
+sitemap, only when the dist carries it), then recaps, characters, series, people
+and works shards in that order: the crawl-budget decision, few high-value files
+first - the two GUIDE families lead (one shard each, the pages "<title> recap"
+queries land on). A shard is
 50,000 URLs (the protocol cap) of `<siteURL>/works/<slug>`-style locs in id
-order, with `<lastmod>` from the record's own `added_at` where the artifact
-carries one (works only; people and series have no such column, and nothing was
+order (a `sitemapFamily` carries an optional SUFFIX, so the guide families list
+`/works/<slug>/recap`-style pages over the same id space), with `<lastmod>` from
+the record's own `added_at` where the artifact
+carries one (works only; the other families have no such column, and nothing was
 added to the artifact for this - zero SchemaVersion movement) and NO
-changefreq/priority. The shard COUNT is arithmetic over `snapshot.stats`, the
-per-load memo, so no request runs a COUNT; the three shard queries walk their
-family's primary key and are guarded by `TestServeLookupsAreIndexed` like every
-other query constant. A third route table (`sitemapRoutes()`) registered
+changefreq/priority. The shard COUNT is arithmetic over per-load memos
+(`snapshot.stats`, plus the guide-page counts settled in `loadStats` behind the
+sidecar version gate - an older artifact honestly advertises no guide shards,
+and the recap family's count and shard SQL come from ONE pure derivation over
+the artifact's schema_version, `recapSitemapSQL`, since its URL set spans
+`recaps` UNION `recap_summaries` only from schema_version 3 - so the count and
+the listing are structurally unable to be computed against different tables), so
+no request runs a COUNT; the shard queries walk their
+family's primary key or sidecar work_id index and are guarded by
+`TestServeLookupsAreIndexed` like every other query constant (the recap
+compound's COUNT form must wrap a subquery, so it is pinned by its own positive
+EXPLAIN test instead). A third route table (`sitemapRoutes()`) registered
 unconditionally - a sitemap needs no shell, so an API-only deployment serves one
 too - with gzip, no CORS, `Cache-Control: public, max-age=3600` and an ETag over
 the artifact's identity plus the origin, both landing on the 304 and the composed
@@ -709,8 +755,8 @@ life of the release). The dist's identity is deliberately absent from a SHARD (n
 byte of the shell reaches one) and the index's validator carries exactly the one
 bit of it that reaches a document: whether the dist has a static sitemap to list,
 so a UI-only redeploy cannot 304-renew a wrong index. The file name is matched
-STRICTLY (`(works|people|series)-<n>.xml`, no leading zeros, so one shard has one
-URL), and a bad name, an out-of-range shard or an empty family is a 404 that
+STRICTLY (`<family>-<n>.xml` over the known family names, no leading zeros, so
+one shard has one URL), and a bad name, an out-of-range shard or an empty family is a 404 that
 costs no query. With no artifact the index degrades to the dist's static file -
 `no-store`, because that stand-in describes the boot window and not the site -
 and the shards answer the API's 503. Rendering is `encoding/xml` and

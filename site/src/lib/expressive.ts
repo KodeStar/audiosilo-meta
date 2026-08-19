@@ -1,7 +1,19 @@
 // Pure presentation helpers for the community-authored expressive layer
-// (characters + recaps) shown on a work page. Kept framework-free so they can be
-// unit-tested; the React components in WorkDetail.tsx consume them.
-import type { Character, Recap, RecapSummary } from './api'
+// (characters + recaps), shown on a work page and on the two community-guide
+// pages that hang off it. Kept framework-free so they can be unit-tested; the
+// React components in WorkDetail.tsx and work-guide.tsx consume them, and the
+// presence rules live here rather than in either so the work page's tabs and the
+// guide page's empty state cannot disagree about what a work carries.
+import type { Character, Recap, RecapSummary, Work } from './api'
+import type { WorkGuide } from './entity-url'
+
+/** The Creative Commons deed the community layer (characters + recaps) is
+    published under, as opposed to the CC0 catalogue everything else here is.
+    Stated once so every surface that has to name the terms - the guide pages'
+    footer, and anything that grows one later - links the same deed.
+    internal/serve carries its own copy for the server-rendered pages; see
+    LICENSING.md for what the two layers mean. */
+export const CC_BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/3.0/'
 
 /** Human label for a character role, or null when the role is absent/unknown. */
 export function roleLabel(role: Character['role']): string | null {
@@ -95,4 +107,32 @@ export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
     })
   }
   return rows
+}
+
+/** storyRows for a whole work, with the two optional fields unwrapped. It is the
+    ONE spelling of that incantation: the work page's tab and CTA and the recap
+    guide page all ask the same question of the same two fields, and a caller
+    that spelled `work.recaps ?? []` differently would be asking a different one. */
+export function storyRowsOf(work: Work): StoryRow[] {
+  return storyRows(work.recaps ?? [], work.recap_summary)
+}
+
+/** Does this work carry the member a given guide page is about? The ONE
+    predicate behind every question that turns on it: whether the guide page
+    renders its panel or its empty state, whether the sibling guide exists to
+    link to, and which contribution CTAs the work page offers.
+
+    Recap presence reads off storyRows rather than off `recaps` alone, so a work
+    carrying only a whole-book summary counts as having a recap - exactly as
+    metaserve's hasRecapGuide does, which is what keeps the page's own existence
+    and the site's link to it from disagreeing.
+
+    `rows` is that row set, for a caller that has ALREADY built it to render it
+    (the recap guide page). Passing it in is what lets the presence rule stay one
+    definition without the row set being composed twice per render; everyone else
+    omits it and this builds its own. */
+export function hasGuide(work: Work, guide: WorkGuide, rows?: StoryRow[]): boolean {
+  return guide === 'characters'
+    ? (work.characters?.length ?? 0) > 0
+    : (rows ?? storyRowsOf(work)).length > 0
 }

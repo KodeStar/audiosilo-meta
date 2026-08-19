@@ -100,6 +100,24 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"works sitemap shard", worksSitemapSQL, []any{sitemapShardURLs, 0}},
 		{"people sitemap shard", peopleSitemapSQL, []any{sitemapShardURLs, 0}},
 		{"series sitemap shard", seriesSitemapSQL, []any{sitemapShardURLs, 0}},
+		// The guide shards, and BOTH spellings of the recap family's set - the
+		// union it uses on a current artifact and the recaps-only form it falls
+		// back to below schema_version 3. The union is written as a compound
+		// select precisely so each arm still walks its own index; wrapped in a
+		// subquery the outer step is an unindexed scan of a co-routine, which is
+		// what this case would catch.
+		{"recaps sitemap shard", recapsSitemapSQL, []any{sitemapShardURLs, 0}},
+		{"recaps sitemap shard, pre-summaries", recapsOnlySitemapSQL, []any{sitemapShardURLs, 0}},
+		{"characters sitemap shard", charactersSitemapSQL, []any{sitemapShardURLs, 0}},
+		// The guide counts, run once per snapshot at load rather than per request,
+		// but over the same tables - an unindexed count of the sidecar tables on
+		// every artifact swap is a cost nothing asks for. (recapWorksCountSQL
+		// cannot go through this guard: it counts a UNION, whose one honest
+		// spelling wraps the compound in a FROM, and the outer step then reads as
+		// a scan of the co-routine. TestRecapPageCountWalksItsIndexes pins the two
+		// steps that matter instead.)
+		{"recap page count, pre-summaries", recapWorksOnlyCountSQL, nil},
+		{"character page count", characterWorksCountSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -168,6 +186,74 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 // assertNoFullScan as written, because the plan's "SCAN f" step is the benign
 // 20-row co-routine the LIMIT bounds - so TestExactTitleWorksJoinIsIndexed pins
 // it POSITIVELY instead: the works half must be a SEARCH through an index.
+
+// TestRecapPageCountWalksItsIndexes pins recapWorksCountSQL POSITIVELY, for the
+// same reason TestExactTitleWorksJoinIsIndexed pins its join that way: the query
+// counts a UNION, and the only honest spelling of that wraps the compound in a
+// FROM, so the plan's outer "SCAN (subquery-n)" is the co-routine's own output
+// rather than a table read - which assertNoFullScan cannot tell apart from the
+// real thing.
+//
+// What must hold is that each ARM walks its own index. Unindexed, this is two
+// full sidecar-table reads on every artifact swap.
+func TestRecapPageCountWalksItsIndexes(t *testing.T) {
+	snap := snapshotFor(t, fixtureCatalog())
+	plan := queryPlan(t, snap, recapWorksCountSQL)
+	joined := strings.Join(plan, " | ")
+	for _, table := range []string{"recaps", "recap_summaries"} {
+		found := false
+		for _, step := range plan {
+			if strings.HasPrefix(step, "SCAN "+table+" ") && strings.Contains(step, "INDEX") {
+				found = true
+			}
+		}
+		if !found {
+			t.Errorf("the recap page count reads %s without an index: %s", table, joined)
+		}
+	}
+	t.Logf("plan -> %s", joined)
+}
+
+// TestGuidePresenceProbesAreIndexed pins the two guide pages' presence probes
+// POSITIVELY, for the same reason the recap count is pinned that way: an EXISTS
+// clause plans as "SCAN CONSTANT ROW" plus a scalar subquery per table, and that
+// first step is the one-row constant the subqueries feed, not a table read -
+// which assertNoFullScan cannot tell apart from the real thing.
+//
+// What must hold is that every table the probe names is reached through an
+// index. These sit in front of EVERY request to a guide route, and almost all of
+// those are 404s (most works carry no sidecar), so an unindexed probe would turn
+// the cheap path into a full sidecar-table read per crawl hit.
+func TestGuidePresenceProbesAreIndexed(t *testing.T) {
+	snap := snapshotFor(t, fixtureCatalog())
+	cases := []struct {
+		name   string
+		query  string
+		tables []string
+	}{
+		{"recap page probe", recapGuideExistsSQL, []string{"recaps", "recap_summaries"}},
+		{"recap page probe, pre-summaries", recapGuideExistsOnlySQL, []string{"recaps"}},
+		{"character page probe", characterGuideExistsSQL, []string{"characters"}},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			plan := queryPlan(t, snap, tc.query, "project-hail-mary")
+			joined := strings.Join(plan, " | ")
+			for _, table := range tc.tables {
+				found := false
+				for _, step := range plan {
+					if strings.HasPrefix(step, "SEARCH "+table+" ") && strings.Contains(step, "INDEX") {
+						found = true
+					}
+				}
+				if !found {
+					t.Errorf("the probe reads %s without an index: %s", table, joined)
+				}
+			}
+			t.Logf("plan -> %s", joined)
+		})
+	}
+}
 
 // TestExactTitleWorksJoinIsIndexed asserts the works half of exactTitleSQL is a
 // primary-key SEARCH, run from the very constant the request path uses. The FTS

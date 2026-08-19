@@ -8,7 +8,22 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   site: 'https://meta.audiosilo.app',
   output: 'static',
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      // The flat detail and guide shells are hydration targets for metaserve's
+      // server-rendered entity routes (/works/{id}, /works/{id}/recap, ...),
+      // not pages of their own: visited bare they render the island's
+      // not-found state. Listing them in the static sitemap advertises
+      // soft-404s - and for /recap/ and /characters/, soft-404s titled for the
+      // very queries the guide pages exist to win. The real entity URLs are
+      // listed by metaserve's own /sitemaps/ shards.
+      filter: (page) =>
+        !['/work/', '/person/', '/series/', '/recap/', '/characters/'].some((shell) =>
+          page.endsWith(shell)
+        ),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
     // /docs/api renders internal/serve/openapi.json, which sits one level above

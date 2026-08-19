@@ -116,11 +116,56 @@ type ldBookSeries struct {
 	ItemListElement []ldListItem `json:"itemListElement,omitempty"`
 }
 
+// ldWebSite is the site a page belongs to. It carries no facts of its own - it
+// is the isPartOf a guide page needs to say which site published it.
+type ldWebSite struct {
+	Type string `json:"@type"`
+	Name string `json:"name"`
+	URL  string `json:"url"`
+}
+
+// ldArticle is a community GUIDE page (a recap or a character guide). An Article
+// rather than a Book node, because the page is a document ABOUT a book that
+// somebody wrote, not the book: `about` points at the work page's own Book node
+// and `license` states the share-alike terms the text travels under.
+//
+// Deliberately minimal and DERIVED: no author (the sidecars are community-
+// authored with no single named author in the artifact), no dates (the artifact
+// carries none for a sidecar), no ratings. Every one of those would be a fact
+// nobody gave us.
+type ldArticle struct {
+	Context          string     `json:"@context"`
+	Type             string     `json:"@type"`
+	Headline         string     `json:"headline"`
+	URL              string     `json:"url"`
+	MainEntityOfPage string     `json:"mainEntityOfPage"`
+	About            *ldRef     `json:"about,omitempty"`
+	License          string     `json:"license,omitempty"`
+	IsPartOf         *ldWebSite `json:"isPartOf,omitempty"`
+}
+
+// workNodeID is the @id of a work page's Book node. It is ONE derivation because
+// two documents name it: the work page DEFINES the node, and a guide page's
+// `about` REFERENCES it - a second spelling would point at nothing.
+func workNodeID(workCanonical string) string { return workCanonical + "#book" }
+
+// guideJSONLD is the document both guide pages carry. workCanonical is the WORK
+// page's canonical URL, which is where the referenced Book node is defined.
+func guideJSONLD(headline, siteURL, canonical, workCanonical string) []byte {
+	return mustMarshalLD(ldArticle{
+		Context: ldContext, Type: "Article", Headline: headline,
+		URL: canonical, MainEntityOfPage: canonical,
+		About:    &ldRef{ID: workNodeID(workCanonical)},
+		License:  ccBySA30URL,
+		IsPartOf: &ldWebSite{Type: "WebSite", Name: siteName, URL: siteURL},
+	})
+}
+
 // workJSONLD builds the @graph for a work page: the Book, then one Audiobook per
 // recording, in the order the detail carries them (recording id order), so two
 // renders of one snapshot produce identical bytes.
 func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
-	bookID := canonical + "#book"
+	bookID := workNodeID(canonical)
 	book := ldBook{Type: "Book", ID: bookID, Name: d.Title, URL: canonical, InLanguage: d.Language}
 	for _, a := range d.Authors {
 		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})

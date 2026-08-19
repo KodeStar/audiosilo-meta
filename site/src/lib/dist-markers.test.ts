@@ -22,7 +22,11 @@ const HEAD_OPEN = '<!--ssr:head-->'
 const HEAD_CLOSE = '<!--/ssr:head-->'
 const ENTITY = '<!--ssr:entity-->'
 
-const shells = ['work', 'person', 'series'] as const
+// The three entity shells plus the two community-guide shells metaserve renders
+// /works/{slug}/recap and /works/{slug}/characters through - they go through the
+// very same head/body injection, so a dropped marker turns those pages back into
+// empty client-only shells exactly as it would a work page.
+const shells = ['work', 'person', 'series', 'recap', 'characters'] as const
 
 function distPath(page: string): string {
   return fileURLToPath(new URL(`../../dist/${page}/index.html`, import.meta.url))

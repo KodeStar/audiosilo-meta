@@ -136,7 +136,10 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 	for _, e := range htmlEntityRoutes {
 		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(e.shell)))
 		if err != nil {
-			logger.Printf("serve: no server-rendered %s page: %v", e.prefix, err)
+			// Named by the SHELL, which is unique per page: several pages hang off
+			// one family prefix now (the guide pages), so a notice naming the prefix
+			// could not say which of them the dist is missing.
+			logger.Printf("serve: no server-rendered %s page: %v", e.shell, err)
 			continue
 		}
 		sh, err := splitShell(string(raw))
@@ -145,7 +148,7 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 			out[e.shell] = &shell{raw: string(raw)}
 			continue
 		}
-		sh.identity = pageIdentity(string(raw), siteURL, buildRevision())
+		sh.identity = pageIdentity(e.shell, string(raw), siteURL, buildRevision())
 		out[e.shell] = sh
 	}
 	return out
@@ -158,24 +161,30 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 // same data release) leaves that page asking for hashed assets the server no
 // longer has, forever.
 //
-// Three components, mixed into one short hash at load because none of them
+// Four components, mixed into one short hash at load because none of them
 // changes for the life of the process:
 //
+//   - the PAGE's own name (its shell path): what distinguishes two pages that a
+//     record can be addressed at. A work and its recap page are different
+//     representations of one slug, and their shells are two files - but nothing
+//     stops a build from emitting the same bytes for both (a shell is mostly
+//     layout), and two representations sharing a validator would hand a client
+//     the wrong 304. The name is the one component that cannot coincide;
 //   - the built shell's own bytes: the dist's identity, and the only component a
 //     UI-only deploy moves;
 //   - the configured site URL: every canonical link, og:url and JSON-LD url is
 //     built from it, so one artifact renders two different pages at two origins;
 //   - the binary's VCS revision: the COMPOSER's own code, which a fact-sheet or
-//     JSON-LD change moves without touching either of the above.
+//     JSON-LD change moves without touching any of the above.
 //
 // fnv-64a is enough: this is a cache key, not a signature - a client that
 // fabricates a validator is only ever handed a 304 for a page it invented (see
 // entityHandler), so nothing here has to resist collisions chosen by an
 // attacker. Components are length-prefixed so no two of them can be run together
 // into the same digest input.
-func pageIdentity(shellHTML, siteURL, revision string) string {
+func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
 	h := fnv.New64a()
-	for _, part := range []string{shellHTML, siteURL, revision} {
+	for _, part := range []string{shellName, shellHTML, siteURL, revision} {
 		var n [8]byte
 		binary.LittleEndian.PutUint64(n[:], uint64(len(part)))
 		_, _ = h.Write(n[:])

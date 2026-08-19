@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   getWork,
   getSeries,
@@ -12,9 +12,9 @@ import {
   type Recording,
   type Chapter,
   type Series,
-  type Character,
 } from '../../lib/api'
-import { roleLabel, revealLabel, storyRows, type StoryRow as StoryRowData } from '../../lib/expressive'
+import { hasGuide, storyRowsOf, type StoryRow } from '../../lib/expressive'
+import type { WorkGuide } from '../../lib/entity-url'
 import {
   seriesNeighbors,
   hashForTab,
@@ -26,7 +26,8 @@ import {
 import { addRecordingIssueUrlForWork } from '../../lib/github-prefill'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
-import { PILL_LINK } from '../ui'
+import { Badge, Chevron, PILL_LINK, TEXT_LINK } from '../ui'
+import { CharactersPanel, RecapsPanel } from './expressive-panels'
 import {
   useEntitySlug,
   useEmbeddedEntity,
@@ -37,25 +38,6 @@ import {
   BackLink,
   ImproveRecord,
 } from './detail-common'
-
-/** The shared disclosure chevron for the page's accordions (chapters, characters,
-    recaps). Points down when closed and rotates 180deg when open. The optional
-    className carries extra layout utilities (e.g. shrink-0 in a flex row). */
-function Chevron({ open, className }: { open: boolean; className?: string }) {
-  return (
-    <svg
-      className={`h-4 w-4 text-dim transition-transform ${open ? 'rotate-180' : ''}${className ? ` ${className}` : ''}`}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-    </svg>
-  )
-}
 
 function CopyChip({ label, value }: { label: string; value: string }) {
   const [copied, setCopied] = useState(false)
@@ -321,130 +303,6 @@ function MetadataBlock({ work }: { work: Work }) {
   )
 }
 
-/** A small uppercase pill used for work genres, character roles and recap
-    scopes. It uppercases its content in CSS, so callers pass readable text and
-    never bother title-casing it. */
-function Badge({ children }: { children: ReactNode }) {
-  return (
-    <span className="shrink-0 rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-dim">
-      {children}
-    </span>
-  )
-}
-
-/** One character card. The description is spoiler-bounded to the reveal position
-    but still story detail, so it stays hidden behind a per-card accordion the
-    reader opens via the reveal-position row. The name stays a real heading in
-    both branches; a card with no description has no disclosure control. */
-function CharacterCard({ character }: { character: Character }) {
-  const [open, setOpen] = useState(false)
-  const role = roleLabel(character.role)
-  const hasDescription = Boolean(character.description)
-  const descId = `char-desc-${character.id}`
-  const reveal = <span className="text-xs font-medium text-pink-400/90">{revealLabel(character.reveal)}</span>
-
-  return (
-    <article className="overflow-hidden rounded-2xl border border-edge bg-surface p-4">
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <h3 className="font-semibold text-hi">{character.name}</h3>
-          {character.aliases && character.aliases.length > 0 ? (
-            <p className="mt-0.5 text-xs text-dim">also {character.aliases.join(', ')}</p>
-          ) : null}
-        </div>
-        {role ? <Badge>{role}</Badge> : null}
-      </div>
-      {hasDescription ? (
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls={descId}
-          className="mt-2 flex w-full items-center justify-between gap-2 text-left transition-colors hover:opacity-80"
-        >
-          {reveal}
-          <Chevron open={open} className="shrink-0" />
-        </button>
-      ) : (
-        <p className="mt-2">{reveal}</p>
-      )}
-      {hasDescription && open ? (
-        <p id={descId} className="mt-3 text-sm leading-relaxed text-body">
-          {character.description}
-        </p>
-      ) : null}
-    </article>
-  )
-}
-
-/** The cast of a work: community-authored, spoiler-aware character cards, each a
-    per-card accordion so descriptions stay hidden until opened. */
-function CharactersPanel({ characters }: { characters: Character[] }) {
-  return (
-    <>
-      <p className="mt-6 max-w-2xl text-sm text-dim">
-        Community-written and spoiler-aware - open a character to read who they are, scoped to where
-        they first appear.
-      </p>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {characters.map((c) => (
-          <CharacterCard key={c.id} character={c} />
-        ))}
-      </div>
-    </>
-  )
-}
-
-/** One "story so far" row: a collapsible accordion that stays closed (spoiler-safe)
-    until the reader opens it. Shared by the position-keyed chaptered recaps and the
-    whole-book summary rows ("In short" / "How did it end?"), so all three read as
-    one list; the caller supplies the header title, an optional scope/kind badge,
-    and the revealed body text. */
-function StoryRow({ title, badge, text }: { title: string; badge?: string; text: string }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="bg-surface">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-raised/40"
-      >
-        <span className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-body">{title}</span>
-          {badge ? <Badge>{badge}</Badge> : null}
-        </span>
-        <Chevron open={open} className="shrink-0" />
-      </button>
-      {open ? <p className="px-4 pb-4 text-sm leading-relaxed text-body">{text}</p> : null}
-    </div>
-  )
-}
-
-/** "Story so far": the rows built by storyRows (the whole-book "In short" row
-    first, the position-ordered chaptered recaps, the whole-book "How did it end?"
-    row last) - every row an accordion closed by default so the reader chooses how
-    far to reveal. The chaptered rows are bounded to their position; the whole-book
-    summary rows are full spoilers, and the intro's spoiler clause appears only
-    when such a row is present. A work may carry only the summary (no chaptered
-    recaps), in which case just the "In short"/ending rows show. */
-function RecapsPanel({ rows }: { rows: StoryRowData[] }) {
-  const hasWholeBook = rows.some((r) => r.wholeBook)
-  return (
-    <>
-      <p className="mt-6 max-w-2xl text-sm text-dim">
-        Open a recap only as far as you have listened
-        {hasWholeBook ? ' - the whole-book rows are full spoilers.' : '.'}
-      </p>
-      <div className="mt-5 divide-y divide-edge/60 overflow-hidden rounded-2xl border border-edge">
-        {rows.map((row, i) => (
-          <StoryRow key={`${row.title}-${i}`} {...row} />
-        ))}
-      </div>
-    </>
-  )
-}
-
 /** "More in this series": the other member works of the work's (first) series,
     as a horizontal rail of square cover cards. The series is fetched once in the
     parent and passed down (shared with the series nav), so this renders nothing
@@ -557,18 +415,39 @@ function SeriesNav({ prev, next, tabHash, pending }: SeriesNeighbors & { tabHash
   )
 }
 
+/** The island's link to a sidecar's standalone guide page - the hydrated twin of
+    the server fact sheet's "Guides" section, which the island removes on mount.
+    Without it the rendered DOM (what a JS-executing crawler indexes, and what a
+    reader actually sees) carries no path to /works/{id}/recap or /characters,
+    and the guide pages' internal crawl mesh would not survive hydration.
+    Rendered only inside a tab whose member exists, which is exactly the
+    condition under which metaserve serves the page - so this never links a 404. */
+function GuidePageLink({ work, guide }: { work: Work; guide: WorkGuide }) {
+  const label = guide === 'characters' ? `${work.title} character guide` : `${work.title} recap`
+  return (
+    <p className="mt-6 text-sm text-dim">
+      Also a shareable page of its own:{' '}
+      <a href={href.workGuide(work.id, guide)} className={TEXT_LINK}>
+        {label}
+      </a>
+    </p>
+  )
+}
+
 /** Contribution CTAs for a work: routes into the guided builder for the parts of
     the expressive layer this work is missing (characters / story-so-far), and to
     the add-recording issue form when it has no recordings yet. The work_ref is
     prefilled so the form links back to this work rather than creating a duplicate.
     Renders nothing when the work already has all three, so a fully-populated work
     shows no call to action. */
-function ContributeCTAs({ work }: { work: Work }) {
-  const needsCharacters = (work.characters?.length ?? 0) === 0
-  // "Has any recap content" is exactly what storyRows encodes (chaptered recaps
-  // + the whole-book summary rows), so its emptiness is the single source for
-  // this flag - the same predicate that decides the Story so far tab.
-  const needsRecaps = storyRows(work.recaps ?? [], work.recap_summary).length === 0
+function ContributeCTAs({ work, recapRows }: { work: Work; recapRows: StoryRow[] }) {
+  // The SAME presence rule the tabs and the guide pages read (lib/expressive):
+  // "has any recap content" is exactly what storyRows encodes (chaptered recaps
+  // + the whole-book summary rows), so a work carrying only a whole-book summary
+  // is not offered the "add story so far" CTA and does get its guide page. The
+  // rows are the ones Loaded already built for the tab, not a second build.
+  const needsCharacters = !hasGuide(work, 'characters')
+  const needsRecaps = !hasGuide(work, 'recap', recapRows)
   const needsRecording = (work.recordings?.length ?? 0) === 0
   if (!needsCharacters && !needsRecaps && !needsRecording) return null
 
@@ -687,7 +566,7 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
   // recaps + the whole-book summary rows). The panel renders it; its length is
   // both the tab's count and its presence flag, so a work carrying only a
   // whole-book summary still gets the tab.
-  const recapRows = storyRows(work.recaps ?? [], work.recap_summary)
+  const recapRows = storyRowsOf(work)
   const hasRecaps = recapRows.length > 0
   const showTabs = hasCharacters || hasRecaps
 
@@ -827,11 +706,13 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
               {tab === 'characters' ? (
                 <div role="tabpanel" id="panel-characters" aria-labelledby="tab-characters">
                   <CharactersPanel characters={characters} />
+                  <GuidePageLink work={work} guide="characters" />
                 </div>
               ) : null}
               {tab === 'recaps' ? (
                 <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps">
                   <RecapsPanel rows={recapRows} />
+                  <GuidePageLink work={work} guide="recap" />
                 </div>
               ) : null}
             </>
@@ -841,7 +722,7 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
         </div>
       </div>
 
-      <ContributeCTAs work={work} />
+      <ContributeCTAs work={work} recapRows={recapRows} />
       <ImproveRecord kind="work" id={work.id} />
     </div>
   )

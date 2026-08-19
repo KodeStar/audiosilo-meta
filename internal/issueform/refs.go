@@ -63,6 +63,25 @@ var (
 	// which is an API endpoint rather than a page and resolves exactly as it did
 	// before.
 	entityPageRE = regexp.MustCompile(`^/?(works|people|series)/([^/]+)/?$`)
+	// workGuidePageRE matches the two COMMUNITY GUIDE pages a work is also served
+	// at - /works/{slug}/recap and /works/{slug}/characters (internal/serve's
+	// guides.go). A contributor who spots a gap in a recap is reading that page,
+	// so the URL they paste into a correction or sidecar form is that one rather
+	// than the work's.
+	//
+	// Strict in exactly the way entityPageRE is, and for the same reason: the
+	// whole path, one segment for the slug, and then ONE of the two literals -
+	// never a free-text trailing segment, which would claim the retired data-tree
+	// path (works/<shard>/<slug>/work.json) whose second segment means something
+	// else entirely.
+	//
+	// The two literals are COMPOSED from pkg/model's guide segments rather than
+	// restated here: they are the very path internal/serve publishes those pages
+	// at, and a spelling that drifted would silently stop resolving a URL a
+	// contributor really is looking at. (Neither value needs quoting - both are
+	// bare lowercase words - but composing is what keeps them in step.)
+	workGuidePageRE = regexp.MustCompile(
+		`^/?works/([^/]+)/(` + model.GuideSegmentRecap + `|` + model.GuideSegmentCharacters + `)/?$`)
 )
 
 // pageKinds maps a page path's family segment onto the record kind it names. A
@@ -339,7 +358,10 @@ func splitLines(block string) []string {
 //     which the site still composes);
 //   - the entity PAGE path /works/<slug>, absolute or bare, with or without a
 //     query string or fragment - what metaserve serves a work at now, and what a
-//     submitter copies out of the address bar;
+//     submitter copies out of the address bar - plus the two community guide
+//     pages that hang off it, /works/<slug>/recap and /works/<slug>/characters,
+//     which is the URL a contributor is looking at when they spot the gap they
+//     are reporting;
 //   - the retired data-tree path works/<shard>/<slug>/work.json, which older
 //     issues, docs and GitHub blob links still say;
 //   - a bare slug.
@@ -360,6 +382,13 @@ func resolveWorkRef(ref string) (slug string, ok bool) {
 			if slug, ok := workPageSlug(u.EscapedPath()); ok {
 				return slug, true
 			}
+			// A guide-SHAPED path whose slug segment failed the strict read stops
+			// here rather than falling through: worksPathRE would capture the
+			// trailing LITERAL as the slug, silently resolving a mistyped
+			// /works/Not-A-Slug/recap to a work called "recap".
+			if workGuidePageRE.MatchString(u.EscapedPath()) {
+				return "", false
+			}
 			if m := worksPathRE.FindStringSubmatch(u.Path); m != nil {
 				return sanitizeSlug(m[1])
 			}
@@ -371,6 +400,11 @@ func resolveWorkRef(ref string) (slug string, ok bool) {
 	// strip to the one rule that needs it leaves them byte-identical.
 	if slug, ok := workPageSlug(trimURLSuffix(ref)); ok {
 		return slug, true
+	}
+	// The same stop as the URL branch: guide-shaped but not a readable slug is a
+	// refusal, never a fall-through to the looser readings below.
+	if workGuidePageRE.MatchString(trimURLSuffix(ref)) {
+		return "", false
 	}
 	if m := worksPathRE.FindStringSubmatch(ref); m != nil {
 		return sanitizeSlug(m[1])
@@ -388,22 +422,66 @@ func entityPageRef(p string) (recordRef, bool) {
 	if m == nil {
 		return recordRef{}, false
 	}
-	seg, err := url.PathUnescape(m[2])
-	if err != nil || !model.ValidSlug(seg) {
+	seg, ok := slugSegment(m[2])
+	if !ok {
 		return recordRef{}, false
 	}
 	return recordRef{kind: pageKinds[m[1]], slug: seg}, true
 }
 
-// workPageSlug reads a path as the WORK page URL /works/<slug> - the one family
-// resolveWorkRef may return. It is the same rule as entityPageRef, asked of one
-// family, rather than a second reading of the same URLs.
-func workPageSlug(path string) (string, bool) {
-	rr, ok := entityPageRef(path)
-	if !ok || rr.kind != model.KindWork {
+// slugSegment is the one decode-then-validate every page rule applies to the
+// segment it read as the slug: the caller may hand these rules an ESCAPED path,
+// and a segment that is not a slug once decoded names no record. One
+// implementation, so the record page and the guide pages can never disagree
+// about what a slug segment is.
+func slugSegment(raw string) (string, bool) {
+	seg, err := url.PathUnescape(raw)
+	if err != nil || !model.ValidSlug(seg) {
 		return "", false
 	}
-	return rr.slug, true
+	return seg, true
+}
+
+// workPageSlug reads a path as a WORK page URL - the record page /works/<slug>
+// or one of the two guide pages that hang off it - which is the one family
+// resolveWorkRef may return. The record page is entityPageRef's rule asked of
+// one family, rather than a second reading of the same URLs; the guide pages
+// are their own rule because they are the one page shape with a literal AFTER
+// the slug.
+//
+// A guide page names its work, not a record of its own: a recap is a member of
+// the work's sidecar and is addressed through it, so both spellings resolve to
+// the same slug. That is also why this is deliberately not in entityPageRef -
+// no other family has such a page - and why guidePageRef below is its own rule,
+// which resolveRecordRef also asks: the correct-data form advertises "paste the
+// page you are reading", and the page a recap reader is on is the guide's.
+func workPageSlug(path string) (string, bool) {
+	if rr, ok := entityPageRef(path); ok {
+		if rr.kind != model.KindWork {
+			return "", false
+		}
+		return rr.slug, true
+	}
+	if rr, ok := guidePageRef(path); ok {
+		return rr.slug, true
+	}
+	return "", false
+}
+
+// guidePageRef reads a path as one of the two community GUIDE pages
+// (/works/<slug>/recap, /works/<slug>/characters) and resolves it to the WORK
+// the page is about - the one record such a URL can name. The same
+// decode-then-validate as entityPageRef, through the shared slugSegment.
+func guidePageRef(path string) (recordRef, bool) {
+	m := workGuidePageRE.FindStringSubmatch(path)
+	if m == nil {
+		return recordRef{}, false
+	}
+	seg, ok := slugSegment(m[1])
+	if !ok {
+		return recordRef{}, false
+	}
+	return recordRef{kind: model.KindWork, slug: seg}, true
 }
 
 // trimURLSuffix cuts a query string or fragment off a BARE (scheme-less)
@@ -445,8 +523,11 @@ type recordRef struct {
 // resolveRecordRef resolves a "record" reference to the entity it names. It
 // accepts a meta.audiosilo.app work?id=/series?id=/person?id= URL, an entity
 // PAGE URL (/works/<slug>, /people/<slug>, /series/<slug> - absolute or bare,
-// which is what the correct-data form calls the easiest reference), a GitHub
-// blob URL, or a data-tree path (with or without a leading data/).
+// which is what the correct-data form calls the easiest reference), a community
+// GUIDE page URL (/works/<slug>/recap, /works/<slug>/characters - resolved to
+// the work the page is about, since that is the page a reader who spots a wrong
+// fact is on), a GitHub blob URL, or a data-tree path (with or without a
+// leading data/).
 //
 // The path forms it understands are the per-entity ones a submitter has always
 // typed ("works/th/the-thing/work.json"). They are a REFERENCE SYNTAX, not a
@@ -488,6 +569,11 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 		if rr, ok := entityPageRef(u.EscapedPath()); ok {
 			return rr, true
 		}
+		// The two guide pages resolve to the work they are about: a contributor
+		// who spots a wrong fact while reading a recap pastes THAT page's URL.
+		if rr, ok := guidePageRef(u.EscapedPath()); ok {
+			return rr, true
+		}
 		ref = u.Path // fall through to path handling for blob URLs
 	}
 	// Trim a leading data/ (and any repo/blob/main prefix) to land on the
@@ -499,8 +585,12 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 	// The bare page path, e.g. "people/andy-weir" - the same rule the URL branch
 	// asked, for a submitter who pasted the path alone. It is tried before
 	// refPath because refPath's shapes all carry more segments, so the two cannot
-	// both match.
+	// both match. The guide pages likewise: their three segments never collide
+	// with refPath's four-or-five-segment works shapes.
 	if rr, ok := entityPageRef(trimURLSuffix(ref)); ok {
+		return rr, true
+	}
+	if rr, ok := guidePageRef(trimURLSuffix(ref)); ok {
 		return rr, true
 	}
 	return refPath(ref)

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro'
 import Backdrop from '../components/Backdrop.astro'
 import CoveragePanel from '../components/contribute/CoveragePanel.tsx'
+import { CC_BY_SA_URL } from '../lib/expressive'
 
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
 const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
@@ -32,7 +33,7 @@ const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
         <p class="mt-4 text-sm leading-relaxed text-dim">
           Characters and recaps are your own words, contributed under
           <a
-            href="https://creativecommons.org/licenses/by-sa/3.0/"
+            href={CC_BY_SA_URL}
             target="_blank"
             rel="noopener"
             class="text-pink-400 transition-colors hover:text-pink-300">CC BY-SA 3.0</a

@@ -30,6 +30,15 @@ func TestResolveWorkRefAcceptsThePagePath(t *testing.T) {
 		{"a bare path with a query string", "/works/" + slug + "?tab=chapters", slug},
 		{"a bare path with a fragment", "works/" + slug + "#recordings", slug},
 		{"a percent-encoded segment", "https://meta.audiosilo.app/works/" + "project%2Dhail%2Dmary", slug},
+		// The two community guide pages hang off the work and name the same
+		// record, so a contributor pasting the page they were reading resolves to
+		// the work it is about.
+		{"the recap page URL", "https://meta.audiosilo.app/works/" + slug + "/recap", slug},
+		{"the characters page URL", "https://meta.audiosilo.app/works/" + slug + "/characters", slug},
+		{"a guide page with a trailing slash", "https://meta.audiosilo.app/works/" + slug + "/recap/", slug},
+		{"a guide page with a fragment", "/works/" + slug + "/characters#rocky", slug},
+		{"a bare guide path", "works/" + slug + "/recap", slug},
+		{"a percent-encoded guide segment", "/works/project%2Dhail%2Dmary/recap", slug},
 		// The shapes that already worked keep working, unchanged.
 		{"the legacy query URL", "https://meta.audiosilo.app/work?id=" + slug, slug},
 		{"the data-tree path", "data/works/pr/" + slug + "/work.json", slug},
@@ -50,16 +59,61 @@ func TestResolveWorkRefAcceptsThePagePath(t *testing.T) {
 // reference into a work that is not the one they named.
 func TestWorkPageSlugIsStrict(t *testing.T) {
 	for _, path := range []string{
-		"/works/a/b",             // two segments: that is the data-tree path's shape
-		"/api/v1/works/x",        // an API endpoint, not a page
-		"/people/andy-weir",      // another family
-		"/works/",                // no slug at all
-		"/works",                 // the family, not a record
-		"/works/Not A Slug",      // not slug-shaped once decoded
-		"/prefix/works/the-slug", // the page path is the WHOLE path or nothing
+		"/works/a/b",                 // two segments: that is the data-tree path's shape
+		"/api/v1/works/x",            // an API endpoint, not a page
+		"/people/andy-weir",          // another family
+		"/works/",                    // no slug at all
+		"/works",                     // the family, not a record
+		"/works/Not A Slug",          // not slug-shaped once decoded
+		"/prefix/works/the-slug",     // the page path is the WHOLE path or nothing
+		"/works/the-slug/recaps",     // the guide literal is exact: the page is /recap
+		"/works/the-slug/recap/x",    // ... and it ends the path
+		"/works/the-slug/chapters",   // not a page at all
+		"/works/Not A Slug/recap",    // not slug-shaped once decoded
+		"/api/v1/works/x/recap",      // still not a page
+		"/people/andy-weir/recap",    // no other family has a guide page
+		"/works/the-slug/Characters", // the literal's own spelling
 	} {
 		if slug, ok := workPageSlug(path); ok {
 			t.Errorf("workPageSlug(%q) = %q, want no match", path, slug)
+		}
+	}
+}
+
+// TestGuidePageURLBeatsTheDataTreePath is the ORDER that matters most about the
+// guide rule: /works/<slug>/recap has the same SHAPE as the retired data-tree
+// path (works/<shard>/<slug>/work.json read loosely), and worksPathRE reads that
+// shape's second segment as the slug. Unhandled, a pasted recap URL resolved to
+// a work called "recap".
+func TestGuidePageURLBeatsTheDataTreePath(t *testing.T) {
+	for _, ref := range []string{
+		"https://meta.audiosilo.app/works/project-hail-mary/recap",
+		"/works/project-hail-mary/characters",
+	} {
+		got, ok := resolveWorkRef(ref)
+		if !ok || got != "project-hail-mary" {
+			t.Errorf("resolveWorkRef(%q) = %q, %v; want project-hail-mary", ref, got, ok)
+		}
+	}
+	// And the data-tree path still reads as it always did.
+	if got, ok := resolveWorkRef("data/works/pr/project-hail-mary/work.json"); !ok || got != "project-hail-mary" {
+		t.Errorf("resolveWorkRef(data-tree path) = %q, %v", got, ok)
+	}
+}
+
+// TestGuideShapedRefNeverResolvesToTheLiteral is the fence behind that order: a
+// guide-SHAPED path whose slug segment fails the strict read must REFUSE, not
+// fall through to worksPathRE - which reads the second segment of any
+// works/x/y shape as the slug and so resolved a mistyped guide URL to a work
+// literally called "recap" or "characters" (both plausible real slugs).
+func TestGuideShapedRefNeverResolvesToTheLiteral(t *testing.T) {
+	for _, ref := range []string{
+		"https://meta.audiosilo.app/works/Project-Hail-Mary/recap", // not a slug once decoded
+		"/works/Not A Slug/characters",
+		"works/Not%2FA%2FSlug/recap",
+	} {
+		if slug, ok := resolveWorkRef(ref); ok {
+			t.Errorf("resolveWorkRef(%q) = %q, want a refusal", ref, slug)
 		}
 	}
 }
@@ -94,6 +148,13 @@ func TestResolveRecordRefAcceptsThePagePaths(t *testing.T) {
 		{"a bare absolute path", "/people/andy-weir", model.KindPerson, "andy-weir"},
 		{"a bare relative path", "series/the-stormlight-archive", model.KindSeries, "the-stormlight-archive"},
 		{"a percent-encoded segment", "https://meta.audiosilo.app/people/andy%2Dweir", model.KindPerson, "andy-weir"},
+		// The community guide pages resolve to the WORK they are about: the
+		// correct-data form advertises "paste the page you are reading", and a
+		// reader who spots a wrong fact in a recap is reading the guide page.
+		{"the recap page URL", "https://meta.audiosilo.app/works/project-hail-mary/recap", model.KindWork, "project-hail-mary"},
+		{"the characters page URL", "https://meta.audiosilo.app/works/project-hail-mary/characters", model.KindWork, "project-hail-mary"},
+		{"a bare guide path", "works/project-hail-mary/recap", model.KindWork, "project-hail-mary"},
+		{"a guide page with a fragment", "/works/project-hail-mary/characters#rocky", model.KindWork, "project-hail-mary"},
 		// The forms that already worked are untouched.
 		{"the legacy query URL", "https://meta.audiosilo.app/person?id=andy-weir", model.KindPerson, "andy-weir"},
 		{"the data-tree work path", "data/works/pr/project-hail-mary/work.json", model.KindWork, "project-hail-mary"},

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { entitySlugFromLocation } from './entity-url'
+import { entitySlugFromLocation, workGuideSlugFromLocation } from './entity-url'
 
 describe('entitySlugFromLocation - the path route', () => {
   it('reads the slug from each kind\'s own segment', () => {
@@ -78,5 +78,58 @@ describe('entitySlugFromLocation - the legacy query fallback', () => {
 
   it('tolerates a search string with no leading question mark', () => {
     expect(entitySlugFromLocation('/work', 'id=x', 'work')).toBe('x')
+  })
+})
+
+describe('workGuideSlugFromLocation - the guide sub-pages', () => {
+  it('reads the work slug from each guide path', () => {
+    expect(workGuideSlugFromLocation('/works/killing-floor/recap', '', 'recap')).toBe(
+      'killing-floor'
+    )
+    expect(workGuideSlugFromLocation('/works/killing-floor/characters', '', 'characters')).toBe(
+      'killing-floor'
+    )
+  })
+
+  it('does not read the other guide\'s path', () => {
+    expect(workGuideSlugFromLocation('/works/a/recap', '', 'characters')).toBeNull()
+    expect(workGuideSlugFromLocation('/works/a/characters', '', 'recap')).toBeNull()
+  })
+
+  it('matches nothing outside the exact four-segment shape', () => {
+    expect(workGuideSlugFromLocation('/works/a', '', 'recap')).toBeNull()
+    expect(workGuideSlugFromLocation('/works/a/recap/', '', 'recap')).toBeNull()
+    expect(workGuideSlugFromLocation('/works/a/b/recap', '', 'recap')).toBeNull()
+    expect(workGuideSlugFromLocation('/works//recap', '', 'recap')).toBeNull()
+    expect(workGuideSlugFromLocation('/people/a/recap', '', 'recap')).toBeNull()
+    expect(workGuideSlugFromLocation('/x/works/a/recap', '', 'recap')).toBeNull()
+  })
+
+  it('percent-decodes the slug and drops a malformed escape', () => {
+    expect(workGuideSlugFromLocation('/works/a%20b/recap', '', 'recap')).toBe('a b')
+    expect(workGuideSlugFromLocation('/works/%/recap', '', 'recap')).toBeNull()
+  })
+
+  it('falls back to ?id= on the flat shell, which is what astro dev serves', () => {
+    expect(workGuideSlugFromLocation('/recap', '?id=killing-floor', 'recap')).toBe('killing-floor')
+    expect(workGuideSlugFromLocation('/characters', '?id=killing-floor', 'characters')).toBe(
+      'killing-floor'
+    )
+    expect(workGuideSlugFromLocation('/recap', '?id=', 'recap')).toBe('')
+    expect(workGuideSlugFromLocation('/recap', '', 'recap')).toBeNull()
+  })
+
+  it('prefers the path over a legacy ?id= on the same URL', () => {
+    expect(workGuideSlugFromLocation('/works/from-path/recap', '?id=from-query', 'recap')).toBe(
+      'from-path'
+    )
+  })
+
+  it('never reads the work page itself as a guide page', () => {
+    expect(workGuideSlugFromLocation('/works/a', '', 'recap')).toBeNull()
+    // ...and the strict work parser still refuses the guide paths, which is the
+    // pair of rules that keeps the two shells' islands off each other's URLs.
+    expect(entitySlugFromLocation('/works/a/recap', '', 'work')).toBeNull()
+    expect(entitySlugFromLocation('/works/a/characters', '', 'work')).toBeNull()
   })
 })

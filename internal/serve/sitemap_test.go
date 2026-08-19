@@ -100,8 +100,8 @@ func TestSitemapsNeedNoSiteDirectory(t *testing.T) {
 // ---- the index --------------------------------------------------------------
 
 // TestSitemapIndexOrderAndContents pins the crawl-budget ordering the campaign
-// rests on - the static pages first, then series, people and works - along with
-// the absolute locs and the built_at lastmod.
+// rests on - the static pages first, then the two guide families, then series,
+// people and works - along with the absolute locs and the built_at lastmod.
 func TestSitemapIndexOrderAndContents(t *testing.T) {
 	ts := sitemapSite(t, fixtureCatalog())
 	code, body, hdr := getSitemap(t, ts.URL, sitemapIndexPath)
@@ -141,6 +141,8 @@ func TestSitemapIndexOrderAndContents(t *testing.T) {
 	}
 	want := []string{
 		testSiteURL + "/sitemap-0.xml",
+		testSiteURL + "/sitemaps/recaps-0.xml",
+		testSiteURL + "/sitemaps/characters-0.xml",
 		testSiteURL + "/sitemaps/series-0.xml",
 		testSiteURL + "/sitemaps/people-0.xml",
 		testSiteURL + "/sitemaps/works-0.xml",
