@@ -30,11 +30,15 @@ var updateGolden = flag.Bool("update-golden", false, "rewrite the golden entity 
 // production.
 const testSiteURL = "https://meta.test"
 
-// markedShells is the ordinary case: all three entity shells carry the markers.
+// markedShells is the ordinary case: every entity shell carries the markers.
+// The guide pages' shells are here too - they are ordinary entity shells as far
+// as this package is concerned, and the dist really does build one per page.
 var markedShells = map[string]string{
-	"work":   "shell-marked.html",
-	"person": "shell-marked.html",
-	"series": "shell-marked.html",
+	"work":       "shell-marked.html",
+	"person":     "shell-marked.html",
+	"series":     "shell-marked.html",
+	"recap":      "shell-marked.html",
+	"characters": "shell-marked.html",
 }
 
 // entitySite lays out a site directory whose entity shells are the named
@@ -129,7 +133,10 @@ func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
 		}
 	}
 
-	// And every family has both of its routes, derived from the one table.
+	// And every page is registered, derived from the one table: the three entity
+	// families with both of their routes, and the two guide pages with only the
+	// path route (they replaced no query-param URL, so htmlRoutes registers no
+	// legacy twin for them - see htmlEntityRoute.legacy).
 	var got []string
 	for _, r := range srv.htmlRoutes() {
 		got = append(got, r.pattern)
@@ -137,7 +144,7 @@ func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
 	sort.Strings(got)
 	want := []string{
 		"GET /people/{id}", "GET /person", "GET /series", "GET /series/{id}",
-		"GET /work", "GET /works/{id}",
+		"GET /work", "GET /works/{id}", "GET /works/{id}/characters", "GET /works/{id}/recap",
 	}
 	if strings.Join(got, ",") != strings.Join(want, ",") {
 		t.Errorf("htmlRoutes = %v, want %v", got, want)
@@ -390,7 +397,7 @@ func TestEntityPagesAreDeterministic(t *testing.T) {
 	}
 }
 
-// TestEntityPagesGolden renders all three page kinds over the shared fixture
+// TestEntityPagesGolden renders every page kind over the shared fixture
 // catalogue and diffs them against the committed output. It is the review
 // artifact for this feature: a change to the head, the fact sheet or the JSON-LD
 // shows up as a readable diff rather than as a passing test.
@@ -400,6 +407,11 @@ func TestEntityPagesGolden(t *testing.T) {
 		{"work", "/works/project-hail-mary"},
 		{"person", "/people/brandon-sanderson"},
 		{"series", "/series/the-stormlight-archive"},
+		// The community guide pages: what a crawler is served for "<title> recap"
+		// and "<title> characters" - the whole point of Phase F, so the whole page
+		// is reviewable as a diff.
+		{"recap", "/works/project-hail-mary" + recapSuffix},
+		{"characters", "/works/project-hail-mary" + charactersSuffix},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -676,27 +688,32 @@ func TestEntityETagCoversTheDist(t *testing.T) {
 	}
 }
 
-// TestPageIdentityCoversEveryComponent pins the three inputs one page's identity
+// TestPageIdentityCoversEveryComponent pins the four inputs one page's identity
 // is mixed from, each for a different way the rendered bytes can change while
-// the artifact does not: the dist, the origin every canonical URL is built from,
-// and the composer's own code.
+// the artifact does not: WHICH page it is, the dist, the origin every canonical
+// URL is built from, and the composer's own code.
 func TestPageIdentityCoversEveryComponent(t *testing.T) {
 	const (
+		shellName = "work/index.html"
 		shellHTML = "<html>SHELL</html>"
 		siteURL   = "https://meta.test"
 		revision  = "abc123"
 	)
-	base := pageIdentity(shellHTML, siteURL, revision)
-	if again := pageIdentity(shellHTML, siteURL, revision); again != base {
+	base := pageIdentity(shellName, shellHTML, siteURL, revision)
+	if again := pageIdentity(shellName, shellHTML, siteURL, revision); again != base {
 		t.Errorf("pageIdentity is not deterministic: %q then %q", base, again)
 	}
 	cases := map[string]string{
-		"a rebuilt dist":       pageIdentity(shellHTML+" ", siteURL, revision),
-		"a different origin":   pageIdentity(shellHTML, siteURL+"/staging", revision),
-		"a different revision": pageIdentity(shellHTML, siteURL, revision+"0"),
+		// Two pages a record can be addressed at (a work and its recap page) built
+		// from IDENTICAL shell bytes: without the name they would share a
+		// validator, and a client would be handed a 304 for the other page.
+		"a different page":     pageIdentity("recap/index.html", shellHTML, siteURL, revision),
+		"a rebuilt dist":       pageIdentity(shellName, shellHTML+" ", siteURL, revision),
+		"a different origin":   pageIdentity(shellName, shellHTML, siteURL+"/staging", revision),
+		"a different revision": pageIdentity(shellName, shellHTML, siteURL, revision+"0"),
 		// Length-prefixed components: without that, moving a boundary would leave
 		// the digest input identical.
-		"a moved boundary": pageIdentity(shellHTML+siteURL, "", revision),
+		"a moved boundary": pageIdentity(shellName, shellHTML+siteURL, "", revision),
 	}
 	for name, got := range cases {
 		if got == base {
@@ -704,7 +721,7 @@ func TestPageIdentityCoversEveryComponent(t *testing.T) {
 		}
 	}
 	// An unstamped binary (go run, a test binary) is honest, not an error.
-	if pageIdentity(shellHTML, siteURL, "") == "" {
+	if pageIdentity(shellName, shellHTML, siteURL, "") == "" {
 		t.Error("an empty revision produced an empty identity")
 	}
 }

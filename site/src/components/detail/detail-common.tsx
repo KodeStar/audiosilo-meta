@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ApiError } from '../../lib/api'
-import { entitySlugFromLocation, type EntityKind } from '../../lib/entity-url'
+import {
+  entitySlugFromLocation,
+  workGuideSlugFromLocation,
+  type EntityKind,
+  type WorkGuide,
+} from '../../lib/entity-url'
 import { correctDataIssueUrl, issueChooserUrl, type RecordKind } from '../../lib/github-prefill'
+import { TEXT_LINK } from '../ui'
 
 /** Read a query-string parameter on the client (detail pages are static shells
     that carry the entity id in `?id=`). Returns null ONLY before hydration; once
@@ -18,27 +24,40 @@ export function useQueryParam(name: string): string | null {
   return value
 }
 
-/** Read the entity slug for a detail island: the path route first, the legacy
-    `?id=` second (see lib/entity-url). '' when the URL names no entity, which
-    useEntity maps to its not-found state.
+/** Read a slug off window.location ONCE, on the first render.
 
-    Read in a lazy initializer, on the FIRST render, rather than in an effect.
-    The three detail islands are `client:only` (see work/person/series.astro), so
-    window exists before the first render - WorkDetail already reads
+    A lazy initializer rather than an effect. Every detail island is
+    `client:only` (see work/person/series/recap/characters.astro), so window
+    exists before the first render - WorkDetail already reads
     window.location.hash the same way - and reading it in an effect cost a whole
     committed render in which the island showed its spinner UNDERNEATH the
     server-rendered fact sheet, which useEmbeddedEntity only removes once it has
     a slug to match the payload against.
 
-    There is no null-before-read value to distinguish here for the same reason:
-    the location has always been read. useQueryParam above keeps the null,
-    because its caller (BuildTool) does distinguish them. */
-export function useEntitySlug(kind: EntityKind): string {
+    '' when the location names nothing, which useEntity maps to its not-found
+    state. There is no null-before-read value to distinguish, for the same
+    reason: the location has always been read. useQueryParam above keeps the
+    null, because its caller (BuildTool) does distinguish them. */
+function useLocationSlug(read: (pathname: string, search: string) => string | null): string {
   const [value] = useState(() => {
     const { pathname, search } = window.location
-    return entitySlugFromLocation(pathname, search, kind) ?? ''
+    return read(pathname, search) ?? ''
   })
   return value
+}
+
+/** The entity slug for a detail island: the path route first, the legacy `?id=`
+    second (see lib/entity-url). */
+export function useEntitySlug(kind: EntityKind): string {
+  return useLocationSlug((pathname, search) => entitySlugFromLocation(pathname, search, kind))
+}
+
+/** The WORK slug a community-guide island is about: the four-segment path route
+    (`/works/{slug}/recap`, `/works/{slug}/characters`) first, the legacy `?id=`
+    on the flat shell second - which is what `astro dev` and a metaserve with no
+    artifact loaded serve. */
+export function useWorkGuideSlug(guide: WorkGuide): string {
+  return useLocationSlug((pathname, search) => workGuideSlugFromLocation(pathname, search, guide))
 }
 
 /** The two ids metaserve injects in place of the `<!--ssr:entity-->` marker: the
@@ -207,12 +226,10 @@ export function DetailError({ notFound, kind }: { notFound: boolean; kind: strin
     record, the intake bot applies it, and the contributor never has to find
     anything in the tree. */
 export function ImproveRecord({ kind, id }: { kind: RecordKind; id: string }) {
-  const link =
-    'text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline'
   return (
     <p className="mt-16 border-t border-edge pt-6 text-sm text-dim">
       Spotted an error?{' '}
-      <a href={correctDataIssueUrl(kind, id)} target="_blank" rel="noopener" className={link}>
+      <a href={correctDataIssueUrl(kind, id)} target="_blank" rel="noopener" className={TEXT_LINK}>
         Report a problem with this {kind}
       </a>{' '}
       and the intake bot will open the correction for review.

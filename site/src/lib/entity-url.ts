@@ -33,29 +33,74 @@ function decodeSegment(raw: string): string | null {
 }
 
 /**
- * The entity slug this location addresses, or null when it addresses none.
+ * The slug a location addresses, or null when it addresses none. The ONE
+ * implementation of that rule; the two exported readers below differ only in
+ * which path SHAPE they accept.
  *
- * Reads `/works/{slug}` (the kind's own plural segment) first and the legacy
- * `?id=` second. The path match is STRICT - exactly two segments, both
- * non-empty - so `/works`, `/works/`, `/works/a/b` and `/worksy/a` all fall
- * through to the query string, which is what keeps a future `/works/a/reviews`
- * from being read as the work `a`.
+ * `expect` names the segments after the leading empty one, with `null` standing
+ * for the slug itself: ['works', null] is `/works/{slug}` and
+ * ['works', null, 'recap'] is `/works/{slug}/recap`. The match is STRICT - the
+ * path must have exactly that many segments and every literal must be exactly
+ * that literal - so `/works`, `/works/`, `/works/a/b` and `/worksy/a` all fall
+ * through to the query string, which is what keeps a sub-path from being read
+ * as the record itself.
  *
- * An `?id=` that is present but empty yields '' (not null), so a caller can
- * tell "no id in this URL" from "an id was supplied and it was blank" - the
- * distinction useEntity turns into its not-found state.
+ * The `?id=` fallback is second, and reached from every non-match: the flat
+ * shells are what `astro dev` and a metaserve with no artifact loaded serve, and
+ * there the query parameter is the only way to name a record. An `?id=` that is
+ * present but empty yields '' (not null), so a caller can tell "no id in this
+ * URL" from "an id was supplied and it was blank" - the distinction useEntity
+ * turns into its not-found state.
+ */
+function slugFromLocation(
+  pathname: string,
+  search: string,
+  expect: (string | null)[]
+): string | null {
+  // A leading '/' makes segments[0] the empty string, so an exact match is that
+  // empty string followed by exactly the expected segments.
+  const segments = pathname.split('/')
+  if (segments.length === expect.length + 1 && segments[0] === '') {
+    const matched = expect.every((want, i) => want === null || segments[i + 1] === want)
+    const slugAt = expect.indexOf(null) + 1
+    if (matched) {
+      const slug = segments[slugAt] ? decodeSegment(segments[slugAt]) : null
+      if (slug) return slug
+    }
+  }
+  return new URLSearchParams(search).get('id')
+}
+
+/**
+ * The entity slug this location addresses: `/works/{slug}` (the kind's own
+ * plural segment) first, the legacy `?id=` second.
  */
 export function entitySlugFromLocation(
   pathname: string,
   search: string,
   kind: EntityKind
 ): string | null {
-  const segments = pathname.split('/')
-  // A leading '/' makes segments[0] the empty string, so an exact path match is
-  // ['', '<segment>', '<slug>'] and nothing else.
-  if (segments.length === 3 && segments[0] === '' && segments[1] === pathSegment[kind]) {
-    const slug = segments[2] ? decodeSegment(segments[2]) : null
-    if (slug) return slug
-  }
-  return new URLSearchParams(search).get('id')
+  return slugFromLocation(pathname, search, [pathSegment[kind], null])
+}
+
+/** The community-guide sub-pages a work can have: the story-so-far recap and the
+    character guide. metaserve serves each at the work's own route plus this
+    literal segment, and only for a work that carries that sidecar. */
+export type WorkGuide = 'recap' | 'characters'
+
+/**
+ * The WORK slug a guide page addresses: `/works/{slug}/recap` or
+ * `/works/{slug}/characters` - the work's own route plus the guide's literal -
+ * with the same legacy `?id=` fallback.
+ *
+ * A guide page is ABOUT a work without being the work's page, which is exactly
+ * why the shared matcher above is strict about segment COUNT: `/works/{slug}`
+ * never resolves here, and a guide path never resolves as the work itself.
+ */
+export function workGuideSlugFromLocation(
+  pathname: string,
+  search: string,
+  guide: WorkGuide
+): string | null {
+  return slugFromLocation(pathname, search, [pathSegment.work, null, guide])
 }

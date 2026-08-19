@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro'
+import WorkGuidePage from '../components/detail/work-guide.tsx'
+import { ENTITY_MARKER } from '../lib/ssr-markers'
+---
+
+<Base
+  title="Audiobook recap - AudioSilo Meta"
+  description="A community-written, spoiler-aware story so far for an audiobook in the AudioSilo Meta database: chapter-by-chapter checkpoints, a whole-book summary, and how it ends - each one hidden until you open it."
+  hasHero
+>
+  {/* metaserve replaces this marker on /works/{slug}/recap with the
+      server-rendered fact sheet (#ssr-entity) and the work payload
+      (#entity-data) the island hydrates from; served untouched everywhere else,
+      including this flat /recap shell. See internal/serve and the contract note
+      in Base.astro.
+
+      It is written through set:html because a bare `<!--ssr:entity-->` here
+      would not survive the build - see lib/ssr-markers. */}
+  <Fragment set:html={ENTITY_MARKER} /><WorkGuidePage guide="recap" client:only="react" />
+</Base>

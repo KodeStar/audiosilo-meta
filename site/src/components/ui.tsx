@@ -1,8 +1,11 @@
 // Shared React-island primitives: the button/pill classes replicated from
-// Button.astro and the inline outline Icon (heroicons paths), since Astro
+// Button.astro, the two tiny presentation atoms every detail island shares
+// (Chevron, Badge) and the inline outline Icon (heroicons paths), since Astro
 // components cannot render inside a React island. ONE source of truth - the
 // import, build and detail islands all pull from here; do not re-copy these
 // into an island.
+
+import type { ReactNode } from 'react'
 
 // Button classes replicated from Button.astro.
 const BTN_BASE =
@@ -14,6 +17,45 @@ export const BTN_SECONDARY = `${BTN_BASE} border border-edge text-hi hover:-tran
 // Padding is per call site, so row pills stay tighter than standalone CTAs.
 export const PILL_LINK =
   'inline-flex items-center rounded-lg border border-edge text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
+
+// The inline text link every island uses inside a paragraph of prose (the
+// correction footer, the guide pages' licence line). Here beside PILL_LINK for
+// the same reason: it is a look shared across islands, and a second copy drifts
+// the moment one of them is restyled.
+export const TEXT_LINK =
+  'text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline'
+
+/** The disclosure chevron shared by every accordion in the detail islands
+    (chapters on the work page, characters and story-so-far rows on the work
+    page and on their own guide pages). Points down when closed and rotates
+    180deg when open. The optional className carries extra layout utilities
+    (e.g. shrink-0 in a flex row). */
+export function Chevron({ open, className }: { open: boolean; className?: string }) {
+  return (
+    <svg
+      className={`h-4 w-4 text-dim transition-transform ${open ? 'rotate-180' : ''}${className ? ` ${className}` : ''}`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  )
+}
+
+/** A small uppercase pill used for work genres, character roles and recap
+    scopes. It uppercases its content in CSS, so callers pass readable text and
+    never bother title-casing it. */
+export function Badge({ children }: { children: ReactNode }) {
+  return (
+    <span className="shrink-0 rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-dim">
+      {children}
+    </span>
+  )
+}
 
 const ICON_PATHS = {
   database:

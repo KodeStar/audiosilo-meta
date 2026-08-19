@@ -63,38 +63,110 @@ var sitemapShardURLs = 50000
 // from, so a fourth family is a row rather than four edits.
 //
 // The ORDER of the table is the order the index lists them in, and it is the
-// crawl-budget decision the campaign rests on: series and people first (few
-// files, high query value - series reading order and narrator-name queries),
-// works last. A young domain gets its six-figure page count indexed slowly, so
-// what the early crawl budget is spent on is the part we control.
+// crawl-budget decision the campaign rests on: the two GUIDE families first (one
+// shard each today, and the highest-value new content there is - a recap page is
+// what answers "<title> recap"), then series and people (few files, high query
+// value - series reading order and narrator-name queries), works last. A young
+// domain gets its six-figure page count indexed slowly, so what the early crawl
+// budget is spent on is the part we control.
 type sitemapFamily struct {
-	name   string          // the shard file's prefix, e.g. "works"
-	prefix string          // the page path prefix these ids are addressed at
-	count  func(Stats) int // how many records the family holds
-	query  string          // id (+ lastmod) rows, ordered by id, one shard's worth
+	name   string // the shard file's prefix, e.g. "works"
+	prefix string // the page path prefix these ids are addressed at
+	// suffix is the page path's trailing literal: "" for a record's own page,
+	// and the guide suffix for the two pages that hang off a work. A family is
+	// therefore a set of PAGES rather than of records, which is what lets two
+	// families address one id space.
+	suffix string
+	// count is how many URLs the family holds. It reads the SNAPSHOT rather than
+	// Stats because the guide families count works CARRYING A SIDECAR, which is
+	// not a catalogue statistic and does not belong in the public /api/v1/stats
+	// payload (this change moves no API surface and no SchemaVersion).
+	count func(*snapshot) int
+	// query returns the SQL for one shard's id (+ lastmod) rows, ordered by id.
+	// It is a function of the snapshot for the same reason count is: the recap
+	// family's URL set spans two tables, the second of which only exists at
+	// schema_version 3, so WHICH query is honest depends on the artifact.
+	query func(*snapshot) string
 }
 
 var sitemapFamilies = []sitemapFamily{
-	{name: "series", prefix: seriesPath, count: func(st Stats) int { return st.Series }, query: seriesSitemapSQL},
-	{name: "people", prefix: personPath, count: func(st Stats) int { return st.People }, query: peopleSitemapSQL},
-	{name: "works", prefix: workPath, count: func(st Stats) int { return st.Works }, query: worksSitemapSQL},
+	{name: "recaps", prefix: workPath, suffix: recapSuffix,
+		count: func(s *snapshot) int { return s.recapWorks },
+		query: func(s *snapshot) string { _, shard := recapSitemapSQL(s.schemaVersion); return shard }},
+	{name: "characters", prefix: workPath, suffix: charactersSuffix,
+		count: func(s *snapshot) int { return s.characterWorks },
+		query: func(*snapshot) string { return charactersSitemapSQL }},
+	{name: "series", prefix: seriesPath,
+		count: func(s *snapshot) int { return s.stats.Series },
+		query: func(*snapshot) string { return seriesSitemapSQL }},
+	{name: "people", prefix: personPath,
+		count: func(s *snapshot) int { return s.stats.People },
+		query: func(*snapshot) string { return peopleSitemapSQL }},
+	{name: "works", prefix: workPath,
+		count: func(s *snapshot) int { return s.stats.Works },
+		query: func(*snapshot) string { return worksSitemapSQL }},
 }
 
-// The per-family shard queries. Each walks its table's PRIMARY KEY index in id
-// order - the same order the OFFSET pages through - so a shard is a windowed
-// index walk rather than a scan (TestServeLookupsAreIndexed runs these very
-// constants through EXPLAIN QUERY PLAN).
+// The per-family shard queries. Each walks an index in id order - the same order
+// the OFFSET pages through - so a shard is a windowed index walk rather than a
+// scan (TestServeLookupsAreIndexed runs these very constants through EXPLAIN
+// QUERY PLAN).
 //
-// Only works carries an added_at column, so the other two select a literal NULL
-// for it: one row shape, one scan loop, and no per-family branch that could
+// Only works carries an added_at column, so every other query selects a literal
+// NULL for it: one row shape, one scan loop, and no per-family branch that could
 // disagree with the query it belongs to. A family with no date simply emits no
 // <lastmod>, which is the protocol's own "unknown" - nothing is fabricated, and
-// nothing about the artifact changes to serve them.
+// nothing about the artifact changes to serve any of these.
 const (
 	worksSitemapSQL  = `SELECT id, added_at FROM works ORDER BY id LIMIT ? OFFSET ?`
 	peopleSitemapSQL = `SELECT id, NULL FROM people ORDER BY id LIMIT ? OFFSET ?`
 	seriesSitemapSQL = `SELECT id, NULL FROM series ORDER BY id LIMIT ? OFFSET ?`
+
+	// The guide families list one URL per work that CARRIES the sidecar the page
+	// renders, which is the same condition the compose func applies (see
+	// hasRecapGuide / hasCharacterGuide) - a sitemap must never promise a URL
+	// that 404s.
+	charactersSitemapSQL = `SELECT DISTINCT work_id, NULL FROM characters ORDER BY work_id LIMIT ? OFFSET ?`
+	// A recap page is served for a chaptered recap OR a whole-book summary, so
+	// its URL set is the union of two tables. The membership of the second one is
+	// exactly what the page needs from it - internal/build writes a
+	// recap_summaries row only for a sidecar that states in_short or ending - so
+	// a listed URL always has a page. It is written as a COMPOUND select
+	// rather than as a subquery deliberately: wrapping the union in a FROM makes
+	// the outer step an unindexed scan of a co-routine, while each arm of a
+	// compound still walks its own index.
+	recapsSitemapSQL = `SELECT work_id, NULL FROM recaps UNION SELECT work_id, NULL FROM recap_summaries ` +
+		`ORDER BY work_id LIMIT ? OFFSET ?`
+	// recapsOnlySitemapSQL is that same set on an artifact that predates
+	// recap_summaries (schema_version 2), where the second table does not exist
+	// to be named - a query mentioning it would not even parse.
+	recapsOnlySitemapSQL = `SELECT DISTINCT work_id, NULL FROM recaps ORDER BY work_id LIMIT ? OFFSET ?`
+
+	// The guide families' counts, each counting exactly the rows its shard query
+	// pages, so "how many shards" and "what is in them" cannot disagree.
+	characterWorksCountSQL = `SELECT COUNT(DISTINCT work_id) FROM characters`
+	recapWorksCountSQL     = `SELECT COUNT(*) FROM (SELECT work_id FROM recaps UNION SELECT work_id FROM recap_summaries)`
+	recapWorksOnlyCountSQL = `SELECT COUNT(DISTINCT work_id) FROM recaps`
 )
+
+// recapSitemapSQL derives the recap family's two queries from the artifact's
+// schema_version: how many pages the family holds, and how one shard's rows are
+// read. A recap page is served for a chaptered recap OR a whole-book summary, so
+// the set spans two tables and the second only exists from
+// summarySchemaVersion - below it, a query naming recap_summaries would not even
+// parse.
+//
+// It is one PURE function of the version rather than a value threaded through
+// the snapshot, so the pairing is structural: the count and the listing are
+// derived from the same input, at every call, and a snapshot's schemaVersion is
+// immutable - so "how many shards a family advertises" and "what is in them"
+// cannot be computed against different tables however the two are reached.
+func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
+	if schemaVersion >= summarySchemaVersion {
+		return recapWorksCountSQL, recapsSitemapSQL
+	}
+	return recapWorksOnlyCountSQL, recapsOnlySitemapSQL
+}
 
 // shardFilePattern is the strict spelling of a shard's file name. Strict on both
 // counts: the family is matched against the table above, and a shard number has
@@ -185,7 +257,7 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 		s.sitemapUnavailable(w)
 		return
 	}
-	if shard >= shardCount(fam.count(snap.stats)) {
+	if shard >= shardCount(fam.count(snap)) {
 		http.NotFound(w, r)
 		return
 	}
@@ -315,7 +387,7 @@ func (s *Server) sitemapIndex(snap *snapshot, static bool) *sitemapIndexDoc {
 	}
 	built := w3cDate(snap.stats.BuiltAt)
 	for _, fam := range sitemapFamilies {
-		for shard := range shardCount(fam.count(snap.stats)) {
+		for shard := range shardCount(fam.count(snap)) {
 			doc.Sitemaps = append(doc.Sitemaps, sitemapEntryDoc{
 				Loc:     s.cfg.SiteURL + sitemapShardPrefix + shardFile(fam, shard),
 				LastMod: built,
@@ -329,7 +401,7 @@ func (s *Server) sitemapIndex(snap *snapshot, static bool) *sitemapIndexDoc {
 // id order, each with the record's own added_at as its lastmod where the family
 // has one.
 func (s *Server) sitemapShard(snap *snapshot, fam sitemapFamily, shard int) (*urlSetDoc, error) {
-	rows, err := snap.db.Query(fam.query, sitemapShardURLs, shard*sitemapShardURLs)
+	rows, err := snap.db.Query(fam.query(snap), sitemapShardURLs, shard*sitemapShardURLs)
 	if err != nil {
 		return nil, err
 	}
@@ -341,7 +413,7 @@ func (s *Server) sitemapShard(snap *snapshot, fam sitemapFamily, shard int) (*ur
 		if err := rows.Scan(&id, &added); err != nil {
 			return nil, err
 		}
-		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + id}
+		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + id + fam.suffix}
 		if added != nil {
 			entry.LastMod = w3cDate(*added)
 		}

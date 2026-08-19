@@ -152,7 +152,7 @@ func TestUnknownSlugStillNotFound(t *testing.T) {
 // redirects table dropped - a newer binary briefly serving an older release. The
 // retired slug must 404 as it did before the mechanism existed, never 500.
 func TestRedirectsTolerateOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, 4, "redirects")
+	ts := downgradedServer(t, fixtureCatalog(), 4, "redirects")
 	if code, _ := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"); code != http.StatusNotFound {
 		t.Errorf("retired work slug on a v4 artifact = %d, want 404", code)
 	}

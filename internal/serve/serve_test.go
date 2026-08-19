@@ -124,14 +124,39 @@ func buildFixtureDB(t *testing.T, cat *model.Catalog) string {
 	return out
 }
 
-// downgradedServer builds the fixture artifact, rolls it back to an OLDER
-// artifact shape (dropping dropTables and stamping meta(schema_version) to
-// version), and serves it. That is the "a newer metaserve binary briefly serves
-// an older release" case every version-gated query has to tolerate: it must
-// degrade to "no data" rather than 500 on the missing table.
-func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest.Server {
+// downgradedServer builds cat's artifact, rolls it back to an OLDER artifact
+// shape (dropping dropTables and stamping meta(schema_version) to version), and
+// serves it. That is the "a newer metaserve binary briefly serves an older
+// release" case every version-gated query has to tolerate: it must degrade to
+// "no data" rather than 500 on the missing table.
+//
+// The CATALOGUE is a parameter because the version gates are not all visible in
+// one fixture: the guide families need a catalogue whose two recap tables name
+// DIFFERENT works, which the shared fixture (both sidecars on one work) cannot
+// show. Most callers pass fixtureCatalog().
+func downgradedServer(t *testing.T, cat *model.Catalog, version int, dropTables ...string) *httptest.Server {
 	t.Helper()
-	dbPath := buildFixtureDB(t, fixtureCatalog())
+	// The origin is fixed here rather than left to the default so a caller can
+	// assert an absolute URL a downgraded artifact renders (the sitemap locs).
+	srv, err := New(Config{
+		DBPath:    downgradedDB(t, cat, version, dropTables...),
+		SiteURL:   testSiteURL,
+		swapGrace: time.Minute,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+	return ts
+}
+
+// downgradedDB is the rollback itself, without a server around it: a test that
+// asks the QUERY LAYER how it degrades (rather than what a route answers) opens
+// this path as a snapshot instead.
+func downgradedDB(t *testing.T, cat *model.Catalog, version int, dropTables ...string) string {
+	t.Helper()
+	dbPath := buildFixtureDB(t, cat)
 
 	db, err := sql.Open("sqlite", dbPath)
 	if err != nil {
@@ -148,14 +173,7 @@ func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest
 	if err := db.Close(); err != nil {
 		t.Fatal(err)
 	}
-
-	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
-	if err != nil {
-		t.Fatal(err)
-	}
-	ts := httptest.NewServer(srv.Handler())
-	t.Cleanup(ts.Close)
-	return ts
+	return dbPath
 }
 
 func newTestServer(t *testing.T) (*Server, *httptest.Server) {
@@ -548,7 +566,7 @@ func TestWorkDetailGenres(t *testing.T) {
 // the work_genres table: the genre query no-ops on the version, so the work still
 // serves without genres while its v3 payload keeps working.
 func TestGenresToleratesV3Artifact(t *testing.T) {
-	ts := downgradedServer(t, 3, "work_genres")
+	ts := downgradedServer(t, fixtureCatalog(), 3, "work_genres")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -568,7 +586,7 @@ func TestGenresToleratesV3Artifact(t *testing.T) {
 // TestGenresToleratesV3ArtifactABS covers the same downgrade on the ABS facade,
 // whose batched genre lookup gates on the version separately from workGenres.
 func TestGenresToleratesV3ArtifactABS(t *testing.T) {
-	ts := downgradedServer(t, 3, "work_genres")
+	ts := downgradedServer(t, fixtureCatalog(), 3, "work_genres")
 	code, matches := absMatches(t, ts.URL, "/abs/search?query=hail")
 	if code != 200 {
 		t.Fatalf("status %d", code)
@@ -586,7 +604,7 @@ func TestGenresToleratesV3ArtifactABS(t *testing.T) {
 // the characters/recaps tables but not recap_summaries: the summary query no-ops
 // on the version, so the work still serves its characters/recaps.
 func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
-	ts := downgradedServer(t, 2, "work_genres", "recap_summaries")
+	ts := downgradedServer(t, fixtureCatalog(), 2, "work_genres", "recap_summaries")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -607,7 +625,7 @@ func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
 // predates the characters/recaps tables: every sidecar query no-ops on the
 // version, so the work still serves, just without them.
 func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, 1,
+	ts := downgradedServer(t, fixtureCatalog(), 1,
 		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {

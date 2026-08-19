@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro'
+import WorkGuidePage from '../components/detail/work-guide.tsx'
+import { ENTITY_MARKER } from '../lib/ssr-markers'
+---
+
+<Base
+  title="Audiobook characters - AudioSilo Meta"
+  description="A community-written character guide for an audiobook in the AudioSilo Meta database: who is who, the part they play, and where each one first appears - spoiler-scoped, and hidden until you open it."
+  hasHero
+>
+  {/* metaserve replaces this marker on /works/{slug}/characters with the
+      server-rendered fact sheet (#ssr-entity) and the work payload
+      (#entity-data) the island hydrates from; served untouched everywhere else,
+      including this flat /characters shell. See internal/serve and the contract
+      note in Base.astro.
+
+      It is written through set:html because a bare `<!--ssr:entity-->` here
+      would not survive the build - see lib/ssr-markers. */}
+  <Fragment set:html={ENTITY_MARKER} /><WorkGuidePage guide="characters" client:only="react" />
+</Base>

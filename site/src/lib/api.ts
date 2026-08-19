@@ -7,6 +7,12 @@
 // the wire shapes live in one auditable place (mirrors the workspace's
 // hand-mirrored contract rule).
 
+// Type-only, and deliberately one-way: entity-url is a leaf (it imports
+// nothing), so naming its WorkGuide union here keeps the two spellings of "which
+// guide pages exist" - the one that BUILDS a guide URL and the one that READS
+// one back - a single definition, with no cycle.
+import type { WorkGuide } from './entity-url'
+
 const RAW_BASE = import.meta.env.PUBLIC_API_BASE ?? ''
 // Trim a trailing slash so `${BASE}/api/...` never doubles up.
 export const API_BASE = RAW_BASE.replace(/\/$/, '')
@@ -470,6 +476,10 @@ export const href = {
   work: (id: string) => `/works/${encodeURIComponent(id)}`,
   person: (id: string) => `/people/${encodeURIComponent(id)}`,
   series: (id: string) => `/series/${encodeURIComponent(id)}`,
+  /** A work's community-guide sub-page (the crawlable story-so-far recap or
+      character guide). metaserve serves it only for a work that carries that
+      sidecar, so link to it from the presence of the member, never blind. */
+  workGuide: (id: string, guide: WorkGuide) => `/works/${encodeURIComponent(id)}/${guide}`,
   /** The guided sidecar builder, primed for one work and one dimension. */
   build: (id: string, kind: 'characters' | 'recaps') =>
     `/build?work=${encodeURIComponent(id)}&kind=${kind}`,

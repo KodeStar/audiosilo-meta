@@ -47,6 +47,27 @@ func ReservedSlugs() []string { return slices.Clone(reservedSlugs) }
 // verification could answer it from the name alone.
 const reservedPersonSuffix = "-person"
 
+// The two COMMUNITY GUIDE path segments: the literals that follow a work's slug
+// on the pages internal/serve renders at /works/{id}/recap and
+// /works/{id}/characters.
+//
+// They live here for the same reason the reserved words above do - they are
+// route literals two packages have to agree on, letter for letter. internal/serve
+// composes the route pattern, the canonical URL, the work page's cross-links and
+// the sitemap families' suffixes from them; internal/issueform composes the
+// pattern that RESOLVES such a URL back to a work slug, because a contributor
+// who spots a gap in a recap pastes the guide page's URL into the form. A second
+// spelling on either side is a contribution the bot cannot place, or a link to a
+// 404, and neither side would fail a test.
+//
+// They are deliberately NOT reserved slugs: a literal that FOLLOWS the {id}
+// wildcard shadows no record, exactly as the chapters route's literal does not
+// (see the note on recording ids above).
+const (
+	GuideSegmentRecap      = "recap"
+	GuideSegmentCharacters = "characters"
+)
+
 // ReservedPersonSlug is the single canonical id a person whose name slugs to a
 // reserved word is stored under: the reserved word plus a fixed suffix, e.g. a
 // person actually named "Search" is `search-person`.

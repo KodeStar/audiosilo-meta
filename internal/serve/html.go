@@ -63,16 +63,22 @@ const descriptionMax = 160
 // redirect table and then the site's 404.
 type composeFunc func(siteURL string, snap *snapshot, id string) (*entityPage, error)
 
-// htmlEntityRoute is one family's page, as DATA. Every consumer reads this one
-// table rather than a list of its own: buildMux registers the pattern and its
-// legacy twin, redirectNamespaces learns the id namespace from it, the redirect
-// writer learns which patterns answer in HTML from it, and loadShells learns
-// which built shells to split. A fourth family is one row.
+// htmlEntityRoute is one page, as DATA. Every consumer reads this one table
+// rather than a list of its own: buildMux registers the pattern and its legacy
+// twin, redirectNamespaces learns the id namespace from it, the redirect writer
+// learns which patterns answer in HTML from it, and loadShells learns which
+// built shells to split. A fourth family - or a further page hanging off an
+// existing one - is one row.
 type htmlEntityRoute struct {
-	pattern   string             // the ServeMux pattern of the path route
-	legacy    string             // the ServeMux pattern of the ?id= route it replaced
+	pattern string // the ServeMux pattern of the path route
+	// legacy is the ServeMux pattern of the ?id= route this page replaced, and is
+	// EMPTY for a page that never had one (the guide pages, which are new URLs
+	// rather than a second spelling of an old one). htmlRoutes registers nothing
+	// for an empty legacy - a redirect from a URL that was never served would be
+	// a route inventing its own history.
+	legacy    string
 	shell     string             // the built shell to inject into, relative to the site dir
-	prefix    string             // the path route's prefix, e.g. "/works/"
+	prefix    string             // the family's path prefix, e.g. "/works/"
 	namespace model.RedirectKind // which tombstone namespace a retired id resolves in
 	compose   composeFunc
 }
@@ -81,6 +87,12 @@ var htmlEntityRoutes = []htmlEntityRoute{
 	{pattern: "GET /works/{id}", legacy: "GET /work", shell: "work/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeWorkPage},
 	{pattern: "GET /people/{id}", legacy: "GET /person", shell: "person/index.html", prefix: personPath, namespace: model.RedirectPeople, compose: composePersonPage},
 	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: seriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
+	// The community guide pages (see guides.go). They address a WORK by the same
+	// slug the work page does - hence the same namespace, which is what makes a
+	// retired slug 301 here too - and their literal FOLLOWS the wildcard, so they
+	// shadow no record and the reserved-slug set does not grow.
+	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeRecapPage},
+	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
 }
 
 // htmlEntityRouteByPattern is the table above indexed by ServeMux pattern - the
@@ -110,11 +122,12 @@ func writeRedirectPage(w http.ResponseWriter, location string) {
 		`<p>This record has moved to <a href="`+escaped+`">`+escaped+"</a>.</p>\n")
 }
 
-// htmlRoutes is the PAGE surface, in registration order: the three entity pages
-// plus the three legacy query-param routes they replaced. It is deliberately a
-// second table beside routes() rather than more rows in it - openapi.json
-// describes the API, and these are pages, so TestOpenAPICoversEveryRoute must
-// not see them (TestHTMLRoutesAreDisjointFromTheAPI pins the separation).
+// htmlRoutes is the PAGE surface, in registration order: every page in the table
+// above, then the legacy query-param routes the three entity pages replaced. It
+// is deliberately a second table beside routes() rather than more rows in it -
+// openapi.json describes the API, and these are pages, so
+// TestOpenAPICoversEveryRoute must not see them
+// (TestHTMLRoutesAreDisjointFromTheAPI pins the separation).
 //
 // buildMux registers it AFTER the API table and BEFORE the "/" static fallback,
 // and only when a site directory is configured: with no dist there is no shell
@@ -125,6 +138,9 @@ func (s *Server) htmlRoutes() []route {
 		rs = append(rs, route{e.pattern, s.html(s.entityHandler(e))})
 	}
 	for _, e := range htmlEntityRoutes {
+		if e.legacy == "" {
+			continue // a page with no query-param predecessor - see htmlEntityRoute.legacy
+		}
 		rs = append(rs, route{e.legacy, s.html(s.legacyHandler(e))})
 	}
 	return rs
@@ -200,7 +216,10 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 
 		page, err := e.compose(s.cfg.SiteURL, snap, id)
 		if err != nil {
-			snap.logf("serve: rendering %s%s failed, serving the shell untouched: %v", e.prefix, id, err)
+			// The REQUEST's path, not the family prefix plus the id: several pages
+			// now hang off one prefix (see the guide routes), so a notice built from
+			// the prefix would name the work page for a failure on its recap.
+			snap.logf("serve: rendering %s failed, serving the shell untouched: %v", r.URL.Path, err)
 			sh.serveRaw(w)
 			return
 		}
@@ -617,6 +636,12 @@ func truncateDescription(s string) string {
 const factSheetTemplates = `
 {{define "people"}}{{range $i, $p := .}}{{if $i}}, {{end}}<a href="/people/{{$p.ID}}">{{$p.Name}}</a>{{end}}{{end}}
 
+{{define "linklist"}}<ul>
+{{- range .}}
+<li><a href="{{.URL}}">{{.Text}}</a></li>
+{{- end}}
+</ul>{{end}}
+
 {{define "work"}}<section class="container">
 {{- if .CoverURL}}
 <img src="{{.CoverURL}}" alt="Cover art for {{.Title}}" width="300" height="300" class="border-edge">
@@ -638,6 +663,10 @@ const factSheetTemplates = `
 <li><a href="/series/{{.ID}}">{{.Name}}</a>{{if .Position}} - book {{.Position}}{{end}}</li>
 {{- end}}
 </ul>
+{{- end}}
+{{- if .Guides}}
+<h2>Guides</h2>
+{{template "linklist" .Guides}}
 {{- end}}
 {{- if .Genres}}
 <p class="text-dim">Genres: {{range $i, $g := .Genres}}{{if $i}}, {{end}}{{$g}}{{end}}</p>
@@ -714,8 +743,12 @@ const factSheetTemplates = `
 // constants, so a parse failure would be a build-time mistake that this would
 // surface on the first request. A panic is the honest answer to it - the process
 // cannot serve pages at all - and it cannot depend on data.
+//
+// The guide pages' sheet (guides.go) is parsed into the SAME set rather than one
+// of its own, so it can call the shared "people" define and a future shared
+// fragment is available to every page automatically.
 var factSheets = sync.OnceValue(func() *template.Template {
-	return template.Must(template.New("factsheets").Parse(factSheetTemplates))
+	return template.Must(template.Must(template.New("factsheets").Parse(factSheetTemplates)).Parse(guideTemplates))
 })
 
 func renderTemplate(name string, data any) (string, error) {
@@ -748,6 +781,7 @@ type workView struct {
 	Authors        []personRef
 	Series         []seriesRef
 	Genres         []string
+	Guides         []guideLink
 	Recordings     []recordingView
 }
 
@@ -755,6 +789,7 @@ func newWorkView(d *workDetail) workView {
 	v := workView{
 		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
 		FirstPublished: d.FirstPublished, Authors: d.Authors, Series: d.Series, Genres: d.Genres,
+		Guides: workGuideLinks(d),
 	}
 	for _, rec := range d.Recordings {
 		rv := recordingView{
