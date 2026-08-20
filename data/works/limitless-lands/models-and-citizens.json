@@ -839,6 +839,73 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2886055,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3430516,
+              "start_ms": 2886055,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2043960,
+              "start_ms": 6316571,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2293621,
+              "start_ms": 8360531,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1851559,
+              "start_ms": 10654152,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2053619,
+              "start_ms": 12505711,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2051111,
+              "start_ms": 14559330,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2002303,
+              "start_ms": 16610441,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2022597,
+              "start_ms": 18612744,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2021808,
+              "start_ms": 20635341,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1718927,
+              "start_ms": 22657149,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1721853,
+              "start_ms": 24376076,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 853101,
+              "start_ms": 26097929,
+              "title": "Chapter 13"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/81l1lrEnLBL.jpg",
           "id": "celeste-lawson-2011",
           "language": "en",
@@ -3527,6 +3594,173 @@
             {
               "asin": "B0828862Q8",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20108,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 58282,
+              "start_ms": 20108,
+              "title": "Part 1. Fundamentals"
+            },
+            {
+              "length_ms": 3600509,
+              "start_ms": 78390,
+              "title": "Ch 1. Java 8, 9, 10, and 11: what&rsquo;s happening?"
+            },
+            {
+              "length_ms": 1617176,
+              "start_ms": 3678899,
+              "title": "Ch 2. Passing code with behavior parameterization"
+            },
+            {
+              "length_ms": 4141093,
+              "start_ms": 5296075,
+              "title": "Ch 3. Lambda expressions"
+            },
+            {
+              "length_ms": 79737,
+              "start_ms": 9437168,
+              "title": "Part 2. Functional-style data processing with streams"
+            },
+            {
+              "length_ms": 1966428,
+              "start_ms": 9516905,
+              "title": "Ch 4. Introducing streams"
+            },
+            {
+              "length_ms": 3787871,
+              "start_ms": 11483333,
+              "title": "Ch 5. Working with streams"
+            },
+            {
+              "length_ms": 4012733,
+              "start_ms": 15271204,
+              "title": "Ch 6. Collecting data with streams"
+            },
+            {
+              "length_ms": 3108664,
+              "start_ms": 19283937,
+              "title": "Ch 7. Parallel data processing and performance"
+            },
+            {
+              "length_ms": 87492,
+              "start_ms": 22392601,
+              "title": "Part 3. Effective programming with streams and lambdas"
+            },
+            {
+              "length_ms": 1647107,
+              "start_ms": 22480093,
+              "title": "Ch 8. Collection API enhancements"
+            },
+            {
+              "length_ms": 2362351,
+              "start_ms": 24127200,
+              "title": "Ch 9. Refactoring, testing, and debugging"
+            },
+            {
+              "length_ms": 3505028,
+              "start_ms": 26489551,
+              "title": "Ch 10. Domain-specific languages using lambdas"
+            },
+            {
+              "length_ms": 82639,
+              "start_ms": 29994579,
+              "title": "Part 4. Everyday Java"
+            },
+            {
+              "length_ms": 2909924,
+              "start_ms": 30077218,
+              "title": "Ch 11. Using Optional as a better alternative to null"
+            },
+            {
+              "length_ms": 1921915,
+              "start_ms": 32987142,
+              "title": "Ch 12. New Date and Time API"
+            },
+            {
+              "length_ms": 2169858,
+              "start_ms": 34909057,
+              "title": "Ch 13. Default methods"
+            },
+            {
+              "length_ms": 2912153,
+              "start_ms": 37078915,
+              "title": "Ch 14. The Java Module System"
+            },
+            {
+              "length_ms": 73119,
+              "start_ms": 39991068,
+              "title": "Part 5. Enhanced Java concurrency"
+            },
+            {
+              "length_ms": 4374778,
+              "start_ms": 40064187,
+              "title": "Ch 15. Concepts behind CompletableFuture and reactive programming"
+            },
+            {
+              "length_ms": 3571020,
+              "start_ms": 44438965,
+              "title": "Ch 16. CompletableFuture: composable asynchronous programming"
+            },
+            {
+              "length_ms": 3307357,
+              "start_ms": 48009985,
+              "title": "Ch 17. Reactive programming"
+            },
+            {
+              "length_ms": 93808,
+              "start_ms": 51317342,
+              "title": "Part 6. Functional programming and future Java evolution"
+            },
+            {
+              "length_ms": 2103217,
+              "start_ms": 51411150,
+              "title": "Ch 18. Thinking functionally"
+            },
+            {
+              "length_ms": 3037262,
+              "start_ms": 53514367,
+              "title": "Ch 19. Functional programming techniques"
+            },
+            {
+              "length_ms": 2035414,
+              "start_ms": 56551629,
+              "title": "Ch 20. Blending OOP and FP: Comparing Java and Scala"
+            },
+            {
+              "length_ms": 2819041,
+              "start_ms": 58587043,
+              "title": "Ch 21. Conclusions and where next for Java"
+            },
+            {
+              "length_ms": 463981,
+              "start_ms": 61406084,
+              "title": "App A. Miscellaneous language updates"
+            },
+            {
+              "length_ms": 1141632,
+              "start_ms": 61870065,
+              "title": "App B. Miscellaneous library updates"
+            },
+            {
+              "length_ms": 795399,
+              "start_ms": 63011697,
+              "title": "App C. Performing multiple operations in parallel on a stream"
+            },
+            {
+              "length_ms": 525815,
+              "start_ms": 63807096,
+              "title": "App D. Lambdas and JVM bytecode"
+            },
+            {
+              "length_ms": 8288,
+              "start_ms": 64332911,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/819SAIPdHoL.jpg",
