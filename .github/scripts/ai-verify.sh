@@ -14,8 +14,8 @@
 #      setup-token`) drives the Claude Code CLI in headless mode. This token
 #      only authenticates through the CLI, never the raw Messages API.
 #   2. ANTHROPIC_API_KEY drives a direct Messages API request via curl.
-# If neither is set (the normal case on fork pull requests), the script writes a
-# neutral skip.
+# If neither is set, the script writes a skip - which is a FAILURE, not a
+# neutral outcome; see EXIT STATUS below.
 #
 # SECURITY: the context file is UNTRUSTED DATA (a contributor's diff). On the
 # curl path it is embedded into the request as a JSON string via `jq --arg`
@@ -28,11 +28,16 @@
 # and the CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the
 # workspace. Nothing from the diff is ever executed here.
 #
-# This script NEVER exits non-zero for an operational reason (missing
-# credential, missing CLI, transport error, unparseable model output): it writes
-# a neutral "skip" verdict so a data pull request is never blocked by the
-# verifier's own plumbing. Only a genuine {verdict:"flag"} signals a concern, and
-# even that is advisory - a human still reviews.
+# EXIT STATUS answers "did a verdict happen", not "is the data good". A pass and
+# a flag both exit 0 - a flag is advisory, a human still reviews - while every
+# operational skip (missing credential, missing CLI, transport error,
+# unparseable model output) writes its skip verdict and comment and then exits
+# NON-ZERO. A skip is a verification that did not happen, and reporting it as a
+# green check made this workflow vacuous: the CLI's npm install silently stopped
+# landing a runnable binary, every run posted "AI verification skipped", and
+# every one of them still reported PASS (diagnosed on PR #2251, 2026-08-20). The
+# check is advisory BY CONVENTION - it is not branch-protected - so a red skip
+# blocks no merge; it just stops the tick from lying.
 set -uo pipefail
 
 CONTEXT_FILE="${1:?context file required}"
@@ -52,11 +57,11 @@ skip() {
     echo "$reason"
   } > "$COMMENT_OUT"
   echo "ai-verify: skipped - $reason" >&2
-  exit 0
+  exit 1
 }
 
 if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
-  skip "No \`CLAUDE_CODE_OAUTH_TOKEN\` or \`ANTHROPIC_API_KEY\` secret is configured (this is expected on fork pull requests, which run with a read-only token and no secrets). A maintainer can re-run verification after pushing the branch to the repository."
+  skip "No \`CLAUDE_CODE_OAUTH_TOKEN\` or \`ANTHROPIC_API_KEY\` secret is configured for this repository. The workflow runs only on same-repo branches, so a missing secret here is a repository configuration problem rather than anything about this pull request."
 fi
 
 if [ ! -s "$CONTEXT_FILE" ]; then
