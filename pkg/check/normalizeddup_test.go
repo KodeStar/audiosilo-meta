@@ -99,6 +99,16 @@ func TestAdvisoryNormalizedDuplicateSkipsOrdinalAndRomanVolumes(t *testing.T) {
 	}
 }
 
+// And for the third: a volume number spelled as a WORD inside a decorative group,
+// which the key drops with the group. "Book Two" matched wordVolumeMarker's shape all
+// along and carried no number out of it, so the pair stated nothing to disagree about.
+func TestAdvisoryNormalizedDuplicateSkipsWordVolumes(t *testing.T) {
+	if got := dupTwin(t, dupBase("Wildwood (Book One)"), "wildwood-book-two",
+		"Wildwood (Book Two)"); len(got) != 0 {
+		t.Errorf("two word-numbered volumes were reported as one book: %v", got)
+	}
+}
+
 // A COLLECTION on one side is not the volume it collects. The veto lives in the
 // index's own predicate, so the census and both writers inherit it - it was
 // documented as "the caller's" and implemented by nobody.

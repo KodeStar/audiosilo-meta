@@ -234,6 +234,73 @@ func TestStatedVolumeReadsOrdinalsAndRomanNumerals(t *testing.T) {
 	}
 }
 
+// The third spelling BareSeq cannot read: a WORD volume number. The key loses it in
+// exactly two shapes - inside a decorative bracket group, and left dangling by the
+// series strip - and both collapsed a serial onto a sibling until StatedVolume read
+// the words back.
+func TestStatedVolumeReadsWordVolumes(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		// The bracketed group: the key drops it whole, so the pair meets on "Wildwood".
+		{"Wildwood (Book Two)", "", 2},
+		{"Wildwood [Part One]", "", 1},
+		// The issue's own pair: the series strip takes ": The Black Forest" and the
+		// dangling-tail peel takes ", Book Two" with it, leaving "Hellmervick".
+		{"Hellmervick, Book Two: The Black Forest", "The Black Forest", 2},
+		{"Faraway Paladin: Volume Twelve", "Faraway Paladin", 12},
+		{"Die Akademie, Teil Drei", "Die Akademie", 0}, // German number words are not in the vocabulary
+		// A COMPOSITE number is refused, not read as its first word: "Book One
+		// Hundred" states volume 100, which the vocabulary cannot read, and stating
+		// 1 instead would be a fabricated fact.
+		{"The Saga, Book One Hundred", "The Saga", 0},
+		{"Chronicle, Volume Two Thousand", "Chronicle", 0},
+	} {
+		got, ok := StatedVolume(c.title, c.series)
+		if c.want == 0 {
+			if ok {
+				t.Errorf("StatedVolume(%q) = (%v, true), want no statement", c.title, got)
+			}
+			continue
+		}
+		if !ok || got != c.want {
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+	// The pair that must therefore disagree - the whole point of reading them.
+	if SameStatedVolume("Wildwood (Book One)", "", "Wildwood (Book Two)", "") {
+		t.Error("two word-numbered volumes must state different volumes")
+	}
+	// One spelling never contradicts the other: they are one vocabulary.
+	if !SameStatedVolume("Wildwood (Book Two)", "", "Wildwood (Book 2)", "") {
+		t.Error("the same volume spelled two ways must not read as a contradiction")
+	}
+	// A word that merely FOLLOWS a marker is not a number, and a marker welded into a
+	// word is not a marker: the whitespace in wordVolume is what says so.
+	for _, title := range []string{
+		"Parts Unknown", "The Book Thief", "Book of One Thousand Nights",
+		"The Chosen One", "The Partone Affair", "Book Thirteen",
+	} {
+		if v, ok := StatedVolume(title, ""); ok {
+			t.Errorf("StatedVolume(%q) = (%v, true), want no statement", title, v)
+		}
+	}
+	// The digit, ordinal and roman readings are untouched by the widening.
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		{"Bravelands, Book 2", "Bravelands", 2},
+		{"The Wandering Inn: Season 2", "The Wandering Inn", 2},
+		{"Faraway Paladin: Volume II", "Faraway Paladin", 2},
+	} {
+		if got, ok := StatedVolume(c.title, c.series); !ok || got != c.want {
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+}
+
 // A title can NEST division markers, and then the first number is not the whole
 // statement. The measured population is the Pimsleur courses: 36 units of one course
 // agreed on "Level 1" and differed only in their lessons, so a single-number
@@ -249,6 +316,11 @@ func TestSameStatedVolumeComparesNestedDivisions(t *testing.T) {
 		// One side stating nothing is never a disagreement - the duplicate the gates
 		// exist for.
 		{"Hammered: The Iron Druid Chronicles, Book 3", "Hammered", true},
+		// A nested sequence numbered in WORDS is read like any other, and the two
+		// spellings of one sequence agree.
+		{"Ranger's Apprentice: Part One, Episode 2", "Ranger's Apprentice: Part One, Episode 3", false},
+		{"Wildwood, Part One", "Wildwood, Part 1", true},
+		{"Ranger's Apprentice: Part Two, Episode 2", "Ranger's Apprentice: Part One, Episode 2", false},
 	} {
 		if got := SameStatedVolume(c.a, "", c.b, ""); got != c.same {
 			t.Errorf("SameStatedVolume(%q, %q) = %v, want %v", c.a, c.b, got, c.same)
