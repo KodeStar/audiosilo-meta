@@ -272,6 +272,31 @@ func TestWorkDupWithholdsAMergeWhenTheTitlesStateDifferentVolumes(t *testing.T) 
 	}
 }
 
+// The same, for volumes numbered in WORDS. The decorative group comes off the key
+// whole, so the pair meets on "Wildwood" exactly as the digit-numbered pair meets on
+// its title - and until titlerule.StatedVolume read the words back, the cluster was a
+// non-advisory merge proposal that a repair pass would have applied.
+func TestWorkDupWithholdsAMergeWhenTheTitlesStateWordVolumes(t *testing.T) {
+	rep := runFixture(t, map[string]string{
+		"works/wi/wildwood-one/work.json":         workJSON(t, "wildwood-one", "Wildwood (Book One)"),
+		"works/wi/wildwood-one/recordings/a.json": recJSON(t, "a", "wildwood-one"),
+		"works/wi/wildwood-two/work.json":         workJSON(t, "wildwood-two", "Wildwood (Book Two)"),
+		"works/wi/wildwood-two/recordings/b.json": recJSON(t, "b", "wildwood-two"),
+		"people/ja/jane-doe.json":                 personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":            personJSON(t, "nate-narrator", "Nate Narrator"),
+	})
+	if got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor); len(got) != 0 {
+		t.Errorf("two word-numbered volumes were proposed for merge: %+v", got)
+	}
+	got := subclassOf(t, rep, ClassWorkDup, dupVolumeConflict)
+	if len(got) != 1 {
+		t.Fatalf("want one volume-conflict record, got %d", len(got))
+	}
+	if got[0].Propose.Op != OpReview || !got[0].Propose.Advisory {
+		t.Errorf("a volume conflict must be an advisory review, got %+v", got[0].Propose)
+	}
+}
+
 // The second duplicate shape: a series-less work whose title states a series and a
 // volume that the series already fills with a DIFFERENT work, where the residual
 // titles do not agree.

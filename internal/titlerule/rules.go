@@ -1210,8 +1210,18 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 
 // wordVolumeMarker matches a volume marker spelled with a word rather than a digit
 // ("Book Two", "Part One"), which markerSeq cannot see because it requires \d.
-var wordVolumeMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?)\s+` +
-	`(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|i{1,3}|iv|v|vi{1,3}|ix|x)\b`)
+//
+// Its two halves are named constants (identity.go) and the number is a CAPTURE,
+// because this rule STRIPS the shape and StatedVolume READS it back through the same
+// match: one vocabulary and one separator, or a title states a volume the key never
+// lost - or worse, loses one nothing can state. A ROMAN capture simply misses
+// wordValue - romanVolume's own arm has already read it, since that rule's markers,
+// separator and numerals are each a superset of this one's.
+//
+// The whitespace is REQUIRED, unlike markerSeq's optional "Book.3" separator: with
+// \s* the leading \b would let the surname "Partone" read as "Part One".
+var wordVolumeMarker = regexp.MustCompile(`(?i)\b(?:` + volumeMarkerWords + `)\s+` +
+	`(` + volumeNumberWords + `|i{1,3}|iv|v|vi{1,3}|ix|x)\b`)
 
 // hasVolumeMarker reports whether a text states a volume, in digits or in words.
 func hasVolumeMarker(s string) bool {
