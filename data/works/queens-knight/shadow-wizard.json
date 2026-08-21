@@ -2674,6 +2674,10 @@
             {
               "asin": "B074HMP13B",
               "region": "uk"
+            },
+            {
+              "asin": "B07G9JK4H8",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2957,7 +2961,7 @@
           ],
           "publisher": "Bolinda Publishing Pty Ltd",
           "release_date": "2017-10-05",
-          "runtime_min": 575,
+          "runtime_min": 576,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -2973,6 +2977,11 @@
               "imported_at": "2026-08-02",
               "ref": "B074HMP13B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-20",
+              "ref": "B07G9JK4H8",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "shadowblack"
