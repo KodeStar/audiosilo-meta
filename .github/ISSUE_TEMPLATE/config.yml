@@ -1,5 +1,12 @@
 blank_issues_enabled: true
 contact_links:
+  # The CC BY-SA layer (characters and recaps) lives in its own repository since
+  # the community-repo split, and so do its two issue forms. This link is what a
+  # contributor who came here to add a recap follows; the forms are otherwise
+  # identical and are composed by the same intake bot.
+  - name: Add characters or recaps (community layer)
+    url: https://github.com/KodeStar/audiosilo-meta-community/issues/new/choose
+    about: Characters and recaps are CC BY-SA community content and live in audiosilo-meta-community. Submit them there.
   - name: Questions and discussion
     url: https://github.com/kodestar/audiosilo-meta/discussions
     about: Ask a question, propose an idea, or discuss the data model. For data submissions, please use the forms above.

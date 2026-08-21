@@ -49,11 +49,19 @@ jobs:
       - name: Test
         run: go test ./...
 
+      # --profile core is what this repository's data root now IS: works, people,
+      # series and redirects.json, with the CC BY-SA layer living in
+      # KodeStar/audiosilo-meta-community. It is passed explicitly rather than
+      # changed as a flag default, because the tools still serve a whole-database
+      # tree ("all") and a community-only one. The teeth are the file accounting:
+      # under `core` a works-community/ directory that reappears here - a bad
+      # merge, a stray revert, a misdirected contribution - is an unrecognized
+      # location and a RED check, instead of a family silently re-adopted.
       - name: Validate data (metacheck)
-        run: go run ./cmd/metacheck
+        run: go run ./cmd/metacheck --profile core
 
       - name: Check canonical formatting (metafmt)
-        run: go run ./cmd/metafmt --check
+        run: go run ./cmd/metafmt --check --profile core
 
   # Build and typecheck the marketing/search site. This job is intentionally
   # unconditional (branch protection can require it), but it self-skips cleanly

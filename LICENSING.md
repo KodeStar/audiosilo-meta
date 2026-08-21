@@ -10,7 +10,7 @@ submission you agree to the terms below.
 |---|---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** | See [`LICENSE`](LICENSE). Matches audiosilo-server. |
 | Data - factual core | **CC0-1.0** (public domain dedication) | The works, recordings, people, and series. Every such record carries `license: "CC0-1.0"`. |
-| Data - derived layer | **CC BY-SA 4.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in a separate pack family, `data/works-community/` (each entry a work's `characters` and `recaps` members), so the boundary is directory-structural as well as schema-enforced. |
+| Data - derived layer | **CC BY-SA 4.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in a **separate repository**, [KodeStar/audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community), as the `data/works-community/` pack family (each entry a work's `characters` and `recaps` members), so the boundary is a repository boundary as well as a schema-enforced one. |
 | Publisher blurbs, cover art | **Not accepted** | Referenced, never copied. Covers are URLs only; descriptions must be community-written. |
 
 ## Why two data licences
@@ -26,15 +26,41 @@ community-authored character descriptions and recaps, and anything derived from
 Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source; see
 "The 4.0 upgrade" below for why that still flows in).
 Share-alike is desirable there: it keeps derivative works open. This layer lives
-in a separate pack family, `data/works-community/`, where each entry holds one
-work's `characters` and `recaps` members - so the CC0 core is never contaminated
-by share-alike obligations, and the separation is visible in the directory tree
-as well as in the records. The
+in the `data/works-community/` pack family, where each entry holds one work's
+`characters` and `recaps` members - so the CC0 core is never contaminated by
+share-alike obligations. The
 boundary is **enforced structurally by the schema**, not by convention: a core
 record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
 only carry `CC-BY-SA-4.0` - the `license` enum differs between them, and
-`metacheck` rejects any record that crosses the line. Authoring this layer is
-documented in [AUTHORING.md](AUTHORING.md).
+`metacheck` rejects any record that crosses the line.
+
+### The licence split is now a REPOSITORY split (2026-08-21)
+
+Since the community-repo cutover the CC BY-SA layer does not live here at all: it
+is [KodeStar/audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community),
+its own repository, under its own `LICENSE` (CC BY-SA 4.0), with its own issue
+forms, its own intake bot and its own review bar. **This repository is CC0 data
+plus AGPL code and holds no share-alike content at all**, which is a claim a
+downstream consumer can now check by looking at the repository rather than by
+reading a schema.
+
+Nothing about the model changed with it: the same PACK-SPEC layout, the same
+schemas, the same `license` enum, the same tooling (the community repo runs this
+repo's `metacheck`/`metafmt`/`metaissue` under the `community` tree profile). Two
+consequences worth stating:
+
+- **The two halves are one database.** The release artifact is composed from both
+  checkouts by `metabuild -data data --community <dir>` in this repo's
+  `release.yml`, so `meta.sqlite` carries the CC BY-SA layer exactly as before -
+  and an artifact therefore mixes the two licences, which is why the per-record
+  `license` field stays the authoritative statement for any consumer that
+  redistributes.
+- **A leftover here is a red check.** Core CI runs `--profile core`, under which
+  a `data/works-community/` directory in this repository is an unrecognized
+  location rather than a family, so share-alike content cannot quietly return.
+
+Authoring the layer is documented in that repository's `AUTHORING.md`, which moved
+with it.
 
 ## The 4.0 upgrade (2026-08-21)
 
@@ -61,7 +87,9 @@ Why upgrade:
 
 A contribution made before the upgrade is covered by it because the contributor
 and the maintainer were the same person; from 2026-08-21 the contribution
-checkbox on the characters/recaps issue forms names 4.0.
+checkbox on the characters/recaps issue forms names 4.0. Those two forms now live
+in the community repository (see above), so the paragraph below is about a
+submission made there.
 
 A submission whose attachment was authored against the old instructions
 therefore fails validation with a bare value-mismatch message

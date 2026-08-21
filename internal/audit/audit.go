@@ -42,6 +42,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/reportdir"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Options configures a run.
@@ -51,6 +52,13 @@ type Options struct {
 	// OutDir is the report directory. It is created if absent; a class file it
 	// already holds is overwritten. It may not sit inside DataDir.
 	OutDir string
+	// Profile is which families DataDir holds (pack.Profile). The zero value is
+	// pack.ProfileAll, so every existing caller is unchanged; it exists so this
+	// pass and internal/repair - which is this pass's write half and re-runs
+	// these very detectors - can be told the same thing about the same root. A
+	// report taken under one reading of the tree and applied under another is
+	// exactly the drift the fresh-audit gate exists to prevent.
+	Profile pack.Profile
 }
 
 // Report is one run's outcome: the per-class records, the count-only advisories,
@@ -93,7 +101,7 @@ func Run(opts Options) (*Report, error) {
 	if err := checkOutDir(opts); err != nil {
 		return nil, err
 	}
-	res := check.Load(opts.DataDir)
+	res := check.LoadProfile(opts.DataDir, opts.Profile)
 	if res.Catalog == nil {
 		return nil, fmt.Errorf("audit: %s could not be loaded: %s", opts.DataDir, reportdir.FirstProblem(res))
 	}

@@ -6,6 +6,15 @@ name: release
 # because the artifact is a compiled thing, not a copy: a new index, a
 # SchemaVersion bump or a changed column would otherwise sit unreleased until
 # some unrelated data edit happened to trigger a build.
+#
+# The artifact is composed from TWO repositories since the community-repo split:
+# this one holds the CC0 core (works, people, series, redirects.json) and
+# KodeStar/audiosilo-meta-community holds the CC BY-SA layer (works-community).
+# The release stream is unchanged - one artifact, one set of assets, one patch
+# chain, cut from here - so metaserve, the poller and the webhook see nothing
+# new. What IS new is the third trigger: a merge in the community repo cannot
+# push to this one's main, so its notify-core.yml sends a `community-data`
+# repository_dispatch instead.
 on:
   push:
     branches: [main]
@@ -14,6 +23,25 @@ on:
       - "schema/**"
       - "internal/build/**"
       - "cmd/metabuild/**"
+  # Sent by audiosilo-meta-community's notify-core.yml when community data lands
+  # on its main. The payload is only a trigger: this job always composes from
+  # both repositories at their current main, exactly as a core-side push does.
+  #
+  # ONE-TIME MAINTAINER SETUP (the dispatch needs a credential this repo cannot
+  # mint for itself - github.token is scoped to the repository it runs in, and
+  # the sender is the OTHER repository):
+  #   1. Create a fine-grained PAT scoped to KodeStar/audiosilo-meta with the
+  #      "Contents: read and write" repository permission, which is what the
+  #      POST /repos/{owner}/{repo}/dispatches API requires.
+  #   2. Save it as the secret CORE_DISPATCH_TOKEN in
+  #      KodeStar/audiosilo-meta-community (Settings -> Secrets and variables ->
+  #      Actions).
+  # Until that exists, notify-core.yml logs that it is unconfigured and exits 0:
+  # community data then reaches a release with the next core-side data or tooling
+  # change, or a manual `workflow_dispatch` here. Nothing is lost either way -
+  # this workflow always composes from both mains.
+  repository_dispatch:
+    types: [community-data]
   workflow_dispatch:
 
 # This workflow publishes a release, so it needs write access to contents.
@@ -43,18 +71,49 @@ jobs:
         # date anything - a pack file's add-date is not its entries' add-dates.
         uses: actions/checkout@v4
 
+      - name: Checkout the community layer
+        # The CC BY-SA half of the database, cloned beside the core tree. Public,
+        # so github.token is enough and no secret is involved; shallow for the
+        # same reason the core checkout is (git history is not load-bearing -
+        # every record carries its own added_at). Pinned to main: a release is
+        # always composed from the two mains, whichever side triggered it.
+        uses: actions/checkout@v4
+        with:
+          repository: KodeStar/audiosilo-meta-community
+          ref: main
+          path: community
+
+      - name: Record the composed SHAs
+        id: shas
+        # Both halves are named in the release notes, so an artifact is
+        # reproducible from the pair rather than from this repo's sha alone.
+        run: |
+          echo "core=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "community=$(git -C community rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
 
       - name: Validate data (metacheck)
-        run: go run ./cmd/metacheck
+        # The core tree alone, under the profile it now IS. The CROSS-TREE rules
+        # (a sidecar keyed by a work the core does not hold, a key riding a
+        # redirect, two sidecars of one kind meeting on one work) cannot be asked
+        # of one root, so they run in the compose below - which is the
+        # authoritative gate, and a red one stops the release.
+        run: go run ./cmd/metacheck --profile core
 
       - name: Build SQLite artifact (metabuild)
+        # The two-root compose (check.LoadComposed): -data is the CC0 core and
+        # --community is the CC BY-SA layer's own data/. Nothing about the
+        # artifact changes - same tables, same SchemaVersion, same deterministic
+        # sorted-id inserts - and metabuild refuses a --community root holding no
+        # sidecars, so a wrong path is a failed release rather than a silently
+        # empty community layer.
         # added_at comes from the records themselves; metabuild falls back to
         # sources[].imported_at for anything that carries neither.
-        run: go run ./cmd/metabuild -o meta.sqlite
+        run: go run ./cmd/metabuild -data data --community community/data -o meta.sqlite
 
       - name: Download previous release artifact
         id: prev
@@ -120,17 +179,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PREV_TAG: ${{ steps.prev.outputs.tag }}
+          CORE_SHA: ${{ steps.shas.outputs.core }}
+          COMMUNITY_SHA: ${{ steps.shas.outputs.community }}
         # Always upload the gz anchor + both checksums; append the binary delta
         # only when the compress step actually produced one (file existence, not
         # PREV_TAG - a failed best-effort zstd run leaves no file behind).
+        # The notes name BOTH composed SHAs: the artifact is built from two
+        # repositories, so one sha does not identify it.
         run: |
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
           if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
             assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
           fi
+          notes="$(printf 'Automated data release composed from:\n\n- core: KodeStar/audiosilo-meta@%s\n- community: KodeStar/audiosilo-meta-community@%s\n' \
+            "$CORE_SHA" "$COMMUNITY_SHA")"
           gh release create "${{ steps.tag.outputs.tag }}" \
             --title "${{ steps.tag.outputs.tag }}" \
-            --notes "Automated data release built from ${{ github.sha }}." \
+            --notes "$notes" \
             "${assets[@]}"
 
       - name: Notify metaserve of the new release

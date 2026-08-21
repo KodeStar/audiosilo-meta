@@ -17,7 +17,8 @@ name: intake
 # rewrites (force-push included) are ones this workflow created.
 # The `labeled` trigger is load-bearing: the GitHub API silently DROPS labels on
 # issues opened by non-collaborators (the sibling audiosilo-sidecars contributor
-# tool creates add-work/add-characters/add-recaps intake issues over the API), so
+# tool creates add-work intake issues over the API; its characters/recaps issues
+# now go to KodeStar/audiosilo-meta-community, which runs its own intake), so
 # such an issue arrives label-less and the `opened`/`edited` runs skip it. When a
 # maintainer later applies the routing label, that fires neither `opened` nor
 # `edited` - only `labeled` - so without this trigger the tool's issues could
@@ -65,7 +66,7 @@ jobs:
     # (data:invalid / data:needs-human / data:duplicate). Without that exclusion the
     # workflow's own outcome-labeling (the non-ok step below) would re-fire a
     # `labeled` run - a duplicate intake + duplicate comment - for every non-ok
-    # verdict. A genuine routing label (data:add-work, data:add-characters, ...)
+    # verdict. A genuine routing label (data:add-work, data:add-recording, ...)
     # starts with `data:` but is none of those outcomes.
     if: >-
       github.event_name == 'issues' && (
@@ -138,8 +139,8 @@ jobs:
           # uncommitted in this same tree, so `git checkout -- data/` here would
           # throw away the contribution along with the fill. A broken tree should
           # stop the PR, not silently lose half of it.
-          go run ./cmd/metafmt --write
-          go run ./cmd/metacheck
+          go run ./cmd/metafmt --write --profile core
+          go run ./cmd/metacheck --profile core
 
       - name: Build the pull-request body
         id: prbody
@@ -324,9 +325,9 @@ jobs:
                   # A driver merge lands as jq's rendering of the entry map, and
                   # the merged pack may now be due a split, so normalize before
                   # pushing - the same pass the conflicted path runs below.
-                  if ! go run ./cmd/metafmt --write; then
+                  if ! go run ./cmd/metafmt --write --profile core; then
                     failure="metafmt could not normalize the merged tree"
-                  elif ! go run ./cmd/metacheck; then
+                  elif ! go run ./cmd/metacheck --profile core; then
                     failure="metacheck rejected the merged tree"
                   else
                     git add data
@@ -348,10 +349,10 @@ jobs:
                   esac
                   [ -z "$failure" ] || break
                 done
-                if [ -z "$failure" ] && ! go run ./cmd/metafmt --write; then
+                if [ -z "$failure" ] && ! go run ./cmd/metafmt --write --profile core; then
                   failure="metafmt could not normalize the merged tree"
                 fi
-                if [ -z "$failure" ] && ! go run ./cmd/metacheck; then
+                if [ -z "$failure" ] && ! go run ./cmd/metacheck --profile core; then
                   failure="metacheck rejected the merged tree"
                 fi
                 if [ -z "$failure" ]; then

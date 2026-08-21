@@ -53,6 +53,15 @@ Four **pack families**. Works and sidecars get a directory level from day one
 (they are the high-count families); people and series start flat and gain a
 directory level only if they ever exceed the per-dir pack cap.
 
+**The four are the FAMILY table, not one repository's tree.** Since the
+community-repo cutover (2026-08-21) no single checkout holds all four: this
+repository holds works, people and series (profile `core`), and
+`KodeStar/audiosilo-meta-community` holds works-community alone (profile
+`community`). The layout of a family is the same wherever its root sits - the
+same bound math, the same caps, the same schemas - which is exactly why the split
+needed no new storage concept, only the profiles below. `data/works-community/`
+is written here as the family's path under whichever root holds it.
+
 **One non-pack file** sits beside them, at the data root (added 2026-08-14):
 `data/redirects.json`, the slug tombstone table (`{"works": {"<retired>":
 "<live>"}, "people": ..., "series": ...}`) that keeps a slug a merge retired
@@ -70,17 +79,25 @@ reported success.
 
 ### Tree profiles (which families a root holds)
 
-A data root need not hold all four. The CC BY-SA community layer is moving to a
+A data root need not hold all four. The CC BY-SA community layer moved to a
 repository of its own (`KodeStar/audiosilo-meta-community`; the migration plan is
 the maintainer's, in the untracked `.claude/community/PLAN.md`), which makes two
 roots, each holding a SUBSET - and a **tree profile** (`pack.Profile`) is the
 whole of what tells them apart:
 
-| Profile | Families | `redirects.json` |
-|---|---|---|
-| `all` (the default) | works, works-community, people, series | yes |
-| `core` | works, people, series | yes |
-| `community` | works-community | **no** |
+| Profile | Families | `redirects.json` | Where |
+|---|---|---|---|
+| `all` (the default) | works, works-community, people, series | yes | no checkout, since the cutover; the shape the code still supports, and what a compose produces in memory |
+| `core` | works, people, series | yes | **this repository** - what CI passes |
+| `community` | works-community | **no** | `KodeStar/audiosilo-meta-community` |
+
+`all` stays the flag DEFAULT: it is what the tools mean by "a data root" with
+nothing said, it is what the fixtures and most tests are, and changing a default
+to fit one repository's shape would make every other caller's silence mean
+something new. This repository's CI says `--profile core` out loud instead - in
+`check.yml`, in the intake bot's re-render pass and in `release.yml`'s core-side
+validation - which is also what makes a reappearing `data/works-community/` here
+a red check rather than a family silently re-adopted.
 
 Everything else is identical: the same bound math, the same caps, the same
 placement rules, the same schemas. Two consequences, and they are the point:

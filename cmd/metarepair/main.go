@@ -19,6 +19,14 @@
 // recovery story: this pass deletes records) and one that does not validate, and it
 // fails the run if the tree does not validate afterwards.
 //
+// --profile names which families the root holds (pack.Profile), defaulting to
+// "all" as metacheck's and metafmt's do. Pass `core` for THIS repository's tree
+// since the community-repo split: the store then never addresses works-community
+// (which now lives in KodeStar/audiosilo-meta-community), and the post-write
+// format pass and validation judge the same tree the CI check does. Over a core
+// tree the two readings agree - the family is simply absent either way - so this
+// is a statement of what the root is, not a change of what a wave does.
+//
 // Business logic lives in internal/repair; this is flag wiring.
 package main
 
@@ -29,6 +37,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/repair"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // repeated is a flag that may be given several times, and may also take a
@@ -68,11 +77,18 @@ func main() {
 		"counts against it, and chunking a wave also bounds the packs a run holds resident (0 = no cap)")
 	write := flag.Bool("write", false, "apply the plan (default: report it and write nothing)")
 	verbose := flag.Bool("v", false, "print every applied change record by record")
+	profileName := flag.String("profile", pack.ProfileAll.String(), pack.ProfileFlagUsage)
 	var ops, subclasses repeated
 	flag.Var(&ops, "op", "restrict to this op, repeatable or comma-separated; LEAVE IT OFF for every op (one of "+
 		strings.Join(repair.AppliableOps(), ", ")+")")
 	flag.Var(&subclasses, "subclass", "restrict to this audit subclass, repeatable or comma-separated; leave it off for every subclass")
 	flag.Parse()
+
+	profile, perr := pack.ParseProfile(*profileName)
+	if perr != nil {
+		fmt.Fprintln(os.Stderr, "metarepair:", perr)
+		os.Exit(2)
+	}
 
 	rep, err := repair.Run(repair.Options{
 		DataDir:    *dataDir,
@@ -83,6 +99,7 @@ func main() {
 		OnlyFile:   *only,
 		Limit:      *limit,
 		Write:      *write,
+		Profile:    profile,
 	})
 	if rep != nil {
 		if werr := rep.Write(os.Stdout, *verbose); werr != nil {

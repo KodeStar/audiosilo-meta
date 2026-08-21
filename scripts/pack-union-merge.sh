@@ -47,7 +47,7 @@
 # Usage, from inside a rebase or merge that stopped on a conflict:
 #
 #   scripts/pack-union-merge.sh data/works/0/0.json
-#   go run ./cmd/metafmt --write && go run ./cmd/metacheck
+#   go run ./cmd/metafmt --write --profile core && go run ./cmd/metacheck --profile core
 #   git add data && git rebase --continue
 #
 # It also runs as a git MERGE DRIVER, which is how the intake sweep uses it:

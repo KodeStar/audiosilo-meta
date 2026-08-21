@@ -6,6 +6,13 @@
 //
 // It never writes to data/ - the logic reaches the tree through pkg/check's
 // loader and has no write path at all. Acting on the report is a separate pass.
+//
+// --profile names which families the root holds (pack.Profile), defaulting to
+// "all" as metacheck's and metafmt's do; pass `core` for THIS repository's tree
+// since the community-repo split, so this pass and metarepair (which re-runs
+// these detectors before it applies anything) are told the same thing about the
+// same root.
+//
 // Flag wiring only; the logic lives in internal/audit.
 package main
 
@@ -15,11 +22,13 @@ import (
 	"os"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 func main() {
 	dataDir := flag.String("data", "data", "path to the data root to audit (read-only)")
 	out := flag.String("o", "", "directory to write the report into (required)")
+	profileName := flag.String("profile", pack.ProfileAll.String(), pack.ProfileFlagUsage)
 	flag.Parse()
 
 	if *out == "" {
@@ -28,7 +37,13 @@ func main() {
 		os.Exit(2)
 	}
 
-	rep, err := audit.Run(audit.Options{DataDir: *dataDir, OutDir: *out})
+	profile, perr := pack.ParseProfile(*profileName)
+	if perr != nil {
+		fmt.Fprintln(os.Stderr, "metaaudit:", perr)
+		os.Exit(2)
+	}
+
+	rep, err := audit.Run(audit.Options{DataDir: *dataDir, OutDir: *out, Profile: profile})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaaudit:", err)
 		os.Exit(1)

@@ -66,6 +66,25 @@ import (
 // P-DUP is advisory throughout, so nothing here ever merges a person.
 var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilySeries}
 
+// writeFamiliesIn narrows writeFamilies to the ones the root's tree profile
+// actually holds. It is not a convenience: pack.OpenForProfile REFUSES a named
+// family the profile disclaims, and rightly - a writer must learn at the door
+// that a record has no home in this root. Since the community-repo split the CC
+// BY-SA layer lives in KodeStar/audiosilo-meta-community, so a `core` run writes
+// works and series and never addresses works-community. Nothing else changes: no
+// sidecar loads from a core tree, so the sidecar-moving arm of a merge has
+// nothing to move, and under the default profile the list is unnarrowed and this
+// pass behaves exactly as it always did over a whole-database tree.
+func writeFamiliesIn(p pack.Profile) []pack.Family {
+	out := make([]pack.Family, 0, len(writeFamilies))
+	for _, f := range writeFamilies {
+		if p.Has(f) {
+			out = append(out, f)
+		}
+	}
+	return out
+}
+
 // appliableOps are the ops this pass can carry out. Every other op the audit emits
 // (review, drop-membership, rename-candidate, repoint-sidecar) is advisory by
 // construction and is not a gap here: each names a decision a rule may not make.
@@ -157,6 +176,14 @@ type Options struct {
 	// Write applies the plan. The zero value composes it, reports it and touches
 	// nothing.
 	Write bool
+	// Profile is which families DataDir holds (pack.Profile). The zero value is
+	// pack.ProfileAll, so every existing caller is unchanged; `core` is what this
+	// repository's root is since the community-repo split, and it is what keeps
+	// the store, the post-write format pass and the post-write validation all
+	// describing the SAME tree. A repair that healed under one profile and was
+	// then judged under another would report a file it had just been told not to
+	// touch.
+	Profile pack.Profile
 }
 
 // Applied is one proposal this run carried out.
@@ -276,7 +303,7 @@ func Run(opts Options) (*Report, error) {
 		}
 	}
 
-	store, err := pack.OpenFor(opts.DataDir, writeFamilies...)
+	store, err := pack.OpenForProfile(opts.DataDir, opts.Profile, writeFamiliesIn(opts.Profile)...)
 	if err != nil {
 		return nil, err
 	}
@@ -412,7 +439,7 @@ func (rn *runner) apply(store *pack.Store) error {
 	// metafmt's own pass, not a restatement of it: canonical form plus the
 	// self-healing placement work a deletion can leave due (a rebind of the lowest
 	// pack, a split).
-	fr, err := format.Write(rn.opts.DataDir)
+	fr, err := format.WriteProfile(rn.opts.DataDir, rn.opts.Profile)
 	if err != nil {
 		return err
 	}
@@ -420,7 +447,7 @@ func (rn *runner) apply(store *pack.Store) error {
 	if fr.NeedsHuman() {
 		return fmt.Errorf("repair: the tree needs a human after the write: %s (%s)", fr.Summary(), fr.Advice())
 	}
-	res := check.Load(rn.opts.DataDir)
+	res := check.LoadProfile(rn.opts.DataDir, rn.opts.Profile)
 	if len(res.Problems) > 0 {
 		for _, p := range res.Problems {
 			rn.rep.PostProblems = append(rn.rep.PostProblems, p.String())
