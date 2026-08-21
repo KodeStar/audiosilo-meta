@@ -21,11 +21,7 @@ func advisoryWarnings(t *testing.T, files map[string]string) []string {
 	if !res.OK() {
 		t.Fatalf("an advisory fixture must still validate: %v", res.Problems)
 	}
-	out := make([]string, 0, len(res.Warnings))
-	for _, w := range res.Warnings {
-		out = append(out, w.String())
-	}
-	return out
+	return problemLines(res.Warnings)
 }
 
 // advisoryMatching returns the advisory lines containing substr.

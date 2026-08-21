@@ -141,6 +141,61 @@ func (i *pathIndex) merge(o *pathIndex) {
 	maps.Copy(i.recaps, o.recaps)
 }
 
+// prefix re-points every path in the index, for a load whose paths need to say
+// which ROOT they are relative to (check.LoadComposed's community half - see
+// communityMarker). It lives beside merge for the same reason merge does: the
+// field list is written out by hand here, so a seventh map added above and
+// forgotten below would silently keep its unattributed paths.
+func (i *pathIndex) prefix(p string) {
+	prefixPaths(i.work, p)
+	prefixPaths(i.rec, p)
+	prefixPaths(i.person, p)
+	prefixPaths(i.series, p)
+	prefixPaths(i.characters, p)
+	prefixPaths(i.recaps, p)
+}
+
+// prefixPaths prepends p to every path in one of the index's maps.
+func prefixPaths[K comparable](m map[K]string, p string) {
+	for k, v := range m {
+		m[k] = p + v
+	}
+}
+
+// sidecarRef is one works-community member as a rule that judges the KEY sees
+// it: which member kind it is, where it was read from, and a pointer to the work
+// slug it is keyed by. The pointer is what lets the compose re-point a retired
+// key on the record itself (compose.go).
+type sidecarRef struct {
+	kind string
+	path string
+	work *string
+}
+
+// sidecarRefs enumerates every sidecar member in the catalogue, in catalogue
+// order - characters then recaps, which is a reporting order only: every rule
+// over it groups or sorts before it says anything.
+//
+// It lives HERE, beside pathIndex, for the reason pathIndex.merge does: the
+// member kinds are a list that has to be written out by hand, and this file is
+// where the project keeps that list total. Three other rules enumerate the same
+// two kinds (checkIntegrity's sidecar arm, checkSidecarUniqueness,
+// checkSidecarPositionScale), each reporting through the very maps declared
+// above; a third kind added to model.Catalog and missed here would silently
+// escape the compose's existence rule, so TestSidecarRefsCoverEverySidecarKind
+// derives the kinds from the Catalog type itself and fails when this list is
+// short.
+func sidecarRefs(cat *model.Catalog, idx *pathIndex) []sidecarRef {
+	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps))
+	for _, c := range cat.Characters {
+		refs = append(refs, sidecarRef{kind: "characters", path: idx.characters[c], work: &c.Work})
+	}
+	for _, rc := range cat.Recaps {
+		refs = append(refs, sidecarRef{kind: "recaps", path: idx.recaps[rc], work: &rc.Work})
+	}
+	return refs
+}
+
 // loader is one walk's accumulating state, shared by both layout walkers.
 //
 // A loader is single-goroutine state. The pack walk runs one loader PER PACK
@@ -188,14 +243,21 @@ func (l *loader) fork() *loader {
 	}
 }
 
+// problemf is the ONE construction of a Problem from an addFunc-shaped call -
+// the loader's two accumulators and compose.go's appendTo all spell it through
+// here, so a change to how a report line is composed has one home.
+func problemf(path, format string, args ...any) Problem {
+	return Problem{Path: path, Msg: fmt.Sprintf(format, args...)}
+}
+
 // add records a rule violation against path.
 func (l *loader) add(path, format string, args ...any) {
-	l.probs = append(l.probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	l.probs = append(l.probs, problemf(path, format, args...))
 }
 
 // warn records an advisory against path.
 func (l *loader) warn(path, format string, args ...any) {
-	l.warns = append(l.warns, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	l.warns = append(l.warns, problemf(path, format, args...))
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
@@ -237,7 +299,8 @@ func LoadProfile(dir string, p pack.Profile) Result {
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
-	return load(lst, nil)
+	res, _ := load(lst, nil)
+	return res
 }
 
 // LoadStore validates the tree store s was opened on, over the store's own walk
@@ -286,24 +349,33 @@ func LoadStore(s *pack.Store) Result {
 	if lst == nil {
 		return LoadProfile(s.Dir(), s.Profile())
 	}
-	return load(lst, s.Reader())
+	res, _ := load(lst, s.Reader())
+	return res
 }
 
 // load validates a walked tree. rdr is a writer's parse cache to read packs
 // from, or nil. Either way each pack this load reads itself is released as soon
 // as it has been validated.
-func load(lst *pack.Listing, rdr *pack.Reader) Result {
+//
+// It hands back the walk's PATH INDEX beside the result, for the one caller that
+// needs to report against a record after the load has returned: LoadComposed,
+// which runs the cross-family rules over TWO roots' catalogues and has to name
+// the pack entry a sidecar came from (compose.go). Every other caller discards
+// it, which is why it is a second return value rather than a Result field - the
+// index maps every loaded record to its path, and retaining that on every load
+// would cost hundreds of megabytes over the real tree to serve one consumer.
+func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	dir := lst.Dir()
 	profile := lst.Profile()
 
 	schemas, err := compileSchemas()
 	if err != nil {
-		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}
+		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}, nil
 	}
 
 	layouts, err := lst.Layouts()
 	if err != nil {
-		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
+		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}, nil
 	}
 
 	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas}
@@ -395,7 +467,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	sortProblems(l.probs)
 	sortProblems(l.warns)
 
-	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}
+	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}, idx
 }
 
 func sortProblems(ps []Problem) {

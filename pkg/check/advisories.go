@@ -2,6 +2,7 @@ package check
 
 import (
 	"fmt"
+	"io"
 	"regexp"
 	"sort"
 	"strings"
@@ -495,7 +496,12 @@ const (
 	AdvisoryOrphanPerson    = "orphan-person"
 	AdvisorySidecarScale    = "mis-scaled-sidecar"
 	AdvisoryOversizedEntry  = "oversized-entry"
-	AdvisoryUnclassified    = "unclassified"
+	// AdvisoryRetiredSidecarKey is the ONE class no single-root load can produce:
+	// a composed build resolving a community sidecar's key through the core tree's
+	// slug tombstone table (compose.go). Its count is the size of the open re-key
+	// sweep, which is why it is an advisory at all rather than silence.
+	AdvisoryRetiredSidecarKey = "retired-sidecar-key"
+	AdvisoryUnclassified      = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -527,6 +533,9 @@ var advisoryMarkers = []struct {
 	// internal/audit started filing advisories under these class names and 12 of
 	// them came back unclassified.
 	{AdvisoryOversizedEntry, "an oversized entry cannot be split", "oversized entries"},
+	// The composed build's tombstone rides (compose.go). Appended for the same
+	// reason as its predecessors: the census line is read by column position.
+	{AdvisoryRetiredSidecarKey, "the community re-key sweep is pending", "sidecar keys riding a redirect"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or
@@ -546,6 +555,19 @@ func AdvisoryClass(w Problem) string {
 // AdvisoryCensus renders the one-line count metacheck prints under the
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.
+// PrintAdvisories writes every warning to w with the "advisory: " prefix and
+// the census line under them - the one spelling of the advisory report, shared
+// by cmd/metacheck and cmd/metabuild so the two CLIs cannot drift on it. Exit
+// status is the caller's; advisories never affect it.
+func PrintAdvisories(w io.Writer, warnings []Problem) {
+	for _, p := range warnings {
+		_, _ = fmt.Fprintf(w, "advisory: %s\n", p.String())
+	}
+	if census := AdvisoryCensus(warnings); census != "" {
+		_, _ = fmt.Fprintf(w, "%s\n", census)
+	}
+}
+
 func AdvisoryCensus(warns []Problem) string {
 	counts, total := map[string]int{}, 0
 	for _, w := range warns {
@@ -632,6 +654,12 @@ const sidecarScaleMinChapters = 20
 // continue, so the rule is vacuous by construction rather than switched off
 // (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+	// No sidecars, nothing to judge - and the floor map below is a full
+	// works-times-recordings walk, which a core-profile load (every core load of
+	// a composed build) would otherwise pay for nothing.
+	if len(cat.Characters) == 0 && len(cat.Recaps) == 0 {
+		return
+	}
 	// Smallest non-empty chapter list per work id.
 	floor := map[string]int{}
 	for _, w := range cat.Works {

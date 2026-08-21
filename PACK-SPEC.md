@@ -101,6 +101,52 @@ placement rules, the same schemas. Two consequences, and they are the point:
   family - schema, placement, bounds, caps, key/id agreement, the member rules -
   runs unchanged, which is what makes a community root checkable standalone.
 
+**Where the skipped rules DO run: the release build, over both roots.**
+`metabuild --community <dir>` reads `-data` as the core (`ProfileCore`) and that
+directory as the community half (`ProfileCommunity`), and composes the two
+catalogues into ONE artifact - `check.LoadComposed`, which is the only place that
+holds the whole database at once. Four rules run over the pair; **two of them are
+compose-only, and two are the whole database's rules asked where the whole
+database is** (both also run in any `ProfileAll` load):
+
+- **existence** (also in a whole-database load) - a works-community entry keyed
+  by a work the core tree does not hold is a HARD error naming the pack entry. A
+  red release, never a silently dropped sidecar.
+- **redirect resolution** (compose-only) - a key naming a slug the core has
+  RETIRED (`data/redirects.json`) is re-keyed onto the surviving slug for that
+  build, and WARNED about. A core repair wave lands in one repository and the
+  community re-key sweep in the other, so the two cannot be atomic; resolving
+  here is what keeps the window between them from losing a sidecar, and the
+  warning is what keeps that window datable from a build log. Build-time only -
+  nothing is written, and the sweep is still the fix.
+- **collision** (compose-only) - two sidecars of the same KIND resolving onto one
+  work is refused, never folded: which one describes the surviving work is a
+  human decision. Disjoint members (a characters sidecar at the retired slug, a
+  recaps sidecar at the survivor) simply meet on one work, which is what a
+  composed entry is.
+- **the position-scale advisory** (also in a whole-database load) - vacuous over
+  a community root alone (no works to measure against), real here, and still a
+  WARNING.
+
+Every one of them runs whether or not a side is red, exactly as a whole-database
+load has never let one malformed pack silence its dangling-sidecar reports; and
+the resolution REWRITES a key only on a green pass, so a failed compose hands
+back the catalogue as the trees really spell it. A `--community` root holding no
+works-community entries at all is itself a hard error: the flag says there is a
+community layer, and composing an empty one would ship the artifact with the
+whole CC BY-SA layer missing.
+
+Nothing about the artifact changes: the same schema version, the same sorted-id
+inserts. **Equivalence with a single tree is CONDITIONAL on every community key
+being live** - the state the cutover produces and the sweep maintains. There,
+`TestComposedArtifactEqualsSingleTree` pins it - split a tree's works-community
+into a second root, compose it back, and the SQLite file is byte-identical - and
+the same proof was taken by hand over the seeded tree before the cutover. Inside
+a tombstone window the pair is deliberately MORE PERMISSIVE than one tree: a
+single tree refuses a sidecar keyed by a retired slug outright (the work does not
+exist), while the compose resolves it and builds. The advisory is the visible
+marker of that state.
+
 `pack.Store` carries its root's profile too: it plans and flushes only that
 profile's families, and every read or write addressed to another one is a loud
 error (`Store.Tree` and `Store.Layout`, which answer with a value rather than an
