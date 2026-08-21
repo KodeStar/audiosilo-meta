@@ -150,6 +150,39 @@ func TestCoreProfileSendsASidecarFormToTheCommunityRepo(t *testing.T) {
 	}
 }
 
+// TestUnknownTemplateIsNamedRatherThanRouted: writeFamilies answers for an
+// unknown template with the core families (its default), so a profile gate asked
+// first would tell a submitter their nonexistent form belongs on the core
+// repository. It is judged as unknown before the gate, under every profile.
+func TestUnknownTemplateIsNamedRatherThanRouted(t *testing.T) {
+	for _, p := range []pack.Profile{pack.ProfileAll, pack.ProfileCore, pack.ProfileCommunity} {
+		res := Process(Options{DataDir: t.TempDir(), Profile: p, Template: "add-quotes"})
+		if res.Status != StatusInvalid {
+			t.Errorf("%s: status = %q, want invalid; messages = %v", p, res.Status, res.Messages)
+		}
+		if !anyContains(res.Messages, `unknown template "add-quotes"`) {
+			t.Errorf("%s: the verdict does not name the template: %v", p, res.Messages)
+		}
+		if anyContains(res.Messages, coreRepoIssues) || anyContains(res.Messages, communityRepoIssues) {
+			t.Errorf("%s: an unknown template was routed to a repository: %v", p, res.Messages)
+		}
+	}
+}
+
+// TestEveryRoutingTemplateNormalizesToAKnownOne is the drift guard on the
+// derivation: a label that ROUTES must name a template the switch handles, or a
+// submission would be admitted and then reported as unknown.
+func TestEveryRoutingTemplateNormalizesToAKnownOne(t *testing.T) {
+	for label := range routingTemplates {
+		if tmpl := normalizeTemplate(label); !normalizedTemplates[tmpl] {
+			t.Errorf("routing label %q normalizes to %q, which is not a known template", label, tmpl)
+		}
+	}
+	if got, want := len(normalizedTemplates), len(routingTemplates); got != want {
+		t.Errorf("normalizedTemplates has %d entries, routingTemplates %d - two labels normalized onto one template", got, want)
+	}
+}
+
 // TestCommunityProfileRefusesAnUnknownWork: the entry key IS a core work slug, so
 // a submission naming a book the catalogue does not hold is refused rather than
 // composed - the pull request would fail the community repository's own key

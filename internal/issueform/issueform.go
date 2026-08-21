@@ -214,6 +214,13 @@ func process(opts Options) Result {
 	if !profile.Valid() {
 		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown tree profile %q", string(profile))}}
 	}
+	// An unknown template is judged FIRST, because writeFamilies answers for one
+	// with the core families (its default) and the profile gate below would then
+	// tell a submitter their nonexistent form belongs on the other repository.
+	// The switch's own default stays as an unreachable backstop.
+	if !normalizedTemplates[tmpl] {
+		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", opts.Template)}}
+	}
 	// A form that writes a family this root does not hold is refused BEFORE
 	// anything is opened or parsed: the submission is fine, it is simply on the
 	// wrong repository, and the verdict names the right one.
@@ -391,8 +398,8 @@ const (
 // and ProfileAll - one tree holding the whole database - admits all six, which
 // is what this repository is today.
 //
-// An unknown template returns "": it has no families to judge, and Process's own
-// switch already gives it the invalid verdict that names it.
+// It is only ever asked of a KNOWN template (Process refuses the rest first),
+// because writeFamilies answers for an unknown one with the core families.
 func templateBelongsElsewhere(tmpl string, p pack.Profile) string {
 	for _, f := range writeFamilies(tmpl) {
 		if p.Has(f) {
@@ -747,6 +754,20 @@ var routingTemplates = map[string]bool{
 	"recaps":        true,
 	"import":        true,
 }
+
+// normalizedTemplates is routingTemplates in the CANONICAL spelling Process's
+// switch uses ("correct-data", where the routing label says "correction"),
+// DERIVED from it rather than restated: the two would otherwise be two lists of
+// the same six forms, and a template known to one and not the other is either a
+// submission that routes and then reports "unknown template", or one that is
+// refused before the profile gate can send it to the right repository.
+var normalizedTemplates = func() map[string]bool {
+	m := make(map[string]bool, len(routingTemplates))
+	for t := range routingTemplates {
+		m[normalizeTemplate(t)] = true
+	}
+	return m
+}()
 
 // TemplateFromLabels picks the intake routing template from an issue's label
 // names. A label routes when it is "data:<t>" for a known template <t> (add-work,
