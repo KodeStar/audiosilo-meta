@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { getWork, getSeries, href, personNames, type Character, type Work } from '../../lib/api'
 import { addCharactersIssueUrl, addRecapsIssueUrl } from '../../lib/github-prefill'
 import { downloadJson } from '../../lib/download'
+import { CC_BY_SA_LABEL } from '../../lib/expressive'
 import {
   buildCharactersObject,
   buildRecapsObject,
@@ -388,7 +389,7 @@ function Explainer({ isChars }: { isChars: boolean }) {
       )}
       <p className="mt-2 text-dim">
         Own words only, neutral reference-guide voice - no verbatim text, jokes, or editorializing.
-        This is the community <span className="font-medium text-pink-300">CC BY-SA 4.0</span> layer.
+        This is the community <span className="font-medium text-pink-300">{CC_BY_SA_LABEL}</span> layer.
       </p>
     </div>
   )

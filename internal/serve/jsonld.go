@@ -156,7 +156,7 @@ func guideJSONLD(headline, siteURL, canonical, workCanonical string) []byte {
 		Context: ldContext, Type: "Article", Headline: headline,
 		URL: canonical, MainEntityOfPage: canonical,
 		About:    &ldRef{ID: workNodeID(workCanonical)},
-		License:  ccBySA40URL,
+		License:  ccBySAURL,
 		IsPartOf: &ldWebSite{Type: "WebSite", Name: siteName, URL: siteURL},
 	})
 }

@@ -170,7 +170,7 @@ func Process(opts Options) Result {
 func licenseLayer(tmpl string) string {
 	switch tmpl {
 	case "characters", "recaps":
-		return "CC BY-SA 4.0 (community expressive layer)"
+		return licenseBySALabel + " (community expressive layer)"
 	default:
 		return "CC0-1.0 (factual core)"
 	}

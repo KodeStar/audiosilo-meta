@@ -284,7 +284,7 @@ func TestGuidePageJSONLD(t *testing.T) {
 	if doc["headline"] != "Project Hail Mary recap" {
 		t.Errorf("headline = %v", doc["headline"])
 	}
-	if doc["license"] != ccBySA40URL {
+	if doc["license"] != ccBySAURL {
 		t.Errorf("license = %v, want the CC BY-SA deed", doc["license"])
 	}
 	about, _ := doc["about"].(map[string]any)

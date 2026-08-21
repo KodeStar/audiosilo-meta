@@ -232,13 +232,10 @@ func TestPackWrapperSchemas(t *testing.T) {
 				"unknown member":   `{"entries": {"dune": {"notes": {}}}}`,
 				"invalid sidecar":  `{"entries": {"dune": {"characters": {"work": "dune"}}}}`,
 				"CC0 on a sidecar": `{"entries": {"dune": {"characters": ` + strings.Replace(packValidCharacters, `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1) + `}}}`,
-				// The 2026-08-21 upgrade REPLACED the community enum value
-				// rather than widening it: every sidecar in the tree had been
-				// authored in-house, so there was no third-party 3.0 content to
-				// keep accepting. The retired spelling must therefore stay
-				// REJECTED, which is what this pins - a later "re-add 3.0 for
-				// compatibility" would silently reopen the layer to content the
-				// project cannot relicense. See LICENSING.md, "The 4.0 upgrade".
+				// The 2026-08-21 upgrade replaced the enum value, so the retired
+				// 3.0 spelling must stay rejected; re-adding it would reopen the
+				// layer to content the project cannot relicense (see LICENSING.md,
+				// "The 4.0 upgrade").
 				"retired 3.0 on a sidecar": `{"entries": {"dune": {"characters": ` + strings.Replace(packValidCharacters, `"CC-BY-SA-4.0"`, `"CC-BY-SA-3.0"`, 1) + `}}}`,
 			},
 		},
