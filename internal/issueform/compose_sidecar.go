@@ -63,9 +63,31 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 	} else if _, taken := entry[names.member]; taken {
 		// Only this member blocks: the sibling sidecar sharing the entry is
 		// exactly what the read-modify-write below preserves.
-		c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer",
-			names.fileName, c.entryLocation(pack.FamilyWorksCommunity, workSlug, "")+": "+names.member)
+		c.failMemberTaken(names, workSlug)
 		return
+	}
+	// AND under every RETIRED spelling of this work, which is the state a core
+	// merge actually leaves behind: the merge retires the work slug in one
+	// repository, and the community entry keeps its old key until the re-key sweep
+	// lands in the other. Probing only the survivor sees no member and composes a
+	// COMPETING one of the same kind for the same book - two characters members
+	// that the release build's collision rule then refuses, or worse, that a
+	// maintainer folds by hand having lost which was which. Which entry describes
+	// the work is a maintainer's call (internal/repair's sidecar-member-collision
+	// principle), so this is needs-human rather than a merge.
+	aliases, ok := c.retiredKeysFor(workSlug)
+	if !ok {
+		return
+	}
+	for _, alias := range aliases {
+		old, foundOld, ok := c.entryRaw(pack.FamilyWorksCommunity, alias)
+		if !ok {
+			return
+		}
+		if _, taken := old[names.member]; foundOld && taken {
+			c.failMemberTaken(names, alias)
+			return
+		}
 	}
 
 	raw, ok := c.attachmentBytes(s.get(attachLabel))
@@ -84,6 +106,16 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 
 	entry[names.member] = obj
 	c.putEntry(pack.FamilyWorksCommunity, workSlug, entry)
+}
+
+// failMemberTaken is the verdict for a work that already carries a sidecar of the
+// kind being submitted, at whichever KEY it is stored under - the survivor's, or
+// the retired spelling a core merge left it at. One message for both, because the
+// answer is the same either way and the location it names is what tells a
+// maintainer which of the two they are looking at.
+func (c *composer) failMemberTaken(names struct{ member, fileName string }, at string) {
+	c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer",
+		names.fileName, c.entryLocation(pack.FamilyWorksCommunity, at, "")+": "+names.member)
 }
 
 // attachmentBytes resolves a sidecar/import attachment field to bytes: an

@@ -142,6 +142,12 @@ type composer struct {
 	// are one identifier.
 	isbnRec map[string]recRef
 
+	// redirects is the tree's own slug TOMBSTONE table, off the same load. Only
+	// resolveWorkKey reads it, and only where the works family is in the tree: a
+	// profile carrying no tombstone table leaves it empty, and the artifact
+	// carries the answer there instead.
+	redirects model.Redirects
+
 	// identity is the normalized-identity index over the catalogue, taken from the
 	// load that seeded the dedup maps rather than built here (check.Result.Identity).
 	// It is the same index the bulk importer's create guard reads, so the two writers
@@ -321,6 +327,7 @@ func (c *composer) loadExisting() {
 	if cat == nil {
 		return
 	}
+	c.redirects = cat.Redirects
 	for _, p := range cat.People {
 		c.people[p.ID] = true
 	}

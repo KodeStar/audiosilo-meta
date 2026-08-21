@@ -437,7 +437,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	// Opened before anything is planned: a tree still in the file-per-entity
 	// layout is refused here, having written nothing and read nothing it could
 	// misinterpret.
-	store, err := openStore(opts.DataDir)
+	store, err := openStore(opts.DataDir, opts.Profile)
 	if err != nil {
 		return Summary{}, err
 	}
@@ -504,7 +504,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	if err := p.flush(); err != nil {
 		return p.summary, err
 	}
-	if res := check.Load(opts.DataDir); !res.OK() {
+	if res := check.LoadProfile(opts.DataDir, opts.Profile); !res.OK() {
 		return p.summary, fmt.Errorf("post-import validation failed:\n%s", problemLines(res.Problems))
 	}
 	return p.summary, nil
