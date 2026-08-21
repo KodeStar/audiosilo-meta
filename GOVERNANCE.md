@@ -119,11 +119,16 @@ Two automations sit in front of the human review step. Neither bypasses it.
   make (factual consistency, plausible provenance, the correct license layer,
   no copied publisher prose, sane sidecar spoiler positions and length). It
   posts a PASS/FLAG comment and applies an `ai-verified` or `ai-flagged` label.
-  This is **advisory only**: it never blocks a merge, and a `flag` is a prompt
-  for a maintainer to look closer, not a veto. It runs on same-repo branches;
-  fork pull requests are verified only after a maintainer pushes the branch to
-  the repository (fork runs have no secret and a read-only token by design - the
-  repo never adopts `pull_request_target`).
+  The VERDICT is **advisory only**: a `flag` is a prompt for a maintainer to
+  look closer, not a veto, and the check is not branch protected, so neither
+  verdict blocks a merge. The job's COLOUR answers a different question -
+  whether a verdict happened at all - and a verification that could not run
+  leaves it red rather than green; the rule and the reason live on
+  `.github/scripts/ai-verify.sh` (the `EXIT STATUS` block). It runs on same-repo
+  branches only; fork pull requests are verified after a maintainer pushes the
+  branch to the repository or re-runs the workflow by hand (fork runs have no
+  secret and a read-only token by design - the repo never adopts
+  `pull_request_target`).
 
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
