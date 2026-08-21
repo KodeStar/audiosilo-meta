@@ -63,6 +63,12 @@ A contribution made before the upgrade is covered by it because the contributor
 and the maintainer were the same person; from 2026-08-21 the contribution
 checkbox on the characters/recaps issue forms names 4.0.
 
+The enum value was **replaced, not widened**, so `"CC-BY-SA-3.0"` is now
+rejected. A submission whose attachment was authored against the old
+instructions therefore fails validation with a bare value-mismatch message
+naming the `license` field - and the fix is mechanical: change the one value to
+`"CC-BY-SA-4.0"` and nothing else about the file needs to move.
+
 ## The CC0 core
 
 The factual core - works, recordings, people, and series - is dedicated to the
