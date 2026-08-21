@@ -225,7 +225,7 @@ func CharactersJSON(t testing.TB, work, charID string) string {
 			"id": charID, "name": "Someone", "reveal": map[string]int{"chapter": 1},
 			"description": "A character, described in the community's own words.",
 		}},
-		"license": "CC-BY-SA-3.0",
+		"license": "CC-BY-SA-4.0",
 		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
 	})
 }
@@ -239,7 +239,7 @@ func RecapsJSON(t testing.TB, work string, throughChapter int) string {
 			"through": map[string]int{"chapter": throughChapter},
 			"text":    "The story so far, in the community's own words.",
 		}},
-		"license": "CC-BY-SA-3.0",
+		"license": "CC-BY-SA-4.0",
 		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
 	})
 }

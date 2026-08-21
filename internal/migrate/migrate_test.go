@@ -26,8 +26,8 @@ func legacyFixture() map[string]string {
 		"works/du/dune/recordings/ann-doe-2021.json": `{"id":"ann-doe-2021","language":"en","license":"CC0-1.0","narrators":["ann-doe"],` +
 			`"sources":[{"type":"user"}],"work":"dune"}`,
 		"works/du/dune/characters.json": `{"characters":[{"description":"A duke's heir.","id":"paul","name":"Paul","reveal":{"chapter":1}}],` +
-			`"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"dune"}`,
-		"works/du/dune/recaps.json": `{"license":"CC-BY-SA-3.0","recaps":[{"text":"Paul arrives on Arrakis.","through":{"chapter":1}}],` +
+			`"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"dune"}`,
+		"works/du/dune/recaps.json": `{"license":"CC-BY-SA-4.0","recaps":[{"text":"Paul arrives on Arrakis.","through":{"chapter":1}}],` +
 			`"sources":[{"type":"community"}],"work":"dune"}`,
 		"works/em/emma/work.json": `{"authors":["ann-doe"],"id":"emma","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Emma"}`,
 		"works/em/emma/recordings/ann-doe-2019.json": `{"id":"ann-doe-2019","language":"en","license":"CC0-1.0","narrators":["ann-doe"],` +

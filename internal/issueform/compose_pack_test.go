@@ -14,7 +14,7 @@ import (
 )
 
 // validRecapsJSON is a minimal, schema-valid recaps sidecar for existing-work.
-const validRecapsJSON = `{"work":"existing-work","recaps":[{"through":{"chapter":1},"text":"Alice sets out, and by the end of the first chapter she has left home."}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}]}`
+const validRecapsJSON = `{"work":"existing-work","recaps":[{"through":{"chapter":1},"text":"Alice sets out, and by the end of the first chapter she has left home."}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}]}`
 
 // recapsBody builds an add-recaps submission body.
 func recapsBody(workRef, attachment string, license bool) string {

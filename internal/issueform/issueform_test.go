@@ -621,7 +621,7 @@ func TestCorrectDataRecordNotFound(t *testing.T) {
 	}
 }
 
-const validCharactersJSON = `{"work":"existing-work","characters":[{"id":"alice","name":"Alice","reveal":{"chapter":1},"description":"A brave adventurer introduced early in the book."}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}]}`
+const validCharactersJSON = `{"work":"existing-work","characters":[{"id":"alice","name":"Alice","reveal":{"chapter":1},"description":"A brave adventurer introduced early in the book."}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}]}`
 
 func charactersBody(workRef, attachment string, license bool) string {
 	b := field(fWorkRef, workRef) +

@@ -388,7 +388,7 @@ function Explainer({ isChars }: { isChars: boolean }) {
       )}
       <p className="mt-2 text-dim">
         Own words only, neutral reference-guide voice - no verbatim text, jokes, or editorializing.
-        This is the community <span className="font-medium text-pink-300">CC BY-SA 3.0</span> layer.
+        This is the community <span className="font-medium text-pink-300">CC BY-SA 4.0</span> layer.
       </p>
     </div>
   )

@@ -306,7 +306,7 @@ func TestPackProblemPaths(t *testing.T) {
 			mutate: func(f map[string]string) {
 				f["works-community/0/0.json"] = packOf(map[string]string{
 					"book-one": `{"characters":` +
-						strings.Replace(validCharacters("book-one"), `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1) + `}`,
+						strings.Replace(validCharacters("book-one"), `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1) + `}`,
 				})
 			},
 			want: "works-community/0/0.json: entry book-one: characters",
@@ -576,7 +576,7 @@ func TestPackRuleViolations(t *testing.T) {
 			name: "share-alike license on a works entry",
 			mutate: func(f map[string]string) {
 				f["works/0/0.json"] = packOf(map[string]string{
-					"book-one": composite(strings.Replace(pkWorkOne, `"CC0-1.0"`, `"CC-BY-SA-3.0"`, 1),
+					"book-one": composite(strings.Replace(pkWorkOne, `"CC0-1.0"`, `"CC-BY-SA-4.0"`, 1),
 						map[string]string{"rec-one": pkRecOne}),
 				})
 			},
@@ -587,7 +587,7 @@ func TestPackRuleViolations(t *testing.T) {
 			mutate: func(f map[string]string) {
 				f["works/0/0.json"] = packOf(map[string]string{
 					"book-one": composite(pkWorkOne, map[string]string{
-						"rec-one": strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-3.0"`, 1),
+						"rec-one": strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-4.0"`, 1),
 					}),
 				})
 			},
@@ -597,7 +597,7 @@ func TestPackRuleViolations(t *testing.T) {
 			name: "CC0 license on a community sidecar",
 			mutate: func(f map[string]string) {
 				f["works-community/0/0.json"] = packOf(map[string]string{
-					"book-one": `{"recaps":` + strings.Replace(validRecaps("book-one"), `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1) + `}`,
+					"book-one": `{"recaps":` + strings.Replace(validRecaps("book-one"), `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1) + `}`,
 				})
 			},
 			want: "works-community/0/0.json: entry book-one: recaps: /license",
@@ -661,7 +661,7 @@ func TestPackRuleViolations(t *testing.T) {
 			name: "duplicate character id within an entry",
 			mutate: func(f map[string]string) {
 				f["works-community/0/0.json"] = packOf(map[string]string{
-					"book-one": `{"characters":{"characters":[{"id":"hero","name":"Hero","reveal":{"chapter":1}},{"id":"hero","name":"Twin","reveal":{"chapter":2}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"book-one"}}`,
+					"book-one": `{"characters":{"characters":[{"id":"hero","name":"Hero","reveal":{"chapter":1}},{"id":"hero","name":"Twin","reveal":{"chapter":2}}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"book-one"}}`,
 				})
 			},
 			want: `duplicate character id "hero"`,
@@ -670,7 +670,7 @@ func TestPackRuleViolations(t *testing.T) {
 			name: "duplicate recap through-position within an entry",
 			mutate: func(f map[string]string) {
 				f["works-community/0/0.json"] = packOf(map[string]string{
-					"book-one": `{"recaps":{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}},{"text":"B.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}}`,
+					"book-one": `{"recaps":{"license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}},{"text":"B.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}}`,
 				})
 			},
 			want: "duplicate recap through chapter 3",

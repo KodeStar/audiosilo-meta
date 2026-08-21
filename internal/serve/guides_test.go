@@ -46,7 +46,7 @@ func TestRecapPageCarriesTheRankingSubstance(t *testing.T) {
 		"<summary>Story so far - through chapter 9",
 		"<summary>How does it end?",
 		`<div data-nosnippet>`,
-		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>`,
+		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
 		`href="/build?work=project-hail-mary&amp;kind=recaps"`,
 		// The crawl mesh: back to the work, across to the sibling guide.
 		`<a href="/works/project-hail-mary">Full details for Project Hail Mary</a>`,
@@ -102,7 +102,7 @@ func TestCharactersPageCarriesTheRankingSubstance(t *testing.T) {
 		"Also known as Dr. Grace",
 		"Appears from the start",
 		"First appears in chapter 8",
-		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>`,
+		`<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>`,
 		`href="/build?work=project-hail-mary&amp;kind=characters"`,
 		`<a href="/works/project-hail-mary/recap">Project Hail Mary recap</a>`,
 	} {
@@ -284,7 +284,7 @@ func TestGuidePageJSONLD(t *testing.T) {
 	if doc["headline"] != "Project Hail Mary recap" {
 		t.Errorf("headline = %v", doc["headline"])
 	}
-	if doc["license"] != ccBySA30URL {
+	if doc["license"] != ccBySA40URL {
 		t.Errorf("license = %v, want the CC BY-SA deed", doc["license"])
 	}
 	about, _ := doc["about"].(map[string]any)
@@ -367,15 +367,15 @@ func guideCatalog() *model.Catalog {
 			work("plain-work", "Plain Work"),
 		},
 		Characters: []*model.Characters{{
-			Work: "only-characters", License: "CC-BY-SA-3.0",
+			Work: "only-characters", License: "CC-BY-SA-4.0",
 			Characters: []model.Character{{ID: "someone", Name: "Someone", Reveal: model.Position{Chapter: 3}}},
 		}},
 		Recaps: []*model.Recaps{
 			{
-				Work: "only-chapters", License: "CC-BY-SA-3.0",
+				Work: "only-chapters", License: "CC-BY-SA-4.0",
 				Recaps: []model.Recap{{Through: model.Position{Chapter: 4}, Scope: "book", Text: "Things happen."}},
 			},
-			{Work: "only-summary", License: "CC-BY-SA-3.0", InShort: "It all works out."},
+			{Work: "only-summary", License: "CC-BY-SA-4.0", InShort: "It all works out."},
 		},
 	}
 }

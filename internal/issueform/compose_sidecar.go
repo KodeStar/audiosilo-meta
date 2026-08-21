@@ -29,7 +29,7 @@ var sidecarMembers = map[model.Kind]struct{ member, fileName string }{
 // positions.
 func (c *composer) addSidecar(s sections, kind model.Kind) {
 	if !s.checked(fSidecarLicense) {
-		c.fail(StatusInvalid, "the CC BY-SA 3.0 license checkbox is not ticked")
+		c.fail(StatusInvalid, "the CC BY-SA 4.0 license checkbox is not ticked")
 		return
 	}
 

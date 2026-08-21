@@ -105,11 +105,11 @@ const (
 		"license": "CC0-1.0", "sources": [{"type": "user"}]
 	}`
 	packValidCharacters = `{
-		"work": "dune", "license": "CC-BY-SA-3.0", "sources": [{"type": "community"}],
+		"work": "dune", "license": "CC-BY-SA-4.0", "sources": [{"type": "community"}],
 		"characters": [{"id": "paul", "name": "Paul", "reveal": {"chapter": 1}}]
 	}`
 	packValidRecaps = `{
-		"work": "dune", "license": "CC-BY-SA-3.0", "sources": [{"type": "community"}],
+		"work": "dune", "license": "CC-BY-SA-4.0", "sources": [{"type": "community"}],
 		"recaps": [{"through": {"chapter": 1}, "text": "A start."}]
 	}`
 )
@@ -204,7 +204,7 @@ func TestPackWrapperSchemas(t *testing.T) {
 				"non-slug key":         `{"entries": {"Dune!": ` + validWork + `}}`,
 				"invalid entry":        `{"entries": {"dune": {"id": "dune"}}}`,
 				"share-alike license": `{"entries": {"dune": ` +
-					strings.Replace(validWork, `"CC0-1.0"`, `"CC-BY-SA-3.0"`, 1) + `}}`,
+					strings.Replace(validWork, `"CC0-1.0"`, `"CC-BY-SA-4.0"`, 1) + `}}`,
 			},
 		},
 		{
@@ -231,7 +231,7 @@ func TestPackWrapperSchemas(t *testing.T) {
 				"neither member":   `{"entries": {"dune": {}}}`,
 				"unknown member":   `{"entries": {"dune": {"notes": {}}}}`,
 				"invalid sidecar":  `{"entries": {"dune": {"characters": {"work": "dune"}}}}`,
-				"CC0 on a sidecar": `{"entries": {"dune": {"characters": ` + strings.Replace(packValidCharacters, `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1) + `}}}`,
+				"CC0 on a sidecar": `{"entries": {"dune": {"characters": ` + strings.Replace(packValidCharacters, `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1) + `}}}`,
 			},
 		},
 	}

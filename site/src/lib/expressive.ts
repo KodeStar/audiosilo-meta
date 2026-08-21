@@ -13,7 +13,7 @@ import type { WorkGuide } from './entity-url'
     footer, and anything that grows one later - links the same deed.
     internal/serve carries its own copy for the server-rendered pages; see
     LICENSING.md for what the two layers mean. */
-export const CC_BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/3.0/'
+export const CC_BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/4.0/'
 
 /** Human label for a character role, or null when the role is absent/unknown. */
 export function roleLabel(role: Character['role']): string | null {

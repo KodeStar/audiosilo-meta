@@ -246,7 +246,7 @@ describe('buildCharactersObject', () => {
   it('emits the fixed contract fields and required per-card fields', () => {
     const file = buildCharactersObject('a-deadly-education', [charDraft({ id: 'el', name: 'El', reveal: '1' })])
     expect(file.work).toBe('a-deadly-education')
-    expect(file.license).toBe('CC-BY-SA-3.0')
+    expect(file.license).toBe('CC-BY-SA-4.0')
     expect(file.sources).toEqual([{ type: 'community' }])
     expect(file.characters[0]).toEqual({ id: 'el', name: 'El', reveal: { chapter: 1 } })
   })
@@ -292,7 +292,7 @@ describe('buildRecapsObject', () => {
       ending: '  It ends thus.  ',
     })
     expect(withSummaries.work).toBe('w')
-    expect(withSummaries.license).toBe('CC-BY-SA-3.0')
+    expect(withSummaries.license).toBe('CC-BY-SA-4.0')
     expect(withSummaries.recaps[0]).toEqual({ through: { chapter: 3 }, scope: 'series', text: 'Previously.' })
     expect(withSummaries.in_short).toBe('The whole arc.')
     expect(withSummaries.ending).toBe('It ends thus.')

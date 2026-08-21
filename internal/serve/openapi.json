@@ -4,9 +4,9 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The read-only JSON API over the AudioSilo community audiobook metadata database.",
-    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
-      "name": "CC0-1.0 core with a CC BY-SA 3.0 community layer",
+      "name": "CC0-1.0 core with a CC BY-SA 4.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
     }
   },
@@ -1022,7 +1022,7 @@
       },
       "Character": {
         "type": "object",
-        "description": "A community-authored, spoiler-gated character entry (CC BY-SA 3.0). Recurring characters are re-described per book, so spoilers stay bounded by which book the reader is in.",
+        "description": "A community-authored, spoiler-gated character entry (CC BY-SA 4.0). Recurring characters are re-described per book, so spoilers stay bounded by which book the reader is in.",
         "required": ["id", "name", "reveal"],
         "properties": {
           "id": {
@@ -1051,7 +1051,7 @@
       },
       "Recap": {
         "type": "object",
-        "description": "A community-authored \"story so far\" (CC BY-SA 3.0), safe to show once the listener has finished `through`.",
+        "description": "A community-authored \"story so far\" (CC BY-SA 4.0), safe to show once the listener has finished `through`.",
         "required": ["through", "text"],
         "properties": {
           "through": {
@@ -1108,12 +1108,12 @@
           },
           "characters": {
             "type": "array",
-            "description": "The community character guide, in authored order. CC BY-SA 3.0. Omitted when the work has none.",
+            "description": "The community character guide, in authored order. CC BY-SA 4.0. Omitted when the work has none.",
             "items": { "$ref": "#/components/schemas/Character" }
           },
           "recaps": {
             "type": "array",
-            "description": "The community story-so-far recaps, ordered by position. CC BY-SA 3.0. Omitted when the work has none.",
+            "description": "The community story-so-far recaps, ordered by position. CC BY-SA 4.0. Omitted when the work has none.",
             "items": { "$ref": "#/components/schemas/Recap" }
           },
           "recap_summary": { "$ref": "#/components/schemas/RecapSummary" }

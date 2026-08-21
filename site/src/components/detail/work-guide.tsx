@@ -158,7 +158,7 @@ function Loaded({ work, guide, hydrated }: { work: Work; guide: WorkGuide; hydra
       <p className="mt-12 border-t border-edge pt-6 text-sm text-dim">
         Community-written and published under{' '}
         <a href={CC_BY_SA_URL} rel="license noopener" target="_blank" className={TEXT_LINK}>
-          CC BY-SA 3.0
+          CC BY-SA 4.0
         </a>
         {present ? (
           <>

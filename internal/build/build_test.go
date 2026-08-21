@@ -62,7 +62,7 @@ func fixtureCatalog() *model.Catalog {
 	}
 
 	chars := &model.Characters{
-		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		Characters: []model.Character{
 			{
@@ -80,7 +80,7 @@ func fixtureCatalog() *model.Catalog {
 	}
 	// Deliberately out of position order to prove the build sorts recaps.
 	recaps := &model.Recaps{
-		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		InShort: "A lone amnesiac wakes aboard an interstellar ship, befriends an alien engineer, and saves both their worlds.",
 		Ending:  "Grace stays behind on Erid, teaching, while the cure heads home.",
@@ -390,7 +390,7 @@ func TestBuildCharacters(t *testing.T) {
 		t.Fatalf("got %d characters, want 2", len(got))
 	}
 	if got[0].id != "ryland-grace" || got[0].ord != 0 || got[0].reveal != 1 || got[0].role != "protagonist" ||
-		got[0].wiki != "Q110001" || got[0].license != "CC-BY-SA-3.0" {
+		got[0].wiki != "Q110001" || got[0].license != "CC-BY-SA-4.0" {
 		t.Errorf("character[0] = %+v", got[0])
 	}
 	if got[1].id != "rocky" || got[1].ord != 1 || got[1].reveal != 8 {
@@ -465,7 +465,7 @@ func TestBuildRecapsServedByPosition(t *testing.T) {
 		if err := rows.Scan(&ch, &scope, &license); err != nil {
 			t.Fatal(err)
 		}
-		if scope != "book" || license != "CC-BY-SA-3.0" {
+		if scope != "book" || license != "CC-BY-SA-4.0" {
 			t.Errorf("recap through %d: scope=%q license=%q", ch, scope, license)
 		}
 		chapters = append(chapters, ch)
@@ -491,7 +491,7 @@ func TestBuildRecapSummaries(t *testing.T) {
 		Scan(&inShort, &ending, &license); err != nil {
 		t.Fatal(err)
 	}
-	if inShort == "" || ending == "" || license != "CC-BY-SA-3.0" {
+	if inShort == "" || ending == "" || license != "CC-BY-SA-4.0" {
 		t.Errorf("recap_summary row = in_short=%q ending=%q license=%q", inShort, ending, license)
 	}
 }
@@ -507,7 +507,7 @@ func TestBuildRecapSummaryAbsentWithoutFields(t *testing.T) {
 			Authors: []string{"andy-weir"}, License: "CC0-1.0",
 		}},
 		Recaps: []*model.Recaps{{
-			Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+			Work: "project-hail-mary", License: "CC-BY-SA-4.0",
 			Sources: []model.Source{{Type: "community"}},
 			Recaps:  []model.Recap{{Through: model.Position{Chapter: 1}, Text: "It begins."}},
 		}},

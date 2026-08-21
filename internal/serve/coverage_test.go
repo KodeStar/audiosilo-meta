@@ -33,7 +33,7 @@ func coverageCatalog() *model.Catalog {
 
 	chars := func(work string) *model.Characters {
 		return &model.Characters{
-			Work: work, License: "CC-BY-SA-3.0",
+			Work: work, License: "CC-BY-SA-4.0",
 			Sources: []model.Source{{Type: "community"}},
 			Characters: []model.Character{
 				{ID: "someone", Name: "Someone", Reveal: model.Position{Chapter: 1}},
@@ -42,7 +42,7 @@ func coverageCatalog() *model.Catalog {
 	}
 	// alpha is fully covered: characters + recaps + a whole-book summary.
 	alphaRecaps := &model.Recaps{
-		Work: "alpha-covered", License: "CC-BY-SA-3.0",
+		Work: "alpha-covered", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		InShort: "The whole arc in one paragraph.",
 		Ending:  "It ends well.",

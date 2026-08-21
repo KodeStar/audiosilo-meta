@@ -184,7 +184,7 @@ public/img/card/          card art (greyscale webp, generated - no attribution o
 - **Copy is true to what exists.** The in-browser import page is live (it parses
   OpenAudible, Libation, Audiobookshelf, and metascan folder-scan exports client-
   side); the command-line importer exists alongside it. The factual data core is
-  CC0; the characters/recaps layer is CC BY-SA 3.0; the code is AGPL-3.0.
+  CC0; the characters/recaps layer is CC BY-SA 4.0; the code is AGPL-3.0.
 - **Dark-only**, cinematic, pink `#db2777` as an accent (not a paint bucket).
 - **Hyphens, never em dashes.** British-neutral English.
 - Animations respect `prefers-reduced-motion`; scroll-reveal degrades to fully

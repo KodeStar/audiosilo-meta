@@ -76,7 +76,7 @@ func fixtureCatalog() *model.Catalog {
 		},
 	}
 	chars := &model.Characters{
-		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		Characters: []model.Character{
 			{
@@ -89,7 +89,7 @@ func fixtureCatalog() *model.Catalog {
 		},
 	}
 	recaps := &model.Recaps{
-		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		InShort: "A lone amnesiac wakes aboard a ship, befriends an alien, and saves both worlds.",
 		Ending:  "Grace stays on Erid while the cure flies home.",
