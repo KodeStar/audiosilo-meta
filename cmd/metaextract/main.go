@@ -10,8 +10,7 @@
 //	metaextract ngram --source <dir-or-file> [--n 8] <pack.json> [more.json...]
 //	    Check authored characters/recaps sidecars for near-verbatim overlap with
 //	    the source text (the no-verbatim copyright rule in the community repo's
-//	    AUTHORING.md). The
-//	    paths are works-community pack files - every entry in them is checked,
+//	    AUTHORING.md). The paths are works-community pack files - every entry is checked,
 //	    and a finding names the work it came from - or a bare sidecar record.
 //	    Exits 1 when any overlap is found, 0 when clean, 2 on a usage/IO error.
 //

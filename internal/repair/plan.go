@@ -160,10 +160,12 @@ const (
 
 // view is one family's read-through, write-behind state inside the plan.
 type view struct {
-	// read is where get reads through to; nil means nothing is readable and the
-	// view answers empty. write is where queue puts its writes; nil means this
-	// view is planned but never written (sidecarReadOnly). They are the same
-	// store for every ordinary family.
+	// read is where get reads through to; nil (sidecarUnknown) means the layer
+	// is UNREADABLE and every caller must refuse before asking - get errors on
+	// it rather than answering empty, because answering empty IS the blindness
+	// the three modes replaced. write is where queue puts its writes; nil means
+	// this view is planned but never written (sidecarReadOnly). They are the
+	// same store for every ordinary family.
 	read   *pack.Store
 	write  *pack.Store
 	family pack.Family
@@ -177,13 +179,12 @@ type view struct {
 
 func newView(store *pack.Store, f pack.Family) *view {
 	return &view{
-		read:    store,
-		write:   store,
-		family:  f,
-		held:    map[string]entry{},
-		dirty:   map[string]bool{},
-		gone:    map[string]bool{},
-		sidecar: sidecarInTree,
+		read:   store,
+		write:  store,
+		family: f,
+		held:   map[string]entry{},
+		dirty:  map[string]bool{},
+		gone:   map[string]bool{},
 	}
 }
 
@@ -191,11 +192,9 @@ func newView(store *pack.Store, f pack.Family) *view {
 // for it: the tree itself when its profile holds the family, else the read-only
 // community root, else neither.
 //
-// The STAGING is identical in all three modes, deliberately. A read-only run still
-// puts the merged entry and removes the losers, so a LATER proposal in the same run
-// reads what the earlier ones decided - which is the only thing that catches two
-// clusters folding two `characters`-carrying works onto one target. queue() is
-// where the modes part: it writes nothing for a view with no write store.
+// The STAGING is identical in all three modes, deliberately - a later proposal
+// must read what earlier ones decided; the write paths part at queue(), which
+// owns that decision's rationale.
 func newCommunityView(store, communityRO *pack.Store) *view {
 	v := &view{
 		family: pack.FamilyWorksCommunity,
@@ -225,7 +224,10 @@ func (v *view) get(slug string) (entry, bool, error) {
 		return e, true, nil
 	}
 	if v.read == nil {
-		return nil, false, nil
+		// The read-empty answer was the pre---community blindness: a caller that
+		// reaches here forgot the sidecarUnknown refusal, and an empty answer
+		// would silently merge over a sidecar it never saw.
+		return nil, false, fmt.Errorf("repair: %s has no readable root (sidecarUnknown) - refuse the proposal before reading", v.family.Root())
 	}
 	raw, ok, err := v.read.Get(v.family, slug)
 	if err != nil {

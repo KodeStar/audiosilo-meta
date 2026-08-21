@@ -76,13 +76,16 @@ var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, p
 //
 //   - a root the tree ALREADY holds the family for. Two answers to one question is
 //     not a mode this pass has; the operator meant --profile core.
-//   - a root carrying no works-community entries. pack.ListProfile tolerates a
+//   - a root carrying no works-community PACKS. pack.ListProfile tolerates a
 //     missing family root by design, so a directory that simply is not a community
 //     checkout - the community repository's TOP LEVEL rather than its data/, the
 //     mistake this flag invites - would otherwise answer "no sidecars anywhere" for
-//     every cluster in the wave. That is the exact blindness the flag exists to
-//     end, arrived at while looking like it had been fixed. It is metabuild's rule
-//     for --community, in the terms this pass can check it in.
+//     every cluster in the wave. This is check.LoadComposed's emptiness rule in
+//     the terms a store-open can ask (metabuild counts loadable ENTRIES; a root
+//     whose packs exist but decode to nothing passes this door and fails that
+//     one - acceptable, since the store surfaces each unreadable pack as a run
+//     error the moment a proposal touches it). That is the exact blindness the
+//     flag exists to end, arrived at while looking like it had been fixed.
 func openCommunity(opts Options) (*pack.Store, error) {
 	if opts.CommunityDir == "" {
 		return nil, nil
@@ -153,13 +156,6 @@ const (
 	CatStaleProposal Category = "stale-proposal"
 	// CatNotProposed: a key named in --only that selected nothing.
 	CatNotProposed Category = "not-proposed"
-	// CatMissing: the record the proposal names is not in the tree.
-	CatMissing Category = "record-missing"
-	// CatRetired: an earlier proposal in this run retired the record.
-	CatRetired Category = "record-retired"
-	// CatSidecarCollision: both halves of a duplicate carry the same works-community
-	// member, so which CC BY-SA entry describes the survivor is a human decision.
-	CatSidecarCollision Category = "sidecar-member-collision"
 	// CatCommunityRequired: this tree does not hold works-community and no
 	// --community root was given, so whether the cluster carries sidecars cannot be
 	// answered - and CatSidecarCollision, the guard over the most expensive data in
@@ -167,6 +163,13 @@ const (
 	// merge-works proposal takes this until the flag is passed. It is the one
 	// refusal that is about the RUN rather than about the records.
 	CatCommunityRequired Category = "community-data-required"
+	// CatMissing: the record the proposal names is not in the tree.
+	CatMissing Category = "record-missing"
+	// CatRetired: an earlier proposal in this run retired the record.
+	CatRetired Category = "record-retired"
+	// CatSidecarCollision: both halves of a duplicate carry the same works-community
+	// member, so which CC BY-SA entry describes the survivor is a human decision.
+	CatSidecarCollision Category = "sidecar-member-collision"
 	// CatPositionConflict: the change would put one book at two positions in a series,
 	// or two books at one.
 	CatPositionConflict Category = "series-position-conflict"
@@ -384,8 +387,8 @@ func Run(opts Options) (*Report, error) {
 	}
 	if len(res.Problems) > 0 && opts.Write {
 		return rep, fmt.Errorf("repair: %s has %d validation problem(s) - a record the loader dropped is invisible to the plan, "+
-			"so run `go run ./cmd/metacheck` and fix them before writing:\n  %s",
-			opts.DataDir, len(res.Problems), firstProblem(res))
+			"so run `go run ./cmd/metacheck --profile %s` and fix them before writing:\n  %s",
+			opts.DataDir, len(res.Problems), opts.Profile, firstProblem(res))
 	}
 
 	rn := &runner{opts: opts, plan: newPlan(store, communityRO, res.Catalog, table), rep: rep, filter: f}

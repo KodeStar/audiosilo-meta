@@ -115,7 +115,9 @@ jobs:
         # ones the existing release was composed from - there is genuinely nothing
         # new - so the run SKIPS rather than failing: every step below is guarded
         # on `skip`. A re-dispatch, a re-run and a workflow_dispatch on an
-        # unchanged pair are all no-ops that cost one API call instead of a full
+        # unchanged pair are all no-ops that skip the compose (both checkouts
+        # still run - the identity needs them - so the saved cost is the build,
+        # not the clone) instead of a full
         # compose.
         #
         # Each rev-parse is ASSIGNED before it is echoed. Inlined as

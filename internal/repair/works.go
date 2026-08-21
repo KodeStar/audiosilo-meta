@@ -436,11 +436,8 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 			}
 		}
 	}
-	// STAGED IN BOTH MODES, WRITTEN IN ONE. The staging is what lets a LATER
-	// proposal in this run see what this one decided, which is the only thing that
-	// catches two clusters folding two characters-carrying works onto one target;
-	// view.queue is where the read-only mode drops it (the entries belong to
-	// another repository).
+	// Staged in both modes, written in one - view.queue owns that decision and
+	// its rationale.
 	t.community.put(target, merged)
 	for _, h := range holders {
 		if h.slug != target {

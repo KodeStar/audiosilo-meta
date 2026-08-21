@@ -9,8 +9,9 @@ import (
 // profile.go is the TREE PROFILE: which families a data root deliberately holds,
 // and whether it carries the slug tombstone table beside them.
 //
-// It exists because the CC BY-SA community layer is moving to a repository of its
-// own (the community-repo split, phase 1). Two roots then exist, each holding a
+// It exists because the CC BY-SA community layer lives in a repository of its
+// own (KodeStar/audiosilo-meta-community - the community-repo split, landed
+// 2026-08-21). Two roots exist, each holding a
 // SUBSET of the four families this package defines: the core tree keeps
 // works/people/series plus data/redirects.json, and the community tree holds
 // works-community alone. Everything else about a root - the pack math, the caps,
@@ -26,16 +27,20 @@ import (
 // than a directory nobody reads - and it costs no rule of its own, because "every
 // file is accounted for" was already total.
 //
-// ProfileAll is the DEFAULT everywhere: the zero value resolves to it, and every
-// entry point that does not name a profile takes it. Nothing in this repo yet
-// runs on anything else - the profile flag on metacheck/metafmt is how the
-// community tree gets checked before the split lands, and flipping core's own
-// default is a later change.
+// ProfileAll is the LIBRARY default: the zero value resolves to it, and every
+// entry point that does not name a profile takes it, so no caller changed
+// meaning at the split. The CLI defaults split by the cost of being wrong:
+// metacheck/metafmt/metaissue keep `all` (CI names `core` explicitly; a wrong
+// reading there is a red check), while metaaudit/metarepair default `core`
+// (operator tools pointed at THIS tree, one of which deletes records - the
+// dangerous case must not be reachable through the default; see
+// cmd/metarepair).
 type Profile string
 
 const (
 	// ProfileAll is every family plus the tombstone table: one tree holding the
-	// whole database, which is what this repo is today. It is the default.
+	// whole database - the shape this repo had before the split, and the shape a
+	// combined debugging checkout still takes. The zero value.
 	ProfileAll Profile = "all"
 	// ProfileCore is the CC0 core: works, people and series, plus the tombstone
 	// table (a retired slug is core glue - it names a core record).

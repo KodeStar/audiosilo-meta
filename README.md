@@ -101,7 +101,8 @@ cd audiosilo-meta
 go build ./... && go vet ./... && go test ./... && \
   go run ./cmd/metacheck --profile core && go run ./cmd/metafmt --check --profile core
 
-# Build the SQLite artifact locally (validates first):
+# Build the CORE-ONLY SQLite artifact locally (validates first). The REAL
+# artifact composes both repositories - add --community <community-checkout>/data:
 go run ./cmd/metabuild -o meta.sqlite
 ```
 
@@ -114,7 +115,9 @@ go run ./cmd/metabuild -o meta.sqlite
   trailing newline) plus pack placement: `--write` moves an entry to the pack its
   slug belongs in and splits a pack that has outgrown its caps, so nobody has to
   work placement out by hand.
-- `metabuild -o meta.sqlite` - compile the database into a SQLite file. A work's
+- `metabuild -o meta.sqlite` - compile the database into a SQLite file
+  (`--community <dir>` composes the community checkout in; without it the
+  artifact is the core half only). A work's
   `added_at` comes from the record; one that carries none falls back to the
   newest `sources[].imported_at`.
 - `metamigrate` - the one-off conversion of a pre-pack, file-per-record tree into

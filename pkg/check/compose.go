@@ -2,8 +2,8 @@ package check
 
 // compose.go is the load over TWO data roots.
 //
-// The CC BY-SA community layer is moving to a repository of its own, so the
-// database becomes a PAIR of trees: a core root (works, people, series, plus the
+// The CC BY-SA community layer lives in a repository of its own, so the
+// database is a PAIR of trees: a core root (works, people, series, plus the
 // slug tombstone table) and a community root (works-community alone). Each is
 // checkable standalone through LoadProfile, and each deliberately stands down
 // from the rules whose other side it cannot see - a works-community entry is

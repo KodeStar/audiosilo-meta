@@ -38,7 +38,7 @@
 // tombstone to the surviving work until the community repository's re-key sweep
 // lands them. A typical wave is therefore:
 //
-//	go run ./cmd/metarepair -data data --profile core \
+//	go run ./cmd/metarepair -data data \
 //	  --community ../audiosilo-meta-community/data --op merge-works --limit 50
 //
 // Business logic lives in internal/repair; this is flag wiring.

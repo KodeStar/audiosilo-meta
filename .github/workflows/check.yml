@@ -83,13 +83,39 @@ jobs:
   # cached. It floats on the community repo's `main` deliberately - that is what
   # the release will compose against, so a core change that breaks the pair should
   # go red the moment either side makes it true.
+  # PULL REQUESTS ONLY: on push to main the identical compose runs minutes later
+  # as the release build itself, which is the authoritative gate - composing here
+  # too would build every data merge twice for no extra signal. And within a PR
+  # it SELF-SKIPS (the site job's required-check-compatible pattern) unless the
+  # diff touches something that can change the compose's answer: the same path
+  # set release.yml releases on, plus this workflow itself.
   compose:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
+      # The relevance probe reads the PR's file list from the API rather than
+      # diffing a local clone - a history-deep checkout here costs more than the
+      # compose the probe exists to skip.
+      - name: Check whether the diff can move the compose
+        id: relevant
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pulls/$PR/files" --paginate --jq '.[].filename' \
+             | grep -qE '^(data/|schema/|internal/build/|cmd/metabuild/|pkg/check/|pkg/pack/|\.github/workflows/check\.yml)'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "no compose-relevant paths in the diff; skipping."
+          fi
+
       - name: Checkout
+        if: steps.relevant.outputs.run == 'true'
         uses: actions/checkout@v4
 
       - name: Checkout the community layer
+        if: steps.relevant.outputs.run == 'true'
         uses: actions/checkout@v4
         with:
           repository: KodeStar/audiosilo-meta-community
@@ -97,11 +123,13 @@ jobs:
           path: community
 
       - name: Set up Go
+        if: steps.relevant.outputs.run == 'true'
         uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
 
       - name: Compose both trees (metabuild --community)
+        if: steps.relevant.outputs.run == 'true'
         # Building rather than only checking is deliberate: the compose rules run
         # inside the loader metabuild drives (check.LoadComposed), so this IS the
         # check, and going all the way to an artifact additionally exercises the
