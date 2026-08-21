@@ -18,7 +18,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -27,7 +26,7 @@ import (
 func main() {
 	dataDir := flag.String("data", "data", "path to the data directory")
 	profileName := flag.String("profile", pack.ProfileAll.String(),
-		"which families this data root holds: "+strings.Join(pack.Profiles(), "|"))
+		pack.ProfileFlagUsage)
 	flag.Parse()
 
 	profile, err := pack.ParseProfile(*profileName)

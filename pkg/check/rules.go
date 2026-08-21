@@ -53,13 +53,10 @@ func forEachPersonRef(cat *model.Catalog, recs []recordWithPath, idx *pathIndex,
 
 // checkIntegrity verifies every cross-entity reference resolves.
 //
-// The sidecar half of it is CROSS-FAMILY in the profile's sense: a
-// works-community entry is keyed by a works-family slug, so a tree that holds the
-// sidecars WITHOUT the works cannot answer whether the parent exists. That is not
-// a violation to report, it is a question for the tree that holds both - the
-// release build, over the two checkouts - so the rule is skipped rather than
-// failed. Everything above it is unreachable under such a profile anyway: with
-// no works, people or series loaded there is nothing to iterate.
+// The sidecar arm is CROSS-FAMILY and profile-gated per LoadProfile's skip rule
+// (which owns the rationale): a works-community entry is keyed by a works-family
+// slug a tree without the works cannot answer for, so that arm is skipped there,
+// never failed. Everything above it is vacuous under such a profile anyway.
 func checkIntegrity(profile pack.Profile, cat *model.Catalog, workByID map[string]*model.Work, people map[string]bool, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	forEachPersonRef(cat, recs, idx, func(r personRef) {
 		if people[r.id] {

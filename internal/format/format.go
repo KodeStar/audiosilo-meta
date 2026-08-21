@@ -183,11 +183,11 @@ func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep.NonCanonical, rep.Invalid = nonCanonical, invalid
 	err = withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
 		for _, f := range families {
-			p, perr := s.Pending(f)
+			pend, perr := s.Pending(f)
 			if perr != nil {
 				return perr
 			}
-			mergePending(&rep.Pending, p)
+			mergePending(&rep.Pending, pend)
 		}
 		return nil
 	})
@@ -230,11 +230,11 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 			// ONE survey per family: what is outstanding (the report) and the
 			// queueing of its fixes come out of the same pass, rather than
 			// classifying every file in the family twice for the same answer.
-			p, herr := s.HealPending(f)
+			pend, herr := s.HealPending(f)
 			if herr != nil {
 				return herr
 			}
-			mergePending(&rep.Pending, p)
+			mergePending(&rep.Pending, pend)
 		}
 		// A family that was already well-formed queued nothing, so a tree where
 		// that held throughout is never flushed at all - which is what makes a

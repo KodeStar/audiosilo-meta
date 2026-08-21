@@ -2,7 +2,6 @@ package pack
 
 import (
 	"fmt"
-	"slices"
 	"sort"
 	"strings"
 )
@@ -69,9 +68,42 @@ var profileDefs = map[Profile]profileDef{
 	},
 }
 
-// profileOrder is the order Profiles reports and a flag's usage text reads in:
-// widest first, which is also the order they were introduced.
-var profileOrder = []Profile{ProfileAll, ProfileCore, ProfileCommunity}
+// A profile's family SET and ORDER are static, and the set (Has, via Store.def
+// and Listing.add) sits on per-record and per-file hot paths, so both are
+// precomputed here once: the membership set Has reads, and the family order
+// Families walks (sorted through sortedDefs, whose key is the family name, so
+// the order cannot depend on the caps). The DEFINITIONS are deliberately not
+// snapshotted - defs is read at call time, because tests narrow a family's caps
+// through it (withCaps) and a stale copy would answer with the wrong caps. The
+// init loop panics on a profileDefs entry naming a family absent from defs -
+// table integrity is a programmer error by the same standard mustHold applies -
+// so a typo'd future profile fails the first test run instead of silently
+// shrinking.
+var (
+	profileFamilyOrder = map[Profile][]Family{}
+	profileHas         = map[Profile]map[Family]bool{}
+)
+
+func init() {
+	for p, d := range profileDefs {
+		set := make(map[Family]bool, len(d.families))
+		fams := make([]FamilyDef, 0, len(d.families))
+		for _, f := range d.families {
+			fd, ok := defs[f]
+			if !ok {
+				panic(fmt.Sprintf("pack: profile %q names unknown family %q", p, f))
+			}
+			set[f] = true
+			fams = append(fams, fd)
+		}
+		order := make([]Family, 0, len(fams))
+		for _, fd := range sortedDefs(fams) {
+			order = append(order, fd.Family)
+		}
+		profileFamilyOrder[p] = order
+		profileHas[p] = set
+	}
+}
 
 // resolve maps the zero value onto the default. A profile travels in struct
 // fields (a Listing's, a Store's), so "unset" has to mean something, and the only
@@ -102,25 +134,17 @@ func (p Profile) String() string { return string(p.resolve()) }
 // that is about TWO families asks it before it runs: a rule whose other side is
 // not in the tree has nothing to check, and reporting the absence as a violation
 // would make a valid single-layer tree red (see check.Load).
-func (p Profile) Has(f Family) bool { return slices.Contains(p.def().families, f) }
+func (p Profile) Has(f Family) bool { return profileHas[p.resolve()][f] }
 
 // Excluded returns the data-relative paths this profile DISCLAIMS, sorted: the
 // root directory of every family it does not hold, plus RedirectsFile when it
 // carries no tombstone table. It is empty for ProfileAll.
 //
-// It is the subtractive twin of Families, and it exists because a pass that
-// walks the tree by PATH rather than by family still has to honour the profile.
-// metafmt's canonical formatting is the one: it is layout-agnostic on purpose
-// (pkg/canonical knows nothing about families), so it walks the whole root and
-// is handed this list to skip. Without it a subset-profile --write reformatted -
-// and, for a legacy family the profile's own legacy check no longer reached,
-// rewrote in place - files the profile disclaims: working-tree churn in exactly
-// the directory that is about to be extracted byte-for-byte into another
-// repository.
-//
-// A path here is NOT "ignored": it is out of this tree's scope, and pkg/check
-// still reports every file under it as an unrecognized location. One tree, one
-// answer about what belongs in it.
+// It is the subtractive twin of Families, for the one pass that walks the tree
+// by PATH rather than by family - metafmt's canonical formatting. The full
+// rationale (why subtractive, and the failure the scoping prevents) lives on
+// format.CheckProfile; a path here is not "ignored" but out of this tree's
+// scope, which pkg/check reports as an unrecognized location.
 func (p Profile) Excluded() []string {
 	var out []string
 	for _, d := range Families() {
@@ -141,18 +165,18 @@ func (p Profile) Excluded() []string {
 func (p Profile) Redirects() bool { return p.def().redirects }
 
 // Families returns the definitions of the families in this profile, in the same
-// stable order the package-level Families uses - through the same sortedDefs, so
-// a profile's list is a sub-sequence of the full table's rather than a second
-// ordering that happens to agree.
+// stable order the package-level Families uses - sorted through the same
+// sortedDefs at init, so a profile's list is a sub-sequence of the full table's
+// rather than a second ordering that happens to agree. The definitions are read
+// from defs at call time (see the precompute note above); the returned slice is
+// the caller's to keep.
 func (p Profile) Families() []FamilyDef {
-	fams := p.def().families
+	fams := profileFamilyOrder[p.resolve()]
 	out := make([]FamilyDef, 0, len(fams))
 	for _, f := range fams {
-		if d, ok := defs[f]; ok {
-			out = append(out, d)
-		}
+		out = append(out, defs[f])
 	}
-	return sortedDefs(out)
+	return out
 }
 
 // Roots returns the family root directory names in this profile, sorted. It is
@@ -176,11 +200,12 @@ func ParseProfile(s string) (Profile, error) {
 	return p.resolve(), nil
 }
 
-// Profiles returns every profile name, for a flag's usage text.
+// Profiles returns every profile name, widest first, for a flag's usage text.
 func Profiles() []string {
-	out := make([]string, 0, len(profileOrder))
-	for _, p := range profileOrder {
-		out = append(out, string(p))
-	}
-	return out
+	return []string{string(ProfileAll), string(ProfileCore), string(ProfileCommunity)}
 }
+
+// ProfileFlagUsage is the usage text the metacheck and metafmt CLIs give their
+// --profile flag - stated once so the two (and any later consumer, metabuild's
+// compose being next) cannot drift on the flag's contract.
+var ProfileFlagUsage = "which families this data root holds: " + strings.Join(Profiles(), "|")

@@ -17,26 +17,27 @@ import (
 // profiles or the pack layout, so a caller that wants part of a tree left
 // untouched says which part in the one vocabulary both sides share.
 func jsonFiles(dir string, skip []string) ([]string, error) {
-	skipped := make(map[string]bool, len(skip))
-	for _, s := range skip {
-		skipped[s] = true
+	// The skip entries are pre-joined to the walk's own path spelling once, so
+	// the membership test inside the walk is a single map lookup per entry
+	// rather than a per-file Rel+ToSlash allocation pair - the walk visits every
+	// file in the tree, and the skip list can only match a handful of them.
+	var skipped map[string]bool
+	if len(skip) > 0 {
+		skipped = make(map[string]bool, len(skip))
+		for _, s := range skip {
+			skipped[filepath.Join(dir, filepath.FromSlash(s))] = true
+		}
 	}
 	var files []string
 	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		if len(skipped) > 0 {
-			rel, rerr := filepath.Rel(dir, path)
-			if rerr != nil {
-				return rerr
+		if skipped[path] {
+			if d.IsDir() {
+				return fs.SkipDir
 			}
-			if skipped[filepath.ToSlash(rel)] {
-				if d.IsDir() {
-					return fs.SkipDir
-				}
-				return nil
-			}
+			return nil
 		}
 		if !d.IsDir() && strings.EqualFold(filepath.Ext(path), ".json") {
 			files = append(files, path)

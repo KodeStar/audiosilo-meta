@@ -310,9 +310,13 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 
 	// A file under no family root at all belongs to nothing - which under a
 	// PROFILE includes every file under a family root this tree does not hold, so
-	// a family that has moved out cannot be left behind unnoticed.
+	// a family that has moved out cannot be left behind unnoticed. The roots
+	// string is constant for the load and the stray set is large by DESIGN under
+	// a subset profile (every file of an out-of-profile family), so it is derived
+	// once, not per file.
+	roots := familyRoots(profile)
 	for _, rel := range lst.Stray() {
-		l.add(rel, "unrecognized location (not under any of the %s roots)", familyRoots(profile))
+		l.add(rel, "unrecognized location (not under any of the %s roots)", roots)
 	}
 
 	var recs []recordWithPath
@@ -386,7 +390,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	identity := NewWorkIdentity(cat)
 	checkNormalizedDuplicateWorks(identity, idx, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
-	checkSidecarPositionScale(profile, cat, idx, warn)
+	checkSidecarPositionScale(cat, idx, warn)
 
 	sortProblems(l.probs)
 	sortProblems(l.warns)
@@ -409,9 +413,9 @@ func sortProblems(ps []Problem) {
 // family that has moved to its own repository is told which roots this one has,
 // not which roots exist.
 func familyRoots(p pack.Profile) string {
-	roots := p.Roots()
-	for i, r := range roots {
-		roots[i] = r + "/"
+	var roots []string
+	for _, r := range p.Roots() {
+		roots = append(roots, r+"/")
 	}
 	return strings.Join(roots, ", ")
 }

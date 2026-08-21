@@ -285,16 +285,20 @@ func TestProfileWriteConverges(t *testing.T) {
 	}
 }
 
-// assertProfileClean is assertClean under a profile.
+// assertProfileClean fails the test when the tree does not check clean under p.
+// assertClean is this at ProfileAll.
 func assertProfileClean(t *testing.T, dir string, p pack.Profile) {
 	t.Helper()
 	rep := mustCheckProfile(t, dir, p)
 	if !rep.Clean() {
-		t.Errorf("%s: tree is not clean after --write: %v", p, rep.Lines())
+		t.Fatalf("%s: tree is not clean after --write:\n  %s", p, strings.Join(rep.Lines(), "\n  "))
 	}
 }
 
-// named reports whether the report mentions path anywhere a contributor reads.
+// named reports whether the report mentions path anywhere a contributor reads -
+// unlike its siblings hasLine/hasPrefix (format_test.go) it matches a substring
+// of ANY line and additionally consults rep.Invalid, which Lines() omits on the
+// Write path.
 func named(rep Report, path string) bool {
 	for _, line := range rep.Lines() {
 		if strings.Contains(line, path) {

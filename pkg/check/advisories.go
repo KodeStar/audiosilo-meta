@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
-	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // advisories.go holds the rules that report a CLASS of suspect record rather
@@ -627,15 +626,12 @@ const sidecarScaleMinChapters = 20
 // own evidence - only the source text can - so it names the sidecar and leaves
 // the judgement to a human.
 //
-// It is CROSS-FAMILY: the measure it reads is the works family's recordings, so
-// a tree holding the sidecars without the works has nothing to compare against
-// and the rule is skipped rather than run over an empty measure (which would
-// silently pass and read as "checked"). Under such a profile it is the release
-// build, over both trees, that can ask the question.
-func checkSidecarPositionScale(profile pack.Profile, cat *model.Catalog, idx *pathIndex, warn addFunc) {
-	if !profile.Has(pack.FamilyWorks) {
-		return
-	}
+// It is CROSS-FAMILY - the measure it reads is the works family's recordings -
+// but unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree
+// holding no works the floor map is empty and every sidecar takes the !ok
+// continue, so the rule is vacuous by construction rather than switched off
+// (see check.LoadProfile for the cross-family skip rule it satisfies for free).
+func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 	// Smallest non-empty chapter list per work id.
 	floor := map[string]int{}
 	for _, w := range cat.Works {

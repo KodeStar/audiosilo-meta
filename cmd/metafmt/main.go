@@ -9,15 +9,16 @@
 //
 // --profile names which families the root is meant to hold (pack.Profile),
 // defaulting to "all" - the whole database in one tree, which is this
-// repository. The structural pass covers the profile's families; canonical
-// formatting is a per-file property and covers the tree.
+// repository. BOTH passes honour it: the structural pass covers the profile's
+// families, and canonical formatting covers the tree minus the paths the
+// profile disclaims (pack.Profile.Excluded) - an out-of-profile file is
+// neither touched nor judged here.
 package main
 
 import (
 	"flag"
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/format"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -28,7 +29,7 @@ func main() {
 	checkMode := flag.Bool("check", false, "list the outstanding formatting and structural work and exit 1 if any")
 	writeMode := flag.Bool("write", false, "format, relocate, salvage and split in place")
 	profileName := flag.String("profile", pack.ProfileAll.String(),
-		"which families this data root holds: "+strings.Join(pack.Profiles(), "|"))
+		pack.ProfileFlagUsage)
 	flag.Parse()
 
 	profile, perr := pack.ParseProfile(*profileName)

@@ -169,7 +169,7 @@ func (s *Store) Dir() string { return s.dir }
 // may read and write, and whether the root carries the tombstone table. A caller
 // that validates the same tree reads it from here (check.LoadStore) rather than
 // being told it twice.
-func (s *Store) Profile() Profile { return s.profile.resolve() }
+func (s *Store) Profile() Profile { return s.profile }
 
 // Layout returns the layout family f was detected in at Open time.
 //
@@ -195,17 +195,26 @@ func (s *Store) Layout(f Family) Layout {
 // That is the right severity, not a shortcut. Asking a store for a family its
 // root does not hold is a programming error - the caller chose both the profile
 // and the family - where every error these methods' neighbours return describes
-// a state of the DATA (a legacy family, a missing pack). It can never fire under
-// ProfileAll, which holds every family, so nothing that exists today can reach
-// it; a caller that wants to ASK rather than assert has Profile().Has(f).
+// a state of the DATA (a legacy family, a missing pack). The out-of-profile arm
+// can never fire under ProfileAll, which holds every family; the unknown-family
+// arm CAN, under every profile, and is a deliberate hardening - these methods
+// used to answer a bogus family with a silent nil/LayoutAbsent. A caller that
+// wants to ASK rather than assert has Profile().Has(f).
 func (s *Store) mustHold(f Family, method string) {
 	if s.profile.Has(f) {
 		return
 	}
 	if _, ok := Def(f); !ok {
-		panic(fmt.Sprintf("pack: Store.%s: unknown pack family %q", method, f))
+		panic(fmt.Sprintf("pack: Store.%s: %s", method, unknownFamily(f)))
 	}
 	panic(fmt.Sprintf("pack: Store.%s: %s", method, s.outOfProfile(f)))
+}
+
+// unknownFamily is the ONE sentence a family the package does not define is
+// refused with - outOfProfile's sibling, shared by def's error and mustHold's
+// panic for the same reason.
+func unknownFamily(f Family) string {
+	return fmt.Sprintf("unknown pack family %q", f)
 }
 
 // outOfProfile is the ONE sentence a family this root does not hold is refused
@@ -253,7 +262,7 @@ func (s *Store) Tree(f Family) *Tree {
 func (s *Store) def(f Family) (FamilyDef, error) {
 	d, ok := Def(f)
 	if !ok {
-		return FamilyDef{}, fmt.Errorf("unknown pack family %q", f)
+		return FamilyDef{}, errors.New(unknownFamily(f))
 	}
 	if !s.profile.Has(f) {
 		return FamilyDef{}, errors.New(s.outOfProfile(f))

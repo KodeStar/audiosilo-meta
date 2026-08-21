@@ -210,8 +210,9 @@ func (l *Listing) Dir() string { return l.dir }
 
 // Profile returns the tree profile the listing was taken under: which families
 // this root holds, and whether it carries the tombstone table. Everything derived
-// from a listing reads it from here rather than being told separately.
-func (l *Listing) Profile() Profile { return l.profile.resolve() }
+// from a listing reads it from here rather than being told separately. The field
+// is normalized at construction, so it is returned as stored.
+func (l *Listing) Profile() Profile { return l.profile }
 
 // Files returns every JSON file the walk found under family f's root, sorted.
 //
