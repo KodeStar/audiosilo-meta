@@ -15856,6 +15856,10 @@
             {
               "asin": "B0DK81D9LM",
               "region": "de"
+            },
+            {
+              "asin": "B0DK7XHLJT",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -16024,7 +16028,7 @@
           ],
           "publisher": "Eden Redd",
           "release_date": "2024-10-18",
-          "runtime_min": 512,
+          "runtime_min": 513,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -16035,6 +16039,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DK81D9LM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-20",
+              "ref": "B0DK7XHLJT",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "blackwood-milk-farm-book-6"
