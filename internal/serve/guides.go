@@ -51,11 +51,16 @@ const (
 	charactersSuffix = "/" + model.GuideSegmentCharacters
 )
 
-// ccBySA30URL is the deed the community layer is licensed under. Both guide
-// pages carry it as a rel="license" link and in their JSON-LD, because the CC
-// BY-SA layer's terms travel with the text wherever it is republished - see
-// LICENSING.md.
-const ccBySA30URL = "https://creativecommons.org/licenses/by-sa/3.0/"
+// ccBySAURL is the deed the community layer is licensed under, and ccBySALabel
+// the human name the pages print for it. Both guide pages carry the pair as a
+// rel="license" link and in their JSON-LD, because the CC BY-SA layer's terms
+// travel with the text wherever it is republished - see LICENSING.md. The names
+// are version-neutral and the label rides the view beside the URL, so a future
+// license bump edits these two lines and nothing else.
+const (
+	ccBySAURL   = "https://creativecommons.org/licenses/by-sa/4.0/"
+	ccBySALabel = "CC BY-SA 4.0"
+)
 
 // workGuidePath composes one guide page's path. Written once so the canonical
 // URL, the work page's link, the sibling link and the sitemap loc cannot spell
@@ -335,6 +340,7 @@ type guideView struct {
 	Rows           []guideRow
 	Links          []guideLink
 	LicenseURL     string
+	LicenseLabel   string
 	ContributeURL  string
 	ContributeText string
 }
@@ -347,7 +353,8 @@ func newRecapView(d *workDetail) guideView {
 		Authors: d.Authors,
 		Notice: "Every recap below is hidden until you open it. Each one is safe to read " +
 			"once you have finished the chapter it names.",
-		LicenseURL:     ccBySA30URL,
+		LicenseURL:     ccBySAURL,
+		LicenseLabel:   ccBySALabel,
 		ContributeURL:  contributeURL(d.ID, "recaps"),
 		ContributeText: "Improve this recap",
 	}
@@ -374,7 +381,8 @@ func newCharactersView(d *workDetail) guideView {
 		Authors: d.Authors,
 		Notice: "Every entry below is hidden until you open it, and each names the chapter " +
 			"the character first appears in.",
-		LicenseURL:     ccBySA30URL,
+		LicenseURL:     ccBySAURL,
+		LicenseLabel:   ccBySALabel,
 		ContributeURL:  contributeURL(d.ID, "characters"),
 		ContributeText: "Improve this character guide",
 	}
@@ -545,6 +553,6 @@ const guideTemplates = `
 <h2>More about this book</h2>
 {{template "linklist" .Links}}
 {{- end}}
-<p class="text-dim">Community-written - <a rel="license" href="{{.LicenseURL}}">CC BY-SA 3.0</a>. <a href="{{.ContributeURL}}">{{.ContributeText}}</a></p>
+<p class="text-dim">Community-written - <a rel="license" href="{{.LicenseURL}}">{{.LicenseLabel}}</a>. <a href="{{.ContributeURL}}">{{.ContributeText}}</a></p>
 </section>{{end}}
 `

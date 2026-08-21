@@ -19,6 +19,10 @@ import (
 
 const (
 	licenseCC0 = "CC0-1.0"
+	// licenseBySALabel is the human name of the community layer's license, the
+	// one spelling the checkbox message and the PR-body layer name share so a
+	// future license bump edits one line here.
+	licenseBySALabel = "CC BY-SA 4.0"
 	// sourceUser is the provenance stamped on records composed from an issue
 	// form. It is the vocabulary pkg/model ranks (model.TierOfSource), which is
 	// what makes a submission user-library tier.

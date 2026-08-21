@@ -13,7 +13,17 @@ import type { WorkGuide } from './entity-url'
     footer, and anything that grows one later - links the same deed.
     internal/serve carries its own copy for the server-rendered pages; see
     LICENSING.md for what the two layers mean. */
-export const CC_BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/3.0/'
+export const CC_BY_SA_URL = 'https://creativecommons.org/licenses/by-sa/4.0/'
+
+/** The same license's human label and SPDX identifier, stated beside the deed
+    URL so the three can never drift: the label is what every surface prints
+    next to the CC_BY_SA_URL link, and the SPDX value is what the guided
+    builder writes into a sidecar's `license` field - the one production
+    writer of that value on the site (the schema enum in
+    schema/common.schema.json is the definition of record; builder.test.ts
+    pins the two are equal). */
+export const CC_BY_SA_LABEL = 'CC BY-SA 4.0'
+export const CC_BY_SA_SPDX = 'CC-BY-SA-4.0'
 
 /** Human label for a character role, or null when the role is absent/unknown. */
 export function roleLabel(role: Character['role']): string | null {

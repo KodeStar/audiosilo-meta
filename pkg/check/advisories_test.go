@@ -352,9 +352,9 @@ func sidecarSpread(at ...int) (string, string) {
 		rs = append(rs, fmt.Sprintf(`{"scope":"book","text":"The story so far, in the contributor's own words.",`+
 			`"through":{"chapter":%d}}`, p))
 	}
-	chars := `{"characters":[` + strings.Join(cs, ",") + `],"license":"CC-BY-SA-3.0",` +
+	chars := `{"characters":[` + strings.Join(cs, ",") + `],"license":"CC-BY-SA-4.0",` +
 		`"sources":[{"type":"community"}],"work":"book-one"}`
-	recaps := `{"license":"CC-BY-SA-3.0","recaps":[` + strings.Join(rs, ",") + `],` +
+	recaps := `{"license":"CC-BY-SA-4.0","recaps":[` + strings.Join(rs, ",") + `],` +
 		`"sources":[{"type":"community"}],"work":"book-one"}`
 	return chars, recaps
 }

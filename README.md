@@ -315,7 +315,7 @@ every submission.
 |---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** ([`LICENSE`](LICENSE)) |
 | Data - factual core (works, recordings, people, series) | **CC0-1.0** public domain dedication |
-| Data - derived layer (characters and recaps) | **CC BY-SA 3.0** |
+| Data - derived layer (characters and recaps) | **CC BY-SA 4.0** |
 
 Publisher blurbs and cover art are referenced, never copied. Full policy,
 including the takedown / rightsholder opt-out channel, in

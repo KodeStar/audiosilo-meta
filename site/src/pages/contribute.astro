@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import Backdrop from '../components/Backdrop.astro'
 import CoveragePanel from '../components/contribute/CoveragePanel.tsx'
-import { CC_BY_SA_URL } from '../lib/expressive'
+import { CC_BY_SA_LABEL, CC_BY_SA_URL } from '../lib/expressive'
 
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
 const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
@@ -36,7 +36,7 @@ const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
             href={CC_BY_SA_URL}
             target="_blank"
             rel="noopener"
-            class="text-pink-400 transition-colors hover:text-pink-300">CC BY-SA 3.0</a
+            class="text-pink-400 transition-colors hover:text-pink-300">{CC_BY_SA_LABEL}</a
           >
           - not copied from a publisher blurb or another site. See the
           <a

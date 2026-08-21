@@ -15,7 +15,7 @@
     "license_content": {
       "description": "The share-alike layer for community-authored expressive content (characters, recaps). Kept in a separate def so a CC0 core record can never carry it and vice versa.",
       "type": "string",
-      "enum": ["CC-BY-SA-3.0"]
+      "enum": ["CC-BY-SA-4.0"]
     },
     "position": {
       "description": "A spoiler position within a work's own timeline. chapter is the logical (edition-independent) work chapter, 1-based; 0 means front matter or knowledge carried from earlier books in a series.",

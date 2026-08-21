@@ -49,12 +49,12 @@ func community(id string, members ...string) string {
 }
 
 func charsMember(work, name string) string {
-	return `"characters":{"work":"` + work + `","license":"CC-BY-SA-3.0",` +
+	return `"characters":{"work":"` + work + `","license":"CC-BY-SA-4.0",` +
 		`"characters":[{"id":"c1","name":"` + name + `"}]}`
 }
 
 func recapsMember(work, text string) string {
-	return `"recaps":{"work":"` + work + `","license":"CC-BY-SA-3.0",` +
+	return `"recaps":{"work":"` + work + `","license":"CC-BY-SA-4.0",` +
 		`"recaps":[{"through":{"chapter":1},"text":"` + text + `"}]}`
 }
 

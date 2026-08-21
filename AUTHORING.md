@@ -4,7 +4,7 @@ This guide covers the **expressive layer** of the database: community-authored
 **character** entries and **recaps** ("story so far" summaries). It is separate
 from [CONTRIBUTING.md](CONTRIBUTING.md), which covers the factual CC0 core
 (works, recordings, people, series). Read [LICENSING.md](LICENSING.md) first -
-this layer is **CC BY-SA 3.0**, not CC0, and it carries real copyright
+this layer is **CC BY-SA 4.0**, not CC0, and it carries real copyright
 obligations the core does not.
 
 If you are filling out a whole series, do the CC0 core first (the works,
@@ -36,9 +36,9 @@ data/works-community/<dir>/<bound>.json
 ```
 
 The family is separate from `data/works/` so the licence boundary is structural:
-everything in `works-community` is **CC BY-SA 3.0**, everything in the core
+everything in `works-community` is **CC BY-SA 4.0**, everything in the core
 families is CC0. Each member carries `work` (the parent work slug, which must
-equal the entry key), `license` (**must** be `"CC-BY-SA-3.0"`), and `sources`.
+equal the entry key), `license` (**must** be `"CC-BY-SA-4.0"`), and `sources`.
 
 Add your entry to the community pack whose range covers the work slug - or the
 nearest one - and run `go run ./cmd/metafmt --write`: it places the entry
@@ -50,7 +50,7 @@ own shape; where they say "the file", read "the member".
 ```json
 {
   "work": "a-deadly-education",
-  "license": "CC-BY-SA-3.0",
+  "license": "CC-BY-SA-4.0",
   "sources": [{ "type": "community" }],
   "characters": [
     {
@@ -89,7 +89,7 @@ own shape; where they say "the file", read "the member".
 ```json
 {
   "work": "the-last-graduate",
-  "license": "CC-BY-SA-3.0",
+  "license": "CC-BY-SA-4.0",
   "sources": [{ "type": "community" }],
   "in_short": "The whole book in one paragraph, ending included, for someone about to start the next one.",
   "ending": "How the book closes: where every major player stands, and which threads stay open.",
@@ -201,7 +201,7 @@ style:
 
 ## Format and validation
 
-- `license` is `"CC-BY-SA-3.0"`. A manual contribution from the author's own
+- `license` is `"CC-BY-SA-4.0"`. A manual contribution from the author's own
   knowledge may use `sources: [{ "type": "community" }]`. An automated
   audiobook/ebook extraction **must** use one community source whose `ref`
   identifies the edition actually processed, for example
@@ -222,7 +222,7 @@ style:
 
 - [ ] The work, its recording(s), author, and narrator already exist and validate.
 - [ ] `work` equals the entry key both members sit under.
-- [ ] `license` is `"CC-BY-SA-3.0"`; `sources` present.
+- [ ] `license` is `"CC-BY-SA-4.0"`; `sources` present.
 - [ ] Every character has an `id` (unique within this work's characters member), `name`, and `reveal`.
 - [ ] Descriptions/texts are your own words, within the caps, and accurate
       (character ≤ 1500, recap `text` ≤ 3000, `in_short` ≤ 1500, `ending` ≤ 2000).

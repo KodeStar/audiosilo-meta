@@ -20,7 +20,7 @@ of it (the player was always the defining AudioSilo feature; the ABS facade is a
 bonus for a direct competitor's users).
 
 Module path: `github.com/kodestar/audiosilo-meta`. Code is AGPL-3.0; the data
-is CC0-1.0 (factual core) with a CC BY-SA 3.0 community layer (the
+is CC0-1.0 (factual core) with a CC BY-SA 4.0 community layer (the
 characters/recaps sidecars) - the full policy
 in [LICENSING.md](LICENSING.md) is load-bearing, read it before touching data
 handling.
@@ -339,7 +339,7 @@ Every entity carries `license` and `sources[]` (provenance: type/ref/
 imported_at) so any source can be audited or retracted wholesale. **Two license
 layers, enforced structurally by the schema** (`$defs/license` vs
 `$defs/license_content`): the CC0 core (works/recordings/people/series) is
-`CC0-1.0`; the CC BY-SA layer (characters/recaps) is `CC-BY-SA-3.0`. A core
+`CC0-1.0`; the CC BY-SA layer (characters/recaps) is `CC-BY-SA-4.0`. A core
 record can never carry the share-alike license and a sidecar can never carry
 CC0 - the boundary is a schema enum, not a convention (see LICENSING.md).
 

@@ -10,6 +10,7 @@
 // are OMITTED when empty rather than emitted null/empty, so the output validates.
 
 import type { Character, Position } from './api'
+import { CC_BY_SA_SPDX } from './expressive'
 
 // The output shapes reuse the wire Position (both mirror the schema's
 // edition-independent chapter position); re-exported so builder consumers
@@ -247,7 +248,7 @@ export interface CharacterOut {
 export interface CharactersFile {
   work: string
   characters: CharacterOut[]
-  license: 'CC-BY-SA-3.0'
+  license: typeof CC_BY_SA_SPDX
   sources: { type: string }[]
 }
 
@@ -262,7 +263,7 @@ export interface RecapsFile {
   recaps: RecapOut[]
   in_short?: string
   ending?: string
-  license: 'CC-BY-SA-3.0'
+  license: typeof CC_BY_SA_SPDX
   sources: { type: string }[]
 }
 
@@ -271,7 +272,7 @@ export interface RecapsFile {
 export function buildCharactersObject(workId: string, drafts: CharacterDraft[]): CharactersFile {
   return {
     work: workId,
-    license: 'CC-BY-SA-3.0',
+    license: CC_BY_SA_SPDX,
     sources: [{ type: 'community' }],
     characters: drafts.map((d) => {
       const out: CharacterOut = {
@@ -295,7 +296,7 @@ export function buildCharactersObject(workId: string, drafts: CharacterDraft[]):
 export function buildRecapsObject(workId: string, draft: RecapsDraft): RecapsFile {
   const file: RecapsFile = {
     work: workId,
-    license: 'CC-BY-SA-3.0',
+    license: CC_BY_SA_SPDX,
     sources: [{ type: 'community' }],
     recaps: draft.entries.map((e) => {
       const out: RecapOut = {

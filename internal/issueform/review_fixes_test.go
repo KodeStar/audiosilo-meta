@@ -160,7 +160,7 @@ func TestResultLicenseLayer(t *testing.T) {
 	if side.Status != StatusOK {
 		t.Fatalf("sidecar status = %q, %v", side.Status, side.Messages)
 	}
-	if side.License != "CC BY-SA 3.0 (community expressive layer)" {
+	if side.License != "CC BY-SA 4.0 (community expressive layer)" {
 		t.Errorf("sidecar License = %q", side.License)
 	}
 }

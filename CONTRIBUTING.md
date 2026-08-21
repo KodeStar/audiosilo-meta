@@ -85,7 +85,7 @@ a `"recordings"` map keyed by recording slug, so one book is one entry.
   if one slips through.
 - Every entity has a `license` field and a `sources[]` array
   (`{type, ref?, imported_at?}`) recording where the facts came from. The core
-  families are `CC0-1.0`; `works-community` entries are `CC-BY-SA-3.0`.
+  families are `CC0-1.0`; `works-community` entries are `CC-BY-SA-4.0`.
 - Works and recordings also carry an optional `added_at` - the date the record
   entered the database. The importer and the intake bot stamp it; leave it out
   of a hand-written record and it will simply be absent.

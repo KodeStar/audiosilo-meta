@@ -10,7 +10,7 @@ submission you agree to the terms below.
 |---|---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** | See [`LICENSE`](LICENSE). Matches audiosilo-server. |
 | Data - factual core | **CC0-1.0** (public domain dedication) | The works, recordings, people, and series. Every such record carries `license: "CC0-1.0"`. |
-| Data - derived layer | **CC BY-SA 3.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in a separate pack family, `data/works-community/` (each entry a work's `characters` and `recaps` members), so the boundary is directory-structural as well as schema-enforced. |
+| Data - derived layer | **CC BY-SA 4.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in a separate pack family, `data/works-community/` (each entry a work's `characters` and `recaps` members), so the boundary is directory-structural as well as schema-enforced. |
 | Publisher blurbs, cover art | **Not accepted** | Referenced, never copied. Covers are URLs only; descriptions must be community-written. |
 
 ## Why two data licences
@@ -21,9 +21,10 @@ is not copyrightable (facts are free under Feist v. Rural). Dedicating it to the
 public domain with **CC0-1.0** removes all friction: anyone can build on the data
 without attribution obligations, and downstream forks stay maximally open.
 
-The **CC BY-SA 3.0** layer covers *derived, expressive* content -
-community-authored character descriptions and recaps, and anything sourced from
-Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source).
+The **CC BY-SA 4.0** layer covers *derived, expressive* content -
+community-authored character descriptions and recaps, and anything derived from
+Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source; see
+"The 4.0 upgrade" below for why that still flows in).
 Share-alike is desirable there: it keeps derivative works open. This layer lives
 in a separate pack family, `data/works-community/`, where each entry holds one
 work's `characters` and `recaps` members - so the CC0 core is never contaminated
@@ -31,9 +32,41 @@ by share-alike obligations, and the separation is visible in the directory tree
 as well as in the records. The
 boundary is **enforced structurally by the schema**, not by convention: a core
 record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
-only carry `CC-BY-SA-3.0` - the `license` enum differs between them, and
+only carry `CC-BY-SA-4.0` - the `license` enum differs between them, and
 `metacheck` rejects any record that crosses the line. Authoring this layer is
 documented in [AUTHORING.md](AUTHORING.md).
+
+## The 4.0 upgrade (2026-08-21)
+
+The community layer was **CC BY-SA 3.0** until 2026-08-21, when every entry was
+relicensed to **CC BY-SA 4.0** in one change. Every sidecar in the tree at that
+point had been authored in-house, so there was no third-party 3.0 content to
+carry forward: the schema enum was *replaced* rather than widened, and there is
+no dual-licensed period to reason about.
+
+Why upgrade:
+
+- **The original reason for 3.0 survives it.** Fandom and LibraryThing Common
+  Knowledge are BY-SA 3.0 at source, and 3.0's ShareAlike clause permits
+  licensing an adaptation under a later version of the licence. Our posture is
+  derived, own-words content and never verbatim mirroring, so 3.0 sources still
+  flow into a 4.0 project.
+- **The reverse never held.** 4.0 content cannot flow into a 3.0 project, and
+  Wikipedia has been BY-SA 4.0 since 2023. Staying on 3.0 would have foreclosed
+  every 4.0 source permanently.
+- **4.0 explicitly licenses sui generis database rights** - directly relevant to
+  a project that *is* a database, and to the EU/UK right discussed under
+  "Imports bring facts only" below. It also adds the 30-day cure provision and
+  is one international instrument rather than ported jurisdiction variants.
+
+A contribution made before the upgrade is covered by it because the contributor
+and the maintainer were the same person; from 2026-08-21 the contribution
+checkbox on the characters/recaps issue forms names 4.0.
+
+A submission whose attachment was authored against the old instructions
+therefore fails validation with a bare value-mismatch message
+naming the `license` field - and the fix is mechanical: change the one value to
+`"CC-BY-SA-4.0"` and nothing else about the file needs to move.
 
 ## The CC0 core
 

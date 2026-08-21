@@ -163,14 +163,14 @@ func Process(opts Options) Result {
 
 // licenseLayer names the license layer the composed records carry, keyed off the
 // normalized routing template: the community expressive sidecars (characters/
-// recaps) are CC BY-SA 3.0, every core template (work/recording/correction/
+// recaps) are CC BY-SA 4.0, every core template (work/recording/correction/
 // import) is CC0-1.0. Go owns this classification (the schema enforces the same
 // split structurally); the intake workflow reads Result.License for the pull-
 // request body instead of re-deriving it in bash.
 func licenseLayer(tmpl string) string {
 	switch tmpl {
 	case "characters", "recaps":
-		return "CC BY-SA 3.0 (community expressive layer)"
+		return licenseBySALabel + " (community expressive layer)"
 	default:
 		return "CC0-1.0 (factual core)"
 	}

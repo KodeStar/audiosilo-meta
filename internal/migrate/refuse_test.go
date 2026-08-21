@@ -188,7 +188,7 @@ func TestScanRefusals(t *testing.T) {
 				delete(f, "works/em/emma/work.json")
 				delete(f, "works/em/emma/recordings/ann-doe-2019.json")
 				f["works/em/emma/characters.json"] = `{"characters":[{"id":"x","name":"X","reveal":{"chapter":1}}],` +
-					`"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"emma"}`
+					`"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"emma"}`
 			},
 			want: "has recordings or sidecars but no work.json",
 		},

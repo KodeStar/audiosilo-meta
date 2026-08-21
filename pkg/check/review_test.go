@@ -180,7 +180,7 @@ func TestSchemaMessagesAtRecordingPrecision(t *testing.T) {
 			want: "/runtime_min: got string, want integer",
 		},
 		"share-alike license on a CC0 record": {
-			rec:  strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-3.0"`, 1),
+			rec:  strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-4.0"`, 1),
 			want: "/license: value must be 'CC0-1.0'",
 		},
 		// An anyOf reports every branch it tried, which is the useful answer for

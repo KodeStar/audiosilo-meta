@@ -73,7 +73,7 @@ Sidecars move out of `data/works/**` into their own family - named
 community layer) - so the license
 boundary becomes directory-structural as well as schema-structural: a works pack
 schema-locks every entry to `CC0-1.0`; a sidecar pack schema-locks to
-`CC-BY-SA-3.0` (`$defs/license_content`). Mixing is impossible by construction,
+`CC-BY-SA-4.0` (`$defs/license_content`). Mixing is impossible by construction,
 as today.
 
 ## Pack file format

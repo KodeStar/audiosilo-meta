@@ -137,7 +137,7 @@ deciding per book:
   ending plainly.
 - **Book 1 vs book N**: only book 2+ gets the `chapter: 0` + `scope: "series"`
   "previously" recap. A series opener has none.
-- Both files: `license` `"CC-BY-SA-3.0"`, `sources` `[{"type": "community"}]`.
+- Both files: `license` `"CC-BY-SA-4.0"`, `sources` `[{"type": "community"}]`.
 
 Prompt template: see "The prompt set" below.
 
@@ -279,7 +279,7 @@ the recaps member
 - ending (<= 2000 chars): the sequel-handoff state - where every surviving
   major player stands, which threads stay open.
 
-HARD RULES: license CC-BY-SA-3.0, sources [{"type": "community"}]; fresh
+HARD RULES: license CC-BY-SA-4.0, sources [{"type": "community"}]; fresh
 prose in your own words (an 8-word-shingle check against the full text will
 be run on the output); neutral reference-guide voice; hyphens never em
 dashes; when a fact's chapter attribution is uncertain, leave the fact out.

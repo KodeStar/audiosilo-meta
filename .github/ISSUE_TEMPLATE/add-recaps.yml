@@ -8,7 +8,7 @@ body:
       value: |
         Add a **recaps** sidecar - position-keyed "story so far" summaries for a
         work that is already in the database. This is the community **CC BY-SA
-        3.0** layer, not the CC0 factual core, so it carries different rules than
+        4.0** layer, not the CC0 factual core, so it carries different rules than
         the other forms.
 
         The easiest way to produce a valid file is the guided builder at
@@ -63,7 +63,7 @@ body:
     attributes:
       label: License
       options:
-        - label: I license this contribution under CC BY-SA 3.0, and I have the right to do so.
+        - label: I license this contribution under CC BY-SA 4.0, and I have the right to do so.
           required: true
 
   - type: textarea

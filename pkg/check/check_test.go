@@ -209,11 +209,11 @@ func TestLibexImportSourceType(t *testing.T) {
 // validCharacters / validRecaps are minimal, valid per-work sidecars for the
 // given work, in canonical (sorted-key) form.
 func validCharacters(work string) string {
-	return `{"characters":[{"aliases":["The Kid"],"description":"A brave hero.","id":"hero","name":"Hero","reveal":{"chapter":1},"role":"protagonist","xref":{"wikidata":"Q42"}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"` + work + `"}`
+	return `{"characters":[{"aliases":["The Kid"],"description":"A brave hero.","id":"hero","name":"Hero","reveal":{"chapter":1},"role":"protagonist","xref":{"wikidata":"Q42"}}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"` + work + `"}`
 }
 
 func validRecaps(work string) string {
-	return `{"license":"CC-BY-SA-3.0","recaps":[{"scope":"series","text":"Previously, in earlier books.","through":{"chapter":0}},{"scope":"book","text":"So far, the hero set out.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"` + work + `"}`
+	return `{"license":"CC-BY-SA-4.0","recaps":[{"scope":"series","text":"Previously, in earlier books.","through":{"chapter":0}},{"scope":"book","text":"So far, the hero set out.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"` + work + `"}`
 }
 
 // TestCharactersRecapsValid covers the CC BY-SA per-work sidecars: a valid
@@ -240,7 +240,7 @@ func TestRecapsSummaryFields(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	longText := strings.Repeat("word ", 500) // 2500 chars, over the old 2000 cap
-	files["works/bo/book-one/recaps.json"] = `{"ending":"The hero wins and goes home.","in_short":"A hero sets out, struggles, and prevails.","license":"CC-BY-SA-3.0","recaps":[{"scope":"book","text":"` + longText + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+	files["works/bo/book-one/recaps.json"] = `{"ending":"The hero wins and goes home.","in_short":"A hero sets out, struggles, and prevails.","license":"CC-BY-SA-4.0","recaps":[{"scope":"book","text":"` + longText + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
@@ -678,14 +678,14 @@ func TestLoadRuleViolations(t *testing.T) {
 		{
 			name: "characters with CC0 license rejected (must be CC BY-SA)",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/characters.json"] = strings.Replace(validCharacters("book-one"), `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1)
+				f["works/bo/book-one/characters.json"] = strings.Replace(validCharacters("book-one"), `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1)
 			},
 			want: "license",
 		},
 		{
 			name: "duplicate character id within file",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/characters.json"] = `{"characters":[{"id":"hero","name":"Hero","reveal":{"chapter":1}},{"id":"hero","name":"Hero Twin","reveal":{"chapter":2}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/characters.json"] = `{"characters":[{"id":"hero","name":"Hero","reveal":{"chapter":1}},{"id":"hero","name":"Hero Twin","reveal":{"chapter":2}}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: `duplicate character id "hero"`,
 		},
@@ -693,7 +693,7 @@ func TestLoadRuleViolations(t *testing.T) {
 			name: "character description exceeds length cap",
 			mutate: func(f map[string]string) {
 				long := strings.Repeat("a", 1501)
-				f["works/bo/book-one/characters.json"] = `{"characters":[{"description":"` + long + `","id":"hero","name":"Hero","reveal":{"chapter":1}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/characters.json"] = `{"characters":[{"description":"` + long + `","id":"hero","name":"Hero","reveal":{"chapter":1}}],"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/characters/0/description",
 		},
@@ -714,7 +714,7 @@ func TestLoadRuleViolations(t *testing.T) {
 		{
 			name: "duplicate recap through-position",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}},{"text":"B.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}},{"text":"B.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "duplicate recap through chapter 3",
 		},
@@ -728,7 +728,7 @@ func TestLoadRuleViolations(t *testing.T) {
 		{
 			name: "recap negative chapter rejected",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":-1}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":-1}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "chapter",
 		},
@@ -736,7 +736,7 @@ func TestLoadRuleViolations(t *testing.T) {
 			name: "recap text exceeds raised length cap",
 			mutate: func(f map[string]string) {
 				long := strings.Repeat("a", 3001)
-				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"` + long + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-4.0","recaps":[{"text":"` + long + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/recaps/0/text",
 		},
@@ -744,14 +744,14 @@ func TestLoadRuleViolations(t *testing.T) {
 			name: "in_short exceeds length cap",
 			mutate: func(f map[string]string) {
 				long := strings.Repeat("a", 1501)
-				f["works/bo/book-one/recaps.json"] = `{"in_short":"` + long + `","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"in_short":"` + long + `","license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/in_short",
 		},
 		{
 			name: "in_short empty string rejected",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recaps.json"] = `{"in_short":"","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"in_short":"","license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/in_short",
 		},
@@ -759,14 +759,14 @@ func TestLoadRuleViolations(t *testing.T) {
 			name: "ending exceeds length cap",
 			mutate: func(f map[string]string) {
 				long := strings.Repeat("a", 2001)
-				f["works/bo/book-one/recaps.json"] = `{"ending":"` + long + `","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"ending":"` + long + `","license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/ending",
 		},
 		{
 			name: "ending wrong type rejected",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recaps.json"] = `{"ending":42,"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+				f["works/bo/book-one/recaps.json"] = `{"ending":42,"license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/ending",
 		},

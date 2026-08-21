@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { readFileSync } from 'node:fs'
 import {
   slugify,
   isValidSlug,
@@ -21,6 +22,7 @@ import {
   type RecapsDraft,
 } from './builder'
 import type { Character } from './api'
+import { CC_BY_SA_SPDX } from './expressive'
 
 function charDraft(extra: Partial<CharacterDraft> = {}): CharacterDraft {
   return { ...emptyCharacterDraft(), id: 'el', name: 'El', reveal: '1', ...extra }
@@ -246,7 +248,7 @@ describe('buildCharactersObject', () => {
   it('emits the fixed contract fields and required per-card fields', () => {
     const file = buildCharactersObject('a-deadly-education', [charDraft({ id: 'el', name: 'El', reveal: '1' })])
     expect(file.work).toBe('a-deadly-education')
-    expect(file.license).toBe('CC-BY-SA-3.0')
+    expect(file.license).toBe(CC_BY_SA_SPDX)
     expect(file.sources).toEqual([{ type: 'community' }])
     expect(file.characters[0]).toEqual({ id: 'el', name: 'El', reveal: { chapter: 1 } })
   })
@@ -292,7 +294,7 @@ describe('buildRecapsObject', () => {
       ending: '  It ends thus.  ',
     })
     expect(withSummaries.work).toBe('w')
-    expect(withSummaries.license).toBe('CC-BY-SA-3.0')
+    expect(withSummaries.license).toBe(CC_BY_SA_SPDX)
     expect(withSummaries.recaps[0]).toEqual({ through: { chapter: 3 }, scope: 'series', text: 'Previously.' })
     expect(withSummaries.in_short).toBe('The whole arc.')
     expect(withSummaries.ending).toBe('It ends thus.')
@@ -428,5 +430,19 @@ describe('emptyRecapsDraft', () => {
     expect(d.entries.length).toBe(1)
     expect(d.inShort).toBe('')
     expect(d.ending).toBe('')
+  })
+})
+
+// The schema enum is the single definition of the community layer's license
+// value (see LICENSING.md); the guided builder is the one production writer of
+// it on the site, through CC_BY_SA_SPDX. If the two ever disagree, every file
+// the builder emits fails metacheck at submission time - so pin them equal
+// here, at build time, in the style of audible-genres.test.ts.
+describe('community license value', () => {
+  it('matches the schema license_content enum exactly', () => {
+    const schema = JSON.parse(
+      readFileSync(new URL('../../../schema/common.schema.json', import.meta.url), 'utf8')
+    )
+    expect(schema.$defs.license_content.enum).toEqual([CC_BY_SA_SPDX])
   })
 })

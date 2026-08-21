@@ -15,7 +15,7 @@
 
 import type { ReactNode } from 'react'
 import { getWork, href, type Work } from '../../lib/api'
-import { CC_BY_SA_URL, hasGuide, storyRowsOf, type StoryRow } from '../../lib/expressive'
+import { CC_BY_SA_LABEL, CC_BY_SA_URL, hasGuide, storyRowsOf, type StoryRow } from '../../lib/expressive'
 import type { WorkGuide } from '../../lib/entity-url'
 import PersonLinks from '../cards/PersonLinks'
 import { PILL_LINK, TEXT_LINK } from '../ui'
@@ -158,7 +158,7 @@ function Loaded({ work, guide, hydrated }: { work: Work; guide: WorkGuide; hydra
       <p className="mt-12 border-t border-edge pt-6 text-sm text-dim">
         Community-written and published under{' '}
         <a href={CC_BY_SA_URL} rel="license noopener" target="_blank" className={TEXT_LINK}>
-          CC BY-SA 3.0
+          {CC_BY_SA_LABEL}
         </a>
         {present ? (
           <>

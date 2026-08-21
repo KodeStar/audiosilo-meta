@@ -90,7 +90,7 @@ func parallelTree() map[string]string {
 	})
 	files["works/0/book-d.json"] = packOf(map[string]string{
 		"book-a3": pkTitled("book-a3"),
-		"book-d": `{"authors":["author-one"],"id":"book-d","language":"en","license":"CC-BY-SA-3.0",` +
+		"book-d": `{"authors":["author-one"],"id":"book-d","language":"en","license":"CC-BY-SA-4.0",` +
 			`"sources":[{"type":"user"}],"title":"book-d"}`,
 	})
 	wide := map[string]string{}
