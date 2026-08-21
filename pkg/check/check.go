@@ -243,14 +243,21 @@ func (l *loader) fork() *loader {
 	}
 }
 
+// problemf is the ONE construction of a Problem from an addFunc-shaped call -
+// the loader's two accumulators and compose.go's appendTo all spell it through
+// here, so a change to how a report line is composed has one home.
+func problemf(path, format string, args ...any) Problem {
+	return Problem{Path: path, Msg: fmt.Sprintf(format, args...)}
+}
+
 // add records a rule violation against path.
 func (l *loader) add(path, format string, args ...any) {
-	l.probs = append(l.probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	l.probs = append(l.probs, problemf(path, format, args...))
 }
 
 // warn records an advisory against path.
 func (l *loader) warn(path, format string, args ...any) {
-	l.warns = append(l.warns, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	l.warns = append(l.warns, problemf(path, format, args...))
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.

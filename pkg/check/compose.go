@@ -19,7 +19,6 @@ package check
 
 import (
 	"cmp"
-	"fmt"
 	"maps"
 	"slices"
 	"strconv"
@@ -44,36 +43,21 @@ import (
 // file in it is an unrecognized location by the accounting rule that was already
 // total.
 //
-// THE CROSS-TREE RULES:
+// THE CROSS-TREE RULES (the narrative and the rationale live in PACK-SPEC.md's
+// tree-profiles section; what follows is the contract):
 //
-//   - EXISTENCE, a hard error. Every community entry must be keyed by a work the
-//     core tree holds. A key that is neither live nor retired is a red release,
-//     never a silently dropped sidecar - the CC BY-SA layer is the most expensive
-//     data in the project and a build that quietly omits one is worse than a
-//     build that stops. This is checkIntegrity's sidecar arm, which any ProfileAll
-//     load already runs; only the tombstone hop below is new.
-//   - REDIRECT RESOLUTION, compose-only. A key naming a slug the core tree has
-//     RETIRED (data/redirects.json) is re-keyed onto the surviving slug for this
-//     build, and WARNED about (AdvisoryRetiredSidecarKey). A core repair wave
-//     that merges two works lands in one repository and the community re-key
-//     sweep lands in the other, so the two cannot be atomic; resolving here is
-//     what keeps the window between them from losing a sidecar. The warning is
-//     what keeps that window VISIBLE: a redirect ridden silently becomes a
-//     permanent dependency nobody can date. It is a build-time resolution only -
-//     nothing is written, and the sweep is still the fix.
-//   - COLLISION, a hard error, compose-only. Two sidecars of the SAME KIND
-//     resolving onto one work (a redirect landing on a work that already has one)
-//     is refused rather than folded: which entry describes the surviving work is
-//     a human decision, the same principle internal/repair's
-//     sidecar-member-collision refusal rests on. DISJOINT members - a characters
-//     sidecar for the retired slug beside a recaps sidecar for the survivor -
-//     simply meet on one work, which is exactly what a composed entry is.
-//   - THE POSITION-SCALE ADVISORY. checkSidecarPositionScale reads a work's
-//     recordings to judge whether a sidecar's chapter positions are scaled to
-//     something else. It is vacuous over a community root alone (no works, so no
-//     floor to measure against) and runs here for real, as it does in a ProfileAll
-//     load. It stays a WARNING: a sidecar that genuinely covers only the opening
-//     of a long book is a legitimate partial contribution.
+//   - EXISTENCE, a hard error: every community entry keyed by a work the core
+//     holds - checkIntegrity's sidecar rule respelled for the tombstone hop,
+//     verdict agreement pinned by TestComposeBothDoorsAgreeOnADanglingKey.
+//   - REDIRECT RESOLUTION, compose-only: a key the core RETIRED re-keys onto the
+//     survivor for this build, WARNED as AdvisoryRetiredSidecarKey - build-time
+//     only, nothing written, the community re-key sweep is still the fix and the
+//     warning is what keeps the sweep window visible and datable.
+//   - COLLISION, a hard error, compose-only: two sidecars of one KIND resolving
+//     onto one work is refused, never folded (internal/repair's
+//     sidecar-member-collision principle); disjoint members simply meet.
+//   - THE POSITION-SCALE ADVISORY, run here for real (vacuous over either root
+//     alone), still only ever a warning.
 //
 // EVERY RULE RUNS, RED OR NOT. A problem in either root does not suppress the
 // cross-tree pass, exactly as a malformed people pack in a single tree has never
@@ -123,11 +107,6 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// the whole of the community load, for nothing.
 	core, _ := load(coreLst, nil)
 	com, comIdx := load(comLst, nil)
-	// Every path the community half will be reported against - the load's own
-	// problems, and every path a cross-tree rule reads out of the index, whether it
-	// reports AT that path or names it inside a message - is attributed at the
-	// source, so no rule below has to know the marker exists.
-	comIdx.prefix(communityMarker)
 
 	res := Result{
 		Problems: slices.Concat(core.Problems, fromCommunity(com.Problems)),
@@ -137,11 +116,20 @@ func LoadComposed(coreDir, communityDir string) Result {
 	}
 	// A load that failed before a catalogue existed (a schema compile, an
 	// unreadable family root) has nothing to compose; it has already reported why.
+	// Those are also exactly the paths that return a NIL index, which is why the
+	// prefix below sits after this guard.
 	if res.Catalog == nil || com.Catalog == nil {
 		sortProblems(res.Problems)
 		sortProblems(res.Warnings)
 		return res
 	}
+
+	// Every path the community half will be reported against - every path a
+	// cross-tree rule reads out of the index, whether it reports AT that path or
+	// names it inside a message - is attributed at the source, so no rule below
+	// has to know the marker exists. (The load's own problems were attributed
+	// through fromCommunity above.)
+	comIdx.prefix(communityMarker)
 
 	// THE COMPOSE. The core catalogue is the whole database except the sidecars,
 	// and the community catalogue is the sidecars and nothing else - the two
@@ -164,7 +152,7 @@ func LoadComposed(coreDir, communityDir string) Result {
 	if len(res.Catalog.Characters) == 0 && len(res.Catalog.Recaps) == 0 {
 		res.Problems = append(res.Problems, Problem{
 			Path: communityDir,
-			Msg: "holds no works-community entries: composing it would ship an artifact with no " +
+			Msg: "holds no loadable works-community entries: composing it would ship an artifact with no " +
 				"community layer at all. Point --community at the community checkout's data/ " +
 				"directory, or omit the flag to build the core alone",
 		})
@@ -219,16 +207,8 @@ func fromCommunity(ps []Problem) []Problem {
 // method value of; the list they append to is the composed result's own.
 func appendTo(dst *[]Problem) addFunc {
 	return func(path, format string, args ...any) {
-		*dst = append(*dst, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+		*dst = append(*dst, problemf(path, format, args...))
 	}
-}
-
-// rekey is one pending sidecar key rewrite: the record's own work field, and the
-// surviving slug it resolved onto. Pending because the rewrite is applied only on
-// a green pass - see LoadComposed.
-type rekey struct {
-	work *string
-	to   string
 }
 
 // sidecarTarget is the group key the collision rule judges by: one member kind
@@ -236,24 +216,17 @@ type rekey struct {
 // injective and ordered by construction, with no separator to argue about.
 type sidecarTarget struct{ kind, work string }
 
-// resolvedSidecar is one member whose key resolved: where it came from, and the
-// live work it landed on. from == to for a key that was live as written.
+// resolvedSidecar is one member whose key resolved, and the live work it landed
+// on. The key it came FROM is still *sidecarRef.work - nothing mutates a key
+// until the caller applies the green-pass rewrites - so rides() (to != *work)
+// is whether it reached its work through the tombstone table, and the pending
+// rewrites ARE the resolved list filtered to the riders.
 type resolvedSidecar struct {
 	sidecarRef
-	from string
-	to   string
+	to string
 }
 
-// ridesRedirect reports whether this member reached its work through the slug
-// tombstone table rather than by naming it. It is an int rather than a bool
-// because it is a SORT rung - 0 (the incumbent) before 1 (a rider) - and Go has
-// no ordering on bools.
-func (r resolvedSidecar) ridesRedirect() int {
-	if r.from == r.to {
-		return 0
-	}
-	return 1
-}
+func (r resolvedSidecar) rides() bool { return r.to != *r.work }
 
 // resolveSidecarKeys is the EXISTENCE rule, the redirect resolution and the
 // collision the resolution can create - one pass, because they are one question
@@ -263,7 +236,7 @@ func (r resolvedSidecar) ridesRedirect() int {
 // caller to apply once the whole composed result is known to be green. A rule
 // that mutated as it went would leave a red result holding keys that are neither
 // what the tree says nor what a green build would have produced.
-func resolveSidecarKeys(cat *model.Catalog, idx *pathIndex, add, warn addFunc) []rekey {
+func resolveSidecarKeys(cat *model.Catalog, idx *pathIndex, add, warn addFunc) []resolvedSidecar {
 	live := idSet(cat.Works, func(w *model.Work) string { return w.ID })
 	tomb := cat.Redirects[model.RedirectWorks]
 
@@ -295,11 +268,14 @@ func resolveSidecarKeys(cat *model.Catalog, idx *pathIndex, add, warn addFunc) [
 			continue
 		}
 		k := sidecarTarget{kind: ref.kind, work: to}
-		byTarget[k] = append(byTarget[k], resolvedSidecar{sidecarRef: ref, from: from, to: to})
+		byTarget[k] = append(byTarget[k], resolvedSidecar{sidecarRef: ref, to: to})
 	}
 
-	var rewrites []rekey
-	for _, k := range sortedTargets(byTarget) {
+	var rewrites []resolvedSidecar
+	targets := slices.SortedFunc(maps.Keys(byTarget), func(a, b sidecarTarget) int {
+		return cmp.Or(cmp.Compare(a.kind, b.kind), cmp.Compare(a.work, b.work))
+	})
+	for _, k := range targets {
 		group := byTarget[k]
 		// THE KEEPER IS THE INCUMBENT: an entry whose key was ALREADY the live
 		// target beats every entry that only reached it by riding a redirect. Path
@@ -308,8 +284,14 @@ func resolveSidecarKeys(cat *model.Catalog, idx *pathIndex, add, warn addFunc) [
 		// Riders (and, impossibly in a root checkSidecarUniqueness passed, several
 		// incumbents) fall back to path order, so the report is deterministic
 		// either way.
+		rank := func(r resolvedSidecar) int {
+			if r.rides() {
+				return 1
+			}
+			return 0
+		}
 		slices.SortFunc(group, func(a, b resolvedSidecar) int {
-			return cmp.Or(cmp.Compare(a.ridesRedirect(), b.ridesRedirect()), cmp.Compare(a.path, b.path))
+			return cmp.Or(cmp.Compare(rank(a), rank(b)), cmp.Compare(a.path, b.path))
 		})
 		if len(group) > 1 {
 			// A collision needs a redirect to exist at all: two sidecars of one kind
@@ -320,26 +302,16 @@ func resolveSidecarKeys(cat *model.Catalog, idx *pathIndex, add, warn addFunc) [
 			for _, r := range group[1:] {
 				add(r.path, "%s sidecar keyed by work %q resolves onto %q, which already has one (%s): "+
 					"which of the two describes the surviving work is a human decision - fold them into one entry",
-					r.kind, r.from, r.to, group[0].path)
+					r.kind, *r.work, r.to, group[0].path)
 			}
 		}
 		for _, r := range group {
-			if r.from != r.to {
-				rewrites = append(rewrites, rekey{work: r.work, to: r.to})
+			if r.rides() {
+				rewrites = append(rewrites, r)
 			}
 		}
 	}
 	return rewrites
-}
-
-// sortedTargets returns the group keys in (kind, work) order, so a report over
-// them is deterministic.
-func sortedTargets[V any](m map[sidecarTarget][]V) []sidecarTarget {
-	keys := slices.Collect(maps.Keys(m))
-	slices.SortFunc(keys, func(a, b sidecarTarget) int {
-		return cmp.Or(cmp.Compare(a.kind, b.kind), cmp.Compare(a.work, b.work))
-	})
-	return keys
 }
 
 // danglingRedirectNote states, inside the existence message, that the key WAS

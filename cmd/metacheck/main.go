@@ -39,15 +39,11 @@ func main() {
 	for _, p := range res.Problems {
 		fmt.Println(p.String())
 	}
-	for _, w := range res.Warnings {
-		fmt.Fprintf(os.Stderr, "advisory: %s\n", w.String())
-	}
-	// The census under the advisory lines: the classes an adversarial review
-	// found a bulk import producing at scale are counted so one wave can be
-	// compared with the last without diffing thousands of lines.
-	if census := check.AdvisoryCensus(res.Warnings); census != "" {
-		fmt.Fprintf(os.Stderr, "%s\n", census)
-	}
+	// Advisory lines + the census under them (the classes an adversarial review
+	// found a bulk import producing at scale, counted so one wave can be compared
+	// with the last without diffing thousands of lines) - one printer, shared
+	// with metabuild.
+	check.PrintAdvisories(os.Stderr, res.Warnings)
 	if !res.OK() {
 		fmt.Fprintf(os.Stderr, "%d problem(s) found\n", len(res.Problems))
 		os.Exit(1)

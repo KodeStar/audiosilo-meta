@@ -1,7 +1,11 @@
 package check
 
 import (
+	"io/fs"
+	"os"
+	"path/filepath"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -115,20 +119,42 @@ func TestComposeEqualsSingleTree(t *testing.T) {
 		t.Fatalf("the split pair reported problems: %v", composed.Problems)
 	}
 
-	a, b := single.Catalog, composed.Catalog
-	if len(a.Works) != len(b.Works) || len(a.People) != len(b.People) || len(a.Series) != len(b.Series) ||
-		len(a.Characters) != len(b.Characters) || len(a.Recaps) != len(b.Recaps) {
-		t.Fatalf("catalogue counts differ: single=%+v composed=%+v", a, b)
+	// Whole-catalogue equality: records, order, keys and the redirects map alike
+	// (the Catalog carries no paths, so the split cannot hide in a field the
+	// loops above would have skipped).
+	if !reflect.DeepEqual(single.Catalog, composed.Catalog) {
+		t.Fatalf("the composed catalogue differs from the single tree's:\nsingle=%+v\ncomposed=%+v",
+			single.Catalog, composed.Catalog)
 	}
-	for i := range a.Characters {
-		if a.Characters[i].Work != b.Characters[i].Work {
-			t.Errorf("characters[%d] keyed %q as one tree, %q composed", i, a.Characters[i].Work, b.Characters[i].Work)
+}
+
+// TestComposeSurvivesABrokenCommunityLoad pins an ordering the review round
+// fixed: a community load that fails before producing a catalogue also returns
+// a NIL path index, so the path-attribution pass must sit behind the
+// nothing-to-compose guard - prefixing first was a latent panic. The fixture is
+// an unreadable community pack: the result must be red with the load's own
+// problem, never a panic.
+func TestComposeSurvivesABrokenCommunityLoad(t *testing.T) {
+	coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
+		"book-one": bothSidecars("book-one"),
+	}))
+	var packPath string
+	if err := filepath.WalkDir(comDir, func(path string, d fs.DirEntry, err error) error {
+		if err == nil && !d.IsDir() && strings.HasSuffix(path, ".json") && packPath == "" {
+			packPath = path
 		}
+		return err
+	}); err != nil || packPath == "" {
+		t.Fatalf("no community pack found to break: %v", err)
 	}
-	for i := range a.Recaps {
-		if a.Recaps[i].Work != b.Recaps[i].Work {
-			t.Errorf("recaps[%d] keyed %q as one tree, %q composed", i, a.Recaps[i].Work, b.Recaps[i].Work)
-		}
+	if err := os.Chmod(packPath, 0); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = os.Chmod(packPath, 0o644) })
+
+	res := LoadComposed(coreDir, comDir)
+	if res.OK() {
+		t.Fatal("an unreadable community pack must fail the composed load")
 	}
 }
 
@@ -365,7 +391,7 @@ func TestComposeRefusesAnEmptyCommunityRoot(t *testing.T) {
 	if res.OK() {
 		t.Fatal("a community root holding no sidecars composed clean")
 	}
-	if !hasProblem(res.Problems, "holds no works-community entries") {
+	if !hasProblem(res.Problems, "holds no loadable works-community entries") {
 		t.Errorf("problems did not name the empty community root: %v", res.Problems)
 	}
 	if !hasProblem(res.Problems, "omit the flag to build the core alone") {
@@ -488,8 +514,21 @@ func TestSidecarRefsCoverEverySidecarKind(t *testing.T) {
 	if len(kinds) < 2 {
 		t.Fatalf("the derivation found %v, which cannot be the sidecar kinds - it has drifted from the model", kinds)
 	}
-	if got := len(sidecarRefs(cat, newPathIndex())); got != len(kinds) {
-		t.Errorf("sidecarRefs enumerated %d of the %d sidecar kinds on model.Catalog (%v): "+
-			"a kind added to the model must be added to sidecarRefs too", got, len(kinds), kinds)
+	// Compare the KIND NAMES, not just the counts: a third kind wired into
+	// sidecarRefs under the wrong kind string would pass a length check while
+	// every message it composes names the wrong member.
+	var got []string
+	for _, ref := range sidecarRefs(cat, newPathIndex()) {
+		got = append(got, ref.kind)
+	}
+	slices.Sort(got)
+	want := make([]string, len(kinds))
+	for i, k := range kinds {
+		want[i] = strings.ToLower(k)
+	}
+	slices.Sort(want)
+	if !slices.Equal(got, want) {
+		t.Errorf("sidecarRefs enumerated %v; the model's sidecar kinds are %v: "+
+			"a kind added to the model must be added to sidecarRefs too, under its own name", got, want)
 	}
 }

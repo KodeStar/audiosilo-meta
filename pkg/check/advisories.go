@@ -2,6 +2,7 @@ package check
 
 import (
 	"fmt"
+	"io"
 	"regexp"
 	"sort"
 	"strings"
@@ -554,6 +555,19 @@ func AdvisoryClass(w Problem) string {
 // AdvisoryCensus renders the one-line count metacheck prints under the
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.
+// PrintAdvisories writes every warning to w with the "advisory: " prefix and
+// the census line under them - the one spelling of the advisory report, shared
+// by cmd/metacheck and cmd/metabuild so the two CLIs cannot drift on it. Exit
+// status is the caller's; advisories never affect it.
+func PrintAdvisories(w io.Writer, warnings []Problem) {
+	for _, p := range warnings {
+		_, _ = fmt.Fprintf(w, "advisory: %s\n", p.String())
+	}
+	if census := AdvisoryCensus(warnings); census != "" {
+		_, _ = fmt.Fprintf(w, "%s\n", census)
+	}
+}
+
 func AdvisoryCensus(warns []Problem) string {
 	counts, total := map[string]int{}, 0
 	for _, w := range warns {
@@ -640,6 +654,12 @@ const sidecarScaleMinChapters = 20
 // continue, so the rule is vacuous by construction rather than switched off
 // (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+	// No sidecars, nothing to judge - and the floor map below is a full
+	// works-times-recordings walk, which a core-profile load (every core load of
+	// a composed build) would otherwise pay for nothing.
+	if len(cat.Characters) == 0 && len(cat.Recaps) == 0 {
+		return
+	}
 	// Smallest non-empty chapter list per work id.
 	floor := map[string]int{}
 	for _, w := range cat.Works {
