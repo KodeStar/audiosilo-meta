@@ -237,7 +237,8 @@ func LoadProfile(dir string, p pack.Profile) Result {
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
-	return load(lst, nil)
+	res, _ := load(lst, nil)
+	return res
 }
 
 // LoadStore validates the tree store s was opened on, over the store's own walk
@@ -286,24 +287,33 @@ func LoadStore(s *pack.Store) Result {
 	if lst == nil {
 		return LoadProfile(s.Dir(), s.Profile())
 	}
-	return load(lst, s.Reader())
+	res, _ := load(lst, s.Reader())
+	return res
 }
 
 // load validates a walked tree. rdr is a writer's parse cache to read packs
 // from, or nil. Either way each pack this load reads itself is released as soon
 // as it has been validated.
-func load(lst *pack.Listing, rdr *pack.Reader) Result {
+//
+// It hands back the walk's PATH INDEX beside the result, for the one caller that
+// needs to report against a record after the load has returned: LoadComposed,
+// which runs the cross-family rules over TWO roots' catalogues and has to name
+// the pack entry a sidecar came from (compose.go). Every other caller discards
+// it, which is why it is a second return value rather than a Result field - the
+// index maps every loaded record to its path, and retaining that on every load
+// would cost hundreds of megabytes over the real tree to serve one consumer.
+func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	dir := lst.Dir()
 	profile := lst.Profile()
 
 	schemas, err := compileSchemas()
 	if err != nil {
-		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}
+		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}, nil
 	}
 
 	layouts, err := lst.Layouts()
 	if err != nil {
-		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
+		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}, nil
 	}
 
 	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas}
@@ -395,7 +405,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	sortProblems(l.probs)
 	sortProblems(l.warns)
 
-	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}
+	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}, idx
 }
 
 func sortProblems(ps []Problem) {

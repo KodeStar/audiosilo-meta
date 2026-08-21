@@ -5,6 +5,13 @@
 // value into the data - a pack's add-date is not its entries' add-dates, so the
 // git-history derivation a file-per-work tree allowed is gone - which is why
 // there is no date file to pass in and no --added flag.
+//
+// --community names a SECOND data root holding the works-community family alone,
+// for the release build over two checkouts once the CC BY-SA layer lives in its
+// own repository. With it, -data is read as the CC0 core and the two catalogues
+// are composed into one artifact, cross-tree rules included (build.Sources ->
+// check.LoadComposed). Without it nothing changes: one root holding the whole
+// database, which is what this repository is today.
 package main
 
 import (
@@ -14,16 +21,18 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 func main() {
 	dataDir := flag.String("data", "data", "path to the data directory")
+	community := flag.String("community", "",
+		"path to a second data root holding the works-community family alone; "+
+			"-data is then read as the CC0 core and the two are composed into one artifact")
 	out := flag.String("o", "meta.sqlite", "output SQLite file")
 	builtAt := flag.String("built-at", "", "build timestamp (RFC3339); defaults to now (UTC)")
 	flag.Parse()
 
-	res := check.Load(*dataDir)
+	res := build.Load(build.Sources{Data: *dataDir, Community: *community})
 	if !res.OK() {
 		for _, p := range res.Problems {
 			fmt.Fprintln(os.Stderr, p.String())
