@@ -14,6 +14,15 @@ import type { LibexPrefill } from './libex-map'
 // The repo's new-issue endpoint. Exported so the search CTA (search-cta.ts)
 // builds its add-work URL from the same base instead of duplicating the literal.
 export const ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
+// The COMMUNITY repo's new-issue endpoint. The CC BY-SA layer (characters and
+// recaps) moved to a repository of its own in the community-repo split, and its
+// two issue forms moved with it, so a sidecar hand-off has to point there - the
+// templates no longer exist under ISSUE_BASE. Everything else about the two
+// builders below is unchanged: the same template names, the same `work_ref`
+// carrying a meta.audiosilo.app work URL, parsed by the same
+// internal/issueform resolveWorkRef, which the community repo's intake bot runs.
+export const COMMUNITY_ISSUE_BASE =
+  'https://github.com/kodestar/audiosilo-meta-community/issues/new'
 // Canonical site origin, for linking an existing work in an add-recording issue.
 // Mirrors `site` in astro.config.mjs; the path itself is href.work, so the ONE
 // reference read by a machine rather than followed by a human - `work_ref` on
@@ -176,24 +185,28 @@ export function addRecordingIssueUrl(book: ParsedBook, work: WorkMatch): string 
  * character sidecar for a work already in the catalogue. Only work_ref rides in
  * the URL; the generated characters.json is attached to the issue by the
  * contributor (long-form JSON cannot ride a URL), matching the import hand-off.
+ *
+ * It targets the COMMUNITY repository (COMMUNITY_ISSUE_BASE): that is where the
+ * layer and its form live since the split.
  */
 export function addCharactersIssueUrl(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-characters.yml')
   p.set('work_ref', META_SITE + href.work(workId))
-  return `${ISSUE_BASE}?${p.toString()}`
+  return `${COMMUNITY_ISSUE_BASE}?${p.toString()}`
 }
 
 /**
  * Build a prefilled-issue URL for the add-recaps.yml template - the CC BY-SA
  * "story so far" sidecar for a work already in the catalogue. As with
- * add-characters, the generated recaps.json rides as an attachment.
+ * add-characters, the generated recaps.json rides as an attachment, and the
+ * target is the COMMUNITY repository.
  */
 export function addRecapsIssueUrl(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-recaps.yml')
   p.set('work_ref', META_SITE + href.work(workId))
-  return `${ISSUE_BASE}?${p.toString()}`
+  return `${COMMUNITY_ISSUE_BASE}?${p.toString()}`
 }
 
 /**
