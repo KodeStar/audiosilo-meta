@@ -104,10 +104,24 @@ jobs:
         # place. metaissue always emits a JSON verdict - even when no routing
         # label is present it returns status:invalid - so a data:-labeled issue
         # is never processed silently.
+        #
+        # --profile core is what makes a SIDECAR submission refuse-and-redirect
+        # here rather than compose. The two forms left with the layer, but a label
+        # can still arrive without one - a maintainer applying data:recaps by hand,
+        # a bookmarked prefill URL, the sibling contributor tool - and under the
+        # default profile the composer would happily write a works-community entry
+        # into a family this repository does not hold. That is a green-looking bot
+        # pull request putting CC BY-SA content in the CC0 repo, permanently
+        # unmergeable (CI runs --profile core too). With the flag,
+        # issueform.templateBelongsElsewhere refuses it as needs-human and the
+        # comment names the community repository's issue chooser - the mirror of
+        # the message that sends a core form the other way. The rule is DERIVED
+        # from each template's writeFamilies, so it cannot drift from what the
+        # composer would actually write.
         env:
           LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
         run: |
-          go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data > result.json || {
+          go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data --profile core > result.json || {
             echo '{"status":"invalid","files":[],"messages":["metaissue failed to run"]}' > result.json
           }
           cat result.json
