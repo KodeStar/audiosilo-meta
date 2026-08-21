@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // The out* types are the importer's own view of each entity's on-disk shape.
@@ -167,8 +168,25 @@ func (m Mode) runName() string {
 
 // Options configures a run of the importer.
 type Options struct {
-	// DataDir is the data root (contains works/, people/, series/).
+	// DataDir is the data root (the Profile's family roots).
 	DataDir string
+	// Profile is the TREE PROFILE of DataDir (pack.Profile): which families that
+	// root deliberately holds. The zero value is pack.ProfileAll - one root
+	// holding the whole database - so every existing caller is byte-identical.
+	//
+	// It reaches the store the run writes through and the post-write validation,
+	// which is the whole point: a SCOPED root must never be validated as
+	// ProfileAll. The two readings differ in exactly one way that matters here -
+	// ProfileAll accounts for data/works-community/ as a family root, so a core
+	// tree that still holds a leftover community family reads as clean under it
+	// and as an unrecognized location under ProfileCore. That leftover is the
+	// very thing the profile mechanism exists to catch, so an import must not be
+	// the one writer that cannot see it.
+	//
+	// It never NARROWS what a run writes: writeFamilies is the importer's own
+	// answer to that and is unchanged. A profile that does not hold those
+	// families is a caller error, refused by pack.OpenForProfile.
+	Profile pack.Profile
 	// ImportDate is the YYYY-MM-DD stamp written to every created record's
 	// source.imported_at.
 	ImportDate string

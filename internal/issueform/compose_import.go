@@ -59,7 +59,11 @@ func (c *composer) importLibrary(s sections) {
 		return
 	}
 
-	sum, err := run(tmpName, importer.Options{DataDir: c.dataDir, ImportDate: c.date})
+	// The PROFILE travels with the root. This path is the one template that
+	// hands the tree to another writer, so without it a scoped root would be
+	// opened and validated as ProfileAll - the one reading under which a leftover
+	// family in the wrong repository looks clean.
+	sum, err := run(tmpName, importer.Options{DataDir: c.dataDir, Profile: c.profile, ImportDate: c.date})
 	if err != nil {
 		c.fail(StatusInvalid, "import failed: %v", err)
 		return

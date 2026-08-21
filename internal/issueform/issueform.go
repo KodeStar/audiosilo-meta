@@ -77,8 +77,24 @@ type Fetcher func(url string) ([]byte, error)
 
 // Options configures a run.
 type Options struct {
-	// DataDir is the data root (contains works/, people/, series/).
+	// DataDir is the data root (the Profile's family roots).
 	DataDir string
+	// Profile is the TREE PROFILE of DataDir (pack.Profile): which families this
+	// root deliberately holds. The zero value is pack.ProfileAll - one root
+	// holding the whole database - so every existing caller is unchanged.
+	//
+	// It is threaded to the store the submission is composed through and to the
+	// post-write validation, and it decides which TEMPLATES are in scope: a form
+	// that writes a family this root does not hold belongs on the other
+	// repository, and the verdict says so (templateBelongsElsewhere).
+	Profile pack.Profile
+	// WorksDB is the path to a built meta.sqlite release artifact, used to answer
+	// the one question a root without the works family cannot: does this
+	// sidecar's entry key name a live CORE work slug (see worksdb.go)? It is
+	// consulted ONLY when Profile does not hold pack.FamilyWorks; where the works
+	// family is in the tree, the catalogue load already answers and the artifact
+	// would be a second, staler opinion.
+	WorksDB string
 	// Template is the issue-form template id (add-work, add-recording,
 	// correct-data, characters, recaps, import). A leading "data:" and legacy
 	// aliases are accepted.
@@ -101,6 +117,13 @@ type recRef = importer.RecRef
 // composer accumulates the writes, messages, and status for one submission.
 type composer struct {
 	dataDir string
+	// profile is the tree profile dataDir was opened under. It decides which
+	// families may be written and how the WORK-EXISTENCE question is answered
+	// (resolveWorkKey), and it is what the post-write validation loads with.
+	profile pack.Profile
+	// worksDB is the release artifact standing in for a core tree this root does
+	// not hold, or nil. Only resolveWorkKey reads it.
+	worksDB *worksDB
 	date    string
 	fetch   Fetcher
 	// store is the write layer: composed records land as pack entries and
@@ -118,6 +141,12 @@ type composer struct {
 	// isbnKey: an ISBN-10's check digit is X or x in the schema, and the two
 	// are one identifier.
 	isbnRec map[string]recRef
+
+	// redirects is the tree's own slug TOMBSTONE table, off the same load. Only
+	// resolveWorkKey reads it, and only where the works family is in the tree: a
+	// profile carrying no tombstone table leaves it empty, and the artifact
+	// carries the answer there instead.
+	redirects model.Redirects
 
 	// identity is the normalized-identity index over the catalogue, taken from the
 	// load that seeded the dedup maps rather than built here (check.Result.Identity).
@@ -187,8 +216,28 @@ func process(opts Options) Result {
 		fetch = defaultFetch
 	}
 
+	profile := opts.Profile
+	if !profile.Valid() {
+		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown tree profile %q", string(profile))}}
+	}
+	// An unknown template is judged FIRST, because writeFamilies answers for one
+	// with the core families (its default) and the profile gate below would then
+	// tell a submitter their nonexistent form belongs on the other repository.
+	// The switch's own default stays as an unreachable backstop sharing this
+	// verdict, so the one contributor-facing message cannot drift.
+	if !normalizedTemplates[tmpl] {
+		return unknownTemplate(opts.Template)
+	}
+	// A form that writes a family this root does not hold is refused BEFORE
+	// anything is opened or parsed: the submission is fine, it is simply on the
+	// wrong repository, and the verdict names the right one.
+	if msg := templateBelongsElsewhere(tmpl, profile); msg != "" {
+		return Result{Status: StatusNeedsHuman, Messages: []string{msg}}
+	}
+
 	c := &composer{
 		dataDir: opts.DataDir,
+		profile: profile,
 		date:    date,
 		fetch:   fetch,
 		people:  map[string]bool{},
@@ -197,7 +246,19 @@ func process(opts Options) Result {
 		asinRec: map[string]recRef{},
 		isbnRec: map[string]recRef{},
 	}
-	store, err := openStore(opts.DataDir, tmpl)
+	// The artifact is opened only where it is the answer to a question the tree
+	// cannot answer, so a core run never touches it (see Options.WorksDB).
+	if opts.WorksDB != "" && !profile.Has(pack.FamilyWorks) {
+		wdb, err := openWorksDB(opts.WorksDB)
+		if err != nil {
+			// needs-human for the same reason a legacy tree is: the submission is
+			// fine, the bot's own inputs are not.
+			return Result{Status: StatusNeedsHuman, Messages: []string{err.Error()}}
+		}
+		defer func() { _ = wdb.Close() }()
+		c.worksDB = wdb
+	}
+	store, err := openStore(opts.DataDir, profile, tmpl)
 	if err != nil {
 		// needs-human, not invalid: the submission is fine, the repository is
 		// mid-migration. StatusInvalid is the contributor-fault verdict, and the
@@ -223,7 +284,7 @@ func process(opts Options) Result {
 	case "import":
 		c.importLibrary(sections)
 	default:
-		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", opts.Template)}}
+		return unknownTemplate(opts.Template)
 	}
 
 	// Self-handling paths (import) produced their own outcome.
@@ -267,6 +328,7 @@ func (c *composer) loadExisting() {
 	if cat == nil {
 		return
 	}
+	c.redirects = cat.Redirects
 	for _, p := range cat.People {
 		c.people[p.ID] = true
 	}
@@ -310,15 +372,55 @@ func writeFamilies(tmpl string) []pack.Family {
 }
 
 // openStore opens dataDir for the families tmpl writes, refusing a legacy one
-// before anything is composed (pack.OpenFor owns that rule). The clause it
+// before anything is composed (pack.OpenForProfile owns that rule). The clause it
 // appends names who refused, since the wrapped error only says what is wrong
 // with the tree.
-func openStore(dataDir, tmpl string) (*pack.Store, error) {
-	s, err := pack.OpenFor(dataDir, writeFamilies(tmpl)...)
+//
+// The profile is the root's, not a per-template narrowing: it says which families
+// this tree HOLDS, while writeFamilies says which of them this submission
+// touches. A template whose families the profile does not hold never reaches
+// here - templateBelongsElsewhere refused it - so the two can never disagree.
+func openStore(dataDir string, p pack.Profile, tmpl string) (*pack.Store, error) {
+	s, err := pack.OpenForProfile(dataDir, p, writeFamilies(tmpl)...)
 	if err != nil {
 		return nil, fmt.Errorf("%w (the intake bot writes the pack layout only)", err)
 	}
 	return s, nil
+}
+
+// The two repositories the database is split across, named in the verdict that
+// sends a submission to the other one. They are contributor-facing URLs (the
+// template chooser), not API endpoints.
+const (
+	coreRepoIssues      = "https://github.com/KodeStar/audiosilo-meta/issues/new/choose"
+	communityRepoIssues = "https://github.com/KodeStar/audiosilo-meta-community/issues/new/choose"
+)
+
+// templateBelongsElsewhere reports why tmpl cannot be processed against a root
+// with this profile, or "" when it can.
+//
+// The rule is DERIVED from writeFamilies rather than being a second list of
+// which forms are "core" and which are "community": a template belongs here iff
+// every family it writes is one this root holds. So ProfileCommunity admits the
+// two sidecar forms and nothing else, ProfileCore admits everything but them,
+// and ProfileAll - one tree holding the whole database - admits all six, which
+// is what this repository is today.
+//
+// It is only ever asked of a KNOWN template (Process refuses the rest first),
+// because writeFamilies answers for an unknown one with the core families.
+func templateBelongsElsewhere(tmpl string, p pack.Profile) string {
+	for _, f := range writeFamilies(tmpl) {
+		if p.Has(f) {
+			continue
+		}
+		if f == pack.FamilyWorksCommunity {
+			return fmt.Sprintf("the %s form contributes to the CC BY-SA community layer, which this data root does not hold - "+
+				"open it on the community repository instead: %s", tmpl, communityRepoIssues)
+		}
+		return fmt.Sprintf("the %s form contributes to the CC0 factual core, which this data root does not hold - "+
+			"open it on the core repository instead: %s", tmpl, coreRepoIssues)
+	}
+	return ""
 }
 
 // putEntry marshals v and queues it as family f's entry for slug. It returns
@@ -543,7 +645,7 @@ func (c *composer) flush() string {
 // problems as messages. The tree is green on main, so any problem is caused by
 // this submission's writes.
 func (c *composer) validate() []string {
-	res := check.Load(c.dataDir)
+	res := check.LoadProfile(c.dataDir, c.profile)
 	if res.OK() {
 		return nil
 	}
@@ -660,6 +762,26 @@ var routingTemplates = map[string]bool{
 	"recaps":        true,
 	"import":        true,
 }
+
+// unknownTemplate is the one spelling of the unknown-template verdict, shared
+// by the pre-gate and the switch's unreachable backstop.
+func unknownTemplate(template string) Result {
+	return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", template)}}
+}
+
+// normalizedTemplates is routingTemplates in the CANONICAL spelling Process's
+// switch uses ("correct-data", where the routing label says "correction"),
+// DERIVED from it rather than restated: the two would otherwise be two lists of
+// the same six forms, and a template known to one and not the other is either a
+// submission that routes and then reports "unknown template", or one that is
+// refused before the profile gate can send it to the right repository.
+var normalizedTemplates = func() map[string]bool {
+	m := make(map[string]bool, len(routingTemplates))
+	for t := range routingTemplates {
+		m[normalizeTemplate(t)] = true
+	}
+	return m
+}()
 
 // TemplateFromLabels picks the intake routing template from an issue's label
 // names. A label routes when it is "data:<t>" for a known template <t> (add-work,

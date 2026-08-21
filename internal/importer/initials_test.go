@@ -9,6 +9,8 @@ import (
 	"sort"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // The report's validation corpus, shared by the key-level test and the
@@ -247,7 +249,7 @@ func TestInitialsSingleSpellingIsNotDecided(t *testing.T) {
 func probePlanner(t *testing.T, batch ...string) *planner {
 	t.Helper()
 	dir := t.TempDir()
-	store, err := openStore(dir)
+	store, err := openStore(dir, pack.ProfileAll)
 	if err != nil {
 		t.Fatal(err)
 	}

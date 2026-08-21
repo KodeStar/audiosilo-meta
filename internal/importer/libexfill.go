@@ -446,6 +446,9 @@ func (c *LibexClient) fillChapters(ctx context.Context, asin string, rec, row ma
 // refuses a tree that does not validate, for the same reason every writer does:
 // enriching on top of a broken tree writes correct-looking records into a
 // layout the next reader will not find them in.
+// PROFILE: bare dataDir = ProfileAll by Options.Profile's own default rule
+// (types.go carries the full statement; adding a --profile flag to this CLI
+// means threading it here too).
 func LoadCatalogForFill(dataDir string) (*model.Catalog, error) {
 	res := check.Load(dataDir)
 	if !res.OK() {

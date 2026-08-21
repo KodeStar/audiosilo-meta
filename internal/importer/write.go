@@ -36,8 +36,12 @@ var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyPeople, pack.Fami
 // refusal gets the clause naming who refused; an I/O error is reported as it
 // came, since "metaimport writes the pack layout only" would be a false
 // explanation of it.
-func openStore(dataDir string) (*pack.Store, error) {
-	s, err := pack.OpenFor(dataDir, writeFamilies...)
+// The PROFILE is the root's - which families this tree holds - not a narrowing
+// of writeFamilies, which stays the importer's own answer to what it writes. A
+// profile that does not hold those families is a caller error, and
+// pack.OpenForProfile is where it is refused.
+func openStore(dataDir string, p pack.Profile) (*pack.Store, error) {
+	s, err := pack.OpenForProfile(dataDir, p, writeFamilies...)
 	if err != nil {
 		if errors.Is(err, pack.ErrLegacyLayout) {
 			return nil, fmt.Errorf("%w (metaimport writes the pack layout only)", err)

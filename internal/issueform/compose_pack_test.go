@@ -158,7 +158,7 @@ func TestIntakeRefusesLegacyLayout(t *testing.T) {
 	}
 	testpack.AssertUntouched(t, dir, "jane-doe", seeded)
 	// Guard the errors.Is contract the message is derived from.
-	if _, err := openStore(dir, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
+	if _, err := openStore(dir, pack.ProfileAll, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
 		t.Errorf("openStore error = %v, want it to wrap pack.ErrLegacyLayout", err)
 	}
 }
@@ -172,21 +172,21 @@ func TestSidecarTemplateGatesOnlyItsOwnFamily(t *testing.T) {
 	// characters submission writes only works-community, so the store opens.
 	legacyCore := t.TempDir()
 	testpack.SeedLegacyPerson(t, legacyCore, "jane-doe", "Jane Doe")
-	if _, err := openStore(legacyCore, "characters"); err != nil {
+	if _, err := openStore(legacyCore, pack.ProfileAll, "characters"); err != nil {
 		t.Errorf("a sidecar submission was refused for a family it never writes: %v", err)
 	}
-	if _, err := openStore(legacyCore, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
+	if _, err := openStore(legacyCore, pack.ProfileAll, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
 		t.Errorf("add-work writes people; it must still be refused: %v", err)
 	}
 
 	// The mirror image: works-community legacy, the core families untouched.
 	legacySidecar := t.TempDir()
 	writeLegacySidecar(t, legacySidecar, "some-work")
-	if _, err := openStore(legacySidecar, "characters"); !errors.Is(err, pack.ErrLegacyLayout) {
+	if _, err := openStore(legacySidecar, pack.ProfileAll, "characters"); !errors.Is(err, pack.ErrLegacyLayout) {
 		t.Errorf("a sidecar submission must be refused when its own family is legacy: %v", err)
 	}
 	for _, tmpl := range []string{"add-work", "add-recording", "correct-data"} {
-		if _, err := openStore(legacySidecar, tmpl); err != nil {
+		if _, err := openStore(legacySidecar, pack.ProfileAll, tmpl); err != nil {
 			t.Errorf("%s never writes works-community; it must not be refused: %v", tmpl, err)
 		}
 	}
