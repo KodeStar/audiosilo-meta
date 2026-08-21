@@ -2,6 +2,7 @@ package repair
 
 import (
 	"fmt"
+	"path/filepath"
 	"reflect"
 	"slices"
 	"strings"
@@ -580,42 +581,169 @@ func TestMergeNotesEveryFactItChoseAway(t *testing.T) {
 	}
 }
 
-// A CORE-profile run merges exactly as a whole-database run does over a tree that
-// holds no sidecars, and the community family is simply not there to consult.
+// THE SPLIT PAIR MERGES EXACTLY AS THE WHOLE-DATABASE TREE DOES, and this is the
+// property the community-repo cutover has to keep: one book, one merge, whichever
+// of the two shapes the database is stored in.
 //
-// This is the gap the community-repo cutover opened and this test pins shut. The
-// merge planner asks every loser whether it carries a works-community member,
-// unconditionally - and under `core` that family is not in the root's profile, so
-// pack.Store.Get REFUSES it by name (correctly: a misdirected read or write must
-// be loud). Every merge then died with
-// `read works-community entry "x": family "works-community" is not in the core
-// tree profile`, over the real tree as well as here. The fix is in the plan's
-// view: a family the profile disclaims reads EMPTY, which is the same answer a
-// whole-database store gives for a family that is merely absent.
+// The fixture is one cluster whose two halves carry DISJOINT sidecars (characters
+// on one, recaps on the other) - the shape a merge is allowed to fold. Run twice:
+// as one tree under the default profile, and as a core root plus a read-only
+// community root under `core` + --community. The reports must name the same merge
+// and the two databases must hold the same records, which for the pair means read
+// the way a release reads it (check.LoadComposed, inside takeComposedCensus).
 //
-// Asserted as PARITY rather than as "it does not crash": the two profiles must
-// produce the same report and the same tree, because over a core tree they are
-// two readings of the same catalogue.
-func TestMergeWorksUnderTheCoreProfileMatchesTheDefault(t *testing.T) {
-	reports := map[pack.Profile]*Report{}
-	censuses := map[pack.Profile]census{}
-	for _, profile := range []pack.Profile{pack.ProfileAll, pack.ProfileCore} {
-		data := seedTree(t, hammeredCluster(t))
-		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true, Profile: profile})
+// The composed read is the load-bearing half. Under the split the sidecars are NOT
+// moved - they are another repository's - so they keep the key this merge just
+// retired, and the only reason the pair still composes is the tombstone the merge
+// wrote plus the compose-time re-key. If either were missing, this test would fail
+// with the pair failing to compose, which is exactly how the failure would reach a
+// release.
+func TestMergeWorksOverTheSplitPairMatchesTheWholeTree(t *testing.T) {
+	fixture := func(t testing.TB) map[string]string {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+		files["works/ha/hammered-book-3/recaps.json"] = recapsJSON(t, "hammered-book-3", 3)
+		return files
+	}
+
+	whole := seedTree(t, fixture(t))
+	wholeRep := run(t, Options{DataDir: whole, Ops: []string{"merge-works"}, Write: true})
+
+	core, community := seedSplit(t, fixture(t))
+	splitRep := run(t, Options{
+		DataDir: core, CommunityDir: community, Profile: pack.ProfileCore,
+		Ops: []string{"merge-works"}, Write: true,
+	})
+
+	for name, rep := range map[string]*Report{"whole tree": wholeRep, "split pair": splitRep} {
 		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
-			t.Fatalf("%s: applied %d, refused %d: %+v / %+v",
-				profile, len(rep.Applied), len(rep.Refused), rep.Applied, rep.Refused)
+			t.Fatalf("%s: applied %d, refused %d: %+v / %+v", name, len(rep.Applied), len(rep.Refused), rep.Applied, rep.Refused)
 		}
-		reports[profile] = rep
-		censuses[profile] = takeCensus(t, data)
 	}
-	if !reflect.DeepEqual(reports[pack.ProfileAll].Applied, reports[pack.ProfileCore].Applied) {
-		t.Errorf("the two profiles applied different changes:\n all: %+v\ncore: %+v",
-			reports[pack.ProfileAll].Applied, reports[pack.ProfileCore].Applied)
+	// The DECISION must match. Notes are compared separately below: they are
+	// deliberately different, because under the split the sidecars did not move.
+	got, want := splitRep.Applied[0], wholeRep.Applied[0]
+	got.Notes, want.Notes = nil, nil
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("the two shapes applied different changes:\nwhole: %+v\nsplit: %+v", want, got)
 	}
-	if !reflect.DeepEqual(censuses[pack.ProfileAll], censuses[pack.ProfileCore]) {
-		t.Errorf("the two profiles left different trees:\n all: %+v\ncore: %+v",
-			censuses[pack.ProfileAll], censuses[pack.ProfileCore])
+	if !noteMentions(splitRep.Applied[0].Notes, "ride the slug redirect") {
+		t.Errorf("the split run does not say the sidecars stayed put: %v", splitRep.Applied[0].Notes)
+	}
+	if noteMentions(wholeRep.Applied[0].Notes, "ride the slug redirect") {
+		t.Errorf("the whole-tree run claims sidecars stayed put, but it moved them: %v", wholeRep.Applied[0].Notes)
+	}
+
+	// The DATABASES must match, read whole either way.
+	if a, b := takeCensus(t, whole), takeComposedCensus(t, core, community); !reflect.DeepEqual(a, b) {
+		t.Errorf("the two shapes left different databases:\nwhole: %+v\nsplit: %+v", a, b)
+	}
+	// And the community checkout is untouched: this pass may not write another
+	// repository, whatever its plan staged in order to answer questions.
+	if entryExists(t, core, pack.FamilyWorks, "hammered-book-3") {
+		t.Error("the core merge did not retire the loser")
+	}
+	if !communityHolds(t, community, "hammered-book-3") {
+		t.Error("the community entry was rewritten by a core-side repair")
+	}
+}
+
+// WITHOUT --community, A CORE RUN REFUSES EVERY MERGE. It cannot see the sidecars,
+// so it cannot run the collision guard, so it does not merge - the refusal is
+// unconditional and names the flag, because "either side might carry a member" is
+// true of every cluster and inferring anything from silence is what made the guard
+// blind in the first place.
+func TestMergeWorksUnderCoreRefusesWithoutTheCommunityRoot(t *testing.T) {
+	files := hammeredCluster(t)
+	files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+	core, community := seedSplit(t, files)
+	before := takeComposedCensus(t, core, community)
+
+	rep := run(t, Options{DataDir: core, Profile: pack.ProfileCore, Ops: []string{"merge-works"}, Write: true})
+	if len(rep.Applied) != 0 {
+		t.Fatalf("a merge was applied without the community layer in view: %+v", rep.Applied)
+	}
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatCommunityRequired {
+		t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatCommunityRequired)
+	}
+	if !strings.Contains(rep.Refused[0].Reason, "--community") {
+		t.Errorf("the refusal does not name the flag that fixes it: %q", rep.Refused[0].Reason)
+	}
+	if !entryExists(t, core, pack.FamilyWorks, "hammered-book-3") {
+		t.Error("the refused cluster's loser was deleted anyway")
+	}
+	if loadRedirects(t, core).Len() != 0 {
+		t.Error("the refused run recorded a tombstone")
+	}
+	if got := takeComposedCensus(t, core, community); !reflect.DeepEqual(got, before) {
+		t.Error("the refused run changed the database")
+	}
+}
+
+// WITH --community, the collision refusal works exactly as it did before the split:
+// both halves carrying a `characters` member is a human decision, and the run says
+// so instead of folding one away. This is the whole point of the flag - the
+// previous test's refusal is safety, this one is the guard actually doing its job.
+func TestMergeWorksUnderCoreRefusesTheCollisionThroughTheCommunityRoot(t *testing.T) {
+	files := hammeredCluster(t)
+	files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+	files["works/ha/hammered-book-3/characters.json"] = charactersJSON(t, "hammered-book-3", "atticus-onagain")
+	core, community := seedSplit(t, files)
+	before := takeComposedCensus(t, core, community)
+
+	rep := run(t, Options{
+		DataDir: core, CommunityDir: community, Profile: pack.ProfileCore,
+		Ops: []string{"merge-works"}, Write: true,
+	})
+	if len(rep.Applied) != 0 {
+		t.Fatalf("a cluster with two characters sidecars was merged: %+v", rep.Applied)
+	}
+	if len(rep.Refused) != 1 || rep.Refused[0].Category != CatSidecarCollision {
+		t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatSidecarCollision)
+	}
+	if !entryExists(t, core, pack.FamilyWorks, "hammered-book-3") {
+		t.Error("the refused cluster's loser was deleted anyway")
+	}
+	if got := takeComposedCensus(t, core, community); !reflect.DeepEqual(got, before) {
+		t.Error("the refused run changed the database")
+	}
+}
+
+// A --community root that is not a community checkout is refused at the door, not
+// read as "no sidecars anywhere". Pointing the flag at the community repository's
+// top level rather than its data/ is the mistake it invites, and answering every
+// cluster "nothing to collide with" would be the original blindness wearing the
+// flag that was supposed to end it.
+func TestCommunityRootMustHoldTheLayer(t *testing.T) {
+	files := hammeredCluster(t)
+	files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+	core, community := seedSplit(t, files)
+
+	_, err := Run(Options{
+		DataDir: core, CommunityDir: filepath.Dir(community), Profile: pack.ProfileCore,
+		Ops: []string{"merge-works"},
+	})
+	if err == nil {
+		t.Fatal("a --community root holding no works-community packs was accepted")
+	}
+	if !strings.Contains(err.Error(), "no works-community packs") {
+		t.Errorf("the error does not name the problem: %v", err)
+	}
+}
+
+// --community over a tree that ALREADY holds the family is two answers to one
+// question, which is not a mode this pass has.
+func TestCommunityRootIsRefusedOnAWholeDatabaseTree(t *testing.T) {
+	files := hammeredCluster(t)
+	files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+	core, community := seedSplit(t, files)
+
+	_, err := Run(Options{DataDir: core, CommunityDir: community, Ops: []string{"merge-works"}})
+	if err == nil {
+		t.Fatal("--community was accepted under the default (whole-database) profile")
+	}
+	if !strings.Contains(err.Error(), "already holds the works-community family") {
+		t.Errorf("the error does not name the conflict: %v", err)
 	}
 }
 

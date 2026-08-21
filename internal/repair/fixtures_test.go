@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -170,7 +171,7 @@ func planFixture(t testing.TB, data string) (*runner, *txn) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	rn := &runner{opts: Options{DataDir: data}, plan: newPlan(store, res.Catalog, table), rep: &Report{DataDir: data}, filter: &filter{}}
+	rn := &runner{opts: Options{DataDir: data}, plan: newPlan(store, nil, res.Catalog, table), rep: &Report{DataDir: data}, filter: &filter{}}
 	return rn, rn.plan.begin()
 }
 
@@ -226,7 +227,14 @@ type census struct {
 
 func takeCensus(t testing.TB, data string) census {
 	t.Helper()
-	res := check.Load(data)
+	return censusOf(t, check.Load(data))
+}
+
+// censusOf counts one already-loaded catalogue. It is shared by the single-tree
+// and composed-pair helpers so the two can be compared at all - a second copy of
+// these counts would be a comparison that proves nothing.
+func censusOf(t testing.TB, res check.Result) census {
+	t.Helper()
 	if res.Catalog == nil {
 		t.Fatalf("census load failed: %v", res.Problems)
 	}
@@ -256,6 +264,90 @@ func takeCensus(t testing.TB, data string) census {
 		}
 	}
 	return c
+}
+
+// seedSplit seeds the SPLIT PAIR the community-repo cutover produces: a core root
+// (works, people, series) and a community root (works-community alone), from the
+// same fixture map the single-tree helpers take. A fixture address naming a
+// sidecar member goes to the community root and everything else to the core one,
+// so a test writes one fixture and gets either shape.
+//
+// Both are validated the way seedTree validates one: standalone under their own
+// profiles, and then COMPOSED, because the pair is what a release is built from
+// and a fixture that composes red would make every assertion over it meaningless.
+func seedSplit(t testing.TB, files map[string]string) (core, community string) {
+	t.Helper()
+	coreFiles, comFiles := map[string]string{}, map[string]string{}
+	for address, body := range files {
+		if isSidecarAddress(address) {
+			comFiles[address] = body
+		} else {
+			coreFiles[address] = body
+		}
+	}
+	if len(comFiles) == 0 {
+		t.Fatal("seedSplit: the fixture carries no sidecar, so the community root would be empty - " +
+			"which metarepair refuses at the door; use seedTree, or give the fixture a sidecar")
+	}
+	root := t.TempDir()
+	core, community = filepath.Join(root, "core", "data"), filepath.Join(root, "community", "data")
+	for dir, set := range map[string]map[string]string{core: coreFiles, community: comFiles} {
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		testpack.Seed(t, dir, set)
+	}
+	if res := check.LoadProfile(core, pack.ProfileCore); len(res.Problems) > 0 {
+		t.Fatalf("split fixture: the core half does not validate: %v", res.Problems)
+	}
+	if res := check.LoadProfile(community, pack.ProfileCommunity); len(res.Problems) > 0 {
+		t.Fatalf("split fixture: the community half does not validate: %v", res.Problems)
+	}
+	if res := check.LoadComposed(core, community); len(res.Problems) > 0 {
+		t.Fatalf("split fixture: the pair does not compose: %v", res.Problems)
+	}
+	return core, community
+}
+
+// isSidecarAddress reports whether a fixture address names a works-community
+// member. The two member names are the fixture syntax's own spelling of them (the
+// same addresses testpack resolves), so this partitions the map rather than
+// defining a second notion of what a sidecar is.
+func isSidecarAddress(address string) bool {
+	base := path.Base(address)
+	return base == "characters.json" || base == "recaps.json"
+}
+
+// communityHolds reports whether the community root still carries an entry under
+// this slug. It reads through a ProfileCommunity store, which is the only way to
+// open that root at all, and is how a test asserts the negative this pass must
+// honour: a core-side repair never rewrites another repository.
+func communityHolds(t testing.TB, community, slug string) bool {
+	t.Helper()
+	store, err := pack.OpenProfile(community, pack.ProfileCommunity)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ok, err := store.Has(pack.FamilyWorksCommunity, slug)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return ok
+}
+
+// takeComposedCensus is takeCensus over the SPLIT PAIR - the same counts, read
+// from the two roots the way a release build reads them (check.LoadComposed), so a
+// merge planned in the core repository can be measured against one planned over a
+// whole-database tree. It fails the test if the pair does not compose, which after
+// a merge is the property that actually matters: a sidecar whose work slug the
+// merge retired must still resolve, through the tombstone that merge wrote.
+func takeComposedCensus(t testing.TB, core, community string) census {
+	t.Helper()
+	res := check.LoadComposed(core, community)
+	if len(res.Problems) > 0 {
+		t.Fatalf("composed census: the pair does not compose after the repair: %v", res.Problems)
+	}
+	return censusOf(t, res)
 }
 
 // gitRepo makes a fixture tree a committed git repository, which is what --write

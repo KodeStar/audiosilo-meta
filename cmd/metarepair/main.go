@@ -19,13 +19,27 @@
 // recovery story: this pass deletes records) and one that does not validate, and it
 // fails the run if the tree does not validate afterwards.
 //
-// --profile names which families the root holds (pack.Profile), defaulting to
-// "all" as metacheck's and metafmt's do. Pass `core` for THIS repository's tree
-// since the community-repo split: the store then never addresses works-community
-// (which now lives in KodeStar/audiosilo-meta-community), and the post-write
-// format pass and validation judge the same tree the CI check does. Over a core
-// tree the two readings agree - the family is simply absent either way - so this
-// is a statement of what the root is, not a change of what a wave does.
+// --profile names which families the root holds (pack.Profile). It defaults to
+// `core`, which is what THIS repository's tree is since the community-repo split -
+// deliberately NOT the `all` that metacheck and metafmt default to, and the
+// difference is the cost of being wrong. Those two are read by CI with the flag
+// spelled out, and a wrong reading there is a red check. This pass DELETES
+// RECORDS, is run by a human typing a command, and under `all` over a core tree
+// would see an empty works-community family and merge as though no book in the
+// wave carried a sidecar. The safe reading is the default; `--profile all` is
+// available for a genuine whole-database tree, of which there are now none.
+//
+// --community names that repository's data/ directory, opened READ-ONLY, and a
+// core-profile merge wave NEEDS IT. The sidecar-collision refusal - both halves of
+// a duplicate carrying the same characters or recaps member, which is a human
+// decision - is a question about data this repository no longer holds, so without
+// the flag every merge-works proposal is refused as `community-data-required`
+// rather than merged blind. Nothing is written there: the members ride the slug
+// tombstone to the surviving work until the community repository's re-key sweep
+// lands them. A typical wave is therefore:
+//
+//	go run ./cmd/metarepair -data data --profile core \
+//	  --community ../audiosilo-meta-community/data --op merge-works --limit 50
 //
 // Business logic lives in internal/repair; this is flag wiring.
 package main
@@ -77,7 +91,11 @@ func main() {
 		"counts against it, and chunking a wave also bounds the packs a run holds resident (0 = no cap)")
 	write := flag.Bool("write", false, "apply the plan (default: report it and write nothing)")
 	verbose := flag.Bool("v", false, "print every applied change record by record")
-	profileName := flag.String("profile", pack.ProfileAll.String(), pack.ProfileFlagUsage)
+	profileName := flag.String("profile", pack.ProfileCore.String(), pack.ProfileFlagUsage+
+		" (default core: this repository's tree, and the safe reading for a pass that deletes records)")
+	community := flag.String("community", "", "the community checkout's data/ directory, opened read-only so the "+
+		"sidecar-collision check can see the CC BY-SA layer; REQUIRED for a merge wave under --profile core, which "+
+		"otherwise refuses every merge as community-data-required")
 	var ops, subclasses repeated
 	flag.Var(&ops, "op", "restrict to this op, repeatable or comma-separated; LEAVE IT OFF for every op (one of "+
 		strings.Join(repair.AppliableOps(), ", ")+")")
@@ -100,6 +118,8 @@ func main() {
 		Limit:      *limit,
 		Write:      *write,
 		Profile:    profile,
+
+		CommunityDir: *community,
 	})
 	if rep != nil {
 		if werr := rep.Write(os.Stdout, *verbose); werr != nil {

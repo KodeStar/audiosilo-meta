@@ -66,6 +66,43 @@ import (
 // P-DUP is advisory throughout, so nothing here ever merges a person.
 var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilySeries}
 
+// openCommunity opens Options.CommunityDir as a READ-ONLY community root, or
+// returns nil when the flag was not given. Nothing here ever writes to it: it is
+// opened as a store only because a store is what answers "give me this family's
+// entry for this slug", and no Upsert, Delete or Flush is reachable from the view
+// it backs (see newCommunityView and view.queue).
+//
+// It refuses two things at the door, before anything is planned:
+//
+//   - a root the tree ALREADY holds the family for. Two answers to one question is
+//     not a mode this pass has; the operator meant --profile core.
+//   - a root carrying no works-community entries. pack.ListProfile tolerates a
+//     missing family root by design, so a directory that simply is not a community
+//     checkout - the community repository's TOP LEVEL rather than its data/, the
+//     mistake this flag invites - would otherwise answer "no sidecars anywhere" for
+//     every cluster in the wave. That is the exact blindness the flag exists to
+//     end, arrived at while looking like it had been fixed. It is metabuild's rule
+//     for --community, in the terms this pass can check it in.
+func openCommunity(opts Options) (*pack.Store, error) {
+	if opts.CommunityDir == "" {
+		return nil, nil
+	}
+	if opts.Profile.Has(pack.FamilyWorksCommunity) {
+		return nil, fmt.Errorf("repair: --community names a second root, but %s already holds the works-community family "+
+			"under the %s profile: pass --profile core, or drop --community", opts.DataDir, opts.Profile)
+	}
+	s, err := pack.OpenForProfile(opts.CommunityDir, pack.ProfileCommunity, pack.FamilyWorksCommunity)
+	if err != nil {
+		return nil, fmt.Errorf("repair: open community root: %w", err)
+	}
+	if n := len(s.Tree(pack.FamilyWorksCommunity).Packs()); n == 0 {
+		return nil, fmt.Errorf("repair: %s holds no works-community packs: point --community at the community checkout's "+
+			"data/ directory, or omit it (and accept that every merge is refused, which is the safe reading)",
+			opts.CommunityDir)
+	}
+	return s, nil
+}
+
 // writeFamiliesIn narrows writeFamilies to the ones the root's tree profile
 // actually holds. It is not a convenience: pack.OpenForProfile REFUSES a named
 // family the profile disclaims, and rightly - a writer must learn at the door
@@ -123,6 +160,13 @@ const (
 	// CatSidecarCollision: both halves of a duplicate carry the same works-community
 	// member, so which CC BY-SA entry describes the survivor is a human decision.
 	CatSidecarCollision Category = "sidecar-member-collision"
+	// CatCommunityRequired: this tree does not hold works-community and no
+	// --community root was given, so whether the cluster carries sidecars cannot be
+	// answered - and CatSidecarCollision, the guard over the most expensive data in
+	// the project, would be structurally blind rather than merely quiet. Every
+	// merge-works proposal takes this until the flag is passed. It is the one
+	// refusal that is about the RUN rather than about the records.
+	CatCommunityRequired Category = "community-data-required"
 	// CatPositionConflict: the change would put one book at two positions in a series,
 	// or two books at one.
 	CatPositionConflict Category = "series-position-conflict"
@@ -144,8 +188,9 @@ const (
 // triage view over REFUSED.ndjson reads this list rather than writing one of its own.
 func Categories() []Category {
 	return []Category{
-		CatStaleProposal, CatNotProposed, CatMissing, CatRetired, CatSidecarCollision,
-		CatPositionConflict, CatRecordingKey, CatStaleValue, CatNoValue, CatMalformed, CatRedirect,
+		CatStaleProposal, CatNotProposed, CatCommunityRequired, CatMissing, CatRetired,
+		CatSidecarCollision, CatPositionConflict, CatRecordingKey, CatStaleValue,
+		CatNoValue, CatMalformed, CatRedirect,
 	}
 }
 
@@ -184,6 +229,14 @@ type Options struct {
 	// then judged under another would report a file it had just been told not to
 	// touch.
 	Profile pack.Profile
+	// CommunityDir is the community checkout's data/ (KodeStar/audiosilo-meta-community),
+	// opened READ-ONLY so the sidecar-collision refusal can see the layer this
+	// repository no longer holds. Empty is the default and, under a profile that
+	// disclaims works-community, makes every merge-works proposal refuse with
+	// CatCommunityRequired - see sidecarSource. It is never written: moving a
+	// sidecar member is that repository's own change, and the slug tombstone plus
+	// the compose-time re-key already carry a member to the surviving work.
+	CommunityDir string
 }
 
 // Applied is one proposal this run carried out.
@@ -307,6 +360,10 @@ func Run(opts Options) (*Report, error) {
 	if err != nil {
 		return nil, err
 	}
+	communityRO, err := openCommunity(opts)
+	if err != nil {
+		return nil, err
+	}
 	// ONE walk of the tree serves both the validation and the audit: the store's
 	// own, borrowed by check.LoadStore, whose Result the detectors then read.
 	res := check.LoadStore(store)
@@ -331,7 +388,7 @@ func Run(opts Options) (*Report, error) {
 			opts.DataDir, len(res.Problems), firstProblem(res))
 	}
 
-	rn := &runner{opts: opts, plan: newPlan(store, res.Catalog, table), rep: rep, filter: f}
+	rn := &runner{opts: opts, plan: newPlan(store, communityRO, res.Catalog, table), rep: rep, filter: f}
 	for _, c := range rn.selectProposals(fresh) {
 		if rn.fatal != nil {
 			break

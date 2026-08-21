@@ -8,10 +8,13 @@
 // loader and has no write path at all. Acting on the report is a separate pass.
 //
 // --profile names which families the root holds (pack.Profile), defaulting to
-// "all" as metacheck's and metafmt's do; pass `core` for THIS repository's tree
-// since the community-repo split, so this pass and metarepair (which re-runs
-// these detectors before it applies anything) are told the same thing about the
-// same root.
+// `core` - this repository's tree since the community-repo split, and the same
+// default metarepair takes. The two MUST agree: metarepair re-runs these very
+// detectors before it applies anything, so a report taken under one reading of the
+// tree and applied under another is the drift the fresh-audit gate exists to
+// prevent. (metacheck and metafmt still default to `all`; they are read by CI with
+// the flag spelled out, where a wrong reading is a red check rather than a wave of
+// deletions.)
 //
 // Flag wiring only; the logic lives in internal/audit.
 package main
@@ -28,7 +31,8 @@ import (
 func main() {
 	dataDir := flag.String("data", "data", "path to the data root to audit (read-only)")
 	out := flag.String("o", "", "directory to write the report into (required)")
-	profileName := flag.String("profile", pack.ProfileAll.String(), pack.ProfileFlagUsage)
+	profileName := flag.String("profile", pack.ProfileCore.String(), pack.ProfileFlagUsage+
+		" (default core: this repository's tree, matching metarepair)")
 	flag.Parse()
 
 	if *out == "" {
