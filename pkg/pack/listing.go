@@ -122,7 +122,14 @@ func ListProfile(dataDir string, profile Profile) (*Listing, error) {
 			// data/redirects.json that is one would read as "the tree holds no
 			// redirects" - the silent answer, where every other wrong shape in
 			// this tree is loud (compare mustBeDir above, its mirror image).
-			if auxFile(profile, rel) {
+			//
+			// The test is the PATH, under every profile - deliberately not
+			// auxFile, which asks whether this tree carries a tombstone table.
+			// That path names a file in this project full stop, and a profile
+			// that does not carry the table has less use for a directory there,
+			// not more: descending into it silently would file whatever it holds
+			// as strays and never say that the path itself is the mistake.
+			if rel == RedirectsFile {
 				return &fs.PathError{Op: "read", Path: p, Err: errIsDirectory}
 			}
 			return nil

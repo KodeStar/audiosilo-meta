@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -67,9 +68,126 @@ func TestProfileTable(t *testing.T) {
 			half = append(half, d.Family)
 		}
 	}
-	sort.Slice(half, func(i, j int) bool { return half[i] < half[j] })
+	slices.Sort(half)
 	if !reflect.DeepEqual(half, all) {
 		t.Errorf("core+community = %v, want a partition of %v", half, all)
+	}
+}
+
+// TestProfileExcluded pins the SUBTRACTIVE view - what a path-walking pass has
+// to skip - and that it is the exact complement of Families plus the tombstone
+// table, so the two views of one profile can never disagree about a family.
+func TestProfileExcluded(t *testing.T) {
+	cases := []struct {
+		profile Profile
+		want    []string
+	}{
+		{ProfileAll, nil},
+		{ProfileCore, []string{FamilyWorksCommunity.Root()}},
+		{ProfileCommunity, []string{
+			FamilyPeople.Root(), RedirectsFile, FamilySeries.Root(), FamilyWorks.Root(),
+		}},
+	}
+	for _, c := range cases {
+		got := c.profile.Excluded()
+		slices.Sort(c.want)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("%s excluded = %v, want %v", c.profile, got, c.want)
+		}
+		// Every family is in exactly one of the two views.
+		for _, d := range Families() {
+			in, out := c.profile.Has(d.Family), slices.Contains(got, d.Family.Root())
+			if in == out {
+				t.Errorf("%s: %s is %v in Families and %v in Excluded", c.profile, d.Family, in, out)
+			}
+		}
+		if slices.Contains(got, RedirectsFile) == c.profile.Redirects() {
+			t.Errorf("%s: Excluded and Redirects disagree about the tombstone table", c.profile)
+		}
+	}
+}
+
+// TestStoreAccessorsRefuseAnOutOfProfileFamily: Tree and Layout answer with a
+// VALUE, and both zero values lie about a family this root does not hold - a nil
+// *Tree that nil-panics at the caller with no explanation, and a LayoutAbsent for
+// a family whose packs are on disk. So they panic with def's own sentence.
+func TestStoreAccessorsRefuseAnOutOfProfileFamily(t *testing.T) {
+	dir := t.TempDir()
+	writeFiles(t, dir, map[string]string{
+		"works/0/0.json":           packOf1("book-one"),
+		"works-community/0/0.json": packOf1("book-one"),
+	})
+	s, err := OpenProfile(dir, ProfileCore)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	assertPanics := func(method string, mentions []string, call func()) {
+		t.Helper()
+		defer func() {
+			r := recover()
+			if r == nil {
+				t.Errorf("Store.%s answered for a family outside the profile", method)
+				return
+			}
+			msg, _ := r.(string)
+			for _, want := range append([]string{"Store." + method}, mentions...) {
+				if !strings.Contains(msg, want) {
+					t.Errorf("Store.%s panic %q does not mention %q", method, msg, want)
+				}
+			}
+		}()
+		call()
+	}
+	outOfProfile := []string{"works-community", "core"}
+	assertPanics("Tree", outOfProfile, func() { _ = s.Tree(FamilyWorksCommunity) })
+	assertPanics("Layout", outOfProfile, func() { _ = s.Layout(FamilyWorksCommunity) })
+	// An unknown family is named as unknown rather than as out-of-profile: it is
+	// in no profile, so "this root holds ..." would be the wrong diagnosis.
+	assertPanics("Layout", []string{`unknown pack family "nope"`}, func() { _ = s.Layout(Family("nope")) })
+
+	// In-profile families answer exactly as they always did, and the panic can
+	// never fire under the default profile, which holds every family.
+	if s.Layout(FamilyWorks) != LayoutPack || s.Tree(FamilyWorks).Len() != 1 {
+		t.Error("an in-profile family stopped answering")
+	}
+	all, err := Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, d := range Families() {
+		if all.Tree(d.Family) == nil {
+			t.Errorf("ProfileAll store has no tree for %s", d.Family)
+		}
+	}
+	// The refusal is the SAME sentence def returns, so an error and a panic can
+	// never describe one situation two ways.
+	_, derr := s.def(FamilyWorksCommunity)
+	if derr == nil || !strings.Contains(derr.Error(), s.outOfProfile(FamilyWorksCommunity)) {
+		t.Errorf("def error %v does not carry the shared sentence", derr)
+	}
+}
+
+// TestListingRefusesARedirectsDirectoryUnderEveryProfile: that path names a FILE
+// in this project, so a directory there is the mistake - under a profile that
+// carries no tombstone table just as much as under one that does, where
+// descending silently would file whatever it holds as strays and never say what
+// is actually wrong.
+func TestListingRefusesARedirectsDirectoryUnderEveryProfile(t *testing.T) {
+	for _, p := range []Profile{ProfileAll, ProfileCore, ProfileCommunity} {
+		dir := t.TempDir()
+		writeFiles(t, dir, map[string]string{"works-community/0/0.json": packOf1("book-one")})
+		if err := os.MkdirAll(filepath.Join(dir, RedirectsFile), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		_, err := ListProfile(dir, p)
+		if err == nil {
+			t.Errorf("%s accepted a directory named %s", p, RedirectsFile)
+			continue
+		}
+		if !strings.Contains(err.Error(), RedirectsFile) {
+			t.Errorf("%s: error %q does not name the file", p, err)
+		}
 	}
 }
 

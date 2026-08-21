@@ -145,18 +145,38 @@ func (r Report) Summary() string {
 func Check(dataDir string) (Report, error) { return CheckProfile(dataDir, pack.ProfileAll) }
 
 // CheckProfile is Check over a root that holds only profile p's families (see
-// pack.Profile). The STRUCTURAL pass is the profile's - only its families are
-// surveyed, and only its layouts are refused as legacy - while the CANONICAL pass
-// stays whole-tree, because canonical form is a property of a JSON file rather
-// than of the layout it sits in (pkg/canonical is layout-agnostic by design, and
-// a file outside the profile is already metacheck's unrecognized location, which
-// is where it gets said).
+// pack.Profile).
+//
+// BOTH passes are the profile's, by two different mechanisms. The structural one
+// is ADDITIVE - it surveys the profile's families and refuses a legacy layout
+// among them. The canonical one is SUBTRACTIVE: pkg/canonical is layout-agnostic
+// by design and knows nothing about families, so it still walks the whole root
+// and is handed the paths this profile disclaims (pack.Profile.Excluded - every
+// out-of-profile family root, plus redirects.json where the profile carries no
+// tombstone table). Under ProfileAll nothing is excluded, so a whole-tree run is
+// byte-for-byte what it always was, including stray JSON at the data root, which
+// belongs to no family and is still formatted.
+//
+// Subtractive rather than "format the profile's families" because those are not
+// the same set: the difference is exactly the files under no family root, and a
+// stray one there has always been formatted. What the profile removes is what it
+// disclaims, nothing else.
+//
+// The contract for an out-of-profile file is then ONE thing, consistently: this
+// tree neither touches it nor judges it, and pkg/check reports it as an
+// unrecognized location. The alternative - a whole-tree canonical pass - broke
+// that in both directions: a --write under a subset profile reformatted files the
+// profile disclaims (working-tree churn in the very directory a repository split
+// is about to extract byte-for-byte), and where such a family was still in the
+// LEGACY layout it rewrote those files IN PLACE while exiting 0, since
+// refuseLegacy no longer reaches them - the precise failure refuseLegacy exists
+// to prevent, making a stale checkout look freshly maintained.
 func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep := Report{Dir: dataDir}
 	if err := refuseLegacy(dataDir, p); err != nil {
 		return Report{}, err
 	}
-	nonCanonical, invalid, err := canonical.CheckTree(dataDir)
+	nonCanonical, invalid, err := canonical.CheckTreeExcept(dataDir, p.Excluded())
 	if err != nil {
 		return Report{}, err
 	}
@@ -187,7 +207,7 @@ func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 func Write(dataDir string) (Report, error) { return WriteProfile(dataDir, pack.ProfileAll) }
 
 // WriteProfile is Write over a root that holds only profile p's families (see
-// pack.Profile and CheckProfile, which states how the two passes divide).
+// pack.Profile, and CheckProfile for how the two passes are each scoped to it).
 func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep := Report{Dir: dataDir}
 	// Before anything is rewritten: a family that is not in the pack layout is
@@ -197,8 +217,10 @@ func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	}
 	// Formatting runs first: Flush judges a pack no write reached by its
 	// on-disk size, which is only the pack's canonical size once the file is in
-	// canonical form.
-	changed, failed, err := canonical.WriteTree(dataDir)
+	// canonical form. It is scoped to the profile exactly as Check's is, and
+	// here that scoping is load-bearing rather than tidy - a skipped file is
+	// never even read, so nothing this run disclaims can be rewritten.
+	changed, failed, err := canonical.WriteTreeExcept(dataDir, p.Excluded())
 	if err != nil {
 		return Report{}, err
 	}

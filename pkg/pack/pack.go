@@ -138,6 +138,15 @@ func Families() []FamilyDef {
 	for _, d := range defs {
 		out = append(out, d)
 	}
+	return sortedDefs(out)
+}
+
+// sortedDefs puts a family list in the package's ONE stable order, by family
+// name, in place. Every list of families this package hands out goes through it -
+// the full table and each profile's subset - so "a stable order" is one
+// definition rather than a predicate copied per producer, and a profile's slice
+// is a sub-sequence of Families()' by construction.
+func sortedDefs(out []FamilyDef) []FamilyDef {
 	sort.Slice(out, func(i, j int) bool { return out[i].Family < out[j].Family })
 	return out
 }

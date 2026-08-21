@@ -103,9 +103,32 @@ placement rules, the same schemas. Two consequences, and they are the point:
 
 `pack.Store` carries its root's profile too: it plans and flushes only that
 profile's families, and every read or write addressed to another one is a loud
-error rather than a silent write into a directory nothing accounts for.
+error (`Store.Tree` and `Store.Layout`, which answer with a value rather than an
+error, panic with that same sentence - both their zero values would be lies about
+a family sitting on disk).
+
 `metacheck` and `metafmt` take `--profile all|core|community`, defaulting to
-`all`, which is what this repository is today.
+`all`, which is what this repository is today. **Under a profile, metafmt neither
+touches nor judges a file outside it** - both its passes are scoped, by two
+different mechanisms. The structural pass is ADDITIVE: it surveys the profile's
+families and refuses a legacy layout among them. The canonical pass is
+SUBTRACTIVE: `pkg/canonical` is layout-agnostic by design, so it still walks the
+whole root and is handed the paths the profile disclaims
+(`pack.Profile.Excluded()` - every out-of-profile family root, plus
+`redirects.json` where the profile carries no tombstone table). Subtractive
+rather than "format the profile's families", because those are not the same set:
+the difference is stray JSON at the data root, which belongs to no family and has
+always been formatted. Under `all` nothing is excluded, so a whole-tree run is
+byte-for-byte what it always was.
+
+That scoping is not tidiness. A whole-tree canonical pass under a subset profile
+left working-tree churn in the very directory a repository split is about to
+extract byte-for-byte - and where the out-of-profile family was still in the
+LEGACY layout, it rewrote those files in place while exiting 0, since the legacy
+refusal no longer reached them: precisely the "a stale checkout looks freshly
+maintained" failure that refusal exists to prevent. What such a file IS remains
+`metacheck`'s unrecognized location, which is the other half of one consistent
+contract.
 
 Sidecars move out of `data/works/**` into their own family - named
 **`works-community`** (decided at sign-off: the name telegraphs the CC BY-SA

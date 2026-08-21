@@ -2,6 +2,7 @@ package pack
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 )
@@ -101,13 +102,37 @@ func (p Profile) String() string { return string(p.resolve()) }
 // that is about TWO families asks it before it runs: a rule whose other side is
 // not in the tree has nothing to check, and reporting the absence as a violation
 // would make a valid single-layer tree red (see check.Load).
-func (p Profile) Has(f Family) bool {
-	for _, in := range p.def().families {
-		if in == f {
-			return true
+func (p Profile) Has(f Family) bool { return slices.Contains(p.def().families, f) }
+
+// Excluded returns the data-relative paths this profile DISCLAIMS, sorted: the
+// root directory of every family it does not hold, plus RedirectsFile when it
+// carries no tombstone table. It is empty for ProfileAll.
+//
+// It is the subtractive twin of Families, and it exists because a pass that
+// walks the tree by PATH rather than by family still has to honour the profile.
+// metafmt's canonical formatting is the one: it is layout-agnostic on purpose
+// (pkg/canonical knows nothing about families), so it walks the whole root and
+// is handed this list to skip. Without it a subset-profile --write reformatted -
+// and, for a legacy family the profile's own legacy check no longer reached,
+// rewrote in place - files the profile disclaims: working-tree churn in exactly
+// the directory that is about to be extracted byte-for-byte into another
+// repository.
+//
+// A path here is NOT "ignored": it is out of this tree's scope, and pkg/check
+// still reports every file under it as an unrecognized location. One tree, one
+// answer about what belongs in it.
+func (p Profile) Excluded() []string {
+	var out []string
+	for _, d := range Families() {
+		if !p.Has(d.Family) {
+			out = append(out, d.Family.Root())
 		}
 	}
-	return false
+	if !p.Redirects() {
+		out = append(out, RedirectsFile)
+	}
+	sort.Strings(out)
+	return out
 }
 
 // Redirects reports whether this profile's root carries the slug tombstone table
@@ -116,7 +141,9 @@ func (p Profile) Has(f Family) bool {
 func (p Profile) Redirects() bool { return p.def().redirects }
 
 // Families returns the definitions of the families in this profile, in the same
-// stable order the package-level Families uses.
+// stable order the package-level Families uses - through the same sortedDefs, so
+// a profile's list is a sub-sequence of the full table's rather than a second
+// ordering that happens to agree.
 func (p Profile) Families() []FamilyDef {
 	fams := p.def().families
 	out := make([]FamilyDef, 0, len(fams))
@@ -125,8 +152,7 @@ func (p Profile) Families() []FamilyDef {
 			out = append(out, d)
 		}
 	}
-	sort.Slice(out, func(i, j int) bool { return out[i].Family < out[j].Family })
-	return out
+	return sortedDefs(out)
 }
 
 // Roots returns the family root directory names in this profile, sorted. It is

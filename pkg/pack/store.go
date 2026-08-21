@@ -144,13 +144,19 @@ func OpenForProfile(dataDir string, p Profile, families ...Family) (*Store, erro
 	if err != nil {
 		return nil, fmt.Errorf("open %s: %w", dataDir, err)
 	}
+	// ONE derivation: def already answers all three refusals (unknown family,
+	// out of profile, legacy layout), so the classification is its error rather
+	// than a second reading of the same state. Only the legacy one is re-worded,
+	// because a WRITER can act on it - it names the full path and the conversion.
 	for _, f := range families {
-		if _, err := s.def(f); err != nil && !errors.Is(err, ErrLegacyLayout) {
-			return nil, err
-		}
-		if s.Layout(f) == LayoutLegacy {
+		_, err := s.def(f)
+		switch {
+		case err == nil:
+		case errors.Is(err, ErrLegacyLayout):
 			return nil, fmt.Errorf("%s/%s: %w; convert the tree to the pack layout first",
 				dataDir, f.Root(), ErrLegacyLayout)
+		default:
+			return nil, err
 		}
 	}
 	return s, nil
@@ -166,7 +172,48 @@ func (s *Store) Dir() string { return s.dir }
 func (s *Store) Profile() Profile { return s.profile.resolve() }
 
 // Layout returns the layout family f was detected in at Open time.
-func (s *Store) Layout(f Family) Layout { return s.layouts[f] }
+//
+// It PANICS for a family outside the store's profile - see mustHold, which owns
+// that decision and its message.
+func (s *Store) Layout(f Family) Layout {
+	s.mustHold(f, "Layout")
+	return s.layouts[f]
+}
+
+// mustHold refuses a family this store's root does not hold, for the two
+// accessors that answer with a VALUE rather than an error.
+//
+// Store.def is the door every read and write goes through, and it returns the
+// refusal as an error. Tree and Layout cannot: their signatures are public API
+// (pkg/pack is consumed by audiosilo-sidecars as an ordinary dependency) and
+// their zero values are both LIES about an out-of-profile family - Tree hands
+// back a nil *Tree, so internal/remediate's `store.Tree(FamilyWorks).Packs()`
+// would nil-panic with no explanation, and Layout hands back LayoutAbsent for a
+// family whose packs are sitting on disk, which is worse: a wrong answer a caller
+// acts on. So the refusal is a PANIC carrying exactly the message def produces.
+//
+// That is the right severity, not a shortcut. Asking a store for a family its
+// root does not hold is a programming error - the caller chose both the profile
+// and the family - where every error these methods' neighbours return describes
+// a state of the DATA (a legacy family, a missing pack). It can never fire under
+// ProfileAll, which holds every family, so nothing that exists today can reach
+// it; a caller that wants to ASK rather than assert has Profile().Has(f).
+func (s *Store) mustHold(f Family, method string) {
+	if s.profile.Has(f) {
+		return
+	}
+	if _, ok := Def(f); !ok {
+		panic(fmt.Sprintf("pack: Store.%s: unknown pack family %q", method, f))
+	}
+	panic(fmt.Sprintf("pack: Store.%s: %s", method, s.outOfProfile(f)))
+}
+
+// outOfProfile is the ONE sentence a family this root does not hold is refused
+// with, so def's error and mustHold's panic cannot describe it differently.
+func (s *Store) outOfProfile(f Family) string {
+	return fmt.Sprintf("family %q is not in the %s tree profile (this root holds %s)",
+		f.Root(), s.Profile(), strings.Join(s.profile.Roots(), ", "))
+}
 
 // Reader returns the store's parse cache, so a caller reading the same tree can
 // answer from a pack the store has already parsed instead of parsing it again
@@ -187,7 +234,12 @@ func (s *Store) Reader() *Reader { return s.reader }
 func (s *Store) Listing() *Listing { return s.listing }
 
 // Tree returns family f's current pack listing. A legacy family has none.
-func (s *Store) Tree(f Family) *Tree { return s.trees[f] }
+//
+// It PANICS for a family outside the store's profile - see mustHold.
+func (s *Store) Tree(f Family) *Tree {
+	s.mustHold(f, "Tree")
+	return s.trees[f]
+}
 
 // def resolves a family, rejecting an unknown one, one this root does not hold
 // under its profile, and one the store may not touch because it is still in
@@ -204,8 +256,7 @@ func (s *Store) def(f Family) (FamilyDef, error) {
 		return FamilyDef{}, fmt.Errorf("unknown pack family %q", f)
 	}
 	if !s.profile.Has(f) {
-		return FamilyDef{}, fmt.Errorf("family %q is not in the %s tree profile (this root holds %s)",
-			f.Root(), s.Profile(), strings.Join(s.profile.Roots(), ", "))
+		return FamilyDef{}, errors.New(s.outOfProfile(f))
 	}
 	if s.layouts[f] == LayoutLegacy {
 		return FamilyDef{}, fmt.Errorf("%s: %w", f.Root(), ErrLegacyLayout)
