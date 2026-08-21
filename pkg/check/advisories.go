@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // advisories.go holds the rules that report a CLASS of suspect record rather
@@ -625,7 +626,16 @@ const sidecarScaleMinChapters = 20
 // contribution. The rule cannot tell that from a mis-scaled one on the tree's
 // own evidence - only the source text can - so it names the sidecar and leaves
 // the judgement to a human.
-func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+//
+// It is CROSS-FAMILY: the measure it reads is the works family's recordings, so
+// a tree holding the sidecars without the works has nothing to compare against
+// and the rule is skipped rather than run over an empty measure (which would
+// silently pass and read as "checked"). Under such a profile it is the release
+// build, over both trees, that can ask the question.
+func checkSidecarPositionScale(profile pack.Profile, cat *model.Catalog, idx *pathIndex, warn addFunc) {
+	if !profile.Has(pack.FamilyWorks) {
+		return
+	}
 	// Smallest non-empty chapter list per work id.
 	floor := map[string]int{}
 	for _, w := range cat.Works {

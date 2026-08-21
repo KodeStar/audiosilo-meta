@@ -128,6 +128,11 @@ var defs = map[Family]FamilyDef{
 }
 
 // Families returns every family definition, in a stable order.
+//
+// It is the FULL table - the four families this package defines - and stays so.
+// A data root need not hold all of them (see Profile, and the community-repo
+// split it exists for), so a caller iterating the families of a TREE asks that
+// tree's profile instead; this is what a profile is selected from.
 func Families() []FamilyDef {
 	out := make([]FamilyDef, 0, len(defs))
 	for _, d := range defs {

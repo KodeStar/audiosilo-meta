@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 )
 
 // ErrLegacyLayout is returned for a family still in the file-per-entity layout.
@@ -30,9 +31,17 @@ var ErrLegacyLayout = errors.New("family is in the legacy file-per-entity layout
 // touches it. Without that a legacy people/ or series/ root would parse as a
 // pack tree, since its records also sit one directory deep.
 //
+// A store is also PROFILE-aware (see Profile): it carries the profile of the
+// root it was opened on, plans and flushes only that profile's families, and
+// refuses every operation addressed to a family outside it. A write that fell
+// through to a family this root does not hold would be a silent drop - the entry
+// would be planned into a directory nothing else in the tree accounts for - so it
+// is an error at the door, beside the legacy-layout refusal it reads like.
+//
 // A Store is not safe for concurrent use.
 type Store struct {
 	dir     string
+	profile Profile
 	layouts map[Family]Layout
 	trees   map[Family]*Tree
 	// reader holds every pack the store has parsed. It is shareable, which is
@@ -69,18 +78,26 @@ type op struct {
 // that walk (Listing) and its parse cache (Reader) so a caller reading the same
 // tree - pkg/check, validating what the writer is about to write into - can
 // share both instead of repeating them.
-func Open(dataDir string) (*Store, error) {
-	l, err := listFor(dataDir)
+func Open(dataDir string) (*Store, error) { return OpenProfile(dataDir, ProfileAll) }
+
+// OpenProfile is Open over a root holding only profile p's families (see
+// Profile). The store then plans, flushes and heals exactly those families, and
+// every operation naming another one fails - see def.
+func OpenProfile(dataDir string, p Profile) (*Store, error) {
+	l, err := listFor(dataDir, p)
 	if err != nil {
 		return nil, err
 	}
 	return openListing(l, NewReader(dataDir))
 }
 
-// openListing builds a store over an already-walked tree and a parse cache.
+// openListing builds a store over an already-walked tree and a parse cache. The
+// profile comes off the listing, so the store's families are exactly the ones the
+// walk partitioned into.
 func openListing(l *Listing, r *Reader) (*Store, error) {
 	s := &Store{
 		dir:     l.Dir(),
+		profile: l.Profile(),
 		layouts: map[Family]Layout{},
 		trees:   map[Family]*Tree{},
 		reader:  r,
@@ -95,7 +112,7 @@ func openListing(l *Listing, r *Reader) (*Store, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, d := range Families() {
+	for _, d := range s.profile.Families() {
 		s.layouts[d.Family] = layouts[d.Family]
 		if layouts[d.Family] == LayoutLegacy {
 			s.trees[d.Family] = NewTree(d.Family, nil)
@@ -115,13 +132,21 @@ func openListing(l *Listing, r *Reader) (*Store, error) {
 // and refusing at Open - before anything is planned - means a refused run has
 // written nothing.
 func OpenFor(dataDir string, families ...Family) (*Store, error) {
-	s, err := Open(dataDir)
+	return OpenForProfile(dataDir, ProfileAll, families...)
+}
+
+// OpenForProfile is OpenFor over a root holding only profile p's families (see
+// Profile). A named family the profile does not hold is refused here, for the
+// same reason a legacy one is: a writer must learn at the door that this root is
+// not the one its records belong in, before it has planned anything.
+func OpenForProfile(dataDir string, p Profile, families ...Family) (*Store, error) {
+	s, err := OpenProfile(dataDir, p)
 	if err != nil {
 		return nil, fmt.Errorf("open %s: %w", dataDir, err)
 	}
 	for _, f := range families {
-		if _, ok := Def(f); !ok {
-			return nil, fmt.Errorf("unknown pack family %q", f)
+		if _, err := s.def(f); err != nil && !errors.Is(err, ErrLegacyLayout) {
+			return nil, err
 		}
 		if s.Layout(f) == LayoutLegacy {
 			return nil, fmt.Errorf("%s/%s: %w; convert the tree to the pack layout first",
@@ -133,6 +158,12 @@ func OpenFor(dataDir string, families ...Family) (*Store, error) {
 
 // Dir returns the data root the store was opened on.
 func (s *Store) Dir() string { return s.dir }
+
+// Profile returns the tree profile the store was opened under: the families it
+// may read and write, and whether the root carries the tombstone table. A caller
+// that validates the same tree reads it from here (check.LoadStore) rather than
+// being told it twice.
+func (s *Store) Profile() Profile { return s.profile.resolve() }
 
 // Layout returns the layout family f was detected in at Open time.
 func (s *Store) Layout(f Family) Layout { return s.layouts[f] }
@@ -158,12 +189,23 @@ func (s *Store) Listing() *Listing { return s.listing }
 // Tree returns family f's current pack listing. A legacy family has none.
 func (s *Store) Tree(f Family) *Tree { return s.trees[f] }
 
-// def resolves a family, rejecting an unknown one and one the store may not
-// touch because it is still in legacy layout.
+// def resolves a family, rejecting an unknown one, one this root does not hold
+// under its profile, and one the store may not touch because it is still in
+// legacy layout.
+//
+// The profile refusal is LOUD on purpose. Every read and write goes through here,
+// so a store opened on a community root that is handed a works entry fails the
+// run instead of queueing an entry into a family whose directory nothing else in
+// this tree accounts for - the exact silent-drop shape the file accounting exists
+// to prevent, one layer up.
 func (s *Store) def(f Family) (FamilyDef, error) {
 	d, ok := Def(f)
 	if !ok {
 		return FamilyDef{}, fmt.Errorf("unknown pack family %q", f)
+	}
+	if !s.profile.Has(f) {
+		return FamilyDef{}, fmt.Errorf("family %q is not in the %s tree profile (this root holds %s)",
+			f.Root(), s.Profile(), strings.Join(s.profile.Roots(), ", "))
 	}
 	if s.layouts[f] == LayoutLegacy {
 		return FamilyDef{}, fmt.Errorf("%s: %w", f.Root(), ErrLegacyLayout)
@@ -403,8 +445,9 @@ func (s *Store) Flush() (Written, error) {
 		s.listing = nil
 	}()
 
-	plans := make([]familyPlan, 0, len(Families()))
-	for _, d := range Families() {
+	fams := s.profile.Families()
+	plans := make([]familyPlan, 0, len(fams))
+	for _, d := range fams {
 		if s.layouts[d.Family] == LayoutLegacy {
 			continue
 		}

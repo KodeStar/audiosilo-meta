@@ -111,7 +111,14 @@ func hasEntriesKey(dec *json.Decoder) bool {
 // holds a Listing asks it directly (Listing.Layouts), and this is that, over a
 // walk taken for the occasion.
 func Detect(dataDir string) (map[Family]Layout, error) {
-	l, err := listFor(dataDir)
+	return DetectProfile(dataDir, ProfileAll)
+}
+
+// DetectProfile is Detect over a root holding only profile p's families (see
+// Profile). Families outside the profile are absent from the map rather than
+// reported as absent: they are no families of this tree.
+func DetectProfile(dataDir string, p Profile) (map[Family]Layout, error) {
+	l, err := listFor(dataDir, p)
 	if err != nil {
 		return nil, err
 	}
