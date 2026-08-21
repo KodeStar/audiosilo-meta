@@ -11,7 +11,9 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // community_test.go covers intake against the COMMUNITY repository's tree: one
@@ -61,7 +63,7 @@ func buildArtifactAt(t *testing.T, out string) string {
 	})
 	// The tombstone table is core glue and has no per-record address, so it is
 	// written straight to the root pkg/pack accounts for it at.
-	writeRedirects(t, core, `{"people":{},"series":{},"works":{"old-work":"existing-work"}}`)
+	writeRedirects(t, core, map[string]string{"old-work": "existing-work"})
 
 	res := check.LoadProfile(core, pack.ProfileCore)
 	if !res.OK() {
@@ -169,12 +171,17 @@ func TestUnknownTemplateIsNamedRatherThanRouted(t *testing.T) {
 }
 
 // TestEveryRoutingTemplateNormalizesToAKnownOne is the drift guard on the
-// derivation: a label that ROUTES must name a template the switch handles, or a
-// submission would be admitted and then reported as unknown.
+// derivation, observed BEHAVIORALLY: a label that routes must reach a switch
+// case in process, never the routed-then-unknown outcome. Membership in
+// normalizedTemplates cannot be the assertion - that set is built from the very
+// expression under test - so each template is Processed (an empty body is fine:
+// any verdict is acceptable except the unknown-template one).
 func TestEveryRoutingTemplateNormalizesToAKnownOne(t *testing.T) {
-	for label := range routingTemplates {
-		if tmpl := normalizeTemplate(label); !normalizedTemplates[tmpl] {
-			t.Errorf("routing label %q normalizes to %q, which is not a known template", label, tmpl)
+	dir := seedTree(t)
+	for tmpl := range normalizedTemplates {
+		res := Process(Options{DataDir: dir, Template: tmpl, Body: ""})
+		if anyContains(res.Messages, "unknown template") {
+			t.Errorf("template %q routes but the process switch does not handle it: %v", tmpl, res.Messages)
 		}
 	}
 	if got, want := len(normalizedTemplates), len(routingTemplates); got != want {
@@ -256,6 +263,7 @@ func TestUnknownWorkIsTheSameVerdictOnEitherRoot(t *testing.T) {
 // the same book - a collision the release build refuses and a maintainer then has
 // to unpick. So the guard looks under both keys.
 func TestCommunityProfileRekeyRefusesAMemberStillAtTheRetiredKey(t *testing.T) {
+	db := worksArtifact(t)
 	for _, tc := range []struct{ name, ref string }{
 		{"submitted under the retired slug", "old-work"},
 		{"submitted under the survivor", "existing-work"},
@@ -266,7 +274,7 @@ func TestCommunityProfileRekeyRefusesAMemberStillAtTheRetiredKey(t *testing.T) {
 			testpack.Seed(t, dir, map[string]string{
 				"works/ol/old-work/characters.json": testpack.CharactersJSON(t, "old-work", "alice"),
 			})
-			res := Process(communityOptions(dir, worksArtifact(t), "characters",
+			res := Process(communityOptions(dir, db, "characters",
 				charactersBody(tc.ref, validCharactersJSON, true)))
 			if res.Status != StatusNeedsHuman {
 				t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
@@ -308,7 +316,7 @@ func TestCommunityProfileRekeyStillComposesTheSiblingKind(t *testing.T) {
 // table that names the survivor.
 func TestWorksHoldingRootResolvesItsOwnTombstones(t *testing.T) {
 	dir := seedTree(t)
-	writeRedirects(t, dir, `{"people":{},"series":{},"works":{"retired-work":"existing-work"}}`)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
 	if res := check.Load(dir); !res.OK() {
 		t.Fatalf("seed tree with a tombstone does not validate: %v", res.Problems)
 	}
@@ -331,7 +339,7 @@ func TestWorksHoldingRootResolvesItsOwnTombstones(t *testing.T) {
 // the same way too.
 func TestWorksHoldingRootRefusesAMemberStillAtTheRetiredKey(t *testing.T) {
 	dir := seedTree(t)
-	writeRedirects(t, dir, `{"people":{},"series":{},"works":{"retired-work":"existing-work"}}`)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
 	testpack.Seed(t, dir, map[string]string{
 		"works/re/retired-work/characters.json": testpack.CharactersJSON(t, "retired-work", "alice"),
 	})
@@ -346,11 +354,13 @@ func TestWorksHoldingRootRefusesAMemberStillAtTheRetiredKey(t *testing.T) {
 	}
 }
 
-// writeRedirects puts a tombstone table at the one path pkg/pack accounts for it
-// at. It has no per-record address, so testpack.Seed cannot place it.
-func writeRedirects(t *testing.T, dir, doc string) {
+// writeRedirects puts a tombstone table at the one path pkg/pack accounts for
+// it at, through the canonical writer - the fixture then cannot drift from the
+// file shape pkg/redirects produces. It has no per-record address, so
+// testpack.Seed cannot place it.
+func writeRedirects(t *testing.T, dir string, works map[string]string) {
 	t.Helper()
-	if err := os.WriteFile(filepath.Join(dir, pack.RedirectsFile), []byte(doc+"\n"), 0o644); err != nil {
+	if err := redirects.Write(dir, model.Redirects{model.RedirectWorks: works}); err != nil {
 		t.Fatalf("write redirects: %v", err)
 	}
 }

@@ -31,8 +31,17 @@ package issueform
 // release, exactly as it does for the CI check.
 //
 // READ-ONLY, and never trusted beyond what it can prove: the file is opened
-// mode=ro, three point queries are all it is asked, and a shape it does not
-// recognize is an error naming the file rather than a guess.
+// mode=ro, its whole surface is the four queries below (three point lookups and
+// one bounded reverse walk), and a shape it does not recognize is an error
+// naming the file rather than a guess.
+//
+// The composer-side dispatch (resolveWorkKey, retiredKeysFor) also lives here,
+// for BOTH branches: the works-holding root answers the same questions from its
+// own catalogue and tombstone table, and keeping the two arms side by side is
+// what keeps them answering identically. The table's invariants the resolution
+// leans on - a source is never a live id, a target always is, chains are
+// collapsed at write so ONE hop always suffices - are model.Redirects'
+// (pkg/model/redirect.go), the one canonical statement.
 
 import (
 	"database/sql"
@@ -78,9 +87,13 @@ type worksDB struct {
 	hasRedirects bool
 }
 
-// The three lookups this file is allowed to make. The two catalogue ones read a
-// PRIMARY KEY (works.id, and redirects' (kind, old_slug)), so neither can scan;
-// the third is the table probe, asked twice at open and never again.
+// The four queries this file is allowed to make. The two catalogue lookups read
+// a PRIMARY KEY (works.id, and redirects' (kind, old_slug)), so neither can
+// scan; the table probe is asked twice at open and never again; and the alias
+// query is the one bounded WALK - see its own comment at workAliasesSQL.
+// workRedirectSQL is the same lookup internal/serve spells as redirectTargetSQL
+// (queries.go) - a redirects-table shape change in internal/build has both to
+// find.
 const (
 	workLiveSQL     = `SELECT EXISTS(SELECT 1 FROM works WHERE id = ?)`
 	workRedirectSQL = `SELECT new_slug FROM redirects WHERE kind = ? AND old_slug = ?`
@@ -201,9 +214,11 @@ func (w *worksDB) resolve(slug string) (survivor string, v workVerdict, err erro
 // deliberate non-issue rather than an oversight - the table is the count of
 // merges the project has ever applied (1,936 rows in the release this landed
 // against, against 277k works), it is read ONCE per submission, and an index on
-// new_slug would be a schema_version question in the builder for a query only the
-// intake bot makes. If a repair campaign ever makes the table large enough to
-// matter, the fix is that index, not a cache here.
+// new_slug is an ordinary builder DDL addition with ZERO SchemaVersion movement
+// (build.go's own rule: the version covers what a reader may SELECT, never
+// indexes) for a query only the intake bot makes. If a repair campaign ever
+// makes the table large enough to matter, the fix is that index, not a cache
+// here.
 const workAliasesSQL = `SELECT old_slug FROM redirects WHERE kind = ? AND new_slug = ? ORDER BY old_slug`
 
 func (w *worksDB) aliases(slug string) ([]string, error) {
@@ -237,8 +252,10 @@ func (w *worksDB) live(slug string) (bool, error) {
 }
 
 // resolveWorkKey verifies that slug names a live core work and returns the slug
-// the composed entry must be KEYED by. It is the one place the work-existence
-// question is asked, and WHERE it is asked depends on the tree profile:
+// the composed entry must be KEYED by. It is the one place a SIDECAR's work key
+// is resolved (the add-recording and add-work forms ask their own, deliberately
+// narrower question of c.works - a reference that only reads is not re-keyed;
+// see compose_recording.go), and WHERE it is asked depends on the tree profile:
 //
 //   - a root that HOLDS the works family (pack.ProfileAll, this repository today)
 //     answers from the catalogue load that seeded the dedup maps, and from that

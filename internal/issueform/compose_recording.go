@@ -23,6 +23,11 @@ func (c *composer) addRecording(s sections) {
 		c.fail(StatusInvalid, "could not read a work slug from %q", ref)
 		return
 	}
+	// DELIBERATELY narrower than resolveWorkKey (worksdb.go): a retired slug is
+	// refused here rather than resolved through the tombstone table, because
+	// attaching a recording asserts "this production IS that book" - a claim a
+	// mechanical re-key must not make on the contributor's behalf. A sidecar key
+	// is only an address; a recording is a fact about the work.
 	work, exists := c.works[workSlug]
 	if !exists {
 		c.fail(StatusNeedsHuman, "work %q was not found; submit an Add a work form first (or a maintainer will link the correct work)", workSlug)

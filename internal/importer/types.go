@@ -168,7 +168,7 @@ func (m Mode) runName() string {
 
 // Options configures a run of the importer.
 type Options struct {
-	// DataDir is the data root (contains works/, people/, series/).
+	// DataDir is the data root (the Profile's family roots).
 	DataDir string
 	// Profile is the TREE PROFILE of DataDir (pack.Profile): which families that
 	// root deliberately holds. The zero value is pack.ProfileAll - one root

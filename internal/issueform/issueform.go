@@ -77,7 +77,7 @@ type Fetcher func(url string) ([]byte, error)
 
 // Options configures a run.
 type Options struct {
-	// DataDir is the data root (contains works/, people/, series/).
+	// DataDir is the data root (the Profile's family roots).
 	DataDir string
 	// Profile is the TREE PROFILE of DataDir (pack.Profile): which families this
 	// root deliberately holds. The zero value is pack.ProfileAll - one root
@@ -223,9 +223,10 @@ func process(opts Options) Result {
 	// An unknown template is judged FIRST, because writeFamilies answers for one
 	// with the core families (its default) and the profile gate below would then
 	// tell a submitter their nonexistent form belongs on the other repository.
-	// The switch's own default stays as an unreachable backstop.
+	// The switch's own default stays as an unreachable backstop sharing this
+	// verdict, so the one contributor-facing message cannot drift.
 	if !normalizedTemplates[tmpl] {
-		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", opts.Template)}}
+		return unknownTemplate(opts.Template)
 	}
 	// A form that writes a family this root does not hold is refused BEFORE
 	// anything is opened or parsed: the submission is fine, it is simply on the
@@ -283,7 +284,7 @@ func process(opts Options) Result {
 	case "import":
 		c.importLibrary(sections)
 	default:
-		return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", opts.Template)}}
+		return unknownTemplate(opts.Template)
 	}
 
 	// Self-handling paths (import) produced their own outcome.
@@ -760,6 +761,12 @@ var routingTemplates = map[string]bool{
 	"characters":    true,
 	"recaps":        true,
 	"import":        true,
+}
+
+// unknownTemplate is the one spelling of the unknown-template verdict, shared
+// by the pre-gate and the switch's unreachable backstop.
+func unknownTemplate(template string) Result {
+	return Result{Status: StatusInvalid, Messages: []string{fmt.Sprintf("unknown template %q", template)}}
 }
 
 // normalizedTemplates is routingTemplates in the CANONICAL spelling Process's

@@ -12,9 +12,14 @@ const (
 	fSidecarLicense        = "License" // the CC BY-SA confirmation checkbox
 )
 
+// sidecarNames is one sidecar kind's works-community member name and the file
+// name the issue form talks about - named once, shared by the table below and
+// failMemberTaken's signature.
+type sidecarNames struct{ member, fileName string }
+
 // sidecarMembers names the works-community entry member each sidecar kind
 // occupies, alongside the file name the issue form talks about.
-var sidecarMembers = map[model.Kind]struct{ member, fileName string }{
+var sidecarMembers = map[model.Kind]sidecarNames{
 	model.KindCharacters: {member: "characters", fileName: "characters.json"},
 	model.KindRecaps:     {member: "recaps", fileName: "recaps.json"},
 }
@@ -80,11 +85,13 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		return
 	}
 	for _, alias := range aliases {
-		old, foundOld, ok := c.entryRaw(pack.FamilyWorksCommunity, alias)
+		// entryRaw hands back a nil map when the entry is absent, so the member
+		// probe alone decides - same shape as the survivor's probe above.
+		old, _, ok := c.entryRaw(pack.FamilyWorksCommunity, alias)
 		if !ok {
 			return
 		}
-		if _, taken := old[names.member]; foundOld && taken {
+		if _, taken := old[names.member]; taken {
 			c.failMemberTaken(names, alias)
 			return
 		}
@@ -113,7 +120,7 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 // the retired spelling a core merge left it at. One message for both, because the
 // answer is the same either way and the location it names is what tells a
 // maintainer which of the two they are looking at.
-func (c *composer) failMemberTaken(names struct{ member, fileName string }, at string) {
+func (c *composer) failMemberTaken(names sidecarNames, at string) {
 	c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer",
 		names.fileName, c.entryLocation(pack.FamilyWorksCommunity, at, "")+": "+names.member)
 }

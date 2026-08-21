@@ -455,10 +455,9 @@ type seriesIndex struct {
 // problems is still used (best-effort, exactly like the importer's
 // loadExisting) but is warned about: selecting against a half-loaded catalogue
 // would silently re-import books that are already there.
-// PROFILE: ProfileAll by the same default rule an unset Options.Profile resolves
-// to - metaimport libex-select names a root on the command line and has no
-// --profile flag, so there is no profile to thread. Adding that flag means
-// threading it here too; no scoped root may be validated as ProfileAll.
+// PROFILE: bare dataDir = ProfileAll by Options.Profile's own default rule
+// (types.go carries the full statement; adding a --profile flag to this CLI
+// means threading it here too).
 func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
