@@ -63,6 +63,52 @@ jobs:
       - name: Check canonical formatting (metafmt)
         run: go run ./cmd/metafmt --check --profile core
 
+  # The CROSS-TREE half of validation, which no single-root check can perform.
+  #
+  # `metacheck --profile core` above judges this repository's tree alone. The
+  # rules that span the two repositories - a community sidecar keyed by a work
+  # this core does not hold, a key riding a redirect, two sidecars of one kind
+  # resolving onto one work - can only be asked where BOTH trees are present, and
+  # until now that was only the release build. So a core PR that retired or
+  # deleted a sidecar-keyed work went green here and broke the RELEASE STREAM
+  # after merge, for everyone, with the fix needing a second PR.
+  #
+  # This job is the pre-merge half of that same build: the exact composition
+  # release.yml performs, run at PR time, failing on a non-zero exit. It should be
+  # REQUIRED, not advisory - its whole point is to be the thing that stops the
+  # merge.
+  #
+  # The community checkout is public and read-only (github.token, no secret), and
+  # the artifact goes to the runner temp: nothing is published and nothing is
+  # cached. It floats on the community repo's `main` deliberately - that is what
+  # the release will compose against, so a core change that breaks the pair should
+  # go red the moment either side makes it true.
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout the community layer
+        uses: actions/checkout@v4
+        with:
+          repository: KodeStar/audiosilo-meta-community
+          ref: main
+          path: community
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Compose both trees (metabuild --community)
+        # Building rather than only checking is deliberate: the compose rules run
+        # inside the loader metabuild drives (check.LoadComposed), so this IS the
+        # check, and going all the way to an artifact additionally exercises the
+        # builder over the composed catalogue - the same work release.yml does, so
+        # a green run here means the release can be cut.
+        run: go run ./cmd/metabuild -data data --community community/data -o "$RUNNER_TEMP/meta.sqlite"
+
   # Build and typecheck the marketing/search site. This job is intentionally
   # unconditional (branch protection can require it), but it self-skips cleanly
   # when site/ is absent, so it stays green before the site lands and gates it
