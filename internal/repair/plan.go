@@ -124,10 +124,27 @@ type view struct {
 	held   map[string]entry
 	dirty  map[string]bool
 	gone   map[string]bool
+	// outOfProfile marks a family this root does not hold (pack.Profile) - the
+	// works-community layer under a `core` tree, since the community-repo split.
+	// The view is then EMPTY rather than an error: "this tree holds no such
+	// family" and "this tree holds no such entry" are the same answer to a merge
+	// asking whether the loser carries a sidecar, and it is the answer a
+	// whole-database store gives for an absent family anyway. Only the READ is
+	// gated: a put or a del still goes to the store, which refuses it by name, so
+	// a write that somehow found something to move stays loud instead of being
+	// dropped into a directory nothing accounts for.
+	outOfProfile bool
 }
 
 func newView(store *pack.Store, f pack.Family) *view {
-	return &view{store: store, family: f, held: map[string]entry{}, dirty: map[string]bool{}, gone: map[string]bool{}}
+	return &view{
+		store:        store,
+		family:       f,
+		held:         map[string]entry{},
+		dirty:        map[string]bool{},
+		gone:         map[string]bool{},
+		outOfProfile: !store.Profile().Has(f),
+	}
 }
 
 // get returns the entry the plan holds for slug, reading through to the store the
@@ -139,6 +156,9 @@ func (v *view) get(slug string) (entry, bool, error) {
 	}
 	if e, ok := v.held[slug]; ok {
 		return e, true, nil
+	}
+	if v.outOfProfile {
+		return nil, false, nil
 	}
 	raw, ok, err := v.store.Get(v.family, slug)
 	if err != nil {

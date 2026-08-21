@@ -580,6 +580,45 @@ func TestMergeNotesEveryFactItChoseAway(t *testing.T) {
 	}
 }
 
+// A CORE-profile run merges exactly as a whole-database run does over a tree that
+// holds no sidecars, and the community family is simply not there to consult.
+//
+// This is the gap the community-repo cutover opened and this test pins shut. The
+// merge planner asks every loser whether it carries a works-community member,
+// unconditionally - and under `core` that family is not in the root's profile, so
+// pack.Store.Get REFUSES it by name (correctly: a misdirected read or write must
+// be loud). Every merge then died with
+// `read works-community entry "x": family "works-community" is not in the core
+// tree profile`, over the real tree as well as here. The fix is in the plan's
+// view: a family the profile disclaims reads EMPTY, which is the same answer a
+// whole-database store gives for a family that is merely absent.
+//
+// Asserted as PARITY rather than as "it does not crash": the two profiles must
+// produce the same report and the same tree, because over a core tree they are
+// two readings of the same catalogue.
+func TestMergeWorksUnderTheCoreProfileMatchesTheDefault(t *testing.T) {
+	reports := map[pack.Profile]*Report{}
+	censuses := map[pack.Profile]census{}
+	for _, profile := range []pack.Profile{pack.ProfileAll, pack.ProfileCore} {
+		data := seedTree(t, hammeredCluster(t))
+		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true, Profile: profile})
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("%s: applied %d, refused %d: %+v / %+v",
+				profile, len(rep.Applied), len(rep.Refused), rep.Applied, rep.Refused)
+		}
+		reports[profile] = rep
+		censuses[profile] = takeCensus(t, data)
+	}
+	if !reflect.DeepEqual(reports[pack.ProfileAll].Applied, reports[pack.ProfileCore].Applied) {
+		t.Errorf("the two profiles applied different changes:\n all: %+v\ncore: %+v",
+			reports[pack.ProfileAll].Applied, reports[pack.ProfileCore].Applied)
+	}
+	if !reflect.DeepEqual(censuses[pack.ProfileAll], censuses[pack.ProfileCore]) {
+		t.Errorf("the two profiles left different trees:\n all: %+v\ncore: %+v",
+			censuses[pack.ProfileAll], censuses[pack.ProfileCore])
+	}
+}
+
 // chapterList renders n chapters, monotonic from zero as pkg/check requires.
 func chapterList(n int) []map[string]any {
 	out := make([]map[string]any, 0, n)
