@@ -55,10 +55,14 @@ type plan struct {
 }
 
 // newPlan builds the plan over a store and the catalogue that was loaded from it.
-func newPlan(store *pack.Store, cat *model.Catalog, table model.Redirects) *plan {
+//
+// communityRO is the READ-ONLY community root (metarepair --community), nil unless
+// one was given. It exists because the sidecar-collision refusal is a question
+// about data this repository no longer holds - see sidecarSource.
+func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, table model.Redirects) *plan {
 	p := &plan{
 		works:         newView(store, pack.FamilyWorks),
-		community:     newView(store, pack.FamilyWorksCommunity),
+		community:     newCommunityView(store, communityRO),
 		series:        newView(store, pack.FamilySeries),
 		redirects:     cloneRedirects(table),
 		retired:       map[string]string{},
@@ -117,17 +121,96 @@ func (p *plan) noteSeriesMembers(seriesID string, works []model.SeriesWork) {
 	p.seriesMembers[seriesID] = next
 }
 
+// sidecarSource says how a run can answer the question the sidecar-collision
+// refusal is made of: "does this work carry a characters or recaps member".
+//
+// Before the community-repo split there was one answer - read the works-community
+// family out of the same tree - and the refusal (both halves of a duplicate
+// carrying the same member kind, which is a human decision because the CC BY-SA
+// layer is the most expensive data in the project) simply worked. After the split
+// this repository does not hold that family, and reading it EMPTY made the
+// refusal STRUCTURALLY BLIND: every merge answered "no sidecars", a wave folded
+// two sidecar-carrying works together, and the collision surfaced later as a
+// release-blocking LoadComposed error in a build nobody could attribute to the
+// wave that caused it.
+//
+// Safety here is ABSOLUTE AND NEVER INFERRED. Three modes, and the middle one is
+// what --community buys:
+type sidecarSource int
+
+const (
+	// sidecarInTree: the root holds works-community (a whole-database tree, the
+	// pre-split shape). Read and written exactly as before.
+	sidecarInTree sidecarSource = iota
+	// sidecarReadOnly: metarepair --community names the community checkout's
+	// data/. The collision question is answered from THERE, so the refusal works
+	// exactly as it did pre-split - but nothing is written to it: it is another
+	// repository, and moving a member is that repository's own change. The
+	// sidecars keep their retired keys and ride the slug tombstone to the
+	// survivor (check.LoadComposed's compose-time re-key) until the community
+	// re-key sweep lands them durably.
+	sidecarReadOnly
+	// sidecarUnknown: the root does not hold the family and no --community was
+	// given. NOTHING can be inferred - either side of any cluster might carry a
+	// member - so every merge-works proposal is refused with CatCommunityRequired,
+	// naming the flag. A refused merge is recoverable; a silently folded sidecar
+	// pair is not.
+	sidecarUnknown
+)
+
 // view is one family's read-through, write-behind state inside the plan.
 type view struct {
-	store  *pack.Store
+	// read is where get reads through to; nil (sidecarUnknown) means the layer
+	// is UNREADABLE and every caller must refuse before asking - get errors on
+	// it rather than answering empty, because answering empty IS the blindness
+	// the three modes replaced. write is where queue puts its writes; nil means
+	// this view is planned but never written (sidecarReadOnly). They are the
+	// same store for every ordinary family.
+	read   *pack.Store
+	write  *pack.Store
 	family pack.Family
 	held   map[string]entry
 	dirty  map[string]bool
 	gone   map[string]bool
+	// sidecar is meaningful on the works-community view alone and is what
+	// mergeSidecars branches on.
+	sidecar sidecarSource
 }
 
 func newView(store *pack.Store, f pack.Family) *view {
-	return &view{store: store, family: f, held: map[string]entry{}, dirty: map[string]bool{}, gone: map[string]bool{}}
+	return &view{
+		read:   store,
+		write:  store,
+		family: f,
+		held:   map[string]entry{},
+		dirty:  map[string]bool{},
+		gone:   map[string]bool{},
+	}
+}
+
+// newCommunityView builds the works-community view over whichever root can answer
+// for it: the tree itself when its profile holds the family, else the read-only
+// community root, else neither.
+//
+// The STAGING is identical in all three modes, deliberately - a later proposal
+// must read what earlier ones decided; the write paths part at queue(), which
+// owns that decision's rationale.
+func newCommunityView(store, communityRO *pack.Store) *view {
+	v := &view{
+		family: pack.FamilyWorksCommunity,
+		held:   map[string]entry{},
+		dirty:  map[string]bool{},
+		gone:   map[string]bool{},
+	}
+	switch {
+	case store.Profile().Has(pack.FamilyWorksCommunity):
+		v.read, v.write, v.sidecar = store, store, sidecarInTree
+	case communityRO != nil:
+		v.read, v.write, v.sidecar = communityRO, nil, sidecarReadOnly
+	default:
+		v.read, v.write, v.sidecar = nil, nil, sidecarUnknown
+	}
+	return v
 }
 
 // get returns the entry the plan holds for slug, reading through to the store the
@@ -140,7 +223,13 @@ func (v *view) get(slug string) (entry, bool, error) {
 	if e, ok := v.held[slug]; ok {
 		return e, true, nil
 	}
-	raw, ok, err := v.store.Get(v.family, slug)
+	if v.read == nil {
+		// The read-empty answer was the pre---community blindness: a caller that
+		// reaches here forgot the sidecarUnknown refusal, and an empty answer
+		// would silently merge over a sidecar it never saw.
+		return nil, false, fmt.Errorf("repair: %s has no readable root (sidecarUnknown) - refuse the proposal before reading", v.family.Root())
+	}
+	raw, ok, err := v.read.Get(v.family, slug)
 	if err != nil {
 		return nil, false, fmt.Errorf("read %s entry %q: %w", v.family.Root(), slug, err)
 	}
@@ -169,18 +258,27 @@ func (v *view) del(slug string) {
 
 // queue puts the view's writes and deletes on the store, in slug order. Nothing
 // reaches disk until the store is flushed.
+//
+// A view with NO WRITE STORE queues nothing. That is only the works-community view
+// under --community (sidecarReadOnly): its staged state exists to answer questions
+// within the run, and the entries themselves belong to another repository, which
+// this pass may not write. Returning early rather than at each Upsert keeps that
+// one decision in one place.
 func (v *view) queue() error {
+	if v.write == nil {
+		return nil
+	}
 	for _, slug := range rawentry.SortedKeys(v.dirty) {
 		raw, err := v.held[slug].Raw()
 		if err != nil {
 			return fmt.Errorf("render %s entry %q: %w", v.family.Root(), slug, err)
 		}
-		if err := v.store.Upsert(v.family, slug, raw); err != nil {
+		if err := v.write.Upsert(v.family, slug, raw); err != nil {
 			return err
 		}
 	}
 	for _, slug := range rawentry.SortedKeys(v.gone) {
-		if err := v.store.Delete(v.family, slug); err != nil {
+		if err := v.write.Delete(v.family, slug); err != nil {
 			return err
 		}
 	}
@@ -352,6 +450,10 @@ type stage struct {
 func newStage(v *view) *stage {
 	return &stage{v: v, puts: map[string]entry{}, dels: map[string]bool{}}
 }
+
+// sidecar is the view's sidecarSource, so a planner branching on it (mergeSidecars)
+// asks the stage it already holds rather than reaching past it into the plan.
+func (s *stage) sidecar() sidecarSource { return s.v.sidecar }
 
 // get reads the staged entry, else the plan's. As with view.get the entry belongs
 // to the plan; clone it before editing.

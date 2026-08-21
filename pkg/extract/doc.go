@@ -9,7 +9,8 @@
 //     the toc-label vocabulary it is derived from.
 //   - NGram mechanically checks authored sidecar JSON (characters/recaps) for
 //     near-verbatim overlap with the source text, enforcing the no-verbatim
-//     copyright rule documented in AUTHORING.md.
+//     copyright rule documented in AUTHORING.md, which lives in the community
+//     repository (KodeStar/audiosilo-meta-community) with the layer it governs.
 //
 // Neither half writes into data/; the tool is an authoring aid whose outputs
 // (chapter text, overlap findings) inform a human contributor.

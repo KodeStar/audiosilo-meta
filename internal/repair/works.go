@@ -377,7 +377,21 @@ func fillXref(merged, lw entry) []mergedFacts {
 
 // mergeSidecars moves the cluster's works-community entries onto the target,
 // merging DISJOINT members and refusing a member both sides hold.
+//
+// It is also the ONE place a merge can learn that it must not proceed at all. The
+// collision refusal below is the human-decision guard over the CC BY-SA layer, and
+// after the community-repo split this repository cannot answer the question it is
+// made of - so a run that cannot see the sidecars refuses the merge outright
+// rather than merging blind (see sidecarSource). Nothing is inferred from silence.
 func (t *txn) mergeSidecars(target string, losers []string) error {
+	if t.community.sidecar() == sidecarUnknown {
+		return refusef(CatCommunityRequired,
+			"this tree does not hold the works-community family, so whether %s or any of %s carries a characters or recaps "+
+				"sidecar cannot be answered here - and folding two works that both carry one loses community-authored CC BY-SA "+
+				"content. Re-run with --community <community-checkout>/data (KodeStar/audiosilo-meta-community) so the "+
+				"collision check can see them",
+			target, joinList(losers))
+	}
 	type holder struct {
 		slug string
 		e    entry
@@ -422,6 +436,8 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 			}
 		}
 	}
+	// Staged in both modes, written in one - view.queue owns that decision and
+	// its rationale.
 	t.community.put(target, merged)
 	for _, h := range holders {
 		if h.slug != target {
@@ -429,7 +445,17 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 		}
 	}
 	if len(moved) > 0 {
-		t.note("moved works-community sidecar member(s) onto %s: %s", target, joinList(moved))
+		if t.community.sidecar() == sidecarReadOnly {
+			// Said plainly, because the operator has to know a follow-up exists: the
+			// members stay where they are, keyed by a slug this merge retires, and
+			// they reach the surviving work through the tombstone - at build time via
+			// check.LoadComposed's re-key (which warns on every ride), durably via the
+			// community repository's own re-key sweep.
+			t.note("works-community sidecar member(s) for %s stay in the community repository and ride the slug redirect until "+
+				"its re-key sweep lands: %s", target, joinList(moved))
+		} else {
+			t.note("moved works-community sidecar member(s) onto %s: %s", target, joinList(moved))
+		}
 	}
 	return nil
 }

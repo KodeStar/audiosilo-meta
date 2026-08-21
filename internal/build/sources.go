@@ -3,7 +3,7 @@ package build
 // sources.go names the data roots one artifact is compiled from, and makes the
 // one choice metabuild's --community flag exists to make.
 //
-// The community layer is moving to a repository of its own, which turns the
+// The community layer lives in a repository of its own, which turns the
 // database into two checkouts; a release keeps being one artifact off one
 // builder, so the builder is where the two meet. Everything about HOW they meet
 // - the profiles, the cross-tree rules, the retired-key resolution - is

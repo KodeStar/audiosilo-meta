@@ -56,16 +56,23 @@ data, which no existing open database has.
 
 ## Where records live (pack files)
 
-Records are stored **many to a file**, in four families of *pack files*:
+Records are stored **many to a file**, in four families of *pack files*. This
+repository holds three of them - the CC0 core:
 
 ```
 data/
   works/<dir>/<bound>.json            each entry = a work, with its recordings nested
-  works-community/<dir>/<bound>.json  each entry = that work's characters + recaps
   people/<bound>.json                 each entry = a person
   series/<bound>.json                 each entry = a series
   redirects.json                      retired slug -> live slug (not a pack)
 ```
+
+The fourth, `works-community/` (each entry a work's characters + recaps, CC
+BY-SA), lives in
+[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community) -
+same layout, same tooling, its own repository and its own issue forms. Everything
+below about packs, slugs and merges applies to it identically; the release build
+composes both into one artifact.
 
 A pack is one JSON object, `{"entries": {"<slug>": {...}, ...}}`, holding a
 slug range: the file name (minus `.json`) is its **lower bound**, and it covers
@@ -133,6 +140,12 @@ If you would rather not edit JSON, open an issue and pick a form:
 - **Import a library** - attach an OpenAudible `books.json`, a Libation export,
   or a metascan folder scan
   and let us ingest the factual fields.
+
+Adding **characters or recaps**? Those are CC BY-SA community content and their
+two forms live in
+[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community/issues/new/choose),
+along with the authoring guide. The forms and the bot behave identically; only
+the repository differs.
 
 The forms are structured (every field is captured), and each carries the CC0
 confirmation checkbox. Submitting one is usually all you have to do: an intake
@@ -206,8 +219,8 @@ for adding a new work with its first recording and a new author:
 5. **Format and validate before pushing:**
 
    ```sh
-   go run ./cmd/metafmt --write    # canonicalise, place entries, split full packs
-   go run ./cmd/metacheck          # schema + referential integrity + uniqueness
+   go run ./cmd/metafmt --write --profile core   # canonicalise, place entries, split full packs
+   go run ./cmd/metacheck --profile core         # schema + referential integrity + uniqueness
    ```
 
    Fix anything `metacheck` reports, then commit and open a pull request.
@@ -226,8 +239,8 @@ git fetch origin
 git rebase origin/main
 # for each conflicted pack file, merge the two sides' records:
 scripts/pack-union-merge.sh data/works/0/0.json
-go run ./cmd/metafmt --write     # re-render and re-place the merged entries
-go run ./cmd/metacheck
+go run ./cmd/metafmt --write --profile core   # re-render and re-place the merged entries
+go run ./cmd/metacheck --profile core
 git add data && git rebase --continue
 git push --force-with-lease
 ```
@@ -240,9 +253,9 @@ touched merges when the two changes are independent one level down:
 - in `data/works/`, two pull requests adding different narrations of one book
   merge inside that book's `recordings` map (the work's own fields must be
   identical);
-- in `data/works-community/`, a characters pull request and a recaps pull request
-  for the same book merge, because each wrote a different **member** of that
-  book's entry.
+- in `data/works-community/` (the community repository, which runs the same
+  script), a characters pull request and a recaps pull request for the same book
+  merge, because each wrote a different **member** of that book's entry.
 
 It refuses (exit 5) the cases that are real disagreements: the same record - or
 the same recording, or the same community member - edited on both sides, and one
@@ -267,7 +280,8 @@ git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
 ```
 
 Then `git rebase origin/main` resolves the mechanical cases on its own and stops
-only on the ones a person has to settle. Run `metafmt --write` and `metacheck`
+only on the ones a person has to settle. Run `metafmt --write --profile core` and
+`metacheck --profile core`
 afterwards either way - the merged entries still have to be re-rendered and
 re-placed.
 
@@ -360,8 +374,8 @@ retailer genre strings, ratings, and your personal library state are dropped
 existing catalogue, so re-running it, or importing a book someone else already
 added, is a no-op rather than a duplicate.
 
-After importing, format and validate as usual (`go run ./cmd/metafmt --write`
-then `go run ./cmd/metacheck`), review the diff, and open a pull request. You are
+After importing, format and validate as usual (`go run ./cmd/metafmt --write
+--profile core` then `go run ./cmd/metacheck --profile core`), review the diff, and open a pull request. You are
 still dedicating the imported facts to the public domain under CC0-1.0, so import
 only from a library you may share this way.
 
@@ -389,8 +403,15 @@ block a red pull request:
 
 ```sh
 go build ./... && go vet ./... && go test ./... && \
-  go run ./cmd/metacheck && go run ./cmd/metafmt --check
+  go run ./cmd/metacheck --profile core && go run ./cmd/metafmt --check --profile core
 ```
+
+`--profile core` is the exact invocation CI uses, and it matters: it says this
+root holds works, people and series - not the CC BY-SA `works-community` family,
+which lives in the community repository now. Without it the tools read the tree
+as a whole database, where a stray `data/works-community/` file is a family they
+quietly adopt; with it that file is an unrecognized location and a red check. Run
+them the way CI does and a green local gate means a green pull request.
 
 - `go build` / `go vet` / `go test` - the Go tooling compiles and passes.
 - `metacheck` - schema, referential integrity (every author/narrator/series

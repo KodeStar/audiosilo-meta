@@ -5,7 +5,21 @@ name: release
 # schema it is built from, or the builder that shapes it. The builder counts
 # because the artifact is a compiled thing, not a copy: a new index, a
 # SchemaVersion bump or a changed column would otherwise sit unreleased until
-# some unrelated data edit happened to trigger a build.
+# some unrelated data edit happened to trigger a build. Since the split that
+# reaches further than the builder: the COMPOSE code shapes artifact CONTENT too
+# (pkg/check's resolveSidecarKeys re-keys a sidecar through the redirect table,
+# and the collision rule decides which member ships), and pkg/pack is the reader
+# both roots are walked with. An extra release on a rule tweak costs a build; a
+# wrong-keying FIX sitting unreleased costs every consumer.
+#
+# The artifact is composed from TWO repositories since the community-repo split:
+# this one holds the CC0 core (works, people, series, redirects.json) and
+# KodeStar/audiosilo-meta-community holds the CC BY-SA layer (works-community).
+# The release stream is unchanged - one artifact, one set of assets, one patch
+# chain, cut from here - so metaserve, the poller and the webhook see nothing
+# new. What IS new is the third trigger: a merge in the community repo cannot
+# push to this one's main, so its notify-core.yml sends a `community-data`
+# repository_dispatch instead.
 on:
   push:
     branches: [main]
@@ -14,6 +28,27 @@ on:
       - "schema/**"
       - "internal/build/**"
       - "cmd/metabuild/**"
+      - "pkg/check/**"
+      - "pkg/pack/**"
+  # Sent by audiosilo-meta-community's notify-core.yml when community data lands
+  # on its main. The payload is only a trigger: this job always composes from
+  # both repositories at their current main, exactly as a core-side push does.
+  #
+  # ONE-TIME MAINTAINER SETUP (the dispatch needs a credential this repo cannot
+  # mint for itself - github.token is scoped to the repository it runs in, and
+  # the sender is the OTHER repository):
+  #   1. Create a fine-grained PAT scoped to KodeStar/audiosilo-meta with the
+  #      "Contents: read and write" repository permission, which is what the
+  #      POST /repos/{owner}/{repo}/dispatches API requires.
+  #   2. Save it as the secret CORE_DISPATCH_TOKEN in
+  #      KodeStar/audiosilo-meta-community (Settings -> Secrets and variables ->
+  #      Actions).
+  # Until that exists, notify-core.yml logs that it is unconfigured and exits 0:
+  # community data then reaches a release with the next core-side data or tooling
+  # change, or a manual `workflow_dispatch` here. Nothing is lost either way -
+  # this workflow always composes from both mains.
+  repository_dispatch:
+    types: [community-data]
   workflow_dispatch:
 
 # This workflow publishes a release, so it needs write access to contents.
@@ -43,21 +78,100 @@ jobs:
         # date anything - a pack file's add-date is not its entries' add-dates.
         uses: actions/checkout@v4
 
+      - name: Checkout the community layer
+        # The CC BY-SA half of the database, cloned beside the core tree. Public,
+        # so github.token is enough and no secret is involved; shallow for the
+        # same reason the core checkout is (git history is not load-bearing -
+        # every record carries its own added_at). Pinned to main: a release is
+        # always composed from the two mains, whichever side triggered it.
+        uses: actions/checkout@v4
+        with:
+          repository: KodeStar/audiosilo-meta-community
+          ref: main
+          path: community
+
+      - name: Identify this build
+        id: build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # WHAT IDENTIFIES A DATA RELEASE IS THE PAIR. The tag was date + the core
+        # short sha, which stopped being unique the moment a community merge could
+        # trigger a release: a `community-data` dispatch on a day that already
+        # released leaves core's HEAD unmoved, so the second run composes a
+        # genuinely different artifact under a tag that already exists and
+        # `gh release create` fails - and two community merges in one day fail the
+        # same way. The tag therefore carries BOTH short SHAs:
+        #
+        #   data-vYYYY.MM.DD-<core7>-<community7>
+        #
+        # Consumers are unaffected. Nothing reads the tag's SHAPE: metaserve's
+        # latestDataRelease and this workflow's own prev-release lookup both select
+        # by ASSET PRESENCE (a non-draft, non-prerelease release carrying
+        # meta.sqlite.gz) at the maximum published_at, and the patch asset names
+        # whatever tag it was built from. Older `data-vYYYY.MM.DD-<sha>` releases
+        # stay valid and selectable exactly as they are.
+        #
+        # If that exact tag already exists, the two trees are byte-for-byte the
+        # ones the existing release was composed from - there is genuinely nothing
+        # new - so the run SKIPS rather than failing: every step below is guarded
+        # on `skip`. A re-dispatch, a re-run and a workflow_dispatch on an
+        # unchanged pair are all no-ops that skip the compose (both checkouts
+        # still run - the identity needs them - so the saved cost is the build,
+        # not the clone) instead of a full
+        # compose.
+        #
+        # Each rev-parse is ASSIGNED before it is echoed. Inlined as
+        # `echo "x=$(git ...)"`, the command substitution's failure is discarded -
+        # echo's own exit status is what the shell sees, and `set -e` never fires -
+        # so a broken community checkout would publish a release whose recorded
+        # community sha is the empty string: unreproducible, and silently so.
+        run: |
+          set -euo pipefail
+          core="$(git rev-parse HEAD)"
+          community="$(git -C community rev-parse HEAD)"
+          tag="data-v$(date -u +'%Y.%m.%d')-${core:0:7}-${community:0:7}"
+          skip=false
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            skip=true
+            echo "::notice::${tag} already exists - core is at ${core} and the community layer at ${community}, the same pair that release was composed from. Nothing to build; skipping."
+          fi
+          {
+            echo "core=$core"
+            echo "community=$community"
+            echo "tag=$tag"
+            echo "skip=$skip"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Set up Go
+        if: steps.build.outputs.skip != 'true'
         uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
 
       - name: Validate data (metacheck)
-        run: go run ./cmd/metacheck
+        if: steps.build.outputs.skip != 'true'
+        # The core tree alone, under the profile it now IS. The CROSS-TREE rules
+        # (a sidecar keyed by a work the core does not hold, a key riding a
+        # redirect, two sidecars of one kind meeting on one work) cannot be asked
+        # of one root, so they run in the compose below - which is the
+        # authoritative gate, and a red one stops the release.
+        run: go run ./cmd/metacheck --profile core
 
       - name: Build SQLite artifact (metabuild)
+        if: steps.build.outputs.skip != 'true'
+        # The two-root compose (check.LoadComposed): -data is the CC0 core and
+        # --community is the CC BY-SA layer's own data/. Nothing about the
+        # artifact changes - same tables, same SchemaVersion, same deterministic
+        # sorted-id inserts - and metabuild refuses a --community root holding no
+        # sidecars, so a wrong path is a failed release rather than a silently
+        # empty community layer.
         # added_at comes from the records themselves; metabuild falls back to
         # sources[].imported_at for anything that carries neither.
-        run: go run ./cmd/metabuild -o meta.sqlite
+        run: go run ./cmd/metabuild -data data --community community/data -o meta.sqlite
 
       - name: Download previous release artifact
         id: prev
+        if: steps.build.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         # The repo publishes BOTH data releases (data-v*, carrying meta.sqlite.gz)
@@ -86,6 +200,7 @@ jobs:
           fi
 
       - name: Compress and checksum
+        if: steps.build.outputs.skip != 'true'
         env:
           PREV_TAG: ${{ steps.prev.outputs.tag }}
         # gz + its checksum stay exactly as before (the universal anchor). Also
@@ -109,31 +224,33 @@ jobs:
             || { echo "warning: patch generation failed; releasing without a delta"; rm -f "meta.sqlite.patch.from-${PREV_TAG}.zst"; }
           fi
 
-      - name: Compute release tag
-        id: tag
-        run: |
-          date_part="$(date -u +'%Y.%m.%d')"
-          short_sha="$(git rev-parse --short HEAD)"
-          echo "tag=data-v${date_part}-${short_sha}" >> "$GITHUB_OUTPUT"
-
       - name: Create release and upload artifacts
+        if: steps.build.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           PREV_TAG: ${{ steps.prev.outputs.tag }}
+          TAG: ${{ steps.build.outputs.tag }}
+          CORE_SHA: ${{ steps.build.outputs.core }}
+          COMMUNITY_SHA: ${{ steps.build.outputs.community }}
         # Always upload the gz anchor + both checksums; append the binary delta
         # only when the compress step actually produced one (file existence, not
         # PREV_TAG - a failed best-effort zstd run leaves no file behind).
+        # The notes name BOTH composed SHAs: the artifact is built from two
+        # repositories, so one sha does not identify it.
         run: |
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
           if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
             assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
           fi
-          gh release create "${{ steps.tag.outputs.tag }}" \
-            --title "${{ steps.tag.outputs.tag }}" \
-            --notes "Automated data release built from ${{ github.sha }}." \
+          notes="$(printf 'Automated data release composed from:\n\n- core: KodeStar/audiosilo-meta@%s\n- community: KodeStar/audiosilo-meta-community@%s\n' \
+            "$CORE_SHA" "$COMMUNITY_SHA")"
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes "$notes" \
             "${assets[@]}"
 
       - name: Notify metaserve of the new release
+        if: steps.build.outputs.skip != 'true'
         env:
           WEBHOOK_URL: ${{ secrets.METASERVE_WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.METASERVE_WEBHOOK_SECRET }}

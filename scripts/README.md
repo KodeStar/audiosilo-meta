@@ -195,8 +195,8 @@ go run ./cmd/metaimport libex subset.ndjson --data data
 ```
 
 Split a large subset into several files and land them as separate reviewable
-PRs rather than one unreadable diff. After each run: `go run ./cmd/metacheck`
-and `go run ./cmd/metafmt --check`.
+PRs rather than one unreadable diff. After each run: `go run ./cmd/metacheck
+--profile core` and `go run ./cmd/metafmt --check --profile core`.
 
 `--conflicts` (step 6) is wired here too and can point at the same file, but
 expect this pass to leave it empty: the create path reaches the contradiction
@@ -412,8 +412,10 @@ go run ./cmd/metaimport libex plain-editions.ndjson --data data
 go run ./cmd/metaremediate --data data --complete-sets complete-sets.ndjson --write
 
 # 4. The gate.
-go run ./cmd/metafmt --write && go run ./cmd/metacheck
-go run ./cmd/metabuild -o /tmp/meta.sqlite   # outside the repo; never committed
+go run ./cmd/metafmt --write --profile core && go run ./cmd/metacheck --profile core
+# The REAL artifact composes both repositories; -data alone builds the core half only.
+go run ./cmd/metabuild -data data --community ../audiosilo-meta-community/data \
+  -o /tmp/meta.sqlite   # outside the repo; never committed
 ```
 
 A second `--write` is a no-op: the tool is idempotent, and running it twice is a

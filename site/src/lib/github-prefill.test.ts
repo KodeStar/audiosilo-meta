@@ -308,7 +308,10 @@ describe('addCharactersIssueUrl / addRecapsIssueUrl', () => {
   it('target the github issues host', () => {
     const u = new URL(addRecapsIssueUrl('w'))
     expect(u.host).toBe('github.com')
-    expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
+    // The COMMUNITY repository since the split: the CC BY-SA layer moved there
+    // and its two forms moved with it, so a sidecar hand-off aimed at core would
+    // land on a chooser with no such template.
+    expect(u.pathname).toBe('/kodestar/audiosilo-meta-community/issues/new')
   })
 })
 

@@ -91,8 +91,8 @@ compose new records and the submitter's data should win.
 Two automations sit in front of the human review step. Neither bypasses it.
 
 - **Issue-form intake → bot pull request.** A data issue-form submission (Add a
-  work, Add a recording, Correct data, Add characters/recaps, Import a library)
-  is routed by its `data:*` label to the `intake` workflow, which runs
+  work, Add a recording, Correct data, Import a library) is routed by its
+  `data:*` label to the `intake` workflow, which runs
   `cmd/metaissue` to compose the same canonical records a hand-authored pull
   request would carry, deduplicating against the catalog. On success it opens a
   `bot-intake` pull request on branch `intake/issue-<n>` crediting the submitter
@@ -101,6 +101,15 @@ Two automations sit in front of the human review step. Neither bypasses it.
   The bot only *drafts* the change - it runs the same untrusted-data-only,
   no-fork-execution security model as the rest of CI (`intake.yml` treats the
   issue body and attachments strictly as data).
+
+  The two **sidecar** forms (Add characters, Add recaps) moved to
+  [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
+  with the CC BY-SA layer itself, and are composed there by the same
+  `cmd/metaissue` under the `community` tree profile. The review bar differs
+  between the two repositories on purpose - core pull requests are facts a
+  mechanical check can verify, community ones are prose a human has to judge for
+  spoiler policy, own-words policy and quality - which is one of the reasons the
+  split happened.
 
   Because records share pack files (see [PACK-SPEC.md](PACK-SPEC.md)), an open
   bot pull request can start conflicting when another one merges. The same

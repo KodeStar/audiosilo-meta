@@ -13,6 +13,15 @@ import (
 // field label in a template and the composer silently reads "" forever. This
 // test pins each template to the exact set of label constants the composer reads
 // for it, so a drift fails CI here rather than in production.
+//
+// It covers the CORE templates only. add-characters.yml and add-recaps.yml moved
+// to KodeStar/audiosilo-meta-community with the CC BY-SA layer, so their files are
+// not in this repository to read and the drift guard for those two belongs to the
+// repo that holds them. The COMPOSER stays here (compose_sidecar.go and the
+// fSidecar* constants with it): the community repo's intake runs this very
+// cmd/metaissue under the community profile, so deleting the code would break the
+// tree the forms moved to - which is also why TestTemplateFromLabels below still
+// pins the characters/recaps routing.
 func TestFieldLabelsExistInTemplates(t *testing.T) {
 	cases := []struct {
 		file   string
@@ -30,12 +39,6 @@ func TestFieldLabelsExistInTemplates(t *testing.T) {
 		}},
 		{"correct-data.yml", []string{
 			fCorrectRecord, fCorrectField, fCorrectCorrected, fCorrectEvidence, fCC0,
-		}},
-		{"add-characters.yml", []string{
-			fWorkRef, fSidecarCharactersFile, fSidecarLicense,
-		}},
-		{"add-recaps.yml", []string{
-			fWorkRef, fSidecarRecapsFile, fSidecarLicense,
 		}},
 		{"import-library.yml", []string{
 			fImportType, fImportAttachment,

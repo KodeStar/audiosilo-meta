@@ -15,8 +15,11 @@ consume.
 > metaserve at meta.audiosilo.app), the Docker image, the in-browser `/import`
 > diff, the **Audiobookshelf** metadata-provider endpoint, and issue-form intake
 > automation are all built. The characters/recaps CC BY-SA layer (Phase 2) is
-> live across the schema, tooling, and data. Still open: Open Library / Wikidata
-> crosswalk seeding. Only claim what exists.
+> live across the schema, tooling, and data - and since 2026-08-21 it lives in
+> its own repository,
+> [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community),
+> which the release build composes into the same artifact. Still open: Open
+> Library / Wikidata crosswalk seeding. Only claim what exists.
 
 ## Why this exists
 
@@ -76,7 +79,8 @@ the shape this project is built around. Full details in
 ## Repository layout
 
 ```
-data/          the database: works/, works-community/, people/, series/ (range-packed JSON, see PACK-SPEC.md)
+data/          the CC0 database: works/, people/, series/ + redirects.json (range-packed JSON, see PACK-SPEC.md)
+               (the CC BY-SA characters/recaps layer lives in KodeStar/audiosilo-meta-community)
 schema/        JSON Schemas (one per entity) - authoritative field definitions
 cmd/           Go tooling: metacheck (validate), metafmt (canonicalise), metabuild (SQLite), metaserve (API server)
 internal/      shared Go packages behind the tooling (build, check, serve, ...)
@@ -95,18 +99,25 @@ cd audiosilo-meta
 
 # The gate - run before opening a pull request:
 go build ./... && go vet ./... && go test ./... && \
-  go run ./cmd/metacheck && go run ./cmd/metafmt --check
+  go run ./cmd/metacheck --profile core && go run ./cmd/metafmt --check --profile core
 
-# Build the SQLite artifact locally (validates first):
+# Build the CORE-ONLY SQLite artifact locally (validates first). The REAL
+# artifact composes both repositories - add --community <community-checkout>/data:
 go run ./cmd/metabuild -o meta.sqlite
 ```
 
+- `--profile core` is what CI passes, and what this repository's tree is: works,
+  people, series. Without it the tools read the root as a whole database and
+  quietly adopt a stray `data/works-community/` file that CI reports as an
+  unrecognized location - so a green local run would not mean a green PR.
 - `metacheck` - schema, referential integrity, and uniqueness validation.
 - `metafmt --check` / `--write` - canonical JSON (sorted keys, 2-space indent,
   trailing newline) plus pack placement: `--write` moves an entry to the pack its
   slug belongs in and splits a pack that has outgrown its caps, so nobody has to
   work placement out by hand.
-- `metabuild -o meta.sqlite` - compile the database into a SQLite file. A work's
+- `metabuild -o meta.sqlite` - compile the database into a SQLite file
+  (`--community <dir>` composes the community checkout in; without it the
+  artifact is the core half only). A work's
   `added_at` comes from the record; one that carries none falls back to the
   newest `sources[].imported_at`.
 - `metamigrate` - the one-off conversion of a pre-pack, file-per-record tree into
@@ -315,7 +326,12 @@ every submission.
 |---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** ([`LICENSE`](LICENSE)) |
 | Data - factual core (works, recordings, people, series) | **CC0-1.0** public domain dedication |
-| Data - derived layer (characters and recaps) | **CC BY-SA 4.0** |
+| Data - derived layer (characters and recaps) | **CC BY-SA 4.0**, in its own repository: [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community) |
+
+**This repository holds no share-alike content.** Since the community-repo split
+the CC BY-SA layer is a separate repository; the release artifact is composed
+from both, so `meta.sqlite` still carries characters and recaps and each record
+states its own licence.
 
 Publisher blurbs and cover art are referenced, never copied. Full policy,
 including the takedown / rightsholder opt-out channel, in
@@ -342,9 +358,11 @@ including the takedown / rightsholder opt-out channel, in
   (`GET /abs/search`, see above) has now shipped on top of it.
 - **Phase 2** - community-authored characters and recaps under strict length and
   originality rules, in a separately-tagged CC BY-SA layer, have **landed**: the
-  schema enforces the layer structurally, `metacheck` validates it,
-  `metabuild`/`metaserve` ship it, and the seed tree already carries
-  characters/recaps sidecars. Authoring guide: [AUTHORING.md](AUTHORING.md).
+  schema enforces the layer structurally, `metacheck` validates it, and
+  `metabuild`/`metaserve` ship it. The layer itself now lives in
+  [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community),
+  which is also where its issue forms and its authoring guide are; the release
+  artifact is composed from the two repositories.
 - **Phase 3+** - the source-to-sidecar extraction tooling (`metaextract` plus the
   documented agent process) has **landed**; deeper player rendering gated by the
   listener's progress position is in progress.
