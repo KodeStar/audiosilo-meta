@@ -2,6 +2,7 @@ package pack
 
 import (
 	"errors"
+	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -30,10 +31,13 @@ import (
 const RedirectsFile = "redirects.json"
 
 // auxFile reports whether the data-relative path rel is a recognized non-pack
-// file of the data tree. The match is the EXACT path, so a file of the same name
-// inside a family root is judged as that family's file, exactly as any other name
-// there would be - nothing about this exemption reaches inside a family.
-func auxFile(rel string) bool { return rel == RedirectsFile }
+// file of the data tree under profile p. The match is the EXACT path, so a file
+// of the same name inside a family root is judged as that family's file, exactly
+// as any other name there would be - nothing about this exemption reaches inside
+// a family. A profile that does not carry the tombstone table recognizes nothing
+// here, so the path falls through to Stray like any other file that belongs
+// nowhere.
+func auxFile(p Profile, rel string) bool { return p.Redirects() && rel == RedirectsFile }
 
 // Listing is one walk of a data tree: every JSON file under it, partitioned by
 // the family root it sits under.
@@ -41,11 +45,19 @@ func auxFile(rel string) bool { return rel == RedirectsFile }
 // It is a SNAPSHOT and is never refreshed, so anything that writes to the tree
 // invalidates it - which is why Store drops the listing it was opened with as
 // soon as it flushes.
+//
+// It carries the PROFILE it was taken under (see Profile): which family roots
+// count as family roots at all, and whether the tombstone table is a recognized
+// file. Everything downstream of the walk - the layouts, the store, the
+// validation - reads the profile off the listing rather than being told it
+// again, so one walk and everything derived from it can never disagree about
+// what the tree is meant to hold.
 type Listing struct {
-	dir   string
-	files map[Family][]string
-	aux   []string
-	stray []string
+	dir     string
+	profile Profile
+	files   map[Family][]string
+	aux     []string
+	stray   []string
 
 	// layouts memoizes Layouts. A listing is a snapshot, so the layout it
 	// implies cannot change under it.
@@ -68,17 +80,33 @@ type Listing struct {
 // whoever demands that every file in the tree be accounted for - pkg/check's
 // unrecognized location. The stricter test is applied where a file is read AS a
 // pack, so a file can be listed and still be no pack.
-func List(dataDir string) (*Listing, error) {
+func List(dataDir string) (*Listing, error) { return ListProfile(dataDir, ProfileAll) }
+
+// ListProfile is List over a data root that holds only profile p's families (see
+// Profile). List is this with ProfileAll, which is what a root holding the whole
+// database is.
+//
+// The profile changes exactly two things about the walk, both of them
+// accounting: only its own family roots are checked for and partitioned into,
+// and the tombstone table is a recognized file only if the profile carries one.
+// A file under a family root the profile does not name is therefore a STRAY -
+// which is the whole mechanism by which a leftover works-community/ under a core
+// root becomes a loud check failure rather than a directory nobody reads.
+func ListProfile(dataDir string, profile Profile) (*Listing, error) {
+	if !profile.Valid() {
+		return nil, fmt.Errorf("unknown tree profile %q", profile)
+	}
+	profile = profile.resolve()
 	if err := mustBeDir(dataDir); err != nil {
 		return nil, err
 	}
-	for _, d := range Families() {
+	for _, d := range profile.Families() {
 		root := filepath.Join(dataDir, filepath.FromSlash(d.Family.Root()))
 		if err := mustBeDir(root); err != nil && !os.IsNotExist(err) {
 			return nil, err
 		}
 	}
-	l := &Listing{dir: dataDir, files: map[Family][]string{}}
+	l := &Listing{dir: dataDir, profile: profile, files: map[Family][]string{}}
 	err := filepath.WalkDir(dataDir, func(p string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
@@ -94,7 +122,14 @@ func List(dataDir string) (*Listing, error) {
 			// data/redirects.json that is one would read as "the tree holds no
 			// redirects" - the silent answer, where every other wrong shape in
 			// this tree is loud (compare mustBeDir above, its mirror image).
-			if auxFile(rel) {
+			//
+			// The test is the PATH, under every profile - deliberately not
+			// auxFile, which asks whether this tree carries a tombstone table.
+			// That path names a file in this project full stop, and a profile
+			// that does not carry the table has less use for a directory there,
+			// not more: descending into it silently would file whatever it holds
+			// as strays and never say that the path itself is the mistake.
+			if rel == RedirectsFile {
 				return &fs.PathError{Op: "read", Path: p, Err: errIsDirectory}
 			}
 			return nil
@@ -140,8 +175,8 @@ func mustBeDir(path string) error {
 }
 
 // emptyListing is the listing of a data root that does not exist yet.
-func emptyListing(dataDir string) *Listing {
-	return &Listing{dir: dataDir, files: map[Family][]string{}}
+func emptyListing(dataDir string, profile Profile) *Listing {
+	return &Listing{dir: dataDir, profile: profile.resolve(), files: map[Family][]string{}}
 }
 
 // add files one walked path under its family, as a recognized non-pack file of
@@ -151,14 +186,19 @@ func emptyListing(dataDir string) *Listing {
 // every file be accounted for (pkg/check's unrecognized location) reads Stray,
 // so a file the tree legitimately holds outside every family - RedirectsFile -
 // has to be classified here rather than exempted at each such caller.
+//
+// The family test is the PROFILE's, not the package's full family table: a root
+// the profile does not name is no family root of this tree, so its files are
+// strays and the caller that demands total accounting reports them. That is the
+// whole of what a profile does to the walk.
 func (l *Listing) add(rel string) {
 	if root, _, ok := strings.Cut(rel, "/"); ok {
-		if d, known := Def(Family(root)); known {
+		if d, known := Def(Family(root)); known && l.profile.Has(d.Family) {
 			l.files[d.Family] = append(l.files[d.Family], rel)
 			return
 		}
 	}
-	if auxFile(rel) {
+	if auxFile(l.profile, rel) {
 		l.aux = append(l.aux, rel)
 		return
 	}
@@ -167,6 +207,12 @@ func (l *Listing) add(rel string) {
 
 // Dir returns the data root the listing was taken on.
 func (l *Listing) Dir() string { return l.dir }
+
+// Profile returns the tree profile the listing was taken under: which families
+// this root holds, and whether it carries the tombstone table. Everything derived
+// from a listing reads it from here rather than being told separately. The field
+// is normalized at construction, so it is returned as stored.
+func (l *Listing) Profile() Profile { return l.profile }
 
 // Files returns every JSON file the walk found under family f's root, sorted.
 //
@@ -214,14 +260,16 @@ func packRefs(f Family, rels []string) []PackRef {
 	return out
 }
 
-// Layouts reports every family's layout, reading only the files the walk
-// already found. It is Detect without the walk, and the answer is memoized.
+// Layouts reports the layout of every family IN THE LISTING'S PROFILE, reading
+// only the files the walk already found. It is Detect without the walk, and the
+// answer is memoized. A family outside the profile is absent from the map: it is
+// not a family of this tree, and its files are already accounted for as strays.
 func (l *Listing) Layouts() (map[Family]Layout, error) {
 	if l.layouts != nil {
 		return l.layouts, nil
 	}
 	out := make(map[Family]Layout, len(defs))
-	for _, d := range Families() {
+	for _, d := range l.Profile().Families() {
 		lay, err := detectLayoutIn(l.dir, l.packFiles(d.Family))
 		if err != nil {
 			return nil, err
@@ -246,16 +294,19 @@ func (l *Listing) packFiles(f Family) []string {
 	return out
 }
 
-// listFor takes a listing of dataDir, tolerating a data root that does not
-// exist yet: every family reads as absent and the first Flush creates what it
-// needs. A walk that fails for any other reason is still an error.
-func listFor(dataDir string) (*Listing, error) {
-	l, err := List(dataDir)
+// listFor takes a listing of dataDir under profile, tolerating a data root that
+// does not exist yet: every family reads as absent and the first Flush creates
+// what it needs. A walk that fails for any other reason is still an error.
+func listFor(dataDir string, profile Profile) (*Listing, error) {
+	l, err := ListProfile(dataDir, profile)
 	if err == nil {
 		return l, nil
 	}
+	if !profile.Valid() {
+		return nil, err // a bad profile is not an absent root
+	}
 	if _, serr := os.Stat(dataDir); os.IsNotExist(serr) {
-		return emptyListing(dataDir), nil
+		return emptyListing(dataDir, profile), nil
 	}
 	return nil, err
 }

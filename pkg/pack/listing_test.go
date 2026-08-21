@@ -192,8 +192,14 @@ func TestListingAccountsForTheRedirectsFile(t *testing.T) {
 	if got := l.Tree(FamilyPeople); got.Len() != 2 {
 		t.Errorf("people tree = %v, want both files read as packs", got.Packs())
 	}
-	if !auxFile(RedirectsFile) || auxFile("people/"+RedirectsFile) || auxFile("works/0/0.json") {
+	if !auxFile(ProfileAll, RedirectsFile) || auxFile(ProfileAll, "people/"+RedirectsFile) ||
+		auxFile(ProfileAll, "works/0/0.json") {
 		t.Error("auxFile does not match exactly the redirects file")
+	}
+	// ... and under a profile that carries no tombstone table it matches nothing:
+	// the path is then an ordinary file that belongs nowhere.
+	if auxFile(ProfileCommunity, RedirectsFile) {
+		t.Error("auxFile recognized the redirects file under a profile that does not carry one")
 	}
 }
 

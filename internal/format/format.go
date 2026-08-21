@@ -142,23 +142,52 @@ func (r Report) Summary() string {
 
 // Check reports the tree's outstanding formatting and structural work without
 // writing anything.
-func Check(dataDir string) (Report, error) {
+func Check(dataDir string) (Report, error) { return CheckProfile(dataDir, pack.ProfileAll) }
+
+// CheckProfile is Check over a root that holds only profile p's families (see
+// pack.Profile).
+//
+// BOTH passes are the profile's, by two different mechanisms. The structural one
+// is ADDITIVE - it surveys the profile's families and refuses a legacy layout
+// among them. The canonical one is SUBTRACTIVE: pkg/canonical is layout-agnostic
+// by design and knows nothing about families, so it still walks the whole root
+// and is handed the paths this profile disclaims (pack.Profile.Excluded - every
+// out-of-profile family root, plus redirects.json where the profile carries no
+// tombstone table). Under ProfileAll nothing is excluded, so a whole-tree run is
+// byte-for-byte what it always was, including stray JSON at the data root, which
+// belongs to no family and is still formatted.
+//
+// Subtractive rather than "format the profile's families" because those are not
+// the same set: the difference is exactly the files under no family root, and a
+// stray one there has always been formatted. What the profile removes is what it
+// disclaims, nothing else.
+//
+// The contract for an out-of-profile file is then ONE thing, consistently: this
+// tree neither touches it nor judges it, and pkg/check reports it as an
+// unrecognized location. The alternative - a whole-tree canonical pass - broke
+// that in both directions: a --write under a subset profile reformatted files the
+// profile disclaims (working-tree churn in the very directory a repository split
+// is about to extract byte-for-byte), and where such a family was still in the
+// LEGACY layout it rewrote those files IN PLACE while exiting 0, since
+// refuseLegacy no longer reaches them - the precise failure refuseLegacy exists
+// to prevent, making a stale checkout look freshly maintained.
+func CheckProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep := Report{Dir: dataDir}
-	if err := refuseLegacy(dataDir); err != nil {
+	if err := refuseLegacy(dataDir, p); err != nil {
 		return Report{}, err
 	}
-	nonCanonical, invalid, err := canonical.CheckTree(dataDir)
+	nonCanonical, invalid, err := canonical.CheckTreeExcept(dataDir, p.Excluded())
 	if err != nil {
 		return Report{}, err
 	}
 	rep.NonCanonical, rep.Invalid = nonCanonical, invalid
-	err = withPackedFamilies(dataDir, func(s *pack.Store, families []pack.Family) error {
+	err = withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
 		for _, f := range families {
-			p, perr := s.Pending(f)
+			pend, perr := s.Pending(f)
 			if perr != nil {
 				return perr
 			}
-			mergePending(&rep.Pending, p)
+			mergePending(&rep.Pending, pend)
 		}
 		return nil
 	})
@@ -175,31 +204,37 @@ func Check(dataDir string) (Report, error) {
 // copy, and due splits and rebinds are performed. One pass converges - a second
 // run is a byte-level no-op - and a file the tooling cannot read is only
 // reported, never touched.
-func Write(dataDir string) (Report, error) {
+func Write(dataDir string) (Report, error) { return WriteProfile(dataDir, pack.ProfileAll) }
+
+// WriteProfile is Write over a root that holds only profile p's families (see
+// pack.Profile, and CheckProfile for how the two passes are each scoped to it).
+func WriteProfile(dataDir string, p pack.Profile) (Report, error) {
 	rep := Report{Dir: dataDir}
 	// Before anything is rewritten: a family that is not in the pack layout is
 	// refused, not tidied.
-	if err := refuseLegacy(dataDir); err != nil {
+	if err := refuseLegacy(dataDir, p); err != nil {
 		return Report{}, err
 	}
 	// Formatting runs first: Flush judges a pack no write reached by its
 	// on-disk size, which is only the pack's canonical size once the file is in
-	// canonical form.
-	changed, failed, err := canonical.WriteTree(dataDir)
+	// canonical form. It is scoped to the profile exactly as Check's is, and
+	// here that scoping is load-bearing rather than tidy - a skipped file is
+	// never even read, so nothing this run disclaims can be rewritten.
+	changed, failed, err := canonical.WriteTreeExcept(dataDir, p.Excluded())
 	if err != nil {
 		return Report{}, err
 	}
 	rep.Formatted, rep.Invalid = changed, failed
-	err = withPackedFamilies(dataDir, func(s *pack.Store, families []pack.Family) error {
+	err = withPackedFamilies(dataDir, p, func(s *pack.Store, families []pack.Family) error {
 		for _, f := range families {
 			// ONE survey per family: what is outstanding (the report) and the
 			// queueing of its fixes come out of the same pass, rather than
 			// classifying every file in the family twice for the same answer.
-			p, herr := s.HealPending(f)
+			pend, herr := s.HealPending(f)
 			if herr != nil {
 				return herr
 			}
-			mergePending(&rep.Pending, p)
+			mergePending(&rep.Pending, pend)
 		}
 		// A family that was already well-formed queued nothing, so a tree where
 		// that held throughout is never flushed at all - which is what makes a
@@ -267,12 +302,12 @@ func mergePending(dst *pack.Pending, p pack.Pending) {
 // the rest of the tooling then refuses to load, making a stale checkout look
 // freshly maintained. Refusing before the first write leaves the tree untouched
 // and names the conversion, which is the only thing that helps.
-func refuseLegacy(dataDir string) error {
-	layouts, err := pack.Detect(dataDir)
+func refuseLegacy(dataDir string, p pack.Profile) error {
+	layouts, err := pack.DetectProfile(dataDir, p)
 	if err != nil {
 		return err
 	}
-	for _, d := range pack.Families() {
+	for _, d := range p.Families() {
 		if layouts[d.Family] == pack.LayoutLegacy {
 			return fmt.Errorf("%s/%s: %w; convert the tree with `go run ./cmd/metamigrate`",
 				dataDir, d.Family.Root(), pack.ErrLegacyLayout)
@@ -284,13 +319,13 @@ func refuseLegacy(dataDir string) error {
 // withPackedFamilies runs fn against the tree's store and the families in pack
 // layout, in family order. fn is not called at all when no family is packed - an
 // empty tree, or one holding only families that do not exist yet.
-func withPackedFamilies(dataDir string, fn func(*pack.Store, []pack.Family) error) error {
-	s, err := pack.Open(dataDir)
+func withPackedFamilies(dataDir string, p pack.Profile, fn func(*pack.Store, []pack.Family) error) error {
+	s, err := pack.OpenProfile(dataDir, p)
 	if err != nil {
 		return err
 	}
 	var packed []pack.Family
-	for _, d := range pack.Families() {
+	for _, d := range p.Families() {
 		if s.Layout(d.Family) == pack.LayoutPack {
 			packed = append(packed, d.Family)
 		}

@@ -68,6 +68,68 @@ needs - and the driver itself refuses any file with no top-level `entries` objec
 because reading a missing one as empty turned that file into `{"entries":{}}` and
 reported success.
 
+### Tree profiles (which families a root holds)
+
+A data root need not hold all four. The CC BY-SA community layer is moving to a
+repository of its own (`KodeStar/audiosilo-meta-community`; the migration plan is
+the maintainer's, in the untracked `.claude/community/PLAN.md`), which makes two
+roots, each holding a SUBSET - and a **tree profile** (`pack.Profile`) is the
+whole of what tells them apart:
+
+| Profile | Families | `redirects.json` |
+|---|---|---|
+| `all` (the default) | works, works-community, people, series | yes |
+| `core` | works, people, series | yes |
+| `community` | works-community | **no** |
+
+Everything else is identical: the same bound math, the same caps, the same
+placement rules, the same schemas. Two consequences, and they are the point:
+
+- **Accounting.** A family outside the profile is not "ignored" - its root stops
+  being a family root, so every file under it falls into `Listing.Stray()` and
+  `pkg/check` reports it as an unrecognized location. A leftover
+  `data/works-community/` under a core root, or a stray `data/works/` under a
+  community one, is a RED check by name, and it costs no rule of its own (the
+  "every file is accounted for" invariant below was already total). The tombstone
+  table follows the same rule: a `data/redirects.json` under a community root is
+  an unrecognized file, because the slugs it would retire are not that tree's.
+- **Cross-family rules are SKIPPED, never failed.** A works-community entry is
+  keyed by a works-family slug, so a root holding the sidecars without the works
+  cannot answer "does the parent work exist". That question belongs to the tree
+  that holds both - the release build, over the two checkouts - so `pkg/check`
+  skips it under a profile that lacks the other side. Everything WITHIN a
+  family - schema, placement, bounds, caps, key/id agreement, the member rules -
+  runs unchanged, which is what makes a community root checkable standalone.
+
+`pack.Store` carries its root's profile too: it plans and flushes only that
+profile's families, and every read or write addressed to another one is a loud
+error (`Store.Tree` and `Store.Layout`, which answer with a value rather than an
+error, panic with that same sentence - both their zero values would be lies about
+a family sitting on disk).
+
+`metacheck` and `metafmt` take `--profile all|core|community`, defaulting to
+`all`, which is what this repository is today. **Under a profile, metafmt neither
+touches nor judges a file outside it** - both its passes are scoped, by two
+different mechanisms. The structural pass is ADDITIVE: it surveys the profile's
+families and refuses a legacy layout among them. The canonical pass is
+SUBTRACTIVE: `pkg/canonical` is layout-agnostic by design, so it still walks the
+whole root and is handed the paths the profile disclaims
+(`pack.Profile.Excluded()` - every out-of-profile family root, plus
+`redirects.json` where the profile carries no tombstone table). Subtractive
+rather than "format the profile's families", because those are not the same set:
+the difference is stray JSON at the data root, which belongs to no family and has
+always been formatted. Under `all` nothing is excluded, so a whole-tree run is
+byte-for-byte what it always was.
+
+That scoping is not tidiness. A whole-tree canonical pass under a subset profile
+left working-tree churn in the very directory a repository split is about to
+extract byte-for-byte - and where the out-of-profile family was still in the
+LEGACY layout, it rewrote those files in place while exiting 0, since the legacy
+refusal no longer reached them: precisely the "a stale checkout looks freshly
+maintained" failure that refusal exists to prevent. What such a file IS remains
+`metacheck`'s unrecognized location, which is the other half of one consistent
+contract.
+
 Sidecars move out of `data/works/**` into their own family - named
 **`works-community`** (decided at sign-off: the name telegraphs the CC BY-SA
 community layer) - so the license

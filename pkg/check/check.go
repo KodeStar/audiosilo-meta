@@ -213,8 +213,27 @@ func (l *loader) warn(path, format string, args ...any) {
 //
 // A caller that is also WRITING calls LoadStore, which shares the writer's
 // walk - and the same release-as-you-go applies there.
-func Load(dir string) Result {
-	lst, err := pack.List(dir)
+func Load(dir string) Result { return LoadProfile(dir, pack.ProfileAll) }
+
+// LoadProfile is Load over a data root that holds only profile p's families (see
+// pack.Profile). Load is this with pack.ProfileAll, which is what a root holding
+// the whole database is, so every existing caller is unchanged.
+//
+// A profile changes two things and nothing else:
+//
+//   - ACCOUNTING. A family the profile does not name is no family root, so every
+//     file under it is an unrecognized location, exactly as a file under no root
+//     at all already was. That is the whole enforcement of the boundary: a
+//     leftover works-community/ under a core root, or a works/ under a community
+//     one, fails the check by name.
+//   - CROSS-FAMILY RULES. A rule whose other side is a family this tree does not
+//     hold is SKIPPED, never failed. A community root's sidecars are keyed by
+//     core work slugs it cannot see, so "the parent work exists" is not a
+//     question this tree can answer - it is the release build's, over both
+//     trees. Everything WITHIN a family - schemas, placement, bounds, caps,
+//     key/id agreement, the member rules - runs unchanged.
+func LoadProfile(dir string, p pack.Profile) Result {
+	lst, err := pack.ListProfile(dir, p)
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
@@ -258,10 +277,14 @@ func Load(dir string) Result {
 // be running alongside the pool. Each cached *pack.File is touched by exactly
 // one worker (a listing names a file once), so the render memo a size check
 // leaves on it is not shared either.
+//
+// The store's PROFILE travels with it, so this needs no signature change to
+// serve a profiled root: the listing carries it, and the fresh load a stale
+// listing forces takes it off the store.
 func LoadStore(s *pack.Store) Result {
 	lst := s.Listing()
 	if lst == nil {
-		return Load(s.Dir())
+		return LoadProfile(s.Dir(), s.Profile())
 	}
 	return load(lst, s.Reader())
 }
@@ -271,6 +294,7 @@ func LoadStore(s *pack.Store) Result {
 // as it has been validated.
 func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	dir := lst.Dir()
+	profile := lst.Profile()
 
 	schemas, err := compileSchemas()
 	if err != nil {
@@ -284,13 +308,19 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 
 	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas}
 
-	// A file under no family root at all belongs to nothing.
+	// A file under no family root at all belongs to nothing - which under a
+	// PROFILE includes every file under a family root this tree does not hold, so
+	// a family that has moved out cannot be left behind unnoticed. The roots
+	// string is constant for the load and the stray set is large by DESIGN under
+	// a subset profile (every file of an out-of-profile family), so it is derived
+	// once, not per file.
+	roots := familyRoots(profile)
 	for _, rel := range lst.Stray() {
-		l.add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
+		l.add(rel, "unrecognized location (not under any of the %s roots)", roots)
 	}
 
 	var recs []recordWithPath
-	for _, def := range pack.Families() {
+	for _, def := range profile.Families() {
 		// A pack-layout family is read from its pack listing; the walk's own
 		// file list is handed over too, to spot the files that listing does not
 		// account for.
@@ -325,9 +355,14 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	// which ids are LIVE, so they need the assembled catalogue. It travels on the
 	// Catalog because its reader is the artifact builder, which consumes the same
 	// load (see cmd/metabuild).
+	//
+	// A profile that carries no tombstone table has nothing to read: the walk has
+	// already classified data/redirects.json as an unrecognized file there, so
+	// Aux is empty and every redirect rule is skipped by having no table, not by
+	// being switched off.
 	cat.Redirects = l.loadRedirects(lst.Aux())
 
-	checkIntegrity(cat, workByID, peopleIDs, recs, idx, add)
+	checkIntegrity(profile, cat, workByID, peopleIDs, recs, idx, add)
 	checkUniqueness(cat, recs, idx, add)
 	checkRegionalPublishers(recs, add)
 	checkChapters(recs, add)
@@ -372,12 +407,15 @@ func sortProblems(ps []Problem) {
 	})
 }
 
-// familyRoots lists the family root directories, for the message a file
-// belonging to none of them gets.
-func familyRoots() string {
-	roots := make([]string, 0, 4)
-	for _, d := range pack.Families() {
-		roots = append(roots, d.Family.Root()+"/")
+// familyRoots lists the family root directories THIS TREE holds, for the message
+// a file belonging to none of them gets. Under a profile that is the shorter
+// list, which is what makes the message name the right fix: a file under a
+// family that has moved to its own repository is told which roots this one has,
+// not which roots exist.
+func familyRoots(p pack.Profile) string {
+	var roots []string
+	for _, r := range p.Roots() {
+		roots = append(roots, r+"/")
 	}
 	return strings.Join(roots, ", ")
 }

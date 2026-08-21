@@ -128,11 +128,25 @@ var defs = map[Family]FamilyDef{
 }
 
 // Families returns every family definition, in a stable order.
+//
+// It is the FULL table - the four families this package defines - and stays so.
+// A data root need not hold all of them (see Profile, and the community-repo
+// split it exists for), so a caller iterating the families of a TREE asks that
+// tree's profile instead; this is what a profile is selected from.
 func Families() []FamilyDef {
 	out := make([]FamilyDef, 0, len(defs))
 	for _, d := range defs {
 		out = append(out, d)
 	}
+	return sortedDefs(out)
+}
+
+// sortedDefs puts a family list in the package's ONE stable order, by family
+// name, in place. Every list of families this package hands out goes through it -
+// the full table and each profile's subset - so "a stable order" is one
+// definition rather than a predicate copied per producer, and a profile's slice
+// is a sub-sequence of Families()' by construction.
+func sortedDefs(out []FamilyDef) []FamilyDef {
 	sort.Slice(out, func(i, j int) bool { return out[i].Family < out[j].Family })
 	return out
 }

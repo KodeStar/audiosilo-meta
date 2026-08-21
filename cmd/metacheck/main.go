@@ -6,6 +6,12 @@
 // Advisories are printed to stderr with an "advisory:" prefix and never affect
 // the exit status: they name something worth a look (an entry too large to ever
 // be split out of its pack, say) rather than a rule violation.
+//
+// --profile names which families the root is meant to hold (pack.Profile). It
+// defaults to "all", the whole database in one tree, which is this repository;
+// "core" and "community" are the two halves the community-repo split produces,
+// and under either of them a file belonging to the other half is reported as an
+// unrecognized location.
 package main
 
 import (
@@ -14,13 +20,22 @@ import (
 	"os"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 func main() {
 	dataDir := flag.String("data", "data", "path to the data directory")
+	profileName := flag.String("profile", pack.ProfileAll.String(),
+		pack.ProfileFlagUsage)
 	flag.Parse()
 
-	res := check.Load(*dataDir)
+	profile, err := pack.ParseProfile(*profileName)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metacheck:", err)
+		os.Exit(2)
+	}
+
+	res := check.LoadProfile(*dataDir, profile)
 	for _, p := range res.Problems {
 		fmt.Println(p.String())
 	}

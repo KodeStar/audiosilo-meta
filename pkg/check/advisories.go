@@ -625,6 +625,12 @@ const sidecarScaleMinChapters = 20
 // contribution. The rule cannot tell that from a mis-scaled one on the tree's
 // own evidence - only the source text can - so it names the sidecar and leaves
 // the judgement to a human.
+//
+// It is CROSS-FAMILY - the measure it reads is the works family's recordings -
+// but unlike checkIntegrity's sidecar arm it needs no profile gate: under a tree
+// holding no works the floor map is empty and every sidecar takes the !ok
+// continue, so the rule is vacuous by construction rather than switched off
+// (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 	// Smallest non-empty chapter list per work id.
 	floor := map[string]int{}

@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // personRef is one place the tree names a person: the referencing file, the
@@ -51,7 +52,12 @@ func forEachPersonRef(cat *model.Catalog, recs []recordWithPath, idx *pathIndex,
 }
 
 // checkIntegrity verifies every cross-entity reference resolves.
-func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, people map[string]bool, recs []recordWithPath, idx *pathIndex, add addFunc) {
+//
+// The sidecar arm is CROSS-FAMILY and profile-gated per LoadProfile's skip rule
+// (which owns the rationale): a works-community entry is keyed by a works-family
+// slug a tree without the works cannot answer for, so that arm is skipped there,
+// never failed. Everything above it is vacuous under such a profile anyway.
+func checkIntegrity(profile pack.Profile, cat *model.Catalog, workByID map[string]*model.Work, people map[string]bool, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	forEachPersonRef(cat, recs, idx, func(r personRef) {
 		if people[r.id] {
 			return
@@ -78,6 +84,9 @@ func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, people 
 		}
 	}
 
+	if !profile.Has(pack.FamilyWorks) {
+		return
+	}
 	for _, c := range cat.Characters {
 		if workByID[c.Work] == nil {
 			add(idx.characters[c], "parent work %q does not exist", c.Work)
