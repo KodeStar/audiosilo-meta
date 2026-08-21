@@ -141,6 +141,61 @@ func (i *pathIndex) merge(o *pathIndex) {
 	maps.Copy(i.recaps, o.recaps)
 }
 
+// prefix re-points every path in the index, for a load whose paths need to say
+// which ROOT they are relative to (check.LoadComposed's community half - see
+// communityMarker). It lives beside merge for the same reason merge does: the
+// field list is written out by hand here, so a seventh map added above and
+// forgotten below would silently keep its unattributed paths.
+func (i *pathIndex) prefix(p string) {
+	prefixPaths(i.work, p)
+	prefixPaths(i.rec, p)
+	prefixPaths(i.person, p)
+	prefixPaths(i.series, p)
+	prefixPaths(i.characters, p)
+	prefixPaths(i.recaps, p)
+}
+
+// prefixPaths prepends p to every path in one of the index's maps.
+func prefixPaths[K comparable](m map[K]string, p string) {
+	for k, v := range m {
+		m[k] = p + v
+	}
+}
+
+// sidecarRef is one works-community member as a rule that judges the KEY sees
+// it: which member kind it is, where it was read from, and a pointer to the work
+// slug it is keyed by. The pointer is what lets the compose re-point a retired
+// key on the record itself (compose.go).
+type sidecarRef struct {
+	kind string
+	path string
+	work *string
+}
+
+// sidecarRefs enumerates every sidecar member in the catalogue, in catalogue
+// order - characters then recaps, which is a reporting order only: every rule
+// over it groups or sorts before it says anything.
+//
+// It lives HERE, beside pathIndex, for the reason pathIndex.merge does: the
+// member kinds are a list that has to be written out by hand, and this file is
+// where the project keeps that list total. Three other rules enumerate the same
+// two kinds (checkIntegrity's sidecar arm, checkSidecarUniqueness,
+// checkSidecarPositionScale), each reporting through the very maps declared
+// above; a third kind added to model.Catalog and missed here would silently
+// escape the compose's existence rule, so TestSidecarRefsCoverEverySidecarKind
+// derives the kinds from the Catalog type itself and fails when this list is
+// short.
+func sidecarRefs(cat *model.Catalog, idx *pathIndex) []sidecarRef {
+	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps))
+	for _, c := range cat.Characters {
+		refs = append(refs, sidecarRef{kind: "characters", path: idx.characters[c], work: &c.Work})
+	}
+	for _, rc := range cat.Recaps {
+		refs = append(refs, sidecarRef{kind: "recaps", path: idx.recaps[rc], work: &rc.Work})
+	}
+	return refs
+}
+
 // loader is one walk's accumulating state, shared by both layout walkers.
 //
 // A loader is single-goroutine state. The pack walk runs one loader PER PACK

@@ -12,6 +12,13 @@
 // are composed into one artifact, cross-tree rules included (build.Sources ->
 // check.LoadComposed). Without it nothing changes: one root holding the whole
 // database, which is what this repository is today.
+//
+// ADVISORIES go to stderr with metacheck's own "advisory:" prefix and census
+// line, and never affect the exit status. That matters most in composed mode: the
+// position-scale rule and the retired-sidecar-key rule fire for real only where
+// both trees are present, so the release build is the ONE place they are
+// observable once the split lands - a binary that discarded them would make them
+// unobservable anywhere.
 package main
 
 import (
@@ -21,6 +28,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 func main() {
@@ -33,6 +41,12 @@ func main() {
 	flag.Parse()
 
 	res := build.Load(build.Sources{Data: *dataDir, Community: *community})
+	for _, w := range res.Warnings {
+		fmt.Fprintf(os.Stderr, "advisory: %s\n", w.String())
+	}
+	if census := check.AdvisoryCensus(res.Warnings); census != "" {
+		fmt.Fprintf(os.Stderr, "%s\n", census)
+	}
 	if !res.OK() {
 		for _, p := range res.Problems {
 			fmt.Fprintln(os.Stderr, p.String())

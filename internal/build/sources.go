@@ -19,7 +19,10 @@ import "github.com/kodestar/audiosilo-meta/pkg/check"
 // Community is empty for a single tree holding the whole database, which is what
 // this repository is until the split lands - and that case is not "compose with
 // nothing", it is the load metabuild has always done, so the artifact is
-// byte-identical to every one built before this field existed.
+// byte-identical to every one built before this field existed. Setting it says
+// "there IS a community layer, here", which is why a root that holds none is a
+// hard error rather than an empty compose (check.LoadComposed): omitting the
+// field stays the way to build the core alone.
 type Sources struct {
 	// Data is the primary data root. It holds the whole database (pack.ProfileAll)
 	// when Community is empty, and the CC0 core alone (pack.ProfileCore) when it

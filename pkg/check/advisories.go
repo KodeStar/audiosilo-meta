@@ -495,7 +495,12 @@ const (
 	AdvisoryOrphanPerson    = "orphan-person"
 	AdvisorySidecarScale    = "mis-scaled-sidecar"
 	AdvisoryOversizedEntry  = "oversized-entry"
-	AdvisoryUnclassified    = "unclassified"
+	// AdvisoryRetiredSidecarKey is the ONE class no single-root load can produce:
+	// a composed build resolving a community sidecar's key through the core tree's
+	// slug tombstone table (compose.go). Its count is the size of the open re-key
+	// sweep, which is why it is an advisory at all rather than silence.
+	AdvisoryRetiredSidecarKey = "retired-sidecar-key"
+	AdvisoryUnclassified      = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -527,6 +532,9 @@ var advisoryMarkers = []struct {
 	// internal/audit started filing advisories under these class names and 12 of
 	// them came back unclassified.
 	{AdvisoryOversizedEntry, "an oversized entry cannot be split", "oversized entries"},
+	// The composed build's tombstone rides (compose.go). Appended for the same
+	// reason as its predecessors: the census line is read by column position.
+	{AdvisoryRetiredSidecarKey, "the community re-key sweep is pending", "sidecar keys riding a redirect"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or

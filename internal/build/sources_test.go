@@ -1,6 +1,7 @@
 package build
 
 import (
+	"bytes"
 	"os"
 	"path/filepath"
 	"testing"
@@ -81,13 +82,9 @@ func TestComposedArtifactEqualsSingleTree(t *testing.T) {
 	single := buildFrom(t, Sources{Data: wholeDir})
 	composed := buildFrom(t, Sources{Data: coreDir, Community: comDir})
 
-	if len(single) != len(composed) {
-		t.Fatalf("artifact sizes differ: one tree %d bytes, composed %d", len(single), len(composed))
-	}
-	for i := range single {
-		if single[i] != composed[i] {
-			t.Fatalf("artifacts differ at byte %d", i)
-		}
+	if !bytes.Equal(single, composed) {
+		t.Fatalf("the artifact changed across the split: %d bytes as one tree, %d composed",
+			len(single), len(composed))
 	}
 }
 
@@ -123,5 +120,19 @@ func TestLoadRefusesADanglingSidecarKey(t *testing.T) {
 
 	if res := Load(Sources{Data: coreDir, Community: comDir}); res.OK() {
 		t.Fatal("a sidecar for a work the core tree does not hold built clean")
+	}
+}
+
+// TestLoadRefusesAnEmptyCommunityRoot is the flag's own trap: --community
+// pointed at a directory that is not a community data root (the community
+// repository's top level rather than its data/ subdirectory) would otherwise
+// build an artifact with the whole CC BY-SA layer silently missing.
+func TestLoadRefusesAnEmptyCommunityRoot(t *testing.T) {
+	_, core, _ := splitFixture(t)
+	coreDir := t.TempDir()
+	testpack.Seed(t, coreDir, core)
+
+	if res := Load(Sources{Data: coreDir, Community: t.TempDir()}); res.OK() {
+		t.Fatal("a community root holding no sidecars built clean")
 	}
 }
