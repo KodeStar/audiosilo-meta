@@ -6,6 +6,7 @@
 // Usage:
 //
 //	metaissue (--template <id> | --labels <json-array>) --body <file|-> [--data data] [--date YYYY-MM-DD]
+//	          [--profile all|core|community] [--works-db meta.sqlite]
 //
 // --template is the issue-form template id (add-work, add-recording,
 // correct-data, characters, recaps, import; a leading "data:" is accepted so a
@@ -15,6 +16,19 @@
 // re-implement the routing allowlist. When both are given, --labels wins.
 // --body reads the rendered issue-form markdown from a file, or from stdin when
 // "-".
+//
+// --profile is the TREE PROFILE of --data (pack.Profile): which families that
+// root holds. It defaults to "all" - one tree holding the whole database, which
+// is this repository - and the community repository, holding works-community
+// alone, runs "community". Under a profile a form's families are not in, the
+// verdict is needs-human naming the repository the form belongs on.
+//
+// --works-db is the path to a built meta.sqlite release artifact. It answers the
+// one question a root without the works family cannot - is this sidecar's entry
+// key a live core work slug - and is REQUIRED for a community-profile sidecar
+// run: the bot never composes a key it could not verify. Passing it alongside a
+// profile that holds the works family is a usage error, because the tree itself
+// is the better answer and two sources would be a staler second opinion.
 //
 // It writes a machine-readable JSON result to stdout so the intake workflow can
 // branch on it:
@@ -37,6 +51,7 @@ import (
 	"regexp"
 
 	"github.com/kodestar/audiosilo-meta/internal/issueform"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 var dateRE = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
@@ -47,10 +62,25 @@ func main() {
 	labelsJSON := flag.String("labels", "", "JSON array of the issue's label names; the routing template is derived from its data:<template> label (overrides --template)")
 	bodyPath := flag.String("body", "-", "path to the rendered issue-form body, or - for stdin")
 	date := flag.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
+	profileName := flag.String("profile", string(pack.ProfileAll), pack.ProfileFlagUsage)
+	worksDB := flag.String("works-db", "", "path to a built meta.sqlite release artifact, used to verify a sidecar's work slug against the core catalogue (required under --profile community)")
 	flag.Parse()
 
 	if *date != "" && !dateRE.MatchString(*date) {
 		fmt.Fprintf(os.Stderr, "metaissue: --date %q must be YYYY-MM-DD\n", *date)
+		os.Exit(2)
+	}
+
+	profile, err := pack.ParseProfile(*profileName)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaissue:", err)
+		os.Exit(2)
+	}
+	// A usage error rather than a silently ignored flag: the artifact stands in
+	// for a works family this root does not hold, so naming one for a root that
+	// does is a mistake about which tree is being processed.
+	if *worksDB != "" && profile.Has(pack.FamilyWorks) {
+		fmt.Fprintf(os.Stderr, "metaissue: --works-db is for a data root without the works family; --profile %s holds it, and the tree is the answer\n", profile)
 		os.Exit(2)
 	}
 
@@ -86,6 +116,8 @@ func main() {
 
 	emitResult(issueform.Process(issueform.Options{
 		DataDir:  *data,
+		Profile:  profile,
+		WorksDB:  *worksDB,
 		Template: tmpl,
 		Body:     body,
 		Date:     *date,

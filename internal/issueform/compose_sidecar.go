@@ -38,8 +38,13 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		c.fail(StatusInvalid, "could not read a work slug from %q", s.get(fWorkRef))
 		return
 	}
-	if _, exists := c.works[workSlug]; !exists {
-		c.fail(StatusNeedsHuman, "work %q was not found; the sidecar's work must already be in the database", workSlug)
+	// The submitted reference names a book; resolveWorkKey turns it into the slug
+	// this entry is KEYED by, which is not always the same string - a slug a core
+	// merge has retired composes under its survivor. Everything below (the
+	// read-modify-write, the work backref, the entry key) uses the resolved one,
+	// so a sidecar is never written at a tombstoned address.
+	workSlug, ok = c.resolveWorkKey(workSlug)
+	if !ok {
 		return
 	}
 
