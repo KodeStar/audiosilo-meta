@@ -219,8 +219,8 @@ for adding a new work with its first recording and a new author:
 5. **Format and validate before pushing:**
 
    ```sh
-   go run ./cmd/metafmt --write    # canonicalise, place entries, split full packs
-   go run ./cmd/metacheck          # schema + referential integrity + uniqueness
+   go run ./cmd/metafmt --write --profile core   # canonicalise, place entries, split full packs
+   go run ./cmd/metacheck --profile core         # schema + referential integrity + uniqueness
    ```
 
    Fix anything `metacheck` reports, then commit and open a pull request.
@@ -239,8 +239,8 @@ git fetch origin
 git rebase origin/main
 # for each conflicted pack file, merge the two sides' records:
 scripts/pack-union-merge.sh data/works/0/0.json
-go run ./cmd/metafmt --write     # re-render and re-place the merged entries
-go run ./cmd/metacheck
+go run ./cmd/metafmt --write --profile core   # re-render and re-place the merged entries
+go run ./cmd/metacheck --profile core
 git add data && git rebase --continue
 git push --force-with-lease
 ```
@@ -280,7 +280,8 @@ git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
 ```
 
 Then `git rebase origin/main` resolves the mechanical cases on its own and stops
-only on the ones a person has to settle. Run `metafmt --write` and `metacheck`
+only on the ones a person has to settle. Run `metafmt --write --profile core` and
+`metacheck --profile core`
 afterwards either way - the merged entries still have to be re-rendered and
 re-placed.
 
@@ -373,8 +374,8 @@ retailer genre strings, ratings, and your personal library state are dropped
 existing catalogue, so re-running it, or importing a book someone else already
 added, is a no-op rather than a duplicate.
 
-After importing, format and validate as usual (`go run ./cmd/metafmt --write`
-then `go run ./cmd/metacheck`), review the diff, and open a pull request. You are
+After importing, format and validate as usual (`go run ./cmd/metafmt --write
+--profile core` then `go run ./cmd/metacheck --profile core`), review the diff, and open a pull request. You are
 still dedicating the imported facts to the public domain under CC0-1.0, so import
 only from a library you may share this way.
 
@@ -402,8 +403,15 @@ block a red pull request:
 
 ```sh
 go build ./... && go vet ./... && go test ./... && \
-  go run ./cmd/metacheck && go run ./cmd/metafmt --check
+  go run ./cmd/metacheck --profile core && go run ./cmd/metafmt --check --profile core
 ```
+
+`--profile core` is the exact invocation CI uses, and it matters: it says this
+root holds works, people and series - not the CC BY-SA `works-community` family,
+which lives in the community repository now. Without it the tools read the tree
+as a whole database, where a stray `data/works-community/` file is a family they
+quietly adopt; with it that file is an unrecognized location and a red check. Run
+them the way CI does and a green local gate means a green pull request.
 
 - `go build` / `go vet` / `go test` - the Go tooling compiles and passes.
 - `metacheck` - schema, referential integrity (every author/narrator/series

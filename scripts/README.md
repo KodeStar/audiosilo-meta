@@ -413,7 +413,9 @@ go run ./cmd/metaremediate --data data --complete-sets complete-sets.ndjson --wr
 
 # 4. The gate.
 go run ./cmd/metafmt --write --profile core && go run ./cmd/metacheck --profile core
-go run ./cmd/metabuild -o /tmp/meta.sqlite   # outside the repo; never committed
+# The REAL artifact composes both repositories; -data alone builds the core half only.
+go run ./cmd/metabuild -data data --community ../audiosilo-meta-community/data \
+  -o /tmp/meta.sqlite   # outside the repo; never committed
 ```
 
 A second `--write` is a no-op: the tool is idempotent, and running it twice is a

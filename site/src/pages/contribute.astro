@@ -4,8 +4,10 @@ import Backdrop from '../components/Backdrop.astro'
 import CoveragePanel from '../components/contribute/CoveragePanel.tsx'
 import { CC_BY_SA_LABEL, CC_BY_SA_URL } from '../lib/expressive'
 
-const REPO = 'https://github.com/kodestar/audiosilo-meta'
-const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
+// Characters and recaps are CC BY-SA and live in the community repository since
+// the split; its AUTHORING.md moved with them.
+const COMMUNITY_REPO = 'https://github.com/kodestar/audiosilo-meta-community'
+const AUTHORING = `${COMMUNITY_REPO}/blob/main/AUTHORING.md`
 ---
 
 <Base

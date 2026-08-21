@@ -34,8 +34,13 @@ import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
 
 type Kind = 'characters' | 'recaps'
 
-const META_REPO = 'https://github.com/kodestar/audiosilo-meta'
-const AUTHORING_URL = `${META_REPO}/blob/main/AUTHORING.md`
+// The CC BY-SA layer this tool builds lives in the COMMUNITY repository since the
+// split, and so does its authoring guide. This panel must not name two repos: the
+// issue prefills below (github-prefill's addCharacters/addRecapsIssueUrl) already
+// open there, so a "pull request instead" hand-off pointing at core would send a
+// contributor to a tree that has no data/works-community/ to add a file to.
+const COMMUNITY_REPO = 'https://github.com/kodestar/audiosilo-meta-community'
+const AUTHORING_URL = `${COMMUNITY_REPO}/blob/main/AUTHORING.md`
 
 export default function BuildTool() {
   const workId = useQueryParam('work')
@@ -424,8 +429,16 @@ function Handoff({ filename, authoringUrl }: { filename: string; authoringUrl: s
       </ol>
       <p className="mt-4 text-xs leading-relaxed text-dim">
         Comfortable with Git? You can instead add{' '}
-        <code className="text-pink-300">{filename}</code> under the work&apos;s directory and open a
-        pull request -{' '}
+        <code className="text-pink-300">{filename}</code> to the{' '}
+        <a
+          href={COMMUNITY_REPO}
+          target="_blank"
+          rel="noopener"
+          className="text-pink-400 transition-colors hover:text-pink-300"
+        >
+          community repository
+        </a>{' '}
+        under the work&apos;s entry and open a pull request there -{' '}
         <a
           href={authoringUrl}
           target="_blank"

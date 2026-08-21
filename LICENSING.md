@@ -59,8 +59,12 @@ consequences worth stating:
   a `data/works-community/` directory in this repository is an unrecognized
   location rather than a family, so share-alike content cannot quietly return.
 
-Authoring the layer is documented in that repository's `AUTHORING.md`, which moved
-with it.
+Authoring the layer is documented in that repository's
+[AUTHORING.md](https://github.com/KodeStar/audiosilo-meta-community/blob/main/AUTHORING.md),
+which moved with it - as did EXTRACTION.md and EXTRACTION-AUDIO.md. This
+repository keeps one-paragraph stubs at those three paths pointing there, and no
+copy of the text: a guide that walked a contributor into adding a file under
+`data/works-community/` here would be walking them into a red check.
 
 ## The 4.0 upgrade (2026-08-21)
 

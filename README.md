@@ -99,12 +99,16 @@ cd audiosilo-meta
 
 # The gate - run before opening a pull request:
 go build ./... && go vet ./... && go test ./... && \
-  go run ./cmd/metacheck && go run ./cmd/metafmt --check
+  go run ./cmd/metacheck --profile core && go run ./cmd/metafmt --check --profile core
 
 # Build the SQLite artifact locally (validates first):
 go run ./cmd/metabuild -o meta.sqlite
 ```
 
+- `--profile core` is what CI passes, and what this repository's tree is: works,
+  people, series. Without it the tools read the root as a whole database and
+  quietly adopt a stray `data/works-community/` file that CI reports as an
+  unrecognized location - so a green local run would not mean a green PR.
 - `metacheck` - schema, referential integrity, and uniqueness validation.
 - `metafmt --check` / `--write` - canonical JSON (sorted keys, 2-space indent,
   trailing newline) plus pack placement: `--write` moves an entry to the pack its
