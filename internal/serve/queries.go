@@ -161,6 +161,20 @@ type recapSummaryOut struct {
 	Ending  string `json:"ending,omitempty"`
 }
 
+// descriptionOut is the community SPOILER-FREE description - the paragraph a
+// stranger reads before deciding to listen.
+//
+// It is an OBJECT under its own key rather than a string in workDetail's
+// `description`, and the two are deliberately not merged: `description` is the
+// CC0 work record's own field, this text is CC BY-SA, and one JSON key carrying
+// either would erase the license boundary the schema keeps structural - a
+// consumer republishing the text has to know which one it got. The license rides
+// with the text for the same reason (the guide pages otherwise hardcode it).
+type descriptionOut struct {
+	Text    string `json:"text"`
+	License string `json:"license,omitempty"`
+}
+
 type workDetail struct {
 	ID             string            `json:"id"`
 	Title          string            `json:"title"`
@@ -176,6 +190,10 @@ type workDetail struct {
 	Characters     []characterOut    `json:"characters,omitempty"`
 	Recaps         []recapOut        `json:"recaps,omitempty"`
 	RecapSummary   *recapSummaryOut  `json:"recap_summary,omitempty"`
+	// CommunityDescription is the CC BY-SA spoiler-free description. Named apart
+	// from Description above, which is the CC0 work record's own field - see
+	// descriptionOut.
+	CommunityDescription *descriptionOut `json:"community_description,omitempty"`
 }
 
 // workDetail returns the full work document, or (nil, nil) when absent.
@@ -225,14 +243,20 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 	if d.RecapSummary, err = s.recapSummaryOf(id); err != nil {
 		return nil, err
 	}
+	if d.CommunityDescription, err = s.communityDescriptionOf(id); err != nil {
+		return nil, err
+	}
 	return &d, nil
 }
 
 // workForABS returns just the slice of a work absBooksFor consumes: the work
-// row, authors, series, print ISBNs, and recordings (with narrators/asins/isbns
-// but NO chapter count), and NONE of the characters/recaps/recap-summary
-// sidecars. absSearch calls it once per candidate on the public /abs/search hot
-// path, so it deliberately skips workDetail's ~100+ discarded round-trips.
+// row, authors, series, print ISBNs, recordings (with narrators/asins/isbns but
+// NO chapter count) and the community DESCRIPTION - and none of the
+// characters/recaps/recap-summary sidecars. absSearch calls it once per candidate
+// on the public /abs/search hot path, so it deliberately skips workDetail's ~100+
+// discarded round-trips; the description is the one sidecar read it does make,
+// because ABS displays a description and ours is own-words rather than scraped.
+// It is one point lookup on a primary key, at most absMaxMatches times.
 // genresByWork is the batched work id -> genre slugs map absSearch resolves for
 // the whole candidate set up front, so this runs no per-work genre query either.
 // Returns (nil, nil) when the work is absent.
@@ -271,6 +295,9 @@ func (s *snapshot) workForABS(id string, genresByWork map[string][]string) (*wor
 	if d.Recordings, err = s.recordingsBase(id); err != nil {
 		return nil, err
 	}
+	if d.CommunityDescription, err = s.communityDescriptionOf(id); err != nil {
+		return nil, err
+	}
 	return &d, nil
 }
 
@@ -298,6 +325,13 @@ const genresSchemaVersion = 4
 // snapshot.loadStats, which only asks the table anything at or above this
 // version) rather than by probing for the table per request.
 const redirectSchemaVersion = 5
+
+// descriptionSchemaVersion is the artifact schema_version that first carried the
+// work_descriptions table (the community spoiler-free description). A newer
+// binary serving an older release must degrade to "no description" - the pages
+// then compose the fact sentence they always did - so the query no-ops below
+// this version rather than probing for the table.
+const descriptionSchemaVersion = 6
 
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
@@ -429,6 +463,30 @@ func (s *snapshot) recapSummaryOf(workID string) (*recapSummaryOut, error) {
 		return nil, nil
 	}
 	return &recapSummaryOut{InShort: inShort.String, Ending: ending.String}, nil
+}
+
+// communityDescriptionOf returns the work's CC BY-SA spoiler-free description,
+// or nil when it has none (or the artifact predates the work_descriptions
+// table). One point lookup on the table's primary key, which is why it needs no
+// entry in TestServeLookupsAreIndexed - the same shape, and the same reason, as
+// recapSummaryOf above.
+func (s *snapshot) communityDescriptionOf(workID string) (*descriptionOut, error) {
+	if s.schemaVersion < descriptionSchemaVersion {
+		return nil, nil
+	}
+	var text, license string
+	err := s.db.QueryRow(`SELECT text, license FROM work_descriptions WHERE work_id=?`, workID).
+		Scan(&text, &license)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	if text == "" {
+		return nil, nil
+	}
+	return &descriptionOut{Text: text, License: license}, nil
 }
 
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {

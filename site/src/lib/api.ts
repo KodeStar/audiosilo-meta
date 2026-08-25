@@ -147,6 +147,18 @@ export interface Work {
   recaps?: Recap[]
   /** Whole-book recap summary (CC BY-SA); absent on most works. */
   recap_summary?: RecapSummary
+  /** The community's spoiler-free description (CC BY-SA); absent on most works.
+      Distinct from `description` above, which is the CC0 record's own field -
+      the two are separate keys because they carry different licences. */
+  community_description?: CommunityDescription
+}
+
+/** A community-written, spoiler-free description of a work: what a stranger reads
+    before deciding to listen. Unlike a recap it is gated by no position, and
+    unlike `recap_summary.in_short` it never states the ending. */
+export interface CommunityDescription {
+  text: string
+  license?: string
 }
 
 export interface Chapter {

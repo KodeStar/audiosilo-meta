@@ -244,6 +244,21 @@ func RecapsJSON(t testing.TB, work string, throughChapter int) string {
 	})
 }
 
+// DescriptionJSON renders a minimal valid description sidecar. The text is padded
+// past the schema's 200-character floor, because a description that is too short
+// is a schema violation rather than a "minimal" fixture.
+func DescriptionJSON(t testing.TB, work string) string {
+	t.Helper()
+	return mustJSON(t, map[string]any{
+		"work": work,
+		"text": "A spoiler-free description of this book, written in the community's own words. " +
+			"It states the setup, the premise and the hook, and reveals nothing past the opening " +
+			"act - which is the whole contract this member is written under.",
+		"license": "CC-BY-SA-4.0",
+		"sources": []map[string]string{{"type": "community", "imported_at": "2026-01-01"}},
+	})
+}
+
 // WithField rewrites one member of an already-rendered record, and WithoutField removes
 // one - the two edits a suite needs for the fixtures that must be schema-INVALID (a work
 // with no language is the only way F-HYGIENE reports a missing one).

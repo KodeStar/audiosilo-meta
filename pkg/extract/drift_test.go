@@ -24,10 +24,11 @@ var factualCaps = map[string]bool{}
 // (expressiveFields, the real source of truth - not a copy) plus the explicit
 // factualCaps allowlist above.
 //
-// The load-bearing assumption, verified against both schemas: within
-// characters.schema.json and recaps.schema.json, an INLINE string property with
-// maxLength is exactly an own-words expressive field (description, text,
-// in_short, ending - each capped "for the copyright reference-guide tier").
+// The load-bearing assumption, verified against all three schemas: within
+// characters.schema.json, recaps.schema.json and description.schema.json, an
+// INLINE string property with maxLength is exactly an own-words expressive field
+// (description, text, in_short, ending - each capped "for the copyright
+// reference-guide tier").
 // Identifier caps (like the slug's maxLength) live behind $refs into
 // common.schema.json, which this walk deliberately does not resolve: refs in
 // the sidecar schemas point at structural defs (slug, position, license,
@@ -53,8 +54,12 @@ func TestCheckedFieldsMatchSchemas(t *testing.T) {
 		discovered := map[string]bool{}
 		cappedStringFields(t, doc, "", discovered)
 
-		// The set collectExprs scans for this kind, in the same path notation.
-		checked := map[string]bool{fmt.Sprintf("%s[].%s", kind, fields.itemField): true}
+		// The set collectExprs scans for this kind, in the same path notation. A
+		// kind with no array (description) contributes only its top-level fields.
+		checked := map[string]bool{}
+		if fields.itemKey != "" {
+			checked[fmt.Sprintf("%s[].%s", fields.itemKey, fields.itemField)] = true
+		}
 		for _, tl := range fields.topLevel {
 			checked[tl] = true
 		}

@@ -144,6 +144,54 @@ func TestNGramInShortAndEnding(t *testing.T) {
 	}
 }
 
+// The description member is one flat document - no array to discriminate it -
+// so it is recognized by its own `text`. Spoiler-free says what it may SAY;
+// verbatim source phrasing is refused here exactly as in every other member, and
+// a description that borrows nothing passes.
+func TestNGramDescriptionField(t *testing.T) {
+	dir := t.TempDir()
+	phrase := "the lighthouse had stood empty for nine winters before she came"
+	src := writeFile(t, dir, "src.txt", phrase)
+
+	lifted := writeFile(t, dir, "d.json",
+		`{"work":"the-book","text":`+strconv.Quote("A quiet novel. "+phrase+".")+
+			`,"license":"CC-BY-SA-4.0","sources":[{"type":"community"}]}`)
+	f, err := NGram(src, []string{lifted}, 8)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(f) != 1 || f[0].Locus != "text" {
+		t.Fatalf("findings = %+v, want one at locus %q", f, "text")
+	}
+
+	clean := writeFile(t, dir, "clean.json",
+		`{"work":"the-book","text":"An entirely fresh account of a keeper, a coast and a long argument with the sea."`+
+			`,"license":"CC-BY-SA-4.0","sources":[{"type":"community"}]}`)
+	if f, err := NGram(src, []string{clean}, 8); err != nil || len(f) != 0 {
+		t.Fatalf("clean description: findings = %+v, err = %v; want none", f, err)
+	}
+}
+
+// And inside a pack, where the member sits beside its siblings - the shape the
+// community tree actually holds, and the one a generation wave's QA scans.
+func TestNGramDescriptionInPack(t *testing.T) {
+	dir := t.TempDir()
+	phrase := "she had never once looked back at the house on the hill"
+	src := writeFile(t, dir, "src.txt", phrase)
+	pack := writeFile(t, dir, "0.json", `{"entries":{"the-book":{`+
+		`"characters":{"work":"the-book","characters":[{"id":"x","name":"X","reveal":{"chapter":1},"description":"Fresh words entirely."}]},`+
+		`"description":{"work":"the-book","text":`+strconv.Quote("Setup: "+phrase+".")+
+		`,"license":"CC-BY-SA-4.0","sources":[{"type":"community"}]}}}}`)
+
+	f, err := NGram(src, []string{pack}, 8)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(f) != 1 || f[0].Locus != "the-book.description.text" {
+		t.Fatalf("findings = %+v, want one at locus %q", f, "the-book.description.text")
+	}
+}
+
 // The sidecars live in works-community PACK files, so pointing the check at the
 // pack a work sits in is the normal usage: every entry's members are scanned,
 // and a finding names the work it came from.
@@ -218,7 +266,7 @@ func TestNGramNeitherKeyIsError(t *testing.T) {
 	}
 	// The message must name every recognized sidecar kind, so an operator knows
 	// what the tool was looking for.
-	for _, kind := range []string{"characters", "recaps"} {
+	for _, kind := range []string{"characters", "recaps", "description"} {
 		if !strings.Contains(err.Error(), kind) {
 			t.Errorf("error %q does not name sidecar kind %q", err, kind)
 		}

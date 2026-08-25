@@ -3,11 +3,13 @@ package serve
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -282,11 +284,15 @@ func TestSelfRedirectDoesNotLoop(t *testing.T) {
 	}
 }
 
-// TestSchemaVersion5RequiresTheRedirectsTable pins the load-time claim, and that
-// the failure SAYS which claim it is: an artifact that reports version 5 without
-// the table is corrupt, and "no such table: redirects" alone reads as a bug in the
-// server rather than as a broken file.
-func TestSchemaVersion5RequiresTheRedirectsTable(t *testing.T) {
+// TestRedirectVersionClaimRequiresTheTable pins the load-time claim, and that the
+// failure SAYS which claim it is: an artifact reporting redirectSchemaVersion or
+// above without the table is corrupt, and "no such table: redirects" alone reads
+// as a bug in the server rather than as a broken file.
+//
+// The version it asserts is the BUILDER's, not the literal 5 the gate was born
+// at: a later table bumps SchemaVersion past it, and the message names the
+// version the artifact actually claims.
+func TestRedirectVersionClaimRequiresTheTable(t *testing.T) {
 	path := buildFixtureDB(t, fixtureCatalog())
 	db, err := sql.Open("sqlite", path)
 	if err != nil {
@@ -301,9 +307,10 @@ func TestSchemaVersion5RequiresTheRedirectsTable(t *testing.T) {
 
 	_, err = openSnapshot(path, "")
 	if err == nil {
-		t.Fatal("openSnapshot accepted a version 5 artifact with no redirects table")
+		t.Fatal("openSnapshot accepted a redirect-claiming artifact with no redirects table")
 	}
-	for _, want := range []string{"schema_version 5", "requires the redirects table", path} {
+	claimed := fmt.Sprintf("schema_version %d", build.SchemaVersion)
+	for _, want := range []string{claimed, "requires the redirects table", path} {
 		if !strings.Contains(err.Error(), want) {
 			t.Errorf("error %q does not name %q", err, want)
 		}

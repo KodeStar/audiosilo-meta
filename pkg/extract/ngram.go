@@ -135,22 +135,54 @@ type expr struct {
 }
 
 // sidecarFields describes where one sidecar kind's own-words strings live: a
-// string field on each element of the kind's discriminating top-level array,
-// plus any top-level string fields.
+// string field on each element of the kind's top-level array (itemKey), plus any
+// top-level string fields.
+//
+// itemKey is EMPTY for a kind whose record carries no array - the description
+// sidecar is one flat document - and such a kind is recognized by its top-level
+// fields instead. See discriminators.
 type sidecarFields struct {
+	itemKey   string
 	itemField string
 	topLevel  []string
 }
 
 // expressiveFields is the SOURCE OF TRUTH for which sidecar fields the ngram
-// check scans, keyed by the discriminating top-level array key ("characters"
-// or "recaps"). These are exactly the own-words, length-capped (maxLength)
-// string fields of the sidecar schemas; the drift-guard test
-// (TestCheckedFieldsMatchSchemas) walks the embedded schemas and fails when a
-// capped field appears there that is not listed here.
+// check scans, keyed by the works-community MEMBER NAME the sidecar occupies
+// ("characters", "recaps", "description") - which is also the stem of its schema
+// file. These are exactly the own-words, length-capped (maxLength) string fields
+// of the sidecar schemas; the drift-guard test (TestCheckedFieldsMatchSchemas)
+// walks the embedded schemas and fails when a capped field appears there that is
+// not listed here.
 var expressiveFields = map[string]sidecarFields{
-	"characters": {itemField: "description"},
-	"recaps":     {itemField: "text", topLevel: []string{"in_short", "ending"}},
+	"characters": {itemKey: "characters", itemField: "description"},
+	"recaps":     {itemKey: "recaps", itemField: "text", topLevel: []string{"in_short", "ending"}},
+	// The description sidecar is one paragraph and nothing else: no array, so it
+	// is recognized (and scanned) by its own `text`. Spoiler-free is a contract
+	// about what it may SAY; it is own-words prose like every other member here,
+	// so the no-verbatim gate applies to it identically.
+	"description": {topLevel: []string{"text"}},
+}
+
+// discriminators are the top-level keys whose presence says a bare record is of
+// this kind: the array for a kind that has one, its top-level prose fields
+// otherwise. A characters or recaps record carries no top-level "text", and a
+// description record carries neither array, so the three are unambiguous.
+func (f sidecarFields) discriminators() []string {
+	if f.itemKey != "" {
+		return []string{f.itemKey}
+	}
+	return f.topLevel
+}
+
+// matchesRecord reports whether m reads as a record of this kind.
+func (f sidecarFields) matchesRecord(m map[string]any) bool {
+	for _, k := range f.discriminators() {
+		if _, ok := m[k]; ok {
+			return true
+		}
+	}
+	return false
 }
 
 // sidecarKinds returns expressiveFields' keys in deterministic (sorted) order.
@@ -161,6 +193,18 @@ func sidecarKinds() []string {
 	}
 	slices.Sort(kinds)
 	return kinds
+}
+
+// sidecarDiscriminators returns every kind's discriminating keys, sorted and
+// deduplicated - what the "wrong file" errors below name, since for a flat kind
+// the member name is not a key inside its own record.
+func sidecarDiscriminators() []string {
+	var keys []string
+	for _, kind := range sidecarKinds() {
+		keys = append(keys, expressiveFields[kind].discriminators()...)
+	}
+	slices.Sort(keys)
+	return slices.Compact(keys)
 }
 
 // collectExprs reads a sidecar and returns its expressive strings, driven by
@@ -221,20 +265,20 @@ func collectExprs(path string) ([]expr, error) {
 	if out := collectRecord(m, ""); len(out) > 0 || hasSidecarKey(m) {
 		return out, nil
 	}
-	kinds := sidecarKinds()
-	quoted := make([]string, len(kinds))
-	for i, k := range kinds {
+	keys := sidecarDiscriminators()
+	quoted := make([]string, len(keys))
+	for i, k := range keys {
 		quoted[i] = strconv.Quote(k)
 	}
 	return nil, fmt.Errorf("%s: not a %s sidecar (no %s key)",
-		path, strings.Join(kinds, " or "), strings.Join(quoted, " or "))
+		path, strings.Join(sidecarKinds(), " or "), strings.Join(quoted, " or "))
 }
 
 // hasSidecarKey reports whether m is a sidecar record at all, so one that is
 // simply empty of prose reads as "nothing to check" rather than "wrong file".
 func hasSidecarKey(m map[string]any) bool {
 	for _, kind := range sidecarKinds() {
-		if _, ok := m[kind]; ok {
+		if expressiveFields[kind].matchesRecord(m) {
 			return true
 		}
 	}
@@ -246,13 +290,15 @@ func hasSidecarKey(m map[string]any) bool {
 func collectRecord(m map[string]any, prefix string) []expr {
 	var out []expr
 	for _, kind := range sidecarKinds() {
-		if _, ok := m[kind]; !ok {
+		fields := expressiveFields[kind]
+		if !fields.matchesRecord(m) {
 			continue
 		}
-		fields := expressiveFields[kind]
-		for i, el := range asSlice(m[kind]) {
-			if s := stringField(el, fields.itemField); s != "" {
-				out = append(out, expr{fmt.Sprintf("%s%s[%d].%s", prefix, kind, i, fields.itemField), s})
+		if fields.itemKey != "" {
+			for i, el := range asSlice(m[fields.itemKey]) {
+				if s := stringField(el, fields.itemField); s != "" {
+					out = append(out, expr{fmt.Sprintf("%s%s[%d].%s", prefix, fields.itemKey, i, fields.itemField), s})
+				}
 			}
 		}
 		for _, tl := range fields.topLevel {

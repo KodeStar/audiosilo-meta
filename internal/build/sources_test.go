@@ -32,9 +32,10 @@ func splitFixture(t *testing.T) (whole, core, community map[string]string) {
 		"series/se/series-one.json":                 testpack.SeriesJSON(t, "series-one", "Series One", "book-one@1", "book-two@2"),
 	}
 	community = map[string]string{
-		"works/bo/book-one/characters.json": testpack.CharactersJSON(t, "book-one", "hero"),
-		"works/bo/book-one/recaps.json":     testpack.RecapsJSON(t, "book-one", 3),
-		"works/bt/book-two/characters.json": testpack.CharactersJSON(t, "book-two", "villain"),
+		"works/bo/book-one/characters.json":  testpack.CharactersJSON(t, "book-one", "hero"),
+		"works/bo/book-one/recaps.json":      testpack.RecapsJSON(t, "book-one", 3),
+		"works/bo/book-one/description.json": testpack.DescriptionJSON(t, "book-one"),
+		"works/bt/book-two/characters.json":  testpack.CharactersJSON(t, "book-two", "villain"),
 	}
 	whole = map[string]string{}
 	for k, v := range core {
@@ -101,9 +102,9 @@ func TestLoadWithoutCommunityIsTheSingleTreeLoad(t *testing.T) {
 	if !res.OK() {
 		t.Fatalf("the whole tree reported problems: %v", res.Problems)
 	}
-	if len(res.Catalog.Characters) != 2 || len(res.Catalog.Recaps) != 1 {
-		t.Errorf("sidecars did not load: characters=%d recaps=%d",
-			len(res.Catalog.Characters), len(res.Catalog.Recaps))
+	if len(res.Catalog.Characters) != 2 || len(res.Catalog.Recaps) != 1 || len(res.Catalog.Descriptions) != 1 {
+		t.Errorf("sidecars did not load: characters=%d recaps=%d descriptions=%d",
+			len(res.Catalog.Characters), len(res.Catalog.Recaps), len(res.Catalog.Descriptions))
 	}
 }
 

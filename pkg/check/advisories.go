@@ -654,9 +654,11 @@ const sidecarScaleMinChapters = 20
 // continue, so the rule is vacuous by construction rather than switched off
 // (see check.LoadProfile for the cross-family skip rule it satisfies for free).
 func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
-	// No sidecars, nothing to judge - and the floor map below is a full
-	// works-times-recordings walk, which a core-profile load (every core load of
-	// a composed build) would otherwise pay for nothing.
+	// No POSITIONED sidecars, nothing to judge - and the floor map below is a
+	// full works-times-recordings walk, which a core-profile load (every core load
+	// of a composed build) would otherwise pay for nothing. The description member
+	// is deliberately absent from this test and from the walk below: it is gated by
+	// no position, so there is no scale for it to be wrong about.
 	if len(cat.Characters) == 0 && len(cat.Recaps) == 0 {
 		return
 	}

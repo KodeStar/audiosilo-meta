@@ -27,9 +27,9 @@ type index struct {
 	// memberships maps a work id to its series memberships, sorted by series id.
 	memberships map[string][]membership
 	// sidecars maps a work slug to the works-community members its entry holds
-	// ("characters", "recaps"), built in this one pass. Before it existed, naming a
-	// sidecar's members walked both catalogue slices per sidecar - the run's one
-	// genuine quadratic.
+	// ("characters", "recaps", "description"), built in this one pass. Before it
+	// existed, naming a sidecar's members walked every catalogue slice per sidecar -
+	// the run's one genuine quadratic.
 	sidecars map[string][]string
 
 	// authorOf / narratorOf / creditedOn count a person's appearances, which is
@@ -127,6 +127,9 @@ func newIndex(cat *model.Catalog) *index {
 	}
 	for _, r := range cat.Recaps {
 		ix.sidecars[r.Work] = append(ix.sidecars[r.Work], "recaps")
+	}
+	for _, d := range cat.Descriptions {
+		ix.sidecars[d.Work] = append(ix.sidecars[d.Work], "description")
 	}
 	// Which series each author has works in, from the memberships just built.
 	byAuthor := map[string]map[string]bool{}

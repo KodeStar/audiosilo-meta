@@ -31,7 +31,7 @@
 //
 // --community names that repository's data/ directory, opened READ-ONLY, and a
 // core-profile merge wave NEEDS IT. The sidecar-collision refusal - both halves of
-// a duplicate carrying the same characters or recaps member, which is a human
+// a duplicate carrying the same characters, recaps or description member, which is a human
 // decision - is a question about data this repository no longer holds, so without
 // the flag every merge-works proposal is refused as `community-data-required`
 // rather than merged blind. Nothing is written there: the members ride the slug

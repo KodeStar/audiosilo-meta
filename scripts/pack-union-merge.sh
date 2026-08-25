@@ -29,11 +29,13 @@
 #                    those maps. Two pull requests adding different narrations of
 #                    one book collide on exactly that and nothing else.
 #   works-community  the entry IS a map of independent members ("characters",
-#                    "recaps"), each its own licensed document, so the base rules
-#                    apply to that map directly. A characters pull request and a
-#                    recaps pull request for the same book each create or edit
-#                    ONE member of the same entry, which is the same collision
-#                    one family over.
+#                    "recaps", "description"), each its own licensed document, so
+#                    the base rules apply to that map directly. A characters pull
+#                    request and a recaps pull request for the same book each
+#                    create or edit ONE member of the same entry, which is the
+#                    same collision one family over. The rule is over the entry's
+#                    KEYS, so a member kind added to the model is covered by it
+#                    without an edit here.
 #
 # Both are the most common intake collisions there are. Everything else - a
 # member or a recording both sides wrote, a work's own fields differing, a person
@@ -204,8 +206,9 @@ if ! jq -n \
   # mergeMembers handles one works-community entry both sides changed. The entry
   # has no own fields: it IS the map of its members, so the base rules apply to it
   # one level down unchanged. Disjoint members (one side wrote characters, the
-  # other recaps) merge; the same member written on both sides is two people
-  # disagreeing about one text and clashes.
+  # other recaps or the description) merge; the same member written on both sides
+  # is two people disagreeing about one text and clashes. It never names a member
+  # kind, so a new one rides it as it is.
   def mergeMembers($B; $A; $T; $k):
     if (($A | type) != "object") or (($T | type) != "object") then {clash: [$k]}
     else

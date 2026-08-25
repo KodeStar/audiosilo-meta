@@ -877,6 +877,37 @@ func TestListPosition(t *testing.T) {
 
 // TestTruncateDescription pins the two rules a truncated description has to
 // keep: it ends on a word, and it does not end on a separator.
+// TestWorkDescriptionPrefersTheCommunityText pins the work page's meta
+// description: the community's spoiler-free paragraph where the work has one,
+// truncated to the tag's budget, and the composed fact sentence otherwise. The
+// fact sentence is near-duplicate across the catalogue, which is the whole reason
+// the description member exists.
+func TestWorkDescriptionPrefersTheCommunityText(t *testing.T) {
+	facts := &workDetail{
+		ID: "a-book", Title: "A Book", Language: "en",
+		Authors: []personRef{{ID: "somebody", Name: "Somebody"}},
+	}
+	want := "A Book, by Somebody."
+	if got := workDescription(facts, "Somebody"); got != want {
+		t.Errorf("with no community description: %q, want %q", got, want)
+	}
+
+	withText := *facts
+	withText.CommunityDescription = &descriptionOut{
+		Text: "A short and entirely distinct paragraph about this particular book.", License: "CC-BY-SA-4.0",
+	}
+	if got := workDescription(&withText, "Somebody"); got != withText.CommunityDescription.Text {
+		t.Errorf("with a community description: %q, want the community text", got)
+	}
+
+	// And it is subject to the tag's budget like any other description.
+	longer := *facts
+	longer.CommunityDescription = &descriptionOut{Text: strings.Repeat("wordy ", 60) + "tail"}
+	if got := workDescription(&longer, "Somebody"); len(got) > descriptionMax {
+		t.Errorf("len = %d, want <= %d", len(got), descriptionMax)
+	}
+}
+
 func TestTruncateDescription(t *testing.T) {
 	short := "Project Hail Mary, by Andy Weir."
 	if got := truncateDescription(short); got != short {

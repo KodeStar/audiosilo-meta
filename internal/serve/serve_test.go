@@ -8,6 +8,7 @@ import (
 	"net/http/httptest"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -98,12 +99,23 @@ func fixtureCatalog() *model.Catalog {
 			{Through: model.Position{Chapter: 2}, Scope: "book", Text: "Grace wakes with amnesia."},
 		},
 	}
+	// The spoiler-free description: past the schema's 200-character floor, and
+	// deliberately saying nothing the recap above says - it is what the meta tag,
+	// the fact sheet, the JSON-LD and the ABS facade all read.
+	desc := &model.Description{
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
+		Sources: []model.Source{{Type: "community"}},
+		Text: "A junior-high science teacher wakes alone aboard a ship he does not remember boarding, " +
+			"with two dead crewmates and no idea how far from home he is. What comes back to him arrives " +
+			"in pieces, and none of it is good news for anybody still on Earth.",
+	}
 	return &model.Catalog{
-		Works:      []*model.Work{phm, wok, wor, edge},
-		People:     []*model.Person{andy, porter, sando, kramer, reading},
-		Series:     []*model.Series{series},
-		Characters: []*model.Characters{chars},
-		Recaps:     []*model.Recaps{recaps},
+		Works:        []*model.Work{phm, wok, wor, edge},
+		People:       []*model.Person{andy, porter, sando, kramer, reading},
+		Series:       []*model.Series{series},
+		Characters:   []*model.Characters{chars},
+		Recaps:       []*model.Recaps{recaps},
+		Descriptions: []*model.Description{desc},
 		// One retired slug per namespace, the shape a duplicate merge leaves
 		// behind: the loser's slug still resolves, at the survivor.
 		Redirects: model.Redirects{
@@ -621,12 +633,40 @@ func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
 	}
 }
 
-// TestWorkDetailToleratesOlderArtifact serves a schema_version 1 artifact that
-// predates the characters/recaps tables: every sidecar query no-ops on the
-// version, so the work still serves, just without them.
-func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, fixtureCatalog(), 1,
-		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries")
+// TestCommunityDescription covers the works-community description member end to
+// end: the artifact's work_descriptions row reaches GET /works/{id} as an OBJECT
+// under its own key, carrying the share-alike license the row states - it is
+// deliberately NOT folded into the CC0 `description` string, which stays the work
+// record's own field.
+func TestCommunityDescription(t *testing.T) {
+	_, ts := newTestServer(t)
+	_, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	cd, ok := body["community_description"].(map[string]any)
+	if !ok {
+		t.Fatalf("community_description = %v, want an object", body["community_description"])
+	}
+	if text, _ := cd["text"].(string); !strings.Contains(text, "wakes alone aboard a ship") {
+		t.Errorf("community_description.text = %q", cd["text"])
+	}
+	if cd["license"] != "CC-BY-SA-4.0" {
+		t.Errorf("community_description.license = %v, want CC-BY-SA-4.0", cd["license"])
+	}
+	if _, has := body["description"]; has {
+		t.Errorf("the CC0 description key must stay absent for a work whose record states none, got %v", body["description"])
+	}
+
+	// A work with no description member omits the key entirely.
+	_, plain := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	if _, has := plain["community_description"]; has {
+		t.Errorf("a work with no description sidecar should omit the key, got %v", plain["community_description"])
+	}
+}
+
+// TestCommunityDescriptionToleratesV5Artifact serves a schema_version 5 artifact
+// that predates work_descriptions: the query no-ops on the version, so the work
+// still serves and its pages fall back to the composed fact sentence.
+func TestCommunityDescriptionToleratesV5Artifact(t *testing.T) {
+	ts := downgradedServer(t, fixtureCatalog(), 5, "work_descriptions")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -634,7 +674,29 @@ func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 	if body["error"] != nil {
 		t.Errorf("expected no error, got %v", body["error"])
 	}
-	for _, key := range []string{"genres", "characters", "recaps", "recap_summary"} {
+	if _, has := body["community_description"]; has {
+		t.Errorf("missing work_descriptions table should yield no community_description key")
+	}
+	// The v5 payload (the sidecars that DO exist) is still served.
+	if _, has := body["recap_summary"]; !has {
+		t.Errorf("v5 artifact should still serve recap_summary")
+	}
+}
+
+// TestWorkDetailToleratesOlderArtifact serves a schema_version 1 artifact that
+// predates the characters/recaps tables: every sidecar query no-ops on the
+// version, so the work still serves, just without them.
+func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
+	ts := downgradedServer(t, fixtureCatalog(), 1,
+		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "work_descriptions")
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	if body["error"] != nil {
+		t.Errorf("expected no error, got %v", body["error"])
+	}
+	for _, key := range []string{"genres", "characters", "recaps", "recap_summary", "community_description"} {
 		if _, has := body[key]; has {
 			t.Errorf("missing table should yield no %s key, got %v", key, body[key])
 		}

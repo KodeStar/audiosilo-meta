@@ -138,6 +138,7 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// the order a single ProfileAll tree would have produced from the same files.
 	res.Catalog.Characters = com.Catalog.Characters
 	res.Catalog.Recaps = com.Catalog.Recaps
+	res.Catalog.Descriptions = com.Catalog.Descriptions
 
 	// AN EMPTY COMMUNITY SIDE IS A HARD ERROR, and it is checked before the
 	// cross-tree rules because a tree with nothing in it satisfies every one of
@@ -149,7 +150,7 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// repository's ROOT rather than at its data/ subdirectory. Asking for the layer
 	// and silently getting none is never what the caller meant; not asking (no
 	// --community) is still how a core-only artifact is built.
-	if len(res.Catalog.Characters) == 0 && len(res.Catalog.Recaps) == 0 {
+	if len(res.Catalog.Characters) == 0 && len(res.Catalog.Recaps) == 0 && len(res.Catalog.Descriptions) == 0 {
 		res.Problems = append(res.Problems, Problem{
 			Path: communityDir,
 			Msg: "holds no loadable works-community entries: composing it would ship an artifact with no " +

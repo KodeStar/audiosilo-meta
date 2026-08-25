@@ -51,10 +51,15 @@ type ldSeriesRef struct {
 // (workExample down, exampleOfWork up), which is how schema.org models an
 // edition of a work.
 type ldBook struct {
-	Type        string       `json:"@type"`
-	ID          string       `json:"@id"`
-	Name        string       `json:"name"`
-	URL         string       `json:"url"`
+	Type string `json:"@type"`
+	ID   string `json:"@id"`
+	Name string `json:"name"`
+	URL  string `json:"url"`
+	// Description is the community's spoiler-free description where the work has
+	// one, and is OMITTED otherwise: the fact sentence the meta tag falls back to
+	// is composed from the very properties this node already states, so emitting
+	// it here would restate them as prose rather than describe the book.
+	Description string       `json:"description,omitempty"`
 	Author      []ldPerson   `json:"author,omitempty"`
 	InLanguage  string       `json:"inLanguage,omitempty"`
 	IsPartOf    *ldSeriesRef `json:"isPartOf,omitempty"`
@@ -166,7 +171,10 @@ func guideJSONLD(headline, siteURL, canonical, workCanonical string) []byte {
 // renders of one snapshot produce identical bytes.
 func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
 	bookID := workNodeID(canonical)
-	book := ldBook{Type: "Book", ID: bookID, Name: d.Title, URL: canonical, InLanguage: d.Language}
+	book := ldBook{
+		Type: "Book", ID: bookID, Name: d.Title, URL: canonical, InLanguage: d.Language,
+		Description: communityDescriptionText(d),
+	}
 	for _, a := range d.Authors {
 		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})
 	}

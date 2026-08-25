@@ -170,6 +170,7 @@ func (l *loader) merge(r *packResult) {
 	l.cat.Series = append(l.cat.Series, w.cat.Series...)
 	l.cat.Characters = append(l.cat.Characters, w.cat.Characters...)
 	l.cat.Recaps = append(l.cat.Recaps, w.cat.Recaps...)
+	l.cat.Descriptions = append(l.cat.Descriptions, w.cat.Descriptions...)
 
 	l.idx.merge(w.idx)
 }
@@ -523,8 +524,9 @@ func unescapePointerToken(tok string) string {
 // wrapper schema is what REJECTS anything else (and an entry holding neither);
 // this map only says how to fold an accepted member into the catalog.
 var communityMembers = map[string]model.Kind{
-	"characters": model.KindCharacters,
-	"recaps":     model.KindRecaps,
+	string(model.KindCharacters):  model.KindCharacters,
+	string(model.KindRecaps):      model.KindRecaps,
+	string(model.KindDescription): model.KindDescription,
 }
 
 // readCommunityEntry reads a works-community entry: the CC BY-SA sidecars for
@@ -582,6 +584,18 @@ func (l *loader) readCommunityEntry(family pack.Family, packPath, slug string, r
 			}
 			l.cat.Recaps = append(l.cat.Recaps, &rc)
 			l.idx.recaps[&rc] = mp
+
+		case model.KindDescription:
+			var d model.Description
+			if err := json.Unmarshal(members[name], &d); err != nil {
+				l.reportUndecodable(mp, clean, err)
+				continue
+			}
+			if d.Work != slug {
+				l.add(mp, "work %q must equal the entry key %q", d.Work, slug)
+			}
+			l.cat.Descriptions = append(l.cat.Descriptions, &d)
+			l.idx.descriptions[&d] = mp
 		}
 	}
 }

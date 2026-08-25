@@ -97,10 +97,15 @@ func checkIntegrity(profile pack.Profile, cat *model.Catalog, workByID map[strin
 			add(idx.recaps[rc], "parent work %q does not exist", rc.Work)
 		}
 	}
+	for _, d := range cat.Descriptions {
+		if workByID[d.Work] == nil {
+			add(idx.descriptions[d], "parent work %q does not exist", d.Work)
+		}
+	}
 }
 
-// checkSidecarUniqueness enforces that a work has at most ONE characters
-// sidecar and at most one recaps sidecar.
+// checkSidecarUniqueness enforces that a work has at most ONE sidecar of each
+// works-community member kind - one characters, one recaps, one description.
 //
 // Nothing about the file layout guarantees it during the dual-layout window: a
 // work whose sidecars were packed into works-community while its legacy
@@ -139,6 +144,12 @@ func checkSidecarUniqueness(cat *model.Catalog, idx *pathIndex, add addFunc) {
 		recaps = append(recaps, sidecar{work: rc.Work, path: idx.recaps[rc]})
 	}
 	report("recaps", recaps)
+
+	descriptions := make([]sidecar, 0, len(cat.Descriptions))
+	for _, d := range cat.Descriptions {
+		descriptions = append(descriptions, sidecar{work: d.Work, path: idx.descriptions[d]})
+	}
+	report("description", descriptions)
 }
 
 // checkCharacters enforces that character ids are unique within each per-work

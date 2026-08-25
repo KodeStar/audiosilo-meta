@@ -302,6 +302,23 @@ func genreLabels(slugs []string) []string {
 	return out
 }
 
+// displayDescription is the paragraph a HUMAN-facing surface shows for a work:
+// the community's own-words, spoiler-free description where one exists, and the
+// CC0 record's own description otherwise. Both the ABS facade and the HTML work
+// page read it, so the two cannot disagree about which text a work "has".
+//
+// The community text WINS because it is the one somebody wrote for a reader:
+// nothing writes works.description today, and if something ever does, an
+// own-words paragraph still beats an imported one. The two are kept apart in the
+// JSON (see descriptionOut) precisely so a consumer that must attribute can tell
+// them apart; this helper is for the surfaces that only need prose.
+func displayDescription(d *workDetail) string {
+	if d.CommunityDescription != nil && d.CommunityDescription.Text != "" {
+		return d.CommunityDescription.Text
+	}
+	return d.Description
+}
+
 // absBooksFor maps a work's detail to one BookMetadata per recording (or a
 // single work-only entry when the work has no recordings). Work-level fields
 // (title/subtitle/authors/language/publishedYear/description/genres/series) are shared;
@@ -321,7 +338,7 @@ func absBooksFor(d *workDetail, preferredRID string) []absBook {
 		Subtitle:      d.Subtitle,
 		Author:        strings.Join(personNames(d.Authors), ", "),
 		PublishedYear: publishedYear(d.FirstPublished),
-		Description:   d.Description,
+		Description:   displayDescription(d),
 		Language:      d.Language,
 		Genres:        genreLabels(d.Genres),
 		Series:        series,

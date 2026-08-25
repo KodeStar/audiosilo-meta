@@ -22,12 +22,13 @@ const schemaBase = "https://meta.audiosilo.app/schema/"
 // all compile ON THEIR OWN is a drift guard, and drift guards belong in tests
 // (TestEveryEntitySchemaCompiles).
 var entitySchemas = map[model.Kind]string{
-	model.KindWork:       "work.schema.json",
-	model.KindRecording:  "recording.schema.json",
-	model.KindPerson:     "person.schema.json",
-	model.KindSeries:     "series.schema.json",
-	model.KindCharacters: "characters.schema.json",
-	model.KindRecaps:     "recaps.schema.json",
+	model.KindWork:        "work.schema.json",
+	model.KindRecording:   "recording.schema.json",
+	model.KindPerson:      "person.schema.json",
+	model.KindSeries:      "series.schema.json",
+	model.KindCharacters:  "characters.schema.json",
+	model.KindRecaps:      "recaps.schema.json",
+	model.KindDescription: "description.schema.json",
 }
 
 // wrapperSchemas are the per-family pack wrappers. The pack walker reaches an

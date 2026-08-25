@@ -267,6 +267,50 @@ func TestMergeWorksRefusesASidecarMemberCollision(t *testing.T) {
 	}
 }
 
+// The DESCRIPTION member gets the same two answers its siblings do, and for the
+// same reason: mergeSidecars is written over the entry's member KEYS, so a member
+// kind added to the model rides the rule rather than needing a case in it. One
+// side's description MOVES onto the survivor; both sides carrying one is the
+// human decision the collision refusal exists for.
+func TestMergeWorksHandlesTheDescriptionMember(t *testing.T) {
+	t.Run("a loser's description moves onto the survivor", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/characters.json"] = charactersJSON(t, "hammered", "atticus")
+		files["works/ha/hammered-book-3/description.json"] = descriptionJSON(t, "hammered-book-3")
+		data := seedTree(t, files)
+
+		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("applied %d, refused %+v", len(rep.Applied), rep.Refused)
+		}
+		side := readEntry(t, data, pack.FamilyWorksCommunity, "hammered")
+		if !side.Has("description") {
+			t.Errorf("the description member did not move: %v", rawentry.SortedKeys(side))
+		}
+		if !side.Has("characters") {
+			t.Errorf("the survivor's own member was displaced: %v", rawentry.SortedKeys(side))
+		}
+	})
+
+	t.Run("a description on both halves is refused", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/ha/hammered/description.json"] = descriptionJSON(t, "hammered")
+		files["works/ha/hammered-book-3/description.json"] = descriptionJSON(t, "hammered-book-3")
+		data := seedTree(t, files)
+
+		rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+		if len(rep.Applied) != 0 {
+			t.Fatalf("a cluster with two descriptions was merged: %+v", rep.Applied)
+		}
+		if len(rep.Refused) != 1 || rep.Refused[0].Category != CatSidecarCollision {
+			t.Fatalf("refusals = %+v, want one %s", rep.Refused, CatSidecarCollision)
+		}
+		if !strings.Contains(rep.Refused[0].Reason, `"description"`) {
+			t.Errorf("the refusal does not name the member: %q", rep.Refused[0].Reason)
+		}
+	})
+}
+
 // Two records of one book at different positions in one series are different volumes,
 // and the catalogue itself is what says so. The audit vetoes this; the check has to
 // exist here too, because a run's own earlier proposals can create the state.
