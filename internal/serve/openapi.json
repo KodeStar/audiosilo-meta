@@ -512,7 +512,7 @@
             "schema": {
               "type": "string",
               "default": "missing",
-              "enum": ["missing", "has_characters", "has_recaps", "has_recap_summary"]
+              "enum": ["missing", "has_characters", "has_recaps", "has_recap_summary", "has_description"]
             }
           },
           {
@@ -579,7 +579,7 @@
         "tags": ["Audiobookshelf provider"],
         "operationId": "absSearch",
         "summary": "Audiobookshelf custom metadata provider",
-        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.",
+        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.\n\nAttribution: `description` is the community's own-words, spoiler-free paragraph where the work carries one, else the CC0 record's own field. A COMMUNITY description ends with a plain-text line - `(Description CC BY-SA 4.0, AudioSilo Meta community)` - because Audiobookshelf's shape carries no license field and the text is share-alike; the CC0 fallback carries no such line. `GET /api/v1/works/{id}` returns the same text and its license as separate fields.",
         "parameters": [
           {
             "name": "query",
@@ -1222,7 +1222,8 @@
           "works": { "type": "integer" },
           "with_characters": { "type": "integer" },
           "with_recaps": { "type": "integer" },
-          "with_recap_summary": { "type": "integer" }
+          "with_recap_summary": { "type": "integer" },
+          "with_descriptions": { "type": "integer", "description": "Works carrying the community spoiler-free description. Needs artifact version 6." }
         }
       },
       "CoverageResult": {
@@ -1251,7 +1252,7 @@
             "description": "Which parts of the community layer the work still lacks, in a fixed order. Empty when it lacks none.",
             "items": {
               "type": "string",
-              "enum": ["characters", "recaps", "recap_summary"]
+              "enum": ["characters", "recaps", "recap_summary", "description"]
             }
           }
         }
@@ -1324,7 +1325,7 @@
           "narrator": { "type": "string", "description": "Narrator names, comma-joined." },
           "publisher": { "type": "string" },
           "publishedYear": { "type": "string", "description": "A bare 4-digit year, as a string." },
-          "description": { "type": "string", "description": "The community's own-words, spoiler-free description where the work carries one (CC BY-SA 4.0), else the CC0 record's own." },
+          "description": { "type": "string", "description": "The community's own-words, spoiler-free description where the work carries one, else the CC0 record's own. A community description arrives with a plain-text attribution line appended - `(Description CC BY-SA 4.0, AudioSilo Meta community)` - because this shape has no license field and the text is share-alike; the CC0 fallback carries no such line. Use `community_description` on `GET /api/v1/works/{id}` instead if you need the text and its license as separate fields." },
           "cover": { "type": "string", "description": "Remote cover URL." },
           "isbn": { "type": "string", "description": "The recording's first ISBN, else the work's first print ISBN." },
           "asin": { "type": "string", "description": "The us-region ASIN when there is one, else the first available." },

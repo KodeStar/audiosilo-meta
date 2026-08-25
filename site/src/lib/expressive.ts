@@ -1,14 +1,15 @@
 // Pure presentation helpers for the community-authored expressive layer
-// (characters + recaps), shown on a work page and on the two community-guide
-// pages that hang off it. Kept framework-free so they can be unit-tested; the
+// (characters, recaps and the spoiler-free description), shown on a work page
+// and on the two community-guide pages that hang off it. Kept framework-free so they can be unit-tested; the
 // React components in WorkDetail.tsx and work-guide.tsx consume them, and the
 // presence rules live here rather than in either so the work page's tabs and the
 // guide page's empty state cannot disagree about what a work carries.
 import type { Character, Recap, RecapSummary, Work } from './api'
 import type { WorkGuide } from './entity-url'
 
-/** The Creative Commons deed the community layer (characters + recaps) is
-    published under, as opposed to the CC0 catalogue everything else here is.
+/** The Creative Commons deed the community layer (characters, recaps and the
+    spoiler-free description) is published under, as opposed to the CC0
+    catalogue everything else here is.
     Stated once so every surface that has to name the terms - the guide pages'
     footer, and anything that grows one later - links the same deed.
     internal/serve carries its own copy for the server-rendered pages; see

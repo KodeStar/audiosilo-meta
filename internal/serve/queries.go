@@ -254,13 +254,16 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 // NO chapter count) and the community DESCRIPTION - and none of the
 // characters/recaps/recap-summary sidecars. absSearch calls it once per candidate
 // on the public /abs/search hot path, so it deliberately skips workDetail's ~100+
-// discarded round-trips; the description is the one sidecar read it does make,
+// discarded round-trips; the description is the one sidecar it carries at all,
 // because ABS displays a description and ours is own-words rather than scraped.
-// It is one point lookup on a primary key, at most absMaxMatches times.
-// genresByWork is the batched work id -> genre slugs map absSearch resolves for
-// the whole candidate set up front, so this runs no per-work genre query either.
+//
+// genresByWork and descriptionsByWork are the BATCHED maps absSearch resolves
+// for the whole candidate set up front - one query each - so this runs no
+// per-work query for either. That is the point of passing them: a point lookup
+// per candidate is still up to absMaxMatches sequential round trips on an
+// unauthenticated public endpoint.
 // Returns (nil, nil) when the work is absent.
-func (s *snapshot) workForABS(id string, genresByWork map[string][]string) (*workDetail, error) {
+func (s *snapshot) workForABS(id string, genresByWork map[string][]string, descriptionsByWork map[string]*descriptionOut) (*workDetail, error) {
 	var d workDetail
 	var subtitle, firstPub, desc sql.NullString
 	err := s.db.QueryRow(
@@ -295,9 +298,7 @@ func (s *snapshot) workForABS(id string, genresByWork map[string][]string) (*wor
 	if d.Recordings, err = s.recordingsBase(id); err != nil {
 		return nil, err
 	}
-	if d.CommunityDescription, err = s.communityDescriptionOf(id); err != nil {
-		return nil, err
-	}
+	d.CommunityDescription = descriptionsByWork[id]
 	return &d, nil
 }
 
@@ -330,13 +331,20 @@ const redirectSchemaVersion = 5
 // work_descriptions table (the community spoiler-free description). A newer
 // binary serving an older release must degrade to "no description" - the pages
 // then compose the fact sentence they always did - so the query no-ops below
-// this version rather than probing for the table.
+// this version rather than probing for the table, and an artifact CLAIMING it
+// without the table fails to open (loadStats, the redirects precedent).
 const descriptionSchemaVersion = 6
 
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
 	// snapshot (see snapshot.hasRedirects).
 	anyRedirectSQL = `SELECT EXISTS(SELECT 1 FROM redirects)`
+	// anyDescriptionSQL is its twin for the community descriptions, asked once
+	// per snapshot for the same two jobs: settle snapshot.hasDescriptions, and
+	// prove the table a version 6 artifact claims actually exists.
+	anyDescriptionSQL = `SELECT EXISTS(SELECT 1 FROM work_descriptions)`
+	// descriptionOfSQL reads ONE work's description off the table's primary key.
+	descriptionOfSQL = `SELECT text, license FROM work_descriptions WHERE work_id=?`
 	// redirectTargetSQL resolves one retired slug in one namespace. It reads the
 	// artifact's primary key, so it is a point lookup - which is what lets it sit
 	// on the miss path of every id route without costing anything measurable.
@@ -467,26 +475,68 @@ func (s *snapshot) recapSummaryOf(workID string) (*recapSummaryOut, error) {
 
 // communityDescriptionOf returns the work's CC BY-SA spoiler-free description,
 // or nil when it has none (or the artifact predates the work_descriptions
-// table). One point lookup on the table's primary key, which is why it needs no
-// entry in TestServeLookupsAreIndexed - the same shape, and the same reason, as
-// recapSummaryOf above.
+// table, or the table is empty). One point lookup on the table's primary key,
+// which is why it needs no entry in TestServeLookupsAreIndexed - the same shape,
+// and the same reason, as recapSummaryOf above.
+//
+// The hasDescriptions gate (settled once at load, snapshot.hasDescriptions) is
+// what keeps it free until the layer has data: the work page, both guide pages
+// and the ABS candidates all reach this on ORDINARY 200 paths, so an empty table
+// would otherwise cost a round trip per request to learn there is nothing there.
+//
+// A non-nil result ALWAYS carries text: work_descriptions.text is NOT NULL and
+// the schema puts a 200-character floor under it, so unlike its recap_summaries
+// neighbour there is no "states nothing" row to filter out. That is the
+// invariant the license boundary rests on - a CommunityDescription present means
+// CC BY-SA prose is present - so a third state must not be invented here.
 func (s *snapshot) communityDescriptionOf(workID string) (*descriptionOut, error) {
-	if s.schemaVersion < descriptionSchemaVersion {
+	if !s.hasDescriptions {
 		return nil, nil
 	}
 	var text, license string
-	err := s.db.QueryRow(`SELECT text, license FROM work_descriptions WHERE work_id=?`, workID).
-		Scan(&text, &license)
+	err := s.db.QueryRow(descriptionOfSQL, workID).Scan(&text, &license)
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
 	if err != nil {
 		return nil, err
 	}
-	if text == "" {
-		return nil, nil
-	}
 	return &descriptionOut{Text: text, License: license}, nil
+}
+
+// descriptionsForWorks fetches the community description of every given work in
+// ONE query, mirroring genresForWorks: /abs/search resolves the whole candidate
+// set up front so workForABS makes no per-candidate read on the public hot path.
+// Up to absMaxMatches sequential point lookups is exactly the N+1 the batched
+// genre map two lines above it exists to avoid, and the two are resolved
+// together. An empty input, an artifact predating the table, or an empty table
+// yields an empty map.
+func (s *snapshot) descriptionsForWorks(workIDs []string) (map[string]*descriptionOut, error) {
+	out := make(map[string]*descriptionOut, len(workIDs))
+	if len(workIDs) == 0 || !s.hasDescriptions {
+		return out, nil
+	}
+	placeholders := make([]string, len(workIDs))
+	args := make([]any, len(workIDs))
+	for i, id := range workIDs {
+		placeholders[i] = "?"
+		args[i] = id
+	}
+	rows, err := s.db.Query(
+		`SELECT work_id, text, license FROM work_descriptions WHERE work_id IN (`+
+			strings.Join(placeholders, ",")+`)`, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var wid, text, license string
+		if err := rows.Scan(&wid, &text, &license); err != nil {
+			return nil, err
+		}
+		out[wid] = &descriptionOut{Text: text, License: license}
+	}
+	return out, rows.Err()
 }
 
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {

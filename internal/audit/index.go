@@ -121,15 +121,17 @@ func newIndex(cat *model.Catalog) *index {
 			return ms[i].position < ms[j].position
 		})
 	}
-	// The sidecar members, in the order the report names them.
+	// The sidecar members, in the order the report names them. The names are
+	// model.Kind's own - the member name pkg/check reads the sidecar out of - so a
+	// report and a pack file cannot spell one member two ways.
 	for _, c := range cat.Characters {
-		ix.sidecars[c.Work] = append(ix.sidecars[c.Work], "characters")
+		ix.sidecars[c.Work] = append(ix.sidecars[c.Work], string(model.KindCharacters))
 	}
 	for _, r := range cat.Recaps {
-		ix.sidecars[r.Work] = append(ix.sidecars[r.Work], "recaps")
+		ix.sidecars[r.Work] = append(ix.sidecars[r.Work], string(model.KindRecaps))
 	}
 	for _, d := range cat.Descriptions {
-		ix.sidecars[d.Work] = append(ix.sidecars[d.Work], "description")
+		ix.sidecars[d.Work] = append(ix.sidecars[d.Work], string(model.KindDescription))
 	}
 	// Which series each author has works in, from the memberships just built.
 	byAuthor := map[string]map[string]bool{}

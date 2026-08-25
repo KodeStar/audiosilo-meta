@@ -182,13 +182,18 @@ type sidecarRef struct {
 //
 // It lives HERE, beside pathIndex, for the reason pathIndex.merge does: the
 // member kinds are a list that has to be written out by hand, and this file is
-// where the project keeps that list total. Three other rules enumerate the same
-// kinds (checkIntegrity's sidecar arm, checkSidecarUniqueness,
-// checkSidecarPositionScale - which is deliberately short one, a description
-// carries no position), each reporting through the very maps declared above; a
-// fourth kind added to model.Catalog and missed here would silently escape the
-// compose's existence rule, so TestSidecarRefsCoverEverySidecarKind derives the
-// kinds from the Catalog type itself and fails when this list is short.
+// where the project keeps that list total - so it is the ONE enumeration every
+// rule over the member kinds reads. checkIntegrity's sidecar arm, the compose's
+// existence/redirect/collision rules and checkSidecarUniqueness all iterate THIS
+// (the last grouping by kind for its report) rather than each carrying a
+// per-kind loop of its own; a fourth kind added to model.Catalog and missed here
+// would silently escape all of them at once, so
+// TestSidecarRefsCoverEverySidecarKind derives the kinds from the Catalog type
+// itself and fails when this list is short.
+//
+// The one rule that deliberately does NOT read it is checkSidecarPositionScale:
+// it judges POSITIONS, and a description carries none, so its shorter list is a
+// statement rather than an omission.
 //
 // The kind string is the MEMBER NAME (model.Kind's own spelling), not the
 // catalogue field's - `description` is one member of one work however many of

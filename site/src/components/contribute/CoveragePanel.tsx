@@ -310,6 +310,7 @@ const FILTER_EMPTY: Record<CoverageFilter, string> = {
   has_characters: 'No catalogued books have a character guide yet. Be the first to add one.',
   has_recaps: 'No catalogued books have a story-so-far recap yet. Be the first to add one.',
   has_recap_summary: 'No catalogued books have a whole-book recap summary yet.',
+  has_description: 'No catalogued books have a spoiler-free description yet.',
 }
 
 function WorksList({
@@ -522,7 +523,13 @@ function SeriesGapsBrowser() {
 // Module-scope so its identity is stable across renders (useEntity depends on it).
 const fetchCoverage = (_id: string, signal: AbortSignal) => getCoverage(signal)
 
-const FILTERS: CoverageFilter[] = ['missing', 'has_characters', 'has_recaps', 'has_recap_summary']
+const FILTERS: CoverageFilter[] = [
+  'missing',
+  'has_characters',
+  'has_recaps',
+  'has_recap_summary',
+  'has_description',
+]
 
 /** Read `?filter=` so the browser is deep-linkable - the home page's characters
     and recaps stats link straight to the works that HAVE them, which is the only

@@ -20,7 +20,7 @@ type snapshot struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6
 
 	// The GUIDE PAGE counts, settled at load (see loadStats). They are what the
 	// two guide sitemap families are sharded and windowed by, and they are
@@ -43,6 +43,14 @@ type snapshot struct {
 	// comes back empty - so without this an ordinary 200 would pay a SQL round
 	// trip to learn there is nothing to find.
 	hasRedirects bool
+
+	// hasDescriptions is whether the artifact's work_descriptions table holds
+	// anything at all, asked once at load for the reason hasRedirects is: the
+	// table is EMPTY in every release until the first description lands, and the
+	// read sits on ordinary 200 paths - every work page, every guide page and up
+	// to ten candidates per /abs/search - so without it those all pay a SQL round
+	// trip to learn there is nothing to find.
+	hasDescriptions bool
 
 	// log is the Server's injected logger, for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing). It is
@@ -168,6 +176,20 @@ func (s *snapshot) loadStats() error {
 	if s.schemaVersion >= redirectSchemaVersion {
 		if err := s.db.QueryRow(anyRedirectSQL).Scan(&s.hasRedirects); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the redirects table: %w",
+				s.path, s.schemaVersion, err)
+		}
+	}
+	// The community description gate, on exactly the redirect precedent above and
+	// for both of its reasons. It settles the per-request memo (an empty table -
+	// every release until the first description lands - then costs no query at
+	// all), and it is the INTEGRITY check: a version 6 claim with no
+	// work_descriptions table fails the LOAD, naming the claim, rather than
+	// 500ing per request on every works/{id} and every /abs/search candidate. The
+	// builder writes the version and the table together, so that combination is a
+	// corrupt artifact, not an old one.
+	if s.schemaVersion >= descriptionSchemaVersion {
+		if err := s.db.QueryRow(anyDescriptionSQL).Scan(&s.hasDescriptions); err != nil {
+			return fmt.Errorf("%s: artifact schema_version %d requires the work_descriptions table: %w",
 				s.path, s.schemaVersion, err)
 		}
 	}

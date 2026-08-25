@@ -549,20 +549,10 @@ func TestSidecarRefsCoverEverySidecarKind(t *testing.T) {
 	cat := &model.Catalog{}
 	v := reflect.ValueOf(cat).Elem()
 	var kinds []string
-	for i := range v.NumField() {
+	for _, i := range sidecarCatalogFields() {
 		f := v.Type().Field(i)
-		if f.Type.Kind() != reflect.Slice {
-			continue
-		}
-		el := f.Type.Elem()
-		if el.Kind() != reflect.Pointer || el.Elem().Kind() != reflect.Struct {
-			continue
-		}
-		if wf, ok := el.Elem().FieldByName("Work"); !ok || wf.Type.Kind() != reflect.String {
-			continue
-		}
 		kinds = append(kinds, f.Name)
-		rec := reflect.New(el.Elem())
+		rec := reflect.New(f.Type.Elem().Elem())
 		rec.Elem().FieldByName("Work").SetString("book-one")
 		v.Field(i).Set(reflect.Append(v.Field(i), rec))
 	}
@@ -586,5 +576,66 @@ func TestSidecarRefsCoverEverySidecarKind(t *testing.T) {
 	if !slices.Equal(got, want) {
 		t.Errorf("sidecarRefs enumerated %v; the works-community members are %v: "+
 			"a kind must be enumerated under the member name the loader reads it from", got, want)
+	}
+}
+
+// sidecarCatalogFields derives the model.Catalog field indexes that ARE sidecar
+// kinds - a slice of pointers to structs carrying a `Work` slug - which is the
+// one definition of "a sidecar kind" the two drift guards below share. Reading
+// it off the TYPE is the whole point: a member added to the model shows up here
+// without anybody remembering to list it.
+func sidecarCatalogFields() []int {
+	t := reflect.TypeOf(model.Catalog{})
+	var out []int
+	for i := range t.NumField() {
+		f := t.Field(i)
+		if f.Type.Kind() != reflect.Slice {
+			continue
+		}
+		el := f.Type.Elem()
+		if el.Kind() != reflect.Pointer || el.Elem().Kind() != reflect.Struct {
+			continue
+		}
+		if wf, ok := el.Elem().FieldByName("Work"); !ok || wf.Type.Kind() != reflect.String {
+			continue
+		}
+		out = append(out, i)
+	}
+	return out
+}
+
+// TestComposeCarriesEverySidecarKind is the DRIFT GUARD on LoadComposed's
+// carry-over - the one hand-written per-kind list the compose still has, where
+// the assignments move the community catalogue's sidecar slices onto the
+// composed one.
+//
+// A kind forgotten THERE fails no rule: the community root is not empty, no
+// sidecar dangles, nothing collides, so the build goes green and ships an
+// artifact with that whole member missing. Nothing downstream can tell that from
+// "no work carries one yet". So the expectation is derived from the Catalog TYPE
+// (sidecarCatalogFields, as TestSidecarRefsCoverEverySidecarKind is): a compose
+// whose community root holds EVERY member must land every one of them.
+func TestComposeCarriesEverySidecarKind(t *testing.T) {
+	entry := `{"characters":` + validCharacters("book-one") +
+		`,"recaps":` + validRecaps("book-one") +
+		`,"description":` + validDescription("book-one") + `}`
+	coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
+		"book-one": entry,
+	}))
+	res := LoadComposed(coreDir, comDir)
+	if !res.OK() {
+		t.Fatalf("a community root holding every member reported problems: %v", res.Problems)
+	}
+	v := reflect.ValueOf(res.Catalog).Elem()
+	fields := sidecarCatalogFields()
+	if len(fields) < 3 {
+		t.Fatalf("the derivation found %d sidecar fields, which cannot be right - it has drifted from the model", len(fields))
+	}
+	for _, i := range fields {
+		if v.Field(i).Len() == 0 {
+			t.Errorf("LoadComposed left Catalog.%s empty: the community root holds one, so the "+
+				"carry-over in compose.go is short a kind - which ships an artifact missing that whole layer",
+				v.Type().Field(i).Name)
+		}
 	}
 }

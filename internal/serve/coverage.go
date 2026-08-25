@@ -17,10 +17,17 @@ type coverageTotals struct {
 	WithCharacters   *int `json:"with_characters,omitempty"`
 	WithRecaps       *int `json:"with_recaps,omitempty"`
 	WithRecapSummary *int `json:"with_recap_summary,omitempty"`
+	// WithDescriptions counts works carrying the community spoiler-free
+	// description (artifact schema_version 6+). It is here rather than nowhere
+	// because this endpoint IS the discovery queue a generation wave works
+	// through: a member the browser cannot see is a member nobody is asked to
+	// write.
+	WithDescriptions *int `json:"with_descriptions,omitempty"`
 }
 
 // coverageWork is one work row in the coverage browser. Missing lists which of
-// characters/recaps/recap_summary the work still lacks (in that fixed order);
+// characters/recaps/recap_summary/description the work still lacks (in that
+// fixed order - description last, so an existing consumer's prefix is unmoved);
 // for a "has X" filter it may be empty (the work is fully covered). Series is
 // omitted for standalone works.
 type coverageWork struct {
@@ -59,7 +66,10 @@ type coverageResult struct {
 //     omitted (and /coverage/works reports available:false).
 //   - schema_version == 2: characters/recaps are evaluable; recap_summary is
 //     not (the recap_summaries table arrived in v3), so its total is omitted.
-//   - schema_version >= 3: all three dimensions are evaluable.
+//   - schema_version >= 3: characters, recaps and recap_summary are evaluable.
+//   - schema_version >= 6: the community description is evaluable too (the
+//     work_descriptions table); below it that total is omitted, so an older
+//     artifact answers exactly what it answered before the member existed.
 func (s *snapshot) coverage() (*coverageResult, error) {
 	res := &coverageResult{Totals: coverageTotals{Works: s.stats.Works}}
 
@@ -83,6 +93,13 @@ func (s *snapshot) coverage() (*coverageResult, error) {
 		}
 		res.Totals.WithRecapSummary = &nSummary
 	}
+	if s.schemaVersion >= descriptionSchemaVersion {
+		nDesc, err := s.scalarInt(`SELECT COUNT(*) FROM work_descriptions`)
+		if err != nil {
+			return nil, err
+		}
+		res.Totals.WithDescriptions = &nDesc
+	}
 	return res, nil
 }
 
@@ -94,6 +111,7 @@ const (
 	filterHasCharacters   coverageFilter = "has_characters"    // carries a character guide
 	filterHasRecaps       coverageFilter = "has_recaps"        // carries a story-so-far recap
 	filterHasRecapSummary coverageFilter = "has_recap_summary" // carries a whole-book recap summary
+	filterHasDescription  coverageFilter = "has_description"   // carries the community spoiler-free description
 )
 
 // validCoverageFilter maps a raw ?filter= value to a known filter (defaulting
@@ -102,7 +120,7 @@ func validCoverageFilter(raw string) (coverageFilter, bool) {
 	switch coverageFilter(raw) {
 	case "", filterMissing:
 		return filterMissing, true
-	case filterHasCharacters, filterHasRecaps, filterHasRecapSummary:
+	case filterHasCharacters, filterHasRecaps, filterHasRecapSummary, filterHasDescription:
 		return coverageFilter(raw), true
 	default:
 		return "", false
@@ -116,6 +134,10 @@ const (
 	hasCharsExpr   = `EXISTS(SELECT 1 FROM characters c WHERE c.work_id=w.id)`
 	hasRecapsExpr  = `EXISTS(SELECT 1 FROM recaps r WHERE r.work_id=w.id)`
 	hasSummaryExpr = `EXISTS(SELECT 1 FROM recap_summaries rs WHERE rs.work_id=w.id AND (COALESCE(rs.in_short,'')<>'' OR COALESCE(rs.ending,'')<>''))`
+	// No emptiness clause on this one, unlike its recap_summaries neighbour: a
+	// work_descriptions ROW always carries text (NOT NULL under a 200-character
+	// schema floor), so presence IS coverage.
+	hasDescriptionExpr = `EXISTS(SELECT 1 FROM work_descriptions wd WHERE wd.work_id=w.id)`
 )
 
 // coverageWorksResult is the /api/v1/coverage/works payload: one page of works
@@ -157,6 +179,7 @@ func boolSQL(evaluable bool, expr string) string {
 func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string, args []any, available bool) {
 	evalSidecars := s.schemaVersion >= sidecarSchemaVersion
 	evalSummary := s.schemaVersion >= summarySchemaVersion
+	evalDescription := s.schemaVersion >= descriptionSchemaVersion
 
 	switch filter {
 	case filterHasCharacters:
@@ -174,6 +197,11 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 			return "", nil, false
 		}
 		where = hasSummaryExpr
+	case filterHasDescription:
+		if !evalDescription {
+			return "", nil, false
+		}
+		where = hasDescriptionExpr
 	default: // filterMissing
 		if !evalSidecars {
 			return "", nil, false
@@ -181,6 +209,9 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 		parts := []string{"NOT " + hasCharsExpr, "NOT " + hasRecapsExpr}
 		if evalSummary {
 			parts = append(parts, "NOT "+hasSummaryExpr)
+		}
+		if evalDescription {
+			parts = append(parts, "NOT "+hasDescriptionExpr)
 		}
 		where = "(" + strings.Join(parts, " OR ") + ")"
 	}
@@ -210,6 +241,7 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset int) (*coverageWorksResult, error) {
 	res := &coverageWorksResult{Works: []coverageWork{}, Limit: limit, Offset: offset}
 	evalSummary := s.schemaVersion >= summarySchemaVersion
+	evalDescription := s.schemaVersion >= descriptionSchemaVersion
 
 	where, args, available := s.coverageWhere(filter, q)
 	if !available {
@@ -228,15 +260,17 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 
 	// Past the switch, evalSidecars is guaranteed true (every filter returns
 	// early without it), so characters/recaps are always projected directly;
-	// only recap_summary can be absent (v2), and boolSQL guards that one column.
+	// recap_summary (v2) and description (below v6) can be absent, and boolSQL
+	// guards those two columns.
 	pageArgs := append(append([]any{}, args...), limit, offset)
 	rows, err := s.db.Query(
 		`SELECT w.id, w.title, `+hasCharsExpr+`, `+hasRecapsExpr+`, `+boolSQL(evalSummary, hasSummaryExpr)+
+			`, `+boolSQL(evalDescription, hasDescriptionExpr)+
 			` FROM works w WHERE `+where+` ORDER BY w.title, w.id LIMIT ? OFFSET ?`, pageArgs...)
 	if err != nil {
 		return nil, err
 	}
-	page, err := scanCoveragePage(rows, evalSummary)
+	page, err := scanCoveragePage(rows, evalSummary, evalDescription)
 	if err != nil {
 		return nil, err
 	}
@@ -269,13 +303,13 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 // scanCoveragePage reads the (id, title, has-flags) page rows into coverageWork
 // values with their Missing lists filled, and closes rows. Authors and series
 // are attached by the caller in one batch.
-func scanCoveragePage(rows *sql.Rows, evalSummary bool) ([]coverageWork, error) {
+func scanCoveragePage(rows *sql.Rows, evalSummary, evalDescription bool) ([]coverageWork, error) {
 	defer func() { _ = rows.Close() }()
 	out := []coverageWork{}
 	for rows.Next() {
 		var cw coverageWork
-		var hasChars, hasRecaps, hasSummary int
-		if err := rows.Scan(&cw.ID, &cw.Title, &hasChars, &hasRecaps, &hasSummary); err != nil {
+		var hasChars, hasRecaps, hasSummary, hasDescription int
+		if err := rows.Scan(&cw.ID, &cw.Title, &hasChars, &hasRecaps, &hasSummary, &hasDescription); err != nil {
 			return nil, err
 		}
 		cw.Missing = []string{}
@@ -287,6 +321,11 @@ func scanCoveragePage(rows *sql.Rows, evalSummary bool) ([]coverageWork, error) 
 		}
 		if evalSummary && hasSummary == 0 {
 			cw.Missing = append(cw.Missing, "recap_summary")
+		}
+		// Last, so an older artifact's rows are byte-identical to what they were
+		// and a consumer reading the list positionally is unmoved.
+		if evalDescription && hasDescription == 0 {
+			cw.Missing = append(cw.Missing, "description")
 		}
 		out = append(out, cw)
 	}

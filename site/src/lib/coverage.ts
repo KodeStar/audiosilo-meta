@@ -105,12 +105,16 @@ export function coverageStats(totals: CoverageTotals): CoverageStat[] {
 }
 
 /** The coverage-browser filters, in tab order. The first ("Needs work") is the
-    default; the other three mirror the three stat cards ("has X"). */
+    default; the next three mirror the three stat cards ("has X"). The last has
+    no stat card of its own - the description member is not in the band - but it
+    is the queue a description-generation wave works through, so it is reachable
+    as a tab and by `?filter=`. */
 export const COVERAGE_FILTERS: { key: CoverageFilter; label: string }[] = [
   { key: 'missing', label: 'Needs work' },
   { key: 'has_characters', label: 'Has characters' },
   { key: 'has_recaps', label: 'Has story so far' },
   { key: 'has_recap_summary', label: 'Has recap summary' },
+  { key: 'has_description', label: 'Has description' },
 ]
 
 /** The browser filter that shows works which HAVE the given stat's dimension -

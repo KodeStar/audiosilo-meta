@@ -17,11 +17,17 @@ func writeFile(t *testing.T, dir, name, content string) string {
 	return p
 }
 
+// sidecarEnvelope is what every BARE sidecar record carries besides its own
+// prose: the schema's other required keys. collectExprs discriminates a bare
+// record by exactly that required set, so a fixture missing them is not a
+// partial sidecar, it is the wrong file - which is the point.
+const sidecarEnvelope = `"work":"the-book","license":"CC-BY-SA-4.0","sources":[{"type":"community"}]`
+
 // recapsSidecar wraps recap texts into a valid-shaped recaps sidecar. The test
 // strings are printable, so strconv.Quote's escaping is JSON-compatible.
 func recapsSidecar(t *testing.T, dir, name string, texts ...string) string {
 	t.Helper()
-	body := `{"recaps":[`
+	body := `{` + sidecarEnvelope + `,"recaps":[`
 	for i, tx := range texts {
 		if i > 0 {
 			body += ","
@@ -109,7 +115,7 @@ func TestNGramCharactersField(t *testing.T) {
 	dir := t.TempDir()
 	src := writeFile(t, dir, "src.txt", "he was a tall man with a weathered face and cold eyes")
 	sc := writeFile(t, dir, "c.json",
-		`{"characters":[{"id":"x","name":"X","reveal":{"chapter":1},`+
+		`{`+sidecarEnvelope+`,"characters":[{"id":"x","name":"X","reveal":{"chapter":1},`+
 			`"description":"He was a tall man with a weathered face and cold eyes."}]}`)
 
 	f, err := NGram(src, []string{sc}, 8)
@@ -129,7 +135,8 @@ func TestNGramInShortAndEnding(t *testing.T) {
 	phrase := "the whole thing came apart at the very last moment before dawn"
 	src := writeFile(t, dir, "src.txt", phrase)
 	sc := writeFile(t, dir, "r.json",
-		`{"recaps":[],"in_short":`+strconv.Quote("Summary. "+phrase)+`,"ending":`+strconv.Quote(phrase+" indeed.")+`}`)
+		`{`+sidecarEnvelope+`,"recaps":[],"in_short":`+strconv.Quote("Summary. "+phrase)+
+			`,"ending":`+strconv.Quote(phrase+" indeed.")+`}`)
 
 	f, err := NGram(src, []string{sc}, 8)
 	if err != nil {
@@ -252,6 +259,42 @@ func TestNGramPackWithoutSidecarsIsError(t *testing.T) {
 	}
 	if len(found) != 0 {
 		t.Errorf("findings = %+v, want none", found)
+	}
+}
+
+// A whisper-style transcript is `{"text": [...]}`, which is the exact shape a
+// one-key discriminator read as "a description whose prose is absent" - zero
+// findings, gate passed, nobody's prose scanned. It must be LOUD both ways: the
+// bare transcript is not a sidecar at all, and a record that IS one whose `text`
+// is an array is a malformed sidecar rather than an empty one.
+func TestNGramWhisperShapedFileIsError(t *testing.T) {
+	dir := t.TempDir()
+	src := writeFile(t, dir, "src.txt", "some source text that is long enough to shingle over")
+
+	transcript := writeFile(t, dir, "whisper.json",
+		`{"text":[{"start":0,"end":3,"speaker":"A"}],"language":"en"}`)
+	if _, err := NGram(src, []string{transcript}, 8); err == nil {
+		t.Error("NGram succeeded on a whisper transcript: a file whose prose was never scanned reported clean")
+	}
+
+	// The same hazard one step in: the required keys are all there, so it IS a
+	// description record - and its `text` is still not prose.
+	malformed := writeFile(t, dir, "d.json",
+		`{`+sidecarEnvelope+`,"text":[{"start":0,"end":3}]}`)
+	_, err := NGram(src, []string{malformed}, 8)
+	if err == nil {
+		t.Fatal("NGram succeeded on a description whose text is an array")
+	}
+	if !strings.Contains(err.Error(), "expected a string") {
+		t.Errorf("error %q does not say what was wrong with the field", err)
+	}
+
+	// And its sibling on the array side: a characters record whose `characters`
+	// is not an array contributes nothing, so it must not report clean either.
+	badArray := writeFile(t, dir, "c.json",
+		`{`+sidecarEnvelope+`,"characters":{"x":{"description":"words"}}}`)
+	if _, err := NGram(src, []string{badArray}, 8); err == nil {
+		t.Error("NGram succeeded on a characters record whose characters is not an array")
 	}
 }
 

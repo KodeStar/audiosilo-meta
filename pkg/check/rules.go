@@ -1,6 +1,8 @@
 package check
 
 import (
+	"maps"
+	"slices"
 	"sort"
 	"strings"
 
@@ -87,25 +89,25 @@ func checkIntegrity(profile pack.Profile, cat *model.Catalog, workByID map[strin
 	if !profile.Has(pack.FamilyWorks) {
 		return
 	}
-	for _, c := range cat.Characters {
-		if workByID[c.Work] == nil {
-			add(idx.characters[c], "parent work %q does not exist", c.Work)
-		}
-	}
-	for _, rc := range cat.Recaps {
-		if workByID[rc.Work] == nil {
-			add(idx.recaps[rc], "parent work %q does not exist", rc.Work)
-		}
-	}
-	for _, d := range cat.Descriptions {
-		if workByID[d.Work] == nil {
-			add(idx.descriptions[d], "parent work %q does not exist", d.Work)
+	// Through sidecarRefs - the package's ONE enumeration of the works-community
+	// member kinds (check.go, drift-guarded by
+	// TestSidecarRefsCoverEverySidecarKind) - rather than a per-kind loop of its
+	// own: a fourth member added to the model inherits this rule the day it lands
+	// instead of quietly escaping it, which for the CC BY-SA layer means a
+	// dangling sidecar shipping in an artifact rather than stopping the build.
+	for _, ref := range sidecarRefs(cat, idx) {
+		if workByID[*ref.work] == nil {
+			add(ref.path, "parent work %q does not exist", *ref.work)
 		}
 	}
 }
 
 // checkSidecarUniqueness enforces that a work has at most ONE sidecar of each
 // works-community member kind - one characters, one recaps, one description.
+//
+// The kinds come from sidecarRefs, the package's ONE enumeration of them
+// (check.go), grouped by kind here purely so the report reads per member; a
+// fourth kind is covered the day the model gains it.
 //
 // Nothing about the file layout guarantees it during the dual-layout window: a
 // work whose sidecars were packed into works-community while its legacy
@@ -133,23 +135,15 @@ func checkSidecarUniqueness(cat *model.Catalog, idx *pathIndex, add addFunc) {
 		}
 	}
 
-	chars := make([]sidecar, 0, len(cat.Characters))
-	for _, c := range cat.Characters {
-		chars = append(chars, sidecar{work: c.Work, path: idx.characters[c]})
+	byKind := map[string][]sidecar{}
+	for _, ref := range sidecarRefs(cat, idx) {
+		byKind[ref.kind] = append(byKind[ref.kind], sidecar{work: *ref.work, path: ref.path})
 	}
-	report("characters", chars)
-
-	recaps := make([]sidecar, 0, len(cat.Recaps))
-	for _, rc := range cat.Recaps {
-		recaps = append(recaps, sidecar{work: rc.Work, path: idx.recaps[rc]})
+	// Kinds in sorted order so one tree's report is one byte sequence whatever
+	// order the map iterated in; report sorts within a kind for the same reason.
+	for _, kind := range slices.Sorted(maps.Keys(byKind)) {
+		report(kind, byKind[kind])
 	}
-	report("recaps", recaps)
-
-	descriptions := make([]sidecar, 0, len(cat.Descriptions))
-	for _, d := range cat.Descriptions {
-		descriptions = append(descriptions, sidecar{work: d.Work, path: idx.descriptions[d]})
-	}
-	report("description", descriptions)
 }
 
 // checkCharacters enforces that character ids are unique within each per-work

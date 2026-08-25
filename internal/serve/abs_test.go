@@ -149,6 +149,38 @@ func TestABSDescriptionPrefersTheCommunityText(t *testing.T) {
 	}
 }
 
+// TestABSCommunityDescriptionCarriesItsAttribution is the LICENSE BOUNDARY on
+// this surface. absBook has no license field - the shape is Audiobookshelf's -
+// and ABS pastes the description straight into a library record, so a CC BY-SA
+// paragraph either carries its credit inside the text or ships unattributed,
+// which LICENSING.md does not permit. Exactly one of the two texts gets it: the
+// CC0 record's own field is not share-alike and must not be credited to anybody.
+func TestABSCommunityDescriptionCarriesItsAttribution(t *testing.T) {
+	base := absServer(t, absFixture())
+
+	_, matches := absMatches(t, base, "/abs/search?query=way+of+kings")
+	if len(matches) == 0 {
+		t.Fatalf("no matches for the work carrying a community description")
+	}
+	desc, _ := matches[0].(map[string]any)["description"].(string)
+	if !strings.HasSuffix(desc, absCommunityAttribution) {
+		t.Errorf("community description = %q, want it to end with %q", desc, absCommunityAttribution)
+	}
+	// The credit is APPENDED, never a replacement: the prose is still all there.
+	if !strings.Contains(desc, "shattered plain") {
+		t.Errorf("community description = %q, want the text itself intact", desc)
+	}
+
+	_, phmMatches := absMatches(t, base, "/abs/search?query=hail+mary")
+	if len(phmMatches) == 0 {
+		t.Fatalf("no matches for the work carrying no community description")
+	}
+	cc0, _ := phmMatches[0].(map[string]any)["description"].(string)
+	if strings.Contains(cc0, "CC BY-SA") {
+		t.Errorf("the CC0 record's own description was credited to the community: %q", cc0)
+	}
+}
+
 func TestABSEmptyQuery400(t *testing.T) {
 	base := absServer(t, absFixture())
 	if code, _ := getJSON(t, base, "/abs/search"); code != 400 {

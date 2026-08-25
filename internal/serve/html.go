@@ -830,10 +830,14 @@ type workView struct {
 }
 
 func newWorkView(d *workDetail) workView {
+	// ONE call for both fields. The text the page prints and the flag that decides
+	// whether the CC BY-SA notice is printed beside it are two halves of one
+	// answer (displayDescription), so they cannot disagree.
+	description, isCommunity := displayDescription(d)
 	v := workView{
 		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
-		Description:            displayDescription(d),
-		DescriptionIsCommunity: communityDescriptionText(d) != "",
+		Description:            description,
+		DescriptionIsCommunity: isCommunity,
 		LicenseURL:             ccBySAURL,
 		LicenseLabel:           ccBySALabel,
 		FirstPublished:         d.FirstPublished, Authors: d.Authors, Series: d.Series, Genres: d.Genres,

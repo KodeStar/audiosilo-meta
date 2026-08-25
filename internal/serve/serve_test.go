@@ -683,6 +683,46 @@ func TestCommunityDescriptionToleratesV5Artifact(t *testing.T) {
 	}
 }
 
+// TestCommunityDescriptionRefusesAVersion6ArtifactWithoutTheTable is the OTHER
+// side of the version gate, and the reason it is asked at LOAD rather than per
+// request: an artifact that CLAIMS version 6 without work_descriptions is a
+// corrupt file, not an old one - the builder writes the version and the table
+// together - and per-request it would 500 every works/{id} and every
+// /abs/search candidate while the boot itself looked fine. The redirects table
+// is refused the same way, and the error names the claim being enforced.
+func TestCommunityDescriptionRefusesAVersion6ArtifactWithoutTheTable(t *testing.T) {
+	dbPath := downgradedDB(t, fixtureCatalog(), 6, "work_descriptions")
+	_, err := openSnapshot(dbPath, "")
+	if err == nil {
+		t.Fatal("a version 6 artifact with no work_descriptions table opened cleanly")
+	}
+	for _, want := range []string{"schema_version 6", "work_descriptions"} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("error %q does not name %q", err, want)
+		}
+	}
+}
+
+// TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty pins the load-time memo the
+// per-request gate reads: with no description in the catalogue - which is every
+// release until the layer has data - the work page, the guide pages and the ABS
+// candidates must not touch work_descriptions at all.
+func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Descriptions = nil
+	empty := snapshotFor(t, cat)
+	if empty.hasDescriptions {
+		t.Error("hasDescriptions is true for a catalogue holding no descriptions")
+	}
+	got, err := empty.communityDescriptionOf("project-hail-mary")
+	if err != nil || got != nil {
+		t.Errorf("communityDescriptionOf = %v, %v; want nil, nil", got, err)
+	}
+	if full := snapshotFor(t, fixtureCatalog()); !full.hasDescriptions {
+		t.Error("hasDescriptions is false for a catalogue that holds one")
+	}
+}
+
 // TestWorkDetailToleratesOlderArtifact serves a schema_version 1 artifact that
 // predates the characters/recaps tables: every sidecar query no-ops on the
 // version, so the work still serves, just without them.

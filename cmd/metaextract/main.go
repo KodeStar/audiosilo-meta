@@ -1,5 +1,6 @@
-// Command metaextract supports the Phase 3 epub -> characters/recaps extraction
-// pipeline. It has two subcommands:
+// Command metaextract supports the Phase 3 epub -> community-sidecar extraction
+// pipeline (characters, recaps and the spoiler-free description). It has two
+// subcommands:
 //
 //	metaextract split --epub <book.epub> -o <outdir>
 //	    Split an epub into one plain-text file per chapter (001.txt, ...) - a
@@ -8,10 +9,11 @@
 //	    the book's OPF metadata. Exits 0 on success, 2 on a usage/IO/parse error.
 //
 //	metaextract ngram --source <dir-or-file> [--n 8] <pack.json> [more.json...]
-//	    Check authored characters/recaps sidecars for near-verbatim overlap with
-//	    the source text (the no-verbatim copyright rule in the community repo's
-//	    AUTHORING.md). The paths are works-community pack files - every entry is checked,
-//	    and a finding names the work it came from - or a bare sidecar record.
+//	    Check authored community sidecars - characters, recaps and description -
+//	    for near-verbatim overlap with the source text (the no-verbatim copyright
+//	    rule in the community repo's AUTHORING.md). The paths are works-community
+//	    pack files - every entry is checked, and a finding names the work it came
+//	    from - or a bare sidecar record.
 //	    Exits 1 when any overlap is found, 0 when clean, 2 on a usage/IO error.
 //
 // Logic lives in pkg/extract; this command is transport-only.

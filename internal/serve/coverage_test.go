@@ -40,7 +40,15 @@ func coverageCatalog() *model.Catalog {
 			},
 		}
 	}
-	// alpha is fully covered: characters + recaps + a whole-book summary.
+	// alpha is fully covered: characters + recaps + a whole-book summary + the
+	// community description. "Fully covered" is what the browser's missing filter
+	// is defined against, so a member added to the model has to be added HERE or
+	// the fixture quietly stops having a covered work in it.
+	alphaDescription := &model.Description{
+		Work: "alpha-covered", License: "CC-BY-SA-4.0",
+		Sources: []model.Source{{Type: "community"}},
+		Text:    "A spoiler-free account of the setup, written by the community, long enough to be a real paragraph.",
+	}
 	alphaRecaps := &model.Recaps{
 		Work: "alpha-covered", License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
@@ -74,8 +82,9 @@ func coverageCatalog() *model.Catalog {
 				Works:   []model.SeriesWork{{Work: "multi", Position: "1"}},
 			},
 		},
-		Characters: []*model.Characters{chars("alpha-covered"), chars("beta-partial")},
-		Recaps:     []*model.Recaps{alphaRecaps},
+		Characters:   []*model.Characters{chars("alpha-covered"), chars("beta-partial")},
+		Recaps:       []*model.Recaps{alphaRecaps},
+		Descriptions: []*model.Description{alphaDescription},
 	}
 }
 
@@ -123,6 +132,7 @@ func TestCoverageTotals(t *testing.T) {
 	totals := body["totals"].(map[string]any)
 	wantTotals := map[string]float64{
 		"works": 5, "with_characters": 2, "with_recaps": 1, "with_recap_summary": 1,
+		"with_descriptions": 1,
 	}
 	for k, v := range wantTotals {
 		if got, _ := totals[k].(float64); got != v {
@@ -160,8 +170,8 @@ func TestCoverageWorksMissing(t *testing.T) {
 
 	works := body["works"].([]any)
 	beta := works[0].(map[string]any)
-	if m := toStrings(beta["missing"].([]any)); !reflect.DeepEqual(m, []string{"recaps", "recap_summary"}) {
-		t.Errorf("beta missing = %v, want [recaps recap_summary]", m)
+	if m := toStrings(beta["missing"].([]any)); !reflect.DeepEqual(m, []string{"recaps", "recap_summary", "description"}) {
+		t.Errorf("beta missing = %v, want [recaps recap_summary description]", m)
 	}
 	// beta-partial belongs to zeta-series; the row carries its series ref.
 	if s, ok := beta["series"].(map[string]any); !ok || s["id"] != "zeta-series" {
@@ -199,12 +209,12 @@ func TestCoverageWorksHasFilters(t *testing.T) {
 	}
 	// A partially-covered work still advertises what it lacks.
 	beta := body["works"].([]any)[1].(map[string]any)
-	if m := toStrings(beta["missing"].([]any)); !reflect.DeepEqual(m, []string{"recaps", "recap_summary"}) {
-		t.Errorf("beta missing = %v, want [recaps recap_summary]", m)
+	if m := toStrings(beta["missing"].([]any)); !reflect.DeepEqual(m, []string{"recaps", "recap_summary", "description"}) {
+		t.Errorf("beta missing = %v, want [recaps recap_summary description]", m)
 	}
 
-	// has_recaps / has_recap_summary: only alpha-covered.
-	for _, f := range []string{"has_recaps", "has_recap_summary"} {
+	// has_recaps / has_recap_summary / has_description: only alpha-covered.
+	for _, f := range []string{"has_recaps", "has_recap_summary", "has_description"} {
 		_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter="+f)
 		if got := workIDs(body); !reflect.DeepEqual(got, []string{"alpha-covered"}) {
 			t.Errorf("%s = %v, want [alpha-covered]", f, got)
