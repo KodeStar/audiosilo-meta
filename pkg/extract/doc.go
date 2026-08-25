@@ -1,16 +1,19 @@
-// Package extract supports the Phase 3 epub -> characters/recaps extraction
-// pipeline. It has two independent halves:
+// Package extract supports the Phase 3 epub -> community-sidecar extraction
+// pipeline (characters, recaps and the spoiler-free description). It has two
+// independent halves:
 //
 //   - Split turns an epub into one plain-text file per chapter (in spine order) -
 //     a spine document, or one anchored section of a spine document that holds
 //     several chapters - plus a manifest.json describing the chapter list and the
 //     book's OPF metadata. The chapter list drives the spoiler position model
 //     authors key characters/recaps against, and ChapterFromLabel/Contiguous are
-//     the toc-label vocabulary it is derived from.
-//   - NGram mechanically checks authored sidecar JSON (characters/recaps) for
-//     near-verbatim overlap with the source text, enforcing the no-verbatim
-//     copyright rule documented in AUTHORING.md, which lives in the community
-//     repository (KodeStar/audiosilo-meta-community) with the layer it governs.
+//     the toc-label vocabulary it is derived from. (The description member is
+//     gated by no position, so it needs none of that - only the check below.)
+//   - NGram mechanically checks authored sidecar JSON - characters, recaps and
+//     description, every own-words field of every member kind - for near-verbatim
+//     overlap with the source text, enforcing the no-verbatim copyright rule
+//     documented in AUTHORING.md, which lives in the community repository
+//     (KodeStar/audiosilo-meta-community) with the layer it governs.
 //
 // Neither half writes into data/; the tool is an authoring aid whose outputs
 // (chapter text, overlap findings) inform a human contributor.

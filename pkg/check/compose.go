@@ -136,8 +136,16 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// profiles are disjoint by construction, so this is an assignment rather than
 	// a merge, and the order within each list is the community listing's, which is
 	// the order a single ProfileAll tree would have produced from the same files.
+	//
+	// It is the ONE hand-written per-kind list left in the compose, and the most
+	// expensive one to get wrong: a kind forgotten HERE composes clean and ships
+	// an artifact silently missing that whole layer, which is the quiet omission
+	// the empty-root refusal below exists to prevent, one member at a time. So it
+	// is drift-guarded from the Catalog TYPE by
+	// TestComposeCarriesEverySidecarKind, exactly as sidecarRefs is.
 	res.Catalog.Characters = com.Catalog.Characters
 	res.Catalog.Recaps = com.Catalog.Recaps
+	res.Catalog.Descriptions = com.Catalog.Descriptions
 
 	// AN EMPTY COMMUNITY SIDE IS A HARD ERROR, and it is checked before the
 	// cross-tree rules because a tree with nothing in it satisfies every one of
@@ -149,7 +157,12 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// repository's ROOT rather than at its data/ subdirectory. Asking for the layer
 	// and silently getting none is never what the caller meant; not asking (no
 	// --community) is still how a core-only artifact is built.
-	if len(res.Catalog.Characters) == 0 && len(res.Catalog.Recaps) == 0 {
+	//
+	// Asked through sidecarRefs - the package's ONE enumeration of the member
+	// kinds - rather than by naming the slices, so a kind added to the model
+	// cannot make an otherwise-empty root look populated (or, worse, leave a root
+	// holding ONLY that kind reported as empty).
+	if len(sidecarRefs(res.Catalog, comIdx)) == 0 {
 		res.Problems = append(res.Problems, Problem{
 			Path: communityDir,
 			Msg: "holds no loadable works-community entries: composing it would ship an artifact with no " +

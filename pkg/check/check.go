@@ -106,22 +106,24 @@ type recordWithPath struct {
 // pathIndex remembers where each entity was loaded from, for later problem
 // reporting during cross-record checks.
 type pathIndex struct {
-	work       map[*model.Work]string
-	rec        map[*model.Recording]string
-	person     map[*model.Person]string
-	series     map[*model.Series]string
-	characters map[*model.Characters]string
-	recaps     map[*model.Recaps]string
+	work         map[*model.Work]string
+	rec          map[*model.Recording]string
+	person       map[*model.Person]string
+	series       map[*model.Series]string
+	characters   map[*model.Characters]string
+	recaps       map[*model.Recaps]string
+	descriptions map[*model.Description]string
 }
 
 func newPathIndex() *pathIndex {
 	return &pathIndex{
-		work:       map[*model.Work]string{},
-		rec:        map[*model.Recording]string{},
-		person:     map[*model.Person]string{},
-		series:     map[*model.Series]string{},
-		characters: map[*model.Characters]string{},
-		recaps:     map[*model.Recaps]string{},
+		work:         map[*model.Work]string{},
+		rec:          map[*model.Recording]string{},
+		person:       map[*model.Person]string{},
+		series:       map[*model.Series]string{},
+		characters:   map[*model.Characters]string{},
+		recaps:       map[*model.Recaps]string{},
+		descriptions: map[*model.Description]string{},
 	}
 }
 
@@ -130,7 +132,7 @@ func newPathIndex() *pathIndex {
 // The index is keyed by the record POINTER, and a record is decoded exactly
 // once, by exactly one pack's loader - so two indexes can never hold the same
 // key and merging is a copy, never a resolution. It lives here rather than at
-// the merge site so pathIndex's field list is written in ONE file: a seventh map
+// the merge site so pathIndex's field list is written in ONE file: an eighth map
 // added above and forgotten below would silently lose every path of that kind.
 func (i *pathIndex) merge(o *pathIndex) {
 	maps.Copy(i.work, o.work)
@@ -139,6 +141,7 @@ func (i *pathIndex) merge(o *pathIndex) {
 	maps.Copy(i.series, o.series)
 	maps.Copy(i.characters, o.characters)
 	maps.Copy(i.recaps, o.recaps)
+	maps.Copy(i.descriptions, o.descriptions)
 }
 
 // prefix re-points every path in the index, for a load whose paths need to say
@@ -153,6 +156,7 @@ func (i *pathIndex) prefix(p string) {
 	prefixPaths(i.series, p)
 	prefixPaths(i.characters, p)
 	prefixPaths(i.recaps, p)
+	prefixPaths(i.descriptions, p)
 }
 
 // prefixPaths prepends p to every path in one of the index's maps.
@@ -173,25 +177,38 @@ type sidecarRef struct {
 }
 
 // sidecarRefs enumerates every sidecar member in the catalogue, in catalogue
-// order - characters then recaps, which is a reporting order only: every rule
-// over it groups or sorts before it says anything.
+// order - characters, then recaps, then descriptions, which is a reporting order
+// only: every rule over it groups or sorts before it says anything.
 //
 // It lives HERE, beside pathIndex, for the reason pathIndex.merge does: the
 // member kinds are a list that has to be written out by hand, and this file is
-// where the project keeps that list total. Three other rules enumerate the same
-// two kinds (checkIntegrity's sidecar arm, checkSidecarUniqueness,
-// checkSidecarPositionScale), each reporting through the very maps declared
-// above; a third kind added to model.Catalog and missed here would silently
-// escape the compose's existence rule, so TestSidecarRefsCoverEverySidecarKind
-// derives the kinds from the Catalog type itself and fails when this list is
-// short.
+// where the project keeps that list total - so it is the ONE enumeration every
+// rule over the member kinds reads. checkIntegrity's sidecar arm, the compose's
+// existence/redirect/collision rules and checkSidecarUniqueness all iterate THIS
+// (the last grouping by kind for its report) rather than each carrying a
+// per-kind loop of its own; a fourth kind added to model.Catalog and missed here
+// would silently escape all of them at once, so
+// TestSidecarRefsCoverEverySidecarKind derives the kinds from the Catalog type
+// itself and fails when this list is short.
+//
+// The one rule that deliberately does NOT read it is checkSidecarPositionScale:
+// it judges POSITIONS, and a description carries none, so its shorter list is a
+// statement rather than an omission.
+//
+// The kind string is the MEMBER NAME (model.Kind's own spelling), not the
+// catalogue field's - `description` is one member of one work however many of
+// them a Catalog holds - so the messages a rule composes name the member an
+// operator has to go and edit.
 func sidecarRefs(cat *model.Catalog, idx *pathIndex) []sidecarRef {
-	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps))
+	refs := make([]sidecarRef, 0, len(cat.Characters)+len(cat.Recaps)+len(cat.Descriptions))
 	for _, c := range cat.Characters {
-		refs = append(refs, sidecarRef{kind: "characters", path: idx.characters[c], work: &c.Work})
+		refs = append(refs, sidecarRef{kind: string(model.KindCharacters), path: idx.characters[c], work: &c.Work})
 	}
 	for _, rc := range cat.Recaps {
-		refs = append(refs, sidecarRef{kind: "recaps", path: idx.recaps[rc], work: &rc.Work})
+		refs = append(refs, sidecarRef{kind: string(model.KindRecaps), path: idx.recaps[rc], work: &rc.Work})
+	}
+	for _, d := range cat.Descriptions {
+		refs = append(refs, sidecarRef{kind: string(model.KindDescription), path: idx.descriptions[d], work: &d.Work})
 	}
 	return refs
 }

@@ -147,6 +147,18 @@ export interface Work {
   recaps?: Recap[]
   /** Whole-book recap summary (CC BY-SA); absent on most works. */
   recap_summary?: RecapSummary
+  /** The community's spoiler-free description (CC BY-SA); absent on most works.
+      Distinct from `description` above, which is the CC0 record's own field -
+      the two are separate keys because they carry different licences. */
+  community_description?: CommunityDescription
+}
+
+/** A community-written, spoiler-free description of a work: what a stranger reads
+    before deciding to listen. Unlike a recap it is gated by no position, and
+    unlike `recap_summary.in_short` it never states the ending. */
+export interface CommunityDescription {
+  text: string
+  license?: string
 }
 
 export interface Chapter {
@@ -192,8 +204,11 @@ export interface LookupResponse {
 
 // --- Coverage (the contribute page's "what needs work" feed) --------------
 
-/** A dimension of the community expressive layer a work can be missing. */
-export type CoverageDimension = 'characters' | 'recaps' | 'recap_summary'
+/** A dimension of the community expressive layer a work can be missing.
+    `description` is the spoiler-free paragraph; it has no guided builder (it
+    arrives as a hand-authored PR on the community repository), so it appears in
+    `missing` and as a filter but offers no build CTA. */
+export type CoverageDimension = 'characters' | 'recaps' | 'recap_summary' | 'description'
 
 /** Catalogue-wide totals. The three sidecar counts are OMITTED when the artifact
     cannot report them (an older build); a real 0 still serializes. Consumers
@@ -203,6 +218,7 @@ export interface CoverageTotals {
   with_characters?: number
   with_recaps?: number
   with_recap_summary?: number
+  with_descriptions?: number
 }
 
 /** One work row in the coverage browser. `missing` lists whichever dimensions
@@ -239,6 +255,7 @@ export type CoverageFilter =
   | 'has_characters'
   | 'has_recaps'
   | 'has_recap_summary'
+  | 'has_description'
 
 /** One page of /coverage/works. `total` is the unpaged count (drives the
     pager); `available` is false when the filter's dimension is not evaluable at

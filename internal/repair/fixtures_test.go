@@ -36,6 +36,7 @@ var (
 	seriesJSON       = testpack.SeriesJSON
 	charactersJSON   = testpack.CharactersJSON
 	recapsJSON       = testpack.RecapsJSON
+	descriptionJSON  = testpack.DescriptionJSON
 	withAuthors      = testpack.WithAuthors
 	withGenres       = testpack.WithGenres
 	withCredits      = testpack.WithCredits

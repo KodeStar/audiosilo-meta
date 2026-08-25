@@ -24,10 +24,11 @@ var factualCaps = map[string]bool{}
 // (expressiveFields, the real source of truth - not a copy) plus the explicit
 // factualCaps allowlist above.
 //
-// The load-bearing assumption, verified against both schemas: within
-// characters.schema.json and recaps.schema.json, an INLINE string property with
-// maxLength is exactly an own-words expressive field (description, text,
-// in_short, ending - each capped "for the copyright reference-guide tier").
+// The load-bearing assumption, verified against all three schemas: within
+// characters.schema.json, recaps.schema.json and description.schema.json, an
+// INLINE string property with maxLength is exactly an own-words expressive field
+// (description, text, in_short, ending - each capped "for the copyright
+// reference-guide tier").
 // Identifier caps (like the slug's maxLength) live behind $refs into
 // common.schema.json, which this walk deliberately does not resolve: refs in
 // the sidecar schemas point at structural defs (slug, position, license,
@@ -53,8 +54,13 @@ func TestCheckedFieldsMatchSchemas(t *testing.T) {
 		discovered := map[string]bool{}
 		cappedStringFields(t, doc, "", discovered)
 
-		// The set collectExprs scans for this kind, in the same path notation.
-		checked := map[string]bool{fmt.Sprintf("%s[].%s", kind, fields.itemField): true}
+		// The set collectExprs scans for this kind, in the same path notation. The
+		// per-item array is keyed by the KIND itself, and a kind with no itemField
+		// (description) has no array at all - only its top-level fields.
+		checked := map[string]bool{}
+		if fields.itemField != "" {
+			checked[fmt.Sprintf("%s[].%s", kind, fields.itemField)] = true
+		}
 		for _, tl := range fields.topLevel {
 			checked[tl] = true
 		}
@@ -76,6 +82,62 @@ func TestCheckedFieldsMatchSchemas(t *testing.T) {
 		}
 		if t.Failed() {
 			t.Logf("%s discovered=%v checked=%v", file, sortedKeys(discovered), sortedKeys(checked))
+		}
+	}
+}
+
+// TestRequiredKeysMatchSchemas is the drift guard on the OTHER half of
+// expressiveFields: the `required` list each kind is discriminated by when the
+// tool is handed a BARE record. It is the schema's own top-level `required`, so
+// this pins the two equal (order included - both are read as a set, but keeping
+// one spelling means a diff shows a real change).
+//
+// A stale list is the failure the discriminator exists to prevent, wearing a
+// different hat: too LOOSE and a file that is not a sidecar reads as an empty
+// one, and the no-verbatim gate passes prose nobody scanned; too TIGHT and a
+// real record is refused as the wrong file.
+func TestRequiredKeysMatchSchemas(t *testing.T) {
+	for _, kind := range sidecarKinds() {
+		file := kind + ".schema.json"
+		data, err := meta.SchemaFS.ReadFile("schema/" + file)
+		if err != nil {
+			t.Fatalf("read embedded schema %s: %v", file, err)
+		}
+		var doc struct {
+			Required []string `json:"required"`
+		}
+		if err := json.Unmarshal(data, &doc); err != nil {
+			t.Fatalf("parse schema %s: %v", file, err)
+		}
+		if len(doc.Required) == 0 {
+			t.Fatalf("%s declares no top-level required keys - the bare-record discriminator has nothing to stand on", file)
+		}
+		if got := expressiveFields[kind].required; !slices.Equal(got, doc.Required) {
+			t.Errorf("%s: expressiveFields[%q].required = %v, schema requires %v", file, kind, got, doc.Required)
+		}
+	}
+}
+
+// TestSidecarDiscriminatorsAreDisjoint pins that no ONE bare record can read as
+// two kinds: a minimal record carrying exactly one kind's required keys matches
+// that kind and no other. Without it matchKind's answer would depend on its
+// iteration order, and a file could be scanned under the wrong kind's field
+// list - which reports clean for prose that was never looked at.
+func TestSidecarDiscriminatorsAreDisjoint(t *testing.T) {
+	for _, kind := range sidecarKinds() {
+		m := map[string]any{}
+		for _, k := range expressiveFields[kind].required {
+			m[k] = "present"
+		}
+		var matched []string
+		for _, other := range sidecarKinds() {
+			if expressiveFields[other].matchesRecord(m) {
+				matched = append(matched, other)
+			}
+		}
+		if !slices.Equal(matched, []string{kind}) {
+			t.Errorf("a minimal %s record matched %v: the kinds' required keys are not disjoint, so matchKind's answer depends on iteration order",
+				kind, matched)
 		}
 	}
 }

@@ -23,6 +23,10 @@ const (
 	KindSeries     Kind = "series"
 	KindCharacters Kind = "characters"
 	KindRecaps     Kind = "recaps"
+	// KindDescription is the works-community entry's spoiler-free description
+	// member. Singular, because one work has ONE description - the member name is
+	// the kind, and pkg/check's communityMembers is where the two meet.
+	KindDescription Kind = "description"
 )
 
 // Source records the provenance of a record. Every entity carries at least one.
@@ -341,6 +345,20 @@ type Recaps struct {
 	Sources []Source `json:"sources"`
 }
 
+// Description is the per-work sidecar holding a work's spoiler-free
+// description - the paragraph a stranger reads before deciding to listen. It
+// lives in the CC BY-SA layer, decoupled from the CC0 core work record.
+//
+// Deliberately NOT the same thing as Work.Description (a CC0 field nothing
+// writes) or as Recaps.InShort (which states the ending): this text is gated by
+// no position and reveals nothing past the opening act.
+type Description struct {
+	Work    string   `json:"work"`
+	Text    string   `json:"text"`
+	License string   `json:"license"`
+	Sources []Source `json:"sources"`
+}
+
 // Catalog is the fully loaded, in-memory dataset.
 type Catalog struct {
 	Works      []*Work
@@ -348,6 +366,10 @@ type Catalog struct {
 	Series     []*Series
 	Characters []*Characters
 	Recaps     []*Recaps
+	// Descriptions is the works-community `description` member, one per work
+	// that carries one. Named for the SLICE it is; the member (and the kind) is
+	// singular - see KindDescription.
+	Descriptions []*Description
 	// Redirects is the slug tombstone table (data/redirects.json): which
 	// retired slug now stands for which record above. It is nil for a tree
 	// that carries no table, which reads as "no redirects" everywhere.

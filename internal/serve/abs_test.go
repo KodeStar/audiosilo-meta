@@ -2,6 +2,7 @@ package serve
 
 import (
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 
@@ -104,10 +105,79 @@ func absFixture() *model.Catalog {
 		Authors: []string{"brandon-sanderson"},
 		Works:   []model.SeriesWork{{Work: "the-way-of-kings", Position: "1"}},
 	}
+	// A community description on the ONE work that states no CC0 description, so
+	// the facade's fallback and its preference are both observable: phm keeps the
+	// record's own text, wok gets the community's.
+	wokDesc := &model.Description{
+		Work: "the-way-of-kings", License: "CC-BY-SA-4.0",
+		Sources: []model.Source{{Type: "community"}},
+		Text: "On a shattered plain where the storms come from the wrong direction, a slave, a scholar " +
+			"and a soldier each arrive at the same question from a different side of the war they were " +
+			"born into, and none of them likes the answer.",
+	}
 	return &model.Catalog{
-		Works:  []*model.Work{phm, wok, kings},
-		People: []*model.Person{weir, porter, bray, sando, kramer, reading, king},
-		Series: []*model.Series{series},
+		Works:        []*model.Work{phm, wok, kings},
+		People:       []*model.Person{weir, porter, bray, sando, kramer, reading, king},
+		Series:       []*model.Series{series},
+		Descriptions: []*model.Description{wokDesc},
+	}
+}
+
+// TestABSDescriptionPrefersTheCommunityText pins what /abs/search sends as a
+// book's description: the community's own-words paragraph where the work carries
+// one, the CC0 record's own field otherwise. Audiobookshelf displays whatever it
+// is given, and ours is written rather than scraped.
+func TestABSDescriptionPrefersTheCommunityText(t *testing.T) {
+	base := absServer(t, absFixture())
+
+	_, matches := absMatches(t, base, "/abs/search?query=way+of+kings")
+	if len(matches) == 0 {
+		t.Fatalf("no matches for the work carrying a community description")
+	}
+	m := matches[0].(map[string]any)
+	if desc, _ := m["description"].(string); !strings.Contains(desc, "shattered plain") {
+		t.Errorf("description = %q, want the community text", m["description"])
+	}
+
+	// The work with no description member keeps the CC0 record's own text.
+	_, phmMatches := absMatches(t, base, "/abs/search?query=hail+mary")
+	if len(phmMatches) == 0 {
+		t.Fatalf("no matches for the work carrying no community description")
+	}
+	if got := phmMatches[0].(map[string]any)["description"]; got != "A lone astronaut must save the earth." {
+		t.Errorf("description = %v, want the CC0 record's own", got)
+	}
+}
+
+// TestABSCommunityDescriptionCarriesItsAttribution is the LICENSE BOUNDARY on
+// this surface. absBook has no license field - the shape is Audiobookshelf's -
+// and ABS pastes the description straight into a library record, so a CC BY-SA
+// paragraph either carries its credit inside the text or ships unattributed,
+// which LICENSING.md does not permit. Exactly one of the two texts gets it: the
+// CC0 record's own field is not share-alike and must not be credited to anybody.
+func TestABSCommunityDescriptionCarriesItsAttribution(t *testing.T) {
+	base := absServer(t, absFixture())
+
+	_, matches := absMatches(t, base, "/abs/search?query=way+of+kings")
+	if len(matches) == 0 {
+		t.Fatalf("no matches for the work carrying a community description")
+	}
+	desc, _ := matches[0].(map[string]any)["description"].(string)
+	if !strings.HasSuffix(desc, absCommunityAttribution) {
+		t.Errorf("community description = %q, want it to end with %q", desc, absCommunityAttribution)
+	}
+	// The credit is APPENDED, never a replacement: the prose is still all there.
+	if !strings.Contains(desc, "shattered plain") {
+		t.Errorf("community description = %q, want the text itself intact", desc)
+	}
+
+	_, phmMatches := absMatches(t, base, "/abs/search?query=hail+mary")
+	if len(phmMatches) == 0 {
+		t.Fatalf("no matches for the work carrying no community description")
+	}
+	cc0, _ := phmMatches[0].(map[string]any)["description"].(string)
+	if strings.Contains(cc0, "CC BY-SA") {
+		t.Errorf("the CC0 record's own description was credited to the community: %q", cc0)
 	}
 }
 

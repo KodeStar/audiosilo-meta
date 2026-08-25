@@ -5,6 +5,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -64,6 +65,48 @@ func TestSidecarsShareOneEntry(t *testing.T) {
 	}
 	if !recordExists(t, dir, "works/ex/existing-work/recaps.json") {
 		t.Error("the recaps member was not written")
+	}
+}
+
+// TestSidecarWritePreservesADescriptionMember is the same read-modify-write asked
+// of the member with NO issue form of its own. A description arrives by
+// hand-authored PR or a generation wave, so nothing here composes one - which is
+// exactly why the bot must be unable to drop one: it writes the member it was
+// given and carries every other byte of the entry through.
+func TestSidecarWritePreservesADescriptionMember(t *testing.T) {
+	dir := t.TempDir()
+	seed := seedFiles()
+	seed["works/ex/existing-work/description.json"] = testpack.DescriptionJSON(t, "existing-work")
+	testpack.Seed(t, dir, seed)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("the seeded description does not validate: %v", res.Problems)
+	}
+
+	for _, sub := range []struct{ template, body string }{
+		{"characters", charactersBody("existing-work", validCharactersJSON, true)},
+		{"recaps", recapsBody("existing-work", validRecapsJSON, true)},
+	} {
+		res := Process(Options{DataDir: dir, Template: sub.template, Body: sub.body})
+		if res.Status != StatusOK {
+			t.Fatalf("%s status = %q, messages = %v", sub.template, res.Status, res.Messages)
+		}
+	}
+
+	// Compared as VALUES: the member is re-rendered canonically by the same flush
+	// that writes its neighbours, so the bytes are re-indented while the record
+	// must be unchanged.
+	var got, want map[string]any
+	if err := json.Unmarshal([]byte(readFile(t, dir, "works/ex/existing-work/description.json")), &got); err != nil {
+		t.Fatalf("unmarshal the description member: %v", err)
+	}
+	if err := json.Unmarshal([]byte(testpack.DescriptionJSON(t, "existing-work")), &want); err != nil {
+		t.Fatal(err)
+	}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("the description member did not survive the sidecar writes:\ngot  %+v\nwant %+v", got, want)
+	}
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("the tree does not validate after the writes: %v", res.Problems)
 	}
 }
 

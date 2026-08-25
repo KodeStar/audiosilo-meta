@@ -98,8 +98,20 @@ func TestSidecarUniqueness(t *testing.T) {
 	files := packValid()
 	// "aa" sorts before "book-one", so this second pack legitimately covers the
 	// slug and the copy in 0.json is the misplaced one: two entries, one work.
+	//
+	// EVERY member kind is doubled, description included: the rule is written
+	// over sidecarRefs, so a kind it does not enumerate would be silently exempt
+	// from it - and the description member's own violating fixture is what pins
+	// that it is not.
+	files["works-community/0/0.json"] = packOf(map[string]string{
+		"book-one": `{"characters":` + validCharacters("book-one") +
+			`,"recaps":` + validRecaps("book-one") +
+			`,"description":` + validDescription("book-one") + `}`,
+	})
 	files["works-community/0/aa.json"] = packOf(map[string]string{
-		"book-one": `{"characters":` + validCharacters("book-one") + `,"recaps":` + validRecaps("book-one") + `}`,
+		"book-one": `{"characters":` + validCharacters("book-one") +
+			`,"recaps":` + validRecaps("book-one") +
+			`,"description":` + validDescription("book-one") + `}`,
 	})
 	writeTree(t, dir, files)
 
@@ -107,6 +119,7 @@ func TestSidecarUniqueness(t *testing.T) {
 	for _, want := range []string{
 		`work "book-one" already has a characters sidecar in works-community/0/0.json: entry book-one: characters`,
 		`work "book-one" already has a recaps sidecar in works-community/0/0.json: entry book-one: recaps`,
+		`work "book-one" already has a description sidecar in works-community/0/0.json: entry book-one: description`,
 	} {
 		if !hasProblem(res.Problems, want) {
 			t.Errorf("no problem contained %q; problems:\n%s", want, joinProblems(res.Problems))

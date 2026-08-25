@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"path/filepath"
 	"slices"
+	"strings"
 	"testing"
 	"time"
 
@@ -90,12 +91,21 @@ func fixtureCatalog() *model.Catalog {
 		},
 	}
 
+	desc := &model.Description{
+		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
+		Sources: []model.Source{{Type: "community"}},
+		Text: "A junior-high science teacher wakes alone on a ship he does not remember boarding, " +
+			"light years from anyone who could tell him why. What he does remember arrives in pieces, " +
+			"and none of it explains the two dead crewmates beside him.",
+	}
+
 	return &model.Catalog{
-		Works:      []*model.Work{phm, wok},
-		People:     []*model.Person{author, n1, n2, porter, sanderson},
-		Series:     []*model.Series{series},
-		Characters: []*model.Characters{chars},
-		Recaps:     []*model.Recaps{recaps},
+		Works:        []*model.Work{phm, wok},
+		People:       []*model.Person{author, n1, n2, porter, sanderson},
+		Series:       []*model.Series{series},
+		Characters:   []*model.Characters{chars},
+		Recaps:       []*model.Recaps{recaps},
+		Descriptions: []*model.Description{desc},
 		// Two retired work slugs (so the within-namespace order is observable)
 		// plus one per other namespace.
 		Redirects: model.Redirects{
@@ -126,14 +136,15 @@ func buildFixture(t *testing.T) *sql.DB {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":   "5",
-		"built_at":         "2026-07-11T00:00:00Z",
-		"count_works":      "2",
-		"count_recordings": "2",
-		"count_people":     "5",
-		"count_series":     "1",
-		"count_characters": "2",
-		"count_recaps":     "2",
+		"schema_version":     "6",
+		"built_at":           "2026-07-11T00:00:00Z",
+		"count_works":        "2",
+		"count_recordings":   "2",
+		"count_people":       "5",
+		"count_series":       "1",
+		"count_characters":   "2",
+		"count_recaps":       "2",
+		"count_descriptions": "1",
 	}
 	for k, w := range want {
 		var got string
@@ -493,6 +504,37 @@ func TestBuildRecapSummaries(t *testing.T) {
 	}
 	if inShort == "" || ending == "" || license != "CC-BY-SA-4.0" {
 		t.Errorf("recap_summary row = in_short=%q ending=%q license=%q", inShort, ending, license)
+	}
+}
+
+// TestBuildWorkDescriptions covers the schema_version 6 table: one row per work
+// carrying a description member, keyed by the work and carrying the sidecar's own
+// share-alike license, and NOTHING for a work that carries none.
+func TestBuildWorkDescriptions(t *testing.T) {
+	db := buildFixture(t)
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM work_descriptions`).Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 1 {
+		t.Fatalf("work_descriptions rows = %d, want 1", n)
+	}
+	var text, license string
+	if err := db.QueryRow(`SELECT text, license FROM work_descriptions WHERE work_id=?`, "project-hail-mary").
+		Scan(&text, &license); err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(text, "wakes alone on a ship") || license != "CC-BY-SA-4.0" {
+		t.Errorf("work_descriptions row = text=%q license=%q", text, license)
+	}
+	// The work with no description member has no row, so a reader cannot mistake
+	// an absent description for an empty one.
+	if err := db.QueryRow(`SELECT COUNT(*) FROM work_descriptions WHERE work_id=?`, "the-way-of-kings").
+		Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 0 {
+		t.Errorf("a work with no description member has %d rows, want 0", n)
 	}
 }
 

@@ -44,7 +44,7 @@ pre-backfill composite average was 1,351B.)*
 
 ```
 data/works/<dir-bound>/<pack-bound>.json           CC0      work composites, keyed by work slug
-data/works-community/<dir-bound>/<pack-bound>.json CC BY-SA characters+recaps, keyed by work slug
+data/works-community/<dir-bound>/<pack-bound>.json CC BY-SA characters+recaps+description, keyed by work slug
 data/people/<pack-bound>.json               CC0     keyed by person slug
 data/series/<pack-bound>.json               CC0     keyed by series slug
 ```
@@ -139,8 +139,8 @@ database is** (both also run in any `ProfileAll` load):
 - **collision** (compose-only) - two sidecars of the same KIND resolving onto one
   work is refused, never folded: which one describes the surviving work is a
   human decision. Disjoint members (a characters sidecar at the retired slug, a
-  recaps sidecar at the survivor) simply meet on one work, which is what a
-  composed entry is.
+  recaps or description sidecar at the survivor) simply meet on one work, which
+  is what a composed entry is.
 - **the position-scale advisory** (also in a whole-database load) - vacuous over
   a community root alone (no works to measure against), real here, and still a
   WARNING.
@@ -221,8 +221,11 @@ A pack is a single canonical-JSON file:
   recordings family: one write path per book, and the composite mirrors the
   shape metabuild and `GET /works/{id}` already assemble.
 - **Sidecars family entry** (keyed by work slug) =
-  `{ "characters": {...current characters.json...}, "recaps": {...current recaps.json...} }`,
-  either member optional.
+  `{ "characters": {...}, "recaps": {...}, "description": {...} }`, every member
+  optional (an entry carrying none is not an entry). The member set is the
+  schema's - `pack-works-community.schema.json` names each one and `$ref`s its
+  own document - so adding a kind is a schema change plus one row in
+  `pkg/check`'s `communityMembers`, never a new family or a new layout.
 - **People / series entries** = the current file contents, unchanged.
 - The top-level wrapper holds only `entries` for now
   (`additionalProperties: false`); pack-level metadata can be added by schema

@@ -2,6 +2,7 @@ package check
 
 import (
 	"io/fs"
+	"maps"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -38,8 +39,53 @@ func bothSidecars(work string) string {
 	return `{"characters":` + validCharacters(work) + `,"recaps":` + validRecaps(work) + `}`
 }
 
-func charactersOnly(work string) string { return `{"characters":` + validCharacters(work) + `}` }
-func recapsOnly(work string) string     { return `{"recaps":` + validRecaps(work) + `}` }
+func charactersOnly(work string) string  { return `{"characters":` + validCharacters(work) + `}` }
+func recapsOnly(work string) string      { return `{"recaps":` + validRecaps(work) + `}` }
+func descriptionOnly(work string) string { return `{"description":` + validDescription(work) + `}` }
+
+// TestComposeCoversTheDescriptionMember is the description member's own pass over
+// the compose's two cross-tree rules. They are written over sidecarRefs rather
+// than over the kinds by name, so the member inherited them the day the model
+// gained it - and this pins that rather than leaving it to be assumed: a
+// description keyed by a work the core does not hold is a hard error, and two
+// descriptions resolving onto one work is a refusal, exactly as for its siblings.
+func TestComposeCoversTheDescriptionMember(t *testing.T) {
+	t.Run("valid", func(t *testing.T) {
+		coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
+			"book-one": descriptionOnly("book-one"),
+		}))
+		res := LoadComposed(coreDir, comDir)
+		if !res.OK() {
+			t.Fatalf("a description-only community root reported problems: %v", res.Problems)
+		}
+		if len(res.Catalog.Descriptions) != 1 || res.Catalog.Descriptions[0].Work != "book-one" {
+			t.Errorf("description did not compose in: %+v", res.Catalog.Descriptions)
+		}
+	})
+
+	t.Run("dangling key", func(t *testing.T) {
+		coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
+			"ghost-book": descriptionOnly("ghost-book"),
+		}))
+		res := LoadComposed(coreDir, comDir)
+		if !hasProblem(res.Problems, `description sidecar is keyed by work "ghost-book"`) {
+			t.Errorf("a dangling description key was not reported: %v", res.Problems)
+		}
+	})
+
+	t.Run("collision on a resolved key", func(t *testing.T) {
+		core := composeCore()
+		core["redirects.json"] = redirectsOf(`"old-book":"book-one"`)
+		coreDir, comDir := composeDirs(t, core, composeCommunity(map[string]string{
+			"book-one": descriptionOnly("book-one"),
+			"old-book": descriptionOnly("old-book"),
+		}))
+		res := LoadComposed(coreDir, comDir)
+		if !hasProblem(res.Problems, `resolves onto "book-one", which already has one`) {
+			t.Errorf("two descriptions on one work were not refused: %v", res.Problems)
+		}
+	})
+}
 
 // redCore is composeCore with one problem of its OWN: a second work crediting a
 // person no record names. Nothing about it touches the sidecars, so it is the
@@ -486,15 +532,63 @@ func TestComposeRefusesAMisdirectedRoot(t *testing.T) {
 // TestSidecarRefsCoverEverySidecarKind is the DRIFT GUARD on the one hand-written
 // enumeration of the works-community member kinds (check.go's sidecarRefs, beside
 // the pathIndex maps the same list is declared in). A sidecar kind is derived here
-// from the Catalog TYPE - a slice of records carrying a `Work` slug - so a third
+// from the Catalog TYPE - a slice of records carrying a `Work` slug - so a fourth
 // member added to the model and missed in that list fails this test instead of
 // silently escaping the compose's existence rule.
+//
+// The COUNT is what the Catalog type answers: one ref per sidecar-shaped field,
+// so a kind added to the model and forgotten in sidecarRefs is short by one. The
+// NAMES are then compared against communityMembers - the loader's own table of
+// what a works-community entry may hold, which is where a member name is really
+// decided - rather than against the field names lowercased, which only ever
+// worked because the first two kinds happened to spell their slice the way the
+// pack file spells the member. `description` does not (one work, one
+// description), and lowercasing "Descriptions" would have demanded the wrong
+// string in every message a rule composes.
 func TestSidecarRefsCoverEverySidecarKind(t *testing.T) {
 	cat := &model.Catalog{}
 	v := reflect.ValueOf(cat).Elem()
 	var kinds []string
-	for i := range v.NumField() {
+	for _, i := range sidecarCatalogFields() {
 		f := v.Type().Field(i)
+		kinds = append(kinds, f.Name)
+		rec := reflect.New(f.Type.Elem().Elem())
+		rec.Elem().FieldByName("Work").SetString("book-one")
+		v.Field(i).Set(reflect.Append(v.Field(i), rec))
+	}
+
+	if len(kinds) < 3 {
+		t.Fatalf("the derivation found %v, which cannot be the sidecar kinds - it has drifted from the model", kinds)
+	}
+	// Compare the KIND NAMES, not just the counts: a kind wired into sidecarRefs
+	// under the wrong kind string would pass a length check while every message it
+	// composes names the wrong member.
+	var got []string
+	for _, ref := range sidecarRefs(cat, newPathIndex()) {
+		got = append(got, ref.kind)
+	}
+	slices.Sort(got)
+	if len(got) != len(kinds) {
+		t.Fatalf("sidecarRefs enumerated %v for the model's %v sidecar fields: "+
+			"a kind added to the model must be added to sidecarRefs too", got, kinds)
+	}
+	want := slices.Sorted(maps.Keys(communityMembers))
+	if !slices.Equal(got, want) {
+		t.Errorf("sidecarRefs enumerated %v; the works-community members are %v: "+
+			"a kind must be enumerated under the member name the loader reads it from", got, want)
+	}
+}
+
+// sidecarCatalogFields derives the model.Catalog field indexes that ARE sidecar
+// kinds - a slice of pointers to structs carrying a `Work` slug - which is the
+// one definition of "a sidecar kind" the two drift guards below share. Reading
+// it off the TYPE is the whole point: a member added to the model shows up here
+// without anybody remembering to list it.
+func sidecarCatalogFields() []int {
+	t := reflect.TypeOf(model.Catalog{})
+	var out []int
+	for i := range t.NumField() {
+		f := t.Field(i)
 		if f.Type.Kind() != reflect.Slice {
 			continue
 		}
@@ -505,30 +599,43 @@ func TestSidecarRefsCoverEverySidecarKind(t *testing.T) {
 		if wf, ok := el.Elem().FieldByName("Work"); !ok || wf.Type.Kind() != reflect.String {
 			continue
 		}
-		kinds = append(kinds, f.Name)
-		rec := reflect.New(el.Elem())
-		rec.Elem().FieldByName("Work").SetString("book-one")
-		v.Field(i).Set(reflect.Append(v.Field(i), rec))
+		out = append(out, i)
 	}
+	return out
+}
 
-	if len(kinds) < 2 {
-		t.Fatalf("the derivation found %v, which cannot be the sidecar kinds - it has drifted from the model", kinds)
+// TestComposeCarriesEverySidecarKind is the DRIFT GUARD on LoadComposed's
+// carry-over - the one hand-written per-kind list the compose still has, where
+// the assignments move the community catalogue's sidecar slices onto the
+// composed one.
+//
+// A kind forgotten THERE fails no rule: the community root is not empty, no
+// sidecar dangles, nothing collides, so the build goes green and ships an
+// artifact with that whole member missing. Nothing downstream can tell that from
+// "no work carries one yet". So the expectation is derived from the Catalog TYPE
+// (sidecarCatalogFields, as TestSidecarRefsCoverEverySidecarKind is): a compose
+// whose community root holds EVERY member must land every one of them.
+func TestComposeCarriesEverySidecarKind(t *testing.T) {
+	entry := `{"characters":` + validCharacters("book-one") +
+		`,"recaps":` + validRecaps("book-one") +
+		`,"description":` + validDescription("book-one") + `}`
+	coreDir, comDir := composeDirs(t, composeCore(), composeCommunity(map[string]string{
+		"book-one": entry,
+	}))
+	res := LoadComposed(coreDir, comDir)
+	if !res.OK() {
+		t.Fatalf("a community root holding every member reported problems: %v", res.Problems)
 	}
-	// Compare the KIND NAMES, not just the counts: a third kind wired into
-	// sidecarRefs under the wrong kind string would pass a length check while
-	// every message it composes names the wrong member.
-	var got []string
-	for _, ref := range sidecarRefs(cat, newPathIndex()) {
-		got = append(got, ref.kind)
+	v := reflect.ValueOf(res.Catalog).Elem()
+	fields := sidecarCatalogFields()
+	if len(fields) < 3 {
+		t.Fatalf("the derivation found %d sidecar fields, which cannot be right - it has drifted from the model", len(fields))
 	}
-	slices.Sort(got)
-	want := make([]string, len(kinds))
-	for i, k := range kinds {
-		want[i] = strings.ToLower(k)
-	}
-	slices.Sort(want)
-	if !slices.Equal(got, want) {
-		t.Errorf("sidecarRefs enumerated %v; the model's sidecar kinds are %v: "+
-			"a kind added to the model must be added to sidecarRefs too, under its own name", got, want)
+	for _, i := range fields {
+		if v.Field(i).Len() == 0 {
+			t.Errorf("LoadComposed left Catalog.%s empty: the community root holds one, so the "+
+				"carry-over in compose.go is short a kind - which ships an artifact missing that whole layer",
+				v.Type().Field(i).Name)
+		}
 	}
 }

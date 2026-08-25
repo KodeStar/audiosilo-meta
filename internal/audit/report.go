@@ -124,6 +124,7 @@ func summary(rep *Report) string {
 		{Label: "series", N: rep.Totals.Series},
 		{Label: "characters sidecars", N: rep.Totals.Characters},
 		{Label: "recaps sidecars", N: rep.Totals.Recaps},
+		{Label: "description sidecars", N: rep.Totals.Descriptions},
 	})
 	fmt.Fprintf(&b, "\nLoader (`pkg/check`): %s, %s.\n\n",
 		joinCount(rep.LoaderProblems, "problem"), joinCount(rep.LoaderWarnings, "warning"))

@@ -614,6 +614,12 @@ func refPath(rel string) (recordRef, bool) {
 		return recordRef{kind: model.KindCharacters, slug: parts[2], workSlug: parts[2]}, true
 	case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
 		return recordRef{kind: model.KindRecaps, slug: parts[2], workSlug: parts[2]}, true
+	// The description member has no issue form, but a submitter reading the
+	// community tree can still cite its path. It resolves like its siblings -
+	// onto the work it describes - and entryAddress then refuses it for the same
+	// reason: community prose is never a scalar correction.
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "description.json":
+		return recordRef{kind: model.KindDescription, slug: parts[2], workSlug: parts[2]}, true
 	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
 		if slug, ok := jsonName(parts[4]); ok {
 			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[2]}, true

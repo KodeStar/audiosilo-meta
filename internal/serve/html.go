@@ -407,11 +407,40 @@ func workTitle(d *workDetail, authors string) string {
 	return b.String()
 }
 
-// workDescription composes the meta description from the facts the work states,
-// in a FIXED order, so one snapshot always produces one description: authors,
-// narrators (deduped across recordings, in credit order), the series and
-// position, how many recordings there are, and a runtime.
+// workDescription is the work page's meta description. A work carrying a
+// COMMUNITY description uses that text: it is own-words prose written for a
+// reader, which is what the tag is for, and it is the one thing that makes the
+// tag differ between two books by one author in one series - the fact sentence
+// below is near-duplicate across the whole catalogue, which is the SEO problem
+// the description member exists to fix.
+//
+// It is safe to quote into a search result where a recap is not: a description is
+// spoiler-free by contract (schema/description.schema.json), which is exactly why
+// the guide pages' text is kept out of THEIR meta descriptions and this one is
+// not. Everything else falls back to the composed facts, unchanged.
 func workDescription(d *workDetail, authors string) string {
+	if text := communityDescriptionText(d); text != "" {
+		return truncateDescription(text)
+	}
+	return workFactDescription(d, authors)
+}
+
+// communityDescriptionText is the work's CC BY-SA description text, or "" - the
+// one probe the page's three description surfaces (the tag, the fact sheet, the
+// JSON-LD) share, so a page cannot state one and omit another.
+func communityDescriptionText(d *workDetail) string {
+	if d.CommunityDescription == nil {
+		return ""
+	}
+	return d.CommunityDescription.Text
+}
+
+// workFactDescription composes a description from the facts the work states, in
+// a FIXED order, so one snapshot always produces one description: authors,
+// narrators (deduped across recordings, in credit order), the series and
+// position, how many recordings there are, and a runtime. It is what a work with
+// no community description gets, which is almost every work.
+func workFactDescription(d *workDetail, authors string) string {
 	parts := []string{d.Title}
 	if authors != "" {
 		parts = append(parts, "by "+authors)
@@ -653,6 +682,12 @@ const factSheetTemplates = `
 {{- if .Authors}}
 <p>By {{template "people" .Authors}}</p>
 {{- end}}
+{{- if .Description}}
+<p>{{.Description}}</p>
+{{- if .DescriptionIsCommunity}}
+<p class="text-dim">Description community-written - <a rel="license" href="{{.LicenseURL}}">{{.LicenseLabel}}</a>.</p>
+{{- end}}
+{{- end}}
 {{- if .FirstPublished}}
 <p class="text-dim">First published {{.FirstPublished}}</p>
 {{- end}}
@@ -774,21 +809,38 @@ type recordingView struct {
 }
 
 type workView struct {
-	Title          string
-	Subtitle       string
-	CoverURL       string
-	FirstPublished string
-	Authors        []personRef
-	Series         []seriesRef
-	Genres         []string
-	Guides         []guideLink
-	Recordings     []recordingView
+	Title    string
+	Subtitle string
+	CoverURL string
+	// Description is the prose intro the page leads with (displayDescription:
+	// the community's where there is one). DescriptionIsCommunity is what decides
+	// whether the CC BY-SA notice is printed beside it - the attribution follows
+	// the TEXT, never the presence of a paragraph, so the CC0 field can never be
+	// published under somebody else's licence.
+	Description            string
+	DescriptionIsCommunity bool
+	LicenseURL             string
+	LicenseLabel           string
+	FirstPublished         string
+	Authors                []personRef
+	Series                 []seriesRef
+	Genres                 []string
+	Guides                 []guideLink
+	Recordings             []recordingView
 }
 
 func newWorkView(d *workDetail) workView {
+	// ONE call for both fields. The text the page prints and the flag that decides
+	// whether the CC BY-SA notice is printed beside it are two halves of one
+	// answer (displayDescription), so they cannot disagree.
+	description, isCommunity := displayDescription(d)
 	v := workView{
 		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
-		FirstPublished: d.FirstPublished, Authors: d.Authors, Series: d.Series, Genres: d.Genres,
+		Description:            description,
+		DescriptionIsCommunity: isCommunity,
+		LicenseURL:             ccBySAURL,
+		LicenseLabel:           ccBySALabel,
+		FirstPublished:         d.FirstPublished, Authors: d.Authors, Series: d.Series, Genres: d.Genres,
 		Guides: workGuideLinks(d),
 	}
 	for _, rec := range d.Recordings {

@@ -53,6 +53,8 @@ func writeEntities(t *testing.T, dir string, files map[string]string) {
 			member(community, parts[2])["characters"] = body
 		case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
 			member(community, parts[2])["recaps"] = body
+		case len(parts) == 4 && parts[0] == "works" && parts[3] == "description.json":
+			member(community, parts[2])["description"] = body
 		case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
 			member(recs, parts[2])[strings.TrimSuffix(parts[4], ".json")] = body
 		case len(parts) == 3 && parts[0] == "people":
@@ -214,6 +216,43 @@ func validCharacters(work string) string {
 
 func validRecaps(work string) string {
 	return `{"license":"CC-BY-SA-4.0","recaps":[{"scope":"series","text":"Previously, in earlier books.","through":{"chapter":0}},{"scope":"book","text":"So far, the hero set out.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"` + work + `"}`
+}
+
+// descriptionText is past the schema's 200-character floor, so the valid fixture
+// below is valid for the reason it claims rather than by accident.
+const descriptionText = "A spoiler-free account of the setup: a hero, a road out of town, and the " +
+	"thing waiting at the end of it that nobody in the village will name out loud. Written in the " +
+	"community's own words, revealing nothing past the opening act."
+
+func validDescription(work string) string {
+	return `{"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"text":"` + descriptionText + `","work":"` + work + `"}`
+}
+
+// TestDescriptionValid is the passing fixture for the works-community
+// `description` member: it loads cleanly, lands in the Catalog, and sits beside
+// its sibling members on ONE entry rather than displacing them.
+func TestDescriptionValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/characters.json"] = validCharacters("book-one")
+	files["works/bo/book-one/recaps.json"] = validRecaps("book-one")
+	files["works/bo/book-one/description.json"] = validDescription("book-one")
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("a valid description reported problems: %v", res.Problems)
+	}
+	if len(res.Catalog.Descriptions) != 1 {
+		t.Fatalf("descriptions = %d, want 1", len(res.Catalog.Descriptions))
+	}
+	d := res.Catalog.Descriptions[0]
+	if d.Work != "book-one" || d.Text != descriptionText || d.License != "CC-BY-SA-4.0" {
+		t.Errorf("description did not load: %+v", d)
+	}
+	if len(res.Catalog.Characters) != 1 || len(res.Catalog.Recaps) != 1 {
+		t.Errorf("the sibling members were displaced: characters=%d recaps=%d",
+			len(res.Catalog.Characters), len(res.Catalog.Recaps))
+	}
 }
 
 // TestCharactersRecapsValid covers the CC BY-SA per-work sidecars: a valid
@@ -747,6 +786,49 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recaps.json"] = `{"in_short":"` + long + `","license":"CC-BY-SA-4.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/in_short",
+		},
+		{
+			name: "description with CC0 license rejected (must be CC BY-SA)",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/description.json"] = strings.Replace(validDescription("book-one"), `"CC-BY-SA-4.0"`, `"CC0-1.0"`, 1)
+			},
+			want: "license",
+		},
+		{
+			name: "description below the length floor rejected",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/description.json"] = `{"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"text":"Too short.","work":"book-one"}`
+			},
+			want: "minLength: got 10, want 200",
+		},
+		{
+			name: "description exceeds length cap",
+			mutate: func(f map[string]string) {
+				long := strings.Repeat("a", 1501)
+				f["works/bo/book-one/description.json"] = `{"license":"CC-BY-SA-4.0","sources":[{"type":"community"}],"text":"` + long + `","work":"book-one"}`
+			},
+			want: "maxLength: got 1,501, want 1,500",
+		},
+		{
+			name: "description parent work missing",
+			mutate: func(f map[string]string) {
+				f["works/gh/ghost-book/description.json"] = validDescription("ghost-book")
+			},
+			want: `parent work "ghost-book" does not exist`,
+		},
+		{
+			name: "description work backref mismatches its entry key",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/description.json"] = validDescription("other-book")
+			},
+			want: "must equal the entry key",
+		},
+		{
+			name: "description with an unknown property rejected",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/description.json"] = strings.Replace(validDescription("book-one"), `"work":`, `"surprise":true,"work":`, 1)
+			},
+			want: "additional",
 		},
 		{
 			name: "in_short empty string rejected",

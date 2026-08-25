@@ -38,7 +38,8 @@ type addr struct {
 	family pack.Family
 	slug   string
 	// member is the entry member holding the record: "" for an entry that IS the
-	// record, "characters"/"recaps" for a sidecar, "recordings" for a recording.
+	// record, the member name ("characters"/"recaps"/"description") for a
+	// sidecar, "recordings" for a recording.
 	member string
 	// key is the recordings-map key, set only for a recording.
 	key string
@@ -62,6 +63,8 @@ func resolve(t testing.TB, address string) addr {
 		return addr{family: pack.FamilyWorksCommunity, slug: parts[2], member: "characters"}
 	case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
 		return addr{family: pack.FamilyWorksCommunity, slug: parts[2], member: "recaps"}
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "description.json":
+		return addr{family: pack.FamilyWorksCommunity, slug: parts[2], member: "description"}
 	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
 		return addr{family: pack.FamilyWorks, slug: parts[2], member: "recordings", key: name(parts[4])}
 	case len(parts) == 3 && parts[0] == "people":
@@ -394,7 +397,7 @@ func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMess
 			t.Fatalf("testpack: parse works-community entry %q: %v", slug, err)
 		}
 		var out []string
-		for _, name := range []string{"characters", "recaps"} {
+		for _, name := range []string{"characters", "recaps", "description"} {
 			if _, ok := members[name]; ok {
 				// A sidecar's address still names the WORK's directory: the
 				// works-community family is a storage split, not a rename.

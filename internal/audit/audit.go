@@ -76,12 +76,13 @@ type Report struct {
 // Totals are the catalogue's own sizes, the denominators every count is read
 // against.
 type Totals struct {
-	Works      int
-	Recordings int
-	People     int
-	Series     int
-	Characters int
-	Recaps     int
+	Works        int
+	Recordings   int
+	People       int
+	Series       int
+	Characters   int
+	Recaps       int
+	Descriptions int
 }
 
 // class returns one class's accumulated records, or an empty class when the name is
@@ -180,12 +181,13 @@ func analyze(res check.Result) *Report {
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
 		Totals: Totals{
-			Works:      len(cat.Works),
-			Recordings: stats.RecordingCount,
-			People:     len(cat.People),
-			Series:     len(cat.Series),
-			Characters: len(cat.Characters),
-			Recaps:     len(cat.Recaps),
+			Works:        len(cat.Works),
+			Recordings:   stats.RecordingCount,
+			People:       len(cat.People),
+			Series:       len(cat.Series),
+			Characters:   len(cat.Characters),
+			Recaps:       len(cat.Recaps),
+			Descriptions: len(cat.Descriptions),
 		},
 	}
 	rep.classes = []*findings{

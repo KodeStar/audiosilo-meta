@@ -58,6 +58,10 @@ func recapsMember(work, text string) string {
 		`"recaps":[{"through":{"chapter":1},"text":"` + text + `"}]}`
 }
 
+func descriptionMember(work, text string) string {
+	return `"description":{"work":"` + work + `","license":"CC-BY-SA-4.0","text":"` + text + `"}`
+}
+
 // The two families that have a one-level-deeper exception, since the script
 // reads the family off the path.
 const (
@@ -177,6 +181,29 @@ func TestPackUnionMerge(t *testing.T) {
 			present: []string{
 				"aaa.characters", "bbb.characters", "bbb.recaps",
 			},
+		},
+		{
+			// The member rule is over the entry's KEYS, not a list of the kinds
+			// that existed when it was written: a description arriving beside a
+			// recap merges on the same terms its siblings do.
+			name:   "a description member merges beside a sibling",
+			path:   communityPath,
+			base:   pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:   pack(community("aaa", charsMember("aaa", "Ann")+","+descriptionMember("aaa", "A book about a thing."))),
+			branch: pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far"))),
+			present: []string{
+				"aaa.characters", "aaa.description", "aaa.recaps",
+			},
+		},
+		{
+			// And two people writing the description of one book is the same
+			// disagreement two people writing its characters is.
+			name:        "both sides wrote the description member",
+			path:        communityPath,
+			base:        pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:        pack(community("aaa", charsMember("aaa", "Ann")+","+descriptionMember("aaa", "One account."))),
+			branch:      pack(community("aaa", charsMember("aaa", "Ann")+","+descriptionMember("aaa", "Another account."))),
+			wantRefusal: true,
 		},
 		{
 			// Two people describing the same characters is a disagreement about

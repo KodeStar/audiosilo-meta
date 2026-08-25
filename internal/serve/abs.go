@@ -112,11 +112,11 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 			return nil, err
 		}
 		if res != nil {
-			genres, err := s.genresForWorks([]string{res.Work.ID})
+			genres, descriptions, err := s.absWorkFacets([]string{res.Work.ID})
 			if err != nil {
 				return nil, err
 			}
-			d, err := s.workForABS(res.Work.ID, genres)
+			d, err := s.workForABS(res.Work.ID, genres, descriptions)
 			if err != nil {
 				return nil, err
 			}
@@ -137,7 +137,7 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 			return nil, err
 		}
 	}
-	genres, err := s.genresForWorks(workIDs)
+	genres, descriptions, err := s.absWorkFacets(workIDs)
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 		if len(out) >= limit {
 			break
 		}
-		d, err := s.workForABS(id, genres)
+		d, err := s.workForABS(id, genres, descriptions)
 		if err != nil {
 			return nil, err
 		}
@@ -263,6 +263,24 @@ func (s *snapshot) genresForWorks(workIDs []string) (map[string][]string, error)
 	return out, rows.Err()
 }
 
+// absWorkFacets resolves the two per-work facets workForABS is HANDED rather
+// than reading itself - genres and the community description - for a whole
+// candidate set in one query each. It exists so the two cannot drift apart: both
+// are batched for the same reason (a per-candidate read is up to absMaxMatches
+// sequential round trips on a public, unauthenticated endpoint), and a third
+// facet added later has one place to be added.
+func (s *snapshot) absWorkFacets(workIDs []string) (map[string][]string, map[string]*descriptionOut, error) {
+	genres, err := s.genresForWorks(workIDs)
+	if err != nil {
+		return nil, nil, err
+	}
+	descriptions, err := s.descriptionsForWorks(workIDs)
+	if err != nil {
+		return nil, nil, err
+	}
+	return genres, descriptions, nil
+}
+
 // genreAcronyms are the vocabulary values whose display label is not plain title
 // case. A new acronym-shaped or oddly-capitalized value added to the
 // common.schema.json genre enum needs an entry here; a plain word never does.
@@ -302,6 +320,55 @@ func genreLabels(slugs []string) []string {
 	return out
 }
 
+// displayDescription is the paragraph a HUMAN-facing surface shows for a work:
+// the community's own-words, spoiler-free description where one exists, and the
+// CC0 record's own description otherwise. Both the ABS facade and the HTML work
+// page read it, so the two cannot disagree about which text a work "has".
+//
+// The community text WINS because it is the one somebody wrote for a reader:
+// nothing writes works.description today, and if something ever does, an
+// own-words paragraph still beats an imported one. The two are kept apart in the
+// JSON (see descriptionOut) precisely so a consumer that must attribute can tell
+// them apart; this helper is for the surfaces that only need prose.
+//
+// It answers BOTH halves at once - WHICH text, and whether that text is the
+// community's - because they are one question, and a surface that asked them
+// separately could print the CC BY-SA notice beside the CC0 field, or omit it
+// beside share-alike prose. Every surface goes through this: the work page's
+// view (which prints the notice), the JSON-LD, and absDescription below (which
+// appends the credit, having no notice to print).
+func displayDescription(d *workDetail) (text string, community bool) {
+	if t := communityDescriptionText(d); t != "" {
+		return t, true
+	}
+	return d.Description, false
+}
+
+// absCommunityAttribution is the plain-text credit appended to a COMMUNITY
+// description on the /abs/search surface, and only there.
+//
+// Every other surface that shows this text prints a rel="license" notice beside
+// it - the work page's fact sheet, the guide pages, the JSON-LD's `license` -
+// and the JSON API hands the license back as a field of its own (descriptionOut).
+// absBook has no license field: the shape is Audiobookshelf's, we do not own it,
+// and ABS pastes the description straight into a library record. So the credit
+// travels IN the text or it does not travel at all, and shipping CC BY-SA prose
+// with no attribution is not something LICENSING.md permits.
+//
+// The CC0 fallback gets no suffix: it is not share-alike and crediting the
+// community for a record field they did not write would be its own falsehood.
+const absCommunityAttribution = "\n\n(Description CC BY-SA 4.0, AudioSilo Meta community)"
+
+// absDescription is displayDescription for the ABS payload: the same choice of
+// text, with the attribution suffix when the choice was the community's.
+func absDescription(d *workDetail) string {
+	text, community := displayDescription(d)
+	if community {
+		return text + absCommunityAttribution
+	}
+	return text
+}
+
 // absBooksFor maps a work's detail to one BookMetadata per recording (or a
 // single work-only entry when the work has no recordings). Work-level fields
 // (title/subtitle/authors/language/publishedYear/description/genres/series) are shared;
@@ -321,7 +388,7 @@ func absBooksFor(d *workDetail, preferredRID string) []absBook {
 		Subtitle:      d.Subtitle,
 		Author:        strings.Join(personNames(d.Authors), ", "),
 		PublishedYear: publishedYear(d.FirstPublished),
-		Description:   d.Description,
+		Description:   absDescription(d),
 		Language:      d.Language,
 		Genres:        genreLabels(d.Genres),
 		Series:        series,

@@ -36,9 +36,11 @@ import (
 // earlier proposals in the same run have already changed):
 //
 //   - both sides carry the same works-community MEMBER (both have characters, or
-//     both have recaps). Which spoiler-gated description belongs to the surviving
-//     work is not a mechanical decision, and the alternative - dropping or
-//     overwriting one - would destroy the most expensive data in the repository.
+//     both have recaps, or both have a description). Which community-authored text
+//     belongs to the surviving work is not a mechanical decision, and the
+//     alternative - dropping or overwriting one - would destroy the most expensive
+//     data in the repository. The rule is written over the member NAMES the entries
+//     hold, so it covered the description member the day the model gained it.
 //   - the cluster holds two different positions for one book in one series. The
 //     catalogue itself is then saying they are different volumes.
 //   - a record the proposal names was retired by an earlier proposal in this run.
@@ -386,10 +388,10 @@ func fillXref(merged, lw entry) []mergedFacts {
 func (t *txn) mergeSidecars(target string, losers []string) error {
 	if t.community.sidecar() == sidecarUnknown {
 		return refusef(CatCommunityRequired,
-			"this tree does not hold the works-community family, so whether %s or any of %s carries a characters or recaps "+
-				"sidecar cannot be answered here - and folding two works that both carry one loses community-authored CC BY-SA "+
-				"content. Re-run with --community <community-checkout>/data (KodeStar/audiosilo-meta-community) so the "+
-				"collision check can see them",
+			"this tree does not hold the works-community family, so whether %s or any of %s carries a characters, recaps or "+
+				"description sidecar cannot be answered here - and folding two works that both carry one loses "+
+				"community-authored CC BY-SA content. Re-run with --community <community-checkout>/data "+
+				"(KodeStar/audiosilo-meta-community) so the collision check can see them",
 			target, joinList(losers))
 	}
 	type holder struct {
@@ -419,7 +421,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 		for _, name := range rawentry.SortedKeys(h.e) {
 			if prev, dup := owner[name]; dup {
 				return refusef(CatSidecarCollision,
-					"%s and %s both carry a %q sidecar for this book: a spoiler-gated %s is community-authored CC BY-SA content, "+
+					"%s and %s both carry a %q sidecar for this book: a %s member is community-authored CC BY-SA content, "+
 						"so which one describes the surviving work is a human decision - merge the two by hand first",
 					prev, h.slug, name, name)
 			}

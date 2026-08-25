@@ -23,13 +23,14 @@ import (
 // characters/recaps tables were added; bumped to 3 when the recap_summaries
 // table (per-work in_short / ending) was added; bumped to 4 when work genres
 // arrived in the work_genres table; bumped to 5 when the slug redirect
-// (tombstone) table arrived.
+// (tombstone) table arrived; bumped to 6 when the community work_descriptions
+// table (the spoiler-free per-work description) arrived.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 5
+const SchemaVersion = 6
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -172,6 +173,21 @@ CREATE TABLE recap_summaries (
   license  TEXT NOT NULL
 );
 
+-- The community SPOILER-FREE description: one row per work whose
+-- works-community entry carries a description member. One work has ONE
+-- description, so work_id is the primary key and IS the lookup index - every
+-- read is the point query the work page and the ABS facade make.
+--
+-- Deliberately a table of its own rather than a column on works: works is the
+-- CC0 core (and carries its own, unwritten, description column), and this text
+-- is CC BY-SA, which is why the row carries the license the sidecar states - a
+-- source can then be retracted wholesale, as for every other sidecar table.
+CREATE TABLE work_descriptions (
+  work_id TEXT PRIMARY KEY,
+  text    TEXT NOT NULL,
+  license TEXT NOT NULL
+);
+
 -- The slug tombstone table (data/redirects.json, see model.Redirects): which
 -- retired slug now stands for which live record. kind is the id NAMESPACE,
 -- spelled as the family and route segment it addresses (model.RedirectKind).
@@ -266,6 +282,8 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	sort.Slice(characters, func(i, j int) bool { return characters[i].Work < characters[j].Work })
 	recaps := append([]*model.Recaps(nil), cat.Recaps...)
 	sort.Slice(recaps, func(i, j int) bool { return recaps[i].Work < recaps[j].Work })
+	descriptions := append([]*model.Description(nil), cat.Descriptions...)
+	sort.Slice(descriptions, func(i, j int) bool { return descriptions[i].Work < descriptions[j].Work })
 	nChar := 0
 	for _, c := range characters {
 		nChar += len(c.Characters)
@@ -281,6 +299,9 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 		return err
 	}
 	if err = insertRecapSummaries(st, recaps); err != nil {
+		return err
+	}
+	if err = insertWorkDescriptions(st, descriptions); err != nil {
 		return err
 	}
 	if err = insertRedirects(st, cat.Redirects); err != nil {
@@ -301,6 +322,7 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 		{"count_series", strconv.Itoa(len(series))},
 		{"count_characters", strconv.Itoa(nChar)},
 		{"count_recaps", strconv.Itoa(nRecap)},
+		{"count_descriptions", strconv.Itoa(len(descriptions))},
 	}
 	for _, kv := range metaRows {
 		if _, err = tx.Exec(`INSERT INTO meta(key, value) VALUES(?, ?)`, kv[0], kv[1]); err != nil {
@@ -314,7 +336,7 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 // stmts holds every per-row INSERT statement the build writes through, prepared
 // once for the whole transaction. database/sql re-parses the SQL text on every
 // tx.Exec, which at catalogue scale dominates the build, so every row loop goes
-// through a statement prepared once instead. The 8-row meta table stays on a
+// through a statement prepared once instead. The handful of meta rows stay on a
 // plain tx.Exec - preparing for it would cost more than it saves.
 type stmts struct {
 	person    *sql.Stmt
@@ -342,6 +364,8 @@ type stmts struct {
 
 	recap        *sql.Stmt
 	recapSummary *sql.Stmt
+
+	workDescription *sql.Stmt
 
 	redirect *sql.Stmt
 }
@@ -389,6 +413,8 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 
 		{&s.recap, `INSERT INTO recaps(work_id, through_chapter, scope, text, license) VALUES(?,?,?,?,?)`},
 		{&s.recapSummary, `INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`},
+
+		{&s.workDescription, `INSERT INTO work_descriptions(work_id, text, license) VALUES(?,?,?)`},
 
 		{&s.redirect, `INSERT INTO redirects(kind, old_slug, new_slug) VALUES(?,?,?)`},
 	} {
@@ -596,6 +622,23 @@ func insertRecapSummaries(st *stmts, recaps []*model.Recaps) error {
 			continue
 		}
 		if _, err := st.recapSummary.Exec(rf.Work, nullStr(rf.InShort), nullStr(rf.Ending), rf.License); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// insertWorkDescriptions writes one work_descriptions row per work whose
+// works-community entry carries a description member. descriptions is pre-sorted
+// by work id, so rows land in a deterministic order; the row's license mirrors
+// the sidecar's so a source can be retracted wholesale.
+//
+// Unlike its recap_summaries neighbour there is no "states nothing" case to skip:
+// the schema requires the text and caps it at 200 characters minimum, so a
+// description that exists says something.
+func insertWorkDescriptions(st *stmts, descriptions []*model.Description) error {
+	for _, d := range descriptions {
+		if _, err := st.workDescription.Exec(d.Work, d.Text, d.License); err != nil {
 			return err
 		}
 	}

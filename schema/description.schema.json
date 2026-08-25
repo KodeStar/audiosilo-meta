@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/description.schema.json",
+  "title": "description",
+  "description": "A community-authored, SPOILER-FREE description of one work - what a stranger reads before deciding to listen. A per-work sidecar in the CC BY-SA layer, kept separate from the CC0 core. Unlike recaps it is gated by no position, and unlike a recap summary's in_short it never states the ending.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["work", "text", "license", "sources"],
+  "properties": {
+    "work": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "text": {
+      "description": "Own-words description: the setup, the premise and the hook, with no reveal past the opening act. Length-capped for the copyright reference-guide tier; verbatim/near-verbatim phrasing is a separate publish-pipeline check, and a rewritten retailer blurb is never acceptable. The 200-character floor is deliberate - a one-line stub is thinner than the facts the pages already state.",
+      "type": "string",
+      "minLength": 200,
+      "maxLength": 1500
+    },
+    "license": {
+      "$ref": "common.schema.json#/$defs/license_content"
+    },
+    "sources": {
+      "$ref": "common.schema.json#/$defs/sources"
+    }
+  }
+}

@@ -13,7 +13,13 @@ import {
   type Chapter,
   type Series,
 } from '../../lib/api'
-import { hasGuide, storyRowsOf, type StoryRow } from '../../lib/expressive'
+import {
+  CC_BY_SA_LABEL,
+  CC_BY_SA_URL,
+  hasGuide,
+  storyRowsOf,
+  type StoryRow,
+} from '../../lib/expressive'
 import type { WorkGuide } from '../../lib/entity-url'
 import {
   seriesNeighbors,
@@ -486,17 +492,40 @@ function ContributeCTAs({ work, recapRows }: { work: Work; recapRows: StoryRow[]
   )
 }
 
-/** The "General" tab: the work's description, its recordings, and the
-    "more in this series" rail. This is the whole main-column body for a plain
-    work (one with no characters/recaps sidecar). The series is fetched once by
-    the parent and threaded through to the rail. */
+/** The work's intro paragraph, ABOVE the tab bar rather than inside the General
+    tab: it is spoiler-free by contract, so it is the one piece of prose that is
+    safe on every tab, and it is what a reader deciding whether to listen came
+    for. The community's own-words description wins where a work carries one, and
+    the CC0 record's own field is the fallback - the attribution follows the TEXT,
+    so the CC BY-SA note is printed only for the community's. */
+function WorkIntro({ work }: { work: Work }) {
+  const community = work.community_description?.text ?? ''
+  const text = community || work.description || ''
+  if (!text) return null
+  return (
+    <div className="mt-6 max-w-2xl">
+      <p className="text-base leading-relaxed text-body">{text}</p>
+      {community ? (
+        <p className="mt-2 text-xs text-dim">
+          Community-written and published under{' '}
+          <a href={CC_BY_SA_URL} rel="license noopener" target="_blank" className={TEXT_LINK}>
+            {CC_BY_SA_LABEL}
+          </a>
+          .
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+/** The "General" tab: the work's recordings and the "more in this series" rail.
+    This is the whole main-column body for a plain work (one with no
+    characters/recaps sidecar). The intro paragraph is deliberately NOT here - it
+    sits above the tab bar, so it does not vanish when a reader opens Characters.
+    The series is fetched once by the parent and threaded through to the rail. */
 function GeneralPanel({ work, series }: { work: Work; series: Series | null }) {
   return (
     <>
-      {work.description ? (
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-body">{work.description}</p>
-      ) : null}
-
       {/* Recordings live in the main column so desktop width is used well */}
       <section className="mt-10">
         <h2 className="text-xl font-semibold text-hi">
@@ -658,8 +687,11 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
             </div>
           ) : null}
 
-          {/* Series prev/next: above the tab bar so it stays visible on every tab
-              (and on works that show no tabs). */}
+          {/* The intro paragraph and the series prev/next both sit above the tab
+              bar, so they stay visible on every tab (and on works that show no
+              tabs at all). */}
+          <WorkIntro work={work} />
+
           <SeriesNav prev={prev} next={next} tabHash={tabHash} pending={seriesPending} />
 
           {showTabs ? (
