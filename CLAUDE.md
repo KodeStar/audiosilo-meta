@@ -815,6 +815,19 @@ no description member gets the composed fact sentence it always got
 properties the node already carries. The description adds NO page and NO sitemap
 family - the text renders on the work page itself, unlike the guide pages, which
 exist because their content could not be shown unopened.
+The work page also renders each recording's derived `purchase_links` on BOTH
+surfaces, split by the caching model: the fact sheet lists EVERY link in
+response order and picks no marketplace (the page is publicly cached and
+golden-file tested, so it may not vary by who asked), while the island
+(`WorkDetail.tsx` + `site/src/lib/marketplace.ts`) chooses a default
+client-side - the stored pick, else the browser languages' region subtags, else
+`us` - with every other recorded region one click away, and an explicit pick
+persisted in localStorage. The label rule is a HAND-MIRRORED twin
+(`html.go` `purchaseLabel` / `marketplace.ts` `retailerLabel`, cross-referenced
+comments, each side's test pinning the same cases), and the site deliberately
+mirrors NO region vocabulary: a guessed or stored region counts only when the
+recording's own links carry it. The copy says "Find on", never availability -
+the data's `unknown` is by design.
 The new URL shape is a contributor-facing one too: `internal/issueform`'s
 `resolveWorkRef` accepts `/works/{slug}` (strictly one segment, slug-shaped)
 beside the legacy `?id=` URL, the data-tree path and a bare slug - and the two

@@ -858,6 +858,73 @@ func TestFormatRuntime(t *testing.T) {
 	}
 }
 
+// TestPurchaseLabel pins how a derived link reads on the fact sheet: the
+// retailer, the marketplace where the identifier carries one, and the raw
+// retailer string for anything this page has no name for - a link the response
+// carries is never dropped for being unrecognized.
+func TestPurchaseLabel(t *testing.T) {
+	cases := []struct {
+		in   purchaseLink
+		want string
+	}{
+		{purchaseLink{Retailer: "audible", Region: "us"}, "Audible (US)"},
+		{purchaseLink{Retailer: "audible", Region: "uk"}, "Audible (UK)"},
+		{purchaseLink{Retailer: "audible"}, "Audible"},
+		{purchaseLink{Retailer: "libro-fm"}, "Libro.fm"},
+		{purchaseLink{Retailer: "some-shop"}, "some-shop"},
+		// The marketplace suffix is not audible-only: two regions of one
+		// retailer must never read as identical labels.
+		{purchaseLink{Retailer: "some-shop", Region: "de"}, "some-shop (DE)"},
+	}
+	for _, tc := range cases {
+		if got := purchaseLabel(tc.in); got != tc.want {
+			t.Errorf("purchaseLabel(%+v) = %q, want %q", tc.in, got, tc.want)
+		}
+	}
+}
+
+// TestWorkPageRendersEveryPurchaseLink is the SSR half of the feature's product
+// decision: the server renders the whole list, in the response's own order, and
+// picks no marketplace - the page is publicly cached, so it may not vary by who
+// asked. The island is what chooses a default (site/src/lib/marketplace.ts).
+func TestWorkPageRendersEveryPurchaseLink(t *testing.T) {
+	cat := &model.Catalog{
+		People: []*model.Person{{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}},
+		Works: []*model.Work{{
+			ID: "many-markets", Title: "Many Markets", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{{
+				ID: "one", Work: "many-markets", Language: "en", License: "CC0-1.0",
+				Narrators: []string{"andy-weir"},
+				ASIN: []model.ASIN{
+					{Region: "us", ASIN: "B08G9PRS1K"},
+					{Region: "uk", ASIN: "B08G9PRS1L"},
+				},
+				// One checksum-valid ISBN-13 and one that is not: only the valid
+				// one is a Libro.fm route (see derivedPurchaseLinks).
+				ISBN: []model.ISBNRef{{ISBN: "9781427209269"}, {ISBN: "9781427209260"}},
+			}},
+		}},
+	}
+	ts := newPageServer(t, cat, markedShells)
+	code, page := getPage(t, ts.URL, "/works/many-markets")
+	if code != http.StatusOK {
+		t.Fatalf("status = %d, want 200", code)
+	}
+	sheet := between(t, page, `<div id="ssr-entity">`, "</div><script")
+	// The exact paragraph pins order, labels and URLs at once - and, by
+	// omission, that the checksum-invalid ISBN routed nowhere (the derivation
+	// rule itself is TestDerivedPurchaseLinks' to own) and that no availability
+	// is claimed.
+	want := `<p class="text-dim">Find on: ` +
+		`<a href="https://www.audible.co.uk/pd/B08G9PRS1L">Audible (UK)</a>, ` +
+		`<a href="https://www.audible.com/pd/B08G9PRS1K">Audible (US)</a>, ` +
+		`<a href="https://libro.fm/audiobooks/9781427209269">Libro.fm</a></p>`
+	if !strings.Contains(sheet, want) {
+		t.Errorf("fact sheet does not carry the purchase links:\nwant %s\ngot  %s", want, sheet)
+	}
+}
+
 func TestListPosition(t *testing.T) {
 	cases := []struct {
 		in   string

@@ -73,6 +73,24 @@ export interface AsinRef {
   asin: string
 }
 
+/** A derived, non-affiliate route to a retailer (internal/serve/purchase_links.go):
+    an Audible marketplace URL from a region-scoped ASIN, a Libro.fm URL from a
+    checksum-valid recording ISBN-13. `availability` is always "unknown" by
+    design - whether a retailer currently sells the recording is volatile, and
+    the catalogue only holds the durable identifier - so nothing renders it and
+    no surface claims a book is on sale.
+
+    `retailer` stays a plain string rather than a union: the server may derive a
+    third retailer without the site being rebuilt, and an unknown value must
+    render as itself rather than disappear. */
+export interface PurchaseLink {
+  retailer: string
+  id: string
+  region?: string
+  url: string
+  availability: string
+}
+
 export interface Recording {
   id: string
   narrators: PersonRef[]
@@ -82,6 +100,9 @@ export interface Recording {
   publisher?: string
   asin?: AsinRef[]
   isbn?: string[]
+  /** Absent on an older cached response or an embedded payload from a metaserve
+      that predates the field, which renders no links rather than an empty block. */
+  purchase_links?: PurchaseLink[]
   cover_url?: string | null
   chapter_count?: number
 }

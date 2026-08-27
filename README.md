@@ -148,6 +148,9 @@ Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 Work-detail recordings also carry `purchase_links` - non-affiliate Audible and
 Libro.fm URLs derived at response time from recording ASINs and 13-digit
 recording ISBNs, with availability deliberately `unknown` (see the API docs).
+The work page renders them: the server-rendered fact sheet lists every link, and
+the island leads with the marketplace the reader's browser languages suggest,
+keeping every other recorded region one click away.
 
 `people/{id}` and `series/{id}` take an optional `?limit=&offset=` window and
 report the unpaged totals (`authored_total`/`narrated_total`, `works_total`).
