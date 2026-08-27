@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import {
   getWork,
   getSeries,
@@ -10,9 +10,17 @@ import {
   href,
   type Work,
   type Recording,
+  type PurchaseLink,
   type Chapter,
   type Series,
 } from '../../lib/api'
+import {
+  guessRegions,
+  listenChoices,
+  readStoredRegion,
+  retailerLabel,
+  writeStoredRegion,
+} from '../../lib/marketplace'
 import {
   CC_BY_SA_LABEL,
   CC_BY_SA_URL,
@@ -179,7 +187,87 @@ function ChapterList({ workId, recording }: { workId: string; recording: Recordi
   )
 }
 
-function RecordingCard({ workId, recording }: { workId: string; recording: Recording }) {
+/** The page-wide marketplace pick, lifted to Loaded so every recording card
+    flips together when the reader picks a region on one of them: the candidate
+    regions in priority order (the stored pick, then the browser's guesses -
+    read once each; navigator and localStorage are safe at first render, this
+    island is client:only) and a setter that also persists an explicit pick. */
+type MarketState = {
+  candidates: readonly string[]
+  pick: (region: string) => void
+}
+
+const LISTEN_PILL = `${PILL_LINK} px-3 py-1.5`
+
+/** Where to listen: the derived retailer routes the API carries for a recording
+    (api.ts PurchaseLink). The Audible link for the reader's likely marketplace
+    is the prominent one and every other recorded region is a real link beside
+    it, so a wrong guess costs one click - and clicking one records it as the
+    preference for the rest of the page and the next visit.
+
+    No availability is stated anywhere: the data says "unknown" by design, so the
+    copy says where a recording can be looked for, never that it is on sale. */
+function ListenLinks({ links, market }: { links: PurchaseLink[]; market: MarketState }) {
+  // The composition rules - which link leads, which regions are the "one click
+  // to correct" row, which render as their own fully-labelled pill - live in
+  // lib/marketplace (listenChoices), so they are unit-tested and an unknown
+  // retailer is shown rather than dropped. Labels come from the same rule the
+  // fact sheet uses, so the two surfaces spell one link the same way. The URL
+  // is each link's identity (a deterministic function of retailer + region +
+  // identifier, see purchase_links.go), so it is the React key.
+  const { primary, alternates, pills } = listenChoices(links, market.candidates)
+
+  return (
+    <div className="mt-4 border-t border-edge pt-3">
+      <p className="text-xs uppercase tracking-wider text-dim">Find on</p>
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        {primary ? (
+          <a className={LISTEN_PILL} href={primary.url} target="_blank" rel="noopener">
+            {retailerLabel(primary.retailer, primary.region)}
+          </a>
+        ) : null}
+        {pills.map((l) => (
+          <a key={l.url} className={LISTEN_PILL} href={l.url} target="_blank" rel="noopener">
+            {retailerLabel(l.retailer, l.region)}
+          </a>
+        ))}
+      </div>
+      {alternates.length > 0 ? (
+        <p className="mt-2 text-xs text-dim">
+          Other marketplaces:{' '}
+          {alternates.map((l, i) => (
+            <Fragment key={l.url}>
+              {i > 0 ? ' · ' : ''}
+              {/* A real link, not a switcher: the href navigates and the click
+                  only records which marketplace the reader meant. The bare
+                  region initials are safe because listenChoices scopes this row
+                  to the primary's own retailer, which the pill already names. */}
+              <a
+                className={TEXT_LINK}
+                href={l.url}
+                target="_blank"
+                rel="noopener"
+                onClick={() => market.pick(l.region)}
+              >
+                {l.region.toUpperCase()}
+              </a>
+            </Fragment>
+          ))}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+function RecordingCard({
+  workId,
+  recording,
+  market,
+}: {
+  workId: string
+  recording: Recording
+  market: MarketState
+}) {
   const runtime = formatRuntime(recording.runtime_min)
   const year = formatYear(recording.release_date)
   return (
@@ -222,6 +310,10 @@ function RecordingCard({ workId, recording }: { workId: string; recording: Recor
             <CopyChip key={isbn} label="ISBN" value={isbn} />
           ))}
         </div>
+      ) : null}
+
+      {recording.purchase_links && recording.purchase_links.length > 0 ? (
+        <ListenLinks links={recording.purchase_links} market={market} />
       ) : null}
 
       <ChapterList workId={workId} recording={recording} />
@@ -523,7 +615,15 @@ function WorkIntro({ work }: { work: Work }) {
     characters/recaps sidecar). The intro paragraph is deliberately NOT here - it
     sits above the tab bar, so it does not vanish when a reader opens Characters.
     The series is fetched once by the parent and threaded through to the rail. */
-function GeneralPanel({ work, series }: { work: Work; series: Series | null }) {
+function GeneralPanel({
+  work,
+  series,
+  market,
+}: {
+  work: Work
+  series: Series | null
+  market: MarketState
+}) {
   return (
     <>
       {/* Recordings live in the main column so desktop width is used well */}
@@ -535,7 +635,7 @@ function GeneralPanel({ work, series }: { work: Work; series: Series | null }) {
         {work.recordings && work.recordings.length > 0 ? (
           <div className="mt-5 grid gap-5 xl:grid-cols-2">
             {work.recordings.map((r) => (
-              <RecordingCard key={r.id} workId={work.id} recording={r} />
+              <RecordingCard key={r.id} workId={work.id} recording={r} market={market} />
             ))}
           </div>
         ) : (
@@ -641,6 +741,22 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
   const seriesPending = (work.series?.length ?? 0) > 0 && seriesState.status === 'loading'
   const { prev, next } = series ? seriesNeighbors(series.works ?? [], work.id) : { prev: null, next: null }
 
+  // The marketplace pick is page-wide: choosing "UK" on one recording card is a
+  // statement about the reader, not about that recording, so the state lives
+  // here and every card flips together. The storage and language reads each
+  // happen once per page (lazy initialisers), an explicit pick persists, and
+  // the candidate order IS the priority: the pick ahead of the browser guesses.
+  const [storedRegion, setStoredRegion] = useState(readStoredRegion)
+  const [languageGuesses] = useState(() => guessRegions(navigator.languages ?? []))
+  const pickRegion = useCallback((region: string) => {
+    setStoredRegion(region)
+    writeStoredRegion(region)
+  }, [])
+  const market: MarketState = {
+    candidates: storedRegion ? [storedRegion, ...languageGuesses] : languageGuesses,
+    pick: pickRegion,
+  }
+
   return (
     <div className="container py-10">
       <div className="mb-8">
@@ -732,7 +848,7 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
 
               {tab === 'general' ? (
                 <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-                  <GeneralPanel work={work} series={series} />
+                  <GeneralPanel work={work} series={series} market={market} />
                 </div>
               ) : null}
               {tab === 'characters' ? (
@@ -749,7 +865,7 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
               ) : null}
             </>
           ) : (
-            <GeneralPanel work={work} series={series} />
+            <GeneralPanel work={work} series={series} market={market} />
           )}
         </div>
       </div>

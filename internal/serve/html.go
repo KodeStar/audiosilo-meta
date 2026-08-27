@@ -731,6 +731,9 @@ const factSheetTemplates = `
 <li>{{.Chapters}} chapters</li>
 {{- end}}
 </ul>
+{{- if .Purchase}}
+<p class="text-dim">Find on: {{range $i, $l := .Purchase}}{{if $i}}, {{end}}<a href="{{$l.URL}}">{{$l.Label}}</a>{{end}}</p>
+{{- end}}
 </div>
 {{- end}}
 {{- end}}
@@ -797,6 +800,13 @@ func renderTemplate(name string, data any) (string, error) {
 // codeView is one identifier line on a recording block.
 type codeView struct{ Label, Value string }
 
+// purchaseLinkView is one derived retailer route on a recording block. The fact
+// sheet renders EVERY link the response carries, in the order it carries them,
+// and picks no marketplace: the page is cached publicly and golden-file tested,
+// so it may not vary by who asked. Choosing a default for the reader is the
+// island's job, where a wrong guess is one click from corrected.
+type purchaseLinkView struct{ Label, URL string }
+
 type recordingView struct {
 	ID          string
 	Narrators   []personRef
@@ -805,7 +815,35 @@ type recordingView struct {
 	Publisher   string
 	ReleaseYear string
 	Codes       []codeView
+	Purchase    []purchaseLinkView
 	Chapters    int
+}
+
+// purchaseLabel names one derived link for a reader: the retailer, plus the
+// marketplace wherever the identifier is region-scoped - for ANY retailer, so
+// two regions of one retailer never render as identical labels. It states no
+// availability - the link is a route derived from a durable identifier, not a
+// claim that the recording is on sale (see purchase_links.go).
+//
+// A retailer this page does not know is printed exactly as the API stated it.
+// The URL is still a real route to the recording, and rendering nothing would
+// hide a fact the response carries.
+//
+// The island's retailerLabel (site/src/lib/marketplace.ts) is this rule's
+// hand-mirrored twin, so the fact sheet and the hydrated page spell one link
+// the same way; each side's test pins the same cases.
+func purchaseLabel(l purchaseLink) string {
+	name := l.Retailer
+	switch l.Retailer {
+	case "audible":
+		name = "Audible"
+	case "libro-fm":
+		name = "Libro.fm"
+	}
+	if l.Region != "" {
+		return name + " (" + strings.ToUpper(l.Region) + ")"
+	}
+	return name
 }
 
 type workView struct {
@@ -858,6 +896,9 @@ func newWorkView(d *workDetail) workView {
 		}
 		for _, isbn := range rec.ISBN {
 			rv.Codes = append(rv.Codes, codeView{Label: "ISBN", Value: isbn})
+		}
+		for _, link := range rec.PurchaseLinks {
+			rv.Purchase = append(rv.Purchase, purchaseLinkView{Label: purchaseLabel(link), URL: link.URL})
 		}
 		v.Recordings = append(v.Recordings, rv)
 	}
