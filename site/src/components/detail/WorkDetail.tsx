@@ -4,7 +4,6 @@ import {
   getSeries,
   getChapters,
   formatRuntime,
-  formatYear,
   formatOffset,
   formatLanguage,
   href,
@@ -14,6 +13,7 @@ import {
   type Chapter,
   type Series,
 } from '../../lib/api'
+import { formatReleaseDate } from '../../lib/dates'
 import {
   guessRegions,
   listenChoices,
@@ -269,7 +269,7 @@ function RecordingCard({
   market: MarketState
 }) {
   const runtime = formatRuntime(recording.runtime_min)
-  const year = formatYear(recording.release_date)
+  const released = formatReleaseDate(recording.release_date)
   return (
     <article className="rounded-2xl border border-edge bg-surface p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -295,7 +295,7 @@ function RecordingCard({
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
         {runtime ? <MetaItem label="Runtime" value={runtime} /> : null}
         {recording.release_date ? (
-          <MetaItem label="Released" value={year ?? recording.release_date} />
+          <MetaItem label="Released" value={released ?? recording.release_date} />
         ) : null}
         {recording.publisher ? <MetaItem label="Publisher" value={recording.publisher} /> : null}
       </div>
@@ -324,7 +324,7 @@ function RecordingCard({
 /** Sidebar metadata: renders only what exists (facts-only, no placeholders). */
 function MetadataBlock({ work }: { work: Work }) {
   const language = formatLanguage(work.language)
-  const year = formatYear(work.first_published)
+  const firstPublished = formatReleaseDate(work.first_published)
   const xrefLinks = [
     work.xrefs?.wikidata && {
       label: 'Wikidata',
@@ -343,7 +343,7 @@ function MetadataBlock({ work }: { work: Work }) {
   const rows: { label: string; content: React.ReactNode }[] = []
   if (language) rows.push({ label: 'Language', content: language })
   if (work.first_published)
-    rows.push({ label: 'First published', content: year ?? work.first_published })
+    rows.push({ label: 'First published', content: firstPublished ?? work.first_published })
   if (work.genres && work.genres.length > 0)
     rows.push({
       label: 'Genres',

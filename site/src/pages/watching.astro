@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
+import WatchingPage from '../components/watching/WatchingPage.tsx'
+---
+
+<Base
+  title="Watching - AudioSilo Meta"
+  description="Follow a series and mark the volumes you already have, and this page lists what is new for you: released entries you are missing and anything still up for preorder. Stored in your browser only - no account, nothing sent to the server."
+>
+  <section class="relative pb-20">
+    <Backdrop variant="page" />
+    <div class="container relative z-10">
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+          Your shelf
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">Watching</h1>
+        <p class="mt-4 text-lg leading-relaxed text-body">
+          The series you follow, what you are missing from each, and what is coming. Your
+          watchlist and the volumes you have marked as yours are stored in this browser
+          only - there is no account, and none of it is ever sent to the server.
+        </p>
+      </div>
+
+      <div class="reveal mx-auto mt-10 max-w-3xl">
+        <WatchingPage client:only="react" />
+      </div>
+    </div>
+  </section>
+</Base>

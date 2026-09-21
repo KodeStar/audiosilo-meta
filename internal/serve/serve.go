@@ -61,6 +61,11 @@ type Config struct {
 	// apiBase overrides the GitHub API base URL. Test-only: production always
 	// talks to api.github.com.
 	apiBase string
+
+	// now supplies the watch feed's window boundary. Test-only; production uses
+	// time.Now. Keeping it on the server makes date-boundary tests deterministic
+	// without a package-global clock that would race parallel tests.
+	now func() time.Time
 }
 
 // Server holds the current snapshot and serves the API. The snapshot is swapped
@@ -133,6 +138,9 @@ func New(cfg Config) (*Server, error) {
 	}
 	if cfg.SiteURL == "" {
 		cfg.SiteURL = defaultSiteURL
+	}
+	if cfg.now == nil {
+		cfg.now = time.Now
 	}
 	// Stripped once, here, so every canonical/og/JSON-LD URL is one join away
 	// from being right rather than each having to defend against a "//".
@@ -295,6 +303,8 @@ func (s *Server) routes() []route {
 		route{"GET /api/v1/people/search", s.api(s.searchHandler(kindPerson))},
 		route{"GET /api/v1/series/search", s.api(s.searchHandler(kindSeries))},
 		route{"GET /api/v1/works/latest", s.api(s.handleLatest)},
+		route{"GET /api/v1/watch/feed.atom", s.api(s.handleWatchAtom)},
+		route{"GET /api/v1/watch/feed.json", s.api(s.handleWatchJSON)},
 		route{"GET /api/v1/works/{id}", s.api(s.handleWork)},
 		route{"GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters)},
 		route{"GET /api/v1/people/{id}", s.api(s.handlePerson)},

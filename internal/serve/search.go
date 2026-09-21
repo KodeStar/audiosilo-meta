@@ -9,14 +9,15 @@ import (
 // workResult is a search hit that is a work: the card fields inline, plus the
 // kind discriminator and the work's narrators.
 type workResult struct {
-	Kind      searchKind  `json:"kind"`
-	ID        string      `json:"id"`
-	Title     string      `json:"title"`
-	Authors   []personRef `json:"authors"`
-	Series    *seriesRef  `json:"series"`
-	CoverURL  *string     `json:"cover_url"`
-	AddedAt   *string     `json:"added_at"`
-	Narrators []personRef `json:"narrators"`
+	Kind        searchKind  `json:"kind"`
+	ID          string      `json:"id"`
+	Title       string      `json:"title"`
+	Authors     []personRef `json:"authors"`
+	Series      *seriesRef  `json:"series"`
+	ReleaseDate string      `json:"release_date,omitempty"`
+	CoverURL    *string     `json:"cover_url"`
+	AddedAt     *string     `json:"added_at"`
+	Narrators   []personRef `json:"narrators"`
 }
 
 type personResult struct {
@@ -373,7 +374,8 @@ func (s *snapshot) results(hits []searchHit) ([]any, error) {
 			}
 			out = append(out, workResult{
 				Kind: kindWork, ID: card.ID, Title: card.Title, Authors: card.Authors,
-				Series: card.Series, CoverURL: card.CoverURL, AddedAt: card.AddedAt,
+				Series: card.Series, ReleaseDate: card.ReleaseDate,
+				CoverURL: card.CoverURL, AddedAt: card.AddedAt,
 				Narrators: ns,
 			})
 		case kindPerson:

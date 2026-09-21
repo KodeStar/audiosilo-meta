@@ -266,6 +266,28 @@ describe('groupOperations', () => {
   it('leaves a bodiless response with a null skeleton', () => {
     expect(groups[1].operations[0].responses[0].skeleton).toBeNull()
   })
+
+  it('renders a non-JSON response schema', () => {
+    const withAtom: OpenAPISpec = {
+      openapi: '3.1.0',
+      info: { title: 'Feeds' },
+      paths: {
+        '/feed.atom': {
+          get: {
+            operationId: 'feed',
+            summary: 'Feed',
+            responses: {
+              '200': {
+                description: 'Atom.',
+                content: { 'application/atom+xml': { schema: { type: 'string' } } },
+              },
+            },
+          },
+        },
+      },
+    }
+    expect(groupOperations(withAtom)[0].operations[0].responses[0].skeleton).toBe('string')
+  })
 })
 
 // The real spec is the page's actual input, so a smoke pass over it catches a

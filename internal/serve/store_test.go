@@ -4,6 +4,8 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // TestBatchQueriesTolerateRepeatedIDs pins the dedupe that lives in eachChunk.
@@ -84,5 +86,72 @@ func TestNarratorsByWorkOrderIsTotal(t *testing.T) {
 	}
 	if !slices.Equal(names, []string{"michael-kramer", "kate-reading"}) {
 		t.Errorf("narrators = %v, want credit order (michael-kramer, kate-reading)", names)
+	}
+}
+
+// TestCardFactsPickTheEarliestReleaseDate pins the card's release_date rule: the
+// minimum by plain STRING order over the recordings that state one, absent when
+// none does. Both halves matter to the site - a work's entry on a series page
+// is "when did this come out", and a date in the FUTURE is what marks a
+// catalogued preorder - so the rule may not quietly become "the first
+// recording's date" or "the newest".
+//
+// It also re-pins the cover rule, which now shares the query: the first
+// NON-EMPTY cover in recording id order, unaffected by a recording that sorts
+// earlier and carries none.
+func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
+	rec := func(id, release, cover string) *model.Recording {
+		return &model.Recording{
+			ID: id, Work: "many-narrations", Language: "en", License: "CC0-1.0",
+			ReleaseDate: release, CoverURL: cover, Narrators: []string{"ray-porter"},
+		}
+	}
+	cat := fixtureCatalog()
+	cat.Works = append(cat.Works,
+		&model.Work{
+			ID: "many-narrations", Title: "Many Narrations", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{
+				// Deliberately NOT in date order, and the id order (which the
+				// cover follows) disagrees with it: "a-" sorts first and states
+				// the LATEST date and no cover.
+				rec("a-2024", "2024-03-02", ""),
+				rec("b-1999", "1999", "https://example.test/b.jpg"),
+				rec("c-1999-07", "1999-07-01", "https://example.test/c.jpg"),
+			},
+		},
+		&model.Work{
+			ID: "no-dates", Title: "No Dates", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{{
+				ID: "undated", Work: "no-dates", Language: "en", License: "CC0-1.0",
+				Narrators: []string{"ray-porter"},
+			}},
+		},
+	)
+
+	snap, err := openSnapshot(buildFixtureDB(t, cat), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(snap.close)
+
+	cards, err := snap.cardsByID([]string{"many-narrations", "no-dates", "project-hail-mary"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// "1999" beats "1999-07-01" by string order, which is the documented answer
+	// for a year stated at two precisions: both describe the same year.
+	if got := cards["many-narrations"].ReleaseDate; got != "1999" {
+		t.Errorf("earliest release_date = %q, want 1999", got)
+	}
+	if got := cards["many-narrations"].CoverURL; got == nil || *got != "https://example.test/b.jpg" {
+		t.Errorf("cover = %v, want the first non-empty one in recording id order", got)
+	}
+	if got := cards["no-dates"].ReleaseDate; got != "" {
+		t.Errorf("release_date of a work whose recordings state none = %q, want empty", got)
+	}
+	if got := cards["project-hail-mary"].ReleaseDate; got != "2021-05-04" {
+		t.Errorf("single-recording release_date = %q, want 2021-05-04", got)
 	}
 }

@@ -288,11 +288,7 @@ func (s *Server) legacyHandler(e htmlEntityRoute) http.HandlerFunc {
 // slug and the other two parts are a tag and a hex digest, which makes that
 // unreachable rather than merely unlikely.
 func entityETag(snap *snapshot, sh *shell, id string) string {
-	version := snap.tag
-	if version == "" {
-		version = snap.stats.BuiltAt
-	}
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(version+"/"+sh.identity+"/"+id) + `"`
+	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.version()+"/"+sh.identity+"/"+id) + `"`
 }
 
 // ---- page composition -------------------------------------------------------
