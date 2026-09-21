@@ -567,3 +567,26 @@ func captureStderr(t *testing.T, fn func()) string {
 	}
 	return string(out)
 }
+
+// TestPrintSummaryNotesComeBeforeWarnings pins the run's NOTES on the summary.
+// They say what the run DID - today, that an AI-narrated book was admitted
+// under the canonical synthetic record rather than refused - and a reader
+// scanning a long warning list should not have to reach its end to find that
+// out, so they print first.
+func TestPrintSummaryNotesComeBeforeWarnings(t *testing.T) {
+	out := captureStdout(t, func() {
+		printSummary(importer.Summary{
+			NewWorks: 1,
+			Notes:    []string{"2 recordings credited to Virtual Voice (synthetic narration)"},
+			Warnings: []string{"something else"},
+		}, false, importer.ModeCreate)
+	})
+	note := strings.Index(out, "note: 2 recordings credited to Virtual Voice (synthetic narration)")
+	warn := strings.Index(out, "warning: something else")
+	if note < 0 || warn < 0 {
+		t.Fatalf("summary missing the note or the warning: %q", out)
+	}
+	if note > warn {
+		t.Errorf("the note printed after the warning: %q", out)
+	}
+}

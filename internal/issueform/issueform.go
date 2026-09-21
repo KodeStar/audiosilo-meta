@@ -735,8 +735,14 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 		return slug, true
 	}
 	c.people[slug] = true
+	// Kind comes from the NAME and only ever decides one record: the canonical
+	// synthetic-voice person a folded narration credit names (the same
+	// importer.PersonKindFor call the bulk importer mints with, so a record
+	// created by a form and one created by an import are the same record). Every
+	// other kind stays a human classification made through the correct-data form.
 	if !c.putNewEntry(pack.FamilyPeople, slug, outPerson{
-		ID: slug, Name: strings.TrimSpace(name), License: licenseCC0, Sources: c.sources(sourceRef),
+		ID: slug, Name: strings.TrimSpace(name), Kind: importer.PersonKindFor(name),
+		License: licenseCC0, Sources: c.sources(sourceRef),
 	}) {
 		return "", false
 	}

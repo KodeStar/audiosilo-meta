@@ -703,13 +703,25 @@ func creditIdentifies(name string) bool {
 }
 
 // ---------------------------------------------------------------------------
-// AI-narration exclusion
+// AI-narration exclusion (from THIS source)
 //
-// AI-narrated productions do not belong in this catalogue: the data model is
-// about who narrated a book, and a synthetic voice is not a person - importing
-// one mints a person record for a text-to-speech engine (the full-dump
+// A synthetic voice is not a person, and naming one in a credit list used to
+// mint a person record for a text-to-speech engine - the full-dump
 // recordings-only run really did create eleven "ai-voice-*" people before this
-// rule existed).
+// vocabulary existed. That is the harm the rule exists to prevent, and the
+// vocabulary below is how it is recognized.
+//
+// The vocabulary is now read TWO WAYS, by tier. From a USER'S OWN LIBRARY an
+// AI-narrated book is admitted: the credit folds onto ONE canonical `synthetic`
+// person record, so the persona never becomes an identity and the book somebody
+// owns is still in the catalogue (internal/importer/synthetic.go). From THIS
+// source - the libex bulk mirror - the row is still REFUSED outright, and that
+// is the asymmetry the two tiers are for: 145,558 dump rows credit an AI voice,
+// and seeding them would make one synthetic record the most prolific narrator in
+// the catalogue off nobody's attestation. Nothing below changes for that, nor
+// does scripts/libex-export-rows.sql.
+//
+// The AUTHOR side is refused in both tiers. The decision is about narration.
 //
 // libex carries an is_vvab ("virtual voice") flag, and scripts/libex-export-rows.sql
 // filters on it - but the flag cannot be relied on. Measured over the full
@@ -851,21 +863,36 @@ func firstAICredit(authors, narrators []string) (role, name, why string, isAI bo
 		names []string
 	}{{"narrator", narrators}, {"author", authors}} {
 		for _, n := range list.names {
-			if why, ok := aiCreditReason(n); ok {
+			if why, ok := AICreditReason(n); ok {
 				return list.role, n, why, true
-			}
-			// A credit qualifier can hide the marker from the trailing-paren test
-			// ("Elise (AI) - narrator"), so the cleaned form gets a look too - that is
-			// the name that would become the person record. No such form is in the
-			// dump today; this is the cheap guard against the day one appears.
-			if cleaned := CleanCreditName(n); cleaned != n {
-				if why, ok := aiCreditReason(cleaned); ok {
-					return list.role, n, why, true
-				}
 			}
 		}
 	}
 	return "", "", "", false
+}
+
+// AICreditReason judges ONE credit name against both AI vocabularies, on the
+// name as the source spelled it AND on the cleaned form, and reports which
+// vocabulary refused it (phrased for the warning line).
+//
+// The second look is what a credit QUALIFIER needs: it can hide a trailing
+// marker from the parenthetical test ("Elise (AI) - narrator"), and the cleaned
+// name is the one that would become the person record. No such form is in the
+// dump today; this is the cheap guard against the day one appears.
+//
+// Exported because internal/issueform asks the same question of a hand
+// submission's AUTHOR credits - one typed name at a time, with no row and no
+// census - and the two doors must not hold two spellings of one vocabulary.
+func AICreditReason(name string) (why string, isAI bool) {
+	if why, ok := aiCreditReason(name); ok {
+		return why, true
+	}
+	if cleaned := CleanCreditName(name); cleaned != name {
+		if why, ok := aiCreditReason(cleaned); ok {
+			return why, true
+		}
+	}
+	return "", false
 }
 
 // aiCreditReason judges one credit name against both AI vocabularies and reports
@@ -878,6 +905,20 @@ func aiCreditReason(name string) (why string, isAI bool) {
 		return "an AI system, not a person", true
 	}
 	return "", false
+}
+
+// namesAISystemCredit is namesAISystem judged the way firstAICredit judges a
+// credit: on the name as the source spelled it AND on the cleaned form, since a
+// role qualifier can hide the token from a raw compare and the cleaned name is
+// the one that would become the person record. It is namesSyntheticVoice's
+// counterpart, and the shared gate asks the two in that order on the narrator
+// side - a voice folds, a system refuses.
+func namesAISystemCredit(name string) bool {
+	if namesAISystem(name) {
+		return true
+	}
+	cleaned := CleanCreditName(name)
+	return cleaned != name && namesAISystem(cleaned)
 }
 
 // namesAISystem reports whether the credit contains an aiSystemTokens token as a

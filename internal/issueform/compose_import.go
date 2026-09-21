@@ -168,8 +168,15 @@ func (c *composer) noteConflicts(sum importer.Summary) {
 }
 
 // noteImportWarnings echoes the importer's per-row warnings, which are what name
-// the records a conflict note refers to.
+// the records a conflict note refers to, and the run's NOTES - what it decided
+// rather than what went wrong. The AI-narration fold is the note that matters
+// here: a submitter whose library is AI-narrated should read in the pull request
+// that those books were admitted under one synthetic record, not wonder why
+// their narrator is not in the catalogue.
 func (c *composer) noteImportWarnings(sum importer.Summary) {
+	for _, n := range sum.Notes {
+		c.note("import note: %s", n)
+	}
 	for _, w := range sum.Warnings {
 		c.note("import warning: %s", w)
 	}

@@ -115,7 +115,8 @@ public domain under
 - Recordings: narrators, abridged flag, runtime, release date, publisher name,
   region-scoped ASINs, ISBNs, chapter titles and timestamps, cover URL.
 - People: author and narrator names, their identifiers, and the entity kind
-  (individual / group / publisher) when someone has classified the record.
+  (individual / group / publisher / synthetic) when someone has classified the
+  record - or, for `synthetic`, when the credit itself said so.
 - Series: names and the ordered list of member works (with string positions such
   as `"2.5"`).
 - Identifiers and cross-references of every kind.

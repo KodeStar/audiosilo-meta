@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -33,14 +34,11 @@ const (
 	kindPersonKind
 )
 
-// personKinds is the schema's person.kind enum, taken from pkg/model's
-// constants rather than re-spelled here so the form can never drift from the
-// values the schema accepts.
-var personKinds = map[string]bool{
-	model.KindEntityPerson:    true,
-	model.KindEntityGroup:     true,
-	model.KindEntityPublisher: true,
-}
+// personKinds is the schema's person.kind enum, taken from pkg/model's own list
+// rather than re-spelled here so the form can never drift from the values the
+// schema accepts - a kind added to the enum is accepted here the moment
+// model.PersonKinds names it, with no second table to remember.
+var personKinds = importer.ToSet(model.PersonKinds())
 
 // correctOp is what a correction DOES to one field. Exactly one of the two is
 // set: kind names the coercion for a scalar the correction REPLACES, and add

@@ -189,3 +189,85 @@ func TestFirstAICreditJudgesBothLists(t *testing.T) {
 		t.Error("an empty row was refused")
 	}
 }
+
+// TestAIAuthorRefusedFromEverySource pins the half of the rule the synthetic
+// narration decision did NOT change: an AI credited as the AUTHOR refuses the
+// row whatever door it came in, in either trust tier. The narration fold is
+// about who READ a book; an author credit is a claim about who wrote it, and a
+// generative system is not a person either way.
+func TestAIAuthorRefusedFromEverySource(t *testing.T) {
+	t.Run("libex", func(t *testing.T) {
+		sum, dataDir := runLibex(t, strings.Join(aiSystemRows(), "\n")+"\n", false)
+		if sum.SkippedRows != 1 {
+			t.Errorf("SkippedRows = %d, want 1", sum.SkippedRows)
+		}
+		if entryExists(t, dataDir, personAddr("claude-ai")) {
+			t.Error("a language model was minted as a person at \"claude-ai\"")
+		}
+	})
+
+	t.Run("audiosilo-books", func(t *testing.T) {
+		const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "Model Authored",
+      "authors": ["Sparky From ChatGPT"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSAU001",
+      "language": "en"
+    }
+  ]
+}`
+		sum, dataDir := runAudiosiloBooks(t, export, false)
+		if sum.NewWorks != 0 || sum.SkippedRows != 1 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/1", sum.NewWorks, sum.SkippedRows)
+		}
+		if entryExists(t, dataDir, personAddr("sparky-from-chatgpt")) {
+			t.Error("a generative system was minted as a person")
+		}
+	})
+
+	t.Run("openaudible", func(t *testing.T) {
+		books := `[
+			{"asin":"B0OAAU0001","title_short":"Model Authored","author":"ChatGPT ChatGPT","narrated_by":"Priya Lund","language":"english","region":"US","seconds":1000}
+		]`
+		sum, dataDir := runImport(t, books, false)
+		if sum.NewWorks != 0 || sum.SkippedRows != 1 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/1", sum.NewWorks, sum.SkippedRows)
+		}
+		if entryExists(t, dataDir, personAddr("chatgpt-chatgpt")) {
+			t.Error("a generative system was minted as a person")
+		}
+	})
+
+	t.Run("libation", func(t *testing.T) {
+		export := `[
+			{"AudibleProductId":"B0LBAU0001","Locale":"us","Title":"Model Authored","AuthorNames":"CLAUDE.AI","NarratorNames":"Priya Lund","LengthInMinutes":100,"Language":"English"}
+		]`
+		sum, dataDir := runLibation(t, export, false)
+		if sum.NewWorks != 0 || sum.SkippedRows != 1 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/1", sum.NewWorks, sum.SkippedRows)
+		}
+		if entryExists(t, dataDir, personAddr("claude-ai")) {
+			t.Error("a language model was minted as a person at \"claude-ai\"")
+		}
+	})
+}
+
+// TestNamesAISystemCredit pins the second look the shared gate's narrator arm
+// needs: a role qualifier hides the token from a raw compare, and the CLEANED
+// name is the one that would become the person record.
+func TestNamesAISystemCredit(t *testing.T) {
+	for _, name := range []string{"ChatGPT", "ChatGPT - narrator", "Sparky From ChatGPT - Erzähler"} {
+		if !namesAISystemCredit(name) {
+			t.Errorf("namesAISystemCredit(%q) = false, want true", name)
+		}
+	}
+	for _, name := range []string{"Priya Lund", "Virtual Voice", "AI Voice Nina", "Claude Gilbert", ""} {
+		if namesAISystemCredit(name) {
+			t.Errorf("namesAISystemCredit(%q) = true, want false", name)
+		}
+	}
+}

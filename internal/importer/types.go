@@ -40,8 +40,13 @@ type OutSource struct {
 
 // OutPerson is the on-disk person record shape.
 type OutPerson struct {
-	ID      string      `json:"id"`
-	Name    string      `json:"name"`
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	// Kind is the entity kind (schema/person.schema.json, model.KindEntity*).
+	// Omitted on every ordinary record: an absent kind means "an individual, or
+	// unclassified", and nothing infers it. The one kind a writer sets by itself
+	// is `synthetic`, on the canonical AI-narration record (synthetic.go).
+	Kind    string      `json:"kind,omitempty"`
 	License string      `json:"license"`
 	Sources []OutSource `json:"sources"`
 }
@@ -318,7 +323,9 @@ type Summary struct {
 	// credit-side rule, and the only one that can refuse a row for a bad ASIN or
 	// region) and runBooks' shared AI-credit gate, which covers every source
 	// (refuseAIBooks). For a libex run the shared gate refuses nothing, because
-	// the parse layer already has.
+	// the parse layer already has. A user-library row whose NARRATION is
+	// synthetic is not counted here at all: it is admitted under the canonical
+	// record and reported in Notes (synthetic.go).
 	SkippedRows int
 	// HonorificMerges lists every credit spelling the honorific rule resolved
 	// onto a bare twin this run, as sorted "<credited> -> <bare>" lines
@@ -338,6 +345,13 @@ type Summary struct {
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string
+	// Notes are aggregated lines about what a run DID, where the doing is a
+	// decision a reader should see rather than something that went wrong -
+	// today, the AI-narration fold (synthetic.go). They are kept apart from
+	// Warnings on purpose: the intake bot reads a non-empty warning list as
+	// evidence that entries fell out of the export, and a note is the opposite
+	// claim.
+	Notes []string
 }
 
 // Produced counts the outcomes that mean a run actually CHANGED the tree: it
