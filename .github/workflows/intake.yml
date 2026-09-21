@@ -28,12 +28,16 @@ on:
   issues:
     types: [opened, edited, labeled]
   # A merge to main can leave an already-open intake PR conflicting in a pack
-  # file. Only a change to the data tree can do that, so the trigger is scoped to
-  # it - a docs or tooling merge leaves every intake branch mergeable.
+  # file, which only a data change can do - but the series-completion bot
+  # (GOVERNANCE.md, "Series-completion bot") merges its own pull request ONLY
+  # when the head already contains the tip of main, and it carries the
+  # bot-intake label so this sweep is what brings it up to date. A docs or
+  # tooling merge therefore has to run the sweep too, or the bot's open pull
+  # request sits behind main with nothing to rebase it and is recycled after
+  # 30 minutes - a whole cycle thrown away. The sweep is cheap when no bot
+  # branch is open, so the trigger is every push to main.
   push:
     branches: [main]
-    paths:
-      - "data/**"
 
 # Least privilege at the workflow level is "nothing"; each job takes what it
 # needs (issues: write is the intake job's alone - the rebase job never touches
