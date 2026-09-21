@@ -1,11 +1,15 @@
 name: ai-verify
 
-# Advisory AI review of a data pull request's diff. This is a judgement layer on
-# top of the mechanical `check` workflow (schema/integrity/formatting), never a
-# replacement for it: it posts a PASS/FLAG comment and label. Neither verdict
+# Advisory AI review of a data pull request's RECORDS. This is a judgement layer
+# on top of the mechanical `check` workflow (schema/integrity/formatting), never
+# a replacement for it: it posts a PASS/FLAG comment and label. Neither verdict
 # blocks a merge - this check is not branch protected. The job's COLOUR is a
 # separate signal: red means no verdict was reached (see the script's EXIT
 # STATUS block).
+#
+# WHAT THE MODEL READS is an entry-level summary produced by `cmd/metadiff`, not
+# the pull request's text diff - see the "Gather the data change" step, which
+# states why.
 #
 # SECURITY: this uses the plain `pull_request` trigger, NOT
 # `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
@@ -20,8 +24,8 @@ name: ai-verify
 #     the secret and a write token) or re-runs it via workflow_dispatch, which
 #     runs from the default branch WITH the secret. We do NOT weaken this to
 #     reach fork secrets.
-#   - The diff is passed to the model as untrusted DATA and never executed (see
-#     .github/scripts/ai-verify.sh).
+#   - The summary is built from contributor-supplied data and is passed to the
+#     model as untrusted DATA, never executed (see .github/scripts/ai-verify.sh).
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled]
@@ -99,7 +103,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Gather the data diff
+      # metadiff is a Go command in this repository, so the job compiles it.
+      # go.mod is the single source of the version, as every other workflow here
+      # does it.
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Gather the data change
         id: gather
         env:
           GH_TOKEN: ${{ github.token }}
@@ -120,21 +132,53 @@ jobs:
           fi
           echo "pr=$PR" >> "$GITHUB_OUTPUT"
 
-          # The unified diff, scoped to data/**.
-          git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/**' > context.txt || true
-          # Append the full current text of each changed data file, for context
-          # the diff alone omits.
+          # Nothing to verify unless data/** actually changed. Decided BEFORE the
+          # summary is built, because a metadiff over an empty tranche still
+          # prints its header and would read as "there are changes".
+          if git diff --quiet "${BASE_SHA}...${HEAD_SHA}" -- 'data/**'; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+
+          # THE CONTEXT IS AN ENTRY-LEVEL SUMMARY, not a raw diff. The data tree
+          # is range-packed: a write re-renders its whole pack and may split it,
+          # so a 100-work sync pull request is 136 files and ~68,000 changed
+          # lines of which the records are a tiny fraction. The old raw-diff
+          # context was then cut to the script's first 200KB, so the model read
+          # an arbitrary tenth of the tranche and could not tell. metadiff keys
+          # every changed pack's entries by family and slug across the whole
+          # tranche at once, so storage churn cancels out and what is left is one
+          # line per added or removed record plus a field-level diff per modified
+          # one - the WHOLE tranche, inside the budget.
+          go build -o ./bin/metadiff ./cmd/metadiff
+          if ./bin/metadiff --base "$BASE_SHA" --head "$HEAD_SHA" > context.txt 2> metadiff.err; then
+            :
+          else
+            # A summary that could not be built must not silently become a
+            # verification of nothing: fall back to the raw diff and SAY SO at the
+            # top of the context, so the model is told what it is actually
+            # reading and the finding (if any) is judged on the right basis.
+            echo "::warning::metadiff failed; falling back to the raw diff context"
+            {
+              echo "NOTE: the entry-level summary could not be built for this pull request"
+              echo "($(head -c 500 metadiff.err | tr '\n' ' ')). What follows is the RAW"
+              echo "unified diff of data/**, truncated to the reviewer's input cap, so it"
+              echo "may show only part of the change. Judge only what you can see."
+              echo
+              git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/**'
+            } > context.txt || true
+          fi
+
+          # The slug tombstone table is the one non-pack file in the tree and it
+          # is small, so its raw diff is appended verbatim: a retired slug is a
+          # judgement call the summary's added/removed pairs should be checked
+          # against.
           {
             echo
-            echo "===== FULL TEXT OF CHANGED FILES ====="
-            git diff --name-only "${BASE_SHA}...${HEAD_SHA}" -- 'data/**' | while read -r f; do
-              [ -f "$f" ] || continue
-              echo
-              echo "----- $f -----"
-              cat "$f"
-            done
-          } >> context.txt
-          if [ -s context.txt ]; then echo "has_changes=true" >> "$GITHUB_OUTPUT"; else echo "has_changes=false" >> "$GITHUB_OUTPUT"; fi
+            echo "===== RAW DIFF OF data/redirects.json ====="
+            git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json'
+          } >> context.txt || true
 
       # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
       # subscription token authenticates through the CLI, not the raw API). When
