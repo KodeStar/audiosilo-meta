@@ -310,7 +310,7 @@
         "tags": ["Watch feeds"],
         "operationId": "watchFeedAtom",
         "summary": "Watched-series Atom feed",
-        "description": "An Atom 1.0 feed of recently released, newly catalogued and preorderable works in the series named by `s`. The series list lives entirely in the URL; the server stores no subscription or reader state. Feed readers deduplicate entries by id. Unknown series slugs are omitted and named in the subtitle, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact and raw parameters.",
+        "description": "An Atom 1.0 feed of recently released, newly catalogued and preorderable works in the series named by `s`. The series list lives entirely in the URL; the server stores no subscription or reader state. Feed readers deduplicate entries by id. Unknown series slugs are omitted and named in the subtitle, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact, the raw parameters and the current day - the day, because the window is a rolling cutoff and a preorder becomes a release on a date.",
         "parameters": [
           { "$ref": "#/components/parameters/WatchSeries" },
           { "$ref": "#/components/parameters/WatchWindow" }
@@ -341,7 +341,7 @@
         "tags": ["Watch feeds"],
         "operationId": "watchFeedJSON",
         "summary": "Watched-series JSON Feed",
-        "description": "A JSON Feed 1.1 representation of the same stateless watched-series notification feed as `/api/v1/watch/feed.atom`. Unknown series slugs are omitted and named in the description, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact and raw parameters.",
+        "description": "A JSON Feed 1.1 representation of the same stateless watched-series notification feed as `/api/v1/watch/feed.atom`. Unknown series slugs are omitted and named in the description, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact, the raw parameters and the current day - the day, because the window is a rolling cutoff and a preorder becomes a release on a date.",
         "parameters": [
           { "$ref": "#/components/parameters/WatchSeries" },
           { "$ref": "#/components/parameters/WatchWindow" }

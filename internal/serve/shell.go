@@ -183,8 +183,18 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 // attacker. Components are length-prefixed so no two of them can be run together
 // into the same digest input.
 func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
+	return identity(shellName, shellHTML, siteURL, revision)
+}
+
+// identity is the digest pageIdentity is the shell's four-part spelling of: any
+// number of components, each length-prefixed, folded into one short hex string.
+// Other surfaces that need a validator over a different set of components (the
+// watch feeds, over the artifact and the request's own parameters) call this
+// rather than borrowing pageIdentity's parameter names for values that mean
+// something else.
+func identity(parts ...string) string {
 	h := fnv.New64a()
-	for _, part := range []string{shellName, shellHTML, siteURL, revision} {
+	for _, part := range parts {
 		var n [8]byte
 		binary.LittleEndian.PutUint64(n[:], uint64(len(part)))
 		_, _ = h.Write(n[:])

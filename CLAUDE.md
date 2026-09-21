@@ -915,8 +915,17 @@ slugs, or `z:<base64url(deflate(csv))>` using raw DEFLATE and no padding, so the
 server needs no account or subscription store. They resolve retired series
 slugs, report unknown ones, return released, newly catalogued and preorderable
 work cards from the artifact, and let the feed reader deduplicate stable item
-ids. Both representations are public-cacheable for one hour and use an ETag
-over the artifact identity plus the raw `s` and `window` parameters.
+ids (the id suffix is `preorder` or `released`, so a preorder BECOMING a
+release is a new item and nothing else is). Dates are read at the precision the
+catalogue states them - `releaseIsFuture`/`formatReleaseDate` in `watchfeed.go`
+are a HAND-MIRRORED TWIN of `site/src/lib/dates.ts`, pinned to the same cases on
+both sides, so the feed and the watching page can never say two different things
+about one book. Both representations are public-cacheable for one hour and use
+an ETag over the artifact identity, the representation, the raw `s`/`window`
+parameters AND THE DAY: this is the one body on the server whose content moves
+with the clock (a rolling window, a preorder becoming a release), so a validator
+naming only the artifact would let a conditional GET 304-renew a stale feed for
+every hour between data releases.
 
 **The work CARD carries `release_date`** (`store.go`'s `workCard`, so every
 surface that composes one: `GET /series/{id}` entries, all four searches and

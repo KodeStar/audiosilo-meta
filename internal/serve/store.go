@@ -65,6 +65,18 @@ type snapshot struct {
 	gapsDone bool
 }
 
+// version identifies the ARTIFACT behind this snapshot for a cache validator:
+// the release tag, or the build timestamp when there is no tag (a local --db).
+// One definition, because every surface that mints an ETag - the entity pages,
+// the sitemaps and the watch feeds - is asking the same question, and a third
+// spelling of it is a third thing to keep in step.
+func (s *snapshot) version() string {
+	if s.tag != "" {
+		return s.tag
+	}
+	return s.stats.BuiltAt
+}
+
 // logf writes a degradation notice through the Server's logger when the
 // snapshot has one.
 func (s *snapshot) logf(format string, args ...any) {

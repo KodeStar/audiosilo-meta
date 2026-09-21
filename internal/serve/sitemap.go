@@ -496,11 +496,7 @@ func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap
 // for the same reason entityETag is - a quote in any component would end the tag
 // early.
 func sitemapETag(snap *snapshot, siteURL, doc string) string {
-	version := snap.tag
-	if version == "" {
-		version = snap.stats.BuiltAt
-	}
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(version+"/"+siteURL+doc) + `"`
+	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.version()+"/"+siteURL+doc) + `"`
 }
 
 // writeSitemap renders a document and writes it under the validator the
@@ -510,7 +506,7 @@ func sitemapETag(snap *snapshot, siteURL, doc string) string {
 // SUCCESS is what puts the ETag and the cache policy on the response, so no
 // error path can inherit them.
 func writeSitemap(w http.ResponseWriter, etag string, doc any) {
-	body, err := renderSitemap(doc)
+	body, err := renderXML(doc)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
@@ -522,11 +518,12 @@ func writeSitemap(w http.ResponseWriter, etag string, doc any) {
 	_, _ = w.Write(body)
 }
 
-// renderSitemap marshals a sitemap document, XML declaration included. It is
-// deterministic: struct field order is the element order, the entries are in the
-// order their query returned them (ORDER BY id) and nothing here reads a clock,
-// so two renders of one snapshot are byte-identical.
-func renderSitemap(doc any) ([]byte, error) {
+// renderXML marshals an XML document, declaration included - the sitemaps here
+// and the watch feed's Atom representation. It is deterministic: struct field
+// order is the element order, the entries are in the order their query returned
+// them (ORDER BY id) and nothing here reads a clock, so two renders of one
+// snapshot are byte-identical.
+func renderXML(doc any) ([]byte, error) {
 	var b bytes.Buffer
 	b.WriteString(xml.Header)
 	enc := xml.NewEncoder(&b)
