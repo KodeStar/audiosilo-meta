@@ -9803,6 +9803,9 @@
       "authors": [
         "chet-cunningham"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "mardi-gras-massacre",
       "language": "en",
       "license": "CC0-1.0",
@@ -9816,6 +9819,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1124403,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1197082,
+              "start_ms": 1124403,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1431789,
+              "start_ms": 2321485,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 504662,
+              "start_ms": 3753274,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1131741,
+              "start_ms": 4257936,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1102994,
+              "start_ms": 5389677,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1310766,
+              "start_ms": 6492671,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1225410,
+              "start_ms": 7803437,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1713726,
+              "start_ms": 9028847,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 997901,
+              "start_ms": 10742573,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 825377,
+              "start_ms": 11740474,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1619220,
+              "start_ms": 12565851,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1078195,
+              "start_ms": 14185071,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2199023,
+              "start_ms": 15263266,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1284296,
+              "start_ms": 17462289,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 476520,
+              "start_ms": 18746585,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1303893,
+              "start_ms": 19223105,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kqDNhOaEL.jpg",
           "id": "gene-engene-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -9830,6 +9921,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002VA3NU6",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002VA3NU6",
+              "type": "libex-import"
             }
           ],
           "work": "mardi-gras-massacre"
@@ -9840,6 +9935,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002VA3NU6",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002VA3NU6",
+          "type": "libex-import"
         }
       ],
       "title": "Mardi Gras Massacre"

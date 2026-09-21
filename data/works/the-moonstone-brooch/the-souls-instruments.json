@@ -4179,6 +4179,10 @@
       "authors": [
         "charles-l-grant"
       ],
+      "genres": [
+        "horror",
+        "occult"
+      ],
       "id": "the-sound-of-midnight",
       "language": "en",
       "license": "CC0-1.0",
@@ -4192,6 +4196,84 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 14164,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2431826,
+              "start_ms": 14164,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2292320,
+              "start_ms": 2445990,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2410092,
+              "start_ms": 4738310,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2088588,
+              "start_ms": 7148402,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2146220,
+              "start_ms": 9236990,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1683075,
+              "start_ms": 11383210,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1925956,
+              "start_ms": 13066285,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2257165,
+              "start_ms": 14992241,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1967566,
+              "start_ms": 17249406,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1399885,
+              "start_ms": 19216972,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1626326,
+              "start_ms": 20616857,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1807952,
+              "start_ms": 22243183,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2258094,
+              "start_ms": 24051135,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 41192,
+              "start_ms": 26309229,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-0vVjyM0L.jpg",
           "id": "troy-duran-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -4206,6 +4288,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00AN5VUDI",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00AN5VUDI",
+              "type": "libex-import"
             }
           ],
           "work": "the-sound-of-midnight"
@@ -4216,6 +4302,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00AN5VUDI",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00AN5VUDI",
+          "type": "libex-import"
         }
       ],
       "title": "The Sound of Midnight"

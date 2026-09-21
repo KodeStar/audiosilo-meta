@@ -5517,6 +5517,9 @@
       "authors": [
         "ray-bradbury"
       ],
+      "genres": [
+        "science-fiction"
+      ],
       "id": "the-concrete-mixer",
       "language": "en",
       "license": "CC0-1.0",
@@ -5530,6 +5533,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 13653,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 61579,
+              "start_ms": 13653,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 547805,
+              "start_ms": 75232,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1595629,
+              "start_ms": 623037,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 801692,
+              "start_ms": 2218666,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 27632,
+              "start_ms": 3020358,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lk7GUluvL.jpg",
           "id": "rish-outfield-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -5544,6 +5580,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00HETDFHK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00HETDFHK",
+              "type": "libex-import"
             }
           ],
           "work": "the-concrete-mixer"
@@ -5554,6 +5594,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00HETDFHK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00HETDFHK",
+          "type": "libex-import"
         }
       ],
       "title": "The Concrete Mixer"

@@ -9976,6 +9976,11 @@
       "authors": [
         "iain-gale"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
+      ],
       "id": "keanes-company",
       "language": "en",
       "license": "CC0-1.0",
@@ -9989,6 +9994,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2910622,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2385804,
+              "start_ms": 2910622,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3336011,
+              "start_ms": 5296426,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3288503,
+              "start_ms": 8632437,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2601889,
+              "start_ms": 11920940,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2562508,
+              "start_ms": 14522829,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2692075,
+              "start_ms": 17085337,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2873934,
+              "start_ms": 19777412,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1841807,
+              "start_ms": 22651346,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2444504,
+              "start_ms": 24493153,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2535991,
+              "start_ms": 26937657,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1880398,
+              "start_ms": 29473648,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2216902,
+              "start_ms": 31354046,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2156391,
+              "start_ms": 33570948,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1519421,
+              "start_ms": 35727339,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 442990,
+              "start_ms": 37246760,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kUdubbbeL.jpg",
           "id": "david-timson-2014",
           "language": "en",
           "license": "CC0-1.0",
@@ -10003,6 +10091,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00INEQ8EW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00INEQ8EW",
+              "type": "libex-import"
             }
           ],
           "work": "keanes-company"
@@ -10013,6 +10105,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00INEQ8EW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00INEQ8EW",
+          "type": "libex-import"
         }
       ],
       "title": "Keane's Company"

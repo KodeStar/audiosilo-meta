@@ -13673,6 +13673,9 @@
       "authors": [
         "charlotte-bingham"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-blue-note",
       "language": "en",
       "license": "CC0-1.0",
@@ -13686,6 +13689,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2438653,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2194379,
+              "start_ms": 2438653,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2435866,
+              "start_ms": 4633032,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2816116,
+              "start_ms": 7068898,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4213029,
+              "start_ms": 9885014,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 5005386,
+              "start_ms": 14098043,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4458556,
+              "start_ms": 19103429,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2251639,
+              "start_ms": 23561985,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3767484,
+              "start_ms": 25813624,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 925919,
+              "start_ms": 29581108,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2906302,
+              "start_ms": 30507027,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4214933,
+              "start_ms": 33413329,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1546960,
+              "start_ms": 37628262,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4563371,
+              "start_ms": 39175222,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3566910,
+              "start_ms": 43738593,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4422612,
+              "start_ms": 47305503,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81S+g1rBPwL.jpg",
           "id": "judy-bennett-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -13700,6 +13786,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01BGCKZSC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01BGCKZSC",
+              "type": "libex-import"
             }
           ],
           "work": "the-blue-note"
@@ -13710,6 +13800,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01BGCKZSC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01BGCKZSC",
+          "type": "libex-import"
         }
       ],
       "title": "The Blue Note"

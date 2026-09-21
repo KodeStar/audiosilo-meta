@@ -1681,6 +1681,12 @@
       "authors": [
         "charles-dickens"
       ],
+      "genres": [
+        "classics",
+        "ghost-stories",
+        "horror",
+        "literary-fiction"
+      ],
       "id": "the-trial-for-murder",
       "language": "en",
       "license": "CC0-1.0",
@@ -1694,6 +1700,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 21362,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1999957,
+              "start_ms": 21362,
+              "title": "The Trial for Murder"
+            },
+            {
+              "length_ms": 22545,
+              "start_ms": 2021319,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NuzmKIJ6L.jpg",
           "id": "n-w-edwards-2024",
           "language": "en",
           "license": "CC0-1.0",
@@ -1708,6 +1732,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0DJRJW88D",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0DJRJW88D",
+              "type": "libex-import"
             }
           ],
           "work": "the-trial-for-murder"
@@ -1718,6 +1746,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0DJRJW88D",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0DJRJW88D",
+          "type": "libex-import"
         }
       ],
       "title": "The Trial for Murder"

@@ -10097,6 +10097,11 @@
       "authors": [
         "alice-munro"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "short-stories"
+      ],
       "id": "the-view-from-castle-rock",
       "language": "en",
       "license": "CC0-1.0",
@@ -10110,6 +10115,114 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1627858,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 677790,
+              "start_ms": 1627858,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1415070,
+              "start_ms": 2305648,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1819191,
+              "start_ms": 3720718,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2418823,
+              "start_ms": 5539909,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2922463,
+              "start_ms": 7958732,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1903990,
+              "start_ms": 10881195,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 857977,
+              "start_ms": 12785185,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1924284,
+              "start_ms": 13643162,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2051344,
+              "start_ms": 15567446,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1818680,
+              "start_ms": 17618790,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1581232,
+              "start_ms": 19437470,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2884290,
+              "start_ms": 21018702,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3578799,
+              "start_ms": 23902992,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3566724,
+              "start_ms": 27481791,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3221722,
+              "start_ms": 31048515,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 368083,
+              "start_ms": 34270237,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1992690,
+              "start_ms": 34638320,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1761141,
+              "start_ms": 36631010,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 3118393,
+              "start_ms": 38392151,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 812373,
+              "start_ms": 41510544,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-+w-Dcz7L.jpg",
           "id": "kimberly-farr-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -10124,6 +10237,10 @@
               "imported_at": "2026-09-21",
               "ref": "B007X5OJXY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B007X5OJXY",
+              "type": "libex-import"
             }
           ],
           "work": "the-view-from-castle-rock"
@@ -10134,6 +10251,10 @@
           "imported_at": "2026-09-21",
           "ref": "B007X5OJXY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B007X5OJXY",
+          "type": "libex-import"
         }
       ],
       "title": "The View from Castle Rock"

@@ -3050,6 +3050,9 @@
       "authors": [
         "charles-dickens"
       ],
+      "genres": [
+        "classics"
+      ],
       "id": "the-battle-of-life",
       "language": "en",
       "license": "CC0-1.0",
@@ -3063,6 +3066,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 10750,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3271900,
+              "start_ms": 10750,
+              "title": "Part the First"
+            },
+            {
+              "length_ms": 4352975,
+              "start_ms": 3282650,
+              "title": "Part the Second"
+            },
+            {
+              "length_ms": 3675974,
+              "start_ms": 7635625,
+              "title": "Part the Third"
+            },
+            {
+              "length_ms": 19063,
+              "start_ms": 11311599,
+              "title": "Closing Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71sctZu9oaL.jpg",
           "id": "jonathan-keeble-2024",
           "language": "en",
           "license": "CC0-1.0",
@@ -3077,6 +3108,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0DFHJZFXR",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0DFHJZFXR",
+              "type": "libex-import"
             }
           ],
           "work": "the-battle-of-life"
@@ -3087,6 +3122,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0DFHJZFXR",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0DFHJZFXR",
+          "type": "libex-import"
         }
       ],
       "title": "The Battle of Life"

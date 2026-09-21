@@ -4774,6 +4774,11 @@
       "authors": [
         "cecily-wong"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction"
+      ],
       "id": "diamond-head",
       "language": "en",
       "license": "CC0-1.0",
@@ -4787,6 +4792,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2913268,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4082858,
+              "start_ms": 2913268,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 5240837,
+              "start_ms": 6996126,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4315893,
+              "start_ms": 12236963,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4952770,
+              "start_ms": 16552856,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3893615,
+              "start_ms": 21505626,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4462968,
+              "start_ms": 25399241,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4036743,
+              "start_ms": 29862209,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4155907,
+              "start_ms": 33898952,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 6606634,
+              "start_ms": 38054859,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1527501,
+              "start_ms": 44661493,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71gHaXlOmbL.jpg",
           "id": "nancy-wu-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -4805,6 +4868,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00VSEL33A",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00VSEL33A",
+              "type": "libex-import"
             }
           ],
           "work": "diamond-head"
@@ -4815,6 +4882,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00VSEL33A",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00VSEL33A",
+          "type": "libex-import"
         }
       ],
       "title": "Diamond Head"

@@ -10707,6 +10707,12 @@
       "authors": [
         "a-r-r-r-roberts"
       ],
+      "genres": [
+        "classics",
+        "comedy-humor",
+        "epic-fantasy",
+        "fantasy"
+      ],
       "id": "the-soddit",
       "language": "en",
       "license": "CC0-1.0",
@@ -10720,6 +10726,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1098397,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1166431,
+              "start_ms": 1098397,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1276680,
+              "start_ms": 2264828,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1211989,
+              "start_ms": 3541508,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1376525,
+              "start_ms": 4753497,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1226850,
+              "start_ms": 6130022,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1127422,
+              "start_ms": 7356872,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1284203,
+              "start_ms": 8484294,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1135224,
+              "start_ms": 9768497,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1195317,
+              "start_ms": 10903721,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1229497,
+              "start_ms": 12099038,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1096818,
+              "start_ms": 13328535,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91IqX5LCZlL.jpg",
           "id": "mark-perry-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -10734,6 +10803,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0099WF5FA",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0099WF5FA",
+              "type": "libex-import"
             }
           ],
           "work": "the-soddit"
@@ -10744,6 +10817,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0099WF5FA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0099WF5FA",
+          "type": "libex-import"
         }
       ],
       "title": "The Soddit"

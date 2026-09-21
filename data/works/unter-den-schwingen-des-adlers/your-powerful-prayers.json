@@ -11075,6 +11075,13 @@
         "michael-atamanov",
         "alexey-osadchuk"
       ],
+      "genres": [
+        "cyberpunk",
+        "epic-fantasy",
+        "fantasy",
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "youre-in-game",
       "language": "en",
       "license": "CC0-1.0",
@@ -11088,6 +11095,49 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1436944,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2507012,
+              "start_ms": 1436944,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2821689,
+              "start_ms": 3943956,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1877473,
+              "start_ms": 6765645,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2115802,
+              "start_ms": 8643118,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3140778,
+              "start_ms": 10758920,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1243800,
+              "start_ms": 13899698,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1962458,
+              "start_ms": 15143498,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91w7B3BTb1L.jpg",
           "id": "tim-campbell-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -11102,6 +11152,10 @@
               "imported_at": "2026-09-21",
               "ref": "B06X9MG8KK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B06X9MG8KK",
+              "type": "libex-import"
             }
           ],
           "work": "youre-in-game"
@@ -11112,6 +11166,10 @@
           "imported_at": "2026-09-21",
           "ref": "B06X9MG8KK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B06X9MG8KK",
+          "type": "libex-import"
         }
       ],
       "title": "You’re in Game!"

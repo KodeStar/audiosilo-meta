@@ -300,6 +300,29 @@ type planner struct {
 	// the COUNT is Summary.SkippedDuplicateIdentity. Capped as it fills, like every
 	// other example list here.
 	dupIdentityExamples []string
+	// seriesLookup answers "where does this ASIN sit in its series" for a row
+	// whose own source stated no position (Options.SeriesLookup, seriespos.go).
+	// nil for every run that was not given one - which is every existing caller,
+	// every offline run and the default CLI - and nil is also what makes the rule
+	// OFF rather than merely unused.
+	seriesLookup SeriesPositionLookup
+	// seriesLookupLeft is the lookups this run may still perform, counted down
+	// only by a row that actually needs one. -1 is "no cap" (a caller asking for
+	// it explicitly); 0 stops the pass.
+	seriesLookupLeft int
+	// seriesPositionsFilled counts the positions the lookup supplied, and
+	// seriesPositionExamples names a few for the run's one aggregated note
+	// (reportSeriesPositionLookups). Aggregated for the reason every bulk fact is:
+	// the news is "this wave's files carry a series tag and no part number", and a
+	// personal library states that 97 times in 123 rows.
+	seriesPositionsFilled  int
+	seriesPositionExamples []string
+	// seriesLookupFailed counts the lookups that did not answer, with a few
+	// messages for the same aggregated report. A lookup never fails the run - the
+	// service is external and free - so this line is the only thing that tells a
+	// run whose lookups were all refused from a run that needed none.
+	seriesLookupFailed   int
+	seriesLookupFailures []string
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is
 	// selected once, by runBooks' switch.
@@ -465,6 +488,16 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
+	// The series-position lookup is a USER-LIBRARY CREATE rule (seriespos.go),
+	// and it is off unless the caller supplied one. The gap it fills belongs to a
+	// personal library export - a file tagged with a series and no part number -
+	// and only the create path places a work in a series at all, so a libex run
+	// and the two catalogue-bounded modes never reach it even when a lookup is
+	// passed.
+	if opts.SeriesLookup != nil && p.userTier && opts.Mode == ModeCreate {
+		p.seriesLookup = opts.SeriesLookup
+		p.seriesLookupLeft = seriesLookupCap(opts.SeriesLookupLimit)
+	}
 	// Recorded on the summary before planning appends anything, so the AI line
 	// is the run's FIRST warning and every return path below carries it.
 	p.summary.SkippedRows = aiRefused.n
@@ -492,6 +525,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
 	p.reportLostSeriesClaims()
+	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
 	if p.fatal != nil {
 		return p.summary, p.fatal
@@ -878,6 +912,14 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
+	// A series claim the row states with NO position is filled from the lookup
+	// here, before anything reads one (seriespos.go). It has to happen at this
+	// point rather than at placement: a filled position is a membership, and the
+	// claim below, the duplicate-identity guard and the placement at the end of
+	// this function must all read the same one. It is also after every admission
+	// test above, so a row that is about to be dropped never spends a lookup.
+	p.fillSeriesPositions(b, asin, workTitle)
+
 	// The book's series claims (one for OpenAudible, possibly several for
 	// Libation). The first that resolves to an already-known series (on disk or
 	// created earlier this run) is used to refuse merging into a same-titled work
@@ -955,7 +997,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		if !r.seqOK {
 			warn("series %q: missing or invalid position %q; not placed in series", r.name, r.rawSeq)
 		} else {
-			p.addToSeries(r.name, ws.slug, r.seq, warn)
+			// placementPosition is the title-versus-source arbitration
+			// (seriespos.go); it returns r.seq unchanged for every row whose title
+			// states no volume or states the same one, which is almost all of them.
+			p.addToSeries(r.name, ws.slug, p.placementPosition(r, ws.slug, workTitle, warn), warn)
 		}
 	}
 }

@@ -6165,6 +6165,11 @@
       "authors": [
         "carol-birch"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "jamrachs-menagerie",
       "language": "en",
       "license": "CC0-1.0",
@@ -6178,6 +6183,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1606589,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3780627,
+              "start_ms": 1606589,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1927070,
+              "start_ms": 5387216,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1369884,
+              "start_ms": 7314286,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 5344119,
+              "start_ms": 8684170,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2210865,
+              "start_ms": 14028289,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3832686,
+              "start_ms": 16239154,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2600217,
+              "start_ms": 20071840,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2550712,
+              "start_ms": 22672057,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4219855,
+              "start_ms": 25222769,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 963860,
+              "start_ms": 29442624,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1560985,
+              "start_ms": 30406484,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3257063,
+              "start_ms": 31967469,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1283646,
+              "start_ms": 35224532,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3951804,
+              "start_ms": 36508178,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1263258,
+              "start_ms": 40459982,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 500947,
+              "start_ms": 41723240,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nNl8IhDZL.jpg",
           "id": "steve-west-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -6192,6 +6285,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0052FRQIM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0052FRQIM",
+              "type": "libex-import"
             }
           ],
           "work": "jamrachs-menagerie"
@@ -6202,6 +6299,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0052FRQIM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0052FRQIM",
+          "type": "libex-import"
         }
       ],
       "title": "Jamrach's Menagerie"

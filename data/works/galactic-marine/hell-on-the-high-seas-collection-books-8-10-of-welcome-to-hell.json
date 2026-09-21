@@ -6075,52 +6075,6 @@
     "hell-town": {
       "added_at": "2026-09-21",
       "authors": [
-        "william-johnstone"
-      ],
-      "id": "hell-town",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2008": {
-          "abridged": false,
-          "added_at": "2026-09-21",
-          "asin": [
-            {
-              "asin": "B002V8HJWQ",
-              "region": "us"
-            }
-          ],
-          "id": "george-guidall-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2008",
-          "runtime_min": 461,
-          "sources": [
-            {
-              "imported_at": "2026-09-21",
-              "ref": "B002V8HJWQ",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "hell-town"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-21",
-          "ref": "B002V8HJWQ",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Hell Town"
-    },
-    "hell-town-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
         "william-w-johnstone",
         "j-a-johnstone"
       ],
@@ -6129,7 +6083,7 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "hell-town-dramatized-adaptation",
+      "id": "hell-town",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6196,10 +6150,119 @@
               "type": "libex-import"
             }
           ],
-          "work": "hell-town-dramatized-adaptation"
+          "work": "hell-town"
+        },
+        "george-guidall-2008": {
+          "abridged": false,
+          "added_at": "2026-09-21",
+          "asin": [
+            {
+              "asin": "B002V8HJWQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1968216,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1848959,
+              "start_ms": 1968216,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1978201,
+              "start_ms": 3817175,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1915043,
+              "start_ms": 5795376,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2261159,
+              "start_ms": 7710419,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2108836,
+              "start_ms": 9971578,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2352228,
+              "start_ms": 12080414,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2032768,
+              "start_ms": 14432642,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1853370,
+              "start_ms": 16465410,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1604174,
+              "start_ms": 18318780,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1937937,
+              "start_ms": 19922954,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1722828,
+              "start_ms": 21860891,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2166793,
+              "start_ms": 23583719,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1876033,
+              "start_ms": 25750512,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91G2tCsPO4L.jpg",
+          "id": "george-guidall-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2008",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B002V8HJWQ",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8HJWQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hell-town"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-09-21",
+          "ref": "B002V8HJWQ",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648795064",
@@ -6211,7 +6274,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Hell Town [Dramatized Adaptation]"
+      "title": "Hell Town"
     },
     "hell-train": {
       "added_at": "2026-08-01",
@@ -9483,6 +9546,12 @@
       "authors": [
         "cherie-priest"
       ],
+      "genres": [
+        "classics",
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
       "id": "hellbent-cherie-priest",
       "language": "en",
       "license": "CC0-1.0",
@@ -9496,6 +9565,194 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1209156,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1206555,
+              "start_ms": 1209156,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 750237,
+              "start_ms": 2415711,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 787482,
+              "start_ms": 3165948,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 998458,
+              "start_ms": 3953430,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1154032,
+              "start_ms": 4951888,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 956012,
+              "start_ms": 6105920,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1120084,
+              "start_ms": 7061932,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1119109,
+              "start_ms": 8182016,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1226153,
+              "start_ms": 9301125,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1208413,
+              "start_ms": 10527278,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 928241,
+              "start_ms": 11735691,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 860206,
+              "start_ms": 12663932,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 939897,
+              "start_ms": 13524138,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 910408,
+              "start_ms": 14464035,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1197546,
+              "start_ms": 15374443,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1228336,
+              "start_ms": 16571989,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1119527,
+              "start_ms": 17800325,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1104248,
+              "start_ms": 18919852,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1109821,
+              "start_ms": 20024100,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1001337,
+              "start_ms": 21133921,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 799092,
+              "start_ms": 22135258,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 773550,
+              "start_ms": 22934350,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 930238,
+              "start_ms": 23707900,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1074248,
+              "start_ms": 24638138,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1038071,
+              "start_ms": 25712386,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 967993,
+              "start_ms": 26750457,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1184775,
+              "start_ms": 27718450,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1165038,
+              "start_ms": 28903225,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1171586,
+              "start_ms": 30068263,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1155193,
+              "start_ms": 31239849,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1207670,
+              "start_ms": 32395042,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1153939,
+              "start_ms": 33602712,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1225596,
+              "start_ms": 34756651,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 533827,
+              "start_ms": 35982247,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 1188304,
+              "start_ms": 36516074,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 485111,
+              "start_ms": 37704378,
+              "title": "Chapter 37"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Fy5bPMX6L.jpg",
           "id": "natalie-ross-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -9510,6 +9767,10 @@
               "imported_at": "2026-09-21",
               "ref": "B005JD4PQS",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B005JD4PQS",
+              "type": "libex-import"
             }
           ],
           "work": "hellbent-cherie-priest"
@@ -9520,6 +9781,10 @@
           "imported_at": "2026-09-21",
           "ref": "B005JD4PQS",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B005JD4PQS",
+          "type": "libex-import"
         }
       ],
       "title": "Hellbent"

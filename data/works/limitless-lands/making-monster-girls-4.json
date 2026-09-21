@@ -9553,6 +9553,11 @@
       "authors": [
         "cassandra-king"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction"
+      ],
       "id": "making-waves-cassandra-king",
       "language": "en",
       "license": "CC0-1.0",
@@ -9566,6 +9571,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4551111,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4329918,
+              "start_ms": 4551111,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4473882,
+              "start_ms": 8881029,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4641948,
+              "start_ms": 13354911,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4627226,
+              "start_ms": 17996859,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XG+o3O3nL.jpg",
           "id": "collen-delany-2004",
           "language": "en",
           "license": "CC0-1.0",
@@ -9583,6 +9616,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V57YLA",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V57YLA",
+              "type": "libex-import"
             }
           ],
           "work": "making-waves-cassandra-king"
@@ -9593,6 +9630,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V57YLA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V57YLA",
+          "type": "libex-import"
         }
       ],
       "title": "Making Waves"

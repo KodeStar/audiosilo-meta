@@ -9730,6 +9730,12 @@
       "authors": [
         "anna-jacobs"
       ],
+      "genres": [
+        "historical-fiction",
+        "historical-romance",
+        "romance",
+        "womens-fiction"
+      ],
       "id": "lancashire-legacy",
       "language": "en",
       "license": "CC0-1.0",
@@ -9743,6 +9749,149 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17518,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 328365,
+              "start_ms": 17518,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 2642570,
+              "start_ms": 345883,
+              "title": "January"
+            },
+            {
+              "length_ms": 1926977,
+              "start_ms": 2988453,
+              "title": "January"
+            },
+            {
+              "length_ms": 1590752,
+              "start_ms": 4915430,
+              "title": "January - February"
+            },
+            {
+              "length_ms": 2033510,
+              "start_ms": 6506182,
+              "title": "February"
+            },
+            {
+              "length_ms": 1894191,
+              "start_ms": 8539692,
+              "title": "February"
+            },
+            {
+              "length_ms": 2759087,
+              "start_ms": 10433883,
+              "title": "March - April"
+            },
+            {
+              "length_ms": 2169626,
+              "start_ms": 13192970,
+              "title": "May"
+            },
+            {
+              "length_ms": 2421423,
+              "start_ms": 15362596,
+              "title": "May"
+            },
+            {
+              "length_ms": 1893587,
+              "start_ms": 17784019,
+              "title": "May"
+            },
+            {
+              "length_ms": 1974717,
+              "start_ms": 19677606,
+              "title": "May"
+            },
+            {
+              "length_ms": 2110229,
+              "start_ms": 21652323,
+              "title": "May - June"
+            },
+            {
+              "length_ms": 2304673,
+              "start_ms": 23762552,
+              "title": "June"
+            },
+            {
+              "length_ms": 2123093,
+              "start_ms": 26067225,
+              "title": "June"
+            },
+            {
+              "length_ms": 1858060,
+              "start_ms": 28190318,
+              "title": "June - July"
+            },
+            {
+              "length_ms": 2179657,
+              "start_ms": 30048378,
+              "title": "July"
+            },
+            {
+              "length_ms": 1811899,
+              "start_ms": 32228035,
+              "title": "July"
+            },
+            {
+              "length_ms": 1851048,
+              "start_ms": 34039934,
+              "title": "August"
+            },
+            {
+              "length_ms": 3164043,
+              "start_ms": 35890982,
+              "title": "August - September"
+            },
+            {
+              "length_ms": 1444745,
+              "start_ms": 39055025,
+              "title": "September"
+            },
+            {
+              "length_ms": 2411903,
+              "start_ms": 40499770,
+              "title": "September"
+            },
+            {
+              "length_ms": 1699375,
+              "start_ms": 42911673,
+              "title": "September"
+            },
+            {
+              "length_ms": 1559498,
+              "start_ms": 44611048,
+              "title": "September"
+            },
+            {
+              "length_ms": 1544962,
+              "start_ms": 46170546,
+              "title": "September"
+            },
+            {
+              "length_ms": 1965847,
+              "start_ms": 47715508,
+              "title": "September"
+            },
+            {
+              "length_ms": 353097,
+              "start_ms": 49681355,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 49350,
+              "start_ms": 50034452,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TN+vtd9rL.jpg",
           "id": "nicolette-mckenzie-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -9757,6 +9906,10 @@
               "imported_at": "2026-09-21",
               "ref": "1529385911",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1529385911",
+              "type": "libex-import"
             }
           ],
           "work": "lancashire-legacy"
@@ -9767,6 +9920,10 @@
           "imported_at": "2026-09-21",
           "ref": "1529385911",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1529385911",
+          "type": "libex-import"
         }
       ],
       "title": "Lancashire Legacy"

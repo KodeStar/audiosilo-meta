@@ -2085,6 +2085,11 @@
       "authors": [
         "c-a-higgins"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "supernova-c-a-higgins",
       "language": "en",
       "license": "CC0-1.0",
@@ -2098,6 +2103,59 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 5773688,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5021315,
+              "start_ms": 5773688,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 5421767,
+              "start_ms": 10795003,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 5175914,
+              "start_ms": 16216770,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3462560,
+              "start_ms": 21392684,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3740224,
+              "start_ms": 24855244,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5601535,
+              "start_ms": 28595468,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3919157,
+              "start_ms": 34197003,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4119081,
+              "start_ms": 38116160,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2831859,
+              "start_ms": 42235241,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810YTAWVqhL.jpg",
           "id": "fiona-hardingham-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -2112,6 +2170,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01II7J5B6",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01II7J5B6",
+              "type": "libex-import"
             }
           ],
           "work": "supernova-c-a-higgins"
@@ -2122,6 +2184,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01II7J5B6",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01II7J5B6",
+          "type": "libex-import"
         }
       ],
       "title": "Supernova"

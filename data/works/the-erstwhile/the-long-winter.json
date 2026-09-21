@@ -2101,6 +2101,11 @@
       "authors": [
         "andria-williams"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "womens-fiction"
+      ],
       "id": "the-longest-night",
       "language": "en",
       "license": "CC0-1.0",
@@ -2114,6 +2119,179 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 222215,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 617372,
+              "start_ms": 222215,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1605103,
+              "start_ms": 839587,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3341305,
+              "start_ms": 2444690,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2241190,
+              "start_ms": 5785995,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1612487,
+              "start_ms": 8027185,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1398399,
+              "start_ms": 9639672,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 564106,
+              "start_ms": 11038071,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 497929,
+              "start_ms": 11602177,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1026554,
+              "start_ms": 12100106,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1859918,
+              "start_ms": 13126660,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 510375,
+              "start_ms": 14986578,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2452492,
+              "start_ms": 15496953,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 884820,
+              "start_ms": 17949445,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1913928,
+              "start_ms": 18834265,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1207113,
+              "start_ms": 20748193,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1296417,
+              "start_ms": 21955306,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2380278,
+              "start_ms": 23251723,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1627254,
+              "start_ms": 25632001,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 311333,
+              "start_ms": 27259255,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2501439,
+              "start_ms": 27570588,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 561923,
+              "start_ms": 30072027,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1670118,
+              "start_ms": 30633950,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1434807,
+              "start_ms": 32304068,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1162809,
+              "start_ms": 33738875,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1520768,
+              "start_ms": 34901684,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 2255540,
+              "start_ms": 36422452,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 540979,
+              "start_ms": 38677992,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 4819859,
+              "start_ms": 39218971,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 986987,
+              "start_ms": 44038830,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1665474,
+              "start_ms": 45025817,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 587743,
+              "start_ms": 46691291,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 2057985,
+              "start_ms": 47279034,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 33437,
+              "start_ms": 49337019,
+              "title": "Chapter 34"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+JGD1OQSL.jpg",
           "id": "rebecca-lowman-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -2130,6 +2308,10 @@
               "imported_at": "2026-09-21",
               "ref": "B019NB7LHQ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B019NB7LHQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-longest-night"
@@ -2140,6 +2322,10 @@
           "imported_at": "2026-09-21",
           "ref": "B019NB7LHQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B019NB7LHQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Longest Night"

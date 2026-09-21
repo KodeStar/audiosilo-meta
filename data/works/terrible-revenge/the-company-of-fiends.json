@@ -312,6 +312,12 @@
       "authors": [
         "allan-mallinson"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "literary-fiction",
+        "thriller-suspense"
+      ],
       "id": "the-company-of-spears",
       "language": "en",
       "license": "CC0-1.0",
@@ -325,6 +331,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2151097,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2146592,
+              "start_ms": 2151097,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2142552,
+              "start_ms": 4297689,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2147474,
+              "start_ms": 6440241,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2099734,
+              "start_ms": 8587715,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2039780,
+              "start_ms": 10687449,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2112737,
+              "start_ms": 12727229,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2061932,
+              "start_ms": 14839966,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2093511,
+              "start_ms": 16901898,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2065229,
+              "start_ms": 18995409,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2109161,
+              "start_ms": 21060638,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1982845,
+              "start_ms": 23169799,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2110555,
+              "start_ms": 25152644,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2114920,
+              "start_ms": 27263199,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2128202,
+              "start_ms": 29378119,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1948665,
+              "start_ms": 31506321,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2083573,
+              "start_ms": 33454986,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1882627,
+              "start_ms": 35538559,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2082180,
+              "start_ms": 37421186,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1935058,
+              "start_ms": 39503366,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2012195,
+              "start_ms": 41438424,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1944764,
+              "start_ms": 43450619,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2120678,
+              "start_ms": 45395383,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1912999,
+              "start_ms": 47516061,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61CT7hbOAcL.jpg",
           "id": "eric-graham-2006",
           "language": "en",
           "license": "CC0-1.0",
@@ -339,6 +468,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0036KSFT4",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0036KSFT4",
+              "type": "libex-import"
             }
           ],
           "work": "the-company-of-spears"
@@ -349,6 +482,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0036KSFT4",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0036KSFT4",
+          "type": "libex-import"
         }
       ],
       "title": "The Company of Spears"

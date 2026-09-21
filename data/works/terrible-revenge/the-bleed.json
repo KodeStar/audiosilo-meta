@@ -5863,6 +5863,9 @@
       "authors": [
         "carey-wallace"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-blind-contessas-new-machine",
       "language": "en",
       "license": "CC0-1.0",
@@ -5876,6 +5879,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1443770,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1934733,
+              "start_ms": 1443770,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1720599,
+              "start_ms": 3378503,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1679964,
+              "start_ms": 5099102,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2001096,
+              "start_ms": 6779066,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1789980,
+              "start_ms": 8780162,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1816033,
+              "start_ms": 10570142,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1601573,
+              "start_ms": 12386175,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1880584,
+              "start_ms": 13987748,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1798803,
+              "start_ms": 15868332,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1792302,
+              "start_ms": 17667135,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2047861,
+              "start_ms": 19459437,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91st1mfwP-L.jpg",
           "id": "aasne-vigesaa-2010",
           "language": "en",
           "license": "CC0-1.0",
@@ -5890,6 +5956,10 @@
               "imported_at": "2026-09-21",
               "ref": "B003TPFZRQ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B003TPFZRQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-blind-contessas-new-machine"
@@ -5900,6 +5970,10 @@
           "imported_at": "2026-09-21",
           "ref": "B003TPFZRQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B003TPFZRQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Blind Contessa's New Machine"

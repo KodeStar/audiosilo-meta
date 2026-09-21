@@ -14717,6 +14717,9 @@
       "authors": [
         "alice-catherine-carter"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-final-dawn-alice-catherine-carter",
       "language": "en",
       "license": "CC0-1.0",
@@ -14730,6 +14733,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 8684,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 683503,
+              "start_ms": 8684,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1017684,
+              "start_ms": 692187,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 659215,
+              "start_ms": 1709871,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 598982,
+              "start_ms": 2369086,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1023211,
+              "start_ms": 2968068,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 970966,
+              "start_ms": 3991279,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 751537,
+              "start_ms": 4962245,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 469925,
+              "start_ms": 5713782,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 353826,
+              "start_ms": 6183707,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 594199,
+              "start_ms": 6537533,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 347835,
+              "start_ms": 7131732,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 31393,
+              "start_ms": 7479567,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81U4POjv35L.jpg",
           "id": "melanie-fraser-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -14744,6 +14815,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00V3MLKNU",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00V3MLKNU",
+              "type": "libex-import"
             }
           ],
           "work": "the-final-dawn-alice-catherine-carter"
@@ -14754,6 +14829,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00V3MLKNU",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00V3MLKNU",
+          "type": "libex-import"
         }
       ],
       "title": "The Final Dawn"

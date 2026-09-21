@@ -979,6 +979,11 @@
       "authors": [
         "allen-steele"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "orbital-decay",
       "language": "en",
       "license": "CC0-1.0",
@@ -992,6 +997,179 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 168948,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 382293,
+              "start_ms": 168948,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1447439,
+              "start_ms": 551241,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 761661,
+              "start_ms": 1998680,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 758503,
+              "start_ms": 2760341,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2183930,
+              "start_ms": 3518844,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 896662,
+              "start_ms": 5702774,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1798943,
+              "start_ms": 6599436,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 632558,
+              "start_ms": 8398379,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 327308,
+              "start_ms": 9030937,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 748658,
+              "start_ms": 9358245,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2490108,
+              "start_ms": 10106903,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1593725,
+              "start_ms": 12597011,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 481071,
+              "start_ms": 14190736,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3169617,
+              "start_ms": 14671807,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1801451,
+              "start_ms": 17841424,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1467548,
+              "start_ms": 19642875,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2401547,
+              "start_ms": 21110423,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1817751,
+              "start_ms": 23511970,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 360513,
+              "start_ms": 25329721,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1143025,
+              "start_ms": 25690234,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 2674103,
+              "start_ms": 26833259,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 963117,
+              "start_ms": 29507362,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2417104,
+              "start_ms": 30470479,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 632001,
+              "start_ms": 32887583,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1713122,
+              "start_ms": 33519584,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 428269,
+              "start_ms": 35232706,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 2018046,
+              "start_ms": 35660975,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 2016282,
+              "start_ms": 37679021,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1266695,
+              "start_ms": 39695303,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1401556,
+              "start_ms": 40961998,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 3143192,
+              "start_ms": 42363554,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 3082728,
+              "start_ms": 45506746,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1396820,
+              "start_ms": 48589474,
+              "title": "Chapter 34"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61mSSPBY40L.jpg",
           "id": "jonathan-yen-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -1006,6 +1184,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00EV20WO2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00EV20WO2",
+              "type": "libex-import"
             }
           ],
           "work": "orbital-decay"
@@ -1016,6 +1198,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00EV20WO2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00EV20WO2",
+          "type": "libex-import"
         }
       ],
       "title": "Orbital Decay"

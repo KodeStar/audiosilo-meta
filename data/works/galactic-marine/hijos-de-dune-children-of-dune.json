@@ -8907,6 +8907,11 @@
       "authors": [
         "anne-rivers-siddons"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction"
+      ],
       "id": "hill-towns",
       "language": "en",
       "license": "CC0-1.0",
@@ -8920,6 +8925,29 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2635511,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2582430,
+              "start_ms": 2635511,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2726394,
+              "start_ms": 5217941,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2734475,
+              "start_ms": 7944335,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81eC7hkAQYL.jpg",
           "id": "marcia-gay-harden-2006",
           "language": "en",
           "license": "CC0-1.0",
@@ -8934,6 +8962,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V1BEJW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V1BEJW",
+              "type": "libex-import"
             }
           ],
           "work": "hill-towns"
@@ -8944,6 +8976,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V1BEJW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V1BEJW",
+          "type": "libex-import"
         }
       ],
       "title": "Hill Towns"

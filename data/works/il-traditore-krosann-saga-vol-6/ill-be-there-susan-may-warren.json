@@ -6702,6 +6702,10 @@
       "authors": [
         "ann-tatlock"
       ],
+      "genres": [
+        "historical-fiction",
+        "religious-fiction"
+      ],
       "id": "ill-watch-the-moon",
       "language": "en",
       "license": "CC0-1.0",
@@ -6715,6 +6719,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2693608,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2640852,
+              "start_ms": 2693608,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2624877,
+              "start_ms": 5334460,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2607137,
+              "start_ms": 7959337,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2686224,
+              "start_ms": 10566474,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2374380,
+              "start_ms": 13252698,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2635651,
+              "start_ms": 15627078,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2624830,
+              "start_ms": 18262729,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2661425,
+              "start_ms": 20887559,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2304813,
+              "start_ms": 23548984,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2687106,
+              "start_ms": 25853797,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2415804,
+              "start_ms": 28540903,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2657477,
+              "start_ms": 30956707,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2389612,
+              "start_ms": 33614184,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81w2NjcNaPL.jpg",
           "id": "christina-moore-2005",
           "language": "en",
           "license": "CC0-1.0",
@@ -6729,6 +6806,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8OGHC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8OGHC",
+              "type": "libex-import"
             }
           ],
           "work": "ill-watch-the-moon"
@@ -6739,6 +6820,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8OGHC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8OGHC",
+          "type": "libex-import"
         }
       ],
       "title": "I'll Watch the Moon"

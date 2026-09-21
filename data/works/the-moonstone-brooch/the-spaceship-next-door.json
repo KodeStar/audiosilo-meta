@@ -293,6 +293,10 @@
       "authors": [
         "andromeda-romano-lax"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "the-spanish-bow",
       "language": "en",
       "license": "CC0-1.0",
@@ -306,6 +310,139 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1639886,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2808361,
+              "start_ms": 1639886,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2691750,
+              "start_ms": 4448247,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1855739,
+              "start_ms": 7139997,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2282429,
+              "start_ms": 8995736,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2102056,
+              "start_ms": 11278165,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1967009,
+              "start_ms": 13380221,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3228642,
+              "start_ms": 15347230,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2289255,
+              "start_ms": 18575872,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2321810,
+              "start_ms": 20865127,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2468606,
+              "start_ms": 23186937,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2206499,
+              "start_ms": 25655543,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4079142,
+              "start_ms": 27862042,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2775713,
+              "start_ms": 31941184,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1633988,
+              "start_ms": 34716897,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1472099,
+              "start_ms": 36350885,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1514591,
+              "start_ms": 37822984,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 4319469,
+              "start_ms": 39337575,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 4184282,
+              "start_ms": 43657044,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2214441,
+              "start_ms": 47841326,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2959244,
+              "start_ms": 50055767,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 2873377,
+              "start_ms": 53015011,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 4644734,
+              "start_ms": 55888388,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 3303039,
+              "start_ms": 60533122,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 578502,
+              "start_ms": 63836161,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 132168,
+              "start_ms": 64414663,
+              "title": "Chapter 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cZTuPDMzL.jpg",
           "id": "paul-michael-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -320,6 +457,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V019RU",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V019RU",
+              "type": "libex-import"
             }
           ],
           "work": "the-spanish-bow"
@@ -330,6 +471,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V019RU",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V019RU",
+          "type": "libex-import"
         }
       ],
       "title": "The Spanish Bow"

@@ -5356,6 +5356,11 @@
       "authors": [
         "allan-mallinson"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "thriller-suspense"
+      ],
       "id": "man-of-war-allan-mallinson",
       "language": "en",
       "license": "CC0-1.0",
@@ -5369,6 +5374,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3956216,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3950690,
+              "start_ms": 3956216,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3884466,
+              "start_ms": 7906906,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3828785,
+              "start_ms": 11791372,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4123725,
+              "start_ms": 15620157,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3585579,
+              "start_ms": 19743882,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3634016,
+              "start_ms": 23329461,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4084529,
+              "start_ms": 26963477,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3837469,
+              "start_ms": 31048006,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3682174,
+              "start_ms": 34885475,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3998290,
+              "start_ms": 38567649,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4155025,
+              "start_ms": 42565939,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51H+z7WV83L.jpg",
           "id": "errick-graham-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -5383,6 +5451,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0036KSAG2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0036KSAG2",
+              "type": "libex-import"
             }
           ],
           "work": "man-of-war-allan-mallinson"
@@ -5393,6 +5465,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0036KSAG2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0036KSAG2",
+          "type": "libex-import"
         }
       ],
       "title": "Man of War"

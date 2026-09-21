@@ -7841,6 +7841,12 @@
       "authors": [
         "belva-plain"
       ],
+      "genres": [
+        "coming-of-age",
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction"
+      ],
       "id": "looking-back",
       "language": "en",
       "license": "CC0-1.0",
@@ -7854,6 +7860,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2083155,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2100895,
+              "start_ms": 2083155,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1546449,
+              "start_ms": 4184050,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1638586,
+              "start_ms": 5730499,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2232227,
+              "start_ms": 7369085,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 884169,
+              "start_ms": 9601312,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1722317,
+              "start_ms": 10485481,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1566325,
+              "start_ms": 12207798,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1896885,
+              "start_ms": 13774123,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2144038,
+              "start_ms": 15671008,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1300039,
+              "start_ms": 17815046,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1916250,
+              "start_ms": 19115085,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1947272,
+              "start_ms": 21031335,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1246633,
+              "start_ms": 22978607,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1841250,
+              "start_ms": 24225240,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2213233,
+              "start_ms": 26066490,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2925296,
+              "start_ms": 28279723,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1930275,
+              "start_ms": 31205019,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2286933,
+              "start_ms": 33135294,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1220534,
+              "start_ms": 35422227,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1390597,
+              "start_ms": 36642761,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 146007,
+              "start_ms": 38033358,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2855497,
+              "start_ms": 38179365,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 171317,
+              "start_ms": 41034862,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uTBkW80BL.jpg",
           "id": "kate-forbes-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -7868,6 +7997,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00G2J7PVK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00G2J7PVK",
+              "type": "libex-import"
             }
           ],
           "work": "looking-back"
@@ -7878,6 +8011,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00G2J7PVK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00G2J7PVK",
+          "type": "libex-import"
         }
       ],
       "title": "Looking Back"

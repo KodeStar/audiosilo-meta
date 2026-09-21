@@ -7385,6 +7385,11 @@
       "authors": [
         "anita-brookner"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "psychological-thriller"
+      ],
       "id": "the-next-big-thing",
       "language": "en",
       "license": "CC0-1.0",
@@ -7398,6 +7403,49 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3684496,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3803521,
+              "start_ms": 3684496,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3772035,
+              "start_ms": 7488017,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3622174,
+              "start_ms": 11260052,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3767066,
+              "start_ms": 14882226,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3619294,
+              "start_ms": 18649292,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3777097,
+              "start_ms": 22268586,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3748676,
+              "start_ms": 26045683,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OjcowUR9L.jpg",
           "id": "stephen-thorne-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -7412,6 +7460,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002VA9NLE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002VA9NLE",
+              "type": "libex-import"
             }
           ],
           "work": "the-next-big-thing"
@@ -7422,6 +7474,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002VA9NLE",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002VA9NLE",
+          "type": "libex-import"
         }
       ],
       "title": "The Next Big Thing"

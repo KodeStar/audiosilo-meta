@@ -1913,6 +1913,9 @@
       "authors": [
         "charlaine-harris"
       ],
+      "genres": [
+        "short-stories"
+      ],
       "id": "small-kingdoms-other-stories",
       "language": "en",
       "license": "CC0-1.0",
@@ -1926,6 +1929,29 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2954042,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3452389,
+              "start_ms": 2954042,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3466321,
+              "start_ms": 6406431,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2857772,
+              "start_ms": 9872752,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51AzDFdomPL.jpg",
           "id": "morgan-hallett-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -1940,6 +1966,10 @@
               "imported_at": "2026-09-21",
               "ref": "1980023611",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1980023611",
+              "type": "libex-import"
             }
           ],
           "work": "small-kingdoms-other-stories"
@@ -1950,6 +1980,10 @@
           "imported_at": "2026-09-21",
           "ref": "1980023611",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1980023611",
+          "type": "libex-import"
         }
       ],
       "title": "Small Kingdoms & Other Stories"

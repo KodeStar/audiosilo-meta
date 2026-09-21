@@ -6945,6 +6945,11 @@
       "authors": [
         "bret-harte"
       ],
+      "genres": [
+        "action-adventure",
+        "short-stories",
+        "westerns"
+      ],
       "id": "openings-in-the-old-trail",
       "language": "en",
       "license": "CC0-1.0",
@@ -6958,6 +6963,54 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3660161,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4488835,
+              "start_ms": 3660161,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2577879,
+              "start_ms": 8148996,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3324633,
+              "start_ms": 10726875,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3627746,
+              "start_ms": 14051508,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2374658,
+              "start_ms": 17679254,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1296370,
+              "start_ms": 20053912,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1589034,
+              "start_ms": 21350282,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2548994,
+              "start_ms": 22939316,
+              "title": "Chapter 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pog0eroUL.jpg",
           "id": "john-lescault-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -6972,6 +7025,10 @@
               "imported_at": "2026-09-21",
               "ref": "B07DY5LPCX",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B07DY5LPCX",
+              "type": "libex-import"
             }
           ],
           "work": "openings-in-the-old-trail"
@@ -6982,6 +7039,10 @@
           "imported_at": "2026-09-21",
           "ref": "B07DY5LPCX",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B07DY5LPCX",
+          "type": "libex-import"
         }
       ],
       "title": "Openings in the Old Trail"

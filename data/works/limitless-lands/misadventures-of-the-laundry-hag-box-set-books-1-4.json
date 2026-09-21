@@ -6782,6 +6782,13 @@
       "authors": [
         "affinity-konar"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "military-history",
+        "parenting-relationships",
+        "religion-spirituality"
+      ],
       "id": "mischling",
       "language": "en",
       "license": "CC0-1.0",
@@ -6795,6 +6802,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1991992,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3243270,
+              "start_ms": 1991992,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2882734,
+              "start_ms": 5235262,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1613276,
+              "start_ms": 8117996,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 902443,
+              "start_ms": 9731272,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2430246,
+              "start_ms": 10633715,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2445757,
+              "start_ms": 13063961,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 10611,
+              "start_ms": 15509718,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2911178,
+              "start_ms": 15520329,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3258827,
+              "start_ms": 18431507,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 279266,
+              "start_ms": 21690334,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 929216,
+              "start_ms": 21969600,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 505777,
+              "start_ms": 22898816,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1457818,
+              "start_ms": 23404593,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 895802,
+              "start_ms": 24862411,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1773888,
+              "start_ms": 25758213,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1730327,
+              "start_ms": 27532101,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 702171,
+              "start_ms": 29262428,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2142110,
+              "start_ms": 29964599,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1254365,
+              "start_ms": 32106709,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1683028,
+              "start_ms": 33361074,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 3513202,
+              "start_ms": 35044102,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 88305,
+              "start_ms": 38557304,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 782418,
+              "start_ms": 38645609,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EkPfWX7sL.jpg",
           "id": "vanessa-johansson-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -6809,6 +6939,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01JB2DAXG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01JB2DAXG",
+              "type": "libex-import"
             }
           ],
           "work": "mischling"
@@ -6819,6 +6953,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01JB2DAXG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01JB2DAXG",
+          "type": "libex-import"
         }
       ],
       "title": "Mischling"

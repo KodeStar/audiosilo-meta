@@ -9192,6 +9192,11 @@
       "authors": [
         "colm-toibin"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "parenting-relationships"
+      ],
       "id": "the-master-colm-toibin",
       "language": "en",
       "license": "CC0-1.0",
@@ -9205,6 +9210,99 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 54706,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2421144,
+              "start_ms": 54706,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3423364,
+              "start_ms": 2475850,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2421237,
+              "start_ms": 5899214,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1885135,
+              "start_ms": 8320451,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2828445,
+              "start_ms": 10205586,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2497468,
+              "start_ms": 13034031,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3665130,
+              "start_ms": 15531499,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2700271,
+              "start_ms": 19196629,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2666138,
+              "start_ms": 21896900,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3444633,
+              "start_ms": 24563038,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2975590,
+              "start_ms": 28007671,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3221954,
+              "start_ms": 30983261,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2943732,
+              "start_ms": 34205215,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2341035,
+              "start_ms": 37148947,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2583150,
+              "start_ms": 39489982,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 3195274,
+              "start_ms": 42073132,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 63784,
+              "start_ms": 45268406,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91T1LJ0TsHL.jpg",
           "id": "ralph-cosham-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -9219,6 +9317,10 @@
               "imported_at": "2026-09-21",
               "ref": "179713308X",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "179713308X",
+              "type": "libex-import"
             }
           ],
           "work": "the-master-colm-toibin"
@@ -9229,6 +9331,10 @@
           "imported_at": "2026-09-21",
           "ref": "179713308X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "179713308X",
+          "type": "libex-import"
         }
       ],
       "title": "The Master"

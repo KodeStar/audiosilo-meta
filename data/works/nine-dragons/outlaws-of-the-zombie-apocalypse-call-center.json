@@ -13098,6 +13098,9 @@
         "alexandra-butcher",
         "diana-l-wicker"
       ],
+      "genres": [
+        "short-stories"
+      ],
       "id": "outside-the-walls",
       "language": "en",
       "license": "CC0-1.0",
@@ -13111,6 +13114,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 14164,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3362203,
+              "start_ms": 14164,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 30975,
+              "start_ms": 3376367,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MfMUFioGL.jpg",
           "id": "melanie-fraser-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -13125,6 +13146,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0189Q95XO",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0189Q95XO",
+              "type": "libex-import"
             }
           ],
           "work": "outside-the-walls"
@@ -13135,6 +13160,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0189Q95XO",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0189Q95XO",
+          "type": "libex-import"
         }
       ],
       "title": "Outside the Walls"

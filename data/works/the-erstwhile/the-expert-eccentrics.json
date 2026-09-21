@@ -743,6 +743,10 @@
       "authors": [
         "arthur-conan-doyle"
       ],
+      "genres": [
+        "classics",
+        "history"
+      ],
       "id": "the-exploits-of-brigadier-gerard",
       "language": "en",
       "license": "CC0-1.0",
@@ -756,6 +760,54 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3553768,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3394664,
+              "start_ms": 3553768,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3320221,
+              "start_ms": 6948432,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3646880,
+              "start_ms": 10268653,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4017191,
+              "start_ms": 13915533,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2952557,
+              "start_ms": 17932724,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3642050,
+              "start_ms": 20885281,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3308286,
+              "start_ms": 24527331,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 724463,
+              "start_ms": 27835617,
+              "title": "Chapter 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51MfP9KCSBL.jpg",
           "id": "peter-gray-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -770,6 +822,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0035ABXRG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0035ABXRG",
+              "type": "libex-import"
             }
           ],
           "work": "the-exploits-of-brigadier-gerard"
@@ -780,6 +836,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0035ABXRG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0035ABXRG",
+          "type": "libex-import"
         }
       ],
       "title": "The Exploits of Brigadier Gerard"

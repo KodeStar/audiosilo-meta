@@ -4670,6 +4670,9 @@
       "authors": [
         "ambrose-bierce"
       ],
+      "genres": [
+        "horror"
+      ],
       "id": "present-at-a-hanging-and-other-ghost-stories",
       "language": "en",
       "license": "CC0-1.0",
@@ -4683,6 +4686,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1125355,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1358298,
+              "start_ms": 1125355,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1382284,
+              "start_ms": 2483653,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1690691,
+              "start_ms": 3865937,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 861228,
+              "start_ms": 5556628,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NUZbqbhVL.jpg",
           "id": "john-stanbridge-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -4697,6 +4728,10 @@
               "imported_at": "2026-09-21",
               "ref": "B073TV4WHH",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B073TV4WHH",
+              "type": "libex-import"
             }
           ],
           "work": "present-at-a-hanging-and-other-ghost-stories"
@@ -4707,6 +4742,10 @@
           "imported_at": "2026-09-21",
           "ref": "B073TV4WHH",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B073TV4WHH",
+          "type": "libex-import"
         }
       ],
       "title": "Present at a Hanging and Other Ghost Stories"

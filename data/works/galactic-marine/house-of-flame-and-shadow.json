@@ -9214,6 +9214,13 @@
       "authors": [
         "colm-toibin"
       ],
+      "genres": [
+        "classics",
+        "fairy-tales-folklore",
+        "fantasy",
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "house-of-names",
       "language": "en",
       "license": "CC0-1.0",
@@ -9227,6 +9234,144 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1820723,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1979548,
+              "start_ms": 1820723,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 926290,
+              "start_ms": 3800271,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 388331,
+              "start_ms": 4726561,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2357801,
+              "start_ms": 5114892,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1462811,
+              "start_ms": 7472693,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 425761,
+              "start_ms": 8935504,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1446139,
+              "start_ms": 9361265,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1228243,
+              "start_ms": 10807404,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1529870,
+              "start_ms": 12035647,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 942452,
+              "start_ms": 13565517,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1073273,
+              "start_ms": 14507969,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 406349,
+              "start_ms": 15581242,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1307562,
+              "start_ms": 15987591,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 832528,
+              "start_ms": 17295153,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 985083,
+              "start_ms": 18127681,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 916863,
+              "start_ms": 19112764,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1448832,
+              "start_ms": 20029627,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1214589,
+              "start_ms": 21478459,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 934046,
+              "start_ms": 22693048,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1039836,
+              "start_ms": 23627094,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 894293,
+              "start_ms": 24666930,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1155518,
+              "start_ms": 25561223,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 705329,
+              "start_ms": 26716741,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 793054,
+              "start_ms": 27422070,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1891637,
+              "start_ms": 28215124,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1526294,
+              "start_ms": 30106761,
+              "title": "Chapter 27"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91sd5rFqn8L.jpg",
           "id": "juliet-stevenson-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -9243,6 +9388,10 @@
               "imported_at": "2026-09-21",
               "ref": "B06XDF9ZMY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B06XDF9ZMY",
+              "type": "libex-import"
             }
           ],
           "work": "house-of-names"
@@ -9253,6 +9402,10 @@
           "imported_at": "2026-09-21",
           "ref": "B06XDF9ZMY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B06XDF9ZMY",
+          "type": "libex-import"
         }
       ],
       "title": "House of Names"

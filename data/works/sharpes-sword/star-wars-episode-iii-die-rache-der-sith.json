@@ -3470,6 +3470,11 @@
       "authors": [
         "greg-bear"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "star-wars-greg-bear",
       "language": "en",
       "license": "CC0-1.0",
@@ -3483,6 +3488,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3692251,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3946185,
+              "start_ms": 3692251,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3822933,
+              "start_ms": 7638436,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3702747,
+              "start_ms": 11461369,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4073477,
+              "start_ms": 15164116,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51shN2h9iAL.jpg",
           "id": "michael-cumpsty-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -3497,6 +3530,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0032N8LBM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0032N8LBM",
+              "type": "libex-import"
             }
           ],
           "work": "star-wars-greg-bear"
@@ -3507,6 +3544,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0032N8LBM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0032N8LBM",
+          "type": "libex-import"
         }
       ],
       "title": "Star Wars"

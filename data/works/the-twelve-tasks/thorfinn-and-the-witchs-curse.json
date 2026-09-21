@@ -4836,6 +4836,9 @@
       "authors": [
         "dan-abnett"
       ],
+      "genres": [
+        "science-fiction"
+      ],
       "id": "thorn-wishes-talon",
       "language": "en",
       "license": "CC0-1.0",
@@ -4849,6 +4852,14 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3559015,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Mx0oeoo9L.jpg",
           "id": "gareth-armstrong-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -4867,6 +4878,10 @@
               "imported_at": "2026-09-21",
               "ref": "B077H54NJM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B077H54NJM",
+              "type": "libex-import"
             }
           ],
           "work": "thorn-wishes-talon"
@@ -4877,6 +4892,10 @@
           "imported_at": "2026-09-21",
           "ref": "B077H54NJM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B077H54NJM",
+          "type": "libex-import"
         }
       ],
       "title": "Thorn Wishes Talon"

@@ -105,6 +105,16 @@ type Options struct {
 	Date string
 	// Fetch resolves attachment URLs. Defaults to the pinned HTTPS fetcher.
 	Fetch Fetcher
+	// SeriesLookup is handed to the bulk importer by the IMPORT template alone
+	// (importer.Options.SeriesLookup, seriespos.go): a library export names the
+	// series a file is tagged with and very often no part number, and the lookup
+	// is what turns that into a placement instead of a warning. nil is the
+	// default and means the rule is off, so every other template and every
+	// existing caller is unchanged.
+	SeriesLookup importer.SeriesPositionLookup
+	// SeriesLookupLimit bounds those lookups per submission; 0 takes the
+	// importer's own default cap.
+	SeriesLookupLimit int
 }
 
 // recRef locates a recording by its work and recording slugs. It is the
@@ -126,6 +136,10 @@ type composer struct {
 	worksDB *worksDB
 	date    string
 	fetch   Fetcher
+	// seriesLookup / seriesLookupLimit ride through to the bulk importer on the
+	// IMPORT path alone (Options.SeriesLookup). nil is off.
+	seriesLookup      importer.SeriesPositionLookup
+	seriesLookupLimit int
 	// store is the write layer: composed records land as pack entries and
 	// nothing reaches disk until flush. Its reads are queued-write-first, so a
 	// submission that writes a work and then its first recording composes both
@@ -245,6 +259,9 @@ func process(opts Options) Result {
 		series:  map[string]*model.Series{},
 		asinRec: map[string]recRef{},
 		isbnRec: map[string]recRef{},
+
+		seriesLookup:      opts.SeriesLookup,
+		seriesLookupLimit: opts.SeriesLookupLimit,
 	}
 	// The artifact is opened only where it is the answer to a question the tree
 	// cannot answer, so a core run never touches it (see Options.WorksDB).

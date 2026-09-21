@@ -7553,6 +7553,9 @@
       "authors": [
         "alan-titchmarsh"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "animal-instincts",
       "language": "en",
       "license": "CC0-1.0",
@@ -7566,6 +7569,174 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 340544,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 779819,
+              "start_ms": 340544,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 875624,
+              "start_ms": 1120363,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1093799,
+              "start_ms": 1995987,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1426727,
+              "start_ms": 3089786,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1159094,
+              "start_ms": 4516513,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 366132,
+              "start_ms": 5675607,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 798999,
+              "start_ms": 6041739,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1324745,
+              "start_ms": 6840738,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 911290,
+              "start_ms": 8165483,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 970594,
+              "start_ms": 9076773,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1086229,
+              "start_ms": 10047367,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1187701,
+              "start_ms": 11133596,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 726367,
+              "start_ms": 12321297,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1205673,
+              "start_ms": 13047664,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 724555,
+              "start_ms": 14253337,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 689354,
+              "start_ms": 14977892,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 634276,
+              "start_ms": 15667246,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 802435,
+              "start_ms": 16301522,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 446427,
+              "start_ms": 17103957,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1086555,
+              "start_ms": 17550384,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 356612,
+              "start_ms": 18636939,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 876414,
+              "start_ms": 18993551,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 891275,
+              "start_ms": 19869965,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 906786,
+              "start_ms": 20761240,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 924247,
+              "start_ms": 21668026,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1360039,
+              "start_ms": 22592273,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 916724,
+              "start_ms": 23952312,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1163691,
+              "start_ms": 24869036,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1241385,
+              "start_ms": 26032727,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 998876,
+              "start_ms": 27274112,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 939061,
+              "start_ms": 28272988,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 885005,
+              "start_ms": 29212049,
+              "title": "Chapter 33"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91CAtUoU+vL.jpg",
           "id": "alan-titchmarsh-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -7580,6 +7751,10 @@
               "imported_at": "2026-09-21",
               "ref": "B076KRXV68",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B076KRXV68",
+              "type": "libex-import"
             }
           ],
           "work": "animal-instincts"
@@ -7590,6 +7765,10 @@
           "imported_at": "2026-09-21",
           "ref": "B076KRXV68",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B076KRXV68",
+          "type": "libex-import"
         }
       ],
       "title": "Animal Instincts"

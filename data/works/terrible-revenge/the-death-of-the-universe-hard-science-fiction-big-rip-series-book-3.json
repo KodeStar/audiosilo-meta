@@ -8248,6 +8248,9 @@
       "authors": [
         "angela-hunt"
       ],
+      "genres": [
+        "religious-fiction"
+      ],
       "id": "the-debt-angela-hunt",
       "language": "en",
       "license": "CC0-1.0",
@@ -8261,6 +8264,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2086731,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1996220,
+              "start_ms": 2086731,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2019950,
+              "start_ms": 4082951,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1948897,
+              "start_ms": 6102901,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2097226,
+              "start_ms": 8051798,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2047536,
+              "start_ms": 10149024,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2094115,
+              "start_ms": 12196560,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2056452,
+              "start_ms": 14290675,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2064486,
+              "start_ms": 16347127,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2002257,
+              "start_ms": 18411613,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1867674,
+              "start_ms": 20413870,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1820677,
+              "start_ms": 22281544,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1882070,
+              "start_ms": 24102221,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1880956,
+              "start_ms": 25984291,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1817983,
+              "start_ms": 27865247,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1754407,
+              "start_ms": 29683230,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41YVbVQJtaL.jpg",
           "id": "julia-gibson-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -8275,6 +8361,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZZ4M2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZZ4M2",
+              "type": "libex-import"
             }
           ],
           "work": "the-debt-angela-hunt"
@@ -8285,6 +8375,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZZ4M2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZZ4M2",
+          "type": "libex-import"
         }
       ],
       "title": "The Debt"

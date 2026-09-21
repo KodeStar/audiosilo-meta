@@ -1639,6 +1639,12 @@
       "authors": [
         "anthony-riches"
       ],
+      "genres": [
+        "historical-fiction",
+        "history",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
       "id": "the-wolfs-gold-empire-v",
       "language": "en",
       "license": "CC0-1.0",
@@ -1652,6 +1658,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 903628,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4879348,
+              "start_ms": 903628,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 5456875,
+              "start_ms": 5782976,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4642876,
+              "start_ms": 11239851,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4696700,
+              "start_ms": 15882727,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4856732,
+              "start_ms": 20579427,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 6128628,
+              "start_ms": 25436159,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 5344723,
+              "start_ms": 31564787,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3300763,
+              "start_ms": 36909510,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2888980,
+              "start_ms": 40210273,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 6138334,
+              "start_ms": 43099253,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81c5xiNqZgL.jpg",
           "id": "saul-reichlin-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -1666,6 +1730,10 @@
               "imported_at": "2026-09-21",
               "ref": "B009W90F4G",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B009W90F4G",
+              "type": "libex-import"
             }
           ],
           "work": "the-wolfs-gold-empire-v"
@@ -1676,6 +1744,10 @@
           "imported_at": "2026-09-21",
           "ref": "B009W90F4G",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B009W90F4G",
+          "type": "libex-import"
         }
       ],
       "title": "The Wolf's Gold: Empire V"

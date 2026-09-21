@@ -6,7 +6,7 @@
 // Usage:
 //
 //	metaissue (--template <id> | --labels <json-array>) --body <file|-> [--data data] [--date YYYY-MM-DD]
-//	          [--profile all|core|community] [--works-db meta.sqlite]
+//	          [--profile all|core|community] [--works-db meta.sqlite] [--series-lookup]
 //
 // --template is the issue-form template id (add-work, add-recording,
 // correct-data, characters, recaps, import; a leading "data:" is accepted so a
@@ -30,6 +30,14 @@
 // profile that holds the works family is a usage error, because the tree itself
 // is the better answer and two sources would be a staler second opinion.
 //
+// --series-lookup applies to an IMPORT submission only. A library export names
+// the series a file is tagged with and very often no part number, so the work
+// is left out of its series with a warning; the flag lets the importer look the
+// row's ASIN up on the live libex service and use the position when libex names
+// the SAME series. It is off by default because it reaches the network, and
+// best-effort when on - a libex outage leaves the warnings exactly as they were.
+// --series-lookup-limit caps the lookups per submission.
+//
 // It writes a machine-readable JSON result to stdout so the intake workflow can
 // branch on it:
 //
@@ -50,6 +58,7 @@ import (
 	"os"
 	"regexp"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/issueform"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -64,6 +73,9 @@ func main() {
 	date := flag.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
 	profileName := flag.String("profile", string(pack.ProfileAll), pack.ProfileFlagUsage)
 	worksDB := flag.String("works-db", "", "path to a built meta.sqlite release artifact, used to verify a sidecar's work slug against the core catalogue (required under --profile community)")
+	seriesLookup := flag.Bool("series-lookup", false, "on an import submission, fill a series position the export did not state by looking the row's ASIN up on the live libex service")
+	seriesLookupLimit := flag.Int("series-lookup-limit", 0, "cap those lookups per submission, counting only the rows that need one (0 = the default cap)")
+	libexBase := flag.String("libex", importer.LibexBase, "libex base URL for --series-lookup")
 	flag.Parse()
 
 	if *date != "" && !dateRE.MatchString(*date) {
@@ -114,14 +126,25 @@ func main() {
 		os.Exit(2)
 	}
 
-	emitResult(issueform.Process(issueform.Options{
+	opts := issueform.Options{
 		DataDir:  *data,
 		Profile:  profile,
 		WorksDB:  *worksDB,
 		Template: tmpl,
 		Body:     body,
 		Date:     *date,
-	}))
+	}
+	// Built here rather than inside issueform so the network client is the CLI's
+	// decision and the library keeps taking an interface (a test passes a map).
+	// It reaches the IMPORT template alone; every other form ignores it.
+	if *seriesLookup {
+		client := importer.NewLibexClient()
+		client.BaseURL = *libexBase
+		opts.SeriesLookup = client
+		opts.SeriesLookupLimit = *seriesLookupLimit
+	}
+
+	emitResult(issueform.Process(opts))
 }
 
 // parseLabels decodes the --labels JSON array of issue label names.

@@ -12922,6 +12922,9 @@
       "authors": [
         "brian-keene"
       ],
+      "genres": [
+        "horror"
+      ],
       "id": "kill-whitey",
       "language": "en",
       "license": "CC0-1.0",
@@ -12935,6 +12938,139 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 14303,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 224119,
+              "start_ms": 14303,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 784370,
+              "start_ms": 238422,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 656707,
+              "start_ms": 1022792,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 927173,
+              "start_ms": 1679499,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1111446,
+              "start_ms": 2606672,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 517387,
+              "start_ms": 3718118,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1743076,
+              "start_ms": 4235505,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1169961,
+              "start_ms": 5978581,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 673843,
+              "start_ms": 7148542,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 986802,
+              "start_ms": 7822385,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 799835,
+              "start_ms": 8809187,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 733936,
+              "start_ms": 9609022,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1205394,
+              "start_ms": 10342958,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 907389,
+              "start_ms": 11548352,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1702301,
+              "start_ms": 12455741,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 477402,
+              "start_ms": 14158042,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 831135,
+              "start_ms": 14635444,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1512455,
+              "start_ms": 15466579,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1297252,
+              "start_ms": 16979034,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1356696,
+              "start_ms": 18276286,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 608874,
+              "start_ms": 19632982,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1090223,
+              "start_ms": 20241856,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1230472,
+              "start_ms": 21332079,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 828116,
+              "start_ms": 22562551,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 26053,
+              "start_ms": 23390667,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1-EOwDkb2L.jpg",
           "id": "chet-williamson-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -12949,6 +13085,10 @@
               "imported_at": "2026-09-21",
               "ref": "B07FB17LGW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B07FB17LGW",
+              "type": "libex-import"
             }
           ],
           "work": "kill-whitey"
@@ -12959,6 +13099,10 @@
           "imported_at": "2026-09-21",
           "ref": "B07FB17LGW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B07FB17LGW",
+          "type": "libex-import"
         }
       ],
       "title": "Kill Whitey"

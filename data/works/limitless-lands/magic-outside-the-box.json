@@ -4653,6 +4653,9 @@
       "authors": [
         "v-s-naipaul"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "magic-seeds",
       "language": "en",
       "license": "CC0-1.0",
@@ -4666,6 +4669,49 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3969219,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4296853,
+              "start_ms": 3969219,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4364562,
+              "start_ms": 8266072,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4196821,
+              "start_ms": 12630634,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4319840,
+              "start_ms": 16827455,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4362333,
+              "start_ms": 21147295,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4245769,
+              "start_ms": 25509628,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4216186,
+              "start_ms": 29755397,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910c4mmJTiL.jpg",
           "id": "aasif-mandvi-2004",
           "language": "en",
           "license": "CC0-1.0",
@@ -4680,6 +4726,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8H2XC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8H2XC",
+              "type": "libex-import"
             }
           ],
           "work": "magic-seeds"
@@ -4690,6 +4740,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8H2XC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8H2XC",
+          "type": "libex-import"
         }
       ],
       "title": "Magic Seeds"
