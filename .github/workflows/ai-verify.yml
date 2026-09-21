@@ -2,20 +2,24 @@ name: ai-verify
 
 # Advisory AI review of a data pull request's diff. This is a judgement layer on
 # top of the mechanical `check` workflow (schema/integrity/formatting), never a
-# replacement for it: it posts a PASS/FLAG comment and label, and never blocks a
-# merge.
+# replacement for it: it posts a PASS/FLAG comment and label. Neither verdict
+# blocks a merge - this check is not branch protected. The job's COLOUR is a
+# separate signal: red means no verdict was reached (see the script's EXIT
+# STATUS block).
 #
 # SECURITY: this uses the plain `pull_request` trigger, NOT
 # `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
 # supply-chain pattern). Consequences, accepted deliberately:
 #   - Fork pull requests run with a read-only token and NO secrets, so neither
-#     CLAUDE_CODE_OAUTH_TOKEN nor ANTHROPIC_API_KEY is present there. The script
-#     then writes a neutral "skip" notice rather than failing. A fork PR is
-#     therefore AI-verified only after a
+#     CLAUDE_CODE_OAUTH_TOKEN nor ANTHROPIC_API_KEY is present there. The job
+#     therefore does not run on a fork PR at all (see the `if:` below): a fork
+#     run could only ever reach the script's skip, which is now a RED check (see
+#     the script's EXIT STATUS note), and a permanently-red check nobody can fix
+#     teaches people to ignore the colour. A fork PR is AI-verified after a
 #     maintainer pushes its branch to this repository (a same-repo branch gets
-#     the secret and a write token), or a maintainer re-runs via workflow_dispatch
-#     / applies the `ai-verify` label. We do NOT weaken this to reach fork
-#     secrets.
+#     the secret and a write token) or re-runs it via workflow_dispatch, which
+#     runs from the default branch WITH the secret. We do NOT weaken this to
+#     reach fork secrets.
 #   - The diff is passed to the model as untrusted DATA and never executed (see
 #     .github/scripts/ai-verify.sh).
 on:
@@ -41,8 +45,17 @@ permissions:
 # (observed on 26 of 30 open intake PRs, three runs created in the same
 # second). No-op runs therefore get their own `-noop` group; only real runs
 # supersede each other.
+#
+# A FORK pull request is the SECOND class of no-op run, and it exists because
+# the job-level `if` below stopped admitting forks at all. Its `opened` and
+# `synchronize` events are not `labeled`, so the original selector called them
+# real and put them in the `-run` group - where a push to the fork PR would
+# cancel the workflow_dispatch a maintainer had started for it, which is now the
+# only route by which a fork PR gets verified. That is the same defect the
+# paragraph above describes, reached from the other side, so the fork case joins
+# the same `-noop` group rather than getting a mechanism of its own.
 concurrency:
-  group: ai-verify-${{ github.event.pull_request.number || github.event.inputs.pr }}-${{ (github.event.action == 'labeled' && github.event.label.name != 'ai-verify') && 'noop' || 'run' }}
+  group: ai-verify-${{ github.event.pull_request.number || github.event.inputs.pr }}-${{ ((github.event.action == 'labeled' && github.event.label.name != 'ai-verify') || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository)) && 'noop' || 'run' }}
   cancel-in-progress: true
 
 jobs:
@@ -54,9 +67,14 @@ jobs:
     # `env` may reference `secrets`). Empty on fork PRs (no secrets).
     env:
       HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
-    # Same-repo branches (secrets + write token available), a maintainer-applied
-    # `ai-verify` label, or a manual dispatch. Fork PRs without the label are
-    # skipped - they cannot reach the secret anyway.
+    # Same-repo branches (secrets + write token available) or a manual dispatch.
+    # A fork PR is not run at all: it cannot reach the secret, so the ONLY thing
+    # it could produce is the script's skip, and a skip is now a red check. The
+    # `ai-verify` label used to opt a fork PR in here; it bought a run that could
+    # not verify anything, which under the new exit rule is a red check no
+    # contributor can clear. Dropping that arm is what makes "red means no
+    # verdict" exception-free. The label still re-triggers a SAME-REPO PR through
+    # the `labeled` narrowing below.
     #
     # A `labeled` event is narrowed to the opt-in `ai-verify` label and EXCLUDES
     # the two outcome labels this workflow applies at the end (ai-verified /
@@ -72,10 +90,8 @@ jobs:
         (
           github.event.action != 'labeled' ||
           github.event.label.name == 'ai-verify'
-        ) && (
-          github.event.pull_request.head.repo.full_name == github.repository ||
-          contains(github.event.pull_request.labels.*.name, 'ai-verify')
-        )
+        ) &&
+        github.event.pull_request.head.repo.full_name == github.repository
       )
     steps:
       - name: Checkout
@@ -124,9 +140,20 @@ jobs:
       # subscription token authenticates through the CLI, not the raw API). When
       # only ANTHROPIC_API_KEY is set the script uses curl and this is skipped.
       # ubuntu-latest ships Node 20+, so npm is available.
+      #
+      # `claude --version` is a LIVENESS PROBE, not a formality. For a window
+      # around 2026-08-20 this install stopped landing the platform-native
+      # binary: npm reported success, `claude` was on PATH, and every invocation
+      # exited 1 with "claude native binary not installed" (diagnosed on PR
+      # #2251; it resolved itself upstream, so the install line is unchanged).
+      # An install whose failure only shows up three steps later, as a "skipped"
+      # comment, is what let that outage run silently. The probe moves the next
+      # one to the step that causes it.
       - name: Install Claude Code CLI
         if: steps.gather.outputs.has_changes == 'true' && env.HAS_OAUTH == 'true'
-        run: npm install -g @anthropic-ai/claude-code
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
 
       - name: Run AI verification
         if: steps.gather.outputs.has_changes == 'true'
@@ -135,16 +162,31 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
+      # Runs even when the verification step FAILED (a skip), so the skip keeps
+      # its human-readable trace on the pull request while the job stays red.
+      # The comment file is absent only when a step before the script failed, in
+      # which case the job log is the whole trace.
       - name: Post the verdict and label the PR
-        if: steps.gather.outputs.has_changes == 'true'
+        if: ${{ !cancelled() && steps.gather.outputs.has_changes == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ steps.gather.outputs.pr }}
         run: |
-          gh pr comment "$PR" --body-file comment.md || echo "could not comment (read-only token on a fork PR?)"
+          if [ ! -s comment.md ]; then
+            echo "::warning::ai-verify produced no comment - verification did not reach a verdict; see the log above"
+            exit 0
+          fi
+          gh pr comment "$PR" --body-file comment.md || echo "::warning::could not post the ai-verify comment on PR $PR"
           verdict="$(jq -r '.verdict // "skip"' verdict.json 2>/dev/null || echo skip)"
+          # A skip CLEARS both outcome labels rather than leaving the previous
+          # push's. The label is the same claim as the tick: a PR that passed
+          # yesterday and cannot be verified today must not keep a green
+          # `ai-verified` badge asserting a verdict this run did not reach.
+          # Removing a label fires `unlabeled`, which is not in this workflow's
+          # trigger `types`, so this cannot re-fire the job.
           case "$verdict" in
             pass) gh pr edit "$PR" --remove-label ai-flagged --add-label ai-verified || true ;;
             flag) gh pr edit "$PR" --remove-label ai-verified --add-label ai-flagged || true ;;
-            *)    echo "verdict=$verdict; no label applied" ;;
+            *)    gh pr edit "$PR" --remove-label ai-verified --remove-label ai-flagged || true
+                  echo "verdict=$verdict; outcome labels cleared" ;;
           esac
