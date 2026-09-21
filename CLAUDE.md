@@ -279,7 +279,14 @@ a **works** entry with identical own fields and differing `recordings` maps
 merges those maps (two narrations of one book), and a **works-community** entry,
 which IS a map of members, merges DISJOINT members (a characters PR and a recaps
 PR for the same book) - the same base rules one level deeper, so a member both
-sides wrote is still a refusal. It is also a git MERGE DRIVER, which is how the
+sides wrote is still a refusal. An entry both sides ADDED is not that conflict at
+all - the base holds no version for either to have edited - so in EVERY family the
+two copies merge when neither contradicts the other: `sources` unioned, a series
+taking the (work, position) pairs only one side saw, authors/narrators in another
+order keeping the order already on main, a key only one copy carries taken, and
+anything the two state differently still refused. That is what two overlapping
+library imports collide on (29 packs across issues #2274/#2275, all of them one
+record minted twice). It is also a git MERGE DRIVER, which is how the
 sweep runs it (`.gitattributes` names it for `data/**/*.json`; the driver is
 configured in the sweep and by any contributor who wants it, and where it is not
 configured git falls back to its own merge exactly as before). That is not a
