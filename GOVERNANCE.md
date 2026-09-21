@@ -52,6 +52,7 @@ On top of a green pull request:
 |---|---|
 | `data/` only, opened by a **Trusted Contributor** | Auto-merges via GitHub-native auto-merge once required checks pass. No human step. |
 | `data/` only, opened by **anyone else** | One maintainer approval, then merge. |
+| `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" below; anything else parks with `sync:needs-human` for a maintainer. |
 | `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. |
 
 Auto-merge is GitHub's native feature (green required checks → merge), not a bot
@@ -65,8 +66,15 @@ get extra scrutiny regardless of who opens them: the source must be named and
 permitted (LICENSING.md's bounded import posture), the selection rationale
 stated (never an unbounded mirror), the records stamped with the source's typed
 `sources[]` entry so the whole source stays retractable, and the batch landed in
-reviewable tranches rather than one giant diff. A maintainer approves each
-tranche; batch imports never auto-merge.
+reviewable tranches rather than one giant diff. **A batch import opened by a
+person, or composed from the "Import a library" issue form, never auto-merges**:
+a maintainer approves each tranche, whoever opened it and however green it is.
+The single carve-out is the **series-completion bot** below, whose pull requests
+are batch imports by this definition: its selection rationale is enforced
+mechanically instead of merely stated - only works filling free positions in
+series the catalogue already holds, `data/` only, capped per cycle - and the
+automated verifier's `ai-verified` verdict is the review that bound pays for.
+Everything else in this paragraph applies to it unchanged.
 
 **Overwriting an existing record.** Imports do not normally rewrite what is
 already recorded - a recorded value wins and a run fills only what is absent.
@@ -138,10 +146,72 @@ Two automations sit in front of the human review step. Neither bypasses it.
 is treated exactly like one "opened by anyone else": it must pass CI, and it
 still requires **one maintainer approval** before it merges. A green
 `ai-verified` label does **not** enable auto-merge. Auto-merge for bot-drafted or
-AI-verified pull requests is a **deliberate future toggle** - it stays off until
-the pipeline has earned trust through a track record of clean, correctly-composed
-submissions, at which point widening the auto-merge scope (like the Trusted
+AI-verified pull requests was a **deliberate future toggle**, and it has since
+been turned on for **exactly one** automation - the series-completion bot in the
+next section, which buys it with a bound a machine enforces rather than with a
+track record. For every other bot-drafted or AI-verified pull request the toggle
+stays off until the pipeline has earned trust through a record of clean,
+correctly-composed submissions, and widening it any further (like the Trusted
 Contributor ladder) is a maintainer decision made openly.
+
+## Series-completion bot (audiosilo-meta-sync)
+
+The one automation allowed to merge its own work.
+[`KodeStar/audiosilo-meta-sync`](https://github.com/KodeStar/audiosilo-meta-sync)
+is a private service that runs daily: it reads libex's new-releases and
+coming-soon feeds across every marketplace region, keeps only the rows that
+**complete series this catalogue already holds**, and opens one pull request per
+cycle. This section is the whole of its licence to do that; nothing else in the
+merge policy moves.
+
+**The bound.** Selection is the existing `metaimport libex-select` tranche
+selector, which refuses any row whose series the catalogue does not already
+track and any row whose position in that series is already filled. So the bot
+can add a volume to a series we hold; it can never add a **series**, and it can
+never contest an occupied position. It writes under `data/` and nowhere else -
+never a schema, never the tooling, never a workflow (`CODEOWNERS` would stop it
+anyway). One pull request per cycle, capped at about 100 new works, so a cycle
+stays a thing a person can read. Alongside the new works it runs `metaimport
+libex --enrich` over the touched series' existing members, which fills only
+absent facts - a missing cover or chapter table, a year-only release date
+refined to the stated day - and never overwrites a recorded value. Coming-soon
+(preorder) titles are imported with their announced release date. Every record
+it writes carries the typed `libex-import` provenance, so the whole source stays
+retractable in one act and the trust tiers rank it exactly as any other
+bulk-mirror record: the first user-library import that matches it takes the
+record over.
+
+**The merge gate.** The bot merges its own pull request only when the required
+checks (`check`, `compose`) are green **and** the `ai-verify` workflow has
+applied `ai-verified`. Here - and only here - that verdict is not advisory: it
+is the review step standing in for the maintainer approval a batch import
+otherwise needs. A failed required check parks the pull request; so does an
+`ai-flagged` verdict, except that a resolver (a Claude or Codex CLI on a
+subscription login) may first amend it **at most twice**. The resolver edits
+`data/` only and only the records this pull request added - it may drop a
+flagged record entirely, and it never touches a record that was here before. If
+the flag survives two amendments the pull request is labelled `sync:needs-human`
+and left for a maintainer. The bot stops opening new pull requests while
+**three** parked ones are open, so a systematic fault produces a short queue
+rather than a backlog.
+
+**Accountability.** Every merge is a pull request, so the record is the ordinary
+reviewable one: labels `data`, `bot-intake` and `bot-sync`, a per-series table
+of what the tranche adds, the required checks and the verifier's verdict on it,
+and a comment on the pull request describing whatever the resolver changed. A
+bad cycle reverts like any other change (revert-first, below), and because the
+provenance is typed, an entire source retracts in one pass.
+
+**Kill switch.** Revoke the bot's personal access token, or stop its container.
+It has no other way into this repository, and nothing here depends on it
+running.
+
+**Widening is a maintainer decision made openly**, exactly like the ladder it
+came from. A new source, a new kind of record, authority to create a series, a
+larger cap, or the same automation pointed at
+[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
+(whose review bar is prose a human has to judge, which is why the repositories
+split) is a change to this document first and a change to the bot second.
 
 ## Disputes
 
