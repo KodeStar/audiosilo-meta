@@ -36,6 +36,13 @@ export interface WorkCard {
   title: string
   authors: PersonRef[]
   series?: SeriesRef | null
+  /** The EARLIEST release date across the work's recordings, at whatever
+      precision the source stated (`YYYY`, `YYYY-MM`, `YYYY-MM-DD`). Omitted by
+      the API when no recording states one, and absent altogether on a response
+      from a metaserve that predates the field - so every reader treats it as
+      optional. A date in the FUTURE is a catalogued preorder (see
+      lib/watchlist.ts), not an error. */
+  release_date?: string
   cover_url?: string | null
   added_at?: string | null
   narrators?: PersonRef[]
@@ -58,6 +65,7 @@ export type SearchResult =
       title: string
       authors: PersonRef[]
       series?: SeriesRef | null
+      release_date?: string
       cover_url?: string | null
       narrators?: PersonRef[]
     }
@@ -208,11 +216,19 @@ export interface Person {
   offset: number
 }
 
+/** One work's place in a series: its position string ("1", "2.5", "1-3.5") and
+    the work's card. Named because the series page, the watching page and the
+    watchlist's classifier all pass it around. */
+export interface SeriesEntry {
+  position: string
+  work: WorkCard
+}
+
 export interface Series {
   id: string
   name: string
   authors: PersonRef[]
-  works: { position: string; work: WorkCard }[]
+  works: SeriesEntry[]
   works_total: number
   limit: number
   offset: number

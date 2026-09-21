@@ -909,6 +909,38 @@ and the shards answer the API's 503. Rendering is `encoding/xml` and
 deterministic - two renders of one snapshot are byte-identical. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
+**The work CARD carries `release_date`** (`store.go`'s `workCard`, so every
+surface that composes one: `GET /series/{id}` entries, all four searches and
+`works/latest`). It is the EARLIEST release date across the work's recordings -
+the minimum by plain STRING order over the values that state one, which sorts
+`YYYY`/`YYYY-MM`/`YYYY-MM-DD` chronologically and lets the less precise value
+win a same-year tie - and it is `omitempty`, since most works state no date at
+all. It costs NO extra query: `cardFactsByWork` folded the old
+`coversByWork` and this into one batched read of the recordings table (both
+facts come from the same rows, by the same primary-key prefix), so
+`TestBatchLookupsAreIndexed` covers it and the card's "which value wins" rules
+still live in exactly one place. A future date is a catalogued PREORDER, not an
+error - the coming-soon import puts real ones in the catalogue.
+
+**The SITE has a `/watching` page** (`site/src/pages/watching.astro` +
+`components/watching/`): a reader watches a series from its detail page and
+ticks the volumes they have, and this page lists, per series, the released
+entries they are missing (badged `New` until they have been shown once) and the
+entries still on preorder. It is ENTIRELY client-side state - one localStorage
+key, `audiosilo-meta:watchlist`, read and written through the pure, tested
+`site/src/lib/watchlist.ts` (versioned document, tolerant parse, every mutation
+store-in/new-store-out) - so there is no account, nothing is sent to the server
+and the page offers a JSON download/merge as the only backup there is
+(`/privacy` says so). Dates render through `site/src/lib/dates.ts`
+(`formatReleaseDate`, and `isFutureRelease`, which compares at the precision the
+value states), replacing the year-only rendering on the work page: a web serial
+ships several volumes a year, so a year says nothing. The page can also be
+seeded from a library export, and that import shares EVERY matching rule with
+`/import`: the sweep moved out of `ImportTool.tsx` into
+`site/src/lib/resolve-books.ts` (identifier lookup, then the author-search
+existing-work match) and both pages call it, so the two can never disagree about
+which of a reader's books the catalogue holds.
+
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
 retailer genre strings, ratings and personal state, deduplicates by ASIN against the catalogue,

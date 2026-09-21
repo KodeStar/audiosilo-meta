@@ -211,13 +211,23 @@ type seriesRef struct {
 }
 
 // workCard is the compact work representation reused by lists and lookups.
+//
+// ReleaseDate is OMITTED rather than nulled, unlike the three pointer fields
+// beside it. Those three predate it and are part of the shape every consumer
+// already destructures; a new key is additive either way, and omitempty keeps
+// the overwhelmingly common no-date card exactly as many bytes as it is today -
+// which matters on a series list, a search page and works/latest alike.
 type workCard struct {
-	ID       string      `json:"id"`
-	Title    string      `json:"title"`
-	Authors  []personRef `json:"authors"`
-	Series   *seriesRef  `json:"series"`
-	CoverURL *string     `json:"cover_url"`
-	AddedAt  *string     `json:"added_at"`
+	ID      string      `json:"id"`
+	Title   string      `json:"title"`
+	Authors []personRef `json:"authors"`
+	Series  *seriesRef  `json:"series"`
+	// ReleaseDate is the EARLIEST release date across the work's recordings -
+	// `YYYY`, `YYYY-MM` or `YYYY-MM-DD`, the precision the source stated. See
+	// cardFactsByWork for how the winner is chosen.
+	ReleaseDate string  `json:"release_date,omitempty"`
+	CoverURL    *string `json:"cover_url"`
+	AddedAt     *string `json:"added_at"`
 }
 
 // workCard builds the card for a single work id, through the same batched
@@ -298,9 +308,17 @@ func firstSeriesByWorkSQL(ph string) string {
 		`WHERE sw.work_id IN (` + ph + `) ORDER BY sw.work_id, s.id`
 }
 
-func coversByWorkSQL(ph string) string {
-	return `SELECT work_id, cover_url FROM recordings WHERE work_id IN (` + ph + `) ` +
-		`AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY work_id, id`
+// cardFactsByWorkSQL reads the two per-work RECORDING facts a card carries: the
+// cover to show and the earliest release date. ONE query rather than two over
+// the same table and the same id set - both walk the recordings primary key
+// (work_id, id) by prefix, so the second was a whole extra round trip per page
+// for rows the first already had in hand. The "which value wins" rules are
+// applied in cardFactsByWork rather than in SQL: the cover's rule needs the
+// row ORDER (first non-empty in recording-id order) and the date's does not
+// (the minimum by string order), and no single GROUP BY expresses both.
+func cardFactsByWorkSQL(ph string) string {
+	return `SELECT work_id, cover_url, release_date FROM recordings WHERE work_id IN (` + ph + `) ` +
+		`ORDER BY work_id, id`
 }
 
 // narratorsByWorkSQL reads the distinct narrators across each work's recordings.
@@ -387,7 +405,7 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 	if err != nil {
 		return nil, err
 	}
-	covers, err := s.coversByWork(found)
+	facts, err := s.cardFactsByWork(found)
 	if err != nil {
 		return nil, err
 	}
@@ -396,7 +414,10 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 			wc.Authors = a
 		}
 		wc.Series = series[id]
-		wc.CoverURL = covers[id]
+		if f := facts[id]; f != nil {
+			wc.CoverURL = f.cover
+			wc.ReleaseDate = f.releaseDate
+		}
 	}
 	return out, nil
 }
@@ -455,25 +476,54 @@ func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error
 	return out, nil
 }
 
-// coversByWork returns each work's first non-empty recording cover URL in
-// recording id order, keyed by work id. As with firstSeriesByWork, this is the
-// only place the "which cover wins" rule is written down.
-func (s *snapshot) coversByWork(ids []string) (map[string]*string, error) {
-	out := map[string]*string{}
+// cardFacts is what a work's recordings contribute to its card.
+type cardFacts struct {
+	// cover is the first non-empty cover URL in recording id order, or nil.
+	cover *string
+	// releaseDate is the EARLIEST release date across the work's recordings, or
+	// "" when none states one. See cardFactsByWork for the comparison rule.
+	releaseDate string
+}
+
+// cardFactsByWork returns each work's card facts, keyed by work id. A work with
+// no recordings is absent from the map. As with firstSeriesByWork, this is the
+// only place the "which cover wins" and "which date wins" rules are written
+// down.
+//
+// The DATE rule is the minimum by plain STRING order over the non-empty values.
+// That is deliberately simple rather than clever: a release_date is `YYYY`,
+// `YYYY-MM` or `YYYY-MM-DD`, and those sort chronologically as strings for any
+// pair that differs in the part they share - so the earliest recording's date
+// wins, and where two recordings state the same year at different precisions
+// the SHORTER (less precise) value sorts first. Picking the more precise value
+// there would need a second rule for no gain: both describe the same year, and
+// the card's date is a "when did this book come out" hint, not an edition fact.
+func (s *snapshot) cardFactsByWork(ids []string) (map[string]*cardFacts, error) {
+	out := map[string]*cardFacts{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(coversByWorkSQL(ph), args...)
+		rows, err := s.db.Query(cardFactsByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
 		defer func() { _ = rows.Close() }()
 		for rows.Next() {
-			var workID, cover string
-			if err := rows.Scan(&workID, &cover); err != nil {
+			var workID string
+			var cover, release sql.NullString
+			if err := rows.Scan(&workID, &cover, &release); err != nil {
 				return err
 			}
-			if _, seen := out[workID]; !seen {
-				c := cover
-				out[workID] = &c
+			f := out[workID]
+			if f == nil {
+				f = &cardFacts{}
+				out[workID] = f
+			}
+			if f.cover == nil && cover.Valid && cover.String != "" {
+				c := cover.String
+				f.cover = &c
+			}
+			if release.Valid && release.String != "" &&
+				(f.releaseDate == "" || release.String < f.releaseDate) {
+				f.releaseDate = release.String
 			}
 		}
 		return rows.Err()

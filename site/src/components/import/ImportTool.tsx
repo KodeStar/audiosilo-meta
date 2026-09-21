@@ -1,21 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { lookup, search, getPersonPage, formatRuntime, type SearchResult } from '../../lib/api'
-import {
-  parseExport,
-  partitionByIdentifier,
-  isContributableOnMiss,
-  matchExistingWork,
-  authorKey,
-  authorSearchKeys,
-  candidatesForBook,
-  collectAuthoredWorks,
-  dedupeCandidates,
-  unconfirmedAuthors,
-  type ParsedBook,
-  type ParseOutcome,
-  type WorkCandidate,
-  type WorkMatch,
-} from '../../lib/import-parse'
+import { formatRuntime } from '../../lib/api'
+import { parseExport, type ParsedBook, type ParseOutcome } from '../../lib/import-parse'
+import { MAX_BOOKS, resolveLibrary, type ResolvedLibrary } from '../../lib/resolve-books'
 import {
   addWorkIssueUrl,
   addRecordingIssueUrl,
@@ -25,62 +11,10 @@ import {
 import { downloadJson } from '../../lib/download'
 import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
 
-// Concurrency for the lookup + author-search sweeps, and the hard safety cap on
-// export size.
-const POOL_SIZE = 8
-const MAX_BOOKS = 5000
-// Author-search page size: enough to cover a prolific author's shelf so an
-// existing work isn't missed by the cap.
-const AUTHOR_WORKS_LIMIT = 50
-
-// A fixed-size worker pool over items; stops early if the signal aborts.
-async function runPool<T>(
-  items: T[],
-  size: number,
-  signal: AbortSignal,
-  work: (item: T) => Promise<void>
-): Promise<void> {
-  let idx = 0
-  const next = async (): Promise<void> => {
-    while (idx < items.length && !signal.aborted) {
-      const i = idx++
-      await work(items[i])
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(size, items.length) }, () => next()))
-}
-
-// Map a search-work or person-authored entry to a work candidate (same shape).
-const toCandidate = (x: {
-  id: string
-  title: string
-  authors: { name: string }[]
-}): WorkCandidate => ({ id: x.id, title: x.title, authors: x.authors })
-
 const PRIVACY =
   'Your export is read entirely in your browser. The API receives only ASINs and ISBNs (to check what is already catalogued) and, for books that are not matched, the author names used to look for an existing work. Personal fields and the file itself never leave your device.'
 
 type Phase = 'idle' | 'unknown' | 'error' | 'diffing' | 'results'
-
-// A book to contribute: either a brand-new work, or (existingWork set) a new
-// recording of a work already in the catalogue.
-interface NewBook {
-  book: ParsedBook
-  existingWork: WorkMatch | null
-}
-
-interface Results {
-  inDatabase: ParsedBook[]
-  newBooks: NewBook[]
-  cannotMatch: ParsedBook[]
-  noIdentifier: number // books in cannotMatch that carry no ASIN/ISBN (couldn't be checked)
-  total: number // books across the result stats: deduped identified + all unidentified
-  skipped: number
-  // Authors whose catalogue shelf we could not read in full (see runDiff). Their
-  // books in "New" are unconfirmed, so the UI says so rather than implying every
-  // listed book is definitely missing from the database.
-  partialAuthors: string[]
-}
 
 // "Brandon Sanderson, Stephen King and 3 more" - the author list for the
 // unconfirmed-shelf notice, kept short so the notice stays one sentence.
@@ -156,7 +90,7 @@ export default function ImportTool() {
   const [dragging, setDragging] = useState(false)
   const [progress, setProgress] = useState({ done: 0, total: 0 })
   const [matching, setMatching] = useState(false)
-  const [results, setResults] = useState<Results | null>(null)
+  const [results, setResults] = useState<ResolvedLibrary | null>(null)
 
   const abortRef = useRef<AbortController | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -202,133 +136,22 @@ export default function ImportTool() {
   }
 
   async function runDiff(all: ParsedBook[]) {
-    const skipped = all.length > MAX_BOOKS ? all.length - MAX_BOOKS : 0
-    const books = all.slice(0, MAX_BOOKS)
-
-    // Dedupe and split off books with no identifier (they can't be matched);
-    // the rest are looked up against the database below. `unidentified` is the
-    // no-identifier portion of "cannot auto-match" - reported so the UI can
-    // explain that number honestly (couldn't be checked, not missing).
-    const { identified, unidentified } = partitionByIdentifier(books)
-    const totalBooks = identified.length + unidentified.length
-    const cannotMatch: ParsedBook[] = [...unidentified]
-    const inDatabase: ParsedBook[] = []
-    const misses: ParsedBook[] = []
-
     setResults(null)
     setMatching(false)
-    setProgress({ done: 0, total: identified.length })
+    setProgress({ done: 0, total: 0 })
     setPhase('diffing')
 
     const ctrl = new AbortController()
     abortRef.current = ctrl
 
-    // Phase 1: look up each unique identifier against the catalogue.
-    await runPool(identified, POOL_SIZE, ctrl.signal, async (book) => {
-      const value = book.asin ?? book.isbn
-      if (!value) return
-      try {
-        const match = await lookup(book.asin ? 'asin' : 'isbn', value, ctrl.signal)
-        if (match) inDatabase.push(book)
-        else if (isContributableOnMiss(book)) misses.push(book)
-        else cannotMatch.push(book) // not found, but unknown language -> cannot auto-match
-      } catch {
-        if (ctrl.signal.aborted) return
-        cannotMatch.push(book) // a real lookup failure, counted, never treated as new
-      } finally {
-        if (!ctrl.signal.aborted) {
-          setProgress((p) => ({ ...p, done: p.done + 1 }))
-        }
-      }
+    const resolved = await resolveLibrary(all, ctrl.signal, (p) => {
+      setProgress({ done: p.done, total: p.total })
+      setMatching(p.matching)
     })
-    if (ctrl.signal.aborted) return
-
-    // Phase 2: for every miss, decide new-work vs new-recording by checking
-    // whether the work is already catalogued. The ASIN missed, so we can't look
-    // up by id; instead search each distinct author once (cached) - a clean,
-    // FTS-indexed query - and match the work title locally.
-    setMatching(true)
-    const worksByAuthor = new Map<string, WorkCandidate[]>()
-    // Author keys whose shelf we know we did NOT see in full. Any of their books
-    // can be in the database without us matching it, so the results warn instead
-    // of presenting them as confidently new.
-    const partial = new Set<string>()
-    const authorNames = authorSearchKeys(misses)
-    await runPool([...authorNames], POOL_SIZE, ctrl.signal, async ([key, name]) => {
-      try {
-        const res = await search(name, AUTHOR_WORKS_LIMIT, ctrl.signal)
-        let works: WorkCandidate[] = res.results
-          .filter((r): r is Extract<SearchResult, { kind: 'work' }> => r.kind === 'work')
-          .map(toCandidate)
-        // A prolific author can have more works than the search cap returns. When
-        // the result is truncated, resolve the author's person id and pull the
-        // complete authored list, so an existing work past the cap still matches.
-        // That list is itself PAGED by the API (a page, plus authored_total), so
-        // it is collected page by page - reading only the first page would put a
-        // 500-plus-credit author's later works back out of sight and propose them
-        // as new.
-        if (res.results.length >= AUTHOR_WORKS_LIMIT) {
-          const person = res.results.find(
-            (r): r is Extract<SearchResult, { kind: 'person' }> =>
-              r.kind === 'person' && authorKey(r.name) === key
-          )
-          if (!person) {
-            // The search was capped and there is no person record to page from,
-            // so this shelf is knowably incomplete.
-            partial.add(key)
-          } else {
-            try {
-              const shelf = await collectAuthoredWorks(async (offset) => {
-                const p = await getPersonPage(person.id, { offset }, ctrl.signal)
-                return {
-                  authored: p.authored.map(toCandidate),
-                  authored_total: p.authored_total,
-                  limit: p.limit,
-                }
-              })
-              works = dedupeCandidates([...works, ...shelf.works])
-              // partial is keyed by AUTHOR KEY (what candidatesForBook and the
-              // notice filter below both join on), never by display name.
-              if (shelf.truncated) partial.add(key)
-            } catch {
-              // Keep the (truncated) search works if the person fetch fails - but
-              // the shelf stayed capped, so the caller must not read a miss as
-              // "not in the database".
-              if (!ctrl.signal.aborted) partial.add(key)
-            }
-          }
-        }
-        worksByAuthor.set(key, works)
-      } catch {
-        if (!ctrl.signal.aborted) {
-          worksByAuthor.set(key, [])
-          partial.add(key)
-        }
-      }
-    })
-    if (ctrl.signal.aborted) return
-
-    const newBooks: NewBook[] = misses.map((book) => ({
-      book,
-      existingWork: matchExistingWork(book, candidatesForBook(book, worksByAuthor)),
-    }))
-
-    // Only warn about an incomplete shelf that actually affects the output: an
-    // author whose books all matched an existing work (or produced none) tells
-    // the contributor nothing useful.
-    const unmatched = newBooks.filter((n) => !n.existingWork).flatMap((n) => n.book.authors)
-    const partialAuthors = unconfirmedAuthors(partial, authorNames, unmatched)
+    if (!resolved) return // aborted: the view is going away
 
     abortRef.current = null
-    setResults({
-      inDatabase,
-      newBooks,
-      cannotMatch,
-      noIdentifier: unidentified.length,
-      total: totalBooks,
-      skipped,
-      partialAuthors,
-    })
+    setResults(resolved)
     setPhase('results')
   }
 

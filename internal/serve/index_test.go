@@ -145,7 +145,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"works by id", ids, worksByIDSQL},
 		{"authors by work", ids, authorsByWorkSQL},
 		{"first series by work", ids, firstSeriesByWorkSQL},
-		{"covers by work", ids, coversByWorkSQL},
+		{"card facts by work", ids, cardFactsByWorkSQL},
 		// One search page's per-kind reads: a scoped page is 100% one kind, so a
 		// per-hit query here would be a whole page of sequential round-trips.
 		{"narrators by work", ids, narratorsByWorkSQL},

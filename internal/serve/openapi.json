@@ -857,7 +857,7 @@
       },
       "WorkCard": {
         "type": "object",
-        "description": "The compact work representation every list and lookup returns. The three nullable fields are always PRESENT - null means the work has no series membership, no cover on any recording, or no recorded date.",
+        "description": "The compact work representation every list and lookup returns. The three nullable fields are always PRESENT - null means the work has no series membership, no cover on any recording, or no recorded date. `release_date` is the one OMITTED field: it is absent when no recording of the work states a release date.",
         "required": ["id", "title", "authors", "series", "cover_url", "added_at"],
         "properties": {
           "id": { "type": "string", "examples": ["project-hail-mary"] },
@@ -869,6 +869,11 @@
           "series": {
             "description": "The work's FIRST series membership, or null. A work in several series shows only one here; /api/v1/works/{id} lists them all.",
             "oneOf": [{ "$ref": "#/components/schemas/SeriesRef" }, { "type": "null" }]
+          },
+          "release_date": {
+            "type": "string",
+            "description": "The EARLIEST release date across the work's recordings, at whatever precision the source stated: `YYYY`, `YYYY-MM` or `YYYY-MM-DD`. Earliest is the minimum by plain string order over the values that state one; the field is omitted when none do. A date in the future is a catalogued preorder, not an error.",
+            "examples": ["2021-05-04"]
           },
           "cover_url": {
             "type": ["string", "null"],
