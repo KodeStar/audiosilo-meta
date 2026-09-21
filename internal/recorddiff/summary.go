@@ -3,7 +3,9 @@ package recorddiff
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
+	"maps"
+	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -59,63 +61,67 @@ func removedSummary(f pack.Family, slug string, raw json.RawMessage) string {
 	return fmt.Sprintf("%s %s: %s", familyWord(f), slug, quoted(recordName(raw)))
 }
 
+// familyNouns is the ONE table this package names and orders families by: how a
+// family's record is spoken of, singular and plural, and where it sits in a
+// render.
+//
+// The RANK is not alphabetical on purpose. Truncation drops the tail of a
+// section, so what a reviewer would miss least has to sit there: a new SERIES
+// first (no bot in this repository mints one, so one in a machine-opened tranche
+// is the loudest thing in it), then the works, then the sidecars, and the people
+// last - a new person record is almost always the mechanical consequence of a
+// new work's author or narrator.
+//
+// A family absent from the table (one this package does not model) falls back to
+// its own spelling and sorts after every family that is in it.
+var familyNouns = map[pack.Family]struct {
+	one, many string
+	rank      int
+}{
+	pack.FamilySeries:         {"series", "series", 0},
+	pack.FamilyWorks:          {"work", "works", 1},
+	pack.FamilyWorksCommunity: {"community", "community entries", 2},
+	pack.FamilyPeople:         {"person", "people", 3},
+}
+
 // familyWord is the singular noun a family's records are named by in a rendered
-// line. It is the family's own spelling for anything this package does not model.
+// line.
 func familyWord(f pack.Family) string {
-	switch f {
-	case pack.FamilyWorks:
-		return "work"
-	case pack.FamilyPeople:
-		return "person"
-	case pack.FamilySeries:
-		return "series"
-	case pack.FamilyWorksCommunity:
-		return "community"
+	if n, ok := familyNouns[f]; ok {
+		return n.one
 	}
 	return string(f)
-}
-
-// familyRank is the order families are PRINTED in, and it is not alphabetical on
-// purpose. Truncation drops the tail of a section, so what a reviewer would miss
-// least has to sit there: a new SERIES first (no bot in this repository mints
-// one, so one in a machine-opened tranche is the loudest thing in it), then the
-// works, then the sidecars, and the people last - a new person record is almost
-// always the mechanical consequence of a new work's author or narrator.
-func familyRank(f pack.Family) int {
-	switch f {
-	case pack.FamilySeries:
-		return 0
-	case pack.FamilyWorks:
-		return 1
-	case pack.FamilyWorksCommunity:
-		return 2
-	case pack.FamilyPeople:
-		return 3
-	}
-	return 4
-}
-
-// familyLess is the ONE ordering every list in a render is sorted by.
-func familyLess(a, b pack.Family) bool {
-	if ra, rb := familyRank(a), familyRank(b); ra != rb {
-		return ra < rb
-	}
-	return a < b
 }
 
 // familyPlural is familyWord for a count of them.
 func familyPlural(f pack.Family) string {
-	switch f {
-	case pack.FamilyWorks:
-		return "works"
-	case pack.FamilyPeople:
-		return "people"
-	case pack.FamilySeries:
-		return "series"
-	case pack.FamilyWorksCommunity:
-		return "community entries"
+	if n, ok := familyNouns[f]; ok {
+		return n.many
 	}
 	return string(f)
+}
+
+// countedFamily names a family in the singular or the plural, as n asks.
+func countedFamily(n int, f pack.Family) string {
+	if n == 1 {
+		return familyWord(f)
+	}
+	return familyPlural(f)
+}
+
+// familyLess is the ONE ordering every list in a render is sorted by.
+func familyLess(a, b pack.Family) bool {
+	ra, rb := len(familyNouns), len(familyNouns)
+	if n, ok := familyNouns[a]; ok {
+		ra = n.rank
+	}
+	if n, ok := familyNouns[b]; ok {
+		rb = n.rank
+	}
+	if ra != rb {
+		return ra < rb
+	}
+	return a < b
 }
 
 // workView is the subset of a works-family composite entry a summary states.
@@ -219,11 +225,8 @@ func seriesSummary(slug string, raw json.RawMessage) string {
 	if err := json.Unmarshal(raw, &s); err != nil {
 		return fmt.Sprintf("SERIES %s: (entry could not be read: %v)", slug, err)
 	}
-	noun := "works"
-	if len(s.Works) == 1 {
-		noun = "work"
-	}
-	return fmt.Sprintf("SERIES %s: %s (%d %s)", slug, quoted(s.Name), len(s.Works), noun)
+	return fmt.Sprintf("SERIES %s: %s (%d %s)", slug, quoted(s.Name), len(s.Works),
+		countedFamily(len(s.Works), pack.FamilyWorks))
 }
 
 // communitySummary renders a works-community entry by the members it carries.
@@ -234,12 +237,7 @@ func communitySummary(slug string, raw json.RawMessage) string {
 	if err := json.Unmarshal(raw, &members); err != nil {
 		return fmt.Sprintf("community %s: (entry could not be read: %v)", slug, err)
 	}
-	names := make([]string, 0, len(members))
-	for k := range members {
-		names = append(names, k)
-	}
-	sort.Strings(names)
-	return fmt.Sprintf("community %s: members %s", slug, list(names))
+	return fmt.Sprintf("community %s: members %s", slug, list(sortedKeys(members)))
 }
 
 // recordName pulls whatever a record calls itself: a work's title, a person's or
@@ -260,11 +258,18 @@ func recordName(raw json.RawMessage) string {
 
 // quoted renders a name as a quoted, length-capped string; an empty one as
 // "(none)" rather than as a pair of empty quotes.
+//
+// strconv.Quote, not a pair of hand-written quote marks, because a title is FREE
+// TEXT a contributor wrote: the schema caps nothing but its length, so it may
+// hold a quote mark or a newline. Quoting renders either visibly and inertly - a
+// title that really contains a line break shows as \n, which is itself worth
+// seeing - instead of letting a record close its own quotes or open a second
+// line. See oneLine in render.go for the structural half of that rule.
 func quoted(s string) string {
 	if s == "" {
 		return "(none)"
 	}
-	return `"` + clip(s, maxSummaryChars) + `"`
+	return strconv.Quote(clip(s, maxSummaryChars))
 }
 
 // value renders a bare scalar field, empty as "(none)".
@@ -286,28 +291,17 @@ func list(items []string) string {
 // unique returns the distinct values of items, sorted, so one recording's regions
 // and source types render the same however the record ordered them.
 func unique(items []string) []string {
-	seen := map[string]bool{}
-	out := make([]string, 0, len(items))
+	seen := make(map[string]struct{}, len(items))
 	for _, s := range items {
-		if s == "" || seen[s] {
-			continue
+		if s != "" {
+			seen[s] = struct{}{}
 		}
-		seen[s] = true
-		out = append(out, s)
 	}
-	sort.Strings(out)
-	return out
+	return slices.Sorted(maps.Keys(seen))
 }
 
 // sortedKeys returns a map's keys in sorted order.
-func sortedKeys[V any](m map[string]V) []string {
-	out := make([]string, 0, len(m))
-	for k := range m {
-		out = append(out, k)
-	}
-	sort.Strings(out)
-	return out
-}
+func sortedKeys[V any](m map[string]V) []string { return slices.Sorted(maps.Keys(m)) }
 
 // clip shortens s to at most n characters, marking that it did. It counts RUNES,
 // so a cut never lands inside a multi-byte character and produces the invalid

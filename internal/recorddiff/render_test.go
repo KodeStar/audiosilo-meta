@@ -127,6 +127,40 @@ func TestABudgetSmallerThanTheHeaderStillYieldsTheCounts(t *testing.T) {
 	}
 }
 
+// TestASmallTrancheIsPrintedWhole is the regression for the budget's ORDINARY
+// case, which every other test here walks past: allocate caps a section at its
+// own size, so a tranche that fits is handed a budget exactly equal to what
+// printing it costs. Demanding the omission line's reserve on top of that made
+// the render drop the tail of every small section - and, where the blocks are
+// short (a person line is a few dozen bytes), the whole of one - while printing
+// an omission line claiming the tranche was over budget. That is the one thing
+// this renderer may never do: say something was left out when nothing was.
+func TestASmallTrancheIsPrintedWhole(t *testing.T) {
+	baseDir, headDir := trees(t)
+	writePack(t, baseDir, "people/0.json", map[string]string{
+		"jane-doe": testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+	})
+	writePack(t, headDir, "people/0.json", map[string]string{
+		"jane-doe":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"nate-narrator": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"olly-other":    testpack.PersonJSON(t, "olly-other", "Olly Other"),
+		"pat-person":    testpack.PersonJSON(t, "pat-person", "Pat Person"),
+	})
+
+	d := diffTrees(t, baseDir, headDir)
+	got := d.Text(DefaultMaxBytes)
+
+	if strings.Contains(got, "omitted") {
+		t.Fatalf("a %d-byte render under a %d-byte budget claims entries were omitted:\n%s",
+			len(got), DefaultMaxBytes, got)
+	}
+	for _, slug := range []string{"nate-narrator", "olly-other", "pat-person"} {
+		if !strings.Contains(got, "+ person "+slug) {
+			t.Errorf("the render is missing the added person %q:\n%s", slug, got)
+		}
+	}
+}
+
 func TestRenderIsDeterministic(t *testing.T) {
 	baseDir, headDir := trees(t)
 	testpack.Seed(t, baseDir, map[string]string{

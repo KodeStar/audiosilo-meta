@@ -31,14 +31,17 @@
 package recorddiff
 
 import (
+	"bytes"
+	"cmp"
 	"encoding/json"
 	"fmt"
-	"sort"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // Entry is one added or removed record: where it lives and a one-line
@@ -121,8 +124,17 @@ type entryKey struct {
 	slug   string
 }
 
-// side is one version of one entry: its canonical bytes and the pack that held
-// them, which is what distinguishes "moved" from "untouched neighbour".
+// side is one version of one entry: the bytes the pack held it as, and the pack
+// that held them - which is what distinguishes "moved" from "untouched
+// neighbour".
+//
+// The bytes are the pack's OWN, not a canonical re-render. Every writer renders
+// a pack through pkg/canonical, so two sides of an entry nobody edited are
+// already byte-identical and the comparison is a memcmp; canonicalizing is
+// reserved for the pair that does differ, where it answers the question a
+// hand-edited pull request raises (a re-indentation is not a change). Over a
+// real intake tranche that is a few dozen re-renders instead of a hundred
+// thousand.
 type side struct {
 	path string
 	raw  json.RawMessage
@@ -141,16 +153,19 @@ type collected struct {
 // slower, because an entry identical on both sides is classified as unchanged
 // either way.
 func Compute(paths []string, base, head Source) (*Diff, error) {
-	rels := append([]string(nil), paths...)
-	sort.Strings(rels)
+	rels := slices.Clone(paths)
+	slices.Sort(rels)
 
 	d := &Diff{Files: len(rels), Counts: map[pack.Family]Counts{}}
 
-	b, err := collect(rels, base, "base", d)
+	// The stray-file warning is about a PATH, so it is the same on both sides:
+	// only the base pass raises it, and a stray file is named once rather than
+	// twice.
+	b, err := collect(rels, base, "base", d, warnStray)
 	if err != nil {
 		return nil, err
 	}
-	h, err := collect(rels, head, "head", d)
+	h, err := collect(rels, head, "head", d, quietStray)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +181,7 @@ func Compute(paths []string, base, head Source) (*Diff, error) {
 		case !inHead:
 			d.Removed = append(d.Removed, Entry{Family: k.family, Slug: k.slug, Summary: removedSummary(k.family, k.slug, bs.raw)})
 			c.Removed++
-		case !bytesEqual(bs.raw, hs.raw):
+		case d.differs(k, bs, hs):
 			d.Modified = append(d.Modified, Change{Family: k.family, Slug: k.slug, Fields: diffFields(bs.raw, hs.raw)})
 			c.Modified++
 		case bs.path != hs.path:
@@ -184,6 +199,30 @@ func Compute(paths []string, base, head Source) (*Diff, error) {
 	return d, nil
 }
 
+// differs reports whether the two versions of one entry are a real change to the
+// record, as opposed to the same record re-rendered.
+//
+// The cheap answer first: a pack is always written through pkg/canonical, so an
+// entry nobody edited is byte-identical on both sides and a memcmp settles it.
+// Only a pair that really differs is canonicalized, and only then to ask the
+// expensive question - whether the difference is nothing but layout, which is
+// what a hand-written pull request can produce. An entry that will not
+// canonicalize is REPORTED as changed (its bytes differ, which is a fact) with a
+// warning saying the comparison could not go the second mile.
+func (d *Diff) differs(k entryKey, base, head side) bool {
+	if bytes.Equal(base.raw, head.raw) {
+		return false
+	}
+	bc, berr := canonical.Format(base.raw)
+	hc, herr := canonical.Format(head.raw)
+	if berr != nil || herr != nil {
+		d.warn("entry %s/%s could not be canonicalized (%v); reported as changed on its bytes alone",
+			k.family.Root(), k.slug, cmp.Or(berr, herr))
+		return true
+	}
+	return !bytes.Equal(bc, hc)
+}
+
 // Empty reports whether the comparison found nothing to say about the records.
 // Moved-only churn and warnings do not make a diff non-empty: neither is a data
 // change.
@@ -196,7 +235,17 @@ func (d *Diff) Empty() bool {
 // than failing the run: a summary that names what it could not read is worth more
 // than no summary at all, and the mechanical `check` workflow is what refuses a
 // tree this cannot parse.
-func collect(rels []string, src Source, which string, d *Diff) (collected, error) {
+// strayPolicy says whether this pass raises the "sits under no pack family"
+// warning. It is a path-level observation, true of both sides at once, so
+// exactly one pass reports it.
+type strayPolicy bool
+
+const (
+	warnStray  strayPolicy = true
+	quietStray strayPolicy = false
+)
+
+func collect(rels []string, src Source, which string, d *Diff, stray strayPolicy) (collected, error) {
 	out := collected{entries: map[entryKey]side{}}
 	for _, rel := range rels {
 		if rel == pack.RedirectsFile {
@@ -207,7 +256,7 @@ func collect(rels []string, src Source, which string, d *Diff) (collected, error
 			if !found {
 				continue
 			}
-			red, err := parseRedirects(raw)
+			red, err := redirects.Parse(raw)
 			if err != nil {
 				d.warn("%s: %s: %v", which, rel, err)
 				continue
@@ -217,9 +266,7 @@ func collect(rels []string, src Source, which string, d *Diff) (collected, error
 		}
 		family, ok := familyOf(rel)
 		if !ok {
-			// Warned once, on the base pass, so a stray file is named rather than
-			// named twice.
-			if which == "base" {
+			if stray == warnStray {
 				d.warn("%s sits under no pack family and was not summarized", rel)
 			}
 			continue
@@ -238,11 +285,6 @@ func collect(rels []string, src Source, which string, d *Diff) (collected, error
 		}
 		for _, slug := range file.Slugs() {
 			entry, _ := file.Get(slug)
-			canon, err := canonical.Format(entry)
-			if err != nil {
-				d.warn("%s: %s: entry %q could not be canonicalized (%v)", which, rel, slug, err)
-				continue
-			}
 			k := entryKey{family: family, slug: slug}
 			if prev, dup := out.entries[k]; dup {
 				// Two packs on ONE side holding the same slug is a tree defect
@@ -251,7 +293,7 @@ func collect(rels []string, src Source, which string, d *Diff) (collected, error
 				d.warn("%s: entry %s/%s appears in both %s and %s; only the first is summarized", which, family.Root(), slug, prev.path, rel)
 				continue
 			}
-			out.entries[k] = side{path: rel, raw: canon}
+			out.entries[k] = side{path: rel, raw: entry}
 		}
 	}
 	return out, nil
@@ -278,26 +320,12 @@ func familyOf(rel string) (pack.Family, bool) {
 	return def.Family, true
 }
 
-// parseRedirects reads the tombstone table, refusing a duplicate key the same way
-// every other reader of the data tree does (pack.CheckNoDuplicateKeys): last-wins
-// would drop a redirect invisibly.
-func parseRedirects(raw []byte) (model.Redirects, error) {
-	if err := pack.CheckNoDuplicateKeys(raw); err != nil {
-		return nil, err
-	}
-	var red model.Redirects
-	if err := json.Unmarshal(raw, &red); err != nil {
-		return nil, err
-	}
-	return red, nil
-}
-
 // diffRedirects compares the two versions of the tombstone table row by row.
 func diffRedirects(base, head model.Redirects) RedirectDiff {
 	var out RedirectDiff
 	for _, kind := range model.RedirectKinds() {
 		b, h := base[kind], head[kind]
-		for _, old := range unionStringKeys(b, h) {
+		for _, old := range unionSortedKeys(b, h) {
 			bt, inBase := b[old]
 			ht, inHead := h[old]
 			switch {
@@ -314,43 +342,43 @@ func diffRedirects(base, head model.Redirects) RedirectDiff {
 	return out
 }
 
+// unionKeys returns every key either map holds, ONCE. The order is the map
+// iteration's, so every caller sorts it - which is also why there is one of
+// these rather than one per key type.
+func unionKeys[K comparable, V any](a, b map[K]V) []K {
+	out := make([]K, 0, len(a)+len(b))
+	for k := range a {
+		out = append(out, k)
+	}
+	// a is its own dedupe set, so the union needs no second map - which over a
+	// large tranche is a few hundred thousand entries not allocated twice.
+	for k := range b {
+		if _, dup := a[k]; !dup {
+			out = append(out, k)
+		}
+	}
+	return out
+}
+
 // unionEntryKeys returns every key either side holds, in the ONE order this
 // package prints things: family name, then slug.
 func unionEntryKeys(a, b map[entryKey]side) []entryKey {
-	seen := make(map[entryKey]bool, len(a)+len(b))
-	out := make([]entryKey, 0, len(a)+len(b))
-	for _, m := range []map[entryKey]side{a, b} {
-		for k := range m {
-			if !seen[k] {
-				seen[k] = true
-				out = append(out, k)
+	out := unionKeys(a, b)
+	slices.SortFunc(out, func(x, y entryKey) int {
+		if x.family != y.family {
+			if familyLess(x.family, y.family) {
+				return -1
 			}
+			return 1
 		}
-	}
-	sort.Slice(out, func(i, j int) bool {
-		if out[i].family != out[j].family {
-			return familyLess(out[i].family, out[j].family)
-		}
-		return out[i].slug < out[j].slug
+		return strings.Compare(x.slug, y.slug)
 	})
 	return out
 }
 
-// unionStringKeys returns every key of either map, sorted.
-func unionStringKeys(a, b map[string]string) []string {
-	seen := make(map[string]bool, len(a)+len(b))
-	out := make([]string, 0, len(a)+len(b))
-	for _, m := range []map[string]string{a, b} {
-		for k := range m {
-			if !seen[k] {
-				seen[k] = true
-				out = append(out, k)
-			}
-		}
-	}
-	sort.Strings(out)
+// unionSortedKeys returns every key of either map, sorted.
+func unionSortedKeys[V any](a, b map[string]V) []string {
+	out := unionKeys(a, b)
+	slices.Sort(out)
 	return out
 }
-
-// bytesEqual compares two canonical entries.
-func bytesEqual(a, b json.RawMessage) bool { return string(a) == string(b) }

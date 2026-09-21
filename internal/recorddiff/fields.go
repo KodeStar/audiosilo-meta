@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
-	"sort"
 	"strconv"
 	"strings"
 
@@ -80,7 +79,7 @@ func diffFields(base, head json.RawMessage) []string {
 // diffMap walks two objects key by key, in sorted order, appending one line per
 // difference. prefix is the dotted path of the object itself, empty at the top.
 func diffMap(prefix string, a, b map[string]any, out *[]string, depth int) {
-	for _, k := range unionAnyKeys(a, b) {
+	for _, k := range unionSortedKeys(a, b) {
 		path := k
 		if prefix != "" {
 			path = prefix + "." + k
@@ -89,13 +88,34 @@ func diffMap(prefix string, a, b map[string]any, out *[]string, depth int) {
 		bv, inB := b[k]
 		switch {
 		case !inB:
-			*out = append(*out, path+": "+renderValue(av)+" -> (absent)")
+			*out = append(*out, path+": "+renderMember(k, av)+" -> (absent)")
 		case !inA:
-			*out = append(*out, path+": (absent) -> "+renderValue(bv))
+			*out = append(*out, path+": (absent) -> "+renderMember(k, bv))
 		default:
 			diffValue(k, path, av, bv, out, depth)
 		}
 	}
+}
+
+// renderMember renders a member that is present on ONE side only. It is
+// name-aware for the same two members diffValue special-cases, because appearing
+// and disappearing are the common case for both and the generic rendering is
+// what the special case exists to avoid: a chapter backfill ADDS the chapters
+// array, so collapsing it to a count only when both sides carry one would let
+// the very change the rule was written for print 120 characters of clipped
+// chapter objects.
+func renderMember(name string, v any) string {
+	switch name {
+	case chaptersKey:
+		if arr, ok := v.([]any); ok {
+			return fmt.Sprintf("%d chapters", len(arr))
+		}
+	case recordingsKey:
+		if m, ok := v.(map[string]any); ok {
+			return fmt.Sprintf("%d recording(s): %s", len(m), list(sortedKeys(m)))
+		}
+	}
+	return renderValue(v)
 }
 
 // diffValue renders the difference between one field's two values. name is the
@@ -129,7 +149,7 @@ func diffValue(name, path string, a, b any, out *[]string, depth int) {
 // diffRecordings walks a work's recordings map one level down: a narration added
 // or removed is announced as such, and one that changed is walked field by field.
 func diffRecordings(path string, a, b map[string]any, out *[]string, depth int) {
-	for _, slug := range unionAnyKeys(a, b) {
+	for _, slug := range unionSortedKeys(a, b) {
 		av, inA := a[slug]
 		bv, inB := b[slug]
 		p := path + "." + slug
@@ -267,20 +287,4 @@ func plainString(v any) string {
 		return fmt.Sprintf("%v", v)
 	}
 	return string(raw)
-}
-
-// unionAnyKeys returns every key of either object, sorted.
-func unionAnyKeys(a, b map[string]any) []string {
-	seen := make(map[string]bool, len(a)+len(b))
-	out := make([]string, 0, len(a)+len(b))
-	for _, m := range []map[string]any{a, b} {
-		for k := range m {
-			if !seen[k] {
-				seen[k] = true
-				out = append(out, k)
-			}
-		}
-	}
-	sort.Strings(out)
-	return out
 }

@@ -151,34 +151,56 @@ jobs:
           # tranche at once, so storage churn cancels out and what is left is one
           # line per added or removed record plus a field-level diff per modified
           # one - the WHOLE tranche, inside the budget.
-          go build -o ./bin/metadiff ./cmd/metadiff
-          if ./bin/metadiff --base "$BASE_SHA" --head "$HEAD_SHA" > context.txt 2> metadiff.err; then
-            :
+          #
+          # The BUILD is inside the `if`, deliberately. Under `set -e` an
+          # unguarded `go build` would abort this step before the fallback below
+          # is reachable - and a toolchain or compile failure is exactly "the
+          # summary could not be built", the case the fallback exists for. `go
+          # run` is one invocation that both compiles and runs, so the two
+          # failures arrive through the same door.
+          if go run ./cmd/metadiff --base "$BASE_SHA" --head "$HEAD_SHA" > context.txt 2> metadiff.err; then
+            CONTEXT_FORMAT=summary
           else
             # A summary that could not be built must not silently become a
             # verification of nothing: fall back to the raw diff and SAY SO at the
-            # top of the context, so the model is told what it is actually
-            # reading and the finding (if any) is judged on the right basis.
+            # top of the context AND in CONTEXT_FORMAT, so the model is told what
+            # it is actually reading - the script's system prompt explains the two
+            # shapes differently - and the finding (if any) is judged on the right
+            # basis.
             echo "::warning::metadiff failed; falling back to the raw diff context"
+            CONTEXT_FORMAT=raw-diff
+            git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/**' > raw.diff
             {
               echo "NOTE: the entry-level summary could not be built for this pull request"
               echo "($(head -c 500 metadiff.err | tr '\n' ' ')). What follows is the RAW"
               echo "unified diff of data/**, truncated to the reviewer's input cap, so it"
               echo "may show only part of the change. Judge only what you can see."
               echo
-              git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/**'
-            } > context.txt || true
+              cat raw.diff
+            } > context.txt
+            # Both readings of the change have now failed, so there is no context
+            # to verify - and a context.txt holding only the note above would be
+            # NON-EMPTY, sail past the script's own empty-file skip and buy a
+            # verdict on nothing. A red step is the honest answer: "red means no
+            # verdict was reached" is this workflow's stated contract.
+            if [ ! -s raw.diff ]; then
+              echo "::error::metadiff failed AND the raw diff of data/** is empty, although git reported changes; no context could be built for PR $PR"
+              exit 1
+            fi
           fi
+          echo "context_format=$CONTEXT_FORMAT" >> "$GITHUB_OUTPUT"
 
           # The slug tombstone table is the one non-pack file in the tree and it
           # is small, so its raw diff is appended verbatim: a retired slug is a
           # judgement call the summary's added/removed pairs should be checked
-          # against.
+          # against. (git diff exits 0 whether or not there are differences, so
+          # a non-zero status here is a real git failure and should fail the step
+          # rather than being swallowed.)
           {
             echo
             echo "===== RAW DIFF OF data/redirects.json ====="
             git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json'
-          } >> context.txt || true
+          } >> context.txt
 
       # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
       # subscription token authenticates through the CLI, not the raw API). When
@@ -204,6 +226,11 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Which shape the gather step actually managed to build. The script
+          # picks the matching system prompt from it: explaining an entry-level
+          # summary in front of a unified diff would tell the model it is reading
+          # the whole change when it is reading a truncated part of one.
+          CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
       # Runs even when the verification step FAILED (a skip), so the skip keeps

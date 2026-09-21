@@ -147,7 +147,11 @@ Two automations sit in front of the human review step. Neither bypasses it.
   tombstone rows, with `data/redirects.json`'s raw diff appended. The reviewer
   therefore sees the WHOLE change rather than whatever fitted in its input
   budget, and when a change is larger than even that summary allows, the summary
-  says in line how many entries it left out. It
+  says in line how many entries it left out. If the summary cannot be built at
+  all, the workflow falls back to the raw diff and switches the reviewer's
+  instructions to match it, so the reviewer is never told it is reading the whole
+  change when it is not; if neither can be built, the check goes red rather than
+  reporting a verdict on nothing. It
   posts a PASS/FLAG comment and applies an `ai-verified` or `ai-flagged` label.
   The VERDICT is **advisory only**: a `flag` is a prompt for a maintainer to
   look closer, not a veto, and the check is not branch protected, so neither

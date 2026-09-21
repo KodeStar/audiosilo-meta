@@ -63,12 +63,22 @@ func main() {
 // run opens both revisions and computes the diff, closing the two git readers
 // whatever happens.
 func run(repoDir, dataDir, base, head string) (diff *recorddiff.Diff, err error) {
-	paths, err := recorddiff.GitChangedPaths(repoDir, dataDir, base, head)
+	// The changed-path listing is the three-dot comparison (the merge base
+	// against head), so the base side's CONTENT is read at the merge base too.
+	// Reading it at the given revision instead - a pull request's base sha is the
+	// base BRANCH's tip, which moves while the branch sits open - would report
+	// every record main gained in the meantime as removed by this change.
+	mergeBase, err := recorddiff.MergeBase(repoDir, base, head)
 	if err != nil {
 		return nil, err
 	}
 
-	baseSrc, err := recorddiff.OpenGitSource(repoDir, dataDir, base)
+	paths, err := recorddiff.GitChangedPaths(repoDir, dataDir, mergeBase, head)
+	if err != nil {
+		return nil, err
+	}
+
+	baseSrc, err := recorddiff.OpenGitSource(repoDir, dataDir, mergeBase)
 	if err != nil {
 		return nil, err
 	}
