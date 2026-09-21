@@ -6075,52 +6075,6 @@
     "hell-town": {
       "added_at": "2026-09-21",
       "authors": [
-        "william-johnstone"
-      ],
-      "id": "hell-town",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2008": {
-          "abridged": false,
-          "added_at": "2026-09-21",
-          "asin": [
-            {
-              "asin": "B002V8HJWQ",
-              "region": "us"
-            }
-          ],
-          "id": "george-guidall-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2008",
-          "runtime_min": 461,
-          "sources": [
-            {
-              "imported_at": "2026-09-21",
-              "ref": "B002V8HJWQ",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "hell-town"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-21",
-          "ref": "B002V8HJWQ",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Hell Town"
-    },
-    "hell-town-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
         "william-w-johnstone",
         "j-a-johnstone"
       ],
@@ -6129,7 +6083,7 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "hell-town-dramatized-adaptation",
+      "id": "hell-town",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6196,10 +6150,42 @@
               "type": "libex-import"
             }
           ],
-          "work": "hell-town-dramatized-adaptation"
+          "work": "hell-town"
+        },
+        "george-guidall-2008": {
+          "abridged": false,
+          "added_at": "2026-09-21",
+          "asin": [
+            {
+              "asin": "B002V8HJWQ",
+              "region": "us"
+            }
+          ],
+          "id": "george-guidall-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2008",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B002V8HJWQ",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "hell-town"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-09-21",
+          "ref": "B002V8HJWQ",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648795064",
@@ -6211,7 +6197,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Hell Town [Dramatized Adaptation]"
+      "title": "Hell Town"
     },
     "hell-train": {
       "added_at": "2026-08-01",
