@@ -4076,6 +4076,10 @@
             {
               "asin": "B002V8L684",
               "region": "us"
+            },
+            {
+              "asin": "B0032N8RNE",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -4102,14 +4106,19 @@
           "narrators": [
             "mitch-albom"
           ],
-          "publisher": "Balance",
-          "release_date": "2008-12-19",
+          "publisher": "Little, Brown Audio",
+          "release_date": "2006",
           "runtime_min": 216,
           "sources": [
             {
               "imported_at": "2026-08-08",
               "ref": "B002V8L684",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B0032N8RNE",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "for-one-more-day"
@@ -12256,6 +12265,52 @@
         }
       ],
       "title": "For the Killing of Kings"
+    },
+    "for-the-king": {
+      "added_at": "2026-09-21",
+      "authors": [
+        "catherine-delors"
+      ],
+      "id": "for-the-king",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steven-crossley-2010": {
+          "abridged": false,
+          "added_at": "2026-09-21",
+          "asin": [
+            {
+              "asin": "B003UD9HNU",
+              "region": "us"
+            }
+          ],
+          "id": "steven-crossley-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steven-crossley"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2010",
+          "runtime_min": 681,
+          "sources": [
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B003UD9HNU",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "for-the-king"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-21",
+          "ref": "B003UD9HNU",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "For the King"
     },
     "for-the-life-of-the-world": {
       "added_at": "2026-07-29",
