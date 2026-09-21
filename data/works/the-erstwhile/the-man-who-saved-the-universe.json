@@ -240,6 +240,12 @@
       "authors": [
         "chanelle-benz"
       ],
+      "genres": [
+        "gothic",
+        "horror",
+        "literary-fiction",
+        "short-stories"
+      ],
       "id": "the-man-who-shot-out-my-eye-is-dead",
       "language": "en",
       "license": "CC0-1.0",
@@ -253,6 +259,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2292599,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2537895,
+              "start_ms": 2292599,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2361330,
+              "start_ms": 4830494,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2706239,
+              "start_ms": 7191824,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3242945,
+              "start_ms": 9898063,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2392584,
+              "start_ms": 13141008,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2263806,
+              "start_ms": 15533592,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2768469,
+              "start_ms": 17797398,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2510820,
+              "start_ms": 20565867,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2213373,
+              "start_ms": 23076687,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 97384,
+              "start_ms": 25290060,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81X8muKAY+L.jpg",
           "id": "johanna-parker-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -272,6 +336,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01LX1A7G7",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01LX1A7G7",
+              "type": "libex-import"
             }
           ],
           "work": "the-man-who-shot-out-my-eye-is-dead"
@@ -282,6 +350,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01LX1A7G7",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01LX1A7G7",
+          "type": "libex-import"
         }
       ],
       "title": "The Man Who Shot Out My Eye Is Dead"

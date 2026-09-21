@@ -13644,6 +13644,9 @@
       "authors": [
         "chris-knopf"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "cries-of-the-lost",
       "language": "en",
       "license": "CC0-1.0",
@@ -13657,6 +13660,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1420944,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1423940,
+              "start_ms": 1420944,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1763137,
+              "start_ms": 2844884,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1833122,
+              "start_ms": 4608021,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1579374,
+              "start_ms": 6441143,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1116090,
+              "start_ms": 8020517,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1473399,
+              "start_ms": 9136607,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1088644,
+              "start_ms": 10610006,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1326370,
+              "start_ms": 11698650,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1400349,
+              "start_ms": 13025020,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1509482,
+              "start_ms": 14425369,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1164527,
+              "start_ms": 15934851,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1115440,
+              "start_ms": 17099378,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1522068,
+              "start_ms": 18214818,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 867358,
+              "start_ms": 19736886,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1069603,
+              "start_ms": 20604244,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 953179,
+              "start_ms": 21673847,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1405782,
+              "start_ms": 22627026,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1233351,
+              "start_ms": 24032808,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1199217,
+              "start_ms": 25266159,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1026275,
+              "start_ms": 26465376,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1278258,
+              "start_ms": 27491651,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1155053,
+              "start_ms": 28769909,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 345303,
+              "start_ms": 29924962,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91e1pUcpwWL.jpg",
           "id": "donald-corren-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -13671,6 +13797,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00FM799O4",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00FM799O4",
+              "type": "libex-import"
             }
           ],
           "work": "cries-of-the-lost"
@@ -13681,6 +13811,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00FM799O4",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00FM799O4",
+          "type": "libex-import"
         }
       ],
       "title": "Cries of the Lost"

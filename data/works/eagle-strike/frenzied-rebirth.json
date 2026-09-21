@@ -18733,6 +18733,9 @@
       "authors": [
         "charlotte-bingham"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "fridays-girl",
       "language": "en",
       "license": "CC0-1.0",
@@ -18746,6 +18749,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3610611,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3913259,
+              "start_ms": 3610611,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3404510,
+              "start_ms": 7523870,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3742499,
+              "start_ms": 10928380,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4180753,
+              "start_ms": 14670879,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4017099,
+              "start_ms": 18851632,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3094570,
+              "start_ms": 22868731,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3255391,
+              "start_ms": 25963301,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3038424,
+              "start_ms": 29218692,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4703713,
+              "start_ms": 32257116,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2514442,
+              "start_ms": 36960829,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1809578,
+              "start_ms": 39475271,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3159957,
+              "start_ms": 41284849,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81efFsfkApL.jpg",
           "id": "kim-hicks-2006",
           "language": "en",
           "license": "CC0-1.0",
@@ -18760,6 +18831,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V1CJQY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V1CJQY",
+              "type": "libex-import"
             }
           ],
           "work": "fridays-girl"
@@ -18770,6 +18845,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V1CJQY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V1CJQY",
+          "type": "libex-import"
         }
       ],
       "title": "Friday's Girl"

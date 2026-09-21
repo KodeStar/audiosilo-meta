@@ -9578,6 +9578,9 @@
       "authors": [
         "various"
       ],
+      "genres": [
+        "classics"
+      ],
       "id": "classic-crimes-of-passion",
       "language": "en",
       "license": "CC0-1.0",
@@ -9591,6 +9594,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 574066,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1541410,
+              "start_ms": 574066,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2373706,
+              "start_ms": 2115476,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3221025,
+              "start_ms": 4489182,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2876905,
+              "start_ms": 7710207,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71JMMmVZdEL.jpg",
           "id": "derek-jacobi-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -9605,6 +9636,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0036GRL02",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0036GRL02",
+              "type": "libex-import"
             }
           ],
           "work": "classic-crimes-of-passion"
@@ -9615,6 +9650,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0036GRL02",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0036GRL02",
+          "type": "libex-import"
         }
       ],
       "title": "Classic Crimes of Passion"

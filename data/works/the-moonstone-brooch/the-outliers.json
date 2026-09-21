@@ -5382,6 +5382,9 @@
       "authors": [
         "ann-h-gabhart"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-outsider-ann-h-gabhart",
       "language": "en",
       "license": "CC0-1.0",
@@ -5395,6 +5398,159 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1659437,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1293723,
+              "start_ms": 1659437,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1282856,
+              "start_ms": 2953160,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1305101,
+              "start_ms": 4236016,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1563585,
+              "start_ms": 5541117,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1330828,
+              "start_ms": 7104702,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1430535,
+              "start_ms": 8435530,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1449064,
+              "start_ms": 9866065,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1407129,
+              "start_ms": 11315129,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1335983,
+              "start_ms": 12722258,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1488631,
+              "start_ms": 14058241,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1462904,
+              "start_ms": 15546872,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1317965,
+              "start_ms": 17009776,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 740624,
+              "start_ms": 18327741,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1019077,
+              "start_ms": 19068365,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 696320,
+              "start_ms": 20087442,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1441170,
+              "start_ms": 20783762,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1694453,
+              "start_ms": 22224932,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1187561,
+              "start_ms": 23919385,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1482966,
+              "start_ms": 25106946,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 740531,
+              "start_ms": 26589912,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 815856,
+              "start_ms": 27330443,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 700175,
+              "start_ms": 28146299,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 859881,
+              "start_ms": 28846474,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 854030,
+              "start_ms": 29706355,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1302547,
+              "start_ms": 30560385,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1488724,
+              "start_ms": 31862932,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1390968,
+              "start_ms": 33351656,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 853055,
+              "start_ms": 34742624,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1134527,
+              "start_ms": 35595679,
+              "title": "Chapter 30"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71f0YZ8629L.jpg",
           "id": "renee-ertl-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -5409,6 +5565,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8KO8M",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8KO8M",
+              "type": "libex-import"
             }
           ],
           "work": "the-outsider-ann-h-gabhart"
@@ -5419,6 +5579,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8KO8M",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8KO8M",
+          "type": "libex-import"
         }
       ],
       "title": "The Outsider"

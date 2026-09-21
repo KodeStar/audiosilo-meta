@@ -16225,6 +16225,9 @@
       "authors": [
         "anita-brookner"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "a-family-romance",
       "language": "en",
       "license": "CC0-1.0",
@@ -16238,6 +16241,54 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3057325,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3062851,
+              "start_ms": 3057325,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3724899,
+              "start_ms": 6120176,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3790658,
+              "start_ms": 9845075,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3665456,
+              "start_ms": 13635733,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3760193,
+              "start_ms": 17301189,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3772825,
+              "start_ms": 21061382,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3512390,
+              "start_ms": 24834207,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1310766,
+              "start_ms": 28346597,
+              "title": "Chapter 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uLg+gx8ML.jpg",
           "id": "fiona-shaw-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -16252,6 +16303,10 @@
               "imported_at": "2026-09-21",
               "ref": "B006UKDSMG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B006UKDSMG",
+              "type": "libex-import"
             }
           ],
           "work": "a-family-romance"
@@ -16262,6 +16317,10 @@
           "imported_at": "2026-09-21",
           "ref": "B006UKDSMG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B006UKDSMG",
+          "type": "libex-import"
         }
       ],
       "title": "A Family Romance"

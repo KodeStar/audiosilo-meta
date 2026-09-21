@@ -1380,6 +1380,11 @@
       "authors": [
         "claire-messud"
       ],
+      "genres": [
+        "literary-fiction",
+        "psychological-thriller",
+        "womens-fiction"
+      ],
       "id": "the-woman-upstairs-claire-messud",
       "language": "en",
       "license": "CC0-1.0",
@@ -1393,6 +1398,169 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 60790,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 702589,
+              "start_ms": 60790,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1346339,
+              "start_ms": 763379,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1201261,
+              "start_ms": 2109718,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 865919,
+              "start_ms": 3310979,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 615236,
+              "start_ms": 4176898,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 689726,
+              "start_ms": 4792134,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2321949,
+              "start_ms": 5481860,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 349089,
+              "start_ms": 7803809,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1010022,
+              "start_ms": 8152898,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 917560,
+              "start_ms": 9162920,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1031755,
+              "start_ms": 10080480,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1362361,
+              "start_ms": 11112235,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3457869,
+              "start_ms": 12474596,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1008814,
+              "start_ms": 15932465,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1464250,
+              "start_ms": 16941279,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 837915,
+              "start_ms": 18405529,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1562657,
+              "start_ms": 19243444,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 915888,
+              "start_ms": 20806101,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1235580,
+              "start_ms": 21721989,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1827271,
+              "start_ms": 22957569,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 2026684,
+              "start_ms": 24784840,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1203955,
+              "start_ms": 26811524,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1521697,
+              "start_ms": 28015479,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1127375,
+              "start_ms": 29537176,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1909748,
+              "start_ms": 30664551,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1203630,
+              "start_ms": 32574299,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 528208,
+              "start_ms": 33777929,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 659075,
+              "start_ms": 34306137,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1700072,
+              "start_ms": 34965212,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1568554,
+              "start_ms": 36665284,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1249001,
+              "start_ms": 38233838,
+              "title": "Chapter 32"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817YBUHnIdL.jpg",
           "id": "cassandra-campbell-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -1407,6 +1575,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00B3YC6RC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00B3YC6RC",
+              "type": "libex-import"
             }
           ],
           "work": "the-woman-upstairs-claire-messud"
@@ -1417,6 +1589,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00B3YC6RC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00B3YC6RC",
+          "type": "libex-import"
         }
       ],
       "title": "The Woman Upstairs"

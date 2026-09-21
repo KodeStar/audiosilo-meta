@@ -549,6 +549,10 @@
       "authors": [
         "robert-a-heinlein"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction"
+      ],
       "id": "waldo-magic-inc",
       "language": "en",
       "license": "CC0-1.0",
@@ -562,6 +566,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 456922,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1381030,
+              "start_ms": 456922,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1385024,
+              "start_ms": 1837952,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1384049,
+              "start_ms": 3222976,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1390039,
+              "start_ms": 4607025,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1383027,
+              "start_ms": 5997064,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1380055,
+              "start_ms": 7380091,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1383027,
+              "start_ms": 8760146,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1386046,
+              "start_ms": 10143173,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1373042,
+              "start_ms": 11529219,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1379033,
+              "start_ms": 12902261,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1346061,
+              "start_ms": 14281294,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1282020,
+              "start_ms": 15627355,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1203026,
+              "start_ms": 16909375,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1210038,
+              "start_ms": 18112401,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1201029,
+              "start_ms": 19322439,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1203026,
+              "start_ms": 20523468,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1206044,
+              "start_ms": 21726494,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1200054,
+              "start_ms": 22932538,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1206044,
+              "start_ms": 24132592,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1194017,
+              "start_ms": 25338636,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1210038,
+              "start_ms": 26532653,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1298042,
+              "start_ms": 27742691,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1018009,
+              "start_ms": 29040733,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eDfgjA5FL.jpg",
           "id": "macleod-andrews-2014",
           "language": "en",
           "license": "CC0-1.0",
@@ -576,6 +703,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00J7WB9F2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00J7WB9F2",
+              "type": "libex-import"
             }
           ],
           "work": "waldo-magic-inc"
@@ -586,6 +717,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00J7WB9F2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00J7WB9F2",
+          "type": "libex-import"
         }
       ],
       "title": "Waldo & Magic, Inc."

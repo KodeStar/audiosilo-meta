@@ -4373,6 +4373,11 @@
       "authors": [
         "august-aird"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "the-war-game-not-enough-space",
       "language": "en",
       "license": "CC0-1.0",
@@ -4386,6 +4391,189 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 23242,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1151663,
+              "start_ms": 23242,
+              "title": "The Story So Far"
+            },
+            {
+              "length_ms": 479584,
+              "start_ms": 1174905,
+              "title": "Starting Character Sheet"
+            },
+            {
+              "length_ms": 820987,
+              "start_ms": 1654489,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1287523,
+              "start_ms": 2475476,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1430093,
+              "start_ms": 3762999,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1161113,
+              "start_ms": 5193092,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 768185,
+              "start_ms": 6354205,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1469289,
+              "start_ms": 7122390,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 721931,
+              "start_ms": 8591679,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1646155,
+              "start_ms": 9313610,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1095703,
+              "start_ms": 10959765,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 902048,
+              "start_ms": 12055468,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 969711,
+              "start_ms": 12957516,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1360805,
+              "start_ms": 13927227,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1617293,
+              "start_ms": 15288032,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 525258,
+              "start_ms": 16905325,
+              "title": "Character Sheet Update"
+            },
+            {
+              "length_ms": 613053,
+              "start_ms": 17430583,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1646782,
+              "start_ms": 18043636,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1130208,
+              "start_ms": 19690418,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 759106,
+              "start_ms": 20820626,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1139356,
+              "start_ms": 21579732,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1047823,
+              "start_ms": 22719088,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2235640,
+              "start_ms": 23766911,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1023976,
+              "start_ms": 26002551,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1326370,
+              "start_ms": 27026527,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1030385,
+              "start_ms": 28352897,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1116926,
+              "start_ms": 29383282,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1209480,
+              "start_ms": 30500208,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1365286,
+              "start_ms": 31709688,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1238180,
+              "start_ms": 33074974,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 628146,
+              "start_ms": 34313154,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 503780,
+              "start_ms": 34941300,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 503989,
+              "start_ms": 35445080,
+              "title": "Final Character Sheet"
+            },
+            {
+              "length_ms": 93924,
+              "start_ms": 35949069,
+              "title": "Afterword"
+            },
+            {
+              "length_ms": 64875,
+              "start_ms": 36042993,
+              "title": "Closing Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uBlD-a5wL.jpg",
           "id": "rhys-david-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -4401,6 +4589,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0H8FJJVHR",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0H8FJJVHR",
+              "type": "libex-import"
             }
           ],
           "work": "the-war-game-not-enough-space"
@@ -4411,6 +4603,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0H8FJJVHR",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0H8FJJVHR",
+          "type": "libex-import"
         }
       ],
       "title": "The War Game: Not Enough Space"

@@ -7901,6 +7901,10 @@
       "authors": [
         "anne-tyler"
       ],
+      "genres": [
+        "literary-fiction",
+        "womens-fiction"
+      ],
       "id": "noahs-compass",
       "language": "en",
       "license": "CC0-1.0",
@@ -7914,6 +7918,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1234280,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3443473,
+              "start_ms": 1234280,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3140127,
+              "start_ms": 4677753,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3447513,
+              "start_ms": 7817880,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2646471,
+              "start_ms": 11265393,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1882953,
+              "start_ms": 13911864,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2065926,
+              "start_ms": 15794817,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2868965,
+              "start_ms": 17860743,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2163171,
+              "start_ms": 20729708,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1532424,
+              "start_ms": 22892879,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2978609,
+              "start_ms": 24425303,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3752716,
+              "start_ms": 27403912,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1178738,
+              "start_ms": 31156628,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9198OdAA9kL.jpg",
           "id": "arthur-morey-2010",
           "language": "en",
           "license": "CC0-1.0",
@@ -7928,6 +8000,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002ZF14BW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002ZF14BW",
+              "type": "libex-import"
             }
           ],
           "work": "noahs-compass"
@@ -7938,6 +8014,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002ZF14BW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002ZF14BW",
+          "type": "libex-import"
         }
       ],
       "title": "Noah's Compass"

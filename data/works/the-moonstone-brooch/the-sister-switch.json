@@ -2414,6 +2414,10 @@
       "authors": [
         "beverly-jensen"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "the-sisters-from-hardscrabble-bay",
       "language": "en",
       "license": "CC0-1.0",
@@ -2427,6 +2431,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3732886,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3534634,
+              "start_ms": 3732886,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4289283,
+              "start_ms": 7267520,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2650233,
+              "start_ms": 11556803,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 844324,
+              "start_ms": 14207036,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1279280,
+              "start_ms": 15051360,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 114799,
+              "start_ms": 16330640,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2056406,
+              "start_ms": 16445439,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3435299,
+              "start_ms": 18501845,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3816664,
+              "start_ms": 21937144,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1092406,
+              "start_ms": 25753808,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1002080,
+              "start_ms": 26846214,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2139858,
+              "start_ms": 27848294,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3353333,
+              "start_ms": 29988152,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2409581,
+              "start_ms": 33341485,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4044220,
+              "start_ms": 35751066,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2205060,
+              "start_ms": 39795286,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/514-TShIllL.jpg",
           "id": "bernadette-dunne-2010",
           "language": "en",
           "license": "CC0-1.0",
@@ -2441,6 +2533,10 @@
               "imported_at": "2026-09-21",
               "ref": "B003U7VR16",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B003U7VR16",
+              "type": "libex-import"
             }
           ],
           "work": "the-sisters-from-hardscrabble-bay"
@@ -2451,6 +2547,10 @@
           "imported_at": "2026-09-21",
           "ref": "B003U7VR16",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B003U7VR16",
+          "type": "libex-import"
         }
       ],
       "title": "The Sisters from Hardscrabble Bay"

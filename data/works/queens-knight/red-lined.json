@@ -9998,6 +9998,9 @@
       "authors": [
         "alai"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "red-poppies",
       "language": "en",
       "license": "CC0-1.0",
@@ -10011,6 +10014,49 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4451287,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4061727,
+              "start_ms": 4451287,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4474996,
+              "start_ms": 8513014,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4089173,
+              "start_ms": 12988010,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4301496,
+              "start_ms": 17077183,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4176480,
+              "start_ms": 21378679,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4259514,
+              "start_ms": 25555159,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4470188,
+              "start_ms": 29814673,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61dAF9vK0RL.jpg",
           "id": "ping-wu-2002",
           "language": "en",
           "license": "CC0-1.0",
@@ -10025,6 +10071,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZMQSW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZMQSW",
+              "type": "libex-import"
             }
           ],
           "work": "red-poppies"
@@ -10035,6 +10085,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZMQSW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZMQSW",
+          "type": "libex-import"
         }
       ],
       "title": "Red Poppies"

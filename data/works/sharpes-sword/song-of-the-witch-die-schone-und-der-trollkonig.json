@@ -12306,6 +12306,11 @@
       "authors": [
         "ann-packer"
       ],
+      "genres": [
+        "literary-fiction",
+        "psychological-thriller",
+        "womens-fiction"
+      ],
       "id": "songs-without-words",
       "language": "en",
       "license": "CC0-1.0",
@@ -12319,6 +12324,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4644734,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4597551,
+              "start_ms": 4644734,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4414810,
+              "start_ms": 9242285,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4403061,
+              "start_ms": 13657095,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4537272,
+              "start_ms": 18060156,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4544192,
+              "start_ms": 22597428,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4626622,
+              "start_ms": 27141620,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4641622,
+              "start_ms": 31768242,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4494965,
+              "start_ms": 36409864,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4646963,
+              "start_ms": 40904829,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4670462,
+              "start_ms": 45551792,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71BhU5bBB8L.jpg",
           "id": "cassandra-campbell-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -12333,6 +12396,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V57T06",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V57T06",
+              "type": "libex-import"
             }
           ],
           "work": "songs-without-words"
@@ -12343,6 +12410,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V57T06",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V57T06",
+          "type": "libex-import"
         }
       ],
       "title": "Songs Without Words"

@@ -6401,6 +6401,11 @@
       "authors": [
         "christopher-castellani"
       ],
+      "genres": [
+        "historical-fiction",
+        "lgbtq",
+        "literary-fiction"
+      ],
       "id": "leading-men",
       "language": "en",
       "license": "CC0-1.0",
@@ -6414,6 +6419,104 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 66594,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3048965,
+              "start_ms": 66594,
+              "title": "1. The Little Horse"
+            },
+            {
+              "length_ms": 1362732,
+              "start_ms": 3115559,
+              "title": "2. The Muse in Winter"
+            },
+            {
+              "length_ms": 1928510,
+              "start_ms": 4478291,
+              "title": "3. White"
+            },
+            {
+              "length_ms": 2188248,
+              "start_ms": 6406801,
+              "title": "4. Falling"
+            },
+            {
+              "length_ms": 2950838,
+              "start_ms": 8595049,
+              "title": "5. The Head of the Wolf"
+            },
+            {
+              "length_ms": 1577935,
+              "start_ms": 11545887,
+              "title": "6. The Skeleton of a Sparrow"
+            },
+            {
+              "length_ms": 5089349,
+              "start_ms": 13123822,
+              "title": "7. Men of Feeling"
+            },
+            {
+              "length_ms": 2687106,
+              "start_ms": 18213171,
+              "title": "8. The Survival Hypothesis"
+            },
+            {
+              "length_ms": 3405345,
+              "start_ms": 20900277,
+              "title": "9. An Education"
+            },
+            {
+              "length_ms": 2825729,
+              "start_ms": 24305622,
+              "title": "10. Direction"
+            },
+            {
+              "length_ms": 5180139,
+              "start_ms": 27131351,
+              "title": "11. Arrangements"
+            },
+            {
+              "length_ms": 1805397,
+              "start_ms": 32311490,
+              "title": "12. Him"
+            },
+            {
+              "length_ms": 1813571,
+              "start_ms": 34116887,
+              "title": "13. Gabriele Rossini"
+            },
+            {
+              "length_ms": 301023,
+              "start_ms": 35930458,
+              "title": "14. Sudden Movement"
+            },
+            {
+              "length_ms": 1478321,
+              "start_ms": 36231481,
+              "title": "15. High Water"
+            },
+            {
+              "length_ms": 2228604,
+              "start_ms": 37709802,
+              "title": "16. Call It Joy"
+            },
+            {
+              "length_ms": 1460070,
+              "start_ms": 39938406,
+              "title": "17. Indian Summer"
+            },
+            {
+              "length_ms": 592062,
+              "start_ms": 41398476,
+              "title": "A Note to the Reader"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tjaPtG4bL.jpg",
           "id": "edoardo-ballerini-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -6428,6 +6531,10 @@
               "imported_at": "2026-09-21",
               "ref": "B07M9LNKB1",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B07M9LNKB1",
+              "type": "libex-import"
             }
           ],
           "work": "leading-men"
@@ -6438,6 +6545,10 @@
           "imported_at": "2026-09-21",
           "ref": "B07M9LNKB1",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B07M9LNKB1",
+          "type": "libex-import"
         }
       ],
       "title": "Leading Men"

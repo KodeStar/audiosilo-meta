@@ -11339,6 +11339,9 @@
       "authors": [
         "zane-grey"
       ],
+      "genres": [
+        "westerns"
+      ],
       "id": "the-last-of-the-plainsmen",
       "language": "en",
       "license": "CC0-1.0",
@@ -11352,6 +11355,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2373869,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2076096,
+              "start_ms": 2373869,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1812364,
+              "start_ms": 4449965,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2082412,
+              "start_ms": 6262329,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 854123,
+              "start_ms": 8344741,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1166988,
+              "start_ms": 9198864,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1482362,
+              "start_ms": 10365852,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 958288,
+              "start_ms": 11848214,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1359900,
+              "start_ms": 12806502,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2019672,
+              "start_ms": 14166402,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1848448,
+              "start_ms": 16186074,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1774748,
+              "start_ms": 18034522,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1684933,
+              "start_ms": 19809270,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1747023,
+              "start_ms": 21494203,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 923365,
+              "start_ms": 23241226,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2376562,
+              "start_ms": 24164591,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 432773,
+              "start_ms": 26541153,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41xt4TOaqVL.jpg",
           "id": "adams-morgan-2004",
           "language": "en",
           "license": "CC0-1.0",
@@ -11366,6 +11457,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZL534",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZL534",
+              "type": "libex-import"
             }
           ],
           "work": "the-last-of-the-plainsmen"
@@ -11376,6 +11471,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZL534",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZL534",
+          "type": "libex-import"
         }
       ],
       "title": "The Last of the Plainsmen"

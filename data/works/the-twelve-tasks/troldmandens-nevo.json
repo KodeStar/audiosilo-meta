@@ -6479,6 +6479,9 @@
       "authors": [
         "anne-bernays"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "trophy-house",
       "language": "en",
       "license": "CC0-1.0",
@@ -6492,6 +6495,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2577276,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1888386,
+              "start_ms": 2577276,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1664128,
+              "start_ms": 4465662,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1950523,
+              "start_ms": 6129790,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1264187,
+              "start_ms": 8080313,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2155973,
+              "start_ms": 9344500,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2182118,
+              "start_ms": 11500473,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2346284,
+              "start_ms": 13682591,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2227908,
+              "start_ms": 16028875,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1876312,
+              "start_ms": 18256783,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1138335,
+              "start_ms": 20133095,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1334311,
+              "start_ms": 21271430,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41oULCQYOwL.jpg",
           "id": "celeste-lawson-2005",
           "language": "en",
           "license": "CC0-1.0",
@@ -6506,6 +6572,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V5B6DC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V5B6DC",
+              "type": "libex-import"
             }
           ],
           "work": "trophy-house"
@@ -6516,6 +6586,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V5B6DC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V5B6DC",
+          "type": "libex-import"
         }
       ],
       "title": "Trophy House"

@@ -15537,6 +15537,11 @@
       "authors": [
         "ben-bova"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "science-fiction"
+      ],
       "id": "test-of-fire",
       "language": "en",
       "license": "CC0-1.0",
@@ -15550,6 +15555,159 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1025532,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 828024,
+              "start_ms": 1025532,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 713456,
+              "start_ms": 1853556,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1262097,
+              "start_ms": 2567012,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 849618,
+              "start_ms": 3829109,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 566520,
+              "start_ms": 4678727,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 919696,
+              "start_ms": 5245247,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1126725,
+              "start_ms": 6164943,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 505870,
+              "start_ms": 7291668,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1182592,
+              "start_ms": 7797538,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1655583,
+              "start_ms": 8980130,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1571062,
+              "start_ms": 10635713,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1200982,
+              "start_ms": 12206775,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2041220,
+              "start_ms": 13407757,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1205998,
+              "start_ms": 15448977,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1974300,
+              "start_ms": 16654975,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1511758,
+              "start_ms": 18629275,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1692363,
+              "start_ms": 20141033,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1290658,
+              "start_ms": 21833396,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1375922,
+              "start_ms": 23124054,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 867683,
+              "start_ms": 24499976,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1044573,
+              "start_ms": 25367659,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1886575,
+              "start_ms": 26412232,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1568508,
+              "start_ms": 28298807,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1233165,
+              "start_ms": 29867315,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1478832,
+              "start_ms": 31100480,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 509074,
+              "start_ms": 32579312,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 2222289,
+              "start_ms": 33088386,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1554715,
+              "start_ms": 35310675,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1360504,
+              "start_ms": 36865390,
+              "title": "Chapter 30"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cal8JLN9L.jpg",
           "id": "dean-sluyter-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -15564,6 +15722,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00CTW5VBU",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00CTW5VBU",
+              "type": "libex-import"
             }
           ],
           "work": "test-of-fire"
@@ -15574,6 +15736,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00CTW5VBU",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00CTW5VBU",
+          "type": "libex-import"
         }
       ],
       "title": "Test of Fire"

@@ -4590,6 +4590,11 @@
       "authors": [
         "adrian-tchaikovsky"
       ],
+      "genres": [
+        "fantasy",
+        "science-fiction",
+        "urban-fantasy"
+      ],
       "id": "and-put-away-childish-things",
       "language": "en",
       "license": "CC0-1.0",
@@ -4603,6 +4608,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17104,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 17351,
+              "start_ms": 17104,
+              "title": "Acknowledgements"
+            },
+            {
+              "length_ms": 1110915,
+              "start_ms": 34455,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1357438,
+              "start_ms": 1145370,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1463368,
+              "start_ms": 2502808,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1630365,
+              "start_ms": 3966176,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1900692,
+              "start_ms": 5596541,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1624095,
+              "start_ms": 7497233,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1048637,
+              "start_ms": 9121328,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2100012,
+              "start_ms": 10169965,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1316756,
+              "start_ms": 12269977,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1604800,
+              "start_ms": 13586733,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1695024,
+              "start_ms": 15191533,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 33467,
+              "start_ms": 16886557,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lcrNCgFfL.jpg",
           "id": "adrian-tchaikovsky-2023",
           "language": "en",
           "license": "CC0-1.0",
@@ -4617,6 +4695,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0CQRPSHGJ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0CQRPSHGJ",
+              "type": "libex-import"
             }
           ],
           "work": "and-put-away-childish-things"
@@ -4627,6 +4709,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0CQRPSHGJ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0CQRPSHGJ",
+          "type": "libex-import"
         }
       ],
       "title": "And Put Away Childish Things"

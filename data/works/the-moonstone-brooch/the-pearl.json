@@ -10968,6 +10968,11 @@
       "authors": [
         "ray-bradbury"
       ],
+      "genres": [
+        "hard-science-fiction",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
       "id": "the-pendulum",
       "language": "en",
       "license": "CC0-1.0",
@@ -10981,6 +10986,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 12050,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 668943,
+              "start_ms": 12050,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 13211,
+              "start_ms": 680993,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81efg2SmiGS.jpg",
           "id": "lee-winfield-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -10995,6 +11018,10 @@
               "imported_at": "2026-09-21",
               "ref": "B094XGXJYC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B094XGXJYC",
+              "type": "libex-import"
             }
           ],
           "work": "the-pendulum"
@@ -11005,6 +11032,10 @@
           "imported_at": "2026-09-21",
           "ref": "B094XGXJYC",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B094XGXJYC",
+          "type": "libex-import"
         }
       ],
       "title": "The Pendulum"

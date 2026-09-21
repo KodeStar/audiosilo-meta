@@ -789,6 +789,12 @@
       "authors": [
         "cynthia-ozick"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "religion-spirituality",
+        "short-stories"
+      ],
       "id": "the-shawl",
       "language": "en",
       "license": "CC0-1.0",
@@ -802,6 +808,29 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 39575,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 897304,
+              "start_ms": 39575,
+              "title": "The Shawl"
+            },
+            {
+              "length_ms": 6443459,
+              "start_ms": 936879,
+              "title": "Rosa"
+            },
+            {
+              "length_ms": 10619,
+              "start_ms": 7380338,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kCsmwaJyL.jpg",
           "id": "yelena-shmulenson-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -816,6 +845,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0068S4LRG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0068S4LRG",
+              "type": "libex-import"
             }
           ],
           "work": "the-shawl"
@@ -826,6 +859,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0068S4LRG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0068S4LRG",
+          "type": "libex-import"
         }
       ],
       "title": "The Shawl"

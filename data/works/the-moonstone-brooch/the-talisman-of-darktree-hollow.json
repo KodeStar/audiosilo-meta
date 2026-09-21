@@ -14168,6 +14168,12 @@
       "authors": [
         "chet-cunningham"
       ],
+      "genres": [
+        "hard-boiled",
+        "literary-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
       "id": "the-target-is-h",
       "language": "en",
       "license": "CC0-1.0",
@@ -14181,6 +14187,104 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2858143,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1269109,
+              "start_ms": 2858143,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 649276,
+              "start_ms": 4127252,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1561216,
+              "start_ms": 4776528,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1709127,
+              "start_ms": 6337744,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 922273,
+              "start_ms": 8046871,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1238807,
+              "start_ms": 8969144,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 612240,
+              "start_ms": 10207951,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1436781,
+              "start_ms": 10820191,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 736258,
+              "start_ms": 12256972,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 688750,
+              "start_ms": 12993230,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 577340,
+              "start_ms": 13681980,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 688819,
+              "start_ms": 14259320,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 615653,
+              "start_ms": 14948139,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 465420,
+              "start_ms": 15563792,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 727411,
+              "start_ms": 16029212,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 743038,
+              "start_ms": 16756623,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 364274,
+              "start_ms": 17499661,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 950716,
+              "start_ms": 17863935,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51IPMQKUiSL.jpg",
           "id": "gene-engene-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -14195,6 +14299,10 @@
               "imported_at": "2026-09-21",
               "ref": "B009071MW4",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B009071MW4",
+              "type": "libex-import"
             }
           ],
           "work": "the-target-is-h"
@@ -14205,6 +14313,10 @@
           "imported_at": "2026-09-21",
           "ref": "B009071MW4",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B009071MW4",
+          "type": "libex-import"
         }
       ],
       "title": "The Target Is H"

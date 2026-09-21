@@ -16600,6 +16600,10 @@
       "authors": [
         "alice-munro"
       ],
+      "genres": [
+        "literary-fiction",
+        "short-stories"
+      ],
       "id": "too-much-happiness",
       "language": "en",
       "license": "CC0-1.0",
@@ -16613,6 +16617,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 15805,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4333478,
+              "start_ms": 15805,
+              "title": "Chapter 1 - Dimensions"
+            },
+            {
+              "length_ms": 4000600,
+              "start_ms": 4349283,
+              "title": "Chapter 2 - Fiction"
+            },
+            {
+              "length_ms": 4065589,
+              "start_ms": 8349883,
+              "title": "Chapter 3 - Wenlock Edge"
+            },
+            {
+              "length_ms": 3137483,
+              "start_ms": 12415472,
+              "title": "Chapter 4 - Deep-Holes"
+            },
+            {
+              "length_ms": 3086243,
+              "start_ms": 15552955,
+              "title": "Chapter 5 - Free Radicals"
+            },
+            {
+              "length_ms": 3496328,
+              "start_ms": 18639198,
+              "title": "Chapter 6 - Face"
+            },
+            {
+              "length_ms": 3318049,
+              "start_ms": 22135526,
+              "title": "Chapter 7 - Some Women"
+            },
+            {
+              "length_ms": 5044884,
+              "start_ms": 25453575,
+              "title": "Chapter 8 - Child’s Play"
+            },
+            {
+              "length_ms": 3101419,
+              "start_ms": 30498459,
+              "title": "Chapter 9 - Wood"
+            },
+            {
+              "length_ms": 4345568,
+              "start_ms": 33599878,
+              "title": "Chapter 10 - Too Much Happiness"
+            },
+            {
+              "length_ms": 4099529,
+              "start_ms": 37945446,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kaDaqI78L.jpg",
           "id": "kimberly-farr-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -16628,6 +16695,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0RGNG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0RGNG",
+              "type": "libex-import"
             }
           ],
           "work": "too-much-happiness"
@@ -16638,6 +16709,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0RGNG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0RGNG",
+          "type": "libex-import"
         }
       ],
       "title": "Too Much Happiness"

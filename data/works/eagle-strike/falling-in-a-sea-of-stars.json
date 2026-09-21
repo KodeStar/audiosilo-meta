@@ -8711,6 +8711,9 @@
       "authors": [
         "anita-brookner"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "falling-slowly-anita-brookner",
       "language": "en",
       "license": "CC0-1.0",
@@ -8724,6 +8727,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1491836,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1301664,
+              "start_ms": 1491836,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1223459,
+              "start_ms": 2793500,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1432485,
+              "start_ms": 4016959,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1525644,
+              "start_ms": 5449444,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1627301,
+              "start_ms": 6975088,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1568276,
+              "start_ms": 8602389,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1692410,
+              "start_ms": 10170665,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1668957,
+              "start_ms": 11863075,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1795692,
+              "start_ms": 13532032,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1588988,
+              "start_ms": 15327724,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1724918,
+              "start_ms": 16916712,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1695382,
+              "start_ms": 18641630,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1723431,
+              "start_ms": 20337012,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1725568,
+              "start_ms": 22060443,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3412962,
+              "start_ms": 23786011,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8150zuCeCTL.jpg",
           "id": "eleanor-bron-2010",
           "language": "en",
           "license": "CC0-1.0",
@@ -8738,6 +8824,10 @@
               "imported_at": "2026-09-21",
               "ref": "B003LZ2TXW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B003LZ2TXW",
+              "type": "libex-import"
             }
           ],
           "work": "falling-slowly-anita-brookner"
@@ -8748,6 +8838,10 @@
           "imported_at": "2026-09-21",
           "ref": "B003LZ2TXW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B003LZ2TXW",
+          "type": "libex-import"
         }
       ],
       "title": "Falling Slowly"

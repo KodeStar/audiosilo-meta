@@ -9983,6 +9983,10 @@
       "authors": [
         "carleen-brice"
       ],
+      "genres": [
+        "literary-fiction",
+        "womens-fiction"
+      ],
       "id": "orange-mint-and-honey",
       "language": "en",
       "license": "CC0-1.0",
@@ -9996,6 +10000,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2156855,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2069548,
+              "start_ms": 2156855,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2216948,
+              "start_ms": 4226403,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2018046,
+              "start_ms": 6443351,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2105725,
+              "start_ms": 8461397,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1939841,
+              "start_ms": 10567122,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2093697,
+              "start_ms": 12506963,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2078790,
+              "start_ms": 14600660,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2069316,
+              "start_ms": 16679450,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2062861,
+              "start_ms": 18748766,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2086452,
+              "start_ms": 20811627,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2085756,
+              "start_ms": 22898079,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2329844,
+              "start_ms": 24983835,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1964222,
+              "start_ms": 27313679,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/517jwh24UiL.jpg",
           "id": "cherise-booth-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -10010,6 +10087,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZLEOY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZLEOY",
+              "type": "libex-import"
             }
           ],
           "work": "orange-mint-and-honey"
@@ -10020,6 +10101,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZLEOY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZLEOY",
+          "type": "libex-import"
         }
       ],
       "title": "Orange Mint and Honey"

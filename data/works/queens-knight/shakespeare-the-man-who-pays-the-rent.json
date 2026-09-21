@@ -1101,6 +1101,10 @@
       "authors": [
         "bruce-coville"
       ],
+      "genres": [
+        "classics",
+        "drama-plays"
+      ],
       "id": "shakespeares-greatest-hits-retold-by-bruce-coville-volume-i",
       "language": "en",
       "license": "CC0-1.0",
@@ -1114,6 +1118,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1321123,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1653586,
+              "start_ms": 1321123,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1539994,
+              "start_ms": 2974709,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1820770,
+              "start_ms": 4514703,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 336132,
+              "start_ms": 6335473,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51I-mxwpbUL.jpg",
           "id": "bruce-coville-2004",
           "language": "en",
           "license": "CC0-1.0",
@@ -1130,6 +1162,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZDSFW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZDSFW",
+              "type": "libex-import"
             }
           ],
           "work": "shakespeares-greatest-hits-retold-by-bruce-coville-volume-i"
@@ -1140,6 +1176,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZDSFW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZDSFW",
+          "type": "libex-import"
         }
       ],
       "title": "Shakespeare's Greatest Hits Retold by Bruce Coville , Volume I"

@@ -6227,6 +6227,11 @@
         "reed-diamond",
         "judy-geeson"
       ],
+      "genres": [
+        "mystery",
+        "short-stories",
+        "thriller-suspense"
+      ],
       "id": "malice-domestic-6",
       "language": "en",
       "license": "CC0-1.0",
@@ -6240,6 +6245,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 40820,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1884136,
+              "start_ms": 40820,
+              "title": "\"The Corbett Correspondence\" by Edward Marston & Peter Lovesey"
+            },
+            {
+              "length_ms": 3027162,
+              "start_ms": 1924956,
+              "title": "\"The Gentleman's Gentleman\" by Dorothy Cannell"
+            },
+            {
+              "length_ms": 2361422,
+              "start_ms": 4952118,
+              "title": "\"The Two Ladies of Rose Cottage\" by Peter Robinson"
+            },
+            {
+              "length_ms": 2274487,
+              "start_ms": 7313540,
+              "title": "\"Sweet Fruition\" by David Williams"
+            },
+            {
+              "length_ms": 3481228,
+              "start_ms": 9588027,
+              "title": "\"Ways to Kill a Cat\" by Simon Brett"
+            },
+            {
+              "length_ms": 1413584,
+              "start_ms": 13069255,
+              "title": "\"Like to Die\" by Catherine Aird"
+            },
+            {
+              "length_ms": 857396,
+              "start_ms": 14482839,
+              "title": "\"Time's Winged Chariot\" by Marjorie Eccles"
+            },
+            {
+              "length_ms": 2899545,
+              "start_ms": 15340235,
+              "title": "\"Mea Culpa\" by Jan Burke"
+            },
+            {
+              "length_ms": 445985,
+              "start_ms": 18239780,
+              "title": "\"Malice among Friends\" by Sarah Caudwell"
+            },
+            {
+              "length_ms": 2335856,
+              "start_ms": 18685765,
+              "title": "\"Immortality [Sebastian Grady]\" by Jon L. Breen"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71hJHfnKZbL.jpg",
           "id": "stephanie-beacham-2025",
           "language": "en",
           "license": "CC0-1.0",
@@ -6254,6 +6317,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0DZ3JQ231",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0DZ3JQ231",
+              "type": "libex-import"
             }
           ],
           "work": "malice-domestic-6"
@@ -6264,6 +6331,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0DZ3JQ231",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0DZ3JQ231",
+          "type": "libex-import"
         }
       ],
       "title": "Malice Domestic 6"

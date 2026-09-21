@@ -6495,6 +6495,9 @@
         "clint-walker",
         "kirby-jonas"
       ],
+      "genres": [
+        "westerns"
+      ],
       "id": "yaqui-gold",
       "language": "en",
       "license": "CC0-1.0",
@@ -6508,6 +6511,164 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 772922,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 490544,
+              "start_ms": 772922,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1505024,
+              "start_ms": 1263466,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1915646,
+              "start_ms": 2768490,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1205069,
+              "start_ms": 4684136,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1151849,
+              "start_ms": 5889205,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1237855,
+              "start_ms": 7041054,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1474142,
+              "start_ms": 8278909,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2752075,
+              "start_ms": 9753051,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1941327,
+              "start_ms": 12505126,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 807125,
+              "start_ms": 14446453,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1090409,
+              "start_ms": 15253578,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 824865,
+              "start_ms": 16343987,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1544266,
+              "start_ms": 17168852,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1595953,
+              "start_ms": 18713118,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1521046,
+              "start_ms": 20309071,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1291400,
+              "start_ms": 21830117,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1094867,
+              "start_ms": 23121517,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1087576,
+              "start_ms": 24216384,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 776196,
+              "start_ms": 25303960,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1153706,
+              "start_ms": 26080156,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1422825,
+              "start_ms": 27233862,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 997436,
+              "start_ms": 28656687,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1790351,
+              "start_ms": 29654123,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1447764,
+              "start_ms": 31444474,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 2454906,
+              "start_ms": 32892238,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1221741,
+              "start_ms": 35347144,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1159093,
+              "start_ms": 36568885,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1492718,
+              "start_ms": 37727978,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1866187,
+              "start_ms": 39220696,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 2182883,
+              "start_ms": 41086883,
+              "title": "Chapter 31"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51mbxjLEsnL.jpg",
           "id": "gene-engene-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -6522,6 +6683,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0090710NK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0090710NK",
+              "type": "libex-import"
             }
           ],
           "work": "yaqui-gold"
@@ -6532,6 +6697,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0090710NK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0090710NK",
+          "type": "libex-import"
         }
       ],
       "title": "Yaqui Gold"

@@ -5053,6 +5053,12 @@
       "authors": [
         "clive-barker"
       ],
+      "genres": [
+        "classics",
+        "fantasy",
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "the-adventures-of-mr-maximillian-bacchus-and-his-travelling-circus",
       "language": "en",
       "license": "CC0-1.0",
@@ -5066,6 +5072,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 26192,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1865491,
+              "start_ms": 26192,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1988650,
+              "start_ms": 1891683,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1649406,
+              "start_ms": 3880333,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2691843,
+              "start_ms": 5529739,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 38452,
+              "start_ms": 8221582,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TMUySLlgL.jpg",
           "id": "bruce-donnelly-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -5080,6 +5119,10 @@
               "imported_at": "2026-09-21",
               "ref": "B005IY5NMI",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B005IY5NMI",
+              "type": "libex-import"
             }
           ],
           "work": "the-adventures-of-mr-maximillian-bacchus-and-his-travelling-circus"
@@ -5090,6 +5133,10 @@
           "imported_at": "2026-09-21",
           "ref": "B005IY5NMI",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B005IY5NMI",
+          "type": "libex-import"
         }
       ],
       "title": "The Adventures of Mr. Maximillian Bacchus and His Travelling Circus"

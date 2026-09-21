@@ -2103,6 +2103,9 @@
       "authors": [
         "billy-hopkins"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "going-places",
       "language": "en",
       "license": "CC0-1.0",
@@ -2116,6 +2119,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2256376,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2258698,
+              "start_ms": 2256376,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2127505,
+              "start_ms": 4515074,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2144967,
+              "start_ms": 6642579,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2254518,
+              "start_ms": 8787546,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2264689,
+              "start_ms": 11042064,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2183094,
+              "start_ms": 13306753,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2202970,
+              "start_ms": 15489847,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2247367,
+              "start_ms": 17692817,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2216577,
+              "start_ms": 19940184,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2226794,
+              "start_ms": 22156761,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2202784,
+              "start_ms": 24383555,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2112459,
+              "start_ms": 26586339,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2124301,
+              "start_ms": 28698798,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2238357,
+              "start_ms": 30823099,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2263899,
+              "start_ms": 33061456,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2281453,
+              "start_ms": 35325355,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2270958,
+              "start_ms": 37606808,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2099502,
+              "start_ms": 39877766,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2111855,
+              "start_ms": 41977268,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2148960,
+              "start_ms": 44089123,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 2135353,
+              "start_ms": 46238083,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2256283,
+              "start_ms": 48373436,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2230369,
+              "start_ms": 50629719,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Qw7YebkqL.jpg",
           "id": "christopher-kay-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -2130,6 +2256,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0M2LM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0M2LM",
+              "type": "libex-import"
             }
           ],
           "work": "going-places"
@@ -2140,6 +2270,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0M2LM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0M2LM",
+          "type": "libex-import"
         }
       ],
       "title": "Going Places"

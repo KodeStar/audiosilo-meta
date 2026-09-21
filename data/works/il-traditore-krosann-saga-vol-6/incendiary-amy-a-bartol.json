@@ -8637,6 +8637,9 @@
       "authors": [
         "david-annandale"
       ],
+      "genres": [
+        "science-fiction"
+      ],
       "id": "incorruptible-david-annandale",
       "language": "en",
       "license": "CC0-1.0",
@@ -8650,6 +8653,14 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2541285,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915fGpATb3L.jpg",
           "id": "gareth-armstrong-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -8668,6 +8679,10 @@
               "imported_at": "2026-09-21",
               "ref": "B077DPMTS9",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B077DPMTS9",
+              "type": "libex-import"
             }
           ],
           "work": "incorruptible-david-annandale"
@@ -8678,6 +8693,10 @@
           "imported_at": "2026-09-21",
           "ref": "B077DPMTS9",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B077DPMTS9",
+          "type": "libex-import"
         }
       ],
       "title": "Incorruptible"

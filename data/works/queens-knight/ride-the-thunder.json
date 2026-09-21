@@ -7067,6 +7067,9 @@
       "authors": [
         "andrew-fenady"
       ],
+      "genres": [
+        "westerns"
+      ],
       "id": "riders-to-moon-rock",
       "language": "en",
       "license": "CC0-1.0",
@@ -7080,6 +7083,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2250872,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2198511,
+              "start_ms": 2250872,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2142598,
+              "start_ms": 4449383,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1912256,
+              "start_ms": 6591981,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2051436,
+              "start_ms": 8504237,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1918386,
+              "start_ms": 10555673,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2148310,
+              "start_ms": 12474059,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2102613,
+              "start_ms": 14622369,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2113387,
+              "start_ms": 16724982,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2106282,
+              "start_ms": 18838369,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2262877,
+              "start_ms": 20944651,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2106792,
+              "start_ms": 23207528,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2256468,
+              "start_ms": 25314320,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2105189,
+              "start_ms": 27570788,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81c1dIYPKML.jpg",
           "id": "pete-bradbury-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -7094,6 +7170,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V1NM3S",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V1NM3S",
+              "type": "libex-import"
             }
           ],
           "work": "riders-to-moon-rock"
@@ -7104,6 +7184,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V1NM3S",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V1NM3S",
+          "type": "libex-import"
         }
       ],
       "title": "Riders to Moon Rock"

@@ -4464,6 +4464,10 @@
       "authors": [
         "colum-mccann"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "transatlantic",
       "language": "en",
       "license": "CC0-1.0",
@@ -4477,6 +4481,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 125573,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4206155,
+              "start_ms": 125573,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3878801,
+              "start_ms": 4331728,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3741849,
+              "start_ms": 8210529,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3497111,
+              "start_ms": 11952378,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3548381,
+              "start_ms": 15449489,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5187709,
+              "start_ms": 18997870,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4300475,
+              "start_ms": 24185579,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3048362,
+              "start_ms": 28486054,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3856788,
+              "start_ms": 31534416,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3179648,
+              "start_ms": 35391204,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hLZ759iNL.jpg",
           "id": "geraldine-hughes-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -4491,6 +4553,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00CRJKN0Y",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00CRJKN0Y",
+              "type": "libex-import"
             }
           ],
           "work": "transatlantic"
@@ -4501,6 +4567,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00CRJKN0Y",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00CRJKN0Y",
+          "type": "libex-import"
         }
       ],
       "title": "TransAtlantic"

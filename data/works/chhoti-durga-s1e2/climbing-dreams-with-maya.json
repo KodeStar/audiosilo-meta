@@ -7277,6 +7277,10 @@
       "authors": [
         "clive-barker"
       ],
+      "genres": [
+        "fantasy",
+        "short-stories"
+      ],
       "id": "clive-barkers-first-tales",
       "language": "en",
       "license": "CC0-1.0",
@@ -7290,6 +7294,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 12539,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1502052,
+              "start_ms": 12539,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3938708,
+              "start_ms": 1514591,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3712592,
+              "start_ms": 5453299,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2671920,
+              "start_ms": 9165891,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 40774,
+              "start_ms": 11837811,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bMvwf2QNL.jpg",
           "id": "simon-vance-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -7304,6 +7341,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00H9L4I5Q",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00H9L4I5Q",
+              "type": "libex-import"
             }
           ],
           "work": "clive-barkers-first-tales"
@@ -7314,6 +7355,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00H9L4I5Q",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00H9L4I5Q",
+          "type": "libex-import"
         }
       ],
       "title": "Clive Barker's First Tales"

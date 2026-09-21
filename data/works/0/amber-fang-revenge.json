@@ -9313,6 +9313,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2254332,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2220896,
+              "start_ms": 2254332,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2248202,
+              "start_ms": 4475228,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2215927,
+              "start_ms": 6723430,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2358358,
+              "start_ms": 8939357,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2215695,
+              "start_ms": 11297715,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2259812,
+              "start_ms": 13513410,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2216066,
+              "start_ms": 15773222,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2247088,
+              "start_ms": 17989288,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2207150,
+              "start_ms": 20236376,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2277181,
+              "start_ms": 22443526,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2119378,
+              "start_ms": 24720707,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+yOKvn-vL.jpg",
           "id": "george-guidall-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -9327,6 +9390,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0KRQE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0KRQE",
+              "type": "libex-import"
             }
           ],
           "work": "ambush-valley"

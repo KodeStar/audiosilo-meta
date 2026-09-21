@@ -9923,6 +9923,9 @@
       "authors": [
         "agatha-christie"
       ],
+      "genres": [
+        "classics"
+      ],
       "id": "the-adventure-of-the-western-star",
       "language": "en",
       "license": "CC0-1.0",
@@ -9936,6 +9939,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 13119,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2643197,
+              "start_ms": 13119,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 26887,
+              "start_ms": 2656316,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uyxgJXmyL.jpg",
           "id": "peter-finney-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -9950,6 +9971,10 @@
               "imported_at": "2026-09-21",
               "ref": "1662121989",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1662121989",
+              "type": "libex-import"
             }
           ],
           "work": "the-adventure-of-the-western-star"
@@ -9960,6 +9985,10 @@
           "imported_at": "2026-09-21",
           "ref": "1662121989",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1662121989",
+          "type": "libex-import"
         }
       ],
       "title": "The Adventure of The Western Star"
