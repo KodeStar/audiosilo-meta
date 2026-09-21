@@ -6446,6 +6446,10 @@
             {
               "asin": "B01CUKULGA",
               "region": "us"
+            },
+            {
+              "asin": "B01HH0IQ3S",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81sVsbF5OoL.jpg",
@@ -6455,14 +6459,19 @@
           "narrators": [
             "jon-lindstrom"
           ],
-          "publisher": "Random House Audio",
+          "publisher": "Macmillan Digital Audio",
           "release_date": "2016-07-26",
-          "runtime_min": 608,
+          "runtime_min": 609,
           "sources": [
             {
               "imported_at": "2026-08-07",
               "ref": "B01CUKULGA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B01HH0IQ3S",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "dark-matter-blake-crouch"

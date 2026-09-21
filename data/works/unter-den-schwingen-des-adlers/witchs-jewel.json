@@ -8689,6 +8689,10 @@
             {
               "asin": "B0036M2C50",
               "region": "us"
+            },
+            {
+              "asin": "B002V0KALQ",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -8791,13 +8795,18 @@
             "george-guidall"
           ],
           "publisher": "Recorded Books",
-          "release_date": "2007-07-29",
-          "runtime_min": 827,
+          "release_date": "2000",
+          "runtime_min": 830,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0036M2C50",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B002V0KALQ",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "with-a-tangled-skein"

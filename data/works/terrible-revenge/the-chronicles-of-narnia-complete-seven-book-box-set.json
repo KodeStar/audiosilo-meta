@@ -7264,6 +7264,10 @@
             {
               "asin": "B09LNHMRWH",
               "region": "us"
+            },
+            {
+              "asin": "B09LR8JLZH",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7372,12 +7376,17 @@
           ],
           "publisher": "Audible Studios",
           "release_date": "2021-11-25",
-          "runtime_min": 418,
+          "runtime_min": 427,
           "sources": [
             {
               "imported_at": "2026-08-07",
               "ref": "B09LNHMRWH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-21",
+              "ref": "B09LR8JLZH",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-chrysalids"
