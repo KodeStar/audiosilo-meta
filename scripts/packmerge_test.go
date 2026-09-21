@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 )
@@ -62,11 +63,40 @@ func descriptionMember(work, text string) string {
 	return `"description":{"work":"` + work + `","license":"CC-BY-SA-4.0","text":"` + text + `"}`
 }
 
-// The two families that have a one-level-deeper exception, since the script
-// reads the family off the path.
+// entry renders one pack entry from field fragments. The both-sides-added cases
+// below differ in one field apiece, which is easier to read written out than
+// threaded through a helper per shape.
+func entry(id string, fields ...string) string {
+	return `"` + id + `":{"id":"` + id + `","license":"CC0-1.0",` + strings.Join(fields, ",") + `}`
+}
+
+// source is one provenance stamp. Two imports of overlapping libraries mint the
+// same record from whichever ASIN each saw first, so this is what differs
+// between two copies of a record nobody disagrees about.
+func source(typ, ref, at string) string {
+	return `{"imported_at":"` + at + `","ref":"` + ref + `","type":"` + typ + `"}`
+}
+
+func sources(list ...string) string {
+	return `"sources":[` + strings.Join(list, ",") + `]`
+}
+
+// seriesWork is one (work, position) membership in a series entry.
+func seriesWork(work, position string) string {
+	return `{"position":"` + position + `","work":"` + work + `"}`
+}
+
+func seriesWorks(list ...string) string {
+	return `"works":[` + strings.Join(list, ",") + `]`
+}
+
+// The four families, since the script reads the family off the path and only the
+// series works rule is not family-neutral.
 const (
 	worksPath     = "data/works/0/0.json"
 	communityPath = "data/works-community/0/0.json"
+	peoplePath    = "data/people/0.json"
+	seriesPath    = "data/series/0.json"
 	// The tree's one NON-pack file, which this script must refuse rather than
 	// merge (see TestPackMergeRefusesANonPackFile).
 	redirectsPath = "data/redirects.json"
@@ -88,6 +118,10 @@ func TestPackUnionMerge(t *testing.T) {
 		// present and absent are entry paths (jq-style, "aaa" or
 		// "aaa.recordings.r1") the merged file must and must not hold.
 		present, absent []string
+		// equal maps such a path to the JSON the merged file must hold there,
+		// for the cases where WHAT was merged is the point: a unioned sources
+		// list, a superset series, an author order that was kept.
+		equal map[string]string
 	}{
 		{
 			name:    "each side adds its own record",
@@ -252,10 +286,137 @@ func TestPackUnionMerge(t *testing.T) {
 			// A family with no exception gets none: a person entry both sides
 			// rewrote is a refusal whatever its shape.
 			name:        "both sides edited one person record",
-			path:        "data/people/0.json",
+			path:        peoplePath,
 			base:        pack(work("aaa", "A")),
 			main:        pack(work("aaa", "A from main")),
 			branch:      pack(work("aaa", "A from the branch")),
+			wantRefusal: true,
+		},
+
+		// Everything below is one entry BOTH SIDES ADDED, which the base cannot
+		// call an edit conflict because it has no version to have been edited
+		// from. These are the shapes one contributor produced by submitting two
+		// overlapping library exports (issues #2274/#2275, 142 of the second's
+		// 150 rows already in the first): after the first import merged, the
+		// second was refused in 29 packs, every one of them two copies of one
+		// record that did not contradict each other.
+		{
+			// The commonest of the 29: the importer mints a person from the
+			// first ASIN it saw them on, so two runs stamp a different ref.
+			// Provenance accumulates; it is not a claim about the person.
+			name:   "both sides minted one person from a different source",
+			path:   peoplePath,
+			base:   pack(entry("aaa", `"name":"A"`, sources(source("user", "", "2026-01-01")))),
+			main:   pack(entry("aaa", `"name":"A"`, sources(source("user", "", "2026-01-01"))), entry("bob", `"name":"Bob"`, sources(source("libex-import", "B000000001", "2026-09-01")))),
+			branch: pack(entry("aaa", `"name":"A"`, sources(source("user", "", "2026-01-01"))), entry("bob", `"name":"Bob"`, sources(source("libex-import", "B000000002", "2026-09-02")))),
+			equal: map[string]string{
+				// Ours first - in a rebase that is what is already on main.
+				"bob.sources": `[` + source("libex-import", "B000000001", "2026-09-01") + `,` +
+					source("libex-import", "B000000002", "2026-09-02") + `]`,
+			},
+		},
+		{
+			// And the one that is a real disagreement: two people naming the
+			// same slug differently is a fact to settle, not a field to union.
+			name:        "both sides added one person under a different name",
+			path:        peoplePath,
+			base:        pack(entry("aaa", `"name":"A"`)),
+			main:        pack(entry("aaa", `"name":"A"`), entry("bob", `"name":"Bob Smith"`)),
+			branch:      pack(entry("aaa", `"name":"A"`), entry("bob", `"name":"Robert Smith"`)),
+			wantRefusal: true,
+		},
+		{
+			// A series the second export saw more of: the same (work, position)
+			// pairs plus more, and its own minting source.
+			name: "both sides added one series, one seeing more of it",
+			path: seriesPath,
+			base: pack(entry("aaa", `"name":"A"`)),
+			main: pack(entry("aaa", `"name":"A"`), entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w2", "2")),
+				sources(source("libex-import", "B000000001", "2026-09-01")))),
+			branch: pack(entry("aaa", `"name":"A"`), entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w2", "2"), seriesWork("w3", "3")),
+				sources(source("libex-import", "B000000002", "2026-09-02")))),
+			equal: map[string]string{
+				"ser.works": `[` + seriesWork("w1", "1") + `,` + seriesWork("w2", "2") + `,` +
+					seriesWork("w3", "3") + `]`,
+				"ser.sources": `[` + source("libex-import", "B000000001", "2026-09-01") + `,` +
+					source("libex-import", "B000000002", "2026-09-02") + `]`,
+			},
+		},
+		{
+			// The series list is unioned by the PAIR, so one position naming two
+			// works is a disagreement about the series and stays one.
+			name: "the two series put a different work at one position",
+			path: seriesPath,
+			base: pack(entry("aaa", `"name":"A"`)),
+			main: pack(entry("aaa", `"name":"A"`),
+				entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1")))),
+			branch: pack(entry("aaa", `"name":"A"`),
+				entry("ser", `"name":"S"`, seriesWorks(seriesWork("w9", "1")))),
+			wantRefusal: true,
+		},
+		{
+			// Five of the 29: the same authors, listed the other way round.
+			// Order is the source's billing statement, so one of them is kept
+			// rather than the list being sorted into something neither wrote.
+			name: "both sides added one work with the authors in another order",
+			base: pack(entry("aaa", `"title":"A"`)),
+			main: pack(entry("aaa", `"title":"A"`),
+				entry("www", `"title":"W"`, `"authors":["ann-lee","bo-park"]`)),
+			branch: pack(entry("aaa", `"title":"A"`),
+				entry("www", `"title":"W"`, `"authors":["bo-park","ann-lee"]`)),
+			equal: map[string]string{`www.authors`: `["ann-lee","bo-park"]`},
+		},
+		{
+			// Twenty-one of the 29: the second run had a libex fill behind it,
+			// so its copy carries keys the first never had - genres on the work,
+			// chapters and a cover on the recording - and an extra import stamp
+			// on both. Every key BOTH sides have is equal, so nothing is in
+			// dispute and the fuller copy is simply taken where it is fuller.
+			name: "one side filled in the work and its recording",
+			base: pack(entry("aaa", `"title":"A"`)),
+			main: pack(entry("aaa", `"title":"A"`), entry("www",
+				`"title":"W"`, `"authors":["ann-lee"]`,
+				sources(source("user", "", "2026-09-01")),
+				`"recordings":{"r1":{"id":"r1","work":"www","narrators":["kit-doe","lou-ray"],`+
+					sources(source("user", "", "2026-09-01"))+`}}`)),
+			branch: pack(entry("aaa", `"title":"A"`), entry("www",
+				`"title":"W"`, `"authors":["ann-lee"]`, `"genres":["epic-fantasy"]`,
+				sources(source("user", "", "2026-09-01"), source("libex-import", "B000000001", "2026-09-02")),
+				`"recordings":{"r1":{"id":"r1","work":"www","narrators":["lou-ray","kit-doe"],`+
+					`"cover_url":"https://example.invalid/c.jpg","chapters":[{"title":"One","start":0}],`+
+					sources(source("user", "", "2026-09-01"), source("libex-import", "B000000001", "2026-09-02"))+`}}`)),
+			present: []string{
+				"www.genres", "www.recordings.r1.chapters", "www.recordings.r1.cover_url",
+			},
+			equal: map[string]string{
+				"www.sources": `[` + source("user", "", "2026-09-01") + `,` +
+					source("libex-import", "B000000001", "2026-09-02") + `]`,
+				// Same set, other order, one level down inside the recording.
+				"www.recordings.r1.narrators": `["kit-doe","lou-ray"]`,
+			},
+		},
+		{
+			// The rule is family-neutral: a community entry both sides created
+			// merges on the same terms, member by member.
+			name:   "both sides added one community entry with the same member",
+			path:   communityPath,
+			base:   pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:   pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", charsMember("bbb", "Bob"))),
+			branch: pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", charsMember("bbb", "Bob")+","+recapsMember("bbb", "So far"))),
+			present: []string{
+				"bbb.characters", "bbb.recaps",
+			},
+		},
+		{
+			// ...and the same member with a different text in it is still two
+			// people disagreeing about one document.
+			name:        "both sides added one community entry with a contradicting member",
+			path:        communityPath,
+			base:        pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:        pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", charsMember("bbb", "Bob"))),
+			branch:      pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", charsMember("bbb", "Robert"))),
 			wantRefusal: true,
 		},
 	}
@@ -290,6 +451,20 @@ func TestPackUnionMerge(t *testing.T) {
 			for _, p := range c.absent {
 				if has(merged, p) {
 					t.Errorf("%s came back from the dead: %v", p, merged)
+				}
+			}
+			for p, wantJSON := range c.equal {
+				got, ok := at(merged, p)
+				if !ok {
+					t.Errorf("%s is missing from the merged pack: %v", p, merged)
+					continue
+				}
+				var want any
+				if err := json.Unmarshal([]byte(wantJSON), &want); err != nil {
+					t.Fatalf("the expectation for %s is not valid JSON: %v\n%s", p, err, wantJSON)
+				}
+				if !reflect.DeepEqual(got, want) {
+					t.Errorf("%s merged to %s, want %s", p, mustJSON(t, got), wantJSON)
 				}
 			}
 		})
@@ -393,6 +568,46 @@ func TestPackMergeDriver(t *testing.T) {
 			if !has(merged, p) {
 				t.Errorf("%s is missing from the merged pack: %v", p, merged)
 			}
+		}
+	})
+
+	t.Run("a person both sides minted keeps both sources", func(t *testing.T) {
+		// The live shape from the overlapping library exports, through the
+		// driver rather than by hand: main has already merged the first import,
+		// and the branch is the second one, which minted the same person off
+		// whichever of his books it saw first.
+		neighbour := entry("aaa", `"name":"A"`, sources(source("user", "", "2026-01-01")))
+		mint := func(ref, at string) string {
+			return entry("bob", `"name":"Bob"`, sources(source("libex-import", ref, at)))
+		}
+		repo, out, err := rebaseFixture(t, peoplePath,
+			canonicalPack(t, pack(neighbour)),
+			canonicalPack(t, pack(neighbour, mint("B000000001", "2026-09-01"))),
+			canonicalPack(t, pack(neighbour, mint("B000000002", "2026-09-02"))),
+			script)
+		if err != nil {
+			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		if !strings.Contains(out, driverMergedMarker) {
+			t.Errorf("the rebase output does not carry %q, which .github/workflows/intake.yml greps for to know it must re-render the merge:\n%s", driverMergedMarker, out)
+		}
+		full := filepath.Join(repo, peoplePath)
+		if n := countEntryKeys(t, full, "bob"); n != 1 {
+			t.Fatalf("the entry is in the pack %d times, want 1", n)
+		}
+		merged := readEntries(t, full)
+		got, ok := at(merged, "bob.sources")
+		if !ok {
+			t.Fatalf("the merged person has no sources: %v", merged)
+		}
+		want := `[` + source("libex-import", "B000000001", "2026-09-01") + `,` +
+			source("libex-import", "B000000002", "2026-09-02") + `]`
+		var wantAny any
+		if err := json.Unmarshal([]byte(want), &wantAny); err != nil {
+			t.Fatal(err)
+		}
+		if !reflect.DeepEqual(got, wantAny) {
+			t.Errorf("bob.sources merged to %s, want %s", mustJSON(t, got), want)
 		}
 	})
 
@@ -513,8 +728,8 @@ func TestPackMergeAttributeCoversEveryFamily(t *testing.T) {
 	for _, p := range []string{
 		worksPath,
 		communityPath,
-		"data/people/0.json",
-		"data/series/0.json",
+		peoplePath,
+		seriesPath,
 	} {
 		out, err := runIn(repo, "git", "check-attr", "merge", "--", p)
 		if err != nil {
@@ -651,20 +866,35 @@ func readEntries(t *testing.T, path string) map[string]any {
 	return doc.Entries
 }
 
-// has reports whether the entries map holds the dotted path ("aaa" or
-// "aaa.recordings.r1").
-func has(entries map[string]any, dotted string) bool {
+// at resolves a dotted path ("aaa" or "aaa.recordings.r1") in the entries map.
+func at(entries map[string]any, dotted string) (any, bool) {
 	cur := any(entries)
 	for _, part := range strings.Split(dotted, ".") {
 		m, ok := cur.(map[string]any)
 		if !ok {
-			return false
+			return nil, false
 		}
 		if cur, ok = m[part]; !ok {
-			return false
+			return nil, false
 		}
 	}
-	return true
+	return cur, true
+}
+
+// has reports whether the entries map holds the dotted path.
+func has(entries map[string]any, dotted string) bool {
+	_, ok := at(entries, dotted)
+	return ok
+}
+
+// mustJSON renders a merged value for a failure message.
+func mustJSON(t *testing.T, v any) string {
+	t.Helper()
+	out, err := json.Marshal(v)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(out)
 }
 
 func runIn(dir, name string, args ...string) (string, error) {

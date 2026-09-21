@@ -18,7 +18,44 @@
 #   present on one side, in base unchanged the other side DELETED it: delete it
 #   present on one side, in base changed   delete versus modify: refuse
 #   absent from both sides                 both deleted it: it stays deleted
-#   present on both sides, different       see below
+#   present on both sides, different,
+#     absent from base                     both ADDED it: merge the two versions
+#                                          unless they contradict (see below)
+#   present on both sides, different,
+#     present in base                      both CHANGED it: see further below
+#
+# BOTH SIDES ADDED THE SAME ENTRY. Two overlapping library imports mint the same
+# record twice and the copies differ without disagreeing: each run stamped the
+# source it happened to mint from, one run filled in a field the other never had,
+# one listed the same authors in another order. Nobody is asserting a different
+# fact, so the two versions are merged, recursively over objects:
+#
+#   a key on one side only                 take it
+#   a key on both sides, equal             keep it
+#   sources                                union, deduplicated by the whole
+#                                          object, ours first then theirs' new
+#                                          ones - provenance accumulates, it is
+#                                          never the thing in dispute
+#   works, on a series entry               union by (work, position); one
+#                                          position naming two works, or one work
+#                                          at two positions, IS a disagreement
+#   authors / narrators                    the same set in another order keeps
+#                                          OURS' order (in a rebase that is what
+#                                          is already on main); a different set
+#                                          is a disagreement
+#   any other key whose two values
+#     are both objects                     recurse with these same rules - which
+#                                          is how a works entry's recordings map,
+#                                          and each recording under it, merges
+#   anything else that differs             a contradiction: the whole entry is
+#                                          refused, exactly as before
+#
+# That rule is family-NEUTRAL apart from the series works list: two contributors
+# adding one person, one work or one community member each get it, because the
+# question it answers - did either side contradict the other? - does not depend on
+# the shape of the record. It applies ONLY where the base has no such entry. An
+# entry the base HAS that both sides changed is a real edit conflict and keeps the
+# rules below.
 #
 # An entry both sides changed is a real conflict with TWO exceptions, each
 # applied one level deeper and each to one family, because what sits one level
@@ -183,6 +220,70 @@ if ! jq -n \
         else .                                                        # deleted on both sides
         end);
 
+  # unionSources merges two provenance lists. Provenance accumulates and is never
+  # the thing two imports disagree about: ours first, then the objects on the
+  # other side that are not already there, so one merge does not reshuffle what
+  # another one wrote.
+  def unionSources($A; $T):
+    reduce ($A + $T)[] as $s ([]; if any(.[]; . == $s) then . else . + [$s] end);
+
+  # unionSeriesWorks merges two series membership lists by (work, position). One
+  # side listing more of the series than the other is an import that saw more
+  # books; one position naming two works, or one work at two positions, is a
+  # disagreement about the series itself and is reported instead.
+  def unionSeriesWorks($A; $T):
+    reduce $T[] as $w ({list: $A, clash: false};
+      if any(.list[]; . == $w) then .
+      elif any(.list[];
+               ((.position == $w.position) and (.work != $w.work))
+               or ((.work == $w.work) and (.position != $w.position))) then .clash = true
+      else .list += [$w]
+      end);
+
+  # mergeAdded merges two versions of ONE entry that both sides ADDED, returning
+  # {value:} or {clash:} holding the sub-paths that disagree, relative to the
+  # entry. The base is not a parameter because there is none: the whole rule is
+  # "did either side contradict the other", which is why it needs no family.
+  # $depth is 0 at the entry itself, so the series works rule cannot be reached by
+  # a works key that happens to sit deeper inside some other record.
+  def mergeAdded($A; $T; $depth):
+    if (($A | type) != "object") or (($T | type) != "object") then
+      (if $A == $T then {value: $A} else {clash: [""]} end)
+    else
+      ([$A, $T | keys[]] | unique) as $keys
+      | reduce $keys[] as $k ({value: {}, clash: []};
+          if ($A | has($k) | not) then .value[$k] = $T[$k]
+          elif ($T | has($k) | not) then .value[$k] = $A[$k]
+          elif $A[$k] == $T[$k] then .value[$k] = $A[$k]
+          elif ($k == "sources")
+               and (($A[$k] | type) == "array") and (($T[$k] | type) == "array") then
+            .value[$k] = unionSources($A[$k]; $T[$k])
+          elif ($k == "works") and ($family == "series") and ($depth == 0)
+               and (($A[$k] | type) == "array") and (($T[$k] | type) == "array")
+               and (all(($A[$k] + $T[$k])[];
+                        (type == "object") and has("work") and has("position"))) then
+            (unionSeriesWorks($A[$k]; $T[$k])) as $u
+            | if $u.clash then .clash += [$k] else .value[$k] = $u.list end
+          elif (($k == "authors") or ($k == "narrators"))
+               and (($A[$k] | type) == "array") and (($T[$k] | type) == "array")
+               and (($A[$k] | sort) == ($T[$k] | sort)) then
+            .value[$k] = $A[$k]
+          elif (($A[$k] | type) == "object") and (($T[$k] | type) == "object") then
+            (mergeAdded($A[$k]; $T[$k]; $depth + 1)) as $m
+            | if ($m | has("value")) then .value[$k] = $m.value
+              else .clash += ($m.clash | map(if . == "" then $k else $k + "." + . end))
+              end
+          else .clash += [$k]
+          end)
+      | if (.clash | length) > 0 then {clash: .clash} else {value: .value} end
+    end;
+
+  # prefix names a sub-path clash after the entry it came from.
+  def prefix($m; $k):
+    if ($m | has("value")) then $m
+    else {clash: ($m.clash | map(if . == "" then $k else $k + "." + . end))}
+    end;
+
   # recordingsOf reads an entry a side may not have, or may not have as an object.
   def recordingsOf: if type == "object" then (.recordings // {}) else {} end;
 
@@ -235,7 +336,12 @@ if ! jq -n \
       if ($A | has($k)) and ($T | has($k)) then
         (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
          else
-           (mergeChanged(($B[$k] // {}); $A[$k]; $T[$k]; $k)) as $m
+           # The base decides which rule this is: an entry it HAS is one both
+           # sides changed, an entry it lacks is one both sides added.
+           (if ($B | has($k))
+            then mergeChanged(($B[$k] // {}); $A[$k]; $T[$k]; $k)
+            else prefix(mergeAdded($A[$k]; $T[$k]; 0); $k)
+            end) as $m
            | if ($m | has("value"))
              # An entry left holding nothing (both sides deleted a member, and
              # they were all the entry had) is a deletion, not an empty record.

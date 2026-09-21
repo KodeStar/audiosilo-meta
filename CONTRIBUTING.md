@@ -257,6 +257,14 @@ touched merges when the two changes are independent one level down:
   script), a characters pull request and a recaps pull request for the same book
   merge, because each wrote a different **member** of that book's entry.
 
+A record **both** pull requests ADDED is not that case at all - the base has no
+version of it to disagree with - so in every family the two copies merge when
+neither contradicts the other: the `sources` lists are unioned, a series gains the
+books only one side saw, the same authors or narrators in another order keep the
+order already on `main`, a field only one side filled in is taken, and a field
+both sides state differently (a different name, a different title) is still a
+refusal. Two overlapping library imports collide on exactly this.
+
 It refuses (exit 5) the cases that are real disagreements: the same record - or
 the same recording, or the same community member - edited on both sides, and one
 side deleting what the other edited. Those need a person to decide which fact is
