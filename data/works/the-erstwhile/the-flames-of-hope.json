@@ -8393,6 +8393,9 @@
       "authors": [
         "audrey-howard"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-flight-of-swallows",
       "language": "en",
       "license": "CC0-1.0",
@@ -8406,6 +8409,159 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1488864,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1479947,
+              "start_ms": 1488864,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1485938,
+              "start_ms": 2968811,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1385349,
+              "start_ms": 4454749,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1523972,
+              "start_ms": 5840098,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1385395,
+              "start_ms": 7364070,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1448182,
+              "start_ms": 8749465,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1365426,
+              "start_ms": 10197647,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1470938,
+              "start_ms": 11563073,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1374714,
+              "start_ms": 13034011,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1367237,
+              "start_ms": 14408725,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1411355,
+              "start_ms": 15775962,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1426634,
+              "start_ms": 17187317,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1414327,
+              "start_ms": 18613951,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1357949,
+              "start_ms": 20028278,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1342020,
+              "start_ms": 21386227,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1442842,
+              "start_ms": 22728247,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1362222,
+              "start_ms": 24171089,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1316757,
+              "start_ms": 25533311,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1365658,
+              "start_ms": 26850068,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1464250,
+              "start_ms": 28215726,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1375643,
+              "start_ms": 29679976,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1397888,
+              "start_ms": 31055619,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1456820,
+              "start_ms": 32453507,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1393940,
+              "start_ms": 33910327,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1526851,
+              "start_ms": 35304267,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1406247,
+              "start_ms": 36831118,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1445164,
+              "start_ms": 38237365,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1354281,
+              "start_ms": 39682529,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1620010,
+              "start_ms": 41036810,
+              "title": "Chapter 30"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UwSAMsf1L.jpg",
           "id": "carole-boyd-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -8420,6 +8576,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0036JV9YI",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0036JV9YI",
+              "type": "libex-import"
             }
           ],
           "work": "the-flight-of-swallows"
@@ -8430,6 +8590,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0036JV9YI",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0036JV9YI",
+          "type": "libex-import"
         }
       ],
       "title": "The Flight of Swallows"

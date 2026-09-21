@@ -12812,6 +12812,13 @@
       "authors": [
         "austin-miller"
       ],
+      "genres": [
+        "classics",
+        "fantasy",
+        "horror",
+        "occult",
+        "short-stories"
+      ],
       "id": "mysterious-happenings-and-conundrums-inc",
       "language": "en",
       "license": "CC0-1.0",
@@ -12825,6 +12832,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 11517,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1326045,
+              "start_ms": 11517,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 380157,
+              "start_ms": 1337562,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 608038,
+              "start_ms": 1717719,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 549105,
+              "start_ms": 2325757,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 410111,
+              "start_ms": 2874862,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1137778,
+              "start_ms": 3284973,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 372634,
+              "start_ms": 4422751,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 376395,
+              "start_ms": 4795385,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1041461,
+              "start_ms": 5171780,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1530009,
+              "start_ms": 6213241,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 343423,
+              "start_ms": 7743250,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 24149,
+              "start_ms": 8086673,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iWJPN9HNL.jpg",
           "id": "barbara-benjamin-creel-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -12839,6 +12914,10 @@
               "imported_at": "2026-09-21",
               "ref": "B012BHXGI2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B012BHXGI2",
+              "type": "libex-import"
             }
           ],
           "work": "mysterious-happenings-and-conundrums-inc"
@@ -12849,6 +12928,10 @@
           "imported_at": "2026-09-21",
           "ref": "B012BHXGI2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B012BHXGI2",
+          "type": "libex-import"
         }
       ],
       "title": "Mysterious Happenings and Conundrums, Inc."

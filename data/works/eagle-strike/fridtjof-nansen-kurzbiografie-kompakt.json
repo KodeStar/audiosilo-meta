@@ -7740,6 +7740,12 @@
       "authors": [
         "alice-munro"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "psychological-thriller",
+        "short-stories"
+      ],
       "id": "friend-of-my-youth",
       "language": "en",
       "license": "CC0-1.0",
@@ -7753,6 +7759,114 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 9915,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3522884,
+              "start_ms": 9915,
+              "title": "Friend of My Youth"
+            },
+            {
+              "length_ms": 3058578,
+              "start_ms": 3532799,
+              "title": "Five Points"
+            },
+            {
+              "length_ms": 3091,
+              "start_ms": 6591377,
+              "title": "Meneseteung"
+            },
+            {
+              "length_ms": 442128,
+              "start_ms": 6594468,
+              "title": "I"
+            },
+            {
+              "length_ms": 475846,
+              "start_ms": 7036596,
+              "title": "II"
+            },
+            {
+              "length_ms": 788178,
+              "start_ms": 7512442,
+              "title": "III"
+            },
+            {
+              "length_ms": 917954,
+              "start_ms": 8300620,
+              "title": "IV"
+            },
+            {
+              "length_ms": 512394,
+              "start_ms": 9218574,
+              "title": "V"
+            },
+            {
+              "length_ms": 351085,
+              "start_ms": 9730968,
+              "title": "VI"
+            },
+            {
+              "length_ms": 4013638,
+              "start_ms": 10082053,
+              "title": "Hold Me Fast, Dont Let Me Pass"
+            },
+            {
+              "length_ms": 3922663,
+              "start_ms": 14095691,
+              "title": "Oranges and Apples"
+            },
+            {
+              "length_ms": 2532739,
+              "start_ms": 18018354,
+              "title": "Pictures of the Ice"
+            },
+            {
+              "length_ms": 3165669,
+              "start_ms": 20551093,
+              "title": "Goodness and Mercy"
+            },
+            {
+              "length_ms": 3448,
+              "start_ms": 23716762,
+              "title": "Oh, What Avails"
+            },
+            {
+              "length_ms": 1852476,
+              "start_ms": 23720210,
+              "title": "I. Deadeye Dick"
+            },
+            {
+              "length_ms": 1773656,
+              "start_ms": 25572686,
+              "title": "II. Frazil Ice"
+            },
+            {
+              "length_ms": 1259775,
+              "start_ms": 27346342,
+              "title": "III. Rose Matilda"
+            },
+            {
+              "length_ms": 3647901,
+              "start_ms": 28606117,
+              "title": "Differently"
+            },
+            {
+              "length_ms": 3913037,
+              "start_ms": 32254018,
+              "title": "Wigtime"
+            },
+            {
+              "length_ms": 36003,
+              "start_ms": 36167055,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813J7K3WG3L.jpg",
           "id": "beth-fowler-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -7767,6 +7881,10 @@
               "imported_at": "2026-09-21",
               "ref": "1665103175",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1665103175",
+              "type": "libex-import"
             }
           ],
           "work": "friend-of-my-youth"
@@ -7777,6 +7895,10 @@
           "imported_at": "2026-09-21",
           "ref": "1665103175",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1665103175",
+          "type": "libex-import"
         }
       ],
       "title": "Friend of My Youth"

@@ -791,6 +791,11 @@
       "authors": [
         "barbara-taylor-bradford"
       ],
+      "genres": [
+        "coming-of-age",
+        "literary-fiction",
+        "womens-fiction"
+      ],
       "id": "three-weeks-in-paris",
       "language": "en",
       "license": "CC0-1.0",
@@ -804,6 +809,174 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1493322,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 643611,
+              "start_ms": 1493322,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1981405,
+              "start_ms": 2136933,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1029898,
+              "start_ms": 4118338,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1026833,
+              "start_ms": 5148236,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1102530,
+              "start_ms": 6175069,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1151896,
+              "start_ms": 7277599,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1502795,
+              "start_ms": 8429495,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 799092,
+              "start_ms": 9932290,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 816321,
+              "start_ms": 10731382,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 751769,
+              "start_ms": 11547703,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1691527,
+              "start_ms": 12299472,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1028876,
+              "start_ms": 13990999,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1218769,
+              "start_ms": 15019875,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 649369,
+              "start_ms": 16238644,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1093613,
+              "start_ms": 16888013,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1021632,
+              "start_ms": 17981626,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 705051,
+              "start_ms": 19003258,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 915795,
+              "start_ms": 19708309,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 880222,
+              "start_ms": 20624104,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 992607,
+              "start_ms": 21504326,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1310766,
+              "start_ms": 22496933,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1426680,
+              "start_ms": 23807699,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 890671,
+              "start_ms": 25234379,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 993164,
+              "start_ms": 26125050,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 713874,
+              "start_ms": 27118214,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 2054362,
+              "start_ms": 27832088,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1005703,
+              "start_ms": 29886450,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 2260277,
+              "start_ms": 30892153,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 987173,
+              "start_ms": 33152430,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 1797410,
+              "start_ms": 34139603,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 992328,
+              "start_ms": 35937013,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 1189001,
+              "start_ms": 36929341,
+              "title": "Chapter 33"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81eePIy4jNL.jpg",
           "id": "barbara-rosenblat-2012",
           "language": "en",
           "license": "CC0-1.0",
@@ -818,6 +991,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00796SW9E",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00796SW9E",
+              "type": "libex-import"
             }
           ],
           "work": "three-weeks-in-paris"
@@ -828,6 +1005,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00796SW9E",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00796SW9E",
+          "type": "libex-import"
         }
       ],
       "title": "Three Weeks in Paris"

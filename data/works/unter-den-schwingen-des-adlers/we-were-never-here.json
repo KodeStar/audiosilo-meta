@@ -1691,6 +1691,12 @@
       "authors": [
         "betsy-carter"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "parenting-relationships",
+        "religion-spirituality"
+      ],
       "id": "we-were-strangers-once",
       "language": "en",
       "license": "CC0-1.0",
@@ -1704,6 +1710,164 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1252717,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1388646,
+              "start_ms": 1252717,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 899820,
+              "start_ms": 2641363,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1298181,
+              "start_ms": 3541183,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 723627,
+              "start_ms": 4839364,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1213150,
+              "start_ms": 5562991,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1153428,
+              "start_ms": 6776141,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1923355,
+              "start_ms": 7929569,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1426170,
+              "start_ms": 9852924,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1588431,
+              "start_ms": 11279094,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1853417,
+              "start_ms": 12867525,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 712063,
+              "start_ms": 14720942,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1212082,
+              "start_ms": 15433005,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1783153,
+              "start_ms": 16645087,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1218397,
+              "start_ms": 18428240,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1156075,
+              "start_ms": 19646637,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 827977,
+              "start_ms": 20802712,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1032313,
+              "start_ms": 21630689,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 991353,
+              "start_ms": 22663002,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1645691,
+              "start_ms": 23654355,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 741320,
+              "start_ms": 25300046,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 751026,
+              "start_ms": 26041366,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1581325,
+              "start_ms": 26792392,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1438894,
+              "start_ms": 28373717,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 779447,
+              "start_ms": 29812611,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1381634,
+              "start_ms": 30592058,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 816878,
+              "start_ms": 31973692,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 509632,
+              "start_ms": 32790570,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1439823,
+              "start_ms": 33300202,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1016662,
+              "start_ms": 34740025,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 406860,
+              "start_ms": 35756687,
+              "title": "Chapter 31"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TxBBQkLeL.jpg",
           "id": "suzanne-toren-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -1718,6 +1882,10 @@
               "imported_at": "2026-09-21",
               "ref": "B075NS853N",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B075NS853N",
+              "type": "libex-import"
             }
           ],
           "work": "we-were-strangers-once"
@@ -1728,6 +1896,10 @@
           "imported_at": "2026-09-21",
           "ref": "B075NS853N",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B075NS853N",
+          "type": "libex-import"
         }
       ],
       "title": "We Were Strangers Once"

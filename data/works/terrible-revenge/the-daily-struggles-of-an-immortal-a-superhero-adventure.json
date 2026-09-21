@@ -1174,6 +1174,9 @@
       "authors": [
         "charlotte-bingham"
       ],
+      "genres": [
+        "historical-fiction"
+      ],
       "id": "the-daisy-club",
       "language": "en",
       "license": "CC0-1.0",
@@ -1187,6 +1190,84 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2131546,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3020684,
+              "start_ms": 2131546,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3605780,
+              "start_ms": 5152230,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3652592,
+              "start_ms": 8758010,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3256320,
+              "start_ms": 12410602,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2920885,
+              "start_ms": 15666922,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3393364,
+              "start_ms": 18587807,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2752819,
+              "start_ms": 21981171,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4031263,
+              "start_ms": 24733990,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2041406,
+              "start_ms": 28765253,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2245788,
+              "start_ms": 30806659,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3229478,
+              "start_ms": 33052447,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3836308,
+              "start_ms": 36281925,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1980987,
+              "start_ms": 40118233,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 278268,
+              "start_ms": 42099220,
+              "title": "Chapter 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MYfscBO6L.jpg",
           "id": "kim-hicks-2010",
           "language": "en",
           "license": "CC0-1.0",
@@ -1201,6 +1282,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0036JQ74K",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0036JQ74K",
+              "type": "libex-import"
             }
           ],
           "work": "the-daisy-club"
@@ -1211,6 +1296,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0036JQ74K",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0036JQ74K",
+          "type": "libex-import"
         }
       ],
       "title": "The Daisy Club"

@@ -2480,6 +2480,11 @@
       "authors": [
         "ray-bradbury"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "the-creatures-that-time-forgot",
       "language": "en",
       "license": "CC0-1.0",
@@ -2493,6 +2498,134 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 691304,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 768488,
+              "start_ms": 691304,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 253423,
+              "start_ms": 1459792,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 240605,
+              "start_ms": 1713215,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 386055,
+              "start_ms": 1953820,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 125666,
+              "start_ms": 2339875,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 106765,
+              "start_ms": 2465541,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 260528,
+              "start_ms": 2572306,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 298237,
+              "start_ms": 2832834,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 157571,
+              "start_ms": 3131071,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 243531,
+              "start_ms": 3288642,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 323733,
+              "start_ms": 3532173,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 322664,
+              "start_ms": 3855906,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 212138,
+              "start_ms": 4178570,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 362835,
+              "start_ms": 4390708,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 138066,
+              "start_ms": 4753543,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 227602,
+              "start_ms": 4891609,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 328655,
+              "start_ms": 5119211,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 98592,
+              "start_ms": 5447866,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 285187,
+              "start_ms": 5546458,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 243159,
+              "start_ms": 5831645,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 181116,
+              "start_ms": 6074804,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 125527,
+              "start_ms": 6255920,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 167091,
+              "start_ms": 6381447,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 105093,
+              "start_ms": 6548538,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91YPSvpggbL.jpg",
           "id": "mike-vendetti-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -2507,6 +2640,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00TYOBZHA",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00TYOBZHA",
+              "type": "libex-import"
             }
           ],
           "work": "the-creatures-that-time-forgot"
@@ -2517,6 +2654,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00TYOBZHA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00TYOBZHA",
+          "type": "libex-import"
         }
       ],
       "title": "The Creatures That Time Forgot"

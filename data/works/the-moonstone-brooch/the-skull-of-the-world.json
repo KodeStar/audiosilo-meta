@@ -2500,6 +2500,9 @@
       "authors": [
         "l-ron-hubbard"
       ],
+      "genres": [
+        "short-stories"
+      ],
       "id": "the-sky-devil",
       "language": "en",
       "license": "CC0-1.0",
@@ -2513,6 +2516,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 973102,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 502155,
+              "start_ms": 973102,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 611103,
+              "start_ms": 1475257,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 719586,
+              "start_ms": 2086360,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 527000,
+              "start_ms": 2805946,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 489895,
+              "start_ms": 3332946,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 359909,
+              "start_ms": 3822841,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 708952,
+              "start_ms": 4182750,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1901436,
+              "start_ms": 4891702,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1918665,
+              "start_ms": 6793138,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 153855,
+              "start_ms": 8711803,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71JTlS7atoL.jpg",
           "id": "r-f-daley-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -2532,6 +2593,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00C9M10LU",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00C9M10LU",
+              "type": "libex-import"
             }
           ],
           "work": "the-sky-devil"
@@ -2542,6 +2607,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00C9M10LU",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00C9M10LU",
+          "type": "libex-import"
         }
       ],
       "title": "The Sky Devil"

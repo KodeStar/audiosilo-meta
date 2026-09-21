@@ -5283,6 +5283,10 @@
       "authors": [
         "aeschylus"
       ],
+      "genres": [
+        "classics",
+        "drama-plays"
+      ],
       "id": "the-oresteia-trilogy",
       "language": "en",
       "license": "CC0-1.0",
@@ -5296,6 +5300,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 5414544,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3865867,
+              "start_ms": 5414544,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3797297,
+              "start_ms": 9280411,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LW58wR0nL.jpg",
           "id": "keira-grace-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -5310,6 +5332,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0812BRB2T",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0812BRB2T",
+              "type": "libex-import"
             }
           ],
           "work": "the-oresteia-trilogy"
@@ -5320,6 +5346,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0812BRB2T",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0812BRB2T",
+          "type": "libex-import"
         }
       ],
       "title": "The Oresteia Trilogy"

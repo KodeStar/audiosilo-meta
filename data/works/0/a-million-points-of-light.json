@@ -3887,6 +3887,10 @@
         "andre-norton",
         "sherwood-smith"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction"
+      ],
       "id": "a-mind-for-trade",
       "language": "en",
       "license": "CC0-1.0",
@@ -3900,6 +3904,124 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1421015,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1353723,
+              "start_ms": 1421015,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1783153,
+              "start_ms": 2774738,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1548214,
+              "start_ms": 4557891,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1138567,
+              "start_ms": 6106105,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1901621,
+              "start_ms": 7244672,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1014201,
+              "start_ms": 9146293,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1105966,
+              "start_ms": 10160494,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1851234,
+              "start_ms": 11266460,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2384271,
+              "start_ms": 13117694,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1591589,
+              "start_ms": 15501965,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1416742,
+              "start_ms": 17093554,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1203630,
+              "start_ms": 18510296,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1028412,
+              "start_ms": 19713926,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1793463,
+              "start_ms": 20742338,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1271014,
+              "start_ms": 22535801,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1330643,
+              "start_ms": 23806815,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1186725,
+              "start_ms": 25137458,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1366169,
+              "start_ms": 26324183,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1627672,
+              "start_ms": 27690352,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1092220,
+              "start_ms": 29318024,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1524390,
+              "start_ms": 30410244,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1503585,
+              "start_ms": 31934634,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1RK2xDC3fL.jpg",
           "id": "steve-menasche-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -3914,6 +4036,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01673503K",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01673503K",
+              "type": "libex-import"
             }
           ],
           "work": "a-mind-for-trade"
@@ -3924,6 +4050,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01673503K",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01673503K",
+          "type": "libex-import"
         }
       ],
       "title": "A Mind for Trade"

@@ -10355,6 +10355,10 @@
       "authors": [
         "alice-hoffman"
       ],
+      "genres": [
+        "magical-realism",
+        "parenting-relationships"
+      ],
       "id": "skylight-confessions",
       "language": "en",
       "license": "CC0-1.0",
@@ -10368,6 +10372,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4276651,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4488742,
+              "start_ms": 4276651,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4535136,
+              "start_ms": 8765393,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4589610,
+              "start_ms": 13300529,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3785967,
+              "start_ms": 17890139,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3596307,
+              "start_ms": 21676106,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Q2yOgePTL.jpg",
           "id": "mare-winningham-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -10382,6 +10419,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V016S2",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V016S2",
+              "type": "libex-import"
             }
           ],
           "work": "skylight-confessions"
@@ -10392,6 +10433,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V016S2",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V016S2",
+          "type": "libex-import"
         }
       ],
       "title": "Skylight Confessions"

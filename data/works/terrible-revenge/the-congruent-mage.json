@@ -6287,6 +6287,11 @@
       "authors": [
         "ambrose-ibsen"
       ],
+      "genres": [
+        "fantasy",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
       "id": "the-conqueror-worm",
       "language": "en",
       "license": "CC0-1.0",
@@ -6300,6 +6305,149 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 31880,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 137206,
+              "start_ms": 31880,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 539306,
+              "start_ms": 169086,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1366958,
+              "start_ms": 708392,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1231656,
+              "start_ms": 2075350,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1051980,
+              "start_ms": 3307006,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1102390,
+              "start_ms": 4358986,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 551752,
+              "start_ms": 5461376,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1059224,
+              "start_ms": 6013128,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1127468,
+              "start_ms": 7072352,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 560576,
+              "start_ms": 8199820,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1430256,
+              "start_ms": 8760396,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 710228,
+              "start_ms": 10190652,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 559275,
+              "start_ms": 10900880,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 665994,
+              "start_ms": 11460155,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 755902,
+              "start_ms": 12126149,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 711111,
+              "start_ms": 12882051,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 672728,
+              "start_ms": 13593162,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1007374,
+              "start_ms": 14265890,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2082040,
+              "start_ms": 15273264,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 992235,
+              "start_ms": 17355304,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1172003,
+              "start_ms": 18347539,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 909270,
+              "start_ms": 19519542,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 376720,
+              "start_ms": 20428812,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1079356,
+              "start_ms": 20805532,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1831218,
+              "start_ms": 21884888,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 252191,
+              "start_ms": 23716106,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 37267,
+              "start_ms": 23968297,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HrXa2QiDL.jpg",
           "id": "jake-urry-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -6314,6 +6462,10 @@
               "imported_at": "2026-09-21",
               "ref": "B075QJ9HPL",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B075QJ9HPL",
+              "type": "libex-import"
             }
           ],
           "work": "the-conqueror-worm"
@@ -6324,6 +6476,10 @@
           "imported_at": "2026-09-21",
           "ref": "B075QJ9HPL",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B075QJ9HPL",
+          "type": "libex-import"
         }
       ],
       "title": "The Conqueror Worm"

@@ -9658,6 +9658,10 @@
       "authors": [
         "david-gerrold"
       ],
+      "genres": [
+        "ghost-stories",
+        "horror"
+      ],
       "id": "little-horrors",
       "language": "en",
       "license": "CC0-1.0",
@@ -9671,6 +9675,54 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 18366,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1079960,
+              "start_ms": 18366,
+              "title": "Skinflowers"
+            },
+            {
+              "length_ms": 2836897,
+              "start_ms": 1098326,
+              "title": "Rex"
+            },
+            {
+              "length_ms": 3045134,
+              "start_ms": 3935223,
+              "title": "The Seminar From Hell"
+            },
+            {
+              "length_ms": 3112495,
+              "start_ms": 6980357,
+              "title": "...And Eight Rabid Pigs"
+            },
+            {
+              "length_ms": 3761028,
+              "start_ms": 10092852,
+              "title": "Chester"
+            },
+            {
+              "length_ms": 2292064,
+              "start_ms": 13853880,
+              "title": "Sales Of A Deathman"
+            },
+            {
+              "length_ms": 3597699,
+              "start_ms": 16145944,
+              "title": "Night Train To Paris"
+            },
+            {
+              "length_ms": 28234,
+              "start_ms": 19743643,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cQpnEQO+L.jpg",
           "id": "daniel-penz-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -9685,6 +9737,10 @@
               "imported_at": "2026-09-21",
               "ref": "B09M7FG7X9",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B09M7FG7X9",
+              "type": "libex-import"
             }
           ],
           "work": "little-horrors"
@@ -9695,6 +9751,10 @@
           "imported_at": "2026-09-21",
           "ref": "B09M7FG7X9",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B09M7FG7X9",
+          "type": "libex-import"
         }
       ],
       "title": "Little Horrors"

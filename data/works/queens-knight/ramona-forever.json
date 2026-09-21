@@ -10696,6 +10696,9 @@
       "authors": [
         "clyde-edgerton"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "raney",
       "language": "en",
       "license": "CC0-1.0",
@@ -10709,6 +10712,139 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 741970,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1489607,
+              "start_ms": 741970,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 803968,
+              "start_ms": 2231577,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 414476,
+              "start_ms": 3035545,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1509065,
+              "start_ms": 3450021,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1312392,
+              "start_ms": 4959086,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1473817,
+              "start_ms": 6271478,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1163923,
+              "start_ms": 7745295,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1292748,
+              "start_ms": 8909218,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1004077,
+              "start_ms": 10201966,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1167035,
+              "start_ms": 11206043,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 746150,
+              "start_ms": 12373078,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 732357,
+              "start_ms": 13119228,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1338398,
+              "start_ms": 13851585,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 759943,
+              "start_ms": 15189983,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 468021,
+              "start_ms": 15949926,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1091199,
+              "start_ms": 16417947,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 998597,
+              "start_ms": 17509146,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 752559,
+              "start_ms": 18507743,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1008536,
+              "start_ms": 19260302,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 734401,
+              "start_ms": 20268838,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 652899,
+              "start_ms": 21003239,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 826398,
+              "start_ms": 21656138,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 312633,
+              "start_ms": 22482536,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 832575,
+              "start_ms": 22795169,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 704958,
+              "start_ms": 23627744,
+              "title": "Chapter 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VuKM38X0L.jpg",
           "id": "ruth-ann-phimister-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -10723,6 +10859,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0056J35IE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0056J35IE",
+              "type": "libex-import"
             }
           ],
           "work": "raney"
@@ -10733,6 +10873,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0056J35IE",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0056J35IE",
+          "type": "libex-import"
         }
       ],
       "title": "Raney"

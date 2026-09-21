@@ -17220,6 +17220,12 @@
       "authors": [
         "alice-kuipers"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction",
+        "young-adult"
+      ],
       "id": "life-on-the-refrigerator-door",
       "language": "en",
       "license": "CC0-1.0",
@@ -17233,6 +17239,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 746800,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1352887,
+              "start_ms": 746800,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 920021,
+              "start_ms": 2099687,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 869076,
+              "start_ms": 3019708,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 358052,
+              "start_ms": 3888784,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71a2M4tf7yL.jpg",
           "id": "dana-delany-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -17248,6 +17282,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0QQTG",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0QQTG",
+              "type": "libex-import"
             }
           ],
           "work": "life-on-the-refrigerator-door"
@@ -17258,6 +17296,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0QQTG",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0QQTG",
+          "type": "libex-import"
         }
       ],
       "title": "Life on the Refrigerator Door"

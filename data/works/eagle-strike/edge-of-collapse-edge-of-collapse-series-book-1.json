@@ -9259,6 +9259,9 @@
       "authors": [
         "kirk-weddell"
       ],
+      "genres": [
+        "science-fiction"
+      ],
       "id": "edge-of-oblivion-kirk-weddell",
       "language": "en",
       "license": "CC0-1.0",
@@ -9272,6 +9275,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19782,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 466558,
+              "start_ms": 19782,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1150177,
+              "start_ms": 486340,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 378462,
+              "start_ms": 1636517,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 709392,
+              "start_ms": 2014979,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 424878,
+              "start_ms": 2724371,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2708770,
+              "start_ms": 3149249,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2326894,
+              "start_ms": 5858019,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 976979,
+              "start_ms": 8184913,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 778913,
+              "start_ms": 9161892,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 674771,
+              "start_ms": 9940805,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 325404,
+              "start_ms": 10615576,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1412307,
+              "start_ms": 10940980,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1657626,
+              "start_ms": 12353287,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1363266,
+              "start_ms": 14010913,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2450796,
+              "start_ms": 15374179,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 853379,
+              "start_ms": 17824975,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1292956,
+              "start_ms": 18678354,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1898091,
+              "start_ms": 19971310,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 434073,
+              "start_ms": 21869401,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 413036,
+              "start_ms": 22303474,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1559103,
+              "start_ms": 22716510,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 564778,
+              "start_ms": 24275613,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 38103,
+              "start_ms": 24840391,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WoKeTCxcL.jpg",
           "id": "james-gillies-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -9286,6 +9412,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0GF9ZSDZ3",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0GF9ZSDZ3",
+              "type": "libex-import"
             }
           ],
           "work": "edge-of-oblivion-kirk-weddell"
@@ -9296,6 +9426,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0GF9ZSDZ3",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0GF9ZSDZ3",
+          "type": "libex-import"
         }
       ],
       "title": "Edge of Oblivion"

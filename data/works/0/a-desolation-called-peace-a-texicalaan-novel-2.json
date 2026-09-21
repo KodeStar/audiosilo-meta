@@ -6429,6 +6429,12 @@
       "authors": [
         "harry-turtledove"
       ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "hard-science-fiction",
+        "science-fiction"
+      ],
       "id": "a-different-flesh",
       "language": "en",
       "license": "CC0-1.0",
@@ -6442,6 +6448,49 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 18015,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 5304462,
+              "start_ms": 18015,
+              "title": "Vilest Beast"
+            },
+            {
+              "length_ms": 2554473,
+              "start_ms": 5322477,
+              "title": "And So to Bed"
+            },
+            {
+              "length_ms": 4122795,
+              "start_ms": 7876950,
+              "title": "Around the Salt Lick"
+            },
+            {
+              "length_ms": 3715006,
+              "start_ms": 11999745,
+              "title": "The Iron Elephant"
+            },
+            {
+              "length_ms": 7119330,
+              "start_ms": 15714751,
+              "title": "Though the Heavens Fall"
+            },
+            {
+              "length_ms": 8637822,
+              "start_ms": 22834081,
+              "title": "Trapping Run"
+            },
+            {
+              "length_ms": 5995252,
+              "start_ms": 31471903,
+              "title": "Freedom"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917snBd4hXL.jpg",
           "id": "paul-woodson-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -6456,6 +6505,10 @@
               "imported_at": "2026-09-21",
               "ref": "B07LHHLH4M",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B07LHHLH4M",
+              "type": "libex-import"
             }
           ],
           "work": "a-different-flesh"
@@ -6466,6 +6519,10 @@
           "imported_at": "2026-09-21",
           "ref": "B07LHHLH4M",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B07LHHLH4M",
+          "type": "libex-import"
         }
       ],
       "title": "A Different Flesh"

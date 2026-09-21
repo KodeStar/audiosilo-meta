@@ -2124,6 +2124,12 @@
       "authors": [
         "james-morrow"
       ],
+      "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "literary-fiction",
+        "science-fiction"
+      ],
       "id": "the-asylum-of-dr-caligari",
       "language": "en",
       "license": "CC0-1.0",
@@ -2137,6 +2143,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3551260,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3290128,
+              "start_ms": 3551260,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4015566,
+              "start_ms": 6841388,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3474541,
+              "start_ms": 10856954,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2682416,
+              "start_ms": 14331495,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2087520,
+              "start_ms": 17013911,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-LfbpX6gL.jpg",
           "id": "paul-boehmer-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -2151,6 +2190,10 @@
               "imported_at": "2026-09-21",
               "ref": "B074WFFRNQ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B074WFFRNQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-asylum-of-dr-caligari"
@@ -2161,6 +2204,10 @@
           "imported_at": "2026-09-21",
           "ref": "B074WFFRNQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B074WFFRNQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Asylum of Dr. Caligari"

@@ -3371,6 +3371,12 @@
       "authors": [
         "alexi-zentner"
       ],
+      "genres": [
+        "ghost-stories",
+        "horror",
+        "literary-fiction",
+        "parenting-relationships"
+      ],
       "id": "touch-alexi-zentner",
       "language": "en",
       "license": "CC0-1.0",
@@ -3384,6 +3390,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3281026,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1993758,
+              "start_ms": 3281026,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2193868,
+              "start_ms": 5274784,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2094022,
+              "start_ms": 7468652,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1329900,
+              "start_ms": 9562674,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2502229,
+              "start_ms": 10892574,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1505257,
+              "start_ms": 13394803,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2557167,
+              "start_ms": 14900060,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3225948,
+              "start_ms": 17457227,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2095183,
+              "start_ms": 20683175,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2017953,
+              "start_ms": 22778358,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 863550,
+              "start_ms": 24796311,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1800197,
+              "start_ms": 25659861,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51XkKGpEDYL.jpg",
           "id": "norman-dietz-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -3398,6 +3472,10 @@
               "imported_at": "2026-09-21",
               "ref": "B004Z1D2IM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B004Z1D2IM",
+              "type": "libex-import"
             }
           ],
           "work": "touch-alexi-zentner"
@@ -3408,6 +3486,10 @@
           "imported_at": "2026-09-21",
           "ref": "B004Z1D2IM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B004Z1D2IM",
+          "type": "libex-import"
         }
       ],
       "title": "Touch"

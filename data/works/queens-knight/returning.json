@@ -2025,6 +2025,10 @@
       "authors": [
         "alan-lightman"
       ],
+      "genres": [
+        "literary-fiction",
+        "psychological-thriller"
+      ],
       "id": "reunion-alan-lightman",
       "language": "en",
       "license": "CC0-1.0",
@@ -2038,6 +2042,84 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 12259,
+              "start_ms": 0,
+              "title": "Reunion: Intro"
+            },
+            {
+              "length_ms": 825655,
+              "start_ms": 12259,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1624119,
+              "start_ms": 837914,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1244241,
+              "start_ms": 2462033,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 2062303,
+              "start_ms": 3706274,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1850119,
+              "start_ms": 5768577,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1449598,
+              "start_ms": 7618696,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 908039,
+              "start_ms": 9068294,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1699050,
+              "start_ms": 9976333,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1233606,
+              "start_ms": 11675383,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1940375,
+              "start_ms": 12908989,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1632525,
+              "start_ms": 14849364,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1840645,
+              "start_ms": 16481889,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1886690,
+              "start_ms": 18322534,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 29209,
+              "start_ms": 20209224,
+              "title": "Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61jBDR7axfL.jpg",
           "id": "scott-brick-2004",
           "language": "en",
           "license": "CC0-1.0",
@@ -2052,6 +2134,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V5IYK0",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V5IYK0",
+              "type": "libex-import"
             }
           ],
           "work": "reunion-alan-lightman"
@@ -2062,6 +2148,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V5IYK0",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V5IYK0",
+          "type": "libex-import"
         }
       ],
       "title": "Reunion"

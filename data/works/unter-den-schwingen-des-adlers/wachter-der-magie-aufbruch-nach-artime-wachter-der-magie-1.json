@@ -9542,6 +9542,14 @@
       "authors": [
         "harry-turtledove"
       ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "hard-science-fiction",
+        "historical-fiction",
+        "history",
+        "science-fiction"
+      ],
       "id": "wages-of-sin-harry-turtledove",
       "language": "en",
       "license": "CC0-1.0",
@@ -9555,6 +9563,109 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17106,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2432390,
+              "start_ms": 17106,
+              "title": "I"
+            },
+            {
+              "length_ms": 2293132,
+              "start_ms": 2449496,
+              "title": "II"
+            },
+            {
+              "length_ms": 2412182,
+              "start_ms": 4742628,
+              "title": "III"
+            },
+            {
+              "length_ms": 2217064,
+              "start_ms": 7154810,
+              "title": "IV"
+            },
+            {
+              "length_ms": 2201576,
+              "start_ms": 9371874,
+              "title": "V"
+            },
+            {
+              "length_ms": 2167094,
+              "start_ms": 11573450,
+              "title": "VI"
+            },
+            {
+              "length_ms": 2178566,
+              "start_ms": 13740544,
+              "title": "VII"
+            },
+            {
+              "length_ms": 2221893,
+              "start_ms": 15919110,
+              "title": "VIII"
+            },
+            {
+              "length_ms": 2168186,
+              "start_ms": 18141003,
+              "title": "IX"
+            },
+            {
+              "length_ms": 2075353,
+              "start_ms": 20309189,
+              "title": "X"
+            },
+            {
+              "length_ms": 2238287,
+              "start_ms": 22384542,
+              "title": "XI"
+            },
+            {
+              "length_ms": 2245020,
+              "start_ms": 24622829,
+              "title": "XII"
+            },
+            {
+              "length_ms": 2093581,
+              "start_ms": 26867849,
+              "title": "XIII"
+            },
+            {
+              "length_ms": 2155717,
+              "start_ms": 28961430,
+              "title": "XIV"
+            },
+            {
+              "length_ms": 2363187,
+              "start_ms": 31117147,
+              "title": "XV"
+            },
+            {
+              "length_ms": 2358914,
+              "start_ms": 33480334,
+              "title": "XVI"
+            },
+            {
+              "length_ms": 2413922,
+              "start_ms": 35839248,
+              "title": "XVII"
+            },
+            {
+              "length_ms": 2264335,
+              "start_ms": 38253170,
+              "title": "XVIII"
+            },
+            {
+              "length_ms": 42984,
+              "start_ms": 40517505,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gmtuxTzBL.jpg",
           "id": "ana-clements-2023",
           "language": "en",
           "license": "CC0-1.0",
@@ -9569,6 +9680,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0CNL4ZZF8",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0CNL4ZZF8",
+              "type": "libex-import"
             }
           ],
           "work": "wages-of-sin-harry-turtledove"
@@ -9579,6 +9694,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0CNL4ZZF8",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0CNL4ZZF8",
+          "type": "libex-import"
         }
       ],
       "title": "Wages of Sin"

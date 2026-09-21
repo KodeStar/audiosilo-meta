@@ -8244,6 +8244,11 @@
       "authors": [
         "brian-van-reet"
       ],
+      "genres": [
+        "classics",
+        "literary-fiction",
+        "war-military-fiction"
+      ],
       "id": "spoils",
       "language": "en",
       "license": "CC0-1.0",
@@ -8257,6 +8262,99 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2182815,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1424080,
+              "start_ms": 2182815,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2015492,
+              "start_ms": 3606895,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1166710,
+              "start_ms": 5622387,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2100106,
+              "start_ms": 6789097,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1999563,
+              "start_ms": 8889203,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2683530,
+              "start_ms": 10888766,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 968226,
+              "start_ms": 13572296,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3972516,
+              "start_ms": 14540522,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1344621,
+              "start_ms": 18513038,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2117103,
+              "start_ms": 19857659,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2652508,
+              "start_ms": 21974762,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1555830,
+              "start_ms": 24627270,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1955724,
+              "start_ms": 26183100,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1231354,
+              "start_ms": 28138824,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1973232,
+              "start_ms": 29370178,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1320194,
+              "start_ms": 31343410,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 196952,
+              "start_ms": 32663604,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1ho2DIBAmL.jpg",
           "id": "nicol-zanzarella-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -8273,6 +8371,10 @@
               "imported_at": "2026-09-21",
               "ref": "B06XX882PK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B06XX882PK",
+              "type": "libex-import"
             }
           ],
           "work": "spoils"
@@ -8283,6 +8385,10 @@
           "imported_at": "2026-09-21",
           "ref": "B06XX882PK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B06XX882PK",
+          "type": "libex-import"
         }
       ],
       "title": "Spoils"

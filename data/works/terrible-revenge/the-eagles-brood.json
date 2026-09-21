@@ -1956,6 +1956,13 @@
       "authors": [
         "anthony-riches"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "history",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
       "id": "the-eagles-vengeance-empire-vi",
       "language": "en",
       "license": "CC0-1.0",
@@ -1969,6 +1976,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1557874,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5072446,
+              "start_ms": 1557874,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4335026,
+              "start_ms": 6630320,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4509501,
+              "start_ms": 10965346,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4259283,
+              "start_ms": 15474847,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4416203,
+              "start_ms": 19734130,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4144530,
+              "start_ms": 24150333,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4334794,
+              "start_ms": 28294863,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4449779,
+              "start_ms": 32629657,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 5572603,
+              "start_ms": 37079436,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4033817,
+              "start_ms": 42652039,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3817314,
+              "start_ms": 46685856,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qIgBpeccL.jpg",
           "id": "saul-reichlin-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -1983,6 +2053,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00EIQWEQU",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00EIQWEQU",
+              "type": "libex-import"
             }
           ],
           "work": "the-eagles-vengeance-empire-vi"
@@ -1993,6 +2067,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00EIQWEQU",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00EIQWEQU",
+          "type": "libex-import"
         }
       ],
       "title": "The Eagle's Vengeance: Empire VI"

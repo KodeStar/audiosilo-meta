@@ -10067,6 +10067,11 @@
       "authors": [
         "india-edghill"
       ],
+      "genres": [
+        "historical-fiction",
+        "history",
+        "literary-fiction"
+      ],
       "id": "queenmaker-india-edghill",
       "language": "en",
       "license": "CC0-1.0",
@@ -10080,6 +10085,109 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2695558,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2671502,
+              "start_ms": 2695558,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2590650,
+              "start_ms": 5367060,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2564458,
+              "start_ms": 7957710,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2688778,
+              "start_ms": 10522168,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2654319,
+              "start_ms": 13210946,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2667323,
+              "start_ms": 15865265,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2424395,
+              "start_ms": 18532588,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2688221,
+              "start_ms": 20956983,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2659335,
+              "start_ms": 23645204,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2614520,
+              "start_ms": 26304539,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2546625,
+              "start_ms": 28919059,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2649536,
+              "start_ms": 31465684,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2593576,
+              "start_ms": 34115220,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2722911,
+              "start_ms": 36708796,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2649536,
+              "start_ms": 39431707,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2665140,
+              "start_ms": 42081243,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2659381,
+              "start_ms": 44746383,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2511749,
+              "start_ms": 47405764,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2416547,
+              "start_ms": 49917513,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jDKI01B8L.jpg",
           "id": "suzanne-toren-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -10094,6 +10202,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V1AGQE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V1AGQE",
+              "type": "libex-import"
             }
           ],
           "work": "queenmaker-india-edghill"
@@ -10104,6 +10216,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V1AGQE",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V1AGQE",
+          "type": "libex-import"
         }
       ],
       "title": "Queenmaker"

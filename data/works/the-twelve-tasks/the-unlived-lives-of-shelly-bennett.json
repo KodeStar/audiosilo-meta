@@ -6756,6 +6756,9 @@
       "authors": [
         "robert-a-heinlein"
       ],
+      "genres": [
+        "science-fiction"
+      ],
       "id": "the-unpleasant-profession-of-jonathan-hoag",
       "language": "en",
       "license": "CC0-1.0",
@@ -6769,6 +6772,59 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1071972,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 879293,
+              "start_ms": 1071972,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1420783,
+              "start_ms": 1951265,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1404482,
+              "start_ms": 3372048,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2103171,
+              "start_ms": 4776530,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2005043,
+              "start_ms": 6879701,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1618152,
+              "start_ms": 8884744,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1643648,
+              "start_ms": 10502896,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 325033,
+              "start_ms": 12146544,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1567672,
+              "start_ms": 12471577,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51jcj9fVDPL.jpg",
           "id": "tom-weiner-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -6783,6 +6839,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0030E6M0K",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0030E6M0K",
+              "type": "libex-import"
             }
           ],
           "work": "the-unpleasant-profession-of-jonathan-hoag"
@@ -6793,6 +6853,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0030E6M0K",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0030E6M0K",
+          "type": "libex-import"
         }
       ],
       "title": "The Unpleasant Profession of Jonathan Hoag"

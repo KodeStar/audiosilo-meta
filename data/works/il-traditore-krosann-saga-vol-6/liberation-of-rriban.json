@@ -5591,6 +5591,13 @@
       "authors": [
         "nathaniel-m-wrey"
       ],
+      "genres": [
+        "action-adventure",
+        "dystopian",
+        "fantasy",
+        "science-fiction",
+        "young-adult"
+      ],
       "id": "liberty-bound",
       "language": "en",
       "license": "CC0-1.0",
@@ -5604,6 +5611,194 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 9752,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1070486,
+              "start_ms": 9752,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1217120,
+              "start_ms": 1080238,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 285605,
+              "start_ms": 2297358,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1381564,
+              "start_ms": 2582963,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 656776,
+              "start_ms": 3964527,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1014433,
+              "start_ms": 4621303,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 745987,
+              "start_ms": 5635736,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1809554,
+              "start_ms": 6381723,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1643717,
+              "start_ms": 8191277,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1188072,
+              "start_ms": 9834994,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1261493,
+              "start_ms": 11023066,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1262979,
+              "start_ms": 12284559,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1904454,
+              "start_ms": 13547538,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 738510,
+              "start_ms": 15451992,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 496210,
+              "start_ms": 16190502,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2361469,
+              "start_ms": 16686712,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 770856,
+              "start_ms": 19048181,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 384267,
+              "start_ms": 19819037,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2459805,
+              "start_ms": 20203304,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 729710,
+              "start_ms": 22663109,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 834362,
+              "start_ms": 23392819,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1460442,
+              "start_ms": 24227181,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1072669,
+              "start_ms": 25687623,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 646536,
+              "start_ms": 26760292,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 2118820,
+              "start_ms": 27406828,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 175682,
+              "start_ms": 29525648,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 2066413,
+              "start_ms": 29701330,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1424219,
+              "start_ms": 31767743,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 588393,
+              "start_ms": 33191962,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 707744,
+              "start_ms": 33780355,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 368965,
+              "start_ms": 34488099,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 516527,
+              "start_ms": 34857064,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 989471,
+              "start_ms": 35373591,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 687542,
+              "start_ms": 36363062,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 377138,
+              "start_ms": 37050604,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 22313,
+              "start_ms": 37427742,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gLRoME-6L.jpg",
           "id": "hugh-kermode-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -5618,6 +5813,10 @@
               "imported_at": "2026-09-21",
               "ref": "B08FBMBQGS",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B08FBMBQGS",
+              "type": "libex-import"
             }
           ],
           "work": "liberty-bound"
@@ -5628,6 +5827,10 @@
           "imported_at": "2026-09-21",
           "ref": "B08FBMBQGS",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B08FBMBQGS",
+          "type": "libex-import"
         }
       ],
       "title": "Liberty Bound"

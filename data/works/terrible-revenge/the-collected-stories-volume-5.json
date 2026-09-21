@@ -3144,6 +3144,10 @@
       "authors": [
         "bentley-little"
       ],
+      "genres": [
+        "horror",
+        "short-stories"
+      ],
       "id": "the-collection-volume-2",
       "language": "en",
       "license": "CC0-1.0",
@@ -3157,6 +3161,189 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 36316,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 28235,
+              "start_ms": 36316,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1213707,
+              "start_ms": 64551,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 42725,
+              "start_ms": 1278258,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1284899,
+              "start_ms": 1320983,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 41889,
+              "start_ms": 2605882,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 828674,
+              "start_ms": 2647771,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 25867,
+              "start_ms": 3476445,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 979325,
+              "start_ms": 3502312,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 57818,
+              "start_ms": 4481637,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 904185,
+              "start_ms": 4539455,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 34040,
+              "start_ms": 5443640,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 879340,
+              "start_ms": 5477680,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 53127,
+              "start_ms": 6357020,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1398352,
+              "start_ms": 6410147,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 42725,
+              "start_ms": 7808499,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1133691,
+              "start_ms": 7851224,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 46951,
+              "start_ms": 8984915,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1237299,
+              "start_ms": 9031866,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 60093,
+              "start_ms": 10269165,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1546077,
+              "start_ms": 10329258,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 36548,
+              "start_ms": 11875335,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 583610,
+              "start_ms": 11911883,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 57864,
+              "start_ms": 12495493,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1602316,
+              "start_ms": 12553357,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 56750,
+              "start_ms": 14155673,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1154961,
+              "start_ms": 14212423,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 34505,
+              "start_ms": 15367384,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1000501,
+              "start_ms": 15401889,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 50805,
+              "start_ms": 16402390,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 831089,
+              "start_ms": 16453195,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 51130,
+              "start_ms": 17284284,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1716651,
+              "start_ms": 17335414,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 36037,
+              "start_ms": 19052065,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 1088041,
+              "start_ms": 19088102,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 46068,
+              "start_ms": 20176143,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912IuLbtTjL.jpg",
           "id": "mitch-urban-2017",
           "language": "en",
           "license": "CC0-1.0",
@@ -3171,6 +3358,10 @@
               "imported_at": "2026-09-21",
               "ref": "B01MT5T91Z",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B01MT5T91Z",
+              "type": "libex-import"
             }
           ],
           "work": "the-collection-volume-2"
@@ -3181,6 +3372,10 @@
           "imported_at": "2026-09-21",
           "ref": "B01MT5T91Z",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B01MT5T91Z",
+          "type": "libex-import"
         }
       ],
       "title": "The Collection, Volume 2"

@@ -2346,6 +2346,11 @@
       "authors": [
         "chuck-palahniuk"
       ],
+      "genres": [
+        "comedy-humor",
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "tell-all",
       "language": "en",
       "license": "CC0-1.0",
@@ -2359,6 +2364,194 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 11836,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 7198,
+              "start_ms": 11836,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 7272,
+              "start_ms": 19034,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 655919,
+              "start_ms": 26306,
+              "title": "Act I, Scene One"
+            },
+            {
+              "length_ms": 1238877,
+              "start_ms": 682225,
+              "title": "Act I, Scene Two"
+            },
+            {
+              "length_ms": 744547,
+              "start_ms": 1921102,
+              "title": "Act I, Scene Three"
+            },
+            {
+              "length_ms": 767976,
+              "start_ms": 2665649,
+              "title": "Act I, Scene Four"
+            },
+            {
+              "length_ms": 729292,
+              "start_ms": 3433625,
+              "title": "Act I, Scene Five"
+            },
+            {
+              "length_ms": 932374,
+              "start_ms": 4162917,
+              "title": "Act I, Scene Six"
+            },
+            {
+              "length_ms": 951669,
+              "start_ms": 5095291,
+              "title": "Act I, Scene Seven"
+            },
+            {
+              "length_ms": 443268,
+              "start_ms": 6046960,
+              "title": "Act I, Scene Eight"
+            },
+            {
+              "length_ms": 858255,
+              "start_ms": 6490228,
+              "title": "Act I, Scene Nine"
+            },
+            {
+              "length_ms": 702891,
+              "start_ms": 7348483,
+              "title": "Act I, Scene Ten"
+            },
+            {
+              "length_ms": 1059108,
+              "start_ms": 8051374,
+              "title": "Act I, Scene Eleven"
+            },
+            {
+              "length_ms": 700499,
+              "start_ms": 9110482,
+              "title": "Act I, Scene Twelve"
+            },
+            {
+              "length_ms": 999247,
+              "start_ms": 9810981,
+              "title": "Act I, Scene Thirteen"
+            },
+            {
+              "length_ms": 543927,
+              "start_ms": 10810228,
+              "title": "Act I, Scene Fourteen"
+            },
+            {
+              "length_ms": 372331,
+              "start_ms": 11354155,
+              "title": "Act II, Scene One"
+            },
+            {
+              "length_ms": 444871,
+              "start_ms": 11726486,
+              "title": "Act II, Scene Two"
+            },
+            {
+              "length_ms": 711575,
+              "start_ms": 12171357,
+              "title": "Act II, Scene Three"
+            },
+            {
+              "length_ms": 511791,
+              "start_ms": 12882932,
+              "title": "Act II, Scene Four"
+            },
+            {
+              "length_ms": 556048,
+              "start_ms": 13394723,
+              "title": "Act II, Scene Five"
+            },
+            {
+              "length_ms": 267493,
+              "start_ms": 13950771,
+              "title": "Act II, Scene Six"
+            },
+            {
+              "length_ms": 510676,
+              "start_ms": 14218264,
+              "title": "Act II, Scene Seven"
+            },
+            {
+              "length_ms": 488501,
+              "start_ms": 14728940,
+              "title": "Act II, Scene Eight"
+            },
+            {
+              "length_ms": 516388,
+              "start_ms": 15217441,
+              "title": "Act II, Scene Nine"
+            },
+            {
+              "length_ms": 297795,
+              "start_ms": 15733829,
+              "title": "Act II, Scene Ten"
+            },
+            {
+              "length_ms": 516969,
+              "start_ms": 16031624,
+              "title": "Act II, Scene Eleven"
+            },
+            {
+              "length_ms": 500831,
+              "start_ms": 16548593,
+              "title": "Act III, Scene One"
+            },
+            {
+              "length_ms": 317207,
+              "start_ms": 17049424,
+              "title": "Act III, Scene Two"
+            },
+            {
+              "length_ms": 413338,
+              "start_ms": 17366631,
+              "title": "Act III, Scene Three"
+            },
+            {
+              "length_ms": 471295,
+              "start_ms": 17779969,
+              "title": "Act III, Scene Four"
+            },
+            {
+              "length_ms": 329375,
+              "start_ms": 18251264,
+              "title": "Act III, Scene Five"
+            },
+            {
+              "length_ms": 378229,
+              "start_ms": 18580639,
+              "title": "Act III, Scene Six"
+            },
+            {
+              "length_ms": 424275,
+              "start_ms": 18958868,
+              "title": "Act III, Scene Seven"
+            },
+            {
+              "length_ms": 377208,
+              "start_ms": 19383143,
+              "title": "Act III, Scene Eight"
+            },
+            {
+              "length_ms": 26423,
+              "start_ms": 19760351,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71fudcoJnKL.jpg",
           "id": "carol-monda-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -2373,6 +2566,10 @@
               "imported_at": "2026-09-21",
               "ref": "B09HV8N5PR",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B09HV8N5PR",
+              "type": "libex-import"
             }
           ],
           "work": "tell-all"
@@ -2383,6 +2580,10 @@
           "imported_at": "2026-09-21",
           "ref": "B09HV8N5PR",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B09HV8N5PR",
+          "type": "libex-import"
         }
       ],
       "title": "Tell-All"

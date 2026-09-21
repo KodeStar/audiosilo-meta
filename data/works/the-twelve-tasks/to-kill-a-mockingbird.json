@@ -5550,6 +5550,10 @@
       "authors": [
         "jack-vance"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction"
+      ],
       "id": "to-live-forever",
       "language": "en",
       "license": "CC0-1.0",
@@ -5563,6 +5567,109 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3251815,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1160998,
+              "start_ms": 3251815,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 485947,
+              "start_ms": 4412813,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 969805,
+              "start_ms": 4898760,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 696088,
+              "start_ms": 5868565,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1531217,
+              "start_ms": 6564653,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3175468,
+              "start_ms": 8095870,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1641837,
+              "start_ms": 11271338,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 913798,
+              "start_ms": 12913175,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 714432,
+              "start_ms": 13826973,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2693190,
+              "start_ms": 14541405,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2116685,
+              "start_ms": 17234595,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1356231,
+              "start_ms": 19351280,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 470297,
+              "start_ms": 20707511,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 980811,
+              "start_ms": 21177808,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1375922,
+              "start_ms": 22158619,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 832853,
+              "start_ms": 23534541,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1171772,
+              "start_ms": 24367394,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 920996,
+              "start_ms": 25539166,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1693756,
+              "start_ms": 26460162,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A18cZtbhADL.jpg",
           "id": "kevin-kenerly-2015",
           "language": "en",
           "license": "CC0-1.0",
@@ -5577,6 +5684,10 @@
               "imported_at": "2026-09-21",
               "ref": "B014E3CSZI",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B014E3CSZI",
+              "type": "libex-import"
             }
           ],
           "work": "to-live-forever"
@@ -5587,6 +5698,10 @@
           "imported_at": "2026-09-21",
           "ref": "B014E3CSZI",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B014E3CSZI",
+          "type": "libex-import"
         }
       ],
       "title": "To Live Forever"

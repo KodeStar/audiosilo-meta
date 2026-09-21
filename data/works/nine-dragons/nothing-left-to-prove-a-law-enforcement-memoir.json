@@ -11258,6 +11258,9 @@
       "authors": [
         "bailey-white"
       ],
+      "genres": [
+        "short-stories"
+      ],
       "id": "nothing-with-strings",
       "language": "en",
       "license": "CC0-1.0",
@@ -11271,6 +11274,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1467362,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1299853,
+              "start_ms": 1467362,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1518028,
+              "start_ms": 2767215,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1465179,
+              "start_ms": 4285243,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1190673,
+              "start_ms": 5750422,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1321587,
+              "start_ms": 6941095,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1442284,
+              "start_ms": 8262682,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1291540,
+              "start_ms": 9704966,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1387114,
+              "start_ms": 10996506,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 978721,
+              "start_ms": 12383620,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1299203,
+              "start_ms": 13362341,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1484405,
+              "start_ms": 14661544,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1437315,
+              "start_ms": 16145949,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Bo3FMwxmL.jpg",
           "id": "lorna-raver-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -11285,6 +11356,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZDSDY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZDSDY",
+              "type": "libex-import"
             }
           ],
           "work": "nothing-with-strings"
@@ -11295,6 +11370,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZDSDY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZDSDY",
+          "type": "libex-import"
         }
       ],
       "title": "Nothing with Strings"

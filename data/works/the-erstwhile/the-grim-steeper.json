@@ -2185,6 +2185,11 @@
       "authors": [
         "matt-dinniman"
       ],
+      "genres": [
+        "horror",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
       "id": "the-grinding",
       "language": "en",
       "license": "CC0-1.0",
@@ -2198,6 +2203,174 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 9938,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 518037,
+              "start_ms": 9938,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1646155,
+              "start_ms": 527975,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 951182,
+              "start_ms": 2174130,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 729153,
+              "start_ms": 3125312,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 896244,
+              "start_ms": 3854465,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 307943,
+              "start_ms": 4750709,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1015734,
+              "start_ms": 5058652,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 798441,
+              "start_ms": 6074386,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 836940,
+              "start_ms": 6872827,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1859733,
+              "start_ms": 7709767,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1263166,
+              "start_ms": 9569500,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1294652,
+              "start_ms": 10832666,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1424684,
+              "start_ms": 12127318,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 808658,
+              "start_ms": 13552002,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1495040,
+              "start_ms": 14360660,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1750738,
+              "start_ms": 15855700,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 710391,
+              "start_ms": 17606438,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1633059,
+              "start_ms": 18316829,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1046198,
+              "start_ms": 19949888,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1070997,
+              "start_ms": 20996086,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 935068,
+              "start_ms": 22067083,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1145533,
+              "start_ms": 23002151,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 611196,
+              "start_ms": 24147684,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 433517,
+              "start_ms": 24758880,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 580778,
+              "start_ms": 25192397,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 845531,
+              "start_ms": 25773175,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 865176,
+              "start_ms": 26618706,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 874603,
+              "start_ms": 27483882,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1329064,
+              "start_ms": 28358485,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1143954,
+              "start_ms": 29687549,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 992235,
+              "start_ms": 30831503,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 22663,
+              "start_ms": 31823738,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1PohbAlGmL.jpg",
           "id": "chris-sorensen-2014",
           "language": "en",
           "license": "CC0-1.0",
@@ -2212,6 +2385,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00MMHEV86",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00MMHEV86",
+              "type": "libex-import"
             }
           ],
           "work": "the-grinding"
@@ -2222,6 +2399,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00MMHEV86",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00MMHEV86",
+          "type": "libex-import"
         }
       ],
       "title": "The Grinding"

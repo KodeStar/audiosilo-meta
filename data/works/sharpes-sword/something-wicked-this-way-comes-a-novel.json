@@ -8185,6 +8185,11 @@
       "authors": [
         "amy-hatvany"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships",
+        "womens-fiction"
+      ],
       "id": "somewhere-out-there",
       "language": "en",
       "license": "CC0-1.0",
@@ -8198,6 +8203,174 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 63251,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1974021,
+              "start_ms": 63251,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1945832,
+              "start_ms": 2037272,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 938133,
+              "start_ms": 3983104,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1608771,
+              "start_ms": 4921237,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1331246,
+              "start_ms": 6530008,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1249280,
+              "start_ms": 7861254,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1640954,
+              "start_ms": 9110534,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1352795,
+              "start_ms": 10751488,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1605288,
+              "start_ms": 12104283,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2187505,
+              "start_ms": 13709571,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1726961,
+              "start_ms": 15897076,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1340024,
+              "start_ms": 17624037,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1596047,
+              "start_ms": 18964061,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 909108,
+              "start_ms": 20560108,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1517749,
+              "start_ms": 21469216,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 644957,
+              "start_ms": 22986965,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1518585,
+              "start_ms": 23631922,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 651366,
+              "start_ms": 25150507,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 719447,
+              "start_ms": 25801873,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 998783,
+              "start_ms": 26521320,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1055858,
+              "start_ms": 27520103,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1498709,
+              "start_ms": 28575961,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 825887,
+              "start_ms": 30074670,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1590335,
+              "start_ms": 30900557,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1025161,
+              "start_ms": 32490892,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 835361,
+              "start_ms": 33516053,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1016570,
+              "start_ms": 34351414,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1754871,
+              "start_ms": 35367984,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 958195,
+              "start_ms": 37122855,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 941569,
+              "start_ms": 38081050,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1318150,
+              "start_ms": 39022619,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 65016,
+              "start_ms": 40340769,
+              "title": "Chapter 33"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916FKdCrqsL.jpg",
           "id": "cassandra-campbell-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -8214,6 +8387,10 @@
               "imported_at": "2026-09-21",
               "ref": "B019HJ8LM8",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B019HJ8LM8",
+              "type": "libex-import"
             }
           ],
           "work": "somewhere-out-there"
@@ -8224,6 +8401,10 @@
           "imported_at": "2026-09-21",
           "ref": "B019HJ8LM8",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B019HJ8LM8",
+          "type": "libex-import"
         }
       ],
       "title": "Somewhere Out There"

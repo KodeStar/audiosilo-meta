@@ -6611,6 +6611,10 @@
       "authors": [
         "bryce-courtenay"
       ],
+      "genres": [
+        "literary-fiction",
+        "parenting-relationships"
+      ],
       "id": "the-night-country-bryce-courtenay",
       "language": "en",
       "license": "CC0-1.0",
@@ -6624,6 +6628,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 42445,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 12190,
+              "start_ms": 42445,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 4190226,
+              "start_ms": 54635,
+              "title": "The Night Country"
+            },
+            {
+              "length_ms": 129915,
+              "start_ms": 4244861,
+              "title": "Epilogue: Africa"
+            },
+            {
+              "length_ms": 67453,
+              "start_ms": 4374776,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910MUOZFV+L.jpg",
           "id": "humphrey-bower-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -6638,6 +6670,10 @@
               "imported_at": "2026-09-21",
               "ref": "B0G39KG3TJ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0G39KG3TJ",
+              "type": "libex-import"
             }
           ],
           "work": "the-night-country-bryce-courtenay"
@@ -6648,6 +6684,10 @@
           "imported_at": "2026-09-21",
           "ref": "B0G39KG3TJ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0G39KG3TJ",
+          "type": "libex-import"
         }
       ],
       "title": "The Night Country"

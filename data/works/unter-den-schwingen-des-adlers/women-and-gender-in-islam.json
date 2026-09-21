@@ -6093,6 +6093,9 @@
       "authors": [
         "ann-burton"
       ],
+      "genres": [
+        "poetry"
+      ],
       "id": "women-of-the-bible-ann-burton",
       "language": "en",
       "license": "CC0-1.0",
@@ -6106,6 +6109,69 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2251082,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1997566,
+              "start_ms": 2251082,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2277181,
+              "start_ms": 4248648,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2091514,
+              "start_ms": 6525829,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2243094,
+              "start_ms": 8617343,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2108883,
+              "start_ms": 10860437,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2083016,
+              "start_ms": 12969320,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2081762,
+              "start_ms": 15052336,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2220803,
+              "start_ms": 17134098,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2039223,
+              "start_ms": 19354901,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2288001,
+              "start_ms": 21394124,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2066019,
+              "start_ms": 23682125,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CAwqsbUlL.jpg",
           "id": "rachel-botchan-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -6120,6 +6186,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0KBXS",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0KBXS",
+              "type": "libex-import"
             }
           ],
           "work": "women-of-the-bible-ann-burton"
@@ -6130,6 +6200,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0KBXS",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0KBXS",
+          "type": "libex-import"
         }
       ],
       "title": "Women of the Bible"

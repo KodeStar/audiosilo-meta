@@ -112,6 +112,13 @@
       "authors": [
         "cecelia-ahern"
       ],
+      "genres": [
+        "coming-of-age",
+        "fantasy",
+        "literary-fiction",
+        "paranormal",
+        "urban-fantasy"
+      ],
       "id": "the-book-of-tomorrow",
       "language": "en",
       "license": "CC0-1.0",
@@ -125,6 +132,139 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 813859,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1345411,
+              "start_ms": 813859,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1549421,
+              "start_ms": 2159270,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 680391,
+              "start_ms": 3708691,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 675051,
+              "start_ms": 4389082,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 973520,
+              "start_ms": 5064133,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 969990,
+              "start_ms": 6037653,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2021436,
+              "start_ms": 7007643,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 811445,
+              "start_ms": 9029079,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1588431,
+              "start_ms": 9840524,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1452408,
+              "start_ms": 11428955,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2266546,
+              "start_ms": 12881363,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1246726,
+              "start_ms": 15147909,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1289125,
+              "start_ms": 16394635,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 896894,
+              "start_ms": 17683760,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1824020,
+              "start_ms": 18580654,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1232933,
+              "start_ms": 20404674,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1157608,
+              "start_ms": 21637607,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1038025,
+              "start_ms": 22795215,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 663023,
+              "start_ms": 23833240,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1204326,
+              "start_ms": 24496263,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1303011,
+              "start_ms": 25700589,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1068722,
+              "start_ms": 27003600,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 365018,
+              "start_ms": 28072322,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1263630,
+              "start_ms": 28437340,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 641892,
+              "start_ms": 29700970,
+              "title": "Chapter 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JAnXodcuL.jpg",
           "id": "ali-coffey-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -139,6 +279,10 @@
               "imported_at": "2026-09-21",
               "ref": "B004J6NBXO",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B004J6NBXO",
+              "type": "libex-import"
             }
           ],
           "work": "the-book-of-tomorrow"
@@ -149,6 +293,10 @@
           "imported_at": "2026-09-21",
           "ref": "B004J6NBXO",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B004J6NBXO",
+          "type": "libex-import"
         }
       ],
       "title": "The Book of Tomorrow"

@@ -15591,6 +15591,10 @@
       "authors": [
         "carolina-de-robertis"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "the-invisible-mountain",
       "language": "en",
       "license": "CC0-1.0",
@@ -15604,6 +15608,59 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 7072659,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 6939609,
+              "start_ms": 7072659,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 8531940,
+              "start_ms": 14012268,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 6049402,
+              "start_ms": 22544208,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3207697,
+              "start_ms": 28593610,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 6277747,
+              "start_ms": 31801307,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5770344,
+              "start_ms": 38079054,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 8751880,
+              "start_ms": 43849398,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 5036780,
+              "start_ms": 52601278,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 6074944,
+              "start_ms": 57638058,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ydn7+ljPL.jpg",
           "id": "christine-avila-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -15618,6 +15675,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8LM6U",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8LM6U",
+              "type": "libex-import"
             }
           ],
           "work": "the-invisible-mountain"
@@ -15628,6 +15689,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8LM6U",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8LM6U",
+          "type": "libex-import"
         }
       ],
       "title": "The Invisible Mountain"

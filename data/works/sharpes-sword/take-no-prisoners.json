@@ -3095,6 +3095,10 @@
       "authors": [
         "brian-keene"
       ],
+      "genres": [
+        "post-apocalyptic",
+        "science-fiction"
+      ],
       "id": "take-the-long-way-home",
       "language": "en",
       "license": "CC0-1.0",
@@ -3108,6 +3112,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 14860,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1157096,
+              "start_ms": 14860,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1551650,
+              "start_ms": 1171956,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1106616,
+              "start_ms": 2723606,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 544879,
+              "start_ms": 3830222,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 382757,
+              "start_ms": 4375101,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1320890,
+              "start_ms": 4757858,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 670360,
+              "start_ms": 6078748,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1538089,
+              "start_ms": 6749108,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 898101,
+              "start_ms": 8287197,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 185109,
+              "start_ms": 9185298,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 201038,
+              "start_ms": 9370407,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 28978,
+              "start_ms": 9571445,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-VzBl3KML.jpg",
           "id": "chet-williamson-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -3122,6 +3194,10 @@
               "imported_at": "2026-09-21",
               "ref": "B07GJXGHBQ",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B07GJXGHBQ",
+              "type": "libex-import"
             }
           ],
           "work": "take-the-long-way-home"
@@ -3132,6 +3208,10 @@
           "imported_at": "2026-09-21",
           "ref": "B07GJXGHBQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B07GJXGHBQ",
+          "type": "libex-import"
         }
       ],
       "title": "Take the Long Way Home"

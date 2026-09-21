@@ -2264,6 +2264,9 @@
       "authors": [
         "chet-cunningham"
       ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "blood-on-the-strip",
       "language": "en",
       "license": "CC0-1.0",
@@ -2277,6 +2280,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2627152,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1108196,
+              "start_ms": 2627152,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1241199,
+              "start_ms": 3735348,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1341742,
+              "start_ms": 4976547,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1048056,
+              "start_ms": 6318289,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1204883,
+              "start_ms": 7366345,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1230193,
+              "start_ms": 8571228,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1141354,
+              "start_ms": 9801421,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1088087,
+              "start_ms": 10942775,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1221695,
+              "start_ms": 12030862,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 934417,
+              "start_ms": 13252557,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1041554,
+              "start_ms": 14186974,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 889882,
+              "start_ms": 15228528,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 859045,
+              "start_ms": 16118410,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1011043,
+              "start_ms": 16977455,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 510653,
+              "start_ms": 17988498,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rlWeW0-fL.jpg",
           "id": "gene-engene-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -2291,6 +2377,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002UZZ60W",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZZ60W",
+              "type": "libex-import"
             }
           ],
           "work": "blood-on-the-strip"
@@ -2301,6 +2391,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002UZZ60W",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZZ60W",
+          "type": "libex-import"
         }
       ],
       "title": "Blood on the Strip"

@@ -13314,6 +13314,10 @@
       "authors": [
         "alexander-kent"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction"
+      ],
       "id": "in-the-kings-name",
       "language": "en",
       "license": "CC0-1.0",
@@ -13327,6 +13331,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2609645,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2003464,
+              "start_ms": 2609645,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2009548,
+              "start_ms": 4613109,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1958417,
+              "start_ms": 6622657,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2140462,
+              "start_ms": 8581074,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1963619,
+              "start_ms": 10721536,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2836875,
+              "start_ms": 12685155,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2664861,
+              "start_ms": 15522030,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2003650,
+              "start_ms": 18186891,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1994315,
+              "start_ms": 20190541,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1962458,
+              "start_ms": 22184856,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1599855,
+              "start_ms": 24147314,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1867906,
+              "start_ms": 25747169,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2243837,
+              "start_ms": 27615075,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1643926,
+              "start_ms": 29858912,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2878531,
+              "start_ms": 31502838,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81csgZkbCDL.jpg",
           "id": "christian-rodska-2011",
           "language": "en",
           "license": "CC0-1.0",
@@ -13341,6 +13428,10 @@
               "imported_at": "2026-09-21",
               "ref": "B00546CDXW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00546CDXW",
+              "type": "libex-import"
             }
           ],
           "work": "in-the-kings-name"
@@ -13351,6 +13442,10 @@
           "imported_at": "2026-09-21",
           "ref": "B00546CDXW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00546CDXW",
+          "type": "libex-import"
         }
       ],
       "title": "In the King's Name"
