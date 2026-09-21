@@ -68,10 +68,19 @@ func Load(dataDir string) (model.Redirects, error) {
 		}
 		return nil, err
 	}
-	// A repeated key is checked BEFORE decoding, for the reason pack.Parse checks
-	// it: encoding/json keeps the last one, so a namespace or a retired slug
-	// written twice would drop redirects here and lose them permanently the next
-	// time Write rendered the file.
+	return Parse(raw)
+}
+
+// Parse reads the table out of the file's bytes, for a caller that already has
+// them: the tooling that reads the tree from somewhere other than the working
+// directory (a git revision, say) must not grow a second reading of a file this
+// package is documented as owning.
+//
+// A repeated key is checked BEFORE decoding, for the reason pack.Parse checks
+// it: encoding/json keeps the last one, so a namespace or a retired slug written
+// twice would drop redirects here and lose them permanently the next time Write
+// rendered the file.
+func Parse(raw []byte) (model.Redirects, error) {
 	if err := pack.CheckNoDuplicateKeys(raw); err != nil {
 		return nil, fmt.Errorf("%s: %w", pack.RedirectsFile, err)
 	}

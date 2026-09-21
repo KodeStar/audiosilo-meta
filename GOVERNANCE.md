@@ -132,9 +132,26 @@ Two automations sit in front of the human review step. Neither bypasses it.
   same recipe (CONTRIBUTING.md, "When two pull requests touch the same pack").
 
 - **AI verification (advisory).** The `ai-verify` workflow asks Claude to
-  sanity-check a data pull request's diff for judgement a machine check cannot
+  sanity-check a data pull request's records for judgement a machine check cannot
   make (factual consistency, plausible provenance, the correct license layer,
-  no copied publisher prose, sane sidecar spoiler positions and length). It
+  no copied publisher prose, sane sidecar spoiler positions and length).
+
+  **What it reads is an entry-level SUMMARY of the change, not its diff.** Data
+  files are range-packed, so a single write re-renders its whole pack and may
+  split it: a hundred-record pull request is over a hundred changed files and
+  tens of thousands of changed lines, nearly all of them records nobody touched.
+  The workflow therefore runs `cmd/metadiff`, which keys every changed pack's
+  entries by family and slug across the whole change at once - an entry that
+  merely moved between packs is counted and not listed - and renders one line per
+  added or removed record, a field-level diff per modified one, and the slug
+  tombstone rows, with `data/redirects.json`'s raw diff appended. The reviewer
+  therefore sees the WHOLE change rather than whatever fitted in its input
+  budget, and when a change is larger than even that summary allows, the summary
+  says in line how many entries it left out. If the summary cannot be built at
+  all, the workflow falls back to the raw diff and switches the reviewer's
+  instructions to match it, so the reviewer is never told it is reading the whole
+  change when it is not; if neither can be built, the check goes red rather than
+  reporting a verdict on nothing. It
   posts a PASS/FLAG comment and applies an `ai-verified` or `ai-flagged` label.
   The VERDICT is **advisory only**: a `flag` is a prompt for a maintainer to
   look closer, not a veto, and the check is not branch protected, so neither
