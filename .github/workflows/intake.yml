@@ -118,10 +118,20 @@ jobs:
         # the message that sends a core form the other way. The rule is DERIVED
         # from each template's writeFamilies, so it cannot drift from what the
         # composer would actually write.
+        #
+        # --series-lookup reaches the IMPORT template alone. A personal library
+        # export names the series a file is tagged with and, on the two intakes
+        # that prompted this, no part number on 97 of 123 series rows - every one
+        # of them a work left out of its series with a warning. With the flag the
+        # row's ASIN is looked up on the live libex service and the position used
+        # only when libex names the SAME series. Best-effort and capped: a libex
+        # outage leaves the warnings exactly as they are today, so it can never
+        # fail an otherwise good submission.
         env:
           LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
         run: |
-          go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data --profile core > result.json || {
+          go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data --profile core \
+            --series-lookup > result.json || {
             echo '{"status":"invalid","files":[],"messages":["metaissue failed to run"]}' > result.json
           }
           cat result.json

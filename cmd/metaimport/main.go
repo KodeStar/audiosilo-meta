@@ -37,6 +37,15 @@
 // contradicting row is refused and counted for review. See LICENSING.md's trust
 // tiers; libex runs are unaffected.
 //
+// --series-lookup (user-library sources) fills a series position the export did
+// not state. A personal library export names the series a file is tagged with
+// and very often no part number, so the row warns and the work is left out of
+// its series; with this flag the row's ASIN is looked up on the live libex
+// service and its position used when libex names the SAME series. Off by
+// default because it reaches the network: the flag is what an operator (or the
+// intake bot) opts in with. --series-lookup-limit caps the lookups per run,
+// counting only the rows that need one.
+//
 // --enrich (libex only) switches from creating records to ENRICHING the ones
 // already here: a row whose ASIN the catalogue does not hold is counted and
 // ignored, and a matched row only fills facts the existing work/recording does
@@ -121,6 +130,14 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	enrich := fs.Bool("enrich", false, "fill absent facts on ASIN-matched existing records instead of creating any (libex only)")
 	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (a durable worklist; the run is unchanged)")
+	// Registered for every source, like --enrich, so pointing it at the wrong one
+	// says why. It only ever DOES anything on a user-library create run - the
+	// importer's own gate (seriespos.go) - so a libex run ignores it silently
+	// rather than being refused: the flag asks for a gap to be filled, and a libex
+	// row has no such gap.
+	seriesLookup := fs.Bool("series-lookup", false, "fill a missing series position by looking the row's ASIN up on the live libex service (user-library sources; off by default because it reaches the network)")
+	seriesLookupLimit := fs.Int("series-lookup-limit", 0, "cap the series-position lookups per run, counting only the rows that need one (0 = the default cap, negative = no cap)")
+	libexBase := fs.String("libex", importer.LibexBase, "libex base URL for --series-lookup")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -150,13 +167,21 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 	defer closeLog()
 
-	sum, err := run(exportPath, importer.Options{
+	opts := importer.Options{
 		DataDir:    *data,
 		ImportDate: stamp,
 		DryRun:     *dryRun,
 		Mode:       mode,
 		Conflicts:  conflictLog,
-	})
+	}
+	if *seriesLookup {
+		client := importer.NewLibexClient()
+		client.BaseURL = *libexBase
+		opts.SeriesLookup = client
+		opts.SeriesLookupLimit = *seriesLookupLimit
+	}
+
+	sum, err := run(exportPath, opts)
 
 	// The summary prints only on success. A run can fail BEFORE it plans anything
 	// - a data tree still in the file-per-entity layout is refused at open - and
@@ -402,6 +427,9 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
+	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
+	fmt.Fprintln(os.Stderr, "    looking the row's ASIN up on the live libex service; it is used only when libex names the")
+	fmt.Fprintln(os.Stderr, "    same series. --series-lookup-limit N caps the lookups per run (0 = the default cap of 100).")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")

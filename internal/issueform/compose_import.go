@@ -63,7 +63,17 @@ func (c *composer) importLibrary(s sections) {
 	// hands the tree to another writer, so without it a scoped root would be
 	// opened and validated as ProfileAll - the one reading under which a leftover
 	// family in the wrong repository looks clean.
-	sum, err := run(tmpName, importer.Options{DataDir: c.dataDir, Profile: c.profile, ImportDate: c.date})
+	// The SERIES LOOKUP travels the same way, and only from here: a library
+	// export is exactly the source that states a series with no part number, and
+	// the lookup is what places those works instead of warning about them
+	// (internal/importer/seriespos.go). nil unless the caller asked for it.
+	sum, err := run(tmpName, importer.Options{
+		DataDir:           c.dataDir,
+		Profile:           c.profile,
+		ImportDate:        c.date,
+		SeriesLookup:      c.seriesLookup,
+		SeriesLookupLimit: c.seriesLookupLimit,
+	})
 	if err != nil {
 		c.fail(StatusInvalid, "import failed: %v", err)
 		return
