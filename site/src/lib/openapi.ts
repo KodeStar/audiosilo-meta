@@ -9,7 +9,8 @@
  * Deliberately not a general OpenAPI implementation: it resolves LOCAL $refs
  * only, and covers exactly the constructs our own spec uses - `oneOf`
  * (including the nullable spelling), `allOf` composition of object schemas, and
- * `application/json` bodies. A construct we do not emit is out of scope rather
+ * one-schema response bodies including JSON Feed and Atom. A construct we do
+ * not emit is out of scope rather
  * than half-supported: the drift guards in Go pin the spec's shape, so this
  * side only has to render what that shape allows, and a speculative branch
  * nothing reaches is a claim of support nobody has tested.
@@ -61,7 +62,7 @@ export interface Parameter {
   schema?: Schema
 }
 
-/** A body by media type. Every one of ours is `application/json`. */
+/** A body by media type. Each operation declares at most one representation. */
 export type Content = Record<string, { schema?: Schema }>
 
 export interface ResponseObject {
@@ -400,13 +401,14 @@ function renderParams(spec: OpenAPISpec, params: Parameter[]): RenderedParam[] {
 }
 
 /**
- * bodySkeleton renders the JSON body of a request or a response, or null when
- * there is none. Every content map in the spec carries exactly one media type,
- * `application/json`, so that is what it reads - a body in some other type is
- * not something this page could render anyway.
+ * bodySkeleton renders a request or response schema, or null when there is
+ * none. JSON remains the preferred representation for error responses, while
+ * the first declared media type covers endpoints such as Atom and JSON Feed.
+ * Our spec declares one successful representation per operation, so no choice
+ * is hidden from the reader.
  */
 function bodySkeleton(spec: OpenAPISpec, content: Content | undefined): string | null {
-  const schema = content?.['application/json']?.schema
+  const schema = content?.['application/json']?.schema ?? Object.values(content ?? {})[0]?.schema
   return schema ? schemaSkeleton(spec, schema) : null
 }
 

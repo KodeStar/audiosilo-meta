@@ -909,6 +909,15 @@ and the shards answer the API's 503. Rendering is `encoding/xml` and
 deterministic - two renders of one snapshot are byte-identical. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
+**The stateless WATCH FEEDS** are `GET /api/v1/watch/feed.atom` and
+`GET /api/v1/watch/feed.json`: `s` carries up to 200 comma-separated series
+slugs, or `z:<base64url(deflate(csv))>` using raw DEFLATE and no padding, so the
+server needs no account or subscription store. They resolve retired series
+slugs, report unknown ones, return released, newly catalogued and preorderable
+work cards from the artifact, and let the feed reader deduplicate stable item
+ids. Both representations are public-cacheable for one hour and use an ETag
+over the artifact identity plus the raw `s` and `window` parameters.
+
 **The work CARD carries `release_date`** (`store.go`'s `workCard`, so every
 surface that composes one: `GET /series/{id}` entries, all four searches and
 `works/latest`). It is the EARLIEST release date across the work's recordings -
@@ -931,7 +940,9 @@ key, `audiosilo-meta:watchlist`, read and written through the pure, tested
 `site/src/lib/watchlist.ts` (versioned document, tolerant parse, every mutation
 store-in/new-store-out) - so there is no account, nothing is sent to the server
 and the page offers a JSON download/merge as the only backup there is
-(`/privacy` says so). Dates render through `site/src/lib/dates.ts`
+(`/privacy` says so). The page also turns its visible watchlist into Atom and
+JSON Feed URLs; the series list lives in the URL, so changing the watchlist
+means copying a new one. Dates render through `site/src/lib/dates.ts`
 (`formatReleaseDate`, and `isFutureRelease`, which compares at the precision the
 value states), replacing the year-only rendering on the work page: a web serial
 ships several volumes a year, so a year says nothing. The page can also be

@@ -9,6 +9,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getSeries, href, today, type Series, type SeriesEntry } from '../../lib/api'
 import { downloadJson } from '../../lib/download'
+import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
 import { runPool } from '../../lib/resolve-books'
 import {
   classify,
@@ -25,6 +26,7 @@ import {
   watchedSeries,
   type ClassifiedEntry,
   type SeriesClassification,
+  type Watchlist,
   type WatchlistRow,
 } from '../../lib/watchlist'
 import { BTN_SECONDARY, Icon, TEXT_LINK } from '../ui'
@@ -171,6 +173,8 @@ export default function WatchingPage() {
         </>
       )}
 
+      {visible.length > 0 ? <NotificationFeed store={store} slugKey={slugKey} /> : null}
+
       <section>
         <h2 className="text-xl font-bold tracking-tight text-hi">Import from your library</h2>
         <p className="mt-2 text-sm leading-relaxed text-body">
@@ -220,6 +224,104 @@ export default function WatchingPage() {
 
       <Backup watchlist={watchlist} />
     </div>
+  )
+}
+
+function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: string }) {
+  const [urls, setURLs] = useState<FeedURLs | null>(null)
+  const [note, setNote] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    let current = true
+    setURLs(null)
+    setNote('')
+    void buildFeedURLs(store)
+      .then((next) => {
+        if (current) setURLs(next)
+      })
+      .catch(() => {
+        if (current) setNote('Could not build the feed URL in this browser.')
+      })
+    return () => {
+      current = false
+    }
+    // The URL carries only visible slugs. Ownership, seen marks and stored
+    // series names do not affect it, so slugKey is the complete dependency.
+  }, [slugKey])
+
+  async function copyURL() {
+    if (!urls) return
+    try {
+      await navigator.clipboard.writeText(urls.atom)
+      setNote('Copied Atom feed URL.')
+      return
+    } catch {
+      const input = inputRef.current
+      if (!input) return
+      input.focus()
+      input.select()
+      input.setSelectionRange(0, input.value.length)
+      setNote('The URL is selected. Copy it with your browser or keyboard shortcut.')
+    }
+  }
+
+  return (
+    <section className="rounded-2xl border border-edge bg-surface p-6">
+      <h2 className="text-xl font-bold tracking-tight text-hi">Get notified</h2>
+      <p className="mt-2 text-sm leading-relaxed text-body">
+        The URL below is a private feed of your watched series. Nothing is stored on this site: the
+        URL itself is the subscription. Anyone holding it can see which series it lists, and you
+        must copy it again whenever your watched list changes.
+      </p>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+        <input
+          ref={inputRef}
+          type="url"
+          readOnly
+          aria-label="Atom feed URL"
+          value={urls?.atom ?? 'Building your feed URL...'}
+          onFocus={(event) => event.currentTarget.select()}
+          className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
+        />
+        <button
+          type="button"
+          onClick={() => void copyURL()}
+          disabled={!urls}
+          className={`${BTN_SECONDARY} shrink-0 px-5 py-2 text-sm`}
+        >
+          Copy
+        </button>
+      </div>
+      <p className="mt-3 text-sm text-dim" aria-live="polite">
+        {note}
+      </p>
+      {urls ? (
+        <p className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+          <a className={TEXT_LINK} href={urls.atom}>
+            Atom feed
+          </a>
+          <a className={TEXT_LINK} href={urls.json}>
+            JSON Feed
+          </a>
+        </p>
+      ) : null}
+      <details className="mt-5 rounded-xl border border-edge bg-raised p-4">
+        <summary className="cursor-pointer text-sm font-semibold text-hi">How to use it</summary>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-body">
+          <li>
+            Any RSS reader: in Feedly, NetNewsWire, Miniflux or FreshRSS, paste the URL as a new
+            subscription.
+          </li>
+          <li>Slack or Discord: add it through their RSS apps or a feed-to-channel bot.</li>
+          <li>
+            Automation: use an IFTTT or Zapier &quot;new item in feed&quot; trigger and send a phone
+            notification.
+          </li>
+          <li>Self-hosted push: give the URL to an RSS-to-ntfy bridge.</li>
+        </ul>
+      </details>
+    </section>
   )
 }
 

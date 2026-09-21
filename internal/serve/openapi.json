@@ -3,7 +3,7 @@
   "info": {
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
-    "summary": "The read-only JSON API over the AudioSilo community audiobook metadata database.",
+    "summary": "The read-only API over the AudioSilo community audiobook metadata database.",
     "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 4.0 community layer",
@@ -40,6 +40,10 @@
     {
       "name": "Coverage",
       "description": "What the community layer still needs: expressive-layer totals, a filtered per-work browser, and series with missing volumes."
+    },
+    {
+      "name": "Watch feeds",
+      "description": "Stateless notification feeds for a list of series carried in the request URL."
     },
     {
       "name": "Audiobookshelf provider",
@@ -294,6 +298,68 @@
                   }
                 }
               }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/watch/feed.atom": {
+      "get": {
+        "tags": ["Watch feeds"],
+        "operationId": "watchFeedAtom",
+        "summary": "Watched-series Atom feed",
+        "description": "An Atom 1.0 feed of recently released, newly catalogued and preorderable works in the series named by `s`. The series list lives entirely in the URL; the server stores no subscription or reader state. Feed readers deduplicate entries by id. Unknown series slugs are omitted and named in the subtitle, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact and raw parameters.",
+        "parameters": [
+          { "$ref": "#/components/parameters/WatchSeries" },
+          { "$ref": "#/components/parameters/WatchWindow" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The Atom 1.0 feed.",
+            "content": {
+              "application/atom+xml": {
+                "schema": { "type": "string", "description": "An Atom 1.0 XML document." }
+              }
+            }
+          },
+          "304": { "description": "The supplied `If-None-Match` validator still names this feed." },
+          "400": {
+            "description": "`s` is missing or invalid, contains more than 200 series, or `window` is outside 1-365.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/watch/feed.json": {
+      "get": {
+        "tags": ["Watch feeds"],
+        "operationId": "watchFeedJSON",
+        "summary": "Watched-series JSON Feed",
+        "description": "A JSON Feed 1.1 representation of the same stateless watched-series notification feed as `/api/v1/watch/feed.atom`. Unknown series slugs are omitted and named in the description, and retired slugs resolve to their surviving series. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact and raw parameters.",
+        "parameters": [
+          { "$ref": "#/components/parameters/WatchSeries" },
+          { "$ref": "#/components/parameters/WatchWindow" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The JSON Feed 1.1 document.",
+            "content": {
+              "application/feed+json": {
+                "schema": { "$ref": "#/components/schemas/JSONFeed" }
+              }
+            }
+          },
+          "304": { "description": "The supplied `If-None-Match` validator still names this feed." },
+          "400": {
+            "description": "`s` is missing or invalid, contains more than 200 series, or `window` is outside 1-365.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
             }
           },
           "500": { "$ref": "#/components/responses/ServerError" },
@@ -707,6 +773,20 @@
         "description": "Rows to skip. A negative or non-numeric value is treated as 0.",
         "schema": { "type": "integer", "default": 0, "minimum": 0 }
       },
+      "WatchSeries": {
+        "name": "s",
+        "in": "query",
+        "required": true,
+        "description": "One to 200 series slugs as comma-separated values, or the compact form `z:<base64url(deflate(csv))>`. The compact form uses raw DEFLATE with no zlib header and unpadded base64url.",
+        "schema": { "type": "string", "minLength": 1 }
+      },
+      "WatchWindow": {
+        "name": "window",
+        "in": "query",
+        "required": false,
+        "description": "How many days of released or newly catalogued works to include. Future release dates are included regardless of this window.",
+        "schema": { "type": "integer", "default": 90, "minimum": 1, "maximum": 365 }
+      },
       "WorkID": {
         "name": "id",
         "in": "path",
@@ -785,6 +865,48 @@
         "required": ["redirect"],
         "properties": {
           "redirect": { "type": "string", "examples": ["project-hail-mary"] }
+        }
+      },
+      "JSONFeedAuthor": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" }
+        }
+      },
+      "JSONFeedItem": {
+        "type": "object",
+        "required": ["id", "url", "title", "content_text", "date_published", "date_modified", "tags"],
+        "properties": {
+          "id": { "type": "string", "description": "A stable tag URI ending in `preorder` or `released`. A preorder becoming released is a new item." },
+          "url": { "type": "string", "description": "The public work page." },
+          "title": { "type": "string" },
+          "content_text": { "type": "string", "description": "One-line release, preorder or unknown-date summary." },
+          "date_published": { "type": "string", "format": "date-time" },
+          "date_modified": { "type": "string", "format": "date-time" },
+          "authors": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/JSONFeedAuthor" }
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["preorder", "released", "date unknown"] }
+          }
+        }
+      },
+      "JSONFeed": {
+        "type": "object",
+        "required": ["version", "title", "description", "feed_url", "items"],
+        "properties": {
+          "version": { "type": "string", "const": "https://jsonfeed.org/version/1.1" },
+          "title": { "type": "string", "const": "AudioSilo Meta: new in your series" },
+          "description": { "type": "string", "description": "The resolved series names plus any slugs not found." },
+          "feed_url": { "type": "string", "description": "The absolute request URL under the configured public site origin." },
+          "items": {
+            "type": "array",
+            "description": "At most 200 items, newest first.",
+            "items": { "$ref": "#/components/schemas/JSONFeedItem" }
+          }
         }
       },
       "Health": {

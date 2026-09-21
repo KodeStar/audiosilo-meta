@@ -1,0 +1,56 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "AudioSilo Meta: new in your series",
+  "description": "The Stormlight Archive. 1 slugs not found: not-here",
+  "feed_url": "https://meta.test/api/v1/watch/feed.json?s=the-stormlight-archive,not-here",
+  "items": [
+    {
+      "id": "tag:meta.audiosilo.app,2026:work/words-of-radiance/preorder",
+      "url": "https://meta.test/works/words-of-radiance",
+      "title": "The Stormlight Archive #2: Words of Radiance",
+      "content_text": "Preorder - due 1 Nov 2026",
+      "date_published": "2026-11-01T00:00:00Z",
+      "date_modified": "2026-11-01T00:00:00Z",
+      "authors": [
+        {
+          "name": "Brandon Sanderson"
+        }
+      ],
+      "tags": [
+        "preorder"
+      ]
+    },
+    {
+      "id": "tag:meta.audiosilo.app,2026:work/the-way-of-kings/released",
+      "url": "https://meta.test/works/the-way-of-kings",
+      "title": "The Stormlight Archive #1: The Way of Kings",
+      "content_text": "Released 20 Oct 2026",
+      "date_published": "2026-10-20T00:00:00Z",
+      "date_modified": "2026-10-20T00:00:00Z",
+      "authors": [
+        {
+          "name": "Brandon Sanderson"
+        }
+      ],
+      "tags": [
+        "released"
+      ]
+    },
+    {
+      "id": "tag:meta.audiosilo.app,2026:work/edgedancer/released",
+      "url": "https://meta.test/works/edgedancer",
+      "title": "The Stormlight Archive #10: Edgedancer",
+      "content_text": "Added to the catalogue, release date unknown",
+      "date_published": "2026-10-19T12:00:00Z",
+      "date_modified": "2026-10-19T12:00:00Z",
+      "authors": [
+        {
+          "name": "Brandon Sanderson"
+        }
+      ],
+      "tags": [
+        "date unknown"
+      ]
+    }
+  ]
+}
