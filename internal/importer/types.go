@@ -203,6 +203,21 @@ type Options struct {
 	// Each row is one Write, so the caller decides durability by what it passes:
 	// an *os.File opened for append keeps every conflict a killed run had seen.
 	Conflicts io.Writer
+	// SeriesLookup, when non-nil, lets a USER-LIBRARY CREATE run fill a series
+	// position its source did not state, by asking the lookup about the row's
+	// ASIN (seriespos.go). nil is the default and means the rule is off, so every
+	// existing caller and every offline run is byte-for-byte what it was.
+	//
+	// It is an interface rather than a client so the network stays out of the
+	// importer: cmd/metaimport and cmd/metaissue pass the real LibexClient behind
+	// a flag, and a test passes a map. It is best-effort by contract - a lookup
+	// that errors is counted and reported, never fatal.
+	SeriesLookup SeriesPositionLookup
+	// SeriesLookupLimit bounds how many lookups ONE run may perform, counting
+	// only the rows that actually need one. 0 takes the default cap
+	// (defaultSeriesLookupCap); a negative value is "no cap", which a caller has
+	// to ask for deliberately because libex is a free public service.
+	SeriesLookupLimit int
 }
 
 // Summary is the outcome counts of a run.
