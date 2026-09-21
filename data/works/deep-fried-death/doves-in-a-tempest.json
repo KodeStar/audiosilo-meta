@@ -9966,6 +9966,12 @@
       "authors": [
         "harry-turtledove"
       ],
+      "genres": [
+        "action-adventure",
+        "hard-science-fiction",
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "down-in-the-bottomlands",
       "language": "en",
       "license": "CC0-1.0",
@@ -9979,6 +9985,19 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 6447485,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 8767251,
+              "start_ms": 6447485,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51m2xTm19wL.jpg",
           "id": "victor-bevine-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -9993,6 +10012,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V1OCL4",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V1OCL4",
+              "type": "libex-import"
             }
           ],
           "work": "down-in-the-bottomlands"
@@ -10003,6 +10026,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V1OCL4",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V1OCL4",
+          "type": "libex-import"
         }
       ],
       "title": "Down in the Bottomlands"

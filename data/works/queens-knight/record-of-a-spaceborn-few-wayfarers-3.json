@@ -10003,6 +10003,10 @@
             {
               "asin": "B07ZL4S1X9",
               "region": "es"
+            },
+            {
+              "asin": "1509866701",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -10055,9 +10059,9 @@
             "abby-craden",
             "jon-lindstrom"
           ],
-          "publisher": "Random House Audio",
+          "publisher": "Macmillan",
           "release_date": "2019-06-11",
-          "runtime_min": 647,
+          "runtime_min": 648,
           "sources": [
             {
               "imported_at": "2026-08-08",
@@ -10068,6 +10072,11 @@
               "imported_at": "2026-08-08",
               "ref": "B07ZL4S1X9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-21",
+              "ref": "1509866701",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "recursion-blake-crouch"

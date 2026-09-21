@@ -1585,6 +1585,12 @@
       "authors": [
         "brian-mcclellan"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "military-science-fiction",
+        "science-fiction"
+      ],
       "id": "war-cry-brian-mcclellan",
       "language": "en",
       "license": "CC0-1.0",
@@ -1598,6 +1604,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2993655,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2969228,
+              "start_ms": 2993655,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2863438,
+              "start_ms": 5962883,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rfUqsJ37L.jpg",
           "id": "jonathan-todd-ross-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -1612,6 +1636,10 @@
               "imported_at": "2026-09-21",
               "ref": "1980005176",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1980005176",
+              "type": "libex-import"
             }
           ],
           "work": "war-cry-brian-mcclellan"
@@ -1622,6 +1650,10 @@
           "imported_at": "2026-09-21",
           "ref": "1980005176",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1980005176",
+          "type": "libex-import"
         }
       ],
       "title": "War Cry"

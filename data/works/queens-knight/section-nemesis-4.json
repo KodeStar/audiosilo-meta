@@ -5207,6 +5207,11 @@
       "authors": [
         "poul-anderson"
       ],
+      "genres": [
+        "action-adventure",
+        "classics",
+        "science-fiction"
+      ],
       "id": "security-poul-anderson",
       "language": "en",
       "license": "CC0-1.0",
@@ -5220,6 +5225,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1620056,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1902364,
+              "start_ms": 1620056,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1647456,
+              "start_ms": 3522420,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913yQRkpl3L.jpg",
           "id": "jim-roberts-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -5234,6 +5257,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8H6C4",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8H6C4",
+              "type": "libex-import"
             }
           ],
           "work": "security-poul-anderson"
@@ -5244,6 +5271,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8H6C4",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8H6C4",
+          "type": "libex-import"
         }
       ],
       "title": "Security"

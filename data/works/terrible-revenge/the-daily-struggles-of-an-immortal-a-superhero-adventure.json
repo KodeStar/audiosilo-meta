@@ -14678,6 +14678,14 @@
       "authors": [
         "barbara-michaels"
       ],
+      "genres": [
+        "fantasy",
+        "gothic",
+        "horror",
+        "literary-fiction",
+        "paranormal",
+        "urban-fantasy"
+      ],
       "id": "the-dancing-floor",
       "language": "en",
       "license": "CC0-1.0",
@@ -14691,6 +14699,29 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2761456,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2675868,
+              "start_ms": 2761456,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2750171,
+              "start_ms": 5437324,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2616239,
+              "start_ms": 8187495,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91PEVf-DTHL.jpg",
           "id": "barbara-rosenblat-1999",
           "language": "en",
           "license": "CC0-1.0",
@@ -14705,6 +14736,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0QHMM",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0QHMM",
+              "type": "libex-import"
             }
           ],
           "work": "the-dancing-floor"
@@ -14715,6 +14750,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0QHMM",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0QHMM",
+          "type": "libex-import"
         }
       ],
       "title": "The Dancing Floor"

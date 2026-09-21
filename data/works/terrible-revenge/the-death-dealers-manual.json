@@ -4279,6 +4279,10 @@
       "authors": [
         "allen-steele"
       ],
+      "genres": [
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "the-death-of-captain-future",
       "language": "en",
       "license": "CC0-1.0",
@@ -4292,6 +4296,19 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4525616,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3101907,
+              "start_ms": 4525616,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8199sbkSKtL.jpg",
           "id": "marc-vietor-2008",
           "language": "en",
           "license": "CC0-1.0",
@@ -4307,6 +4324,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V0PPWK",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0PPWK",
+              "type": "libex-import"
             }
           ],
           "work": "the-death-of-captain-future"
@@ -4317,6 +4338,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V0PPWK",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0PPWK",
+          "type": "libex-import"
         }
       ],
       "title": "The Death of Captain Future"

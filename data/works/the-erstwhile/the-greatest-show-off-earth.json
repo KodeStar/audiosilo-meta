@@ -9150,6 +9150,10 @@
       "authors": [
         "robert-a-heinlein"
       ],
+      "genres": [
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "the-green-hills-of-earth",
       "language": "en",
       "license": "CC0-1.0",
@@ -9163,6 +9167,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1645412,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2157830,
+              "start_ms": 1645412,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1307051,
+              "start_ms": 3803242,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 267819,
+              "start_ms": 5110293,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 270512,
+              "start_ms": 5378112,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1309513,
+              "start_ms": 5648624,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1669608,
+              "start_ms": 6958137,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2281546,
+              "start_ms": 8627745,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3038006,
+              "start_ms": 10909291,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2005368,
+              "start_ms": 13947297,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 446798,
+              "start_ms": 15952665,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 913101,
+              "start_ms": 16399463,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3036613,
+              "start_ms": 17312564,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3103115,
+              "start_ms": 20349177,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51GU7RlS3+L.jpg",
           "id": "tom-weiner-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -9177,6 +9254,10 @@
               "imported_at": "2026-09-21",
               "ref": "B002V8DJZW",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V8DJZW",
+              "type": "libex-import"
             }
           ],
           "work": "the-green-hills-of-earth"
@@ -9187,6 +9268,10 @@
           "imported_at": "2026-09-21",
           "ref": "B002V8DJZW",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V8DJZW",
+          "type": "libex-import"
         }
       ],
       "title": "The Green Hills of Earth"
