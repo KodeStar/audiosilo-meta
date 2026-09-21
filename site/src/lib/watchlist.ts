@@ -58,9 +58,13 @@ export function emptyWatchlist(): Watchlist {
 
 function stringList(value: unknown): string[] {
   if (!Array.isArray(value)) return []
+  const seen = new Set<string>()
   const out: string[] = []
   for (const v of value) {
-    if (typeof v === 'string' && v && !out.includes(v)) out.push(v)
+    if (typeof v === 'string' && v && !seen.has(v)) {
+      seen.add(v)
+      out.push(v)
+    }
   }
   return out
 }
@@ -146,10 +150,18 @@ function replaceSeries(
   return { version: WATCHLIST_VERSION, series }
 }
 
+/** `a` then whatever of `b` it did not already hold, first-seen order kept. A
+    Set decides membership rather than a scan of `out`: markSeen unions a whole
+    series' work list on every visit to the watching page, and a reader with a
+    long list would otherwise pay that quadratically. */
 function union(a: readonly string[], b: readonly string[]): string[] {
+  const seen = new Set(a)
   const out = [...a]
   for (const v of b) {
-    if (v && !out.includes(v)) out.push(v)
+    if (v && !seen.has(v)) {
+      seen.add(v)
+      out.push(v)
+    }
   }
   return out
 }
@@ -376,11 +388,16 @@ export function importJSON(store: Watchlist, text: string): Watchlist {
 export function looksLikeWatchlist(text: string): boolean {
   try {
     const parsed: unknown = JSON.parse(text)
-    return Boolean(
-      parsed &&
-        typeof parsed === 'object' &&
-        (parsed as Record<string, unknown>).version === WATCHLIST_VERSION &&
-        typeof (parsed as Record<string, unknown>).series === 'object'
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return false
+    const raw = parsed as Record<string, unknown>
+    // `typeof null === 'object'`, so the series check has to exclude null (and
+    // an array) explicitly - otherwise `{"version":1,"series":null}` reads as a
+    // watchlist and the import control reports a successful merge of nothing.
+    return (
+      raw.version === WATCHLIST_VERSION &&
+      Boolean(raw.series) &&
+      typeof raw.series === 'object' &&
+      !Array.isArray(raw.series)
     )
   } catch {
     return false

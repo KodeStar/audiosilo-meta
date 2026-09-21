@@ -293,6 +293,14 @@ describe('looksLikeWatchlist', () => {
     expect(looksLikeWatchlist('not json')).toBe(false)
     expect(looksLikeWatchlist('{"format":"audiosilo-books","version":1,"books":[]}')).toBe(false)
   })
+
+  // `typeof null === 'object'`, so a null (or array) `series` used to read as a
+  // backup and the import control reported a successful merge of nothing.
+  it('rejects a document whose series is not an object', () => {
+    expect(looksLikeWatchlist('{"version":1,"series":null}')).toBe(false)
+    expect(looksLikeWatchlist('{"version":1,"series":[]}')).toBe(false)
+    expect(looksLikeWatchlist('[{"version":1,"series":{}}]')).toBe(false)
+  })
 })
 
 describe('storage helpers', () => {

@@ -15,6 +15,7 @@ import {
   ownedWorks,
   resolveLibrary,
   runPool,
+  SERIES_POOL,
   type OwnedSeries,
   type OwnedWork,
   type ResolvedLibrary,
@@ -22,11 +23,6 @@ import {
 import { hide, markAllOwned, watch, watchedSeries, type Watchlist } from '../../lib/watchlist'
 import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
 import type { WatchlistHandle } from './use-watchlist'
-
-/** Concurrency for the per-series size lookups. Deliberately gentler than the
-    identifier sweep's: these are whole series documents, and there is one per
-    series rather than one per book. */
-const SERIES_POOL = 4
 
 /** One proposed row: a series the reader owns something in. */
 interface Row {
@@ -132,14 +128,17 @@ export default function LibraryImport({ watchlist }: { watchlist: WatchlistHandl
 
     abortRef.current = null
     setRows(
-      grouped.map((series) => ({
-        series,
-        total: totals.get(series.slug) ?? null,
+      grouped.map((series) => {
         // A series the reader has already dismissed stays dismissed: it is
         // offered unticked, with its refusal still remembered.
-        include: !watchedSeries(watchlist.store, series.slug)?.hidden,
-        never: Boolean(watchedSeries(watchlist.store, series.slug)?.hidden),
-      }))
+        const dismissed = Boolean(watchedSeries(watchlist.store, series.slug)?.hidden)
+        return {
+          series,
+          total: totals.get(series.slug) ?? null,
+          include: !dismissed,
+          never: dismissed,
+        }
+      })
     )
     setUnresolved(unresolvedTitles(resolved, works))
     setMessage('')

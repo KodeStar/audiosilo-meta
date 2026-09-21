@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildFeedURLs } from './feed-url'
+import { buildFeedURLs, MAX_FEED_SERIES } from './feed-url'
 import { WATCHLIST_VERSION, type Watchlist } from './watchlist'
 
 function watchlist(slugs: string[], hidden: string[] = []): Watchlist {
@@ -44,6 +44,25 @@ describe('buildFeedURLs', () => {
     expect(urls.atom).toBe(
       'https://api.example/base/api/v1/watch/feed.atom?s=alpha-series'
     )
+  })
+
+  it('refuses a list the server would reject, saying why', async () => {
+    // The server's cap (maxWatchSeries, internal/serve/seriesparam.go) - a URL
+    // past it 400s inside the reader's feed reader, where nobody would see it.
+    const slugs = Array.from({ length: MAX_FEED_SERIES + 1 }, (_, i) => `series-${i}`)
+    await expect(buildFeedURLs(watchlist(slugs), 'https://meta.example', '')).rejects.toThrow(
+      /201/
+    )
+    // Exactly at the cap still builds.
+    await expect(
+      buildFeedURLs(watchlist(slugs.slice(0, MAX_FEED_SERIES)), 'https://meta.example', '')
+    ).resolves.toBeTruthy()
+  })
+
+  it('refuses a watchlist with nothing visible', async () => {
+    await expect(
+      buildFeedURLs(watchlist(['only-series'], ['only-series']), 'https://meta.example', '')
+    ).rejects.toThrow()
   })
 
   it('uses raw DEFLATE for a long URL and round-trips the CSV', async () => {

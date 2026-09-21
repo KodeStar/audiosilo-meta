@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react'
 import { getSeries, href, today, type Series, type SeriesEntry } from '../../lib/api'
 import { downloadJson } from '../../lib/download'
 import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
-import { runPool } from '../../lib/resolve-books'
+import { runPool, SERIES_POOL } from '../../lib/resolve-books'
 import {
   classify,
   exportJSON,
@@ -34,14 +34,18 @@ import { NewPill, OwnCheckbox, ReleaseLine } from './entry-ui'
 import LibraryImport from './LibraryImport'
 import { useWatchlist, type WatchlistHandle } from './use-watchlist'
 
-/** Concurrency for the per-series fetches: one whole series document each, and
-    a reader can follow a lot of them. */
-const SERIES_POOL = 4
-
 type SeriesState =
   | { status: 'loading' }
   | { status: 'ready'; data: Series }
   | { status: 'error' }
+
+/** What one panel renders. Only a READY series has a classification, so the two
+    travel together rather than as independent props a panel would have to
+    defend against disagreeing. */
+type PanelState =
+  | { status: 'loading' }
+  | { status: 'error' }
+  | { status: 'ready'; result: SeriesClassification }
 
 /** Everything in a series the reader does NOT have: what they can get now plus
     what they can preorder, in the series' own order. One definition, because
@@ -119,24 +123,24 @@ export default function WatchingPage() {
     if (nextStore !== store) save(nextStore)
   }, [details, store, seenAtLoad, save])
 
-  const classified = visible.map((row) => {
+  const classified = visible.map((row): { row: WatchlistRow; panel: PanelState } => {
     const state = details[row.slug]
-    if (state?.status !== 'ready') return { row, state, result: null }
+    if (state?.status !== 'ready') return { row, panel: { status: state?.status ?? 'loading' } }
     // Live ownership, snapshotted seen - see seenAtLoad above.
     const entry = watchedSeries(store, row.slug)
     const forBadges = entry ? { ...entry, seen: seenAtLoad[row.slug] ?? entry.seen } : undefined
-    return { row, state, result: classify(state.data.works, forBadges, now) }
+    return { row, panel: { status: 'ready', result: classify(state.data.works, forBadges, now) } }
   })
 
   // "New" counts every entry the reader has not been shown before, preorders
   // included - an announced next volume is news. "Preorders" counts all of
   // them, so a new preorder is honestly in both numbers.
   const totals = classified.reduce(
-    (acc, c) => {
-      if (!c.result) return acc
+    (acc, { panel }) => {
+      if (panel.status !== 'ready') return acc
       return {
-        fresh: acc.fresh + missing(c.result).filter((e) => e.isNew).length,
-        preorders: acc.preorders + c.result.preorder.length,
+        fresh: acc.fresh + missing(panel.result).filter((e) => e.isNew).length,
+        preorders: acc.preorders + panel.result.preorder.length,
       }
     },
     { fresh: 0, preorders: 0 }
@@ -155,12 +159,11 @@ export default function WatchingPage() {
             {visible.length.toLocaleString()} series.
           </p>
           <div className="space-y-6">
-            {classified.map(({ row, state, result }) => (
+            {classified.map(({ row, panel }) => (
               <SeriesPanel
                 key={row.slug}
                 row={row}
-                state={state}
-                result={result}
+                panel={panel}
                 now={now}
                 watchlist={watchlist}
                 onMarkAllSeen={(ids) => {
@@ -240,8 +243,14 @@ function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: strin
       .then((next) => {
         if (current) setURLs(next)
       })
-      .catch(() => {
-        if (current) setNote('Could not build the feed URL in this browser.')
+      .catch((err: unknown) => {
+        // buildFeedURLs states WHY it refused (too many series to fit a URL);
+        // anything else is the browser lacking CompressionStream.
+        if (current) {
+          setNote(
+            err instanceof Error ? err.message : 'Could not build the feed URL in this browser.'
+          )
+        }
       })
     return () => {
       current = false
@@ -280,7 +289,10 @@ function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: strin
           type="url"
           readOnly
           aria-label="Atom feed URL"
-          value={urls?.atom ?? 'Building your feed URL...'}
+          /* Once the build has failed, `note` carries the reason; leaving the
+             placeholder up would say the URL is still coming when nothing is
+             still trying. */
+          value={urls?.atom ?? (note ? '' : 'Building your feed URL...')}
           onFocus={(event) => event.currentTarget.select()}
           className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
         />
@@ -349,15 +361,13 @@ function EmptyState() {
     yours, and the controls for the series as a whole. */
 function SeriesPanel({
   row,
-  state,
-  result,
+  panel,
   now,
   watchlist: { store, save },
   onMarkAllSeen,
 }: {
   row: WatchlistRow
-  state: SeriesState | undefined
-  result: SeriesClassification | null
+  panel: PanelState
   now: string
   watchlist: WatchlistHandle
   onMarkAllSeen: (ids: string[]) => void
@@ -365,6 +375,9 @@ function SeriesPanel({
   const name = row.name || row.slug
   const markOwned = (workID: string, owned: boolean) =>
     save(setOwned(store, row.slug, workID, owned))
+  // The set the header's count, its action and its visibility condition all
+  // mean - computed once, so they cannot drift apart within one render.
+  const unowned = panel.status === 'ready' ? missing(panel.result) : []
   return (
     <section className="rounded-2xl border border-edge bg-surface p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -374,10 +387,10 @@ function SeriesPanel({
           </a>
         </h2>
         <div className="flex shrink-0 flex-wrap gap-4 text-sm">
-          {result && missing(result).some((e) => e.isNew) ? (
+          {unowned.some((e) => e.isNew) ? (
             <button
               type="button"
-              onClick={() => onMarkAllSeen(missing(result).map((e) => e.entry.work.id))}
+              onClick={() => onMarkAllSeen(unowned.map((e) => e.entry.work.id))}
               className={TEXT_LINK}
             >
               Mark all seen
@@ -396,31 +409,36 @@ function SeriesPanel({
         </div>
       </div>
 
-      {!state || state.status === 'loading' ? (
+      {panel.status === 'loading' ? (
         <p className="mt-4 text-sm text-dim" aria-live="polite">
           Loading...
         </p>
-      ) : state.status === 'error' ? (
+      ) : panel.status === 'error' ? (
         <p className="mt-4 text-sm text-dim">
           This series could not be read from the database just now. It is still on your list.
         </p>
-      ) : !result ? null : (
+      ) : (
         <>
           <EntryGroup
             heading="Available"
             empty="You have every released entry."
-            entries={result.available}
+            entries={panel.result.available}
             now={now}
             onOwned={markOwned}
           />
-          <EntryGroup heading="Preorder" entries={result.preorder} now={now} onOwned={markOwned} />
-          {result.owned.length > 0 ? (
+          <EntryGroup
+            heading="Preorder"
+            entries={panel.result.preorder}
+            now={now}
+            onOwned={markOwned}
+          />
+          {panel.result.owned.length > 0 ? (
             <details className="mt-5">
               <summary className="cursor-pointer text-sm text-dim hover:text-hi">
-                {result.owned.length.toLocaleString()} you already have
+                {panel.result.owned.length.toLocaleString()} you already have
               </summary>
               <ul className="mt-3 space-y-2">
-                {result.owned.map((entry) => (
+                {panel.result.owned.map((entry) => (
                   <EntryRow
                     key={entry.work.id}
                     entry={entry}

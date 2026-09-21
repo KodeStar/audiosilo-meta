@@ -11,6 +11,13 @@
 // reader's timezone into a fact that has none - `2026-01-01` read as a Date is
 // the last day of 2025 west of Greenwich - and would turn an unparseable value
 // into "Invalid Date" rather than leaving it alone.
+//
+// HAND-MIRRORED TWIN of internal/serve/watchfeed.go (`releaseIsFuture`,
+// `formatReleaseDate`), which renders the same catalogue values into the watch
+// feed a reader subscribes to from this page. A reader comparing the two must
+// not be told two different things about one book, so the cases pinned in
+// dates.test.ts here and in TestReleaseDatePrecisionMirrorsTheSite there are
+// the SAME cases. Change one side, change both.
 
 /** The precision-tolerant shape of every value here: a year, optionally a
     month, optionally a day. Anything else is passed through untouched. */

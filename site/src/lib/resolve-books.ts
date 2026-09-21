@@ -41,6 +41,12 @@ import {
 /** Concurrency for the lookup and author-search sweeps. */
 export const POOL_SIZE = 8
 
+/** Concurrency for the per-series document fetches both /watching surfaces do
+    (the page's own list, and the library import's size lookups). Gentler than
+    POOL_SIZE: these are whole series documents, one per series rather than one
+    per book. */
+export const SERIES_POOL = 4
+
 /** The hard safety cap on export size - a bound on how much work one dropped
     file can ask for. Books past it are counted and reported, never silently
     dropped. */

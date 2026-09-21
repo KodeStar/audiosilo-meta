@@ -101,6 +101,9 @@ function EntryRow({
   onOwned: (owned: boolean) => void
 }) {
   const work = entry.work
+  // `owned === null` is "not watching", which is the one condition deciding
+  // BOTH what sits at the row's right edge and whether there is a checkbox.
+  const marking = owned !== null
   return (
     <li className="group flex items-center gap-4 rounded-2xl border border-edge bg-surface p-4 transition-colors hover:border-pink-500/40 sm:gap-5">
       <a href={href.work(work.id)} className="flex min-w-0 flex-1 items-center gap-4 sm:gap-5">
@@ -123,7 +126,7 @@ function EntryRow({
         </div>
         {/* The row's own affordance, shown only when nothing else occupies the
             right edge - the ownership mark takes that place when watching. */}
-        {owned === null ? (
+        {marking ? null : (
           <svg
             className="hidden h-5 w-5 shrink-0 text-dim transition-colors group-hover:text-pink-400 sm:block"
             xmlns="http://www.w3.org/2000/svg"
@@ -135,11 +138,9 @@ function EntryRow({
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
-        ) : null}
+        )}
       </a>
-      {owned === null ? null : (
-        <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
-      )}
+      {marking ? <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} /> : null}
     </li>
   )
 }
@@ -150,6 +151,10 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
   const { store, save } = watchlist
   const watching = isWatched(store, series.id)
   const owned = new Set(watchedSeries(store, series.id)?.owned ?? [])
+  // Counted against the entries this page LISTS, not against everything the
+  // store remembers: a mark survives a work leaving the series (and a `?limit`
+  // window shows a page), so `owned.size` alone can read "12 of 10".
+  const ownedHere = (series.works ?? []).filter((e) => owned.has(e.work.id)).length
   const now = today()
 
   return (
@@ -179,7 +184,7 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
           {watching ? (
             <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
               <span className="text-dim">
-                {owned.size} of {series.works.length} marked as yours
+                {ownedHere} of {series.works.length} marked as yours
               </span>
               <button
                 type="button"
