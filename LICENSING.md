@@ -181,7 +181,17 @@ copyright status of the individual rows. The import posture is therefore
 - **Curated batch imports** - bounded, human-reviewed tranches with a stated
   selection rationale (for example, completing series the catalogue already
   holds volumes of), landed as reviewable pull requests, never as an unbounded
-  mirror.
+  mirror. The one standing automation of this shape - the series-completion bot
+  described in
+  [GOVERNANCE.md](GOVERNANCE.md#series-completion-bot-audiosilo-meta-sync) - has
+  its tranches reviewed by the automated verifier under that section's rules
+  rather than by a person, and stays bounded the same way: it fills free
+  positions in series the catalogue already holds and may never add a series, so
+  it is a completion pass and never a mirror. Its records carry the same typed
+  `sources[]` provenance as every other import and retract with the source.
+  Coming-soon (preorder) titles are imported with their **announced** release
+  date - a fact the source states - and are corrected like any other fact when
+  the announcement and reality part company.
 
 Wholesale mirroring of a third-party catalogue remains out of bounds. Every
 imported record is stamped with a typed `sources[]` entry naming its origin, so
