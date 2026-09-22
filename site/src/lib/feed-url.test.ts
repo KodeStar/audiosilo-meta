@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildFeedURLs, MAX_FEED_SERIES } from './feed-url'
+import { buildFeedURLs, MAX_FEED_SERIES, toWebcal } from './feed-url'
 import { WATCHLIST_VERSION, type Watchlist } from './watchlist'
 
 function watchlist(slugs: string[], hidden: string[] = []): Watchlist {
@@ -13,6 +13,7 @@ function watchlist(slugs: string[], hidden: string[] = []): Watchlist {
           watchedAt: '2026-09-21',
           owned: [],
           seen: [],
+          skipped: [],
           ...(hidden.includes(slug) ? { hidden: true as const } : {}),
         },
       ])
@@ -33,6 +34,12 @@ describe('buildFeedURLs', () => {
     expect(urls.json).toBe(
       'https://meta.example/api/v1/watch/feed.json?s=alpha-series%2Cbeta-series'
     )
+    expect(urls.ics).toBe(
+      'https://meta.example/api/v1/watch/releases.ics?s=alpha-series%2Cbeta-series'
+    )
+    expect(urls.webcal).toBe(
+      'webcal://meta.example/api/v1/watch/releases.ics?s=alpha-series%2Cbeta-series'
+    )
   })
 
   it('respects a configured API base', async () => {
@@ -43,6 +50,9 @@ describe('buildFeedURLs', () => {
     )
     expect(urls.atom).toBe(
       'https://api.example/base/api/v1/watch/feed.atom?s=alpha-series'
+    )
+    expect(urls.ics).toBe(
+      'https://api.example/base/api/v1/watch/releases.ics?s=alpha-series'
     )
   })
 
@@ -82,5 +92,53 @@ describe('buildFeedURLs', () => {
       .pipeThrough(new DecompressionStream('deflate-raw'))
     const decoded = await new Response(output).text()
     expect(decoded).toBe([...slugs].sort().join(','))
+  })
+
+  it('gives all four URLs the same s value in the compact form', async () => {
+    const slugs = Array.from({ length: 40 }, (_, i) =>
+      `series-${String(i).padStart(3, '0')}-${'long-name-'.repeat(8)}end`
+    )
+    const urls = await buildFeedURLs(watchlist(slugs), 'https://meta.example', '')
+    const value = (url: string) => new URL(url).searchParams.get('s') ?? ''
+    expect(value(urls.atom).startsWith('z:')).toBe(true)
+    expect(value(urls.json)).toBe(value(urls.atom))
+    expect(value(urls.ics)).toBe(value(urls.atom))
+    expect(urls.webcal).toBe(toWebcal(urls.ics))
+  })
+
+  it('decides CSV-or-compact on the ICS URL, the longest of the three', async () => {
+    // "watch/releases.ics" is three characters longer than "watch/feed.atom",
+    // so a watchlist exists whose Atom URL fits under the 1500-character limit
+    // and whose ICS URL does not. One decision, measured on the longest, keeps
+    // every URL carrying the same `s` - this list is where measuring the Atom
+    // one instead would have split them.
+    const slugs = Array.from({ length: 28 }, (_, i) =>
+      `series-${String(i).padStart(2, '0')}-${'x'.repeat(39)}`
+    )
+    const encoded = encodeURIComponent([...slugs].sort().join(','))
+    const atomWithCSV = `https://meta.example/api/v1/watch/feed.atom?s=${encoded}`
+    const icsWithCSV = `https://meta.example/api/v1/watch/releases.ics?s=${encoded}`
+    expect(atomWithCSV.length).toBeLessThan(1500)
+    expect(icsWithCSV.length).toBeGreaterThanOrEqual(1500)
+
+    const urls = await buildFeedURLs(watchlist(slugs), 'https://meta.example', '')
+    for (const url of [urls.atom, urls.json, urls.ics]) {
+      expect(new URL(url).searchParams.get('s')?.startsWith('z:')).toBe(true)
+    }
+  })
+})
+
+describe('toWebcal', () => {
+  it('rewrites an https or http URL and leaves anything else alone', () => {
+    expect(toWebcal('https://meta.example/api/v1/watch/releases.ics?s=a')).toBe(
+      'webcal://meta.example/api/v1/watch/releases.ics?s=a'
+    )
+    expect(toWebcal('http://localhost:4321/api/v1/watch/releases.ics')).toBe(
+      'webcal://localhost:4321/api/v1/watch/releases.ics'
+    )
+    expect(toWebcal('/api/v1/watch/releases.ics')).toBe('/api/v1/watch/releases.ics')
+    expect(toWebcal('webcal://meta.example/x.ics')).toBe('webcal://meta.example/x.ics')
+    // Only a LEADING scheme is rewritten - an https inside a query value is data.
+    expect(toWebcal('ftp://x/https:y')).toBe('ftp://x/https:y')
   })
 })

@@ -1,0 +1,197 @@
+import { describe, it, expect, afterEach, vi } from 'vitest'
+import {
+  WATCH_BADGE_STORAGE_KEY,
+  WATCH_BADGE_TTL_MS,
+  badgeCount,
+  badgeSlugKey,
+  isBadgeFresh,
+  parseBadgeCache,
+  readBadgeCache,
+  workIDsFromFeed,
+  writeBadgeCache,
+  type BadgeCache,
+} from './watch-badge'
+import {
+  emptyWatchlist,
+  hide,
+  markSeen,
+  setOwned,
+  setSkipped,
+  watch,
+  type Watchlist,
+} from './watchlist'
+
+const TODAY = '2026-09-21'
+const NOW = 1_758_000_000_000
+
+// A minimal in-memory localStorage, as watchlist.test.ts stubs one.
+function stubStorage(opts: { throws?: boolean } = {}) {
+  const map = new Map<string, string>()
+  vi.stubGlobal('localStorage', {
+    getItem: (k: string) => {
+      if (opts.throws) throw new Error('blocked')
+      return map.get(k) ?? null
+    },
+    setItem: (k: string, v: string) => {
+      if (opts.throws) throw new Error('blocked')
+      map.set(k, v)
+    },
+  })
+  return map
+}
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+})
+
+function cache(over: Partial<BadgeCache> = {}): BadgeCache {
+  return { version: 1, slugKey: 'a,b', fetchedAt: NOW, works: ['w1', 'w2'], ...over }
+}
+
+function feed(urls: unknown[]): unknown {
+  return { version: 'https://jsonfeed.org/version/1.1', items: urls.map((url) => ({ url })) }
+}
+
+describe('badgeSlugKey', () => {
+  it('is the visible slugs, sorted and comma-joined', () => {
+    let store = watch(emptyWatchlist(), 'zeta', 'Zeta', TODAY)
+    store = watch(store, 'alpha', 'Alpha', TODAY)
+    expect(badgeSlugKey(store)).toBe('alpha,zeta')
+  })
+  it('leaves out hidden series, and is empty when nothing is visible', () => {
+    // A hidden series is not in the feed URL either, so it must not be in the
+    // key - hiding one would otherwise invalidate the cache forever.
+    const store = hide(watch(emptyWatchlist(), 'alpha', 'Alpha', TODAY), 'beta', 'Beta', TODAY)
+    expect(badgeSlugKey(store)).toBe('alpha')
+    expect(badgeSlugKey(emptyWatchlist())).toBe('')
+  })
+})
+
+describe('workIDsFromFeed', () => {
+  it('reads the work slug out of each item url, distinct and in feed order', () => {
+    expect(
+      workIDsFromFeed(
+        feed([
+          'https://meta.audiosilo.app/works/killing-floor',
+          'https://meta.audiosilo.app/works/die-trying/',
+          'https://meta.audiosilo.app/works/killing-floor', // the preorder/released pair
+        ])
+      )
+    ).toEqual(['killing-floor', 'die-trying'])
+  })
+  it('decodes a percent-encoded segment', () => {
+    expect(workIDsFromFeed(feed(['https://meta.audiosilo.app/works/a%2Db']))).toEqual(['a-b'])
+  })
+  it('skips anything that is not a work page or not a string', () => {
+    expect(
+      workIDsFromFeed(
+        feed([
+          'https://meta.audiosilo.app/series/jack-reacher',
+          'https://meta.audiosilo.app/works/',
+          'not a url at all',
+          42,
+          null,
+        ])
+      )
+    ).toEqual([])
+    expect(workIDsFromFeed({ items: [null, 'a string', { id: 'no url' }] })).toEqual([])
+  })
+  it('returns an empty list for anything that is not a feed document', () => {
+    expect(workIDsFromFeed(undefined)).toEqual([])
+    expect(workIDsFromFeed(null)).toEqual([])
+    expect(workIDsFromFeed('a string')).toEqual([])
+    expect(workIDsFromFeed([])).toEqual([])
+    expect(workIDsFromFeed({})).toEqual([]) // items missing
+    expect(workIDsFromFeed({ items: 'nope' })).toEqual([])
+  })
+})
+
+describe('badgeCount', () => {
+  const works = ['w1', 'w2', 'w3']
+
+  function watching(): Watchlist {
+    return watch(emptyWatchlist(), 'series', 'Series', TODAY)
+  }
+
+  it('counts everything when nothing is marked', () => {
+    expect(badgeCount(works, watching())).toBe(3)
+    expect(badgeCount(works, emptyWatchlist())).toBe(3)
+    expect(badgeCount([], watching())).toBe(0)
+  })
+  it('excludes a work marked seen, owned or skipped', () => {
+    expect(badgeCount(works, markSeen(watching(), 'series', ['w1']))).toBe(2)
+    expect(badgeCount(works, setOwned(watching(), 'series', 'w2', true))).toBe(2)
+    expect(badgeCount(works, setSkipped(watching(), 'series', 'w3', true))).toBe(2)
+  })
+  it('counts a mark in a HIDDEN series - a mark is a mark', () => {
+    // Otherwise the badge would go UP when a reader hides a series.
+    let store = setOwned(watching(), 'series', 'w1', true)
+    store = hide(store, 'series', 'Series', TODAY)
+    expect(badgeCount(works, store)).toBe(2)
+  })
+  it('reads marks from every series, whichever one the work came from', () => {
+    let store = watch(watching(), 'other', 'Other', TODAY)
+    store = setOwned(store, 'other', 'w1', true)
+    store = markSeen(store, 'series', ['w2'])
+    expect(badgeCount(works, store)).toBe(1)
+  })
+})
+
+describe('isBadgeFresh', () => {
+  it('is true inside the window for the same series', () => {
+    expect(isBadgeFresh(cache(), 'a,b', NOW)).toBe(true)
+    expect(isBadgeFresh(cache(), 'a,b', NOW + WATCH_BADGE_TTL_MS - 1)).toBe(true)
+  })
+  it('is false with no cache, on a changed slug key, and at the TTL', () => {
+    expect(isBadgeFresh(null, 'a,b', NOW)).toBe(false)
+    expect(isBadgeFresh(cache(), 'a,b,c', NOW)).toBe(false)
+    expect(isBadgeFresh(cache(), 'a,b', NOW + WATCH_BADGE_TTL_MS)).toBe(false)
+  })
+  it('is false for a negative age - the clock moved back', () => {
+    expect(isBadgeFresh(cache(), 'a,b', NOW - 1)).toBe(false)
+  })
+})
+
+describe('parseBadgeCache', () => {
+  it('reads what writeBadgeCache writes', () => {
+    expect(parseBadgeCache(JSON.stringify(cache()))).toEqual(cache())
+  })
+  it('drops a non-string work rather than the whole cache', () => {
+    expect(parseBadgeCache(JSON.stringify(cache({ works: ['w1', 3, '', null] as unknown as string[] })))).toEqual(
+      cache({ works: ['w1'] })
+    )
+  })
+  it('returns null for anything it does not recognise', () => {
+    expect(parseBadgeCache(null)).toBeNull()
+    expect(parseBadgeCache('')).toBeNull()
+    expect(parseBadgeCache('not json')).toBeNull()
+    expect(parseBadgeCache('[]')).toBeNull()
+    expect(parseBadgeCache(JSON.stringify(cache({ version: 2 as unknown as 1 })))).toBeNull()
+    expect(parseBadgeCache(JSON.stringify({ ...cache(), slugKey: undefined }))).toBeNull()
+    expect(parseBadgeCache(JSON.stringify({ ...cache(), fetchedAt: 'soon' }))).toBeNull()
+    expect(parseBadgeCache(JSON.stringify({ ...cache(), works: 'w1' }))).toBeNull()
+  })
+})
+
+describe('storage helpers', () => {
+  it('round-trips under the namespaced key', () => {
+    const map = stubStorage()
+    writeBadgeCache(cache())
+    expect(map.get(WATCH_BADGE_STORAGE_KEY)).toBeDefined()
+    expect(readBadgeCache()).toEqual(cache())
+  })
+  it('reads null when nothing is stored', () => {
+    stubStorage()
+    expect(readBadgeCache()).toBeNull()
+  })
+  it('degrades when storage throws', () => {
+    stubStorage({ throws: true })
+    expect(readBadgeCache()).toBeNull()
+    expect(() => writeBadgeCache(cache())).not.toThrow()
+  })
+  it('degrades when there is no localStorage at all', () => {
+    vi.stubGlobal('localStorage', undefined)
+    expect(readBadgeCache()).toBeNull()
+    expect(() => writeBadgeCache(cache())).not.toThrow()
+  })
+})

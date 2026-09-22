@@ -1,11 +1,15 @@
 import { API_BASE } from './api'
 import type { Watchlist } from './watchlist'
 
-export type FeedFormat = 'atom' | 'json'
-
 export interface FeedURLs {
   atom: string
   json: string
+  /** The calendar subscription, `GET /api/v1/watch/releases.ics` - the same
+      `s`/`window` parameters, rendered as iCalendar. */
+  ics: string
+  /** `ics` under the `webcal:` scheme, which is what a calendar app registers
+      itself for: an https link opens in the browser, a webcal one subscribes. */
+  webcal: string
 }
 
 const PLAIN_URL_LIMIT = 1500
@@ -23,9 +27,18 @@ function watchedSlugs(store: Watchlist): string[] {
     .sort()
 }
 
-function endpoint(format: FeedFormat, origin: string, apiBase: string): URL {
+/** One API path (`watch/feed.atom`, `watch/releases.ics`, ...) as an absolute
+    URL under the configured origin/base. */
+function endpoint(path: string, origin: string, apiBase: string): URL {
   const base = apiBase ? new URL(apiBase, origin).toString() : origin
-  return new URL(`${base.replace(/\/$/, '')}/api/v1/watch/feed.${format}`)
+  return new URL(`${base.replace(/\/$/, '')}/api/v1/${path}`)
+}
+
+/** The same URL under the `webcal:` scheme. Only an http(s) URL is rewritten;
+    anything else is handed back untouched, because a scheme this does not
+    recognise is not one it can safely re-spell. */
+export function toWebcal(url: string): string {
+  return url.replace(/^https?:/, 'webcal:')
 }
 
 function withSeries(endpoint: URL, series: string): string {
@@ -47,7 +60,8 @@ async function compactSeries(csv: string): Promise<string> {
 }
 
 /**
- * Build the two stateless subscription URLs for a watchlist. The readable CSV
+ * Build the stateless subscription URLs for a watchlist - Atom, JSON Feed, the
+ * calendar, and the calendar again under `webcal:`. The readable CSV
  * form is preferred while the complete URL stays below 1500 characters; a
  * longer list uses the server's raw-DEFLATE compact form. Hidden series never
  * leave the browser.
@@ -69,11 +83,23 @@ export async function buildFeedURLs(
   }
   const csv = slugs.join(',')
 
-  // One endpoint each, measured once: the two URLs differ only in the four
-  // characters of their extension, so the Atom one's length decides both.
-  const atom = endpoint('atom', origin, apiBase)
-  const json = endpoint('json', origin, apiBase)
+  // One endpoint each, and ONE decision for all of them. The URLs differ only
+  // in their path, so the decision is measured against the LONGEST - the ics
+  // one ("watch/releases.ics" against "watch/feed.atom") - and every URL then
+  // carries the same `s` value. Measuring each separately could hand a reader a
+  // CSV feed URL beside a compact calendar URL for one watchlist, which reads
+  // as two different subscriptions and makes the page's "this is your list"
+  // claim false.
+  const atom = endpoint('watch/feed.atom', origin, apiBase)
+  const json = endpoint('watch/feed.json', origin, apiBase)
+  const ics = endpoint('watch/releases.ics', origin, apiBase)
   const series =
-    withSeries(atom, csv).length < PLAIN_URL_LIMIT ? csv : await compactSeries(csv)
-  return { atom: withSeries(atom, series), json: withSeries(json, series) }
+    withSeries(ics, csv).length < PLAIN_URL_LIMIT ? csv : await compactSeries(csv)
+  const icsURL = withSeries(ics, series)
+  return {
+    atom: withSeries(atom, series),
+    json: withSeries(json, series),
+    ics: icsURL,
+    webcal: toWebcal(icsURL),
+  }
 }

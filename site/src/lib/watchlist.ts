@@ -1,5 +1,6 @@
 // The series watchlist: which series a reader follows, which entries they
-// already have, and which of the rest they have already been shown.
+// already have, which of the rest they have dismissed as "not interested", and
+// which they have already been shown.
 //
 // It lives ENTIRELY in the reader's browser, under one localStorage key. There
 // is no account to attach it to and the API is read-only, so nothing here is
@@ -23,9 +24,16 @@ export const WATCHLIST_STORAGE_KEY = 'audiosilo-meta:watchlist'
     which is the whole point of storing one. */
 export const WATCHLIST_VERSION = 1
 
-/** One watched series. `owned` and `seen` hold WORK slugs, the catalogue's own
-    identity - not titles and not positions, both of which a data repair may
-    legitimately change under a reader. */
+/** The window CustomEvent a save dispatches, so anything outside the island
+    that wrote it can notice. The header's "Watching" badge listens for it: its
+    count is a pure function of the live store (see lib/watch-badge.ts), so a
+    mark made on the watching page has to reach the header without a reload and
+    without a refetch. Namespaced like the storage key. */
+export const WATCHLIST_CHANGED_EVENT = 'audiosilo-meta:watchlist-changed'
+
+/** One watched series. `owned`, `seen` and `skipped` hold WORK slugs, the
+    catalogue's own identity - not titles and not positions, both of which a
+    data repair may legitimately change under a reader. */
 export interface WatchedSeries {
   /** The series name at the time it was watched, so the list renders before
       (or without) a successful fetch. */
@@ -37,6 +45,11 @@ export interface WatchedSeries {
   /** Work slugs the reader has already been shown on /watching. What is NOT in
       here is what earns a "New" badge. */
   seen: string[]
+  /** Work slugs the reader is not interested in. Deliberately its own list
+      rather than a second meaning for `owned`: a reader dismissing a series'
+      novellas is not saying they have them, and an ownership mark is what the
+      "I have these" list and a later library import both read. */
+  skipped: string[]
   /** Set on a series the reader does not want offered: it stays stored (so a
       later import does not suggest it again) but is left out of the watching
       page and of every import checklist. Absent, never false - one spelling of
@@ -77,6 +90,10 @@ function parseSeries(value: unknown): WatchedSeries | null {
     watchedAt: typeof raw.watchedAt === 'string' ? raw.watchedAt : '',
     owned: stringList(raw.owned),
     seen: stringList(raw.seen),
+    // Additive, so a document stored before skip marks existed parses into an
+    // empty list rather than bumping WATCHLIST_VERSION and discarding a
+    // reader's whole watchlist over a field they never had.
+    skipped: stringList(raw.skipped),
   }
   if (raw.hidden === true) entry.hidden = true
   return entry
@@ -187,6 +204,7 @@ export function watch(store: Watchlist, slug: string, name: string, today: strin
     watchedAt: existing?.watchedAt || today,
     owned: existing?.owned ?? [],
     seen: existing?.seen ?? [],
+    skipped: existing?.skipped ?? [],
   })
 }
 
@@ -209,6 +227,24 @@ export function setOwned(
     ? union(entry.owned, [workSlug])
     : entry.owned.filter((w) => w !== workSlug)
   return replaceSeries(store, slug, { ...entry, owned: next })
+}
+
+/** Mark one work of a series as "not interested", or not. Symmetric with
+    setOwned - one mutation for both directions, because a skip is a toggle in
+    front of the reader and an "unskip" of its own would be a second spelling of
+    the same fact. A no-op on a series that is not watched. */
+export function setSkipped(
+  store: Watchlist,
+  slug: string,
+  workSlug: string,
+  skipped: boolean
+): Watchlist {
+  const entry = store.series[slug]
+  if (!entry) return store
+  const next = skipped
+    ? union(entry.skipped, [workSlug])
+    : entry.skipped.filter((w) => w !== workSlug)
+  return replaceSeries(store, slug, { ...entry, skipped: next })
 }
 
 /** Mark every listed work of a series as owned (a union, so a work already
@@ -248,6 +284,7 @@ export function hide(store: Watchlist, slug: string, name: string, today: string
     watchedAt: entry?.watchedAt || today,
     owned: entry?.owned ?? [],
     seen: entry?.seen ?? [],
+    skipped: entry?.skipped ?? [],
     hidden: true,
   })
 }
@@ -295,12 +332,13 @@ export interface ClassifiedEntry {
 }
 
 /** What a watched series looks like right now: what the reader is missing, what
-    they can preorder, and what they already have. Every entry lands in exactly
-    one of the three. */
+    they can preorder, what they already have and what they have dismissed.
+    Every entry lands in exactly one of the four. */
 export interface SeriesClassification {
   available: ClassifiedEntry[]
   preorder: ClassifiedEntry[]
   owned: SeriesEntry[]
+  skipped: SeriesEntry[]
 }
 
 /**
@@ -308,12 +346,18 @@ export interface SeriesClassification {
  *
  * Ownership wins: a work the reader has marked is `owned` whether or not it has
  * been released, because a preorder they have already placed is not something
- * to tell them about again. Of the rest, an entry whose release date is still
+ * to tell them about again. A work they have dismissed is `skipped` next -
+ * owned beats skipped, since a book they went on to buy is no longer one they
+ * passed on. Of the rest, an entry whose release date is still
  * ahead of `today` (see dates.isFutureRelease - compared at the precision the
  * date states) is a `preorder` and everything else is `available`, INCLUDING an
  * entry with no date at all: a catalogued work with no stated release date is
  * overwhelmingly an older book nobody recorded a date for, and calling it a
  * preorder would put it in the one bucket the reader cannot act on.
+ *
+ * A skip is a PAGE-side filter only: the feed URL and the calendar URL carry
+ * series slugs and nothing else (lib/feed-url.ts), so the server cannot know
+ * about it and a skipped work still arrives in the reader's feed and calendar.
  *
  * Order is the series' own, which is position order - so the list reads like
  * the series does.
@@ -325,10 +369,15 @@ export function classify(
 ): SeriesClassification {
   const owned = new Set(watched?.owned ?? [])
   const seen = new Set(watched?.seen ?? [])
-  const out: SeriesClassification = { available: [], preorder: [], owned: [] }
+  const skipped = new Set(watched?.skipped ?? [])
+  const out: SeriesClassification = { available: [], preorder: [], owned: [], skipped: [] }
   for (const entry of entries) {
     if (owned.has(entry.work.id)) {
       out.owned.push(entry)
+      continue
+    }
+    if (skipped.has(entry.work.id)) {
+      out.skipped.push(entry)
       continue
     }
     const classified: ClassifiedEntry = { entry, isNew: !seen.has(entry.work.id) }
@@ -350,7 +399,8 @@ export function exportJSON(store: Watchlist): string {
 
 /**
  * Merge a backup into `store`. A series in both keeps the CURRENT name and
- * watch date and gains the union of the two sides' owned and seen lists, so a
+ * watch date and gains the union of the two sides' owned, seen and skipped
+ * lists, so a
  * merge can only ever add knowledge - importing a stale backup never un-marks a
  * book the reader has since said they have.
  *
@@ -375,6 +425,7 @@ export function importJSON(store: Watchlist, text: string): Watchlist {
       watchedAt: mine.watchedAt || entry.watchedAt,
       owned: union(mine.owned, entry.owned),
       seen: union(mine.seen, entry.seen),
+      skipped: union(mine.skipped, entry.skipped),
     }
     if (mine.hidden || entry.hidden) merged.hidden = true
     next = replaceSeries(next, slug, merged)
