@@ -931,7 +931,14 @@ server needs no account or subscription store. They resolve retired series
 slugs, report unknown ones, return released, newly catalogued and preorderable
 work cards from the artifact, and let the feed reader deduplicate stable item
 ids (the id suffix is `preorder` or `released`, so a preorder BECOMING a
-release is a new item and nothing else is). Dates are read at the precision the
+release is a new item and nothing else is). A work belonging to SEVERAL watched
+series is emitted ONCE, under the first of them in request order (`seenWork` in
+`watchFeed`): one book is one item in a reader, and since the item id is also
+the calendar UID, two would be two events on one day. The 200-item CAP is
+applied PER REPRESENTATION, after each renderer's own filter (`capItems`) - the
+calendar leaves undated works out, so a cap taken over the shared list let those
+spend calendar slots and pushed real dated releases out of the `.ics` while Atom
+and JSON still carried them. Dates are read at the precision the
 catalogue states them - `releaseIsFuture`/`formatReleaseDate` in `watchfeed.go`
 are a HAND-MIRRORED TWIN of `site/src/lib/dates.ts`, pinned to the same cases on
 both sides, so the feed and the watching page can never say two different things
@@ -959,13 +966,18 @@ carry it, so the calendar is deliberately the smaller list. The UID is the feed
 item's id in mail-address form (`watchTagPrefix` is the one spelling of the tag
 URI authority both are built from), so it carries the `preorder`/`released`
 suffix with it and a preorder BECOMING a release is a NEW event rather than a
-moved one. DTSTAMP derives from the RELEASE DATE and never from the clock, which
-is what makes the body deterministic - and therefore golden-testable and honest
-under a day-granular ETag; the one cosmetic consequence (a date corrected to an
-earlier one moves DTSTAMP backwards) is argued at the function. `icsText` and
+moved one. DTSTAMP is the GENERATION DAY (`watchFeed.generated`, `dayStart(now)`)
+- what RFC 5545 asks of it, and day-granular so the body stays a function of the
+day-granular ETag and therefore golden-testable. It deliberately does NOT derive
+from the item's release date, which for a preorder is a FUTURE stamp and which a
+correction moves backwards. Whether an item is dated at all is `item.release`,
+a `time.Time` the item CARRIES (zero = undated), not an invariant on `updated`
+asserted 200 lines away. `icsText` and
 `icsFold` own the wire format: RFC 5545 TEXT escaping, CRLF endings and
 75-OCTET folding broken at a UTF-8 BOUNDARY, since a title is frequently not
-ASCII and a naive cut hands the reader a calendar it cannot decode.
+ASCII and a naive cut hands the reader a calendar it cannot decode - and where
+the value is not decodable (invalid UTF-8), the fold cuts at the limit rather
+than backing off to a zero-width segment that never advances.
 
 **The work CARD carries `release_date`** (`store.go`'s `workCard`, so every
 surface that composes one: `GET /series/{id}` entries, all four searches and
@@ -1005,17 +1017,28 @@ again under `webcal:`, which is what makes a calendar app offer to subscribe
 where an https link makes a browser offer to download) and the CSV-or-compact
 decision is made ONCE, measured on the LONGEST of them, so one watchlist can
 never produce a CSV feed URL beside a compact calendar URL - two spellings of
-one list read as two subscriptions.
+one list read as two subscriptions. A browser with no `CompressionStream` gets
+the plain CSV rather than a refusal: the compact form is a cosmetic shortening,
+not a contract (the server bounds a CSV by the same 200 series, and 200 slugs of
+at most 100 characters is about 20KB of URL). The Get notified tab offers BOTH
+the Atom feed and the CALENDAR LINK as labelled, copyable fields - a `webcal:`
+anchor alone does nothing on a machine with no calendar app registered for the
+scheme, which is every reader adding it to Google Calendar in a browser tab -
+and the three links are labelled from `FEED_LABELS` (`lib/notify-options.ts`),
+shared with `/docs/notifications`, so a step saying "copy the Calendar link"
+names a control spelled exactly that.
 
 **The page is FOUR TABS**, each addressable by a URL hash and mapped by
 `site/src/lib/watchnav.ts` alone (Available owns the EMPTY fragment): Available
 is the FLAT cross-series view with one "Mark all seen", All is the per-series
 panels, Get notified is the feed URLs plus the options picker, and Import &
-backup is the export/import. It canonicalises a stale fragment on mount AND
-listens for `hashchange` - a DELIBERATE deviation from the work page's tab bar,
-which owns the hash outright: `/docs/notifications` links back to
-`/watching#notify`, and a reader already on the page would otherwise watch the
-fragment change while nothing moved. The FLAT ORDERING is
+backup is the export/import. Both tab bars - this one and the work page's -
+share `components/use-hash-tab.ts`, which canonicalises a stale fragment on
+mount AND listens for `hashchange`, canonicalising there too (a fragment the
+mapping does not recognise falls back to the default tab, and the address bar
+must not keep naming a tab nobody landed on). The listener is what makes
+`/docs/notifications` linking back to `/watching#notify` move the page for a
+reader already on it. The FLAT ORDERING is
 `site/src/lib/watch-flat.ts`'s alone - it hands the caller sorted lists, so
 there is no second ordering seam a component can get wrong: preorders soonest
 first, released NEWEST first, an entry with no date LAST in either direction
@@ -1024,7 +1047,12 @@ top would bury the releases), series name then position as the tie-break. Dates
 compare as PLAIN STRINGS at the precision the catalogue states them - the rule
 `workCard` picks a card's date by - because parsing would drag the reader's
 timezone into a fact that has none, and `positionStart` is a hand-mirrored TWIN
-of Go's in `internal/serve/queries.go`.
+of Go's in `internal/serve/queries.go` (which is the RULE OF RECORD; both sides
+pin the same cases). A work in SEVERAL watched series is ONE row here, under the
+first of them - the server's feed applies the same rule - so the two marks on
+that row are applied at PAGE level to every ready series that lists the book
+(`markEverywhere` over the memo's work-to-series index), or ticking off an
+omnibus would leave it sitting in the other series' panel.
 
 **A per-book SKIP** ("not interested") is the third work-slug list beside
 `owned` and `seen` in the stored watchlist (`setSkipped` in `watchlist.ts`),
@@ -1056,8 +1084,19 @@ an hour, and the ids are read off each item's `url` rather than its `id`, whose
 `preorder`/`released` suffix would count one book twice. Nothing watched means
 no request at all, and EVERY failure degrades to no badge (offline, a mock API
 with no feed route, more than 200 series, a browser without
-`CompressionStream`). `save` dispatches `WATCHLIST_CHANGED_EVENT` for a mark
-made in an island of this tab and `storage` covers another tab. KNOWN
+more than 200 series). `save` dispatches `WATCHLIST_CHANGED_EVENT` for a mark
+made in an island of this tab and `storage` covers another tab, and BOTH
+listeners call `refresh`, not `paint`: watching or unwatching a series changes
+the slug key, which makes the cached ids say nothing about this list, while an
+ordinary mark leaves the key alone and `refresh` paints straight through with no
+request. The pill carries the number for the eye plus a visually-hidden phrase,
+so the link's accessible name is "Watching 3 new releases" rather than a static
+label that said "new releases" however many there were, and the cache record is
+built by `newBadgeCache` so the stored `version` is watch-badge.ts's to state
+rather than a literal in the header. `watchedSlugs` and `markedWorkIDs` both
+live in `lib/watchlist.ts`, the LEAF: reaching through `lib/feed-url.ts` for the
+first of them put that whole module in the header's chunk and made its
+`await import` no lazy boundary at all. KNOWN
 LIMITATION, stated in both files: the feed's 90-day window means a never-seen
 work catalogued before it is counted on `/watching` and NOT in the badge - the
 badge is the cheap "anything new lately" number, the page is the complete

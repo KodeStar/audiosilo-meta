@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { buildFeedURLs, MAX_FEED_SERIES, toWebcal } from './feed-url'
 import { WATCHLIST_VERSION, type Watchlist } from './watchlist'
 
@@ -126,6 +126,29 @@ describe('buildFeedURLs', () => {
       expect(new URL(url).searchParams.get('s')?.startsWith('z:')).toBe(true)
     }
   })
+
+  // The compact form is a cosmetic shortening, not a contract: the server takes
+  // a plain CSV of the same 200 series (validateSeriesList,
+  // internal/serve/seriesparam.go), so a browser without CompressionStream gets
+  // a working feed rather than an error about a shortening it never asked for.
+  it('falls back to the plain CSV where the browser cannot compress', async () => {
+    vi.stubGlobal('CompressionStream', undefined)
+    const slugs = Array.from({ length: 40 }, (_, i) =>
+      `series-${String(i).padStart(3, '0')}-${'long-name-'.repeat(8)}end`
+    )
+    const urls = await buildFeedURLs(watchlist(slugs), 'https://meta.example', '')
+    const value = new URL(urls.atom).searchParams.get('s') ?? ''
+    expect(value).toBe([...slugs].sort().join(','))
+    // Still one decision for all four URLs.
+    for (const url of [urls.json, urls.ics]) {
+      expect(new URL(url).searchParams.get('s')).toBe(value)
+    }
+    expect(urls.webcal).toBe(toWebcal(urls.ics))
+  })
+})
+
+afterEach(() => {
+  vi.unstubAllGlobals()
 })
 
 describe('toWebcal', () => {

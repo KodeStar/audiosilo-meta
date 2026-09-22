@@ -12,6 +12,7 @@ import { createServer } from 'node:http'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { inflateRawSync } from 'node:zlib'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const db = JSON.parse(readFileSync(join(here, 'fixtures.json'), 'utf8'))
@@ -122,6 +123,65 @@ const coverage = {
     with_recaps: coverWorks.filter((w) => w.has.recaps).length,
     with_recap_summary: coverWorks.filter((w) => w.has.recap_summary).length,
   },
+}
+
+/** The `s` parameter, in either of the two forms the Go server accepts: plain
+    CSV, or the compact `z:<base64url(raw deflate(csv))>` the site builds for a
+    long list (feed-url.ts compactSeries / seriesparam.go decodeSeriesParam).
+    Decoded for real rather than waved through as "every fixture series" - a
+    long watchlist would otherwise silently demo a feed nobody asked for. Null
+    means the parameter was missing or undecodable. */
+function watchedSlugs(raw) {
+  if (!raw) return null
+  let csv = raw
+  if (raw.startsWith('z:')) {
+    try {
+      csv = inflateRawSync(Buffer.from(raw.slice(2), 'base64url')).toString('utf8')
+    } catch {
+      return null
+    }
+  }
+  const slugs = csv.split(',').filter(Boolean)
+  return slugs.length > 0 ? slugs : null
+}
+
+/** One all-day VEVENT per item, CRLF-terminated - enough of RFC 5545 for a
+    calendar app to accept the dev server's file. No folding: the fixture
+    titles are short, and the real rules are the Go server's. */
+function sendICS(res, site, requestURL, items) {
+  const escape = (value) => String(value).replace(/([\\;,])/g, '\\$1').replace(/\n/g, '\\n')
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//AudioSilo Meta//Watch releases (mock)//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:AudioSilo Meta: new in your series',
+    'REFRESH-INTERVAL;VALUE=DURATION:PT12H',
+    'X-PUBLISHED-TTL:PT12H',
+    `URL:${site}${requestURL}`,
+  ]
+  for (const item of items) {
+    lines.push(
+      'BEGIN:VEVENT',
+      `UID:${item.id.replace('tag:meta.audiosilo.app,2026:', '')}@meta.audiosilo.app`,
+      'DTSTAMP:20260901T000000Z',
+      'DTSTART;VALUE=DATE:20260901',
+      'DTEND;VALUE=DATE:20260902',
+      `SUMMARY:${escape(item.title)}`,
+      `DESCRIPTION:${escape(item.content_text)}`,
+      `URL:${item.url}`,
+      'CATEGORIES:released',
+      'END:VEVENT'
+    )
+  }
+  lines.push('END:VCALENDAR')
+  res.writeHead(200, {
+    'content-type': 'text/calendar; charset=utf-8',
+    'access-control-allow-origin': '*',
+    'access-control-allow-headers': '*',
+  })
+  res.end(lines.join('\r\n') + '\r\n')
 }
 
 function send(res, status, body) {
@@ -306,23 +366,26 @@ const server = createServer((req, res) => {
     return send(res, 404, { error: 'not found' })
   }
 
-  // The reader's own stateless watch feed, enough of it for the header badge to
-  // be exercisable at dev time. `s` carries the watched series slugs; the
-  // compact `z:<base64url(deflate(csv))>` form is not decoded here, it just
-  // falls back to every fixture series. Real shape rules (the 90-day window,
-  // retired-slug resolution, the preorder/released id suffix) are the Go
-  // server's - see internal/serve/watchfeed.go.
-  if (p === '/api/v1/watch/feed.json') {
-    const raw = url.searchParams.get('s') || ''
-    const wanted =
-      raw && !raw.startsWith('z:') ? raw.split(',').filter(Boolean) : Object.keys(db.series)
+  // The reader's own stateless watch feed, enough of it for the header badge
+  // and the calendar link to be exercisable at dev time. Real shape rules (the
+  // 90-day window, retired-slug resolution, the preorder/released id suffix,
+  // the once-per-work rule) are the Go server's - see
+  // internal/serve/watchfeed.go.
+  if (p === '/api/v1/watch/feed.json' || p === '/api/v1/watch/releases.ics') {
+    const wanted = watchedSlugs(url.searchParams.get('s'))
+    if (wanted === null) {
+      return send(res, 400, { error: 's is required' })
+    }
     const site = `http://localhost:${PORT}`
     const items = []
+    const seen = new Set()
     for (const slug of wanted) {
       const s = db.series[slug]
       if (!s) continue
       for (const entry of s.works ?? []) {
         const w = entry.work
+        if (seen.has(w.id)) continue
+        seen.add(w.id)
         items.push({
           id: `tag:meta.audiosilo.app,2026:work/${w.id}/released`,
           url: `${site}/works/${w.id}`,
@@ -335,6 +398,7 @@ const server = createServer((req, res) => {
         })
       }
     }
+    if (p === '/api/v1/watch/releases.ics') return sendICS(res, site, req.url, items)
     return send(res, 200, {
       version: 'https://jsonfeed.org/version/1.1',
       title: 'AudioSilo Meta - watching',

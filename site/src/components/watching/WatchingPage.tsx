@@ -20,11 +20,16 @@
 // per tab: they run whichever tab is showing, so flipping tabs never re-fetches
 // a series and never re-badges one as new.
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { getSeries, href, today, type Series, type SeriesEntry } from '../../lib/api'
 import { downloadJson } from '../../lib/download'
 import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
-import { NOTIFY_INTRO_NOTES, NOTIFY_OPTIONS, notifyDocHref } from '../../lib/notify-options'
+import {
+  FEED_LABELS,
+  NOTIFY_INTRO_NOTES,
+  NOTIFY_OPTIONS,
+  notifyDocHref,
+} from '../../lib/notify-options'
 import { runPool, SERIES_POOL } from '../../lib/resolve-books'
 import { flattenAcrossSeries, type FlatEntry } from '../../lib/watch-flat'
 import {
@@ -47,6 +52,7 @@ import {
   unwatch,
   visibleSeries,
   watchedSeries,
+  watchedSlugs,
   type ClassifiedEntry,
   type SeriesClassification,
   type Watchlist,
@@ -81,6 +87,11 @@ function missing(result: SeriesClassification): ClassifiedEntry[] {
   return [...result.available, ...result.preorder]
 }
 
+/** The line both empty lists show. Deliberately not "you have every released
+    entry": a skipped book is not one the reader HAS, and a reader who dismissed
+    a series' novellas was being told something untrue about their own shelf. */
+const NOTHING_LEFT = 'Nothing released that you have not already got or passed on.'
+
 /** What each tab is called. Keyed by WATCH_TABS' own ids, so a tab added there
     is a compile error here until it has a label. */
 const TAB_LABELS: Record<WatchTab, string> = {
@@ -104,8 +115,11 @@ export default function WatchingPage() {
   const abortRef = useRef<AbortController | null>(null)
   useEffect(() => () => abortRef.current?.abort(), [])
 
-  const visible = visibleSeries(store)
-  const hiddenRows = hiddenSeries(store)
+  // Both are a sort over the store, read by several branches of the render;
+  // memoised on exactly what they are a function of, so a tab click does not
+  // re-sort every watched series.
+  const visible = useMemo(() => visibleSeries(store), [store])
+  const hiddenRows = useMemo(() => hiddenSeries(store), [store])
   const now = today()
 
   // The tab is the URL hash (components/use-hash-tab.ts), which also picks up
@@ -119,8 +133,11 @@ export default function WatchingPage() {
   // unmount does, not what a changed watchlist does.
   // The dependency IS the slug list (a slug can hold no comma - see the data
   // model's slug rule), so the effect is a function of what it depends on
-  // rather than of a `visible` array that is rebuilt on every render.
-  const slugKey = visible.map((r) => r.slug).join(',')
+  // rather than of a `visible` array that is rebuilt on every render. It is
+  // `watchedSlugs` - the very list a feed URL carries - rather than `visible`'s
+  // NAME order, because the notify tab keys its URL build on this string and a
+  // renamed series would otherwise rebuild a URL that is byte-identical.
+  const slugKey = useMemo(() => watchedSlugs(store).join(','), [store])
   useEffect(() => {
     const pending = slugKey
       ? slugKey.split(',').filter((slug) => !requested.current.has(slug))
@@ -179,44 +196,72 @@ export default function WatchingPage() {
     [store, details, seenAtLoad, now]
   )
 
+  // Everything ONE pass over the classified panels yields: the flat view's
+  // input (in the shape lib/watch-flat.ts reads - sorting is its job, not this
+  // file's), the two load counts, the summary totals, and the index below.
+  //
   // "New" counts every entry the reader has not been shown before, preorders
   // included - an announced next volume is news. "Preorders" counts all of
   // them, so a new preorder is honestly in both numbers.
-  const totals = classified.reduce(
-    (acc, { panel }) => {
-      if (panel.status !== 'ready') return acc
-      return {
-        fresh: acc.fresh + missing(panel.result).filter((e) => e.isNew).length,
-        preorders: acc.preorders + panel.result.preorder.length,
-      }
-    },
-    { fresh: 0, preorders: 0 }
-  )
-
-  // The flat view's input: every READY panel, in the shape lib/watch-flat.ts
-  // reads. Sorting is its job, not this file's. The two counts below ride along
-  // in the same pass - they are only ever read as numbers.
-  const { readyPanels, flat, stillLoading, unreadable } = useMemo(() => {
+  const { readyPanels, flat, stillLoading, unreadable, totals, seriesOfWork } = useMemo(() => {
     const panels: { slug: string; name: string; result: SeriesClassification }[] = []
+    // Which READY series list a given work. The flat view shows a work once
+    // (lib/watch-flat.ts), so a mark made on that one row has to reach every
+    // series it belongs to - otherwise ticking off an omnibus leaves it sitting
+    // in the panel of the other series that carries it.
+    const byWork = new Map<string, string[]>()
     let loading = 0
     let errored = 0
+    let fresh = 0
+    let preorders = 0
     for (const { row, panel } of classified) {
-      if (panel.status === 'ready') panels.push({ slug: row.slug, name: row.name, result: panel.result })
-      else if (panel.status === 'error') errored += 1
-      else loading += 1
+      if (panel.status !== 'ready') {
+        if (panel.status === 'error') errored += 1
+        else loading += 1
+        continue
+      }
+      panels.push({ slug: row.slug, name: row.name, result: panel.result })
+      fresh += missing(panel.result).filter((e) => e.isNew).length
+      preorders += panel.result.preorder.length
+      const entries = [
+        ...panel.result.available.map((c) => c.entry),
+        ...panel.result.preorder.map((c) => c.entry),
+        ...panel.result.owned,
+        ...panel.result.skipped,
+      ]
+      for (const entry of entries) {
+        const slugs = byWork.get(entry.work.id)
+        if (slugs) slugs.push(row.slug)
+        else byWork.set(entry.work.id, [row.slug])
+      }
     }
     return {
       readyPanels: panels,
       flat: flattenAcrossSeries(panels),
       stillLoading: loading,
       unreadable: errored,
+      totals: { fresh, preorders },
+      seriesOfWork: byWork,
     }
   }, [classified])
 
-  const markOwnedIn = (slug: string, workID: string, owned: boolean) =>
-    save(setOwned(store, slug, workID, owned))
-  const markSkippedIn = (slug: string, workID: string, skipped: boolean) =>
-    save(setSkipped(store, slug, workID, skipped))
+  /** Apply one mark to a work in EVERY ready series that lists it - the flat
+      view's handler, since a work there is one row however many watched series
+      carry it. One store write, because a loop over `save` would each time
+      discard the previous result. */
+  const markEverywhere = (
+    apply: (store: Watchlist, slug: string, workID: string, on: boolean) => Watchlist,
+    workID: string,
+    on: boolean
+  ) => {
+    let next = store
+    for (const slug of seriesOfWork.get(workID) ?? []) next = apply(next, slug, workID, on)
+    if (next !== store) save(next)
+  }
+  const markFlatOwned = (workID: string, owned: boolean) =>
+    markEverywhere(setOwned, workID, owned)
+  const markFlatSkipped = (workID: string, skipped: boolean) =>
+    markEverywhere(setSkipped, workID, skipped)
 
   /** "Mark all seen" for the flat view: every ready series at once, so the
       badges the reader just read through all clear together. One store write
@@ -295,7 +340,13 @@ export default function WatchingPage() {
     switch (tab) {
       case 'available':
         return !watching ? (
-          <EmptyState onImport={() => selectTab('import')} />
+          <div className="space-y-6">
+            <EmptyState onImport={() => selectTab('import')} />
+            {/* A reader whose only series are hidden sees an empty page
+                otherwise, with no way back to them from the tab they landed
+                on. */}
+            <HiddenSeriesList rows={hiddenRows} watchlist={watchlist} />
+          </div>
         ) : (
           <div className="space-y-6">
             {flat.preorder.some((e) => e.isNew) || flat.available.some((e) => e.isNew) ? (
@@ -308,15 +359,15 @@ export default function WatchingPage() {
             <EntryGroup
               heading="Preorders"
               className=""
-              rows={flatRows(flat.preorder, now, markOwnedIn, markSkippedIn)}
+              rows={entryRows(flat.preorder, now, markFlatOwned, markFlatSkipped, flatSeries)}
             />
             <EntryGroup
               heading="Available"
               className=""
-              rows={flatRows(flat.available, now, markOwnedIn, markSkippedIn)}
+              rows={entryRows(flat.available, now, markFlatOwned, markFlatSkipped, flatSeries)}
             />
             {readyCount === 0 && stillLoading === 0 ? (
-              <p className="text-sm text-dim">You have every released entry.</p>
+              <p className="text-sm text-dim">{NOTHING_LEFT}</p>
             ) : null}
             <LoadNote loading={stillLoading} errored={unreadable} />
           </div>
@@ -343,48 +394,7 @@ export default function WatchingPage() {
               ))
             )}
 
-            {hiddenRows.length > 0 ? (
-              <details className="rounded-2xl border border-edge bg-surface p-6">
-                <summary className="cursor-pointer font-semibold text-hi">
-                  Hidden series ({hiddenRows.length.toLocaleString()})
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-body">
-                  These stay out of the list above and out of every library import, until you bring
-                  one back.
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {hiddenRows.map((row) => (
-                    <li
-                      key={row.slug}
-                      className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
-                    >
-                      <a
-                        href={href.series(row.slug)}
-                        className="min-w-0 truncate font-medium text-hi hover:text-pink-300"
-                      >
-                        {row.name || row.slug}
-                      </a>
-                      <span className="flex shrink-0 gap-4 text-sm">
-                        <button
-                          type="button"
-                          onClick={() => save(unhide(store, row.slug))}
-                          className={TEXT_LINK}
-                        >
-                          Unhide
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => save(unwatch(store, row.slug))}
-                          className={TEXT_LINK}
-                        >
-                          Forget
-                        </button>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ) : null}
+            <HiddenSeriesList rows={hiddenRows} watchlist={watchlist} />
           </div>
         )
 
@@ -444,7 +454,6 @@ function NotificationFeed({
 }) {
   const [urls, setURLs] = useState<FeedURLs | null>(null)
   const [note, setNote] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     let current = true
@@ -472,14 +481,15 @@ function NotificationFeed({
     // dependency.
   }, [slugKey])
 
-  async function copyURL() {
-    if (!urls) return
+  /** The one copy helper both fields share. A clipboard the browser refuses
+      (no permission, an insecure origin) falls back to selecting the field, so
+      there is always a way to get the URL out. */
+  async function copyURL(label: string, value: string, input: HTMLInputElement | null) {
     try {
-      await navigator.clipboard.writeText(urls.atom)
-      setNote('Copied Atom feed URL.')
+      await navigator.clipboard.writeText(value)
+      setNote(`Copied ${label}.`)
       return
     } catch {
-      const input = inputRef.current
       if (!input) return
       input.focus()
       input.select()
@@ -492,8 +502,9 @@ function NotificationFeed({
     <section className="rounded-2xl border border-edge bg-surface p-6">
       <h2 className="text-xl font-bold tracking-tight text-hi">Get notified</h2>
       <p className="mt-2 text-sm leading-relaxed text-body">
-        The URL below is a private feed of your watched series. Nothing is stored on this site: the
-        URL itself is the subscription.
+        The URLs below are a private feed of the series you watch. There is no account and no
+        subscription kept here - the URL itself is the subscription, so treat it like a private
+        link.
       </p>
       {slugKey === '' ? (
         <p className="mt-5 text-sm text-dim">
@@ -501,27 +512,26 @@ function NotificationFeed({
         </p>
       ) : (
         <>
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-            <input
-              ref={inputRef}
-              type="url"
-              readOnly
-              aria-label="Atom feed URL"
-              /* Once the build has failed, `note` carries the reason; leaving the
-                 placeholder up would say the URL is still coming when nothing is
-                 still trying. */
-              value={urls?.atom ?? (note ? '' : 'Building your feed URL...')}
-              onFocus={(event) => event.currentTarget.select()}
-              className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
+          {/* BOTH URLs are copyable, not just the Atom one. The calendar link
+              used to be an anchor alone, and a `webcal:` anchor does nothing at
+              all on a machine with no calendar app registered for the scheme -
+              which is every reader adding it to Google Calendar in a browser
+              tab, the option the docs page recommends first. */}
+          <div className="mt-5 space-y-4">
+            <FeedURLField
+              label={FEED_LABELS.atom}
+              hint="What every option except the calendar pastes."
+              url={urls?.atom ?? null}
+              pending={!note}
+              onCopy={copyURL}
             />
-            <button
-              type="button"
-              onClick={() => void copyURL()}
-              disabled={!urls}
-              className={`${BTN_SECONDARY} shrink-0 px-5 py-2 text-sm`}
-            >
-              Copy
-            </button>
+            <FeedURLField
+              label={FEED_LABELS.webcal}
+              hint="Paste this into Google, Apple or Outlook Calendar."
+              url={urls?.webcal ?? null}
+              pending={!note}
+              onCopy={copyURL}
+            />
           </div>
           <p className="mt-3 text-sm text-dim" aria-live="polite">
             {note}
@@ -529,13 +539,13 @@ function NotificationFeed({
           {urls ? (
             <p className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
               <a className={TEXT_LINK} href={urls.webcal}>
-                Calendar (webcal)
+                {FEED_LABELS.webcal}
               </a>
               <a className={TEXT_LINK} href={urls.atom}>
-                Atom feed
+                {FEED_LABELS.atom}
               </a>
               <a className={TEXT_LINK} href={urls.json}>
-                JSON Feed
+                {FEED_LABELS.json}
               </a>
             </p>
           ) : null}
@@ -573,6 +583,58 @@ function NotificationFeed({
         .
       </p>
     </section>
+  )
+}
+
+/** One labelled, selectable feed URL with its own Copy button. */
+function FeedURLField({
+  label,
+  hint,
+  url,
+  pending,
+  onCopy,
+}: {
+  label: string
+  hint: string
+  /** The built URL, or null while it is still coming or after it failed. */
+  url: string | null
+  /** Still trying. Once the build has FAILED the caller's note carries the
+      reason, and leaving the placeholder up would say the URL is still coming
+      when nothing is still trying. */
+  pending: boolean
+  onCopy: (label: string, value: string, input: HTMLInputElement | null) => Promise<void>
+}) {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const id = useId()
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="text-xs font-semibold uppercase tracking-[0.15em] text-pink-500"
+      >
+        {label}
+      </label>
+      <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+        <input
+          id={id}
+          ref={inputRef}
+          type="url"
+          readOnly
+          value={url ?? (pending ? 'Building your URL...' : '')}
+          onFocus={(event) => event.currentTarget.select()}
+          className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
+        />
+        <button
+          type="button"
+          onClick={() => void onCopy(label, url ?? '', inputRef.current)}
+          disabled={!url}
+          className={`${BTN_SECONDARY} shrink-0 px-5 py-2 text-sm`}
+        >
+          Copy
+        </button>
+      </div>
+      <p className="mt-1 text-xs text-dim">{hint}</p>
+    </div>
   )
 }
 
@@ -668,51 +730,31 @@ function SeriesPanel({
         <>
           <EntryGroup
             heading="Available"
-            empty="You have every released entry."
-            rows={panelRows(panel.result.available, now, markOwned, markSkipped)}
+            empty={NOTHING_LEFT}
+            rows={entryRows(panel.result.available, now, markOwned, markSkipped)}
           />
           <EntryGroup
             heading="Preorder"
-            rows={panelRows(panel.result.preorder, now, markOwned, markSkipped)}
+            rows={entryRows(panel.result.preorder, now, markOwned, markSkipped)}
           />
-          {panel.result.owned.length > 0 ? (
-            <details className="mt-5">
-              <summary className="cursor-pointer text-sm text-dim hover:text-hi">
-                {panel.result.owned.length.toLocaleString()} you already have
-              </summary>
-              <ul className="mt-3 space-y-2">
-                {panel.result.owned.map((entry) => (
-                  <EntryRow
-                    key={entry.work.id}
-                    entry={entry}
-                    now={now}
-                    owned
-                    onOwned={(next) => markOwned(entry.work.id, next)}
-                  />
-                ))}
-              </ul>
-            </details>
-          ) : null}
-          {panel.result.skipped.length > 0 ? (
-            <details className="mt-3">
-              <summary className="cursor-pointer text-sm text-dim hover:text-hi">
-                {panel.result.skipped.length.toLocaleString()} skipped
-              </summary>
-              <ul className="mt-3 space-y-2">
-                {panel.result.skipped.map((entry) => (
-                  <EntryRow
-                    key={entry.work.id}
-                    entry={entry}
-                    now={now}
-                    owned={false}
-                    skipped
-                    onOwned={(next) => markOwned(entry.work.id, next)}
-                    onSkipped={(next) => markSkipped(entry.work.id, next)}
-                  />
-                ))}
-              </ul>
-            </details>
-          ) : null}
+          <CollapsedEntries
+            entries={panel.result.owned}
+            summary="you already have"
+            owned
+            className="mt-5"
+            now={now}
+            onOwned={markOwned}
+            onSkipped={markSkipped}
+          />
+          <CollapsedEntries
+            entries={panel.result.skipped}
+            summary="skipped"
+            owned={false}
+            className="mt-3"
+            now={now}
+            onOwned={markOwned}
+            onSkipped={markSkipped}
+          />
         </>
       )}
     </section>
@@ -754,41 +796,132 @@ function EntryGroup({
   )
 }
 
-/** The flat view's rows: an entry pooled out of its series panel, with the
-    series it came from and the two marks pointed back at it. */
-function flatRows(
-  entries: readonly FlatEntry[],
+/** Classified entries as rows, for BOTH lists. The only difference between a
+    flat row and a panel row is whether it names the series it came from, so
+    that is a resolver the flat caller passes and the panel caller omits (its
+    own heading already says which series this is) rather than a second mapper.
+    A mark is keyed by the WORK either way: the flat view's handler applies it
+    across every series that lists the book. */
+function entryRows<T extends ClassifiedEntry>(
+  entries: readonly T[],
   now: string,
-  onOwned: (slug: string, workID: string, owned: boolean) => void,
-  onSkipped: (slug: string, workID: string, skipped: boolean) => void
+  onOwned: (workID: string, owned: boolean) => void,
+  onSkipped: (workID: string, skipped: boolean) => void,
+  seriesOf?: (item: T) => { slug: string; name: string }
 ): EntryRowProps[] {
-  return entries.map((flat) => ({
-    entry: flat.entry,
+  return entries.map((item) => ({
+    entry: item.entry,
     now,
-    isNew: flat.isNew,
+    isNew: item.isNew,
     owned: false,
-    series: { slug: flat.slug, name: flat.series },
-    onOwned: (next: boolean) => onOwned(flat.slug, flat.entry.work.id, next),
-    onSkipped: (next: boolean) => onSkipped(flat.slug, flat.entry.work.id, next),
+    series: seriesOf?.(item),
+    onOwned: (next: boolean) => onOwned(item.entry.work.id, next),
+    onSkipped: (next: boolean) => onSkipped(item.entry.work.id, next),
   }))
 }
 
-/** A series panel's rows: the same shape, with the series left off (the panel's
-    own heading already says which series this is). */
-function panelRows(
-  entries: readonly ClassifiedEntry[],
-  now: string,
-  onOwned: (workID: string, owned: boolean) => void,
+/** A flat row's series, for the resolver above. */
+function flatSeries(flat: FlatEntry): { slug: string; name: string } {
+  return { slug: flat.slug, name: flat.series }
+}
+
+/** One collapsed list at the foot of a series panel: what the reader already
+    has, and what they passed on. The same disclosure over the same row twice,
+    so it is one component - `owned` is what separates them, and an owned row
+    gets no skip control (a book you have is already out of the way). */
+function CollapsedEntries({
+  entries,
+  summary,
+  owned,
+  className,
+  now,
+  onOwned,
+  onSkipped,
+}: {
+  entries: readonly SeriesEntry[]
+  /** The words after the count: "you already have", "skipped". */
+  summary: string
+  owned: boolean
+  className: string
+  now: string
+  onOwned: (workID: string, owned: boolean) => void
   onSkipped: (workID: string, skipped: boolean) => void
-): EntryRowProps[] {
-  return entries.map(({ entry, isNew }) => ({
-    entry,
-    now,
-    isNew,
-    owned: false,
-    onOwned: (next: boolean) => onOwned(entry.work.id, next),
-    onSkipped: (next: boolean) => onSkipped(entry.work.id, next),
-  }))
+}) {
+  if (entries.length === 0) return null
+  return (
+    <details className={className}>
+      <summary className="cursor-pointer text-sm text-dim hover:text-hi">
+        {entries.length.toLocaleString()} {summary}
+      </summary>
+      <ul className="mt-3 space-y-2">
+        {entries.map((entry) => (
+          <EntryRow
+            key={entry.work.id}
+            entry={entry}
+            now={now}
+            owned={owned}
+            skipped={!owned}
+            onOwned={(next) => onOwned(entry.work.id, next)}
+            onSkipped={owned ? undefined : (next) => onSkipped(entry.work.id, next)}
+          />
+        ))}
+      </ul>
+    </details>
+  )
+}
+
+/** The hidden series, with the two ways back. Rendered under BOTH tabs a reader
+    can land on with nothing visible, because it is the only affordance that
+    brings a hidden series back. */
+function HiddenSeriesList({
+  rows,
+  watchlist: { store, save },
+}: {
+  rows: readonly WatchlistRow[]
+  watchlist: WatchlistHandle
+}) {
+  if (rows.length === 0) return null
+  return (
+    <details className="rounded-2xl border border-edge bg-surface p-6">
+      <summary className="cursor-pointer font-semibold text-hi">
+        Hidden series ({rows.length.toLocaleString()})
+      </summary>
+      <p className="mt-3 text-sm leading-relaxed text-body">
+        These stay out of the list above and out of every library import, until you bring one back.
+      </p>
+      <ul className="mt-4 space-y-2">
+        {rows.map((row) => (
+          <li
+            key={row.slug}
+            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
+          >
+            <a
+              href={href.series(row.slug)}
+              className="min-w-0 truncate font-medium text-hi hover:text-pink-300"
+            >
+              {row.name || row.slug}
+            </a>
+            <span className="flex shrink-0 gap-4 text-sm">
+              <button
+                type="button"
+                onClick={() => save(unhide(store, row.slug))}
+                className={TEXT_LINK}
+              >
+                Unhide
+              </button>
+              <button
+                type="button"
+                onClick={() => save(unwatch(store, row.slug))}
+                className={TEXT_LINK}
+              >
+                Forget
+              </button>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )
 }
 
 /** One row of any entry list, on either tab. `series` is what the FLAT view

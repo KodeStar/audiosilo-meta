@@ -421,7 +421,8 @@ func TestICalendarSkipsUndatedItems(t *testing.T) {
 			{
 				id: watchTagPrefix + "work/dated/released", title: "Series #1: Dated",
 				state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/dated",
-				updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), dated: true,
+				updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+				release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
 			},
 			{
 				id: watchTagPrefix + "work/undated/released", title: "Series #2: Undated",
@@ -526,7 +527,8 @@ func TestICSFoldAndEscape(t *testing.T) {
 		items: []watchFeedItem{{
 			id: watchTagPrefix + "work/w/released", title: strings.Repeat("Long Title ", 20),
 			state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/w",
-			updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), dated: true,
+			updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+			release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
 		}},
 	})
 	if err != nil {
@@ -549,5 +551,121 @@ func TestICalendarIsDeterministic(t *testing.T) {
 	_, second := watchFeedResponse(t, ts, path)
 	if string(first) != string(second) {
 		t.Errorf("two renders differ:\n%s\n---\n%s", first, second)
+	}
+}
+
+// The cap belongs to each REPRESENTATION, after its own filter. The calendar
+// leaves undated works out, so a cap taken over the shared list would let them
+// spend calendar slots and push the one real release out of the .ics while
+// Atom and JSON still carried it.
+func TestICalendarCapsAfterDroppingUndated(t *testing.T) {
+	feed := watchFeed{
+		title:     watchFeedTitle,
+		generated: dayStart(watchFeedNow),
+	}
+	for i := 0; i <= maxWatchFeedItems; i++ {
+		id := "undated-" + strconv.Itoa(i)
+		feed.items = append(feed.items, watchFeedItem{
+			id: watchTagPrefix + "work/" + id + "/released", title: "Undated " + id,
+			state: "date unknown", summary: "Added to the catalogue, release date unknown",
+			link:    testSiteURL + "/works/" + id,
+			updated: time.Date(2026, 10, 19, 12, 0, 0, 0, time.UTC),
+		})
+	}
+	feed.items = append(feed.items, watchFeedItem{
+		id: watchTagPrefix + "work/dated/released", title: "The Dated One",
+		state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/dated",
+		updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+		release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+	})
+
+	body, err := renderICalendar(feed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(body)
+	if n := strings.Count(got, "BEGIN:VEVENT"); n != 1 {
+		t.Errorf("VEVENT count = %d, want 1", n)
+	}
+	if !strings.Contains(got, "The Dated One") {
+		t.Errorf("the one dated release fell out of the calendar:\n%s", got)
+	}
+}
+
+// DTSTAMP says when the DOCUMENT was composed, so a preorder's future release
+// date never stamps it - and it is day-granular, matching the feed's ETag.
+func TestICalendarStampsTheGenerationDay(t *testing.T) {
+	_, ts := newWatchFeedServer(t, watchFeedCatalog())
+	_, body := watchFeedResponse(t, ts, "/api/v1/watch/releases.ics?s=the-stormlight-archive")
+	want := "DTSTAMP:" + dayStart(watchFeedNow).Format("20060102T150405Z")
+	stamps := strings.Count(string(body), "DTSTAMP:")
+	if stamps == 0 {
+		t.Fatalf("no VEVENT in the calendar:\n%s", body)
+	}
+	if got := strings.Count(string(body), want); got != stamps {
+		t.Errorf("%d of %d DTSTAMP lines are %q:\n%s", got, stamps, want, body)
+	}
+}
+
+// A work in two watched series is one book, so it is one feed item: two would
+// be two rows in a reader and, since the item id is also the calendar UID, two
+// events on one day.
+func TestWatchFeedEmitsEachWorkOnce(t *testing.T) {
+	cat := watchFeedCatalog()
+	cat.Series = append(cat.Series, &model.Series{
+		ID: "stormlight-companion", Name: "Stormlight Companion", License: "CC0-1.0",
+		Works: []model.SeriesWork{{Work: "the-way-of-kings", Position: "1"}},
+	})
+	_, ts := newWatchFeedServer(t, cat)
+	_, body := watchFeedResponse(t, ts,
+		"/api/v1/watch/feed.json?s=the-stormlight-archive,stormlight-companion")
+	var feed jsonFeed
+	if err := json.Unmarshal(body, &feed); err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]int{}
+	for _, item := range feed.Items {
+		seen[item.URL]++
+	}
+	shared := testSiteURL + "/works/the-way-of-kings"
+	if seen[shared] != 1 {
+		t.Errorf("the shared work appears %d times, want 1:\n%s", seen[shared], body)
+	}
+	// FIRST series in request order wins, so the item still names it.
+	for _, item := range feed.Items {
+		if item.URL == shared && !strings.HasPrefix(item.Title, "The Stormlight Archive") {
+			t.Errorf("shared work kept the second series' title %q", item.Title)
+		}
+	}
+}
+
+// Invalid UTF-8 backs the rune-boundary break off all the way to the start of
+// the segment, and a zero-width segment never advances: the fold used to loop
+// forever on one. It cuts at the limit instead.
+func TestICSFoldSurvivesInvalidUTF8(t *testing.T) {
+	done := make(chan string, 1)
+	go func() { done <- icsFold(strings.Repeat("\x80", 100)) }()
+	var folded string
+	select {
+	case folded = <-done:
+	case <-time.After(5 * time.Second):
+		t.Fatal("icsFold did not terminate on invalid UTF-8")
+	}
+	var joined string
+	for i, line := range strings.Split(folded, "\r\n") {
+		if len(line) > icsLineOctets {
+			t.Errorf("physical line %d is %d octets, want <= %d", i, len(line), icsLineOctets)
+		}
+		if i == 0 {
+			joined = line
+			continue
+		}
+		if !strings.HasPrefix(line, " ") {
+			t.Errorf("continuation line %d does not start with a space: %q", i, line)
+		}
+		joined += line[1:]
+	}
+	if joined != strings.Repeat("\x80", 100) {
+		t.Errorf("unfolding lost bytes: %d of 100", len(joined))
 	}
 }

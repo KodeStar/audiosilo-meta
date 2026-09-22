@@ -25,8 +25,7 @@
 // tested, on the precedent of lib/watchlist.ts.
 
 import { entitySlugFromLocation } from './entity-url'
-import { watchedSlugs } from './feed-url'
-import { stringList, type Watchlist } from './watchlist'
+import { markedWorkIDs, stringList, watchedSlugs, type Watchlist } from './watchlist'
 
 /** The one localStorage key for the badge's cache. Namespaced, and separate
     from the watchlist's: this is derived data with a TTL, and losing it costs a
@@ -53,11 +52,23 @@ const BADGE_VERSION = 1
 
 /** Which series the cache belongs to: the feed URL's own series list, joined
     ('' when none). BY CONSTRUCTION the same set in the same order, because it
-    is literally what buildFeedURLs reads (lib/feed-url.ts watchedSlugs) - a
+    is literally what buildFeedURLs reads (watchedSlugs, lib/watchlist.ts) - a
     hidden series is not in the feed, so it must not be in the key either, or
     hiding one would look like a changed watchlist forever. */
 export function badgeSlugKey(store: Watchlist): string {
   return watchedSlugs(store).join(',')
+}
+
+/** A cache record for a freshly fetched feed. The `version` is this module's
+    to state, not a caller's - the header script used to spell the literal `1`
+    itself, which a bump here would have left behind as a document
+    parseBadgeCache rejects on the next load. */
+export function newBadgeCache(
+  slugKey: string,
+  works: string[],
+  nowMs = Date.now()
+): BadgeCache {
+  return { version: BADGE_VERSION, slugKey, fetchedAt: nowMs, works }
 }
 
 /** Parse a stored cache, tolerating anything - a truncated write, a shape from
@@ -177,20 +188,15 @@ function workSlugFromURL(url: string): string | null {
  * How many of these works the reader has not dealt with: the ids that appear in
  * NO watched series' seen, owned or skipped list.
  *
- * HIDDEN series count too. A mark is a mark - a reader who owned a book and
- * then hid its series has still said they have it - and the alternative reads
- * as a badge that goes UP when you hide something.
+ * The union is `markedWorkIDs` (lib/watchlist.ts), which is also where the note
+ * lives on why it reads those three lists globally where `classify` reads them
+ * per series - and on why a hidden series still counts.
  *
  * Pure, and over the LIVE store: that is what lets the cached ids stay valid
  * while the count moves the instant a mark changes.
  */
 export function badgeCount(works: readonly string[], store: Watchlist): number {
-  const marked = new Set<string>()
-  for (const entry of Object.values(store.series)) {
-    for (const work of entry.seen) marked.add(work)
-    for (const work of entry.owned) marked.add(work)
-    for (const work of entry.skipped) marked.add(work)
-  }
+  const marked = markedWorkIDs(store)
   let count = 0
   for (const work of works) if (!marked.has(work)) count += 1
   return count

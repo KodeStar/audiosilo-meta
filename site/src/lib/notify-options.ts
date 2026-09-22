@@ -21,6 +21,17 @@
 /** Which of the page's URLs a set of steps pastes. */
 export type FeedKind = 'webcal' | 'atom' | 'json'
 
+/** What each URL is CALLED, in the reader's words. Both surfaces label the
+    same three links - the Get notified tab's anchors and copy rows, and the
+    docs page's "which link to copy" table and per-option chip - so a reader
+    following a step that says "copy the Calendar link" finds a control spelled
+    exactly that. */
+export const FEED_LABELS: Record<FeedKind, string> = {
+  webcal: 'Calendar link',
+  atom: 'Atom feed',
+  json: 'JSON Feed',
+}
+
 /** The id is also the docs page's anchor, so it is slug-shaped. */
 export type NotifyOptionID =
   | 'calendar'

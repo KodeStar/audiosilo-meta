@@ -324,6 +324,47 @@ export function hiddenSeries(store: Watchlist): WatchlistRow[] {
   return rows(store, true)
 }
 
+/**
+ * The series a feed URL carries: every VISIBLE series' slug, sorted. Hidden
+ * series never leave the browser.
+ *
+ * It lives HERE, in the leaf, rather than beside its first caller: both
+ * lib/feed-url.ts (the URL's `s` value) and lib/watch-badge.ts (the cache key
+ * that must name exactly the feed those ids came from) read it, and having the
+ * badge reach through feed-url for it made the header's `await import(
+ * '../lib/feed-url')` no lazy boundary at all - the module was already in the
+ * header's chunk.
+ */
+export function watchedSlugs(store: Watchlist): string[] {
+  return Object.entries(store.series)
+    .filter(([, series]) => !series.hidden)
+    .map(([slug]) => slug)
+    .sort()
+}
+
+/**
+ * Every work slug the reader has DEALT WITH, across every watched series -
+ * seen, owned or skipped, HIDDEN series included.
+ *
+ * This and `classify` below are the two readers of those three lists, and they
+ * read them differently on purpose. classify answers "where does this entry
+ * belong in THIS series' panel", so it applies a per-series precedence (owned
+ * beats skipped beats new). This answers "has the reader dealt with this book
+ * at all", which is a global union with no precedence to apply - a mark made
+ * under one series counts for the same work reached through another, and a
+ * mark on a hidden series is still a mark (the alternative is a badge that goes
+ * UP when you hide something).
+ */
+export function markedWorkIDs(store: Watchlist): Set<string> {
+  const marked = new Set<string>()
+  for (const entry of Object.values(store.series)) {
+    for (const work of entry.seen) marked.add(work)
+    for (const work of entry.owned) marked.add(work)
+    for (const work of entry.skipped) marked.add(work)
+  }
+  return marked
+}
+
 // --- Classification ---------------------------------------------------------
 
 /** A series entry the reader does not have, plus whether this is the first

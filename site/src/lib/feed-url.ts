@@ -1,5 +1,5 @@
 import { API_BASE } from './api'
-import type { Watchlist } from './watchlist'
+import { watchedSlugs, type Watchlist } from './watchlist'
 
 export interface FeedURLs {
   atom: string
@@ -19,16 +19,6 @@ const PLAIN_URL_LIMIT = 1500
     parameter). Refusing here means a reader past it is told so on the page,
     rather than being handed a URL that 400s inside their feed reader. */
 export const MAX_FEED_SERIES = 200
-
-/** The series a feed URL carries: every VISIBLE series' slug, sorted. Hidden
-    series never leave the browser. Exported because the header badge keys its
-    cache by this same list (lib/watch-badge.ts badgeSlugKey). */
-export function watchedSlugs(store: Watchlist): string[] {
-  return Object.entries(store.series)
-    .filter(([, series]) => !series.hidden)
-    .map(([slug]) => slug)
-    .sort()
-}
 
 /** One API path (`watch/feed.atom`, `watch/releases.ics`, ...) as an absolute
     URL under the configured origin/base. */
@@ -55,7 +45,21 @@ function base64url(bytes: Uint8Array): string {
   return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 }
 
+/**
+ * The compact `s` value the server also accepts: raw DEFLATE, unpadded
+ * base64url, prefixed `z:` so it cannot read as CSV (decodeSeriesParam,
+ * internal/serve/seriesparam.go).
+ *
+ * A browser with no `CompressionStream` gets the PLAIN CSV back instead of an
+ * error. The compact form is a cosmetic shortening, not a contract: the server
+ * bounds a CSV by the same 200 series (validateSeriesList; `maxSeriesParamBytes`
+ * bounds only the DECOMPRESSED form), so the longest list this will ever build
+ * is 200 slugs of at most 100 characters - about 20KB of URL, far inside Go's
+ * 1MB default request-line-plus-headers bound. Refusing there instead would
+ * have denied the reader a working feed over a shortening they never asked for.
+ */
 async function compactSeries(csv: string): Promise<string> {
+  if (typeof globalThis.CompressionStream !== 'function') return csv
   const input = new Blob([new TextEncoder().encode(csv)]).stream()
   const compressed = input.pipeThrough(new CompressionStream('deflate-raw'))
   const bytes = new Uint8Array(await new Response(compressed).arrayBuffer())
@@ -66,11 +70,13 @@ async function compactSeries(csv: string): Promise<string> {
  * Build the stateless subscription URLs for a watchlist - Atom, JSON Feed, the
  * calendar, and the calendar again under `webcal:`. The readable CSV
  * form is preferred while the complete URL stays below 1500 characters; a
- * longer list uses the server's raw-DEFLATE compact form. Hidden series never
- * leave the browser.
+ * longer list uses the server's raw-DEFLATE compact form where the browser can
+ * produce one, and the plain CSV where it cannot. Hidden series never leave the
+ * browser.
  *
  * Throws with a reader-facing message when the list cannot become a feed - no
- * visible series, or more than the server accepts.
+ * visible series, or more than the server accepts. Those are the only two
+ * refusals: everything a browser can watch, it can subscribe to.
  */
 export async function buildFeedURLs(
   store: Watchlist,

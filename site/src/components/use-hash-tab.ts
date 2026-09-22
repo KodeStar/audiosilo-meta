@@ -29,10 +29,13 @@ function replaceHash(hash: string): void {
  * that names a tab nobody landed on would mislead.
  *
  * A `hashchange` (an in-page link back to `#notify`, or the reader's back
- * button) sets the tab too. `fromHash` is held in a ref because it closes over
- * state that can change - the work page's tab set depends on which sidecars
- * loaded - and the listener must always read the LATEST rule without being torn
- * down and rebuilt on every render.
+ * button) sets the tab too, and CANONICALISES: a fragment the mapping does not
+ * recognise falls back to the default tab, exactly as on mount, so the address
+ * bar never keeps naming a tab nobody landed on. Both `fromHash` and `toHash`
+ * are held in refs because they close over state that can change - the work
+ * page's tab set depends on which sidecars loaded - and the listener must
+ * always read the LATEST rule without being torn down and rebuilt on every
+ * render.
  */
 export function useHashTab<T extends string>(
   fromHash: (hash: string) => T,
@@ -40,6 +43,8 @@ export function useHashTab<T extends string>(
 ): [T, (next: T) => void] {
   const read = useRef(fromHash)
   read.current = fromHash
+  const write = useRef(toHash)
+  write.current = toHash
 
   const [tab, setTab] = useState<T>(() => fromHash(window.location.hash))
 
@@ -50,7 +55,13 @@ export function useHashTab<T extends string>(
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    const onHashChange = () => setTab(read.current(window.location.hash))
+    const onHashChange = () => {
+      const next = read.current(window.location.hash)
+      setTab(next)
+      // replaceHash fires no hashchange, so this cannot re-enter.
+      const canonical = write.current(next)
+      if (window.location.hash !== canonical) replaceHash(canonical)
+    }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])

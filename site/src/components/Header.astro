@@ -33,7 +33,10 @@ const nav: NavItem[] = [
 ]
 
 /** The badge pill's one spelling, worn by the desktop nav and the mobile menu
-    alike. */
+    alike. It carries NO aria-label: the script fills it with the number plus a
+    visually-hidden phrase, so the LINK's accessible name reads "Watching 3 new
+    releases" rather than the bare "Watching new releases" a static label gave
+    however many there were. */
 const WATCH_BADGE_CLASS =
   'ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white'
 ---
@@ -67,9 +70,7 @@ const WATCH_BADGE_CLASS =
             {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
           >
             {item.label}
-            {item.badge && (
-              <span data-watch-badge hidden aria-label="new releases" class={WATCH_BADGE_CLASS} />
-            )}
+            {item.badge && <span data-watch-badge hidden class={WATCH_BADGE_CLASS} />}
           </a>
         ))
       }
@@ -113,9 +114,7 @@ const WATCH_BADGE_CLASS =
               {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
             >
               {item.label}
-              {item.badge && (
-                <span data-watch-badge hidden aria-label="new releases" class={WATCH_BADGE_CLASS} />
-              )}
+              {item.badge && <span data-watch-badge hidden class={WATCH_BADGE_CLASS} />}
             </a>
           ))
         }
@@ -167,6 +166,7 @@ const WATCH_BADGE_CLASS =
     badgeSlugKey,
     fetchWatchFeedWorkIDs,
     isBadgeFresh,
+    newBadgeCache,
     readBadgeCache,
     writeBadgeCache,
     type BadgeCache,
@@ -198,6 +198,19 @@ const WATCH_BADGE_CLASS =
   // here loads React.
   const badges = document.querySelectorAll<HTMLElement>('[data-watch-badge]')
   if (badges.length > 0) {
+    // The pill says the number twice: once for the eye and once for a screen
+    // reader, whose user hears the whole link as "Watching 3 new releases". The
+    // two children are built here rather than in the markup above so the pill
+    // stays one element to write and one element to hide.
+    const pills = [...badges].map((pill) => {
+      const count = document.createElement('span')
+      count.setAttribute('aria-hidden', 'true')
+      const label = document.createElement('span')
+      label.className = 'sr-only'
+      pill.replaceChildren(count, label)
+      return { pill, count, label }
+    })
+
     // Each pass reads the watchlist, its key and the cache ONCE and threads
     // them, so paint and refresh cannot disagree about what is stored.
     const paint = (
@@ -206,10 +219,11 @@ const WATCH_BADGE_CLASS =
       cache: BadgeCache | null = readBadgeCache()
     ) => {
       const count = cache && cache.slugKey === key ? badgeCount(cache.works, store) : 0
-      badges.forEach((badge) => {
-        badge.textContent = count > 99 ? '99+' : String(count)
-        badge.hidden = count === 0
-      })
+      for (const slot of pills) {
+        slot.count.textContent = count > 99 ? '99+' : String(count)
+        slot.label.textContent = `${count.toLocaleString()} new ${count === 1 ? 'release' : 'releases'}`
+        slot.pill.hidden = count === 0
+      }
     }
 
     const refresh = async () => {
@@ -222,24 +236,19 @@ const WATCH_BADGE_CLASS =
         paint(store, key, cache)
         return
       }
-      let fresh: BadgeCache | null = cache
       try {
         const { buildFeedURLs } = await import('../lib/feed-url')
         const urls = await buildFeedURLs(store)
-        fresh = {
-          version: 1,
-          slugKey: key,
-          fetchedAt: Date.now(),
-          works: await fetchWatchFeedWorkIDs(urls.json),
-        }
-        writeBadgeCache(fresh)
+        writeBadgeCache(newBadgeCache(key, await fetchWatchFeedWorkIDs(urls.json)))
       } catch {
         // Every failure degrades to "no new badge": offline, a mock API with no
-        // feed route, more than 200 series (buildFeedURLs refuses), or a
-        // browser without CompressionStream for a long list. The previous
-        // cache, if any, still paints below.
+        // feed route, or more than 200 series (buildFeedURLs refuses). The
+        // previous cache, if any, still paints below.
       } finally {
-        paint(store, key, fresh)
+        // Re-READ rather than repaint the pre-await snapshot: a mark made while
+        // the fetch was in flight is already stored, and painting the store as
+        // it was would put the badge back up until the next event.
+        paint()
       }
     }
 
@@ -248,17 +257,23 @@ const WATCH_BADGE_CLASS =
     paint()
     void refresh()
     // A mark made in an island of this tab (use-watchlist.ts dispatches it)...
-    window.addEventListener(WATCHLIST_CHANGED_EVENT, () => paint())
+    window.addEventListener(WATCHLIST_CHANGED_EVENT, () => void refresh())
     // ...and one made in another tab, which is what `storage` is for - but only
     // for the two keys this badge is a function of (a null key is a whole-origin
     // clear).
+    //
+    // BOTH go through refresh rather than paint: watching or unwatching a series
+    // changes the slug key, which makes the cached ids say nothing about this
+    // list, and a bare repaint would show a count for the watchlist the reader
+    // just left. refresh paints straight through when the key is unchanged and
+    // the cache is still inside its hour, so an ordinary tick costs no request.
     window.addEventListener('storage', (e) => {
       if (
         e.key === null ||
         e.key === WATCHLIST_STORAGE_KEY ||
         e.key === WATCH_BADGE_STORAGE_KEY
       ) {
-        paint()
+        void refresh()
       }
     })
   }

@@ -14,6 +14,7 @@ import {
   looksLikeWatchlist,
   markAllOwned,
   markSeen,
+  markedWorkIDs,
   parseWatchlist,
   readWatchlist,
   setOwned,
@@ -23,6 +24,7 @@ import {
   visibleSeries,
   watch,
   watchedSeries,
+  watchedSlugs,
   writeWatchlist,
   type Watchlist,
 } from './watchlist'
@@ -390,5 +392,41 @@ describe('storage helpers', () => {
     vi.stubGlobal('localStorage', undefined)
     expect(readWatchlist()).toEqual(emptyWatchlist())
     expect(() => writeWatchlist(oneSeries())).not.toThrow()
+  })
+})
+
+// Both live here, in the leaf, rather than beside their first caller: the badge
+// and the feed URL each read one of them and neither may reach through the
+// other (which is what made the header's lazy import of lib/feed-url no lazy
+// boundary at all).
+describe('watchedSlugs', () => {
+  it('lists every visible series, sorted, and leaves hidden ones out', () => {
+    let store = watch(emptyWatchlist(), 'zeta', 'Zeta', TODAY)
+    store = watch(store, 'alpha', 'Alpha', TODAY)
+    store = hide(store, 'secret', 'Secret', TODAY)
+    expect(watchedSlugs(store)).toEqual(['alpha', 'zeta'])
+    expect(watchedSlugs(emptyWatchlist())).toEqual([])
+  })
+})
+
+describe('markedWorkIDs', () => {
+  it('unions seen, owned and skipped across every series, hidden included', () => {
+    let store = watch(emptyWatchlist(), 'a', 'A', TODAY)
+    store = watch(store, 'b', 'B', TODAY)
+    store = markSeen(store, 'a', ['seen-work'])
+    store = setOwned(store, 'a', 'owned-work', true)
+    store = setSkipped(store, 'b', 'skipped-work', true)
+    // A mark made before the series was hidden is still a mark.
+    store = setOwned(store, 'b', 'hidden-owned', true)
+    store = hide(store, 'b', 'B', TODAY)
+    expect([...markedWorkIDs(store)].sort()).toEqual([
+      'hidden-owned',
+      'owned-work',
+      'seen-work',
+      'skipped-work',
+    ])
+  })
+  it('is empty for a store with no marks', () => {
+    expect(markedWorkIDs(oneSeries()).size).toBe(0)
   })
 })

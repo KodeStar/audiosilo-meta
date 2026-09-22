@@ -84,6 +84,38 @@ describe('flattenAcrossSeries', () => {
     expect(lists.available[0].series).toBe('only-slug')
   })
 
+  it('emits a work in two watched series once, under the first of them', () => {
+    // A work really does belong to several series (an omnibus, a crossover), and
+    // the flat list is "what came out", not "where am I in each series" - so one
+    // book is one row. The server's feed applies the same rule
+    // (internal/serve/watchfeed.go `seenWork`).
+    const shared = entry('shared', '1', '2026-09-01')
+    const lists = flattenAcrossSeries([
+      panel('first', 'First', {
+        available: [{ entry: shared, isNew: true }],
+      }),
+      panel('second', 'Second', {
+        available: [
+          { entry: entry('shared', '4', '2026-09-01'), isNew: false },
+          { entry: entry('own', '5', '2026-09-02'), isNew: false },
+        ],
+      }),
+    ])
+    expect(lists.available.map((f) => f.entry.work.id)).toEqual(['own', 'shared'])
+    expect(lists.available.find((f) => f.entry.work.id === 'shared')?.slug).toBe('first')
+  })
+
+  it('does not let one work be both a preorder and available', () => {
+    const lists = flattenAcrossSeries([
+      panel('first', 'First', { preorder: [{ entry: entry('w', '1', '2027-01-01'), isNew: false }] }),
+      panel('second', 'Second', {
+        available: [{ entry: entry('w', '2', '2027-01-01'), isNew: false }],
+      }),
+    ])
+    expect(lists.preorder).toHaveLength(1)
+    expect(lists.available).toEqual([])
+  })
+
   it('leaves owned and skipped entries out of both lists', () => {
     const lists = flattenAcrossSeries([
       panel('a', 'Alpha', {
@@ -163,6 +195,12 @@ describe('positionStart', () => {
     expect(positionStart('03')).toBe(3)
     expect(positionStart(' 4 ')).toBe(4)
     expect(positionStart('1-garbage')).toBe(1)
+    // The remaining cases Go's TestPositionStart pins, so the two sides are
+    // judged on one list. Go is the rule of record here.
+    expect(positionStart('1-')).toBe(1)
+    expect(positionStart('1-2-3')).toBe(1)
+    expect(positionStart('1')).toBe(1)
+    expect(positionStart('10')).toBe(10)
   })
   it('sorts an unparseable position last', () => {
     expect(positionStart('bonus')).toBe(Number.POSITIVE_INFINITY)

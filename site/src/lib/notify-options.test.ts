@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import {
+  FEED_LABELS,
   NOTIFY_INTRO_NOTES,
   NOTIFY_OPTIONS,
   notifyDocHref,
@@ -93,6 +94,29 @@ describe('notifyDocHref', () => {
   it('resolves for every option', () => {
     for (const option of NOTIFY_OPTIONS) {
       expect(notifyDocHref(option.id)).toBe(`/docs/notifications#${option.id}`)
+    }
+  })
+})
+
+// Both surfaces label the three links from here, so a step reading "copy the
+// Calendar link" names a control that is spelled exactly that on the tab and on
+// the docs page.
+describe('FEED_LABELS', () => {
+  it('names every feed kind the options use', () => {
+    for (const option of NOTIFY_OPTIONS) {
+      expect(FEED_LABELS[option.feed]).toBeTruthy()
+    }
+    expect(FEED_LABELS).toEqual({
+      webcal: 'Calendar link',
+      atom: 'Atom feed',
+      json: 'JSON Feed',
+    })
+  })
+
+  it('spells each label the way the steps tell a reader to look for it', () => {
+    for (const option of NOTIFY_OPTIONS) {
+      const first = option.steps[0]
+      expect(first).toContain(FEED_LABELS[option.feed])
     }
   })
 })

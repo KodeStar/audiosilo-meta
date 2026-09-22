@@ -4,20 +4,17 @@ import Backdrop from '../../components/Backdrop.astro'
 import Button from '../../components/Button.astro'
 import Inline from '../../components/docs/Inline.astro'
 import { CHIP } from '../../components/docs/chip'
-import { NOTIFY_INTRO_NOTES, NOTIFY_OPTIONS, type FeedKind } from '../../lib/notify-options'
+import {
+  FEED_LABELS,
+  NOTIFY_INTRO_NOTES,
+  NOTIFY_OPTIONS,
+  type FeedKind,
+} from '../../lib/notify-options'
 
 // The options, their steps and their caveats are NOT authored here: they are
 // src/lib/notify-options.ts, which the "Get notified" tab on /watching renders
 // too. One list, two surfaces - so the tab can never offer an option this page
 // has no instructions for.
-
-// Which of the three URLs a set of steps pastes, in the words the Watching page
-// uses for them.
-const FEED_LABEL: Record<FeedKind, string> = {
-  webcal: 'Calendar link',
-  atom: 'Atom feed',
-  json: 'JSON Feed',
-}
 
 // The one table of URLs, filled in with the reader's own by the script below
 // when this browser holds a watchlist.
@@ -47,7 +44,7 @@ const tag =
 
 <Base
   title="Get notified about new releases - AudioSilo Meta"
-  description="Step by step instructions for turning your AudioSilo Meta watch feed into a notification: a calendar subscription, an RSS app, email, Telegram, Slack, Discord, a self-hosted reader or an automation service. No account here, nothing stored."
+  description="Step by step instructions for turning your AudioSilo Meta watch feed into a notification: a calendar subscription, an RSS app, email, Telegram, Slack, Discord, a self-hosted reader or an automation service. No account here, and no contact detail of yours stored."
 >
   <section class="relative pb-20">
     <Backdrop variant="page" />
@@ -62,7 +59,9 @@ const tag =
         </h1>
         <p class="mt-4 text-base leading-relaxed text-body">
           The Watching page turns the series you follow into a feed URL, and that URL is the whole
-          subscription: there is no account here, and nothing about you is stored on this site.
+          subscription: there is no account here, and no email address, phone number or other
+          contact detail of yours is stored. The feed URL itself, like any request, appears in
+          ordinary access logs - see the <a class={link} href="/privacy">privacy policy</a>.
           Copy your URL from the
           <a class={link} href="/watching#notify">Get notified tab</a> on the Watching page, then
           pick one of the options below and follow its steps. The first three need no account
@@ -87,7 +86,7 @@ const tag =
             {
               links.map((row) => (
                 <div class="rounded-xl border border-edge bg-raised/40 p-4">
-                  <dt class="text-sm font-semibold text-hi">{FEED_LABEL[row.kind]}</dt>
+                  <dt class="text-sm font-semibold text-hi">{FEED_LABELS[row.kind]}</dt>
                   <dd class="mt-1 text-sm leading-relaxed text-body">
                     <Inline text={row.blurb} />
                   </dd>
@@ -163,7 +162,7 @@ const tag =
                       </a>
                     </h2>
                     {option.needsAccount && <span class={tag}>needs an account</span>}
-                    <span class={`${CHIP} text-xs text-dim`}>{FEED_LABEL[option.feed]}</span>
+                    <span class={`${CHIP} text-xs text-dim`}>{FEED_LABELS[option.feed]}</span>
                   </div>
                   <p class="mt-2 text-sm leading-relaxed text-body">
                     <Inline text={option.blurb} />

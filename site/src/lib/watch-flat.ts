@@ -55,13 +55,30 @@ function lift(panel: Panel, classified: ClassifiedEntry): FlatEntry {
  * Pool every panel's preorder and available entries into two flat lists, each
  * returned ALREADY sorted by the comparator below - the caller renders what it
  * is handed, so there is no second ordering seam for a component to get wrong.
+ *
+ * Each WORK appears ONCE, under the first panel (input order) that lists it.
+ * The per-series panels are the place a book is shown once per series it
+ * belongs to; this list answers "what came out", and one book listed twice is
+ * one book the reader ticks off twice. The same rule the server's feed applies
+ * (internal/serve/watchfeed.go, `seenWork`), for the same reason. It is one set
+ * across BOTH lists: an entry cannot be a preorder in one series and available
+ * in another, since the classification reads the work's own release date.
  */
 export function flattenAcrossSeries(panels: readonly Panel[]): FlatLists {
   const preorder: FlatEntry[] = []
   const available: FlatEntry[] = []
+  const seen = new Set<string>()
   for (const panel of panels) {
-    for (const classified of panel.result.preorder) preorder.push(lift(panel, classified))
-    for (const classified of panel.result.available) available.push(lift(panel, classified))
+    for (const classified of panel.result.preorder) {
+      if (seen.has(classified.entry.work.id)) continue
+      seen.add(classified.entry.work.id)
+      preorder.push(lift(panel, classified))
+    }
+    for (const classified of panel.result.available) {
+      if (seen.has(classified.entry.work.id)) continue
+      seen.add(classified.entry.work.id)
+      available.push(lift(panel, classified))
+    }
   }
   preorder.sort(comparePreorder)
   available.sort(compareAvailable)
@@ -122,11 +139,13 @@ export function compareAvailable(a: FlatEntry, b: FlatEntry): number {
  * An unparseable value yields +Infinity so it sorts last rather than silently
  * leading the list as a zero.
  *
- * TWIN of Go `positionStart` in internal/serve/queries.go (~L977), which sorts
- * the same position strings server-side; the sentinel differs in spelling only
- * (Go has no +Inf literal in that expression and uses 1e18). Keep the two in
- * step: a series rail and this list ordering one series two ways is exactly the
- * disagreement a single rule avoids.
+ * HAND-MIRRORED TWIN of Go `positionStart` in internal/serve/queries.go, which
+ * sorts the same position strings server-side and is the RULE OF RECORD (it
+ * orders the series rail every consumer reads). The sentinel differs in
+ * spelling only (Go has no +Inf literal in that expression and uses 1e18). Both
+ * sides pin the SAME cases - Go's TestPositionStart and the `positionStart`
+ * block in watch-flat.test.ts - because a series rail and this list ordering
+ * one series two ways is exactly the disagreement a single rule avoids.
  */
 export function positionStart(position: string): number {
   let head = position.trim()

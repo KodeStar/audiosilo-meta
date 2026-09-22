@@ -39,10 +39,13 @@ type watchFeedItem struct {
 	updated  time.Time
 	series   string
 	position string
-	// dated reports whether the catalogue STATES a usable release date. Only
-	// the calendar rendering reads it: an all-day event needs a date, where
-	// Atom and JSON date an undated item by when the catalogue learned of it.
-	dated bool
+	// release is the stated release date, as the FIRST instant it names, or the
+	// zero value when the catalogue states none this feed can use. Only the
+	// calendar reads it: an all-day event needs a date of its own, where Atom
+	// and JSON date an undated item by when the catalogue learned of it (which
+	// is what `updated` carries, and why the two are separate fields rather
+	// than one plus a flag stating how to read it).
+	release time.Time
 }
 
 type watchFeed struct {
@@ -51,7 +54,25 @@ type watchFeed struct {
 	id       string
 	self     string
 	updated  time.Time
-	items    []watchFeedItem
+	// generated is when this document was composed, day-granular: the feed's
+	// ETag is day-granular too, so a stamp that moved with the second would put
+	// two different bodies under one validator.
+	generated time.Time
+	items     []watchFeedItem
+}
+
+// capItems is maxWatchFeedItems applied to ONE representation's own list.
+//
+// The cap is per representation and deliberately AFTER each renderer's own
+// filter, not once over the shared list: the calendar leaves undated works out,
+// so a cap taken before that filter would let undated works spend calendar
+// slots and push real dated releases out of the .ics while Atom and JSON still
+// carried them.
+func capItems(items []watchFeedItem) []watchFeedItem {
+	if len(items) > maxWatchFeedItems {
+		return items[:maxWatchFeedItems]
+	}
+	return items
 }
 
 func (s *Server) handleWatchAtom(w http.ResponseWriter, r *http.Request) {
@@ -176,6 +197,12 @@ func (s *snapshot) watchFeed(
 	var names, unknown []string
 	seenRequest := map[string]bool{}
 	seenSeries := map[string]bool{}
+	// A work can belong to several watched series, and two entries for one book
+	// is one book the reader deals with twice - in a feed reader, and as two
+	// events on one day in the calendar, where the id is also the UID. First
+	// series in REQUEST order wins, which is the order everything else here is
+	// resolved in.
+	seenWork := map[string]bool{}
 	for _, requestedSlug := range requested {
 		if seenRequest[requestedSlug] {
 			continue
@@ -208,7 +235,11 @@ func (s *snapshot) watchFeed(
 		seenSeries[detail.ID] = true
 		names = append(names, detail.Name)
 		for _, entry := range detail.Works {
+			if entry.Work != nil && seenWork[entry.Work.ID] {
+				continue
+			}
 			if item, ok := watchItem(detail.Name, entry, window, now, siteURL); ok {
+				seenWork[entry.Work.ID] = true
 				items = append(items, item)
 			}
 		}
@@ -230,9 +261,6 @@ func (s *snapshot) watchFeed(
 		}
 		return items[i].id < items[j].id
 	})
-	if len(items) > maxWatchFeedItems {
-		items = items[:maxWatchFeedItems]
-	}
 
 	// An empty feed has no item to date itself by, so it uses the DAY rather
 	// than the instant: the ETag is day-granular, and a body that moved with
@@ -256,12 +284,13 @@ func (s *snapshot) watchFeed(
 		}
 	}
 	return watchFeed{
-		title:    watchFeedTitle,
-		subtitle: subtitle,
-		id:       feedID,
-		self:     selfURL,
-		updated:  updated,
-		items:    items,
+		title:     watchFeedTitle,
+		subtitle:  subtitle,
+		id:        feedID,
+		self:      selfURL,
+		updated:   updated,
+		generated: dayStart(now),
+		items:     items,
 	}, nil
 }
 
@@ -294,8 +323,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		return watchFeedItem{}, false
 	}
 	var state, stateID, summary string
-	var updated time.Time
-	var release time.Time
+	var updated, release time.Time
 	var dated bool
 	if card.ReleaseDate != "" {
 		release, dated = parseReleaseDate(card.ReleaseDate)
@@ -356,7 +384,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		updated:  updated.UTC(),
 		series:   seriesName,
 		position: entry.Position,
-		dated:    dated,
+		release:  release.UTC(),
 	}, true
 }
 
@@ -480,7 +508,7 @@ func renderAtomFeed(feed watchFeed) ([]byte, error) {
 		Updated:  feed.updated.UTC().Format(time.RFC3339),
 		Links:    []atomLink{{Rel: "self", Type: "application/atom+xml", Href: feed.self}},
 	}
-	for _, item := range feed.items {
+	for _, item := range capItems(feed.items) {
 		authors := make([]atomAuthor, len(item.authors))
 		for i, name := range item.authors {
 			authors[i] = atomAuthor{Name: name}
@@ -531,7 +559,7 @@ func renderJSONFeed(feed watchFeed) ([]byte, error) {
 		FeedURL:     feed.self,
 		Items:       []jsonFeedItem{},
 	}
-	for _, item := range feed.items {
+	for _, item := range capItems(feed.items) {
 		authors := make([]jsonFeedAuthor, len(item.authors))
 		for i, name := range item.authors {
 			authors[i] = jsonFeedAuthor{Name: name}
@@ -595,6 +623,14 @@ func icsFold(line string) string {
 			for end > start && !utf8.RuneStart(line[end]) {
 				end--
 			}
+			// Invalid UTF-8 (a run of continuation bytes with no start byte)
+			// backs the break off all the way to `start`, and a zero-width
+			// segment never advances. The value is not decodable either way, so
+			// the fold cuts at the limit: a malformed title is a rendering
+			// nuisance, a loop here is the server.
+			if end == start {
+				end = start + limit
+			}
 		}
 		if start > 0 {
 			b.WriteString("\r\n ")
@@ -620,16 +656,15 @@ func icsStamp(t time.Time) string { return t.UTC().Format("20060102T150405Z") }
 // `2026-10` the 1st of October, with the DESCRIPTION - the feed's own summary -
 // saying which precision that was. An UNDATED item is skipped rather than
 // placed on the day the catalogue learned of it: "we do not know when this
-// comes out" is not an event, and a calendar has nowhere to say so.
+// comes out" is not an event, and a calendar has nowhere to say so. The cap is
+// taken AFTER that filter (capItems), so undated works never spend a calendar
+// slot a real release could have had.
 //
-// One known cosmetic caveat: DTSTAMP is derived from the item's own release
-// date rather than the wall clock, which is what makes the body deterministic
-// (and therefore golden-testable and safe under the feed's ETag). A date
-// CORRECTED to an earlier one therefore moves DTSTAMP backwards, which a strict
-// reading of RFC 5545 would treat as a stale revision. It is harmless here: the
-// document carries no SEQUENCE and is published rather than sent as an
-// invitation, so a subscribed calendar replaces the whole calendar on each
-// refresh instead of reconciling per-event revisions.
+// DTSTAMP is the feed's GENERATION day (feed.generated), which is what RFC 5545
+// asks of it - when the document was composed - and never moves backwards the
+// way a stamp read off a corrected release date would. Day-granular rather than
+// to the second because the feed's ETag is: the body must be one function of
+// the validator, so two responses under one ETag cannot differ.
 func renderICalendar(feed watchFeed) ([]byte, error) {
 	lines := []string{
 		"BEGIN:VCALENDAR",
@@ -647,10 +682,14 @@ func renderICalendar(feed watchFeed) ([]byte, error) {
 		"X-PUBLISHED-TTL:PT12H",
 		"URL:"+feed.self,
 	)
+	dated := make([]watchFeedItem, 0, len(feed.items))
 	for _, item := range feed.items {
-		if !item.dated {
-			continue
+		if !item.release.IsZero() {
+			dated = append(dated, item)
 		}
+	}
+	stamp := icsStamp(feed.generated)
+	for _, item := range capItems(dated) {
 		lines = append(lines,
 			"BEGIN:VEVENT",
 			// The item id is the feed's stable identity already, so the UID is
@@ -658,10 +697,10 @@ func renderICalendar(feed watchFeed) ([]byte, error) {
 			// preorder/released suffix with it, which is what makes a preorder
 			// becoming a release a NEW event rather than a moved one.
 			"UID:"+strings.TrimPrefix(item.id, watchTagPrefix)+"@"+watchAuthority,
-			"DTSTAMP:"+icsStamp(item.updated),
+			"DTSTAMP:"+stamp,
 			// An all-day event is DTSTART inclusive, DTEND exclusive.
-			"DTSTART;VALUE=DATE:"+icsDate(item.updated),
-			"DTEND;VALUE=DATE:"+icsDate(item.updated.AddDate(0, 0, 1)),
+			"DTSTART;VALUE=DATE:"+icsDate(item.release),
+			"DTEND;VALUE=DATE:"+icsDate(item.release.AddDate(0, 0, 1)),
 			"SUMMARY:"+icsText(item.title),
 			"DESCRIPTION:"+icsText(item.summary),
 			"URL:"+item.link,

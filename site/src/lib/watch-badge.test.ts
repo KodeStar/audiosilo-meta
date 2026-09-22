@@ -6,6 +6,7 @@ import {
   badgeSlugKey,
   fetchWatchFeedWorkIDs,
   isBadgeFresh,
+  newBadgeCache,
   parseBadgeCache,
   readBadgeCache,
   workIDsFromFeed,
@@ -213,5 +214,27 @@ describe('fetchWatchFeedWorkIDs', () => {
       json: async () => ({}),
     })) as unknown as typeof fetch
     await expect(fetchWatchFeedWorkIDs('https://x/feed.json', stub)).rejects.toThrow('503')
+  })
+})
+
+// The header used to spell `version: 1` itself, which a bump in watch-badge.ts
+// would have left behind as a document parseBadgeCache rejects on the next
+// load. The version is this module's to state.
+describe('newBadgeCache', () => {
+  it('stamps the current version and reads back through parseBadgeCache', () => {
+    const cache = newBadgeCache('alpha,beta', ['w1', 'w2'], 1_700_000_000_000)
+    expect(cache).toEqual({
+      version: 1,
+      slugKey: 'alpha,beta',
+      fetchedAt: 1_700_000_000_000,
+      works: ['w1', 'w2'],
+    })
+    expect(parseBadgeCache(JSON.stringify(cache))).toEqual(cache)
+    expect(isBadgeFresh(cache, 'alpha,beta', 1_700_000_000_000)).toBe(true)
+  })
+  it('defaults the timestamp to now', () => {
+    const before = Date.now()
+    const cache = newBadgeCache('', [])
+    expect(cache.fetchedAt).toBeGreaterThanOrEqual(before)
   })
 })
