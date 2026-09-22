@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import type { SeriesEntry } from './api'
+import { entry, stubStorage } from './test-support'
 import {
   WATCHLIST_STORAGE_KEY,
   WATCHLIST_VERSION,
@@ -14,14 +14,17 @@ import {
   looksLikeWatchlist,
   markAllOwned,
   markSeen,
+  markedWorkIDs,
   parseWatchlist,
   readWatchlist,
   setOwned,
+  setSkipped,
   unhide,
   unwatch,
   visibleSeries,
   watch,
   watchedSeries,
+  watchedSlugs,
   writeWatchlist,
   type Watchlist,
 } from './watchlist'
@@ -34,28 +37,6 @@ function oneSeries(slug = 'the-wandering-inn', name = 'The Wandering Inn'): Watc
   return watch(emptyWatchlist(), slug, name, TODAY)
 }
 
-function entry(id: string, position: string, release_date?: string): SeriesEntry {
-  return {
-    position,
-    work: { id, title: id, authors: [], release_date },
-  }
-}
-
-// A minimal in-memory localStorage, as marketplace.test.ts stubs one.
-function stubStorage(opts: { throws?: boolean } = {}) {
-  const map = new Map<string, string>()
-  vi.stubGlobal('localStorage', {
-    getItem: (k: string) => {
-      if (opts.throws) throw new Error('blocked')
-      return map.get(k) ?? null
-    },
-    setItem: (k: string, v: string) => {
-      if (opts.throws) throw new Error('blocked')
-      map.set(k, v)
-    },
-  })
-  return map
-}
 
 afterEach(() => {
   vi.unstubAllGlobals()
@@ -70,6 +51,7 @@ describe('watch / unwatch', () => {
       watchedAt: TODAY,
       owned: [],
       seen: [],
+      skipped: [],
     })
   })
   it('keeps the original watch date and marks when re-watched, refreshing the name', () => {
@@ -80,6 +62,7 @@ describe('watch / unwatch', () => {
       watchedAt: TODAY,
       owned: ['volume-1'],
       seen: [],
+      skipped: [],
     })
   })
   it('unwatching forgets the series entirely', () => {
@@ -135,6 +118,88 @@ describe('markSeen', () => {
   })
 })
 
+describe('skip marks', () => {
+  it('sets and unsets, independently of ownership', () => {
+    let store = setSkipped(oneSeries(), 'the-wandering-inn', 'novella-1', true)
+    store = setSkipped(store, 'the-wandering-inn', 'novella-1', true) // idempotent
+    expect(watchedSeries(store, 'the-wandering-inn')?.skipped).toEqual(['novella-1'])
+    expect(watchedSeries(store, 'the-wandering-inn')?.owned).toEqual([])
+
+    store = setSkipped(store, 'the-wandering-inn', 'novella-2', true)
+    store = setSkipped(store, 'the-wandering-inn', 'novella-1', false)
+    expect(watchedSeries(store, 'the-wandering-inn')?.skipped).toEqual(['novella-2'])
+  })
+  it('is a no-op on a series that is not watched', () => {
+    const store = emptyWatchlist()
+    expect(setSkipped(store, 'nope', 'volume-1', true)).toBe(store)
+  })
+  it('never mutates the store it was given', () => {
+    const before = oneSeries()
+    const snapshot = JSON.stringify(before)
+    setSkipped(before, 'the-wandering-inn', 'volume-1', true)
+    expect(JSON.stringify(before)).toBe(snapshot)
+  })
+
+  const entries = [
+    entry('v1', '1', '2024-01-10'),
+    entry('v2', '2', '2026-09-21'), // out today
+    entry('v3', '3', '2026-12-01'), // preorder
+  ]
+
+  it('classify lands every entry in exactly one of the four buckets', () => {
+    let store = setOwned(oneSeries(), 'the-wandering-inn', 'v1', true)
+    store = setSkipped(store, 'the-wandering-inn', 'v2', true)
+    const got = classify(entries, watchedSeries(store, 'the-wandering-inn'), TODAY)
+    expect(got.owned.map((e) => e.work.id)).toEqual(['v1'])
+    expect(got.skipped.map((e) => e.work.id)).toEqual(['v2'])
+    expect(got.available).toEqual([])
+    expect(got.preorder.map((c) => c.entry.work.id)).toEqual(['v3'])
+  })
+  it('owned beats skipped', () => {
+    let store = setSkipped(oneSeries(), 'the-wandering-inn', 'v1', true)
+    store = setOwned(store, 'the-wandering-inn', 'v1', true)
+    const got = classify(entries, watchedSeries(store, 'the-wandering-inn'), TODAY)
+    expect(got.owned.map((e) => e.work.id)).toEqual(['v1'])
+    expect(got.skipped).toEqual([])
+  })
+  it('skipped beats preorder and available', () => {
+    let store = setSkipped(oneSeries(), 'the-wandering-inn', 'v2', true)
+    store = setSkipped(store, 'the-wandering-inn', 'v3', true)
+    const got = classify(entries, watchedSeries(store, 'the-wandering-inn'), TODAY)
+    expect(got.skipped.map((e) => e.work.id)).toEqual(['v2', 'v3'])
+    expect(got.available.map((c) => c.entry.work.id)).toEqual(['v1'])
+    expect(got.preorder).toEqual([])
+  })
+  it('parses a stored series written before skip marks existed', () => {
+    // Additive, so WATCHLIST_VERSION did not move and the document still reads.
+    const got = parseWatchlist(
+      JSON.stringify({
+        version: WATCHLIST_VERSION,
+        series: { old: { name: 'Old', watchedAt: TODAY, owned: ['a'], seen: ['b'] } },
+      })
+    )
+    expect(got.series.old).toEqual({
+      name: 'Old',
+      watchedAt: TODAY,
+      owned: ['a'],
+      seen: ['b'],
+      skipped: [],
+    })
+  })
+  it('importJSON unions it and exportJSON round-trips it', () => {
+    const mine = setSkipped(oneSeries(), 'the-wandering-inn', 'v1', true)
+    const backup = setSkipped(
+      watch(emptyWatchlist(), 'the-wandering-inn', 'Stale Name', '2020-01-01'),
+      'the-wandering-inn',
+      'v2',
+      true
+    )
+    const merged = importJSON(mine, exportJSON(backup))
+    expect(watchedSeries(merged, 'the-wandering-inn')?.skipped).toEqual(['v1', 'v2'])
+    expect(parseWatchlist(exportJSON(merged))).toEqual(merged)
+  })
+})
+
 describe('hide / unhide', () => {
   it('hides a watched series without losing its marks', () => {
     let store = setOwned(oneSeries(), 'the-wandering-inn', 'volume-1', true)
@@ -185,7 +250,9 @@ describe('classify', () => {
   })
   it('lands every entry in exactly one bucket', () => {
     const got = classify(entries, watchedSeries(oneSeries(), 'the-wandering-inn'), TODAY)
-    expect(got.available.length + got.preorder.length + got.owned.length).toBe(entries.length)
+    expect(
+      got.available.length + got.preorder.length + got.owned.length + got.skipped.length
+    ).toBe(entries.length)
   })
   it('owning a preorder keeps it out of the preorder list', () => {
     const store = setOwned(oneSeries(), 'the-wandering-inn', 'v3', true)
@@ -241,6 +308,7 @@ describe('parseWatchlist', () => {
       watchedAt: TODAY,
       owned: ['a'],
       seen: [],
+      skipped: [],
       hidden: true,
     })
   })
@@ -324,5 +392,41 @@ describe('storage helpers', () => {
     vi.stubGlobal('localStorage', undefined)
     expect(readWatchlist()).toEqual(emptyWatchlist())
     expect(() => writeWatchlist(oneSeries())).not.toThrow()
+  })
+})
+
+// Both live here, in the leaf, rather than beside their first caller: the badge
+// and the feed URL each read one of them and neither may reach through the
+// other (which is what made the header's lazy import of lib/feed-url no lazy
+// boundary at all).
+describe('watchedSlugs', () => {
+  it('lists every visible series, sorted, and leaves hidden ones out', () => {
+    let store = watch(emptyWatchlist(), 'zeta', 'Zeta', TODAY)
+    store = watch(store, 'alpha', 'Alpha', TODAY)
+    store = hide(store, 'secret', 'Secret', TODAY)
+    expect(watchedSlugs(store)).toEqual(['alpha', 'zeta'])
+    expect(watchedSlugs(emptyWatchlist())).toEqual([])
+  })
+})
+
+describe('markedWorkIDs', () => {
+  it('unions seen, owned and skipped across every series, hidden included', () => {
+    let store = watch(emptyWatchlist(), 'a', 'A', TODAY)
+    store = watch(store, 'b', 'B', TODAY)
+    store = markSeen(store, 'a', ['seen-work'])
+    store = setOwned(store, 'a', 'owned-work', true)
+    store = setSkipped(store, 'b', 'skipped-work', true)
+    // A mark made before the series was hidden is still a mark.
+    store = setOwned(store, 'b', 'hidden-owned', true)
+    store = hide(store, 'b', 'B', TODAY)
+    expect([...markedWorkIDs(store)].sort()).toEqual([
+      'hidden-owned',
+      'owned-work',
+      'seen-work',
+      'skipped-work',
+    ])
+  })
+  it('is empty for a store with no marks', () => {
+    expect(markedWorkIDs(oneSeries()).size).toBe(0)
   })
 })

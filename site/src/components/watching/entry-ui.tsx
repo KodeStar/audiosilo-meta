@@ -1,8 +1,8 @@
-// The three atoms the series page and the watching page both render for a
-// series entry: when it came out, whether it is still a preorder, and the
-// "I have this" mark. Here rather than in either page because they must read
-// identically on both - a reader ticks a box on one and looks for the result on
-// the other.
+// The atoms the series page and the watching page both render for a series
+// entry: when it came out, whether it is still a preorder, the "I have this"
+// mark and the "not interested" one. Here rather than in either page because
+// they must read identically on both - a reader ticks a box on one and looks
+// for the result on the other.
 
 import { formatReleaseDate, isFutureRelease } from '../../lib/dates'
 
@@ -41,6 +41,13 @@ export function ReleaseLine({ date, today }: { date?: string | null; today: stri
   )
 }
 
+/** The chrome the two per-entry marks share - same size, same shape, same
+    transition - so a row's "I have this" and "Not interested" read as a pair.
+    Only the COLOURS differ, and only when the skip button is pressed, which is
+    why they are a second string rather than part of this one. */
+const MARK_CHROME = 'shrink-0 rounded-lg border px-3 py-2 text-xs transition-colors'
+const MARK_IDLE = 'border-edge bg-raised text-dim hover:border-pink-500/50 hover:text-hi'
+
 /** The per-entry ownership mark. The visible words are decorative (they repeat
     down a list); the input carries the work's title as its accessible name, so
     a screen reader hears which book each checkbox is about. */
@@ -54,7 +61,7 @@ export function OwnCheckbox({
   onChange: (checked: boolean) => void
 }) {
   return (
-    <label className="flex shrink-0 cursor-pointer items-center gap-2 rounded-lg border border-edge bg-raised px-3 py-2 text-xs text-dim transition-colors hover:border-pink-500/50 hover:text-hi">
+    <label className={`${MARK_CHROME} ${MARK_IDLE} flex cursor-pointer items-center gap-2`}>
       <input
         type="checkbox"
         className="h-4 w-4 accent-pink-500"
@@ -66,5 +73,44 @@ export function OwnCheckbox({
         I have this
       </span>
     </label>
+  )
+}
+
+/**
+ * The per-entry "not interested" mark: a reader dismissing a series' novellas,
+ * companion volumes or a spin-off they do not intend to read, WITHOUT claiming
+ * to own them - which is what makes it a second control rather than a use of
+ * the ownership checkbox beside it.
+ *
+ * It is PAGE-SIDE ONLY. A feed URL carries series slugs and nothing else
+ * (lib/feed-url.ts), so the server cannot know about a skip and a skipped work
+ * still arrives in the reader's Atom, JSON and calendar feeds. Reversible from
+ * either view: the flat list and the series panels both render it, and a
+ * skipped entry keeps the button in its "Show again" state.
+ *
+ * The visible words repeat down a list, so the button carries the work's title
+ * in its accessible name and `aria-pressed` carries the state.
+ */
+export function SkipButton({
+  title,
+  skipped,
+  onChange,
+}: {
+  title: string
+  skipped: boolean
+  onChange: (skipped: boolean) => void
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={skipped}
+      aria-label={skipped ? `Show ${title} again` : `Not interested in ${title}`}
+      onClick={() => onChange(!skipped)}
+      className={`${MARK_CHROME} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500 ${
+        skipped ? 'border-pink-500/50 bg-raised text-pink-300 hover:text-pink-200' : MARK_IDLE
+      }`}
+    >
+      {skipped ? 'Show again' : 'Not interested'}
+    </button>
   )
 }

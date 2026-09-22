@@ -12,6 +12,7 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -75,6 +76,7 @@ func TestWatchFeedGoldens(t *testing.T) {
 	}{
 		{"atom", "/api/v1/watch/feed.atom?s=the-stormlight-archive,not-here", "application/atom+xml; charset=utf-8"},
 		{"json", "/api/v1/watch/feed.json?s=the-stormlight-archive,not-here", "application/feed+json; charset=utf-8"},
+		{"ics", "/api/v1/watch/releases.ics?s=the-stormlight-archive,not-here", "text/calendar; charset=utf-8"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			resp, got := watchFeedResponse(t, ts, tc.path)
@@ -258,6 +260,8 @@ func TestWatchFeedRejectsInvalidParameters(t *testing.T) {
 		"/api/v1/watch/feed.json?s=the-stormlight-archive&window=366",
 		"/api/v1/watch/feed.json?s=the-stormlight-archive&window=nope",
 		"/api/v1/watch/feed.json?s=" + url.QueryEscape(tooMany),
+		"/api/v1/watch/releases.ics",
+		"/api/v1/watch/releases.ics?s=the-stormlight-archive&window=0",
 	} {
 		resp, body := watchFeedResponse(t, ts, path)
 		if resp.StatusCode != http.StatusBadRequest {
@@ -302,6 +306,29 @@ func TestWatchFeedETagAnd304(t *testing.T) {
 	jsonResp, _ := watchFeedResponse(t, ts, strings.Replace(path, ".atom", ".json", 1))
 	if jsonResp.Header.Get("ETag") == etag {
 		t.Errorf("Atom and JSON representations share ETag %q", etag)
+	}
+
+	// The calendar is a third representation of the same feed, and the path is
+	// a component of the validator, so it gets one of its own - and answers a
+	// conditional GET on it.
+	icsPath := strings.Replace(path, "feed.atom", "releases.ics", 1)
+	icsResp, _ := watchFeedResponse(t, ts, icsPath)
+	icsETag := icsResp.Header.Get("ETag")
+	if icsETag == "" || icsETag == etag {
+		t.Errorf("calendar ETag = %q, Atom ETag %q", icsETag, etag)
+	}
+	icsReq, err := http.NewRequest(http.MethodGet, ts.URL+icsPath, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	icsReq.Header.Set("If-None-Match", icsETag)
+	icsConditional, err := http.DefaultClient.Do(icsReq)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = icsConditional.Body.Close() }()
+	if icsConditional.StatusCode != http.StatusNotModified {
+		t.Errorf("conditional calendar status = %d, want 304", icsConditional.StatusCode)
 	}
 }
 
@@ -367,10 +394,278 @@ func TestWatchFeedCapsItemsAfterOrdering(t *testing.T) {
 func TestWatchFeedsRequireSnapshot(t *testing.T) {
 	srv := &Server{cfg: Config{SiteURL: testSiteURL, now: time.Now}}
 	srv.mux = srv.buildMux()
-	rec := httptest.NewRecorder()
-	req := httptest.NewRequest(http.MethodGet, "/api/v1/watch/feed.json?s=series", nil)
-	srv.Handler().ServeHTTP(rec, req)
-	if rec.Code != http.StatusServiceUnavailable {
-		t.Errorf("status = %d, want 503", rec.Code)
+	for _, path := range []string{
+		"/api/v1/watch/feed.json?s=series",
+		"/api/v1/watch/feed.atom?s=series",
+		"/api/v1/watch/releases.ics?s=series",
+	} {
+		rec := httptest.NewRecorder()
+		req := httptest.NewRequest(http.MethodGet, path, nil)
+		srv.Handler().ServeHTTP(rec, req)
+		if rec.Code != http.StatusServiceUnavailable {
+			t.Errorf("GET %s status = %d, want 503", path, rec.Code)
+		}
+	}
+}
+
+// A calendar event needs a date, so a work the catalogue holds no usable
+// release date for is carried by the Atom and JSON feeds and omitted here
+// rather than placed on the day the catalogue learned of it.
+func TestICalendarSkipsUndatedItems(t *testing.T) {
+	feed := watchFeed{
+		title:   watchFeedTitle,
+		id:      "tag",
+		self:    testSiteURL + "/api/v1/watch/releases.ics?s=series",
+		updated: watchFeedNow,
+		items: []watchFeedItem{
+			{
+				id: watchTagPrefix + "work/dated/released", title: "Series #1: Dated",
+				state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/dated",
+				updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+				release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+			},
+			{
+				id: watchTagPrefix + "work/undated/released", title: "Series #2: Undated",
+				state: "date unknown", summary: "Added to the catalogue, release date unknown",
+				link:    testSiteURL + "/works/undated",
+				updated: time.Date(2026, 10, 19, 12, 0, 0, 0, time.UTC),
+			},
+		},
+	}
+	body, err := renderICalendar(feed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(body)
+	if n := strings.Count(got, "BEGIN:VEVENT"); n != 1 {
+		t.Errorf("VEVENT count = %d, want 1:\n%s", n, got)
+	}
+	if strings.Contains(got, "undated") || strings.Contains(got, "date unknown") {
+		t.Errorf("undated item reached the calendar:\n%s", got)
+	}
+}
+
+// A stated precision is honoured rather than invented: the event lands on the
+// first day of the period the catalogue names, and the description says which
+// period that was. Built through watchItem so the precision path is the real
+// one and not a literal restating what it should produce.
+func TestICalendarPrecisionUsesFirstDay(t *testing.T) {
+	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
+	for _, tc := range []struct {
+		release string
+		start   string
+		reads   string
+	}{
+		{"2026", "20260101", "2026"},
+		{"2026-10", "20261001", "Oct 2026"},
+		{"2026-10-20", "20261020", "20 Oct 2026"},
+	} {
+		t.Run(tc.release, func(t *testing.T) {
+			card := &workCard{ID: "work", Title: "Work", ReleaseDate: tc.release}
+			item, ok := watchItem("Series", seriesEntry{Position: "1", Work: card}, maxWatchWindow, now, testSiteURL)
+			if !ok {
+				t.Fatalf("watchItem dropped %q", tc.release)
+			}
+			body, err := renderICalendar(watchFeed{title: watchFeedTitle, items: []watchFeedItem{item}})
+			if err != nil {
+				t.Fatal(err)
+			}
+			got := string(body)
+			if !strings.Contains(got, "DTSTART;VALUE=DATE:"+tc.start+"\r\n") {
+				t.Errorf("DTSTART for %q is not %s:\n%s", tc.release, tc.start, got)
+			}
+			if !strings.Contains(got, tc.reads) {
+				t.Errorf("DESCRIPTION for %q does not state %q:\n%s", tc.release, tc.reads, got)
+			}
+		})
+	}
+}
+
+func TestICSFoldAndEscape(t *testing.T) {
+	if got, want := icsText("a,b;c\\d\nx"), `a\,b\;c\\d\nx`; got != want {
+		t.Errorf("icsText = %q, want %q", got, want)
+	}
+
+	long := "SUMMARY:" + strings.Repeat("a", 200)
+	folded := icsFold(long)
+	physical := strings.Split(folded, "\r\n")
+	if len(physical) < 3 {
+		t.Fatalf("a 200-octet line folded into %d physical lines", len(physical))
+	}
+	unfolded := physical[0]
+	for i, line := range physical {
+		if len(line) > icsLineOctets {
+			t.Errorf("physical line %d is %d octets", i, len(line))
+		}
+		if i == 0 {
+			continue
+		}
+		if !strings.HasPrefix(line, " ") {
+			t.Errorf("continuation line %d does not start with a space: %q", i, line)
+		}
+		unfolded += line[1:]
+	}
+	if unfolded != long {
+		t.Errorf("unfolded = %q, want %q", unfolded, long)
+	}
+
+	// The limit is in OCTETS, so a run of multi-byte runes is where a naive cut
+	// would split one and hand the reader an undecodable calendar.
+	wide := icsFold("SUMMARY:" + strings.Repeat("\u00e9\u00fc\u4e16", 40))
+	for i, line := range strings.Split(wide, "\r\n") {
+		if !utf8.ValidString(line) {
+			t.Errorf("physical line %d split a rune: %q", i, line)
+		}
+		if len(line) > icsLineOctets {
+			t.Errorf("physical line %d is %d octets", i, len(line))
+		}
+	}
+
+	// Every line break in a rendered document is a CRLF, folds included.
+	body, err := renderICalendar(watchFeed{
+		title: watchFeedTitle, subtitle: "A Series",
+		items: []watchFeedItem{{
+			id: watchTagPrefix + "work/w/released", title: strings.Repeat("Long Title ", 20),
+			state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/w",
+			updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+			release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+		}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for i, b := range body {
+		if b == '\n' && (i == 0 || body[i-1] != '\r') {
+			t.Fatalf("byte %d is a bare LF:\n%q", i, body)
+		}
+	}
+	if !strings.HasSuffix(string(body), "END:VCALENDAR\r\n") {
+		t.Errorf("document does not end with a CRLF-terminated END:VCALENDAR:\n%q", body)
+	}
+}
+
+func TestICalendarIsDeterministic(t *testing.T) {
+	_, ts := newWatchFeedServer(t, watchFeedCatalog())
+	path := "/api/v1/watch/releases.ics?s=the-stormlight-archive"
+	_, first := watchFeedResponse(t, ts, path)
+	_, second := watchFeedResponse(t, ts, path)
+	if string(first) != string(second) {
+		t.Errorf("two renders differ:\n%s\n---\n%s", first, second)
+	}
+}
+
+// The cap belongs to each REPRESENTATION, after its own filter. The calendar
+// leaves undated works out, so a cap taken over the shared list would let them
+// spend calendar slots and push the one real release out of the .ics while
+// Atom and JSON still carried it.
+func TestICalendarCapsAfterDroppingUndated(t *testing.T) {
+	feed := watchFeed{
+		title:     watchFeedTitle,
+		generated: dayStart(watchFeedNow),
+	}
+	for i := 0; i <= maxWatchFeedItems; i++ {
+		id := "undated-" + strconv.Itoa(i)
+		feed.items = append(feed.items, watchFeedItem{
+			id: watchTagPrefix + "work/" + id + "/released", title: "Undated " + id,
+			state: "date unknown", summary: "Added to the catalogue, release date unknown",
+			link:    testSiteURL + "/works/" + id,
+			updated: time.Date(2026, 10, 19, 12, 0, 0, 0, time.UTC),
+		})
+	}
+	feed.items = append(feed.items, watchFeedItem{
+		id: watchTagPrefix + "work/dated/released", title: "The Dated One",
+		state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/dated",
+		updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+		release: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC),
+	})
+
+	body, err := renderICalendar(feed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(body)
+	if n := strings.Count(got, "BEGIN:VEVENT"); n != 1 {
+		t.Errorf("VEVENT count = %d, want 1", n)
+	}
+	if !strings.Contains(got, "The Dated One") {
+		t.Errorf("the one dated release fell out of the calendar:\n%s", got)
+	}
+}
+
+// DTSTAMP says when the DOCUMENT was composed, so a preorder's future release
+// date never stamps it - and it is day-granular, matching the feed's ETag.
+func TestICalendarStampsTheGenerationDay(t *testing.T) {
+	_, ts := newWatchFeedServer(t, watchFeedCatalog())
+	_, body := watchFeedResponse(t, ts, "/api/v1/watch/releases.ics?s=the-stormlight-archive")
+	want := "DTSTAMP:" + dayStart(watchFeedNow).Format("20060102T150405Z")
+	stamps := strings.Count(string(body), "DTSTAMP:")
+	if stamps == 0 {
+		t.Fatalf("no VEVENT in the calendar:\n%s", body)
+	}
+	if got := strings.Count(string(body), want); got != stamps {
+		t.Errorf("%d of %d DTSTAMP lines are %q:\n%s", got, stamps, want, body)
+	}
+}
+
+// A work in two watched series is one book, so it is one feed item: two would
+// be two rows in a reader and, since the item id is also the calendar UID, two
+// events on one day.
+func TestWatchFeedEmitsEachWorkOnce(t *testing.T) {
+	cat := watchFeedCatalog()
+	cat.Series = append(cat.Series, &model.Series{
+		ID: "stormlight-companion", Name: "Stormlight Companion", License: "CC0-1.0",
+		Works: []model.SeriesWork{{Work: "the-way-of-kings", Position: "1"}},
+	})
+	_, ts := newWatchFeedServer(t, cat)
+	_, body := watchFeedResponse(t, ts,
+		"/api/v1/watch/feed.json?s=the-stormlight-archive,stormlight-companion")
+	var feed jsonFeed
+	if err := json.Unmarshal(body, &feed); err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]int{}
+	for _, item := range feed.Items {
+		seen[item.URL]++
+	}
+	shared := testSiteURL + "/works/the-way-of-kings"
+	if seen[shared] != 1 {
+		t.Errorf("the shared work appears %d times, want 1:\n%s", seen[shared], body)
+	}
+	// FIRST series in request order wins, so the item still names it.
+	for _, item := range feed.Items {
+		if item.URL == shared && !strings.HasPrefix(item.Title, "The Stormlight Archive") {
+			t.Errorf("shared work kept the second series' title %q", item.Title)
+		}
+	}
+}
+
+// Invalid UTF-8 backs the rune-boundary break off all the way to the start of
+// the segment, and a zero-width segment never advances: the fold used to loop
+// forever on one. It cuts at the limit instead.
+func TestICSFoldSurvivesInvalidUTF8(t *testing.T) {
+	done := make(chan string, 1)
+	go func() { done <- icsFold(strings.Repeat("\x80", 100)) }()
+	var folded string
+	select {
+	case folded = <-done:
+	case <-time.After(5 * time.Second):
+		t.Fatal("icsFold did not terminate on invalid UTF-8")
+	}
+	var joined string
+	for i, line := range strings.Split(folded, "\r\n") {
+		if len(line) > icsLineOctets {
+			t.Errorf("physical line %d is %d octets, want <= %d", i, len(line), icsLineOctets)
+		}
+		if i == 0 {
+			joined = line
+			continue
+		}
+		if !strings.HasPrefix(line, " ") {
+			t.Errorf("continuation line %d does not start with a space: %q", i, line)
+		}
+		joined += line[1:]
+	}
+	if joined != strings.Repeat("\x80", 100) {
+		t.Errorf("unfolding lost bytes: %d of 100", len(joined))
 	}
 }

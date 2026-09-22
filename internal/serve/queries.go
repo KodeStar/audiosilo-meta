@@ -974,6 +974,13 @@ var parsePositionRange = model.ParsePositionRange
 // -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last. A
 // malformed range still sorts by its parseable prefix ("1-garbage" -> 1); only
 // a value with no parseable start gets the sort-last sentinel.
+//
+// HAND-MIRRORED TWIN of `positionStart` in site/src/lib/watch-flat.ts, which
+// orders the watching page's cross-series list. This side is the rule of
+// record - it orders the series rail every consumer reads - and the sentinel is
+// the only deliberate difference (1e18 here, +Infinity there). The same cases
+// are pinned on both sides: TestPositionStart in serve_test.go and the
+// `positionStart` describe block in watch-flat.test.ts.
 func positionStart(pos string) float64 {
 	if lo, _, ok := parsePositionRange(pos); ok {
 		return lo

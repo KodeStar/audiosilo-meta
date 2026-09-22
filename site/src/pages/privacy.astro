@@ -14,7 +14,7 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 21 September 2026</p>
+      <p class="mb-8 text-dim">Last updated: 22 September 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
@@ -92,7 +92,8 @@ const code =
         Watching a series (<span class={code}>/watching</span>)
       </h2>
       <p class="mb-4 leading-relaxed">
-        The series you watch and the books you mark as yours are stored
+        The series you watch and the marks you make on individual books - "I have this" and "not
+        interested" - are stored
         <strong class="text-hi">only in your browser</strong> (in local storage on this device) and
         are never sent to the server - there is no account to attach them to. The page asks the
         public API only which books each series contains, the same request the series page makes,
@@ -100,8 +101,18 @@ const code =
         of it.
       </p>
       <p class="mb-4 leading-relaxed">
-        A notification feed URL carries the watched series slugs in the URL, is served statelessly
-        without storing a subscription, and appears in ordinary access logs like any other request.
+        To show a count of new releases next to "Watching" in the site header, this browser asks the
+        public API for your own watched-series feed <strong class="text-hi">at most once an
+        hour</strong>. That request carries only the series slugs - the same list a subscription URL
+        carries - and its answer is kept in this browser until the next hourly check. If you are not
+        watching anything, no such request is made.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        A notification feed URL, and the calendar subscription URL that is the same feed in calendar
+        form, carry the watched series slugs in the URL, are served statelessly without storing a
+        subscription, and appear in ordinary access logs like any other request. Whatever service
+        you subscribe with - a feed reader, a calendar app, an automation service - sees that URL
+        and the series it lists, and so does our access log each time that service fetches it.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">

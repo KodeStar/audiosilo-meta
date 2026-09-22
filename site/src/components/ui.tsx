@@ -1,9 +1,9 @@
 // Shared React-island primitives: the button/pill classes replicated from
-// Button.astro, the two tiny presentation atoms every detail island shares
-// (Chevron, Badge) and the inline outline Icon (heroicons paths), since Astro
+// Button.astro, the small presentation atoms the islands share (Chevron, Badge,
+// TabButton) and the inline outline Icon (heroicons paths), since Astro
 // components cannot render inside a React island. ONE source of truth - the
-// import, build and detail islands all pull from here; do not re-copy these
-// into an island.
+// import, build, watching and detail islands all pull from here; do not re-copy
+// these into an island.
 
 import type { ReactNode } from 'react'
 
@@ -54,6 +54,44 @@ export function Badge({ children }: { children: ReactNode }) {
     <span className="shrink-0 rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-dim">
       {children}
     </span>
+  )
+}
+
+/** One tab in a tab bar: an underlined active state in the accent, with an
+    optional muted count beside the label. Shared by the work page's
+    General/Characters/Story-so-far bar and the watching page's four sections,
+    so the two cannot drift into two spellings of one control. The caller owns
+    the `role="tablist"` wrapper and the panel ids this points at. */
+export function TabButton({
+  active,
+  onClick,
+  label,
+  count,
+  id,
+  controls,
+}: {
+  active: boolean
+  onClick: () => void
+  label: string
+  count?: number
+  id: string
+  controls: string
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      id={id}
+      aria-selected={active}
+      aria-controls={controls}
+      onClick={onClick}
+      className={`-mb-px flex items-center gap-1.5 border-b-2 px-1 pb-3 pt-1 text-sm font-medium transition-colors ${
+        active ? 'border-pink-500 text-hi' : 'border-transparent text-dim hover:text-body'
+      }`}
+    >
+      <span>{label}</span>
+      {typeof count === 'number' ? <span className="text-xs font-normal text-dim">{count}</span> : null}
+    </button>
   )
 }
 

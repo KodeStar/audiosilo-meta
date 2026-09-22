@@ -4,13 +4,14 @@ import {
   isWatched,
   markAllOwned,
   setOwned,
+  setSkipped,
   unhide,
   unwatch,
   watch,
   watchedSeries,
 } from '../../lib/watchlist'
 import { useWatchlist, type WatchlistHandle } from '../watching/use-watchlist'
-import { OwnCheckbox, ReleaseLine } from '../watching/entry-ui'
+import { OwnCheckbox, ReleaseLine, SkipButton } from '../watching/entry-ui'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import { TEXT_LINK } from '../ui'
@@ -86,19 +87,27 @@ function WatchToggle({
   )
 }
 
-/** One volume. The whole row is a link to the work EXCEPT the ownership mark,
-    which is an interactive control of its own - so the anchor wraps the reading
-    half and the checkbox sits beside it, never inside it. */
+/** One volume. The whole row is a link to the work EXCEPT the two watching
+    marks, which are interactive controls of their own - so the anchor wraps the
+    reading half and they sit beside it, never inside it.
+
+    A SKIPPED entry is still listed here in its own place: this is the series'
+    own listing, so hiding a volume from it would misreport the series. The
+    skip only takes anything out of the watching page. */
 function EntryRow({
   entry,
   now,
   owned,
+  skipped,
   onOwned,
+  onSkipped,
 }: {
   entry: SeriesEntry
   now: string
   owned: boolean | null
+  skipped: boolean
   onOwned: (owned: boolean) => void
+  onSkipped: (skipped: boolean) => void
 }) {
   const work = entry.work
   // `owned === null` is "not watching", which is the one condition deciding
@@ -140,7 +149,12 @@ function EntryRow({
           </svg>
         )}
       </a>
-      {marking ? <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} /> : null}
+      {marking ? (
+        <span className="flex shrink-0 items-center gap-2">
+          <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
+          <SkipButton title={work.title} skipped={skipped} onChange={onSkipped} />
+        </span>
+      ) : null}
     </li>
   )
 }
@@ -150,7 +164,9 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
   const watchlist = useWatchlist()
   const { store, save } = watchlist
   const watching = isWatched(store, series.id)
-  const owned = new Set(watchedSeries(store, series.id)?.owned ?? [])
+  const watched = watchedSeries(store, series.id)
+  const owned = new Set(watched?.owned ?? [])
+  const skipped = new Set(watched?.skipped ?? [])
   // Counted against the entries this page LISTS, not against everything the
   // store remembers: a mark survives a work leaving the series (and a `?limit`
   // window shows a page), so `owned.size` alone can read "12 of 10".
@@ -211,7 +227,9 @@ function Loaded({ series, hydrated }: { series: Series; hydrated: boolean }) {
                 entry={entry}
                 now={now}
                 owned={watching ? owned.has(entry.work.id) : null}
+                skipped={skipped.has(entry.work.id)}
                 onOwned={(next) => save(setOwned(store, series.id, entry.work.id, next))}
+                onSkipped={(next) => save(setSkipped(store, series.id, entry.work.id, next))}
               />
             ))}
           </ol>
