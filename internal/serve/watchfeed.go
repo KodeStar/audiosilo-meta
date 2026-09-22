@@ -22,10 +22,11 @@ const (
 	maxWatchFeedItems  = 200
 	watchFeedMaxAge    = "public, max-age=3600"
 	watchFeedTitle     = "AudioSilo Meta: new in your series"
-	// watchTagPrefix is the one spelling of this project's tag: URI authority.
+	// watchAuthority is the one spelling of this project's tag: URI authority.
 	// The feed's own id, every item id and the iCalendar UID derived from one
 	// are all built from it, so they cannot drift apart.
-	watchTagPrefix = "tag:meta.audiosilo.app,2026:"
+	watchAuthority = "meta.audiosilo.app"
+	watchTagPrefix = "tag:" + watchAuthority + ",2026:"
 )
 
 type watchFeedItem struct {
@@ -38,11 +39,10 @@ type watchFeedItem struct {
 	updated  time.Time
 	series   string
 	position string
-	// release is the release date the catalogue STATES, at its own precision,
-	// and is empty for an item that states none. Only the calendar rendering
-	// reads it: an all-day event needs a date, where Atom and JSON date an
-	// undated item by when the catalogue learned of it.
-	release string
+	// dated reports whether the catalogue STATES a usable release date. Only
+	// the calendar rendering reads it: an all-day event needs a date, where
+	// Atom and JSON date an undated item by when the catalogue learned of it.
+	dated bool
 }
 
 type watchFeed struct {
@@ -293,7 +293,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 	if card == nil {
 		return watchFeedItem{}, false
 	}
-	var state, stateID, summary, stated string
+	var state, stateID, summary string
 	var updated time.Time
 	var release time.Time
 	var dated bool
@@ -303,7 +303,6 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 	switch {
 	case dated:
 		updated = release
-		stated = card.ReleaseDate
 		switch {
 		case releaseIsFuture(card.ReleaseDate, now):
 			state, stateID = "preorder", "preorder"
@@ -348,14 +347,16 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		state: state,
 		// Config.SiteURL is stripped of its trailing slash once, in New, and
 		// workPath is the one spelling of the work prefix - as on every other
-		// absolute work URL this package builds.
+		// absolute work URL this package builds. site/src/lib/watch-badge.ts
+		// (workIDsFromFeed) reads the work slug back out of this URL's path, so
+		// the /works/<slug> shape is a hand-mirrored twin.
 		link:     siteURL + workPath + url.PathEscape(card.ID),
 		authors:  authors,
 		summary:  summary,
 		updated:  updated.UTC(),
 		series:   seriesName,
 		position: entry.Position,
-		release:  stated,
+		dated:    dated,
 	}, true
 }
 
@@ -647,7 +648,7 @@ func renderICalendar(feed watchFeed) ([]byte, error) {
 		"URL:"+feed.self,
 	)
 	for _, item := range feed.items {
-		if item.release == "" {
+		if !item.dated {
 			continue
 		}
 		lines = append(lines,
@@ -656,7 +657,7 @@ func renderICalendar(feed watchFeed) ([]byte, error) {
 			// that id in the mail-address form calendars expect. It carries the
 			// preorder/released suffix with it, which is what makes a preorder
 			// becoming a release a NEW event rather than a moved one.
-			"UID:"+strings.TrimPrefix(item.id, watchTagPrefix)+"@meta.audiosilo.app",
+			"UID:"+strings.TrimPrefix(item.id, watchTagPrefix)+"@"+watchAuthority,
 			"DTSTAMP:"+icsStamp(item.updated),
 			// An all-day event is DTSTART inclusive, DTEND exclusive.
 			"DTSTART;VALUE=DATE:"+icsDate(item.updated),

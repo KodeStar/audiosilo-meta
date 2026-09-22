@@ -13,18 +13,29 @@ const { hasHero = false } = Astro.props
 const GITHUB = 'https://github.com/kodestar/audiosilo-meta'
 const DISCORD = 'https://discord.gg/nFFqRbkRn6'
 
-const nav = [
-  { label: 'Watching', href: '/watching', external: false },
-  { label: 'Import', href: '/import', external: false },
-  { label: 'Contribute', href: '/contribute', external: false },
-  { label: 'API', href: '/docs/api', external: false },
-  {
-    label: 'Docs',
-    href: 'https://github.com/kodestar/audiosilo-meta#readme',
-    external: true,
-  },
+interface NavItem {
+  label: string
+  href: string
+  external?: boolean
+  /** Carries the "Watching" count pill (see the script below). On the DATA, so
+      the two nav loops render it by asking the item rather than by each
+      re-testing the href. */
+  badge?: boolean
+}
+
+const nav: NavItem[] = [
+  { label: 'Watching', href: '/watching', badge: true },
+  { label: 'Import', href: '/import' },
+  { label: 'Contribute', href: '/contribute' },
+  { label: 'API', href: '/docs/api' },
+  { label: 'Docs', href: 'https://github.com/kodestar/audiosilo-meta#readme', external: true },
   { label: 'audiosilo.app', href: 'https://audiosilo.app', external: true },
 ]
+
+/** The badge pill's one spelling, worn by the desktop nav and the mobile menu
+    alike. */
+const WATCH_BADGE_CLASS =
+  'ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white'
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-transparent" data-scrolled="false">
@@ -56,13 +67,8 @@ const nav = [
             {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
           >
             {item.label}
-            {item.href === '/watching' && (
-              <span
-                data-watch-badge
-                hidden
-                aria-label="new releases"
-                class="ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white"
-              />
+            {item.badge && (
+              <span data-watch-badge hidden aria-label="new releases" class={WATCH_BADGE_CLASS} />
             )}
           </a>
         ))
@@ -107,13 +113,8 @@ const nav = [
               {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
             >
               {item.label}
-              {item.href === '/watching' && (
-                <span
-                  data-watch-badge
-                  hidden
-                  aria-label="new releases"
-                  class="ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white"
-                />
+              {item.badge && (
+                <span data-watch-badge hidden aria-label="new releases" class={WATCH_BADGE_CLASS} />
               )}
             </a>
           ))
@@ -154,16 +155,22 @@ const nav = [
 </style>
 
 <script>
-  import { WATCHLIST_CHANGED_EVENT, readWatchlist } from '../lib/watchlist'
   import {
+    WATCHLIST_CHANGED_EVENT,
+    WATCHLIST_STORAGE_KEY,
+    readWatchlist,
+    type Watchlist,
+  } from '../lib/watchlist'
+  import {
+    WATCH_BADGE_STORAGE_KEY,
     badgeCount,
     badgeSlugKey,
+    fetchWatchFeedWorkIDs,
     isBadgeFresh,
     readBadgeCache,
-    workIDsFromFeed,
     writeBadgeCache,
+    type BadgeCache,
   } from '../lib/watch-badge'
-  import { buildFeedURLs } from '../lib/feed-url'
 
   const header = document.querySelector<HTMLElement>('.site-header')
   if (header) {
@@ -185,33 +192,19 @@ const nav = [
   }
 
   // The "Watching" count pill: how many feed items the reader has not dealt
-  // with, on every page. DOM glue only - every rule lives in lib/watch-badge.ts,
-  // which is pure and tested, and nothing here loads React.
-  //
-  // WHY THE CACHE HOLDS WORK IDS RATHER THAN A COUNT (see that file's header):
-  // with the ids in hand the number is a pure function of the cache and the
-  // LIVE watchlist, so marking a book seen, owned or skipped repaints the badge
-  // at once - no refetch, and no stale count sitting there for an hour.
-  //
-  // CADENCE: at most one fetch an hour (WATCH_BADGE_TTL_MS), which is also the
-  // watch feed's own public cache lifetime, so a tighter loop would mostly
-  // re-read a CDN copy of what we already have. Composing the count the way
-  // /watching does - one series request per watched series - would turn every
-  // docs page into thirty API calls.
-  //
-  // PRIVACY: the request is the reader's own stateless feed URL, carrying
-  // exactly the series slugs buildFeedURLs would put in a subscription link and
-  // nothing else. There is no account and no server-side subscription.
-  //
-  // LIMITATION: the feed's window is 90 days, so a never-seen work catalogued
-  // before that shows on /watching and not here. The badge is the cheap "is
-  // there anything new lately" number; the page is the complete answer.
+  // with, on every page. DOM glue only - the cadence, the cache's shape, the
+  // privacy posture and the 90-day window are all stated in lib/watch-badge.ts's
+  // header, which is where the rules live and where they are tested. Nothing
+  // here loads React.
   const badges = document.querySelectorAll<HTMLElement>('[data-watch-badge]')
   if (badges.length > 0) {
-    const paint = () => {
-      const store = readWatchlist()
-      const key = badgeSlugKey(store)
-      const cache = readBadgeCache()
+    // Each pass reads the watchlist, its key and the cache ONCE and threads
+    // them, so paint and refresh cannot disagree about what is stored.
+    const paint = (
+      store: Watchlist = readWatchlist(),
+      key: string = badgeSlugKey(store),
+      cache: BadgeCache | null = readBadgeCache()
+    ) => {
       const count = cache && cache.slugKey === key ? badgeCount(cache.works, store) : 0
       badges.forEach((badge) => {
         badge.textContent = count > 99 ? '99+' : String(count)
@@ -222,28 +215,31 @@ const nav = [
     const refresh = async () => {
       const store = readWatchlist()
       const key = badgeSlugKey(store)
-      // Nothing watched, or a cache still inside its hour: no request at all.
-      if (key === '' || isBadgeFresh(readBadgeCache(), key, Date.now())) {
-        paint()
+      const cache = readBadgeCache()
+      // Nothing watched, or a cache still inside its hour: no request at all,
+      // and no feed-url module to load either.
+      if (key === '' || isBadgeFresh(cache, key, Date.now())) {
+        paint(store, key, cache)
         return
       }
+      let fresh: BadgeCache | null = cache
       try {
+        const { buildFeedURLs } = await import('../lib/feed-url')
         const urls = await buildFeedURLs(store)
-        const res = await fetch(urls.json, { headers: { accept: 'application/feed+json' } })
-        if (!res.ok) throw new Error(`watch feed: ${res.status}`)
-        writeBadgeCache({
+        fresh = {
           version: 1,
           slugKey: key,
           fetchedAt: Date.now(),
-          works: workIDsFromFeed(await res.json()),
-        })
+          works: await fetchWatchFeedWorkIDs(urls.json),
+        }
+        writeBadgeCache(fresh)
       } catch {
         // Every failure degrades to "no new badge": offline, a mock API with no
         // feed route, more than 200 series (buildFeedURLs refuses), or a
         // browser without CompressionStream for a long list. The previous
         // cache, if any, still paints below.
       } finally {
-        paint()
+        paint(store, key, fresh)
       }
     }
 
@@ -252,8 +248,18 @@ const nav = [
     paint()
     void refresh()
     // A mark made in an island of this tab (use-watchlist.ts dispatches it)...
-    window.addEventListener(WATCHLIST_CHANGED_EVENT, paint)
-    // ...and one made in another tab, which is what `storage` is for.
-    window.addEventListener('storage', paint)
+    window.addEventListener(WATCHLIST_CHANGED_EVENT, () => paint())
+    // ...and one made in another tab, which is what `storage` is for - but only
+    // for the two keys this badge is a function of (a null key is a whole-origin
+    // clear).
+    window.addEventListener('storage', (e) => {
+      if (
+        e.key === null ||
+        e.key === WATCHLIST_STORAGE_KEY ||
+        e.key === WATCH_BADGE_STORAGE_KEY
+      ) {
+        paint()
+      }
+    })
   }
 </script>

@@ -82,7 +82,7 @@ function byNameThenPosition(a: FlatEntry, b: FlatEntry): number {
 }
 
 /**
- * Preorders, soonest first.
+ * The one date comparator, in whichever direction the caller wants.
  *
  * Dates compare as PLAIN STRINGS. The catalogue states a release date at
  * whatever precision its source gave (`YYYY`, `YYYY-MM` or `YYYY-MM-DD`), and
@@ -91,31 +91,30 @@ function byNameThenPosition(a: FlatEntry, b: FlatEntry): number {
  * internal/serve/store.go). Parsing would drag the reader's timezone into a
  * fact that has none, exactly as lib/dates.ts says.
  *
- * Every preorder has a date by construction (an entry with none is classified
- * `available`, not `preorder`), so there is no missing-date arm here.
+ * An entry with NO date sorts LAST in BOTH directions: most of them are old
+ * books nobody recorded a date for, so treating an absent date as infinitely
+ * old would be a guess and floating it to the top would bury the releases the
+ * list exists to surface.
  */
-export function comparePreorder(a: FlatEntry, b: FlatEntry): number {
-  const da = a.entry.work.release_date ?? ''
-  const db = b.entry.work.release_date ?? ''
-  if (da !== db) return da < db ? -1 : 1
-  return byNameThenPosition(a, b)
-}
-
-/**
- * Available entries, newest first - the reverse of the above, because what a
- * reader wants at the top of "out now" is what just came out.
- *
- * An entry with NO date sorts LAST whatever the direction: most of them are old
- * books nobody recorded a date for, and treating an absent date as an infinitely
- * old one would be a guess, while letting it float to the top would bury the
- * releases the list exists to surface.
- */
-export function compareAvailable(a: FlatEntry, b: FlatEntry): number {
+function byDate(a: FlatEntry, b: FlatEntry, newestFirst: boolean): number {
   const da = a.entry.work.release_date ?? ''
   const db = b.entry.work.release_date ?? ''
   if (!da !== !db) return da ? -1 : 1
-  if (da !== db) return da < db ? 1 : -1
+  if (da !== db) return (da < db) === newestFirst ? 1 : -1
   return byNameThenPosition(a, b)
+}
+
+/** Preorders, soonest first. Every preorder has a date by construction (an
+    entry with none is classified `available`), so the missing-date arm above
+    never fires here. */
+export function comparePreorder(a: FlatEntry, b: FlatEntry): number {
+  return byDate(a, b, false)
+}
+
+/** Available entries, newest first - what a reader wants at the top of "out
+    now" is what just came out. */
+export function compareAvailable(a: FlatEntry, b: FlatEntry): number {
+  return byDate(a, b, true)
 }
 
 /**

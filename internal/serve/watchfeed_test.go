@@ -421,7 +421,7 @@ func TestICalendarSkipsUndatedItems(t *testing.T) {
 			{
 				id: watchTagPrefix + "work/dated/released", title: "Series #1: Dated",
 				state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/dated",
-				updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), release: "2026-10-20",
+				updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), dated: true,
 			},
 			{
 				id: watchTagPrefix + "work/undated/released", title: "Series #2: Undated",
@@ -526,7 +526,7 @@ func TestICSFoldAndEscape(t *testing.T) {
 		items: []watchFeedItem{{
 			id: watchTagPrefix + "work/w/released", title: strings.Repeat("Long Title ", 20),
 			state: "released", summary: "Released 20 Oct 2026", link: testSiteURL + "/works/w",
-			updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), release: "2026-10-20",
+			updated: time.Date(2026, 10, 20, 0, 0, 0, 0, time.UTC), dated: true,
 		}},
 	})
 	if err != nil {

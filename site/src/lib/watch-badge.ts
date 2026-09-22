@@ -24,7 +24,9 @@
 // Everything except the DOM glue and the fetch itself lives here, pure and
 // tested, on the precedent of lib/watchlist.ts.
 
-import { visibleSeries, type Watchlist } from './watchlist'
+import { entitySlugFromLocation } from './entity-url'
+import { watchedSlugs } from './feed-url'
+import { stringList, type Watchlist } from './watchlist'
 
 /** The one localStorage key for the badge's cache. Namespaced, and separate
     from the watchlist's: this is derived data with a TTL, and losing it costs a
@@ -49,16 +51,13 @@ export interface BadgeCache {
 
 const BADGE_VERSION = 1
 
-/** Which series the cache belongs to: every VISIBLE series' slug, sorted and
-    comma-joined ('' when none). The same set, in the same order, that
-    buildFeedURLs puts in the feed URL - a hidden series is not in the feed, so
-    it must not be in the key either, or hiding one would look like a changed
-    watchlist forever. */
+/** Which series the cache belongs to: the feed URL's own series list, joined
+    ('' when none). BY CONSTRUCTION the same set in the same order, because it
+    is literally what buildFeedURLs reads (lib/feed-url.ts watchedSlugs) - a
+    hidden series is not in the feed, so it must not be in the key either, or
+    hiding one would look like a changed watchlist forever. */
 export function badgeSlugKey(store: Watchlist): string {
-  return visibleSeries(store)
-    .map((row) => row.slug)
-    .sort()
-    .join(',')
+  return watchedSlugs(store).join(',')
 }
 
 /** Parse a stored cache, tolerating anything - a truncated write, a shape from
@@ -79,9 +78,12 @@ export function parseBadgeCache(text: string | null | undefined): BadgeCache | n
   if (typeof raw.slugKey !== 'string') return null
   if (typeof raw.fetchedAt !== 'number' || !Number.isFinite(raw.fetchedAt)) return null
   if (!Array.isArray(raw.works)) return null
-  const works: string[] = []
-  for (const work of raw.works) if (typeof work === 'string' && work) works.push(work)
-  return { version: BADGE_VERSION, slugKey: raw.slugKey, fetchedAt: raw.fetchedAt, works }
+  return {
+    version: BADGE_VERSION,
+    slugKey: raw.slugKey,
+    fetchedAt: raw.fetchedAt,
+    works: stringList(raw.works),
+  }
 }
 
 /** The stored cache, or null. Every storage failure - private mode, blocked
@@ -124,11 +126,6 @@ export function isBadgeFresh(
   return age >= 0 && age < WATCH_BADGE_TTL_MS
 }
 
-/** `<siteURL>/works/<slug>` - the item URL every watch-feed entry carries
-    (internal/serve/watchfeed.go). Slugs are `[a-z0-9-]`, so the last path
-    segment after `/works/` IS the work id. */
-const WORK_PATH = /\/works\/([^/]+)\/?$/
-
 /**
  * The work slugs a JSON Feed 1.1 document names, distinct and in feed order.
  *
@@ -153,22 +150,27 @@ export function workIDsFromFeed(feed: unknown): string[] {
     if (!item || typeof item !== 'object' || Array.isArray(item)) continue
     const url = (item as Record<string, unknown>).url
     if (typeof url !== 'string') continue
-    const match = WORK_PATH.exec(url)
-    if (!match) continue
-    let slug = match[1]
-    // A percent-encoded segment is the same work as its plain spelling; a
-    // malformed escape is not decodable and is taken as written rather than
-    // dropped.
-    try {
-      slug = decodeURIComponent(slug)
-    } catch {
-      /* not valid percent-encoding - use the raw segment */
-    }
+    const slug = workSlugFromURL(url)
     if (!slug || seen.has(slug)) continue
     seen.add(slug)
     out.push(slug)
   }
   return out
+}
+
+/** The work slug an item URL names, or null. The item URL is
+    `<siteURL>/works/<slug>` (internal/serve/watchfeed.go), so the path is read
+    by the islands' own `/works/{slug}` rule rather than a second regex - and
+    the base only settles a relative value, since the feed always states an
+    absolute one. A URL this cannot parse is skipped. */
+function workSlugFromURL(url: string): string | null {
+  let parsed: URL
+  try {
+    parsed = new URL(url, 'https://meta.audiosilo.app/')
+  } catch {
+    return null
+  }
+  return entitySlugFromLocation(parsed.pathname, parsed.search, 'work')
 }
 
 /**
@@ -192,4 +194,22 @@ export function badgeCount(works: readonly string[], store: Watchlist): number {
   let count = 0
   for (const work of works) if (!marked.has(work)) count += 1
   return count
+}
+
+/**
+ * Fetch one watch JSON feed and read the work slugs out of it. The header's
+ * badge script calls this rather than holding a fetch of its own: network calls
+ * live in lib/ (the rule lib/api.ts states), so an inline `fetch` in an Astro
+ * <script> would be the one copy nothing tests.
+ *
+ * Throws on a non-2xx response; the caller decides whether a failed refresh is
+ * worth telling anybody about (it is not - the badge keeps its cached count).
+ */
+export async function fetchWatchFeedWorkIDs(
+  url: string,
+  fetchImpl: typeof fetch = fetch
+): Promise<string[]> {
+  const res = await fetchImpl(url, { headers: { accept: 'application/feed+json' } })
+  if (!res.ok) throw new Error(`watch feed: HTTP ${res.status}`)
+  return workIDsFromFeed(await res.json())
 }

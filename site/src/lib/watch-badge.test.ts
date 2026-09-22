@@ -4,6 +4,7 @@ import {
   WATCH_BADGE_TTL_MS,
   badgeCount,
   badgeSlugKey,
+  fetchWatchFeedWorkIDs,
   isBadgeFresh,
   parseBadgeCache,
   readBadgeCache,
@@ -11,6 +12,7 @@ import {
   writeBadgeCache,
   type BadgeCache,
 } from './watch-badge'
+import { stubStorage } from './test-support'
 import {
   emptyWatchlist,
   hide,
@@ -23,22 +25,6 @@ import {
 
 const TODAY = '2026-09-21'
 const NOW = 1_758_000_000_000
-
-// A minimal in-memory localStorage, as watchlist.test.ts stubs one.
-function stubStorage(opts: { throws?: boolean } = {}) {
-  const map = new Map<string, string>()
-  vi.stubGlobal('localStorage', {
-    getItem: (k: string) => {
-      if (opts.throws) throw new Error('blocked')
-      return map.get(k) ?? null
-    },
-    setItem: (k: string, v: string) => {
-      if (opts.throws) throw new Error('blocked')
-      map.set(k, v)
-    },
-  })
-  return map
-}
 
 afterEach(() => {
   vi.unstubAllGlobals()
@@ -73,7 +59,7 @@ describe('workIDsFromFeed', () => {
       workIDsFromFeed(
         feed([
           'https://meta.audiosilo.app/works/killing-floor',
-          'https://meta.audiosilo.app/works/die-trying/',
+          'https://meta.audiosilo.app/works/die-trying',
           'https://meta.audiosilo.app/works/killing-floor', // the preorder/released pair
         ])
       )
@@ -88,6 +74,11 @@ describe('workIDsFromFeed', () => {
         feed([
           'https://meta.audiosilo.app/series/jack-reacher',
           'https://meta.audiosilo.app/works/',
+          // The shared `/works/{slug}` reader (lib/entity-url.ts) matches the
+          // path EXACTLY, so a trailing slash is not a work page. The feed
+          // never writes one (internal/serve/watchfeed.go).
+          'https://meta.audiosilo.app/works/die-trying/',
+          'https://meta.audiosilo.app/works/killing-floor/recap',
           'not a url at all',
           42,
           null,
@@ -193,5 +184,34 @@ describe('storage helpers', () => {
     vi.stubGlobal('localStorage', undefined)
     expect(readBadgeCache()).toBeNull()
     expect(() => writeBadgeCache(cache())).not.toThrow()
+  })
+})
+
+describe('fetchWatchFeedWorkIDs', () => {
+  it('asks for a JSON feed and returns the work slugs', async () => {
+    const calls: [string, RequestInit | undefined][] = []
+    const stub = (async (url: string, init?: RequestInit) => {
+      calls.push([url, init])
+      return {
+        ok: true,
+        status: 200,
+        json: async () => feed(['https://meta.audiosilo.app/works/killing-floor']),
+      }
+    }) as unknown as typeof fetch
+    await expect(fetchWatchFeedWorkIDs('https://x/api/v1/watch/feed.json?s=a', stub)).resolves.toEqual([
+      'killing-floor',
+    ])
+    expect(calls).toHaveLength(1)
+    expect(calls[0][0]).toBe('https://x/api/v1/watch/feed.json?s=a')
+    expect(calls[0][1]?.headers).toEqual({ accept: 'application/feed+json' })
+  })
+
+  it('throws on a non-ok response', async () => {
+    const stub = (async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({}),
+    })) as unknown as typeof fetch
+    await expect(fetchWatchFeedWorkIDs('https://x/feed.json', stub)).rejects.toThrow('503')
   })
 })

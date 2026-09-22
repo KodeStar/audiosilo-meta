@@ -1,4 +1,5 @@
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
+import { useHashTab } from '../use-hash-tab'
 import {
   getWork,
   getSeries,
@@ -664,32 +665,15 @@ function Loaded({ work, hydrated }: { work: Work; hydrated: boolean }) {
   const hasRecaps = recapRows.length > 0
   const showTabs = hasCharacters || hasRecaps
 
-  // Initialise the tab from the URL hash so a deep link like #story-so-far opens
-  // on the right tab from the first frame - this island is client:only, so window
-  // is available at first render and there is no SSR pass to agree with. Falls
-  // back to General when this work lacks that sidecar.
-  const [tab, setTab] = useState<WorkTab>(() => tabFromHash(window.location.hash, { hasCharacters, hasRecaps }))
-
-  // Canonicalise a stale fragment once on mount: a deep link like #story-so-far
-  // onto a work with no recaps fell back to General above, so drop the fragment
-  // the fallback ignored (copying the URL onward would mislead). selectTab keeps
-  // the hash in step from here on.
-  useEffect(() => {
-    const canonical = hashForTab(tab)
-    if (window.location.hash !== canonical) {
-      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${canonical}`)
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Switching a tab reflects the choice into the hash (no scroll jump, no history
-  // spam) so it rides along when the reader flips to another work in the series;
-  // General clears the fragment entirely.
-  const selectTab = useCallback((next: WorkTab) => {
-    setTab(next)
-    const hash = hashForTab(next)
-    const url = `${window.location.pathname}${window.location.search}${hash}`
-    window.history.replaceState(null, '', url)
-  }, [])
+  // The tab is the URL hash (components/use-hash-tab.ts): a deep link like
+  // #story-so-far opens on the right tab from the first frame, a fragment this
+  // work has no sidecar for falls back to General and is then dropped, and
+  // switching a tab reflects the choice back into the hash so it rides along
+  // when the reader flips to another work in the series.
+  const [tab, selectTab] = useHashTab<WorkTab>(
+    (hash) => tabFromHash(hash, { hasCharacters, hasRecaps }),
+    hashForTab
+  )
 
   const tabHash = hashForTab(tab)
 

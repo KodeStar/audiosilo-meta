@@ -20,14 +20,19 @@
 // per tab: they run whichever tab is showing, so flipping tabs never re-fetches
 // a series and never re-badges one as new.
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { getSeries, href, today, type Series, type SeriesEntry } from '../../lib/api'
 import { downloadJson } from '../../lib/download'
 import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
 import { NOTIFY_INTRO_NOTES, NOTIFY_OPTIONS, notifyDocHref } from '../../lib/notify-options'
 import { runPool, SERIES_POOL } from '../../lib/resolve-books'
 import { flattenAcrossSeries, type FlatEntry } from '../../lib/watch-flat'
-import { hashForWatchTab, watchTabFromHash, type WatchTab } from '../../lib/watchnav'
+import {
+  WATCH_TABS,
+  hashForWatchTab,
+  watchTabFromHash,
+  type WatchTab,
+} from '../../lib/watchnav'
 import {
   classify,
   exportJSON,
@@ -47,6 +52,7 @@ import {
   type Watchlist,
   type WatchlistRow,
 } from '../../lib/watchlist'
+import { useHashTab } from '../use-hash-tab'
 import { Badge, BTN_SECONDARY, Icon, TabButton, TEXT_LINK } from '../ui'
 import { NewPill, OwnCheckbox, ReleaseLine, SkipButton } from './entry-ui'
 import LibraryImport from './LibraryImport'
@@ -75,6 +81,15 @@ function missing(result: SeriesClassification): ClassifiedEntry[] {
   return [...result.available, ...result.preorder]
 }
 
+/** What each tab is called. Keyed by WATCH_TABS' own ids, so a tab added there
+    is a compile error here until it has a label. */
+const TAB_LABELS: Record<WatchTab, string> = {
+  available: 'Available',
+  all: 'All',
+  notify: 'Get notified',
+  import: 'Import & backup',
+}
+
 export default function WatchingPage() {
   const watchlist = useWatchlist()
   const { store, save } = watchlist
@@ -93,46 +108,10 @@ export default function WatchingPage() {
   const hiddenRows = hiddenSeries(store)
   const now = today()
 
-  // Initialise the tab from the URL hash: this island is client:only, so window
-  // is available at first render and there is no SSR pass to agree with (the
-  // same reasoning as the work page's tab bar).
-  const [tab, setTab] = useState<WatchTab>(() => watchTabFromHash(window.location.hash))
-
-  // Canonicalise a stale fragment once on mount - an old bookmark or a heading
-  // anchor someone linked falls back to Available above, so drop the fragment
-  // the fallback ignored rather than let it be copied onward.
-  useEffect(() => {
-    const canonical = hashForWatchTab(tab)
-    if (window.location.hash !== canonical) {
-      window.history.replaceState(
-        null,
-        '',
-        `${window.location.pathname}${window.location.search}${canonical}`
-      )
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const selectTab = useCallback((next: WatchTab) => {
-    setTab(next)
-    const hash = hashForWatchTab(next)
-    window.history.replaceState(
-      null,
-      '',
-      `${window.location.pathname}${window.location.search}${hash}`
-    )
-  }, [])
-
-  // A DELIBERATE deviation from the work page, which canonicalises the hash on
-  // mount and then owns it outright. /docs/notifications links back here as
-  // /watching#notify, and a reader already on the page would otherwise watch
-  // the fragment change while nothing moved; back and forward over the tabs is
-  // the same event. replaceState (above) fires no hashchange, so selecting a
-  // tab cannot loop through this.
-  useEffect(() => {
-    const onHashChange = () => setTab(watchTabFromHash(window.location.hash))
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
-  }, [])
+  // The tab is the URL hash (components/use-hash-tab.ts), which also picks up
+  // /docs/notifications linking back here as /watching#notify while the reader
+  // is already on the page.
+  const [tab, selectTab] = useHashTab<WatchTab>(watchTabFromHash, hashForWatchTab)
 
   // Fetch every watched series once. A slug already requested is never asked
   // for again, so unwatching one does not re-fetch the rest, and the controller
@@ -184,14 +163,21 @@ export default function WatchingPage() {
     if (nextStore !== store) save(nextStore)
   }, [details, store, seenAtLoad, save])
 
-  const classified = visible.map((row): { row: WatchlistRow; panel: PanelState } => {
-    const state = details[row.slug]
-    if (state?.status !== 'ready') return { row, panel: { status: state?.status ?? 'loading' } }
-    // Live ownership, snapshotted seen - see seenAtLoad above.
-    const entry = watchedSeries(store, row.slug)
-    const forBadges = entry ? { ...entry, seen: seenAtLoad[row.slug] ?? entry.seen } : undefined
-    return { row, panel: { status: 'ready', result: classify(state.data.works, forBadges, now) } }
-  })
+  // Classifying is a pass over every watched series' entries, and the tab bar
+  // re-renders the page on every click, so it is memoised on exactly what it
+  // reads.
+  const classified = useMemo(
+    () =>
+      visibleSeries(store).map((row): { row: WatchlistRow; panel: PanelState } => {
+        const state = details[row.slug]
+        if (state?.status !== 'ready') return { row, panel: { status: state?.status ?? 'loading' } }
+        // Live ownership, snapshotted seen - see seenAtLoad above.
+        const entry = watchedSeries(store, row.slug)
+        const forBadges = entry ? { ...entry, seen: seenAtLoad[row.slug] ?? entry.seen } : undefined
+        return { row, panel: { status: 'ready', result: classify(state.data.works, forBadges, now) } }
+      }),
+    [store, details, seenAtLoad, now]
+  )
 
   // "New" counts every entry the reader has not been shown before, preorders
   // included - an announced next volume is news. "Preorders" counts all of
@@ -208,13 +194,24 @@ export default function WatchingPage() {
   )
 
   // The flat view's input: every READY panel, in the shape lib/watch-flat.ts
-  // reads. Sorting is its job, not this file's.
-  const readyPanels = classified.flatMap(({ row, panel }) =>
-    panel.status === 'ready' ? [{ slug: row.slug, name: row.name, result: panel.result }] : []
-  )
-  const flat = flattenAcrossSeries(readyPanels)
-  const stillLoading = classified.filter(({ panel }) => panel.status === 'loading').length
-  const unreadable = classified.filter(({ panel }) => panel.status === 'error').length
+  // reads. Sorting is its job, not this file's. The two counts below ride along
+  // in the same pass - they are only ever read as numbers.
+  const { readyPanels, flat, stillLoading, unreadable } = useMemo(() => {
+    const panels: { slug: string; name: string; result: SeriesClassification }[] = []
+    let loading = 0
+    let errored = 0
+    for (const { row, panel } of classified) {
+      if (panel.status === 'ready') panels.push({ slug: row.slug, name: row.name, result: panel.result })
+      else if (panel.status === 'error') errored += 1
+      else loading += 1
+    }
+    return {
+      readyPanels: panels,
+      flat: flattenAcrossSeries(panels),
+      stillLoading: loading,
+      unreadable: errored,
+    }
+  }, [classified])
 
   const markOwnedIn = (slug: string, workID: string, owned: boolean) =>
     save(setOwned(store, slug, workID, owned))
@@ -242,6 +239,16 @@ export default function WatchingPage() {
   const watching = visible.length > 0
   const readyCount = flat.preorder.length + flat.available.length
 
+  // The number beside a tab's label, where it has one. `undefined` is "no
+  // count": Available has none until a series has actually loaded, and the two
+  // static tabs never do.
+  const tabCounts: Record<WatchTab, number | undefined> = {
+    available: readyPanels.length > 0 ? readyCount : undefined,
+    all: watching ? visible.length : undefined,
+    notify: undefined,
+    import: undefined,
+  }
+
   return (
     <div className="space-y-8">
       {watching ? (
@@ -255,87 +262,73 @@ export default function WatchingPage() {
 
       {/* The bar shows even with an empty watchlist: Import & backup is how a
           reader with an export in hand starts, and hiding it would hide the
-          quickest way in. */}
+          quickest way in. The bar is BUILT from WATCH_TABS, so the tab set, the
+          hash rule and the order a reader sees are one list. */}
       <div
         role="tablist"
         aria-label="Watching sections"
         className="flex flex-wrap gap-x-6 border-b border-edge"
       >
-        <TabButton
-          active={tab === 'available'}
-          onClick={() => selectTab('available')}
-          label="Available"
-          count={readyPanels.length > 0 ? readyCount : undefined}
-          id="tab-available"
-          controls="panel-available"
-        />
-        <TabButton
-          active={tab === 'all'}
-          onClick={() => selectTab('all')}
-          label="All"
-          count={watching ? visible.length : undefined}
-          id="tab-all"
-          controls="panel-all"
-        />
-        <TabButton
-          active={tab === 'notify'}
-          onClick={() => selectTab('notify')}
-          label="Get notified"
-          id="tab-notify"
-          controls="panel-notify"
-        />
-        <TabButton
-          active={tab === 'import'}
-          onClick={() => selectTab('import')}
-          label="Import & backup"
-          id="tab-import"
-          controls="panel-import"
-        />
+        {WATCH_TABS.map((id) => (
+          <TabButton
+            key={id}
+            active={tab === id}
+            onClick={() => selectTab(id)}
+            label={TAB_LABELS[id]}
+            count={tabCounts[id]}
+            id={`tab-${id}`}
+            controls={`panel-${id}`}
+          />
+        ))}
       </div>
 
-      {tab === 'available' ? (
-        <div role="tabpanel" id="panel-available" aria-labelledby="tab-available">
-          {!watching ? (
-            <EmptyState onImport={() => selectTab('import')} />
-          ) : (
-            <div className="space-y-6">
-              {flat.preorder.some((e) => e.isNew) || flat.available.some((e) => e.isNew) ? (
-                <p className="text-sm">
-                  <button type="button" onClick={markEverythingSeen} className={TEXT_LINK}>
-                    Mark all seen
-                  </button>
-                </p>
-              ) : null}
-              <FlatGroup
-                heading="Preorders"
-                entries={flat.preorder}
-                now={now}
-                onOwned={markOwnedIn}
-                onSkipped={markSkippedIn}
-              />
-              <FlatGroup
-                heading="Available"
-                entries={flat.available}
-                now={now}
-                onOwned={markOwnedIn}
-                onSkipped={markSkippedIn}
-              />
-              {readyCount === 0 && stillLoading === 0 ? (
-                <p className="text-sm text-dim">You have every released entry.</p>
-              ) : null}
-              <LoadNote loading={stillLoading} errored={unreadable} />
-            </div>
-          )}
-        </div>
-      ) : null}
+      {/* ONE panel, whose id and label follow the active tab - a hidden panel
+          is not in the document at all, so four of them would only be four
+          ways to spell the same pair of attributes. */}
+      <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
+        {renderTab()}
+      </div>
+    </div>
+  )
 
-      {tab === 'all' ? (
-        <div role="tabpanel" id="panel-all" aria-labelledby="tab-all" className="space-y-6">
-          {!watching ? (
-            <EmptyState onImport={() => selectTab('import')} />
-          ) : (
-            <>
-              {classified.map(({ row, panel }) => (
+  function renderTab() {
+    switch (tab) {
+      case 'available':
+        return !watching ? (
+          <EmptyState onImport={() => selectTab('import')} />
+        ) : (
+          <div className="space-y-6">
+            {flat.preorder.some((e) => e.isNew) || flat.available.some((e) => e.isNew) ? (
+              <p className="text-sm">
+                <button type="button" onClick={markEverythingSeen} className={TEXT_LINK}>
+                  Mark all seen
+                </button>
+              </p>
+            ) : null}
+            <EntryGroup
+              heading="Preorders"
+              className=""
+              rows={flatRows(flat.preorder, now, markOwnedIn, markSkippedIn)}
+            />
+            <EntryGroup
+              heading="Available"
+              className=""
+              rows={flatRows(flat.available, now, markOwnedIn, markSkippedIn)}
+            />
+            {readyCount === 0 && stillLoading === 0 ? (
+              <p className="text-sm text-dim">You have every released entry.</p>
+            ) : null}
+            <LoadNote loading={stillLoading} errored={unreadable} />
+          </div>
+        )
+
+      case 'all':
+        return (
+          <div className="space-y-6">
+            {!watching ? (
+              <EmptyState onImport={() => selectTab('import')} />
+            ) : (
+              classified.map(({ row, panel }) => (
                 <SeriesPanel
                   key={row.slug}
                   row={row}
@@ -347,83 +340,80 @@ export default function WatchingPage() {
                     save(markSeen(store, row.slug, ids))
                   }}
                 />
-              ))}
-            </>
-          )}
+              ))
+            )}
 
-          {hiddenRows.length > 0 ? (
-            <details className="rounded-2xl border border-edge bg-surface p-6">
-              <summary className="cursor-pointer font-semibold text-hi">
-                Hidden series ({hiddenRows.length.toLocaleString()})
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-body">
-                These stay out of the list above and out of every library import, until you bring
-                one back.
-              </p>
-              <ul className="mt-4 space-y-2">
-                {hiddenRows.map((row) => (
-                  <li
-                    key={row.slug}
-                    className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
-                  >
-                    <a
-                      href={href.series(row.slug)}
-                      className="min-w-0 truncate font-medium text-hi hover:text-pink-300"
+            {hiddenRows.length > 0 ? (
+              <details className="rounded-2xl border border-edge bg-surface p-6">
+                <summary className="cursor-pointer font-semibold text-hi">
+                  Hidden series ({hiddenRows.length.toLocaleString()})
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-body">
+                  These stay out of the list above and out of every library import, until you bring
+                  one back.
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {hiddenRows.map((row) => (
+                    <li
+                      key={row.slug}
+                      className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
                     >
-                      {row.name || row.slug}
-                    </a>
-                    <span className="flex shrink-0 gap-4 text-sm">
-                      <button
-                        type="button"
-                        onClick={() => save(unhide(store, row.slug))}
-                        className={TEXT_LINK}
+                      <a
+                        href={href.series(row.slug)}
+                        className="min-w-0 truncate font-medium text-hi hover:text-pink-300"
                       >
-                        Unhide
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => save(unwatch(store, row.slug))}
-                        className={TEXT_LINK}
-                      >
-                        Forget
-                      </button>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ) : null}
-        </div>
-      ) : null}
+                        {row.name || row.slug}
+                      </a>
+                      <span className="flex shrink-0 gap-4 text-sm">
+                        <button
+                          type="button"
+                          onClick={() => save(unhide(store, row.slug))}
+                          className={TEXT_LINK}
+                        >
+                          Unhide
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => save(unwatch(store, row.slug))}
+                          className={TEXT_LINK}
+                        >
+                          Forget
+                        </button>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : null}
+          </div>
+        )
 
-      {tab === 'notify' ? (
-        <div role="tabpanel" id="panel-notify" aria-labelledby="tab-notify">
-          <NotificationFeed store={store} slugKey={slugKey} watching={watching} />
-        </div>
-      ) : null}
+      case 'notify':
+        return <NotificationFeed store={store} slugKey={slugKey} />
 
-      {tab === 'import' ? (
-        <div role="tabpanel" id="panel-import" aria-labelledby="tab-import" className="space-y-8">
-          <section>
-            <h2 className="text-xl font-bold tracking-tight text-hi">Import from your library</h2>
-            <p className="mt-2 text-sm leading-relaxed text-body">
-              Already have an export from OpenAudible, Libation, Audiobookshelf or the{' '}
-              <code className="rounded border border-edge bg-raised px-1.5 py-0.5 font-mono text-xs text-pink-300">
-                metascan
-              </code>{' '}
-              tool? Drop it here to start watching the series it covers, with the volumes you own
-              already ticked off.
-            </p>
-            <div className="mt-5">
-              <LibraryImport watchlist={watchlist} />
-            </div>
-          </section>
+      case 'import':
+        return (
+          <div className="space-y-8">
+            <section>
+              <h2 className="text-xl font-bold tracking-tight text-hi">Import from your library</h2>
+              <p className="mt-2 text-sm leading-relaxed text-body">
+                Already have an export from OpenAudible, Libation, Audiobookshelf or the{' '}
+                <code className="rounded border border-edge bg-raised px-1.5 py-0.5 font-mono text-xs text-pink-300">
+                  metascan
+                </code>{' '}
+                tool? Drop it here to start watching the series it covers, with the volumes you own
+                already ticked off.
+              </p>
+              <div className="mt-5">
+                <LibraryImport watchlist={watchlist} />
+              </div>
+            </section>
 
-          <Backup watchlist={watchlist} />
-        </div>
-      ) : null}
-    </div>
-  )
+            <Backup watchlist={watchlist} />
+          </div>
+        )
+    }
+  }
 }
 
 /** The one dim line saying the flat list is not the whole story yet: a series
@@ -441,95 +431,16 @@ function LoadNote({ loading, errored }: { loading: number; errored: number }) {
   )
 }
 
-/** One half of the flat view. Empty groups render nothing at all - the panel's
-    own "you have every released entry" line covers the case where both are. */
-function FlatGroup({
-  heading,
-  entries,
-  now,
-  onOwned,
-  onSkipped,
-}: {
-  heading: string
-  entries: FlatEntry[]
-  now: string
-  onOwned: (slug: string, workID: string, owned: boolean) => void
-  onSkipped: (slug: string, workID: string, skipped: boolean) => void
-}) {
-  if (entries.length === 0) return null
-  return (
-    <div>
-      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
-        {heading} ({entries.length.toLocaleString()})
-      </h3>
-      <ul className="mt-3 space-y-2">
-        {entries.map((flat) => (
-          <FlatRow
-            key={`${flat.slug}-${flat.entry.work.id}`}
-            flat={flat}
-            now={now}
-            onOwned={(next) => onOwned(flat.slug, flat.entry.work.id, next)}
-            onSkipped={(next) => onSkipped(flat.slug, flat.entry.work.id, next)}
-          />
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-/** One entry in the flat view: EntryRow plus the series it came from, which is
-    the whole reason the flat list is readable at all. */
-function FlatRow({
-  flat,
-  now,
-  onOwned,
-  onSkipped,
-}: {
-  flat: FlatEntry
-  now: string
-  onOwned: (owned: boolean) => void
-  onSkipped: (skipped: boolean) => void
-}) {
-  const work = flat.entry.work
-  return (
-    <li className="flex items-center gap-3 rounded-xl border border-edge bg-raised p-3">
-      <div className="min-w-0 flex-1">
-        <a
-          href={href.series(flat.slug)}
-          className="block truncate text-xs text-dim hover:text-pink-300"
-        >
-          {flat.series}
-        </a>
-        <a href={href.work(work.id)} className="mt-0.5 block">
-          <span className="flex flex-wrap items-center gap-2">
-            <span className="shrink-0 text-sm font-black tabular-nums text-edge">
-              {flat.entry.position}
-            </span>
-            <span className="min-w-0 truncate font-medium text-hi hover:text-pink-300">
-              {work.title}
-            </span>
-            {flat.isNew ? <NewPill /> : null}
-          </span>
-          <ReleaseLine date={work.release_date} today={now} />
-        </a>
-      </div>
-      <OwnCheckbox title={work.title} checked={false} onChange={onOwned} />
-      <SkipButton title={work.title} skipped={false} onChange={onSkipped} />
-    </li>
-  )
-}
-
 function NotificationFeed({
   store,
   slugKey,
-  watching,
 }: {
   store: Watchlist
+  /** The visible series, comma-joined - the complete input to the feed URL, and
+      therefore the effect's complete dependency. An EMPTY one means there is no
+      URL to build, so the controls are replaced by the one line that says so;
+      the ways to be told are still worth reading. */
   slugKey: string
-  /** Whether there is a visible series at all. With none there is no URL to
-      build, so the controls are replaced by the one line that says so - the
-      ways to be told are still worth reading. */
-  watching: boolean
 }) {
   const [urls, setURLs] = useState<FeedURLs | null>(null)
   const [note, setNote] = useState('')
@@ -584,7 +495,7 @@ function NotificationFeed({
         The URL below is a private feed of your watched series. Nothing is stored on this site: the
         URL itself is the subscription.
       </p>
-      {!watching ? (
+      {slugKey === '' ? (
         <p className="mt-5 text-sm text-dim">
           Watch a series first and this tab will build your feed URL.
         </p>
@@ -758,17 +669,11 @@ function SeriesPanel({
           <EntryGroup
             heading="Available"
             empty="You have every released entry."
-            entries={panel.result.available}
-            now={now}
-            onOwned={markOwned}
-            onSkipped={markSkipped}
+            rows={panelRows(panel.result.available, now, markOwned, markSkipped)}
           />
           <EntryGroup
             heading="Preorder"
-            entries={panel.result.preorder}
-            now={now}
-            onOwned={markOwned}
-            onSkipped={markSkipped}
+            rows={panelRows(panel.result.preorder, now, markOwned, markSkipped)}
           />
           {panel.result.owned.length > 0 ? (
             <details className="mt-5">
@@ -814,47 +719,93 @@ function SeriesPanel({
   )
 }
 
+/** A headed list of entry rows - both tabs' only list. It takes the rows
+    already composed rather than a classification, which is what lets the FLAT
+    view (rows carrying a `series`, pooled from every panel) and a series panel
+    share it. */
 function EntryGroup({
   heading,
   empty,
-  entries,
-  now,
-  onOwned,
-  onSkipped,
+  className = 'mt-5',
+  rows,
 }: {
   heading: string
   /** Shown INSTEAD of the group when it is empty. A group with no empty line
       renders nothing at all - "no preorders" is not news. */
   empty?: string
-  entries: ClassifiedEntry[]
-  now: string
-  onOwned: (workID: string, owned: boolean) => void
-  onSkipped: (workID: string, skipped: boolean) => void
+  className?: string
+  rows: EntryRowProps[]
 }) {
-  if (entries.length === 0) {
+  if (rows.length === 0) {
     if (!empty) return null
     return <p className="mt-4 text-sm text-dim">{empty}</p>
   }
   return (
-    <div className="mt-5">
+    <div className={className}>
       <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
-        {heading} ({entries.length.toLocaleString()})
+        {heading} ({rows.length.toLocaleString()})
       </h3>
       <ul className="mt-3 space-y-2">
-        {entries.map(({ entry, isNew }) => (
-          <EntryRow
-            key={entry.work.id}
-            entry={entry}
-            now={now}
-            isNew={isNew}
-            owned={false}
-            onOwned={(next) => onOwned(entry.work.id, next)}
-            onSkipped={(next) => onSkipped(entry.work.id, next)}
-          />
+        {rows.map((row) => (
+          <EntryRow key={`${row.series?.slug ?? ''}-${row.entry.work.id}`} {...row} />
         ))}
       </ul>
     </div>
   )
+}
+
+/** The flat view's rows: an entry pooled out of its series panel, with the
+    series it came from and the two marks pointed back at it. */
+function flatRows(
+  entries: readonly FlatEntry[],
+  now: string,
+  onOwned: (slug: string, workID: string, owned: boolean) => void,
+  onSkipped: (slug: string, workID: string, skipped: boolean) => void
+): EntryRowProps[] {
+  return entries.map((flat) => ({
+    entry: flat.entry,
+    now,
+    isNew: flat.isNew,
+    owned: false,
+    series: { slug: flat.slug, name: flat.series },
+    onOwned: (next: boolean) => onOwned(flat.slug, flat.entry.work.id, next),
+    onSkipped: (next: boolean) => onSkipped(flat.slug, flat.entry.work.id, next),
+  }))
+}
+
+/** A series panel's rows: the same shape, with the series left off (the panel's
+    own heading already says which series this is). */
+function panelRows(
+  entries: readonly ClassifiedEntry[],
+  now: string,
+  onOwned: (workID: string, owned: boolean) => void,
+  onSkipped: (workID: string, skipped: boolean) => void
+): EntryRowProps[] {
+  return entries.map(({ entry, isNew }) => ({
+    entry,
+    now,
+    isNew,
+    owned: false,
+    onOwned: (next: boolean) => onOwned(entry.work.id, next),
+    onSkipped: (next: boolean) => onSkipped(entry.work.id, next),
+  }))
+}
+
+/** One row of any entry list, on either tab. `series` is what the FLAT view
+    adds - the series the entry came from, which is the whole reason a
+    cross-series list is readable - and it is a link of its own above the work
+    line rather than inside it, since anchors do not nest. */
+interface EntryRowProps {
+  entry: SeriesEntry
+  now: string
+  isNew?: boolean
+  owned: boolean
+  skipped?: boolean
+  series?: { slug: string; name: string }
+  onOwned: (owned: boolean) => void
+  /** Absent on an OWNED row: a book the reader has is already out of the way,
+      so "not interested" would be a control with nothing to do. */
+  onSkipped?: (skipped: boolean) => void
 }
 
 function EntryRow({
@@ -863,30 +814,31 @@ function EntryRow({
   isNew = false,
   owned,
   skipped = false,
+  series,
   onOwned,
   onSkipped,
-}: {
-  entry: SeriesEntry
-  now: string
-  isNew?: boolean
-  owned: boolean
-  skipped?: boolean
-  onOwned: (owned: boolean) => void
-  /** Absent on an OWNED row: a book the reader has is already out of the way,
-      so "not interested" would be a control with nothing to do. */
-  onSkipped?: (skipped: boolean) => void
-}) {
+}: EntryRowProps) {
   const work = entry.work
   return (
     <li className="flex items-center gap-3 rounded-xl border border-edge bg-raised p-3">
-      <a href={href.work(work.id)} className="min-w-0 flex-1">
-        <span className="flex flex-wrap items-center gap-2">
-          <span className="shrink-0 text-sm font-black tabular-nums text-edge">{entry.position}</span>
-          <span className="min-w-0 truncate font-medium text-hi hover:text-pink-300">{work.title}</span>
-          {isNew ? <NewPill /> : null}
-        </span>
-        <ReleaseLine date={work.release_date} today={now} />
-      </a>
+      <div className="min-w-0 flex-1">
+        {series ? (
+          <a
+            href={href.series(series.slug)}
+            className="block truncate text-xs text-dim hover:text-pink-300"
+          >
+            {series.name}
+          </a>
+        ) : null}
+        <a href={href.work(work.id)} className={series ? 'mt-0.5 block' : 'block'}>
+          <span className="flex flex-wrap items-center gap-2">
+            <span className="shrink-0 text-sm font-black tabular-nums text-edge">{entry.position}</span>
+            <span className="min-w-0 truncate font-medium text-hi hover:text-pink-300">{work.title}</span>
+            {isNew ? <NewPill /> : null}
+          </span>
+          <ReleaseLine date={work.release_date} today={now} />
+        </a>
+      </div>
       <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
       {onSkipped ? (
         <SkipButton title={work.title} skipped={skipped} onChange={onSkipped} />

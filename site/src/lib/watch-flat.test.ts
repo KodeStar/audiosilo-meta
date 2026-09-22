@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import type { SeriesEntry } from './api'
+import { entry } from './test-support'
 import {
   compareAvailable,
   comparePreorder,
@@ -8,10 +8,6 @@ import {
   type FlatEntry,
 } from './watch-flat'
 import type { SeriesClassification } from './watchlist'
-
-function entry(id: string, position: string, release_date?: string): SeriesEntry {
-  return { position, work: { id, title: id, authors: [], release_date } }
-}
 
 function panel(
   slug: string,

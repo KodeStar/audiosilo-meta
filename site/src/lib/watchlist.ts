@@ -69,7 +69,10 @@ export function emptyWatchlist(): Watchlist {
 
 // --- Parsing (tolerant by design) -------------------------------------------
 
-function stringList(value: unknown): string[] {
+/** Read an unknown value as a list of non-empty strings, dropping everything
+    else and de-duplicating. Exported for lib/watch-badge.ts, whose cached work
+    ids are the same tolerant shape. */
+export function stringList(value: unknown): string[] {
   if (!Array.isArray(value)) return []
   const seen = new Set<string>()
   const out: string[] = []

@@ -41,6 +41,13 @@ export function ReleaseLine({ date, today }: { date?: string | null; today: stri
   )
 }
 
+/** The chrome the two per-entry marks share - same size, same shape, same
+    transition - so a row's "I have this" and "Not interested" read as a pair.
+    Only the COLOURS differ, and only when the skip button is pressed, which is
+    why they are a second string rather than part of this one. */
+const MARK_CHROME = 'shrink-0 rounded-lg border px-3 py-2 text-xs transition-colors'
+const MARK_IDLE = 'border-edge bg-raised text-dim hover:border-pink-500/50 hover:text-hi'
+
 /** The per-entry ownership mark. The visible words are decorative (they repeat
     down a list); the input carries the work's title as its accessible name, so
     a screen reader hears which book each checkbox is about. */
@@ -54,7 +61,7 @@ export function OwnCheckbox({
   onChange: (checked: boolean) => void
 }) {
   return (
-    <label className="flex shrink-0 cursor-pointer items-center gap-2 rounded-lg border border-edge bg-raised px-3 py-2 text-xs text-dim transition-colors hover:border-pink-500/50 hover:text-hi">
+    <label className={`${MARK_CHROME} ${MARK_IDLE} flex cursor-pointer items-center gap-2`}>
       <input
         type="checkbox"
         className="h-4 w-4 accent-pink-500"
@@ -99,10 +106,8 @@ export function SkipButton({
       aria-pressed={skipped}
       aria-label={skipped ? `Show ${title} again` : `Not interested in ${title}`}
       onClick={() => onChange(!skipped)}
-      className={`shrink-0 rounded-lg border px-3 py-2 text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500 ${
-        skipped
-          ? 'border-pink-500/50 bg-raised text-pink-300 hover:text-pink-200'
-          : 'border-edge bg-raised text-dim hover:border-pink-500/50 hover:text-hi'
+      className={`${MARK_CHROME} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500 ${
+        skipped ? 'border-pink-500/50 bg-raised text-pink-300 hover:text-pink-200' : MARK_IDLE
       }`}
     >
       {skipped ? 'Show again' : 'Not interested'}

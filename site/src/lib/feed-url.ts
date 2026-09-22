@@ -20,7 +20,10 @@ const PLAIN_URL_LIMIT = 1500
     rather than being handed a URL that 400s inside their feed reader. */
 export const MAX_FEED_SERIES = 200
 
-function watchedSlugs(store: Watchlist): string[] {
+/** The series a feed URL carries: every VISIBLE series' slug, sorted. Hidden
+    series never leave the browser. Exported because the header badge keys its
+    cache by this same list (lib/watch-badge.ts badgeSlugKey). */
+export function watchedSlugs(store: Watchlist): string[] {
   return Object.entries(store.series)
     .filter(([, series]) => !series.hidden)
     .map(([slug]) => slug)

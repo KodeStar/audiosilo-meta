@@ -21,22 +21,19 @@ const FEED_LABEL: Record<FeedKind, string> = {
 
 // The one table of URLs, filled in with the reader's own by the script below
 // when this browser holds a watchlist.
-const links: { kind: FeedKind; title: string; blurb: string }[] = [
+const links: { kind: FeedKind; blurb: string }[] = [
   {
     kind: 'webcal',
-    title: 'Calendar link',
     blurb:
       'A calendar subscription over the release dates. Starts with `webcal://`, which is what makes a calendar app offer to subscribe rather than a browser offer to download.',
   },
   {
     kind: 'atom',
-    title: 'Atom feed',
     blurb:
       'The one every other option below pastes: an ordinary feed URL that any reader, bot or automation service can poll.',
   },
   {
     kind: 'json',
-    title: 'JSON Feed',
     blurb: 'The same items as the Atom feed, for an app or a script that prefers JSON.',
   },
 ]
@@ -90,7 +87,7 @@ const tag =
             {
               links.map((row) => (
                 <div class="rounded-xl border border-edge bg-raised/40 p-4">
-                  <dt class="text-sm font-semibold text-hi">{row.title}</dt>
+                  <dt class="text-sm font-semibold text-hi">{FEED_LABEL[row.kind]}</dt>
                   <dd class="mt-1 text-sm leading-relaxed text-body">
                     <Inline text={row.blurb} />
                   </dd>
@@ -142,11 +139,7 @@ const tag =
                     href={`#${option.id}`}
                   >
                     {option.label}
-                    {option.needsAccount && (
-                      <span class="text-[0.7rem] uppercase tracking-[0.12em] text-dim">
-                        account
-                      </span>
-                    )}
+                    {option.needsAccount && <span class={tag}>needs an account</span>}
                   </a>
                 </li>
               ))
@@ -226,20 +219,18 @@ const tag =
   // storage blocked, too many series to make a feed - leaves the placeholder
   // text exactly as rendered, which is the honest thing for a reader who has
   // not set a watchlist up yet.
-  import { buildFeedURLs } from '../../lib/feed-url'
+  import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
   import { readWatchlist } from '../../lib/watchlist'
 
   async function fillFeedURLs() {
     const slots = document.querySelectorAll<HTMLElement>('[data-feed-url]')
     if (slots.length === 0) return
     const urls = await buildFeedURLs(readWatchlist())
-    // The calendar representation is the newest of the three, so it is read
-    // tolerantly: a build without it leaves the calendar placeholder exactly as
-    // rendered instead of failing the whole fill.
-    const webcal = (urls as { webcal?: string }).webcal
     for (const slot of slots) {
-      const kind = slot.dataset.feedUrl
-      const url = kind === 'atom' ? urls.atom : kind === 'json' ? urls.json : webcal
+      // The slot names its own representation - the FeedURLs key the markup
+      // above wrote into data-feed-url - so a fourth one is a data change here
+      // and nothing else.
+      const url = urls[slot.dataset.feedUrl as keyof FeedURLs]
       if (!url) continue
       slot.textContent = url
       slot.classList.remove('text-dim')
@@ -247,9 +238,5 @@ const tag =
     }
   }
 
-  try {
-    void fillFeedURLs().catch(() => {})
-  } catch {
-    /* nothing stored, or storage is unavailable: the placeholders stand. */
-  }
+  void fillFeedURLs().catch(() => {})
 </script>

@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import type { SeriesEntry } from './api'
+import { entry, stubStorage } from './test-support'
 import {
   WATCHLIST_STORAGE_KEY,
   WATCHLIST_VERSION,
@@ -35,28 +35,6 @@ function oneSeries(slug = 'the-wandering-inn', name = 'The Wandering Inn'): Watc
   return watch(emptyWatchlist(), slug, name, TODAY)
 }
 
-function entry(id: string, position: string, release_date?: string): SeriesEntry {
-  return {
-    position,
-    work: { id, title: id, authors: [], release_date },
-  }
-}
-
-// A minimal in-memory localStorage, as marketplace.test.ts stubs one.
-function stubStorage(opts: { throws?: boolean } = {}) {
-  const map = new Map<string, string>()
-  vi.stubGlobal('localStorage', {
-    getItem: (k: string) => {
-      if (opts.throws) throw new Error('blocked')
-      return map.get(k) ?? null
-    },
-    setItem: (k: string, v: string) => {
-      if (opts.throws) throw new Error('blocked')
-      map.set(k, v)
-    },
-  })
-  return map
-}
 
 afterEach(() => {
   vi.unstubAllGlobals()
