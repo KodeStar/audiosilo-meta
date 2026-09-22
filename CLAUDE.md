@@ -371,15 +371,20 @@ it, `pkg/check` and every writer now refuse it loudly.
   availability is `unknown`; work-level print ISBNs are never used. This keeps
   volatile observations and identifier-duplicating URL data out of Git.
 - **person** - an entry in the people family, shared by author and narrator roles
-  (a person can be both). Optional `kind` (`person`/`group`/`publisher`) marks
-  the records that are not an individual - a full cast, a corporate credit of
-  record (Audible Studios, Marvel Press). ABSENCE MEANS person: nothing infers
-  the field, so an unset kind is "an individual, or unclassified", never a
-  guess. Nothing WRITES it automatically; the contributor path is the
-  correct-data issue form, whose allowlist takes `kind` and validates it against
-  the enum (`internal/issueform`), so classifying a record never needs a raw
-  pack-file PR. Classifying the existing corporate records is deliberately left
-  to a later, human pass.
+  (a person can be both). Optional `kind`
+  (`person`/`group`/`publisher`/`synthetic`) marks the records that are not an
+  individual - a full cast, a corporate credit of record (Audible Studios,
+  Marvel Press), a text-to-speech production. ABSENCE MEANS person: nothing
+  infers the field, so an unset kind is "an individual, or unclassified", never
+  a guess. The contributor path is the correct-data issue form, whose allowlist
+  takes `kind` and validates it against the enum (built from
+  `model.PersonKinds`, so the form and the schema cannot drift), so classifying
+  a record never needs a raw pack-file PR. Classifying the existing corporate
+  records is deliberately left to a later, human pass. `synthetic` is the ONE
+  kind a writer sets by itself, and only on one record: `virtual-voice`, the
+  canonical every AI-narration credit folds onto
+  (`internal/importer/synthetic.go`) - its kind is not somebody's
+  classification, it is what the credit said.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position.
@@ -1312,7 +1317,25 @@ note rather than a closed duplicate.
   choice is made, so it judges the exact list `sourceCredits` will credit and an
   AI name INSIDE a comma-joined element cannot slip past it. Refusals are
   counted as `Summary.SkippedRows` and reported as one aggregated warning; for a
-  libex run the shared gate is a no-op by construction); its sibling the
+  libex run the shared gate is a no-op by construction. The gate's answer now
+  DIFFERS BY TRUST TIER (`internal/importer/synthetic.go`): a USER-LIBRARY row
+  whose NARRATION is synthetic is ADMITTED - the book is in somebody's library -
+  and every spelling the voice vocabulary matches folds onto ONE canonical
+  person, `virtual-voice` / "Virtual Voice" / kind `synthetic`, exactly the way
+  `collective.go` folds "full cast" and "autori vari". The persona and the
+  cloned narrator's name are deliberately NOT preserved (236 + 81 distinct
+  free-text spellings in the dump; keeping them is the person-per-TTS-engine
+  failure the rule exists to prevent), the fold happens at the tail of the
+  cleaning fixpoint on the NARRATOR census alone, and the run reports an
+  aggregated `Summary.Notes` line rather than a warning. What still REFUSES
+  everywhere: any AI credited as the AUTHOR, a generative SYSTEM credited as
+  the narrator, and every libex row - 145,558 dump rows credit an AI voice, so
+  the bulk mirror keeps the filter it has and `scripts/libex-export-rows.sql`
+  is unchanged. `internal/issueform` makes the same two decisions for a hand
+  submission (`splitNarratorNames` folds, `refuseAIAuthors` refuses), which is
+  also what reserves the canonical slug: every spelling that slugs to
+  `virtual-voice` is in the vocabulary, so it either folds or refuses its row);
+  its sibling the
   **unidentifiable-credit exclusion** (a row whose author or narrator list holds
   a name that slugs away to nothing - Korean, Cyrillic, CJK, Greek, Arabic - is
   refused whole at the same parse layer, `firstUnnamedCredit` in `libex.go`,

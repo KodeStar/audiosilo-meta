@@ -6,6 +6,8 @@ import (
 	"testing"
 
 	"golang.org/x/text/unicode/norm"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // aiNarratorFixture is six rows lifted from the real libex dump: four
@@ -268,6 +270,12 @@ func TestAINarratorVocabularyIsCanonical(t *testing.T) {
 // tests below exercise - through the audiosilo-books envelope, the OpenAudible
 // projection and the Libation export, because all three are user-library
 // sources of Audible content and all three can carry a Virtual Voice title.
+//
+// For those three the gate's answer to a synthetic NARRATION is now "admit and
+// fold" rather than "refuse": the book is in somebody's library, and the credit
+// names the one canonical `virtual-voice` record instead of minting a person per
+// TTS persona (synthetic.go). What still refuses, everywhere, is an AI credited
+// as the AUTHOR and a generative system credited as the narrator.
 
 // aiBooksExport is an audiosilo-books library whose entries credit an AI in
 // every shape the vocabulary knows, beside one book that must still import.
@@ -320,56 +328,102 @@ const aiBooksExport = `{
   ]
 }`
 
-// TestAudiosiloBooksRefusesAICredits closes the gap that put four virtual-voice
-// works in the catalogue: this envelope is how an Audiobookshelf library
-// reaches the intake bot, and it bypassed the AI vocabulary entirely. All four
-// VOICE shapes and the generative-SYSTEM tokens are refused, on both credit
-// lists, and the one real book still imports.
-func TestAudiosiloBooksRefusesAICredits(t *testing.T) {
+// narratorsOf returns a work's single recording's narrator slugs.
+func narratorsOf(t *testing.T, dataDir, workSlug string) []string {
+	t.Helper()
+	recs := recSlugsOf(t, dataDir, workSlug)
+	if len(recs) != 1 {
+		t.Fatalf("work %q has recordings %v, want exactly one", workSlug, recs)
+	}
+	var rec recordingFile
+	readEntity(t, dataDir, recAddr(workSlug, recs[0]), &rec)
+	return rec.Narrators
+}
+
+// syntheticPerson decodes the canonical synthetic record, failing if it is
+// absent.
+func syntheticPerson(t *testing.T, dataDir string) OutPerson {
+	t.Helper()
+	var p OutPerson
+	readEntity(t, dataDir, personAddr(syntheticVoiceSlug), &p)
+	return p
+}
+
+// TestUserLibraryAdmitsSyntheticNarration is the acceptance test for the
+// maintainer's decision: a book in a USER's own library is admitted even when
+// its narrator is synthetic, and all four voice shapes resolve to ONE record
+// rather than to four personas. The generative-SYSTEM author is still refused,
+// because the decision is about narration.
+func TestUserLibraryAdmitsSyntheticNarration(t *testing.T) {
 	sum, dataDir := runAudiosiloBooks(t, aiBooksExport, false)
 
-	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
-		t.Errorf("NewWorks/NewRecordings = %d/%d, want 1/1", sum.NewWorks, sum.NewRecordings)
+	// Five of the six books: the human one plus the four synthetic narrations.
+	if sum.NewWorks != 5 || sum.NewRecordings != 5 {
+		t.Errorf("NewWorks/NewRecordings = %d/%d, want 5/5", sum.NewWorks, sum.NewRecordings)
 	}
-	if sum.SkippedRows != 5 {
-		t.Errorf("SkippedRows = %d, want 5", sum.SkippedRows)
+	if sum.SkippedRows != 1 {
+		t.Errorf("SkippedRows = %d, want 1 (the model-authored book)", sum.SkippedRows)
 	}
-	// Solo Author + A Narrator, and nobody else: not one AI credit may become a
-	// person record.
-	if sum.NewPeople != 2 {
-		t.Errorf("NewPeople = %d, want 2", sum.NewPeople)
+	// Solo Author, A Narrator, and the ONE synthetic record. Not a persona more.
+	if sum.NewPeople != 3 {
+		t.Errorf("NewPeople = %d, want 3", sum.NewPeople)
 	}
 	for _, slug := range []string{
-		"virtual-voice", "ai-voice-nina", "steve-stewarts-voice-replica",
-		"santiago", "chatgpt-chatgpt", "chatgpt",
+		"ai-voice-nina", "steve-stewarts-voice-replica", "santiago",
+		"chatgpt-chatgpt", "chatgpt",
 	} {
 		if entryExists(t, dataDir, personAddr(slug)) {
 			t.Errorf("an AI credit was minted as a person at %q", slug)
 		}
 	}
-	// One aggregated line, in the form every aggregated importer warning takes,
-	// naming the books an operator would go and look at.
-	if len(sum.Warnings) == 0 || !strings.Contains(sum.Warnings[0], "5 books skipped") {
-		t.Fatalf("warnings = %#v, want an aggregated AI-refusal line first", sum.Warnings)
+	// Every synthetic narration credits the canonical record, whatever the
+	// source spelled.
+	for _, work := range []string{
+		"virtually-narrated", "persona-narrated", "cloned-narration", "marked-narration",
+	} {
+		if got := narratorsOf(t, dataDir, work); len(got) != 1 || got[0] != syntheticVoiceSlug {
+			t.Errorf("work %q narrators = %v, want [%q]", work, got, syntheticVoiceSlug)
+		}
 	}
-	for _, want := range []string{"an AI voice", "Virtually Narrated"} {
-		if !strings.Contains(sum.Warnings[0], want) {
-			t.Errorf("warning %q does not mention %q", sum.Warnings[0], want)
+	// The record itself: minted once, named canonically, kind synthetic, and
+	// carrying the run's provenance like any other minted person.
+	person := syntheticPerson(t, dataDir)
+	if person.Name != syntheticVoiceName || person.Kind != model.KindEntitySynthetic {
+		t.Errorf("synthetic person = %q/%q, want %q/%q", person.Name, person.Kind, syntheticVoiceName, model.KindEntitySynthetic)
+	}
+	if len(person.Sources) != 1 || person.Sources[0].Type != sourceAudiosiloBooks {
+		t.Errorf("synthetic person sources = %#v, want one %q entry", person.Sources, sourceAudiosiloBooks)
+	}
+	// The model-authored book is still a refusal, and it still reads as one.
+	if len(sum.Warnings) == 0 || !strings.Contains(sum.Warnings[0], "1 books skipped") {
+		t.Fatalf("warnings = %#v, want the author-side AI refusal first", sum.Warnings)
+	}
+	if !strings.Contains(sum.Warnings[0], "an AI system, not a person") {
+		t.Errorf("warning %q does not name the author-side reason", sum.Warnings[0])
+	}
+	// The admission is REPORTED, as a note rather than a warning: nothing went
+	// wrong, and the intake bot reads warnings as "entries fell out".
+	if len(sum.Notes) != 1 {
+		t.Fatalf("notes = %#v, want exactly one", sum.Notes)
+	}
+	for _, want := range []string{"4 recordings credited to Virtual Voice", "synthetic narration", "Virtually Narrated"} {
+		if !strings.Contains(sum.Notes[0], want) {
+			t.Errorf("note %q does not mention %q", sum.Notes[0], want)
 		}
 	}
 }
 
-// TestAICreditHidesInsideACommaJoinedCredit is the bypass a per-source gate over
-// the source's own array shape could not see: the AI name is not an element of
-// the credit array, it is INSIDE one. sourceNames splits that element on commas
-// exactly as the credit pipeline does, so the gate judges the same names the
-// import would credit - without which "Virtual Voice" becomes a person beside
-// the real narrator.
+// TestSyntheticNarrationFoldsInsideACommaJoinedCredit is the bypass a
+// per-source gate over the source's own array shape could not see: the AI name
+// is not an element of the credit array, it is INSIDE one. sourceNames splits
+// that element on commas exactly as the credit pipeline does, so the gate judges
+// the same names the import will credit - and the fold rewrites exactly the name
+// the gate admitted, leaving the human beside it untouched.
 //
 // Both shapes a projection can hand credits over in are covered: an element
 // holding two names, and the plain comma-joined string a non-array value falls
 // back to.
-func TestAICreditHidesInsideACommaJoinedCredit(t *testing.T) {
+func TestSyntheticNarrationFoldsInsideACommaJoinedCredit(t *testing.T) {
 	const export = `{
   "format": "audiosilo-books",
   "version": 1,
@@ -392,22 +446,29 @@ func TestAICreditHidesInsideACommaJoinedCredit(t *testing.T) {
 }`
 	sum, dataDir := runAudiosiloBooks(t, export, false)
 
-	if sum.NewWorks != 0 || sum.SkippedRows != 2 {
-		t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/2", sum.NewWorks, sum.SkippedRows)
+	if sum.NewWorks != 2 || sum.SkippedRows != 0 {
+		t.Errorf("NewWorks/SkippedRows = %d/%d, want 2/0", sum.NewWorks, sum.SkippedRows)
 	}
-	for _, slug := range []string{"virtual-voice", "ai-voice-nina", "jane-doe"} {
-		if entryExists(t, dataDir, personAddr(slug)) {
-			t.Errorf("a credit from a refused row was minted as a person at %q", slug)
+	if entryExists(t, dataDir, personAddr("ai-voice-nina")) {
+		t.Error("a TTS persona was minted as a person at \"ai-voice-nina\"")
+	}
+	for _, work := range []string{"joined-element", "joined-string"} {
+		got := narratorsOf(t, dataDir, work)
+		if len(got) != 2 || got[0] != "jane-doe" || got[1] != syntheticVoiceSlug {
+			t.Errorf("work %q narrators = %v, want [jane-doe %s]", work, got, syntheticVoiceSlug)
 		}
+	}
+	if sum.Notes == nil || !strings.Contains(sum.Notes[0], "2 recordings credited to Virtual Voice") {
+		t.Errorf("notes = %#v, want both rows counted", sum.Notes)
 	}
 }
 
-// TestOpenAudibleAndLibationRefuseAICredits is the BREADTH half. All three
-// user-library sources are ranked in one trust tier (pkg/model/trust.go) and all
-// three read Audible content, so gating one of them was arbitrary. Each source's
-// own field shape reaches the same gate, because they all go through
-// sourceNames.
-func TestOpenAudibleAndLibationRefuseAICredits(t *testing.T) {
+// TestOpenAudibleAndLibationAdmitSyntheticNarration is the BREADTH half. All
+// three user-library sources are ranked in one trust tier (pkg/model/trust.go)
+// and all three read Audible content, so a rule that applied to one of them was
+// arbitrary. Each source's own field shape reaches the same gate, because they
+// all go through sourceNames.
+func TestOpenAudibleAndLibationAdmitSyntheticNarration(t *testing.T) {
 	t.Run("openaudible", func(t *testing.T) {
 		books := `[
 			{"asin":"B0OAAI0001","title_short":"Real One","author":"Mara Quill","narrated_by":"Priya Lund","language":"english","region":"US","seconds":1000},
@@ -415,13 +476,17 @@ func TestOpenAudibleAndLibationRefuseAICredits(t *testing.T) {
 			{"asin":"B0OAAI0003","title_short":"Joined One","author":"Mara Quill","narrated_by":"Priya Lund, AI Voice Nina","language":"english","region":"US","seconds":1000}
 		]`
 		sum, dataDir := runImport(t, books, false)
-		if sum.NewWorks != 1 || sum.SkippedRows != 2 {
-			t.Errorf("NewWorks/SkippedRows = %d/%d, want 1/2", sum.NewWorks, sum.SkippedRows)
+		if sum.NewWorks != 3 || sum.SkippedRows != 0 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 3/0", sum.NewWorks, sum.SkippedRows)
 		}
-		for _, slug := range []string{"virtual-voice", "ai-voice-nina"} {
-			if entryExists(t, dataDir, personAddr(slug)) {
-				t.Errorf("an AI credit was minted as a person at %q", slug)
-			}
+		if entryExists(t, dataDir, personAddr("ai-voice-nina")) {
+			t.Error("a TTS persona was minted as a person at \"ai-voice-nina\"")
+		}
+		if got := narratorsOf(t, dataDir, "synthetic-one"); len(got) != 1 || got[0] != syntheticVoiceSlug {
+			t.Errorf("narrators = %v, want [%q]", got, syntheticVoiceSlug)
+		}
+		if p := syntheticPerson(t, dataDir); p.Kind != model.KindEntitySynthetic {
+			t.Errorf("synthetic person kind = %q, want %q", p.Kind, model.KindEntitySynthetic)
 		}
 	})
 
@@ -431,13 +496,198 @@ func TestOpenAudibleAndLibationRefuseAICredits(t *testing.T) {
 			{"AudibleProductId":"B0LBAI0002","Locale":"us","Title":"Synthetic One","AuthorNames":"Mara Quill","NarratorNames":"Virtual Voice","LengthInMinutes":100,"Language":"English"}
 		]`
 		sum, dataDir := runLibation(t, export, false)
-		if sum.NewWorks != 1 || sum.SkippedRows != 1 {
-			t.Errorf("NewWorks/SkippedRows = %d/%d, want 1/1", sum.NewWorks, sum.SkippedRows)
+		if sum.NewWorks != 2 || sum.SkippedRows != 0 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 2/0", sum.NewWorks, sum.SkippedRows)
 		}
-		if entryExists(t, dataDir, personAddr("virtual-voice")) {
-			t.Error("an AI credit was minted as a person at \"virtual-voice\"")
+		if got := narratorsOf(t, dataDir, "synthetic-one"); len(got) != 1 || got[0] != syntheticVoiceSlug {
+			t.Errorf("narrators = %v, want [%q]", got, syntheticVoiceSlug)
 		}
 	})
+}
+
+// TestSyntheticRecordIsMintedOnceAndReused pins the whole point of the fold: a
+// second AI-narrated book does not create a second record, whether it spells the
+// credit the same way or not. NewPeople is what proves it - the record already
+// exists by the time the second row is planned.
+func TestSyntheticRecordIsMintedOnceAndReused(t *testing.T) {
+	const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "First Synthetic",
+      "authors": ["Solo Author"],
+      "narrators": ["Virtual Voice"],
+      "asin": "B0ABSRU001",
+      "language": "en"
+    },
+    {
+      "title": "Second Synthetic",
+      "authors": ["Solo Author"],
+      "narrators": ["Voix Virtuelle"],
+      "asin": "B0ABSRU002",
+      "language": "en"
+    }
+  ]
+}`
+	sum, dataDir := runAudiosiloBooks(t, export, false)
+
+	if sum.NewWorks != 2 {
+		t.Fatalf("NewWorks = %d, want 2", sum.NewWorks)
+	}
+	// Solo Author and the synthetic record - the second book adds nobody.
+	if sum.NewPeople != 2 {
+		t.Errorf("NewPeople = %d, want 2 (the synthetic record is minted once)", sum.NewPeople)
+	}
+	if entryExists(t, dataDir, personAddr("voix-virtuelle")) {
+		t.Error("the French spelling minted a second record at \"voix-virtuelle\"")
+	}
+	for _, work := range []string{"first-synthetic", "second-synthetic"} {
+		if got := narratorsOf(t, dataDir, work); len(got) != 1 || got[0] != syntheticVoiceSlug {
+			t.Errorf("work %q narrators = %v, want [%q]", work, got, syntheticVoiceSlug)
+		}
+	}
+}
+
+// TestSyntheticFoldIsNarratorSideOnly pins the two halves of the scope the
+// decision did NOT widen: an AI credited as the AUTHOR still refuses the whole
+// row, and so does a generative SYSTEM credited as the narrator, which is the
+// dump's untidiness about columns rather than a production fact.
+func TestSyntheticFoldIsNarratorSideOnly(t *testing.T) {
+	const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "Voice As Author",
+      "authors": ["Virtual Voice"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSNS001",
+      "language": "en"
+    },
+    {
+      "title": "System As Narrator",
+      "authors": ["Solo Author"],
+      "narrators": ["ChatGPT"],
+      "asin": "B0ABSNS002",
+      "language": "en"
+    },
+    {
+      "title": "System Beside A Voice",
+      "authors": ["Solo Author"],
+      "narrators": ["Virtual Voice", "Sparky From ChatGPT"],
+      "asin": "B0ABSNS003",
+      "language": "en"
+    }
+  ]
+}`
+	sum, dataDir := runAudiosiloBooks(t, export, false)
+
+	if sum.NewWorks != 0 || sum.SkippedRows != 3 {
+		t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/3", sum.NewWorks, sum.SkippedRows)
+	}
+	if len(sum.Notes) != 0 {
+		t.Errorf("notes = %#v, want none: no row was admitted", sum.Notes)
+	}
+	// Above all: a REFUSED row never mints the canonical record, so a book the
+	// catalogue declined cannot leave a synthetic narrator behind it.
+	for _, slug := range []string{syntheticVoiceSlug, "chatgpt", "sparky-from-chatgpt"} {
+		if entryExists(t, dataDir, personAddr(slug)) {
+			t.Errorf("a credit from a refused row was minted as a person at %q", slug)
+		}
+	}
+}
+
+// TestLibexStillRefusesSyntheticNarration is the OTHER side of the tier split,
+// stated as its own test rather than left implicit in the parse-layer suite
+// above: the same row that a user's library gets admitted for is refused from
+// the bulk mirror, because 145,558 dump rows credit an AI voice and seeding them
+// would make one synthetic record the catalogue's most prolific narrator off
+// nobody's attestation.
+func TestLibexStillRefusesSyntheticNarration(t *testing.T) {
+	sum, dataDir := runLibex(t, aiNarratorFixture(t), false)
+
+	if sum.SkippedRows != 4 {
+		t.Errorf("SkippedRows = %d, want 4", sum.SkippedRows)
+	}
+	if len(sum.Notes) != 0 {
+		t.Errorf("notes = %#v, want none: the mirror admits no synthetic narration", sum.Notes)
+	}
+	if entryExists(t, dataDir, personAddr(syntheticVoiceSlug)) {
+		t.Errorf("a libex row minted the canonical record at %q", syntheticVoiceSlug)
+	}
+	// Create mode keeps a line per row (a curated tranche is small, and the
+	// detail is what a contributor acts on); either way every refusal is named.
+	if len(sum.Warnings) != 4 {
+		t.Errorf("warnings = %#v, want one per refused row", sum.Warnings)
+	}
+}
+
+// TestRealCreditCannotMintTheSyntheticSlug is the RESERVATION guard. The
+// canonical record is only a canonical if nothing else can ever write to its
+// address, and what reserves it is the vocabulary itself rather than a second
+// rule: every spelling that slugs to `virtual-voice` is in aiNarratorNames, so
+// it either folds (narrator side) or refuses its row (author side).
+func TestRealCreditCannotMintTheSyntheticSlug(t *testing.T) {
+	for _, name := range []string{
+		"Virtual Voice", "virtual voice", "VIRTUAL VOICE", "Virtual  Voice",
+	} {
+		if slug, _ := personSlug(name); slug != syntheticVoiceSlug {
+			continue // not an address this guard is about
+		}
+		if !namesSyntheticVoice(name) {
+			t.Errorf("%q slugs to %q but the vocabulary does not know it, so a real credit could mint the canonical",
+				name, syntheticVoiceSlug)
+		}
+		if _, isAI := AICreditReason(name); !isAI {
+			t.Errorf("%q slugs to %q but would not refuse an author-side row", name, syntheticVoiceSlug)
+		}
+	}
+}
+
+// TestSyntheticCanonicalSlugsToItsID is the collective fold's guard, applied to
+// this canonical: the fold is only a fold onto ONE address if the name it mints
+// under slugs to the id the rest of the code spells.
+func TestSyntheticCanonicalSlugsToItsID(t *testing.T) {
+	slug, fellBack := model.PersonSlug(syntheticVoiceName)
+	if fellBack || slug != syntheticVoiceSlug {
+		t.Errorf("PersonSlug(%q) = %q (fellBack=%v), want %q", syntheticVoiceName, slug, fellBack, syntheticVoiceSlug)
+	}
+	if got := PersonKindFor(syntheticVoiceName); got != model.KindEntitySynthetic {
+		t.Errorf("PersonKindFor(%q) = %q, want %q", syntheticVoiceName, got, model.KindEntitySynthetic)
+	}
+	if got := PersonKindFor("Stephen Fry"); got != "" {
+		t.Errorf("PersonKindFor(%q) = %q, want an empty kind", "Stephen Fry", got)
+	}
+}
+
+// TestSyntheticNarratorNameFoldsEveryShape pins the exported door the intake
+// forms use against the same four shapes the bulk fold covers, and against the
+// role-qualified spelling only the cleaned name reveals.
+func TestSyntheticNarratorNameFoldsEveryShape(t *testing.T) {
+	for _, name := range []string{
+		"Virtual Voice", "Voz Virtual", "Voce Virtuale",
+		"AI Voice Nina", "AI Voice",
+		"Steve Stewart's Voice Replica",
+		"Santiago (Voz de IA)", "Elise (AI)",
+		"Virtual Voice - narrator",
+	} {
+		got, folded := SyntheticNarratorName(name)
+		if !folded || got != syntheticVoiceName {
+			t.Errorf("SyntheticNarratorName(%q) = %q/%v, want %q/true", name, got, folded, syntheticVoiceName)
+		}
+	}
+	for _, name := range []string{
+		// Real narrators the vocabulary must leave alone, and a generative
+		// system, which is not a voice credit at all.
+		"Ai Voicu", "April's Voice", "Debra Shieber's Voice Talent",
+		"Stephen Fry", "Full Cast", "ChatGPT", "",
+	} {
+		got, folded := SyntheticNarratorName(name)
+		if folded || got != name {
+			t.Errorf("SyntheticNarratorName(%q) = %q/%v, want it untouched", name, got, folded)
+		}
+	}
 }
 
 // TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly pins the deliberate scope of
@@ -452,7 +702,7 @@ func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
   "books": [
     {
       "title": "A Korean Book",
-      "authors": ["\uae40\uc601\ud558"],
+      "authors": ["김영하"],
       "narrators": ["A Narrator"],
       "asin": "B0ABSKO001",
       "language": "en"
@@ -465,29 +715,5 @@ func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
 	}
 	if sum.SkippedRows != 0 {
 		t.Errorf("SkippedRows = %d, want 0", sum.SkippedRows)
-	}
-}
-
-// TestAIRefusalExamplesAreCappedAtCollection pins the collection-time cap: a
-// library that AI-narrates in bulk must not build a formatted example string per
-// book. The count is exact; the examples stop at maxWarnExamples.
-func TestAIRefusalExamplesAreCappedAtCollection(t *testing.T) {
-	var refused aiRefusals
-	for i := 0; i < maxWarnExamples*3; i++ {
-		refused.add("Book", "narrator", "Virtual Voice", "an AI voice")
-	}
-	if refused.n != maxWarnExamples*3 {
-		t.Errorf("n = %d, want %d", refused.n, maxWarnExamples*3)
-	}
-	if len(refused.examples) != maxWarnExamples {
-		t.Errorf("examples = %d, want %d (capped at collection)", len(refused.examples), maxWarnExamples)
-	}
-	line, warned := refused.warning()
-	if !warned || !strings.Contains(line, "15 books skipped") {
-		t.Errorf("warning = %q, %v", line, warned)
-	}
-	var none aiRefusals
-	if _, warned := none.warning(); warned {
-		t.Error("an empty refusal set produced a warning")
 	}
 }

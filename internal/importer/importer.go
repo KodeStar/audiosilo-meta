@@ -453,10 +453,16 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
+	// The run's trust tier, decided here rather than on the planner because the
+	// AI gate below runs before the planner exists and has to ask the same
+	// question: a person's own library (or a hand submission) may admit a
+	// synthetic narration under the canonical record, the bulk mirror may not.
+	// See the planner's userTier field and synthetic.go.
+	userTier := model.TierOfSource(sourceType) == model.TierUserLibrary
 	// Refused before ANYTHING reads the batch - before the censuses, before the
 	// title pre-pass, before planning - so an AI credit cannot reach the person
 	// table, the credit census or a title decision. See refuseAIBooks.
-	books, aiRefused := refuseAIBooks(books)
+	books, aiRefused, synthetic := refuseAIBooks(books, userTier)
 	// Opened before anything is planned: a tree still in the file-per-entity
 	// layout is refused here, having written nothing and read nothing it could
 	// misinterpret.
@@ -483,7 +489,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		importDate:     opts.ImportDate,
 		mode:           opts.Mode,
 		conflicts:      opts.Conflicts,
-		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
+		userTier:       userTier,
 	}
 	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
@@ -499,10 +505,15 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.seriesLookupLeft = seriesLookupCap(opts.SeriesLookupLimit)
 	}
 	// Recorded on the summary before planning appends anything, so the AI line
-	// is the run's FIRST warning and every return path below carries it.
+	// is the run's FIRST warning and every return path below carries it. The
+	// synthetic-narration note rides along for the same reason: a run that fails
+	// later still says what it admitted.
 	p.summary.SkippedRows = aiRefused.n
 	if line, warned := aiRefused.warning(); warned {
 		p.summary.Warnings = append(p.summary.Warnings, line)
+	}
+	if line, noted := synthetic.note(); noted {
+		p.summary.Notes = append(p.summary.Notes, line)
 	}
 	p.loadExisting()
 	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
@@ -547,12 +558,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 // ---------------------------------------------------------------------------
 // The AI-credit gate
 //
-// An AI is not a person: importing one mints a person record for a
-// text-to-speech engine or a language model. libex refuses such a row at its own
-// parse layer (libex.go), where the refusal also has to feed libex-select's
-// exclusion reasons - so for a libex run this gate is a NO-OP, by construction
-// and not by coincidence: firstAICredit has already rejected every row that
-// would trip it.
+// An AI is not a person: crediting one as an AUTHOR mints a person record for a
+// language model. libex refuses such a row at its own parse layer (libex.go),
+// where the refusal also has to feed libex-select's exclusion reasons - so for a
+// libex run this gate is a NO-OP, by construction and not by coincidence:
+// firstAICredit has already rejected every row that would trip it.
 //
 // It lives HERE, in the shared core, because the gate is not a property of one
 // source. All three user-library sources are Audible-sourced (pkg/model's trust
@@ -560,13 +570,29 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 // together) and all three can carry a Virtual Voice title; gating only the
 // envelope the site composes let four virtual-voice works into the catalogue.
 //
+// What it does with such a row DIFFERS BY TIER, which is the maintainer's
+// decision recorded in synthetic.go:
+//
+//   - a USER-LIBRARY row whose NARRATION is synthetic is ADMITTED. The book is
+//     in somebody's library, so it is a book this catalogue wants; the credit
+//     folds onto the one canonical `virtual-voice` record and the run reports an
+//     aggregated NOTE rather than a refusal. The fold itself happens in the
+//     credit pipeline (creditWithRolesSided); all this gate does is decline to
+//     refuse the row.
+//   - an AUTHOR-side AI credit still refuses the row, on every source and in
+//     either tier, and so does a generative SYSTEM credited as the narrator.
+//   - a libex row still refuses whatever it credits, at the parse layer, exactly
+//     as before.
+//
 // It reads the credit lists through sourceNames - the ONE place the typed-vs-
 // comma-joined choice is made, and the exact list sourceCredits will credit. A
 // per-source gate over the source's own array shape could not see an AI name
 // INSIDE a comma-joined element ("Jane Doe, Virtual Voice" arrives as one
 // element, and a projection may hand narrators over as a plain string), which
 // the pipeline then splits into two people. Gate and credits now read the same
-// names by construction, so they cannot disagree about what a row credits.
+// names by construction, so they cannot disagree about what a row credits - and
+// that is what makes "admitted" and "folded" the same set of credits rather than
+// two rules that happen to agree today.
 //
 // Only the AI vocabulary crosses over. The unidentifiable-name rule stays
 // libex-only for the reason documented above firstUnnamedCredit (a user's own
@@ -604,32 +630,94 @@ func (r aiRefusals) warning() (string, bool) {
 		r.examples), true
 }
 
-// refuseAIBooks drops every book whose author or narrator list names an AI and
-// reports what it dropped. The returned slice is the input itself when nothing
+// refuseAIBooks drops every book whose credits name an AI the catalogue will not
+// admit, and reports both what it dropped and what it let through under the
+// synthetic-narration fold. The returned slice is the input itself when nothing
 // was refused (the common case, and the only case for libex), so a million-row
 // enrichment pays no copy.
-func refuseAIBooks(books []sourceBook) ([]sourceBook, aiRefusals) {
+//
+// foldNarration is the run's trust tier: true for a user's own library or a hand
+// submission, false for the bulk mirror. With it false the rule is exactly what
+// it always was - any AI credit on either list refuses the row.
+func refuseAIBooks(books []sourceBook, foldNarration bool) ([]sourceBook, aiRefusals, syntheticNarrations) {
 	var refused aiRefusals
+	var folded syntheticNarrations
 	kept := books
+	// keep / refuse are the two things this loop can do with a row, and they
+	// share one piece of bookkeeping: the kept slice is the INPUT until the
+	// first refusal, and a copy of everything before it afterwards.
+	keep := func(b sourceBook) {
+		if refused.n > 0 {
+			kept = append(kept, b)
+		}
+	}
+	refuse := func(i int, title, role, name, why string) {
+		if refused.n == 0 {
+			// The first refusal: keep everything before it, with the capacity
+			// capped so keep's appends allocate rather than overwrite books[i:].
+			kept = books[:i:i]
+		}
+		refused.add(title, role, name, why)
+	}
 	for i, b := range books {
-		role, name, why, isAI := firstAICredit(
-			sourceNames(b.authors, b.str("author")),
-			sourceNames(b.narrators, b.str("narrated_by")),
-		)
-		if !isAI {
-			if refused.n > 0 {
-				kept = append(kept, b)
+		authors := sourceNames(b.authors, b.str("author"))
+		narrators := sourceNames(b.narrators, b.str("narrated_by"))
+		title := firstNonEmpty(b.str("title_short"), b.str("title"))
+
+		// The bulk-mirror rule, unchanged: any AI credit on either list refuses.
+		if !foldNarration {
+			if role, name, why, isAI := firstAICredit(authors, narrators); isAI {
+				refuse(i, title, role, name, why)
+			} else {
+				keep(b)
 			}
 			continue
 		}
-		if refused.n == 0 {
-			// The first refusal: keep everything before it, with the capacity
-			// capped so the appends above allocate rather than overwrite books[i:].
-			kept = books[:i:i]
+
+		// The user-library rule, in two halves. The AUTHOR side is judged first
+		// and on its own terms - firstAICredit with an empty narrator list is the
+		// same call the bulk rule makes, restricted to the side the decision did
+		// not change - so a book written by a model is refused whoever read it.
+		if role, name, why, isAI := firstAICredit(authors, nil); isAI {
+			refuse(i, title, role, name, why)
+			continue
 		}
-		refused.add(firstNonEmpty(b.str("title_short"), b.str("title")), role, name, why)
+		// The NARRATOR side: a synthetic voice folds (and is noted), while a
+		// generative system in the narrator column is not a narration credit at
+		// all and still refuses. The system arm wins where a row states both,
+		// because a refusal is a whole-row verdict.
+		voice, system := firstSyntheticNarrator(narrators)
+		if system != "" {
+			refuse(i, title, "narrator", system, "an AI system, not a person")
+			continue
+		}
+		if voice != "" {
+			folded.add(title, voice)
+		}
+		keep(b)
 	}
-	return kept, refused
+	return kept, refused, folded
+}
+
+// firstSyntheticNarrator splits a narrator list into the two AI verdicts the
+// user-library rule needs: the first credit that names a synthetic VOICE (which
+// folds) and the first that names a generative SYSTEM (which refuses the row).
+// Both are returned because a row can state one, the other, or both, and the
+// caller decides which verdict wins.
+func firstSyntheticNarrator(narrators []string) (voice, system string) {
+	for _, n := range narrators {
+		switch {
+		case namesSyntheticVoice(n):
+			if voice == "" {
+				voice = n
+			}
+		case namesAISystemCredit(n):
+			if system == "" {
+				system = n
+			}
+		}
+	}
+	return voice, system
 }
 
 // planCreate is the default (create) planning pass: every book that the
@@ -1147,15 +1235,22 @@ func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditC
 		return func(name string) bool { return set[Slugify(name)] }
 	}
 	anySide := seenIn(universe)
-	notify := func(sameSide creditSeenFunc) creditCensus {
+	notify := func(sameSide creditSeenFunc, foldSynthetic bool) creditCensus {
 		return creditCensus{
-			anySide:      anySide,
-			sameSide:     sameSide,
-			onHonorific:  p.noteHonorific,
-			onCredential: p.noteCredential,
+			anySide:            anySide,
+			sameSide:           sameSide,
+			foldSyntheticVoice: foldSynthetic,
+			onHonorific:        p.noteHonorific,
+			onCredential:       p.noteCredential,
 		}
 	}
-	return notify(seenIn(authorSide)), notify(seenIn(narratorSide))
+	// The AI-narration fold is the NARRATOR side of a USER-LIBRARY run and
+	// nothing else (synthetic.go). Setting it here rather than at the call sites
+	// is what makes every reader of a narrator name fold identically: the import
+	// itself (sourceCredits), the batch credit census and the initials pre-pass
+	// all resolve a synthetic credit to the canonical, so a persona spelling
+	// never becomes evidence of its own name.
+	return notify(seenIn(authorSide), false), notify(seenIn(narratorSide), p.userTier)
 }
 
 // noteHonorific records one honorific merge for the run's report. It is a SET
@@ -1414,10 +1509,13 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 
 // createPerson emits a new person record. The caller has already established
 // that slug is free.
+// The record carries a kind only when the NAME decides one (PersonKindFor): the
+// canonical synthetic-voice record, and nothing else. Every other kind is a
+// human classification made through the correct-data form, never an inference.
 func (p *planner) createPerson(slug, name string) string {
 	p.people[slug] = name
 	p.putNewEntry(pack.FamilyPeople, slug, OutPerson{
-		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
+		ID: slug, Name: name, Kind: PersonKindFor(name), License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
 	return slug

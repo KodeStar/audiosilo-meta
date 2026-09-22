@@ -388,6 +388,13 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 			fmt.Println("    credential:", m)
 		}
 	}
+	// Notes come first: they say what the run DID (today, the AI-narration fold),
+	// and a reader scanning past a warning list should not have to reach the end
+	// of it to find out that a synthetic narration was admitted rather than
+	// refused.
+	for _, n := range s.Notes {
+		fmt.Println("  note:", n)
+	}
 	for _, w := range s.Warnings {
 		fmt.Println("  warning:", w)
 	}

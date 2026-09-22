@@ -34,6 +34,23 @@ func splitNames(joined string) []string {
 	return out
 }
 
+// splitNarratorNames is splitNames for the NARRATOR side, with the AI-narration
+// fold applied (internal/importer/synthetic.go): every spelling of a synthetic
+// voice - the localized whole-name labels, "AI Voice <persona>", "<narrator>'s
+// voice replica", the parenthetical markers - names the ONE canonical record.
+//
+// A hand submission is user-library tier, the same tier whose library exports
+// the bulk importer admits under that record, so the two intake doors resolve
+// one credit to one address. The author side is NOT folded: it is refused
+// instead (refuseAICredits), exactly as it is for an import.
+func splitNarratorNames(joined string) []string {
+	names := splitNames(joined)
+	for i, name := range names {
+		names[i], _ = importer.SyntheticNarratorName(name)
+	}
+	return names
+}
+
 // splitList splits a "one per line or comma-separated" plain list (ISBNs, etc.)
 // without name-qualifier stripping.
 func splitList(joined string) []string {

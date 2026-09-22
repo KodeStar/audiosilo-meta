@@ -45,13 +45,28 @@ type PersonXref struct {
 
 // Person entity kinds. The zero value (an absent kind) means an individual
 // person; the named kinds exist to mark the records that are not one. See
-// schema/person.schema.json - nothing infers these, so an empty Kind is
-// "unclassified or an individual", never a guess.
+// schema/person.schema.json - nothing infers the first three, so an empty Kind
+// is "unclassified or an individual", never a guess.
+//
+// KindEntitySynthetic is the one kind a writer sets by itself, and it can only
+// ever land on ONE record: the canonical synthetic-voice person every
+// AI-narration credit folds onto (internal/importer/synthetic.go). It says the
+// record names a text-to-speech production rather than an individual, which is
+// a fact about the credit rather than a classification somebody made.
 const (
 	KindEntityPerson    = "person"
 	KindEntityGroup     = "group"
 	KindEntityPublisher = "publisher"
+	KindEntitySynthetic = "synthetic"
 )
+
+// PersonKinds is the person.kind vocabulary, in the schema enum's own order. It
+// is the ONE list every consumer reads (internal/issueform's correction
+// allowlist, the drift guard against the schema), so a kind added to the enum
+// cannot be accepted in one door and rejected in another.
+func PersonKinds() []string {
+	return []string{KindEntityPerson, KindEntityGroup, KindEntityPublisher, KindEntitySynthetic}
+}
 
 // Person is an author and/or narrator.
 type Person struct {

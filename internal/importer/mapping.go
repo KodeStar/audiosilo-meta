@@ -893,6 +893,14 @@ func CreditWithRoles(name string) (cleaned string, roles []string) {
 type creditCensus struct {
 	anySide  creditSeenFunc
 	sameSide creditSeenFunc
+	// foldSyntheticVoice turns on the AI-narration fold (synthetic.go) for this
+	// credit side. It is not evidence, it is the run's POLICY: the fold belongs
+	// to the NARRATOR side of a USER-LIBRARY run and to nothing else, and the
+	// census is the only thing the cleaning already carries that is scoped per
+	// side and per run. A zero value folds nothing, which is what every caller
+	// with no run behind it (a test, pkg/scan reading tags, a libex row) should
+	// get.
+	foldSyntheticVoice bool
 	// onHonorific and onCredential, when set, are notified of every merge their
 	// rule performs, so a run can report the lists it made
 	// (Summary.HonorificMerges / Summary.CredentialMerges). The two rules are
@@ -953,6 +961,18 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 	// after every cleaning rule has run: it answers "which record does this
 	// credit name?", which is only askable once the name is the one the import
 	// would store. See collective.go for why this is the one place it happens.
+	//
+	// The AI-narration fold answers the same question for the same reason and
+	// sits beside it, ahead of it only because the two vocabularies are
+	// disjoint and asking the narrower one first keeps the synthetic canonical
+	// off collectiveCredits. It applies on the NARRATOR side of a user-library
+	// run alone (synthetic.go); everywhere else the flag is false and this is a
+	// branch not taken. The roles the credit stated ride along untouched, as
+	// they do through the collective fold: what a fold changes is WHO is
+	// credited, not what the source said they did.
+	if c.foldSyntheticVoice && syntheticVoiceCredit(name, cleaned) {
+		return syntheticVoiceName, sortedUniqueRoles(stated)
+	}
 	return canonicalCreditName(cleaned), sortedUniqueRoles(stated)
 }
 

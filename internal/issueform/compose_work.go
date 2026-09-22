@@ -61,7 +61,10 @@ func (c *composer) addWork(s sections) {
 		c.fail(StatusInvalid, "at least one Author is required")
 		return
 	}
-	narratorNames := splitNames(s.get(fRecNarrators))
+	if c.refuseAIAuthors(authorNames) {
+		return
+	}
+	narratorNames := splitNarratorNames(s.get(fRecNarrators))
 	if len(narratorNames) == 0 {
 		c.fail(StatusInvalid, "at least one Narrator is required")
 		return
@@ -213,6 +216,34 @@ func (c *composer) slugsFor(names []string, sourceRef string) []string {
 		out = append(out, slug)
 	}
 	return out
+}
+
+// refuseAIAuthors refuses a submission whose AUTHOR list names an AI - a
+// synthetic voice or a generative system - and reports whether it did.
+//
+// It is the intake door's half of the rule the bulk importer applies at
+// refuseAIBooks, asked through the same vocabulary (importer.AICreditReason).
+// The NARRATION decision does not reach here: a synthetic narration is admitted
+// and folded (splitNarratorNames), and an author credit is a different claim -
+// "this system wrote the book" - which the catalogue does not record against a
+// person record, whichever door it arrives at.
+//
+// It is also what RESERVES the canonical synthetic slug on this path: the
+// vocabulary that folds a narrator credit spelled "Virtual Voice" is the one
+// that refuses an author credit spelled the same way, so no form can write that
+// address for anybody real.
+//
+// StatusInvalid rather than needs-human: the verdict is settled policy, not an
+// undecidable pair, and the message says what the catalogue will take.
+func (c *composer) refuseAIAuthors(names []string) bool {
+	for _, name := range names {
+		if why, isAI := importer.AICreditReason(name); isAI {
+			c.fail(StatusInvalid, "author %q is %s, and the catalogue credits works to people - "+
+				"name the human author, or a maintainer will decide how to record this book", name, why)
+			return true
+		}
+	}
+	return false
 }
 
 // buildWorkXref assembles the work xref from the optional identifier fields,

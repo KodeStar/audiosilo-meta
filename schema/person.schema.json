@@ -19,9 +19,9 @@
       "minLength": 1
     },
     "kind": {
-      "description": "What sort of entity this record names. ABSENCE MEANS \"person\" - the field exists to mark the records that are not one: a group credited as a unit (a full cast, a band) or a corporate credit of record (a publisher's in-house imprint). Nothing infers it; a record only carries it when a human classified it, so an absent value is 'unclassified or an individual', never a guess.",
+      "description": "What sort of entity this record names. ABSENCE MEANS \"person\" - the field exists to mark the records that are not one: a group credited as a unit (a full cast, a band), a corporate credit of record (a publisher's in-house imprint), or a synthetic voice - a text-to-speech production rather than an individual. Nothing infers the first three; a record only carries one when a human classified it, so an absent value is 'unclassified or an individual', never a guess. \"synthetic\" is the one exception: the importer writes it on the single canonical record every AI-narration credit folds onto.",
       "type": "string",
-      "enum": ["person", "group", "publisher"]
+      "enum": ["person", "group", "publisher", "synthetic"]
     },
     "description": {
       "type": "string"

@@ -24,11 +24,20 @@ wrapping the list** (`{"chapters": [...]}`) - the query unwraps it with
 "no chapters" from anything else. `books.isbn` is deliberately not exported: it
 is sometimes the print edition's ISBN, and `recording.isbn` is a hard dedup key.
 
-### AI narrations are excluded twice
+### AI narrations are excluded twice, from THIS source
 
-A synthetic voice is not a person, so an AI-narrated production has no place in
-a catalogue built around who narrated a book - importing one mints a person
-record for a text-to-speech engine. libex has an `is_vvab` ("virtual voice")
+A synthetic voice is not a person, and naming one in a credit list mints a
+person record for a text-to-speech engine. That is the harm, and from the bulk
+mirror the answer is to drop the row: 145,558 rows of the dump credit an AI
+voice, and seeding them would make one synthetic record the most prolific
+narrator in the catalogue off nobody's attestation.
+
+A user's OWN library is the other tier and takes the other answer - the book is
+admitted, and the credit folds onto one canonical "Virtual Voice" record
+(`internal/importer/synthetic.go`). Nothing in this file changes for that: the
+bulk export keeps both filters exactly as described below.
+
+libex has an `is_vvab` ("virtual voice")
 flag that looks like the filter for this, and the query still applies it, **but
 it does not work**: measured over the full 1.13M-row dump, 145,558 books credit
 an AI voice and `is_vvab` is `false` on 145,550 of them. The evidence lives in
@@ -45,7 +54,9 @@ The same three shapes are implemented in `internal/importer/libex.go`
 the same rows at parse time for every `metaimport libex` mode - so a dump
 exported without this filter, or one an older copy of this script produced, is
 still safe. **The two lists must be kept in step**; each file's comment says so.
-The refusals are reported as one aggregated warning line per run.
+The refusals are reported as one aggregated warning line per run. The parse
+layer is libex-only, which is what keeps the two tiers apart: the same credit
+reaching the importer from a user's library export folds instead of refusing.
 
 ### Unidentifiable credits are excluded too
 

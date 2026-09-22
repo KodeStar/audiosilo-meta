@@ -34,7 +34,7 @@ func (c *composer) addRecording(s sections) {
 		return
 	}
 
-	narratorNames := splitNames(s.get(fRecNarrators))
+	narratorNames := splitNarratorNames(s.get(fRecNarrators))
 	if len(narratorNames) == 0 {
 		c.fail(StatusInvalid, "at least one Narrator is required")
 		return

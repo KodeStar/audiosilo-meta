@@ -73,6 +73,18 @@ func TestCreditRolesCoverSchemaEnum(t *testing.T) {
 	}
 }
 
+// personKindConstants is every KindEntity* constant this package declares. Like
+// creditRoleConstants it exists only for the drift guard, and it is compared
+// against PersonKinds() as well as against the schema - so a constant added
+// without being listed in PersonKinds() (the list every consumer reads) fails
+// here rather than being silently unreachable through the issue form.
+var personKindConstants = []string{
+	KindEntityPerson,
+	KindEntityGroup,
+	KindEntityPublisher,
+	KindEntitySynthetic,
+}
+
 // TestPersonKindsCoverSchemaEnum is the same drift guard for the person kind
 // vocabulary.
 func TestPersonKindsCoverSchemaEnum(t *testing.T) {
@@ -90,10 +102,9 @@ func TestPersonKindsCoverSchemaEnum(t *testing.T) {
 	if err := json.Unmarshal(raw, &doc); err != nil {
 		t.Fatalf("parse person.schema.json: %v", err)
 	}
-	want := map[string]bool{
-		KindEntityPerson:    true,
-		KindEntityGroup:     true,
-		KindEntityPublisher: true,
+	want := make(map[string]bool, len(personKindConstants))
+	for _, k := range personKindConstants {
+		want[k] = true
 	}
 	if len(doc.Properties.Kind.Enum) != len(want) {
 		t.Fatalf("person kind enum = %v, want %d values", doc.Properties.Kind.Enum, len(want))
@@ -101,6 +112,22 @@ func TestPersonKindsCoverSchemaEnum(t *testing.T) {
 	for _, k := range doc.Properties.Kind.Enum {
 		if !want[k] {
 			t.Errorf("schema person kind %q has no KindEntity* constant in pkg/model", k)
+		}
+	}
+
+	// PersonKinds() is what every consumer reads, so it has to BE the enum -
+	// same values, same order. A constant that is declared but left out of the
+	// list is a kind the issue form would reject and the schema would accept.
+	kinds := PersonKinds()
+	if len(kinds) != len(doc.Properties.Kind.Enum) {
+		t.Fatalf("PersonKinds() = %v, want the schema's %v", kinds, doc.Properties.Kind.Enum)
+	}
+	for i, k := range kinds {
+		if k != doc.Properties.Kind.Enum[i] {
+			t.Errorf("PersonKinds()[%d] = %q, want %q", i, k, doc.Properties.Kind.Enum[i])
+		}
+		if !want[k] {
+			t.Errorf("PersonKinds() lists %q, which is no KindEntity* constant", k)
 		}
 	}
 }

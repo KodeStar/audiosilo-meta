@@ -35,10 +35,14 @@ Four kinds of thing live in `data/`:
   recording ISBNs. Current availability is volatile and is not stored in Git.
 - **Person** - a human, shared across roles. The same `people/` entity is
   referenced by a work as an **author** and by a recording as a **narrator**. A
-  person can be both. An optional `kind` (`person` / `group` / `publisher`)
-  marks the records that are not an individual - a full cast credited as a unit,
-  or a corporate credit of record. Leaving it off is normal: absence reads as
-  "an individual, or nobody has classified it", never as a guess.
+  person can be both. An optional `kind` (`person` / `group` / `publisher` /
+  `synthetic`) marks the records that are not an individual - a full cast
+  credited as a unit, a corporate credit of record, or a text-to-speech
+  production. Leaving it off is normal: absence reads as "an individual, or
+  nobody has classified it", never as a guess. AI-narrated books from your own
+  library are welcome; every synthetic narration credit is recorded against the
+  one shared "Virtual Voice" record rather than a record per voice, because the
+  persona is not an identity.
 - **Series** - a named series with an ordered list of member works. Positions are
   strings, so half-numbered entries like `"2.5"` work.
 
