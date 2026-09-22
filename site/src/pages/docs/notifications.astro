@@ -1,0 +1,255 @@
+---
+import Base from '../../layouts/Base.astro'
+import Backdrop from '../../components/Backdrop.astro'
+import Button from '../../components/Button.astro'
+import Inline from '../../components/docs/Inline.astro'
+import { CHIP } from '../../components/docs/chip'
+import { NOTIFY_INTRO_NOTES, NOTIFY_OPTIONS, type FeedKind } from '../../lib/notify-options'
+
+// The options, their steps and their caveats are NOT authored here: they are
+// src/lib/notify-options.ts, which the "Get notified" tab on /watching renders
+// too. One list, two surfaces - so the tab can never offer an option this page
+// has no instructions for.
+
+// Which of the three URLs a set of steps pastes, in the words the Watching page
+// uses for them.
+const FEED_LABEL: Record<FeedKind, string> = {
+  webcal: 'Calendar link',
+  atom: 'Atom feed',
+  json: 'JSON Feed',
+}
+
+// The one table of URLs, filled in with the reader's own by the script below
+// when this browser holds a watchlist.
+const links: { kind: FeedKind; title: string; blurb: string }[] = [
+  {
+    kind: 'webcal',
+    title: 'Calendar link',
+    blurb:
+      'A calendar subscription over the release dates. Starts with `webcal://`, which is what makes a calendar app offer to subscribe rather than a browser offer to download.',
+  },
+  {
+    kind: 'atom',
+    title: 'Atom feed',
+    blurb:
+      'The one every other option below pastes: an ordinary feed URL that any reader, bot or automation service can poll.',
+  },
+  {
+    kind: 'json',
+    title: 'JSON Feed',
+    blurb: 'The same items as the Atom feed, for an app or a script that prefers JSON.',
+  },
+]
+
+const PLACEHOLDER = 'your feed URL from the Watching page'
+
+const link = 'text-pink-400 transition-colors hover:text-pink-300'
+const tag =
+  'rounded-md border border-edge bg-raised px-2 py-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-dim'
+---
+
+<Base
+  title="Get notified about new releases - AudioSilo Meta"
+  description="Step by step instructions for turning your AudioSilo Meta watch feed into a notification: a calendar subscription, an RSS app, email, Telegram, Slack, Discord, a self-hosted reader or an automation service. No account here, nothing stored."
+>
+  <section class="relative pb-20">
+    <Backdrop variant="page" />
+    <div class="container relative z-10">
+      <!-- Intro -->
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+          Docs
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">
+          Get notified about new releases
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-body">
+          The Watching page turns the series you follow into a feed URL, and that URL is the whole
+          subscription: there is no account here, and nothing about you is stored on this site.
+          Copy your URL from the
+          <a class={link} href="/watching#notify">Get notified tab</a> on the Watching page, then
+          pick one of the options below and follow its steps. The first three need no account
+          anywhere; the ones marked <span class="text-hi">needs an account</span> sign you in to a
+          service that is not us.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="/watching#notify" variant="primary">Get your feed URL</Button>
+          <Button href="/docs/api" variant="secondary">API reference</Button>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl space-y-10">
+        <!-- Which link for which option -->
+        <div class="reveal rounded-2xl border border-edge bg-surface p-5 sm:p-6">
+          <h2 class="text-lg font-semibold text-hi">Which link to copy</h2>
+          <p class="mt-2 text-sm leading-relaxed text-dim">
+            Only the calendar option uses the Calendar link. Everything else uses the Atom feed,
+            unless an app specifically asks for JSON.
+          </p>
+          <dl class="mt-4 space-y-4">
+            {
+              links.map((row) => (
+                <div class="rounded-xl border border-edge bg-raised/40 p-4">
+                  <dt class="text-sm font-semibold text-hi">{row.title}</dt>
+                  <dd class="mt-1 text-sm leading-relaxed text-body">
+                    <Inline text={row.blurb} />
+                  </dd>
+                  <dd class="mt-2">
+                    <code
+                      class={`${CHIP} block overflow-x-auto whitespace-nowrap text-xs text-dim`}
+                      data-feed-url={row.kind}
+                    >
+                      {PLACEHOLDER}
+                    </code>
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-4 text-xs leading-relaxed text-dim">
+            Those boxes fill in with your own URLs when this browser holds a watchlist. Nothing is
+            sent anywhere to do it: the list is read out of this browser's local storage, exactly
+            as the Watching page reads it.
+          </p>
+        </div>
+
+        <!-- The standing caveats, true of every option below -->
+        <div class="reveal rounded-2xl border border-edge bg-surface p-5 sm:p-6">
+          <h2 class="text-lg font-semibold text-hi">Before you start</h2>
+          <ul class="mt-3 space-y-2">
+            {
+              NOTIFY_INTRO_NOTES.map((note) => (
+                <li class="flex gap-3 text-sm leading-relaxed text-body">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-500" />
+                  <span>
+                    <Inline text={note} />
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Jump list -->
+        <nav class="reveal" aria-label="Notification options">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">The options</h2>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {
+              NOTIFY_OPTIONS.map((option) => (
+                <li>
+                  <a
+                    class="inline-flex items-center gap-2 rounded-lg border border-edge bg-surface px-3 py-2 text-sm text-hi transition-colors hover:border-pink-500 hover:text-pink-300"
+                    href={`#${option.id}`}
+                  >
+                    {option.label}
+                    {option.needsAccount && (
+                      <span class="text-[0.7rem] uppercase tracking-[0.12em] text-dim">
+                        account
+                      </span>
+                    )}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- One section per option, in the list's own recommendation order -->
+        <div class="space-y-6">
+          {
+            NOTIFY_OPTIONS.map((option) => (
+              <section
+                class="reveal scroll-mt-24 overflow-hidden rounded-2xl border border-edge bg-surface"
+                id={option.id}
+              >
+                <header class="border-b border-edge px-5 py-4">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <h2 class="text-lg font-semibold text-hi">
+                      <a class="transition-colors hover:text-pink-400" href={`#${option.id}`}>
+                        {option.label}
+                      </a>
+                    </h2>
+                    {option.needsAccount && <span class={tag}>needs an account</span>}
+                    <span class={`${CHIP} text-xs text-dim`}>{FEED_LABEL[option.feed]}</span>
+                  </div>
+                  <p class="mt-2 text-sm leading-relaxed text-body">
+                    <Inline text={option.blurb} />
+                  </p>
+                </header>
+
+                <div class="px-5 py-5">
+                  <ol class="list-decimal space-y-2 pl-5 marker:font-semibold marker:text-dim">
+                    {option.steps.map((step) => (
+                      <li class="pl-1 text-sm leading-relaxed text-body">
+                        <Inline text={step} />
+                      </li>
+                    ))}
+                  </ol>
+
+                  {option.notes && option.notes.length > 0 && (
+                    <ul class="mt-4 space-y-1.5 border-t border-edge pt-4">
+                      {option.notes.map((note) => (
+                        <li class="flex gap-2 text-xs leading-relaxed text-dim">
+                          <span aria-hidden="true">-</span>
+                          <span>
+                            <Inline text={note} />
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <!-- Where to go next -->
+        <section class="reveal rounded-2xl border border-edge bg-surface p-5 sm:p-6">
+          <h2 class="text-lg font-semibold text-hi">Further reading</h2>
+          <p class="mt-3 text-sm leading-relaxed text-dim">
+            What the feed contains, and the parameters it accepts, are documented in the
+            <a class={link} href="/docs/api">API reference</a>. What this site does and does not
+            keep is in the <a class={link} href="/privacy">privacy policy</a>. Your watchlist itself
+            lives on the <a class={link} href="/watching">Watching page</a>, in this browser only.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Fill the placeholder boxes above with this reader's own URLs. Entirely
+  // local: the watchlist is read from local storage and the URLs are composed
+  // in the browser, with no request of any kind. Every failure - no watchlist,
+  // storage blocked, too many series to make a feed - leaves the placeholder
+  // text exactly as rendered, which is the honest thing for a reader who has
+  // not set a watchlist up yet.
+  import { buildFeedURLs } from '../../lib/feed-url'
+  import { readWatchlist } from '../../lib/watchlist'
+
+  async function fillFeedURLs() {
+    const slots = document.querySelectorAll<HTMLElement>('[data-feed-url]')
+    if (slots.length === 0) return
+    const urls = await buildFeedURLs(readWatchlist())
+    // The calendar representation is the newest of the three, so it is read
+    // tolerantly: a build without it leaves the calendar placeholder exactly as
+    // rendered instead of failing the whole fill.
+    const webcal = (urls as { webcal?: string }).webcal
+    for (const slot of slots) {
+      const kind = slot.dataset.feedUrl
+      const url = kind === 'atom' ? urls.atom : kind === 'json' ? urls.json : webcal
+      if (!url) continue
+      slot.textContent = url
+      slot.classList.remove('text-dim')
+      slot.classList.add('text-hi')
+    }
+  }
+
+  try {
+    void fillFeedURLs().catch(() => {})
+  } catch {
+    /* nothing stored, or storage is unavailable: the placeholders stand. */
+  }
+</script>
