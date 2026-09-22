@@ -2,15 +2,32 @@
 //
 // Everything it renders comes from two places - lib/watchlist.ts (the reader's
 // own localStorage: which series, which volumes they have, which they have been
-// shown) and the public API (each watched series' current entries). No account,
-// no request that says anything about the reader beyond "what is in this
-// series", and nothing stored anywhere but this browser.
+// shown, which they have passed on) and the public API (each watched series'
+// current entries). No account, no request that says anything about the reader
+// beyond "what is in this series", and nothing stored anywhere but this
+// browser.
+//
+// Four TABS, each addressable by a URL hash (lib/watchnav.ts):
+//   Available  the FLAT cross-series view (lib/watch-flat.ts) - everything out
+//              now, newest first, and everything coming, soonest first. This is
+//              the question a reader opens the page with.
+//   All        the per-series panels: where am I in each series I follow.
+//   Get notified  the feed URLs plus the ways to turn one into a notification
+//              (lib/notify-options.ts, shared with /docs/notifications).
+//   Import & backup  seeding the list from a library export, and the only
+//              backup there is.
+// The fetch and seen-snapshot effects below are deliberately page-level, not
+// per tab: they run whichever tab is showing, so flipping tabs never re-fetches
+// a series and never re-badges one as new.
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getSeries, href, today, type Series, type SeriesEntry } from '../../lib/api'
 import { downloadJson } from '../../lib/download'
 import { buildFeedURLs, type FeedURLs } from '../../lib/feed-url'
+import { NOTIFY_INTRO_NOTES, NOTIFY_OPTIONS, notifyDocHref } from '../../lib/notify-options'
 import { runPool, SERIES_POOL } from '../../lib/resolve-books'
+import { flattenAcrossSeries, type FlatEntry } from '../../lib/watch-flat'
+import { hashForWatchTab, watchTabFromHash, type WatchTab } from '../../lib/watchnav'
 import {
   classify,
   exportJSON,
@@ -20,6 +37,7 @@ import {
   looksLikeWatchlist,
   markSeen,
   setOwned,
+  setSkipped,
   unhide,
   unwatch,
   visibleSeries,
@@ -29,8 +47,8 @@ import {
   type Watchlist,
   type WatchlistRow,
 } from '../../lib/watchlist'
-import { BTN_SECONDARY, Icon, TEXT_LINK } from '../ui'
-import { NewPill, OwnCheckbox, ReleaseLine } from './entry-ui'
+import { Badge, BTN_SECONDARY, Icon, TabButton, TEXT_LINK } from '../ui'
+import { NewPill, OwnCheckbox, ReleaseLine, SkipButton } from './entry-ui'
 import LibraryImport from './LibraryImport'
 import { useWatchlist, type WatchlistHandle } from './use-watchlist'
 
@@ -50,7 +68,9 @@ type PanelState =
 /** Everything in a series the reader does NOT have: what they can get now plus
     what they can preorder, in the series' own order. One definition, because
     the summary count, the "mark all seen" action and its visibility condition
-    must all mean the same set. */
+    must all mean the same set. Skipped entries are deliberately outside it: a
+    book the reader passed on is neither news nor something "mark all seen"
+    should sweep. */
 function missing(result: SeriesClassification): ClassifiedEntry[] {
   return [...result.available, ...result.preorder]
 }
@@ -72,6 +92,47 @@ export default function WatchingPage() {
   const visible = visibleSeries(store)
   const hiddenRows = hiddenSeries(store)
   const now = today()
+
+  // Initialise the tab from the URL hash: this island is client:only, so window
+  // is available at first render and there is no SSR pass to agree with (the
+  // same reasoning as the work page's tab bar).
+  const [tab, setTab] = useState<WatchTab>(() => watchTabFromHash(window.location.hash))
+
+  // Canonicalise a stale fragment once on mount - an old bookmark or a heading
+  // anchor someone linked falls back to Available above, so drop the fragment
+  // the fallback ignored rather than let it be copied onward.
+  useEffect(() => {
+    const canonical = hashForWatchTab(tab)
+    if (window.location.hash !== canonical) {
+      window.history.replaceState(
+        null,
+        '',
+        `${window.location.pathname}${window.location.search}${canonical}`
+      )
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const selectTab = useCallback((next: WatchTab) => {
+    setTab(next)
+    const hash = hashForWatchTab(next)
+    window.history.replaceState(
+      null,
+      '',
+      `${window.location.pathname}${window.location.search}${hash}`
+    )
+  }, [])
+
+  // A DELIBERATE deviation from the work page, which canonicalises the hash on
+  // mount and then owns it outright. /docs/notifications links back here as
+  // /watching#notify, and a reader already on the page would otherwise watch
+  // the fragment change while nothing moved; back and forward over the tabs is
+  // the same event. replaceState (above) fires no hashchange, so selecting a
+  // tab cannot loop through this.
+  useEffect(() => {
+    const onHashChange = () => setTab(watchTabFromHash(window.location.hash))
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
 
   // Fetch every watched series once. A slug already requested is never asked
   // for again, so unwatching one does not re-fetch the rest, and the controller
@@ -146,91 +207,330 @@ export default function WatchingPage() {
     { fresh: 0, preorders: 0 }
   )
 
+  // The flat view's input: every READY panel, in the shape lib/watch-flat.ts
+  // reads. Sorting is its job, not this file's.
+  const readyPanels = classified.flatMap(({ row, panel }) =>
+    panel.status === 'ready' ? [{ slug: row.slug, name: row.name, result: panel.result }] : []
+  )
+  const flat = flattenAcrossSeries(readyPanels)
+  const stillLoading = classified.filter(({ panel }) => panel.status === 'loading').length
+  const unreadable = classified.filter(({ panel }) => panel.status === 'error').length
+
+  const markOwnedIn = (slug: string, workID: string, owned: boolean) =>
+    save(setOwned(store, slug, workID, owned))
+  const markSkippedIn = (slug: string, workID: string, skipped: boolean) =>
+    save(setSkipped(store, slug, workID, skipped))
+
+  /** "Mark all seen" for the flat view: every ready series at once, so the
+      badges the reader just read through all clear together. One store write
+      and one snapshot update, because a per-series loop over `save` would each
+      time discard the previous result. */
+  function markEverythingSeen() {
+    let nextStore = store
+    const captured: Record<string, string[]> = {}
+    for (const row of visible) {
+      const state = details[row.slug]
+      if (state?.status !== 'ready') continue
+      const ids = state.data.works.map((e) => e.work.id)
+      captured[row.slug] = ids
+      nextStore = markSeen(nextStore, row.slug, ids)
+    }
+    setSeenAtLoad((s) => ({ ...s, ...captured }))
+    if (nextStore !== store) save(nextStore)
+  }
+
+  const watching = visible.length > 0
+  const readyCount = flat.preorder.length + flat.available.length
+
   return (
-    <div className="space-y-10">
-      {visible.length === 0 ? (
-        <EmptyState />
-      ) : (
-        <>
-          <p className="text-lg text-body" aria-live="polite">
-            <span className="font-semibold text-hi">{totals.fresh.toLocaleString()} new</span>,{' '}
-            {totals.preorders.toLocaleString()}{' '}
-            {totals.preorders === 1 ? 'preorder' : 'preorders'} across{' '}
-            {visible.length.toLocaleString()} series.
-          </p>
-          <div className="space-y-6">
-            {classified.map(({ row, panel }) => (
-              <SeriesPanel
-                key={row.slug}
-                row={row}
-                panel={panel}
-                now={now}
-                watchlist={watchlist}
-                onMarkAllSeen={(ids) => {
-                  setSeenAtLoad((s) => ({ ...s, [row.slug]: ids }))
-                  save(markSeen(store, row.slug, ids))
-                }}
-              />
-            ))}
-          </div>
-        </>
-      )}
-
-      {visible.length > 0 ? <NotificationFeed store={store} slugKey={slugKey} /> : null}
-
-      <section>
-        <h2 className="text-xl font-bold tracking-tight text-hi">Import from your library</h2>
-        <p className="mt-2 text-sm leading-relaxed text-body">
-          Already have an export from OpenAudible, Libation, Audiobookshelf or the{' '}
-          <code className="rounded border border-edge bg-raised px-1.5 py-0.5 font-mono text-xs text-pink-300">
-            metascan
-          </code>{' '}
-          tool? Drop it here to start watching the series it covers, with the volumes you own
-          already ticked off.
+    <div className="space-y-8">
+      {watching ? (
+        <p className="text-lg text-body" aria-live="polite">
+          <span className="font-semibold text-hi">{totals.fresh.toLocaleString()} new</span>,{' '}
+          {totals.preorders.toLocaleString()}{' '}
+          {totals.preorders === 1 ? 'preorder' : 'preorders'} across{' '}
+          {visible.length.toLocaleString()} series.
         </p>
-        <div className="mt-5">
-          <LibraryImport watchlist={watchlist} />
-        </div>
-      </section>
-
-      {hiddenRows.length > 0 ? (
-        <details className="rounded-2xl border border-edge bg-surface p-6">
-          <summary className="cursor-pointer font-semibold text-hi">
-            Hidden series ({hiddenRows.length.toLocaleString()})
-          </summary>
-          <p className="mt-3 text-sm leading-relaxed text-body">
-            These stay out of the list above and out of every library import, until you bring one
-            back.
-          </p>
-          <ul className="mt-4 space-y-2">
-            {hiddenRows.map((row) => (
-              <li
-                key={row.slug}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
-              >
-                <a href={href.series(row.slug)} className="min-w-0 truncate font-medium text-hi hover:text-pink-300">
-                  {row.name || row.slug}
-                </a>
-                <span className="flex shrink-0 gap-4 text-sm">
-                  <button type="button" onClick={() => save(unhide(store, row.slug))} className={TEXT_LINK}>
-                    Unhide
-                  </button>
-                  <button type="button" onClick={() => save(unwatch(store, row.slug))} className={TEXT_LINK}>
-                    Forget
-                  </button>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </details>
       ) : null}
 
-      <Backup watchlist={watchlist} />
+      {/* The bar shows even with an empty watchlist: Import & backup is how a
+          reader with an export in hand starts, and hiding it would hide the
+          quickest way in. */}
+      <div
+        role="tablist"
+        aria-label="Watching sections"
+        className="flex flex-wrap gap-x-6 border-b border-edge"
+      >
+        <TabButton
+          active={tab === 'available'}
+          onClick={() => selectTab('available')}
+          label="Available"
+          count={readyPanels.length > 0 ? readyCount : undefined}
+          id="tab-available"
+          controls="panel-available"
+        />
+        <TabButton
+          active={tab === 'all'}
+          onClick={() => selectTab('all')}
+          label="All"
+          count={watching ? visible.length : undefined}
+          id="tab-all"
+          controls="panel-all"
+        />
+        <TabButton
+          active={tab === 'notify'}
+          onClick={() => selectTab('notify')}
+          label="Get notified"
+          id="tab-notify"
+          controls="panel-notify"
+        />
+        <TabButton
+          active={tab === 'import'}
+          onClick={() => selectTab('import')}
+          label="Import & backup"
+          id="tab-import"
+          controls="panel-import"
+        />
+      </div>
+
+      {tab === 'available' ? (
+        <div role="tabpanel" id="panel-available" aria-labelledby="tab-available">
+          {!watching ? (
+            <EmptyState onImport={() => selectTab('import')} />
+          ) : (
+            <div className="space-y-6">
+              {flat.preorder.some((e) => e.isNew) || flat.available.some((e) => e.isNew) ? (
+                <p className="text-sm">
+                  <button type="button" onClick={markEverythingSeen} className={TEXT_LINK}>
+                    Mark all seen
+                  </button>
+                </p>
+              ) : null}
+              <FlatGroup
+                heading="Preorders"
+                entries={flat.preorder}
+                now={now}
+                onOwned={markOwnedIn}
+                onSkipped={markSkippedIn}
+              />
+              <FlatGroup
+                heading="Available"
+                entries={flat.available}
+                now={now}
+                onOwned={markOwnedIn}
+                onSkipped={markSkippedIn}
+              />
+              {readyCount === 0 && stillLoading === 0 ? (
+                <p className="text-sm text-dim">You have every released entry.</p>
+              ) : null}
+              <LoadNote loading={stillLoading} errored={unreadable} />
+            </div>
+          )}
+        </div>
+      ) : null}
+
+      {tab === 'all' ? (
+        <div role="tabpanel" id="panel-all" aria-labelledby="tab-all" className="space-y-6">
+          {!watching ? (
+            <EmptyState onImport={() => selectTab('import')} />
+          ) : (
+            <>
+              {classified.map(({ row, panel }) => (
+                <SeriesPanel
+                  key={row.slug}
+                  row={row}
+                  panel={panel}
+                  now={now}
+                  watchlist={watchlist}
+                  onMarkAllSeen={(ids) => {
+                    setSeenAtLoad((s) => ({ ...s, [row.slug]: ids }))
+                    save(markSeen(store, row.slug, ids))
+                  }}
+                />
+              ))}
+            </>
+          )}
+
+          {hiddenRows.length > 0 ? (
+            <details className="rounded-2xl border border-edge bg-surface p-6">
+              <summary className="cursor-pointer font-semibold text-hi">
+                Hidden series ({hiddenRows.length.toLocaleString()})
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-body">
+                These stay out of the list above and out of every library import, until you bring
+                one back.
+              </p>
+              <ul className="mt-4 space-y-2">
+                {hiddenRows.map((row) => (
+                  <li
+                    key={row.slug}
+                    className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-edge bg-raised px-4 py-3"
+                  >
+                    <a
+                      href={href.series(row.slug)}
+                      className="min-w-0 truncate font-medium text-hi hover:text-pink-300"
+                    >
+                      {row.name || row.slug}
+                    </a>
+                    <span className="flex shrink-0 gap-4 text-sm">
+                      <button
+                        type="button"
+                        onClick={() => save(unhide(store, row.slug))}
+                        className={TEXT_LINK}
+                      >
+                        Unhide
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => save(unwatch(store, row.slug))}
+                        className={TEXT_LINK}
+                      >
+                        Forget
+                      </button>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : null}
+        </div>
+      ) : null}
+
+      {tab === 'notify' ? (
+        <div role="tabpanel" id="panel-notify" aria-labelledby="tab-notify">
+          <NotificationFeed store={store} slugKey={slugKey} watching={watching} />
+        </div>
+      ) : null}
+
+      {tab === 'import' ? (
+        <div role="tabpanel" id="panel-import" aria-labelledby="tab-import" className="space-y-8">
+          <section>
+            <h2 className="text-xl font-bold tracking-tight text-hi">Import from your library</h2>
+            <p className="mt-2 text-sm leading-relaxed text-body">
+              Already have an export from OpenAudible, Libation, Audiobookshelf or the{' '}
+              <code className="rounded border border-edge bg-raised px-1.5 py-0.5 font-mono text-xs text-pink-300">
+                metascan
+              </code>{' '}
+              tool? Drop it here to start watching the series it covers, with the volumes you own
+              already ticked off.
+            </p>
+            <div className="mt-5">
+              <LibraryImport watchlist={watchlist} />
+            </div>
+          </section>
+
+          <Backup watchlist={watchlist} />
+        </div>
+      ) : null}
     </div>
   )
 }
 
-function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: string }) {
+/** The one dim line saying the flat list is not the whole story yet: a series
+    still being fetched, or one the API could not answer for. Renders nothing
+    when every watched series is in. */
+function LoadNote({ loading, errored }: { loading: number; errored: number }) {
+  const parts: string[] = []
+  if (loading > 0) parts.push(`${loading.toLocaleString()} series still loading`)
+  if (errored > 0) parts.push(`${errored.toLocaleString()} series could not be read just now`)
+  if (parts.length === 0) return null
+  return (
+    <p className="text-xs text-dim" aria-live="polite">
+      {parts.join('. ')}.
+    </p>
+  )
+}
+
+/** One half of the flat view. Empty groups render nothing at all - the panel's
+    own "you have every released entry" line covers the case where both are. */
+function FlatGroup({
+  heading,
+  entries,
+  now,
+  onOwned,
+  onSkipped,
+}: {
+  heading: string
+  entries: FlatEntry[]
+  now: string
+  onOwned: (slug: string, workID: string, owned: boolean) => void
+  onSkipped: (slug: string, workID: string, skipped: boolean) => void
+}) {
+  if (entries.length === 0) return null
+  return (
+    <div>
+      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+        {heading} ({entries.length.toLocaleString()})
+      </h3>
+      <ul className="mt-3 space-y-2">
+        {entries.map((flat) => (
+          <FlatRow
+            key={`${flat.slug}-${flat.entry.work.id}`}
+            flat={flat}
+            now={now}
+            onOwned={(next) => onOwned(flat.slug, flat.entry.work.id, next)}
+            onSkipped={(next) => onSkipped(flat.slug, flat.entry.work.id, next)}
+          />
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+/** One entry in the flat view: EntryRow plus the series it came from, which is
+    the whole reason the flat list is readable at all. */
+function FlatRow({
+  flat,
+  now,
+  onOwned,
+  onSkipped,
+}: {
+  flat: FlatEntry
+  now: string
+  onOwned: (owned: boolean) => void
+  onSkipped: (skipped: boolean) => void
+}) {
+  const work = flat.entry.work
+  return (
+    <li className="flex items-center gap-3 rounded-xl border border-edge bg-raised p-3">
+      <div className="min-w-0 flex-1">
+        <a
+          href={href.series(flat.slug)}
+          className="block truncate text-xs text-dim hover:text-pink-300"
+        >
+          {flat.series}
+        </a>
+        <a href={href.work(work.id)} className="mt-0.5 block">
+          <span className="flex flex-wrap items-center gap-2">
+            <span className="shrink-0 text-sm font-black tabular-nums text-edge">
+              {flat.entry.position}
+            </span>
+            <span className="min-w-0 truncate font-medium text-hi hover:text-pink-300">
+              {work.title}
+            </span>
+            {flat.isNew ? <NewPill /> : null}
+          </span>
+          <ReleaseLine date={work.release_date} today={now} />
+        </a>
+      </div>
+      <OwnCheckbox title={work.title} checked={false} onChange={onOwned} />
+      <SkipButton title={work.title} skipped={false} onChange={onSkipped} />
+    </li>
+  )
+}
+
+function NotificationFeed({
+  store,
+  slugKey,
+  watching,
+}: {
+  store: Watchlist
+  slugKey: string
+  /** Whether there is a visible series at all. With none there is no URL to
+      build, so the controls are replaced by the one line that says so - the
+      ways to be told are still worth reading. */
+  watching: boolean
+}) {
   const [urls, setURLs] = useState<FeedURLs | null>(null)
   const [note, setNote] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -239,6 +539,7 @@ function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: strin
     let current = true
     setURLs(null)
     setNote('')
+    if (!slugKey) return
     void buildFeedURLs(store)
       .then((next) => {
         if (current) setURLs(next)
@@ -255,8 +556,9 @@ function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: strin
     return () => {
       current = false
     }
-    // The URL carries only visible slugs. Ownership, seen marks and stored
-    // series names do not affect it, so slugKey is the complete dependency.
+    // The URL carries only visible slugs. Ownership, seen marks, skips and
+    // stored series names do not affect it, so slugKey is the complete
+    // dependency.
   }, [slugKey])
 
   async function copyURL() {
@@ -280,64 +582,90 @@ function NotificationFeed({ store, slugKey }: { store: Watchlist; slugKey: strin
       <h2 className="text-xl font-bold tracking-tight text-hi">Get notified</h2>
       <p className="mt-2 text-sm leading-relaxed text-body">
         The URL below is a private feed of your watched series. Nothing is stored on this site: the
-        URL itself is the subscription. Anyone holding it can see which series it lists, and you
-        must copy it again whenever your watched list changes.
+        URL itself is the subscription.
       </p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-        <input
-          ref={inputRef}
-          type="url"
-          readOnly
-          aria-label="Atom feed URL"
-          /* Once the build has failed, `note` carries the reason; leaving the
-             placeholder up would say the URL is still coming when nothing is
-             still trying. */
-          value={urls?.atom ?? (note ? '' : 'Building your feed URL...')}
-          onFocus={(event) => event.currentTarget.select()}
-          className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
-        />
-        <button
-          type="button"
-          onClick={() => void copyURL()}
-          disabled={!urls}
-          className={`${BTN_SECONDARY} shrink-0 px-5 py-2 text-sm`}
-        >
-          Copy
-        </button>
-      </div>
-      <p className="mt-3 text-sm text-dim" aria-live="polite">
-        {note}
-      </p>
-      {urls ? (
-        <p className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-          <a className={TEXT_LINK} href={urls.atom}>
-            Atom feed
-          </a>
-          <a className={TEXT_LINK} href={urls.json}>
-            JSON Feed
-          </a>
+      {!watching ? (
+        <p className="mt-5 text-sm text-dim">
+          Watch a series first and this tab will build your feed URL.
         </p>
-      ) : null}
-      <details className="mt-5 rounded-xl border border-edge bg-raised p-4">
-        <summary className="cursor-pointer text-sm font-semibold text-hi">How to use it</summary>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-body">
-          <li>
-            Any RSS reader: in Feedly, NetNewsWire, Miniflux or FreshRSS, paste the URL as a new
-            subscription.
+      ) : (
+        <>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+            <input
+              ref={inputRef}
+              type="url"
+              readOnly
+              aria-label="Atom feed URL"
+              /* Once the build has failed, `note` carries the reason; leaving the
+                 placeholder up would say the URL is still coming when nothing is
+                 still trying. */
+              value={urls?.atom ?? (note ? '' : 'Building your feed URL...')}
+              onFocus={(event) => event.currentTarget.select()}
+              className="min-w-0 flex-1 rounded-lg border border-edge bg-raised px-3 py-2 font-mono text-xs text-hi outline-none focus:border-pink-500"
+            />
+            <button
+              type="button"
+              onClick={() => void copyURL()}
+              disabled={!urls}
+              className={`${BTN_SECONDARY} shrink-0 px-5 py-2 text-sm`}
+            >
+              Copy
+            </button>
+          </div>
+          <p className="mt-3 text-sm text-dim" aria-live="polite">
+            {note}
+          </p>
+          {urls ? (
+            <p className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+              <a className={TEXT_LINK} href={urls.webcal}>
+                Calendar (webcal)
+              </a>
+              <a className={TEXT_LINK} href={urls.atom}>
+                Atom feed
+              </a>
+              <a className={TEXT_LINK} href={urls.json}>
+                JSON Feed
+              </a>
+            </p>
+          ) : null}
+        </>
+      )}
+
+      <ul className="mt-6 list-disc space-y-2 pl-5 text-sm leading-relaxed text-body">
+        {NOTIFY_INTRO_NOTES.map((intro) => (
+          <li key={intro}>{intro}</li>
+        ))}
+      </ul>
+
+      <h3 className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-pink-500">
+        Pick where you want to be told
+      </h3>
+      <ul className="mt-3 space-y-3">
+        {NOTIFY_OPTIONS.map((option) => (
+          <li key={option.id} className="rounded-xl border border-edge bg-raised p-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-medium text-hi">{option.label}</span>
+              {option.needsAccount ? <Badge>needs an account</Badge> : null}
+            </div>
+            <p className="mt-1 text-sm leading-relaxed text-body">{option.blurb}</p>
+            <a href={notifyDocHref(option.id)} className={`${TEXT_LINK} mt-2 inline-block text-sm`}>
+              Steps
+            </a>
           </li>
-          <li>Slack or Discord: add it through their RSS apps or a feed-to-channel bot.</li>
-          <li>
-            Automation: use an IFTTT or Zapier &quot;new item in feed&quot; trigger and send a phone
-            notification.
-          </li>
-          <li>Self-hosted push: give the URL to an RSS-to-ntfy bridge.</li>
-        </ul>
-      </details>
+        ))}
+      </ul>
+      <p className="mt-4 text-sm text-body">
+        Every option, step by step, is on{' '}
+        <a href="/docs/notifications" className={TEXT_LINK}>
+          the notifications page
+        </a>
+        .
+      </p>
     </section>
   )
 }
 
-function EmptyState() {
+function EmptyState({ onImport }: { onImport: () => void }) {
   return (
     <div className="rounded-2xl border border-edge bg-surface p-8 text-center">
       <h2 className="text-xl font-bold text-hi">You are not watching anything yet</h2>
@@ -352,13 +680,19 @@ function EmptyState() {
           Search for a series
         </a>
       </div>
-      <p className="mt-4 text-sm text-dim">Or import a library export below to start in one go.</p>
+      <p className="mt-4 text-sm text-dim">
+        Or{' '}
+        <button type="button" onClick={onImport} className={TEXT_LINK}>
+          import a library export
+        </button>{' '}
+        to start in one go.
+      </p>
     </div>
   )
 }
 
 /** One watched series: what is missing, what is on preorder, what is already
-    yours, and the controls for the series as a whole. */
+    yours, what you passed on, and the controls for the series as a whole. */
 function SeriesPanel({
   row,
   panel,
@@ -375,6 +709,8 @@ function SeriesPanel({
   const name = row.name || row.slug
   const markOwned = (workID: string, owned: boolean) =>
     save(setOwned(store, row.slug, workID, owned))
+  const markSkipped = (workID: string, skipped: boolean) =>
+    save(setSkipped(store, row.slug, workID, skipped))
   // The set the header's count, its action and its visibility condition all
   // mean - computed once, so they cannot drift apart within one render.
   const unowned = panel.status === 'ready' ? missing(panel.result) : []
@@ -425,12 +761,14 @@ function SeriesPanel({
             entries={panel.result.available}
             now={now}
             onOwned={markOwned}
+            onSkipped={markSkipped}
           />
           <EntryGroup
             heading="Preorder"
             entries={panel.result.preorder}
             now={now}
             onOwned={markOwned}
+            onSkipped={markSkipped}
           />
           {panel.result.owned.length > 0 ? (
             <details className="mt-5">
@@ -450,6 +788,26 @@ function SeriesPanel({
               </ul>
             </details>
           ) : null}
+          {panel.result.skipped.length > 0 ? (
+            <details className="mt-3">
+              <summary className="cursor-pointer text-sm text-dim hover:text-hi">
+                {panel.result.skipped.length.toLocaleString()} skipped
+              </summary>
+              <ul className="mt-3 space-y-2">
+                {panel.result.skipped.map((entry) => (
+                  <EntryRow
+                    key={entry.work.id}
+                    entry={entry}
+                    now={now}
+                    owned={false}
+                    skipped
+                    onOwned={(next) => markOwned(entry.work.id, next)}
+                    onSkipped={(next) => markSkipped(entry.work.id, next)}
+                  />
+                ))}
+              </ul>
+            </details>
+          ) : null}
         </>
       )}
     </section>
@@ -462,6 +820,7 @@ function EntryGroup({
   entries,
   now,
   onOwned,
+  onSkipped,
 }: {
   heading: string
   /** Shown INSTEAD of the group when it is empty. A group with no empty line
@@ -470,6 +829,7 @@ function EntryGroup({
   entries: ClassifiedEntry[]
   now: string
   onOwned: (workID: string, owned: boolean) => void
+  onSkipped: (workID: string, skipped: boolean) => void
 }) {
   if (entries.length === 0) {
     if (!empty) return null
@@ -489,6 +849,7 @@ function EntryGroup({
             isNew={isNew}
             owned={false}
             onOwned={(next) => onOwned(entry.work.id, next)}
+            onSkipped={(next) => onSkipped(entry.work.id, next)}
           />
         ))}
       </ul>
@@ -501,13 +862,19 @@ function EntryRow({
   now,
   isNew = false,
   owned,
+  skipped = false,
   onOwned,
+  onSkipped,
 }: {
   entry: SeriesEntry
   now: string
   isNew?: boolean
   owned: boolean
+  skipped?: boolean
   onOwned: (owned: boolean) => void
+  /** Absent on an OWNED row: a book the reader has is already out of the way,
+      so "not interested" would be a control with nothing to do. */
+  onSkipped?: (skipped: boolean) => void
 }) {
   const work = entry.work
   return (
@@ -521,6 +888,9 @@ function EntryRow({
         <ReleaseLine date={work.release_date} today={now} />
       </a>
       <OwnCheckbox title={work.title} checked={owned} onChange={onOwned} />
+      {onSkipped ? (
+        <SkipButton title={work.title} skipped={skipped} onChange={onSkipped} />
+      ) : null}
     </li>
   )
 }

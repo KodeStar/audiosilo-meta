@@ -40,7 +40,7 @@ import {
 import { addRecordingIssueUrlForWork } from '../../lib/github-prefill'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
-import { Badge, Chevron, PILL_LINK, TEXT_LINK } from '../ui'
+import { Badge, Chevron, PILL_LINK, TabButton, TEXT_LINK } from '../ui'
 import { CharactersPanel, RecapsPanel } from './expressive-panels'
 import {
   useEntitySlug,
@@ -647,41 +647,6 @@ function GeneralPanel({
 
       <SeriesRail work={work} series={series} />
     </>
-  )
-}
-
-/** One tab in the work-page tab bar: an underlined active state in the accent,
-    with an optional muted count beside the label. */
-function TabButton({
-  active,
-  onClick,
-  label,
-  count,
-  id,
-  controls,
-}: {
-  active: boolean
-  onClick: () => void
-  label: string
-  count?: number
-  id: string
-  controls: string
-}) {
-  return (
-    <button
-      type="button"
-      role="tab"
-      id={id}
-      aria-selected={active}
-      aria-controls={controls}
-      onClick={onClick}
-      className={`-mb-px flex items-center gap-1.5 border-b-2 px-1 pb-3 pt-1 text-sm font-medium transition-colors ${
-        active ? 'border-pink-500 text-hi' : 'border-transparent text-dim hover:text-body'
-      }`}
-    >
-      <span>{label}</span>
-      {typeof count === 'number' ? <span className="text-xs font-normal text-dim">{count}</span> : null}
-    </button>
   )
 }
 
