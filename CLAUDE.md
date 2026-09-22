@@ -924,8 +924,8 @@ and the shards answer the API's 503. Rendering is `encoding/xml` and
 deterministic - two renders of one snapshot are byte-identical. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
-**The stateless WATCH FEEDS** are `GET /api/v1/watch/feed.atom` and
-`GET /api/v1/watch/feed.json`: `s` carries up to 200 comma-separated series
+**The stateless WATCH FEEDS** are `GET /api/v1/watch/feed.atom`,
+`GET /api/v1/watch/feed.json` and `GET /api/v1/watch/releases.ics`: `s` carries up to 200 comma-separated series
 slugs, or `z:<base64url(deflate(csv))>` using raw DEFLATE and no padding, so the
 server needs no account or subscription store. They resolve retired series
 slugs, report unknown ones, return released, newly catalogued and preorderable
@@ -935,12 +935,37 @@ release is a new item and nothing else is). Dates are read at the precision the
 catalogue states them - `releaseIsFuture`/`formatReleaseDate` in `watchfeed.go`
 are a HAND-MIRRORED TWIN of `site/src/lib/dates.ts`, pinned to the same cases on
 both sides, so the feed and the watching page can never say two different things
-about one book. Both representations are public-cacheable for one hour and use
-an ETag over the artifact identity, the representation, the raw `s`/`window`
-parameters AND THE DAY: this is the one body on the server whose content moves
+about one book. All THREE representations are public-cacheable for one hour and
+use an ETag over the artifact identity, the representation (the PATH, so each of
+the three has a validator of its own), the raw `s`/`window` parameters AND THE
+DAY: this is the one body on the server whose content moves
 with the clock (a rolling window, a preorder becoming a release), so a validator
 naming only the artifact would let a conditional GET 304-renew a stale feed for
 every hour between data releases.
+
+**The CALENDAR is the third representation of that one feed** (`handleWatchICS`
+/ `renderICalendar` in `watchfeed.go`, golden-tested against
+`testdata/golden/watch-feed.ics`): the same handler, the same `s`/`window`
+parameters and the same items, rendered as RFC 5545 for a reader who subscribes
+by swapping the scheme to `webcal://` (`REFRESH-INTERVAL` and `X-PUBLISHED-TTL`
+12h), so a watched series' releases land in Google, Apple or Outlook Calendar
+rather than in a feed reader. One all-day VEVENT per DATED item, on the day the
+stated date names AT ITS OWN PRECISION - a bare `2026` is 1 January and
+`2026-10` the 1st of October, with the DESCRIPTION (the feed item's own summary)
+saying which precision that was. An UNDATED item is OMITTED rather than placed
+on the day the catalogue learned of it: "we do not know when this comes out" is
+not an event and an all-day one has nowhere to say so - Atom and JSON still
+carry it, so the calendar is deliberately the smaller list. The UID is the feed
+item's id in mail-address form (`watchTagPrefix` is the one spelling of the tag
+URI authority both are built from), so it carries the `preorder`/`released`
+suffix with it and a preorder BECOMING a release is a NEW event rather than a
+moved one. DTSTAMP derives from the RELEASE DATE and never from the clock, which
+is what makes the body deterministic - and therefore golden-testable and honest
+under a day-granular ETag; the one cosmetic consequence (a date corrected to an
+earlier one moves DTSTAMP backwards) is argued at the function. `icsText` and
+`icsFold` own the wire format: RFC 5545 TEXT escaping, CRLF endings and
+75-OCTET folding broken at a UTF-8 BOUNDARY, since a title is frequently not
+ASCII and a naive cut hands the reader a calendar it cannot decode.
 
 **The work CARD carries `release_date`** (`store.go`'s `workCard`, so every
 surface that composes one: `GET /series/{id}` entries, all four searches and
@@ -974,7 +999,78 @@ seeded from a library export, and that import shares EVERY matching rule with
 `/import`: the sweep moved out of `ImportTool.tsx` into
 `site/src/lib/resolve-books.ts` (identifier lookup, then the author-search
 existing-work match) and both pages call it, so the two can never disagree about
-which of a reader's books the catalogue holds.
+which of a reader's books the catalogue holds. All four subscription URLs come
+from `site/src/lib/feed-url.ts` (Atom, JSON Feed, the calendar, and the calendar
+again under `webcal:`, which is what makes a calendar app offer to subscribe
+where an https link makes a browser offer to download) and the CSV-or-compact
+decision is made ONCE, measured on the LONGEST of them, so one watchlist can
+never produce a CSV feed URL beside a compact calendar URL - two spellings of
+one list read as two subscriptions.
+
+**The page is FOUR TABS**, each addressable by a URL hash and mapped by
+`site/src/lib/watchnav.ts` alone (Available owns the EMPTY fragment): Available
+is the FLAT cross-series view with one "Mark all seen", All is the per-series
+panels, Get notified is the feed URLs plus the options picker, and Import &
+backup is the export/import. It canonicalises a stale fragment on mount AND
+listens for `hashchange` - a DELIBERATE deviation from the work page's tab bar,
+which owns the hash outright: `/docs/notifications` links back to
+`/watching#notify`, and a reader already on the page would otherwise watch the
+fragment change while nothing moved. The FLAT ORDERING is
+`site/src/lib/watch-flat.ts`'s alone - it hands the caller sorted lists, so
+there is no second ordering seam a component can get wrong: preorders soonest
+first, released NEWEST first, an entry with no date LAST in either direction
+(treating an absent date as infinitely old would be a guess, floating it to the
+top would bury the releases), series name then position as the tie-break. Dates
+compare as PLAIN STRINGS at the precision the catalogue states them - the rule
+`workCard` picks a card's date by - because parsing would drag the reader's
+timezone into a fact that has none, and `positionStart` is a hand-mirrored TWIN
+of Go's in `internal/serve/queries.go`.
+
+**A per-book SKIP** ("not interested") is the third work-slug list beside
+`owned` and `seen` in the stored watchlist (`setSkipped` in `watchlist.ts`),
+ADDITIVE at storage version 1 - a stored document without it parses, an import
+UNIONS it like the other two, so no reader's data needs migrating and the
+version stays where it was. `classify`'s precedence is owned > skipped >
+preorder/available: a book they went on to buy is no longer one they passed on,
+and a skip is deliberately not a second meaning for `owned`, which is what the
+"I have these" list and a library import read. It is a PAGE-SIDE filter and
+nothing more - the feed URL carries series slugs and NOTHING ELSE, so a skipped
+work still arrives in every feed and in the calendar, which `NOTIFY_INTRO_NOTES`
+and `/privacy` both say out loud. Skipped entries sit behind an "N skipped"
+disclosure in the series panel and are outside `missing()`, so "Mark all seen"
+never sweeps them; the same `SkipButton` (`components/watching/entry-ui.tsx`)
+also sits on the series page, where a row is never hidden.
+
+**The header carries a COUNT PILL next to "Watching"** on every page of the site
+(`components/Header.astro`'s bundled script is DOM glue only - every rule is the
+pure, tested `site/src/lib/watch-badge.ts`, and nothing there loads React). It
+fetches the reader's OWN `watch/feed.json` - the very URL `buildFeedURLs`
+composes, carrying only the series slugs - at most once an hour
+(`WATCH_BADGE_TTL_MS`, which is also the feed's own public cache lifetime, so a
+tighter loop would mostly re-read a CDN copy of what we already have), and
+caches the WORK IDS rather than a count, under `audiosilo-meta:watch-badge`.
+That is the whole design: with the ids in hand `badgeCount` is a PURE FUNCTION
+of the cache and the LIVE watchlist, so a book marked seen, owned or skipped
+repaints the badge at once instead of leaving a stale number sitting there for
+an hour, and the ids are read off each item's `url` rather than its `id`, whose
+`preorder`/`released` suffix would count one book twice. Nothing watched means
+no request at all, and EVERY failure degrades to no badge (offline, a mock API
+with no feed route, more than 200 series, a browser without
+`CompressionStream`). `save` dispatches `WATCHLIST_CHANGED_EVENT` for a mark
+made in an island of this tab and `storage` covers another tab. KNOWN
+LIMITATION, stated in both files: the feed's 90-day window means a never-seen
+work catalogued before it is counted on `/watching` and NOT in the badge - the
+badge is the cheap "anything new lately" number, the page is the complete
+answer.
+
+**`/docs/notifications`** is the step-by-step guide behind that Get notified
+tab, and the two surfaces render ONE list - `site/src/lib/notify-options.ts`
+(`NOTIFY_OPTIONS`: label, blurb, numbered steps, cadence notes and which of the
+three URLs each one pastes, in recommendation order; plus `NOTIFY_INTRO_NOTES`
+and `notifyDocHref`, whose anchor IS the option's id). A second copy would let
+the tab offer an option the docs page has no instructions for, which is the
+shape of every "how do I actually use this" complaint the vague list it replaced
+got.
 
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
