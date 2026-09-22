@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -21,6 +22,10 @@ const (
 	maxWatchFeedItems  = 200
 	watchFeedMaxAge    = "public, max-age=3600"
 	watchFeedTitle     = "AudioSilo Meta: new in your series"
+	// watchTagPrefix is the one spelling of this project's tag: URI authority.
+	// The feed's own id, every item id and the iCalendar UID derived from one
+	// are all built from it, so they cannot drift apart.
+	watchTagPrefix = "tag:meta.audiosilo.app,2026:"
 )
 
 type watchFeedItem struct {
@@ -33,6 +38,11 @@ type watchFeedItem struct {
 	updated  time.Time
 	series   string
 	position string
+	// release is the release date the catalogue STATES, at its own precision,
+	// and is empty for an item that states none. Only the calendar rendering
+	// reads it: an all-day event needs a date, where Atom and JSON date an
+	// undated item by when the catalogue learned of it.
+	release string
 }
 
 type watchFeed struct {
@@ -50,6 +60,10 @@ func (s *Server) handleWatchAtom(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleWatchJSON(w http.ResponseWriter, r *http.Request) {
 	s.handleWatchFeed(w, r, "application/feed+json; charset=utf-8", renderJSONFeed)
+}
+
+func (s *Server) handleWatchICS(w http.ResponseWriter, r *http.Request) {
+	s.handleWatchFeed(w, r, "text/calendar; charset=utf-8", renderICalendar)
 }
 
 func (s *Server) handleWatchFeed(
@@ -134,7 +148,7 @@ func (s *Server) watchFeedSelfURL(path, rawSeries, rawWindow string) string {
 // for the life of that URL. Deliberately free of the artifact and the clock -
 // an id that moved with the data would make every poll look like a new feed.
 func watchFeedID(rawSeries, rawWindow string) string {
-	return "tag:meta.audiosilo.app,2026:watch/" + identity(rawSeries, rawWindow)
+	return watchTagPrefix + "watch/" + identity(rawSeries, rawWindow)
 }
 
 // watchFeedETag is the feed's cache validator. It covers the artifact, the
@@ -279,7 +293,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 	if card == nil {
 		return watchFeedItem{}, false
 	}
-	var state, stateID, summary string
+	var state, stateID, summary, stated string
 	var updated time.Time
 	var release time.Time
 	var dated bool
@@ -289,6 +303,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 	switch {
 	case dated:
 		updated = release
+		stated = card.ReleaseDate
 		switch {
 		case releaseIsFuture(card.ReleaseDate, now):
 			state, stateID = "preorder", "preorder"
@@ -328,7 +343,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		authors[i] = author.Name
 	}
 	return watchFeedItem{
-		id:    "tag:meta.audiosilo.app,2026:work/" + card.ID + "/" + stateID,
+		id:    watchTagPrefix + "work/" + card.ID + "/" + stateID,
 		title: title,
 		state: state,
 		// Config.SiteURL is stripped of its trailing slash once, in New, and
@@ -340,6 +355,7 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		updated:  updated.UTC(),
 		series:   seriesName,
 		position: entry.Position,
+		release:  stated,
 	}, true
 }
 
@@ -539,4 +555,125 @@ func renderJSONFeed(feed watchFeed) ([]byte, error) {
 		return nil, err
 	}
 	return body.Bytes(), nil
+}
+
+// icsLineOctets is RFC 5545 3.1's content-line limit: 75 octets, excluding the
+// CRLF. A continuation line spends one of them on its leading space.
+const icsLineOctets = 75
+
+// icsEscaper is RFC 5545 3.3.11's TEXT escaping. The backslash is listed first
+// so an escape this pass introduces is never escaped again, and the two line
+// breaks are listed before the bare LF so a CRLF becomes one `\n` rather than
+// two.
+var icsEscaper = strings.NewReplacer(
+	`\`, `\\`,
+	";", `\;`,
+	",", `\,`,
+	"\r\n", `\n`,
+	"\r", `\n`,
+	"\n", `\n`,
+)
+
+func icsText(value string) string { return icsEscaper.Replace(value) }
+
+// icsFold folds one content line to RFC 5545 3.1's 75 octets, breaking with
+// CRLF plus a single space. The break is taken at a UTF-8 BOUNDARY - the limit
+// is in octets and a title is frequently not ASCII, so a naive cut would split
+// a rune and hand the reader a calendar it cannot decode.
+func icsFold(line string) string {
+	if len(line) <= icsLineOctets {
+		return line
+	}
+	var b strings.Builder
+	limit := icsLineOctets
+	for start := 0; start < len(line); {
+		end := start + limit
+		if end >= len(line) {
+			end = len(line)
+		} else {
+			for end > start && !utf8.RuneStart(line[end]) {
+				end--
+			}
+		}
+		if start > 0 {
+			b.WriteString("\r\n ")
+		}
+		b.WriteString(line[start:end])
+		start = end
+		limit = icsLineOctets - 1
+	}
+	return b.String()
+}
+
+func icsDate(t time.Time) string { return t.UTC().Format("20060102") }
+
+func icsStamp(t time.Time) string { return t.UTC().Format("20060102T150405Z") }
+
+// renderICalendar is the third representation of the one watch feed: an
+// iCalendar document a reader subscribes to by swapping the scheme for
+// `webcal://`, so a watched series' releases land in Google, Apple or Outlook
+// Calendar as native all-day events rather than in a feed reader.
+//
+// Each dated item is one all-day VEVENT on the day the release date names, at
+// the precision the catalogue STATES it: a bare `2026` is 1 January and
+// `2026-10` the 1st of October, with the DESCRIPTION - the feed's own summary -
+// saying which precision that was. An UNDATED item is skipped rather than
+// placed on the day the catalogue learned of it: "we do not know when this
+// comes out" is not an event, and a calendar has nowhere to say so.
+//
+// One known cosmetic caveat: DTSTAMP is derived from the item's own release
+// date rather than the wall clock, which is what makes the body deterministic
+// (and therefore golden-testable and safe under the feed's ETag). A date
+// CORRECTED to an earlier one therefore moves DTSTAMP backwards, which a strict
+// reading of RFC 5545 would treat as a stale revision. It is harmless here: the
+// document carries no SEQUENCE and is published rather than sent as an
+// invitation, so a subscribed calendar replaces the whole calendar on each
+// refresh instead of reconciling per-event revisions.
+func renderICalendar(feed watchFeed) ([]byte, error) {
+	lines := []string{
+		"BEGIN:VCALENDAR",
+		"VERSION:2.0",
+		"PRODID:-//AudioSilo Meta//Watch releases//EN",
+		"CALSCALE:GREGORIAN",
+		"METHOD:PUBLISH",
+		"X-WR-CALNAME:" + icsText(feed.title),
+	}
+	if feed.subtitle != "" {
+		lines = append(lines, "X-WR-CALDESC:"+icsText(feed.subtitle))
+	}
+	lines = append(lines,
+		"REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+		"X-PUBLISHED-TTL:PT12H",
+		"URL:"+feed.self,
+	)
+	for _, item := range feed.items {
+		if item.release == "" {
+			continue
+		}
+		lines = append(lines,
+			"BEGIN:VEVENT",
+			// The item id is the feed's stable identity already, so the UID is
+			// that id in the mail-address form calendars expect. It carries the
+			// preorder/released suffix with it, which is what makes a preorder
+			// becoming a release a NEW event rather than a moved one.
+			"UID:"+strings.TrimPrefix(item.id, watchTagPrefix)+"@meta.audiosilo.app",
+			"DTSTAMP:"+icsStamp(item.updated),
+			// An all-day event is DTSTART inclusive, DTEND exclusive.
+			"DTSTART;VALUE=DATE:"+icsDate(item.updated),
+			"DTEND;VALUE=DATE:"+icsDate(item.updated.AddDate(0, 0, 1)),
+			"SUMMARY:"+icsText(item.title),
+			"DESCRIPTION:"+icsText(item.summary),
+			"URL:"+item.link,
+			"CATEGORIES:"+icsText(item.state),
+			"END:VEVENT",
+		)
+	}
+	lines = append(lines, "END:VCALENDAR")
+
+	var body strings.Builder
+	for _, line := range lines {
+		body.WriteString(icsFold(line))
+		body.WriteString("\r\n")
+	}
+	return []byte(body.String()), nil
 }

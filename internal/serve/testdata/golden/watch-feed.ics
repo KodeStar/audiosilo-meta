@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AudioSilo Meta//Watch releases//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:AudioSilo Meta: new in your series
+X-WR-CALDESC:The Stormlight Archive. 1 slug not found: not-here
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+URL:https://meta.test/api/v1/watch/releases.ics?s=the-stormlight-archive%2C
+ not-here
+BEGIN:VEVENT
+UID:work/words-of-radiance/preorder@meta.audiosilo.app
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:The Stormlight Archive #2: Words of Radiance
+DESCRIPTION:Preorder - due Nov 2026
+URL:https://meta.test/works/words-of-radiance
+CATEGORIES:preorder
+END:VEVENT
+BEGIN:VEVENT
+UID:work/the-way-of-kings/released@meta.audiosilo.app
+DTSTAMP:20261020T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:The Stormlight Archive #1: The Way of Kings
+DESCRIPTION:Released 20 Oct 2026
+URL:https://meta.test/works/the-way-of-kings
+CATEGORIES:released
+END:VEVENT
+END:VCALENDAR

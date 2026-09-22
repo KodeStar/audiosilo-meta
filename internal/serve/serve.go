@@ -305,6 +305,7 @@ func (s *Server) routes() []route {
 		route{"GET /api/v1/works/latest", s.api(s.handleLatest)},
 		route{"GET /api/v1/watch/feed.atom", s.api(s.handleWatchAtom)},
 		route{"GET /api/v1/watch/feed.json", s.api(s.handleWatchJSON)},
+		route{"GET /api/v1/watch/releases.ics", s.api(s.handleWatchICS)},
 		route{"GET /api/v1/works/{id}", s.api(s.handleWork)},
 		route{"GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters)},
 		route{"GET /api/v1/people/{id}", s.api(s.handlePerson)},

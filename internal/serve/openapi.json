@@ -43,7 +43,7 @@
     },
     {
       "name": "Watch feeds",
-      "description": "Stateless notification feeds for a list of series carried in the request URL."
+      "description": "Stateless notification feeds for a list of series carried in the request URL, as Atom, JSON Feed or a subscribable release calendar."
     },
     {
       "name": "Audiobookshelf provider",
@@ -356,6 +356,37 @@
             }
           },
           "304": { "description": "The supplied `If-None-Match` validator still names this feed." },
+          "400": {
+            "description": "`s` is missing or invalid, contains more than 200 series, or `window` is outside 1-365.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/watch/releases.ics": {
+      "get": {
+        "tags": ["Watch feeds"],
+        "operationId": "watchReleasesICS",
+        "summary": "Watched-series release calendar",
+        "description": "An iCalendar (RFC 5545) rendering of the same stateless watched-series feed as `/api/v1/watch/feed.atom`, for subscribing in Google, Apple or Outlook Calendar: swap the scheme to `webcal://` and the reader polls it, with a refresh hint of 12 hours. One all-day event per dated work, on the day the release date names at the precision the catalogue states - a bare `2026` lands on 1 January and `2026-10` on 1 October, with the event description saying which precision that was. A work stating no usable release date is omitted, since an all-day event has nowhere to say the date is unknown; it is still carried by the Atom and JSON representations. Event `UID`s are stable and carry the `preorder` or `released` suffix of the feed item id, so a preorder becoming a release is a new event rather than a moved one. Successful responses carry `Cache-Control: public, max-age=3600` and an ETag derived from the artifact, the representation, the raw parameters and the current day.",
+        "parameters": [
+          { "$ref": "#/components/parameters/WatchSeries" },
+          { "$ref": "#/components/parameters/WatchWindow" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The iCalendar document.",
+            "content": {
+              "text/calendar": {
+                "schema": { "type": "string", "description": "An RFC 5545 `VCALENDAR` document holding one all-day `VEVENT` per dated work." }
+              }
+            }
+          },
+          "304": { "description": "The supplied `If-None-Match` validator still names this calendar." },
           "400": {
             "description": "`s` is missing or invalid, contains more than 200 series, or `window` is outside 1-365.",
             "content": {
