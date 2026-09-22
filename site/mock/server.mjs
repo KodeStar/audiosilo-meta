@@ -306,6 +306,44 @@ const server = createServer((req, res) => {
     return send(res, 404, { error: 'not found' })
   }
 
+  // The reader's own stateless watch feed, enough of it for the header badge to
+  // be exercisable at dev time. `s` carries the watched series slugs; the
+  // compact `z:<base64url(deflate(csv))>` form is not decoded here, it just
+  // falls back to every fixture series. Real shape rules (the 90-day window,
+  // retired-slug resolution, the preorder/released id suffix) are the Go
+  // server's - see internal/serve/watchfeed.go.
+  if (p === '/api/v1/watch/feed.json') {
+    const raw = url.searchParams.get('s') || ''
+    const wanted =
+      raw && !raw.startsWith('z:') ? raw.split(',').filter(Boolean) : Object.keys(db.series)
+    const site = `http://localhost:${PORT}`
+    const items = []
+    for (const slug of wanted) {
+      const s = db.series[slug]
+      if (!s) continue
+      for (const entry of s.works ?? []) {
+        const w = entry.work
+        items.push({
+          id: `tag:meta.audiosilo.app,2026:work/${w.id}/released`,
+          url: `${site}/works/${w.id}`,
+          title: `${w.title} (${s.name} ${entry.position})`,
+          content_text: `${w.title} is out in ${s.name}.`,
+          date_published: '2026-09-01T00:00:00Z',
+          date_modified: '2026-09-01T00:00:00Z',
+          authors: (w.authors ?? []).map((a) => ({ name: a.name })),
+          tags: ['released'],
+        })
+      }
+    }
+    return send(res, 200, {
+      version: 'https://jsonfeed.org/version/1.1',
+      title: 'AudioSilo Meta - watching',
+      description: 'New and upcoming releases in the series you watch.',
+      feed_url: `${site}${req.url}`,
+      items,
+    })
+  }
+
   return send(res, 404, { error: 'no such route' })
 })
 

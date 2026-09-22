@@ -11,7 +11,12 @@
 // disagree with, exactly as WorkDetail's marketplace pick already relies on.
 
 import { useCallback, useState } from 'react'
-import { readWatchlist, writeWatchlist, type Watchlist } from '../../lib/watchlist'
+import {
+  WATCHLIST_CHANGED_EVENT,
+  readWatchlist,
+  writeWatchlist,
+  type Watchlist,
+} from '../../lib/watchlist'
 
 export interface WatchlistHandle {
   store: Watchlist
@@ -25,6 +30,15 @@ export function useWatchlist(): WatchlistHandle {
   const [store, setStore] = useState<Watchlist>(readWatchlist)
   const save = useCallback((next: Watchlist) => {
     writeWatchlist(next)
+    // The header's "Watching" badge lives outside every island - it is plain DOM
+    // in Header.astro's script - so React's re-render never reaches it. It
+    // recounts on this event, which is why a mark made here drops the badge
+    // immediately instead of waiting for the next page load. The `storage`
+    // event covers the other-tab case; it deliberately does not fire in the tab
+    // that wrote, which is exactly the gap this fills.
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent(WATCHLIST_CHANGED_EVENT))
+    }
     setStore(next)
   }, [])
   return { store, save }

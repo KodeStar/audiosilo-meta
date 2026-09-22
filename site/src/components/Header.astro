@@ -56,6 +56,14 @@ const nav = [
             {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
           >
             {item.label}
+            {item.href === '/watching' && (
+              <span
+                data-watch-badge
+                hidden
+                aria-label="new releases"
+                class="ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white"
+              />
+            )}
           </a>
         ))
       }
@@ -99,6 +107,14 @@ const nav = [
               {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
             >
               {item.label}
+              {item.href === '/watching' && (
+                <span
+                  data-watch-badge
+                  hidden
+                  aria-label="new releases"
+                  class="ml-1.5 inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-pink-600 px-1.5 text-[0.65rem] font-semibold leading-5 text-white"
+                />
+              )}
             </a>
           ))
         }
@@ -138,6 +154,17 @@ const nav = [
 </style>
 
 <script>
+  import { WATCHLIST_CHANGED_EVENT, readWatchlist } from '../lib/watchlist'
+  import {
+    badgeCount,
+    badgeSlugKey,
+    isBadgeFresh,
+    readBadgeCache,
+    workIDsFromFeed,
+    writeBadgeCache,
+  } from '../lib/watch-badge'
+  import { buildFeedURLs } from '../lib/feed-url'
+
   const header = document.querySelector<HTMLElement>('.site-header')
   if (header) {
     const onScroll = () => {
@@ -155,5 +182,78 @@ const nav = [
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') menu.open = false
     })
+  }
+
+  // The "Watching" count pill: how many feed items the reader has not dealt
+  // with, on every page. DOM glue only - every rule lives in lib/watch-badge.ts,
+  // which is pure and tested, and nothing here loads React.
+  //
+  // WHY THE CACHE HOLDS WORK IDS RATHER THAN A COUNT (see that file's header):
+  // with the ids in hand the number is a pure function of the cache and the
+  // LIVE watchlist, so marking a book seen, owned or skipped repaints the badge
+  // at once - no refetch, and no stale count sitting there for an hour.
+  //
+  // CADENCE: at most one fetch an hour (WATCH_BADGE_TTL_MS), which is also the
+  // watch feed's own public cache lifetime, so a tighter loop would mostly
+  // re-read a CDN copy of what we already have. Composing the count the way
+  // /watching does - one series request per watched series - would turn every
+  // docs page into thirty API calls.
+  //
+  // PRIVACY: the request is the reader's own stateless feed URL, carrying
+  // exactly the series slugs buildFeedURLs would put in a subscription link and
+  // nothing else. There is no account and no server-side subscription.
+  //
+  // LIMITATION: the feed's window is 90 days, so a never-seen work catalogued
+  // before that shows on /watching and not here. The badge is the cheap "is
+  // there anything new lately" number; the page is the complete answer.
+  const badges = document.querySelectorAll<HTMLElement>('[data-watch-badge]')
+  if (badges.length > 0) {
+    const paint = () => {
+      const store = readWatchlist()
+      const key = badgeSlugKey(store)
+      const cache = readBadgeCache()
+      const count = cache && cache.slugKey === key ? badgeCount(cache.works, store) : 0
+      badges.forEach((badge) => {
+        badge.textContent = count > 99 ? '99+' : String(count)
+        badge.hidden = count === 0
+      })
+    }
+
+    const refresh = async () => {
+      const store = readWatchlist()
+      const key = badgeSlugKey(store)
+      // Nothing watched, or a cache still inside its hour: no request at all.
+      if (key === '' || isBadgeFresh(readBadgeCache(), key, Date.now())) {
+        paint()
+        return
+      }
+      try {
+        const urls = await buildFeedURLs(store)
+        const res = await fetch(urls.json, { headers: { accept: 'application/feed+json' } })
+        if (!res.ok) throw new Error(`watch feed: ${res.status}`)
+        writeBadgeCache({
+          version: 1,
+          slugKey: key,
+          fetchedAt: Date.now(),
+          works: workIDsFromFeed(await res.json()),
+        })
+      } catch {
+        // Every failure degrades to "no new badge": offline, a mock API with no
+        // feed route, more than 200 series (buildFeedURLs refuses), or a
+        // browser without CompressionStream for a long list. The previous
+        // cache, if any, still paints below.
+      } finally {
+        paint()
+      }
+    }
+
+    // Paint the cached count first so a reader who has one sees no flash, then
+    // go and see whether the feed has moved.
+    paint()
+    void refresh()
+    // A mark made in an island of this tab (use-watchlist.ts dispatches it)...
+    window.addEventListener(WATCHLIST_CHANGED_EVENT, paint)
+    // ...and one made in another tab, which is what `storage` is for.
+    window.addEventListener('storage', paint)
   }
 </script>
