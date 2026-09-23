@@ -2,7 +2,6 @@ package serve
 
 import (
 	"bytes"
-	"database/sql"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -186,34 +185,6 @@ func watchFeedETag(snap *snapshot, siteURL, path, rawSeries, rawWindow string, n
 	return `W/"` + identity(path, rawSeries, rawWindow, day, snap.version()+"/"+siteURL) + `"`
 }
 
-// watchCandidate is one member of a watched series before its card is built: the
-// series it is reported under, its position, and the two facts the rule reads.
-type watchCandidate struct {
-	seriesName string
-	position   string
-	workID     string
-	addedAt    sql.NullString
-}
-
-// probeCard is the candidate as watchItem sees it during the SELECTION pass: the
-// two dated facts and nothing else.
-//
-// This is what makes selecting cheaply SAFE rather than a second copy of the
-// rule. watchItem decides news from the release date and added_at alone - the
-// title, the authors and the link only shape the item it then builds - so the
-// selection asks the RULE ITSELF, over a card carrying exactly the fields the
-// decision reads, and the full cards are resolved for the survivors only.
-// TestWatchItemDecidesOnTheDatedFactsAlone pins that property, which is the one
-// this rests on.
-func (c watchCandidate) probeCard(releaseDate string) *workCard {
-	card := &workCard{ID: c.workID, ReleaseDate: releaseDate}
-	if c.addedAt.Valid {
-		added := c.addedAt.String
-		card.AddedAt = &added
-	}
-	return card
-}
-
 // selectWatchCandidates keeps the candidates watchItem calls news, so the full
 // cards are built for those alone.
 //
@@ -222,12 +193,19 @@ func (c watchCandidate) probeCard(releaseDate string) *workCard {
 // ONE batch rather than a series at a time - so the selection cannot disagree
 // with the card the survivor ends up carrying, and the judgement itself is
 // watchItem rather than a restatement of it.
+//
+// The PROBE CARD is what makes selecting cheaply SAFE rather than a second copy
+// of the rule. watchItem decides news from the release date and added_at alone -
+// the title, the authors and the link only shape the item it then builds - so
+// the selection asks the RULE ITSELF, over a card carrying exactly the fields
+// the decision reads. TestWatchItemDecidesOnTheDatedFactsAlone pins that
+// property, which is the one this rests on.
 func (s *snapshot) selectWatchCandidates(
-	candidates []watchCandidate,
+	candidates []watchMember,
 	window int,
 	now time.Time,
 	siteURL string,
-) ([]watchCandidate, error) {
+) ([]watchMember, error) {
 	ids := make([]string, len(candidates))
 	for i, c := range candidates {
 		ids[i] = c.workID
@@ -236,14 +214,17 @@ func (s *snapshot) selectWatchCandidates(
 	if err != nil {
 		return nil, err
 	}
-	kept := make([]watchCandidate, 0, len(candidates))
+	kept := make([]watchMember, 0, len(candidates))
 	for _, c := range candidates {
-		release := ""
+		probe := &workCard{ID: c.workID}
 		if f := facts[c.workID]; f != nil {
-			release = f.releaseDate
+			probe.ReleaseDate = f.releaseDate
 		}
-		entry := seriesEntry{Position: c.position, Work: c.probeCard(release)}
-		if _, ok := watchItem(c.seriesName, entry, window, now, siteURL); ok {
+		if c.addedAt.Valid {
+			added := c.addedAt.String
+			probe.AddedAt = &added
+		}
+		if _, ok := watchItem(c.seriesName, seriesEntry{Position: c.position, Work: probe}, window, now, siteURL); ok {
 			kept = append(kept, c)
 		}
 	}
@@ -273,40 +254,41 @@ func (s *snapshot) watchFeed(
 	// the window, never on which series asked - so a work that yields no item
 	// under the first series naming it would yield none under the second either.
 	seenWork := map[string]bool{}
-	var candidates []watchCandidate
+	var candidates []watchMember
 	for _, requestedSlug := range requested {
 		if seenRequest[requestedSlug] {
 			continue
 		}
 		seenRequest[requestedSlug] = true
 
-		detail, err := s.seriesHeader(requestedSlug)
+		seriesID := requestedSlug
+		name, ok, err := s.seriesName(seriesID)
 		if err != nil {
 			return watchFeed{}, err
 		}
-		if detail == nil {
+		if !ok {
 			resolved, err := s.redirectTarget(model.RedirectSeries, requestedSlug)
 			if err != nil {
 				return watchFeed{}, err
 			}
 			if resolved != "" {
-				detail, err = s.seriesHeader(resolved)
-				if err != nil {
+				seriesID = resolved
+				if name, ok, err = s.seriesName(seriesID); err != nil {
 					return watchFeed{}, err
 				}
 			}
 		}
-		if detail == nil {
+		if !ok {
 			unknown = append(unknown, requestedSlug)
 			continue
 		}
-		if seenSeries[detail.ID] {
+		if seenSeries[seriesID] {
 			continue
 		}
-		seenSeries[detail.ID] = true
-		names = append(names, detail.Name)
+		seenSeries[seriesID] = true
+		names = append(names, name)
 
-		members, err := s.watchMembers(detail.ID)
+		members, err := s.watchMembers(seriesID, name)
 		if err != nil {
 			return watchFeed{}, err
 		}
@@ -315,9 +297,7 @@ func (s *snapshot) watchFeed(
 				continue
 			}
 			seenWork[m.workID] = true
-			candidates = append(candidates, watchCandidate{
-				seriesName: detail.Name, position: m.position, workID: m.workID, addedAt: m.addedAt,
-			})
+			candidates = append(candidates, m)
 		}
 	}
 

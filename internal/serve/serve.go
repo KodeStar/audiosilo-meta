@@ -547,20 +547,8 @@ const internalErrMsg = "internal error"
 // ONE helper rather than a fixed string at each site: a handler that spells its
 // own 500 is a handler that can quietly go back to reflecting err.Error().
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	s.logf("serve: 500 %s %s: %v", r.Method, r.URL.Path, err)
+	s.log.Printf("serve: 500 %s %s: %v", r.Method, r.URL.Path, err)
 	writeErr(w, http.StatusInternalServerError, internalErrMsg)
-}
-
-// logf writes through the injected logger. A Server built directly - a test, or
-// any future caller that skips New - has none and logs to the standard logger
-// instead, exactly as snapshot.logf does, so a degradation notice can never be
-// the thing that panics a request.
-func (s *Server) logf(format string, args ...any) {
-	if s.log != nil {
-		s.log.Printf(format, args...)
-		return
-	}
-	log.Printf(format, args...)
 }
 
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to

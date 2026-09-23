@@ -55,7 +55,7 @@ func getSitemap(t *testing.T, base, path string) (int, string, http.Header) {
 // pages (no shell), so no pattern may appear under /api/ or in either of the
 // other two tables.
 func TestSitemapRoutesAreDisjointFromEverythingElse(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
 
 	taken := map[string]string{}
 	for _, r := range srv.routes() {

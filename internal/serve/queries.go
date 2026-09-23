@@ -890,34 +890,44 @@ const (
 		`WHERE sw.series_id=?`
 )
 
-// seriesHeader reads a series' id and name and nothing else. It is what a caller
-// that does not want the MEMBERSHIP asks (the watch feed, which then selects the
-// few members that can be news): snapshot.series materializes a card per member,
-// which is the right answer for the series page and a whole catalogue read for a
-// feed that keeps a handful of them. (nil, nil) when the series does not exist.
-func (s *snapshot) seriesHeader(id string) (*seriesDetail, error) {
-	var d seriesDetail
-	switch err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&d.ID, &d.Name); {
+// seriesName reads a series' name and nothing else, reporting whether the series
+// exists at all. It is what a caller that does not want the MEMBERSHIP asks (the
+// watch feed, which then selects the few members that can be news):
+// snapshot.series materializes a card per member, which is the right answer for
+// the series page and a whole catalogue read for a feed that keeps a handful of
+// them.
+//
+// It hands back the name rather than a seriesDetail because a seriesDetail with
+// two of its fields filled is a lie about the other four - a caller has no way
+// to tell an empty membership from an unread one.
+func (s *snapshot) seriesName(id string) (name string, ok bool, err error) {
+	// The shared statement selects the id too; only the name is wanted here.
+	var echoedID string
+	switch err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&echoedID, &name); {
 	case err == sql.ErrNoRows:
-		return nil, nil
+		return "", false, nil
 	case err != nil:
-		return nil, err
+		return "", false, err
 	}
-	return &d, nil
+	return name, true, nil
 }
 
-// watchMember is one series membership the watch feed may report: the work, its
-// position and the two facts the feed's rule turns on, with no card built.
+// watchMember is one series membership the watch feed may report: the series it
+// is reported under, the work, its position and the two facts the feed's rule
+// turns on, with no card built. seriesName is filled by the caller - the query
+// reads one series at a time and already knows which - and is what the emitted
+// item is titled under when a work belongs to several watched series.
 type watchMember struct {
-	workID   string
-	position string
-	addedAt  sql.NullString
+	seriesName string
+	workID     string
+	position   string
+	addedAt    sql.NullString
 }
 
 // watchMembersSQL reads a series' membership WITHOUT resolving a card per
 // member: the work id, the position and works.added_at, which is one of the two
 // facts watchItem judges a member by (the other, the release date, is read for
-// every watched series at once - see snapshot.watchCandidates).
+// every watched series at once - see snapshot.selectWatchCandidates).
 //
 // It exists because the feed reads up to 200 series and keeps only what falls
 // inside a rolling window (90 days by default). snapshot.series builds a card,
@@ -927,8 +937,10 @@ type watchMember struct {
 const watchMembersSQL = `SELECT sw.work_id, sw.position, w.added_at ` +
 	`FROM series_works sw JOIN works w ON w.id = sw.work_id WHERE sw.series_id = ?`
 
-// watchMembers returns one series' membership with the cards unresolved.
-func (s *snapshot) watchMembers(seriesID string) ([]watchMember, error) {
+// watchMembers returns one series' membership with the cards unresolved, each
+// member stamped with the series name it is reported under (the caller resolved
+// it to reach this id, so nothing re-reads it).
+func (s *snapshot) watchMembers(seriesID, seriesName string) ([]watchMember, error) {
 	rows, err := s.db.Query(watchMembersSQL, seriesID)
 	if err != nil {
 		return nil, err
@@ -936,7 +948,7 @@ func (s *snapshot) watchMembers(seriesID string) ([]watchMember, error) {
 	defer func() { _ = rows.Close() }()
 	var out []watchMember
 	for rows.Next() {
-		var m watchMember
+		m := watchMember{seriesName: seriesName}
 		if err := rows.Scan(&m.workID, &m.position, &m.addedAt); err != nil {
 			return nil, err
 		}

@@ -3,7 +3,6 @@ package serve
 import (
 	"encoding/json"
 	"io"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	"sort"
@@ -21,7 +20,7 @@ import (
 // table: it is registered only on a configured deployment, but the spec
 // describes the whole surface, so the guard has to see it.
 func servedPaths() []string {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
 	rs := srv.routes()
 	out := make([]string, 0, len(rs))
 	for _, r := range rs {
@@ -228,7 +227,7 @@ func resolvePointer(doc any, parts []string) any {
 // any data has loaded: a client discovering the API on a cold boot gets the
 // contract, not the 503 every data route is answering.
 func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: log.Default(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
@@ -271,7 +270,7 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 // and constant for the life of the binary, so a client that already has it
 // should be told so rather than sent hundreds of kilobytes again.
 func TestOpenAPIRevalidates(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: log.Default(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)

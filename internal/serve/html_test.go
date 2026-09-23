@@ -118,7 +118,7 @@ func getPage(t *testing.T, base, path string) (int, string) {
 // in routes(), TestOpenAPICoversEveryRoute would start demanding a spec entry for
 // a page - and the honest fix would be a spec that lies.
 func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
 
 	api := map[string]bool{}
 	for _, r := range srv.routes() {
@@ -355,7 +355,7 @@ func TestEntityPageWithoutAShellFallsThrough(t *testing.T) {
 func TestEntityPageWithoutASnapshot(t *testing.T) {
 	srv := &Server{
 		cfg:     Config{Site: entitySite(t, markedShells), SiteURL: testSiteURL},
-		log:     log.New(io.Discard, "", 0),
+		log:     testLogger(),
 		retired: map[string]int{},
 	}
 	srv.site = newSiteHandler(srv.cfg.Site)

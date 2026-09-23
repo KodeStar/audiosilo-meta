@@ -394,7 +394,7 @@ func TestWatchFeedCapsItemsAfterOrdering(t *testing.T) {
 }
 
 func TestWatchFeedsRequireSnapshot(t *testing.T) {
-	srv := &Server{cfg: Config{SiteURL: testSiteURL, now: time.Now}}
+	srv := &Server{cfg: Config{SiteURL: testSiteURL, now: time.Now}, log: testLogger()}
 	srv.mux = srv.buildMux()
 	for _, path := range []string{
 		"/api/v1/watch/feed.json?s=series",
@@ -721,13 +721,15 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 	add("undated-recent", "2026-09-18T12:00:00Z", "")
 	add("undated-offset", "2026-06-23T23:30:00+05:00", "")
 	// An offset BEHIND UTC puts the instant a day later than the date its first
-	// ten characters spell, which is what the candidate query's slack day covers.
+	// ten characters spell - two readings of one added_at, which the probe card
+	// must hand watchItem exactly as the full card would.
 	add("undated-negative-offset", "2026-06-22T20:00:00-07:00", "")
 	add("undated-day", "2026-06-23", "")
 	add("undated-old", "2019-05-05", "")
 	add("no-added-no-date", "", "")
-	// A work with no recordings at all, which the candidate query's release arm
-	// must not silently swallow.
+	// A work with no recordings at all, so cardFactsByWork has no row for it and
+	// the probe card carries an EMPTY release date - which must read as "undated",
+	// not as a work the selection may drop.
 	pos++
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "no-recordings", Title: "No Recordings", Language: "en",
@@ -750,8 +752,14 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 // walks the whole series through snapshot.series and applies watchItem to every
 // member, exactly as the old implementation did, and the two must name the same
 // items over a catalogue holding every shape the rules turn on and over windows
-// and clocks that move the boundary around (including a cutoff on 1 January,
-// which is what the padding in watchMembersSQL exists for).
+// and clocks that move the boundary around.
+//
+// What it really guards is the REDUCTION: the selection pass judges a PROBE CARD
+// carrying the release date and added_at alone, where the reference judges the
+// fully resolved one. The two must agree on every member, so any shape where the
+// rest of a card could change watchItem's answer - or where the probe's release
+// date is not the card's - fails here. There is no date filter in SQL to get
+// wrong: watchMembersSQL reads membership, and all the judgement is watchItem's.
 func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 	snap, err := openSnapshot(buildFixtureDB(t, watchShapesCatalog(t)), "")
 	if err != nil {
@@ -825,15 +833,11 @@ func TestWatchSelectionIsBounded(t *testing.T) {
 	t.Cleanup(snap.close)
 
 	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
-	members, err := snap.watchMembers("shapes")
+	members, err := snap.watchMembers("shapes", "Shapes")
 	if err != nil {
 		t.Fatal(err)
 	}
-	candidates := make([]watchCandidate, len(members))
-	for i, m := range members {
-		candidates[i] = watchCandidate{seriesName: "Shapes", position: m.position, workID: m.workID, addedAt: m.addedAt}
-	}
-	kept, err := snap.selectWatchCandidates(candidates, defaultWatchWindow, now, testSiteURL)
+	kept, err := snap.selectWatchCandidates(members, defaultWatchWindow, now, testSiteURL)
 	if err != nil {
 		t.Fatal(err)
 	}

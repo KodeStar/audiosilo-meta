@@ -20,6 +20,12 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
+// testLogger is the logger a Server built directly in a test gets. Server.log
+// is not optional any more - fail() and the search probes write through it
+// unguarded - so a literal that left it nil would panic on the first
+// degradation notice rather than on anything the test is about.
+func testLogger() *log.Logger { return log.New(io.Discard, "", 0) }
+
 // fixtureCatalog is a small but representative dataset: two fully-fleshed works
 // (one with a cover + chapters + ASIN, one with an ISBN + dual narrators) plus
 // two thin works that only exist to exercise numeric series ordering.

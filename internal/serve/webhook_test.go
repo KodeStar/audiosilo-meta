@@ -78,7 +78,7 @@ func TestWebhookDisabledWithoutSecret(t *testing.T) {
 // by the site, which is only possible if the route was never registered.
 func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 	registers := func(cfg Config) bool {
-		for _, r := range (&Server{cfg: cfg}).routes() {
+		for _, r := range (&Server{cfg: cfg, log: testLogger()}).routes() {
 			if r.specPath() == githubReleaseWebhookPath {
 				return true
 			}

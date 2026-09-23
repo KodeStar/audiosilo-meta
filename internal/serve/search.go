@@ -352,11 +352,11 @@ func (s *snapshot) ftsHits(kind searchKind, match string, limit int) ([]searchHi
 func (s *snapshot) boostedWorks(q string) []string {
 	titles, err := s.exactTitleHits(q)
 	if err != nil {
-		s.logf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
+		s.log.Printf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
 	}
 	positions, err := s.seriesPositionHits(q)
 	if err != nil {
-		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
+		s.log.Printf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
 	}
 	return append(titles, positions...)
 }

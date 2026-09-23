@@ -228,7 +228,7 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 // too (in HTML - see redirected), and the sitemap table has to answer the guard
 // as well - which it does by naming its file wildcard exempt.
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
 	all := append(srv.routes(), srv.htmlRoutes()...)
 	all = append(all, srv.sitemapRoutes()...)
 	patterns := make([]string, 0, len(all))
