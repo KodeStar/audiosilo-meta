@@ -48,16 +48,62 @@ func ftsQuery(q string) string { return ftsMatch(q, true) }
 // server issues on their behalf.
 func ftsPhrase(q string) string { return ftsMatch(q, false) }
 
+// The BOUNDS on one user query. Every search surface is unauthenticated,
+// CORS-open and hit per keystroke, and an FTS5 MATCH costs one posting-list walk
+// per phrase - so a query is a list of walks the caller chooses the length of.
+// Unbounded, a megabyte of text is one request that reads a large fraction of
+// the index, and a thousand terms is a thousand walks intersected.
+//
+// Both bounds TRUNCATE rather than reject, which is deliberate: this is a
+// per-keystroke UI, a 400 in the middle of typing is a worse answer than the
+// page for the first 256 bytes, and nothing in the catalogue is addressed by a
+// query that long anyway (the longest title the tree holds is far shorter). The
+// cut is what a person would call the start of what they typed - the leading
+// phrases - so the answer stays about their query.
+const (
+	// maxQueryBytes bounds the raw query text. Cut at a RUNE boundary: a query
+	// is frequently not ASCII and half a rune is a term FTS5 never indexed.
+	maxQueryBytes = 256
+	// maxQueryPhrases bounds how many FTS5 phrases one query becomes. It counts
+	// PHRASES, which is what the MATCH expression costs: a token whose terms are
+	// all single runes is one adjacent phrase (see tokenPhrases), and every other
+	// token contributes one phrase per term.
+	maxQueryPhrases = 16
+)
+
+// boundQuery truncates a query to maxQueryBytes, backing the cut off to a rune
+// boundary so the last term is a term the tokenizer could have produced.
+func boundQuery(q string) string {
+	if len(q) <= maxQueryBytes {
+		return q
+	}
+	cut := maxQueryBytes
+	for cut > 0 && !utf8.RuneStart(q[cut]) {
+		cut--
+	}
+	return q[:cut]
+}
+
 // ftsMatch is the single escaping implementation behind both: it is the one
 // place a term becomes an FTS5 phrase, so no caller can ever build a MATCH
-// expression a quote or an operator could break. tokenPhrases decides how each
-// whitespace token is rendered; the star goes on the LAST phrase, which for an
-// initialism is a multi-term phrase (a phrase-final star is legal FTS5 and is
-// what the whitespace-only predecessor emitted for such a token anyway).
+// expression a quote or an operator could break - and, for the same reason, the
+// one place the query BOUNDS above can be applied to every search surface at
+// once. tokenPhrases decides how each whitespace token is rendered; the star
+// goes on the LAST phrase KEPT, which for an initialism is a multi-term phrase
+// (a phrase-final star is legal FTS5 and is what the whitespace-only predecessor
+// emitted for such a token anyway).
 func ftsMatch(q string, prefixLast bool) string {
-	var parts []string
-	for _, tok := range strings.Fields(q) {
-		parts = append(parts, tokenPhrases(tok)...)
+	parts := make([]string, 0, maxQueryPhrases)
+	for _, tok := range strings.Fields(boundQuery(q)) {
+		if len(parts) >= maxQueryPhrases {
+			break
+		}
+		for _, phrase := range tokenPhrases(tok) {
+			if len(parts) >= maxQueryPhrases {
+				break
+			}
+			parts = append(parts, phrase)
+		}
 	}
 	if len(parts) == 0 {
 		return `""`

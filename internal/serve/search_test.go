@@ -1,8 +1,12 @@
 package serve
 
 import (
+	"net/http"
 	"net/url"
+	"strconv"
+	"strings"
 	"testing"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -416,4 +420,71 @@ func TestSeriesPositionBoostSurvivesPunctuation(t *testing.T) {
 	if got := first(searchIDs(t, snap, "halo:7")); got == "work:halo-cryptum" {
 		t.Error(`search("halo:7") boosted the volume; the position parse must stay whitespace-split`)
 	}
+}
+
+// TestFTSQueryIsBounded pins the two caps on one query. The search surfaces are
+// unauthenticated, CORS-open and hit per keystroke, and every phrase in a MATCH
+// expression is a posting-list walk - so the length of the walk list must be the
+// server's to decide, not the caller's. Both bounds TRUNCATE (this is a
+// per-keystroke UI), and what survives is the START of what was typed, with the
+// prefix star still on the last phrase KEPT.
+func TestFTSQueryIsBounded(t *testing.T) {
+	t.Run("phrase count", func(t *testing.T) {
+		words := make([]string, 0, maxQueryPhrases*3)
+		for i := range cap(words) {
+			words = append(words, "word"+strconv.Itoa(i))
+		}
+		got := ftsQuery(strings.Join(words, " "))
+		phrases := strings.Count(got, `"`) / 2
+		if phrases != maxQueryPhrases {
+			t.Errorf("phrases = %d, want the cap %d: %s", phrases, maxQueryPhrases, got)
+		}
+		if !strings.HasPrefix(got, `"word0" "word1"`) {
+			t.Errorf("the kept phrases are not the leading ones: %s", got)
+		}
+		if !strings.HasSuffix(got, `"word`+strconv.Itoa(maxQueryPhrases-1)+`"*`) {
+			t.Errorf("the last kept phrase lost its prefix star: %s", got)
+		}
+		// Punctuation splits into phrases too, so the cap has to count what the
+		// expression actually holds rather than whitespace tokens. (The terms are
+		// two runes each: a token whose terms are ALL single runes is an
+		// initialism, which is deliberately ONE phrase - see tokenPhrases.)
+		dense := strings.TrimSuffix(strings.Repeat("aa.bb.cc.", maxQueryPhrases), ".")
+		if n := strings.Count(ftsQuery(dense), `"`) / 2; n != maxQueryPhrases {
+			t.Errorf("punctuation-split phrases = %d, want the cap %d", n, maxQueryPhrases)
+		}
+	})
+
+	t.Run("byte length", func(t *testing.T) {
+		// One enormous token: the phrase cap cannot bound this one, the byte cap
+		// must.
+		long := strings.Repeat("a", maxQueryBytes*4)
+		got := ftsQuery(long)
+		if len(got) > maxQueryBytes+3 { // the two quotes and the star
+			t.Errorf("a %d-byte token produced a %d-byte expression", len(long), len(got))
+		}
+		// A multi-byte rune must not be cut in half: every term FTS5 indexed is
+		// whole runes, so half of one is a term no row can hold.
+		wide := strings.Repeat("é", maxQueryBytes) // two bytes each
+		if got := ftsQuery(wide); !utf8.ValidString(got) {
+			t.Errorf("the cut split a rune: %q", got)
+		}
+	})
+
+	t.Run("the search routes apply it", func(t *testing.T) {
+		// End to end: an over-long query is answered, not refused, and the
+		// answer is the one its bounded prefix earns.
+		_, ts := newWatchFeedServer(t, fixtureCatalog())
+		long := "hail " + strings.Repeat("x", maxQueryBytes*2)
+		for _, path := range []string{
+			"/api/v1/search?q=", "/api/v1/works/search?q=",
+			"/api/v1/people/search?q=", "/api/v1/series/search?q=",
+			"/abs/search?query=",
+		} {
+			resp, body := watchFeedResponse(t, ts, path+url.QueryEscape(long))
+			if resp.StatusCode != http.StatusOK {
+				t.Errorf("GET %s = %d, want 200; body %s", path, resp.StatusCode, body)
+			}
+		}
+	})
 }
