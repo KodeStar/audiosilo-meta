@@ -618,14 +618,14 @@ const downloadBufferBytes = 1 << 20
 //     window exceeds the decoder's defaults, so both the max window and max
 //     memory are raised to match or the decode rejects the frame.
 //
-// The patch itself and the reconstructed output both stream (file in, file out),
 // maxBytes is the COMPUTED bound on the reconstructed artifact, the same shape
 // gunzipStreamTo takes: the patch declares no output size, and a frame that
 // expanded without limit would fill the cache volume long before the sha256 gate
 // could reject it. The caller measures it against the BASE artifact's size (see
 // decompressBound), the one size this path knows exactly.
 //
-// The PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
+// The patch itself and the reconstructed output both stream (file in, file out),
+// but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
 // must be one contiguous byte slice, and the decoder's history window over it
 // costs about as much again, so peak transient is roughly twice the base
 // artifact. That is what defaultMaxPatchBase caps - past that size tryPatch

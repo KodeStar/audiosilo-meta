@@ -26,8 +26,8 @@ import (
 //
 // Each caller's own additions ride in as extra rather than joining the shared
 // rule, so this stays the one rule both of them share and neither inherits the
-// other's exceptions: serve passes api.github.com and, in tests, its own
-// httptest origin's host.
+// other's exceptions: serve passes api.github.com, the API's own asset route,
+// which is no part of what an attachment fetch may name.
 func Allowed(host string, extra ...string) bool {
 	host = strings.ToLower(host)
 	if host == "github.com" || strings.HasSuffix(host, ".githubusercontent.com") {
