@@ -253,23 +253,12 @@ func TestSlugifyByteCompatibility(t *testing.T) {
 	}
 }
 
-// TestSlugifyInvalidUTF8 guards against GO-2026-5970 (CVE-2026-56852):
-// golang.org/x/text/unicode/norm's Iter/Form machinery could loop forever
-// over certain malformed UTF-8 (confirmed upstream, and independently
-// reproduced by hand here, as an infinite loop in norm.Iter's NFC composition
-// path over "\xf3\xcc\x80" - an invalid lead byte immediately followed by a
-// valid combining mark). Slugify feeds every string it is given straight into
-// norm.NFD.String before doing anything else, and every one of golang.org/x/text
-// v0.14.0's affected symbols is a method on the same Form type Slugify calls
-// through (govulncheck's static reachability flags exactly this call site), so
-// this pins Slugify's behavior on malformed input as a safety net regardless of
-// which decomposition path the vulnerable code takes internally: it must return
-// promptly and produce either a valid slug or the empty string - never hang,
-// never panic. Includes the upstream advisory's own reproducer byte-for-byte,
-// even though decompose-only NFD did not reproduce the hang in manual testing
-// (only NFC's composition step did) - the fixed golang.org/x/text still removes
-// the vulnerable code from the binary entirely, and this test is what would
-// catch a regression either way.
+// TestSlugifyInvalidUTF8 guards against GO-2026-5970 (CVE-2026-56852): a
+// norm.Iter/Form infinite loop over malformed UTF-8, reachable because
+// Slugify feeds every string straight into norm.NFD.String. Includes the
+// upstream advisory's own reproducer, but the hang was only reproduced by
+// hand via norm.Iter's NFC composition path - not decompose-only NFD - so
+// this is a safety net rather than a repro that discriminates versions.
 func TestSlugifyInvalidUTF8(t *testing.T) {
 	cases := []string{
 		"caf\xc3",                 // a truncated two-byte sequence (café missing its 'e')
@@ -282,43 +271,17 @@ func TestSlugifyInvalidUTF8(t *testing.T) {
 		if utf8.ValidString(in) {
 			t.Fatalf("test case %q is valid UTF-8; it must be malformed to exercise the bug", in)
 		}
-		in := in
 		done := make(chan string, 1)
 		go func() {
 			done <- Slugify(in)
 		}()
 		select {
 		case got := <-done:
-			if got != "" && !isValidSlug(got) {
+			if got != "" && !ValidSlug(got) {
 				t.Errorf("Slugify(%q) = %q, want a valid slug or the empty string", in, got)
 			}
 		case <-time.After(5 * time.Second):
 			t.Fatalf("Slugify(%q) did not return within 5s - norm.NFD.String hung on invalid UTF-8 (GO-2026-5970)", in)
 		}
 	}
-}
-
-// isValidSlug reports whether s matches the dataset's slug shape
-// (^[a-z0-9]+(-[a-z0-9]+)*$), inlined here rather than imported from a shared
-// regexp so this test has no dependency beyond what it is testing.
-func isValidSlug(s string) bool {
-	if s == "" {
-		return false
-	}
-	prevHyphen := true // disallow a leading hyphen
-	for i := 0; i < len(s); i++ {
-		c := s[i]
-		switch {
-		case c >= 'a' && c <= 'z', c >= '0' && c <= '9':
-			prevHyphen = false
-		case c == '-':
-			if prevHyphen {
-				return false // no leading hyphen and no doubled hyphen
-			}
-			prevHyphen = true
-		default:
-			return false
-		}
-	}
-	return !prevHyphen // disallow a trailing hyphen
 }
