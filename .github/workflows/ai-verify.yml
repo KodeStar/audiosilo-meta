@@ -99,7 +99,7 @@ jobs:
       )
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
 
@@ -107,9 +107,10 @@ jobs:
       # go.mod is the single source of the version, as every other workflow here
       # does it.
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          check-latest: true
 
       - name: Gather the data change
         id: gather
@@ -124,6 +125,13 @@ jobs:
           set -euo pipefail
           if [ "$EVENT" = "workflow_dispatch" ]; then
             PR="$PR_INPUT"
+            # A dispatch input is free text and reaches gh, git and the step
+            # output below. A pull request number is a positive integer or it is
+            # nothing.
+            if ! [[ "$PR" =~ ^[0-9]+$ ]]; then
+              echo "::error::pr input must be a pull request number; got '${PR}'"
+              exit 1
+            fi
             BASE_SHA="$(gh pr view "$PR" --json baseRefOid -q .baseRefOid)"
             HEAD_SHA="$(gh pr view "$PR" --json headRefOid -q .headRefOid)"
             git fetch --no-tags origin "$BASE_SHA" "$HEAD_SHA"

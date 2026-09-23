@@ -86,14 +86,15 @@ jobs:
       ))
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: main
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          check-latest: true
 
       - name: Dump the issue body to a file
         env:
@@ -203,7 +204,7 @@ jobs:
 
       - name: Open the pull request
         if: steps.run.outputs.status == 'ok'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
         with:
           # A PR created with the default GITHUB_TOKEN triggers NO pull_request
           # workflows (GitHub's recursion guard), so the required "check" gate
@@ -276,7 +277,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           # The rebase needs real history, and the PAT (when present) is what
           # makes the force-push re-trigger the required checks - the same
@@ -285,9 +286,10 @@ jobs:
           token: ${{ secrets.INTAKE_PAT || github.token }}
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          check-latest: true
 
       - name: Rebase open intake pull requests
         env:
@@ -370,7 +372,15 @@ jobs:
                 # Three-way merge every conflicted pack file, then let metafmt place
                 # and re-render the result. Anything else - a conflict outside
                 # data/, or one record edited on both sides - is for a person.
-                for f in $(git diff --name-only --diff-filter=U); do
+                # NUL-delimited and read into an array rather than word-split:
+                # a path with a space in it used to arrive as two "files", both
+                # unmatched by data/*.json, and the *) arm then reported a
+                # conflict outside the data tree that was never there. mapfile,
+                # not a `while read` pipeline - the loop assigns `failure`, and a
+                # pipeline's subshell would throw that away, turning the
+                # fail-safe arm into a silent pass.
+                mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
+                for f in "${conflicted[@]}"; do
                   case "$f" in
                     data/*.json) scripts/pack-union-merge.sh "$f" || failure="the pack merge could not resolve ${f}" ;;
                     *) failure="conflict outside the data tree: ${f}" ;;
