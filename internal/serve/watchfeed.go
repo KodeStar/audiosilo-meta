@@ -2,6 +2,7 @@ package serve
 
 import (
 	"bytes"
+	"database/sql"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -121,12 +122,12 @@ func (s *Server) handleWatchFeed(
 	feed, err := snap.watchFeed(series, window, now, s.cfg.SiteURL,
 		s.watchFeedSelfURL(r.URL.Path, rawSeries, rawWindow), watchFeedID(rawSeries, rawWindow))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	body, err := render(feed)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	h := w.Header()
@@ -185,6 +186,70 @@ func watchFeedETag(snap *snapshot, siteURL, path, rawSeries, rawWindow string, n
 	return `W/"` + identity(path, rawSeries, rawWindow, day, snap.version()+"/"+siteURL) + `"`
 }
 
+// watchCandidate is one member of a watched series before its card is built: the
+// series it is reported under, its position, and the two facts the rule reads.
+type watchCandidate struct {
+	seriesName string
+	position   string
+	workID     string
+	addedAt    sql.NullString
+}
+
+// probeCard is the candidate as watchItem sees it during the SELECTION pass: the
+// two dated facts and nothing else.
+//
+// This is what makes selecting cheaply SAFE rather than a second copy of the
+// rule. watchItem decides news from the release date and added_at alone - the
+// title, the authors and the link only shape the item it then builds - so the
+// selection asks the RULE ITSELF, over a card carrying exactly the fields the
+// decision reads, and the full cards are resolved for the survivors only.
+// TestWatchItemDecidesOnTheDatedFactsAlone pins that property, which is the one
+// this rests on.
+func (c watchCandidate) probeCard(releaseDate string) *workCard {
+	card := &workCard{ID: c.workID, ReleaseDate: releaseDate}
+	if c.addedAt.Valid {
+		added := c.addedAt.String
+		card.AddedAt = &added
+	}
+	return card
+}
+
+// selectWatchCandidates keeps the candidates watchItem calls news, so the full
+// cards are built for those alone.
+//
+// The release date each one is judged by is cardFactsByWork's own - the rule that
+// decides a CARD's release_date, read here for every watched series' members in
+// ONE batch rather than a series at a time - so the selection cannot disagree
+// with the card the survivor ends up carrying, and the judgement itself is
+// watchItem rather than a restatement of it.
+func (s *snapshot) selectWatchCandidates(
+	candidates []watchCandidate,
+	window int,
+	now time.Time,
+	siteURL string,
+) ([]watchCandidate, error) {
+	ids := make([]string, len(candidates))
+	for i, c := range candidates {
+		ids[i] = c.workID
+	}
+	facts, err := s.cardFactsByWork(ids)
+	if err != nil {
+		return nil, err
+	}
+	kept := make([]watchCandidate, 0, len(candidates))
+	for _, c := range candidates {
+		release := ""
+		if f := facts[c.workID]; f != nil {
+			release = f.releaseDate
+		}
+		entry := seriesEntry{Position: c.position, Work: c.probeCard(release)}
+		if _, ok := watchItem(c.seriesName, entry, window, now, siteURL); ok {
+			kept = append(kept, c)
+		}
+	}
+	return kept, nil
+}
+
 func (s *snapshot) watchFeed(
 	requested []string,
 	window int,
@@ -202,14 +267,20 @@ func (s *snapshot) watchFeed(
 	// events on one day in the calendar, where the id is also the UID. First
 	// series in REQUEST order wins, which is the order everything else here is
 	// resolved in.
+	//
+	// The dedupe sits on the CANDIDATE rather than on the emitted item, which is
+	// the same rule one step earlier: watchItem's answer depends on the work and
+	// the window, never on which series asked - so a work that yields no item
+	// under the first series naming it would yield none under the second either.
 	seenWork := map[string]bool{}
+	var candidates []watchCandidate
 	for _, requestedSlug := range requested {
 		if seenRequest[requestedSlug] {
 			continue
 		}
 		seenRequest[requestedSlug] = true
 
-		detail, err := s.series(requestedSlug, 0, 0)
+		detail, err := s.seriesHeader(requestedSlug)
 		if err != nil {
 			return watchFeed{}, err
 		}
@@ -219,7 +290,7 @@ func (s *snapshot) watchFeed(
 				return watchFeed{}, err
 			}
 			if resolved != "" {
-				detail, err = s.series(resolved, 0, 0)
+				detail, err = s.seriesHeader(resolved)
 				if err != nil {
 					return watchFeed{}, err
 				}
@@ -234,14 +305,44 @@ func (s *snapshot) watchFeed(
 		}
 		seenSeries[detail.ID] = true
 		names = append(names, detail.Name)
-		for _, entry := range detail.Works {
-			if entry.Work != nil && seenWork[entry.Work.ID] {
+
+		members, err := s.watchMembers(detail.ID)
+		if err != nil {
+			return watchFeed{}, err
+		}
+		for _, m := range members {
+			if seenWork[m.workID] {
 				continue
 			}
-			if item, ok := watchItem(detail.Name, entry, window, now, siteURL); ok {
-				seenWork[entry.Work.ID] = true
-				items = append(items, item)
-			}
+			seenWork[m.workID] = true
+			candidates = append(candidates, watchCandidate{
+				seriesName: detail.Name, position: m.position, workID: m.workID, addedAt: m.addedAt,
+			})
+		}
+	}
+
+	kept, err := s.selectWatchCandidates(candidates, window, now, siteURL)
+	if err != nil {
+		return watchFeed{}, err
+	}
+
+	// ONE batch of cards for every watched series' survivors together, where the
+	// whole-series read this replaced built one per member.
+	keptIDs := make([]string, len(kept))
+	for i, c := range kept {
+		keptIDs[i] = c.workID
+	}
+	byID, err := s.cardsByID(keptIDs)
+	if err != nil {
+		return watchFeed{}, err
+	}
+	for _, c := range kept {
+		card := byID[c.workID]
+		if card == nil {
+			continue
+		}
+		if item, ok := watchItem(c.seriesName, seriesEntry{Position: c.position, Work: card}, window, now, siteURL); ok {
+			items = append(items, item)
 		}
 	}
 

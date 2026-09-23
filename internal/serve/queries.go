@@ -883,11 +883,67 @@ type seriesDetail struct {
 // the artifact does not carry is dropped from the list, so counting it in the
 // total would report a page shorter than it claims.
 const (
+	seriesHeaderSQL  = `SELECT id, name FROM series WHERE id=?`
 	seriesAuthorsSQL = `SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id ` +
 		`WHERE sa.series_id=? ORDER BY sa.ord`
 	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
 		`WHERE sw.series_id=?`
 )
+
+// seriesHeader reads a series' id and name and nothing else. It is what a caller
+// that does not want the MEMBERSHIP asks (the watch feed, which then selects the
+// few members that can be news): snapshot.series materializes a card per member,
+// which is the right answer for the series page and a whole catalogue read for a
+// feed that keeps a handful of them. (nil, nil) when the series does not exist.
+func (s *snapshot) seriesHeader(id string) (*seriesDetail, error) {
+	var d seriesDetail
+	switch err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&d.ID, &d.Name); {
+	case err == sql.ErrNoRows:
+		return nil, nil
+	case err != nil:
+		return nil, err
+	}
+	return &d, nil
+}
+
+// watchMember is one series membership the watch feed may report: the work, its
+// position and the two facts the feed's rule turns on, with no card built.
+type watchMember struct {
+	workID   string
+	position string
+	addedAt  sql.NullString
+}
+
+// watchMembersSQL reads a series' membership WITHOUT resolving a card per
+// member: the work id, the position and works.added_at, which is one of the two
+// facts watchItem judges a member by (the other, the release date, is read for
+// every watched series at once - see snapshot.watchCandidates).
+//
+// It exists because the feed reads up to 200 series and keeps only what falls
+// inside a rolling window (90 days by default). snapshot.series builds a card,
+// its authors, its first series membership and its recordings' facts for every
+// member, which for a 200-slug request materialized a large part of the
+// catalogue and then threw nearly all of it away.
+const watchMembersSQL = `SELECT sw.work_id, sw.position, w.added_at ` +
+	`FROM series_works sw JOIN works w ON w.id = sw.work_id WHERE sw.series_id = ?`
+
+// watchMembers returns one series' membership with the cards unresolved.
+func (s *snapshot) watchMembers(seriesID string) ([]watchMember, error) {
+	rows, err := s.db.Query(watchMembersSQL, seriesID)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	var out []watchMember
+	for rows.Next() {
+		var m watchMember
+		if err := rows.Scan(&m.workID, &m.position, &m.addedAt); err != nil {
+			return nil, err
+		}
+		out = append(out, m)
+	}
+	return out, rows.Err()
+}
 
 // series returns a series with its member works. limit 0 means "all works",
 // which is the endpoint's DEFAULT: unlike a person's credit list, series
@@ -902,7 +958,7 @@ const (
 // so a window is applied AFTER sorting, not by SQL.
 func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	var d seriesDetail
-	err := s.db.QueryRow(`SELECT id, name FROM series WHERE id=?`, id).Scan(&d.ID, &d.Name)
+	err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&d.ID, &d.Name)
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}

@@ -86,8 +86,13 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"authors of a work", authorsOfSQL, []any{work}},
 		{"character aliases of a work", characterAliasSQL, []any{work}},
 		// Series detail.
+		{"series header", seriesHeaderSQL, []any{series}},
 		{"works of a series", seriesWorksSQL, []any{series}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
+		// The watch feed's membership read, issued once per watched series - up to
+		// 200 of them on one request, which is what makes an unindexed step here
+		// 200 table reads rather than one.
+		{"watch feed members", watchMembersSQL, []any{series}},
 		// Person detail: the paged lists AND the totals that must agree with them.
 		{"authored total", authoredTotalSQL, []any{person}},
 		{"narrated total", narratedTotalSQL, []any{person}},

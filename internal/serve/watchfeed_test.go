@@ -8,6 +8,8 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"slices"
+	"sort"
 	"strconv"
 	"strings"
 	"testing"
@@ -667,5 +669,226 @@ func TestICSFoldSurvivesInvalidUTF8(t *testing.T) {
 	}
 	if joined != strings.Repeat("\x80", 100) {
 		t.Errorf("unfolding lost bytes: %d of 100", len(joined))
+	}
+}
+
+// watchShapesCatalog is one series holding every shape the feed's rules turn on:
+// dated works either side of a window boundary, a future release, a bare year, a
+// calendar-invalid `date_flex` value with and without a recent added_at, a work
+// whose EARLIEST recording is old but which was reissued recently, timestamps
+// with an offset, and a work with no recordings at all. Plus enough plainly old
+// works that the candidate query has something to exclude.
+func watchShapesCatalog(t *testing.T) *model.Catalog {
+	t.Helper()
+	author := &model.Person{ID: "author", Name: "Author", License: "CC0-1.0"}
+	series := &model.Series{ID: "shapes", Name: "Shapes", License: "CC0-1.0"}
+	cat := &model.Catalog{People: []*model.Person{author}, Series: []*model.Series{series}}
+
+	pos := 0
+	add := func(id, addedAt string, releases ...string) {
+		pos++
+		w := &model.Work{
+			ID: id, Title: id, Language: "en", Authors: []string{author.ID}, License: "CC0-1.0",
+			AddedAt: addedAt,
+		}
+		for i, release := range releases {
+			w.Recordings = append(w.Recordings, &model.Recording{
+				ID: "rec-" + strconv.Itoa(i), Work: id, Language: "en",
+				ReleaseDate: release, License: "CC0-1.0",
+			})
+		}
+		cat.Works = append(cat.Works, w)
+		series.Works = append(series.Works, model.SeriesWork{Work: id, Position: strconv.Itoa(pos)})
+	}
+
+	add("ancient", "2019-01-01", "2000-04-01")
+	add("boundary-day", "2019-01-01", "2026-06-23")
+	add("day-before-boundary", "2019-01-01", "2026-06-22")
+	add("out-today", "2019-01-01", "2026-09-21")
+	add("preorder-month", "2019-01-01", "2026-10")
+	add("preorder-year", "2019-01-01", "2027")
+	add("bare-year-current", "2019-01-01", "2026")
+	add("bare-year-past", "2019-01-01", "2025")
+	// The earliest recording is what the card carries, so a reissue does not make
+	// an old book news.
+	add("old-with-reissue", "2019-01-01", "1999-01-01", "2026-09-01")
+	add("new-with-two", "2019-01-01", "2026-09-02", "2026-09-30")
+	// A `date_flex` value the calendar rejects falls through to added_at.
+	add("bad-month-recent", "2026-09-20", "2026-13")
+	add("bad-month-old", "2019-01-01", "2026-13")
+	add("bad-day-recent", "2026-09-19", "2026-02-30")
+	// No usable date at all: added_at decides, at whatever precision it states.
+	add("undated-recent", "2026-09-18T12:00:00Z", "")
+	add("undated-offset", "2026-06-23T23:30:00+05:00", "")
+	// An offset BEHIND UTC puts the instant a day later than the date its first
+	// ten characters spell, which is what the candidate query's slack day covers.
+	add("undated-negative-offset", "2026-06-22T20:00:00-07:00", "")
+	add("undated-day", "2026-06-23", "")
+	add("undated-old", "2019-05-05", "")
+	add("no-added-no-date", "", "")
+	// A work with no recordings at all, which the candidate query's release arm
+	// must not silently swallow.
+	pos++
+	cat.Works = append(cat.Works, &model.Work{
+		ID: "no-recordings", Title: "No Recordings", Language: "en",
+		Authors: []string{author.ID}, License: "CC0-1.0", AddedAt: "2026-09-17",
+	})
+	series.Works = append(series.Works, model.SeriesWork{Work: "no-recordings", Position: strconv.Itoa(pos)})
+	for i := range 80 {
+		add("filler-"+strconv.Itoa(i), "2018-03-0"+strconv.Itoa(i%9+1), "2010-01-01")
+	}
+	return cat
+}
+
+// TestWatchFeedMatchesTheWholeSeriesSweep is the finding's proof. The feed used
+// to read every watched series WHOLE - a card, its authors, its first series and
+// its recordings' facts for every member, up to 200 series deep - and then keep
+// the handful inside the window. It now selects the candidates in SQL, which is
+// only safe if that selection is a strict SUPERSET of what watchItem keeps.
+//
+// So the test compares the feed against the sweep it replaced: the reference
+// walks the whole series through snapshot.series and applies watchItem to every
+// member, exactly as the old implementation did, and the two must name the same
+// items over a catalogue holding every shape the rules turn on and over windows
+// and clocks that move the boundary around (including a cutoff on 1 January,
+// which is what the padding in watchMembersSQL exists for).
+func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
+	snap, err := openSnapshot(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(snap.close)
+
+	reference := func(window int, now time.Time) []string {
+		detail, err := snap.series("shapes", 0, 0)
+		if err != nil {
+			t.Fatal(err)
+		}
+		var ids []string
+		seen := map[string]bool{}
+		for _, entry := range detail.Works {
+			if entry.Work != nil && seen[entry.Work.ID] {
+				continue
+			}
+			if item, ok := watchItem(detail.Name, entry, window, now, testSiteURL); ok {
+				seen[entry.Work.ID] = true
+				ids = append(ids, item.id)
+			}
+		}
+		sort.Strings(ids)
+		return ids
+	}
+
+	for _, tc := range []struct {
+		name   string
+		window int
+		now    time.Time
+	}{
+		{"default window", 90, time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)},
+		// A clock just after midnight, which puts the added_at cutoff INSTANT
+		// early on the boundary day - the shape a record stamped with an offset
+		// behind UTC falls either side of.
+		{"just after midnight", 90, time.Date(2026, 9, 21, 0, 30, 0, 0, time.UTC)},
+		{"cutoff on new year's day", 89, time.Date(2026, 3, 31, 0, 30, 0, 0, time.UTC)},
+		{"one-day window", 1, time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)},
+		{"maximum window", maxWatchWindow, time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)},
+		{"a year later", 90, time.Date(2027, 9, 21, 15, 0, 0, 0, time.UTC)},
+		{"before everything", 90, time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			feed, err := snap.watchFeed([]string{"shapes"}, tc.window, tc.now, testSiteURL, "self", "id")
+			if err != nil {
+				t.Fatal(err)
+			}
+			got := make([]string, 0, len(feed.items))
+			for _, item := range feed.items {
+				got = append(got, item.id)
+			}
+			sort.Strings(got)
+			want := reference(tc.window, tc.now)
+			if !slices.Equal(got, want) {
+				t.Errorf("the bounded feed and the whole-series sweep disagree:\n got %v\nwant %v", got, want)
+			}
+		})
+	}
+}
+
+// TestWatchSelectionIsBounded pins the COST the rewrite bought: full cards are
+// built for the survivors alone, where the whole-series read this replaced built
+// one per member of every watched series. Without it the change is invisible to
+// the tests - the output is identical either way.
+func TestWatchSelectionIsBounded(t *testing.T) {
+	snap, err := openSnapshot(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(snap.close)
+
+	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
+	members, err := snap.watchMembers("shapes")
+	if err != nil {
+		t.Fatal(err)
+	}
+	candidates := make([]watchCandidate, len(members))
+	for i, m := range members {
+		candidates[i] = watchCandidate{seriesName: "Shapes", position: m.position, workID: m.workID, addedAt: m.addedAt}
+	}
+	kept, err := snap.selectWatchCandidates(candidates, defaultWatchWindow, now, testSiteURL)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(kept) >= len(members)/2 {
+		t.Errorf("the selection kept %d of %d members - it is not bounding the cards that get built",
+			len(kept), len(members))
+	}
+
+	// And it keeps EXACTLY the works the feed goes on to report: a selection that
+	// dropped one would silently lose an item, and one that kept extras would be
+	// paying for cards nobody reads.
+	feed, err := snap.watchFeed([]string{"shapes"}, defaultWatchWindow, now, testSiteURL, "self", "id")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(kept) != len(feed.items) {
+		t.Errorf("selection kept %d candidates but the feed reports %d items", len(kept), len(feed.items))
+	}
+}
+
+// TestWatchItemDecidesOnTheDatedFactsAlone pins the property the two-pass
+// selection rests on: whether a member is news depends on the release date and
+// added_at and NOTHING else, so a probe card carrying those two fields gets the
+// same answer as the full card. If watchItem ever starts reading the title, the
+// authors or the cover to DECIDE (as opposed to to render), the cheap pass
+// would quietly start disagreeing with the expensive one - and this fails.
+func TestWatchItemDecidesOnTheDatedFactsAlone(t *testing.T) {
+	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
+	cover := "https://example.test/cover.jpg"
+	for _, dates := range []struct{ release, added string }{
+		{"2026-09-20", ""},
+		{"2027", ""},
+		{"2000-01-01", ""},
+		{"", "2026-09-20"},
+		{"", "2019-01-01"},
+		{"2026-13", "2026-09-20"},
+		{"", ""},
+	} {
+		var addedAt *string
+		if dates.added != "" {
+			added := dates.added
+			addedAt = &added
+		}
+		probe := &workCard{ID: "work", ReleaseDate: dates.release, AddedAt: addedAt}
+		full := &workCard{
+			ID: "work", Title: "A Title", ReleaseDate: dates.release, AddedAt: addedAt,
+			Authors:  []personRef{{ID: "author", Name: "Author"}},
+			Series:   &seriesRef{ID: "series", Name: "Series", Position: "1"},
+			CoverURL: &cover,
+		}
+		_, probeOK := watchItem("Series", seriesEntry{Position: "1", Work: probe}, 90, now, testSiteURL)
+		_, fullOK := watchItem("Series", seriesEntry{Position: "1", Work: full}, 90, now, testSiteURL)
+		if probeOK != fullOK {
+			t.Errorf("release %q / added %q: probe card kept = %v, full card kept = %v",
+				dates.release, dates.added, probeOK, fullOK)
+		}
 	}
 }
