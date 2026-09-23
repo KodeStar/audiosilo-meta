@@ -53,6 +53,11 @@ type Config struct {
 	// defaultMaxPatchBase.
 	maxPatchBase int64
 
+	// decompressFloor is the FLOOR of the decompression bound both refresh paths
+	// write under (see decompressBound). Overridable for tests; New defaults it
+	// to defaultDecompressFloor.
+	decompressFloor int64
+
 	// bootRetry is the FIRST wait between poll attempts while no artifact has
 	// loaded at all (it then backs off - see pollLoop). Overridable for tests;
 	// New defaults it to defaultBootRetry.
@@ -132,6 +137,9 @@ func New(cfg Config) (*Server, error) {
 	}
 	if cfg.bootRetry <= 0 {
 		cfg.bootRetry = defaultBootRetry
+	}
+	if cfg.decompressFloor <= 0 {
+		cfg.decompressFloor = defaultDecompressFloor
 	}
 	if cfg.maxPatchBase <= 0 {
 		cfg.maxPatchBase = defaultMaxPatchBase
@@ -534,6 +542,35 @@ func writeErr(w http.ResponseWriter, status int, msg string) {
 	writeJSON(w, status, map[string]string{"error": msg})
 }
 
+// internalErrMsg is the body of EVERY 500 this server writes. An internal
+// error's own text describes the failure's internals - a SQL statement, a file
+// path on the cache volume, a driver message - and every API route here is
+// public and CORS-open, so that text is reflected to anyone who can provoke it.
+// The 4xx messages are deliberately untouched: those are about the REQUEST, which
+// the caller sent and is the only thing they can act on.
+const internalErrMsg = "internal error"
+
+// fail answers with the fixed 500 body and logs what actually went wrong, so the
+// detail is kept where an operator reads it rather than where a stranger does.
+// ONE helper rather than a fixed string at each site: a handler that spells its
+// own 500 is a handler that can quietly go back to reflecting err.Error().
+func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
+	s.logf("serve: 500 %s %s: %v", r.Method, r.URL.Path, err)
+	writeErr(w, http.StatusInternalServerError, internalErrMsg)
+}
+
+// logf writes through the injected logger. A Server built directly - a test, or
+// any future caller that skips New - has none and logs to the standard logger
+// instead, exactly as snapshot.logf does, so a degradation notice can never be
+// the thing that panics a request.
+func (s *Server) logf(format string, args ...any) {
+	if s.log != nil {
+		s.log.Printf(format, args...)
+		return
+	}
+	log.Printf(format, args...)
+}
+
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
 // def when absent or invalid. A def of 0 is how an endpoint spells "no window at
 // all by default" (snapshot.series), since 0 is never reachable from a supplied
@@ -592,7 +629,7 @@ func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
 	limit := clampLimit(r.URL.Query().Get("limit"), 12, 50)
 	cards, err := s.current().latestWorks(limit)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	writeJSON(w, http.StatusOK, map[string]any{"works": cards})
@@ -602,7 +639,7 @@ func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	detail, err := snap.workDetail(r.PathValue(idWildcard))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if detail == nil {
@@ -625,7 +662,7 @@ func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if len(chs) == 0 && redirected(w, r, snap) {
@@ -762,7 +799,7 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
 	p, err := snap.person(r.PathValue(idWildcard), limit, clampOffset(q.Get("offset")))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if p == nil {
@@ -785,7 +822,7 @@ func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	ser, err := snap.series(r.PathValue(idWildcard), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if ser == nil {
@@ -821,7 +858,7 @@ func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 		limit := clampLimit(r.URL.Query().Get("limit"), searchPageDefault, searchPageMax)
 		results, err := s.current().search(kind, q, limit)
 		if err != nil {
-			writeErr(w, http.StatusInternalServerError, err.Error())
+			s.fail(w, r, err)
 			return
 		}
 		writeJSON(w, http.StatusOK, map[string]any{"results": results})
@@ -832,10 +869,10 @@ func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 // (characters/recaps/recap summaries). The per-work list and series gaps are
 // their own paginated endpoints. It always returns 200 and degrades on older
 // artifacts (see snapshot.coverage) rather than reporting everything as missing.
-func (s *Server) handleCoverage(w http.ResponseWriter, _ *http.Request) {
+func (s *Server) handleCoverage(w http.ResponseWriter, r *http.Request) {
 	res, err := s.current().coverage()
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	writeJSON(w, http.StatusOK, res)
@@ -858,7 +895,7 @@ func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 	offset := clampOffset(q.Get("offset"))
 	res, err := s.current().coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	writeJSON(w, http.StatusOK, res)
@@ -874,7 +911,7 @@ func (s *Server) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request
 	offset := clampOffset(q.Get("offset"))
 	res, err := s.current().seriesGapsPage(strings.TrimSpace(q.Get("q")), limit, offset)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	writeJSON(w, http.StatusOK, res)
@@ -891,7 +928,7 @@ func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	res, err := snap.lookup(asin, isbn)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if res == nil {

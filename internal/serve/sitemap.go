@@ -222,7 +222,7 @@ func (s *Server) handleSitemapIndex(w http.ResponseWriter, r *http.Request) {
 	if done {
 		return
 	}
-	writeSitemap(w, etag, s.sitemapIndex(snap, static))
+	s.writeSitemap(w, r, etag, s.sitemapIndex(snap, static))
 }
 
 // sitemapIndexDocName is the index's identity inside its validator. The static
@@ -270,10 +270,10 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 		// No validator and no cache policy on this path: a hot swap closing the db
 		// mid-request is a 500 that must never be stored, let alone 304-renewed
 		// under the document's own ETag for the life of the release.
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
-	writeSitemap(w, etag, doc)
+	s.writeSitemap(w, r, etag, doc)
 }
 
 // sitemapUnavailable is the no-artifact answer, the API routes' own 503 with the
@@ -505,10 +505,10 @@ func sitemapETag(snap *snapshot, siteURL, doc string) string {
 // on the wire - the reason the JSON handlers marshal before they write - and
 // SUCCESS is what puts the ETag and the cache policy on the response, so no
 // error path can inherit them.
-func writeSitemap(w http.ResponseWriter, etag string, doc any) {
+func (s *Server) writeSitemap(w http.ResponseWriter, r *http.Request, etag string, doc any) {
 	body, err := renderXML(doc)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	h := w.Header()

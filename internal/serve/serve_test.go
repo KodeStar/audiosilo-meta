@@ -1,9 +1,11 @@
 package serve
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -1249,5 +1251,69 @@ func TestHotSwap(t *testing.T) {
 	}
 	if got := srv.current().stats.Works; got != 5 {
 		t.Errorf("after swap works = %d, want 5", got)
+	}
+}
+
+// TestInternalErrorsAreNotReflected pins the 500 body. Every API route here is
+// public and CORS-open, so an error's own text - a SQL statement, the cache
+// volume's layout, a driver message - is reflected to anyone who can provoke it;
+// the detail belongs in the log instead. The 4xx bodies are deliberately NOT
+// covered: those describe the request, which the caller sent.
+//
+// The failure is induced the way TestSitemapErrorCarriesNoCacheHeaders induces
+// one - the snapshot's db is closed under the request - so it reaches the real
+// error paths of the four files that write a 500 (serve.go, abs.go, sitemap.go,
+// watchfeed.go).
+func TestInternalErrorsAreNotReflected(t *testing.T) {
+	var logged bytes.Buffer
+	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg.Logger = log.New(&logged, "", 0)
+	srv, ts := newPageServerFrom(t, cfg)
+	srv.current().close()
+
+	for _, path := range []string{
+		"/api/v1/works/project-hail-mary",
+		"/api/v1/works/project-hail-mary/recordings/ray-porter-2021/chapters",
+		"/api/v1/people/andy-weir",
+		"/api/v1/series/the-stormlight-archive",
+		"/api/v1/works/latest",
+		"/api/v1/search?q=hail",
+		"/api/v1/works/search?q=hail",
+		"/api/v1/lookup?asin=B08G9PRS1K",
+		"/api/v1/coverage",
+		"/api/v1/coverage/works?filter=missing",
+		"/api/v1/coverage/series-gaps",
+		"/abs/search?query=hail",
+		"/sitemaps/works-0.xml",
+		"/api/v1/watch/feed.atom?s=the-stormlight-archive",
+	} {
+		resp, err := http.Get(ts.URL + path)
+		if err != nil {
+			t.Fatalf("GET %s: %v", path, err)
+		}
+		body, err := io.ReadAll(resp.Body)
+		_ = resp.Body.Close()
+		if err != nil {
+			t.Fatal(err)
+		}
+		if resp.StatusCode != http.StatusInternalServerError {
+			t.Errorf("GET %s = %d, want 500 over a closed db; body %s", path, resp.StatusCode, body)
+			continue
+		}
+		var out map[string]string
+		if err := json.Unmarshal(body, &out); err != nil {
+			t.Errorf("GET %s body is not the JSON error envelope: %s", path, body)
+			continue
+		}
+		if out["error"] != internalErrMsg {
+			t.Errorf("GET %s leaks the internal error: %q", path, out["error"])
+		}
+	}
+	// The detail is not lost - it is written where an operator reads it.
+	if !strings.Contains(logged.String(), "500 GET /api/v1/works/project-hail-mary") {
+		t.Errorf("the 500s were not logged with their detail:\n%s", logged.String())
+	}
+	if !strings.Contains(logged.String(), "sql: database is closed") {
+		t.Errorf("the log does not carry the driver's own message:\n%s", logged.String())
 	}
 }
