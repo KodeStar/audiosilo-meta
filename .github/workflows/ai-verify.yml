@@ -36,6 +36,11 @@ on:
       pr:
         description: "Pull request number to verify"
         required: true
+        # GitHub validates a `number` input at dispatch time, so the UI and the
+        # API both refuse a non-numeric one before the job starts. The shell
+        # guard below stays: the REST dispatch path is not guaranteed to type
+        # check, and the input reaches gh, git and a step output.
+        type: number
 
 permissions:
   contents: read
@@ -110,12 +115,12 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
       - name: Gather the data change
         id: gather
         env:
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
           PR_INPUT: ${{ github.event.inputs.pr }}
@@ -126,9 +131,8 @@ jobs:
           set -euo pipefail
           if [ "$EVENT" = "workflow_dispatch" ]; then
             PR="$PR_INPUT"
-            # A dispatch input is free text and reaches gh, git and the step
-            # output below. A pull request number is a positive integer or it is
-            # nothing.
+            # Belt and braces behind the input's `type: number`: a REST dispatch
+            # is not guaranteed to type check, and this reaches gh and git.
             if ! [[ "$PR" =~ ^[0-9]+$ ]]; then
               echo "::error::pr input must be a pull request number; got '${PR}'"
               exit 1
