@@ -76,6 +76,13 @@ describe('watch / unwatch', () => {
     unwatch(before, 'the-wandering-inn')
     expect(JSON.stringify(before)).toBe(snapshot)
   })
+  it('does not resolve a slug-shaped Object.prototype member name through the prototype chain', () => {
+    // "constructor" is a valid slug (isValidSlug('constructor') is true), so an
+    // untouched store must still answer "not watched" rather than reading the
+    // inherited Object.prototype member through a plain `in`/bracket lookup.
+    expect(isWatched(emptyWatchlist(), 'constructor')).toBe(false)
+    expect(watchedSeries(emptyWatchlist(), 'constructor')).toBeUndefined()
+  })
 })
 
 describe('ownership marks', () => {
@@ -313,15 +320,9 @@ describe('parseWatchlist', () => {
     })
   })
   it('drops a "__proto__" series key rather than repointing the store\'s prototype', () => {
-    // A plain object literal with a non-computed `__proto__: ...` key sets the
-    // literal's OWN prototype rather than an enumerable property (so it would
-    // never round-trip through JSON.stringify as a "__proto__" key at all).
-    // Object.fromEntries goes through CreateDataProperty instead, the same
-    // route JSON.parse itself uses, so this really produces a document whose
-    // `series` object holds a genuine own property named "__proto__" - exactly
-    // what a hand-edited localStorage value or a crafted backup file can
-    // contain. isValidSlug rejects it on shape alone (it is not
-    // `^[a-z0-9]+(-[a-z0-9]+)*$`), same as any other non-slug key.
+    // Object.fromEntries (like JSON.parse) creates a genuine own "__proto__"
+    // property rather than a literal's special prototype-setting syntax, so this
+    // is the document a hand-edited localStorage value or backup file can hold.
     const series = Object.fromEntries([
       ['__proto__', { name: 'Injected', watchedAt: TODAY, owned: ['x'], seen: [], skipped: [] }],
       ['good', { name: 'Good', watchedAt: TODAY, owned: [], seen: [], skipped: [] }],

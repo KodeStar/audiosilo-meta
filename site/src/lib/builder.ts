@@ -13,10 +13,6 @@ import type { Character, Position } from './api'
 import { CC_BY_SA_SPDX } from './expressive'
 import { MAX_SLUG_LEN, isValidSlug } from './slug'
 
-// Re-exported for this module's own consumers (builder.test.ts included) - the
-// rule itself now lives in lib/slug.ts, the leaf lib/watchlist.ts shares.
-export { MAX_SLUG_LEN, isValidSlug }
-
 // The output shapes reuse the wire Position (both mirror the schema's
 // edition-independent chapter position); re-exported so builder consumers
 // need not also import from api.

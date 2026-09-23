@@ -92,6 +92,8 @@ function parseSeries(value: unknown): WatchedSeries | null {
   const entry: WatchedSeries = {
     name: typeof raw.name === 'string' ? raw.name : '',
     watchedAt: typeof raw.watchedAt === 'string' ? raw.watchedAt : '',
+    // owned/seen/skipped are read only through Set/array membership, never as
+    // object keys, so unlike a series slug they need no slug-shape check.
     owned: stringList(raw.owned),
     seen: stringList(raw.seen),
     // Additive, so a document stored before skip marks existed parses into an
@@ -189,14 +191,20 @@ function union(a: readonly string[], b: readonly string[]): string[] {
 }
 
 /** Is this series watched (hidden or not)? A hidden series is still watched -
-    it is simply not offered - so the series page's toggle reads as on. */
+    it is simply not offered - so the series page's toggle reads as on.
+    Object.hasOwn, not `in`: a slug shaped like an Object.prototype member name
+    ("constructor" is a valid slug) is inherited by every plain object, so `in`
+    would report an untouched store watching it. */
 export function isWatched(store: Watchlist, slug: string): boolean {
-  return slug in store.series
+  return Object.hasOwn(store.series, slug)
 }
 
-/** The stored record for a series, or undefined. */
+/** The stored record for a series, or undefined. Object.hasOwn guards the same
+    prototype-name slugs isWatched does - a bracket read alone would return the
+    inherited Object.prototype member (e.g. the Object constructor function for
+    "constructor") instead of undefined. */
 export function watchedSeries(store: Watchlist, slug: string): WatchedSeries | undefined {
-  return store.series[slug]
+  return Object.hasOwn(store.series, slug) ? store.series[slug] : undefined
 }
 
 /** Start watching a series. Watching one already watched only refreshes its
