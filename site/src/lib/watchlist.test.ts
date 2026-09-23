@@ -76,6 +76,13 @@ describe('watch / unwatch', () => {
     unwatch(before, 'the-wandering-inn')
     expect(JSON.stringify(before)).toBe(snapshot)
   })
+  it('does not resolve a slug-shaped Object.prototype member name through the prototype chain', () => {
+    // "constructor" is a valid slug (isValidSlug('constructor') is true), so an
+    // untouched store must still answer "not watched" rather than reading the
+    // inherited Object.prototype member through a plain `in`/bracket lookup.
+    expect(isWatched(emptyWatchlist(), 'constructor')).toBe(false)
+    expect(watchedSeries(emptyWatchlist(), 'constructor')).toBeUndefined()
+  })
 })
 
 describe('ownership marks', () => {
@@ -311,6 +318,44 @@ describe('parseWatchlist', () => {
       skipped: [],
       hidden: true,
     })
+  })
+  it('drops a "__proto__" series key rather than repointing the store\'s prototype', () => {
+    // Object.fromEntries (like JSON.parse) creates a genuine own "__proto__"
+    // property rather than a literal's special prototype-setting syntax, so this
+    // is the document a hand-edited localStorage value or backup file can hold.
+    const series = Object.fromEntries([
+      ['__proto__', { name: 'Injected', watchedAt: TODAY, owned: ['x'], seen: [], skipped: [] }],
+      ['good', { name: 'Good', watchedAt: TODAY, owned: [], seen: [], skipped: [] }],
+    ])
+    const text = JSON.stringify({ version: WATCHLIST_VERSION, series })
+    // Sanity-check the fixture itself: the raw text really does carry the
+    // dangerous key, so a pass here is not just "there was nothing to drop".
+    expect(text).toContain('"__proto__"')
+
+    const got = parseWatchlist(text)
+    expect(Object.keys(got.series)).toEqual(['good'])
+    expect(Object.getPrototypeOf(got.series)).toBe(Object.prototype)
+    // A slug never watched must not resolve through an inherited entry.
+    expect(watchedSeries(got, 'anything-else')).toBeUndefined()
+    expect(isWatched(got, 'anything-else')).toBe(false)
+
+    // importJSON merges through parseWatchlist too, and must behave the same:
+    // no injected series, and the local store's own prototype is untouched.
+    const merged = importJSON(oneSeries(), text)
+    expect(Object.keys(merged.series).sort()).toEqual(['good', 'the-wandering-inn'])
+    expect(Object.getPrototypeOf(merged.series)).toBe(Object.prototype)
+    expect(watchedSeries(merged, 'anything-else')).toBeUndefined()
+  })
+
+  it('drops a non-slug series key while keeping a valid one beside it', () => {
+    const series = {
+      'Not A Slug': { name: 'Bad', watchedAt: TODAY, owned: [], seen: [], skipped: [] },
+      'orion-lake': { name: 'Good', watchedAt: TODAY, owned: [], seen: [], skipped: [] },
+    }
+    const text = JSON.stringify({ version: WATCHLIST_VERSION, series })
+
+    const got = parseWatchlist(text)
+    expect(Object.keys(got.series)).toEqual(['orion-lake'])
   })
 })
 

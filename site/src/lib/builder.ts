@@ -11,6 +11,7 @@
 
 import type { Character, Position } from './api'
 import { CC_BY_SA_SPDX } from './expressive'
+import { MAX_SLUG_LEN, isValidSlug } from './slug'
 
 // The output shapes reuse the wire Position (both mirror the schema's
 // edition-independent chapter position); re-exported so builder consumers
@@ -60,10 +61,6 @@ export const CAPS = {
   ending: 2000,
 } as const
 
-/** The schema's maxLength on id slugs (characters.schema.json). */
-export const MAX_SLUG_LEN = 100
-
-const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const QID_RE = /^Q\d+$/
 
 export function emptyCharacterDraft(): CharacterDraft {
@@ -108,11 +105,6 @@ export function slugify(name: string): string {
   const lastHyphen = head.lastIndexOf('-')
   // Cut at the last whole word inside the cap; a single giant word hard-cuts.
   return (lastHyphen > 0 ? head.slice(0, lastHyphen) : head).replace(/-+$/, '')
-}
-
-/** Format AND length: the schema caps slugs at MAX_SLUG_LEN characters. */
-export function isValidSlug(s: string): boolean {
-  return s.length <= MAX_SLUG_LEN && SLUG_RE.test(s)
 }
 
 /** Parse a chapter field: a non-negative whole number, else null. Rejects
