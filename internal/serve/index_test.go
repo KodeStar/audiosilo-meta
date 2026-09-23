@@ -87,6 +87,7 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"character aliases of a work", characterAliasSQL, []any{work}},
 		// Series detail.
 		{"series header", seriesHeaderSQL, []any{series}},
+		{"series name", seriesNameSQL, []any{series}},
 		{"works of a series", seriesWorksSQL, []any{series}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
 		// The watch feed's membership read, issued once per watched series - up to

@@ -170,7 +170,8 @@ func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
 	// Built at an ordinary path and MOVED: internal/build opens its output with
 	// a plain DSN, which the driver splits on '?' too, so a fixture written
 	// straight to the path under test would leave no artifact there at all.
-	dir := filepath.Join(t.TempDir(), "a?b")
+	base := t.TempDir()
+	dir := filepath.Join(base, "a?b")
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		t.Fatal(err)
 	}
@@ -188,8 +189,10 @@ func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
 		t.Errorf("works = %d, want the fixture's %d - the wrong file was opened",
 			snap.stats.Works, len(fixtureCatalog().Works))
 	}
-	// The spliced DSN would have named (and created) the truncated path.
-	if _, err := os.Stat(filepath.Join(t.TempDir(), "a")); err == nil {
+	// The spliced DSN would have named (and created) the truncated path - in
+	// THIS directory. A second t.TempDir() is a new empty one, where nothing was
+	// ever going to exist and the check passes whatever the DSN did.
+	if _, err := os.Stat(filepath.Join(base, "a")); err == nil {
 		t.Error("a truncated artifact path was created")
 	}
 }

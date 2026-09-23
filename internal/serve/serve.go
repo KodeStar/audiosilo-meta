@@ -551,8 +551,14 @@ const internalErrMsg = "internal error"
 // detail is kept where an operator reads it rather than where a stranger does.
 // ONE helper rather than a fixed string at each site: a handler that spells its
 // own 500 is a handler that can quietly go back to reflecting err.Error().
+//
+// The method and path are QUOTED. r.URL.Path is the DECODED path, so a request
+// for `/works/x%0A2026-01-01 serve: 500 ...` puts a newline in the middle of
+// this line and the rest of it reads as a log entry of its own - a caller
+// forging whatever an operator or a log pipeline then believes. %q keeps it on
+// one line, with the control characters visible as escapes.
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	s.log.Printf("serve: 500 %s %s: %v", r.Method, r.URL.Path, err)
+	s.log.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
 	writeErr(w, http.StatusInternalServerError, internalErrMsg)
 }
 

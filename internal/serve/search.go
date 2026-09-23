@@ -112,14 +112,16 @@ func boundQuery(q string) string {
 // (a phrase-final star is legal FTS5 and is what the whitespace-only predecessor
 // emitted for such a token anyway).
 func ftsMatch(q string, prefixLast bool) string {
-	parts := make([]string, 0, maxQueryPhrases)
+	// Grown as needed rather than sized at the cap: almost every real query is a
+	// handful of phrases, and the cap is a ceiling on a hostile one, not an
+	// expectation. The cap is checked in ONE place, where a phrase is about to be
+	// appended, and the label is what lets that single check stop both loops.
+	var parts []string
+tokens:
 	for _, tok := range strings.Fields(boundQuery(q)) {
-		if len(parts) >= maxQueryPhrases {
-			break
-		}
 		for _, phrase := range tokenPhrases(tok) {
 			if len(parts) >= maxQueryPhrases {
-				break
+				break tokens
 			}
 			parts = append(parts, phrase)
 		}

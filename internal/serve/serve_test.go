@@ -1316,10 +1316,42 @@ func TestInternalErrorsAreNotReflected(t *testing.T) {
 		}
 	}
 	// The detail is not lost - it is written where an operator reads it.
-	if !strings.Contains(logged.String(), "500 GET /api/v1/works/project-hail-mary") {
+	if !strings.Contains(logged.String(), `500 "GET" "/api/v1/works/project-hail-mary"`) {
 		t.Errorf("the 500s were not logged with their detail:\n%s", logged.String())
 	}
 	if !strings.Contains(logged.String(), "sql: database is closed") {
 		t.Errorf("the log does not carry the driver's own message:\n%s", logged.String())
+	}
+}
+
+// TestFailLogsOneLinePerRequest: r.URL.Path is the DECODED path, so a request
+// carrying %0A used to put a newline inside the 500 line and let the caller
+// forge the rest of it as a log entry of their own. The method and the path are
+// quoted, so a control character is an escape and the entry stays one line.
+func TestFailLogsOneLinePerRequest(t *testing.T) {
+	var logged bytes.Buffer
+	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg.Logger = log.New(&logged, "", 0)
+	srv, ts := newPageServerFrom(t, cfg)
+	srv.current().close()
+
+	forged := "/api/v1/works/x%0A2026-01-01%20serve:%20500%20the%20database%20is%20fine"
+	resp, err := http.Get(ts.URL + forged)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
+	if resp.StatusCode != http.StatusInternalServerError {
+		t.Fatalf("status = %d, want 500 over a closed db", resp.StatusCode)
+	}
+	out := strings.TrimRight(logged.String(), "\n")
+	if out == "" {
+		t.Fatal("nothing was logged")
+	}
+	if n := strings.Count(out, "\n"); n != 0 {
+		t.Errorf("the request forged %d extra log line(s):\n%s", n, out)
+	}
+	if !strings.Contains(out, `\n`) {
+		t.Errorf("the newline was not escaped into the quoted path:\n%s", out)
 	}
 }

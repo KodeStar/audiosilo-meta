@@ -883,7 +883,11 @@ type seriesDetail struct {
 // the artifact does not carry is dropped from the list, so counting it in the
 // total would report a page shorter than it claims.
 const (
-	seriesHeaderSQL  = `SELECT id, name FROM series WHERE id=?`
+	seriesHeaderSQL = `SELECT id, name FROM series WHERE id=?`
+	// seriesNameSQL is the header without the id, for the caller that already
+	// holds it (see seriesName). Reading a column back to discard it is a scan
+	// target a reader has to stop and account for.
+	seriesNameSQL    = `SELECT name FROM series WHERE id=?`
 	seriesAuthorsSQL = `SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id ` +
 		`WHERE sa.series_id=? ORDER BY sa.ord`
 	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
@@ -901,9 +905,7 @@ const (
 // two of its fields filled is a lie about the other four - a caller has no way
 // to tell an empty membership from an unread one.
 func (s *snapshot) seriesName(id string) (name string, ok bool, err error) {
-	// The shared statement selects the id too; only the name is wanted here.
-	var echoedID string
-	switch err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&echoedID, &name); {
+	switch err := s.db.QueryRow(seriesNameSQL, id).Scan(&name); {
 	case err == sql.ErrNoRows:
 		return "", false, nil
 	case err != nil:
