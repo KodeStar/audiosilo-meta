@@ -168,8 +168,12 @@ sidecars and the collision keeper decides what ships, so they shape artifact
 CONTENT) changes land on main, and on a `community-data` repository_dispatch from
 the community repo. The artifact is compiled, so a new index or a `SchemaVersion`
 bump must reach a release without waiting for an unrelated data edit. A run whose
-tag already exists - the same day, the same pair of SHAs, so genuinely nothing
-new - skips rather than failing. Asset
+tag already exists as a PUBLISHED release - the same day, the same pair of SHAs,
+so genuinely nothing new - skips rather than failing; the same tag sitting as a
+DRAFT is a previous run that died before publishing, so it is deleted and this
+one composes again (the probe reads the release LISTING, which shows drafts to a
+token with contents:write, because a draft carries no git tag to be found by).
+Asset
 contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor),
 `meta.sqlite.sha256` (raw-file digest, for verifying a patched artifact), and a
 best-effort `meta.sqlite.patch.from-<PREV_TAG>.zst` (a zstd `--patch-from` binary
@@ -179,14 +183,22 @@ release is selected by asset presence - the non-draft, non-prerelease release
 carrying `meta.sqlite.gz` with the **maximum `published_at`** (not the
 first-listed: GitHub's release list order is not publish-chronological) -
 because the repo also cuts code/image `v*` releases with no data assets, so
-GitHub's "latest" can be either kind. Every asset is VERIFIED
-before the run is over: the two checksum files are downloaded and compared
+GitHub's "latest" can be either kind. The release is cut as a DRAFT (at
+`--target` the composed core sha), verified, and only then published
+(`gh release edit --draft=false`, with `isDraft` read back rather than inferred
+from an exit status): publishing on creation raced the uploads two ways - a
+consumer selecting the newest non-draft release carrying `meta.sqlite.gz` could
+pick one whose checksum files were still going up, and a verification that then
+failed left a broken release visible. Every asset is VERIFIED
+before that publish: the two checksum files are downloaded and compared
 byte-for-byte with the ones just computed, and every asset the run uploaded - the
 410MB gz and the delta included - is checked against the release API's own `size`
 and `digest` (GitHub's SHA-256 of the bytes it stored, so nothing is re-downloaded
 to hash locally; a null digest FAILS rather than passing quietly). The assets ARE
 the consumer contract, so a truncated upload is a broken catalogue for everyone
-rather than a broken run. A `workflow_dispatch` is refused unless the checked-out
+rather than a broken run - and a verification that fails DELETES the draft, so
+nothing half-made is ever visible and a re-run starts clean. The webhook
+notification is sent after the publish. A `workflow_dispatch` is refused unless the checked-out
 ref is an ancestor of `origin/main` (the push and dispatch triggers are already
 main-only; dispatch is the one door that takes any ref, and a release cut from a
 branch becomes THE catalogue the moment it lands). The
