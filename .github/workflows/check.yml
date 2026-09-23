@@ -39,11 +39,7 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
-          # go.mod says `go 1.25.0`, which setup-go otherwise resolves to
-          # EXACTLY 1.25.0 - a toolchain months of stdlib fixes behind the
-          # 1.25.x the production image builds with. check-latest takes the
-          # newest patch of that minor instead, which is what govulncheck below
-          # has to be judged against.
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
       - name: Build
@@ -98,9 +94,8 @@ jobs:
 
   # Known-vulnerability scan over the module and the toolchain it builds with.
   # The action runs its own checkout and setup-go, so it is given this repo's
-  # go.mod plus check-latest for the same reason the steps above are: judged
-  # against a pinned-to-the-floor 1.25.0 every stdlib advisory fixed since that
-  # patch reads as ours.
+  # go.mod. Its own check-latest default is already true - the same reason the
+  # setup-go steps above pass it - so it is not restated here.
   #
   # STRICT on purpose - a reachable advisory is a red check, not a note. It is
   # RED as this lands: GO-2026-5970 (an infinite loop on invalid input in
@@ -132,6 +127,7 @@ jobs:
   # This job is the pre-merge half of that same build: the exact composition
   # release.yml performs, run at PR time, failing on a non-zero exit. It should be
   # REQUIRED, not advisory - its whole point is to be the thing that stops the
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
   # merge.
   #
   # The community checkout is public and read-only (github.token, no secret), and
@@ -183,12 +179,7 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
-          # go.mod says `go 1.25.0`, which setup-go otherwise resolves to
-          # EXACTLY 1.25.0 - a toolchain months of stdlib fixes behind the
-          # 1.25.x the production image builds with. check-latest takes the
-          # newest patch of that minor instead, which is what govulncheck below
-          # has to be judged against.
-          check-latest: true
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
 
       - name: Compose both trees (metabuild --community)
         if: steps.relevant.outputs.run == 'true'

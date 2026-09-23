@@ -94,6 +94,7 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
       - name: Dump the issue body to a file
@@ -289,6 +290,7 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
       - name: Rebase open intake pull requests

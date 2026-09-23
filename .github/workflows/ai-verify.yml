@@ -115,6 +115,7 @@ jobs:
       - name: Gather the data change
         id: gather
         env:
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
           PR_INPUT: ${{ github.event.inputs.pr }}
