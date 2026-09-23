@@ -1,0 +1,36 @@
+name: workflows
+
+# Lint the workflows themselves. actionlint type-checks every expression, the
+# `uses` references, the `needs`/outputs graph and the shell of each `run` block
+# (the image bundles shellcheck and pyflakes, so those run too) - all of which
+# this repository leans on heavily: the intake sweep, the release build and
+# ai-verify are substantial shell programs living inside YAML, where a typo is
+# otherwise found by a failed run on main.
+#
+# Paths-filtered: it can only have something to say about the workflow files, so
+# it is not a required check and must not pretend to be one.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      # actionlint publishes no action of its own, so this is its official
+      # image, pinned by digest exactly as the `uses` above are pinned by sha.
+      - name: actionlint
+        uses: docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 # v1.7.12
+        with:
+          args: -color

@@ -1,0 +1,53 @@
+version: 2
+
+# Keep the four dependency surfaces this repo actually has fresh, without
+# turning the pull request list into a dependency feed. Minor and patch updates
+# are GROUPED into one pull request per ecosystem per week - they are the bulk of
+# the traffic and are reviewed as one bump either way - while a major update
+# still arrives on its own, because that is the one that needs reading.
+#
+# The docker entry is what keeps the Dockerfile's pinned base-image digests from
+# going stale: the tags there (node:24-alpine, golang:1.25-alpine, alpine:3.24)
+# are pinned by digest for reproducibility, so nothing moves them but this.
+updates:
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      go-minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: npm
+    directory: /site
+    schedule:
+      interval: weekly
+    groups:
+      site-minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  # The workflows pin every action to a commit sha with the version in a trailing
+  # comment; dependabot understands that form and rewrites both together.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions-minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      base-images-minor-and-patch:
+        update-types:
+          - minor
+          - patch
