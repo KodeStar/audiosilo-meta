@@ -30,25 +30,10 @@ jobs:
       - name: Refuse a tag that is not on main
         # `v*` matches any tag on any commit, and this workflow publishes to
         # GHCR under names people deploy from - so a tag pushed onto a branch, a
-        # revert or an unreviewed commit would ship as a released image. The tag
-        # has to be reachable from main.
-        #
-        # The checkout is shallow, so main's commits are fetched first, TREELESS
-        # (--filter=tree:0): reachability needs commit objects and nothing else,
-        # and this repo's tree is a 133k-work data catalogue.
-        run: |
-          set -euo pipefail
-          # --unshallow is an error on a complete repository, so ask first
-          # rather than assume actions/checkout's default fetch-depth.
-          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
-            git fetch --no-tags --unshallow --filter=tree:0 origin main
-          else
-            git fetch --no-tags --filter=tree:0 origin main
-          fi
-          if ! git merge-base --is-ancestor HEAD FETCH_HEAD; then
-            echo "::error::$(git rev-parse HEAD) is not on origin/main. Tag a commit that has been merged to main."
-            exit 1
-          fi
+        # revert or an unreviewed commit would ship as a released image. Shared
+        # with release.yml's dispatch guard; the mechanism is in the script's
+        # header.
+        run: bash .github/scripts/require-on-main.sh "Tag a commit that has been merged to main."
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0

@@ -94,28 +94,9 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         # A data release is cut from main by definition - every consumer selects
         # the newest one by asset presence, so a release published from a branch
-        # becomes THE catalogue for everybody the moment it lands. The push and
-        # dispatch triggers are already main-only; workflow_dispatch is the one
-        # door that takes any ref, so it is checked rather than trusted.
-        #
-        # The checkout above is shallow (history is not load-bearing here), so
-        # main's commits have to be fetched before merge-base can answer. They
-        # are fetched TREELESS (--filter=tree:0): the question is reachability,
-        # which needs commit objects and nothing else, and a full unshallow of a
-        # 133k-work data tree is not what this check is worth.
-        run: |
-          set -euo pipefail
-          # --unshallow is an error on a complete repository, so ask first
-          # rather than assume actions/checkout's default fetch-depth.
-          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
-            git fetch --no-tags --unshallow --filter=tree:0 origin main
-          else
-            git fetch --no-tags --filter=tree:0 origin main
-          fi
-          if ! git merge-base --is-ancestor HEAD FETCH_HEAD; then
-            echo "::error::$(git rev-parse HEAD) is not on origin/main. A data release must be composed from main - re-run this workflow with the main ref, or merge the branch first."
-            exit 1
-          fi
+        # becomes THE catalogue for everybody the moment it lands. Shared with
+        # image.yml's tag guard; the mechanism is in the script's header.
+        run: bash .github/scripts/require-on-main.sh "A data release must be composed from main - re-run this workflow with the main ref, or merge the branch first."
 
       - name: Identify this build
         id: build
