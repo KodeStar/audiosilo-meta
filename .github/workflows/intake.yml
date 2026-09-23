@@ -93,7 +93,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
@@ -289,7 +292,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 

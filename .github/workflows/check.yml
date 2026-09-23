@@ -71,7 +71,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
@@ -127,7 +130,10 @@ jobs:
         if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
@@ -138,27 +144,38 @@ jobs:
           version: v2.12
 
   # Known-vulnerability scan over the module and the toolchain it builds with.
-  # The action runs its own checkout and setup-go, so it is given this repo's
-  # go.mod. Its own check-latest default is already true - the same reason the
-  # setup-go steps above pass it - so it is not restated here.
   #
-  # STRICT on purpose - a reachable advisory is a red check, not a note. It is
-  # RED as this lands: GO-2026-5970 (an infinite loop on invalid input in
-  # golang.org/x/text, fixed in v0.39.0) is reachable from model.Slugify, and
-  # the bump to x/text is a separate change that owns go.mod. This job goes
-  # green when that merges; a finding naming any other module is new.
+  # STRICT on purpose - a reachable advisory is a red check, not a note.
   vuln:
     runs-on: ubuntu-latest
     needs: changes
     steps:
+      - name: Checkout
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        with:
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
+
       - name: govulncheck
         if: needs.changes.outputs.go == 'true'
-        uses: golang/govulncheck-action@032d45514ae346b1db93c04b0c90b841c370344f # v1.1.0
-        with:
-          # Empty so the action's nested setup-go falls through to the file.
-          go-version-input: ""
-          go-version-file: go.mod
-          go-package: ./...
+        # golang/govulncheck-action installs golang.org/x/vuln/cmd/govulncheck@latest,
+        # and that command now requires Go >= 1.26 (x/vuln v1.8.0 declares
+        # `go 1.26`) while this repo builds on 1.25 - so the tool is run
+        # directly here instead of through the action, pinned to v1.7.0 (the
+        # newest release that still declares `go 1.25.0`). Dependabot's gomod
+        # ecosystem does not see a version inside a `go run` argument, so
+        # bumping this pin - together with the Go minor above - is a human's
+        # job, done when go.mod's directive moves.
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
 
   # The CROSS-TREE half of validation, which no single-root check can perform.
   #
@@ -209,7 +226,10 @@ jobs:
         if: needs.changes.outputs.compose == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
