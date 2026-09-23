@@ -76,7 +76,7 @@ jobs:
         # intake bot stamp it; the storage migration backfilled the rest from
         # history one final time), so this workflow no longer walks the log to
         # date anything - a pack file's add-date is not its entries' add-dates.
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Checkout the community layer
         # The CC BY-SA half of the database, cloned beside the core tree. Public,
@@ -84,11 +84,38 @@ jobs:
         # same reason the core checkout is (git history is not load-bearing -
         # every record carries its own added_at). Pinned to main: a release is
         # always composed from the two mains, whichever side triggered it.
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           repository: KodeStar/audiosilo-meta-community
           ref: main
           path: community
+
+      - name: Refuse a manual run off main
+        if: github.event_name == 'workflow_dispatch'
+        # A data release is cut from main by definition - every consumer selects
+        # the newest one by asset presence, so a release published from a branch
+        # becomes THE catalogue for everybody the moment it lands. The push and
+        # dispatch triggers are already main-only; workflow_dispatch is the one
+        # door that takes any ref, so it is checked rather than trusted.
+        #
+        # The checkout above is shallow (history is not load-bearing here), so
+        # main's commits have to be fetched before merge-base can answer. They
+        # are fetched TREELESS (--filter=tree:0): the question is reachability,
+        # which needs commit objects and nothing else, and a full unshallow of a
+        # 133k-work data tree is not what this check is worth.
+        run: |
+          set -euo pipefail
+          # --unshallow is an error on a complete repository, so ask first
+          # rather than assume actions/checkout's default fetch-depth.
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            git fetch --no-tags --unshallow --filter=tree:0 origin main
+          else
+            git fetch --no-tags --filter=tree:0 origin main
+          fi
+          if ! git merge-base --is-ancestor HEAD FETCH_HEAD; then
+            echo "::error::$(git rev-parse HEAD) is not on origin/main. A data release must be composed from main - re-run this workflow with the main ref, or merge the branch first."
+            exit 1
+          fi
 
       - name: Identify this build
         id: build
@@ -144,9 +171,12 @@ jobs:
 
       - name: Set up Go
         if: steps.build.outputs.skip != 'true'
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          # go.mod's `go 1.25.0` is a floor, not the toolchain to build with;
+          # without this setup-go pins the release build to that exact patch.
+          check-latest: true
 
       - name: Validate data (metacheck)
         if: steps.build.outputs.skip != 'true'
@@ -190,6 +220,11 @@ jobs:
         # Placed after metacheck/metabuild so a failing build never wastes the
         # download.
         run: |
+          # -e is on by default (`bash -e {0}`); -u and pipefail are not. The
+          # tolerance for a missing or corrupt previous release is DELIBERATE and
+          # survives it: the `|| true` catches the API lookup, and the download
+          # and gunzip sit in an `if` condition, which errexit never fires on.
+          set -euo pipefail
           prev_tag="$(gh api 'repos/${{ github.repository }}/releases?per_page=15' \
             --jq '([.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))] | max_by(.published_at) | .tag_name) // empty' \
             2>/dev/null || true)"
@@ -214,6 +249,10 @@ jobs:
         # failure logs a warning and the release ships without it - the gz
         # anchor is never held hostage by patch generation.
         run: |
+          # PREV_TAG is always defined (an empty step output is an empty string,
+          # not an unset variable), and the best-effort zstd keeps its own `||`
+          # recovery, so -u and pipefail change nothing about the tolerances here.
+          set -euo pipefail
           gzip -kf meta.sqlite
           sha256sum meta.sqlite.gz > meta.sqlite.gz.sha256
           sha256sum meta.sqlite > meta.sqlite.sha256
@@ -238,6 +277,7 @@ jobs:
         # The notes name BOTH composed SHAs: the artifact is built from two
         # repositories, so one sha does not identify it.
         run: |
+          set -euo pipefail
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
           if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
             assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
@@ -249,22 +289,51 @@ jobs:
             --notes "$notes" \
             "${assets[@]}"
 
+      - name: Verify the published assets
+        if: steps.build.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.build.outputs.tag }}
+        # The assets ARE the consumer contract - metaserve, the CLI consumers and
+        # the patch chain all select a release by asset presence and then trust
+        # the checksums beside it - so an upload that silently truncated or
+        # dropped a file is a broken catalogue for everyone, not a broken run.
+        # Read them back from the release exactly as a consumer would: both
+        # checksum files must be byte-identical to the ones just computed, and
+        # the published gz must hash to what its own checksum claims.
+        run: |
+          set -euo pipefail
+          mkdir -p published
+          gh release download "$TAG" --dir published --clobber \
+            --pattern meta.sqlite.gz \
+            --pattern meta.sqlite.gz.sha256 \
+            --pattern meta.sqlite.sha256
+          cmp meta.sqlite.gz.sha256 published/meta.sqlite.gz.sha256
+          cmp meta.sqlite.sha256 published/meta.sqlite.sha256
+          ( cd published && sha256sum -c meta.sqlite.gz.sha256 )
+
       - name: Notify metaserve of the new release
         if: steps.build.outputs.skip != 'true'
         env:
           WEBHOOK_URL: ${{ secrets.METASERVE_WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.METASERVE_WEBHOOK_SECRET }}
-        # This runs after gh release create has uploaded every asset. The
-        # receiver re-queries GitHub and verifies the release checksums; this
+        # This runs after every asset is uploaded AND read back verified, so the
+        # receiver is never woken to a release it cannot trust. The receiver
+        # re-queries GitHub and verifies the release checksums itself; this
         # signed payload only asks it to refresh. Missing deployment secrets or
-        # a transient delivery failure are non-fatal because hourly polling is
-        # retained as the recovery path.
+        # a delivery failure are non-fatal because hourly polling is retained as
+        # the recovery path.
         run: |
+          set -euo pipefail
           if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_SECRET" ]; then
             echo "metaserve webhook secrets are not configured; fallback polling will refresh it"
             exit 0
           fi
-          payload="$(printf '{\"action\":\"published\",\"repository\":{\"full_name\":\"%s\"}}' "$GITHUB_REPOSITORY")"
+          # jq, not printf: inside single quotes those backslashes were LITERAL,
+          # so the body was `{\"action\":...}` - not JSON, and webhook.go
+          # rejected every delivery with 400. Polling hid it, which is why it
+          # survived. jq also escapes the repository name for us.
+          payload="$(jq -cn --arg repo "$GITHUB_REPOSITORY" '{action:"published",repository:{full_name:$repo}}')"
           signature="$(PAYLOAD="$payload" python3 - <<'PY'
           import hashlib
           import hmac
@@ -278,12 +347,24 @@ jobs:
           print("sha256=" + digest)
           PY
           )"
-          if ! curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 \
+          # The signature is computed over exactly these bytes: $payload is what
+          # was signed and --data sends it verbatim.
+          #
+          # Delivery is VERIFIED rather than assumed - the status is what tells a
+          # rejected payload (400) apart from an unreachable receiver - but it
+          # stays non-fatal: polling is the documented recovery path, so a
+          # published release must not be failed by a deployment that is down.
+          rc=0
+          status="$(curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 \
+            --output /dev/null --write-out '%{http_code}' \
             --request POST \
             --header "Content-Type: application/json" \
             --header "X-GitHub-Event: release" \
             --header "X-Hub-Signature-256: $signature" \
             --data "$payload" \
-            "$WEBHOOK_URL"; then
-            echo "::warning::metaserve webhook delivery failed; fallback polling will retry"
+            "$WEBHOOK_URL")" || rc=$?
+          if [ "$rc" -ne 0 ]; then
+            echo "::warning::metaserve webhook delivery failed (HTTP ${status:-000}, curl exit ${rc}); fallback polling will retry"
+          else
+            echo "metaserve accepted the release notification (HTTP ${status})"
           fi
