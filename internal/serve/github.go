@@ -12,6 +12,7 @@ import (
 	"hash"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -56,11 +57,16 @@ const (
 // ghClient talks to the GitHub Releases API, remembering the last ETag so a
 // poll that finds nothing new costs one conditional request.
 type ghClient struct {
-	base  string // API base, "https://api.github.com" (overridable for tests)
-	repo  string // "owner/name"
-	token string // optional
-	http  *http.Client
-	etag  string
+	base string // API base, "https://api.github.com" (overridable for tests)
+	// baseOrigin is base's scheme://host, the ONE host outside the public
+	// allowlist an asset download may name (see checkAssetURL). Production's is
+	// api.github.com, which the allowlist already holds; a test's is its own
+	// httptest server, which is the only reason this is not a constant.
+	baseOrigin string
+	repo       string // "owner/name"
+	token      string // optional
+	http       *http.Client
+	etag       string
 
 	// The deadlines above, as fields so tests can scale them down.
 	metaTimeout   time.Duration // whole-request deadline for the metadata call
@@ -80,8 +86,14 @@ func newGHClient(repo, token, base string) *ghClient {
 	}
 	tr = tr.Clone()
 	tr.ResponseHeaderTimeout = responseHeaderTimeout
+	trimmed := strings.TrimRight(base, "/")
+	origin := ""
+	if u, err := url.Parse(trimmed); err == nil && u.Host != "" {
+		origin = u.Scheme + "://" + u.Host
+	}
 	return &ghClient{
-		base:          strings.TrimRight(base, "/"),
+		base:          trimmed,
+		baseOrigin:    origin,
 		repo:          repo,
 		token:         token,
 		http:          &http.Client{Transport: tr},
@@ -92,7 +104,12 @@ func newGHClient(repo, token, base string) *ghClient {
 }
 
 type ghAsset struct {
-	Name        string `json:"name"`
+	Name string `json:"name"`
+	// Size is the asset's COMPRESSED size as the release metadata declares it.
+	// It is what bounds the decompression paths (see decompressBound): a gzip
+	// stream states no output size, so without a declared input size there is
+	// nothing to measure a plausible expansion against.
+	Size        int64  `json:"size"`
 	DownloadURL string `json:"browser_download_url"`
 }
 
@@ -205,6 +222,11 @@ func (c *ghClient) forget() { c.etag = "" }
 // The download is bounded by assetDeadline (a runaway guard) and, far more
 // tightly, by a no-progress watchdog: see stallGuard.
 func (c *ghClient) get(ctx context.Context, url string) (*http.Response, error) {
+	// The URL comes out of the release JSON, and the request below attaches this
+	// server's token to whatever host it names - so the host is checked FIRST.
+	if err := c.checkAssetURL(url); err != nil {
+		return nil, err
+	}
 	ctx, cancel := context.WithTimeout(ctx, c.assetDeadline)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
@@ -274,6 +296,44 @@ func (g *stallGuard) Close() error {
 	return err
 }
 
+// allowedAssetHost is the public half of the asset-download allowlist: the hosts
+// GitHub actually serves release assets from. `github.com` is where a
+// browser_download_url points, the `*.githubusercontent.com` family is where it
+// redirects to, and `api.github.com` is the API's own asset route.
+func allowedAssetHost(host string) bool {
+	host = strings.ToLower(host)
+	return host == "github.com" || host == "api.github.com" ||
+		strings.HasSuffix(host, ".githubusercontent.com")
+}
+
+// checkAssetURL refuses an asset URL this client may not send its token to.
+//
+// The URLs are read out of the release JSON, which is data from a remote
+// service, and get() attaches `Authorization: Bearer <token>` to whatever they
+// name. A release whose asset URL pointed at another host - a compromised or
+// mistaken one, or simply a repository somebody else can publish to - would
+// therefore hand that host a credential. The allowlist is applied BEFORE the
+// request is built, so a refused URL is never even dialed.
+//
+// The one host outside the public list is the configured API BASE's own origin,
+// which is how the tests point the whole client at an httptest server; in
+// production that origin IS api.github.com. Its scheme is compared too, so the
+// exception cannot be used to reach a plain-HTTP host in production, where
+// everything else must be https - a token is not sent in clear.
+func (c *ghClient) checkAssetURL(raw string) error {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return fmt.Errorf("download %s: %w", raw, err)
+	}
+	if c.baseOrigin != "" && u.Scheme+"://"+u.Host == c.baseOrigin {
+		return nil
+	}
+	if u.Scheme != "https" || !allowedAssetHost(u.Hostname()) {
+		return fmt.Errorf("refusing to download %s: %q is not a GitHub release-asset host", raw, u.Host)
+	}
+	return nil
+}
+
 // maxSmallAssetBytes bounds the assets that are read into memory. Only the
 // `sha256sum`-format checksum files take that path (about 80 bytes each); the
 // artifact and the patch are streamed to disk, so nothing unbounded is ever
@@ -313,48 +373,51 @@ func (c *ghClient) downloadTo(ctx context.Context, url, dstPath, wantHexDigest s
 	return installVerified(resp.Body, dstPath, wantHexDigest)
 }
 
-func findAsset(rel *ghRelease, name string) (string, bool) {
+// findAsset returns the named asset of rel. It hands back the WHOLE asset rather
+// than its URL because the declared Size is what bounds the decompression paths.
+func findAsset(rel *ghRelease, name string) (ghAsset, bool) {
 	for _, a := range rel.Assets {
 		if a.Name == name {
-			return a.DownloadURL, true
+			return a, true
 		}
 	}
-	return "", false
+	return ghAsset{}, false
 }
 
 // smallAsset finds the named asset on rel and reads it into memory (checksum
 // files only - see maxSmallAssetBytes).
 func (s *Server) smallAsset(ctx context.Context, rel *ghRelease, name string) ([]byte, error) {
-	url, ok := findAsset(rel, name)
+	asset, ok := findAsset(rel, name)
 	if !ok {
 		return nil, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
 	}
-	return s.gh.downloadSmall(ctx, url)
+	return s.gh.downloadSmall(ctx, asset.DownloadURL)
 }
 
 // assetTo finds the named asset on rel and streams it to dstPath, verified
 // against wantHexDigest when one is given.
 func (s *Server) assetTo(ctx context.Context, rel *ghRelease, name, dstPath, wantHexDigest string) (int64, error) {
-	url, ok := findAsset(rel, name)
+	asset, ok := findAsset(rel, name)
 	if !ok {
 		return 0, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
 	}
-	return s.gh.downloadTo(ctx, url, dstPath, wantHexDigest)
+	return s.gh.downloadTo(ctx, asset.DownloadURL, dstPath, wantHexDigest)
 }
 
-// assetBody finds the named asset on rel and opens its body for streaming. The
-// caller owns (and must close) the returned reader. Used by the path that
-// transforms an asset while it downloads rather than landing it as a file.
-func (s *Server) assetBody(ctx context.Context, rel *ghRelease, name string) (io.ReadCloser, error) {
-	url, ok := findAsset(rel, name)
+// assetBody finds the named asset on rel and opens its body for streaming, also
+// returning the size the release metadata declares for it (0 when it declares
+// none). The caller owns (and must close) the returned reader. Used by the path
+// that transforms an asset while it downloads rather than landing it as a file.
+func (s *Server) assetBody(ctx context.Context, rel *ghRelease, name string) (io.ReadCloser, int64, error) {
+	asset, ok := findAsset(rel, name)
 	if !ok {
-		return nil, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
+		return nil, 0, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
 	}
-	resp, err := s.gh.get(ctx, url)
+	resp, err := s.gh.get(ctx, asset.DownloadURL)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
-	return resp.Body, nil
+	return resp.Body, asset.Size, nil
 }
 
 // patchWindowLog is the log2 of the zstd window the release patches are
@@ -373,6 +436,9 @@ const dataAssetName = "meta.sqlite.gz"
 // and the cache-adoption path verify a reconstructed or already-present file
 // against.
 const rawAssetName = "meta.sqlite"
+
+// patchAssetSubject names the patch path's output in the bound's error message.
+const patchAssetSubject = "the patched artifact"
 
 // patchAssetName is the release-asset naming convention for the binary delta
 // based on fromTag's artifact.
@@ -463,7 +529,13 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error
 // gzip reader stopping at its trailer. installStream runs the check before the
 // rename, so a corrupted download is discarded with the temp file - the same
 // "verified before it counts" property the old download-then-compare had.
-func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string) error {
+//
+// maxBytes bounds what is WRITTEN. The checksum gate is the real defence, but it
+// only fires at the END, and a gzip stream declares no output size - so without
+// a bound, an asset that decompresses without limit fills the cache volume
+// before anything gets to reject it. Hitting the bound is treated exactly as a
+// failed verification: the temp file goes and dstPath is never created.
+func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64) error {
 	h := sha256.New()
 	tee := io.TeeReader(src, h)
 	zr, err := gzip.NewReader(bufio.NewReaderSize(tee, downloadBufferBytes))
@@ -471,13 +543,78 @@ func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string) error {
 		return err
 	}
 	defer func() { _ = zr.Close() }()
-	_, err = installStream(zr, dstPath, func() error {
+	_, err = installStream(newBoundedReader(zr, maxBytes, dataAssetName), dstPath, func() error {
 		if _, err := io.Copy(io.Discard, tee); err != nil {
 			return err
 		}
 		return checkDigest(h, wantGzDigest)
 	})
 	return err
+}
+
+// The DECOMPRESSION BOUND. Both refresh paths write a file whose size is decided
+// by the asset's CONTENT rather than by anything either end declared: a gzip
+// stream states no output size, and a zstd --patch-from frame's window is the
+// whole base artifact. The sha256 gate rejects a wrong result, but only once the
+// bytes are on disk, so the bound is what keeps a runaway expansion from filling
+// the cache volume first.
+//
+// It is deliberately generous rather than tight. The real artifact compresses
+// about 4x, and a release that legitimately grew between two polls must never be
+// refused - a refused refresh is a server stuck on old data - so the ratio is
+// 8x, and the FLOOR is what covers a small or unstated declared size (the patch
+// path measures against the base artifact, whose size is known exactly).
+const (
+	decompressRatio        = 8
+	defaultDecompressFloor = 1 << 30 // 1 GiB
+)
+
+// decompressBound is the ratio applied to a declared size, never below floor.
+// A size of 0 (a release that declares none) yields the floor alone.
+func decompressBound(declared, floor int64) int64 {
+	if floor <= 0 {
+		floor = defaultDecompressFloor
+	}
+	if declared <= 0 || declared > (1<<62)/decompressRatio {
+		return floor
+	}
+	return max(declared*decompressRatio, floor)
+}
+
+// boundedReader fails the read that would take the total past limit. It is what
+// turns the bound into a stopped copy rather than a check after the fact: the
+// error travels out of io.Copy, so installStream removes the temp file and never
+// renames it - the same outcome a checksum mismatch has.
+type boundedReader struct {
+	r     io.Reader
+	limit int64
+	n     int64
+	what  string
+}
+
+func newBoundedReader(r io.Reader, limit int64, what string) *boundedReader {
+	return &boundedReader{r: r, limit: limit, what: what}
+}
+
+func (b *boundedReader) Read(p []byte) (int, error) {
+	if b.n > b.limit {
+		return 0, b.err()
+	}
+	// Never read further past the limit than the one byte that proves it was
+	// crossed.
+	if room := b.limit + 1 - b.n; int64(len(p)) > room {
+		p = p[:room]
+	}
+	n, err := b.r.Read(p)
+	b.n += int64(n)
+	if b.n > b.limit {
+		return n, b.err()
+	}
+	return n, err
+}
+
+func (b *boundedReader) err() error {
+	return fmt.Errorf("%s expands past the %d-byte bound: refusing it as unverifiable", b.what, b.limit)
 }
 
 // downloadBufferBytes is the read buffer for the on-disk decompression paths -
@@ -506,7 +643,7 @@ const downloadBufferBytes = 1 << 20
 // costs about as much again, so peak transient is roughly twice the base
 // artifact. That is what defaultMaxPatchBase caps - past that size tryPatch
 // refuses to start and the full download (which streams end to end) runs instead.
-func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string) (int64, error) {
+func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, floor int64) (int64, error) {
 	prev, err := os.ReadFile(prevPath) //nolint:gosec // prevPath is our own cache file, not user input
 	if err != nil {
 		return 0, err
@@ -526,7 +663,14 @@ func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string) (int64, 
 		return 0, err
 	}
 	defer reader.Close()
-	return installVerified(reader, dstPath, wantHexDigest)
+	// The reconstructed artifact is bounded by the BASE artifact's size (see
+	// decompressBound): the patch declares no output size, and a frame that
+	// expanded without limit would fill the cache volume long before the sha256
+	// gate could reject it. A release really does grow between polls, so the
+	// ratio is generous - what it excludes is an expansion no data release
+	// could produce.
+	bounded := newBoundedReader(reader, decompressBound(int64(len(prev)), floor), patchAssetSubject)
+	return installVerified(bounded, dstPath, wantHexDigest)
 }
 
 // cachePrefix names every file this server writes into the cache directory: the
@@ -842,14 +986,14 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 
-	body, err := s.assetBody(ctx, rel, dataAssetName)
+	body, gzBytes, err := s.assetBody(ctx, rel, dataAssetName)
 	if err != nil {
 		return err
 	}
 	defer func() { _ = body.Close() }()
 
 	dbPath := s.dbCachePath(rel.TagName)
-	if err := gunzipStreamTo(body, dbPath, want); err != nil {
+	if err := gunzipStreamTo(body, dbPath, want, decompressBound(gzBytes, s.cfg.decompressFloor)); err != nil {
 		return err
 	}
 	snap, err := s.adopt(dbPath, rel.TagName)
@@ -914,7 +1058,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 
-	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want)
+	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want, s.cfg.decompressFloor)
 	if err != nil {
 		return err
 	}

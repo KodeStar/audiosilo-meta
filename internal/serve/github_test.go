@@ -105,7 +105,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	dir := t.TempDir()
 
 	dst := filepath.Join(dir, "nested", "out.bin")
-	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz)); err != nil {
+	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), defaultDecompressFloor); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(dst)
@@ -119,7 +119,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
 	// gate does not, and no file is installed.
 	bad := filepath.Join(dir, "bad.bin")
-	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz))
+	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz), defaultDecompressFloor)
 	if err == nil {
 		t.Errorf("gz with a mismatched digest accepted")
 	}
@@ -205,7 +205,10 @@ func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitH
 				// Download URLs are namespaced per release (like real GitHub
 				// asset URLs), so two releases advertising the same asset name
 				// never shadow each other.
-				rel.Assets = append(rel.Assets, ghAsset{Name: name, DownloadURL: f.srv.URL + "/dl/" + fr.tag + "/" + name})
+				rel.Assets = append(rel.Assets, ghAsset{
+					Name: name, Size: int64(len(fr.assets[name])),
+					DownloadURL: f.srv.URL + "/dl/" + fr.tag + "/" + name,
+				})
 			}
 			list = append(list, rel)
 		}
@@ -972,7 +975,7 @@ func TestApplyPatchFile(t *testing.T) {
 		dir := t.TempDir()
 		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "out", "meta.sqlite")
-		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2))
+		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), defaultDecompressFloor)
 		if err != nil {
 			t.Fatalf("applyPatchFile: %v", err)
 		}
@@ -988,7 +991,7 @@ func TestApplyPatchFile(t *testing.T) {
 		dir := t.TempDir()
 		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "meta.sqlite")
-		if _, err := applyPatchFile(patchPath, v1Path, dst, "deadbeef"); err == nil {
+		if _, err := applyPatchFile(patchPath, v1Path, dst, "deadbeef", defaultDecompressFloor); err == nil {
 			t.Fatal("expected a hash mismatch error")
 		}
 		if _, err := os.Stat(dst); !os.IsNotExist(err) {
@@ -1033,10 +1036,179 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", info.Size(), len(v2))
 
 	dst := filepath.Join(dir, "out.sqlite")
-	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2)); err != nil {
+	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), defaultDecompressFloor); err != nil {
 		t.Fatalf("applyPatchFile on CLI frame: %v", err)
 	}
 	if got := readDB(t, dst); !bytes.Equal(got, v2) {
 		t.Errorf("CLI-frame patched result differs from v2")
+	}
+}
+
+// TestDecompressBound pins the arithmetic both refresh paths write under: the
+// generous ratio over a declared size, the floor that covers a small or unstated
+// one, and the overflow guard on a declared size no release could carry.
+func TestDecompressBound(t *testing.T) {
+	const floor = 1 << 20
+	cases := []struct {
+		name     string
+		declared int64
+		floor    int64
+		want     int64
+	}{
+		{"ratio over the floor", 1 << 20, floor, decompressRatio << 20},
+		{"floor wins for a small asset", 1000, floor, floor},
+		{"an undeclared size takes the floor", 0, floor, floor},
+		{"a negative size takes the floor", -1, floor, floor},
+		{"no floor means the default", 0, 0, defaultDecompressFloor},
+		{"an absurd declared size cannot overflow", 1 << 62, floor, floor},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := decompressBound(tc.declared, tc.floor); got != tc.want {
+				t.Errorf("decompressBound(%d, %d) = %d, want %d", tc.declared, tc.floor, got, tc.want)
+			}
+		})
+	}
+}
+
+// TestGunzipStreamToIsBounded is the finding: the sha256 gate only fires once the
+// bytes are on disk, and a gzip stream declares no output size - so an asset that
+// expands without limit fills the cache volume before anything rejects it. The
+// bound stops the COPY, so the outcome is a failed refresh with nothing
+// installed, exactly as a digest mismatch is.
+func TestGunzipStreamToIsBounded(t *testing.T) {
+	payload := bytes.Repeat([]byte("a"), 1<<20) // compresses to ~1KB
+	gz := gzOf(t, payload)
+	dir := t.TempDir()
+
+	dst := filepath.Join(dir, "bounded.bin")
+	err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), 4096)
+	if err == nil {
+		t.Fatal("an asset expanding far past its bound was installed")
+	}
+	if !strings.Contains(err.Error(), "bound") {
+		t.Errorf("error = %v, want the bound named", err)
+	}
+	if _, err := os.Stat(dst); !os.IsNotExist(err) {
+		t.Errorf("destination created despite the bound")
+	}
+	for _, e := range dirEntries(t, dir) {
+		if strings.HasPrefix(e, ".meta-") {
+			t.Errorf("leftover temp file %q after a bounded refusal", e)
+		}
+	}
+
+	// The bound is not tight: the real ratio (about 4x) must pass, and an
+	// artifact exactly AT the bound is legitimate rather than suspicious.
+	exact := filepath.Join(dir, "exact.bin")
+	if err := gunzipStreamTo(bytes.NewReader(gz), exact, hexDigest(gz), int64(len(payload))); err != nil {
+		t.Errorf("a payload exactly at the bound was refused: %v", err)
+	}
+}
+
+// TestApplyPatchFileIsBounded is the same bound on the patch path, where the
+// output size is decided by a zstd frame rather than by a gzip one. The base
+// artifact's size is what it is measured against - the one size this path knows
+// exactly.
+func TestApplyPatchFileIsBounded(t *testing.T) {
+	dir := t.TempDir()
+	base := bytes.Repeat([]byte("base"), 16) // 64 bytes
+	basePath := writeFile(t, dir, "base.bin", base)
+	next := bytes.Repeat([]byte("next"), 1<<16) // 256 KiB, far past 8x the base
+	patchPath := writeFile(t, dir, "patch.zst", makePatch(t, base, next))
+
+	dst := filepath.Join(dir, "out.bin")
+	// floor 1, so the bound really is the ratio over the base's 64 bytes.
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), 1); err == nil {
+		t.Fatal("a patch expanding far past its base was installed")
+	}
+	if _, err := os.Stat(dst); !os.IsNotExist(err) {
+		t.Errorf("destination created despite the bound")
+	}
+	// With the production floor the same patch is an ordinary, tiny refresh.
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), defaultDecompressFloor); err != nil {
+		t.Errorf("a patch well inside the floor was refused: %v", err)
+	}
+}
+
+func dirEntries(t *testing.T, dir string) []string {
+	t.Helper()
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	names := make([]string, 0, len(entries))
+	for _, e := range entries {
+		names = append(names, e.Name())
+	}
+	return names
+}
+
+// TestAssetHostsAreAllowlisted is the finding: an asset URL comes out of the
+// release JSON and get() attaches this server's token to whatever host it names.
+// A release that pointed an asset elsewhere would hand that host the credential,
+// so the host is checked BEFORE the request is built.
+func TestAssetHostsAreAllowlisted(t *testing.T) {
+	prod := newGHClient("owner/name", "token", "")
+	for _, url := range []string{
+		"https://github.com/owner/name/releases/download/v1/meta.sqlite.gz",
+		"https://objects.githubusercontent.com/github-production-release-asset/1/2",
+		"https://release-assets.githubusercontent.com/x",
+		"https://api.github.com/repos/owner/name/releases/assets/1",
+	} {
+		if err := prod.checkAssetURL(url); err != nil {
+			t.Errorf("%s was refused: %v", url, err)
+		}
+	}
+	for _, url := range []string{
+		"https://evil.example/meta.sqlite.gz",
+		"https://github.com.evil.example/meta.sqlite.gz",
+		"https://notgithubusercontent.com/x",
+		"http://github.com/owner/name/releases/download/v1/meta.sqlite.gz", // a token is never sent in clear
+		"://nonsense",
+	} {
+		if err := prod.checkAssetURL(url); err == nil {
+			t.Errorf("%s was allowed", url)
+		}
+	}
+
+	// The configured API base is the one host outside the public list, which is
+	// how the whole client is pointed at a test server.
+	local := newGHClient("owner/name", "token", "http://127.0.0.1:1/")
+	if err := local.checkAssetURL("http://127.0.0.1:1/dl/tag/meta.sqlite.gz"); err != nil {
+		t.Errorf("the configured base's own origin was refused: %v", err)
+	}
+	if err := local.checkAssetURL("http://127.0.0.2:1/dl/tag/meta.sqlite.gz"); err == nil {
+		t.Error("a different local host rode in on the base exception")
+	}
+}
+
+// TestRefusedAssetHostIsNeverDialed: the allowlist runs before the request
+// exists, so the refused host sees no connection at all - which is the whole
+// point, since making the request is what would disclose the token.
+func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
+	var hits atomic.Int32
+	elsewhere := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		hits.Add(1)
+		_, _ = w.Write([]byte("payload"))
+	}))
+	defer elsewhere.Close()
+
+	// A client whose base is a DIFFERENT local server, so `elsewhere` is off the
+	// allowlist the way a third-party host is in production.
+	other := httptest.NewServer(http.NotFoundHandler())
+	defer other.Close()
+	c := newGHClient("owner/name", "token", other.URL)
+
+	resp, err := c.get(context.Background(), elsewhere.URL+"/meta.sqlite.gz")
+	if err == nil {
+		_ = resp.Body.Close()
+		t.Fatal("an asset download to a refused host was made")
+	}
+	if !strings.Contains(err.Error(), "not a GitHub release-asset host") {
+		t.Errorf("error = %v, want the allowlist refusal", err)
+	}
+	if n := hits.Load(); n != 0 {
+		t.Errorf("the refused host was dialed %d times", n)
 	}
 }
