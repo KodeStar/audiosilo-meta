@@ -23,8 +23,9 @@
 # degraded, logs the reason, serves the static site, answers /healthz with
 # `{"status":"starting"}` + 503 and every API route with 503, and retries -
 # first after 30s, then backing off to the poll interval - until a release
-# loads. A health check therefore reports the container unready - accurately -
-# instead of the container flapping.
+# loads. A READINESS probe therefore reports the container unready - accurately
+# - instead of the container flapping; see the note above the ENTRYPOINT for why
+# the image ships no HEALTHCHECK of its own.
 
 # ---- 1. site -----------------------------------------------------------------
 # Base images are pinned by DIGEST with the tag kept for readability: a tag is a
@@ -80,14 +81,11 @@ EXPOSE 8080
 # follow, so later updates transfer a delta instead of the whole artifact.
 VOLUME ["/data"]
 
-# Readiness, not liveness: /healthz answers 503 `{"status":"starting"}` until an
-# artifact is loaded, and busybox wget exits non-zero on an HTTP error, so the
-# container reports unhealthy for exactly as long as it is serving 503s to the
-# API. That is the accurate answer (see the boot note above) - the process is
-# deliberately NOT crashing, so without this a degraded container looks fine.
-# The start period is generous because the first boot downloads and verifies a
-# hundreds-of-MB artifact before it can answer.
-HEALTHCHECK --interval=30s --timeout=5s --start-period=180s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:8080/healthz > /dev/null || exit 1
+# DELIBERATELY NO HEALTHCHECK. /healthz is a READINESS probe - it answers 503
+# while the server waits out a GitHub outage, which is a healthy process with no
+# data yet - and a Docker healthcheck's "unhealthy" is exactly what autoheal,
+# Swarm and compose supervisors RESTART on, turning that patient wait into the
+# crash loop the degraded boot exists to avoid. The orchestrator wires /healthz
+# as readiness/startup itself; see audiosilo-docs docs-developers/meta/api.md.
 
 ENTRYPOINT ["/app/metaserve", "--site", "/app/site", "--poll", "--cache", "/data/cache"]
