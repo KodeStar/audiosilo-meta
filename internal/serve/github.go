@@ -137,9 +137,11 @@ func (c *ghClient) allowsOrigin(u *url.URL) bool {
 type ghAsset struct {
 	Name string `json:"name"`
 	// Size is the asset's COMPRESSED size as the release metadata declares it.
-	// It is what bounds the decompression paths (see decompressBound): a gzip
-	// stream states no output size, so without a declared input size there is
-	// nothing to measure a plausible expansion against.
+	// It is one arm of what bounds the refresh paths (see decompressBound): a
+	// gzip stream states no output size, so a declared input size is the only
+	// thing a plausible expansion can be measured against - and a release that
+	// declares none falls back to the floor and the loaded artifact's size,
+	// never to a bound below the file it is bounding.
 	Size        int64  `json:"size"`
 	DownloadURL string `json:"browser_download_url"`
 }
@@ -407,15 +409,19 @@ func (c *ghClient) downloadSmall(ctx context.Context, url string) ([]byte, error
 // asset takes: post-seed the gz is hundreds of MB and the raw artifact ~10x
 // today's, so buffering a whole asset would put that on the heap of a serving
 // process.
-func (c *ghClient) downloadTo(ctx context.Context, url, dstPath, wantHexDigest string) (int64, error) {
+// maxBytes bounds what lands on disk. Nothing is decompressed here, so the
+// bound is the asset's own DECLARED size rather than a multiple of it: the
+// release states exactly how many bytes this is, and a body that runs past its
+// own declaration is either a corrupt transfer or a host answering with
+// something else. It matters because this is the one artifact-sized writer that
+// is not behind an expansion bound - the patch asset, hundreds of MB of it.
+func (c *ghClient) downloadTo(ctx context.Context, url, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
 	resp, err := c.get(ctx, url)
 	if err != nil {
 		return 0, err
 	}
 	defer func() { _ = resp.Body.Close() }()
-	// Unbounded: this path lands the asset as it arrives, so there is no
-	// expansion to bound - the transfer itself is policed by the stall guard.
-	return installVerified(resp.Body, dstPath, wantHexDigest, 0)
+	return installVerified(resp.Body, dstPath, wantHexDigest, maxBytes)
 }
 
 // findAsset returns the named asset of rel. It hands back the WHOLE asset rather
@@ -446,7 +452,14 @@ func (s *Server) assetTo(ctx context.Context, rel *ghRelease, name, dstPath, wan
 	if !ok {
 		return 0, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
 	}
-	return s.gh.downloadTo(ctx, asset.DownloadURL, dstPath, wantHexDigest)
+	// The declared size IS the bound here (see downloadTo). A release that
+	// declares none falls back to the server-wide expansion bound, which is a
+	// ceiling rather than a size but is still a bound.
+	bound := asset.Size
+	if bound <= 0 {
+		bound = s.expansionBound(name, 0)
+	}
+	return s.gh.downloadTo(ctx, asset.DownloadURL, dstPath, wantHexDigest, bound)
 }
 
 // assetBody finds the named asset on rel and opens its body for streaming, also
@@ -508,8 +521,9 @@ func expectedDigest(checksumFile []byte) (string, error) {
 // while it downloads, so what it can check against the published checksum is the
 // COMPRESSED input, not the artifact landing on disk.
 //
-// maxBytes is the DECOMPRESSION BOUND (see decompressBound; 0 means unbounded,
-// which is what a download of an asset whose size the release declares takes).
+// maxBytes is the bound on what is written (see decompressBound; 0 means
+// unbounded, which no caller passes any more - every artifact-sized writer here
+// carries a bound, the patch download included).
 // The check lives here because this is where the copy's byte count already is,
 // and it is applied exactly as a failed verification is: the temp file goes and
 // dstPath is never created. src is read at most one byte past the bound, which
@@ -585,8 +599,9 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string, maxBytes int6
 // rename, so a corrupted download is discarded with the temp file - the same
 // "verified before it counts" property the old download-then-compare had.
 //
-// maxBytes is the COMPUTED bound on what is written, decompressBound's - the
-// shape applyPatchFile takes too, so neither path decides the bound for itself.
+// maxBytes is the COMPUTED bound on what is written, Server.expansionBound's -
+// the shape applyPatchFile takes too, so neither path decides the bound for
+// itself.
 // The checksum gate is the real defence, but it only fires at the END, and a
 // gzip stream declares no output size - so without a bound, an asset that
 // decompresses without limit fills the cache volume before anything gets to
@@ -609,33 +624,81 @@ func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64)
 	return err
 }
 
-// The DECOMPRESSION BOUND. Both refresh paths write a file whose size is decided
-// by the asset's CONTENT rather than by anything either end declared: a gzip
-// stream states no output size, and a zstd --patch-from frame's window is the
-// whole base artifact. The sha256 gate rejects a wrong result, but only once the
-// bytes are on disk, so the bound is what keeps a runaway expansion from filling
-// the cache volume first.
+// The EXPANSION BOUND. Both refresh paths write a file whose size is decided by
+// the asset's CONTENT rather than by anything either end declared: a gzip stream
+// states no output size, and a zstd --patch-from frame's window is the whole
+// base artifact. The sha256 gate rejects a wrong result, but only once the bytes
+// are on disk, so the bound is what keeps a runaway expansion from filling the
+// cache volume first.
 //
-// It is deliberately generous rather than tight. The real artifact compresses
-// about 4x, and a release that legitimately grew between two polls must never be
-// refused - a refused refresh is a server stuck on old data - so the ratio is
-// 8x, and the FLOOR is what covers a small or unstated declared size (the patch
-// path measures against the base artifact, whose size is known exactly).
+// IT IS A CEILING, NOT AN EXPECTATION, and the failure mode it must not have is
+// being too LOW. A bound the real artifact exceeds is not a caught attack, it is
+// every refresh failing forever - re-downloading the whole asset each poll,
+// writing maxBytes+1 bytes to the cache volume each time, and serving stale data
+// in between. That is worse than the disk-filling it guards against, so every
+// arm below is sized generously and the three are combined with max():
+//
+//   - the DECLARED compressed size times decompressRatio. The real artifact's
+//     gzip ratio measured about 3.8x, so 16x is margin enough for a catalogue
+//     that compresses far worse than today's and is still a bound.
+//   - decompressFloor, which covers a small or UNDECLARED size. It has to clear
+//     the real artifact on its own, because that is what an asset declaring no
+//     size falls back to: at ~1.6 GB today, a 1 GiB floor was below the file it
+//     was bounding.
+//   - twice the CURRENTLY LOADED artifact, when there is one. The catalogue only
+//     grows, and the next release is the neighbour of the one being served, so
+//     this is the arm that keeps the bound tracking the data instead of needing
+//     a constant raised by hand every year.
 const (
-	decompressRatio        = 8
-	defaultDecompressFloor = 1 << 30 // 1 GiB
+	decompressRatio = 16
+	decompressFloor = 4 << 30 // 4 GiB
+	// currentArtifactRatio is the multiple of the loaded artifact's on-disk size
+	// the bound may never fall below. Two: a release that DOUBLED the catalogue
+	// between two polls is not something to refuse.
+	currentArtifactRatio = 2
 )
 
-// decompressBound is the ratio applied to a declared size, never below floor.
-// A size of 0 (a release that declares none) yields the floor alone.
-func decompressBound(declared, floor int64) int64 {
-	if floor <= 0 {
-		floor = defaultDecompressFloor
+// decompressBound is the arithmetic above: the maximum of the floor, the ratio
+// over a declared compressed size (0 or negative = nothing declared) and
+// currentArtifactRatio over the loaded artifact's size (0 = none loaded). Each
+// multiplication is guarded against an absurd input overflowing into a small
+// number, which would turn the ceiling into a trap.
+func decompressBound(declared, currentBytes int64) int64 {
+	bound := int64(decompressFloor)
+	if currentBytes > 0 && currentBytes <= (1<<62)/currentArtifactRatio {
+		bound = max(bound, currentBytes*currentArtifactRatio)
 	}
-	if declared <= 0 || declared > (1<<62)/decompressRatio {
-		return floor
+	if declared > 0 && declared <= (1<<62)/decompressRatio {
+		bound = max(bound, declared*decompressRatio)
 	}
-	return max(declared*decompressRatio, floor)
+	return bound
+}
+
+// currentArtifactBytes is the on-disk size of the artifact this server is
+// serving, or 0 when there is none or it cannot be stat'd (a boot that has
+// loaded nothing yet, the shape tryPatch reads the same way).
+func (s *Server) currentArtifactBytes() int64 {
+	cur := s.current()
+	if cur == nil || cur.path == "" {
+		return 0
+	}
+	info, err := os.Stat(cur.path)
+	if err != nil {
+		return 0
+	}
+	return info.Size()
+}
+
+// expansionBound is decompressBound over this server's own state, and the one
+// place an UNDECLARED asset size is reported: a release that stops declaring
+// sizes is a silent move onto the floor, and an operator should read that in the
+// log rather than infer it from a refresh that started failing.
+func (s *Server) expansionBound(asset string, declared int64) int64 {
+	bound := decompressBound(declared, s.currentArtifactBytes())
+	if declared <= 0 {
+		s.log.Printf("serve: release asset %s declares no size; bounding its expansion at %d bytes", asset, bound)
+	}
+	return bound
 }
 
 // downloadBufferBytes is the read buffer for the on-disk decompression paths -
@@ -662,7 +725,7 @@ const downloadBufferBytes = 1 << 20
 // gunzipStreamTo takes: the patch declares no output size, and a frame that
 // expanded without limit would fill the cache volume long before the sha256 gate
 // could reject it. The caller measures it against the BASE artifact's size (see
-// decompressBound), the one size this path knows exactly.
+// decompressBound's current-artifact arm), the one size this path knows exactly.
 //
 // The patch itself and the reconstructed output both stream (file in, file out),
 // but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
@@ -1013,7 +1076,7 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 	defer func() { _ = body.Close() }()
 
 	dbPath := s.dbCachePath(rel.TagName)
-	if err := gunzipStreamTo(body, dbPath, want, decompressBound(gzBytes, defaultDecompressFloor)); err != nil {
+	if err := gunzipStreamTo(body, dbPath, want, s.expansionBound(dataAssetName, gzBytes)); err != nil {
 		return err
 	}
 	snap, err := s.adopt(dbPath, rel.TagName)
@@ -1079,9 +1142,11 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	}
 
 	// The base artifact's size, stat'd above, is what the reconstruction is
-	// measured against - the one size this path knows exactly.
+	// measured against - the one size this path knows exactly. The patch asset's
+	// own declared size says nothing about the OUTPUT, so it is not the declared
+	// arm here; the base goes in as the current-artifact arm instead.
 	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want,
-		decompressBound(info.Size(), defaultDecompressFloor))
+		decompressBound(0, info.Size()))
 	if err != nil {
 		return err
 	}

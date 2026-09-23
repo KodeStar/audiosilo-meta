@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -106,7 +107,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	dir := t.TempDir()
 
 	dst := filepath.Join(dir, "nested", "out.bin")
-	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), defaultDecompressFloor); err != nil {
+	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), decompressFloor); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(dst)
@@ -120,7 +121,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
 	// gate does not, and no file is installed.
 	bad := filepath.Join(dir, "bad.bin")
-	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz), defaultDecompressFloor)
+	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz), decompressFloor)
 	if err == nil {
 		t.Errorf("gz with a mismatched digest accepted")
 	}
@@ -1042,7 +1043,7 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", info.Size(), len(v2))
 
 	dst := filepath.Join(dir, "out.sqlite")
-	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), decompressBound(0, defaultDecompressFloor)); err != nil {
+	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), decompressFloor); err != nil {
 		t.Fatalf("applyPatchFile on CLI frame: %v", err)
 	}
 	if got := readDB(t, dst); !bytes.Equal(got, v2) {
@@ -1050,30 +1051,77 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	}
 }
 
-// TestDecompressBound pins the arithmetic both refresh paths write under: the
-// generous ratio over a declared size, the floor that covers a small or unstated
-// one, and the overflow guard on a declared size no release could carry.
+// TestDecompressBound pins the arithmetic both refresh paths write under. The
+// property that matters is that it is a CEILING and never a trap: too low is
+// not a caught attack, it is every refresh failing forever while the server
+// serves stale data.
 func TestDecompressBound(t *testing.T) {
-	const floor = 1 << 20
+	const big = 3 << 30 // an artifact bigger than the floor
 	cases := []struct {
 		name     string
 		declared int64
-		floor    int64
+		current  int64
 		want     int64
 	}{
-		{"ratio over the floor", 1 << 20, floor, decompressRatio << 20},
-		{"floor wins for a small asset", 1000, floor, floor},
-		{"an undeclared size takes the floor", 0, floor, floor},
-		{"a negative size takes the floor", -1, floor, floor},
-		{"no floor means the default", 0, 0, defaultDecompressFloor},
-		{"an absurd declared size cannot overflow", 1 << 62, floor, floor},
+		{"nothing known is the floor", 0, 0, decompressFloor},
+		{"a negative size is nothing known", -1, 0, decompressFloor},
+		{"a small declared size stays on the floor", 1 << 20, 0, decompressFloor},
+		{"a large declared size takes the ratio", 1 << 30, 0, decompressRatio << 30},
+		// THE FINDING: an undeclared size used to collapse onto a 1 GiB floor,
+		// which is BELOW the ~1.6 GB artifact it was bounding, so every full
+		// refresh would have failed forever. The loaded artifact is what keeps
+		// the bound tracking the data.
+		{"an undeclared size clears the loaded artifact", 0, big, big * currentArtifactRatio},
+		{"the loaded artifact never lowers the floor", 0, 1 << 20, decompressFloor},
+		{"the largest arm wins", 1 << 30, big, max(int64(decompressRatio)<<30, big*currentArtifactRatio)},
+		{"an absurd declared size cannot overflow", 1 << 62, 0, decompressFloor},
+		{"an absurd loaded size cannot overflow", 0, 1 << 62, decompressFloor},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := decompressBound(tc.declared, tc.floor); got != tc.want {
-				t.Errorf("decompressBound(%d, %d) = %d, want %d", tc.declared, tc.floor, got, tc.want)
+			if got := decompressBound(tc.declared, tc.current); got != tc.want {
+				t.Errorf("decompressBound(%d, %d) = %d, want %d", tc.declared, tc.current, got, tc.want)
 			}
 		})
+	}
+
+	// The floor alone has to clear the real artifact, since that is where an
+	// undeclared size lands on a server with nothing loaded yet.
+	const realArtifactBytes = 1_600_000_000
+	if decompressFloor <= realArtifactBytes {
+		t.Errorf("the floor is %d bytes, at or below the ~%d-byte artifact it must bound",
+			int64(decompressFloor), int64(realArtifactBytes))
+	}
+}
+
+// TestExpansionBoundReadsTheLoadedArtifact: the bound a running server computes
+// takes the artifact it is serving into account, so a catalogue that outgrows
+// the floor can never trip it - and an asset that declares no size says so in
+// the log rather than only in a refresh that starts failing.
+func TestExpansionBoundReadsTheLoadedArtifact(t *testing.T) {
+	var logged bytes.Buffer
+	srv, err := New(Config{DBPath: buildFixtureDB(t, fixtureCatalog()), Logger: log.New(&logged, "", 0)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { srv.current().close() })
+
+	size := srv.currentArtifactBytes()
+	if size <= 0 {
+		t.Fatalf("the loaded artifact reports %d bytes", size)
+	}
+	if got, want := srv.expansionBound(dataAssetName, 0), decompressBound(0, size); got != want {
+		t.Errorf("expansionBound with nothing declared = %d, want %d", got, want)
+	}
+	if !strings.Contains(logged.String(), "declares no size") {
+		t.Errorf("log %q does not report the undeclared size", logged.String())
+	}
+	logged.Reset()
+	if got, want := srv.expansionBound(dataAssetName, 1<<30), decompressBound(1<<30, size); got != want {
+		t.Errorf("expansionBound with a declared size = %d, want %d", got, want)
+	}
+	if logged.Len() != 0 {
+		t.Errorf("a declared size logged %q", logged.String())
 	}
 }
 
@@ -1105,10 +1153,18 @@ func TestGunzipStreamToIsBounded(t *testing.T) {
 	}
 
 	// The bound is not tight: the real ratio (about 4x) must pass, and an
-	// artifact exactly AT the bound is legitimate rather than suspicious.
+	// artifact exactly AT the bound is legitimate rather than suspicious - while
+	// ONE byte past it is not, which is the whole boundary in two lines.
 	exact := filepath.Join(dir, "exact.bin")
 	if err := gunzipStreamTo(bytes.NewReader(gz), exact, hexDigest(gz), int64(len(payload))); err != nil {
 		t.Errorf("a payload exactly at the bound was refused: %v", err)
+	}
+	over := filepath.Join(dir, "over.bin")
+	if err := gunzipStreamTo(bytes.NewReader(gz), over, hexDigest(gz), int64(len(payload))-1); err == nil {
+		t.Error("a payload one byte past the bound was installed")
+	}
+	if _, err := os.Stat(over); !os.IsNotExist(err) {
+		t.Error("destination created despite the bound")
 	}
 }
 
@@ -1126,7 +1182,7 @@ func TestApplyPatchFileIsBounded(t *testing.T) {
 	dst := filepath.Join(dir, "out.bin")
 	// Floor 1, so the bound really is the ratio over the base's 64 bytes - what
 	// tryPatch computes from the base artifact it stat'd.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), decompressBound(int64(len(base)), 1)); err == nil {
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), int64(len(base))*currentArtifactRatio); err == nil {
 		t.Fatal("a patch expanding far past its base was installed")
 	}
 	if _, err := os.Stat(dst); !os.IsNotExist(err) {
@@ -1145,7 +1201,7 @@ func TestApplyPatchFileIsBounded(t *testing.T) {
 // patchBound is tryPatch's own bound for a base artifact, so a test never
 // invents an arithmetic of its own.
 func patchBound(base []byte) int64 {
-	return decompressBound(int64(len(base)), defaultDecompressFloor)
+	return decompressBound(0, int64(len(base)))
 }
 
 func dirEntries(t *testing.T, dir string) []string {
@@ -1336,5 +1392,79 @@ func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
 	}
 	if n := hits.Load(); n != 0 {
 		t.Errorf("the refused host was dialed %d times", n)
+	}
+}
+
+// TestAssetDownloadIsBoundedByItsDeclaredSize is the finding on the one
+// artifact-sized writer that had no bound at all: the patch asset streamed to
+// disk with maxBytes 0, although the release states its size right at the call
+// site. Nothing is decompressed on that path, so the declared size is the EXACT
+// bound rather than a multiple of it.
+func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
+	payload := bytes.Repeat([]byte("p"), 4096)
+	fake := newFakeGitHub(t, tagR1, map[string][]byte{"blob.bin": payload})
+	srv := newPollServer(t, buildFixtureDB(t, fixtureCatalog()), fake)
+	dst := filepath.Join(t.TempDir(), "blob.bin")
+	url := fake.srv.URL + "/dl/" + tagR1 + "/blob.bin"
+
+	over := &ghRelease{TagName: tagR1, Assets: []ghAsset{
+		{Name: "blob.bin", Size: int64(len(payload)) - 1, DownloadURL: url},
+	}}
+	if _, err := srv.assetTo(context.Background(), over, "blob.bin", dst, ""); err == nil {
+		t.Error("an asset one byte past its declared size was installed")
+	} else if !strings.Contains(err.Error(), "bound") {
+		t.Errorf("error = %v, want the bound named", err)
+	}
+	if _, err := os.Stat(dst); !os.IsNotExist(err) {
+		t.Error("destination created despite the bound")
+	}
+
+	exact := &ghRelease{TagName: tagR1, Assets: []ghAsset{
+		{Name: "blob.bin", Size: int64(len(payload)), DownloadURL: url},
+	}}
+	if n, err := srv.assetTo(context.Background(), exact, "blob.bin", dst, ""); err != nil || n != int64(len(payload)) {
+		t.Errorf("an asset exactly at its declared size: %d bytes, %v", n, err)
+	}
+
+	// A release that declares no size falls back to the server-wide expansion
+	// bound rather than to no bound at all.
+	none := &ghRelease{TagName: tagR1, Assets: []ghAsset{{Name: "blob.bin", DownloadURL: url}}}
+	if _, err := srv.assetTo(context.Background(), none, "blob.bin", dst, ""); err != nil {
+		t.Errorf("an asset declaring no size was refused: %v", err)
+	}
+}
+
+// TestFullRefreshSurvivesAnUndeclaredAssetSize is the finding's teeth. The bound
+// used to collapse onto a 1 GiB floor whenever the release declared no size -
+// below the ~1.6 GB artifact it was bounding - so every full refresh would have
+// failed forever, re-downloading the whole asset each poll and writing
+// maxBytes+1 bytes to the cache volume each time.
+func TestFullRefreshSurvivesAnUndeclaredAssetSize(t *testing.T) {
+	var logged bytes.Buffer
+	v1Path := buildFixtureDB(t, fixtureCatalog())
+	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, v1Path), "", nil))
+	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
+		swapGrace: time.Minute, Logger: log.New(&logged, "", 0)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+
+	rel, _, err := srv.gh.latestDataRelease(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	// The same release as GitHub would report it if it declared no sizes.
+	for i := range rel.Assets {
+		rel.Assets[i].Size = 0
+	}
+	if err := srv.fullRefresh(context.Background(), rel); err != nil {
+		t.Fatalf("a refresh whose assets declare no size failed: %v", err)
+	}
+	if got := srv.current().tag; got != tagR1 {
+		t.Errorf("loaded tag = %q, want %q", got, tagR1)
+	}
+	if !strings.Contains(logged.String(), "declares no size") {
+		t.Errorf("log %q does not report the undeclared size", logged.String())
 	}
 }
