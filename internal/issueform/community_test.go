@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/internal/sqlitedsn"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -369,7 +370,9 @@ func writeRedirects(t *testing.T, dir string, works map[string]string) {
 // into a file: URI, where '?' starts the query (dropping mode=ro and naming a
 // different file), '#' truncates, and a literal %NN is decoded to other bytes.
 // The check that matters is behavioural - the artifact at such a path really does
-// open - rather than the exact spelling of the DSN.
+// open THROUGH THIS PACKAGE - rather than the exact spelling of the DSN, which is
+// sqlitedsn's own test (the rule moved there when internal/serve became its
+// second consumer).
 func TestWorksDBDSNEscapesThePath(t *testing.T) {
 	for _, dirName := range []string{"a?b", "c#d", "e%2Ff", "g h"} {
 		t.Run(dirName, func(t *testing.T) {
@@ -387,9 +390,9 @@ func TestWorksDBDSNEscapesThePath(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			dsn, err := worksDBDSN(artifact)
+			dsn, err := sqlitedsn.ReadOnly(artifact)
 			if err != nil {
-				t.Fatalf("worksDBDSN: %v", err)
+				t.Fatalf("sqlitedsn.ReadOnly: %v", err)
 			}
 			// The delimiters must not survive into the URI as themselves, or the
 			// parser reads them as syntax rather than as the path they are.

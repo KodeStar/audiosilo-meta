@@ -10,6 +10,8 @@ import (
 	"sync"
 
 	_ "modernc.org/sqlite"
+
+	"github.com/kodestar/audiosilo-meta/internal/sqlitedsn"
 )
 
 // snapshot is one loaded, read-only view of the SQLite artifact. It is immutable
@@ -99,8 +101,17 @@ type Stats struct {
 }
 
 // openSnapshot opens the artifact at path read-only and precomputes its stats.
+//
+// The DSN is built by internal/sqlitedsn rather than spliced: --db and --cache
+// are operator-supplied paths, and a '?' or '#' in one ends the file name in a
+// `file:` URI - dropping mode=ro, so the artifact is opened read-WRITE and a
+// path that names nothing is CREATED rather than refused.
 func openSnapshot(path, tag string) (*snapshot, error) {
-	db, err := sql.Open("sqlite", "file:"+path+"?mode=ro")
+	dsn, err := sqlitedsn.ReadOnly(path)
+	if err != nil {
+		return nil, fmt.Errorf("open %s: %w", path, err)
+	}
+	db, err := sql.Open("sqlite", dsn)
 	if err != nil {
 		return nil, err
 	}

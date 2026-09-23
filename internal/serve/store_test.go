@@ -1,6 +1,8 @@
 package serve
 
 import (
+	"os"
+	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
@@ -153,5 +155,41 @@ func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
 	}
 	if got := cards["project-hail-mary"].ReleaseDate; got != "2021-05-04" {
 		t.Errorf("single-recording release_date = %q, want 2021-05-04", got)
+	}
+}
+
+// TestOpenSnapshotEscapesTheArtifactPath pins the DSN rule from the failing
+// side. --db and --cache are operator-supplied paths, and a '?' in one ends the
+// file name inside a `file:` URI: the spliced spelling this replaced opened a
+// DIFFERENT file with mode=ro never parsed, so the handle was read-WRITE and the
+// named file was CREATED rather than the artifact opened. The escaping lives in
+// internal/sqlitedsn (its own test pins the URI); what this pins is that the
+// serving loader really goes through it.
+func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
+	built := buildFixtureDB(t, fixtureCatalog())
+	// Built at an ordinary path and MOVED: internal/build opens its output with
+	// a plain DSN, which the driver splits on '?' too, so a fixture written
+	// straight to the path under test would leave no artifact there at all.
+	dir := filepath.Join(t.TempDir(), "a?b")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(dir, "meta.sqlite")
+	if err := os.Rename(built, path); err != nil {
+		t.Fatal(err)
+	}
+
+	snap, err := openSnapshot(path, "")
+	if err != nil {
+		t.Fatalf("openSnapshot on a %q path: %v", filepath.Base(dir), err)
+	}
+	t.Cleanup(snap.close)
+	if snap.stats.Works != len(fixtureCatalog().Works) {
+		t.Errorf("works = %d, want the fixture's %d - the wrong file was opened",
+			snap.stats.Works, len(fixtureCatalog().Works))
+	}
+	// The spliced DSN would have named (and created) the truncated path.
+	if _, err := os.Stat(filepath.Join(t.TempDir(), "a")); err == nil {
+		t.Error("a truncated artifact path was created")
 	}
 }
