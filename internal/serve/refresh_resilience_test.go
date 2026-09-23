@@ -125,7 +125,7 @@ func knobServer(t *testing.T, seed, cache string, f *knobGitHub, grace time.Dura
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", f.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", f.srv.URL)
 	return srv
 }
 

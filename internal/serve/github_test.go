@@ -378,7 +378,7 @@ func newPollServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
 	return srv
 }
 
@@ -809,7 +809,7 @@ func TestRefreshPrunesCache(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
 
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R1 refresh: %v", err)
@@ -859,7 +859,7 @@ func TestPatchSkippedOverBaseCap(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R1 refresh: %v", err)
 	}
@@ -929,7 +929,7 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 	// Once a release is reachable, the same process becomes healthy.
 	_, v1, _, _ := buildV1V2(t)
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
-	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("recovery refresh: %v", err)
 	}
@@ -1161,6 +1161,17 @@ func dirEntries(t *testing.T, dir string) []string {
 	return names
 }
 
+// newTestGHClient is newGHClient pointed at an httptest server: the same
+// production client, plus that server's origin admitted as an asset origin. An
+// httptest server is plain HTTP on a loopback IP with a port - three things the
+// production asset rule refuses, and rightly - so the exemption is an explicit
+// piece of test setup rather than a clause inside the rule.
+func newTestGHClient(repo, token, base string) *ghClient {
+	c := newGHClient(repo, token, base)
+	c.allowOrigin(base)
+	return c
+}
+
 // TestAssetHostsAreAllowlisted is the finding: an asset URL comes out of the
 // release JSON and get() attaches this server's token to whatever host it names.
 // A release that pointed an asset elsewhere would hand that host the credential,
@@ -1177,34 +1188,58 @@ func TestAssetHostsAreAllowlisted(t *testing.T) {
 			t.Errorf("%s was refused: %v", url, err)
 		}
 	}
-	for _, url := range []string{
-		"https://evil.example/meta.sqlite.gz",
-		"https://github.com.evil.example/meta.sqlite.gz",
-		"https://notgithubusercontent.com/x",
-		"http://github.com/owner/name/releases/download/v1/meta.sqlite.gz", // a token is never sent in clear
-		"://nonsense",
+	for _, tc := range []struct{ url, reason string }{
+		{"https://evil.example/meta.sqlite.gz", "not a GitHub release-asset host"},
+		{"https://github.com.evil.example/meta.sqlite.gz", "not a GitHub release-asset host"},
+		{"https://notgithubusercontent.com/x", "not a GitHub release-asset host"},
+		// A token is never sent in clear.
+		{"http://github.com/owner/name/releases/download/v1/meta.sqlite.gz", "is not https"},
+		// THE PORT: the host arm reads u.Hostname(), which strips it, so an
+		// allowlisted NAME with a port of the release JSON's choosing used to be
+		// dialled with the bearer token attached.
+		{"https://objects.githubusercontent.com:8443/x", "explicit port"},
+		{"https://github.com:1337/owner/name/releases/download/v1/meta.sqlite.gz", "explicit port"},
+		{"https://api.github.com:8443/repos/owner/name/releases/assets/1", "explicit port"},
+		{"://nonsense", "download"},
 	} {
-		if err := prod.checkAssetURL(url); err == nil {
-			t.Errorf("%s was allowed", url)
+		err := prod.checkAssetURL(tc.url)
+		if err == nil {
+			t.Errorf("%s was allowed", tc.url)
+			continue
+		}
+		if !strings.Contains(err.Error(), tc.reason) {
+			t.Errorf("%s was refused as %q, want the reason to name %q", tc.url, err, tc.reason)
 		}
 	}
 
-	// The configured API base is the one host outside the public list, which is
-	// how the whole client is pointed at a test server.
-	local := newGHClient("owner/name", "token", "http://127.0.0.1:1/")
+	// The origins allowOrigin was handed are the one exception, and they are
+	// whole origins: the port is part of what must match, which is how a test
+	// server is reached without the rule above gaining a clause.
+	local := newTestGHClient("owner/name", "token", "http://127.0.0.1:1/")
 	if err := local.checkAssetURL("http://127.0.0.1:1/dl/tag/meta.sqlite.gz"); err != nil {
 		t.Errorf("the configured base's own origin was refused: %v", err)
 	}
-	if err := local.checkAssetURL("http://127.0.0.2:1/dl/tag/meta.sqlite.gz"); err == nil {
-		t.Error("a different local host rode in on the base exception")
+	for _, url := range []string{
+		"http://127.0.0.2:1/dl/tag/meta.sqlite.gz",  // another host
+		"http://127.0.0.1:2/dl/tag/meta.sqlite.gz",  // another port
+		"https://127.0.0.1:1/dl/tag/meta.sqlite.gz", // another scheme
+	} {
+		if err := local.checkAssetURL(url); err == nil {
+			t.Errorf("%s rode in on the exempt origin", url)
+		}
 	}
 }
 
 // TestAssetRedirectsAreRechecked is the finding the attachment fetcher had too,
-// one repository over: the allowlist ran on the URL the release JSON named and
-// on nothing after it. A browser_download_url ALWAYS 302s to a CDN host, so
-// redirects are this path's NORMAL shape - one hop was all it took to carry the
-// Authorization header to a host checkAssetURL would have refused outright.
+// one repository over: policy ran on the URL the release JSON named and on
+// nothing after it. A browser_download_url ALWAYS 302s to a CDN host, so
+// redirects are this path's NORMAL shape.
+//
+// What a hop is judged by is ghhost.HopPolicy - https, no IP literal, bounded -
+// and NOT the asset allowlist: GitHub chooses the CDN, has moved it before, and
+// net/http strips the Authorization header on a cross-host hop. ghhost's own
+// test pins that an ordinary unlisted https host is followed; a local test
+// server can only be an IP literal, so it cannot be pinned from here.
 func TestAssetRedirectsAreRechecked(t *testing.T) {
 	var elsewhereHits atomic.Int32
 	elsewhere := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
@@ -1215,9 +1250,9 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 
 	asset := []byte("the artifact bytes")
 	fake := newFakeGitHub(t, "data-v1", map[string][]byte{dataAssetName: asset})
-	c := newGHClient("owner/name", "token", fake.srv.URL)
+	c := newTestGHClient("owner/name", "token", fake.srv.URL)
 
-	t.Run("a hop inside the allowlist is followed", func(t *testing.T) {
+	t.Run("a hop to the exempt origin is followed", func(t *testing.T) {
 		fake.setRedirect(fake.srv.URL + "/dl/data-v1/" + dataAssetName)
 		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
 		if err != nil {
@@ -1233,12 +1268,15 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 		}
 	})
 
-	t.Run("a hop to a refused host is refused and never dialed", func(t *testing.T) {
+	t.Run("a hop to another local host is refused and never dialed", func(t *testing.T) {
+		// Plain HTTP on a loopback IP: both arms of the hop rule, and the shape
+		// an SSRF redirect takes in production (169.254.169.254, a service on the
+		// container's own loopback).
 		fake.setRedirect(elsewhere.URL + "/meta.sqlite.gz")
 		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
 		if err == nil {
 			_ = resp.Body.Close()
-			t.Fatal("a redirect to a host outside the allowlist was followed")
+			t.Fatal("a redirect to a refused location was followed")
 		}
 		if !strings.Contains(err.Error(), "redirected to a refused location") {
 			t.Errorf("error = %v, want the redirect refusal", err)
@@ -1247,6 +1285,28 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 			t.Errorf("the refused host was dialed %d times", n)
 		}
 	})
+}
+
+// TestReleaseMetadataFollowsARedirect: the metadata call shares the client, so
+// it shares the hop policy. A repository RENAME answers 301 on
+// /repos/<old>/releases, and a policy that refused it would strand every poller
+// on the old name.
+func TestReleaseMetadataFollowsARedirect(t *testing.T) {
+	fake := newFakeGitHub(t, "data-v1", map[string][]byte{dataAssetName: []byte("x")})
+	moved := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, fake.srv.URL+r.URL.RequestURI(), http.StatusMovedPermanently)
+	}))
+	defer moved.Close()
+
+	c := newTestGHClient("owner/name", "", moved.URL)
+	c.allowOrigin(fake.srv.URL)
+	rel, notModified, err := c.latestDataRelease(context.Background())
+	if err != nil {
+		t.Fatalf("latestDataRelease through a 301: %v", err)
+	}
+	if notModified || rel == nil || rel.TagName != "data-v1" {
+		t.Errorf("rel = %+v, notModified = %v, want the moved repository's release", rel, notModified)
+	}
 }
 
 // TestRefusedAssetHostIsNeverDialed: the allowlist runs before the request
@@ -1260,18 +1320,18 @@ func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
 	}))
 	defer elsewhere.Close()
 
-	// A client whose base is a DIFFERENT local server, so `elsewhere` is off the
-	// allowlist the way a third-party host is in production.
+	// A client whose exempt origin is a DIFFERENT local server, so `elsewhere` is
+	// off the rule the way a third-party host is in production.
 	other := httptest.NewServer(http.NotFoundHandler())
 	defer other.Close()
-	c := newGHClient("owner/name", "token", other.URL)
+	c := newTestGHClient("owner/name", "token", other.URL)
 
 	resp, err := c.get(context.Background(), elsewhere.URL+"/meta.sqlite.gz")
 	if err == nil {
 		_ = resp.Body.Close()
 		t.Fatal("an asset download to a refused host was made")
 	}
-	if !strings.Contains(err.Error(), "not a GitHub release-asset host") {
+	if !strings.Contains(err.Error(), "is not https") {
 		t.Errorf("error = %v, want the allowlist refusal", err)
 	}
 	if n := hits.Load(); n != 0 {

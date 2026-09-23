@@ -65,6 +65,15 @@ type ghClient struct {
 	http  *http.Client
 	etag  string
 
+	// allowOrigins are the `scheme://host` origins this client may talk to
+	// BESIDE the public GitHub rule (see checkAssetTarget) - and, as a redirect
+	// hop, beside ghhost.HopPolicy. It is EMPTY in production, where the policy
+	// is exactly github.com / api.github.com / *.githubusercontent.com over
+	// https with no port; its one filler is test setup pointing the whole client
+	// at an httptest server, which is plain HTTP on a loopback IP with a port -
+	// three things the production rule refuses, and rightly.
+	allowOrigins []string
+
 	// The deadlines above, as fields so tests can scale them down.
 	metaTimeout   time.Duration // whole-request deadline for the metadata call
 	assetDeadline time.Duration // whole-request ceiling for an asset download
@@ -93,18 +102,37 @@ func newGHClient(repo, token, base string) *ghClient {
 		stallTimeout:  assetStallTimeout,
 	}
 	// A browser_download_url ALWAYS 302s to a CDN host, so a redirect is the
-	// normal path here rather than an edge case - and the token rides along on
-	// the hop, because net/http re-sends an Authorization header set on the
-	// original request to a same-or-subdomain host. So the allowlist is applied
-	// to every hop, not only to the URL the release JSON named.
-	c.http.CheckRedirect = ghhost.CheckRedirect(maxAssetRedirects, c.checkAssetTarget)
+	// normal path here rather than an edge case. The hop is judged by
+	// ghhost.HopPolicy - https, no IP literal, bounded - and deliberately NOT by
+	// the asset allowlist: GitHub picks the CDN and has moved it before, and
+	// net/http strips the Authorization header on a cross-host hop anyway. See
+	// ghhost's package doc, which is where that trade is argued.
+	c.http.CheckRedirect = ghhost.CheckRedirect(0, c.allowsOrigin) // 0: ghhost.DefaultMaxRedirects
 	return c
 }
 
-// maxAssetRedirects bounds an asset download's redirect chain. Two hops is the
-// live shape (github.com -> objects.githubusercontent.com); the rest is slack
-// for a CDN that adds one.
-const maxAssetRedirects = 5
+// allowOrigin adds raw's `scheme://host` to the origins this client may reach
+// outside the public GitHub rule. TEST SETUP ONLY - see ghClient.allowOrigins;
+// its one production-side caller is New, gated on the unexported Config.apiBase
+// that only a test can set.
+func (c *ghClient) allowOrigin(raw string) {
+	if u, err := url.Parse(raw); err == nil && u.Host != "" {
+		c.allowOrigins = append(c.allowOrigins, u.Scheme+"://"+u.Host)
+	}
+}
+
+// allowsOrigin reports whether u is one of the extra origins above. Both the
+// scheme and the host (port included) must match: an exemption that ignored
+// either would be a hole in the rule it is an exception to.
+func (c *ghClient) allowsOrigin(u *url.URL) bool {
+	origin := u.Scheme + "://" + u.Host
+	for _, o := range c.allowOrigins {
+		if o == origin {
+			return true
+		}
+	}
+	return false
+}
 
 type ghAsset struct {
 	Name string `json:"name"`
@@ -315,23 +343,35 @@ func (c *ghClient) checkAssetURL(raw string) error {
 	return c.checkAssetTarget(u)
 }
 
-// checkAssetTarget is the rule itself, over a parsed URL, so ONE decision covers
-// the URL the release JSON named and every hop a redirect takes it to (see
-// newGHClient's CheckRedirect).
+// checkAssetTarget is the rule itself, over a parsed URL: the INITIAL URL the
+// release JSON named, which is the one this client attaches its token to. A
+// redirect hop is judged by ghhost.HopPolicy instead (see newGHClient).
 //
-// `api.github.com` is this client's own addition to the shared GitHub host rule:
-// it is the API's asset route, which is no part of what issueform fetches. The
-// other host outside the public list is the configured API BASE's own origin,
-// which is how the tests point the whole client at an httptest server; in
-// production that origin IS api.github.com. Its scheme is compared too, so the
-// exception cannot be used to reach a plain-HTTP host in production, where
-// everything else must be https - a token is not sent in clear.
+// Production policy is exactly: https, no explicit port, and one of github.com,
+// api.github.com or *.githubusercontent.com. `api.github.com` is this client's
+// own addition to the shared GitHub host rule - it is the API's asset route,
+// which is no part of what issueform fetches.
+//
+// THE PORT IS PART OF THE RULE. The allowlist reads u.Hostname(), which strips
+// the port, so `https://objects.githubusercontent.com:8443/x` matched the host
+// arm and was dialled with the bearer token attached - a URL the release JSON
+// chooses, pointing at whatever is listening on that port of a host whose NAME
+// resolves wherever the resolver says. A real asset URL never carries one.
+//
+// The one exception is an origin allowOrigin was handed, which is test setup
+// alone and is why it is checked as a whole origin rather than as a relaxation
+// of any single arm.
 func (c *ghClient) checkAssetTarget(u *url.URL) error {
-	if base, err := url.Parse(c.base); err == nil && base.Host != "" &&
-		u.Scheme == base.Scheme && u.Host == base.Host {
+	if c.allowsOrigin(u) {
 		return nil
 	}
-	if u.Scheme != "https" || !ghhost.Allowed(u.Hostname(), "api.github.com") {
+	switch {
+	case u.Scheme != "https":
+		// A token is not sent in clear.
+		return fmt.Errorf("refusing to download %s: scheme %q is not https", u.Redacted(), u.Scheme)
+	case u.Port() != "":
+		return fmt.Errorf("refusing to download %s: %q names an explicit port", u.Redacted(), u.Host)
+	case !ghhost.Allowed(u.Hostname(), "api.github.com"):
 		return fmt.Errorf("refusing to download %s: %q is not a GitHub release-asset host", u.Redacted(), u.Host)
 	}
 	return nil

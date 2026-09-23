@@ -59,7 +59,9 @@ type Config struct {
 	bootRetry time.Duration
 
 	// apiBase overrides the GitHub API base URL. Test-only: production always
-	// talks to api.github.com.
+	// talks to api.github.com. Setting it also admits that origin as an asset
+	// origin (ghClient.allowOrigin), since an httptest server is plain HTTP on a
+	// loopback IP with a port - three things the production asset rule refuses.
 	apiBase string
 
 	// now supplies the watch feed's window boundary. Test-only; production uses
@@ -157,6 +159,9 @@ func New(cfg Config) (*Server, error) {
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
 		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
+		if cfg.apiBase != "" {
+			s.gh.allowOrigin(cfg.apiBase) // test-only; apiBase is unexported
+		}
 	}
 
 	if cfg.DBPath != "" {
