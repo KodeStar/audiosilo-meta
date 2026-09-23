@@ -373,7 +373,9 @@ func (c *ghClient) downloadTo(ctx context.Context, url, dstPath, wantHexDigest s
 		return 0, err
 	}
 	defer func() { _ = resp.Body.Close() }()
-	return installVerified(resp.Body, dstPath, wantHexDigest)
+	// Unbounded: this path lands the asset as it arrives, so there is no
+	// expansion to bound - the transfer itself is policed by the stall guard.
+	return installVerified(resp.Body, dstPath, wantHexDigest, 0)
 }
 
 // findAsset returns the named asset of rel. It hands back the WHOLE asset rather
@@ -440,9 +442,6 @@ const dataAssetName = "meta.sqlite.gz"
 // against.
 const rawAssetName = "meta.sqlite"
 
-// patchAssetSubject names the patch path's output in the bound's error message.
-const patchAssetSubject = "the patched artifact"
-
 // patchAssetName is the release-asset naming convention for the binary delta
 // based on fromTag's artifact.
 func patchAssetName(fromTag string) string {
@@ -468,7 +467,14 @@ func expectedDigest(checksumFile []byte) (string, error) {
 // verified are not always the bytes being written: fullRefresh decompresses
 // while it downloads, so what it can check against the published checksum is the
 // COMPRESSED input, not the artifact landing on disk.
-func installStream(src io.Reader, dstPath string, verify func() error) (int64, error) {
+//
+// maxBytes is the DECOMPRESSION BOUND (see decompressBound; 0 means unbounded,
+// which is what a download of an asset whose size the release declares takes).
+// The check lives here because this is where the copy's byte count already is,
+// and it is applied exactly as a failed verification is: the temp file goes and
+// dstPath is never created. src is read at most one byte past the bound, which
+// is all it takes to prove it was crossed.
+func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() error) (int64, error) {
 	if err := os.MkdirAll(filepath.Dir(dstPath), 0o755); err != nil {
 		return 0, err
 	}
@@ -479,13 +485,19 @@ func installStream(src io.Reader, dstPath string, verify func() error) (int64, e
 	tmpName := tmp.Name()
 	defer func() { _ = os.Remove(tmpName) }()
 
-	n, err := io.Copy(tmp, src) //nolint:gosec // trusted release artifact: verify below gates the rename, so unverified bytes never become dstPath
+	if maxBytes > 0 {
+		src = io.LimitReader(src, maxBytes+1)
+	}
+	n, err := io.Copy(tmp, src) //nolint:gosec // bounded above and gated by verify below, so unverified bytes never become dstPath
 	if err != nil {
 		_ = tmp.Close()
 		return 0, err
 	}
 	if err := tmp.Close(); err != nil {
 		return 0, err
+	}
+	if maxBytes > 0 && n > maxBytes {
+		return 0, fmt.Errorf("the asset expands past the %d-byte bound: refusing it as unverifiable", maxBytes)
 	}
 	if verify != nil {
 		if err := verify(); err != nil {
@@ -510,13 +522,13 @@ func checkDigest(h hash.Hash, wantHexDigest string) error {
 
 // installVerified streams src into dstPath atomically, requiring the streamed
 // bytes to hash to wantHexDigest (empty = no digest check) before anything is
-// installed.
-func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error) {
+// installed. maxBytes is installStream's bound (0 = unbounded).
+func installVerified(src io.Reader, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
 	if wantHexDigest == "" {
-		return installStream(src, dstPath, nil)
+		return installStream(src, dstPath, maxBytes, nil)
 	}
 	h := sha256.New()
-	return installStream(io.TeeReader(src, h), dstPath, func() error {
+	return installStream(io.TeeReader(src, h), dstPath, maxBytes, func() error {
 		return checkDigest(h, wantHexDigest)
 	})
 }
@@ -533,11 +545,13 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error
 // rename, so a corrupted download is discarded with the temp file - the same
 // "verified before it counts" property the old download-then-compare had.
 //
-// maxBytes bounds what is WRITTEN. The checksum gate is the real defence, but it
-// only fires at the END, and a gzip stream declares no output size - so without
-// a bound, an asset that decompresses without limit fills the cache volume
-// before anything gets to reject it. Hitting the bound is treated exactly as a
-// failed verification: the temp file goes and dstPath is never created.
+// maxBytes is the COMPUTED bound on what is written, decompressBound's - the
+// shape applyPatchFile takes too, so neither path decides the bound for itself.
+// The checksum gate is the real defence, but it only fires at the END, and a
+// gzip stream declares no output size - so without a bound, an asset that
+// decompresses without limit fills the cache volume before anything gets to
+// reject it. Hitting the bound is treated exactly as a failed verification: the
+// temp file goes and dstPath is never created.
 func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64) error {
 	h := sha256.New()
 	tee := io.TeeReader(src, h)
@@ -546,7 +560,7 @@ func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64)
 		return err
 	}
 	defer func() { _ = zr.Close() }()
-	_, err = installStream(newBoundedReader(zr, maxBytes, dataAssetName), dstPath, func() error {
+	_, err = installStream(zr, dstPath, maxBytes, func() error {
 		if _, err := io.Copy(io.Discard, tee); err != nil {
 			return err
 		}
@@ -584,42 +598,6 @@ func decompressBound(declared, floor int64) int64 {
 	return max(declared*decompressRatio, floor)
 }
 
-// boundedReader fails the read that would take the total past limit. It is what
-// turns the bound into a stopped copy rather than a check after the fact: the
-// error travels out of io.Copy, so installStream removes the temp file and never
-// renames it - the same outcome a checksum mismatch has.
-type boundedReader struct {
-	r     io.Reader
-	limit int64
-	n     int64
-	what  string
-}
-
-func newBoundedReader(r io.Reader, limit int64, what string) *boundedReader {
-	return &boundedReader{r: r, limit: limit, what: what}
-}
-
-func (b *boundedReader) Read(p []byte) (int, error) {
-	if b.n > b.limit {
-		return 0, b.err()
-	}
-	// Never read further past the limit than the one byte that proves it was
-	// crossed.
-	if room := b.limit + 1 - b.n; int64(len(p)) > room {
-		p = p[:room]
-	}
-	n, err := b.r.Read(p)
-	b.n += int64(n)
-	if b.n > b.limit {
-		return n, b.err()
-	}
-	return n, err
-}
-
-func (b *boundedReader) err() error {
-	return fmt.Errorf("%s expands past the %d-byte bound: refusing it as unverifiable", b.what, b.limit)
-}
-
 // downloadBufferBytes is the read buffer for the on-disk decompression paths -
 // large enough that a multi-hundred-MB artifact is not read in 4KB syscalls,
 // small enough to be irrelevant to the process's footprint.
@@ -641,12 +619,18 @@ const downloadBufferBytes = 1 << 20
 //     memory are raised to match or the decode rejects the frame.
 //
 // The patch itself and the reconstructed output both stream (file in, file out),
-// but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
+// maxBytes is the COMPUTED bound on the reconstructed artifact, the same shape
+// gunzipStreamTo takes: the patch declares no output size, and a frame that
+// expanded without limit would fill the cache volume long before the sha256 gate
+// could reject it. The caller measures it against the BASE artifact's size (see
+// decompressBound), the one size this path knows exactly.
+//
+// The PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
 // must be one contiguous byte slice, and the decoder's history window over it
 // costs about as much again, so peak transient is roughly twice the base
 // artifact. That is what defaultMaxPatchBase caps - past that size tryPatch
 // refuses to start and the full download (which streams end to end) runs instead.
-func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, floor int64) (int64, error) {
+func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
 	prev, err := os.ReadFile(prevPath) //nolint:gosec // prevPath is our own cache file, not user input
 	if err != nil {
 		return 0, err
@@ -666,14 +650,7 @@ func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, floor in
 		return 0, err
 	}
 	defer reader.Close()
-	// The reconstructed artifact is bounded by the BASE artifact's size (see
-	// decompressBound): the patch declares no output size, and a frame that
-	// expanded without limit would fill the cache volume long before the sha256
-	// gate could reject it. A release really does grow between polls, so the
-	// ratio is generous - what it excludes is an expansion no data release
-	// could produce.
-	bounded := newBoundedReader(reader, decompressBound(int64(len(prev)), floor), patchAssetSubject)
-	return installVerified(bounded, dstPath, wantHexDigest)
+	return installVerified(reader, dstPath, wantHexDigest, maxBytes)
 }
 
 // cachePrefix names every file this server writes into the cache directory: the
@@ -996,7 +973,7 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 	defer func() { _ = body.Close() }()
 
 	dbPath := s.dbCachePath(rel.TagName)
-	if err := gunzipStreamTo(body, dbPath, want, decompressBound(gzBytes, s.cfg.decompressFloor)); err != nil {
+	if err := gunzipStreamTo(body, dbPath, want, decompressBound(gzBytes, defaultDecompressFloor)); err != nil {
 		return err
 	}
 	snap, err := s.adopt(dbPath, rel.TagName)
@@ -1061,7 +1038,10 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 
-	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want, s.cfg.decompressFloor)
+	// The base artifact's size, stat'd above, is what the reconstruction is
+	// measured against - the one size this path knows exactly.
+	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want,
+		decompressBound(info.Size(), defaultDecompressFloor))
 	if err != nil {
 		return err
 	}

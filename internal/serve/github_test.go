@@ -50,7 +50,7 @@ func TestInstallVerified(t *testing.T) {
 
 	dir := t.TempDir()
 	dst := filepath.Join(dir, "asset.bin")
-	if _, err := installVerified(bytes.NewReader(data), dst, want); err != nil {
+	if _, err := installVerified(bytes.NewReader(data), dst, want, 0); err != nil {
 		t.Errorf("good checksum rejected: %v", err)
 	}
 	if got, _ := os.ReadFile(dst); !bytes.Equal(got, data) {
@@ -59,7 +59,7 @@ func TestInstallVerified(t *testing.T) {
 
 	// A corrupted download must be rejected and must not replace the file.
 	tampered := filepath.Join(dir, "tampered.bin")
-	if _, err := installVerified(bytes.NewReader([]byte("tampered")), tampered, want); err == nil {
+	if _, err := installVerified(bytes.NewReader([]byte("tampered")), tampered, want, 0); err == nil {
 		t.Errorf("corrupted download accepted")
 	}
 	if _, err := os.Stat(tampered); !os.IsNotExist(err) {
@@ -792,14 +792,7 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 // cacheFiles lists the cache directory, for the prune assertions.
 func cacheFiles(t *testing.T, dir string) []string {
 	t.Helper()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		t.Fatal(err)
-	}
-	var names []string
-	for _, e := range entries {
-		names = append(names, e.Name())
-	}
+	names := dirEntries(t, dir)
 	sort.Strings(names)
 	return names
 }
@@ -992,7 +985,7 @@ func TestApplyPatchFile(t *testing.T) {
 		dir := t.TempDir()
 		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "out", "meta.sqlite")
-		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), defaultDecompressFloor)
+		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), patchBound(v1))
 		if err != nil {
 			t.Fatalf("applyPatchFile: %v", err)
 		}
@@ -1008,20 +1001,16 @@ func TestApplyPatchFile(t *testing.T) {
 		dir := t.TempDir()
 		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "meta.sqlite")
-		if _, err := applyPatchFile(patchPath, v1Path, dst, "deadbeef", defaultDecompressFloor); err == nil {
+		if _, err := applyPatchFile(patchPath, v1Path, dst, "deadbeef", patchBound(v1)); err == nil {
 			t.Fatal("expected a hash mismatch error")
 		}
 		if _, err := os.Stat(dst); !os.IsNotExist(err) {
 			t.Errorf("dst was created despite a hash mismatch")
 		}
 		// No leftover temp files in the dst directory.
-		entries, err := os.ReadDir(dir)
-		if err != nil {
-			t.Fatal(err)
-		}
-		for _, e := range entries {
-			if strings.HasPrefix(e.Name(), ".meta-") {
-				t.Errorf("leftover temp file %q after failed apply", e.Name())
+		for _, name := range dirEntries(t, dir) {
+			if strings.HasPrefix(name, ".meta-") {
+				t.Errorf("leftover temp file %q after failed apply", name)
 			}
 		}
 	})
@@ -1053,7 +1042,7 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", info.Size(), len(v2))
 
 	dst := filepath.Join(dir, "out.sqlite")
-	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), defaultDecompressFloor); err != nil {
+	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), decompressBound(0, defaultDecompressFloor)); err != nil {
 		t.Fatalf("applyPatchFile on CLI frame: %v", err)
 	}
 	if got := readDB(t, dst); !bytes.Equal(got, v2) {
@@ -1135,17 +1124,28 @@ func TestApplyPatchFileIsBounded(t *testing.T) {
 	patchPath := writeFile(t, dir, "patch.zst", makePatch(t, base, next))
 
 	dst := filepath.Join(dir, "out.bin")
-	// floor 1, so the bound really is the ratio over the base's 64 bytes.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), 1); err == nil {
+	// Floor 1, so the bound really is the ratio over the base's 64 bytes - what
+	// tryPatch computes from the base artifact it stat'd.
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), decompressBound(int64(len(base)), 1)); err == nil {
 		t.Fatal("a patch expanding far past its base was installed")
 	}
 	if _, err := os.Stat(dst); !os.IsNotExist(err) {
 		t.Errorf("destination created despite the bound")
 	}
+	// An output exactly AT the bound is legitimate rather than suspicious.
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), int64(len(next))); err != nil {
+		t.Errorf("a patch landing exactly on the bound was refused: %v", err)
+	}
 	// With the production floor the same patch is an ordinary, tiny refresh.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), defaultDecompressFloor); err != nil {
+	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), patchBound(base)); err != nil {
 		t.Errorf("a patch well inside the floor was refused: %v", err)
 	}
+}
+
+// patchBound is tryPatch's own bound for a base artifact, so a test never
+// invents an arithmetic of its own.
+func patchBound(base []byte) int64 {
+	return decompressBound(int64(len(base)), defaultDecompressFloor)
 }
 
 func dirEntries(t *testing.T, dir string) []string {
