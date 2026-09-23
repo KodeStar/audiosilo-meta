@@ -20,6 +20,8 @@ import (
 	"time"
 
 	"github.com/klauspost/compress/zstd"
+
+	"github.com/kodestar/audiosilo-meta/internal/ghhost"
 )
 
 // The request deadlines. They are deliberately NOT one http.Client.Timeout:
@@ -57,16 +59,11 @@ const (
 // ghClient talks to the GitHub Releases API, remembering the last ETag so a
 // poll that finds nothing new costs one conditional request.
 type ghClient struct {
-	base string // API base, "https://api.github.com" (overridable for tests)
-	// baseOrigin is base's scheme://host, the ONE host outside the public
-	// allowlist an asset download may name (see checkAssetURL). Production's is
-	// api.github.com, which the allowlist already holds; a test's is its own
-	// httptest server, which is the only reason this is not a constant.
-	baseOrigin string
-	repo       string // "owner/name"
-	token      string // optional
-	http       *http.Client
-	etag       string
+	base  string // API base, "https://api.github.com" (overridable for tests)
+	repo  string // "owner/name"
+	token string // optional
+	http  *http.Client
+	etag  string
 
 	// The deadlines above, as fields so tests can scale them down.
 	metaTimeout   time.Duration // whole-request deadline for the metadata call
@@ -86,14 +83,8 @@ func newGHClient(repo, token, base string) *ghClient {
 	}
 	tr = tr.Clone()
 	tr.ResponseHeaderTimeout = responseHeaderTimeout
-	trimmed := strings.TrimRight(base, "/")
-	origin := ""
-	if u, err := url.Parse(trimmed); err == nil && u.Host != "" {
-		origin = u.Scheme + "://" + u.Host
-	}
-	return &ghClient{
-		base:          trimmed,
-		baseOrigin:    origin,
+	c := &ghClient{
+		base:          strings.TrimRight(base, "/"),
 		repo:          repo,
 		token:         token,
 		http:          &http.Client{Transport: tr},
@@ -101,7 +92,19 @@ func newGHClient(repo, token, base string) *ghClient {
 		assetDeadline: assetDeadline,
 		stallTimeout:  assetStallTimeout,
 	}
+	// A browser_download_url ALWAYS 302s to a CDN host, so a redirect is the
+	// normal path here rather than an edge case - and the token rides along on
+	// the hop, because net/http re-sends an Authorization header set on the
+	// original request to a same-or-subdomain host. So the allowlist is applied
+	// to every hop, not only to the URL the release JSON named.
+	c.http.CheckRedirect = ghhost.CheckRedirect(maxAssetRedirects, c.checkAssetTarget)
+	return c
 }
+
+// maxAssetRedirects bounds an asset download's redirect chain. Two hops is the
+// live shape (github.com -> objects.githubusercontent.com); the rest is slack
+// for a CDN that adds one.
+const maxAssetRedirects = 5
 
 type ghAsset struct {
 	Name string `json:"name"`
@@ -296,16 +299,6 @@ func (g *stallGuard) Close() error {
 	return err
 }
 
-// allowedAssetHost is the public half of the asset-download allowlist: the hosts
-// GitHub actually serves release assets from. `github.com` is where a
-// browser_download_url points, the `*.githubusercontent.com` family is where it
-// redirects to, and `api.github.com` is the API's own asset route.
-func allowedAssetHost(host string) bool {
-	host = strings.ToLower(host)
-	return host == "github.com" || host == "api.github.com" ||
-		strings.HasSuffix(host, ".githubusercontent.com")
-}
-
 // checkAssetURL refuses an asset URL this client may not send its token to.
 //
 // The URLs are read out of the release JSON, which is data from a remote
@@ -314,22 +307,32 @@ func allowedAssetHost(host string) bool {
 // mistaken one, or simply a repository somebody else can publish to - would
 // therefore hand that host a credential. The allowlist is applied BEFORE the
 // request is built, so a refused URL is never even dialed.
-//
-// The one host outside the public list is the configured API BASE's own origin,
-// which is how the tests point the whole client at an httptest server; in
-// production that origin IS api.github.com. Its scheme is compared too, so the
-// exception cannot be used to reach a plain-HTTP host in production, where
-// everything else must be https - a token is not sent in clear.
 func (c *ghClient) checkAssetURL(raw string) error {
 	u, err := url.Parse(raw)
 	if err != nil {
 		return fmt.Errorf("download %s: %w", raw, err)
 	}
-	if c.baseOrigin != "" && u.Scheme+"://"+u.Host == c.baseOrigin {
+	return c.checkAssetTarget(u)
+}
+
+// checkAssetTarget is the rule itself, over a parsed URL, so ONE decision covers
+// the URL the release JSON named and every hop a redirect takes it to (see
+// newGHClient's CheckRedirect).
+//
+// `api.github.com` is this client's own addition to the shared GitHub host rule:
+// it is the API's asset route, which is no part of what issueform fetches. The
+// other host outside the public list is the configured API BASE's own origin,
+// which is how the tests point the whole client at an httptest server; in
+// production that origin IS api.github.com. Its scheme is compared too, so the
+// exception cannot be used to reach a plain-HTTP host in production, where
+// everything else must be https - a token is not sent in clear.
+func (c *ghClient) checkAssetTarget(u *url.URL) error {
+	if base, err := url.Parse(c.base); err == nil && base.Host != "" &&
+		u.Scheme == base.Scheme && u.Host == base.Host {
 		return nil
 	}
-	if u.Scheme != "https" || !allowedAssetHost(u.Hostname()) {
-		return fmt.Errorf("refusing to download %s: %q is not a GitHub release-asset host", raw, u.Host)
+	if u.Scheme != "https" || !ghhost.Allowed(u.Hostname(), "api.github.com") {
+		return fmt.Errorf("refusing to download %s: %q is not a GitHub release-asset host", u.Redacted(), u.Host)
 	}
 	return nil
 }

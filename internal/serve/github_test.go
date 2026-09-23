@@ -7,6 +7,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -170,11 +171,12 @@ type fakeRel struct {
 type fakeGitHub struct {
 	srv *httptest.Server
 
-	mu      sync.Mutex
-	rels    []fakeRel
-	etag    string
-	hits    map[string]int
-	failing map[string]bool
+	mu         sync.Mutex
+	rels       []fakeRel
+	etag       string
+	hits       map[string]int
+	failing    map[string]bool
+	redirectTo string
 
 	fullFetch atomic.Int32
 	notMod    atomic.Int32
@@ -248,6 +250,14 @@ func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitH
 		}
 		_, _ = w.Write(data)
 	})
+	// A real browser_download_url always 302s to a CDN host, so the hop policy
+	// is not an edge case here - this route is how a test aims one.
+	mux.HandleFunc("/redirect", func(w http.ResponseWriter, r *http.Request) {
+		f.mu.Lock()
+		target := f.redirectTo
+		f.mu.Unlock()
+		http.Redirect(w, r, target, http.StatusFound)
+	})
 	f.srv = httptest.NewServer(mux)
 	t.Cleanup(f.srv.Close)
 	return f
@@ -267,6 +277,13 @@ func (f *fakeGitHub) setReleases(rels ...fakeRel) {
 	f.etag = `"` + strings.Join(tags, "+") + `"`
 	f.hits = map[string]int{}
 	f.failing = map[string]bool{}
+}
+
+// setRedirect points the fake's /redirect route at target.
+func (f *fakeGitHub) setRedirect(target string) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	f.redirectTo = target
 }
 
 // setRelease publishes a single (data) release - the common case.
@@ -1181,6 +1198,55 @@ func TestAssetHostsAreAllowlisted(t *testing.T) {
 	if err := local.checkAssetURL("http://127.0.0.2:1/dl/tag/meta.sqlite.gz"); err == nil {
 		t.Error("a different local host rode in on the base exception")
 	}
+}
+
+// TestAssetRedirectsAreRechecked is the finding the attachment fetcher had too,
+// one repository over: the allowlist ran on the URL the release JSON named and
+// on nothing after it. A browser_download_url ALWAYS 302s to a CDN host, so
+// redirects are this path's NORMAL shape - one hop was all it took to carry the
+// Authorization header to a host checkAssetURL would have refused outright.
+func TestAssetRedirectsAreRechecked(t *testing.T) {
+	var elsewhereHits atomic.Int32
+	elsewhere := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		elsewhereHits.Add(1)
+		_, _ = w.Write([]byte("payload"))
+	}))
+	defer elsewhere.Close()
+
+	asset := []byte("the artifact bytes")
+	fake := newFakeGitHub(t, "data-v1", map[string][]byte{dataAssetName: asset})
+	c := newGHClient("owner/name", "token", fake.srv.URL)
+
+	t.Run("a hop inside the allowlist is followed", func(t *testing.T) {
+		fake.setRedirect(fake.srv.URL + "/dl/data-v1/" + dataAssetName)
+		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
+		if err != nil {
+			t.Fatalf("an allowed hop was refused: %v", err)
+		}
+		defer func() { _ = resp.Body.Close() }()
+		got, err := io.ReadAll(resp.Body)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !bytes.Equal(got, asset) {
+			t.Errorf("body = %q, want the asset", got)
+		}
+	})
+
+	t.Run("a hop to a refused host is refused and never dialed", func(t *testing.T) {
+		fake.setRedirect(elsewhere.URL + "/meta.sqlite.gz")
+		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
+		if err == nil {
+			_ = resp.Body.Close()
+			t.Fatal("a redirect to a host outside the allowlist was followed")
+		}
+		if !strings.Contains(err.Error(), "redirected to a refused location") {
+			t.Errorf("error = %v, want the redirect refusal", err)
+		}
+		if n := elsewhereHits.Load(); n != 0 {
+			t.Errorf("the refused host was dialed %d times", n)
+		}
+	})
 }
 
 // TestRefusedAssetHostIsNeverDialed: the allowlist runs before the request

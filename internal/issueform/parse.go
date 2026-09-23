@@ -4,6 +4,8 @@ import (
 	neturl "net/url"
 	"regexp"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/internal/ghhost"
 )
 
 // sections is the parsed issue-form body: each `### <label>` heading maps to
@@ -105,7 +107,7 @@ var attachmentURLRE = regexp.MustCompile(`\]\((https?://[^\s)]+)\)`)
 func extractAttachment(block string) (url string, inline []byte, ok bool) {
 	if links := attachmentURLRE.FindAllStringSubmatch(block, -1); links != nil {
 		for _, m := range links {
-			if u, err := neturl.Parse(m[1]); err == nil && allowedAttachmentHost(u.Hostname()) {
+			if u, err := neturl.Parse(m[1]); err == nil && ghhost.Allowed(u.Hostname()) {
 				return m[1], nil, true
 			}
 		}

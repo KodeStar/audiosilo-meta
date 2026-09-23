@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/ghhost"
 )
 
 // maxAttachmentBytes caps a fetched attachment. Sidecar JSON is small (a work's
@@ -16,9 +18,8 @@ const maxAttachmentBytes = 1 << 20 // 1 MiB
 // attachmentHTTPTimeout bounds a single attachment fetch.
 const attachmentHTTPTimeout = 20 * time.Second
 
-// maxAttachmentRedirects bounds the redirect chain. Setting CheckRedirect
-// REPLACES net/http's own ten-hop default, so the limit has to be restated here
-// or a redirect loop would run until the timeout.
+// maxAttachmentRedirects bounds the redirect chain (see ghhost.CheckRedirect,
+// which is where the bound is applied and why one is needed at all).
 const maxAttachmentRedirects = 5
 
 // attachmentPolicy decides whether one URL may be fetched. It is a function
@@ -34,7 +35,7 @@ func githubAttachmentPolicy(u *url.URL) error {
 	if u.Scheme != "https" {
 		return fmt.Errorf("attachment url must be https, got %q", u.Scheme)
 	}
-	if !allowedAttachmentHost(u.Hostname()) {
+	if !ghhost.Allowed(u.Hostname()) {
 		return fmt.Errorf("attachment host %q is not an allowed GitHub attachment host", u.Hostname())
 	}
 	return nil
@@ -63,15 +64,7 @@ func fetchAttachment(raw string, client *http.Client, policy attachmentPolicy) (
 		return nil, err
 	}
 
-	client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
-		if len(via) >= maxAttachmentRedirects {
-			return fmt.Errorf("attachment url redirected more than %d times", maxAttachmentRedirects)
-		}
-		if err := policy(req.URL); err != nil {
-			return fmt.Errorf("attachment url redirected to a refused location: %w", err)
-		}
-		return nil
-	}
+	client.CheckRedirect = ghhost.CheckRedirect(maxAttachmentRedirects, policy)
 	resp, err := client.Get(u.String())
 	if err != nil {
 		return nil, fmt.Errorf("fetch attachment: %w", err)
@@ -91,10 +84,4 @@ func fetchAttachment(raw string, client *http.Client, policy attachmentPolicy) (
 		return nil, fmt.Errorf("attachment exceeds %d bytes", maxAttachmentBytes)
 	}
 	return data, nil
-}
-
-// allowedAttachmentHost pins attachment fetches to GitHub's user-content hosts.
-func allowedAttachmentHost(host string) bool {
-	host = strings.ToLower(host)
-	return host == "github.com" || strings.HasSuffix(host, ".githubusercontent.com")
 }
