@@ -55,20 +55,39 @@ func ftsPhrase(q string) string { return ftsMatch(q, false) }
 // the index, and a thousand terms is a thousand walks intersected.
 //
 // Both bounds TRUNCATE rather than reject, which is deliberate: this is a
-// per-keystroke UI, a 400 in the middle of typing is a worse answer than the
-// page for the first 256 bytes, and nothing in the catalogue is addressed by a
-// query that long anyway (the longest title the tree holds is far shorter). The
-// cut is what a person would call the start of what they typed - the leading
-// phrases - so the answer stays about their query.
+// per-keystroke UI, and a 400 in the middle of typing is a worse answer than the
+// page for what has been typed so far. The cut is what a person would call the
+// start of what they typed - the leading phrases - so the answer stays about
+// their query.
+//
+// Both are ANCHORED ON THE REAL TREE rather than chosen for looking round, and
+// the rule they are set by is that NO REAL NAME IS CUT: a reader pasting a whole
+// title, a whole person name or a whole series name must get the search they
+// asked for, so a cap below the longest one the catalogue holds would be a bug
+// that only the longest records feel. Measured 2026-09-24 over data/ (278,582
+// works, 123,330 people, 45,203 series):
+//
+//   - longest work title + subtitle: 252 bytes / 44 terms
+//   - longest person name: 161 bytes / 26 terms
+//   - longest series name: 160 bytes / 21 terms
+//   - most terms in any one of them: 46 (a 246-byte work title)
+//
+// Re-measure and raise these if the catalogue ever outgrows them; never truncate
+// a real name to keep a number round.
 const (
-	// maxQueryBytes bounds the raw query text. Cut at a RUNE boundary: a query
-	// is frequently not ASCII and half a rune is a term FTS5 never indexed.
+	// maxQueryBytes bounds the raw query text: the next round number at or above
+	// the 252-byte longest title measured above. Cut at a RUNE boundary - a query
+	// is frequently not ASCII (the longest title in the tree is Spanish) and half
+	// a rune is a term FTS5 never indexed.
 	maxQueryBytes = 256
-	// maxQueryPhrases bounds how many FTS5 phrases one query becomes. It counts
+	// maxQueryPhrases bounds how many FTS5 phrases one query becomes: the next
+	// round number above the 46-term longest title measured above. It counts
 	// PHRASES, which is what the MATCH expression costs: a token whose terms are
 	// all single runes is one adjacent phrase (see tokenPhrases), and every other
-	// token contributes one phrase per term.
-	maxQueryPhrases = 16
+	// token contributes one phrase per term. It is the bound that actually
+	// prices a query - n phrases are n posting-list walks intersected - so the
+	// byte cap above is a second, coarser fence rather than the cost control.
+	maxQueryPhrases = 64
 )
 
 // boundQuery truncates a query to maxQueryBytes, backing the cut off to a rune

@@ -430,26 +430,36 @@ func TestSeriesPositionBoostSurvivesPunctuation(t *testing.T) {
 // prefix star still on the last phrase KEPT.
 func TestFTSQueryIsBounded(t *testing.T) {
 	t.Run("phrase count", func(t *testing.T) {
-		words := make([]string, 0, maxQueryPhrases*3)
+		// Distinct TWO-character tokens, so the phrase cap is what binds here
+		// rather than the byte cap (see the constants: a query long enough to
+		// hold maxQueryPhrases ordinary words is past maxQueryBytes already).
+		words := make([]string, 0, maxQueryPhrases+8)
 		for i := range cap(words) {
-			words = append(words, "word"+strconv.Itoa(i))
+			words = append(words, string(rune('a'+i/10))+strconv.Itoa(i%10))
 		}
-		got := ftsQuery(strings.Join(words, " "))
+		query := strings.Join(words, " ")
+		if len(query) > maxQueryBytes {
+			t.Fatalf("the fixture query is %d bytes, past the byte cap - it no longer tests the phrase cap", len(query))
+		}
+		got := ftsQuery(query)
 		phrases := strings.Count(got, `"`) / 2
 		if phrases != maxQueryPhrases {
 			t.Errorf("phrases = %d, want the cap %d: %s", phrases, maxQueryPhrases, got)
 		}
-		if !strings.HasPrefix(got, `"word0" "word1"`) {
+		if !strings.HasPrefix(got, `"`+words[0]+`" "`+words[1]+`"`) {
 			t.Errorf("the kept phrases are not the leading ones: %s", got)
 		}
-		if !strings.HasSuffix(got, `"word`+strconv.Itoa(maxQueryPhrases-1)+`"*`) {
+		if !strings.HasSuffix(got, `"`+words[maxQueryPhrases-1]+`"*`) {
 			t.Errorf("the last kept phrase lost its prefix star: %s", got)
 		}
 		// Punctuation splits into phrases too, so the cap has to count what the
 		// expression actually holds rather than whitespace tokens. (The terms are
 		// two runes each: a token whose terms are ALL single runes is an
 		// initialism, which is deliberately ONE phrase - see tokenPhrases.)
-		dense := strings.TrimSuffix(strings.Repeat("aa.bb.cc.", maxQueryPhrases), ".")
+		dense := strings.TrimSuffix(strings.Repeat("aa.bb.cc.", maxQueryPhrases/3+2), ".")
+		if len(dense) > maxQueryBytes {
+			t.Fatalf("the dense fixture is %d bytes, past the byte cap", len(dense))
+		}
 		if n := strings.Count(ftsQuery(dense), `"`) / 2; n != maxQueryPhrases {
 			t.Errorf("punctuation-split phrases = %d, want the cap %d", n, maxQueryPhrases)
 		}
