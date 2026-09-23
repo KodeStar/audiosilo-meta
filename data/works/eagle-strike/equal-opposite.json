@@ -639,33 +639,6 @@
           ],
           "work": "equal-rites"
         },
-        "celia-imrie-2003": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
-          "asin": [
-            {
-              "asin": "0753107376",
-              "region": "us"
-            }
-          ],
-          "id": "celia-imrie-2003",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "celia-imrie"
-          ],
-          "publisher": "ISIS Audio Books",
-          "release_date": "2003",
-          "runtime_min": 468,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "0753107376",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "equal-rites"
-        },
         "celia-imrie-2007": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -673,6 +646,10 @@
             {
               "asin": "B004EXEXM0",
               "region": "uk"
+            },
+            {
+              "asin": "0753107376",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -745,6 +722,12 @@
             "celia-imrie"
           ],
           "publisher": "Random House AudioBooks",
+          "publishers": [
+            {
+              "publisher": "ISIS Audio Books",
+              "region": "us"
+            }
+          ],
           "release_date": "2007-07-11",
           "runtime_min": 462,
           "sources": [
@@ -752,6 +735,11 @@
               "imported_at": "2026-07-11",
               "ref": "B004EXEXM0",
               "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "0753107376",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "equal-rites"
@@ -13486,6 +13474,10 @@
             {
               "asin": "B002V0PVCY",
               "region": "us"
+            },
+            {
+              "asin": "B0844SPCMY",
+              "region": "es"
             }
           ],
           "chapters": [
@@ -13540,30 +13532,7 @@
               "imported_at": "2026-08-02",
               "ref": "B002V0PVCY",
               "type": "libex-import"
-            }
-          ],
-          "work": "eragon-en-espanol"
-        },
-        "karl-hoffmann-2007-2": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0844SPCMY",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mE0orr32L.jpg",
-          "id": "karl-hoffmann-2007-2",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "karl-hoffmann"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2007-05-08",
-          "runtime_min": 479,
-          "sources": [
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B0844SPCMY",

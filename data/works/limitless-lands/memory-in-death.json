@@ -8469,36 +8469,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09MDKPBT6",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HLI3bKroL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "jon-culshaw",
-            "peter-serafinowicz"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2023-05-25",
-          "runtime_min": 778,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09MDKPBT6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "men-at-arms"
-        },
         "jon-culshaw-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -8506,6 +8476,10 @@
             {
               "asin": "B09MDKMN8R",
               "region": "us"
+            },
+            {
+              "asin": "B09MDKPBT6",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9265,7 +9239,13 @@
             "bill-nighy"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2023",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2023-05-25",
           "runtime_min": 778,
           "sources": [
             {
@@ -9276,6 +9256,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09MDKMN8R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09MDKPBT6",
               "type": "libex-import"
             }
           ],

@@ -5854,36 +5854,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09M8YNFLV",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qfB6WTzEL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "jon-culshaw",
-            "peter-serafinowicz"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2023-05-25",
-          "runtime_min": 831,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09M8YNFLV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fifth-elephant"
-        },
         "jon-culshaw-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5891,6 +5861,10 @@
             {
               "asin": "B09M8X6H8X",
               "region": "us"
+            },
+            {
+              "asin": "B09M8YNFLV",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6355,7 +6329,13 @@
             "bill-nighy"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2023",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2023-05-25",
           "runtime_min": 831,
           "sources": [
             {
@@ -6366,6 +6346,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09M8X6H8X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09M8YNFLV",
               "type": "libex-import"
             }
           ],

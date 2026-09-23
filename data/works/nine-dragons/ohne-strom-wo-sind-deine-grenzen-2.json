@@ -4374,10 +4374,26 @@
           ],
           "work": "olalla"
         },
-        "geoffrey-giuliano-2023": {
+        "geoffrey-giuliano-2023-2": {
           "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
+          "added_at": "2026-07-31T00:43:12+01:00",
           "asin": [
+            {
+              "asin": "B0BW4RC1YS",
+              "region": "ca"
+            },
+            {
+              "asin": "B0BW4QKSP4",
+              "region": "uk"
+            },
+            {
+              "asin": "B0BW4R8DBQ",
+              "region": "au"
+            },
+            {
+              "asin": "B0BW4NWXW1",
+              "region": "de"
+            },
             {
               "asin": "B0BW4RKVRD",
               "region": "us"
@@ -4416,52 +4432,6 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/8174ws5j4zL.jpg",
-          "id": "geoffrey-giuliano-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geoffrey-giuliano",
-            "the-crush"
-          ],
-          "publisher": "Icon Audio Arts",
-          "release_date": "2023",
-          "runtime_min": 105,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BW4RKVRD",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BW4RKVRD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "olalla"
-        },
-        "geoffrey-giuliano-2023-2": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BW4RC1YS",
-              "region": "ca"
-            },
-            {
-              "asin": "B0BW4QKSP4",
-              "region": "uk"
-            },
-            {
-              "asin": "B0BW4R8DBQ",
-              "region": "au"
-            },
-            {
-              "asin": "B0BW4NWXW1",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8174ws5j4zL.jpg",
           "id": "geoffrey-giuliano-2023-2",
           "language": "en",
           "license": "CC0-1.0",
@@ -4491,6 +4461,16 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0BW4NWXW1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BW4RKVRD",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BW4RKVRD",
               "type": "libex-import"
             }
           ],

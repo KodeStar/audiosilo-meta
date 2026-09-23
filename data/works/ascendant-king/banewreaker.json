@@ -11114,6 +11114,10 @@
             {
               "asin": "B012DWJ4N6",
               "region": "us"
+            },
+            {
+              "asin": "B079CMBW4H",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11176,7 +11180,13 @@
             "peter-kenny"
           ],
           "publisher": "Hachette Audio",
-          "release_date": "2014",
+          "publishers": [
+            {
+              "publisher": "Orbit",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2015-08-04",
           "runtime_min": 718,
           "sources": [
             {
@@ -11192,6 +11202,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B012DWJ4N6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B079CMBW4H",
               "type": "libex-import"
             }
           ],
@@ -11220,86 +11235,6 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00JF6BFBS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "baptism-of-fire"
-        },
-        "peter-kenny-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B079CMBW4H",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 34006,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 64714,
-              "start_ms": 34006,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 5794387,
-              "start_ms": 98720,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 6928322,
-              "start_ms": 5893107,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 4710585,
-              "start_ms": 12821429,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 4711839,
-              "start_ms": 17532014,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 6570364,
-              "start_ms": 22243853,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 6412004,
-              "start_ms": 28814217,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 7809154,
-              "start_ms": 35226221,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 134135,
-              "start_ms": 43035375,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/811CuaGzYfL.jpg",
-          "id": "peter-kenny-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Orbit",
-          "release_date": "2015-08-04",
-          "runtime_min": 719,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B079CMBW4H",
               "type": "libex-import"
             }
           ],

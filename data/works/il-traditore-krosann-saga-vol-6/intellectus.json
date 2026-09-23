@@ -6197,36 +6197,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2022": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09LZ2RNYV",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91feqPzgJ+L.jpg",
-          "id": "bill-nighy-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "colin-morgan",
-            "peter-serafinowicz"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2022-07-07",
-          "runtime_min": 672,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09LZ2RNYV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "interesting-times"
-        },
         "colin-morgan-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6234,6 +6204,10 @@
             {
               "asin": "B09LZ3DBSW",
               "region": "us"
+            },
+            {
+              "asin": "B09LZ2RNYV",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6803,7 +6777,13 @@
             "bill-nighy"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2022",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2022-07-07",
           "runtime_min": 672,
           "sources": [
             {
@@ -6814,6 +6794,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09LZ3DBSW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09LZ2RNYV",
               "type": "libex-import"
             }
           ],

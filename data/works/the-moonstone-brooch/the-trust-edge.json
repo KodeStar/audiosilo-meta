@@ -1295,36 +1295,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09MDJ4C8L",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PkqOy2jZL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "mathew-baynton",
-            "peter-serafinowicz"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2023-02-23",
-          "runtime_min": 736,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09MDJ4C8L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-truth"
-        },
         "mathew-baynton-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1332,6 +1302,10 @@
             {
               "asin": "B09MDMFFQN",
               "region": "us"
+            },
+            {
+              "asin": "B09MDJ4C8L",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1766,7 +1740,13 @@
             "peter-serafinowicz"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2023",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2023-02-23",
           "runtime_min": 736,
           "sources": [
             {
@@ -1777,6 +1757,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09MDMFFQN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09MDJ4C8L",
               "type": "libex-import"
             }
           ],
