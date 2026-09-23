@@ -318,13 +318,12 @@ describe('parseWatchlist', () => {
     // never round-trip through JSON.stringify as a "__proto__" key at all).
     // Object.fromEntries goes through CreateDataProperty instead, the same
     // route JSON.parse itself uses, so this really produces a document whose
-    // `series` object holds genuine own properties named "__proto__",
-    // "constructor" and "prototype" - exactly what a hand-edited localStorage
-    // value or a crafted backup file can contain.
+    // `series` object holds a genuine own property named "__proto__" - exactly
+    // what a hand-edited localStorage value or a crafted backup file can
+    // contain. isValidSlug rejects it on shape alone (it is not
+    // `^[a-z0-9]+(-[a-z0-9]+)*$`), same as any other non-slug key.
     const series = Object.fromEntries([
       ['__proto__', { name: 'Injected', watchedAt: TODAY, owned: ['x'], seen: [], skipped: [] }],
-      ['constructor', { name: 'Injected', watchedAt: TODAY, owned: [], seen: [], skipped: [] }],
-      ['prototype', { name: 'Injected', watchedAt: TODAY, owned: [], seen: [], skipped: [] }],
       ['good', { name: 'Good', watchedAt: TODAY, owned: [], seen: [], skipped: [] }],
     ])
     const text = JSON.stringify({ version: WATCHLIST_VERSION, series })
@@ -345,6 +344,17 @@ describe('parseWatchlist', () => {
     expect(Object.keys(merged.series).sort()).toEqual(['good', 'the-wandering-inn'])
     expect(Object.getPrototypeOf(merged.series)).toBe(Object.prototype)
     expect(watchedSeries(merged, 'anything-else')).toBeUndefined()
+  })
+
+  it('drops a non-slug series key while keeping a valid one beside it', () => {
+    const series = {
+      'Not A Slug': { name: 'Bad', watchedAt: TODAY, owned: [], seen: [], skipped: [] },
+      'orion-lake': { name: 'Good', watchedAt: TODAY, owned: [], seen: [], skipped: [] },
+    }
+    const text = JSON.stringify({ version: WATCHLIST_VERSION, series })
+
+    const got = parseWatchlist(text)
+    expect(Object.keys(got.series)).toEqual(['orion-lake'])
   })
 })
 

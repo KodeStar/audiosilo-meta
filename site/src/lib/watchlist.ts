@@ -14,6 +14,7 @@
 
 import { isFutureRelease } from './dates'
 import type { SeriesEntry } from './api'
+import { isValidSlug } from './slug'
 
 /** The one localStorage key. Namespaced, because the site shares an origin
     with the API. */
@@ -85,24 +86,6 @@ export function stringList(value: unknown): string[] {
   return out
 }
 
-/** Keys that must never become an object's OWN key when a parsed document's
-    keys turn into record keys below. `series['__proto__'] = entry` does not
-    just store an entry under a slug called "__proto__" - bracket assignment of
-    that name is a legacy accessor (Annex B) that REASSIGNS the object's own
-    prototype to `entry`, so every slug looked up afterwards on that store (for
-    the rest of the render, since a store is plain-object state threaded
-    through the page) resolves through it instead of missing. `constructor` and
-    `prototype` are blocked alongside it defensively, on the same reasoning:
-    none of the three is ever a real series slug (the catalogue's slugs are
-    `^[a-z0-9]+(-[a-z0-9]+)*$`, which "__proto__"'s underscores already fail),
-    so skipping them costs no legitimate data. A stored watchlist is read from
-    localStorage - editable by hand, by an extension, or by a stale/foreign
-    version of the site - and an imported one is a backup file the reader
-    picked, so neither's keys are trusted before this. */
-function isUnsafeRecordKey(key: string): boolean {
-  return key === '__proto__' || key === 'constructor' || key === 'prototype'
-}
-
 function parseSeries(value: unknown): WatchedSeries | null {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return null
   const raw = value as Record<string, unknown>
@@ -143,9 +126,9 @@ export function parseWatchlist(text: string | null | undefined): Watchlist {
   const series: Record<string, WatchedSeries> = {}
   if (raw.series && typeof raw.series === 'object' && !Array.isArray(raw.series)) {
     for (const [slug, value] of Object.entries(raw.series as Record<string, unknown>)) {
-      if (isUnsafeRecordKey(slug)) continue
+      if (!isValidSlug(slug)) continue
       const entry = parseSeries(value)
-      if (slug && entry) series[slug] = entry
+      if (entry) series[slug] = entry
     }
   }
   return { version: WATCHLIST_VERSION, series }
@@ -478,12 +461,6 @@ export function importJSON(store: Watchlist, text: string): Watchlist {
   const incoming = parseWatchlist(text)
   let next = store
   for (const [slug, entry] of Object.entries(incoming.series)) {
-    // Belt and braces: parseWatchlist above already drops an unsafe key (see
-    // isUnsafeRecordKey), so `incoming.series` cannot carry one today - but
-    // this loop also assigns INTO `next.series[slug]` below, and a future
-    // change to how `incoming` is produced should not have to rediscover that
-    // guard to stay safe.
-    if (isUnsafeRecordKey(slug)) continue
     const mine = next.series[slug]
     if (!mine) {
       next = replaceSeries(next, slug, entry)
