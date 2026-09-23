@@ -10250,6 +10250,10 @@
             {
               "asin": "B01N38DEI1",
               "region": "us"
+            },
+            {
+              "asin": "B01N3NNVAN",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10332,7 +10336,13 @@
             "peter-kenny"
           ],
           "publisher": "Hachette Audio",
-          "release_date": "2017",
+          "publishers": [
+            {
+              "publisher": "Gollancz",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2017-03-16",
           "runtime_min": 1217,
           "sources": [
             {
@@ -10349,30 +10359,7 @@
               "imported_at": "2026-07-30",
               "ref": "B01N38DEI1",
               "type": "libex-import"
-            }
-          ],
-          "work": "lady-of-the-lake"
-        },
-        "peter-kenny-2017-2": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01N3NNVAN",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81io+Qx6-nL.jpg",
-          "id": "peter-kenny-2017-2",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Gollancz",
-          "release_date": "2017-03-16",
-          "runtime_min": 1216,
-          "sources": [
+            },
             {
               "imported_at": "2026-08-02",
               "ref": "B01N3NNVAN",

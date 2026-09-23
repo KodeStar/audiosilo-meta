@@ -6822,10 +6822,26 @@
           ],
           "work": "20-000-leagues-under-the-sea"
         },
-        "michael-henrik-wynn-2026": {
+        "michael-henrik-wynn-2026-2": {
           "abridged": true,
           "added_at": "2026-08-02",
           "asin": [
+            {
+              "asin": "B0DR9S5CW9",
+              "region": "ca"
+            },
+            {
+              "asin": "B0DR9V1T82",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DR9RVQHW",
+              "region": "au"
+            },
+            {
+              "asin": "B0DR9SHRZL",
+              "region": "de"
+            },
             {
               "asin": "B0DR9TSX5Q",
               "region": "us"
@@ -6846,46 +6862,6 @@
               "length_ms": 25587,
               "start_ms": 3137107,
               "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91yVdw2Q1VL.jpg",
-          "id": "michael-henrik-wynn-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-henrik-wynn"
-          ],
-          "publisher": "Independently Published",
-          "release_date": "2026-06-16",
-          "runtime_min": 52,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DR9TSX5Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "20-000-leagues-under-the-sea"
-        },
-        "michael-henrik-wynn-2026-2": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DR9S5CW9",
-              "region": "ca"
-            },
-            {
-              "asin": "B0DR9V1T82",
-              "region": "uk"
-            },
-            {
-              "asin": "B0DR9RVQHW",
-              "region": "au"
-            },
-            {
-              "asin": "B0DR9SHRZL",
-              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91yVdw2Q1VL.jpg",
@@ -6917,6 +6893,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DR9SHRZL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DR9TSX5Q",
               "type": "libex-import"
             }
           ],

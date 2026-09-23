@@ -15,37 +15,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2022": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09LZ1MC5M",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911m8TWZu-L.jpg",
-          "id": "bill-nighy-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "indira-varma",
-            "peter-serafinowicz",
-            "steven-cree"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2022-04-28",
-          "runtime_min": 696,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09LZ1MC5M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "carpe-jugulum"
-        },
         "indira-varma-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -53,6 +22,10 @@
             {
               "asin": "B09LZ32Z7P",
               "region": "us"
+            },
+            {
+              "asin": "B09LZ1MC5M",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -558,7 +531,13 @@
             "steven-cree"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2022",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2022-04-28",
           "runtime_min": 696,
           "sources": [
             {
@@ -569,6 +548,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09LZ32Z7P",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09LZ1MC5M",
               "type": "libex-import"
             }
           ],

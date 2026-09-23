@@ -12806,6 +12806,10 @@
             {
               "asin": "1515933962",
               "region": "uk"
+            },
+            {
+              "asin": "B0D7N19JGL",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -12948,6 +12952,12 @@
             "travis-baldree"
           ],
           "publisher": "Tantor Audio",
+          "publishers": [
+            {
+              "publisher": "Audible Studios",
+              "region": "us"
+            }
+          ],
           "release_date": "2019-06-12",
           "runtime_min": 507,
           "sources": [
@@ -12955,162 +12965,7 @@
               "imported_at": "2026-07-11",
               "ref": "1515933962",
               "type": "openaudible-import"
-            }
-          ],
-          "work": "a-thousand-li-the-first-step-a-cultivation-novel"
-        },
-        "travis-baldree-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D7N19JGL",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14674,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
-            {
-              "length_ms": 993860,
-              "start_ms": 14674,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1097444,
-              "start_ms": 1008534,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 896336,
-              "start_ms": 2105978,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1303545,
-              "start_ms": 3002314,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2235640,
-              "start_ms": 4305859,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1123892,
-              "start_ms": 6541499,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1242499,
-              "start_ms": 7665391,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1362686,
-              "start_ms": 8907890,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1061709,
-              "start_ms": 10270576,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1125146,
-              "start_ms": 11332285,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1039557,
-              "start_ms": 12457431,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 990284,
-              "start_ms": 13496988,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1467570,
-              "start_ms": 14487272,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1735529,
-              "start_ms": 15954842,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1271524,
-              "start_ms": 17690371,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1544614,
-              "start_ms": 18961895,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1809484,
-              "start_ms": 20506509,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 963535,
-              "start_ms": 22315993,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1123381,
-              "start_ms": 23279528,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1040184,
-              "start_ms": 24402909,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 688843,
-              "start_ms": 25443093,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1908633,
-              "start_ms": 26131936,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1947829,
-              "start_ms": 28040569,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 472688,
-              "start_ms": 29988398,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 24124,
-              "start_ms": 30461086,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81KRcpR4U4L.jpg",
-          "id": "travis-baldree-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "travis-baldree"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2024-06-20",
-          "runtime_min": 507,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0D7N19JGL",

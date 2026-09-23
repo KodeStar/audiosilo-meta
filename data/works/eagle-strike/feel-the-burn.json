@@ -9327,36 +9327,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09M8Y537N",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vtgYHGILL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "jon-culshaw",
-            "peter-serafinowicz"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2023-05-25",
-          "runtime_min": 740,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09M8Y537N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "feet-of-clay"
-        },
         "jon-culshaw-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9364,6 +9334,10 @@
             {
               "asin": "B09M8Y536Y",
               "region": "us"
+            },
+            {
+              "asin": "B09M8Y537N",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9953,7 +9927,13 @@
             "bill-nighy"
           ],
           "publisher": "Penguin Audio",
-          "release_date": "2023",
+          "publishers": [
+            {
+              "publisher": "Transworld Digital",
+              "region": "uk"
+            }
+          ],
+          "release_date": "2023-05-25",
           "runtime_min": 740,
           "sources": [
             {
@@ -9964,6 +9944,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09M8Y536Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09M8Y537N",
               "type": "libex-import"
             }
           ],
