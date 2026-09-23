@@ -274,24 +274,70 @@ jobs:
         if: steps.build.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
           TAG: ${{ steps.build.outputs.tag }}
         # The assets ARE the consumer contract - metaserve, the CLI consumers and
         # the patch chain all select a release by asset presence and then trust
         # the checksums beside it - so an upload that silently truncated or
         # dropped a file is a broken catalogue for everyone, not a broken run.
-        # Read them back from the release exactly as a consumer would: both
-        # checksum files must be byte-identical to the ones just computed, and
-        # the published gz must hash to what its own checksum claims.
+        #
+        # The two checksum FILES are downloaded and compared byte-for-byte: they
+        # are 80 bytes each and they are what a consumer verifies against, so
+        # they are read back exactly as a consumer reads them. EVERY asset
+        # (including the 410MB gz and the delta) is then verified through the
+        # release API's own `size` and `digest` fields - GitHub's SHA-256 of the
+        # bytes it stored, computed on its side, not something we hand it - so a
+        # truncated or dropped upload is caught without pulling half a gigabyte
+        # back down the wire to hash locally. A null digest is a FAILURE, not a
+        # pass: an API that stopped exposing the field has stopped verifying
+        # anything, and silence there is the whole class of bug this step exists
+        # for.
         run: |
           set -euo pipefail
           mkdir -p published
           gh release download "$TAG" --dir published --clobber \
-            --pattern meta.sqlite.gz \
             --pattern meta.sqlite.gz.sha256 \
             --pattern meta.sqlite.sha256
           cmp meta.sqlite.gz.sha256 published/meta.sqlite.gz.sha256
           cmp meta.sqlite.sha256 published/meta.sqlite.sha256
-          ( cd published && sha256sum -c meta.sqlite.gz.sha256 )
+
+          # The same asset list the upload step composed, by the same test.
+          assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
+          if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
+            assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
+          fi
+
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" \
+            --jq '.assets[] | "\(.name) \(.size) \(.digest // "null")"' > api-assets.txt
+          cat api-assets.txt
+
+          fail=0
+          for name in "${assets[@]}"; do
+            # Matched on the whole first field: `meta.sqlite.gz` is a prefix of
+            # `meta.sqlite.gz.sha256`, so a substring test picks the wrong row.
+            line="$(awk -v n="$name" '$1 == n' api-assets.txt)"
+            if [ -z "$line" ]; then
+              echo "::error::${name} was uploaded but is not on release ${TAG}"
+              fail=1
+              continue
+            fi
+            api_size="$(echo "$line" | cut -d' ' -f2)"
+            api_digest="$(echo "$line" | cut -d' ' -f3)"
+            local_size="$(wc -c < "$name" | tr -d ' ')"
+            local_digest="sha256:$(sha256sum "$name" | cut -d' ' -f1)"
+            if [ "$api_digest" = "null" ] || [ -z "$api_digest" ]; then
+              echo "::error::the release API exposed no digest for ${name}; the published bytes cannot be verified without re-downloading them"
+              fail=1
+            elif [ "$api_digest" != "$local_digest" ]; then
+              echo "::error::${name} digest mismatch: release has ${api_digest}, this run built ${local_digest}"
+              fail=1
+            fi
+            if [ "$api_size" != "$local_size" ]; then
+              echo "::error::${name} size mismatch: release has ${api_size} bytes, this run built ${local_size}"
+              fail=1
+            fi
+          done
+          [ "$fail" -eq 0 ]
 
       - name: Notify metaserve of the new release
         if: steps.build.outputs.skip != 'true'
