@@ -27,7 +27,11 @@
 # instead of the container flapping.
 
 # ---- 1. site -----------------------------------------------------------------
-FROM node:24-alpine AS site
+# Base images are pinned by DIGEST with the tag kept for readability: a tag is a
+# moving pointer, so an unpinned build is not reproducible and a compromised or
+# simply retagged upstream lands silently. .github/dependabot.yml owns keeping
+# these current - do not hand-edit a digest without the tag it belongs to.
+FROM node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS site
 WORKDIR /site
 # Enable Corepack so the repo's pinned yarn is used.
 RUN corepack enable
@@ -48,7 +52,7 @@ RUN yarn build
 # Astro emits the static site to dist/.
 
 # ---- 2. build ----------------------------------------------------------------
-FROM golang:1.25-alpine AS build
+FROM golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 AS build
 WORKDIR /src
 ENV CGO_ENABLED=0
 # Pure-Go deps (modernc sqlite) so no C toolchain is needed.
@@ -59,7 +63,7 @@ RUN go build -trimpath -ldflags="-s -w" -o /out/metaserve ./cmd/metaserve
 
 # ---- 3. runtime --------------------------------------------------------------
 # Track the current stable Alpine (3.20 went EOL in April 2026).
-FROM alpine:3.24 AS runtime
+FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS runtime
 RUN apk add --no-cache ca-certificates \
     && addgroup -S app && adduser -S -G app app \
     && mkdir -p /app /data/cache && chown -R app:app /data
@@ -75,4 +79,15 @@ EXPOSE 8080
 # NOT shorten startup. What it buys is the patch base for the refreshes that
 # follow, so later updates transfer a delta instead of the whole artifact.
 VOLUME ["/data"]
+
+# Readiness, not liveness: /healthz answers 503 `{"status":"starting"}` until an
+# artifact is loaded, and busybox wget exits non-zero on an HTTP error, so the
+# container reports unhealthy for exactly as long as it is serving 503s to the
+# API. That is the accurate answer (see the boot note above) - the process is
+# deliberately NOT crashing, so without this a degraded container looks fine.
+# The start period is generous because the first boot downloads and verifies a
+# hundreds-of-MB artifact before it can answer.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=180s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:8080/healthz > /dev/null || exit 1
+
 ENTRYPOINT ["/app/metaserve", "--site", "/app/site", "--poll", "--cache", "/data/cache"]
