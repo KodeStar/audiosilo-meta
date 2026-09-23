@@ -3,6 +3,7 @@ package model
 import (
 	"strings"
 	"testing"
+	"time"
 	"unicode/utf8"
 
 	"golang.org/x/text/unicode/norm"
@@ -248,6 +249,39 @@ func TestSlugifyByteCompatibility(t *testing.T) {
 		if !changed[r] {
 			t.Errorf("transliterations has U+%04X %q, but Slugify's output for it is "+
 				"unchanged from the previous implementation - the entry is unreachable", r, r)
+		}
+	}
+}
+
+// TestSlugifyInvalidUTF8 guards against GO-2026-5970 (CVE-2026-56852): a
+// norm.Iter/Form infinite loop over malformed UTF-8, reachable because
+// Slugify feeds every string straight into norm.NFD.String. Includes the
+// upstream advisory's own reproducer, but the hang was only reproduced by
+// hand via norm.Iter's NFC composition path - not decompose-only NFD - so
+// this is a safety net rather than a repro that discriminates versions.
+func TestSlugifyInvalidUTF8(t *testing.T) {
+	cases := []string{
+		"caf\xc3",                 // a truncated two-byte sequence (café missing its 'e')
+		"\xff\xfeabc",             // a UTF-16 BOM misread as UTF-8, followed by ASCII
+		"\x80\x80\x80",            // bare continuation bytes with no lead byte
+		"valid \xed\xa0\x80 text", // an encoded UTF-16 surrogate half, never valid UTF-8
+		"\xf3\xcc\x80",            // upstream's own GO-2026-5970 test vector
+	}
+	for _, in := range cases {
+		if utf8.ValidString(in) {
+			t.Fatalf("test case %q is valid UTF-8; it must be malformed to exercise the bug", in)
+		}
+		done := make(chan string, 1)
+		go func() {
+			done <- Slugify(in)
+		}()
+		select {
+		case got := <-done:
+			if got != "" && !ValidSlug(got) {
+				t.Errorf("Slugify(%q) = %q, want a valid slug or the empty string", in, got)
+			}
+		case <-time.After(5 * time.Second):
+			t.Fatalf("Slugify(%q) did not return within 5s - norm.NFD.String hung on invalid UTF-8 (GO-2026-5970)", in)
 		}
 	}
 }

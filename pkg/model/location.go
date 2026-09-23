@@ -3,6 +3,9 @@ package model
 import "regexp"
 
 // slugPattern is the canonical slug regex used for every id across the dataset.
+// Hand-mirrored twin: site/src/lib/slug.ts (the site's own leaf copy of this
+// rule, kept out of lib/builder.ts so lib/watchlist.ts does not have to import
+// it either).
 var slugPattern = regexp.MustCompile(`^[a-z0-9]+(-[a-z0-9]+)*$`)
 
 // MaxSlugLen is the maximum allowed slug length.
