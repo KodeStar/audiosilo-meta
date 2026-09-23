@@ -54,8 +54,13 @@ fi
 
 : "${PR:?PR must be the pull request number}"
 
-files="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" --paginate --jq '.[].filename' || true)"
-if [ -z "$files" ]; then
+# The exit status is kept, not discarded: --paginate streams each page as it
+# lands, so a listing that failed on page three is a NON-EMPTY string holding
+# pages one and two. Judged on emptiness alone, a large bot tranche whose Go
+# files sorted onto the page that never arrived would read as data-only and
+# skip the gate - the one silent answer this script promises never to give.
+files=""
+if ! files="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}/files" --paginate --jq '.[].filename')" || [ -z "$files" ]; then
   echo "::warning::could not read the changed files of pull request ${PR}; every job runs."
   emit true true
   exit 0
@@ -74,8 +79,9 @@ compose=false
 if [ "$total" -ne "$dataprose" ]; then
   go=true
 fi
-# The same path set release.yml releases on, plus this workflow itself.
-if printf '%s\n' "$files" | grep -qE '^(data/|schema/|internal/build/|cmd/metabuild/|pkg/check/|pkg/pack/|\.github/workflows/check\.yml$)'; then
+# The same path set release.yml releases on, plus the workflow and this script
+# - the two files that decide whether the compose runs at all.
+if printf '%s\n' "$files" | grep -qE '^(data/|schema/|internal/build/|cmd/metabuild/|pkg/check/|pkg/pack/|\.github/workflows/check\.yml$|\.github/scripts/pr-changes\.sh$)'; then
   compose=true
 fi
 emit "$go" "$compose"
