@@ -29,8 +29,41 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # WHICH JOBS THE DIFF CAN MOVE, decided once for all of them.
+  #
+  # Most pull requests here are the intake and sync bots', and a tranche of pack
+  # files cannot change what `go vet` or the race detector say - so the Go gate
+  # (build/vet/test/lint/vuln) is skipped for a diff that is only data and prose,
+  # and the compose job keeps the narrower probe it always had. metacheck and
+  # metafmt are NOT gated: they are the data's own check.
+  #
+  # The rules, the fail-open and why this is an output rather than a `paths:`
+  # filter are all in .github/scripts/pr-changes.sh. The checkout is blobless and
+  # sparse because the script is the only file this job needs and the data tree
+  # is gigabytes.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.classify.outputs.go }}
+      compose: ${{ steps.classify.outputs.compose }}
+    steps:
+      - name: Checkout the scripts
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+
+      - name: Classify the diff
+        id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: bash .github/scripts/pr-changes.sh
+
   check:
     runs-on: ubuntu-latest
+    needs: changes
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -42,13 +75,18 @@ jobs:
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
+      # Go steps only: a data-and-prose diff skips them (see the changes job).
+      # Set up Go above is unconditional - metacheck and metafmt are `go run`.
       - name: Build
+        if: needs.changes.outputs.go == 'true'
         run: go build ./...
 
       - name: Vet
+        if: needs.changes.outputs.go == 'true'
         run: go vet ./...
 
       - name: Test
+        if: needs.changes.outputs.go == 'true'
         # -race, as the documented gate is. pkg/check's real-data test skips
         # under the detector (race_{on,off}_test.go) - the fixture suites cover
         # the parallel loader and the real tree is data coverage, validated by
@@ -77,17 +115,24 @@ jobs:
   # baseline that goes red on a day nobody changed Go code is a broken gate.
   lint:
     runs-on: ubuntu-latest
+    needs: changes
+    # Every step is gated, so a data-and-prose diff reports this job green
+    # without checking anything out - the required check still reports.
     steps:
       - name: Checkout
+        if: needs.changes.outputs.go == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
           check-latest: true
 
       - name: golangci-lint
+        if: needs.changes.outputs.go == 'true'
         uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
         with:
           version: v2.12
@@ -104,14 +149,15 @@ jobs:
   # green when that merges; a finding naming any other module is new.
   vuln:
     runs-on: ubuntu-latest
+    needs: changes
     steps:
       - name: govulncheck
+        if: needs.changes.outputs.go == 'true'
         uses: golang/govulncheck-action@032d45514ae346b1db93c04b0c90b841c370344f # v1.1.0
         with:
           # Empty so the action's nested setup-go falls through to the file.
           go-version-input: ""
           go-version-file: go.mod
-          check-latest: true
           go-package: ./...
 
   # The CROSS-TREE half of validation, which no single-root check can perform.
@@ -127,7 +173,6 @@ jobs:
   # This job is the pre-merge half of that same build: the exact composition
   # release.yml performs, run at PR time, failing on a non-zero exit. It should be
   # REQUIRED, not advisory - its whole point is to be the thing that stops the
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
   # merge.
   #
   # The community checkout is public and read-only (github.token, no secret), and
@@ -140,34 +185,20 @@ jobs:
   # too would build every data merge twice for no extra signal. And within a PR
   # it SELF-SKIPS (the site job's required-check-compatible pattern) unless the
   # diff touches something that can change the compose's answer: the same path
-  # set release.yml releases on, plus this workflow itself.
+  # set release.yml releases on, plus this workflow itself. That question is the
+  # changes job's `compose` output now, decided from the same listing the Go
+  # gate's is - and, unlike the inline probe it replaces, failing OPEN.
   compose:
     runs-on: ubuntu-latest
+    needs: changes
     if: github.event_name == 'pull_request'
     steps:
-      # The relevance probe reads the PR's file list from the API rather than
-      # diffing a local clone - a history-deep checkout here costs more than the
-      # compose the probe exists to skip.
-      - name: Check whether the diff can move the compose
-        id: relevant
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR: ${{ github.event.pull_request.number }}
-        run: |
-          if gh api "repos/${{ github.repository }}/pulls/$PR/files" --paginate --jq '.[].filename' \
-             | grep -qE '^(data/|schema/|internal/build/|cmd/metabuild/|pkg/check/|pkg/pack/|\.github/workflows/check\.yml)'; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "no compose-relevant paths in the diff; skipping."
-          fi
-
       - name: Checkout
-        if: steps.relevant.outputs.run == 'true'
+        if: needs.changes.outputs.compose == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Checkout the community layer
-        if: steps.relevant.outputs.run == 'true'
+        if: needs.changes.outputs.compose == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           repository: KodeStar/audiosilo-meta-community
@@ -175,14 +206,15 @@ jobs:
           path: community
 
       - name: Set up Go
-        if: steps.relevant.outputs.run == 'true'
+        if: needs.changes.outputs.compose == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version-file: go.mod
           # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
 
       - name: Compose both trees (metabuild --community)
-        if: steps.relevant.outputs.run == 'true'
+        if: needs.changes.outputs.compose == 'true'
         # Building rather than only checking is deliberate: the compose rules run
         # inside the loader metabuild drives (check.LoadComposed), so this IS the
         # check, and going all the way to an artifact additionally exercises the
