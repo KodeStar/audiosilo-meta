@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/dhowden/tag v0.0.0-20240417053706-3d75831295e8
-	github.com/klauspost/compress v1.18.6
+	github.com/klauspost/compress v1.20.0
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2
 	golang.org/x/text v0.41.0
 	modernc.org/sqlite v1.53.0
