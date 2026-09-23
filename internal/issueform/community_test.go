@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
-	"github.com/kodestar/audiosilo-meta/internal/sqlitedsn"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -366,52 +365,34 @@ func writeRedirects(t *testing.T, dir string, works map[string]string) {
 	}
 }
 
-// TestWorksDBDSNEscapesThePath: --works-db is an operator-supplied path spliced
-// into a file: URI, where '?' starts the query (dropping mode=ro and naming a
-// different file), '#' truncates, and a literal %NN is decoded to other bytes.
-// The check that matters is behavioural - the artifact at such a path really does
-// open THROUGH THIS PACKAGE - rather than the exact spelling of the DSN, which is
-// sqlitedsn's own test (the rule moved there when internal/serve became its
-// second consumer).
-func TestWorksDBDSNEscapesThePath(t *testing.T) {
-	for _, dirName := range []string{"a?b", "c#d", "e%2Ff", "g h"} {
-		t.Run(dirName, func(t *testing.T) {
-			// The artifact is BUILT at an ordinary path and MOVED, because the
-			// builder opens its output with a plain (non-URI) DSN and the driver
-			// splits that on '?' too - a fixture written the other way round would
-			// leave no file at the path under test and prove nothing.
-			built := buildArtifactAt(t, filepath.Join(t.TempDir(), "meta.sqlite"))
-			base := filepath.Join(t.TempDir(), dirName)
-			if err := os.MkdirAll(base, 0o755); err != nil {
-				t.Fatal(err)
-			}
-			artifact := filepath.Join(base, "meta.sqlite")
-			if err := os.Rename(built, artifact); err != nil {
-				t.Fatal(err)
-			}
+// TestWorksDBOpensAnAwkwardPath is what THIS package owes the shared DSN rule:
+// --works-db is an operator-supplied path, and an artifact sitting at one
+// carrying a URI delimiter really does open, read-only, through openWorksDB. The
+// DSN's spelling - and the other delimiter shapes - are sqlitedsn's own test;
+// what cannot be asked there is whether the file this package then reads is the
+// file the operator named.
+func TestWorksDBOpensAnAwkwardPath(t *testing.T) {
+	// The artifact is BUILT at an ordinary path and MOVED, because the builder
+	// opens its output with a plain (non-URI) DSN and the driver splits that on
+	// '?' too - a fixture written the other way round would leave no file at the
+	// path under test and prove nothing.
+	built := buildArtifactAt(t, filepath.Join(t.TempDir(), "meta.sqlite"))
+	base := filepath.Join(t.TempDir(), "a?b")
+	if err := os.MkdirAll(base, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	artifact := filepath.Join(base, "meta.sqlite")
+	if err := os.Rename(built, artifact); err != nil {
+		t.Fatal(err)
+	}
 
-			dsn, err := sqlitedsn.ReadOnly(artifact)
-			if err != nil {
-				t.Fatalf("sqlitedsn.ReadOnly: %v", err)
-			}
-			// The delimiters must not survive into the URI as themselves, or the
-			// parser reads them as syntax rather than as the path they are.
-			if i := strings.IndexAny(dsn, "?#"); i >= 0 && dsn[i:] != "?mode=ro" {
-				t.Errorf("DSN carries an unescaped delimiter: %s", dsn)
-			}
-			if !strings.HasSuffix(dsn, "?mode=ro") {
-				t.Errorf("DSN lost its read-only parameter: %s", dsn)
-			}
-
-			w, err := openWorksDB(artifact)
-			if err != nil {
-				t.Fatalf("openWorksDB on a %q path: %v", dirName, err)
-			}
-			defer func() { _ = w.Close() }()
-			if _, verdict, err := w.resolve("existing-work"); err != nil || verdict != workLive {
-				t.Errorf("resolve = %v, %v; want workLive - the wrong file was opened", verdict, err)
-			}
-		})
+	w, err := openWorksDB(artifact)
+	if err != nil {
+		t.Fatalf("openWorksDB on a %q path: %v", base, err)
+	}
+	defer func() { _ = w.Close() }()
+	if _, verdict, err := w.resolve("existing-work"); err != nil || verdict != workLive {
+		t.Errorf("resolve = %v, %v; want workLive - the wrong file was opened", verdict, err)
 	}
 }
 
