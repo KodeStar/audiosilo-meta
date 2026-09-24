@@ -14,6 +14,9 @@
 # each difference means:
 #
 #   present on both sides, identical      keep it
+#   present on both sides, different,
+#     one side equal to the base          only the other side changed it: take
+#                                          the changed version
 #   present on one side, absent from base that side added it: keep it
 #   present on one side, in base unchanged the other side DELETED it: delete it
 #   present on one side, in base changed   delete versus modify: refuse
@@ -22,7 +25,14 @@
 #     absent from base                     both ADDED it: merge the two versions
 #                                          unless they contradict (see below)
 #   present on both sides, different,
-#     present in base                      both CHANGED it: see further below
+#     neither equal to the base            both CHANGED it: see further below
+#
+# The one-side-unchanged row holds at EVERY level the merge descends to: the
+# entries map, a works entry's own fields (taken as one unit), its recordings
+# map, and a works-community entry's member map. Without it, main changing one
+# series entry (the daily sync bot appending volumes) while a branch left that
+# entry exactly as the base had it read as both sides changing it, and a series
+# pack the branch had only added other entries to could never be rebased (#2338).
 #
 # BOTH SIDES ADDED THE SAME ENTRY. Two overlapping library imports mint the same
 # record twice and the copies differ without disagreeing: each run stamped the
@@ -61,10 +71,11 @@
 # applied one level deeper and each to one family, because what sits one level
 # down differs per family:
 #
-#   works            an entry whose own fields are identical and whose
-#                    "recordings" maps differ is merged by the same rules over
-#                    those maps. Two pull requests adding different narrations of
-#                    one book collide on exactly that and nothing else.
+#   works            an entry whose own fields are identical, or changed on one
+#                    side only, and whose "recordings" maps differ is merged by
+#                    the same rules over those maps. Two pull requests adding
+#                    different narrations of one book collide on exactly that and
+#                    nothing else.
 #   works-community  the entry IS a map of independent members ("characters",
 #                    "recaps", "description"), each its own licensed document, so
 #                    the base rules apply to that map directly. A characters pull
@@ -75,8 +86,8 @@
 #                    without an edit here.
 #
 # Both are the most common intake collisions there are. Everything else - a
-# member or a recording both sides wrote, a work's own fields differing, a person
-# or a series entry both sides changed - stays a refusal.
+# member or a recording both sides wrote, a work's own fields both sides changed,
+# a person or a series entry both sides changed - stays a refusal.
 #
 # WHICH exception applies is decided by the FAMILY the pack file belongs to (its
 # path), not by sniffing the entry: the family is what fixes the shape of an
@@ -211,7 +222,11 @@ if ! jq -n \
     ([$A, $T, $B | keys[]] | unique) as $keys
     | reduce $keys[] as $k ({kept: {}, clash: []};
         if ($A | has($k)) and ($T | has($k)) then
-          (if $A[$k] == $T[$k] then .kept[$k] = $A[$k] else .clash += [$k] end)
+          (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
+           elif ($B | has($k)) and $B[$k] == $A[$k] then .kept[$k] = $T[$k]  # changed there only
+           elif ($B | has($k)) and $B[$k] == $T[$k] then .kept[$k] = $A[$k]  # changed here only
+           else .clash += [$k]
+           end)
         elif ($A | has($k)) then
           (if ($B | has($k))
            then (if $B[$k] == $A[$k] then . else .clash += [$k] end)  # deleted there, changed here
@@ -292,19 +307,30 @@ if ! jq -n \
   # recordingsOf reads an entry a side may not have, or may not have as an object.
   def recordingsOf: if type == "object" then (.recordings // {}) else {} end;
 
-  # mergeEntry handles one entry both sides changed: identical apart from their
-  # recordings maps is mergeable, anything else is a disagreement about a record.
+  # ownFieldsOf is an entry without its recordings map, the unit mergeEntry
+  # compares the own fields of a work as.
+  def ownFieldsOf: if type == "object" then del(.recordings) else . end;
+
+  # mergeEntry handles one entry both sides changed: the own fields are one unit
+  # that at most one side may have changed (the other side leaving them as the
+  # base had them), and the recordings maps merge by the base rules. Own fields
+  # both sides changed are a disagreement about a record.
   def mergeEntry($B; $A; $T; $k):
     if (($A | type) != "object") or (($T | type) != "object") then {clash: [$k]}
     else
-      ($A | del(.recordings)) as $a0
-      | ($T | del(.recordings)) as $t0
-      | if $a0 != $t0 then {clash: [$k]}
+      ($A | ownFieldsOf) as $a0
+      | ($T | ownFieldsOf) as $t0
+      | ($B | ownFieldsOf) as $b0
+      | (if $a0 == $t0 or $b0 == $t0 then $a0
+         elif $b0 == $a0 then $t0
+         else null
+         end) as $own
+      | if $own == null then {clash: [$k]}
         else
           merge3(($B | recordingsOf); ($A | recordingsOf); ($T | recordingsOf)) as $r
           | if ($r.clash | length) > 0
             then {clash: ($r.clash | map($k + ".recordings." + .))}
-            else {value: (if ($r.kept | length) > 0 then ($a0 + {recordings: $r.kept}) else $a0 end)}
+            else {value: (if ($r.kept | length) > 0 then ($own + {recordings: $r.kept}) else $own end)}
             end
         end
     end;
@@ -340,6 +366,10 @@ if ! jq -n \
   | reduce $keys[] as $k ({kept: {}, clash: []};
       if ($A | has($k)) and ($T | has($k)) then
         (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
+         # One side left the entry exactly as the base had it, so only the
+         # other side changed it: its version stands, whatever the family.
+         elif ($B | has($k)) and $B[$k] == $A[$k] then .kept[$k] = $T[$k]
+         elif ($B | has($k)) and $B[$k] == $T[$k] then .kept[$k] = $A[$k]
          else
            # The base decides which rule this is: an entry it HAS is one both
            # sides changed, an entry it lacks is one both sides added.

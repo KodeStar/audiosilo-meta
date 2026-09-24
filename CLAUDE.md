@@ -314,10 +314,17 @@ one pack conflict; the resolution is a THREE-WAY merge of the entries (base
 included, so a deliberate deletion is not handed back) plus a re-render -
 `scripts/pack-union-merge.sh`, driven through real rebases by
 `scripts/packmerge_test.go`, and run by the intake bot on its own PRs. An entry
-both sides changed is a refusal except in the two families that have something
+present on both sides that ONE side left exactly as the base had it was changed
+by the other side alone, so that side's version is taken, in every family and at
+every level the merge descends to (the entries map, a work's own fields as one
+unit, its recordings map, a works-community entry's members) - without that
+ordinary three-way rule a series the sync bot extended on main read as "both
+sides changed" beside an intake branch that had only added other series to the
+same pack, and the sweep failed that branch on every push (#2338). An entry
+both sides really changed is a refusal except in the two families that have something
 independent one level down, and the FAMILY (the path) decides which rule applies:
-a **works** entry with identical own fields and differing `recordings` maps
-merges those maps (two narrations of one book), and a **works-community** entry,
+a **works** entry whose own fields are identical or changed on one side only,
+and whose `recordings` maps differ, merges those maps (two narrations of one book), and a **works-community** entry,
 which IS a map of members, merges DISJOINT members (a characters PR and a recaps
 PR for the same book) - the same base rules one level deeper, so a member both
 sides wrote is still a refusal. An entry both sides ADDED is not that conflict at
@@ -1572,7 +1579,10 @@ note rather than a closed duplicate.
   rebase sweep runs only MAIN's tools (metafmt, metacheck and the merge
   driver, built and copied before the loop) and sweeps only same-repository
   branches whose diff is confined to `data/` and whose commits add or change
-  no symbolic link; a branch it refuses gets ONE marked comment saying why.
+  no symbolic link; a branch it refuses gets ONE marked comment saying why,
+  and a branch it fails to rebase gets one per (branch head, reason) through
+  the same `comment_once` helper, so a stuck branch is not re-told on every push
+  to main while a new commit or a new failure still is.
   intake.yml's `-noop` concurrency group carries a verbatim copy of the intake
   job's `if` (see the comments in intake.yml for both).
 - **Deterministic builds**: metabuild inserts in sorted id order so identical

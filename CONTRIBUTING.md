@@ -251,12 +251,14 @@ git push --force-with-lease
 
 The script is a **three-way** merge: it reads the merge base, so a record one
 side deliberately deleted stays deleted instead of being handed back by the side
-that still has it. Records added on either side are kept, and a record both sides
-touched merges when the two changes are independent one level down:
+that still has it. Records added on either side are kept, a record only one side
+changed (the other left it exactly as the base had it) takes that side's version,
+and a record both sides changed merges when the two changes are independent one
+level down:
 
 - in `data/works/`, two pull requests adding different narrations of one book
   merge inside that book's `recordings` map (the work's own fields must be
-  identical);
+  identical, or changed by one of them only);
 - in `data/works-community/` (the community repository, which runs the same
   script), a characters pull request and a recaps pull request for the same book
   merge, because each wrote a different **member** of that book's entry.
