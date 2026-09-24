@@ -70,6 +70,10 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    # Observed up to ~11 minutes (the model call dominates, and a large tranche
+    # is a large prompt). The bound is what stops a hung CLI call from holding
+    # the concurrency group - and the PR's verdict - indefinitely.
+    timeout-minutes: 25
     # HAS_OAUTH gates the CLI-install step below. A step-level `if:` can read the
     # `env` context but a `secrets` comparison there is fragile, so we resolve
     # the presence of the OAuth secret into a plain boolean env var here (job
@@ -107,6 +111,11 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
+          # The one later `git fetch` (the dispatch path's base and head SHAs)
+          # reads a PUBLIC repository and works anonymously, and everything else
+          # is gh with GH_TOKEN - so the token need not sit in .git/config beside
+          # a model reading contributor-supplied data.
+          persist-credentials: false
 
       # metadiff is a Go command in this repository, so the job compiles it.
       # .go-version is the single source of the version, as in every other
@@ -230,10 +239,20 @@ jobs:
       # An install whose failure only shows up three steps later, as a "skipped"
       # comment, is what let that outage run silently. The probe moves the next
       # one to the step that causes it.
+      #
+      # The version is PINNED and bumped deliberately, by a human, after
+      # checking that the flags ai-verify.sh passes (-p, --system-prompt,
+      # --model, --output-format json, --allowedTools) still mean the same
+      # thing: an unpinned install is a new CLI on every run, with this job's
+      # secret in its environment, and the outage above was an upstream release
+      # changing under a line nobody edited. Bump it to the package's `stable`
+      # dist-tag (`npm view @anthropic-ai/claude-code dist-tags`), not `latest`
+      # or `next`, which move daily. Dependabot does not see a version inside a
+      # `run:` string.
       - name: Install Claude Code CLI
         if: steps.gather.outputs.has_changes == 'true' && env.HAS_OAUTH == 'true'
         run: |
-          npm install -g @anthropic-ai/claude-code
+          npm install -g @anthropic-ai/claude-code@2.1.273
           claude --version
 
       - name: Run AI verification

@@ -58,3 +58,21 @@ updates:
         update-types:
           - minor
           - patch
+    # Node majors (the Dockerfile's site stage): only the EVEN ones become LTS,
+    # so the odd majors are ignored and an even one still arrives as a pull
+    # request - to be merged together with check.yml's setup-node
+    # `node-version`, which dependabot does not move. The list names odd majors
+    # ahead of time because dependabot takes version patterns, not a parity rule;
+    # extend it before Node 31 ships.
+    #
+    # golang: the image's MINOR is the Go language version, which has to move
+    # together with go.mod's `go` directive, every setup-go `go-version` and the
+    # govulncheck pin - a bump done by hand in one change, never an image-only
+    # pull request that builds on a Go the rest of the repository does not use.
+    ignore:
+      - dependency-name: node
+        versions: ["25.x", "27.x", "29.x"]
+      - dependency-name: golang
+        update-types:
+          - version-update:semver-major
+          - version-update:semver-minor
