@@ -90,10 +90,11 @@ jobs:
 
       - name: Test
         if: needs.changes.outputs.go == 'true'
-        # -race, as the documented gate is. pkg/check's real-data test skips
-        # under the detector (race_{on,off}_test.go) - the fixture suites cover
-        # the parallel loader and the real tree is data coverage, validated by
-        # metacheck below - so the suite stays inside a few minutes.
+        # -race, as the documented gate is. Every real-data test skips under
+        # the detector (race_{on,off}_test.go in pkg/check, pkg/canonical,
+        # internal/importer and internal/repair) - the fixture suites cover the
+        # concurrent code and the real tree is data coverage, validated by
+        # metacheck/metafmt below - so the suite stays inside a few minutes.
         run: go test -race ./...
 
       # --profile core is what this repository's data root now IS: works, people,

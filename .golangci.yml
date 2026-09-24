@@ -1,0 +1,20 @@
+# golangci-lint v2 configuration. It PINS the linter set this repository's green
+# baseline was measured against rather than adding to it: with no config file the
+# set is whatever the installed release calls "standard", so a new release could
+# change which linters run on a day nobody touched Go code. The five below are
+# exactly v2.12's standard set, and staticcheck's checks are its v2.12 default
+# spelled out for the same reason. Adding a linter is a deliberate change here,
+# made with its findings fixed in the same pull request.
+version: "2"
+
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+  settings:
+    staticcheck:
+      checks: ["all", "-ST1000", "-ST1003", "-ST1016", "-ST1020", "-ST1021", "-ST1022"]
