@@ -1670,6 +1670,10 @@
             {
               "asin": "B09MDSC15R",
               "region": "us"
+            },
+            {
+              "asin": "B09MDRP22L",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -1834,7 +1838,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/814PpcbeuPL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51mLWuHNEWL._SL500_.jpg",
           "id": "melanie-hastings-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -1849,6 +1853,11 @@
               "imported_at": "2026-08-01",
               "ref": "B09MDSC15R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B09MDRP22L",
+              "type": "openaudible-import"
             }
           ],
           "work": "the-heartstone-saga"
@@ -1882,6 +1891,10 @@
             {
               "asin": "B099MXC8NM",
               "region": "us"
+            },
+            {
+              "asin": "B099MS6N9K",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -2031,7 +2044,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QnHS155DS.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51fZUnPWKrS._SL500_.jpg",
           "id": "melanie-hastings-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -2046,6 +2059,11 @@
               "imported_at": "2026-07-29",
               "ref": "B099MXC8NM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B099MS6N9K",
+              "type": "openaudible-import"
             }
           ],
           "work": "the-heartstone-saga-book-1-empath-rising"
@@ -2059,6 +2077,52 @@
         }
       ],
       "title": "The Heartstone Saga, Book 1: Empath Rising"
+    },
+    "the-heartstone-saga-book-5-light-of-the-aegis": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "archibald-bradford"
+      ],
+      "id": "the-heartstone-saga-book-5-light-of-the-aegis",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "melanie-hastings-2022": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0BKK5QZL4",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51AGgPCXgmL._SL500_.jpg",
+          "id": "melanie-hastings-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "melanie-hastings"
+          ],
+          "publisher": "Space-Cat Publications",
+          "release_date": "2022-10-27",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0BKK5QZL4",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "the-heartstone-saga-book-5-light-of-the-aegis"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0BKK5QZL4",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "The Heartstone Saga: Book 5: Light of the Aegis"
     },
     "the-heartwood-crown": {
       "added_at": "2026-08-02",

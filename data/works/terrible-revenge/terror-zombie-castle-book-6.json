@@ -14105,6 +14105,167 @@
       ],
       "title": "Test Drive"
     },
+    "test-drive-samantha-chase": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "samantha-chase"
+      ],
+      "genres": [
+        "romance",
+        "romantic-comedy"
+      ],
+      "id": "test-drive-samantha-chase",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cj-bloom-2020": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "1662012853",
+              "region": "au"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15208,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1853440,
+              "start_ms": 15208,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1502029,
+              "start_ms": 1868648,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1391362,
+              "start_ms": 3370677,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1389435,
+              "start_ms": 4762039,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1373228,
+              "start_ms": 6151474,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1353607,
+              "start_ms": 7524702,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1305797,
+              "start_ms": 8878309,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1524018,
+              "start_ms": 10184106,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1844778,
+              "start_ms": 11708124,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1292027,
+              "start_ms": 13552902,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1386347,
+              "start_ms": 14844929,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1314411,
+              "start_ms": 16231276,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1572873,
+              "start_ms": 17545687,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1327577,
+              "start_ms": 19118560,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1523995,
+              "start_ms": 20446137,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1428677,
+              "start_ms": 21970132,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1265046,
+              "start_ms": 23398809,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 333136,
+              "start_ms": 24663855,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 35154,
+              "start_ms": 24996991,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51h30ujoe4L._SL500_.jpg",
+          "id": "cj-bloom-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cj-bloom"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2020-06-23",
+          "runtime_min": 417,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "1662012853",
+              "type": "openaudible-import"
+            },
+            {
+              "ref": "1662012853",
+              "type": "libex-import"
+            }
+          ],
+          "work": "test-drive-samantha-chase"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "1662012853",
+          "type": "openaudible-import"
+        },
+        {
+          "ref": "1662012853",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Test Drive"
+    },
     "test-environment": {
       "added_at": "2026-08-01",
       "authors": [
@@ -14396,6 +14557,10 @@
             {
               "asin": "B0BJL9SNLK",
               "region": "us"
+            },
+            {
+              "asin": "B0BJL7338M",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -14615,7 +14780,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91OuKkzxG0L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51ziBlW+zhL._SL500_.jpg",
           "id": "jonathan-waters-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -14631,6 +14796,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0BJL9SNLK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0BJL7338M",
+              "type": "openaudible-import"
             }
           ],
           "work": "test-flight"

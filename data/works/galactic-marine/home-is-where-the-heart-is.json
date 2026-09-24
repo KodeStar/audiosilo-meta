@@ -1756,6 +1756,10 @@
             {
               "asin": "B09TG8D3L9",
               "region": "us"
+            },
+            {
+              "asin": "B09TGC5QJM",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -1920,7 +1924,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81MXqbnP1aL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/518BBF8wBqL._SL500_.jpg",
           "id": "melanie-hastings-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -1935,6 +1939,11 @@
               "imported_at": "2026-08-01",
               "ref": "B09TG8D3L9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B09TGC5QJM",
+              "type": "openaudible-import"
             }
           ],
           "work": "home-of-consequence"
@@ -16115,6 +16124,53 @@
           "imported_at": "2026-07-29",
           "ref": "B09ZLSL319",
           "type": "libex-import"
+        }
+      ],
+      "title": "Homecoming King"
+    },
+    "homecoming-king-jami-albright": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "jami-albright"
+      ],
+      "id": "homecoming-king-jami-albright",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "virginia-rose-2021": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B093X47GRX",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51coWCnUvZS._SL500_.jpg",
+          "id": "virginia-rose-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "virginia-rose",
+            "aiden-snow"
+          ],
+          "publisher": "Jami Albright",
+          "release_date": "2021-06-02",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B093X47GRX",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "homecoming-king-jami-albright"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B093X47GRX",
+          "type": "openaudible-import"
         }
       ],
       "title": "Homecoming King"

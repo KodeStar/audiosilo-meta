@@ -1716,6 +1716,10 @@
             {
               "asin": "B0DXXM1465",
               "region": "us"
+            },
+            {
+              "asin": "B0DXXNV9YL",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -1850,7 +1854,7 @@
               "title": "Outro Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ByTfcdr8L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51tLaPKleeL._SL500_.jpg",
           "id": "ben-hart-2025",
           "language": "en",
           "license": "CC0-1.0",
@@ -1866,6 +1870,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DXXM1465",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0DXXNV9YL",
+              "type": "openaudible-import"
             }
           ],
           "work": "godsworn"
@@ -4888,6 +4897,52 @@
       ],
       "title": "Goethe & Schiller"
     },
+    "goetic-justice": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "snek-guy"
+      ],
+      "id": "goetic-justice",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bordeaux-black-2022": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0B3Y73GMG",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51GEriPL6kL._SL500_.jpg",
+          "id": "bordeaux-black-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bordeaux-black"
+          ],
+          "publisher": "Snekguy",
+          "release_date": "2022-06-14",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0B3Y73GMG",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "goetic-justice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0B3Y73GMG",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Goetic Justice"
+    },
     "goggles": {
       "added_at": "2026-07-29",
       "authors": [
@@ -7579,6 +7634,10 @@
             {
               "asin": "B0C59GQ6KT",
               "region": "us"
+            },
+            {
+              "asin": "B0C59KPQ17",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -7678,7 +7737,7 @@
               "title": "Chapter 19"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-msDztNvL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51+O+HmjquL._SL500_.jpg",
           "id": "christopher-harbour-2023",
           "language": "en",
           "license": "CC0-1.0",
@@ -7694,6 +7753,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0C59GQ6KT",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0C59KPQ17",
+              "type": "openaudible-import"
             }
           ],
           "work": "going-dark"

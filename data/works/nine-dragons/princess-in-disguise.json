@@ -1957,6 +1957,10 @@
             {
               "asin": "B08M9FMQDS",
               "region": "us"
+            },
+            {
+              "asin": "B08M9MPV6D",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -2066,7 +2070,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/915zbX3VEdL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51QHEdqz9WL._SL500_.jpg",
           "id": "alex-perone-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -2082,6 +2086,11 @@
               "imported_at": "2026-08-01",
               "ref": "B08M9FMQDS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B08M9MPV6D",
+              "type": "openaudible-import"
             }
           ],
           "work": "princess-master-3"
@@ -8374,6 +8383,52 @@
       ],
       "title": "Princess of the Sword"
     },
+    "princess-of-the-void": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "alex-reno"
+      ],
+      "id": "princess-of-the-void",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "juniper-west-2026": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0G7LX1VMD",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51N7HEBH1HL._SL500_.jpg",
+          "id": "juniper-west-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "juniper-west"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2026-01-13",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0G7LX1VMD",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "princess-of-the-void"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0G7LX1VMD",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Princess of the Void"
+    },
     "princess-of-thieves": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9191,6 +9246,10 @@
             {
               "asin": "B0CJGVQVBH",
               "region": "us"
+            },
+            {
+              "asin": "B0CJGWWZ7Z",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -9500,7 +9559,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91p6mtgDXhL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/514Ur67btQL._SL500_.jpg",
           "id": "charlie-west-2023",
           "language": "en",
           "license": "CC0-1.0",
@@ -9516,6 +9575,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CJGVQVBH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0CJGWWZ7Z",
+              "type": "openaudible-import"
             }
           ],
           "work": "princess-phil-aerix"

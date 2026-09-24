@@ -7597,6 +7597,33 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lucy-rayner-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B01HUA0YOO",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61BIIzDIAZL._SL500_.jpg",
+          "id": "lucy-rayner-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucy-rayner"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2015-12-27",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B01HUA0YOO",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "red-rope-of-fate"
+        },
         "marissa-parness-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7604,6 +7631,10 @@
             {
               "asin": "B0G87C9TR8",
               "region": "us"
+            },
+            {
+              "asin": "B0G884XSPV",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -7683,7 +7714,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZvFPRxpeL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51hNcUs6FpL._SL500_.jpg",
           "id": "marissa-parness-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -7699,6 +7730,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G87C9TR8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0G884XSPV",
+              "type": "openaudible-import"
             }
           ],
           "work": "red-rope-of-fate"

@@ -4894,6 +4894,10 @@
             {
               "asin": "B01H49FA2W",
               "region": "us"
+            },
+            {
+              "asin": "B01H49LDN2",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -5088,7 +5092,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81fw6+7KhYL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51RH2VnLqaL._SL500_.jpg",
           "id": "nick-podehl-2016",
           "language": "en",
           "license": "CC0-1.0",
@@ -5104,6 +5108,11 @@
               "imported_at": "2026-07-29",
               "ref": "B01H49FA2W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B01H49LDN2",
+              "type": "openaudible-import"
             }
           ],
           "work": "the-shameless-hour"
@@ -9183,6 +9192,52 @@
         }
       ],
       "title": "The Shape of Monsters"
+    },
+    "the-shape-of-my-heart": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "ann-aguirre"
+      ],
+      "id": "the-shape-of-my-heart",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bailey-carr-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B00UY2QU1W",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51-obAtFfwL._SL500_.jpg",
+          "id": "bailey-carr-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bailey-carr"
+          ],
+          "publisher": "Harlequin Enterprises, Ltd.",
+          "release_date": "2015-03-26",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B00UY2QU1W",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "the-shape-of-my-heart"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B00UY2QU1W",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "The Shape of My Heart"
     },
     "the-shape-of-night": {
       "added_at": "2026-07-29",

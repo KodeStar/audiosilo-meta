@@ -6482,6 +6482,10 @@
             {
               "asin": "B0G6P4BP53",
               "region": "us"
+            },
+            {
+              "asin": "B0G6NP3CJ1",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -6751,7 +6755,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81SSIffS9sL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51tBZ8zkRmL._SL500_.jpg",
           "id": "melanie-hastings-2025",
           "language": "en",
           "license": "CC0-1.0",
@@ -6766,6 +6770,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G6P4BP53",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0G6NP3CJ1",
+              "type": "openaudible-import"
             }
           ],
           "work": "forbidden-grove-2"
@@ -7122,6 +7131,10 @@
             {
               "asin": "B0G1VGLP3L",
               "region": "us"
+            },
+            {
+              "asin": "B0G1VKYD6C",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -7366,7 +7379,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81u1qAvSYvL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51O8HAD2f7L._SL500_.jpg",
           "id": "melanie-hastings-2025",
           "language": "en",
           "license": "CC0-1.0",
@@ -7381,6 +7394,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G1VGLP3L",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0G1VKYD6C",
+              "type": "openaudible-import"
             }
           ],
           "work": "forbidden-grove-book-1"
@@ -10422,6 +10440,52 @@
         }
       ],
       "title": "Forbidden Letters"
+    },
+    "forbidden-linc-raven-book-1-a-stepbrother-novella": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "danielle-jamie"
+      ],
+      "id": "forbidden-linc-raven-book-1-a-stepbrother-novella",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kai-kennicott-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B018ISL0QI",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61eH0vnKVjL._SL500_.jpg",
+          "id": "kai-kennicott-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kai-kennicott"
+          ],
+          "publisher": "Danielle Jamie",
+          "release_date": "2015-12-01",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B018ISL0QI",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "forbidden-linc-raven-book-1-a-stepbrother-novella"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B018ISL0QI",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Forbidden: Linc & Raven, Book 1 (A Stepbrother Novella)"
     },
     "forbidden-love": {
       "added_at": "2026-08-01",

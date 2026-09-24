@@ -2382,6 +2382,10 @@
             {
               "asin": "B07N4DZR7D",
               "region": "us"
+            },
+            {
+              "asin": "B07N45K2Q6",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -2566,7 +2570,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tXaOXPrHL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51zyqUvc6wL._SL500_.jpg",
           "id": "callie-dalton-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -2582,6 +2586,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07N4DZR7D",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B07N45K2Q6",
+              "type": "openaudible-import"
             }
           ],
           "work": "chasing-clouds"
@@ -5444,6 +5453,52 @@
         }
       ],
       "title": "Chasing Dreams, Year One"
+    },
+    "chasing-dreams-year-three": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "shawn-keys"
+      ],
+      "id": "chasing-dreams-year-three",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "erin-bateman-2023": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0CJKJBX15",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51rcXkbx9ML._SL500_.jpg",
+          "id": "erin-bateman-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erin-bateman"
+          ],
+          "publisher": "Shawn Keys",
+          "release_date": "2023-09-21",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0CJKJBX15",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "chasing-dreams-year-three"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0CJKJBX15",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Chasing Dreams, Year Three"
     },
     "chasing-ebony": {
       "added_at": "2026-07-29",
