@@ -146,10 +146,18 @@ func (s *Server) htmlRoutes() []route {
 	return rs
 }
 
-// html is the middleware stack a page wears: gzip, and deliberately NOT CORS.
-// A page is navigated to, not fetched cross-origin by a script; the API keeps
-// the open headers, and the pages do not widen that surface.
-func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(h) }
+// html is the middleware stack a page wears: gzip, the document headers, and
+// deliberately NOT CORS. A page is navigated to, not fetched cross-origin by a
+// script; the API keeps the open headers, and the pages do not widen that
+// surface.
+//
+// The document headers go on BEFORE the handler runs, because every response a
+// page route writes is an HTML document or answers for one: the composed page,
+// the untouched shell, the site's 404 page, the HTML 301 of a retired slug or a
+// legacy ?id= link, and a 304 revalidating a page - which carries no
+// Content-Type by design, so a decision read off the response would miss exactly
+// the header update a cached page takes from it (RFC 9111 4.3.4).
+func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(documentMW(h)) }
 
 // entityHandler serves one family's page. Every failure mode DEGRADES rather
 // than erroring - no artifact loaded yet, a dist whose shell carries no markers,

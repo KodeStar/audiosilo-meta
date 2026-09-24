@@ -203,11 +203,7 @@ func (s *Server) Run(ctx context.Context) error {
 	if s.cfg.Poll {
 		go s.pollLoop(ctx)
 	}
-	srv := &http.Server{
-		Addr:              s.cfg.Addr,
-		Handler:           s.mux,
-		ReadHeaderTimeout: 10 * time.Second,
-	}
+	srv := s.httpServer()
 	go func() {
 		<-ctx.Done()
 		shutCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -219,6 +215,50 @@ func (s *Server) Run(ctx context.Context) error {
 		return nil
 	}
 	return err
+}
+
+// The listener's four deadlines. Every one is a bound on how long a CLIENT can
+// hold a connection and a goroutine, not on how long the server may work: nothing
+// artifact-sized happens inside a request (the release webhook answers 202 and
+// refreshes on a goroutine of its own - see handleGitHubReleaseWebhook), so the
+// only slow thing a deadline can meet is the far end of the socket.
+const (
+	// readHeaderTimeout bounds the request line and headers - the slowloris guard.
+	readHeaderTimeout = 10 * time.Second
+	// readTimeout bounds the whole request READ, headers included. Every route is
+	// a GET with no body except the webhook, whose body is capped at 1 MiB
+	// (maxWebhookBodyBytes): 30s is 1 MiB at ~35 KB/s, and GitHub's own delivery
+	// is a single small JSON document.
+	readTimeout = 30 * time.Second
+	// writeTimeout runs from the end of the request headers to the end of the
+	// response, so it bounds the handler AND the transfer. Measured over the
+	// 278,607-work artifact (2026-09-24): the slowest handler, cold, was ~3.4s (a
+	// 200-series watch feed, and /abs/search on a stopword); the largest body is
+	// a 50,000-URL sitemap shard, 6.2 MB identity / 0.5 MB gzip; the largest
+	// static asset is ~360 KB. Two minutes carries the gzip shard at ~4.5 KB/s and
+	// even the identity shard at ~52 KB/s, which is a slow client rather than a
+	// dead one, while still releasing a connection that has stopped reading.
+	writeTimeout = 2 * time.Minute
+	// idleTimeout is how long a keep-alive connection waits for its next request.
+	// It is deliberately LONGER than the idle timeouts of the reverse proxies this
+	// sits behind (Go's transport 90s, Caddy 2m, nginx 60s): when the upstream
+	// closes an idle connection at the moment the proxy reuses it, the proxy
+	// answers 502, so the proxy has to be the side that gives up first. Left
+	// unset it would default to readTimeout.
+	idleTimeout = 3 * time.Minute
+)
+
+// httpServer is the listener Run serves on, split out so the deadlines above
+// are testable without binding a port.
+func (s *Server) httpServer() *http.Server {
+	return &http.Server{
+		Addr:              s.cfg.Addr,
+		Handler:           s.mux,
+		ReadHeaderTimeout: readHeaderTimeout,
+		ReadTimeout:       readTimeout,
+		WriteTimeout:      writeTimeout,
+		IdleTimeout:       idleTimeout,
+	}
 }
 
 // current returns the live snapshot, or nil when none has loaded yet (a
@@ -461,7 +501,7 @@ func (s *Server) buildMux() http.Handler {
 		// The static site catches everything the API and the pages did not claim.
 		mux.Handle("/", s.site)
 	}
-	return mux
+	return nosniffMW(mux)
 }
 
 // public is the middleware stack every publicly reachable handler wears: CORS,

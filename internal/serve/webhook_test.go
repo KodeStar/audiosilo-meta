@@ -191,6 +191,43 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 	}
 }
 
+// TestWebhookAnswersBeforeTheRefresh pins the hand-off the listener's
+// writeTimeout is sized on: the refresh a delivery triggers downloads and
+// decompresses an artifact of well over a gigabyte, so it must run AFTER the 202
+// rather than inside the request. The test holds the refresh lock, so a handler
+// that refreshed synchronously would never answer.
+func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
+	v1Path, _, _, v2 := buildV1V2(t)
+	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	srv := newWebhookServer(t, v1Path, fake)
+	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
+
+	srv.mu.Lock()
+	answered := make(chan int, 1)
+	go func() {
+		rec := httptest.NewRecorder()
+		srv.Handler().ServeHTTP(rec, webhookRequest(body, signWebhook(body, testWebhookSecret), "release"))
+		answered <- rec.Code
+	}()
+	select {
+	case code := <-answered:
+		if code != http.StatusAccepted {
+			t.Errorf("status = %d, want 202", code)
+		}
+	case <-time.After(10 * time.Second):
+		t.Fatal("the webhook did not answer while the refresh was blocked: it refreshes inside the request")
+	}
+	srv.mu.Unlock()
+
+	deadline := time.Now().Add(10 * time.Second)
+	for srv.current().tag != tagR2 {
+		if time.Now().After(deadline) {
+			t.Fatalf("the background refresh did not land %q", tagR2)
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+}
+
 func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
 	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))

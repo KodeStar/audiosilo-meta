@@ -3,6 +3,7 @@ package serve
 import (
 	"compress/gzip"
 	"io"
+	"mime"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -92,6 +93,53 @@ func gzipMW(next http.Handler) http.Handler {
 	})
 }
 
+// nosniffMW stamps X-Content-Type-Options on every response the server writes,
+// so a browser never second-guesses a declared type - a JSON error rendered as
+// HTML, or a feed body executed as script. It wraps the whole mux, which is what
+// makes "every" true: the mux's own 404 and 405 pass through it too. It is set
+// before the handler runs and nothing downstream removes it; a header on a 304
+// or a 301 is harmless.
+func nosniffMW(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		next.ServeHTTP(w, r)
+	})
+}
+
+// setDocumentHeaders adds the headers only an HTML DOCUMENT needs. Referrer-Policy
+// keeps a page's path and query off the Referer sent to another origin (the
+// purchase links leave the site from a page naming the book). frame-ancestors
+// 'none' refuses every framing of a page - the clickjacking guard - and nothing
+// in the AudioSilo workspace embeds these pages, so no ancestor needs allowing.
+// It is the only CSP directive set: a script/style policy would have to track
+// every inline script the Astro build emits, and this one is a pure addition.
+//
+// Neither belongs on the API: a JSON or XML body is never a document a browser
+// frames or navigates from, so the headers would be noise on every API response.
+func setDocumentHeaders(h http.Header) {
+	h.Set("Referrer-Policy", "strict-origin-when-cross-origin")
+	h.Set("Content-Security-Policy", "frame-ancestors 'none'")
+}
+
+// documentMW is setDocumentHeaders as middleware, for a handler whose every
+// response is an HTML document (see Server.html).
+func documentMW(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		setDocumentHeaders(w.Header())
+		next.ServeHTTP(w, r)
+	})
+}
+
+// isHTMLFile reports whether the static file at name is served as HTML. It asks
+// the SAME question http.FileServer answers the Content-Type with - the MIME
+// type of the extension - so the document headers and the type can never
+// disagree about a file. Deciding from the name rather than from the response is
+// what covers a 304: http.FileServer writes no Content-Type on one.
+func isHTMLFile(name string) bool {
+	mt, _, _ := mime.ParseMediaType(mime.TypeByExtension(filepath.Ext(name)))
+	return mt == "text/html"
+}
+
 // siteHandler serves a static site directory. Astro emits real .html pages, so
 // there is no SPA fallback; an extension-less path is resolved to its
 // index.html, and a genuine miss returns the site's 404.html when present.
@@ -119,6 +167,9 @@ func (h *siteHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	full := filepath.Join(h.dir, clean)
 
 	if info, err := os.Stat(full); err == nil && !info.IsDir() {
+		if isHTMLFile(full) {
+			setDocumentHeaders(w.Header())
+		}
 		h.fs.ServeHTTP(w, r)
 		return
 	}
@@ -128,6 +179,7 @@ func (h *siteHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if clean == "." || filepath.Ext(clean) == "" {
 		idx := filepath.Join(full, "index.html")
 		if info, err := os.Stat(idx); err == nil && !info.IsDir() {
+			setDocumentHeaders(w.Header())
 			http.ServeFile(w, r, idx)
 			return
 		}
@@ -138,6 +190,7 @@ func (h *siteHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (h *siteHandler) notFound(w http.ResponseWriter, r *http.Request) {
 	if f, err := os.Open(filepath.Join(h.dir, "404.html")); err == nil {
 		defer func() { _ = f.Close() }()
+		setDocumentHeaders(w.Header())
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		w.WriteHeader(http.StatusNotFound)
 		_, _ = io.Copy(w, f)

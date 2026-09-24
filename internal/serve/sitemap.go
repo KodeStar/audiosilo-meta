@@ -180,10 +180,14 @@ var shardFilePattern = regexp.MustCompile(`^([a-z]+)-(0|[1-9][0-9]{0,5})\.xml$`)
 // htmlRoutes(). It is not API (no openapi.json entry - these are crawler
 // documents, not a client contract) and not a page (no shell, no dist), so it is
 // its own table and buildMux registers it unconditionally.
+//
+// Its stack is gzip alone: no CORS, as for a page, but none of a page's document
+// headers either (see Server.html) - an XML sitemap is never framed or navigated
+// from.
 func (s *Server) sitemapRoutes() []route {
 	return []route{
-		{"GET " + sitemapIndexPath, s.html(s.handleSitemapIndex)},
-		{"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}", s.html(s.handleSitemapShard)},
+		{"GET " + sitemapIndexPath, gzipMW(http.HandlerFunc(s.handleSitemapIndex))},
+		{"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}", gzipMW(http.HandlerFunc(s.handleSitemapShard))},
 	}
 }
 
