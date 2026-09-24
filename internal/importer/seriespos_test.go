@@ -378,12 +378,13 @@ func TestARangePositionIsNeverArbitrated(t *testing.T) {
 
 // towerboundRows is an envelope of "Towerbound, Book 6" rows at the retailer's
 // position 8, one per ASIN - re-releases of the one production (same narrator,
-// runtime unstated).
+// the same stated runtime, which is what corroborates the title's volume when
+// nothing else does - titleCorroborated).
 func towerboundRows(asins ...string) string {
 	rows := make([]string, len(asins))
 	for i, a := range asins {
 		rows[i] = fmt.Sprintf(`{"title": "Towerbound, Book 6", "authors": ["A Writer"], "narrators": ["A Narrator"],`+
-			` "series": "Towerbound", "series_position": "8", "asin": %q, "language": "en"}`, a)
+			` "series": "Towerbound", "series_position": "8", "asin": %q, "language": "en", "runtime_min": 300}`, a)
 	}
 	return `{"format": "audiosilo-books", "version": 1, "books": [` + strings.Join(rows, ",") + `]}`
 }
@@ -457,6 +458,132 @@ func TestSerialGuardMatchesTheSourcePositionPlacementKept(t *testing.T) {
 		t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
 			sum.MergedASINs, sum.NewRecordings, sum.Warnings)
 	}
+}
+
+// ---------------------------------------------------------------------------
+// The title's position counts only with corroboration (titleCorroborated). The
+// fixtures are the real-data measurement's rows, verbatim where it matters.
+
+// Witch Myth is three different books under one title and one narrator: the
+// retailer numbers them 1/2/3 in "Yew Hollow Cozy Mysteries" while the second and
+// third titles say "Book 1" and "Book 2". Read uncorroborated, the second row's
+// "Book 1" matched the first book at slot 1 and the row was skipped as its
+// duplicate (a book lost), which then let the third row's "Book 2" be placed at
+// the freed 2. Nothing corroborates the title here - the source's slot 2 is free
+// and 196 minutes is not the 169-minute production - so the three stay three.
+func TestTitlePositionNeedsCorroboration(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/al/alexandria-clarke.json":  personRec("alexandria-clarke", "Alexandria Clarke"),
+		"people/jo/jo-nelson.json":          personRec("jo-nelson", "Jo Nelson"),
+		"people/el/elisabeth-langelee.json": personRec("elisabeth-langelee", "Elisabeth Langelee"),
+		"works/wi/witch-myth-super-boxset-a-yew-hollow-cozy-mystery/work.json": workRec(
+			"witch-myth-super-boxset-a-yew-hollow-cozy-mystery", "Witch Myth Super Boxset: A Yew Hollow Cozy Mystery",
+			"en", `"alexandria-clarke"`, ""),
+		"works/wi/witch-myth-super-boxset-a-yew-hollow-cozy-mystery/recordings/elisabeth-langelee-2017.json": recRec(
+			"witch-myth-super-boxset-a-yew-hollow-cozy-mystery", "elisabeth-langelee-2017", "en", "elisabeth-langelee", "B0WMBOXSET", 1580),
+		"series/ye/yew-hollow-cozy-mysteries.json": `{"id":"yew-hollow-cozy-mysteries","license":"CC0-1.0",` +
+			`"name":"Yew Hollow Cozy Mysteries","sources":[{"type":"user"}],` +
+			`"works":[{"position":"1-3","work":"witch-myth-super-boxset-a-yew-hollow-cozy-mystery"}]}`,
+	})
+	const author, narrator = `{"name":"Alexandria Clarke"}`, `{"name":"Jo Nelson"}`
+	sum := runLibexOver(t, dataDir,
+		libexRow{asin: "B01M1Z0PE0", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery", authors: author,
+			narrators: narrator, minutes: 169,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"1"},{"name":"Witch Myth","position":"1"}`}.render(),
+		libexRow{asin: "B01N3SY0AS", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery, Book 1", authors: author,
+			narrators: narrator, minutes: 196,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"2"},{"name":"Witch Myth","position":"2"},` +
+				`{"name":"A Witch Myth Cozy Mystery","position":"1"}`}.render(),
+		libexRow{asin: "B01MXW1559", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery, Book 2", authors: author,
+			narrators: narrator, minutes: 218,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"3"},{"name":"Witch Myth","position":"3"}`}.render(),
+	)
+
+	if sum.NewWorks != 3 || sum.SkippedDuplicateIdentity != 0 || sum.MergedASINs != 0 {
+		t.Errorf("NewWorks = %d, SkippedDuplicateIdentity = %d, MergedASINs = %d; want three books: %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, sum.MergedASINs, sum.Warnings)
+	}
+	byPos := map[string]string{}
+	for work, pos := range seriesSlots(t, dataDir, "series/ye/yew-hollow-cozy-mysteries.json") {
+		byPos[pos] = work
+	}
+	for _, pos := range []string{"1", "2", "3"} {
+		if byPos[pos] == "" {
+			t.Errorf("no work at Yew Hollow position %s: %v", pos, byPos)
+		}
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// The title's position corroborated by the SOURCE slot: the retailer's 3 for
+// "Geronimo Stilton, Book 6" is demonstrably another book (slot 3 holds "Cat and
+// Mouse in a Haunted House"), so the title's 6 is believed and the row is the
+// catalogued #6 rather than a second record of it.
+func TestTitlePositionCorroboratedByAHeldSourceSlot(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ge/geronimo-stilton.json": personRec("geronimo-stilton", "Geronimo Stilton"),
+		"people/ed/edward-herrmann.json":  personRec("edward-herrmann", "Edward Herrmann"),
+		"works/ge/geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house/work.json": workRec(
+			"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house",
+			"Geronimo Stilton Book 3: Cat and Mouse in a Haunted House", "en", `"geronimo-stilton"`, ""),
+		"works/ge/geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house/recordings/geronimo-stilton-2009.json": recRec(
+			"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house", "geronimo-stilton-2009", "en",
+			"geronimo-stilton", "B0GERON003", 69),
+		"works/ge/geronimo-stilton-6-paws-off-cheddarface/work.json": workRec(
+			"geronimo-stilton-6-paws-off-cheddarface", "Geronimo Stilton #6: Paws Off, Cheddarface!", "en",
+			`"geronimo-stilton"`, ""),
+		"works/ge/geronimo-stilton-6-paws-off-cheddarface/recordings/edward-herrmann-2006.json": recRec(
+			"geronimo-stilton-6-paws-off-cheddarface", "edward-herrmann-2006", "en", "edward-herrmann", "B0GERON006", 71),
+		"series/ge/geronimo-stilton.json": `{"id":"geronimo-stilton","license":"CC0-1.0","name":"Geronimo Stilton",` +
+			`"sources":[{"type":"user"}],"works":[` +
+			`{"position":"3","work":"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house"},` +
+			`{"position":"6","work":"geronimo-stilton-6-paws-off-cheddarface"}]}`,
+	})
+	sum := runLibexOver(t, dataDir, libexRow{asin: "B008D5E7C6", title: "Geronimo Stilton, Book 6: Paws Off, Cheddarface!",
+		authors: `{"name":"Geronimo Stilton"}`, narrators: `{"name":"Edward Herrmann"}`, minutes: 70,
+		series: `{"name":"Geronimo Stilton","position":"3"}`}.render())
+
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: the row is the catalogued #6: %v", sum.NewWorks, sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// Trial by Fire (Newpointe 911 #4) arrives three times in one run. The first row
+// creates the work at 4. The second states the retailer's 5 - which "Line of
+// Duty", the real #5, holds - and "Book 4" in its title, so the title is
+// corroborated and the row is #4. The third, at a plain 4, then meets #4 too
+// rather than minting an author-suffixed "Trial by Fire" beside it.
+func TestTitlePositionCorroboratedInTheSameRun(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/te/terri-blackstock.json": personRec("terri-blackstock", "Terri Blackstock"),
+		"people/jc/j-c-howe.json":         personRec("j-c-howe", "J. C. Howe"),
+		"works/li/line-of-duty/work.json": workRec("line-of-duty", "Line of Duty", "en", `"terri-blackstock"`, ""),
+		"works/li/line-of-duty/recordings/j-c-howe-2010.json": recRec(
+			"line-of-duty", "j-c-howe-2010", "en", "j-c-howe", "B0LINEDUTY", 631),
+		"series/ne/newpointe-911.json": `{"id":"newpointe-911","license":"CC0-1.0","name":"Newpointe 911",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"5","work":"line-of-duty"}]}`,
+	})
+	const author = `{"name":"Terri Blackstock"}`
+	sum := runLibexOver(t, dataDir,
+		libexRow{asin: "B002V5BSGM", title: "Trial by Fire", subtitle: "Newpointe 911 Series #4", authors: author,
+			narrators: `{"name":"Kris Faulkner"}`, minutes: 566, series: `{"name":"Newpointe 911","position":"4"}`}.render(),
+		libexRow{asin: "B002V19RIW", title: "Trial by Fire", subtitle: "Newpointe 911 Series, Book 4", authors: author,
+			narrators: `{"name":"John McDonough"}`, minutes: 628, series: `{"name":"Newpointe 911","position":"5"}`}.render(),
+		libexRow{asin: "B0032CLAPC", title: "Trial by Fire", authors: author,
+			narrators: `{"name":"Jay Charles"}`, minutes: 589, series: `{"name":"Newpointe 911","position":"4"}`}.render(),
+	)
+
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1: all three rows are Newpointe 911 #4: %v", sum.NewWorks, sum.Warnings)
+	}
+	if entryExists(t, dataDir, workAddr(AuthorSuffixedWorkSlug("trial-by-fire", "terri-blackstock"))) {
+		t.Error("an author-suffixed second Trial by Fire was minted")
+	}
+	assertTreeValid(t, dataDir)
 }
 
 // The live client's adapter reads the record's own `series` array and nothing

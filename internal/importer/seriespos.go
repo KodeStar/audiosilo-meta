@@ -233,10 +233,17 @@ func statedVolumePosition(r seriesRef, title string) (string, bool) {
 // its source stated, and the title's where statedVolumePosition arbitrates a
 // different one. placementPosition puts the work at the title's unless that slot
 // is taken or the work already sits in the series, so a recorded position
-// matching EITHER is this row's volume - which is what every reader comparing a
-// row's claim against a recorded position (seriesClaim, the recording-level
-// serial guard) must accept, or a re-release of a title-arbitrated volume reads
-// as a different one.
+// matching either CAN be this row's volume - which every reader comparing a row's
+// claim against a recorded position (seriesClaim.compatible/places, the
+// recording-level serial guard) must allow, or a re-release of a
+// title-arbitrated volume reads as a different one.
+//
+// The two arms are not equal, though. The SOURCE arm is the fact the row states
+// and is read as it always was. The TITLE arm is a second reading of the same
+// row, and a match that holds ONLY through it counts only when corroborated
+// (titleCorroborated): uncorroborated, "Witch Myth: ..., Book 1" at the
+// retailer's 2 matched the different 169-minute "Witch Myth" at 1 and was
+// skipped as its duplicate, losing a book.
 type rowPosition struct{ source, title string }
 
 // rowPositionOf is r's positions, the title's read by the one arbitration rule.
@@ -245,14 +252,59 @@ func rowPositionOf(r seriesRef, title string) rowPosition {
 	return rowPosition{source: r.seq, title: stated}
 }
 
-// names reports whether pos is one of the row's positions.
-func (rp rowPosition) names(pos string) bool {
-	return pos == rp.source || (rp.title != "" && pos == rp.title)
+// names reports whether pos is one of the row's positions: the source's
+// outright, the title's only when corroborated() says so. corroborated is asked
+// only when the title arm is the one deciding.
+func (rp rowPosition) names(pos string, corroborated func() bool) bool {
+	if pos == rp.source {
+		return true
+	}
+	return rp.title != "" && pos == rp.title && corroborated()
 }
 
-// agrees reports whether two rows' claims on one series share a position.
-func (rp rowPosition) agrees(o rowPosition) bool {
-	return rp.names(o.source) || (o.title != "" && rp.names(o.title))
+// agrees reports whether two claims on one series share a position: their
+// sources outright, any match that runs through either side's title arm only
+// when corroborated() says so.
+func (rp rowPosition) agrees(o rowPosition, corroborated func() bool) bool {
+	if rp.source == o.source {
+		return true
+	}
+	viaTitle := (rp.title != "" && (rp.title == o.source || rp.title == o.title)) ||
+		(o.title != "" && o.title == rp.source)
+	return viaTitle && corroborated()
+}
+
+// titleCorroborated is the ONE test a title-arm match must pass (seriesClaim's
+// compatible and places, and the serial guard, all ask it), for a row claiming
+// a position in series ss (nil when the claim's series is not held) against work
+// ws: the title's number is believed over the source's when EITHER
+//
+//   - the row's own SOURCE slot is held by a DIFFERENT work: the source number
+//     demonstrably names another book ("Geronimo Stilton, Book 6" at the
+//     retailer's 3, where 3 is "Cat and Mouse in a Haunted House"; "Trial by
+//     Fire ... Book 4" at 5, where 5 is "Line of Duty"), or
+//   - the row is the same production as one of ws's recordings by the
+//     importer's own rule, RuntimesCompatible - over two STATED runtimes, since
+//     an unknown runtime is compatible with anything and so evidences nothing
+//     (the Towerbound re-release).
+//
+// Witch Myth fails both - the source's slot 2 is free, and 196 minutes is not
+// the 169-minute production at 1 - so its three books stay three.
+func titleCorroborated(ss *seriesState, ws *workState, source string, runtime int) bool {
+	if ss != nil {
+		if other, held := ss.positions[source]; held && other != ws.slug {
+			return true
+		}
+	}
+	if runtime <= 0 {
+		return false
+	}
+	for _, ri := range ws.recs {
+		if ri.runtimeMin > 0 && runtimesCompatible(ri.runtimeMin, runtime) {
+			return true
+		}
+	}
+	return false
 }
 
 // noteSeriesPositionFilled records one filled position for the run's aggregated
