@@ -94,6 +94,11 @@
 #   git config merge.packjson.name "three-way merge of pack-file entries"
 #   git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
 #
+# (That relative path is fine in your own checkout. git runs a driver from the
+# working tree's root, so mid-rebase it names the REPLAYED branch's copy - which
+# is why the intake sweep installs main's copy outside the tree and configures
+# the driver by that absolute path instead.)
+#
 # .gitattributes already maps data/**/*.json to that driver, so configuring it is
 # all it takes (git falls back to its own line merge where it is not configured,
 # which is what every other checkout keeps doing). The driver is not an
