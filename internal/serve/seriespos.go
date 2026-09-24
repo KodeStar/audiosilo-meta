@@ -293,7 +293,10 @@ func (s *snapshot) worksAtPosition(seriesIDs []string, pos string) ([]string, er
 //
 // Rejoining with spaces is exact: a kept term holds no boundary rune and a kept
 // token holds no whitespace, so ftsPhrase cuts the join back into the same
-// pieces.
+// pieces. The one boundary rune it must NOT lose is a possessive's apostrophe
+// (apostropheS): the written `s` is kept glued to its word as "finnegan's", so
+// ftsPhrase still builds the mirror group that reaches a series stored as
+// "Finnegans Wake".
 func probeMatch(residual string) string {
 	kept := make([]string, 0, 4)
 	for _, tok := range strings.Fields(residual) {
@@ -302,11 +305,17 @@ func probeMatch(residual string) string {
 			kept = append(kept, tok)
 			continue
 		}
-		for _, term := range terms {
-			if probeStopwords[keywordKey(term)] {
+		written := apostropheS(tok, terms)
+		prevKept := false
+		for i, term := range terms {
+			if written[i] && prevKept {
+				kept[len(kept)-1] += "'" + term
 				continue
 			}
-			kept = append(kept, term)
+			prevKept = !probeStopwords[keywordKey(term)]
+			if prevKept {
+				kept = append(kept, term)
+			}
 		}
 	}
 	if len(kept) == 0 {

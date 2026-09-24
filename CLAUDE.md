@@ -831,6 +831,53 @@ subtitle is 252 bytes / 44 terms, the longest person name 161 / 26, the longest
 series name 160 / 21, and the most terms in any one of them 46. Both bounds
 TRUNCATE rather than reject (a 400 mid-typing is the worse answer), the leading
 phrases are what survive, and the prefix star still goes on the last phrase KEPT.
+**A POSSESSIVE matches in either spelling**: unicode61 indexed "Ender's" as
+`ender` + `s`, so "enders game" - the spelling of a filename, which is what
+`/abs/search` receives - returned ZERO rows for Ender's Game; 15,303 work titles
+(5.5%) and 1,453 series names carry an apostrophe-s (measured 2026-09-24 over the
+six marks `isApostrophe` reads; an earlier 15,405 counted ANY lone `s` term,
+middle initials and "Model S" included). A qualifying term (`isPossessive`, the
+one statement of which words qualify) becomes the group `("enders" OR "ender
+s")`, and the MIRROR holds too: a title stored without its apostrophe
+("Finnegans Wake") holds `finnegans`, so a possessive WRITTEN with one - a lone
+`s` separated from the word before it by exactly one apostrophe, where the joined
+word qualifies (`apostropheS`) - becomes `("finnegan s" OR "finnegans")`, the two
+terms as one adjacent phrase, which is also tighter than the two free-standing
+phrases it replaced. That retires byte-identity for apostrophe queries (their
+pages may change: "a dog's purpose" gains "Dogs with a Purpose"); a query with
+neither form keeps its old expression byte for byte. An expression holding a
+group joins every part with an explicit `AND` (FTS5 refuses the implicit AND
+beside a parenthesized group; the two spellings parse to one AND node). Measured
+bounds: MORE THAN THREE RUNES (the three-rune s-words are articles and function
+words - das 2,377 title words, des 1,874, his, los, les, was - so "its" for
+"It's", 282 titles, is the one casualty, a contraction), and NOT A DOUBLED S (79
+of the 15,303 apostrophe-s titles follow a word ending in s, and "james" already
+finds "James's", while 8.5% of the 4+-rune s-words - darkness, business,
+princess - would pay the walk to match nothing). A GROUP COUNTS AS TWO phrases
+against the 64 in both directions - the walks it adds include the `s` list (25k
+rows) - so "enders" and "ender's" cost the same, and every real name stays under
+the cap (the longest re-measures at 50 phrases). A group that does not fit WHOLE
+is cut like any term past the cap - the leading parts survive and nothing after
+them does - rather than half-rendered as a phrase that may match nothing. The
+prefix star goes on the LITERAL branch only, the one spelling what was typed
+(`("enders"* OR "ender s")`, `("ender s"* OR "enders")`). `nameKey` folds on the
+same `apostropheS` marks - a lone `s` joins the term before it only across ONE
+apostrophe - so the exact-title boost and `preferWholeName` accept the title the
+expansion just matched ("enders game" IS "Ender's Game", "finnegan's wake" IS
+"Finnegans Wake"), while a free-standing S (a middle initial, "Model S") and an
+initialism's fragments never fold: equality is deliberately narrower than
+retrieval, so "models" does not boost "Model S". Measured over the 279k artifact:
+every apostrophe-less regression query went from an empty page to the target
+first (ABS: rank 1-2 of Philosopher's Stone's recordings) at no more than the
+apostrophe spelling costs (Philosopher's Stone 12.2ms against 13.1ms); the
+apostrophe spellings kept their targets at the same rank and got slightly
+FASTER ("ender's game" 4.3 -> 3.4ms, "the hitchhiker's guide to the galaxy"
+21.1 -> 20.0ms, ABS Philosopher's Stone + author 12.2 -> 11.1ms), and
+"finnegan's wake" went 0 -> 1 row; common plurals moved +0-2.5ms ("games" 3.7 ->
+6.2ms, "the chronicles" 25.5 -> 27.6ms), 76 of 76 queries with neither form are
+byte-identical across the four search surfaces, and the adversarial ceiling - 31
+common s-words, 32 groups - is 5 -> 34ms, well under the one-letter keystrokes
+("s" ~425ms either way).
 A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
 02", "jack reacher book 2"/"band 2") additionally resolves that volume and
 returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is
