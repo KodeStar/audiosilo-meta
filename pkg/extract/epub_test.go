@@ -582,6 +582,10 @@ func TestEntryReadsAreBounded(t *testing.T) {
 // this measures what a refusal allocates - for an honest header (refused before
 // decompressing) and for one that understates the size (archive/zip stops the
 // read at the declared size, so the bytes past it are never buffered).
+//
+// It reads the PROCESS-WIDE runtime.MemStats.TotalAlloc, so it must never run in
+// parallel with another test - no t.Parallel here or in its subtests - or their
+// allocations land in its measurement.
 func TestReadZipFileStopsAtTheCap(t *testing.T) {
 	old := maxEntryBytes
 	maxEntryBytes = 4096
@@ -671,11 +675,16 @@ func TestSplitBoundsTheWholeSpine(t *testing.T) {
 		"OEBPS/content.opf":      opf,
 		"OEBPS/ch01.xhtml":       "<p>x</p>" + strings.Repeat(" ", 4096/refs*2),
 	})
-	_, err := Split(epub, t.TempDir())
+	out := filepath.Join(t.TempDir(), "out")
+	_, err := Split(epub, out)
 	if !errors.Is(err, errEntryTooLarge) {
 		t.Fatalf("Split err = %v, want errEntryTooLarge for the spine total", err)
 	}
 	if !strings.Contains(err.Error(), "spine") {
 		t.Errorf("Split err = %q, want it to name the spine total", err)
+	}
+	// Refused before anything is written, not after the first copies landed.
+	if _, err := os.Stat(out); !os.IsNotExist(err) {
+		t.Errorf("Split left output behind at %s (stat err = %v), want the refusal before any write", out, err)
 	}
 }

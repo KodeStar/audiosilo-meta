@@ -94,6 +94,16 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 	if len(docs) == 0 {
 		return nil, fmt.Errorf("spine has no content documents")
 	}
+	// The spine's decompressed total is settled BEFORE anything is written, from
+	// the declared sizes: archive/zip fails any read that runs past a member's
+	// declared size, so their sum is a hard upper bound on what the loop below can
+	// read - and refusing here leaves outDir untouched rather than half-written.
+	var total uint64
+	for _, d := range docs {
+		if total += files[d.zipPath].UncompressedSize64; total > uint64(maxBookBytes) {
+			return nil, fmt.Errorf("spine decompresses past %d bytes at %q: %w", maxBookBytes, d.zipPath, errEntryTooLarge)
+		}
+	}
 
 	// All toc entries that target each spine document, in toc order, each keeping
 	// its #fragment so a document holding several chapters can be split at them.
@@ -127,14 +137,10 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		Warnings: warnings,
 	}
 	emitted, splitDocs, splitSections := 0, 0, 0
-	budget := maxBookBytes
 	for i, d := range docs {
 		data, err := readZipFile(files[d.zipPath])
 		if err != nil {
 			return nil, fmt.Errorf("read %q: %w", d.zipPath, err)
-		}
-		if budget -= int64(len(data)); budget < 0 {
-			return nil, fmt.Errorf("spine decompresses past %d bytes at %q: %w", maxBookBytes, d.zipPath, errEntryTooLarge)
 		}
 		entries := perDoc[i]
 		secs, unusable := sectionsForDoc(data, entries)
@@ -693,10 +699,13 @@ var maxBookBytes int64 = 256 << 20
 var errEntryTooLarge = errors.New("epub entry exceeds the size limit")
 
 func readZipFile(f *zip.File) ([]byte, error) {
-	// The declared size is the attacker's to state, so this is only the cheap
-	// early refusal; the LimitReader below is the guard. archive/zip itself fails a
-	// read that runs past the declared size, so a header that understates it gets
-	// a zip error rather than the bytes.
+	// The declared size is the attacker's to state, but archive/zip ENFORCES it:
+	// a read that runs past it fails with zip.ErrFormat, so a header that
+	// understates the size gets a zip error rather than the bytes, and this
+	// refusal is sound on its own. That enforcement is unconditional (a declared
+	// 0 is enforced as 0; there is no "unknown size" path), so NO archive/zip
+	// input reaches the LimitReader below and no test can: it is defence in
+	// depth, keeping the bound from resting on that library behaviour alone.
 	if f.UncompressedSize64 > uint64(maxEntryBytes) {
 		return nil, fmt.Errorf("%q declares %d bytes, past %d: %w", f.Name, f.UncompressedSize64, maxEntryBytes, errEntryTooLarge)
 	}
