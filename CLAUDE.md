@@ -148,7 +148,13 @@ main, in five jobs: `changes` (which of the others the diff can move),
 (`golangci-lint run`), `vuln` (`govulncheck ./...`) and `site`. The race
 detector, the linter and the vulnerability scan are recent arrivals: all three
 were documented here and run by hand, so the green baseline this file promises
-rested on somebody remembering. The mechanics - the pinned linter version, the
+rested on somebody remembering. The linter SET is pinned too, by the committed
+`.golangci.yml`: `linters: default: none` plus exactly the five v2.12 ships as its
+"standard" set (errcheck, govet, ineffassign, staticcheck, unused) and
+staticcheck's default check list spelled out, so a new golangci-lint release
+cannot change which linters run - without the file the set was whatever the
+installed release called its default. Adding a linter is an edit there, with its
+findings fixed in the same change. The mechanics - the pinned linter version, the
 `go-version: "1.25"` + `check-latest: true` pair on every `setup-go` (go.mod's
 `go 1.25.0` is a FLOOR, not the toolchain), which steps `changes` gates and why
 it is a step-level `if` rather than a `paths:` filter - are all in the
@@ -206,7 +212,7 @@ main-only; dispatch is the one door that takes any ref, and a release cut from a
 branch becomes THE catalogue the moment it lands). The
 workflow serializes on a `data-release` concurrency group so two quick merges
 can't both base a patch on the same prev tag. Go 1.25; golangci-lint v2 at a
-green baseline.
+green baseline over the linter set `.golangci.yml` pins.
 
 ## The data model (the contract)
 
