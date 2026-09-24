@@ -13433,6 +13433,10 @@
             {
               "asin": "0593415833",
               "region": "us"
+            },
+            {
+              "asin": "B011A0TPDG",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -13594,14 +13598,19 @@
           "narrators": [
             "laurence-kennedy"
           ],
-          "publisher": "Random House Audio",
-          "release_date": "2021-04-20",
-          "runtime_min": 1444,
+          "publisher": "Audible Studios for Bloomsbury",
+          "release_date": "2015",
+          "runtime_min": 1454,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "0593415833",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B011A0TPDG",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-silk-roads"

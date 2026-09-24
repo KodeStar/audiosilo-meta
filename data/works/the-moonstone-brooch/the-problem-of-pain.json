@@ -6432,6 +6432,10 @@
             {
               "asin": "B0BZFF9CDZ",
               "region": "us"
+            },
+            {
+              "asin": "B018WINMJM",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -6648,14 +6652,19 @@
           "narrators": [
             "chris-bailey"
           ],
-          "publisher": "Random House Audio",
-          "release_date": "2023-06-27",
-          "runtime_min": 498,
+          "publisher": "Brilliance Audio",
+          "release_date": "2016",
+          "runtime_min": 494,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0BZFF9CDZ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B018WINMJM",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-productivity-project"

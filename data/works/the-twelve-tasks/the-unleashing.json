@@ -2817,6 +2817,10 @@
             {
               "asin": "1549183087",
               "region": "us"
+            },
+            {
+              "asin": "1405545119",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3058,14 +3062,19 @@
           "narrators": [
             "calum-gittens"
           ],
-          "publisher": "Redhook",
-          "release_date": "2019-07-23",
-          "runtime_min": 1083,
+          "publisher": "Hachette Audio UK",
+          "release_date": "2020",
+          "runtime_min": 1084,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "1549183087",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "1405545119",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-unlikely-escape-of-uriah-heep"
@@ -5917,6 +5926,52 @@
         }
       ],
       "title": "The Unlikely Yarn of the Dragon Lady"
+    },
+    "the-unlimited-mind": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "zoe-mckey"
+      ],
+      "id": "the-unlimited-mind",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "brie-anna-faye-2017": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B071S96B5C",
+              "region": "us"
+            }
+          ],
+          "id": "brie-anna-faye-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brie-anna-faye"
+          ],
+          "publisher": "Zoe McKey, Zoe McKey",
+          "release_date": "2017",
+          "runtime_min": 111,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B071S96B5C",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-unlimited-mind"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B071S96B5C",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "The Unlimited Mind"
     },
     "the-unlimited-sparks-of-a-bonfire": {
       "added_at": "2026-07-29",

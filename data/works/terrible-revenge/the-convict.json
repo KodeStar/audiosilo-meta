@@ -3479,6 +3479,10 @@
             {
               "asin": "B0BR8L5FN6",
               "region": "us"
+            },
+            {
+              "asin": "B079HHQ3HM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81HPeqxEaQL.jpg",
@@ -3488,14 +3492,19 @@
           "narrators": [
             "michael-w-twitty"
           ],
-          "publisher": "Amistad",
-          "release_date": "2023-08-08",
-          "runtime_min": 920,
+          "publisher": "Tantor Audio",
+          "release_date": "2018",
+          "runtime_min": 921,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0BR8L5FN6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B079HHQ3HM",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-cooking-gene"

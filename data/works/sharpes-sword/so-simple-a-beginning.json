@@ -7316,6 +7316,10 @@
             {
               "asin": "B00S8QQGDI",
               "region": "us"
+            },
+            {
+              "asin": "B00SNMHKNC",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7409,12 +7413,17 @@
           ],
           "publisher": "Audible Studios",
           "release_date": "2015-03-12",
-          "runtime_min": 496,
+          "runtime_min": 447,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B00S8QQGDI",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B00SNMHKNC",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "so-youve-been-publicly-shamed"

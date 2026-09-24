@@ -1761,6 +1761,10 @@
             {
               "asin": "B0B6QD89MT",
               "region": "us"
+            },
+            {
+              "asin": "1649040059",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1882,14 +1886,19 @@
           "narrators": [
             "sean-pratt"
           ],
-          "publisher": "Timber Press",
-          "release_date": "2022-07-15",
-          "runtime_min": 474,
+          "publisher": "Workman Audio",
+          "release_date": "2021",
+          "runtime_min": 475,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0B6QD89MT",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "1649040059",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "a-history-of-the-human-brain"
@@ -3383,6 +3392,52 @@
         }
       ],
       "title": "A History of the Popes: Volume I"
+    },
+    "a-history-of-the-popes-volume-ii": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "wyatt-north"
+      ],
+      "id": "a-history-of-the-popes-volume-ii",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-glass-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0186DWY0Q",
+              "region": "us"
+            }
+          ],
+          "id": "david-glass-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-glass"
+          ],
+          "publisher": "Wyatt North Publishing, LLC",
+          "release_date": "2015",
+          "runtime_min": 181,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0186DWY0Q",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "a-history-of-the-popes-volume-ii"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0186DWY0Q",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "A History of the Popes: Volume II"
     },
     "a-history-of-the-south-volume-1": {
       "added_at": "2026-07-29",

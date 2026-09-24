@@ -1500,6 +1500,10 @@
             {
               "asin": "1473585791",
               "region": "us"
+            },
+            {
+              "asin": "B075RMQ3YS",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1681,14 +1685,19 @@
           "narrators": [
             "paul-hodgson"
           ],
-          "publisher": "Vintage Digital",
-          "release_date": "2020-04-30",
-          "runtime_min": 604,
+          "publisher": "Hachette Book Group",
+          "release_date": "2017",
+          "runtime_min": 605,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "1473585791",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B075RMQ3YS",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "pale-rider-laura-spinney"
@@ -8178,6 +8187,52 @@
         }
       ],
       "title": "Pampered to Death"
+    },
+    "pan": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "k-r-thompson"
+      ],
+      "id": "pan",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "brad-wills-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0155ML7HC",
+              "region": "us"
+            }
+          ],
+          "id": "brad-wills-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brad-wills"
+          ],
+          "publisher": "K.R. Thompson",
+          "release_date": "2015",
+          "runtime_min": 71,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0155ML7HC",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "pan"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0155ML7HC",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "Pan"
     },
     "pan-am-after-the-glamour-fades": {
       "added_at": "2026-07-29",

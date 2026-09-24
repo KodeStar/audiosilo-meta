@@ -6621,6 +6621,10 @@
             {
               "asin": "0735243379",
               "region": "us"
+            },
+            {
+              "asin": "1250834384",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -6737,7 +6741,7 @@
           "narrators": [
             "oliver-burkeman"
           ],
-          "publisher": "Allen Lane",
+          "publisher": "Macmillan Audio",
           "release_date": "2021-08-10",
           "runtime_min": 354,
           "sources": [
@@ -6745,6 +6749,11 @@
               "imported_at": "2026-07-29",
               "ref": "0735243379",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "1250834384",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "four-thousand-weeks"
@@ -7710,6 +7719,52 @@
         }
       ],
       "title": "Four Twisted Dreams"
+    },
+    "four-very-different-short-stories": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "mahmoud-suleiman-abdi-dualeh"
+      ],
+      "id": "four-very-different-short-stories",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "seth-char-2020": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B08BFBSWD5",
+              "region": "us"
+            }
+          ],
+          "id": "seth-char-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "seth-char"
+          ],
+          "publisher": "Eman Dualeh",
+          "release_date": "2020",
+          "runtime_min": 77,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B08BFBSWD5",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "four-very-different-short-stories"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B08BFBSWD5",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "Four Very Different Short Stories"
     },
     "four-views-on-creation-evolution-and-intelligent-design": {
       "added_at": "2026-07-29",

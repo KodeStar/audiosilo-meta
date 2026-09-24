@@ -5354,6 +5354,10 @@
             {
               "asin": "B007BR5KZA",
               "region": "us"
+            },
+            {
+              "asin": "B00GS1YYNY",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5490,14 +5494,19 @@
           "narrators": [
             "anne-hathaway"
           ],
-          "publisher": "Audible Studios",
-          "release_date": "2012-03-08",
-          "runtime_min": 229,
+          "publisher": "Audible, Inc.",
+          "release_date": "2013",
+          "runtime_min": 230,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B007BR5KZA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B00GS1YYNY",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
