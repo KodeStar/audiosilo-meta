@@ -361,3 +361,34 @@ func TestBoostProbeErrorDegrades(t *testing.T) {
 		}
 	}
 }
+
+// TestBoostProbeErrorDegradesWithoutALogger is the same degradation on a
+// snapshot nobody injected a logger into - openSnapshot's own product, which is
+// what a test, a CLI or any future direct caller holds. The notices go through
+// snapshot.logf for exactly this reason: s.log is nil there, and calling
+// Printf on it is a nil dereference inside a path whose whole promise is that a
+// failed probe costs the boost and nothing else.
+func TestBoostProbeErrorDegradesWithoutALogger(t *testing.T) {
+	snap := snapshotFor(t, exactTitleCatalog())
+	if snap.log != nil {
+		t.Fatal("openSnapshot injected a logger - this test no longer pins anything")
+	}
+	// The fallback writes to the standard logger; keep it out of the test output
+	// and assert it really said something.
+	var logged bytes.Buffer
+	prev := log.Writer()
+	prevFlags := log.Flags()
+	log.SetOutput(&logged)
+	log.SetFlags(0)
+	t.Cleanup(func() { log.SetOutput(prev); log.SetFlags(prevFlags) })
+
+	snap.close()
+	if got := snap.boostedWorks("halo 2"); got != nil {
+		t.Errorf("boostedWorks on a closed handle = %v, want nil", got)
+	}
+	for _, want := range []string{"exact-title probe", "series-position probe"} {
+		if !strings.Contains(logged.String(), want) {
+			t.Errorf("standard log %q does not mention the %s failure", logged.String(), want)
+		}
+	}
+}

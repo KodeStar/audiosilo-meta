@@ -42,7 +42,7 @@ func newWebhookServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
 	return srv
 }
 
@@ -78,7 +78,7 @@ func TestWebhookDisabledWithoutSecret(t *testing.T) {
 // by the site, which is only possible if the route was never registered.
 func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 	registers := func(cfg Config) bool {
-		for _, r := range (&Server{cfg: cfg}).routes() {
+		for _, r := range (&Server{cfg: cfg, log: testLogger()}).routes() {
 			if r.specPath() == githubReleaseWebhookPath {
 				return true
 			}

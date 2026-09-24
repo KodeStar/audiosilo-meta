@@ -125,7 +125,7 @@ func knobServer(t *testing.T, seed, cache string, f *knobGitHub, grace time.Dura
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newGHClient("owner/name", "", f.srv.URL)
+	srv.gh = newTestGHClient("owner/name", "", f.srv.URL)
 	return srv
 }
 
@@ -412,7 +412,7 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	f.setDown(true)
 
 	// Seed the volume the way a previous container would have.
-	staleServer := &Server{cfg: Config{CacheDir: cache}}
+	staleServer := &Server{cfg: Config{CacheDir: cache}, log: testLogger()}
 	if err := os.WriteFile(staleServer.dbCachePath(tagR1), v1, 0o600); err != nil {
 		t.Fatal(err)
 	}
@@ -488,7 +488,7 @@ func TestDegradedBootWithNothingCachedStillServes503(t *testing.T) {
 // TestTagFromCacheName pins the file-name round trip the stale fallback reads
 // its tag back through, including what it must refuse.
 func TestTagFromCacheName(t *testing.T) {
-	srv := &Server{cfg: Config{CacheDir: "/cache"}}
+	srv := &Server{cfg: Config{CacheDir: "/cache"}, log: testLogger()}
 	if got := tagFromCacheName(filepath.Base(srv.dbCachePath(tagR2))); got != tagR2 {
 		t.Errorf("round trip = %q, want %q", got, tagR2)
 	}

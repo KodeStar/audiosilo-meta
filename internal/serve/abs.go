@@ -80,7 +80,7 @@ func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 
 	matches, err := s.current().absSearch(q, author, isbn, absMaxMatches)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	if matches == nil {

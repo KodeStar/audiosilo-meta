@@ -1,9 +1,11 @@
 package serve
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -17,6 +19,12 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
+
+// testLogger is the logger a Server built directly in a test gets. Server.log
+// is not optional any more - fail() and the search probes write through it
+// unguarded - so a literal that left it nil would panic on the first
+// degradation notice rather than on anything the test is about.
+func testLogger() *log.Logger { return log.New(io.Discard, "", 0) }
 
 // fixtureCatalog is a small but representative dataset: two fully-fleshed works
 // (one with a cover + chapters + ASIN, one with an ISBN + dual narrators) plus
@@ -1249,5 +1257,101 @@ func TestHotSwap(t *testing.T) {
 	}
 	if got := srv.current().stats.Works; got != 5 {
 		t.Errorf("after swap works = %d, want 5", got)
+	}
+}
+
+// TestInternalErrorsAreNotReflected pins the 500 body. Every API route here is
+// public and CORS-open, so an error's own text - a SQL statement, the cache
+// volume's layout, a driver message - is reflected to anyone who can provoke it;
+// the detail belongs in the log instead. The 4xx bodies are deliberately NOT
+// covered: those describe the request, which the caller sent.
+//
+// The failure is induced the way TestSitemapErrorCarriesNoCacheHeaders induces
+// one - the snapshot's db is closed under the request - so it reaches the real
+// error paths of the four files that write a 500 (serve.go, abs.go, sitemap.go,
+// watchfeed.go).
+func TestInternalErrorsAreNotReflected(t *testing.T) {
+	var logged bytes.Buffer
+	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg.Logger = log.New(&logged, "", 0)
+	srv, ts := newPageServerFrom(t, cfg)
+	srv.current().close()
+
+	for _, path := range []string{
+		"/api/v1/works/project-hail-mary",
+		"/api/v1/works/project-hail-mary/recordings/ray-porter-2021/chapters",
+		"/api/v1/people/andy-weir",
+		"/api/v1/series/the-stormlight-archive",
+		"/api/v1/works/latest",
+		"/api/v1/search?q=hail",
+		"/api/v1/works/search?q=hail",
+		"/api/v1/lookup?asin=B08G9PRS1K",
+		"/api/v1/coverage",
+		"/api/v1/coverage/works?filter=missing",
+		"/api/v1/coverage/series-gaps",
+		"/abs/search?query=hail",
+		"/sitemaps/works-0.xml",
+		"/api/v1/watch/feed.atom?s=the-stormlight-archive",
+	} {
+		resp, err := http.Get(ts.URL + path)
+		if err != nil {
+			t.Fatalf("GET %s: %v", path, err)
+		}
+		body, err := io.ReadAll(resp.Body)
+		_ = resp.Body.Close()
+		if err != nil {
+			t.Fatal(err)
+		}
+		if resp.StatusCode != http.StatusInternalServerError {
+			t.Errorf("GET %s = %d, want 500 over a closed db; body %s", path, resp.StatusCode, body)
+			continue
+		}
+		var out map[string]string
+		if err := json.Unmarshal(body, &out); err != nil {
+			t.Errorf("GET %s body is not the JSON error envelope: %s", path, body)
+			continue
+		}
+		if out["error"] != internalErrMsg {
+			t.Errorf("GET %s leaks the internal error: %q", path, out["error"])
+		}
+	}
+	// The detail is not lost - it is written where an operator reads it.
+	if !strings.Contains(logged.String(), `500 "GET" "/api/v1/works/project-hail-mary"`) {
+		t.Errorf("the 500s were not logged with their detail:\n%s", logged.String())
+	}
+	if !strings.Contains(logged.String(), "sql: database is closed") {
+		t.Errorf("the log does not carry the driver's own message:\n%s", logged.String())
+	}
+}
+
+// TestFailLogsOneLinePerRequest: r.URL.Path is the DECODED path, so a request
+// carrying %0A used to put a newline inside the 500 line and let the caller
+// forge the rest of it as a log entry of their own. The method and the path are
+// quoted, so a control character is an escape and the entry stays one line.
+func TestFailLogsOneLinePerRequest(t *testing.T) {
+	var logged bytes.Buffer
+	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg.Logger = log.New(&logged, "", 0)
+	srv, ts := newPageServerFrom(t, cfg)
+	srv.current().close()
+
+	forged := "/api/v1/works/x%0A2026-01-01%20serve:%20500%20the%20database%20is%20fine"
+	resp, err := http.Get(ts.URL + forged)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = resp.Body.Close()
+	if resp.StatusCode != http.StatusInternalServerError {
+		t.Fatalf("status = %d, want 500 over a closed db", resp.StatusCode)
+	}
+	out := strings.TrimRight(logged.String(), "\n")
+	if out == "" {
+		t.Fatal("nothing was logged")
+	}
+	if n := strings.Count(out, "\n"); n != 0 {
+		t.Errorf("the request forged %d extra log line(s):\n%s", n, out)
+	}
+	if !strings.Contains(out, `\n`) {
+		t.Errorf("the newline was not escaped into the quoted path:\n%s", out)
 	}
 }

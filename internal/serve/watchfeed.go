@@ -121,12 +121,12 @@ func (s *Server) handleWatchFeed(
 	feed, err := snap.watchFeed(series, window, now, s.cfg.SiteURL,
 		s.watchFeedSelfURL(r.URL.Path, rawSeries, rawWindow), watchFeedID(rawSeries, rawWindow))
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	body, err := render(feed)
 	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
+		s.fail(w, r, err)
 		return
 	}
 	h := w.Header()
@@ -185,6 +185,59 @@ func watchFeedETag(snap *snapshot, siteURL, path, rawSeries, rawWindow string, n
 	return `W/"` + identity(path, rawSeries, rawWindow, day, snap.version()+"/"+siteURL) + `"`
 }
 
+// watchCandidate is one member the feed will report, carried together with the
+// news DECISION the selection already made about it - so the emit pass builds
+// the item rather than asking the rule a second time and hoping it answers the
+// same.
+type watchCandidate struct {
+	watchMember
+	news watchNews
+}
+
+// selectWatchCandidates keeps the members that are news, with each survivor's
+// decision, so the full cards are built for those alone.
+//
+// The release date each one is judged by is cardFactsByWork's own - the rule
+// that decides a CARD's release_date, read here for every watched series'
+// members in ONE batch rather than a series at a time - so the selection cannot
+// disagree with the card the survivor ends up carrying.
+//
+// That the cheap pass and the expensive one agree is STRUCTURAL rather than a
+// property to be pinned: watchNews is the whole decision, it reads the release
+// date and added_at and nothing else, and both passes call it - here over the
+// batched facts, and in watchItem over a resolved card. There is no probe card
+// and no second reading to drift.
+func (s *snapshot) selectWatchCandidates(
+	candidates []watchMember,
+	window int,
+	now time.Time,
+) ([]watchCandidate, error) {
+	ids := make([]string, len(candidates))
+	for i, c := range candidates {
+		ids[i] = c.workID
+	}
+	facts, err := s.cardFactsByWork(ids)
+	if err != nil {
+		return nil, err
+	}
+	kept := make([]watchCandidate, 0, len(candidates))
+	for _, c := range candidates {
+		var releaseDate string
+		if f := facts[c.workID]; f != nil {
+			releaseDate = f.releaseDate
+		}
+		var addedAt *string
+		if c.addedAt.Valid {
+			added := c.addedAt.String
+			addedAt = &added
+		}
+		if news, ok := watchNewsOf(releaseDate, addedAt, window, now); ok {
+			kept = append(kept, watchCandidate{watchMember: c, news: news})
+		}
+	}
+	return kept, nil
+}
+
 func (s *snapshot) watchFeed(
 	requested []string,
 	window int,
@@ -202,47 +255,85 @@ func (s *snapshot) watchFeed(
 	// events on one day in the calendar, where the id is also the UID. First
 	// series in REQUEST order wins, which is the order everything else here is
 	// resolved in.
+	//
+	// The dedupe sits on the CANDIDATE rather than on the emitted item, which is
+	// the same rule one step earlier: watchItem's answer depends on the work and
+	// the window, never on which series asked - so a work that yields no item
+	// under the first series naming it would yield none under the second either.
 	seenWork := map[string]bool{}
+	var candidates []watchMember
 	for _, requestedSlug := range requested {
 		if seenRequest[requestedSlug] {
 			continue
 		}
 		seenRequest[requestedSlug] = true
 
-		detail, err := s.series(requestedSlug, 0, 0)
+		seriesID := requestedSlug
+		name, ok, err := s.seriesName(seriesID)
 		if err != nil {
 			return watchFeed{}, err
 		}
-		if detail == nil {
+		if !ok {
 			resolved, err := s.redirectTarget(model.RedirectSeries, requestedSlug)
 			if err != nil {
 				return watchFeed{}, err
 			}
 			if resolved != "" {
-				detail, err = s.series(resolved, 0, 0)
-				if err != nil {
+				seriesID = resolved
+				if name, ok, err = s.seriesName(seriesID); err != nil {
 					return watchFeed{}, err
 				}
 			}
 		}
-		if detail == nil {
+		if !ok {
 			unknown = append(unknown, requestedSlug)
 			continue
 		}
-		if seenSeries[detail.ID] {
+		if seenSeries[seriesID] {
 			continue
 		}
-		seenSeries[detail.ID] = true
-		names = append(names, detail.Name)
-		for _, entry := range detail.Works {
-			if entry.Work != nil && seenWork[entry.Work.ID] {
+		seenSeries[seriesID] = true
+		names = append(names, name)
+
+		members, err := s.watchMembers(seriesID, name)
+		if err != nil {
+			return watchFeed{}, err
+		}
+		for _, m := range members {
+			if seenWork[m.workID] {
 				continue
 			}
-			if item, ok := watchItem(detail.Name, entry, window, now, siteURL); ok {
-				seenWork[entry.Work.ID] = true
-				items = append(items, item)
-			}
+			seenWork[m.workID] = true
+			candidates = append(candidates, m)
 		}
+	}
+
+	kept, err := s.selectWatchCandidates(candidates, window, now)
+	if err != nil {
+		return watchFeed{}, err
+	}
+
+	// ONE batch of cards for every watched series' survivors together, where the
+	// whole-series read this replaced built one per member. (cardsByID re-reads
+	// the card facts for these ids; that is a handful of works, and threading a
+	// prefilled map through it would change the signature every other caller
+	// shares.)
+	keptIDs := make([]string, len(kept))
+	for i, c := range kept {
+		keptIDs[i] = c.workID
+	}
+	byID, err := s.cardsByID(keptIDs)
+	if err != nil {
+		return watchFeed{}, err
+	}
+	for _, c := range kept {
+		card := byID[c.workID]
+		if card == nil {
+			continue
+		}
+		// The decision is the selection's - made once, over the same two dated
+		// facts this card carries.
+		items = append(items, buildWatchItem(c.seriesName, c.position, card, c.news, siteURL))
 	}
 
 	sort.SliceStable(items, func(i, j int) bool {
@@ -294,9 +385,26 @@ func (s *snapshot) watchFeed(
 	}, nil
 }
 
-// watchItem turns one series entry into a feed item, or reports that it is not
-// news. Three kinds of item, each settling its state, its id suffix and its
-// summary together rather than leaving them to be re-derived further down:
+// watchNews is the whole NEWS DECISION about one work: whether it is news at
+// all, and, if it is, the state it is news in, the id suffix that state carries,
+// the summary and the two timestamps the item is dated by.
+//
+// It exists because two passes ask the question - the cheap selection over
+// batched dated facts, and the item build over a resolved card - and a rule
+// spelled twice is a rule that can answer differently. Both call watchNewsOf;
+// only the RENDERING below reads anything else about the work.
+type watchNews struct {
+	state   string
+	stateID string
+	summary string
+	updated time.Time
+	release time.Time // zero when the work states no usable release date
+}
+
+// watchNewsOf decides whether a work is news, from its release date and its
+// added_at and NOTHING else. Three kinds of item, each settling its state, its
+// id suffix and its summary together rather than leaving them to be re-derived
+// further down:
 //
 //   - a release still AHEAD of today is a preorder, whatever the window says -
 //     an announced date is the news, and it may be a year out;
@@ -317,52 +425,69 @@ func (s *snapshot) watchFeed(
 // preorder becoming a release is a NEW item in the reader's feed - the one
 // transition worth telling them about twice - while a date arriving on a work
 // already listed as undated is not.
+func watchNewsOf(releaseDate string, addedAt *string, window int, now time.Time) (watchNews, bool) {
+	var news watchNews
+	var dated bool
+	if releaseDate != "" {
+		news.release, dated = parseReleaseDate(releaseDate)
+	}
+	switch {
+	case dated:
+		news.updated = news.release
+		switch {
+		case releaseIsFuture(releaseDate, now):
+			news.state, news.stateID = "preorder", "preorder"
+			news.summary = "Preorder - due " + formatReleaseDate(releaseDate, news.release)
+		case news.release.Before(dayStart(now).AddDate(0, 0, -window)):
+			return watchNews{}, false
+		default:
+			news.state, news.stateID = "released", "released"
+			news.summary = "Released " + formatReleaseDate(releaseDate, news.release)
+		}
+	case addedAt != nil:
+		added, ok := parseAddedAt(*addedAt)
+		// A bare `YYYY-MM-DD` added_at states no time of day, so it is measured
+		// against the start of the cutoff DAY; a full timestamp is measured
+		// against the same instant of day it carries.
+		cutoff := now.Add(-time.Duration(window) * 24 * time.Hour)
+		if len(*addedAt) == len(time.DateOnly) {
+			cutoff = dayStart(now).AddDate(0, 0, -window)
+		}
+		if !ok || added.Before(cutoff) {
+			return watchNews{}, false
+		}
+		news.state, news.stateID = "date unknown", "released"
+		news.summary = "Added to the catalogue, release date unknown"
+		news.updated = added
+	default:
+		return watchNews{}, false
+	}
+	return news, true
+}
+
+// watchItem turns one series entry into a feed item, or reports that it is not
+// news. It is watchNewsOf plus buildWatchItem, which is what the watch feed's
+// two passes do one after the other - kept as one call for the callers that
+// hold a whole card (the site's sweep reference, and the tests).
 func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, siteURL string) (watchFeedItem, bool) {
 	card := entry.Work
 	if card == nil {
 		return watchFeedItem{}, false
 	}
-	var state, stateID, summary string
-	var updated, release time.Time
-	var dated bool
-	if card.ReleaseDate != "" {
-		release, dated = parseReleaseDate(card.ReleaseDate)
-	}
-	switch {
-	case dated:
-		updated = release
-		switch {
-		case releaseIsFuture(card.ReleaseDate, now):
-			state, stateID = "preorder", "preorder"
-			summary = "Preorder - due " + formatReleaseDate(card.ReleaseDate, release)
-		case release.Before(dayStart(now).AddDate(0, 0, -window)):
-			return watchFeedItem{}, false
-		default:
-			state, stateID = "released", "released"
-			summary = "Released " + formatReleaseDate(card.ReleaseDate, release)
-		}
-	case card.AddedAt != nil:
-		added, ok := parseAddedAt(*card.AddedAt)
-		// A bare `YYYY-MM-DD` added_at states no time of day, so it is measured
-		// against the start of the cutoff DAY; a full timestamp is measured
-		// against the same instant of day it carries.
-		cutoff := now.Add(-time.Duration(window) * 24 * time.Hour)
-		if len(*card.AddedAt) == len(time.DateOnly) {
-			cutoff = dayStart(now).AddDate(0, 0, -window)
-		}
-		if !ok || added.Before(cutoff) {
-			return watchFeedItem{}, false
-		}
-		state, stateID = "date unknown", "released"
-		summary = "Added to the catalogue, release date unknown"
-		updated = added
-	default:
+	news, ok := watchNewsOf(card.ReleaseDate, card.AddedAt, window, now)
+	if !ok {
 		return watchFeedItem{}, false
 	}
+	return buildWatchItem(seriesName, entry.Position, card, news, siteURL), true
+}
 
+// buildWatchItem RENDERS a decided item: the title, the authors and the link,
+// which is everything about a work that the decision above deliberately does not
+// read.
+func buildWatchItem(seriesName, position string, card *workCard, news watchNews, siteURL string) watchFeedItem {
 	title := seriesName
-	if entry.Position != "" {
-		title += " #" + entry.Position
+	if position != "" {
+		title += " #" + position
 	}
 	title += ": " + card.Title
 	authors := make([]string, len(card.Authors))
@@ -370,9 +495,9 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		authors[i] = author.Name
 	}
 	return watchFeedItem{
-		id:    watchTagPrefix + "work/" + card.ID + "/" + stateID,
+		id:    watchTagPrefix + "work/" + card.ID + "/" + news.stateID,
 		title: title,
-		state: state,
+		state: news.state,
 		// Config.SiteURL is stripped of its trailing slash once, in New, and
 		// workPath is the one spelling of the work prefix - as on every other
 		// absolute work URL this package builds. site/src/lib/watch-badge.ts
@@ -380,12 +505,12 @@ func watchItem(seriesName string, entry seriesEntry, window int, now time.Time, 
 		// the /works/<slug> shape is a hand-mirrored twin.
 		link:     siteURL + workPath + url.PathEscape(card.ID),
 		authors:  authors,
-		summary:  summary,
-		updated:  updated.UTC(),
+		summary:  news.summary,
+		updated:  news.updated.UTC(),
 		series:   seriesName,
-		position: entry.Position,
-		release:  release.UTC(),
-	}, true
+		position: position,
+		release:  news.release.UTC(),
+	}
 }
 
 // The three release-date helpers below are a HAND-MIRRORED TWIN of

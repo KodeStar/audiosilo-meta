@@ -874,17 +874,10 @@ func TestImportEmptyExportNeedsHuman(t *testing.T) {
 	}
 }
 
+// TestFetchHostAllowlist pins what THIS package owes the shared rule: the
+// refusal happens before any request is made. The rule itself is
+// ghhost.Allowed's, tested there.
 func TestFetchHostAllowlist(t *testing.T) {
-	if allowedAttachmentHost("evil.example.com") {
-		t.Error("non-GitHub host must be rejected")
-	}
-	if !allowedAttachmentHost("github.com") {
-		t.Error("github.com must be allowed")
-	}
-	if !allowedAttachmentHost("user-images.githubusercontent.com") {
-		t.Error("*.githubusercontent.com must be allowed")
-	}
-	// defaultFetch rejects a non-https / non-allowlisted URL before any request.
 	if _, err := defaultFetch("http://github.com/x"); err == nil {
 		t.Error("expected http scheme to be rejected")
 	}

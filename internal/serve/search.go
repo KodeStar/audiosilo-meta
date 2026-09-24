@@ -48,16 +48,83 @@ func ftsQuery(q string) string { return ftsMatch(q, true) }
 // server issues on their behalf.
 func ftsPhrase(q string) string { return ftsMatch(q, false) }
 
+// The BOUNDS on one user query. Every search surface is unauthenticated,
+// CORS-open and hit per keystroke, and an FTS5 MATCH costs one posting-list walk
+// per phrase - so a query is a list of walks the caller chooses the length of.
+// Unbounded, a megabyte of text is one request that reads a large fraction of
+// the index, and a thousand terms is a thousand walks intersected.
+//
+// Both bounds TRUNCATE rather than reject, which is deliberate: this is a
+// per-keystroke UI, and a 400 in the middle of typing is a worse answer than the
+// page for what has been typed so far. The cut is what a person would call the
+// start of what they typed - the leading phrases - so the answer stays about
+// their query.
+//
+// Both are ANCHORED ON THE REAL TREE rather than chosen for looking round, and
+// the rule they are set by is that NO REAL NAME IS CUT: a reader pasting a whole
+// title, a whole person name or a whole series name must get the search they
+// asked for, so a cap below the longest one the catalogue holds would be a bug
+// that only the longest records feel. Measured 2026-09-24 over data/ (278,582
+// works, 123,330 people, 45,203 series):
+//
+//   - longest work title + subtitle: 252 bytes / 44 terms
+//   - longest person name: 161 bytes / 26 terms
+//   - longest series name: 160 bytes / 21 terms
+//   - most terms in any one of them: 46 (a 246-byte work title)
+//
+// Re-measure and raise these if the catalogue ever outgrows them; never truncate
+// a real name to keep a number round.
+const (
+	// maxQueryBytes bounds the raw query text: the next round number at or above
+	// the 252-byte longest title measured above. Cut at a RUNE boundary - a query
+	// is frequently not ASCII (the longest title in the tree is Spanish) and half
+	// a rune is a term FTS5 never indexed.
+	maxQueryBytes = 256
+	// maxQueryPhrases bounds how many FTS5 phrases one query becomes: the next
+	// round number above the 46-term longest title measured above. It counts
+	// PHRASES, which is what the MATCH expression costs: a token whose terms are
+	// all single runes is one adjacent phrase (see tokenPhrases), and every other
+	// token contributes one phrase per term. It is the bound that actually
+	// prices a query - n phrases are n posting-list walks intersected - so the
+	// byte cap above is a second, coarser fence rather than the cost control.
+	maxQueryPhrases = 64
+)
+
+// boundQuery truncates a query to maxQueryBytes, backing the cut off to a rune
+// boundary so the last term is a term the tokenizer could have produced.
+func boundQuery(q string) string {
+	if len(q) <= maxQueryBytes {
+		return q
+	}
+	cut := maxQueryBytes
+	for cut > 0 && !utf8.RuneStart(q[cut]) {
+		cut--
+	}
+	return q[:cut]
+}
+
 // ftsMatch is the single escaping implementation behind both: it is the one
 // place a term becomes an FTS5 phrase, so no caller can ever build a MATCH
-// expression a quote or an operator could break. tokenPhrases decides how each
-// whitespace token is rendered; the star goes on the LAST phrase, which for an
-// initialism is a multi-term phrase (a phrase-final star is legal FTS5 and is
-// what the whitespace-only predecessor emitted for such a token anyway).
+// expression a quote or an operator could break - and, for the same reason, the
+// one place the query BOUNDS above can be applied to every search surface at
+// once. tokenPhrases decides how each whitespace token is rendered; the star
+// goes on the LAST phrase KEPT, which for an initialism is a multi-term phrase
+// (a phrase-final star is legal FTS5 and is what the whitespace-only predecessor
+// emitted for such a token anyway).
 func ftsMatch(q string, prefixLast bool) string {
+	// Grown as needed rather than sized at the cap: almost every real query is a
+	// handful of phrases, and the cap is a ceiling on a hostile one, not an
+	// expectation. The cap is checked in ONE place, where a phrase is about to be
+	// appended, and the label is what lets that single check stop both loops.
 	var parts []string
-	for _, tok := range strings.Fields(q) {
-		parts = append(parts, tokenPhrases(tok)...)
+tokens:
+	for _, tok := range strings.Fields(boundQuery(q)) {
+		for _, phrase := range tokenPhrases(tok) {
+			if len(parts) >= maxQueryPhrases {
+				break tokens
+			}
+			parts = append(parts, phrase)
+		}
 	}
 	if len(parts) == 0 {
 		return `""`
