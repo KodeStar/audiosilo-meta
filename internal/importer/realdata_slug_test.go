@@ -82,7 +82,14 @@ func movedByTransliteration(s string) bool {
 }
 
 // walkEntries calls fn for every entry of a pack family.
+//
+// It skips under -race, which is every real-data test in this file: the walk
+// starts no goroutine, so the detector has nothing to find, and it cost ~3.5
+// minutes there against ~16s without it. The non-race run still walks the tree.
 func walkEntries(t *testing.T, family string, fn func(path, key string, entry map[string]any)) {
+	if raceEnabled {
+		t.Skip("skipped under -race: the real-data walk is sequential, so it adds no race coverage; the non-race run covers it")
+	}
 	root := filepath.Join(dataDir, family)
 	if _, err := os.Stat(root); err != nil {
 		t.Skipf("no data tree at %s: %v", root, err)

@@ -9,6 +9,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -57,31 +58,6 @@ func seedLegacy(t *testing.T, files map[string]string) string {
 	return dir
 }
 
-// treeSnapshot returns every file under dir, data-relative, with its bytes.
-func treeSnapshot(t *testing.T, dir string) map[string]string {
-	t.Helper()
-	out := map[string]string{}
-	err := filepath.Walk(dir, func(p string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() {
-			return err
-		}
-		raw, rerr := os.ReadFile(p)
-		if rerr != nil {
-			return rerr
-		}
-		rel, rerr := filepath.Rel(dir, p)
-		if rerr != nil {
-			return rerr
-		}
-		out[filepath.ToSlash(rel)] = string(raw)
-		return nil
-	})
-	if err != nil {
-		t.Fatal(err)
-	}
-	return out
-}
-
 func paths(files map[string]string) []string {
 	out := make([]string, 0, len(files))
 	for p := range files {
@@ -111,7 +87,7 @@ func TestConvertsToAValidPackTree(t *testing.T) {
 	}
 
 	want := []string{"people/0.json", "series/0.json", "works-community/0/0.json", "works/0/0.json"}
-	if got := paths(treeSnapshot(t, dir)); !equalStrings(got, want) {
+	if got := paths(testpack.Snapshot(t, dir)); !equalStrings(got, want) {
 		t.Errorf("tree = %v, want %v", got, want)
 	}
 
@@ -145,7 +121,7 @@ func TestConversionIsDeterministic(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	a, b := treeSnapshot(t, first), treeSnapshot(t, second)
+	a, b := testpack.Snapshot(t, first), testpack.Snapshot(t, second)
 	if !equalStrings(paths(a), paths(b)) {
 		t.Fatalf("two runs produced different files:\n%v\n%v", paths(a), paths(b))
 	}
@@ -227,7 +203,7 @@ func TestUnrecognizedFileRefusesTheRun(t *testing.T) {
 	if !strings.Contains(err.Error(), "works/du/dune/notes.json") {
 		t.Errorf("error does not name the file: %v", err)
 	}
-	if got := len(treeSnapshot(t, dir)); got != len(files) {
+	if got := len(testpack.Snapshot(t, dir)); got != len(files) {
 		t.Errorf("a refused run changed the tree: %d files, want %d", got, len(files))
 	}
 }
@@ -238,7 +214,7 @@ func TestAlreadyConvertedIsRefused(t *testing.T) {
 	if _, err := Run(Options{DataDir: dir}); err != nil {
 		t.Fatal(err)
 	}
-	before := treeSnapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 	_, err := Run(Options{DataDir: dir})
 	if err == nil {
 		t.Fatal("a converted tree was converted again")
@@ -251,7 +227,7 @@ func TestAlreadyConvertedIsRefused(t *testing.T) {
 	if !strings.Contains(err.Error(), "people/0.json") {
 		t.Errorf("error = %v, want it to name the deciding pack file", err)
 	}
-	after := treeSnapshot(t, dir)
+	after := testpack.Snapshot(t, dir)
 	if !equalStrings(paths(before), paths(after)) {
 		t.Errorf("the refused second run changed the tree")
 	}
@@ -271,7 +247,7 @@ func TestOutOfPlaceLeavesTheSourceAlone(t *testing.T) {
 	if sum.InPlace || sum.Removed != 0 {
 		t.Errorf("an --out run deleted from the source: %+v", sum)
 	}
-	if got := len(treeSnapshot(t, dir)); got != len(files) {
+	if got := len(testpack.Snapshot(t, dir)); got != len(files) {
 		t.Errorf("source tree = %d files, want the original %d", got, len(files))
 	}
 	if res := check.Load(out); !res.OK() {

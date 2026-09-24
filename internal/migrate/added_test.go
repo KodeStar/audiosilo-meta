@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -131,7 +132,7 @@ func TestBackfillRefusesAHistorylessTree(t *testing.T) {
 	if err == nil {
 		t.Fatal("a backfill with no history converted anyway")
 	}
-	if len(treeSnapshot(t, dir)) != len(legacyFixture()) {
+	if len(testpack.Snapshot(t, dir)) != len(legacyFixture()) {
 		t.Error("the failed run changed the tree")
 	}
 }

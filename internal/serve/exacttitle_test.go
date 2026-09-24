@@ -290,6 +290,9 @@ func TestTitleMatchFiltersEveryPhrase(t *testing.T) {
 		// Punctuation is a boundary inside the filter too, so a punctuated title
 		// query is a phrase list rather than one welded adjacency claim.
 		"Halo: Primordium": `title : ("Halo" "Primordium")`,
+		// A possessive group and the explicit ANDs it brings are inside the
+		// parens too.
+		"enders game": `title : (("enders" OR "ender s") AND "game")`,
 		// A query with no term at all still composes a filter FTS5 parses (it
 		// matches nothing); exactTitleHits gates this case out before it is run.
 		"!!": `title : ("")`,

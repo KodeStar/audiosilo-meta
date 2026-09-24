@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -56,7 +57,7 @@ func TestProfileLeavesAnOutOfProfileLegacyFamilyAlone(t *testing.T) {
 		dir := t.TempDir()
 		writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(keyed("aa", 4)))
 		writeFile(t, filepath.Join(dir, legacyRel), body)
-		before := snapshot(t, dir)
+		before := testpack.Snapshot(t, dir)
 
 		var rep Report
 		if mode == "write" {
@@ -78,7 +79,7 @@ func TestProfileLeavesAnOutOfProfileLegacyFamilyAlone(t *testing.T) {
 		// The in-profile family was still handled, so this is scoping and not a
 		// run that did nothing.
 		if mode == "write" {
-			if diff := treeDiff(before, snapshot(t, dir)); !strings.Contains(diff, "people/0.json") {
+			if diff := treeDiff(before, testpack.Snapshot(t, dir)); !strings.Contains(diff, "people/0.json") {
 				t.Errorf("write did not format the in-profile family: %s", diff)
 			}
 			assertProfileClean(t, dir, pack.ProfileCore)
@@ -156,9 +157,9 @@ func TestProfileDoesNotFormatAnOutOfProfilePackFamily(t *testing.T) {
 	// runs are measured against.
 	base := t.TempDir()
 	seed(base)
-	before := snapshot(t, base)
+	before := testpack.Snapshot(t, base)
 	mustWrite(t, base)
-	after := snapshot(t, base)
+	after := testpack.Snapshot(t, base)
 	for _, rel := range []string{worksRel, communityRel} {
 		if after[rel] == before[rel] {
 			t.Fatalf("the default profile did not format %s, so the fixture proves nothing", rel)
@@ -176,7 +177,7 @@ func TestProfileDoesNotFormatAnOutOfProfilePackFamily(t *testing.T) {
 	} {
 		dir := t.TempDir()
 		seed(dir)
-		before := snapshot(t, dir)
+		before := testpack.Snapshot(t, dir)
 
 		// --check must not even REPORT it: naming a file it will never fix would
 		// send a contributor after work that is not theirs.
@@ -187,12 +188,12 @@ func TestProfileDoesNotFormatAnOutOfProfilePackFamily(t *testing.T) {
 		if !named(rep, filepath.Join(dir, filepath.FromSlash(tc.formatted))) {
 			t.Errorf("%s: --check did not name %s: %v", tc.description, tc.formatted, rep.Lines())
 		}
-		if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+		if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 			t.Errorf("%s: --check wrote something: %s", tc.description, diff)
 		}
 
 		mustWriteProfile(t, dir, tc.profile)
-		got := snapshot(t, dir)
+		got := testpack.Snapshot(t, dir)
 		if got[tc.leftAlone] != before[tc.leftAlone] {
 			t.Errorf("%s: --write reformatted %s", tc.description, tc.leftAlone)
 		}
@@ -274,12 +275,12 @@ func TestProfileWriteConverges(t *testing.T) {
 		mustWriteProfile(t, dir, p)
 		assertProfileClean(t, dir, p)
 
-		before := snapshot(t, dir)
+		before := testpack.Snapshot(t, dir)
 		rep := mustWriteProfile(t, dir, p)
 		if !rep.Clean() {
 			t.Errorf("%s: second run reported work: %v", p, rep.Lines())
 		}
-		if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+		if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 			t.Errorf("%s: second run changed the tree: %s", p, diff)
 		}
 	}

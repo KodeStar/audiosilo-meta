@@ -342,6 +342,11 @@ type Summary struct {
 	// a maintainer auditing one is not auditing the other. Empty when the rule
 	// never fired.
 	CredentialMerges []string
+	// Files names the pack files the run's flush created or rewrote,
+	// data-relative and sorted (pack.Written.Wrote) - what a caller reporting
+	// the run lists, since it did not write them itself (the intake bot's import
+	// template). Empty for a dry run and for a run that changed nothing on disk.
+	Files []string
 	// Warnings are informational lines for books or fields that could not be
 	// imported cleanly, in REPORTING order (planner.result): the run-level lines
 	// first, then the per-row "asin/title: reason" ones - conflicts ahead of the

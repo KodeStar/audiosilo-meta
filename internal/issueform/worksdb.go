@@ -252,18 +252,11 @@ func (w *worksDB) live(slug string) (bool, error) {
 // is nothing there.
 func (c *composer) resolveWorkKey(slug string) (key string, ok bool) {
 	if c.profile.Has(pack.FamilyWorks) {
-		if _, exists := c.works[slug]; exists {
-			return slug, true
-		}
-		// The tree's own tombstone table, read exactly as the artifact branch reads
-		// the artifact's: one lookup, and the target must be a live work (pkg/check
-		// enforces that, so a table that fails it is a red tree rather than
-		// something to resolve against).
-		if to := c.redirects[model.RedirectWorks][slug]; to != "" && to != slug {
-			if _, live := c.works[to]; live {
-				c.noteRekey(slug, to)
-				return to, true
+		if live := c.liveWorkSlug(slug); live != "" {
+			if live != slug {
+				c.noteRekey(slug, live)
 			}
+			return live, true
 		}
 		c.fail(StatusNeedsHuman, "work %q was not found; the sidecar's work must already be in the database", slug)
 		return "", false
@@ -345,6 +338,25 @@ func (c *composer) retiredKeysFor(key string) ([]string, bool) {
 		return nil, false
 	}
 	return out, true
+}
+
+// liveWorkSlug is the works-holding half of resolveWorkKey with no verdict
+// attached: slug itself when the catalogue holds it, the survivor when the tree's
+// own tombstone table retires it onto a live work, else "". The table is read
+// exactly as the artifact branch reads the artifact's: one lookup, and the target
+// must be a live work (pkg/check enforces that, so a table that fails it is a red
+// tree rather than something to resolve against). Only meaningful on a root that
+// holds the works family.
+func (c *composer) liveWorkSlug(slug string) string {
+	if _, exists := c.works[slug]; exists {
+		return slug
+	}
+	if to := c.redirects[model.RedirectWorks][slug]; to != "" && to != slug {
+		if _, live := c.works[to]; live {
+			return to
+		}
+	}
+	return ""
 }
 
 // noteRekey reports that the submission named a slug a core merge has retired and

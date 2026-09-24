@@ -29,6 +29,13 @@ updates:
         update-types:
           - minor
           - patch
+    # vite is a devDependency only because yarn 1 does not install vitest's vite
+    # peer; the version that matters is the one astro depends on. A vite major
+    # must arrive with the astro major that adopts it, never ahead of it.
+    ignore:
+      - dependency-name: vite
+        update-types:
+          - version-update:semver-major
 
   # The workflows pin every action to a commit sha with the version in a trailing
   # comment; dependabot understands that form and rewrites both together.

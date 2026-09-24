@@ -1,12 +1,13 @@
 package issueform
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -31,14 +32,7 @@ const (
 	kindDateYear
 	kindDateFlex
 	kindHTTPSURL
-	kindPersonKind
 )
-
-// personKinds is the schema's person.kind enum, taken from pkg/model's own list
-// rather than re-spelled here so the form can never drift from the values the
-// schema accepts - a kind added to the enum is accepted here the moment
-// model.PersonKinds names it, with no second table to remember.
-var personKinds = importer.ToSet(model.PersonKinds())
 
 // correctOp is what a correction DOES to one field. Exactly one of the two is
 // set: kind names the coercion for a scalar the correction REPLACES, and add
@@ -75,7 +69,7 @@ var correctableFields = map[model.Kind]map[string]correctOp{
 	},
 	model.KindPerson: {
 		"name": {kind: kindString}, "sort_name": {kind: kindString},
-		"description": {kind: kindString}, "kind": {kind: kindPersonKind},
+		"description": {kind: kindString}, "kind": {kind: kindString},
 	},
 	model.KindSeries: {
 		"name": {kind: kindString},
@@ -138,9 +132,28 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
 		return
 	}
+	// Two refusals come before the allowlist, because each is a submission
+	// nobody could apply as filed - so "a maintainer will apply it" would be
+	// untrue: a field the addressed record does not have but its work/recording
+	// sibling does, and a value outside the schema's closed vocabulary. A value
+	// that IS in the vocabulary is then spelled the vocabulary's way ("Publisher"
+	// is the enum's "publisher"), so everything below sees the schema's spelling.
+	if c.misaddressedField(ref, fieldName) {
+		return
+	}
+	if msg := enumViolation(ref.kind, fieldName, corrected); msg != "" {
+		c.fail(StatusInvalid, "%s", msg)
+		return
+	}
+	corrected = enumSpelling(recordFields()[ref.kind][fieldName].Enum, corrected)
+
 	op, ok := fields[fieldName]
 	if !ok {
-		c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
+		// Not a field this form writes - unless the record already says exactly
+		// this, in which case there is nothing for anyone to do.
+		if _, record, ok := c.correctionTarget(addr); ok && !c.unchanged(addr, record, fieldName, corrected) {
+			c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
+		}
 		return
 	}
 	if op.add != nil {
@@ -155,7 +168,7 @@ func (c *composer) correctData(s sections) {
 	}
 
 	entry, record, ok := c.correctionTarget(addr)
-	if !ok {
+	if !ok || c.unchanged(addr, record, fieldName, value) {
 		return
 	}
 	if !c.renameableInPlace(addr, ref.kind, fieldName, value) {
@@ -175,6 +188,108 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
+}
+
+// misaddressedField fails a correction that names a field its record does not
+// carry but the record's work/recording sibling does, and reports whether it
+// did. That is the one pair a submitter can confuse, because both are "the book"
+// from a reader's side: a work page shows its recordings' runtimes, so a runtime
+// correction filed against the work URL is the natural mistake - and a work has
+// no runtime_min to correct. Which kind owns a field is read from the schemas
+// (recordFields), never from a list here. A name the addressed record carries
+// anywhere - a work's xref.isbn beside a recording's isbn[] - is not misaddressed:
+// the submitter may well mean this record, and that stays a maintainer's call.
+//
+// The verdict is invalid rather than needs-human: the submitter can fix it by
+// editing the issue's Record, which re-runs the bot, and nobody else can decide
+// WHICH recording they meant.
+func (c *composer) misaddressedField(ref recordRef, field string) bool {
+	fields := recordFields()
+	if _, own := fields[ref.kind][field]; own {
+		return false
+	}
+	sibling, paired := siblingKind[ref.kind]
+	if f, onSibling := fields[sibling][field]; !paired || !onSibling || f.Nested {
+		return false
+	}
+	// The reference to hand out names the work the record lives under NOW: a
+	// submitter who pasted a retired slug's page URL was 301'd there and never
+	// learned it changed, and a suggestion built from the retired slug would
+	// list no recordings and point at a work the bot then cannot find.
+	work := ref.slug
+	if ref.kind == model.KindRecording {
+		work = ref.workSlug
+	}
+	merged := ""
+	if live := c.liveWorkSlug(work); live != "" && live != work {
+		merged = fmt.Sprintf(" (%q has been merged into %q)", work, live)
+		work = live
+	}
+	if ref.kind == model.KindWork {
+		c.fail(StatusInvalid, "%q is a recording field, not a work field - it describes one narration of the book, and a work can have several. "+
+			"Set Record to the recording instead, in the form %s%s%s",
+			field, recordingRef(work, "<recording>"), c.recordingChoices(work), merged)
+	} else {
+		c.fail(StatusInvalid, "%q is a work field, not a recording field - it describes the book itself, whichever narration you listen to. "+
+			"Set Record to the work instead: %s%s", field, workPageURL(work), merged)
+	}
+	return true
+}
+
+// siblingKind pairs the two record kinds that are one book from a reader's side.
+var siblingKind = map[model.Kind]model.Kind{
+	model.KindWork:      model.KindRecording,
+	model.KindRecording: model.KindWork,
+}
+
+// recordingChoices lists the recordings of a catalogued work as references a
+// submitter can paste, or "" when the work is not in the loaded catalogue. The
+// list is capped: a work with a dozen editions still gets a readable sentence.
+func (c *composer) recordingChoices(workSlug string) string {
+	w := c.works[workSlug]
+	if w == nil || len(w.Recordings) == 0 {
+		return ""
+	}
+	ids := make([]string, 0, len(w.Recordings))
+	for _, r := range w.Recordings {
+		ids = append(ids, r.ID)
+	}
+	sort.Strings(ids)
+	const shown = 5
+	refs := make([]string, 0, shown)
+	for _, id := range ids[:min(shown, len(ids))] {
+		refs = append(refs, recordingRef(workSlug, id))
+	}
+	more := ""
+	if len(ids) > shown {
+		more = fmt.Sprintf(" (and %d more)", len(ids)-shown)
+	}
+	return " - this work's recordings are " + strings.Join(refs, ", ") + more
+}
+
+// workPageURL is a work's page on the site - the reference the correction form
+// recommends, and one resolveRecordRef reads back as that work.
+func workPageURL(workSlug string) string {
+	return model.SiteURL + "/" + string(model.RedirectWorks) + "/" + workSlug
+}
+
+// unchanged fails a correction whose value is what the record already carries
+// and reports whether it did. It is the one no-op rule for every scalar a
+// correction can name: writing the value back would change nothing but the
+// provenance, a write with no fact in it. Values are compared as JSON, so a
+// recorded 400 and a corrected 400 agree whichever Go type decoded them.
+func (c *composer) unchanged(addr entryAddr, record map[string]any, field string, value any) bool {
+	recorded, ok := record[field]
+	if !ok {
+		return false
+	}
+	a, errA := json.Marshal(recorded)
+	b, errB := json.Marshal(value)
+	if errA != nil || errB != nil || !bytes.Equal(a, b) {
+		return false
+	}
+	c.failNoop("%s on %s is already %s", field, addr.label(c), a)
+	return true
 }
 
 // correctionTarget reads the record a correction addresses. entry is the unit
@@ -528,16 +643,6 @@ func coerceFieldValue(kind fieldKind, raw string) (any, bool) {
 	case kindHTTPSURL:
 		if strings.HasPrefix(raw, "https://") {
 			return raw, true
-		}
-		return nil, false
-	case kindPersonKind:
-		// The enum values are lowercase, and a submitter typing "Publisher"
-		// means the same thing, so the input is lowercased before the lookup.
-		// Anything still outside the enum is rejected here rather than written
-		// as a schema-invalid record.
-		k := strings.ToLower(raw)
-		if personKinds[k] {
-			return k, true
 		}
 		return nil, false
 	}

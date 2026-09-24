@@ -8,6 +8,10 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   site: 'https://meta.audiosilo.app',
   output: 'static',
+  // Astro 7's default ('jsx') drops a line break between an inline element and
+  // the text beside it, and the templates wrap prose across lines: under it the
+  // pages read "thecontributing guideand thelicensing". Keep the old collapsing.
+  compressHTML: true,
   integrations: [
     react(),
     sitemap({
@@ -24,6 +28,10 @@ export default defineConfig({
         ),
     }),
   ],
+  // package.json lists `vite` as a devDependency ONLY because vitest declares it
+  // as a peer and yarn 1 does not install peers. Astro brings its own vite, so
+  // that entry must stay inside astro's vite range (one copy in yarn.lock);
+  // dependabot ignores vite majors so one can never land ahead of astro.
   vite: {
     plugins: [tailwindcss()],
     // /docs/api renders internal/serve/openapi.json, which sits one level above
@@ -36,6 +44,10 @@ export default defineConfig({
     // server hand out anything in the checkout - the entire data/ tree, a local
     // meta.sqlite, a .env - over a port that is often bound to more than
     // localhost. The page needs exactly one file, and it is under here.
-    server: { fs: { allow: ['../internal'] } },
+    //
+    // '.' (this package, resolved against the Vite root) must be listed too: an
+    // explicit allow list REPLACES Vite's default, so without it every /src
+    // module an island loads answers 403 in dev and no island hydrates.
+    server: { fs: { allow: ['.', '../internal'] } },
   },
 })
