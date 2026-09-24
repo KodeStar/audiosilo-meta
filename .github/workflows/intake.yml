@@ -190,11 +190,20 @@ jobs:
             echo
             echo "License layer: **${layer}**."
             echo
+            # Files is what the pull request will actually carry - the data/
+            # changes in the working tree, read AFTER the libex fill step, which
+            # can rewrite packs metaissue never listed - not result.json's files.
+            # Capped at 50 (an import can touch hundreds of packs; the full list
+            # is the pull request's own Files changed tab).
+            mapfile -t files < <(git -c core.quotePath=false status --porcelain --untracked-files=all -- data/ | cut -c4- | sort)
             echo "Files:"
-            # .files[]? tolerates an absent/null files field (metaissue emits []
-            # so this is belt-and-braces); the import path reports no file list.
-            jq -r '.files[]? | "- `" + . + "`"' result.json
+            for f in "${files[@]:0:50}"; do echo "- \`${f}\`"; done
+            if [ "${#files[@]}" -gt 50 ]; then
+              echo "- ... and $(( ${#files[@]} - 50 )) more (see the Files changed tab)"
+            fi
             echo
+            # .messages arrives BOUNDED (issueform.Result.MarshalJSON): a body
+            # stops at 65,536 characters; the full list is .all_messages, in the log.
             mapfile -t msgs < <(jq -r '.messages[]?' result.json)
             if [ "${#msgs[@]}" -gt 0 ]; then
               echo "Notes:"

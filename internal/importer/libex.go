@@ -83,7 +83,13 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	// already dropped those rows - but the two counts are of the same thing, and
 	// clobbering would be a bug the day that stops being true.
 	sum.SkippedRows += parsed.skipped
-	sum.Warnings = append(parsed.warningLines(opts.Mode.boundedByCatalogue()), sum.Warnings...)
+	// Aggregated parse lines are run-level and lead; a create run's per-row
+	// parse lines follow the run's own, keeping Summary.Warnings' order.
+	if bounded := opts.Mode.boundedByCatalogue(); bounded {
+		sum.Warnings = append(parsed.warningLines(bounded), sum.Warnings...)
+	} else {
+		sum.Warnings = append(sum.Warnings, parsed.warningLines(bounded)...)
+	}
 	return sum, runErr
 }
 

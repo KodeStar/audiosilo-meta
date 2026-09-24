@@ -342,8 +342,9 @@ type Summary struct {
 	// a maintainer auditing one is not auditing the other. Empty when the rule
 	// never fired.
 	CredentialMerges []string
-	// Warnings are informational "asin/title: reason" lines for books or fields
-	// that could not be imported cleanly.
+	// Warnings are informational lines for books or fields that could not be
+	// imported cleanly, run-level lines before per-row "asin/title: reason"
+	// ones (planner.result).
 	Warnings []string
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
