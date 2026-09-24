@@ -8,6 +8,10 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   site: 'https://meta.audiosilo.app',
   output: 'static',
+  // Astro 7's default ('jsx') drops a line break between an inline element and
+  // the text beside it, and the templates wrap prose across lines: under it the
+  // pages read "thecontributing guideand thelicensing". Keep the old collapsing.
+  compressHTML: true,
   integrations: [
     react(),
     sitemap({
