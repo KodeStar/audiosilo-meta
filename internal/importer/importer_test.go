@@ -151,15 +151,7 @@ func TestSummaryFilesAreThePacksTheFlushWrote(t *testing.T) {
 		}
 	}
 
-	books := filepath.Join(t.TempDir(), "books.json")
-	if err := os.WriteFile(books, fixture, 0o644); err != nil {
-		t.Fatal(err)
-	}
-	again, err := Run(books, Options{DataDir: dataDir, ImportDate: testImportDate})
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(again.Files) != 0 {
+	if again := runUserImport(t, dataDir, string(fixture)); len(again.Files) != 0 {
 		t.Errorf("a re-run that changed nothing reported files: %v", again.Files)
 	}
 }

@@ -6,6 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // The refusals, all in one place.
@@ -60,7 +62,7 @@ func TestShallowCloneIsRefused(t *testing.T) {
 	}
 	shallowData := filepath.Join(shallow, "data")
 
-	before := treeSnapshot(t, shallowData)
+	before := testpack.Snapshot(t, shallowData)
 	_, err := Run(Options{DataDir: shallowData, Backfill: true})
 	if err == nil {
 		t.Fatal("a shallow clone was converted; every added_at would be the tip commit's date")
@@ -68,7 +70,7 @@ func TestShallowCloneIsRefused(t *testing.T) {
 	if !strings.Contains(err.Error(), "shallow") || !strings.Contains(err.Error(), "unshallow") {
 		t.Errorf("error = %v, want it to name the shallow clone and the fix", err)
 	}
-	if len(treeSnapshot(t, shallowData)) != len(before) {
+	if len(testpack.Snapshot(t, shallowData)) != len(before) {
 		t.Error("the refused run changed the tree")
 	}
 }
@@ -150,7 +152,7 @@ func TestNonJSONFileRefusesTheRun(t *testing.T) {
 	if !strings.Contains(err.Error(), "works/du/dune/NOTES.md") || !strings.Contains(err.Error(), "not JSON") {
 		t.Errorf("error = %v, want it to name the file and say it is not JSON", err)
 	}
-	if len(treeSnapshot(t, dir)) != len(files)+1 {
+	if len(testpack.Snapshot(t, dir)) != len(files)+1 {
 		t.Error("the refused run changed the tree")
 	}
 }
@@ -238,7 +240,7 @@ func TestScanRefusals(t *testing.T) {
 			if !strings.Contains(err.Error(), c.want) {
 				t.Errorf("error = %v, want it to contain %q", err, c.want)
 			}
-			if got := len(treeSnapshot(t, dir)); got != len(files) {
+			if got := len(testpack.Snapshot(t, dir)); got != len(files) {
 				t.Errorf("the refused run changed the tree: %d files, want %d", got, len(files))
 			}
 		})

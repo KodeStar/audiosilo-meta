@@ -2,9 +2,6 @@ package issueform
 
 import (
 	"encoding/json"
-	"io/fs"
-	"os"
-	"path/filepath"
 	"slices"
 	"sort"
 	"strings"
@@ -774,13 +771,13 @@ func TestImportFolderScanNeedsHuman(t *testing.T) {
 // before and after, not against a list the test composes.
 func TestImportResultNamesTheFilesItWrote(t *testing.T) {
 	dir := seedTree(t)
-	before := snapshotTree(t, dir)
+	before := testpack.Snapshot(t, dir)
 	body := importBody("OpenAudible (books.json)", openAudibleExport)
 	res := Process(Options{DataDir: dir, Template: "import", Body: body})
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	after := snapshotTree(t, dir)
+	after := testpack.Snapshot(t, dir)
 	var changed []string
 	for rel, b := range after {
 		if prev, ok := before[rel]; !ok || prev != b {
@@ -794,31 +791,6 @@ func TestImportResultNamesTheFilesItWrote(t *testing.T) {
 	if !slices.Equal(res.Files, changed) {
 		t.Errorf("Files = %v, want the files the run changed: %v", res.Files, changed)
 	}
-}
-
-// snapshotTree reads every file under dir, keyed by its dir-relative slash path.
-func snapshotTree(t *testing.T, dir string) map[string]string {
-	t.Helper()
-	out := map[string]string{}
-	err := filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
-		if err != nil || d.IsDir() {
-			return err
-		}
-		b, err := os.ReadFile(p)
-		if err != nil {
-			return err
-		}
-		rel, err := filepath.Rel(dir, p)
-		if err != nil {
-			return err
-		}
-		out[filepath.ToSlash(rel)] = string(b)
-		return nil
-	})
-	if err != nil {
-		t.Fatal(err)
-	}
-	return out
 }
 
 // TestImportReadsTheAttachmentUnderEitherLabel: the attachment field was

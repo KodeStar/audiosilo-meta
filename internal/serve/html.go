@@ -41,7 +41,7 @@ const siteName = "AudioSilo Meta"
 // defaultSiteURL is the public origin metaserve assumes when --site-url is not
 // given. The server cannot otherwise know its own origin, and a canonical link
 // or an og:url has to be absolute.
-const defaultSiteURL = "https://meta.audiosilo.app"
+const defaultSiteURL = model.SiteURL
 
 // defaultOGImage is the site icon used when the entity has no cover of its own
 // (every person and series page, and a work whose recordings carry no cover).

@@ -1,41 +1,45 @@
 package issueform
 
 import (
+	"maps"
 	"slices"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// TestRecordFieldsReadTheSchemas pins the schema reader recordFields is built on:
-// it parses (a failure there panics every correction), it resolves a shared
-// $ref down to its enum, and it places each field on the kind that owns it.
+// TestRecordFieldsReadTheSchemas: recordFields holds a field table for every
+// kind a correction can address (check.FieldsOf is pinned in pkg/check), and the
+// genre vocabulary this package validates submissions against is that table's.
 func TestRecordFieldsReadTheSchemas(t *testing.T) {
-	fields, err := loadRecordFields()
-	if err != nil {
-		t.Fatalf("loadRecordFields: %v", err)
-	}
-	for _, k := range []model.Kind{model.KindWork, model.KindRecording, model.KindPerson, model.KindSeries} {
-		if got := fields[k]["license"].enum; !slices.Equal(got, []string{licenseCC0}) {
-			t.Errorf("%s license enum = %v, want [%s] (through common.schema.json#/$defs/license)", k, got, licenseCC0)
+	fields := recordFields()
+	for kind := range correctableFields {
+		if got := fields[kind]["license"].Enum; !slices.Equal(got, []string{licenseCC0}) {
+			t.Errorf("%s license enum = %v, want [%s]", kind, got, licenseCC0)
 		}
 	}
-	kinds := slices.Sorted(slices.Values(fields[model.KindPerson]["kind"].enum))
-	if want := slices.Sorted(slices.Values(model.PersonKinds())); !slices.Equal(kinds, want) {
-		t.Errorf("person kind enum = %v, want model.PersonKinds() %v", kinds, want)
+	if got := len(fields[model.KindWork]["genres"].ItemEnum); got == 0 || got != len(genreVocabulary()) {
+		t.Errorf("work genres item enum has %d values, the genre vocabulary %d", got, len(genreVocabulary()))
 	}
-	if got := len(fields[model.KindWork]["genres"].itemEnum); got != len(genreVocabulary()) {
-		t.Errorf("work genres item enum has %d values, want the genre vocabulary's %d", got, len(genreVocabulary()))
+}
+
+// TestRecordingRefRoundTrips: the recording reference a verdict hands out must
+// resolve back to that recording when pasted into Record - it is the only
+// reference a recording has, since it has no page of its own.
+func TestRecordingRefRoundTrips(t *testing.T) {
+	ref := recordingRef("existing-work", "john-smith-2020")
+	if strings.Contains(ref, "/ex/") {
+		t.Errorf("the reference %s spells a shard directory", ref)
 	}
-	if _, ok := fields[model.KindRecording]["runtime_min"]; !ok {
-		t.Error("runtime_min is not read as a recording field")
+	rr, ok := resolveRecordRef(ref)
+	if !ok || rr.kind != model.KindRecording || rr.workSlug != "existing-work" || rr.slug != "john-smith-2020" {
+		t.Errorf("%s resolves to %+v, %v, want the recording", ref, rr, ok)
 	}
-	if _, ok := fields[model.KindWork]["runtime_min"]; ok {
-		t.Error("runtime_min is read as a work field")
-	}
-	if fs, ok := fields[model.KindWork]["isbn"]; !ok || !fs.nested {
-		t.Errorf("a work's xref.isbn is not read as a nested name: %+v, %v", fs, ok)
+	// The sharded spelling older issues carry still resolves the same way.
+	if old, ok := resolveRecordRef("data/works/ex/existing-work/recordings/john-smith-2020.json"); !ok || old != rr {
+		t.Errorf("the sharded form resolves to %+v, %v, want %+v", old, ok, rr)
 	}
 }
 
@@ -49,7 +53,7 @@ func TestCorrectableFieldsAreSchemaFields(t *testing.T) {
 	for kind, ops := range correctableFields {
 		for name := range ops {
 			fs, ok := fields[kind][name]
-			if !ok || fs.nested {
+			if !ok || fs.Nested {
 				t.Errorf("correctableFields lists %s.%s, which is no top-level field of the %s schema", kind, name, kind)
 			}
 		}
@@ -74,7 +78,7 @@ func TestRuntimeOnAWorkNamesTheRecording(t *testing.T) {
 			if res.Status != StatusInvalid {
 				t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)
 			}
-			want := recordingRefPath("existing-work", "john-smith-2020")
+			want := recordingRef("existing-work", "john-smith-2020")
 			if !anyContains(res.Messages, `"runtime_min" is a recording field`) || !anyContains(res.Messages, want) {
 				t.Errorf("the verdict does not name the recording (%s): %v", want, res.Messages)
 			}
@@ -86,11 +90,6 @@ func TestRuntimeOnAWorkNamesTheRecording(t *testing.T) {
 			}
 		})
 	}
-
-	rr, ok := resolveRecordRef(recordingRefPath("existing-work", "john-smith-2020"))
-	if !ok || rr.kind != model.KindRecording || rr.workSlug != "existing-work" || rr.slug != "john-smith-2020" {
-		t.Errorf("the reference the verdict offers does not resolve to the recording: %+v, %v", rr, ok)
-	}
 }
 
 // TestRuntimeOnAWorkFollowsTheCorrectionOnceRefiled: the reference the verdict
@@ -98,7 +97,7 @@ func TestRuntimeOnAWorkNamesTheRecording(t *testing.T) {
 // applies.
 func TestRuntimeOnAWorkFollowsTheCorrectionOnceRefiled(t *testing.T) {
 	dir := seedTree(t)
-	body := correctBody(recordingRefPath("existing-work", "john-smith-2020"), "runtime_min", "499", "Audible listing", true)
+	body := correctBody(recordingRef("existing-work", "john-smith-2020"), "runtime_min", "499", "Audible listing", true)
 	if res := Process(Options{DataDir: dir, Template: "correct-data", Body: body}); res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
@@ -153,7 +152,7 @@ func TestClosedVocabularyValuesAreRefusedAsInvalid(t *testing.T) {
 		{"data/people/jo/john-smith.json", "license", "MIT", `"CC0-1.0"`},
 		{"data/series/ex/existing-series.json", "license", "MIT", `"CC0-1.0"`},
 		{"data/people/jo/john-smith.json", "kind", "corporation", `"publisher"`},
-		{"data/works/ex/existing-work/work.json", "genres", "fantasy, space opera noir", "values the schema lists"},
+		{"data/works/ex/existing-work/work.json", "genres", "fantasy, space opera noir", "values listed in"},
 	}
 	for _, c := range cases {
 		t.Run(c.field+"="+c.value, func(t *testing.T) {
@@ -196,5 +195,47 @@ func TestClosedVocabularyKeepsTheGenuineVerdicts(t *testing.T) {
 				t.Errorf("a no-op license correction was not reported as one: %v", res.Messages)
 			}
 		})
+	}
+}
+
+// TestCorrectionToTheRecordedValueIsANoop is the one no-op rule over every
+// scalar: a correction stating what the record already says writes NOTHING -
+// not even its provenance, which would be a write with no fact in it - and is
+// reported as a duplicate. The value is compared after coercion and in the
+// schema's own spelling, so "400" matches a recorded 400 and "PUBLISHER" a
+// recorded "publisher".
+func TestCorrectionToTheRecordedValueIsANoop(t *testing.T) {
+	const rec = "data/works/ex/existing-work/recordings/john-smith-2020.json"
+	cases := []struct{ ref, field, value string }{
+		{rec, "runtime_min", "400"},
+		{rec, "abridged", "unabridged"},
+		{rec, "language", "EN"},
+		{"data/works/ex/existing-work/work.json", "title", "Existing Work"},
+		{"data/works/ex/existing-work/work.json", "license", "cc0-1.0"},
+		{"data/people/jo/john-smith.json", "name", "John Smith"},
+	}
+	for _, c := range cases {
+		t.Run(c.field+"="+c.value, func(t *testing.T) {
+			dir := seedTree(t)
+			before := testpack.Snapshot(t, dir)
+			res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody(c.ref, c.field, c.value, "web", true)})
+			if res.Status != StatusDuplicate || !anyContains(res.Messages, "nothing to change") {
+				t.Fatalf("status = %q, want a no-op duplicate; messages = %v", res.Status, res.Messages)
+			}
+			if !maps.Equal(before, testpack.Snapshot(t, dir)) {
+				t.Error("a no-op correction changed the tree")
+			}
+		})
+	}
+
+	// A kind stated in another case is still the enum's value once spelled the
+	// schema's way, so correcting a publisher record to "PUBLISHER" is a no-op too.
+	dir := seedTree(t)
+	if res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody("data/people/jo/john-smith.json", "kind", "publisher", "web", true)}); res.Status != StatusOK {
+		t.Fatalf("setting the kind: status = %q, messages = %v", res.Status, res.Messages)
+	}
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody("data/people/jo/john-smith.json", "kind", "PUBLISHER", "web", true)})
+	if res.Status != StatusDuplicate {
+		t.Errorf("status = %q, want a no-op duplicate; messages = %v", res.Status, res.Messages)
 	}
 }

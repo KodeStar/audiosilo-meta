@@ -179,16 +179,11 @@ type composer struct {
 	// store's queue is not introspectable, and "nothing to write" is a verdict,
 	// so the count is kept here.
 	queued int
-	// wrote is the pack files flush actually rewrote, data-relative.
+	// wrote is the pack files flush actually rewrote, data-relative - the
+	// composer's own flush, or the bulk importer's on the import template.
 	wrote    []string
 	messages []string
 	status   Status
-	// handled is set by paths that write to disk and validate themselves
-	// (import), so Process skips the generic flush.
-	handled bool
-	// directFiles lists the files a self-handling path wrote (data/-prefixed):
-	// the import template's, off the importer's own flush.
-	directFiles []string
 }
 
 // Process turns one issue-form submission into records and returns the outcome.
@@ -284,16 +279,21 @@ func process(opts Options) Result {
 		return Result{Status: StatusNeedsHuman, Messages: []string{err.Error()}}
 	}
 	c.store = store
-	// The import template hands the tree to the bulk importer, which loads the
-	// catalogue through a store of its own, so the composer's dedup maps would be
-	// a SECOND whole-catalogue load held live for the importer's entire run -
-	// doubling the peak of the one path that also holds the largest attachment.
-	// The store is still opened above: its legacy-layout refusal is the verdict.
-	if tmpl != "import" {
-		c.loadExisting()
-	}
-
 	sections := parseBody(opts.Body)
+
+	// The import template hands the tree to the bulk importer, which writes and
+	// validates it itself and loads the catalogue through a store of its own - so
+	// it is dispatched BEFORE loadExisting, whose dedup maps would otherwise be a
+	// SECOND whole-catalogue load held live for the importer's entire run. The
+	// store is still opened above: its legacy-layout refusal is the verdict.
+	if tmpl == "import" {
+		c.importLibrary(sections)
+		if c.status == "" {
+			c.status = StatusOK
+		}
+		return Result{Status: c.status, Files: c.fileList(), Messages: c.messages}
+	}
+	c.loadExisting()
 
 	switch tmpl {
 	case "add-work":
@@ -306,18 +306,8 @@ func process(opts Options) Result {
 		c.addSidecar(sections, model.KindCharacters)
 	case "recaps":
 		c.addSidecar(sections, model.KindRecaps)
-	case "import":
-		c.importLibrary(sections)
 	default:
 		return unknownTemplate(opts.Template)
-	}
-
-	// Self-handling paths (import) produced their own outcome.
-	if c.handled {
-		if c.status == "" {
-			c.status = StatusOK
-		}
-		return Result{Status: c.status, Files: c.directFiles, Messages: c.messages}
 	}
 
 	// A terminal status (duplicate/needs-human/invalid) short-circuits: never
@@ -684,15 +674,10 @@ func (c *composer) validate() []string {
 // fileList returns the pack files flush rewrote, data/-prefixed and sorted. It
 // is what the intake workflow commits, so it names FILES rather than entries -
 // one pack usually carries several of a submission's records.
-func (c *composer) fileList() []string { return dataFiles(c.wrote) }
-
-// dataFiles renders data-relative pack paths as the data/-prefixed, sorted list
-// Result.Files carries - for the compose path's own flush and for the import
-// template's, which the importer performs.
-func dataFiles(rel []string) []string {
-	out := make([]string, 0, len(rel))
-	for _, r := range rel {
-		out = append(out, "data/"+r)
+func (c *composer) fileList() []string {
+	out := make([]string, 0, len(c.wrote))
+	for _, rel := range c.wrote {
+		out = append(out, "data/"+rel)
 	}
 	sort.Strings(out)
 	return out

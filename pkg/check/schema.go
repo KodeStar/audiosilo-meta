@@ -31,16 +31,6 @@ var entitySchemas = map[model.Kind]string{
 	model.KindDescription: "description.schema.json",
 }
 
-// EntitySchemaFile names the schema file (under schema/, in meta.SchemaFS) that
-// defines a record kind, and reports false for a kind with none. It is exported
-// so a reader that needs to know what a kind's FIELDS are - internal/issueform
-// telling a correction which record a field lives on - asks this table rather
-// than keeping a second one.
-func EntitySchemaFile(k model.Kind) (string, bool) {
-	f, ok := entitySchemas[k]
-	return f, ok
-}
-
 // wrapperSchemas are the per-family pack wrappers. The pack walker reaches an
 // entry THROUGH its family's wrapper (see schemaSet.entry), so these files are
 // load-bearing rather than documentation: change what a wrapper says an entry
@@ -82,32 +72,9 @@ type schemaSet struct {
 // place the authoritative schema/*.json files enter the validator, and it
 // compiles ALL of them - a schema no tool loads is a contract free to drift.
 func compileSchemas() (schemaSet, error) {
-	c := jsonschema.NewCompiler()
-	// Assert "format" rather than treating it as an annotation, which is
-	// draft 2020-12's default. Without this a date's regex is the only gate and
-	// "2026-02-30" validates: the pattern says the shape, the format says the
-	// value is a real point in time.
-	c.AssertFormat()
-
-	files := []string{"common.schema.json", redirectsSchema}
-	for _, f := range entitySchemas {
-		files = append(files, f)
-	}
-	for _, f := range wrapperSchemas {
-		files = append(files, f)
-	}
-	for _, f := range files {
-		data, err := meta.SchemaFS.ReadFile("schema/" + f)
-		if err != nil {
-			return schemaSet{}, fmt.Errorf("read embedded schema %s: %w", f, err)
-		}
-		doc, err := jsonschema.UnmarshalJSON(bytes.NewReader(data))
-		if err != nil {
-			return schemaSet{}, fmt.Errorf("parse schema %s: %w", f, err)
-		}
-		if err := c.AddResource(schemaBase+f, doc); err != nil {
-			return schemaSet{}, fmt.Errorf("add schema %s: %w", f, err)
-		}
+	c, err := newSchemaCompiler()
+	if err != nil {
+		return schemaSet{}, err
 	}
 
 	set := schemaSet{
@@ -138,6 +105,39 @@ func compileSchemas() (schemaSet, error) {
 	}
 	set.redirects = reds
 	return set, nil
+}
+
+// newSchemaCompiler returns a compiler holding every embedded schema file as a
+// resource, so any of them - and every $ref between them - compiles from it.
+func newSchemaCompiler() (*jsonschema.Compiler, error) {
+	c := jsonschema.NewCompiler()
+	// Assert "format" rather than treating it as an annotation, which is
+	// draft 2020-12's default. Without this a date's regex is the only gate and
+	// "2026-02-30" validates: the pattern says the shape, the format says the
+	// value is a real point in time.
+	c.AssertFormat()
+
+	files := []string{"common.schema.json", redirectsSchema}
+	for _, f := range entitySchemas {
+		files = append(files, f)
+	}
+	for _, f := range wrapperSchemas {
+		files = append(files, f)
+	}
+	for _, f := range files {
+		data, err := meta.SchemaFS.ReadFile("schema/" + f)
+		if err != nil {
+			return nil, fmt.Errorf("read embedded schema %s: %w", f, err)
+		}
+		doc, err := jsonschema.UnmarshalJSON(bytes.NewReader(data))
+		if err != nil {
+			return nil, fmt.Errorf("parse schema %s: %w", f, err)
+		}
+		if err := c.AddResource(schemaBase+f, doc); err != nil {
+			return nil, fmt.Errorf("add schema %s: %w", f, err)
+		}
+	}
+	return c, nil
 }
 
 // violation is one schema failure kept apart from its rendering: Loc is the

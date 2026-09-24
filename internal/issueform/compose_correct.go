@@ -1,13 +1,13 @@
 package issueform
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"sort"
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -32,14 +32,7 @@ const (
 	kindDateYear
 	kindDateFlex
 	kindHTTPSURL
-	kindPersonKind
 )
-
-// personKinds is the schema's person.kind enum, taken from pkg/model's own list
-// rather than re-spelled here so the form can never drift from the values the
-// schema accepts - a kind added to the enum is accepted here the moment
-// model.PersonKinds names it, with no second table to remember.
-var personKinds = importer.ToSet(model.PersonKinds())
 
 // correctOp is what a correction DOES to one field. Exactly one of the two is
 // set: kind names the coercion for a scalar the correction REPLACES, and add
@@ -76,7 +69,7 @@ var correctableFields = map[model.Kind]map[string]correctOp{
 	},
 	model.KindPerson: {
 		"name": {kind: kindString}, "sort_name": {kind: kindString},
-		"description": {kind: kindString}, "kind": {kind: kindPersonKind},
+		"description": {kind: kindString}, "kind": {kind: kindString},
 	},
 	model.KindSeries: {
 		"name": {kind: kindString},
@@ -142,7 +135,9 @@ func (c *composer) correctData(s sections) {
 	// Two refusals come before the allowlist, because each is a submission
 	// nobody could apply as filed - so "a maintainer will apply it" would be
 	// untrue: a field the addressed record does not have but its work/recording
-	// sibling does, and a value outside the schema's closed vocabulary.
+	// sibling does, and a value outside the schema's closed vocabulary. A value
+	// that IS in the vocabulary is then spelled the vocabulary's way ("Publisher"
+	// is the enum's "publisher"), so everything below sees the schema's spelling.
 	if c.misaddressedField(ref, fieldName) {
 		return
 	}
@@ -150,12 +145,15 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusInvalid, "%s", msg)
 		return
 	}
+	corrected = enumSpelling(recordFields()[ref.kind][fieldName].Enum, corrected)
+
 	op, ok := fields[fieldName]
 	if !ok {
-		if c.closedFieldUnchanged(addr, ref.kind, fieldName, corrected) {
-			return
+		// Not a field this form writes - unless the record already says exactly
+		// this, in which case there is nothing for anyone to do.
+		if _, record, ok := c.correctionTarget(addr); ok && !c.unchanged(addr, record, fieldName, corrected) {
+			c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
 		}
-		c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
 		return
 	}
 	if op.add != nil {
@@ -170,7 +168,7 @@ func (c *composer) correctData(s sections) {
 	}
 
 	entry, record, ok := c.correctionTarget(addr)
-	if !ok {
+	if !ok || c.unchanged(addr, record, fieldName, value) {
 		return
 	}
 	if !c.renameableInPlace(addr, ref.kind, fieldName, value) {
@@ -210,24 +208,25 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 	if _, own := fields[ref.kind][field]; own {
 		return false
 	}
-	switch ref.kind {
-	case model.KindWork:
-		if fs, onRec := fields[model.KindRecording][field]; !onRec || fs.nested {
-			return false
-		}
-		c.fail(StatusInvalid, "%q is a recording field, not a work field - it describes one narration of the book, and a work can have several. "+
-			"Set Record to the recording instead, in the form %s%s",
-			field, recordingRefPath(ref.slug, "<recording>"), c.recordingChoices(ref.slug))
-	case model.KindRecording:
-		if fs, onWork := fields[model.KindWork][field]; !onWork || fs.nested {
-			return false
-		}
-		c.fail(StatusInvalid, "%q is a work field, not a recording field - it describes the book itself, whichever narration you listen to. "+
-			"Set Record to the work instead: %s", field, workPageURL(ref.workSlug))
-	default:
+	sibling, paired := siblingKind[ref.kind]
+	if f, onSibling := fields[sibling][field]; !paired || !onSibling || f.Nested {
 		return false
 	}
+	if ref.kind == model.KindWork {
+		c.fail(StatusInvalid, "%q is a recording field, not a work field - it describes one narration of the book, and a work can have several. "+
+			"Set Record to the recording instead, in the form %s%s",
+			field, recordingRef(ref.slug, "<recording>"), c.recordingChoices(ref.slug))
+	} else {
+		c.fail(StatusInvalid, "%q is a work field, not a recording field - it describes the book itself, whichever narration you listen to. "+
+			"Set Record to the work instead: %s", field, workPageURL(ref.workSlug))
+	}
 	return true
+}
+
+// siblingKind pairs the two record kinds that are one book from a reader's side.
+var siblingKind = map[model.Kind]model.Kind{
+	model.KindWork:      model.KindRecording,
+	model.KindRecording: model.KindWork,
 }
 
 // recordingChoices lists the recordings of a catalogued work as references a
@@ -246,7 +245,7 @@ func (c *composer) recordingChoices(workSlug string) string {
 	const shown = 5
 	refs := make([]string, 0, shown)
 	for _, id := range ids[:min(shown, len(ids))] {
-		refs = append(refs, recordingRefPath(workSlug, id))
+		refs = append(refs, recordingRef(workSlug, id))
 	}
 	more := ""
 	if len(ids) > shown {
@@ -255,44 +254,28 @@ func (c *composer) recordingChoices(workSlug string) string {
 	return " - this work's recordings are " + strings.Join(refs, ", ") + more
 }
 
-// recordingRefPath is the reference a correction's Record takes for a recording.
-// A recording has no page of its own, so it is the data-tree path form refPath
-// reads; the shard directory is ignored on the way in (the slug resolves the
-// record) and is written as the slug's first two characters because that is
-// what the form's own placeholder shows.
-func recordingRefPath(workSlug, recSlug string) string {
-	return "data/works/" + workSlug[:min(2, len(workSlug))] + "/" + workSlug + "/recordings/" + recSlug + ".json"
-}
-
 // workPageURL is a work's page on the site - the reference the correction form
 // recommends, and one resolveRecordRef reads back as that work.
 func workPageURL(workSlug string) string {
-	return siteOrigin + "/works/" + workSlug
+	return model.SiteURL + "/" + string(model.RedirectWorks) + "/" + workSlug
 }
 
-// siteOrigin is the public site the correction form tells submitters to copy a
-// record's URL from.
-const siteOrigin = "https://meta.audiosilo.app"
-
-// closedFieldUnchanged answers the one closed-vocabulary correction that is
-// neither invalid nor a maintainer's: a field this form cannot write, corrected
-// to the value the record already carries. Every core record's license is
-// "CC0-1.0" and the schema allows nothing else, so a license "correction" that
-// survives enumViolation is always this case - and telling its submitter a
-// maintainer will apply it would park an issue nobody has anything to do for.
-func (c *composer) closedFieldUnchanged(addr entryAddr, kind model.Kind, field, corrected string) bool {
-	if recordFields()[kind][field].enum == nil {
-		return false
-	}
-	_, record, ok := c.correctionTarget(addr)
+// unchanged fails a correction whose value is what the record already carries
+// and reports whether it did. It is the one no-op rule for every scalar a
+// correction can name: writing the value back would change nothing but the
+// provenance, a write with no fact in it. Values are compared as JSON, so a
+// recorded 400 and a corrected 400 agree whichever Go type decoded them.
+func (c *composer) unchanged(addr entryAddr, record map[string]any, field string, value any) bool {
+	recorded, ok := record[field]
 	if !ok {
-		return true
-	}
-	cur, _ := record[field].(string)
-	if !strings.EqualFold(cur, strings.TrimSpace(corrected)) {
 		return false
 	}
-	c.failNoop("%s on %s is already %q", field, addr.label(c), cur)
+	a, errA := json.Marshal(recorded)
+	b, errB := json.Marshal(value)
+	if errA != nil || errB != nil || !bytes.Equal(a, b) {
+		return false
+	}
+	c.failNoop("%s on %s is already %s", field, addr.label(c), a)
 	return true
 }
 
@@ -647,16 +630,6 @@ func coerceFieldValue(kind fieldKind, raw string) (any, bool) {
 	case kindHTTPSURL:
 		if strings.HasPrefix(raw, "https://") {
 			return raw, true
-		}
-		return nil, false
-	case kindPersonKind:
-		// The enum values are lowercase, and a submitter typing "Publisher"
-		// means the same thing, so the input is lowercased before the lookup.
-		// Anything still outside the enum is rejected here rather than written
-		// as a schema-invalid record.
-		k := strings.ToLower(raw)
-		if personKinds[k] {
-			return k, true
 		}
 		return nil, false
 	}

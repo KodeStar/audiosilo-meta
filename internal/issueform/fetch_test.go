@@ -10,6 +10,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 )
 
 // hostPolicy is the production policy's shape over a fixed host:port set, so a
@@ -66,51 +67,45 @@ func TestAttachmentRedirectsAreRechecked(t *testing.T) {
 	policy := hostPolicy(host)
 	exempt := func(u *url.URL) bool { return localOrigin(u, host) }
 
-	// The redirect rules are the same whichever cap the calling form passes: the
-	// import template's larger cap buys a bigger body, never a laxer fetch.
-	for _, maxBytes := range []int64{maxAttachmentBytes, maxImportAttachmentBytes} {
-		t.Run(sizeLabel(maxBytes), func(t *testing.T) {
-			t.Run("a hop to a refused host is refused", func(t *testing.T) {
-				target = elsewhere.URL + "/x.json"
-				_, err := fetchAttachment(allowed.URL+"/redirect", maxBytes, allowed.Client(), policy, exempt)
-				if err == nil {
-					t.Fatal("a redirect to a host outside the allowlist was followed")
-				}
-				if !strings.Contains(err.Error(), "redirected to a refused location") {
-					t.Errorf("error = %v, want the redirect refusal", err)
-				}
-			})
+	t.Run("a hop to a refused host is refused", func(t *testing.T) {
+		target = elsewhere.URL + "/x.json"
+		_, err := fetchAttachment(allowed.URL+"/redirect", maxAttachmentBytes, allowed.Client(), policy, exempt)
+		if err == nil {
+			t.Fatal("a redirect to a host outside the allowlist was followed")
+		}
+		if !strings.Contains(err.Error(), "redirected to a refused location") {
+			t.Errorf("error = %v, want the redirect refusal", err)
+		}
+	})
 
-			t.Run("a hop that downgrades the scheme is refused", func(t *testing.T) {
-				// Same host, plain HTTP: an allowlisted host can still answer with a
-				// redirect that takes the fetch off TLS.
-				target = "http://" + strings.TrimPrefix(allowed.URL, "https://") + "/x.json"
-				if _, err := fetchAttachment(allowed.URL+"/redirect", maxBytes, allowed.Client(), policy, exempt); err == nil {
-					t.Fatal("a redirect that downgraded https to http was followed")
-				}
-			})
+	t.Run("a hop that downgrades the scheme is refused", func(t *testing.T) {
+		// Same host, plain HTTP: an allowlisted host can still answer with a
+		// redirect that takes the fetch off TLS.
+		target = "http://" + strings.TrimPrefix(allowed.URL, "https://") + "/x.json"
+		if _, err := fetchAttachment(allowed.URL+"/redirect", maxAttachmentBytes, allowed.Client(), policy, exempt); err == nil {
+			t.Fatal("a redirect that downgraded https to http was followed")
+		}
+	})
 
-			t.Run("a hop inside the allowlist is followed", func(t *testing.T) {
-				target = allowed.URL + "/x.json"
-				body, err := fetchAttachment(allowed.URL+"/redirect", maxBytes, allowed.Client(), policy, exempt)
-				if err != nil {
-					t.Fatalf("an allowed redirect was refused: %v", err)
-				}
-				if string(body) != `{"ok":true}` {
-					t.Errorf("body = %s", body)
-				}
-			})
+	t.Run("a hop inside the allowlist is followed", func(t *testing.T) {
+		target = allowed.URL + "/x.json"
+		body, err := fetchAttachment(allowed.URL+"/redirect", maxAttachmentBytes, allowed.Client(), policy, exempt)
+		if err != nil {
+			t.Fatalf("an allowed redirect was refused: %v", err)
+		}
+		if string(body) != `{"ok":true}` {
+			t.Errorf("body = %s", body)
+		}
+	})
 
-			t.Run("a redirect loop is bounded", func(t *testing.T) {
-				// Setting CheckRedirect replaces net/http's own ten-hop default, so the
-				// bound has to be ours.
-				_, err := fetchAttachment(allowed.URL+"/loop", maxBytes, allowed.Client(), policy, exempt)
-				if err == nil || !strings.Contains(err.Error(), "redirected more than") {
-					t.Errorf("error = %v, want the hop limit", err)
-				}
-			})
-		})
-	}
+	t.Run("a redirect loop is bounded", func(t *testing.T) {
+		// Setting CheckRedirect replaces net/http's own ten-hop default, so the
+		// bound has to be ours.
+		_, err := fetchAttachment(allowed.URL+"/loop", maxAttachmentBytes, allowed.Client(), policy, exempt)
+		if err == nil || !strings.Contains(err.Error(), "redirected more than") {
+			t.Errorf("error = %v, want the hop limit", err)
+		}
+	})
 }
 
 // TestGitHubAttachmentPolicy pins the production rule the hops are re-checked
@@ -180,11 +175,11 @@ func TestFetchAttachmentLeavesTheCallersClientAlone(t *testing.T) {
 	wg.Wait()
 }
 
-// TestAttachmentCapsBoundTheBody pins both caps at their edges through the real
+// TestAttachmentCapsBoundTheBody pins the cap at its edge through the real
 // fetcher: a body of exactly the cap is read whole, one byte more is refused
 // (and refused as TOO LARGE, not truncated into a parse error downstream). The
-// import cap is exercised at its real 25 MiB, because a library export of a few
-// hundred books is past the old 1 MiB and that refusal was the finding.
+// cap is a parameter, so a small one proves the rule; which cap each form passes
+// is TestEachTemplateFetchesUnderItsOwnCap's.
 func TestAttachmentCapsBoundTheBody(t *testing.T) {
 	srv := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		n, err := strconv.ParseInt(r.URL.Query().Get("n"), 10, 64)
@@ -198,26 +193,30 @@ func TestAttachmentCapsBoundTheBody(t *testing.T) {
 	host := strings.TrimPrefix(srv.URL, "https://")
 	exempt := func(u *url.URL) bool { return localOrigin(u, host) }
 
-	for _, maxBytes := range []int64{maxAttachmentBytes, maxImportAttachmentBytes} {
-		t.Run(sizeLabel(maxBytes), func(t *testing.T) {
-			at := fmt.Sprintf("%s/x.json?n=%d", srv.URL, maxBytes)
-			body, err := fetchAttachment(at, maxBytes, srv.Client(), hostPolicy(host), exempt)
-			if err != nil {
-				t.Fatalf("a body of exactly the cap was refused: %v", err)
-			}
-			if int64(len(body)) != maxBytes {
-				t.Errorf("read %d bytes, want %d", len(body), maxBytes)
-			}
-
-			over := fmt.Sprintf("%s/x.json?n=%d", srv.URL, maxBytes+1)
-			_, err = fetchAttachment(over, maxBytes, srv.Client(), hostPolicy(host), exempt)
-			if err == nil || !strings.Contains(err.Error(), "exceeds the "+sizeLabel(maxBytes)+" limit") {
-				t.Errorf("error = %v, want the %s cap refusal", err, sizeLabel(maxBytes))
-			}
-		})
+	const maxBytes = 1024
+	body, err := fetchAttachment(fmt.Sprintf("%s/x.json?n=%d", srv.URL, maxBytes), maxBytes, srv.Client(), hostPolicy(host), exempt)
+	if err != nil {
+		t.Fatalf("a body of exactly the cap was refused: %v", err)
 	}
-	if maxImportAttachmentBytes <= maxAttachmentBytes {
-		t.Error("the import cap is no larger than the sidecar cap - the per-template split is gone")
+	if len(body) != maxBytes {
+		t.Errorf("read %d bytes, want %d", len(body), maxBytes)
+	}
+	_, err = fetchAttachment(fmt.Sprintf("%s/x.json?n=%d", srv.URL, maxBytes+1), maxBytes, srv.Client(), hostPolicy(host), exempt)
+	if err == nil || !strings.Contains(err.Error(), "exceeds the "+sizeLabel(maxBytes)+" limit") {
+		t.Errorf("error = %v, want the cap refusal", err)
+	}
+}
+
+// TestAttachmentTimeoutFollowsTheCap: the fetch deadline grows with the cap, so
+// the import form's export gets the time a 25 MiB download needs while a
+// sidecar fetch keeps the short deadline it always had.
+func TestAttachmentTimeoutFollowsTheCap(t *testing.T) {
+	small, large := attachmentTimeout(maxAttachmentBytes), attachmentTimeout(maxImportAttachmentBytes)
+	if small > 30*time.Second {
+		t.Errorf("sidecar timeout = %v, want it to stay short", small)
+	}
+	if large < time.Minute {
+		t.Errorf("import timeout = %v, want room for a 25 MiB download", large)
 	}
 }
 

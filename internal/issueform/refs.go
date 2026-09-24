@@ -613,9 +613,19 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 	return refPath(ref)
 }
 
+// recordingRef is the reference the intake bot HANDS OUT for a recording, which
+// has no page of its own: works/<work>/recordings/<recording>.json under data/.
+// It is the per-entity path form without the retired shard directory - refPath
+// reads it back, and TestRecordingRefRoundTrips pins that it always will - so no
+// shard rule is spelled in production code again.
+func recordingRef(workSlug, recSlug string) string {
+	return "data/works/" + workSlug + "/recordings/" + recSlug + ".json"
+}
+
 // refPath parses the per-entity path forms a submitter may type. The shard
 // directory is accepted but ignored: it addressed a file that no longer exists,
-// and the slug is what resolves the record.
+// and the slug is what resolves the record. A recording may also be named
+// without it (recordingRef's form).
 func refPath(rel string) (recordRef, bool) {
 	parts := strings.Split(path.Clean(rel), "/")
 	jsonName := func(s string) (string, bool) {
@@ -640,6 +650,10 @@ func refPath(rel string) (recordRef, bool) {
 	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
 		if slug, ok := jsonName(parts[4]); ok {
 			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[2]}, true
+		}
+	case len(parts) == 4 && parts[0] == "works" && parts[2] == "recordings":
+		if slug, ok := jsonName(parts[3]); ok {
+			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[1]}, true
 		}
 	case len(parts) == 3 && parts[0] == "people":
 		if slug, ok := jsonName(parts[2]); ok {

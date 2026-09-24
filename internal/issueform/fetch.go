@@ -31,9 +31,14 @@ const (
 	maxImportAttachmentBytes int64 = 25 << 20 // 25 MiB
 )
 
-// attachmentHTTPTimeout bounds a single attachment fetch, body included. It is
-// sized for the largest cap: 25 MiB in a minute is a slow link, not a hung one.
-const attachmentHTTPTimeout = 60 * time.Second
+// attachmentTimeout bounds a single attachment fetch, body included, and is
+// DERIVED from the cap rather than sized for the largest one: a fixed floor for
+// the round trip plus 2s per MiB the cap allows (a 512 KiB/s floor rate). A
+// sidecar keeps the ~20s it always had and a 25 MiB export gets 70s - a slow
+// link, not a hung one - without the small forms waiting that long on a dead one.
+func attachmentTimeout(maxBytes int64) time.Duration {
+	return 20*time.Second + time.Duration(maxBytes>>20)*2*time.Second
+}
 
 // attachmentPolicy decides whether the URL a submission NAMES may be fetched.
 // It is a function rather than a bare call so a test can substitute a policy
@@ -66,7 +71,7 @@ func githubAttachmentPolicy(u *url.URL) error {
 // so a hostile link cannot exhaust memory, and the bytes are only ever
 // JSON-decoded by callers; nothing fetched is executed.
 func defaultFetch(raw string, maxBytes int64) ([]byte, error) {
-	return fetchAttachment(raw, maxBytes, &http.Client{Timeout: attachmentHTTPTimeout}, githubAttachmentPolicy, nil)
+	return fetchAttachment(raw, maxBytes, &http.Client{Timeout: attachmentTimeout(maxBytes)}, githubAttachmentPolicy, nil)
 }
 
 // fetchAttachment is defaultFetch with the client and the policies supplied.
