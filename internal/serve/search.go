@@ -93,12 +93,12 @@ const (
 	//
 	// Counting a group as two is what keeps the cap honest about the walks it
 	// adds (the alternative reads the `s` list, 25k rows), and it costs nothing
-	// the rule above protects: a possessive typed WITHOUT its apostrophe
-	// ("enders", one group) counts the same two phrases as the same name typed
-	// WITH it ("ender's"), and re-measured 2026-09-24 with groups counted
-	// this way the longest real name is 50 phrases (a 247-byte Spanish title),
-	// still under 64. A group that would cross the cap is rendered as its plain
-	// phrase rather than dropped, so an expansion can never cost a term.
+	// the rule above protects: a possessive costs the same two phrases in either
+	// spelling ("enders", "ender's"), and re-measured 2026-09-24 with groups
+	// counted this way the longest real name is 50 phrases (a 247-byte Spanish
+	// title), still under 64. A group that does not fit WHOLE is cut like any
+	// term past the cap (see ftsMatch) - never half-rendered as a phrase that
+	// may match nothing.
 	maxQueryPhrases = 64
 )
 
@@ -125,10 +125,10 @@ func boundQuery(q string) string {
 // emitted for such a token anyway).
 //
 // When the last part is a possessive group the star goes on its LITERAL branch
-// only - `("enders"* OR "ender s")`. The literal is what is being typed and may
-// yet grow ("endersby"); the possessive reading is already complete, its `s` a
-// whole token, and starring it would ask for "ender" followed by ANY word
-// starting with s, which is neither reading.
+// only - the one spelling what was typed: `("enders"* OR "ender s")` and
+// `("ender s"* OR "enders")`. The literal may yet grow ("endersby", "ender's
+// sh..."); the other reading is a whole word, and starring it would ask for a
+// prefix nobody typed ("ender" followed by ANY word starting with s).
 //
 // The parts are joined by whitespace - FTS5's implicit AND - unless the
 // expression holds a group, when they are joined by an explicit AND: FTS5
@@ -140,23 +140,19 @@ func ftsMatch(q string, prefixLast bool) string {
 	// Grown as needed rather than sized at the cap: almost every real query is a
 	// handful of phrases, and the cap is a ceiling on a hostile one, not an
 	// expectation. The cap is checked in ONE place, where a part is about to be
-	// appended, and the label is what lets that single check stop both loops.
+	// appended, and the label is what lets that single check stop both loops. A
+	// part that does not fit WHOLE ends the expression there, a group included:
+	// the leading parts survive and nothing after them does, so the cut is the
+	// same "start of what they typed" whatever the last part is.
 	var parts []matchPart
 	phrases := 0
 tokens:
 	for _, tok := range strings.Fields(boundQuery(q)) {
 		for _, part := range tokenPhrases(tok) {
-			if phrases >= maxQueryPhrases {
+			if phrases+part.phrases() > maxQueryPhrases {
 				break tokens
 			}
-			if part.possessive != "" {
-				if phrases+2 <= maxQueryPhrases {
-					phrases++ // the group's second phrase
-				} else {
-					part.possessive = ""
-				}
-			}
-			phrases++
+			phrases += part.phrases()
 			parts = append(parts, part)
 		}
 	}
@@ -179,17 +175,25 @@ tokens:
 	return strings.Join(rendered, sep)
 }
 
-// matchPart is one element of a MATCH expression: a quoted phrase, plus - for a
-// term that may be a possessive typed without its apostrophe - the phrase that
-// reading asks for. A part with a possessive renders as the group
-// `("xs" OR "x s")`.
-type matchPart struct{ phrase, possessive string }
+// matchPart is one element of a MATCH expression: a quoted phrase spelling what
+// was typed, plus - for a possessive, written with its apostrophe or without -
+// the phrase the OTHER spelling asks for. A part with an alternative renders as
+// the group `(phrase OR alt)`.
+type matchPart struct{ phrase, alt string }
+
+// phrases is what the part costs against maxQueryPhrases: a group holds two.
+func (p matchPart) phrases() int {
+	if p.alt == "" {
+		return 1
+	}
+	return 2
+}
 
 func (p matchPart) render() string {
-	if p.possessive == "" {
+	if p.alt == "" {
 		return p.phrase
 	}
-	return "(" + p.phrase + " OR " + p.possessive + ")"
+	return "(" + p.phrase + " OR " + p.alt + ")"
 }
 
 // tokenPhrases renders ONE whitespace token as the parts of a MATCH expression,
@@ -218,14 +222,19 @@ func (p matchPart) render() string {
 // into a possessive group either: its terms are single runes, which the
 // possessive rule never reads.
 //
-// WHY A WORD ENDING IN S MAY BE A POSSESSIVE. The same tokenizer split
-// "Ender's" into `ender` + `s` on the way into the index, so a query that drops
-// the apostrophe - the usual spelling of a filename, which is what
-// Audiobookshelf searches with - asked for a word no row holds: "enders game"
-// returned NOTHING for Ender's Game, and 15,294 work titles (5.5%) and 1,450
-// series names carry a possessive. Such a term becomes the group
-// `("enders" OR "ender s")`, so it matches either reading; which terms qualify
-// is isPossessive's.
+// WHY A POSSESSIVE MATCHES BOTH SPELLINGS. The same tokenizer split "Ender's"
+// into `ender` + `s` on the way into the index, so a query that drops the
+// apostrophe - the usual spelling of a filename, which is what Audiobookshelf
+// searches with - asked for a word no row holds: "enders game" returned NOTHING
+// for Ender's Game, and 15,303 work titles (5.5%) and 1,453 series names carry
+// an apostrophe-s (measured 2026-09-24 over the six marks isApostrophe reads). Such a term becomes the group `("enders" OR "ender s")`, so it
+// matches either reading. The same holds the other way round - a title stored
+// without its apostrophe ("Finnegans Wake") holds `finnegans`, never `finnegan`
+// + `s` - so a possessive typed WITH its apostrophe becomes the mirror group
+// `("finnegan s" OR "finnegans")`: the two terms as one adjacent phrase, which
+// is also tighter than the two free-standing phrases it replaces. Both
+// directions cost the same two phrases, and which words qualify is
+// isPossessive's, read through apostropheS for the written form.
 func tokenPhrases(tok string) []matchPart {
 	terms := ftsTerms(tok)
 	if len(terms) == 0 {
@@ -234,30 +243,75 @@ func tokenPhrases(tok string) []matchPart {
 	if isInitialism(terms) {
 		return []matchPart{{phrase: quotePhrase(terms...)}}
 	}
-	out := make([]matchPart, len(terms))
-	for i, term := range terms {
-		out[i].phrase = quotePhrase(term)
-		if isPossessive(term) {
+	written := apostropheS(tok, terms)
+	out := make([]matchPart, 0, len(terms))
+	for i := 0; i < len(terms); i++ {
+		term := terms[i]
+		switch {
+		case i+1 < len(terms) && written[i+1]:
+			out = append(out, matchPart{
+				phrase: quotePhrase(term, terms[i+1]),
+				alt:    quotePhrase(term + terms[i+1]),
+			})
+			i++
+		case isPossessive(term):
 			n := len(term) - 1
-			out[i].possessive = quotePhrase(term[:n], term[n:])
+			out = append(out, matchPart{phrase: quotePhrase(term), alt: quotePhrase(term[:n], term[n:])})
+		default:
+			out = append(out, matchPart{phrase: quotePhrase(term)})
 		}
 	}
 	return out
 }
 
+// apostropheS marks, for each of terms (ftsTerms of s, in order), whether it is
+// the `s` of a possessive WRITTEN with its apostrophe: a lone s, separated from
+// the term before it by exactly one apostrophe (isApostrophe), where the joined
+// word is one isPossessive accepts. It is the written-form half of the one rule
+// tokenPhrases and nameKey both read, so the equality the boosts decide can never
+// disagree with what retrieval matched. A free-standing S - a middle initial
+// ("Harry S. Truman"), a model letter ("Model S") - is not a possessive.
+func apostropheS(s string, terms []string) []bool {
+	marks := make([]bool, len(terms))
+	end := 0 // byte offset in s just past the previous term
+	for i, term := range terms {
+		// The terms are substrings of s in order, separated only by runes that
+		// hold no term, so the next occurrence at or after end is this term.
+		start := end + strings.Index(s[end:], term)
+		sep := s[end:start]
+		end = start + len(term)
+		marks[i] = i > 0 && (term == "s" || term == "S") && isApostrophe(sep) && isPossessive(terms[i-1]+term)
+	}
+	return marks
+}
+
+// isApostrophe reports whether sep - the text between two terms - is exactly one
+// of the marks a possessive is written with: the ASCII apostrophe, the
+// typographic one, the modifier letter, the left quote and the two accents a
+// keyboard without an apostrophe key reaches for.
+func isApostrophe(sep string) bool {
+	switch sep {
+	case "'", "\u2019", "\u02bc", "\u2018", "\u00b4", "`":
+		return true
+	}
+	return false
+}
+
 // isPossessive reports whether term may be a possessive typed without its
-// apostrophe ("enders" for "Ender's"). It is the ONE statement of which terms qualify: tokenPhrases expands
-// exactly these into a group, and nameKey folds exactly these back together, so
-// the comparison the boosts make can never disagree with what retrieval
-// matched. Two bounds, both measured over the real tree (2026-09-24):
+// apostrophe ("enders" for "Ender's"). It is the ONE statement of which words
+// qualify: tokenPhrases expands exactly these into a group (and, through
+// apostropheS, the written "ender's" whose joined word is one of these), and
+// nameKey folds exactly those back together, so the comparison the boosts make
+// can never disagree with what retrieval matched. Two bounds, both measured over
+// the real tree (2026-09-24):
 //
 //   - LONGER THAN THREE RUNES. The three-rune words ending in s are dominated by
 //     articles and function words - das (2,377 title words), des (1,874), his,
 //     los, les, las, was - whose "possessive" reading is pure cost: another walk
 //     of the `s` list for nothing. The one real casualty is "its" for "It's"
-//     (302 titles), a contraction rather than a possessive.
-//   - NOT A DOUBLED S. Of 15,405 possessive work titles only 93 put the
-//     apostrophe after a word that itself ends in s ("James's"), and those stay
+//     (282 titles), a contraction rather than a possessive.
+//   - NOT A DOUBLED S. Of the 15,303 work titles carrying an apostrophe-s only
+//     79 put it after a word that itself ends in s ("James's"), and those stay
 //     findable by the word alone ("james" is a token of the row); nobody types
 //     "jamess". Meanwhile 8.5% of the 4+-rune title words ending in s end in ss
 //     (darkness 832, business 618, princess 581, kiss, glass, ...), and each of

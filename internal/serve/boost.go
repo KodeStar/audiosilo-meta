@@ -89,19 +89,23 @@ func allJunkTerms(tok string, junkA, junkB map[string]bool) bool {
 // symmetry: retrieval lets "enders game" match the row "Ender's Game" (see
 // isPossessive), so the equality has to agree that the two are one name, or
 // the exact-title boost would refuse the very title the query just found. A lone
-// `s` term is joined onto the term before it exactly when the joined word is one
-// isPossessive would have expanded, so the fold is the inverse of the
-// expansion and nothing else: "N.E.R.D.S." keeps its one-rune fragments, and
-// "James's" stays two words just as "jamess" is never expanded.
+// `s` term is joined onto the term before it exactly where apostropheS marks it -
+// ONE apostrophe between them, and a joined word isPossessive would have
+// expanded - the same marks tokenPhrases groups on, so the fold is the inverse
+// of the expansion and nothing else:
+// "N.E.R.D.S." keeps its one-rune fragments, "James's" stays two words just as
+// "jamess" is never expanded, and a free-standing S - a middle initial ("Harry
+// S. Truman"), a model letter ("Model S") - is not an apostrophe-dropped
+// possessive, so "models" does not boost a book titled "Model S".
 func nameKey(s string) string {
-	terms := ftsTerms(strings.ToLower(s))
+	s = strings.ToLower(s)
+	terms := ftsTerms(s)
+	written := apostropheS(s, terms)
 	folded := terms[:0]
-	for _, term := range terms {
-		if last := len(folded) - 1; term == "s" && last >= 0 {
-			if joined := folded[last] + term; isPossessive(joined) {
-				folded[last] = joined
-				continue
-			}
+	for i, term := range terms {
+		if written[i] {
+			folded[len(folded)-1] += term
+			continue
 		}
 		folded = append(folded, term)
 	}

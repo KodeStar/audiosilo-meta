@@ -45,7 +45,8 @@ func TestFTSQueryBuilder(t *testing.T) {
 		// Apostrophes and hyphens split too: unicode61 tokenized them apart on
 		// the way INTO the index, so the terms are what the row holds.
 		{"apostrophe", "Don't Look Back", `"Don" "t" "Look" "Back"*`},
-		{"typographic apostrophe", "The Ring’s Secret", `"The" "Ring" "s" "Secret"*`},
+		// (A written possessive is the mirror group - see TestFTSQueryPossessives.)
+		{"typographic apostrophe", "The Ring’s Secret", `"The" AND ("Ring s" OR "Rings") AND "Secret"*`},
 		{"hyphenated name", "Spider-Man", `"Spider" "Man"*`},
 
 		// Numeric titles are one term and keep exactly the expression they had.
@@ -500,9 +501,9 @@ func TestFTSQueryIsBounded(t *testing.T) {
 }
 
 // TestFTSQueryPossessives pins the possessive group: unicode61 indexed
-// "Ender's" as `ender` + `s`, so a term that may be that possessive with its
-// apostrophe dropped matches either reading - and a term that cannot be one
-// keeps exactly the expression it always had.
+// "Ender's" as `ender` + `s` and "Finnegans" as one word, so a possessive typed
+// in EITHER spelling matches both - and a term that cannot be one keeps exactly
+// the expression it always had.
 func TestFTSQueryPossessives(t *testing.T) {
 	cases := []struct {
 		name, in, want string
@@ -516,9 +517,19 @@ func TestFTSQueryPossessives(t *testing.T) {
 		{"case is kept", "ENDERS", `("ENDERS"* OR "ENDER S")`},
 		{"decade", "1980s", `("1980s"* OR "1980 s")`},
 		{"non-ASCII base", "Mädchens", `("Mädchens"* OR "Mädchen s")`},
-		// Written WITH the apostrophe the terms are already the row's, and
-		// nothing is expanded.
-		{"apostrophe kept", "Ender's Game", `"Ender" "s" "Game"*`},
+		// Written WITH the apostrophe: the mirror group, the two terms as one
+		// adjacent phrase or the word a title stored without it holds.
+		{"apostrophe kept", "Ender's Game", `("Ender s" OR "Enders") AND "Game"*`},
+		{"typographic apostrophe", "Finnegan’s Wake", `("Finnegan s" OR "Finnegans") AND "Wake"*`},
+		{"apostrophe last", "ender's", `("ender s"* OR "enders")`},
+		// Only an apostrophe makes a lone s a possessive, and only when the
+		// joined word would qualify on its own.
+		{"free-standing S", "Model S", `"Model" "S"*`},
+		{"hyphenated S", "Model-S", `"Model" "S"*`},
+		{"joined word too short", "it's", `"it" "s"*`},
+		// "jamess" doubles the s, so the written s stays its own phrase ("James"
+		// itself is a word ending in s, and gets the ordinary group).
+		{"joined word doubles the s", "James's", `("James" OR "Jame s") AND "s"*`},
 		// The bounds: three runes or fewer (the articles das/des/los and his,
 		// was), and a doubled s (darkness, princess) are never possessives.
 		{"three runes", "his das its", `"his" "das" "its"*`},
@@ -568,19 +579,21 @@ func TestFTSQueryPossessiveCap(t *testing.T) {
 		}
 	})
 
-	t.Run("a group at the cap degrades to its phrase", func(t *testing.T) {
+	t.Run("a group past the cap is cut like any term", func(t *testing.T) {
 		words := make([]string, 0, maxQueryPhrases)
 		for i := range maxQueryPhrases - 1 {
 			words = append(words, capWord(i))
 		}
 		words = append(words, "zzxs")
 		got := ftsQuery(strings.Join(words, " "))
-		if n := strings.Count(got, `"`) / 2; n != maxQueryPhrases {
-			t.Errorf("phrases = %d, want the cap %d: %s", n, maxQueryPhrases, got)
+		// One slot is left and the group needs two: it is not half-rendered as
+		// a phrase that may match nothing, it is cut, and the leading phrases
+		// are the expression.
+		if n := strings.Count(got, `"`) / 2; n != maxQueryPhrases-1 {
+			t.Errorf("phrases = %d, want %d: %s", n, maxQueryPhrases-1, got)
 		}
-		// No group survived, so the expression keeps the implicit AND.
-		if !strings.HasSuffix(got, `"`+capWord(maxQueryPhrases-2)+`" "zzxs"*`) || strings.Contains(got, " AND ") {
-			t.Errorf("the capped term was not kept as a plain phrase: %s", got)
+		if !strings.HasSuffix(got, `"`+capWord(maxQueryPhrases-2)+`"*`) || strings.Contains(got, "zzxs") {
+			t.Errorf("the group past the cap was not cut: %s", got)
 		}
 	})
 }
@@ -597,9 +610,13 @@ func TestNameKeyFoldsPossessives(t *testing.T) {
 		"N.E.R.D.S.":       "n e r d s", // one-rune fragments stay apart
 		"It's":             "it s",      // "its" is never expanded, so never folded
 		"James's Journey":  "james s journey",
-		// A middle initial folds too. Harmless: both sides of the comparison
-		// fold alike, so it is still the one name it was.
-		"Harry S. Truman":   "harrys truman",
+		"Ender´s Game":     "enders game", // the accent a keyboard reaches for
+		// Only an apostrophe folds: a free-standing S is a middle initial or a
+		// model letter, and "models" must not boost a book titled "Model S".
+		"Harry S. Truman":   "harry s truman",
+		"Model S":           "model s",
+		"Model-S":           "model s",
+		"ender s game":      "ender s game",
 		"Hitchhikers Guide": "hitchhikers guide",
 	}
 	for in, want := range cases {
@@ -632,6 +649,9 @@ func possessiveCatalog() *model.Catalog {
 			work("speaker-for-the-dead", "Speaker for the Dead", "orson-scott-card"),
 			work("the-hitchhikers-guide-to-the-galaxy", "The Hitchhiker's Guide to the Galaxy", "douglas-adams"),
 			work("harry-potter-and-the-philosophers-stone", "Harry Potter and the Philosopher's Stone", "j-k-rowling"),
+			// Stored WITHOUT the apostrophe, as the book itself spells it: the
+			// written-possessive query has to reach it the other way round.
+			work("finnegans-wake", "Finnegans Wake", "james-joyce"),
 			// Distractors: every other word of the targets, none of them the book.
 			work("game-on", "Game On", "jane-doe"),
 			work("the-game", "The Game", "jane-doe"),
@@ -641,6 +661,7 @@ func possessiveCatalog() *model.Catalog {
 		People: []*model.Person{
 			person("orson-scott-card", "Orson Scott Card"),
 			person("douglas-adams", "Douglas Adams"),
+			person("james-joyce", "James Joyce"),
 			person("j-k-rowling", "J.K. Rowling"),
 			person("jane-doe", "Jane Doe"),
 			person("stefan-rudnicki", "Stefan Rudnicki"),
@@ -680,6 +701,13 @@ func TestSearchPossessivesWithoutApostrophe(t *testing.T) {
 		// The series boost reads the same words: "enders game 2" is volume 2
 		// of the series named "Ender's Game".
 		{"enders game 2", "work:speaker-for-the-dead", true},
+		// And WITH the apostrophe, in both directions: the written form still
+		// finds the apostrophe title, and reaches the one stored without it.
+		{"ender's game", "work:enders-game", true},
+		{"the hitchhiker’s guide to the galaxy", "work:the-hitchhikers-guide-to-the-galaxy", true},
+		{"finnegan's wake", "work:finnegans-wake", true},
+		{"finnegans wake", "work:finnegans-wake", true},
+		{"ender's game 2", "work:speaker-for-the-dead", true},
 	}
 	for _, tc := range cases {
 		for _, kind := range []searchKind{kindAny, kindWork} {
@@ -716,6 +744,7 @@ func TestABSSearchPossessivesWithoutApostrophe(t *testing.T) {
 		{"Enders Game", "Orson Scott Card", "Ender's Game"},
 		{"Hitchhikers Guide to the Galaxy", "Douglas Adams", "The Hitchhiker's Guide to the Galaxy"},
 		{"Enders Game", "", "Ender's Game"},
+		{"Finnegan's Wake", "James Joyce", "Finnegans Wake"},
 	}
 	for _, tc := range cases {
 		path := "/abs/search?mediaType=book&query=" + url.QueryEscape(tc.query)
@@ -732,6 +761,27 @@ func TestABSSearchPossessivesWithoutApostrophe(t *testing.T) {
 		}
 		if m, _ := matches[0].(map[string]any); m["title"] != tc.want {
 			t.Errorf("GET %s first match = %v, want %q", path, m["title"], tc.want)
+		}
+	}
+}
+
+// TestExactTitleIgnoresAFreeStandingS: retrieval lets "models" reach a row
+// holding "model" + "s" whatever separated them, but only an apostrophe makes
+// that a possessive - so the exact-title boost must not put "Model S" first for
+// a query that says "models".
+func TestExactTitleIgnoresAFreeStandingS(t *testing.T) {
+	cat := possessiveCatalog()
+	cat.Works = append(cat.Works, &model.Work{
+		ID: "model-s", Title: "Model S", Language: "en", Authors: []string{"jane-doe"}, License: "CC0-1.0",
+	})
+	snap := snapshotFor(t, cat)
+	for q, want := range map[string]string{"models": "", "Model S": "model-s", "enders game": "enders-game"} {
+		ids, err := snap.exactTitleHits(q)
+		if err != nil {
+			t.Fatalf("exactTitleHits(%q): %v", q, err)
+		}
+		if got := first(ids); got != want || len(ids) > 1 {
+			t.Errorf("exactTitleHits(%q) = %v, want [%s]", q, ids, want)
 		}
 	}
 }

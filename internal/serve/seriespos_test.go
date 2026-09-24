@@ -385,6 +385,9 @@ func TestProbeMatchDropsStopwords(t *testing.T) {
 		// A possessive typed without its apostrophe probes both readings, so a
 		// series named "Ender's Game" resolves from "enders game".
 		"enders game": `("enders" OR "ender s") AND "game"`,
+		// Written WITH the apostrophe, the s stays glued to its word, so the
+		// mirror group survives the stopword filter.
+		"the finnegan's wake": `("finnegan s" OR "finnegans") AND "wake"`,
 		// Every term is a stopword: the fallback keeps the residual whole rather
 		// than composing an empty MATCH.
 		"the of": `"the" "of"`,
