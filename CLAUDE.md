@@ -1476,12 +1476,16 @@ note rather than a closed duplicate.
   `persist-credentials: false` EXCEPT the intake rebase sweep's, the one job
   that pushes with plain git; a tool installed inside a `run:` string is pinned
   to an exact version (`@anthropic-ai/claude-code`, govulncheck), since
-  dependabot cannot see one there; dependabot ignores `node` MAJOR image bumps,
-  because only even Node majors become LTS. The rebase sweep runs only MAIN's
-  tools (metafmt, metacheck and the merge driver, built and copied before the
-  loop) and sweeps only same-repository branches whose diff is confined to
-  `data/`; intake.yml's `-noop` concurrency group carries a verbatim copy of
-  the intake job's `if` (see the comments in intake.yml for both).
+  dependabot cannot see one there (claude-code tracks the npm `stable`
+  dist-tag); dependabot ignores the ODD `node` image majors, since only even
+  ones become LTS, and every `golang` minor and major, since the image's minor
+  is the Go version and moves by hand with go.mod and every setup-go. The
+  rebase sweep runs only MAIN's tools (metafmt, metacheck and the merge
+  driver, built and copied before the loop) and sweeps only same-repository
+  branches whose diff is confined to `data/` and whose commits add or change
+  no symbolic link; a branch it refuses gets ONE marked comment saying why.
+  intake.yml's `-noop` concurrency group carries a verbatim copy of the intake
+  job's `if` (see the comments in intake.yml for both).
 - **Deterministic builds**: metabuild inserts in sorted id order so identical
   data produces identical artifacts.
 - **Governance**: merge policy and trust tiers live in

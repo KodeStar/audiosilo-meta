@@ -246,12 +246,14 @@ jobs:
       # --model, --output-format json, --allowedTools) still mean the same
       # thing: an unpinned install is a new CLI on every run, with this job's
       # secret in its environment, and the outage above was an upstream release
-      # changing under a line nobody edited. Dependabot does not see a version
-      # inside a `run:` string.
+      # changing under a line nobody edited. Bump it to the package's `stable`
+      # dist-tag (`npm view @anthropic-ai/claude-code dist-tags`), not `latest`
+      # or `next`, which move daily. Dependabot does not see a version inside a
+      # `run:` string.
       - name: Install Claude Code CLI
         if: steps.gather.outputs.has_changes == 'true' && env.HAS_OAUTH == 'true'
         run: |
-          npm install -g @anthropic-ai/claude-code@2.1.281
+          npm install -g @anthropic-ai/claude-code@2.1.273
           claude --version
 
       - name: Run AI verification

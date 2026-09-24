@@ -363,9 +363,16 @@ jobs:
 
           # A fork's branch is not in this repository to rebase or push, and its
           # content is nobody's this workflow can vouch for: logged, never swept.
-          gh pr list --state open --label bot-intake --json number,headRefName,isCrossRepository > prs.json
+          #
+          # --limit: gh lists 30 by default, and a pull request past the 30th was
+          # silently never swept. LEAST RECENTLY UPDATED first: a swept branch's
+          # force-push bumps its updatedAt, so a sweep the job timeout cuts short
+          # leaves the unswept ones at the FRONT of the next sweep instead of
+          # starving the same tail on every push to main.
+          gh pr list --state open --label bot-intake --limit 500 \
+            --json number,headRefName,isCrossRepository,updatedAt > prs.json
           jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' prs.json
-          jq -r '.[] | select(.isCrossRepository | not) | [.number, .headRefName] | @tsv' prs.json > prs.tsv
+          jq -r 'sort_by(.updatedAt) | .[] | select(.isCrossRepository | not) | [.number, .headRefName] | @tsv' prs.json > prs.tsv
           if [ ! -s prs.tsv ]; then
             echo "no open intake pull requests"
             exit 0
@@ -409,6 +416,27 @@ jobs:
             git clean -fdq data 2>/dev/null || true
           }
 
+          # refuse leaves a pull request the sweep will not touch, and says why
+          # ONCE: the same verdict recurs on every push to main, so the comment
+          # carries a fixed marker and is not posted again while one bearing it
+          # exists. A comment listing that fails is not read as "none yet" -
+          # that way round would comment on every push.
+          refused_marker="<!-- intake-sweep:not-rebased -->"
+          refuse() {
+            echo "::warning::PR #$1 is not rebased by the sweep: $2"
+            local bodies
+            if ! bodies="$(gh pr view "$1" --json comments --jq '.comments[].body')"; then
+              echo "::warning::could not read the comments on PR #$1; not commenting"
+              return
+            fi
+            if printf '%s\n' "$bodies" | grep -qF "$refused_marker"; then
+              return
+            fi
+            gh pr comment "$1" --body "${refused_marker}
+          The intake bot does not rebase this pull request onto \`main\`: $2. Its sweep checks a branch out beside a write token, so it only takes branches whose whole change is ordinary files under \`data/\`. A maintainer has to rebase this one (or split the non-data change out). This note is posted once." \
+              || echo "::warning::could not comment on PR #$1"
+          }
+
           swept=0
           while IFS=$'\t' read -r number branch; do
             echo "::group::PR #${number} (${branch})"
@@ -419,13 +447,27 @@ jobs:
             elif ! outside="$(git diff --no-renames --name-only "origin/main...origin/${branch}" -- ':(exclude)data/')"; then
               # Unclassifiable is not sweepable: the rule below cannot be asked.
               failure="the branch's changed files could not be listed"
+            elif ! links="$(git log --no-renames --raw --format= "origin/main..origin/${branch}" \
+                | awk -F'\t' '{ split($1, mode, " "); if (mode[2] == "120000") print $2 }')"; then
+              failure="the branch's commits could not be listed"
+            elif [ -n "$links" ]; then
+              # A SYMBOLIC LINK added or retargeted by ANY of the branch's
+              # commits (--raw's second mode column is the new mode; every
+              # commit, since a conflict can stop the replay at one where a
+              # later commit's removal has not happened yet). metafmt --write
+              # reads and rewrites files through a link, so one under data/
+              # pointing at .git/config or a workflow would be followed out of
+              # the tree with the token persisted.
+              refuse "$number" "it adds or changes a symbolic link ($(printf '%s' "$links" | head -n 5 | tr '\n' ' '))"
+              echo "::endgroup::"
+              continue
             elif [ -n "$outside" ]; then
               # The pull request's own change (three-dot: against the merge
               # base) reaches beyond data/, so rebasing it would put this job's
               # write token beside a checkout of code nobody here reviewed.
               # --no-renames: a rename INTO data/ would otherwise list only its
               # destination and hide the path it removed.
-              echo "::warning::PR #${number} changes files outside data/, which the sweep never rebases (it would check that code out beside a write token): $(printf '%s' "$outside" | head -n 5 | tr '\n' ' '). Skipped."
+              refuse "$number" "it changes files outside data/ ($(printf '%s' "$outside" | head -n 5 | tr '\n' ' '))"
               echo "::endgroup::"
               continue
             elif git merge-base --is-ancestor origin/main "origin/${branch}"; then
