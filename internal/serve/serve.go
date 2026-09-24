@@ -228,7 +228,11 @@ const (
 	// readTimeout bounds the whole request READ, headers included. Every route is
 	// a GET with no body except the webhook, whose body is capped at 1 MiB
 	// (maxWebhookBodyBytes): 30s is 1 MiB at ~35 KB/s, and GitHub's own delivery
-	// is a single small JSON document.
+	// is a single small JSON document. It does NOT bound the handler: once the
+	// request is read, net/http clears the read deadline before its background
+	// read (connReader.startBackgroundRead), so r.Context() is not cancelled when
+	// readTimeout elapses mid-handler - checked on Go 1.25. Only a body read still
+	// in progress at that point (the webhook's) is cut off.
 	readTimeout = 30 * time.Second
 	// writeTimeout runs from the end of the request headers to the end of the
 	// response, so it bounds the handler AND the transfer. Measured over the
@@ -240,11 +244,11 @@ const (
 	// dead one, while still releasing a connection that has stopped reading.
 	writeTimeout = 2 * time.Minute
 	// idleTimeout is how long a keep-alive connection waits for its next request.
-	// It is deliberately LONGER than the idle timeouts of the reverse proxies this
-	// sits behind (Go's transport 90s, Caddy 2m, nginx 60s): when the upstream
-	// closes an idle connection at the moment the proxy reuses it, the proxy
-	// answers 502, so the proxy has to be the side that gives up first. Left
-	// unset it would default to readTimeout.
+	// Production sits behind nginx, whose upstream keepalive_timeout defaults to
+	// 60s, and the proxy's idle timeout MUST stay below this one: when the
+	// upstream closes an idle connection at the moment the proxy reuses it, the
+	// proxy answers 502, so the proxy has to be the side that gives up first.
+	// Left unset it would default to readTimeout.
 	idleTimeout = 3 * time.Minute
 )
 
@@ -510,6 +514,12 @@ func (s *Server) buildMux() http.Handler {
 func (s *Server) public(h http.Handler) http.Handler {
 	return gzipMW(corsMW(h))
 }
+
+// compressed is the stack a crawler DOCUMENT wears (the sitemaps): gzip alone.
+// No CORS, as for a page - it is fetched by a crawler, not by a script on
+// another origin - and none of a page's document headers either (see
+// Server.html): an XML document is never framed or navigated from.
+func (s *Server) compressed(h http.HandlerFunc) http.Handler { return gzipMW(h) }
 
 // api is public plus the loaded-artifact gate: what every handler that reads a
 // snapshot needs.

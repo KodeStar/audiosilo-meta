@@ -1,7 +1,6 @@
 package serve
 
 import (
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -37,29 +36,15 @@ func TestServerDeadlines(t *testing.T) {
 	}
 }
 
-// fetch issues one request without following redirects and drains the body, so
-// the headers are what the assertions read. Accept-Encoding is explicit so the
-// transport neither adds it nor strips a Content-Encoding off the answer.
+// fetch is getNoFollowWith with gzip accepted explicitly, so the transport
+// neither adds Accept-Encoding nor strips the Content-Encoding the rows assert.
 func fetch(t *testing.T, url string, hdr map[string]string) *http.Response {
 	t.Helper()
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	req.Header.Set("Accept-Encoding", "gzip")
+	h := map[string]string{"Accept-Encoding": "gzip"}
 	for k, v := range hdr {
-		req.Header.Set(k, v)
+		h[k] = v
 	}
-	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error {
-		return http.ErrUseLastResponse
-	}}
-	resp, err := client.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	_, _ = io.Copy(io.Discard, resp.Body)
-	_ = resp.Body.Close()
-	return resp
+	return getNoFollowWith(t, url, h)
 }
 
 // TestSecurityHeaders: nosniff on every response, the two document headers on

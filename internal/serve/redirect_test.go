@@ -19,8 +19,25 @@ import (
 // with site_test.go, whose 301 comes from http.FileServer rather than from here.
 func getNoFollow(t *testing.T, base, path string) *http.Response {
 	t.Helper()
+	return getNoFollowWith(t, base+path, nil)
+}
+
+// getNoFollowWith is getNoFollow carrying request headers - the one request
+// builder conditionalGet and the header tests share. A header named here is sent
+// as given, so an explicit Accept-Encoding stops the transport adding its own and
+// transparently stripping the Content-Encoding a test is asserting on. The caller
+// does not close the body.
+func getNoFollowWith(t *testing.T, url string, hdr map[string]string) *http.Response {
+	t.Helper()
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for k, v := range hdr {
+		req.Header.Set(k, v)
+	}
 	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
-	resp, err := client.Get(base + path)
+	resp, err := client.Do(req)
 	if err != nil {
 		t.Fatal(err)
 	}

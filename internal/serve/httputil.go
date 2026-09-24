@@ -106,9 +106,11 @@ func nosniffMW(next http.Handler) http.Handler {
 	})
 }
 
-// setDocumentHeaders adds the headers only an HTML DOCUMENT needs. Referrer-Policy
-// keeps a page's path and query off the Referer sent to another origin (the
-// purchase links leave the site from a page naming the book). frame-ancestors
+// setDocumentHeaders adds the headers only an HTML DOCUMENT needs.
+// strict-origin-when-cross-origin is already every current browser's default
+// Referrer-Policy; stating it pins that default against an older browser or a
+// changed one, so a page's path and query stay off the Referer sent to another
+// origin (the purchase links leave the site from a page naming the book). frame-ancestors
 // 'none' refuses every framing of a page - the clickjacking guard - and nothing
 // in the AudioSilo workspace embeds these pages, so no ancestor needs allowing.
 // It is the only CSP directive set: a script/style policy would have to track
@@ -136,8 +138,7 @@ func documentMW(next http.Handler) http.Handler {
 // disagree about a file. Deciding from the name rather than from the response is
 // what covers a 304: http.FileServer writes no Content-Type on one.
 func isHTMLFile(name string) bool {
-	mt, _, _ := mime.ParseMediaType(mime.TypeByExtension(filepath.Ext(name)))
-	return mt == "text/html"
+	return strings.HasPrefix(mime.TypeByExtension(filepath.Ext(name)), "text/html")
 }
 
 // siteHandler serves a static site directory. Astro emits real .html pages, so

@@ -770,9 +770,11 @@ the last byte, and was sized on the 278,607-work artifact: the slowest handler
 cold was ~3.4s (a 200-series watch feed, `/abs/search` on a stopword), the
 largest body a 50,000-URL sitemap shard (6.2 MB identity, 0.5 MB gzip), the
 largest static asset ~360 KB - so 2m carries that shard to a ~4.5 KB/s gzip
-client. `IdleTimeout` is deliberately LONGER than the fronting proxies' idle
-timeouts (Go's transport 90s, Caddy 2m, nginx 60s), since an upstream closing an
-idle connection as the proxy reuses it is a 502. **Security headers**:
+client. `ReadTimeout` does not cancel `r.Context()` mid-handler (net/http clears
+the read deadline before its background read). `IdleTimeout` must stay LONGER
+than the fronting proxy's idle timeout (production is nginx, upstream keepalive
+60s by default), since an upstream closing an idle connection as the proxy
+reuses it is a 502. **Security headers**:
 `nosniffMW` wraps the whole mux, so `X-Content-Type-Options: nosniff` is on every
 response (the mux's own 404 included); `Referrer-Policy:
 strict-origin-when-cross-origin` and `Content-Security-Policy: frame-ancestors
@@ -783,7 +785,8 @@ response that updates a cached page's headers: every page route wears
 `documentMW` (`Server.html` - the page, the shell, the site 404, the HTML 301s
 and the 304s all answer for a document), and the static handler asks
 `isHTMLFile`, the same extension-to-MIME lookup `http.FileServer` types the file
-by. The sitemaps wear gzip alone (no CORS, no document headers). Nothing in the
+by. The sitemaps wear `Server.compressed` - gzip alone, the fourth named stack
+beside `public`/`api`/`html` (no CORS, no document headers). Nothing in the
 workspace frames a meta.audiosilo.app page and the Astro build sets none of
 these through `<meta>`; the CSP is frame-ancestors ONLY, since a script policy
 would have to track every inline script the build emits. `TestSecurityHeaders`

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 )
@@ -203,6 +204,11 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
 	srv.mu.Lock()
+	// Released on every exit, so a failure below does not leave the refresh
+	// goroutine blocked on the lock for the rest of the test binary.
+	var unlockOnce sync.Once
+	unlock := func() { unlockOnce.Do(srv.mu.Unlock) }
+	defer unlock()
 	answered := make(chan int, 1)
 	go func() {
 		rec := httptest.NewRecorder()
@@ -217,7 +223,7 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 	case <-time.After(10 * time.Second):
 		t.Fatal("the webhook did not answer while the refresh was blocked: it refreshes inside the request")
 	}
-	srv.mu.Unlock()
+	unlock()
 
 	deadline := time.Now().Add(10 * time.Second)
 	for srv.current().tag != tagR2 {
