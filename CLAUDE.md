@@ -317,7 +317,9 @@ included, so a deliberate deletion is not handed back) plus a re-render -
 present on both sides that ONE side left exactly as the base had it was changed
 by the other side alone, so that side's version is taken, in every family and at
 every level the merge descends to (the entries map, a work's own fields as one
-unit, its recordings map, a works-community entry's members) - without that
+unit, its recordings map, a works-community entry's members), through ONE
+implementation of the base rules (the script's `merge3With`) that every level
+calls rather than a copy per level - without that
 ordinary three-way rule a series the sync bot extended on main read as "both
 sides changed" beside an intake branch that had only added other series to the
 same pack, and the sweep failed that branch on every push (#2338). An entry
@@ -1580,9 +1582,13 @@ note rather than a closed duplicate.
   driver, built and copied before the loop) and sweeps only same-repository
   branches whose diff is confined to `data/` and whose commits add or change
   no symbolic link; a branch it refuses gets ONE marked comment saying why,
-  and a branch it fails to rebase gets one per (branch head, reason) through
+  and a branch it fails to rebase gets one per (attempted head, reason) through
   the same `comment_once` helper, so a stuck branch is not re-told on every push
-  to main while a new commit or a new failure still is.
+  to main while a new commit or a new failure still is - the reason carries the
+  failing tool's first problem line (`noted`), since "metacheck rejected the
+  merged tree" alone would mute a new cause. Only markers in the sweep's OWN
+  comments count (its login resolved once through GraphQL's viewer), so a
+  marker pasted by anyone else cannot mute it.
   intake.yml's `-noop` concurrency group carries a verbatim copy of the intake
   job's `if` (see the comments in intake.yml for both).
 - **Deterministic builds**: metabuild inserts in sorted id order so identical

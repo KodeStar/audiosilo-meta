@@ -29,7 +29,8 @@
 #
 # The one-side-unchanged row holds at EVERY level the merge descends to: the
 # entries map, a works entry's own fields (taken as one unit), its recordings
-# map, and a works-community entry's member map. Without it, main changing one
+# map, and a works-community entry's member map - and it has ONE implementation,
+# merge3With below, which every one of those levels goes through. Without it, main changing one
 # series entry (the daily sync bot appending volumes) while a branch left that
 # entry exactly as the base had it read as both sides changing it, and a series
 # pack the branch had only added other entries to could never be rebased (#2338).
@@ -215,17 +216,27 @@ if ! jq -n \
   --slurpfile base "$tmpdir/base" \
   --slurpfile a "$tmpdir/ours" \
   --slurpfile b "$tmpdir/theirs" '
-  # merge3 applies the base rules to one map, returning what survives and the
+  # merge3With applies the base rules to one map, returning what survives and the
   # keys that need a person. It is used for the entries map and, one level down,
-  # for a works entry recordings map and a works-community entry member map.
-  def merge3($B; $A; $T):
+  # for a works entry recordings map and a works-community entry member map - ONE
+  # copy of the rules, so a rule added to them (the one-side-unchanged row) cannot
+  # reach one level and miss another. `both` decides a key present on both sides
+  # that neither side left as the base had it: it is handed the key and returns
+  # {value:} or {clash:}. A value holding nothing (every member deleted) is a
+  # deletion, not an empty record.
+  def merge3With($B; $A; $T; both):
     ([$A, $T, $B | keys[]] | unique) as $keys
     | reduce $keys[] as $k ({kept: {}, clash: []};
         if ($A | has($k)) and ($T | has($k)) then
           (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
            elif ($B | has($k)) and $B[$k] == $A[$k] then .kept[$k] = $T[$k]  # changed there only
            elif ($B | has($k)) and $B[$k] == $T[$k] then .kept[$k] = $A[$k]  # changed here only
-           else .clash += [$k]
+           else
+             ($k | both) as $m
+             | if ($m | has("value"))
+               then (if ($m.value | length) > 0 then .kept[$k] = $m.value else . end)
+               else .clash += $m.clash
+               end
            end)
         elif ($A | has($k)) then
           (if ($B | has($k))
@@ -239,6 +250,9 @@ if ! jq -n \
            end)
         else .                                                        # deleted on both sides
         end);
+
+  # merge3 is the base rules alone: a key both sides changed needs a person.
+  def merge3($B; $A; $T): merge3With($B; $A; $T; {clash: [.]});
 
   # unionSources merges two provenance lists. Provenance accumulates and is never
   # the thing two imports disagree about: ours first, then the objects on the
@@ -312,22 +326,18 @@ if ! jq -n \
   def ownFieldsOf: if type == "object" then del(.recordings) else . end;
 
   # mergeEntry handles one entry both sides changed: the own fields are one unit
-  # that at most one side may have changed (the other side leaving them as the
-  # base had them), and the recordings maps merge by the base rules. Own fields
-  # both sides changed are a disagreement about a record.
+  # that at most one side may have changed, and the recordings maps merge by the
+  # base rules. The own-fields decision goes through merge3 too, as the single
+  # key "own", so the one-side-unchanged rule has one implementation rather than
+  # a copy here. Own fields both sides changed are a disagreement about a record.
   def mergeEntry($B; $A; $T; $k):
     if (($A | type) != "object") or (($T | type) != "object") then {clash: [$k]}
     else
-      ($A | ownFieldsOf) as $a0
-      | ($T | ownFieldsOf) as $t0
-      | ($B | ownFieldsOf) as $b0
-      | (if $a0 == $t0 or $b0 == $t0 then $a0
-         elif $b0 == $a0 then $t0
-         else null
-         end) as $own
-      | if $own == null then {clash: [$k]}
+      merge3({own: ($B | ownFieldsOf)}; {own: ($A | ownFieldsOf)}; {own: ($T | ownFieldsOf)}) as $o
+      | if ($o.clash | length) > 0 then {clash: [$k]}
         else
-          merge3(($B | recordingsOf); ($A | recordingsOf); ($T | recordingsOf)) as $r
+          $o.kept.own as $own
+          | merge3(($B | recordingsOf); ($A | recordingsOf); ($T | recordingsOf)) as $r
           | if ($r.clash | length) > 0
             then {clash: ($r.clash | map($k + ".recordings." + .))}
             else {value: (if ($r.kept | length) > 0 then ($own + {recordings: $r.kept}) else $own end)}
@@ -362,40 +372,16 @@ if ! jq -n \
   ($base[0].entries // {}) as $B
   | ($a[0].entries // {}) as $A
   | ($b[0].entries // {}) as $T
-  | ([$A, $T, $B | keys[]] | unique) as $keys
-  | reduce $keys[] as $k ({kept: {}, clash: []};
-      if ($A | has($k)) and ($T | has($k)) then
-        (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
-         # One side left the entry exactly as the base had it, so only the
-         # other side changed it: its version stands, whatever the family.
-         elif ($B | has($k)) and $B[$k] == $A[$k] then .kept[$k] = $T[$k]
-         elif ($B | has($k)) and $B[$k] == $T[$k] then .kept[$k] = $A[$k]
-         else
-           # The base decides which rule this is: an entry it HAS is one both
-           # sides changed, an entry it lacks is one both sides added.
-           (if ($B | has($k))
-            then mergeChanged(($B[$k] // {}); $A[$k]; $T[$k]; $k)
-            else prefix(mergeAdded($A[$k]; $T[$k]; 0); $k)
-            end) as $m
-           | if ($m | has("value"))
-             # An entry left holding nothing (both sides deleted a member, and
-             # they were all the entry had) is a deletion, not an empty record.
-             then (if ($m.value | length) > 0 then .kept[$k] = $m.value else . end)
-             else .clash += $m.clash
-             end
-         end)
-      elif ($A | has($k)) then
-        (if ($B | has($k))
-         then (if $B[$k] == $A[$k] then . else .clash += [$k] end)
-         else .kept[$k] = $A[$k]
-         end)
-      elif ($T | has($k)) then
-        (if ($B | has($k))
-         then (if $B[$k] == $T[$k] then . else .clash += [$k] end)
-         else .kept[$k] = $T[$k]
-         end)
-      else .
-      end)
+  # The entries map takes the base rules like every level below it; only a key
+  # both sides changed or both sides added is decided here. The base decides
+  # which of the two it is: an entry it HAS is one both sides changed, an entry
+  # it lacks is one both sides added.
+  | merge3With($B; $A; $T;
+      . as $k
+      | if ($B | has($k))
+        then mergeChanged(($B[$k] // {}); $A[$k]; $T[$k]; $k)
+        else prefix(mergeAdded($A[$k]; $T[$k]; 0); $k)
+        end)
   | if (.clash | length) > 0
     then error("both sides changed the same records: " + (.clash | join(", ")))
     else {entries: .kept}

@@ -194,8 +194,8 @@ func TestPackUnionMerge(t *testing.T) {
 			wantRefusal: true,
 		},
 		{
-			// Only the recordings map may differ: a work's own fields differing
-			// is two people disagreeing about the book.
+			// The own fields may differ from the base on ONE side only: both
+			// sides changing them is two people disagreeing about the book.
 			name:        "the work's own fields differ too",
 			base:        pack(workWithRecs("aaa", "A", rec("r1", ""))),
 			main:        pack(workWithRecs("aaa", "A from main", rec("r1", "")+","+rec("r2", ""))),
@@ -367,6 +367,23 @@ func TestPackUnionMerge(t *testing.T) {
 				"aaa.recordings.r1", "aaa.recordings.r2",
 			},
 			equal: map[string]string{"aaa.title": `"A corrected"`},
+		},
+		{
+			name:    "the branch changed the work's own fields, main added a recording",
+			base:    pack(workWithRecs("aaa", "A", rec("r1", ""))),
+			main:    pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r2", ""))),
+			branch:  pack(workWithRecs("aaa", "A corrected", rec("r1", ""))),
+			present: []string{"aaa.recordings.r1", "aaa.recordings.r2"},
+			equal:   map[string]string{"aaa.title": `"A corrected"`},
+		},
+		{
+			// Own fields changed on one side do not excuse a recording both
+			// sides wrote.
+			name:        "one side changed the own fields, both edited one recording",
+			base:        pack(workWithRecs("aaa", "A", rec("r1", "old"))),
+			main:        pack(workWithRecs("aaa", "A corrected", rec("r1", "main"))),
+			branch:      pack(workWithRecs("aaa", "A", rec("r1", "branch"))),
+			wantRefusal: true,
 		},
 		{
 			name:    "the branch changed a recording, main added another",
