@@ -353,6 +353,105 @@ func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
 	}
 }
 
+// The series-volume gate reads the record the work would be PLACED into, and a
+// series named "Latest" is placed at latest-2 (the reserved-slug step). Reading the
+// plain slugify of the name instead left the gate looking at no record at all, so a
+// title stating a volume that record fills reached a later, less specific verdict.
+func TestAddWorkSeriesVolumeGateReadsASteppedReservedSeries(t *testing.T) {
+	dir := arrivalTree(t, map[string]string{
+		"series/la/latest-2.json": testpack.SeriesJSON(t, "latest-2", "Latest", "arrival@2"),
+	})
+	res := processAddWork(t, dir, dupWorkBody("Arrival, Book 2", "Kevin Hearne", "Luke Daniels", "Latest", "2"))
+	assertSeriesVolumeDuplicate(t, res)
+}
+
+// arrivalTree is the calibration catalogue plus "Arrival" (Kevin Hearne, one
+// user-attested recording) and the given series files. The member is
+// user-attested because a bulk-mirror seed turns the duplicate verdict into a
+// takeover (failDuplicateWork), which is not what these tests are about.
+func arrivalTree(t *testing.T, series map[string]string) string {
+	t.Helper()
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	files["works/ar/arrival/work.json"] = testpack.WithField(t,
+		testpack.WorkJSON(t, "arrival", "Arrival", testpack.WithAuthors("kevin-hearne")),
+		"sources", []map[string]string{{"type": "user", "imported_at": "2026-07-01"}})
+	files["works/ar/arrival/recordings/luke-daniels-2012.json"] = testpack.RecJSON(t, "luke-daniels-2012", "arrival",
+		testpack.WithNarrators("luke-daniels"), testpack.WithRuntime(480))
+	for k, v := range series {
+		files[k] = v
+	}
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+	return dir
+}
+
+// assertSeriesVolumeDuplicate pins a verdict to the series-volume gate: a
+// duplicate naming arrival and the volume it fills.
+func assertSeriesVolumeDuplicate(t *testing.T, res Result) {
+	t.Helper()
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
+	}
+	if !anyContains(res.Messages, "volume 2") || !anyContains(res.Messages, "arrival") {
+		t.Errorf("the verdict must come from the series-volume gate, naming the member: %v", res.Messages)
+	}
+}
+
+// fooChainTree holds the shape the importer's chain walk produces when a name's
+// base slug belongs to another series: "foo" is "Bar", so "Foo" was minted at
+// foo-2, with Arrival at its position 2.
+func fooChainTree(t *testing.T) string {
+	t.Helper()
+	return arrivalTree(t, map[string]string{
+		"series/fo/foo.json":   testpack.SeriesJSON(t, "foo", "Bar", "the-blood-of-elves@1"),
+		"series/fo/foo-2.json": testpack.SeriesJSON(t, "foo-2", "Foo", "arrival@2"),
+	})
+}
+
+// A form naming "Foo" finds its series where the importer does - down the chain,
+// at foo-2 - so the series-volume gate reads foo-2's volumes...
+func TestAddWorkSeriesVolumeGateWalksTheSeriesChain(t *testing.T) {
+	res := processAddWork(t, fooChainTree(t), dupWorkBody("Arrival, Book 2", "Kevin Hearne", "Luke Daniels", "Foo", "2"))
+	assertSeriesVolumeDuplicate(t, res)
+}
+
+// ...and placement extends foo-2 rather than escalating the base's holder.
+func TestAddWorkExtendsTheSeriesTheChainFinds(t *testing.T) {
+	dir := fooChainTree(t)
+	res := processAddWork(t, dir, dupWorkBody("Departure", "Kevin Hearne", "Luke Daniels", "Foo", "3"))
+
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	series := readFile(t, dir, "series/fo/foo-2.json")
+	if !strings.Contains(series, `"work": "departure"`) {
+		t.Errorf("foo-2 was not extended:\n%s", series)
+	}
+	if strings.Contains(readFile(t, dir, "series/fo/foo.json"), "departure") {
+		t.Error("the differently-named series at the base slug was extended")
+	}
+}
+
+// The conservative half is kept: when no series on the chain carries the name, a
+// base slug held by a differently-named series is still a maintainer's call - the
+// form never mints a numbered series of its own.
+func TestAddWorkEscalatesABaseSlugHeldByAnotherSeries(t *testing.T) {
+	dir := arrivalTree(t, map[string]string{
+		"series/fo/foo.json": testpack.SeriesJSON(t, "foo", "Bar", "the-blood-of-elves@1"),
+	})
+	res := processAddWork(t, dir, dupWorkBody("Departure", "Kevin Hearne", "Luke Daniels", "Foo", "3"))
+
+	if res.Status != StatusNeedsHuman || !anyContains(res.Messages, `already belongs to "Bar"`) {
+		t.Fatalf("status = %q, want needs-human naming the holder; messages = %v", res.Status, res.Messages)
+	}
+	if recordExists(t, dir, "series/fo/foo-2.json") {
+		t.Error("the form minted a numbered series")
+	}
+}
+
 // F3 on the intake side: a COLLECTION is not the volume it collects, at either gate -
 // the boxed set normalizes onto the plain title and claims no position of its own.
 func TestAddWorkAcceptsACollection(t *testing.T) {

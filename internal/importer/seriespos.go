@@ -229,6 +229,137 @@ func statedVolumePosition(r seriesRef, title string) (string, bool) {
 	return pos, true
 }
 
+// rowPosition is where a row's claim on one series puts its volume: the position
+// its source stated, and the title's where statedVolumePosition arbitrates a
+// different one. placementPosition puts the work at the title's unless that slot
+// is taken or the work already sits in the series, so a recorded position
+// matching either CAN be this row's volume - which every reader comparing a row's
+// claim against a recorded position (seriesClaim.compatible/places, the
+// recording-level serial guard) must allow, or a re-release of a
+// title-arbitrated volume reads as a different one.
+//
+// The two arms are not equal, though. The SOURCE arm is the fact the row states
+// and is read as it always was. The TITLE arm is a second reading of the same
+// row, and a match that holds ONLY through it counts only when corroborated
+// (titleCorroborated): uncorroborated, "Witch Myth: ..., Book 1" at the
+// retailer's 2 matched the different 169-minute "Witch Myth" at 1 and was
+// skipped as its duplicate, losing a book. Positions compare as SLOTS
+// (SameSlot), so "03" and "3" are one place in the order.
+type rowPosition struct{ source, title string }
+
+// rowPositionOf is r's positions, the title's read by the one arbitration rule.
+func rowPositionOf(r seriesRef, title string) rowPosition {
+	stated, _ := statedVolumePosition(r, title)
+	return rowPosition{source: r.seq, title: stated}
+}
+
+// names reports whether pos is one of the row's positions: the source's
+// outright, the title's only when corroborated() says so. corroborated is asked
+// only when the title arm is the one deciding.
+func (rp rowPosition) names(pos string, corroborated func() bool) bool {
+	if SameSlot(pos, rp.source) {
+		return true
+	}
+	return rp.title != "" && SameSlot(pos, rp.title) && corroborated()
+}
+
+// agrees reports whether two claims on one series share a position: their
+// sources outright, any match that runs through either side's title arm only
+// when corroborated() says so.
+func (rp rowPosition) agrees(o rowPosition, corroborated func() bool) bool {
+	if SameSlot(rp.source, o.source) {
+		return true
+	}
+	viaTitle := (rp.title != "" && (SameSlot(rp.title, o.source) || (o.title != "" && SameSlot(rp.title, o.title)))) ||
+		(o.title != "" && SameSlot(o.title, rp.source))
+	return viaTitle && corroborated()
+}
+
+// rowProduction is what a row states about its PRODUCTION - the narrator set,
+// the runtime and the abridged tri-state - which is the evidence a title-arm
+// match has to be corroborated by (titleCorroborated). Build one with
+// rowProductionOf or resolvedRowProduction, never a literal: a zero runtime or a
+// missing narrator set would silently corroborate nothing, or everything.
+type rowProduction struct {
+	runtime  int   // whole minutes; 0 = unstated
+	abridged *bool // nil = unstated
+	// narrators is the resolved narrator-slug set. When it is nil, names are
+	// resolved through resolve on first use: the claim is built before the row's
+	// people exist (creating them is what a refused row must not do), and the
+	// resolution is only needed on the rare path where the title arm alone decides.
+	narrators map[string]bool
+	names     []string
+	resolve   func(name string) string
+}
+
+// rowProductionOf is b's production with its narrator names resolved lazily and
+// READ-ONLY, onto the slugs creditSlugs would give them (personSlug +
+// personSlugTarget - the same resolution rowWorkAuthorsRO reads authors through).
+func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
+	return &rowProduction{runtime: b.runtimeMin, abridged: b.abridged, names: narratorNames,
+		resolve: func(name string) string {
+			slug, _ := personSlug(name)
+			return p.personSlugTarget(slug)
+		}}
+}
+
+// resolvedRowProduction is b's production for a caller that already holds the
+// row's resolved narrator set (addRecording).
+func resolvedRowProduction(b sourceBook, narrators map[string]bool) *rowProduction {
+	return &rowProduction{runtime: b.runtimeMin, abridged: b.abridged, narrators: narrators}
+}
+
+// narratorSet is the row's resolved narrator-slug set.
+func (rp *rowProduction) narratorSet() map[string]bool {
+	if rp.narrators == nil {
+		rp.narrators = make(map[string]bool, len(rp.names))
+		for _, name := range rp.names {
+			rp.narrators[rp.resolve(name)] = true
+		}
+	}
+	return rp.narrators
+}
+
+// sameProductionAs reports whether the row is the same production as recording
+// ri, by the importer's OWN definition - the one the ASIN merge in addRecording
+// applies: the identical narrator set (SameSet), compatible runtimes
+// (runtimesCompatible) and no abridged conflict (abridgedConflict). One
+// tightening, because this is evidence rather than a merge decision: BOTH
+// runtimes must be stated, since an unknown runtime is compatible with anything
+// and so corroborates nothing. The narrator set is asked last - it is the only
+// part that may have to resolve names.
+func (rp *rowProduction) sameProductionAs(ri *recInfo) bool {
+	return rp.runtime > 0 && ri.runtimeMin > 0 && runtimesCompatible(ri.runtimeMin, rp.runtime) &&
+		!abridgedConflict(ri.abridged, rp.abridged) && SameSet(ri.narrators, rp.narratorSet())
+}
+
+// titleCorroborated is the ONE test a title-arm match must pass (seriesClaim's
+// compatible and places, and the serial guard, all ask it): the row is the SAME
+// PRODUCTION as one of work ws's recordings (sameProductionAs). A re-release of
+// a title-arbitrated volume passes - same narrator, same length (the Towerbound
+// shape, Geronimo Stilton #6 at 70 against 71 minutes by Edward Herrmann) - while
+// Witch Myth's three books do not (the second and third are 196 and 218 minutes
+// against the first's 169), so they stay three.
+//
+// Deliberately NOT evidence: a runtime match alone (volumes of one series sit
+// within 10% of each other routinely - Geronimo's are 69/70/71 minutes), and the
+// row's source slot being held by another work (that depends on which rows came
+// first: Witch Myth in the order 1, 3, 2 placed "Book 2" into the free 2, after
+// which "Book 1" at the retailer's 2 found its source slot "held" and was
+// skipped as book 1's duplicate). A match this rejects falls back to the source
+// position alone, which is what the importer did before the title arm existed.
+func titleCorroborated(ws *workState, prod *rowProduction) bool {
+	if prod == nil {
+		return false
+	}
+	for _, ri := range ws.recs {
+		if prod.sameProductionAs(ri) {
+			return true
+		}
+	}
+	return false
+}
+
 // noteSeriesPositionFilled records one filled position for the run's aggregated
 // note.
 func (p *planner) noteSeriesPositionFilled(title, series, pos string) {

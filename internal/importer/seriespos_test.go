@@ -376,6 +376,291 @@ func TestARangePositionIsNeverArbitrated(t *testing.T) {
 	}
 }
 
+// towerboundRows is an envelope of "Towerbound, Book 6" rows at the retailer's
+// position 8, one per ASIN - re-releases of the one production (same narrator,
+// the same stated runtime, which is what corroborates the title's volume when
+// nothing else does - titleCorroborated).
+func towerboundRows(asins ...string) string {
+	rows := make([]string, len(asins))
+	for i, a := range asins {
+		rows[i] = fmt.Sprintf(`{"title": "Towerbound, Book 6", "authors": ["A Writer"], "narrators": ["A Narrator"],`+
+			` "series": "Towerbound", "series_position": "8", "asin": %q, "language": "en", "runtime_min": 300}`, a)
+	}
+	return `{"format": "audiosilo-books", "version": 1, "books": [` + strings.Join(rows, ",") + `]}`
+}
+
+// runBooksOver runs one audiosilo-books import over an existing tree.
+func runBooksOver(t *testing.T, dataDir, envelope string) Summary {
+	t.Helper()
+	sum, err := RunAudiosiloBooks(writeBooks(t, envelope), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("import run: %v", err)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	return sum
+}
+
+// The serial guard reads the position a row would be PLACED at, not the raw one
+// its source stated: run 1 places "Towerbound, Book 6" at the title's 6, so run
+// 2's re-release of it - still stating the retailer's 8 - is the same volume and
+// its ASIN merges, exactly as the two rows do within one run.
+func TestSerialGuardReadsTheArbitratedPosition(t *testing.T) {
+	// The recording guard on its own: the alternate-narration pass resolves the
+	// work by title and author alone, so nothing but the guard stands between the
+	// re-release and a duplicate sibling recording.
+	t.Run("recordings-only second run", func(t *testing.T) {
+		dataDir := t.TempDir()
+		runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+		sum := runRecordingsOnly(t, dataDir,
+			tombRow("B0TWR00009", "Towerbound, Book 6", "A Writer", "A Narrator", 300, "Towerbound", "8")+"\n", false)
+		if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+	// The same shape through the create path, where the work-level series claim
+	// (seriesClaim.compatible) reads the row's position first.
+	t.Run("two runs", func(t *testing.T) {
+		dataDir := t.TempDir()
+		runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+		sum := runBooksOver(t, dataDir, towerboundRows("B0TWR00009"))
+		if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+	t.Run("one run", func(t *testing.T) {
+		sum := runBooksOver(t, t.TempDir(), towerboundRows("B0TWR00001", "B0TWR00009"))
+		if sum.MergedASINs != 1 || sum.NewRecordings != 1 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+}
+
+// When the title's slot was TAKEN, placement kept the source's position (8), so
+// the work sits at 8 on disk. A re-release stating that same 8 is the same
+// volume too: the row's claim carries both the title's and the source's
+// position, and either matching the recording's is agreement.
+func TestSerialGuardMatchesTheSourcePositionPlacementKept(t *testing.T) {
+	dataDir := t.TempDir()
+	runBooksOver(t, dataDir, `{"format": "audiosilo-books", "version": 1, "books": [
+    {"title": "Prelude at the Gate", "authors": ["A Writer"], "narrators": ["A Narrator"],
+     "series": "Towerbound", "series_position": "6", "asin": "B0TWR00002", "language": "en"}]}`)
+	runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+	if got := seriesSlots(t, dataDir, towerboundSeriesFile)["towerbound-book-6"]; got != "8" {
+		t.Fatalf("placed at %q, want the source's 8 (the title's 6 is taken)", got)
+	}
+	sum := runBooksOver(t, dataDir, towerboundRows("B0TWR00009"))
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+		t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+			sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// A recording created THIS run still carries its row's raw claim (the retailer's
+// 8, the title's 6), while the work it belongs to sits at 6. A later row of the
+// same run stating that 6 - runtime unstated, so nothing else corroborates a
+// title - is the volume the work sits at, and its ASIN merges exactly as it does
+// when the first recording is read back from disk in a second run.
+func TestSerialGuardAgreesWithTheWorksPlacementInOneRun(t *testing.T) {
+	seed := `{"format": "audiosilo-books", "version": 1, "books": [{"title": "Towerbound, Book 6",` +
+		` "authors": ["A Writer"], "narrators": ["Other Voice"], "series": "Towerbound", "series_position": "6",` +
+		` "asin": "B0TWR00000", "language": "en", "runtime_min": 300}]}`
+	first := tombRow("B0TWR00001", "Towerbound, Book 6", "A Writer", "A Narrator", 300, "Towerbound", "8")
+	rerelease := strings.Replace(tombRow("B0TWR00009", "Towerbound, Book 6", "A Writer", "A Narrator", 0, "Towerbound", "6"),
+		`"lengthMinutes":0,`, "", 1)
+	for _, tc := range []struct {
+		name string
+		runs []string
+	}{
+		{"one run", []string{first + "\n" + rerelease + "\n"}},
+		{"two runs", []string{first + "\n", rerelease + "\n"}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			runBooksOver(t, dataDir, seed)
+			var sum Summary
+			for _, run := range tc.runs {
+				sum = runRecordingsOnly(t, dataDir, run, false)
+			}
+			if sum.MergedASINs != 1 {
+				t.Errorf("MergedASINs = %d, want the re-release merged: %v", sum.MergedASINs, sum.Warnings)
+			}
+		})
+	}
+}
+
+// ---------------------------------------------------------------------------
+// The title's position counts only with corroboration (titleCorroborated): the
+// row must be the SAME PRODUCTION as one of the work's recordings. The fixtures
+// are the real-data measurement's rows, verbatim where it matters.
+
+// witchMythTree is the Yew Hollow series as the catalogue holds it: only the
+// 1-3 boxset.
+func witchMythTree(t *testing.T) string {
+	t.Helper()
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/al/alexandria-clarke.json":  personRec("alexandria-clarke", "Alexandria Clarke"),
+		"people/jo/jo-nelson.json":          personRec("jo-nelson", "Jo Nelson"),
+		"people/el/elisabeth-langelee.json": personRec("elisabeth-langelee", "Elisabeth Langelee"),
+		"works/wi/witch-myth-super-boxset-a-yew-hollow-cozy-mystery/work.json": workRec(
+			"witch-myth-super-boxset-a-yew-hollow-cozy-mystery", "Witch Myth Super Boxset: A Yew Hollow Cozy Mystery",
+			"en", `"alexandria-clarke"`, ""),
+		"works/wi/witch-myth-super-boxset-a-yew-hollow-cozy-mystery/recordings/elisabeth-langelee-2017.json": recRec(
+			"witch-myth-super-boxset-a-yew-hollow-cozy-mystery", "elisabeth-langelee-2017", "en", "elisabeth-langelee", "B0WMBOXSET", 1580),
+		"series/ye/yew-hollow-cozy-mysteries.json": `{"id":"yew-hollow-cozy-mysteries","license":"CC0-1.0",` +
+			`"name":"Yew Hollow Cozy Mysteries","sources":[{"type":"user"}],` +
+			`"works":[{"position":"1-3","work":"witch-myth-super-boxset-a-yew-hollow-cozy-mystery"}]}`,
+	})
+	return dataDir
+}
+
+// witchMythRows are the three real rows, by the retailer's number: three
+// different books by one narrator whose second and third titles say "Book 1"
+// and "Book 2".
+var witchMythRows = func() map[int]string {
+	const author, narrator = `{"name":"Alexandria Clarke"}`, `{"name":"Jo Nelson"}`
+	return map[int]string{
+		1: libexRow{asin: "B01M1Z0PE0", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery", authors: author,
+			narrators: narrator, minutes: 169,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"1"},{"name":"Witch Myth","position":"1"}`}.render(),
+		2: libexRow{asin: "B01N3SY0AS", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery, Book 1", authors: author,
+			narrators: narrator, minutes: 196,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"2"},{"name":"Witch Myth","position":"2"},` +
+				`{"name":"A Witch Myth Cozy Mystery","position":"1"}`}.render(),
+		3: libexRow{asin: "B01MXW1559", title: "Witch Myth", subtitle: "A Yew Hollow Cozy Mystery, Book 2", authors: author,
+			narrators: narrator, minutes: 218,
+			series: `{"name":"Yew Hollow Cozy Mysteries","position":"3"},{"name":"Witch Myth","position":"3"}`}.render(),
+	}
+}()
+
+// Witch Myth is three books whatever order - or runs - its rows arrive in.
+// Uncorroborated, "Book 1" (the retailer's 2) matched the 169-minute book 1 by
+// its title and was skipped as its duplicate. The first corroboration rule made
+// it order-dependent instead: in the order 1, 3, 2, "Book 2" was placed into
+// the free slot 2, after which "Book 1"'s source slot counted as "held by
+// another work" and corroborated the same wrong match. Neither 196 nor 218
+// minutes is the 169-minute production, so nothing corroborates the title.
+func TestTitlePositionNeedsCorroboration(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		runs [][]int
+	}{
+		{"order 1 2 3", [][]int{{1, 2, 3}}},
+		{"order 1 3 2", [][]int{{1, 3, 2}}},
+		{"runs 1+3 then 2", [][]int{{1, 3}, {2}}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := witchMythTree(t)
+			works, skipped, merged := 0, 0, 0
+			for _, run := range tc.runs {
+				rows := make([]string, len(run))
+				for i, n := range run {
+					rows[i] = witchMythRows[n]
+				}
+				sum := runLibexOver(t, dataDir, rows...)
+				works += sum.NewWorks
+				skipped += sum.SkippedDuplicateIdentity
+				merged += sum.MergedASINs
+			}
+			if works != 3 || skipped != 0 || merged != 0 {
+				t.Errorf("works = %d, skipped = %d, merged = %d; want three books and nothing skipped", works, skipped, merged)
+			}
+			assertTreeValid(t, dataDir)
+		})
+	}
+}
+
+// The title's position corroborated by the SAME PRODUCTION: "Geronimo Stilton,
+// Book 6" at the retailer's 3 is Edward Herrmann's 70-minute reading, and the
+// catalogued #6 is Edward Herrmann's 71-minute reading - so the row is the
+// catalogued #6 rather than a second record of it.
+func TestTitlePositionCorroboratedByTheSameProduction(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ge/geronimo-stilton.json": personRec("geronimo-stilton", "Geronimo Stilton"),
+		"people/ed/edward-herrmann.json":  personRec("edward-herrmann", "Edward Herrmann"),
+		"works/ge/geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house/work.json": workRec(
+			"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house",
+			"Geronimo Stilton Book 3: Cat and Mouse in a Haunted House", "en", `"geronimo-stilton"`, ""),
+		"works/ge/geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house/recordings/geronimo-stilton-2009.json": recRec(
+			"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house", "geronimo-stilton-2009", "en",
+			"geronimo-stilton", "B0GERON003", 69),
+		"works/ge/geronimo-stilton-6-paws-off-cheddarface/work.json": workRec(
+			"geronimo-stilton-6-paws-off-cheddarface", "Geronimo Stilton #6: Paws Off, Cheddarface!", "en",
+			`"geronimo-stilton"`, ""),
+		"works/ge/geronimo-stilton-6-paws-off-cheddarface/recordings/edward-herrmann-2006.json": recRec(
+			"geronimo-stilton-6-paws-off-cheddarface", "edward-herrmann-2006", "en", "edward-herrmann", "B0GERON006", 71),
+		"series/ge/geronimo-stilton.json": `{"id":"geronimo-stilton","license":"CC0-1.0","name":"Geronimo Stilton",` +
+			`"sources":[{"type":"user"}],"works":[` +
+			`{"position":"3","work":"geronimo-stilton-book-3-cat-and-mouse-in-a-haunted-house"},` +
+			`{"position":"6","work":"geronimo-stilton-6-paws-off-cheddarface"}]}`,
+	})
+	sum := runLibexOver(t, dataDir, libexRow{asin: "B008D5E7C6", title: "Geronimo Stilton, Book 6: Paws Off, Cheddarface!",
+		authors: `{"name":"Geronimo Stilton"}`, narrators: `{"name":"Edward Herrmann"}`, minutes: 70,
+		series: `{"name":"Geronimo Stilton","position":"3"}`}.render())
+
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: the row is the catalogued #6: %v", sum.NewWorks, sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// Trial by Fire (Newpointe 911 #4) arrives as three narrations in one run. The
+// second states the retailer's 5 and "Book 4" in its title, but a different
+// narrator is not the same production, so nothing corroborates the title and the
+// row falls back to what origin/main does with it: the source position alone, a
+// second work beside #4 (and the third row, a plain 4 whose slot #4 now holds, a
+// third). A duplicate work is the recoverable outcome - a wrong merge is not.
+func TestTitlePositionUncorroboratedByAnotherNarration(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/te/terri-blackstock.json": personRec("terri-blackstock", "Terri Blackstock"),
+		"people/jc/j-c-howe.json":         personRec("j-c-howe", "J. C. Howe"),
+		"works/li/line-of-duty/work.json": workRec("line-of-duty", "Line of Duty", "en", `"terri-blackstock"`, ""),
+		"works/li/line-of-duty/recordings/j-c-howe-2010.json": recRec(
+			"line-of-duty", "j-c-howe-2010", "en", "j-c-howe", "B0LINEDUTY", 631),
+		"series/ne/newpointe-911.json": `{"id":"newpointe-911","license":"CC0-1.0","name":"Newpointe 911",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"5","work":"line-of-duty"}]}`,
+	})
+	const author = `{"name":"Terri Blackstock"}`
+	sum := runLibexOver(t, dataDir,
+		libexRow{asin: "B002V5BSGM", title: "Trial by Fire", subtitle: "Newpointe 911 Series #4", authors: author,
+			narrators: `{"name":"Kris Faulkner"}`, minutes: 566, series: `{"name":"Newpointe 911","position":"4"}`}.render(),
+		libexRow{asin: "B002V19RIW", title: "Trial by Fire", subtitle: "Newpointe 911 Series, Book 4", authors: author,
+			narrators: `{"name":"John McDonough"}`, minutes: 628, series: `{"name":"Newpointe 911","position":"5"}`}.render(),
+		libexRow{asin: "B0032CLAPC", title: "Trial by Fire", authors: author,
+			narrators: `{"name":"Jay Charles"}`, minutes: 589, series: `{"name":"Newpointe 911","position":"4"}`}.render(),
+	)
+
+	if sum.NewWorks != 3 || sum.MergedASINs != 0 || sum.SkippedDuplicateIdentity != 0 {
+		t.Errorf("NewWorks = %d, MergedASINs = %d, SkippedDuplicateIdentity = %d; want origin/main's three works: %v",
+			sum.NewWorks, sum.MergedASINs, sum.SkippedDuplicateIdentity, sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// Two Towerbound rows with NO runtime: nothing states a length, so nothing can
+// corroborate the title, and the re-release falls back to what origin/main does -
+// the first row is placed at the title's 6, the second (still at the retailer's
+// 8) reads as a different volume and gets an author-suffixed work of its own.
+func TestTitlePositionWithoutRuntimesFallsBack(t *testing.T) {
+	row := func(asin string) string {
+		return fmt.Sprintf(`{"title": "Towerbound, Book 6", "authors": ["A Writer"], "narrators": ["A Narrator"],`+
+			` "series": "Towerbound", "series_position": "8", "asin": %q, "language": "en"}`, asin)
+	}
+	sum := runBooksOver(t, t.TempDir(),
+		`{"format": "audiosilo-books", "version": 1, "books": [`+row("B0TWR00001")+","+row("B0TWR00009")+`]}`)
+
+	if sum.NewWorks != 2 || sum.MergedASINs != 0 {
+		t.Errorf("NewWorks = %d, MergedASINs = %d; want origin/main's two works: %v", sum.NewWorks, sum.MergedASINs, sum.Warnings)
+	}
+}
+
 // The live client's adapter reads the record's own `series` array and nothing
 // else, and reports an ASIN libex does not hold as "nothing to fill" rather than
 // as an error - plenty of a personal library is not on Audible at all.

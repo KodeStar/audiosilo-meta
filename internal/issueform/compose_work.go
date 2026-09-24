@@ -395,6 +395,56 @@ func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, 
 	}
 }
 
+// seriesSlugOf is the slug a form's series name addresses: the importer's first
+// series candidate (SeriesSlugAt, which steps "Latest" onto latest-2), so both
+// writers resolve a name to one slug. base is the unstepped slug, for the note.
+func seriesSlugOf(name string) (slug, base string) {
+	base = slugify(name)
+	return importer.SeriesSlugAt(base, 0), base
+}
+
+// formSeries is what a form's series name addresses (seriesForForm).
+type formSeries struct {
+	// slug is the name's first candidate (seriesSlugOf) and base the unstepped
+	// slug, for the reserved-literal note. A new series is minted at slug.
+	slug, base string
+	// rec is the series the name resolves to and id where it is stored; via is
+	// the retired base slug it was reached through, or "".
+	rec     *model.Series
+	id, via string
+	// taken is set when rec is nil and slug is held by a differently-named
+	// series - a maintainer's call, since the form never mints a numbered series.
+	taken *model.Series
+}
+
+// seriesForForm resolves a form's series name - the one lookup placeInSeries
+// places by and titleContextFor's gates read, so both see the same record. The
+// name is FOUND by the importer's own chain walk (importer.FindSeriesSlug: a
+// retired base reaches its survivor, a differently-named holder is stepped past
+// and a later candidate carrying the name answers), so the form and the importer
+// agree which series a name is. When the chain holds no series of that name the
+// form stays conservative: a slug held by another series is taken, not stepped.
+func (c *composer) seriesForForm(name string) formSeries {
+	fs := formSeries{}
+	fs.slug, fs.base = seriesSlugOf(name)
+	if fs.slug == "" {
+		return fs
+	}
+	stored := func(slug string) (string, bool) {
+		s := c.series[slug]
+		if s == nil {
+			return "", false
+		}
+		return s.Name, true
+	}
+	if id, via, found := importer.FindSeriesSlug(name, c.redirects, stored); found {
+		fs.rec, fs.id, fs.via = c.series[id], id, via
+		return fs
+	}
+	fs.taken = c.series[fs.slug]
+	return fs
+}
+
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
 func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
@@ -412,35 +462,29 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		c.note("series position %q is not a number or omnibus range - work not placed in the series", posRaw)
 		return
 	}
-	seriesSlug := slugify(name)
-	if seriesSlug == "" {
+	fs := c.seriesForForm(name)
+	if fs.slug == "" {
 		c.note("series name %q produced an empty slug - work not placed in the series", name)
 		return
 	}
-	// The series half of the same rule: a series named "Latest" takes the
-	// numeric candidate the importer's chain would give it (SeriesSlugAt), so
-	// both writers resolve the name to one slug.
-	if model.IsReservedSlug(seriesSlug) {
-		stepped := importer.SeriesSlugAt(seriesSlug, 0)
-		c.note("series slug %q is reserved for an API route - using %q", seriesSlug, stepped)
-		seriesSlug = stepped
+	if fs.slug != fs.base {
+		c.note("series slug %q is reserved for an API route - using %q", fs.base, fs.slug)
 	}
-
-	if existing, id := c.seriesAt(seriesSlug); existing != nil {
-		switch {
-		case id != seriesSlug:
-			c.noteRetired(model.RedirectSeries, seriesSlug, id)
-		case !strings.EqualFold(existing.Name, name):
-			c.fail(StatusNeedsHuman, "series slug %q already belongs to %q - a maintainer must resolve the series for %q", seriesSlug, existing.Name, name)
-			return
+	if fs.taken != nil {
+		c.fail(StatusNeedsHuman, "series slug %q already belongs to %q - a maintainer must resolve the series for %q", fs.slug, fs.taken.Name, name)
+		return
+	}
+	if fs.rec != nil {
+		if fs.via != "" {
+			c.noteRetired(model.RedirectSeries, fs.via, fs.id)
 		}
-		c.extendSeries(existing, id, workSlug, pos)
+		c.extendSeries(fs.rec, fs.id, workSlug, pos)
 		return
 	}
 
 	// New series entry with this one work.
-	c.putNewEntry(pack.FamilySeries, seriesSlug, outSeries{
-		ID: seriesSlug, Name: name, License: licenseCC0,
+	c.putNewEntry(pack.FamilySeries, fs.slug, outSeries{
+		ID: fs.slug, Name: name, License: licenseCC0,
 		Works:   []outSeriesWork{{Work: workSlug, Position: pos}},
 		Sources: c.sources(sourceRef),
 	})

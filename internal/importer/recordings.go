@@ -102,7 +102,7 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 		return
 	}
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
-	if p.addRecording(ws, b, asin, lang, narratorSlugs, warn) && asin != "" {
+	if p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn) && asin != "" {
 		// Single owner of the global ASIN registry, as in addBook: claim the ASIN
 		// only once it actually landed on a recording.
 		p.asins[asin] = true

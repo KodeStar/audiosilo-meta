@@ -16,7 +16,8 @@ import (
 // name for the SURVIVOR, not an invitation to re-create the duplicate the merge
 // removed - and minting there fails metacheck's live-source rule for the WHOLE run.
 // Every lookup goes through model.Redirects.Survivor. internal/issueform applies
-// the same rule at the intake door (its one candidate per family).
+// the same rule at the intake door (one candidate per family, except a series,
+// which it FINDS through this package's own chain walk, FindSeriesSlug).
 //
 // The rule per family follows what the family's slug MEANS:
 //
@@ -29,8 +30,9 @@ import (
 //     spelling). A tombstoned NUMBERED candidate is treated as OCCUPIED by a
 //     different series and stepped past - which name that "-3" once carried is not
 //     recorded, and joining the wrong series is worse than minting a new one.
-//     seriesChain is the one walker, so getOrCreateSeries, findSeries and
-//     libex-select's seriesIndex.find cannot disagree.
+//     seriesChain is the one walker, so getOrCreateSeries, findSeries,
+//     libex-select's seriesIndex.find and the intake form (FindSeriesSlug)
+//     cannot disagree.
 //   - WORKS. A tombstoned candidate is judged as the SURVIVOR: the row merges into
 //     it exactly when the importer's identity rules would merge the row into a live
 //     record at that candidate (authors, language, series claim, position suffix),
@@ -103,6 +105,22 @@ type seriesChainAnswer struct {
 	found bool
 	// via is the retired base slug the answer was reached through, or "".
 	via string
+}
+
+// FindSeriesSlug is seriesChain's read-only answer for a writer outside this
+// package (internal/issueform): the slug of the series name resolves to, found
+// false when no series on the chain carries it, and via naming the retired base
+// the answer was reached through. stored reports the name a slug holds.
+func FindSeriesSlug(name string, reds model.Redirects, stored func(slug string) (string, bool)) (slug, via string, found bool) {
+	base := Slugify(name)
+	if base == "" {
+		return "", "", false
+	}
+	ans := seriesChain(base, name, reds, stored)
+	if !ans.found {
+		return "", "", false
+	}
+	return ans.slug, ans.via, true
 }
 
 // seriesChain walks a series name's candidate chain (SeriesSlugAt over base, the
