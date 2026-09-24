@@ -1470,6 +1470,18 @@ note rather than a closed duplicate.
   PRs get a read-only token, no secrets). Never introduce
   `pull_request_target` that executes fork code; privileged follow-ups go in a
   separate `workflow_run` workflow consuming artifacts only.
+- **Workflow hygiene** (the rules a new job or step inherits): every job
+  carries a `timeout-minutes` sized at about twice its observed maximum, with
+  the measurement in a comment; every `actions/checkout` sets
+  `persist-credentials: false` EXCEPT the intake rebase sweep's, the one job
+  that pushes with plain git; a tool installed inside a `run:` string is pinned
+  to an exact version (`@anthropic-ai/claude-code`, govulncheck), since
+  dependabot cannot see one there; dependabot ignores `node` MAJOR image bumps,
+  because only even Node majors become LTS. The rebase sweep runs only MAIN's
+  tools (metafmt, metacheck and the merge driver, built and copied before the
+  loop) and sweeps only same-repository branches whose diff is confined to
+  `data/`; intake.yml's `-noop` concurrency group carries a verbatim copy of
+  the intake job's `if` (see the comments in intake.yml for both).
 - **Deterministic builds**: metabuild inserts in sorted id order so identical
   data produces identical artifacts.
 - **Governance**: merge policy and trust tiers live in

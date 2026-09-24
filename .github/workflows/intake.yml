@@ -13,8 +13,10 @@ name: intake
 # metaissue fetches attachments HTTPS-only from GitHub's user-attachment hosts
 # with a size cap. Do not add a step that evals or runs anything derived from the
 # issue. `rebase` runs on `push` to main, which is trusted for the same reason
-# from the other end: the code it executes is main's, and the only branches it
-# rewrites (force-push included) are ones this workflow created.
+# from the other end: the code it executes is main's - built from main before any
+# branch is checked out, never run out of a swept branch's tree - and the only
+# branches it rewrites (force-push included) are this repository's own
+# bot-intake branches whose change is confined to data/ (see that job).
 # The `labeled` trigger is load-bearing: the GitHub API silently DROPS labels on
 # issues opened by non-collaborators (the sibling audiosilo-sidecars contributor
 # tool creates add-work intake issues over the API; its characters/recaps issues
@@ -52,13 +54,40 @@ permissions: {}
 # `data:<template>` emits several events at once, and the generic `data` event is
 # intentionally skipped by the job-level guard below - with cancel-in-progress it
 # would cancel the run that opens the pull request.
+#
+# That is not the whole of it, because GitHub keeps at most ONE PENDING run per
+# group and a newer arrival replaces it, in-progress cancellation or not. So an
+# event the job-level `if` will skip - a label that is not a routing label, the
+# outcome label the last step applies, an edit to an issue with no `data:` label -
+# queued behind a running intake would cancel a REAL run waiting behind it, and
+# the submission would sit there with no pull request and no comment. Skipped
+# events therefore get their own `-noop` group, ai-verify.yml's pattern. The
+# condition below is a VERBATIM copy of the intake job's `if` (its `issues`
+# half), so keeping the two in step is a matter of keeping them identical.
 concurrency:
-  group: ${{ github.event_name == 'push' && 'intake-rebase' || format('intake-{0}', github.event.issue.number) }}
+  group: >-
+    ${{ github.event_name == 'push' && 'intake-rebase' || format('intake-{0}-{1}', github.event.issue.number,
+    (
+      (
+        github.event.action != 'labeled' &&
+        contains(join(github.event.issue.labels.*.name), 'data:')
+      ) || (
+        github.event.action == 'labeled' &&
+        startsWith(github.event.label.name, 'data:') &&
+        github.event.label.name != 'data:invalid' &&
+        github.event.label.name != 'data:needs-human' &&
+        github.event.label.name != 'data:duplicate'
+      )
+    ) && 'run' || 'noop') }}
   cancel-in-progress: false
 
 jobs:
   intake:
     runs-on: ubuntu-latest
+    # Observed up to ~23 minutes: a library import loads the whole tree several
+    # times (metaissue, the libex fill, metafmt, metacheck). Twice that, so a
+    # large import is never cut off mid-write while a hung libex call still is.
+    timeout-minutes: 45
     permissions:
       contents: write
       pull-requests: write
@@ -71,7 +100,8 @@ jobs:
     # workflow's own outcome-labeling (the non-ok step below) would re-fire a
     # `labeled` run - a duplicate intake + duplicate comment - for every non-ok
     # verdict. A genuine routing label (data:add-work, data:add-recording, ...)
-    # starts with `data:` but is none of those outcomes.
+    # starts with `data:` but is none of those outcomes. The concurrency group
+    # at the top of the file carries a verbatim copy of this condition.
     if: >-
       github.event_name == 'issues' && (
       (
@@ -89,6 +119,10 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: main
+          # Nothing here runs git against the remote with this token:
+          # create-pull-request sets its own credential from its `token` input,
+          # and everything else is gh with GH_TOKEN.
+          persist-credentials: false
 
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
@@ -268,12 +302,25 @@ jobs:
   # failure (a lost --force-with-lease race, a branch deleted mid-sweep) must not
   # take the remaining pull requests down with it.
   #
-  # SECURITY: this job runs on `push` to main, so the code it executes is main's
-  # and the branches it rewrites are ones this workflow created (label
-  # bot-intake). It never checks out or runs anything from a fork.
+  # SECURITY: this job runs on `push` to main with a WRITE token persisted in
+  # .git/config (the force-push needs it), and it checks each swept branch out -
+  # so nothing it EXECUTES may come from that branch. A branch is selected by
+  # the bot-intake LABEL, which is data rather than proof of who wrote the
+  # branch, and a checked-out tree's `go run ./cmd/...` or `scripts/...` is that
+  # branch's code, not main's. So the tools the loop runs - metafmt, metacheck
+  # and the packjson merge driver - are built and copied from MAIN into the
+  # runner temp before the first branch is touched, and a branch is swept at all
+  # only when it is a same-repository branch whose whole diff against main is
+  # under data/ (both skips are log lines, not comments: they recur on every
+  # push to main). Everything left that reads the branch reads it as data.
   rebase:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    # Observed up to ~9 minutes; the loop's cost scales with the number of open
+    # bot pull requests (a metafmt + metacheck pass over the whole tree for
+    # each one the pack driver touched), so the headroom is generous. A hung
+    # sweep holds the intake-rebase group, which is what the bound is for.
+    timeout-minutes: 45
     # Narrower than the intake job's: no issues: write, because nothing here
     # touches an issue.
     permissions:
@@ -285,7 +332,10 @@ jobs:
         with:
           # The rebase needs real history, and the PAT (when present) is what
           # makes the force-push re-trigger the required checks - the same
-          # reasoning as the create-pull-request step above.
+          # reasoning as the create-pull-request step above. The credential
+          # stays PERSISTED here, unlike every other checkout in this
+          # repository: the sweep pushes with plain git. That is why the header
+          # above keeps branch code out of this job's process tree.
           fetch-depth: 0
           token: ${{ secrets.INTAKE_PAT || github.token }}
 
@@ -311,6 +361,31 @@ jobs:
           git config user.name "audiosilo-intake-bot"
           git config user.email "intake-bot@users.noreply.github.com"
 
+          # A fork's branch is not in this repository to rebase or push, and its
+          # content is nobody's this workflow can vouch for: logged, never swept.
+          gh pr list --state open --label bot-intake --json number,headRefName,isCrossRepository > prs.json
+          jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' prs.json
+          jq -r '.[] | select(.isCrossRepository | not) | [.number, .headRefName] | @tsv' prs.json > prs.tsv
+          if [ ! -s prs.tsv ]; then
+            echo "no open intake pull requests"
+            exit 0
+          fi
+
+          # MAIN's tools, built while main is still the checkout (see the job's
+          # SECURITY note): every metafmt/metacheck call and the merge driver
+          # below run these copies, never whatever a swept branch's tree holds.
+          # Built only now, after the no-pull-requests exit, because the common
+          # sweep has nothing to do. A failed build fails the whole sweep (by
+          # hand: this step runs without -e), which is right - without trusted
+          # tools there is nothing it may run.
+          tools="${RUNNER_TEMP}/intake-sweep-tools"
+          if ! mkdir -p "$tools" \
+              || ! go build -o "$tools/" ./cmd/metafmt ./cmd/metacheck \
+              || ! install -m 0755 scripts/pack-union-merge.sh "$tools/pack-union-merge.sh"; then
+            echo "::error::could not build the sweep's tools from main; no branch was touched"
+            exit 1
+          fi
+
           # .gitattributes routes data/**/*.json to this driver; a driver only
           # runs where it is configured, so this line is what turns it on for the
           # sweep. It matters because git's LINE merge is unsound for a pack file:
@@ -318,16 +393,11 @@ jobs:
           # anchored at different lines, and git then writes the key TWICE - a
           # file pkg/pack refuses and metafmt cannot re-render (issue #1695). The
           # driver merges the entry maps before any of that can happen, and
-          # refuses exactly what the recipe below refuses.
+          # refuses exactly what the recipe below refuses. It names main's copy by
+          # absolute path: git runs a driver from the working tree's root, so a
+          # relative path would resolve to the replayed branch's script.
           git config merge.packjson.name "three-way merge of pack-file entries"
-          git config merge.packjson.driver "scripts/pack-union-merge.sh %O %A %B %P"
-
-          gh pr list --state open --label bot-intake --json number,headRefName \
-            --jq '.[] | [.number, .headRefName] | @tsv' > prs.tsv
-          if [ ! -s prs.tsv ]; then
-            echo "no open intake pull requests"
-            exit 0
-          fi
+          git config merge.packjson.driver "'$tools/pack-union-merge.sh' %O %A %B %P"
 
           # restore returns the checkout to a clean copy of main. `git clean` is
           # not optional: metafmt --write can CREATE pack files before metacheck
@@ -346,6 +416,18 @@ jobs:
 
             if ! git fetch --quiet origin main "$branch"; then
               failure="the branch could not be fetched (deleted, or renamed?)"
+            elif ! outside="$(git diff --no-renames --name-only "origin/main...origin/${branch}" -- ':(exclude)data/')"; then
+              # Unclassifiable is not sweepable: the rule below cannot be asked.
+              failure="the branch's changed files could not be listed"
+            elif [ -n "$outside" ]; then
+              # The pull request's own change (three-dot: against the merge
+              # base) reaches beyond data/, so rebasing it would put this job's
+              # write token beside a checkout of code nobody here reviewed.
+              # --no-renames: a rename INTO data/ would otherwise list only its
+              # destination and hide the path it removed.
+              echo "::warning::PR #${number} changes files outside data/, which the sweep never rebases (it would check that code out beside a write token): $(printf '%s' "$outside" | head -n 5 | tr '\n' ' '). Skipped."
+              echo "::endgroup::"
+              continue
             elif git merge-base --is-ancestor origin/main "origin/${branch}"; then
               echo "already on top of main"
               echo "::endgroup::"
@@ -363,9 +445,9 @@ jobs:
                   # A driver merge lands as jq's rendering of the entry map, and
                   # the merged pack may now be due a split, so normalize before
                   # pushing - the same pass the conflicted path runs below.
-                  if ! go run ./cmd/metafmt --write --profile core; then
+                  if ! "$tools/metafmt" --write --profile core; then
                     failure="metafmt could not normalize the merged tree"
-                  elif ! go run ./cmd/metacheck --profile core; then
+                  elif ! "$tools/metacheck" --profile core; then
                     failure="metacheck rejected the merged tree"
                   else
                     git add data
@@ -390,15 +472,15 @@ jobs:
                 mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
                 for f in "${conflicted[@]}"; do
                   case "$f" in
-                    data/*.json) scripts/pack-union-merge.sh "$f" || failure="the pack merge could not resolve ${f}" ;;
+                    data/*.json) "$tools/pack-union-merge.sh" "$f" || failure="the pack merge could not resolve ${f}" ;;
                     *) failure="conflict outside the data tree: ${f}" ;;
                   esac
                   [ -z "$failure" ] || break
                 done
-                if [ -z "$failure" ] && ! go run ./cmd/metafmt --write --profile core; then
+                if [ -z "$failure" ] && ! "$tools/metafmt" --write --profile core; then
                   failure="metafmt could not normalize the merged tree"
                 fi
-                if [ -z "$failure" ] && ! go run ./cmd/metacheck --profile core; then
+                if [ -z "$failure" ] && ! "$tools/metacheck" --profile core; then
                   failure="metacheck rejected the merged tree"
                 fi
                 if [ -z "$failure" ]; then

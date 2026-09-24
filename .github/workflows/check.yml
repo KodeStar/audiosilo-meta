@@ -43,6 +43,8 @@ jobs:
   # is gigabytes.
   changes:
     runs-on: ubuntu-latest
+    # A single API listing; observed well under a minute.
+    timeout-minutes: 5
     outputs:
       go: ${{ steps.classify.outputs.go }}
       compose: ${{ steps.classify.outputs.compose }}
@@ -53,6 +55,11 @@ jobs:
           sparse-checkout: .github/scripts
           sparse-checkout-cone-mode: false
           filter: blob:none
+          # No job in this workflow talks to a remote after its checkout (this
+          # one reads the diff through gh, not git), so none keeps the token in
+          # .git/config - and every one of them runs a pull request's code, a
+          # fork's included.
+          persist-credentials: false
 
       - name: Classify the diff
         id: classify
@@ -64,9 +71,15 @@ jobs:
   check:
     runs-on: ubuntu-latest
     needs: changes
+    # Observed up to ~18 minutes with the Go gate (the -race suite plus a
+    # whole-tree metacheck and metafmt), and the tree only grows. About twice
+    # that: a hang is caught inside the hour instead of at GitHub's six.
+    timeout-minutes: 40
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
@@ -119,12 +132,16 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     needs: changes
+    # Observed up to ~5 minutes.
+    timeout-minutes: 15
     # Every step is gated, so a data-and-prose diff reports this job green
     # without checking anything out - the required check still reports.
     steps:
       - name: Checkout
         if: needs.changes.outputs.go == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Set up Go
         if: needs.changes.outputs.go == 'true'
@@ -149,10 +166,14 @@ jobs:
   vuln:
     runs-on: ubuntu-latest
     needs: changes
+    # Observed up to ~5 minutes.
+    timeout-minutes: 15
     steps:
       - name: Checkout
         if: needs.changes.outputs.go == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Set up Go
         if: needs.changes.outputs.go == 'true'
@@ -209,10 +230,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: changes
     if: github.event_name == 'pull_request'
+    # Observed up to ~8 minutes: two checkouts and a full compose of the
+    # 1.7 GB artifact, which grows with the catalogue.
+    timeout-minutes: 20
     steps:
       - name: Checkout
         if: needs.changes.outputs.compose == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Checkout the community layer
         if: needs.changes.outputs.compose == 'true'
@@ -221,6 +247,7 @@ jobs:
           repository: KodeStar/audiosilo-meta-community
           ref: main
           path: community
+          persist-credentials: false
 
       - name: Set up Go
         if: needs.changes.outputs.compose == 'true'
@@ -248,9 +275,13 @@ jobs:
   # once it does. No `paths:` filter - a required check must always report.
   site:
     runs-on: ubuntu-latest
+    # Observed up to ~6 minutes (a cold yarn install dominates).
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Check for site/
         id: site

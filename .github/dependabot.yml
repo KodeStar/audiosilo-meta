@@ -51,3 +51,12 @@ updates:
         update-types:
           - minor
           - patch
+    # Node majors (the Dockerfile's site stage) are bumped by hand, to the next
+    # EVEN-numbered one: odd Node majors never become LTS, so every other major
+    # dependabot would offer is a short-lived release the site build should not
+    # run on. An even major is a deliberate change anyway - check.yml's
+    # setup-node `node-version` moves with it.
+    ignore:
+      - dependency-name: node
+        update-types:
+          - version-update:semver-major

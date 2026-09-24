@@ -69,6 +69,11 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Observed up to ~24 minutes: two checkouts, metacheck, the compose of a
+    # 1.7 GB artifact, a zstd -19 delta against the previous one and ~400 MB of
+    # uploads. Twice that. A run cut off here leaves at most a draft, which the
+    # next run's identify step deletes before composing again.
+    timeout-minutes: 50
     steps:
       - name: Checkout
         # A shallow checkout is enough: git history is no longer load-bearing.
@@ -77,6 +82,13 @@ jobs:
         # history one final time), so this workflow no longer walks the log to
         # date anything - a pack file's add-date is not its entries' add-dates.
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # Nothing here pushes with git: the release, its tag and its assets
+          # all go through gh and the API with GH_TOKEN, and the one later git
+          # call - require-on-main.sh's fetch of main - reads a public
+          # repository anonymously. So the contents:write token is not left in
+          # .git/config for the rest of the job.
+          persist-credentials: false
 
       - name: Checkout the community layer
         # The CC BY-SA half of the database, cloned beside the core tree. Public,
@@ -89,6 +101,7 @@ jobs:
           repository: KodeStar/audiosilo-meta-community
           ref: main
           path: community
+          persist-credentials: false
 
       - name: Refuse a manual run off main
         if: github.event_name == 'workflow_dispatch'

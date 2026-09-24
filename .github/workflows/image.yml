@@ -23,9 +23,17 @@ permissions:
 jobs:
   image:
     runs-on: ubuntu-latest
+    # Observed up to ~8 minutes with a warm layer cache; a cold one rebuilds the
+    # site and the Go binary from scratch.
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # The registry login is its own credential and require-on-main.sh
+          # fetches a public repository anonymously; nothing needs the token in
+          # .git/config.
+          persist-credentials: false
 
       - name: Refuse a tag that is not on main
         # `v*` matches any tag on any commit, and this workflow publishes to
