@@ -41,7 +41,7 @@ const siteName = "AudioSilo Meta"
 // defaultSiteURL is the public origin metaserve assumes when --site-url is not
 // given. The server cannot otherwise know its own origin, and a canonical link
 // or an og:url has to be absolute.
-const defaultSiteURL = "https://meta.audiosilo.app"
+const defaultSiteURL = model.SiteURL
 
 // defaultOGImage is the site icon used when the entity has no cover of its own
 // (every person and series page, and a work whose recordings carry no cover).
@@ -146,10 +146,18 @@ func (s *Server) htmlRoutes() []route {
 	return rs
 }
 
-// html is the middleware stack a page wears: gzip, and deliberately NOT CORS.
-// A page is navigated to, not fetched cross-origin by a script; the API keeps
-// the open headers, and the pages do not widen that surface.
-func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(h) }
+// html is the middleware stack a page wears: gzip, the document headers, and
+// deliberately NOT CORS. A page is navigated to, not fetched cross-origin by a
+// script; the API keeps the open headers, and the pages do not widen that
+// surface.
+//
+// The document headers go on BEFORE the handler runs, because every response a
+// page route writes is an HTML document or answers for one: the composed page,
+// the untouched shell, the site's 404 page, the HTML 301 of a retired slug or a
+// legacy ?id= link, and a 304 revalidating a page - which carries no
+// Content-Type by design, so a decision read off the response would miss exactly
+// the header update a cached page takes from it (RFC 9111 4.3.4).
+func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(documentMW(h)) }
 
 // entityHandler serves one family's page. Every failure mode DEGRADES rather
 // than erroring - no artifact loaded yet, a dist whose shell carries no markers,

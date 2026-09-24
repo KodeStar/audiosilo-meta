@@ -582,24 +582,10 @@ func TestEntityPageNotFound(t *testing.T) {
 // ---- caching ----------------------------------------------------------------
 
 // conditionalGet issues a GET carrying an If-None-Match header, following no
-// redirects. The caller closes the body.
+// redirects. The body is closed at cleanup.
 func conditionalGet(t *testing.T, url, inm string) *http.Response {
 	t.Helper()
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	req.Header.Set("If-None-Match", inm)
-	req.Header.Set("Accept-Encoding", "gzip")
-	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error {
-		return http.ErrUseLastResponse
-	}}
-	resp, err := client.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(func() { _ = resp.Body.Close() })
-	return resp
+	return getNoFollowWith(t, url, map[string]string{"If-None-Match": inm, "Accept-Encoding": "gzip"})
 }
 
 // wantBodyless fails when a response carries any body, which is what a 304 must

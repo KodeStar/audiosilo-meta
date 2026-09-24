@@ -10,7 +10,7 @@ It is a static Astro site with a handful of React islands. The Go API server
 
 ## Stack
 
-- **Astro 5** (static output) - most of the page is server-rendered HTML.
+- **Astro 7** (static output) - most of the page is server-rendered HTML.
 - **React 19 islands** only where runtime state is needed: the search box, the
   home stats/latest bands, and the three detail views.
 - **Tailwind CSS v4** via `@tailwindcss/vite`; design tokens live in

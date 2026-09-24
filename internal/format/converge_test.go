@@ -23,6 +23,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -254,12 +255,12 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			}
 
 			// 4. a second --write is a byte-level no-op.
-			snap := snapshot(t, dir)
+			snap := testpack.Snapshot(t, dir)
 			second := mustWrite(t, dir)
 			if !second.Clean() {
 				t.Errorf("second --write reported work:\n  %s", strings.Join(second.Lines(), "\n  "))
 			}
-			if diff := treeDiff(snap, snapshot(t, dir)); diff != "" {
+			if diff := treeDiff(snap, testpack.Snapshot(t, dir)); diff != "" {
 				t.Errorf("second --write changed the tree: %s", diff)
 			}
 		})

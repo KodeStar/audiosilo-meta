@@ -366,7 +366,7 @@ func groupAt(s string, m []int, g int) string {
 	if m[2*g] < 0 {
 		return ""
 	}
-	return s[m[2*g] : m[2*g+1]]
+	return s[m[2*g]:m[2*g+1]]
 }
 
 // SameStatedVolume reports whether two titles state the SAME volume - or, either
