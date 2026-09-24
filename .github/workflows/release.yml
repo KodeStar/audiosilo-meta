@@ -81,7 +81,7 @@ jobs:
         # intake bot stamp it; the storage migration backfilled the rest from
         # history one final time), so this workflow no longer walks the log to
         # date anything - a pack file's add-date is not its entries' add-dates.
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Nothing here pushes with git: the release, its tag and its assets
           # all go through gh and the API with GH_TOKEN, and the one later git
@@ -96,7 +96,7 @@ jobs:
         # same reason the core checkout is (git history is not load-bearing -
         # every record carries its own added_at). Pinned to main: a release is
         # always composed from the two mains, whichever side triggered it.
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: KodeStar/audiosilo-meta-community
           ref: main
