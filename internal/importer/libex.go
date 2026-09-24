@@ -426,7 +426,10 @@ func libexNames(v any) []string {
 		seen[name] = true
 		out = append(out, name)
 	}
-	return out
+	// libex split its credits on commas upstream, stranding post-nominals as
+	// credits of their own ("Ph.D", "III"), and its list order states nothing,
+	// so they are dropped rather than rejoined (suffixpiece.go).
+	return dropSuffixPieces(out)
 }
 
 // libexRegion resolves a row's marketplace: the "region" field, else the first

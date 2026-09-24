@@ -23,13 +23,20 @@ func normalizeSequence(raw string) (string, bool) { return importer.NormalizeSeq
 
 // splitNames splits a "one per line or comma-separated" name list, trimming
 // each, cleaning the credit (role qualifiers, prefix credits, doubled names -
-// via the importer), and dropping empties.
+// via the importer), and dropping empties. A piece that is only a post-nominal
+// ("David Posen, MD") rejoins the name before it through the importer's own
+// rule (importer.MergeSuffixPieces), so a form and an import read one credit
+// text as one person.
 func splitNames(joined string) []string {
-	var out []string
+	var pieces []string
 	for _, line := range strings.FieldsFunc(joined, func(r rune) bool { return r == '\n' || r == ',' }) {
 		if name := strings.TrimSpace(line); name != "" {
-			out = append(out, importer.CleanCreditName(name))
+			pieces = append(pieces, name)
 		}
+	}
+	var out []string
+	for _, name := range importer.MergeSuffixPieces(pieces) {
+		out = append(out, importer.CleanCreditName(name))
 	}
 	return out
 }

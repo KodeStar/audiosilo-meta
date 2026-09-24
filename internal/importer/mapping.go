@@ -1225,6 +1225,9 @@ type credit struct {
 // role qualifier sourceCredits exists to read ("Rosa Vidal - Translator" would
 // arrive as "Rosa Vidal", stating nothing). Every credit is cleaned exactly
 // once, at sourceCredits, whichever shape the source handed it over in.
+//
+// A piece that is only a post-nominal ("David Posen, MD") rejoins the name
+// before it rather than becoming a credit of its own - see suffixpiece.go.
 func splitRawNames(joined string) []string {
 	var out []string
 	for _, part := range strings.Split(joined, ",") {
@@ -1232,7 +1235,7 @@ func splitRawNames(joined string) []string {
 			out = append(out, name)
 		}
 	}
-	return out
+	return MergeSuffixPieces(out)
 }
 
 // creditNamesOf is a credit list's names, for the callers that only need the
