@@ -6374,6 +6374,10 @@
             {
               "asin": "B09MR3W571",
               "region": "us"
+            },
+            {
+              "asin": "B09MR59N97",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -6558,14 +6562,14 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bnJ2uYwIL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51rbCG6n69L._SL500_.jpg",
           "id": "kaipo-schwab-2021",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "kaipo-schwab"
           ],
-          "publisher": "Tantor Media",
+          "publisher": "Tantor Audio",
           "release_date": "2021-12-07",
           "runtime_min": 581,
           "sources": [
@@ -6573,6 +6577,11 @@
               "imported_at": "2026-08-02",
               "ref": "B09MR3W571",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B09MR59N97",
+              "type": "openaudible-import"
             }
           ],
           "work": "poison-river"

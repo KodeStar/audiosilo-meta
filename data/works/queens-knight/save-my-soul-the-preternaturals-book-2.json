@@ -10761,6 +10761,10 @@
             {
               "asin": "B08NPZVFZF",
               "region": "us"
+            },
+            {
+              "asin": "B08NQ153FJ",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -10835,7 +10839,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+-Tbi0szL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51mOVQVPfHL._SL500_.jpg",
           "id": "liz-krane-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -10850,6 +10854,11 @@
               "imported_at": "2026-08-01",
               "ref": "B08NPZVFZF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B08NQ153FJ",
+              "type": "openaudible-import"
             }
           ],
           "work": "saved-by-the-crushs-brother"
@@ -12184,6 +12193,53 @@
         }
       ],
       "title": "Saved by the Shell!"
+    },
+    "saved-by-the-single-dad": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "whitley-cox"
+      ],
+      "id": "saved-by-the-single-dad",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "matt-hicks-2021": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B09JPHQYS8",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51FFHvKIbQL._SL500_.jpg",
+          "id": "matt-hicks-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matt-hicks",
+            "stella-hunter"
+          ],
+          "publisher": "Pink Flamingo Productions",
+          "release_date": "2021-11-14",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B09JPHQYS8",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "saved-by-the-single-dad"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B09JPHQYS8",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Saved by the Single Dad"
     },
     "saved-by-the-stryxian": {
       "added_at": "2026-08-02",

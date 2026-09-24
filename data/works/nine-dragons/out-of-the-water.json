@@ -10236,6 +10236,52 @@
         }
       ],
       "title": "Outbound"
+    },
+    "outbound-flight": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "timothy-zahn"
+      ],
+      "id": "outbound-flight",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marc-thompson-2023": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0CKRZHF9H",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51QZnMby2ML._SL500_.jpg",
+          "id": "marc-thompson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marc-thompson"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2023-12-19",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0CKRZHF9H",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "outbound-flight"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0CKRZHF9H",
+          "type": "openaudible-import"
+        }
+      ],
+      "title": "Outbound Flight"
     }
   }
 }

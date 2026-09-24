@@ -2108,6 +2108,10 @@
             {
               "asin": "B0DDQH4999",
               "region": "us"
+            },
+            {
+              "asin": "B0DDQG6DNK",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -2262,7 +2266,7 @@
               "title": "Closing Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81pTl78cYZL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/51Ogr-DGVxL._SL500_.jpg",
           "id": "melanie-hastings-2024",
           "language": "en",
           "license": "CC0-1.0",
@@ -2277,6 +2281,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DDQH4999",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0DDQG6DNK",
+              "type": "openaudible-import"
             }
           ],
           "work": "bloodgate"
@@ -9036,6 +9045,52 @@
           "imported_at": "2026-07-29",
           "ref": "B005BGQK4I",
           "type": "libex-import"
+        }
+      ],
+      "title": "Bloodline"
+    },
+    "bloodline-michael-dalton": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "michael-dalton"
+      ],
+      "id": "bloodline-michael-dalton",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sierra-kline-2022": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0BM555VTV",
+              "region": "au"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51EnA-+vQ6L._SL500_.jpg",
+          "id": "sierra-kline-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sierra-kline"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2022-11-29",
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0BM555VTV",
+              "type": "openaudible-import"
+            }
+          ],
+          "work": "bloodline-michael-dalton"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0BM555VTV",
+          "type": "openaudible-import"
         }
       ],
       "title": "Bloodline"
