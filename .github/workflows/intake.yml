@@ -379,9 +379,9 @@ jobs:
           # leaves the unswept ones at the FRONT of the next sweep instead of
           # starving the same tail on every push to main.
           gh pr list --state open --label bot-intake --limit 500 \
-            --json number,headRefName,isCrossRepository,updatedAt > prs.json
+            --json number,headRefName,headRefOid,isCrossRepository,updatedAt > prs.json
           jq -r '.[] | select(.isCrossRepository) | "::warning::PR #\(.number) is from a fork; the sweep only rebases branches in this repository. Skipped."' prs.json
-          jq -r 'sort_by(.updatedAt) | .[] | select(.isCrossRepository | not) | [.number, .headRefName] | @tsv' prs.json > prs.tsv
+          jq -r 'sort_by(.updatedAt) | .[] | select(.isCrossRepository | not) | [.number, .headRefName, .headRefOid] | @tsv' prs.json > prs.tsv
           if [ ! -s prs.tsv ]; then
             echo "no open intake pull requests"
             exit 0
@@ -425,34 +425,95 @@ jobs:
             git clean -fdq data 2>/dev/null || true
           }
 
-          # refuse leaves a pull request the sweep will not touch, and says why
-          # ONCE: the same verdict recurs on every push to main, so the comment
-          # carries a fixed marker and is not posted again while one bearing it
-          # exists. A comment listing that fails is not read as "none yet" -
-          # that way round would comment on every push.
-          refused_marker="<!-- intake-sweep:not-rebased -->"
-          refuse() {
-            echo "::warning::PR #$1 is not rebased by the sweep: $2"
-            local bodies
-            if ! bodies="$(gh pr view "$1" --json comments --jq '.comments[].body')"; then
+          # The sweep's own login, so comment_once counts only the markers the
+          # bot itself posted: anyone can write a marker into a comment, and one
+          # a contributor pasted must not mute the bot. Resolved once, through
+          # GraphQL's viewer, which answers for the workflow token and a PAT
+          # alike (GET /user refuses an installation token); a trailing "[bot]"
+          # is dropped on both sides, since REST and GraphQL spell a bot's login
+          # differently. Unresolved, the marker alone decides, with a warning:
+          # a comment repeated on every push is the failure this exists to end.
+          self_login="$(gh api graphql -f query='query { viewer { login } }' --jq '.data.viewer.login')" || self_login=""
+          self_login="${self_login%"[bot]"}"
+          if [ -z "$self_login" ]; then
+            echo "::warning::could not resolve the sweep's own login; a marker in anyone's comment counts as already posted"
+          fi
+
+          # comment_once says something to a pull request ONCE: the sweep's
+          # verdicts recur on every push to main, so each comment carries a
+          # hidden marker ($2) and is not posted again while a comment of the
+          # sweep's own bears it. A comment listing that fails, or cannot be
+          # read, is not taken as "none yet" - that way round would comment on
+          # every push.
+          comment_once() {
+            local comments found
+            if ! comments="$(gh pr view "$1" --json comments)"; then
               echo "::warning::could not read the comments on PR #$1; not commenting"
               return
             fi
-            if printf '%s\n' "$bodies" | grep -qF "$refused_marker"; then
+            printf '%s' "$comments" | jq -e --arg me "$self_login" --arg marker "$2" \
+              'any(.comments[]; ($me == "" or ((.author.login // "") | sub("\\[bot\\]$"; "")) == $me) and ((.body // "") | contains($marker)))' > /dev/null
+            found=$?
+            if [ "$found" -eq 0 ]; then
+              return
+            elif [ "$found" -ne 1 ]; then
+              echo "::warning::could not read the comments on PR #$1; not commenting"
               return
             fi
-            gh pr comment "$1" --body "${refused_marker}
-          The intake bot does not rebase this pull request onto \`main\`: $2. Its sweep checks a branch out beside a write token, so it only takes branches whose whole change is ordinary files under \`data/\`. A maintainer has to rebase this one (or split the non-data change out). This note is posted once." \
+            gh pr comment "$1" --body "$2
+          $3" \
               || echo "::warning::could not comment on PR #$1"
           }
 
+          # noted runs one of the sweep's steps with its output kept in the job
+          # log, and on failure leaves in `detail` the one line that failure is
+          # best told apart by: the first line matching the ERE $1 (empty: the
+          # first line at all), else the last. The detail rides in the failure
+          # reason the comment marker digests, so a different cause on the same
+          # branch head is news rather than muted by the last one. Backticks and
+          # angle brackets are dropped (the line is pasted into a comment, and
+          # must neither break its markdown nor spell a marker) and it is capped.
+          noted() {
+            local pattern="${1:-.}" out status
+            shift
+            out="$(mktemp)"
+            "$@" > "$out" 2>&1
+            status=$?
+            cat "$out"
+            detail=""
+            if [ "$status" -ne 0 ]; then
+              detail="$(grep -E -m 1 -- "$pattern" "$out" || grep -v '^[[:space:]]*$' "$out" | tail -n 1)"
+              detail="$(printf '%s' "$detail" | tr -d '\r`<>' | cut -c 1-200)"
+            fi
+            rm -f "$out"
+            return "$status"
+          }
+
+          # refuse leaves a pull request the sweep will not touch, and says why
+          # under a FIXED marker: the refusal is about what the branch is, so
+          # one note covers it whatever happens next.
+          refused_marker="<!-- intake-sweep:not-rebased -->"
+          refuse() {
+            echo "::warning::PR #$1 is not rebased by the sweep: $2"
+            comment_once "$1" "$refused_marker" "The intake bot does not rebase this pull request onto \`main\`: $2. Its sweep checks a branch out beside a write token, so it only takes branches whose whole change is ordinary files under \`data/\`. A maintainer has to rebase this one (or split the non-data change out). This note is posted once."
+          }
+
           swept=0
-          while IFS=$'\t' read -r number branch; do
+          while IFS=$'\t' read -r number branch listed_sha; do
             echo "::group::PR #${number} (${branch})"
             failure=""
+            detail=""
+            # The head the rebase attempts: the fetched tip, read before anything
+            # moves it. Until the fetch succeeds it is the head GitHub listed, so
+            # a failure that stops short of the fetch still names the branch's
+            # state and still changes when the branch does.
+            attempted_sha="$listed_sha"
 
             if ! git fetch --quiet origin main "$branch"; then
               failure="the branch could not be fetched (deleted, or renamed?)"
+            elif ! attempted_sha="$(git rev-parse --verify --quiet "refs/remotes/origin/${branch}^{commit}")"; then
+              attempted_sha="$listed_sha"
+              failure="the fetched branch could not be resolved"
             elif ! outside="$(git diff --no-renames --name-only "origin/main...origin/${branch}" -- ':(exclude)data/')"; then
               # Unclassifiable is not sweepable: the rule below cannot be asked.
               failure="the branch's changed files could not be listed"
@@ -496,10 +557,10 @@ jobs:
                   # A driver merge lands as jq's rendering of the entry map, and
                   # the merged pack may now be due a split, so normalize before
                   # pushing - the same pass the conflicted path runs below.
-                  if ! "$tools/metafmt" --write --profile core; then
-                    failure="metafmt could not normalize the merged tree"
-                  elif ! "$tools/metacheck" --profile core; then
-                    failure="metacheck rejected the merged tree"
+                  if ! noted '^(metafmt:|invalid JSON)' "$tools/metafmt" --write --profile core; then
+                    failure="metafmt could not normalize the merged tree${detail:+: ${detail}}"
+                  elif ! noted '' "$tools/metacheck" --profile core; then
+                    failure="metacheck rejected the merged tree${detail:+: ${detail}}"
                   else
                     git add data
                     if ! git diff --cached --quiet; then
@@ -523,20 +584,21 @@ jobs:
                 mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
                 for f in "${conflicted[@]}"; do
                   case "$f" in
-                    data/*.json) "$tools/pack-union-merge.sh" "$f" || failure="the pack merge could not resolve ${f}" ;;
+                    data/*.json) noted '' "$tools/pack-union-merge.sh" "$f" || failure="the pack merge could not resolve ${f}${detail:+: ${detail}}" ;;
                     *) failure="conflict outside the data tree: ${f}" ;;
                   esac
                   [ -z "$failure" ] || break
                 done
-                if [ -z "$failure" ] && ! "$tools/metafmt" --write --profile core; then
-                  failure="metafmt could not normalize the merged tree"
+                if [ -z "$failure" ] && ! noted '^(metafmt:|invalid JSON)' "$tools/metafmt" --write --profile core; then
+                  failure="metafmt could not normalize the merged tree${detail:+: ${detail}}"
                 fi
-                if [ -z "$failure" ] && ! "$tools/metacheck" --profile core; then
-                  failure="metacheck rejected the merged tree"
+                if [ -z "$failure" ] && ! noted '' "$tools/metacheck" --profile core; then
+                  failure="metacheck rejected the merged tree${detail:+: ${detail}}"
                 fi
                 if [ -z "$failure" ]; then
                   git add data
-                  GIT_EDITOR=true git rebase --continue || failure="the rebase could not be continued"
+                  GIT_EDITOR=true noted '^(error|fatal):' git rebase --continue \
+                    || failure="the rebase could not be continued${detail:+: ${detail}}"
                 fi
               fi
             fi
@@ -549,9 +611,16 @@ jobs:
 
             restore
             if [ -n "$failure" ]; then
-              gh pr comment "$number" --body "The intake bot could not rebase this branch onto \`main\` mechanically: ${failure}. It needs a maintainer - see CONTRIBUTING.md, \"When two pull requests touch the same pack\"." \
-                || echo "::warning::could not comment on PR #${number}"
               echo "::warning::PR #${number} needs a human: ${failure}"
+              # A stuck branch fails the same way on every push to main (#2338
+              # collected 17 identical copies), so the comment is posted once
+              # per (attempted head, reason): the marker names both, the reason
+              # by digest because it can carry a path and a path can close an
+              # HTML comment. A new commit on the branch or a different failure
+              # (its detail line included) is news and is said again.
+              reason="$(printf '%s' "$failure" | sha256sum | cut -c 1-16)"
+              comment_once "$number" "<!-- intake-sweep:rebase-failed ${attempted_sha} ${reason} -->" \
+                "The intake bot could not rebase this branch onto \`main\` mechanically: ${failure}. It needs a maintainer - see CONTRIBUTING.md, \"When two pull requests touch the same pack\". This note is not repeated until the branch or the reason changes."
             else
               echo "rebased and pushed"
               swept=$((swept + 1))

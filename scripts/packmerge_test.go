@@ -194,8 +194,8 @@ func TestPackUnionMerge(t *testing.T) {
 			wantRefusal: true,
 		},
 		{
-			// Only the recordings map may differ: a work's own fields differing
-			// is two people disagreeing about the book.
+			// The own fields may differ from the base on ONE side only: both
+			// sides changing them is two people disagreeing about the book.
 			name:        "the work's own fields differ too",
 			base:        pack(workWithRecs("aaa", "A", rec("r1", ""))),
 			main:        pack(workWithRecs("aaa", "A from main", rec("r1", "")+","+rec("r2", ""))),
@@ -291,6 +291,118 @@ func TestPackUnionMerge(t *testing.T) {
 			main:        pack(work("aaa", "A from main")),
 			branch:      pack(work("aaa", "A from the branch")),
 			wantRefusal: true,
+		},
+
+		// An entry present on both sides that ONE side left exactly as the base
+		// had it was changed by the other side only, so the changed version
+		// stands in every family - the ordinary three-way rule, which the
+		// refusal above used to pre-empt. The live shape (#2338): the daily sync
+		// bot appended volumes to one series on main while an intake branch
+		// added two other series to the same pack, and every rebase of that
+		// branch was refused as "both sides changed" the series only main had.
+		{
+			name: "main changed one series entry, the branch added another",
+			path: seriesPath,
+			base: pack(entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1")))),
+			main: pack(entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w2", "2"), seriesWork("w3", "3")))),
+			branch: pack(entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1"))),
+				entry("tan", `"name":"T"`, seriesWorks(seriesWork("w9", "1")))),
+			present: []string{"tan"},
+			equal: map[string]string{
+				"ser.works": `[` + seriesWork("w1", "1") + `,` + seriesWork("w2", "2") + `,` +
+					seriesWork("w3", "3") + `]`,
+			},
+		},
+		{
+			name: "the branch changed one series entry, main added another",
+			path: seriesPath,
+			base: pack(entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1")))),
+			main: pack(entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1"))),
+				entry("tan", `"name":"T"`, seriesWorks(seriesWork("w9", "1")))),
+			branch: pack(entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w2", "2")))),
+			present: []string{"tan"},
+			equal: map[string]string{
+				"ser.works": `[` + seriesWork("w1", "1") + `,` + seriesWork("w2", "2") + `]`,
+			},
+		},
+		{
+			// Both sides changing it is still two accounts of one series.
+			name: "both sides changed one series entry",
+			path: seriesPath,
+			base: pack(entry("ser", `"name":"S"`, seriesWorks(seriesWork("w1", "1")))),
+			main: pack(entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w2", "2")))),
+			branch: pack(entry("ser", `"name":"S"`,
+				seriesWorks(seriesWork("w1", "1"), seriesWork("w3", "3")))),
+			wantRefusal: true,
+		},
+		{
+			name:    "main changed one person record, the branch added another",
+			path:    peoplePath,
+			base:    pack(entry("aaa", `"name":"A"`)),
+			main:    pack(entry("aaa", `"name":"A"`, `"kind":"group"`)),
+			branch:  pack(entry("aaa", `"name":"A"`), entry("bob", `"name":"Bob"`)),
+			present: []string{"bob"},
+			equal:   map[string]string{"aaa.kind": `"group"`},
+		},
+		{
+			name:    "the branch changed one person record, main added another",
+			path:    peoplePath,
+			base:    pack(entry("aaa", `"name":"A"`)),
+			main:    pack(entry("aaa", `"name":"A"`), entry("bob", `"name":"Bob"`)),
+			branch:  pack(entry("aaa", `"name":"A"`, `"kind":"group"`)),
+			present: []string{"bob"},
+			equal:   map[string]string{"aaa.kind": `"group"`},
+		},
+		{
+			// The same rule one level down, where the family exceptions merge:
+			// a work's own fields as one unit, a recording, a community member.
+			name:   "main changed the work's own fields, the branch added a recording",
+			base:   pack(workWithRecs("aaa", "A", rec("r1", ""))),
+			main:   pack(workWithRecs("aaa", "A corrected", rec("r1", ""))),
+			branch: pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r2", ""))),
+			present: []string{
+				"aaa.recordings.r1", "aaa.recordings.r2",
+			},
+			equal: map[string]string{"aaa.title": `"A corrected"`},
+		},
+		{
+			name:    "the branch changed the work's own fields, main added a recording",
+			base:    pack(workWithRecs("aaa", "A", rec("r1", ""))),
+			main:    pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r2", ""))),
+			branch:  pack(workWithRecs("aaa", "A corrected", rec("r1", ""))),
+			present: []string{"aaa.recordings.r1", "aaa.recordings.r2"},
+			equal:   map[string]string{"aaa.title": `"A corrected"`},
+		},
+		{
+			// Own fields changed on one side do not excuse a recording both
+			// sides wrote.
+			name:        "one side changed the own fields, both edited one recording",
+			base:        pack(workWithRecs("aaa", "A", rec("r1", "old"))),
+			main:        pack(workWithRecs("aaa", "A corrected", rec("r1", "main"))),
+			branch:      pack(workWithRecs("aaa", "A", rec("r1", "branch"))),
+			wantRefusal: true,
+		},
+		{
+			name:    "the branch changed a recording, main added another",
+			base:    pack(workWithRecs("aaa", "A", rec("r1", ""))),
+			main:    pack(workWithRecs("aaa", "A", rec("r1", "")+","+rec("r2", ""))),
+			branch:  pack(workWithRecs("aaa", "A", rec("r1", "Imprint"))),
+			present: []string{"aaa.recordings.r2"},
+			equal:   map[string]string{"aaa.recordings.r1.publisher": `"Imprint"`},
+		},
+		{
+			name:   "main rewrote a community member, the branch added another",
+			path:   communityPath,
+			base:   pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:   pack(community("aaa", charsMember("aaa", "Ann, rewritten"))),
+			branch: pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far"))),
+			present: []string{
+				"aaa.recaps",
+			},
+			equal: map[string]string{"aaa.characters.characters": `[{"id":"c1","name":"Ann, rewritten"}]`},
 		},
 
 		// Everything below is one entry BOTH SIDES ADDED, which the base cannot
@@ -611,6 +723,24 @@ func TestPackMergeDriver(t *testing.T) {
 		}
 	})
 
+	t.Run("a series only main changed merges beside the branch's additions", func(t *testing.T) {
+		base, main, branch, _ := issue2338Fixture(t)
+		repo, out, err := rebaseFixture(t, seriesPath, base, main, branch, script)
+		if err != nil {
+			t.Fatalf("the driver did not resolve the conflict: %v\n%s", err, out)
+		}
+		merged := readEntries(t, filepath.Join(repo, seriesPath))
+		for _, p := range []string{"harem-university", "hart-ranch"} {
+			if !has(merged, p) {
+				t.Errorf("%s is missing from the merged pack: %v", p, merged)
+			}
+		}
+		works, _ := at(merged, "h-p-lovecrafts-schriften-des-grauens.works")
+		if list, ok := works.([]any); !ok || len(list) != 4 {
+			t.Errorf("main's appended volumes did not survive: %s", mustJSON(t, works))
+		}
+	})
+
 	t.Run("a member both sides wrote still stops the rebase", func(t *testing.T) {
 		repo, _, err := rebaseFixture(t, communityPath,
 			canonicalPack(t, pack(community("aaa", charsMember("aaa", "Ann")))),
@@ -627,6 +757,66 @@ func TestPackMergeDriver(t *testing.T) {
 			t.Errorf("exit code = %d, want 5 (a conflict for a person): %s", code, out)
 		}
 	})
+}
+
+// issue2338Fixture is the series pack PR #2338 could not be rebased with, reduced
+// to its three entries: main (the daily sync bot) appended volumes 24 and 25 to
+// one series, and the intake branch added two other series to the same pack
+// while leaving that one byte-for-byte as the base had it.
+func issue2338Fixture(t *testing.T) (base, main, branch, merged string) {
+	t.Helper()
+	const grauens = "h-p-lovecrafts-schriften-des-grauens"
+	series := func(positions ...string) string {
+		works := make([]string, 0, len(positions))
+		for _, p := range positions {
+			works = append(works, seriesWork("grauens-"+p, p))
+		}
+		return entry(grauens, `"name":"H. P. Lovecrafts Schriften des Grauens"`, seriesWorks(works...))
+	}
+	harem := entry("harem-university", `"name":"Harem University"`, seriesWorks(seriesWork("hu-1", "1")))
+	hart := entry("hart-ranch", `"name":"Hart Ranch"`, seriesWorks(seriesWork("hr-1", "1")))
+	return canonicalPack(t, pack(series("22", "23"))),
+		canonicalPack(t, pack(series("22", "23", "24", "25"))),
+		canonicalPack(t, pack(series("22", "23"), harem, hart)),
+		canonicalPack(t, pack(series("22", "23", "24", "25"), harem, hart))
+}
+
+// TestPackMergeDriverTakesTheOnlyChangedSide calls the script exactly as git calls
+// a merge driver (%O %A %B %P) on the #2338 shape: every change of both sides
+// survives and the result is written to %A, where git reads it.
+func TestPackMergeDriverTakesTheOnlyChangedSide(t *testing.T) {
+	requireTools(t, "jq")
+	script := abs(t, "pack-union-merge.sh")
+	base, main, branch, want := issue2338Fixture(t)
+
+	dir := t.TempDir()
+	write := func(name, body string) string {
+		t.Helper()
+		p := filepath.Join(dir, name)
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		return p
+	}
+	o, a, b := write("base", base), write("ours", main), write("theirs", branch)
+
+	out, err := runIn(dir, script, o, a, b, "data/series/green-creek-italian-edition.json")
+	if err != nil {
+		t.Fatalf("the driver refused a pack only one side changed each entry of: %v\n%s", err, out)
+	}
+	if !strings.Contains(out, driverMergedMarker) {
+		t.Errorf("the driver output does not carry %q:\n%s", driverMergedMarker, out)
+	}
+	var got, wantDoc any
+	if err := json.Unmarshal([]byte(readFile(t, a)), &got); err != nil {
+		t.Fatalf("the merged file is not valid JSON: %v", err)
+	}
+	if err := json.Unmarshal([]byte(want), &wantDoc); err != nil {
+		t.Fatal(err)
+	}
+	if !reflect.DeepEqual(got, wantDoc) {
+		t.Errorf("merged to %s\nwant %s", mustJSON(t, got), mustJSON(t, wantDoc))
+	}
 }
 
 // TestPackMergeRefusesANonPackFile is the guard on what this script may be handed.
