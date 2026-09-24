@@ -5073,6 +5073,10 @@
             {
               "asin": "1705015328",
               "region": "us"
+            },
+            {
+              "asin": "B003TFYOL4",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5347,6 +5351,11 @@
               "imported_at": "2026-07-30",
               "ref": "1705015328",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B003TFYOL4",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "outlander"
@@ -5962,52 +5971,6 @@
         }
       ],
       "title": "Outlander (International Edition)"
-    },
-    "outlander-outlander-book-2": {
-      "added_at": "2026-09-24",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "id": "outlander-outlander-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "davina-porter-2010": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B003TFYOL4",
-              "region": "us"
-            }
-          ],
-          "id": "davina-porter-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "davina-porter"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2010",
-          "runtime_min": 1958,
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B003TFYOL4",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "outlander-outlander-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-24",
-          "ref": "B003TFYOL4",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Outlander: Outlander, Book 2"
     },
     "outlanders-1-3-bundle-dramatized-adaptation": {
       "added_at": "2026-07-30T14:42:56+01:00",
