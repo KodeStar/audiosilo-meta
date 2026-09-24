@@ -10,16 +10,19 @@ import (
 // Field labels for import-library.yml.
 const (
 	fImportType       = "Export type"
-	fImportAttachment = "Additional notes"
+	fImportAttachment = "Export file"
+	// fImportAttachmentLegacy is the attachment field's label before it was
+	// renamed to say what goes in it. GitHub renders the label an issue was
+	// OPENED with, so an issue filed under the old template keeps this heading -
+	// including every edit that re-runs the bot on it - and it is still read.
+	fImportAttachmentLegacy = "Additional notes"
 )
 
 // importLibrary ingests an attached OpenAudible/Libation/Audiobookshelf export
 // via the bulk importer (which writes and validates the tree itself).
-// Folder-scan and unknown exports are left to a human. This path writes directly
-// to disk and sets handled, so Process returns its Result verbatim.
+// Folder-scan and unknown exports are left to a human. The importer writes to
+// disk itself, so Process dispatches this path ahead of the generic flush.
 func (c *composer) importLibrary(s sections) {
-	c.handled = true
-
 	// Check the dropdown FIRST, with a pure predicate and no fetch: an export
 	// type the intake bot cannot ingest (folder scan or anything unknown) is a
 	// maintainer's job, so fail needs-human before spending a fetch. Only the
@@ -32,7 +35,7 @@ func (c *composer) importLibrary(s sections) {
 		return
 	}
 
-	raw, ok := c.attachmentBytes(s.get(fImportAttachment))
+	raw, ok := c.attachmentBytes(s.first(fImportAttachment, fImportAttachmentLegacy), maxImportAttachmentBytes)
 	if !ok {
 		return
 	}
@@ -148,8 +151,9 @@ func (c *composer) importLibrary(s sections) {
 	}
 	c.noteConflicts(sum)
 	c.noteImportWarnings(sum)
-	// The importer wrote and validated the tree; the intake workflow diffs it
-	// to build the pull request, so an explicit file list is not needed here.
+	// The importer wrote and validated the tree itself, so the file list is the
+	// one ITS flush reports, in the field the compose path's own flush fills.
+	c.wrote = sum.Files
 }
 
 // noteConflicts reports the rows the importer refused because they disagreed

@@ -57,6 +57,17 @@ func TestFieldLabelsExistInTemplates(t *testing.T) {
 	}
 }
 
+// TestLegacyLabelsAreGoneFromTheirTemplates is the other half of a relabel: a
+// composer that still reads an OLD label (so issues opened under it keep
+// working) must not find that label back in the template, or the "legacy"
+// fallback is really a second live field and two headings could both carry a
+// value.
+func TestLegacyLabelsAreGoneFromTheirTemplates(t *testing.T) {
+	if templateLabels(t, "import-library.yml")[fImportAttachmentLegacy] {
+		t.Errorf("import-library.yml still carries the legacy label %q", fImportAttachmentLegacy)
+	}
+}
+
 // templateLabels parses a GitHub issue-form template and returns the set of its
 // field-level `label:` values (the `### <label>` headings parseBody keys on). It
 // intentionally ignores the nested checkbox `- label:` option strings, which are

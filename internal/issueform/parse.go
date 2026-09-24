@@ -66,6 +66,18 @@ func parseBody(body string) sections {
 // get returns the trimmed value for a field label, or "".
 func (s sections) get(label string) string { return strings.TrimSpace(s[label]) }
 
+// first returns the value of the first of labels the body carries, or "". It is
+// how a renamed field keeps reading issues opened under its old label: the
+// current label first, then the older spellings.
+func (s sections) first(labels ...string) string {
+	for _, l := range labels {
+		if _, ok := s[l]; ok {
+			return s.get(l)
+		}
+	}
+	return ""
+}
+
 // checkboxRE matches a rendered checkbox list item, capturing its checked state.
 var checkboxRE = regexp.MustCompile(`(?m)^\s*-\s*\[([ xX])\]`)
 

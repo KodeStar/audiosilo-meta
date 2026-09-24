@@ -11,10 +11,7 @@ import (
 // is not vacuously empty (which would make every genre a submitter names look
 // unknown, or - if the check were inverted - let anything through).
 func TestGenreVocabulary(t *testing.T) {
-	set, err := loadGenreVocabulary()
-	if err != nil {
-		t.Fatalf("embedded genre vocabulary does not load: %v", err)
-	}
+	set := genreVocabulary()
 	if len(set) < 50 {
 		t.Errorf("vocabulary has %d entries, want the schema's full list", len(set))
 	}
@@ -25,10 +22,6 @@ func TestGenreVocabulary(t *testing.T) {
 	}
 	if set["spaceships"] {
 		t.Error("an invented genre must not be in the vocabulary")
-	}
-	// The accessor used by composition returns the same set (and does not panic).
-	if len(genreVocabulary()) != len(set) {
-		t.Errorf("genreVocabulary() has %d entries, loadGenreVocabulary %d", len(genreVocabulary()), len(set))
 	}
 }
 
