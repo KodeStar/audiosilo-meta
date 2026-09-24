@@ -614,12 +614,15 @@ func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 }
 
 // recordingRef is the reference the intake bot HANDS OUT for a recording, which
-// has no page of its own: works/<work>/recordings/<recording>.json under data/.
-// It is the per-entity path form without the retired shard directory - refPath
-// reads it back, and TestRecordingRefRoundTrips pins that it always will - so no
-// shard rule is spelled in production code again.
+// has no page of its own: data/works/<work>/recordings/<recording>. It is the
+// per-entity path form without the retired shard directory, so no shard rule is
+// spelled in production code again - and without the .json extension, which is
+// what makes it unambiguous: with it, a recording slugged "work" (or
+// "characters", "recaps", "description") spells works/<w>/recordings/work.json,
+// the shape of a work named "recordings". refPath reads it back and
+// TestRecordingRefRoundTrips pins that it always will, those slugs included.
 func recordingRef(workSlug, recSlug string) string {
-	return "data/works/" + workSlug + "/recordings/" + recSlug + ".json"
+	return "data/works/" + workSlug + "/recordings/" + recSlug
 }
 
 // refPath parses the per-entity path forms a submitter may type. The shard
@@ -651,9 +654,16 @@ func refPath(rel string) (recordRef, bool) {
 		if slug, ok := jsonName(parts[4]); ok {
 			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[2]}, true
 		}
+	// The shard-less recording form (recordingRef). It is tried AFTER the
+	// four-segment file shapes above, so a work slugged "recordings" keeps its
+	// reading; the extension-less spelling cannot be one of them, and a .json
+	// spelling that is not one of their file names is not ambiguous either.
 	case len(parts) == 4 && parts[0] == "works" && parts[2] == "recordings":
 		if slug, ok := jsonName(parts[3]); ok {
 			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[1]}, true
+		}
+		if model.ValidSlug(parts[3]) {
+			return recordRef{kind: model.KindRecording, slug: parts[3], workSlug: parts[1]}, true
 		}
 	case len(parts) == 3 && parts[0] == "people":
 		if slug, ok := jsonName(parts[2]); ok {

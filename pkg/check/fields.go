@@ -64,14 +64,15 @@ func fieldsOf(sch *jsonschema.Schema) map[string]Field {
 	fields := make(map[string]Field, len(sch.Properties))
 	var nested []string
 	for name, prop := range sch.Properties {
-		p := deref(prop)
-		f := Field{Enum: enumValues(p)}
-		if p.Items2020 != nil {
-			f.ItemEnum = enumValues(deref(p.Items2020))
+		f := Field{Enum: enumValues(prop)}
+		if items := inChain(prop, func(s *jsonschema.Schema) bool { return s.Items2020 != nil }); items != nil {
+			f.ItemEnum = enumValues(items.Items2020)
 		}
 		fields[name] = f
-		for sub := range p.Properties {
-			nested = append(nested, sub)
+		if obj := inChain(prop, func(s *jsonschema.Schema) bool { return len(s.Properties) > 0 }); obj != nil {
+			for sub := range obj.Properties {
+				nested = append(nested, sub)
+			}
 		}
 	}
 	for _, sub := range nested {
@@ -82,24 +83,35 @@ func fieldsOf(sch *jsonschema.Schema) map[string]Field {
 	return fields
 }
 
-// deref follows a schema's $ref chain to the schema carrying its constraints.
-func deref(s *jsonschema.Schema) *jsonschema.Schema {
-	for s.Ref != nil {
-		s = s.Ref
+// inChain returns the first schema along s's $ref chain - s itself, then what
+// each $ref names - for which has holds, or nil. Draft 2020-12 lets a $ref
+// carry sibling keywords, so the constraint may sit on the referring schema
+// rather than at the end of the chain; stopping only at the chain's end would
+// drop a sibling enum or items silently.
+func inChain(s *jsonschema.Schema, has func(*jsonschema.Schema) bool) *jsonschema.Schema {
+	for ; s != nil; s = s.Ref {
+		if has(s) {
+			return s
+		}
 	}
-	return s
+	return nil
 }
 
-// enumValues is a schema's string enum, sorted, or nil when it has none.
+// enumValues is the string enum found along a schema's $ref chain, sorted, or
+// nil when it has none. An enum holding anything but strings is nil too, rather
+// than an empty vocabulary that would refuse every value.
 func enumValues(s *jsonschema.Schema) []string {
-	if s.Enum == nil {
+	e := inChain(s, func(s *jsonschema.Schema) bool { return s.Enum != nil })
+	if e == nil {
 		return nil
 	}
-	out := make([]string, 0, len(s.Enum.Values))
-	for _, v := range s.Enum.Values {
-		if str, ok := v.(string); ok {
-			out = append(out, str)
+	out := make([]string, 0, len(e.Enum.Values))
+	for _, v := range e.Enum.Values {
+		str, ok := v.(string)
+		if !ok {
+			return nil
 		}
+		out = append(out, str)
 	}
 	slices.Sort(out)
 	return out

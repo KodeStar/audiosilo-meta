@@ -212,13 +212,26 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 	if f, onSibling := fields[sibling][field]; !paired || !onSibling || f.Nested {
 		return false
 	}
+	// The reference to hand out names the work the record lives under NOW: a
+	// submitter who pasted a retired slug's page URL was 301'd there and never
+	// learned it changed, and a suggestion built from the retired slug would
+	// list no recordings and point at a work the bot then cannot find.
+	work := ref.slug
+	if ref.kind == model.KindRecording {
+		work = ref.workSlug
+	}
+	merged := ""
+	if live := c.liveWorkSlug(work); live != "" && live != work {
+		merged = fmt.Sprintf(" (%q has been merged into %q)", work, live)
+		work = live
+	}
 	if ref.kind == model.KindWork {
 		c.fail(StatusInvalid, "%q is a recording field, not a work field - it describes one narration of the book, and a work can have several. "+
-			"Set Record to the recording instead, in the form %s%s",
-			field, recordingRef(ref.slug, "<recording>"), c.recordingChoices(ref.slug))
+			"Set Record to the recording instead, in the form %s%s%s",
+			field, recordingRef(work, "<recording>"), c.recordingChoices(work), merged)
 	} else {
 		c.fail(StatusInvalid, "%q is a work field, not a recording field - it describes the book itself, whichever narration you listen to. "+
-			"Set Record to the work instead: %s", field, workPageURL(ref.workSlug))
+			"Set Record to the work instead: %s%s", field, workPageURL(work), merged)
 	}
 	return true
 }

@@ -27,19 +27,28 @@ func TestRecordFieldsReadTheSchemas(t *testing.T) {
 
 // TestRecordingRefRoundTrips: the recording reference a verdict hands out must
 // resolve back to that recording when pasted into Record - it is the only
-// reference a recording has, since it has no page of its own.
+// reference a recording has, since it has no page of its own. The slugs that
+// spell the other four-segment file shapes are the cases that matter: with a
+// .json extension, a recording slugged "work" reads as a WORK named
+// "recordings".
 func TestRecordingRefRoundTrips(t *testing.T) {
-	ref := recordingRef("existing-work", "john-smith-2020")
-	if strings.Contains(ref, "/ex/") {
-		t.Errorf("the reference %s spells a shard directory", ref)
+	for _, rec := range []string{"john-smith-2020", "work", "characters", "recaps", "description", "recap", "recordings"} {
+		ref := recordingRef("existing-work", rec)
+		if strings.Contains(ref, "/ex/") {
+			t.Errorf("the reference %s spells a shard directory", ref)
+		}
+		rr, ok := resolveRecordRef(ref)
+		if want := (recordRef{kind: model.KindRecording, slug: rec, workSlug: "existing-work"}); !ok || rr != want {
+			t.Errorf("%s resolves to %+v, %v, want %+v", ref, rr, ok, want)
+		}
 	}
-	rr, ok := resolveRecordRef(ref)
-	if !ok || rr.kind != model.KindRecording || rr.workSlug != "existing-work" || rr.slug != "john-smith-2020" {
-		t.Errorf("%s resolves to %+v, %v, want the recording", ref, rr, ok)
+	// The older spellings keep their readings: the sharded recording path, and a
+	// WORK slugged "recordings" in the sharded work form.
+	if rr, ok := resolveRecordRef("data/works/ex/existing-work/recordings/john-smith-2020.json"); !ok || rr.kind != model.KindRecording || rr.slug != "john-smith-2020" {
+		t.Errorf("the sharded recording form resolves to %+v, %v", rr, ok)
 	}
-	// The sharded spelling older issues carry still resolves the same way.
-	if old, ok := resolveRecordRef("data/works/ex/existing-work/recordings/john-smith-2020.json"); !ok || old != rr {
-		t.Errorf("the sharded form resolves to %+v, %v, want %+v", old, ok, rr)
+	if rr, ok := resolveRecordRef("data/works/re/recordings/work.json"); !ok || rr.kind != model.KindWork || rr.slug != "recordings" {
+		t.Errorf("a work slugged \"recordings\" resolves to %+v, %v", rr, ok)
 	}
 }
 
@@ -237,5 +246,30 @@ func TestCorrectionToTheRecordedValueIsANoop(t *testing.T) {
 	res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody("data/people/jo/john-smith.json", "kind", "PUBLISHER", "web", true)})
 	if res.Status != StatusDuplicate {
 		t.Errorf("status = %q, want a no-op duplicate; messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestMisaddressedFieldFollowsARetiredWorkSlug: a submitter who pasted the page
+// URL of a work a core merge has retired was 301'd to the survivor and never
+// learned the slug changed. The redirect suggestion is built from the SURVIVOR -
+// the tree's own tombstone table, read the way resolveWorkKey reads it - so it
+// lists the survivor's recordings and points at a record the bot can find.
+func TestMisaddressedFieldFollowsARetiredWorkSlug(t *testing.T) {
+	dir := seedTree(t)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
+
+	res := Process(Options{DataDir: dir, Template: "correct-data",
+		Body: correctBody("https://meta.audiosilo.app/works/retired-work", "runtime_min", "499", "web", true)})
+	if res.Status != StatusInvalid {
+		t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)
+	}
+	if want := recordingRef("existing-work", "john-smith-2020"); !anyContains(res.Messages, want) || !anyContains(res.Messages, `"retired-work" has been merged into "existing-work"`) {
+		t.Errorf("the suggestion does not follow the tombstone to %s: %v", want, res.Messages)
+	}
+
+	res = Process(Options{DataDir: dir, Template: "correct-data",
+		Body: correctBody("data/works/retired-work/recordings/john-smith-2020", "title", "A Better Title", "web", true)})
+	if res.Status != StatusInvalid || !anyContains(res.Messages, workPageURL("existing-work")) {
+		t.Errorf("status = %q, want invalid naming the survivor's page; messages = %v", res.Status, res.Messages)
 	}
 }

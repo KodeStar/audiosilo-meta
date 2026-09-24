@@ -12,9 +12,15 @@ import (
 // genreVocabulary is the controlled genre vocabulary: the item enum of the work
 // schema's genres field, read through recordFields - the one reader of the
 // embedded schemas here - so a schema amendment is picked up with no second list
-// to update.
+// to update. An EMPTY vocabulary is a programming error (the schema is embedded
+// and covered by TestGenreVocabulary), so it panics rather than silently
+// rejecting every genre a submitter names.
 var genreVocabulary = sync.OnceValue(func() map[string]bool {
-	return importer.ToSet(recordFields()[model.KindWork]["genres"].ItemEnum)
+	vals := recordFields()[model.KindWork]["genres"].ItemEnum
+	if len(vals) == 0 {
+		panic("issueform: the work schema's genres field carries no item enum - the genre vocabulary is unusable")
+	}
+	return importer.ToSet(vals)
 })
 
 // parseGenres turns the form's comma-separated (or one-per-line) Genres field
