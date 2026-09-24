@@ -1071,12 +1071,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// slug candidates getOrCreateWork will), and the guard has to run before
 	// anything is created or a refused row would leave orphan person records behind.
 	var claim *seriesClaim
+	prod := p.rowProductionOf(b, narratorNames)
 	for _, r := range b.series {
 		if !r.seqOK {
 			continue
 		}
 		if ss := p.findSeries(r.name); ss != nil {
-			claim = &seriesClaim{ss: ss, pos: rowPositionOf(r, workTitle), runtime: b.runtimeMin, name: r.name}
+			claim = newSeriesClaim(ss, r, workTitle, prod)
 			break
 		}
 	}
@@ -1626,9 +1627,9 @@ type seriesClaim struct {
 	// title's (rowPosition); a work placed at the title's is the same volume only
 	// when the title is corroborated (holds).
 	pos rowPosition
-	// runtime is the row's stated runtime in minutes (0 = unstated), which
-	// titleCorroborated reads.
-	runtime int
+	// prod is what the row states about its production, which titleCorroborated
+	// reads.
+	prod *rowProduction
 	// name is the series name the ROW states. It usually equals ss.name up to case,
 	// but not after a tombstone ride (seriesChain): a retired base joins a survivor
 	// whose name is a different spelling, and the position probe must be composed
@@ -1663,7 +1664,14 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 // holds reports whether ws recorded at pos is at the row's position: the
 // source's outright, the title's only when titleCorroborated.
 func (c *seriesClaim) holds(ws *workState, pos string) bool {
-	return c.pos.names(pos, func() bool { return titleCorroborated(c.ss, ws, c.pos.source, c.runtime) })
+	return c.pos.names(pos, func() bool { return titleCorroborated(ws, c.prod) })
+}
+
+// newSeriesClaim is row r's claim on the known series ss, with the row's work
+// title (which the title arm is read from) and its production (which that arm is
+// corroborated by) - the one constructor, so no claim can be built without them.
+func newSeriesClaim(ss *seriesState, r seriesRef, title string, prod *rowProduction) *seriesClaim {
+	return &seriesClaim{ss: ss, pos: rowPositionOf(r, title), prod: prod, name: r.name}
 }
 
 // places is compatible's POSITIVE half: it reports whether the series says ws
@@ -1975,13 +1983,14 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		// production (a distinct runtime, or a known-abridged edition), so fall
 		// through to a distinct slug under the same work.
 		rowKeyed := p.keyClaims(claims)
+		prod := resolvedRowProduction(b, narrSet)
 		for _, m := range matches {
 			// A sibling recording whose row claimed a DIFFERENT position in a
 			// series this row also claims is a different volume, however alike the
 			// two productions look. Checked before the runtime and abridged guards
 			// because it is the only one that can tell two volumes of a serial
 			// apart.
-			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, rowKeyed, b.runtimeMin); conflict {
+			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, rowKeyed, prod); conflict {
 				warn("recording %q is at position %q of series %q; this row claims %q - not merging its ASIN",
 					m.slug, incumbent, series, want)
 				continue
@@ -2399,8 +2408,9 @@ func (p *planner) seriesKeyOf(name string) string {
 // recording's first claim on a series is the one compared, and a recording with
 // no known position never conflicts: the guard fires on evidence, never on
 // absence. A match through a title arm counts only when titleCorroborated for
-// the recording's work ws and the row's runtime - the same test seriesClaim's is.
-func (p *planner) seriesPosConflict(ri *recInfo, ws *workState, row []posClaim, runtime int) (series, incumbent, want string, conflict bool) {
+// the recording's work ws and the row's production - the same test
+// seriesClaim's is - or when ws itself sits at the row's SOURCE position.
+func (p *planner) seriesPosConflict(ri *recInfo, ws *workState, row []posClaim, prod *rowProduction) (series, incumbent, want string, conflict bool) {
 	if len(row) == 0 || len(ri.claims) == 0 {
 		return "", "", "", false
 	}
@@ -2409,7 +2419,20 @@ func (p *planner) seriesPosConflict(ri *recInfo, ws *workState, row []posClaim, 
 			if c.keyOf(p) != r.key {
 				continue
 			}
-			corroborated := func() bool { return titleCorroborated(p.series[r.key], ws, r.pos.source, runtime) }
+			corroborated := func() bool {
+				ss := p.series[r.key]
+				// The work SITTING at the row's source position is the recorded fact
+				// a disk claim carries (seedDiskSeriesPositions), so it agrees here
+				// exactly as it would across two runs - a recording created this run
+				// still carries its row's raw claim, whose title arm is what placed
+				// the work there.
+				if ss != nil && r.pos.source != "" {
+					if at, in := ss.members[ws.slug]; in && SameSlot(at, r.pos.source) {
+						return true
+					}
+				}
+				return titleCorroborated(ws, prod)
+			}
 			if !c.pos.agrees(r.pos, corroborated) {
 				return r.name, c.pos.source, r.pos.source, true
 			}
