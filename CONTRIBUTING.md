@@ -431,7 +431,7 @@ them the way CI does and a green local gate means a green pull request.
 - `metafmt --check` - canonical JSON (sorted keys, 2-space indent, trailing
   newline). Run `go run ./cmd/metafmt --write` to fix formatting automatically.
 
-You need Go 1.25 or newer. No cgo, no external services - the tooling is pure Go.
+You need Go 1.26 or newer. No cgo, no external services - the tooling is pure Go.
 
 ## Style
 

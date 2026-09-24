@@ -190,11 +190,10 @@ jobs:
         if: steps.build.outputs.skip != 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
-          # keep a bare minor there, so the minor is repeated here - bump it
-          # with go.mod's directive.
-          go-version: "1.25"
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
           check-latest: true
 
       - name: Validate data (metacheck)
