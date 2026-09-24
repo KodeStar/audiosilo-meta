@@ -672,17 +672,39 @@ func TestICSFoldSurvivesInvalidUTF8(t *testing.T) {
 	}
 }
 
-// watchShapesCatalog is one series holding every shape the feed's rules turn on:
-// dated works either side of a window boundary, a future release, a bare year, a
-// calendar-invalid `date_flex` value with and without a recent added_at, a work
-// whose EARLIEST recording is old but which was reissued recently, timestamps
-// with an offset, and a work with no recordings at all. Plus enough plainly old
-// works that the candidate query has something to exclude.
+// watchShapesSeries are the series the equivalence fixture holds, in the order
+// the tests request them - which is also the order the feed's first-series-wins
+// dedupe reads.
+var watchShapesSeries = []string{"shapes", "companion"}
+
+// watchShapesCatalog holds every shape the feed's rules turn on: dated works
+// either side of a window boundary, a future release, a bare year, a
+// MONTH-precision date either side of the boundary, a bare year whose first
+// instant straddles it, a calendar-invalid `date_flex` value with and without a
+// recent added_at, a work whose EARLIEST recording is old but which was reissued
+// recently, timestamps with an offset, and a work with no recordings at all.
+// Plus enough plainly old works that the candidate query has something to
+// exclude.
+//
+// It holds TWO series, because a work in several watched series is the one
+// shape the selection's dedupe has an opinion about: the feed marks a work SEEN
+// on first sight, where the whole-series sweep it replaced marked it on EMIT.
+// The two agree because the news decision (watchNewsOf) reads the work's two
+// dated facts and nothing about which series asked - so a work that is not news
+// under the first series naming it is not news under the second either - and
+// the equivalence test below is what pins that claim rather than restating it.
+// A RETIRED slug for the second series is in the table too, so the resolution
+// step sits on the same path.
 func watchShapesCatalog(t *testing.T) *model.Catalog {
 	t.Helper()
 	author := &model.Person{ID: "author", Name: "Author", License: "CC0-1.0"}
 	series := &model.Series{ID: "shapes", Name: "Shapes", License: "CC0-1.0"}
-	cat := &model.Catalog{People: []*model.Person{author}, Series: []*model.Series{series}}
+	companion := &model.Series{ID: "companion", Name: "Companion", License: "CC0-1.0"}
+	cat := &model.Catalog{
+		People:    []*model.Person{author},
+		Series:    []*model.Series{series, companion},
+		Redirects: model.Redirects{model.RedirectSeries: {"old-companion": "companion"}},
+	}
 
 	pos := 0
 	add := func(id, addedAt string, releases ...string) {
@@ -707,8 +729,17 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 	add("out-today", "2019-01-01", "2026-09-21")
 	add("preorder-month", "2019-01-01", "2026-10")
 	add("preorder-year", "2019-01-01", "2027")
+	// A bare YEAR is read at its FIRST instant, so 2026 STRADDLES a cutoff that
+	// falls inside 2026: out of a 90-day window in September, in on a 200-day
+	// one - which is the year arm's whole boundary behaviour.
 	add("bare-year-current", "2019-01-01", "2026")
 	add("bare-year-past", "2019-01-01", "2025")
+	// MONTH precision in the PAST, either side of the 90-day boundary: a month
+	// is read at its FIRST instant, so 2026-06 lands before the 2026-06-23
+	// cutoff and 2026-07 after it. parseReleaseDate's month arm is otherwise
+	// only exercised by the future dates above, where the window never applies.
+	add("month-before-boundary", "2019-01-01", "2026-06")
+	add("month-after-boundary", "2019-01-01", "2026-07")
 	// The earliest recording is what the card carries, so a reissue does not make
 	// an old book news.
 	add("old-with-reissue", "2019-01-01", "1999-01-01", "2026-09-01")
@@ -721,15 +752,15 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 	add("undated-recent", "2026-09-18T12:00:00Z", "")
 	add("undated-offset", "2026-06-23T23:30:00+05:00", "")
 	// An offset BEHIND UTC puts the instant a day later than the date its first
-	// ten characters spell - two readings of one added_at, which the probe card
-	// must hand watchItem exactly as the full card would.
+	// ten characters spell - two readings of one added_at, which the selection
+	// must hand the news rule exactly as a full card would.
 	add("undated-negative-offset", "2026-06-22T20:00:00-07:00", "")
 	add("undated-day", "2026-06-23", "")
 	add("undated-old", "2019-05-05", "")
 	add("no-added-no-date", "", "")
 	// A work with no recordings at all, so cardFactsByWork has no row for it and
-	// the probe card carries an EMPTY release date - which must read as "undated",
-	// not as a work the selection may drop.
+	// the selection sees an EMPTY release date - which must read as "undated",
+	// not as a work it may drop.
 	pos++
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "no-recordings", Title: "No Recordings", Language: "en",
@@ -739,6 +770,23 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 	for i := range 80 {
 		add("filler-"+strconv.Itoa(i), "2018-03-0"+strconv.Itoa(i%9+1), "2010-01-01")
 	}
+
+	// The second series SHARES works with the first - one that is news and one
+	// that is not, so the dedupe is exercised in both directions - and adds one
+	// of its own.
+	companion.Works = []model.SeriesWork{
+		{Work: "out-today", Position: "1"},
+		{Work: "ancient", Position: "2"},
+		{Work: "companion-only", Position: "3"},
+	}
+	cat.Works = append(cat.Works, &model.Work{
+		ID: "companion-only", Title: "Companion Only", Language: "en",
+		Authors: []string{author.ID}, License: "CC0-1.0", AddedAt: "2019-01-01",
+		Recordings: []*model.Recording{{
+			ID: "rec-0", Work: "companion-only", Language: "en",
+			ReleaseDate: "2026-09-10", License: "CC0-1.0",
+		}},
+	})
 	return cat
 }
 
@@ -746,20 +794,23 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 // to read every watched series WHOLE - a card, its authors, its first series and
 // its recordings' facts for every member, up to 200 series deep - and then keep
 // the handful inside the window. It now selects the candidates in SQL, which is
-// only safe if that selection is a strict SUPERSET of what watchItem keeps.
+// only safe if that selection is a strict SUPERSET of what the feed reports.
 //
 // So the test compares the feed against the sweep it replaced: the reference
-// walks the whole series through snapshot.series and applies watchItem to every
-// member, exactly as the old implementation did, and the two must name the same
-// items over a catalogue holding every shape the rules turn on and over windows
-// and clocks that move the boundary around.
+// walks each watched series WHOLE through snapshot.series and applies watchItem
+// to every member, exactly as the old implementation did - including its
+// dedupe, which marked a work seen on EMIT where the feed marks it on first
+// SIGHT. Those agree because watchNewsOf reads the work's two dated facts and
+// nothing about which series asked, so a work that is not news under the first
+// series naming it is not news under the second; the multi-series fixture is
+// what turns that from a claim into a test.
 //
-// What it really guards is the REDUCTION: the selection pass judges a PROBE CARD
-// carrying the release date and added_at alone, where the reference judges the
-// fully resolved one. The two must agree on every member, so any shape where the
-// rest of a card could change watchItem's answer - or where the probe's release
-// date is not the card's - fails here. There is no date filter in SQL to get
-// wrong: watchMembersSQL reads membership, and all the judgement is watchItem's.
+// What it really guards is the REDUCTION: the selection pass judges the release
+// date and added_at alone, where the reference judges the fully resolved card.
+// The two must agree on every member, so any shape where the rest of a card
+// could change the answer - or where the selection's release date is not the
+// card's - fails here. There is no date filter in SQL to get wrong:
+// watchMembersSQL reads membership, and all the judgement is watchNewsOf's.
 func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 	snap, err := openSnapshot(buildFixtureDB(t, watchShapesCatalog(t)), "")
 	if err != nil {
@@ -768,19 +819,21 @@ func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 	t.Cleanup(snap.close)
 
 	reference := func(window int, now time.Time) []string {
-		detail, err := snap.series("shapes", 0, 0)
-		if err != nil {
-			t.Fatal(err)
-		}
 		var ids []string
 		seen := map[string]bool{}
-		for _, entry := range detail.Works {
-			if entry.Work != nil && seen[entry.Work.ID] {
-				continue
+		for _, slug := range watchShapesSeries {
+			detail, err := snap.series(slug, 0, 0)
+			if err != nil {
+				t.Fatal(err)
 			}
-			if item, ok := watchItem(detail.Name, entry, window, now, testSiteURL); ok {
-				seen[entry.Work.ID] = true
-				ids = append(ids, item.id)
+			for _, entry := range detail.Works {
+				if entry.Work != nil && seen[entry.Work.ID] {
+					continue
+				}
+				if item, ok := watchItem(detail.Name, entry, window, now, testSiteURL); ok {
+					seen[entry.Work.ID] = true
+					ids = append(ids, item.id)
+				}
 			}
 		}
 		sort.Strings(ids)
@@ -798,13 +851,21 @@ func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 		// behind UTC falls either side of.
 		{"just after midnight", 90, time.Date(2026, 9, 21, 0, 30, 0, 0, time.UTC)},
 		{"cutoff on new year's day", 89, time.Date(2026, 3, 31, 0, 30, 0, 0, time.UTC)},
+		// A cutoff INSIDE a month and inside a year, which is where a
+		// month-precision and a year-precision value read at their first instant
+		// fall either side of the boundary.
+		{"cutoff mid-month", 40, time.Date(2026, 7, 20, 15, 0, 0, 0, time.UTC)},
+		{"cutoff mid-year", 200, time.Date(2026, 7, 20, 15, 0, 0, 0, time.UTC)},
 		{"one-day window", 1, time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)},
 		{"maximum window", maxWatchWindow, time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)},
 		{"a year later", 90, time.Date(2027, 9, 21, 15, 0, 0, 0, time.UTC)},
 		{"before everything", 90, time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			feed, err := snap.watchFeed([]string{"shapes"}, tc.window, tc.now, testSiteURL, "self", "id")
+			// The second series is requested by its RETIRED slug, so the
+			// resolution step is on the path the equivalence is taken over.
+			requested := []string{watchShapesSeries[0], "old-companion"}
+			feed, err := snap.watchFeed(requested, tc.window, tc.now, testSiteURL, "self", "id")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -818,6 +879,41 @@ func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 				t.Errorf("the bounded feed and the whole-series sweep disagree:\n got %v\nwant %v", got, want)
 			}
 		})
+	}
+}
+
+// TestWatchShapesFixtureCoversTheSharedWork guards the fixture the equivalence
+// test rests on: without a work in BOTH watched series, the one semantic the
+// rewrite moved - seen on first SIGHT rather than on emit - is unpinned, and
+// without one of them being news the dedupe never fires at all.
+func TestWatchShapesFixtureCoversTheSharedWork(t *testing.T) {
+	snap, err := openSnapshot(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(snap.close)
+
+	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
+	feed, err := snap.watchFeed([]string{"shapes", "old-companion"}, defaultWatchWindow, now, testSiteURL, "self", "id")
+	if err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]int{}
+	for _, item := range feed.items {
+		seen[item.id]++
+		// FIRST series in request order wins the title.
+		if strings.Contains(item.id, "/out-today/") && item.series != "Shapes" {
+			t.Errorf("the shared work is titled under %q, want the first series requested", item.series)
+		}
+	}
+	if n := seen[watchTagPrefix+"work/out-today/released"]; n != 1 {
+		t.Errorf("the shared NEWS work appears %d times, want 1", n)
+	}
+	if n := seen[watchTagPrefix+"work/ancient/released"]; n != 0 {
+		t.Errorf("the shared work that is NOT news appears %d times, want 0", n)
+	}
+	if n := seen[watchTagPrefix+"work/companion-only/released"]; n != 1 {
+		t.Errorf("the second series' own work appears %d times, want 1", n)
 	}
 }
 
@@ -837,7 +933,7 @@ func TestWatchSelectionIsBounded(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	kept, err := snap.selectWatchCandidates(members, defaultWatchWindow, now, testSiteURL)
+	kept, err := snap.selectWatchCandidates(members, defaultWatchWindow, now)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -860,15 +956,18 @@ func TestWatchSelectionIsBounded(t *testing.T) {
 
 // TestWatchItemDecidesOnTheDatedFactsAlone pins the property the two-pass
 // selection rests on: whether a member is news depends on the release date and
-// added_at and NOTHING else, so a probe card carrying those two fields gets the
-// same answer as the full card. If watchItem ever starts reading the title, the
-// authors or the cover to DECIDE (as opposed to to render), the cheap pass
-// would quietly start disagreeing with the expensive one - and this fails.
+// added_at and NOTHING else. watchNewsOf is now the shared statement of that -
+// the selection calls it over batched facts and watchItem calls it over a
+// resolved card - so what is left to pin is that watchItem adds no condition of
+// its own on top: a fully dressed card and the bare dates must agree, and with
+// the decision the SAME.
 func TestWatchItemDecidesOnTheDatedFactsAlone(t *testing.T) {
 	now := time.Date(2026, 9, 21, 15, 0, 0, 0, time.UTC)
 	cover := "https://example.test/cover.jpg"
 	for _, dates := range []struct{ release, added string }{
 		{"2026-09-20", ""},
+		{"2026-07", ""},
+		{"2026", ""},
 		{"2027", ""},
 		{"2000-01-01", ""},
 		{"", "2026-09-20"},
@@ -881,18 +980,26 @@ func TestWatchItemDecidesOnTheDatedFactsAlone(t *testing.T) {
 			added := dates.added
 			addedAt = &added
 		}
-		probe := &workCard{ID: "work", ReleaseDate: dates.release, AddedAt: addedAt}
 		full := &workCard{
 			ID: "work", Title: "A Title", ReleaseDate: dates.release, AddedAt: addedAt,
 			Authors:  []personRef{{ID: "author", Name: "Author"}},
 			Series:   &seriesRef{ID: "series", Name: "Series", Position: "1"},
 			CoverURL: &cover,
 		}
-		_, probeOK := watchItem("Series", seriesEntry{Position: "1", Work: probe}, 90, now, testSiteURL)
-		_, fullOK := watchItem("Series", seriesEntry{Position: "1", Work: full}, 90, now, testSiteURL)
-		if probeOK != fullOK {
-			t.Errorf("release %q / added %q: probe card kept = %v, full card kept = %v",
-				dates.release, dates.added, probeOK, fullOK)
+		news, newsOK := watchNewsOf(dates.release, addedAt, 90, now)
+		item, itemOK := watchItem("Series", seriesEntry{Position: "1", Work: full}, 90, now, testSiteURL)
+		if newsOK != itemOK {
+			t.Errorf("release %q / added %q: the rule kept = %v, watchItem kept = %v",
+				dates.release, dates.added, newsOK, itemOK)
+			continue
+		}
+		if !newsOK {
+			continue
+		}
+		if item.state != news.state || item.summary != news.summary || !item.updated.Equal(news.updated) {
+			t.Errorf("release %q / added %q: watchItem rendered %q/%q/%s over the rule's %q/%q/%s",
+				dates.release, dates.added, item.state, item.summary, item.updated,
+				news.state, news.summary, news.updated)
 		}
 	}
 }
