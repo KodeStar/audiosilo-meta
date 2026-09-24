@@ -71,11 +71,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
-          # keep a bare minor there, so the minor is repeated here - bump it
-          # with go.mod's directive.
-          go-version: "1.25"
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
           check-latest: true
 
       # Go steps only: a data-and-prose diff skips them (see the changes job).
@@ -131,11 +130,10 @@ jobs:
         if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
-          # keep a bare minor there, so the minor is repeated here - bump it
-          # with go.mod's directive.
-          go-version: "1.25"
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
           check-latest: true
 
       - name: golangci-lint
@@ -159,24 +157,22 @@ jobs:
         if: needs.changes.outputs.go == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
-          # keep a bare minor there, so the minor is repeated here - bump it
-          # with go.mod's directive.
-          go-version: "1.25"
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
           check-latest: true
 
       - name: govulncheck
         if: needs.changes.outputs.go == 'true'
-        # golang/govulncheck-action installs golang.org/x/vuln/cmd/govulncheck@latest,
-        # and that command now requires Go >= 1.26 (x/vuln v1.8.0 declares
-        # `go 1.26`) while this repo builds on 1.25 - so the tool is run
-        # directly here instead of through the action, pinned to v1.7.0 (the
-        # newest release that still declares `go 1.25.0`). Dependabot's gomod
-        # ecosystem does not see a version inside a `go run` argument, so
-        # bumping this pin - together with the Go minor above - is a human's
-        # job, done when go.mod's directive moves.
-        run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
+        # Run directly and PINNED rather than through golang/govulncheck-action,
+        # which installs golang.org/x/vuln/cmd/govulncheck@latest: each x/vuln
+        # release declares a recent Go floor, so @latest breaks this job the day
+        # a release outruns the Go minor in .go-version. Dependabot's gomod
+        # ecosystem does not see a version inside a `go run` argument, so this
+        # pin is one of the four places a Go bump edits by hand: go.mod,
+        # .go-version, the Dockerfile's golang image and this line.
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.8.0 ./...
 
   # The CROSS-TREE half of validation, which no single-root check can perform.
   #
@@ -227,11 +223,10 @@ jobs:
         if: needs.changes.outputs.compose == 'true'
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
-          # keep a bare minor there, so the minor is repeated here - bump it
-          # with go.mod's directive.
-          go-version: "1.25"
-          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
           check-latest: true
 
       - name: Compose both trees (metabuild --community)

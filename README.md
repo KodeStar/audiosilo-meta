@@ -91,7 +91,7 @@ CONTRIBUTING.md  GOVERNANCE.md  LICENSING.md
 
 ## Quickstart
 
-Requires **Go 1.25+** (pure Go, no cgo, no external services).
+Requires **Go 1.26+** (pure Go, no cgo, no external services).
 
 ```sh
 git clone https://github.com/kodestar/audiosilo-meta

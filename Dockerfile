@@ -53,7 +53,7 @@ RUN yarn build
 # Astro emits the static site to dist/.
 
 # ---- 2. build ----------------------------------------------------------------
-FROM golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 AS build
+FROM golang:1.26-alpine@sha256:8ac98ca534ac3f51e1f420a1dd2c15e74c75cfa0f23f3ad27eb5d7236c349a0c AS build
 WORKDIR /src
 ENV CGO_ENABLED=0
 # Pure-Go deps (modernc sqlite) so no C toolchain is needed.
