@@ -376,6 +376,89 @@ func TestARangePositionIsNeverArbitrated(t *testing.T) {
 	}
 }
 
+// towerboundRows is an envelope of "Towerbound, Book 6" rows at the retailer's
+// position 8, one per ASIN - re-releases of the one production (same narrator,
+// runtime unstated).
+func towerboundRows(asins ...string) string {
+	rows := make([]string, len(asins))
+	for i, a := range asins {
+		rows[i] = fmt.Sprintf(`{"title": "Towerbound, Book 6", "authors": ["A Writer"], "narrators": ["A Narrator"],`+
+			` "series": "Towerbound", "series_position": "8", "asin": %q, "language": "en"}`, a)
+	}
+	return `{"format": "audiosilo-books", "version": 1, "books": [` + strings.Join(rows, ",") + `]}`
+}
+
+// runBooksOver runs one audiosilo-books import over an existing tree.
+func runBooksOver(t *testing.T, dataDir, envelope string) Summary {
+	t.Helper()
+	sum, err := RunAudiosiloBooks(writeBooks(t, envelope), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("import run: %v", err)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	return sum
+}
+
+// The serial guard reads the position a row would be PLACED at, not the raw one
+// its source stated: run 1 places "Towerbound, Book 6" at the title's 6, so run
+// 2's re-release of it - still stating the retailer's 8 - is the same volume and
+// its ASIN merges, exactly as the two rows do within one run.
+func TestSerialGuardReadsTheArbitratedPosition(t *testing.T) {
+	// The recording guard on its own: the alternate-narration pass resolves the
+	// work by title and author alone, so nothing but the guard stands between the
+	// re-release and a duplicate sibling recording.
+	t.Run("recordings-only second run", func(t *testing.T) {
+		dataDir := t.TempDir()
+		runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+		sum := runRecordingsOnly(t, dataDir,
+			tombRow("B0TWR00009", "Towerbound, Book 6", "A Writer", "A Narrator", 300, "Towerbound", "8")+"\n", false)
+		if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+	// The same shape through the create path, where the work-level series claim
+	// (seriesClaim.compatible) reads the row's position first.
+	t.Run("two runs", func(t *testing.T) {
+		dataDir := t.TempDir()
+		runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+		sum := runBooksOver(t, dataDir, towerboundRows("B0TWR00009"))
+		if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+	t.Run("one run", func(t *testing.T) {
+		sum := runBooksOver(t, t.TempDir(), towerboundRows("B0TWR00001", "B0TWR00009"))
+		if sum.MergedASINs != 1 || sum.NewRecordings != 1 {
+			t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+				sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+		}
+	})
+}
+
+// When the title's slot was TAKEN, placement kept the source's position (8), so
+// the work sits at 8 on disk. A re-release stating that same 8 is the same
+// volume too: the row's claim carries both the title's and the source's
+// position, and either matching the recording's is agreement.
+func TestSerialGuardMatchesTheSourcePositionPlacementKept(t *testing.T) {
+	dataDir := t.TempDir()
+	runBooksOver(t, dataDir, `{"format": "audiosilo-books", "version": 1, "books": [
+    {"title": "Prelude at the Gate", "authors": ["A Writer"], "narrators": ["A Narrator"],
+     "series": "Towerbound", "series_position": "6", "asin": "B0TWR00002", "language": "en"}]}`)
+	runBooksOver(t, dataDir, towerboundRows("B0TWR00001"))
+	if got := seriesSlots(t, dataDir, towerboundSeriesFile)["towerbound-book-6"]; got != "8" {
+		t.Fatalf("placed at %q, want the source's 8 (the title's 6 is taken)", got)
+	}
+	sum := runBooksOver(t, dataDir, towerboundRows("B0TWR00009"))
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+		t.Errorf("MergedASINs = %d, NewRecordings = %d; want the re-release merged: %v",
+			sum.MergedASINs, sum.NewRecordings, sum.Warnings)
+	}
+}
+
 // The live client's adapter reads the record's own `series` array and nothing
 // else, and reports an ASIN libex does not hold as "nothing to fill" rather than
 // as an error - plenty of a personal library is not on Audible at all.

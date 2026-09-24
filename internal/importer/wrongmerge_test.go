@@ -922,7 +922,7 @@ func TestDiskRecordingCarriesItsSeriesPosition(t *testing.T) {
 //   - seriesState.claimed is what makes a DROPPED placement still block a later
 //     volume: without it, a work whose position was already taken looks absent
 //     from the series, which trivially satisfies the same-position test.
-//   - recInfo.seriesPos is what stops two volumes' ASINs merging onto one
+//   - recInfo.claims is what stops two volumes' ASINs merging onto one
 //     recording once they are under one work: identical narrators and
 //     compatible runtimes leave nothing else to tell them apart.
 func TestSeriesClaimAndRecordingGuardAreLoadBearing(t *testing.T) {

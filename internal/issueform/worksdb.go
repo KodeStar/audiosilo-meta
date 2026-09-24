@@ -359,25 +359,6 @@ func (c *composer) liveWorkSlug(slug string) string {
 	return ""
 }
 
-// seriesAt returns the series record a series slug addresses and the id it is
-// stored under: the live record, else - the minters' rule,
-// internal/importer/tombstone.go - the survivor its tombstone names. nil when
-// neither is held, or the slug is empty.
-func (c *composer) seriesAt(slug string) (*model.Series, string) {
-	if slug == "" {
-		return nil, ""
-	}
-	if s := c.series[slug]; s != nil {
-		return s, slug
-	}
-	if to, retired := c.redirects.Survivor(model.RedirectSeries, slug); retired {
-		if s := c.series[to]; s != nil {
-			return s, to
-		}
-	}
-	return nil, ""
-}
-
 // noteRetired says that a name the form spelled slugs to a retired record and
 // was resolved onto its survivor: a record composed under an address the form did
 // not spell is a decision a maintainer reading the pull request has to see.

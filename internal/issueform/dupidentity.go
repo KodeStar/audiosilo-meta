@@ -150,7 +150,7 @@ func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	if formSeries != "" {
 		// The record placeInSeries will extend (seriesForForm), so the position
 		// gate reads the series the work actually lands in.
-		ctx.seriesRec, _, _ = c.seriesForForm(formSeries)
+		ctx.seriesRec = c.seriesForForm(formSeries).rec
 		// A name the INDEX would not read a title against is not read against one
 		// here either (WorkIdentity.Admits): a one-word series name strips its own
 		// titles down to their volume number, and a fold-ambiguous one would make

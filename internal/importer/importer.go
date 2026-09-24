@@ -935,7 +935,7 @@ func (p *planner) seedDiskSeriesPositions(series []*model.Series) {
 	byWork := map[string][]posClaim{}
 	for _, s := range series {
 		for _, sw := range s.Works {
-			byWork[sw.Work] = append(byWork[sw.Work], posClaim{slug: s.ID, seq: sw.Position})
+			byWork[sw.Work] = append(byWork[sw.Work], posClaim{key: s.ID, pos: rowPosition{source: sw.Position}})
 		}
 	}
 	for slug, claims := range byWork {
@@ -1076,7 +1076,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			continue
 		}
 		if ss := p.findSeries(r.name); ss != nil {
-			claim = &seriesClaim{ss: ss, pos: r.seq, name: r.name}
+			claim = &seriesClaim{ss: ss, pos: rowPositionOf(r, workTitle), name: r.name}
 			break
 		}
 	}
@@ -1116,7 +1116,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if ws != nil {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
-	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
+	recorded := p.addRecording(ws, b, workTitle, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
 	// new recording or merged the ASIN into an existing one, this tail records
@@ -1621,8 +1621,10 @@ func personSlug(name string) (slug string, fellBack bool) { return model.PersonS
 
 // seriesClaim is a book's claim to a position in an already-known series.
 type seriesClaim struct {
-	ss  *seriesState
-	pos string
+	ss *seriesState
+	// pos is where the row puts its volume - the source's position and the
+	// title's (rowPosition) - so a work placed at either is the same volume.
+	pos rowPosition
 	// name is the series name the ROW states. It usually equals ss.name up to case,
 	// but not after a tombstone ride (seriesChain): a retired base joins a survivor
 	// whose name is a different spelling, and the position probe must be composed
@@ -1646,10 +1648,10 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 		return true
 	}
 	if existing, in := c.ss.members[ws.slug]; in {
-		return existing == c.pos
+		return c.pos.names(existing)
 	}
 	if wanted, asked := c.ss.claimed[ws.slug]; asked {
-		return wanted == c.pos
+		return c.pos.names(wanted)
 	}
 	return true
 }
@@ -1669,10 +1671,10 @@ func (c *seriesClaim) places(ws *workState) bool {
 		return false
 	}
 	if existing, in := c.ss.members[ws.slug]; in {
-		return existing == c.pos
+		return c.pos.names(existing)
 	}
 	wanted, asked := c.ss.claimed[ws.slug]
-	return asked && wanted == c.pos
+	return asked && c.pos.names(wanted)
 }
 
 // position reduces the claim to the (series, position) pair the suffix formulas
@@ -1690,7 +1692,8 @@ func (c *seriesClaim) position() positionClaim {
 	if name == "" {
 		name = c.ss.name
 	}
-	return positionClaim{series: name, pos: c.pos}
+	// The SOURCE position, which is what the serial pre-pass mints from.
+	return positionClaim{series: name, pos: c.pos.source}
 }
 
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
@@ -1919,7 +1922,11 @@ func (p *planner) seriesChainFor(base, name string) seriesChainAnswer {
 // asinRecorded reports whether asin ended up on a recording (newly attached,
 // merged, or already there). It is false when the region check rejected it, so
 // the caller does not claim an ASIN that is nowhere in the tree.
-func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (asinRecorded bool) {
+//
+// title is the row's work title, the one placement arbitrates a stated volume
+// against (rowPositionOf), so the serial guard reads the row's position as
+// placement does.
+func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (asinRecorded bool) {
 	// Defensive only: personSlug substitutes "person" for an unslugifiable name
 	// and admitRecordingFacts guarantees at least one narrator, so the slug is
 	// never empty. Checked before the year so the guard cannot produce "-2020".
@@ -1941,7 +1948,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	// of them before deciding to merge or to mint a distinct recording.
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
-	claims := rowSeriesClaims(b)
+	claims := rowSeriesClaims(b, title)
 	if len(matches) > 0 {
 		if asin == "" {
 			return false // nothing new to add (same production, no new ASIN)
@@ -2324,39 +2331,43 @@ func abridgedConflict(a, b *bool) bool {
 
 func boolOrFalse(p *bool) bool { return p != nil && *p }
 
-// posClaim is one series position a recording sits at, for the serial guard: a
-// disk membership carries the series slug it was read from, a row's claim the
-// series name it stated.
-type posClaim struct{ slug, name, seq string }
+// posClaim is one series position a recording sits at, for the serial guard. A
+// disk membership carries its series slug as key; a row's claim carries the
+// series name it stated and no key until keyClaims resolves it.
+type posClaim struct {
+	name, key string
+	pos       rowPosition
+}
 
-// key is the series a claim names: its slug when it carries one, else the
-// series its name resolves to. A row's claim is resolved when compared rather
-// than when its recording is made, because the row's own series may not exist
-// yet at that point (addRecording runs before addToSeries).
-func (c posClaim) key(p *planner) string {
-	if c.slug != "" {
-		return c.slug
+// keyOf is the series a claim names: its key when resolved, else the series its
+// name resolves to. A row's claim is resolved when compared rather than when its
+// recording is made, because the row's own series may not exist yet at that
+// point (addRecording runs before addToSeries).
+func (c posClaim) keyOf(p *planner) string {
+	if c.key != "" {
+		return c.key
 	}
 	return p.seriesKeyOf(c.name)
 }
 
-// rowSeriesClaims is a row's valid series claims, in the order it states them.
-func rowSeriesClaims(b sourceBook) []posClaim {
+// rowSeriesClaims is a row's valid series claims, in the order it states them,
+// each at the positions rowPositionOf reads against title.
+func rowSeriesClaims(b sourceBook, title string) []posClaim {
 	var out []posClaim
 	for _, r := range b.series {
 		if r.seqOK {
-			out = append(out, posClaim{name: r.name, seq: r.seq})
+			out = append(out, posClaim{name: r.name, pos: rowPositionOf(r, title)})
 		}
 	}
 	return out
 }
 
-// keyClaims resolves each claim's key onto its slug, so one row's keys are
-// computed once however many sibling recordings it is compared against.
+// keyClaims resolves each claim's key, so one row's keys are computed once
+// however many sibling recordings it is compared against.
 func (p *planner) keyClaims(claims []posClaim) []posClaim {
 	out := make([]posClaim, len(claims))
 	for i, c := range claims {
-		out[i] = posClaim{slug: c.key(p), name: c.name, seq: c.seq}
+		out[i] = posClaim{name: c.name, key: c.keyOf(p), pos: c.pos}
 	}
 	return out
 }
@@ -2384,11 +2395,11 @@ func (p *planner) seriesPosConflict(ri *recInfo, row []posClaim) (series, incumb
 	}
 	for _, r := range row {
 		for _, c := range ri.claims {
-			if c.key(p) != r.slug {
+			if c.keyOf(p) != r.key {
 				continue
 			}
-			if c.seq != r.seq {
-				return r.name, c.seq, r.seq, true
+			if !c.pos.agrees(r.pos) {
+				return r.name, c.pos.source, r.pos.source, true
 			}
 			break
 		}

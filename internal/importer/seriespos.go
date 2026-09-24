@@ -229,6 +229,32 @@ func statedVolumePosition(r seriesRef, title string) (string, bool) {
 	return pos, true
 }
 
+// rowPosition is where a row's claim on one series puts its volume: the position
+// its source stated, and the title's where statedVolumePosition arbitrates a
+// different one. placementPosition puts the work at the title's unless that slot
+// is taken or the work already sits in the series, so a recorded position
+// matching EITHER is this row's volume - which is what every reader comparing a
+// row's claim against a recorded position (seriesClaim, the recording-level
+// serial guard) must accept, or a re-release of a title-arbitrated volume reads
+// as a different one.
+type rowPosition struct{ source, title string }
+
+// rowPositionOf is r's positions, the title's read by the one arbitration rule.
+func rowPositionOf(r seriesRef, title string) rowPosition {
+	stated, _ := statedVolumePosition(r, title)
+	return rowPosition{source: r.seq, title: stated}
+}
+
+// names reports whether pos is one of the row's positions.
+func (rp rowPosition) names(pos string) bool {
+	return pos == rp.source || (rp.title != "" && pos == rp.title)
+}
+
+// agrees reports whether two rows' claims on one series share a position.
+func (rp rowPosition) agrees(o rowPosition) bool {
+	return rp.names(o.source) || (o.title != "" && rp.names(o.title))
+}
+
 // noteSeriesPositionFilled records one filled position for the run's aggregated
 // note.
 func (p *planner) noteSeriesPositionFilled(title, series, pos string) {
