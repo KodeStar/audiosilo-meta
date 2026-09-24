@@ -7,7 +7,7 @@ version: 2
 # still arrives on its own, because that is the one that needs reading.
 #
 # The docker entry is what keeps the Dockerfile's pinned base-image digests from
-# going stale: the tags there (node:24-alpine, golang:1.25-alpine, alpine:3.24)
+# going stale: the tags there (node:24-alpine, golang:1.26-alpine, alpine:3.24)
 # are pinned by digest for reproducibility, so nothing moves them but this.
 updates:
   - package-ecosystem: gomod
