@@ -210,7 +210,7 @@ function stripRoleQualifier(name: string): string {
 // HAND-MIRRORED TWIN of internal/importer/suffixpiece.go (isSuffixPiece,
 // mergeSuffixPieces, peelSuffixChunk) - the importer is the rule of record, and
 // this copy exists so the /import preview shows the person the importer will
-// record. SUFFIX_SPELLINGS is the importer's suffixPieceSpellings (the union of
+// record. The two sets in the block below are the importer's suffixPieceSpellings (the union of
 // its foldCredentials, generationalSuffixes and corporateLegalSuffix), lowercased
 // and single-spaced; TestSiteSuffixVocabularyMatches on the Go side reads this
 // list back and fails when the two drift, and both sides' tests pin the same
@@ -218,7 +218,8 @@ function stripRoleQualifier(name: string): string {
 // out ("Ed", "DC", "MA", "J.D.", "RN", "MS" - names or initials as readily as a
 // post-nominal), live in the Go file's header.
 // suffix-spellings:begin
-const SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
+// The post-nominals of a PERSON - the only ones peelSuffixChunk takes off a credit.
+const PERSON_SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
   // Doctorates.
   'phd', 'ph.d.', 'ph.d', 'ph. d.', 'phd.',
   'md', 'm.d.', 'm.d', 'm. d.', 'md.',
@@ -231,10 +232,17 @@ const SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
   'faap', 'facp', 'facr', 'fache', 'rdn', 'ibclc', 'ncc',
   // Generational - part of the name.
   'jr', 'jr.', 'sr', 'sr.', 'ii', 'iii', 'iv',
-  // Legal entity.
+])
+// Legal entity: rejoins its name, but is never peeled (it belongs to the whole
+// credit string, not to a person the cleaning might leave behind).
+const LEGAL_SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
   'llc', 'ltd', 'ltd.', 'inc', 'inc.', 'gmbh',
 ])
 // suffix-spellings:end
+const SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
+  ...PERSON_SUFFIX_SPELLINGS,
+  ...LEGAL_SUFFIX_SPELLINGS,
+])
 
 // One token in vocabulary form: lowercased, diacritics folded, and stripped of a
 // trailing list comma - the importer's credentialKey.
@@ -248,13 +256,16 @@ function suffixKey(word: string): string {
 
 // Whether a split list piece is nothing but suffixes - one ("MD", "Ph. D.") or
 // several stacked ("MD PhD"), read from the end one or two tokens at a time.
-export function isSuffixPiece(piece: string): boolean {
+export function isSuffixPiece(
+  piece: string,
+  vocab: ReadonlySet<string> = SUFFIX_SPELLINGS
+): boolean {
   const words = piece.trim().split(/\s+/).filter((w) => w !== '').map(suffixKey)
   if (words.length === 0) return false
   let n = words.length
   while (n > 0) {
-    if (SUFFIX_SPELLINGS.has(words[n - 1])) n -= 1
-    else if (n >= 2 && SUFFIX_SPELLINGS.has(`${words[n - 2]} ${words[n - 1]}`)) n -= 2
+    if (vocab.has(words[n - 1])) n -= 1
+    else if (n >= 2 && vocab.has(`${words[n - 2]} ${words[n - 1]}`)) n -= 2
     else return false
   }
   return true
@@ -276,13 +287,14 @@ export function mergeSuffixPieces(pieces: string[]): string[] {
 // Split one credit ending in ", <suffix>" chunks into the name before them and
 // the suffixes, space-joined, so the role-qualifier strip sees the credit's
 // real end and the suffix goes back on the NAME ("Jane Doe - translator, PhD"
-// -> "Jane Doe PhD").
+// -> "Jane Doe PhD"). Only a person's post-nominal is peeled; a legal-entity
+// chunk stays on the credit.
 function peelSuffixChunk(name: string): [string, string] {
   let head = name
   const parts: string[] = []
   for (;;) {
     const i = head.lastIndexOf(',')
-    if (i < 0 || !isSuffixPiece(head.slice(i + 1))) break
+    if (i < 0 || !isSuffixPiece(head.slice(i + 1), PERSON_SUFFIX_SPELLINGS)) break
     const rest = head.slice(0, i).trim()
     if (rest === '') break
     parts.unshift(head.slice(i + 1).trim())

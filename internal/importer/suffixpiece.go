@@ -91,17 +91,39 @@ var suffixPieceSpellings = func() map[string]bool {
 // suffixTail is credential.go's matcher over this file's vocabulary.
 var suffixTail = newTailVocab(suffixPieceSpellings)
 
+// peelTail is the matcher peelSuffixChunk reads: the post-nominals that describe
+// the PERSON (foldCredentials and generationalSuffixes) and never a legal-entity
+// suffix. "Inc." belongs to the whole credit string, and peeling it would put it
+// back on whatever the cleaning left: "Jane Doe - Punch Audio, LLC" loses its
+// studio half to the studio-tail rule and would come out "Jane Doe LLC", a
+// fork of Jane Doe. Left on, the credit is cleaned whole, exactly as a typed
+// credit carrying the comma always was.
+var peelTail = newTailVocab(func() map[string]bool {
+	out := map[string]bool{}
+	for _, m := range []map[string]bool{foldCredentials, generationalSuffixes} {
+		for k := range m {
+			out[k] = true
+		}
+	}
+	return out
+}())
+
 // isSuffixPiece reports whether one piece of a split credit list is nothing but
 // suffixes - one ("MD", "Ph. D.") or several stacked in one piece ("MD PhD"):
 // it strips listed spellings off the end until nothing is left, and fails at the
 // first trailing token that is not one, which for an ordinary name is its last.
-func isSuffixPiece(piece string) bool {
-	rest, ok := suffixTail.cut(piece)
+func isSuffixPiece(piece string) bool { return suffixTail.only(piece) }
+
+// only reports whether s is nothing but listed spellings: it strips them off
+// the end until nothing is left, and fails at the first trailing token that is
+// not one.
+func (v tailVocab) only(s string) bool {
+	rest, ok := v.cut(s)
 	for ok {
 		if strings.TrimSpace(rest) == "" {
 			return true
 		}
-		rest, ok = suffixTail.cut(rest)
+		rest, ok = v.cut(rest)
 	}
 	return false
 }
@@ -151,13 +173,15 @@ func hasRealCredit(names []string) bool {
 // role qualifier the source wrote in front of the post-nominal - a dash or a
 // bracket, both of which the qualifier rules read at the END of the credit - is
 // still read. It is the mechanism "X - editor Jr." already uses, one step
-// earlier. A credit with no such tail returns suffix "" and costs one byte scan.
+// earlier. Only a PERSON's post-nominal is peeled (peelTail): a legal-entity
+// chunk stays on the credit. A credit with no such tail returns suffix "" and
+// costs one byte scan.
 func peelSuffixChunk(name string) (head, suffix string) {
 	head = name
 	var parts []string
 	for {
 		i := strings.LastIndexByte(head, ',')
-		if i < 0 || !isSuffixPiece(head[i+1:]) {
+		if i < 0 || !peelTail.only(head[i+1:]) {
 			break
 		}
 		rest := strings.TrimSpace(head[:i])

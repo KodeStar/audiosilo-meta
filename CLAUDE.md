@@ -1475,8 +1475,11 @@ MD" minted a person "Md") REJOINS the name before it in a joined list
 (`SplitRawNames`, which internal/issueform's splitter calls too), is dropped when
 it opens the list, and is dropped from a libex typed list, whose order states
 nothing - but never when it is the side's only credit ("Ii" is a surname). The
-cleaning then peels the ", <suffix>" tail off, cleans the name (so "Jane Doe
-(translator), PhD" still states its role) and puts the suffix back on it. The
+cleaning then peels a PERSON's ", <suffix>" tail off (a credential or
+generational one - never "Inc.", which stays on the credit so a studio half the
+cleaning removes cannot leave it on the person), cleans the name (so "Jane Doe
+(translator), PhD" still states its role) and puts the suffix back on it unless
+the name slugs away to nothing (the suffix would become its identity). The
 vocabulary and its measurement are in `suffixpiece.go`, hand-mirrored for the
 /import preview in `site/src/lib/import-parse.ts` under a Go-side drift guard.
 Credit lists dedupe by slug and the

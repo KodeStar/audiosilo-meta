@@ -216,13 +216,20 @@ func TestLibexKeepsALoneSuffixShapedNarrator(t *testing.T) {
 // wrote in front of the post-nominal is still read, in either spelling.
 func TestCleanedCreditCarriesItsSuffixOnTheName(t *testing.T) {
 	for in, want := range map[string]credit{
-		"David Posen, MD":            {name: "David Posen MD"},
-		"Frank Lipman, MD, PhD":      {name: "Frank Lipman MD PhD"},
-		"Martin Luther King, Jr.":    {name: "Martin Luther King Jr."},
-		"Listen & Live Audio, Inc.":  {name: "Listen & Live Audio Inc."},
-		"Jane Doe (translator), PhD": {name: "Jane Doe PhD", roles: []string{"translator"}},
-		"Jane Doe [editor], Jr.":     {name: "Jane Doe Jr.", roles: []string{"editor"}},
-		"Jane Doe - translator, PhD": {name: "Jane Doe PhD", roles: []string{"translator"}},
+		"David Posen, MD":         {name: "David Posen MD"},
+		"Frank Lipman, MD, PhD":   {name: "Frank Lipman MD PhD"},
+		"Martin Luther King, Jr.": {name: "Martin Luther King Jr."},
+		// A legal-entity suffix is never peeled: the credit is cleaned whole,
+		// so a studio half the cleaning removes cannot hand its "LLC" to the
+		// person in front of it.
+		"Listen & Live Audio, Inc.":   {name: "Listen & Live Audio, Inc."},
+		"Jane Doe - Punch Audio, LLC": {name: "Jane Doe - Punch Audio, LLC"},
+		// A name that slugs away to nothing does not take the suffix as its
+		// identity.
+		"Иван Петров - translator, PhD": {name: "Иван Петров", roles: []string{"translator"}},
+		"Jane Doe (translator), PhD":    {name: "Jane Doe PhD", roles: []string{"translator"}},
+		"Jane Doe [editor], Jr.":        {name: "Jane Doe Jr.", roles: []string{"editor"}},
+		"Jane Doe - translator, PhD":    {name: "Jane Doe PhD", roles: []string{"translator"}},
 		// Not a suffix: the comma stays part of the name, as it always did.
 		"Alexandre Dumas, pere": {name: "Alexandre Dumas, pere"},
 	} {
@@ -248,7 +255,7 @@ func TestLicensureFoldsOntoTheBareTwin(t *testing.T) {
 		"Jane Doe, Esq.":   "Jane Doe",
 		"Jane Doe, Jr.":    "Jane Doe Jr.",
 		"Jane Doe III":     "Jane Doe III",
-		"Acme Audio, Inc.": "Acme Audio Inc.",
+		"Acme Audio, Inc.": "Acme Audio, Inc.",
 	} {
 		got := creditNamesOf(sourceCredits([]string{in}, "", census))
 		if len(got) != 1 || got[0] != want {
@@ -299,5 +306,20 @@ func TestSiteSuffixVocabularyMatches(t *testing.T) {
 		if !suffixPieceSpellings[s] {
 			t.Errorf("the site's SUFFIX_SPELLINGS holds %q, which suffixPieceSpellings does not", s)
 		}
+	}
+	// The legal-entity subset is the one the site must NOT peel, so it is
+	// pinned on its own: a spelling moved across the split on one side only
+	// would peel on one side and not the other.
+	const legal = "LEGAL_SUFFIX_SPELLINGS"
+	k := strings.Index(text[i:j], legal)
+	if k < 0 {
+		t.Fatalf("site/src/lib/import-parse.ts has no %s set inside the block", legal)
+	}
+	siteLegal := map[string]bool{}
+	for _, m := range regexp.MustCompile(`'([^']*)'`).FindAllStringSubmatch(text[i+k:j], -1) {
+		siteLegal[m[1]] = true
+	}
+	if !reflect.DeepEqual(siteLegal, corporateLegalSuffix) {
+		t.Errorf("the site's %s = %v, want corporateLegalSuffix %v", legal, siteLegal, corporateLegalSuffix)
 	}
 }

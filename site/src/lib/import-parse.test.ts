@@ -1227,4 +1227,16 @@ describe('credit suffix pieces (twin of internal/importer/suffixpiece.go)', () =
     expect(b.authors).toEqual(['David Posen MD', 'Jane Doe PhD'])
     expect(b.narrators).toEqual(['Anthony Rao Ph.D.'])
   })
+
+  it('never peels a legal-entity suffix off the credit', () => {
+    const [b] = parseExport(
+      JSON.stringify([
+        openAudibleEntry({
+          author: 'Listen & Live Audio, Inc., Jane Doe',
+          narrated_by: 'Anthony Rao',
+        }),
+      ])
+    ).books
+    expect(b.authors).toEqual(['Listen & Live Audio, Inc.', 'Jane Doe'])
+  })
 })

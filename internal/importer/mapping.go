@@ -960,10 +960,14 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stated = append(stated, bareRoles...)
 		stated = append(stated, tailRoles...)
 	}
-	if suffix != "" {
+	if suffix != "" && Slugify(cleaned) != "" {
 		// Back on the name, then through the credential fold the loop's pass
 		// could not give it: "Jane Doe" + "LCSW" meets the `jane-doe` the census
-		// holds, while "Jr." and "Inc." are no credential and stay.
+		// holds, while "Jr." is no credential and stays. A name that slugs away
+		// to nothing (Cyrillic, CJK) does NOT take it back: the suffix alone
+		// would become its identity - "Иван Петров PhD" slugs to `phd`, one
+		// record shared by every such credit, and escapes both the libex
+		// unidentifiable-credit refusal and workCredits' catch-all guard.
 		cleaned = reportedFold(cleaned+" "+suffix, c.sameSide, stripCredential, c.onCredential)
 	}
 	// The collective/placeholder fold is the LAST step, outside the loop and
