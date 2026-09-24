@@ -6,6 +6,7 @@ import (
 	"cmp"
 	"encoding/json"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"net/url"
@@ -96,7 +97,10 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 
 	// All toc entries that target each spine document, in toc order, each keeping
 	// its #fragment so a document holding several chapters can be split at them.
-	labels, tocDir := readTOC(files, pkg, opfDir)
+	labels, tocDir, err := readTOC(files, pkg, opfDir)
+	if err != nil {
+		return nil, err
+	}
 	perDoc := make([][]tocLabel, len(docs))
 	for _, lb := range labels {
 		if lb.Label == "" {
@@ -340,35 +344,37 @@ type tocLabel struct {
 // readTOC returns the toc labels and the directory the toc document lives in
 // (so label hrefs can be resolved). The EPUB 3 nav document is preferred; the
 // EPUB 2 NCX is the fallback. Returns nil labels when neither is present or
-// parseable - split then simply emits no labels.
-func readTOC(files map[string]*zip.File, pkg *opfPackage, opfDir string) ([]tocLabel, string) {
+// parseable - split then simply emits no labels. The one error is a toc member
+// over maxEntryBytes: that is a hostile archive, not a missing toc.
+func readTOC(files map[string]*zip.File, pkg *opfPackage, opfDir string) ([]tocLabel, string, error) {
 	// tryTOC resolves a toc item, reads it, and parses it; ok is false when the
 	// item is absent, unresolvable, unreadable, or yields no labels.
-	tryTOC := func(item *opfItem, parse func([]byte) []tocLabel) (labels []tocLabel, dir string, ok bool) {
+	tryTOC := func(item *opfItem, parse func([]byte) []tocLabel) (labels []tocLabel, dir string, ok bool, err error) {
 		if item == nil {
-			return nil, "", false
+			return nil, "", false, nil
 		}
 		zp, err := resolveHref(opfDir, item.Href)
 		if err != nil || files[zp] == nil {
-			return nil, "", false
+			return nil, "", false, nil
 		}
 		data, err := readZipFile(files[zp])
+		if errors.Is(err, errEntryTooLarge) {
+			return nil, "", false, fmt.Errorf("toc: %w", err)
+		}
 		if err != nil {
-			return nil, "", false
+			return nil, "", false, nil
 		}
 		if labels = parse(data); len(labels) == 0 {
-			return nil, "", false
+			return nil, "", false, nil
 		}
-		return labels, path.Dir(zp), true
+		return labels, path.Dir(zp), true, nil
 	}
 
-	if labels, dir, ok := tryTOC(findNavItem(pkg.Items), parseNav); ok {
-		return labels, dir
+	if labels, dir, ok, err := tryTOC(findNavItem(pkg.Items), parseNav); ok || err != nil {
+		return labels, dir, err
 	}
-	if labels, dir, ok := tryTOC(findNCXItem(pkg.Items, pkg.Spine.Toc), parseNCX); ok {
-		return labels, dir
-	}
-	return nil, ""
+	labels, dir, _, err := tryTOC(findNCXItem(pkg.Items, pkg.Spine.Toc), parseNCX)
+	return labels, dir, err
 }
 
 func findNavItem(items []opfItem) *opfItem {
@@ -659,11 +665,33 @@ func resolveHref(baseDir, href string) (string, error) {
 	return cleaned, nil
 }
 
+// maxEntryBytes caps the DECOMPRESSED size of any one archive member readZipFile
+// returns. A zip entry states its own size and a deflate stream can expand ~1000x,
+// so an unbounded read lets a crafted epub of a few megabytes exhaust memory. Only
+// text members are ever read (container.xml, the OPF, the toc, spine documents -
+// never images or fonts), and the largest legitimate one is a whole book in ONE
+// spine document: War and Peace is ~3.2MB of plain text and well under 10MB as
+// XHTML, so 64 MiB is several times the biggest real member while still bounding
+// the damage. A variable so a test can lower it rather than build a 64 MiB entry.
+var maxEntryBytes int64 = 64 << 20
+
+// errEntryTooLarge is what readZipFile wraps when a member passes maxEntryBytes,
+// so a caller that tolerates an unreadable member (the toc) can still refuse a
+// hostile one rather than quietly carrying on without it.
+var errEntryTooLarge = errors.New("epub entry exceeds the size limit")
+
 func readZipFile(f *zip.File) ([]byte, error) {
 	rc, err := f.Open()
 	if err != nil {
 		return nil, err
 	}
 	defer func() { _ = rc.Close() }()
-	return io.ReadAll(rc)
+	data, err := io.ReadAll(io.LimitReader(rc, maxEntryBytes+1))
+	if err != nil {
+		return nil, err
+	}
+	if int64(len(data)) > maxEntryBytes {
+		return nil, fmt.Errorf("%q decompresses past %d bytes: %w", f.Name, maxEntryBytes, errEntryTooLarge)
+	}
+	return data, nil
 }
