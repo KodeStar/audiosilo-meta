@@ -84,6 +84,26 @@ func allJunkTerms(tok string, junkA, junkB map[string]bool) bool {
 // side's rule is what makes the comparison symmetric with it - a query the
 // index matched on its words is compared on the same words, so "Spider-Man" and
 // "Spider Man", or "Halo:Primordium" and "Halo: Primordium", are one name.
+//
+// A POSSESSIVE is folded back into one word on both sides, for the same
+// symmetry: retrieval lets "enders game" match the row "Ender's Game" (see
+// isPossessive), so the equality has to agree that the two are one name, or
+// the exact-title boost would refuse the very title the query just found. A lone
+// `s` term is joined onto the term before it exactly when the joined word is one
+// isPossessive would have expanded, so the fold is the inverse of the
+// expansion and nothing else: "N.E.R.D.S." keeps its one-rune fragments, and
+// "James's" stays two words just as "jamess" is never expanded.
 func nameKey(s string) string {
-	return strings.Join(ftsTerms(strings.ToLower(s)), " ")
+	terms := ftsTerms(strings.ToLower(s))
+	folded := terms[:0]
+	for _, term := range terms {
+		if last := len(folded) - 1; term == "s" && last >= 0 {
+			if joined := folded[last] + term; isPossessive(joined) {
+				folded[last] = joined
+				continue
+			}
+		}
+		folded = append(folded, term)
+	}
+	return strings.Join(folded, " ")
 }

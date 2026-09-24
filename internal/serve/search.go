@@ -35,10 +35,11 @@ type seriesResult struct {
 
 // ftsQuery turns a raw user query into a safe FTS5 MATCH expression: every
 // whitespace token becomes one or more quoted phrases (see tokenPhrases) so no
-// input can ever be read as an operator, and the final phrase gets a trailing
-// '*' for prefix matching. A query holding no term at all - empty, whitespace,
-// or pure punctuation - yields a harmless empty-phrase match rather than a
-// syntax error.
+// input can ever be read as an operator - the only operators in the expression
+// are the OR and AND of a possessive group, which ftsMatch writes itself - and
+// the final phrase gets a trailing '*' for prefix matching. A query holding no
+// term at all - empty, whitespace, or pure punctuation - yields a harmless
+// empty-phrase match rather than a syntax error.
 func ftsQuery(q string) string { return ftsMatch(q, true) }
 
 // ftsPhrase is ftsQuery without the trailing prefix-star: the same phrases,
@@ -83,10 +84,21 @@ const (
 	// maxQueryPhrases bounds how many FTS5 phrases one query becomes: the next
 	// round number above the 46-term longest title measured above. It counts
 	// PHRASES, which is what the MATCH expression costs: a token whose terms are
-	// all single runes is one adjacent phrase (see tokenPhrases), and every other
-	// token contributes one phrase per term. It is the bound that actually
-	// prices a query - n phrases are n posting-list walks intersected - so the
-	// byte cap above is a second, coarser fence rather than the cost control.
+	// all single runes is one adjacent phrase (see tokenPhrases), every other
+	// token contributes one phrase per term, and a POSSESSIVE GROUP (see
+	// isPossessive) counts as the TWO phrases it holds. It is the bound that
+	// actually prices a query - n phrases are n posting-list walks intersected -
+	// so the byte cap above is a second, coarser fence rather than the cost
+	// control.
+	//
+	// Counting a group as two is what keeps the cap honest about the walks it
+	// adds (the alternative reads the `s` list, 25k rows), and it costs nothing
+	// the rule above protects: a possessive typed WITHOUT its apostrophe
+	// ("enders", one group) counts the same two phrases as the same name typed
+	// WITH it ("ender's"), and re-measured 2026-09-24 with groups counted
+	// this way the longest real name is 50 phrases (a 247-byte Spanish title),
+	// still under 64. A group that would cross the cap is rendered as its plain
+	// phrase rather than dropped, so an expansion can never cost a term.
 	maxQueryPhrases = 64
 )
 
@@ -111,32 +123,77 @@ func boundQuery(q string) string {
 // goes on the LAST phrase KEPT, which for an initialism is a multi-term phrase
 // (a phrase-final star is legal FTS5 and is what the whitespace-only predecessor
 // emitted for such a token anyway).
+//
+// When the last part is a possessive group the star goes on its LITERAL branch
+// only - `("enders"* OR "ender s")`. The literal is what is being typed and may
+// yet grow ("endersby"); the possessive reading is already complete, its `s` a
+// whole token, and starring it would ask for "ender" followed by ANY word
+// starting with s, which is neither reading.
+//
+// The parts are joined by whitespace - FTS5's implicit AND - unless the
+// expression holds a group, when they are joined by an explicit AND: FTS5
+// accepts the implicit form only between phrases and rejects it next to a
+// parenthesized group. The two spellings parse to the same AND node, so the
+// choice changes no result; keeping the implicit one where it suffices keeps
+// every query with no qualifying term byte-identical to what it always was.
 func ftsMatch(q string, prefixLast bool) string {
 	// Grown as needed rather than sized at the cap: almost every real query is a
 	// handful of phrases, and the cap is a ceiling on a hostile one, not an
-	// expectation. The cap is checked in ONE place, where a phrase is about to be
+	// expectation. The cap is checked in ONE place, where a part is about to be
 	// appended, and the label is what lets that single check stop both loops.
-	var parts []string
+	var parts []matchPart
+	phrases := 0
 tokens:
 	for _, tok := range strings.Fields(boundQuery(q)) {
-		for _, phrase := range tokenPhrases(tok) {
-			if len(parts) >= maxQueryPhrases {
+		for _, part := range tokenPhrases(tok) {
+			if phrases >= maxQueryPhrases {
 				break tokens
 			}
-			parts = append(parts, phrase)
+			if part.possessive != "" {
+				if phrases+2 <= maxQueryPhrases {
+					phrases++ // the group's second phrase
+				} else {
+					part.possessive = ""
+				}
+			}
+			phrases++
+			parts = append(parts, part)
 		}
 	}
 	if len(parts) == 0 {
 		return `""`
 	}
 	if prefixLast {
-		parts[len(parts)-1] += "*"
+		parts[len(parts)-1].phrase += "*"
 	}
-	return strings.Join(parts, " ")
+	rendered := make([]string, len(parts))
+	for i, part := range parts {
+		rendered[i] = part.render()
+	}
+	// Every kept group added one phrase beyond its part, so the count says
+	// whether the expression holds one.
+	sep := " "
+	if phrases > len(parts) {
+		sep = " AND "
+	}
+	return strings.Join(rendered, sep)
 }
 
-// tokenPhrases renders ONE whitespace token as FTS5 phrases, and is where the
-// punctuation rule lives.
+// matchPart is one element of a MATCH expression: a quoted phrase, plus - for a
+// term that may be a possessive typed without its apostrophe - the phrase that
+// reading asks for. A part with a possessive renders as the group
+// `("xs" OR "x s")`.
+type matchPart struct{ phrase, possessive string }
+
+func (p matchPart) render() string {
+	if p.possessive == "" {
+		return p.phrase
+	}
+	return "(" + p.phrase + " OR " + p.possessive + ")"
+}
+
+// tokenPhrases renders ONE whitespace token as the parts of a MATCH expression,
+// and is where the punctuation rule lives.
 //
 // WHY PUNCTUATION SPLITS. FTS5 tokenizes a quoted string with the same
 // unicode61 tokenizer that indexed the row, so several words inside one phrase
@@ -157,21 +214,65 @@ tokens:
 // off /abs/search's ten matches entirely, and 30-45% slower for the class (51
 // works and 21 series in the real tree). So the token stays ONE adjacent phrase,
 // exactly as before this rule existed, and only mixed tokens split - "Don't" ->
-// "Don" "t" is mixed and measured harmless.
-func tokenPhrases(tok string) []string {
+// "Don" "t" is mixed and measured harmless. An initialism is never expanded
+// into a possessive group either: its terms are single runes, which the
+// possessive rule never reads.
+//
+// WHY A WORD ENDING IN S MAY BE A POSSESSIVE. The same tokenizer split
+// "Ender's" into `ender` + `s` on the way into the index, so a query that drops
+// the apostrophe - the usual spelling of a filename, which is what
+// Audiobookshelf searches with - asked for a word no row holds: "enders game"
+// returned NOTHING for Ender's Game, and 15,294 work titles (5.5%) and 1,450
+// series names carry a possessive. Such a term becomes the group
+// `("enders" OR "ender s")`, so it matches either reading; which terms qualify
+// is isPossessive's.
+func tokenPhrases(tok string) []matchPart {
 	terms := ftsTerms(tok)
 	if len(terms) == 0 {
 		return nil
 	}
 	if isInitialism(terms) {
-		return []string{quotePhrase(terms...)}
+		return []matchPart{{phrase: quotePhrase(terms...)}}
 	}
-	out := make([]string, len(terms))
+	out := make([]matchPart, len(terms))
 	for i, term := range terms {
-		out[i] = quotePhrase(term)
+		out[i].phrase = quotePhrase(term)
+		if isPossessive(term) {
+			n := len(term) - 1
+			out[i].possessive = quotePhrase(term[:n], term[n:])
+		}
 	}
 	return out
 }
+
+// isPossessive reports whether term may be a possessive typed without its
+// apostrophe ("enders" for "Ender's"). It is the ONE statement of which terms qualify: tokenPhrases expands
+// exactly these into a group, and nameKey folds exactly these back together, so
+// the comparison the boosts make can never disagree with what retrieval
+// matched. Two bounds, both measured over the real tree (2026-09-24):
+//
+//   - LONGER THAN THREE RUNES. The three-rune words ending in s are dominated by
+//     articles and function words - das (2,377 title words), des (1,874), his,
+//     los, les, las, was - whose "possessive" reading is pure cost: another walk
+//     of the `s` list for nothing. The one real casualty is "its" for "It's"
+//     (302 titles), a contraction rather than a possessive.
+//   - NOT A DOUBLED S. Of 15,405 possessive work titles only 93 put the
+//     apostrophe after a word that itself ends in s ("James's"), and those stay
+//     findable by the word alone ("james" is a token of the row); nobody types
+//     "jamess". Meanwhile 8.5% of the 4+-rune title words ending in s end in ss
+//     (darkness 832, business 618, princess 581, kiss, glass, ...), and each of
+//     those would pay the extra walk to match nothing.
+//
+// The final s is ASCII, so cutting it off one byte from the end (tokenPhrases)
+// lands on a rune boundary.
+func isPossessive(term string) bool {
+	n := len(term)
+	return utf8.RuneCountInString(term) > 3 && isS(term[n-1]) && !isS(term[n-2])
+}
+
+// isS reports whether b is the letter s in either case (FTS5 folds case, so the
+// query's case is not identity).
+func isS(b byte) bool { return b == 's' || b == 'S' }
 
 // isInitialism reports whether a token's terms are the fragments of one word
 // rather than several words: more than one, every one a single rune.

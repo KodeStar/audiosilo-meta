@@ -789,6 +789,37 @@ subtitle is 252 bytes / 44 terms, the longest person name 161 / 26, the longest
 series name 160 / 21, and the most terms in any one of them 46. Both bounds
 TRUNCATE rather than reject (a 400 mid-typing is the worse answer), the leading
 phrases are what survive, and the prefix star still goes on the last phrase KEPT.
+**A word ending in s may be a POSSESSIVE with its apostrophe dropped**: unicode61
+indexed "Ender's" as `ender` + `s`, so "enders game" - the spelling of a filename,
+which is what `/abs/search` receives - returned ZERO rows for Ender's Game, and
+15,294 work titles (5.5%) and 1,450 series names carry a possessive. A
+qualifying term (`isPossessive`, the one statement of the rule) becomes the
+group `("enders" OR "ender s")`, and an expression holding a group joins every
+part with an explicit `AND` (FTS5 refuses the implicit AND beside a
+parenthesized group; the two spellings parse to one AND node, so a query with no
+qualifying term keeps its old expression byte for byte). Measured bounds: MORE
+THAN THREE RUNES (the three-rune s-words are articles and function words -
+das 2,377 title words, des 1,874, his, los, les, was - so "its" for "It's" is the
+one casualty, a contraction), and NOT A DOUBLED S (only 93 of 15,405 possessive
+titles follow a word ending in s, and "james" already finds "James's", while 8.5%
+of the 4+-rune s-words - darkness, business, princess - would pay the walk to
+match nothing). A GROUP COUNTS AS TWO phrases against the 64 - the walks it adds
+include the `s` list (25k rows) - which counts "enders" as the same two phrases as "ender's",
+keeps every real name under the cap (the longest re-measures at 50 phrases), and a
+group that would cross the cap degrades to its plain phrase rather than costing a
+term. The prefix star goes on the LITERAL branch only (`("enders"* OR "ender
+s")`): the literal is still being typed, the possessive reading is complete.
+`nameKey` folds the other way - a lone `s` joins the term before it exactly when
+`isPossessive` accepts the joined word - so the exact-title boost and
+`preferWholeName` accept the title the expansion just matched ("enders game" IS
+"Ender's Game"), and an initialism's fragments never fold. Measured over the 279k
+artifact: every regression query went from an empty page to the target first
+(ABS: rank 1-2 of Philosopher's Stone's recordings), a query typed without the
+apostrophe costs no more than the same query typed with it (Philosopher's Stone
+12.2ms against 13.1ms), common plurals moved +0-2.5ms ("games" 3.7 -> 6.2ms,
+"the chronicles" 25.5 -> 27.6ms), a non-qualifying query is byte-identical on
+every surface, and the adversarial ceiling - 31 common s-words, 32 groups - is
+5 -> 34ms, well under the one-letter keystrokes ("s" ~425ms either way).
 A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
 02", "jack reacher book 2"/"band 2") additionally resolves that volume and
 returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is

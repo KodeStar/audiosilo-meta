@@ -381,7 +381,10 @@ func TestProbeMatchDropsStopwords(t *testing.T) {
 		"N.E.R.D.S.":      `"N E R D S"`,
 		"the N.E.R.D.S.":  `"N E R D S"`,
 		"Q&A":             `"Q A"`,
-		"3 a.m. in Vegas": `"3" "a m" "Vegas"`,
+		"3 a.m. in Vegas": `"3" AND "a m" AND ("Vegas" OR "Vega s")`,
+		// A possessive typed without its apostrophe probes both readings, so a
+		// series named "Ender's Game" resolves from "enders game".
+		"enders game": `("enders" OR "ender s") AND "game"`,
 		// Every term is a stopword: the fallback keeps the residual whole rather
 		// than composing an empty MATCH.
 		"the of": `"the" "of"`,
