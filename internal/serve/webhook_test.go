@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 )
@@ -188,6 +189,48 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 	}
 	if got := srv.current().stats.Works; got != 5 {
 		t.Fatalf("works = %d, want 5 after webhook refresh", got)
+	}
+}
+
+// TestWebhookAnswersBeforeTheRefresh pins the hand-off the listener's
+// writeTimeout is sized on: the refresh a delivery triggers downloads and
+// decompresses an artifact of well over a gigabyte, so it must run AFTER the 202
+// rather than inside the request. The test holds the refresh lock, so a handler
+// that refreshed synchronously would never answer.
+func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
+	v1Path, _, _, v2 := buildV1V2(t)
+	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	srv := newWebhookServer(t, v1Path, fake)
+	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
+
+	srv.mu.Lock()
+	// Released on every exit, so a failure below does not leave the refresh
+	// goroutine blocked on the lock for the rest of the test binary.
+	var unlockOnce sync.Once
+	unlock := func() { unlockOnce.Do(srv.mu.Unlock) }
+	defer unlock()
+	answered := make(chan int, 1)
+	go func() {
+		rec := httptest.NewRecorder()
+		srv.Handler().ServeHTTP(rec, webhookRequest(body, signWebhook(body, testWebhookSecret), "release"))
+		answered <- rec.Code
+	}()
+	select {
+	case code := <-answered:
+		if code != http.StatusAccepted {
+			t.Errorf("status = %d, want 202", code)
+		}
+	case <-time.After(10 * time.Second):
+		t.Fatal("the webhook did not answer while the refresh was blocked: it refreshes inside the request")
+	}
+	unlock()
+
+	deadline := time.Now().Add(10 * time.Second)
+	for srv.current().tag != tagR2 {
+		if time.Now().After(deadline) {
+			t.Fatalf("the background refresh did not land %q", tagR2)
+		}
+		time.Sleep(10 * time.Millisecond)
 	}
 }
 

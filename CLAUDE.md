@@ -758,6 +758,40 @@ fallback for missed notifications. The workflow reads
 either is absent, the data release still succeeds and polling
 catches it later - and so it does on a failed delivery, which is a `::warning::`
 naming the status rather than a red release.
+**The listener carries all four deadlines** (`httpServer` in serve.go, named
+constants pinned by `TestServerDeadlines`): `ReadHeaderTimeout` 10s,
+`ReadTimeout` 30s (every route is a bodyless GET except the webhook, capped at
+1 MiB), `WriteTimeout` 2m and `IdleTimeout` 3m. Each bounds how long a CLIENT can
+hold a connection, never how long the server may work, because nothing
+artifact-sized runs inside a request: the webhook answers 202 and refreshes on a
+goroutine of its own (`TestWebhookAnswersBeforeTheRefresh` holds the refresh lock
+and requires the answer anyway). `WriteTimeout` runs from the request headers to
+the last byte, and was sized on the 278,607-work artifact: the slowest handler
+cold was ~3.4s (a 200-series watch feed, `/abs/search` on a stopword), the
+largest body a 50,000-URL sitemap shard (6.2 MB identity, 0.5 MB gzip), the
+largest static asset ~360 KB - so 2m carries that shard to a ~4.5 KB/s gzip
+client. `ReadTimeout` does not cancel `r.Context()` mid-handler (net/http clears
+the read deadline before its background read). `IdleTimeout` must stay LONGER
+than the fronting proxy's idle timeout (production is nginx, upstream keepalive
+60s by default), since an upstream closing an idle connection as the proxy
+reuses it is a 502. **Security headers**:
+`nosniffMW` wraps the whole mux, so `X-Content-Type-Options: nosniff` is on every
+response (the mux's own 404 included); `Referrer-Policy:
+strict-origin-when-cross-origin` and `Content-Security-Policy: frame-ancestors
+'none'` go on HTML DOCUMENTS only (`setDocumentHeaders`). Which responses those
+are is decided BEFORE the handler writes, by route and file rather than off the
+response's Content-Type, because a 304 carries no Content-Type and is exactly the
+response that updates a cached page's headers: every page route wears
+`documentMW` (`Server.html` - the page, the shell, the site 404, the HTML 301s
+and the 304s all answer for a document), and the static handler asks
+`isHTMLFile`, the same extension-to-MIME lookup `http.FileServer` types the file
+by. The sitemaps wear `Server.compressed` - gzip alone, the fourth named stack
+beside `public`/`api`/`html` (no CORS, no document headers). Nothing in the
+workspace frames a meta.audiosilo.app page and the Astro build sets none of
+these through `<meta>`; the CSP is frame-ancestors ONLY, since a script policy
+would have to track every inline script the build emits. `TestSecurityHeaders`
+crosses every surface (JSON, ABS, API 301/304/404, sitemaps, entity
+200/301/304/404, legacy 301, static page/asset/304/404).
 FTS queries are built defensively through one pair, `ftsMatch`/`tokenPhrases`
 (over the shared `ftsTerms` rule), that every search surface and both boosts
 reach: **punctuation is a word boundary** - a term is a maximal run of letters,
