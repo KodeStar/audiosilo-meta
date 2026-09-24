@@ -25,13 +25,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Refuse a tag that is not on main
+        # `v*` matches any tag on any commit, and this workflow publishes to
+        # GHCR under names people deploy from - so a tag pushed onto a branch, a
+        # revert or an unreviewed commit would ship as a released image. Shared
+        # with release.yml's dispatch guard; the mechanism is in the script's
+        # header.
+        run: bash .github/scripts/require-on-main.sh "Tag a commit that has been merged to main."
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -39,19 +47,29 @@ jobs:
 
       - name: Compute tags
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
         with:
           images: ghcr.io/kodestar/audiosilo-meta
+          # `latest` is what an unpinned deployment pulls, so a PRERELEASE must
+          # never move it: v1.2.3-rc1 publishes under its own tag and nothing
+          # else. A hyphen in the ref name is the semver prerelease marker, and
+          # it is the whole test - this repo cuts no `v1.2.3-something` tag that
+          # is meant to be the current release.
           tags: |
             type=ref,event=tag
-            type=raw,value=latest
+            type=raw,value=latest,enable=${{ !contains(github.ref_name, '-') }}
 
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          # Supply-chain attestations, so a published image can say what it was
+          # built from and what is in it. The Dockerfile pins every base image by
+          # digest; these record the result.
+          provenance: true
+          sbom: true
           cache-from: type=gha
           cache-to: type=gha,mode=max

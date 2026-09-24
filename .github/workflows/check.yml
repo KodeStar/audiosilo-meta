@@ -29,25 +29,72 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # WHICH JOBS THE DIFF CAN MOVE, decided once for all of them.
+  #
+  # Most pull requests here are the intake and sync bots', and a tranche of pack
+  # files cannot change what `go vet` or the race detector say - so the Go gate
+  # (build/vet/test/lint/vuln) is skipped for a diff that is only data and prose,
+  # and the compose job keeps the narrower probe it always had. metacheck and
+  # metafmt are NOT gated: they are the data's own check.
+  #
+  # The rules, the fail-open and why this is an output rather than a `paths:`
+  # filter are all in .github/scripts/pr-changes.sh. The checkout is blobless and
+  # sparse because the script is the only file this job needs and the data tree
+  # is gigabytes.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.classify.outputs.go }}
+      compose: ${{ steps.classify.outputs.compose }}
+    steps:
+      - name: Checkout the scripts
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+
+      - name: Classify the diff
+        id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: bash .github/scripts/pr-changes.sh
+
   check:
     runs-on: ubuntu-latest
+    needs: changes
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
 
+      # Go steps only: a data-and-prose diff skips them (see the changes job).
+      # Set up Go above is unconditional - metacheck and metafmt are `go run`.
       - name: Build
+        if: needs.changes.outputs.go == 'true'
         run: go build ./...
 
       - name: Vet
+        if: needs.changes.outputs.go == 'true'
         run: go vet ./...
 
       - name: Test
-        run: go test ./...
+        if: needs.changes.outputs.go == 'true'
+        # -race, as the documented gate is. pkg/check's real-data test skips
+        # under the detector (race_{on,off}_test.go) - the fixture suites cover
+        # the parallel loader and the real tree is data coverage, validated by
+        # metacheck below - so the suite stays inside a few minutes.
+        run: go test -race ./...
 
       # --profile core is what this repository's data root now IS: works, people,
       # series and redirects.json, with the CC BY-SA layer living in
@@ -62,6 +109,73 @@ jobs:
 
       - name: Check canonical formatting (metafmt)
         run: go run ./cmd/metafmt --check --profile core
+
+  # The other half of the documented gate (CLAUDE.md): `golangci-lint run`.
+  # It was documented and run by hand but never by CI, so the green baseline the
+  # guide promises rested on somebody remembering. Its own job because linting
+  # and testing are independent and parallel jobs finish sooner. The linter
+  # version is pinned rather than `latest`: a new release adds checks, and a
+  # baseline that goes red on a day nobody changed Go code is a broken gate.
+  lint:
+    runs-on: ubuntu-latest
+    needs: changes
+    # Every step is gated, so a data-and-prose diff reports this job green
+    # without checking anything out - the required check still reports.
+    steps:
+      - name: Checkout
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        with:
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
+
+      - name: golangci-lint
+        if: needs.changes.outputs.go == 'true'
+        uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
+        with:
+          version: v2.12
+
+  # Known-vulnerability scan over the module and the toolchain it builds with.
+  #
+  # STRICT on purpose - a reachable advisory is a red check, not a note.
+  vuln:
+    runs-on: ubuntu-latest
+    needs: changes
+    steps:
+      - name: Checkout
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        with:
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
+
+      - name: govulncheck
+        if: needs.changes.outputs.go == 'true'
+        # golang/govulncheck-action installs golang.org/x/vuln/cmd/govulncheck@latest,
+        # and that command now requires Go >= 1.26 (x/vuln v1.8.0 declares
+        # `go 1.26`) while this repo builds on 1.25 - so the tool is run
+        # directly here instead of through the action, pinned to v1.7.0 (the
+        # newest release that still declares `go 1.25.0`). Dependabot's gomod
+        # ecosystem does not see a version inside a `go run` argument, so
+        # bumping this pin - together with the Go minor above - is a human's
+        # job, done when go.mod's directive moves.
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...
 
   # The CROSS-TREE half of validation, which no single-root check can perform.
   #
@@ -88,48 +202,39 @@ jobs:
   # too would build every data merge twice for no extra signal. And within a PR
   # it SELF-SKIPS (the site job's required-check-compatible pattern) unless the
   # diff touches something that can change the compose's answer: the same path
-  # set release.yml releases on, plus this workflow itself.
+  # set release.yml releases on, plus this workflow itself. That question is the
+  # changes job's `compose` output now, decided from the same listing the Go
+  # gate's is - and, unlike the inline probe it replaces, failing OPEN.
   compose:
     runs-on: ubuntu-latest
+    needs: changes
     if: github.event_name == 'pull_request'
     steps:
-      # The relevance probe reads the PR's file list from the API rather than
-      # diffing a local clone - a history-deep checkout here costs more than the
-      # compose the probe exists to skip.
-      - name: Check whether the diff can move the compose
-        id: relevant
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR: ${{ github.event.pull_request.number }}
-        run: |
-          if gh api "repos/${{ github.repository }}/pulls/$PR/files" --paginate --jq '.[].filename' \
-             | grep -qE '^(data/|schema/|internal/build/|cmd/metabuild/|pkg/check/|pkg/pack/|\.github/workflows/check\.yml)'; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "no compose-relevant paths in the diff; skipping."
-          fi
-
       - name: Checkout
-        if: steps.relevant.outputs.run == 'true'
-        uses: actions/checkout@v4
+        if: needs.changes.outputs.compose == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Checkout the community layer
-        if: steps.relevant.outputs.run == 'true'
-        uses: actions/checkout@v4
+        if: needs.changes.outputs.compose == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           repository: KodeStar/audiosilo-meta-community
           ref: main
           path: community
 
       - name: Set up Go
-        if: steps.relevant.outputs.run == 'true'
-        uses: actions/setup-go@v5
+        if: needs.changes.outputs.compose == 'true'
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
 
       - name: Compose both trees (metabuild --community)
-        if: steps.relevant.outputs.run == 'true'
+        if: needs.changes.outputs.compose == 'true'
         # Building rather than only checking is deliberate: the compose rules run
         # inside the loader metabuild drives (check.LoadComposed), so this IS the
         # check, and going all the way to an artifact additionally exercises the
@@ -145,7 +250,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Check for site/
         id: site
@@ -159,7 +264,7 @@ jobs:
 
       - name: Set up Node
         if: steps.site.outputs.exists == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 24
 

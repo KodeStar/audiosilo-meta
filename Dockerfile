@@ -23,11 +23,16 @@
 # degraded, logs the reason, serves the static site, answers /healthz with
 # `{"status":"starting"}` + 503 and every API route with 503, and retries -
 # first after 30s, then backing off to the poll interval - until a release
-# loads. A health check therefore reports the container unready - accurately -
-# instead of the container flapping.
+# loads. A READINESS probe therefore reports the container unready - accurately
+# - instead of the container flapping; see the note above the ENTRYPOINT for why
+# the image ships no HEALTHCHECK of its own.
 
 # ---- 1. site -----------------------------------------------------------------
-FROM node:24-alpine AS site
+# Base images are pinned by DIGEST with the tag kept for readability: a tag is a
+# moving pointer, so an unpinned build is not reproducible and a compromised or
+# simply retagged upstream lands silently. .github/dependabot.yml owns keeping
+# these current - do not hand-edit a digest without the tag it belongs to.
+FROM node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS site
 WORKDIR /site
 # Enable Corepack so the repo's pinned yarn is used.
 RUN corepack enable
@@ -48,7 +53,7 @@ RUN yarn build
 # Astro emits the static site to dist/.
 
 # ---- 2. build ----------------------------------------------------------------
-FROM golang:1.25-alpine AS build
+FROM golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 AS build
 WORKDIR /src
 ENV CGO_ENABLED=0
 # Pure-Go deps (modernc sqlite) so no C toolchain is needed.
@@ -59,7 +64,7 @@ RUN go build -trimpath -ldflags="-s -w" -o /out/metaserve ./cmd/metaserve
 
 # ---- 3. runtime --------------------------------------------------------------
 # Track the current stable Alpine (3.20 went EOL in April 2026).
-FROM alpine:3.24 AS runtime
+FROM alpine:3.24@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6 AS runtime
 RUN apk add --no-cache ca-certificates \
     && addgroup -S app && adduser -S -G app app \
     && mkdir -p /app /data/cache && chown -R app:app /data
@@ -75,4 +80,12 @@ EXPOSE 8080
 # NOT shorten startup. What it buys is the patch base for the refreshes that
 # follow, so later updates transfer a delta instead of the whole artifact.
 VOLUME ["/data"]
+
+# DELIBERATELY NO HEALTHCHECK. /healthz is a READINESS probe - it answers 503
+# while the server waits out a GitHub outage, which is a healthy process with no
+# data yet - and a Docker healthcheck's "unhealthy" is exactly what autoheal,
+# Swarm and compose supervisors RESTART on, turning that patient wait into the
+# crash loop the degraded boot exists to avoid. The orchestrator wires /healthz
+# as readiness/startup itself; see audiosilo-docs docs-developers/meta/api.md.
+
 ENTRYPOINT ["/app/metaserve", "--site", "/app/site", "--poll", "--cache", "/data/cache"]

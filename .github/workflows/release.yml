@@ -76,7 +76,7 @@ jobs:
         # intake bot stamp it; the storage migration backfilled the rest from
         # history one final time), so this workflow no longer walks the log to
         # date anything - a pack file's add-date is not its entries' add-dates.
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Checkout the community layer
         # The CC BY-SA half of the database, cloned beside the core tree. Public,
@@ -84,11 +84,19 @@ jobs:
         # same reason the core checkout is (git history is not load-bearing -
         # every record carries its own added_at). Pinned to main: a release is
         # always composed from the two mains, whichever side triggered it.
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           repository: KodeStar/audiosilo-meta-community
           ref: main
           path: community
+
+      - name: Refuse a manual run off main
+        if: github.event_name == 'workflow_dispatch'
+        # A data release is cut from main by definition - every consumer selects
+        # the newest one by asset presence, so a release published from a branch
+        # becomes THE catalogue for everybody the moment it lands. Shared with
+        # image.yml's tag guard; the mechanism is in the script's header.
+        run: bash .github/scripts/require-on-main.sh "A data release must be composed from main - re-run this workflow with the main ref, or merge the branch first."
 
       - name: Identify this build
         id: build
@@ -111,14 +119,26 @@ jobs:
         # whatever tag it was built from. Older `data-vYYYY.MM.DD-<sha>` releases
         # stay valid and selectable exactly as they are.
         #
-        # If that exact tag already exists, the two trees are byte-for-byte the
-        # ones the existing release was composed from - there is genuinely nothing
-        # new - so the run SKIPS rather than failing: every step below is guarded
-        # on `skip`. A re-dispatch, a re-run and a workflow_dispatch on an
+        # If that exact tag already exists as a PUBLISHED release, the two trees
+        # are byte-for-byte the ones it was composed from - there is genuinely
+        # nothing new - so the run SKIPS rather than failing: every step below is
+        # guarded on `skip`. A re-dispatch, a re-run and a workflow_dispatch on an
         # unchanged pair are all no-ops that skip the compose (both checkouts
         # still run - the identity needs them - so the saved cost is the build,
         # not the clone) instead of a full
         # compose.
+        #
+        # A DRAFT under that tag is the OPPOSITE answer. A release is created as a
+        # draft and published only once every asset has been verified (see the
+        # create step), so a leftover draft is a previous run that died in
+        # between: it is deleted and this run composes again. Skipping on one
+        # would leave a half-made release nobody can see and that no later run
+        # would ever replace, since the tag is a function of the two SHAs.
+        #
+        # The probe therefore reads the release LISTING rather than the by-tag
+        # endpoint: a draft carries no git tag (GitHub creates the tag when the
+        # draft is published), so `releases/tags/<tag>` 404s on one, while the
+        # listing does include drafts for a token with contents:write.
         #
         # Each rev-parse is ASSIGNED before it is echoed. Inlined as
         # `echo "x=$(git ...)"`, the command substitution's failure is discarded -
@@ -131,10 +151,34 @@ jobs:
           community="$(git -C community rev-parse HEAD)"
           tag="data-v$(date -u +'%Y.%m.%d')-${core:0:7}-${community:0:7}"
           skip=false
-          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
-            skip=true
-            echo "::notice::${tag} already exists - core is at ${core} and the community layer at ${community}, the same pair that release was composed from. Nothing to build; skipping."
-          fi
+          # One page is enough and a failure is NOT tolerated: the listing is
+          # newest-first, a leftover draft is at most one run old, and a page
+          # holds weeks of this repository's releases - while reading a failed
+          # API call as "no such release" would upload a SECOND draft under the
+          # same tag, which is the one state nothing downstream can untangle.
+          state="$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            | jq -r --arg t "$tag" '[.[] | select(.tag_name == $t)] as $m
+                | if ($m | length) == 0 then "none"
+                  elif ($m | any(.draft | not)) then "published"
+                  else "draft" end')"
+          case "$state" in
+            published)
+              skip=true
+              echo "::notice::${tag} already exists - core is at ${core} and the community layer at ${community}, the same pair that release was composed from. Nothing to build; skipping."
+              ;;
+            draft)
+              echo "::notice::${tag} exists as a DRAFT - a previous run created it and never got as far as publishing it. Deleting it and composing again."
+              # Two calls rather than one `--cleanup-tag`: the tag usually does
+              # NOT exist (it is created at publish time), so the combined form
+              # would fail on the tag after having deleted the release, and a
+              # `|| true` around the pair would swallow a failed release delete
+              # too. So the release delete is strict and the tag delete - which
+              # matters only for a draft that somehow does have one - is
+              # best-effort.
+              gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --yes
+              gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/tags/${tag}" --silent 2> /dev/null || true
+              ;;
+          esac
           {
             echo "core=$core"
             echo "community=$community"
@@ -144,9 +188,14 @@ jobs:
 
       - name: Set up Go
         if: steps.build.outputs.skip != 'true'
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
-          go-version-file: go.mod
+          # go.mod's `go 1.25.0` is an exact patch, and `go mod tidy` will not
+          # keep a bare minor there, so the minor is repeated here - bump it
+          # with go.mod's directive.
+          go-version: "1.25"
+          # go.mod's version is a FLOOR, not the toolchain (CLAUDE.md, "Build / test / gate").
+          check-latest: true
 
       - name: Validate data (metacheck)
         if: steps.build.outputs.skip != 'true'
@@ -180,7 +229,10 @@ jobs:
         # non-prerelease release carrying a meta.sqlite.gz asset with the MAXIMUM
         # published_at - by publish time, NOT list position, mirroring
         # latestDataRelease in internal/serve/github.go (its doc comment has the
-        # full rationale: the list order is not publish-chronological). If it
+        # full rationale: the list order is not publish-chronological). The
+        # non-draft half of that filter earns its keep now that releases are
+        # drafted before they are published: a draft is never a patch base, so a
+        # leftover one cannot become the chain's next link. If it
         # downloads AND gunzips cleanly, export its tag so the compress step
         # generates a binary delta from prev.sqlite.
         # The gunzip stays inside the guard: a corrupt previous asset must skip
@@ -190,6 +242,11 @@ jobs:
         # Placed after metacheck/metabuild so a failing build never wastes the
         # download.
         run: |
+          # -e is on by default (`bash -e {0}`); -u and pipefail are not. The
+          # tolerance for a missing or corrupt previous release is DELIBERATE and
+          # survives it: the `|| true` catches the API lookup, and the download
+          # and gunzip sit in an `if` condition, which errexit never fires on.
+          set -euo pipefail
           prev_tag="$(gh api 'repos/${{ github.repository }}/releases?per_page=15' \
             --jq '([.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))] | max_by(.published_at) | .tag_name) // empty' \
             2>/dev/null || true)"
@@ -214,6 +271,10 @@ jobs:
         # failure logs a warning and the release ships without it - the gz
         # anchor is never held hostage by patch generation.
         run: |
+          # PREV_TAG is always defined (an empty step output is an empty string,
+          # not an unset variable), and the best-effort zstd keeps its own `||`
+          # recovery, so -u and pipefail change nothing about the tolerances here.
+          set -euo pipefail
           gzip -kf meta.sqlite
           sha256sum meta.sqlite.gz > meta.sqlite.gz.sha256
           sha256sum meta.sqlite > meta.sqlite.sha256
@@ -224,7 +285,7 @@ jobs:
             || { echo "warning: patch generation failed; releasing without a delta"; rm -f "meta.sqlite.patch.from-${PREV_TAG}.zst"; }
           fi
 
-      - name: Create release and upload artifacts
+      - name: Create the release as a draft and upload artifacts
         if: steps.build.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -237,7 +298,24 @@ jobs:
         # PREV_TAG - a failed best-effort zstd run leaves no file behind).
         # The notes name BOTH composed SHAs: the artifact is built from two
         # repositories, so one sha does not identify it.
+        #
+        # DRAFT FIRST. The release is created invisible and published two steps
+        # down, once every asset has been verified, because publishing on
+        # creation raced the uploads twice over: a consumer selecting the newest
+        # non-draft release carrying meta.sqlite.gz (metaserve's
+        # latestDataRelease, this workflow's own prev lookup, every CLI consumer)
+        # could pick this release while its checksum files were still going up,
+        # and a verification that then failed left a broken release visible with
+        # nothing but a manual deletion to withdraw it. A draft is invisible to
+        # all of them, so neither race exists: the release becomes selectable
+        # already complete and already checked.
+        #
+        # --target is the composed core sha. The tag does not exist yet (GitHub
+        # creates it when the draft is published), and without a target it would
+        # be cut at whatever main's HEAD is by then rather than at the tree this
+        # artifact was actually built from.
         run: |
+          set -euo pipefail
           assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
           if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
             assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
@@ -245,45 +323,157 @@ jobs:
           notes="$(printf 'Automated data release composed from:\n\n- core: KodeStar/audiosilo-meta@%s\n- community: KodeStar/audiosilo-meta-community@%s\n' \
             "$CORE_SHA" "$COMMUNITY_SHA")"
           gh release create "$TAG" \
+            --draft \
+            --target "$CORE_SHA" \
             --title "$TAG" \
             --notes "$notes" \
             "${assets[@]}"
+
+      - name: Verify the draft's assets
+        id: verify
+        if: steps.build.outputs.skip != 'true'
+        env:
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.build.outputs.tag }}
+        # The assets ARE the consumer contract - metaserve, the CLI consumers and
+        # the patch chain all select a release by asset presence and then trust
+        # the checksums beside it - so an upload that silently truncated or
+        # dropped a file is a broken catalogue for everyone, not a broken run.
+        # This is why it runs against the DRAFT: nothing can have selected it
+        # yet, so a failure here is withdrawn (the step below deletes it) rather
+        # than served.
+        #
+        # The two checksum FILES are downloaded and compared byte-for-byte: they
+        # are 80 bytes each and they are what a consumer verifies against, so
+        # they are read back exactly as a consumer reads them. `gh release
+        # download` resolves a draft by tag - its by-tag REST lookup falls back
+        # to a draft search - which is what makes that possible before the
+        # release is public. EVERY asset (including the 410MB gz and the delta)
+        # is then verified through the release API's own `size` and `digest`
+        # fields - GitHub's SHA-256 of the bytes it stored, computed on its side,
+        # not something we hand it - so a truncated or dropped upload is caught
+        # without pulling half a gigabyte back down the wire to hash locally. A
+        # null digest is a FAILURE, not a pass: an API that stopped exposing the
+        # field has stopped verifying anything, and silence there is the whole
+        # class of bug this step exists for.
+        run: |
+          set -euo pipefail
+          mkdir -p published
+          gh release download "$TAG" --dir published --clobber \
+            --pattern meta.sqlite.gz.sha256 \
+            --pattern meta.sqlite.sha256
+          cmp meta.sqlite.gz.sha256 published/meta.sqlite.gz.sha256
+          cmp meta.sqlite.sha256 published/meta.sqlite.sha256
+
+          # The same asset list the upload step composed, by the same test.
+          assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
+          if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
+            assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
+          fi
+
+          # Read from the release LISTING, not from `releases/tags/<tag>`: the
+          # draft has no git tag yet, so the by-tag endpoint 404s on it. The
+          # listing carries the same asset objects, `digest` included, and shows
+          # drafts to a token with contents:write - the same probe the identify
+          # step makes.
+          gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            | jq -r --arg t "$TAG" '.[] | select(.tag_name == $t) | .assets[] | "\(.name) \(.size) \(.digest // "null")"' \
+            > api-assets.txt
+          cat api-assets.txt
+
+          fail=0
+          for name in "${assets[@]}"; do
+            # Matched on the whole first field: `meta.sqlite.gz` is a prefix of
+            # `meta.sqlite.gz.sha256`, so a substring test picks the wrong row.
+            line="$(awk -v n="$name" '$1 == n' api-assets.txt)"
+            if [ -z "$line" ]; then
+              echo "::error::${name} was uploaded but is not on release ${TAG}"
+              fail=1
+              continue
+            fi
+            api_size="$(echo "$line" | cut -d' ' -f2)"
+            api_digest="$(echo "$line" | cut -d' ' -f3)"
+            local_size="$(wc -c < "$name" | tr -d ' ')"
+            local_digest="sha256:$(sha256sum "$name" | cut -d' ' -f1)"
+            if [ "$api_digest" = "null" ] || [ -z "$api_digest" ]; then
+              echo "::error::the release API exposed no digest for ${name}; the published bytes cannot be verified without re-downloading them"
+              fail=1
+            elif [ "$api_digest" != "$local_digest" ]; then
+              echo "::error::${name} digest mismatch: release has ${api_digest}, this run built ${local_digest}"
+              fail=1
+            fi
+            if [ "$api_size" != "$local_size" ]; then
+              echo "::error::${name} size mismatch: release has ${api_size} bytes, this run built ${local_size}"
+              fail=1
+            fi
+          done
+          [ "$fail" -eq 0 ]
+
+      - name: Withdraw the draft if verification failed
+        if: failure() && steps.verify.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.build.outputs.tag }}
+        # The draft is the run's own scratch space until it is published, so a
+        # verification that failed for ANY reason - a mismatch, a missing asset,
+        # a download that never arrived - takes it away again. Two reasons, both
+        # about the next run rather than this one: the tag is a function of the
+        # two SHAs, so a re-run composes the SAME tag and would otherwise upload
+        # a second draft beside the broken one, and the identify step's cleanup
+        # is a backstop for the runs this step cannot reach (a cancelled job, a
+        # runner that died), not the normal path. The job still fails - the
+        # verify step's status is what decides that.
+        #
+        # Keyed on the verify step alone, never on `failure()` at large: a
+        # publish that failed must NOT reach this, because by then the release
+        # may be public.
+        run: |
+          set -euo pipefail
+          echo "::error::verification of ${TAG} failed; deleting the draft so a re-run starts clean"
+          # Tolerant on both calls, unlike the identify step's: this one runs on
+          # a path that is already failing, and a delete that cannot complete
+          # must not replace the verification error with its own.
+          gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes || true
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/tags/${TAG}" --silent 2> /dev/null || true
+
+      - name: Publish the release
+        if: steps.build.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.build.outputs.tag }}
+        # The one step that makes the release exist for consumers, and the last
+        # thing that happens to it: every asset is uploaded and every checksum is
+        # confirmed by the time this runs, so the release a consumer can select
+        # is complete from the instant it becomes selectable. This is also where
+        # GitHub creates the git tag, at the --target the create step pinned.
+        #
+        # The draft flag is READ BACK rather than inferred from gh's exit status:
+        # a release still sitting as a draft is invisible to metaserve, to the
+        # patch chain and to the next run's prev lookup, which is a silently
+        # skipped release rather than a failed one - exactly the kind of quiet
+        # that this ordering exists to remove.
+        run: |
+          set -euo pipefail
+          gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false
+          draft="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft)"
+          if [ "$draft" != "false" ]; then
+            echo "::error::${TAG} is still a draft after publishing it (isDraft=${draft})"
+            exit 1
+          fi
+          echo "published ${TAG}"
 
       - name: Notify metaserve of the new release
         if: steps.build.outputs.skip != 'true'
         env:
           WEBHOOK_URL: ${{ secrets.METASERVE_WEBHOOK_URL }}
           WEBHOOK_SECRET: ${{ secrets.METASERVE_WEBHOOK_SECRET }}
-        # This runs after gh release create has uploaded every asset. The
-        # receiver re-queries GitHub and verifies the release checksums; this
-        # signed payload only asks it to refresh. Missing deployment secrets or
-        # a transient delivery failure are non-fatal because hourly polling is
-        # retained as the recovery path.
-        run: |
-          if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_SECRET" ]; then
-            echo "metaserve webhook secrets are not configured; fallback polling will refresh it"
-            exit 0
-          fi
-          payload="$(printf '{\"action\":\"published\",\"repository\":{\"full_name\":\"%s\"}}' "$GITHUB_REPOSITORY")"
-          signature="$(PAYLOAD="$payload" python3 - <<'PY'
-          import hashlib
-          import hmac
-          import os
-
-          digest = hmac.new(
-              os.environ["WEBHOOK_SECRET"].encode(),
-              os.environ["PAYLOAD"].encode(),
-              hashlib.sha256,
-          ).hexdigest()
-          print("sha256=" + digest)
-          PY
-          )"
-          if ! curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 \
-            --request POST \
-            --header "Content-Type: application/json" \
-            --header "X-GitHub-Event: release" \
-            --header "X-Hub-Signature-256: $signature" \
-            --data "$payload" \
-            "$WEBHOOK_URL"; then
-            echo "::warning::metaserve webhook delivery failed; fallback polling will retry"
-          fi
+        # This runs after every asset is uploaded AND verified AND the release is
+        # published, so the receiver is never woken to a release it cannot trust
+        # or cannot see. The receiver re-queries GitHub and verifies the release
+        # checksums itself; this signed payload only asks it to refresh. Missing
+        # deployment secrets and a failed delivery are both non-fatal - hourly
+        # polling is the recovery path. The sender lives in a script because
+        # internal/serve's Go tests drive it against the real handler, so the
+        # envelope it composes and the envelope webhook.go accepts cannot drift.
+        run: bash .github/scripts/notify-release.sh
