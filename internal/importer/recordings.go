@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // recordings.go implements the RECORDINGS-ONLY planning mode
@@ -151,7 +153,10 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		if base == "" {
 			continue
 		}
-		if _, taken := p.works[base]; !taken {
+		// A RETIRED bare slug enters the chain too: getOrCreateWork judges it as
+		// its survivor (workAt), and this resolver may only ever attach to the work
+		// that path would have chosen.
+		if ws, via := p.workAt(base); ws == nil && via == "" {
 			continue
 		}
 		if !resolved {
@@ -172,11 +177,11 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		// moving that gate would only look like it covers the case.
 		cands, primary := workCandidates(base, authors, positionClaim{})
 		var best *workState
-		bestKind := matchNone
+		bestKind, bestVia := matchNone, ""
 		for i, cand := range cands {
-			w, exists := p.works[cand.slug]
-			if !exists {
-				if i >= primary {
+			w, via := p.workAt(cand.slug)
+			if w == nil {
+				if via == "" && i >= primary { // free, and nothing beyond it was minted
 					break
 				}
 				continue
@@ -189,13 +194,16 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 				continue
 			}
 			if kind > bestKind {
-				best, bestKind = w, kind
+				best, bestKind, bestVia = w, kind, via
 			}
 			if bestKind == matchExact {
 				break
 			}
 		}
 		if best != nil {
+			if bestVia != "" {
+				p.noteTombstone(model.RedirectWorks, bestVia, best.slug)
+			}
 			return best, true
 		}
 	}

@@ -227,6 +227,11 @@ type planner struct {
 	// never written into p.people, so a credit minted under it has to be
 	// redirected here or it would name a record that does not exist.
 	initialsSurvivors initialsSurvivors
+	// redirects is the catalogue's slug TOMBSTONE table, off the same load as the
+	// identity maps, and tombstoneRides every retired slug this run resolved onto
+	// its survivor rather than minting there (tombstone.go).
+	redirects      model.Redirects
+	tombstoneRides map[string]string
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -487,9 +492,8 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
-	// The run's trust tier, decided here rather than on the planner because the
-	// AI gate below runs before the planner exists and has to ask the same
-	// question: a person's own library (or a hand submission) may admit a
+	// The run's trust tier, asked here as well as by newPlanner because the AI
+	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
 	// See the planner's userTier field and synthetic.go.
 	userTier := model.TierOfSource(sourceType) == model.TierUserLibrary
@@ -504,27 +508,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	if err != nil {
 		return Summary{}, err
 	}
-	p := &planner{
-		dataDir:        opts.DataDir,
-		people:         map[string]string{},
-		authorPeople:   map[string]bool{},
-		narratorPeople: map[string]bool{},
-		works:          map[string]*workState{},
-		series:         map[string]*seriesState{},
-		asins:          map[string]bool{},
-		isbns:          map[string]bool{},
-		store:          store,
-		genres:         audibleGenreTable().withRunMemo(),
-		unmappedGenres: map[string]bool{},
-		runCredits:     map[string]map[model.Credit]bool{},
-		runIdentity:    map[string][]string{},
-		runIdentified:  map[string]runWorkIdentity{},
-		sourceType:     sourceType,
-		importDate:     opts.ImportDate,
-		mode:           opts.Mode,
-		conflicts:      opts.Conflicts,
-		userTier:       userTier,
-	}
+	p := newPlanner(store, sourceType, opts)
 	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
@@ -551,6 +535,33 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	err = p.run(books, opts)
 	return p.result(), err
+}
+
+// newPlanner returns an empty planner for a run of sourceType writing through
+// store, before anything is loaded: the one place its maps are made, so a test
+// that drives the planner directly builds it the way a run does.
+func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
+	return &planner{
+		dataDir:        opts.DataDir,
+		people:         map[string]string{},
+		authorPeople:   map[string]bool{},
+		narratorPeople: map[string]bool{},
+		works:          map[string]*workState{},
+		series:         map[string]*seriesState{},
+		asins:          map[string]bool{},
+		isbns:          map[string]bool{},
+		store:          store,
+		genres:         audibleGenreTable().withRunMemo(),
+		unmappedGenres: map[string]bool{},
+		runCredits:     map[string]map[model.Credit]bool{},
+		runIdentity:    map[string][]string{},
+		runIdentified:  map[string]runWorkIdentity{},
+		sourceType:     sourceType,
+		importDate:     opts.ImportDate,
+		mode:           opts.Mode,
+		conflicts:      opts.Conflicts,
+		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
+	}
 }
 
 // run plans the batch, reports, and (unless a dry run) writes and validates the
@@ -581,6 +592,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
+	p.reportTombstoneRides()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -838,6 +850,7 @@ func (p *planner) loadExisting() {
 	if cat == nil {
 		return
 	}
+	p.redirects = cat.Redirects
 	for _, person := range cat.People {
 		p.people[person.ID] = person.Name
 	}
@@ -1075,7 +1088,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			continue
 		}
 		if ss := p.findSeries(r.name); ss != nil {
-			claim = &seriesClaim{ss: ss, pos: r.seq}
+			claim = &seriesClaim{ss: ss, pos: r.seq, name: r.name}
 			break
 		}
 	}
@@ -1547,16 +1560,24 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	if fellBack {
 		warn("name %q produced an empty slug; using %q", name, slug)
 	}
-	if _, known := p.people[slug]; known {
-		return slug
-	}
-	if survivor, merges := p.initialsMerge(name); merges {
-		if _, known := p.people[survivor.slug]; known {
-			return survivor.slug
+	// livePerson also follows a retired slug to its survivor (tombstone.go): the
+	// person is never re-created at the address a merge took them off.
+	from := slug
+	live, ok := p.livePerson(from)
+	if !ok {
+		survivor, merges := p.initialsMerge(name)
+		if !merges {
+			return p.createPerson(slug, name)
 		}
-		return p.createPerson(survivor.slug, survivor.name)
+		from = survivor.slug
+		if live, ok = p.livePerson(from); !ok {
+			return p.createPerson(survivor.slug, survivor.name)
+		}
 	}
-	return p.createPerson(slug, name)
+	if live != from {
+		p.noteTombstone(model.RedirectPeople, from, live)
+	}
+	return live
 }
 
 // createPerson emits a new person record. The caller has already established
@@ -1585,10 +1606,13 @@ func (p *planner) createPerson(slug, name string) string {
 // catalogue already holds: a pre-existing pair of spellings stays a pair, each
 // serving its own credits, until a maintainer merges them.
 func (p *planner) personSlugTarget(slug string) string {
-	if _, known := p.people[slug]; known {
-		return slug
+	if live, ok := p.livePerson(slug); ok {
+		return live
 	}
 	if survivor, decided := p.initialsSurvivors[slug]; decided {
+		if live, ok := p.livePerson(survivor.slug); ok {
+			return live
+		}
 		return survivor.slug
 	}
 	return slug
@@ -1611,6 +1635,11 @@ func personSlug(name string) (slug string, fellBack bool) { return model.PersonS
 type seriesClaim struct {
 	ss  *seriesState
 	pos string
+	// name is the series name the ROW states. It usually equals ss.name up to case,
+	// but not after a tombstone ride (seriesChain): a retired base joins a survivor
+	// whose name is a different spelling, and the position probe must be composed
+	// from the spelling the serial pre-pass mints with, which is the row's.
+	name string
 }
 
 // compatible reports whether merging the book into work ws is consistent with
@@ -1659,14 +1688,21 @@ func (c *seriesClaim) places(ws *workState) bool {
 }
 
 // position reduces the claim to the (series, position) pair the suffix formulas
-// need. The series NAME is the catalogued one rather than the row's spelling;
-// findSeries matched the two case-insensitively, so they slugify alike and the
-// probe lands where the pre-pass mints.
+// need. The series NAME is the row's spelling, which is what the serial pre-pass
+// (serialPositionSuffixes) mints a series-scoped suffix from, so the probe lands
+// where the pre-pass mints. Without a tombstone ride it slugifies exactly as the
+// catalogued name does (findSeries matched the two case-insensitively); through
+// one, the catalogued name is the SURVIVOR's other spelling and would probe a
+// slug no pre-pass ever minted.
 func (c *seriesClaim) position() positionClaim {
 	if c == nil {
 		return positionClaim{}
 	}
-	return positionClaim{series: c.ss.name, pos: c.pos}
+	name := c.name
+	if name == "" {
+		name = c.ss.name
+	}
+	return positionClaim{series: name, pos: c.pos}
 }
 
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
@@ -1743,15 +1779,24 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	// two candidates can both reduce to the row's identity set (the-iliad and
 	// the-iliad-robert-fitzgerald both reduce to Homer) and only the whole
 	// credit list says which of the two the row is.
+	//
+	// A RETIRED candidate is judged as its survivor (workAt, tombstone.go): the
+	// row merges into it on exactly the rules a live record there would get, and
+	// otherwise the candidate is occupied and the walk steps past it - a minter
+	// never claims a tombstoned slug.
 	best, bestKind, free, blocked := -1, matchNone, -1, false
+	var bestWS *workState
+	bestVia := ""
 	for i, cand := range cands {
-		ws, exists := p.works[cand.slug]
-		if !exists {
-			if free < 0 && !cand.probeOnly {
-				free = i
-			}
-			if free >= 0 && i >= primary {
-				break
+		ws, via := p.workAt(cand.slug)
+		if ws == nil {
+			if via == "" { // free: neither live nor retired
+				if free < 0 && !cand.probeOnly {
+					free = i
+				}
+				if free >= 0 && i >= primary {
+					break
+				}
 			}
 			continue
 		}
@@ -1767,7 +1812,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 			continue
 		}
 		if kind > bestKind {
-			best, bestKind = i, kind
+			best, bestKind, bestWS, bestVia = i, kind, ws, via
 		}
 		if bestKind == matchExact {
 			break
@@ -1775,7 +1820,10 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	}
 
 	if best >= 0 {
-		ws := p.works[cands[best].slug]
+		ws := bestWS
+		if bestVia != "" {
+			p.noteTombstone(model.RedirectWorks, bestVia, ws.slug)
+		}
 		// A later row of this run, merging into a work the run created: its
 		// credits are not a second source's account of an existing work, they are
 		// more of the same import, so the pairs the entry does not carry yet are
@@ -1806,9 +1854,17 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		return nil
 	}
 	slug := cands[free].slug
+	survivor, retired := p.redirects.Survivor(model.RedirectWorks, base)
+	_, survivorHeld := p.works[survivor]
 	switch {
 	case model.IsReservedSlug(base):
 		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
+	case slug != base && retired && survivorHeld:
+		warn("work slug %q was retired by a merge onto %q, which this row does not match; using %q for %q",
+			base, survivor, slug, title)
+	case slug != base && retired:
+		warn("work slug %q was retired by a merge onto %q, which the catalogue does not hold; using %q for %q",
+			base, survivor, slug, title)
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
@@ -1848,15 +1904,22 @@ func (p *planner) findSeries(name string) *seriesState {
 	if base == "" {
 		return nil
 	}
-	for i := 0; ; i++ {
-		ss, exists := p.series[SeriesSlugAt(base, i)]
-		if !exists {
-			return nil
-		}
-		if strings.EqualFold(ss.name, name) {
-			return ss
-		}
+	if ans := p.seriesChainFor(base, name); ans.found {
+		return p.series[ans.slug]
 	}
+	return nil
+}
+
+// seriesChainFor walks name's chain over the planner's series (tombstone.go's
+// seriesChain, the walker every twin shares).
+func (p *planner) seriesChainFor(base, name string) seriesChainAnswer {
+	return seriesChain(base, name, p.redirects, func(slug string) (string, bool) {
+		ss, exists := p.series[slug]
+		if !exists {
+			return "", false
+		}
+		return ss.name, true
+	})
 }
 
 // addRecording builds and emits the recording for a book under work ws. When an
@@ -2473,7 +2536,9 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 }
 
 // getOrCreateSeries returns the series for name, creating an in-memory record
-// when new. Numeric suffixes resolve a collision with a differently-named series.
+// when new. Numeric suffixes resolve a collision with a differently-named series,
+// and a name whose base slug a merge RETIRED joins the series it was merged into
+// (seriesChain, tombstone.go) - it never re-creates the retired duplicate.
 //
 // It returns nil when the name has NO addressable slug - a name written entirely
 // in a script Slugify keeps nothing of (Cyrillic, Japanese, Arabic; the same
@@ -2495,33 +2560,34 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 		p.noteUnaddressableSeries(name)
 		return nil
 	}
-	for i := 0; ; i++ {
-		slug := SeriesSlugAt(base, i)
-		ss, exists := p.series[slug]
-		if !exists {
-			switch {
-			case model.IsReservedSlug(base):
-				warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
-			case slug != base:
-				warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
-			}
-			ss = &seriesState{
-				slug:      slug,
-				name:      name,
-				isNew:     true,
-				out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
-				members:   map[string]string{},
-				positions: map[string]string{},
-				claimed:   map[string]string{},
-			}
-			p.series[slug] = ss
-			p.summary.NewSeries++
-			return ss
+	// A tombstoned base joins the series it was merged into, and any other retired
+	// candidate is stepped past as occupied (tombstone.go).
+	ans := p.seriesChainFor(base, name)
+	if ans.found {
+		if ans.via != "" {
+			p.noteTombstone(model.RedirectSeries, ans.via, ans.slug)
 		}
-		if strings.EqualFold(ss.name, name) {
-			return ss
-		}
+		return p.series[ans.slug]
 	}
+	slug := ans.slug
+	switch {
+	case model.IsReservedSlug(base):
+		warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
+	case slug != base:
+		warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
+	}
+	ss := &seriesState{
+		slug:      slug,
+		name:      name,
+		isNew:     true,
+		out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
+		members:   map[string]string{},
+		positions: map[string]string{},
+		claimed:   map[string]string{},
+	}
+	p.series[slug] = ss
+	p.summary.NewSeries++
+	return ss
 }
 
 // loadSeriesRaw reads an existing series entry into ss.raw the first time it is

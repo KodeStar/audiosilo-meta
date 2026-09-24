@@ -1,6 +1,7 @@
 package issueform
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -123,15 +124,20 @@ func (c *composer) addWork(s sections) {
 		// /api/v1/works/{id}, so it steps onto the author-suffixed slug the bulk
 		// importer would mint for it - the same formula, so the two composers
 		// cannot put one book in two places.
-		stepped := unreservedWorkSlug(workSlug, authorNames[0])
+		stepped := c.unreservedWorkSlug(workSlug, authorNames[0])
 		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
 		workSlug = stepped
 	}
-	if _, exists := c.works[workSlug]; exists {
+	if live := c.liveWorkSlug(workSlug); live != "" {
 		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
 		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
-		c.failDuplicateWork(workSlug, "a work already exists at %s; use the Add a recording form to add another narration",
-			c.entryLocation(pack.FamilyWorks, workSlug, ""))
+		// A retired slug meets its survivor here (internal/importer/tombstone.go).
+		lead := "a work already exists"
+		if live != workSlug {
+			lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", workSlug)
+		}
+		c.failDuplicateWork(live, "%s at %s; use the Add a recording form to add another narration",
+			lead, c.entryLocation(pack.FamilyWorks, live, ""))
 		return
 	}
 
@@ -186,9 +192,13 @@ func (c *composer) addWork(s sections) {
 // as the bulk importer's candidate chain does: the title plus its first author's
 // slug (importer.AuthorSuffixedWorkSlug, the one bounded formula), falling back
 // to the numeric candidate when that author has no addressable slug of their own
-// - which is the same last resort the chain ends in.
-func unreservedWorkSlug(base, firstAuthor string) string {
+// - which is the same last resort the chain ends in. A retired author slug is
+// read as its survivor, as the importer's chain reads the author it resolved.
+func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
 	if slug, fellBack := model.PersonSlug(firstAuthor); !fellBack {
+		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
+			slug = to
+		}
 		return importer.AuthorSuffixedWorkSlug(base, slug)
 	}
 	return importer.NumberedSlugAt(base, 1)
@@ -416,12 +426,15 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		seriesSlug = stepped
 	}
 
-	if existing, ok := c.series[seriesSlug]; ok {
-		if !strings.EqualFold(existing.Name, name) {
+	if existing, id := c.seriesAt(seriesSlug); existing != nil {
+		switch {
+		case id != seriesSlug:
+			c.noteRetired(model.RedirectSeries, seriesSlug, id)
+		case !strings.EqualFold(existing.Name, name):
 			c.fail(StatusNeedsHuman, "series slug %q already belongs to %q - a maintainer must resolve the series for %q", seriesSlug, existing.Name, name)
 			return
 		}
-		c.extendSeries(existing, seriesSlug, workSlug, pos)
+		c.extendSeries(existing, id, workSlug, pos)
 		return
 	}
 

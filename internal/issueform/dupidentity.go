@@ -148,7 +148,10 @@ func (ctx titleContext) sameBookAs(w *model.Work) bool {
 func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
-		if s := c.series[slugify(formSeries)]; s != nil && strings.EqualFold(s.Name, formSeries) {
+		// The record placeInSeries will extend, so the position gate reads the
+		// series the work actually lands in - a retired slug's survivor included.
+		slug := slugify(formSeries)
+		if s, id := c.seriesAt(slug); s != nil && (id != slug || strings.EqualFold(s.Name, formSeries)) {
 			ctx.seriesRec = s
 		}
 		// A name the INDEX would not read a title against is not read against one
@@ -274,7 +277,8 @@ func (c *composer) checkDecoratedTitle(ctx titleContext) (titleContext, bool) {
 		// for the duplicate it might be.
 		return ctx, true
 	}
-	if collides := c.works[slugify(cleaned)]; collides != nil && !ctx.sameBookAs(collides) {
+	// Read as the slug gate below reads it, retired slugs included.
+	if collides := c.works[c.liveWorkSlug(slugify(cleaned))]; collides != nil && !ctx.sameBookAs(collides) {
 		// The residual names a work we already hold that this submission is NOT a second
 		// record of, so the title keeps the decoration that tells the two apart.
 		// Stripping here would hand the submitter the slug gate's duplicate verdict for a

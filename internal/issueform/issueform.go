@@ -175,11 +175,14 @@ type composer struct {
 	// are one identifier.
 	isbnRec map[string]recRef
 
-	// redirects is the tree's own slug TOMBSTONE table, off the same load. Only
-	// resolveWorkKey reads it, and only where the works family is in the tree: a
-	// profile carrying no tombstone table leaves it empty, and the artifact
+	// redirects is the tree's own slug TOMBSTONE table, off the same load: read by
+	// resolveWorkKey and by every minting path (internal/importer/tombstone.go).
+	// A profile carrying no tombstone table leaves it empty, and the artifact
 	// carries the answer there instead.
 	redirects model.Redirects
+	// retiredNoted is the set of retired slugs noteRetired has already reported, so
+	// a person the form names twice (an author who also narrates) is noted once.
+	retiredNoted map[string]bool
 
 	// identity is the normalized-identity index over the catalogue, taken from the
 	// load that seeded the dedup maps rather than built here (check.Result.Identity).
@@ -750,6 +753,11 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 	}
 	if c.people[slug] {
 		return slug, true
+	}
+	// A retired slug names its survivor (internal/importer/tombstone.go).
+	if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
+		c.noteRetired(model.RedirectPeople, slug, to)
+		return to, true
 	}
 	c.people[slug] = true
 	// Kind comes from the NAME and only ever decides one record: the canonical
