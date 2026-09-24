@@ -239,7 +239,10 @@ func tocLabelsOf(p string) ([]string, error) {
 	}
 	defer func() { _ = zr.Close() }()
 
-	labels, _ := readTOC(files, pkg, opfDir)
+	labels, _, err := readTOC(files, pkg, opfDir)
+	if err != nil {
+		return nil, err
+	}
 	out := make([]string, 0, len(labels))
 	for _, l := range labels {
 		if l.Label != "" {

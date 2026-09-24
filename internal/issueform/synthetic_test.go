@@ -5,7 +5,6 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // A hand submission is user-library tier, the same tier whose library exports
@@ -94,16 +93,10 @@ func TestAddWorkRefusesAIAuthors(t *testing.T) {
 	}
 }
 
-// TestCorrectDataAcceptsSyntheticKind pins the correction allowlist against the
-// widened enum: personKinds is built from model.PersonKinds, so a kind added to
-// the schema is accepted here with no second table to remember.
+// TestCorrectDataAcceptsSyntheticKind pins the correction path against the
+// widened enum: the vocabulary is the schema's own (recordFields), so a kind
+// added to the schema is accepted here with no second table to remember.
 func TestCorrectDataAcceptsSyntheticKind(t *testing.T) {
-	if !personKinds[model.KindEntitySynthetic] {
-		t.Fatal("the correction allowlist does not accept the synthetic kind")
-	}
-	if len(personKinds) != len(model.PersonKinds()) {
-		t.Errorf("personKinds has %d values, want model.PersonKinds()'s %d", len(personKinds), len(model.PersonKinds()))
-	}
 	dir := seedTree(t)
 	body := correctBody("data/people/jo/john-smith.json", "kind", "Synthetic", "the listing credits a virtual voice", true)
 	res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})

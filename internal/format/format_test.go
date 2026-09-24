@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/fs"
 	"os"
 	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -24,32 +24,6 @@ func writeFile(t *testing.T, path, content string) {
 	if err := os.WriteFile(path, []byte(content), 0o644); err != nil {
 		t.Fatal(err)
 	}
-}
-
-// snapshot maps every file under dir to its bytes, so two runs can be compared
-// byte for byte.
-func snapshot(t *testing.T, dir string) map[string]string {
-	t.Helper()
-	out := map[string]string{}
-	err := filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
-		if err != nil || d.IsDir() {
-			return err
-		}
-		raw, rerr := os.ReadFile(p)
-		if rerr != nil {
-			return rerr
-		}
-		rel, rerr := filepath.Rel(dir, p)
-		if rerr != nil {
-			return rerr
-		}
-		out[filepath.ToSlash(rel)] = string(raw)
-		return nil
-	})
-	if err != nil {
-		t.Fatal(err)
-	}
-	return out
 }
 
 func mustWrite(t *testing.T, dir string) Report {
@@ -170,12 +144,12 @@ func TestWriteSplitsAPackOverTheEntryCap(t *testing.T) {
 	assertCanonical(t, dir)
 
 	// Deterministic and minimal: a second run changes nothing at all.
-	before := snapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 	second := mustWrite(t, dir)
 	if !second.Clean() {
 		t.Errorf("second run reported work: %v", second.Lines())
 	}
-	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("second run changed the tree: %s", diff)
 	}
 }
@@ -252,9 +226,9 @@ func TestWriteSplitsAFlatFamilyIntoDirectories(t *testing.T) {
 	}
 	assertClean(t, dir)
 
-	before := snapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 	mustWrite(t, dir)
-	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("second run changed the tree: %s", diff)
 	}
 }
@@ -267,7 +241,7 @@ func TestWriteIsANoOpOnAWellFormedPackTree(t *testing.T) {
 	mustWrite(t, dir)
 	assertClean(t, dir)
 
-	before := snapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 	rep := mustWrite(t, dir)
 	if !rep.Clean() {
 		t.Errorf("no-op run reported work: %v", rep.Lines())
@@ -275,7 +249,7 @@ func TestWriteIsANoOpOnAWellFormedPackTree(t *testing.T) {
 	if len(rep.Wrote) != 0 || len(rep.Deleted) != 0 {
 		t.Errorf("no-op run touched files: wrote %v, deleted %v", rep.Wrote, rep.Deleted)
 	}
-	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("no-op run changed the tree: %s", diff)
 	}
 }
@@ -286,7 +260,7 @@ func TestCheckNamesTheCanonicalLocation(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(keyed("aa", 4), keyed("zz", 4)))
 	writeFile(t, filepath.Join(dir, "people", "mm.json"), packOf(keyed("mm", 4)))
-	before := snapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 
 	rep := mustCheck(t, dir)
 	if rep.Clean() {
@@ -301,7 +275,7 @@ func TestCheckNamesTheCanonicalLocation(t *testing.T) {
 	if want := "misplaced entry"; !strings.Contains(rep.Summary(), want) {
 		t.Errorf("summary = %q, want it to mention %q", rep.Summary(), want)
 	}
-	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("--check wrote to the tree: %s", diff)
 	}
 }
@@ -428,9 +402,9 @@ func TestUnreadableFilesAreNamedAndTheRestStillHeals(t *testing.T) {
 			}
 			// A tree whose only remaining problem is unreadable still settles:
 			// re-running --write forever must not rewrite anything.
-			snap := snapshot(t, dir)
+			snap := testpack.Snapshot(t, dir)
 			mustWrite(t, dir)
-			if diff := treeDiff(snap, snapshot(t, dir)); diff != "" {
+			if diff := treeDiff(snap, testpack.Snapshot(t, dir)); diff != "" {
 				t.Errorf("a second --write changed the tree: %s", diff)
 			}
 		})
@@ -546,14 +520,14 @@ func TestCanonicalRenderingOfCreditsAndKind(t *testing.T) {
 		t.Errorf("credits array was reordered or lost by formatting: %+v, want %+v", work.Credits, want)
 	}
 
-	before := snapshot(t, dir)
+	before := testpack.Snapshot(t, dir)
 	if people := before["people/0.json"]; !strings.Contains(people, `"kind": "group"`) {
 		t.Errorf("person kind did not survive formatting:\n%s", people)
 	}
 
 	// A second pass changes nothing at all.
 	mustWrite(t, dir)
-	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+	if diff := treeDiff(before, testpack.Snapshot(t, dir)); diff != "" {
 		t.Errorf("a second --write changed the tree: %s", diff)
 	}
 }

@@ -182,8 +182,8 @@ var shardFilePattern = regexp.MustCompile(`^([a-z]+)-(0|[1-9][0-9]{0,5})\.xml$`)
 // its own table and buildMux registers it unconditionally.
 func (s *Server) sitemapRoutes() []route {
 	return []route{
-		{"GET " + sitemapIndexPath, s.html(s.handleSitemapIndex)},
-		{"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}", s.html(s.handleSitemapShard)},
+		{"GET " + sitemapIndexPath, s.compressed(s.handleSitemapIndex)},
+		{"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}", s.compressed(s.handleSitemapShard)},
 	}
 }
 

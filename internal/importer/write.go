@@ -192,10 +192,12 @@ func recLabel(workSlug, recSlug string) string {
 
 // flush writes every queued entry, performing any due pack or directory splits.
 // The store rewrites only the packs whose bytes actually change, so a run that
-// queued nothing new leaves the tree untouched.
+// queued nothing new leaves the tree untouched - and Summary.Files empty.
 func (p *planner) flush() error {
-	if _, err := p.store.Flush(); err != nil {
+	w, err := p.store.Flush()
+	if err != nil {
 		return fmt.Errorf("write packs: %w", err)
 	}
+	p.summary.Files = w.Wrote
 	return nil
 }

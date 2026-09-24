@@ -58,9 +58,8 @@ type Result struct {
 // MarshalJSON guarantees Files always serializes as [] (never null): the intake
 // workflow's PR-body step runs jq over .files[], which errors on a JSON null.
 // Several producers leave Files nil (the no-routing-label verdict in
-// cmd/metaissue builds a Result literal directly; the import path leaves it nil
-// because the workflow diffs the tree instead), so the guarantee lives on the
-// type rather than in any one producer. The alias avoids infinite recursion.
+// cmd/metaissue builds a Result literal directly, and every non-ok verdict), so
+// the guarantee lives on the type rather than in any one producer. The alias avoids infinite recursion.
 func (r Result) MarshalJSON() ([]byte, error) {
 	type alias Result
 	a := alias(r)
@@ -70,10 +69,11 @@ func (r Result) MarshalJSON() ([]byte, error) {
 	return json.Marshal(a)
 }
 
-// Fetcher fetches the bytes of a URL (used for issue-form file attachments). It
-// is injectable so tests never touch the network; the default (fetch.go) is
-// HTTPS-only, host-pinned, and size-capped.
-type Fetcher func(url string) ([]byte, error)
+// Fetcher fetches the bytes of a URL (used for issue-form file attachments),
+// refusing a body over maxBytes - the cap is the CALLER's, because it depends on
+// which form the file came from (fetch.go). It is injectable so tests never touch
+// the network; the default (fetch.go) is HTTPS-only and host-pinned.
+type Fetcher func(url string, maxBytes int64) ([]byte, error)
 
 // Options configures a run.
 type Options struct {
@@ -179,15 +179,11 @@ type composer struct {
 	// store's queue is not introspectable, and "nothing to write" is a verdict,
 	// so the count is kept here.
 	queued int
-	// wrote is the pack files flush actually rewrote, data-relative.
+	// wrote is the pack files flush actually rewrote, data-relative - the
+	// composer's own flush, or the bulk importer's on the import template.
 	wrote    []string
 	messages []string
 	status   Status
-	// handled is set by paths that write to disk and validate themselves
-	// (import), so Process skips the generic flush.
-	handled bool
-	// directFiles lists files a self-handling path reports (data/-prefixed).
-	directFiles []string
 }
 
 // Process turns one issue-form submission into records and returns the outcome.
@@ -283,9 +279,21 @@ func process(opts Options) Result {
 		return Result{Status: StatusNeedsHuman, Messages: []string{err.Error()}}
 	}
 	c.store = store
-	c.loadExisting()
-
 	sections := parseBody(opts.Body)
+
+	// The import template hands the tree to the bulk importer, which writes and
+	// validates it itself and loads the catalogue through a store of its own - so
+	// it is dispatched BEFORE loadExisting, whose dedup maps would otherwise be a
+	// SECOND whole-catalogue load held live for the importer's entire run. The
+	// store is still opened above: its legacy-layout refusal is the verdict.
+	if tmpl == "import" {
+		c.importLibrary(sections)
+		if c.status == "" {
+			c.status = StatusOK
+		}
+		return Result{Status: c.status, Files: c.fileList(), Messages: c.messages}
+	}
+	c.loadExisting()
 
 	switch tmpl {
 	case "add-work":
@@ -298,18 +306,8 @@ func process(opts Options) Result {
 		c.addSidecar(sections, model.KindCharacters)
 	case "recaps":
 		c.addSidecar(sections, model.KindRecaps)
-	case "import":
-		c.importLibrary(sections)
 	default:
 		return unknownTemplate(opts.Template)
-	}
-
-	// Self-handling paths (import) produced their own outcome.
-	if c.handled {
-		if c.status == "" {
-			c.status = StatusOK
-		}
-		return Result{Status: c.status, Files: c.directFiles, Messages: c.messages}
 	}
 
 	// A terminal status (duplicate/needs-human/invalid) short-circuits: never
