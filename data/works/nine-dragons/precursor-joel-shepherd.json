@@ -8940,6 +8940,10 @@
             {
               "asin": "B07GDQLGR7",
               "region": "us"
+            },
+            {
+              "asin": "B07MW739MM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71xahq847ZL.jpg",
@@ -8951,12 +8955,17 @@
           ],
           "publisher": "Audible Studios",
           "release_date": "2018-08-21",
-          "runtime_min": 470,
+          "runtime_min": 471,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B07GDQLGR7",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B07MW739MM",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "prediction-machines"

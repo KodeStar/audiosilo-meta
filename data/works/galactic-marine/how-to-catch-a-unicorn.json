@@ -4849,6 +4849,10 @@
             {
               "asin": "B09V1YFNJH",
               "region": "us"
+            },
+            {
+              "asin": "B009S7OKJS",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71WqWisSLdL.jpg",
@@ -4858,14 +4862,19 @@
           "narrators": [
             "christopher-lane"
           ],
-          "publisher": "Penguin Audio",
-          "release_date": "2022-04-19",
-          "runtime_min": 604,
+          "publisher": "Brilliance Audio",
+          "release_date": "2012",
+          "runtime_min": 608,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B09V1YFNJH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B009S7OKJS",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "how-to-create-a-mind"

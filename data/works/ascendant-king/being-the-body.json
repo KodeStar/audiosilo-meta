@@ -924,6 +924,10 @@
             {
               "asin": "0593211219",
               "region": "us"
+            },
+            {
+              "asin": "0571360556",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1055,14 +1059,19 @@
           "narrators": [
             "anil-seth"
           ],
-          "publisher": "Penguin Audio",
+          "publisher": "Penguin Random House Audio Publishing Group",
           "release_date": "2021-10-19",
-          "runtime_min": 586,
+          "runtime_min": 587,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "0593211219",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "0571360556",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "being-you"

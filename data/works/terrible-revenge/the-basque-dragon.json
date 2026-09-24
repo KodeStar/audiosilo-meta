@@ -231,6 +231,10 @@
             {
               "asin": "B00570PY40",
               "region": "us"
+            },
+            {
+              "asin": "B002V0TNIM",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -432,14 +436,19 @@
           "narrators": [
             "george-guidall"
           ],
-          "publisher": "Recorded Books",
-          "release_date": "2011-06-21",
+          "publisher": "Phoenix Books",
+          "release_date": "2002",
           "runtime_min": 764,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B00570PY40",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B002V0TNIM",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-basque-history-of-the-world"

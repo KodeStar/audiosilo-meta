@@ -206,6 +206,10 @@
             {
               "asin": "B09ZKNSGDV",
               "region": "us"
+            },
+            {
+              "asin": "B002V8MI5Y",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -328,13 +332,18 @@
             "constance-towers"
           ],
           "publisher": "Phoenix Books",
-          "release_date": "2022-05-05",
+          "release_date": "1997",
           "runtime_min": 198,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B09ZKNSGDV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B002V8MI5Y",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-city-who-fought"

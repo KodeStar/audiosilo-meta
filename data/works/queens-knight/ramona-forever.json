@@ -11206,6 +11206,10 @@
             {
               "asin": "1984888439",
               "region": "us"
+            },
+            {
+              "asin": "1529021138",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -11312,14 +11316,19 @@
           "narrators": [
             "will-damron"
           ],
-          "publisher": "Penguin Audio",
+          "publisher": "Macmillan",
           "release_date": "2019-05-28",
-          "runtime_min": 646,
+          "runtime_min": 617,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "1984888439",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "1529021138",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "range"

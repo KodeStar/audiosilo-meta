@@ -2533,6 +2533,10 @@
             {
               "asin": "B08NMQFKFD",
               "region": "us"
+            },
+            {
+              "asin": "B018LWCIRG",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81ExUXaGauL.jpg",
@@ -2542,14 +2546,19 @@
           "narrators": [
             "brian-tracy"
           ],
-          "publisher": "Berrett-Koehler Publishers",
-          "release_date": "2020-11-17",
-          "runtime_min": 157,
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2015",
+          "runtime_min": 161,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B08NMQFKFD",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B018LWCIRG",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "eat-that-frog"
