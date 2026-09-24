@@ -127,10 +127,14 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		Warnings: warnings,
 	}
 	emitted, splitDocs, splitSections := 0, 0, 0
+	budget := maxBookBytes
 	for i, d := range docs {
 		data, err := readZipFile(files[d.zipPath])
 		if err != nil {
 			return nil, fmt.Errorf("read %q: %w", d.zipPath, err)
+		}
+		if budget -= int64(len(data)); budget < 0 {
+			return nil, fmt.Errorf("spine decompresses past %d bytes at %q: %w", maxBookBytes, d.zipPath, errEntryTooLarge)
 		}
 		entries := perDoc[i]
 		secs, unusable := sectionsForDoc(data, entries)
@@ -675,12 +679,27 @@ func resolveHref(baseDir, href string) (string, error) {
 // the damage. A variable so a test can lower it rather than build a 64 MiB entry.
 var maxEntryBytes int64 = 64 << 20
 
-// errEntryTooLarge is what readZipFile wraps when a member passes maxEntryBytes,
-// so a caller that tolerates an unreadable member (the toc) can still refuse a
-// hostile one rather than quietly carrying on without it.
+// maxBookBytes caps the decompressed total Split reads across the spine. The
+// per-member cap alone does not bound a book: a spine may list one member many
+// times (a warning, not an error), and each listing is read and written again,
+// so N references to a member at the cap would inflate N x 64 MiB onto disk. A
+// real book's whole spine is tens of megabytes at most.
+var maxBookBytes int64 = 256 << 20
+
+// errEntryTooLarge is what readZipFile wraps when a member passes maxEntryBytes
+// (and Split when the spine passes maxBookBytes), so a caller that tolerates an
+// unreadable member (the toc) can still refuse a hostile one rather than
+// quietly carrying on without it.
 var errEntryTooLarge = errors.New("epub entry exceeds the size limit")
 
 func readZipFile(f *zip.File) ([]byte, error) {
+	// The declared size is the attacker's to state, so this is only the cheap
+	// early refusal; the LimitReader below is the guard. archive/zip itself fails a
+	// read that runs past the declared size, so a header that understates it gets
+	// a zip error rather than the bytes.
+	if f.UncompressedSize64 > uint64(maxEntryBytes) {
+		return nil, fmt.Errorf("%q declares %d bytes, past %d: %w", f.Name, f.UncompressedSize64, maxEntryBytes, errEntryTooLarge)
+	}
 	rc, err := f.Open()
 	if err != nil {
 		return nil, err

@@ -3,7 +3,9 @@ package extract
 import (
 	"archive/zip"
 	"bytes"
+	"compress/flate"
 	"errors"
+	"io"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -575,42 +577,105 @@ func TestEntryReadsAreBounded(t *testing.T) {
 	})
 }
 
-// TestReadZipFileStopsAtTheCap pins the BOUND rather than the verdict: the
-// length check alone would still refuse an oversized member after reading all
-// of it, so this measures what a refusal allocates. 32 MiB of zeros deflates to
-// a few tens of kilobytes; reading it under a 4 KiB cap must stay far below the
-// member's own size.
+// TestReadZipFileStopsAtTheCap pins the BOUND rather than the verdict: a length
+// check alone would still refuse an oversized member after reading all of it, so
+// this measures what a refusal allocates - for an honest header (refused before
+// decompressing) and for one that understates the size (archive/zip stops the
+// read at the declared size, so the bytes past it are never buffered).
 func TestReadZipFileStopsAtTheCap(t *testing.T) {
 	old := maxEntryBytes
 	maxEntryBytes = 4096
 	t.Cleanup(func() { maxEntryBytes = old })
 
-	const size = 32 << 20
-	var buf bytes.Buffer
-	zw := zip.NewWriter(&buf)
-	w, err := zw.Create("bomb.xhtml")
+	const size = 4 << 20
+	var deflated bytes.Buffer
+	fw, err := flate.NewWriter(&deflated, flate.BestSpeed)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := w.Write(make([]byte, size)); err != nil {
+	if _, err := io.CopyN(fw, zeroReader{}, size); err != nil {
 		t.Fatal(err)
 	}
-	if err := zw.Close(); err != nil {
-		t.Fatal(err)
-	}
-	zr, err := zip.NewReader(bytes.NewReader(buf.Bytes()), int64(buf.Len()))
-	if err != nil {
+	if err := fw.Close(); err != nil {
 		t.Fatal(err)
 	}
 
-	var before, after runtime.MemStats
-	runtime.ReadMemStats(&before)
-	_, err = readZipFile(zr.File[0])
-	runtime.ReadMemStats(&after)
-	if !errors.Is(err, errEntryTooLarge) {
-		t.Fatalf("readZipFile err = %v, want errEntryTooLarge", err)
+	for _, tc := range []struct {
+		name     string
+		declared uint64
+		want     error
+	}{
+		{"honest header", size, errEntryTooLarge},
+		{"understated header", 1024, zip.ErrFormat},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var buf bytes.Buffer
+			zw := zip.NewWriter(&buf)
+			w, err := zw.CreateRaw(&zip.FileHeader{
+				Name:               "bomb.xhtml",
+				Method:             zip.Deflate,
+				CompressedSize64:   uint64(deflated.Len()),
+				UncompressedSize64: tc.declared,
+			})
+			if err != nil {
+				t.Fatal(err)
+			}
+			if _, err := w.Write(deflated.Bytes()); err != nil {
+				t.Fatal(err)
+			}
+			if err := zw.Close(); err != nil {
+				t.Fatal(err)
+			}
+			zr, err := zip.NewReader(bytes.NewReader(buf.Bytes()), int64(buf.Len()))
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			var before, after runtime.MemStats
+			runtime.ReadMemStats(&before)
+			_, err = readZipFile(zr.File[0])
+			runtime.ReadMemStats(&after)
+			if !errors.Is(err, tc.want) {
+				t.Fatalf("readZipFile err = %v, want %v", err, tc.want)
+			}
+			if got := after.TotalAlloc - before.TotalAlloc; got > size/4 {
+				t.Errorf("refusing a %d-byte member allocated %d bytes, want it bounded near the %d-byte cap", size, got, maxEntryBytes)
+			}
+		})
 	}
-	if got := after.TotalAlloc - before.TotalAlloc; got > size/8 {
-		t.Errorf("refusing a %d-byte member allocated %d bytes, want it bounded near the %d-byte cap", size, got, maxEntryBytes)
+}
+
+type zeroReader struct{}
+
+func (zeroReader) Read(p []byte) (int, error) {
+	clear(p)
+	return len(p), nil
+}
+
+// TestSplitBoundsTheWholeSpine pins maxBookBytes: every member under the
+// per-member cap, but one member listed often enough that the spine's total
+// passes the book cap, refuses the epub rather than writing each copy again.
+func TestSplitBoundsTheWholeSpine(t *testing.T) {
+	old := maxBookBytes
+	maxBookBytes = 4096
+	t.Cleanup(func() { maxBookBytes = old })
+
+	const refs = 5
+	opf := `<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <manifest><item id="c1" href="ch01.xhtml" media-type="application/xhtml+xml"/></manifest>
+  <spine>` + strings.Repeat(`<itemref idref="c1"/>`, refs) + `</spine>
+</package>`
+	epub := buildEpub(t, map[string]string{
+		"META-INF/container.xml": container,
+		"OEBPS/content.opf":      opf,
+		"OEBPS/ch01.xhtml":       "<p>x</p>" + strings.Repeat(" ", 4096/refs*2),
+	})
+	_, err := Split(epub, t.TempDir())
+	if !errors.Is(err, errEntryTooLarge) {
+		t.Fatalf("Split err = %v, want errEntryTooLarge for the spine total", err)
+	}
+	if !strings.Contains(err.Error(), "spine") {
+		t.Errorf("Split err = %q, want it to name the spine total", err)
 	}
 }
