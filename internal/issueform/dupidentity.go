@@ -148,12 +148,11 @@ func (ctx titleContext) sameBookAs(w *model.Work) bool {
 func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
-		if s := c.series[slugify(formSeries)]; s != nil && strings.EqualFold(s.Name, formSeries) {
+		// The record placeInSeries will extend, so the position gate reads the
+		// series the work actually lands in - a retired slug's survivor included.
+		slug := slugify(formSeries)
+		if s, id := c.seriesAt(slug); s != nil && (id != slug || strings.EqualFold(s.Name, formSeries)) {
 			ctx.seriesRec = s
-		} else if s == nil {
-			// A retired series slug is the survivor's (placeInSeries joins it), so
-			// the position gate reads the record the work will actually land in.
-			ctx.seriesRec = c.series[c.retiredOnto(model.RedirectSeries, slugify(formSeries))]
 		}
 		// A name the INDEX would not read a title against is not read against one
 		// here either (WorkIdentity.Admits): a one-word series name strips its own
@@ -278,9 +277,7 @@ func (c *composer) checkDecoratedTitle(ctx titleContext) (titleContext, bool) {
 		// for the duplicate it might be.
 		return ctx, true
 	}
-	// The slug gate below reads a retired slug as its survivor (liveWorkSlug), so
-	// this probe does too, or the two would disagree about what the cleaned title
-	// collides with.
+	// Read as the slug gate below reads it, retired slugs included.
 	if collides := c.works[c.liveWorkSlug(slugify(cleaned))]; collides != nil && !ctx.sameBookAs(collides) {
 		// The residual names a work we already hold that this submission is NOT a second
 		// record of, so the title keeps the decoration that tells the two apart.

@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"strconv"
 	"strings"
 	"testing"
 
@@ -36,11 +37,11 @@ func seedTombstoneTree(t *testing.T, files map[string]string, reds model.Redirec
 	return dataDir
 }
 
-// tombRow is a minimal importable libex row by Ada Mapmaker, read by Bea Reader.
-func tombRow(asin, title, author, series, pos string) string {
+// tombRow is a minimal importable libex row; an empty series places it nowhere.
+func tombRow(asin, title, author, narrator string, minutes int, series, pos string) string {
 	row := `{"asin":"` + asin + `","title":"` + title + `","region":"us","language":"english",` +
-		`"bookFormat":"unabridged","lengthMinutes":300,"authors":[{"name":"` + author + `"}],` +
-		`"narrators":[{"name":"Bea Reader"}]`
+		`"bookFormat":"unabridged","lengthMinutes":` + strconv.Itoa(minutes) + `,"authors":[{"name":"` + author + `"}],` +
+		`"narrators":[{"name":"` + narrator + `"}]`
 	if series != "" {
 		row += `,"series":[{"name":"` + series + `","position":"` + pos + `"}]`
 	}
@@ -56,19 +57,6 @@ func runLibexOver(t *testing.T, dataDir string, rows ...string) Summary {
 	return sum
 }
 
-func hasNote(notes []string, subs ...string) bool {
-	for _, n := range notes {
-		all := true
-		for _, s := range subs {
-			all = all && strings.Contains(n, s)
-		}
-		if all {
-			return true
-		}
-	}
-	return false
-}
-
 // TestSeriesBaseTombstoneJoinsTheSurvivor is issue #2320's own shape: a repair
 // wave merged "A Kate Wise Mystery" into "Kate Wise Mystery Series", and a
 // library row naming the retired spelling must join the survivor - with no name
@@ -81,7 +69,7 @@ func TestSeriesBaseTombstoneJoinsTheSurvivor(t *testing.T) {
 		"series/ka/kate-wise-mystery-series.json": testpack.SeriesJSON(t, "kate-wise-mystery-series", "Kate Wise Mystery Series", "if-she-knew@1"),
 	}, model.Redirects{model.RedirectSeries: {"a-kate-wise-mystery": "kate-wise-mystery-series"}})
 
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS001", "If She Ran", "Ada Mapmaker", "A Kate Wise Mystery", "2"))
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS001", "If She Ran", "Ada Mapmaker", "Bea Reader", 300, "A Kate Wise Mystery", "2"))
 
 	if sum.NewSeries != 0 {
 		t.Errorf("NewSeries = %d, want 0: the retired spelling names the survivor", sum.NewSeries)
@@ -96,7 +84,7 @@ func TestSeriesBaseTombstoneJoinsTheSurvivor(t *testing.T) {
 	if len(ser.Works) != 2 || ser.Works[1].Work != "if-she-ran" || ser.Works[1].Position != "2" {
 		t.Errorf("survivor works = %+v, want if-she-ran appended at 2", ser.Works)
 	}
-	if !hasNote(sum.Notes, "series a-kate-wise-mystery -> kate-wise-mystery-series") {
+	if !hasWarning(sum.Notes, "series a-kate-wise-mystery -> kate-wise-mystery-series") {
 		t.Errorf("no note naming the ride: %v", sum.Notes)
 	}
 	assertTreeValid(t, dataDir)
@@ -104,8 +92,8 @@ func TestSeriesBaseTombstoneJoinsTheSurvivor(t *testing.T) {
 
 // numberedTombstoneTree holds a series chain whose "-2" candidate is retired:
 // "saga" belongs to a differently-named series, "saga-2" is a tombstone and
-// "saga-3" is the live "Saga".
-func numberedTombstoneTree(t *testing.T) string {
+// "saga-3" is the live "Saga". reds is the tombstone table it carries.
+func numberedTombstoneTree(t *testing.T, reds model.Redirects) string {
 	t.Helper()
 	return seedTombstoneTree(t, map[string]string{
 		"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("ada-mapmaker")),
@@ -114,16 +102,19 @@ func numberedTombstoneTree(t *testing.T) string {
 		"works/tw/two/recordings/r1.json": testpack.RecJSON(t, "r1", "two", testpack.WithNarrators("bea-reader")),
 		"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga!!", "one@1"),
 		"series/sa/saga-3.json":           testpack.SeriesJSON(t, "saga-3", "Saga", "two@1"),
-	}, model.Redirects{model.RedirectSeries: {"saga-2": "saga"}})
+	}, reds)
 }
+
+// retiredSagaTwo is the tombstone every numbered-chain test starts from.
+var retiredSagaTwo = model.Redirects{model.RedirectSeries: {"saga-2": "saga"}}
 
 // TestNumberedSeriesTombstoneIsSteppedPast: a retired NUMBERED candidate is
 // occupied, not a join - which name that "-2" carried is not recorded. It must
 // neither stop the walk (the live "saga-3" beyond it is the row's series) nor be
 // minted at.
 func TestNumberedSeriesTombstoneIsSteppedPast(t *testing.T) {
-	dataDir := numberedTombstoneTree(t)
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS002", "Three", "Ada Mapmaker", "Saga", "2"))
+	dataDir := numberedTombstoneTree(t, retiredSagaTwo)
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS002", "Three", "Ada Mapmaker", "Bea Reader", 300, "Saga", "2"))
 
 	if sum.NewSeries != 0 {
 		t.Errorf("NewSeries = %d, want 0: the walk must reach the live saga-3", sum.NewSeries)
@@ -146,13 +137,10 @@ func TestNumberedSeriesTombstoneIsSteppedPast(t *testing.T) {
 
 // TestNumberedTombstoneMintsBeyondIt: a NEW series whose chain crosses a retired
 // numbered slug mints at the next free candidate, never at the retired one.
+// "Saga?" slugs onto the saga chain but matches neither stored name.
 func TestNumberedTombstoneMintsBeyondIt(t *testing.T) {
-	dataDir := seedTombstoneTree(t, map[string]string{
-		"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("ada-mapmaker")),
-		"works/on/one/recordings/r1.json": testpack.RecJSON(t, "r1", "one", testpack.WithNarrators("bea-reader")),
-		"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga!!", "one@1"),
-	}, model.Redirects{model.RedirectSeries: {"saga-2": "saga"}})
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS003", "Three", "Ada Mapmaker", "Saga", "1"))
+	dataDir := numberedTombstoneTree(t, retiredSagaTwo)
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS003", "Three", "Ada Mapmaker", "Bea Reader", 300, "Saga?", "1"))
 
 	if sum.NewSeries != 1 {
 		t.Errorf("NewSeries = %d, want 1", sum.NewSeries)
@@ -160,8 +148,8 @@ func TestNumberedTombstoneMintsBeyondIt(t *testing.T) {
 	if entryExists(t, dataDir, seriesAddr("saga-2")) {
 		t.Error("a series was minted at the retired numbered slug saga-2")
 	}
-	if !entryExists(t, dataDir, seriesAddr("saga-3")) {
-		t.Error("the new series did not step past the retired saga-2 onto saga-3")
+	if !entryExists(t, dataDir, seriesAddr("saga-4")) {
+		t.Error("the new series did not step past the retired saga-2 and the live saga-3 onto saga-4")
 	}
 	assertTreeValid(t, dataDir)
 }
@@ -171,12 +159,7 @@ func TestNumberedTombstoneMintsBeyondIt(t *testing.T) {
 // answer over a tree with a tombstone at both kinds of chain index. A selection
 // that disagreed with the import would select rows into series they then fork.
 func TestSeriesWalkersAgreeOverTombstones(t *testing.T) {
-	dataDir := numberedTombstoneTree(t)
-	reds := model.Redirects{model.RedirectSeries: {"saga-2": "saga", "old-saga": "saga-3"}}
-	if err := redirects.Write(dataDir, reds); err != nil {
-		t.Fatal(err)
-	}
-	assertTreeValid(t, dataDir)
+	dataDir := numberedTombstoneTree(t, model.Redirects{model.RedirectSeries: {"saga-2": "saga", "old-saga": "saga-3"}})
 
 	idx, warns := loadSeriesIndex(dataDir)
 	if len(warns) != 0 {
@@ -221,11 +204,7 @@ func plannerOver(t *testing.T, dataDir string) *planner {
 	if err != nil {
 		t.Fatal(err)
 	}
-	p := &planner{
-		dataDir: dataDir, people: map[string]string{}, authorPeople: map[string]bool{},
-		narratorPeople: map[string]bool{}, works: map[string]*workState{}, series: map[string]*seriesState{},
-		asins: map[string]bool{}, isbns: map[string]bool{}, store: store,
-	}
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: testImportDate})
 	p.loadExisting()
 	return p
 }
@@ -238,7 +217,7 @@ func TestPersonTombstoneResolvesToTheSurvivor(t *testing.T) {
 		"people/jo/jon-smith.json": testpack.PersonJSON(t, "jon-smith", "Jon Smith"),
 	}, model.Redirects{model.RedirectPeople: {"jonathan-q-smith": "jon-smith"}})
 
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS004", "A Fresh Book", "Jonathan Q. Smith", "", ""))
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS004", "A Fresh Book", "Jonathan Q. Smith", "Bea Reader", 300, "", ""))
 
 	if sum.NewPeople != 0 {
 		t.Errorf("NewPeople = %d, want 0: the author is the survivor", sum.NewPeople)
@@ -253,7 +232,7 @@ func TestPersonTombstoneResolvesToTheSurvivor(t *testing.T) {
 	if len(w.Authors) != 1 || w.Authors[0] != "jon-smith" {
 		t.Errorf("authors = %v, want [jon-smith]", w.Authors)
 	}
-	if !hasNote(sum.Notes, "people jonathan-q-smith -> jon-smith") {
+	if !hasWarning(sum.Notes, "people jonathan-q-smith -> jon-smith") {
 		t.Errorf("no note naming the ride: %v", sum.Notes)
 	}
 	assertTreeValid(t, dataDir)
@@ -278,7 +257,7 @@ func workTombstoneTree(t *testing.T) string {
 // work is minted at the retired slug.
 func TestWorkTombstoneMergesIntoTheSurvivorOnTheIdentityRule(t *testing.T) {
 	dataDir := workTombstoneTree(t)
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS005", "The Thing", "Ada Mapmaker", "", ""))
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS005", "The Thing", "Ada Mapmaker", "Bea Reader", 300, "", ""))
 
 	if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 {
 		t.Errorf("NewWorks = %d, SkippedDuplicateIdentity = %d; want the row merged into the survivor",
@@ -300,7 +279,7 @@ func TestWorkTombstoneMergesIntoTheSurvivorOnTheIdentityRule(t *testing.T) {
 	if !found {
 		t.Error("the row's ASIN is not on any recording of the survivor")
 	}
-	if !hasNote(sum.Notes, "works the-thing -> the-thing-special-edition") {
+	if !hasWarning(sum.Notes, "works the-thing -> the-thing-special-edition") {
 		t.Errorf("no note naming the ride: %v", sum.Notes)
 	}
 	assertTreeValid(t, dataDir)
@@ -312,7 +291,7 @@ func TestWorkTombstoneMergesIntoTheSurvivorOnTheIdentityRule(t *testing.T) {
 // and nothing is minted at the retired slug.
 func TestWorkTombstoneOfADifferentBookIsSteppedPast(t *testing.T) {
 	dataDir := workTombstoneTree(t)
-	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS006", "The Thing", "Otto Other", "", ""))
+	sum := runLibexOver(t, dataDir, tombRow("B0TOMBS006", "The Thing", "Otto Other", "Bea Reader", 300, "", ""))
 
 	if entryExists(t, dataDir, workAddr("the-thing")) {
 		t.Error("a work was minted at the retired slug the-thing")
@@ -333,10 +312,7 @@ func TestWorkTombstoneOfADifferentBookIsSteppedPast(t *testing.T) {
 // rather than being dropped as "not in the catalogue".
 func TestRecordingsOnlyFollowsAWorkTombstone(t *testing.T) {
 	dataDir := workTombstoneTree(t)
-	row := `{"asin":"B0TOMBS007","title":"The Thing","region":"us","language":"english",` +
-		`"bookFormat":"unabridged","lengthMinutes":900,"authors":[{"name":"Ada Mapmaker"}],` +
-		`"narrators":[{"name":"Cy Voice"}]}`
-	sum := runRecordingsOnly(t, dataDir, row+"\n", false)
+	sum := runRecordingsOnly(t, dataDir, tombRow("B0TOMBS007", "The Thing", "Ada Mapmaker", "Cy Voice", 900, "", "")+"\n", false)
 
 	if sum.NewRecordings != 1 || sum.SkippedNoWork != 0 {
 		t.Errorf("NewRecordings = %d, SkippedNoWork = %d; want the narration on the survivor", sum.NewRecordings, sum.SkippedNoWork)

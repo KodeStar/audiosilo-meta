@@ -351,7 +351,7 @@ func (c *composer) liveWorkSlug(slug string) string {
 	if _, exists := c.works[slug]; exists {
 		return slug
 	}
-	if to := c.retiredOnto(model.RedirectWorks, slug); to != "" {
+	if to, retired := c.redirects.Survivor(model.RedirectWorks, slug); retired {
 		if _, live := c.works[to]; live {
 			return to
 		}
@@ -359,18 +359,23 @@ func (c *composer) liveWorkSlug(slug string) string {
 	return ""
 }
 
-// retiredOnto returns the survivor the tree's tombstone table names for a
-// retired slug of kind, or "". It is the one read of the table the MINTING paths
-// share (a person, a work slug, a series slug): a form never composes a record at
-// a slug a merge retired, which is the bulk importer's rule too
-// (internal/importer/tombstone.go), so the two doors cannot disagree about where
-// a name lands. Whether the survivor is live is the caller's question, asked of
-// the map it holds for that family.
-func (c *composer) retiredOnto(kind model.RedirectKind, slug string) string {
-	if to := c.redirects[kind][slug]; to != slug {
-		return to
+// seriesAt returns the series record a series slug addresses and the id it is
+// stored under: the live record, else - the minters' rule,
+// internal/importer/tombstone.go - the survivor its tombstone names. nil when
+// neither is held, or the slug is empty.
+func (c *composer) seriesAt(slug string) (*model.Series, string) {
+	if slug == "" {
+		return nil, ""
 	}
-	return ""
+	if s := c.series[slug]; s != nil {
+		return s, slug
+	}
+	if to, retired := c.redirects.Survivor(model.RedirectSeries, slug); retired {
+		if s := c.series[to]; s != nil {
+			return s, to
+		}
+	}
+	return nil, ""
 }
 
 // noteRetired says that a name the form spelled slugs to a retired record and

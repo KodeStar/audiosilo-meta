@@ -156,7 +156,7 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		// A RETIRED bare slug enters the chain too: getOrCreateWork judges it as
 		// its survivor (workAt), and this resolver may only ever attach to the work
 		// that path would have chosen.
-		if _, _, taken := p.workAt(base); !taken {
+		if ws, via := p.workAt(base); ws == nil && via == "" {
 			continue
 		}
 		if !resolved {
@@ -176,17 +176,13 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		// suffixed slug is out of its reach either way. Giving it the probe without
 		// moving that gate would only look like it covers the case.
 		cands, primary := workCandidates(base, authors, positionClaim{})
-		var best *workState
-		bestKind, bestVia := matchNone, ""
+		best, bestKind := -1, matchNone
 		for i, cand := range cands {
-			w, via, occupied := p.workAt(cand.slug)
-			if !occupied {
-				if i >= primary {
+			w, via := p.workAt(cand.slug)
+			if w == nil {
+				if via == "" && i >= primary { // free, and nothing beyond it was minted
 					break
 				}
-				continue
-			}
-			if w == nil {
 				continue
 			}
 			// The same grading the create path uses, so the mode can only ever
@@ -197,17 +193,18 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 				continue
 			}
 			if kind > bestKind {
-				best, bestKind, bestVia = w, kind, via
+				best, bestKind = i, kind
 			}
 			if bestKind == matchExact {
 				break
 			}
 		}
-		if best != nil {
-			if bestVia != "" {
-				p.noteTombstone(model.RedirectWorks, bestVia, best.slug)
+		if best >= 0 {
+			w, via := p.workAt(cands[best].slug)
+			if via != "" {
+				p.noteTombstone(model.RedirectWorks, via, w.slug)
 			}
-			return best, true
+			return w, true
 		}
 	}
 	return nil, titleHit

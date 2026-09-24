@@ -2,7 +2,6 @@ package importer
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -15,16 +14,15 @@ import (
 // A tombstone is a recorded human decision - a repair wave merged two records and
 // said the retired slug names the survivor - so a name that slugs onto one is a
 // name for the SURVIVOR, not an invitation to re-create the duplicate the merge
-// removed. Minting there anyway was never silent (metacheck refuses a tombstone
-// whose source is a live id), but it failed the WHOLE run, and every repair wave
-// adds tombstones: issue #2320 was a personal library import stopped by one series
-// name the previous wave had retired.
+// removed - and minting there fails metacheck's live-source rule for the WHOLE run.
+// Every lookup goes through model.Redirects.Survivor. internal/issueform applies
+// the same rule at the intake door (its one candidate per family).
 //
 // The rule per family follows what the family's slug MEANS:
 //
 //   - PEOPLE. The slug is the identity (model.PersonSlug), so a retired person slug
-//     resolves to its survivor outright, on the creating path (getOrCreatePerson)
-//     and the resolving one (personSlugTarget) alike.
+//     resolves to its survivor outright (livePerson), on the creating path
+//     (getOrCreatePerson) and the resolving one (personSlugTarget) alike.
 //   - SERIES. Only the chain's FIRST candidate is a statement about the name: a
 //     tombstoned base resolves to the survivor, with no name comparison (the
 //     tombstone IS the decision, and the survivor's name is usually the other
@@ -47,67 +45,54 @@ import (
 // record composed under a slug the row did not spell is a decision a reader of the
 // pull request has to be able to see.
 
-// retired returns the survivor a tombstoned slug names, or false.
-func (p *planner) retired(kind model.RedirectKind, slug string) (string, bool) {
-	to := p.redirects[kind][slug]
-	if to == "" || to == slug {
-		return "", false
-	}
-	return to, true
-}
-
-// noteTombstone records that a slug the row spelled was resolved onto its survivor.
+// noteTombstone records that a slug the row spelled was resolved onto its
+// survivor, keyed like the credit merges so the run reports each ride once.
 func (p *planner) noteTombstone(kind model.RedirectKind, from, to string) {
-	if p.tombstoneRides == nil {
-		p.tombstoneRides = map[string]bool{}
-	}
-	p.tombstoneRides[fmt.Sprintf("%s %s -> %s", kind, from, to)] = true
+	p.tombstoneRides = noteMerge(p.tombstoneRides, string(kind)+" "+from, to)
 }
 
 // reportTombstoneRides appends the run's one note naming every retired slug it
 // resolved onto a survivor, sorted so two runs over one input read the same.
 func (p *planner) reportTombstoneRides() {
-	if len(p.tombstoneRides) == 0 {
+	lines := mergeLines(p.tombstoneRides)
+	if len(lines) == 0 {
 		return
 	}
-	lines := make([]string, 0, len(p.tombstoneRides))
-	for l := range p.tombstoneRides {
-		lines = append(lines, l)
-	}
-	sort.Strings(lines)
 	p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
 		"%d retired slug(s) resolved onto their survivors through %s (a merge retired them, so nothing is re-created there): %s",
 		len(lines), pack.RedirectsFile, strings.Join(lines, ", ")))
 }
 
-// retiredPerson resolves a person slug the table retires onto the survivor record,
-// which must be one the planner knows; ok is false otherwise. It notes nothing:
-// the read-only resolvers ask it too, for rows that may never be imported, so
-// the ride is recorded where a credit is actually taken (getOrCreatePerson).
-func (p *planner) retiredPerson(slug string) (string, bool) {
-	to, ok := p.retired(model.RedirectPeople, slug)
-	if !ok {
-		return "", false
+// livePerson resolves a person slug onto the record that holds it: the slug
+// itself when the planner knows it, else the survivor a tombstone names when the
+// planner knows THAT; ok is false otherwise. It notes nothing - the read-only
+// resolvers ask it too, for rows that may never be imported - so the ride is
+// recorded where a credit is actually taken (getOrCreatePerson).
+func (p *planner) livePerson(slug string) (string, bool) {
+	if _, known := p.people[slug]; known {
+		return slug, true
 	}
-	if _, known := p.people[to]; !known {
-		return "", false
+	if to, retired := p.redirects.Survivor(model.RedirectPeople, slug); retired {
+		if _, known := p.people[to]; known {
+			return to, true
+		}
 	}
-	return to, true
+	return "", false
 }
 
 // workAt answers what a work-slug candidate addresses: the live record, or - when
-// the table retires the slug - the survivor, reported through via. occupied is
-// true for both, and for a tombstone whose survivor the load did not hold (ws is
-// then nil): a minter may never claim a retired slug, whatever it resolves to.
-func (p *planner) workAt(slug string) (ws *workState, via string, occupied bool) {
+// the table retires the slug - the survivor, reported through via. The candidate
+// is OCCUPIED when either is set (ws != nil || via != ""); a tombstone whose
+// survivor the load did not hold comes back as a via with a nil ws, because a
+// minter may never claim a retired slug, whatever it resolves to.
+func (p *planner) workAt(slug string) (ws *workState, via string) {
 	if ws, live := p.works[slug]; live {
-		return ws, "", true
+		return ws, ""
 	}
-	to, retired := p.retired(model.RedirectWorks, slug)
-	if !retired {
-		return nil, "", false
+	if to, retired := p.redirects.Survivor(model.RedirectWorks, slug); retired {
+		return p.works[to], slug
 	}
-	return p.works[to], slug, true
+	return nil, ""
 }
 
 // seriesChainAnswer is what a walk of a series name's candidate chain concluded.
@@ -123,7 +108,7 @@ type seriesChainAnswer struct {
 // seriesChain walks a series name's candidate chain (SeriesSlugAt over base, the
 // name's Slugify) and is the ONE walker behind getOrCreateSeries and its read-only
 // twins findSeries and seriesIndex.find. stored reports the name of the series a
-// slug holds; retired is the table's series namespace.
+// slug holds; reds is the tombstone table.
 //
 // A held slug answers when its stored name matches case-insensitively and is
 // stepped past otherwise, as it always was. A tombstoned slug answers ONLY at
@@ -131,7 +116,7 @@ type seriesChainAnswer struct {
 // Counting it occupied keeps the walkers' invariant - the first FREE slug ends the
 // walk, because nothing beyond it can have been minted - true of a chain with a
 // retired "-2" in it, where stopping there would miss a live "-3".
-func seriesChain(base, name string, retired map[string]string, stored func(slug string) (string, bool)) seriesChainAnswer {
+func seriesChain(base, name string, reds model.Redirects, stored func(slug string) (string, bool)) seriesChainAnswer {
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
 		if held, exists := stored(slug); exists {
@@ -140,8 +125,8 @@ func seriesChain(base, name string, retired map[string]string, stored func(slug 
 			}
 			continue
 		}
-		to := retired[slug]
-		if to == "" || to == slug {
+		to, retired := reds.Survivor(model.RedirectSeries, slug)
+		if !retired {
 			return seriesChainAnswer{slug: slug}
 		}
 		if i == 0 {

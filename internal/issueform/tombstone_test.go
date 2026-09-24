@@ -33,41 +33,13 @@ func tombstoneFormTree(t *testing.T) string {
 	return dir
 }
 
-// tombstoneWorkBody is an add-work body naming a title, an author and an
-// optional series placement - the three names a tombstone can retire.
-func tombstoneWorkBody(title, author, series, pos string) string {
-	return field(fWorkTitle, title) +
-		field(fWorkSubtitle, "") +
-		field(fWorkAuthors, author) +
-		field(fWorkLanguage, "en") +
-		field(fWorkFirstPublished, "") +
-		field(fWorkGenres, "") +
-		field(fWorkSeriesName, series) +
-		field(fWorkSeriesPosition, pos) +
-		field(fWorkISBN, "") +
-		field(fWorkWikidata, "") +
-		field(fWorkOpenLibrary, "") +
-		field(fRecNarrators, "John Smith") +
-		field(fRecAbridged, "Unabridged") +
-		field(fRecRuntime, "400") +
-		field(fRecRelease, "2021-03-04") +
-		field(fRecPublisher, "Acme Audio") +
-		field(fRecASINs, "US: B0TOMBF001") +
-		field(fRecISBNs, "") +
-		field(fRecCoverURL, "") +
-		field(fSources, "Audible product page") +
-		"### Factual data\n\n- [x] factual\n\n" +
-		"### " + fCC0 + "\n\n" + checkedBox()
-}
-
 // TestAddWorkResolvesRetiredPersonAndSeries: an author whose name slugs onto a
 // retired person is credited as the survivor, and a series whose name slugs onto
 // a retired series extends the survivor - nothing is composed at either retired
 // address, the verdict says so, and the tree the bot writes validates.
 func TestAddWorkResolvesRetiredPersonAndSeries(t *testing.T) {
 	dir := tombstoneFormTree(t)
-	res := Process(Options{DataDir: dir, Template: "add-work",
-		Body: tombstoneWorkBody("Brand New Book", "Janet Q. Doe", "Old Series", "2"), Date: "2026-09-24"})
+	res := processAddWork(t, dir, dupWorkBody("Brand New Book", "Janet Q. Doe", "John Smith", "Old Series", "2"))
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
@@ -99,8 +71,7 @@ func TestAddWorkResolvesRetiredPersonAndSeries(t *testing.T) {
 // is written.
 func TestAddWorkOnARetiredWorkSlugIsTheSurvivorsDuplicate(t *testing.T) {
 	dir := tombstoneFormTree(t)
-	res := Process(Options{DataDir: dir, Template: "add-work",
-		Body: tombstoneWorkBody("Old Work", "Jane Doe", "", ""), Date: "2026-09-24"})
+	res := processAddWork(t, dir, dupWorkBody("Old Work", "Jane Doe", "John Smith", "", ""))
 	if res.Status != StatusDuplicate {
 		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
 	}

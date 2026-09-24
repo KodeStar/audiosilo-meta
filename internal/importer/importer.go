@@ -231,7 +231,7 @@ type planner struct {
 	// identity maps, and tombstoneRides every retired slug this run resolved onto
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
-	tombstoneRides map[string]bool
+	tombstoneRides map[string]string
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -492,9 +492,8 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
-	// The run's trust tier, decided here rather than on the planner because the
-	// AI gate below runs before the planner exists and has to ask the same
-	// question: a person's own library (or a hand submission) may admit a
+	// The run's trust tier, asked here as well as by newPlanner because the AI
+	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
 	// See the planner's userTier field and synthetic.go.
 	userTier := model.TierOfSource(sourceType) == model.TierUserLibrary
@@ -509,27 +508,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	if err != nil {
 		return Summary{}, err
 	}
-	p := &planner{
-		dataDir:        opts.DataDir,
-		people:         map[string]string{},
-		authorPeople:   map[string]bool{},
-		narratorPeople: map[string]bool{},
-		works:          map[string]*workState{},
-		series:         map[string]*seriesState{},
-		asins:          map[string]bool{},
-		isbns:          map[string]bool{},
-		store:          store,
-		genres:         audibleGenreTable().withRunMemo(),
-		unmappedGenres: map[string]bool{},
-		runCredits:     map[string]map[model.Credit]bool{},
-		runIdentity:    map[string][]string{},
-		runIdentified:  map[string]runWorkIdentity{},
-		sourceType:     sourceType,
-		importDate:     opts.ImportDate,
-		mode:           opts.Mode,
-		conflicts:      opts.Conflicts,
-		userTier:       userTier,
-	}
+	p := newPlanner(store, sourceType, opts)
 	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
@@ -556,6 +535,33 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	err = p.run(books, opts)
 	return p.result(), err
+}
+
+// newPlanner returns an empty planner for a run of sourceType writing through
+// store, before anything is loaded: the one place its maps are made, so a test
+// that drives the planner directly builds it the way a run does.
+func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
+	return &planner{
+		dataDir:        opts.DataDir,
+		people:         map[string]string{},
+		authorPeople:   map[string]bool{},
+		narratorPeople: map[string]bool{},
+		works:          map[string]*workState{},
+		series:         map[string]*seriesState{},
+		asins:          map[string]bool{},
+		isbns:          map[string]bool{},
+		store:          store,
+		genres:         audibleGenreTable().withRunMemo(),
+		unmappedGenres: map[string]bool{},
+		runCredits:     map[string]map[model.Credit]bool{},
+		runIdentity:    map[string][]string{},
+		runIdentified:  map[string]runWorkIdentity{},
+		sourceType:     sourceType,
+		importDate:     opts.ImportDate,
+		mode:           opts.Mode,
+		conflicts:      opts.Conflicts,
+		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
+	}
 }
 
 // run plans the batch, reports, and (unless a dry run) writes and validates the
@@ -1554,26 +1560,24 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	if fellBack {
 		warn("name %q produced an empty slug; using %q", name, slug)
 	}
-	if _, known := p.people[slug]; known {
-		return slug
-	}
-	// A retired slug names its survivor (tombstone.go): the person is never
-	// re-created at the address a merge took them off.
-	if to, retired := p.retiredPerson(slug); retired {
-		p.noteTombstone(model.RedirectPeople, slug, to)
-		return to
-	}
-	if survivor, merges := p.initialsMerge(name); merges {
-		if _, known := p.people[survivor.slug]; known {
-			return survivor.slug
+	// livePerson also follows a retired slug to its survivor (tombstone.go): the
+	// person is never re-created at the address a merge took them off.
+	from := slug
+	live, ok := p.livePerson(from)
+	if !ok {
+		survivor, merges := p.initialsMerge(name)
+		if !merges {
+			return p.createPerson(slug, name)
 		}
-		if to, retired := p.retiredPerson(survivor.slug); retired {
-			p.noteTombstone(model.RedirectPeople, survivor.slug, to)
-			return to
+		from = survivor.slug
+		if live, ok = p.livePerson(from); !ok {
+			return p.createPerson(survivor.slug, survivor.name)
 		}
-		return p.createPerson(survivor.slug, survivor.name)
 	}
-	return p.createPerson(slug, name)
+	if live != from {
+		p.noteTombstone(model.RedirectPeople, from, live)
+	}
+	return live
 }
 
 // createPerson emits a new person record. The caller has already established
@@ -1602,15 +1606,12 @@ func (p *planner) createPerson(slug, name string) string {
 // catalogue already holds: a pre-existing pair of spellings stays a pair, each
 // serving its own credits, until a maintainer merges them.
 func (p *planner) personSlugTarget(slug string) string {
-	if _, known := p.people[slug]; known {
-		return slug
-	}
-	if to, retired := p.retiredPerson(slug); retired {
-		return to
+	if live, ok := p.livePerson(slug); ok {
+		return live
 	}
 	if survivor, decided := p.initialsSurvivors[slug]; decided {
-		if to, retired := p.retiredPerson(survivor.slug); retired {
-			return to
+		if live, ok := p.livePerson(survivor.slug); ok {
+			return live
 		}
 		return survivor.slug
 	}
@@ -1772,20 +1773,17 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	// otherwise the candidate is occupied and the walk steps past it - a minter
 	// never claims a tombstoned slug.
 	best, bestKind, free, blocked := -1, matchNone, -1, false
-	var bestWS *workState
-	bestVia := ""
 	for i, cand := range cands {
-		ws, via, occupied := p.workAt(cand.slug)
-		if !occupied {
-			if free < 0 && !cand.probeOnly {
-				free = i
-			}
-			if free >= 0 && i >= primary {
-				break
-			}
-			continue
-		}
+		ws, via := p.workAt(cand.slug)
 		if ws == nil {
+			if via == "" { // free: neither live nor retired
+				if free < 0 && !cand.probeOnly {
+					free = i
+				}
+				if free >= 0 && i >= primary {
+					break
+				}
+			}
 			continue
 		}
 		kind := matchWork(ws, authors)
@@ -1800,7 +1798,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 			continue
 		}
 		if kind > bestKind {
-			best, bestKind, bestWS, bestVia = i, kind, ws, via
+			best, bestKind = i, kind
 		}
 		if bestKind == matchExact {
 			break
@@ -1808,9 +1806,9 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	}
 
 	if best >= 0 {
-		ws := bestWS
-		if bestVia != "" {
-			p.noteTombstone(model.RedirectWorks, bestVia, ws.slug)
+		ws, via := p.workAt(cands[best].slug)
+		if via != "" {
+			p.noteTombstone(model.RedirectWorks, via, ws.slug)
 		}
 		// A later row of this run, merging into a work the run created: its
 		// credits are not a second source's account of an existing work, they are
@@ -1842,12 +1840,13 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		return nil
 	}
 	slug := cands[free].slug
+	survivor, retired := p.redirects.Survivor(model.RedirectWorks, base)
 	switch {
 	case model.IsReservedSlug(base):
 		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
-	case slug != base && p.redirects[model.RedirectWorks][base] != "":
+	case slug != base && retired:
 		warn("work slug %q was retired by a merge onto %q, which this row does not match; using %q for %q",
-			base, p.redirects[model.RedirectWorks][base], slug, title)
+			base, survivor, slug, title)
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
@@ -1896,7 +1895,7 @@ func (p *planner) findSeries(name string) *seriesState {
 // seriesChainFor walks name's chain over the planner's series (tombstone.go's
 // seriesChain, the walker every twin shares).
 func (p *planner) seriesChainFor(base, name string) seriesChainAnswer {
-	return seriesChain(base, name, p.redirects[model.RedirectSeries], func(slug string) (string, bool) {
+	return seriesChain(base, name, p.redirects, func(slug string) (string, bool) {
 		ss, exists := p.series[slug]
 		if !exists {
 			return "", false

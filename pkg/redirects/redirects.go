@@ -28,12 +28,7 @@
 // union driver for this shape - a map of maps, no deletions to reason about - is
 // the fix when that starts happening.
 //
-// The second gap this comment used to record is CLOSED: every minter reads the
-// table and never creates a record at a retired slug (internal/importer's
-// tombstone.go states the per-family rule; internal/issueform applies the same
-// one). Before that, a later import re-creating a merged duplicate landed on the
-// retired slug and failed metacheck's live-source rule - which stopped a whole
-// user library import on one series name (issue #2320).
+// Minters follow the table: see internal/importer/tombstone.go.
 //
 // This package is PUBLIC API, like the pkg/* packages around it: the repair
 // tooling that consumes it may live in a sibling module.

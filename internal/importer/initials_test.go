@@ -257,13 +257,10 @@ func probePlanner(t *testing.T, batch ...string) *planner {
 	for _, name := range batch {
 		c.addBatch(name)
 	}
-	return &planner{
-		dataDir:           dir,
-		people:            map[string]string{},
-		store:             store,
-		initialsSurvivors: c.decide(),
-		curSource:         OutSource{Type: sourceLibex, Ref: "B0TEST0000", ImportedAt: testImportDate},
-	}
+	p := newPlanner(store, sourceLibex, Options{DataDir: dir, ImportDate: testImportDate})
+	p.initialsSurvivors = c.decide()
+	p.curSource = OutSource{Type: sourceLibex, Ref: "B0TEST0000", ImportedAt: testImportDate}
+	return p
 }
 
 // TestLibexImportMergesInitialsSpellings is the end-to-end proof: two rows

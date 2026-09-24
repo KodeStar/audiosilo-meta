@@ -450,9 +450,9 @@ type seriesIndex struct {
 	// positions maps a series slug to the positions its works already occupy
 	// (position -> work id). A position already taken cannot be completed into.
 	positions map[string]map[string]string
-	// retired is the catalogue's series tombstones (retired slug -> survivor),
-	// which find walks exactly as getOrCreateSeries does (tombstone.go).
-	retired map[string]string
+	// redirects is the catalogue's tombstone table, which find walks exactly as
+	// getOrCreateSeries does (tombstone.go).
+	redirects model.Redirects
 }
 
 // loadSeriesIndex reads the catalogue at dataDir. A tree with validation
@@ -477,7 +477,7 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	if res.Catalog == nil {
 		return idx, warnings
 	}
-	idx.retired = res.Catalog.Redirects[model.RedirectSeries]
+	idx.redirects = res.Catalog.Redirects
 	for _, s := range res.Catalog.Series {
 		idx.bySlug[s.ID] = s.Name
 		taken := make(map[string]string, len(s.Works))
@@ -528,7 +528,7 @@ func (idx seriesIndex) find(name string) (string, bool) {
 	if base == "" {
 		return "", false
 	}
-	ans := seriesChain(base, name, idx.retired, func(slug string) (string, bool) {
+	ans := seriesChain(base, name, idx.redirects, func(slug string) (string, bool) {
 		stored, exists := idx.bySlug[slug]
 		return stored, exists
 	})

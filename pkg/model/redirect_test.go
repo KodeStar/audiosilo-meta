@@ -75,6 +75,38 @@ func TestRedirectsLen(t *testing.T) {
 	}
 }
 
+// TestRedirectsSurvivor pins the one resolving lookup: a hit is scoped to its
+// namespace, and an empty or self-pointing entry - which pkg/check refuses, but a
+// writer may read before it does - is never followed.
+func TestRedirectsSurvivor(t *testing.T) {
+	var none Redirects
+	if to, ok := none.Survivor(RedirectWorks, "a"); ok || to != "" {
+		t.Errorf("nil table: Survivor = %q/%v, want not retired", to, ok)
+	}
+	r := Redirects{
+		RedirectWorks:  {"old": "new", "self": "self", "blank": ""},
+		RedirectPeople: {"p-old": "p-new"},
+	}
+	for _, tc := range []struct {
+		kind RedirectKind
+		slug string
+		to   string
+		ok   bool
+	}{
+		{RedirectWorks, "old", "new", true},
+		{RedirectWorks, "new", "", false},
+		{RedirectWorks, "self", "", false},
+		{RedirectWorks, "blank", "", false},
+		{RedirectSeries, "old", "", false},
+		{RedirectPeople, "p-old", "p-new", true},
+		{RedirectWorks, "p-old", "", false},
+	} {
+		if to, ok := r.Survivor(tc.kind, tc.slug); to != tc.to || ok != tc.ok {
+			t.Errorf("Survivor(%s, %q) = %q/%v, want %q/%v", tc.kind, tc.slug, to, ok, tc.to, tc.ok)
+		}
+	}
+}
+
 // TestValidRedirectSlug covers the one definition both the writer and the
 // checker ask, including the reserved words no id namespace may hold.
 func TestValidRedirectSlug(t *testing.T) {

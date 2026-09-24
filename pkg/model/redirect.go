@@ -93,6 +93,19 @@ func (r Redirects) Len() int {
 	return n
 }
 
+// Survivor returns the live slug a retired slug of kind resolves to, and whether
+// the table retires it at all. It is the one lookup every writer that RESOLVES
+// through the table asks. An empty or self-pointing entry reads as not retired:
+// pkg/check refuses both, but a writer may be reading a table it has not yet
+// seen, and following either would loop or name nothing.
+func (r Redirects) Survivor(kind RedirectKind, slug string) (string, bool) {
+	to := r[kind][slug]
+	if to == "" || to == slug {
+		return "", false
+	}
+	return to, true
+}
+
 // ErrReservedRedirectSlug is what a redirect naming an API route literal fails
 // with. It is a sentinel so a caller can tell it from a malformed slug.
 var ErrReservedRedirectSlug = errors.New("is a reserved slug: it names an API route segment, not a record")
