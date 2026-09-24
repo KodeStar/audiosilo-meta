@@ -149,8 +149,9 @@ func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
 		// The record placeInSeries will extend, so the position gate reads the
-		// series the work actually lands in - a retired slug's survivor included.
-		slug := slugify(formSeries)
+		// series the work actually lands in - a reserved name's stepped slug and a
+		// retired slug's survivor included.
+		slug, _ := seriesSlugOf(formSeries)
 		if s, id := c.seriesAt(slug); s != nil && (id != slug || strings.EqualFold(s.Name, formSeries)) {
 			ctx.seriesRec = s
 		}

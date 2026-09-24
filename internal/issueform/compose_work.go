@@ -395,6 +395,20 @@ func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, 
 	}
 }
 
+// seriesSlugOf is the slug a form's series name addresses - the ONE derivation
+// placeInSeries places by and titleContextFor's gates read by, so both see the
+// same record. It is slugify(name) stepped off a reserved route literal onto the
+// numeric candidate the importer's chain gives it (SeriesSlugAt: "Latest" is
+// latest-2), so both writers resolve the name to one slug. base is the unstepped
+// slug, for the note saying so; both are "" for a name with no slug.
+func seriesSlugOf(name string) (slug, base string) {
+	base = slugify(name)
+	if model.IsReservedSlug(base) {
+		return importer.SeriesSlugAt(base, 0), base
+	}
+	return base, base
+}
+
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
 func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
@@ -412,18 +426,13 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		c.note("series position %q is not a number or omnibus range - work not placed in the series", posRaw)
 		return
 	}
-	seriesSlug := slugify(name)
+	seriesSlug, base := seriesSlugOf(name)
 	if seriesSlug == "" {
 		c.note("series name %q produced an empty slug - work not placed in the series", name)
 		return
 	}
-	// The series half of the same rule: a series named "Latest" takes the
-	// numeric candidate the importer's chain would give it (SeriesSlugAt), so
-	// both writers resolve the name to one slug.
-	if model.IsReservedSlug(seriesSlug) {
-		stepped := importer.SeriesSlugAt(seriesSlug, 0)
-		c.note("series slug %q is reserved for an API route - using %q", seriesSlug, stepped)
-		seriesSlug = stepped
+	if seriesSlug != base {
+		c.note("series slug %q is reserved for an API route - using %q", base, seriesSlug)
 	}
 
 	if existing, id := c.seriesAt(seriesSlug); existing != nil {

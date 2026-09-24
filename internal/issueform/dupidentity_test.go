@@ -353,6 +353,53 @@ func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
 	}
 }
 
+// The series-volume gate reads the record the work would be PLACED into, and a
+// series named "Latest" is placed at latest-2 (the reserved-slug step). Reading the
+// plain slugify of the name instead left the gate looking at no record at all, so a
+// title stating a volume that record fills reached a later, less specific verdict.
+func TestAddWorkSeriesVolumeGateReadsASteppedReservedSeries(t *testing.T) {
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	files["works/ar/arrival/work.json"] = `{
+  "authors": ["kevin-hearne"],
+  "id": "arrival",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "title": "Arrival"
+}`
+	files["works/ar/arrival/recordings/luke-daniels-2012.json"] = `{
+  "asin": [{"asin": "B005ARRIV1", "region": "us"}],
+  "id": "luke-daniels-2012",
+  "language": "en",
+  "license": "CC0-1.0",
+  "narrators": ["luke-daniels"],
+  "runtime_min": 480,
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "work": "arrival"
+}`
+	files["series/la/latest-2.json"] = `{
+  "id": "latest-2",
+  "license": "CC0-1.0",
+  "name": "Latest",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "works": [{"position": "2", "work": "arrival"}]
+}`
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+
+	res := processAddWork(t, dir, dupWorkBody("Arrival, Book 2", "Kevin Hearne", "Luke Daniels", "Latest", "2"))
+
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
+	}
+	if !anyContains(res.Messages, "volume 2") || !anyContains(res.Messages, "arrival") {
+		t.Errorf("the verdict must come from the series-volume gate, naming the member: %v", res.Messages)
+	}
+}
+
 // F3 on the intake side: a COLLECTION is not the volume it collects, at either gate -
 // the boxed set normalizes onto the plain title and claims no position of its own.
 func TestAddWorkAcceptsACollection(t *testing.T) {

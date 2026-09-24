@@ -325,3 +325,59 @@ func TestRecordingsOnlyFollowsAWorkTombstone(t *testing.T) {
 	}
 	assertTreeValid(t, dataDir)
 }
+
+// kateWiseGuardTree holds "If She Knew" (one recording, Bea Reader, 300 minutes)
+// at position `at` of the SURVIVOR "Kate Wise Mystery Series", with the retired
+// spelling "a-kate-wise-mystery" tombstoned onto it: the tree in which a row
+// naming the retired spelling meets the same-title serial guard. extra seeds more.
+func kateWiseGuardTree(t *testing.T, at string, extra map[string]string) string {
+	t.Helper()
+	files := map[string]string{
+		"works/if/if-she-knew/work.json": testpack.WorkJSON(t, "if-she-knew", "If She Knew", testpack.WithAuthors("ada-mapmaker")),
+		"works/if/if-she-knew/recordings/r1.json": testpack.RecJSON(t, "r1", "if-she-knew",
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+		"series/ka/kate-wise-mystery-series.json": testpack.SeriesJSON(t, "kate-wise-mystery-series",
+			"Kate Wise Mystery Series", "if-she-knew@"+at),
+	}
+	for k, v := range extra {
+		files[k] = v
+	}
+	return seedTombstoneTree(t, files, model.Redirects{model.RedirectSeries: {"a-kate-wise-mystery": "kate-wise-mystery-series"}})
+}
+
+// TestSerialGuardReadsTheSurvivorThroughATombstone: the same-title serial guard
+// compares a row's series position with the ones the incumbent recording's work
+// holds, and both sides must name the SAME series. A row stating the retired
+// spelling reaches the survivor through the tombstone, so its volume 2 is not the
+// survivor's volume 1 - keyed by NAME, the two sides named different series and
+// volume 2's ASIN merged onto volume 1's recording.
+func TestSerialGuardReadsTheSurvivorThroughATombstone(t *testing.T) {
+	dataDir := kateWiseGuardTree(t, "1", nil)
+	sum := runRecordingsOnly(t, dataDir,
+		tombRow("B0TOMBS008", "If She Knew", "Ada Mapmaker", "Bea Reader", 302, "A Kate Wise Mystery", "2")+"\n", false)
+
+	if sum.MergedASINs != 0 {
+		t.Errorf("MergedASINs = %d, want 0: volume 2's ASIN was merged onto volume 1's recording", sum.MergedASINs)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// TestSerialGuardIgnoresASeriesTheNameDoesNotReach is the other direction: a live
+// series that merely SHARES the retired spelling's name (at the numbered slug
+// past the tombstone) is not the series the row names - the tombstoned base
+// resolves to the survivor first - so its position must not block a re-release of
+// the very volume the survivor places the work at.
+func TestSerialGuardIgnoresASeriesTheNameDoesNotReach(t *testing.T) {
+	dataDir := kateWiseGuardTree(t, "2", map[string]string{
+		"series/ak/a-kate-wise-mystery-2.json": testpack.SeriesJSON(t, "a-kate-wise-mystery-2",
+			"A Kate Wise Mystery", "if-she-knew@1"),
+	})
+	sum := runRecordingsOnly(t, dataDir,
+		tombRow("B0TOMBS009", "If She Knew", "Ada Mapmaker", "Bea Reader", 302, "A Kate Wise Mystery", "2")+"\n", false)
+
+	if sum.MergedASINs != 1 {
+		t.Errorf("MergedASINs = %d, want 1: the survivor places the work at 2, so the row is a re-release: %v",
+			sum.MergedASINs, sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+}

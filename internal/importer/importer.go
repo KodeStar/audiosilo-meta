@@ -86,15 +86,19 @@ type recInfo struct {
 	narrators  map[string]bool
 	asins      map[string]bool
 	runtimeMin int
-	// seriesPos is every series position the ROW that created this recording
-	// claimed (lowercased series name -> position). It is the per-row half of
-	// the same-title serial guard: two volumes of a serial published under one
-	// title have compatible runtimes and identical narrators, so nothing else in
-	// the merge test can tell them apart, and their ASINs merged onto one
-	// recording. Empty for a recording loaded from disk (the row that made it is
-	// long gone), which is the same "unknown never blocks" posture abridged
-	// takes.
+	// seriesPos and rowClaims are the series positions this recording is known
+	// to be at - the per-recording half of the same-title serial guard: two
+	// volumes of a serial published under one title have compatible runtimes and
+	// identical narrators, so nothing else in the merge test can tell them apart,
+	// and their ASINs merged onto one recording. seriesPos is keyed by series
+	// SLUG and holds a disk recording's work memberships
+	// (seedDiskSeriesPositions); rowClaims is what the row that created a
+	// recording THIS run claimed, kept as the names it stated and resolved only
+	// when compared (seriesPosConflict), because the row's own series may not
+	// exist yet when its recording is made. Both empty means "unknown", which
+	// never blocks - the same posture abridged takes.
 	seriesPos map[string]string
+	rowClaims []seriesRef
 	// abridged is the recording's tri-state abridged flag as far as this run
 	// knows it. For a recording created THIS run it carries the entry's tri-state
 	// (nil = the source did not state it); for a recording loaded from disk it is
@@ -931,13 +935,13 @@ func (p *planner) loadExisting() {
 // Bravelands defect exactly - run 2's volume 2 merged its ASIN onto run 1's
 // volume 1 recording, because the incumbent stated no position at all.
 //
-// The key is the series NAME lowercased, matching rowSeriesPositions: the guard
-// only ever compares a recording's positions against a row's claims, and a row
-// states a name rather than a slug.
+// The key is the series SLUG: a row's claim is resolved onto the series its name
+// reaches (seriesKeyOf) before it is compared, so a row stating a retired
+// spelling meets the survivor's positions rather than none at all.
 func (p *planner) seedDiskSeriesPositions(series []*model.Series) {
 	byWork := map[string]map[string]string{}
 	for _, s := range series {
-		key := strings.ToLower(s.Name)
+		key := s.ID
 		for _, sw := range s.Works {
 			pos, ok := byWork[sw.Work]
 			if !ok {
@@ -1974,7 +1978,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 			// two productions look. Checked before the runtime and abridged guards
 			// because it is the only one that can tell two volumes of a serial
 			// apart.
-			if series, incumbent, want, conflict := seriesPosConflict(m.info, b); conflict {
+			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, b); conflict {
 				warn("recording %q is at position %q of series %q; this row claims %q - not merging its ASIN",
 					m.slug, incumbent, series, want)
 				continue
@@ -2037,7 +2041,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 
 	ri := &recInfo{
 		narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin,
-		abridged: b.abridged, seriesPos: rowSeriesPositions(b),
+		abridged: b.abridged, rowClaims: rowSeriesClaims(b),
 	}
 	for _, a := range rec.ASIN {
 		ri.asins[a.ASIN] = true
@@ -2334,26 +2338,31 @@ func abridgedConflict(a, b *bool) bool {
 
 func boolOrFalse(p *bool) bool { return p != nil && *p }
 
-// rowSeriesPositions is a row's valid series claims as a lookup (lowercased
-// series name -> position), for the recording-level serial guard. The name is
-// lowercased rather than slugified because it is only ever compared against
-// another row's claim, and findSeries already treats the name
-// case-insensitively. First claim wins, matching addToSeries.
-func rowSeriesPositions(b sourceBook) map[string]string {
-	var out map[string]string
+// rowSeriesClaims is a row's valid series claims in the order it states them,
+// kept on the recording the row creates (recInfo.rowClaims) for the
+// recording-level serial guard.
+func rowSeriesClaims(b sourceBook) []seriesRef {
+	var out []seriesRef
 	for _, r := range b.series {
-		if !r.seqOK {
-			continue
-		}
-		key := strings.ToLower(r.name)
-		if out == nil {
-			out = map[string]string{}
-		}
-		if _, taken := out[key]; !taken {
-			out[key] = r.seq
+		if r.seqOK {
+			out = append(out, r)
 		}
 	}
 	return out
+}
+
+// seriesKeyOf is the key the serial guard compares positions under: the slug of
+// the series name RESOLVES to (findSeries - the walk getOrCreateSeries places by,
+// so a retired spelling is its survivor and a name another series merely shares
+// is not), or, for a name no series holds, the lowercased name in a form no slug
+// can take. The fallback is what keeps two claims on a series nothing has minted
+// comparable: a recordings-only run never mints one, and within a create run a
+// row's recording is made before its own series is.
+func (p *planner) seriesKeyOf(name string) string {
+	if ss := p.findSeries(name); ss != nil {
+		return ss.slug
+	}
+	return "name:" + strings.ToLower(name)
 }
 
 // seriesPosConflict reports whether a row and an existing recording state
@@ -2361,18 +2370,36 @@ func rowSeriesPositions(b sourceBook) map[string]string {
 // however compatible their runtimes are. It names the series and both positions
 // so the refusal to merge can say what it saw.
 //
-// A recording with no recorded claims (every recording loaded from disk) never
-// conflicts: the guard only ever fires on evidence, never on absence.
-func seriesPosConflict(ri *recInfo, b sourceBook) (series, incumbent, want string, conflict bool) {
-	if len(ri.seriesPos) == 0 {
+// Both sides are keyed by the series the names resolve to NOW (seriesKeyOf), so
+// they cannot name one series under two keys. The recording's own claims are
+// resolved here rather than when it was made: its row's series may have been
+// minted since, and resolution only ever moves from "no series" to "this series".
+// A recording with no known position never conflicts: the guard only ever fires
+// on evidence, never on absence.
+func (p *planner) seriesPosConflict(ri *recInfo, b sourceBook) (series, incumbent, want string, conflict bool) {
+	if len(ri.seriesPos) == 0 && len(ri.rowClaims) == 0 {
 		return "", "", "", false
+	}
+	have := ri.seriesPos
+	if len(ri.rowClaims) > 0 {
+		have = make(map[string]string, len(ri.seriesPos)+len(ri.rowClaims))
+		for k, v := range ri.seriesPos {
+			have[k] = v
+		}
+		// First claim wins, matching addToSeries.
+		for _, c := range ri.rowClaims {
+			k := p.seriesKeyOf(c.name)
+			if _, taken := have[k]; !taken {
+				have[k] = c.seq
+			}
+		}
 	}
 	for _, r := range b.series {
 		if !r.seqOK {
 			continue
 		}
-		if have, in := ri.seriesPos[strings.ToLower(r.name)]; in && have != r.seq {
-			return r.name, have, r.seq, true
+		if pos, in := have[p.seriesKeyOf(r.name)]; in && pos != r.seq {
+			return r.name, pos, r.seq, true
 		}
 	}
 	return "", "", "", false
