@@ -938,7 +938,10 @@ func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []
 // creditWithRolesSided is creditWithRoles with the two census universes given
 // separately, which is what the import pipeline has.
 func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []string) {
-	cleaned = name
+	// A ", <suffix>" tail (a rejoined list piece, suffixpiece.go) comes off
+	// first so the qualifier rules see the credit's real end, and goes back on
+	// the cleaned NAME below.
+	cleaned, suffix := peelSuffixChunk(name)
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
@@ -956,6 +959,12 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stated = append(stated, parenRoles...)
 		stated = append(stated, bareRoles...)
 		stated = append(stated, tailRoles...)
+	}
+	if suffix != "" {
+		// Back on the name, then through the credential fold the loop's pass
+		// could not give it: "Jane Doe" + "LCSW" meets the `jane-doe` the census
+		// holds, while "Jr." and "Inc." are no credential and stay.
+		cleaned = reportedFold(cleaned+" "+suffix, c.sameSide, stripCredential, c.onCredential)
 	}
 	// The collective/placeholder fold is the LAST step, outside the loop and
 	// after every cleaning rule has run: it answers "which record does this
@@ -1237,9 +1246,6 @@ func SplitRawNames(joined string) []string {
 	}
 	return mergeSuffixPieces(out)
 }
-
-// splitRawNames is SplitRawNames under the name the package's own callers use.
-func splitRawNames(joined string) []string { return SplitRawNames(joined) }
 
 // creditNamesOf is a credit list's names, for the callers that only need the
 // people (every narrator path, and the recordings-only work matcher).

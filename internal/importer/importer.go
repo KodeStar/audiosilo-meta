@@ -1450,7 +1450,7 @@ func sourceCredits(typed []string, joined string, c creditCensus) []credit {
 // than the import itself reads.
 func sourceNames(typed []string, joined string) []string {
 	if len(typed) == 0 {
-		return splitRawNames(joined)
+		return SplitRawNames(joined)
 	}
 	out := make([]string, 0, len(typed))
 	for _, name := range typed {

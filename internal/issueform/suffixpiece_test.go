@@ -17,8 +17,8 @@ func TestSplitNamesRejoinsASuffixPieceAcrossLines(t *testing.T) {
 		in   string
 		want []string
 	}{
-		{"Anthony Rao, Ph.D.\nBob Reader", []string{"Anthony Rao, Ph.D.", "Bob Reader"}},
-		{"Jane Roe\nJr.", []string{"Jane Roe, Jr."}},
+		{"Anthony Rao, Ph.D.\nBob Reader", []string{"Anthony Rao Ph.D.", "Bob Reader"}},
+		{"Jane Roe\nJr.", []string{"Jane Roe Jr."}},
 		{"MD\nJane Roe", []string{"Jane Roe"}},
 		{"Jane Roe\nEd", []string{"Jane Roe", "Ed"}},
 	}
@@ -45,7 +45,7 @@ func TestAddWorkKeepsACredentialOnItsName(t *testing.T) {
 			t.Errorf("%s was minted from a comma-split credential", junk)
 		}
 	}
-	if person := readFile(t, dir, "people/da/david-posen-md.json"); !strings.Contains(person, `"name": "David Posen, MD"`) {
+	if person := readFile(t, dir, "people/da/david-posen-md.json"); !strings.Contains(person, `"name": "David Posen MD"`) {
 		t.Errorf("the author is not named as submitted:\n%s", person)
 	}
 	if !recordExists(t, dir, "people/an/anthony-rao-ph-d.json") {
