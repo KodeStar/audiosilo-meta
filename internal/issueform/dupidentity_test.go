@@ -360,31 +360,14 @@ func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
 func TestAddWorkSeriesVolumeGateReadsASteppedReservedSeries(t *testing.T) {
 	dir := t.TempDir()
 	files := dupSeedFiles()
-	files["works/ar/arrival/work.json"] = `{
-  "authors": ["kevin-hearne"],
-  "id": "arrival",
-  "language": "en",
-  "license": "CC0-1.0",
-  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
-  "title": "Arrival"
-}`
-	files["works/ar/arrival/recordings/luke-daniels-2012.json"] = `{
-  "asin": [{"asin": "B005ARRIV1", "region": "us"}],
-  "id": "luke-daniels-2012",
-  "language": "en",
-  "license": "CC0-1.0",
-  "narrators": ["luke-daniels"],
-  "runtime_min": 480,
-  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
-  "work": "arrival"
-}`
-	files["series/la/latest-2.json"] = `{
-  "id": "latest-2",
-  "license": "CC0-1.0",
-  "name": "Latest",
-  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
-  "works": [{"position": "2", "work": "arrival"}]
-}`
+	// The member is user-attested: a bulk-mirror seed would turn the duplicate
+	// verdict into a takeover (failDuplicateWork), which is not what is under test.
+	files["works/ar/arrival/work.json"] = testpack.WithField(t,
+		testpack.WorkJSON(t, "arrival", "Arrival", testpack.WithAuthors("kevin-hearne")),
+		"sources", []map[string]string{{"type": "user", "imported_at": "2026-07-01"}})
+	files["works/ar/arrival/recordings/luke-daniels-2012.json"] = testpack.RecJSON(t, "luke-daniels-2012", "arrival",
+		testpack.WithNarrators("luke-daniels"), testpack.WithRuntime(480))
+	files["series/la/latest-2.json"] = testpack.SeriesJSON(t, "latest-2", "Latest", "arrival@2")
 	testpack.Seed(t, dir, files)
 	if res := check.Load(dir); !res.OK() {
 		t.Fatalf("seed tree does not validate: %v", res.Problems)

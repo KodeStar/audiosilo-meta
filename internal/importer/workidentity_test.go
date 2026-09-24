@@ -222,8 +222,8 @@ func TestASINMergeBlockedByADifferentSeriesPosition(t *testing.T) {
 // original defect stayed hidden for four waves.
 func TestSeriesPositionGuardReportsTheRefusal(t *testing.T) {
 	b := sourceBook{series: []seriesRef{makeSeriesRef("Bravelands", "4")}}
-	// A disk recording's position is keyed by the series SLUG, which the row's
-	// name resolves to; a this-run recording keeps its row's claims, resolved
+	// A disk recording's claim carries the series SLUG, which the row's name
+	// resolves to; a this-run recording keeps its row's claim by name, resolved
 	// the same way - here onto a series nothing has minted, keyed by the name.
 	withSeries := &planner{series: map[string]*seriesState{"bravelands": {slug: "bravelands", name: "Bravelands"}}}
 	for _, tc := range []struct {
@@ -231,17 +231,17 @@ func TestSeriesPositionGuardReportsTheRefusal(t *testing.T) {
 		p    *planner
 		ri   *recInfo
 	}{
-		{"disk", withSeries, &recInfo{seriesPos: map[string]string{"bravelands": "1"}}},
-		{"this run", &planner{}, &recInfo{rowClaims: []seriesRef{makeSeriesRef("BRAVELANDS", "1")}}},
+		{"disk", withSeries, &recInfo{claims: []posClaim{{slug: "bravelands", seq: "1"}}}},
+		{"this run", &planner{}, &recInfo{claims: []posClaim{{name: "BRAVELANDS", seq: "1"}}}},
 	} {
-		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, b)
+		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, tc.p.keyClaims(rowSeriesClaims(b)))
 		if !conflict || series != "Bravelands" || incumbent != "1" || want != "4" {
 			t.Fatalf("%s: seriesPosConflict = %q %q %q %v", tc.name, series, incumbent, want, conflict)
 		}
 	}
 	// A recording with no known position never blocks: the guard fires on
 	// evidence, never on absence.
-	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, b); conflict {
+	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, withSeries.keyClaims(rowSeriesClaims(b))); conflict {
 		t.Error("a recording with no recorded claim must never block a merge")
 	}
 }

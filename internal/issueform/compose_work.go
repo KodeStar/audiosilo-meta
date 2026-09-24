@@ -395,18 +395,31 @@ func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, 
 	}
 }
 
-// seriesSlugOf is the slug a form's series name addresses - the ONE derivation
-// placeInSeries places by and titleContextFor's gates read by, so both see the
-// same record. It is slugify(name) stepped off a reserved route literal onto the
-// numeric candidate the importer's chain gives it (SeriesSlugAt: "Latest" is
-// latest-2), so both writers resolve the name to one slug. base is the unstepped
-// slug, for the note saying so; both are "" for a name with no slug.
+// seriesSlugOf is the slug a form's series name addresses: the importer's first
+// series candidate (SeriesSlugAt, which steps "Latest" onto latest-2), so both
+// writers resolve a name to one slug. base is the unstepped slug, for the note.
 func seriesSlugOf(name string) (slug, base string) {
 	base = slugify(name)
-	if model.IsReservedSlug(base) {
-		return importer.SeriesSlugAt(base, 0), base
+	return importer.SeriesSlugAt(base, 0), base
+}
+
+// seriesForForm is the series record a form's series name addresses - the one
+// lookup placeInSeries places by and titleContextFor's gates read, so both see
+// the same record. The record at seriesSlugOf's slug (or the survivor its
+// tombstone names, id being where it is stored) is accepted when it was reached
+// through a tombstone or carries that name; a record holding the slug under a
+// DIFFERENT name comes back as taken instead, and is not the name's series.
+func (c *composer) seriesForForm(name string) (rec *model.Series, id string, taken *model.Series) {
+	slug, _ := seriesSlugOf(name)
+	s, id := c.seriesAt(slug)
+	switch {
+	case s == nil:
+		return nil, "", nil
+	case id != slug || strings.EqualFold(s.Name, name):
+		return s, id, nil
+	default:
+		return nil, "", s
 	}
-	return base, base
 }
 
 // placeInSeries adds the work to the named series (creating it or extending an
@@ -435,13 +448,14 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		c.note("series slug %q is reserved for an API route - using %q", base, seriesSlug)
 	}
 
-	if existing, id := c.seriesAt(seriesSlug); existing != nil {
-		switch {
-		case id != seriesSlug:
+	existing, id, taken := c.seriesForForm(name)
+	if taken != nil {
+		c.fail(StatusNeedsHuman, "series slug %q already belongs to %q - a maintainer must resolve the series for %q", seriesSlug, taken.Name, name)
+		return
+	}
+	if existing != nil {
+		if id != seriesSlug {
 			c.noteRetired(model.RedirectSeries, seriesSlug, id)
-		case !strings.EqualFold(existing.Name, name):
-			c.fail(StatusNeedsHuman, "series slug %q already belongs to %q - a maintainer must resolve the series for %q", seriesSlug, existing.Name, name)
-			return
 		}
 		c.extendSeries(existing, id, workSlug, pos)
 		return

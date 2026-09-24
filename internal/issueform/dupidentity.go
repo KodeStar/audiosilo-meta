@@ -148,13 +148,9 @@ func (ctx titleContext) sameBookAs(w *model.Work) bool {
 func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
-		// The record placeInSeries will extend, so the position gate reads the
-		// series the work actually lands in - a reserved name's stepped slug and a
-		// retired slug's survivor included.
-		slug, _ := seriesSlugOf(formSeries)
-		if s, id := c.seriesAt(slug); s != nil && (id != slug || strings.EqualFold(s.Name, formSeries)) {
-			ctx.seriesRec = s
-		}
+		// The record placeInSeries will extend (seriesForForm), so the position
+		// gate reads the series the work actually lands in.
+		ctx.seriesRec, _, _ = c.seriesForForm(formSeries)
 		// A name the INDEX would not read a title against is not read against one
 		// here either (WorkIdentity.Admits): a one-word series name strips its own
 		// titles down to their volume number, and a fold-ambiguous one would make
