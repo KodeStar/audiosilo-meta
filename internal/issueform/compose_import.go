@@ -10,7 +10,12 @@ import (
 // Field labels for import-library.yml.
 const (
 	fImportType       = "Export type"
-	fImportAttachment = "Additional notes"
+	fImportAttachment = "Export file"
+	// fImportAttachmentLegacy is the attachment field's label before it was
+	// renamed to say what goes in it. GitHub renders the label an issue was
+	// OPENED with, so an issue filed under the old template keeps this heading -
+	// including every edit that re-runs the bot on it - and it is still read.
+	fImportAttachmentLegacy = "Additional notes"
 )
 
 // importLibrary ingests an attached OpenAudible/Libation/Audiobookshelf export
@@ -32,7 +37,7 @@ func (c *composer) importLibrary(s sections) {
 		return
 	}
 
-	raw, ok := c.attachmentBytes(s.get(fImportAttachment))
+	raw, ok := c.attachmentBytes(s.first(fImportAttachment, fImportAttachmentLegacy), maxImportAttachmentBytes)
 	if !ok {
 		return
 	}
@@ -148,8 +153,10 @@ func (c *composer) importLibrary(s sections) {
 	}
 	c.noteConflicts(sum)
 	c.noteImportWarnings(sum)
-	// The importer wrote and validated the tree; the intake workflow diffs it
-	// to build the pull request, so an explicit file list is not needed here.
+	// The importer wrote and validated the tree itself, so the file list is the
+	// one ITS flush reports - the same pack files the compose path's fileList
+	// names, which is what the pull request body lists.
+	c.directFiles = dataFiles(sum.Files)
 }
 
 // noteConflicts reports the rows the importer refused because they disagreed

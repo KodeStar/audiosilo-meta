@@ -3,6 +3,7 @@ package issueform
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -138,8 +139,22 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
 		return
 	}
+	// Two refusals come before the allowlist, because each is a submission
+	// nobody could apply as filed - so "a maintainer will apply it" would be
+	// untrue: a field the addressed record does not have but its work/recording
+	// sibling does, and a value outside the schema's closed vocabulary.
+	if c.misaddressedField(ref, fieldName) {
+		return
+	}
+	if msg := enumViolation(ref.kind, fieldName, corrected); msg != "" {
+		c.fail(StatusInvalid, "%s", msg)
+		return
+	}
 	op, ok := fields[fieldName]
 	if !ok {
+		if c.closedFieldUnchanged(addr, ref.kind, fieldName, corrected) {
+			return
+		}
 		c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
 		return
 	}
@@ -175,6 +190,110 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
+}
+
+// misaddressedField fails a correction that names a field its record does not
+// carry but the record's work/recording sibling does, and reports whether it
+// did. That is the one pair a submitter can confuse, because both are "the book"
+// from a reader's side: a work page shows its recordings' runtimes, so a runtime
+// correction filed against the work URL is the natural mistake - and a work has
+// no runtime_min to correct. Which kind owns a field is read from the schemas
+// (recordFields), never from a list here. A name the addressed record carries
+// anywhere - a work's xref.isbn beside a recording's isbn[] - is not misaddressed:
+// the submitter may well mean this record, and that stays a maintainer's call.
+//
+// The verdict is invalid rather than needs-human: the submitter can fix it by
+// editing the issue's Record, which re-runs the bot, and nobody else can decide
+// WHICH recording they meant.
+func (c *composer) misaddressedField(ref recordRef, field string) bool {
+	fields := recordFields()
+	if _, own := fields[ref.kind][field]; own {
+		return false
+	}
+	switch ref.kind {
+	case model.KindWork:
+		if fs, onRec := fields[model.KindRecording][field]; !onRec || fs.nested {
+			return false
+		}
+		c.fail(StatusInvalid, "%q is a recording field, not a work field - it describes one narration of the book, and a work can have several. "+
+			"Set Record to the recording instead, in the form %s%s",
+			field, recordingRefPath(ref.slug, "<recording>"), c.recordingChoices(ref.slug))
+	case model.KindRecording:
+		if fs, onWork := fields[model.KindWork][field]; !onWork || fs.nested {
+			return false
+		}
+		c.fail(StatusInvalid, "%q is a work field, not a recording field - it describes the book itself, whichever narration you listen to. "+
+			"Set Record to the work instead: %s", field, workPageURL(ref.workSlug))
+	default:
+		return false
+	}
+	return true
+}
+
+// recordingChoices lists the recordings of a catalogued work as references a
+// submitter can paste, or "" when the work is not in the loaded catalogue. The
+// list is capped: a work with a dozen editions still gets a readable sentence.
+func (c *composer) recordingChoices(workSlug string) string {
+	w := c.works[workSlug]
+	if w == nil || len(w.Recordings) == 0 {
+		return ""
+	}
+	ids := make([]string, 0, len(w.Recordings))
+	for _, r := range w.Recordings {
+		ids = append(ids, r.ID)
+	}
+	sort.Strings(ids)
+	const shown = 5
+	refs := make([]string, 0, shown)
+	for _, id := range ids[:min(shown, len(ids))] {
+		refs = append(refs, recordingRefPath(workSlug, id))
+	}
+	more := ""
+	if len(ids) > shown {
+		more = fmt.Sprintf(" (and %d more)", len(ids)-shown)
+	}
+	return " - this work's recordings are " + strings.Join(refs, ", ") + more
+}
+
+// recordingRefPath is the reference a correction's Record takes for a recording.
+// A recording has no page of its own, so it is the data-tree path form refPath
+// reads; the shard directory is ignored on the way in (the slug resolves the
+// record) and is written as the slug's first two characters because that is
+// what the form's own placeholder shows.
+func recordingRefPath(workSlug, recSlug string) string {
+	return "data/works/" + workSlug[:min(2, len(workSlug))] + "/" + workSlug + "/recordings/" + recSlug + ".json"
+}
+
+// workPageURL is a work's page on the site - the reference the correction form
+// recommends, and one resolveRecordRef reads back as that work.
+func workPageURL(workSlug string) string {
+	return siteOrigin + "/works/" + workSlug
+}
+
+// siteOrigin is the public site the correction form tells submitters to copy a
+// record's URL from.
+const siteOrigin = "https://meta.audiosilo.app"
+
+// closedFieldUnchanged answers the one closed-vocabulary correction that is
+// neither invalid nor a maintainer's: a field this form cannot write, corrected
+// to the value the record already carries. Every core record's license is
+// "CC0-1.0" and the schema allows nothing else, so a license "correction" that
+// survives enumViolation is always this case - and telling its submitter a
+// maintainer will apply it would park an issue nobody has anything to do for.
+func (c *composer) closedFieldUnchanged(addr entryAddr, kind model.Kind, field, corrected string) bool {
+	if recordFields()[kind][field].enum == nil {
+		return false
+	}
+	_, record, ok := c.correctionTarget(addr)
+	if !ok {
+		return true
+	}
+	cur, _ := record[field].(string)
+	if !strings.EqualFold(cur, strings.TrimSpace(corrected)) {
+		return false
+	}
+	c.failNoop("%s on %s is already %q", field, addr.label(c), cur)
+	return true
 }
 
 // correctionTarget reads the record a correction addresses. entry is the unit

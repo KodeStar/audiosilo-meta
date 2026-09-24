@@ -2,6 +2,11 @@ package issueform
 
 import (
 	"encoding/json"
+	"io/fs"
+	"os"
+	"path/filepath"
+	"slices"
+	"sort"
 	"strings"
 	"testing"
 
@@ -651,7 +656,7 @@ func TestCharactersFetchOK(t *testing.T) {
 	dir := seedTree(t)
 	url := "https://github.com/user-attachments/files/1/characters.json"
 	body := charactersBody("existing-work", "[characters.json]("+url+")", true)
-	fetch := func(u string) ([]byte, error) {
+	fetch := func(u string, _ int64) ([]byte, error) {
 		if u != url {
 			t.Fatalf("unexpected fetch url %q", u)
 		}
@@ -761,24 +766,78 @@ func TestImportFolderScanNeedsHuman(t *testing.T) {
 	}
 }
 
-func TestImportResultFilesNeverNull(t *testing.T) {
-	// #34: the import path leaves Files nil; the emitted JSON must be [] (never
-	// null), or the intake workflow's jq over .files[] errors after composing.
+// TestImportResultNamesTheFilesItWrote: the import template hands the tree to the
+// bulk importer, and its Result used to carry no file list at all - so every
+// accepted import opened a pull request whose body read "Files:" over nothing.
+// The list is the importer's own flush report now, and it must be EXACTLY the
+// files the run changed: compared against a byte snapshot of the tree taken
+// before and after, not against a list the test composes.
+func TestImportResultNamesTheFilesItWrote(t *testing.T) {
 	dir := seedTree(t)
+	before := snapshotTree(t, dir)
 	body := importBody("OpenAudible (books.json)", openAudibleExport)
 	res := Process(Options{DataDir: dir, Template: "import", Body: body})
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	// Files may be nil in memory (the import path diffs the tree); the [] guarantee
-	// lives on Result.MarshalJSON, so it is the marshaled output that must never be
-	// null.
-	data, err := json.Marshal(res)
+	after := snapshotTree(t, dir)
+	var changed []string
+	for rel, b := range after {
+		if prev, ok := before[rel]; !ok || prev != b {
+			changed = append(changed, "data/"+rel)
+		}
+	}
+	sort.Strings(changed)
+	if len(changed) == 0 {
+		t.Fatal("the fixture import changed nothing - it no longer pins the list")
+	}
+	if !slices.Equal(res.Files, changed) {
+		t.Errorf("Files = %v, want the files the run changed: %v", res.Files, changed)
+	}
+}
+
+// snapshotTree reads every file under dir, keyed by its dir-relative slash path.
+func snapshotTree(t *testing.T, dir string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	err := filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		b, err := os.ReadFile(p)
+		if err != nil {
+			return err
+		}
+		rel, err := filepath.Rel(dir, p)
+		if err != nil {
+			return err
+		}
+		out[filepath.ToSlash(rel)] = string(b)
+		return nil
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(string(data), `"files":[]`) {
-		t.Errorf("result JSON must contain \"files\":[] (not null): %s", data)
+	return out
+}
+
+// TestImportReadsTheAttachmentUnderEitherLabel: the attachment field was
+// relabelled "Additional notes" -> "Export file" so the form says what goes in
+// it. GitHub renders the label an issue was OPENED with, so an issue filed
+// before the rename - and every edit that re-runs the bot on it - still carries
+// the old heading, and must still import.
+func TestImportReadsTheAttachmentUnderEitherLabel(t *testing.T) {
+	for _, label := range []string{fImportAttachment, fImportAttachmentLegacy} {
+		t.Run(label, func(t *testing.T) {
+			body := field(fImportType, "OpenAudible (books.json)") +
+				field(label, openAudibleExport) +
+				"### Your own library\n\n- [x] mine\n\n" +
+				"### " + fCC0 + "\n\n" + checkedBox()
+			res := Process(Options{DataDir: seedTree(t), Template: "import", Body: body})
+			if res.Status != StatusOK {
+				t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+			}
+		})
 	}
 }
 
@@ -878,10 +937,10 @@ func TestImportEmptyExportNeedsHuman(t *testing.T) {
 // refusal happens before any request is made. The rule itself is
 // ghhost.Allowed's, tested there.
 func TestFetchHostAllowlist(t *testing.T) {
-	if _, err := defaultFetch("http://github.com/x"); err == nil {
+	if _, err := defaultFetch("http://github.com/x", maxAttachmentBytes); err == nil {
 		t.Error("expected http scheme to be rejected")
 	}
-	if _, err := defaultFetch("https://evil.example.com/x.json"); err == nil {
+	if _, err := defaultFetch("https://evil.example.com/x.json", maxAttachmentBytes); err == nil {
 		t.Error("expected disallowed host to be rejected")
 	}
 }

@@ -58,9 +58,8 @@ type Result struct {
 // MarshalJSON guarantees Files always serializes as [] (never null): the intake
 // workflow's PR-body step runs jq over .files[], which errors on a JSON null.
 // Several producers leave Files nil (the no-routing-label verdict in
-// cmd/metaissue builds a Result literal directly; the import path leaves it nil
-// because the workflow diffs the tree instead), so the guarantee lives on the
-// type rather than in any one producer. The alias avoids infinite recursion.
+// cmd/metaissue builds a Result literal directly, and every non-ok verdict), so
+// the guarantee lives on the type rather than in any one producer. The alias avoids infinite recursion.
 func (r Result) MarshalJSON() ([]byte, error) {
 	type alias Result
 	a := alias(r)
@@ -70,10 +69,11 @@ func (r Result) MarshalJSON() ([]byte, error) {
 	return json.Marshal(a)
 }
 
-// Fetcher fetches the bytes of a URL (used for issue-form file attachments). It
-// is injectable so tests never touch the network; the default (fetch.go) is
-// HTTPS-only, host-pinned, and size-capped.
-type Fetcher func(url string) ([]byte, error)
+// Fetcher fetches the bytes of a URL (used for issue-form file attachments),
+// refusing a body over maxBytes - the cap is the CALLER's, because it depends on
+// which form the file came from (fetch.go). It is injectable so tests never touch
+// the network; the default (fetch.go) is HTTPS-only and host-pinned.
+type Fetcher func(url string, maxBytes int64) ([]byte, error)
 
 // Options configures a run.
 type Options struct {
@@ -186,7 +186,8 @@ type composer struct {
 	// handled is set by paths that write to disk and validate themselves
 	// (import), so Process skips the generic flush.
 	handled bool
-	// directFiles lists files a self-handling path reports (data/-prefixed).
+	// directFiles lists the files a self-handling path wrote (data/-prefixed):
+	// the import template's, off the importer's own flush.
 	directFiles []string
 }
 
@@ -283,7 +284,14 @@ func process(opts Options) Result {
 		return Result{Status: StatusNeedsHuman, Messages: []string{err.Error()}}
 	}
 	c.store = store
-	c.loadExisting()
+	// The import template hands the tree to the bulk importer, which loads the
+	// catalogue through a store of its own, so the composer's dedup maps would be
+	// a SECOND whole-catalogue load held live for the importer's entire run -
+	// doubling the peak of the one path that also holds the largest attachment.
+	// The store is still opened above: its legacy-layout refusal is the verdict.
+	if tmpl != "import" {
+		c.loadExisting()
+	}
 
 	sections := parseBody(opts.Body)
 
@@ -676,10 +684,15 @@ func (c *composer) validate() []string {
 // fileList returns the pack files flush rewrote, data/-prefixed and sorted. It
 // is what the intake workflow commits, so it names FILES rather than entries -
 // one pack usually carries several of a submission's records.
-func (c *composer) fileList() []string {
-	out := make([]string, 0, len(c.wrote))
-	for _, rel := range c.wrote {
-		out = append(out, "data/"+rel)
+func (c *composer) fileList() []string { return dataFiles(c.wrote) }
+
+// dataFiles renders data-relative pack paths as the data/-prefixed, sorted list
+// Result.Files carries - for the compose path's own flush and for the import
+// template's, which the importer performs.
+func dataFiles(rel []string) []string {
+	out := make([]string, 0, len(rel))
+	for _, r := range rel {
+		out = append(out, "data/"+r)
 	}
 	sort.Strings(out)
 	return out

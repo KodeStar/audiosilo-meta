@@ -97,7 +97,7 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		}
 	}
 
-	raw, ok := c.attachmentBytes(s.get(attachLabel))
+	raw, ok := c.attachmentBytes(s.get(attachLabel), maxAttachmentBytes)
 	if !ok {
 		return
 	}
@@ -126,10 +126,10 @@ func (c *composer) failMemberTaken(names sidecarNames, at string) {
 }
 
 // attachmentBytes resolves a sidecar/import attachment field to bytes: an
-// uploaded file URL is fetched (HTTPS + host-pinned + size-capped), or pasted
-// JSON is used inline. It sets a terminal status and reports ok=false on any
-// failure.
-func (c *composer) attachmentBytes(block string) ([]byte, bool) {
+// uploaded file URL is fetched (HTTPS + host-pinned + capped at maxBytes), or
+// pasted JSON is used inline - GitHub's own limit on an issue body bounds that.
+// It sets a terminal status and reports ok=false on any failure.
+func (c *composer) attachmentBytes(block string, maxBytes int64) ([]byte, bool) {
 	url, inline, ok := extractAttachment(block)
 	if !ok {
 		c.fail(StatusInvalid, "no attached file or pasted JSON found")
@@ -138,7 +138,7 @@ func (c *composer) attachmentBytes(block string) ([]byte, bool) {
 	if inline != nil {
 		return inline, true
 	}
-	data, err := c.fetch(url)
+	data, err := c.fetch(url, maxBytes)
 	if err != nil {
 		c.fail(StatusInvalid, "could not fetch the attached file: %v", err)
 		return nil, false

@@ -11,8 +11,8 @@ body:
         titles and timestamps.
 
         **How to attach the file:** drag your export file into the
-        **Additional notes** box below, or paste its contents there. GitHub will
-        upload it and insert a link.
+        **Export file** box below, or paste its contents there. GitHub will
+        upload it and insert a link. Files up to 25 MB are accepted.
 
         Supported exports:
 
@@ -45,9 +45,9 @@ body:
   - type: textarea
     id: attachment
     attributes:
-      label: Additional notes
-      description: Drag the export file here to attach it (or paste its contents), plus anything we should know.
-      placeholder: Drop books.json here...
+      label: Export file
+      description: Drag your exported JSON file into this box to attach it (up to 25 MB), or paste the file's contents. Anything else you want to tell us can go on its own lines after the file link.
+      placeholder: Drop your books.json or export .json file here...
     validations:
       required: true
 

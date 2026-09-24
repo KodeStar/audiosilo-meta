@@ -7,6 +7,7 @@ import (
 	"path"
 	"path/filepath"
 	"reflect"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -117,6 +118,50 @@ func seriesAddr(slug string) string {
 func recSlugsOf(t *testing.T, dataDir, workSlug string) []string {
 	t.Helper()
 	return testpack.Recordings(t, dataDir, workSlug)
+}
+
+// TestSummaryFilesAreThePacksTheFlushWrote: a caller that hands the tree to the
+// importer (the intake bot's import template) reports the run through
+// Summary.Files, so the list must name the packs actually on disk after the run,
+// be empty for a dry run, and be empty for a re-run that changed nothing.
+func TestSummaryFilesAreThePacksTheFlushWrote(t *testing.T) {
+	fixture, err := os.ReadFile("testdata/books_basic.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if dry, _ := runImport(t, string(fixture), true); len(dry.Files) != 0 {
+		t.Errorf("a dry run reported files: %v", dry.Files)
+	}
+
+	sum, dataDir := runImport(t, string(fixture), false)
+	if len(sum.Files) == 0 {
+		t.Fatal("a run that created records reported no files")
+	}
+	if !sort.StringsAreSorted(sum.Files) {
+		t.Errorf("Files is not sorted: %v", sum.Files)
+	}
+	for _, rel := range sum.Files {
+		if _, err := os.Stat(filepath.Join(dataDir, filepath.FromSlash(rel))); err != nil {
+			t.Errorf("reported file %s: %v", rel, err)
+		}
+	}
+	for _, fam := range []string{"works/", "people/", "series/"} {
+		if !slices.ContainsFunc(sum.Files, func(f string) bool { return strings.HasPrefix(f, fam) }) {
+			t.Errorf("no %s pack reported, though the run wrote that family: %v", fam, sum.Files)
+		}
+	}
+
+	books := filepath.Join(t.TempDir(), "books.json")
+	if err := os.WriteFile(books, fixture, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	again, err := Run(books, Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(again.Files) != 0 {
+		t.Errorf("a re-run that changed nothing reported files: %v", again.Files)
+	}
 }
 
 func TestImportBasic(t *testing.T) {

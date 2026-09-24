@@ -31,6 +31,16 @@ var entitySchemas = map[model.Kind]string{
 	model.KindDescription: "description.schema.json",
 }
 
+// EntitySchemaFile names the schema file (under schema/, in meta.SchemaFS) that
+// defines a record kind, and reports false for a kind with none. It is exported
+// so a reader that needs to know what a kind's FIELDS are - internal/issueform
+// telling a correction which record a field lives on - asks this table rather
+// than keeping a second one.
+func EntitySchemaFile(k model.Kind) (string, bool) {
+	f, ok := entitySchemas[k]
+	return f, ok
+}
+
 // wrapperSchemas are the per-family pack wrappers. The pack walker reaches an
 // entry THROUGH its family's wrapper (see schemaSet.entry), so these files are
 // load-bearing rather than documentation: change what a wrapper says an entry
