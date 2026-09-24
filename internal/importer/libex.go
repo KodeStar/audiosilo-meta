@@ -400,7 +400,7 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 // to the comma-split every source shares.
 //
 // Names come back in the source's own spelling on BOTH shapes: the array path
-// never cleaned them, and the bare-string path must not either (splitRawNames,
+// never cleaned them, and the bare-string path must not either (SplitRawNames,
 // not SplitNames). Cleaning here would strip a trailing role qualifier before
 // sourceCredits could read it, so a hand-made row using the joined form would
 // lose every contributor role while the array form kept it - the same file,
@@ -409,7 +409,7 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 func libexNames(v any) []string {
 	arr, ok := v.([]any)
 	if !ok {
-		return splitRawNames(coerceStr(v))
+		return SplitRawNames(coerceStr(v))
 	}
 	seen := map[string]bool{}
 	out := make([]string, 0, len(arr))
@@ -425,6 +425,11 @@ func libexNames(v any) []string {
 		}
 		seen[name] = true
 		out = append(out, name)
+	}
+	// A stranded post-nominal is dropped, not rejoined, and only beside a real
+	// credit: see suffixpiece.go.
+	if hasRealCredit(out) {
+		out = slices.DeleteFunc(out, isSuffixPiece)
 	}
 	return out
 }

@@ -1401,9 +1401,10 @@ the bare twin the census already holds ("Dr. Jane Doe", `honorific.go`), the
 SEPARATOR-LESS spelling
 of a role qualifier ("Andrew Lang Editor", `barerole.go`, its own narrow
 vocabulary because "Public Play Editora" and "Augustin Eugène Scribe" end in
-role words too), a trailing ACADEMIC CREDENTIAL folded onto the bare twin
-("Philip Zimbardo Ph.D.", `credential.go` - the honorific rule's mirror image,
-same same-side census and two-word floor, doctorate spellings only), and a
+role words too), a trailing CREDENTIAL folded onto the bare twin
+("Philip Zimbardo Ph.D.", "Deb Dana LCSW", `credential.go` - the honorific
+rule's mirror image, same same-side census and two-word floor, doctorate and
+licensure spellings, never a generational or legal-entity suffix), and a
 DANGLING
 leading conjunction ("and Melanie Mendez", `conjunction.go`), each of which
 otherwise minted a second identity for somebody already in the catalogue) - and
@@ -1468,6 +1469,19 @@ somebody's account of the work and is never spliced into) and accrete WITHIN one
 rows state, so a second region's row is not silently dropped). A trailing
 credential/generational fragment that had to be trimmed for the role to match is
 re-appended to the NAME ("X - editor Jr." is X Jr., an editor), never discarded.
+The same holds one step EARLIER, at the list split (issue #2320): a piece that
+is nothing but a credential, generational or legal-entity suffix ("David Posen,
+MD" minted a person "Md") REJOINS the name before it in a joined list
+(`SplitRawNames`, which internal/issueform's splitter calls too), is dropped when
+it opens the list, and is dropped from a libex typed list, whose order states
+nothing - but never when it is the side's only credit ("Ii" is a surname). The
+cleaning then peels a PERSON's ", <suffix>" tail off (a credential or
+generational one - never "Inc.", which stays on the credit so a studio half the
+cleaning removes cannot leave it on the person), cleans the name (so "Jane Doe
+(translator), PhD" still states its role) and puts the suffix back on it unless
+the name slugs away to nothing (the suffix would become its identity). The
+vocabulary and its measurement are in `suffixpiece.go`, hand-mirrored for the
+/import preview in `site/src/lib/import-parse.ts` under a Go-side drift guard.
 Credit lists dedupe by slug and the
 schema's `uniqueItems` rejects doubled credits; a **work** is (title slug
 + author set), but series volumes that share a `title_short` (or a book mapping

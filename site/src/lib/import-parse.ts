@@ -202,19 +202,128 @@ function stripRoleQualifier(name: string): string {
   return cleaned === '' ? name : cleaned
 }
 
-// Normalize one raw credit: trim and strip a trailing role qualifier; null when
-// nothing usable remains. Shared by every name-list shape (comma-joined strings
-// and the folder-scan's arrays).
-function cleanName(part: string): string | null {
-  const name = part.trim()
-  return name === '' ? null : stripRoleQualifier(name)
+// The post-nominal SUFFIX rule (issue #2320): commas separate people in a
+// joined credit field, so "David Posen, MD" split into two credits and the
+// preview showed a person called "MD". A comma piece that is NOTHING BUT a
+// credential, generational or legal-entity suffix rejoins the name before it.
+//
+// HAND-MIRRORED TWIN of internal/importer/suffixpiece.go (isSuffixPiece,
+// mergeSuffixPieces, peelSuffixChunk) - the importer is the rule of record, and
+// this copy exists so the /import preview shows the person the importer will
+// record. The two sets in the block below are the importer's suffixPieceSpellings (the union of
+// its foldCredentials, generationalSuffixes and corporateLegalSuffix), lowercased
+// and single-spaced; TestSiteSuffixVocabularyMatches on the Go side reads this
+// list back and fails when the two drift, and both sides' tests pin the same
+// cases. The measurement behind every entry, and the tokens deliberately left
+// out ("Ed", "DC", "MA", "J.D.", "RN", "MS" - names or initials as readily as a
+// post-nominal), live in the Go file's header.
+// suffix-spellings:begin
+// The post-nominals of a PERSON - the only ones peelSuffixChunk takes off a credit.
+const PERSON_SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
+  // Doctorates.
+  'phd', 'ph.d.', 'ph.d', 'ph. d.', 'phd.',
+  'md', 'm.d.', 'm.d', 'm. d.', 'md.',
+  'psyd', 'psy.d.', 'psy.d',
+  'edd', 'ed.d.', 'ed. d.', 'ed.d', 'ed d.',
+  'dmin', 'd.min.', 'd. min', 'thd', 'th.d.',
+  // Professional and licensure.
+  'mba', 'lcsw', 'licsw', 'lmft', 'lpc', 'lcpc', 'lmhc', 'mft', 'msw', 'm.s.w.',
+  'esq', 'esq.', 'mph', 'cpa', 'cfp', 'dvm', 'dds', 'abpp', 'msn', 'bsn', 'cpnp',
+  'faap', 'facp', 'facr', 'fache', 'rdn', 'ibclc', 'ncc',
+  // Generational - part of the name.
+  'jr', 'jr.', 'sr', 'sr.', 'ii', 'iii', 'iv',
+])
+// Legal entity: rejoins its name, but is never peeled (it belongs to the whole
+// credit string, not to a person the cleaning might leave behind).
+const LEGAL_SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
+  'llc', 'ltd', 'ltd.', 'inc', 'inc.', 'gmbh',
+])
+// suffix-spellings:end
+const SUFFIX_SPELLINGS: ReadonlySet<string> = new Set([
+  ...PERSON_SUFFIX_SPELLINGS,
+  ...LEGAL_SUFFIX_SPELLINGS,
+])
+
+// One token in vocabulary form: lowercased, diacritics folded, and stripped of a
+// trailing list comma - the importer's credentialKey.
+function suffixKey(word: string): string {
+  return word
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase()
+    .replace(/,+$/, '')
 }
 
-// Split a comma-joined name list, trim each, strip a trailing role qualifier,
-// and drop empties.
-function splitNames(joined: string): string[] {
+// Whether a split list piece is nothing but suffixes - one ("MD", "Ph. D.") or
+// several stacked ("MD PhD"), read from the end one or two tokens at a time.
+export function isSuffixPiece(
+  piece: string,
+  vocab: ReadonlySet<string> = SUFFIX_SPELLINGS
+): boolean {
+  const words = piece.trim().split(/\s+/).filter((w) => w !== '').map(suffixKey)
+  if (words.length === 0) return false
+  let n = words.length
+  while (n > 0) {
+    if (vocab.has(words[n - 1])) n -= 1
+    else if (n >= 2 && vocab.has(`${words[n - 2]} ${words[n - 1]}`)) n -= 2
+    else return false
+  }
+  return true
+}
+
+// The joined-list rule: every suffix-only piece rejoins the piece before it,
+// and one with nothing before it is dropped - but a list with NO real credit in
+// it is returned as it was split ("Ii" is a Japanese surname, and a lone credit
+// must not vanish).
+export function mergeSuffixPieces(pieces: string[]): string[] {
   const out: string[] = []
-  for (const part of joined.split(',')) {
+  for (const p of pieces) {
+    if (!isSuffixPiece(p)) out.push(p)
+    else if (out.length > 0) out[out.length - 1] += `, ${p}`
+  }
+  return out.length === 0 ? pieces : out
+}
+
+// Split one credit ending in ", <suffix>" chunks into the name before them and
+// the suffixes, space-joined, so the role-qualifier strip sees the credit's
+// real end and the suffix goes back on the NAME ("Jane Doe - translator, PhD"
+// -> "Jane Doe PhD"). Only a person's post-nominal is peeled; a legal-entity
+// chunk stays on the credit.
+function peelSuffixChunk(name: string): [string, string] {
+  let head = name
+  const parts: string[] = []
+  for (;;) {
+    const i = head.lastIndexOf(',')
+    if (i < 0 || !isSuffixPiece(head.slice(i + 1), PERSON_SUFFIX_SPELLINGS)) break
+    const rest = head.slice(0, i).trim()
+    if (rest === '') break
+    parts.unshift(head.slice(i + 1).trim())
+    head = rest
+  }
+  return parts.length === 0 ? [name, ''] : [head, parts.join(' ')]
+}
+
+// Normalize one raw credit: trim, strip a trailing role qualifier (behind any
+// ", <suffix>" tail, which goes back on the name); null when nothing usable
+// remains. Shared by every name-list shape (comma-joined strings and the
+// folder-scan's arrays).
+function cleanName(part: string): string | null {
+  const name = part.trim()
+  if (name === '') return null
+  const [head, suffix] = peelSuffixChunk(name)
+  const cleaned = stripRoleQualifier(head)
+  return suffix === '' ? cleaned : `${cleaned} ${suffix}`
+}
+
+// Split a comma-joined name list, trim each, rejoin a suffix-only piece onto
+// the name before it, strip a trailing role qualifier, and drop empties.
+function splitNames(joined: string): string[] {
+  const pieces = joined
+    .split(',')
+    .map((p) => p.trim())
+    .filter((p) => p !== '')
+  const out: string[] = []
+  for (const part of mergeSuffixPieces(pieces)) {
     const name = cleanName(part)
     if (name !== null) out.push(name)
   }

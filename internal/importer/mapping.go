@@ -938,7 +938,10 @@ func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []
 // creditWithRolesSided is creditWithRoles with the two census universes given
 // separately, which is what the import pipeline has.
 func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []string) {
-	cleaned = name
+	// A ", <suffix>" tail (a rejoined list piece, suffixpiece.go) comes off
+	// first so the qualifier rules see the credit's real end, and goes back on
+	// the cleaned NAME below.
+	cleaned, suffix := peelSuffixChunk(name)
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
@@ -956,6 +959,16 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stated = append(stated, parenRoles...)
 		stated = append(stated, bareRoles...)
 		stated = append(stated, tailRoles...)
+	}
+	if suffix != "" && Slugify(cleaned) != "" {
+		// Back on the name, then through the credential fold the loop's pass
+		// could not give it: "Jane Doe" + "LCSW" meets the `jane-doe` the census
+		// holds, while "Jr." is no credential and stays. A name that slugs away
+		// to nothing (Cyrillic, CJK) does NOT take it back: the suffix alone
+		// would become its identity - "Иван Петров PhD" slugs to `phd`, one
+		// record shared by every such credit, and escapes both the libex
+		// unidentifiable-credit refusal and workCredits' catch-all guard.
+		cleaned = reportedFold(cleaned+" "+suffix, c.sameSide, stripCredential, c.onCredential)
 	}
 	// The collective/placeholder fold is the LAST step, outside the loop and
 	// after every cleaning rule has run: it answers "which record does this
@@ -1217,7 +1230,7 @@ type credit struct {
 	roles []string
 }
 
-// splitRawNames splits a comma-joined list of names into the source's OWN
+// SplitRawNames splits a comma-joined list of names into the source's OWN
 // spellings - trimmed and de-emptied, but not cleaned. It is what a parser
 // reaches for when it is filling sourceBook.authors/narrators from a bare
 // string: those fields are the source's structured credit list, and cleaning
@@ -1225,14 +1238,17 @@ type credit struct {
 // role qualifier sourceCredits exists to read ("Rosa Vidal - Translator" would
 // arrive as "Rosa Vidal", stating nothing). Every credit is cleaned exactly
 // once, at sourceCredits, whichever shape the source handed it over in.
-func splitRawNames(joined string) []string {
+//
+// A suffix-only piece rejoins the name before it (suffixpiece.go). Exported so
+// internal/issueform splits a form field exactly as an import splits a credit.
+func SplitRawNames(joined string) []string {
 	var out []string
 	for _, part := range strings.Split(joined, ",") {
 		if name := strings.TrimSpace(part); name != "" {
 			out = append(out, name)
 		}
 	}
-	return out
+	return mergeSuffixPieces(out)
 }
 
 // creditNamesOf is a credit list's names, for the callers that only need the

@@ -14,6 +14,8 @@ import {
   authorKey,
   type ParsedBook,
   type WorkCandidate,
+  isSuffixPiece,
+  mergeSuffixPieces,
 } from './import-parse'
 
 // A minimal, valid OpenAudible entry with just enough to be detected + parsed.
@@ -1166,5 +1168,75 @@ describe('unconfirmedAuthors', () => {
     expect(
       unconfirmedAuthors(['stephen king', 'ada palmer'], names, ['Stephen King', 'Ada Palmer'])
     ).toEqual(['Stephen King', 'ada palmer'])
+  })
+})
+
+// The post-nominal suffix rule is a HAND-MIRRORED TWIN of the Go importer's
+// (internal/importer/suffixpiece.go). These are the cases its
+// TestSplitRawNamesRejoinsASuffixPiece and TestCleanedCreditCarriesItsSuffixOnTheName
+// pin, so the /import preview names the person the importer records.
+describe('credit suffix pieces (twin of internal/importer/suffixpiece.go)', () => {
+  const rawCases: [string, string[]][] = [
+    ['David Posen, MD', ['David Posen, MD']],
+    ['Anthony Rao, Ph.D.', ['Anthony Rao, Ph.D.']],
+    ['Jane Roe, MD, John Doe', ['Jane Roe, MD', 'John Doe']],
+    ['Frank Lipman, MD, PhD', ['Frank Lipman, MD, PhD']],
+    ['Frank Lipman, MD PhD, Ann Reader', ['Frank Lipman, MD PhD', 'Ann Reader']],
+    ['Jane Roe, Ph. D.', ['Jane Roe, Ph. D.']],
+    ['Jane Roe, D. Min', ['Jane Roe, D. Min']],
+    ['PhD, Jane Roe', ['Jane Roe']],
+    ['MD', ['MD']],
+    ['Ii', ['Ii']],
+    ['MD, PhD', ['MD', 'PhD']],
+    ['Martin Luther King, Jr., Coretta Scott King', ['Martin Luther King, Jr.', 'Coretta Scott King']],
+    ['David W. Dietz, III', ['David W. Dietz, III']],
+    ['Listen & Live Audio, Inc.', ['Listen & Live Audio, Inc.']],
+    ['Der Audio Verlag, GmbH', ['Der Audio Verlag, GmbH']],
+    ['Jane Roe, Ed', ['Jane Roe', 'Ed']],
+    ['Tom King, DC', ['Tom King', 'DC']],
+    ['Ed', ['Ed']],
+    ['Jane Roe, Mdina Smith', ['Jane Roe', 'Mdina Smith']],
+  ]
+  for (const [input, want] of rawCases) {
+    it(`rejoins ${JSON.stringify(input)}`, () => {
+      const pieces = input
+        .split(',')
+        .map((p) => p.trim())
+        .filter((p) => p !== '')
+      expect(mergeSuffixPieces(pieces)).toEqual(want)
+    })
+  }
+
+  it('reads a stacked or spaced suffix piece and nothing longer', () => {
+    expect(isSuffixPiece('MD PhD')).toBe(true)
+    expect(isSuffixPiece('Ph.\u00a0D.')).toBe(true)
+    expect(isSuffixPiece('Ed')).toBe(false)
+    expect(isSuffixPiece('Philip Zimbardo')).toBe(false)
+    expect(isSuffixPiece('')).toBe(false)
+  })
+
+  it('carries the suffix onto the cleaned name, behind the role qualifier', () => {
+    const [b] = parseExport(
+      JSON.stringify([
+        openAudibleEntry({
+          author: 'David Posen, MD, Jane Doe - translator, PhD',
+          narrated_by: 'Anthony Rao, Ph.D.',
+        }),
+      ])
+    ).books
+    expect(b.authors).toEqual(['David Posen MD', 'Jane Doe PhD'])
+    expect(b.narrators).toEqual(['Anthony Rao Ph.D.'])
+  })
+
+  it('never peels a legal-entity suffix off the credit', () => {
+    const [b] = parseExport(
+      JSON.stringify([
+        openAudibleEntry({
+          author: 'Listen & Live Audio, Inc., Jane Doe',
+          narrated_by: 'Anthony Rao',
+        }),
+      ])
+    ).books
+    expect(b.authors).toEqual(['Listen & Live Audio, Inc.', 'Jane Doe'])
   })
 })

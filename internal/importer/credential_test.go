@@ -6,31 +6,25 @@ import (
 )
 
 // TestCredentialVocabulary is the canonicalization self-test: a key that is not
-// in its own comparison form can never match. It also pins the one entry that
+// in its own comparison form can never match. It also pins the entries that
 // must NEVER appear here - the generational suffix, which is part of a person's
-// identity and whose fold would merge a man with his father.
+// identity and whose fold would merge a man with his father, and the tokens that
+// are somebody's initials as readily as a credential.
 func TestCredentialVocabulary(t *testing.T) {
-	for cred := range academicCredentials {
+	for cred := range foldCredentials {
 		if got := foldCredit(cred); got != cred {
-			t.Errorf("academicCredentials key %q is not canonical (foldCredit gives %q); it can never match", cred, got)
+			t.Errorf("fold credential %q is not canonical (foldCredit gives %q); it can never match", cred, got)
 		}
 		if n := len(strings.Fields(cred)); n < 1 || n > maxCredentialWords {
-			t.Errorf("academicCredentials key %q has %d words; credentialTail probes at most %d, so it could never match", cred, n, maxCredentialWords)
+			t.Errorf("fold credential %q has %d words; tailVocab.cut probes at most %d, so it could never match", cred, n, maxCredentialWords)
 		}
-		if words := strings.Fields(cred); len(words) > 1 && !credentialSecondWords[words[len(words)-1]] {
-			t.Errorf("academicCredentials key %q is multi-word but its final word is not in credentialSecondWords, which gates the two-token probe", cred)
-		}
-	}
-	for _, generational := range []string{"jr", "jr.", "sr", "sr.", "ii", "iii"} {
-		if academicCredentials[generational] {
-			t.Errorf("academicCredentials holds the generational suffix %q; it is part of the name, not a credential", generational)
+		if words := strings.Fields(cred); len(words) > 1 && !credentialTail.second[words[len(words)-1]] {
+			t.Errorf("fold credential %q is multi-word but its final word is not in credentialTail.second, which gates the two-token probe", cred)
 		}
 	}
-	// The licensure tier is measured (see credential.go's header) and
-	// deliberately left out, two of its entries being initials-shaped.
-	for _, licensure := range []string{"mba", "rn", "jd", "lcsw", "lmft", "esq.", "mph", "ma", "ms", "ba"} {
-		if academicCredentials[licensure] {
-			t.Errorf("academicCredentials holds %q; the licensure tier is a separate, measured maintainer decision", licensure)
+	for _, never := range []string{"jr", "jr.", "sr", "sr.", "ii", "iii", "iv", "inc", "inc.", "ltd", "ltd.", "llc", "gmbh", "rn", "jd", "j.d.", "ma", "ms", "ba", "dc", "do"} {
+		if foldCredentials[never] {
+			t.Errorf("foldCredentials holds %q; a generational or legal suffix, or an initials-shaped token, must never fold", never)
 		}
 	}
 }
@@ -99,7 +93,7 @@ func TestCredentialNeedsAFullNameBehindIt(t *testing.T) {
 // says which of two men with one name they are.
 func TestCredentialNeverStripsAGenerationalSuffix(t *testing.T) {
 	seen := func(string) bool { return true }
-	for _, name := range []string{"Theodore C. Van Alst Jr.", "Martin Luther King Jr", "Jane Roe LCSW", "John Doe MBA"} {
+	for _, name := range []string{"Theodore C. Van Alst Jr.", "Martin Luther King Jr", "Jane Roe III", "Acme Audio Inc."} {
 		if got := stripCredential(name, seen); got != name {
 			t.Errorf("stripCredential(%q) = %q, want it untouched", name, got)
 		}
