@@ -382,6 +382,14 @@ func (c *composer) seriesAt(slug string) (*model.Series, string) {
 // was resolved onto its survivor: a record composed under an address the form did
 // not spell is a decision a maintainer reading the pull request has to see.
 func (c *composer) noteRetired(kind model.RedirectKind, from, to string) {
+	key := string(kind) + " " + from
+	if c.retiredNoted[key] {
+		return
+	}
+	if c.retiredNoted == nil {
+		c.retiredNoted = map[string]bool{}
+	}
+	c.retiredNoted[key] = true
 	c.note("%s slug %q was retired by a merge onto %q; the submission is recorded against %q", kind, from, to, to)
 }
 

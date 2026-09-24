@@ -6,7 +6,6 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // dupidentity.go is the CREATE path's duplicate-identity guard: a row whose book
@@ -321,7 +320,7 @@ func (p *planner) slugChainReaches(want, workTitle, fullTitle, posSuffix string,
 			}
 			// A retired candidate is judged as its survivor (workAt), so reaching
 			// the survivor through it is reaching it.
-			if to, ok := p.redirects.Survivor(model.RedirectWorks, c.slug); ok && to == want {
+			if ws, via := p.workAt(c.slug); via != "" && ws != nil && ws.slug == want {
 				return true
 			}
 		}

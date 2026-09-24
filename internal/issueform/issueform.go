@@ -180,6 +180,9 @@ type composer struct {
 	// A profile carrying no tombstone table leaves it empty, and the artifact
 	// carries the answer there instead.
 	redirects model.Redirects
+	// retiredNoted is the set of retired slugs noteRetired has already reported, so
+	// a person the form names twice (an author who also narrates) is noted once.
+	retiredNoted map[string]bool
 
 	// identity is the normalized-identity index over the catalogue, taken from the
 	// load that seeded the dedup maps rather than built here (check.Result.Identity).

@@ -176,7 +176,8 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 		// suffixed slug is out of its reach either way. Giving it the probe without
 		// moving that gate would only look like it covers the case.
 		cands, primary := workCandidates(base, authors, positionClaim{})
-		best, bestKind := -1, matchNone
+		var best *workState
+		bestKind, bestVia := matchNone, ""
 		for i, cand := range cands {
 			w, via := p.workAt(cand.slug)
 			if w == nil {
@@ -193,18 +194,17 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 				continue
 			}
 			if kind > bestKind {
-				best, bestKind = i, kind
+				best, bestKind, bestVia = w, kind, via
 			}
 			if bestKind == matchExact {
 				break
 			}
 		}
-		if best >= 0 {
-			w, via := p.workAt(cands[best].slug)
-			if via != "" {
-				p.noteTombstone(model.RedirectWorks, via, w.slug)
+		if best != nil {
+			if bestVia != "" {
+				p.noteTombstone(model.RedirectWorks, bestVia, best.slug)
 			}
-			return w, true
+			return best, true
 		}
 	}
 	return nil, titleHit

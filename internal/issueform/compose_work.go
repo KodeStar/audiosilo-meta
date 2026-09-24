@@ -124,7 +124,7 @@ func (c *composer) addWork(s sections) {
 		// /api/v1/works/{id}, so it steps onto the author-suffixed slug the bulk
 		// importer would mint for it - the same formula, so the two composers
 		// cannot put one book in two places.
-		stepped := unreservedWorkSlug(workSlug, authorNames[0])
+		stepped := c.unreservedWorkSlug(workSlug, authorNames[0])
 		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
 		workSlug = stepped
 	}
@@ -192,9 +192,13 @@ func (c *composer) addWork(s sections) {
 // as the bulk importer's candidate chain does: the title plus its first author's
 // slug (importer.AuthorSuffixedWorkSlug, the one bounded formula), falling back
 // to the numeric candidate when that author has no addressable slug of their own
-// - which is the same last resort the chain ends in.
-func unreservedWorkSlug(base, firstAuthor string) string {
+// - which is the same last resort the chain ends in. A retired author slug is
+// read as its survivor, as the importer's chain reads the author it resolved.
+func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
 	if slug, fellBack := model.PersonSlug(firstAuthor); !fellBack {
+		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
+			slug = to
+		}
 		return importer.AuthorSuffixedWorkSlug(base, slug)
 	}
 	return importer.NumberedSlugAt(base, 1)

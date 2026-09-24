@@ -1088,7 +1088,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			continue
 		}
 		if ss := p.findSeries(r.name); ss != nil {
-			claim = &seriesClaim{ss: ss, pos: r.seq}
+			claim = &seriesClaim{ss: ss, pos: r.seq, name: r.name}
 			break
 		}
 	}
@@ -1635,6 +1635,11 @@ func personSlug(name string) (slug string, fellBack bool) { return model.PersonS
 type seriesClaim struct {
 	ss  *seriesState
 	pos string
+	// name is the series name the ROW states. It usually equals ss.name up to case,
+	// but not after a tombstone ride (seriesChain): a retired base joins a survivor
+	// whose name is a different spelling, and the position probe must be composed
+	// from the spelling the serial pre-pass mints with, which is the row's.
+	name string
 }
 
 // compatible reports whether merging the book into work ws is consistent with
@@ -1683,14 +1688,21 @@ func (c *seriesClaim) places(ws *workState) bool {
 }
 
 // position reduces the claim to the (series, position) pair the suffix formulas
-// need. The series NAME is the catalogued one rather than the row's spelling;
-// findSeries matched the two case-insensitively, so they slugify alike and the
-// probe lands where the pre-pass mints.
+// need. The series NAME is the row's spelling, which is what the serial pre-pass
+// (serialPositionSuffixes) mints a series-scoped suffix from, so the probe lands
+// where the pre-pass mints. Without a tombstone ride it slugifies exactly as the
+// catalogued name does (findSeries matched the two case-insensitively); through
+// one, the catalogued name is the SURVIVOR's other spelling and would probe a
+// slug no pre-pass ever minted.
 func (c *seriesClaim) position() positionClaim {
 	if c == nil {
 		return positionClaim{}
 	}
-	return positionClaim{series: c.ss.name, pos: c.pos}
+	name := c.name
+	if name == "" {
+		name = c.ss.name
+	}
+	return positionClaim{series: name, pos: c.pos}
 }
 
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
@@ -1773,6 +1785,8 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	// otherwise the candidate is occupied and the walk steps past it - a minter
 	// never claims a tombstoned slug.
 	best, bestKind, free, blocked := -1, matchNone, -1, false
+	var bestWS *workState
+	bestVia := ""
 	for i, cand := range cands {
 		ws, via := p.workAt(cand.slug)
 		if ws == nil {
@@ -1798,7 +1812,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 			continue
 		}
 		if kind > bestKind {
-			best, bestKind = i, kind
+			best, bestKind, bestWS, bestVia = i, kind, ws, via
 		}
 		if bestKind == matchExact {
 			break
@@ -1806,9 +1820,9 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	}
 
 	if best >= 0 {
-		ws, via := p.workAt(cands[best].slug)
-		if via != "" {
-			p.noteTombstone(model.RedirectWorks, via, ws.slug)
+		ws := bestWS
+		if bestVia != "" {
+			p.noteTombstone(model.RedirectWorks, bestVia, ws.slug)
 		}
 		// A later row of this run, merging into a work the run created: its
 		// credits are not a second source's account of an existing work, they are
@@ -1841,11 +1855,15 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	}
 	slug := cands[free].slug
 	survivor, retired := p.redirects.Survivor(model.RedirectWorks, base)
+	_, survivorHeld := p.works[survivor]
 	switch {
 	case model.IsReservedSlug(base):
 		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
-	case slug != base && retired:
+	case slug != base && retired && survivorHeld:
 		warn("work slug %q was retired by a merge onto %q, which this row does not match; using %q for %q",
+			base, survivor, slug, title)
+	case slug != base && retired:
+		warn("work slug %q was retired by a merge onto %q, which the catalogue does not hold; using %q for %q",
 			base, survivor, slug, title)
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)

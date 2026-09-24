@@ -53,7 +53,7 @@ func TestAddWorkStepsOffAReservedSlug(t *testing.T) {
 	// The author is named "Search" too, so the suffix is the person's stepped-off
 	// slug - which is exactly the point: one derivation, used everywhere.
 	authorSlug, _ := model.PersonSlug("Search")
-	wantWork := unreservedWorkSlug("search", "Search")
+	wantWork := (&composer{}).unreservedWorkSlug("search", "Search")
 	if recordExists(t, dir, "works/se/search/work.json") {
 		t.Error("a work was written at the reserved slug \"search\"")
 	}
