@@ -57,10 +57,12 @@ trigger. The migration plan is the maintainer's, in the untracked
 ```sh
 cd ~/dev/audiosilo/audiosilo-meta
 go build ./... && go vet ./... && go test -race ./... && golangci-lint run
-# ~3min wall for the -race suite; no -timeout flag needed. pkg/check's real-data
-# test skips under -race (raceEnabled, race_{on,off}_test.go) - the fixture
-# suites cover the parallel loader and the real tree is data coverage, still
-# validated by the non-race run and by metacheck below.
+# ~45s wall for the -race suite; no -timeout flag needed. Every REAL-DATA test
+# skips under -race (raceEnabled, race_{on,off}_test.go in pkg/check,
+# pkg/canonical, internal/importer and internal/repair) - the fixture suites
+# cover the concurrent code and the real tree is data coverage, still read by
+# the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
+# tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
 go run ./cmd/metacheck --profile core       # validate the data tree (~10s over 133k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the CORE-ONLY artifact (no sidecars)
