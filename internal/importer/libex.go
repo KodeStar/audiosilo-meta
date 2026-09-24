@@ -420,16 +420,14 @@ func libexNames(v any) []string {
 		} else {
 			name = coerceStr(el)
 		}
-		if name == "" || seen[name] {
+		// A stranded post-nominal is dropped, not rejoined: see suffixpiece.go.
+		if name == "" || seen[name] || isSuffixPiece(name) {
 			continue
 		}
 		seen[name] = true
 		out = append(out, name)
 	}
-	// libex split its credits on commas upstream, stranding post-nominals as
-	// credits of their own ("Ph.D", "III"), and its list order states nothing,
-	// so they are dropped rather than rejoined (suffixpiece.go).
-	return dropSuffixPieces(out)
+	return out
 }
 
 // libexRegion resolves a row's marketplace: the "region" field, else the first

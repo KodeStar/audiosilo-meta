@@ -1217,7 +1217,7 @@ type credit struct {
 	roles []string
 }
 
-// splitRawNames splits a comma-joined list of names into the source's OWN
+// SplitRawNames splits a comma-joined list of names into the source's OWN
 // spellings - trimmed and de-emptied, but not cleaned. It is what a parser
 // reaches for when it is filling sourceBook.authors/narrators from a bare
 // string: those fields are the source's structured credit list, and cleaning
@@ -1226,17 +1226,20 @@ type credit struct {
 // arrive as "Rosa Vidal", stating nothing). Every credit is cleaned exactly
 // once, at sourceCredits, whichever shape the source handed it over in.
 //
-// A piece that is only a post-nominal ("David Posen, MD") rejoins the name
-// before it rather than becoming a credit of its own - see suffixpiece.go.
-func splitRawNames(joined string) []string {
+// A suffix-only piece rejoins the name before it (suffixpiece.go). Exported so
+// internal/issueform splits a form field exactly as an import splits a credit.
+func SplitRawNames(joined string) []string {
 	var out []string
 	for _, part := range strings.Split(joined, ",") {
 		if name := strings.TrimSpace(part); name != "" {
 			out = append(out, name)
 		}
 	}
-	return MergeSuffixPieces(out)
+	return mergeSuffixPieces(out)
 }
+
+// splitRawNames is SplitRawNames under the name the package's own callers use.
+func splitRawNames(joined string) []string { return SplitRawNames(joined) }
 
 // creditNamesOf is a credit list's names, for the callers that only need the
 // people (every narrator path, and the recordings-only work matcher).

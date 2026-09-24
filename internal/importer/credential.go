@@ -1,6 +1,10 @@
 package importer
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+	"unicode/utf8"
+)
 
 // credential.go implements the academic-credential merge: "Philip Zimbardo
 // Ph.D." and "Philip Zimbardo" are one person, and the catalogue held both
@@ -88,58 +92,110 @@ var academicCredentials = map[string]bool{
 	"th.d.":  true, // 5 / 2
 }
 
-// maxCredentialWords is the longest key credentialTail can reach: it probes one
-// token, then two. A longer spelling would need a longer probe, which is what
-// TestCredentialVocabulary pins rather than leaving to be discovered by a key
-// that silently never matches.
+// maxCredentialWords is the longest key a tailVocab can reach: cut probes one
+// token, then two. It bounds EVERY tail vocabulary (academicCredentials here,
+// suffixPieceSpellings in suffixpiece.go); a longer spelling would need a longer
+// probe, which the vocabulary tests pin rather than leaving to be discovered by
+// a key that silently never matches.
 const maxCredentialWords = 2
 
-// credentialSecondWords are the FINAL words of the multi-word keys ("d." for
-// "ph. d.", "m. d.", "ed. d."). Every credit name of every import goes through
-// credentialTail, so the multi-word probe - which has to join and fold two
-// tokens - is gated on the cheap single-token lookup this set answers. Derived
-// from the vocabulary, so a new spaced spelling cannot be added without the
-// probe learning to reach it.
-var credentialSecondWords = func() map[string]bool {
-	out := map[string]bool{}
-	for cred := range academicCredentials {
-		if words := strings.Fields(cred); len(words) > 1 {
-			out[words[len(words)-1]] = true
+// tailVocab is the one trailing-post-nominal matcher, shared by this file's fold
+// (which strips doctorates off a name) and suffixpiece.go (which asks whether a
+// split list piece is nothing BUT suffixes). keys are in credentialKey form;
+// second holds the FINAL words of the multi-word keys ("d." for "ph. d.", "m.
+// d.", "ed. d."). Every credit name of every import is probed, so the two-token
+// probe - which has to fold a second token - is gated on the cheap single-token
+// lookup second answers. It is derived from the keys, so a new spaced spelling
+// cannot be added without the probe learning to reach it.
+type tailVocab struct {
+	keys   map[string]bool
+	second map[string]bool
+}
+
+func newTailVocab(keys map[string]bool) tailVocab {
+	second := map[string]bool{}
+	for k := range keys {
+		if words := strings.Fields(k); len(words) > 1 {
+			second[words[len(words)-1]] = true
 		}
 	}
-	return out
-}()
+	return tailVocab{keys: keys, second: second}
+}
+
+// academicTail is the fold's vocabulary.
+var academicTail = newTailVocab(academicCredentials)
+
+// credentialSecondWords is academicTail's two-token gate.
+var credentialSecondWords = academicTail.second
 
 // minDeCredentialedWords is the smallest bare name the merge will accept. See
 // the third guard in this file's header.
 const minDeCredentialedWords = 2
 
-// credentialTail reports how many TRAILING words of fields spell one listed
-// credential. The spaced spellings are reached through credentialSecondWords, so
-// "Ph. D." is read as one credential rather than leaving "Ph." behind - and the
-// two-token probe only runs when the last token is one a spaced key can end on.
-// A trailing comma is trimmed off the lookup key, because the dump punctuates
-// the list ("John Doe, PhD, MD").
-func credentialTail(fields []string) int {
-	if len(fields) == 0 {
-		return 0
+// cut strips ONE listed spelling off the end of s and returns what precedes it,
+// or ok=false when s does not end in one. The spaced spellings are reached
+// through the second-word gate, so "Ph. D." is read as one credential rather
+// than leaving "Ph." behind. A trailing comma is trimmed off each lookup key,
+// because the dump punctuates the list ("John Doe, PhD, MD").
+//
+// It reads from the END and folds only the tokens it needs - the last one
+// always, the one before it only when the last is a registered second word - so
+// an ordinary name is rejected by its last token alone, and without allocating
+// when that token is ASCII.
+func (v tailVocab) cut(s string) (rest string, ok bool) {
+	s = strings.TrimRightFunc(s, unicode.IsSpace)
+	i := strings.LastIndexFunc(s, unicode.IsSpace) + 1
+	if i == len(s) {
+		return "", false
 	}
-	last := credentialKey(fields[len(fields)-1])
-	if academicCredentials[last] {
-		return 1
+	var lastBuf [48]byte
+	last := appendCredentialKey(lastBuf[:0], s[i:])
+	if v.keys[string(last)] {
+		return s[:i], true
 	}
-	if len(fields) >= 2 && credentialSecondWords[last] {
-		if academicCredentials[credentialKey(fields[len(fields)-2])+" "+last] {
-			return 2
-		}
+	if !v.second[string(last)] {
+		return "", false
 	}
-	return 0
+	head := strings.TrimRightFunc(s[:i], unicode.IsSpace)
+	j := strings.LastIndexFunc(head, unicode.IsSpace) + 1
+	if j == len(head) {
+		return "", false
+	}
+	var keyBuf [64]byte
+	key := appendCredentialKey(keyBuf[:0], head[j:])
+	key = append(append(key, ' '), last...)
+	if v.keys[string(key)] {
+		return head[:j], true
+	}
+	return "", false
 }
 
 // credentialKey is one token in vocabulary form: folded, and stripped of the
 // comma the source may have separated the list with.
 func credentialKey(word string) string {
 	return strings.TrimRight(foldCredit(word), ",")
+}
+
+// appendCredentialKey appends credentialKey(word) to dst. An ASCII token - which
+// is every post-nominal and nearly every name's last word - is lowercased
+// straight into dst, which is all foldCredit does to one; anything else takes
+// the full fold.
+func appendCredentialKey(dst []byte, word string) []byte {
+	start := len(dst)
+	for k := 0; k < len(word); k++ {
+		c := word[k]
+		if c >= utf8.RuneSelf {
+			return append(dst[:start], credentialKey(word)...)
+		}
+		if 'A' <= c && c <= 'Z' {
+			c += 'a' - 'A'
+		}
+		dst = append(dst, c)
+	}
+	for len(dst) > start && dst[len(dst)-1] == ',' {
+		dst = dst[:len(dst)-1]
+	}
+	return dst
 }
 
 // deCredentialed strips every trailing academic credential from a credit name,
@@ -153,19 +209,18 @@ func credentialKey(word string) string {
 // leaving it on would make the bare name a different string from the twin the
 // census holds.
 func deCredentialed(name string) (bare string, stripped bool) {
-	fields := strings.Fields(strings.TrimSpace(name))
+	s := strings.TrimSpace(name)
 	for {
-		n := credentialTail(fields)
-		if n == 0 || len(fields)-n < minDeCredentialedWords {
+		rest, ok := academicTail.cut(s)
+		if !ok || len(strings.Fields(rest)) < minDeCredentialedWords {
 			break
 		}
-		fields = fields[:len(fields)-n]
-		stripped = true
+		s, stripped = rest, true
 	}
 	if !stripped {
 		return "", false
 	}
-	bare = strings.TrimRight(strings.Join(fields, " "), " ,")
+	bare = strings.TrimRight(strings.Join(strings.Fields(s), " "), " ,")
 	if len(strings.Fields(bare)) < minDeCredentialedWords {
 		return "", false
 	}

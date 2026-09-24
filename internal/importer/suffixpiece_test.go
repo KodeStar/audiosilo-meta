@@ -15,9 +15,12 @@ func TestSuffixPieceVocabulary(t *testing.T) {
 		if got := foldCredit(s); got != s {
 			t.Errorf("suffix spelling %q is not canonical (foldCredit gives %q); it can never match", s, got)
 		}
-		if n := len(strings.Fields(s)); n < 1 || n > 2 {
-			t.Errorf("suffix spelling %q has %d words; isSuffixPiece probes at most 2", s, n)
+		if n := len(strings.Fields(s)); n < 1 || n > maxCredentialWords {
+			t.Errorf("suffix spelling %q has %d words; tailVocab.cut probes at most %d", s, n, maxCredentialWords)
 		}
+	}
+	if !suffixPieceSpellings["gmbh"] || !suffixPieceSpellings["ph.d."] {
+		t.Error("suffixPieceSpellings does not carry the vocabularies it reuses (corporateLegalSuffix, academicCredentials)")
 	}
 	for _, declined := range []string{"ed", "dc", "d.c.", "ma", "m.a.", "jd", "j.d.", "rn", "ms", "do", "do.", "nd", "rd", "sj", "op"} {
 		if suffixPieceSpellings[declined] {
@@ -52,6 +55,7 @@ func TestSplitNamesRejoinsASuffixPiece(t *testing.T) {
 		{"Martin Luther King, Jr., Coretta Scott King", []string{"Martin Luther King, Jr.", "Coretta Scott King"}},
 		{"David W. Dietz, III", []string{"David W. Dietz, III"}},
 		{"Listen & Live Audio, Inc.", []string{"Listen & Live Audio, Inc."}},
+		{"Der Audio Verlag, GmbH", []string{"Der Audio Verlag, GmbH"}},
 		// Declined tokens keep splitting exactly as before: "Ed" is a real
 		// credit, and "DC" is DC Comics as often as a chiropractor.
 		{"Jane Roe, Ed", []string{"Jane Roe", "Ed"}},
@@ -66,6 +70,17 @@ func TestSplitNamesRejoinsASuffixPiece(t *testing.T) {
 				t.Errorf("SplitNames(%q) = %q, want %q", c.in, got, c.want)
 			}
 		})
+	}
+}
+
+// TestSuffixPieceRejectsANameWithoutAllocating pins the cost: every credit of
+// every import is asked, and an ordinary name must be rejected by its last
+// token alone, with nothing folded or split on the heap.
+func TestSuffixPieceRejectsANameWithoutAllocating(t *testing.T) {
+	for _, name := range []string{"Philip Zimbardo", "Jane Roe, Mdina Smith", "Ann Reader Ph."} {
+		if got := testing.AllocsPerRun(100, func() { isSuffixPiece(name) }); got != 0 {
+			t.Errorf("isSuffixPiece(%q) allocates %v times per call, want 0", name, got)
+		}
 	}
 }
 

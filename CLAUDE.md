@@ -1468,15 +1468,12 @@ somebody's account of the work and is never spliced into) and accrete WITHIN one
 rows state, so a second region's row is not silently dropped). A trailing
 credential/generational fragment that had to be trimmed for the role to match is
 re-appended to the NAME ("X - editor Jr." is X Jr., an editor), never discarded.
-The same holds one step EARLIER, at the list split (`suffixpiece.go`, issue
-#2320): a comma piece that is nothing but a credential, generational or
-legal-entity suffix ("David Posen, MD" minted a person "Md") REJOINS the name
-before it in a joined list - `splitRawNames` and internal/issueform's
-`splitNames` both call `MergeSuffixPieces`, and the cleaning then decides the name
-(credential.go may fold it) - is dropped when it opens the list, and is DROPPED
-from a libex typed list, whose order states nothing (29 stranded credits on 26
-dump books, the seed's `ph-d` among them); tokens that are also names or initials
-("Ed", "DC", "MA", "J.D.") are measured and declined.
+The same holds one step EARLIER, at the list split (issue #2320): a piece that
+is nothing but a credential, generational or legal-entity suffix ("David Posen,
+MD" minted a person "Md") REJOINS the name before it in a joined list
+(`SplitRawNames`, which internal/issueform's splitter calls too), is dropped when
+it opens the list, and is dropped from a libex typed list, whose order states
+nothing - the vocabulary and its measurement are in `suffixpiece.go`.
 Credit lists dedupe by slug and the
 schema's `uniqueItems` rejects doubled credits; a **work** is (title slug
 + author set), but series volumes that share a `title_short` (or a book mapping

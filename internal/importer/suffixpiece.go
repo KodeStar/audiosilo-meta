@@ -46,14 +46,18 @@ import "strings"
 // 52, LPC 50, Esq. 43, MPH 41, IV 41, Inc. 39, MSW 25, CPA 21, LMHC 16, DVM 16,
 // MFT 14, ABPP 12, DDS 12, LICSW 12, Ltd. 11, MSN 10, BSN 10, FAAP 10, CFP 9,
 // RDN 9, IBCLC 9, NCC 9, LCPC 8) plus the four seen ONLY as a stranded piece
-// (FACP, FACR, FACHE, CPNP). It DECLINES every token that is also a name or a
-// pair of initials, measured: "DC" (1 stranded chiropractor credit - and the
-// catalogue's `dc` is DC Comics, credited as the author of Superman titles), "MA"/
-// "M.A." (3), "J.D." (2), "D.C." (1), "DO." (1), "MS", "RN", "JD", "ND", "RD",
-// "SJ" and "OP" - credential.go's initials-shaped ambiguity. And the author "Ed"
-// on 6 contes à croquer is a real credit spelled like the front half of "Ed. D.":
-// single tokens are matched whole, so "Ed" is untouched. The declined pieces keep
-// minting what they minted before; a wrong join is worse than a stray record.
+// (FACP, FACR, FACHE, CPNP). It reuses the two vocabularies neighbouring rules
+// already hold rather than restating them: every doctorate credential.go folds
+// (academicCredentials) and the legal-entity suffixes the studio-tail rule
+// knows (corporateLegalSuffix). It DECLINES every token that is also a name or
+// a pair of initials, measured: "DC" (1 stranded chiropractor credit - and the
+// catalogue's `dc` is DC Comics, credited as the author of Superman titles),
+// "MA"/"M.A." (3), "J.D." (2), "D.C." (1), "DO." (1), "MS", "RN", "JD", "ND",
+// "RD", "SJ" and "OP" - credential.go's initials-shaped ambiguity. And the
+// author "Ed" on 6 contes à croquer is a real credit spelled like the front
+// half of "Ed. D.": tokens are matched whole, so "Ed" is untouched. The declined
+// pieces keep minting what they minted before; a wrong join is worse than a
+// stray record.
 var suffixPieceExtras = []string{
 	// Generational - part of the NAME, which is why they are here and never in
 	// academicCredentials.
@@ -62,20 +66,20 @@ var suffixPieceExtras = []string{
 	"mba", "lcsw", "licsw", "lmft", "lpc", "lcpc", "lmhc", "mft", "msw", "m.s.w.",
 	"esq", "esq.", "mph", "cpa", "cfp", "dvm", "dds", "abpp", "msn", "bsn", "cpnp",
 	"faap", "facp", "facr", "fache", "rdn", "ibclc", "ncc",
-	// Legal entity - "Cottage Door Press, Ltd.", "Listen & Live Audio, Inc.".
-	"inc", "inc.", "ltd", "ltd.", "llc",
-	// The spaced Doctor of Ministry the dump strands ("D. Min"); the other
-	// doctorate spellings come from academicCredentials below.
+	// The spaced Doctor of Ministry the dump strands ("D. Min"). It is not in
+	// academicCredentials because adding it there would widen credential.go's
+	// fold too; that is its own decision.
 	"d. min",
 }
 
-// suffixPieceSpellings is the whole vocabulary, in foldCredit form: every
-// academic credential credential.go folds, plus the extras above. One or two
-// tokens per key, which is all isSuffixPiece probes.
+// suffixPieceSpellings is the whole vocabulary, in credentialKey form.
 var suffixPieceSpellings = func() map[string]bool {
-	out := make(map[string]bool, len(academicCredentials)+len(suffixPieceExtras))
+	out := make(map[string]bool, len(academicCredentials)+len(corporateLegalSuffix)+len(suffixPieceExtras))
 	for cred := range academicCredentials {
 		out[cred] = true
+	}
+	for legal := range corporateLegalSuffix {
+		out[legal] = true
 	}
 	for _, s := range suffixPieceExtras {
 		out[s] = true
@@ -83,63 +87,40 @@ var suffixPieceSpellings = func() map[string]bool {
 	return out
 }()
 
+// suffixTail is credential.go's matcher over this file's vocabulary.
+var suffixTail = newTailVocab(suffixPieceSpellings)
+
 // isSuffixPiece reports whether one piece of a split credit list is nothing but
-// suffixes - one ("MD", "Ph. D.") or several stacked in one piece ("MD PhD").
-// It reads from the END, one or two tokens at a time, and fails the moment a
-// token run is not a listed spelling.
+// suffixes - one ("MD", "Ph. D.") or several stacked in one piece ("MD PhD"):
+// it strips listed spellings off the end until nothing is left, and fails at the
+// first trailing token that is not one, which for an ordinary name is its last.
 func isSuffixPiece(piece string) bool {
-	fields := strings.Fields(foldCredit(piece))
-	if len(fields) == 0 {
-		return false
-	}
-	for len(fields) > 0 {
-		n := len(fields)
-		switch {
-		case suffixPieceSpellings[fields[n-1]]:
-			fields = fields[:n-1]
-		case n >= 2 && suffixPieceSpellings[fields[n-2]+" "+fields[n-1]]:
-			fields = fields[:n-2]
-		default:
-			return false
+	rest, ok := suffixTail.cut(piece)
+	for ok {
+		if strings.TrimSpace(rest) == "" {
+			return true
 		}
+		rest, ok = suffixTail.cut(rest)
 	}
-	return true
+	return false
 }
 
-// MergeSuffixPieces is the JOINED-list rule: pieces is a split credit list in
-// the source's order, trimmed and de-emptied, and every piece that is only a
-// suffix rejoins the piece before it ("David Posen", "MD" -> "David Posen, MD");
-// one with nothing before it is dropped. The input slice is not modified.
-//
-// It is exported because internal/issueform splits its form fields itself and
-// must reach the same answer as the importer's comma split for the same text.
-func MergeSuffixPieces(pieces []string) []string {
-	out := make([]string, 0, len(pieces))
+// mergeSuffixPieces is the JOINED-list rule, over a split list in the source's
+// order: every suffix-only piece rejoins the piece before it ("David Posen",
+// "MD" -> "David Posen, MD"), and one with nothing before it is dropped. It
+// works IN PLACE - the caller owns pieces - and returns nil when nothing is left.
+func mergeSuffixPieces(pieces []string) []string {
+	out := pieces[:0]
 	for _, p := range pieces {
-		if isSuffixPiece(p) {
-			if len(out) > 0 {
-				out[len(out)-1] += ", " + p
-			}
-			continue
+		switch {
+		case !isSuffixPiece(p):
+			out = append(out, p)
+		case len(out) > 0:
+			out[len(out)-1] += ", " + p
 		}
-		out = append(out, p)
 	}
 	if len(out) == 0 {
 		return nil
-	}
-	return out
-}
-
-// dropSuffixPieces is the TYPED-list rule: a list whose order states nothing
-// loses its suffix-only pieces rather than attaching them to a neighbour. It
-// filters in place, which is safe for its one caller (libexNames builds the
-// slice it hands over).
-func dropSuffixPieces(names []string) []string {
-	out := names[:0]
-	for _, n := range names {
-		if !isSuffixPiece(n) {
-			out = append(out, n)
-		}
 	}
 	return out
 }

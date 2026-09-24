@@ -8,28 +8,26 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
-// TestSplitNamesRejoinsASuffixPiece pins the form's own splitter to the
-// importer's rule (importer.MergeSuffixPieces): a piece that is only a
-// post-nominal belongs to the name before it, on either separator the form
-// accepts, and one with nothing before it is dropped.
-func TestSplitNamesRejoinsASuffixPiece(t *testing.T) {
+// TestSplitNamesRejoinsASuffixPieceAcrossLines is the form-specific half of the
+// importer's suffix-piece rule (internal/importer/suffixpiece.go, whose own
+// tests cover the comma list): a form field also takes one name per LINE, and a
+// line holding only a post-nominal belongs to the line before it.
+func TestSplitNamesRejoinsASuffixPieceAcrossLines(t *testing.T) {
 	cases := []struct {
 		in   string
 		want []string
 	}{
-		{"David Posen, MD", []string{"David Posen, MD"}},
 		{"Anthony Rao, Ph.D.\nBob Reader", []string{"Anthony Rao, Ph.D.", "Bob Reader"}},
 		{"Jane Roe\nJr.", []string{"Jane Roe, Jr."}},
-		{"PhD, Jane Roe", []string{"Jane Roe"}},
-		{"Jane Roe, Ed", []string{"Jane Roe", "Ed"}},
+		{"MD\nJane Roe", []string{"Jane Roe"}},
+		{"Jane Roe\nEd", []string{"Jane Roe", "Ed"}},
 	}
 	for _, c := range cases {
-		if got := splitNames(c.in); !reflect.DeepEqual(got, c.want) {
-			t.Errorf("splitNames(%q) = %q, want %q", c.in, got, c.want)
-		}
-		if got := splitNarratorNames(c.in); !reflect.DeepEqual(got, c.want) {
-			t.Errorf("splitNarratorNames(%q) = %q, want %q", c.in, got, c.want)
-		}
+		t.Run(c.in, func(t *testing.T) {
+			if got := splitNames(c.in); !reflect.DeepEqual(got, c.want) {
+				t.Errorf("splitNames(%q) = %q, want %q", c.in, got, c.want)
+			}
+		})
 	}
 }
 
