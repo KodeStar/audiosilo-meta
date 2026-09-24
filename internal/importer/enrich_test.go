@@ -628,17 +628,21 @@ func TestEnrichAggregatesParseWarningsAndReconciles(t *testing.T) {
 // TestEnrichReportsAnASINOnTwoRecordings pins the visible failure mode of
 // asinLoc's bare-ASIN key. Uniqueness upstream is (region, ASIN), so two
 // recordings could legally carry the same ASIN string in different marketplaces
-// while an export row states only the bare one. No such pair exists today; if
-// one appears, the first recording keeps the match deterministically and the
-// collision is REPORTED rather than silently decided by load order.
+// while an export row states only the bare one. When that happens the first
+// recording keeps the match deterministically and the collision is REPORTED
+// rather than silently decided by load order - exactly once, however many
+// regions each side lists the ASIN under.
 func TestEnrichReportsAnASINOnTwoRecordings(t *testing.T) {
-	// The seeded recording holds B0LIBEX001 in uk; this one holds it in us.
-	const twinRec = `{"asin":[{"asin":"B0LIBEX001","region":"us"}],"id":"twin","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"the-second-map"}`
+	// The seeded recording holds B0LIBEX001 in uk; this one holds it in us AND
+	// de, which must still be ONE report: the collision is between two
+	// recordings, not between two entries.
+	//nolint:lll // one record per line reads as the record it is
+	const twinRec = `{"asin":[{"asin":"B0LIBEX001","region":"de"},{"asin":"B0LIBEX001","region":"us"}],"id":"twin","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"the-second-map"}`
 	dataDir := seedEnrichTree(t, map[string]string{"works/th/the-second-map/recordings/twin.json": twinRec})
 
 	sum := runEnrich(t, dataDir, fullRow, false)
-	if !hasWarning(sum.Warnings, "ASIN B0LIBEX001 is recorded on both") {
-		t.Errorf("expected a duplicate-ASIN report, got %v", sum.Warnings)
+	if reports := countWarnings(sum.Warnings, "ASIN B0LIBEX001 is recorded on both"); reports != 1 {
+		t.Errorf("want exactly one duplicate-ASIN report, got %d in %v", reports, sum.Warnings)
 	}
 	// Exactly one recording was enriched - the first, not both and not the last
 	// one loaded.
@@ -653,6 +657,38 @@ func TestEnrichReportsAnASINOnTwoRecordings(t *testing.T) {
 	if rec.Publisher != "Lost Press" {
 		t.Errorf("the first claimant should have been enriched: %+v", rec)
 	}
+}
+
+// TestOneRecordingInSeveralRegionsIsNotACollision pins the other half of
+// asinLoc's bare-ASIN key: a production sold in several marketplaces under ONE
+// ASIN carries one {asin, region} entry per marketplace on the SAME recording,
+// which is ordinary data. Every entry locates the same recording, so there is
+// nothing to report. Both runs that allocate asinLoc are covered: enrichment,
+// and a user-tier import (attestation).
+func TestOneRecordingInSeveralRegionsIsNotACollision(t *testing.T) {
+	//nolint:lll // one record per line reads as the record it is
+	const multiRegionRec = `{"asin":[{"asin":"B0LIBEX001","region":"de"},{"asin":"B0LIBEX001","region":"uk"},{"asin":"B0LIBEX001","region":"us"}],"id":"bea-reader","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"the-lost-cartographer"}`
+	//nolint:lll // one record per line reads as the record it is
+	const multiRegionTierRec = `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"de"},{"asin":"B0LIBEX001","region":"uk"},{"asin":"B0LIBEX001","region":"us"}],"id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Mirror Press","release_date":"2019","runtime_min":600,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"}],"work":"the-lost-cartographer"}`
+
+	t.Run("enrich", func(t *testing.T) {
+		sum := runEnrich(t, seedEnrichTree(t, map[string]string{recRel: multiRegionRec}), fullRow, true)
+		if hasWarning(sum.Warnings, "is recorded on both") {
+			t.Errorf("one recording in several regions was reported as a collision: %v", sum.Warnings)
+		}
+		if sum.Matched != 1 || sum.EnrichedRecordings != 1 {
+			t.Errorf("Matched/EnrichedRecordings = %d/%d, want 1/1", sum.Matched, sum.EnrichedRecordings)
+		}
+	})
+	t.Run("user tier", func(t *testing.T) {
+		sum := runUserImport(t, seedTierTree(t, map[string]string{tierRecRel: multiRegionTierRec}), userRowFull)
+		if hasWarning(sum.Warnings, "is recorded on both") {
+			t.Errorf("one recording in several regions was reported as a collision: %v", sum.Warnings)
+		}
+		if sum.AttestedRecordings != 1 {
+			t.Errorf("AttestedRecordings = %d, want 1", sum.AttestedRecordings)
+		}
+	})
 }
 
 // TestEnrichUnknownASINIsCountedAndIgnored pins that enrichment matches by

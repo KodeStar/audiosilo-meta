@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -237,6 +238,25 @@ func TestLibexWarnings(t *testing.T) {
 	}
 	if unmapped != 1 {
 		t.Errorf("expected exactly one unmapped-genre warning, got %v", sum.Warnings)
+	}
+}
+
+// TestRunLevelWarningsPrecedeRowWarnings pins the REPORTING order of
+// Summary.Warnings: a run-level line (here the aggregated unmapped-genre report,
+// raised after planning) comes before every per-row line (the duplicate ISBN,
+// raised while planning the row), so a reader that shows only the head of a long
+// list - the intake bot's capped verdict - keeps the summary a maintainer acts on.
+func TestRunLevelWarningsPrecedeRowWarnings(t *testing.T) {
+	sum, _ := runLibex(t, libexFixture(t), false)
+	index := func(sub string) int {
+		return slices.IndexFunc(sum.Warnings, func(w string) bool { return strings.Contains(w, sub) })
+	}
+	runLevel, row := index("unmapped genre strings:"), index("ISBN 9781234567897 is already recorded")
+	if runLevel < 0 || row < 0 {
+		t.Fatalf("fixture no longer raises both lines: %v", sum.Warnings)
+	}
+	if runLevel > row {
+		t.Errorf("run-level line at %d follows the row line at %d: %v", runLevel, row, sum.Warnings)
 	}
 }
 

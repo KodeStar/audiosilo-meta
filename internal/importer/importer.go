@@ -333,6 +333,12 @@ type planner struct {
 	conflicts io.Writer
 	fatal     error
 	summary   Summary
+	// conflictWarnings and rowWarnings are the per-row lines, kept apart from
+	// summary.Warnings (the run-level lines) so result() can order the three
+	// tiers: conflicts are what recordingContradicts raised, rows everything
+	// else bookWarn did.
+	conflictWarnings []string
+	rowWarnings      []string
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
@@ -351,12 +357,40 @@ func (p *planner) stampSource(raw map[string]any) {
 
 // bookWarn returns the warning sink for one book: every line it records is
 // prefixed with the book's label (its ASIN, else its title), so a warning always
-// names the row it came from.
+// names the row it came from. Row lines are held apart from the run-level ones
+// until result() puts them after them.
 func (p *planner) bookWarn(b sourceBook) func(string, ...any) {
+	return p.warnInto(b, &p.rowWarnings)
+}
+
+// warnInto is bookWarn over a chosen tier: the ordinary row lines, or the
+// conflict lines recordingContradicts raises (see result).
+func (p *planner) warnInto(b sourceBook, tier *[]string) func(string, ...any) {
 	label := bookLabel(b)
 	return func(format string, args ...any) {
-		p.summary.Warnings = append(p.summary.Warnings, label+": "+fmt.Sprintf(format, args...))
+		*tier = append(*tier, label+": "+fmt.Sprintf(format, args...))
 	}
+}
+
+// result is the run's Summary with its warnings in REPORTING order, three tiers
+// each in the order it was raised:
+//
+//   - the run-level lines (the aggregated refusals, the duplicate-identity
+//     skips, the catalogue's own collisions, the per-class reports);
+//   - the CONFLICT lines, one per row refused for contradicting a recorded
+//     runtime or release date - per-row, but the ones the intake verdict's
+//     "disagreed ... see the warnings below" note sends a maintainer to;
+//   - every other per-row line, in row order.
+//
+// A run-level or conflict line is one a maintainer acts on, where a run over a
+// large library can raise hundreds of ordinary row lines; a reader that shows
+// only the head of the list (the intake bot's bounded verdict) must never lose
+// them to the detail. Summary.RunLevelWarnings says where the first tier ends.
+func (p *planner) result() Summary {
+	sum := p.summary
+	sum.RunLevelWarnings = len(p.summary.Warnings)
+	sum.Warnings = slices.Concat(p.summary.Warnings, p.conflictWarnings, p.rowWarnings)
+	return sum
 }
 
 // Run imports booksPath (an OpenAudible export) into opts.DataDir. On a dry run
@@ -505,9 +539,9 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.seriesLookupLeft = seriesLookupCap(opts.SeriesLookupLimit)
 	}
 	// Recorded on the summary before planning appends anything, so the AI line
-	// is the run's FIRST warning and every return path below carries it. The
-	// synthetic-narration note rides along for the same reason: a run that fails
-	// later still says what it admitted.
+	// is the run's FIRST warning and the summary carries it however run ends.
+	// The synthetic-narration note rides along for the same reason: a run that
+	// fails later still says what it admitted.
 	p.summary.SkippedRows = aiRefused.n
 	if line, warned := aiRefused.warning(); warned {
 		p.summary.Warnings = append(p.summary.Warnings, line)
@@ -515,6 +549,15 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	if line, noted := synthetic.note(); noted {
 		p.summary.Notes = append(p.summary.Notes, line)
 	}
+	err = p.run(books, opts)
+	return p.result(), err
+}
+
+// run plans the batch, reports, and (unless a dry run) writes and validates the
+// tree. It returns only the error: its one caller turns the planner into the
+// Summary through result(), so every way out of a run reports its warnings in
+// the same order.
+func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
 	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
 	p.initialsSurvivors = p.decideInitialsOf(books)
@@ -528,7 +571,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.planCreate(books)
 	}
 	if p.fatal != nil {
-		return p.summary, p.fatal
+		return p.fatal
 	}
 	p.finalizeSeries()
 	p.reportCreditMerges()
@@ -539,20 +582,20 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
 	if p.fatal != nil {
-		return p.summary, p.fatal
+		return p.fatal
 	}
 
 	if opts.DryRun {
-		return p.summary, nil
+		return nil
 	}
 
 	if err := p.flush(); err != nil {
-		return p.summary, err
+		return err
 	}
 	if res := check.LoadProfile(opts.DataDir, opts.Profile); !res.OK() {
-		return p.summary, fmt.Errorf("post-import validation failed:\n%s", problemLines(res.Problems))
+		return fmt.Errorf("post-import validation failed:\n%s", problemLines(res.Problems))
 	}
-	return p.summary, nil
+	return nil
 }
 
 // ---------------------------------------------------------------------------
@@ -826,6 +869,13 @@ func (p *planner) loadExisting() {
 				abridged: nil,
 			}
 			for _, a := range r.ASIN {
+				// One ASIN listed under several regions is ONE identifier of this
+				// recording: register it once, so locateASIN never sees the
+				// recording collide with itself, and a collision with another
+				// recording is reported once rather than once per region.
+				if ri.asins[a.ASIN] {
+					continue
+				}
 				ri.asins[a.ASIN] = true
 				p.asins[a.ASIN] = true
 				p.locateASIN(a.ASIN, w.ID, r.ID)
@@ -899,15 +949,17 @@ func (p *planner) seedDiskSeriesPositions(series []*model.Series) {
 }
 
 // locateASIN records which catalogued recording an ASIN sits on, for the
-// enrichment mode's identifier match. It is a no-op unless asinLoc was allocated
-// (create mode needs the p.asins membership test alone).
+// identifier match of enrichment and of a user-tier run's attestation. It is a
+// no-op unless asinLoc was allocated (any other run needs the p.asins
+// membership test alone).
 //
-// ASSUMPTION, deliberately made visible: uniqueness upstream is (region, ASIN),
-// so two recordings could legally carry the same ASIN STRING in different
-// marketplaces - while an export row states one bare ASIN and nothing that could
-// pick between them. No such pair exists in the catalogue today. If one appears,
-// the FIRST recording (in the catalogue's stable load order) keeps the match and
-// the collision is reported, so the day it happens it is visible rather than
+// Uniqueness upstream is (region, ASIN), so one ASIN STRING can appear more than
+// once. On ONE recording, under several marketplaces, that is ordinary data, and
+// the caller (loadExisting) passes each recording's DISTINCT ASINs once, so it
+// never reaches here twice. On two DIFFERENT recordings it is a real collision -
+// an export row states one bare ASIN and nothing that could pick between them -
+// so the FIRST recording (in the catalogue's stable load order) keeps the match
+// and the collision is reported, once per colliding recording, rather than
 // silently decided by whichever file loaded last.
 func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 	if p.asinLoc == nil {
@@ -915,7 +967,7 @@ func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 	}
 	if prev, taken := p.asinLoc[asin]; taken {
 		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"catalogue: ASIN %s is recorded on both %s and %s; enrichment matched it to the first",
+			"catalogue: ASIN %s is recorded on both %s and %s; an export row naming it is matched to the first",
 			asin, recLabel(prev.Work, prev.Rec), recLabel(workSlug, recSlug)))
 		return
 	}

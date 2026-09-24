@@ -726,12 +726,19 @@ func listWorks(t *testing.T, dataDir string) []string {
 }
 
 func hasWarning(warnings []string, sub string) bool {
+	return countWarnings(warnings, sub) > 0
+}
+
+// countWarnings is hasWarning for a test that must pin HOW MANY lines say sub -
+// an aggregated or deduplicated warning is exactly one, not "at least one".
+func countWarnings(warnings []string, sub string) int {
+	n := 0
 	for _, w := range warnings {
 		if strings.Contains(w, sub) {
-			return true
+			n++
 		}
 	}
-	return false
+	return n
 }
 
 func TestPersonSpellingVariantsMerge(t *testing.T) {

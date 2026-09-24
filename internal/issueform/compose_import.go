@@ -123,7 +123,7 @@ func (c *composer) importLibrary(s sections) {
 		// books, and claiming a type mismatch there would be false.
 		if len(sum.Warnings) > 0 {
 			c.fail(StatusNeedsHuman, "no importable books were found in the export - the file may not match the selected export type")
-			for _, w := range sum.Warnings[:min(5, len(sum.Warnings))] {
+			for _, w := range falloutExamples(sum) {
 				c.note("import warning: %s", w)
 			}
 		} else {
@@ -154,6 +154,19 @@ func (c *composer) importLibrary(s sections) {
 	// The importer wrote and validated the tree itself, so the file list is the
 	// one ITS flush reports, in the field the compose path's own flush fills.
 	c.wrote = sum.Files
+}
+
+// falloutExamples is the evidence behind "the file may not match the selected
+// export type": the first few PER-ROW warnings, which say why individual entries
+// fell out (no narrator, no ASIN, ...) - the signature of a mismatched file. The
+// importer ranks its run-level lines first, so the head of Warnings would show
+// summaries instead; a run with no row lines at all falls back to them.
+func falloutExamples(sum importer.Summary) []string {
+	lines := sum.RowWarnings()
+	if len(lines) == 0 {
+		lines = sum.Warnings
+	}
+	return lines[:min(5, len(lines))]
 }
 
 // noteConflicts reports the rows the importer refused because they disagreed

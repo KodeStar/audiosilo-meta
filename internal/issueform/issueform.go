@@ -17,6 +17,7 @@ package issueform
 import (
 	"encoding/json"
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 	"time"
@@ -55,18 +56,36 @@ type Result struct {
 	Messages []string `json:"messages"`
 }
 
-// MarshalJSON guarantees Files always serializes as [] (never null): the intake
-// workflow's PR-body step runs jq over .files[], which errors on a JSON null.
-// Several producers leave Files nil (the no-routing-label verdict in
-// cmd/metaissue builds a Result literal directly, and every non-ok verdict), so
-// the guarantee lives on the type rather than in any one producer. The alias avoids infinite recursion.
+// MarshalJSON owns the two WIRE guarantees, on the type rather than in any one
+// producer because several build a Result (the no-routing-label verdict in
+// cmd/metaissue is a literal, and every non-ok verdict leaves Files nil):
+//
+//   - Files always serializes as [] (never null), so a jq over .files[] never
+//     errors on a JSON null. (The intake workflow lists the pull request's
+//     files from the tree it commits, which the libex fill can widen past this
+//     list.)
+//   - messages is BOUNDED (wireMessages), because the workflow renders it
+//     verbatim into a pull-request body or an issue comment, both of which
+//     GitHub stops at 65,536 characters: an import of a large library raises
+//     hundreds of warnings, and a message can echo submitted text of any
+//     length. When the bound bit, the complete list rides beside it as
+//     all_messages, which the workflow's log prints and nothing renders.
+//
+// In Go the Result keeps every message; only the wire form is bounded. The
+// alias avoids infinite recursion.
 func (r Result) MarshalJSON() ([]byte, error) {
 	type alias Result
-	a := alias(r)
-	if a.Files == nil {
-		a.Files = []string{}
+	w := struct {
+		alias
+		AllMessages []string `json:"all_messages,omitempty"`
+	}{alias: alias(r)}
+	if w.Files == nil {
+		w.Files = []string{}
 	}
-	return json.Marshal(a)
+	if head := wireMessages(r.Messages); !slices.Equal(head, r.Messages) {
+		w.Messages, w.AllMessages = head, r.Messages
+	}
+	return json.Marshal(w)
 }
 
 // Fetcher fetches the bytes of a URL (used for issue-form file attachments),
